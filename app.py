@@ -37,35 +37,37 @@ def load_history_data():
     
     for url, token_name in [(SHEET_XRP_URL, "XRP"), (SHEET_XLM_URL, "XLM")]:
         try:
+            # Leer CSV ignorando líneas corruptas
             df_temp = pd.read_csv(url, on_bad_lines='skip')
             df_temp.columns = df_temp.columns.str.strip()
             
-            # Buscar columna de fecha flexible
-            fecha_col = None
-            for c in df_temp.columns:
-                if "FECHA" in c.upper():
-                    fecha_col = c
-                    break
+            # 1. Identificar la columna de Fecha (busca cualquier variante del nombre)
+            fecha_col = next((c for c in df_temp.columns if "FECHA" in c.upper()), None)
             
-            # Buscar columna de inversión flexible
-            inv_col = None
-            for c in df_temp.columns:
-                if "TOTAL" in c.upper() or "INVERTIDO" in c.upper() or "EUROS" in c.upper():
-                    inv_col = c
-                    break
+            # 2. Identificar la columna de Inversión/Euros (busca 'Total Invertido', 'Inversión', 'Euros', etc.)
+            inv_col = next((c for c in df_temp.columns if "INVERTIDO" in c.upper() or "TOTAL" in c.upper() or "EUROS" in c.upper()), None)
             
             if fecha_col and inv_col:
-                df_clean = pd.DataFrame()
-                df_clean['Fecha'] = pd.to_datetime(df_temp[fecha_col], errors='coerce', dayfirst=True)
+                # Convertir fechas de forma ultra flexible (soporta DD/MM/YYYY, YYYY-MM-DD, etc.)
+                fechas_parsed = pd.to_datetime(df_temp[fecha_col], errors='coerce', dayfirst=True)
                 
-                # Limpieza numérica de euros
-                val_str = df_temp[inv_col].astype(str).str.replace('€', '', regex=False).str.replace(' ', '', regex=False)
-                val_str = val_str.apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
-                df_clean['Invertido'] = pd.to_numeric(val_str, errors='coerce').fillna(0.0)
-                df_clean['Token'] = token_name
+                # Limpiar la columna de montos
+                montos_str = df_temp[inv_col].astype(str).str.replace('€', '', regex=False).str.replace(' ', '', regex=False)
+                montos_str = montos_str.apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
+                montos_parsed = pd.to_numeric(montos_str, errors='coerce')
                 
-                df_clean = df_clean.dropna(subset=['Fecha'])
-                dataframes.append(df_clean)
+                # Crear DataFrame limpio filtrando datos no válidos
+                df_clean = pd.DataFrame({
+                    'Fecha': fechas_parsed,
+                    'Invertido': montos_parsed,
+                    'Token': token_name
+                }).dropna(subset=['Fecha', 'Invertido'])
+                
+                # Solo nos quedamos con valores mayores a 0
+                df_clean = df_clean[df_clean['Invertido'] > 0]
+                
+                if not df_clean.empty:
+                    dataframes.append(df_clean)
         except Exception:
             continue
 
@@ -145,7 +147,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # PASO 2: GRÁFICOS (DISTRIBUCIÓN + KOINLY HISTÓRICO FLEXIBLE)
+    # PASO 2: GRÁFICOS (DISTRIBUCIÓN + KOINLY HISTÓRICO TOLERANTE)
     # ==============================================================================
     g1, g2 = st.columns(2)
     with g1:
@@ -157,7 +159,7 @@ if not df.empty:
         st.subheader("📈 Evolución Histórica (Estilo Koinly)")
         
         if not df_hist.empty:
-            # Agrupamos por fecha acumulando las compras reales
+            # Agrupamos compras por fecha y acumulamos la inversión
             df_grouped = df_hist.groupby('Fecha')['Invertido'].sum().reset_index()
             df_grouped['Coste Acumulado (€)'] = df_grouped['Invertido'].cumsum()
 
@@ -185,7 +187,7 @@ if not df.empty:
             )
             st.plotly_chart(fig_koinly, use_container_width=True)
         else:
-            st.warning("No se encontraron registros válidos de fechas o montos en las pestañas de transacciones.")
+            st.warning("No se pudieron procesar las compras. Comprueba que las pestañas tengan cabecera 'Fecha' y 'Total Invertido (€)'.")
 
     st.markdown("---")
 
