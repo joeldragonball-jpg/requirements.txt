@@ -84,7 +84,9 @@ if not df.empty:
 
     st.markdown("---")
 
-    # 2. DESGLOSE DE POSICIONES (ESTRUCTURA DE TABLA LIMPIA)
+    # ==============================================================================
+    # PASO 1: DESGLOSE DE POSICIONES POR ACTIVO (CORREGIDO)
+    # ==============================================================================
     st.subheader("💼 Desglose de Posiciones por Activo")
 
     for index, row in df.iterrows():
@@ -92,29 +94,39 @@ if not df.empty:
         cant = float(row.get("Cantidad Total TK", 0.0))
         p_medio = float(row.get("Precio Medio (€)", 0.0))
         p_act = float(row.get("Precio Actual (€)", 0.0))
-        v_act = float(row.get("Valor Actual (€)", 0.0))
-        inv = float(row.get("Inversión Total (€)", 0.0))
-        pnl = float(row.get("PnL No Realizado (€)", 0.0))
-        pnl_p = float(row.get("PnL No Realizado (%)", 0.0))
+        inv_indiv = float(row.get("Inversión Total (€)", 0.0))
+        val_indiv = float(row.get("Valor Actual (€)", 0.0))
+        
+        # Lee la columna P&L o PnL con & o n según exista en tu CSV
+        pnl_col_eur = "P&L No Realizado (€)" if "P&L No Realizado (€)" in df.columns else "PnL No Realizado (€)"
+        pnl_col_pct = "P&L No Realizado (%)" if "P&L No Realizado (%)" in df.columns else "PnL No Realizado (%)"
+        
+        # Si la columna existe en el CSV usa su valor; de lo contrario calcula la diferencia
+        if pnl_col_eur in df.columns and float(row.get(pnl_col_eur, 0.0)) != 0.0:
+            pnl_indiv_eur = float(row.get(pnl_col_eur, 0.0))
+        else:
+            pnl_indiv_eur = val_indiv - inv_indiv
 
-        with st.expander(f"📌 **{token}** — Balance: {cant:,.2f} {token} | Valor: {v_act:,.2f} €"):
-            # Tabla estructurada de 4 columnas
+        if pnl_col_pct in df.columns and float(row.get(pnl_col_pct, 0.0)) != 0.0:
+            pnl_indiv_pct = float(row.get(pnl_col_pct, 0.0))
+        else:
+            pnl_indiv_pct = (pnl_indiv_eur / inv_indiv * 100) if inv_indiv > 0 else 0.0
+
+        with st.expander(f"📌 **{token}** — Balance: {cant:,.2f} {token} | Valor: {val_indiv:,.2f} €"):
             col_a, col_b, col_c, col_d = st.columns(4)
             with col_a:
-                st.markdown(f"**Balance Total:**\n{cant:,.4f} {token}")
-                st.markdown(f"**Valor Estimado:**\n{v_act:,.2f} €")
+                st.markdown(f"**Balance Total:**\n\n`{cant:,.4f} {token}`")
+                st.markdown(f"**Valor Estimado:**\n\n`{val_indiv:,.2f} €`")
             with col_b:
-                st.markdown(f"**Precio Medio:**\n{p_medio:,.4f} €")
-                st.markdown(f"**Precio Actual:**\n{p_act:,.4f} €")
+                st.markdown(f"**Precio Medio:**\n\n`{p_medio:,.4f} €`")
+                st.markdown(f"**Precio Actual:**\n\n`{p_act:,.4f} €`")
             with col_c:
-                st.markdown(f"**Coste Base (Invertido):**\n{inv:,.2f} €")
+                st.markdown(f"**Coste Base (Invertido):**\n\n`{inv_indiv:,.2f} €`")
             with col_d:
-                color_str = "🟢" if pnl >= 0 else "🔴"
-                st.markdown(f"**P&L No Realizado (€):**\n{color_str} {pnl:,.2f} €")
-                st.markdown(f"**P&L No Realizado (%):**\n{pnl_p:.2f} %")
-
-    st.markdown("---")
-
+                color_str = "🟢" if pnl_indiv_eur >= 0 else "🔴"
+                st.markdown(f"**P&L No Realizado (€):**\n\n{color_str} `{pnl_indiv_eur:,.2f} €`")
+                st.markdown(f"**P&L No Realizado (%):**\n\n`{pnl_indiv_pct:.2f} %`")
+ 
     # 3. GRÁFICOS: CIRCULAR + EVOLUCIÓN TEMPORAL DE LÍNEAS
     g1, g2 = st.columns(2)
 
