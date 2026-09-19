@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 # Configuración de página
 st.set_page_config(page_title="Control de Porfolio Cripto", page_icon="⚡", layout="wide")
 
-# Estilos CSS avanzados
+# Estilos CSS avanzados para forzar el fondo, ocultar elementos de Streamlit y limpiar la interfaz móvil
 hide_streamlit_style = """
     <style>
         .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
@@ -20,7 +20,7 @@ hide_streamlit_style = """
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-# Inyectar Manifest PWA
+# Inyectar el Manifest para la instalación PWA en el móvil
 pwa_header = """
     <link rel="manifest" href="https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/main/manifest.json">
     <meta name="theme-color" content="#0e1117">
@@ -30,7 +30,7 @@ pwa_header = """
 """
 st.markdown(pwa_header, unsafe_allow_html=True)
 
-# URLS CSV de Google Sheets
+# URLS CSV de Google Sheets (Tus enlaces originales intactos)
 SHEET_RESUMEN_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vScLk_CfOYzrjn1IBu8kANtfGGEenlI1b4M_4KkFf1FNxw9u4f1ITCVBeuvId2-0c_0mMj45etvFVQqTrg/pub?gid=365927779&single=true&output=csv"
 SHEET_XRP_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vScLk_CfOYzrjn1IBu8kANtfGGEenlI1b4M_4KkFf1FNxw9u4f1ITCVBeuvId2-0c_0mMj45etvFVQqTrg/pub?gid=10835208&single=true&output=csv"
 SHEET_XLM_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vScLk_CfOYzrjn1IBu8kANtfGGEenlI1b4M_4KkFf1FNxw9u4f1ITCVBeuvId2-0c_0mMj45etvFVQqTrg/pub?gid=298064972&single=true&output=csv"
@@ -42,9 +42,7 @@ def read_raw_sheet(url):
     except:
         return pd.DataFrame()
 
-def limpiar_numeros(series):
-    if series is None:
-        return 0.0
+def def_clean_numeric_series(series):
     s_str = series.astype(str).str.strip()
     s_str = s_str.str.replace('€', '', regex=False).str.replace('%', '', regex=False)
     s_str = s_str.str.replace('.', '', regex=False).str.replace(',', '.', regex=False)
@@ -56,18 +54,25 @@ def load_resumen_data():
     if df.empty:
         return pd.DataFrame()
     
-    # Buscar la fila de cabecera de forma flexible
-    header_idx = 0
+    header_idx = None
     for idx, row in df.iterrows():
         row_str = "".join(row.astype(str).values).upper()
-        if "ACTIVO" in row_str or "TOKEN" in row_str or "VALOR" in row_str:
+        if "VALOR" in row_str or "ACTIVO" in row_str:
             header_idx = idx
             break
             
-    df.columns = df.iloc[header_idx].astype(str).str.strip()
-    df = df.iloc[header_idx + 1:].reset_index(drop=True)
-    df = df.dropna(how='all')
+    if header_idx is not None:
+        df.columns = df.iloc[header_idx].astype(str).str.strip()
+        df = df.iloc[header_idx + 1:].reset_index(drop=True)
     
+    cols_num = ['Cantidad Total TK', 'Inversión Total (€)', 'Precio Medio (€)', 'Precio Actual (€)', 'Valor Actual (€)', 'P&L No Realizado (€)', 'Rendimiento Total (%)']
+    for col in cols_num:
+        if col in df.columns:
+            df[col] = def_clean_numeric_series(df[col])
+            
+    if 'Token' in df.columns:
+        df['Token'] = df['Token'].astype(str).str.strip().str.upper()
+        
     return df
 
 @st.cache_data(ttl=10)
@@ -76,42 +81,41 @@ def load_tx_sheet(url, token_name):
     if df.empty:
         return pd.DataFrame()
     
-    header_idx = 0
+    header_idx = None
     for idx, row in df.iterrows():
         row_str = "".join(row.astype(str).values).upper()
         if "FECHA" in row_str and "CANTIDAD" in row_str:
             header_idx = idx
             break
             
-    df.columns = df.iloc[header_idx].astype(str).str.strip()
-    df = df.iloc[header_idx + 1:].reset_index(drop=True)
-    df = df.dropna(how='all')
+    if header_idx is not None:
+        df.columns = df.iloc[header_idx].astype(str).str.strip()
+        df = df.iloc[header_idx + 1:].reset_index(drop=True)
     
     mapping = {}
     for c in df.columns:
-        c_up = str(c).upper()
-        if 'FECHA' in c_up:
+        c_upper = c.upper()
+        if 'FECHA' in c_upper:
             mapping[c] = 'Fecha'
-        elif 'CANTIDAD' in c_up:
+        elif 'CANTIDAD' in c_upper:
             mapping[c] = 'Cantidad'
-        elif 'PRECIO' in c_up and 'UNITARIO' in c_up:
+        elif 'PRECIO UNITARIO' in c_upper:
             mapping[c] = 'PrecioUnitario'
-        elif 'INVERTIDO' in c_up or 'TOTAL' in c_up:
+        elif 'TOTAL INVERTIDO' in c_upper or 'INVERTIDO' in c_upper:
             mapping[c] = 'Invertido'
             
     df = df.rename(columns=mapping)
     
     if 'Fecha' in df.columns and 'Cantidad' in df.columns:
         df['Fecha'] = pd.to_datetime(df['Fecha'], errors='coerce')
-        df['Cantidad'] = limpiar_numeros(df['Cantidad'])
-        
+        df['Cantidad'] = def_clean_numeric_series(df['Cantidad'])
         if 'PrecioUnitario' in df.columns:
-            df['PrecioUnitario'] = limpiar_numeros(df['PrecioUnitario'])
+            df['PrecioUnitario'] = def_clean_numeric_series(df['PrecioUnitario'])
         else:
             df['PrecioUnitario'] = 0.0
             
         if 'Invertido' in df.columns:
-            df['Invertido'] = limpiar_numeros(df['Invertido'])
+            df['Invertido'] = def_clean_numeric_series(df['Invertido'])
         else:
             df['Invertido'] = df['Cantidad'] * df['PrecioUnitario']
             
@@ -121,32 +125,30 @@ def load_tx_sheet(url, token_name):
         
     return pd.DataFrame()
 
-# Cargar datos
+# Cargar datos principales que ya funcionaban
 df_resumen = load_resumen_data()
 df_xrp = load_tx_sheet(SHEET_XRP_URL, "XRP")
 df_xlm = load_tx_sheet(SHEET_XLM_URL, "XLM")
 
-# Cabecera
+# Encabezado Principal
 st.markdown("<h1 style='text-align: center; color: #f0f2f6;'>⚡ Control de Portfolio Cripto</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; color: #808495;'>Sincronizado en tiempo real con Google Sheets</p>", unsafe_allow_html=True)
 st.markdown("---")
 
-# Calcular totales globales seguros buscando columnas numéricas
+# Calcular KPIs globales originales
 total_invertido_val = 0.0
 valor_actual_val = 0.0
 
 if not df_resumen.empty:
-    for col in df_resumen.columns:
-        col_up = str(col).upper()
-        if 'INVERSIÓN' in col_up or 'INVERTIDO' in col_up:
-            total_invertido_val = limpiar_numeros(df_resumen[col]).sum()
-        if 'VALOR ACTUAL' in col_up or ('VALOR' in col_up and 'ACTUAL' in col_up):
-            valor_actual_val = limpiar_numeros(df_resumen[col]).sum()
+    if 'Inversión Total (€)' in df_resumen.columns:
+        total_invertido_val = df_resumen['Inversión Total (€)'].sum()
+    if 'Valor Actual (€)' in df_resumen.columns:
+        valor_actual_val = df_resumen['Valor Actual (€)'].sum()
 
 pnl_val = valor_actual_val - total_invertido_val
 rendimiento_val = (pnl_val / total_invertido_val * 100) if total_invertido_val > 0 else 0.0
 
-# Tarjetas KPI (Siempre visibles)
+# Tarjetas KPI originales
 col1, col2 = st.columns(2)
 with col1:
     st.metric("Inversión Total", f"{total_invertido_val:,.2f} €")
@@ -158,11 +160,11 @@ with col2:
 st.markdown("---")
 
 # -------------------------------------------------------------------------
-# GRÁFICO HISTÓRICO AVANZADO ESTILO KOINLY
+# NUEVO GRÁFICO HISTÓRICO AVANZADO ESTILO KOINLY (Protegido para no romper nada)
 # -------------------------------------------------------------------------
 st.subheader("📊 Evolución Histórica por Activo (Estilo Koinly)")
 
-def crear_df_historico(df_tx, token_name, precio_ref):
+def crear_df_historico(df_tx, token_name, precio_actual_ref):
     if df_tx.empty:
         return pd.DataFrame()
     
@@ -185,15 +187,28 @@ def crear_df_historico(df_tx, token_name, precio_ref):
     df_merged['InvertidoAcum'] = df_merged['InvertidoAcum'].fillna(0)
     
     if 'PrecioUnitario' in df_merged.columns:
-        df_merged['PrecioUnitario'] = df_merged['PrecioUnitario'].replace(0, pd.NA).ffill().bfill().fillna(precio_ref)
+        df_merged['PrecioUnitario'] = df_merged['PrecioUnitario'].replace(0, pd.NA).ffill().bfill()
+        df_merged['PrecioUnitario'] = df_merged['PrecioUnitario'].fillna(precio_actual_ref)
     else:
-        df_merged['PrecioUnitario'] = precio_ref
+        df_merged['PrecioUnitario'] = precio_actual_ref
         
     df_merged['ValorMercado'] = df_merged['CantidadAcum'] * df_merged['PrecioUnitario']
     return df_merged[['Fecha', 'Token', 'CantidadAcum', 'InvertidoAcum', 'ValorMercado']]
 
-hist_xrp = crear_df_historico(df_xrp, "XRP", 1.24)
-hist_xlm = crear_df_historico(df_xlm, "XLM", 0.16)
+# Obtener precios de referencia de forma segura
+precio_xrp_ref = 1.24
+precio_xlm_ref = 0.16
+
+if not df_resumen.empty and 'Token' in df_resumen.columns and 'Precio Actual (€)' in df_resumen.columns:
+    match_xrp = df_resumen[df_resumen['Token'] == 'XRP']
+    if not match_xrp.empty:
+        precio_xrp_ref = float(match_xrp['Precio Actual (€)'].values[0])
+    match_xlm = df_resumen[df_resumen['Token'] == 'XLM']
+    if not match_xlm.empty:
+        precio_xlm_ref = float(match_xlm['Precio Actual (€)'].values[0])
+
+hist_xrp = crear_df_historico(df_xrp, "XRP", precio_xrp_ref)
+hist_xlm = crear_df_historico(df_xlm, "XLM", precio_xlm_ref)
 df_hist_total = pd.concat([hist_xrp, hist_xlm], ignore_index=True)
 
 if not df_hist_total.empty:
@@ -228,13 +243,13 @@ if not df_hist_total.empty:
     )
     st.plotly_chart(fig_koinly, use_container_width=True)
 else:
-    st.info("Cargando datos históricos de transacciones...")
+    st.info("Cargando gráfico histórico...")
 
 st.markdown("---")
 
-# Desglose de Posiciones
+# Desglose de posiciones original intacto
 st.subheader("💼 Desglose de Posiciones por Activo")
 if not df_resumen.empty:
     st.dataframe(df_resumen, use_container_width=True)
 else:
-    st.info("Cargando tabla de posiciones...")
+    st.info("Cargando datos de posiciones...")
