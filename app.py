@@ -225,26 +225,23 @@ if not df.empty:
         st.plotly_chart(fig_pie, use_container_width=True)
 
     with g2:
-        st.subheader("📈 Evolución Histórica por Activo (Estilo Koinly)")
+        st.subheader("📈 Evolución Histórica Global (Estilo Koinly)")
         if not df_hist.empty:
+            # Agrupar por fecha estricta sumando todas las inversiones de todos los tokens por día
+            df_grouped = df_hist.groupby('Fecha_Clean')['Invertido_Clean'].sum().reset_index()
+            df_grouped = df_grouped.sort_values('Fecha_Clean')
+            df_grouped['Coste Acumulado (€)'] = df_grouped['Invertido_Clean'].cumsum()
+
             fig_koinly = go.Figure()
 
-            colors = {'XRP': '#2563eb', 'XLM': '#10b981'}
-            for token_name in df_hist['Token_Clean'].unique():
-                df_t = df_hist[df_hist['Token_Clean'] == token_name]
-                if not df_t.empty:
-                    # Ordenar cronológicamente estrictamente de más antiguo a más reciente (Año > Mes > Día)
-                    df_t = df_t.sort_values('Fecha_Clean')
-                    df_grouped = df_t.groupby('Fecha_Clean')['Invertido_Clean'].sum().reset_index()
-                    df_grouped['Coste Acumulado (€)'] = df_grouped['Invertido_Clean'].cumsum()
-
-                    fig_koinly.add_trace(go.Scatter(
-                        x=df_grouped['Fecha_Clean'],
-                        y=df_grouped['Coste Acumulado (€)'],
-                        mode='lines+markers',
-                        name=f'Coste {token_name} (€)',
-                        line=dict(color=colors.get(token_name, '#f59e0b'), width=3)
-                    ))
+            # Línea de Coste Base global de la cartera (Estilo Koinly discontinuo)
+            fig_koinly.add_trace(go.Scatter(
+                x=df_grouped['Fecha_Clean'],
+                y=df_grouped['Coste Acumulado (€)'],
+                mode='lines',
+                name='Cost Basis (€)',
+                line=dict(color='#3b82f6', width=2, dash='dash')
+            ))
 
             fig_koinly.update_layout(
                 paper_bgcolor='rgba(0,0,0,0)',
@@ -253,7 +250,8 @@ if not df.empty:
                 margin=dict(l=10, r=10, t=10, b=10),
                 xaxis=dict(showgrid=False, title=None),
                 yaxis=dict(showgrid=True, gridcolor='#262c3a', title="Euros (€)"),
-                hovermode="x unified"
+                hovermode="x unified",
+                legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
             )
             st.plotly_chart(fig_koinly, use_container_width=True)
         else:
