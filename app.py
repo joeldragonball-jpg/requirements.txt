@@ -11,62 +11,85 @@ SHEET_RESUMEN_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfY
 SHEET_XRP_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=2015592342&single=true&output=csv"
 SHEET_XLM_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=108352087&single=true&output=csv"
 
-@st.cache_data(ttl=10)
-def load_resumen_data():
+def read_sheet_with_dynamic_header(url, target_keyword):
+    """Busca dinámicamente la fila donde están las cabeceras reales."""
     try:
-        df = pd.read_csv(SHEET_RESUMEN_URL)
-        df.columns = df.columns.astype(str).str.strip()
+        raw_df = pd.read_csv(url, header=None, on_bad_lines='skip')
+        header_idx = None
+        for idx, row in raw_df.iterrows():
+            row_str = " ".join(row.astype(str).values).upper()
+            if target_keyword.upper() in row_str:
+                header_idx = idx
+                break
         
-        # Limpieza de columnas numéricas
-        cols_num = ["Cantidad Total TK", "Inversión Total (€)", "Precio Medio (€)", "Precio Actual (€)", "Valor Actual (€)", "P&L No Realizado (€)", "P&L No Realizado (%)"]
-        for col in cols_num:
-            if col in df.columns:
-                df[col] = df[col].astype(str).str.replace('€', '', regex=False).str.replace('%', '', regex=False).str.replace(' ', '', regex=False)
-                df[col] = df[col].apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
-                df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0.0)
-
-        if "Token" in df.columns:
-            df = df[df["Token"].astype(str).str.upper() != "TOTAL"]
+        if header_idx is not None:
+            df = pd.read_csv(url, skiprows=header_idx, on_bad_lines='skip')
+        else:
+            df = pd.read_csv(url, on_bad_lines='skip')
             
+        df.columns = [str(c).strip() for c in df.columns]
         return df
     except Exception:
         return pd.DataFrame()
 
-def load_transactions_direct(url, token_name):
-    try:
-        df = pd.read_csv(url, on_bad_lines='skip')
-        df.columns = [str(c).strip().upper() for c in df.columns]
-        
-        col_fecha = next((c for c in df.columns if "FECHA" in c), None)
-        col_monto = next((c for c in df.columns if "TOTAL INVERTIDO" in c or "INVERTIDO" in c), None)
-        col_holding = next((c for c in df.columns if "HOLDING" in c or "WALLET" in c), None)
-        
-        if not col_fecha or not col_monto:
-            return pd.DataFrame()
-            
-        df['Fecha_Clean'] = pd.to_datetime(df[col_fecha], errors='coerce', dayfirst=True)
-        
-        val_str = df[col_monto].astype(str).str.replace('€', '', regex=False).str.replace(' ', '', regex=False)
-        val_str = val_str.apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
-        df['Invertido_Clean'] = pd.to_numeric(val_str, errors='coerce').fillna(0.0)
-        
-        if col_holding:
-            df['Holding_Clean'] = df[col_holding].astype(str).str.strip().str.upper()
-            df['Holding_Clean'] = df['Holding_Clean'].replace({'NAN': 'OTRO', '': 'OTRO'})
-        else:
-            df['Holding_Clean'] = 'OTRO'
-            
-        df['Token_Clean'] = token_name
-        
-        df_res = df[['Fecha_Clean', 'Invertido_Clean', 'Holding_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
-        return df_res[df_res['Invertido_Clean'] > 0]
-    except Exception:
+@st.cache_data(ttl=10)
+def load_resumen_data():
+    df = read_sheet_with_dynamic_header(SHEET_RESUMEN_URL, "Token")
+    if df.empty:
         return pd.DataFrame()
+
+    # Limpieza numérica de la tabla resumen
+    cols_num = ["Cantidad Total TK", "Inversión Total (€)", "Precio Medio (€)", "Precio Actual (€)", "Valor Actual (€)", "P&L No Realizado (€)", "P&L No Realizado (%)"]
+    for col in cols_num:
+        col_match = next((c for c in df.columns if col.upper() in c.upper()), None)
+        if col_match:
+            df[col_match] = df[col_match].astype(str).str.replace('€', '', regex=False).str.replace('%', '', regex=False).str.replace(' ', '', regex=False)
+            df[col_match] = df[col_match].apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
+            df[col] = pd.to_numeric(df[col_match], errors='coerce').fillna(0.0)
+
+    # Identificar columna Token
+    tok_col = next((c for c in df.columns if "TOKEN" in c.upper()), "Token")
+    if tok_col in df.columns:
+        df["Token"] = df[tok_col]
+        df = df[df["Token"].astype(str).str.upper() != "TOTAL"]
+        
+    return df
+
+def process_transaction_sheet(url, token_name):
+    df = read_sheet_with_dynamic_header(url, "FECHA")
+    if df.empty:
+        return pd.DataFrame()
+
+    df.columns = [str(c).strip().upper() for c in df.columns]
+
+    c_fecha = next((c for c in df.columns if "FECHA" in c), None)
+    c_inv = next((c for c in df.columns if "INVERTIDO" in c or "TOTAL" in c), None)
+    c_holding = next((c for c in df.columns if "HOLDING" in c or "WALLET" in c), None)
+
+    if not c_fecha or not c_inv:
+        return pd.DataFrame()
+
+    df['Fecha_Clean'] = pd.to_datetime(df[c_fecha], errors='coerce', dayfirst=True)
+    
+    val_str = df[c_inv].astype(str).str.replace('€', '', regex=False).str.replace(' ', '', regex=False)
+    val_str = val_str.apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
+    df['Invertido_Clean'] = pd.to_numeric(val_str, errors='coerce').fillna(0.0)
+
+    if c_holding:
+        df['Holding_Clean'] = df[c_holding].astype(str).str.strip().str.upper()
+        df['Holding_Clean'] = df['Holding_Clean'].replace({'NAN': 'OTRO', '': 'OTRO'})
+    else:
+        df['Holding_Clean'] = 'OTRO'
+
+    df['Token_Clean'] = token_name
+    
+    df_res = df[['Fecha_Clean', 'Invertido_Clean', 'Holding_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
+    return df_res[df_res['Invertido_Clean'] > 0]
 
 @st.cache_data(ttl=30)
 def load_history_data():
-    df_xrp = load_transactions_direct(SHEET_XRP_URL, "XRP")
-    df_xlm = load_transactions_direct(SHEET_XLM_URL, "XLM")
+    df_xrp = process_transaction_sheet(SHEET_XRP_URL, "XRP")
+    df_xlm = process_transaction_sheet(SHEET_XLM_URL, "XLM")
     
     frames = [f for f in [df_xrp, df_xlm] if not f.empty]
     if frames:
@@ -87,12 +110,16 @@ if st.sidebar.button("🔄 Actualizar Datos"):
 st.markdown("---")
 
 if not df.empty:
-    # 1. MÉTRICAS GENERALES (KPIs) — RESTAURADO AL 100%
+    # 1. MÉTRICAS GENERALES (KPIs)
     inv_total = float(df["Inversión Total (€)"].sum()) if "Inversión Total (€)" in df.columns else 0.0
     val_actual = float(df["Valor Actual (€)"].sum()) if "Valor Actual (€)" in df.columns else 0.0
     
-    pnl_col = "P&L No Realizado (€)" if "P&L No Realizado (€)" in df.columns else "PnL No Realizado (€)"
-    pnl_eur = float(df[pnl_col].sum()) if pnl_col in df.columns else (val_actual - inv_total)
+    pnl_col = next((c for c in df.columns if "P&L" in c.upper() or "PNL" in c.upper()), None)
+    if pnl_col and "P&L No Realizado (€)" in df.columns:
+        pnl_eur = float(df["P&L No Realizado (€)"].sum())
+    else:
+        pnl_eur = val_actual - inv_total
+
     pnl_pct = (pnl_eur / inv_total * 100) if inv_total > 0 else 0.0
 
     c1, c2, c3, c4 = st.columns(4)
@@ -104,7 +131,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # PASO 1: DESGLOSE COMPACTO MÓVIL — RESTAURADO AL 100%
+    # BLOQUE 1: DESGLOSE COMPACTO DE POSICIONES
     # ==============================================================================
     st.subheader("💼 Desglose de Posiciones por Activo")
 
@@ -116,8 +143,8 @@ if not df.empty:
         inv_indiv = float(row.get("Inversión Total (€)", 0.0))
         val_indiv = float(row.get("Valor Actual (€)", 0.0))
         
-        pnl_val = row.get("P&L No Realizado (€)", row.get("PnL No Realizado (€)", val_indiv - inv_indiv))
-        pnl_pct_val = row.get("P&L No Realizado (%)", row.get("PnL No Realizado (%)", (pnl_val / inv_indiv * 100) if inv_indiv > 0 else 0.0))
+        pnl_val = row.get("P&L No Realizado (€)", val_indiv - inv_indiv)
+        pnl_pct_val = row.get("P&L No Realizado (%)", (pnl_val / inv_indiv * 100) if inv_indiv > 0 else 0.0)
         
         pnl_indiv_eur = float(pnl_val)
         pnl_indiv_pct = float(pnl_pct_val)
@@ -145,7 +172,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # PASO 2: GRÁFICOS (DISTRIBUCIÓN POR CUSTODIA + EVOLUCIÓN HISTÓRICA)
+    # BLOQUE 2: GRÁFICOS (DISTRIBUCIÓN CUSTODIA + EVOLUCIÓN HISTÓRICA)
     # ==============================================================================
     g1, g2 = st.columns(2)
     with g1:
@@ -204,7 +231,7 @@ if not df.empty:
 
     st.markdown("---")
 
-    # 4. CALCULADORA DE ADQUISICIÓN DE TOKENS — INTACTO
+    # CALCULADORA
     st.subheader("🧮 Calculadora de Adquisición de Tokens")
     calc_c1, calc_c2 = st.columns([1, 2])
     with calc_c1:
