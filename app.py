@@ -76,13 +76,12 @@ def process_transaction_sheet(url, token_name):
     df['Invertido_Clean'] = clean_numeric_series(df[c_inv])
     df['Cantidad_Clean'] = clean_numeric_series(df[c_cant]) if c_cant else 0.0
 
-    # Forzar creación de Tipo_Clean sin riesgo de KeyError
     if c_tipo:
         df['Tipo_Clean'] = df[c_tipo].fillna('COMPRA').astype(str).str.strip().str.upper()
     else:
         df['Tipo_Clean'] = 'COMPRA'
 
-    # Custodia (Wallet / Holding)
+    # Unificación estricta de Holding
     if c_holding:
         df['Holding_Clean'] = df[c_holding].fillna('').astype(str).str.strip().str.upper()
     else:
@@ -90,7 +89,6 @@ def process_transaction_sheet(url, token_name):
 
     df['Token_Clean'] = token_name
     
-    # Garantizar que todas las columnas requeridas están presentes
     cols_export = ['Fecha_Clean', 'Tipo_Clean', 'Invertido_Clean', 'Cantidad_Clean', 'Holding_Clean', 'Token_Clean']
     for col in cols_export:
         if col not in df.columns:
@@ -143,7 +141,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # BLOQUE 1: DESGLOSE COMPACTO DE POSICIONES Y CUSTODIA BLINDADA
+    # BLOQUE 1: DESGLOSE DE POSICIONES CON CUSTODIA PRECISA
     # ==============================================================================
     st.subheader("💼 Desglose de Posiciones por Activo")
 
@@ -181,40 +179,46 @@ if not df.empty:
             </div>
             """, unsafe_allow_html=True)
 
-            # Desglose de Custodia Seguro
+            # Cálculo de Custodia Robusto
             if not df_hist.empty:
                 df_tok = df_hist[(df_hist['Token_Clean'] == token) & (df_hist['Holding_Clean'] != '')]
                 
                 if not df_tok.empty:
                     st.markdown("<div style='margin-top: 10px; font-weight: bold; font-size: 13px;'>🔒 Custodia Actual (Wallet / Holding):</div>", unsafe_allow_html=True)
                     
-                    custody_map = {}
+                    # Agrupar las cantidades netas asignadas a cada Wallet/Holding
+                    raw_custody = {}
                     for _, t_row in df_tok.iterrows():
-                        w_name = t_row.get('Holding_Clean', '')
-                        if not w_name:
+                        w_name = str(t_row.get('Holding_Clean', '')).strip().upper()
+                        if not w_name or w_name == 'NAN':
                             continue
                             
-                        if w_name not in custody_map:
-                            custody_map[w_name] = {'cant': 0.0, 'inv': 0.0}
+                        if w_name not in raw_custody:
+                            raw_custody[w_name] = 0.0
                             
-                        tipo_op = str(t_row.get('Tipo_Clean', 'COMPRA'))
+                        tipo_op = str(t_row.get('Tipo_Clean', 'COMPRA')).upper()
+                        c_val = float(t_row.get('Cantidad_Clean', 0.0))
+                        
                         if "VENTA" in tipo_op:
-                            custody_map[w_name]['cant'] -= t_row.get('Cantidad_Clean', 0.0)
-                            custody_map[w_name]['inv'] -= t_row.get('Invertido_Clean', 0.0)
+                            raw_custody[w_name] -= c_val
                         else:
-                            custody_map[w_name]['cant'] += t_row.get('Cantidad_Clean', 0.0)
-                            custody_map[w_name]['inv'] += t_row.get('Invertido_Clean', 0.0)
+                            raw_custody[w_name] += c_val
 
-                    for w_name, w_data in custody_map.items():
-                        w_cant = w_data['cant']
-                        if w_cant > 0:
-                            w_val = w_cant * p_act
-                            w_pct = (w_cant / cant * 100) if cant > 0 else 0.0
+                    # Filtrar posiciones positivas
+                    valid_custody = {w: val for w, val in raw_custody.items() if val > 0}
+                    total_raw_cant = sum(valid_custody.values())
+
+                    if total_raw_cant > 0:
+                        for w_name, raw_c in valid_custody.items():
+                            # Calcular proporción real sobre el balance total del token (cant)
+                            w_pct = (raw_c / total_raw_cant) * 100
+                            w_cant_real = (w_pct / 100) * cant
+                            w_val_real = w_cant_real * p_act
                             
                             st.markdown(f"""
                             <div style="display: flex; justify-content: space-between; background-color: #1a202c; padding: 6px 10px; border-radius: 6px; margin-top: 4px; font-size: 12px;">
                                 <div><b>{w_name}</b></div>
-                                <div>{w_cant:,.2f} {token} ({w_val:,.2f} €)</div>
+                                <div>{w_cant_real:,.2f} {token} ({w_val_real:,.2f} €)</div>
                                 <div style="color: #3b82f6;"><b>{w_pct:.1f}%</b></div>
                             </div>
                             """, unsafe_allow_html=True)
