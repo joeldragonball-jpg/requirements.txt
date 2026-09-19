@@ -110,8 +110,8 @@ if not df.empty:
                 st.markdown(f"**Coste Base (Invertido):**\n{inv:,.2f} €")
             with col_d:
                 color_str = "🟢" if pnl >= 0 else "🔴"
-                st.markdown(f"**PnL No Realizado (€):**\n{color_str} {pnl:,.2f} €")
-                st.markdown(f"**PnL No Realizado (%):**\n{pnl_p:.2f} %")
+                st.markdown(f"**P&L No Realizado (€):**\n{color_str} {pnl:,.2f} €")
+                st.markdown(f"**P&L No Realizado (%):**\n{pnl_p:.2f} %")
 
     st.markdown("---")
 
