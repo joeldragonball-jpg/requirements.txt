@@ -11,23 +11,9 @@ SHEET_RESUMEN_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfY
 SHEET_XRP_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=2015592342&single=true&output=csv"
 SHEET_XLM_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=108352087&single=true&output=csv"
 
-def read_sheet_with_dynamic_header(url, target_keyword):
+def read_raw_sheet(url):
     try:
-        raw_df = pd.read_csv(url, header=None, on_bad_lines='skip')
-        header_idx = None
-        for idx, row in raw_df.iterrows():
-            row_str = " ".join(row.fillna('').astype(str).values).upper()
-            if target_keyword.upper() in row_str:
-                header_idx = idx
-                break
-        
-        if header_idx is not None:
-            df = pd.read_csv(url, skiprows=header_idx, on_bad_lines='skip')
-        else:
-            df = pd.read_csv(url, on_bad_lines='skip')
-            
-        df.columns = [str(c).strip() for c in df.columns]
-        return df
+        return pd.read_csv(url, header=None, on_bad_lines='skip')
     except Exception:
         return pd.DataFrame()
 
@@ -39,9 +25,24 @@ def clean_numeric_series(series):
 
 @st.cache_data(ttl=10)
 def load_resumen_data():
-    df = read_sheet_with_dynamic_header(SHEET_RESUMEN_URL, "Token")
-    if df.empty:
-        return pd.DataFrame()
+    raw_df = read_raw_sheet(SHEET_RESUMEN_URL)
+    if raw_df.empty:
+        return pd.DataFrame(), {}
+
+    # 1. Buscar la tabla principal de Resumen
+    header_idx = None
+    for idx, row in raw_df.iterrows():
+        row_str = " ".join(row.fillna('').astype(str).values).upper()
+        if "TOKEN" in row_str:
+            header_idx = idx
+            break
+
+    if header_idx is not None:
+        df = pd.read_csv(SHEET_RESUMEN_URL, skiprows=header_idx, on_bad_lines='skip')
+    else:
+        df = pd.read_csv(SHEET_RESUMEN_URL, on_bad_lines='skip')
+
+    df.columns = [str(c).strip() for c in df.columns]
 
     cols_num = ["Cantidad Total TK", "Inversión Total (€)", "Precio Medio (€)", "Precio Actual (€)", "Valor Actual (€)", "P&L No Realizado (€)", "P&L No Realizado (%)"]
     for col in cols_num:
@@ -53,50 +54,71 @@ def load_resumen_data():
     if tok_col in df.columns:
         df["Token"] = df[tok_col]
         df = df[df["Token"].astype(str).str.upper() != "TOTAL"]
-        
-    return df
+
+    # 2. Leer la nueva tabla de Custodia (Columnas I, J, K) directamente del CSV crudo
+    custody_data = {'XRP': {}, 'XLM': {}}
+    try:
+        # Recorremos el CSV buscando las palabras LEDGER y KRAKEN en cualquier columna
+        for _, row in raw_df.iterrows():
+            row_vals = [str(v).strip().upper() for v in row.fillna('').values]
+            for w_name in ['LEDGER', 'KRAKEN']:
+                if w_name in row_vals:
+                    w_idx = row_vals.index(w_name)
+                    # Tomamos los dos valores numéricos siguientes (J para XRP, K para XLM)
+                    if w_idx + 1 < len(row):
+                        val_xrp = clean_numeric_series(pd.Series([row.iloc[w_idx + 1]])).iloc[0]
+                        custody_data['XRP'][w_name] = float(val_xrp)
+                    if w_idx + 2 < len(row):
+                        val_xlm = clean_numeric_series(pd.Series([row.iloc[w_idx + 2]])).iloc[0]
+                        custody_data['XLM'][w_name] = float(val_xlm)
+    except Exception:
+        pass
+
+    return df, custody_data
 
 def process_transaction_sheet(url, token_name):
-    df = read_sheet_with_dynamic_header(url, "FECHA")
-    if df.empty:
+    try:
+        raw_df = pd.read_csv(url, header=None, on_bad_lines='skip')
+        header_idx = None
+        for idx, row in raw_df.iterrows():
+            row_str = " ".join(row.fillna('').astype(str).values).upper()
+            if "FECHA" in row_str:
+                header_idx = idx
+                break
+
+        if header_idx is not None:
+            df = pd.read_csv(url, skiprows=header_idx, on_bad_lines='skip')
+        else:
+            df = pd.read_csv(url, on_bad_lines='skip')
+
+        df.columns = [str(c).strip().upper() for c in df.columns]
+
+        c_fecha = next((c for c in df.columns if "FECHA" in c), None)
+        c_inv = next((c for c in df.columns if "INVERTIDO" in c or "TOTAL" in c), None)
+
+        if not c_fecha or not c_inv:
+            return pd.DataFrame()
+
+        df['Fecha_Clean'] = pd.to_datetime(df[c_fecha], errors='coerce', dayfirst=True)
+        df['Invertido_Clean'] = clean_numeric_series(df[c_inv])
+        df['Token_Clean'] = token_name
+
+        return df[['Fecha_Clean', 'Invertido_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
+    except Exception:
         return pd.DataFrame()
-
-    df.columns = [str(c).strip().upper() for c in df.columns]
-
-    c_fecha = next((c for c in df.columns if "FECHA" in c), None)
-    c_inv = next((c for c in df.columns if "INVERTIDO" in c or "TOTAL" in c), None)
-    c_cant = next((c for c in df.columns if "CANTIDAD" in c), None)
-    c_holding = next((c for c in df.columns if "HOLDING" in c or "WALLET/HOLDING" in c), None)
-
-    if not c_fecha or not c_inv:
-        return pd.DataFrame()
-
-    df['Fecha_Clean'] = pd.to_datetime(df[c_fecha], errors='coerce', dayfirst=True)
-    df['Invertido_Clean'] = clean_numeric_series(df[c_inv])
-    df['Cantidad_Clean'] = clean_numeric_series(df[c_cant]) if c_cant else 0.0
-
-    if c_holding:
-        df['Holding_Clean'] = df[c_holding].fillna('').astype(str).str.strip().str.upper()
-    else:
-        df['Holding_Clean'] = ''
-
-    df['Token_Clean'] = token_name
-    
-    df_res = df[['Fecha_Clean', 'Invertido_Clean', 'Cantidad_Clean', 'Holding_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
-    return df_res
 
 @st.cache_data(ttl=30)
 def load_history_data():
     df_xrp = process_transaction_sheet(SHEET_XRP_URL, "XRP")
     df_xlm = process_transaction_sheet(SHEET_XLM_URL, "XLM")
-    
+
     frames = [f for f in [df_xrp, df_xlm] if not f.empty]
     if frames:
         df_all = pd.concat(frames, ignore_index=True)
         return df_all.sort_values('Fecha_Clean')
     return pd.DataFrame()
 
-df = load_resumen_data()
+df, custody_data = load_resumen_data()
 df_hist = load_history_data()
 
 st.title("⚡ Control de Portfolio Cripto")
@@ -112,7 +134,7 @@ if not df.empty:
     # 1. MÉTRICAS GENERALES (KPIs)
     inv_total = float(df["Inversión Total (€)"].sum()) if "Inversión Total (€)" in df.columns else 0.0
     val_actual = float(df["Valor Actual (€)"].sum()) if "Valor Actual (€)" in df.columns else 0.0
-    
+
     pnl_col = next((c for c in df.columns if "P&L" in c.upper() or "PNL" in c.upper()), None)
     if pnl_col and "P&L No Realizado (€)" in df.columns:
         pnl_eur = float(df["P&L No Realizado (€)"].sum())
@@ -130,7 +152,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # BLOQUE 1: DESGLOSE DE POSICIONES POR ACTIVO Y CUSTODIA
+    # BLOQUE 1: DESGLOSE DE POSICIONES Y CUSTODIA DIRECTA DE RESUMEN
     # ==============================================================================
     st.subheader("💼 Desglose de Posiciones por Activo")
 
@@ -141,10 +163,10 @@ if not df.empty:
         p_act = float(row.get("Precio Actual (€)", 0.0))
         inv_indiv = float(row.get("Inversión Total (€)", 0.0))
         val_indiv = float(row.get("Valor Actual (€)", 0.0))
-        
+
         pnl_val = row.get("P&L No Realizado (€)", val_indiv - inv_indiv)
         pnl_pct_val = row.get("P&L No Realizado (%)", (pnl_val / inv_indiv * 100) if inv_indiv > 0 else 0.0)
-        
+
         pnl_indiv_eur = float(pnl_val)
         pnl_indiv_pct = float(pnl_pct_val)
         color_pnl = "#10b981" if pnl_indiv_eur >= 0 else "#ef4444"
@@ -168,35 +190,28 @@ if not df.empty:
             </div>
             """, unsafe_allow_html=True)
 
-            # Desglose de custodia
-            if not df_hist.empty:
-                df_tok = df_hist[(df_hist['Token_Clean'] == token) & (df_hist['Holding_Clean'] != '')]
-                
-                if not df_tok.empty:
-                    st.markdown("<div style='margin-top: 10px; font-weight: bold; font-size: 13px;'>🔒 Custodia Actual (Wallet / Holding):</div>", unsafe_allow_html=True)
-                    
-                    cust_summary = df_tok.groupby('Holding_Clean').agg({'Cantidad_Clean': 'sum'}).reset_index()
-                    tot_cust_cant = cust_summary['Cantidad_Clean'].sum()
+            # Desglose de custodia desde la tabla de Resumen
+            tok_custody = custody_data.get(token, {})
+            if tok_custody:
+                st.markdown("<div style='margin-top: 10px; font-weight: bold; font-size: 13px;'>🔒 Custodia Actual (Wallet / Holding):</div>", unsafe_allow_html=True)
 
-                    for _, c_row in cust_summary.iterrows():
-                        w_name = c_row['Holding_Clean']
-                        w_cant = c_row['Cantidad_Clean']
-                        if w_cant > 0:
-                            w_pct = (w_cant / tot_cust_cant * 100) if tot_cust_cant > 0 else 0.0
-                            w_val = w_cant * p_act
-                            
-                            st.markdown(f"""
-                            <div style="display: flex; justify-content: space-between; background-color: #1a202c; padding: 6px 10px; border-radius: 6px; margin-top: 4px; font-size: 12px;">
-                                <div><b>{w_name}</b></div>
-                                <div>{w_cant:,.2f} {token} ({w_val:,.2f} €)</div>
-                                <div style="color: #3b82f6;"><b>{w_pct:.1f}%</b></div>
-                            </div>
-                            """, unsafe_allow_html=True)
+                for w_name, w_cant in tok_custody.items():
+                    if w_cant > 0:
+                        w_val = w_cant * p_act
+                        w_pct = (w_cant / cant * 100) if cant > 0 else 0.0
+
+                        st.markdown(f"""
+                        <div style="display: flex; justify-content: space-between; background-color: #1a202c; padding: 6px 10px; border-radius: 6px; margin-top: 4px; font-size: 12px;">
+                            <div><b>{w_name}</b></div>
+                            <div>{w_cant:,.2f} {token} ({w_val:,.2f} €)</div>
+                            <div style="color: #3b82f6;"><b>{w_pct:.1f}%</b></div>
+                        </div>
+                        """, unsafe_allow_html=True)
 
     st.markdown("---")
 
     # ==============================================================================
-    # BLOQUE 2: GRÁFICOS (DISTRIBUCIÓN DE CAPITAL + EVOLUCIÓN HISTÓRICA SEPARADA)
+    # BLOQUE 2: GRÁFICOS (DISTRIBUCIÓN DE CAPITAL + HISTÓRICO SEPARADO)
     # ==============================================================================
     g1, g2 = st.columns(2)
     with g1:
