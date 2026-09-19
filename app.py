@@ -5,6 +5,16 @@ import plotly.graph_objects as go
 
 # Configuración de página nativa de Streamlit
 st.set_page_config(page_title="Control de Portfolio Cripto", page_icon="⚡", layout="wide")
+# Ocultar elementos de Streamlit para que parezca una app móvil nativa
+hide_streamlit_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    .stApp { margin-top: -20px; }
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # URLs CSV de Google Sheets
 SHEET_RESUMEN_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=1415212158&single=true&output=csv"
