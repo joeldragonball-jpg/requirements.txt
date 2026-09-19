@@ -16,7 +16,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # PEGA AQUÍ TU ENLACE CSV PUBLICADO DE GOOGLE SHEETS
-SHEET_CSV_URL = "PEGA_AQUÍ_TU_ENLACE_CSV"
+SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=1415212158&single=true&output=csv"
 
 @st.cache_data(ttl=10)
 def load_data():
