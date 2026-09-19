@@ -34,16 +34,14 @@ def load_resumen_data():
 @st.cache_data(ttl=30)
 def load_history_data():
     dataframes = []
-    
     for url, token_name in [(SHEET_XRP_URL, "XRP"), (SHEET_XLM_URL, "XLM")]:
         try:
-            # Carga el CSV detectando automáticamente la fila del encabezado
-            df_temp = pd.read_csv(url, skiprows=lambda x: x < 0, on_bad_lines='skip')
-            df_temp.columns = df_temp.columns.astype(str).str.strip().str.upper()
+            df_temp = pd.read_csv(url)
+            df_temp.columns = [str(c).strip().upper() for c in df_temp.columns]
             
-            # Buscar columnas por coincidencia parcial de texto
+            # Identificar columnas automáticamente
             fecha_col = next((c for c in df_temp.columns if "FECHA" in c), None)
-            inv_col = next((c for c in df_temp.columns if "TOTAL" in c or "INVERTIDO" in c or "EUR" in c), None)
+            inv_col = next((c for c in df_temp.columns if "INVERTIDO" in c or "TOTAL" in c or "EUR" in c), None)
             wallet_col = next((c for c in df_temp.columns if "HOLDING" in c or "WALLET" in c), None)
             
             if fecha_col and inv_col:
@@ -53,7 +51,7 @@ def load_history_data():
                 montos_str = montos_str.apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
                 montos = pd.to_numeric(montos_str, errors='coerce').fillna(0.0)
                 
-                wallets = df_temp[wallet_col].astype(str).str.strip().str.upper() if wallet_col else "DESCONOCIDO"
+                wallets = df_temp[wallet_col].astype(str).str.strip().str.upper() if wallet_col else "OTRO"
                 
                 df_clean = pd.DataFrame({
                     'Fecha': fechas,
@@ -86,7 +84,7 @@ if st.sidebar.button("🔄 Actualizar Datos"):
 st.markdown("---")
 
 if not df.empty:
-    # 1. MÉTRICAS GENERALES (KPIs)
+    # 1. MÉTRICAS GENERALES (KPIs) — NO SE TOCA
     inv_total = float(df["Inversión Total (€)"].sum()) if "Inversión Total (€)" in df.columns else 0.0
     val_actual = float(df["Valor Actual (€)"].sum()) if "Valor Actual (€)" in df.columns else 0.0
     
@@ -103,7 +101,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # PASO 1: DESGLOSE COMPACTO MÓVIL (BLINDADO Y CERRADO)
+    # PASO 1: DESGLOSE COMPACTO MÓVIL (BLINDADO Y CERRADO) — NO SE TOCA
     # ==============================================================================
     st.subheader("💼 Desglose de Posiciones por Activo")
 
@@ -144,21 +142,32 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # PASO 2: GRÁFICOS (DISTRIBUCIÓN DE CUSTODIA + KOINLY HISTÓRICO)
+    # PASO 2: GRÁFICOS (DONUT ANIDADO + HISTÓRICO KOINLY)
     # ==============================================================================
     g1, g2 = st.columns(2)
     with g1:
-        st.subheader("📊 Custodia de Capital (Ledger vs Exchanges)")
+        st.subheader("📊 Distribución y Custodia de Capital")
+        
+        # Donut de 2 Niveles: Anillo Interior (Token) + Anillo Exterior (Wallet / Exchange)
         if not df_hist.empty and "Wallet" in df_hist.columns:
-            # Agrupar capital invertido por ubicación (Ledger vs Kraken vs Otros)
-            df_wallet = df_hist.groupby("Wallet")["Invertido"].sum().reset_index()
-            fig_pie = px.pie(df_wallet, values="Invertido", names="Wallet", hole=0.55,
-                             color_discrete_sequence=["#10b981", "#3b82f6", "#f59e0b", "#6b7280"])
-            fig_pie.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font=dict(color="#ffffff"))
-            fig_pie.update_traces(textposition='inside', textinfo='percent+label')
+            df_sun = df_hist.groupby(["Token", "Wallet"])["Invertido"].sum().reset_index()
+            fig_pie = px.sunburst(
+                df_sun,
+                path=['Token', 'Wallet'],
+                values='Invertido',
+                color='Token',
+                color_discrete_map={'XRP': '#3b82f6', 'XLM': '#10b981'}
+            )
+            fig_pie.update_layout(
+                paper_bgcolor='rgba(0,0,0,0)',
+                plot_bgcolor='rgba(0,0,0,0)',
+                font=dict(color="#ffffff"),
+                margin=dict(l=10, r=10, t=10, b=10)
+            )
             st.plotly_chart(fig_pie, use_container_width=True)
         else:
             fig_pie = px.pie(df, values="Valor Actual (€)", names="Token", hole=0.55)
+            fig_pie.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font=dict(color="#ffffff"))
             st.plotly_chart(fig_pie, use_container_width=True)
 
     with g2:
@@ -189,11 +198,11 @@ if not df.empty:
             )
             st.plotly_chart(fig_koinly, use_container_width=True)
         else:
-            st.info("Cargando gráfico histórico...")
+            st.warning("Verifica que las pestañas contengan las columnas de FECHA y TOTAL INVERTIDO (€).")
 
     st.markdown("---")
 
-    # 4. CALCULADORA DE ADQUISICIÓN DE TOKENS
+    # 4. CALCULADORA DE ADQUISICIÓN DE TOKENS — NO SE TOCA
     st.subheader("🧮 Calculadora de Adquisición de Tokens")
     calc_c1, calc_c2 = st.columns([1, 2])
     with calc_c1:
