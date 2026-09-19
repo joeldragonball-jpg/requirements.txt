@@ -6,15 +6,17 @@ import plotly.graph_objects as go
 # Configuración de página nativa de Streamlit
 st.set_page_config(page_title="Control de Portfolio Cripto", page_icon="⚡", layout="wide")
 
-SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=1415212158&single=true&output=csv"
+# URLs CSV de Google Sheets
+SHEET_RESUMEN_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=1415212158&single=true&output=csv"
+SHEET_XRP_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=2015592342&single=true&output=csv"
+SHEET_XLM_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=108352087&single=true&output=csv"
 
 @st.cache_data(ttl=10)
-def load_data():
+def load_resumen_data():
     try:
-        df = pd.read_csv(SHEET_CSV_URL)
+        df = pd.read_csv(SHEET_RESUMEN_URL)
         df.columns = df.columns.str.strip()
         
-        # Limpieza simple de números
         cols_num = ["Cantidad Total TK", "Inversión Total (€)", "Precio Medio (€)", "Precio Actual (€)", "Valor Actual (€)", "P&L No Realizado (€)", "P&L No Realizado (%)"]
         for col in cols_num:
             if col in df.columns:
@@ -26,10 +28,38 @@ def load_data():
             df = df[df["Token"].astype(str).str.upper() != "TOTAL"]
             
         return df
-    except Exception as e:
+    except Exception:
         return pd.DataFrame()
 
-df = load_data()
+@st.cache_data(ttl=30)
+def load_history_data():
+    try:
+        df_xrp = pd.read_csv(SHEET_XRP_URL)
+        df_xlm = pd.read_csv(SHEET_XLM_URL)
+        
+        df_xrp.columns = df_xrp.columns.str.strip()
+        df_xlm.columns = df_xlm.columns.str.strip()
+
+        # Unificar dataframes de compras
+        df_hist = pd.concat([df_xrp, df_xlm], ignore_index=True)
+        
+        # Limpieza de fechas y números
+        if 'Fecha' in df_hist.columns:
+            df_hist['Fecha'] = pd.to_datetime(df_hist['Fecha'], errors='coerce', dayfirst=True)
+        
+        for col in ["Total Invertido (€)", "Cantidad", "Precio Unitario (€)"]:
+            if col in df_hist.columns:
+                df_hist[col] = df_hist[col].astype(str).str.replace('€', '', regex=False).str.replace(' ', '', regex=False)
+                df_hist[col] = df_hist[col].apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
+                df_hist[col] = pd.to_numeric(df_hist[col], errors='coerce').fillna(0.0)
+
+        df_hist = df_hist.dropna(subset=['Fecha']).sort_values('Fecha')
+        return df_hist
+    except Exception:
+        return pd.DataFrame()
+
+df = load_resumen_data()
+df_hist = load_history_data()
 
 st.title("⚡ Control de Portfolio Cripto")
 st.caption("Sincronizado en tiempo real con Google Sheets")
@@ -58,7 +88,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # PASO 1: DESGLOSE COMPACTO Y RESPONSIVE (OPTIMIZADO PARA MÓVIL)
+    # PASO 1: DESGLOSE COMPACTO MÓVIL (BLINDADO Y CERRADO)
     # ==============================================================================
     st.subheader("💼 Desglose de Posiciones por Activo")
 
@@ -98,7 +128,9 @@ if not df.empty:
 
     st.markdown("---")
 
-    # 3. GRÁFICOS
+    # ==============================================================================
+    # PASO 2: GRÁFICO HISTÓRICO ESTILO KOINLY (MÓVIL OPTIMIZADO)
+    # ==============================================================================
     g1, g2 = st.columns(2)
     with g1:
         st.subheader("📊 Distribución del Capital")
@@ -106,12 +138,38 @@ if not df.empty:
         st.plotly_chart(fig_pie, use_container_width=True)
 
     with g2:
-        st.subheader("📈 Rendimiento por Token")
-        fig_portfolio = go.Figure()
-        fig_portfolio.add_trace(go.Bar(x=df['Token'], y=df['Inversión Total (€)'], name='Invertido (€)'))
-        fig_portfolio.add_trace(go.Bar(x=df['Token'], y=df['Valor Actual (€)'], name='Valor Actual (€)'))
-        fig_portfolio.update_layout(barmode='group')
-        st.plotly_chart(fig_portfolio, use_container_width=True)
+        st.subheader("📈 Evolución Histórica (Estilo Koinly)")
+        
+        if not df_hist.empty and "Total Invertido (€)" in df_hist.columns:
+            # Agrupar compras por fecha y calcular inversión acumulada
+            df_grouped = df_hist.groupby('Fecha')['Total Invertido (€)'].sum().reset_index()
+            df_grouped['Inversión Acumulada (€)'] = df_grouped['Total Invertido (€)'].cumsum()
+
+            fig_koinly = go.Figure()
+
+            # Curva de Inversión Acumulada estilo Koinly (Sombreada en azul/verde)
+            fig_koinly.add_trace(go.Scatter(
+                x=df_grouped['Fecha'],
+                y=df_grouped['Inversión Acumulada (€)'],
+                mode='lines',
+                name='Coste Base (€)',
+                line=dict(color='#2563eb', width=2),
+                fill='tozeroy',
+                fillcolor='rgba(37, 99, 235, 0.15)'
+            ))
+
+            fig_koinly.update_layout(
+                paper_bgcolor='rgba(0,0,0,0)',
+                plot_bgcolor='rgba(0,0,0,0)',
+                font=dict(color="#ffffff"),
+                margin=dict(l=10, r=10, t=10, b=10),
+                xaxis=dict(showgrid=False, title=None),
+                yaxis=dict(showgrid=True, gridcolor='#262c3a', title="Euros (€)"),
+                hovermode="x unified"
+            )
+            st.plotly_chart(fig_koinly, use_container_width=True)
+        else:
+            st.info("Cargando historial de compras...")
 
     st.markdown("---")
 
