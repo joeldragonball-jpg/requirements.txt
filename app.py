@@ -31,65 +31,41 @@ def load_resumen_data():
     except Exception:
         return pd.DataFrame()
 
-def process_transaction_sheet(url, token_default):
+def load_transactions_direct(url, token_name):
     try:
-        raw_df = pd.read_csv(url, header=None)
-        
-        # Encontrar la fila donde empieza la cabecera buscando 'FECHA'
-        header_row = None
-        for idx, row in raw_df.iterrows():
-            row_str = row.astype(str).str.upper().tolist()
-            if any("FECHA" in cell for cell in row_str):
-                header_row = idx
-                break
-                
-        if header_row is None:
-            return pd.DataFrame()
-
-        # Cargar el dataframe desde la fila de cabecera correcta
-        df = pd.read_csv(url, skiprows=header_row)
+        df = pd.read_csv(url, on_bad_lines='skip')
         df.columns = [str(c).strip().upper() for c in df.columns]
-
-        # Mapeo flexible de columnas
+        
         col_fecha = next((c for c in df.columns if "FECHA" in c), None)
         col_monto = next((c for c in df.columns if "TOTAL INVERTIDO" in c or "INVERTIDO" in c), None)
         col_holding = next((c for c in df.columns if "HOLDING" in c or "WALLET" in c), None)
-        col_tipo = next((c for c in df.columns if "TIPO" in c), None)
-
+        
         if not col_fecha or not col_monto:
             return pd.DataFrame()
-
-        # Filtrar compras (si existe la columna tipo)
-        if col_tipo:
-            df = df[df[col_tipo].astype(str).str.upper().str.contains("COMPRA", na=True)]
-
-        # Limpieza de fechas
+            
         df['Fecha_Clean'] = pd.to_datetime(df[col_fecha], errors='coerce', dayfirst=True)
         
-        # Limpieza de montos numéricos
-        montos_str = df[col_monto].astype(str).str.replace('€', '', regex=False).str.replace(' ', '', regex=False)
-        montos_str = montos_str.apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
-        df['Invertido_Clean'] = pd.to_numeric(montos_str, errors='coerce').fillna(0.0)
-
-        # Captura de Custodia (Ledger / Kraken)
+        val_str = df[col_monto].astype(str).str.replace('€', '', regex=False).str.replace(' ', '', regex=False)
+        val_str = val_str.apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
+        df['Invertido_Clean'] = pd.to_numeric(val_str, errors='coerce').fillna(0.0)
+        
         if col_holding:
             df['Holding_Clean'] = df[col_holding].astype(str).str.strip().str.upper()
-            df['Holding_Clean'] = df['Holding_Clean'].replace({'NAN': 'DESCONOCIDO', '': 'DESCONOCIDO'})
+            df['Holding_Clean'] = df['Holding_Clean'].replace({'NAN': 'OTRO', '': 'OTRO'})
         else:
-            df['Holding_Clean'] = 'DESCONOCIDO'
-
-        df['Token_Clean'] = token_default
-
+            df['Holding_Clean'] = 'OTRO'
+            
+        df['Token_Clean'] = token_name
+        
         df_res = df[['Fecha_Clean', 'Invertido_Clean', 'Holding_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
-        df_res = df_res[df_res['Invertido_Clean'] > 0]
-        return df_res
+        return df_res[df_res['Invertido_Clean'] > 0]
     except Exception:
         return pd.DataFrame()
 
 @st.cache_data(ttl=30)
 def load_history_data():
-    df_xrp = process_transaction_sheet(SHEET_XRP_URL, "XRP")
-    df_xlm = process_transaction_sheet(SHEET_XLM_URL, "XLM")
+    df_xrp = load_transactions_direct(SHEET_XRP_URL, "XRP")
+    df_xlm = load_transactions_direct(SHEET_XLM_URL, "XLM")
     
     frames = [f for f in [df_xrp, df_xlm] if not f.empty]
     if frames:
@@ -110,7 +86,7 @@ if st.sidebar.button("🔄 Actualizar Datos"):
 st.markdown("---")
 
 if not df.empty:
-    # 1. MÉTRICAS GENERALES (KPIs) — NO SE TOCA
+    # 1. MÉTRICAS GENERALES (KPIs) — BLOQUE CERRADO
     inv_total = float(df["Inversión Total (€)"].sum()) if "Inversión Total (€)" in df.columns else 0.0
     val_actual = float(df["Valor Actual (€)"].sum()) if "Valor Actual (€)" in df.columns else 0.0
     
@@ -127,7 +103,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # PASO 1: DESGLOSE COMPACTO MÓVIL — NO SE TOCA
+    # PASO 1: DESGLOSE COMPACTO MÓVIL — BLOQUE CERRADO
     # ==============================================================================
     st.subheader("💼 Desglose de Posiciones por Activo")
 
@@ -168,28 +144,28 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # PASO 2: GRÁFICOS CORREGIDOS (DONUT ANIDADO + KOINLY)
+    # PASO 2: GRÁFICOS (DONUT DE CUSTODIA LEDGER/KRAKEN + HISTÓRICO)
     # ==============================================================================
     g1, g2 = st.columns(2)
     with g1:
-        st.subheader("📊 Distribución de Capital y Custodia")
-        
+        st.subheader("📊 Distribución por Custodia (Wallets/Exchanges)")
         if not df_hist.empty:
-            df_sun = df_hist.groupby(["Token_Clean", "Holding_Clean"])["Invertido_Clean"].sum().reset_index()
-            fig_pie = px.sunburst(
-                df_sun,
-                path=['Token_Clean', 'Holding_Clean'],
-                values='Invertido_Clean',
-                color='Token_Clean',
-                color_discrete_map={'XRP': '#2563eb', 'XLM': '#10b981'}
+            df_wallets = df_hist.groupby("Holding_Clean")["Invertido_Clean"].sum().reset_index()
+            fig_wallets = px.pie(
+                df_wallets, 
+                values="Invertido_Clean", 
+                names="Holding_Clean", 
+                hole=0.55,
+                color_discrete_sequence=["#10b981", "#3b82f6", "#f59e0b", "#8b5cf6"]
             )
-            fig_pie.update_layout(
+            fig_wallets.update_layout(
                 paper_bgcolor='rgba(0,0,0,0)',
                 plot_bgcolor='rgba(0,0,0,0)',
                 font=dict(color="#ffffff"),
                 margin=dict(l=10, r=10, t=10, b=10)
             )
-            st.plotly_chart(fig_pie, use_container_width=True)
+            fig_wallets.update_traces(textposition='inside', textinfo='percent+label')
+            st.plotly_chart(fig_wallets, use_container_width=True)
         else:
             fig_pie = px.pie(df, values="Valor Actual (€)", names="Token", hole=0.55)
             fig_pie.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font=dict(color="#ffffff"))
@@ -223,11 +199,11 @@ if not df.empty:
             )
             st.plotly_chart(fig_koinly, use_container_width=True)
         else:
-            st.warning("Revisa la conexión con las pestañas de transacciones.")
+            st.info("Cargando datos de evolución temporal...")
 
     st.markdown("---")
 
-    # 4. CALCULADORA DE ADQUISICIÓN DE TOKENS — NO SE TOCA
+    # 4. CALCULADORA DE ADQUISICIÓN DE TOKENS — BLOQUE CERRADO
     st.subheader("🧮 Calculadora de Adquisición de Tokens")
     calc_c1, calc_c2 = st.columns([1, 2])
     with calc_c1:
