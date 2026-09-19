@@ -64,10 +64,9 @@ def process_transaction_sheet(url, token_name):
     df.columns = [str(c).strip().upper() for c in df.columns]
 
     c_fecha = next((c for c in df.columns if "FECHA" in c), None)
-    c_inv = next((c for c in df.columns if "INVERTIDO" in c or "TOTAL" in c), None)
+    c_tipo = next((c for c in df.columns if "TIPO" in c), None)
+    c_inv = next((c for c in df.columns if "TOTAL INVERTIDO" in c or "INVERTIDO" in c), None)
     c_cant = next((c for c in df.columns if "CANTIDAD" in c), None)
-    
-    # BUSCAMOS EXCLUSIVAMENTE LA COLUMNA WALLET/HOLDING
     c_holding = next((c for c in df.columns if "HOLDING" in c or "WALLET/HOLDING" in c), None)
 
     if not c_fecha or not c_inv:
@@ -77,16 +76,23 @@ def process_transaction_sheet(url, token_name):
     df['Invertido_Clean'] = clean_numeric_series(df[c_inv])
     df['Cantidad_Clean'] = clean_numeric_series(df[c_cant]) if c_cant else 0.0
 
-    if c_holding:
-        df['Holding_Clean'] = df[c_holding].fillna('DESCONOCIDO').astype(str).str.strip().str.upper()
-        df['Holding_Clean'] = df['Holding_Clean'].replace({'NAN': 'DESCONOCIDO', '': 'DESCONOCIDO'})
+    # Tipo de Operación (Compra vs Venta)
+    if c_tipo:
+        df['Tipo_Clean'] = df[c_tipo].fillna('COMPRA').astype(str).str.strip().str.upper()
     else:
-        df['Holding_Clean'] = 'DESCONOCIDO'
+        df['Tipo_Clean'] = 'COMPRA'
+
+    # Custodia (Wallet / Holding)
+    if c_holding:
+        df['Holding_Clean'] = df[c_holding].fillna('').astype(str).str.strip().str.upper()
+    else:
+        df['Holding_Clean'] = ''
 
     df['Token_Clean'] = token_name
     
-    df_res = df[['Fecha_Clean', 'Invertido_Clean', 'Cantidad_Clean', 'Holding_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
-    return df_res[df_res['Invertido_Clean'] > 0]
+    # Filtrar solo registros válidos con fecha
+    df_res = df[['Fecha_Clean', 'Tipo_Clean', 'Invertido_Clean', 'Cantidad_Clean', 'Holding_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
+    return df_res
 
 @st.cache_data(ttl=30)
 def load_history_data():
@@ -133,7 +139,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # BLOQUE 1: DESGLOSE CON CUSTODIA DETALLADA (EXCLUSIVAMENTE WALLET/HOLDING)
+    # BLOQUE 1: DESGLOSE CON CUSTODIA DETALLADA Y CÁLCULO PRECISO
     # ==============================================================================
     st.subheader("💼 Desglose de Posiciones por Activo")
 
@@ -171,35 +177,46 @@ if not df.empty:
             </div>
             """, unsafe_allow_html=True)
 
-            # Desglose de custodia únicamente tomando WALLET/HOLDING
+            # Cálculo exacto de custodia considerando compras y ventas
             if not df_hist.empty:
-                df_tok_custody = df_hist[df_hist['Token_Clean'] == token]
-                if not df_tok_custody.empty:
+                df_tok = df_hist[(df_hist['Token_Clean'] == token) & (df_hist['Holding_Clean'] != '')]
+                
+                if not df_tok.empty:
                     st.markdown("<div style='margin-top: 10px; font-weight: bold; font-size: 13px;'>🔒 Custodia Actual (Wallet / Holding):</div>", unsafe_allow_html=True)
-                    cust_summary = df_tok_custody.groupby('Holding_Clean').agg(
-                        {'Invertido_Clean': 'sum', 'Cantidad_Clean': 'sum'}
-                    ).reset_index()
                     
-                    total_inv_tok = cust_summary['Invertido_Clean'].sum()
-                    
-                    for _, c_row in cust_summary.iterrows():
-                        w_name = c_row['Holding_Clean']
-                        w_inv = c_row['Invertido_Clean']
-                        w_cant = c_row['Cantidad_Clean']
-                        w_pct = (w_inv / total_inv_tok * 100) if total_inv_tok > 0 else 0.0
-                        
-                        st.markdown(f"""
-                        <div style="display: flex; justify-content: space-between; background-color: #1a202c; padding: 6px 10px; border-radius: 6px; margin-top: 4px; font-size: 12px;">
-                            <div><b>{w_name}</b></div>
-                            <div>{w_cant:,.2f} {token} ({w_inv:,.2f} €)</div>
-                            <div style="color: #3b82f6;"><b>{w_pct:.1f}%</b></div>
-                        </div>
-                        """, unsafe_allow_html=True)
+                    # Agrupar compras y restar ventas por cada wallet
+                    custody_map = {}
+                    for _, t_row in df_tok.iterrows():
+                        w_name = t_row['Holding_Clean']
+                        if w_name not in custody_map:
+                            custody_map[w_name] = {'cant': 0.0, 'inv': 0.0}
+                            
+                        if "VENTA" in t_row['Tipo_Clean']:
+                            custody_map[w_name]['cant'] -= t_row['Cantidad_Clean']
+                            custody_map[w_name]['inv'] -= t_row['Invertido_Clean']
+                        else:
+                            custody_map[w_name]['cant'] += t_row['Cantidad_Clean']
+                            custody_map[w_name]['inv'] += t_row['Invertido_Clean']
+
+                    # Renderizar cada custodia activa
+                    for w_name, w_data in custody_map.items():
+                        w_cant = w_data['cant']
+                        if w_cant > 0:  # Solo mostrar si tiene balance positivo
+                            w_val = w_cant * p_act
+                            w_pct = (w_cant / cant * 100) if cant > 0 else 0.0
+                            
+                            st.markdown(f"""
+                            <div style="display: flex; justify-content: space-between; background-color: #1a202c; padding: 6px 10px; border-radius: 6px; margin-top: 4px; font-size: 12px;">
+                                <div><b>{w_name}</b></div>
+                                <div>{w_cant:,.2f} {token} ({w_val:,.2f} €)</div>
+                                <div style="color: #3b82f6;"><b>{w_pct:.1f}%</b></div>
+                            </div>
+                            """, unsafe_allow_html=True)
 
     st.markdown("---")
 
     # ==============================================================================
-    # BLOQUE 2: GRÁFICOS (DISTRIBUCIÓN DEL CAPITAL + HISTÓRICO SEPARADO POR TOKEN)
+    # BLOQUE 2: GRÁFICOS (DISTRIBUCIÓN DEL CAPITAL + EVOLUCIÓN HISTÓRICA)
     # ==============================================================================
     g1, g2 = st.columns(2)
     with g1:
@@ -221,16 +238,18 @@ if not df.empty:
 
             colors = {'XRP': '#2563eb', 'XLM': '#10b981'}
             for token_name in df_hist['Token_Clean'].unique():
-                df_t = df_hist[df_hist['Token_Clean'] == token_name].groupby('Fecha_Clean')['Invertido_Clean'].sum().reset_index()
-                df_t['Coste Acumulado (€)'] = df_t['Invertido_Clean'].cumsum()
+                df_t = df_hist[(df_hist['Token_Clean'] == token_name) & (~df_hist['Tipo_Clean'].str.contains("VENTA"))]
+                if not df_t.empty:
+                    df_grouped = df_t.groupby('Fecha_Clean')['Invertido_Clean'].sum().reset_index()
+                    df_grouped['Coste Acumulado (€)'] = df_grouped['Invertido_Clean'].cumsum()
 
-                fig_koinly.add_trace(go.Scatter(
-                    x=df_t['Fecha_Clean'],
-                    y=df_t['Coste Acumulado (€)'],
-                    mode='lines+markers',
-                    name=f'Coste {token_name} (€)',
-                    line=dict(color=colors.get(token_name, '#f59e0b'), width=3)
-                ))
+                    fig_koinly.add_trace(go.Scatter(
+                        x=df_grouped['Fecha_Clean'],
+                        y=df_grouped['Coste Acumulado (€)'],
+                        mode='lines+markers',
+                        name=f'Coste {token_name} (€)',
+                        line=dict(color=colors.get(token_name, '#f59e0b'), width=3)
+                    ))
 
             fig_koinly.update_layout(
                 paper_bgcolor='rgba(0,0,0,0)',
