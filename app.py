@@ -3,142 +3,161 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-# Configuración de la página
-st.set_page_config(
-    page_title="Portfolio Cripto Dashboard",
-    page_icon="📈",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+# Configuración de página
+st.set_page_config(page_title="Control de Portfolio Cripto", page_icon="⚡", layout="wide")
 
-# Estilo visual oscuro profesional
+# Estilos CSS avanzados para un aspecto estilo Kraken Pro (Fondo Oscuro Premium)
 st.markdown("""
     <style>
-    .main { background-color: #0e1117; }
-    .stMetric { background-color: #1f2937; padding: 15px; border-radius: 10px; border: 1px solid #374151; }
+    .stApp { background-color: #0b0e14; color: #e5e7eb; }
+    .stMetric { background-color: #151921; padding: 16px; border-radius: 12px; border: 1px solid #262c3a; }
+    div[data-testid="stExpander"] { background-color: #151921; border-radius: 12px; border: 1px solid #262c3a; margin-bottom: 12px; }
     </style>
 """, unsafe_allow_html=True)
 
-# 1. Carga y preparación de datos desde tu Google Sheets (o CSV exportado)
-@st.cache_data
+# PEGA AQUÍ TU ENLACE CSV PUBLICADO DE GOOGLE SHEETS
+SHEET_CSV_URL = "PEGA_AQUÍ_TU_ENLACE_CSV"
+
+@st.cache_data(ttl=10)
 def load_data():
-    # Estructura basada en tu pestaña 'Resumen Portfolio'
-    data = {
-        "Token": ["XRP", "XLM"],
-        "Cantidad Total TK": [2736.7027, 4276.9220],
-        "Inversión Total (€)": [3255.15, 670.77],
-        "Precio Medio (€)": [1.189, 0.157],
-        "Precio Actual (€)": [1.16076, 0.163447],
-        "Valor Actual (€)": [3176.66, 699.05],
-        "PnL No Realizado (€)": [-78.48, 28.28],
-        "PnL No Realizado (%)": [-2.41, 4.22]
-    }
-    df = pd.DataFrame(data)
-    return df
+    try:
+        df = pd.read_csv(SHEET_CSV_URL)
+        cols_num = ["Cantidad Total TK", "Inversión Total (€)", "Precio Medio (€)", "Precio Actual (€)", "Valor Actual (€)", "PnL No Realizado (€)", "PnL No Realizado (%)"]
+        for col in cols_num:
+            if col in df.columns and df[col].dtype == object:
+                df[col] = df[col].astype(str).str.replace('€', '').str.replace('.', '').str.replace(',', '.').str.strip()
+                df[col] = pd.to_numeric(df[col], errors='coerce')
+        if "Token" in df.columns:
+            df = df[df["Token"].astype(str).str.upper() != "TOTAL"]
+        return df
+    except Exception as e:
+        return pd.DataFrame()
 
 df = load_data()
 
-# Header
 st.title("⚡ Control de Portfolio Cripto")
-st.caption("Panel de control en tiempo real y proyecciones de rendimiento")
-st.markdown("---")
+st.caption("Sincronizado en tiempo real con Google Sheets")
 
-# 2. Métricas Clave (KPIs)
-inv_total = df["Inversión Total (€)"].sum()
-val_actual = df["Valor Actual (€)"].sum()
-pnl_eur = df["PnL No Realizado (€)"].sum()
-pnl_pct = (pnl_eur / inv_total) * 100 if inv_total > 0 else 0.0
-
-col1, col2, col3, col4 = st.columns(4)
-with col1:
-    st.metric("Inversión Total", f"{inv_total:,.2f} €")
-with col2:
-    st.metric("Valor Actual Portfolio", f"{val_actual:,.2f} €")
-with col3:
-    st.metric(
-        "PnL No Realizado (€)", 
-        f"{pnl_eur:,.2f} €", 
-        delta=f"{pnl_eur:,.2f} €", 
-        delta_color="normal"
-    )
-with col4:
-    st.metric(
-        "Rendimiento Global (%)", 
-        f"{pnl_pct:.2f} %", 
-        delta=f"{pnl_pct:.2f} %", 
-        delta_color="normal"
-    )
+if st.sidebar.button("🔄 Actualizar datos"):
+    st.cache_data.clear()
+    st.rerun()
 
 st.markdown("---")
 
-# 3. Gráficos Visuales
-col_left, col_right = st.columns(2)
+if not df.empty:
+    # 1. MÉTRICAS GENERALES
+    inv_total = df["Inversión Total (€)"].sum() if "Inversión Total (€)" in df.columns else 0.0
+    val_actual = df["Valor Actual (€)"].sum() if "Valor Actual (€)" in df.columns else 0.0
+    pnl_eur = df["PnL No Realizado (€)"].sum() if "PnL No Realizado (€)" in df.columns else (val_actual - inv_total)
+    pnl_pct = (pnl_eur / inv_total) * 100 if inv_total > 0 else 0.0
 
-with col_left:
-    st.subheader("📊 Distribución del Capital (Valor Actual)")
-    fig_donut = px.pie(
-        df, 
-        values="Valor Actual (€)", 
-        names="Token", 
-        hole=0.5,
-        color_discrete_sequence=["#2563eb", "#059669"],
-        template="plotly_dark"
-    )
-    fig_donut.update_traces(textposition='inside', textinfo='percent+label')
-    st.plotly_chart(fig_donut, use_container_width=True)
+    c1, c2, c3, c4 = st.columns(4)
+    with c1: st.metric("Inversión Total", f"{inv_total:,.2f} €")
+    with c2: st.metric("Valor Actual", f"{val_actual:,.2f} €")
+    with c3: st.metric("PnL No Realizado", f"{pnl_eur:,.2f} €", delta=f"{pnl_eur:,.2f} €")
+    with c4: st.metric("Rendimiento Total", f"{pnl_pct:.2f} %", delta=f"{pnl_pct:.2f} %")
 
-with col_right:
-    st.subheader("⚖️ Comparativa: Invertido vs Valor Actual")
-    fig_bar = go.Figure(data=[
-        go.Bar(name='Invertido (€)', x=df['Token'], y=df['Inversión Total (€)'], marker_color='#6b7280'),
-        go.Bar(name='Valor Actual (€)', x=df['Token'], y=df['Valor Actual (€)'], marker_color='#3b82f6')
-    ])
-    fig_bar.update_layout(barmode='group', template="plotly_dark")
-    st.plotly_chart(fig_bar, use_container_width=True)
+    st.markdown("---")
 
-# 4. Tabla Detallada
-st.subheader("📋 Resumen por Asset")
-st.dataframe(
-    df.style.format({
-        "Cantidad Total TK": "{:,.4f}",
-        "Inversión Total (€)": "{:,.2f} €",
-        "Precio Medio (€)": "{:,.4f} €",
-        "Precio Actual (€)": "{:,.4f} €",
-        "Valor Actual (€)": "{:,.2f} €",
-        "PnL No Realizado (€)": "{:,.2f} €",
-        "PnL No Realizado (%)": "{:.2f} %"
-    }),
-    use_container_width=True
-)
+    # 2. SECCIÓN KRAKEN PRO: DESGLOSE POR ACTIVO INTERACTIVO
+    st.subheader("💼 Vistas de Activo (Estilo Kraken Pro)")
+    st.caption("Haz clic en un token para ver el desglose detallado de balance, coste base y PnL:")
 
-st.markdown("---")
+    for index, row in df.iterrows():
+        token = row.get("Token", "N/A")
+        cant = row.get("Cantidad Total TK", 0.0)
+        p_medio = row.get("Precio Medio (€)", 0.0)
+        p_act = row.get("Precio Actual (€)", 0.0)
+        v_act = row.get("Valor Actual (€)", 0.0)
+        inv = row.get("Inversión Total (€)", 0.0)
+        pnl = row.get("PnL No Realizado (€)", 0.0)
+        pnl_p = row.get("PnL No Realizado (%)", 0.0)
 
-# 5. Simulador / Proyecciones Futuras
-st.subheader("🔮 Simulador de Rendimiento y Escenarios")
-st.write("Ajusta el porcentaje de revalorización estimado para ver cómo se proyecta tu portfolio:")
+        with st.expander(f"📌 **{token}** — Balance: {cant:,.2f} {token} | Valor: {v_act:,.2f} €", expanded=False):
+            m1, m2, m3, m4 = st.columns(4)
+            with m1:
+                st.write(f"**Balance Disponible:** {cant:,.4f} {token}")
+                st.write(f"**Valor Estimado:** {v_act:,.2f} €")
+            with m2:
+                st.write(f"**Precio Medio:** {p_medio:,.4f} €")
+                st.write(f"**Precio Actual:** {p_act:,.4f} €")
+            with m3:
+                st.write(f"**Coste Base:** {inv:,.2f} €")
+                st.write(f"**PnL Realizado:** 0.00 €")
+            with m4:
+                color_pnl = "🟢" if pnl >= 0 else "🔴"
+                st.write(f"**PnL No Realizado:** {color_pnl} {pnl:,.2f} €")
+                st.write(f"**% PnL Sin Realizar:** {pnl_p:.2f} %")
 
-sim_col1, sim_col2 = st.columns([1, 2])
+    st.markdown("---")
 
-with sim_col1:
-    reval_pct = st.slider("Crecimiento/Revalorización esperada (%)", min_value=-50, max_value=500, value=25, step=5)
-    valor_proyectado = val_actual * (1 + reval_pct / 100.0)
-    beneficio_proyectado = valor_proyectado - inv_total
+    # 3. GRÁFICOS VISUALES MEJORADOS (FONDO OSCURO INTEGRADO)
+    g1, g2 = st.columns(2)
 
-    st.metric("Valor Proyectado", f"{valor_proyectado:,.2f} €", delta=f"{reval_pct}% estimado")
-    st.metric("Beneficio Total Estimado", f"{beneficio_proyectado:,.2f} €")
+    with g1:
+        st.subheader("📊 Distribución del Portfolio")
+        fig_pie = px.pie(
+            df, values="Valor Actual (€)", names="Token", hole=0.6,
+            color_discrete_sequence=["#3b82f6", "#10b981"]
+        )
+        fig_pie.update_layout(
+            paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
+            font=dict(color="#ffffff", size=14), showlegend=True
+        )
+        fig_pie.update_traces(textposition='inside', textinfo='percent+label')
+        st.plotly_chart(fig_pie, use_container_width=True)
 
-with sim_col2:
-    # Gráfico de proyección
-    df_sim = df.copy()
-    df_sim["Valor Proyectado (€)"] = df_sim["Valor Actual (€)"] * (1 + reval_pct / 100.0)
+    with g2:
+        st.subheader("⚖️ Invertido vs Valor Actual")
+        fig_bar = go.Figure(data=[
+            go.Bar(name='Invertido (€)', x=df['Token'], y=df['Inversión Total (€)'], marker_color='#4b5563'),
+            go.Bar(name='Valor Actual (€)', x=df['Token'], y=df['Valor Actual (€)'], marker_color='#3b82f6')
+        ])
+        fig_bar.update_layout(
+            barmode='group', paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
+            font=dict(color="#ffffff"), yaxis=dict(gridcolor='#262c3a')
+        )
+        st.plotly_chart(fig_bar, use_container_width=True)
+
+    st.markdown("---")
+
+    # 4. CALCULADORA DE COMPRA RÁPIDA (XRP / XLM)
+    st.subheader("🧮 Calculadora de Adquisición de Tokens")
+    st.write("Calcula cuántos tokens recibirás al hacer una nueva inversión según el precio actual:")
+
+    calc_col1, calc_col2 = st.columns([1, 2])
+
+    with calc_col1:
+        token_sel = st.selectbox("Selecciona el token:", df["Token"].tolist())
+        euros_inv = st.number_input("Monto a invertir (€):", min_value=1.0, value=50.0, step=10.0)
+
+        # Obtener precio actual del token seleccionado
+        row_token = df[df["Token"] == token_sel].iloc[0]
+        precio_ref = row_token["Precio Actual (€)"] if "Precio Actual (€)" in df.columns else 1.0
+
+        tokens_adquiridos = euros_inv / precio_ref if precio_ref > 0 else 0.0
+
+    with calc_col2:
+        st.info(f"💡 Al precio actual de **{precio_ref:,.4f} €** por **{token_sel}**:")
+        res_col1, res_col2 = st.columns(2)
+        with res_col1:
+            st.metric(f"Tokens {token_sel} a recibir", f"+{tokens_adquiridos:,.2f} {token_sel}")
+        with res_col2:
+            nuevo_balance = row_token["Cantidad Total TK"] + tokens_adquiridos
+            st.metric("Nuevo Balance Estimado", f"{nuevo_balance:,.2f} {token_sel}")
+
+    st.markdown("---")
+
+    # 5. SIMULADOR DE ESCENARIOS Y PROYECCIONES
+    st.subheader("🔮 Simulador de Proyecciones Futuras")
+    reval_pct = st.slider("Porcentaje de Revalorización Estimado (%)", min_value=-50, max_value=500, value=25, step=5)
     
-    fig_sim = px.bar(
-        df_sim, 
-        x="Token", 
-        y=["Valor Actual (€)", "Valor Proyectado (€)"],
-        barmode="group",
-        title=f"Proyección por Token con Revalorización del {reval_pct}%",
-        template="plotly_dark",
-        color_discrete_sequence=["#3b82f6", "#10b981"]
-    )
-    st.plotly_chart(fig_sim, use_container_width=True)
+    val_proyectado = val_actual * (1 + reval_pct / 100.0)
+    beneficio_est = val_proyectado - inv_total
+
+    sim1, sim2 = st.columns(2)
+    with sim1: st.metric("Valor Proyectado Total", f"{val_proyectado:,.2f} €", delta=f"{reval_pct}% estimado")
+    with sim2: st.metric("Beneficio Estimado", f"{beneficio_est:,.2f} €")
+
+else:
+    st.warning("No se pudieron cargar los datos. Revisa que el enlace CSV sea correcto.")
