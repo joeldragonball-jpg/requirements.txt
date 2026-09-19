@@ -229,24 +229,20 @@ if not df.empty:
     with g2:
         st.subheader("📈 Evolución Histórica Global (Estilo Koinly)")
         if not df_hist.empty:
-            # Crear una línea de tiempo diaria continua desde la primera transacción hasta hoy
             min_date = df_hist['Fecha_Clean'].min()
             max_date = pd.Timestamp.today()
             date_range = pd.date_range(start=min_date, end=max_date, freq='D')
             df_timeline = pd.DataFrame({'Fecha_Clean': date_range})
 
-            # Calcular acumulados por token y fusionar
             frames_processed = []
             for token_name in df_hist['Token_Clean'].unique():
                 df_t = df_hist[df_hist['Token_Clean'] == token_name].sort_values('Fecha_Clean').copy()
                 df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
                 df_t['Inv_Acum'] = df_t['Invertido_Clean'].cumsum()
                 
-                # Obtener precio actual de referencia del token
                 row_t = df[df['Token'] == token_name]
                 p_ref = float(row_t['Precio Actual (€)'].values[0]) if not row_t.empty and 'Precio Actual (€)' in df.columns else 1.0
                 
-                # Reindexar al rango diario completo manteniendo el último valor conocido (ffill)
                 df_t_daily = pd.merge_asof(df_timeline, df_t, on='Fecha_Clean', direction='backward')
                 df_t_daily['Token_Clean'] = token_name
                 df_t_daily['Q_Acum'] = df_t_daily['Q_Acum'].fillna(0)
@@ -256,12 +252,10 @@ if not df.empty:
 
             if frames_processed:
                 df_full = pd.concat(frames_processed, ignore_index=True)
-                # Agrupar globalmente por día para obtener el total de la cartera (Worth y Cost Basis)
                 df_global = df_full.groupby('Fecha_Clean')[['Valor_Mercado', 'Inv_Acum']].sum().reset_index()
 
                 fig_koinly = go.Figure()
 
-                # 1. Área superior sombreada: Valor de Mercado Total (Worth)
                 fig_koinly.add_trace(go.Scatter(
                     x=df_global['Fecha_Clean'],
                     y=df_global['Valor_Mercado'],
@@ -272,7 +266,6 @@ if not df.empty:
                     line=dict(color='#3b82f6', width=2)
                 ))
 
-                # 2. Línea discontinua inferior: Coste Total Invertido (Cost Basis)
                 fig_koinly.add_trace(go.Scatter(
                     x=df_global['Fecha_Clean'],
                     y=df_global['Inv_Acum'],
@@ -281,13 +274,14 @@ if not df.empty:
                     line=dict(color='#94a3b8', width=2, dash='dash')
                 ))
 
+                # Eje Y limpio sin texto fijo de moneda para ganar espacio en móvil
                 fig_koinly.update_layout(
                     paper_bgcolor='rgba(0,0,0,0)',
                     plot_bgcolor='rgba(0,0,0,0)',
                     font=dict(color="#ffffff"),
                     margin=dict(l=10, r=10, t=10, b=10),
                     xaxis=dict(showgrid=False, title=None),
-                    yaxis=dict(showgrid=True, gridcolor='#262c3a', title="Euros (€)"),
+                    yaxis=dict(showgrid=True, gridcolor='#262c3a', title=None),
                     hovermode="x unified",
                     legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
                 )
