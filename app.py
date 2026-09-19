@@ -1,3 +1,9 @@
+# Inyectar el Manifest para personalizar la instalación como App en el móvil
+pwa_header = """
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0e1117">
+"""
+st.markdown(pwa_header, unsafe_allow_html=True)
 import streamlit as st
 import pandas as pd
 import plotly.express as px
