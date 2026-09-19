@@ -233,6 +233,8 @@ if not df.empty:
             for token_name in df_hist['Token_Clean'].unique():
                 df_t = df_hist[df_hist['Token_Clean'] == token_name]
                 if not df_t.empty:
+                    # Ordenar cronológicamente estrictamente de más antiguo a más reciente (Año > Mes > Día)
+                    df_t = df_t.sort_values('Fecha_Clean')
                     df_grouped = df_t.groupby('Fecha_Clean')['Invertido_Clean'].sum().reset_index()
                     df_grouped['Coste Acumulado (€)'] = df_grouped['Invertido_Clean'].cumsum()
 
