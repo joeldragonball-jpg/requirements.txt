@@ -126,6 +126,8 @@ if not df.empty:
                 color_str = "🟢" if pnl_indiv_eur >= 0 else "🔴"
                 st.markdown(f"**P&L No Realizado (€):**\n\n{color_str} `{pnl_indiv_eur:,.2f} €`")
                 st.markdown(f"**P&L No Realizado (%):**\n\n`{pnl_indiv_pct:.2f} %`")
+                
+          st.markdown("---")
  
     # 3. GRÁFICOS: CIRCULAR + EVOLUCIÓN TEMPORAL DE LÍNEAS
     g1, g2 = st.columns(2)
