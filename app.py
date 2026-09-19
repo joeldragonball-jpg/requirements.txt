@@ -274,7 +274,6 @@ if not df.empty:
                     line=dict(color='#94a3b8', width=2, dash='dash')
                 ))
 
-                # Eje Y limpio sin texto fijo de moneda para ganar espacio en móvil
                 fig_koinly.update_layout(
                     paper_bgcolor='rgba(0,0,0,0)',
                     plot_bgcolor='rgba(0,0,0,0)',
@@ -293,20 +292,44 @@ if not df.empty:
 
     st.markdown("---")
 
-    st.subheader("🧮 Calculadora de Adquisición de Tokens")
+    st.subheader("🧮 Calculadora Avanzada de Adquisición")
     calc_c1, calc_c2 = st.columns([1, 2])
     with calc_c1:
         token_sel = st.selectbox("Selecciona el token:", df["Token"].tolist())
         euros_inv = st.number_input("Monto a invertir (€):", min_value=1.0, value=50.0, step=10.0)
+        
         row_token = df[df["Token"] == token_sel].iloc[0]
-        precio_ref = float(row_token["Precio Actual (€)"]) if "Precio Actual (€)" in df.columns else 1.0
-        tokens_adquiridos = euros_inv / precio_ref if precio_ref > 0 else 0.0
+        precio_act = float(row_token["Precio Actual (€)"]) if "Precio Actual (€)" in df.columns else 1.0
+        precio_med_actual = float(row_token["Precio Medio (€)"]) if "Precio Medio (€)" in df.columns else precio_act
+        cant_actual = float(row_token["Cantidad Total TK"]) if "Cantidad Total TK" in df.columns else 0.0
+        inv_actual = float(row_token["Inversión Total (€)"]) if "Inversión Total (€)" in df.columns else 0.0
+
+        # Cálculo estimado de tokens y comisión aprox (ej. ~1.5% o tarifa media de exchange)
+        comision_aprox = euros_inv * 0.015 
+        euros_netos = euros_inv - comision_aprox
+        tokens_adquiridos = euros_netos / precio_act if precio_act > 0 else 0.0
+        
+        # Nuevo precio medio estimado
+        nueva_inv_total = inv_actual + euros_inv
+        nuevo_balance_tk = cant_actual + tokens_adquiridos
+        nuevo_precio_medio = nueva_inv_total / nuevo_balance_tk if nuevo_balance_tk > 0 else precio_act
+        diferencia_pm = nuevo_precio_medio - precio_med_actual
 
     with calc_c2:
-        st.info(f"💡 Al precio actual de {precio_ref:,.4f} € por {token_sel}:")
-        res_c1, res_c2 = st.columns(2)
+        st.info(f"💡 Precio actual de referencia: **{precio_act:,.4f} €** por {token_sel}")
+        res_c1, res_c2, res_c3 = st.columns(3)
         with res_c1:
-            st.metric(f"Tokens {token_sel} a adquirir", f"+{tokens_adquiridos:,.2f} {token_sel}")
+            st.metric(f"Tokens a adquirir", f"+{tokens_adquiridos:,.2f}")
         with res_c2:
-            nuevo_balance = float(row_token["Cantidad Total TK"]) + tokens_adquiridos
-            st.metric("Nuevo Balance Estimado", f"{nuevo_balance:,.2f} {token_sel}")
+            st.metric("Comisión Aprox.", f"~{comision_aprox:,.2f} €")
+        with res_c3:
+            st.metric("Nuevo Balance", f"{nuevo_balance_tk:,.2f}")
+
+        # Indicador de cómo afecta al precio medio de compra
+        color_delta = "normal" if diferencia_pm <= 0 else "inverse"
+        st.metric(
+            "Nuevo Precio Medio Estimado", 
+            f"{nuevo_precio_medio:,.4f} €", 
+            delta=f"{diferencia_pm:+,.4f} € vs actual", 
+            delta_color=color_delta
+        )
