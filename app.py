@@ -44,7 +44,7 @@ def load_resumen_data():
         col_match = next((c for c in df.columns if col.upper() in c.upper()), None)
         if col_match:
             df[col_match] = df[col_match].astype(str).str.replace('€', '', regex=False).str.replace('%', '', regex=False).str.replace(' ', '', regex=False)
-            df[col_match] = df[col_match].apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
+            df[col_match] = df[col_match].apply(lambda x: str(x).replace('.', '').replace(',', '.') if ',' in str(x) else str(x))
             df[col] = pd.to_numeric(df[col_match], errors='coerce').fillna(0.0)
 
     # Identificar columna Token
@@ -71,9 +71,10 @@ def process_transaction_sheet(url, token_name):
 
     df['Fecha_Clean'] = pd.to_datetime(df[c_fecha], errors='coerce', dayfirst=True)
     
-    val_str = df[c_inv].astype(str).str.replace('€', '', regex=False).str.replace(' ', '', regex=False)
-    val_str = val_str.apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
-    df['Invertido_Clean'] = pd.to_numeric(val_str, errors='coerce').fillna(0.0)
+    # Limpieza blindada de montos numéricos contra TypeError
+    montos_str = df[c_inv].astype(str).str.replace('€', '', regex=False).str.replace(' ', '', regex=False)
+    montos_clean = montos_str.apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
+    df['Invertido_Clean'] = pd.to_numeric(montos_clean, errors='coerce').fillna(0.0)
 
     if c_holding:
         df['Holding_Clean'] = df[c_holding].astype(str).str.strip().str.upper()
