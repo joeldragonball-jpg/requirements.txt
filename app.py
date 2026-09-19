@@ -69,19 +69,18 @@ def process_transaction_sheet(url, token_name):
     c_cant = next((c for c in df.columns if "CANTIDAD" in c), None)
     c_holding = next((c for c in df.columns if "HOLDING" in c or "WALLET/HOLDING" in c), None)
 
-    if not c_fecha or not c_inv:
+    if not c_fecha or not c_cant:
         return pd.DataFrame()
 
     df['Fecha_Clean'] = pd.to_datetime(df[c_fecha], errors='coerce', dayfirst=True)
-    df['Invertido_Clean'] = clean_numeric_series(df[c_inv])
-    df['Cantidad_Clean'] = clean_numeric_series(df[c_cant]) if c_cant else 0.0
+    df['Invertido_Clean'] = clean_numeric_series(df[c_inv]) if c_inv else 0.0
+    df['Cantidad_Clean'] = clean_numeric_series(df[c_cant])
 
     if c_tipo:
         df['Tipo_Clean'] = df[c_tipo].fillna('COMPRA').astype(str).str.strip().str.upper()
     else:
         df['Tipo_Clean'] = 'COMPRA'
 
-    # Unificación estricta de Holding
     if c_holding:
         df['Holding_Clean'] = df[c_holding].fillna('').astype(str).str.strip().str.upper()
     else:
@@ -141,7 +140,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # BLOQUE 1: DESGLOSE DE POSICIONES CON CUSTODIA PRECISA
+    # BLOQUE 1: DESGLOSE DE POSICIONES CON CUSTODIA PRECISA Y NETEO DE OPERACIONES
     # ==============================================================================
     st.subheader("💼 Desglose de Posiciones por Activo")
 
@@ -179,46 +178,45 @@ if not df.empty:
             </div>
             """, unsafe_allow_html=True)
 
-            # Cálculo de Custodia Robusto
+            # Cálculo directo y exacto de tokens por wallet
             if not df_hist.empty:
                 df_tok = df_hist[(df_hist['Token_Clean'] == token) & (df_hist['Holding_Clean'] != '')]
                 
                 if not df_tok.empty:
                     st.markdown("<div style='margin-top: 10px; font-weight: bold; font-size: 13px;'>🔒 Custodia Actual (Wallet / Holding):</div>", unsafe_allow_html=True)
                     
-                    # Agrupar las cantidades netas asignadas a cada Wallet/Holding
-                    raw_custody = {}
+                    wallet_net = {}
                     for _, t_row in df_tok.iterrows():
                         w_name = str(t_row.get('Holding_Clean', '')).strip().upper()
-                        if not w_name or w_name == 'NAN':
+                        if not w_name or w_name in ['NAN', 'NONE']:
                             continue
                             
-                        if w_name not in raw_custody:
-                            raw_custody[w_name] = 0.0
-                            
-                        tipo_op = str(t_row.get('Tipo_Clean', 'COMPRA')).upper()
                         c_val = float(t_row.get('Cantidad_Clean', 0.0))
+                        tipo_op = str(t_row.get('Tipo_Clean', 'COMPRA')).upper()
                         
-                        if "VENTA" in tipo_op:
-                            raw_custody[w_name] -= c_val
+                        if w_name not in wallet_net:
+                            wallet_net[w_name] = 0.0
+                            
+                        # Si la cantidad ya viene negativa o el tipo es VENTA, resta
+                        if "VENTA" in tipo_op or c_val < 0:
+                            wallet_net[w_name] -= abs(c_val)
                         else:
-                            raw_custody[w_name] += c_val
+                            wallet_net[w_name] += abs(c_val)
 
-                    # Filtrar posiciones positivas
-                    valid_custody = {w: val for w, val in raw_custody.items() if val > 0}
-                    total_raw_cant = sum(valid_custody.values())
+                    # Filtrar celdas con saldo neto positivo
+                    active_wallets = {w: net for w, net in wallet_net.items() if net > 0}
+                    total_net_tokens = sum(active_wallets.values())
 
-                    if total_raw_cant > 0:
-                        for w_name, raw_c in valid_custody.items():
-                            # Calcular proporción real sobre el balance total del token (cant)
-                            w_pct = (raw_c / total_raw_cant) * 100
-                            w_cant_real = (w_pct / 100) * cant
-                            w_val_real = w_cant_real * p_act
+                    if total_net_tokens > 0:
+                        for w_name, net_cant in active_wallets.items():
+                            # Porcentaje real sobre el balance total del activo
+                            w_pct = (net_cant / cant * 100) if cant > 0 else 0.0
+                            w_val = net_cant * p_act
                             
                             st.markdown(f"""
                             <div style="display: flex; justify-content: space-between; background-color: #1a202c; padding: 6px 10px; border-radius: 6px; margin-top: 4px; font-size: 12px;">
                                 <div><b>{w_name}</b></div>
-                                <div>{w_cant_real:,.2f} {token} ({w_val_real:,.2f} €)</div>
+                                <div>{net_cant:,.2f} {token} ({w_val:,.2f} €)</div>
                                 <div style="color: #3b82f6;"><b>{w_pct:.1f}%</b></div>
                             </div>
                             """, unsafe_allow_html=True)
