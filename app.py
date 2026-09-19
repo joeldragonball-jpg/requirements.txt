@@ -29,6 +29,17 @@ st.markdown("""
     /* Campos de Entrada / Calculadora */
     .stNumberInput input, .stSelectbox div { color: #ffffff !important; background-color: #21262d !important; }
     </style>
+    /* Añade esto dentro de tu bloque de estilos <style> */
+div[data-baseweb="select"] * {
+    color: #ffffff !important;
+    background-color: #1f2937 !important;
+}
+ul[data-baseweb="menu"] {
+    background-color: #1f2937 !important;
+}
+li[data-baseweb="option"] {
+    color: #ffffff !important;
+}
 """, unsafe_allow_html=True)
 
 # PEGA AQUÍ TU ENLACE CSV DE GOOGLE SHEETS ENTRE COMILLAS
