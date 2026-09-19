@@ -27,7 +27,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Inyectar el Manifest para personalizar la instalación como PWA en el móvil
 pwa_header = """
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/main/manifest.json">
     <meta name="theme-color" content="#0e1117">
 """
 st.markdown(pwa_header, unsafe_allow_html=True)
