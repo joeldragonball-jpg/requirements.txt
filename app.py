@@ -76,7 +76,7 @@ def process_transaction_sheet(url, token_name):
     df['Invertido_Clean'] = clean_numeric_series(df[c_inv])
     df['Cantidad_Clean'] = clean_numeric_series(df[c_cant]) if c_cant else 0.0
 
-    # Tipo de Operación (Compra vs Venta)
+    # Forzar creación de Tipo_Clean sin riesgo de KeyError
     if c_tipo:
         df['Tipo_Clean'] = df[c_tipo].fillna('COMPRA').astype(str).str.strip().str.upper()
     else:
@@ -90,9 +90,13 @@ def process_transaction_sheet(url, token_name):
 
     df['Token_Clean'] = token_name
     
-    # Filtrar solo registros válidos con fecha
-    df_res = df[['Fecha_Clean', 'Tipo_Clean', 'Invertido_Clean', 'Cantidad_Clean', 'Holding_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
-    return df_res
+    # Garantizar que todas las columnas requeridas están presentes
+    cols_export = ['Fecha_Clean', 'Tipo_Clean', 'Invertido_Clean', 'Cantidad_Clean', 'Holding_Clean', 'Token_Clean']
+    for col in cols_export:
+        if col not in df.columns:
+            df[col] = ''
+            
+    return df[cols_export].dropna(subset=['Fecha_Clean'])
 
 @st.cache_data(ttl=30)
 def load_history_data():
@@ -139,7 +143,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # BLOQUE 1: DESGLOSE CON CUSTODIA DETALLADA Y CÁLCULO PRECISO
+    # BLOQUE 1: DESGLOSE COMPACTO DE POSICIONES Y CUSTODIA BLINDADA
     # ==============================================================================
     st.subheader("💼 Desglose de Posiciones por Activo")
 
@@ -177,31 +181,33 @@ if not df.empty:
             </div>
             """, unsafe_allow_html=True)
 
-            # Cálculo exacto de custodia considerando compras y ventas
+            # Desglose de Custodia Seguro
             if not df_hist.empty:
                 df_tok = df_hist[(df_hist['Token_Clean'] == token) & (df_hist['Holding_Clean'] != '')]
                 
                 if not df_tok.empty:
                     st.markdown("<div style='margin-top: 10px; font-weight: bold; font-size: 13px;'>🔒 Custodia Actual (Wallet / Holding):</div>", unsafe_allow_html=True)
                     
-                    # Agrupar compras y restar ventas por cada wallet
                     custody_map = {}
                     for _, t_row in df_tok.iterrows():
-                        w_name = t_row['Holding_Clean']
+                        w_name = t_row.get('Holding_Clean', '')
+                        if not w_name:
+                            continue
+                            
                         if w_name not in custody_map:
                             custody_map[w_name] = {'cant': 0.0, 'inv': 0.0}
                             
-                        if "VENTA" in t_row['Tipo_Clean']:
-                            custody_map[w_name]['cant'] -= t_row['Cantidad_Clean']
-                            custody_map[w_name]['inv'] -= t_row['Invertido_Clean']
+                        tipo_op = str(t_row.get('Tipo_Clean', 'COMPRA'))
+                        if "VENTA" in tipo_op:
+                            custody_map[w_name]['cant'] -= t_row.get('Cantidad_Clean', 0.0)
+                            custody_map[w_name]['inv'] -= t_row.get('Invertido_Clean', 0.0)
                         else:
-                            custody_map[w_name]['cant'] += t_row['Cantidad_Clean']
-                            custody_map[w_name]['inv'] += t_row['Invertido_Clean']
+                            custody_map[w_name]['cant'] += t_row.get('Cantidad_Clean', 0.0)
+                            custody_map[w_name]['inv'] += t_row.get('Invertido_Clean', 0.0)
 
-                    # Renderizar cada custodia activa
                     for w_name, w_data in custody_map.items():
                         w_cant = w_data['cant']
-                        if w_cant > 0:  # Solo mostrar si tiene balance positivo
+                        if w_cant > 0:
                             w_val = w_cant * p_act
                             w_pct = (w_cant / cant * 100) if cant > 0 else 0.0
                             
@@ -216,7 +222,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # BLOQUE 2: GRÁFICOS (DISTRIBUCIÓN DEL CAPITAL + EVOLUCIÓN HISTÓRICA)
+    # BLOQUE 2: GRÁFICOS (DISTRIBUCIÓN DE CAPITAL + HISTÓRICO SEPARADO)
     # ==============================================================================
     g1, g2 = st.columns(2)
     with g1:
@@ -238,7 +244,7 @@ if not df.empty:
 
             colors = {'XRP': '#2563eb', 'XLM': '#10b981'}
             for token_name in df_hist['Token_Clean'].unique():
-                df_t = df_hist[(df_hist['Token_Clean'] == token_name) & (~df_hist['Tipo_Clean'].str.contains("VENTA"))]
+                df_t = df_hist[(df_hist['Token_Clean'] == token_name) & (~df_hist['Tipo_Clean'].astype(str).str.contains("VENTA"))]
                 if not df_t.empty:
                     df_grouped = df_t.groupby('Fecha_Clean')['Invertido_Clean'].sum().reset_index()
                     df_grouped['Coste Acumulado (€)'] = df_grouped['Invertido_Clean'].cumsum()
