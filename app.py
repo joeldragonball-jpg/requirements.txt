@@ -100,16 +100,18 @@ def process_transaction_sheet(url, token_name):
         df.columns = [str(c).strip().upper() for c in df.columns]
 
         c_fecha = next((c for c in df.columns if "FECHA" in c), None)
+        c_cant = next((c for c in df.columns if "CANTIDAD" in c), None)
         c_inv = next((c for c in df.columns if "INVERTIDO" in c or "TOTAL" in c), None)
 
         if not c_fecha or not c_inv:
             return pd.DataFrame()
 
         df['Fecha_Clean'] = pd.to_datetime(df[c_fecha], errors='coerce', dayfirst=True)
+        df['Cantidad_Clean'] = clean_numeric_series(df[c_cant]) if c_cant else 0.0
         df['Invertido_Clean'] = clean_numeric_series(df[c_inv])
         df['Token_Clean'] = token_name
 
-        return df[['Fecha_Clean', 'Invertido_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
+        return df[['Fecha_Clean', 'Cantidad_Clean', 'Invertido_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
     except Exception:
         return pd.DataFrame()
 
@@ -227,33 +229,71 @@ if not df.empty:
     with g2:
         st.subheader("📈 Evolución Histórica Global (Estilo Koinly)")
         if not df_hist.empty:
-            # Agrupar por fecha estricta sumando todas las inversiones de todos los tokens por día
-            df_grouped = df_hist.groupby('Fecha_Clean')['Invertido_Clean'].sum().reset_index()
-            df_grouped = df_grouped.sort_values('Fecha_Clean')
-            df_grouped['Coste Acumulado (€)'] = df_grouped['Invertido_Clean'].cumsum()
+            # Crear una línea de tiempo diaria continua desde la primera transacción hasta hoy
+            min_date = df_hist['Fecha_Clean'].min()
+            max_date = pd.Timestamp.today()
+            date_range = pd.date_range(start=min_date, end=max_date, freq='D')
+            df_timeline = pd.DataFrame({'Fecha_Clean': date_range})
 
-            fig_koinly = go.Figure()
+            # Calcular acumulados por token y fusionar
+            frames_processed = []
+            for token_name in df_hist['Token_Clean'].unique():
+                df_t = df_hist[df_hist['Token_Clean'] == token_name].sort_values('Fecha_Clean').copy()
+                df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
+                df_t['Inv_Acum'] = df_t['Invertido_Clean'].cumsum()
+                
+                # Obtener precio actual de referencia del token
+                row_t = df[df['Token'] == token_name]
+                p_ref = float(row_t['Precio Actual (€)'].values[0]) if not row_t.empty and 'Precio Actual (€)' in df.columns else 1.0
+                
+                # Reindexar al rango diario completo manteniendo el último valor conocido (ffill)
+                df_t_daily = pd.merge_asof(df_timeline, df_t, on='Fecha_Clean', direction='backward')
+                df_t_daily['Token_Clean'] = token_name
+                df_t_daily['Q_Acum'] = df_t_daily['Q_Acum'].fillna(0)
+                df_t_daily['Inv_Acum'] = df_t_daily['Inv_Acum'].fillna(0)
+                df_t_daily['Valor_Mercado'] = df_t_daily['Q_Acum'] * p_ref
+                frames_processed.append(df_t_daily)
 
-            # Línea de Coste Base global de la cartera (Estilo Koinly discontinuo)
-            fig_koinly.add_trace(go.Scatter(
-                x=df_grouped['Fecha_Clean'],
-                y=df_grouped['Coste Acumulado (€)'],
-                mode='lines',
-                name='Cost Basis (€)',
-                line=dict(color='#3b82f6', width=2, dash='dash')
-            ))
+            if frames_processed:
+                df_full = pd.concat(frames_processed, ignore_index=True)
+                # Agrupar globalmente por día para obtener el total de la cartera (Worth y Cost Basis)
+                df_global = df_full.groupby('Fecha_Clean')[['Valor_Mercado', 'Inv_Acum']].sum().reset_index()
 
-            fig_koinly.update_layout(
-                paper_bgcolor='rgba(0,0,0,0)',
-                plot_bgcolor='rgba(0,0,0,0)',
-                font=dict(color="#ffffff"),
-                margin=dict(l=10, r=10, t=10, b=10),
-                xaxis=dict(showgrid=False, title=None),
-                yaxis=dict(showgrid=True, gridcolor='#262c3a', title="Euros (€)"),
-                hovermode="x unified",
-                legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
-            )
-            st.plotly_chart(fig_koinly, use_container_width=True)
+                fig_koinly = go.Figure()
+
+                # 1. Área superior sombreada: Valor de Mercado Total (Worth)
+                fig_koinly.add_trace(go.Scatter(
+                    x=df_global['Fecha_Clean'],
+                    y=df_global['Valor_Mercado'],
+                    mode='lines',
+                    name='Worth (€)',
+                    fill='tozeroy',
+                    fillcolor='rgba(59, 130, 246, 0.15)',
+                    line=dict(color='#3b82f6', width=2)
+                ))
+
+                # 2. Línea discontinua inferior: Coste Total Invertido (Cost Basis)
+                fig_koinly.add_trace(go.Scatter(
+                    x=df_global['Fecha_Clean'],
+                    y=df_global['Inv_Acum'],
+                    mode='lines',
+                    name='Cost Basis (€)',
+                    line=dict(color='#94a3b8', width=2, dash='dash')
+                ))
+
+                fig_koinly.update_layout(
+                    paper_bgcolor='rgba(0,0,0,0)',
+                    plot_bgcolor='rgba(0,0,0,0)',
+                    font=dict(color="#ffffff"),
+                    margin=dict(l=10, r=10, t=10, b=10),
+                    xaxis=dict(showgrid=False, title=None),
+                    yaxis=dict(showgrid=True, gridcolor='#262c3a', title="Euros (€)"),
+                    hovermode="x unified",
+                    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+                )
+                st.plotly_chart(fig_koinly, use_container_width=True)
+            else:
+                st.info("Procesando datos históricos...")
         else:
             st.info("Cargando datos de evolución temporal...")
 
