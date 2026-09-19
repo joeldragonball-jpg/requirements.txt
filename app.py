@@ -12,7 +12,6 @@ SHEET_XRP_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyr
 SHEET_XLM_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=108352087&single=true&output=csv"
 
 def read_sheet_with_dynamic_header(url, target_keyword):
-    """Busca dinámicamente la fila donde están las cabeceras reales."""
     try:
         raw_df = pd.read_csv(url, header=None, on_bad_lines='skip')
         header_idx = None
@@ -33,10 +32,8 @@ def read_sheet_with_dynamic_header(url, target_keyword):
         return pd.DataFrame()
 
 def clean_numeric_series(series):
-    """Limpia series numéricas de forma vectorial sin usar apply/lambda para evitar TypeError."""
     s_str = series.fillna('0').astype(str)
     s_str = s_str.str.replace('€', '', regex=False).str.replace('%', '', regex=False).str.replace(' ', '', regex=False)
-    # Remplazar puntos de miles y comas decimales
     s_str = s_str.str.replace('.', '', regex=False).str.replace(',', '.', regex=False)
     return pd.to_numeric(s_str, errors='coerce').fillna(0.0)
 
@@ -46,14 +43,12 @@ def load_resumen_data():
     if df.empty:
         return pd.DataFrame()
 
-    # Limpieza numérica de la tabla resumen
     cols_num = ["Cantidad Total TK", "Inversión Total (€)", "Precio Medio (€)", "Precio Actual (€)", "Valor Actual (€)", "P&L No Realizado (€)", "P&L No Realizado (%)"]
     for col in cols_num:
         col_match = next((c for c in df.columns if col.upper() in c.upper()), None)
         if col_match:
             df[col] = clean_numeric_series(df[col_match])
 
-    # Identificar columna Token
     tok_col = next((c for c in df.columns if "TOKEN" in c.upper()), "Token")
     if tok_col in df.columns:
         df["Token"] = df[tok_col]
@@ -70,6 +65,7 @@ def process_transaction_sheet(url, token_name):
 
     c_fecha = next((c for c in df.columns if "FECHA" in c), None)
     c_inv = next((c for c in df.columns if "INVERTIDO" in c or "TOTAL" in c), None)
+    c_cant = next((c for c in df.columns if "CANTIDAD" in c), None)
     c_holding = next((c for c in df.columns if "HOLDING" in c or "WALLET" in c), None)
 
     if not c_fecha or not c_inv:
@@ -77,16 +73,17 @@ def process_transaction_sheet(url, token_name):
 
     df['Fecha_Clean'] = pd.to_datetime(df[c_fecha], errors='coerce', dayfirst=True)
     df['Invertido_Clean'] = clean_numeric_series(df[c_inv])
+    df['Cantidad_Clean'] = clean_numeric_series(df[c_cant]) if c_cant else 0.0
 
     if c_holding:
         df['Holding_Clean'] = df[c_holding].fillna('OTRO').astype(str).str.strip().str.upper()
-        df['Holding_Clean'] = df['Holding_Clean'].replace({'NAN': 'OTRO', '': 'OTRO'})
+        df['Holding_Clean'] = df['Holding_Clean'].replace({'NAN': 'DESCONOCIDO', '': 'DESCONOCIDO'})
     else:
-        df['Holding_Clean'] = 'OTRO'
+        df['Holding_Clean'] = 'DESCONOCIDO'
 
     df['Token_Clean'] = token_name
     
-    df_res = df[['Fecha_Clean', 'Invertido_Clean', 'Holding_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
+    df_res = df[['Fecha_Clean', 'Invertido_Clean', 'Cantidad_Clean', 'Holding_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
     return df_res[df_res['Invertido_Clean'] > 0]
 
 @st.cache_data(ttl=30)
@@ -113,7 +110,7 @@ if st.sidebar.button("🔄 Actualizar Datos"):
 st.markdown("---")
 
 if not df.empty:
-    # 1. MÉTRICAS GENERALES (KPIs)
+    # 1. MÉTRICAS GENERALES (KPIs) — BLOQUE CERRADO
     inv_total = float(df["Inversión Total (€)"].sum()) if "Inversión Total (€)" in df.columns else 0.0
     val_actual = float(df["Valor Actual (€)"].sum()) if "Valor Actual (€)" in df.columns else 0.0
     
@@ -134,7 +131,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # BLOQUE 1: DESGLOSE COMPACTO DE POSICIONES
+    # BLOQUE 1: DESGLOSE CON CUSTODIA DETALLADA (ESTILO KOINLY)
     # ==============================================================================
     st.subheader("💼 Desglose de Posiciones por Activo")
 
@@ -154,6 +151,7 @@ if not df.empty:
         color_pnl = "#10b981" if pnl_indiv_eur >= 0 else "#ef4444"
 
         with st.expander(f"📌 {token} — Balance: {cant:,.2f} {token} | Valor: {val_indiv:,.2f} €", expanded=True):
+            # Tarjeta resumen rápida
             st.markdown(f"""
             <div style="background-color: #151921; padding: 12px; border-radius: 10px; border: 1px solid #262c3a; font-size: 14px; color: #ffffff;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
@@ -172,52 +170,67 @@ if not df.empty:
             </div>
             """, unsafe_allow_html=True)
 
+            # Desglose de custodia en formato Koinly (Ledger vs Kraken)
+            if not df_hist.empty:
+                df_tok_custody = df_hist[df_hist['Token_Clean'] == token]
+                if not df_tok_custody.empty:
+                    st.markdown("<div style='margin-top: 10px; font-weight: bold; font-size: 13px;'>🔒 Custodia de Wallet / Exchange:</div>", unsafe_allow_html=True)
+                    cust_summary = df_tok_custody.groupby('Holding_Clean').agg(
+                        {'Invertido_Clean': 'sum', 'Cantidad_Clean': 'sum'}
+                    ).reset_index()
+                    
+                    total_inv_tok = cust_summary['Invertido_Clean'].sum()
+                    
+                    for _, c_row in cust_summary.iterrows():
+                        w_name = c_row['Holding_Clean']
+                        w_inv = c_row['Invertido_Clean']
+                        w_cant = c_row['Cantidad_Clean']
+                        w_pct = (w_inv / total_inv_tok * 100) if total_inv_tok > 0 else 0.0
+                        
+                        st.markdown(f"""
+                        <div style="display: flex; justify-content: space-between; background-color: #1a202c; padding: 6px 10px; border-radius: 6px; margin-top: 4px; font-size: 12px;">
+                            <div><b>{w_name}</b></div>
+                            <div>{w_cant:,.2f} {token} ({w_inv:,.2f} €)</div>
+                            <div style="color: #3b82f6;"><b>{w_pct:.1f}%</b></div>
+                        </div>
+                        """, unsafe_allow_html=True)
+
     st.markdown("---")
 
     # ==============================================================================
-    # BLOQUE 2: GRÁFICOS (DISTRIBUCIÓN CUSTODIA + EVOLUCIÓN HISTÓRICA)
+    # BLOQUE 2: GRÁFICOS (DISTRIBUCIÓN DEL CAPITAL + HISTÓRICO SEPARADO POR TOKEN)
     # ==============================================================================
     g1, g2 = st.columns(2)
     with g1:
-        st.subheader("📊 Distribución por Custodia (Wallets/Exchanges)")
-        if not df_hist.empty:
-            df_wallets = df_hist.groupby("Holding_Clean")["Invertido_Clean"].sum().reset_index()
-            fig_wallets = px.pie(
-                df_wallets, 
-                values="Invertido_Clean", 
-                names="Holding_Clean", 
-                hole=0.55,
-                color_discrete_sequence=["#10b981", "#3b82f6", "#f59e0b", "#8b5cf6"]
-            )
-            fig_wallets.update_layout(
-                paper_bgcolor='rgba(0,0,0,0)',
-                plot_bgcolor='rgba(0,0,0,0)',
-                font=dict(color="#ffffff"),
-                margin=dict(l=10, r=10, t=10, b=10)
-            )
-            fig_wallets.update_traces(textposition='inside', textinfo='percent+label')
-            st.plotly_chart(fig_wallets, use_container_width=True)
-        else:
-            fig_pie = px.pie(df, values="Valor Actual (€)", names="Token", hole=0.55)
-            fig_pie.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font=dict(color="#ffffff"))
-            st.plotly_chart(fig_pie, use_container_width=True)
+        st.subheader("📊 Distribución del Capital")
+        fig_pie = px.pie(df, values="Valor Actual (€)", names="Token", hole=0.55,
+                         color="Token", color_discrete_map={'XRP': '#2563eb', 'XLM': '#10b981'})
+        fig_pie.update_layout(
+            paper_bgcolor='rgba(0,0,0,0)',
+            plot_bgcolor='rgba(0,0,0,0)',
+            font=dict(color="#ffffff"),
+            margin=dict(l=10, r=10, t=10, b=10)
+        )
+        st.plotly_chart(fig_pie, use_container_width=True)
 
     with g2:
-        st.subheader("📈 Evolución Histórica (Estilo Koinly)")
+        st.subheader("📈 Evolución Histórica por Activo (Estilo Koinly)")
         if not df_hist.empty:
-            df_grouped = df_hist.groupby('Fecha_Clean')['Invertido_Clean'].sum().reset_index()
-            df_grouped['Coste Acumulado (€)'] = df_grouped['Invertido_Clean'].cumsum()
-
             fig_koinly = go.Figure()
-            fig_koinly.add_trace(go.Scatter(
-                x=df_grouped['Fecha_Clean'],
-                y=df_grouped['Coste Acumulado (€)'],
-                mode='lines+markers',
-                name='Coste Base (€)',
-                line=dict(color='#2563eb', width=3),
-                fill='tozeroy',
-                fillcolor='rgba(37, 99, 235, 0.15)'
-            ))
+
+            # Trazar una curva separada por cada Token (XRP y XLM)
+            colors = {'XRP': '#2563eb', 'XLM': '#10b981'}
+            for token_name in df_hist['Token_Clean'].unique():
+                df_t = df_hist[df_hist['Token_Clean'] == token_name].groupby('Fecha_Clean')['Invertido_Clean'].sum().reset_index()
+                df_t['Coste Acumulado (€)'] = df_t['Invertido_Clean'].cumsum()
+
+                fig_koinly.add_trace(go.Scatter(
+                    x=df_t['Fecha_Clean'],
+                    y=df_t['Coste Acumulado (€)'],
+                    mode='lines+markers',
+                    name=f'Coste {token_name} (€)',
+                    line=dict(color=colors.get(token_name, '#f59e0b'), width=3)
+                ))
 
             fig_koinly.update_layout(
                 paper_bgcolor='rgba(0,0,0,0)',
@@ -234,7 +247,7 @@ if not df.empty:
 
     st.markdown("---")
 
-    # CALCULADORA DE ADQUISICIÓN DE TOKENS
+    # CALCULADORA DE ADQUISICIÓN
     st.subheader("🧮 Calculadora de Adquisición de Tokens")
     calc_c1, calc_c2 = st.columns([1, 2])
     with calc_c1:
