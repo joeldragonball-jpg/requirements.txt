@@ -25,6 +25,16 @@ hide_streamlit_style = """
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
+# Inyectar el Manifest y metadatos para la instalación PWA en el móvil
+pwa_header = """
+    <link rel="manifest" href="https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/main/manifest.json">
+    <meta name="theme-color" content="#0e1117">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+"""
+st.markdown(pwa_header, unsafe_allow_html=True)
+
 # Inyectar el Manifest para personalizar la instalación como PWA en el móvil
 pwa_header = """
     <link rel="manifest" href="https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/main/manifest.json">
