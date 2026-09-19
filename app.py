@@ -66,7 +66,9 @@ def process_transaction_sheet(url, token_name):
     c_fecha = next((c for c in df.columns if "FECHA" in c), None)
     c_inv = next((c for c in df.columns if "INVERTIDO" in c or "TOTAL" in c), None)
     c_cant = next((c for c in df.columns if "CANTIDAD" in c), None)
-    c_holding = next((c for c in df.columns if "HOLDING" in c or "WALLET" in c), None)
+    
+    # BUSCAMOS EXCLUSIVAMENTE LA COLUMNA WALLET/HOLDING
+    c_holding = next((c for c in df.columns if "HOLDING" in c or "WALLET/HOLDING" in c), None)
 
     if not c_fecha or not c_inv:
         return pd.DataFrame()
@@ -76,7 +78,7 @@ def process_transaction_sheet(url, token_name):
     df['Cantidad_Clean'] = clean_numeric_series(df[c_cant]) if c_cant else 0.0
 
     if c_holding:
-        df['Holding_Clean'] = df[c_holding].fillna('OTRO').astype(str).str.strip().str.upper()
+        df['Holding_Clean'] = df[c_holding].fillna('DESCONOCIDO').astype(str).str.strip().str.upper()
         df['Holding_Clean'] = df['Holding_Clean'].replace({'NAN': 'DESCONOCIDO', '': 'DESCONOCIDO'})
     else:
         df['Holding_Clean'] = 'DESCONOCIDO'
@@ -110,7 +112,7 @@ if st.sidebar.button("🔄 Actualizar Datos"):
 st.markdown("---")
 
 if not df.empty:
-    # 1. MÉTRICAS GENERALES (KPIs) — BLOQUE CERRADO
+    # 1. MÉTRICAS GENERALES (KPIs)
     inv_total = float(df["Inversión Total (€)"].sum()) if "Inversión Total (€)" in df.columns else 0.0
     val_actual = float(df["Valor Actual (€)"].sum()) if "Valor Actual (€)" in df.columns else 0.0
     
@@ -131,7 +133,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # BLOQUE 1: DESGLOSE CON CUSTODIA DETALLADA (ESTILO KOINLY)
+    # BLOQUE 1: DESGLOSE CON CUSTODIA DETALLADA (EXCLUSIVAMENTE WALLET/HOLDING)
     # ==============================================================================
     st.subheader("💼 Desglose de Posiciones por Activo")
 
@@ -151,7 +153,6 @@ if not df.empty:
         color_pnl = "#10b981" if pnl_indiv_eur >= 0 else "#ef4444"
 
         with st.expander(f"📌 {token} — Balance: {cant:,.2f} {token} | Valor: {val_indiv:,.2f} €", expanded=True):
-            # Tarjeta resumen rápida
             st.markdown(f"""
             <div style="background-color: #151921; padding: 12px; border-radius: 10px; border: 1px solid #262c3a; font-size: 14px; color: #ffffff;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
@@ -170,11 +171,11 @@ if not df.empty:
             </div>
             """, unsafe_allow_html=True)
 
-            # Desglose de custodia en formato Koinly (Ledger vs Kraken)
+            # Desglose de custodia únicamente tomando WALLET/HOLDING
             if not df_hist.empty:
                 df_tok_custody = df_hist[df_hist['Token_Clean'] == token]
                 if not df_tok_custody.empty:
-                    st.markdown("<div style='margin-top: 10px; font-weight: bold; font-size: 13px;'>🔒 Custodia de Wallet / Exchange:</div>", unsafe_allow_html=True)
+                    st.markdown("<div style='margin-top: 10px; font-weight: bold; font-size: 13px;'>🔒 Custodia Actual (Wallet / Holding):</div>", unsafe_allow_html=True)
                     cust_summary = df_tok_custody.groupby('Holding_Clean').agg(
                         {'Invertido_Clean': 'sum', 'Cantidad_Clean': 'sum'}
                     ).reset_index()
@@ -218,7 +219,6 @@ if not df.empty:
         if not df_hist.empty:
             fig_koinly = go.Figure()
 
-            # Trazar una curva separada por cada Token (XRP y XLM)
             colors = {'XRP': '#2563eb', 'XLM': '#10b981'}
             for token_name in df_hist['Token_Clean'].unique():
                 df_t = df_hist[df_hist['Token_Clean'] == token_name].groupby('Fecha_Clean')['Invertido_Clean'].sum().reset_index()
@@ -247,7 +247,7 @@ if not df.empty:
 
     st.markdown("---")
 
-    # CALCULADORA DE ADQUISICIÓN
+    # CALCULADORA
     st.subheader("🧮 Calculadora de Adquisición de Tokens")
     calc_c1, calc_c2 = st.columns([1, 2])
     with calc_c1:
