@@ -33,30 +33,46 @@ def load_resumen_data():
 
 @st.cache_data(ttl=30)
 def load_history_data():
-    try:
-        df_xrp = pd.read_csv(SHEET_XRP_URL)
-        df_xlm = pd.read_csv(SHEET_XLM_URL)
-        
-        df_xrp.columns = df_xrp.columns.str.strip()
-        df_xlm.columns = df_xlm.columns.str.strip()
+    dataframes = []
+    
+    for url, token_name in [(SHEET_XRP_URL, "XRP"), (SHEET_XLM_URL, "XLM")]:
+        try:
+            df_temp = pd.read_csv(url, on_bad_lines='skip')
+            df_temp.columns = df_temp.columns.str.strip()
+            
+            # Buscar columna de fecha flexible
+            fecha_col = None
+            for c in df_temp.columns:
+                if "FECHA" in c.upper():
+                    fecha_col = c
+                    break
+            
+            # Buscar columna de inversión flexible
+            inv_col = None
+            for c in df_temp.columns:
+                if "TOTAL" in c.upper() or "INVERTIDO" in c.upper() or "EUROS" in c.upper():
+                    inv_col = c
+                    break
+            
+            if fecha_col and inv_col:
+                df_clean = pd.DataFrame()
+                df_clean['Fecha'] = pd.to_datetime(df_temp[fecha_col], errors='coerce', dayfirst=True)
+                
+                # Limpieza numérica de euros
+                val_str = df_temp[inv_col].astype(str).str.replace('€', '', regex=False).str.replace(' ', '', regex=False)
+                val_str = val_str.apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
+                df_clean['Invertido'] = pd.to_numeric(val_str, errors='coerce').fillna(0.0)
+                df_clean['Token'] = token_name
+                
+                df_clean = df_clean.dropna(subset=['Fecha'])
+                dataframes.append(df_clean)
+        except Exception:
+            continue
 
-        # Unificar dataframes de compras
-        df_hist = pd.concat([df_xrp, df_xlm], ignore_index=True)
-        
-        # Limpieza de fechas y números
-        if 'Fecha' in df_hist.columns:
-            df_hist['Fecha'] = pd.to_datetime(df_hist['Fecha'], errors='coerce', dayfirst=True)
-        
-        for col in ["Total Invertido (€)", "Cantidad", "Precio Unitario (€)"]:
-            if col in df_hist.columns:
-                df_hist[col] = df_hist[col].astype(str).str.replace('€', '', regex=False).str.replace(' ', '', regex=False)
-                df_hist[col] = df_hist[col].apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
-                df_hist[col] = pd.to_numeric(df_hist[col], errors='coerce').fillna(0.0)
-
-        df_hist = df_hist.dropna(subset=['Fecha']).sort_values('Fecha')
-        return df_hist
-    except Exception:
-        return pd.DataFrame()
+    if dataframes:
+        df_all = pd.concat(dataframes, ignore_index=True)
+        return df_all.sort_values('Fecha')
+    return pd.DataFrame()
 
 df = load_resumen_data()
 df_hist = load_history_data()
@@ -129,7 +145,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # PASO 2: GRÁFICO HISTÓRICO ESTILO KOINLY (MÓVIL OPTIMIZADO)
+    # PASO 2: GRÁFICOS (DISTRIBUCIÓN + KOINLY HISTÓRICO FLEXIBLE)
     # ==============================================================================
     g1, g2 = st.columns(2)
     with g1:
@@ -140,20 +156,20 @@ if not df.empty:
     with g2:
         st.subheader("📈 Evolución Histórica (Estilo Koinly)")
         
-        if not df_hist.empty and "Total Invertido (€)" in df_hist.columns:
-            # Agrupar compras por fecha y calcular inversión acumulada
-            df_grouped = df_hist.groupby('Fecha')['Total Invertido (€)'].sum().reset_index()
-            df_grouped['Inversión Acumulada (€)'] = df_grouped['Total Invertido (€)'].cumsum()
+        if not df_hist.empty:
+            # Agrupamos por fecha acumulando las compras reales
+            df_grouped = df_hist.groupby('Fecha')['Invertido'].sum().reset_index()
+            df_grouped['Coste Acumulado (€)'] = df_grouped['Invertido'].cumsum()
 
             fig_koinly = go.Figure()
 
-            # Curva de Inversión Acumulada estilo Koinly (Sombreada en azul/verde)
+            # Curva de Inversión Acumulada estilo Koinly
             fig_koinly.add_trace(go.Scatter(
                 x=df_grouped['Fecha'],
-                y=df_grouped['Inversión Acumulada (€)'],
-                mode='lines',
+                y=df_grouped['Coste Acumulado (€)'],
+                mode='lines+markers',
                 name='Coste Base (€)',
-                line=dict(color='#2563eb', width=2),
+                line=dict(color='#2563eb', width=3),
                 fill='tozeroy',
                 fillcolor='rgba(37, 99, 235, 0.15)'
             ))
@@ -169,7 +185,7 @@ if not df.empty:
             )
             st.plotly_chart(fig_koinly, use_container_width=True)
         else:
-            st.info("Cargando historial de compras...")
+            st.warning("No se encontraron registros válidos de fechas o montos en las pestañas de transacciones.")
 
     st.markdown("---")
 
