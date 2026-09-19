@@ -58,7 +58,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # PASO 1: DESGLOSE DE POSICIONES POR ACTIVO (SISTEMA NATIVO SIN RECUADROS RAROS)
+    # PASO 1: DESGLOSE COMPACTO Y RESPONSIVE (OPTIMIZADO PARA MÓVIL)
     # ==============================================================================
     st.subheader("💼 Desglose de Posiciones por Activo")
 
@@ -70,26 +70,31 @@ if not df.empty:
         inv_indiv = float(row.get("Inversión Total (€)", 0.0))
         val_indiv = float(row.get("Valor Actual (€)", 0.0))
         
-        # Lectura garantizada de P&L de tu tabla
         pnl_val = row.get("P&L No Realizado (€)", row.get("PnL No Realizado (€)", val_indiv - inv_indiv))
         pnl_pct_val = row.get("P&L No Realizado (%)", row.get("PnL No Realizado (%)", (pnl_val / inv_indiv * 100) if inv_indiv > 0 else 0.0))
         
         pnl_indiv_eur = float(pnl_val)
         pnl_indiv_pct = float(pnl_pct_val)
+        color_pnl = "#10b981" if pnl_indiv_eur >= 0 else "#ef4444"
 
         with st.expander(f"📌 {token} — Balance: {cant:,.2f} {token} | Valor: {val_indiv:,.2f} €", expanded=True):
-            col_a, col_b, col_c, col_d = st.columns(4)
-            with col_a:
-                st.metric(f"Balance {token}", f"{cant:,.2f}")
-                st.metric("Valor Estimado", f"{val_indiv:,.2f} €")
-            with col_b:
-                st.metric("Precio Medio", f"{p_medio:,.4f} €")
-                st.metric("Precio Actual", f"{p_act:,.4f} €")
-            with col_c:
-                st.metric("Invertido (Coste)", f"{inv_indiv:,.2f} €")
-            with col_d:
-                st.metric("P&L (€)", f"{pnl_indiv_eur:,.2f} €", delta=f"{pnl_indiv_eur:,.2f} €")
-                st.metric("P&L (%)", f"{pnl_indiv_pct:.2f} %", delta=f"{pnl_indiv_pct:.2f} %")
+            st.markdown(f"""
+            <div style="background-color: #151921; padding: 12px; border-radius: 10px; border: 1px solid #262c3a; font-size: 14px; color: #ffffff;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <div><b>Balance:</b> {cant:,.2f} {token}</div>
+                    <div><b>Precio Medio:</b> {p_medio:,.4f} €</div>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <div><b>Valor Estimado:</b> {val_indiv:,.2f} €</div>
+                    <div><b>Precio Actual:</b> {p_act:,.4f} €</div>
+                </div>
+                <hr style="border: 0.5px solid #262c3a; margin: 8px 0;">
+                <div style="display: flex; justify-content: space-between; font-weight: bold;">
+                    <div>Invertido: {inv_indiv:,.2f} €</div>
+                    <div style="color: {color_pnl};">P&L: {pnl_indiv_eur:,.2f} € ({pnl_indiv_pct:.2f}%)</div>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
 
     st.markdown("---")
 
