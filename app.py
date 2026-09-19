@@ -4,23 +4,23 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 # Configuración de página
-st.set_page_config(page_title="Control de Portfolio Cripto", page_icon="⚡", layout="wide")
+st.set_page_config(page_title="Control de Porfolio Cripto", page_icon="⚡", layout="wide")
 
 # Estilos CSS avanzados para forzar el fondo, ocultar elementos de Streamlit y limpiar la interfaz móvil
 hide_streamlit_style = """
     <style>
-    /* Forzar el color de fondo principal en toda la aplicación */
-    .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
-        background-color: #0e1117 !important;
-    }
-    
-    /* Ocultar elementos de desarrollo de Streamlit */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    
-    /* Ajuste de márgenes para la versión móvil */
-    .stApp { margin-top: -20px; }
+        /* Forzar el color de fondo principal en toda la aplicación */
+        .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
+            background-color: #0e1117 !important;
+        }
+
+        /* Ocultar elementos de desarrollo de Streamlit */
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        header {visibility: hidden;}
+
+        /* Ajuste de márgenes para la versión móvil */
+        .stApp { margin-top: -20px; }
     </style>
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
@@ -35,283 +35,235 @@ pwa_header = """
 """
 st.markdown(pwa_header, unsafe_allow_html=True)
 
-# Inyectar el Manifest para personalizar la instalación como PWA en el móvil
-pwa_header = """
-    <link rel="manifest" href="https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/main/manifest.json">
-    <meta name="theme-color" content="#0e1117">
-"""
-st.markdown(pwa_header, unsafe_allow_html=True)
+# URLS CSV de Google Sheets
+SHEET_RESUMEN_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vScLk_CfOYzrjn1IBu8kANtfGGEenlI1b4M_4KkFf1FNxw9u4f1ITCVBeuvId2-0c_0mMj45etvFVQqTrg/pub?gid=365927779&single=true&output=csv"
+SHEET_XRP_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vScLk_CfOYzrjn1IBu8kANtfGGEenlI1b4M_4KkFf1FNxw9u4f1ITCVBeuvId2-0c_0mMj45etvFVQqTrg/pub?gid=10835208&single=true&output=csv"
+SHEET_XLM_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vScLk_CfOYzrjn1IBu8kANtfGGEenlI1b4M_4KkFf1FNxw9u4f1ITCVBeuvId2-0c_0mMj45etvFVQqTrg/pub?gid=298064972&single=true&output=csv"
 
-# URLs CSV de Google Sheets
-SHEET_RESUMEN_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=1415212158&single=true&output=csv"
-SHEET_XRP_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=2015592342&single=true&output=csv"
-SHEET_XLM_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=108352087&single=true&output=csv"
-
+@st.cache_data(ttl=10)
 def read_raw_sheet(url):
     try:
         return pd.read_csv(url, header=None, on_bad_lines='skip')
-    except Exception:
+    except:
         return pd.DataFrame()
 
-def clean_numeric_series(series):
-    s_str = series.fillna('0').astype(str)
-    s_str = s_str.str.replace('€', '', regex=False).str.replace('%', '', regex=False).str.replace(' ', '', regex=False)
+def def_clean_numeric_series(series):
+    s_str = series.astype(str).str.strip()
+    s_str = s_str.str.replace('€', '', regex=False).str.replace('%', '', regex=False)
     s_str = s_str.str.replace('.', '', regex=False).str.replace(',', '.', regex=False)
     return pd.to_numeric(s_str, errors='coerce').fillna(0.0)
 
 @st.cache_data(ttl=10)
 def load_resumen_data():
-    raw_df = read_raw_sheet(SHEET_RESUMEN_URL)
-    if raw_df.empty:
-        return pd.DataFrame(), {}
-
-    # 1. Buscar la tabla principal de Resumen
+    df = read_raw_sheet(SHEET_RESUMEN_URL)
+    if df.empty:
+        return pd.DataFrame()
+    
     header_idx = None
-    for idx, row in raw_df.iterrows():
-        row_str = " ".join(row.fillna('').astype(str).values).upper()
-        if "TOKEN" in row_str:
+    for idx, row in df.iterrows():
+        row_str = "".join(row.astype(str).values).upper()
+        if "VALOR" in row_str or "ACTIVO" in row_str:
             header_idx = idx
             break
-
+            
     if header_idx is not None:
-        df = pd.read_csv(SHEET_RESUMEN_URL, skiprows=header_idx, on_bad_lines='skip')
-    else:
-        df = pd.read_csv(SHEET_RESUMEN_URL, on_bad_lines='skip')
-
-    df.columns = [str(c).strip() for c in df.columns]
-
-    cols_num = ["Cantidad Total TK", "Inversión Total (€)", "Precio Medio (€)", "Precio Actual (€)", "Valor Actual (€)", "P&L No Realizado (€)", "P&L No Realizado (%)"]
+        df.columns = df.iloc[header_idx].astype(str).str.strip()
+        df = df.iloc[header_idx + 1:].reset_index(drop=True)
+    
+    cols_num = ['Cantidad Total TK', 'Inversión Total (€)', 'Precio Medio (€)', 'Precio Actual (€)', 'Valor Actual (€)', 'P&L No Realizado (€)', 'Rendimiento Total (%)']
     for col in cols_num:
-        col_match = next((c for c in df.columns if col.upper() in c.upper()), None)
-        if col_match:
-            df[col] = clean_numeric_series(df[col_match])
+        if col in df.columns:
+            df[col] = def_clean_numeric_series(df[col])
+            
+    if 'Token' in df.columns:
+        df['Token'] = df['Token'].astype(str).str.strip().str.upper()
+        
+    return df
 
-    tok_col = next((c for c in df.columns if "TOKEN" in c.upper()), "Token")
-    if tok_col in df.columns:
-        df["Token"] = df[tok_col]
-        df = df[df["Token"].astype(str).str.upper() != "TOTAL"]
-
-    # 2. Leer la nueva tabla de Custodia (Columnas I, J, K) directamente del CSV crudo
-    custody_data = {'XRP': {}, 'XLM': {}}
-    try:
-        # Recorremos el CSV buscando las palabras LEDGER y KRAKEN en cualquier columna
-        for _, row in raw_df.iterrows():
-            row_vals = [str(v).strip().upper() for v in row.fillna('').values]
-            for w_name in ['LEDGER', 'KRAKEN']:
-                if w_name in row_vals:
-                    w_idx = row_vals.index(w_name)
-                    # Tomamos los dos valores numéricos siguientes (J para XRP, K para XLM)
-                    if w_idx + 1 < len(row):
-                        val_xrp = clean_numeric_series(pd.Series([row.iloc[w_idx + 1]])).iloc[0]
-                        custody_data['XRP'][w_name] = float(val_xrp)
-                    if w_idx + 2 < len(row):
-                        val_xlm = clean_numeric_series(pd.Series([row.iloc[w_idx + 2]])).iloc[0]
-                        custody_data['XLM'][w_name] = float(val_xlm)
-    except Exception:
-        pass
-
-    return df, custody_data
-
-def process_transaction_sheet(url, token_name):
-    try:
-        raw_df = pd.read_csv(url, header=None, on_bad_lines='skip')
-        header_idx = None
-        for idx, row in raw_df.iterrows():
-            row_str = " ".join(row.fillna('').astype(str).values).upper()
-            if "FECHA" in row_str:
-                header_idx = idx
-                break
-
-        if header_idx is not None:
-            df = pd.read_csv(url, skiprows=header_idx, on_bad_lines='skip')
-        else:
-            df = pd.read_csv(url, on_bad_lines='skip')
-
-        df.columns = [str(c).strip().upper() for c in df.columns]
-
-        c_fecha = next((c for c in df.columns if "FECHA" in c), None)
-        c_inv = next((c for c in df.columns if "INVERTIDO" in c or "TOTAL" in c), None)
-
-        if not c_fecha or not c_inv:
-            return pd.DataFrame()
-
-        df['Fecha_Clean'] = pd.to_datetime(df[c_fecha], errors='coerce', dayfirst=True)
-        df['Invertido_Clean'] = clean_numeric_series(df[c_inv])
-        df['Token_Clean'] = token_name
-
-        return df[['Fecha_Clean', 'Invertido_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
-    except Exception:
+@st.cache_data(ttl=10)
+def load_tx_sheet(url, token_name):
+    df = read_raw_sheet(url)
+    if df.empty:
         return pd.DataFrame()
-
-@st.cache_data(ttl=30)
-def load_history_data():
-    df_xrp = process_transaction_sheet(SHEET_XRP_URL, "XRP")
-    df_xlm = process_transaction_sheet(SHEET_XLM_URL, "XLM")
-
-    frames = [f for f in [df_xrp, df_xlm] if not f.empty]
-    if frames:
-        df_all = pd.concat(frames, ignore_index=True)
-        return df_all.sort_values('Fecha_Clean')
+    
+    header_idx = None
+    for idx, row in df.iterrows():
+        row_str = "".join(row.astype(str).values).upper()
+        if "FECHA" in row_str and "CANTIDAD" in row_str:
+            header_idx = idx
+            break
+            
+    if header_idx is not None:
+        df.columns = df.iloc[header_idx].astype(str).str.strip()
+        df = df.iloc[header_idx + 1:].reset_index(drop=True)
+    
+    # Renombrar columnas clave por posición o coincidencia
+    mapping = {}
+    for c in df.columns:
+        c_upper = c.upper()
+        if 'FECHA' in c_upper:
+            mapping[c] = 'Fecha'
+        elif 'CANTIDAD' in c_upper:
+            mapping[c] = 'Cantidad'
+        elif 'PRECIO UNITARIO' in c_upper:
+            mapping[c] = 'PrecioUnitario'
+        elif 'TOTAL INVERTIDO' in c_upper or 'INVERTIDO' in c_upper:
+            mapping[c] = 'Invertido'
+            
+    df = df.rename(columns=mapping)
+    
+    if 'Fecha' in df.columns and 'Cantidad' in df.columns:
+        df['Fecha'] = pd.to_datetime(df['Fecha'], errors='coerce')
+        df['Cantidad'] = def_clean_numeric_series(df['Cantidad'])
+        if 'PrecioUnitario' in df.columns:
+            df['PrecioUnitario'] = def_clean_numeric_series(df['PrecioUnitario'])
+        else:
+            df['PrecioUnitario'] = 0.0
+            
+        if 'Invertido' in df.columns:
+            df['Invertido'] = def_clean_numeric_series(df['Invertido'])
+        else:
+            df['Invertido'] = df['Cantidad'] * df['PrecioUnitario']
+            
+        df['Token'] = token_name
+        df = df.dropna(subset=['Fecha']).sort_values('Fecha').reset_index(drop=True)
+        return df[['Fecha', 'Token', 'Cantidad', 'PrecioUnitario', 'Invertido']]
+        
     return pd.DataFrame()
 
-df, custody_data = load_resumen_data()
-df_hist = load_history_data()
+# Cargar datos principales
+df_resumen = load_resumen_data()
+df_xrp = load_tx_sheet(SHEET_XRP_URL, "XRP")
+df_xlm = load_tx_sheet(SHEET_XLM_URL, "XLM")
 
-st.title("⚡ Control de Portfolio Cripto")
-st.caption("Sincronizado en tiempo real con Google Sheets")
+# Encabezado Principal de la App
+st.markdown("<h1 style='text-align: center; color: #f0f2f6;'>⚡ Control de Portfolio Cripto</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #808495;'>Sincronizado en tiempo real con Google Sheets</p>", unsafe_allow_html=True)
+st.markdown("---")
 
-if st.sidebar.button("🔄 Actualizar Datos"):
-    st.cache_data.clear()
-    st.rerun()
+# Calcular KPIs globales
+total_invertido_val = 0.0
+valor_actual_val = 0.0
+
+if not df_resumen.empty:
+    if 'Inversión Total (€)' in df_resumen.columns:
+        total_invertido_val = df_resumen['Inversión Total (€)'].sum()
+    if 'Valor Actual (€)' in df_resumen.columns:
+        valor_actual_val = df_resumen['Valor Actual (€)'].sum()
+
+pnl_val = valor_actual_val - total_invertido_val
+rendimiento_val = (pnl_val / total_invertido_val * 100) if total_invertido_val > 0 else 0.0
+
+# Tarjetas KPI
+col1, col2 = st.columns(2)
+with col1:
+    st.metric("Inversión Total", f"{total_invertido_val:,.2f} €")
+    st.metric("P&L No Realizado", f"{pnl_val:,.2f} €", delta=f"{pnl_val:,.2f} €")
+with col2:
+    st.metric("Valor Actual", f"{valor_actual_val:,.2f} €")
+    st.metric("Rendimiento Total", f"{rendimiento_val:,.2f} %")
 
 st.markdown("---")
 
-if not df.empty:
-    # 1. MÉTRICAS GENERALES (KPIs)
-    inv_total = float(df["Inversión Total (€)"].sum()) if "Inversión Total (€)" in df.columns else 0.0
-    val_actual = float(df["Valor Actual (€)"].sum()) if "Valor Actual (€)" in df.columns else 0.0
+# -------------------------------------------------------------------------
+# GRÁFICO HISTÓRICO AVANZADO ESTILO KOINLY (Con interpolación automática)
+# -------------------------------------------------------------------------
+st.subheader("📊 Evolución Histórica por Activo (Estilo Koinly)")
 
-    pnl_col = next((c for c in df.columns if "P&L" in c.upper() or "PNL" in c.upper()), None)
-    if pnl_col and "P&L No Realizado (€)" in df.columns:
-        pnl_eur = float(df["P&L No Realizado (€)"].sum())
+def crear_df_historico(df_tx, token_name, precio_actual_ref):
+    if df_tx.empty:
+        return pd.DataFrame()
+    
+    # Ordenar cronológicamente
+    df = df_tx.sort_values('Fecha').copy()
+    df['CantidadAcum'] = df['Cantidad'].cumsum()
+    df['InvertidoAcum'] = df['Invertido'].cumsum()
+    
+    # Crear un rango de fechas diario desde la primera transacción hasta hoy
+    min_date = df['Fecha'].min()
+    max_date = pd.Timestamp.today()
+    
+    if pd.isna(min_date):
+        return pd.DataFrame()
+        
+    date_range = pd.date_range(start=min_date, end=max_date, freq='D')
+    df_full = pd.DataFrame({'Fecha': date_range})
+    
+    # Fusionar con las transacciones reales
+    df_merged = pd.merge_asof(df_full, df, on='Fecha', direction='backward')
+    df_merged['Token'] = token_name
+    df_merged['CantidadAcum'] = df_merged['CantidadAcum'].fillna(0)
+    df_merged['InvertidoAcum'] = df_merged['InvertidoAcum'].fillna(0)
+    
+    # Rellenar precios de forma interpolada lineal si hay vacíos
+    if 'PrecioUnitario' in df_merged.columns:
+        df_merged['PrecioUnitario'] = df_merged['PrecioUnitario'].replace(0, pd.NA).ffill().bfill()
+        df_merged['PrecioUnitario'] = df_merged['PrecioUnitario'].fillna(precio_actual_ref)
     else:
-        pnl_eur = val_actual - inv_total
+        df_merged['PrecioUnitario'] = precio_actual_ref
+        
+    # Calcular el valor de mercado histórico diario
+    df_merged['ValorMercado'] = df_merged['CantidadAcum'] * df_merged['PrecioUnitario']
+    
+    return df_merged[['Fecha', 'Token', 'CantidadAcum', 'InvertidoAcum', 'ValorMercado']]
 
-    pnl_pct = (pnl_eur / inv_total * 100) if inv_total > 0 else 0.0
+# Obtener precios actuales de referencia desde el resumen si están disponibles
+precio_xrp_ref = 1.24  # Valor por defecto orientativo
+precio_xlm_ref = 0.16
 
-    c1, c2, c3, c4 = st.columns(4)
-    with c1: st.metric("Inversión Total", f"{inv_total:,.2f} €")
-    with c2: st.metric("Valor Actual", f"{val_actual:,.2f} €")
-    with c3: st.metric("P&L No Realizado", f"{pnl_eur:,.2f} €", delta=f"{pnl_eur:,.2f} €")
-    with c4: st.metric("Rendimiento Total", f"{pnl_pct:.2f} %", delta=f"{pnl_pct:.2f} %")
+if not df_resumen.empty:
+    match_xrp = df_resumen[df_resumen['Token'] == 'XRP']
+    if not match_xrp.empty and 'Precio Actual (€)' in match_xrp.columns:
+        precio_xrp_ref = float(match_xrp['Precio Actual (€)'].values[0])
+        
+    match_xlm = df_resumen[df_resumen['Token'] == 'XLM']
+    if not match_xlm.empty and 'Precio Actual (€)' in match_xlm.columns:
+        precio_xlm_ref = float(match_xlm['Precio Actual (€)'].values[0])
 
-    st.markdown("---")
+hist_xrp = crear_df_historico(df_xrp, "XRP", precio_xrp_ref)
+hist_xlm = crear_df_historico(df_xlm, "XLM", precio_xlm_ref)
+df_hist_total = pd.concat([hist_xrp, hist_xlm], ignore_index=True)
 
-    # ==============================================================================
-    # BLOQUE 1: DESGLOSE DE POSICIONES Y CUSTODIA DIRECTA DE RESUMEN
-    # ==============================================================================
-    st.subheader("💼 Desglose de Posiciones por Activo")
-
-    for index, row in df.iterrows():
-        token = str(row.get("Token", "N/A"))
-        cant = float(row.get("Cantidad Total TK", 0.0))
-        p_medio = float(row.get("Precio Medio (€)", 0.0))
-        p_act = float(row.get("Precio Actual (€)", 0.0))
-        inv_indiv = float(row.get("Inversión Total (€)", 0.0))
-        val_indiv = float(row.get("Valor Actual (€)", 0.0))
-
-        pnl_val = row.get("P&L No Realizado (€)", val_indiv - inv_indiv)
-        pnl_pct_val = row.get("P&L No Realizado (%)", (pnl_val / inv_indiv * 100) if inv_indiv > 0 else 0.0)
-
-        pnl_indiv_eur = float(pnl_val)
-        pnl_indiv_pct = float(pnl_pct_val)
-        color_pnl = "#10b981" if pnl_indiv_eur >= 0 else "#ef4444"
-
-        with st.expander(f"📌 {token} — Balance: {cant:,.2f} {token} | Valor: {val_indiv:,.2f} €", expanded=True):
-            st.markdown(f"""
-            <div style="background-color: #151921; padding: 12px; border-radius: 10px; border: 1px solid #262c3a; font-size: 14px; color: #ffffff;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <div><b>Balance:</b> {cant:,.2f} {token}</div>
-                    <div><b>Precio Medio:</b> {p_medio:,.4f} €</div>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <div><b>Valor Estimado:</b> {val_indiv:,.2f} €</div>
-                    <div><b>Precio Actual:</b> {p_act:,.4f} €</div>
-                </div>
-                <hr style="border: 0.5px solid #262c3a; margin: 8px 0;">
-                <div style="display: flex; justify-content: space-between; font-weight: bold;">
-                    <div>Invertido: {inv_indiv:,.2f} €</div>
-                    <div style="color: {color_pnl};">P&L: {pnl_indiv_eur:,.2f} € ({pnl_indiv_pct:.2f}%)</div>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-
-            # Desglose de custodia desde la tabla de Resumen
-            tok_custody = custody_data.get(token, {})
-            if tok_custody:
-                st.markdown("<div style='margin-top: 10px; font-weight: bold; font-size: 13px;'>🔒 Custodia Actual (Wallet / Holding):</div>", unsafe_allow_html=True)
-
-                for w_name, w_cant in tok_custody.items():
-                    if w_cant > 0:
-                        w_val = w_cant * p_act
-                        w_pct = (w_cant / cant * 100) if cant > 0 else 0.0
-
-                        st.markdown(f"""
-                        <div style="display: flex; justify-content: space-between; background-color: #1a202c; padding: 6px 10px; border-radius: 6px; margin-top: 4px; font-size: 12px;">
-                            <div><b>{w_name}</b></div>
-                            <div>{w_cant:,.2f} {token} ({w_val:,.2f} €)</div>
-                            <div style="color: #3b82f6;"><b>{w_pct:.1f}%</b></div>
-                        </div>
-                        """, unsafe_allow_html=True)
-
-    st.markdown("---")
-
-    # ==============================================================================
-    # BLOQUE 2: GRÁFICOS (DISTRIBUCIÓN DE CAPITAL + HISTÓRICO SEPARADO)
-    # ==============================================================================
-    g1, g2 = st.columns(2)
-    with g1:
-        st.subheader("📊 Distribución del Capital")
-        fig_pie = px.pie(df, values="Valor Actual (€)", names="Token", hole=0.55,
-                         color="Token", color_discrete_map={'XRP': '#2563eb', 'XLM': '#10b981'})
-        fig_pie.update_layout(
-            paper_bgcolor='rgba(0,0,0,0)',
-            plot_bgcolor='rgba(0,0,0,0)',
-            font=dict(color="#ffffff"),
-            margin=dict(l=10, r=10, t=10, b=10)
-        )
-        st.plotly_chart(fig_pie, use_container_width=True)
-
-    with g2:
-        st.subheader("📈 Evolución Histórica por Activo (Estilo Koinly)")
-        if not df_hist.empty:
-            fig_koinly = go.Figure()
-
-            colors = {'XRP': '#2563eb', 'XLM': '#10b981'}
-            for token_name in df_hist['Token_Clean'].unique():
-                df_t = df_hist[df_hist['Token_Clean'] == token_name]
-                if not df_t.empty:
-                    df_grouped = df_t.groupby('Fecha_Clean')['Invertido_Clean'].sum().reset_index()
-                    df_grouped['Coste Acumulado (€)'] = df_grouped['Invertido_Clean'].cumsum()
-
-                    fig_koinly.add_trace(go.Scatter(
-                        x=df_grouped['Fecha_Clean'],
-                        y=df_grouped['Coste Acumulado (€)'],
-                        mode='lines+markers',
-                        name=f'Coste {token_name} (€)',
-                        line=dict(color=colors.get(token_name, '#f59e0b'), width=3)
-                    ))
-
-            fig_koinly.update_layout(
-                paper_bgcolor='rgba(0,0,0,0)',
-                plot_bgcolor='rgba(0,0,0,0)',
-                font=dict(color="#ffffff"),
-                margin=dict(l=10, r=10, t=10, b=10),
-                xaxis=dict(showgrid=False, title=None),
-                yaxis=dict(showgrid=True, gridcolor='#262c3a', title="Euros (€)"),
-                hovermode="x unified"
+if not df_hist_total.empty:
+    fig_koinly = px.area(
+        df_hist_total,
+        x='Fecha',
+        y='ValorMercado',
+        color='Token',
+        labels={'ValorMercado': 'Valor (€)', 'Fecha': 'Fecha', 'Token': 'Activo'},
+        color_discrete_map={'XRP': '#2962ff', 'XLM': '#00e676'}
+    )
+    
+    # Añadir líneas de coste de adquisición por debajo al estilo Koinly
+    for token_name, color_line in [('XRP', '#1565c0'), ('XLM', '#00c853')]:
+        df_t = df_hist_total[df_hist_total['Token'] == token_name]
+        if not df_t.empty:
+            fig_koinly.add_trace(
+                go.Scatter(
+                    x=df_t['Fecha'],
+                    y=df_t['InvertidoAcum'],
+                    mode='lines',
+                    name=f'Coste {token_name} (€)',
+                    line=dict(color=color_line, width=2, dash='dash')
+                )
             )
-            st.plotly_chart(fig_koinly, use_container_width=True)
-        else:
-            st.info("Cargando datos de evolución temporal...")
 
-    st.markdown("---")
+    fig_koinly.update_layout(
+        template='plotly_dark',
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        margin=dict(l=10, r=10, t=30, b=10)
+    )
+    st.plotly_chart(fig_koinly, use_container_width=True)
+else:
+    st.info("Añade transacciones en tus hojas de Google Sheets para mostrar la evolución histórica.")
 
-    # CALCULADORA
-    st.subheader("🧮 Calculadora de Adquisición de Tokens")
-    calc_c1, calc_c2 = st.columns([1, 2])
-    with calc_c1:
-        token_sel = st.selectbox("Selecciona el token:", df["Token"].tolist())
-        euros_inv = st.number_input("Monto a invertir (€):", min_value=1.0, value=50.0, step=10.0)
-        row_token = df[df["Token"] == token_sel].iloc[0]
-        precio_ref = float(row_token["Precio Actual (€)"]) if "Precio Actual (€)" in df.columns else 1.0
-        tokens_adquiridos = euros_inv / precio_ref if precio_ref > 0 else 0.0
+st.markdown("---")
 
-    with calc_c2:
-        st.info(f"💡 Al precio actual de {precio_ref:,.4f} € por {token_sel}:")
-        res_c1, res_c2 = st.columns(2)
-        with res_c1:
-            st.metric(f"Tokens {token_sel} a adquirir", f"+{tokens_adquiridos:,.2f} {token_sel}")
-        with res_c2:
-            nuevo_balance = float(row_token["Cantidad Total TK"]) + tokens_adquiridos
-            st.metric("Nuevo Balance Estimado", f"{nuevo_balance:,.2f} {token_sel}")
+# Desglose de posiciones existente
+st.subheader("💼 Desglose de Posiciones por Activo")
+if not df_resumen.empty:
+    st.dataframe(df_resumen, use_container_width=True)
+else:
+    st.info("Cargando datos de posiciones...")
