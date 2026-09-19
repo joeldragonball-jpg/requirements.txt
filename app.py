@@ -3,20 +3,29 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-# Configuración de página nativa de Streamlit
+# Configuración de página
 st.set_page_config(page_title="Control de Portfolio Cripto", page_icon="⚡", layout="wide")
-# Ocultar elementos de Streamlit para que parezca una app móvil nativa
+
+# Estilos CSS avanzados para forzar el fondo, ocultar elementos de Streamlit y limpiar la interfaz móvil
 hide_streamlit_style = """
     <style>
+    /* Forzar el color de fondo principal en toda la aplicación */
+    .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
+        background-color: #0e1117 !important;
+    }
+    
+    /* Ocultar elementos de desarrollo de Streamlit */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
+    
+    /* Ajuste de márgenes para la versión móvil */
     .stApp { margin-top: -20px; }
     </style>
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-# Inyectar el Manifest para personalizar la instalación como App en el móvil
+# Inyectar el Manifest para personalizar la instalación como PWA en el móvil
 pwa_header = """
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0e1117">
