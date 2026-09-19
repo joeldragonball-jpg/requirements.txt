@@ -15,8 +15,9 @@ SHEET_XLM_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyr
 def load_resumen_data():
     try:
         df = pd.read_csv(SHEET_RESUMEN_URL)
-        df.columns = df.columns.str.strip()
+        df.columns = df.columns.astype(str).str.strip()
         
+        # Limpieza de columnas numéricas
         cols_num = ["Cantidad Total TK", "Inversión Total (€)", "Precio Medio (€)", "Precio Actual (€)", "Valor Actual (€)", "P&L No Realizado (€)", "P&L No Realizado (%)"]
         for col in cols_num:
             if col in df.columns:
@@ -86,7 +87,7 @@ if st.sidebar.button("🔄 Actualizar Datos"):
 st.markdown("---")
 
 if not df.empty:
-    # 1. MÉTRICAS GENERALES (KPIs) — BLOQUE CERRADO
+    # 1. MÉTRICAS GENERALES (KPIs) — RESTAURADO AL 100%
     inv_total = float(df["Inversión Total (€)"].sum()) if "Inversión Total (€)" in df.columns else 0.0
     val_actual = float(df["Valor Actual (€)"].sum()) if "Valor Actual (€)" in df.columns else 0.0
     
@@ -103,7 +104,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # PASO 1: DESGLOSE COMPACTO MÓVIL — BLOQUE CERRADO
+    # PASO 1: DESGLOSE COMPACTO MÓVIL — RESTAURADO AL 100%
     # ==============================================================================
     st.subheader("💼 Desglose de Posiciones por Activo")
 
@@ -144,7 +145,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # PASO 2: GRÁFICOS (DONUT DE CUSTODIA LEDGER/KRAKEN + HISTÓRICO)
+    # PASO 2: GRÁFICOS (DISTRIBUCIÓN POR CUSTODIA + EVOLUCIÓN HISTÓRICA)
     # ==============================================================================
     g1, g2 = st.columns(2)
     with g1:
@@ -203,7 +204,7 @@ if not df.empty:
 
     st.markdown("---")
 
-    # 4. CALCULADORA DE ADQUISICIÓN DE TOKENS — BLOQUE CERRADO
+    # 4. CALCULADORA DE ADQUISICIÓN DE TOKENS — INTACTO
     st.subheader("🧮 Calculadora de Adquisición de Tokens")
     calc_c1, calc_c2 = st.columns([1, 2])
     with calc_c1:
