@@ -31,44 +31,70 @@ def load_resumen_data():
     except Exception:
         return pd.DataFrame()
 
+def process_transaction_sheet(url, token_default):
+    try:
+        raw_df = pd.read_csv(url, header=None)
+        
+        # Encontrar la fila donde empieza la cabecera buscando 'FECHA'
+        header_row = None
+        for idx, row in raw_df.iterrows():
+            row_str = row.astype(str).str.upper().tolist()
+            if any("FECHA" in cell for cell in row_str):
+                header_row = idx
+                break
+                
+        if header_row is None:
+            return pd.DataFrame()
+
+        # Cargar el dataframe desde la fila de cabecera correcta
+        df = pd.read_csv(url, skiprows=header_row)
+        df.columns = [str(c).strip().upper() for c in df.columns]
+
+        # Mapeo flexible de columnas
+        col_fecha = next((c for c in df.columns if "FECHA" in c), None)
+        col_monto = next((c for c in df.columns if "TOTAL INVERTIDO" in c or "INVERTIDO" in c), None)
+        col_holding = next((c for c in df.columns if "HOLDING" in c or "WALLET" in c), None)
+        col_tipo = next((c for c in df.columns if "TIPO" in c), None)
+
+        if not col_fecha or not col_monto:
+            return pd.DataFrame()
+
+        # Filtrar compras (si existe la columna tipo)
+        if col_tipo:
+            df = df[df[col_tipo].astype(str).str.upper().str.contains("COMPRA", na=True)]
+
+        # Limpieza de fechas
+        df['Fecha_Clean'] = pd.to_datetime(df[col_fecha], errors='coerce', dayfirst=True)
+        
+        # Limpieza de montos numéricos
+        montos_str = df[col_monto].astype(str).str.replace('€', '', regex=False).str.replace(' ', '', regex=False)
+        montos_str = montos_str.apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
+        df['Invertido_Clean'] = pd.to_numeric(montos_str, errors='coerce').fillna(0.0)
+
+        # Captura de Custodia (Ledger / Kraken)
+        if col_holding:
+            df['Holding_Clean'] = df[col_holding].astype(str).str.strip().str.upper()
+            df['Holding_Clean'] = df['Holding_Clean'].replace({'NAN': 'DESCONOCIDO', '': 'DESCONOCIDO'})
+        else:
+            df['Holding_Clean'] = 'DESCONOCIDO'
+
+        df['Token_Clean'] = token_default
+
+        df_res = df[['Fecha_Clean', 'Invertido_Clean', 'Holding_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
+        df_res = df_res[df_res['Invertido_Clean'] > 0]
+        return df_res
+    except Exception:
+        return pd.DataFrame()
+
 @st.cache_data(ttl=30)
 def load_history_data():
-    dataframes = []
-    for url, token_name in [(SHEET_XRP_URL, "XRP"), (SHEET_XLM_URL, "XLM")]:
-        try:
-            df_temp = pd.read_csv(url)
-            df_temp.columns = [str(c).strip().upper() for c in df_temp.columns]
-            
-            # Identificar columnas automáticamente
-            fecha_col = next((c for c in df_temp.columns if "FECHA" in c), None)
-            inv_col = next((c for c in df_temp.columns if "INVERTIDO" in c or "TOTAL" in c or "EUR" in c), None)
-            wallet_col = next((c for c in df_temp.columns if "HOLDING" in c or "WALLET" in c), None)
-            
-            if fecha_col and inv_col:
-                fechas = pd.to_datetime(df_temp[fecha_col], errors='coerce', dayfirst=True)
-                
-                montos_str = df_temp[inv_col].astype(str).str.replace('€', '', regex=False).str.replace(' ', '', regex=False)
-                montos_str = montos_str.apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
-                montos = pd.to_numeric(montos_str, errors='coerce').fillna(0.0)
-                
-                wallets = df_temp[wallet_col].astype(str).str.strip().str.upper() if wallet_col else "OTRO"
-                
-                df_clean = pd.DataFrame({
-                    'Fecha': fechas,
-                    'Invertido': montos,
-                    'Wallet': wallets,
-                    'Token': token_name
-                }).dropna(subset=['Fecha'])
-                
-                df_clean = df_clean[df_clean['Invertido'] > 0]
-                if not df_clean.empty:
-                    dataframes.append(df_clean)
-        except Exception:
-            continue
-
-    if dataframes:
-        df_all = pd.concat(dataframes, ignore_index=True)
-        return df_all.sort_values('Fecha')
+    df_xrp = process_transaction_sheet(SHEET_XRP_URL, "XRP")
+    df_xlm = process_transaction_sheet(SHEET_XLM_URL, "XLM")
+    
+    frames = [f for f in [df_xrp, df_xlm] if not f.empty]
+    if frames:
+        df_all = pd.concat(frames, ignore_index=True)
+        return df_all.sort_values('Fecha_Clean')
     return pd.DataFrame()
 
 df = load_resumen_data()
@@ -101,7 +127,7 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # PASO 1: DESGLOSE COMPACTO MÓVIL (BLINDADO Y CERRADO) — NO SE TOCA
+    # PASO 1: DESGLOSE COMPACTO MÓVIL — NO SE TOCA
     # ==============================================================================
     st.subheader("💼 Desglose de Posiciones por Activo")
 
@@ -142,21 +168,20 @@ if not df.empty:
     st.markdown("---")
 
     # ==============================================================================
-    # PASO 2: GRÁFICOS (DONUT ANIDADO + HISTÓRICO KOINLY)
+    # PASO 2: GRÁFICOS CORREGIDOS (DONUT ANIDADO + KOINLY)
     # ==============================================================================
     g1, g2 = st.columns(2)
     with g1:
-        st.subheader("📊 Distribución y Custodia de Capital")
+        st.subheader("📊 Distribución de Capital y Custodia")
         
-        # Donut de 2 Niveles: Anillo Interior (Token) + Anillo Exterior (Wallet / Exchange)
-        if not df_hist.empty and "Wallet" in df_hist.columns:
-            df_sun = df_hist.groupby(["Token", "Wallet"])["Invertido"].sum().reset_index()
+        if not df_hist.empty:
+            df_sun = df_hist.groupby(["Token_Clean", "Holding_Clean"])["Invertido_Clean"].sum().reset_index()
             fig_pie = px.sunburst(
                 df_sun,
-                path=['Token', 'Wallet'],
-                values='Invertido',
-                color='Token',
-                color_discrete_map={'XRP': '#3b82f6', 'XLM': '#10b981'}
+                path=['Token_Clean', 'Holding_Clean'],
+                values='Invertido_Clean',
+                color='Token_Clean',
+                color_discrete_map={'XRP': '#2563eb', 'XLM': '#10b981'}
             )
             fig_pie.update_layout(
                 paper_bgcolor='rgba(0,0,0,0)',
@@ -173,12 +198,12 @@ if not df.empty:
     with g2:
         st.subheader("📈 Evolución Histórica (Estilo Koinly)")
         if not df_hist.empty:
-            df_grouped = df_hist.groupby('Fecha')['Invertido'].sum().reset_index()
-            df_grouped['Coste Acumulado (€)'] = df_grouped['Invertido'].cumsum()
+            df_grouped = df_hist.groupby('Fecha_Clean')['Invertido_Clean'].sum().reset_index()
+            df_grouped['Coste Acumulado (€)'] = df_grouped['Invertido_Clean'].cumsum()
 
             fig_koinly = go.Figure()
             fig_koinly.add_trace(go.Scatter(
-                x=df_grouped['Fecha'],
+                x=df_grouped['Fecha_Clean'],
                 y=df_grouped['Coste Acumulado (€)'],
                 mode='lines+markers',
                 name='Coste Base (€)',
@@ -198,7 +223,7 @@ if not df.empty:
             )
             st.plotly_chart(fig_koinly, use_container_width=True)
         else:
-            st.warning("Verifica que las pestañas contengan las columnas de FECHA y TOTAL INVERTIDO (€).")
+            st.warning("Revisa la conexión con las pestañas de transacciones.")
 
     st.markdown("---")
 
