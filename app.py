@@ -1,9 +1,3 @@
-# Inyectar el Manifest para personalizar la instalación como App en el móvil
-pwa_header = """
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0e1117">
-"""
-st.markdown(pwa_header, unsafe_allow_html=True)
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -21,6 +15,13 @@ hide_streamlit_style = """
     </style>
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+# Inyectar el Manifest para personalizar la instalación como App en el móvil
+pwa_header = """
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0e1117">
+"""
+st.markdown(pwa_header, unsafe_allow_html=True)
 
 # URLs CSV de Google Sheets
 SHEET_RESUMEN_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=1415212158&single=true&output=csv"
