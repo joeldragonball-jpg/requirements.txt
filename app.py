@@ -17,7 +17,7 @@ def read_sheet_with_dynamic_header(url, target_keyword):
         raw_df = pd.read_csv(url, header=None, on_bad_lines='skip')
         header_idx = None
         for idx, row in raw_df.iterrows():
-            row_str = " ".join(row.astype(str).values).upper()
+            row_str = " ".join(row.fillna('').astype(str).values).upper()
             if target_keyword.upper() in row_str:
                 header_idx = idx
                 break
@@ -32,6 +32,14 @@ def read_sheet_with_dynamic_header(url, target_keyword):
     except Exception:
         return pd.DataFrame()
 
+def clean_numeric_series(series):
+    """Limpia series numéricas de forma vectorial sin usar apply/lambda para evitar TypeError."""
+    s_str = series.fillna('0').astype(str)
+    s_str = s_str.str.replace('€', '', regex=False).str.replace('%', '', regex=False).str.replace(' ', '', regex=False)
+    # Remplazar puntos de miles y comas decimales
+    s_str = s_str.str.replace('.', '', regex=False).str.replace(',', '.', regex=False)
+    return pd.to_numeric(s_str, errors='coerce').fillna(0.0)
+
 @st.cache_data(ttl=10)
 def load_resumen_data():
     df = read_sheet_with_dynamic_header(SHEET_RESUMEN_URL, "Token")
@@ -43,9 +51,7 @@ def load_resumen_data():
     for col in cols_num:
         col_match = next((c for c in df.columns if col.upper() in c.upper()), None)
         if col_match:
-            df[col_match] = df[col_match].astype(str).str.replace('€', '', regex=False).str.replace('%', '', regex=False).str.replace(' ', '', regex=False)
-            df[col_match] = df[col_match].apply(lambda x: str(x).replace('.', '').replace(',', '.') if ',' in str(x) else str(x))
-            df[col] = pd.to_numeric(df[col_match], errors='coerce').fillna(0.0)
+            df[col] = clean_numeric_series(df[col_match])
 
     # Identificar columna Token
     tok_col = next((c for c in df.columns if "TOKEN" in c.upper()), "Token")
@@ -70,14 +76,10 @@ def process_transaction_sheet(url, token_name):
         return pd.DataFrame()
 
     df['Fecha_Clean'] = pd.to_datetime(df[c_fecha], errors='coerce', dayfirst=True)
-    
-    # Limpieza blindada de montos numéricos contra TypeError
-    montos_str = df[c_inv].astype(str).str.replace('€', '', regex=False).str.replace(' ', '', regex=False)
-    montos_clean = montos_str.apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
-    df['Invertido_Clean'] = pd.to_numeric(montos_clean, errors='coerce').fillna(0.0)
+    df['Invertido_Clean'] = clean_numeric_series(df[c_inv])
 
     if c_holding:
-        df['Holding_Clean'] = df[c_holding].astype(str).str.strip().str.upper()
+        df['Holding_Clean'] = df[c_holding].fillna('OTRO').astype(str).str.strip().str.upper()
         df['Holding_Clean'] = df['Holding_Clean'].replace({'NAN': 'OTRO', '': 'OTRO'})
     else:
         df['Holding_Clean'] = 'OTRO'
@@ -232,7 +234,7 @@ if not df.empty:
 
     st.markdown("---")
 
-    # CALCULADORA
+    # CALCULADORA DE ADQUISICIÓN DE TOKENS
     st.subheader("🧮 Calculadora de Adquisición de Tokens")
     calc_c1, calc_c2 = st.columns([1, 2])
     with calc_c1:
