@@ -6,40 +6,44 @@ import plotly.graph_objects as go
 # Configuración de la página
 st.set_page_config(page_title="Control de Portfolio Cripto", page_icon="⚡", layout="wide")
 
-# ESTILOS CSS CON ALTO CONTRASTE (Textos en Blanco Puro)
+# ==============================================================================
+# LÍNEA 12: TU ENLACE CSV DE GOOGLE SHEETS INTEGRADO
+# ==============================================================================
+SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=1415212158&single=true&output=csv"
+
+# ESTILOS CSS HIGH-CONTRAST Y RESPONSIVE (MÓVIL & ESCRITORIO)
 st.markdown("""
     <style>
     /* Fondo General */
-    .stApp { background-color: #0d1117 !important; color: #ffffff !important; }
+    .stApp { background-color: #0b0e14 !important; color: #f3f4f6 !important; }
     
-    /* Textos y Etiquetas de Métricas en Blanco */
-    div[data-testid="stMetricLabel"] { color: #f3f4f6 !important; font-size: 15px !important; font-weight: 600 !important; }
-    div[data-testid="stMetricValue"] { color: #ffffff !important; font-weight: bold !important; }
+    /* Textos, Títulos y Etiquetas en blanco */
+    h1, h2, h3, h4, p, span, label { color: #ffffff !important; }
     
-    /* Cajas de Métricas */
-    .stMetric { background-color: #161b22 !important; padding: 18px !important; border-radius: 10px !important; border: 1px solid #30363d !important; }
+    /* Métricas Generales */
+    div[data-testid="stMetricLabel"] { color: #9ca3af !important; font-size: 14px !important; font-weight: 600 !important; }
+    div[data-testid="stMetricValue"] { color: #ffffff !important; font-weight: 700 !important; }
+    .stMetric { background-color: #151921 !important; padding: 16px !important; border-radius: 12px !important; border: 1px solid #262c3a !important; }
     
-    /* Desplegables / Expanders */
-    div[data-testid="stExpander"] { background-color: #161b22 !important; border-radius: 10px !important; border: 1px solid #30363d !important; margin-bottom: 12px !important; }
+    /* Desplegables de Activos */
+    div[data-testid="stExpander"] { background-color: #151921 !important; border-radius: 12px !important; border: 1px solid #262c3a !important; margin-bottom: 12px !important; }
     div[data-testid="stExpander"] * { color: #ffffff !important; }
     
-    /* Subtítulos y Títulos */
-    h1, h2, h3, p, span, label { color: #ffffff !important; }
-    
-    /* Campos de Entrada / Calculadora */
-    .stNumberInput input, .stSelectbox div { color: #ffffff !important; background-color: #21262d !important; }
+    /* Texto blanco en Selectbox e Inputs de la calculadora */
+    div[data-baseweb="select"] > div { background-color: #1f2937 !important; color: #ffffff !important; border-color: #374151 !important; }
+    div[data-baseweb="select"] span { color: #ffffff !important; }
+    ul[data-baseweb="menu"] { background-color: #1f2937 !important; }
+    li[data-baseweb="option"] { color: #ffffff !important; }
+    .stNumberInput input { color: #ffffff !important; background-color: #1f2937 !important; border-color: #374151 !important; }
     </style>
 """, unsafe_allow_html=True)
-
-# PEGA AQUÍ TU ENLACE CSV DE GOOGLE SHEETS ENTRE COMILLAS
-SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=1415212158&single=true&output=csv"
 
 @st.cache_data(ttl=10)
 def load_data():
     try:
         df = pd.read_csv(SHEET_CSV_URL)
         
-        # Limpieza de formatos de texto a número (formato ES)
+        # Limpieza de columnas numéricas (formato ES)
         cols_num = ["Cantidad Total TK", "Inversión Total (€)", "Precio Medio (€)", "Precio Actual (€)", "Valor Actual (€)", "PnL No Realizado (€)", "PnL No Realizado (%)"]
         
         for col in cols_num:
@@ -73,7 +77,11 @@ if not df.empty:
     inv_total = float(df["Inversión Total (€)"].sum()) if "Inversión Total (€)" in df.columns else 0.0
     val_actual = float(df["Valor Actual (€)"].sum()) if "Valor Actual (€)" in df.columns else 0.0
     
-    pnl_eur = float(df["PnL No Realizado (€)"].sum()) if "PnL No Realizado (€)" in df.columns else (val_actual - inv_total)
+    if "PnL No Realizado (€)" in df.columns:
+        pnl_eur = float(df["PnL No Realizado (€)"].sum())
+    else:
+        pnl_eur = val_actual - inv_total
+        
     pnl_pct = (pnl_eur / inv_total * 100) if inv_total > 0 else 0.0
 
     c1, c2, c3, c4 = st.columns(4)
@@ -84,7 +92,7 @@ if not df.empty:
 
     st.markdown("---")
 
-    # 2. DESGLOSE DE POSICIONES (ESTRUCTURA DE TABLA LIMPIA)
+    # 2. DESGLOSE DE POSICIONES
     st.subheader("💼 Desglose de Posiciones por Activo")
 
     for index, row in df.iterrows():
@@ -92,37 +100,38 @@ if not df.empty:
         cant = float(row.get("Cantidad Total TK", 0.0))
         p_medio = float(row.get("Precio Medio (€)", 0.0))
         p_act = float(row.get("Precio Actual (€)", 0.0))
-        v_act = float(row.get("Valor Actual (€)", 0.0))
-        inv = float(row.get("Inversión Total (€)", 0.0))
-        pnl = float(row.get("PnL No Realizado (€)", 0.0))
-        pnl_p = float(row.get("PnL No Realizado (%)", 0.0))
+        
+        inv_indiv = float(row.get("Inversión Total (€)", cant * p_medio))
+        val_indiv = float(row.get("Valor Actual (€)", cant * p_act))
+        
+        pnl_indiv_eur = val_indiv - inv_indiv
+        pnl_indiv_pct = (pnl_indiv_eur / inv_indiv * 100) if inv_indiv > 0 else 0.0
 
-        with st.expander(f"📌 **{token}** — Balance: {cant:,.2f} {token} | Valor: {v_act:,.2f} €"):
-            # Tabla estructurada de 4 columnas
+        with st.expander(f"📌 **{token}** — Balance: {cant:,.2f} {token} | Valor: {val_indiv:,.2f} €"):
             col_a, col_b, col_c, col_d = st.columns(4)
             with col_a:
-                st.markdown(f"**Balance Total:**\n{cant:,.4f} {token}")
-                st.markdown(f"**Valor Estimado:**\n{v_act:,.2f} €")
+                st.markdown(f"**Balance Total:**\n\n`{cant:,.4f} {token}`")
+                st.markdown(f"**Valor Estimado:**\n\n`{val_indiv:,.2f} €`")
             with col_b:
-                st.markdown(f"**Precio Medio:**\n{p_medio:,.4f} €")
-                st.markdown(f"**Precio Actual:**\n{p_act:,.4f} €")
+                st.markdown(f"**Precio Medio:**\n\n`{p_medio:,.4f} €`")
+                st.markdown(f"**Precio Actual:**\n\n`{p_act:,.4f} €`")
             with col_c:
-                st.markdown(f"**Coste Base (Invertido):**\n{inv:,.2f} €")
+                st.markdown(f"**Coste Base (Invertido):**\n\n`{inv_indiv:,.2f} €`")
             with col_d:
-                color_str = "🟢" if pnl >= 0 else "🔴"
-                st.markdown(f"**PnL No Realizado (€):**\n{color_str} {pnl:,.2f} €")
-                st.markdown(f"**PnL No Realizado (%):**\n{pnl_p:.2f} %")
+                color_str = "🟢" if pnl_indiv_eur >= 0 else "🔴"
+                st.markdown(f"**PnL No Realizado (€):**\n\n{color_str} `{pnl_indiv_eur:,.2f} €`")
+                st.markdown(f"**PnL No Realizado (%):**\n\n`{pnl_indiv_pct:.2f} %`")
 
     st.markdown("---")
 
-    # 3. GRÁFICOS: CIRCULAR + EVOLUCIÓN TEMPORAL DE LÍNEAS
+    # 3. GRÁFICOS: CIRCULAR + RENDIMIENTO DE LA CARTERA
     g1, g2 = st.columns(2)
 
     with g1:
         st.subheader("📊 Distribución del Capital")
         fig_pie = px.pie(
             df, values="Valor Actual (€)", names="Token", hole=0.55,
-            color_discrete_sequence=["#2563eb", "#10b981"]
+            color_discrete_sequence=["#3b82f6", "#10b981"]
         )
         fig_pie.update_layout(
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
@@ -132,19 +141,21 @@ if not df.empty:
         st.plotly_chart(fig_pie, use_container_width=True)
 
     with g2:
-        st.subheader("📈 Evolución Temporal del Capital")
-        # Generación de gráfico de línea temporal comparando Inversión vs Valor Actual por token
-        fig_line = go.Figure()
-        fig_line.add_trace(go.Scatter(x=df['Token'], y=df['Inversión Total (€)'], mode='lines+markers', name='Invertido (€)', line=dict(color='#9ca3af', width=3)))
-        fig_line.add_trace(go.Scatter(x=df['Token'], y=df['Valor Actual (€)'], mode='lines+markers', name='Valor Actual (€)', line=dict(color='#3b82f6', width=3)))
+        st.subheader("📈 Rendimiento y Comparativa de la Cartera")
         
-        fig_line.update_layout(
+        fig_portfolio = go.Figure()
+        fig_portfolio.add_trace(go.Bar(x=df['Token'], y=df['Inversión Total (€)'], name='Invertido (€)', marker_color='#4b5563'))
+        fig_portfolio.add_trace(go.Bar(x=df['Token'], y=df['Valor Actual (€)'], name='Valor Actual (€)', marker_color='#3b82f6'))
+        fig_portfolio.add_trace(go.Scatter(x=df['Token'], y=df['PnL No Realizado (€)'], name='Ganancia/Pérdida (€)', mode='lines+markers', line=dict(color='#10b981', width=3)))
+
+        fig_portfolio.update_layout(
+            barmode='group',
             paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
             font=dict(color="#ffffff"),
-            xaxis=dict(showgrid=False, title="Token"),
-            yaxis=dict(showgrid=True, gridcolor='#30363d', title="Euros (€)")
+            xaxis=dict(showgrid=False),
+            yaxis=dict(showgrid=True, gridcolor='#262c3a')
         )
-        st.plotly_chart(fig_line, use_container_width=True)
+        st.plotly_chart(fig_portfolio, use_container_width=True)
 
     st.markdown("---")
 
