@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 # Configuración de página
 st.set_page_config(page_title="Control de Portfolio Cripto", page_icon="⚡", layout="wide")
 
-# Estilos CSS avanzados para un aspecto estilo Kraken Pro (Fondo Oscuro Premium)
+# Estilos CSS avanzados para fondo oscuro estilo Kraken Pro
 st.markdown("""
     <style>
     .stApp { background-color: #0b0e14; color: #e5e7eb; }
@@ -15,20 +15,33 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# PEGA AQUÍ TU ENLACE CSV PUBLICADO DE GOOGLE SHEETS
+# PEGA TU ENLACE CSV ENTRE LAS COMILLAS (OBLIGATORIO DEJAR LAS COMILLAS)
 SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=1415212158&single=true&output=csv"
 
 @st.cache_data(ttl=10)
 def load_data():
     try:
         df = pd.read_csv(SHEET_CSV_URL)
+        
+        # Limpieza robusta de columnas numéricas (formato español / texto a número)
         cols_num = ["Cantidad Total TK", "Inversión Total (€)", "Precio Medio (€)", "Precio Actual (€)", "Valor Actual (€)", "PnL No Realizado (€)", "PnL No Realizado (%)"]
+        
         for col in cols_num:
-            if col in df.columns and df[col].dtype == object:
-                df[col] = df[col].astype(str).str.replace('€', '').str.replace('.', '').str.replace(',', '.').str.strip()
-                df[col] = pd.to_numeric(df[col], errors='coerce')
+            if col in df.columns:
+                # Convertir a texto, limpiar comas, puntos y símbolo de Euro
+                df[col] = df[col].astype(str).str.replace('€', '', regex=False)
+                df[col] = df[col].str.replace('%', '', regex=False)
+                df[col] = df[col].str.replace(' ', '', regex=False)
+                
+                # Manejo de formato decimal en español (puntos de miles y coma decimal)
+                df[col] = df[col].apply(lambda x: x.replace('.', '').replace(',', '.') if ',' in x else x)
+                
+                # Convertir a numérico forzado (si falla pone 0.0)
+                df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0.0)
+
         if "Token" in df.columns:
             df = df[df["Token"].astype(str).str.upper() != "TOTAL"]
+            
         return df
     except Exception as e:
         return pd.DataFrame()
@@ -45,11 +58,16 @@ if st.sidebar.button("🔄 Actualizar datos"):
 st.markdown("---")
 
 if not df.empty:
-    # 1. MÉTRICAS GENERALES
-    inv_total = df["Inversión Total (€)"].sum() if "Inversión Total (€)" in df.columns else 0.0
-    val_actual = df["Valor Actual (€)"].sum() if "Valor Actual (€)" in df.columns else 0.0
-    pnl_eur = df["PnL No Realizado (€)"].sum() if "PnL No Realizado (€)" in df.columns else (val_actual - inv_total)
-    pnl_pct = (pnl_eur / inv_total) * 100 if inv_total > 0 else 0.0
+    # 1. MÉTRICAS GENERALES (SUMA SEGURA)
+    inv_total = float(df["Inversión Total (€)"].sum()) if "Inversión Total (€)" in df.columns else 0.0
+    val_actual = float(df["Valor Actual (€)"].sum()) if "Valor Actual (€)" in df.columns else 0.0
+    
+    if "PnL No Realizado (€)" in df.columns:
+        pnl_eur = float(df["PnL No Realizado (€)"].sum())
+    else:
+        pnl_eur = val_actual - inv_total
+        
+    pnl_pct = (pnl_eur / inv_total * 100) if inv_total > 0 else 0.0
 
     c1, c2, c3, c4 = st.columns(4)
     with c1: st.metric("Inversión Total", f"{inv_total:,.2f} €")
@@ -64,14 +82,14 @@ if not df.empty:
     st.caption("Haz clic en un token para ver el desglose detallado de balance, coste base y PnL:")
 
     for index, row in df.iterrows():
-        token = row.get("Token", "N/A")
-        cant = row.get("Cantidad Total TK", 0.0)
-        p_medio = row.get("Precio Medio (€)", 0.0)
-        p_act = row.get("Precio Actual (€)", 0.0)
-        v_act = row.get("Valor Actual (€)", 0.0)
-        inv = row.get("Inversión Total (€)", 0.0)
-        pnl = row.get("PnL No Realizado (€)", 0.0)
-        pnl_p = row.get("PnL No Realizado (%)", 0.0)
+        token = str(row.get("Token", "N/A"))
+        cant = float(row.get("Cantidad Total TK", 0.0))
+        p_medio = float(row.get("Precio Medio (€)", 0.0))
+        p_act = float(row.get("Precio Actual (€)", 0.0))
+        v_act = float(row.get("Valor Actual (€)", 0.0))
+        inv = float(row.get("Inversión Total (€)", 0.0))
+        pnl = float(row.get("PnL No Realizado (€)", 0.0))
+        pnl_p = float(row.get("PnL No Realizado (%)", 0.0))
 
         with st.expander(f"📌 **{token}** — Balance: {cant:,.2f} {token} | Valor: {v_act:,.2f} €", expanded=False):
             m1, m2, m3, m4 = st.columns(4)
@@ -91,7 +109,7 @@ if not df.empty:
 
     st.markdown("---")
 
-    # 3. GRÁFICOS VISUALES MEJORADOS (FONDO OSCURO INTEGRADO)
+    # 3. GRÁFICOS VISUALES MEJORADOS
     g1, g2 = st.columns(2)
 
     with g1:
@@ -121,7 +139,7 @@ if not df.empty:
 
     st.markdown("---")
 
-    # 4. CALCULADORA DE COMPRA RÁPIDA (XRP / XLM)
+    # 4. CALCULADORA DE COMPRA RÁPIDA
     st.subheader("🧮 Calculadora de Adquisición de Tokens")
     st.write("Calcula cuántos tokens recibirás al hacer una nueva inversión según el precio actual:")
 
@@ -131,9 +149,8 @@ if not df.empty:
         token_sel = st.selectbox("Selecciona el token:", df["Token"].tolist())
         euros_inv = st.number_input("Monto a invertir (€):", min_value=1.0, value=50.0, step=10.0)
 
-        # Obtener precio actual del token seleccionado
         row_token = df[df["Token"] == token_sel].iloc[0]
-        precio_ref = row_token["Precio Actual (€)"] if "Precio Actual (€)" in df.columns else 1.0
+        precio_ref = float(row_token["Precio Actual (€)"]) if "Precio Actual (€)" in df.columns else 1.0
 
         tokens_adquiridos = euros_inv / precio_ref if precio_ref > 0 else 0.0
 
@@ -143,7 +160,7 @@ if not df.empty:
         with res_col1:
             st.metric(f"Tokens {token_sel} a recibir", f"+{tokens_adquiridos:,.2f} {token_sel}")
         with res_col2:
-            nuevo_balance = row_token["Cantidad Total TK"] + tokens_adquiridos
+            nuevo_balance = float(row_token["Cantidad Total TK"]) + tokens_adquiridos
             st.metric("Nuevo Balance Estimado", f"{nuevo_balance:,.2f} {token_sel}")
 
     st.markdown("---")
@@ -160,4 +177,4 @@ if not df.empty:
     with sim2: st.metric("Beneficio Estimado", f"{beneficio_est:,.2f} €")
 
 else:
-    st.warning("No se pudieron cargar los datos. Revisa que el enlace CSV sea correcto.")
+    st.warning("No se pudieron cargar los datos. Revisa que el enlace CSV dentro de SHEET_CSV_URL sea correcto y esté entre comillas.")
