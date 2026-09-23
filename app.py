@@ -304,12 +304,10 @@ if not df.empty:
         cant_actual = float(row_token["Cantidad Total TK"]) if "Cantidad Total TK" in df.columns else 0.0
         inv_actual = float(row_token["Inversión Total (€)"]) if "Inversión Total (€)" in df.columns else 0.0
 
-        # Cálculo estimado de tokens y comisión aprox (ej. ~1.5% o tarifa media de exchange)
         comision_aprox = euros_inv * 0.015 
         euros_netos = euros_inv - comision_aprox
         tokens_adquiridos = euros_netos / precio_act if precio_act > 0 else 0.0
         
-        # Nuevo precio medio estimado
         nueva_inv_total = inv_actual + euros_inv
         nuevo_balance_tk = cant_actual + tokens_adquiridos
         nuevo_precio_medio = nueva_inv_total / nuevo_balance_tk if nuevo_balance_tk > 0 else precio_act
@@ -325,7 +323,6 @@ if not df.empty:
         with res_c3:
             st.metric("Nuevo Balance", f"{nuevo_balance_tk:,.2f}")
 
-        # Indicador de cómo afecta al precio medio de compra
         color_delta = "normal" if diferencia_pm <= 0 else "inverse"
         st.metric(
             "Nuevo Precio Medio Estimado", 
@@ -333,3 +330,84 @@ if not df.empty:
             delta=f"{diferencia_pm:+,.4f} € vs actual", 
             delta_color=color_delta
         )
+
+    # =========================================================================
+    # 🌟 SECCIÓN AÑADIDA 1: TABLA DE RENDIMIENTOS Y REGISTRO TEMPORAL
+    # =========================================================================
+    st.markdown("---")
+    st.subheader("📅 Rendimientos y Registro Temporal (Mensual / Histórico)")
+    
+    if not df_hist.empty:
+        df_perf = df_hist.copy()
+        df_perf['Mes_Ano'] = df_perf['Fecha_Clean'].dt.to_period('M')
+        
+        df_monthly = df_perf.groupby('Mes_Ano').agg({
+            'Cantidad_Clean': 'sum',
+            'Invertido_Clean': 'sum'
+        }).reset_index()
+        df_monthly['Mes_Str'] = df_monthly['Mes_Ano'].astype(str)
+        
+        col_p1, col_p2 = st.columns(2)
+        with col_p1:
+            st.markdown("##### 🗓️ Acumulado de Inversión por Meses")
+            if not df_monthly.empty:
+                st.dataframe(
+                    df_monthly[['Mes_Str', 'Cantidad_Clean', 'Invertido_Clean']].rename(
+                        columns={'Mes_Str': 'Mes', 'Cantidad_Clean': 'Tokens Comprados', 'Invertido_Clean': 'Invertido (€)'}
+                    ),
+                    use_container_width=True,
+                    hide_index=True
+                )
+            else:
+                st.info("Sin datos suficientes para desglose mensual.")
+                
+        with col_p2:
+            st.markdown("##### 📊 Resumen General de Rendimiento Temporal")
+            st.markdown(f"""
+            - **Primer registro en mercado:** {df_hist['Fecha_Clean'].min().strftime('%d/%m/%Y')}
+            - **Total de Operaciones Registradas:** {len(df_hist)} movimientos
+            - **Volumen Total Acumulado Invertido:** {inv_total:,.2f} €
+            - **Valor de Mercado Actual Global:** {val_actual:,.2f} €
+            """)
+    else:
+        st.info("Cargando historial para desglose temporal...")
+
+    # =========================================================================
+    # 🌟 SECCIÓN AÑADIDA 2: CALCULADORA INVERSA / SIMULADOR DE OBJETIVOS
+    # =========================================================================
+    st.markdown("---")
+    st.subheader("🎯 Calculadora Inversa / Simulador de Objetivos de Precio")
+    
+    inv_c1, inv_c2 = st.columns([1, 2])
+    with inv_c1:
+        token_objetivo = st.selectbox("Token para simular objetivo:", df["Token"].tolist(), key="obj_token")
+        
+        row_obj = df[df["Token"] == token_objetivo].iloc[0]
+        p_actual_obj = float(row_obj["Precio Actual (€)"]) if "Precio Actual (€)" in row_obj else 1.0
+        bal_obj = float(row_obj["Cantidad Total TK"]) if "Cantidad Total TK" in row_obj else 0.0
+        inv_obj = float(row_obj["Inversión Total (€)"]) if "Inversión Total (€)" in row_obj else 0.0
+        
+        modo_calculo = st.radio("Modo de simulación:", ["Porcentaje de Rentabilidad (%)", "Precio Objetivo (€)"])
+        
+        if modo_calculo == "Porcentaje de Rentabilidad (%)":
+            rentabilidad_deseada = st.number_input("Rentabilidad deseada (%):", value=100.0, step=10.0)
+            precio_calculado = p_actual_obj * (1 + rentabilidad_deseada / 100.0)
+        else:
+            precio_calculado = st.number_input("Precio objetivo (€):", min_value=0.0001, value=p_actual_obj * 2, step=0.01)
+            rentabilidad_deseada = ((precio_calculado - p_actual_obj) / p_actual_obj) * 100 if p_actual_obj > 0 else 0.0
+
+    with inv_c2:
+        valor_futuro_token = bal_obj * precio_calculado
+        ganancia_neta_futura = valor_futuro_token - inv_obj
+        
+        st.info(f"💡 Simulando proyección para **{token_objetivo}** (Balance actual: {bal_obj:,.2f} tokens)")
+        
+        rc1, rc2, rc3 = st.columns(3)
+        with rc1:
+            st.metric("Precio Objetivo Token", f"{precio_calculado:,.4f} €")
+        with rc2:
+            st.metric("Rentabilidad Implícita", f"{rentabilidad_deseada:+,.2f} %")
+        with rc3:
+            st.metric("Valor Total Cartera en este Token", f"{valor_futuro_token:,.2f} €")
+            
+        st.success(f"📈 Si {token_objetivo} alcanza este precio, tu beneficio neto estimado en esta posición sería de **+{ganancia_neta_futura:,.2f} €**.")
