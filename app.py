@@ -332,7 +332,7 @@ if not df.empty:
         )
 
     # =========================================================================
-    # 🌟 SECCIÓN AÑADIDA 1: TABLA DE RENDIMIENTOS Y REGISTRO TEMPORAL
+    # 🌟 NUEVA SECCIÓN 1: RENDIMIENTOS Y REGISTRO TEMPORAL (MENSUAL)
     # =========================================================================
     st.markdown("---")
     st.subheader("📅 Rendimientos y Registro Temporal (Mensual / Histórico)")
@@ -373,7 +373,7 @@ if not df.empty:
         st.info("Cargando historial para desglose temporal...")
 
     # =========================================================================
-    # 🌟 SECCIÓN AÑADIDA 2: CALCULADORA INVERSA / SIMULADOR DE OBJETIVOS
+    # 🌟 NUEVA SECCIÓN 2: CALCULADORA INVERSA / SIMULADOR DE OBJETIVOS
     # =========================================================================
     st.markdown("---")
     st.subheader("🎯 Calculadora Inversa / Simulador de Objetivos de Precio")
