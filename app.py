@@ -114,7 +114,11 @@ def process_transaction_sheet(url, token_name):
         df['Invertido_Clean'] = clean_numeric_series(df[c_inv])
         df['Token_Clean'] = token_name
 
-        return df[['Fecha_Clean', 'Cantidad_Clean', 'Invertido_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
+        # FILTRADO DE SEGURIDAD: Solo compras reales (Invertido > 0 y Cantidad > 0)
+        # Ignora depósitos de traspaso entre wallets o registros con 0€ invertidos
+        df_filtered = df[(df['Invertido_Clean'] > 0) & (df['Cantidad_Clean'] > 0)].copy()
+
+        return df_filtered[['Fecha_Clean', 'Cantidad_Clean', 'Invertido_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
     except Exception:
         return pd.DataFrame()
 
@@ -511,7 +515,7 @@ if not df.empty:
             """)
 
     # =========================================================================
-    # 🌟 SECCIÓN 2: MAPA DE CALOR CON EJE Y DE TIPO CATEGORÍA (SIN DECIMALES)
+    # 🌟 SECCIÓN 2: MAPA DE CALOR
     # =========================================================================
     if not df_rent_m.empty:
         st.markdown("---")
@@ -567,13 +571,13 @@ if not df.empty:
             plot_bgcolor='rgba(0,0,0,0)',
             font=dict(color="#ffffff"),
             margin=dict(l=10, r=10, t=20, b=20),
-            yaxis=dict(type='category', autorange="reversed") # CORREGIDO: Evita decimales como 2,024.5
+            yaxis=dict(type='category', autorange="reversed")
         )
 
         st.plotly_chart(fig_heatmap, use_container_width=True)
 
     # =========================================================================
-    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO Y DISTANCIA AL ATH DE CARTERA
+    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO
     # =========================================================================
     if not df_global_daily.empty:
         st.markdown("---")
@@ -589,7 +593,6 @@ if not df.empty:
         row_ath = df_risk[df_risk['Peak_Valor'] == ath_valor].iloc[0]
         fecha_ath = row_ath['Fecha_Clean'].strftime('%d/%m/%Y')
         
-        # Subida necesaria de la CARTERA GLOBAL para volver a tocar su ATH local
         subida_necesaria_portfolio = ((ath_valor - val_actual) / val_actual * 100) if val_actual > 0 and ath_valor > val_actual else 0.0
 
         rk1, rk2, rk3, rk4 = st.columns(4)
@@ -606,7 +609,7 @@ if not df.empty:
                 st.metric("Subida p/ Recuperar ATH", "0.00 % (¡En Máximos!)")
 
     # =========================================================================
-    # 🌟 SECCIÓN 4: EVOLUCIÓN DE OPTIMIZACIÓN DEL PRECIO MEDIO (DCA)
+    # 🌟 SECCIÓN 4: EVOLUCIÓN DE OPTIMIZACIÓN DEL PRECIO MEDIO (DCA FILTRADO)
     # =========================================================================
     if not df_hist.empty:
         st.markdown("---")
@@ -615,7 +618,9 @@ if not df.empty:
         dca_col1, dca_col2 = st.columns([1, 3])
         with dca_col1:
             token_dca = st.selectbox("Selecciona activo para analizar DCA:", df["Token"].tolist(), key="dca_token")
-            df_tok_h = df_hist[df_hist['Token_Clean'] == token_dca].sort_values('Fecha_Clean').copy()
+            
+            # Re-filtrar para asegurar que solo procese compras reales (Invertido > 0)
+            df_tok_h = df_hist[(df_hist['Token_Clean'] == token_dca) & (df_hist['Invertido_Clean'] > 0)].sort_values('Fecha_Clean').copy()
             
             if not df_tok_h.empty:
                 df_tok_h['Q_Acum'] = df_tok_h['Cantidad_Clean'].cumsum()
