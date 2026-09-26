@@ -244,7 +244,6 @@ if not df.empty:
         )
         st.plotly_chart(fig_pie, use_container_width=True)
 
-    # DataFrame global diario para gráficos y Max Drawdown
     df_global_daily = pd.DataFrame()
 
     with g2:
@@ -353,7 +352,7 @@ if not df.empty:
         )
 
     # =========================================================================
-    # 🌟 SECCIÓN 1: TABLAS DE RENTABILIDADES (MENSUAL Y SEMANAL)
+    # 🌟 SECCIÓN 1: TABLAS DE RENTABILIDADES
     # =========================================================================
     st.markdown("---")
     st.subheader("📅 Registro Temporal y Rentabilidad (Mensual / Semanal)")
@@ -512,13 +511,12 @@ if not df.empty:
             """)
 
     # =========================================================================
-    # 🌟 NUEVA SECCIÓN: MAPA DE CALOR DE RENTABILIDADES (ESTILO COINGLASS)
+    # 🌟 SECCIÓN 2: MAPA DE CALOR CORREGIDO (VERDES Y ROJOS EXACTOS)
     # =========================================================================
     if not df_rent_m.empty:
         st.markdown("---")
         st.subheader("🔥 Mapa de Calor de Rentabilidades Mensuales (Estilo CoinGlass)")
         
-        # Matriz de Años vs Meses (1 a 12)
         years = sorted(df_rent_m['Año'].unique())
         months_abbr = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
         
@@ -540,6 +538,16 @@ if not df.empty:
             z_matrix.append(row_z)
             text_matrix.append(row_text)
 
+        # Escala personalizada: Negativos = Rojo (#dc2626), 0% = Neutro (#1f2937), Positivos = Verde suave a Verde Brillante (#10b981 / #00ff88)
+        colorscale_custom = [
+            [0.0, "#dc2626"],   # Caídas fuertes (Rojo)
+            [0.15, "#ef4444"],  # Caídas leves (Rojo claro)
+            [0.20, "#1f2937"],  # 0% Neutro
+            [0.35, "#065f46"],  # Subida pequeña (Verde oscuro)
+            [0.60, "#10b981"],  # Subida media (Verde estándar)
+            [1.0, "#00ff88"]    # Subida grande >50% (Verde brillante)
+        ]
+
         fig_heatmap = go.Figure(data=go.Heatmap(
             z=z_matrix,
             x=months_abbr,
@@ -547,11 +555,9 @@ if not df.empty:
             text=text_matrix,
             texttemplate="%{text}",
             textfont={"size": 13, "color": "#ffffff"},
-            colorscale=[
-                [0.0, "#ef4444"],    # Rojo caídas
-                [0.5, "#1f2937"],    # Neutro oscuro
-                [1.0, "#10b981"]     # Verde ganancias
-            ],
+            colorscale=colorscale_custom,
+            zmin=-50,
+            zmax=150,
             showscale=False,
             xgap=4,
             ygap=4
@@ -568,7 +574,7 @@ if not df.empty:
         st.plotly_chart(fig_heatmap, use_container_width=True)
 
     # =========================================================================
-    # 🌟 NUEVA SECCIÓN: MÉTRICAS AVANZADAS DE RIESGO (MAX DRAWDOWN)
+    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO CORREGIDAS
     # =========================================================================
     if not df_global_daily.empty:
         st.markdown("---")
@@ -581,11 +587,14 @@ if not df.empty:
 
         max_dd_pct = float(df_risk['Drawdown_Pct'].min())
         ath_valor = float(df_risk['Peak_Valor'].max())
-        row_ath = df_risk[df_risk['Valor_Mercado'] == ath_valor].iloc[0]
+        row_ath = df_risk[df_risk['Peak_Valor'] == ath_valor].iloc[0]
         fecha_ath = row_ath['Fecha_Clean'].strftime('%d/%m/%Y')
         
-        # Recuperación necesaria hasta el ATH
-        recuperacion_pct = ((ath_valor - val_actual) / val_actual * 100) if val_actual > 0 and ath_valor > val_actual else 0.0
+        # Objetivo ATH de Mercado del Activo principal (XRP)
+        p_xrp_row = df[df['Token'] == 'XRP']
+        precio_xrp_act = float(p_xrp_row['Precio Actual (€)'].values[0]) if not p_xrp_row.empty else 1.0
+        xrp_ath_estimado = 3.30 # Valor de ATH de referencia
+        subida_necesaria_xrp_ath = ((xrp_ath_estimado - precio_xrp_act) / precio_xrp_act * 100) if precio_xrp_act < xrp_ath_estimado else 0.0
 
         rk1, rk2, rk3, rk4 = st.columns(4)
         with rk1:
@@ -595,10 +604,10 @@ if not df.empty:
         with rk3:
             st.metric("Fecha Pico ATH", fecha_ath)
         with rk4:
-            st.metric("Subida Necesaria p/ ATH", f"+{recuperacion_pct:.2f} %" if recuperacion_pct > 0 else "0.00 % (En ATH)")
+            st.metric("Subida XRP p/ ATH Histórico (3.30€)", f"+{subida_necesaria_xrp_ath:.2f} %")
 
     # =========================================================================
-    # 🌟 SECCIÓN 3: CALCULADORA INVERSA / SIMULADOR DE OBJETIVOS
+    # 🌟 SECCIÓN 4: CALCULADORA INVERSA / SIMULADOR DE OBJETIVOS
     # =========================================================================
     st.markdown("---")
     st.subheader("🎯 Calculadora Inversa / Simulador de Objetivos de Precio")
