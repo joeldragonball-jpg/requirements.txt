@@ -114,8 +114,6 @@ def process_transaction_sheet(url, token_name):
         df['Invertido_Clean'] = clean_numeric_series(df[c_inv])
         df['Token_Clean'] = token_name
 
-        # FILTRADO DE SEGURIDAD: Solo compras reales (Invertido > 0 y Cantidad > 0)
-        # Ignora depósitos de traspaso entre wallets o registros con 0€ invertidos
         df_filtered = df[(df['Invertido_Clean'] > 0) & (df['Cantidad_Clean'] > 0)].copy()
 
         return df_filtered[['Fecha_Clean', 'Cantidad_Clean', 'Invertido_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
@@ -609,7 +607,7 @@ if not df.empty:
                 st.metric("Subida p/ Recuperar ATH", "0.00 % (¡En Máximos!)")
 
     # =========================================================================
-    # 🌟 SECCIÓN 4: EVOLUCIÓN DE OPTIMIZACIÓN DEL PRECIO MEDIO (DCA FILTRADO)
+    # 🌟 SECCIÓN 4: EVOLUCIÓN DCA CON ALTA PRECISIÓN (4 DECIMALES PARA TODOS)
     # =========================================================================
     if not df_hist.empty:
         st.markdown("---")
@@ -619,25 +617,34 @@ if not df.empty:
         with dca_col1:
             token_dca = st.selectbox("Selecciona activo para analizar DCA:", df["Token"].tolist(), key="dca_token")
             
-            # Re-filtrar para asegurar que solo procese compras reales (Invertido > 0)
             df_tok_h = df_hist[(df_hist['Token_Clean'] == token_dca) & (df_hist['Invertido_Clean'] > 0)].sort_values('Fecha_Clean').copy()
             
+            # Garantiza precisión exacta del dato oficial consolidado
+            r_tok_ref = df[df['Token'] == token_dca]
+            if not r_tok_ref.empty and "Precio Medio (€)" in r_tok_ref.columns:
+                pm_actual = float(r_tok_ref["Precio Medio (€)"].values[0])
+            else:
+                pm_actual = 0.0
+
+            p_mkt_actual = float(r_tok_ref['Precio Actual (€)'].values[0]) if not r_tok_ref.empty and 'Precio Actual (€)' in r_tok_ref.columns else pm_actual
+
             if not df_tok_h.empty:
                 df_tok_h['Q_Acum'] = df_tok_h['Cantidad_Clean'].cumsum()
                 df_tok_h['Inv_Acum'] = df_tok_h['Invertido_Clean'].cumsum()
                 df_tok_h['Precio_Medio_Hist'] = df_tok_h['Inv_Acum'] / df_tok_h['Q_Acum']
                 
+                # Sincroniza exactamente el último punto del gráfico con el valor oficial de Resumen
+                df_tok_h.iloc[-1, df_tok_h.columns.get_loc('Precio_Medio_Hist')] = pm_actual
                 pm_inicial = float(df_tok_h['Precio_Medio_Hist'].iloc[0])
-                pm_actual = float(df_tok_h['Precio_Medio_Hist'].iloc[-1])
-                mejora_pm_pct = ((pm_actual - pm_inicial) / pm_inicial) * 100
-                
-                r_tok_ref = df[df['Token'] == token_dca]
-                p_mkt_actual = float(r_tok_ref['Precio Actual (€)'].values[0]) if not r_tok_ref.empty else pm_actual
-                margen_seguridad = ((p_mkt_actual - pm_actual) / pm_actual) * 100
+            else:
+                pm_inicial = pm_actual
 
-                st.metric("Precio Medio Inicial", f"{pm_inicial:,.4f} €")
-                st.metric("Precio Medio Actual Optimizado", f"{pm_actual:,.4f} €", delta=f"{mejora_pm_pct:+.2f} %", delta_color="normal" if mejora_pm_pct <= 0 else "inverse")
-                st.metric("Margen sobre Mercado", f"{margen_seguridad:+.2f} %", delta=f"{margen_seguridad:+.2f} %")
+            mejora_pm_pct = ((pm_actual - pm_inicial) / pm_inicial) * 100 if pm_inicial > 0 else 0.0
+            margen_seguridad = ((p_mkt_actual - pm_actual) / pm_actual) * 100 if pm_actual > 0 else 0.0
+
+            st.metric("Precio Medio Inicial", f"{pm_inicial:,.4f} €")
+            st.metric("Precio Medio Actual Optimizado", f"{pm_actual:,.4f} €", delta=f"{mejora_pm_pct:+.2f} %", delta_color="normal" if mejora_pm_pct <= 0 else "inverse")
+            st.metric("Margen sobre Mercado", f"{margen_seguridad:+.2f} %", delta=f"{margen_seguridad:+.2f} %")
 
         with dca_col2:
             if not df_tok_h.empty:
