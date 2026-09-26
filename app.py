@@ -373,8 +373,8 @@ if not df.empty:
 
         monthly_records = []
 
-        # Recorremos cada fin de mes en el rango histórico
-        month_ends = pd.date_range(start=min_d, end=max_d, freq='M')
+        # CORRECCIÓN DE SINTAXIS: Usamos 'ME' (Month End) en lugar de 'M' para evitar el ValueError
+        month_ends = pd.date_range(start=min_d, end=max_d, freq='ME')
         if max_d not in month_ends:
             month_ends = month_ends.append(pd.DatetimeIndex([max_d]))
 
