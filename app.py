@@ -587,7 +587,7 @@ if not df.empty:
         st.plotly_chart(fig_heatmap, use_container_width=True)
 
     # =========================================================================
-    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO Y MÁXIMO HISTÓRICO (CORREGIDO)
+    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO Y MAX DRAWDOWN HISTÓRICO
     # =========================================================================
     if not df_global_daily.empty:
         st.markdown("---")
@@ -595,14 +595,25 @@ if not df.empty:
         
         df_risk = df_global_daily.copy()
         
-        # 1. CÁLCULO DEL MAX DRAWDOWN HISTÓRICO REAL (Recorre toda la serie temporal desde origen)
+        # 1. EVALUACIÓN DE DRAWDOWN DE PRECIO Y VALORACIÓN
         df_risk['Peak_Acum'] = df_risk['Valor_Mercado'].cummax()
-        df_risk['Drawdown_Pct'] = np.where(
+        df_risk['DD_Portfolio'] = np.where(
             df_risk['Peak_Acum'] > 0,
             ((df_risk['Valor_Mercado'] - df_risk['Peak_Acum']) / df_risk['Peak_Acum']) * 100,
             0.0
         )
-        max_dd_pct = float(df_risk['Drawdown_Pct'].min())
+        
+        # Evalúa también la rentabilidad no realizada acumulada histórica (P&L %)
+        df_risk['PnL_Pct_Hist'] = np.where(
+            df_risk['Inv_Acum'] > 0,
+            ((df_risk['Valor_Mercado'] - df_risk['Inv_Acum']) / df_risk['Inv_Acum']) * 100,
+            0.0
+        )
+        
+        # Max Drawdown real: el mínimo absoluto entre el pico de cartera y la rentabilidad histórica más baja
+        min_dd_portfolio = float(df_risk['DD_Portfolio'].min())
+        min_pnl_hist = float(df_risk['PnL_Pct_Hist'].min())
+        max_dd_pct = min(min_dd_portfolio, min_pnl_hist)
 
         # 2. CÁLCULO DEL ATH GLOBAL Y DIFERENCIA ACTUAL
         ath_valor = float(df_risk['Peak_Acum'].max())
@@ -614,14 +625,25 @@ if not df.empty:
 
         rk1, rk2, rk3, rk4 = st.columns(4)
         with rk1:
-            st.metric("Max Drawdown Histórico", f"{max_dd_pct:.2f} %", delta=f"{max_dd_pct:.2f} %", delta_color="inverse")
+            # Forzado de color rojo con delta_color="inverse"
+            st.metric(
+                "Max Drawdown Histórico", 
+                f"{max_dd_pct:.2f} %", 
+                delta=f"{max_dd_pct:.2f} %", 
+                delta_color="inverse"
+            )
         with rk2:
             st.metric("Pico Máximo (ATH Portfolio)", f"{ath_valor:,.2f} €")
         with rk3:
             st.metric("Fecha Pico ATH", fecha_ath)
         with rk4:
             if subida_necesaria_portfolio > 0:
-                st.metric("Subida p/ Recuperar ATH", f"+{subida_necesaria_portfolio:.2f} %", delta=f"{diferencia_ath_eur:,.2f} € vs ATH", delta_color="inverse")
+                st.metric(
+                    "Subida p/ Recuperar ATH", 
+                    f"+{subida_necesaria_portfolio:.2f} %", 
+                    delta=f"{diferencia_ath_eur:,.2f} € vs ATH", 
+                    delta_color="inverse"
+                )
             else:
                 st.metric("Subida p/ Recuperar ATH", "0.00 % (¡En Máximos!)")
 
