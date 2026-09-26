@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import requests
+from datetime import datetime
 
 # Configuración de página y Ocultar elementos de Streamlit para móvil
 st.set_page_config(page_title="Control de Portfolio Cripto", page_icon="⚡", layout="wide")
@@ -124,6 +126,22 @@ def load_history_data():
     if frames:
         df_all = pd.concat(frames, ignore_index=True)
         return df_all.sort_values('Fecha_Clean')
+    return pd.DataFrame()
+
+@st.cache_data(ttl=3600)
+def get_historical_prices_coingecko(asset_id, days=730):
+    """Consulta la API pública de CoinGecko para obtener precios históricos diarios en EUR."""
+    try:
+        url = f"https://api.coingecko.com/api/v2/coins/{asset_id}/market_chart?vs_currency=eur&days={days}&interval=daily"
+        response = requests.get(url, timeout=10)
+        if response.status_code == 200:
+            data = response.json()
+            prices = data.get('prices', [])
+            df_p = pd.DataFrame(prices, columns=['timestamp', 'price'])
+            df_p['Fecha_Clean'] = pd.to_datetime(df_p['timestamp'], unit='ms').dt.normalize()
+            return df_p[['Fecha_Clean', 'price']].drop_duplicates(subset=['Fecha_Clean'])
+    except Exception:
+        pass
     return pd.DataFrame()
 
 df, custody_data = load_resumen_data()
@@ -332,48 +350,117 @@ if not df.empty:
         )
 
     # =========================================================================
-    # 🌟 NUEVA SECCIÓN 1: RENDIMIENTOS Y REGISTRO TEMPORAL (MENSUAL)
+    # 🌟 SECCIÓN MODIFICADA: TABLA DE RENTABILIDADES Y REGISTRO TEMPORAL (API)
     # =========================================================================
     st.markdown("---")
-    st.subheader("📅 Rendimientos y Registro Temporal (Mensual / Histórico)")
-    
+    st.subheader("📅 Registro Temporal y Rentabilidad Mensual")
+
     if not df_hist.empty:
-        df_perf = df_hist.copy()
-        df_perf['Mes_Ano'] = df_perf['Fecha_Clean'].dt.to_period('M')
-        
-        df_monthly = df_perf.groupby('Mes_Ano').agg({
-            'Cantidad_Clean': 'sum',
-            'Invertido_Clean': 'sum'
-        }).reset_index()
-        df_monthly['Mes_Str'] = df_monthly['Mes_Ano'].astype(str)
-        
-        col_p1, col_p2 = st.columns(2)
+        # Precios históricos API CoinGecko
+        df_p_xrp = get_historical_prices_coingecko('ripple')
+        df_p_xlm = get_historical_prices_coingecko('stellar')
+
+        # Meses en español
+        meses_es = {
+            1: "Enero", 2: "Febrero", 3: "Marzo", 4: "Abril", 5: "Mayo", 6: "Junio",
+            7: "Julio", 8: "Agosto", 9: "Septiembre", 10: "Octubre", 11: "Noviembre", 12: "Diciembre"
+        }
+
+        min_d = df_hist['Fecha_Clean'].min()
+        max_d = pd.Timestamp.today()
+        range_daily = pd.date_range(start=min_d, end=max_d, freq='D')
+        df_base = pd.DataFrame({'Fecha_Clean': range_daily})
+
+        monthly_records = []
+
+        # Recorremos cada fin de mes en el rango histórico
+        month_ends = pd.date_range(start=min_d, end=max_d, freq='M')
+        if max_d not in month_ends:
+            month_ends = month_ends.append(pd.DatetimeIndex([max_d]))
+
+        prev_val_mercado = 0.0
+
+        for m_date in month_ends:
+            inv_acum_mes = 0.0
+            val_mercado_mes = 0.0
+
+            for tok_name, cg_id, df_api_p in [('XRP', 'ripple', df_p_xrp), ('XLM', 'stellar', df_p_xlm)]:
+                df_t = df_hist[df_hist['Token_Clean'] == tok_name].sort_values('Fecha_Clean').copy()
+                if not df_t.empty:
+                    df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
+                    df_t['Inv_Acum'] = df_t['Invertido_Clean'].cumsum()
+
+                    df_merged = pd.merge_asof(df_base[df_base['Fecha_Clean'] <= m_date], df_t, on='Fecha_Clean', direction='backward')
+                    
+                    q_at_date = df_merged['Q_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Q_Acum'].iloc[-1]) else 0.0
+                    inv_at_date = df_merged['Inv_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Inv_Acum'].iloc[-1]) else 0.0
+
+                    # Obtener precio histórico al cierre de la fecha desde la API (o precio actual como fallback)
+                    price_at_date = 1.0
+                    if not df_api_p.empty:
+                        p_row = df_api_p[df_api_p['Fecha_Clean'] <= m_date]
+                        if not p_row.empty:
+                            price_at_date = float(p_row['price'].iloc[-1])
+                    else:
+                        r_ref = df[df['Token'] == tok_name]
+                        price_at_date = float(r_ref['Precio Actual (€)'].values[0]) if not r_ref.empty else 1.0
+
+                    inv_acum_mes += inv_at_date
+                    val_mercado_mes += (q_at_date * price_at_date)
+
+            pnl_eur_mes = val_mercado_mes - inv_acum_mes
+            rent_acum_pct = (pnl_eur_mes / inv_acum_mes * 100) if inv_acum_mes > 0 else 0.0
+            
+            # Rentabilidad intermensual respecto al período anterior
+            rent_mensual_pct = ((val_mercado_mes - prev_val_mercado) / prev_val_mercado * 100) if prev_val_mercado > 0 else rent_acum_pct
+            prev_val_mercado = val_mercado_mes
+
+            nombre_mes = f"{meses_es[m_date.month]} {m_date.year}"
+            
+            monthly_records.append({
+                'Período': nombre_mes,
+                'Rentabilidad Mensual (%)': f"{rent_mensual_pct:+.2f} %",
+                'Rentabilidad Acumulada (%)': f"{rent_acum_pct:+.2f} %",
+                'Beneficio / Pérdida (€)': f"{pnl_eur_mes:+,.2f} €",
+                '_raw_pct': rent_mensual_pct
+            })
+
+        df_rent_final = pd.DataFrame(monthly_records)
+
+        col_p1, col_p2 = st.columns([2, 1])
         with col_p1:
-            st.markdown("##### 🗓️ Acumulado de Inversión por Meses")
-            if not df_monthly.empty:
+            st.markdown("##### 📈 Histórico de Rentabilidades por Mes")
+            if not df_rent_final.empty:
                 st.dataframe(
-                    df_monthly[['Mes_Str', 'Cantidad_Clean', 'Invertido_Clean']].rename(
-                        columns={'Mes_Str': 'Mes', 'Cantidad_Clean': 'Tokens Comprados', 'Invertido_Clean': 'Invertido (€)'}
-                    ),
+                    df_rent_final[['Período', 'Rentabilidad Mensual (%)', 'Rentabilidad Acumulada (%)', 'Beneficio / Pérdida (€)']],
                     use_container_width=True,
                     hide_index=True
                 )
-            else:
-                st.info("Sin datos suficientes para desglose mensual.")
                 
+                # Botón integrado para descargar informe de rentabilidades
+                csv_data = df_rent_final[['Período', 'Rentabilidad Mensual (%)', 'Rentabilidad Acumulada (%)', 'Beneficio / Pérdida (€)']].to_csv(index=False).encode('utf-8')
+                st.download_button(
+                    label="📥 Descargar Informe de Rentabilidades (CSV)",
+                    data=csv_data,
+                    file_name=f"informe_rentabilidades_{datetime.now().strftime('%Y%m%d')}.csv",
+                    mime="text/csv"
+                )
+            else:
+                st.info("Sin datos suficientes para calcular rentabilidades.")
+
         with col_p2:
-            st.markdown("##### 📊 Resumen General de Rendimiento Temporal")
+            st.markdown("##### 📊 Módulo General de Rendimiento")
             st.markdown(f"""
-            - **Primer registro en mercado:** {df_hist['Fecha_Clean'].min().strftime('%d/%m/%Y')}
-            - **Total de Operaciones Registradas:** {len(df_hist)} movimientos
-            - **Volumen Total Acumulado Invertido:** {inv_total:,.2f} €
-            - **Valor de Mercado Actual Global:** {val_actual:,.2f} €
+            - **Inicio de Registro:** {df_hist['Fecha_Clean'].min().strftime('%d/%m/%Y')}
+            - **Operaciones Registradas:** {len(df_hist)} movimientos
+            - **Inversión Histórica Acumulada:** {inv_total:,.2f} €
+            - **Valoración Actual de Cartera:** {val_actual:,.2f} €
             """)
     else:
         st.info("Cargando historial para desglose temporal...")
 
     # =========================================================================
-    # 🌟 NUEVA SECCIÓN 2: CALCULADORA INVERSA / SIMULADOR DE OBJETIVOS
+    # 🌟 SECCIÓN SEGUNDA: CALCULADORA INVERSA / SIMULADOR DE OBJETIVOS
     # =========================================================================
     st.markdown("---")
     st.subheader("🎯 Calculadora Inversa / Simulador de Objetivos de Precio")
