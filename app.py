@@ -511,7 +511,7 @@ if not df.empty:
             """)
 
     # =========================================================================
-    # 🌟 SECCIÓN 2: MAPA DE CALOR CORREGIDO (VERDES Y ROJOS EXACTOS)
+    # 🌟 SECCIÓN 2: MAPA DE CALOR DE RENTABILIDADES
     # =========================================================================
     if not df_rent_m.empty:
         st.markdown("---")
@@ -538,7 +538,6 @@ if not df.empty:
             z_matrix.append(row_z)
             text_matrix.append(row_text)
 
-        # Escala personalizada: Negativos = Rojo (#dc2626), 0% = Neutro (#1f2937), Positivos = Verde suave a Verde Brillante (#10b981 / #00ff88)
         colorscale_custom = [
             [0.0, "#dc2626"],   # Caídas fuertes (Rojo)
             [0.15, "#ef4444"],  # Caídas leves (Rojo claro)
@@ -574,7 +573,7 @@ if not df.empty:
         st.plotly_chart(fig_heatmap, use_container_width=True)
 
     # =========================================================================
-    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO CORREGIDAS
+    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO
     # =========================================================================
     if not df_global_daily.empty:
         st.markdown("---")
@@ -590,10 +589,9 @@ if not df.empty:
         row_ath = df_risk[df_risk['Peak_Valor'] == ath_valor].iloc[0]
         fecha_ath = row_ath['Fecha_Clean'].strftime('%d/%m/%Y')
         
-        # Objetivo ATH de Mercado del Activo principal (XRP)
         p_xrp_row = df[df['Token'] == 'XRP']
         precio_xrp_act = float(p_xrp_row['Precio Actual (€)'].values[0]) if not p_xrp_row.empty else 1.0
-        xrp_ath_estimado = 3.30 # Valor de ATH de referencia
+        xrp_ath_estimado = 3.30 
         subida_necesaria_xrp_ath = ((xrp_ath_estimado - precio_xrp_act) / precio_xrp_act * 100) if precio_xrp_act < xrp_ath_estimado else 0.0
 
         rk1, rk2, rk3, rk4 = st.columns(4)
@@ -607,7 +605,76 @@ if not df.empty:
             st.metric("Subida XRP p/ ATH Histórico (3.30€)", f"+{subida_necesaria_xrp_ath:.2f} %")
 
     # =========================================================================
-    # 🌟 SECCIÓN 4: CALCULADORA INVERSA / SIMULADOR DE OBJETIVOS
+    # 🌟 NUEVA SECCIÓN: EVOLUCIÓN DE OPTIMIZACIÓN DEL PRECIO MEDIO (DCA)
+    # =========================================================================
+    if not df_hist.empty:
+        st.markdown("---")
+        st.subheader("📉 Optimización del Precio Medio de Compra (Estrategia DCA)")
+        
+        dca_col1, dca_col2 = st.columns([1, 3])
+        with dca_col1:
+            token_dca = st.selectbox("Selecciona activo para analizar DCA:", df["Token"].tolist(), key="dca_token")
+            df_tok_h = df_hist[df_hist['Token_Clean'] == token_dca].sort_values('Fecha_Clean').copy()
+            
+            if not df_tok_h.empty:
+                df_tok_h['Q_Acum'] = df_tok_h['Cantidad_Clean'].cumsum()
+                df_tok_h['Inv_Acum'] = df_tok_h['Invertido_Clean'].cumsum()
+                df_tok_h['Precio_Medio_Hist'] = df_tok_h['Inv_Acum'] / df_tok_h['Q_Acum']
+                
+                pm_inicial = float(df_tok_h['Precio_Medio_Hist'].iloc[0])
+                pm_actual = float(df_tok_h['Precio_Medio_Hist'].iloc[-1])
+                mejora_pm_pct = ((pm_actual - pm_inicial) / pm_inicial) * 100
+                
+                r_tok_ref = df[df['Token'] == token_dca]
+                p_mkt_actual = float(r_tok_ref['Precio Actual (€)'].values[0]) if not r_tok_ref.empty else pm_actual
+                margen_seguridad = ((p_mkt_actual - pm_actual) / pm_actual) * 100
+
+                st.metric("Precio Medio Inicial", f"{pm_inicial:,.4f} €")
+                st.metric("Precio Medio Actual Optimizado", f"{pm_actual:,.4f} €", delta=f"{mejora_pm_pct:+.2f} %", delta_color="normal" if mejora_pm_pct <= 0 else "inverse")
+                st.metric("Margen sobre Mercado", f"{margen_seguridad:+.2f} %", delta=f"{margen_seguridad:+.2f} %")
+
+        with dca_col2:
+            if not df_tok_h.empty:
+                # Precios API para comparar con la cotización de mercado
+                cg_id_map = {'XRP': 'ripple', 'XLM': 'stellar'}
+                df_cg_p = get_historical_prices_coingecko(cg_id_map.get(token_dca, 'ripple'))
+                
+                fig_dca = go.Figure()
+
+                # Línea del precio medio de compra (bajada progresiva)
+                fig_dca.add_trace(go.Scatter(
+                    x=df_tok_h['Fecha_Clean'],
+                    y=df_tok_h['Precio_Medio_Hist'],
+                    mode='lines+markers',
+                    name='Precio Medio (€)',
+                    line=dict(color='#3b82f6', width=3)
+                ))
+
+                # Línea de cotización de mercado
+                if not df_cg_p.empty:
+                    df_cg_crop = df_cg_p[df_cg_p['Fecha_Clean'] >= df_tok_h['Fecha_Clean'].min()]
+                    fig_dca.add_trace(go.Scatter(
+                        x=df_cg_crop['Fecha_Clean'],
+                        y=df_cg_crop['price'],
+                        mode='lines',
+                        name='Precio de Mercado (€)',
+                        line=dict(color='#10b981', width=1.5, dash='dot')
+                    ))
+
+                fig_dca.update_layout(
+                    title=f"Evolución del Precio Medio de Compra — {token_dca}",
+                    paper_bgcolor='rgba(0,0,0,0)',
+                    plot_bgcolor='rgba(0,0,0,0)',
+                    font=dict(color="#ffffff"),
+                    margin=dict(l=10, r=10, t=30, b=10),
+                    xaxis=dict(showgrid=False),
+                    yaxis=dict(showgrid=True, gridcolor='#262c3a', title="Precio (€)"),
+                    hovermode="x unified"
+                )
+                st.plotly_chart(fig_dca, use_container_width=True)
+
+    # =========================================================================
+    # 🌟 SECCIÓN 5: CALCULADORA INVERSA / SIMULADOR DE OBJETIVOS
     # =========================================================================
     st.markdown("---")
     st.subheader("🎯 Calculadora Inversa / Simulador de Objetivos de Precio")
