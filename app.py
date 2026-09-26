@@ -587,7 +587,7 @@ if not df.empty:
         st.plotly_chart(fig_heatmap, use_container_width=True)
 
     # =========================================================================
-    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO Y PICO MÁXIMO (SEPARADAS)
+    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO Y MÁXIMO HISTÓRICO (CORREGIDO)
     # =========================================================================
     if not df_global_daily.empty:
         st.markdown("---")
@@ -595,7 +595,7 @@ if not df.empty:
         
         df_risk = df_global_daily.copy()
         
-        # 1. CÁLCULO DEL MAX DRAWDOWN HISTÓRICO REAL (Peor racha de caída desde un pico a un valle)
+        # 1. CÁLCULO DEL MAX DRAWDOWN HISTÓRICO REAL (Recorre toda la serie temporal desde origen)
         df_risk['Peak_Acum'] = df_risk['Valor_Mercado'].cummax()
         df_risk['Drawdown_Pct'] = np.where(
             df_risk['Peak_Acum'] > 0,
@@ -604,7 +604,7 @@ if not df.empty:
         )
         max_dd_pct = float(df_risk['Drawdown_Pct'].min())
 
-        # 2. CÁLCULO DEL PICO MÁXIMO (ATH) Y DIFERENCIA ACTUAL
+        # 2. CÁLCULO DEL ATH GLOBAL Y DIFERENCIA ACTUAL
         ath_valor = float(df_risk['Peak_Acum'].max())
         row_ath = df_risk[df_risk['Valor_Mercado'] == ath_valor].iloc[0] if not df_risk[df_risk['Valor_Mercado'] == ath_valor].empty else df_risk.iloc[-1]
         fecha_ath = row_ath['Fecha_Clean'].strftime('%d/%m/%Y')
