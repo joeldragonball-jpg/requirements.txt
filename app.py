@@ -233,6 +233,10 @@ if not df.empty:
 
     st.markdown("---")
 
+    # Carga de precios históricos para alineación de series temporales
+    df_p_xrp = get_historical_prices_coingecko('ripple')
+    df_p_xlm = get_historical_prices_coingecko('stellar')
+
     g1, g2 = st.columns(2)
     with g1:
         st.subheader("📊 Distribución del Capital")
@@ -252,29 +256,42 @@ if not df.empty:
         st.subheader("📈 Evolución Histórica Global (Estilo Koinly)")
         if not df_hist.empty:
             min_date = df_hist['Fecha_Clean'].min()
-            max_date = pd.Timestamp.today()
+            max_date = pd.Timestamp.today().normalize()
             date_range = pd.date_range(start=min_date, end=max_date, freq='D')
             df_timeline = pd.DataFrame({'Fecha_Clean': date_range})
 
             frames_processed = []
+            cg_price_map = {'XRP': df_p_xrp, 'XLM': df_p_xlm}
+
             for token_name in df_hist['Token_Clean'].unique():
                 df_t = df_hist[df_hist['Token_Clean'] == token_name].sort_values('Fecha_Clean').copy()
                 df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
                 df_t['Inv_Acum'] = df_t['Invertido_Clean'].cumsum()
                 
-                row_t = df[df['Token'] == token_name]
-                p_ref = float(row_t['Precio Actual (€)'].values[0]) if not row_t.empty and 'Precio Actual (€)' in df.columns else 1.0
-                
                 df_t_daily = pd.merge_asof(df_timeline, df_t, on='Fecha_Clean', direction='backward')
-                df_t_daily['Token_Clean'] = token_name
                 df_t_daily['Q_Acum'] = df_t_daily['Q_Acum'].fillna(0)
                 df_t_daily['Inv_Acum'] = df_t_daily['Inv_Acum'].fillna(0)
-                df_t_daily['Valor_Mercado'] = df_t_daily['Q_Acum'] * p_ref
+
+                df_api_p = cg_price_map.get(token_name, pd.DataFrame())
+                if not df_api_p.empty:
+                    df_t_daily = pd.merge_asof(df_t_daily, df_api_p, on='Fecha_Clean', direction='backward')
+                    df_t_daily['price'] = df_t_daily['price'].fillna(method='bfill').fillna(0)
+                else:
+                    row_t = df[df['Token'] == token_name]
+                    p_ref = float(row_t['Precio Actual (€)'].values[0]) if not row_t.empty and 'Precio Actual (€)' in df.columns else 1.0
+                    df_t_daily['price'] = p_ref
+
+                df_t_daily['Valor_Mercado'] = df_t_daily['Q_Acum'] * df_t_daily['price']
+                df_t_daily['Token_Clean'] = token_name
                 frames_processed.append(df_t_daily)
 
             if frames_processed:
                 df_full = pd.concat(frames_processed, ignore_index=True)
                 df_global_daily = df_full.groupby('Fecha_Clean')[['Valor_Mercado', 'Inv_Acum']].sum().reset_index()
+
+                # Forzar que el último punto coincida exactamente con la valoración actual consolidada
+                if not df_global_daily.empty:
+                    df_global_daily.iloc[-1, df_global_daily.columns.get_loc('Valor_Mercado')] = val_actual
 
                 fig_koinly = go.Figure()
 
@@ -362,9 +379,6 @@ if not df.empty:
     df_rent_m = pd.DataFrame()
 
     if not df_hist.empty:
-        df_p_xrp = get_historical_prices_coingecko('ripple')
-        df_p_xlm = get_historical_prices_coingecko('stellar')
-
         meses_es = {
             1: "Enero", 2: "Febrero", 3: "Marzo", 4: "Abril", 5: "Mayo", 6: "Junio",
             7: "Julio", 8: "Agosto", 9: "Septiembre", 10: "Octubre", 11: "Noviembre", 12: "Diciembre"
@@ -393,7 +407,7 @@ if not df.empty:
                 for m_date in month_ends:
                     inv_m = 0.0
                     val_m = 0.0
-                    for tok_name, cg_id, df_api_p in [('XRP', 'ripple', df_p_xrp), ('XLM', 'stellar', df_p_xlm)]:
+                    for tok_name, df_api_p in [('XRP', df_p_xrp), ('XLM', df_p_xlm)]:
                         df_t = df_hist[df_hist['Token_Clean'] == tok_name].sort_values('Fecha_Clean').copy()
                         if not df_t.empty:
                             df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
@@ -449,7 +463,7 @@ if not df.empty:
                 for w_date in week_ends:
                     inv_w = 0.0
                     val_w = 0.0
-                    for tok_name, cg_id, df_api_p in [('XRP', 'ripple', df_p_xrp), ('XLM', 'stellar', df_p_xlm)]:
+                    for tok_name, df_api_p in [('XRP', df_p_xrp), ('XLM', df_p_xlm)]:
                         df_t = df_hist[df_hist['Token_Clean'] == tok_name].sort_values('Fecha_Clean').copy()
                         if not df_t.empty:
                             df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
@@ -575,7 +589,7 @@ if not df.empty:
         st.plotly_chart(fig_heatmap, use_container_width=True)
 
     # =========================================================================
-    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO
+    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO Y MAX DRAWDOWN CORREGIDAS
     # =========================================================================
     if not df_global_daily.empty:
         st.markdown("---")
@@ -584,13 +598,14 @@ if not df.empty:
         df_risk = df_global_daily.copy()
         df_risk['Peak_Valor'] = df_risk['Valor_Mercado'].cummax()
         df_risk['Drawdown_Eur'] = df_risk['Valor_Mercado'] - df_risk['Peak_Valor']
-        df_risk['Drawdown_Pct'] = (df_risk['Drawdown_Eur'] / df_risk['Peak_Valor']) * 100
+        df_risk['Drawdown_Pct'] = np.where(df_risk['Peak_Valor'] > 0, (df_risk['Drawdown_Eur'] / df_risk['Peak_Valor']) * 100, 0.0)
 
         max_dd_pct = float(df_risk['Drawdown_Pct'].min())
         ath_valor = float(df_risk['Peak_Valor'].max())
         row_ath = df_risk[df_risk['Peak_Valor'] == ath_valor].iloc[0]
         fecha_ath = row_ath['Fecha_Clean'].strftime('%d/%m/%Y')
         
+        diferencia_ath_eur = val_actual - ath_valor
         subida_necesaria_portfolio = ((ath_valor - val_actual) / val_actual * 100) if val_actual > 0 and ath_valor > val_actual else 0.0
 
         rk1, rk2, rk3, rk4 = st.columns(4)
@@ -602,12 +617,12 @@ if not df.empty:
             st.metric("Fecha Pico ATH", fecha_ath)
         with rk4:
             if subida_necesaria_portfolio > 0:
-                st.metric("Subida p/ Recuperar ATH", f"+{subida_necesaria_portfolio:.2f} %", delta=f"-{(ath_valor - val_actual):,.2f} € vs ATH", delta_color="inverse")
+                st.metric("Subida p/ Recuperar ATH", f"+{subida_necesaria_portfolio:.2f} %", delta=f"{diferencia_ath_eur:,.2f} € vs ATH", delta_color="inverse")
             else:
                 st.metric("Subida p/ Recuperar ATH", "0.00 % (¡En Máximos!)")
 
     # =========================================================================
-    # 🌟 SECCIÓN 4: EVOLUCIÓN DCA CON ALTA PRECISIÓN (4 DECIMALES PARA TODOS)
+    # 🌟 SECCIÓN 4: EVOLUCIÓN DCA
     # =========================================================================
     if not df_hist.empty:
         st.markdown("---")
@@ -619,7 +634,6 @@ if not df.empty:
             
             df_tok_h = df_hist[(df_hist['Token_Clean'] == token_dca) & (df_hist['Invertido_Clean'] > 0)].sort_values('Fecha_Clean').copy()
             
-            # Garantiza precisión exacta del dato oficial consolidado
             r_tok_ref = df[df['Token'] == token_dca]
             if not r_tok_ref.empty and "Precio Medio (€)" in r_tok_ref.columns:
                 pm_actual = float(r_tok_ref["Precio Medio (€)"].values[0])
@@ -633,7 +647,6 @@ if not df.empty:
                 df_tok_h['Inv_Acum'] = df_tok_h['Invertido_Clean'].cumsum()
                 df_tok_h['Precio_Medio_Hist'] = df_tok_h['Inv_Acum'] / df_tok_h['Q_Acum']
                 
-                # Sincroniza exactamente el último punto del gráfico con el valor oficial de Resumen
                 df_tok_h.iloc[-1, df_tok_h.columns.get_loc('Precio_Medio_Hist')] = pm_actual
                 pm_inicial = float(df_tok_h['Precio_Medio_Hist'].iloc[0])
             else:
