@@ -587,7 +587,7 @@ if not df.empty:
         st.plotly_chart(fig_heatmap, use_container_width=True)
 
     # =========================================================================
-    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO Y MAX DRAWDOWN HISTÓRICO
+    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO Y MAX DRAWDOWN (RETOQUES VISUALES)
     # =========================================================================
     if not df_global_daily.empty:
         st.markdown("---")
@@ -603,14 +603,12 @@ if not df.empty:
             0.0
         )
         
-        # Evalúa también la rentabilidad no realizada acumulada histórica (P&L %)
         df_risk['PnL_Pct_Hist'] = np.where(
             df_risk['Inv_Acum'] > 0,
             ((df_risk['Valor_Mercado'] - df_risk['Inv_Acum']) / df_risk['Inv_Acum']) * 100,
             0.0
         )
         
-        # Max Drawdown real: el mínimo absoluto entre el pico de cartera y la rentabilidad histórica más baja
         min_dd_portfolio = float(df_risk['DD_Portfolio'].min())
         min_pnl_hist = float(df_risk['PnL_Pct_Hist'].min())
         max_dd_pct = min(min_dd_portfolio, min_pnl_hist)
@@ -620,17 +618,17 @@ if not df.empty:
         row_ath = df_risk[df_risk['Valor_Mercado'] == ath_valor].iloc[0] if not df_risk[df_risk['Valor_Mercado'] == ath_valor].empty else df_risk.iloc[-1]
         fecha_ath = row_ath['Fecha_Clean'].strftime('%d/%m/%Y')
         
-        diferencia_ath_eur = val_actual - ath_valor
+        euros_faltantes_ath = ath_valor - val_actual
         subida_necesaria_portfolio = ((ath_valor - val_actual) / val_actual * 100) if val_actual > 0 and ath_valor > val_actual else 0.0
 
         rk1, rk2, rk3, rk4 = st.columns(4)
         with rk1:
-            # Forzado de color rojo con delta_color="inverse"
+            # delta_color="normal" asegura que los valores negativos aparezcan en ROJO
             st.metric(
                 "Max Drawdown Histórico", 
                 f"{max_dd_pct:.2f} %", 
                 delta=f"{max_dd_pct:.2f} %", 
-                delta_color="inverse"
+                delta_color="normal"
             )
         with rk2:
             st.metric("Pico Máximo (ATH Portfolio)", f"{ath_valor:,.2f} €")
@@ -638,11 +636,12 @@ if not df.empty:
             st.metric("Fecha Pico ATH", fecha_ath)
         with rk4:
             if subida_necesaria_portfolio > 0:
+                # delta_color="normal" con valor positivo (+340.65 €) lo pinta en VERDE limpia y directamente
                 st.metric(
                     "Subida p/ Recuperar ATH", 
                     f"+{subida_necesaria_portfolio:.2f} %", 
-                    delta=f"{diferencia_ath_eur:,.2f} € vs ATH", 
-                    delta_color="inverse"
+                    delta=f"+{euros_faltantes_ath:,.2f} €", 
+                    delta_color="normal"
                 )
             else:
                 st.metric("Subida p/ Recuperar ATH", "0.00 % (¡En Máximos!)")
