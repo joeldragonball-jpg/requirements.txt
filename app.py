@@ -350,7 +350,7 @@ if not df.empty:
         )
 
     # =========================================================================
-    # 🌟 SECCIÓN MODIFICADA: TABLA DE RENTABILIDADES CON MENSIONAL Y SEMANAL
+    # 🌟 SECCIÓN MODIFICADA: TABLA CON ORDENACIÓN CRONOLÓGICA CORREGIDA
     # =========================================================================
     st.markdown("---")
     st.subheader("📅 Registro Temporal y Rentabilidad (Mensual / Semanal)")
@@ -413,6 +413,7 @@ if not df.empty:
                     prev_val_m = val_m
 
                     monthly_records.append({
+                        '_date': m_date,
                         'Período': f"{meses_es[m_date.month]} {m_date.year}",
                         'Rentabilidad Mensual (%)': f"{rent_mensual:+.2f} %",
                         'Rentabilidad Acumulada (%)': f"{rent_acum:+.2f} %",
@@ -420,9 +421,11 @@ if not df.empty:
                     })
 
                 df_rent_m = pd.DataFrame(monthly_records)
-                st.dataframe(df_rent_m, use_container_width=True, hide_index=True)
+                # Ordenar cronológicamente descendente (lo más reciente arriba)
+                df_rent_m = df_rent_m.sort_values('_date', ascending=False)
+                st.dataframe(df_rent_m.drop(columns=['_date']), use_container_width=True, hide_index=True)
 
-            # --- 2. RENTABILIDAD SEMANAL ---
+            # --- 2. RENTABILIDAD SEMANAL (CORREGIDO Y ORDENADO POR FECHA) ---
             with tab_semanal:
                 week_ends = pd.date_range(start=min_d, end=max_d, freq='W-SUN')
                 if max_d not in week_ends:
@@ -461,18 +464,23 @@ if not df.empty:
                     rent_semanal = ((val_w - prev_val_w) / prev_val_w * 100) if prev_val_w > 0 else rent_acum_w
                     prev_val_w = val_w
 
+                    iso_year, iso_week, _ = w_date.isocalendar()
+                    
                     weekly_records.append({
-                        'Semana': f"Semana {w_date.isocalendar().week} ({w_date.strftime('%d/%m/%Y')})",
+                        '_date': w_date,
+                        'Semana': f"Semana {iso_week} ({w_date.strftime('%d/%m/%Y')})",
                         'Rentabilidad Semanal (%)': f"{rent_semanal:+.2f} %",
                         'Rentabilidad Acumulada (%)': f"{rent_acum_w:+.2f} %",
                         'Beneficio / Pérdida (€)': f"{pnl_w:+,.2f} €"
                     })
 
                 df_rent_w = pd.DataFrame(weekly_records)
-                st.dataframe(df_rent_w, use_container_width=True, hide_index=True)
+                # Ordenar cronológicamente descendente (las semanas más recientes de 2026 primero, luego 2025)
+                df_rent_w = df_rent_w.sort_values('_date', ascending=False)
+                st.dataframe(df_rent_w.drop(columns=['_date']), use_container_width=True, hide_index=True)
 
             # Botón de descarga
-            csv_data = df_rent_m.to_csv(index=False).encode('utf-8')
+            csv_data = df_rent_m.drop(columns=['_date']).to_csv(index=False).encode('utf-8')
             st.download_button(
                 label="📥 Descargar Informe de Rentabilidades (CSV)",
                 data=csv_data,
