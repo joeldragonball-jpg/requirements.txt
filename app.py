@@ -233,7 +233,6 @@ if not df.empty:
 
     st.markdown("---")
 
-    # Carga de precios históricos para alineación de series temporales
     df_p_xrp = get_historical_prices_coingecko('ripple')
     df_p_xlm = get_historical_prices_coingecko('stellar')
 
@@ -289,7 +288,6 @@ if not df.empty:
                 df_full = pd.concat(frames_processed, ignore_index=True)
                 df_global_daily = df_full.groupby('Fecha_Clean')[['Valor_Mercado', 'Inv_Acum']].sum().reset_index()
 
-                # Forzar que el último punto coincida exactamente con la valoración actual consolidada
                 if not df_global_daily.empty:
                     df_global_daily.iloc[-1, df_global_daily.columns.get_loc('Valor_Mercado')] = val_actual
 
@@ -589,20 +587,26 @@ if not df.empty:
         st.plotly_chart(fig_heatmap, use_container_width=True)
 
     # =========================================================================
-    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO Y MAX DRAWDOWN CORREGIDAS
+    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO Y PICO MÁXIMO (SEPARADAS)
     # =========================================================================
     if not df_global_daily.empty:
         st.markdown("---")
-        st.subheader("🛡️ Métricas Avanzadas de Riesgo y Caída Máxima (Max Drawdown)")
+        st.subheader("🛡️ Métricas Avanzadas de Riesgo y Máximo Histórico (ATH)")
         
         df_risk = df_global_daily.copy()
-        df_risk['Peak_Valor'] = df_risk['Valor_Mercado'].cummax()
-        df_risk['Drawdown_Eur'] = df_risk['Valor_Mercado'] - df_risk['Peak_Valor']
-        df_risk['Drawdown_Pct'] = np.where(df_risk['Peak_Valor'] > 0, (df_risk['Drawdown_Eur'] / df_risk['Peak_Valor']) * 100, 0.0)
-
+        
+        # 1. CÁLCULO DEL MAX DRAWDOWN HISTÓRICO REAL (Peor racha de caída desde un pico a un valle)
+        df_risk['Peak_Acum'] = df_risk['Valor_Mercado'].cummax()
+        df_risk['Drawdown_Pct'] = np.where(
+            df_risk['Peak_Acum'] > 0,
+            ((df_risk['Valor_Mercado'] - df_risk['Peak_Acum']) / df_risk['Peak_Acum']) * 100,
+            0.0
+        )
         max_dd_pct = float(df_risk['Drawdown_Pct'].min())
-        ath_valor = float(df_risk['Peak_Valor'].max())
-        row_ath = df_risk[df_risk['Peak_Valor'] == ath_valor].iloc[0]
+
+        # 2. CÁLCULO DEL PICO MÁXIMO (ATH) Y DIFERENCIA ACTUAL
+        ath_valor = float(df_risk['Peak_Acum'].max())
+        row_ath = df_risk[df_risk['Valor_Mercado'] == ath_valor].iloc[0] if not df_risk[df_risk['Valor_Mercado'] == ath_valor].empty else df_risk.iloc[-1]
         fecha_ath = row_ath['Fecha_Clean'].strftime('%d/%m/%Y')
         
         diferencia_ath_eur = val_actual - ath_valor
