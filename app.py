@@ -350,7 +350,7 @@ if not df.empty:
         )
 
     # =========================================================================
-    # 🌟 SECCIÓN MODIFICADA: TABLA CON ORDENACIÓN CRONOLÓGICA CORREGIDA
+    # 🌟 SECCIÓN MODIFICADA: LÓGICA DE REGISTRO TEMPORAL UNIFICADO Y LIMPIDO
     # =========================================================================
     st.markdown("---")
     st.subheader("📅 Registro Temporal y Rentabilidad (Mensual / Semanal)")
@@ -365,7 +365,7 @@ if not df.empty:
         }
 
         min_d = df_hist['Fecha_Clean'].min()
-        max_d = pd.Timestamp.today()
+        max_d = pd.Timestamp.today().normalize()
         range_daily = pd.date_range(start=min_d, end=max_d, freq='D')
         df_base = pd.DataFrame({'Fecha_Clean': range_daily})
 
@@ -381,6 +381,9 @@ if not df.empty:
 
                 monthly_records = []
                 prev_val_m = 0.0
+
+                # Ordenar cronológicamente ascendente para el cálculo de variaciones
+                month_ends = sorted(list(set(month_ends)))
 
                 for m_date in month_ends:
                     inv_m = 0.0
@@ -421,15 +424,19 @@ if not df.empty:
                     })
 
                 df_rent_m = pd.DataFrame(monthly_records)
-                # Ordenar cronológicamente descendente (lo más reciente arriba)
+                # Ordenar cronológicamente descendente (lo más reciente de 2026 primero)
                 df_rent_m = df_rent_m.sort_values('_date', ascending=False)
                 st.dataframe(df_rent_m.drop(columns=['_date']), use_container_width=True, hide_index=True)
 
-            # --- 2. RENTABILIDAD SEMANAL (CORREGIDO Y ORDENADO POR FECHA) ---
+            # --- 2. RENTABILIDAD SEMANAL (ÚNICA Y ORDENADA SIN DUPLICADOS) ---
             with tab_semanal:
+                # Generar domingos de cierre de semana (W-SUN)
                 week_ends = pd.date_range(start=min_d, end=max_d, freq='W-SUN')
                 if max_d not in week_ends:
                     week_ends = week_ends.append(pd.DatetimeIndex([max_d]))
+
+                # Eliminar fechas duplicadas y ordenar de menor a mayor para cálculo correcto
+                week_ends = sorted(list(set(week_ends)))
 
                 weekly_records = []
                 prev_val_w = 0.0
@@ -464,22 +471,24 @@ if not df.empty:
                     rent_semanal = ((val_w - prev_val_w) / prev_val_w * 100) if prev_val_w > 0 else rent_acum_w
                     prev_val_w = val_w
 
+                    # Calculamos el inicio de la semana (Lunes anterior)
+                    w_start = w_date - pd.Timedelta(days=6)
                     iso_year, iso_week, _ = w_date.isocalendar()
                     
                     weekly_records.append({
                         '_date': w_date,
-                        'Semana': f"Semana {iso_week} ({w_date.strftime('%d/%m/%Y')})",
+                        'Semana': f"Sem. {iso_week} ({w_start.strftime('%d/%m/%Y')} al {w_date.strftime('%d/%m/%Y')})",
                         'Rentabilidad Semanal (%)': f"{rent_semanal:+.2f} %",
                         'Rentabilidad Acumulada (%)': f"{rent_acum_w:+.2f} %",
                         'Beneficio / Pérdida (€)': f"{pnl_w:+,.2f} €"
                     })
 
                 df_rent_w = pd.DataFrame(weekly_records)
-                # Ordenar cronológicamente descendente (las semanas más recientes de 2026 primero, luego 2025)
+                # Ordenar cronológicamente descendente (lo más reciente de 2026 primero, bajando progresivamente a 2025/2024)
                 df_rent_w = df_rent_w.sort_values('_date', ascending=False)
                 st.dataframe(df_rent_w.drop(columns=['_date']), use_container_width=True, hide_index=True)
 
-            # Botón de descarga
+            # Botón de descarga CSV
             csv_data = df_rent_m.drop(columns=['_date']).to_csv(index=False).encode('utf-8')
             st.download_button(
                 label="📥 Descargar Informe de Rentabilidades (CSV)",
