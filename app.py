@@ -350,17 +350,15 @@ if not df.empty:
         )
 
     # =========================================================================
-    # 🌟 SECCIÓN MODIFICADA: TABLA DE RENTABILIDADES Y REGISTRO TEMPORAL (API)
+    # 🌟 SECCIÓN MODIFICADA: TABLA DE RENTABILIDADES CON MENSIONAL Y SEMANAL
     # =========================================================================
     st.markdown("---")
-    st.subheader("📅 Registro Temporal y Rentabilidad Mensual")
+    st.subheader("📅 Registro Temporal y Rentabilidad (Mensual / Semanal)")
 
     if not df_hist.empty:
-        # Precios históricos API CoinGecko
         df_p_xrp = get_historical_prices_coingecko('ripple')
         df_p_xlm = get_historical_prices_coingecko('stellar')
 
-        # Meses en español
         meses_es = {
             1: "Enero", 2: "Febrero", 3: "Marzo", 4: "Abril", 5: "Mayo", 6: "Junio",
             7: "Julio", 8: "Agosto", 9: "Septiembre", 10: "Octubre", 11: "Noviembre", 12: "Diciembre"
@@ -371,82 +369,116 @@ if not df.empty:
         range_daily = pd.date_range(start=min_d, end=max_d, freq='D')
         df_base = pd.DataFrame({'Fecha_Clean': range_daily})
 
-        monthly_records = []
-
-        # CORRECCIÓN DE SINTAXIS: Usamos 'ME' (Month End) en lugar de 'M' para evitar el ValueError
-        month_ends = pd.date_range(start=min_d, end=max_d, freq='ME')
-        if max_d not in month_ends:
-            month_ends = month_ends.append(pd.DatetimeIndex([max_d]))
-
-        prev_val_mercado = 0.0
-
-        for m_date in month_ends:
-            inv_acum_mes = 0.0
-            val_mercado_mes = 0.0
-
-            for tok_name, cg_id, df_api_p in [('XRP', 'ripple', df_p_xrp), ('XLM', 'stellar', df_p_xlm)]:
-                df_t = df_hist[df_hist['Token_Clean'] == tok_name].sort_values('Fecha_Clean').copy()
-                if not df_t.empty:
-                    df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
-                    df_t['Inv_Acum'] = df_t['Invertido_Clean'].cumsum()
-
-                    df_merged = pd.merge_asof(df_base[df_base['Fecha_Clean'] <= m_date], df_t, on='Fecha_Clean', direction='backward')
-                    
-                    q_at_date = df_merged['Q_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Q_Acum'].iloc[-1]) else 0.0
-                    inv_at_date = df_merged['Inv_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Inv_Acum'].iloc[-1]) else 0.0
-
-                    # Obtener precio histórico al cierre de la fecha desde la API (o precio actual como fallback)
-                    price_at_date = 1.0
-                    if not df_api_p.empty:
-                        p_row = df_api_p[df_api_p['Fecha_Clean'] <= m_date]
-                        if not p_row.empty:
-                            price_at_date = float(p_row['price'].iloc[-1])
-                    else:
-                        r_ref = df[df['Token'] == tok_name]
-                        price_at_date = float(r_ref['Precio Actual (€)'].values[0]) if not r_ref.empty else 1.0
-
-                    inv_acum_mes += inv_at_date
-                    val_mercado_mes += (q_at_date * price_at_date)
-
-            pnl_eur_mes = val_mercado_mes - inv_acum_mes
-            rent_acum_pct = (pnl_eur_mes / inv_acum_mes * 100) if inv_acum_mes > 0 else 0.0
-            
-            # Rentabilidad intermensual respecto al período anterior
-            rent_mensual_pct = ((val_mercado_mes - prev_val_mercado) / prev_val_mercado * 100) if prev_val_mercado > 0 else rent_acum_pct
-            prev_val_mercado = val_mercado_mes
-
-            nombre_mes = f"{meses_es[m_date.month]} {m_date.year}"
-            
-            monthly_records.append({
-                'Período': nombre_mes,
-                'Rentabilidad Mensual (%)': f"{rent_mensual_pct:+.2f} %",
-                'Rentabilidad Acumulada (%)': f"{rent_acum_pct:+.2f} %",
-                'Beneficio / Pérdida (€)': f"{pnl_eur_mes:+,.2f} €",
-                '_raw_pct': rent_mensual_pct
-            })
-
-        df_rent_final = pd.DataFrame(monthly_records)
-
         col_p1, col_p2 = st.columns([2, 1])
         with col_p1:
-            st.markdown("##### 📈 Histórico de Rentabilidades por Mes")
-            if not df_rent_final.empty:
-                st.dataframe(
-                    df_rent_final[['Período', 'Rentabilidad Mensual (%)', 'Rentabilidad Acumulada (%)', 'Beneficio / Pérdida (€)']],
-                    use_container_width=True,
-                    hide_index=True
-                )
-                
-                # Botón integrado para descargar informe de rentabilidades
-                csv_data = df_rent_final[['Período', 'Rentabilidad Mensual (%)', 'Rentabilidad Acumulada (%)', 'Beneficio / Pérdida (€)']].to_csv(index=False).encode('utf-8')
-                st.download_button(
-                    label="📥 Descargar Informe de Rentabilidades (CSV)",
-                    data=csv_data,
-                    file_name=f"informe_rentabilidades_{datetime.now().strftime('%Y%m%d')}.csv",
-                    mime="text/csv"
-                )
-            else:
-                st.info("Sin datos suficientes para calcular rentabilidades.")
+            tab_mensual, tab_semanal = st.tabs(["🗓️ Rentabilidad Mensual", "📅 Rentabilidad Semanal"])
+
+            # --- 1. RENTABILIDAD MENSUAL ---
+            with tab_mensual:
+                month_ends = pd.date_range(start=min_d, end=max_d, freq='ME')
+                if max_d not in month_ends:
+                    month_ends = month_ends.append(pd.DatetimeIndex([max_d]))
+
+                monthly_records = []
+                prev_val_m = 0.0
+
+                for m_date in month_ends:
+                    inv_m = 0.0
+                    val_m = 0.0
+                    for tok_name, cg_id, df_api_p in [('XRP', 'ripple', df_p_xrp), ('XLM', 'stellar', df_p_xlm)]:
+                        df_t = df_hist[df_hist['Token_Clean'] == tok_name].sort_values('Fecha_Clean').copy()
+                        if not df_t.empty:
+                            df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
+                            df_t['Inv_Acum'] = df_t['Invertido_Clean'].cumsum()
+                            df_merged = pd.merge_asof(df_base[df_base['Fecha_Clean'] <= m_date], df_t, on='Fecha_Clean', direction='backward')
+                            
+                            q_at = df_merged['Q_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Q_Acum'].iloc[-1]) else 0.0
+                            inv_at = df_merged['Inv_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Inv_Acum'].iloc[-1]) else 0.0
+
+                            p_at = 1.0
+                            if not df_api_p.empty:
+                                p_row = df_api_p[df_api_p['Fecha_Clean'] <= m_date]
+                                if not p_row.empty:
+                                    p_at = float(p_row['price'].iloc[-1])
+                            else:
+                                r_ref = df[df['Token'] == tok_name]
+                                p_at = float(r_ref['Precio Actual (€)'].values[0]) if not r_ref.empty else 1.0
+
+                            inv_m += inv_at
+                            val_m += (q_at * p_at)
+
+                    pnl_m = val_m - inv_m
+                    rent_acum = (pnl_m / inv_m * 100) if inv_m > 0 else 0.0
+                    rent_mensual = ((val_m - prev_val_m) / prev_val_m * 100) if prev_val_m > 0 else rent_acum
+                    prev_val_m = val_m
+
+                    monthly_records.append({
+                        'Período': f"{meses_es[m_date.month]} {m_date.year}",
+                        'Rentabilidad Mensual (%)': f"{rent_mensual:+.2f} %",
+                        'Rentabilidad Acumulada (%)': f"{rent_acum:+.2f} %",
+                        'Beneficio / Pérdida (€)': f"{pnl_m:+,.2f} €"
+                    })
+
+                df_rent_m = pd.DataFrame(monthly_records)
+                st.dataframe(df_rent_m, use_container_width=True, hide_index=True)
+
+            # --- 2. RENTABILIDAD SEMANAL ---
+            with tab_semanal:
+                week_ends = pd.date_range(start=min_d, end=max_d, freq='W-SUN')
+                if max_d not in week_ends:
+                    week_ends = week_ends.append(pd.DatetimeIndex([max_d]))
+
+                weekly_records = []
+                prev_val_w = 0.0
+
+                for w_date in week_ends:
+                    inv_w = 0.0
+                    val_w = 0.0
+                    for tok_name, cg_id, df_api_p in [('XRP', 'ripple', df_p_xrp), ('XLM', 'stellar', df_p_xlm)]:
+                        df_t = df_hist[df_hist['Token_Clean'] == tok_name].sort_values('Fecha_Clean').copy()
+                        if not df_t.empty:
+                            df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
+                            df_t['Inv_Acum'] = df_t['Invertido_Clean'].cumsum()
+                            df_merged = pd.merge_asof(df_base[df_base['Fecha_Clean'] <= w_date], df_t, on='Fecha_Clean', direction='backward')
+                            
+                            q_at = df_merged['Q_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Q_Acum'].iloc[-1]) else 0.0
+                            inv_at = df_merged['Inv_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Inv_Acum'].iloc[-1]) else 0.0
+
+                            p_at = 1.0
+                            if not df_api_p.empty:
+                                p_row = df_api_p[df_api_p['Fecha_Clean'] <= w_date]
+                                if not p_row.empty:
+                                    p_at = float(p_row['price'].iloc[-1])
+                            else:
+                                r_ref = df[df['Token'] == tok_name]
+                                p_at = float(r_ref['Precio Actual (€)'].values[0]) if not r_ref.empty else 1.0
+
+                            inv_w += inv_at
+                            val_w += (q_at * p_at)
+
+                    pnl_w = val_w - inv_w
+                    rent_acum_w = (pnl_w / inv_w * 100) if inv_w > 0 else 0.0
+                    rent_semanal = ((val_w - prev_val_w) / prev_val_w * 100) if prev_val_w > 0 else rent_acum_w
+                    prev_val_w = val_w
+
+                    weekly_records.append({
+                        'Semana': f"Semana {w_date.isocalendar().week} ({w_date.strftime('%d/%m/%Y')})",
+                        'Rentabilidad Semanal (%)': f"{rent_semanal:+.2f} %",
+                        'Rentabilidad Acumulada (%)': f"{rent_acum_w:+.2f} %",
+                        'Beneficio / Pérdida (€)': f"{pnl_w:+,.2f} €"
+                    })
+
+                df_rent_w = pd.DataFrame(weekly_records)
+                st.dataframe(df_rent_w, use_container_width=True, hide_index=True)
+
+            # Botón de descarga
+            csv_data = df_rent_m.to_csv(index=False).encode('utf-8')
+            st.download_button(
+                label="📥 Descargar Informe de Rentabilidades (CSV)",
+                data=csv_data,
+                file_name=f"informe_rentabilidades_{datetime.now().strftime('%Y%m%d')}.csv",
+                mime="text/csv"
+            )
 
         with col_p2:
             st.markdown("##### 📊 Módulo General de Rendimiento")
