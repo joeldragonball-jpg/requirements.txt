@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 import requests
@@ -243,6 +244,9 @@ if not df.empty:
         )
         st.plotly_chart(fig_pie, use_container_width=True)
 
+    # DataFrame global diario para gráficos y Max Drawdown
+    df_global_daily = pd.DataFrame()
+
     with g2:
         st.subheader("📈 Evolución Histórica Global (Estilo Koinly)")
         if not df_hist.empty:
@@ -269,13 +273,13 @@ if not df.empty:
 
             if frames_processed:
                 df_full = pd.concat(frames_processed, ignore_index=True)
-                df_global = df_full.groupby('Fecha_Clean')[['Valor_Mercado', 'Inv_Acum']].sum().reset_index()
+                df_global_daily = df_full.groupby('Fecha_Clean')[['Valor_Mercado', 'Inv_Acum']].sum().reset_index()
 
                 fig_koinly = go.Figure()
 
                 fig_koinly.add_trace(go.Scatter(
-                    x=df_global['Fecha_Clean'],
-                    y=df_global['Valor_Mercado'],
+                    x=df_global_daily['Fecha_Clean'],
+                    y=df_global_daily['Valor_Mercado'],
                     mode='lines',
                     name='Worth (€)',
                     fill='tozeroy',
@@ -284,8 +288,8 @@ if not df.empty:
                 ))
 
                 fig_koinly.add_trace(go.Scatter(
-                    x=df_global['Fecha_Clean'],
-                    y=df_global['Inv_Acum'],
+                    x=df_global_daily['Fecha_Clean'],
+                    y=df_global_daily['Inv_Acum'],
                     mode='lines',
                     name='Cost Basis (€)',
                     line=dict(color='#94a3b8', width=2, dash='dash')
@@ -349,10 +353,12 @@ if not df.empty:
         )
 
     # =========================================================================
-    # 🌟 SECCIÓN MODIFICADA: ORDENACIÓN DE SEMANAS Y MESES
+    # 🌟 SECCIÓN 1: TABLAS DE RENTABILIDADES (MENSUAL Y SEMANAL)
     # =========================================================================
     st.markdown("---")
     st.subheader("📅 Registro Temporal y Rentabilidad (Mensual / Semanal)")
+
+    df_rent_m = pd.DataFrame()
 
     if not df_hist.empty:
         df_p_xrp = get_historical_prices_coingecko('ripple')
@@ -415,17 +421,20 @@ if not df.empty:
 
                     monthly_records.append({
                         '_date': m_date,
+                        'Año': m_date.year,
+                        'Mes_Num': m_date.month,
                         'Período': f"{m_date.year} — {meses_es[m_date.month]}",
                         'Rentabilidad Mensual (%)': f"{rent_mensual:+.2f} %",
                         'Rentabilidad Acumulada (%)': f"{rent_acum:+.2f} %",
-                        'Beneficio / Pérdida (€)': f"{pnl_m:+,.2f} €"
+                        'Beneficio / Pérdida (€)': f"{pnl_m:+,.2f} €",
+                        '_raw_rent_m': rent_mensual
                     })
 
                 df_rent_m = pd.DataFrame(monthly_records)
-                df_rent_m = df_rent_m.sort_values('_date', ascending=False)
-                st.dataframe(df_rent_m.drop(columns=['_date']), use_container_width=True, hide_index=True)
+                df_rent_m_disp = df_rent_m.sort_values('_date', ascending=False)
+                st.dataframe(df_rent_m_disp[['Período', 'Rentabilidad Mensual (%)', 'Rentabilidad Acumulada (%)', 'Beneficio / Pérdida (€)']], use_container_width=True, hide_index=True)
 
-            # --- 2. RENTABILIDAD SEMANAL (SISTEMA DE FORMATO CRONOLÓGICO INDESTRUCTIBLE) ---
+            # --- 2. RENTABILIDAD SEMANAL ---
             with tab_semanal:
                 week_ends = pd.date_range(start=min_d, end=max_d, freq='W-SUN')
                 if max_d not in week_ends:
@@ -469,7 +478,6 @@ if not df.empty:
                     w_start = w_date - pd.Timedelta(days=6)
                     iso_year, iso_week, _ = w_date.isocalendar()
                     
-                    # FORMATO FORMATO AÑO-SEMANA: Garantiza ordenación alfabética y temporal perfecta incluso en la tabla
                     str_semana = f"{iso_year} — Sem. {iso_week:02d} ({w_start.strftime('%d/%m')} al {w_date.strftime('%d/%m')})"
 
                     weekly_records.append({
@@ -481,13 +489,12 @@ if not df.empty:
                     })
 
                 df_rent_w = pd.DataFrame(weekly_records)
-                # Ordenar descendentemente por fecha real primero
                 df_rent_w = df_rent_w.sort_values('_date', ascending=False)
                 
-                st.dataframe(df_rent_w.drop(columns=['_date']), use_container_width=True, hide_index=True)
+                st.dataframe(df_rent_w[['Semana', 'Rentabilidad Semanal (%)', 'Rentabilidad Acumulada (%)', 'Beneficio / Pérdida (€)']], use_container_width=True, hide_index=True)
 
             # Botón de descarga CSV
-            csv_data = df_rent_m.drop(columns=['_date']).to_csv(index=False).encode('utf-8')
+            csv_data = df_rent_m[['Período', 'Rentabilidad Mensual (%)', 'Rentabilidad Acumulada (%)', 'Beneficio / Pérdida (€)']].to_csv(index=False).encode('utf-8')
             st.download_button(
                 label="📥 Descargar Informe de Rentabilidades (CSV)",
                 data=csv_data,
@@ -503,11 +510,95 @@ if not df.empty:
             - **Inversión Histórica Acumulada:** {inv_total:,.2f} €
             - **Valoración Actual de Cartera:** {val_actual:,.2f} €
             """)
-    else:
-        st.info("Cargando historial para desglose temporal...")
 
     # =========================================================================
-    # 🌟 SECCIÓN SEGUNDA: CALCULADORA INVERSA / SIMULADOR DE OBJETIVOS
+    # 🌟 NUEVA SECCIÓN: MAPA DE CALOR DE RENTABILIDADES (ESTILO COINGLASS)
+    # =========================================================================
+    if not df_rent_m.empty:
+        st.markdown("---")
+        st.subheader("🔥 Mapa de Calor de Rentabilidades Mensuales (Estilo CoinGlass)")
+        
+        # Matriz de Años vs Meses (1 a 12)
+        years = sorted(df_rent_m['Año'].unique())
+        months_abbr = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+        
+        z_matrix = []
+        text_matrix = []
+
+        for yr in years:
+            row_z = []
+            row_text = []
+            for m_idx in range(1, 13):
+                match = df_rent_m[(df_rent_m['Año'] == yr) & (df_rent_m['Mes_Num'] == m_idx)]
+                if not match.empty:
+                    val_pct = match['_raw_rent_m'].values[0]
+                    row_z.append(val_pct)
+                    row_text.append(f"{val_pct:+.1f}%")
+                else:
+                    row_z.append(np.nan)
+                    row_text.append("—")
+            z_matrix.append(row_z)
+            text_matrix.append(row_text)
+
+        fig_heatmap = go.Figure(data=go.Heatmap(
+            z=z_matrix,
+            x=months_abbr,
+            y=[str(y) for y in years],
+            text=text_matrix,
+            texttemplate="%{text}",
+            textfont={"size": 13, "color": "#ffffff"},
+            colorscale=[
+                [0.0, "#ef4444"],    # Rojo caídas
+                [0.5, "#1f2937"],    # Neutro oscuro
+                [1.0, "#10b981"]     # Verde ganancias
+            ],
+            showscale=False,
+            xgap=4,
+            ygap=4
+        ))
+
+        fig_heatmap.update_layout(
+            paper_bgcolor='rgba(0,0,0,0)',
+            plot_bgcolor='rgba(0,0,0,0)',
+            font=dict(color="#ffffff"),
+            margin=dict(l=10, r=10, t=20, b=20),
+            yaxis=dict(autorange="reversed")
+        )
+
+        st.plotly_chart(fig_heatmap, use_container_width=True)
+
+    # =========================================================================
+    # 🌟 NUEVA SECCIÓN: MÉTRICAS AVANZADAS DE RIESGO (MAX DRAWDOWN)
+    # =========================================================================
+    if not df_global_daily.empty:
+        st.markdown("---")
+        st.subheader("🛡️ Métricas Avanzadas de Riesgo y Caída Máxima (Max Drawdown)")
+        
+        df_risk = df_global_daily.copy()
+        df_risk['Peak_Valor'] = df_risk['Valor_Mercado'].cummax()
+        df_risk['Drawdown_Eur'] = df_risk['Valor_Mercado'] - df_risk['Peak_Valor']
+        df_risk['Drawdown_Pct'] = (df_risk['Drawdown_Eur'] / df_risk['Peak_Valor']) * 100
+
+        max_dd_pct = float(df_risk['Drawdown_Pct'].min())
+        ath_valor = float(df_risk['Peak_Valor'].max())
+        row_ath = df_risk[df_risk['Valor_Mercado'] == ath_valor].iloc[0]
+        fecha_ath = row_ath['Fecha_Clean'].strftime('%d/%m/%Y')
+        
+        # Recuperación necesaria hasta el ATH
+        recuperacion_pct = ((ath_valor - val_actual) / val_actual * 100) if val_actual > 0 and ath_valor > val_actual else 0.0
+
+        rk1, rk2, rk3, rk4 = st.columns(4)
+        with rk1:
+            st.metric("Max Drawdown Histórico", f"{max_dd_pct:.2f} %", delta=f"{max_dd_pct:.2f} %", delta_color="inverse")
+        with rk2:
+            st.metric("Pico Máximo (ATH Portfolio)", f"{ath_valor:,.2f} €")
+        with rk3:
+            st.metric("Fecha Pico ATH", fecha_ath)
+        with rk4:
+            st.metric("Subida Necesaria p/ ATH", f"+{recuperacion_pct:.2f} %" if recuperacion_pct > 0 else "0.00 % (En ATH)")
+
+    # =========================================================================
+    # 🌟 SECCIÓN 3: CALCULADORA INVERSA / SIMULADOR DE OBJETIVOS
     # =========================================================================
     st.markdown("---")
     st.subheader("🎯 Calculadora Inversa / Simulador de Objetivos de Precio")
