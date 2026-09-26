@@ -130,7 +130,6 @@ def load_history_data():
 
 @st.cache_data(ttl=3600)
 def get_historical_prices_coingecko(asset_id, days=730):
-    """Consulta la API pública de CoinGecko para obtener precios históricos diarios en EUR."""
     try:
         url = f"https://api.coingecko.com/api/v2/coins/{asset_id}/market_chart?vs_currency=eur&days={days}&interval=daily"
         response = requests.get(url, timeout=10)
@@ -350,7 +349,7 @@ if not df.empty:
         )
 
     # =========================================================================
-    # 🌟 SECCIÓN MODIFICADA: LÓGICA DE REGISTRO TEMPORAL UNIFICADO Y LIMPIDO
+    # 🌟 SECCIÓN MODIFICADA: ORDENACIÓN DE SEMANAS Y MESES
     # =========================================================================
     st.markdown("---")
     st.subheader("📅 Registro Temporal y Rentabilidad (Mensual / Semanal)")
@@ -382,7 +381,6 @@ if not df.empty:
                 monthly_records = []
                 prev_val_m = 0.0
 
-                # Ordenar cronológicamente ascendente para el cálculo de variaciones
                 month_ends = sorted(list(set(month_ends)))
 
                 for m_date in month_ends:
@@ -417,25 +415,22 @@ if not df.empty:
 
                     monthly_records.append({
                         '_date': m_date,
-                        'Período': f"{meses_es[m_date.month]} {m_date.year}",
+                        'Período': f"{m_date.year} — {meses_es[m_date.month]}",
                         'Rentabilidad Mensual (%)': f"{rent_mensual:+.2f} %",
                         'Rentabilidad Acumulada (%)': f"{rent_acum:+.2f} %",
                         'Beneficio / Pérdida (€)': f"{pnl_m:+,.2f} €"
                     })
 
                 df_rent_m = pd.DataFrame(monthly_records)
-                # Ordenar cronológicamente descendente (lo más reciente de 2026 primero)
                 df_rent_m = df_rent_m.sort_values('_date', ascending=False)
                 st.dataframe(df_rent_m.drop(columns=['_date']), use_container_width=True, hide_index=True)
 
-            # --- 2. RENTABILIDAD SEMANAL (ÚNICA Y ORDENADA SIN DUPLICADOS) ---
+            # --- 2. RENTABILIDAD SEMANAL (SISTEMA DE FORMATO CRONOLÓGICO INDESTRUCTIBLE) ---
             with tab_semanal:
-                # Generar domingos de cierre de semana (W-SUN)
                 week_ends = pd.date_range(start=min_d, end=max_d, freq='W-SUN')
                 if max_d not in week_ends:
                     week_ends = week_ends.append(pd.DatetimeIndex([max_d]))
 
-                # Eliminar fechas duplicadas y ordenar de menor a mayor para cálculo correcto
                 week_ends = sorted(list(set(week_ends)))
 
                 weekly_records = []
@@ -471,21 +466,24 @@ if not df.empty:
                     rent_semanal = ((val_w - prev_val_w) / prev_val_w * 100) if prev_val_w > 0 else rent_acum_w
                     prev_val_w = val_w
 
-                    # Calculamos el inicio de la semana (Lunes anterior)
                     w_start = w_date - pd.Timedelta(days=6)
                     iso_year, iso_week, _ = w_date.isocalendar()
                     
+                    # FORMATO FORMATO AÑO-SEMANA: Garantiza ordenación alfabética y temporal perfecta incluso en la tabla
+                    str_semana = f"{iso_year} — Sem. {iso_week:02d} ({w_start.strftime('%d/%m')} al {w_date.strftime('%d/%m')})"
+
                     weekly_records.append({
                         '_date': w_date,
-                        'Semana': f"Sem. {iso_week} ({w_start.strftime('%d/%m/%Y')} al {w_date.strftime('%d/%m/%Y')})",
+                        'Semana': str_semana,
                         'Rentabilidad Semanal (%)': f"{rent_semanal:+.2f} %",
                         'Rentabilidad Acumulada (%)': f"{rent_acum_w:+.2f} %",
                         'Beneficio / Pérdida (€)': f"{pnl_w:+,.2f} €"
                     })
 
                 df_rent_w = pd.DataFrame(weekly_records)
-                # Ordenar cronológicamente descendente (lo más reciente de 2026 primero, bajando progresivamente a 2025/2024)
+                # Ordenar descendentemente por fecha real primero
                 df_rent_w = df_rent_w.sort_values('_date', ascending=False)
+                
                 st.dataframe(df_rent_w.drop(columns=['_date']), use_container_width=True, hide_index=True)
 
             # Botón de descarga CSV
