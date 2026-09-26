@@ -420,7 +420,7 @@ if not df.empty:
 
                     monthly_records.append({
                         '_date': m_date,
-                        'Año': m_date.year,
+                        'Año': str(m_date.year),
                         'Mes_Num': m_date.month,
                         'Período': f"{m_date.year} — {meses_es[m_date.month]}",
                         'Rentabilidad Mensual (%)': f"{rent_mensual:+.2f} %",
@@ -511,13 +511,13 @@ if not df.empty:
             """)
 
     # =========================================================================
-    # 🌟 SECCIÓN 2: MAPA DE CALOR DE RENTABILIDADES
+    # 🌟 SECCIÓN 2: MAPA DE CALOR CON EJE Y DE TIPO CATEGORÍA (SIN DECIMALES)
     # =========================================================================
     if not df_rent_m.empty:
         st.markdown("---")
         st.subheader("🔥 Mapa de Calor de Rentabilidades Mensuales (Estilo CoinGlass)")
         
-        years = sorted(df_rent_m['Año'].unique())
+        years = sorted([str(y) for y in df_rent_m['Año'].unique()])
         months_abbr = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
         
         z_matrix = []
@@ -550,7 +550,7 @@ if not df.empty:
         fig_heatmap = go.Figure(data=go.Heatmap(
             z=z_matrix,
             x=months_abbr,
-            y=[str(y) for y in years],
+            y=years,
             text=text_matrix,
             texttemplate="%{text}",
             textfont={"size": 13, "color": "#ffffff"},
@@ -567,13 +567,13 @@ if not df.empty:
             plot_bgcolor='rgba(0,0,0,0)',
             font=dict(color="#ffffff"),
             margin=dict(l=10, r=10, t=20, b=20),
-            yaxis=dict(autorange="reversed")
+            yaxis=dict(type='category', autorange="reversed") # CORREGIDO: Evita decimales como 2,024.5
         )
 
         st.plotly_chart(fig_heatmap, use_container_width=True)
 
     # =========================================================================
-    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO
+    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO Y DISTANCIA AL ATH DE CARTERA
     # =========================================================================
     if not df_global_daily.empty:
         st.markdown("---")
@@ -589,10 +589,8 @@ if not df.empty:
         row_ath = df_risk[df_risk['Peak_Valor'] == ath_valor].iloc[0]
         fecha_ath = row_ath['Fecha_Clean'].strftime('%d/%m/%Y')
         
-        p_xrp_row = df[df['Token'] == 'XRP']
-        precio_xrp_act = float(p_xrp_row['Precio Actual (€)'].values[0]) if not p_xrp_row.empty else 1.0
-        xrp_ath_estimado = 3.30 
-        subida_necesaria_xrp_ath = ((xrp_ath_estimado - precio_xrp_act) / precio_xrp_act * 100) if precio_xrp_act < xrp_ath_estimado else 0.0
+        # Subida necesaria de la CARTERA GLOBAL para volver a tocar su ATH local
+        subida_necesaria_portfolio = ((ath_valor - val_actual) / val_actual * 100) if val_actual > 0 and ath_valor > val_actual else 0.0
 
         rk1, rk2, rk3, rk4 = st.columns(4)
         with rk1:
@@ -602,10 +600,13 @@ if not df.empty:
         with rk3:
             st.metric("Fecha Pico ATH", fecha_ath)
         with rk4:
-            st.metric("Subida XRP p/ ATH Histórico (3.30€)", f"+{subida_necesaria_xrp_ath:.2f} %")
+            if subida_necesaria_portfolio > 0:
+                st.metric("Subida p/ Recuperar ATH", f"+{subida_necesaria_portfolio:.2f} %", delta=f"-{(ath_valor - val_actual):,.2f} € vs ATH", delta_color="inverse")
+            else:
+                st.metric("Subida p/ Recuperar ATH", "0.00 % (¡En Máximos!)")
 
     # =========================================================================
-    # 🌟 NUEVA SECCIÓN: EVOLUCIÓN DE OPTIMIZACIÓN DEL PRECIO MEDIO (DCA)
+    # 🌟 SECCIÓN 4: EVOLUCIÓN DE OPTIMIZACIÓN DEL PRECIO MEDIO (DCA)
     # =========================================================================
     if not df_hist.empty:
         st.markdown("---")
@@ -635,13 +636,11 @@ if not df.empty:
 
         with dca_col2:
             if not df_tok_h.empty:
-                # Precios API para comparar con la cotización de mercado
                 cg_id_map = {'XRP': 'ripple', 'XLM': 'stellar'}
                 df_cg_p = get_historical_prices_coingecko(cg_id_map.get(token_dca, 'ripple'))
                 
                 fig_dca = go.Figure()
 
-                # Línea del precio medio de compra (bajada progresiva)
                 fig_dca.add_trace(go.Scatter(
                     x=df_tok_h['Fecha_Clean'],
                     y=df_tok_h['Precio_Medio_Hist'],
@@ -650,7 +649,6 @@ if not df.empty:
                     line=dict(color='#3b82f6', width=3)
                 ))
 
-                # Línea de cotización de mercado
                 if not df_cg_p.empty:
                     df_cg_crop = df_cg_p[df_cg_p['Fecha_Clean'] >= df_tok_h['Fecha_Clean'].min()]
                     fig_dca.add_trace(go.Scatter(
