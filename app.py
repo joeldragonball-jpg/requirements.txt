@@ -93,6 +93,7 @@ def style_fig(fig, height=360):
         height=height, margin=dict(l=10, r=10, t=30, b=10), hovermode="x unified",
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
         separators=",.",
+        hoverlabel=dict(bgcolor="#151921", bordercolor="#262c3a", font=dict(color="#e5e7eb")),
     )
     fig.update_xaxes(showgrid=False, title=None)
     fig.update_yaxes(gridcolor=GRID, title=None)
@@ -561,7 +562,7 @@ with tabs[0]:
                 lineas.append(f"🔽 Bajando: **{eur(abajo, 4)}** ({pct((abajo / p_act - 1) * 100, 1)})")
             pm = P.at[tok, "precio_medio"]
             if pd.notna(pm):
-                lineas.append(f"⚖️ Tu precio medio: {eur(pm, 4)} ({pct((pm / p_act - 1) * 100, 1)})")
+                lineas.append(f"⚖️ Precio medio: {eur(pm, 4)} ({pct((pm / p_act - 1) * 100, 1)})")
             with st.container(border=True):
                 st.markdown("  \n".join(lineas))
         if cfg_alertas:
@@ -716,8 +717,8 @@ with tabs[3]:
         valor_hoy = daily["valor"].iloc[-1]
         dif = valor_hoy - alt.iloc[-1]
         e1, e2, e3 = st.columns(3)
-        e1.metric("Tu cartera hoy (comprando poco a poco)", eur(valor_hoy))
-        e2.metric(f"Si lo hubieras metido todo el {daily.index[0]:%d/%m/%Y}", eur(alt.iloc[-1]),
+        e1.metric("Tu cartera hoy", eur(valor_hoy), help="Comprando poco a poco, como has hecho.")
+        e2.metric(f"Todo de golpe el {daily.index[0]:%d/%m/%Y}", eur(alt.iloc[-1]),
                   help="El mismo dinero neto que has puesto en cada token, invertido entero el primer día.")
         e3.metric("Diferencia a tu favor" if dif >= 0 else "Diferencia en tu contra", eur(dif, sign=True))
         fig = go.Figure()
@@ -875,7 +876,7 @@ with tabs[5]:
                      help=f"Alcanzado el {f_ath:%d/%m/%Y}. Incluye el dinero que has ido aportando, "
                           "por eso puede estar en máximos aunque los precios no lo estén.")
         subida_necesaria = (100 / (100 + dd_hoy) - 1) * 100 if dd_hoy < 0 else 0.0
-        r2[1].metric("Subida para recuperar máximos", pct(subida_necesaria) if subida_necesaria > 0 else "¡En máximos!",
+        r2[1].metric("Subida para recuperar", pct(subida_necesaria) if subida_necesaria > 0 else "¡En máximos!",
                      help="Cuánto tendrían que subir los precios de tu cartera para volver a su mejor rentabilidad "
                           f"(caída actual {pct(dd_hoy)}). Una caída del 50 % necesita una subida del 100 % para recuperarse.")
         r2[2].metric("Mejor día", pct(rets.max() * 100), help=f"{mejor:%d/%m/%Y}")
