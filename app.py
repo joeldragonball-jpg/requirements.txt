@@ -589,13 +589,34 @@ with tabs[1]:
                 st.markdown(f"#### {r.token} &nbsp; <span style='color:{MUTED};font-size:0.9rem'>"
                             f"{fmt(r.cantidad, 2)} tokens · {fmt(r.peso, 1)} % de la cartera</span>",
                             unsafe_allow_html=True)
-                c1, c2, c3, c4 = st.columns(4)
-                c1.metric("Valor", eur(r.valor), delta=pct(r.hoy_pct) + " hoy" if pd.notna(r.hoy_pct) else None)
-                c2.metric("Precio actual", eur(r.precio, 4),
-                          delta=pct((r.precio / r.precio_medio - 1) * 100) + " vs medio" if r.precio_medio else None)
-                c3.metric("Precio medio", eur(r.precio_medio, 4),
+                # Fila 1: el dinero (lo que pusiste → lo que vale → la diferencia)
+                c1, c2, c3 = st.columns(3)
+                c1.metric("💶 Invertido", eur(r.invertido),
+                          help="Dinero que has metido en este token, menos lo que has sacado con ventas (incluye comisiones).")
+                c2.metric("💰 Valor actual", eur(r.valor), delta=pct(r.hoy_pct) + " hoy" if pd.notna(r.hoy_pct) else None)
+                c3.metric("📈 Beneficio", eur(r.pnl, sign=True), delta=pct(r.pnl_pct))
+                # Fila 2: los precios
+                c4, c5, c6 = st.columns(3)
+                c4.metric("⚖️ Precio medio", eur(r.precio_medio, 4),
                           help="Tu punto de equilibrio: invertido neto / tokens. Por encima de este precio ganas.")
-                c4.metric("Beneficio", eur(r.pnl, sign=True), delta=pct(r.pnl_pct))
+                c5.metric("🏷️ Precio actual", eur(r.precio, 4),
+                          delta=pct((r.precio / r.precio_medio - 1) * 100) + " vs medio" if r.precio_medio else None)
+                c6.metric("🪙 Tokens", fmt(r.cantidad, 2))
+                # Barra visual: cuánto vale hoy cada euro invertido
+                if r.invertido > 0:
+                    ratio = r.valor / r.invertido
+                    color = POS if ratio >= 1 else NEG
+                    ancho_inv = min(100, 100 / ratio) if ratio > 1 else 100
+                    ancho_val = min(100, ratio * 100)
+                    st.markdown(
+                        f"<div style='font-size:0.8rem;color:{MUTED};margin:2px 0 4px'>Invertido vs valor actual</div>"
+                        f"<div style='background:#1f2937;border-radius:6px;height:10px;margin-bottom:4px'>"
+                        f"<div style='width:{ancho_inv:.1f}%;background:{MUTED};height:10px;border-radius:6px'></div></div>"
+                        f"<div style='background:#1f2937;border-radius:6px;height:10px'>"
+                        f"<div style='width:{ancho_val:.1f}%;background:{color};height:10px;border-radius:6px'></div></div>"
+                        f"<div style='font-size:0.8rem;color:{MUTED};margin-top:4px'>Cada 1 € invertido vale hoy "
+                        f"<b style='color:{color}'>{fmt(ratio, 2)} €</b></div>",
+                        unsafe_allow_html=True)
 
                 wallets = custody.get(r.token, {})
                 if wallets:
