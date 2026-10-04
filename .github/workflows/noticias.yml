@@ -2,7 +2,7 @@ name: Noticias con IA
 
 on:
   schedule:
-    - cron: "10 * * * *"    # cada hora: recoge tus 👍/👎 y, a las horas de envío, manda noticias
+    - cron: "23 * * * *"    # cada hora: recoge tus 👍/👎 y, a las horas de envío, manda noticias
   workflow_dispatch:         # botón "Run workflow" para lanzarlo a mano
     inputs:
       prueba:
