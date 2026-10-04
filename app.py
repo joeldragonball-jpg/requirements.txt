@@ -34,6 +34,14 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# Dos secciones con el mismo enlace: la cartera y el cerebro (tus apuntes, en cerebro.py)
+seccion = st.radio("Sección", ["📊 Cartera", "🧠 Cerebro"], horizontal=True,
+                   label_visibility="collapsed", key="seccion")
+if seccion == "🧠 Cerebro":
+    import cerebro
+    cerebro.mostrar()
+    st.stop()
+
 # =============================================================================
 # CONFIGURACIÓN — para añadir un token nuevo basta con añadir una línea a TOKENS
 # =============================================================================
