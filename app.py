@@ -38,7 +38,9 @@ st.markdown("""
 seccion = st.radio("Sección", ["📊 Cartera", "🧠 Cerebro"], horizontal=True,
                    label_visibility="collapsed", key="seccion")
 if seccion == "🧠 Cerebro":
+    import importlib
     import cerebro
+    importlib.reload(cerebro)  # así siempre usa la última versión de cerebro.py subida a GitHub
     cerebro.mostrar()
     st.stop()
 
