@@ -1,0 +1,350 @@
+"""🧠 Cerebro: tus apuntes (archivos .md de la carpeta cerebro/) convertidos en
+biblioteca, glosario, datos, mapa y un chat con IA que responde con tu propia información."""
+import re
+import unicodedata
+from pathlib import Path
+
+import plotly.graph_objects as go
+import streamlit as st
+
+CARPETA = Path(__file__).parent / "cerebro"
+MODELO = "claude-sonnet-5-5"
+
+
+# ---------------------------------------------------------------- utilidades
+def md(texto):
+    """Prepara texto para st.markdown: '$' no es fórmula y los [VERIFICAR] se resaltan."""
+    texto = texto.replace("$", r"\$")
+    return re.sub(r"\[VERIFICAR([^\]]*)\]", r":orange[⚠️ VERIFICAR\1]", texto)
+
+
+def normalizar(texto):
+    """Minúsculas y sin tildes, para buscar 'regulacion' y encontrar 'regulación'."""
+    return "".join(c for c in unicodedata.normalize("NFD", texto.lower()) if unicodedata.category(c) != "Mn")
+
+
+def dividir(texto, patron):
+    """Divide un texto por encabezados (### Título o **Título**) → [(título, contenido)]."""
+    partes = re.split(patron, texto, flags=re.M)
+    bloques = [("General", partes[0].strip())] if partes[0].strip() else []
+    bloques += [(partes[i].strip(), partes[i + 1].strip()) for i in range(1, len(partes) - 1, 2)]
+    return bloques
+
+
+def subsecciones(texto):
+    return dividir(texto, r"^###\s+(.+)$")
+
+
+def grupos_negrita(texto):
+    """Grupos que empiezan con una línea en negrita, p. ej. '**Europa**' o '**Macro 2026** (nota)'."""
+    return [(t.replace("**", "").strip(), c) for t, c in dividir(texto, r"^(\*\*[^*\n]+\*\*[^\n]*)$")]
+
+
+# ---------------------------------------------------------------- lectura de apuntes
+@st.cache_data(ttl=600, show_spinner=False)
+def cargar_apuntes():
+    docs = []
+    for p in sorted(CARPETA.glob("*.md")):
+        texto = p.read_text(encoding="utf-8")
+        meta, cuerpo = {}, texto
+        m = re.match(r"^---\s*\n(.*?)\n---\s*\n", texto, re.S)
+        if m:
+            for linea in m.group(1).splitlines():
+                if ":" in linea:
+                    clave, valor = linea.split(":", 1)
+                    valor = valor.strip()
+                    if valor.startswith("[") and valor.endswith("]"):
+                        valor = [x.strip() for x in valor[1:-1].split(",") if x.strip()]
+                    meta[clave.strip()] = valor
+            cuerpo = texto[m.end():]
+        titulo, actual, secciones = meta.get("tema", p.stem), None, {}
+        for linea in cuerpo.splitlines():
+            if linea.startswith("# "):
+                titulo = linea[2:].strip()
+            elif linea.startswith("## "):
+                actual = linea[3:].strip()
+                secciones[actual] = []
+            elif actual:
+                secciones[actual].append(linea)
+        docs.append({"archivo": p.name, "titulo": titulo, "meta": meta, "texto": cuerpo,
+                     "secciones": {k: "\n".join(v).strip() for k, v in secciones.items()}})
+    return docs
+
+
+def seccion(doc, prefijo):
+    """Busca una sección por el principio de su nombre ('cifras' → 'Cifras y datos importantes')."""
+    for nombre, texto in doc["secciones"].items():
+        if normalizar(nombre).startswith(normalizar(prefijo)):
+            return texto
+    return ""
+
+
+def conceptos(docs):
+    out = []
+    for d in docs:
+        for linea in seccion(d, "conceptos").splitlines():
+            m = re.match(r"^\s*[-*]\s+\*\*(.+?)\*\*\s*:?\s*(.*)$", linea)
+            if m:
+                out.append({"concepto": m.group(1).strip(), "definicion": m.group(2).strip(), "doc": d["titulo"]})
+    return sorted(out, key=lambda c: normalizar(c["concepto"]))
+
+
+def fragmentos(docs):
+    """Párrafos y viñetas sueltos con su ubicación, para el buscador."""
+    out = []
+    for d in docs:
+        for nombre, texto in d["secciones"].items():
+            for sub, cuerpo in subsecciones(texto):
+                ruta = nombre if sub == "General" else f"{nombre} › {sub}"
+                for trozo in re.split(r"\n(?=\s*[-*] |\s*\d+\. |\|)|\n\s*\n", cuerpo):
+                    if trozo.strip():
+                        out.append({"doc": d["titulo"], "ruta": ruta, "texto": trozo.strip()})
+    return out
+
+
+# ---------------------------------------------------------------- pantalla
+INSTRUCCIONES_VACIO = """
+Todavía no hay apuntes. Para añadirlos:
+1. Prepara un archivo **.md** con el formato de siempre (resumen, explicación, conceptos, cifras…).
+2. En GitHub, entra en la carpeta **`cerebro`** de tu repositorio → **Add file → Upload files** y arrástralo.
+3. En un par de minutos aparecerá aquí.
+"""
+
+
+def mostrar():
+    docs = cargar_apuntes()
+    st.title("🧠 Mi Cerebro")
+    if not docs:
+        st.info(INSTRUCCIONES_VACIO)
+        return
+
+    todos_conceptos = conceptos(docs)
+    n_verificar = sum(d["texto"].count("[VERIFICAR") for d in docs)
+    n_temas = sum(len(subsecciones(seccion(d, "explicaci"))) for d in docs)
+    st.caption(" · ".join(f"{d['titulo']} (actualizado {d['meta'].get('actualizado', '—')})" for d in docs))
+    c = st.columns(4)
+    c[0].metric("📄 Documentos", len(docs))
+    c[1].metric("📚 Bloques temáticos", n_temas)
+    c[2].metric("🔤 Conceptos", len(todos_conceptos))
+    c[3].metric("⚠️ Datos a verificar", n_verificar)
+
+    buscar = st.text_input("🔎 Buscar en todos tus apuntes", placeholder="p. ej. LTV, Modelo 721, Ormuz, FIFO…")
+    if buscar.strip():
+        mostrar_busqueda(docs, buscar.strip())
+
+    tabs = st.tabs(["📚 Apuntes", "🔤 Glosario", "📊 Datos", "🎯 Mi cartera y fiscalidad",
+                    "💭 Opiniones y dudas", "🗺️ Mapa", "💬 Pregúntale"])
+    with tabs[0]:
+        tab_apuntes(docs)
+    with tabs[1]:
+        tab_glosario(todos_conceptos)
+    with tabs[2]:
+        tab_datos(docs)
+    with tabs[3]:
+        tab_cartera(docs)
+    with tabs[4]:
+        tab_opiniones(docs)
+    with tabs[5]:
+        tab_mapa(docs)
+    with tabs[6]:
+        tab_chat(docs)
+
+
+def elegir_doc(docs, clave):
+    if len(docs) == 1:
+        return docs[0]
+    titulos = [d["titulo"] for d in docs]
+    return docs[titulos.index(st.selectbox("Documento", titulos, key=clave))]
+
+
+def mostrar_busqueda(docs, termino):
+    clave = normalizar(termino)
+    encontrados = [f for f in fragmentos(docs) if clave in normalizar(f["texto"])]
+    with st.container(border=True):
+        st.markdown(f"**{len(encontrados)} resultado(s) para «{termino}»**")
+        patron = re.compile(re.escape(termino), re.IGNORECASE)
+        for f in encontrados[:40]:
+            texto = patron.sub(lambda m: f":orange-background[{m.group(0)}]", md(f["texto"]))
+            st.markdown(f"<span style='color:#94a3b8;font-size:0.8rem'>📍 {f['ruta']}</span>", unsafe_allow_html=True)
+            st.markdown(texto)
+        if len(encontrados) > 40:
+            st.caption("Hay más resultados: afina la búsqueda.")
+
+
+def tab_apuntes(docs):
+    d = elegir_doc(docs, "doc_apuntes")
+    etiquetas = d["meta"].get("etiquetas") or []
+    if etiquetas:
+        st.markdown(" ".join(f"`{e}`" for e in etiquetas))
+    resumen = seccion(d, "resumen")
+    if resumen:
+        with st.container(border=True):
+            st.markdown("#### 📝 Resumen")
+            st.markdown(md(resumen))
+    st.markdown("#### 📖 Explicación")
+    for i, (titulo, cuerpo) in enumerate(subsecciones(seccion(d, "explicaci"))):
+        with st.expander(titulo, expanded=(i == 0)):
+            st.markdown(md(cuerpo))
+    puntos = seccion(d, "puntos clave")
+    if puntos:
+        with st.container(border=True):
+            st.markdown("#### 🎯 Puntos clave")
+            st.markdown(md(puntos))
+
+
+def tab_glosario(lista):
+    filtro = st.text_input("Filtrar conceptos", placeholder="p. ej. colateral", key="filtro_glosario")
+    if filtro:
+        f = normalizar(filtro)
+        lista = [c for c in lista if f in normalizar(c["concepto"]) or f in normalizar(c["definicion"])]
+    st.caption(f"{len(lista)} conceptos")
+    col1, col2 = st.columns(2, gap="large")
+    for i, c in enumerate(lista):
+        with (col1 if i % 2 == 0 else col2):
+            st.markdown(f"**{md(c['concepto'])}**  \n{md(c['definicion'])}")
+
+
+def tab_datos(docs):
+    d = elegir_doc(docs, "doc_datos")
+    bloques = grupos_negrita(seccion(d, "cifras"))
+    filtro = st.text_input("Filtrar datos", placeholder="p. ej. Brent, ITP, BCE", key="filtro_datos")
+    for titulo, cuerpo in bloques:
+        if filtro:
+            lineas = [l for l in cuerpo.splitlines() if normalizar(filtro) in normalizar(l)]
+            if not lineas:
+                continue
+            cuerpo = "\n".join(lineas)
+        with st.expander(f"{titulo} ({len([l for l in cuerpo.splitlines() if l.strip()])})", expanded=bool(filtro)):
+            st.markdown(md(cuerpo))
+
+
+def tab_cartera(docs):
+    d = elegir_doc(docs, "doc_cartera")
+    st.markdown("### 🎯 Relación con mi cartera")
+    for titulo, cuerpo in grupos_negrita(seccion(d, "relaci")):
+        with st.container(border=True):
+            if titulo != "General":
+                st.markdown(f"**{titulo}**")
+            st.markdown(md(cuerpo))
+    st.markdown("### 🏛️ Fiscalidad en España")
+    for titulo, cuerpo in grupos_negrita(seccion(d, "fiscalidad")):
+        with st.expander(titulo, expanded=(titulo == "Cripto")):
+            st.markdown(md(cuerpo))
+
+
+def tab_opiniones(docs):
+    d = elegir_doc(docs, "doc_opiniones")
+    st.caption("Separado de los hechos a propósito: aquí están las opiniones y predicciones, "
+               "y abajo las contradicciones y datos pendientes de comprobar.")
+    st.markdown("### 💭 Opiniones y predicciones")
+    for titulo, cuerpo in grupos_negrita(seccion(d, "opiniones")):
+        with st.expander(titulo):
+            st.markdown(md(cuerpo))
+    st.markdown("### ⚠️ Dudas y datos a verificar")
+    for titulo, cuerpo in grupos_negrita(seccion(d, "dudas")):
+        with st.expander(titulo):
+            st.markdown(md(cuerpo))
+
+
+def tab_mapa(docs):
+    ids, etiquetas, padres, valores = [], [], [], []
+    for d in docs:
+        ids.append(d["archivo"]); etiquetas.append(d["titulo"][:40]); padres.append(""); valores.append(0)
+        for nombre, texto in d["secciones"].items():
+            sid = f"{d['archivo']}/{nombre}"
+            subs = subsecciones(texto)
+            ids.append(sid); etiquetas.append(nombre); padres.append(d["archivo"])
+            if len(subs) > 1:
+                valores.append(0)
+                for sub, cuerpo in subs:
+                    ids.append(f"{sid}/{sub}"); etiquetas.append(sub); padres.append(sid)
+                    valores.append(max(len(cuerpo.split()), 1))
+            else:
+                valores.append(max(len(texto.split()), 1))
+    fig = go.Figure(go.Treemap(ids=ids, labels=etiquetas, parents=padres, values=valores, branchvalues="remainder",
+                               hovertemplate="%{label}<br>%{value} palabras<extra></extra>",
+                               marker=dict(colorscale="Blues"), maxdepth=3))
+    fig.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", height=600,
+                      margin=dict(l=0, r=0, t=10, b=0))
+    st.caption("Cada recuadro es una parte de tus apuntes; el tamaño indica cuánta información tiene. Pulsa para entrar.")
+    st.plotly_chart(fig, theme=None, config={"displayModeBar": False})
+
+
+# ---------------------------------------------------------------- chat con IA
+SYSTEM_CHAT = """Eres el asistente de estudio personal de un inversor particular español con XRP y XLM.
+Respondes en español claro y sencillo, usando SOLO la información de sus apuntes, que tienes abajo.
+- Indica al final de dónde sale la respuesta, así: "📍 Sección: (nombre de la sección o apartado)".
+- Si sus apuntes no cubren la pregunta, dilo claramente ("Tus apuntes no lo cubren"). Puedes añadir
+  conocimiento general solo si lo marcas como "Fuera de tus apuntes:".
+- Si un dato que usas está marcado como [VERIFICAR] o es una opinión/predicción, avísalo.
+- Si la pregunta implica una decisión con consecuencias fiscales o de inversión, recuerda que conviene
+  contrastarlo con un asesor; no eres su asesor financiero ni fiscal.
+- Sé breve: ve al grano y usa listas cuando ayuden."""
+
+
+def clave_api():
+    try:
+        return st.secrets.get("ANTHROPIC_API_KEY")
+    except Exception:
+        return None
+
+
+def tab_chat(docs):
+    clave = clave_api()
+    if not clave:
+        st.info("Para activar el chat, añade tu clave de Anthropic en Streamlit: en share.streamlit.io, "
+                "en tu app → **⋮ → Settings → Secrets**, pega esta línea con tu clave y guarda:\n\n"
+                "`ANTHROPIC_API_KEY = \"tu-clave\"`")
+        return
+    st.caption("Responde con tus apuntes. Cada pregunta cuesta unos céntimos; las siguientes en pocos minutos, menos.")
+    if "chat_cerebro" not in st.session_state:
+        st.session_state.chat_cerebro = []
+    if st.session_state.chat_cerebro and st.button("🗑️ Nueva conversación"):
+        st.session_state.chat_cerebro = []
+        st.rerun()
+
+    for m in st.session_state.chat_cerebro:
+        with st.chat_message(m["role"]):
+            st.markdown(md(m["content"]))
+
+    pregunta = st.chat_input("Pregunta sobre tus apuntes… (p. ej. ¿cómo tributa una permuta XRP → USDC?)")
+    if not pregunta:
+        return
+    st.session_state.chat_cerebro.append({"role": "user", "content": pregunta})
+    with st.chat_message("user"):
+        st.markdown(md(pregunta))
+    with st.chat_message("assistant"):
+        with st.spinner("Consultando tus apuntes…"):
+            respuesta = preguntar(clave, docs, st.session_state.chat_cerebro[-10:])
+        st.markdown(md(respuesta))
+    st.session_state.chat_cerebro.append({"role": "assistant", "content": respuesta})
+
+
+def preguntar(clave, docs, historial):
+    import anthropic
+
+    apuntes = "\n\n".join(f"<documento titulo=\"{d['titulo']}\">\n{d['texto']}\n</documento>" for d in docs)
+    client = anthropic.Anthropic(api_key=clave)
+    try:
+        resp = client.beta.messages.create(
+            model=MODELO,
+            max_tokens=8000,
+            # Los apuntes van en caché: las preguntas seguidas son mucho más baratas
+            system=[{"type": "text", "text": SYSTEM_CHAT},
+                    {"type": "text", "text": f"<apuntes>\n{apuntes}\n</apuntes>", "cache_control": {"type": "ephemeral"}}],
+            messages=[{"role": m["role"], "content": m["content"]} for m in historial],
+            output_config={"effort": "medium"},
+            betas=["server-side-fallback-2026-07-01"],
+            fallbacks="default",
+        )
+    except anthropic.AuthenticationError:
+        return "⚠️ La clave de Anthropic no es válida. Revísala en Settings → Secrets."
+    except anthropic.RateLimitError:
+        return "⚠️ Demasiadas peticiones seguidas. Espera un minuto y vuelve a preguntar."
+    except anthropic.APIStatusError as e:
+        return f"⚠️ Error de la API de Anthropic ({e.status_code}). Inténtalo de nuevo en un rato."
+    except anthropic.APIConnectionError:
+        return "⚠️ No se pudo conectar con Anthropic. Revisa la conexión e inténtalo de nuevo."
+    if resp.stop_reason == "refusal":
+        return "⚠️ No he podido responder a esa pregunta. Prueba a formularla de otra manera."
+    return "\n".join(b.text for b in resp.content if b.type == "text").strip() or "⚠️ Respuesta vacía."
