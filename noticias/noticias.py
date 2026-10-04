@@ -308,7 +308,9 @@ def extracto_cerebro():
     puntos clave, relación con tu cartera y datos pendientes de verificar (no la explicación entera)."""
     secciones_utiles = ("resumen", "puntos clave", "relaci", "dudas")
     partes = []
-    for p in sorted(CARPETA_CEREBRO.glob("*.md")):
+    # Primero tus apuntes principales y después las 4 semanas de actualidad más recientes
+    archivos = sorted(CARPETA_CEREBRO.glob("*.md")) + sorted(CARPETA_CEREBRO.glob("actualidad/*.md"), reverse=True)[:4]
+    for p in archivos:
         texto = p.read_text(encoding="utf-8")
         tema = re.search(r"^tema:\s*(.+)$", texto, re.M)
         etiquetas = re.search(r"^etiquetas:\s*(.+)$", texto, re.M)
@@ -375,6 +377,70 @@ def resumen_semanal(db):
     return llamar_claude(system, prompt, max_tokens=8000, origen="resumen semanal")
 
 
+FORMATO_APUNTES = """---
+tema: Actualidad {semana}
+etiquetas: [palabra1, palabra2, palabra3]
+actualizado: {fecha}
+---
+# Actualidad {semana}
+
+## Resumen
+(5-8 líneas con lo esencial de la semana)
+
+## Explicación
+(lo ocurrido, agrupado por tema con subtítulos ###, de lo más importante a lo menos)
+
+## Puntos clave
+- (un punto por línea)
+
+## Conceptos
+- **Concepto**: definición (solo conceptos nuevos que no estén ya en sus apuntes; si no hay, "Ninguno")
+
+## Cifras y datos importantes
+- (dato)
+
+## Opiniones y predicciones
+- (opinión o predicción)
+
+## Relación con mi cartera (XRP / XLM)
+(qué cambia para su tesis y su plan; qué confirma o contradice de sus apuntes)
+
+## Fiscalidad en España
+(solo si aplica; si no, "No aplica")
+
+## Dudas y datos a verificar
+(o "Ninguna")"""
+
+
+def apuntes_semana(db, semana):
+    """Convierte las noticias útiles de la semana en apuntes con el mismo formato que los tuyos."""
+    hace_7 = (datetime.now(timezone.utc) - timedelta(days=7)).isoformat()
+    utiles = [n for n in db["noticias"] if n["fecha_envio"] >= hace_7 and n.get("valoracion") != -1]
+    if not utiles:
+        return None
+    lista = "\n".join(f"- [{n['tema']}] {n['titulo']}: {n['resumen']}"
+                      + (f" (Relación con sus apuntes: {n['actualiza_apuntes']})" if n.get("actualiza_apuntes") else "")
+                      for n in utiles)
+    system = ("Redactas apuntes de estudio en español claro para un inversor particular español con XRP y XLM. "
+              "Usa solo la información que se te da, sin inventar ni nombrar medios o fuentes. "
+              "Marca las predicciones con [ESPECULACIÓN] y los datos dudosos con [VERIFICAR].")
+    prompt = (f"Noticias de la semana {semana}:\n{lista}\n\n## Extracto de sus apuntes\n{extracto_cerebro()}\n\n"
+              "Convierte las noticias en apuntes con EXACTAMENTE este formato y devuelve solo el Markdown:\n\n"
+              + FORMATO_APUNTES.format(semana=semana, fecha=datetime.now(MADRID).strftime("%d/%m/%Y")))
+    texto = llamar_claude(system, prompt, max_tokens=8000, origen="apuntes semanales").strip()
+    return re.sub(r"^```(?:markdown)?\s*|\s*```$", "", texto)
+
+
+def guardar_en_main(ruta, contenido, mensaje):
+    """Guarda un archivo en la rama principal (la que lee la app), creándolo o sustituyéndolo."""
+    url = f"{GH_API}/repos/{REPO}/contents/{ruta}"
+    r = requests.get(url, headers=GH_HEADERS, timeout=20)
+    cuerpo = {"message": mensaje, "content": base64.b64encode(contenido.encode("utf-8")).decode()}
+    if r.status_code == 200:
+        cuerpo["sha"] = r.json()["sha"]
+    requests.put(url, headers=GH_HEADERS, json=cuerpo, timeout=30).raise_for_status()
+
+
 # ---------------------------------------------------------------- principal
 def franja_pendiente(db, ahora_es):
     """La hora de envío más reciente que ya ha llegado y todavía no se ha hecho hoy."""
@@ -431,6 +497,15 @@ def main():
         texto = resumen_semanal(db)
         if texto:
             telegram("sendMessage", chat_id=TG_CHAT, text=("🗞️ RESUMEN DE LA SEMANA\n\n" + texto)[:4000])
+        # Las noticias de la semana pasan a formar parte de tu cerebro como un archivo de apuntes más
+        try:
+            apuntes = apuntes_semana(db, semana)
+            if apuntes:
+                guardar_en_main(f"cerebro/actualidad/{semana}.md", apuntes, f"Cerebro: apuntes de actualidad {semana}")
+                telegram("sendMessage", chat_id=TG_CHAT,
+                         text=f"🧠 He añadido a tu cerebro los apuntes de actualidad de la semana ({semana}).")
+        except Exception as e:
+            print(f"No se pudieron guardar los apuntes semanales: {e}")
         db["semanal"] = semana
         cambios.append("resumen semanal")
 
