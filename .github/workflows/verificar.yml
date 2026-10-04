@@ -1,0 +1,30 @@
+name: Verificar apuntes
+
+on:
+  workflow_dispatch:          # botón "Run workflow" para lanzarlo a mano
+  schedule:
+    - cron: "17 6 1 * *"      # el día 1 de cada mes
+
+permissions:
+  contents: write             # para guardar el resultado en la rama 'datos'
+
+concurrency: verificar
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests anthropic
+
+      - name: Verificar datos dudosos de los apuntes
+        run: python verificacion/verificar.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
