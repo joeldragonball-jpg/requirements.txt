@@ -154,6 +154,9 @@ def mostrar():
 
     todos_conceptos = conceptos(docs)
     verif = cargar_json_datos("cerebro/verificaciones.json").get("resultados", {})
+    # Solo los datos que siguen escritos en tus apuntes (si ya los corregiste, desaparecen de aquí)
+    texto_apuntes = "\n".join(d["texto"] for d in docs)
+    verif = {k: v for k, v in verif.items() if v.get("texto", "")[:80] in texto_apuntes}
     n_temas = sum(len(subsecciones(seccion(d, "explicaci"))) for d in docs)
     principales = [d for d in docs if not d["archivo"].startswith("actualidad")]
     semanas = len(docs) - len(principales)
