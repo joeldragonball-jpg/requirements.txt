@@ -96,21 +96,20 @@ def guardar_db(db, sha, motivo):
 
 
 # ---------------------------------------------------------------- Telegram
-def telegram(metodo, **datos):
+def telegram(metodo, silencioso=False, **datos):
     r = requests.post(f"https://api.telegram.org/bot{TG_TOKEN}/{metodo}", json=datos, timeout=20)
-    if not r.ok:
+    if not r.ok and not silencioso:
         print(f"Telegram {metodo} falló: {r.status_code} {r.text[:300]}")
         return {}
     return r.json()
 
 
 def botones(nid, valoracion=0):
-    if valoracion == 1:
-        return {"inline_keyboard": [[{"text": "👍 Te ha sido útil · cambiar a 👎", "callback_data": f"v|{nid}|-1"}]]}
-    if valoracion == -1:
-        return {"inline_keyboard": [[{"text": "👎 No te interesa · cambiar a 👍", "callback_data": f"v|{nid}|1"}]]}
-    return {"inline_keyboard": [[{"text": "👍 Útil", "callback_data": f"v|{nid}|1"},
-                                 {"text": "👎 No me interesa", "callback_data": f"v|{nid}|-1"}]]}
+    """Siempre los dos botones; el elegido lleva ✅. Pulsar otra vez el mismo no cambia nada."""
+    si = ("✅ " if valoracion == 1 else "") + "👍 Útil"
+    no = ("✅ " if valoracion == -1 else "") + "👎 No me interesa"
+    return {"inline_keyboard": [[{"text": si, "callback_data": f"v|{nid}|1"},
+                                 {"text": no, "callback_data": f"v|{nid}|-1"}]]}
 
 
 POSITIVAS = {"👍", "❤", "❤️", "🔥", "👏", "🤩", "💯", "⚡"}
@@ -145,8 +144,9 @@ def recoger_valoraciones(db):
         _, nid, voto = cq["data"].split("|")
         noticia = por_id.get(nid)
         print(f"Botón {'👍' if voto == '1' else '👎'} → {noticia['titulo'][:50] if noticia else 'noticia no encontrada'}")
-        telegram("answerCallbackQuery", callback_query_id=cq["id"], text="Guardado, gracias 🙌")
-        if not noticia:
+        # Si el bot tarda en ejecutarse, Telegram ya no acepta la respuesta: no pasa nada, el voto se guarda igual
+        telegram("answerCallbackQuery", silencioso=True, callback_query_id=cq["id"], text="Guardado, gracias 🙌")
+        if not noticia or noticia.get("valoracion") == int(voto):
             continue
         noticia["valoracion"] = int(voto)
         nuevas += 1
