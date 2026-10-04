@@ -1,774 +1,831 @@
-import streamlit as st
-import pandas as pd
 import numpy as np
-import plotly.express as px
+import pandas as pd
 import plotly.graph_objects as go
 import requests
+import streamlit as st
 from datetime import datetime
 
-# Configuración de página y Ocultar elementos de Streamlit para móvil
-st.set_page_config(page_title="Control de Portfolio Cripto", page_icon="⚡", layout="wide")
+st.set_page_config(page_title="Mi Cartera Cripto", page_icon="⚡", layout="wide")
 
-hide_streamlit_style = """
+st.markdown("""
     <style>
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
-    .stApp { margin-top: -20px; }
+    .block-container {padding-top: 1.2rem; padding-bottom: 2rem;}
+    [data-testid="stMetricValue"] {font-size: 1.45rem;}
     </style>
-"""
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
-# URLs CSV de Google Sheets
-SHEET_RESUMEN_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=1415212158&single=true&output=csv"
-SHEET_XRP_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=2015592342&single=true&output=csv"
-SHEET_XLM_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=108352087&single=true&output=csv"
+# =============================================================================
+# CONFIGURACIÓN — para añadir un token nuevo basta con añadir una línea a TOKENS
+# =============================================================================
+SHEET_ID = "2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI"
+SHEET_BASE = f"https://docs.google.com/spreadsheets/d/e/{SHEET_ID}/pub?single=true&output=csv&gid="
+GID_RESUMEN = "1415212158"
 
-def read_raw_csv(url):
+TOKENS = {
+    "XRP": {"gid": "2015592342", "kraken": "XRPEUR", "coingecko": "ripple", "color": "#3b82f6"},
+    "XLM": {"gid": "108352087", "kraken": "XLMEUR", "coingecko": "stellar", "color": "#10b981"},
+}
+COLD_WALLETS = {"LEDGER"}  # el resto se considera custodia en exchange
+
+POS, NEG, MUTED, GRID = "#10b981", "#ef4444", "#94a3b8", "#262c3a"
+MESES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+         "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+MESES_CORTOS = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+
+# Streamlit >= 1.49 sustituye use_container_width por width="stretch"
+_NEW_ST = tuple(int(p) for p in st.__version__.split(".")[:2]) >= (1, 49)
+WIDE = {"width": "stretch"} if _NEW_ST else {"use_container_width": True}
+PLOT_CFG = {"displayModeBar": False}
+
+
+# =============================================================================
+# FORMATO (estilo español: 1.234,56 €)
+# =============================================================================
+def fmt(x, dec=2, sign=False):
+    if x is None or pd.isna(x):
+        return "—"
+    s = f"{x:{'+' if sign else ''},.{dec}f}"
+    return s.replace(",", "§").replace(".", ",").replace("§", ".")
+
+
+def eur(x, dec=2, sign=False):
+    return "—" if x is None or pd.isna(x) else fmt(x, dec, sign) + " €"
+
+
+def pct(x, dec=2, sign=True):
+    return "—" if x is None or pd.isna(x) else fmt(x, dec, sign) + " %"
+
+
+def color_sign(v):
+    if v is None or pd.isna(v) or v == 0:
+        return ""
+    return f"color: {POS}" if v > 0 else f"color: {NEG}"
+
+
+def style_fig(fig, height=360):
+    fig.update_layout(
+        template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+        height=height, margin=dict(l=10, r=10, t=30, b=10), hovermode="x unified",
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
+        separators=",.",
+    )
+    fig.update_xaxes(showgrid=False, title=None)
+    fig.update_yaxes(gridcolor=GRID, title=None)
+    return fig
+
+
+def chart(fig):
+    st.plotly_chart(fig, theme=None, config=PLOT_CFG, **WIDE)
+
+
+# =============================================================================
+# LECTURA DE DATOS
+# =============================================================================
+def parse_num(x):
+    """Convierte '1.234,56 €', '12,01%', '30' o '0.5' en float."""
+    if x is None or (isinstance(x, float) and np.isnan(x)):
+        return np.nan
+    if isinstance(x, (int, float, np.number)):
+        return float(x)
+    s = str(x).replace("€", "").replace("%", "").replace("\xa0", "").replace(" ", "").strip()
+    if s in ("", "-", "nan"):
+        return np.nan
+    if "," in s:
+        s = s.replace(".", "").replace(",", ".")
+    elif s.count(".") > 1:
+        s = s.replace(".", "")
+    elif "." in s:
+        # Sin coma: '1.234' es separador de miles, pero '0.5' es decimal
+        entero, dec = s.lstrip("-").split(".")
+        if len(dec) == 3 and entero not in ("", "0"):
+            s = s.replace(".", "")
     try:
-        return pd.read_csv(url, header=None, on_bad_lines='skip')
-    except Exception:
-        return pd.DataFrame()
+        return float(s)
+    except ValueError:
+        return np.nan
 
-def clean_numeric_series(series):
-    s_str = series.fillna('0').astype(str)
-    s_str = s_str.str.replace('€', '', regex=False).str.replace('%', '', regex=False).str.replace(' ', '', regex=False)
-    s_str = s_str.str.replace('.', '', regex=False).str.replace(',', '.', regex=False)
-    return pd.to_numeric(s_str, errors='coerce').fillna(0.0)
 
-@st.cache_data(ttl=10)
-def load_resumen_data():
-    raw_df = read_raw_csv(SHEET_RESUMEN_URL)
-    if raw_df.empty:
-        return pd.DataFrame(), {}
+def to_num(series):
+    return series.map(parse_num).astype(float)
 
-    header_idx = None
-    for idx, row in raw_df.iterrows():
-        row_str = " ".join(row.fillna('').astype(str).values).upper()
-        if "TOKEN" in row_str and "CANTIDAD" in row_str:
-            header_idx = idx
-            break
 
-    if header_idx is not None:
-        df = pd.read_csv(SHEET_RESUMEN_URL, skiprows=header_idx, on_bad_lines='skip')
-    else:
-        df = pd.read_csv(SHEET_RESUMEN_URL, on_bad_lines='skip')
+@st.cache_data(ttl=60, show_spinner=False)
+def fetch_sheet(gid):
+    return pd.read_csv(SHEET_BASE + gid, header=None, dtype=str, on_bad_lines="skip")
 
-    df.columns = [str(c).strip() for c in df.columns]
 
-    cols_num = ["Cantidad Total TK", "Inversión Total (€)", "Precio Medio (€)", "Precio Actual (€)", "Valor Actual (€)", "P&L No Realizado (€)", "P&L No Realizado (%)"]
-    for col in cols_num:
-        col_match = next((c for c in df.columns if col.upper() in c.upper()), None)
-        if col_match:
-            df[col] = clean_numeric_series(df[col_match])
+def table_from_raw(raw, must_have):
+    """Busca la fila de cabecera (la que contiene todas las palabras clave) y devuelve la tabla."""
+    for i, row in raw.iterrows():
+        txt = " ".join(row.fillna("").astype(str)).upper()
+        if all(k in txt for k in must_have):
+            df = raw.iloc[i + 1:].copy()
+            df.columns = [str(c).strip() if pd.notna(c) and str(c).strip() else f"_col{j}"
+                          for j, c in enumerate(row)]
+            return df.reset_index(drop=True)
+    return pd.DataFrame()
 
-    tok_col = next((c for c in df.columns if "TOKEN" in c.upper()), "Token")
-    if tok_col in df.columns:
-        df["Token"] = df[tok_col]
-        df = df[df["Token"].astype(str).str.upper() != "TOTAL"]
 
-    custody_data = {'XRP': {}, 'XLM': {}}
+def find_col(df, *keys, exclude=None):
+    for c in df.columns:
+        cu = c.upper()
+        if all(k in cu for k in keys) and not (exclude and exclude in cu):
+            return c
+    return None
+
+
+@st.cache_data(ttl=60, show_spinner=False)
+def load_positions():
+    t = table_from_raw(fetch_sheet(GID_RESUMEN), ("TOKEN", "CANTIDAD"))
+    if t.empty:
+        return pd.DataFrame(), {}, []
+
+    c_tok = find_col(t, "TOKEN")
+    tokens = t[c_tok].fillna("").str.strip().str.upper()
+    pos = pd.DataFrame({"token": tokens})
+    spec = {"cantidad": ("CANTIDAD",), "invertido": ("INVERSI",), "precio_hoja": ("PRECIO ACTUAL",)}
+    for key, keys in spec.items():
+        c = find_col(t, *keys)
+        pos[key] = to_num(t[c]) if c else np.nan
+
+    ignorar = {"", "NAN", "TOTAL"}
+    desconocidos = sorted(set(tokens) - set(TOKENS) - ignorar)
+    pos = pos[pos["token"].isin(TOKENS.keys())].reset_index(drop=True)
+
+    # Custodia: columna 'Wallet' + una columna por token, p.ej. 'Columna J (XRP)'
+    custody = {tok: {} for tok in TOKENS}
+    c_wallet = find_col(t, "WALLET")
+    for tok in TOKENS:
+        c = find_col(t, f"({tok})")
+        if not (c_wallet and c):
+            continue
+        for w, v in zip(t[c_wallet], t[c]):
+            w, v = str(w).strip().upper(), parse_num(v)
+            if w and w != "NAN" and v > 0:
+                custody[tok][w] = v
+    return pos, custody, desconocidos
+
+
+@st.cache_data(ttl=60, show_spinner=False)
+def load_transactions():
+    frames, errores = [], []
+    for tok, cfg in TOKENS.items():
+        try:
+            t = table_from_raw(fetch_sheet(cfg["gid"]), ("FECHA",))
+        except Exception as e:
+            errores.append(f"{tok}: no se pudo leer la hoja ({e})")
+            continue
+        c_fecha, c_cant = find_col(t, "FECHA"), find_col(t, "CANTIDAD")
+        c_total = find_col(t, "INVERTIDO") or find_col(t, "TOTAL")
+        if not (c_fecha and c_cant and c_total):
+            errores.append(f"{tok}: faltan columnas Fecha / Cantidad / Total Invertido")
+            continue
+        c_tipo, c_precio = find_col(t, "TIPO"), find_col(t, "PRECIO")
+        c_fee = find_col(t, "COMISI") or find_col(t, "FEE")
+        c_plat, c_cust = find_col(t, "WALLET", exclude="HOLDING"), find_col(t, "HOLDING")
+
+        d = pd.DataFrame({
+            "fecha": pd.to_datetime(t[c_fecha], format="%d/%m/%Y", errors="coerce"),
+            "token": tok,
+            "cantidad": to_num(t[c_cant]),
+            "precio": to_num(t[c_precio]) if c_precio else np.nan,
+            "comision": to_num(t[c_fee]) if c_fee else 0.0,
+            "total": to_num(t[c_total]),
+            "plataforma": t[c_plat].fillna("—").str.strip().str.upper() if c_plat else "—",
+            "custodia": t[c_cust].fillna("—").str.strip().str.upper() if c_cust else "—",
+        })
+        d = d.dropna(subset=["fecha", "cantidad"])
+        d = d[d["cantidad"] != 0].copy()
+        d["total"] = d["total"].fillna(0.0)
+        d["comision"] = d["comision"].fillna(0.0)
+        d["tipo"] = np.where(d["cantidad"] > 0, "Compra", "Venta")
+        if c_tipo:
+            d["tipo"] = t.loc[d.index, c_tipo].fillna("").str.strip().str.capitalize().replace("", np.nan).fillna(d["tipo"])
+        frames.append(d)
+
+    if not frames:
+        return pd.DataFrame(), errores
+    tx = pd.concat(frames, ignore_index=True).sort_values("fecha", kind="mergesort").reset_index(drop=True)
+    return tx, errores
+
+
+@st.cache_data(ttl=3600, show_spinner=False)
+def price_history(tok):
+    """Cierre diario en EUR. Kraken da ~2 años gratis; CoinGecko (gratis) solo 365 días."""
+    cfg = TOKENS[tok]
     try:
-        for _, row in raw_df.iterrows():
-            row_vals = [str(v).strip().upper() for v in row.fillna('').values]
-            for w_name in ['LEDGER', 'KRAKEN']:
-                if w_name in row_vals:
-                    w_idx = row_vals.index(w_name)
-                    if w_idx + 1 < len(row):
-                        val_xrp = clean_numeric_series(pd.Series([row.iloc[w_idx + 1]])).iloc[0]
-                        custody_data['XRP'][w_name] = float(val_xrp)
-                    if w_idx + 2 < len(row):
-                        val_xlm = clean_numeric_series(pd.Series([row.iloc[w_idx + 2]])).iloc[0]
-                        custody_data['XLM'][w_name] = float(val_xlm)
+        r = requests.get("https://api.kraken.com/0/public/OHLC",
+                         params={"pair": cfg["kraken"], "interval": 1440}, timeout=10)
+        js = r.json()
+        if not js.get("error"):
+            key = next(k for k in js["result"] if k != "last")
+            rows = js["result"][key]
+            s = pd.Series([float(x[4]) for x in rows],
+                          index=pd.to_datetime([int(x[0]) for x in rows], unit="s").normalize())
+            return s[~s.index.duplicated(keep="last")], "Kraken"
     except Exception:
         pass
-
-    return df, custody_data
-
-def process_transaction_sheet(url, token_name):
     try:
-        raw_df = read_raw_csv(url)
-        header_idx = None
-        for idx, row in raw_df.iterrows():
-            row_str = " ".join(row.fillna('').astype(str).values).upper()
-            if "FECHA" in row_str:
-                header_idx = idx
-                break
+        r = requests.get(f"https://api.coingecko.com/api/v3/coins/{cfg['coingecko']}/market_chart",
+                         params={"vs_currency": "eur", "days": 365}, timeout=10)
+        if r.ok:
+            p = r.json().get("prices", [])
+            s = pd.Series([x[1] for x in p], index=pd.to_datetime([x[0] for x in p], unit="ms").normalize())
+            return s.groupby(level=0).last(), "CoinGecko"
+    except Exception:
+        pass
+    return pd.Series(dtype=float), None
 
-        if header_idx is not None:
-            df = pd.read_csv(url, skiprows=header_idx, on_bad_lines='skip')
+
+@st.cache_data(ttl=30, show_spinner=False)
+def live_prices():
+    """Precio actual y apertura del día (UTC) desde Kraken."""
+    try:
+        pairs = ",".join(cfg["kraken"] for cfg in TOKENS.values())
+        res = requests.get("https://api.kraken.com/0/public/Ticker", params={"pair": pairs}, timeout=8).json()["result"]
+        out = {}
+        for tok in TOKENS:
+            k = next((k for k in res if tok in k), None)
+            if k:
+                out[tok] = {"precio": float(res[k]["c"][0]), "apertura": float(res[k]["o"])}
+        return out
+    except Exception:
+        return {}
+
+
+# =============================================================================
+# CÁLCULOS
+# =============================================================================
+def add_twr(df):
+    """Rentabilidad diaria ponderada en el tiempo (TWR): elimina el efecto de tus aportaciones,
+    así una compra grande no aparece como 'rentabilidad'."""
+    base = df["valor"].shift(1, fill_value=0.0) + df["flujo"]
+    df["ret"] = np.where(base > 0, df["valor"] / base.where(base > 0, 1) - 1, 0.0)
+    df["indice"] = (1 + df["ret"]).cumprod() * 100
+    df["drawdown"] = (df["indice"] / df["indice"].cummax() - 1) * 100
+    return df
+
+
+def build_daily(tx, prices, current):
+    today = pd.Timestamp.now().normalize()
+    tx = tx.assign(fecha=tx["fecha"].clip(upper=today))
+    idx = pd.date_range(tx["fecha"].min(), today, freq="D")
+    per = {}
+    for tok, t in tx.groupby("token"):
+        p = prices.get(tok, pd.Series(dtype=float)).reindex(idx).ffill().bfill()
+        if p.isna().all():
+            p = pd.Series(current.get(tok, 0.0), index=idx)
+        p.iloc[-1] = current.get(tok, p.iloc[-1])
+        # Entradas a 0 € (regalos, transferencias) cuentan como aportación a precio de mercado
+        t = t.assign(flujo=np.where(t["total"] != 0, t["total"], t["cantidad"] * p.reindex(t["fecha"]).values))
+        g = t.groupby("fecha")
+        q = g["cantidad"].sum().reindex(idx, fill_value=0.0).cumsum()
+        aport = g["total"].sum().reindex(idx, fill_value=0.0)
+        per[tok] = add_twr(pd.DataFrame({
+            "cantidad": q, "invertido": aport.cumsum(), "precio": p,
+            "valor": q * p, "flujo": g["flujo"].sum().reindex(idx, fill_value=0.0),
+        }))
+    tot = pd.concat([d[["valor", "invertido", "flujo"]] for d in per.values()]).groupby(level=0).sum()
+    return add_twr(tot), per
+
+
+def period_table(df, freq):
+    out = pd.DataFrame({
+        "ret": ((1 + df["ret"]).resample(freq).prod() - 1) * 100,
+        "valor_fin": df["valor"].resample(freq).last(),
+        "flujo": df["flujo"].resample(freq).sum(),
+        "invertido": df["invertido"].resample(freq).last(),
+    })
+    out["resultado"] = out["valor_fin"] - out["valor_fin"].shift(1, fill_value=0.0) - out["flujo"]
+    out["pnl_acum"] = out["valor_fin"] - out["invertido"]
+    out["pnl_acum_pct"] = np.where(out["invertido"] > 0, out["pnl_acum"] / out["invertido"] * 100, np.nan)
+    return out
+
+
+def xirr(dates, amounts):
+    """TIR anualizada (como la función TIR.NO.PER de Sheets)."""
+    if len(dates) < 2:
+        return None
+    t = np.array([(d - dates[0]).days / 365.25 for d in dates])
+    a = np.array(amounts, dtype=float)
+    npv = lambda r: np.sum(a / (1 + r) ** t)
+    lo, hi = -0.99, 10.0
+    f_lo = npv(lo)
+    if np.sign(f_lo) == np.sign(npv(hi)):
+        return None
+    for _ in range(200):
+        mid = (lo + hi) / 2
+        f_mid = npv(mid)
+        if np.sign(f_mid) == np.sign(f_lo):
+            lo, f_lo = mid, f_mid
         else:
-            df = pd.read_csv(url, on_bad_lines='skip')
+            hi = mid
+    return mid * 100
 
-        df.columns = [str(c).strip().upper() for c in df.columns]
 
-        c_fecha = next((c for c in df.columns if "FECHA" in c), None)
-        c_cant = next((c for c in df.columns if "CANTIDAD" in c), None)
-        c_inv = next((c for c in df.columns if "INVERTIDO" in c or "TOTAL" in c), None)
+def fifo_realized(tx):
+    """Ganancias realizadas por venta con método FIFO (el que exige Hacienda en España)."""
+    rows = []
+    for tok, t in tx.groupby("token", sort=False):
+        lots = []  # [cantidad restante, coste unitario]
+        for r in t.itertuples():
+            if r.cantidad > 0:
+                lots.append([r.cantidad, max(r.total, 0.0) / r.cantidad])
+            else:
+                pendiente, coste = -r.cantidad, 0.0
+                while pendiente > 1e-12 and lots:
+                    usar = min(pendiente, lots[0][0])
+                    coste += usar * lots[0][1]
+                    lots[0][0] -= usar
+                    pendiente -= usar
+                    if lots[0][0] <= 1e-12:
+                        lots.pop(0)
+                rows.append({"Fecha": r.fecha, "Token": tok, "Cantidad": -r.cantidad,
+                             "Transmisión (€)": -r.total, "Adquisición (€)": coste,
+                             "Ganancia (€)": -r.total - coste})
+    return pd.DataFrame(rows)
 
-        if not c_fecha or not c_inv:
-            return pd.DataFrame()
 
-        df['Fecha_Clean'] = pd.to_datetime(df[c_fecha], errors='coerce', dayfirst=True)
-        df['Cantidad_Clean'] = clean_numeric_series(df[c_cant]) if c_cant else 0.0
-        df['Invertido_Clean'] = clean_numeric_series(df[c_inv])
-        df['Token_Clean'] = token_name
-
-        df_filtered = df[(df['Invertido_Clean'] > 0) & (df['Cantidad_Clean'] > 0)].copy()
-
-        return df_filtered[['Fecha_Clean', 'Cantidad_Clean', 'Invertido_Clean', 'Token_Clean']].dropna(subset=['Fecha_Clean'])
-    except Exception:
-        return pd.DataFrame()
-
-@st.cache_data(ttl=30)
-def load_history_data():
-    df_xrp = process_transaction_sheet(SHEET_XRP_URL, "XRP")
-    df_xlm = process_transaction_sheet(SHEET_XLM_URL, "XLM")
-
-    frames = [f for f in [df_xrp, df_xlm] if not f.empty]
-    if frames:
-        df_all = pd.concat(frames, ignore_index=True)
-        return df_all.sort_values('Fecha_Clean')
-    return pd.DataFrame()
-
-@st.cache_data(ttl=3600)
-def get_historical_prices_coingecko(asset_id, days=730):
-    try:
-        url = f"https://api.coingecko.com/api/v2/coins/{asset_id}/market_chart?vs_currency=eur&days={days}&interval=daily"
-        response = requests.get(url, timeout=10)
-        if response.status_code == 200:
-            data = response.json()
-            prices = data.get('prices', [])
-            df_p = pd.DataFrame(prices, columns=['timestamp', 'price'])
-            df_p['Fecha_Clean'] = pd.to_datetime(df_p['timestamp'], unit='ms').dt.normalize()
-            return df_p[['Fecha_Clean', 'price']].drop_duplicates(subset=['Fecha_Clean'])
-    except Exception:
-        pass
-    return pd.DataFrame()
-
-df, custody_data = load_resumen_data()
-df_hist = load_history_data()
-
-st.title("⚡ Control de Portfolio Cripto")
-st.caption("Sincronizado en tiempo real con Google Sheets")
-
-if st.sidebar.button("🔄 Actualizar Datos"):
+# =============================================================================
+# CABECERA Y CARGA
+# =============================================================================
+h1, h2, h3 = st.columns([3, 1.3, 1], vertical_alignment="center")
+h1.title("⚡ Mi Cartera Cripto")
+use_live = h2.toggle("Precio en vivo (Kraken)", value=True,
+                     help="Activado: precio actual de Kraken (cada 30 s). Desactivado: el precio de tu Google Sheet.")
+if h3.button("🔄 Actualizar"):
     st.cache_data.clear()
     st.rerun()
 
-st.markdown("---")
+with st.spinner("Cargando cartera..."):
+    try:
+        pos, custody, desconocidos = load_positions()
+    except Exception as e:
+        st.error(f"No se pudo leer la hoja de resumen de Google Sheets: {e}")
+        st.stop()
+    tx, tx_errores = load_transactions()
+    live = live_prices() if use_live else {}
+    hist = {tok: price_history(tok) for tok in TOKENS}
 
-if not df.empty:
-    inv_total = float(df["Inversión Total (€)"].sum()) if "Inversión Total (€)" in df.columns else 0.0
-    val_actual = float(df["Valor Actual (€)"].sum()) if "Valor Actual (€)" in df.columns else 0.0
+if pos.empty:
+    st.warning("La hoja de resumen no tiene posiciones. Revisa que tenga las columnas 'Token' y 'Cantidad'.")
+    st.stop()
 
-    pnl_col = next((c for c in df.columns if "P&L" in c.upper() or "PNL" in c.upper()), None)
-    if pnl_col and "P&L No Realizado (€)" in df.columns:
-        pnl_eur = float(df["P&L No Realizado (€)"].sum())
+# --- Posiciones con precio actual ---
+pos["precio"] = pos["token"].map(lambda t: live.get(t, {}).get("precio", np.nan)).astype(float).fillna(pos["precio_hoja"])
+pos["valor"] = pos["cantidad"] * pos["precio"]
+pos["pnl"] = pos["valor"] - pos["invertido"]
+pos["pnl_pct"] = np.where(pos["invertido"] > 0, pos["pnl"] / pos["invertido"] * 100, np.nan)
+pos["precio_medio"] = np.where(pos["cantidad"] > 0, pos["invertido"] / pos["cantidad"], np.nan)
+pos["hoy_pct"] = pos["token"].map(
+    lambda t: (live[t]["precio"] / live[t]["apertura"] - 1) * 100 if t in live and live[t]["apertura"] else np.nan
+).astype(float)
+pos["hoy_eur"] = pos["valor"] - pos["valor"] / (1 + pos["hoy_pct"].fillna(0) / 100)
+pos["peso"] = pos["valor"] / pos["valor"].sum() * 100
+current = dict(zip(pos["token"], pos["precio"]))
+P = pos.set_index("token")
+
+inv_total, val_total = pos["invertido"].sum(), pos["valor"].sum()
+pnl_total = val_total - inv_total
+pnl_total_pct = pnl_total / inv_total * 100 if inv_total > 0 else 0.0
+hoy_eur = pos["hoy_eur"].sum()
+hoy_pct = hoy_eur / (val_total - hoy_eur) * 100 if live else np.nan
+
+fuente = "Kraken en vivo" if live else "Google Sheets"
+st.caption(f"Datos: Google Sheets · Precios: {fuente} · Actualizado {datetime.now():%d/%m/%Y %H:%M:%S}")
+
+# --- Avisos de calidad de datos ---
+avisos = list(tx_errores)
+if desconocidos:
+    avisos.append(f"Tokens en el resumen que no están configurados en la app: {', '.join(desconocidos)} (añádelos a TOKENS).")
+if use_live and not live:
+    avisos.append("No se pudo obtener el precio en vivo de Kraken; se usa el precio de la hoja.")
+daily, per = pd.DataFrame(), {}
+if not tx.empty:
+    hoy = pd.Timestamp.now().normalize()
+    futuras = tx[tx["fecha"] > hoy]
+    for r in futuras.itertuples():
+        avisos.append(f"Operación con fecha futura: {r.token} {fmt(r.cantidad, 4)} el {r.fecha:%d/%m/%Y} "
+                      f"(¿error al escribir la fecha?). Se cuenta como si fuera de hoy.")
+    for tok, cant_tx in tx.groupby("token")["cantidad"].sum().items():
+        if tok in P.index and abs(cant_tx - P.at[tok, "cantidad"]) > 0.01:
+            avisos.append(f"{tok}: la suma de operaciones ({fmt(cant_tx, 4)}) no cuadra con el resumen "
+                          f"({fmt(P.at[tok, 'cantidad'], 4)}).")
+    sin_hist = [tok for tok, (s, _) in hist.items() if s.empty]
+    if sin_hist:
+        avisos.append(f"Sin histórico de precios para {', '.join(sin_hist)}: el gráfico usa el precio actual.")
+    prices = {tok: s for tok, (s, _) in hist.items()}
+    daily, per = build_daily(tx, prices, current)
+if avisos:
+    with st.expander(f"⚠️ {len(avisos)} aviso(s) sobre tus datos", expanded=False):
+        for a in avisos:
+            st.markdown(f"- {a}")
+
+# =============================================================================
+# KPIs PRINCIPALES
+# =============================================================================
+tir = None
+if not tx.empty:
+    flujos = tx[tx["total"] != 0]
+    tir = xirr(list(flujos["fecha"].clip(upper=pd.Timestamp.now().normalize())) + [pd.Timestamp.now().normalize()],
+               list(-flujos["total"]) + [val_total])
+
+k = st.columns(5)
+kpis = [
+    ("Valor actual", eur(val_total), None, None),
+    ("Invertido neto", eur(inv_total), None, "Dinero puesto menos dinero retirado con ventas (incluye comisiones)."),
+    ("Beneficio no realizado", eur(pnl_total, sign=True), pct(pnl_total_pct), None),
+    ("Cambio hoy", eur(hoy_eur, sign=True) if live else "—", pct(hoy_pct) if live else None,
+     "Variación desde la apertura del día (00:00 UTC) en Kraken."),
+    ("Rentabilidad anual (TIR)", pct(tir) if tir is not None else "—", None,
+     "Rentabilidad anualizada teniendo en cuenta cuándo metiste cada euro. Es la cifra comparable con un depósito o un fondo."),
+]
+for col, (label, value, delta, ayuda) in zip(k, kpis):
+    with col.container(border=True):
+        st.metric(label, value, delta=delta, help=ayuda)
+
+tabs = st.tabs(["💼 Posiciones", "📈 Evolución", "📅 Rentabilidad", "🧾 Operaciones",
+                "🛡️ Riesgo", "🧮 Simuladores", "🏛️ Fiscalidad"])
+
+# =============================================================================
+# 1. POSICIONES
+# =============================================================================
+with tabs[0]:
+    left, right = st.columns([2, 1])
+    with left:
+        for r in pos.itertuples():
+            with st.container(border=True):
+                st.markdown(f"#### {r.token} &nbsp; <span style='color:{MUTED};font-size:0.9rem'>"
+                            f"{fmt(r.cantidad, 2)} tokens · {fmt(r.peso, 1)} % de la cartera</span>",
+                            unsafe_allow_html=True)
+                c1, c2, c3, c4 = st.columns(4)
+                c1.metric("Valor", eur(r.valor), delta=pct(r.hoy_pct) + " hoy" if pd.notna(r.hoy_pct) else None)
+                c2.metric("Precio actual", eur(r.precio, 4),
+                          delta=pct((r.precio / r.precio_medio - 1) * 100) + " vs medio" if r.precio_medio else None)
+                c3.metric("Precio medio", eur(r.precio_medio, 4),
+                          help="Tu punto de equilibrio: invertido neto / tokens. Por encima de este precio ganas.")
+                c4.metric("Beneficio", eur(r.pnl, sign=True), delta=pct(r.pnl_pct))
+
+                wallets = custody.get(r.token, {})
+                if wallets:
+                    st.caption("🔒 Custodia")
+                    for w, q in sorted(wallets.items(), key=lambda x: -x[1]):
+                        frac = min(q / r.cantidad, 1.0) if r.cantidad > 0 else 0.0
+                        icono = "🧊" if w in COLD_WALLETS else "🏦"
+                        st.progress(frac, text=f"{icono} {w}: {fmt(q, 2)} {r.token} · {eur(q * r.precio)} · {fmt(frac * 100, 1)} %")
+
+    with right:
+        fig = go.Figure(go.Pie(labels=pos["token"], values=pos["valor"], hole=0.6, sort=False,
+                               marker=dict(colors=[TOKENS[t]["color"] for t in pos["token"]]),
+                               textinfo="label+percent", hovertemplate="%{label}: %{value:,.2f} €<extra></extra>"))
+        fig = style_fig(fig, 260)
+        fig.update_layout(showlegend=False, title=dict(text="Por token", x=0.5),
+                          annotations=[dict(text=eur(val_total, 0), showarrow=False, font=dict(size=16))])
+        chart(fig)
+
+        cust_total = {}
+        for tok, ws in custody.items():
+            for w, q in ws.items():
+                cust_total[w] = cust_total.get(w, 0.0) + q * current.get(tok, 0.0)
+        if cust_total:
+            fig = go.Figure(go.Pie(labels=list(cust_total), values=list(cust_total.values()), hole=0.6,
+                                   textinfo="label+percent", hovertemplate="%{label}: %{value:,.2f} €<extra></extra>"))
+            fig = style_fig(fig, 260)
+            fig.update_layout(showlegend=False, title=dict(text="Por custodia", x=0.5))
+            chart(fig)
+            en_exchange = sum(v for w, v in cust_total.items() if w not in COLD_WALLETS)
+            frac_ex = en_exchange / sum(cust_total.values()) * 100
+            (st.warning if frac_ex > 20 else st.info)(
+                f"{fmt(frac_ex, 1)} % de la cartera ({eur(en_exchange)}) está en exchange. "
+                "Lo que no vayas a mover pronto es más seguro en tu Ledger.")
+
+# =============================================================================
+# 2. EVOLUCIÓN
+# =============================================================================
+with tabs[1]:
+    if daily.empty:
+        st.info("No hay operaciones para construir el histórico.")
     else:
-        pnl_eur = val_actual - inv_total
-
-    pnl_pct = (pnl_eur / inv_total * 100) if inv_total > 0 else 0.0
-
-    c1, c2, c3, c4 = st.columns(4)
-    with c1: st.metric("Inversión Total", f"{inv_total:,.2f} €")
-    with c2: st.metric("Valor Actual", f"{val_actual:,.2f} €")
-    with c3: st.metric("P&L No Realizado", f"{pnl_eur:,.2f} €", delta=f"{pnl_eur:,.2f} €")
-    with c4: st.metric("Rendimiento Total", f"{pnl_pct:.2f} %", delta=f"{pnl_pct:.2f} %")
-
-    st.markdown("---")
-
-    st.subheader("💼 Desglose de Posiciones por Activo")
-
-    for index, row in df.iterrows():
-        token = str(row.get("Token", "N/A"))
-        cant = float(row.get("Cantidad Total TK", 0.0))
-        p_medio = float(row.get("Precio Medio (€)", 0.0))
-        p_act = float(row.get("Precio Actual (€)", 0.0))
-        inv_indiv = float(row.get("Inversión Total (€)", 0.0))
-        val_indiv = float(row.get("Valor Actual (€)", 0.0))
-
-        pnl_val = row.get("P&L No Realizado (€)", val_indiv - inv_indiv)
-        pnl_pct_val = row.get("P&L No Realizado (%)", (pnl_val / inv_indiv * 100) if inv_indiv > 0 else 0.0)
-
-        pnl_indiv_eur = float(pnl_val)
-        pnl_indiv_pct = float(pnl_pct_val)
-        color_pnl = "#10b981" if pnl_indiv_eur >= 0 else "#ef4444"
-
-        with st.expander(f"📌 {token} — Balance: {cant:,.2f} {token} | Valor: {val_indiv:,.2f} €", expanded=True):
-            st.markdown(f"""
-            <div style="background-color: #151921; padding: 12px; border-radius: 10px; border: 1px solid #262c3a; font-size: 14px; color: #ffffff;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <div><b>Balance:</b> {cant:,.2f} {token}</div>
-                    <div><b>Precio Medio:</b> {p_medio:,.4f} €</div>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <div><b>Valor Estimado:</b> {val_indiv:,.2f} €</div>
-                    <div><b>Precio Actual:</b> {p_act:,.4f} €</div>
-                </div>
-                <hr style="border: 0.5px solid #262c3a; margin: 8px 0;">
-                <div style="display: flex; justify-content: space-between; font-weight: bold;">
-                    <div>Invertido: {inv_indiv:,.2f} €</div>
-                    <div style="color: {color_pnl};">P&L: {pnl_indiv_eur:,.2f} € ({pnl_indiv_pct:.2f}%)</div>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-
-            tok_custody = custody_data.get(token, {})
-            if tok_custody:
-                st.markdown("<div style='margin-top: 10px; font-weight: bold; font-size: 13px;'>🔒 Custodia Actual (Wallet / Holding):</div>", unsafe_allow_html=True)
-
-                for w_name, w_cant in tok_custody.items():
-                    if w_cant > 0:
-                        w_val = w_cant * p_act
-                        w_pct = (w_cant / cant * 100) if cant > 0 else 0.0
-
-                        st.markdown(f"""
-                        <div style="display: flex; justify-content: space-between; background-color: #1a202c; padding: 6px 10px; border-radius: 6px; margin-top: 4px; font-size: 12px;">
-                            <div><b>{w_name}</b></div>
-                            <div>{w_cant:,.2f} {token} ({w_val:,.2f} €)</div>
-                            <div style="color: #3b82f6;"><b>{w_pct:.1f}%</b></div>
-                        </div>
-                        """, unsafe_allow_html=True)
-
-    st.markdown("---")
-
-    df_p_xrp = get_historical_prices_coingecko('ripple')
-    df_p_xlm = get_historical_prices_coingecko('stellar')
-
-    g1, g2 = st.columns(2)
-    with g1:
-        st.subheader("📊 Distribución del Capital")
-        fig_pie = px.pie(df, values="Valor Actual (€)", names="Token", hole=0.55,
-                         color="Token", color_discrete_map={'XRP': '#2563eb', 'XLM': '#10b981'})
-        fig_pie.update_layout(
-            paper_bgcolor='rgba(0,0,0,0)',
-            plot_bgcolor='rgba(0,0,0,0)',
-            font=dict(color="#ffffff"),
-            margin=dict(l=10, r=10, t=10, b=10)
-        )
-        st.plotly_chart(fig_pie, use_container_width=True)
-
-    df_global_daily = pd.DataFrame()
-
-    with g2:
-        st.subheader("📈 Evolución Histórica Global (Estilo Koinly)")
-        if not df_hist.empty:
-            min_date = df_hist['Fecha_Clean'].min()
-            max_date = pd.Timestamp.today().normalize()
-            date_range = pd.date_range(start=min_date, end=max_date, freq='D')
-            df_timeline = pd.DataFrame({'Fecha_Clean': date_range})
-
-            frames_processed = []
-            cg_price_map = {'XRP': df_p_xrp, 'XLM': df_p_xlm}
-
-            for token_name in df_hist['Token_Clean'].unique():
-                df_t = df_hist[df_hist['Token_Clean'] == token_name].sort_values('Fecha_Clean').copy()
-                df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
-                df_t['Inv_Acum'] = df_t['Invertido_Clean'].cumsum()
-                
-                df_t_daily = pd.merge_asof(df_timeline, df_t, on='Fecha_Clean', direction='backward')
-                df_t_daily['Q_Acum'] = df_t_daily['Q_Acum'].fillna(0)
-                df_t_daily['Inv_Acum'] = df_t_daily['Inv_Acum'].fillna(0)
-
-                df_api_p = cg_price_map.get(token_name, pd.DataFrame())
-                if not df_api_p.empty:
-                    df_t_daily = pd.merge_asof(df_t_daily, df_api_p, on='Fecha_Clean', direction='backward')
-                    df_t_daily['price'] = df_t_daily['price'].fillna(method='bfill').fillna(0)
-                else:
-                    row_t = df[df['Token'] == token_name]
-                    p_ref = float(row_t['Precio Actual (€)'].values[0]) if not row_t.empty and 'Precio Actual (€)' in df.columns else 1.0
-                    df_t_daily['price'] = p_ref
-
-                df_t_daily['Valor_Mercado'] = df_t_daily['Q_Acum'] * df_t_daily['price']
-                df_t_daily['Token_Clean'] = token_name
-                frames_processed.append(df_t_daily)
-
-            if frames_processed:
-                df_full = pd.concat(frames_processed, ignore_index=True)
-                df_global_daily = df_full.groupby('Fecha_Clean')[['Valor_Mercado', 'Inv_Acum']].sum().reset_index()
-
-                if not df_global_daily.empty:
-                    df_global_daily.iloc[-1, df_global_daily.columns.get_loc('Valor_Mercado')] = val_actual
-                    df_global_daily.iloc[-1, df_global_daily.columns.get_loc('Inv_Acum')] = inv_total
-
-                fig_koinly = go.Figure()
-
-                fig_koinly.add_trace(go.Scatter(
-                    x=df_global_daily['Fecha_Clean'],
-                    y=df_global_daily['Valor_Mercado'],
-                    mode='lines',
-                    name='Worth (€)',
-                    fill='tozeroy',
-                    fillcolor='rgba(59, 130, 246, 0.15)',
-                    line=dict(color='#3b82f6', width=2)
-                ))
-
-                fig_koinly.add_trace(go.Scatter(
-                    x=df_global_daily['Fecha_Clean'],
-                    y=df_global_daily['Inv_Acum'],
-                    mode='lines',
-                    name='Cost Basis (€)',
-                    line=dict(color='#94a3b8', width=2, dash='dash')
-                ))
-
-                fig_koinly.update_layout(
-                    paper_bgcolor='rgba(0,0,0,0)',
-                    plot_bgcolor='rgba(0,0,0,0)',
-                    font=dict(color="#ffffff"),
-                    margin=dict(l=10, r=10, t=10, b=10),
-                    xaxis=dict(showgrid=False, title=None),
-                    yaxis=dict(showgrid=True, gridcolor='#262c3a', title=None),
-                    hovermode="x unified",
-                    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
-                )
-                st.plotly_chart(fig_koinly, use_container_width=True)
-            else:
-                st.info("Procesando datos históricos...")
+        vista = st.radio("Vista", ["Total", "Por token"], horizontal=True, label_visibility="collapsed")
+        fig = go.Figure()
+        if vista == "Total":
+            fig.add_trace(go.Scatter(x=daily.index, y=daily["valor"], name="Valor", mode="lines",
+                                     line=dict(color="#3b82f6", width=2), fill="tozeroy",
+                                     fillcolor="rgba(59,130,246,0.15)", hovertemplate="%{y:,.2f} €"))
+            fig.add_trace(go.Scatter(x=daily.index, y=daily["invertido"], name="Invertido neto", mode="lines",
+                                     line=dict(color=MUTED, width=2, dash="dash"), hovertemplate="%{y:,.2f} €"))
+            fig.add_trace(go.Scatter(x=daily.index, y=daily["valor"] - daily["invertido"], name="Beneficio",
+                                     mode="lines", line=dict(width=0), showlegend=False, hovertemplate="%{y:+,.2f} €"))
         else:
-            st.info("Cargando datos de evolución temporal...")
+            for tok, d in per.items():
+                fig.add_trace(go.Scatter(x=d.index, y=d["valor"], name=tok, mode="lines", stackgroup="uno",
+                                         line=dict(color=TOKENS[tok]["color"], width=1), hovertemplate="%{y:,.2f} €"))
+        fig = style_fig(fig, 420)
+        fig.update_xaxes(rangeselector=dict(
+            buttons=[dict(count=1, label="1M", step="month", stepmode="backward"),
+                     dict(count=3, label="3M", step="month", stepmode="backward"),
+                     dict(count=6, label="6M", step="month", stepmode="backward"),
+                     dict(count=1, label="1A", step="year", stepmode="backward"),
+                     dict(step="all", label="Todo")],
+            bgcolor="#151921", activecolor="#3b82f6", font=dict(color="#e5e7eb")))
+        chart(fig)
+        fuentes = {tok: src for tok, (_, src) in hist.items()}
+        st.caption("Precios históricos: " + " · ".join(f"{t} → {s or 'sin datos'}" for t, s in fuentes.items()))
 
-    st.markdown("---")
+        st.subheader("📉 Tu precio medio frente al mercado (DCA)")
+        tok_dca = st.radio("Token", list(per), horizontal=True, key="dca_tok")
+        d = per[tok_dca]
+        pm = (d["invertido"] / d["cantidad"]).where(d["cantidad"] > 0)
+        t_tok = tx[(tx["token"] == tok_dca) & (tx["precio"] > 0)]
+        compras, ventas = t_tok[t_tok["cantidad"] > 0], t_tok[t_tok["cantidad"] < 0]
 
-    st.subheader("🧮 Calculadora Avanzada de Adquisición")
-    calc_c1, calc_c2 = st.columns([1, 2])
-    with calc_c1:
-        token_sel = st.selectbox("Selecciona el token:", df["Token"].tolist())
-        euros_inv = st.number_input("Monto a invertir (€):", min_value=1.0, value=50.0, step=10.0)
-        
-        row_token = df[df["Token"] == token_sel].iloc[0]
-        precio_act = float(row_token["Precio Actual (€)"]) if "Precio Actual (€)" in df.columns else 1.0
-        precio_med_actual = float(row_token["Precio Medio (€)"]) if "Precio Medio (€)" in df.columns else precio_act
-        cant_actual = float(row_token["Cantidad Total TK"]) if "Cantidad Total TK" in df.columns else 0.0
-        inv_actual = float(row_token["Inversión Total (€)"]) if "Inversión Total (€)" in df.columns else 0.0
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=d.index, y=d["precio"], name="Precio de mercado", mode="lines",
+                                 line=dict(color=TOKENS[tok_dca]["color"], width=1.5), hovertemplate="%{y:,.4f} €"))
+        fig.add_trace(go.Scatter(x=pm.index, y=pm, name="Tu precio medio", mode="lines",
+                                 line=dict(color="#f59e0b", width=2.5, shape="hv"), hovertemplate="%{y:,.4f} €"))
+        if not compras.empty:
+            size = 7 + 14 * np.sqrt(compras["total"].clip(lower=0) / compras["total"].max())
+            fig.add_trace(go.Scatter(x=compras["fecha"], y=compras["precio"], name="Compras", mode="markers",
+                                     marker=dict(symbol="triangle-up", color=POS, size=size, line=dict(width=0)),
+                                     customdata=compras["total"], hovertemplate="Compra a %{y:,.4f} € (%{customdata:,.2f} €)"))
+        if not ventas.empty:
+            fig.add_trace(go.Scatter(x=ventas["fecha"], y=ventas["precio"], name="Ventas", mode="markers",
+                                     marker=dict(symbol="triangle-down", color=NEG, size=11),
+                                     customdata=-ventas["total"], hovertemplate="Venta a %{y:,.4f} € (%{customdata:,.2f} €)"))
+        chart(style_fig(fig, 400))
+        r = P.loc[tok_dca]
+        dist = (r["precio"] / r["precio_medio"] - 1) * 100
+        st.caption(f"Precio actual {eur(r['precio'], 4)} · tu precio medio {eur(r['precio_medio'], 4)} → "
+                   f"estás un **{pct(dist)}** {'por encima' if dist >= 0 else 'por debajo'} de tu punto de equilibrio.")
 
-        comision_aprox = euros_inv * 0.015 
-        euros_netos = euros_inv - comision_aprox
-        tokens_adquiridos = euros_netos / precio_act if precio_act > 0 else 0.0
-        
-        nueva_inv_total = inv_actual + euros_inv
-        nuevo_balance_tk = cant_actual + tokens_adquiridos
-        nuevo_precio_medio = nueva_inv_total / nuevo_balance_tk if nuevo_balance_tk > 0 else precio_act
-        diferencia_pm = nuevo_precio_medio - precio_med_actual
+# =============================================================================
+# 3. RENTABILIDAD
+# =============================================================================
+with tabs[2]:
+    if daily.empty:
+        st.info("No hay operaciones para calcular rentabilidades.")
+    else:
+        ambito = st.radio("Ámbito", ["Cartera"] + list(per), horizontal=True, key="rent_scope")
+        base_df = daily if ambito == "Cartera" else per[ambito]
+        st.caption("La rentabilidad se calcula **sin el efecto de tus aportaciones** (método TWR): si en un mes "
+                   "compras 500 €, eso no cuenta como ganancia. Así ves cómo se ha comportado el mercado con tu cartera.")
 
-    with calc_c2:
-        st.info(f"💡 Precio actual de referencia: **{precio_act:,.4f} €** por {token_sel}")
-        res_c1, res_c2, res_c3 = st.columns(3)
-        with res_c1:
-            st.metric(f"Tokens a adquirir", f"+{tokens_adquiridos:,.2f}")
-        with res_c2:
-            st.metric("Comisión Aprox.", f"~{comision_aprox:,.2f} €")
-        with res_c3:
-            st.metric("Nuevo Balance", f"{nuevo_balance_tk:,.2f}")
+        m = period_table(base_df, "ME")
+        anual = ((1 + base_df["ret"]).resample("YE").prod() - 1) * 100
+        years = sorted(m.index.year.unique())
+        z, text = [], []
+        for y in years:
+            fila = [m[(m.index.year == y) & (m.index.month == mes)]["ret"] for mes in range(1, 13)]
+            fila = [v.iloc[0] if len(v) else np.nan for v in fila]
+            fila.append(anual[anual.index.year == y].iloc[0])
+            z.append(fila)
+            text.append(["" if pd.isna(v) else f"{fmt(v, 1, True)}%" for v in fila])
+        lim = float(min(max(10.0, np.nanmax(np.abs(np.array(z, dtype=float)))), 60.0))
+        fig = go.Figure(go.Heatmap(
+            z=z, x=MESES_CORTOS + ["Año"], y=[str(y) for y in years], text=text, texttemplate="%{text}",
+            colorscale=[[0, "#b91c1c"], [0.5, "#1f2937"], [1, "#059669"]], zmid=0, zmin=-lim, zmax=lim,
+            showscale=False, xgap=3, ygap=3, hovertemplate="%{x} %{y}: %{text}<extra></extra>"))
+        fig = style_fig(fig, 90 + 55 * len(years))
+        fig.update_layout(hovermode="closest")
+        fig.update_yaxes(type="category", autorange="reversed", showgrid=False)
+        fig.update_xaxes(side="top")
+        chart(fig)
 
-        color_delta = "normal" if diferencia_pm <= 0 else "inverse"
-        st.metric(
-            "Nuevo Precio Medio Estimado", 
-            f"{nuevo_precio_medio:,.4f} €", 
-            delta=f"{diferencia_pm:+,.4f} € vs actual", 
-            delta_color=color_delta
-        )
+        def tabla_periodos(df, etiqueta, nombre):
+            tbl = pd.DataFrame({
+                nombre: etiqueta,
+                "Rentabilidad": df["ret"].values,
+                "Resultado (€)": df["resultado"].values,
+                "Aportado (€)": df["flujo"].values,
+                "Valor final (€)": df["valor_fin"].values,
+                "Beneficio acum. (€)": df["pnl_acum"].values,
+                "Beneficio acum. (%)": df["pnl_acum_pct"].values,
+            }).iloc[::-1]
+            sty = (tbl.style
+                   .format({"Rentabilidad": pct, "Resultado (€)": lambda v: eur(v, sign=True),
+                            "Aportado (€)": eur, "Valor final (€)": eur,
+                            "Beneficio acum. (€)": lambda v: eur(v, sign=True), "Beneficio acum. (%)": pct})
+                   .map(color_sign, subset=["Rentabilidad", "Resultado (€)", "Beneficio acum. (€)", "Beneficio acum. (%)"]))
+            st.dataframe(sty, hide_index=True, **WIDE)
+            return tbl
 
-    # =========================================================================
-    # 🌟 SECCIÓN 1: TABLAS DE RENTABILIDADES (SINCRONIZADAS EN TIEMPO REAL)
-    # =========================================================================
-    st.markdown("---")
-    st.subheader("📅 Registro Temporal y Rentabilidad (Mensual / Semanal)")
+        t_m, t_w = st.tabs(["🗓️ Mensual", "📅 Semanal"])
+        with t_m:
+            tbl_m = tabla_periodos(m, [f"{MESES[d.month - 1]} {d.year}" for d in m.index], "Mes")
+        with t_w:
+            w = period_table(base_df, "W-SUN")
+            etiquetas = [f"Sem {d.isocalendar()[1]:02d} · {(d - pd.Timedelta(days=6)):%d/%m} – {d:%d/%m/%Y}" for d in w.index]
+            tabla_periodos(w, etiquetas, "Semana")
 
-    df_rent_m = pd.DataFrame()
+        st.download_button("📥 Descargar informe mensual (CSV para Excel)",
+                           tbl_m.to_csv(index=False, sep=";", decimal=",").encode("utf-8-sig"),
+                           file_name=f"rentabilidad_{ambito.lower()}_{datetime.now():%Y%m%d}.csv", mime="text/csv")
 
-    if not df_hist.empty:
-        meses_es = {
-            1: "Enero", 2: "Febrero", 3: "Marzo", 4: "Abril", 5: "Mayo", 6: "Junio",
-            7: "Julio", 8: "Agosto", 9: "Septiembre", 10: "Octubre", 11: "Noviembre", 12: "Diciembre"
-        }
+# =============================================================================
+# 4. OPERACIONES
+# =============================================================================
+with tabs[3]:
+    if tx.empty:
+        st.info("No hay operaciones registradas.")
+    else:
+        f1, f2 = st.columns(2)
+        sel_tok = f1.multiselect("Token", list(TOKENS), default=list(TOKENS))
+        sel_tipo = f2.multiselect("Tipo", sorted(tx["tipo"].unique()), default=sorted(tx["tipo"].unique()))
+        ops = tx[tx["token"].isin(sel_tok) & tx["tipo"].isin(sel_tipo)].copy()
+        ops["precio_hoy"] = ops["token"].map(current)
+        es_compra = ops["cantidad"] > 0
+        ops["valor_hoy"] = np.where(es_compra, ops["cantidad"] * ops["precio_hoy"], np.nan)
+        ops["res_lote"] = np.where(es_compra, ops["valor_hoy"] - ops["total"], np.nan)
+        ops["res_lote_pct"] = np.where(es_compra & (ops["total"] > 0), ops["res_lote"] / ops["total"] * 100, np.nan)
 
-        min_d = df_hist['Fecha_Clean'].min()
-        max_d = pd.Timestamp.today().normalize()
-        range_daily = pd.date_range(start=min_d, end=max_d, freq='D')
-        df_base = pd.DataFrame({'Fecha_Clean': range_daily})
+        compras = ops[es_compra & (ops["total"] > 0)]
+        n_verde = int((compras["res_lote"] > 0).sum())
+        m1, m2, m3, m4 = st.columns(4)
+        m1.metric("Operaciones", len(ops), help=f"{int(es_compra.sum())} compras/entradas · {int((~es_compra).sum())} ventas")
+        m2.metric("Comisiones pagadas", eur(ops["comision"].sum()))
+        m3.metric("Comisión media en compras",
+                  pct(compras["comision"].sum() / compras["total"].sum() * 100, sign=False) if not compras.empty else "—")
+        m4.metric("Compras en beneficio", f"{n_verde} de {len(compras)}",
+                  help="Compras cuyo valor hoy supera lo que pagaste por ellas.")
 
-        col_p1, col_p2 = st.columns([2, 1])
-        with col_p1:
-            tab_mensual, tab_semanal = st.tabs(["🗓️ Rentabilidad Mensual", "📅 Rentabilidad Semanal"])
+        tabla = pd.DataFrame({
+            "Fecha": ops["fecha"].dt.strftime("%d/%m/%Y"), "Token": ops["token"], "Tipo": ops["tipo"],
+            "Cantidad": ops["cantidad"], "Precio": ops["precio"], "Comisión": ops["comision"], "Total": ops["total"],
+            "Plataforma": ops["plataforma"], "Custodia": ops["custodia"],
+            "Valor hoy": ops["valor_hoy"], "Resultado": ops["res_lote"], "Resultado %": ops["res_lote_pct"],
+        }).iloc[::-1]
+        sty = (tabla.style
+               .format({"Cantidad": lambda v: fmt(v, 4), "Precio": lambda v: eur(v, 4), "Comisión": eur,
+                        "Total": eur, "Valor hoy": eur, "Resultado": lambda v: eur(v, sign=True), "Resultado %": pct})
+               .map(color_sign, subset=["Resultado", "Resultado %"]))
+        st.dataframe(sty, hide_index=True, height=420, **WIDE)
 
-            # --- 1. RENTABILIDAD MENSUAL ---
-            with tab_mensual:
-                month_ends = pd.date_range(start=min_d, end=max_d, freq='ME')
-                if max_d not in month_ends:
-                    month_ends = month_ends.append(pd.DatetimeIndex([max_d]))
+        st.subheader("💸 ¿Cuánto te cuesta cada plataforma?")
+        plat = (tx[(tx["cantidad"] > 0) & (tx["total"] > 0)].groupby("plataforma")
+                .agg(comision=("comision", "sum"), total=("total", "sum"), n=("total", "size")))
+        plat["pct"] = plat["comision"] / plat["total"] * 100
+        plat = plat.sort_values("pct")
+        fig = go.Figure(go.Bar(x=plat["pct"], y=plat.index, orientation="h",
+                               marker_color=[POS if v < 1 else ("#f59e0b" if v < 3 else NEG) for v in plat["pct"]],
+                               text=[f"{fmt(v, 2)} % · {eur(c)} en {n} compras" for v, c, n in zip(plat["pct"], plat["comision"], plat["n"])],
+                               textposition="auto", hoverinfo="skip"))
+        fig = style_fig(fig, 80 + 45 * len(plat))
+        fig.update_layout(hovermode=False)
+        fig.update_xaxes(ticksuffix=" %")
+        chart(fig)
+        st.caption("Comisión pagada sobre el importe de cada compra. Verde < 1 %, ámbar < 3 %, rojo ≥ 3 %.")
 
-                monthly_records = []
-                prev_val_m = 0.0
+# =============================================================================
+# 5. RIESGO
+# =============================================================================
+with tabs[4]:
+    if daily.empty:
+        st.info("No hay histórico para calcular métricas de riesgo.")
+    else:
+        rets = daily["ret"].iloc[1:]
+        ult_anyo = rets[rets.index >= rets.index.max() - pd.Timedelta(days=365)]
+        vol = ult_anyo.std() * np.sqrt(365) * 100 if len(ult_anyo) > 2 else np.nan
+        mdd = daily["drawdown"].min()
+        f_mdd = daily["drawdown"].idxmin()
+        dd_hoy = daily["drawdown"].iloc[-1]
+        ath = daily["valor"].max()
+        f_ath = daily["valor"].idxmax()
+        dias_verde = (daily["valor"] > daily["invertido"]).mean() * 100
+        mejor, peor = rets.idxmax(), rets.idxmin()
 
-                month_ends = sorted(list(set(month_ends)))
+        r1 = st.columns(4)
+        r1[0].metric("Caída máxima (drawdown)", pct(mdd), help=f"Peor caída desde un máximo, el {f_mdd:%d/%m/%Y}. Sin contar aportaciones.")
+        r1[1].metric("Caída actual desde máximos", pct(dd_hoy))
+        r1[2].metric("Volatilidad anual", pct(vol, sign=False), help="Cuánto oscila la cartera en un año típico. Bolsa ≈ 15-20 %, cripto suele superar 60 %.")
+        r1[3].metric("Días en beneficio", pct(dias_verde, 0, sign=False))
+        r2 = st.columns(4)
+        r2[0].metric("Valor máximo (ATH)", eur(ath), help=f"Alcanzado el {f_ath:%d/%m/%Y}")
+        r2[1].metric("Para volver al ATH", pct((ath / val_total - 1) * 100) if ath > val_total else "¡En máximos!")
+        r2[2].metric("Mejor día", pct(rets.max() * 100), help=f"{mejor:%d/%m/%Y}")
+        r2[3].metric("Peor día", pct(rets.min() * 100), help=f"{peor:%d/%m/%Y}")
 
-                for m_date in month_ends:
-                    if m_date == max_d:
-                        # Fuerza el estado real de Google Sheets para el periodo presente
-                        inv_m = inv_total
-                        val_m = val_actual
-                    else:
-                        inv_m = 0.0
-                        val_m = 0.0
-                        for tok_name, df_api_p in [('XRP', df_p_xrp), ('XLM', df_p_xlm)]:
-                            df_t = df_hist[df_hist['Token_Clean'] == tok_name].sort_values('Fecha_Clean').copy()
-                            if not df_t.empty:
-                                df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
-                                df_t['Inv_Acum'] = df_t['Invertido_Clean'].cumsum()
-                                df_merged = pd.merge_asof(df_base[df_base['Fecha_Clean'] <= m_date], df_t, on='Fecha_Clean', direction='backward')
-                                
-                                q_at = df_merged['Q_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Q_Acum'].iloc[-1]) else 0.0
-                                inv_at = df_merged['Inv_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Inv_Acum'].iloc[-1]) else 0.0
+        fig = go.Figure(go.Scatter(x=daily.index, y=daily["drawdown"], mode="lines", fill="tozeroy",
+                                   line=dict(color=NEG, width=1.5), fillcolor="rgba(239,68,68,0.2)",
+                                   hovertemplate="%{y:.2f} %", name="Caída"))
+        fig = style_fig(fig, 260)
+        fig.update_layout(title=dict(text="Distancia a máximos (%)", x=0), showlegend=False)
+        fig.update_yaxes(ticksuffix=" %")
+        chart(fig)
 
-                                p_at = 1.0
-                                if not df_api_p.empty:
-                                    p_row = df_api_p[df_api_p['Fecha_Clean'] <= m_date]
-                                    if not p_row.empty:
-                                        p_at = float(p_row['price'].iloc[-1])
-                                else:
-                                    r_ref = df[df['Token'] == tok_name]
-                                    p_at = float(r_ref['Precio Actual (€)'].values[0]) if not r_ref.empty else 1.0
+        mayor = pos.loc[pos["peso"].idxmax()]
+        st.info(f"**Concentración:** el {fmt(mayor['peso'], 1)} % de tu cartera está en {mayor['token']}, y XRP y XLM "
+                "suelen moverse muy juntos, así que en la práctica la diversificación es baja. "
+                "Una caída del 50 % en ambos supondría perder unos "
+                f"{eur(val_total * 0.5)}.")
 
-                                inv_m += inv_at
-                                val_m += (q_at * p_at)
+# =============================================================================
+# 6. SIMULADORES
+# =============================================================================
+with tabs[5]:
+    st.subheader("🧮 Simulador de compra")
+    s1, s2 = st.columns([1, 2])
+    with s1:
+        tok_c = st.selectbox("Token", list(P.index), key="calc_tok")
+        rc = P.loc[tok_c]
+        fee_def = 0.4
+        if not tx.empty:
+            ult = tx[(tx["token"] == tok_c) & (tx["cantidad"] > 0) & (tx["total"] > 0)].tail(10)
+            if not ult.empty and ult["total"].sum() > 0:
+                fee_def = round(float(ult["comision"].sum() / ult["total"].sum() * 100), 2)
+        importe = st.number_input("Importe a invertir (€)", min_value=1.0, value=50.0, step=10.0)
+        precio_c = st.number_input("Precio de compra (€)", min_value=0.000001, value=float(rc["precio"]), format="%.5f")
+        fee = st.number_input("Comisión (%)", min_value=0.0, max_value=10.0, value=fee_def, step=0.1,
+                              help="Por defecto, la media de tus últimas 10 compras de este token.")
+    with s2:
+        tokens_nuevos = importe * (1 - fee / 100) / precio_c
+        nueva_cant = rc["cantidad"] + tokens_nuevos
+        nuevo_pm = (rc["invertido"] + importe) / nueva_cant
+        a, b, c = st.columns(3)
+        a.metric("Tokens que recibes", f"+{fmt(tokens_nuevos, 2)}")
+        b.metric("Comisión", eur(importe * fee / 100))
+        c.metric("Nuevo balance", fmt(nueva_cant, 2))
+        st.metric("Nuevo precio medio", eur(nuevo_pm, 4),
+                  delta=eur(nuevo_pm - rc["precio_medio"], 4, sign=True) + " vs actual", delta_color="inverse")
 
-                    pnl_m = val_m - inv_m
-                    rent_acum = (pnl_m / inv_m * 100) if inv_m > 0 else 0.0
-                    rent_mensual = ((val_m - prev_val_m) / prev_val_m * 100) if prev_val_m > 0 else rent_acum
-                    prev_val_m = val_m
-
-                    monthly_records.append({
-                        '_date': m_date,
-                        'Año': str(m_date.year),
-                        'Mes_Num': m_date.month,
-                        'Período': f"{m_date.year} — {meses_es[m_date.month]}",
-                        'Rentabilidad Mensual (%)': f"{rent_mensual:+.2f} %",
-                        'Rentabilidad Acumulada (%)': f"{rent_acum:+.2f} %",
-                        'Beneficio / Pérdida (€)': f"{pnl_m:+,.2f} €",
-                        '_raw_rent_m': rent_mensual
-                    })
-
-                df_rent_m = pd.DataFrame(monthly_records)
-                df_rent_m_disp = df_rent_m.sort_values('_date', ascending=False)
-                st.dataframe(df_rent_m_disp[['Período', 'Rentabilidad Mensual (%)', 'Rentabilidad Acumulada (%)', 'Beneficio / Pérdida (€)']], use_container_width=True, hide_index=True)
-
-            # --- 2. RENTABILIDAD SEMANAL ---
-            with tab_semanal:
-                week_ends = pd.date_range(start=min_d, end=max_d, freq='W-SUN')
-                if max_d not in week_ends:
-                    week_ends = week_ends.append(pd.DatetimeIndex([max_d]))
-
-                week_ends = sorted(list(set(week_ends)))
-
-                weekly_records = []
-                prev_val_w = 0.0
-
-                for w_date in week_ends:
-                    if w_date == max_d:
-                        # Fuerza el estado real de Google Sheets para el periodo presente
-                        inv_w = inv_total
-                        val_w = val_actual
-                    else:
-                        inv_w = 0.0
-                        val_w = 0.0
-                        for tok_name, df_api_p in [('XRP', df_p_xrp), ('XLM', df_p_xlm)]:
-                            df_t = df_hist[df_hist['Token_Clean'] == tok_name].sort_values('Fecha_Clean').copy()
-                            if not df_t.empty:
-                                df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
-                                df_t['Inv_Acum'] = df_t['Invertido_Clean'].cumsum()
-                                df_merged = pd.merge_asof(df_base[df_base['Fecha_Clean'] <= w_date], df_t, on='Fecha_Clean', direction='backward')
-                                
-                                q_at = df_merged['Q_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Q_Acum'].iloc[-1]) else 0.0
-                                inv_at = df_merged['Inv_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Inv_Acum'].iloc[-1]) else 0.0
-
-                                p_at = 1.0
-                                if not df_api_p.empty:
-                                    p_row = df_api_p[df_api_p['Fecha_Clean'] <= w_date]
-                                    if not p_row.empty:
-                                        p_at = float(p_row['price'].iloc[-1])
-                                else:
-                                    r_ref = df[df['Token'] == tok_name]
-                                    p_at = float(r_ref['Precio Actual (€)'].values[0]) if not r_ref.empty else 1.0
-
-                                inv_w += inv_at
-                                val_w += (q_at * p_at)
-
-                    pnl_w = val_w - inv_w
-                    rent_acum_w = (pnl_w / inv_w * 100) if inv_w > 0 else 0.0
-                    rent_semanal = ((val_w - prev_val_w) / prev_val_w * 100) if prev_val_w > 0 else rent_acum_w
-                    prev_val_w = val_w
-
-                    w_start = w_date - pd.Timedelta(days=6)
-                    iso_year, iso_week, _ = w_date.isocalendar()
-                    
-                    str_semana = f"{iso_year} — Sem. {iso_week:02d} ({w_start.strftime('%d/%m')} al {w_date.strftime('%d/%m')})"
-
-                    weekly_records.append({
-                        '_date': w_date,
-                        'Semana': str_semana,
-                        'Rentabilidad Semanal (%)': f"{rent_semanal:+.2f} %",
-                        'Rentabilidad Acumulada (%)': f"{rent_acum_w:+.2f} %",
-                        'Beneficio / Pérdida (€)': f"{pnl_w:+,.2f} €"
-                    })
-
-                df_rent_w = pd.DataFrame(weekly_records)
-                df_rent_w = df_rent_w.sort_values('_date', ascending=False)
-                
-                st.dataframe(df_rent_w[['Semana', 'Rentabilidad Semanal (%)', 'Rentabilidad Acumulada (%)', 'Beneficio / Pérdida (€)']], use_container_width=True, hide_index=True)
-
-            # Botón de descarga CSV
-            csv_data = df_rent_m[['Período', 'Rentabilidad Mensual (%)', 'Rentabilidad Acumulada (%)', 'Beneficio / Pérdida (€)']].to_csv(index=False).encode('utf-8')
-            st.download_button(
-                label="📥 Descargar Informe de Rentabilidades (CSV)",
-                data=csv_data,
-                file_name=f"informe_rentabilidades_{datetime.now().strftime('%Y%m%d')}.csv",
-                mime="text/csv"
-            )
-
-        with col_p2:
-            st.markdown("##### 📊 Módulo General de Rendimiento")
-            st.markdown(f"""
-            - **Inicio de Registro:** {df_hist['Fecha_Clean'].min().strftime('%d/%m/%Y')}
-            - **Operaciones Registradas:** {len(df_hist)} movimientos
-            - **Inversión Histórica Acumulada:** {inv_total:,.2f} €
-            - **Valoración Actual de Cartera:** {val_actual:,.2f} €
-            """)
-
-    # =========================================================================
-    # 🌟 SECCIÓN 2: MAPA DE CALOR
-    # =========================================================================
-    if not df_rent_m.empty:
-        st.markdown("---")
-        st.subheader("🔥 Mapa de Calor de Rentabilidades Mensuales (Estilo CoinGlass)")
-        
-        years = sorted([str(y) for y in df_rent_m['Año'].unique()])
-        months_abbr = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
-        
-        z_matrix = []
-        text_matrix = []
-
-        for yr in years:
-            row_z = []
-            row_text = []
-            for m_idx in range(1, 13):
-                match = df_rent_m[(df_rent_m['Año'] == yr) & (df_rent_m['Mes_Num'] == m_idx)]
-                if not match.empty:
-                    val_pct = match['_raw_rent_m'].values[0]
-                    row_z.append(val_pct)
-                    row_text.append(f"{val_pct:+.1f}%")
-                else:
-                    row_z.append(np.nan)
-                    row_text.append("—")
-            z_matrix.append(row_z)
-            text_matrix.append(row_text)
-
-        colorscale_custom = [
-            [0.0, "#dc2626"],   # Caídas fuertes (Rojo)
-            [0.15, "#ef4444"],  # Caídas leves (Rojo claro)
-            [0.20, "#1f2937"],  # 0% Neutro
-            [0.35, "#065f46"],  # Subida pequeña (Verde oscuro)
-            [0.60, "#10b981"],  # Subida media (Verde estándar)
-            [1.0, "#00ff88"]    # Subida grande >50% (Verde brillante)
-        ]
-
-        fig_heatmap = go.Figure(data=go.Heatmap(
-            z=z_matrix,
-            x=months_abbr,
-            y=years,
-            text=text_matrix,
-            texttemplate="%{text}",
-            textfont={"size": 13, "color": "#ffffff"},
-            colorscale=colorscale_custom,
-            zmin=-50,
-            zmax=150,
-            showscale=False,
-            xgap=4,
-            ygap=4
-        ))
-
-        fig_heatmap.update_layout(
-            paper_bgcolor='rgba(0,0,0,0)',
-            plot_bgcolor='rgba(0,0,0,0)',
-            font=dict(color="#ffffff"),
-            margin=dict(l=10, r=10, t=20, b=20),
-            yaxis=dict(type='category', autorange="reversed")
-        )
-
-        st.plotly_chart(fig_heatmap, use_container_width=True)
-
-    # =========================================================================
-    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO Y MAX DRAWDOWN HISTÓRICO
-    # =========================================================================
-    if not df_global_daily.empty:
-        st.markdown("---")
-        st.subheader("🛡️ Métricas Avanzadas de Riesgo y Máximo Histórico (ATH)")
-        
-        df_risk = df_global_daily.copy()
-        
-        # 1. EVALUACIÓN DE DRAWDOWN DE PRECIO Y VALORACIÓN
-        df_risk['Peak_Acum'] = df_risk['Valor_Mercado'].cummax()
-        df_risk['DD_Portfolio'] = np.where(
-            df_risk['Peak_Acum'] > 0,
-            ((df_risk['Valor_Mercado'] - df_risk['Peak_Acum']) / df_risk['Peak_Acum']) * 100,
-            0.0
-        )
-        
-        df_risk['PnL_Pct_Hist'] = np.where(
-            df_risk['Inv_Acum'] > 0,
-            ((df_risk['Valor_Mercado'] - df_risk['Inv_Acum']) / df_risk['Inv_Acum']) * 100,
-            0.0
-        )
-        
-        min_dd_portfolio = float(df_risk['DD_Portfolio'].min())
-        min_pnl_hist = float(df_risk['PnL_Pct_Hist'].min())
-        max_dd_pct = min(min_dd_portfolio, min_pnl_hist)
-
-        # 2. CÁLCULO DEL ATH GLOBAL Y DIFERENCIA ACTUAL
-        ath_valor = float(df_risk['Peak_Acum'].max())
-        rows_ath = df_risk[df_risk['Valor_Mercado'] == ath_valor]
-        if not rows_ath.empty:
-            fecha_ath = rows_ath.iloc[0]['Fecha_Clean'].strftime('%d/%m/%Y')
+        st.markdown("**¿Cuánto tendría que comprar para bajar mi precio medio a…?**")
+        objetivo_pm = st.number_input("Precio medio objetivo (€)", min_value=0.000001,
+                                      value=float(round(rc["precio_medio"] * 0.95, 5)), format="%.5f")
+        p_ef = precio_c / (1 - fee / 100)
+        if objetivo_pm >= rc["precio_medio"]:
+            st.caption("Pon un objetivo por debajo de tu precio medio actual.")
+        elif objetivo_pm <= p_ef:
+            st.warning(f"Imposible comprando a {eur(precio_c, 4)}: tu precio medio nunca bajará de {eur(p_ef, 4)} (precio + comisión).")
         else:
-            fecha_ath = df_risk.iloc[-1]['Fecha_Clean'].strftime('%d/%m/%Y')
-        
-        euros_faltantes_ath = ath_valor - val_actual
-        subida_necesaria_portfolio = ((ath_valor - val_actual) / val_actual * 100) if val_actual > 0 and ath_valor > val_actual else 0.0
+            necesario = (objetivo_pm * rc["cantidad"] - rc["invertido"]) / (1 - objetivo_pm / p_ef)
+            st.success(f"Necesitarías invertir **{eur(necesario)}** a {eur(precio_c, 4)} para dejar tu precio medio en {eur(objetivo_pm, 4)}.")
 
-        rk1, rk2, rk3, rk4 = st.columns(4)
-        with rk1:
-            st.metric(
-                "Max Drawdown Histórico", 
-                f"{max_dd_pct:.2f} %", 
-                delta=f"{max_dd_pct:.2f} %", 
-                delta_color="normal"
-            )
-        with rk2:
-            st.metric("Pico Máximo (ATH Portfolio)", f"{ath_valor:,.2f} €")
-        with rk3:
-            st.metric("Fecha Pico ATH", fecha_ath)
-        with rk4:
-            if subida_necesaria_portfolio > 0:
-                st.metric(
-                    "Subida p/ Recuperar ATH", 
-                    f"+{subida_necesaria_portfolio:.2f} %", 
-                    delta=f"+{euros_faltantes_ath:,.2f} €", 
-                    delta_color="normal"
-                )
-            else:
-                st.metric("Subida p/ Recuperar ATH", "0.00 % (¡En Máximos!)")
-
-    # =========================================================================
-    # 🌟 SECCIÓN 4: EVOLUCIÓN DCA
-    # =========================================================================
-    if not df_hist.empty:
-        st.markdown("---")
-        st.subheader("📉 Optimización del Precio Medio de Compra (Estrategia DCA)")
-        
-        dca_col1, dca_col2 = st.columns([1, 3])
-        with dca_col1:
-            token_dca = st.selectbox("Selecciona activo para analizar DCA:", df["Token"].tolist(), key="dca_token")
-            
-            df_tok_h = df_hist[(df_hist['Token_Clean'] == token_dca) & (df_hist['Invertido_Clean'] > 0)].sort_values('Fecha_Clean').copy()
-            
-            r_tok_ref = df[df['Token'] == token_dca]
-            if not r_tok_ref.empty and "Precio Medio (€)" in r_tok_ref.columns:
-                pm_actual = float(r_tok_ref["Precio Medio (€)"].values[0])
-            else:
-                pm_actual = 0.0
-
-            p_mkt_actual = float(r_tok_ref['Precio Actual (€)'].values[0]) if not r_tok_ref.empty and 'Precio Actual (€)' in r_tok_ref.columns else pm_actual
-
-            if not df_tok_h.empty:
-                df_tok_h['Q_Acum'] = df_tok_h['Cantidad_Clean'].cumsum()
-                df_tok_h['Inv_Acum'] = df_tok_h['Invertido_Clean'].cumsum()
-                df_tok_h['Precio_Medio_Hist'] = df_tok_h['Inv_Acum'] / df_tok_h['Q_Acum']
-                
-                df_tok_h.iloc[-1, df_tok_h.columns.get_loc('Precio_Medio_Hist')] = pm_actual
-                pm_inicial = float(df_tok_h['Precio_Medio_Hist'].iloc[0])
-            else:
-                pm_inicial = pm_actual
-
-            mejora_pm_pct = ((pm_actual - pm_inicial) / pm_inicial) * 100 if pm_inicial > 0 else 0.0
-            margen_seguridad = ((p_mkt_actual - pm_actual) / pm_actual) * 100 if pm_actual > 0 else 0.0
-
-            st.metric("Precio Medio Inicial", f"{pm_inicial:,.4f} €")
-            st.metric("Precio Medio Actual Optimizado", f"{pm_actual:,.4f} €", delta=f"{mejora_pm_pct:+.2f} %", delta_color="normal" if mejora_pm_pct <= 0 else "inverse")
-            st.metric("Margen sobre Mercado", f"{margen_seguridad:+.2f} %", delta=f"{margen_seguridad:+.2f} %")
-
-        with dca_col2:
-            if not df_tok_h.empty:
-                cg_id_map = {'XRP': 'ripple', 'XLM': 'stellar'}
-                df_cg_p = get_historical_prices_coingecko(cg_id_map.get(token_dca, 'ripple'))
-                
-                fig_dca = go.Figure()
-
-                fig_dca.add_trace(go.Scatter(
-                    x=df_tok_h['Fecha_Clean'],
-                    y=df_tok_h['Precio_Medio_Hist'],
-                    mode='lines+markers',
-                    name='Precio Medio (€)',
-                    line=dict(color='#3b82f6', width=3)
-                ))
-
-                if not df_cg_p.empty:
-                    df_cg_crop = df_cg_p[df_cg_p['Fecha_Clean'] >= df_tok_h['Fecha_Clean'].min()]
-                    fig_dca.add_trace(go.Scatter(
-                        x=df_cg_crop['Fecha_Clean'],
-                        y=df_cg_crop['price'],
-                        mode='lines',
-                        name='Precio de Mercado (€)',
-                        line=dict(color='#10b981', width=1.5, dash='dot')
-                    ))
-
-                fig_dca.update_layout(
-                    title=f"Evolución del Precio Medio de Compra — {token_dca}",
-                    paper_bgcolor='rgba(0,0,0,0)',
-                    plot_bgcolor='rgba(0,0,0,0)',
-                    font=dict(color="#ffffff"),
-                    margin=dict(l=10, r=10, t=30, b=10),
-                    xaxis=dict(showgrid=False),
-                    yaxis=dict(showgrid=True, gridcolor='#262c3a', title="Precio (€)"),
-                    hovermode="x unified"
-                )
-                st.plotly_chart(fig_dca, use_container_width=True)
-
-    # =========================================================================
-    # 🌟 SECCIÓN 5: CALCULADORA INVERSA / SIMULADOR DE OBJETIVOS
-    # =========================================================================
-    st.markdown("---")
-    st.subheader("🎯 Calculadora Inversa / Simulador de Objetivos de Precio")
-    
-    inv_c1, inv_c2 = st.columns([1, 2])
-    with inv_c1:
-        token_objetivo = st.selectbox("Token para simular objetivo:", df["Token"].tolist(), key="obj_token")
-        
-        row_obj = df[df["Token"] == token_objetivo].iloc[0]
-        p_actual_obj = float(row_obj["Precio Actual (€)"]) if "Precio Actual (€)" in row_obj else 1.0
-        bal_obj = float(row_obj["Cantidad Total TK"]) if "Cantidad Total TK" in row_obj else 0.0
-        inv_obj = float(row_obj["Inversión Total (€)"]) if "Inversión Total (€)" in row_obj else 0.0
-        
-        modo_calculo = st.radio("Modo de simulación:", ["Porcentaje de Rentabilidad (%)", "Precio Objetivo (€)"])
-        
-        if modo_calculo == "Porcentaje de Rentabilidad (%)":
-            rentabilidad_deseada = st.number_input("Rentabilidad deseada (%):", value=100.0, step=10.0)
-            precio_calculado = p_actual_obj * (1 + rentabilidad_deseada / 100.0)
+    st.divider()
+    st.subheader("🎯 Simulador de objetivos")
+    o1, o2 = st.columns([1, 2])
+    with o1:
+        tok_o = st.selectbox("Token", list(P.index), key="obj_tok")
+        ro = P.loc[tok_o]
+        modo = st.radio("Simular por", ["% de subida", "Precio objetivo", "Valor objetivo de la posición"])
+        if modo == "% de subida":
+            subida = st.number_input("Subida (%)", value=100.0, step=10.0)
+            p_obj = ro["precio"] * (1 + subida / 100)
+        elif modo == "Precio objetivo":
+            p_obj = st.number_input("Precio objetivo (€)", min_value=0.000001, value=float(ro["precio"] * 2), format="%.5f")
         else:
-            precio_calculado = st.number_input("Precio objetivo (€):", min_value=0.0001, value=p_actual_obj * 2, step=0.01)
-            rentabilidad_deseada = ((precio_calculado - p_actual_obj) / p_actual_obj) * 100 if p_actual_obj > 0 else 0.0
+            v_obj = st.number_input("Valor objetivo (€)", min_value=1.0, value=float(round(ro["valor"] * 2, -1)), step=100.0)
+            p_obj = v_obj / ro["cantidad"] if ro["cantidad"] > 0 else ro["precio"]
+    with o2:
+        v_fut = ro["cantidad"] * p_obj
+        g_fut = v_fut - ro["invertido"]
+        a, b, c = st.columns(3)
+        a.metric("Precio objetivo", eur(p_obj, 4), delta=pct((p_obj / ro["precio"] - 1) * 100) + " vs hoy")
+        b.metric("Valor de la posición", eur(v_fut))
+        c.metric("Beneficio", eur(g_fut, sign=True), delta=pct(g_fut / ro["invertido"] * 100) if ro["invertido"] > 0 else None)
+        (st.success if g_fut >= 0 else st.error)(
+            f"Si {tok_o} llega a {eur(p_obj, 4)}, tu posición valdría {eur(v_fut)} "
+            f"({'ganancia' if g_fut >= 0 else 'pérdida'} de {eur(abs(g_fut))} sobre lo invertido).")
 
-    with inv_c2:
-        valor_futuro_token = bal_obj * precio_calculado
-        ganancia_neta_futura = valor_futuro_token - inv_obj
-        
-        st.info(f"💡 Simulando proyección para **{token_objetivo}** (Balance actual: {bal_obj:,.2f} tokens)")
-        
-        rc1, rc2, rc3 = st.columns(3)
-        with rc1:
-            st.metric("Precio Objetivo Token", f"{precio_calculado:,.4f} €")
-        with rc2:
-            st.metric("Rentabilidad Implícita", f"{rentabilidad_deseada:+,.2f} %")
-        with rc3:
-            st.metric("Valor Total Cartera en este Token", f"{valor_futuro_token:,.2f} €")
-            
-        st.success(f"📈 Si {token_objetivo} alcanza este precio, tu beneficio neto estimado en esta posición sería de **+{ganancia_neta_futura:,.2f} €**.")
+    st.markdown("**Escenarios para toda la cartera** (todos los tokens se mueven el mismo %)")
+    escenarios = [-50, -25, 0, 25, 50, 100, 200, 400]
+    filas = []
+    for e in escenarios:
+        fila = {"Escenario": "Hoy" if e == 0 else f"{e:+d} %"}
+        for tok in P.index:
+            fila[f"Precio {tok}"] = P.at[tok, "precio"] * (1 + e / 100)
+        fila["Valor cartera"] = val_total * (1 + e / 100)
+        fila["Beneficio"] = fila["Valor cartera"] - inv_total
+        filas.append(fila)
+    esc = pd.DataFrame(filas)
+    formatos = {f"Precio {tok}": (lambda v: eur(v, 4)) for tok in P.index}
+    formatos.update({"Valor cartera": eur, "Beneficio": lambda v: eur(v, sign=True)})
+    st.dataframe(esc.style.format(formatos).map(color_sign, subset=["Beneficio"]), hide_index=True, **WIDE)
+
+# =============================================================================
+# 7. FISCALIDAD
+# =============================================================================
+with tabs[6]:
+    st.caption("Cálculo orientativo con método FIFO (las primeras unidades compradas son las primeras vendidas), "
+               "que es el que aplica Hacienda en España. No sustituye a un asesor fiscal: no incluye permutas "
+               "cripto-cripto, staking ni otras rentas.")
+    if tx.empty or (tx["cantidad"] < 0).sum() == 0:
+        st.info("No hay ventas registradas, así que no hay ganancias realizadas que declarar.")
+    else:
+        rz = fifo_realized(tx)
+        rz["Año"] = rz["Fecha"].dt.year
+        resumen = rz.groupby("Año")[["Transmisión (€)", "Adquisición (€)", "Ganancia (€)"]].sum().reset_index()
+        cols = st.columns(len(resumen))
+        for col, r in zip(cols, resumen.itertuples()):
+            col.metric(f"Ganancia/pérdida patrimonial {r.Año}", eur(r[4], sign=True),
+                       help=f"Transmisión {eur(r[2])} − Adquisición {eur(r[3])}")
+        rz_disp = rz.drop(columns="Año").iloc[::-1]
+        rz_disp["Fecha"] = rz_disp["Fecha"].dt.strftime("%d/%m/%Y")
+        st.dataframe(rz_disp.style.format({"Cantidad": lambda v: fmt(v, 4), "Transmisión (€)": eur,
+                                           "Adquisición (€)": eur, "Ganancia (€)": lambda v: eur(v, sign=True)})
+                     .map(color_sign, subset=["Ganancia (€)"]), hide_index=True, **WIDE)
+        st.download_button("📥 Descargar ventas FIFO (CSV)",
+                           rz_disp.to_csv(index=False, sep=";", decimal=",").encode("utf-8-sig"),
+                           file_name=f"ventas_fifo_{datetime.now():%Y%m%d}.csv", mime="text/csv")
