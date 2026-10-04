@@ -29,6 +29,8 @@ TOKENS = {
     "XLM": {"gid": "108352087", "kraken": "XLMEUR", "coingecko": "stellar", "color": "#10b981"},
 }
 COLD_WALLETS = {"LEDGER"}  # el resto se considera custodia en exchange
+# Noticias que guarda el bot (noticias/noticias.py) en la rama 'datos' del repositorio
+NOTICIAS_URL = "https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/datos/noticias/noticias.json"
 
 POS, NEG, MUTED, GRID = "#10b981", "#ef4444", "#94a3b8", "#262c3a"
 MESES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
@@ -240,6 +242,17 @@ def price_history(tok):
     return pd.Series(dtype=float), None
 
 
+@st.cache_data(ttl=300, show_spinner=False)
+def load_noticias():
+    try:
+        r = requests.get(NOTICIAS_URL, timeout=10)
+        if r.ok:
+            return r.json().get("noticias", [])
+    except Exception:
+        pass
+    return []
+
+
 @st.cache_data(ttl=30, show_spinner=False)
 def live_prices():
     """Precio actual y apertura del día (UTC) desde Kraken."""
@@ -448,7 +461,7 @@ for col, (label, value, delta, ayuda) in zip(k, kpis):
         st.metric(label, value, delta=delta, help=ayuda)
 
 tabs = st.tabs(["💼 Posiciones", "📈 Evolución", "📅 Rentabilidad", "🧾 Operaciones",
-                "🛡️ Riesgo", "🧮 Simuladores", "🏛️ Fiscalidad"])
+                "🛡️ Riesgo", "🧮 Simuladores", "🏛️ Fiscalidad", "📰 Noticias"])
 
 # =============================================================================
 # 1. POSICIONES
@@ -838,3 +851,45 @@ with tabs[6]:
         st.download_button("📥 Descargar ventas FIFO (CSV)",
                            rz_disp.to_csv(index=False, sep=";", decimal=",").encode("utf-8-sig"),
                            file_name=f"ventas_fifo_{datetime.now():%Y%m%d}.csv", mime="text/csv")
+
+# =============================================================================
+# 8. NOTICIAS
+# =============================================================================
+with tabs[7]:
+    noticias = load_noticias()
+    if not noticias:
+        st.info("Todavía no hay noticias guardadas. Te llegarán a Telegram a las horas de envío y aparecerán aquí.")
+    else:
+        nt = pd.DataFrame(noticias)
+        nt["fecha_envio"] = pd.to_datetime(nt["fecha_envio"], utc=True).dt.tz_convert("Europe/Madrid")
+        nt = nt.sort_values("fecha_envio", ascending=False)
+
+        n1, n2, n3, n4 = st.columns(4)
+        n1.metric("Noticias guardadas", len(nt))
+        n2.metric("👍 Útiles", int((nt["valoracion"] == 1).sum()))
+        n3.metric("👎 No interesantes", int((nt["valoracion"] == -1).sum()))
+        n4.metric("Sin valorar", int((nt["valoracion"] == 0).sum()),
+                  help="Valóralas en Telegram con los botones: así la IA aprende qué te interesa.")
+
+        f1, f2, f3 = st.columns([2, 1, 2])
+        temas_sel = f1.multiselect("Tema", sorted(nt["tema"].unique()), default=sorted(nt["tema"].unique()))
+        filtro_val = f2.selectbox("Valoración", ["Todas", "👍 Útiles", "👎 No interesantes", "Sin valorar"])
+        buscar = f3.text_input("Buscar", placeholder="p. ej. ETF, SEC, Fed…")
+
+        vista = nt[nt["tema"].isin(temas_sel)]
+        vista = {"👍 Útiles": vista[vista["valoracion"] == 1], "👎 No interesantes": vista[vista["valoracion"] == -1],
+                 "Sin valorar": vista[vista["valoracion"] == 0]}.get(filtro_val, vista)
+        if buscar:
+            texto = (vista["titulo"] + " " + vista["resumen"] + " " + vista["por_que"]).str.lower()
+            vista = vista[texto.str.contains(buscar.lower(), regex=False)]
+
+        st.caption(f"{len(vista)} noticias")
+        md = lambda s: str(s).replace("$", "\\$")  # evita que Streamlit interprete '$' como fórmula
+        for r in vista.head(100).itertuples():
+            voto = {1: "👍", -1: "👎"}.get(r.valoracion, "")
+            with st.container(border=True):
+                st.markdown(f"**{md(r.titulo)}** {voto}")
+                st.caption(f"{r.tema} · ⭐ {r.puntuacion}/10 · {r.fecha_envio:%d/%m/%Y %H:%M} · {md(r.fuente)}")
+                st.markdown(md(r.resumen))
+                st.markdown(f"💡 *{md(r.por_que)}*")
+                st.markdown(f"[Leer la noticia completa →]({r.url})")
