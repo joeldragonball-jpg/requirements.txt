@@ -1,0 +1,38 @@
+name: Noticias con IA
+
+on:
+  schedule:
+    - cron: "10 * * * *"    # cada hora: recoge tus 👍/👎 y, a las horas de envío, manda noticias
+  workflow_dispatch:         # botón "Run workflow" para lanzarlo a mano
+    inputs:
+      prueba:
+        description: "Enviar ahora unas noticias de prueba"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write            # para guardar las noticias en la rama 'datos'
+
+concurrency: noticias
+
+jobs:
+  noticias:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests feedparser anthropic
+
+      - name: Noticias
+        run: python noticias/noticias.py
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PRUEBA: ${{ github.event.inputs.prueba }}
