@@ -4,6 +4,12 @@ import plotly.graph_objects as go
 import requests
 import streamlit as st
 from datetime import datetime
+from zoneinfo import ZoneInfo
+
+try:
+    import tomllib  # Python 3.11+
+except ImportError:
+    tomllib = None
 
 st.set_page_config(page_title="Mi Cartera Cripto", page_icon="⚡", layout="wide")
 
@@ -14,6 +20,17 @@ st.markdown("""
     header {visibility: hidden;}
     .block-container {padding-top: 1.2rem; padding-bottom: 2rem;}
     [data-testid="stMetricValue"] {font-size: 1.45rem;}
+    /* Tarjetas de indicadores: 5 en fila en ordenador, 2 por fila en el móvil */
+    .kpis {display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 4px 0 14px;}
+    .kpi {background: #151921; border: 1px solid #262c3a; border-radius: 12px; padding: 10px 14px;}
+    .kpi .lbl {color: #94a3b8; font-size: 0.8rem;}
+    .kpi .val {color: #e5e7eb; font-size: 1.35rem; font-weight: 600; line-height: 1.5; white-space: nowrap;}
+    .kpi .dlt {font-size: 0.8rem; font-weight: 600;}
+    @media (max-width: 640px) {
+        .kpis {grid-template-columns: repeat(2, 1fr); gap: 8px;}
+        .kpi:first-child {grid-column: span 2;}
+        .kpi .val {font-size: 1.15rem;}
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -31,6 +48,9 @@ TOKENS = {
 COLD_WALLETS = {"LEDGER"}  # el resto se considera custodia en exchange
 # Noticias que guarda el bot (noticias/noticias.py) en la rama 'datos' del repositorio
 NOTICIAS_URL = "https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/datos/noticias/noticias.json"
+# Configuración del bot de alertas (para mostrar tus niveles en la app)
+ALERTAS_URL = "https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/main/alertas/config.toml"
+MADRID = ZoneInfo("Europe/Madrid")
 
 POS, NEG, MUTED, GRID = "#10b981", "#ef4444", "#94a3b8", "#262c3a"
 MESES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
@@ -283,11 +303,12 @@ def add_twr(df):
 
 
 def build_daily(tx, prices, current):
-    today = pd.Timestamp.now().normalize()
+    today = pd.Timestamp.now(tz=MADRID).normalize().tz_localize(None)
     tx = tx.assign(fecha=tx["fecha"].clip(upper=today))
     idx = pd.date_range(tx["fecha"].min(), today, freq="D")
     per = {}
-    for tok, t in tx.groupby("token"):
+    for tok in [t for t in TOKENS if t in set(tx["token"])]:
+        t = tx[tx["token"] == tok]
         p = prices.get(tok, pd.Series(dtype=float)).reindex(idx).ffill().bfill()
         if p.isna().all():
             p = pd.Series(current.get(tok, 0.0), index=idx)
@@ -297,12 +318,37 @@ def build_daily(tx, prices, current):
         g = t.groupby("fecha")
         q = g["cantidad"].sum().reindex(idx, fill_value=0.0).cumsum()
         aport = g["total"].sum().reindex(idx, fill_value=0.0)
-        per[tok] = add_twr(pd.DataFrame({
+        d = pd.DataFrame({
             "cantidad": q, "invertido": aport.cumsum(), "precio": p,
             "valor": q * p, "flujo": g["flujo"].sum().reindex(idx, fill_value=0.0),
-        }))
+        })
+        per[tok] = add_twr(d[d.index >= t["fecha"].min()].copy())  # cada token empieza en su primera compra
     tot = pd.concat([d[["valor", "invertido", "flujo"]] for d in per.values()]).groupby(level=0).sum()
     return add_twr(tot), per
+
+
+def todo_de_golpe(tx, prices, current, idx):
+    """Valor diario de una cartera alternativa: el mismo dinero neto de cada token invertido entero el primer día."""
+    alt = pd.Series(0.0, index=idx)
+    for tok, invertido in tx.groupby("token")["total"].sum().items():
+        p = prices.get(tok, pd.Series(dtype=float)).reindex(idx).ffill().bfill()
+        if p.isna().all() or invertido <= 0:
+            continue
+        p.iloc[-1] = current.get(tok, p.iloc[-1])
+        alt += invertido / p.iloc[0] * p
+    return alt
+
+
+@st.cache_data(ttl=300, show_spinner=False)
+def load_alertas():
+    """Niveles de precio configurados en el bot de alertas (alertas/config.toml en GitHub)."""
+    if tomllib is None:
+        return {}
+    try:
+        r = requests.get(ALERTAS_URL, timeout=10)
+        return tomllib.loads(r.text) if r.ok else {}
+    except Exception:
+        return {}
 
 
 def period_table(df, freq):
@@ -367,7 +413,7 @@ def fifo_realized(tx):
 # =============================================================================
 h1, h2, h3 = st.columns([3, 1.3, 1], vertical_alignment="center")
 h1.title("⚡ Mi Cartera Cripto")
-use_live = h2.toggle("Precio en vivo (Kraken)", value=True,
+use_live = h2.toggle("Precio en vivo", value=True,
                      help="Activado: precio actual de Kraken (cada 30 s). Desactivado: el precio de tu Google Sheet.")
 if h3.button("🔄 Actualizar"):
     st.cache_data.clear()
@@ -408,7 +454,7 @@ hoy_eur = pos["hoy_eur"].sum()
 hoy_pct = hoy_eur / (val_total - hoy_eur) * 100 if live else np.nan
 
 fuente = "Kraken en vivo" if live else "Google Sheets"
-st.caption(f"Datos: Google Sheets · Precios: {fuente} · Actualizado {datetime.now():%d/%m/%Y %H:%M:%S}")
+st.caption(f"Datos: Google Sheets · Precios: {fuente} · Actualizado {datetime.now(MADRID):%d/%m/%Y %H:%M:%S}")
 
 # --- Avisos de calidad de datos ---
 avisos = list(tx_errores)
@@ -446,27 +492,96 @@ if not tx.empty:
     tir = xirr(list(flujos["fecha"].clip(upper=pd.Timestamp.now().normalize())) + [pd.Timestamp.now().normalize()],
                list(-flujos["total"]) + [val_total])
 
-k = st.columns(5)
+def kpi_card(label, value, delta=None, ayuda=None):
+    """Tarjeta HTML: así en el móvil caben 2 por fila en vez de una debajo de otra."""
+    dlt = ""
+    if delta and delta != "—":
+        color = NEG if delta.strip().startswith("-") else POS
+        dlt = f"<div class='dlt' style='color:{color}'>{delta}</div>"
+    titulo = f" title='{ayuda}'" if ayuda else ""
+    return f"<div class='kpi'{titulo}><div class='lbl'>{label}</div><div class='val'>{value}</div>{dlt}</div>"
+
+
 kpis = [
     ("Valor actual", eur(val_total), None, None),
-    ("Invertido neto", eur(inv_total), None, "Dinero puesto menos dinero retirado con ventas (incluye comisiones)."),
-    ("Beneficio no realizado", eur(pnl_total, sign=True), pct(pnl_total_pct), None),
-    ("Cambio hoy", eur(hoy_eur, sign=True) if live else "—", pct(hoy_pct) if live else None,
+    ("Invertido", eur(inv_total), None, "Dinero puesto menos dinero retirado con ventas (incluye comisiones)."),
+    ("Beneficio", eur(pnl_total, sign=True), pct(pnl_total_pct), "Beneficio no realizado: valor actual menos invertido."),
+    ("Hoy", eur(hoy_eur, sign=True) if live else "—", pct(hoy_pct) if live else None,
      "Variación desde la apertura del día (00:00 UTC) en Kraken."),
-    ("Rentabilidad anual (TIR)", pct(tir) if tir is not None else "—", None,
+    ("TIR anual", pct(tir) if tir is not None else "—", None,
      "Rentabilidad anualizada teniendo en cuenta cuándo metiste cada euro. Es la cifra comparable con un depósito o un fondo."),
 ]
-for col, (label, value, delta, ayuda) in zip(k, kpis):
-    with col.container(border=True):
-        st.metric(label, value, delta=delta, help=ayuda)
+st.markdown("<div class='kpis'>" + "".join(kpi_card(*k) for k in kpis) + "</div>", unsafe_allow_html=True)
 
-tabs = st.tabs(["💼 Posiciones", "📈 Evolución", "📅 Rentabilidad", "🧾 Operaciones",
+tabs = st.tabs(["🏠 Inicio", "💼 Posiciones", "📈 Evolución", "📅 Rentabilidad", "🧾 Operaciones",
                 "🛡️ Riesgo", "🧮 Simuladores", "🏛️ Fiscalidad", "📰 Noticias"])
+
+# =============================================================================
+# 0. INICIO — lo esencial de un vistazo
+# =============================================================================
+with tabs[0]:
+    i1, i2 = st.columns([3, 2], gap="large")
+    with i1:
+        st.markdown("##### 📈 Últimos 30 días")
+        if not daily.empty:
+            ult = daily[daily.index >= daily.index.max() - pd.Timedelta(days=30)]
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(x=ult.index, y=ult["valor"], name="Valor", mode="lines",
+                                     line=dict(color="#3b82f6", width=2.5), hovertemplate="%{y:,.2f} €"))
+            fig.add_trace(go.Scatter(x=ult.index, y=ult["invertido"], name="Invertido", mode="lines",
+                                     line=dict(color=MUTED, width=1.5, dash="dash"), hovertemplate="%{y:,.2f} €"))
+            fig = style_fig(fig, 260)
+            fig.update_yaxes(ticksuffix=" €")
+            chart(fig)
+            mercado_30 = ult["valor"].iloc[-1] - ult["valor"].iloc[0] - ult["flujo"].iloc[1:].sum()
+            st.caption(f"En 30 días has aportado {eur(ult['flujo'].iloc[1:].sum())} y el mercado te ha dado "
+                       f"**{eur(mercado_30, sign=True)}**.")
+        for r in pos.itertuples():
+            hoy_txt = ""
+            if pd.notna(r.hoy_pct):
+                color = POS if r.hoy_pct >= 0 else NEG
+                hoy_txt = f" <span style='color:{color}'>{pct(r.hoy_pct)} hoy</span>"
+            st.markdown(f"<span style='color:{TOKENS[r.token]['color']}'>●</span> **{r.token}** {eur(r.precio, 4)}"
+                        f"{hoy_txt} · {eur(r.valor)}", unsafe_allow_html=True)
+
+    with i2:
+        st.markdown("##### 🔔 Tus alertas")
+        cfg_alertas = load_alertas()
+        if not cfg_alertas:
+            st.caption("No se pudo leer la configuración del bot de alertas.")
+        for tok in P.index:
+            p_act = P.at[tok, "precio"]
+            niveles = sorted(float(x) for x in cfg_alertas.get("niveles", {}).get(tok, []))
+            arriba = next((x for x in niveles if x > p_act), None)
+            abajo = next((x for x in reversed(niveles) if x < p_act), None)
+            lineas = [f"**{tok}** · {eur(p_act, 4)}"]
+            if arriba:
+                lineas.append(f"🔼 Subiendo: **{eur(arriba, 4)}** ({pct((arriba / p_act - 1) * 100, 1)})")
+            if abajo:
+                lineas.append(f"🔽 Bajando: **{eur(abajo, 4)}** ({pct((abajo / p_act - 1) * 100, 1)})")
+            pm = P.at[tok, "precio_medio"]
+            if pd.notna(pm):
+                lineas.append(f"⚖️ Tu precio medio: {eur(pm, 4)} ({pct((pm / p_act - 1) * 100, 1)})")
+            with st.container(border=True):
+                st.markdown("  \n".join(lineas))
+        if cfg_alertas:
+            st.caption(f"También te avisa si un token se mueve más de un {cfg_alertas.get('movimiento_brusco_pct', 7)} % "
+                       "en 24 h. Los niveles se cambian en `alertas/config.toml` en GitHub.")
+
+        st.markdown("##### 📰 Últimas noticias")
+        ultimas = sorted(load_noticias(), key=lambda n: n.get("fecha_envio", ""), reverse=True)[:3]
+        if not ultimas:
+            st.caption("Todavía no hay noticias.")
+        for n in ultimas:
+            voto = {1: " 👍", -1: " 👎"}.get(n.get("valoracion"), "")
+            st.markdown(f"[{n['titulo'].replace('$', chr(92) + '$')}]({n['url']}){voto}  \n"
+                        f"<span style='color:{MUTED};font-size:0.8rem'>{n['tema']} · ⭐ {n['puntuacion']}/10</span>",
+                        unsafe_allow_html=True)
 
 # =============================================================================
 # 1. POSICIONES
 # =============================================================================
-with tabs[0]:
+with tabs[1]:
     with st.container():
         for r in pos.itertuples():
             with st.container(border=True):
@@ -527,7 +642,7 @@ with tabs[0]:
 # =============================================================================
 # 2. EVOLUCIÓN
 # =============================================================================
-with tabs[1]:
+with tabs[2]:
     if daily.empty:
         st.info("No hay operaciones para construir el histórico.")
     else:
@@ -536,11 +651,10 @@ with tabs[1]:
         if vista == "Total":
             fig.add_trace(go.Scatter(x=daily.index, y=daily["valor"], name="Valor", mode="lines",
                                      line=dict(color="#3b82f6", width=2), fill="tozeroy",
-                                     fillcolor="rgba(59,130,246,0.15)", hovertemplate="%{y:,.2f} €"))
+                                     fillcolor="rgba(59,130,246,0.15)", customdata=daily["valor"] - daily["invertido"],
+                                     hovertemplate="%{y:,.2f} € (beneficio %{customdata:+,.2f} €)"))
             fig.add_trace(go.Scatter(x=daily.index, y=daily["invertido"], name="Invertido neto", mode="lines",
                                      line=dict(color=MUTED, width=2, dash="dash"), hovertemplate="%{y:,.2f} €"))
-            fig.add_trace(go.Scatter(x=daily.index, y=daily["valor"] - daily["invertido"], name="Beneficio",
-                                     mode="lines", line=dict(width=0), showlegend=False, hovertemplate="%{y:+,.2f} €"))
         else:
             for tok, d in per.items():
                 fig.add_trace(go.Scatter(x=d.index, y=d["valor"], name=tok, mode="lines", stackgroup="uno",
@@ -553,6 +667,10 @@ with tabs[1]:
                      dict(count=1, label="1A", step="year", stepmode="backward"),
                      dict(step="all", label="Todo")],
             bgcolor="#151921", activecolor="#3b82f6", font=dict(color="#e5e7eb")))
+        # Leyenda abajo para que los botones 1M/3M/... no la tapen
+        fig.update_layout(legend=dict(orientation="h", yanchor="top", y=-0.12, xanchor="left", x=0),
+                          margin=dict(l=10, r=10, t=40, b=50))
+        fig.update_yaxes(ticksuffix=" €", rangemode="tozero")
         chart(fig)
         fuentes = {tok: src for tok, (_, src) in hist.items()}
         st.caption("Precios históricos: " + " · ".join(f"{t} → {s or 'sin datos'}" for t, s in fuentes.items()))
@@ -582,15 +700,42 @@ with tabs[1]:
         r = P.loc[tok_dca]
         dist = (r["precio"] / r["precio_medio"] - 1) * 100
         st.caption(f"Precio actual {eur(r['precio'], 4)} · tu precio medio {eur(r['precio_medio'], 4)} → "
-                   f"estás un **{pct(dist)}** {'por encima' if dist >= 0 else 'por debajo'} de tu punto de equilibrio.")
+                   f"estás un **{pct(dist)}** {'por encima' if dist >= 0 else 'por debajo'} de tu punto de equilibrio. "
+                   f"El gráfico empieza en tu primera compra de {tok_dca}.")
 
 # =============================================================================
 # 3. RENTABILIDAD
 # =============================================================================
-with tabs[2]:
+with tabs[3]:
     if daily.empty:
         st.info("No hay operaciones para calcular rentabilidades.")
     else:
+        # --- Tu estrategia (comprar poco a poco) frente a meterlo todo el primer día ---
+        st.markdown("##### 🧭 Tu estrategia frente al mercado")
+        alt = todo_de_golpe(tx, prices, current, daily.index)
+        valor_hoy = daily["valor"].iloc[-1]
+        dif = valor_hoy - alt.iloc[-1]
+        e1, e2, e3 = st.columns(3)
+        e1.metric("Tu cartera hoy (comprando poco a poco)", eur(valor_hoy))
+        e2.metric(f"Si lo hubieras metido todo el {daily.index[0]:%d/%m/%Y}", eur(alt.iloc[-1]),
+                  help="El mismo dinero neto que has puesto en cada token, invertido entero el primer día.")
+        e3.metric("Diferencia a tu favor" if dif >= 0 else "Diferencia en tu contra", eur(dif, sign=True))
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=daily.index, y=daily["valor"], name="Tu cartera", mode="lines",
+                                 line=dict(color="#3b82f6", width=2), hovertemplate="%{y:,.2f} €"))
+        fig.add_trace(go.Scatter(x=alt.index, y=alt, name="Todo de golpe el primer día", mode="lines",
+                                 line=dict(color="#f59e0b", width=1.5, dash="dot"), hovertemplate="%{y:,.2f} €"))
+        fig = style_fig(fig, 280)
+        fig.update_yaxes(ticksuffix=" €")
+        chart(fig)
+        twr_total = (daily["indice"].iloc[-1] / 100 - 1) * 100
+        st.caption(
+            f"Desde que empezaste, los precios de tu cartera han variado un **{pct(twr_total)}** (rentabilidad TWR, "
+            f"la del mapa de abajo). Pero a ti te ha ido {'mejor' if tir is not None and tir > twr_total else 'distinto'}: "
+            f"tu TIR es **{pct(tir) if tir is not None else '—'}** al año, porque cuenta cuándo compraste. "
+            "Si la TIR es mejor que la TWR, tus compras escalonadas en las caídas han funcionado.")
+        st.divider()
+
         ambito = st.radio("Ámbito", ["Cartera"] + list(per), horizontal=True, key="rent_scope")
         base_df = daily if ambito == "Cartera" else per[ambito]
         st.caption("La rentabilidad se calcula **sin el efecto de tus aportaciones** (método TWR): si en un mes "
@@ -630,7 +775,7 @@ with tabs[2]:
             sty = (tbl.style
                    .format({"Rentabilidad": pct, "Resultado (€)": lambda v: eur(v, sign=True),
                             "Aportado (€)": eur, "Valor final (€)": eur,
-                            "Beneficio acum. (€)": lambda v: eur(v, sign=True), "Beneficio acum. (%)": pct})
+                            "Beneficio acum. (€)": lambda v: eur(v, sign=True), "Beneficio acum. (%)": pct}, na_rep="—")
                    .map(color_sign, subset=["Rentabilidad", "Resultado (€)", "Beneficio acum. (€)", "Beneficio acum. (%)"]))
             st.dataframe(sty, hide_index=True, **WIDE)
             return tbl
@@ -650,7 +795,7 @@ with tabs[2]:
 # =============================================================================
 # 4. OPERACIONES
 # =============================================================================
-with tabs[3]:
+with tabs[4]:
     if tx.empty:
         st.info("No hay operaciones registradas.")
     else:
@@ -682,7 +827,8 @@ with tabs[3]:
         }).iloc[::-1]
         sty = (tabla.style
                .format({"Cantidad": lambda v: fmt(v, 4), "Precio": lambda v: eur(v, 4), "Comisión": eur,
-                        "Total": eur, "Valor hoy": eur, "Resultado": lambda v: eur(v, sign=True), "Resultado %": pct})
+                        "Total": eur, "Valor hoy": eur, "Resultado": lambda v: eur(v, sign=True), "Resultado %": pct},
+                       na_rep="—")
                .map(color_sign, subset=["Resultado", "Resultado %"]))
         st.dataframe(sty, hide_index=True, height=420, **WIDE)
 
@@ -704,7 +850,7 @@ with tabs[3]:
 # =============================================================================
 # 5. RIESGO
 # =============================================================================
-with tabs[4]:
+with tabs[5]:
     if daily.empty:
         st.info("No hay histórico para calcular métricas de riesgo.")
     else:
@@ -725,8 +871,13 @@ with tabs[4]:
         r1[2].metric("Volatilidad anual", pct(vol, sign=False), help="Cuánto oscila la cartera en un año típico. Bolsa ≈ 15-20 %, cripto suele superar 60 %.")
         r1[3].metric("Días en beneficio", pct(dias_verde, 0, sign=False))
         r2 = st.columns(4)
-        r2[0].metric("Valor máximo (ATH)", eur(ath), help=f"Alcanzado el {f_ath:%d/%m/%Y}")
-        r2[1].metric("Para volver al ATH", pct((ath / val_total - 1) * 100) if ath > val_total else "¡En máximos!")
+        r2[0].metric("Valor máximo de la cartera", eur(ath),
+                     help=f"Alcanzado el {f_ath:%d/%m/%Y}. Incluye el dinero que has ido aportando, "
+                          "por eso puede estar en máximos aunque los precios no lo estén.")
+        subida_necesaria = (100 / (100 + dd_hoy) - 1) * 100 if dd_hoy < 0 else 0.0
+        r2[1].metric("Subida para recuperar máximos", pct(subida_necesaria) if subida_necesaria > 0 else "¡En máximos!",
+                     help="Cuánto tendrían que subir los precios de tu cartera para volver a su mejor rentabilidad "
+                          f"(caída actual {pct(dd_hoy)}). Una caída del 50 % necesita una subida del 100 % para recuperarse.")
         r2[2].metric("Mejor día", pct(rets.max() * 100), help=f"{mejor:%d/%m/%Y}")
         r2[3].metric("Peor día", pct(rets.min() * 100), help=f"{peor:%d/%m/%Y}")
 
@@ -747,7 +898,7 @@ with tabs[4]:
 # =============================================================================
 # 6. SIMULADORES
 # =============================================================================
-with tabs[5]:
+with tabs[6]:
     st.subheader("🧮 Simulador de compra")
     s1, s2 = st.columns([1, 2])
     with s1:
@@ -824,12 +975,12 @@ with tabs[5]:
     esc = pd.DataFrame(filas)
     formatos = {f"Precio {tok}": (lambda v: eur(v, 4)) for tok in P.index}
     formatos.update({"Valor cartera": eur, "Beneficio": lambda v: eur(v, sign=True)})
-    st.dataframe(esc.style.format(formatos).map(color_sign, subset=["Beneficio"]), hide_index=True, **WIDE)
+    st.dataframe(esc.style.format(formatos, na_rep="—").map(color_sign, subset=["Beneficio"]), hide_index=True, **WIDE)
 
 # =============================================================================
 # 7. FISCALIDAD
 # =============================================================================
-with tabs[6]:
+with tabs[7]:
     st.caption("Cálculo orientativo con método FIFO (las primeras unidades compradas son las primeras vendidas), "
                "que es el que aplica Hacienda en España. No sustituye a un asesor fiscal: no incluye permutas "
                "cripto-cripto, staking ni otras rentas.")
@@ -846,7 +997,8 @@ with tabs[6]:
         rz_disp = rz.drop(columns="Año").iloc[::-1]
         rz_disp["Fecha"] = rz_disp["Fecha"].dt.strftime("%d/%m/%Y")
         st.dataframe(rz_disp.style.format({"Cantidad": lambda v: fmt(v, 4), "Transmisión (€)": eur,
-                                           "Adquisición (€)": eur, "Ganancia (€)": lambda v: eur(v, sign=True)})
+                                           "Adquisición (€)": eur, "Ganancia (€)": lambda v: eur(v, sign=True)},
+                                          na_rep="—")
                      .map(color_sign, subset=["Ganancia (€)"]), hide_index=True, **WIDE)
         st.download_button("📥 Descargar ventas FIFO (CSV)",
                            rz_disp.to_csv(index=False, sep=";", decimal=",").encode("utf-8-sig"),
@@ -855,7 +1007,7 @@ with tabs[6]:
 # =============================================================================
 # 8. NOTICIAS
 # =============================================================================
-with tabs[7]:
+with tabs[8]:
     noticias = load_noticias()
     if not noticias:
         st.info("Todavía no hay noticias guardadas. Te llegarán a Telegram a las horas de envío y aparecerán aquí.")
