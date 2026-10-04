@@ -1,0 +1,78 @@
+# =============================================================================
+# CONFIGURACIÓN DE TUS NOTICIAS — edítalo directamente en GitHub (icono del lápiz)
+# =============================================================================
+
+# Modelo de IA de Claude que lee y resume las noticias:
+#   "claude-opus-5-5"   → el más listo (recomendado). Unos 10 € al mes con esta configuración.
+#   "claude-sonnet-5-5" → muy bueno y la mitad de precio (unos 5 € al mes).
+#   "claude-haiku-4-5"  → el más barato (1-2 € al mes), resúmenes algo más simples.
+modelo = "claude-opus-5-5"
+
+# Máximo de noticias que te llegan al día
+max_noticias_dia = 10
+
+# Horas (de España) a las que te manda noticias. El máximo diario se reparte entre ellas.
+horas_envio = [8, 13, 18, 21]
+
+# Nota mínima (de 1 a 10) para que una noticia te llegue
+nota_minima = 6
+
+# Resumen semanal hecho por la IA: día (0 = lunes ... 6 = domingo) y hora. Pon dia = -1 para desactivarlo.
+resumen_semanal_dia = 6
+resumen_semanal_hora = 20
+
+# Temas que te interesan (la IA clasifica cada noticia en uno de ellos)
+temas = ["XRP / Ripple", "Stellar / XLM", "Cripto y regulación", "Economía y mercados", "Geopolítica y política"]
+
+# Fuentes de noticias (RSS). Puedes añadir o quitar bloques [[fuentes]].
+[[fuentes]]
+nombre = "Google Noticias · XRP (ES)"
+url = "https://news.google.com/rss/search?q=XRP+OR+Ripple+when:2d&hl=es&gl=ES&ceid=ES:es"
+
+[[fuentes]]
+nombre = "Google News · XRP (EN)"
+url = "https://news.google.com/rss/search?q=XRP+Ripple+when:2d&hl=en-US&gl=US&ceid=US:en"
+
+[[fuentes]]
+nombre = "Google News · Stellar (EN)"
+url = "https://news.google.com/rss/search?q=Stellar+XLM+when:3d&hl=en-US&gl=US&ceid=US:en"
+
+[[fuentes]]
+nombre = "Stellar Blog"
+url = "https://stellar.org/blog/rss.xml"
+
+[[fuentes]]
+nombre = "Cointelegraph"
+url = "https://cointelegraph.com/rss"
+
+[[fuentes]]
+nombre = "CoinDesk"
+url = "https://www.coindesk.com/arc/outboundfeeds/rss/"
+
+[[fuentes]]
+nombre = "Decrypt"
+url = "https://decrypt.co/feed"
+
+[[fuentes]]
+nombre = "CriptoNoticias"
+url = "https://www.criptonoticias.com/feed/"
+
+[[fuentes]]
+nombre = "CNBC Economía"
+url = "https://www.cnbc.com/id/20910258/device/rss/rss.html"
+
+[[fuentes]]
+nombre = "Expansión Mercados"
+url = "https://e00-expansion.uecdn.es/rss/mercados.xml"
+
+[[fuentes]]
+nombre = "BBC Mundo (EN)"
+url = "https://feeds.bbci.co.uk/news/world/rss.xml"
+
+[[fuentes]]
+nombre = "El País Internacional"
+url = "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/internacional/portada"
+
+[[fuentes]]
+nombre = "Google Noticias · Geopolítica (ES)"
+url = "https://news.google.com/rss/search?q=geopol%C3%ADtica+when:1d&hl=es&gl=ES&ceid=ES:es"
