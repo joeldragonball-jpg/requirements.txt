@@ -113,18 +113,38 @@ def botones(nid, valoracion=0):
                                  {"text": "👎 No me interesa", "callback_data": f"v|{nid}|-1"}]]}
 
 
+POSITIVAS = {"👍", "❤", "❤️", "🔥", "👏", "🤩", "💯", "⚡"}
+NEGATIVAS = {"👎", "💩", "🤮", "🥱", "😴"}
+
+
 def recoger_valoraciones(db):
-    """Lee los botones pulsados desde la última ejecución. Devuelve cuántas valoraciones nuevas hay."""
-    res = telegram("getUpdates", offset=db["offset"] + 1, timeout=0, allowed_updates=["callback_query"])
+    """Lee los botones pulsados y las reacciones (👍/👎 sobre el mensaje) desde la última ejecución.
+    Devuelve cuántas valoraciones nuevas hay."""
+    res = telegram("getUpdates", offset=db["offset"] + 1, timeout=0,
+                   allowed_updates=["callback_query", "message_reaction"])
     nuevas = 0
     por_id = {n["id"]: n for n in db["noticias"]}
+    por_msg = {n.get("msg_id"): n for n in db["noticias"] if n.get("msg_id")}
     for u in res.get("result", []):
         db["offset"] = max(db["offset"], u["update_id"])
+        # Reacción sobre el mensaje: se ve al instante en Telegram y aquí se registra cuando el bot se ejecuta
+        mr = u.get("message_reaction")
+        if mr:
+            noticia = por_msg.get(mr.get("message_id"))
+            emojis = {r.get("emoji") for r in mr.get("new_reaction", []) if r.get("type") == "emoji"}
+            voto = 1 if emojis & POSITIVAS else -1 if emojis & NEGATIVAS else 0
+            print(f"Reacción {emojis or '(quitada)'} en el mensaje {mr.get('message_id')} → "
+                  f"{noticia['titulo'][:50] if noticia else 'noticia no encontrada'}")
+            if noticia and noticia.get("valoracion") != voto:
+                noticia["valoracion"] = voto
+                nuevas += 1
+            continue
         cq = u.get("callback_query")
         if not cq or not str(cq.get("data", "")).startswith("v|"):
             continue
         _, nid, voto = cq["data"].split("|")
         noticia = por_id.get(nid)
+        print(f"Botón {'👍' if voto == '1' else '👎'} → {noticia['titulo'][:50] if noticia else 'noticia no encontrada'}")
         telegram("answerCallbackQuery", callback_query_id=cq["id"], text="Guardado, gracias 🙌")
         if not noticia:
             continue
@@ -283,7 +303,8 @@ def enviar_noticia(n):
     texto = (f"{ICONOS.get(n['tema'], '📰')} <b>{html.escape(n['tema'])}</b> · ⭐ {n['puntuacion']}/10\n\n"
              f"<b>{html.escape(n['titulo'])}</b>\n\n{html.escape(n['resumen'])}\n\n"
              f"💡 <i>{html.escape(n['por_que'])}</i>\n\n"
-             f"🔗 <a href=\"{html.escape(n['url'], quote=True)}\">{html.escape(n['fuente'])}</a>")
+             f"🔗 <a href=\"{html.escape(n['url'], quote=True)}\">{html.escape(n['fuente'])}</a>\n\n"
+             f"<i>Valórala reaccionando con 👍 o 👎 (mantén pulsado el mensaje).</i>")
     res = telegram("sendMessage", chat_id=TG_CHAT, text=texto, parse_mode="HTML",
                    disable_web_page_preview=True, reply_markup=botones(n["id"]))
     return (res.get("result") or {}).get("message_id")
