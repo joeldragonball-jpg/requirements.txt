@@ -1,14 +1,27 @@
 """🧠 Cerebro: tus apuntes (archivos .md de la carpeta cerebro/) convertidos en
 biblioteca, glosario, datos, mapa y un chat con IA que responde con tu propia información."""
+import base64
+import json
 import re
 import unicodedata
+from datetime import datetime, timezone
 from pathlib import Path
 
+import pandas as pd
 import plotly.graph_objects as go
+import requests
 import streamlit as st
 
 CARPETA = Path(__file__).parent / "cerebro"
 MODELO = "claude-sonnet-5-5"
+REPO = "joeldragonball-jpg/requirements.txt"
+RAW_DATOS = f"https://raw.githubusercontent.com/{REPO}/datos"   # rama 'datos': noticias y registro de uso
+# Tarifa oficial en $ por millón de tokens: entrada, salida, lectura de caché, escritura de caché (5 min)
+PRECIOS = {
+    "claude-opus-5-5": (4.0, 20.0, 0.20, 5.0),
+    "claude-sonnet-5-5": (2.0, 10.0, 0.20, 2.5),
+    "claude-haiku-4-5": (1.0, 5.0, 0.10, 1.25),
+}
 
 
 # ---------------------------------------------------------------- utilidades
@@ -133,7 +146,7 @@ def mostrar():
         mostrar_busqueda(docs, buscar.strip())
 
     tabs = st.tabs(["📚 Apuntes", "🔤 Glosario", "📊 Datos", "🎯 Mi cartera y fiscalidad",
-                    "💭 Opiniones y dudas", "🗺️ Mapa", "💬 Pregúntale"])
+                    "💭 Opiniones y dudas", "🗺️ Mapa", "💬 Pregúntale", "💸 Consumo IA"])
     with tabs[0]:
         tab_apuntes(docs)
     with tabs[1]:
@@ -148,6 +161,8 @@ def mostrar():
         tab_mapa(docs)
     with tabs[6]:
         tab_chat(docs)
+    with tabs[7]:
+        tab_consumo()
 
 
 def elegir_doc(docs, clave):
@@ -282,11 +297,15 @@ Respondes en español claro y sencillo, usando SOLO la información de sus apunt
 - Sé breve: ve al grano y usa listas cuando ayuden."""
 
 
-def clave_api():
+def secreto(nombre):
     try:
-        return st.secrets.get("ANTHROPIC_API_KEY")
+        return st.secrets.get(nombre)
     except Exception:
         return None
+
+
+def clave_api():
+    return secreto("ANTHROPIC_API_KEY")
 
 
 def tab_chat(docs):
@@ -345,6 +364,126 @@ def preguntar(clave, docs, historial):
         return f"⚠️ Error de la API de Anthropic ({e.status_code}). Inténtalo de nuevo en un rato."
     except anthropic.APIConnectionError:
         return "⚠️ No se pudo conectar con Anthropic. Revisa la conexión e inténtalo de nuevo."
+    u = resp.usage
+    guardar_uso_chat({"fecha": datetime.now(timezone.utc).isoformat(), "origen": "chat cerebro", "modelo": resp.model,
+                      "entrada": u.input_tokens, "salida": u.output_tokens,
+                      "cache_lectura": getattr(u, "cache_read_input_tokens", 0) or 0,
+                      "cache_escritura": getattr(u, "cache_creation_input_tokens", 0) or 0})
     if resp.stop_reason == "refusal":
         return "⚠️ No he podido responder a esa pregunta. Prueba a formularla de otra manera."
     return "\n".join(b.text for b in resp.content if b.type == "text").strip() or "⚠️ Respuesta vacía."
+
+
+# ---------------------------------------------------------------- consumo de la IA
+def guardar_uso_chat(entrada):
+    """Apunta el gasto de cada pregunta. Con GITHUB_TOKEN en los Secrets queda guardado para siempre
+    (rama 'datos', uso/chat.json); sin él, solo mientras la app está abierta."""
+    st.session_state.setdefault("uso_sesion", []).append(entrada)
+    token = secreto("GITHUB_TOKEN")
+    if not token:
+        return
+    url = f"https://api.github.com/repos/{REPO}/contents/uso/chat.json"
+    cab = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
+    try:
+        r = requests.get(url, params={"ref": "datos"}, headers=cab, timeout=15)
+        registros, sha = [], None
+        if r.status_code == 200:
+            registros, sha = json.loads(base64.b64decode(r.json()["content"])), r.json()["sha"]
+        registros = (registros + [entrada])[-3000:]
+        cuerpo = {"message": "Uso del chat del cerebro", "branch": "datos",
+                  "content": base64.b64encode(json.dumps(registros, indent=1).encode()).decode()}
+        if sha:
+            cuerpo["sha"] = sha
+        if requests.put(url, headers=cab, json=cuerpo, timeout=15).ok:
+            st.session_state["uso_sesion"].remove(entrada)  # ya está guardado en GitHub
+    except Exception:
+        pass
+
+
+def coste(e):
+    p = next((v for k, v in PRECIOS.items() if str(e.get("modelo", "")).startswith(k)), PRECIOS[MODELO])
+    return (e.get("entrada", 0) * p[0] + e.get("salida", 0) * p[1]
+            + e.get("cache_lectura", 0) * p[2] + e.get("cache_escritura", 0) * p[3]) / 1e6
+
+
+@st.cache_data(ttl=120, show_spinner=False)
+def cargar_uso():
+    marca = int(datetime.now().timestamp() // 120)  # evita la caché de GitHub
+    registros = []
+    try:
+        registros += requests.get(f"{RAW_DATOS}/noticias/noticias.json?t={marca}", timeout=10).json().get("uso", [])
+    except Exception:
+        pass
+    try:
+        r = requests.get(f"{RAW_DATOS}/uso/chat.json?t={marca}", timeout=10)
+        if r.ok:
+            registros += r.json()
+    except Exception:
+        pass
+    return registros
+
+
+@st.cache_data(ttl=3600, show_spinner=False)
+def euros_por_dolar():
+    try:
+        res = requests.get("https://api.kraken.com/0/public/Ticker", params={"pair": "EURUSD"}, timeout=8).json()["result"]
+        return 1 / float(next(iter(res.values()))["c"][0])
+    except Exception:
+        return 0.86
+
+
+def tab_consumo():
+    registros = cargar_uso() + st.session_state.get("uso_sesion", [])
+    if not registros:
+        st.info("Todavía no hay consumo registrado. Aparecerá cuando el bot de noticias o el chat usen la IA.")
+        return
+    df = pd.DataFrame(registros)
+    df["fecha"] = pd.to_datetime(df["fecha"], utc=True).dt.tz_convert("Europe/Madrid")
+    df["coste"] = df.apply(coste, axis=1)
+    df["tokens"] = df["entrada"] + df["salida"] + df["cache_lectura"] + df["cache_escritura"]
+    eur = euros_por_dolar()
+    ahora = pd.Timestamp.now(tz="Europe/Madrid")
+    mes = df[df["fecha"] >= ahora.normalize().replace(day=1)]
+    hoy = df[df["fecha"] >= ahora.normalize()]
+    dias_mes = ahora.days_in_month
+    proyeccion = mes["coste"].sum() / max(ahora.day, 1) * dias_mes
+
+    def dinero(d):
+        return f"{d:,.2f} $ (≈{d * eur:,.2f} €)".replace(",", "§").replace(".", ",").replace("§", ".")
+
+    c = st.columns(4)
+    c[0].metric("Gasto este mes", dinero(mes["coste"].sum()))
+    c[1].metric("Gasto hoy", dinero(hoy["coste"].sum()))
+    c[2].metric("Previsión del mes", dinero(proyeccion), help="Al ritmo de gasto medio de este mes.")
+    c[3].metric("Preguntas al chat (mes)", int((mes["origen"] == "chat cerebro").sum()))
+
+    ult = df[df["fecha"] >= ahora - pd.Timedelta(days=30)].copy()
+    ult["dia"] = ult["fecha"].dt.date
+    diario = ult.pivot_table(index="dia", columns="origen", values="coste", aggfunc="sum", fill_value=0)
+    fig = go.Figure([go.Bar(x=diario.index, y=diario[o] * eur, name=o) for o in diario.columns])
+    fig.update_layout(barmode="stack", template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
+                      plot_bgcolor="rgba(0,0,0,0)", height=300, margin=dict(l=10, r=10, t=30, b=10),
+                      title=dict(text="Gasto diario (últimos 30 días, €)", x=0), legend=dict(orientation="h", y=-0.2),
+                      separators=",.")
+    fig.update_yaxes(ticksuffix=" €", gridcolor="#262c3a")
+    st.plotly_chart(fig, theme=None, config={"displayModeBar": False})
+
+    st.markdown("##### Por uso (este mes)")
+    resumen = mes.groupby("origen").agg(llamadas=("coste", "size"), tokens=("tokens", "sum"), coste=("coste", "sum"))
+    resumen["coste"] = resumen["coste"].map(dinero)
+    resumen["tokens"] = resumen["tokens"].map(lambda t: f"{t:,}".replace(",", "."))
+    st.dataframe(resumen.rename(columns={"llamadas": "Llamadas", "tokens": "Tokens", "coste": "Coste"}))
+
+    st.markdown("##### Últimas llamadas")
+    tabla = df.sort_values("fecha", ascending=False).head(20)
+    st.dataframe(pd.DataFrame({
+        "Fecha": tabla["fecha"].dt.strftime("%d/%m %H:%M"), "Uso": tabla["origen"], "Modelo": tabla["modelo"],
+        "Entrada": tabla["entrada"], "Salida": tabla["salida"], "Caché (lectura)": tabla["cache_lectura"],
+        "Coste": tabla["coste"].map(lambda d: f"{d * eur:.3f} €".replace(".", ",")),
+    }), hide_index=True)
+
+    st.caption(f"Registros desde el {df['fecha'].min():%d/%m/%Y}. Son estimaciones con la tarifa oficial "
+               "(la API cobra en dólares). La factura exacta está en console.anthropic.com → Usage.")
+    if not secreto("GITHUB_TOKEN"):
+        st.info("Las preguntas al chat solo se están contando mientras la app está abierta. Para guardarlas "
+                "siempre, añade un `GITHUB_TOKEN` en los Secrets de Streamlit (te explico cómo crearlo).")
