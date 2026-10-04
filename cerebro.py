@@ -4,7 +4,7 @@ import base64
 import json
 import re
 import unicodedata
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pandas as pd
@@ -28,6 +28,7 @@ PRECIOS = {
 def md(texto):
     """Prepara texto para st.markdown: '$' no es fórmula y los [VERIFICAR] se resaltan."""
     texto = texto.replace("$", r"\$")
+    texto = re.sub(r"\[ESPECULACI[OÓ]N([^\]]*)\]", r":violet[💭 ESPECULACIÓN\1]", texto)
     return re.sub(r"\[VERIFICAR([^\]]*)\]", r":orange[⚠️ VERIFICAR\1]", texto)
 
 
@@ -57,7 +58,8 @@ def grupos_negrita(texto):
 @st.cache_data(ttl=600, show_spinner=False)
 def cargar_apuntes():
     docs = []
-    for p in sorted(CARPETA.glob("*.md")):
+    # Tus apuntes principales y después la actualidad semanal (la más reciente primero)
+    for p in sorted(CARPETA.glob("*.md")) + sorted(CARPETA.glob("actualidad/*.md"), reverse=True):
         texto = p.read_text(encoding="utf-8")
         meta, cuerpo = {}, texto
         m = re.match(r"^---\s*\n(.*?)\n---\s*\n", texto, re.S)
@@ -79,9 +81,28 @@ def cargar_apuntes():
                 secciones[actual] = []
             elif actual:
                 secciones[actual].append(linea)
-        docs.append({"archivo": p.name, "titulo": titulo, "meta": meta, "texto": cuerpo,
+        docs.append({"archivo": str(p.relative_to(CARPETA)), "titulo": titulo, "meta": meta, "texto": cuerpo,
                      "secciones": {k: "\n".join(v).strip() for k, v in secciones.items()}})
     return docs
+
+
+@st.cache_data(ttl=300, show_spinner=False)
+def cargar_json_datos(ruta):
+    """Lee un archivo JSON de la rama 'datos' (noticias, verificaciones, uso)."""
+    marca = int(datetime.now().timestamp() // 120)  # evita la caché de GitHub
+    try:
+        r = requests.get(f"{RAW_DATOS}/{ruta}?t={marca}", timeout=10)
+        return r.json() if r.ok else {}
+    except Exception:
+        return {}
+
+
+def noticias_recientes(dias=30):
+    """Noticias de los últimos días que no marcaste como 👎 (las que alimentan el cerebro)."""
+    limite = (datetime.now(timezone.utc) - timedelta(days=dias)).isoformat()
+    lista = cargar_json_datos("noticias/noticias.json").get("noticias", [])
+    return sorted((n for n in lista if n.get("fecha_envio", "") >= limite and n.get("valoracion") != -1),
+                  key=lambda n: n["fecha_envio"], reverse=True)
 
 
 def seccion(doc, prefijo):
@@ -132,21 +153,29 @@ def mostrar():
         return
 
     todos_conceptos = conceptos(docs)
-    n_verificar = sum(d["texto"].count("[VERIFICAR") for d in docs)
+    verif = cargar_json_datos("cerebro/verificaciones.json").get("resultados", {})
     n_temas = sum(len(subsecciones(seccion(d, "explicaci"))) for d in docs)
-    st.caption(" · ".join(f"{d['titulo']} (actualizado {d['meta'].get('actualizado', '—')})" for d in docs))
+    principales = [d for d in docs if not d["archivo"].startswith("actualidad")]
+    semanas = len(docs) - len(principales)
+    st.caption(" · ".join(f"{d['titulo']} (actualizado {d['meta'].get('actualizado', '—')})" for d in principales)
+               + (f" · {semanas} semana(s) de actualidad" if semanas else ""))
     c = st.columns(4)
     c[0].metric("📄 Documentos", len(docs))
     c[1].metric("📚 Bloques temáticos", n_temas)
     c[2].metric("🔤 Conceptos", len(todos_conceptos))
-    c[3].metric("⚠️ Datos a verificar", n_verificar)
+    if verif:
+        pendientes = sum(1 for v in verif.values() if v.get("estado") in ("sin resolver", "corregido"))
+        c[3].metric("⚠️ Datos por revisar", pendientes,
+                    help="Datos corregidos o sin resolver tras la verificación automática. Detalle en 'Opiniones y dudas'.")
+    else:
+        c[3].metric("⚠️ Datos a verificar", sum(d["texto"].count("[VERIFICAR") for d in docs))
 
     buscar = st.text_input("🔎 Buscar en todos tus apuntes", placeholder="p. ej. LTV, Modelo 721, Ormuz, FIFO…")
     if buscar.strip():
         mostrar_busqueda(docs, buscar.strip())
 
     tabs = st.tabs(["📚 Apuntes", "🔤 Glosario", "📊 Datos", "🎯 Mi cartera y fiscalidad",
-                    "💭 Opiniones y dudas", "🗺️ Mapa", "💬 Pregúntale", "💸 Consumo IA"])
+                    "💭 Opiniones y dudas", "📰 Actualidad", "🗺️ Mapa", "💬 Pregúntale", "💸 Consumo IA"])
     with tabs[0]:
         tab_apuntes(docs)
     with tabs[1]:
@@ -156,12 +185,14 @@ def mostrar():
     with tabs[3]:
         tab_cartera(docs)
     with tabs[4]:
-        tab_opiniones(docs)
+        tab_opiniones(docs, verif)
     with tabs[5]:
-        tab_mapa(docs)
+        tab_actualidad(docs)
     with tabs[6]:
-        tab_chat(docs)
+        tab_mapa(docs)
     with tabs[7]:
+        tab_chat(docs)
+    with tabs[8]:
         tab_consumo()
 
 
@@ -247,7 +278,15 @@ def tab_cartera(docs):
             st.markdown(md(cuerpo))
 
 
-def tab_opiniones(docs):
+ESTADOS = {
+    "corregido": ("🔄", "Corregidos o desactualizados", "orange"),
+    "sin resolver": ("❓", "Sin resolver", "gray"),
+    "confirmado": ("✅", "Confirmados", "green"),
+    "especulación": ("💭", "Especulaciones (no hace falta confirmarlas)", "violet"),
+}
+
+
+def tab_opiniones(docs, verif):
     d = elegir_doc(docs, "doc_opiniones")
     st.caption("Separado de los hechos a propósito: aquí están las opiniones y predicciones, "
                "y abajo las contradicciones y datos pendientes de comprobar.")
@@ -255,10 +294,70 @@ def tab_opiniones(docs):
     for titulo, cuerpo in grupos_negrita(seccion(d, "opiniones")):
         with st.expander(titulo):
             st.markdown(md(cuerpo))
-    st.markdown("### ⚠️ Dudas y datos a verificar")
+
+    st.markdown("### 🔍 Verificación automática")
+    if not verif:
+        st.info("Todavía no se ha verificado nada. En GitHub → Actions → **Verificar apuntes** → **Run workflow** "
+                "busca en internet cada dato marcado ⚠️ VERIFICAR y lo clasifica. Cuesta alrededor de 1 € la primera "
+                "vez; después se lanza solo el día 1 de cada mes y solo revisa lo pendiente.")
+    else:
+        conteo = {e: sum(1 for v in verif.values() if v.get("estado") == e) for e in ESTADOS}
+        cols = st.columns(len(ESTADOS))
+        for col, (estado, (icono, nombre, _)) in zip(cols, ESTADOS.items()):
+            col.metric(f"{icono} {nombre.split(' (')[0]}", conteo[estado])
+        for estado, (icono, nombre, color) in ESTADOS.items():
+            items = [v for v in verif.values() if v.get("estado") == estado]
+            if not items:
+                continue
+            with st.expander(f"{icono} {nombre} ({len(items)})", expanded=(estado == "corregido")):
+                for v in items:
+                    st.markdown(md(f"**{v['texto']}**"))
+                    st.markdown(f":{color}[{icono} {md(v.get('explicacion', ''))}]")
+                    if v.get("dato_actual"):
+                        st.markdown(md(f"👉 **Dato actual:** {v['dato_actual']}"))
+                    fuentes = [f for f in v.get("fuentes", []) if str(f).startswith("http")][:3]
+                    if fuentes:
+                        st.caption("Fuentes: " + " · ".join(f"[{i + 1}]({f})" for i, f in enumerate(fuentes))
+                                   + f" · revisado el {v.get('fecha', '')[:10]}")
+                    st.divider()
+
+    st.markdown("### ⚠️ Dudas y datos a verificar (tal como están en tus apuntes)")
     for titulo, cuerpo in grupos_negrita(seccion(d, "dudas")):
         with st.expander(titulo):
             st.markdown(md(cuerpo))
+
+
+def tab_actualidad(docs):
+    st.caption("Las noticias que te llegan alimentan tu cerebro: el chat las tiene en cuenta y cada domingo "
+               "el bot las convierte en un archivo de apuntes de la semana.")
+    recientes = noticias_recientes(30)
+    relacionadas = [n for n in recientes if n.get("actualiza_apuntes")]
+    st.markdown("### 🧠 Noticias que tocan tus apuntes")
+    if not relacionadas:
+        st.info("Aún no hay noticias que confirmen, contradigan o actualicen tus apuntes. "
+                "Irán apareciendo aquí a medida que lleguen.")
+    for n in relacionadas:
+        tipo = n["actualiza_apuntes"].split(":")[0].strip().lower()
+        color = {"confirma": "green", "contradice": "red", "actualiza": "orange"}.get(tipo, "blue")
+        with st.container(border=True):
+            st.markdown(f"**{md(n['titulo'])}**")
+            st.markdown(f":{color}[🧠 {md(n['actualiza_apuntes'])}]")
+            st.caption(f"{n['tema']} · {n['fecha_envio'][:10]} · [Leer]({n['url']})")
+
+    semanas = [d for d in docs if d["archivo"].startswith("actualidad")]
+    st.markdown("### 🗓️ Apuntes de actualidad semanales")
+    if not semanas:
+        st.caption("El primero se creará el próximo domingo con las noticias de la semana.")
+    for d in semanas:
+        with st.expander(d["titulo"]):
+            st.markdown(md(seccion(d, "resumen")))
+            st.caption("El documento completo está en la pestaña 📚 Apuntes.")
+
+    st.markdown(f"### 📰 Últimas noticias ({len(recientes)} en 30 días)")
+    for n in recientes[:15]:
+        voto = {1: " 👍"}.get(n.get("valoracion"), "")
+        st.markdown(f"- [{md(n['titulo'])}]({n['url']}){voto} · "
+                    f"<span style='color:#94a3b8;font-size:0.8rem'>{n['tema']}</span>", unsafe_allow_html=True)
 
 
 def tab_mapa(docs):
@@ -291,7 +390,10 @@ Respondes en español claro y sencillo, usando SOLO la información de sus apunt
 - Indica al final de dónde sale la respuesta, así: "📍 Sección: (nombre de la sección o apartado)".
 - Si sus apuntes no cubren la pregunta, dilo claramente ("Tus apuntes no lo cubren"). Puedes añadir
   conocimiento general solo si lo marcas como "Fuera de tus apuntes:".
-- Si un dato que usas está marcado como [VERIFICAR] o es una opinión/predicción, avísalo.
+- Si un dato que usas está marcado como [VERIFICAR] o es una opinión/predicción, avísalo. Si en
+  <verificaciones> aparece corregido o confirmado, usa esa versión y dilo.
+- También tienes sus noticias recientes en <noticias_recientes>: si usas una, indica "📰 Noticia del (fecha)".
+  Si contradicen sus apuntes, dale prioridad a lo más reciente y avísale.
 - Si la pregunta implica una decisión con consecuencias fiscales o de inversión, recuerda que conviene
   contrastarlo con un asesor; no eres su asesor financiero ni fiscal.
 - Sé breve: ve al grano y usa listas cuando ayuden."""
@@ -343,6 +445,14 @@ def preguntar(clave, docs, historial):
     import anthropic
 
     apuntes = "\n\n".join(f"<documento titulo=\"{d['titulo']}\">\n{d['texto']}\n</documento>" for d in docs)
+    noticias = "\n".join(f"- ({n['fecha_envio'][:10]}, {n['tema']}) {n['titulo']}: {n['resumen']}"
+                         + (f" [Relación con sus apuntes: {n['actualiza_apuntes']}]" if n.get("actualiza_apuntes") else "")
+                         for n in noticias_recientes(30))
+    verif = cargar_json_datos("cerebro/verificaciones.json").get("resultados", {})
+    verificaciones = "\n".join(f"- [{v.get('estado')}] {v['texto']} → {v.get('explicacion', '')} {v.get('dato_actual', '')}"
+                               for v in verif.values() if v.get("estado") in ("corregido", "confirmado"))
+    apuntes += (f"\n\n<noticias_recientes>\n{noticias or 'Ninguna'}\n</noticias_recientes>"
+                f"\n\n<verificaciones>\n{verificaciones or 'Ninguna'}\n</verificaciones>")
     client = anthropic.Anthropic(api_key=clave)
     try:
         resp = client.beta.messages.create(
@@ -402,8 +512,10 @@ def guardar_uso_chat(entrada):
 
 def coste(e):
     p = next((v for k, v in PRECIOS.items() if str(e.get("modelo", "")).startswith(k)), PRECIOS[MODELO])
-    return (e.get("entrada", 0) * p[0] + e.get("salida", 0) * p[1]
-            + e.get("cache_lectura", 0) * p[2] + e.get("cache_escritura", 0) * p[3]) / 1e6
+    tokens = (e.get("entrada", 0) * p[0] + e.get("salida", 0) * p[1]
+              + e.get("cache_lectura", 0) * p[2] + e.get("cache_escritura", 0) * p[3]) / 1e6
+    busquedas = (e.get("busquedas", 0) or 0) * 0.01  # búsqueda web: 10 $ cada 1.000
+    return tokens + busquedas
 
 
 @st.cache_data(ttl=120, show_spinner=False)
@@ -418,6 +530,12 @@ def cargar_uso():
         r = requests.get(f"{RAW_DATOS}/uso/chat.json?t={marca}", timeout=10)
         if r.ok:
             registros += r.json()
+    except Exception:
+        pass
+    try:
+        r = requests.get(f"{RAW_DATOS}/cerebro/verificaciones.json?t={marca}", timeout=10)
+        if r.ok:
+            registros += r.json().get("uso", [])
     except Exception:
         pass
     return registros
@@ -460,7 +578,9 @@ def tab_consumo():
     ult = df[df["fecha"] >= ahora - pd.Timedelta(days=30)].copy()
     ult["dia"] = ult["fecha"].dt.date
     diario = ult.pivot_table(index="dia", columns="origen", values="coste", aggfunc="sum", fill_value=0)
-    fig = go.Figure([go.Bar(x=diario.index, y=diario[o] * eur, name=o) for o in diario.columns])
+    etiquetas_dia = [d.strftime("%d/%m") for d in diario.index]
+    fig = go.Figure([go.Bar(x=etiquetas_dia, y=diario[o] * eur, name=o) for o in diario.columns])
+    fig.update_xaxes(type="category")
     fig.update_layout(barmode="stack", template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)",
                       plot_bgcolor="rgba(0,0,0,0)", height=300, margin=dict(l=10, r=10, t=30, b=10),
                       title=dict(text="Gasto diario (últimos 30 días, €)", x=0), legend=dict(orientation="h", y=-0.2),
