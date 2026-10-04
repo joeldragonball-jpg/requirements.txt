@@ -290,6 +290,7 @@ if not df.empty:
 
                 if not df_global_daily.empty:
                     df_global_daily.iloc[-1, df_global_daily.columns.get_loc('Valor_Mercado')] = val_actual
+                    df_global_daily.iloc[-1, df_global_daily.columns.get_loc('Inv_Acum')] = inv_total
 
                 fig_koinly = go.Figure()
 
@@ -369,7 +370,7 @@ if not df.empty:
         )
 
     # =========================================================================
-    # 🌟 SECCIÓN 1: TABLAS DE RENTABILIDADES
+    # 🌟 SECCIÓN 1: TABLAS DE RENTABILIDADES (SINCRONIZADAS EN TIEMPO REAL)
     # =========================================================================
     st.markdown("---")
     st.subheader("📅 Registro Temporal y Rentabilidad (Mensual / Semanal)")
@@ -403,29 +404,34 @@ if not df.empty:
                 month_ends = sorted(list(set(month_ends)))
 
                 for m_date in month_ends:
-                    inv_m = 0.0
-                    val_m = 0.0
-                    for tok_name, df_api_p in [('XRP', df_p_xrp), ('XLM', df_p_xlm)]:
-                        df_t = df_hist[df_hist['Token_Clean'] == tok_name].sort_values('Fecha_Clean').copy()
-                        if not df_t.empty:
-                            df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
-                            df_t['Inv_Acum'] = df_t['Invertido_Clean'].cumsum()
-                            df_merged = pd.merge_asof(df_base[df_base['Fecha_Clean'] <= m_date], df_t, on='Fecha_Clean', direction='backward')
-                            
-                            q_at = df_merged['Q_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Q_Acum'].iloc[-1]) else 0.0
-                            inv_at = df_merged['Inv_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Inv_Acum'].iloc[-1]) else 0.0
+                    if m_date == max_d:
+                        # Fuerza el estado real de Google Sheets para el periodo presente
+                        inv_m = inv_total
+                        val_m = val_actual
+                    else:
+                        inv_m = 0.0
+                        val_m = 0.0
+                        for tok_name, df_api_p in [('XRP', df_p_xrp), ('XLM', df_p_xlm)]:
+                            df_t = df_hist[df_hist['Token_Clean'] == tok_name].sort_values('Fecha_Clean').copy()
+                            if not df_t.empty:
+                                df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
+                                df_t['Inv_Acum'] = df_t['Invertido_Clean'].cumsum()
+                                df_merged = pd.merge_asof(df_base[df_base['Fecha_Clean'] <= m_date], df_t, on='Fecha_Clean', direction='backward')
+                                
+                                q_at = df_merged['Q_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Q_Acum'].iloc[-1]) else 0.0
+                                inv_at = df_merged['Inv_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Inv_Acum'].iloc[-1]) else 0.0
 
-                            p_at = 1.0
-                            if not df_api_p.empty:
-                                p_row = df_api_p[df_api_p['Fecha_Clean'] <= m_date]
-                                if not p_row.empty:
-                                    p_at = float(p_row['price'].iloc[-1])
-                            else:
-                                r_ref = df[df['Token'] == tok_name]
-                                p_at = float(r_ref['Precio Actual (€)'].values[0]) if not r_ref.empty else 1.0
+                                p_at = 1.0
+                                if not df_api_p.empty:
+                                    p_row = df_api_p[df_api_p['Fecha_Clean'] <= m_date]
+                                    if not p_row.empty:
+                                        p_at = float(p_row['price'].iloc[-1])
+                                else:
+                                    r_ref = df[df['Token'] == tok_name]
+                                    p_at = float(r_ref['Precio Actual (€)'].values[0]) if not r_ref.empty else 1.0
 
-                            inv_m += inv_at
-                            val_m += (q_at * p_at)
+                                inv_m += inv_at
+                                val_m += (q_at * p_at)
 
                     pnl_m = val_m - inv_m
                     rent_acum = (pnl_m / inv_m * 100) if inv_m > 0 else 0.0
@@ -459,29 +465,34 @@ if not df.empty:
                 prev_val_w = 0.0
 
                 for w_date in week_ends:
-                    inv_w = 0.0
-                    val_w = 0.0
-                    for tok_name, df_api_p in [('XRP', df_p_xrp), ('XLM', df_p_xlm)]:
-                        df_t = df_hist[df_hist['Token_Clean'] == tok_name].sort_values('Fecha_Clean').copy()
-                        if not df_t.empty:
-                            df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
-                            df_t['Inv_Acum'] = df_t['Invertido_Clean'].cumsum()
-                            df_merged = pd.merge_asof(df_base[df_base['Fecha_Clean'] <= w_date], df_t, on='Fecha_Clean', direction='backward')
-                            
-                            q_at = df_merged['Q_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Q_Acum'].iloc[-1]) else 0.0
-                            inv_at = df_merged['Inv_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Inv_Acum'].iloc[-1]) else 0.0
+                    if w_date == max_d:
+                        # Fuerza el estado real de Google Sheets para el periodo presente
+                        inv_w = inv_total
+                        val_w = val_actual
+                    else:
+                        inv_w = 0.0
+                        val_w = 0.0
+                        for tok_name, df_api_p in [('XRP', df_p_xrp), ('XLM', df_p_xlm)]:
+                            df_t = df_hist[df_hist['Token_Clean'] == tok_name].sort_values('Fecha_Clean').copy()
+                            if not df_t.empty:
+                                df_t['Q_Acum'] = df_t['Cantidad_Clean'].cumsum()
+                                df_t['Inv_Acum'] = df_t['Invertido_Clean'].cumsum()
+                                df_merged = pd.merge_asof(df_base[df_base['Fecha_Clean'] <= w_date], df_t, on='Fecha_Clean', direction='backward')
+                                
+                                q_at = df_merged['Q_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Q_Acum'].iloc[-1]) else 0.0
+                                inv_at = df_merged['Inv_Acum'].iloc[-1] if not df_merged.empty and not pd.isna(df_merged['Inv_Acum'].iloc[-1]) else 0.0
 
-                            p_at = 1.0
-                            if not df_api_p.empty:
-                                p_row = df_api_p[df_api_p['Fecha_Clean'] <= w_date]
-                                if not p_row.empty:
-                                    p_at = float(p_row['price'].iloc[-1])
-                            else:
-                                r_ref = df[df['Token'] == tok_name]
-                                p_at = float(r_ref['Precio Actual (€)'].values[0]) if not r_ref.empty else 1.0
+                                p_at = 1.0
+                                if not df_api_p.empty:
+                                    p_row = df_api_p[df_api_p['Fecha_Clean'] <= w_date]
+                                    if not p_row.empty:
+                                        p_at = float(p_row['price'].iloc[-1])
+                                else:
+                                    r_ref = df[df['Token'] == tok_name]
+                                    p_at = float(r_ref['Precio Actual (€)'].values[0]) if not r_ref.empty else 1.0
 
-                            inv_w += inv_at
-                            val_w += (q_at * p_at)
+                                inv_w += inv_at
+                                val_w += (q_at * p_at)
 
                     pnl_w = val_w - inv_w
                     rent_acum_w = (pnl_w / inv_w * 100) if inv_w > 0 else 0.0
@@ -587,7 +598,7 @@ if not df.empty:
         st.plotly_chart(fig_heatmap, use_container_width=True)
 
     # =========================================================================
-    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO Y MAX DRAWDOWN (RETOQUES VISUALES)
+    # 🌟 SECCIÓN 3: MÉTRICAS AVANZADAS DE RIESGO Y MAX DRAWDOWN HISTÓRICO
     # =========================================================================
     if not df_global_daily.empty:
         st.markdown("---")
@@ -615,15 +626,17 @@ if not df.empty:
 
         # 2. CÁLCULO DEL ATH GLOBAL Y DIFERENCIA ACTUAL
         ath_valor = float(df_risk['Peak_Acum'].max())
-        row_ath = df_risk[df_risk['Valor_Mercado'] == ath_valor].iloc[0] if not df_risk[df_risk['Valor_Mercado'] == ath_valor].empty else df_risk.iloc[-1]
-        fecha_ath = row_ath['Fecha_Clean'].strftime('%d/%m/%Y')
+        rows_ath = df_risk[df_risk['Valor_Mercado'] == ath_valor]
+        if not rows_ath.empty:
+            fecha_ath = rows_ath.iloc[0]['Fecha_Clean'].strftime('%d/%m/%Y')
+        else:
+            fecha_ath = df_risk.iloc[-1]['Fecha_Clean'].strftime('%d/%m/%Y')
         
         euros_faltantes_ath = ath_valor - val_actual
         subida_necesaria_portfolio = ((ath_valor - val_actual) / val_actual * 100) if val_actual > 0 and ath_valor > val_actual else 0.0
 
         rk1, rk2, rk3, rk4 = st.columns(4)
         with rk1:
-            # delta_color="normal" asegura que los valores negativos aparezcan en ROJO
             st.metric(
                 "Max Drawdown Histórico", 
                 f"{max_dd_pct:.2f} %", 
@@ -636,7 +649,6 @@ if not df.empty:
             st.metric("Fecha Pico ATH", fecha_ath)
         with rk4:
             if subida_necesaria_portfolio > 0:
-                # delta_color="normal" con valor positivo (+340.65 €) lo pinta en VERDE limpia y directamente
                 st.metric(
                     "Subida p/ Recuperar ATH", 
                     f"+{subida_necesaria_portfolio:.2f} %", 
