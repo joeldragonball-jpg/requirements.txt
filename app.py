@@ -454,8 +454,7 @@ tabs = st.tabs(["💼 Posiciones", "📈 Evolución", "📅 Rentabilidad", "🧾
 # 1. POSICIONES
 # =============================================================================
 with tabs[0]:
-    left, right = st.columns([2, 1])
-    with left:
+    with st.container():
         for r in pos.itertuples():
             with st.container(border=True):
                 st.markdown(f"#### {r.token} &nbsp; <span style='color:{MUTED};font-size:0.9rem'>"
@@ -477,25 +476,35 @@ with tabs[0]:
                         icono = "🧊" if w in COLD_WALLETS else "🏦"
                         st.progress(frac, text=f"{icono} {w}: {fmt(q, 2)} {r.token} · {eur(q * r.precio)} · {fmt(frac * 100, 1)} %")
 
-    with right:
-        fig = go.Figure(go.Pie(labels=pos["token"], values=pos["valor"], hole=0.6, sort=False,
-                               marker=dict(colors=[TOKENS[t]["color"] for t in pos["token"]]),
-                               textinfo="label+percent", hovertemplate="%{label}: %{value:,.2f} €<extra></extra>"))
-        fig = style_fig(fig, 260)
-        fig.update_layout(showlegend=False, title=dict(text="Por token", x=0.5),
-                          annotations=[dict(text=eur(val_total, 0), showarrow=False, font=dict(size=16))])
-        chart(fig)
+    # Distribución: los dos gráficos debajo de las tarjetas, uno al lado del otro
+    def donut(labels, values, centro, colores=None):
+        fig = go.Figure(go.Pie(labels=labels, values=values, hole=0.62, sort=False,
+                               marker=dict(colors=colores, line=dict(color="#0b0f17", width=2)),
+                               textinfo="percent", textposition="inside", insidetextorientation="horizontal",
+                               hovertemplate="%{label}: %{value:,.2f} €<extra></extra>"))
+        fig = style_fig(fig, 320)
+        fig.update_layout(margin=dict(l=10, r=10, t=10, b=40), hovermode="closest",
+                          legend=dict(orientation="h", yanchor="top", y=-0.02, xanchor="center", x=0.5),
+                          annotations=[dict(text=centro, showarrow=False, font=dict(size=15))])
+        return fig
 
-        cust_total = {}
-        for tok, ws in custody.items():
-            for w, q in ws.items():
-                cust_total[w] = cust_total.get(w, 0.0) + q * current.get(tok, 0.0)
+    st.markdown("##### 📊 Distribución de la cartera")
+    d1, d2 = st.columns(2, gap="large")
+    with d1:
+        with st.container(border=True):
+            st.markdown("**Por token**")
+            chart(donut(pos["token"], pos["valor"], eur(val_total, 0), [TOKENS[t]["color"] for t in pos["token"]]))
+
+    cust_total = {}
+    for tok, ws in custody.items():
+        for w, q in ws.items():
+            cust_total[w] = cust_total.get(w, 0.0) + q * current.get(tok, 0.0)
+    with d2:
         if cust_total:
-            fig = go.Figure(go.Pie(labels=list(cust_total), values=list(cust_total.values()), hole=0.6,
-                                   textinfo="label+percent", hovertemplate="%{label}: %{value:,.2f} €<extra></extra>"))
-            fig = style_fig(fig, 260)
-            fig.update_layout(showlegend=False, title=dict(text="Por custodia", x=0.5))
-            chart(fig)
+            with st.container(border=True):
+                st.markdown("**Por custodia**")
+                colores = ["#6366f1" if w in COLD_WALLETS else "#f59e0b" for w in cust_total]
+                chart(donut(list(cust_total), list(cust_total.values()), f"{len(cust_total)} sitios", colores))
             en_exchange = sum(v for w, v in cust_total.items() if w not in COLD_WALLETS)
             frac_ex = en_exchange / sum(cust_total.values()) * 100
             (st.warning if frac_ex > 20 else st.info)(
