@@ -44,6 +44,10 @@ MAX_VISTOS = 4000        # enlaces ya leídos (para no repetir)
 MAX_POR_FUENTE = 12      # titulares más recientes que se leen de cada fuente
 HORAS_ANTIGUEDAD = 36    # ignora noticias más antiguas que esto
 
+CARPETA_CEREBRO = AQUI.parent / "cerebro"   # tus apuntes (.md), los mismos que muestra la app
+MAX_CHARS_CEREBRO = 30000                   # ~8.000 tokens: lo esencial de tus apuntes, sin disparar el coste
+USO = []                                    # tokens gastados en esta ejecución (se guardan en el historial)
+
 ICONOS = {"XRP / Ripple": "🟦", "Stellar / XLM": "🌟", "Cripto y regulación": "⚖️",
           "Economía y mercados": "📊", "Geopolítica y política": "🌍"}
 
@@ -196,7 +200,15 @@ def leer_fuentes(db):
 
 
 # ---------------------------------------------------------------- Claude
-def llamar_claude(system, prompt, esquema=None, max_tokens=16000):
+def registrar_uso(resp, origen):
+    u = resp.usage
+    USO.append({"fecha": datetime.now(timezone.utc).isoformat(), "origen": origen, "modelo": resp.model,
+                "entrada": u.input_tokens, "salida": u.output_tokens,
+                "cache_lectura": getattr(u, "cache_read_input_tokens", 0) or 0,
+                "cache_escritura": getattr(u, "cache_creation_input_tokens", 0) or 0})
+
+
+def llamar_claude(system, prompt, esquema=None, max_tokens=16000, origen="noticias"):
     client = anthropic.Anthropic()
     modelo = CONFIG.get("modelo", "claude-opus-5-5")
     params = {"model": modelo, "max_tokens": max_tokens, "system": system,
@@ -211,6 +223,7 @@ def llamar_claude(system, prompt, esquema=None, max_tokens=16000):
         # 'fallbacks' reintenta con otro modelo si el principal rechazara la petición.
         params["output_config"] = {**output_config, "effort": "low"}
         resp = client.beta.messages.create(**params, betas=["server-side-fallback-2026-07-01"], fallbacks="default")
+    registrar_uso(resp, origen)
     if resp.stop_reason == "refusal":
         raise RuntimeError(f"Claude rechazó la petición: {resp.stop_details}")
     texto = next((b.text for b in resp.content if b.type == "text"), "")
@@ -238,7 +251,15 @@ Prioriza lo que se parece a lo que le gustó y penaliza lo que se parece a lo qu
 con los hechos, y una frase de "por qué te importa" conectándola con su cartera o con el mercado. \
 No inventes datos que no estén en el titular o la descripción.
 - Devuelve como mucho las {maximo} mejores, ordenadas de más a menos importante. Si no hay ninguna \
-que merezca la pena, devuelve la lista vacía."""
+que merezca la pena, devuelve la lista vacía.
+
+Te paso también un extracto de SUS APUNTES (lo que ha estudiado, su tesis de inversión, su plan y los \
+datos que tiene pendientes de verificar). Úsalo para entender qué busca:
+- Prioriza las noticias que confirmen o desmientan algún eslabón de su tesis, que resuelvan un dato \
+marcado como [VERIFICAR] o que afecten a su plan (fiscalidad, custodia, salida, colateral).
+- No le expliques lo que ya sabe: si un concepto está en sus apuntes, úsalo directamente.
+- En "actualiza_apuntes" escribe una frase solo si la noticia confirma, contradice o actualiza algo \
+concreto de sus apuntes (empieza por "Confirma:", "Contradice:" o "Actualiza:"); si no, déjalo vacío."""
 
 
 def esquema_seleccion():
@@ -253,8 +274,9 @@ def esquema_seleccion():
                 "titulo": {"type": "string"},
                 "resumen": {"type": "string"},
                 "por_que": {"type": "string"},
+                "actualiza_apuntes": {"type": "string"},
             },
-            "required": ["n", "tema", "puntuacion", "titulo", "resumen", "por_que"],
+            "required": ["n", "tema", "puntuacion", "titulo", "resumen", "por_que", "actualiza_apuntes"],
             "additionalProperties": False,
         }}},
         "required": ["noticias"],
@@ -281,13 +303,35 @@ def gustos(db):
     return "\n".join(lineas)
 
 
+def extracto_cerebro():
+    """Lo esencial de tus apuntes para que la IA sepa qué buscas: tema, etiquetas, resumen,
+    puntos clave, relación con tu cartera y datos pendientes de verificar (no la explicación entera)."""
+    secciones_utiles = ("resumen", "puntos clave", "relaci", "dudas")
+    partes = []
+    for p in sorted(CARPETA_CEREBRO.glob("*.md")):
+        texto = p.read_text(encoding="utf-8")
+        tema = re.search(r"^tema:\s*(.+)$", texto, re.M)
+        etiquetas = re.search(r"^etiquetas:\s*(.+)$", texto, re.M)
+        bloque = [f"### {tema.group(1) if tema else p.stem}"]
+        if etiquetas:
+            bloque.append(f"Etiquetas: {etiquetas.group(1)}")
+        for m in re.finditer(r"^## ([^\n]+)\n(.*?)(?=^## |\Z)", texto, re.M | re.S):
+            nombre = m.group(1).strip().lower()
+            if nombre.startswith(secciones_utiles) or "relación" in nombre:
+                bloque.append(f"#### {m.group(1).strip()}\n{m.group(2).strip()}")
+        partes.append("\n".join(bloque))
+    texto = "\n\n".join(partes)
+    return texto[:MAX_CHARS_CEREBRO] if texto else "Todavía no hay apuntes."
+
+
 def seleccionar(db, candidatas, maximo):
     hace_2_dias = (datetime.now(timezone.utc) - timedelta(days=2)).isoformat()
     ya_enviadas = [n["titulo"] for n in db["noticias"] if n["fecha_envio"] >= hace_2_dias]
     lista = "\n".join(f"[{i}] ({c['fuente']}) {c['titulo_original']}"
                       + (f" — {c['descripcion']}" if c["descripcion"] else "")
                       for i, c in enumerate(candidatas))
-    prompt = (f"## Sus gustos\n{gustos(db)}\n\n"
+    prompt = (f"## Sus apuntes (extracto)\n{extracto_cerebro()}\n\n"
+              f"## Sus gustos\n{gustos(db)}\n\n"
               f"## Ya enviadas en los últimos 2 días (no repetir)\n"
               + ("\n".join(f"- {t}" for t in ya_enviadas) or "- ninguna")
               + f"\n\n## Titulares nuevos\n{lista}")
@@ -295,7 +339,8 @@ def seleccionar(db, candidatas, maximo):
     elegidas = []
     for s in datos["noticias"]:
         if 0 <= s["n"] < len(candidatas):
-            elegidas.append({**candidatas[s["n"]], **{k: s[k] for k in ("tema", "puntuacion", "titulo", "resumen", "por_que")}})
+            elegidas.append({**candidatas[s["n"]], **{k: s[k] for k in ("tema", "puntuacion", "titulo", "resumen",
+                                                                        "por_que", "actualiza_apuntes")}})
     return elegidas
 
 
@@ -303,7 +348,8 @@ def enviar_noticia(n):
     texto = (f"{ICONOS.get(n['tema'], '📰')} <b>{html.escape(n['tema'])}</b> · ⭐ {n['puntuacion']}/10\n\n"
              f"<b>{html.escape(n['titulo'])}</b>\n\n{html.escape(n['resumen'])}\n\n"
              f"💡 <i>{html.escape(n['por_que'])}</i>\n\n"
-             f"🔗 <a href=\"{html.escape(n['url'], quote=True)}\">{html.escape(n['fuente'])}</a>\n\n"
+             + (f"🧠 <b>Tus apuntes:</b> {html.escape(n['actualiza_apuntes'])}\n\n" if n.get("actualiza_apuntes") else "")
+             + f"🔗 <a href=\"{html.escape(n['url'], quote=True)}\">{html.escape(n['fuente'])}</a>\n\n"
              f"<i>Valórala reaccionando con 👍 o 👎 (mantén pulsado el mensaje).</i>")
     res = telegram("sendMessage", chat_id=TG_CHAT, text=texto, parse_mode="HTML",
                    disable_web_page_preview=True, reply_markup=botones(n["id"]))
@@ -326,7 +372,7 @@ def resumen_semanal(db):
               "2. Lo más importante, agrupado por tema, en viñetas cortas (usa '•').\n"
               "3. 'Qué vigilar la próxima semana': 2-3 viñetas.\n"
               "Da más peso a los temas que marcó como útiles.")
-    return llamar_claude(system, prompt, max_tokens=8000)
+    return llamar_claude(system, prompt, max_tokens=8000, origen="resumen semanal")
 
 
 # ---------------------------------------------------------------- principal
@@ -388,6 +434,10 @@ def main():
         db["semanal"] = semana
         cambios.append("resumen semanal")
 
+    if USO:
+        db.setdefault("uso", []).extend(USO)
+        db["uso"] = db["uso"][-3000:]
+        cambios.append(f"{len(USO)} llamadas a la IA")
     if cambios:
         guardar_db(db, sha, ", ".join(cambios))
     print("OK · " + (", ".join(cambios) or "nada que hacer en esta hora"))
