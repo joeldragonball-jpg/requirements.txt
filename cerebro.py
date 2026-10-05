@@ -58,8 +58,9 @@ def grupos_negrita(texto):
 @st.cache_data(ttl=600, show_spinner=False)
 def cargar_apuntes():
     docs = []
-    # Tus apuntes principales y después la actualidad semanal (la más reciente primero)
-    for p in sorted(CARPETA.glob("*.md")) + sorted(CARPETA.glob("actualidad/*.md"), reverse=True):
+    # Tus apuntes principales, lo que envías al bot (documentos) y la actualidad semanal (lo más reciente primero)
+    for p in (sorted(CARPETA.glob("*.md")) + sorted(CARPETA.glob("documentos/*.md"), reverse=True)
+              + sorted(CARPETA.glob("actualidad/*.md"), reverse=True)):
         texto = p.read_text(encoding="utf-8")
         meta, cuerpo = {}, texto
         m = re.match(r"^---\s*\n(.*?)\n---\s*\n", texto, re.S)
@@ -158,9 +159,11 @@ def mostrar():
     texto_apuntes = "\n".join(d["texto"] for d in docs)
     verif = {k: v for k, v in verif.items() if v.get("texto", "")[:80] in texto_apuntes}
     n_temas = sum(len(subsecciones(seccion(d, "explicaci"))) for d in docs)
-    principales = [d for d in docs if not d["archivo"].startswith("actualidad")]
-    semanas = len(docs) - len(principales)
+    principales = [d for d in docs if "/" not in d["archivo"] and "\\" not in d["archivo"]]
+    semanas = sum(1 for d in docs if d["archivo"].startswith("actualidad"))
+    enviados = sum(1 for d in docs if d["archivo"].startswith("documentos"))
     st.caption(" · ".join(f"{d['titulo']} (actualizado {d['meta'].get('actualizado', '—')})" for d in principales)
+               + (f" · {enviados} documento(s) enviados al bot" if enviados else "")
                + (f" · {semanas} semana(s) de actualidad" if semanas else ""))
     c = st.columns(4)
     c[0].metric("📄 Documentos", len(docs))
@@ -539,6 +542,12 @@ def cargar_uso():
         r = requests.get(f"{RAW_DATOS}/cerebro/verificaciones.json?t={marca}", timeout=10)
         if r.ok:
             registros += r.json().get("uso", [])
+    except Exception:
+        pass
+    try:
+        r = requests.get(f"{RAW_DATOS}/uso/documentos.json?t={marca}", timeout=10)
+        if r.ok:
+            registros += r.json()
     except Exception:
         pass
     return registros
