@@ -3,6 +3,8 @@ import pandas as pd
 import plotly.graph_objects as go
 import requests
 import streamlit as st
+import threading
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -430,7 +432,32 @@ if h3.button("🔄 Actualizar"):
     st.cache_data.clear()
     st.rerun()
 
+def precargar():
+    """Pide A LA VEZ todo lo que viene de internet (Google Sheets, Kraken, noticias, alertas).
+    Antes iba uno detrás de otro; así la app abre varios segundos antes. Lo descargado queda en caché."""
+    try:
+        from streamlit.runtime.scriptrunner import add_script_run_ctx, get_script_run_ctx
+        ctx = get_script_run_ctx()
+    except Exception:
+        add_script_run_ctx, ctx = None, None
+    tareas = [lambda g=g: fetch_sheet(g) for g in [GID_RESUMEN] + [cfg["gid"] for cfg in TOKENS.values()]]
+    tareas += [lambda t=t: price_history(t) for t in TOKENS]
+    tareas += [live_prices, load_noticias, load_alertas]
+
+    def ejecutar(tarea):
+        if add_script_run_ctx and ctx:
+            add_script_run_ctx(threading.current_thread(), ctx)
+        try:
+            tarea()
+        except Exception:
+            pass  # si algo falla, se vuelve a intentar (y se avisa) en la carga normal de abajo
+
+    with ThreadPoolExecutor(max_workers=len(tareas)) as ex:
+        list(ex.map(ejecutar, tareas))
+
+
 with st.spinner("Cargando cartera..."):
+    precargar()
     try:
         pos, custody, desconocidos = load_positions()
     except Exception as e:
