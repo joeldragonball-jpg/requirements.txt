@@ -2,8 +2,8 @@ name: Alertas de precio
 
 on:
   schedule:
-    - cron: "7,37 * * * *"
-  workflow_dispatch:
+    - cron: "7,37 * * * *"   # cada 30 min, lejos de las horas en punto (GitHub descarta más ejecuciones a :00 y :30)
+  workflow_dispatch:          # botón "Run workflow" para lanzarlo a mano
     inputs:
       prueba:
         description: "Enviar mensaje de prueba con el resumen"
@@ -25,6 +25,8 @@ jobs:
 
       - run: pip install requests
 
+      # La "memoria" del bot (qué niveles ya avisó) se guarda en la caché de GitHub,
+      # así no se hacen commits cada media hora ni se reinicia la app de Streamlit.
       - name: Recuperar estado
         uses: actions/cache/restore@v4
         with:
@@ -37,6 +39,7 @@ jobs:
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          HOJA_ID: ${{ secrets.HOJA_ID }}
           PRUEBA: ${{ github.event.inputs.prueba }}
 
       - name: Guardar estado

@@ -35,4 +35,5 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HOJA_ID: ${{ secrets.HOJA_ID }}
           PRUEBA: ${{ github.event.inputs.prueba }}

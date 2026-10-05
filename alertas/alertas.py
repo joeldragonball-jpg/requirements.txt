@@ -104,7 +104,12 @@ def cambio_24h(par, actual):
 
 def leer_cartera(tokens):
     """Cantidad e inversión por token desde la hoja de resumen."""
-    texto = requests.get(CONFIG["hoja_resumen"], timeout=20).content.decode("utf-8")
+    # El identificador de la hoja ya no está en el código (el repo es público): viene del secreto HOJA_ID
+    hoja_id = os.environ.get("HOJA_ID", "").strip()
+    if not hoja_id:
+        raise RuntimeError("falta el secreto HOJA_ID en GitHub (Settings → Secrets and variables → Actions)")
+    url = f"https://docs.google.com/spreadsheets/d/e/{hoja_id}/pub?gid={CONFIG['hoja_resumen_gid']}&single=true&output=csv"
+    texto = requests.get(url, timeout=20).content.decode("utf-8")
     filas = list(csv.reader(io.StringIO(texto)))
     for i, fila in enumerate(filas):
         cab = [c.strip().upper() for c in fila]

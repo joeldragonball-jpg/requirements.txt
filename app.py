@@ -50,7 +50,12 @@ if seccion == "🧠 Cerebro":
 # =============================================================================
 # CONFIGURACIÓN — para añadir un token nuevo basta con añadir una línea a TOKENS
 # =============================================================================
-SHEET_ID = "2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI"
+# El identificador de la hoja es privado (el repo es público): está en los Secrets de Streamlit como SHEET_ID
+try:
+    SHEET_ID = st.secrets["SHEET_ID"]
+except Exception:
+    st.error("Falta el secreto SHEET_ID en Streamlit (Manage app → Settings → Secrets).")
+    st.stop()
 SHEET_BASE = f"https://docs.google.com/spreadsheets/d/e/{SHEET_ID}/pub?single=true&output=csv&gid="
 GID_RESUMEN = "1415212158"
 

@@ -1,26 +1,30 @@
-# CONFIGURACIÓN DE TUS ALERTAS — los decimales van con PUNTO: 1.50, no 1,50
+# =============================================================================
+# CONFIGURACIÓN DE TUS ALERTAS — edítalo directamente en GitHub (icono del lápiz)
+# Los decimales van con PUNTO: 1.50, no 1,50
+# =============================================================================
 
 # Hoja de resumen (la misma que usa la app)
-hoja_resumen = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxCL1k_cfYOIyrznI1IBxAhTl6UEhljn4mKJKFfjf1NXwh9wG4f1TCUBevW1vRIG88RJ_0UV2ohFcI/pub?gid=1415212158&single=true&output=csv"
+# (el identificador de la hoja es privado: está en el secreto HOJA_ID de GitHub, no aquí)
+hoja_resumen_gid = "1415212158"
 
-# Hora (de España) del resumen diario. Pon -1 para desactivarlo.
+# Hora (de España) a la que te llega el resumen diario de la cartera. Pon -1 para desactivarlo.
 resumen_diario_hora = 21
 
 # Aviso si un token sube o baja más de este % en 24 horas
 movimiento_brusco_pct = 7
 
-# Aviso cuando el precio cruce tu precio medio de compra
+# Aviso cuando el precio cruce tu precio medio de compra (pasas de ganar a perder o al revés)
 avisar_precio_medio = true
 
-# Margen para no repetir avisos si el precio "baila" en un nivel (0.5 = 0,5 %)
+# Margen para no recibir avisos repetidos si el precio "baila" justo en un nivel (0.5 = 0,5 %)
 margen_pct = 0.5
 
-# Niveles de precio en EUR: avisa cuando el precio CRUCE cualquiera de ellos
+# Niveles de precio en EUR: te avisa cuando el precio CRUCE cualquiera de ellos (subiendo o bajando)
 [niveles]
 XRP = [1.00, 1.20, 1.50, 2.00, 2.50, 3.00]
 XLM = [0.15, 0.17, 0.22, 0.25, 0.30]
 
-# Par de cada token en Kraken
+# Par de cada token en Kraken (para añadir un token, añade una línea aquí y otra en [niveles])
 [kraken]
 XRP = "XRPEUR"
 XLM = "XLMEUR"
