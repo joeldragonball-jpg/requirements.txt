@@ -1,6 +1,8 @@
 """🧠 Cerebro: tus apuntes (archivos .md de la carpeta cerebro/) convertidos en
 biblioteca, glosario, datos, mapa y un chat con IA que responde con tu propia información."""
 import base64
+import hmac
+import html as html_lib
 import json
 import re
 import unicodedata
@@ -30,6 +32,15 @@ def md(texto):
     texto = texto.replace("$", r"\$")
     texto = re.sub(r"\[ESPECULACI[OÓ]N([^\]]*)\]", r":violet[💭 ESPECULACIÓN\1]", texto)
     return re.sub(r"\[VERIFICAR([^\]]*)\]", r":orange[⚠️ VERIFICAR\1]", texto)
+
+
+def enlace(titulo, url):
+    """Enlace Markdown seguro con texto que viene de internet: sin HTML y solo direcciones http(s)."""
+    texto = html_lib.escape(str(titulo)).replace("$", r"\$").replace("[", "(").replace("]", ")")
+    url = str(url or "")
+    if not url.startswith(("https://", "http://")):
+        return texto
+    return f"[{texto}]({url.replace('(', '%28').replace(')', '%29').replace(' ', '%20')})"
 
 
 def normalizar(texto):
@@ -348,7 +359,7 @@ def tab_actualidad(docs):
         with st.container(border=True):
             st.markdown(f"**{md(n['titulo'])}**")
             st.markdown(f":{color}[🧠 {md(n['actualiza_apuntes'])}]")
-            st.caption(f"{n['tema']} · {n['fecha_envio'][:10]} · [Leer]({n['url']})")
+            st.caption(f"{n['tema']} · {n['fecha_envio'][:10]} · {enlace('Leer', n['url'])}")
 
     semanas = [d for d in docs if d["archivo"].startswith("actualidad")]
     st.markdown("### 🗓️ Apuntes de actualidad semanales")
@@ -362,8 +373,9 @@ def tab_actualidad(docs):
     st.markdown(f"### 📰 Últimas noticias ({len(recientes)} en 30 días)")
     for n in recientes[:15]:
         voto = {1: " 👍"}.get(n.get("valoracion"), "")
-        st.markdown(f"- [{md(n['titulo'])}]({n['url']}){voto} · "
-                    f"<span style='color:#94a3b8;font-size:0.8rem'>{n['tema']}</span>", unsafe_allow_html=True)
+        st.markdown(f"- {enlace(n['titulo'], n['url'])}{voto} · "
+                    f"<span style='color:#94a3b8;font-size:0.8rem'>{html_lib.escape(str(n['tema']))}</span>",
+                    unsafe_allow_html=True)
 
 
 def tab_mapa(docs):
@@ -416,6 +428,31 @@ def clave_api():
     return secreto("ANTHROPIC_API_KEY")
 
 
+LIMITE_PREGUNTAS_DIA = 40   # tope diario del chat: si alguien abusara, como mucho gastaría ~2–4 € al día
+
+
+def chat_desbloqueado():
+    """El chat gasta tu saldo de la IA: con APP_CLAVE en los Secrets de Streamlit solo lo usa quien sepa la contraseña."""
+    clave = secreto("APP_CLAVE")
+    if not clave:
+        st.warning("⚠️ El chat no tiene contraseña: cualquiera con el enlace de la app podría usarlo y gastar tu saldo. "
+                   "Añade `APP_CLAVE = \"una-contraseña\"` en Settings → Secrets de Streamlit.")
+        return True
+    if st.session_state.get("chat_ok"):
+        return True
+    if st.session_state.get("chat_intentos", 0) >= 5:
+        st.error("Demasiados intentos fallidos. Recarga la página para volver a intentarlo.")
+        return False
+    intento = st.text_input("🔒 Contraseña del chat", type="password", key="chat_clave")
+    if intento:
+        if hmac.compare_digest(intento.encode(), str(clave).encode()):
+            st.session_state.chat_ok = True
+            st.rerun()
+        st.session_state.chat_intentos = st.session_state.get("chat_intentos", 0) + 1
+        st.error("Contraseña incorrecta.")
+    return False
+
+
 def tab_chat(docs):
     clave = clave_api()
     if not clave:
@@ -423,7 +460,17 @@ def tab_chat(docs):
                 "en tu app → **⋮ → Settings → Secrets**, pega esta línea con tu clave y guarda:\n\n"
                 "`ANTHROPIC_API_KEY = \"tu-clave\"`")
         return
-    st.caption("Responde con tus apuntes. Cada pregunta cuesta unos céntimos; las siguientes en pocos minutos, menos.")
+    if not chat_desbloqueado():
+        return
+    preguntas_hoy = sum(1 for e in cargar_uso() + st.session_state.get("uso_sesion", [])
+                        if e.get("origen") == "chat cerebro"
+                        and str(e.get("fecha", "")) >= datetime.now(timezone.utc).strftime("%Y-%m-%d"))
+    if preguntas_hoy >= LIMITE_PREGUNTAS_DIA:
+        st.warning(f"Se ha alcanzado el límite de {LIMITE_PREGUNTAS_DIA} preguntas de hoy (protección contra gastos "
+                   "inesperados). Mañana vuelve a estar disponible.")
+        return
+    st.caption("Responde con tus apuntes. Cada pregunta cuesta unos céntimos; las siguientes en pocos minutos, menos. "
+               f"Hoy llevas {preguntas_hoy} de {LIMITE_PREGUNTAS_DIA} preguntas.")
     if "chat_cerebro" not in st.session_state:
         st.session_state.chat_cerebro = []
     if st.session_state.chat_cerebro and st.button("🗑️ Nueva conversación"):
