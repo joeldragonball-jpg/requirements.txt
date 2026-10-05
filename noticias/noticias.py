@@ -120,9 +120,44 @@ POSITIVAS = {"👍", "❤", "❤️", "🔥", "👏", "🤩", "💯", "⚡"}
 NEGATIVAS = {"👎", "💩", "🤮", "🥱", "😴"}
 
 
+WORKER_URL = str(CONFIG.get("worker_url", "")).strip().rstrip("/")
+VOTOS_PROCESADOS = []   # votos leídos del Worker; se borran allí cuando ya están guardados aquí
+
+
+def worker_cabeceras():
+    # Misma clave que calcula el Worker: la huella SHA-256 de la clave del bot
+    return {"Authorization": f"Bearer {hashlib.sha256(TG_TOKEN.encode('utf-8')).hexdigest()}"}
+
+
+def recoger_del_worker(db):
+    """Con el Worker de Cloudflare los votos se registran al instante allí; aquí solo se copian."""
+    r = requests.get(f"{WORKER_URL}/votos", headers=worker_cabeceras(), timeout=20)
+    if not r.ok:
+        print(f"No se pudieron leer los votos del Worker: {r.status_code} {r.text[:200]}")
+        return 0
+    por_id = {n["id"]: n for n in db["noticias"]}
+    por_msg = {n.get("msg_id"): n for n in db["noticias"] if n.get("msg_id")}
+    nuevas = 0
+    for v in sorted(r.json(), key=lambda x: x.get("fecha", "")):
+        noticia = por_id.get(v.get("id")) if v.get("id") else por_msg.get(v.get("msg_id"))
+        VOTOS_PROCESADOS.append(v["clave"])
+        print(f"Voto {v.get('voto')} → {noticia['titulo'][:50] if noticia else 'noticia no encontrada'}")
+        if noticia and noticia.get("valoracion") != v.get("voto"):
+            noticia["valoracion"] = v.get("voto")
+            nuevas += 1
+    return nuevas
+
+
+def borrar_votos_del_worker():
+    if WORKER_URL and VOTOS_PROCESADOS:
+        requests.delete(f"{WORKER_URL}/votos", headers=worker_cabeceras(), json=VOTOS_PROCESADOS, timeout=20)
+
+
 def recoger_valoraciones(db):
     """Lee los botones pulsados y las reacciones (👍/👎 sobre el mensaje) desde la última ejecución.
     Devuelve cuántas valoraciones nuevas hay."""
+    if WORKER_URL:
+        return recoger_del_worker(db)
     res = telegram("getUpdates", offset=db["offset"] + 1, timeout=0,
                    allowed_updates=["callback_query", "message_reaction"])
     nuevas = 0
@@ -515,6 +550,7 @@ def main():
         cambios.append(f"{len(USO)} llamadas a la IA")
     if cambios:
         guardar_db(db, sha, ", ".join(cambios))
+    borrar_votos_del_worker()  # solo después de haberlos guardado
     print("OK · " + (", ".join(cambios) or "nada que hacer en esta hora"))
 
 
