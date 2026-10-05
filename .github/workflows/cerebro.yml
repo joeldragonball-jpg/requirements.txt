@@ -1,0 +1,49 @@
+name: Añadir al cerebro
+
+on:
+  workflow_dispatch:          # lo lanza el Worker de Cloudflare al recibir un PDF, una captura o una nota
+    inputs:
+      tipo:
+        description: "pdf, imagen o nota"
+        default: "nota"
+      file_id:
+        description: "Archivo de Telegram (lo rellena el bot)"
+        default: ""
+      nombre:
+        description: "Nombre del archivo"
+        default: ""
+      comentario:
+        description: "Comentario que acompaña al archivo"
+        default: ""
+      texto:
+        description: "Texto de la nota"
+        default: ""
+
+permissions:
+  contents: write             # para guardar los apuntes nuevos
+
+jobs:
+  procesar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests anthropic
+
+      - name: Convertir en apuntes y guardar en el cerebro
+        run: python cerebro_bot/procesar.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TIPO: ${{ inputs.tipo }}
+          FILE_ID: ${{ inputs.file_id }}
+          NOMBRE: ${{ inputs.nombre }}
+          COMENTARIO: ${{ inputs.comentario }}
+          TEXTO: ${{ inputs.texto }}
