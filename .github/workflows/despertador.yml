@@ -1,0 +1,24 @@
+name: Despertador de la app
+
+on:
+  schedule:
+    - cron: "41 4,10,16,22 * * *"   # 6:41 de la mañana en España y luego cada 6 horas (hora UTC)
+  workflow_dispatch:                # botón "Run workflow" para lanzarlo a mano
+
+concurrency: despertador
+
+jobs:
+  despertar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install playwright && python -m playwright install --with-deps chromium
+
+      - name: Abrir la app para que esté despierta
+        run: python despertador/despertar.py
