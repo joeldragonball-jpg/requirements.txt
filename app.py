@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import requests
 import streamlit as st
+import html as html_lib
 import threading
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
@@ -91,6 +92,15 @@ def eur(x, dec=2, sign=False):
 
 def pct(x, dec=2, sign=True):
     return "—" if x is None or pd.isna(x) else fmt(x, dec, sign) + " %"
+
+
+def enlace(titulo, url):
+    """Enlace Markdown seguro con texto que viene de internet: sin HTML y solo direcciones http(s)."""
+    texto = html_lib.escape(str(titulo)).replace("$", r"\$").replace("[", "(").replace("]", ")")
+    url = str(url or "")
+    if not url.startswith(("https://", "http://")):
+        return texto
+    return f"[{texto}]({url.replace('(', '%28').replace(')', '%29').replace(' ', '%20')})"
 
 
 def color_sign(v):
@@ -612,8 +622,9 @@ with tabs[0]:
             st.caption("Todavía no hay noticias.")
         for n in ultimas:
             voto = {1: " 👍", -1: " 👎"}.get(n.get("valoracion"), "")
-            st.markdown(f"[{n['titulo'].replace('$', chr(92) + '$')}]({n['url']}){voto}  \n"
-                        f"<span style='color:{MUTED};font-size:0.8rem'>{n['tema']} · ⭐ {n['puntuacion']}/10</span>",
+            st.markdown(f"{enlace(n['titulo'], n['url'])}{voto}  \n"
+                        f"<span style='color:{MUTED};font-size:0.8rem'>{html_lib.escape(str(n['tema']))} · "
+                        f"⭐ {html_lib.escape(str(n['puntuacion']))}/10</span>",
                         unsafe_allow_html=True)
 
 # =============================================================================
@@ -1103,4 +1114,4 @@ with tabs[8]:
                 st.caption(f"{r.tema} · ⭐ {r.puntuacion}/10 · {r.fecha_envio:%d/%m/%Y %H:%M} · {md(r.fuente)}")
                 st.markdown(md(r.resumen))
                 st.markdown(f"💡 *{md(r.por_que)}*")
-                st.markdown(f"[Leer la noticia completa →]({r.url})")
+                st.markdown(enlace("Leer la noticia completa →", r.url))
