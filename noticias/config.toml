@@ -7,7 +7,9 @@
 #   "claude-sonnet-5-5" → muy bueno y la mitad de precio (unos 5 € al mes).
 #   "claude-haiku-4-5"  → el más barato (1-2 € al mes), resúmenes algo más simples.
 modelo = "claude-sonnet-5-5"
-worker_url = "https://solitary-sea-645ebot-noticias.joeldragonball.workers.dev"
+
+# Dirección de tu Worker de Cloudflare (registra tus 👍/👎 al instante). Vacío = sin Worker.
+worker_url = ""
 
 # Máximo de noticias que te llegan al día
 max_noticias_dia = 10
@@ -18,12 +20,48 @@ horas_envio = [8, 13, 18, 21]
 # Nota mínima (de 1 a 10) para que una noticia te llegue
 nota_minima = 6
 
+# --- Alertas urgentes: se vigilan CADA hora, sin esperar a las horas de envío.
+# Solo se llama a la IA (modelo barato) si un titular reciente contiene alguna de estas palabras.
+# Para desactivarlas, deja la lista vacía: palabras_urgentes = []
+nota_urgente = 9            # nota mínima (1-10) para saltarse el horario
+max_urgentes_dia = 4        # tope por cada 24 h, para que no te llene el móvil
+horas_urgente = 4           # solo titulares de las últimas N horas
+modelo_urgente = ""         # vacío = el mismo que el triaje (Haiku)
+palabras_urgentes = [
+    # petróleo y Ormuz
+    "hormuz", "ormuz", "blockade", "bloqueo", "tanker attack", "ataque a petrolero", "oil spike", "opec+ cut",
+    "recorte de produccion", "embargo",
+    # conflicto y sanciones
+    "sanctions", "sanciones", "missile", "misil", "ceasefire", "alto el fuego", "invasion", "war declared",
+    # bancos centrales y mercados
+    "emergency rate", "rate cut", "rate hike", "recorte de tipos", "subida de tipos", "circuit breaker",
+    "market crash", "crash", "se desploma", "desplome", "default", "impago", "bank run", "quiebra", "bankruptcy",
+    # cripto y regulación
+    "hack", "exploit", "hackeo", "depeg", "halts withdrawals", "suspende retiradas", "etf approved", "etf approval",
+    "aprueba el etf", "sec sues", "sec drops", "sec settles", "ban crypto", "prohibe",
+    # BRICS
+    "brics currency", "brics pay", "de-dollarization", "desdolarizacion",
+]
+
 # Resumen semanal hecho por la IA: día (0 = lunes ... 6 = domingo) y hora. Pon dia = -1 para desactivarlo.
 resumen_semanal_dia = 6
 resumen_semanal_hora = 20
 
 # Temas que te interesan (la IA clasifica cada noticia en uno de ellos)
-temas = ["XRP / Ripple", "Stellar / XLM", "Cripto y regulación", "Economía y mercados", "Geopolítica y política"]
+temas = ["XRP / Ripple", "Stellar / XLM", "Cripto y regulación", "Economía y mercados", "Geopolítica y política",
+         "Petróleo y Ormuz", "BRICS y dinero global", "Regulación"]
+
+# --- Ahorro de tokens: primero un modelo barato lee SOLO los títulos y deja pasar a los mejores;
+# --- el modelo de arriba (Sonnet) solo ve a los supervivientes. Pon modelo_triaje = "" para desactivarlo.
+modelo_triaje = "claude-haiku-4-5"
+max_tras_triaje = 25
+umbral_duplicado = 0.55     # 0-1: cuánto se parecen dos títulos para considerarlos la misma noticia (sin IA)
+
+# Qué te interesa (lo lee el modelo barato para filtrar; sé concreto)
+intereses = """XRP/Ripple y Stellar/XLM (adopción, ETF, demandas, alianzas, liquidez, ISO 20022); regulación cripto \
+(SEC, MiCA, CFTC, ESMA, stablecoins, CBDC, fiscalidad en España); economía y bolsas (Fed, BCE, tipos, inflación, \
+Wall Street, Ibex, bonos, dólar, oro); petróleo y energía (OPEP+, Brent, estrecho de Ormuz, Irán, sanciones); \
+BRICS (desdolarización, BRICS Pay, yuan digital, nuevos miembros, comercio en monedas locales); geopolítica con impacto económico."""
 
 # Fuentes de noticias (RSS). Puedes añadir o quitar bloques [[fuentes]].
 [[fuentes]]
@@ -77,3 +115,55 @@ url = "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/internac
 [[fuentes]]
 nombre = "Google Noticias · Geopolítica (ES)"
 url = "https://news.google.com/rss/search?q=geopol%C3%ADtica+when:1d&hl=es&gl=ES&ceid=ES:es"
+
+# ---- Petróleo y Ormuz
+[[fuentes]]
+nombre = "Google News · Ormuz/Irán (EN)"
+url = "https://news.google.com/rss/search?q=%22Strait+of+Hormuz%22+OR+Iran+oil+when:1d&hl=en-US&gl=US&ceid=US:en"
+
+[[fuentes]]
+nombre = "Google Noticias · Ormuz (ES)"
+url = "https://news.google.com/rss/search?q=Ormuz+OR+petr%C3%B3leo+Brent+when:1d&hl=es&gl=ES&ceid=ES:es"
+
+[[fuentes]]
+nombre = "Google News · OPEC / Brent (EN)"
+url = "https://news.google.com/rss/search?q=OPEC+OR+Brent+crude+when:1d&hl=en-US&gl=US&ceid=US:en"
+
+[[fuentes]]
+nombre = "OilPrice"
+url = "https://oilprice.com/rss/main"
+
+# ---- BRICS y dinero global
+[[fuentes]]
+nombre = "Google News · BRICS (EN)"
+url = "https://news.google.com/rss/search?q=BRICS+(currency+OR+payment+OR+dollar+OR+summit)+when:2d&hl=en-US&gl=US&ceid=US:en"
+
+[[fuentes]]
+nombre = "Google Noticias · BRICS (ES)"
+url = "https://news.google.com/rss/search?q=BRICS+when:2d&hl=es&gl=ES&ceid=ES:es"
+
+# ---- Regulación (organismos oficiales y búsquedas)
+[[fuentes]]
+nombre = "Google News · SEC/MiCA/CFTC (EN)"
+url = "https://news.google.com/rss/search?q=(SEC+OR+MiCA+OR+CFTC+OR+ESMA)+crypto+regulation+when:2d&hl=en-US&gl=US&ceid=US:en"
+
+[[fuentes]]
+nombre = "Google Noticias · Regulación cripto (ES)"
+url = "https://news.google.com/rss/search?q=regulaci%C3%B3n+cripto+OR+MiCA+OR+stablecoins+when:2d&hl=es&gl=ES&ceid=ES:es"
+
+[[fuentes]]
+nombre = "SEC · Comunicados"
+url = "https://www.sec.gov/news/pressreleases.rss"
+
+[[fuentes]]
+nombre = "Reserva Federal · Comunicados"
+url = "https://www.federalreserve.gov/feeds/press_all.xml"
+
+[[fuentes]]
+nombre = "BCE · Comunicados"
+url = "https://www.ecb.europa.eu/rss/press.html"
+
+# ---- Economía y bolsas
+[[fuentes]]
+nombre = "Google News · Mercados (EN)"
+url = "https://news.google.com/rss/search?q=stocks+OR+%22Wall+Street%22+OR+Fed+rates+when:1d&hl=en-US&gl=US&ceid=US:en"
