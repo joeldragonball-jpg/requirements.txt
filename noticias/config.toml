@@ -41,6 +41,11 @@ palabras_urgentes = [
     "aprueba el etf", "sec sues", "sec drops", "sec settles", "ban crypto", "prohibe",
     # BRICS
     "brics currency", "brics pay", "de-dollarization", "desdolarizacion",
+    # mercados y materias primas (grandes movimientos de precio)
+    "oil surges", "oil plunges", "crude surges", "crude plunges", "$100 a barrel", "$100 per barrel",
+    "stocks plunge", "stock market crash", "trading halt", "yields spike", "dollar plunges", "gold record",
+    # reguladores y organismos
+    "cftc approves", "cftc sues", "cftc charges", "sec charges", "treasury sanctions", "fatf",
 ]
 
 # Resumen semanal hecho por la IA: día (0 = lunes ... 6 = domingo) y hora. Pon dia = -1 para desactivarlo.
@@ -63,10 +68,16 @@ max_lineas_dudas = 12       # de tus apuntes, solo los N puntos de "Dudas y dato
 umbral_duplicado = 0.55     # 0-1: cuánto se parecen dos títulos para considerarlos la misma noticia (sin IA)
 
 # Qué te interesa (lo lee el modelo barato para filtrar; sé concreto)
-intereses = """XRP/Ripple y Stellar/XLM (adopción, ETF, demandas, alianzas, liquidez, ISO 20022); regulación cripto \
-(SEC, MiCA, CFTC, ESMA, stablecoins, CBDC, fiscalidad en España); economía y bolsas (Fed, BCE, tipos, inflación, \
-Wall Street, Ibex, bonos, dólar, oro); petróleo y energía (OPEP+, Brent, estrecho de Ormuz, Irán, sanciones); \
-BRICS (desdolarización, BRICS Pay, yuan digital, nuevos miembros, comercio en monedas locales); geopolítica con impacto económico."""
+intereses = """XRP/Ripple y Stellar/XLM (adopción, ETF, demandas, alianzas, liquidez, ISO 20022); regulación y organismos \
+(SEC, CFTC, Tesoro/OFAC, MiCA, ESMA, BIS, FSB, FATF, IOSCO: comunicados, consultas, normas, sanciones, stablecoins, CBDC, \
+fiscalidad en España); bancos centrales y datos macro (Fed y sus discursos, BCE, tipos, inflación, empleo); mercados \
+(Wall Street, Ibex, bonos, dólar, oro, grandes movimientos bursátiles); petróleo y energía (OPEP+, Brent/WTI y su precio, \
+estrecho de Ormuz, Irán, sanciones, EIA); BRICS (desdolarización, BRICS Pay, yuan digital, comercio en monedas locales); \
+geopolítica con impacto económico. Todos los temas pesan parecido: no priorices XRP/XLM solo por ser su cartera."""
+
+# Variedad: como máximo N noticias sobre XRP/XLM (nota < 9) por tanda; el resto, regulación, mercados, macro y geopolítica.
+# Si no hay suficientes de otros temas, se completa con las de XRP/XLM. 0 = sin límite.
+max_xrp_xlm_por_tanda = 1
 
 # Fuentes de noticias (RSS). Puedes añadir o quitar bloques [[fuentes]].
 [[fuentes]]
@@ -172,3 +183,60 @@ url = "https://www.ecb.europa.eu/rss/press.html"
 [[fuentes]]
 nombre = "Google News · Mercados (EN)"
 url = "https://news.google.com/rss/search?q=stocks+OR+%22Wall+Street%22+OR+Fed+rates+when:1d&hl=en-US&gl=US&ceid=US:en"
+
+# ---- Ampliación (6-oct-2026): reguladores y organismos, mercados, materias primas. Si una fuente falla, el bot la salta.
+[[fuentes]]
+nombre = "CFTC · Notas de prensa"
+url = "https://www.cftc.gov/RSS/RSSGP/rssgp.xml"
+
+[[fuentes]]
+nombre = "Google News · CFTC/FATF/BIS/FSB/IOSCO (EN)"
+url = "https://news.google.com/rss/search?q=CFTC+OR+FATF+OR+BIS+OR+FSB+OR+IOSCO+crypto+when:2d&hl=en-US&gl=US&ceid=US:en"
+
+[[fuentes]]
+nombre = "BIS · Notas de prensa"
+url = "https://www.bis.org/doclist/all_pressrels.rss"
+
+[[fuentes]]
+nombre = "FSB · Noticias"
+url = "https://www.fsb.org/feed/"
+
+[[fuentes]]
+nombre = "Reserva Federal · Discursos"
+url = "https://www.federalreserve.gov/feeds/speeches.xml"
+
+[[fuentes]]
+nombre = "Google News · Sanciones OFAC/UE (EN)"
+url = "https://news.google.com/rss/search?q=OFAC+OR+%22EU+sanctions%22+when:1d&hl=en-US&gl=US&ceid=US:en"
+
+[[fuentes]]
+nombre = "CNBC · Finanzas"
+url = "https://www.cnbc.com/id/10000664/device/rss/rss.html"
+
+[[fuentes]]
+nombre = "CNBC · Inversión y mercados"
+url = "https://www.cnbc.com/id/15839069/device/rss/rss.html"
+
+[[fuentes]]
+nombre = "MarketWatch · Pulso de mercado"
+url = "https://feeds.content.dowjones.io/public/rss/mw_marketpulse"
+
+[[fuentes]]
+nombre = "Cinco Días"
+url = "https://feeds.elpais.com/mrss-s/pages/ep/site/cincodias.elpais.com/portada"
+
+[[fuentes]]
+nombre = "Google Noticias · Ibex y Wall Street (ES)"
+url = "https://news.google.com/rss/search?q=Ibex+35+OR+%22Wall+Street%22+OR+Nasdaq+when:1d&hl=es&gl=ES&ceid=ES:es"
+
+[[fuentes]]
+nombre = "Google News · Oro, dólar y bonos (EN)"
+url = "https://news.google.com/rss/search?q=gold+price+OR+%22dollar+index%22+OR+%22Treasury+yields%22+when:1d&hl=en-US&gl=US&ceid=US:en"
+
+[[fuentes]]
+nombre = "Google News · Precio del Brent/WTI (EN)"
+url = "https://news.google.com/rss/search?q=Brent+OR+WTI+oil+price+when:1d&hl=en-US&gl=US&ceid=US:en"
+
+[[fuentes]]
+nombre = "EIA · Today in Energy"
+url = "https://www.eia.gov/rss/todayinenergy.xml"
