@@ -34,6 +34,8 @@ MADRID = ZoneInfo("Europe/Madrid")
 TG_TOKEN = os.environ.get("TELEGRAM_TOKEN", "").strip()
 TG_CHAT = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 PRUEBA = os.environ.get("PRUEBA", "").lower() == "true"
+# Modo ligero (workflow votos.yml, cada 15 min): solo copia tus 👍/👎 del Worker al historial. Sin fuentes ni IA.
+SOLO_VOTOS = os.environ.get("SOLO_VOTOS", "").lower() == "true"
 
 GH_API = "https://api.github.com"
 REPO = os.environ.get("GITHUB_REPOSITORY", "")
@@ -875,11 +877,26 @@ def vigilar_gasto(db):
     return bool(texto)
 
 
+def solo_votos():
+    """Ejecución ligera: copia los votos del Worker al historial y termina (la clave de Anthropic no hace falta)."""
+    db, sha = cargar_db()
+    aviso_antes = db.get("aviso_votos")
+    nuevas = recoger_valoraciones(db)
+    if nuevas or db.get("aviso_votos") != aviso_antes:
+        guardar_db(db, sha, f"{nuevas} valoraciones" if nuevas else "aviso: votos sin leer")
+    borrar_votos_del_worker()   # solo después de haberlos guardado
+    print(f"OK (solo votos) · {nuevas} valoraciones nuevas")
+
+
 def main():
-    for nombre, valor in (("TELEGRAM_TOKEN", TG_TOKEN), ("TELEGRAM_CHAT_ID", TG_CHAT),
-                          ("ANTHROPIC_API_KEY", os.environ.get("ANTHROPIC_API_KEY"))):
+    obligatorios = [("TELEGRAM_TOKEN", TG_TOKEN), ("TELEGRAM_CHAT_ID", TG_CHAT)]
+    if not SOLO_VOTOS:
+        obligatorios.append(("ANTHROPIC_API_KEY", os.environ.get("ANTHROPIC_API_KEY")))
+    for nombre, valor in obligatorios:
         if not valor:
             raise SystemExit(f"Falta el secreto {nombre} en GitHub (Settings → Secrets and variables → Actions).")
+    if SOLO_VOTOS:
+        return solo_votos()
 
     db, sha = cargar_db()
     db_antes = {"urg_vistos": list(db["urg_vistos"]), "aviso_votos": db.get("aviso_votos")}

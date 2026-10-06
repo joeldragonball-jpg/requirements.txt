@@ -1,0 +1,35 @@
+name: Votos de noticias
+
+on:
+  schedule:
+    - cron: "11,26,41,56 * * * *"   # cada 15 min, sin coincidir con las :23 del bot de noticias
+  workflow_dispatch:                 # botón "Run workflow" para lanzarlo a mano
+
+permissions:
+  contents: write                    # para guardar tus votos en la rama 'datos'
+
+# Mismo turno que el bot de noticias: así nunca escriben a la vez en noticias.json
+concurrency: noticias
+
+jobs:
+  votos:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests feedparser anthropic
+
+      # Solo copia tus 👍/👎 del Worker de Cloudflare al historial. No lee fuentes ni usa la IA (coste 0).
+      - name: Votos
+        run: python noticias/noticias.py
+        env:
+          SOLO_VOTOS: "true"
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WORKER_URL: ${{ secrets.WORKER_URL }}
