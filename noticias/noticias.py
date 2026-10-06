@@ -18,6 +18,7 @@ import re
 import sys
 import tomllib
 import unicodedata
+from urllib.parse import urlsplit
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -131,8 +132,20 @@ POSITIVAS = {"👍", "❤", "❤️", "🔥", "👏", "🤩", "💯", "⚡"}
 NEGATIVAS = {"👎", "💩", "🤮", "🥱", "😴"}
 
 
+def normalizar_url(valor):
+    """Acepta 'nombre.usuario.workers.dev', 'https://nombre.usuario.workers.dev/' o con rutas detrás (/configurar...)
+    y devuelve 'https://nombre.usuario.workers.dev' (o '' si no hay dirección)."""
+    valor = (valor or "").strip()
+    if not valor:
+        return ""
+    if "://" not in valor:
+        valor = "https://" + valor
+    p = urlsplit(valor)
+    return f"{p.scheme}://{p.netloc}" if p.netloc else ""
+
+
 # La dirección del Worker puede ir como secreto WORKER_URL en GitHub (mejor: el repo es público) o en el config
-WORKER_URL = (os.environ.get("WORKER_URL", "").strip() or str(CONFIG.get("worker_url", "")).strip()).rstrip("/")
+WORKER_URL = normalizar_url(os.environ.get("WORKER_URL", "") or str(CONFIG.get("worker_url", "")))
 VOTOS_PROCESADOS = []   # votos leídos del Worker; se borran allí cuando ya están guardados aquí
 
 
@@ -162,14 +175,21 @@ def recoger_del_worker(db):
 
 def borrar_votos_del_worker():
     if WORKER_URL and VOTOS_PROCESADOS:
-        requests.delete(f"{WORKER_URL}/votos", headers=worker_cabeceras(), json=VOTOS_PROCESADOS, timeout=20)
+        try:
+            requests.delete(f"{WORKER_URL}/votos", headers=worker_cabeceras(), json=VOTOS_PROCESADOS, timeout=20)
+        except Exception as e:   # si no se borran, se volverán a leer (y a aplicar igual) en la siguiente ejecución
+            print(f"No se pudieron borrar los votos del Worker: {e}")
 
 
 def recoger_valoraciones(db):
     """Lee los botones pulsados y las reacciones (👍/👎 sobre el mensaje) desde la última ejecución.
     Devuelve cuántas valoraciones nuevas hay."""
     if WORKER_URL:
-        return recoger_del_worker(db)
+        try:
+            return recoger_del_worker(db)
+        except Exception as e:   # un fallo con el Worker nunca debe impedir que lleguen las noticias y las alertas
+            print(f"No se pudieron leer los votos del Worker: {e}")
+            return 0
     res = telegram("getUpdates", silencioso=True, offset=db["offset"] + 1, timeout=0,
                    allowed_updates=["callback_query", "message_reaction"])
     if res.get("error_code") == 409:
