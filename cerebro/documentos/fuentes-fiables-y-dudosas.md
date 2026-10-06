@@ -10,3 +10,4 @@ actualizado: 2026-10-05
 - Útiles para flujos de ETF: SoSoValue (vía Cointelegraph / Bitcoin.com). Útiles para Fed: roic.ai (resume Reuters) y federalreserve.gov. FXStreet y CoinStats AI sirven para precio, no como verdad.
 - Para Stellar, stellar.org/press es lo primario; Guavy / Coinstrooper (artículos generados por IA) = [VERIFICAR] en DefiLlama / rwa.xyz.
 - Invezz y ripplecoinnews.com: aportan datos (dashboard de enmiendas) pero con sesgo alcista; comprobar en livenet.xrpl.org.
+- Verificables y fiables (6-oct): federalreserve.gov (decisión 16-sep, calendario FOMC) y bls.gov/schedule; livenet.xrpl.org es dinámico y WebFetch no lo lee: usar xrpscan u otra fuente.
