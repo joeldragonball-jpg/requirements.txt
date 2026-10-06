@@ -36,4 +36,5 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HOJA_ID: ${{ secrets.HOJA_ID }}
+          WORKER_URL: ${{ secrets.WORKER_URL }}
           PRUEBA: ${{ github.event.inputs.prueba }}

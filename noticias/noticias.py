@@ -131,7 +131,8 @@ POSITIVAS = {"👍", "❤", "❤️", "🔥", "👏", "🤩", "💯", "⚡"}
 NEGATIVAS = {"👎", "💩", "🤮", "🥱", "😴"}
 
 
-WORKER_URL = str(CONFIG.get("worker_url", "")).strip().rstrip("/")
+# La dirección del Worker puede ir como secreto WORKER_URL en GitHub (mejor: el repo es público) o en el config
+WORKER_URL = (os.environ.get("WORKER_URL", "").strip() or str(CONFIG.get("worker_url", "")).strip()).rstrip("/")
 VOTOS_PROCESADOS = []   # votos leídos del Worker; se borran allí cuando ya están guardados aquí
 
 
@@ -169,8 +170,20 @@ def recoger_valoraciones(db):
     Devuelve cuántas valoraciones nuevas hay."""
     if WORKER_URL:
         return recoger_del_worker(db)
-    res = telegram("getUpdates", offset=db["offset"] + 1, timeout=0,
+    res = telegram("getUpdates", silencioso=True, offset=db["offset"] + 1, timeout=0,
                    allowed_updates=["callback_query", "message_reaction"])
+    if res.get("error_code") == 409:
+        # Con un webhook activo (el Worker de Cloudflare) Telegram no entrega los votos aquí: se quedan en el Worker.
+        # Sin avisar, los 👍/👎 se perdían en silencio. Se avisa como mucho una vez al día.
+        print(f"Telegram getUpdates falló: 409 (webhook activo) → los votos están en el Worker; falta worker_url")
+        hoy = f"{datetime.now(MADRID):%Y-%m-%d}"
+        if db.get("aviso_votos") != hoy:
+            db["aviso_votos"] = hoy
+            telegram("sendMessage", chat_id=TG_CHAT,
+                     text="⚠️ No puedo leer tus 👍/👎: tu bot tiene un webhook activo (el Worker de Cloudflare) y los votos "
+                          "se quedan allí. Para que lleguen a la app, falta indicar la dirección del Worker "
+                          "(secreto WORKER_URL en GitHub).")
+        return 0
     nuevas = 0
     por_id = {n["id"]: n for n in db["noticias"]}
     por_msg = {n.get("msg_id"): n for n in db["noticias"] if n.get("msg_id")}
@@ -779,7 +792,7 @@ def main():
             raise SystemExit(f"Falta el secreto {nombre} en GitHub (Settings → Secrets and variables → Actions).")
 
     db, sha = cargar_db()
-    db_antes = {"urg_vistos": list(db["urg_vistos"])}
+    db_antes = {"urg_vistos": list(db["urg_vistos"]), "aviso_votos": db.get("aviso_votos")}
     cambios = []
     if vigilar_gasto(db):
         cambios.append("aviso de gasto")
@@ -787,6 +800,8 @@ def main():
     nuevas = recoger_valoraciones(db)
     if nuevas:
         cambios.append(f"{nuevas} valoraciones")
+    elif db.get("aviso_votos") != db_antes["aviso_votos"]:
+        cambios.append("aviso: votos sin leer")
 
     ahora_es = datetime.now(MADRID)
     clave = franja_pendiente(db, ahora_es)
