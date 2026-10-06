@@ -107,6 +107,7 @@ Conclusión: el rango operativo va aproximadamente del 40 % al 63 % del coste em
 **SEC 2026.**
 - 30‑ene‑2026: declaración sobre valores tokenizados. Un valor tokenizado sigue siendo un valor, por lo que la tokenización de acciones o bonos puede crecer sin usar XRP.
 - 17‑mar‑2026: interpretación sobre cómo aplicar las leyes federales de valores a criptoactivos. Crea una taxonomía (commodities digitales, herramientas digitales, coleccionables digitales, stablecoins y securities digitales) y trata airdrops, minería y staking de protocolo y wrapping.
+  - **[Corrección 2026-10-06]** La emitió la SEC y la CFTC se sumó para aplicar la Commodity Exchange Act de forma coherente — https://www.sec.gov/newsroom/press-releases/2026-30-sec-clarifies-application-federal-securities-laws-crypto-assets . La nota no nombra ningún token: que XRP y XLM figuren como "commodities digitales" solo lo afirman medios cripto (Cryptonomist, CryptoRank) [VERIFICAR en el texto completo: https://www.sec.gov/rules-regulations/2026/03/s7-2026-09 ].
 - Abril 2026: aparecen documentos de ETF cripto con exposición a BTC, ETH, SOL y XRP (registro S‑1/A de un ETF cripto activo el 27‑abr‑2026); también existen ETF de XRP apalancados 2x long/short diarios. Presencia documental no es lo mismo que flujos: hay que distinguir presentación, admisión, aprobación, lanzamiento, patrimonio (AUM) y flujos netos.
 
 **CLARITY Act (Digital Asset Market Clarity Act, H.R. 3633).** Define la estructura del mercado cripto y reparte competencias entre la SEC y la CFTC.
@@ -137,6 +138,7 @@ Conclusión: el rango operativo va aproximadamente del 40 % al 63 % del coste em
 - GTreasury (octubre 2025, 1.000 M$) → Ripple Treasury: conecta la tesorería de grandes empresas con RLUSD y el mercado repo.
 - Rail y Palisade (2025, ~200 M$): pagos con stablecoins y custodia en Europa.
 - BC Payments Australia (abril 2026): licencia AFSL.
+- **[Corrección 2026-10-06]** Rail: anunciada el 7‑ago‑2025 por 200 M$ (cierre previsto 4T 2025; cierre sin confirmar en fuente oficial [VERIFICAR]) — https://ripple.com/ripple-press/ripple-to-acquire-rail-for-200m-expanding-leadership-in-stablecoin-payments/ . Palisade: anunciada el 3‑nov‑2025, precio no divulgado (los ~200 M$ son solo de Rail) — https://ripple.com/ripple-press/ripple-acquires-palisade-to-offer-comprehensive-digital-asset-custody-solution/ . BC Payments Australia: anuncio oficial del 11‑mar‑2026 como adquisición *propuesta*, sujeta a finalizar el cierre; el 1‑abr como fecha de cierre viene de prensa (The Block, Cointelegraph), no de Ripple [VERIFICAR] — https://ripple.com/ripple-press/ripple-to-secure-australian-financial-services-license-expanding-payments-offering-across-apac/
 - Ronda de 500 M$ en noviembre de 2025 (Fortress, Citadel Securities, Pantera) con valoración de 40.000 M$.
 - Plan anunciado para 2026: integración en la primera mitad y nuevas compras en la segunda.
 
@@ -318,6 +320,7 @@ Conclusión: el rango operativo va aproximadamente del 40 % al 63 % del coste em
 **Ripple e infraestructura**
 - Más de 4.000 M$ en adquisiciones (2023–2025): Metaco 250 M$ (2023); Standard Custody (2024); Hidden Road 1.250 M$ (2025); GTreasury 1.000 M$ (octubre 2025); Rail/Palisade ~200 M$ (2025); BC Payments Australia (abril 2026).
 - Ronda de 500 M$ con valoración de 40.000 M$ (noviembre 2025).
+- **[Corrección 2026-10-06]** Rail 200 M$ (ago‑2025) y Palisade (nov‑2025, precio no divulgado) son operaciones distintas; BC Payments Australia: anunciada 11‑mar‑2026, cierre sin confirmar oficialmente [VERIFICAR]. Detalle y enlaces en la sección de adquisiciones (más arriba).
 - Ripple Prime: calificación BBB de KBRA (abril 2026) [VERIFICAR].
 - BNY: depósitos tokenizados desde el 9‑ene‑2026; custodia >57,8 billones $.
 - SWIFT: >11.000 instituciones; fin de los mensajes MT el 22‑nov‑2025; integración de Chainlink CCIP en noviembre 2025 [VERIFICAR].
@@ -370,6 +373,7 @@ Conclusión: el rango operativo va aproximadamente del 40 % al 63 % del coste em
 - Cartera de destino: núcleo indexado 70–80 % (MSCI World, ACWI, S&P 500, Nasdaq 100, renta fija global) y satélites 20–30 % (dividendos, oro, mineras, bancos, China, materias primas, cripto residual), más liquidez e inmuebles; rebalanceo a ±5 %.
 - Plan de salida inicial: vender un 10 % en total con salidas del 5 % en hitos de precio; crédito sobre el 30–40 % de la posición; staking o AMM para cubrir intereses.
 - Dividendos escalonados: enero/abril/julio/octubre (Altria, Kimberly‑Clark); febrero/mayo/agosto/noviembre (Procter & Gamble, AbbVie); marzo/junio/septiembre/diciembre (Coca‑Cola, Johnson & Johnson); mensual (Realty Income).
+- **[Corrección 2026-10-06]** Coca‑Cola: los meses de **cobro** son abril/julio/octubre/diciembre (pago 1‑jul y 1‑oct‑2026; registro 15‑jun y 15‑sep). Marzo/junio/septiembre/diciembre son fechas de registro/ex‑dividendo. Pagos de 1‑abr y 15‑dic solo vistos en agregadores [VERIFICAR] — https://www.coca-colacompany.com/media-center/board-of-directors-of-the-coca-cola-company-elects-new-officer---and-declares-regular-quarterly-dividend
 - Plataformas: MyInvestor, Interactive Brokers, DEGIRO, Portfolio Performance, hoja de cálculo propia.
 - Reglas de trading táctico: oro con media de 200 sesiones + RSI entre 50 y 70; petróleo por ruptura de rango validada por inventarios; riesgo máximo del 1–2 % por operación.
 - Umbrales de vigilancia: Brent >105 $ o caída rápida por debajo de 95 $; depósito del BCE esperado >2,75 %.
@@ -479,6 +483,7 @@ Conclusión: el rango operativo va aproximadamente del 40 % al 63 % del coste em
 - **Plazo si cae el Fast Lane:** 360 días vs. "años".
 - **BNY:** "alianza con Ripple como socio tecnológico" vs. "Ripple Prime como participante inicial" vs. "blockchain privada que no prueba adopción de XRP".
 - **BC Payments:** "en proceso" vs. "comprada en abril 2026".
+- **[Corrección 2026-10-06]** Lo confirmado oficialmente: anuncio del 11‑mar‑2026 de adquisición propuesta (ripple.com). Cierre en abril: solo prensa [VERIFICAR].
 - **Peso del dólar:** ">80 % de la financiación del comercio" y "~50 % de la facturación comercial" miden cosas distintas.
 - **Polymarket:** se habló de un "10 %" de caída cuando la bajada fue de 65 % a 54 % (11 puntos).
 - **Precios del 6‑may (GLD 432,74 vs. 431,80 $; USO 133,19 vs. 133,67 $):** capturas a distintas horas, no error.
