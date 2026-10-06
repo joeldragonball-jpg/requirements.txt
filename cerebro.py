@@ -564,10 +564,13 @@ def guardar_uso_chat(entrada):
 
 
 def coste(e):
+    def num(x):  # en la tabla, un campo que falta en unos registros llega como NaN (y `nan or 0` sigue siendo nan)
+        return 0 if x is None or x != x else x
+
     p = next((v for k, v in PRECIOS.items() if str(e.get("modelo", "")).startswith(k)), PRECIOS[MODELO])
-    tokens = (e.get("entrada", 0) * p[0] + e.get("salida", 0) * p[1]
-              + e.get("cache_lectura", 0) * p[2] + e.get("cache_escritura", 0) * p[3]) / 1e6
-    busquedas = (e.get("busquedas", 0) or 0) * 0.01  # búsqueda web: 10 $ cada 1.000
+    tokens = (num(e.get("entrada", 0)) * p[0] + num(e.get("salida", 0)) * p[1]
+              + num(e.get("cache_lectura", 0)) * p[2] + num(e.get("cache_escritura", 0)) * p[3]) / 1e6
+    busquedas = num(e.get("busquedas", 0)) * 0.01  # búsqueda web: 10 $ cada 1.000
     return tokens + busquedas
 
 
