@@ -4,6 +4,7 @@ Lo ejecuta GitHub Actions cada 30 minutos (.github/workflows/alertas.yml).
 La configuración está en alertas/config.toml y la memoria entre ejecuciones en alertas/estado.json.
 """
 import csv
+import html
 import io
 import json
 import os
@@ -149,27 +150,32 @@ def lado(precio, nivel, anterior, margen):
 
 
 # ---------------------------------------------------------------- mensajes
-def alertas_de_nivel(tok, precio, niveles, estado, margen):
+def din(x, dec, moneda="€"):
+    return f"{fmt(x, dec)} {moneda}"
+
+
+def alertas_de_nivel(tok, precio, niveles, estado, margen, moneda="€"):
     """niveles: lista de (clave, valor, descripción)."""
     msgs = []
     lados = estado.setdefault("lados", {})
     d = dec_precio(precio)
+    nombre = html.escape(tok)
     for clave, nivel, desc in niveles:
         k = f"{tok}:{clave}"
         nuevo = lado(precio, nivel, lados.get(k), margen)
         previo = lados.get(k)
         if previo and nuevo and nuevo != previo:
-            que = f"{desc} {eur(nivel, d)}" if desc else eur(nivel, d)
+            que = f"{desc} {din(nivel, d, moneda)}" if desc else din(nivel, d, moneda)
             if nuevo == "arriba":
-                msgs.append(f"🚀 <b>{tok}</b> ha superado {que} → ahora {eur(precio, d)}")
+                msgs.append(f"🚀 <b>{nombre}</b> ha superado {que} → ahora {din(precio, d, moneda)}")
             else:
-                msgs.append(f"🔻 <b>{tok}</b> ha bajado de {que} → ahora {eur(precio, d)}")
+                msgs.append(f"🔻 <b>{nombre}</b> ha bajado de {que} → ahora {din(precio, d, moneda)}")
         if nuevo:
             lados[k] = nuevo
     return msgs
 
 
-def alerta_brusca(tok, cambio, estado, umbral, ahora):
+def alerta_brusca(tok, cambio, estado, umbral, ahora, periodo="en 24 h"):
     if cambio is None or abs(cambio) < umbral:
         return None
     sentido = "sube" if cambio > 0 else "baja"
@@ -178,7 +184,40 @@ def alerta_brusca(tok, cambio, estado, umbral, ahora):
         return None
     estado["bruscos"][tok] = {"sentido": sentido, "hora": ahora.isoformat()}
     icono = "📈" if cambio > 0 else "📉"
-    return f"{icono} <b>{tok}</b> {sentido} un <b>{fmt(cambio, 1, True)} %</b> en 24 h"
+    return f"{icono} <b>{html.escape(tok)}</b> {sentido} un <b>{fmt(cambio, 1, True)} %</b> {periodo}"
+
+
+# ---------------------------------------------------------------- mercados y materias primas (Yahoo Finance, sin IA)
+MERCADOS_VISTOS = {}   # nombre -> (precio, cambio %, moneda) de esta ejecución, para el resumen diario
+
+
+def precio_yahoo(simbolo):
+    """Precio actual y cierre anterior. API no oficial de Yahoo: si falla, el mercado se salta sin afectar al resto."""
+    r = requests.get(f"https://query1.finance.yahoo.com/v8/finance/chart/{simbolo}",
+                     params={"interval": "1d", "range": "5d"}, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
+    r.raise_for_status()
+    meta = r.json()["chart"]["result"][0]["meta"]
+    return float(meta["regularMarketPrice"]), meta.get("chartPreviousClose")
+
+
+def alertas_de_mercados(estado, margen, ahora):
+    alertas = []
+    umbral_def = CONFIG.get("movimiento_brusco_mercados_pct", 4)
+    for nombre, m in CONFIG.get("mercados", {}).items():
+        try:
+            precio, previo = precio_yahoo(m["simbolo"])
+        except Exception as e:
+            print(f"Mercado '{nombre}' no disponible: {e}")
+            continue
+        moneda = m.get("moneda", "$")
+        cambio = (precio / float(previo) - 1) * 100 if previo else None
+        MERCADOS_VISTOS[nombre] = (precio, cambio, moneda)
+        niveles = [(f"{n:g}", float(n), "") for n in m.get("niveles", [])]
+        alertas += alertas_de_nivel(nombre, precio, niveles, estado, margen, moneda)
+        brusca = alerta_brusca(nombre, cambio, estado, m.get("brusco_pct", umbral_def), ahora, periodo="en la sesión")
+        if brusca:
+            alertas.append(brusca)
+    return alertas
 
 
 def resumen(precios, cambios, cartera, estado, ahora_es):
@@ -207,6 +246,11 @@ def resumen(precios, cambios, cartera, estado, ahora_es):
         if anterior:
             lineas.append(f"Desde el último resumen: {eur(total_val - anterior, sign=True)}")
         estado["valor_ultimo_resumen"] = total_val
+    if MERCADOS_VISTOS:
+        lineas += ["", "🌍 <b>Mercados</b>"]
+        for nombre, (p, ch, moneda) in MERCADOS_VISTOS.items():
+            lineas.append(f"{html.escape(nombre)} {din(p, dec_precio(p), moneda)}"
+                          + (f" ({fmt(ch, 1, True)} %)" if ch is not None else ""))
     return "\n".join(lineas)
 
 
@@ -251,6 +295,7 @@ def main():
         brusca = alerta_brusca(tok, cambios.get(tok), estado, CONFIG.get("movimiento_brusco_pct", 7), ahora)
         if brusca:
             alertas.append(brusca)
+    alertas += alertas_de_mercados(estado, margen, ahora)   # Brent, oro, índices... (config: [mercados.*])
 
     if alertas:
         enviar("🔔 <b>Alerta de precio</b>\n\n" + "\n".join(alertas))

@@ -13,6 +13,9 @@ resumen_diario_hora = 21
 # Aviso si un token sube o baja más de este % en 24 horas
 movimiento_brusco_pct = 7
 
+# Aviso si un mercado de la sección [mercados.*] (Brent, oro, índices...) se mueve más de este % en la sesión
+movimiento_brusco_mercados_pct = 4
+
 # Aviso cuando el precio cruce tu precio medio de compra (pasas de ganar a perder o al revés)
 avisar_precio_medio = true
 
@@ -28,3 +31,32 @@ XLM = [0.15, 0.17, 0.22, 0.25, 0.30]
 [kraken]
 XRP = "XRPEUR"
 XLM = "XLMEUR"
+
+# --- Mercados y materias primas (precios de Yahoo Finance, sin IA y sin gastar tokens) ---
+# Te avisa cuando el precio CRUCE uno de los niveles, y también en el resumen diario. Cada bloque es un mercado:
+#   simbolo = el código de Yahoo Finance, moneda = lo que se muestra, niveles = tus niveles de aviso.
+# Para quitar un mercado, borra su bloque; para añadir otro, copia uno. Si Yahoo falla, ese mercado se salta.
+[mercados.Brent]
+simbolo = "BZ=F"
+moneda = "$"
+niveles = [85, 90, 95, 100, 105, 110]
+
+[mercados.Oro]
+simbolo = "GC=F"
+moneda = "$"
+niveles = [4000, 4250, 4500]
+
+[mercados."S&P 500"]
+simbolo = "^GSPC"
+moneda = "pts"
+niveles = [7500, 8000]
+
+[mercados."Ibex 35"]
+simbolo = "^IBEX"
+moneda = "pts"
+niveles = [19000, 20000]
+
+[mercados."Dólar"]
+simbolo = "DX-Y.NYB"
+moneda = "pts"
+niveles = [100, 105]
