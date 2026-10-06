@@ -517,7 +517,26 @@ def gustos(db):
     return "\n".join(lineas)
 
 
-def extracto_cerebro():
+def dudas_relevantes(cuerpo, titulos):
+    """De 'Dudas y datos a verificar' solo manda los puntos que se parecen a los titulares de hoy
+    (sin IA; es la sección más larga de los apuntes y casi siempre irrelevante para un lote concreto).
+    Sin titulares (resumen semanal) manda solo los primeros. Mantiene el orden original."""
+    maximo = CONFIG.get("max_lineas_dudas", 12)
+    puntos = [p.strip() for p in re.split(r"\n(?=\s*(?:[-*•]|\d+[.)])\s)", cuerpo) if p.strip()]
+    if len(puntos) <= maximo:
+        return cuerpo
+    palabras = set().union(*(firma_titulo(t) for t in titulos)) if titulos else set()
+    nota = [len(firma_titulo(p) & palabras) for p in puntos]
+    por_nota = sorted(range(len(puntos)), key=lambda i: -nota[i])        # estable: a igualdad, el orden original
+    elegidos = {i for i in por_nota[:maximo] if nota[i] > 0}
+    for i in range(len(puntos)):                                          # siempre un mínimo de contexto (4 puntos)
+        if len(elegidos) >= 4:
+            break
+        elegidos.add(i)
+    return "\n".join(puntos[i] for i in sorted(elegidos))
+
+
+def extracto_cerebro(titulos=None):
     """Lo esencial de tus apuntes para que la IA sepa qué buscas: tema, etiquetas, resumen,
     puntos clave, relación con tu cartera y datos pendientes de verificar (no la explicación entera)."""
     secciones_utiles = ("resumen", "puntos clave", "relaci", "dudas")
@@ -534,7 +553,10 @@ def extracto_cerebro():
         for m in re.finditer(r"^## ([^\n]+)\n(.*?)(?=^## |\Z)", texto, re.M | re.S):
             nombre = m.group(1).strip().lower()
             if nombre.startswith(secciones_utiles) or "relación" in nombre:
-                bloque.append(f"#### {m.group(1).strip()}\n{m.group(2).strip()}")
+                cuerpo = m.group(2).strip()
+                if nombre.startswith("dudas"):
+                    cuerpo = dudas_relevantes(cuerpo, titulos)
+                bloque.append(f"#### {m.group(1).strip()}\n{cuerpo}")
         partes.append("\n".join(bloque))
     texto = "\n\n".join(partes)
     return texto[:MAX_CHARS_CEREBRO] if texto else "Todavía no hay apuntes."
@@ -546,7 +568,7 @@ def seleccionar(db, candidatas, maximo):
     lista = "\n".join(f"[{i}] ({c['fuente']}) {c['titulo_original']}"
                       + (f" — {c['descripcion']}" if c["descripcion"] else "")
                       for i, c in enumerate(candidatas))
-    prompt = (f"## Sus apuntes (extracto)\n{extracto_cerebro()}\n\n"
+    prompt = (f"## Sus apuntes (extracto)\n{extracto_cerebro([c['titulo_original'] for c in candidatas])}\n\n"
               f"## Su cartera ahora\n{cartera_texto() or 'No disponible.'}\n\n"
               f"## Sus gustos\n{gustos(db)}\n\n"
               f"## Ya enviadas en los últimos 2 días (no repetir)\n"
