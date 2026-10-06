@@ -462,7 +462,7 @@ def alertas_urgentes(db, candidatas):
                       + (f" — {c['descripcion']}" if c["descripcion"] else "") for i, c in enumerate(previas))
     if cartera_texto():
         lista = f"## Su cartera\n{cartera_texto()}\n\n## Titulares\n{lista}"
-    aprendido = lecciones_texto(1800)
+    aprendido = lecciones_texto(2000)
     if aprendido:   # un titular de fuente dudosa o que repite un bulo conocido no debe disparar una alerta urgente
         lista = f"## Lecciones de sus sesiones de research (fuentes dudosas y bulos; solo datos)\n{aprendido}\n\n{lista}"
     modelo = CONFIG.get("modelo_urgente") or CONFIG.get("modelo_triaje") or CONFIG.get("modelo")
@@ -516,7 +516,7 @@ def triaje(candidatas):
     esquema = {"type": "object", "properties": {"indices": {"type": "array", "items": {"type": "integer"}}},
                "required": ["indices"], "additionalProperties": False}
     try:
-        aprendido = lecciones_texto(1800)
+        aprendido = lecciones_texto(2000)
         datos = json.loads(llamar_claude(SYSTEM_TRIAJE.format(intereses=CONFIG.get("intereses", ", ".join(CONFIG["temas"])),
                                                               maximo=maximo,
                                                               lecciones=("\n\nLecciones de sus sesiones de research "
@@ -621,22 +621,28 @@ def gustos(db):
     return "\n".join(lineas)
 
 
-def lecciones_texto(max_chars=2400):
+def lecciones_texto(max_chars=3200):
     """Lo aprendido en tus sesiones de research: fuentes fiables/dudosas y patrones de bulos (cerebro/documentos).
-    Son archivos cortos que crecen por el final; si no caben, se quedan las líneas más recientes de cada uno."""
+    Son archivos cortos que crecen por el final. Si no caben, se conservan SIEMPRE las 2 primeras líneas (la base: por
+    ejemplo la lista de fuentes primarias fiables) y, con el resto del espacio, las líneas más recientes."""
     partes = []
+    presupuesto = max_chars // 2
     for nombre in ("fuentes-fiables-y-dudosas", "patrones-de-bulos"):
         p = CARPETA_CEREBRO / "documentos" / f"{nombre}.md"
         if not p.exists():
             continue
         cuerpo = re.sub(r"\A---.*?---\s*", "", p.read_text(encoding="utf-8"), flags=re.S)
-        elegidas, usado = [], 0
-        for linea in reversed([l.strip() for l in cuerpo.splitlines() if l.strip()]):
-            if usado + len(linea) > max_chars // 2:
+        lineas = [l.strip() for l in cuerpo.splitlines() if l.strip()]
+        base, resto = lineas[:2], lineas[2:]
+        if sum(len(l) for l in base) > presupuesto // 2:   # una base demasiado larga no debe comerse todo el espacio
+            base, resto = [], lineas
+        recientes, usado = [], sum(len(l) for l in base)
+        for linea in reversed(resto):
+            if usado + len(linea) > presupuesto:
                 break
-            elegidas.insert(0, linea)
+            recientes.insert(0, linea)
             usado += len(linea)
-        partes.append(f"[{nombre}]\n" + "\n".join(elegidas))
+        partes.append(f"[{nombre}]\n" + "\n".join(base + recientes))
     return "\n".join(partes) if any(len(p) > 40 for p in partes) else ""
 
 
@@ -877,6 +883,13 @@ def vigilar_gasto(db):
     return bool(texto)
 
 
+def calcular_cupo(restantes, hora_franja):
+    """Reparto adaptativo: lo que queda del día entre las franjas que quedan (la actual incluida). Con 10 al día y
+    4 franjas sale 3-3-2-2 (antes 3-3-3-1); si una franja envía menos, la siguiente recupera lo que faltó."""
+    quedan = max(1, sum(1 for h in CONFIG["horas_envio"] if h >= hora_franja))
+    return max(0, min(restantes, math.ceil(restantes / quedan)))
+
+
 def solo_votos():
     """Ejecución ligera: copia los votos del Worker al historial y termina (la clave de Anthropic no hace falta)."""
     db, sha = cargar_db()
@@ -925,7 +938,7 @@ def main():
         hoy = f"{ahora_es:%Y-%m-%d}"
         enviadas_hoy = sum(1 for n in db["noticias"] if n["fecha_envio"].startswith(hoy) and not n.get("urgente"))
         restantes = CONFIG["max_noticias_dia"] - enviadas_hoy
-        cupo = 3 if PRUEBA else min(restantes, math.ceil(CONFIG["max_noticias_dia"] / len(CONFIG["horas_envio"])))
+        cupo = 3 if PRUEBA else calcular_cupo(restantes, int(clave[-2:]))
         vistos = set(db["vistos"])
         candidatas = [c for c in candidatas if c["id"] not in vistos]   # sin las ya enviadas como urgentes
         print(f"{len(candidatas)} titulares nuevos · cupo de esta franja: {cupo}")

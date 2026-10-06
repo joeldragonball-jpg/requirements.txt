@@ -3,8 +3,11 @@ import pandas as pd
 import plotly.graph_objects as go
 import requests
 import streamlit as st
+import hashlib
+import hmac
 import html as html_lib
 import threading
+import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -36,6 +39,41 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
+
+
+def candado():
+    """Contraseña de la app: la misma APP_CLAVE del chat (Settings → Secrets de Streamlit). Si no existe, la app queda
+    abierta como antes. Al acertarla, la dirección lleva una huella (?k=...): si guardas esa dirección en favoritos no te
+    la vuelve a pedir, ni al recargar ni cuando la pestaña se reconecta. La huella no revela la contraseña (es un HMAC),
+    pero quien tenga la dirección completa entra: no la compartas. Para anular todas las huellas, cambia APP_CLAVE."""
+    try:
+        clave = st.secrets.get("APP_CLAVE")
+    except Exception:
+        clave = None
+    if not clave:
+        return
+    clave = str(clave)
+    huella = hmac.new(clave.encode(), b"cartera-app-v1", hashlib.sha256).hexdigest()[:32]
+    if st.session_state.get("app_ok") or hmac.compare_digest(str(st.query_params.get("k", "")).encode(), huella.encode()):
+        st.session_state["app_ok"] = True
+        if st.session_state.pop("app_aviso", False):
+            st.toast("Guarda esta página en favoritos tal cual: la dirección ya lleva tu acceso y no te pedirá la contraseña.",
+                     icon="🔖")
+        return
+    st.markdown("### 🔒 Mi Cartera Cripto")
+    intento = st.text_input("Contraseña", type="password", key="app_clave_input")
+    if intento:
+        if hmac.compare_digest(intento.encode(), clave.encode()):
+            st.session_state["app_ok"] = True
+            st.session_state["app_aviso"] = True
+            st.query_params["k"] = huella
+            st.rerun()
+        time.sleep(1)   # frena los intentos seguidos
+        st.error("Contraseña incorrecta.")
+    st.stop()
+
+
+candado()
 
 # Dos secciones con el mismo enlace: la cartera y el cerebro (tus apuntes, en cerebro.py)
 seccion = st.radio("Sección", ["📊 Cartera", "🧠 Cerebro"], horizontal=True,

@@ -438,7 +438,7 @@ def chat_desbloqueado():
         st.warning("⚠️ El chat no tiene contraseña: cualquiera con el enlace de la app podría usarlo y gastar tu saldo. "
                    "Añade `APP_CLAVE = \"una-contraseña\"` en Settings → Secrets de Streamlit.")
         return True
-    if st.session_state.get("chat_ok"):
+    if st.session_state.get("app_ok") or st.session_state.get("chat_ok"):   # app_ok: ya entró con la contraseña de la app
         return True
     if st.session_state.get("chat_intentos", 0) >= 5:
         st.error("Demasiados intentos fallidos. Recarga la página para volver a intentarlo.")
