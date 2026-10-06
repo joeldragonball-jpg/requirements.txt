@@ -55,6 +55,10 @@ temas = ["XRP / Ripple", "Stellar / XLM", "Cripto y regulación", "Economía y m
 # --- el modelo de arriba (Sonnet) solo ve a los supervivientes. Pon modelo_triaje = "" para desactivarlo.
 modelo_triaje = "claude-haiku-4-5"
 max_tras_triaje = 25
+# --- Freno de gasto: si ESTE bot gasta en el mes más de tope_mensual_usd, te avisa por Telegram (también al 80 %)
+# --- y las selecciones/resúmenes pasan a modelo_ahorro hasta fin de mes. No cuenta verificar.py ni el chat. 0 = sin tope.
+tope_mensual_usd = 12.0     # ≈ 10,7 €; el gasto normal ronda 4-6 $ al mes
+modelo_ahorro = "claude-haiku-4-5"
 max_lineas_dudas = 12       # de tus apuntes, solo los N puntos de "Dudas y datos a verificar" más relacionados con los titulares de hoy (ahorra tokens)
 umbral_duplicado = 0.55     # 0-1: cuánto se parecen dos títulos para considerarlos la misma noticia (sin IA)
 
