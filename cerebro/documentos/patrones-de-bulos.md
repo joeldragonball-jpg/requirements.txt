@@ -12,3 +12,4 @@ actualizado: 2026-10-05
 - Resúmenes automáticos de buscador mezclan años y cifras (RWA Stellar 3.060 M$ vs 30.600 M$; "SEC decide el 7-oct" es de 2024): exigir fecha y fuente primaria.
 - 2026-10-06 (intradía): buscadores devuelven precios XRP incompatibles (1,47/1,63/1,78 $ el mismo día); usar solo precio con hora de FXStreet/Cointelegraph.
 - 2026-10-07: buscadores dan precio XRP con rango incoherente (1,47 $ con máx. 1,428 $) y artículos de ene-2026 como si fueran de hoy.
+- "Bonificación del 99 % en Sucesiones en Cataluña" circula como general: solo es fija para cónyuge; hijos/ascendientes tienen escala decreciente.

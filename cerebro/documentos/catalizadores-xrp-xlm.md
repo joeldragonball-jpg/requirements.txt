@@ -14,3 +14,5 @@ actualizado: 2026-10-05
 - Corrección 2026-10-07: el FOMC es 27-28 oct (decisión el 28), según federalreserve.gov; los "28-oct" de arriba se refieren solo al día de la decisión.
 - Corrección 2026-10-07: precios XLM de 0,19 $ y ~0,216 $ sin fuente ni hora; tomar como [VERIFICAR] hasta contrastar con CoinGecko/exchange.
 - Corrección 2026-10-07: RWA de Stellar "3.060 M$" [VERIFICAR] (unidad y posible factor 10; comprobar en rwa.xyz). Cifras de BTC y empleo del 2-oct sin fuente primaria: [VERIFICAR].
+- Verificado 2026-10-07 18:58 Madrid: XLM 0,2002 $ (CoinGecko API, -6,3% 24 h) y 0,19997 $ (Kraken, apertura 0,2120 $); 0,216 $ era del 5-oct y 0,19 $ sin hora. Precio de XLM: usar solo con hora.
+- Verificado 2026-10-07 (app.rwa.xyz/networks/stellar): RWA Stellar = 3.550 M$ distribuidos (+6,9% en 30 días) y 78,2 M$ representados; la unidad es MILLONES (3,55 MM$), no 30.600 M$ ni 3.060 M$ (esa era de agosto).

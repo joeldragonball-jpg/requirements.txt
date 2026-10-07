@@ -12,3 +12,4 @@ actualizado: 2026-10-05
 - Invezz y ripplecoinnews.com: aportan datos (dashboard de enmiendas) pero con sesgo alcista; comprobar en livenet.xrpl.org.
 - Verificables y fiables (6-oct): federalreserve.gov (decisión 16-sep, calendario FOMC) y bls.gov/schedule; livenet.xrpl.org es dinámico y WebFetch no lo lee: usar xrpscan u otra fuente.
 - CoinDesk (con fecha y causa) fiable para precios del día; sitios de "price prediction" (Changelly etc.) = especulación.
+- rwa.xyz, API de CoinGecko y Kraken (públicas, con marca de tiempo) sirven para verificar cifras de Stellar; atc.gencat.cat para Sucesiones en Cataluña. congress.gov y banking.senate.gov bloquean WebFetch (403).
