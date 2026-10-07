@@ -751,7 +751,7 @@ kpis = [
 st.markdown("<div class='kpis'>" + "".join(kpi_card(*k) for k in kpis) + "</div>", unsafe_allow_html=True)
 
 tabs = st.tabs(["🏠 Inicio", "💼 Posiciones", "📈 Evolución", "📅 Rentabilidad", "🧾 Operaciones",
-                "🛡️ Riesgo", "🧮 Simuladores", "🏛️ Fiscalidad", "📰 Noticias", "👀 Watchlist", "🗓️ Eventos"])
+                "🛡️ Riesgo", "🧮 Simuladores", "🏛️ Fiscalidad", "📰 Noticias", "👀 Watchlist", "🗓️ Eventos", "🩺 Sistema"])
 
 # =============================================================================
 # 0. INICIO — lo esencial de un vistazo
@@ -1404,6 +1404,52 @@ with tabs[10]:
         with st.container(border=True):
             st.markdown(f"{marca} **{html_lib.escape(e['titulo'])}** · {rango} · _{cuando_txt}_")
             st.caption(f"{e.get('detalle', '')} " + (f"[Fuente]({e['fuente']})" if str(e.get("fuente", "")).startswith("https://") else ""))
+
+# =============================================================================
+# 7 (continuación). FISCALIDAD — informe para la renta (renta.py)
+# =============================================================================
+with tabs[7]:
+    st.divider()
+    st.subheader("🧾 Informe para la renta")
+    if tx.empty:
+        st.info("Cuando haya operaciones en tu hoja, aquí aparecerá el informe.")
+    else:
+        import renta
+        lineas_r, abiertos_r, avisos_r = renta.lotes_fifo(tx[["fecha", "token", "cantidad", "total"]].to_dict("records"))
+        anios_r = sorted({l["f_venta"].year for l in lineas_r}, reverse=True)
+        if not anios_r:
+            st.info("No hay ventas registradas: no hay plusvalías que declarar.")
+        else:
+            anio_r = st.selectbox("Ejercicio", anios_r, key="renta_anio")
+            res_r = renta.resumen_anual(lineas_r)[anio_r]
+            m1, m2, m3 = st.columns(3)
+            m1.metric("Valor de transmisión", eur(res_r["transmision"]))
+            m2.metric("Valor de adquisición", eur(res_r["adquisicion"]))
+            m3.metric("Ganancia / pérdida", eur(res_r["ganancia"], sign=True))
+            for a in avisos_r:
+                st.warning(a)
+            det = pd.DataFrame([{"Moneda": l["token"], "Adquisición": l["f_compra"].strftime("%d/%m/%Y") if l["f_compra"] else "sin compra",
+                                 "Transmisión": l["f_venta"].strftime("%d/%m/%Y"), "Cantidad": l["cantidad"],
+                                 "Valor adq. (€)": l["v_adquisicion"], "Valor transm. (€)": l["v_transmision"],
+                                 "Ganancia (€)": l["ganancia"]} for l in lineas_r if l["f_venta"].year == anio_r])
+            st.dataframe(det.style.format({"Cantidad": lambda v: fmt(v, 4), "Valor adq. (€)": eur, "Valor transm. (€)": eur,
+                                           "Ganancia (€)": lambda v: eur(v, sign=True)})
+                         .map(color_sign, subset=["Ganancia (€)"]), hide_index=True, **WIDE)
+            d1, d2 = st.columns(2)
+            d1.download_button("📄 Informe para imprimir (HTML → PDF)", renta.html_anio(lineas_r, avisos_r, anio_r).encode("utf-8"),
+                               file_name=f"plusvalias_cripto_{anio_r}.html", mime="text/html", key="renta_html")
+            d2.download_button("📥 Detalle por lote (CSV)", renta.csv_anio(lineas_r, anio_r).encode("utf-8-sig"),
+                               file_name=f"plusvalias_cripto_{anio_r}.csv", mime="text/csv", key="renta_csv")
+            st.caption("Abre el HTML en el navegador y usa Imprimir → Guardar como PDF. Cálculo orientativo: contrasta cada cifra con tus "
+                       "extractos y con tu asesor. No incluye monedas fuera de tu hoja, permutas, staking ni recompensas.")
+
+
+# =============================================================================
+# 11. SISTEMA — estado de los bots, fuentes y gasto (sistema.py)
+# =============================================================================
+with tabs[11]:
+    import sistema
+    sistema.mostrar()
 
 
 # Última línea: todo lo de arriba ya está dibujado, así que la página de entrada retira su pantalla de carga ahora
