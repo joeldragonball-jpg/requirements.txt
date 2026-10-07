@@ -55,6 +55,8 @@
 (function () {
   var APP = "https://requirementstxt-ns7rcahvp34hst8onfbyxg.streamlit.app/";
   var k = new URLSearchParams(location.search).get("k");          /* tu huella de acceso, si la dirección la lleva */
+  /* En Android la app instalada se abre siempre sin "?k=": la huella se recuerda también en este móvil (solo en este navegador) */
+  try { if (k) localStorage.setItem("cartera-k", k); else k = localStorage.getItem("cartera-k") || null; } catch (err) {}
   var marco = document.getElementById("app"), splash = document.getElementById("splash"), listo = false;
 
   function mostrar() {
@@ -76,6 +78,7 @@
     if (d.tipo !== "cartera-listo") return;
     setTimeout(mostrar, 500);
     /* Tras acertar la contraseña, la huella se guarda en ESTA dirección para que puedas ponerla en favoritos */
+    if (d.k) { try { localStorage.setItem("cartera-k", d.k); } catch (err) {} }
     if (d.k && d.k !== k) { k = d.k; try { history.replaceState(null, "", "?k=" + encodeURIComponent(d.k)); } catch (err) {} }
   });
 
