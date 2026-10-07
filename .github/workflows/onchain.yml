@@ -1,0 +1,36 @@
+name: Vigilancia on-chain
+
+on:
+  schedule:
+    - cron: "19,49 * * * *"   # cada 30 min, lejos de las horas en punto
+  workflow_dispatch:
+
+concurrency: onchain
+
+jobs:
+  onchain:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # La memoria (incidentes abiertos y saldos anteriores) se guarda en la caché de GitHub, sin commits
+      - name: Recuperar estado
+        uses: actions/cache/restore@v4
+        with:
+          path: eventos/estado-onchain.json
+          key: estado-onchain-${{ github.run_id }}
+          restore-keys: estado-onchain-
+      - name: Vigilar redes y cuentas de Ripple
+        run: python eventos/onchain.py
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      - name: Guardar estado
+        if: always() && hashFiles('eventos/estado-onchain.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: eventos/estado-onchain.json
+          key: estado-onchain-${{ github.run_id }}
