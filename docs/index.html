@@ -15,9 +15,12 @@
 <style>
   html, body { margin: 0; height: 100%; background: #0b0f17; overflow: hidden; }
   /* La app va dentro de este marco, oculta (opacity 0) hasta que avisa de que está lista */
-  #app { position: fixed; left: 0; right: 0; bottom: 0; top: env(safe-area-inset-top, 0px);
-         width: 100%; height: calc(100% - env(safe-area-inset-top, 0px)); border: 0; background: #0b0f17;
-         opacity: 0; transition: opacity .6s ease; }
+  /* El marco sobresale 12 px por la izquierda, la derecha y arriba (esquinas redondeadas de Streamlit) y 56 px por abajo
+     (barra "Built with Streamlit"): lo que sobra queda recortado fuera de la pantalla */
+  #app { position: fixed; left: -12px; width: calc(100% + 24px);
+         top: calc(env(safe-area-inset-top, 0px) - 12px);
+         height: calc(100% - env(safe-area-inset-top, 0px) + 12px + 56px);
+         border: 0; background: #0b0f17; opacity: 0; transition: opacity .6s ease; }
   #splash { position: fixed; inset: 0; background: #0b0f17; display: flex; flex-direction: column;
             align-items: center; justify-content: center; gap: 26px; transition: opacity .6s ease; z-index: 2; }
   #splash.fuera { opacity: 0; pointer-events: none; }
@@ -58,7 +61,10 @@
     if (d.k && d.k !== k) { k = d.k; try { history.replaceState(null, "", "?k=" + encodeURIComponent(d.k)); } catch (err) {} }
   });
 
-  marco.src = APP + "?embed=true&via=shell" + (k ? "&k=" + encodeURIComponent(k) : "");
+  /* embed=true: la app solo se deja ver dentro de un marco con este modo. hide_loading_screen: esconde la pantalla de carga
+     de Streamlit (la sustituye la nuestra). La barra de abajo y las esquinas redondeadas de Streamlit quedan fuera de la
+     pantalla porque el marco es un poco más grande que ella (ver el estilo #app). */
+  marco.src = APP + "?embed=true&embed_options=hide_loading_screen&via=shell" + (k ? "&k=" + encodeURIComponent(k) : "");
   setTimeout(mostrar, 25000);   /* salvavidas: si el aviso nunca llega, la app se ve igualmente */
 })();
 </script>

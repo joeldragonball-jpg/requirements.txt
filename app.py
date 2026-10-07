@@ -140,8 +140,11 @@ def listo():
 
 
 if str(st.query_params.get("via", "")) == "shell":
-    # Abierta desde la página de entrada (dentro de un marco): ella ya reserva el espacio de la barra de estado del iPhone
-    st.markdown("<style>.block-container{padding-top:1.2rem !important}</style>", unsafe_allow_html=True)
+    # Abierta desde la página de entrada (dentro de un marco): ella ya reserva el espacio de la barra de estado del iPhone, y
+    # su marco sobresale 12 px por los lados y arriba (y la parte de abajo queda fuera) para esconder la barra y las esquinas
+    # de Streamlit: se compensa con margen interior para que nada quede pegado al borde
+    st.markdown("<style>.block-container{padding: calc(1.2rem + 12px) calc(1rem + 12px) calc(2rem + 12px) !important}</style>",
+                unsafe_allow_html=True)
 ajustes_movil()
 candado()
 
