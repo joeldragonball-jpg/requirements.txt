@@ -751,7 +751,7 @@ kpis = [
 st.markdown("<div class='kpis'>" + "".join(kpi_card(*k) for k in kpis) + "</div>", unsafe_allow_html=True)
 
 tabs = st.tabs(["🏠 Inicio", "💼 Posiciones", "📈 Evolución", "📅 Rentabilidad", "🧾 Operaciones",
-                "🛡️ Riesgo", "🧮 Simuladores", "🏛️ Fiscalidad", "📰 Noticias", "👀 Watchlist"])
+                "🛡️ Riesgo", "🧮 Simuladores", "🏛️ Fiscalidad", "📰 Noticias", "👀 Watchlist", "🗓️ Eventos"])
 
 # =============================================================================
 # 0. INICIO — lo esencial de un vistazo
@@ -1373,6 +1373,38 @@ with tabs[9]:
         st.dataframe(w.style.format({"Precio": lambda v: fmt(v, 2), "Precio (€)": eur, "1 semana": pct, "3 meses": pct,
                                      "En el año": pct}, na_rep="—")
                      .map(color_sign, subset=["1 semana", "3 meses", "En el año"]), hide_index=True, **WIDE)
+
+# =============================================================================
+# 10. EVENTOS — calendario macro y cripto (eventos/calendario.toml)
+# =============================================================================
+with tabs[10]:
+    st.caption("Próximos eventos que mueven el mercado, con la fuente oficial de cada fecha. Se editan en eventos/calendario.toml "
+               "y el bot te avisa por Telegram el día antes. Información, no una recomendación.")
+    evs = []
+    try:
+        if tomllib is not None:
+            with open(Path(__file__).parent / "eventos" / "calendario.toml", "rb") as fh:
+                evs = tomllib.load(fh).get("eventos", [])
+    except Exception:
+        evs = []
+    hoy_d = datetime.now(ZoneInfo("Europe/Madrid")).date()
+    prox = []
+    for e in evs:
+        ini = datetime.strptime(e["fecha"], "%Y-%m-%d").date()
+        fin = datetime.strptime(e.get("hasta", e["fecha"]), "%Y-%m-%d").date()
+        if fin >= hoy_d:
+            prox.append((ini, fin, e))
+    if not prox:
+        st.info("No hay eventos próximos en el calendario.")
+    for ini, fin, e in sorted(prox, key=lambda x: x[0]):
+        dias = (ini - hoy_d).days
+        cuando_txt = "en curso" if ini <= hoy_d else ("hoy" if dias == 0 else ("mañana" if dias == 1 else f"en {dias} días"))
+        rango = f"{ini:%d/%m/%Y}" + (f" → {fin:%d/%m/%Y}" if fin != ini else "")
+        marca = "🔴" if e.get("impacto") == "alto" else "🟡"
+        with st.container(border=True):
+            st.markdown(f"{marca} **{html_lib.escape(e['titulo'])}** · {rango} · _{cuando_txt}_")
+            st.caption(f"{e.get('detalle', '')} " + (f"[Fuente]({e['fuente']})" if str(e.get("fuente", "")).startswith("https://") else ""))
+
 
 # Última línea: todo lo de arriba ya está dibujado, así que la página de entrada retira su pantalla de carga ahora
 # (antes se retiraba al cargar los datos y se veían las pestañas y gráficos montándose: cortes y parpadeos)

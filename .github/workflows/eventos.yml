@@ -1,0 +1,30 @@
+name: Aviso de eventos
+
+on:
+  schedule:
+    - cron: "47 5 * * *"   # una vez al día (07:47 en verano, 06:47 en invierno, hora de Madrid); si no hay evento hoy o mañana, no envía nada
+  workflow_dispatch:        # botón "Run workflow"
+    inputs:
+      prueba:
+        description: "Incluir también el resumen de los próximos 7 días"
+        type: boolean
+        default: true
+
+concurrency: eventos
+
+jobs:
+  eventos:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: Avisar de eventos
+        run: python eventos/avisos.py
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          PRUEBA: ${{ github.event.inputs.prueba }}
