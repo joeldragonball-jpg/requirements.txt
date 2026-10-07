@@ -75,8 +75,9 @@ def candado():
             st.markdown('<div style="text-align:center;margin:7vh 0 4px">'
                         f'<img src="data:image/png;base64,{b64}" style="width:clamp(140px,40vw,200px)"></div>',
                         unsafe_allow_html=True)
-        st.markdown('<h2 style="text-align:center;margin:0;padding:0;font-weight:700">Mi Cartera Cripto</h2>'
-                    '<p style="text-align:center;color:#94a3b8;margin:4px 0 18px">🔒 Acceso privado</p>',
+        st.markdown('<div style="text-align:center;font-size:clamp(1.6rem,6vw,2.1rem);font-weight:700;line-height:1.2">'
+                    'Mi Cartera Cripto</div>'
+                    '<div style="text-align:center;color:#94a3b8;margin:6px 0 18px">🔒 Acceso privado</div>',
                     unsafe_allow_html=True)
         intento = st.text_input("Contraseña", type="password", key="app_clave_input",
                                 placeholder="Contraseña", label_visibility="collapsed")
