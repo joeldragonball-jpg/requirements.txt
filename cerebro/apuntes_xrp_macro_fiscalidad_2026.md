@@ -521,3 +521,13 @@ Conclusión: el rango operativo va aproximadamente del 40 % al 63 % del coste em
 - Recaudaciones: impuestos del coche ~40.000 M€, IVA ~95.000 M€.
 - Securitize con Binance e Hyperliquid, mínimos de Ondo, mesas de basis trade, LTV del 85–90 % para "activos de utilidad" y del 150–200 % de colateral en BTC.
 - Nomenclatura de bonos: en EE. UU. las Notes van de 2 a 10 años y los Bonds son a 20 y 30, con cupón semestral; en España, letras hasta 12 meses, bonos a 3 y 5 años y obligaciones a 10, 15, 30 y 50, con cupón anual.
+
+## Correcciones de la revisión semanal (2026-10-07)
+_Añadidas al final por la revisión; no sustituyen el texto original, que queda tal cual._
+- Fed: la cifra vigente es 3,75–4,00 % (subida del 16-sep-2026, 12-0, federalreserve.gov). Las menciones a "pausa en 3,50–3,75 %" son de mayo de 2026 y están superadas.
+- Cartera / timing: los niveles de yields (~4,5 %) y la postura del BCE citados en esa sección son de mayo de 2026 [VERIFICAR con datos de octubre].
+- Rail y Palisade: los ~200 M$ corresponden solo a Rail; Palisade no divulgó precio. El total "más de 4.000 M$" debe recalcularse [VERIFICAR].
+- CLARITY Act, Sección 404 (prohibición de intereses "estáticos" en stablecoins): sin fuente y la ley no está aprobada (fallo del 15-sep-2026, 49-50) [VERIFICAR el texto vigente del proyecto].
+- Escala del ahorro (19/21/23/27/30 %): citar LIRPF/AEAT y confirmar vigencia 2026 [VERIFICAR].
+- Cataluña: bonificación "hasta el 99 %" en Sucesiones (Grupo II) sin fuente [VERIFICAR en la Agència Tributària de Catalunya].
+- Duplicados: el estado del litigio SEC–Ripple (multa 125 M$ e injunction vigentes, apelaciones retiradas en agosto de 2025) y el fallo de la CLARITY Act se repiten en varias secciones; la versión de referencia es la de "Verificado en octubre de 2026".

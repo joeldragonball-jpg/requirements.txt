@@ -11,3 +11,6 @@ actualizado: 2026-10-05
 - Próximos: actas FOMC 7-oct 14:00 ET; PermissionDelegation (XLS-75) 8-oct 21:25 UTC y Batch (XLS-56) ~9-oct en XRPL. Medir el efecto en precio.
 - 2026-10-06: Fed 16-sep subió a 3,75-4,00% (12-0), confirmado en federalreserve.gov; sin reacción medida en XRP/XLM; sin noticias nuevas intradía.
 - 2026-10-07: Ormuz/Brent ~101,5 $ + yields al alza: BTC -3,4%, ETH -5,6%, XRP -5% (1,44 $), liquidaciones 547 M$ (CoinDesk). Macro manda.
+- Corrección 2026-10-07: el FOMC es 27-28 oct (decisión el 28), según federalreserve.gov; los "28-oct" de arriba se refieren solo al día de la decisión.
+- Corrección 2026-10-07: precios XLM de 0,19 $ y ~0,216 $ sin fuente ni hora; tomar como [VERIFICAR] hasta contrastar con CoinGecko/exchange.
+- Corrección 2026-10-07: RWA de Stellar "3.060 M$" [VERIFICAR] (unidad y posible factor 10; comprobar en rwa.xyz). Cifras de BTC y empleo del 2-oct sin fuente primaria: [VERIFICAR].
