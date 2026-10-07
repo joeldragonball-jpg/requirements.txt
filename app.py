@@ -76,6 +76,34 @@ st.markdown("""
         .kpi.hero .val {font-size: 2.1rem;}
         .st-key-grupo_menu div[role="radiogroup"] {grid-template-columns: repeat(2, 1fr);}
     }
+
+    /* --- Opciones de los menús (selectores reales: label[data-testid="stRadioOption"]) --- */
+    label[data-testid="stRadioOption"] {background: #151921; border: 1px solid #262c3a; border-radius: 12px; padding: 8px 14px;
+                                        min-height: 44px; margin: 0 !important; box-sizing: border-box; width: 100%;}
+    label[data-testid="stRadioOption"][data-selected="true"] {background: #1d4ed8; border-color: #3b82f6;}
+    label[data-testid="stRadioOption"] > div > div:first-child {display: none;}           /* el círculo del radio */
+    label[data-testid="stRadioOption"] p {margin: 0; font-weight: 600;}
+    /* Cartera / Cerebro en una fila, sin ocupar todo el ancho */
+    .st-key-seccion [role="radiogroup"] {display: flex; gap: 8px;}
+    .st-key-seccion label[data-testid="stRadioOption"] {width: auto; padding: 6px 16px;}
+    /* Losetas del menú principal */
+    .st-key-grupo_menu label[data-testid="stRadioOption"] {height: 100%; min-height: 92px; justify-content: center; text-align: center;}
+    .st-key-grupo_menu label[data-testid="stRadioOption"] > div {width: 100%; justify-content: center;}
+    .st-key-grupo_menu label[data-testid="stRadioOption"] p {text-align: center; font-size: 0.95rem; line-height: 1.35;}
+    /* Tarjetas de los apartados */
+    [class*="st-key-sub_"] label[data-testid="stRadioOption"] {min-height: 60px; justify-content: flex-start;}
+    [class*="st-key-sub_"] label[data-testid="stRadioOption"][data-selected="true"] {background: #16233d; border-color: #3b82f6;}
+    [class*="st-key-sub_"] label[data-testid="stRadioOption"] p {text-align: left; font-size: 0.82rem; color: #94a3b8; font-weight: 400; line-height: 1.4;}
+    [class*="st-key-sub_"] label[data-testid="stRadioOption"] p strong {color: #e5e7eb; font-size: 1rem; font-weight: 600;}
+    [class*="st-key-sub_"] [role="radiogroup"] > div {width: 100%;}
+    [class*="st-key-sub_"] label[data-testid="stRadioOption"] > div {width: 100%;}
+    .st-key-grupo_menu [role="radiogroup"] > div {width: 100%; height: 100%;}
+    .st-key-grupo_menu label[data-testid="stRadioOption"] p::first-line {font-size: 1.9rem;}
+    /* Cabecera: título a la izquierda y ajustes a la derecha en la misma fila, también en el móvil */
+    .st-key-cab [data-testid="stHorizontalBlock"] {flex-wrap: nowrap !important; align-items: center;}
+    .st-key-cab [data-testid="stColumn"] {min-width: 0 !important;}
+    .st-key-cab [data-testid="stColumn"]:first-child {flex: 1 1 auto !important; width: auto !important;}
+    .st-key-cab [data-testid="stColumn"]:last-child {flex: 0 0 auto !important; width: auto !important;}
     </style>
 """, unsafe_allow_html=True)
 
@@ -650,22 +678,24 @@ def titulo_con_logo():
             'Mi Cartera Cripto</h1></div>')
 
 
-h1, h2 = st.columns([6, 1], vertical_alignment="center")
-_titulo = titulo_con_logo()
-if _titulo:
-    h1.markdown(_titulo, unsafe_allow_html=True)
-else:
-    h1.title("⚡ Mi Cartera Cripto")
-try:
-    _ajustes = h2.popover("⚙️", help="Ajustes y actualizar datos")
-except Exception:                      # versiones antiguas de Streamlit sin popover
-    _ajustes = h2.expander("⚙️")
-with _ajustes:
-    use_live = st.toggle("Precio en vivo", value=True,
-                         help="Activado: precio actual de Kraken (cada 30 s). Desactivado: el precio de tu Google Sheet.")
-    if st.button("🔄 Actualizar datos", **WIDE):
-        st.cache_data.clear()
-        st.rerun()
+with st.container(key="cab"):
+    h1, h2 = st.columns([6, 1], vertical_alignment="center")
+    _titulo = titulo_con_logo()
+    if _titulo:
+        h1.markdown(_titulo, unsafe_allow_html=True)
+    else:
+        h1.title("⚡ Mi Cartera Cripto")
+    try:
+        _ajustes = h2.popover("⚙️", help="Ajustes y actualizar datos")
+    except Exception:                      # versiones antiguas de Streamlit sin popover
+        _ajustes = h2.expander("⚙️")
+    with _ajustes:
+        use_live = st.toggle("Precio en vivo", value=True,
+                             help="Activado: precio actual de Kraken (cada 30 s). Desactivado: el precio de tu Google Sheet.")
+        if st.button("🔄 Actualizar datos", **WIDE):
+            st.cache_data.clear()
+            st.rerun()
+
 
 def precargar():
     """Pide A LA VEZ todo lo que viene de internet (Google Sheets, Kraken, noticias, alertas).
