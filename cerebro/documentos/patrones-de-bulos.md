@@ -15,3 +15,5 @@ actualizado: 2026-10-05
 - "Bonificación del 99 % en Sucesiones en Cataluña" circula como general: solo es fija para cónyuge; hijos/ascendientes tienen escala decreciente.
 - Titular "X cae 50%" sin decir qué cotiza: la caída de XRPN fue de la acción de la SPAC (Armada) antes de fusionarse; pedir ticker, fecha y fuente.
 - Cifras redondeadas o mezcladas en vídeos ("300 votos" = 294 solo en la Cámara; "ni un demócrata" sin comprobar): contrastar con clerk.house.gov / congress.gov.
+- Discurso antiguo (Lagarde, FMI) presentado como noticia actual y como "portazo a EE. UU.": pedir fecha y contexto del clip.
+- "Primera prueba de cumplimiento" (U.S. Bank/USBDC): piloto interno sin clientes ni fecha comercial; no equivale a adopción ni a demanda de XLM.

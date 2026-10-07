@@ -15,3 +15,5 @@ actualizado: 2026-10-05
 - rwa.xyz, API de CoinGecko y Kraken (públicas, con marca de tiempo) sirven para verificar cifras de Stellar; atc.gencat.cat para Sucesiones en Cataluña. congress.gov y banking.senate.gov bloquean WebFetch (403).
 - Despeja La X (YouTube, ES): útil por citas originales (CEO Evernorth, Selig) y cálculos claros; sesgo de tenedor XRP y sin enlaces. Fiabilidad media. Nota CFTC 9307-26 en cftc.gov.
 - sec.gov/newsroom/press-releases y clerk.house.gov: primarias para reglas SEC y votos de la Cámara. federalregister.gov redirige a un bloqueo desde WebFetch.
+- Primarias útiles: ripple.com/ripple-press (CSD BR), usbank.com (USBDC), ecb.europa.eu (Pontes); rwa.xyz para RWA distribuido. Cifras de RWA varían según métrica.
+- Despeja La X: cuenta compras propias de XLM y enlaza perfil, podcast y web (Bitbabo) [VERIFICAR afiliados]: conflicto de interés; entrevistas traducidas por el canal.
