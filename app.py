@@ -102,6 +102,26 @@ def ajustes_movil():
     try:
         components.html("""<script>
     (function () {
+      /* Abierta desde la página de entrada (via=shell, dentro de un marco): Streamlit la envuelve en otra página que añade una
+         barra "Built with Streamlit" abajo y un margen de 2 px. Esa envoltura es del mismo origen que la app, así que se
+         puede retocar desde aquí: se oculta la barra y el marco ocupa la pantalla entera, sin recortar nada. */
+      try {
+        var via = new URL(window.parent.location.href).searchParams.get('via');
+        var w = window.parent.parent.document;
+        if (via === 'shell' && w && !w.getElementById('ajuste-marco')) {
+          var s = w.createElement('style'); s.id = 'ajuste-marco';
+          s.textContent = 'html, body { background: #0b0f17 !important; }'
+            + '[class*="_stateContainer_"] { position: fixed !important; inset: 0 !important; width: 100% !important; height: 100% !important; margin: 0 !important; padding: 0 !important; }'
+            + '[class*="_stateContainer_"] iframe, iframe[class*="_iframe_"] { width: 100% !important; height: 100% !important; border: 0 !important; }'
+            + '[class*="_container_"]:has([class*="_hostedName_"]) { display: none !important; }';
+          w.head.appendChild(s);
+          /* respaldo para navegadores sin :has() — oculta el contenedor fijo que contiene el texto del pie */
+          [].slice.call(w.querySelectorAll('[class*="_hostedName_"]')).forEach(function (e) {
+            var p = e; while (p && p !== w.body && w.defaultView.getComputedStyle(p).position !== 'fixed') p = p.parentElement;
+            if (p && p !== w.body) p.style.display = 'none';
+          });
+        }
+      } catch (e) {}
       var docs = [];
       try { docs.push(window.parent.document); } catch (e) {}
       try { if (window.top !== window.parent) docs.push(window.top.document); } catch (e) {}
@@ -140,11 +160,8 @@ def listo():
 
 
 if str(st.query_params.get("via", "")) == "shell":
-    # Abierta desde la página de entrada (dentro de un marco): ella ya reserva el espacio de la barra de estado del iPhone, y
-    # su marco sobresale 12 px por los lados y arriba (y la parte de abajo queda fuera) para esconder la barra y las esquinas
-    # de Streamlit: se compensa con margen interior para que nada quede pegado al borde
-    st.markdown("<style>.block-container{padding: calc(1.2rem + 12px) calc(1rem + 12px) calc(2rem + 12px) !important}</style>",
-                unsafe_allow_html=True)
+    # Abierta desde la página de entrada (dentro de un marco): ella ya reserva el espacio de la barra de estado del iPhone
+    st.markdown("<style>.block-container{padding-top:1.2rem !important}</style>", unsafe_allow_html=True)
 ajustes_movil()
 candado()
 

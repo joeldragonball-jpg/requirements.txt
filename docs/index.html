@@ -12,14 +12,25 @@
 <meta name="apple-mobile-web-app-title" content="Cartera">
 <link rel="icon" type="image/png" href="assets/icono.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/icono-180.png">
+<!-- Pantalla de arranque oscura con el escudo en iPhone (evita el destello blanco al abrir desde la pantalla de inicio) -->
+<link rel="apple-touch-startup-image" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/splash/1320x2868.png">
+<link rel="apple-touch-startup-image" media="(device-width: 420px) and (device-height: 912px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/splash/1260x2736.png">
+<link rel="apple-touch-startup-image" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/splash/1206x2622.png">
+<link rel="apple-touch-startup-image" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/splash/1290x2796.png">
+<link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/splash/1179x2556.png">
+<link rel="apple-touch-startup-image" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/splash/1284x2778.png">
+<link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/splash/1170x2532.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/splash/1125x2436.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/splash/1242x2688.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/splash/828x1792.png">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="assets/splash/750x1334.png">
 <style>
   html, body { margin: 0; height: 100%; background: #0b0f17; overflow: hidden; }
   /* La app va dentro de este marco, oculta (opacity 0) hasta que avisa de que está lista */
-  /* El marco sobresale 12 px por la izquierda, la derecha y arriba (esquinas redondeadas de Streamlit) y 56 px por abajo
-     (barra "Built with Streamlit"): lo que sobra queda recortado fuera de la pantalla */
-  #app { position: fixed; left: -12px; width: calc(100% + 24px);
-         top: calc(env(safe-area-inset-top, 0px) - 12px);
-         height: calc(100% - env(safe-area-inset-top, 0px) + 12px + 56px);
+  /* La app ocupa la pantalla entera (debajo de la barra de estado del iPhone). La barra "Built with Streamlit" y el margen
+     de Streamlit los oculta la propia app desde dentro, así que no se recorta nada */
+  #app { position: fixed; left: 0; right: 0; bottom: 0; top: env(safe-area-inset-top, 0px);
+         width: 100%; height: calc(100% - env(safe-area-inset-top, 0px));
          border: 0; background: #0b0f17; opacity: 0; transition: opacity .6s ease; }
   #splash { position: fixed; inset: 0; background: #0b0f17; display: flex; flex-direction: column;
             align-items: center; justify-content: center; gap: 26px; transition: opacity .6s ease; z-index: 2; }
@@ -62,8 +73,7 @@
   });
 
   /* embed=true: la app solo se deja ver dentro de un marco con este modo. hide_loading_screen: esconde la pantalla de carga
-     de Streamlit (la sustituye la nuestra). La barra de abajo y las esquinas redondeadas de Streamlit quedan fuera de la
-     pantalla porque el marco es un poco más grande que ella (ver el estilo #app). */
+     de Streamlit (la sustituye la nuestra). */
   marco.src = APP + "?embed=true&embed_options=hide_loading_screen&via=shell" + (k ? "&k=" + encodeURIComponent(k) : "");
   setTimeout(mostrar, 25000);   /* salvavidas: si el aviso nunca llega, la app se ve igualmente */
 })();
