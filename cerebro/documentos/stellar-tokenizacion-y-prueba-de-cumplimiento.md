@@ -36,5 +36,5 @@ RWA, USBDC, RWA distribuido frente a representado, validadores Tier 1.
 No tratada en los vídeos.
 
 ## Dudas y datos a verificar
-- Calendario DTCC (cerebro: oct-2026; Stellar: 2027) [VERIFICAR].
+- DTCC, tres plazos distintos (no contradictorios): tokenización de DTC oct-2026; Collateral AppChain (Chainlink CRE, Besu) 4T-2026; DTC en Stellar 1.ª mitad de 2027 (secundarias: Ledger Insights, Decrypt). El «retraso a Q1 2027» del vídeo está [VERIFICAR].
 - Entrevistada: nombre y medio original [VERIFICAR].

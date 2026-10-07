@@ -27,7 +27,7 @@ La entrevistada defiende que Stellar ya tiene lo que piden los bancos (congelar,
 | 2 | Es «la primera prueba de cumplimiento normativo» y marca el camino de la banca | [ESPECULACIÓN] (Despeja La X) | Según las fuentes, USBDC es solo interno: sin clientes, sin importe publicado y sin fecha comercial |
 | 3 | MoneyGram lanza tarjeta con stablecoin con Rain en Colombia sobre Stellar | **Verificado (secundaria)** | [The Block, 10-sep-2026](https://theblock.co/news/business/2026-09-10-moneygram-card-stablecoin-visa-colombia-414137): tarjeta Visa con USDC; MGUSD «próximamente» |
 | 4 | ~4.000 M$ de RWA en Stellar, +360% anual | **Verificado (secundaria)**, con matiz | Un medio da 3.996 M$ a finales de agosto frente a 868,8 M$ a finales de 2025. **rwa.xyz el 7-oct dio 3,55 MM$ «distribuidos» (+6,9% en 30 d)**: otra métrica y fecha. Para «valor distribuido» es más fiable rwa.xyz |
-| 5 | DTCC elige Stellar; calendario «próxima mitad de 2027» | **Declarado** (entrevista); partner confirmado en secundaria | Búsqueda: «DTCC plans to connect its tokenization service to Stellar». **Contradice** el apunte del cerebro (lanzamiento DTCC en oct-2026): son productos/fases distintos [VERIFICAR] |
+| 5 | DTCC elige Stellar; calendario «próxima mitad de 2027» | **Declarado** (entrevista); partner confirmado en secundaria | Búsqueda: «DTCC plans to connect its tokenization service to Stellar». **No contradice** el cerebro: son productos distintos, ver aclaración abajo |
 | 6 | Uptime 99,99% y caída de 42 min en 2019 | **Declarado** | Sin fuente; no buscado |
 | 7 | Menos del 10% de los RWA se usa en DeFi | **Declarado** (entrevistador) | Sin cifra citada [VERIFICAR] |
 | 8 | Los bancos son ya validadores de Stellar | [VERIFICAR] | El vídeo sostiene que «quieren controlar la red». stellar.org (16-jul-2026, informes previos) anuncia MoneyGram, Figure y Range como validadores Tier 1: eso sí consta. La lectura de «toma de control» es opinión del canal [ESPECULACIÓN] |
@@ -42,5 +42,5 @@ La entrevistada defiende que Stellar ya tiene lo que piden los bancos (congelar,
 
 ## Contraste con el cerebro y con otros vídeos
 - Cifra de RWA: ~4.000 M$ (entrevistada, medio secundario) frente a 3.550 M$ (rwa.xyz, 7-oct): ver fila 4.
-- DTCC: el cerebro dice «lanzamiento previsto oct-2026»; aquí y en el vídeo 2 aparecen otros plazos (Stellar H2 2027; appchain de colateral Q1 2027): **no coinciden**; falta fuente oficial.
+- DTCC son productos distintos (aclaración): (a) servicio de tokenización de DTC, lanzamiento previsto oct-2026 tras pilotos de julio; (b) Collateral AppChain (Chainlink CRE, sobre Besu), producción en 4T-2026; (c) activos tokenizados de DTC en Stellar, primera mitad de 2027 (Ledger Insights, Decrypt, Cointelegraph; nota de DTCC no abierta). Que la DTCC use Stellar no implica compras de XLM.
 - Mismo canal que los otros vídeos de la sesión: **no cuenta como confirmación independiente**.
