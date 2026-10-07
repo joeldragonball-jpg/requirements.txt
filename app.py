@@ -627,11 +627,11 @@ with st.spinner("Cargando cartera..."):
     tx, tx_errores = load_transactions()
     live = live_prices() if use_live else {}
     hist = {tok: price_history(tok) for tok in TOKENS}
-listo()   # datos cargados: la página de entrada retira su pantalla de carga
 
 if pos.empty:
     st.warning("La hoja de resumen no tiene posiciones. Revisa que tenga las columnas 'Token' y 'Cantidad'.")
-    st.stop()   # (listo() ya se llamó justo después de cargar los datos)
+    listo()
+    st.stop()
 
 # --- Posiciones con precio actual ---
 pos["precio"] = pos["token"].map(lambda t: live.get(t, {}).get("precio", np.nan)).astype(float).fillna(pos["precio_hoja"])
@@ -1267,3 +1267,7 @@ with tabs[8]:
                 st.markdown(md(r.resumen))
                 st.markdown(f"💡 *{md(r.por_que)}*")
                 st.markdown(enlace("Leer la noticia completa →", r.url))
+
+# Última línea: todo lo de arriba ya está dibujado, así que la página de entrada retira su pantalla de carga ahora
+# (antes se retiraba al cargar los datos y se veían las pestañas y gráficos montándose: cortes y parpadeos)
+listo()

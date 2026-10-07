@@ -67,7 +67,7 @@
     if (e.origin !== new URL(APP).origin) return;
     var d = e.data || {};
     if (d.tipo !== "cartera-listo") return;
-    setTimeout(mostrar, 250);
+    setTimeout(mostrar, 500);
     /* Tras acertar la contraseña, la huella se guarda en ESTA dirección para que puedas ponerla en favoritos */
     if (d.k && d.k !== k) { k = d.k; try { history.replaceState(null, "", "?k=" + encodeURIComponent(d.k)); } catch (err) {} }
   });
