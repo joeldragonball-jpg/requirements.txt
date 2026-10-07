@@ -10,8 +10,9 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Cartera">
-<link rel="icon" type="image/png" href="assets/icono.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icono-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/icono-180.png">
+<link rel="manifest" href="manifest.webmanifest">
 <!-- Pantalla de arranque oscura lisa (el escudo lo dibuja solo la pantalla de carga de abajo, para que no se vea doble) en iPhone (evita el destello blanco al abrir desde la pantalla de inicio) -->
 <link rel="apple-touch-startup-image" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/splash/1320x2868.png">
 <link rel="apple-touch-startup-image" media="(device-width: 420px) and (device-height: 912px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="assets/splash/1260x2736.png">
@@ -34,7 +35,9 @@
          border: 0; background: #0b0f17; opacity: 0; transition: opacity .6s ease; }
   #splash { position: fixed; inset: 0; background: #0b0f17; display: flex; flex-direction: column;
             align-items: center; justify-content: center; gap: 26px; transition: opacity .6s ease; z-index: 2; }
-  #splash.fuera { opacity: 0; pointer-events: none; }
+  #splash.fuera { opacity: 0; pointer-events: none; transition-duration: .45s; }
+  #marca { display: flex; flex-direction: column; align-items: center; gap: 26px; transition: opacity .25s ease; }
+  #splash.apaga #marca { opacity: 0; }
   #splash img { width: min(150px, 38vw); animation: respirar 2.6s ease-in-out infinite; }
   .barra { width: 110px; height: 2px; border-radius: 2px; background: #1b2230; overflow: hidden; }
   .barra::after { content: ""; display: block; width: 45%; height: 100%;
@@ -46,7 +49,7 @@
 </style>
 </head>
 <body>
-<div id="splash"><img src="assets/icono-oscuro-256.png" alt="Mi Cartera Cripto"><div class="barra"></div></div>
+<div id="splash"><div id="marca"><img src="assets/icono-oscuro-256.png" alt="Mi Cartera Cripto"><div class="barra"></div></div></div>
 <iframe id="app" title="Mi Cartera Cripto" allow="clipboard-write"></iframe>
 <script>
 (function () {
@@ -57,9 +60,13 @@
   function mostrar() {
     if (listo) return;
     listo = true;
-    marco.style.opacity = 1;
-    splash.classList.add("fuera");
-    setTimeout(function () { splash.style.display = "none"; }, 800);
+    /* Primero se apaga solo el escudo (sobre fondo oscuro) y DESPUÉS aparece la app: nunca se ven los dos a la vez (así no se duplica) */
+    splash.classList.add("apaga");
+    setTimeout(function () {
+      marco.style.opacity = 1;
+      splash.classList.add("fuera");
+      setTimeout(function () { splash.style.display = "none"; }, 600);
+    }, 280);
   }
 
   /* La app avisa cuando ya ha dibujado la pantalla (contraseña o cartera) */
@@ -75,6 +82,7 @@
   /* embed=true: la app solo se deja ver dentro de un marco con este modo. hide_loading_screen: esconde la pantalla de carga
      de Streamlit (la sustituye la nuestra). */
   marco.src = APP + "?embed=true&embed_options=hide_loading_screen&via=shell" + (k ? "&k=" + encodeURIComponent(k) : "");
+  if ("serviceWorker" in navigator) { try { navigator.serviceWorker.register("sw.js"); } catch (err) {} }
   setTimeout(mostrar, 25000);   /* salvavidas: si el aviso nunca llega, la app se ve igualmente */
 })();
 </script>
