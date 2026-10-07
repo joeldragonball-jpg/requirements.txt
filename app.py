@@ -3,11 +3,13 @@ import pandas as pd
 import plotly.graph_objects as go
 import requests
 import streamlit as st
+import base64
 import hashlib
 import hmac
 import html as html_lib
 import threading
 import time
+from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -17,7 +19,9 @@ try:
 except ImportError:
     tomllib = None
 
-st.set_page_config(page_title="Mi Cartera Cripto", page_icon="⚡", layout="wide")
+ASSETS = Path(__file__).parent / "assets"   # icono del escudo (sin texto) para la pestaña y la cabecera
+st.set_page_config(page_title="Mi Cartera Cripto", layout="wide",
+                   page_icon=str(ASSETS / "icono.png") if (ASSETS / "icono.png").exists() else "⚡")
 
 st.markdown("""
     <style>
@@ -477,8 +481,24 @@ def fifo_realized(tx):
 # =============================================================================
 # CABECERA Y CARGA
 # =============================================================================
+def titulo_con_logo():
+    """Título con el icono del escudo. Si falta el archivo, vuelve al título de siempre."""
+    p = ASSETS / "icono-96.png"
+    if not p.exists():
+        return None
+    b64 = base64.b64encode(p.read_bytes()).decode()
+    return ('<div style="display:flex;align-items:center;gap:14px">'
+            f'<img src="data:image/png;base64,{b64}" style="width:52px;height:52px;border-radius:12px;flex:none">'
+            '<h1 style="margin:0;padding:0;font-size:clamp(1.6rem,5vw,2.4rem);font-weight:700;line-height:1.1">'
+            'Mi Cartera Cripto</h1></div>')
+
+
 h1, h2, h3 = st.columns([3, 1.3, 1], vertical_alignment="center")
-h1.title("⚡ Mi Cartera Cripto")
+_titulo = titulo_con_logo()
+if _titulo:
+    h1.markdown(_titulo, unsafe_allow_html=True)
+else:
+    h1.title("⚡ Mi Cartera Cripto")
 use_live = h2.toggle("Precio en vivo", value=True,
                      help="Activado: precio actual de Kraken (cada 30 s). Desactivado: el precio de tu Google Sheet.")
 if h3.button("🔄 Actualizar"):
