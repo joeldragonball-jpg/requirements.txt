@@ -43,11 +43,11 @@ st.markdown("""
     .kpi.hero .val {font-size: 2.4rem; line-height: 1.2;}
     .meta {color: #64748b; font-size: 0.72rem; margin: 2px 2px 14px;}
     /* Menú principal: losetas cuadradas con icono grande (4 en ordenador, 2x2 en el móvil) */
-    .st-key-grupo_menu div[role="radiogroup"] {display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; width: 100%;}
-    .st-key-grupo_menu div[role="radiogroup"] > label {flex-direction: column; justify-content: center; text-align: center;
+    [class*="st-key-grupo_menu"] div[role="radiogroup"] {display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; width: 100%;}
+    [class*="st-key-grupo_menu"] div[role="radiogroup"] > label {flex-direction: column; justify-content: center; text-align: center;
                                                        min-height: 84px; border-radius: 14px; padding: 8px;}
-    .st-key-grupo_menu div[role="radiogroup"] > label p {font-size: 0.95rem; line-height: 1.35; text-align: center;}
-    .st-key-grupo_menu div[role="radiogroup"] > label p::first-line {font-size: 1.9rem;}
+    [class*="st-key-grupo_menu"] div[role="radiogroup"] > label p {font-size: 0.95rem; line-height: 1.35; text-align: center;}
+    [class*="st-key-grupo_menu"] div[role="radiogroup"] > label p::first-line {font-size: 1.9rem;}
     /* Móvil/tablet: sin zoom al tocar dos veces ni al pellizcar los gráficos; el dedo desliza la página */
     html, body {touch-action: manipulation;}
     .js-plotly-plot, .js-plotly-plot * {touch-action: pan-y !important;}
@@ -58,6 +58,10 @@ st.markdown("""
     div[role="radiogroup"] > label:has(input:checked) {background: #1d4ed8; border-color: #3b82f6;}
     div[role="radiogroup"] > label > div:first-child {display: none;}
     div[role="radiogroup"] > label p {margin: 0; font-weight: 600;}
+    /* Menú del cerebro: 9 losetas, todas en una fila en pantallas anchas */
+    @media (min-width: 900px) {
+        [class*="st-key-grupo_menu_cerebro"] div[role="radiogroup"] {grid-template-columns: repeat(9, 1fr);}
+    }
     /* Apartados del grupo: tarjetas en vertical con título y descripción */
     [class*="st-key-sub_"] div[role="radiogroup"] {display: flex; flex-direction: column; gap: 8px; width: 100%;}
     [class*="st-key-sub_"] div[role="radiogroup"] > label {width: 100%; justify-content: flex-start; padding: 10px 14px;
@@ -74,8 +78,8 @@ st.markdown("""
         .kpis {grid-template-columns: repeat(2, 1fr); gap: 8px;}
         .kpi .val {font-size: 1.2rem;}
         .kpi.hero .val {font-size: 2.1rem;}
-        .st-key-grupo_menu div[role="radiogroup"] {grid-template-columns: repeat(3, 1fr); gap: 8px;}
-        .st-key-grupo_menu label[data-testid="stRadioOption"] p {font-size: 0.78rem;}
+        [class*="st-key-grupo_menu"] div[role="radiogroup"] {grid-template-columns: repeat(3, 1fr); gap: 8px;}
+        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p {font-size: 0.78rem;}
     }
 
     /* --- Opciones de los menús (selectores reales: label[data-testid="stRadioOption"]) --- */
@@ -88,9 +92,9 @@ st.markdown("""
     .st-key-seccion [role="radiogroup"] {display: flex; gap: 8px;}
     .st-key-seccion label[data-testid="stRadioOption"] {width: auto; padding: 6px 16px;}
     /* Losetas del menú principal */
-    .st-key-grupo_menu label[data-testid="stRadioOption"] {height: 100%; min-height: 84px; justify-content: center; text-align: center; padding: 6px 4px;}
-    .st-key-grupo_menu label[data-testid="stRadioOption"] > div {width: 100%; justify-content: center;}
-    .st-key-grupo_menu label[data-testid="stRadioOption"] p {text-align: center; font-size: 0.95rem; line-height: 1.35;}
+    [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] {height: 100%; min-height: 84px; justify-content: center; text-align: center; padding: 6px 4px;}
+    [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] > div {width: 100%; justify-content: center;}
+    [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p {text-align: center; font-size: 0.95rem; line-height: 1.35;}
     /* Tarjetas de los apartados */
     [class*="st-key-sub_"] label[data-testid="stRadioOption"] {min-height: 60px; justify-content: flex-start;}
     [class*="st-key-sub_"] label[data-testid="stRadioOption"][data-selected="true"] {background: #16233d; border-color: #3b82f6;}
@@ -98,8 +102,8 @@ st.markdown("""
     [class*="st-key-sub_"] label[data-testid="stRadioOption"] p strong {color: #e5e7eb; font-size: 1rem; font-weight: 600;}
     [class*="st-key-sub_"] [role="radiogroup"] > div {width: 100%;}
     [class*="st-key-sub_"] label[data-testid="stRadioOption"] > div {width: 100%;}
-    .st-key-grupo_menu [role="radiogroup"] > div {width: 100%; height: 100%;}
-    .st-key-grupo_menu label[data-testid="stRadioOption"] p::first-line {font-size: 1.9rem;}
+    [class*="st-key-grupo_menu"] [role="radiogroup"] > div {width: 100%; height: 100%;}
+    [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p::first-line {font-size: 1.9rem;}
     /* Cabecera: título a la izquierda y ajustes a la derecha en la misma fila, también en el móvil */
     .st-key-cab [data-testid="stHorizontalBlock"] {flex-wrap: nowrap !important; align-items: center;}
     .st-key-cab [data-testid="stColumn"] {min-width: 0 !important;}

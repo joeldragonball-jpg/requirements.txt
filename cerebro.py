@@ -159,7 +159,8 @@ Todavía no hay apuntes. Para añadirlos:
 
 def mostrar():
     docs = cargar_apuntes()
-    st.title("🧠 Mi Cerebro")
+    st.markdown("<h1 style='margin:0 0 8px;font-size:clamp(1.6rem,5vw,2.2rem);font-weight:700'>🧠 Mi Cerebro</h1>",
+                unsafe_allow_html=True)
     if not docs:
         st.info(INSTRUCCIONES_VACIO)
         return
@@ -173,44 +174,39 @@ def mostrar():
     principales = [d for d in docs if "/" not in d["archivo"] and "\\" not in d["archivo"]]
     semanas = sum(1 for d in docs if d["archivo"].startswith("actualidad"))
     enviados = sum(1 for d in docs if d["archivo"].startswith("documentos"))
-    st.caption(" · ".join(f"{d['titulo']} (actualizado {d['meta'].get('actualizado', '—')})" for d in principales)
-               + (f" · {enviados} documento(s) enviados al bot" if enviados else "")
-               + (f" · {semanas} semana(s) de actualidad" if semanas else ""))
-    c = st.columns(4)
-    c[0].metric("📄 Documentos", len(docs))
-    c[1].metric("📚 Bloques temáticos", n_temas)
-    c[2].metric("🔤 Conceptos", len(todos_conceptos))
+    import html as _h
+
+    def tarjeta(etiqueta, valor, ayuda="", color=None):
+        estilo = f" style='color:{color}'" if color else ""
+        titulo = f" title='{_h.escape(ayuda, quote=True)}'" if ayuda else ""
+        return f"<div class='kpi'{titulo}><div class='lbl'>{etiqueta}</div><div class='val'{estilo}>{valor}</div></div>"
+
     if verif:
-        pendientes = sum(1 for v in verif.values() if v.get("estado") in ("sin resolver", "corregido"))
-        c[3].metric("⚠️ Datos por revisar", pendientes,
-                    help="Datos corregidos o sin resolver tras la verificación automática. Detalle en 'Opiniones y dudas'.")
+        pend = sum(1 for v in verif.values() if v.get("estado") in ("sin resolver", "corregido"))
+        t_rev = tarjeta("⚠️ Datos por revisar", pend, "Datos corregidos o sin resolver tras la verificación automática. "
+                        "Detalle en 'Dudas'.", "#f59e0b" if pend else None)
     else:
-        c[3].metric("⚠️ Datos a verificar", sum(d["texto"].count("[VERIFICAR") for d in docs))
+        pend = sum(d["texto"].count("[VERIFICAR") for d in docs)
+        t_rev = tarjeta("⚠️ Datos a verificar", pend, "", "#f59e0b" if pend else None)
+    pie = " · ".join(f"{_h.escape(d['titulo'])} (actualizado {_h.escape(str(d['meta'].get('actualizado', '—')))})" for d in principales)
+    pie += (f" · {enviados} documento(s) enviados al bot" if enviados else "") + (f" · {semanas} semana(s) de actualidad" if semanas else "")
+    st.markdown("<div class='kpis'>" + tarjeta("📄 Documentos", len(docs)) + tarjeta("📚 Bloques temáticos", n_temas)
+                + tarjeta("🔤 Conceptos", len(todos_conceptos)) + t_rev + f"</div><div class='meta'>{pie}</div>",
+                unsafe_allow_html=True)
 
     buscar = st.text_input("🔎 Buscar en todos tus apuntes", placeholder="p. ej. LTV, Modelo 721, Ormuz, FIFO…")
     if buscar.strip():
         mostrar_busqueda(docs, buscar.strip())
 
-    tabs = st.tabs(["📚 Apuntes", "🔤 Glosario", "📊 Datos", "🎯 Mi cartera y fiscalidad",
-                    "💭 Opiniones y dudas", "📰 Actualidad", "🗺️ Mapa", "💬 Pregúntale", "💸 Consumo IA"])
-    with tabs[0]:
-        tab_apuntes(docs)
-    with tabs[1]:
-        tab_glosario(todos_conceptos)
-    with tabs[2]:
-        tab_datos(docs)
-    with tabs[3]:
-        tab_cartera(docs)
-    with tabs[4]:
-        tab_opiniones(docs, verif)
-    with tabs[5]:
-        tab_actualidad(docs)
-    with tabs[6]:
-        tab_mapa(docs)
-    with tabs[7]:
-        tab_chat(docs)
-    with tabs[8]:
-        tab_consumo()
+    # Menú de losetas (mismo estilo que el de la cartera); solo se ejecuta el apartado elegido
+    apartados = [("📚 Apuntes", lambda: tab_apuntes(docs)), ("🔤 Glosario", lambda: tab_glosario(todos_conceptos)),
+                 ("📊 Datos", lambda: tab_datos(docs)), ("🎯 Mi cartera", lambda: tab_cartera(docs)),
+                 ("💭 Dudas", lambda: tab_opiniones(docs, verif)), ("📰 Actualidad", lambda: tab_actualidad(docs)),
+                 ("🗺️ Mapa", lambda: tab_mapa(docs)), ("💬 Pregúntale", lambda: tab_chat(docs)),
+                 ("💸 Consumo", lambda: tab_consumo())]
+    elegido = st.radio("Apartado", range(len(apartados)), horizontal=True, label_visibility="collapsed",
+                       key="grupo_menu_cerebro", format_func=lambda k: apartados[k][0].replace(" ", "  \n", 1))
+    apartados[elegido][1]()
 
 
 def elegir_doc(docs, clave):
