@@ -4,6 +4,7 @@ revísalo con tu asesor o con el programa de la renta."""
 import csv
 import html
 import io
+import math
 from collections import defaultdict, deque
 from datetime import date, datetime
 
@@ -12,13 +13,42 @@ def _fecha(f):
     return f.date() if isinstance(f, datetime) else f
 
 
+def _vacio(x):
+    return x is None or x != x or (isinstance(x, float) and math.isinf(x))   # None, NaN, NaT o infinito
+
+
+def _validar(ops):
+    """Separa las filas utilizables de las que tienen fecha, cantidad o total vacíos (no se calculan con datos inventados)."""
+    buenas, avisos = [], []
+    for o in ops:
+        f, c, t = o.get("fecha"), o.get("cantidad"), o.get("total")
+        if isinstance(f, str):
+            try:
+                f = date.fromisoformat(f[:10])
+            except ValueError:
+                f = None
+        try:
+            c, t = (None if _vacio(c) else float(c)), (None if _vacio(t) else float(t))
+        except (TypeError, ValueError):
+            c = t = None
+        if _vacio(f) or _vacio(c) or _vacio(t) or c == 0:
+            if not (c == 0 and not _vacio(f) and not _vacio(t)):   # cantidad 0 con el resto bien: se ignora sin aviso
+                avisos.append(f"Fila ignorada por datos vacíos o no válidos: {o.get('token', '?')} "
+                              f"(fecha {'—' if _vacio(f) else f}, cantidad {'—' if _vacio(c) else c}, total {'—' if _vacio(t) else t}). "
+                              "Revisa la hoja [VERIFICAR].")
+            continue
+        buenas.append({**o, "fecha": f, "cantidad": c, "total": t})
+    return buenas, avisos
+
+
 def lotes_fifo(ops):
     """ops: lista de dicts con fecha, token, cantidad (+compra / -venta) y total (€; en ventas, cobrado neto de comisión).
     FIFO conjunto por token (criterio AEAT). El mismo día se procesan antes las compras.
     Devuelve (lineas, abiertos, avisos): una línea por cada lote consumido por cada venta."""
+    ops, avisos = _validar(ops)
     ops = sorted(({**o, "fecha": _fecha(o["fecha"])} for o in ops), key=lambda o: (o["fecha"], 0 if o["cantidad"] > 0 else 1))
     lotes = defaultdict(deque)
-    lineas, avisos = [], []
+    lineas = []
     for o in ops:
         tok = o["token"]
         if o["cantidad"] > 0:
@@ -63,6 +93,10 @@ def _eur(x):
     return f"{x:,.2f} €".replace(",", "§").replace(".", ",").replace("§", ".")
 
 
+def _num(x, dec=4):
+    return f"{x:,.{dec}f}".replace(",", "§").replace(".", ",").replace("§", ".")
+
+
 def csv_anio(lineas, anio):
     buf = io.StringIO()
     w = csv.writer(buf, delimiter=";")
@@ -83,7 +117,7 @@ def html_anio(lineas, avisos, anio, generado=None):
     for l in ls:
         fc = f"{l['f_compra']:%d/%m/%Y}" if l["f_compra"] else "sin compra"
         cuerpo.append(f"<tr><td>{html.escape(l['token'])}</td><td>{fc}</td><td>{l['f_venta']:%d/%m/%Y}</td>"
-                      f"<td class='n'>{l['cantidad']:,.4f}</td><td class='n'>{_eur(l['v_adquisicion'])}</td>"
+                      f"<td class='n'>{_num(l['cantidad'])}</td><td class='n'>{_eur(l['v_adquisicion'])}</td>"
                       f"<td class='n'>{_eur(l['v_transmision'])}</td><td class='n'>{_eur(l['ganancia'])}</td></tr>")
     filas = "".join(cuerpo) or "<tr><td colspan='7'>Sin ventas este año.</td></tr>"
     av = "".join(f"<li>{html.escape(a)}</li>" for a in avisos) or "<li>Ninguno.</li>"

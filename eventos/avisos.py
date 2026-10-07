@@ -1,6 +1,7 @@
 """Aviso diario por Telegram de los eventos del calendario (eventos/calendario.toml). Sin IA, sin APIs de pago.
 - Avisa el día antes y el mismo día de cada evento; los lunes añade un resumen de los próximos 7 días.
 - Si no hay nada que avisar, no envía nada. Sin TELEGRAM_TOKEN imprime el mensaje (modo prueba)."""
+import html
 import os
 import sys
 import tomllib
@@ -20,9 +21,12 @@ def cargar():
     for e in evs:
         if e.get("aproximado"):      # fecha sin confirmar: se muestra en la app pero no se avisa por Telegram
             continue
-        ini = date.fromisoformat(e["fecha"])
-        fin = date.fromisoformat(e.get("hasta", e["fecha"]))
-        out.append({**e, "ini": ini, "fin": fin})
+        try:                          # un evento mal escrito se salta y se avisa por stderr, sin tumbar los demás
+            ini = date.fromisoformat(e["fecha"])
+            fin = date.fromisoformat(e.get("hasta", e["fecha"]))
+            out.append({**e, "ini": ini, "fin": fin, "titulo": e["titulo"]})
+        except Exception as err:
+            print(f"Evento ignorado ({e.get('titulo', '?')}): {type(err).__name__} {err}", file=sys.stderr)
     return sorted(out, key=lambda e: e["ini"])
 
 
@@ -33,7 +37,7 @@ def cuando(d):
 def linea(e, hoy):
     marca = "🔴" if e.get("impacto") == "alto" else "🟡"
     rango = cuando(e["ini"]) + (f" al {cuando(e['fin'])}" if e["fin"] != e["ini"] else "")
-    return f"{marca} <b>{e['titulo']}</b>\n    {rango}. {e.get('detalle', '')}"
+    return f"{marca} <b>{html.escape(str(e['titulo']))}</b>\n    {rango}. {html.escape(str(e.get('detalle', '')))}"
 
 
 def mensaje(hoy, evs, forzar_semana=False):

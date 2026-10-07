@@ -3,6 +3,7 @@
   C) Movimientos grandes de las cuentas de Ripple de eventos/ripple_cuentas.toml: avisa si el saldo de alguna cambia más que
      el umbral entre dos comprobaciones (XRP que sale o entra; no implica venta).
 Memoria entre ejecuciones: eventos/estado-onchain.json. Información pública del ledger, no una recomendación."""
+import html
 import json
 import os
 import sys
@@ -17,6 +18,7 @@ ESTADO = AQUI / "estado-onchain.json"
 NODOS_XRPL = ["https://xrplcluster.com/", "https://s1.ripple.com:51234/", "https://s2.ripple.com:51234/"]
 HORIZON = "https://horizon.stellar.org"
 # Umbrales de problema
+FALLOS_PARA_AVISAR = 2               # un fallo suelto (timeout, nodo caído un momento) no avisa: hacen falta 2 seguidos
 XRPL_EDAD_MAX_S = 60                 # el último ledger validado no debería tener más de 1 minuto
 XRPL_CARGA_MAX = 50                  # load_factor: 1 es normal; muy alto = tarifas disparadas
 STELLAR_EDAD_MAX_S = 120             # Stellar cierra un ledger cada ~5 s
@@ -75,7 +77,7 @@ def cambios_saldo(actuales, previos, umbral_m):
         p = previos.get(et)
         if p is not None and abs(s - p) >= umbral_m:
             d = s - p
-            out.append(f"{'⬆️ entran' if d > 0 else '⬇️ salen'} <b>{abs(d):,.0f} M XRP</b> en {et} "
+            out.append(f"{'⬆️ entran' if d > 0 else '⬇️ salen'} <b>{abs(d):,.0f} M XRP</b> en {html.escape(et)} "
                        f"({p:,.0f} → {s:,.0f} M)".replace(",", "."))
     return out
 
@@ -94,6 +96,7 @@ def main():
     ahora = datetime.now(timezone.utc)
     estado = json.loads(ESTADO.read_text(encoding="utf-8")) if ESTADO.exists() else {}
     inc = estado.get("incidentes", {})
+    fallos = estado.get("fallos", {})   # comprobaciones seguidas con problema por red (se avisa a partir de FALLOS_PARA_AVISAR)
     avisos = []
 
     # A) estado de las redes
@@ -108,12 +111,16 @@ def main():
     except Exception as e:
         comprobaciones["Stellar"] = f"Horizon no responde ({str(e)[:80]})"
     for red, prob in comprobaciones.items():
-        if prob and red not in inc:
-            avisos.append(f"⚠️ <b>{red}</b>: {prob}.")
-            inc[red] = ahora.isoformat()
-        elif not prob and red in inc:
-            avisos.append(f"✅ <b>{red}</b> se ha recuperado.")
-            inc.pop(red)
+        if prob:
+            fallos[red] = fallos.get(red, 0) + 1
+            if fallos[red] >= FALLOS_PARA_AVISAR and red not in inc:
+                avisos.append(f"⚠️ <b>{red}</b>: {html.escape(str(prob))}.")   # el texto del error puede traer «<urlopen error …>»
+                inc[red] = ahora.isoformat()
+        else:
+            fallos.pop(red, None)
+            if red in inc:       # solo se avisa de la recuperación si antes se avisó del problema
+                avisos.append(f"✅ <b>{red}</b> se ha recuperado.")
+                inc.pop(red)
 
     # C) movimientos grandes de cuentas de Ripple
     with open(AQUI / "ripple_cuentas.toml", "rb") as f:
@@ -132,11 +139,11 @@ def main():
                       "\n<i>Que salga XRP de una cuenta no implica que se venda: puede ser un traspaso interno.</i>")
     previos.update(saldos)
 
-    ESTADO.write_text(json.dumps({"incidentes": inc, "saldos": previos, "fecha": ahora.isoformat()},
-                                 ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps({"problemas": comprobaciones, "cuentas": len(saldos), "avisos": len(avisos)}, ensure_ascii=False))
-    if avisos:
+    if avisos:   # primero se envía y después se guarda el estado: si Telegram falla, el aviso se reintenta en la próxima ejecución
         telegram("\n\n".join(avisos) + "\n\n<i>Datos públicos de los ledgers. Información, no una recomendación.</i>")
+    ESTADO.write_text(json.dumps({"incidentes": inc, "fallos": fallos, "saldos": previos, "fecha": ahora.isoformat()},
+                                 ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 if __name__ == "__main__":

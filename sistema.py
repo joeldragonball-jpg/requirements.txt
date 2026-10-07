@@ -34,15 +34,21 @@ def _cabeceras():
     return cab
 
 
-@st.cache_data(ttl=900, show_spinner=False)
+_CACHE_WF = {}   # archivo -> (momento, datos). Solo se guardan respuestas buenas: un error (p. ej. límite de GitHub) no se queda 15 min
+_TTL_WF = 900
+
+
 def estado_workflows():
     """Último resultado de cada workflow. Una sola consulta por workflow cada 15 min (el límite sin token es de 60 por hora)."""
     def uno(w):
         archivo = w[0]
+        hit = _CACHE_WF.get(archivo)
+        if hit and time.time() - hit[0] < _TTL_WF:
+            return archivo, hit[1]
         try:
             r = requests.get(f"https://api.github.com/repos/{REPO}/actions/workflows/{archivo}/runs",
-                             params={"per_page": 10}, headers=_cabeceras(), timeout=12)
-            if r.status_code == 403:
+                             params={"per_page": 10, "status": "completed"}, headers=_cabeceras(), timeout=12)
+            if r.status_code in (403, 429):
                 return archivo, {"error": "límite de consultas de GitHub (se reintenta en unos minutos)"}
             r.raise_for_status()
             # las ejecuciones canceladas (por «concurrency», porque llegó otra más nueva) o saltadas no son un fallo
@@ -52,8 +58,10 @@ def estado_workflows():
                 return archivo, {"error": "sin ejecuciones todavía"}
             ultimo = runs[0]
             ok = next((x for x in runs if x.get("conclusion") == "success"), None)
-            return archivo, {"conclusion": ultimo.get("conclusion"), "cuando": ultimo.get("updated_at"), "url": ultimo.get("html_url"),
-                             "ok_cuando": ok.get("updated_at") if ok else None}
+            datos = {"conclusion": ultimo.get("conclusion"), "cuando": ultimo.get("updated_at"), "url": ultimo.get("html_url"),
+                     "ok_cuando": ok.get("updated_at") if ok else None}
+            _CACHE_WF[archivo] = (time.time(), datos)
+            return archivo, datos
         except Exception as e:
             return archivo, {"error": str(e)[:80]}
     with ThreadPoolExecutor(max_workers=5) as ex:
