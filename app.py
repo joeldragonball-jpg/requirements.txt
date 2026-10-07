@@ -113,8 +113,14 @@ st.markdown("""
     .st-key-cab [data-testid="stColumn"]:last-child {flex: 0 0 auto !important; width: auto !important;}
     /* MÓVIL (al final para que gane a las reglas generales): 4 losetas por fila, texto que cabe sin partirse */
     @media (max-width: 640px) {
-        [class*="st-key-grupo_menu"] div[role="radiogroup"] {grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 6px !important;}
-        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] {padding: 6px 0 !important; min-height: 76px !important;}
+        /* Safari de iPhone encogía el menú a su contenido: se fuerza el ancho completo y columnas con medida propia
+           (ancho de pantalla menos los márgenes de 16 px a cada lado y los 3 huecos de 6 px) */
+        [class*="st-key-grupo_menu"], [class*="st-key-grupo_menu"] [data-testid="stRadio"] {width: 100% !important; max-width: 100% !important;}
+        [class*="st-key-grupo_menu"] div[role="radiogroup"] {width: 100% !important; max-width: 100% !important; box-sizing: border-box;
+                                                           grid-template-columns: repeat(4, calc((100vw - 50px) / 4)) !important;
+                                                           justify-content: space-between !important; gap: 6px !important;}
+        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] {padding: 6px 0 !important; min-height: 76px !important;
+                                                                       width: 100% !important; box-sizing: border-box;}
         [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p {font-size: 0.76rem !important; letter-spacing: -0.02em !important;
                                                                          word-break: keep-all; overflow-wrap: normal;}
         [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p::first-line {font-size: 1.6rem !important;}
