@@ -10,6 +10,8 @@ import html as html_lib
 import threading
 import time
 from pathlib import Path
+
+import streamlit.components.v1 as components
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -28,7 +30,8 @@ st.markdown("""
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
-    .block-container {padding-top: 1.2rem; padding-bottom: 2rem;}
+    .block-container {padding-top: calc(1.2rem + env(safe-area-inset-top, 0px)); padding-bottom: 2rem;}
+    html, body {background-color: #0b0f17;}
     [data-testid="stMetricValue"] {font-size: 1.45rem;}
     /* Tarjetas de indicadores: 5 en fila en ordenador, 2 por fila en el móvil */
     .kpis {display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 4px 0 14px;}
@@ -77,6 +80,41 @@ def candado():
     st.stop()
 
 
+def ajustes_movil():
+    """Streamlit no deja tocar la cabecera de la página, así que se añaden con JavaScript (misma web, mismo origen):
+    - theme-color y estilo de la barra de estado: en iPhone la franja de arriba salía blanca sobre el fondo negro.
+    - icono de la pantalla de inicio (apple-touch-icon) con el escudo, para cuando guardas la app como acceso directo.
+    Si algo falla, no pasa nada: la app funciona igual (solo se ve la franja blanca de siempre)."""
+    icono = "https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/main/assets/icono-180.png"
+    try:
+        components.html("""<script>
+    (function () {
+      var docs = [];
+      try { docs.push(window.parent.document); } catch (e) {}
+      try { if (window.top !== window.parent) docs.push(window.top.document); } catch (e) {}
+      docs.forEach(function (d) {
+        try {
+          function meta(n, c) { var m = d.querySelector('meta[name="' + n + '"]');
+            if (!m) { m = d.createElement('meta'); m.setAttribute('name', n); d.head.appendChild(m); } m.setAttribute('content', c); }
+          meta('theme-color', '#0b0f17'); meta('color-scheme', 'dark');
+          meta('apple-mobile-web-app-capable', 'yes'); meta('mobile-web-app-capable', 'yes');
+          meta('apple-mobile-web-app-status-bar-style', 'black-translucent'); meta('apple-mobile-web-app-title', 'Cartera');
+          var l = d.querySelector('link[rel="apple-touch-icon"]');
+          if (!l) { l = d.createElement('link'); l.setAttribute('rel', 'apple-touch-icon'); d.head.appendChild(l); }
+          l.setAttribute('href', '""" + icono + """'); l.setAttribute('sizes', '180x180');
+          var vp = d.querySelector('meta[name="viewport"]');
+          if (vp && vp.content.indexOf('viewport-fit') < 0) vp.setAttribute('content', vp.content + ', viewport-fit=cover');
+          d.documentElement.style.backgroundColor = '#0b0f17';
+          if (d.body) d.body.style.backgroundColor = '#0b0f17';
+        } catch (e) {}
+      });
+    })();
+    </script>""", height=0)
+    except Exception:   # los ajustes del móvil son un extra: si fallan, la app funciona igual
+        pass
+
+
+ajustes_movil()
 candado()
 
 # Dos secciones con el mismo enlace: la cartera y el cerebro (tus apuntes, en cerebro.py)
@@ -483,12 +521,12 @@ def fifo_realized(tx):
 # =============================================================================
 def titulo_con_logo():
     """Título con el icono del escudo. Si falta el archivo, vuelve al título de siempre."""
-    p = ASSETS / "icono-96.png"
+    p = ASSETS / "icono-oscuro-96.png"   # emblema en tonos claros y fondo transparente: se funde con el tema oscuro
     if not p.exists():
         return None
     b64 = base64.b64encode(p.read_bytes()).decode()
-    return ('<div style="display:flex;align-items:center;gap:14px">'
-            f'<img src="data:image/png;base64,{b64}" style="width:52px;height:52px;border-radius:12px;flex:none">'
+    return ('<div style="display:flex;align-items:center;gap:12px">'
+            f'<img src="data:image/png;base64,{b64}" style="width:56px;height:56px;flex:none">'
             '<h1 style="margin:0;padding:0;font-size:clamp(1.6rem,5vw,2.4rem);font-weight:700;line-height:1.1">'
             'Mi Cartera Cripto</h1></div>')
 
