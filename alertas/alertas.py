@@ -187,6 +187,31 @@ def alerta_brusca(tok, cambio, estado, umbral, ahora, periodo="en 24 h"):
     return f"{icono} <b>{html.escape(tok)}</b> {sentido} un <b>{fmt(cambio, 1, True)} %</b> {periodo}"
 
 
+def alertas_de_watchlist(estado, ahora):
+    """Avisa si un valor de watchlist.toml se mueve más de movimiento_brusco_watchlist_pct en la sesión (una vez por hora, sin IA)."""
+    umbral = CONFIG.get("movimiento_brusco_watchlist_pct", 6)
+    if not umbral or ahora.minute >= 30:      # la ejecución de las :07 de cada hora; la de las :37 se salta (menos peticiones a Yahoo)
+        return []
+    try:
+        with open(AQUI.parent / "watchlist.toml", "rb") as f:
+            valores = tomllib.load(f).get("valores", [])
+    except Exception as e:
+        print(f"watchlist.toml no disponible: {e}")
+        return []
+    alertas = []
+    for v in valores:
+        try:
+            precio, previo = precio_yahoo(v["yahoo"])
+        except Exception:
+            continue
+        cambio = (precio / float(previo) - 1) * 100 if previo else None
+        nombre = f"{v['ticker']} ({v['nombre'].split(' (')[0][:28]})"
+        brusca = alerta_brusca("WL:" + nombre, cambio, estado, umbral, ahora, periodo="en la sesión")
+        if brusca:
+            alertas.append(brusca.replace("WL:", "👀 "))
+    return alertas
+
+
 # ---------------------------------------------------------------- mercados y materias primas (Yahoo Finance, sin IA)
 MERCADOS_VISTOS = {}   # nombre -> (precio, cambio %, moneda) de esta ejecución, para el resumen diario
 
@@ -196,8 +221,12 @@ def precio_yahoo(simbolo):
     r = requests.get(f"https://query1.finance.yahoo.com/v8/finance/chart/{simbolo}",
                      params={"interval": "1d", "range": "5d"}, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
     r.raise_for_status()
-    meta = r.json()["chart"]["result"][0]["meta"]
-    return float(meta["regularMarketPrice"]), meta.get("chartPreviousClose")
+    res = r.json()["chart"]["result"][0]
+    meta = res["meta"]
+    cierres = [c for c in res["indicators"]["quote"][0]["close"] if c is not None]
+    # OJO: meta["chartPreviousClose"] es el cierre de hace ~5 días (antes del rango pedido), no el de ayer: se usa el penúltimo cierre diario
+    previo = cierres[-2] if len(cierres) >= 2 else meta.get("chartPreviousClose")
+    return float(meta["regularMarketPrice"]), previo
 
 
 def alertas_de_mercados(estado, margen, ahora):
@@ -296,6 +325,7 @@ def main():
         if brusca:
             alertas.append(brusca)
     alertas += alertas_de_mercados(estado, margen, ahora)   # Brent, oro, índices... (config: [mercados.*])
+    alertas += alertas_de_watchlist(estado, ahora)          # valores de watchlist.toml con un movimiento brusco
 
     if alertas:
         enviar("🔔 <b>Alerta de precio</b>\n\n" + "\n".join(alertas))

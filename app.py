@@ -1290,6 +1290,21 @@ with tabs[8]:
         n4.metric("Sin valorar", int((nt["valoracion"] == 0).sum()),
                   help="Valóralas en Telegram con los botones: así la IA aprende qué te interesa.")
 
+        with st.expander("📊 Qué fuentes y temas te sirven (según tus 👍/👎)"):
+            def utilidad(col):
+                g = nt.groupby(col)["valoracion"].agg(Enviadas="count", **{"👍": lambda v: int((v == 1).sum()),
+                                                                          "👎": lambda v: int((v == -1).sum())}).reset_index()
+                g["Valoradas"] = g["👍"] + g["👎"]
+                g["% útiles"] = np.where(g["Valoradas"] > 0, g["👍"] / g["Valoradas"].replace(0, np.nan) * 100, np.nan)
+                g["Fiabilidad"] = np.where(g["Valoradas"] >= 5, "con datos", "pocos votos")
+                return g.sort_values(["Valoradas", "Enviadas"], ascending=False)
+            st.caption("Con menos de 5 votos por fuente no hay datos fiables: vota también los 👎, que son los que más enseñan al bot "
+                       "qué descartar.")
+            for etiqueta, col in (("Por tema", "tema"), ("Por fuente", "fuente")):
+                st.markdown(f"**{etiqueta}**")
+                st.dataframe(utilidad(col).style.format({"% útiles": lambda v: pct(v, 0, False)}, na_rep="—"),
+                             hide_index=True, **WIDE)
+
         f1, f2, f3 = st.columns([2, 1, 2])
         temas_sel = f1.multiselect("Tema", sorted(nt["tema"].unique()), default=sorted(nt["tema"].unique()))
         filtro_val = f2.selectbox("Valoración", ["Todas", "👍 Útiles", "👎 No interesantes", "Sin valorar"])
