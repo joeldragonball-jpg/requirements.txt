@@ -565,6 +565,43 @@ def fifo_realized(tx):
     return pd.DataFrame(rows)
 
 
+def _metricas_yahoo(js, hoy):
+    """Precio actual y rentabilidades (1 semana, 3 meses, en el año) a partir de la respuesta del gráfico de Yahoo Finance."""
+    res = js["chart"]["result"][0]
+    meta = res["meta"]
+    cierres = [(datetime.fromtimestamp(t).date(), c) for t, c in zip(res.get("timestamp") or [], res["indicators"]["quote"][0]["close"])
+               if c is not None]
+    if not cierres:
+        raise ValueError("sin datos")
+    ultimo = float(meta.get("regularMarketPrice") or cierres[-1][1])
+
+    def desde(limite):
+        previos = [c for d, c in cierres if d <= limite]
+        return (ultimo / previos[-1] - 1) * 100 if previos else np.nan
+    anio_ant = [c for d, c in cierres if d.year < hoy.year]
+    ytd = (ultimo / anio_ant[-1] - 1) * 100 if anio_ant else (ultimo / cierres[0][1] - 1) * 100
+    return {"moneda": meta.get("currency", ""), "precio": ultimo, "1s": desde(hoy - pd.Timedelta(days=7)),
+            "3m": desde(hoy - pd.Timedelta(days=91)), "ytd": ytd}
+
+
+@st.cache_data(ttl=1800, show_spinner=False)
+def watchlist_datos(simbolos):
+    """Datos de Yahoo Finance (API no oficial, con retraso) de los valores de watchlist.toml, más los cambios a euros."""
+    hoy = datetime.now().date()
+
+    def uno(sim):
+        try:
+            r = requests.get(f"https://query1.finance.yahoo.com/v8/finance/chart/{sim}",
+                             params={"range": "1y", "interval": "1d"}, headers={"User-Agent": "Mozilla/5.0"}, timeout=12)
+            r.raise_for_status()
+            return sim, _metricas_yahoo(r.json(), hoy)
+        except Exception:
+            return sim, None
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        out = dict(ex.map(uno, list(simbolos) + ["EURUSD=X", "EURGBP=X"]))
+    return out
+
+
 # =============================================================================
 # CABECERA Y CARGA
 # =============================================================================
@@ -714,7 +751,7 @@ kpis = [
 st.markdown("<div class='kpis'>" + "".join(kpi_card(*k) for k in kpis) + "</div>", unsafe_allow_html=True)
 
 tabs = st.tabs(["🏠 Inicio", "💼 Posiciones", "📈 Evolución", "📅 Rentabilidad", "🧾 Operaciones",
-                "🛡️ Riesgo", "🧮 Simuladores", "🏛️ Fiscalidad", "📰 Noticias"])
+                "🛡️ Riesgo", "🧮 Simuladores", "🏛️ Fiscalidad", "📰 Noticias", "👀 Watchlist"])
 
 # =============================================================================
 # 0. INICIO — lo esencial de un vistazo
@@ -1275,6 +1312,67 @@ with tabs[8]:
                 st.markdown(md(r.resumen))
                 st.markdown(f"💡 *{md(r.por_que)}*")
                 st.markdown(enlace("Leer la noticia completa →", r.url))
+
+# =============================================================================
+# 9. WATCHLIST — valores que sigues (no son posiciones)
+# =============================================================================
+with tabs[9]:
+    st.caption("Valores que SIGUES (no son posiciones tuyas). Se editan en watchlist.toml. Datos de Yahoo Finance, "
+               "no oficiales y con retraso. Es información, no una recomendación de compra o venta.")
+    wl = []
+    try:
+        if tomllib is not None:
+            with open(Path(__file__).parent / "watchlist.toml", "rb") as fh:
+                wl = tomllib.load(fh).get("valores", [])
+    except Exception:
+        wl = []
+    if not wl:
+        st.info("No se pudo leer watchlist.toml.")
+    else:
+        datos = watchlist_datos(tuple(v["yahoo"] for v in wl))
+        eurusd = (datos.get("EURUSD=X") or {}).get("precio")
+        eurgbp = (datos.get("EURGBP=X") or {}).get("precio")
+
+        def a_euros(d):
+            if not d:
+                return np.nan
+            m, p = d["moneda"], d["precio"]
+            if m == "EUR":
+                return p
+            if m == "USD" and eurusd:
+                return p / eurusd
+            if m == "GBP" and eurgbp:
+                return p / eurgbp
+            if m == "GBp" and eurgbp:
+                return p / 100 / eurgbp
+            return np.nan
+        filas = []
+        for v in wl:
+            d = datos.get(v["yahoo"])
+            filas.append({"Ticker": v["ticker"], "Nombre": v["nombre"], "Categoría": v["categoria"],
+                          "Moneda": d["moneda"] if d else "—", "Precio": d["precio"] if d else np.nan, "Precio (€)": a_euros(d),
+                          "1 semana": d["1s"] if d else np.nan, "3 meses": d["3m"] if d else np.nan,
+                          "En el año": d["ytd"] if d else np.nan})
+        w = pd.DataFrame(filas)
+        fallos = int(w["Precio"].isna().sum())
+        if fallos:
+            st.warning(f"No se pudieron leer {fallos} de {len(w)} valores (Yahoo no respondió). Prueba en unos minutos.")
+        cats = ["Todas"] + sorted(w["Categoría"].unique())
+        cat = st.selectbox("Categoría", cats, key="wl_cat")
+        if cat != "Todas":
+            w = w[w["Categoría"] == cat]
+        graf = w.dropna(subset=["En el año"]).sort_values("En el año")
+        if not graf.empty:
+            fig = go.Figure(go.Bar(x=graf["En el año"], y=graf["Ticker"], orientation="h",
+                                   marker_color=[POS if x >= 0 else NEG for x in graf["En el año"]],
+                                   text=[pct(x, 1) for x in graf["En el año"]], textposition="outside",
+                                   hovertemplate="%{y}: %{x:.1f} %<extra></extra>"))
+            fig = style_fig(fig, height=max(260, 26 * len(graf) + 80))
+            fig.update_layout(title="Rentabilidad en el año (%)", hovermode="closest")
+            chart(fig)
+        st.dataframe(w.style.format({"Precio": lambda v: fmt(v, 2), "Precio (€)": eur, "1 semana": pct, "3 meses": pct,
+                                     "En el año": pct}, na_rep="—")
+                     .map(color_sign, subset=["1 semana", "3 meses", "En el año"]), hide_index=True, **WIDE)
 
 # Última línea: todo lo de arriba ya está dibujado, así que la página de entrada retira su pantalla de carga ahora
 # (antes se retiraba al cargar los datos y se veían las pestañas y gráficos montándose: cortes y parpadeos)
