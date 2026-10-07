@@ -10,3 +10,4 @@ actualizado: 2026-10-05
 - 2026-10-05: ETF BTC -89,9 M$, BTC <86.000 $; XRP ~1,50 $ (leve caída) y XLM -3,9% en 24 h (~0,216 $). ETF XRP sin flujos.
 - Próximos: actas FOMC 7-oct 14:00 ET; PermissionDelegation (XLS-75) 8-oct 21:25 UTC y Batch (XLS-56) ~9-oct en XRPL. Medir el efecto en precio.
 - 2026-10-06: Fed 16-sep subió a 3,75-4,00% (12-0), confirmado en federalreserve.gov; sin reacción medida en XRP/XLM; sin noticias nuevas intradía.
+- 2026-10-07: Ormuz/Brent ~101,5 $ + yields al alza: BTC -3,4%, ETH -5,6%, XRP -5% (1,44 $), liquidaciones 547 M$ (CoinDesk). Macro manda.

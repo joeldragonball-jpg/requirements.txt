@@ -11,3 +11,4 @@ actualizado: 2026-10-05
 - Para Stellar, stellar.org/press es lo primario; Guavy / Coinstrooper (artículos generados por IA) = [VERIFICAR] en DefiLlama / rwa.xyz.
 - Invezz y ripplecoinnews.com: aportan datos (dashboard de enmiendas) pero con sesgo alcista; comprobar en livenet.xrpl.org.
 - Verificables y fiables (6-oct): federalreserve.gov (decisión 16-sep, calendario FOMC) y bls.gov/schedule; livenet.xrpl.org es dinámico y WebFetch no lo lee: usar xrpscan u otra fuente.
+- CoinDesk (con fecha y causa) fiable para precios del día; sitios de "price prediction" (Changelly etc.) = especulación.

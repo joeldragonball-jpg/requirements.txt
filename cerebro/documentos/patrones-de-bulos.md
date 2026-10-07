@@ -11,3 +11,4 @@ actualizado: 2026-10-05
 - Escenarios virales generados con IA ("XRP 500 $ en 2035") se contrastan con datos on-chain: 12 M de pagos de IA solo liquidaron ~6.885 XRP.
 - Resúmenes automáticos de buscador mezclan años y cifras (RWA Stellar 3.060 M$ vs 30.600 M$; "SEC decide el 7-oct" es de 2024): exigir fecha y fuente primaria.
 - 2026-10-06 (intradía): buscadores devuelven precios XRP incompatibles (1,47/1,63/1,78 $ el mismo día); usar solo precio con hora de FXStreet/Cointelegraph.
+- 2026-10-07: buscadores dan precio XRP con rango incoherente (1,47 $ con máx. 1,428 $) y artículos de ene-2026 como si fueran de hoy.
