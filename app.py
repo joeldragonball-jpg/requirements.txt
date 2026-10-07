@@ -62,6 +62,8 @@ st.markdown("""
     @media (min-width: 900px) {
         [class*="st-key-grupo_menu_cerebro"] div[role="radiogroup"] {grid-template-columns: repeat(8, minmax(0, 1fr));}
     }
+    .st-key-noticias_vista [role="radiogroup"] {display: flex; flex-wrap: wrap; gap: 8px;}
+    .st-key-noticias_vista label[data-testid="stRadioOption"] {width: auto; padding: 6px 14px;}
     /* Apartados del grupo: tarjetas en vertical con título y descripción */
     [class*="st-key-sub_"] div[role="radiogroup"] {display: flex; flex-direction: column; gap: 8px; width: 100%;}
     [class*="st-key-sub_"] div[role="radiogroup"] > label {width: 100%; justify-content: flex-start; padding: 10px 14px;
@@ -1428,9 +1430,13 @@ if 8 in _SEL:
                 texto = (vista["titulo"] + " " + vista["resumen"] + " " + vista["por_que"]).str.lower()
                 vista = vista[texto.str.contains(buscar.lower(), regex=False)]
 
+            import vistas
+            modo = st.radio("Ver", ["📂 Por tema", "🏷️ Por etiqueta", "🕒 Recientes"], horizontal=True,
+                            key="noticias_vista", label_visibility="collapsed")
             st.caption(f"{len(vista)} noticias")
             md = lambda s: str(s).replace("$", "\\$")  # evita que Streamlit interprete '$' como fórmula
-            for r in vista.head(100).itertuples():
+
+            def tarjeta_noticia(r):
                 voto = {1: "👍", -1: "👎"}.get(r.valoracion, "")
                 with st.container(border=True):
                     st.markdown(f"**{md(r.titulo)}** {voto}")
@@ -1438,6 +1444,31 @@ if 8 in _SEL:
                     st.markdown(md(r.resumen))
                     st.markdown(f"💡 *{md(r.por_que)}*")
                     st.markdown(enlace("Leer la noticia completa →", r.url))
+
+            def grupo_noticias(nombre, g):
+                utiles = int((g["valoracion"] == 1).sum())
+                titulo = f"{nombre} · {len(g)}" + (f" · 👍 {utiles}" if utiles else "")
+                with st.expander(titulo, expanded=False):
+                    for r in g.head(30).itertuples():
+                        tarjeta_noticia(r)
+
+            if modo == "📂 Por tema":
+                for tema, g in sorted(vista.groupby("tema"), key=lambda x: -len(x[1])):
+                    grupo_noticias(tema, g)
+            elif modo == "🏷️ Por etiqueta":
+                et = vista.assign(etiquetas=[vistas.etiquetar(r.titulo, r.resumen, r.tema) for r in vista.itertuples()])
+                st.caption("Las etiquetas se detectan por palabras clave; una noticia puede estar en varias.")
+                orden = sorted(vistas.ETIQUETAS, key=lambda e: -sum(e in x for x in et["etiquetas"]))
+                for e in orden:
+                    g = et[[e in x for x in et["etiquetas"]]]
+                    if len(g):
+                        grupo_noticias(e, g)
+                sin = et[[not x for x in et["etiquetas"]]]
+                if len(sin):
+                    grupo_noticias("📄 Sin etiqueta", sin)
+            else:
+                for r in vista.head(100).itertuples():
+                    tarjeta_noticia(r)
 
 # =============================================================================
 # 9. WATCHLIST — valores que sigues (no son posiciones)

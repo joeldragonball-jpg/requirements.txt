@@ -257,15 +257,16 @@ def tab_apuntes(docs):
 
 
 def tab_glosario(lista):
+    import vistas
     filtro = st.text_input("Filtrar conceptos", placeholder="p. ej. colateral", key="filtro_glosario")
     if filtro:
         f = normalizar(filtro)
         lista = [c for c in lista if f in normalizar(c["concepto"]) or f in normalizar(c["definicion"])]
-    st.caption(f"{len(lista)} conceptos")
-    col1, col2 = st.columns(2, gap="large")
-    for i, c in enumerate(lista):
-        with (col1 if i % 2 == 0 else col2):
-            st.markdown(f"**{md(c['concepto'])}**  \n{md(c['definicion'])}")
+    st.caption(f"{len(lista)} conceptos, ordenados de la A a la Z")
+    if not lista:
+        st.info("Ningún concepto coincide con ese filtro.")
+        return
+    st.markdown(vistas.ESTILO_GLOSARIO + vistas.html_glosario(lista), unsafe_allow_html=True)
 
 
 def tab_datos(docs):
