@@ -1206,6 +1206,14 @@ with tabs[7]:
     st.caption("Cálculo orientativo con método FIFO (las primeras unidades compradas son las primeras vendidas), "
                "que es el que aplica Hacienda en España. No sustituye a un asesor fiscal: no incluye permutas "
                "cripto-cripto, staking ni otras rentas.")
+    gratis = tx[(tx["cantidad"] > 0) & (tx["total"] <= 0)] if not tx.empty else tx
+    if not gratis.empty:
+        st.warning("Hay compras con coste 0 € en tu hoja (se calculan como regalo, sin coste de adquisición): "
+                   + "; ".join(f"{r.fecha:%d/%m/%Y} {r.token} {fmt(r.cantidad, 4)}" for r in gratis.itertuples())
+                   + ". Si fueron traspasos o recompensas con valor de mercado, pon su coste real en la hoja: "
+                     "con coste 0 € la ganancia de las ventas posteriores sale inflada. [VERIFICAR]")
+    st.caption("Solo se calculan las monedas que tienes en tu hoja de control (XRP, XLM…). Si en algún año vendiste otras "
+               "(p. ej. LTC, ETH o ADA en un exchange), esas ventas no están aquí y también cuentan en la renta.")
     if tx.empty or (tx["cantidad"] < 0).sum() == 0:
         st.info("No hay ventas registradas, así que no hay ganancias realizadas que declarar.")
     else:
