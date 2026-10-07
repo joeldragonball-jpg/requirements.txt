@@ -34,11 +34,20 @@ st.markdown("""
     html, body {background-color: #0b0f17;}
     [data-testid="stMetricValue"] {font-size: 1.45rem;}
     /* Tarjetas de indicadores: 5 en fila en ordenador, 2 por fila en el móvil */
-    .kpis {display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 4px 0 14px;}
-    .kpi {background: #151921; border: 1px solid #262c3a; border-radius: 12px; padding: 10px 14px;}
-    .kpi .lbl {color: #94a3b8; font-size: 0.8rem;}
-    .kpi .val {color: #e5e7eb; font-size: 1.35rem; font-weight: 600; line-height: 1.5; white-space: nowrap;}
-    .kpi .dlt {font-size: 0.8rem; font-weight: 600;}
+    .kpis {display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 4px 0 4px;}
+    .kpi {background: #151921; border: 1px solid #262c3a; border-radius: 14px; padding: 12px 14px;}
+    .kpi .lbl {color: #94a3b8; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em;}
+    .kpi .val {color: #e5e7eb; font-size: 1.4rem; font-weight: 700; line-height: 1.4; white-space: nowrap;}
+    .kpi .dlt {font-size: 0.85rem; font-weight: 600;}
+    .kpi.hero {grid-column: 1 / -1; background: linear-gradient(135deg, #16233d 0%, #151921 70%); border-color: #2a3a5c; padding: 16px 18px;}
+    .kpi.hero .val {font-size: 2.4rem; line-height: 1.2;}
+    .meta {color: #64748b; font-size: 0.72rem; margin: 2px 2px 14px;}
+    /* Menú principal: losetas cuadradas con icono grande (4 en ordenador, 2x2 en el móvil) */
+    .st-key-grupo_menu div[role="radiogroup"] {display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: 100%;}
+    .st-key-grupo_menu div[role="radiogroup"] > label {flex-direction: column; justify-content: center; text-align: center;
+                                                       min-height: 84px; border-radius: 14px; padding: 8px;}
+    .st-key-grupo_menu div[role="radiogroup"] > label p {font-size: 0.95rem; line-height: 1.35; text-align: center;}
+    .st-key-grupo_menu div[role="radiogroup"] > label p::first-line {font-size: 1.9rem;}
     /* Móvil/tablet: sin zoom al tocar dos veces ni al pellizcar los gráficos; el dedo desliza la página */
     html, body {touch-action: manipulation;}
     .js-plotly-plot, .js-plotly-plot * {touch-action: pan-y !important;}
@@ -50,12 +59,13 @@ st.markdown("""
     div[role="radiogroup"] > label > div:first-child {display: none;}
     div[role="radiogroup"] > label p {margin: 0; font-weight: 600;}
     /* Pestañas: reparten el ancho (sin deslizar) */
-    button[role="tab"] {flex: 1 1 0; padding: 10px 4px; justify-content: center;}
+    button[role="tab"] {flex: 1 1 0; padding: 10px 4px; justify-content: center; min-height: 46px; font-size: 0.9rem;}
     @media (max-width: 640px) {
         button[role="tab"] {font-size: 0.82rem; padding: 10px 2px;}
         .kpis {grid-template-columns: repeat(2, 1fr); gap: 8px;}
-        .kpi:first-child {grid-column: span 2;}
-        .kpi .val {font-size: 1.15rem;}
+        .kpi .val {font-size: 1.2rem;}
+        .kpi.hero .val {font-size: 2.1rem;}
+        .st-key-grupo_menu div[role="radiogroup"] {grid-template-columns: repeat(2, 1fr);}
     }
     </style>
 """, unsafe_allow_html=True)
@@ -631,17 +641,22 @@ def titulo_con_logo():
             'Mi Cartera Cripto</h1></div>')
 
 
-h1, h2, h3 = st.columns([3, 1.3, 1], vertical_alignment="center")
+h1, h2 = st.columns([5, 1], vertical_alignment="center")
 _titulo = titulo_con_logo()
 if _titulo:
     h1.markdown(_titulo, unsafe_allow_html=True)
 else:
     h1.title("⚡ Mi Cartera Cripto")
-use_live = h2.toggle("Precio en vivo", value=True,
-                     help="Activado: precio actual de Kraken (cada 30 s). Desactivado: el precio de tu Google Sheet.")
-if h3.button("🔄 Actualizar"):
-    st.cache_data.clear()
-    st.rerun()
+try:
+    _ajustes = h2.popover("⚙️", help="Ajustes y actualizar datos")
+except Exception:                      # versiones antiguas de Streamlit sin popover
+    _ajustes = h2.expander("⚙️")
+with _ajustes:
+    use_live = st.toggle("Precio en vivo", value=True,
+                         help="Activado: precio actual de Kraken (cada 30 s). Desactivado: el precio de tu Google Sheet.")
+    if st.button("🔄 Actualizar datos", **WIDE):
+        st.cache_data.clear()
+        st.rerun()
 
 def precargar():
     """Pide A LA VEZ todo lo que viene de internet (Google Sheets, Kraken, noticias, alertas).
@@ -705,7 +720,7 @@ hoy_eur = pos["hoy_eur"].sum()
 hoy_pct = hoy_eur / (val_total - hoy_eur) * 100 if live else np.nan
 
 fuente = "Kraken en vivo" if live else "Google Sheets"
-st.caption(f"Datos: Google Sheets · Precios: {fuente} · Actualizado {datetime.now(MADRID):%d/%m/%Y %H:%M:%S}")
+_pie_datos = f"Google Sheets · precios: {fuente} · {datetime.now(MADRID):%d/%m/%Y %H:%M}"
 
 # --- Avisos de calidad de datos ---
 avisos = list(tx_errores)
@@ -743,33 +758,40 @@ if not tx.empty:
     tir = xirr(list(flujos["fecha"].clip(upper=pd.Timestamp.now().normalize())) + [pd.Timestamp.now().normalize()],
                list(-flujos["total"]) + [val_total])
 
-def kpi_card(label, value, delta=None, ayuda=None):
-    """Tarjeta HTML: así en el móvil caben 2 por fila en vez de una debajo de otra."""
+def kpi_card(label, value, delta=None, ayuda=None, hero=False, colorear=False):
+    """Tarjeta HTML: así en el móvil caben 2 por fila en vez de una debajo de otra.
+    hero: la tarjeta grande de arriba. colorear: valor en verde/rojo según su signo."""
     dlt = ""
     if delta and delta != "—":
         color = NEG if delta.strip().startswith("-") else POS
         dlt = f"<div class='dlt' style='color:{color}'>{delta}</div>"
     titulo = f" title='{ayuda}'" if ayuda else ""
-    return f"<div class='kpi'{titulo}><div class='lbl'>{label}</div><div class='val'>{value}</div>{dlt}</div>"
+    estilo = ""
+    if colorear and value not in ("—", None):
+        estilo = f" style='color:{NEG if str(value).strip().startswith('-') else POS}'"
+    return (f"<div class='kpi{' hero' if hero else ''}'{titulo}><div class='lbl'>{label}</div>"
+            f"<div class='val'{estilo}>{value}</div>{dlt}</div>")
 
 
 kpis = [
-    ("Valor actual", eur(val_total), None, None),
-    ("Invertido", eur(inv_total), None, "Dinero puesto menos dinero retirado con ventas (incluye comisiones)."),
-    ("Beneficio", eur(pnl_total, sign=True), pct(pnl_total_pct), "Beneficio no realizado: valor actual menos invertido."),
+    ("Valor actual", eur(val_total), None, None, True, False),
+    ("Invertido", eur(inv_total), None, "Dinero puesto menos dinero retirado con ventas (incluye comisiones).", False, False),
+    ("Beneficio", eur(pnl_total, sign=True), pct(pnl_total_pct), "Beneficio no realizado: valor actual menos invertido.", False, True),
     ("Hoy", eur(hoy_eur, sign=True) if live else "—", pct(hoy_pct) if live else None,
-     "Variación desde la apertura del día (00:00 UTC) en Kraken."),
+     "Variación desde la apertura del día (00:00 UTC) en Kraken.", False, True),
     ("TIR anual", pct(tir) if tir is not None else "—", None,
-     "Rentabilidad anualizada teniendo en cuenta cuándo metiste cada euro. Es la cifra comparable con un depósito o un fondo."),
+     "Rentabilidad anualizada teniendo en cuenta cuándo metiste cada euro. Es la cifra comparable con un depósito o un fondo.", False, False),
 ]
-st.markdown("<div class='kpis'>" + "".join(kpi_card(*k) for k in kpis) + "</div>", unsafe_allow_html=True)
+st.markdown("<div class='kpis'>" + "".join(kpi_card(*k) for k in kpis) + "</div>"
+            f"<div class='meta'>{_pie_datos}</div>", unsafe_allow_html=True)
 
 # Menú en dos niveles (más cómodo en el móvil que 12 pestañas en una fila): primero el grupo, luego sus pestañas.
 # Solo se ejecuta el código del grupo elegido (la app carga más rápido y consulta menos fuentes).
 _NOMBRES = ["🏠 Inicio", "💼 Posiciones", "📈 Evolución", "📅 Rentabilidad", "🧾 Operaciones", "🛡️ Riesgo", "🧮 Simuladores",
             "🏛️ Fiscalidad", "📰 Noticias", "👀 Watchlist", "🗓️ Eventos", "🩺 Sistema"]
 _GRUPOS = {"🏠 Cartera": [0, 1, 2, 3], "🧾 Fiscal": [4, 7], "📰 Mercado": [8, 9, 10], "🧮 Análisis": [5, 6, 11]}
-_grupo = st.radio("Menú", list(_GRUPOS), horizontal=True, label_visibility="collapsed", key="grupo_menu")
+_grupo = st.radio("Menú", list(_GRUPOS), horizontal=True, label_visibility="collapsed", key="grupo_menu",
+                  format_func=lambda g: g.replace(" ", "  \n", 1))   # icono arriba y nombre debajo (loseta)
 _SEL = _GRUPOS[_grupo]
 tabs = dict(zip(_SEL, st.tabs([_NOMBRES[i] for i in _SEL])))
 
