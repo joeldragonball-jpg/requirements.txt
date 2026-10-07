@@ -97,3 +97,28 @@ titulo = "PCE de noviembre y PIB de EE. UU. (3.ª estimación)"
 detalle = "08:30 ET."
 impacto = "medio"
 fuente = "https://www.bea.gov/news/schedule"
+
+# --- Calendario fiscal (España). Los marcados «aproximado» NO generan aviso diario por Telegram: la fecha exacta aún no se conoce.
+[[eventos]]
+fecha = "2026-12-31"
+titulo = "Cierre del ejercicio fiscal 2026"
+detalle = "Las operaciones con cripto hasta esta fecha cuentan para la renta de 2026 (se declara en 2027)."
+impacto = "medio"
+fuente = "https://sede.agenciatributaria.gob.es/"
+
+[[eventos]]
+fecha = "2027-01-01"
+hasta = "2027-03-31"
+titulo = "Modelo 721 (criptomonedas en custodia extranjera)"
+detalle = "Solo si el saldo conjunto en exchanges o custodios extranjeros supera 50.000 € a 31 de diciembre. Plazo según la Orden HFP/886/2023 [VERIFICAR en la AEAT antes de presentar]."
+impacto = "medio"
+fuente = "https://sede.agenciatributaria.gob.es/"
+
+[[eventos]]
+fecha = "2027-04-08"
+hasta = "2027-06-30"
+titulo = "Campaña de la renta 2026 (fechas por confirmar)"
+detalle = "La AEAT anuncia las fechas oficiales en marzo. La campaña de 2025 fue del 8-abr al 30-jun-2026 (fuente secundaria). Tu informe FIFO está en Fiscalidad."
+impacto = "alto"
+aproximado = true
+fuente = "https://sede.agenciatributaria.gob.es/"

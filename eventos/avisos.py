@@ -18,6 +18,8 @@ def cargar():
         evs = tomllib.load(f).get("eventos", [])
     out = []
     for e in evs:
+        if e.get("aproximado"):      # fecha sin confirmar: se muestra en la app pero no se avisa por Telegram
+            continue
         ini = date.fromisoformat(e["fecha"])
         fin = date.fromisoformat(e.get("hasta", e["fecha"]))
         out.append({**e, "ini": ini, "fin": fin})
