@@ -58,6 +58,15 @@ st.markdown("""
     div[role="radiogroup"] > label:has(input:checked) {background: #1d4ed8; border-color: #3b82f6;}
     div[role="radiogroup"] > label > div:first-child {display: none;}
     div[role="radiogroup"] > label p {margin: 0; font-weight: 600;}
+    /* Apartados del grupo: tarjetas en vertical con título y descripción */
+    [class*="st-key-sub_"] div[role="radiogroup"] {display: flex; flex-direction: column; gap: 8px; width: 100%;}
+    [class*="st-key-sub_"] div[role="radiogroup"] > label {width: 100%; justify-content: flex-start; padding: 10px 14px;
+                                                          min-height: 58px; border-radius: 12px;}
+    [class*="st-key-sub_"] div[role="radiogroup"] > label:has(input:checked) {background: #16233d; border-color: #3b82f6;}
+    [class*="st-key-sub_"] div[role="radiogroup"] > label p {text-align: left; font-size: 0.82rem; color: #94a3b8; line-height: 1.4; font-weight: 400;}
+    [class*="st-key-sub_"] div[role="radiogroup"] > label p strong {color: #e5e7eb; font-size: 1rem; font-weight: 600;}
+    /* Botón de ajustes pegado a la derecha, separado del título */
+    [data-testid="stPopover"] {display: flex; justify-content: flex-end;}
     /* Pestañas: reparten el ancho (sin deslizar) */
     button[role="tab"] {flex: 1 1 0; padding: 10px 4px; justify-content: center; min-height: 46px; font-size: 0.9rem;}
     @media (max-width: 640px) {
@@ -641,7 +650,7 @@ def titulo_con_logo():
             'Mi Cartera Cripto</h1></div>')
 
 
-h1, h2 = st.columns([5, 1], vertical_alignment="center")
+h1, h2 = st.columns([6, 1], vertical_alignment="center")
 _titulo = titulo_con_logo()
 if _titulo:
     h1.markdown(_titulo, unsafe_allow_html=True)
@@ -792,8 +801,16 @@ _NOMBRES = ["🏠 Inicio", "💼 Posiciones", "📈 Evolución", "📅 Rentabili
 _GRUPOS = {"🏠 Cartera": [0, 1, 2, 3], "🧾 Fiscal": [4, 7], "📰 Mercado": [8, 9, 10], "🧮 Análisis": [5, 6, 11]}
 _grupo = st.radio("Menú", list(_GRUPOS), horizontal=True, label_visibility="collapsed", key="grupo_menu",
                   format_func=lambda g: g.replace(" ", "  \n", 1))   # icono arriba y nombre debajo (loseta)
-_SEL = _GRUPOS[_grupo]
-tabs = dict(zip(_SEL, st.tabs([_NOMBRES[i] for i in _SEL])))
+_DESC = {0: "Resumen, últimos 30 días, alertas y noticias", 1: "Cuánto tienes de cada moneda y qué peso tiene",
+         2: "Cómo ha crecido tu cartera con el tiempo", 3: "Resultado por semana, mes y año",
+         4: "Todas tus compras y ventas", 7: "Plusvalías por FIFO e informe para la renta",
+         8: "Lo que te manda el bot y tus 👍/👎", 9: "Valores que sigues y cómo evolucionan",
+         10: "Fed, BCE, inflación y fechas clave", 5: "Concentración y volatilidad de tu cartera",
+         6: "Prueba compras y precios objetivo", 11: "Estado de los bots, las fuentes y el gasto"}
+_sec = st.radio("Apartado", _GRUPOS[_grupo], key=f"sub_{list(_GRUPOS).index(_grupo)}", label_visibility="collapsed",
+                format_func=lambda i: f"**{_NOMBRES[i]}**  \n{_DESC[i]}")
+_SEL = [_sec]
+tabs = {_sec: st.container()}
 
 # =============================================================================
 # 0. INICIO — lo esencial de un vistazo
