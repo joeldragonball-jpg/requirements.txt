@@ -66,3 +66,8 @@ No aplica.
 - [VERIFICAR] Niveles de precio y magnitud del rally de XRP, Solana y Bitcoin.
 - [VERIFICAR] Trayectoria profesional de David Martínez y su posible sesgo; su análisis es opinión.
 - Falta el resto de la entrevista: solo se ven el titular y la cita.
+
+## Ampliación 2026-10-07 (verificada)
+- SEC, 1-oct-2026 (nota 2026-100): propuesta de custodia de criptoactivos para asesores y fondos (custodios fiduciarios estatales, autocustodia condicionada, segregación); 60 días de comentarios desde el Federal Register (documento del 6-oct). Fuente: sec.gov/newsroom/press-releases/2026-100-sec-proposal-would-address-how-investment-advisers-funds-can-custody-crypto-assets-under-federal
+- SEC, 18-ago-2026: "Regulation Crypto Assets" (exenciones de 5 M$ y 75 M$; safe harbor), comentarios hasta el 20-oct (resumen de búsqueda, [VERIFICAR] en sec.gov). Aún [VERIFICAR] si es la "Innovation Exemption"; un vídeo la sitúa el 17-sep.
+- CLARITY Act: Cámara 294-134 (17-jul-2025); cloture del Senado 49-50 el 15-sep-2026. Plan de aprobarla en el lame-duck tras las midterms = [ESPECULACIÓN] (Witt, McHenry, según un canal de YouTube).

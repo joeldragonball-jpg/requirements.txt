@@ -13,3 +13,5 @@ actualizado: 2026-10-05
 - 2026-10-06 (intradía): buscadores devuelven precios XRP incompatibles (1,47/1,63/1,78 $ el mismo día); usar solo precio con hora de FXStreet/Cointelegraph.
 - 2026-10-07: buscadores dan precio XRP con rango incoherente (1,47 $ con máx. 1,428 $) y artículos de ene-2026 como si fueran de hoy.
 - "Bonificación del 99 % en Sucesiones en Cataluña" circula como general: solo es fija para cónyuge; hijos/ascendientes tienen escala decreciente.
+- Titular "X cae 50%" sin decir qué cotiza: la caída de XRPN fue de la acción de la SPAC (Armada) antes de fusionarse; pedir ticker, fecha y fuente.
+- Cifras redondeadas o mezcladas en vídeos ("300 votos" = 294 solo en la Cámara; "ni un demócrata" sin comprobar): contrastar con clerk.house.gov / congress.gov.

@@ -13,3 +13,5 @@ actualizado: 2026-10-05
 - Verificables y fiables (6-oct): federalreserve.gov (decisión 16-sep, calendario FOMC) y bls.gov/schedule; livenet.xrpl.org es dinámico y WebFetch no lo lee: usar xrpscan u otra fuente.
 - CoinDesk (con fecha y causa) fiable para precios del día; sitios de "price prediction" (Changelly etc.) = especulación.
 - rwa.xyz, API de CoinGecko y Kraken (públicas, con marca de tiempo) sirven para verificar cifras de Stellar; atc.gencat.cat para Sucesiones en Cataluña. congress.gov y banking.senate.gov bloquean WebFetch (403).
+- Despeja La X (YouTube, ES): útil por citas originales (CEO Evernorth, Selig) y cálculos claros; sesgo de tenedor XRP y sin enlaces. Fiabilidad media. Nota CFTC 9307-26 en cftc.gov.
+- sec.gov/newsroom/press-releases y clerk.house.gov: primarias para reglas SEC y votos de la Cámara. federalregister.gov redirige a un bloqueo desde WebFetch.
