@@ -600,6 +600,12 @@ def cargar_uso():
             registros += r.json()
     except Exception:
         pass
+    try:   # revisión semanal del cerebro (revision/revision.py)
+        r = requests.get(f"{RAW_DATOS}/uso/revision.json?t={marca}", timeout=10)
+        if r.ok:
+            registros += r.json()
+    except Exception:
+        pass
     return registros
 
 
