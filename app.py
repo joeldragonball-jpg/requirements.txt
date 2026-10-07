@@ -111,6 +111,14 @@ st.markdown("""
     .st-key-cab [data-testid="stColumn"] {min-width: 0 !important;}
     .st-key-cab [data-testid="stColumn"]:first-child {flex: 1 1 auto !important; width: auto !important;}
     .st-key-cab [data-testid="stColumn"]:last-child {flex: 0 0 auto !important; width: auto !important;}
+    /* MÓVIL (al final para que gane a las reglas generales): 4 losetas por fila, texto que cabe sin partirse */
+    @media (max-width: 640px) {
+        [class*="st-key-grupo_menu"] div[role="radiogroup"] {grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 6px !important;}
+        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] {padding: 6px 0 !important; min-height: 76px !important;}
+        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p {font-size: 0.76rem !important; letter-spacing: -0.02em !important;
+                                                                         word-break: keep-all; overflow-wrap: normal;}
+        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p::first-line {font-size: 1.6rem !important;}
+    }
     </style>
 """, unsafe_allow_html=True)
 
