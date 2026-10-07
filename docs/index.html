@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Mi Cartera Cripto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0f17">
+<meta name="color-scheme" content="dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Cartera">
+<link rel="icon" type="image/png" href="assets/icono.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/icono-180.png">
+<style>
+  html, body { margin: 0; height: 100%; background: #0b0f17; overflow: hidden; }
+  /* La app va dentro de este marco, oculta (opacity 0) hasta que avisa de que está lista */
+  #app { position: fixed; left: 0; right: 0; bottom: 0; top: env(safe-area-inset-top, 0px);
+         width: 100%; height: calc(100% - env(safe-area-inset-top, 0px)); border: 0; background: #0b0f17;
+         opacity: 0; transition: opacity .6s ease; }
+  #splash { position: fixed; inset: 0; background: #0b0f17; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 26px; transition: opacity .6s ease; z-index: 2; }
+  #splash.fuera { opacity: 0; pointer-events: none; }
+  #splash img { width: min(150px, 38vw); animation: respirar 2.6s ease-in-out infinite; }
+  .barra { width: 110px; height: 2px; border-radius: 2px; background: #1b2230; overflow: hidden; }
+  .barra::after { content: ""; display: block; width: 45%; height: 100%;
+                  background: linear-gradient(90deg, transparent, #60a5fa, transparent); animation: desliza 1.5s ease-in-out infinite; }
+  @keyframes respirar { 0%, 100% { opacity: .72; transform: scale(.97); filter: drop-shadow(0 0 0 rgba(96,165,250,0)); }
+                        50% { opacity: 1; transform: scale(1.02); filter: drop-shadow(0 0 14px rgba(96,165,250,.35)); } }
+  @keyframes desliza { 0% { transform: translateX(-120%); } 100% { transform: translateX(320%); } }
+  @media (prefers-reduced-motion: reduce) { #splash img, .barra::after { animation: none; } }
+</style>
+</head>
+<body>
+<div id="splash"><img src="assets/icono-oscuro-256.png" alt="Mi Cartera Cripto"><div class="barra"></div></div>
+<iframe id="app" title="Mi Cartera Cripto" allow="clipboard-write"></iframe>
+<script>
+(function () {
+  var APP = "https://requirementstxt-ns7rcahvp34hst8onfbyxg.streamlit.app/";
+  var k = new URLSearchParams(location.search).get("k");          /* tu huella de acceso, si la dirección la lleva */
+  var marco = document.getElementById("app"), splash = document.getElementById("splash"), listo = false;
+
+  function mostrar() {
+    if (listo) return;
+    listo = true;
+    marco.style.opacity = 1;
+    splash.classList.add("fuera");
+    setTimeout(function () { splash.style.display = "none"; }, 800);
+  }
+
+  /* La app avisa cuando ya ha dibujado la pantalla (contraseña o cartera) */
+  window.addEventListener("message", function (e) {
+    if (e.origin !== new URL(APP).origin) return;
+    var d = e.data || {};
+    if (d.tipo !== "cartera-listo") return;
+    setTimeout(mostrar, 250);
+    /* Tras acertar la contraseña, la huella se guarda en ESTA dirección para que puedas ponerla en favoritos */
+    if (d.k && d.k !== k) { k = d.k; try { history.replaceState(null, "", "?k=" + encodeURIComponent(d.k)); } catch (err) {} }
+  });
+
+  marco.src = APP + "?embed=true&via=shell" + (k ? "&k=" + encodeURIComponent(k) : "");
+  setTimeout(mostrar, 25000);   /* salvavidas: si el aviso nunca llega, la app se ve igualmente */
+})();
+</script>
+</body>
+</html>

@@ -89,6 +89,7 @@ def candado():
                 st.rerun()
             time.sleep(1)   # frena los intentos seguidos
             st.error("Contraseña incorrecta.")
+    listo()   # la pantalla de contraseña ya está dibujada: la página de entrada puede retirarse
     st.stop()
 
 
@@ -126,6 +127,21 @@ def ajustes_movil():
         pass
 
 
+def listo():
+    """Avisa a la página de entrada (docs/index.html) de que la app ya está lista, para que retire su pantalla de carga.
+    Si la app se abre directamente, el aviso no tiene efecto. Incluye la huella ?k para poder guardarla en favoritos."""
+    try:
+        components.html("""<script>try {
+          var k = new URL(window.parent.location.href).searchParams.get('k');
+          window.top.postMessage({tipo: 'cartera-listo', k: k}, '*');
+        } catch (e) {}</script>""", height=0)
+    except Exception:
+        pass
+
+
+if str(st.query_params.get("via", "")) == "shell":
+    # Abierta desde la página de entrada (dentro de un marco): ella ya reserva el espacio de la barra de estado del iPhone
+    st.markdown("<style>.block-container{padding-top:1.2rem !important}</style>", unsafe_allow_html=True)
 ajustes_movil()
 candado()
 
@@ -137,6 +153,7 @@ if seccion == "🧠 Cerebro":
     import cerebro
     importlib.reload(cerebro)  # así siempre usa la última versión de cerebro.py subida a GitHub
     cerebro.mostrar()
+    listo()
     st.stop()
 
 # =============================================================================
@@ -585,14 +602,16 @@ with st.spinner("Cargando cartera..."):
         pos, custody, desconocidos = load_positions()
     except Exception as e:
         st.error(f"No se pudo leer la hoja de resumen de Google Sheets: {e}")
+        listo()
         st.stop()
     tx, tx_errores = load_transactions()
     live = live_prices() if use_live else {}
     hist = {tok: price_history(tok) for tok in TOKENS}
+listo()   # datos cargados: la página de entrada retira su pantalla de carga
 
 if pos.empty:
     st.warning("La hoja de resumen no tiene posiciones. Revisa que tenga las columnas 'Token' y 'Cantidad'.")
-    st.stop()
+    st.stop()   # (listo() ya se llamó justo después de cargar los datos)
 
 # --- Posiciones con precio actual ---
 pos["precio"] = pos["token"].map(lambda t: live.get(t, {}).get("precio", np.nan)).astype(float).fillna(pos["precio_hoja"])
