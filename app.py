@@ -67,16 +67,27 @@ def candado():
             st.toast("Guarda esta página en favoritos tal cual: la dirección ya lleva tu acceso y no te pedirá la contraseña.",
                      icon="🔖")
         return
-    st.markdown("### 🔒 Mi Cartera Cripto")
-    intento = st.text_input("Contraseña", type="password", key="app_clave_input")
-    if intento:
-        if hmac.compare_digest(intento.encode(), clave.encode()):
-            st.session_state["app_ok"] = True
-            st.session_state["app_aviso"] = True
-            st.query_params["k"] = huella
-            st.rerun()
-        time.sleep(1)   # frena los intentos seguidos
-        st.error("Contraseña incorrecta.")
+    _, centro, _ = st.columns([1, 2, 1])
+    with centro:
+        grande = ASSETS / "icono-oscuro-256.png"
+        if grande.exists():
+            b64 = base64.b64encode(grande.read_bytes()).decode()
+            st.markdown('<div style="text-align:center;margin:7vh 0 4px">'
+                        f'<img src="data:image/png;base64,{b64}" style="width:clamp(140px,40vw,200px)"></div>',
+                        unsafe_allow_html=True)
+        st.markdown('<h2 style="text-align:center;margin:0;padding:0;font-weight:700">Mi Cartera Cripto</h2>'
+                    '<p style="text-align:center;color:#94a3b8;margin:4px 0 18px">🔒 Acceso privado</p>',
+                    unsafe_allow_html=True)
+        intento = st.text_input("Contraseña", type="password", key="app_clave_input",
+                                placeholder="Contraseña", label_visibility="collapsed")
+        if intento:
+            if hmac.compare_digest(intento.encode(), clave.encode()):
+                st.session_state["app_ok"] = True
+                st.session_state["app_aviso"] = True
+                st.query_params["k"] = huella
+                st.rerun()
+            time.sleep(1)   # frena los intentos seguidos
+            st.error("Contraseña incorrecta.")
     st.stop()
 
 
