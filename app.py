@@ -43,7 +43,7 @@ st.markdown("""
     .kpi.hero .val {font-size: 2.4rem; line-height: 1.2;}
     .meta {color: #64748b; font-size: 0.72rem; margin: 2px 2px 14px;}
     /* Menú principal: losetas cuadradas con icono grande (4 en ordenador, 2x2 en el móvil) */
-    [class*="st-key-grupo_menu"] div[role="radiogroup"] {display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; width: 100%;}
+    [class*="st-key-grupo_menu"] div[role="radiogroup"] {display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; width: 100%;}
     [class*="st-key-grupo_menu"] div[role="radiogroup"] > label {flex-direction: column; justify-content: center; text-align: center;
                                                        min-height: 84px; border-radius: 14px; padding: 8px;}
     [class*="st-key-grupo_menu"] div[role="radiogroup"] > label p {font-size: 0.95rem; line-height: 1.35; text-align: center;}
@@ -60,7 +60,7 @@ st.markdown("""
     div[role="radiogroup"] > label p {margin: 0; font-weight: 600;}
     /* Menú del cerebro: 9 losetas, todas en una fila en pantallas anchas */
     @media (min-width: 900px) {
-        [class*="st-key-grupo_menu_cerebro"] div[role="radiogroup"] {grid-template-columns: repeat(9, 1fr);}
+        [class*="st-key-grupo_menu_cerebro"] div[role="radiogroup"] {grid-template-columns: repeat(8, minmax(0, 1fr));}
     }
     /* Apartados del grupo: tarjetas en vertical con título y descripción */
     [class*="st-key-sub_"] div[role="radiogroup"] {display: flex; flex-direction: column; gap: 8px; width: 100%;}
@@ -78,8 +78,10 @@ st.markdown("""
         .kpis {grid-template-columns: repeat(2, 1fr); gap: 8px;}
         .kpi .val {font-size: 1.2rem;}
         .kpi.hero .val {font-size: 2.1rem;}
-        [class*="st-key-grupo_menu"] div[role="radiogroup"] {grid-template-columns: repeat(3, 1fr); gap: 8px;}
-        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p {font-size: 0.78rem;}
+        [class*="st-key-grupo_menu"] div[role="radiogroup"] {grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px;}
+        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] {padding: 6px 2px; min-height: 76px;}
+        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p {font-size: 0.68rem; letter-spacing: -0.01em;}
+        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p::first-line {font-size: 1.6rem;}
     }
 
     /* --- Opciones de los menús (selectores reales: label[data-testid="stRadioOption"]) --- */

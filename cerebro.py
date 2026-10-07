@@ -199,11 +199,16 @@ def mostrar():
         mostrar_busqueda(docs, buscar.strip())
 
     # Menú de losetas (mismo estilo que el de la cartera); solo se ejecuta el apartado elegido
+    def dudas_y_chat():
+        tab_opiniones(docs, verif)
+        st.divider()
+        st.markdown("#### 💬 Pregúntale a tus apuntes")
+        tab_chat(docs)
+
     apartados = [("📚 Apuntes", lambda: tab_apuntes(docs)), ("🔤 Glosario", lambda: tab_glosario(todos_conceptos)),
                  ("📊 Datos", lambda: tab_datos(docs)), ("🎯 Mi cartera", lambda: tab_cartera(docs)),
-                 ("💭 Dudas", lambda: tab_opiniones(docs, verif)), ("📰 Actualidad", lambda: tab_actualidad(docs)),
-                 ("🗺️ Mapa", lambda: tab_mapa(docs)), ("💬 Pregúntale", lambda: tab_chat(docs)),
-                 ("💸 Consumo", lambda: tab_consumo())]
+                 ("📰 Actualidad", lambda: tab_actualidad(docs)), ("🗺️ Mapa", lambda: tab_mapa(docs)),
+                 ("💭 Dudas y chat", dudas_y_chat), ("💸 Consumo", lambda: tab_consumo())]
     elegido = st.radio("Apartado", range(len(apartados)), horizontal=True, label_visibility="collapsed",
                        key="grupo_menu_cerebro", format_func=lambda k: apartados[k][0].replace(" ", "  \n", 1))
     apartados[elegido][1]()
