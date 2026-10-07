@@ -43,7 +43,7 @@ st.markdown("""
     .kpi.hero .val {font-size: 2.4rem; line-height: 1.2;}
     .meta {color: #64748b; font-size: 0.72rem; margin: 2px 2px 14px;}
     /* Menú principal: losetas cuadradas con icono grande (4 en ordenador, 2x2 en el móvil) */
-    .st-key-grupo_menu div[role="radiogroup"] {display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: 100%;}
+    .st-key-grupo_menu div[role="radiogroup"] {display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; width: 100%;}
     .st-key-grupo_menu div[role="radiogroup"] > label {flex-direction: column; justify-content: center; text-align: center;
                                                        min-height: 84px; border-radius: 14px; padding: 8px;}
     .st-key-grupo_menu div[role="radiogroup"] > label p {font-size: 0.95rem; line-height: 1.35; text-align: center;}
@@ -74,7 +74,8 @@ st.markdown("""
         .kpis {grid-template-columns: repeat(2, 1fr); gap: 8px;}
         .kpi .val {font-size: 1.2rem;}
         .kpi.hero .val {font-size: 2.1rem;}
-        .st-key-grupo_menu div[role="radiogroup"] {grid-template-columns: repeat(2, 1fr);}
+        .st-key-grupo_menu div[role="radiogroup"] {grid-template-columns: repeat(3, 1fr); gap: 8px;}
+        .st-key-grupo_menu label[data-testid="stRadioOption"] p {font-size: 0.78rem;}
     }
 
     /* --- Opciones de los menús (selectores reales: label[data-testid="stRadioOption"]) --- */
@@ -87,7 +88,7 @@ st.markdown("""
     .st-key-seccion [role="radiogroup"] {display: flex; gap: 8px;}
     .st-key-seccion label[data-testid="stRadioOption"] {width: auto; padding: 6px 16px;}
     /* Losetas del menú principal */
-    .st-key-grupo_menu label[data-testid="stRadioOption"] {height: 100%; min-height: 92px; justify-content: center; text-align: center;}
+    .st-key-grupo_menu label[data-testid="stRadioOption"] {height: 100%; min-height: 84px; justify-content: center; text-align: center; padding: 6px 4px;}
     .st-key-grupo_menu label[data-testid="stRadioOption"] > div {width: 100%; justify-content: center;}
     .st-key-grupo_menu label[data-testid="stRadioOption"] p {text-align: center; font-size: 0.95rem; line-height: 1.35;}
     /* Tarjetas de los apartados */
@@ -828,17 +829,9 @@ st.markdown("<div class='kpis'>" + "".join(kpi_card(*k) for k in kpis) + "</div>
 # Solo se ejecuta el código del grupo elegido (la app carga más rápido y consulta menos fuentes).
 _NOMBRES = ["🏠 Inicio", "💼 Posiciones", "📈 Evolución", "📅 Rentabilidad", "🧾 Operaciones", "🛡️ Riesgo", "🧮 Simuladores",
             "🏛️ Fiscalidad", "📰 Noticias", "👀 Watchlist", "🗓️ Eventos", "🩺 Sistema"]
-_GRUPOS = {"🏠 Cartera": [0, 1, 2, 3], "🧾 Fiscal": [4, 7], "📰 Mercado": [8, 9, 10], "🧮 Análisis": [5, 6, 11]}
-_grupo = st.radio("Menú", list(_GRUPOS), horizontal=True, label_visibility="collapsed", key="grupo_menu",
-                  format_func=lambda g: g.replace(" ", "  \n", 1))   # icono arriba y nombre debajo (loseta)
-_DESC = {0: "Resumen, últimos 30 días, alertas y noticias", 1: "Cuánto tienes de cada moneda y qué peso tiene",
-         2: "Cómo ha crecido tu cartera con el tiempo", 3: "Resultado por semana, mes y año",
-         4: "Todas tus compras y ventas", 7: "Plusvalías por FIFO e informe para la renta",
-         8: "Lo que te manda el bot y tus 👍/👎", 9: "Valores que sigues y cómo evolucionan",
-         10: "Fed, BCE, inflación y fechas clave", 5: "Concentración y volatilidad de tu cartera",
-         6: "Prueba compras y precios objetivo", 11: "Estado de los bots, las fuentes y el gasto"}
-_sec = st.radio("Apartado", _GRUPOS[_grupo], key=f"sub_{list(_GRUPOS).index(_grupo)}", label_visibility="collapsed",
-                format_func=lambda i: f"**{_NOMBRES[i]}**  \n{_DESC[i]}")
+_ORDEN = [0, 1, 2, 3, 4, 7, 8, 9, 10, 5, 6, 11]      # Inicio, Posiciones, Evolución, Rentabilidad, Operaciones, Fiscalidad, Noticias...
+_sec = st.radio("Menú", _ORDEN, horizontal=True, label_visibility="collapsed", key="grupo_menu",
+                format_func=lambda i: _NOMBRES[i].replace(" ", "  \n", 1))   # icono arriba y nombre debajo (loseta)
 _SEL = [_sec]
 tabs = {_sec: st.container()}
 
