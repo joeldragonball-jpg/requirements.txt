@@ -37,8 +37,7 @@ Ver tabla de afirmaciones.
 - [ESPECULACIÓN] (Despeja La X) las reglas de SEC y CFTC estarán hechas antes que la ley.
 
 ## Relación con mi cartera (XRP / XLM)
-- Un marco de custodia claro puede facilitar fondos con XRP/XLM, pero no está demostrado que cambie el precio. La interpretación de la SEC del 17-mar-2026 incluye a XRP entre 18 activos considerados "commodities digitales" (resumen de búsqueda; verificar en sec.gov).
-- XLM no aparece en la lista según la información leída [VERIFICAR].
+- Un marco de custodia claro puede facilitar fondos con XRP/XLM, pero no está demostrado que cambie el precio. La interpretación conjunta SEC-CFTC del 17-mar-2026 nombra 16 activos como "commodities digitales" e incluye tanto a XRP como a XLM (Stellar) (despachos Jenner y Jones Day, otra sesión con Cryptobriefing/Nasdaq.com; la lista exacta varía algo entre fuentes, p. ej. Bitcoin o Algorand) [VERIFICAR en sec.gov/cftc.gov].
 
 ## Fiscalidad en España
 No tratada en los vídeos.
@@ -55,7 +54,7 @@ No tratada en los vídeos.
 | 2 | Plazo de 60 días de comentarios tras el Federal Register | A (2-oct) | **Verificado en parte** | La nota de la SEC dice 60 días desde la publicación; el documento está fechado 6-oct en [Federal Register](https://www.federalregister.gov/documents/2026/10/06/2026-20466/adviser-and-regulated-fund-custody-rules-crypto-custody-rules) (no leído). Fecha de cierre [VERIFICAR] |
 | 3 | El propio gestor puede custodiar y debe informar cada 3 meses | A (2-oct) | [VERIFICAR] | La nota de la SEC no especifica periodicidad; ver texto de la regla (ia-7023) |
 | 4 | En quiebra, los activos del cliente no se reparten entre acreedores de la plataforma | A (2-oct) | [VERIFICAR] | La SEC habla de segregación; el efecto en quiebra no está en el comunicado leído |
-| 5 | La interpretación de la SEC de marzo de 2026 aclara cuándo un criptoactivo deja de estar bajo un contrato de inversión | A (2-oct) | **Verificado (secundaria)** | Resumen de folletos de ETF en sec.gov: interpretación del 17-mar-2026 con taxonomía y 18 activos "digital commodities" incl. XRP; texto original no abierto |
+| 5 | La interpretación de la SEC de marzo de 2026 aclara cuándo un criptoactivo deja de estar bajo un contrato de inversión | A (2-oct) | **Verificado (secundaria)** | Resumen de folletos de ETF en sec.gov: interpretación del 17-mar-2026 con taxonomía y 18 activos "digital commodities" incl. XRP y XLM (corregido: 16 activos, no 18; ver Relación con mi cartera); texto original no abierto |
 | 6 | La CLARITY Act "pasó el Congreso con 300 votos" | B (Despeja La X, 5-oct; cita de McHenry) | **Verificado con matiz** | Solo la Cámara, 294-134 el 17-jul-2025 ([Clerk de la Cámara, votación 199](https://clerk.house.gov/Votes/2025199)); el Senado no la ha aprobado |
 | 7 | "Ni un senador demócrata votó para abrir el debate" | B (McHenry, 5-oct) | [VERIFICAR] | Mi búsqueda del 7-oct dice que los "no" incluyeron a Collins, Hawley, Moran y Tillis (republicanos) en el 49-50; no pude comprobar el voto demócrata |
 | 8 | La SEC dio otro paso el "17 de septiembre" (exención de innovación) | B (5-oct) | **Contradicción** | La SEC propuso "Regulation Crypto Assets" el 18-ago-2026 (resumen de búsqueda), comentarios hasta el 20-oct; la fecha del vídeo no coincide [VERIFICAR] |
