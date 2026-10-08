@@ -449,6 +449,7 @@ def load_transactions():
         c_tipo, c_precio = find_col(t, "TIPO"), find_col(t, "PRECIO")
         c_fee = find_col(t, "COMISI") or find_col(t, "FEE")
         c_plat, c_cust = find_col(t, "WALLET", exclude="HOLDING"), find_col(t, "HOLDING")
+        c_fisc = find_col(t, "FISCAL")   # opcional: coste de adquisición para Hacienda cuando difiere del dinero puesto (regalos, recompensas)
 
         d = pd.DataFrame({
             "fecha": pd.to_datetime(t[c_fecha], format="%d/%m/%Y", errors="coerce"),
@@ -457,12 +458,14 @@ def load_transactions():
             "precio": to_num(t[c_precio]) if c_precio else np.nan,
             "comision": to_num(t[c_fee]) if c_fee else 0.0,
             "total": to_num(t[c_total]),
+            "fiscal": to_num(t[c_fisc]) if c_fisc else np.nan,
             "plataforma": t[c_plat].fillna("—").str.strip().str.upper() if c_plat else "—",
             "custodia": t[c_cust].fillna("—").str.strip().str.upper() if c_cust else "—",
         })
         d = d.dropna(subset=["fecha", "cantidad"])
         d = d[d["cantidad"] != 0].copy()
         d["total"] = d["total"].fillna(0.0)
+        d["fiscal"] = d["fiscal"].fillna(d["total"])   # sin «Coste fiscal» en la fila: el coste para Hacienda es lo que pusiste
         d["comision"] = d["comision"].fillna(0.0)
         d["tipo"] = np.where(d["cantidad"] > 0, "Compra", "Venta")
         if c_tipo:
@@ -633,7 +636,7 @@ def fifo_realized(tx):
         lots = []  # [cantidad restante, coste unitario]
         for r in t.itertuples():
             if r.cantidad > 0:
-                lots.append([r.cantidad, max(r.total, 0.0) / r.cantidad])
+                lots.append([r.cantidad, max(getattr(r, "fiscal", r.total), 0.0) / r.cantidad])
             else:
                 pendiente, coste = -r.cantidad, 0.0
                 while pendiente > 1e-12 and lots:
@@ -1355,12 +1358,12 @@ if 7 in _SEL:
         st.caption("Cálculo orientativo con método FIFO (las primeras unidades compradas son las primeras vendidas), "
                    "que es el que aplica Hacienda en España. No sustituye a un asesor fiscal: no incluye permutas "
                    "cripto-cripto, staking ni otras rentas.")
-        gratis = tx[(tx["cantidad"] > 0) & (tx["total"] <= 0)] if not tx.empty else tx
+        gratis = tx[(tx["cantidad"] > 0) & (tx["fiscal"] <= 0)] if not tx.empty else tx
         if not gratis.empty:
-            st.warning("Hay compras con coste 0 € en tu hoja (se calculan como regalo, sin coste de adquisición): "
+            st.warning("Hay compras con coste fiscal 0 € en tu hoja (regalos o recompensas, sin coste de adquisición): "
                        + "; ".join(f"{r.fecha:%d/%m/%Y} {r.token} {fmt(r.cantidad, 4)}" for r in gratis.itertuples())
-                       + ". Si fueron traspasos o recompensas con valor de mercado, pon su coste real en la hoja: "
-                         "con coste 0 € la ganancia de las ventas posteriores sale inflada. [VERIFICAR]")
+                       + ". No cuentan como dinero invertido (el beneficio del panel es correcto). Si Hacienda debe considerarlas "
+                         "con valor de mercado, anótalo en una columna «Coste fiscal» de la hoja; consúltalo con tu asesor [VERIFICAR].")
         st.caption("Solo se calculan las monedas que tienes en tu hoja de control (XRP, XLM…). Si en algún año vendiste otras "
                    "(p. ej. LTC, ETH o ADA en un exchange), esas ventas no están aquí y también cuentan en la renta.")
         if tx.empty or (tx["cantidad"] < 0).sum() == 0:
@@ -1575,7 +1578,7 @@ if 7 in _SEL:
             st.info("Cuando haya operaciones en tu hoja, aquí aparecerá el informe.")
         else:
             import renta
-            lineas_r, abiertos_r, avisos_r = renta.lotes_fifo(tx[["fecha", "token", "cantidad", "total"]].to_dict("records"))
+            lineas_r, abiertos_r, avisos_r = renta.lotes_fifo(tx.assign(total=np.where(tx["cantidad"] > 0, tx["fiscal"], tx["total"]))[["fecha", "token", "cantidad", "total"]].to_dict("records"))
             anios_r = sorted({l["f_venta"].year for l in lineas_r}, reverse=True)
             if not anios_r:
                 st.info("No hay ventas registradas: no hay plusvalías que declarar.")
