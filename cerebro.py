@@ -27,11 +27,39 @@ PRECIOS = {
 
 
 # ---------------------------------------------------------------- utilidades
+_REFS = None
+
+
+def _referencias():
+    """Frases de los apuntes marcadas a mano como «de referencia» (cerebro/revisiones_manuales.json)."""
+    global _REFS
+    if _REFS is None:
+        try:
+            datos = json.loads((CARPETA / "revisiones_manuales.json").read_text(encoding="utf-8")).get("revisiones", [])
+        except Exception:
+            datos = []
+        _REFS = [m["texto"] for m in datos if m.get("estado") == "referencia" and m.get("texto")]
+    return _REFS
+
+
+def _caja(texto):
+    """Cuadrito (código en línea) con el texto sin barras de escape de '$'."""
+    return "`" + texto.replace("\\$", "$").replace("`", "'").strip() + "`"
+
+
 def md(texto):
-    """Prepara texto para st.markdown: '$' no es fórmula y los [VERIFICAR] se resaltan."""
+    """Prepara texto para st.markdown: '$' no es fórmula; [VERIFICAR] y [ESPECULACIÓN] salen como cuadritos discretos
+    («referencia» y «opinión») en la misma frase, y las frases marcadas como de referencia llevan su cuadrito al final."""
     texto = texto.replace("$", r"\$")
-    texto = re.sub(r"\[ESPECULACI[OÓ]N([^\]]*)\]", r":violet[💭 ESPECULACIÓN\1]", texto)
-    return re.sub(r"\[VERIFICAR([^\]]*)\]", r":orange[⚠️ VERIFICAR\1]", texto)
+    refs = _referencias()
+    if refs:
+        texto = "\n".join(l + " " + _caja("📌 referencia, sin confirmar") if "📌" not in l and "[VERIFICAR" not in l and any(r in l for r in refs) else l
+                          for l in texto.split("\n"))
+    texto = re.sub(r"\[ESPECULACI[OÓ]N([^\]]*)\]",
+                   lambda m: _caja("💭 opinión" + (m.group(1) if m.group(1).strip() else "")), texto)
+    return re.sub(r"\[VERIFICAR(?::?\s*([^\]]*))?\]",
+                  lambda m: _caja("📌 referencia" + (": " + m.group(1).strip() if m.group(1) and m.group(1).strip() else ", sin confirmar")),
+                  texto)
 
 
 def enlace(titulo, url):
@@ -194,8 +222,13 @@ def mostrar():
 
     if verif:
         pend = sum(1 for v in verif.values() if v.get("estado") in ("sin resolver", "corregido"))
-        t_rev = tarjeta("⚠️ Datos por revisar", pend, "Datos corregidos o sin resolver tras la verificación automática. "
-                        "Detalle en 'Dudas'.", "#f59e0b" if pend else None)
+        n_ref = sum(1 for v in verif.values() if v.get("estado") == "referencia")
+        if pend:
+            t_rev = tarjeta("⚠️ Datos por revisar", pend, "Datos corregidos o sin resolver tras la verificación automática. "
+                            "Detalle en 'Dudas'.", "#f59e0b")
+        else:
+            t_rev = tarjeta("📌 Datos de referencia", n_ref, "Ejemplos y datos de contexto que no se han podido contrastar con "
+                            "una fuente accesible: sirven de orientación, no como cifra exacta. Detalle en 'Dudas'.")
     else:
         pend = sum(d["texto"].count("[VERIFICAR") for d in docs)
         t_rev = tarjeta("⚠️ Datos a verificar", pend, "", "#f59e0b" if pend else None)
@@ -312,6 +345,7 @@ ESTADOS = {
     "corregido": ("🔄", "Corregidos o desactualizados", "orange"),
     "sin resolver": ("❓", "Sin resolver", "gray"),
     "confirmado": ("✅", "Confirmados", "green"),
+    "referencia": ("📌", "De referencia (contexto o ejemplo, no verificado)", "gray"),
     "especulación": ("💭", "Especulaciones (no hace falta confirmarlas)", "violet"),
 }
 
