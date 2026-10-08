@@ -11,3 +11,5 @@ actualizado: 2026-10-07
 - Stellar: stellar.org/press es lo primario; rwa.xyz (RWA distribuido, varía según métrica), API de CoinGecko y Kraken (con marca de tiempo) y atc.gencat.cat (Sucesiones en Cataluña). Guavy / Coinstrooper (generados por IA) = [VERIFICAR]. WebFetch: congress.gov y banking.senate.gov dan 403; federalregister.gov redirige a un bloqueo.
 - Invezz y ripplecoinnews.com: aportan datos (dashboard de enmiendas) pero con sesgo alcista; livenet.xrpl.org es dinámico y WebFetch no lo lee: usar xrpscan.
 - Despeja La X (YouTube, ES): útil por citas originales (CEO Evernorth, Selig) y cálculos claros; sesgo de tenedor, sin enlaces, cuenta compras propias de XLM y enlaza perfil, podcast y web (Bitbabo) [VERIFICAR afiliados]; entrevistas traducidas por el canal. Fiabilidad media.
+- account_tx en xrplcluster.com: fuente primaria para movimientos de Ripple; api.xrpscan.com no da etiquetas sin navegador.
+- analyticsinsight/techbullion: reciclan noticias viejas como "breakout" y mezclan promoción de tokens; no usar.

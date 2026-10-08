@@ -12,3 +12,5 @@ actualizado: 2026-10-07
 - Cifras redondeadas o sin contexto: "X cae 50%" sin decir qué cotiza (fue la SPAC Armada, no XRPN) y "300 votos" (294 solo en la Cámara): pedir ticker, fecha y fuente (clerk.house.gov, congress.gov).
 - Discurso antiguo (Lagarde, FMI) presentado como noticia actual y como "portazo a EE. UU.": pedir fecha y contexto del clip.
 - "Primera prueba de cumplimiento" (U.S. Bank/USBDC): piloto interno sin clientes ni fecha comercial; no equivale a adopción ni a demanda de XLM.
+- Ballenas 🐋 de Ripple: 200 M XRP interno + 20 M a cuenta con destination tag fija (patrón plataforma/OTC): traspaso ≠ venta; confirmar con account_tx y XRPScan antes de hablar de venta.
+- "XRP/Stellar clasificados" (CFTC/SEC) reciclado como noticia actual: es de 17-mar-2026 (Rel. 33-11412); pedir fecha.
