@@ -13,3 +13,6 @@
 | 7 | 2026-08-18 | CEO de Solana Policy Institute | ~10 % de aprobación antes de las elecciones | 2026-11-03 | ¿Aprobada antes del 3-nov? | Sin resolver (casi seguro **acertó**: la Cámara no vuelve hasta después) |
 | 8 | 2026-10-07 | Despeja La X | XRPN (Evernorth) "puede acabar en un desplome total" | 2027-04-30 | Cotización de XRPN y prima sobre su valor de caja | Sin resolver |
 | 9 | 2026-10-09 | Research diario (cálculo propio, no anuncio) | La enmienda BatchV1_1 podría activarse a partir del 23-oct en el XRPL | 2026-11-30 | xrpl.org / ledger: ¿activada y cuándo? | Sin resolver |
+| 10 | 2026-10-08 | Evernorth y prensa (Yahoo Finance, KuCoin) | El debut de XRPN en Nasdaq será el lunes 12-oct (aplazado desde el 8-oct) | 2026-10-12 | Comunicado de Evernorth y primera cotización en Nasdaq | Sin resolver |
+| 11 | 2026-05 | DTCC (nota de prensa, citada por prensa) | Los activos tokenizados de DTC estarán disponibles en la red Stellar en la primera mitad de 2027 | 2027-06-30 | dtcc.com y stellar.org: ¿en producción? | Sin resolver |
+| 12 | 2026-10-07 | CEO de Evernorth (entrevista citada por Despeja La X) | Reinvertirá el rendimiento en la tesorería para maximizar "XRP por acción" | 2027-03-31 | Primer informe (10-Q o 10-K) con XRP por acción y número de acciones | Sin resolver |
