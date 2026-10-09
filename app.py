@@ -739,20 +739,14 @@ _autorefresco()
 
 
 def linea_estado():
-    ahora = datetime.now(ZoneInfo("Europe/Madrid")).strftime("%H:%M:%S")
-    txt = f"🕒 Datos cargados a las {ahora} · se recargan solos cada {REFRESCO_S // 60} min"
+    """Solo avisa si algún bot falla o va con retraso; la hora de los datos ya sale en la línea de «precios: Kraken en vivo»."""
     try:
         import sistema
-        problemas, sin_dato = sistema.resumen_bots()
+        problemas, _ = sistema.resumen_bots()
         if problemas:
-            txt += f" · ⚠️ Bots con retraso o fallo: {', '.join(problemas)} (mira 🩺 Sistema)"
-        elif sin_dato:
-            txt += " · bots: no se pudo comprobar alguno"
-        else:
-            txt += " · ✅ bots al día"
+            st.caption(f"⚠️ Bots con retraso o fallo: {', '.join(problemas)} (mira 🩺 Sistema)")
     except Exception:
         pass
-    st.caption(txt)
 
 
 def precargar():
