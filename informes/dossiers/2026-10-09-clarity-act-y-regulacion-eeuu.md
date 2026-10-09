@@ -21,7 +21,7 @@
 **Por qué falló (las fuentes no coinciden):** unas señalan la **ética** (impedir que altos cargos, incluido el presidente, tengan participaciones significativas en emisores de tokens, propuesta Tillis-Gallego); otras añaden el **rendimiento de las stablecoins** y el **DeFi**. Tampoco coinciden en cuántos republicanos votaron en contra (3 o 4). [VERIFICAR con el acta del Senado].
 
 ## 3. Lo que ya existe sin la ley (vía agencias)
-- **17-mar-2026, interpretación conjunta SEC-CFTC:** taxonomía de cinco categorías y lista de "commodities digitales". **Incluye XRP y XLM (Stellar).** El número varía según la fuente (**16 o 18**; algunas añaden Bitcoin) [VERIFICAR el texto en sec.gov / cftc.gov].
+- **17-mar-2026, interpretación conjunta SEC-CFTC:** taxonomía de cinco categorías y lista de "commodities digitales". **Incluye XRP y XLM (Stellar).** **Lista oficial: 16 activos** (Aptos, Avalanche, Bitcoin, Bitcoin Cash, Cardano, Chainlink, Dogecoin, Ether, Hedera, Litecoin, Polkadot, Shiba Inu, Solana, Stellar, Tezos y XRP), según la nota 51 de la [interpretación en sec.gov (Rel. 33-11412)](https://www.sec.gov/files/rules/interp/2026/33-11412.pdf), leída entera por la sesión de research (**fuente primaria**). Son ejemplos, no una lista cerrada. Las fuentes que decían 18 o incluían Algorand eran inexactas.
 - **18-ago-2026, SEC "Regulation Crypto Assets" (propuesta):** exención para startups (hasta 5 M$) y rondas de hasta 20 o 75 M$, y un *safe harbor* que formaliza la "separación" del marzo. **Comentarios hasta el 20-oct.** [Cahill](https://www.cahill.com/publications/client-alerts/2026-09-02-a-giant-step-forward-the-secs-proposed-regulation-crypto-assets/_pdfx/2026-09-02-a-giant-step-forward-the-secs-proposed-regulation-crypto-assets.pdf)
 - **1-oct-2026, SEC, custodia para asesores y fondos (propuesta):** custodios fiduciarios estatales y autocustodia solo como último recurso; 60 días de comentarios.
 - **5-oct-2026, CFTC, ANPRM (aviso previo, no norma):** Regulation CTX (operaciones minoristas con apalancamiento) y Regulation CAM (nueva categoría de mercado). Comentarios ~primeros de dic [VERIFICAR fecha exacta]. **No obliga a que el spot se negocie en plataformas de la CFTC sin una ley.** [Lowenstein](https://www.lowenstein.com/news-insights/publications/client-alerts/cftc-issues-advance-notice-of-proposed-rulemaking-on-regulation-crypto-asset-transactions-and-regulation-crypto-asset-markets-fctm), [The Block](https://theblock.co/news/markets/2026-10-05-cftc-rulemaking-leveraged-retail-crypto-trading-regulation-ctx-cam-417701)
@@ -58,7 +58,7 @@
 | **~Primeros de dic** | Cierre de comentarios del ANPRM de la CFTC |
 
 ## 8. Calidad de las fuentes y contradicciones
-- **16 o 18 activos** en la interpretación: las fuentes difieren; la lista exacta debe leerse en sec.gov.
+- ~~16 o 18 activos~~: **resuelto con la fuente primaria** (16, ver sección 3).
 - **Cuántos republicanos votaron en contra:** 3 o 4, según la fuente.
 - **Probabilidades:** todas son de agosto o anteriores; **no he podido leerlas hoy** [VERIFICAR el mercado en vivo].
 - **Una sola fuente por dato:** casi todo viene de prensa especializada y despachos; falta el texto oficial del Senado.

@@ -60,7 +60,7 @@ El "retraso a 2027" que se oyó en un vídeo **no está confirmado**; es otro pr
 | **C. Los RWA crecen y XLM empieza a reflejar uso** | Más actividad en pagos con XLM como puente | Más volumen de pagos con XLM, no solo emisiones |
 
 ## 8. Qué implica para XLM (sin consejos)
-Es positivo para el **ecosistema**, pero la demanda de **XLM** depende de que el XLM se use como puente o para comisiones, y eso **no está demostrado**. Hoy XLM figura entre los commodities digitales de la interpretación SEC-CFTC de marzo (lista de 16 o 18 según la fuente).
+Es positivo para el **ecosistema**, pero la demanda de **XLM** depende de que el XLM se use como puente o para comisiones, y eso **no está demostrado**. Hoy XLM figura entre los commodities digitales de la interpretación SEC-CFTC de marzo (lista oficial de 16 activos, fuente primaria en sec.gov).
 
 ## 9. Qué vigilar
 rwa.xyz y el panel de Stellar (con la misma métrica en cada comparación), nuevos emisores y la caída o subida de Spiko, el estado de DTCC en Stellar (1S 2027), la producción de USBDC y la actividad en pagos con XLM.
