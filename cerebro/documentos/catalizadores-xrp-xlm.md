@@ -13,3 +13,4 @@ actualizado: 2026-10-07
 - 2026-10-08: Brent +5 % (105,5 $, posibles ataques EE. UU. a Irán) y minutas FOMC (otra subida a fin de año): BTC -2,4 % (81,2 k$), XRP -5 % (1,35 $), XLM -5 % (0,19 $). Macro manda.
 - 2026-10-08: PermissionDelegationV1_1 (no la original) activada en el XRPL; sin efecto medible en precio (XRP -5 % ese día por macro).
 - 2026-10-09: rebote leve (BTC 82,6 k$ +1,2 %, XRP 1,38 $, XLM 0,193 $), Brent 103,9 $. BatchV1_1 gana mayoría 9-oct 09:34 UTC: activación posible >= 23-oct.
+- 2026-10-09 (cierre): día lateral (XRP 1,372–1,406 $), solo el oro se mueve (+1,5 %); Waller (Fed) con sesgo de subidas, sin efecto medible.
