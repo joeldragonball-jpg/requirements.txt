@@ -15,3 +15,4 @@
 | 9 | Infraestructura on-chain | Enmiendas del XRPL (BatchV1_1 ya activada; fixCleanup3_4_0 en cuenta atrás), protocolos P27-P29 de Stellar y candidatas a P30 | ✅ 2026-10-09 |
 | 10 | Ripple como empresa | Capital y valoración, compras (Ripple Prime, GTreasury), licencias y carta bancaria, escrow y tenencias de XRP (ledger), caso SEC, relación con Evernorth, OPV | ✅ 2026-10-09 |
 | 11 | Geopolítica, petróleo y BRICS | Ormuz e Irán, Brent y suministro (EIA, OPEP+, G7), sanciones, BRICS (pagos, mBridge, cuota del dólar), dólar y rendimientos del Tesoro | ✅ 2026-10-09 |
+| 12 | Euro digital y CBDC | Euro digital del BCE (preparación, piloto 2S-2027, emisión 2029), ley en trílogo, límite de tenencia, privacidad; relación con Pontes/Appia, SEPA/Wero y stablecoins MiCA; e-CNY, mBridge y EE. UU. | ✅ 2026-10-09 |
