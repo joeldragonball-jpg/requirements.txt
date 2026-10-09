@@ -723,6 +723,38 @@ with st.container(key="cab"):
             st.rerun()
 
 
+# --- Refresco automático y estado de los datos ---
+REFRESCO_S = 300      # con la app abierta se recarga sola cada 5 min (precios 30 s, noticias 5 min)
+st.session_state["_carga_t"] = time.time()
+
+
+@st.fragment(run_every=REFRESCO_S)
+def _autorefresco():
+    # el temporizador solo salta si desde la última carga completa pasó el intervalo (una interacción tuya lo reinicia)
+    if time.time() - st.session_state.get("_carga_t", time.time()) >= REFRESCO_S - 5:
+        st.rerun()
+
+
+_autorefresco()
+
+
+def linea_estado():
+    ahora = datetime.now(ZoneInfo("Europe/Madrid")).strftime("%H:%M:%S")
+    txt = f"🕒 Datos cargados a las {ahora} · se recargan solos cada {REFRESCO_S // 60} min"
+    try:
+        import sistema
+        problemas, sin_dato = sistema.resumen_bots()
+        if problemas:
+            txt += f" · ⚠️ Bots con retraso o fallo: {', '.join(problemas)} (mira 🩺 Sistema)"
+        elif sin_dato:
+            txt += " · bots: no se pudo comprobar alguno"
+        else:
+            txt += " · ✅ bots al día"
+    except Exception:
+        pass
+    st.caption(txt)
+
+
 def precargar():
     """Pide A LA VEZ todo lo que viene de internet (Google Sheets, Kraken, noticias, alertas).
     Antes iba uno detrás de otro; así la app abre varios segundos antes. Lo descargado queda en caché."""
@@ -734,6 +766,11 @@ def precargar():
     tareas = [lambda g=g: fetch_sheet(g) for g in [GID_RESUMEN] + [cfg["gid"] for cfg in TOKENS.values()]]
     tareas += [lambda t=t: price_history(t) for t in TOKENS]
     tareas += [live_prices, load_noticias, load_alertas]
+    try:
+        import sistema
+        tareas.append(sistema.estado_workflows)
+    except Exception:
+        pass
 
     def ejecutar(tarea):
         if add_script_run_ctx and ctx:
@@ -758,6 +795,8 @@ with st.spinner("Cargando cartera..."):
     tx, tx_errores = load_transactions()
     live = live_prices() if use_live else {}
     hist = {tok: price_history(tok) for tok in TOKENS}
+
+linea_estado()
 
 if pos.empty:
     st.warning("La hoja de resumen no tiene posiciones. Revisa que tenga las columnas 'Token' y 'Cantidad'.")

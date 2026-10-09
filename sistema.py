@@ -78,6 +78,19 @@ def _hace(iso):
     return f"hace {s / 86400:.1f} días", s / 3600
 
 
+def resumen_bots():
+    """(bots_con_problema, bots_sin_dato) para la línea de estado de la cabecera. Usa la misma caché de 15 min que la pestaña Sistema."""
+    problemas, sin_dato = [], 0
+    estados = estado_workflows()
+    for archivo, nombre, tolerancia in WORKFLOWS:
+        e = estados.get(archivo, {})
+        if e.get("error"):
+            sin_dato += 1
+        elif e["conclusion"] != "success" or _hace(e["cuando"])[1] > tolerancia:
+            problemas.append(nombre)
+    return problemas, sin_dato
+
+
 @st.cache_data(ttl=300, show_spinner=False)
 def fuentes_en_vivo():
     """Comprueba que responden las fuentes de las que depende la app y mide cuánto tardan."""
