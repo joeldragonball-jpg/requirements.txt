@@ -268,7 +268,7 @@ def elegir_doc(docs, clave):
 
 def mostrar_busqueda(docs, termino):
     clave = normalizar(termino)
-    encontrados = [f for f in fragmentos(docs) if clave in normalizar(f["texto"])]
+    encontrados = [f for f in fragmentos(docs) + fragmentos_dossiers() if clave in normalizar(f["texto"])]
     with st.container(border=True):
         st.markdown(f"**{len(encontrados)} resultado(s) para «{termino}»**")
         patron = re.compile(re.escape(termino), re.IGNORECASE)
@@ -301,6 +301,65 @@ def tab_apuntes(docs):
             st.markdown(md(puntos))
 
 
+def tab_predicciones():
+    """Registro de predicciones (informes/predicciones.md) como tabla filtrable: quién predijo qué y cómo va."""
+    ruta = Path(__file__).parent / "informes" / "predicciones.md"
+    if not ruta.exists():
+        st.info("Todavía no hay registro de predicciones.")
+        return
+    filas = []
+    for linea in ruta.read_text(encoding="utf-8").splitlines():
+        celdas = [c.strip() for c in linea.strip().strip("|").split("|")]
+        if len(celdas) >= 7 and celdas[0].isdigit():
+            res = celdas[6].replace("**", "")
+            bajo = res.lower()
+            if bajo.startswith("sin resolver"):
+                estado = "⏳ Sin resolver"
+            elif "contradicho" in bajo or "parece que falló" in bajo or bajo.startswith("falló"):
+                estado = "❌ Falló"
+            elif bajo.startswith("acertó"):
+                estado = "✅ Acertó"
+            elif bajo.startswith("resuelta"):
+                estado = "↺ Mal planteada"
+            else:
+                estado = "❔ Otro"
+            filas.append({"#": int(celdas[0]), "Estado": estado, "Quién": celdas[2].replace("**", ""), "Predicción": celdas[3].replace("**", ""),
+                          "Fecha límite": celdas[4], "Cómo se comprueba": celdas[5].replace("**", ""), "Detalle": res, "Fecha": celdas[1]})
+    if not filas:
+        st.info("El registro está vacío.")
+        return
+    df = pd.DataFrame(filas)
+    st.caption("Cada predicción con plazo que aparece en las fuentes se anota aquí y se comprueba cuando vence. Sirve para saber a quién creer. "
+               "Son opiniones, no hechos. Se actualiza con las sesiones de research.")
+    cuenta = df["Estado"].value_counts()
+    cols = st.columns(4)
+    for col, (etq, clave) in zip(cols, [("Total", None), ("⏳ Sin resolver", "⏳ Sin resolver"), ("✅ Acertó", "✅ Acertó"), ("❌ Falló", "❌ Falló")]):
+        col.metric(etq, len(df) if clave is None else int(cuenta.get(clave, 0)))
+    filtro = st.selectbox("Mostrar", ["Todas"] + sorted(df["Estado"].unique()), key="filtro_pred")
+    ver = df if filtro == "Todas" else df[df["Estado"] == filtro]
+    tabla = ver[["#", "Estado", "Quién", "Predicción", "Fecha límite", "Detalle"]].sort_values("#", ascending=False)
+    try:
+        st.dataframe(tabla, hide_index=True, width="stretch")
+    except Exception:                      # Streamlit antiguo: aún no existe width="stretch"
+        st.dataframe(tabla, hide_index=True, use_container_width=True)
+
+
+def fragmentos_dossiers():
+    """Trozos de los dossiers para el buscador (sin IA)."""
+    out = []
+    if DOSSIERS.exists():
+        for p in sorted(DOSSIERS.glob("*.md")):
+            texto, sec, nombre = p.read_text(encoding="utf-8"), "Inicio", p.stem[11:].replace("-", " ")
+            for linea in texto.splitlines():
+                if linea.startswith("# "):
+                    nombre = linea[2:].replace("Dossier: ", "")[:60]
+                elif linea.startswith("## "):
+                    sec = linea[3:].strip()
+                elif linea.strip() and not set(linea.strip()) <= set("|-: "):
+                    out.append({"doc": nombre, "ruta": f"🔬 {nombre} › {sec}", "texto": linea.strip()})
+    return out
+
+
 def _md_con_codigo(texto):
     """Como md(), pero sin tocar los bloques de código (ahí el '$' debe verse tal cual)."""
     trozos = re.split(r"(```.*?```)", texto, flags=re.S)
@@ -323,13 +382,18 @@ def tab_dossiers():
         return p.stem
 
     mapa = DOSSIERS / "MAPA.md"
-    opciones = ([("🗂️ Índice de dossiers", mapa)] if mapa.exists() else []) + [(titulo(p), p) for p in archivos]
+    pred = Path(__file__).parent / "informes" / "predicciones.md"
+    opciones = ([("🗂️ Índice de dossiers", mapa)] if mapa.exists() else []) + ([("🎯 Registro de predicciones", pred)] if pred.exists() else []) + [(titulo(p), p) for p in archivos]
     if not opciones:
         st.info("Todavía no hay dossiers.")
         return
     nombres = [o[0] for o in opciones]
     sel = st.selectbox("Dossier", nombres, key="doc_dossier")
-    texto = opciones[nombres.index(sel)][1].read_text(encoding="utf-8")
+    elegido = opciones[nombres.index(sel)][1]
+    if elegido == pred:
+        tab_predicciones()
+        return
+    texto = elegido.read_text(encoding="utf-8")
     # enlaces entre dossiers (rutas relativas del repo): en la app se dejan como texto
     texto = re.sub(r"\[([^\]]+)\]\((?!https?://)[^)]*\.md\)", r"\1", texto)
     partes = re.split(r"(?m)^(?=## )", texto)
