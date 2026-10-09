@@ -103,7 +103,7 @@ Preguntas que conviene hacerse **antes** de contratar cualquier cosa (no son un 
 3. ¿Cuánto tengo **en total** en esa entidad (suma de todo)?
 4. ¿Qué **rentabilidad real** me da (G1) y cuál es la **comisión**?
 5. ¿Cuándo puedo **retirar** el dinero y con qué penalización?
-6. ¿Quién **custodia** lo que tengo (banco, bróker, exchange)? Los fondos de inversión y valores se mantienen **separados** del balance del banco, de modo que la quiebra del banco no los arrastra, pero esa protección tiene sus matices y límites (por ejemplo, el Fondo de Garantía de Inversiones) [VERIFICAR en la CNMV, ver G5/G8].
+6. ¿Quién **custodia** lo que tengo (banco, bróker, exchange)? Los fondos de inversión y valores se mantienen **separados** del balance del banco, de modo que la quiebra del banco no los arrastra, pero esa protección tiene sus matices y límites (por ejemplo, el Fondo de Garantía de Inversiones) [VERIFICAR en la CNMV; ver G5].
 7. Productos de renta fija "como depósitos" (**bonos del propio banco**, participaciones preferentes) **no son depósitos** y pueden sufrir pérdidas; es un patrón histórico de venta inadecuada [VERIFICAR con CNMV].
 
 ## 9. Relación con cripto (XRP / XLM)
@@ -141,4 +141,4 @@ Preguntas que conviene hacerse **antes** de contratar cualquier cosa (no son un 
 - No evalúo la solidez de ninguna entidad concreta, ni recomiendo ni desaconsejo entidades.
 
 ## 12. Guías relacionadas
-G1 ([tipos e inflación](2026-10-10-G1-tipos-e-inflacion.md)), G4 (depósitos y cuentas), G5 (hipotecas), G8-G9 (inversión), G12 (fiscalidad), G15 (asesores y reclamaciones). Ver [MAPA](MAPA.md).
+G1 ([tipos e inflación](2026-10-10-G1-tipos-e-inflacion.md)), G3 (avales, garantías e hipotecas), G4 (renta fija), G5 (acciones, ETFs y fondos), G12 (fiscalidad), G15 (asesores y reclamaciones). Ver [MAPA](MAPA.md).
