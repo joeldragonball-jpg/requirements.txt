@@ -28,7 +28,7 @@
 | # | Guía | Qué cubre | Estado |
 |---|---|---|---|
 | G1 | Tipos de interés e inflación | BCE y Euríbor, curva de tipos, rentabilidad real, efecto en hipotecas, depósitos y bonos | ✅ hecha: [G1](2026-10-10-G1-tipos-e-inflacion.md) (10-oct-2026) |
-| G2 | Cómo funciona un banco | Depósitos, reservas, Basilea, Fondo de Garantía (100.000 €), resolución bancaria | ⏳ pendiente |
+| G2 | Cómo funciona un banco | Depósitos, reservas, Basilea, Fondo de Garantía (100.000 €), resolución bancaria | ✅ hecha: [G2](2026-10-10-G2-como-funciona-un-banco.md) (10-oct-2026) |
 | G3 | Avales y garantías | Aval bancario y personal, SGR, ICO, fianzas, hipotecas y TAE | ⏳ pendiente |
 | G4 | Renta fija | Letras, bonos, duración, riesgo de crédito, fiscalidad | ⏳ pendiente |
 | G5 | Acciones, ETFs y fondos indexados | Comisiones, diversificación, fiscalidad de fondos | ⏳ pendiente |

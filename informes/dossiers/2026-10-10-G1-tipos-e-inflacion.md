@@ -129,7 +129,7 @@ Con 10.000 € al 3 % y una inflación del 4,9 %: tras un año tienes 10.300 €
   | 200.000 – 300.000 € | 27 % |
   | Más de 300.000 € | **30 %** (una fuente dice que antes era 28 %) [VERIFICAR] |
 - Los bancos suelen practicar una **retención del 19 %** sobre los intereses de cuentas y depósitos; las letras del Tesoro, por lo general, **no** llevan retención, pero igualmente se declaran [VERIFICAR en AEAT].
-- **Ejemplo (cálculo mío):** 10.000 € al 3 % = 300 € brutos; con 19 % de IRPF = 57 € de impuesto; neto 243 € (**2,43 %**). Con inflación del 4,9 %: rentabilidad real neta ≈ **−2,4 %**.
+- **Ejemplo (cálculo mío):** 10.000 € al 3 % = 300 € brutos; con 19 % de IRPF = 57 € de impuesto; neto 243 € (**2,43 %**). Con inflación del 4,9 %: rentabilidad real neta ≈ **−2,5 %**.
 - La inflación **no se descuenta** de la base: se tributa sobre el interés nominal. Esto es un hecho fiscal, no una crítica.
 - Los tramos y la norma pueden variar por comunidad y por reformas; ver G12 para la fiscalidad completa.
 
@@ -148,7 +148,7 @@ Con 10.000 € al 3 % y una inflación del 4,9 %: tras un año tienes 10.300 €
 | Periodo | Qué pasó | Tipo de depósito |
 |---|---|---|
 | 2021 | Sin cambios; inflación empieza a subir por energía y cuellos de botella | −0,50 % (de memoria) [VERIFICAR] |
-| **Jul-2022 a sep-2023** | **Ciclo de subidas** (10 subidas): +50 pb el 27-jul-2022 (primera tras 11 años), +75 el 14-sep y el 2-nov-2022, +50 el 21-dic y 8-feb-2023, +25 en mar, may, jun, ago y sep-2023 | 0 % → **4,00 %** (sep-2023) |
+| **Jul-2022 a sep-2023** | **Ciclo de subidas** (10 subidas): +50 pb el 27-jul-2022 (primera tras 11 años), +75 en sep-2022 y +75 en oct-2022, +50 en dic-2022, feb-2023 y mar-2023, y +25 en may, jun, jul y sep-2023 (fechas de decisión de memoria) [VERIFICAR el detalle en el BCE] | 0 % → **4,00 %** (sep-2023) |
 | Jun-2024 a jun-2025 | **Ciclo de bajadas** (8 recortes) | 4,00 % → **2,00 %** (jun-2025) |
 | **2026** | Nuevo giro por la energía: subida el 17-jun-2026 (+25 pb) y otra el 10-sep (efectiva el 16-sep) | 2,00 % → 2,25 % → **2,50 %** |
 
@@ -189,4 +189,4 @@ Qué escenario ocurre no se sabe [ESPECULACIÓN]: (A) la energía cede y el BCE 
 - Cualquier **previsión de tipos o de inflación** (no incluida salvo escenarios etiquetados).
 
 ## 11. Guías relacionadas
-G2 (renta fija y bonos), G4 (depósitos y cuentas), G5 (hipotecas), G12 (fiscalidad completa del ahorro y la inversión). Ver [MAPA](MAPA.md).
+G2 (cómo funciona un banco), G3 (avales, garantías e hipotecas), G4 (renta fija), G12 (fiscalidad completa del ahorro y la inversión). Ver [MAPA](MAPA.md).
