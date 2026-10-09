@@ -6,7 +6,7 @@
 1. **Mercado (DefiLlama, 9-oct):** ~**313 MM$** en stablecoins ligadas al dólar. **USDT 184,2 MM$** (~59 %) y **USDC 73,2 MM$** (~23 %) suman más del 80 %. **RLUSD** (Ripple) tiene **2.466 M$** (~0,8 %). Las ligadas al euro suman solo **~836 M€**: **EURC 497 M€**, EURCV 189 M€ y ninguna más pasa de 40 M€.
 2. **EE. UU. (GENIUS Act):** la ley ya está en marcha por **reglas propuestas**, no finales. Primarias: propuesta de la **OCC** (2-mar-2026), propuesta del **Tesoro** sobre emisión, oferta y venta (18-ago, comentarios hasta el **19-oct**), propuestas de la **Fed** (29-sep, hasta el **30-nov**) y una **norma provisional del Tesoro** (30-sep) sobre el comité que revisa las certificaciones estatales. **No consta una norma final** en el Federal Register.
 3. **Corrección:** el documento 2026-19966 (30-sep) es una norma **de procedimiento** sobre certificaciones de reguladores estatales, no "la primera norma con el límite de 10.000 M$" que contaba un medio (Yahoo). Ese umbral **no lo he verificado** en el texto oficial [VERIFICAR].
-4. **UE (MiCA):** el 8-oct-2026 ESMA pidió a los proveedores autorizados (CASP) que **dejen de prestar servicios con stablecoins no conformes con MiCA**, con **tres meses** para corregir exposiciones previas (→ ~**8-ene-2027**, cálculo mío). El texto **no nombra USDT, USDC ni EURC**.
+4. **UE (MiCA):** el 8-oct-2026 ESMA pidió a los proveedores autorizados (CASP) que **dejen de prestar servicios con stablecoins no conformes con MiCA**, con **tres meses** para corregir exposiciones previas (→ ~**8-ene-2027**, cálculo mío) **[VERIFICAR: leído solo en un resumen automático; texto íntegro sin confirmar]**. El texto **no nombra USDT, USDC ni EURC**.
 5. **Para XRP/XLM:** RLUSD es el producto de Ripple (1.140 M$ en el XRPL, leídos en el ledger); en Stellar mandan USDC y MGUSD. La regulación decide **quién puede emitir y distribuir**; el efecto en el precio de XRP o XLM **no está demostrado**.
 
 ## 2. Qué es y cómo funciona
@@ -24,7 +24,7 @@
 | USDS / USDe / DAI / USD1 / USDG / PYUSD | 7,0 / 4,8 / 4,8 / 4,3 / 3,1 / 2,9 MM$ | DefiLlama |
 | **RLUSD** (total) | **2.466,5 M$** | DefiLlama |
 | RLUSD en el XRPL | **1.140 M$** (ledger 107541076, 9-oct) | **Verificado en el ledger** (primaria). Cálculo mío: ~46 % del total |
-| Stablecoins ligadas al euro | **836 M€** (EURC 497; EURCV 189; EURI 37; EURE 33; EUROP 17; REUR 17; EURR 14) | DefiLlama |
+| Stablecoins ligadas al euro | **836 M€** (EURC 497; EURCV 189; EURI 37; EURE 33; EUROP 17; REUR 17; EURR 14; suman 804; el resto, ~32 M€, son monedas menores no listadas) | DefiLlama |
 | Euro frente a dólar | ~0,3 % del tamaño del dólar | Cálculo mío |
 | Propuesta OCC (GENIUS) | Publicada 2-mar-2026; comentarios cerrados el 1-may | **Primaria** (Federal Register 2026-04089) |
 | Propuesta Tesoro: emisión, oferta y venta | Publicada 18-ago-2026; comentarios hasta **19-oct** | **Primaria** (2026-16796) |
@@ -32,7 +32,7 @@
 | Norma provisional: comité de certificaciones estatales | Publicada y efectiva **30-sep-2026**; comentarios hasta 30-nov | **Primaria** (2026-19966) |
 | FDIC, FinCEN, Tesoro/OCC (AML, identificación de clientes) | Propuestas entre jun y jul-2026 | **Primaria** (títulos y fechas) |
 | OCC publicará la norma final "antes de noviembre" | Declaración del Comptroller (19-ago-2026) | Secundaria [VERIFICAR] |
-| ESMA: servicios con stablecoins no MiCA | Comunicado **8-oct-2026**; tres meses de plazo | **Primaria** (ESMA) |
+| ESMA: servicios con stablecoins no MiCA | Comunicado **8-oct-2026** (título y fecha confirmados); plazo de tres meses y destinatarios (CASP) | Primaria, pero **plazo y destinatarios [VERIFICAR]**: texto íntegro sin leer |
 | Fin del periodo transitorio de MiCA para CASP | **1-jul-2026** | Secundaria (resultado de buscador con documento de ESMA) [VERIFICAR] |
 | Tether USAT (con Anchorage Digital Bank) | Lanzada **27-ene-2026** | Secundaria [VERIFICAR] |
 | Reservas de USDT (Q1-2026) | ~20 MM$ en oro y ~7 MM$ en BTC sobre ~183 MM$; ~15 % fuera de activos permitidos por GENIUS | Secundaria (eco.com sobre atestación de Tether) [VERIFICAR] |
@@ -46,7 +46,7 @@
 | **27–29-oct-2026** | Swell (Ripple); puede traer anuncios de RLUSD | calendario existente |
 | **Nov-2026** | OCC pretende su norma final (declaración del Comptroller) | Secundaria [VERIFICAR] |
 | **30-nov-2026** | Fin de comentarios: propuestas de la Fed y norma provisional del comité de certificaciones | Federal Register (primaria) |
-| **~8-ene-2027** | Fin del plazo de tres meses de ESMA para CASP con stablecoins no conformes | ESMA (primaria; fecha por cálculo mío) |
+| **~8-ene-2027** | Fin del plazo de tres meses de ESMA para CASP con stablecoins no conformes | ESMA; plazo y fecha por cálculo mío **[VERIFICAR]** |
 | **18-ene-2027** | Fecha legal máxima de aplicación del GENIUS Act si no hay normas finales antes | Secundaria [VERIFICAR] |
 | 2.º semestre 2026 | Lanzamiento previsto de la stablecoin de Qivalis | Secundaria |
 

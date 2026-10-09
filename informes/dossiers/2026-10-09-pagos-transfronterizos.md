@@ -5,7 +5,7 @@
 ## 1. Resumen ejecutivo
 1. **Las "autopistas" nuevas de pagos son de bancos y bancos centrales, no de cripto:** el BCE puso en marcha **Pontes** (21-sep-2026) para liquidar activos tokenizados en dinero de banco central; **Swift** activó su **libro mayor compartido** (9-jul-2026) con 17 bancos y **depósitos tokenizados**; la UE obliga a las **transferencias inmediatas SEPA** por ley.
 2. **Ripple:** la cifra de "16 billones de dólares al año" (Garlinghouse, CNBC, jun-2026, según prensa) viene de **adquisiciones tradicionales** (Hidden Road/Ripple Prime y GTreasury/Ripple Treasury), y solo un **~0,1 %** se liquida con activos on-chain. **No es volumen de XRP.** La cifra propia de Ripple Payments es de **>100.000 M$ acumulados** (nota oficial, 3-mar-2026).
-3. **RLUSD** (stablecoin de Ripple) tiene **1.140 M$ en el XRP Ledger** (leído en el ledger, 9-oct) y ~2.456 M$ en total (CoinGecko vía prensa, oct-2026): **XRPL ≈ 44 %** y Ethereum el resto (secundaria).
+3. **RLUSD** (stablecoin de Ripple) tiene **1.140 M$ en el XRP Ledger** (leído en el ledger, 9-oct) y ~2.456 M$ en total (CoinGecko vía prensa, oct-2026): **XRPL ≈ 46 %** (1.140/2.456, cálculo mío) y Ethereum el resto (secundaria).
 4. **Stellar** crece por **stablecoins**: 11.400 M$ de volumen de transferencias de stablecoins en el Q2-2026 (+72 % trimestral, cifra de la propia Stellar, tono promocional) y **MGUSD de MoneyGram** (2-jun-2026, emitido por Bridge). El papel de **XLM** como activo **no** se explica en esas fuentes.
 5. **Qué implica para XRP/XLM:** el uso real (pagos) se desplaza hacia **stablecoins y depósitos tokenizados**; la demanda de XRP o XLM como activo puente **no está demostrada con datos oficiales**. Efecto directo en el precio: **no demostrado**.
 
@@ -20,8 +20,8 @@
 | Dato | Valor | Estado |
 |---|---|---|
 | Lanzamiento inicial de Pontes | **21-sep-2026** | **Verificado (primaria, BCE)** |
-| Participantes de Pontes al inicio | 13 entidades (Deutsche Bank, Santander, Société Générale, DZ Bank, BEI, KfW, etc.) y 4 operadores DLT (Axiology, Cashlink, Clearstream, SWIAT) | **Verificado (primaria, nota del BCE vía buscador)** |
-| Horario de Pontes | 08:00–16:00 CET en días hábiles; 24/7 previsto hacia **2028** | Secundaria (cryptonomist, CoinDesk) y nota del BCE ("plena implantación hacia 2028") [VERIFICAR horario en BCE] |
+| Participantes de Pontes al inicio | 13 entidades (Deutsche Bank, Santander, Société Générale, DZ Bank, BEI, KfW, etc.) y 4 operadores DLT (Axiology, Cashlink, Clearstream, SWIAT) | Secundaria: lista vista solo en resultados de buscador sobre la nota del BCE; la web de Pontes no la contiene [VERIFICAR] |
+| Horario de Pontes | 08:00–16:00 CET en días hábiles; 24/7 previsto hacia **2028** | Secundaria (cryptonomist, CoinDesk); la web de Pontes del BCE confirma solo el lanzamiento del 21-sep-2026 y **no menciona horario ni 2028** [VERIFICAR] |
 | Libro mayor de Swift | Activo desde **9-jul-2026**, 17 bancos, depósitos tokenizados, liquidación final en sistemas existentes | **Verificado (primaria, nota de Swift vía buscador)** |
 | RLUSD en XRPL | **1.140.114.698** (objeto de obligaciones del emisor, ledger 107541076, 9-oct) | **Verificado en el ledger** (cálculo mío: el emisor es el de dominio ripple.com) |
 | RLUSD total | ~2.456 M$ (oct-2026) y 2.491 M$ el 28-sep; +86 % en 2026 | Secundaria (KuCoin/CoinGecko) [VERIFICAR] |
@@ -30,7 +30,7 @@
 | ODL "35.000 M$ en Q1-2026, +41 %" | Sin fuente de Ripple | **Dudoso** (agregadores y webs promocionales: coingabbar, openpr, 247WallSt) |
 | Stellar: volumen de stablecoins | 11.400 M$ en Q2-2026 (+72 %); 10,7 M de cuentas; RWA 3.000 M$ | Primaria (Stellar) pero **promocional**; definiciones no detalladas |
 | MGUSD | Lanzado el **2-jun-2026**, emisor Bridge (Stripe), con M0 y Fireblocks; en EE. UU. al inicio | Primaria (MoneyGram vía PR Newswire, resumen del buscador) |
-| Euros: plazos de pagos inmediatos | Zona euro: recibir 9-ene-2025, enviar y verificación 9-oct-2025. Fuera del euro: recibir 9-abr-2027, enviar/verificación 9-jul-2027 | **Verificado (primaria, BCE)** |
+| Euros: plazos de pagos inmediatos | **Bancos, zona euro:** recibir 9-ene-2025; enviar y verificar al beneficiario 9-oct-2025. **Bancos UE fuera del euro:** recibir 9-ene-2027; enviar y verificar 9-jul-2027. **Entidades de pago y de dinero electrónico:** recibir 9-abr-2027 (toda la UE); enviar 9-abr-2027 (zona euro) y 9-jul-2027 (fuera del euro) | **Verificado (primaria, BCE)** |
 
 ## 4. Calendario
 | Fecha | Qué | Fuente |
@@ -39,15 +39,16 @@
 | 9-jul-2026 (hecho) | Libro mayor de Swift, piloto de 17 bancos | Swift |
 | 2-jun-2026 (hecho) | MGUSD de MoneyGram en Stellar | MoneyGram |
 | 27–29-oct-2026 | Swell (Ripple): posibles anuncios de pagos | ya en calendario |
-| 9-abr-2027 | Países UE fuera del euro: recibir transferencias inmediatas | BCE (primaria) |
-| 9-jul-2027 | Fuera del euro: enviar transferencias inmediatas y verificar al beneficiario | BCE (primaria) |
-| 2028 | Pontes 24/7 y plena implantación (previsión del BCE) | BCE / prensa |
+| 9-ene-2027 | Bancos de la UE fuera del euro: recibir transferencias inmediatas | BCE (primaria) |
+| 9-abr-2027 | Entidades de pago y de dinero electrónico: recibir (toda la UE) y enviar (zona euro) | BCE (primaria) |
+| 9-jul-2027 | Bancos de la UE fuera del euro: enviar y verificar al beneficiario; entidades de pago/dinero electrónico fuera del euro: enviar | BCE (primaria) |
+| 2028 | Pontes 24/7 y plena implantación (previsión) | Secundaria [VERIFICAR]; no figura en la web de Pontes |
 
-**Propuesta para `eventos/calendario.toml` (no añadida):** 9-jul-2027, "UE: transferencias inmediatas y verificación del beneficiario fuera de la zona euro" (impacto medio, fuente BCE). Las demás ya pasaron o no tienen fecha oficial.
+**Propuesta para `eventos/calendario.toml` (no añadida):** 9-ene-2027 (bancos fuera del euro reciben transferencias inmediatas) y 9-jul-2027 (envían y verifican al beneficiario), impacto medio, fuente BCE. Las demás ya pasaron o no tienen fecha oficial.
 
 ## 5. Riesgos [lo que dicen las fuentes]
 - **Desplazamiento:** si los depósitos tokenizados de bancos (Swift) y el dinero de banco central (Pontes) resuelven la liquidez 24/7, el papel de un activo puente como XRP o XLM podría **reducirse**. Es una hipótesis, no un hecho.
-- **Piloto, no producción masiva:** Swift dice que la liquidación final sigue en sistemas existentes; Pontes tiene horario limitado y 17 participantes.
+- **Piloto, no producción masiva:** Swift dice que la liquidación final sigue en sistemas existentes; Pontes arranca con horario limitado y pocos participantes [VERIFICAR cifra y horario].
 - **Cifras infladas:** 16 billones de Ripple y volúmenes de ODL mezclan o no definen qué se liquida con XRP.
 - **Concentración de RLUSD:** emisión por una sola empresa; reservas y dato de circulación cambian por fuente.
 - **Fuente propia de Stellar:** el balance trimestral es promocional y no habla de XLM.

@@ -11,5 +11,5 @@
 | 5 | ETFs cripto | BTC, ETH, XRP, SOL: flujos, S-1 en EDGAR, calendario de la SEC | ✅ 2026-10-09 |
 | 6 | Pagos transfronterizos | Ripple (ODL, RLUSD), Stellar, SWIFT y su libro mayor, Pontes del BCE, SEPA | ✅ 2026-10-09 |
 | 7 | Stablecoins | GENIUS Act, MiCA, euro-stablecoins, RLUSD y USDC | ✅ 2026-10-09 |
-| 8 | Macro | Fed, BCE, petróleo, yields y su efecto en cripto (mensual) | ⏳ pendiente |
+| 8 | Macro | Fed, BCE, petróleo, yields y su efecto en cripto (mensual) | ✅ 2026-10-09 |
 | 9 | Infraestructura on-chain | Enmiendas del XRPL (BatchV1_1), protocolos de Stellar | ⏳ pendiente |
