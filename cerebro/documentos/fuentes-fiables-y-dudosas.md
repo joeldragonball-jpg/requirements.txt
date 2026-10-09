@@ -13,3 +13,4 @@ actualizado: 2026-10-07
 - Despeja La X (YouTube, ES): útil por citas originales (CEO Evernorth, Selig) y cálculos claros; sesgo de tenedor, sin enlaces, cuenta compras propias de XLM y enlaza perfil, podcast y web (Bitbabo) [VERIFICAR afiliados]; entrevistas traducidas por el canal. Fiabilidad media.
 - account_tx en xrplcluster.com: fuente primaria para movimientos de Ripple; api.xrpscan.com no da etiquetas sin navegador.
 - analyticsinsight/techbullion: reciclan noticias viejas como "breakout" y mezclan promoción de tokens; no usar.
+- Estado de enmiendas XRPL: ledger_entry del objeto Amendments (índice 7DB0788C...6EF4) en xrplcluster.com = primaria (activas y Majorities con hora); mejor que prensa o xrpl.org (carga dinámica).
