@@ -15,6 +15,7 @@ import requests
 import streamlit as st
 
 CARPETA = Path(__file__).parent / "cerebro"
+DOSSIERS = Path(__file__).parent / "informes" / "dossiers"   # investigaciones profundas, fuera de cerebro/ a propósito (no entran en el chat)
 MODELO = "claude-sonnet-5-5"
 REPO = "joeldragonball-jpg/requirements.txt"
 RAW_DATOS = f"https://raw.githubusercontent.com/{REPO}/datos"   # rama 'datos': noticias y registro de uso
@@ -252,7 +253,7 @@ def mostrar():
     apartados = [("📚 Apuntes", lambda: tab_apuntes(docs)), ("🔤 Glosario", lambda: tab_glosario(todos_conceptos)),
                  ("📊 Datos", lambda: tab_datos(docs)), ("🎯 Mi cartera", lambda: tab_cartera(docs)),
                  ("📰 Actualidad", lambda: tab_actualidad(docs)), ("🗺️ Mapa", lambda: tab_mapa(docs)),
-                 ("💭 Dudas y chat", dudas_y_chat), ("💸 Consumo", lambda: tab_consumo())]
+                 ("💭 Dudas y chat", dudas_y_chat), ("🔬 Dossiers", tab_dossiers), ("💸 Consumo", lambda: tab_consumo())]
     elegido = st.radio("Apartado", range(len(apartados)), horizontal=True, label_visibility="collapsed",
                        key="grupo_menu_cerebro", format_func=lambda k: apartados[k][0].replace(" ", "  \n", 1))
     apartados[elegido][1]()
@@ -298,6 +299,46 @@ def tab_apuntes(docs):
         with st.container(border=True):
             st.markdown("#### 🎯 Puntos clave")
             st.markdown(md(puntos))
+
+
+def _md_con_codigo(texto):
+    """Como md(), pero sin tocar los bloques de código (ahí el '$' debe verse tal cual)."""
+    trozos = re.split(r"(```.*?```)", texto, flags=re.S)
+    return "\n".join(t if t.startswith("```") else md(t) for t in trozos)
+
+
+def tab_dossiers():
+    """Dossiers de research (informes/dossiers/*.md), de solo lectura. No usan IA ni entran en el chat."""
+    if not DOSSIERS.exists():
+        st.info("Todavía no hay dossiers.")
+        return
+    archivos = sorted(p for p in DOSSIERS.glob("*.md") if p.name != "MAPA.md")
+    st.caption("Investigaciones profundas con fuentes y su grado de confianza. Informativo: no son recomendaciones. "
+               "Solo lectura: no entran en el chat, así que no gastan IA.")
+
+    def titulo(p):
+        for linea in p.read_text(encoding="utf-8").splitlines():
+            if linea.startswith("# "):
+                return linea[2:].replace("Dossier: ", "").strip()
+        return p.stem
+
+    mapa = DOSSIERS / "MAPA.md"
+    opciones = ([("🗂️ Índice de dossiers", mapa)] if mapa.exists() else []) + [(titulo(p), p) for p in archivos]
+    if not opciones:
+        st.info("Todavía no hay dossiers.")
+        return
+    nombres = [o[0] for o in opciones]
+    sel = st.selectbox("Dossier", nombres, key="doc_dossier")
+    texto = opciones[nombres.index(sel)][1].read_text(encoding="utf-8")
+    # enlaces entre dossiers (rutas relativas del repo): en la app se dejan como texto
+    texto = re.sub(r"\[([^\]]+)\]\((?!https?://)[^)]*\.md\)", r"\1", texto)
+    partes = re.split(r"(?m)^(?=## )", texto)
+    inicio, secciones = partes[0], partes[1:]
+    st.markdown(_md_con_codigo(re.sub(r"(?m)^# .*\n?", "", inicio)))
+    for i, sec in enumerate(secciones):
+        cab, _, cuerpo = sec.partition("\n")
+        with st.expander(cab.replace("## ", "", 1).strip(), expanded=(i == 0)):
+            st.markdown(_md_con_codigo(cuerpo))
 
 
 def tab_glosario(lista):

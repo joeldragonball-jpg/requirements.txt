@@ -60,7 +60,7 @@ st.markdown("""
     div[role="radiogroup"] > label p {margin: 0; font-weight: 600;}
     /* Menú del cerebro: 9 losetas, todas en una fila en pantallas anchas */
     @media (min-width: 900px) {
-        [class*="st-key-grupo_menu_cerebro"] div[role="radiogroup"] {grid-template-columns: repeat(8, minmax(0, 1fr));}
+        [class*="st-key-grupo_menu_cerebro"] div[role="radiogroup"] {grid-template-columns: repeat(9, minmax(0, 1fr));}
     }
     .st-key-noticias_vista [role="radiogroup"] {display: flex; flex-wrap: wrap; gap: 8px;}
     .st-key-noticias_vista label[data-testid="stRadioOption"] {width: auto; padding: 6px 14px;}
