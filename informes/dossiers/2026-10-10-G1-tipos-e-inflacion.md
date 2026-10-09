@@ -73,10 +73,10 @@ Si el Euríbor sube 1 punto, la cuota sube alrededor de **80 €/mes** en este e
 **Rentabilidad de bonos (referencias, no fijar decisiones en ellas)**
 | Dato | Valor | Fecha | Fuente / estado |
 |---|---|---|---|
-| Bono español a 10 años | **~3,7 %** | ~8-oct-2026 | Agregadores (cbonds/TradingEconomics) [VERIFICAR] |
-| Bono alemán (bund) a 10 años | **~3,3 %** | ~8-oct-2026 | Agregadores [VERIFICAR] |
+| Bono español a 10 años | **~3,7 %** (parece bajo: en subasta fue **3,964 %** el 17-sep, BdE; ver G4 §8.4) | ~8-oct-2026 | Agregadores (cbonds/TradingEconomics) [VERIFICAR] |
+| Bono alemán (bund) a 10 años | **~3,3 %** (otro agregador: 3,48 % el 9-oct; ver G4 §8.4) | ~8-oct-2026 | Agregadores [VERIFICAR] |
 | Prima de riesgo | **~34 pb** (otra fuente: 49 pb el 25-sep) | oct-2026 | **Fuentes discrepan** [VERIFICAR en BdE/Tesoro/Bundesbank] |
-| Letras del Tesoro a 12 meses | **2,679 %** (tipo marginal, subasta de agosto; máximo desde sept-2024) | ago-2026 | Prensa sobre datos del Tesoro [VERIFICAR en el Tesoro] |
+| Letras del Tesoro a 12 meses | **2,679 %** (subasta anterior). **Actualizado en G4:** 2,846 % (1-sep) y **3,026 % (6-oct)** | ago-oct 2026 | Prensa sobre datos del Tesoro [VERIFICAR en el Tesoro]. **Corrección G4:** el bono español a 10 años y el bund de arriba parecen bajos; en subasta el 10 años marcó 3,964 % (17-sep, BdE) y ~4,18 % (1-oct); ver [G4 §8.4](2026-10-10-G4-renta-fija.md) |
 | Referencia EE. UU. (10 años) | 5,22 % | 8-oct | Tesoro de EE. UU. (ver [dossier 8](2026-10-09-macro.md)) |
 
 **Qué significa la prima de riesgo.** Si el bono español rinde 3,7 % y el alemán 3,3 %, la prima es 0,4 puntos (40 pb). Cuanto más alta, más desconfianza del mercado respecto a un país (en 2012 llegó a superar los 600 pb, de memoria [VERIFICAR]). Hoy es **baja**, pero no hay garantía de que se mantenga.
