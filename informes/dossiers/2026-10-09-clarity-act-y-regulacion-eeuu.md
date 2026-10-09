@@ -29,8 +29,8 @@
 ## 4. Qué añadiría la ley y qué no
 **Lo que solo puede dar una ley:**
 - **Permanencia**: las normas de una agencia las puede revertir otra administración. Hill y Selig lo señalan como la razón principal ([Cryptobriefing](https://cryptobriefing.com/french-hill-sec-cftc-crypto-rules-clarity-act/)).
-- **Definición legal** de "commodity digital" (activo vinculado a una blockchain cuyo valor deriva de su uso) y fuera de la definición de valor.
-- **CFTC con jurisdicción exclusiva en el spot** y registro de exchanges, brókeres y *dealers* (nueva sección 4u de la ley de commodities). Hoy solo tiene poder antifraude.
+- **Definición legal** de "commodity digital": *"un activo digital intrínsecamente vinculado a un sistema blockchain y cuyo valor deriva, o se espera razonablemente que derive, del uso de ese sistema"* (texto de la Cámara, [govinfo.gov, H.R. 3633 EH](https://www.govinfo.gov/content/pkg/BILLS-119hr3633eh/html/BILLS-119hr3633eh.htm); **verificado en la fuente primaria**, aunque es la versión de la Cámara de julio de 2025 y la del Senado difiere). El texto también incluye requisitos de "sistema blockchain maduro".
+- **CFTC con jurisdicción exclusiva sobre los exchanges, brókeres y *dealers* de commodities digitales que se registren** (nueva sección 4u). Hoy solo tiene poder antifraude sobre el spot. *(Según el texto de la Cámara, la exclusividad es sobre las entidades registradas, no sobre cualquier operación.)*
 - Un reparto estable SEC/CFTC (frontera "commodity" frente a "valor").
 
 **Lo que ya tienes sin ella:** la clasificación de XRP y XLM como commodities (por interpretación, no por ley), la propuesta de safe harbor y un camino de custodia para fondos. El comentario del sector: la interpretación es el "cinturón" y la ley, los "tirantes" ([DeFi Prime](https://defiprime.com/clarity-act-anchorage-wysocki)).

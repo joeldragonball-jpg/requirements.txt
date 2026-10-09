@@ -5,7 +5,7 @@
 ## 1. Resumen ejecutivo
 1. **Evernorth** (respaldada por Ripple, SBI, Pantera, Kraken, GSR y otros) sale a **Nasdaq con el ticker XRPN** fusionándose con la SPAC **Armada Acquisition Corp. II**. Tendrá **~473 M de XRP** y unos **300 M$ en caja**.
 2. El **debut se aplazó** del 8 al **lunes 12-oct** por un tema administrativo; la empresa dice que no afecta al cierre. **Aún no hay cotización oficial de XRPN.** La caída del ~50 % de la que se habló el 7-oct fue de la **acción de la SPAC**, no de Evernorth ya cotizando.
-3. Gran parte de los XRP **no se compraron en el mercado**: Ripple y una parte relacionada aportaron **~388 M XRP a cambio de acciones**.
+3. Gran parte de los XRP **no se compraron en el mercado**: Ripple, el patrocinador de la SPAC y otra parte relacionada aportaron **~388 M XRP a cambio de acciones**; solo **~84 M (18 %) se compraron con dinero**, a una media de 2,54 $ (documento oficial de la SEC).
 4. La clave del negocio es la **prima sobre el valor de los XRP** (mNAV). **Nadie ha publicado todavía ese dato**; sale cuando cotice y con los primeros informes tras el cierre.
 5. Efecto en el **precio de XRP: no demostrado**. Es un vehículo de exposición con prima; comprar XRP directamente no la paga.
 
@@ -17,15 +17,23 @@
 ## 3. Cifras con su fuente
 | Dato | Valor | Estado |
 |---|---|---|
-| XRP en tesorería | ~473 M (a 31-dic-2025, según el Form 425) | Verificado (primaria, citada por prensa) |
-| XRP aportados por Ripple y relacionados a cambio de acciones | ~388 M | Verificado (secundaria, desde el S-4) |
+| XRP en tesorería al cierre | **al menos 473.276.430** | **Verificado (primaria, S-4/A)** |
+| XRP aportados por Ripple y partes relacionadas a cambio de acciones | **~388,1 M** (211,3 M del patrocinador de la SPAC + 126,8 M de Ripple + 50 M de otra parte relacionada) | **Verificado (primaria: S-4/A nº 6 de la SEC, 12-ago-2026)** |
 | Caja al cierre | ~300 M$ | Secundaria |
-| Precio medio de compra de **parte** de los XRP | ~2,54 $ | Secundaria; el resto se aportó en especie |
+| XRP **comprados con dinero** y su precio medio | **84,37 M XRP** (≈18 % del total) con 214 M$ a **2,5366 $** de media | **Verificado (primaria, S-4/A)**. El resto (~389 M) se aportó en especie o por colocación |
 | Pérdida latente estimada con XRP en ~1,33 $ | ~380 M$ | Secundaria, de un solo medio [VERIFICAR] |
 | Valor aproximado de 473 M XRP hoy (XRP a 1,38 $) | ~650 M$ | **Cálculo mío** |
 | Valor de empresa frente al valor de los XRP | ~2 veces | **Cálculo mío**, no es un mNAV publicado |
 | mNAV real (prima sobre el valor neto) | **No publicado** | Sin dato |
 | Fecha del debut | **12-oct** (antes 8-oct) | Secundaria; falta el comunicado de Nasdaq [VERIFICAR] |
+
+## 3b. Lo que dice el documento oficial (S-4/A nº 6, presentado el 12-ago-2026)
+Lo leí en la web de la SEC ([enlace](https://www.sec.gov/Archives/edgar/data/0002092592/000119312526347519/d944435ds4a.htm)); es un documento de más de 4,5 millones de caracteres y extraje los apartados clave.
+- **Composición de los 473.276.430 XRP al cierre:** 0,6 M de los suscriptores de la financiación anticipada; 0,2 M de la financiación diferida; **211,3 M que aporta el patrocinador (Series C)**; **50 M de otra parte relacionada**; **126,8 M que aportó Ripple** al firmar el acuerdo; y **84,4 M comprados con 214 M$ a 2,5366 $ por XRP**.
+- **Contabilidad:** los XRP se registran como **activos intangibles al coste menos deterioro** (ASC 350-30), **no a valor de mercado**. Es decir, el balance **no sube** con el precio, pero sí **baja** (deterioro) si cae.
+- **Indicadores propios:** la empresa mide su rendimiento con **"XRP por acción"** (los XRP dividido entre las acciones totales) y **"rendimiento por token"** (XRP extra generado por sus estrategias). Es lo que dice que acumulará.
+- **Bloqueo de acciones:** hay acuerdos *lock-up*; en el resumen que leí, **hasta que ocurra lo primero entre seis meses tras el cierre y otra condición** de la compañía [VERIFICAR las condiciones exactas y qué accionistas están sujetos].
+- **Precio de las acciones en la financiación:** **10 $ por acción** para los inversores del PIPE.
 
 ## 4. Calendario
 | Fecha | Qué |
