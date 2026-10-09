@@ -20,3 +20,25 @@
 | 13 | Fiscalidad en España de XRP y XLM | IRPF (escala 19-30 %, compensación, FIFO, regla de 2 meses/1 año), permutas, comisiones y airdrops; modelos 721/172/173/175 y DAC8; campaña de la renta; ETP frente a moneda; staking/lending; Patrimonio por comunidad; calendario fiscal hasta 2027 | ✅ 2026-10-09 |
 | 14 | Custodia y seguridad (XRP/XLM) | Exchange vs. custodia propia, MiCA art. 75 (segregación, responsabilidad), hackeos y quiebras 2022-2026 (FTX, Bybit, Bitget, Coinbase), comprobar un CASP (ESMA/CNMV), proof-of-reserves, tags/memos/trustlines, estafas, herencia, garantías y reclamaciones, checklist | ✅ 2026-10-09 |
 | 15 | Panorama competitivo (XRP/XLM) | Stablecoins y RWA por cadena (DefiLlama, rwa.xyz, 9-oct), Solana, Ethereum/L2, Tron, Hedera, Algorand, Canton, Swift/Pontes/Kinexys, Visa/Mastercard; mediciones en cadena de XRPL, Stellar y Solana; casos a favor/en contra y señales | ✅ 2026-10-09 |
+
+## Serie «Guías» (educativas, para tener contexto antes de una gestión patrimonial; pendientes)
+
+> Informativas, con foco en España, fuentes oficiales (Banco de España, BCE, CNMV, AEAT, BOE, Tesoro, ICO, INE). Explican cómo funciona cada cosa, sus riesgos y su fiscalidad; **no son recomendaciones**. Una guía por sesión. Orden sugerido: G1, G2, G4, G5, G12, G8, G9, G13 y el resto.
+
+| # | Guía | Qué cubre | Estado |
+|---|---|---|---|
+| G1 | Tipos de interés e inflación | BCE y Euríbor, curva de tipos, rentabilidad real, efecto en hipotecas, depósitos y bonos | ⏳ pendiente |
+| G2 | Cómo funciona un banco | Depósitos, reservas, Basilea, Fondo de Garantía (100.000 €), resolución bancaria | ⏳ pendiente |
+| G3 | Avales y garantías | Aval bancario y personal, SGR, ICO, fianzas, hipotecas y TAE | ⏳ pendiente |
+| G4 | Renta fija | Letras, bonos, duración, riesgo de crédito, fiscalidad | ⏳ pendiente |
+| G5 | Acciones, ETFs y fondos indexados | Comisiones, diversificación, fiscalidad de fondos | ⏳ pendiente |
+| G6 | Planes de pensiones, PIAS y seguros de ahorro | Qué ofrecen y límites fiscales | ⏳ pendiente |
+| G7 | Derivados y apalancamiento | Opciones, futuros, CFD y sus riesgos | ⏳ pendiente |
+| G8 | Inmobiliaria | Compra o alquiler, rentabilidad neta, ITP, IBI, SOCIMI, crowdfunding | ⏳ pendiente |
+| G9 | Commodities | Oro, plata, petróleo, agrícolas; ETC, futuros, físico; fiscalidad; relación con dólar e inflación | ⏳ pendiente |
+| G10 | Pymes y autónomos | SL o autónomo, financiación (ICO, ENISA, leasing, factoring), IS e IRPF | ⏳ pendiente |
+| G11 | Startups y capital riesgo | Rondas, valoración, dilución, business angels, incentivos fiscales, iliquidez | ⏳ pendiente |
+| G12 | Fiscalidad completa del ahorro e inversión en España | IRPF, Patrimonio, Sucesiones, comunidades, modelos informativos | ⏳ pendiente |
+| G13 | Gestión patrimonial | Objetivos, horizonte, asignación de activos, liquidez, seguros, herencia (marco, no consejo) | ⏳ pendiente |
+| G14 | Errores del inversor y sesgos | Confirmación, FOMO, exceso de confianza | ⏳ pendiente |
+| G15 | Cómo elegir asesor y entidad | Asesores registrados en la CNMV, comisiones, conflictos de interés, reclamaciones | ⏳ pendiente |
