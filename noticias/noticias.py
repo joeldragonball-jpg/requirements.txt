@@ -375,6 +375,17 @@ def jaccard(a, b):
     return len(a & b) / len(a | b) if (a | b) else 0.0
 
 
+def en_enfriamiento(n, db, ahora=None):
+    """True si el tema de esta noticia ya tiene su cupo reciente lleno y la nota no es de máxima importancia.
+    Solo para los temas de config (temas_enfriamiento), donde se acumulan muchas noticias sobre la misma historia."""
+    if n.get("tema") not in CONFIG.get("temas_enfriamiento", []) or int(n.get("puntuacion", 0)) >= CONFIG.get("nota_enfriamiento", 9):
+        return False
+    ahora = ahora or datetime.now(timezone.utc)
+    desde = (ahora - timedelta(hours=CONFIG.get("horas_enfriamiento", 24))).isoformat()
+    recientes = sum(1 for m in db["noticias"] if m.get("tema") == n["tema"] and m.get("fecha_envio", "") >= desde)
+    return recientes >= CONFIG.get("max_por_tema", 2)
+
+
 def es_repeticion(titulo, db, ahora=None):
     """True si el titular (ya en español) se parece mucho a una noticia enviada en los últimos días: es la misma noticia
     contada otra vez (otro medio, otra hora). Sin IA: compara las palabras. deduplicar() solo mira la tanda actual."""
@@ -495,8 +506,8 @@ def alertas_urgentes(db, candidatas):
             continue
         n = {**previas[i], **{k: s[k] for k in ("tema", "puntuacion", "titulo", "resumen", "por_que")},
              "actualiza_apuntes": "", "urgente": True}
-        if es_repeticion(n["titulo"], db, ahora):
-            print(f"Alerta urgente repetida (ya enviada hace poco): {n['titulo'][:70]!r}")
+        if es_repeticion(n["titulo"], db, ahora) or en_enfriamiento(n, db, ahora):
+            print(f"Alerta urgente repetida o de un tema saturado: {n['titulo'][:70]!r}")
             continue
         n["msg_id"] = enviar_noticia(n)
         n["fecha_envio"] = ahora.isoformat()
@@ -562,6 +573,8 @@ Tu trabajo:
 predicciones de precio sin base, titulares sensacionalistas, publicidad, notas de prensa irrelevantes \
 y noticias repetidas (si varias fuentes cuentan lo mismo, quédate con la mejor y descarta las demás).
 - Descarta también las que repitan una noticia que ya se le envió (te paso la lista).
+- NOVEDAD: para cada noticia escribe en "novedad" qué dato NUEVO aporta frente a lo ya enviado sobre la misma historia (una cifra, una decisión, un hecho distinto). Si no hay nada enviado sobre ella, escribe "primera vez". Si solo cuenta lo mismo con otras palabras, o es otra opinión o ángulo sobre el mismo hecho sin dato nuevo, NO la elijas.
+- TEMAS SATURADOS: "Petróleo y Ormuz" y "Cripto y regulación" acumulan muchas noticias de la misma historia. Elige como mucho 2 de cada uno por tanda, y solo si aportan algo distinto (nota 9-10 si es un hecho de máxima importancia).
 - Puntúa cada una de 1 a 10 según lo importante que es para él: 9-10 = algo que puede afectar \
 claramente a su inversión o al mundo (regulación clave, decisión de un banco central, conflicto grave); \
 6-8 = relevante; 5 o menos = menor.
@@ -607,8 +620,9 @@ def esquema_seleccion():
                 "resumen": {"type": "string"},
                 "por_que": {"type": "string"},
                 "actualiza_apuntes": {"type": "string"},
+                "novedad": {"type": "string", "description": "dato nuevo frente a lo ya enviado, o 'primera vez'"},
             },
-            "required": ["n", "titular", "tema", "puntuacion", "titulo", "resumen", "por_que", "actualiza_apuntes"],
+            "required": ["n", "titular", "tema", "puntuacion", "titulo", "resumen", "por_que", "actualiza_apuntes", "novedad"],
             "additionalProperties": False,
         }}},
         "required": ["noticias"],
@@ -725,6 +739,10 @@ def seleccionar(db, candidatas, maximo):
         i = localizar(candidatas, s["n"], s.get("titular", ""))   # el titular copiado debe ser el del número indicado
         if i is None:
             print(f"Noticia descartada (el titular no cuadra con el número): {s.get('titulo', '')[:70]!r}")
+            continue
+        novedad = normalizar_texto(s.get("novedad", ""))
+        if not novedad or novedad.startswith(("ninguna", "ninguno", "sin novedad", "no aporta", "nada")):
+            print(f"Noticia descartada (sin dato nuevo): {s.get('titulo', '')[:70]!r}")
             continue
         elegidas.append({**candidatas[i], **{k: s[k] for k in ("tema", "puntuacion", "titulo", "resumen",
                                                                "por_que", "actualiza_apuntes")}})
@@ -964,8 +982,8 @@ def main():
             for n in equilibrar(seleccionar(db, candidatas, maximo=cupo * 2)):
                 if enviadas >= cupo or n["puntuacion"] < CONFIG.get("nota_minima", 6):
                     continue
-                if es_repeticion(n["titulo"], db):
-                    print(f"Noticia repetida (ya enviada hace poco): {n['titulo'][:70]!r}")
+                if es_repeticion(n["titulo"], db) or en_enfriamiento(n, db):
+                    print(f"Noticia repetida o de un tema saturado: {n['titulo'][:70]!r}")
                     continue
                 n["msg_id"] = enviar_noticia(n)
                 n["fecha_envio"] = datetime.now(timezone.utc).isoformat()

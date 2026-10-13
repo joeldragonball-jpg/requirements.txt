@@ -68,6 +68,12 @@ max_lineas_dudas = 12       # de tus apuntes, solo los N puntos de "Dudas y dato
 umbral_duplicado = 0.55     # 0-1: cuánto se parecen dos títulos para considerarlos la misma noticia (sin IA)
 dias_repeticion = 4        # no enviar otra noticia casi igual a una enviada en los últimos N días (sin IA; también se lo dice al modelo)
 umbral_repeticion = 0.35   # 0-1: parecido entre el titular nuevo (en español) y los ya enviados; más bajo = más estricto
+# Enfriamiento por tema: en los temas donde se mueve mucha información, tras N noticias en las últimas H horas
+# solo pasa una nueva si su nota es >= nota_enfriamiento (sin IA). Pon temas_enfriamiento = [] para desactivarlo.
+temas_enfriamiento = ["Petróleo y Ormuz", "Cripto y regulación", "Regulación"]
+max_por_tema = 2
+horas_enfriamiento = 24
+nota_enfriamiento = 9
 
 # Qué te interesa (lo lee el modelo barato para filtrar; sé concreto)
 intereses = """XRP/Ripple y Stellar/XLM (adopción, ETF, demandas, alianzas, liquidez, ISO 20022); regulación y organismos \
