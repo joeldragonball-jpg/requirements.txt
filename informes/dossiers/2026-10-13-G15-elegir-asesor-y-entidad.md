@@ -271,7 +271,7 @@ Nada de esto sustituye una consulta con un profesional o con la CNMV.
 ## 11. Cómo preparar la primera reunión y revisar la relación cada año
 ### 11.1 Antes de la primera reunión
 1. **Comprueba el registro** de la entidad y de la persona (§5) **antes** de ir, y apunta el número.
-2. **Documentos** que conviene llevar: ingresos y gastos fijos, deudas (G3), liquidez, **extractos de inversiones**, pólizas y planes (G6 pendiente), situación fiscal (últimas declaraciones), **objetivos** y **plazos** de cada uno y qué **pérdida máxima** soportarías sin tocar tu vida (esto lo defines tú, no la entidad).
+2. **Documentos** que conviene llevar: ingresos y gastos fijos, deudas (G3), liquidez, **extractos de inversiones**, pólizas y planes (G6), situación fiscal (últimas declaraciones), **objetivos** y **plazos** de cada uno y qué **pérdida máxima** soportarías sin tocar tu vida (esto lo defines tú, no la entidad).
 3. **Preguntas** de §7.
 4. **Límites que fijar por escrito**: tipos de producto que **no** quieres, divisa, plazo, importe máximo de cada operación, si autorizas **cambios sin consulta** (gestión) o **solo recomendaciones** (asesoramiento).
 5. **Qué pedir antes de firmar**: contrato, **política de incentivos**, política de conflictos, **tarifas**, información de costes ex ante (art. 143.1.c) y **declaración de idoneidad** de cualquier recomendación (art. 204.6).
@@ -324,4 +324,4 @@ Nada de esto sustituye una consulta con un profesional o con la CNMV.
 
 ## 14. Guías relacionadas
 - **G2** (cómo funciona un banco, FGD), **G3** (hipotecas y reclamaciones por comisiones), **G4** (renta fija), **G5** (acciones, ETFs y fondos; comisiones y KID), **G12** (fiscalidad completa), **dossier 14** ([custodia y seguridad](2026-10-09-custodia-y-seguridad.md): cómo comprobar un CASP, estafas y reclamaciones en cripto).
-- Pendientes de la serie: G6, G7, G10, G11, G13 y G14 (ver [MAPA](MAPA.md)).
+- Pendientes de la serie: G10 y G11 (ver [MAPA](MAPA.md)).

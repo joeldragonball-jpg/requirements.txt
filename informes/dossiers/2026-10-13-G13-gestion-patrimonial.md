@@ -73,7 +73,7 @@ Comprobación: 8.000 + 12.000 + 25.000 + 10.000 + 220.000 + 9.000 = **284.000**;
 | **Gastos previstos** (reforma, coche, boda) | 1-5 años | Que el importe esté cuando se necesita | G4 (letras), G2 |
 | **Vivienda** (entrada, compra, amortizar) | 3-10 años | Importe, plazo y tipo de interés | G3, G8 |
 | **Estudios** de hijos | Plazos fijados por la edad | Fecha cierta de uso | G4, G5 |
-| **Jubilación** | Décadas | Inflación, longevidad, fiscalidad del rescate | G6 (pendiente), G12 |
+| **Jubilación** | Décadas | Inflación, longevidad, fiscalidad del rescate | G6, G12 |
 | **Herencia** | Indeterminado | Seguridad jurídica, impuestos, liquidez para pagarlos | §9, G12 §8 |
 
 **Cómo definir un objetivo** (criterio SMART adaptado): **importe**, **fecha**, **prioridad** y **qué pasa si no se cumple** (p. ej. posponer una reforma frente a no poder pagar la matrícula). Con importe y fecha se puede calcular **cuánto hay que ahorrar al mes** antes de hablar de rentabilidad.
@@ -181,8 +181,8 @@ Cartera objetivo 60/40 de 100.000 €: 60.000 € en un ETF de bolsa y 40.000 �
 ## 7. Eficiencia fiscal (resumen; el detalle está en G12)
 > **Principio**: la fiscalidad **condiciona** pero no debe **mandar** sobre la liquidez, el riesgo y los objetivos. Se aplican los **tramos de la base del ahorro (19-30 %)** detallados en [G12 §1](2026-10-10-G12-fiscalidad-completa.md).
 1. **Ordenar qué se usa para qué**: conviene saber qué vehículos **aplazan** impuestos (fondos y traspasos, planes de pensiones), cuáles son **ilíquidos** o con restricciones de rescate, y cuáles tributan cada año (dividendos, intereses).
-2. **Planes de pensiones**: la reducción en la base general está limitada por el art. 52 LIRPF (texto consolidado leído hoy): **el menor entre el 30 % de los rendimientos netos del trabajo y de actividades económicas y 1.500 € anuales**, con ampliaciones en 8.500 € procedentes de contribuciones empresariales y otras específicas; el rescate tributa como rendimiento del trabajo. Es un **aplazamiento**, no una exención; **su guía (G6) está pendiente** y aquí no entro en comparar productos.
-3. **Ahorro a largo plazo**: la disposición adicional del IRPF sobre el **Plan de Ahorro a Largo Plazo (SIALP/CIALP)** fija aportaciones de **hasta 5.000 € anuales**, disposición **solo en forma de capital** por el total, y una garantía del **85 %** de las aportaciones o primas al vencimiento (texto consolidado leído hoy); la exención de los rendimientos por mantenerlo el plazo exigido (art. 7.ñ) [VERIFICAR el plazo de 5 años y requisitos]. Ver G6 cuando exista.
+2. **Planes de pensiones**: la reducción en la base general está limitada por el art. 52 LIRPF (texto consolidado leído hoy): **el menor entre el 30 % de los rendimientos netos del trabajo y de actividades económicas y 1.500 € anuales**, con ampliaciones en 8.500 € procedentes de contribuciones empresariales y otras específicas; el rescate tributa como rendimiento del trabajo. Es un **aplazamiento**, no una exención; su guía es la **G6**; aquí no entro en comparar productos.
+3. **Ahorro a largo plazo**: la disposición adicional del IRPF sobre el **Plan de Ahorro a Largo Plazo (SIALP/CIALP)** fija aportaciones de **hasta 5.000 € anuales**, disposición **solo en forma de capital** por el total, y una garantía del **85 %** de las aportaciones o primas al vencimiento (texto consolidado leído hoy); la exención de los rendimientos por mantenerlo el plazo exigido (art. 7.ñ) [VERIFICAR el plazo de 5 años y requisitos]. Ver G6.
 4. **Pérdidas compensables** (art. 49 LIRPF, leído hoy): los saldos negativos de rendimientos de capital mobiliario se compensan con el saldo positivo de las ganancias patrimoniales del mismo año **con el límite del 25 %**, y viceversa; lo que no se compensa se arrastra **4 años**. **Cuidado**: la venta de un bono o letra antes del vencimiento es **rendimiento del capital mobiliario**, no ganancia patrimonial (G4, corregido).
 5. **Tipos de renta**: no es lo mismo un dividendo, un interés, una ganancia o el alquiler (G12 §2-3; G8).
 6. **Residencia fiscal y comunidad** (Patrimonio, Sucesiones): ver G12 §7-8 y §10.
@@ -202,7 +202,7 @@ Cartera objetivo 60/40 de 100.000 €: 60.000 € en un ETF de bolsa y 40.000 �
 - **Coste y riesgo**: la prima es un **coste** (que reduce el ahorro); **cobertura infraasegurada** o **excluida** es un riesgo (leer la póliza, las exclusiones y los plazos de carencia).
 - **Seguro vinculado a una hipoteca**: la Ley 5/2019 restringe la contratación **obligada** de productos vinculados (G3 §6.2).
 - **Fiscalidad**: el capital que cobra un beneficiario de un seguro de vida suele integrarse en el **Impuesto de Sucesiones y Donaciones** (el preámbulo de la Ley 29/1987 habla de la **acumulación** de cantidades por seguros de vida a la porción hereditaria) [VERIFICAR el artículo y los matices por parentesco y comunidad].
-- **Una cosa es protegerse y otra invertir**: los productos mixtos (seguro + ahorro) mezclan ambas; leer cómo se desglosan comisiones y coste del seguro (G6, pendiente).
+- **Una cosa es protegerse y otra invertir**: los productos mixtos (seguro + ahorro) mezclan ambas; leer cómo se desglosan comisiones y coste del seguro (G6).
 
 ## 9. Planificación sucesoria
 ### 9.1 Testamento y legítimas (Código Civil, texto consolidado leído hoy)
@@ -323,7 +323,7 @@ POLÍTICA DE INVERSIÓN PERSONAL                Fecha: ____/____/______   Próxi
 - **Carteras ilustrativas (§5.3)**: Yahoo Finance (secundaria; sin comisiones, impuestos ni divisa EUR; un solo bono y un solo mercado).
 - **OCDE** (marcos de competencias financieras) y **CNMV** (guías específicas de asignación): **no consultadas**.
 - **Seguros**: la fiscalidad del capital de un seguro de vida en Sucesiones; coberturas y exclusiones concretas; **Consorcio de Compensación de Seguros** (no revisado).
-- **Plazos, requisitos y tributación del Plan de Ahorro a Largo Plazo** (art. 7.ñ) y de los **PIAS**; límites vigentes de **planes de pensiones** y su evolución (G6 pendiente).
+- **Plazos, requisitos y tributación del Plan de Ahorro a Largo Plazo** (art. 7.ñ) y de los **PIAS**; límites vigentes de **planes de pensiones** y su evolución (G6).
 - **Regímenes forales de sucesiones** (Cataluña, Navarra, País Vasco, Galicia, Aragón, Baleares), el **Registro de Actos de Última Voluntad** y las **comparativas autonómicas** de G12 §8.2 (G12 ya las marca como [VERIFICAR]).
 - **RDL 29/2026 y cambios de 2027**: afectan al alquiler (G8, G12); no se tratan aquí.
 ### 13.3 Puntos para confirmar con un asesor (fiscal, jurídico, financiero)
@@ -338,4 +338,4 @@ POLÍTICA DE INVERSIÓN PERSONAL                Fecha: ____/____/______   Próxi
 
 ## 14. Guías relacionadas
 - **G1, G2, G3, G4, G5, G8, G9, G12** y los dossiers 13 (fiscalidad de XRP/XLM), custodia y prueba de estrés (enlaces arriba).
-- **Pendientes de la serie**: G6 (pensiones, PIAS y seguros de ahorro), G7, G10, G11, G14 y G15 (ver [MAPA](MAPA.md)).
+- **Pendientes de la serie**: G10 y G11 (ver [MAPA](MAPA.md)).
