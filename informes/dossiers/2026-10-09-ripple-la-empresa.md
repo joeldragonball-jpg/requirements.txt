@@ -37,7 +37,7 @@
 | Caso SEC | Sentencia final del 7-ago-2024: **125.035.150 $** de multa y orden de no violar el registro; apelaciones desistidas **7-ago-2025**; la sentencia sigue en vigor | | **Primaria** ([SEC LR-26369](https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26369)) |
 | Zakinov (demanda colectiva) | Novena Circuito confirmó (27-ene-2026); desistimiento con perjuicio y acuerdo (3-abr-2026); sin fondo para compradores | | **Secundaria** [VERIFICAR en PACER] |
 | Salida a bolsa | "Sin plazo, sin planes" (Monica Long, Bloomberg); "no es prioridad a corto plazo" (Garlinghouse, CNBC); sugirió "algo especial" para tenedores de XRP si cotiza (mayo-2026) | | **Secundaria** (entrevistas); la nota primaria de nov-2025 no menciona OPV |
-| RLUSD en circulación (XRPL) | **1.131.214.698 RLUSD** (obligaciones del emisor `rMxCKb…`) | ledger 107541545, 9-oct | **Primaria (ledger)**. No incluye lo emitido en Ethereum |
+| RLUSD en circulación (XRPL) | **1.131.214.698 RLUSD** (obligaciones del emisor `rMxCKb…`) | ledger 107541545, 9-oct | **Primaria (ledger)**, pero **no reproducible**: otros dossiers dan 1.140 M el mismo día y la auditoría del 13-oct midió **1.034 M** (ledger 107628795) [VERIFICAR]. No incluye lo emitido en Ethereum |
 | RLUSD: estructura | Emitido bajo carta fiduciaria de propósito limitado del **NYDFS**; reservas en efectivo y letras del Tesoro custodiadas por **BNY** | | Primaria (nota BNY/Ripple de jul-2025); verificación mensual por contables según prensa **secundaria** |
 
 ## 4. XRP: tenencias, escrow y ventas (con comprobación en el ledger)
@@ -45,7 +45,7 @@
 |---|---|---|
 | XRP en poder de Ripple | **37.656.053.914** (32.600 M en escrow) | **Primaria** (ripple.com/xrp, a 30-jun-2026; trimestral) |
 | XRP "distribuido" (fuera de Ripple) | 62.329.587.596 | Primaria (a 30-jun) |
-| Escrow en las 20 cuentas del `xrp-ledger.toml` | **98 escrows, 31.400.000.000 XRP**; saldo líquido en esas cuentas ~1.000 M XRP | **Verificado en el ledger** (9-oct). El toml indica "modified 2022"; la lista puede no ser exhaustiva |
+| Escrow en las cuentas del `xrp-ledger.toml` (20 el 9-oct; 21 direcciones listadas el 13-oct) | **98 escrows, 31.400.000.000 XRP**; saldo líquido en esas cuentas ~1.000 M XRP | **Verificado en el ledger** (9-oct). El toml indica "modified 2022"; la lista puede no ser exhaustiva |
 | Próximo vencimiento de escrow | **1-nov-2026 00:00 UTC** (la fecha `FinishAfter` más próxima) | Verificado en el ledger |
 | Suministro total de XRP | 99.985.593.134,8 | Verificado en el ledger (`total_coins`) |
 | Calendario del escrow | Hasta 1.000 M XRP al mes; lo que no se usa vuelve a escrow | Primaria (explicación de Ripple) |

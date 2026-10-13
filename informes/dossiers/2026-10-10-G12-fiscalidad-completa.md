@@ -113,7 +113,7 @@
 | **Vivienda habitual del inquilino** | Para el 50 % general la ley exige que sea **vivienda** del inquilino; el arrendamiento de local o plazas de garaje no tiene reducción | [VERIFICAR] |
 | **Inmueble no alquilado (segunda vivienda)** | **Imputación de rentas**: se suma 1,1 % o 2 % del valor catastral (según revisión catastral) a la base general | Art. 85 [VERIFICAR porcentajes] |
 | **Retención** | 19 % si el inquilino es empresa o profesional y es alquiler de local | [VERIFICAR] |
-- **Actualización 13-oct-2026 (ver [G8 §5.1](2026-10-13-G8-inmobiliaria.md)):** el art. 23.2 de la Ley del IRPF figura en el BOE reescrito por el **RDL 29/2026** (en vigor desde el 8-oct-2026), con reducciones del 100 % al 15 % según renta, zona tensionada, edad del inquilino y variación de la renta; las cifras de esta tabla (50/60/70/90 %) corresponden al régimen de la Ley 12/2023. Según fuente secundaria, las nuevas reglas se aplicarían a contratos desde el **1-dic-2026**, y la **convalidación** del decreto no consta [VERIFICAR en el BOE y el Congreso].
+- **Actualización 13-oct-2026 (ver [G8 §5.1](2026-10-13-G8-inmobiliaria.md)):** el art. 23.2 de la Ley del IRPF figura en el BOE reescrito por el **RDL 29/2026** (en vigor desde el 8-oct-2026), con reducciones del 100 % al 15 % según renta, zona tensionada, edad del inquilino y variación de la renta; las cifras de esta tabla (50/60/70/90 %) corresponden al régimen de la Ley 12/2023. Según la disposición transitoria del propio RDL 29/2026 (BOE, comprobado en la auditoría del 13-oct), las nuevas reglas se aplican a contratos celebrados desde el **1-dic-2026**; esta tabla de 50/60/70/90 % sigue siendo la aplicable a los firmados antes. La **convalidación** del decreto no consta [VERIFICAR en el BOE y el Congreso].
 - **Ejemplo (cálculo mío, vivienda alquilada a particular):** ingresos 12.000 €; gastos: IBI 600 + comunidad 800 + seguro 200 + intereses 2.000 + amortización (3 % de 100.000 € de construcción) 3.000 = 6.600 €. Neto = **5.400 €**. Con reducción del 50 % tributan **2.700 €** a la tarifa de la base general. Con la reducción del 90 %, 540 €.
 - **Vivienda habitual propia:** no tributa renta imputada (exenta como vivienda habitual).
 - **Seguridad/riesgo:** si no se cumplen los requisitos de la reducción, la Administración puede regularizar con recargo; la zona tensionada debe estar **declarada oficialmente** por la comunidad [VERIFICAR].
@@ -203,7 +203,7 @@
 
 ### 6.4 Inversión en empresas de nueva creación
 - **Ley 28/2022 de startups:** deducción del **50 %** de hasta **100.000 €** invertidos al año en empresas emergentes certificadas; mantener las participaciones **más de 3 años y menos de 12** (secundaria: asest.es, wonder.legal) [VERIFICAR en el texto de la ley y en el art. 68.1 de la Ley 35/2006].
-- Hay **riesgo de pérdida total** y las acciones son **ilíquidas**; no es un producto recomendable «por la deducción» [opinión mía como advertencia, no consejo]. Detalle en la futura G11.
+- Hay **riesgo de pérdida total** y las acciones son **ilíquidas**; la deducción no elimina esos riesgos [advertencia sobre el riesgo, no consejo]. Detalle en la futura G11.
 
 ## 7. Impuesto sobre el Patrimonio y ITSGF
 ### 7.1 Impuesto sobre el Patrimonio (Ley 19/1991, leída hoy)

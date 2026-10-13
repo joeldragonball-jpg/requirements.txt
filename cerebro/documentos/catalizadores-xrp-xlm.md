@@ -14,4 +14,4 @@ actualizado: 2026-10-07
 - 2026-10-08: PermissionDelegationV1_1 (no la original) activada en el XRPL; sin efecto medible en precio (XRP -5 % ese día por macro).
 - 2026-10-09: rebote leve (BTC 82,6 k$ +1,2 %, XRP 1,38 $, XLM 0,193 $), Brent 103,9 $. BatchV1_1 gana mayoría 9-oct 09:34 UTC: activación posible >= 23-oct.
 - 2026-10-09 (cierre): día lateral (XRP 1,372–1,406 $), solo el oro se mueve (+1,5 %); Waller (Fed) con sesgo de subidas, sin efecto medible.
-- CORRECCIÓN 2026-10-13: BatchV1_1 ya se activó el 9-oct (ledger 107540993); lo que sigue en cuenta atrás es fixCleanup3_4_0 (≥23-oct, aprox.). La Fed está en 3,75–4,00 % desde el 16-sep (el resumen principal usa datos de mayo).
+- CORRECCIÓN 2026-10-13: BatchV1_1 ya se activó el 9-oct (ledger 107540993); lo que sigue en cuenta atrás es fixCleanup3_4_0 (≥23-oct, aprox.). La Fed está en 3,75–4,00 % desde el 16-sep (el resumen principal usa datos de mayo). Auditoría 13-oct: minutas del FOMC el 7-oct (no el 8); el 15-sep falló el cloture de la moción de proceder (49-50), no la CLARITY Act; reacción del 8-oct según Kraken (dossier 8): BTC −1,9 %, XRP −2,9 %, XLM −4,2 %.

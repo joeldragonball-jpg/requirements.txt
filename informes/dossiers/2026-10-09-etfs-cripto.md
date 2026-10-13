@@ -9,7 +9,7 @@
 4. **XLM:** el único vehículo es el **Grayscale Stellar Lumens Trust (GXLM)**, que sigue en **OTCQX** con ~**21,8 M$** de activos (10-Q a 30-jun-2026, EDGAR). Su S-1 para convertirse en ETF en NYSE Arca (23-sep-2025) **no consta como efectivo**; no hay fecha de decisión de la SEC que yo pueda verificar [VERIFICAR].
 5. **Marco legal (primaria):** la interpretación SEC-CFTC del 17-mar-2026 nombra **XRP, Stellar (XLM) y Solana** como ejemplos de *digital commodities* (no son valores por sí mismos). El texto **no menciona ETFs/ETPs**. Esto **resuelve el [VERIFICAR] sobre Stellar** de informes anteriores.
 6. **Novedades reguladoras:** el 1-oct la SEC propuso una norma de **custodia de cripto** para asesores y fondos regulados (permite autocustodia en ciertos casos y fideicomisos estatales como custodios); el 11-nov vence el plazo de la SEC sobre opciones de ETFs cripto (SR-ISE-2026-42).
-7. **Para XRP/XLM:** los ETFs son una vía de acceso con comisión, no una compra directa de precio; el efecto causal en el precio **no está demostrado**. En 2026 mandan macro y petróleo.
+7. **Para XRP/XLM:** los ETFs son una vía de acceso con comisión, no una compra directa de precio; el efecto causal en el precio **no está demostrado**. En 2026 los movimientos coincidieron con noticias de macro y petróleo; la causalidad no está medida (dossiers 8 y 11).
 
 ## 2. Qué son y cómo funcionan
 - **ETF spot** (fondo cotizado): guarda la criptomoneda de verdad (custodiada por un tercero) y el precio de la participación sigue al de la moneda menos la comisión. **ETF de futuros:** guarda contratos, no la moneda; puede desviarse del precio.

@@ -52,7 +52,7 @@
 | Euríbor 12 m, media de julio 2026 | **2,855 %** | BdE/BOE (resolución del 1-sep) |
 | Euríbor 12 m, media de agosto 2026 | **2,954 %** | BdE/BOE, [BOE-A-2026-18507](https://boe.es/boe/dias/2026/09/02/pdfs/BOE-A-2026-18507.pdf) |
 | Euríbor 12 m, valor diario 14-sep-2026 | ~**3,312 %** | Rastreator/Rankia (secundaria) [VERIFICAR] |
-| Euríbor 12 m, media de septiembre | Aún no publicada oficialmente (saldrá a principios de octubre en el BOE) | — |
+| Euríbor 12 m, media de septiembre | **3,247 %** (BOE-A-2026-20519, publicado el 2-oct-2026; verificado en la auditoría del 13-oct) | BdE/BOE |
 
 **Cómo se revisa una hipoteca variable**
 - Tipo del préstamo = **Euríbor + diferencial** (fijado en el contrato). Ej.: Euríbor 12 m + 1,00 %.
@@ -120,7 +120,7 @@ Con 10.000 € al 3 % y una inflación del 4,9 %: tras un año tienes 10.300 €
 
 **Fiscalidad de los intereses (base del ahorro del IRPF)**
 - Los intereses de cuentas, depósitos, bonos y el rendimiento implícito de las letras son **rendimientos del capital mobiliario** y van a la **base imponible del ahorro**.
-- Tramos de la base del ahorro según fuentes secundarias para 2026 [VERIFICAR en AEAT/BOE, sobre todo el último tramo]:
+- Tramos de la base del ahorro (verificados en el BOE, arts. 66 y 76, consolidado a 7-oct-2026, en la auditoría del 13-oct):
   | Base del ahorro | Tipo |
   |---|---|
   | Hasta 6.000 € | 19 % |
@@ -148,9 +148,9 @@ Con 10.000 € al 3 % y una inflación del 4,9 %: tras un año tienes 10.300 €
 | Periodo | Qué pasó | Tipo de depósito |
 |---|---|---|
 | 2021 | Sin cambios; inflación empieza a subir por energía y cuellos de botella | −0,50 % (de memoria) [VERIFICAR] |
-| **Jul-2022 a sep-2023** | **Ciclo de subidas** (10 subidas): +50 pb el 27-jul-2022 (primera tras 11 años), +75 en sep-2022 y +75 en oct-2022, +50 en dic-2022, feb-2023 y mar-2023, y +25 en may, jun, jul y sep-2023 (fechas de decisión de memoria) [VERIFICAR el detalle en el BCE] | 0 % → **4,00 %** (sep-2023) |
+| **Jul-2022 a sep-2023** | **Ciclo de subidas** (10 subidas): +50 pb el 27-jul-2022 (primera tras 11 años), +75 en sep-2022 y +75 en oct-2022, +50 en dic-2022, feb-2023 y mar-2023, y +25 en may, jun, jul y sep-2023 (fechas de decisión de memoria) [VERIFICAR el detalle en el BCE] | −0,50 % → **4,00 %** (sep-2023; la primera subida lo llevó al 0 %) |
 | Jun-2024 a jun-2025 | **Ciclo de bajadas** (8 recortes) | 4,00 % → **2,00 %** (jun-2025) |
-| **2026** | Nuevo giro por la energía: subida el 17-jun-2026 (+25 pb) y otra el 10-sep (efectiva el 16-sep) | 2,00 % → 2,25 % → **2,50 %** |
+| **2026** | Nuevo giro por la energía: subida con efecto el 17-jun-2026 (+25 pb; fecha de la decisión [VERIFICAR]) y otra decidida el 10-sep (efectiva el 16-sep) | 2,00 % → 2,25 % → **2,50 %** |
 
 **Estado actual (datos más recientes, 10-oct-2026)**
 - Inflación España 4,9 %, subyacente 3,1 %, Euríbor 12 m rondando el 3 %, BCE al 2,50 % tras dos subidas en 2026.
@@ -183,7 +183,7 @@ Qué escenario ocurre no se sabe [ESPECULACIÓN]: (A) la energía cede y el BCE 
 - Rentabilidad exacta de los bonos español y alemán a 10 años: fuentes secundarias discrepan (34 vs 49 pb de prima; 3,7 % vs 4,1 % del español). Hay que consultar el Banco de España o el Tesoro.
 - La cifra de agosto de la eurozona (3,2 % vs 3,3 %) y el avance de septiembre (3,8 %) se leyeron en prensa, no en Eurostat.
 - El resultado de la **subasta de letras de septiembre** (solo he visto el de agosto).
-- Tramos del IRPF de 2026: el 30 % del último tramo viene de una web secundaria; comprobar en la AEAT/BOE.
+- Tramos del IRPF de 2026: verificados después en el BOE (auditoría del 13-oct).
 - Detalles de la metodología del Euríbor y los plazos actuales (EMMI).
 - Fecha del IPC definitivo del INE y del avance de octubre de Eurostat.
 - Cualquier **previsión de tipos o de inflación** (no incluida salvo escenarios etiquetados).

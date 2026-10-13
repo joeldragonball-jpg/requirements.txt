@@ -29,7 +29,7 @@
 ## 4. Hitos de 2026
 | Fecha | Hito | Estado |
 |---|---|---|
-| 6-may | Protocolo 26 "Yardstick" (congelar claves comprometidas, aritmética más segura) | Secundaria (Nansen) |
+| 6-may | Protocolo 26 "Yardstick" (descripción de Nansen: congelar claves comprometidas, aritmética más segura); el dossier 9 lo describe con CAP-80 (BN254) y CAP-82 (enteros de 256 bits), fuente primaria preferible [VERIFICAR] | Secundaria (Nansen) |
 | 19-may | **CCTP de Circle** en Stellar (USDC nativo entre cadenas) | Secundaria |
 | May | **DTCC** anuncia que conectará su servicio de tokenización a Stellar (1S 2027) | Nota de DTCC, citada por prensa |
 | 10-sep | **MoneyGram + Rain:** tarjeta Visa con USDC empezando en Colombia | [The Block](https://theblock.co/news/business/2026-09-10-moneygram-card-stablecoin-visa-colombia-414137) |

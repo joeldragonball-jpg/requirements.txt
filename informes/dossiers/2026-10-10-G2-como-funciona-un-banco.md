@@ -77,7 +77,7 @@ Fuente de las fechas de 2023: resumen de prensa por buscador (SVB cae el 10-mar;
 **Hechos (fuente primaria: [FGD](https://www.fgd.es/es/))**
 - Garantiza **hasta 100.000 € por depositante y por entidad**. Se **suman** todos tus depósitos en la misma entidad (cuenta corriente, ahorro, depósito a plazo).
 - **Excepciones temporales:** durante **tres meses** tras ciertas operaciones (venta de vivienda habitual, matrimonio/divorcio, jubilación, despido, invalidez o muerte, indemnizaciones o seguros) la cobertura puede ser **superior** al límite.
-- **No cubre:** fondos de inversión, valores, acciones y bonos. Tampoco depósitos de ciertas entidades (aseguradoras, sociedades de inversión).
+- **No cubre:** pérdidas de valor de fondos de inversión, acciones y bonos. Existe además una **garantía de valores** independiente: si la entidad de crédito no devuelve los valores que le confiaste, el FGD cubre hasta 100.000 € (RDL 16/2011, art. 10.2; comprobado en la auditoría del 13-oct); en las empresas de servicios de inversión la garantía equivalente es el FOGAIN. Tampoco cubre depósitos de ciertas entidades (aseguradoras, sociedades de inversión).
 - **Moneda extranjera:** se convierte al tipo de cambio de la fecha de la declaración de insolvencia.
 - **Aviso del FGD sobre neobancos y fintech:** la cobertura de tus fondos **puede proceder de otro sistema de garantía distinto** del español. Hay que comprobar cuál protege tu dinero.
 - **Plazo de reembolso:** **7 días hábiles desde el 1-ene-2024** (fuentes de entidades; [VERIFICAR en el FGD]).
@@ -91,7 +91,7 @@ Fuente de las fechas de 2023: resumen de prensa por buscador (SVB cae el 10-mar;
 **Hechos**
 - Marco europeo: la **BRRD** (2014), transpuesta a España. Autoridades: **Banco de España** (preventiva) y **FROB** (ejecutiva); para bancos grandes, la **Junta Única de Resolución (JUR)**, con un **Fondo Único de Resolución (FUR)** que alcanzó unos **78.000 M€** a fin de 2023, el nivel objetivo (1 % de depósitos garantizados) [VERIFICAR: fuente secundaria].
 - **Bail-in:** las pérdidas se reparten entre accionistas y acreedores antes de usar dinero público.
-- **MREL:** cada banco debe tener un volumen mínimo de pasivos "absorbibles" (al menos el 8 % del balance en el planteamiento general) [VERIFICAR].
+- **MREL:** cada banco debe tener un volumen mínimo de pasivos "absorbibles", que se fija banco a banco; un 8 % de los pasivos totales y fondos propios es el nivel mínimo de bail-in para poder acceder al Fondo Único de Resolución [VERIFICAR].
 - **Orden de pérdidas (simplificado, de memoria)** [VERIFICAR]: 1) accionistas → 2) bonos de capital (AT1/CoCos) → 3) deuda subordinada → 4) deuda senior no preferente y otros acreedores → 5) depósitos **por encima de 100.000 €** (con prelación para personas y pymes) → **los depósitos cubiertos (hasta 100.000 €) no sufren pérdidas** en un bail-in: los cubre el FGD.
 
 **Caso real: Banco Popular (junio de 2017).** El 7-jun-2017 la JUR resolvió el banco: se **amortizó el 100 % de las acciones**, se convirtieron en acciones los instrumentos de capital adicional de nivel 1 y el capital de nivel 2 (deuda subordinada), y el banco se vendió a **Banco Santander por 1 €** ([resumen de prensa y Caixabank Research por buscador] [VERIFICAR en la JUR/FROB]). Los depositantes mantuvieron su dinero; los accionistas y los tenedores de ciertos bonos perdieron. Fue un hecho; si fue **justo** o si la gestión de la información fue adecuada es **opinión** y hubo litigios [ESPECULACIÓN].

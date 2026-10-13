@@ -15,6 +15,7 @@
 | 17-jul-2025 | La Cámara aprueba la ley 294-134 | [apunte previo del cerebro; fuente secundaria] |
 | Mayo-2026 | El comité bancario del Senado la aprueba 15-9; compromiso Tillis-Alsobrooks sobre el rendimiento de las stablecoins (1-may) | [Baker McKenzie](https://blockchain.bakermckenzie.com/2026/05/05/the-clarity-acts-yield-compromise-what-the-senate-actually-agreed-to-and-why-it-matters/) |
 | 5-ago-2026 | Thune no presenta el cierre de debate; las probabilidades en Polymarket caen a mínimos | [The Defiant](https://thedefiant.io/news/regulation/traders-push-clarity-act-odds-into-2027-after-thune-skips-cloture-filing) |
+| 8-ago-2026 | Se presenta la moción de cierre (cloture) sobre la moción de proceder (CR S4557); hito añadido por la auditoría del 13-oct | [govinfo, BILLSTATUS](https://www.govinfo.gov/bulkdata/BILLSTATUS/119/hr/BILLSTATUS-119hr3633.xml) |
 | **15-sep-2026** | **Cloture 49-50.** Tillis presenta moción para reconsiderar (solo repite la votación; ningún demócrata la apoya) | [Forbes](https://www.forbes.com/sites/digital-assets/2026/09/16/failure-of-crypto-clarity-act-cloture-vote-not-a-surprise/), [AMINA](https://aminagroup.com/research/clarity-act-september-2026-why-the-senate-vote-failed-what-regulates-us-crypto-now/) |
 | Fin de sept.-oct. 2026 | La Cámara está fuera hasta después del 3-nov: aunque el Senado votara, no habría ley antes | Fireblocks / prensa (secundaria) |
 

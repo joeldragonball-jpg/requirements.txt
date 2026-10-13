@@ -7,7 +7,7 @@
 2. En el ejemplo de §1 (cálculo mío), con revalorización 0 % y alquiler plano, comprar sale **algo más caro** que alquilar a 10 años y **casi igual** a 20; con revalorización y alquileres subiendo un 2 % anual, comprar sale **más barato**. El resultado depende de supuestos, no de una regla (§1.3).
 3. Comprar una vivienda **usada** cuesta ~**9-10 %** del precio en impuestos y gastos (ITP varía por comunidad: aprox. 4-13 % según fuentes secundarias); la **nueva** paga **IVA 10 % + AJD** (§2).
 4. Tenencia: IBI, comunidad, seguros, basuras y mantenimiento (regla práctica ~**1 % del valor al año**, orientativa) más **periodos vacíos** (§3).
-5. Rentabilidad: la **bruta** del ejemplo es **4,8 %** del precio; la **neta antes de impuestos** ~**2,6 %** y **después** ~**2,4 %** de la inversión total (§4).
+5. Rentabilidad: la **bruta** del ejemplo es **4,8 %** del precio; la **neta antes de impuestos** ~**2,6 %** y **después** ~**2,45 %** de la inversión total (§4).
 6. **Novedad normativa (verificada hoy en BOE):** el art. 23.2 de la Ley del IRPF aparece reescrito por el **RDL 29/2026** (100 %-15 % de reducción según renta, zona tensionada, edad del inquilino y variación de renta); la **convalidación** parlamentaria **no consta** [VERIFICAR] (§5.1, §14).
 7. Venta: ganancia en la **base del ahorro**; exención por reinversión y para **mayores de 65** solo en **vivienda habitual**; la **plusvalía municipal** es aparte (§5.2-5.3).
 8. Alquiler: LAU, Ley 12/2023, **zonas tensionadas**, límites a la subida de renta, fianza y garantías; el desahucio puede tardar y hay **suspensiones** para vulnerables (§6).
@@ -133,7 +133,7 @@
 5. **Resultado antes de impuestos:** 11.000 − 4.000 = **7.000 €** → 7.000 ÷ 273.000 = **2,56 %** (rentabilidad **neta antes de impuestos**).
 6. **Impuesto (IRPF, base general; G12 §2.2 y §5.1):** gastos deducibles = 4.000 € + **amortización 3 %** de la parte de construcción (hipótesis: 60 % de 273.000 = 163.800; × 3 % = **4.914 €**; la ley toma el mayor entre coste y valor catastral de construcción [VERIFICAR con G12/Reglamento]) = 8.914 €. Rendimiento neto = 11.000 − 8.914 = **2.086 €**. Con la reducción general del **50 %** (régimen vigente antes del RDL 29/2026; §5.1) tributan **1.043 €**; a un tipo marginal hipotético del **30 %**, cuota ≈ **313 €**.
 7. **Neta después de impuestos:** 7.000 − 313 = 6.687 € → 6.687 ÷ 273.000 = **2,45 %**.
-8. **Con hipoteca (G3):** con 200.000 € al 3 %, los intereses del primer año son ≈ 5.940 € y el capital amortizado ≈ 5.441 € (cuota 948,4 × 12 = 11.381 €). La renta neta de 7.000 € **no cubre** la cuota: el flujo anual del propietario sale ≈ **−4.381 €** (7.000 − 11.381) antes de impuestos. Aquí el coste del dinero (3 %) supera la rentabilidad neta (2,6 %): apalancamiento **negativo**. Un tipo variable (G1) añade riesgo.
+8. **Con hipoteca (G3):** con 200.000 € al 3 %, los intereses del primer año son ≈ 5.926 € y el capital amortizado ≈ 5.455 € (cuota 948,4 × 12 = 11.381 €). La renta neta de 7.000 € **no cubre** la cuota: el flujo anual del propietario sale ≈ **−4.381 €** (7.000 − 11.381) antes de impuestos. Aquí el coste del dinero (3 %) supera la rentabilidad neta (2,6 %): apalancamiento **negativo**. Un tipo variable (G1) añade riesgo.
 **Lectura:** la renta bruta "de portal" (4,8 %) y la **neta** (~2,5 %) pueden diferir a casi la mitad. Un inquilino moroso, una derrama o una reforma pueden eliminar años de renta. No hay revalorización contada.
 
 ## 5. Fiscalidad (resumen; el detalle está en [G12](2026-10-10-G12-fiscalidad-completa.md))
@@ -156,7 +156,7 @@
     | **Vivienda rehabilitada** (obra terminada en los 2 años previos) | **60 %** |
     | Prórroga tácita (art. 10.1 LAU), con renta no superior al límite y arrendador no gran tenedor | **80 %** |
     - Si varias reducciones aplican, se aplica la mayor. Sin reducción para rentas no declaradas.
-    - **Fecha de aplicación:** una fuente secundaria (despacho/prensa, ver [Garrigues](https://www.garrigues.com/es_ES/noticia/regulacion-arrendamientos-vivienda-vivienda-temporal-real-decreto-ley-292026-limitaciones) y otros) dice que las nuevas reglas se aplican a contratos formalizados **desde el 1-dic-2026**, y que los anteriores mantienen las reglas previas [VERIFICAR; **no lo leí en el BOE**].
+    - **Fecha de aplicación:** una fuente secundaria (despacho/prensa, ver [Garrigues](https://www.garrigues.com/es_ES/noticia/regulacion-arrendamientos-vivienda-vivienda-temporal-real-decreto-ley-292026-limitaciones) y otros) dice que las nuevas reglas se aplican a contratos formalizados **desde el 1-dic-2026**, y que los anteriores mantienen las reglas previas. **Verificado después en el BOE (auditoría del 13-oct):** la disposición transitoria del RDL 29/2026 mantiene el art. 23.2 en su redacción a 31-dic-2025 para los contratos celebrados antes del 1-dic-2026.
     - **Convalidación:** un decreto-ley debe ser convalidado por el Congreso (o la Diputación Permanente) en 30 días; **no encontré** resultado de esa votación [VERIFICAR en la web del Congreso/BOE]. Si no se convalida, cae como el RDL 26/2026.
   - **Deducción para el inquilino:** el RDL 29/2026 (art. 6, según resumen) añade una **deducción del 10 %** por alquiler de **vivienda habitual** para bases imponibles **inferiores a 33.007,20 €** [VERIFICAR]. Ver §14 (contraste con G12).
 - **Segunda vivienda no alquilada:** **imputación de rentas** del 1,1 % o 2 % del valor catastral en la base general (G12 §2.2) [VERIFICAR].
@@ -187,7 +187,7 @@
 | **Fianza** | Un mes de renta en vivienda, depositada en el organismo autonómico (de memoria) y **garantías adicionales** con tope (de memoria, 2 mensualidades) [VERIFICAR]. Ver [G3 §2 y §3](2026-10-10-G3-avales-garantias-hipotecas.md) (aval bancario de alquiler) | De memoria |
 | **Impago y desahucio** | Procedimiento judicial; el inquilino puede **enervar** pagando; plazos reales muy variables [VERIFICAR]. Resumen del RDL 29/2026 **tal como consta en G3 §8**: régimen de suspensión **hasta el 31-dic-2030** para vulnerables sin alternativa habitacional, reforma de la LEC (indicar si es vivienda habitual y si el ejecutante es gran tenedor) y «enervación extraordinaria» por la Administración con plazo de dos meses [VERIFICAR; sin leer el resto de la norma]. Ver [G3 §8](2026-10-10-G3-avales-garantias-hipotecas.md) | G3 + lectura parcial |
 | **Prórrogas extraordinarias** | El RDL 29/2026 cita el **RDL 8/2026, de 20 de marzo** (prórrogas extraordinarias de contratos), en su disposición transitoria primera; no leí su contenido [VERIFICAR] | Mención |
-- **Efecto práctico para el propietario (lógica, no consejo):** la **vacante, los límites de renta y la suspensión de desahucios** son riesgos reales del alquiler; el marco **cambia rápido** (4 decretos-ley en 2026: 8/2026, 26/2026, 29/2026 y los posibles posteriores) [VERIFICAR].
+- **Efecto práctico para el propietario (lógica, no consejo):** la **vacante, los límites de renta y la suspensión de desahucios** son riesgos reales del alquiler; el marco **cambia rápido** (varios decretos-ley en 2026: 8/2026, 26/2026 —derogado por el Congreso—, 29/2026 y los posibles posteriores) [VERIFICAR].
 - **Sobre el RDL 29/2026:** hecho: publicado en el BOE el 7-oct-2026, en vigor el 8-oct-2026; **la convalidación no consta** (§5.1).
 
 ## 7. Exposición inmobiliaria sin comprar un inmueble
@@ -200,10 +200,10 @@
 **SOCIMI — detalles (secundarias salvo lo indicado, [VERIFICAR] todo):**
 - **Régimen:** no es una forma jurídica propia, sino un **régimen fiscal** de una S. A. cotizada; capital mínimo **5 M€**; **80 % del activo** en inmuebles urbanos de alquiler (art. 3, citado por una fuente secundaria); sin impuesto de sociedades si se cumplen los requisitos.
 - De memoria (no verifiqué en búsqueda): distribución obligatoria de una gran parte de los beneficios (80 % del alquiler; 50 % de plusvalías por venta; 100 % de dividendos de filiales), mantener los inmuebles al menos **3 años**, y un **gravamen especial** sobre dividendos a socios con ≥ 5 % que tributen a menos del 10 %; la Ley 7/2024 pudo introducir un gravamen sobre beneficios no distribuidos [VERIFICAR todo en el BOE].
-- **Fiscalidad del inversor:** dividendos a base del ahorro (G12); no hay la exención de 5.000 € de dividendos (eliminada en 2015) [VERIFICAR].
+- **Fiscalidad del inversor:** dividendos a base del ahorro (G12); no hay la exención de 1.500 € de dividendos (suprimida desde 2015; ver G12 §2.1) [VERIFICAR en el historial del BOE].
 
 **Crowdfunding inmobiliario — marco:** el **Reglamento (UE) 2020/1503** se aplica en España desde el **10-nov-2021**, con adaptación de las plataformas hasta el **10-nov-2023**; la **CNMV** es la autoridad competente y **autoriza** a los proveedores de servicios de financiación participativa (Ley 18/2022; art. 47 y 48 citados por la fuente) (**secundarias**; [VERIFICAR en la CNMV]). **La supervisión se centra en la plataforma, no en cada proyecto**: que una plataforma esté autorizada **no garantiza** que el proyecto sea bueno. Los **límites de inversión** que encontré **se contradicen entre fuentes** (1.000 € por proyecto y 10.000 € en total para no acreditados frente a otras que dicen que no hay límites): no los doy [VERIFICAR]. De memoria del Reglamento: ficha de datos fundamentales, **prueba de conocimientos y simulación de pérdidas** para inversores no sofisticados, y **periodo de reflexión de 4 días** [VERIFICAR].
-- **Comprobar** que la plataforma figura en el registro público de la CNMV y que no hay avisos de la CNMV (G14 de custodia y G15 de asesores y reclamaciones, cuando existan).
+- **Comprobar** que la plataforma figura en el registro público de la CNMV y que no hay avisos de la CNMV ([dossier 14 de custodia](2026-10-09-custodia-y-seguridad.md) y G15 de asesores y reclamaciones, cuando exista).
 
 ## 8. Riesgos
 | Riesgo | Qué significa | Cómo se nota |
@@ -231,7 +231,7 @@
 | **Notarios** (escrituras) | Compraventas de vivienda **65.395** en julio 2026 (**≈ −11 %**, séptimo mes de caída); **2.112 €/m²** (+7,7 %); hipotecas para vivienda **36.685** (−4,9 %) | publicado ~30-sep-2026 | **Prensa/agregador** ([Alimarket](https://www.alimarket.es/construccion/noticia_amp/431827/la-compraventa-de-viviendas-encadena-en-julio-siete-meses-de-caida)); [VERIFICAR en el Consejo General del Notariado] |
 | **Ministerio de Vivienda, valor tasado** vivienda libre | **~2.355 €/m²** (+12,5 %) 2.º trim. 2026; 1.er trim.: 2.315,7 (+13,9 %) | 2.º trim. 2026 | **Secundaria** (Arquitasa, sociedad de tasación) [VERIFICAR; **no leí el Ministerio**] |
 | **Alquiler: IPVA (INE, experimental)** | Precios de la vivienda alquilada **+3,5 %** en 2024; nuevos contratos **+8,8 %**, contratos anteriores +2,8 % | publicado 11-may-2026 | **INE, primaria, leída (vía resumen)**; **dato de 2024**, no de 2026 |
-| **Euríbor 12 m (media mensual BdE/BOE)** | **2,855 %** (julio) y **2,954 %** (agosto) 2026 | G1 (BOE-A-2026-18507) | **Primaria** según [G1](2026-10-10-G1-tipos-e-inflacion.md); **septiembre no verificado** (una web comercial da 3,247 %: [VERIFICAR]) |
+| **Euríbor 12 m (media mensual BdE/BOE)** | **2,855 %** (julio) y **2,954 %** (agosto) 2026 | G1 (BOE-A-2026-18507) | **Primaria** según [G1](2026-10-10-G1-tipos-e-inflacion.md); **septiembre: 3,247 %** (BOE-A-2026-20519, 2-oct-2026; verificado en la auditoría del 13-oct) |
 | **Banco de España** | No lo he leído hoy (precios, endeudamiento, Informe de Estabilidad Financiera) | — | [VERIFICAR] |
 | **Eurostat** | No lo he leído hoy (comparación europea de precios) | — | [VERIFICAR] |
 **Lectura (no es una predicción):** el IPV sube a doble dígito mientras las compraventas **bajan** o están planas y el Euríbor ronda el 3 %; esa combinación (precios altos, menos operaciones) suele indicar menos acceso a la compra, pero **no sé** si es un cambio de ciclo [ESPECULACIÓN]. El **IPV** (INE) mide precios de transacciones, el **valor tasado** del Ministerio mide tasaciones y el de **Notarios** precios de escritura: **no son comparables entre sí**.
@@ -264,7 +264,7 @@ No comparo rentabilidades futuras: no tengo datos verificados y no es el objeto 
 | Qué | Cuándo / dónde | Qué mirar |
 |---|---|---|
 | **Convalidación del RDL 29/2026** | Congreso / Diputación Permanente [VERIFICAR] | Si se mantienen el IRPF del alquiler y las limitaciones |
-| **Nuevo régimen del IRPF del alquiler** | **1-dic-2026** (según fuente secundaria, §5.1) | Contratos nuevos desde esa fecha [VERIFICAR] |
+| **Nuevo régimen del IRPF del alquiler** | **1-dic-2026** (BOE, disposición transitoria del RDL 29/2026; convalidación pendiente) | Contratos nuevos desde esa fecha [VERIFICAR la convalidación] |
 | **INE: compraventas de viviendas** (agosto) | Finales de octubre aprox. | Tendencia de volumen |
 | **INE: IPV 3.er trim. 2026** | Principios de diciembre aprox. | Precios (+12,2 % en el 2.º) |
 | **Banco de España: Euríbor medio mensual** | Primeros días de cada mes (BOE) | Cuota de hipotecas variables |
@@ -300,4 +300,4 @@ No comparo rentabilidades futuras: no tengo datos verificados y no es el objeto 
 5. **G3 §6.5 («ITP... lo ampliaré en G12/G8»):** lo amplío aquí (§2); G12 no incluye la tabla por comunidades de ITP.
 
 ## 15. Guías relacionadas
-[G1](2026-10-10-G1-tipos-e-inflacion.md) (tipos e Euríbor), [G2](2026-10-10-G2-como-funciona-un-banco.md), [G3](2026-10-10-G3-avales-garantias-hipotecas.md) (hipotecas, fianzas, avales y desahucios), G4 (renta fija: [G4](2026-10-10-G4-renta-fija.md)), G5 (acciones, ETFs y fondos), G7 (apalancamiento, pendiente), G9 (commodities, pendiente), [G12](2026-10-10-G12-fiscalidad-completa.md) (fiscalidad), G13 (gestión patrimonial, pendiente), G14 (sesgos), G15 (asesores). Ver [MAPA](MAPA.md).
+[G1](2026-10-10-G1-tipos-e-inflacion.md) (tipos e Euríbor), [G2](2026-10-10-G2-como-funciona-un-banco.md), [G3](2026-10-10-G3-avales-garantias-hipotecas.md) (hipotecas, fianzas, avales y desahucios), G4 (renta fija: [G4](2026-10-10-G4-renta-fija.md)), G5 (acciones, ETFs y fondos), G7 (apalancamiento, pendiente), [G9](2026-10-13-G9-commodities.md) (commodities), [G12](2026-10-10-G12-fiscalidad-completa.md) (fiscalidad), G13 (gestión patrimonial, pendiente), G14 (sesgos), G15 (asesores). Ver [MAPA](MAPA.md).

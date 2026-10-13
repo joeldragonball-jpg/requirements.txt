@@ -137,7 +137,7 @@ Matiz [OPINIÓN mía, sin verificar jurídicamente]: "atribuible" deja margen de
 - [ ] 2FA con app o llave física (no SMS); contraseña única en gestor.
 - [ ] Lista blanca de direcciones de retirada y retraso de retirada.
 - [ ] Alertas por correo; correo con 2FA propio.
-- [ ] No dejar más en el exchange que lo que necesitas operar (criterio general, no consejo).
+- [ ] Tener presente que lo que se deja en un exchange depende de su seguridad y solvencia (riesgo de contraparte, ver §2 y §3).
 
 **Wallet propia**
 - [ ] Hardware comprado en canal oficial; comprobar sellos y firmware.

@@ -58,7 +58,7 @@ Lo leí en la web de la SEC ([enlace](https://www.sec.gov/Archives/edgar/data/00
 ## 7. Qué implica para XRP (sin consejos)
 - Que Evernorth tenga 473 M XRP **no obliga a comprar más**; si el mecanismo funciona, podría acumular; si no, no.
 - Un canal de YouTube estimaba que, a 38-40 $ por acción, pagar la prima equivalía a comprar XRP a ~6 $. Es **un cálculo de ese canal** con supuestos propios, y la acción **no cotizaba así**.
-- **Efecto en el precio de XRP: no demostrado.** Los movimientos recientes se explican sobre todo por macro y petróleo.
+- **Efecto en el precio de XRP: no demostrado.** Los movimientos recientes coincidieron con noticias de macro y petróleo; la causalidad no está medida (dossiers 8 y 11).
 
 ## 8. Qué vigilar
 Comunicado oficial del cierre y de la fecha de debut, primera cotización y volumen de XRPN, XRP por acción, calendario de desbloqueo de acciones y cualquier emisión nueva.

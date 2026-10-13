@@ -12,7 +12,7 @@
 7. **Divisa**: un ETF en dólares o con activos en dólares expone a EUR/USD. Con 1.000 USD a 1,1193, un dólar un 10 % más débil resta ~81 € (§5.4).
 8. **Fiscalidad (resumen)**: ganancias y dividendos van a la **base del ahorro (19-30 %)**. Solo los **fondos de inversión** permiten **traspasar sin tributar**; el **BOE (art. 94 LIRPF) excluye expresamente a los ETFs cotizados** de ese diferimiento (§7).
 9. **ETFs de EE. UU.**: suelen **no estar disponibles** para minoristas de la UE (falta del KID/PRIIPs) y además complican la fiscalidad y las obligaciones informativas (§4.3, §7.5).
-10. **Aportaciones periódicas frente a entrada única**: en una simulación con el S&P 500 (2000-2026, precio), la entrada única **ganó en el 83 %** de las ventanas de 10 años, pero **perdió menos** la aportación periódica en las peores (§8.1). No hay estrategia que elimine el riesgo.
+10. **Aportaciones periódicas frente a entrada única**: en una simulación con el S&P 500 (2000-2026, precio), la entrada única **ganó en el 83 %** de las ventanas de 10 años, pero la aportación periódica perdió menos en el peor caso a 12 meses y a 10 años, y **más** a 5 años (§8.1). No hay estrategia que elimine el riesgo.
 11. Errores típicos: perseguir lo que más subió, comisiones altas, concentración, vender en la caída, confundir ETF con fondo y olvidar la divisa (§10).
 12. Los datos de §11 son una foto del 13-oct-2026; nada aquí es consejo.
 
@@ -113,7 +113,7 @@ Tres empresas: A vale 600 M€, B 300 M€ y C 100 M€. Pesos: A 60 %, B 30 %, 
 | **KID/PRIIPs** | **Sí**, obligatorio | **No lo producen**; ver §4.3 |
 | **Divisa de cotización** | EUR (o USD) según la bolsa | USD |
 | **Distribución** | Hay de acumulación y de distribución | Casi siempre de distribución |
-| **Fiscalidad en España** | Régimen de IIC (art. 94 LIRPF) [VERIFICAR para fondos extranjeros] | Ver §7.5 |
+| **Fiscalidad en España** | **Sin traspaso sin tributar**: el art. 94.1.a LIRPF excluye los fondos cotizados; se tributa al vender (ver §7.2) | Ver §7.5 |
 
 ### 4.3 Por qué no se pueden comprar ETFs de EE. UU.
 - El **Reglamento PRIIPs** exige que el productor entregue un **KID** a minoristas de la UE antes de la venta (la CNMV lo resume como un documento de **hasta 3 páginas**).
@@ -151,7 +151,7 @@ Supuestos **hipotéticos, no previsión**: rentabilidad bruta **6 %/año** const
 
 ### 5.4 Riesgo de divisa (ejemplo)
 - EUR/USD a **1,1193** (Yahoo, 13-oct-2026). **1.000 USD = 893,42 €**.
-- Si el dólar pierde un 10 % frente al euro (EUR/USD a 1,2312), esos 1.000 USD = **812,20 €**: **−81 €** por el cambio, aunque el activo no se mueva en dólares.
+- Si el euro sube un 10 % frente al dólar (EUR/USD a 1,2312; el dólar pierde un 9,1 %), esos 1.000 USD = **812,20 €**: **−81 €** por el cambio, aunque el activo no se mueva en dólares.
 - Un ETF de acciones de EE. UU. en euros **sigue expuesto al dólar** salvo que la clase esté **cubierta** (con un coste y un error de cobertura) [VERIFICAR en el KID].
 - El riesgo de divisa puede restar o sumar; no es "gratis" eliminarlo.
 
@@ -209,14 +209,14 @@ Supuestos **hipotéticos, no previsión**: rentabilidad bruta **6 %/año** const
 | 5 años | 261 | **75 %** | +28 % / +56 % | −41 % / −36 % |
 | 10 años | 201 | **83 %** | +65 % / +105 % | **−10 % / −31 %** |
 | 15 años | 141 | **91 %** | +113 % / +188 % | +54 % / +30 % |
-- **Lectura**: en mercados que suben de media, **tener el dinero invertido antes** suele rendir más (el DCA mantiene parte del dinero fuera). En el **peor** caso (empezar en ene-2000), el DCA perdió menos: **−7 % frente a −23 %** a 10 años; empezar en oct-2007 (justo antes de la crisis), DCA **+77 %** frente a **+66 %** de entrada única.
+- **Lectura**: en mercados que suben de media, **tener el dinero invertido antes** suele rendir más (el DCA mantiene parte del dinero fuera). Empezando en ene-2000, el DCA perdió menos: **−7 % frente a −23 %** a 10 años (el peor caso de cada columna de la tabla, en ventanas distintas, es −10 % / −31 %); empezar en oct-2007 (justo antes de la crisis), DCA **+77 %** frente a **+66 %** de entrada única.
 - **No es un fallo del método**: el DCA reduce el riesgo de "elegir mal el día" a costa de rentabilidad esperada si el mercado sube. **Elegir el momento perfecto no es posible a priori** [ESPECULACIÓN si se asegura lo contrario].
 - Los 26 años incluyen **dos grandes caídas (2000-2002 y 2008)**; otros periodos darían otros números.
 
 ### 8.2 Horizonte temporal
 - **Pérdidas en ventanas de entrada única** (S&P 500 de precio, mismo método): **21 %** de las ventanas de 5 años acabaron en negativo, **6 %** de las de 10 años y **0 %** de las de 15 años (la serie solo cubre 2000-2026; **no garantiza** que no ocurra en el futuro).
 - **Recuperación de caídas** (cierres mensuales del S&P 500): máximo de oct-2007 (1.549) → mínimo de feb-2009 (735, **−53 %**) → recuperado en mar-2013 (**5 años y 5 meses** desde el máximo); máximo de ago-2000 (1.518) → mínimo de sep-2002 (815, −46 %) → recuperado en may-2007.
-- **Regla práctica**: el dinero que **necesitarás en pocos años** no debería estar en renta variable. Esto es planificación, no recomendación de producto.
+- **Idea de planificación**: el dinero que se necesitará en pocos años queda expuesto a caídas como las de §5.1 si está en renta variable; es una cuestión de horizonte, no una recomendación de producto.
 
 ### 8.3 Rebalanceo
 - **Ejemplo (cálculo mío)**: cartera 60 % bolsa / 40 % renta fija; la bolsa sube un 20 % y la renta fija no cambia. Bolsa = 72, renta fija = 40, total 112 → **64,3 % / 35,7 %**. Rebalancear es vender 4,8 de bolsa (de 72 a 67,2) y comprar renta fija (de 40 a 44,8) para volver a 60/40.
@@ -282,4 +282,4 @@ Supuestos **hipotéticos, no previsión**: rentabilidad bruta **6 %/año** const
 
 ## 13. Guías relacionadas
 - **G1** (tipos e inflación), **G4** (renta fija), **G12** (fiscalidad completa) y **dossier 13** (fiscalidad de XRP y XLM, ETFs de cripto).
-- Pendientes de la serie: G13 (gestión patrimonial), G8, G9.
+- Pendientes de la serie: G6, G7, G10, G11 y G13-G15 (ver [MAPA](MAPA.md)).

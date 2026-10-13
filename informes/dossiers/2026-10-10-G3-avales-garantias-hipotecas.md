@@ -108,7 +108,7 @@
   - **LTV máximo**: hasta el 100 % del menor entre tasación y precio (80 % en las viviendas eficientes, según la página, que no deja claro el matiz) [VERIFICAR]. Plazo mínimo de la hipoteca: **5 años**. **Precio máximo según comunidad autónoma.**
   - **Formalización hasta el 31-dic-2027.** Dotación: **2.500 M€** de aval.
   - Sentido del aval: **el Estado cubre parte del préstamo ante el banco si impagas; la deuda sigue siendo tuya** y la entidad sigue aplicando su propio análisis de riesgo. No elimina la hipoteca, ni el ratio de esfuerzo, ni los gastos de entrada.
-  - Relevancia: reduce la **entrada** exigida, no el coste total ni el riesgo de impago. No recomiendo solicitarla.
+  - Relevancia: reduce la **entrada** exigida, no el coste total ni el riesgo de impago. Es información, no una pauta para solicitarla.
 - **Para qué sirven:** facilitan crédito a quien no tiene garantías suficientes. **Riesgos:** el avalado sigue **debiendo** el dinero; una vez que la SGR paga, se lo reclama al avalado.
 
 ## 6. Hipotecas: cómo funcionan

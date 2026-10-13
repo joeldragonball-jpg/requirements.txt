@@ -99,7 +99,7 @@
 | Medio-alto | A+, A, A- | A1, A2, A3 |
 | Medio (último "grado de inversión") | BBB+, BBB, BBB- | Baa1, Baa2, Baa3 |
 | Especulativo ("bono basura") | BB+ y menos | Ba1 y menos |
-| Impago | D (S&P) / C (Fitch) | C |
+| Impago | D (S&P) / RD-D (Fitch) [VERIFICAR] | C |
 - **España (referencia a principios de 2026, prensa)**: S&P **A+/estable**, Fitch **A/estable**, Moody's **A3/estable**, Scope **A/positiva** [VERIFICAR: hubo revisiones el 11-sep-2026 y no leí su resultado].
 - Los ratings son **opiniones de agencias privadas**, con conflicto de interés potencial (las paga el emisor) y retrasos históricos (2008) [opinión extendida; VERIFICAR].
 
@@ -136,12 +136,12 @@
 | **Entidad / bróker** | Compras en subasta o secundario | Comisión de compraventa + custodia; tarifas muy variables [VERIFICAR] | Mercado más amplio: corporativos, extranjeros |
 | **Fondo de renta fija** | Participas en una cartera gestionada de muchos bonos | Comisión de gestión y gastos corrientes (TER), de pocas décimas a más de 1 % anual [VERIFICAR en el DFI/KID de cada fondo] | Sin vencimiento fijo; **el valor liquidativo sube y baja con los tipos**; diversificación y reembolso diario |
 - **Diferencia clave**: un bono tiene **vencimiento** y devuelve el nominal si el emisor paga. Un fondo **no tiene vencimiento**: su duración se mantiene más o menos constante porque los bonos se renuevan, de modo que el riesgo de tipo no desaparece "con el tiempo" como en un bono individual. Existen fondos con **vencimiento objetivo** [VERIFICAR].
-- **Protección**: los valores están a tu nombre en cuenta de la entidad, **segregados**; si la entidad quiebra, existe el **Fondo de Garantía de Inversiones (FOGAIN)** para reclamaciones por valores no restituidos (límite 100.000 € [VERIFICAR]). **No cubre pérdidas por mercado.** El Fondo de Garantía de Depósitos (G2) cubre depósitos, no bonos ni fondos.
+- **Protección**: los valores están a tu nombre en cuenta de la entidad, **segregados**; si la entidad quiebra, existe el **Fondo de Garantía de Inversiones (FOGAIN)** para reclamaciones por valores no restituidos (límite 100.000 € [VERIFICAR]). **No cubre pérdidas por mercado.** El Fondo de Garantía de Depósitos tiene dos garantías independientes (G2 §6): depósitos, y **valores confiados a la entidad de crédito** si esta no los devuelve, cada una hasta 100.000 €; tampoco cubre pérdidas de mercado.
 
 ## 7. Fiscalidad en España (resumen; ver G12 para la completa)
 > Todo en [VERIFICAR] con la AEAT y la Ley 35/2006 (LIRPF) antes de usarlo en una declaración. Aquí va el esquema general.
 
-**1) Tipos (base del ahorro)**: los de G1 §6 (19 %, 21 %, 23 %, 27 %, 30 % por tramos, a verificar).
+**1) Tipos (base del ahorro)**: los de G1 §6 (19 %, 21 %, 23 %, 27 %, 30 % por tramos; verificados en el BOE, arts. 66 y 76, en la auditoría del 13-oct).
 
 **2) Letras del Tesoro** (rendimiento implícito)
 - Ganancia = **nominal cobrado − precio pagado**. Es **rendimiento del capital mobiliario** y se declara en el año del **vencimiento o de la venta**, no mientras la tienes.
@@ -150,12 +150,12 @@
 
 **3) Bonos y obligaciones**
 - **Cupón**: rendimiento del capital mobiliario; el cupón cobrado suele llevar **retención del 19 %** [VERIFICAR]. Ejemplo: cupón 34 € → 6,46 € de retención; neto 27,54 €.
-- **Venta antes del vencimiento**: la **diferencia entre precio de venta y de compra** es **ganancia o pérdida patrimonial** (base del ahorro); la parte de **cupón corrido** que cobras al vender es rendimiento del capital mobiliario [VERIFICAR]. Para las **letras** (rendimiento implícito) la venta anticipada genera **rendimiento del capital mobiliario**, no ganancia patrimonial [VERIFICAR art. 25 LIRPF]. Esto matiza la idea habitual de que toda venta anticipada es "ganancia patrimonial".
+- **Venta o amortización antes del vencimiento** (bonos, obligaciones y letras): la diferencia entre el valor de transmisión y el de adquisición es **rendimiento del capital mobiliario** (art. 25.2.b LIRPF, comprobado en el BOE en la auditoría del 13-oct), **no ganancia patrimonial**, y tributa en la base del ahorro. Los rendimientos negativos se compensan primero con otros rendimientos del capital mobiliario y, después, con ganancias, con el límite del 25 % (art. 49). Si se compran activos homogéneos en los 2 meses anteriores o posteriores, la pérdida se difiere [VERIFICAR el detalle en la AEAT].
 - **Compensación**: las pérdidas patrimoniales y los rendimientos del capital mobiliario pueden compensarse **entre sí con un límite (25 %)** [VERIFICAR], y existe la **regla anti-aplicación de 2 meses** para pérdidas en valores homogéneos [VERIFICAR].
-- **Ejemplo de venta con pérdida** (§3, cálculo mío): compras a 1.000 €, tipos al 4 %, vendes a 955,5 €: pérdida patrimonial ≈ 44,5 €, que se compensa con ganancias patrimoniales del año y, con límites, con otros rendimientos.
+- **Ejemplo de venta con pérdida** (§3, cálculo mío): compras a 1.000 €, tipos al 4 %, vendes a 955,5 €: rendimiento negativo del capital mobiliario ≈ 44,5 €, que se compensa con intereses y dividendos del año y, con el límite del 25 %, con ganancias patrimoniales.
 
 **4) Fondos de renta fija**
-- **Traspaso entre fondos**: **no tributa** mientras el dinero pase de un fondo a otro (art. 94 LIRPF) [VERIFICAR]; tributa solo al **reembolso** (ganancia patrimonial en la base del ahorro, **método FIFO**), sin retención para residentes [VERIFICAR].
+- **Traspaso entre fondos**: **no tributa** mientras el dinero pase de un fondo a otro (art. 94 LIRPF) [VERIFICAR]; tributa solo al **reembolso** (ganancia patrimonial en la base del ahorro, **método FIFO**), con **retención del 19 %** sobre la ganancia (art. 97 del Reglamento del IRPF, comprobado en el BOE); en los traspasos no hay retención.
 - **Bonos directos no tienen esta ventaja**: vender un bono y comprar otro tributa en el momento de la venta.
 - Los intereses que genera el fondo **no tributan año a año** para el partícipe (el fondo tributa al 1 % [VERIFICAR]); el impuesto llega al reembolso. Es un diferimiento, no una exención.
 
@@ -193,7 +193,7 @@
 | Bono español 10 a. **~3,7 %** | **3,964 %** (17-sep, BdE) y ~4,18 % (1-oct) en subasta | La cifra de G1 parece **baja**: el rendimiento primario de subasta es más alto; el secundario puede diferir unos pb pero no 40-50 pb [VERIFICAR]. Corregida. |
 | Bund 10 a. **~3,3 %** | 3,48 % (9-oct, agregador) | G1 parece **bajo**. [VERIFICAR] |
 | Prima ~34 pb (otra: 49 pb) | 45-49 pb | La horquilla de 34 es la dudosa; usar 45-49 [VERIFICAR]. |
-- Los tramos del IRPF de G1 no se han re-verificado aquí (siguen [VERIFICAR]).
+- Los tramos del IRPF de la base del ahorro se verificaron después en el BOE (arts. 66 y 76; auditoría del 13-oct).
 
 ## 9. Errores comunes y señales a vigilar
 **Errores comunes**

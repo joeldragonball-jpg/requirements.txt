@@ -23,7 +23,7 @@
 | Participantes de Pontes al inicio | 13 entidades (Deutsche Bank, Santander, Société Générale, DZ Bank, BEI, KfW, etc.) y 4 operadores DLT (Axiology, Cashlink, Clearstream, SWIAT) | Secundaria: lista vista solo en resultados de buscador sobre la nota del BCE; la web de Pontes no la contiene [VERIFICAR] |
 | Horario de Pontes | 08:00–16:00 CET en días hábiles; 24/7 previsto hacia **2028** | Secundaria (cryptonomist, CoinDesk); la web de Pontes del BCE confirma solo el lanzamiento del 21-sep-2026 y **no menciona horario ni 2028** [VERIFICAR] |
 | Libro mayor de Swift | Activo desde **9-jul-2026**, 17 bancos, depósitos tokenizados, liquidación final en sistemas existentes | **Verificado (primaria, nota de Swift vía buscador)** |
-| RLUSD en XRPL | **1.140.114.698** (objeto de obligaciones del emisor, ledger 107541076, 9-oct) | **Verificado en el ledger** (cálculo mío: el emisor es el de dominio ripple.com) |
+| RLUSD en XRPL | **1.140.114.698** (objeto de obligaciones del emisor, ledger 107541076, 9-oct; otros dossiers dan 1.131 M el mismo día y la auditoría del 13-oct midió 1.034 M [VERIFICAR]) | **Verificado en el ledger** (cálculo mío: el emisor es el de dominio ripple.com) |
 | RLUSD total | ~2.456 M$ (oct-2026) y 2.491 M$ el 28-sep; +86 % en 2026 | Secundaria (KuCoin/CoinGecko) [VERIFICAR] |
 | Ripple Payments volumen acumulado | **>100.000 M$** (3-mar-2026) | **Primaria (Ripple)**; no dice cuánto es con XRP |
 | "16 billones $/año" | Hidden Road (~3 b$) + GTreasury (~13 b$); ~0,1 % on-chain | Secundaria (CNBC citado por prensa); **no es volumen de XRP** [VERIFICAR] |
@@ -64,7 +64,7 @@
 - El volumen que Ripple presume **no es de XRP**; el producto actual se apoya sobre todo en **RLUSD**. La demanda de XRP por pagos **no tiene cifra oficial** en lo que he podido leer.
 - Stellar muestra más actividad en **stablecoins** (USDC, MGUSD) que en XLM; la relación entre ese volumen y el precio de XLM **no está demostrada**.
 - Pontes y Swift son **competencia o complemento** según cómo evolucionen; hoy no mencionan XRP ni XLM.
-- **Efecto en precio: no demostrado.** Estos días mandan macro y petróleo.
+- **Efecto en precio: no demostrado.** Estos días coincidieron con noticias de macro y petróleo; la causalidad no está medida.
 
 ## 8. Qué vigilar
 Participantes nuevos en Pontes, el paso de Swift de piloto a producción, el volumen y los socios de MGUSD, la definición de volumen en las cifras de Ripple, la cifra de RLUSD (ledger y emisor) y Swell (27–29-oct).
