@@ -186,11 +186,12 @@
 | Límite | Cifra |
 |---|---|
 | Reducción **máxima anual** por aportaciones individuales | **El menor entre 1.500 € y el 30 % de los rendimientos netos del trabajo y de actividades económicas** |
-| Aportaciones de la empresa (planes de empleo) | Hasta **8.500 €** adicionales |
+| Aportaciones de la empresa (planes de empleo) | Hasta **8.500 €** adicionales, **no automáticos**: dependen de una proporción con la aportación del trabajador (ver G6 §2) [VERIFICADO 13-oct, art. 5.3 RDL 1/2002 y art. 52 LIRPF, según G6] |
 | Tope conjunto (trabajador + empresa) | **10.000 €** |
-| Autónomos con plan de empleo simplificado | Hasta **5.750 €** en total (1.500 + 4.250) | [VERIFICAR] |
+| Autónomos con plan de empleo simplificado | Hasta **5.750 €** en total (1.500 + 4.250); el incremento de 4.250 € **cuenta dentro** de los 8.500 € | [VERIFICADO 13-oct, G6] |
+| Aportaciones a favor del **cónyuge** (sin rendimientos o con menos de 8.000 €) | Hasta **1.000 €** adicionales (art. 51.7) | [VERIFICADO 13-oct, G6] |
 | Qué pasa al cobrar | Rescate tributa como **rendimiento del trabajo** (base general) | Art. 17 [VERIFICAR] |
-- **En 2026 no hay cambios estructurales estatales** (secundaria, guiafiscal y bancos). **Plazo** para aportar y desgravar en el ejercicio 2026: **31-dic-2026** [VERIFICAR].
+- **En 2026 no hay cambios estructurales estatales** (secundaria, guiafiscal y bancos). **Plazo**: la reducción se aplica al período impositivo; los arts. 51 y 52 no fijan otra fecha de corte que el año natural. La fecha de abono que admite cada entidad para entrar en el ejercicio es [VERIFICAR con la entidad] [ACTUALIZADO 13-oct, G6].
 - **Ejemplo (cálculo mío):** aportas 1.500 € y tu tramo marginal combinado es 30 %: ahorras ~450 € de cuota hoy. Al rescatar, tributa como trabajo al tramo del momento. Es un **aplazamiento**, no una exención [ESPECULACIÓN sobre beneficio neto; depende de tipos futuros]. Detalle en la G6.
 
 ### 6.2 Vivienda habitual: régimen transitorio
