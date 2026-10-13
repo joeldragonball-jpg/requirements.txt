@@ -34,7 +34,7 @@
 | G5 | Acciones, ETFs y fondos indexados | Comisiones, diversificación, fiscalidad de fondos | ✅ hecha: [G5](2026-10-13-G5-acciones-etfs-fondos.md) (13-oct-2026) |
 | G6 | Planes de pensiones, PIAS y seguros de ahorro | Qué ofrecen y límites fiscales | ⏳ pendiente |
 | G7 | Derivados y apalancamiento | Opciones, futuros, CFD y sus riesgos | ⏳ pendiente |
-| G8 | Inmobiliaria | Compra o alquiler, rentabilidad neta, ITP, IBI, SOCIMI, crowdfunding | ⏳ pendiente |
+| G8 | Inmobiliaria | Compra o alquiler, rentabilidad neta, ITP, IBI, SOCIMI, crowdfunding | ✅ hecha: [G8](2026-10-13-G8-inmobiliaria.md) (13-oct-2026) |
 | G9 | Commodities | Oro, plata, petróleo, agrícolas; ETC, futuros, físico; fiscalidad; relación con dólar e inflación | ⏳ pendiente |
 | G10 | Pymes y autónomos | SL o autónomo, financiación (ICO, ENISA, leasing, factoring), IS e IRPF | ⏳ pendiente |
 | G11 | Startups y capital riesgo | Rondas, valoración, dilución, business angels, incentivos fiscales, iliquidez | ⏳ pendiente |
