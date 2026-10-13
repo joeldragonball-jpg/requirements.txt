@@ -41,4 +41,4 @@
 | G12 | Fiscalidad completa del ahorro e inversión en España | IRPF, Patrimonio, Sucesiones, comunidades, modelos informativos | ✅ hecha: [G12](2026-10-10-G12-fiscalidad-completa.md) (10-oct-2026) |
 | G13 | Gestión patrimonial | Objetivos, horizonte, asignación de activos, liquidez, seguros, herencia (marco, no consejo) | ✅ hecha: [G13](2026-10-13-G13-gestion-patrimonial.md) (13-oct-2026) |
 | G14 | Errores del inversor y sesgos | Confirmación, FOMO, exceso de confianza | ✅ hecha: [G14](2026-10-13-G14-errores-y-sesgos.md) (13-oct-2026) |
-| G15 | Cómo elegir asesor y entidad | Asesores registrados en la CNMV, comisiones, conflictos de interés, reclamaciones | ⏳ pendiente |
+| G15 | Cómo elegir asesor y entidad | Asesores registrados en la CNMV, comisiones, conflictos de interés, reclamaciones | ✅ hecha: [G15](2026-10-13-G15-elegir-asesor-y-entidad.md) (13-oct-2026) |
