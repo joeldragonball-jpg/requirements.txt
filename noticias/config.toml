@@ -66,6 +66,8 @@ tope_mensual_usd = 12.0     # ≈ 10,7 €; el gasto normal ronda 4-6 $ al mes
 modelo_ahorro = "claude-haiku-4-5"
 max_lineas_dudas = 12       # de tus apuntes, solo los N puntos de "Dudas y datos a verificar" más relacionados con los titulares de hoy (ahorra tokens)
 umbral_duplicado = 0.55     # 0-1: cuánto se parecen dos títulos para considerarlos la misma noticia (sin IA)
+dias_repeticion = 4        # no enviar otra noticia casi igual a una enviada en los últimos N días (sin IA; también se lo dice al modelo)
+umbral_repeticion = 0.35   # 0-1: parecido entre el titular nuevo (en español) y los ya enviados; más bajo = más estricto
 
 # Qué te interesa (lo lee el modelo barato para filtrar; sé concreto)
 intereses = """XRP/Ripple y Stellar/XLM (adopción, ETF, demandas, alianzas, liquidez, ISO 20022); regulación y organismos \

@@ -375,6 +375,17 @@ def jaccard(a, b):
     return len(a & b) / len(a | b) if (a | b) else 0.0
 
 
+def es_repeticion(titulo, db, ahora=None):
+    """True si el titular (ya en español) se parece mucho a una noticia enviada en los últimos días: es la misma noticia
+    contada otra vez (otro medio, otra hora). Sin IA: compara las palabras. deduplicar() solo mira la tanda actual."""
+    ahora = ahora or datetime.now(timezone.utc)
+    desde = (ahora - timedelta(days=CONFIG.get("dias_repeticion", 4))).isoformat()
+    f = firma_titulo(titulo)
+    umbral = CONFIG.get("umbral_repeticion", 0.35)
+    return bool(f) and any(jaccard(f, firma_titulo(n["titulo"])) >= umbral
+                           for n in db["noticias"] if n.get("fecha_envio", "") >= desde)
+
+
 def localizar(candidatas, n, titular):
     """Comprueba que el titular que el modelo dice haber leído es el del número que ha dado. Si se equivocó de número
     pero el titular existe en la lista, usa el correcto; si no existe, devuelve None (la noticia se descarta)."""
@@ -484,6 +495,9 @@ def alertas_urgentes(db, candidatas):
             continue
         n = {**previas[i], **{k: s[k] for k in ("tema", "puntuacion", "titulo", "resumen", "por_que")},
              "actualiza_apuntes": "", "urgente": True}
+        if es_repeticion(n["titulo"], db, ahora):
+            print(f"Alerta urgente repetida (ya enviada hace poco): {n['titulo'][:70]!r}")
+            continue
         n["msg_id"] = enviar_noticia(n)
         n["fecha_envio"] = ahora.isoformat()
         n["valoracion"] = 0
@@ -692,8 +706,9 @@ def extracto_cerebro(titulos=None):
 
 
 def seleccionar(db, candidatas, maximo):
-    hace_2_dias = (datetime.now(timezone.utc) - timedelta(days=2)).isoformat()
-    ya_enviadas = [n["titulo"] for n in db["noticias"] if n["fecha_envio"] >= hace_2_dias]
+    dias = CONFIG.get("dias_repeticion", 4)
+    desde = (datetime.now(timezone.utc) - timedelta(days=dias)).isoformat()
+    ya_enviadas = [n["titulo"] for n in db["noticias"] if n["fecha_envio"] >= desde]
     lista = "\n".join(f"[{i}] ({c['fuente']}) {c['titulo_original']}"
                       + (f" — {c['descripcion']}" if c["descripcion"] else "")
                       for i, c in enumerate(candidatas))
@@ -701,7 +716,7 @@ def seleccionar(db, candidatas, maximo):
               f"## Su cartera ahora\n{cartera_texto() or 'No disponible.'}\n\n"
               f"## Lecciones de sus sesiones de research\n{lecciones_texto() or 'Ninguna todavía.'}\n\n"
               f"## Sus gustos\n{gustos(db)}\n\n"
-              f"## Ya enviadas en los últimos 2 días (no repetir)\n"
+              f"## Ya enviadas en los últimos {dias} días (no repetir ni la misma noticia con otras palabras)\n"
               + ("\n".join(f"- {t}" for t in ya_enviadas) or "- ninguna")
               + f"\n\n## Titulares nuevos\n{lista}")
     datos = json.loads(llamar_claude(SYSTEM_SELECCION.format(maximo=maximo), prompt, esquema_seleccion()))
@@ -948,6 +963,9 @@ def main():
         if candidatas and cupo > 0:
             for n in equilibrar(seleccionar(db, candidatas, maximo=cupo * 2)):
                 if enviadas >= cupo or n["puntuacion"] < CONFIG.get("nota_minima", 6):
+                    continue
+                if es_repeticion(n["titulo"], db):
+                    print(f"Noticia repetida (ya enviada hace poco): {n['titulo'][:70]!r}")
                     continue
                 n["msg_id"] = enviar_noticia(n)
                 n["fecha_envio"] = datetime.now(timezone.utc).isoformat()
