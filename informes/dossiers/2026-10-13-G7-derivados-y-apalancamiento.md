@@ -87,7 +87,7 @@
 | Baja con salto (gap) | **−15 %** | −750 | **−7.500 €** | **−150 %**: saldo de **−2.500 €** a reponer |
 - **Cuándo salta la llamada de margen**: se pierden 5.000 − 3.500 = **1.500 €** = 150 puntos = **−3 %** del índice.
 - **Liquidación diaria (secuencia)**: día 1, índice **−1,5 %** (75 puntos): −750 €, saldo **4.250 €** (sobre 3.500: sin llamada). Día 2, **−2 %** sobre 4.925 (98,5 puntos): −985 €, saldo **3.265 €** (< 3.500): **llamada**. Para volver al margen inicial hay que aportar 5.000 − 3.265 = **1.735 €**. El índice acumula 173,5 puntos de baja (−3,47 %), coherente con 1.735 €.
-- **Regla en España** (§5.2): la Resolución de la CNMV de 2023 aplica a futuros y opciones vendidos a minoristas un cierre de posiciones cuando los fondos caen por debajo de **la mitad del margen inicial** (en el ejemplo, **2.500 €**), y un margen inicial **no superior al menor entre el de 2019 y el del mercado** [VERIFICAR texto]. El mantenimiento de 3.500 € es solo ilustrativo.
+- **Regla en España** (§5.2): la Resolución de la CNMV de 2023 aplica a futuros y opciones vendidos a minoristas un cierre de posiciones cuando los fondos caen por debajo de **la mitad del margen inicial** (en el ejemplo, **2.500 €**), y una **garantía inicial mínima** igual al **menor** de dos importes: el porcentaje de la Resolución de 2019 para ese subyacente o el que exija el centro de negociación. Si el subyacente es un criptoactivo que no es instrumento financiero MiFID, no puede ser inferior al de 2019 (Resolución CNMV de 11-jul-2023, parte segunda, BOE-A-2023-16394) [VERIFICADO 13-oct]. El mantenimiento de 3.500 € es solo ilustrativo.
 - **Vencimiento**: el contrato se cierra o se **renueva**; con renovación se paga la diferencia entre contratos y comisiones.
 - **Futuros sobre materias primas**: puede haber **entrega física** (barriles, metal) si no se cierra a tiempo; los brókers minoristas suelen cerrar antes [VERIFICAR condiciones de cada bróker].
 
@@ -154,7 +154,7 @@ Acción en **103 €**, *call* con *strike* **100 €** y prima **6 €**: valor
 - **Dónde se ejecuta**: casi siempre **OTC con el propio bróker** (puede ser la contraparte). La CNMV describe un modelo en que las ganancias del cliente son pérdidas del bróker y se genera un **conflicto de interés** (comentario del Comité Consultivo de la CNMV, 2023 [secundaria, borrador]).
 
 ### 5.2 Límites de la UE y de España para clientes minoristas
-**Origen**: ESMA adoptó medidas **temporales** (acordadas el 23-mar-2018 y anunciadas el 27-mar-2018; ESMA solo puede imponerlas por periodos de **3 meses** renovables). Después, la **CNMV** adoptó medidas **permanentes** nacionales con la **Resolución de 27-jun-2019** (BOE nº 155, 29-jun-2019), vigente desde el **1-ago-2019** (CFD) y el **2-jul-2019** (opciones binarias, **prohibidas a minoristas**). Seguimiento en la **Resolución de 11-jul-2023** (BOE-A-2023-16394).
+**Origen**: ESMA adoptó medidas **temporales** (acordadas el 23-mar-2018 y anunciadas el 27-mar-2018; ESMA solo puede imponerlas por periodos de **3 meses** renovables). Después, la **CNMV** adoptó medidas **permanentes** nacionales con la **Resolución de 27-jun-2019** (BOE-A-2019-9737, BOE n.º 155, 29-jun-2019; las decisiones formales de ESMA son del 22-may-2018, aplicables desde el 2-jul-2018 a las opciones binarias y el 1-ago-2018 a los CFD), vigente desde el **1-ago-2019** (CFD) y el **2-jul-2019** (opciones binarias, **prohibidas a minoristas**). Seguimiento en la **Resolución de 11-jul-2023** (BOE-A-2023-16394).
 | Subyacente | Apalancamiento máximo | Margen inicial (% del nominal) |
 |---|---|---|
 | Pares principales de divisas | **30:1** | 3,33 % |
@@ -165,7 +165,7 @@ Acción en **103 €**, *call* con *strike* **100 €** y prima **6 €**: valor
 - **Cierre forzoso (*close-out*)**: el proveedor debe cerrar una o más posiciones cuando los fondos más las ganancias latentes caen a **la mitad del margen inicial total** (50 %).
 - **Protección de saldo negativo**: la pérdida total del cliente minorista en CFD queda **limitada a los fondos de esa cuenta**. Ojo: no limita la pérdida al margen de una posición, sino a **todo lo depositado en la cuenta**.
 - **Prohibición de incentivos**: no pueden ofrecerse **beneficios monetarios ni no monetarios** ligados a la comercialización del CFD (salvo información y herramientas de análisis).
-- **Aviso de riesgo**: en toda comunicación comercial, con la **proporción de cuentas minoristas que pierden** dinero con ese proveedor (actualizada trimestralmente, según el resumen de la Resolución de 2019 [VERIFICAR texto]). La nota de ESMA de 2018 citó que **entre un 74 % y un 89 %** de las cuentas minoristas de CFD solían perder dinero, según el análisis de las autoridades.
+- **Aviso de riesgo**: en toda comunicación comercial, con la **proporción de cuentas minoristas que pierden** dinero con ese proveedor (estimación cada tres meses sobre los 12 meses anteriores; Resolución CNMV de 27-jun-2019 [VERIFICADO 13-oct]). La nota de ESMA de 2018 citó que **entre un 74 % y un 89 %** de las cuentas minoristas de CFD solían perder dinero, según el análisis de las autoridades.
 - **Quién queda fuera**: los **clientes profesionales** (por solicitud y requisitos) pueden operar con mayor apalancamiento [VERIFICAR requisitos MiFID II, no abiertos].
 - **Ámbito**: las medidas de la CNMV se aplican a clientes **minoristas residentes en España**, con independencia del país del proveedor (los CFD de proveedores con sede en otro país de la UE incluidos).
 
@@ -181,7 +181,7 @@ La **Resolución de 11-jul-2023** (BOE 14-jul-2023, en vigor **3-ago-2023**; rev
 **Supuestos (hipotéticos, cálculo mío)**: CFD sobre un índice principal con nominal **20.000 €** y margen del **5 % = 1.000 €** (20:1). Spread del **0,05 %** del nominal. Financiación: referencia **3 %** + recargo del bróker **2,5 %** = **5,5 %** anual, base 360 días.
 - **Spread**: 20.000 × 0,05 % = **10 €** (1 % del margen) solo por entrar y salir.
 - **Financiación diaria**: 20.000 × 5,5 % ÷ 360 = **3,06 €/día**.
-- **En un año con el precio plano**: 3,06 × 360 = **1.100 €**, es decir, **110 % del margen** de 1.000 €. Un CFD mantenido largo tiempo **paga un coste** equivalente a un préstamo caro; por eso el CFD está diseñado para posiciones **cortas en el tiempo**.
+- **En un año con el precio plano**: 3,06 × 360 = **1.100 €**, es decir, **110 % del margen** de 1.000 €. Un CFD mantenido largo tiempo **paga un coste** equivalente a un préstamo caro: el coste crece con cada día de tenencia.
 - En **posiciones cortas** la financiación puede ser de signo contrario, según el bróker y el activo [VERIFICAR en cada bróker].
 - **Dividendos**: el CFD sobre una acción abona o carga un ajuste equivalente al dividendo [VERIFICAR mecánica de cada bróker].
 
@@ -354,7 +354,7 @@ La **Resolución de 11-jul-2023** (BOE 14-jul-2023, en vigor **3-ago-2023**; rev
 ### 11.2 Señales a vigilar (descripción de patrones, no órdenes)
 | Señal | Qué puede indicar |
 |---|---|
-| Un VIX que **sube bruscamente** | Mayor probabilidad de **saltos** y **llamadas de margen** |
+| Un VIX que **sube bruscamente** | Volatilidad implícita mayor; suele coincidir con más **saltos** y **llamadas de margen** (relación no medida en esta guía) |
 | *Funding rate* muy **positivo** durante varios días | Mucho apalancamiento largo; riesgo de **liquidaciones en cascada** si se invierte |
 | **Spreads** que se ensanchan | Menor liquidez o volatilidad; **coste** de entrada y salida mayor |
 | Subida del **margen** exigido por la cámara o el bróker | El mercado percibe más riesgo |
@@ -391,5 +391,5 @@ La **Resolución de 11-jul-2023** (BOE 14-jul-2023, en vigor **3-ago-2023**; rev
 
 ## 14. Guías relacionadas
 - **G1** (tipos e inflación: tipo de financiación y de referencia), **G4** (renta fija: bonos como activos sin apalancamiento), **G5** (acciones, ETFs y fondos: KID, divisa, ETFs de EE. UU.; **§5.4** y **§10**), **G9** (commodities: contango, backwardation y **§2.3**; **§2.4** anunciaba esta G7), **G12** (fiscalidad: **§1.5** escala del ahorro, **§4** compensación, **§9** modelos 720/721), **G13** (gestión patrimonial: cómo encaja el riesgo en la cartera), **G14** (errores del inversor y sesgos: sobreoperación, aversión a la pérdida) y **G15** (elegir asesor y entidad: autorización y reclamaciones).
-- **G6** (planes de pensiones, PIAS y seguros de ahorro): pendiente.
+- [G6](2026-10-13-G6-pensiones-pias-seguros-ahorro.md) (planes de pensiones, PIAS y seguros de ahorro).
 - **Dossier de ETFs de cripto** (`2026-10-09-etfs-cripto.md`), **dossier de stablecoins** (`2026-10-09-stablecoins.md`), **dossier de fiscalidad de XRP y XLM** (`2026-10-09-fiscalidad-espana-xrp-xlm.md`) y **dossier 8** (macro).

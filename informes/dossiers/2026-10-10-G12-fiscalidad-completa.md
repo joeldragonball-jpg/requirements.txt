@@ -10,7 +10,7 @@
 5. **Vivienda**: exención por **reinversión** y para **mayores de 65**; la **plusvalía municipal** es otro impuesto, local (§3.4).
 6. **Pérdidas**: se compensan con ganancias; el saldo contra rendimientos tiene tope del **25 %** y plazo de **4 años**. Hay reglas anti-recompra de **2 meses** (valores cotizados) y **1 año** (§4).
 7. **Retención**: 19 % es un **anticipo**, no el impuesto final; la declaración lo regulariza (§5).
-8. **Planes de pensiones**: reducción de hasta **1.500 €** al año individual (**8.500 €** adicionales si los aporta la empresa; tope conjunto 10.000 €) (§6.1).
+8. **Planes de pensiones**: reducción de hasta **1.500 €** al año individual (hasta **8.500 €** adicionales por contribuciones de la empresa o aportaciones del trabajador al mismo plan de empleo, según la tabla del art. 52; tope conjunto de 10.000 €) (§6.1).
 9. **Patrimonio**: mínimo exento estatal **700.000 €**, escala 0,2 %-3,5 %, pero **Madrid, Andalucía y otras lo bonifican**; el **ITSGF** estatal grava patrimonios sobre **3 M€** (§7).
 10. **Sucesiones y donaciones**: depende de la comunidad del fallecido; en Madrid y Andalucía el impuesto cae casi a cero entre familiares directos, en Cataluña no (§8).
 11. **Informativas**: **100** (renta), **714** (Patrimonio), **720** y **721** (extranjero), **718** (ITSGF); la AEAT ya recibe muchos datos de bancos y brókers (§9).
@@ -50,7 +50,7 @@
 | Discapacidad del contribuyente | **3.000 €** (33 %-65 %) o **9.000 €** (65 % o más); **+3.000 €** por gastos de asistencia |
 - **Cómo funciona:** no resta de la base. Se calcula el impuesto que saldría por esa cantidad con la tarifa de la base general y **se resta de la cuota**. Por eso su valor real es de ~19 % del importe en la escala combinada (§1.4).
 - Los mínimos pueden ser **distintos** si tu comunidad los modifica [VERIFICAR].
-- **Aviso:** el extracto de la web del BOE se obtuvo con un resumen automático; los importes coinciden con los que yo conocía, pero [VERIFICAR] en el texto de los arts. 57-60.
+- **Art. 57 verificado en el BOE (13-oct-2026)**: 5.550 €; +1.150 € con más de 65 años; +1.400 € adicionales con más de 75. Los arts. 58-60 [VERIFICAR].
 
 ### 1.4 Tarifa de la base general (art. 63 estatal + art. 74 autonómica supletoria)
 | Base liquidable hasta | Tipo estatal | Tipo autonómico (escala supletoria) | **Total combinado** |
@@ -61,7 +61,7 @@
 | 60.000 € | 18,5 % | 18,5 % | **37 %** |
 | 300.000 € | 22,5 % | 22,5 % | **45 %** |
 | más de 300.000 € | 24,5 % | 24,5 % | **47 %** |
-- **BOE leído hoy:** el art. 63 empieza en el 9,5 % hasta 12.450 € y llega al 24,5 % por encima de 300.000 €. Los tramos intermedios (20.200, 35.200 y 60.000 €) y los tipos del 12, 15, 18,5 y 22,5 % **salen de mi conocimiento previo**, no de la lectura de hoy [VERIFICAR en el BOE].
+- **Verificado en el BOE (13-oct-2026, art. 63, vigente desde el 1-ene-2021):** tramos de 12.450 / 20.200 / 35.200 / 60.000 / 300.000 €, tipos estatales del 9,5 / 12 / 15 / 18,5 / 22,5 / 24,5 % y cuotas íntegras de 1.182,75 / 2.112,75 / 4.362,75 / 8.950,75 / 62.950,75 € [ACTUALIZADO 13-oct].
 - Cada comunidad **aprueba su propia escala autonómica**; la «combinada» de arriba solo vale si tu comunidad usa la supletoria del art. 74. En la práctica, el tipo total máximo varía entre ~43 % y ~54 % según comunidad [ESPECULACIÓN / VERIFICAR con tu comunidad].
 
 ### 1.5 Escala de la base del ahorro (arts. 66 y 76, tras la Ley 7/2024)
@@ -72,7 +72,7 @@
 | 200.000 € | **23 %** |
 | 300.000 € | **27 %** |
 | más de 300.000 € | **30 %** |
-- Fuente: BOE arts. 66 y 76, leídos en el [dossier 13 §3](2026-10-09-fiscalidad-espana-xrp-xlm.md) (9-oct). Aquí **no he vuelto a abrir esos artículos** (la herramienta de hoy dio un resumen erróneo de «19 % fijo»; **lo descarto** porque contradice la lectura directa del día 9). Varias webs dicen 28 % arriba; el BOE dice 30 %.
+- Fuente: BOE arts. 66 y 76, leídos en el [dossier 13 §3](2026-10-09-fiscalidad-espana-xrp-xlm.md) (9-oct). Verificado de nuevo en el BOE el 13-oct-2026 (art. 66, versión vigente desde el 22-dic-2024): escala estatal del 9,5 / 10,5 / 11,5 / 13,5 / 15 % con tramos de 6.000 / 50.000 / 200.000 / 300.000 € [ACTUALIZADO 13-oct]. Varias webs dicen 28 % arriba; el BOE dice 30 %.
 
 ### 1.6 Ejemplos numéricos sencillos (cálculo mío, escala supletoria)
 **A. Trabajo de 30.000 € sin otras rentas** (ignoro reducciones del trabajo y cotizaciones, solo para ver el mecanismo):
@@ -96,7 +96,7 @@
 | **Rentas temporales inmediatas** | Porcentaje según duración | Ver tabla |
 | **Gastos deducibles** | Administración y custodia de valores (no la gestión discrecional de carteras) | [VERIFICAR] |
 
-**Rentas vitalicias inmediatas (art. 25.3 a) 2.º, BOE leído hoy):** edad al constituirse la renta → porcentaje del cobro que tributa: **<40: 40 %**; **40-49: 35 %**; **50-59: 28 %**; **60-65: 24 %**; **66-69: 20 %**; **70 o más: 8 %**.
+**Rentas vitalicias inmediatas (art. 25.3 a) 2.º, BOE leído hoy):** edad al constituirse la renta → porcentaje del cobro que tributa: **<40: 40 %**; **40-49: 35 %**; **50-59: 28 %**; **60-65: 24 %**; **66-69: 20 %**; **más de 70: 8 %** (literal del BOE; la ley no menciona los 70 años exactos).
 **Rentas temporales inmediatas:** duración **≤5 años: 12 %**; **>5 a 10: 16 %**; **>10 a 15: 20 %**; **>15: 25 %**.
 
 **Ejemplos (cálculo mío):**
@@ -149,7 +149,7 @@
 - **Oro físico (lingotes, monedas)**: la venta genera **ganancia o pérdida patrimonial**, base del ahorro. Hay que **justificar** coste (facturas). Compra de oro de inversión: **exento de IVA** según la normativa del IVA [VERIFICAR].
 - **Plata y otros metales/commodities físicos**: misma lógica del IRPF; IVA general (21 %) salvo exención específica [VERIFICAR].
 - **ETC de oro** (valor cotizado): tratamiento de valor, no físico (§3.2) [VERIFICAR].
-- Detalle de productos y riesgos, en la futura G9.
+- Detalle de productos y riesgos, en la [G9](2026-10-13-G9-commodities.md).
 
 ## 4. Compensación de pérdidas y reglas anti-recompra
 ### 4.1 Compensación (art. 49, leído hoy: compensación cruzada con límite del 25 %)
@@ -203,7 +203,7 @@
 - **Condición:** la entidad debe estar acogida a la Ley 49/2002 y el donativo debe certificarse (modelo 182 de la entidad).
 
 ### 6.4 Inversión en empresas de nueva creación
-- **Ley 28/2022 de startups:** deducción del **50 %** de hasta **100.000 €** invertidos al año en empresas emergentes certificadas; mantener las participaciones **más de 3 años y menos de 12** [VERIFICADO 13-oct: art. 68.1 LIRPF en texto consolidado del BOE confirma el 50 %; base y permanencia según G11, que además detalla requisitos y que la deducción se aplica a la cuota estatal y no puede dejarla negativa].
+- **Art. 68.1 LIRPF (redacción de la Ley 28/2022, desde el 1-ene-2023):** deducción del **50 %** de hasta **100.000 €** suscritos al año en **empresas de nueva o reciente creación** (SA, SL, SAL o SLL no cotizadas ni en mercado regulado ni en SMN, con actividad económica y fondos propios ≤ 400.000 €). **No hace falta que sea una empresa emergente certificada**: a las emergentes de la Ley 28/2022 solo se les amplía el plazo de suscripción de 5 a 7 años desde la constitución y sus socios fundadores no tienen el límite del 40 %. Hay que mantener las participaciones **más de 3 años y menos de 12** [VERIFICADO 13-oct: art. 68.1 LIRPF en texto consolidado del BOE confirma el 50 %; base y permanencia según G11, que además detalla requisitos y que la deducción se aplica a la cuota estatal y no puede dejarla negativa].
 - Hay **riesgo de pérdida total** y las acciones son **ilíquidas**; la deducción no elimina esos riesgos [advertencia sobre el riesgo, no consejo]. Detalle en la G11.
 
 ## 7. Impuesto sobre el Patrimonio y ITSGF

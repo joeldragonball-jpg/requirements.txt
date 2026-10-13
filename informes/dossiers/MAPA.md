@@ -21,7 +21,7 @@
 | 14 | Custodia y seguridad (XRP/XLM) | Exchange vs. custodia propia, MiCA art. 75 (segregación, responsabilidad), hackeos y quiebras 2022-2026 (FTX, Bybit, Bitget, Coinbase), comprobar un CASP (ESMA/CNMV), proof-of-reserves, tags/memos/trustlines, estafas, herencia, garantías y reclamaciones, checklist | ✅ 2026-10-09 |
 | 15 | Panorama competitivo (XRP/XLM) | Stablecoins y RWA por cadena (DefiLlama, rwa.xyz, 9-oct), Solana, Ethereum/L2, Tron, Hedera, Algorand, Canton, Swift/Pontes/Kinexys, Visa/Mastercard; mediciones en cadena de XRPL, Stellar y Solana; casos a favor/en contra y señales | ✅ 2026-10-09 |
 
-## Serie «Guías» (educativas, para tener contexto antes de una gestión patrimonial; pendientes)
+## Serie «Guías» (educativas, para tener contexto antes de una gestión patrimonial; serie completa a 13-oct-2026)
 
 > Informativas, con foco en España, fuentes oficiales (Banco de España, BCE, CNMV, AEAT, BOE, Tesoro, ICO, INE). Explican cómo funciona cada cosa, sus riesgos y su fiscalidad; **no son recomendaciones**. Una guía por sesión. Orden sugerido: G1, G2, G4, G5, G12, G8, G9, G13 y el resto.
 

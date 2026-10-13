@@ -218,7 +218,7 @@
 | **Riesgo de tipos** | Un Euríbor mayor encarece la hipoteca variable (G1, G3) y puede reducir el precio que los compradores pagan [ESPECULACIÓN] | §9: Euríbor ~3 % |
 | **Riesgo regulatorio** | Cambios en alquiler, impuestos y límites (§5, §6): **4 normas en 2026** | Decretos-ley del verano-otoño |
 | **Riesgo de valoración** | Precios de tasación frente a precios de mercado (el Gobierno ha distinguido entre ambos [Idealista](https://www.idealista.com/news/node/873098)) | Datos discrepantes entre fuentes |
-- **Apalancamiento:** una hipoteca amplifica ganancias **y pérdidas** (§4 punto 8). Ver G7 (pendiente).
+- **Apalancamiento:** una hipoteca amplifica ganancias **y pérdidas** (§4 punto 8). Ver [G7](2026-10-13-G7-derivados-y-apalancamiento.md).
 
 ## 9. Datos actuales (con fecha y fuente)
 | Dato | Valor | Fecha | Fuente / estado |

@@ -14,7 +14,7 @@
 7. **Verifactu**: vigente **1-ene-2027** (IS) y **1-jul-2027** (resto); aplazamiento a oct-2028 **anunciado, no publicado en el BOE al 13-oct**. **Factura electrónica B2B**: **6-oct-2027** (> 8 M€) y **6-oct-2028** (resto) (§3.5).
 8. **IS 2026**: general **25 %**; micro (< 1 M€) **19 % hasta 50.000 € y 21 %** el resto; ERD (< 10 M€) **23 %**; nueva creación **15 %** dos periodos (§4.1) **[VERIFICADO 13-oct]**.
 9. **Ejemplo mío**: 60.000 € de ingresos y 18.000 € de gastos. Autónomo: RETA 5.435 € + IRPF 7.532 € = **12.967 €**. SL con salario de 30.000 €: **11.380 €** sin dividendos (9.720 € retenidos en la sociedad) y **13.391 €** repartiendo 9.120 € (§3.6, §4.5). Descriptivo.
-10. **Morosidad**: plazo por defecto **30 días**, ampliable por pacto hasta **60**; demora = tipo BCE + **8 puntos**; **40 €** fijos (arts. 4, 7, 8 Ley 3/2004) (§5.7).
+10. **Morosidad**: plazo por defecto **30 días**, ampliable por pacto hasta **60**; demora = tipo BCE + **8 puntos**; **40 €** fijos (arts. 4, 7, 8 Ley 3/2004) (§5.6).
 11. **Invertir en una pyme**: iliquidez, poca información, concentración y fraude. Exención de Patrimonio (art. 4.Ocho): **≥ 5 %** del capital y **funciones de dirección** con > 50 % de las rentas (§6.5).
 12. **Riesgos**: de las empresas nacidas en 2018, **41,9 %** seguía activa a 5 años (INE, por resumen). El **aval personal** sobrevive a la exoneración del deudor (art. 492 TRLC) **[VERIFICADO 13-oct]** (§7).
 
@@ -81,7 +81,7 @@ Suma: 1.800.443 + 1.348.909 + 161.472 = 3.310.824. Persona física: 1.859.925 (5
 
 ### 3.2 Tarifa plana
 - **Art. 38 ter LETA [VERIFICADO]**: alta inicial (o sin alta en los 2 años anteriores; 3 si ya la disfrutó): **cuota reducida 12 meses**, sin cotizar por cese ni formación; segundo periodo de 12 meses si los rendimientos netos anuales son **inferiores al SMI anual**; con discapacidad ≥ 33 % o víctimas de violencia de género o terrorismo, 24 + 36 meses. Durante la reducción, las prestaciones se calculan con la base mínima del tramo inferior.
-- **Importe**: **80 €/mes en 2023-2025** (DT 5.ª RDL 13/2022, según el BOE). Para **2026 no figura en la Orden PJC/297/2026**; webs dan 80 € y otra 88,64 € **[VERIFICAR]**.
+- **Importe**: **80 €/mes en 2023-2025** (DT 5.ª RDL 13/2022, según el BOE). Para **2026**, el art. 38 ter remite la cuantía a la Ley de Presupuestos, y la Orden PJC/297/2026 no la fija; webs dan 80 € y otra 88,64 € **[VERIFICAR]**.
 - **IRPF**: reducción del **20 %** del rendimiento neto positivo en el primer periodo positivo y el siguiente (art. 32.3 LIRPF) **[VERIFICADO]**.
 
 ### 3.3 Dependencia económica
@@ -181,12 +181,12 @@ Banco público que **no presta directamente**: las líneas se piden a entidades 
 
 ### 5.5 Crowdlending y crowdfunding
 - **Marco [VERIFICADO, Ley 18/2022 art. 15]**: título V de la Ley 5/2015 (arts. 46-56): la **CNMV** autoriza y supervisa (arts. 47, 49), puede suspender una oferta hasta 10 días hábiles o prohibirla, mantiene un **registro público** (art. 48) y regula las plataformas no armonizadas (art. 55) y la agrupación de inversores en un vehículo (art. 56).
-- **Reglamento (UE) 2020/1503 (resumen de búsqueda, no abierto) [VERIFICAR]**: límite de **5.000.000 €** por promotor en 12 meses; para el inversor no experimentado, prueba de conocimientos, simulación de capacidad de soportar pérdidas y **4 días** de reflexión.
+- **Reglamento (UE) 2020/1503 (detalle en G11 §5.3; texto del DOUE leído en G11, no en esta guía)**: límite de **5.000.000 €** por promotor en 12 meses; para el inversor no experimentado, prueba de conocimientos, simulación de capacidad de soportar pérdidas y **4 días** de reflexión.
 - Sin garantía de depósitos; impago e iliquidez posibles (§6.4).
 
 ### 5.6 Subvenciones y morosidad
 - **Subvenciones y NextGen**: existen líneas ICO ligadas al Mecanismo de Recuperación; convocatorias y requisitos **[VERIFICAR]**.
-- **Ley 3/2004 [VERIFICADO]**: plazo de pago por defecto **30 días naturales** desde la recepción; por pacto, hasta **60 días** (art. 4.1 y 4.3); la factura debe llegar antes de **15 días**; demora legal = tipo del **BCE** de su última operación principal **+ 8 puntos** (art. 7.2), publicado semestralmente; **40 €** fijos por costes de cobro (art. 8). **Ejemplo mío**, con tipo hipotético del 10 %: factura de 10.000 € pagada 40 días tarde = 10.000 × 10 % × 40/365 = **109,59 €** + 40 € = **149,59 €** (tipo real del semestre **[VERIFICAR]**). La Ley 15/2010 (leída) fijaba un máximo de 60 días; el régimen actual de 30 + 60 viene de reformas posteriores, presumiblemente la Ley 11/2013 **[VERIFICAR]**. La Ley 18/2022 (art. 9) obliga a informar del periodo medio de pago en la memoria.
+- **Ley 3/2004 [VERIFICADO]**: plazo de pago por defecto **30 días naturales** desde la recepción; por pacto, hasta **60 días** (art. 4.1 y 4.3); la factura debe llegar antes de **15 días**; demora legal = tipo del **BCE** de su última operación principal **+ 8 puntos** (art. 7.2), publicado semestralmente; **40 €** fijos por costes de cobro (art. 8). **Ejemplo mío**, con tipo hipotético del 10 %: factura de 10.000 € pagada 40 días tarde = 10.000 × 10 % × 40/365 = **109,59 €** + 40 € = **149,59 €** (tipo real del semestre **[VERIFICAR]**). La Ley 15/2010 (leída) fijaba un máximo de 60 días; la redacción vigente de los arts. 4 y 7 (30 días y hasta 60 por pacto) procede de la **Ley 11/2013** (BOE-A-2013-8187) [VERIFICADO 13-oct, BOE]. La Ley 18/2022 (art. 9) obliga a informar del periodo medio de pago en la memoria.
 
 ## 6. Invertir en una pyme como particular (no en bolsa)
 ### 6.1 Vías
@@ -232,7 +232,7 @@ En 2023: 319.085 nacimientos y 273.451 defunciones de empresas (9,1 % y 7,8 %); 
 - **Aval personal**: la exoneración **no afecta** a acreedores frente a fiadores, avalistas y obligados solidarios, que no pueden invocarla (art. 492.1); la acción de regreso del avalista queda afectada en las mismas condiciones que el crédito principal (art. 492.2).
 
 ### 7.3 Otros riesgos
-**Estacionalidad** (ingresos irregulares con cuotas y pagos fraccionados regulares); **dependencia de un cliente** (el 75 % del TRADE); **morosidad y plazo de cobro** (§5.4, §5.6); **concentración de la riqueza en el negocio propio**: ingreso, patrimonio, aval y a veces la vivienda dependen del mismo activo **[ESPECULACIÓN: su peso depende de cada caso]**; **cambios normativos** por decretos-ley que pueden derogarse (RDL 16/2025, RDL 2/2026).
+**Estacionalidad** (ingresos irregulares con cuotas y pagos fraccionados regulares); **dependencia de un cliente** (el 75 % del TRADE); **morosidad y plazo de cobro** (§5.4, §5.6); **concentración de la riqueza en el negocio propio**: ingreso, patrimonio, aval y a veces la vivienda dependen del mismo activo (su peso depende de cada caso; es una descripción del riesgo, no una previsión); **cambios normativos** por decretos-ley que pueden derogarse (RDL 16/2025, RDL 2/2026).
 
 ## 8. Datos actuales (13-oct-2026)
 | Dato | Valor | Fuente |

@@ -282,4 +282,4 @@ Supuestos **hipotéticos, no previsión**: rentabilidad bruta **6 %/año** const
 
 ## 13. Guías relacionadas
 - **G1** (tipos e inflación), **G4** (renta fija), **G12** (fiscalidad completa) y **dossier 13** (fiscalidad de XRP y XLM, ETFs de cripto).
-- Pendientes de la serie: G6, G7, G10, G11 y G13-G15 (ver [MAPA](MAPA.md)).
+- Serie G1-G15 completa (ver [MAPA](MAPA.md)).

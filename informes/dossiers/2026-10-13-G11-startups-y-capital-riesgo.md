@@ -191,7 +191,7 @@ Se invierten **5.000 €** en cada una (total 100.000 €). Resultados supuestos
 - **No hay FOGAIN** para la pérdida de valor de estas inversiones (FOGAIN cubre la quiebra de la entidad que custodia, no el riesgo de mercado; ver G7 §9).
 
 ### 5.3 Crowdfunding de inversión
-**Qué rige hoy.** La **Ley 18/2022** (28-sep) reescribió el Título V de la Ley 5/2015 con efectos desde el **10-nov-2022**: ahora la ley española se limita a remitir al **Reglamento (UE) 2020/1503** y a designar a la **CNMV** como autoridad competente y de registro (arts. 46-49 Ley 5/2015) **[VERIFICADO 13-oct, BOE-A-2015-4607]**. Los antiguos límites nacionales (por ejemplo, el tope por proyecto para inversores no acreditados) **ya no están en el texto vigente** (aparecen solo como «redacción anterior»).
+**Qué rige hoy.** La **Ley 18/2022** (28-sep) reescribió el Título V de la Ley 5/2015 con efectos desde el **10-nov-2022**: ahora la ley española remite al **Reglamento (UE) 2020/1503** para las plataformas armonizadas y designa a la **CNMV** como autoridad competente y de registro (arts. 46-49). También regula fichas de datos, infracciones y sanciones (arts. 50-54), las plataformas **no armonizadas** (art. 55) y la **agrupación de inversores** (art. 56) **[VERIFICADO 13-oct, BOE-A-2015-4607]**. Los antiguos límites nacionales (por ejemplo, el tope por proyecto para inversores no acreditados) **ya no están en el texto vigente** (aparecen solo como «redacción anterior»).
 
 **Reglamento (UE) 2020/1503 [VERIFICADO 13-oct, texto del DOUE de 20-oct-2020; no he comprobado modificaciones posteriores]**
 | Cuestión | Qué dice |
@@ -209,7 +209,7 @@ Se invierten **5.000 €** en cada una (total 100.000 €). Resultados supuestos
 
 **Plataformas autorizadas.** Solo pueden operar las que la CNMV autorice (art. 47 Ley 5/2015) y figuran en un registro público de la CNMV (art. 48). No pude abrir el registro (ver §8).
 
-### 5.4 ELTIF 2 (Reglamento (UE) 2023/606, que reforma el Reglamento 2015/760) **[VERIFICADO 13-oct, texto del DOUE L 80 de 20-mar-2023]**
+### 5.4 ELTIF 2 (Reglamento (UE) 2023/606, que reforma el Reglamento 2015/760) **[VERIFICADO 13-oct salvo los datos marcados [VERIFICAR] en esta sección; texto del DOUE L 80 de 20-mar-2023]**
 - **Aplicación**: desde el **10-ene-2024** [VERIFICAR; la fecha procede de resumen de terceros].
 - **Cartera (art. 13)**: al menos el **55 %** del patrimonio en activos aptos (antes 70 %).
 - **Canal minorista (art. 30)**: solo se comercializa a minoristas tras una **evaluación de idoneidad** de MiFID II (art. 25.2 de la Directiva 2014/65) y una declaración de idoneidad; si no hay asesoramiento y el producto **no resulta idóneo** pero el cliente insiste, se recaba **consentimiento expreso**. Si la duración supera 10 años, aviso por escrito de que puede no ser adecuado para quien no pueda mantener un compromiso ilíquido. Derecho de **cancelar la suscripción** durante la suscripción y **dos semanas** tras la firma, sin penalización (apdo. 7).
@@ -248,7 +248,7 @@ Se invierten **5.000 €** en cada una (total 100.000 €). Resultados supuestos
 - **Compensación (art. 49)**: las pérdidas patrimoniales se compensan primero con ganancias patrimoniales del año y, si queda saldo, con rendimientos del capital mobiliario hasta el **25 %** de estos; el resto, en los **4 años siguientes**.
 - **Pérdidas por quiebra o liquidación**: el art. 37.1.e califica como ganancia o pérdida la diferencia entre la **cuota de liquidación** (o el valor de mercado de los bienes recibidos) y el valor de adquisición, **en casos de separación de socios o disolución de sociedades**. Una empresa insolvente que siga existiendo (sin disolver ni liquidar) **no fija por sí sola** una pérdida. El criterio de cuándo se considera realizada la pérdida (extinción registral, concurso, etc.) **[VERIFICAR con la DGT/TEAC]**.
 - **Regla de recompra (art. 33.5)**: la letra **f** (**dos meses**) se refiere a valores **admitidos a negociación**; para **valores no admitidos a negociación** rige la letra **g**: no se computa la pérdida si se adquieren **valores homogéneos en el año anterior o posterior** a la transmisión. **Corrección al encargo**: «la regla de los dos meses no aplica a no cotizadas» es exacta, pero no desaparece la limitación: es de **un año** **[VERIFICADO 13-oct]**.
-- **Retención**: el art. 75.1.d RIRPF cita retención en ganancias por transmisión o reembolso de acciones **de IIC** (instituciones de inversión colectiva); no hallé una retención específica en el art. 75 para el reembolso de una ECR. Los dividendos se califican como rendimientos del capital mobiliario (art. 25.1.a LIRPF) y están sujetos a retención (art. 75.1.b RIRPF) **[VERIFICAR el tipo, 19 % según G12]**.
+- **Retención**: el art. 75.1.d RIRPF cita retención en ganancias por transmisión o reembolso de acciones **de IIC** (instituciones de inversión colectiva); no hallé una retención específica en el art. 75 para el reembolso de una ECR. Los dividendos se califican como rendimientos del capital mobiliario (art. 25.1.a LIRPF) y están sujetos a retención (art. 75.1.b RIRPF) al **19 %** (art. 90.1 RIRPF) [VERIFICADO 13-oct, BOE].
 
 ### 6.3 Tributación de las ECR
 - **La ECR** tiene en el IS una **exención del 99 %** de las rentas positivas por transmitir participaciones desde el 2.º año de tenencia (art. 50.1 LIS) **[VERIFICADO 13-oct]**. Los apdos. 3 y 4 del art. 50 (exenciones para socios) hablan de contribuyentes del IS o IRNR con establecimiento permanente, no de personas físicas.
@@ -260,7 +260,7 @@ Pueden excluirse de gravamen las ganancias por vender acciones por las que se pr
 - **Efecto en la nueva deducción** (68.1.4.º): en la base de la nueva deducción solo cuenta la parte de la reinversión que **exceda** de lo obtenido en la venta.
 
 ### 6.5 Ejemplo mío: 10.000 € en una empresa de nueva creación
-**Supuestos**: SL que cumple todos los requisitos del art. 68.1 (hay certificación); salida en el año 5 (dentro de «más de 3 y menos de 12»). Contribuyente con **base liquidable general de 60.000 €** y mínimo personal y familiar de **5.550 €** (art. 57, **no releído hoy**; supuesto). Sin otras deducciones estatales.
+**Supuestos**: SL que cumple todos los requisitos del art. 68.1 (hay certificación); salida en el año 5 (dentro de «más de 3 y menos de 12»). Contribuyente con **base liquidable general de 60.000 €** y mínimo personal y familiar de **5.550 €** (art. 57.1 LIRPF, verificado en el BOE el 13-oct). Sin otras deducciones estatales.
 
 **Paso 1: cuota íntegra estatal (art. 63)** **[VERIFICADO 13-oct]**: escala(60.000) = 8.950,75 €. Escala(5.550) = 5.550 × 9,5 % = 527,25 €. Cuota = 8.950,75 − 527,25 = **8.423,50 €**.
 **Paso 2: deducción** = 50 % × 10.000 = **5.000 €** < 8.423,50 €: se aplica entera. Base máxima de 100.000 € no limita.
@@ -269,7 +269,7 @@ Pueden excluirse de gravamen las ganancias por vender acciones por las que se pr
 **Escenarios de salida en el año 5** (con la base de 60.000 €; resto de rentas aparte; escala del ahorro de G12):
 | Escenario | Cobra | Resultado antes de impuestos | Impuesto en la base del ahorro | Deducción inicial | Resultado neto |
 |---|---|---|---|---|---|
-| **Pérdida total** (la empresa se liquida y no hay cuota) | 0 € | −10.000 € | Pérdida de 10.000 €: **sin otras ganancias, 0 € de ahorro fiscal ese año** (se compensa en los 4 años siguientes: art. 49) | +5.000 € | −10.000 + 5.000 = **−5.000 €** |
+| **Pérdida total** (la empresa se liquida y no hay cuota) | 0 € | −10.000 € | Pérdida de 10.000 €: **sin otras ganancias ni rendimientos del capital mobiliario, 0 € de ahorro fiscal ese año**; si hay intereses o dividendos, se compensa hasta el 25 % de ellos (art. 49) y el resto en los 4 años siguientes | +5.000 € | −10.000 + 5.000 = **−5.000 €** |
 | Pérdida total **con compensación** de 10.000 € de ganancias del mismo año (p. ej., venta de fondos) | 0 € | −10.000 € | Ahorro = 6.000 × 19 % + 4.000 × 21 % = 1.140 + 840 = **1.980 €** (igual que G12 §1.6.B) | +5.000 € | −10.000 + 1.980 + 5.000 = **−3.020 €** |
 | **1x** (vende a 10.000 €) | 10.000 € | 0 € | 0 € | +5.000 € | **+5.000 €** |
 | **3x** (vende a 30.000 €) | 30.000 € | +20.000 € | 6.000 × 19 % + 14.000 × 21 % = 1.140 + 2.940 = **4.080 €** | +5.000 € | 20.000 − 4.080 + 5.000 = **+20.920 €** |
@@ -337,7 +337,7 @@ Una posición en una startup es **una sola empresa**, sin cotización, con proba
 ### Cómo encaja con la cartera cripto (hechos)
 - XRP y XLM se negocian en mercados con cotización continua; una acción de una startup **no tiene mercado** para vender. La liquidez es muy distinta.
 - Ambas pueden perder gran parte de su valor en poco tiempo, pero por causas diferentes (mercado frente a empresa). **No tengo cifras de correlación entre capital riesgo y cripto verificadas y no las invento [VERIFICAR]**.
-- Las startups cripto levantan fondos por **acciones** (capital riesgo, con deducción posible si cumplen el art. 68.1) o por **tokens** (MiCA, tributación distinta, ver G12 y G13). Son derechos diferentes.
+- Las startups cripto levantan fondos por **acciones** (capital riesgo, con deducción posible si cumplen el art. 68.1) o por **tokens** (MiCA, tributación distinta, ver G12 §3 y el dossier 13). Son derechos diferentes.
 
 ## 10. Hechos frente a opiniones
 - **Hechos [VERIFICADO 13-oct salvo indicación]**: art. 68.1 LIRPF (50 %, 100.000 €, 3-12 años, 40 %, fondos propios ≤ 400.000 €); Ley 28/2022 (15 % hasta 4 períodos, exención de 50.000 €, ENISA en 3 meses); art. 75.2 Ley 22/2014 (100.000 € o 10.000 € con asesoramiento y 10 %); Reglamento 2020/1503 (4 días, simulación del 10 %, umbral 1.000 € / 5 %); ELTIF 2 (idoneidad MiFID II; reembolso según política del fondo); SpainCap 2025 (7.015,4 M€; resumen, preliminar).
@@ -348,9 +348,9 @@ Una posición en una startup es **una sola empresa**, sin cotización, con proba
 - Fracaso de startups en España y Europa (INE, Eurostat): **no leído**; la serie BLS es de EE. UU. y de todo tipo de negocio.
 - Modelos oficiales de SAFE y pacto de socios; fórmulas de anti-dilución: **descritas de memoria**.
 - Deducciones autonómicas del art. 68.1; criterio de la DGT sobre cuándo se realiza la pérdida por quiebra y régimen del partícipe persona física en FCR/SCR: **no consultados**.
-- Art. 57 LIRPF (mínimo personal): **asumido** en 5.550 €. Modificaciones del Reglamento 2020/1503 tras 2020 y último plazo transitorio de plataformas.
+- Art. 57 LIRPF: 5.550 €, verificado en el BOE (13-oct). Modificaciones del Reglamento 2020/1503 tras 2020 y último plazo transitorio de plataformas.
 - Fecha de aplicación del ELTIF 2 y Reglamento Delegado 2024/2759: por resumen. Convalidación del RDL 29/2026 (afecta al apdo. 6 del art. 68, no al 1).
 - Cifras de ENISA (sin fecha) y de plataformas de la CNMV (dato de un comparador).
 
 ## 12. Guías relacionadas
-**G4** (renta fija: préstamos participativos), **G5** (diversificación; IIC y retención), **G7** (FOGAIN y su límite), **G10** (guía paralela, no consultada), **G12** (escala del ahorro, art. 33.5, reinversión, Patrimonio y Sucesiones), **G13** (concentración y horizonte), **G14** (sesgo de supervivencia, FOMO), **G15** (asesoramiento personalizado, art. 75.2.b e idoneidad MiFID II).
+**G4** (renta fija: préstamos participativos), **G5** (diversificación; IIC y retención), **G7** (FOGAIN y su límite), **[G10](2026-10-13-G10-pymes-y-autonomos.md)** (pymes y autónomos; su §6.5 resume la misma deducción), **G12** (escala del ahorro, art. 33.5, reinversión, Patrimonio y Sucesiones), **G13** (concentración y horizonte), **G14** (sesgo de supervivencia, FOMO), **G15** (asesoramiento personalizado, art. 75.2.b e idoneidad MiFID II).
