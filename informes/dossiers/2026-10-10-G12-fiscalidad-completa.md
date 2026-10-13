@@ -203,8 +203,8 @@
 - **Condición:** la entidad debe estar acogida a la Ley 49/2002 y el donativo debe certificarse (modelo 182 de la entidad).
 
 ### 6.4 Inversión en empresas de nueva creación
-- **Ley 28/2022 de startups:** deducción del **50 %** de hasta **100.000 €** invertidos al año en empresas emergentes certificadas; mantener las participaciones **más de 3 años y menos de 12** (secundaria: asest.es, wonder.legal) [VERIFICAR en el texto de la ley y en el art. 68.1 de la Ley 35/2006].
-- Hay **riesgo de pérdida total** y las acciones son **ilíquidas**; la deducción no elimina esos riesgos [advertencia sobre el riesgo, no consejo]. Detalle en la futura G11.
+- **Ley 28/2022 de startups:** deducción del **50 %** de hasta **100.000 €** invertidos al año en empresas emergentes certificadas; mantener las participaciones **más de 3 años y menos de 12** [VERIFICADO 13-oct: art. 68.1 LIRPF en texto consolidado del BOE confirma el 50 %; base y permanencia según G11, que además detalla requisitos y que la deducción se aplica a la cuota estatal y no puede dejarla negativa].
+- Hay **riesgo de pérdida total** y las acciones son **ilíquidas**; la deducción no elimina esos riesgos [advertencia sobre el riesgo, no consejo]. Detalle en la G11.
 
 ## 7. Impuesto sobre el Patrimonio y ITSGF
 ### 7.1 Impuesto sobre el Patrimonio (Ley 19/1991, leída hoy)
