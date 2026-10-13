@@ -338,4 +338,4 @@ POLÍTICA DE INVERSIÓN PERSONAL                Fecha: ____/____/______   Próxi
 
 ## 14. Guías relacionadas
 - **G1, G2, G3, G4, G5, G8, G9, G12** y los dossiers 13 (fiscalidad de XRP/XLM), custodia y prueba de estrés (enlaces arriba).
-- **Pendientes de la serie**: G10 y G11 (ver [MAPA](MAPA.md)).
+- **Serie completa**: todas las guías están hechas (ver [MAPA](MAPA.md)).

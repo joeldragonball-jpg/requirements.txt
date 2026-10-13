@@ -324,4 +324,4 @@ Nada de esto sustituye una consulta con un profesional o con la CNMV.
 
 ## 14. Guías relacionadas
 - **G2** (cómo funciona un banco, FGD), **G3** (hipotecas y reclamaciones por comisiones), **G4** (renta fija), **G5** (acciones, ETFs y fondos; comisiones y KID), **G12** (fiscalidad completa), **dossier 14** ([custodia y seguridad](2026-10-09-custodia-y-seguridad.md): cómo comprobar un CASP, estafas y reclamaciones en cripto).
-- Pendientes de la serie: G10 y G11 (ver [MAPA](MAPA.md)).
+- Serie completa: todas las guías están hechas (ver [MAPA](MAPA.md)).

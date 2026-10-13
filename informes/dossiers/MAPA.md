@@ -36,7 +36,7 @@
 | G7 | Derivados y apalancamiento | Opciones, futuros, CFD y sus riesgos | ✅ hecha: [G7](2026-10-13-G7-derivados-y-apalancamiento.md) (13-oct-2026) |
 | G8 | Inmobiliaria | Compra o alquiler, rentabilidad neta, ITP, IBI, SOCIMI, crowdfunding | ✅ hecha: [G8](2026-10-13-G8-inmobiliaria.md) (13-oct-2026) |
 | G9 | Commodities | Oro, plata, petróleo, agrícolas; ETC, futuros, físico; fiscalidad; relación con dólar e inflación | ✅ hecha: [G9](2026-10-13-G9-commodities.md) (13-oct-2026) |
-| G10 | Pymes y autónomos | SL o autónomo, financiación (ICO, ENISA, leasing, factoring), IS e IRPF | ⏳ pendiente |
+| G10 | Pymes y autónomos | SL o autónomo, financiación (ICO, ENISA, leasing, factoring), IS e IRPF | ✅ hecha: [G10](2026-10-13-G10-pymes-y-autonomos.md) (13-oct-2026) |
 | G11 | Startups y capital riesgo | Rondas, valoración, dilución, business angels, incentivos fiscales, iliquidez | ✅ hecha: [G11](2026-10-13-G11-startups-y-capital-riesgo.md) (13-oct-2026) |
 | G12 | Fiscalidad completa del ahorro e inversión en España | IRPF, Patrimonio, Sucesiones, comunidades, modelos informativos | ✅ hecha: [G12](2026-10-10-G12-fiscalidad-completa.md) (10-oct-2026) |
 | G13 | Gestión patrimonial | Objetivos, horizonte, asignación de activos, liquidez, seguros, herencia (marco, no consejo) | ✅ hecha: [G13](2026-10-13-G13-gestion-patrimonial.md) (13-oct-2026) |
