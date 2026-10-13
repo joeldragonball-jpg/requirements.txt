@@ -31,7 +31,7 @@
 | G2 | Cómo funciona un banco | Depósitos, reservas, Basilea, Fondo de Garantía (100.000 €), resolución bancaria | ✅ hecha: [G2](2026-10-10-G2-como-funciona-un-banco.md) (10-oct-2026) |
 | G3 | Avales, garantías e hipotecas | Aval bancario y personal, SGR, ICO, fianzas, hipotecas (TIN/TAE, sistema francés, gastos Ley 5/2019, comisiones, IRPH, ejecución, Código de Buenas Prácticas) | ✅ hecha: [G3](2026-10-10-G3-avales-garantias-hipotecas.md) (10-oct-2026) |
 | G4 | Renta fija | Letras, bonos, duración, riesgo de crédito, fiscalidad | ✅ hecha: [G4](2026-10-10-G4-renta-fija.md) (10-oct-2026) |
-| G5 | Acciones, ETFs y fondos indexados | Comisiones, diversificación, fiscalidad de fondos | ⏳ pendiente |
+| G5 | Acciones, ETFs y fondos indexados | Comisiones, diversificación, fiscalidad de fondos | ✅ hecha: [G5](2026-10-13-G5-acciones-etfs-fondos.md) (13-oct-2026) |
 | G6 | Planes de pensiones, PIAS y seguros de ahorro | Qué ofrecen y límites fiscales | ⏳ pendiente |
 | G7 | Derivados y apalancamiento | Opciones, futuros, CFD y sus riesgos | ⏳ pendiente |
 | G8 | Inmobiliaria | Compra o alquiler, rentabilidad neta, ITP, IBI, SOCIMI, crowdfunding | ⏳ pendiente |
