@@ -14,7 +14,7 @@
 9. **Divisa**: cotizan en **USD**; el euro fuerte resta (G5 §5.4) (§6).
 10. **Datos actuales** (13-oct-2026): oro **~4.209 $/oz**, plata **~60,5 $/oz** (ratio oro/plata **~69,6**), Brent futuros **~104,6 $**, **Brent spot 125,44 $ (6-oct, EIA)** y tipo real a 10 años en EE. UU. **2,87 %** (8-oct, Tesoro) (§8).
 11. **Ormuz**: según el dossier 11, sigue **casi cerrado**; el Brent spot promedió **114,2 $ en septiembre** y llegó a **138,21 $ el 7-abr**. **El spot y los futuros no son lo mismo** (§8).
-12. Los productos apalancados (futuros, CFD) se tratan en la **futura G7**: aquí solo el aviso de riesgo (§2.4).
+12. Los productos apalancados (futuros, CFD) se tratan en la **G7** (derivados y apalancamiento): aquí solo el aviso de riesgo (§2.4).
 
 ## 1. Qué son y qué mueve su precio
 ### 1.1 Glosario corto
@@ -100,7 +100,7 @@
 - **Futuros**: se opera con un **margen** (una fracción del valor del contrato). Un movimiento pequeño del precio supone una ganancia o pérdida **grande sobre el margen**.
 - **CFD** (*contract for difference*): contrato con un bróker que replica el precio, a menudo con **apalancamiento**. En la UE, la ESMA limitó el apalancamiento minorista y exige avisos de pérdida [VERIFICAR el límite vigente en CNMV/ESMA].
 - **Ejemplo (hipotético, cálculo mío)**: apalancamiento **10×** (margen del 10 %): un movimiento del **−10 %** en el precio borra el **100 %** del margen. Con el Brent, que tuvo caídas diarias de más del 7 % (dossier 11), esto es relevante.
-- **Aviso**: son productos **para operar a corto plazo**, no para largo plazo. El detalle va en la **futura G7**.
+- **Aviso**: son productos **para operar a corto plazo**, no para largo plazo. El detalle va en la **G7**.
 
 ### 2.5 Acciones de mineras o petroleras (no son la materia prima)
 | Aspecto | Qué hay que saber |
@@ -310,4 +310,4 @@ Cifras de **10 años a 30-sep-2026**. **Las series no son homogéneas** (precio,
 ## 12. Guías relacionadas
 - **G1** (tipos e inflación: tipos reales), **G4** (renta fija), **G5** (acciones, ETFs y fondos: costes, divisa, horquilla, KID) y **G12** (fiscalidad completa; §3.5 oro y commodities físicos, §7 Patrimonio, §9 modelo 720).
 - **Dossier 8** (macro) y **dossier 11** (geopolítica, petróleo y BRICS); **dossier 13** (fiscalidad de XRP y XLM y ETFs de cripto).
-- **Pendientes de la serie**: **G7** (derivados y apalancamiento), **G13** (gestión patrimonial).
+- **Pendientes de la serie**: **G13** (gestión patrimonial).

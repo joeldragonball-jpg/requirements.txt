@@ -33,7 +33,7 @@
 | G4 | Renta fija | Letras, bonos, duración, riesgo de crédito, fiscalidad | ✅ hecha: [G4](2026-10-10-G4-renta-fija.md) (10-oct-2026) |
 | G5 | Acciones, ETFs y fondos indexados | Comisiones, diversificación, fiscalidad de fondos | ✅ hecha: [G5](2026-10-13-G5-acciones-etfs-fondos.md) (13-oct-2026) |
 | G6 | Planes de pensiones, PIAS y seguros de ahorro | Qué ofrecen y límites fiscales | ⏳ pendiente |
-| G7 | Derivados y apalancamiento | Opciones, futuros, CFD y sus riesgos | ⏳ pendiente |
+| G7 | Derivados y apalancamiento | Opciones, futuros, CFD y sus riesgos | ✅ hecha: [G7](2026-10-13-G7-derivados-y-apalancamiento.md) (13-oct-2026) |
 | G8 | Inmobiliaria | Compra o alquiler, rentabilidad neta, ITP, IBI, SOCIMI, crowdfunding | ✅ hecha: [G8](2026-10-13-G8-inmobiliaria.md) (13-oct-2026) |
 | G9 | Commodities | Oro, plata, petróleo, agrícolas; ETC, futuros, físico; fiscalidad; relación con dólar e inflación | ✅ hecha: [G9](2026-10-13-G9-commodities.md) (13-oct-2026) |
 | G10 | Pymes y autónomos | SL o autónomo, financiación (ICO, ENISA, leasing, factoring), IS e IRPF | ⏳ pendiente |
