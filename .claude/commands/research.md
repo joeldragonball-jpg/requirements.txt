@@ -1,0 +1,19 @@
+---
+description: Ejecuta una tarea de la cola de research (ej. /research R01). Sin argumento muestra el menú.
+argument-hint: "[ID, p. ej. R01]"
+---
+
+Argumento recibido: $ARGUMENTS
+
+Sigue estos pasos, respondiendo siempre en español y siguiendo las reglas de CLAUDE.md:
+
+1. Lee `research/COLA.md` (es corto).
+2. Si no hay argumento: muestra solo la tabla de tareas pendientes (ID, tema, tamaño, estimación) y el orden sugerido, llama a `get_usage` (herramienta mcp__ccd_session_mgmt__get_usage, cárgala con ToolSearch si hace falta) para decir el % semanal usado y cuánto margen queda hasta dejar el 10 % de reserva, y pregunta cuál ejecutar. No hagas más.
+3. Si hay un ID: busca su fila. Elige la plantilla: `dossier-region` → `research/plantillas/dossier-region.md`; `verificacion` → `research/plantillas/verificacion.md`; cualquier otro nombre → `research/plantillas/generica.md`. Léela.
+3a. Si el ID termina en P (p. ej. R02P), es la versión PROFUNDA: usa la fila de la cola, la plantilla dossier-region y su sección "Modo PROFUNDO".
+3b. Mira las columnas "Modelo" y "Esfuerzo" de la tarea. Si esta sesión no usa ese modelo, díselo a Joel y espera a que lo cambie (o cámbialo tú con las herramientas de sesión si él lo autoriza). Trabaja en serie en esta sesión: no lances subagentes salvo que Joel lo pida, porque cada uno repite el arranque y gasta más cuota.
+4. Antes de empezar, llama a `get_usage` y anota el % semanal usado. Si la estimación de la tarea haría pasar el semanal del 90 %, avísame y espera mi respuesta.
+5. Ejecuta la tarea siguiendo la plantilla. Fuentes primarias en su idioma original, traducidas por ti, con enlace y fecha. Enfoque global (macro, geopolítica, digital assets); España solo si el ID es R20. No lances workflows de GitHub ni nada que llame a la API de Anthropic. No toques `privado/`.
+6. Guarda el informe donde diga la plantilla (carpeta `informes/research/`; créala si no existe). No escribas en `cerebro/` salvo las lecciones permitidas (máx. 5 líneas nuevas por archivo, sin repetir).
+7. Al terminar: llama a `get_usage`, calcula el coste real (diferencia de % semanal), escríbelo en la columna "Real" de `research/COLA.md` y pon el estado en "hecho AAAA-MM-DD". Si el coste real difiere mucho de la estimación, di cuánto y propón ajustar las demás.
+8. Cierra con un resumen de 5 líneas, las 2 cosas a vigilar y el % semanal restante. No hagas git commit ni push.
