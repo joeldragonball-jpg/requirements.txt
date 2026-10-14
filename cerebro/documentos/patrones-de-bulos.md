@@ -17,3 +17,6 @@ actualizado: 2026-10-07
 - Buscadores devuelven "noticias de hoy" de otros años (BTC 125 k$/107 k$, ETF XRP "el 18-oct"): contrastar con Kraken/CoinGecko con hora antes de usar cifras.
 - Titular "Ripple cierra gran alianza con socio coreano" sin nombre ni enlace (U.Today, 14-oct): sin dato primario no es verificable; pedir comunicado de Ripple o del socio.
 - Estimación de consenso del IPC distinta según fuente (3,6 % vs 3,7 %): usar el dato de BLS y citar la fuente del consenso.
+- "Gran socio coreano" de Ripple (14-oct) probablemente reciclaba el acuerdo exploratorio con Meritz (firmado 1-oct, divulgado 7-oct): preguntar siempre si el acuerdo es "explorar" o "lanzar"; nombre y fecha del primario.
+- Páginas de precios sin fecha (XRP 1,06–1,11 $, BTC 62–65 k$) mezcladas con resultados de octubre-2026: descartar sin marca de hora.
+- Probabilidades Fed de fuentes distintas ("79 % mantener" vs "43 % subida") no son comparables: anotar fuente y hora.
