@@ -1,0 +1,25 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#0b0f17">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Diag2">
+<title>Diagnostico 2</title>
+<style>
+html,body{margin:0;background:#0b0f17;color:#e5e7eb;font:12px/1.3 Consolas,monospace}
+#app{position:fixed;left:0;right:0;bottom:0;top:env(safe-area-inset-top,0px);width:100%;height:calc(100% - env(safe-area-inset-top,0px));border:0;background:#0b0f17}
+#o{position:fixed;left:0;right:0;bottom:90px;z-index:5;background:#000c;padding:6px 10px;white-space:pre-wrap;pointer-events:none}
+.ok #app{height:100%}
+</style></head><body>
+<iframe id="app" src="diag-inner.html"></iframe>
+<div id="o">midiendo...</div>
+<script>
+function r(e){var b=e.getBoundingClientRect();return "top "+Math.round(b.top)+"  alto "+Math.round(b.height)+"  fondo "+Math.round(b.bottom)}
+function medir(){
+ var f=document.getElementById("app"),l=["MARCO (fuera)","innerHeight: "+innerHeight+"  screen: "+screen.height+"  standalone: "+navigator.standalone];
+ l.push("A actual (calc 100% - safe): "+r(f));
+ document.documentElement.classList.add("ok"); l.push("B (height 100%):          "+r(f)); document.documentElement.classList.remove("ok");
+ var a=f.style.cssText; f.style.cssText="top:0;height:100vh"; l.push("C (top 0, height 100vh):   "+r(f)); f.style.cssText=a;
+ document.getElementById("o").textContent=l.join("\n");
+}
+addEventListener("load",function(){setTimeout(medir,400)});
+</script></body></html>
