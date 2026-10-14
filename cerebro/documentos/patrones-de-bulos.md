@@ -20,3 +20,6 @@ actualizado: 2026-10-07
 - "Gran socio coreano" de Ripple (14-oct) probablemente reciclaba el acuerdo exploratorio con Meritz (firmado 1-oct, divulgado 7-oct): preguntar siempre si el acuerdo es "explorar" o "lanzar"; nombre y fecha del primario.
 - Páginas de precios sin fecha (XRP 1,06–1,11 $, BTC 62–65 k$) mezcladas con resultados de octubre-2026: descartar sin marca de hora.
 - Probabilidades Fed de fuentes distintas ("79 % mantener" vs "43 % subida") no son comparables: anotar fuente y hora.
+- "BIS pone fecha" (13-oct): la entrevista (Scotti, Sibos) solo dice "dentro de 12 meses esperamos avances"; la "fecha 23-sep" la pone el presentador y Sibos 2027 es 11–14 oct según swift.com [VERIFICAR]. Pedir cita literal de quien "fija" la fecha.
+- "X confirma que XRP se va a mover" (BlackRock, 12-oct): la entrevista habla de stablecoins y fondos tokenizados sin nombrar XRP; titular ≠ contenido.
+- Tres vídeos del mismo canal citándose entre sí no suman confirmaciones: contar una sola fuente.

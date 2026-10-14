@@ -19,3 +19,4 @@ actualizado: 2026-10-07
 - CryptoTimes/CoinGape "live": útiles por el consenso y la reacción, pero consensos inconsistentes entre secciones; contrastar con BLS.
 - Meritz–Ripple: Herald Corp y DigitalToday dan detalle del alcance (exploratorio); falta comunicado primario [VERIFICAR].
 - bitbase.com devuelve 403 a WebFetch y cmegroup/iea.org no se abren: para FedWatch/AIE usar el titular del bot o EIA hasta tener acceso.
+- Despeja La X (15-oct, 4 vídeos = 1 sola fuente): los titulares ("BIS pone fecha", "BlackRock confirma") prometen más que el contenido; las citas de entrevistas (Sibos TV) son reales pero la fecha y la conclusión sobre XRP las pone el presentador. Contrastar con bis.org, fsb.org, swift.com/sibos.
