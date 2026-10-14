@@ -46,7 +46,11 @@
                         50% { opacity: 1; transform: scale(1.02); filter: drop-shadow(0 0 14px rgba(96,165,250,.35)); } }
   @keyframes desliza { 0% { transform: translateX(-120%); } 100% { transform: translateX(320%); } }
   @media (prefers-reduced-motion: reduce) { #splash img, .barra::after { animation: none; } }
+  /* iPhone con la app instalada: medido con un diagnostico, el 100% ya es la altura SIN la zona segura superior (793 de 852),
+     asi que restarla otra vez dejaba el marco 59 px corto por abajo. Aqui el marco ocupa justo ese 100%. */
+  .ios-sa #app { height: 100%; }
 </style>
+<script>if (navigator.standalone === true) document.documentElement.classList.add("ios-sa");</script>
 </head>
 <body>
 <div id="splash"><div id="marca"><img src="assets/icono-oscuro-256.png" alt="Mi Cartera Cripto"><div class="barra"></div></div></div>
