@@ -375,6 +375,17 @@ def tab_dossiers():
     st.caption("Investigaciones profundas con fuentes y su grado de confianza. Informativo: no son recomendaciones. "
                "Solo lectura: no entran en el chat, así que no gastan IA.")
 
+    # PDFs para imprimir: solo enlaces a GitHub (no se leen los archivos, así no ralentiza la app)
+    try:
+        pdfs = sorted((Path(__file__).parent / "informes" / "pdf").glob("*.pdf"))
+    except Exception:
+        pdfs = []
+    if pdfs:
+        base = "https://github.com/joeldragonball-jpg/requirements.txt/raw/main/informes/pdf/"
+        with st.expander("📄 PDFs para imprimir", expanded=False):
+            st.markdown("\n".join(f"- [{p.stem.replace('-', ' ')}]({base}{p.name})" for p in pdfs))
+            st.caption("Se abren en el visor del navegador; desde ahí puedes guardarlos o imprimirlos.")
+
     def titulo(p):
         for linea in p.read_text(encoding="utf-8").splitlines():
             if linea.startswith("# "):
