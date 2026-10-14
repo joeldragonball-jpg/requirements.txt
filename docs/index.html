@@ -48,13 +48,17 @@
   @media (prefers-reduced-motion: reduce) { #splash img, .barra::after { animation: none; } }
   /* iPhone con la app instalada: medido con un diagnostico, el 100% vale 793 de 852 (iPhone 15) pero 100vh vale 852 y llega al borde,
      asi que restarla otra vez dejaba el marco 59 px corto por abajo. Aqui el marco usa 100vh menos la zona segura superior: 852 - 59 = 793, desde el pt 59 hasta el borde inferior. */
-  .ios-sa #app { top: env(safe-area-inset-top, 0px); height: calc(100vh - env(safe-area-inset-top, 0px)); }
+  /* iPhone con la app instalada: iOS no recalcula la altura de la pantalla hasta que haces zoom, y dejaba el marco corto por abajo.
+     Un contenedor fijo con inset:0 SI llega al borde (medido: 852 pt) y el marco se estira dentro de el, bajando la zona segura superior. */
+  #caja { display: contents; }
+  .ios-sa #caja { display: block; position: fixed; inset: 0; box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); background: #0b0f17; }
+  .ios-sa #app { position: static; display: block; width: 100%; height: 100%; }
 </style>
 <script>if (navigator.standalone === true) document.documentElement.classList.add("ios-sa");</script>
 </head>
 <body>
 <div id="splash"><div id="marca"><img src="assets/icono-oscuro-256.png" alt="Mi Cartera Cripto"><div class="barra"></div></div></div>
-<iframe id="app" title="Mi Cartera Cripto" allow="clipboard-write"></iframe>
+<div id="caja"><iframe id="app" title="Mi Cartera Cripto" allow="clipboard-write"></iframe></div>
 <script>
 (function () {
   var APP = "https://requirementstxt-ns7rcahvp34hst8onfbyxg.streamlit.app/";
