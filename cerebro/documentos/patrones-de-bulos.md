@@ -15,3 +15,5 @@ actualizado: 2026-10-07
 - Ballenas 🐋 de Ripple: 200 M XRP interno + 20 M a cuenta con destination tag fija (patrón plataforma/OTC): traspaso ≠ venta; confirmar con account_tx y XRPScan antes de hablar de venta.
 - "XRP/Stellar clasificados" (CFTC/SEC) reciclado como noticia actual: es de 17-mar-2026 (Rel. 33-11412); pedir fecha.
 - Buscadores devuelven "noticias de hoy" de otros años (BTC 125 k$/107 k$, ETF XRP "el 18-oct"): contrastar con Kraken/CoinGecko con hora antes de usar cifras.
+- Titular "Ripple cierra gran alianza con socio coreano" sin nombre ni enlace (U.Today, 14-oct): sin dato primario no es verificable; pedir comunicado de Ripple o del socio.
+- Estimación de consenso del IPC distinta según fuente (3,6 % vs 3,7 %): usar el dato de BLS y citar la fuente del consenso.

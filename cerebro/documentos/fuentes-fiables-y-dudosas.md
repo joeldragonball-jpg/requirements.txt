@@ -15,3 +15,5 @@ actualizado: 2026-10-07
 - analyticsinsight/techbullion: reciclan noticias viejas como "breakout" y mezclan promoción de tokens; no usar.
 - Estado de enmiendas XRPL: ledger_entry del objeto Amendments (índice 7DB0788C...6EF4) en xrplcluster.com = primaria (activas y Majorities con hora); mejor que prensa o xrpl.org (carga dinámica).
 - CriptoNoticias: avisos de discursos de la Fed con 1 día de retraso y sin cita textual; confirmar en federalreserve.gov.
+- bls.gov/news.release/cpi.nr0.htm: legible con WebFetch y da el dato oficial del IPC el mismo día; iea.org devuelve 403 (usar notas de prensa o EIA como alternativa [VERIFICAR]).
+- CryptoTimes/CoinGape "live": útiles por el consenso y la reacción, pero consensos inconsistentes entre secciones; contrastar con BLS.
