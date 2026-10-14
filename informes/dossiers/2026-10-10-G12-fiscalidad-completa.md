@@ -73,6 +73,7 @@
 | 300.000 € | **27 %** |
 | más de 300.000 € | **30 %** |
 - Fuente: BOE arts. 66 y 76, leídos en el [dossier 13 §3](2026-10-09-fiscalidad-espana-xrp-xlm.md) (9-oct). Verificado de nuevo en el BOE el 13-oct-2026 (art. 66, versión vigente desde el 22-dic-2024): escala estatal del 9,5 / 10,5 / 11,5 / 13,5 / 15 % con tramos de 6.000 / 50.000 / 200.000 / 300.000 € [ACTUALIZADO 13-oct]. Varias webs dicen 28 % arriba; el BOE dice 30 %.
+- El «tipo total» de la tabla suma la parte estatal y una autonómica **igual** (la supletoria, art. 76); si tu comunidad aprueba otra escala del ahorro, el tipo total puede variar [VERIFICAR con tu comunidad]. Los tramos y la parte estatal sí están verificados.
 
 ### 1.6 Ejemplos numéricos sencillos (cálculo mío, escala supletoria)
 **A. Trabajo de 30.000 € sin otras rentas** (ignoro reducciones del trabajo y cotizaciones, solo para ver el mecanismo):

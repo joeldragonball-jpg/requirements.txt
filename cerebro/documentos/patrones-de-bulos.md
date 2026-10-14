@@ -23,3 +23,9 @@ actualizado: 2026-10-07
 - "BIS pone fecha" (13-oct): la entrevista (Scotti, Sibos) solo dice "dentro de 12 meses esperamos avances"; la "fecha 23-sep" la pone el presentador y Sibos 2027 es 11–14 oct según swift.com [VERIFICAR]. Pedir cita literal de quien "fija" la fecha.
 - "X confirma que XRP se va a mover" (BlackRock, 12-oct): la entrevista habla de stablecoins y fondos tokenizados sin nombrar XRP; titular ≠ contenido.
 - Tres vídeos del mismo canal citándose entre sí no suman confirmaciones: contar una sola fuente.
+- Título "la comisión parlamentaria recomienda" cripto (jul-2026): es un informe sobre el Código de Mercados de Valores y solo dice que el Gobierno "podría considerar" un SRO interino; no es ley ni orden. Leer el verbo.
+- "Ripple ya tiene/pidió la licencia PSAV en Brasil" (R03P): el comunicado de Ripple (17-mar-2026) dice "planeja solicitar"; una nota posterior da la solicitud por hecha sin fuente del BCB. Comprobar el verbo (planea ≠ ha presentado ≠ concedida).
+- Blogs tipo blockeden.xyz ("primer banco central del G20 que...", "8 años de cárcel"): una sola fuente, tono promocional; no usar sin texto oficial.
+- Cita detallada sin enlace (R04P): un resumen de buscador atribuía a MAS (Chia, "INSEAD 9-oct-2026") una frase sobre CBDC; la búsqueda de comprobación no halló el evento (solo el discurso de nov-2025). Si no se localiza el acto, descartar la cita.
+- Titulares "XRP a 4 $ gracias a licencia MAS" (AOL/MEXC): predicción de un medio promocional sobre una licencia cuyo texto MAS no se ha leído [ESPECULACIÓN].
+- "Meritz–Ripple impulsa XRP" (R05P, 7-oct): SBS Biz (leído) no menciona XRP, token ni plazos; Coinalert da el precio 1,45 $ pero su ticker marca 1,33 $. Alianza exploratoria ≠ demanda de XRP. Kyobo Life / K Bank solo en un resumen de buscador [VERIFICAR].

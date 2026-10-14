@@ -11,6 +11,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+from datetime import datetime
 from pathlib import Path
 
 import markdown
@@ -101,7 +102,7 @@ def hacer(nombre, tit, sub, archivos, nav):
         toc += f'<li><a href="#d{i}">{titulo(a)}</a></li>'
         cuerpo += f'<section class="doc" id="d{i}">{md_a_html(a)}</section>'
     html = (f'<!doctype html><html lang="es"><meta charset="utf-8"><title>{tit}</title><style>{CSS}</style><body>'
-            f'<div class="portada"><h1>{tit}</h1><p>{sub}</p><p><b>No es recomendación de inversión ni asesoramiento fiscal.</b><br>'
+            f'<div class="portada"><h1>{tit}</h1><p>{sub}</p><p><b>Generado el {datetime.now():%d-%m-%Y %H:%M}</b></p><p><b>No es recomendación de inversión ni asesoramiento fiscal.</b><br>'
             '<span class="ver">[VERIFICAR]</span> dato sin confirmar en fuente primaria · <span class="esp">[ESPECULACIÓN]</span> opinión o previsión · '
             '<span class="ok">[VERIFICADO fecha]</span> confirmado en esa fecha</p></div>'
             f'<h2>Contenido de este tomo</h2><ol class="toc">{toc}</ol>{cuerpo}</body></html>')
