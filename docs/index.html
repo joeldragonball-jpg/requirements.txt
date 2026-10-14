@@ -54,7 +54,24 @@
   .ios-sa #caja { display: block; position: fixed; inset: 0; box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); background: #0b0f17; }
   .ios-sa #app { position: static; display: block; width: 100%; height: 100%; }
 </style>
-<script>if (navigator.standalone === true) document.documentElement.classList.add("ios-sa");</script>
+<script>
+if (navigator.standalone === true) {
+  document.documentElement.classList.add("ios-sa");
+  /* iOS (app instalada) deja sin pintar unos 59 px abajo hasta que el zoom le obliga a recalcular el area visible.
+     Aqui se fuerza ese recalculo solo, sin tocar el zoom: se quita y se vuelve a poner viewport-fit, y se avisa de un resize. */
+  var empujar = function () {
+    try {
+      var m = document.querySelector('meta[name="viewport"]'); if (!m) return;
+      var c = m.getAttribute("content");
+      m.setAttribute("content", c.replace(/,?\s*viewport-fit=cover/, ""));
+      void document.documentElement.offsetHeight;
+      setTimeout(function () { m.setAttribute("content", c); window.dispatchEvent(new Event("resize")); }, 60);
+    } catch (e) {}
+  };
+  [150, 700, 1800, 4000].forEach(function (ms) { setTimeout(empujar, ms); });
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) setTimeout(empujar, 150); });
+}
+</script>
 </head>
 <body>
 <div id="splash"><div id="marca"><img src="assets/icono-oscuro-256.png" alt="Mi Cartera Cripto"><div class="barra"></div></div></div>
