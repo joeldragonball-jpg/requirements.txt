@@ -32,6 +32,8 @@ st.markdown("""
     header {visibility: hidden;}
     .block-container {padding-top: calc(1.2rem + env(safe-area-inset-top, 0px)); padding-bottom: 2rem;}
     html, body {background-color: #0b0f17;}
+    /* iOS amplia la pantalla al enfocar un campo con letra menor de 16 px (y no vuelve sola): se fija en 16 px */
+    input, textarea, select {font-size: 16px !important;}
     [data-testid="stMetricValue"] {font-size: 1.45rem;}
     /* Tarjetas de indicadores: 5 en fila en ordenador, 2 por fila en el móvil */
     .kpis {display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 4px 0 4px;}
