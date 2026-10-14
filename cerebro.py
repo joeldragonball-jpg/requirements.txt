@@ -375,13 +375,6 @@ def tab_dossiers():
     st.caption("Investigaciones profundas con fuentes y su grado de confianza. Informativo: no son recomendaciones. "
                "Solo lectura: no entran en el chat, así que no gastan IA.")
 
-    pdfs = sorted((Path(__file__).parent / "informes" / "pdf").glob("*.pdf"))
-    if pdfs:
-        with st.expander("📄 Descargar PDFs para imprimir", expanded=False):
-            for p in pdfs:
-                st.download_button(f"⬇️ {p.stem.replace('-', ' ')}", p.read_bytes(), file_name=p.name,
-                                   mime="application/pdf", key=f"pdf_{p.stem}")
-
     def titulo(p):
         for linea in p.read_text(encoding="utf-8").splitlines():
             if linea.startswith("# "):
