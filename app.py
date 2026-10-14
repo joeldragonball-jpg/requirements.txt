@@ -30,7 +30,13 @@ st.markdown("""
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
-    .block-container {padding-top: calc(1.2rem + env(safe-area-inset-top, 0px)); padding-bottom: 2rem;}
+    .block-container {padding-top: calc(1.2rem + env(safe-area-inset-top, 0px)); padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));}
+    /* Pantalla completa en móvil: altura real (dvh) para que no quede una franja cortada abajo; el scroll va dentro de stMain */
+    @supports (height: 100dvh) {
+        .stApp, [data-testid="stAppViewContainer"] {min-height: 100dvh;}
+        [data-testid="stAppViewContainer"] {height: 100dvh;}
+        [data-testid="stMain"] {height: 100dvh; overflow-y: auto; -webkit-overflow-scrolling: touch;}
+    }
     html, body {background-color: #0b0f17;}
     [data-testid="stMetricValue"] {font-size: 1.45rem;}
     /* Tarjetas de indicadores: 5 en fila en ordenador, 2 por fila en el móvil */
