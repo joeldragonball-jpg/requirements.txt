@@ -29,3 +29,5 @@ actualizado: 2026-10-07
 - Cita detallada sin enlace (R04P): un resumen de buscador atribuía a MAS (Chia, "INSEAD 9-oct-2026") una frase sobre CBDC; la búsqueda de comprobación no halló el evento (solo el discurso de nov-2025). Si no se localiza el acto, descartar la cita.
 - Titulares "XRP a 4 $ gracias a licencia MAS" (AOL/MEXC): predicción de un medio promocional sobre una licencia cuyo texto MAS no se ha leído [ESPECULACIÓN].
 - "Meritz–Ripple impulsa XRP" (R05P, 7-oct): SBS Biz (leído) no menciona XRP, token ni plazos; Coinalert da el precio 1,45 $ pero su ticker marca 1,33 $. Alianza exploratoria ≠ demanda de XRP. Kyobo Life / K Bank solo en un resumen de buscador [VERIFICAR].
+- Titulares de otra publicación con cifras llamativas (CoinGape '"PPI 5,4 %, hike 74 %"', 15-oct) aparecen en búsquedas de hoy: mirar la fecha del artículo antes de usar la cifra.
+- Páginas '"XRP news today"' sin fecha (mirrors SEO) y predicciones de Changelly (XLM 0,221 $ el 15-oct, cuando el propio texto da 0,19 $): son contenido reciclado/pronóstico, no dato.
