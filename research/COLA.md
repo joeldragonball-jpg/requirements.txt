@@ -24,8 +24,10 @@ Reglas fijas: fuente primaria en su idioma original (traducida por mí, con enla
 | R04P | Singapur PROFUNDO (informe único rápido+profundo; mas.gov.sg legible, PDF de la consulta no leídos) | dossier-region (profundo) | Sonnet | alto | M+ | sin medir | <1 % semanal (34 → 34 %, medidor sin decimales; 5h: 40→42 %) | hecho 2026-10-15 |
 | R05 | Corea del Sur (FSC, ley de activos digitales, won stablecoin, XRP minorista) | dossier-region | Sonnet | medio | M | 2 % | | pendiente (cubierto por R05P) |
 | R05P | Corea del Sur PROFUNDO (informe único rápido+profundo; fuentes oficiales coreanas no abiertas: prensa con cita) | dossier-region (profundo) | Sonnet | alto | M+ | sin medir | ~1 % semanal en la última tarea (34 → 35 %; lote R03P+R04P+R05P entero: 34 → 35 %, 5h: 38→43 %, ~190k tokens de contexto) | hecho 2026-10-15 |
-| R06 | Rusia y sanciones (cripto en comercio exterior) | dossier-region | Sonnet | medio | M | 2 % | | pendiente |
-| R07 | Japón, Emiratos y Hong Kong (centros regulatorios) | dossier-region | Sonnet | medio | M | 2 % | | pendiente |
+| R06 | Rusia y sanciones (cripto en comercio exterior) | dossier-region | Sonnet | medio | M | 2 % | | pendiente (cubierto por R06P) |
+| R06P | Rusia y sanciones PROFUNDO (informe único; Tesoro EE. UU. leído entero; consilium.europa.eu 403, sozd.duma.gov.ru/cbr.ru/tks.ru/ppt.ru no abrieron: ley rusa y paquetes UE vía secundaria con cita) | dossier-region (profundo) | Sonnet | alto | M+ | sin medir | <1 % semanal (38 → 38 %, medidor sin decimales; 5h: 19→20 %, ~50k tokens de contexto) | hecho 2026-10-15 |
+| R07 | Japón, Emiratos y Hong Kong (centros regulatorios) | dossier-region | Sonnet | medio | M | 2 % | | pendiente (cubierto por R07P) |
+| R07P | Japón, Emiratos y Hong Kong PROFUNDO (informe único; sin abrir: texto de la ley japonesa, comunicado HKMA 10-abr, CBUAE/VARA/FSRA y ripple.com 404; casi todo vía secundaria con cita) | dossier-region (profundo) | Sonnet | alto | M+ | sin medir | <1 % semanal (38 → 38 %, medidor sin decimales; 5h: 20→22 %, ~35k tokens de contexto; lote R06P+R07P entero: 5h 19→22 %, semanal 38 → 38 %) | hecho 2026-10-15 |
 | R08 | BIS, FMI y bancos centrales (Agorá, mBridge, CBDC) | dossier-region | Sonnet | medio | L | 4 % | | pendiente (cubierto por R08P) |
 | R08P | BIS/FMI/bancos centrales PROFUNDO (informe único; bis.org dio ECONNRESET en 5 intentos: BIS vía nota del BCE y buscador; ecb.europa.eu e imf.org sí abren) | dossier-region (profundo) | Sonnet | alto | L+ | sin medir | <1 % semanal (37 → 37 %, medidor sin decimales; 5h: 9→11 %, ~45k tokens de contexto) | hecho 2026-10-15 |
 | R09 | Ripple y Stellar por región (alianzas, licencias, sesiones) | dossier-region | Sonnet | medio | L | 4 % | | pendiente (cubierto por R09P) |
@@ -43,6 +45,7 @@ Reglas fijas: fuente primaria en su idioma original (traducida por mí, con enla
 | R18 | Nueva guía G16+ por jurisdicción | dossier-region | Opus | medio | L | 4 % | | pendiente |
 | R19 | Comparativa de plataformas y custodia | dossier-region | Sonnet | medio | M | 2 % | | pendiente |
 | R20 | Auditoría España (BOE/AEAT), solo semanal o mensual | verificacion | Haiku | bajo | S | 1 % | | pendiente |
+| R21 | 13F y exposición institucional a XRP/XLM: quién tiene ETF y valores ligados, trimestre a trimestre (1T, 2T ya; 3T tras ~14-nov). Fuente: EDGAR (sec.gov abre desde aquí). Los 13F solo muestran posición a cierre de trimestre: no cuándo ni a qué precio compraron; no incluyen cripto en sí | 13f | Sonnet | alto | M | 2 % | | pendiente (tras R06P/R07P) |
 
 ## Orden sugerido para esta semana (hasta el 20-oct)
 R02P (profundo, mide coste) → según su coste, repetir en versión profunda: R01, R08, R09, R11, R12 → R00 diario → R17 (día 19). Como las versiones rápidas cuestan ~1-2 %, para aprovechar la cuota usar la versión profunda. Reserva: dejar ~10 % para una auditoría final.

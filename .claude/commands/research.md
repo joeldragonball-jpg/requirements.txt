@@ -9,7 +9,7 @@ Sigue estos pasos, respondiendo siempre en español y siguiendo las reglas de CL
 
 1. Lee `research/COLA.md` (es corto).
 2. Si no hay argumento: muestra solo la tabla de tareas pendientes (ID, tema, tamaño, estimación) y el orden sugerido, llama a `get_usage` (herramienta mcp__ccd_session_mgmt__get_usage, cárgala con ToolSearch si hace falta) para decir el % semanal usado y cuánto margen queda hasta dejar el 10 % de reserva, y pregunta cuál ejecutar. No hagas más.
-3. Si hay un ID: busca su fila. Elige la plantilla: `dossier-region` → `research/plantillas/dossier-region.md`; `verificacion` → `research/plantillas/verificacion.md`; cualquier otro nombre → `research/plantillas/generica.md`. Léela.
+3. Si hay un ID: busca su fila. Elige la plantilla: `dossier-region` → `research/plantillas/dossier-region.md`; `verificacion` → `research/plantillas/verificacion.md`; `13f` → `research/plantillas/13f.md`; cualquier otro nombre → `research/plantillas/generica.md`. Léela.
 3a. Si el ID termina en P (p. ej. R02P), es la versión PROFUNDA: usa la fila de la cola, la plantilla dossier-region y su sección "Modo PROFUNDO".
 3b. Mira las columnas "Modelo" y "Esfuerzo" de la tarea. Si esta sesión no usa ese modelo, díselo a Joel y espera a que lo cambie (o cámbialo tú con las herramientas de sesión si él lo autoriza). Trabaja en serie en esta sesión: no lances subagentes salvo que Joel lo pida, porque cada uno repite el arranque y gasta más cuota.
 4. Antes de empezar, llama a `get_usage` y anota el % semanal usado. Si la estimación de la tarea haría pasar el semanal del 90 %, avísame y espera mi respuesta.
