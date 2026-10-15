@@ -37,3 +37,6 @@ actualizado: 2026-10-07
 - Red A7 (Rusia): el Tesoro de EE. UU. (sb0644, 1-oct-2026) dice "más de 7,5 billones de rublos (~91.500 M$) a enero de 2026", cifra autoinformada y de periodo no especificado; no es el volumen de un mes.
 - e₹ minorista −24 % (771,66 crore ₹ a 31-mar-2026): sigue en fuente secundaria [VERIFICAR] hasta leer la tabla del Informe Anual del RBI (captcha).
 - Plazo de Brasil ≈30-oct-2026: es un cálculo propio sobre una sola fuente (Lefosse), no una fecha oficial [VERIFICAR]. El "60 días" de comentarios de las propuestas GENIUS de la Fed (24-sep) también queda [VERIFICAR].
+- 2026-10-15 (R13, contexto de precio): en 12 meses XRP −45,7 % y XLM −44,5 % frente a BTC −26,8 %; pico común el 27-oct-2025 (XRP 2,645 $, XLM 0,330 $). ETF, licencias y alianzas del año no compensaron esa caída (CoinGecko).
+- Debut de XRPN el 12-oct: apertura ~16,68 $, máx. 19,39 $, cierre 16,91 $ (−1,05 %); movimiento pequeño (secundaria; ~473 M XRP ≈ 0,75 % de la circulación).
+- 2026-10-15 (R14, próximos 3 hitos verificables): Alpenglow en Solana mainnet-beta 21-oct ~14:50 UTC (Anza, vía secundaria); fixCleanup3_4_0 del XRPL activable desde 23-oct 09:34:30 UTC (mayoría vigente desde 9-oct 09:34:30, ledger); escrow de Ripple 1-nov 00:00 UTC.
