@@ -47,3 +47,4 @@ actualizado: 2026-10-07
 - Políticos (R15): plazos de Lummis/McHenry/Witt/Trump = [ESPECULACIÓN]; sus cargos e intereses (a16z, tenencias, WLFI) [VERIFICAR] en declaraciones oficiales (Senado, OGE).
 - 2026-10-15 (R19): el registro provisional MiCA de ESMA se descarga con curl como CSV (www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv; OTHER.csv = whitepapers) y es primaria legible; ojo, contiene alguna fecha errónea (11-sep-2028). EUR-Lex vía WebFetch devuelve página vacía: usar el PDF oficial del DOUE.
 - Onramp (custodia) y blogs de bufetes sobre MiCA/OCC son parte interesada o secundaria: sirven para localizar el primario, no para citarlos como hecho.
+- 2026-10-15 (R18): fca.org.uk/firms/new-regime-cryptoasset-regulation SÍ abre (actualizada 30-sep-2026); amf-france.org abre y resume fielmente las declaraciones de ESMA; fatf-gafi.org da 403; el PDF de esma.europa.eu/print sale comprimido e ilegible con WebFetch (usar el CSV o la AMF).
