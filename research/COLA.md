@@ -45,7 +45,8 @@ Reglas fijas: fuente primaria en su idioma original (traducida por mí, con enla
 | R18 | Nueva guía G16+ por jurisdicción | dossier-region | Opus | medio | L | 4 % | | pendiente |
 | R19 | Comparativa de plataformas y custodia | dossier-region | Sonnet | medio | M | 2 % | | pendiente |
 | R20 | Auditoría España (BOE/AEAT), solo semanal o mensual | verificacion | Haiku | bajo | S | 1 % | | pendiente |
-| R21 | 13F y exposición institucional a XRP/XLM: quién tiene ETF y valores ligados, trimestre a trimestre (1T, 2T ya; 3T tras ~14-nov). Fuente: EDGAR (sec.gov abre desde aquí). Los 13F solo muestran posición a cierre de trimestre: no cuándo ni a qué precio compraron; no incluyen cripto en sí | 13f | Sonnet | alto | M | 2 % | | pendiente (tras R06P/R07P) |
+| R21 | 13F y exposición institucional a XRP/XLM: quién tiene ETF y valores ligados, trimestre a trimestre (1T, 2T ya; 3T tras ~14-nov). Fuente: EDGAR (sec.gov abre desde aquí). Los 13F solo muestran posición a cierre de trimestre: no cuándo ni a qué precio compraron; no incluyen cripto en sí | 13f | Sonnet | alto | M | 2 % | <1 % semanal (39 → 39 %, medidor sin decimales; 5h: 24→28 %, ~145k tokens de contexto) | hecho 2026-10-15 (EDGAR sí abre; 9 gestores leídos entero; falta ranking completo y 3T tras ~14-nov) |
+| R22 | Auditoría de coherencia y afirmaciones de todo el research (contradicciones entre informes, sobreafirmaciones, etiquetas, muestreo de 10 afirmaciones clave, huecos por impacto) | auditoria-coherencia | Opus | medio | L | 4 % (sin medir) | | pendiente (lanzar hoy tras R21) |
 
 ## Orden sugerido para esta semana (hasta el 20-oct)
 R02P (profundo, mide coste) → según su coste, repetir en versión profunda: R01, R08, R09, R11, R12 → R00 diario → R17 (día 19). Como las versiones rápidas cuestan ~1-2 %, para aprovechar la cuota usar la versión profunda. Reserva: dejar ~10 % para una auditoría final.
