@@ -14,7 +14,8 @@ Reglas fijas: fuente primaria en su idioma original (traducida por mí, con enla
 | ID | Tema | Plantilla | Modelo | Esfuerzo | Tam. | Est. | Real | Estado |
 |----|------|-----------|--------|----------|------|------|------|--------|
 | R00 | Apertura/cierre diario (macro + XRP/XLM) | sesion-diaria | Sonnet | bajo | S | 3 % | | recurrente |
-| R01 | BRICS y pagos transfronterizos (BRICS Pay, mBridge, yuan/rublo digital) | dossier-region | Sonnet | medio | L | 4 % | | pendiente |
+| R01 | BRICS y pagos transfronterizos (BRICS Pay, mBridge, yuan/rublo digital) | dossier-region | Sonnet | medio | L | 4 % | | pendiente (cubierto por R01P) |
+| R01P | BRICS PROFUNDO (informe único rápido+profundo; PIB y brics2026.gov.in dan 403: declaración leída vía prensa con cita) | dossier-region (profundo) | Sonnet | alto | L+ | sin medir | ~1 % semanal (36 → 37 %, medidor sin decimales; 5h: 6→9 %, ~50k tokens de contexto) | hecho 2026-10-15 |
 | R02 | India (RBI, e₹, UPI, fiscalidad y regulación cripto) | dossier-region | Sonnet | medio | M | 2 % | <1 % (33 → 33 %, medidor sin decimales; 5h: 33→34 %) | hecho 2026-10-14 (prueba A/B) |
 | R02P | India PROFUNDO: cubrir los 8 huecos de 'Qué falta por buscar' de R02 leyendo fuentes primarias enteras (RBI, NPCI, sansad.in, incometax.gov.in, BIS) | dossier-region (profundo) | Sonnet | alto | M+ | sin medir | <1 % semanal (34 → 34 %, medidor sin decimales; 5h: 35→37 %, ~109k tokens de contexto) | hecho 2026-10-15 (varias fuentes primarias bloqueadas: captcha/403; nivel máximo = secundaria con cita) |
 | R03 | Brasil (Drex, Pix, Banco Central, CVM, pilotos Ripple/Stellar) | dossier-region | Sonnet | medio | M | 2 % | | pendiente (cubierto por R03P) |
@@ -25,11 +26,15 @@ Reglas fijas: fuente primaria en su idioma original (traducida por mí, con enla
 | R05P | Corea del Sur PROFUNDO (informe único rápido+profundo; fuentes oficiales coreanas no abiertas: prensa con cita) | dossier-region (profundo) | Sonnet | alto | M+ | sin medir | ~1 % semanal en la última tarea (34 → 35 %; lote R03P+R04P+R05P entero: 34 → 35 %, 5h: 38→43 %, ~190k tokens de contexto) | hecho 2026-10-15 |
 | R06 | Rusia y sanciones (cripto en comercio exterior) | dossier-region | Sonnet | medio | M | 2 % | | pendiente |
 | R07 | Japón, Emiratos y Hong Kong (centros regulatorios) | dossier-region | Sonnet | medio | M | 2 % | | pendiente |
-| R08 | BIS, FMI y bancos centrales (Agorá, mBridge, CBDC) | dossier-region | Sonnet | medio | L | 4 % | | pendiente |
-| R09 | Ripple y Stellar por región (alianzas, licencias, sesiones) | dossier-region | Sonnet | medio | L | 4 % | | pendiente |
+| R08 | BIS, FMI y bancos centrales (Agorá, mBridge, CBDC) | dossier-region | Sonnet | medio | L | 4 % | | pendiente (cubierto por R08P) |
+| R08P | BIS/FMI/bancos centrales PROFUNDO (informe único; bis.org dio ECONNRESET en 5 intentos: BIS vía nota del BCE y buscador; ecb.europa.eu e imf.org sí abren) | dossier-region (profundo) | Sonnet | alto | L+ | sin medir | <1 % semanal (37 → 37 %, medidor sin decimales; 5h: 9→11 %, ~45k tokens de contexto) | hecho 2026-10-15 |
+| R09 | Ripple y Stellar por región (alianzas, licencias, sesiones) | dossier-region | Sonnet | medio | L | 4 % | | pendiente (cubierto por R09P) |
+| R09P | Ripple y Stellar por región PROFUNDO (informe único; ripple.com y stellar.org abren, son parte interesada; occ.gov/cssf.lu/dtcc.com no leídos; businesswire y taiwannews 403) | dossier-region (profundo) | Sonnet | alto | L+ | sin medir | <1 % semanal (37 → 37 %, medidor sin decimales; 5h: 11→12 %, ~30k tokens de contexto) | hecho 2026-10-15 |
 | R10 | Calendario único de catalizadores a 90 días | calendario | Haiku | bajo | M | 2 % | <1 % (33 → 33 %, medidor sin decimales) | hecho 2026-10-14 (prueba A/B) |
-| R11 | Verificación en bloque de los [VERIFICAR] pendientes | verificacion | Haiku | bajo | L | 4 % | | pendiente |
-| R12 | Auditoría cruzada del cerebro contra fuentes primarias | auditoria | Sonnet | alto | L | 4 % | | pendiente |
+| R11 | Verificación en bloque de los [VERIFICAR] pendientes | verificacion | Haiku | bajo | L | 4 % | | pendiente (cubierto por R11P) |
+| R11P | Verificación en bloque PROFUNDA (informe 2026-10-15-R11P-verificacion.md; hecha en Sonnet por continuidad del lote; sec.gov/bis.org/cbr.ru no abrieron: casi todo secundaria) | verificacion | Sonnet | alto | L+ | sin medir | <1 % semanal (37 → 37 %, medidor sin decimales; 5h: 14→15 %, ~30k tokens de contexto) | hecho 2026-10-15 |
+| R12 | Auditoría cruzada del cerebro contra fuentes primarias | auditoria | Sonnet | alto | L | 4 % | | pendiente (cubierto por R12P) |
+| R12P | Auditoría cruzada PROFUNDA (8 apuntes, 17 filas; informe 2026-10-15-R12P-auditoria-cerebro-profundo.md; plantilla generica/auditoria; fuentes oficiales parcialmente cerradas) | generica (auditoria) | Sonnet | alto | L+ | sin medir | <1 % semanal (37 → 37 %, medidor sin decimales; 5h: 12→14 %, ~45k tokens de contexto) | hecho 2026-10-15 |
 | R13 | Casos bajistas por tesis | caso-bajista | Sonnet | medio | M | 2 % | | pendiente |
 | R14 | Backtest de predicciones (informes/predicciones.md) | backtest | Sonnet | medio | S | 1 % | | pendiente |
 | R15 | Mapa de actores y conflictos de interés | actores | Sonnet | medio | M | 2 % | | pendiente |
