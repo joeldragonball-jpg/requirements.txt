@@ -35,3 +35,6 @@ Una tesorería cotizada aumenta su XRP por acción si emite acciones por encima 
 
 ## Dudas y datos a verificar
 - Comunicado oficial de Evernorth (aplazamiento y fechas), cotización oficial, valor de caja por acción y precio medio de compra de XRP.
+
+## Correcciones 2026-10-15 (auditoría R12P)
+- Las fechas pendientes de cierre y debut quedan así (secundaria: Latham & Watkins, Decrypt, crypto.news; Form 425 de la SEC sin abrir): cierre el 9-oct-2026 y cotización el 12-oct-2026 (XRPN). Cifras de la misma fuente: ~473 M XRP y ~300 M$ brutos de caja al cierre; ~80,3 % de acciones públicas redimidas (~195 M$). [VERIFICAR en el comunicado de Evernorth y en la SEC.] Fila 12 de R12P.

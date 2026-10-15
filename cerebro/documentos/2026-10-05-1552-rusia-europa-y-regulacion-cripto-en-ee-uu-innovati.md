@@ -72,3 +72,7 @@ No aplica.
 - SEC, 18-ago-2026: "Regulation Crypto Assets" (exenciones de 5 M$ y 75 M$; safe harbor), comentarios hasta el 20-oct (resumen de búsqueda, [VERIFICAR] en sec.gov). Aún [VERIFICAR] si es la "Innovation Exemption"; un vídeo la sitúa el 17-sep.
 - Corrección 2026-10-07: la interpretación conjunta SEC-CFTC del 17-mar-2026 nombra 16 activos como "commodities digitales" (no 18), incluidos XRP y XLM (Stellar), según despachos (Jenner, Jones Day) [VERIFICAR en sec.gov/cftc.gov]; la lista varía algo entre fuentes.
 - CLARITY Act: Cámara 294-134 (17-jul-2025); cloture del Senado 49-50 el 15-sep-2026. Plan de aprobarla en el lame-duck tras las midterms = [ESPECULACIÓN] (Witt, McHenry, según un canal de YouTube).
+
+## Correcciones 2026-10-15 (auditoría R12P)
+- Regulation Crypto Assets (SEC, 18-ago-2026; publicada en el Federal Register el 21-ago; expediente S7-2026-27; comentarios hasta el 20-oct): los 5 M$ son la Startup Exemption (4 años) y los 75 M$ son el Tier 2 de la Fundraising Exemption (20 M$ el Tier 1). El "safe harbor" es otra pieza (sobre "investment contract"), no los 75 M$. Fuentes secundarias (Cahill, ACA, Journal of Accountancy); sec.gov sin abrir. Fila 15 de R12P.
+- Interpretación SEC–CFTC del 17-mar-2026: la cifra de 16 activos (con XRP y Stellar) corresponde a los que respaldan contratos de futuros (Lowenstein); otra fuente da 18 al añadir Algorand y LBRY Credits (Mondaq). La corrección "16, no 18" solo vale si se habla de los 16 con futuros subyacentes. [VERIFICAR en sec.gov/cftc.gov.] Fila 16 de R12P.

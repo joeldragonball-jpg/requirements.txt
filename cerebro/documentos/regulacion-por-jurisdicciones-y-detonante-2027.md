@@ -41,3 +41,6 @@ Sin cambios. Ganancias patrimoniales en base del ahorro; Modelo 721 si hay cript
 ## Dudas y datos a verificar
 - Estado actual de CLARITY en el Senado (no verificado a 14-oct).
 - Afiliados/promoción: el vídeo pide suscripción 4 veces; [VERIFICAR] enlaces de afiliado en la descripción (no se pudo ver).
+
+## Correcciones 2026-10-15 (auditoría R12P)
+- El "lanzamiento del euro digital en 1.ª mitad de 2027" lo dice el vídeo, pero no coincide con la fuente oficial: el BCE da piloto desde la 2.ª mitad de 2027 y emisión posible desde 2029 si el Reglamento se adopta en 2026 (página del BCE leída el 15-oct). Fuente: informes/research/2026-10-15-R12P-auditoria-cerebro-profundo.md, fila 4.

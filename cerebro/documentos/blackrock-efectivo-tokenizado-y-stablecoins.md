@@ -42,3 +42,6 @@ Los fondos tokenizados o stablecoins se tratan como criptoactivos a efectos info
 - Entrevista original (BlackRock / Swift / plataforma).
 - Estado de CLARITY y su texto final sobre rendimiento.
 - Sesgo: titular "BlackRock confirma" no es una confirmación sobre XRP; hay pedidos de suscripción y "likes".
+
+## Correcciones 2026-10-15 (auditoría R12P)
+- Matiz de BSTBL y BRSRV (lanzados el 3-ago-2026; The Block, Cointelegraph, Coinpaprika; Business Wire no localizado): BSTBL es una clase tokenizada de un fondo existente (BNY) y BRSRV es un fondo nuevo para emisores (Securitize), con mínimo de 3 M$. La frase del CFO Martin Small sobre ser "gestor de reservas de elección" procede de la llamada de resultados del 2T-2026, no del comunicado de lanzamiento. Fila 13 de R12P.
