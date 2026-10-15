@@ -2,7 +2,7 @@
 
 Uso (desde la carpeta del repo; uv instala `markdown` de forma temporal, no toca tu Python):
     uv run --with markdown python scripts/maquetar_pdf.py              # regenera TODOS los PDFs
-    uv run --with markdown python scripts/maquetar_pdf.py tomo6        # solo uno (tomo1..tomo7 o corto)
+    uv run --with markdown python scripts/maquetar_pdf.py tomo6        # solo uno (tomo1..tomo8)
 Salida: informes/pdf/*.pdf. Necesita Microsoft Edge o Google Chrome instalado (se usa en modo sin ventana).
 Cuando cambien dossiers, guías, apuntes del cerebro o informes de vídeos, se vuelve a ejecutar para actualizar los PDFs.
 """
@@ -81,6 +81,10 @@ def tomos():
                   lista("*.md", cer)),
         "tomo7": ("Tomo7-Informes-de-videos", "Tomo 7 · Informes de vídeos", "Informes de research sobre vídeos (informes/videos)",
                   lista("*.md", RAIZ / "informes" / "videos")),
+        "tomo8": ("Tomo8-Research-global", "Tomo 8 · Research global (jurisdicciones, BRICS, BIS, Ripple/Stellar, 13F, auditorías)",
+                  "Matriz por jurisdicción primero; después los informes de informes/research por orden de fecha",
+                  [p for p in lista("*matriz-jurisdicciones*.md", RAIZ / "informes" / "research")]
+                  + [p for p in lista("*.md", RAIZ / "informes" / "research") if "matriz-jurisdicciones" not in p.name]),
     }
 
 
