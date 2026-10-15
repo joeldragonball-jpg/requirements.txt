@@ -32,3 +32,8 @@ actualizado: 2026-10-07
 - Centros regulatorios (R07P, sin efecto medido en XRP/XLM): HKMA primeras licencias de stablecoin 10-abr-2026 (HSBC 2S-2026); Japón aprueba reforma FIEA 15-jul-2026 (ETFs 2027-28 y impuesto ~20 % en 2028, previsiones); RLUSD reconocido en ADGM 27-nov-2025; plazo CBUAE 16-sep-2026 ya vencido sin verificar.
 - Catalizador 13F (R21): el 13F del 3T 2026 (cierre 30-sep) vence ~14-nov-2026; repetir R21 entonces. Precio por acción de los ETF de XRP (Bitwise 20,52 → 15,03 → 11,66 $ entre 31-dic, 31-mar y 30-jun) ≈ −43 % en el semestre; Goldman: 152,2 M$ (4T) → 0 (1T) → 86,5 M$ (2T), sin evidencia de que anticipara el precio.
 - 2026-10-15 (R22, fechas confirmadas en fuente oficial): FOMC 27-28-oct y 8-9-dic (Fed); BCE decide 29-oct y 17-dic; BoJ 29-30-oct y 17-18-dic; IPC 10-nov y 10-dic (BLS); Swell 27-29-oct en Nueva York (swell.ripple.com); XRPN cotiza desde el 12-oct (8-K SEC). Efecto en XRP/XLM: medir tras cada fecha.
+
+## Correcciones 2026-10-15 (auditoría R22)
+- Red A7 (Rusia): el Tesoro de EE. UU. (sb0644, 1-oct-2026) dice "más de 7,5 billones de rublos (~91.500 M$) a enero de 2026", cifra autoinformada y de periodo no especificado; no es el volumen de un mes.
+- e₹ minorista −24 % (771,66 crore ₹ a 31-mar-2026): sigue en fuente secundaria [VERIFICAR] hasta leer la tabla del Informe Anual del RBI (captcha).
+- Plazo de Brasil ≈30-oct-2026: es un cálculo propio sobre una sola fuente (Lefosse), no una fecha oficial [VERIFICAR]. El "60 días" de comentarios de las propuestas GENIUS de la Fed (24-sep) también queda [VERIFICAR].

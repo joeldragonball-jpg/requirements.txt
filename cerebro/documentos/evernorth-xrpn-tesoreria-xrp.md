@@ -38,3 +38,6 @@ Una tesorería cotizada aumenta su XRP por acción si emite acciones por encima 
 
 ## Correcciones 2026-10-15 (auditoría R12P)
 - Las fechas pendientes de cierre y debut quedan así (secundaria: Latham & Watkins, Decrypt, crypto.news; Form 425 de la SEC sin abrir): cierre el 9-oct-2026 y cotización el 12-oct-2026 (XRPN). Cifras de la misma fuente: ~473 M XRP y ~300 M$ brutos de caja al cierre; ~80,3 % de acciones públicas redimidas (~195 M$). [VERIFICAR en el comunicado de Evernorth y en la SEC.] Fila 12 de R12P.
+
+## Correcciones 2026-10-15 (auditoría R22)
+- Las fechas del cierre (9-oct-2026) y del inicio de cotización (12-oct-2026, XRPN en Nasdaq) quedan CONFIRMADAS en el 8-K de Evernorth en EDGAR (CIK 2092592, presentado el 13-oct; leído entero): el [VERIFICAR en la SEC] de la corrección anterior ya está resuelto. Las cifras de XRP y caja siguen siendo de fuente secundaria [VERIFICAR].
