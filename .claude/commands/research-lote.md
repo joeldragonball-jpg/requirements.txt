@@ -10,7 +10,7 @@ Responde siempre en español y sigue las reglas de CLAUDE.md. Trabaja en serie, 
 1. Lee `research/COLA.md` (sección "Lotes predefinidos" y la fila de cada tarea). Si el argumento es `grandes` o `regiones`, usa la lista de ese lote; si son IDs, úsalos en ese orden. Sin argumento: muestra los lotes y pregunta cuál.
 2. Antes de empezar, llama a `get_usage` (mcp__ccd_session_mgmt__get_usage; cárgala con ToolSearch si hace falta). Anota el % semanal y el de 5 horas. Muestra el plan: lista de tareas y estimación, y espera mi confirmación solo si el lote entero estima pasar del 85 % semanal.
 3. Para cada ID, en orden:
-   a. Ejecuta la tarea como lo haría `/research <ID>` (plantilla de la fila; si el ID acaba en P, usa el "Modo PROFUNDO" de `research/plantillas/dossier-region.md`). Si el ID es R12P/R11P u otro sin plantilla propia, usa `verificacion.md`, `13f.md` (para R21), `auditoria-coherencia.md` (para R22) o `generica.md` según la cola.
+   a. Ejecuta la tarea como lo haría `/research <ID>` (plantilla de la fila; si el ID acaba en P o la fila empieza su tema con "PROFUNDO:", usa el "Modo PROFUNDO" de `research/plantillas/dossier-region.md`). Si el ID es R12P/R11P u otro sin plantilla propia, usa `verificacion.md`, `13f.md` (para R21), `auditoria-coherencia.md` (para R22) o `generica.md` según la cola.
    b. Guarda el informe en `informes/research/` (nunca en `cerebro/`), con el nombre de la plantilla.
    c. Llama a `get_usage` y anota en la columna "Real" de `research/COLA.md` el coste de esa tarea (diferencia de % semanal; si el medidor no se mueve, "<1 %") y pon el estado "hecho AAAA-MM-DD".
    d. Lecciones: como máximo 5 líneas nuevas por archivo en los tres archivos de lecciones, sin repetir.

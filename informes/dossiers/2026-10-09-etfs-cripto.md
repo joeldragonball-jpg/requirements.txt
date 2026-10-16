@@ -54,7 +54,7 @@ Nota: una entrada acumulada **negativa** con 146,8 M$ de activos (TOXR) y algo p
 ## 4. Calendario (solo fechas con fuente)
 | Fecha | Qué | Fuente |
 |---|---|---|
-| **1-oct-2026** (hecho) | Propuesta SEC de custodia de cripto para asesores y fondos regulados; comentarios 60 días desde su publicación en el Federal Register (fecha de publicación [VERIFICAR]) | [SEC 2026-100](https://www.sec.gov/newsroom/press-releases/2026-100-sec-proposal-would-address-how-investment-advisers-funds-can-custody-crypto-assets-under-federal) (primaria) |
+| **1-oct-2026** (hecho) | Propuesta SEC de custodia de cripto para asesores y fondos regulados; comentarios 60 días desde su publicación en el Federal Register (publicada en el Federal Register el 6-oct-2026; plazo hasta el 7-dic-2026; File S7-2026-35; verificado en R23) | [SEC 2026-100](https://www.sec.gov/newsroom/press-releases/2026-100-sec-proposal-would-address-how-investment-advisers-funds-can-custody-crypto-assets-under-federal) (primaria) |
 | **11-nov-2026** | Fecha límite de la SEC para aprobar, rechazar o abrir procedimiento sobre SR-ISE-2026-42 (criterios de cotización de **opciones** sobre trusts de materias primas digitales: iShares BTC/ETH, Grayscale, etc.) | [sec.gov SR-ISE-2026-42](https://www.sec.gov/rules-regulations/self-regulatory-organization-rulemaking/sr-ise-2026-42) (primaria; fecha leída en el resumen del buscador, orden 34-106448 [VERIFICAR texto]) |
 | Sin fecha | Conversión del GXLM a ETF en NYSE Arca (S-1 de 23-sep-2025 sin efectividad conocida) | EDGAR |
 | Sin fecha | Norma final de custodia | SEC |
