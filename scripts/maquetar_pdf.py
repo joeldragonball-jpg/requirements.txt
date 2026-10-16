@@ -11,6 +11,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 from datetime import datetime
 from pathlib import Path
 
@@ -115,8 +116,21 @@ def hacer(nombre, tit, sub, archivos, nav):
         h = Path(tmp) / "t.html"
         h.write_text(html, encoding="utf-8")
         salida = SAL / f"{nombre}.pdf"
-        subprocess.run([nav, "--headless=new", "--disable-gpu", "--no-pdf-header-footer", f"--print-to-pdf={salida}", h.as_uri()],
-                       capture_output=True, timeout=240)
+        if salida.exists():
+            salida.unlink()  # si el navegador falla, que se note (antes quedaba el PDF viejo y se daba por bueno)
+        # perfil temporal propio: así funciona aunque Edge/Chrome ya estén abiertos en el ordenador
+        perfil = Path(tmp) / "perfil"
+        subprocess.run([nav, "--headless=new", "--disable-gpu", "--no-pdf-header-footer", f"--user-data-dir={perfil}",
+                        f"--print-to-pdf={salida}", h.as_uri()], capture_output=True, timeout=240)
+        # el navegador termina antes de acabar de escribir el PDF: esperar a que aparezca y deje de crecer
+        ultimo, estable = -1, 0
+        for _ in range(240):
+            tam = salida.stat().st_size if salida.exists() else 0
+            estable = estable + 1 if (tam > 0 and tam == ultimo) else 0
+            if estable >= 3:
+                break
+            ultimo = tam
+            time.sleep(0.5)
     print(f"- {nombre}.pdf: {len(archivos)} documentos, {salida.stat().st_size // 1024} KB" if salida.exists() else f"- {nombre}: FALLÓ")
 
 
