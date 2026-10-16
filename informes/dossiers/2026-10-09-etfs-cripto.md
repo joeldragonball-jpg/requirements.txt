@@ -89,3 +89,6 @@ Entradas diarias de ETFs de XRP y SOL (SoSoValue, Farside), S-1/A o aviso de cot
 - **T. Rowe Price Active Crypto ETF** (aprobado el 12-jun-2026 según CoinMarketCap, secundaria): reportado como fondo activo con XLM entre los activos elegibles; sin ticker ni composición [VERIFICAR].
 - Si hay un **cierre administrativo** de la SEC: BigGo (3-oct-2026) dice que la SEC congeló revisiones de ETFs por falta de fondos. **Falso o no demostrado**: la SEC publicó comunicados el 5 y 6-oct y cotizan ETFs a diario. No lo uso.
 - Todas las cifras de comisión, composición y custodio por fondo requieren el folleto (424B/S-1) [VERIFICAR].
+
+## Correcciones 2026-10-17 (R23)
+- La comparación con "los ~473 M de Evernorth" usa una cifra del Form 425 (a 31-dic-2025); el 8-K del cierre confirma 388,9 M XRP en especie y no da total. La proporción (~2,4 veces) es aproximada [VERIFICAR].

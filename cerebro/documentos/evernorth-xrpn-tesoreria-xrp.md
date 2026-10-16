@@ -41,3 +41,6 @@ Una tesorería cotizada aumenta su XRP por acción si emite acciones por encima 
 
 ## Correcciones 2026-10-15 (auditoría R22)
 - Las fechas del cierre (9-oct-2026) y del inicio de cotización (12-oct-2026, XRPN en Nasdaq) quedan CONFIRMADAS en el 8-K de Evernorth en EDGAR (CIK 2092592, presentado el 13-oct; leído entero): el [VERIFICAR en la SEC] de la corrección anterior ya está resuelto. Las cifras de XRP y caja siguen siendo de fuente secundaria [VERIFICAR].
+
+## Correcciones 2026-10-17 (R23, 8-K de la SEC)
+- La cifra de "473 M de XRP" procede de un Form 425 con fecha 31-dic-2025 ("over 473 million XRP as of December 31, 2025"), no del 8-K del cierre. El 8-K (CIK 2092592, presentado el 13-oct-2026, leído entero) confirma **388.910.554 XRP aportados en especie** (suma de cinco partidas) y NO da un total de XRP tras el cierre. La diferencia (~84 M) es una resta propia, no un dato oficial [VERIFICAR]. Precios del 8-K: Signing XRP Price 2,36609 $ y Closing XRP Price 1,43069 $ (media de 3 días del CME CF XRP-Dollar). Es un vehículo de tesorería, no un ETF.

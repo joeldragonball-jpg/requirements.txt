@@ -65,3 +65,6 @@ Comunicado oficial del cierre y de la fecha de debut, primera cotización y volu
 
 ## 9. Lo que no sé
 La prima real, las condiciones de bloqueo de las acciones, el coste medio de la parte aportada en especie y el comportamiento real tras el debut.
+
+## Correcciones 2026-10-17 (R23)
+- Los "473 M de XRP" de este dossier son del Form 425 (a 31-dic-2025). El 8-K del cierre (13-oct-2026) confirma 388.910.554 XRP aportados en especie y no da un total tras el cierre; las cifras en dólares y la comparación con los fondos (~2,4 veces) que dependen de 473 M deben leerse como aproximaciones [VERIFICAR]. Fuente: informes/research/2026-10-17-R23-verificacion-sec.md.
