@@ -58,3 +58,9 @@ actualizado: 2026-10-07
 - 2026-10-17 (apertura): cifra de reacción de precio de un agregador (XRP -4,5 % a 1,29 $) no cuadró con la serie horaria de CoinGecko (mín. 1,31 $): contrastar siempre con datos horarios. Publirreportajes de tokens ajenos (Remittix) mezclados con noticias de Evernorth = descartar.
 - 2026-10-17 (R24, MAS P015-2026): titulares/agregadores que dicen "Singapur prohíbe/aprueba X" mezclan lo PROPUESTO con lo decidido. Topes de emisión, mínimo de efectivo y restricción de wallets solo se "consultan" (consulta §3.6-3.8, §3.23); el Anexo C es borrador sujeto a revisión de la Fiscalía. Leer verbos: "proposes" ≠ "considering" ≠ "will".
 - Nadie ha dicho que MAS vaya a reconocer RLUSD/USDC/USDT: los PDF no nombran emisores (0 menciones de Ripple, XRP, Stellar). Titulares del tipo "Singapur abre la puerta a RLUSD" = [ESPECULACIÓN].
+
+- 2026-10-17 (R25): "stablecoins ~300 mil M$" es dato de agregador (DefiLlama), no oficial; las monedas no-USD vienen en unidad local y A7A5 (rublo) tiene unidad ambigua. Cifras de reservas de Tether (exceso 4,11 mil M$ en 2T) solo en prensa: no se leyó la atestación de BDO [VERIFICAR].
+
+- 2026-10-17 (R26): "mercado RWA de X mil M$" mezcla "distribuido" (39,3 mil M$, RWA.xyz 16-oct), "representado" (371 mil M$) y stablecoins (292 mil M$): pedir siempre la definición. Guías que dan T-bills tokenizados de "7 mil M$" o "2,3 mil M$" no cuadran con la tabla del día (diez primeros ~13 mil M$) [secundaria].
+
+- 2026-10-17 (R27): "ETF de XRP en Europa/Canadá/HK" se cita sin fecha ni base; el dato comparable (21Shares/Bloomberg 30-sep-2026) es XRP Europa ~914 M$ (~6 % del AUM de ETP cripto) frente a ~2.178 M$ en ETF de EE. UU.; estructuras distintas (ETP vs ETF), cifras de emisor = parte interesada. Canadá 2026: solo un dato suelto de Evolve (C$31 M, jun) [VERIFICAR].

@@ -48,3 +48,9 @@ actualizado: 2026-10-07
 - 2026-10-17 (R24): la consulta MAS P015-2026 cerró el 16-oct sin prórroga; sin fecha de respuesta, de legislación subsidiaria ni de entrada en vigor. Efecto en XRP/XLM: ninguno directo medido; el texto crea el mecanismo de "MAS-recognised stablecoin" (Parte 2B) sin nombrar emisores [S]. Vigilar: publicación de respuestas de la industria.
 
 - 2026-10-17 (corrección R23): las citas de "473 M XRP" de Evernorth (líneas de 12-oct, 14-oct, 15-oct y 17-oct) vienen de un Form 425 a 31-dic-2025; el 8-K del cierre confirma 388,9 M XRP en especie y no da total. Leer "473 M" como cifra pro forma [VERIFICAR], y el 0,75 % de la circulación como cálculo que depende de ella.
+
+- 2026-10-17 (R25): GENIUS: comentarios a la norma de emisión de Treasury cierran 19-oct-2026; fecha efectiva prevista 18-ene-2027; prohibición a intermediarios de ofrecer stablecoins no permitidas desde 18-jul-2028 (NPRM 91 FR 53368). Efecto medido en XRP/XLM: ninguno; XRPL tiene ~1.108 M$ de stablecoins (RLUSD ~1.030 M$) y Stellar ~520 M$ (USDC ~494 M$) según DefiLlama.
+
+- 2026-10-17 (R26): SEC–DTC no-action 11-dic-2025 (piloto de tokenización: Russell 1000, Tesoro, ETF de índices; se retira a los 3 años del lanzamiento; lanzamiento previsto 2S-2026 [VERIFICAR]); orden SEC 17-sep-2026 de exención para venues de acciones tokenizadas con AMM: caduca a los 5 años. RWA.xyz 16-oct: Stellar 4.º (3,5 mil M$) y XRPL 10.º (0,497 mil M$) por valor RWA; efecto en precio de XLM/XRP no medido.
+
+- 2026-10-17 (R27): HK (SFC, fin jun-2026): 11 ETF cripto al contado, 451 M$; 13 VATP con licencia; proyecto de ley de 4 regimenes de activos virtuales en 2026. Europa (21Shares, 30-sep): ETP XRP ~914 M$ y Stellar ~104 M$; próximo informe de octubre ~primeros días de nov-2026. Efecto en precio no medido.
