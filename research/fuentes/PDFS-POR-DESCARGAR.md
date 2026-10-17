@@ -21,3 +21,12 @@ Origen: auditoría R22 (§6). Descárgalos tú y déjalos en esta carpeta (`rese
 **Sin descarga (la SEC abre con `curl` y User-Agent identificado):** Regulation Crypto Assets (S7-2026-27), interpretación SEC–CFTC del 17-mar, propuesta de custodia del 1-oct, 13F del 3T (≈14-nov). Se leen en una tarea corta.
 
 **Prioridad esta semana:** el nº 1 (cierra mañana); después 2, 4 y 5.
+
+## Añadidos tras el lote "semana" (17-oct-2026)
+| # | Documento | Dónde | Nombre sugerido | Para qué |
+|---|-----------|-------|-----------------|----------|
+| 14 | India: "Taxation of Virtual Digital Assets" (6-ene-2026) y sección 115BBH | incometaxindia.gov.in/documents/20117/42998/Taxation-of-Virtual-Digital-Asset-VDA_2026-01-06_06-43-57_cfe04a_en.pdf/153706c8-7b5c-77d4-fc56-624c50ece1b0 (da 403 desde aquí) | `india-vda-tributacion-2026-01.pdf` | Fiscalidad R35: tipo, TDS y numeración de la nueva ley |
+| 15 | Japón: "暗号資産に関する税務上の取扱いについて（情報）" (NTA) | nta.go.jp, enlace en Tax Answer 1524 | `japon-nta-cripto-fiscalidad.pdf` | Categoría de renta y tipo (R35) |
+| 16 | Brasil: IN RFB 2.291/2026 (DeCripto) y Lei 14.754/2023 | normas.receita.fazenda.gov.br / planalto.gov.br | `brasil-in-rfb-2291-2026.pdf`, `brasil-lei-14754-2023.pdf` | Confirmar DeCripto, tipos y exención de 35.000 R$ (R35) |
+| 17 | OCC: carta de aprobación condicional a Ripple National Trust Bank (12-dic-2025) y estado final | occ.gov (comunicados de dic-2025 y posteriores) | `occ-ripple-trust-bank-2025-12.pdf` | Estado final del trust bank (R34) |
+| 18 | Circular BMF de 6-mar-2025 sobre Kryptowerte (Alemania) | bundesfinanzministerium.de | `alemania-bmf-kryptowerte-2025-03-06.pdf` | FIFO, staking y Freigrenze (R35) |

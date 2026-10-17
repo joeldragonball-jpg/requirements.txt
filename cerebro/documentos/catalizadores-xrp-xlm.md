@@ -63,3 +63,13 @@ actualizado: 2026-10-07
 - 2026-10-17 (aviso de series, R29): Brent ~105 $ (futuro frontal BZ=F, Yahoo, 13-oct) y ~126 $ (Brent al contado FOB Europa, EIA, 14-oct) son series distintas y no se pueden mezclar; la diferencia (~20 $) es de mercado, no de error, pero el pico de 135,5 $ (2-oct) sigue [VERIFICAR] con una segunda serie. Citar siempre cuál.
 
 - 2026-10-17 (R00 apertura-b): XRP -1,5 % (1,29 $) y XLM -2,5 % (0,177 $) en 24 h hasta mínimos de 48 h, BTC -0,4 %, sin catalizador propio; el Brent frontal subió +3,7 % el 16-oct (109,9 $, Yahoo). Causalidad no probada [ESPECULACIÓN].
+
+- 2026-10-17 (R32): fixCleanup3_4_0 (XRPL) tiene mayoría desde 9-oct 10:34 UTC con 26 de 32 votos (umbral 25): posible activación ~23-oct si no pierde apoyo [ESPECULACIÓN]. Escrow de Ripple: 31.400 M XRP en el ledger, 1.000 M liberables el 1 de cada mes desde 1-nov-2026 (ledger); Lending/Vault siguen en 17-19 de 25 votos. Activación de BatchV1_1 y fixBatchV1_2 el 9-oct tras parche de emergencia 3.4.1: sin movimiento de precio atribuible [VERIFICAR].
+
+- 2026-10-17 (R33): Stellar pasó a protocolo 29 (parche de seguridad, sin CAPs) el 1-oct 17:00 UTC y a P28 el 16-sep; stellar-core v30.0.0 (CAP-84/87/88) salió el 16-oct sin fecha de voto publicada [VERIFICAR]. SDF Q3 probablemente ~nov (Q1 7-may, Q2 3-ago) [ESPECULACIÓN]. Sin movimiento de precio atribuible medido.
+
+- 2026-10-17 (R34): estado OCC de Ripple National Trust Bank: condicional desde 12-dic-2025, sin aprobación final localizada [VERIFICAR]; RLUSD 2.433 M$ (puesto 9), 42 % en XRPL; colateral RLUSD en LMAX (Standard Chartered, nota 12-oct): planeado, sin fecha. Sin movimiento de precio atribuible medido.
+
+- 2026-10-17 (R35): DAC8 se aplica desde 1-ene-2026 (primer año de reporte 2026; primer intercambio hasta 30-sep-2027); EE. UU. 1099-DA con base desde 1-ene-2026; Japón (20 % separado) y Brasil (MP 1.303) sin fecha firme [ESPECULACIÓN]. Sin movimiento de precio atribuible.
+
+- 2026-10-17 (R37): confirmadas en sus webs oficiales Swell 2026 = 27-29-oct, Nueva York (swell.ripple.com) y Meridian = 28-29-oct, Lisboa (meridian.stellar.org); el plazo del 13F del 3T cae en fin de semana (14-nov es sábado: probable lunes 16-nov) [VERIFICAR]. Semana grande: 27-30-oct (Swell, Meridian, FOMC, BCE, BoJ).

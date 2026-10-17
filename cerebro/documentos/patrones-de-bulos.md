@@ -73,3 +73,11 @@ actualizado: 2026-10-07
 - 2026-10-17 (R30): "falta de comunicado oficial" no es "no hay debate": en Corea la FSC (inglés) no trata la ley del won stablecoin entre el 3-sep y el 15-oct, pero eso no prueba que no se discuta en la Asamblea; marcar [VERIFICAR] en vez de afirmar ausencia.
 
 - 2026-10-17 (R00 apertura-b): artículos recicla­dos como "noticia de hoy" (Nasdaq sobre Evernorth de 2025, páginas "XRP News Today" sin fecha) salen en búsquedas por fecha; si el contexto (guerra comercial EE. UU.-China) no encaja con la fecha, descartar.
+
+- 2026-10-17 (R32): cifras de escrow de la prensa ("re-bloquea 60-80 %", saldo 31.280 M/32.000 M) no coinciden con Ripple (32.600 M a 30-jun) ni con el ledger (31.400 M el 17-oct); contrastar siempre contra `account_objects`. Un parche de seguridad "crítico" no equivale a ataque: el informe oficial dice sin evidencia de explotación (parte interesada, [VERIFICAR] con auditoría independiente).
+
+- 2026-10-17 (R33): una misma métrica con tres tamaños (RWA en Stellar: 3.000 M$ SDF jun, 4.000 M$ SDF/Dune sep, 3.550 M$ RWA.xyz hoy) no es un bulo, pero sin definición de métrica y fecha no se puede comparar; y un titular de la propia SDF puede contradecirse en porcentajes (+72 % interanual vs trimestral): recalcular siempre con las cifras del texto.
+
+- 2026-10-17 (R34): las notas de Ripple de oct-2026 (CSD BR, Standard Chartered, Meritz) se leen como "XRP gana adopción" en titulares de prensa, pero el cuerpo habla de XRPL, MPT, RLUSD y Custody; XRP aparece solo en el menú. Verificar siempre si el texto nombra el token. Recompra a 50.000 M$ y compras de 2026 (BC Payments, Solvexia, Fortress): solo fuentes de prensa/anónimas [VERIFICAR].
+
+- 2026-10-17 (R35): guías fiscales de cripto (exchanges, asesorías, agregadores) mezclan reglas viejas y propuestas: Brasil (17,5 % de la MP 1.303 presentado como vigente cuando habría caducado), Japón (20 % propuesto contado como ley), India (numeración de la ley de 2025 sin confirmar). Regla: tipo y plazo solo con texto de la autoridad; si no se pudo abrir, [VERIFICAR] y nunca copiar el tipo a una decisión.
