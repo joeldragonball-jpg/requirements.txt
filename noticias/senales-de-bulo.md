@@ -1,0 +1,9 @@
+- Parte interesada (Ripple, Stellar/SDF, emisores, exchanges, influencers): sus cifras de impacto no valen sin segunda fuente.
+- Fecha: un artículo antiguo reciclado como «noticia de hoy» (cifras de otros meses o años) es el bulo más común. Si el contexto no cuadra con la fecha, descártalo.
+- Verbo: «propone», «considera», «consulta» o «aprobación preliminar» NO es «aprueba», «prohíbe» ni «entra en vigor». Titular fuerte sobre una consulta = señal de alarma.
+- Token: una nota que habla de la red o de la empresa (XRPL, RLUSD, custodia, licencias) no prueba uso de XRP ni de XLM.
+- Cifra de impacto (volumen, flujos, adopción, interés abierto): sin serie, ventana y fecha no es comparable; dos series del mismo activo suelen diferir mucho.
+- Escenario o previsión (EIA, bancos, analistas) no es un dato; «plan» o «objetivo» no es «hecho».
+- Varios medios que repiten a uno son una sola fuente. Cuatro vídeos de un canal también.
+- «Cero», «ninguno» o «sin debate» tras buscar poco no es prueba; el silencio de una web no es ausencia.
+- Contenido promocional, predicción de precio, «XRP news today» sin fecha y cuentas anónimas: ignorar.

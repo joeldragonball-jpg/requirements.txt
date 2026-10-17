@@ -87,6 +87,11 @@ geopolítica con impacto económico. Todos los temas pesan parecido: no priorice
 # Si no hay suficientes de otros temas, se completa con las de XRP/XLM. 0 = sin límite.
 max_xrp_xlm_por_tanda = 1
 
+# Filtro sin IA (18-oct-2026, guía G17 tipo D): descarta antes del triaje titulares de bajo valor. Listas vacías = no descarta nada.
+# Los enlaces de Google Noticias son redirecciones, así que los dominios solo sirven para las fuentes RSS directas.
+titulos_descartar = ["price prediction", "price forecast", "prediccion de precio", "prediccion del precio", "xrp news today"]
+dominios_descartar = ["mexc.com", "changelly.com"]
+
 # Fuentes de noticias (RSS). Puedes añadir o quitar bloques [[fuentes]].
 [[fuentes]]
 nombre = "Google Noticias · XRP (ES)"

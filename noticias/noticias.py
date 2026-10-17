@@ -270,6 +270,8 @@ def leer_fuentes(db):
             nid = id_noticia(url, titulo)
             if not titulo or nid in vistos:
                 continue
+            if titulo_descartable(titulo, url):
+                continue
             fecha = e.get("published_parsed") or e.get("updated_parsed")
             fecha = datetime.fromtimestamp(calendar.timegm(fecha), timezone.utc) if fecha else datetime.now(timezone.utc)
             if fecha < limite:
@@ -603,7 +605,16 @@ datos que tiene pendientes de verificar). Úsalo para entender qué busca:
 marcado como [VERIFICAR] o que afecten a su plan (fiscalidad, custodia, salida, colateral).
 - No le expliques lo que ya sabe: si un concepto está en sus apuntes, úsalo directamente.
 - En "actualiza_apuntes" escribe una frase solo si la noticia confirma, contradice o actualiza algo \
-concreto de sus apuntes (empieza por "Confirma:", "Contradice:" o "Actualiza:"); si no, déjalo vacío."""
+concreto de sus apuntes (empieza por "Confirma:", "Contradice:" o "Actualiza:"); si no, déjalo vacío.
+
+CHECKLIST ANTI-BULO (úsala antes de puntuar; resume las SEÑALES DE BULO de las lecciones):
+1. ¿Quién lo dice y gana algo? (emisor, empresa, exchange o influencer = parte interesada).
+2. ¿La fecha del dato es reciente o es un artículo antiguo reciclado?
+3. ¿Es hecho, propuesta o consulta? («propone», «considera» o «preliminar» no es «aprueba» ni «en vigor»).
+4. ¿Nombra XRP o XLM, o solo la red o la empresa? No presentes como adopción del token lo que solo habla de la red.
+5. Si trae una cifra de impacto (volúmenes, flujos, adopción) sin serie, ventana y fecha, puntúa bajo o escribe en \
+"por qué te importa" «cifra no verificada». Escribe «fuente primaria» solo si el propio titular o descripción lo dicen.
+6. Varios medios que repiten a uno son una sola fuente. No afirmes que algo «no existe» solo porque no aparezca."""
 
 
 def esquema_seleccion():
@@ -654,7 +665,16 @@ def lecciones_texto(max_chars=3200):
     Son archivos cortos que crecen por el final. Si no caben, se conservan SIEMPRE las 2 primeras líneas (la base: por
     ejemplo la lista de fuentes primarias fiables) y, con el resto del espacio, las líneas más recientes."""
     partes = []
-    presupuesto = max_chars // 2
+    # Señales cortas de bulo para filtrar titulares (noticias/senales-de-bulo.md): van siempre completas y primero;
+    # el resto del presupuesto se reparte entre los dos archivos del cerebro (el total de caracteres no cambia).
+    senales = ""
+    try:
+        senales = (AQUI / "senales-de-bulo.md").read_text(encoding="utf-8").strip()[:1500]
+    except Exception:
+        pass
+    if senales:
+        partes.append("[senales-de-bulo]\n" + senales)
+    presupuesto = max((max_chars - len(senales)) // 2, 300) if senales else max_chars // 2
     for nombre in ("fuentes-fiables-y-dudosas", "patrones-de-bulos"):
         p = CARPETA_CEREBRO / "documentos" / f"{nombre}.md"
         if not p.exists():
@@ -672,6 +692,16 @@ def lecciones_texto(max_chars=3200):
             usado += len(linea)
         partes.append(f"[{nombre}]\n" + "\n".join(base + recientes))
     return "\n".join(partes) if any(len(p) > 40 for p in partes) else ""
+
+
+def titulo_descartable(titulo, url):
+    """Filtro SIN IA de titulares de bajo valor (predicciones de precio, mirrors SEO...). Se configura en config.toml
+    con titulos_descartar y dominios_descartar; listas vacías = no descarta nada."""
+    t = sin_acentos(titulo)
+    if any(sin_acentos(p) in t for p in CONFIG.get("titulos_descartar", [])):
+        return True
+    host = urlsplit(url or "").netloc.lower()
+    return any(d.lower() in host for d in CONFIG.get("dominios_descartar", []))
 
 
 def dudas_relevantes(cuerpo, titulos):
