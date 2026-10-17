@@ -251,8 +251,15 @@ ajustes_movil()
 candado()
 
 # Dos secciones con el mismo enlace: la cartera y el cerebro (tus apuntes, en cerebro.py)
-seccion = st.radio("Sección", ["📊 Cartera", "🧠 Cerebro"], horizontal=True,
+seccion = st.radio("Sección", ["📊 Cartera", "🧠 Cerebro", "📌 Seguimiento"], horizontal=True,
                    label_visibility="collapsed", key="seccion")
+if seccion == "📌 Seguimiento":
+    import importlib
+    import seguimiento
+    importlib.reload(seguimiento)
+    seguimiento.mostrar()
+    listo()
+    st.stop()
 if seccion == "🧠 Cerebro":
     import importlib
     import cerebro
