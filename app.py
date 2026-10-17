@@ -250,9 +250,37 @@ if str(st.query_params.get("via", "")) == "shell":
 ajustes_movil()
 candado()
 
-# Dos secciones con el mismo enlace: la cartera y el cerebro (tus apuntes, en cerebro.py)
-seccion = st.radio("Sección", ["📊 Cartera", "🧠 Cerebro", "📌 Seguimiento"], horizontal=True,
-                   label_visibility="collapsed", key="seccion")
+# Secciones: la app desplegada solo enseña la cartera (con sus noticias). Cerebro, Seguimiento y Privado salen en tu
+# ordenador (donde existe la carpeta privado/, que no se sube) o si pones MOSTRAR_CEREBRO = true en los Secrets.
+import privado_vista
+_LOCAL = privado_vista.disponible()
+try:
+    _CEREBRO_PUBLICO = bool(st.secrets.get("MOSTRAR_CEREBRO"))
+except Exception:
+    _CEREBRO_PUBLICO = False
+try:
+    _HAY_HOJA = bool(st.secrets.get("SHEET_ID"))
+except Exception:
+    _HAY_HOJA = False
+_SECCIONES = ["📊 Cartera"]
+if _LOCAL or _CEREBRO_PUBLICO:
+    _SECCIONES += ["🧠 Cerebro", "📌 Seguimiento"]
+if _LOCAL:
+    _SECCIONES += ["🔒 Privado"]
+if st.session_state.get("seccion") not in _SECCIONES:
+    st.session_state.pop("seccion", None)
+if len(_SECCIONES) > 1:
+    # En tu PC sin la hoja de la cartera (no tienes el secreto SHEET_ID), empieza en el Cerebro
+    seccion = st.radio("Sección", _SECCIONES, horizontal=True, label_visibility="collapsed", key="seccion",
+                       index=0 if (_HAY_HOJA or not _LOCAL) else 1)
+else:
+    seccion = _SECCIONES[0]
+if seccion == "🔒 Privado":
+    import importlib
+    importlib.reload(privado_vista)
+    privado_vista.mostrar()
+    listo()
+    st.stop()
 if seccion == "📌 Seguimiento":
     import importlib
     import seguimiento
