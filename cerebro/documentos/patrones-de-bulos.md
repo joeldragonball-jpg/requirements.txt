@@ -87,3 +87,13 @@ actualizado: 2026-10-07
 - 2026-10-17 (R38): un total de tabla puede no ser la suma de sus filas (R21: 7.190.191 acciones de Goldman frente a 7.390.191 de las cinco filas; +6,3 % y no +3,4 %) aunque los dólares sí cuadren. Recalcular con script totales y variaciones antes de citarlos; que cuadre una columna no prueba la otra.
 
 - 2026-10-17 (R38): rótulos de intervalo ("24 h", "36 h", "48 h") que no corresponden a las horas de la tabla: calcular el intervalo real entre la primera y la última columna antes de rotular. "XRP cayó ~2 % en 36 h" eran 24,1 h; otro informe llamaba "24 h" a una base de 48 h antes (-3,4 % en vez de -1,5 %).
+
+- 2026-10-17 (R41): "reverse repo de 332 mil M$" mezcla dos cosas: casi todo es el pool de cuentas extranjeras (331.904 M$); el RRP de contrapartes de mercado es ~0,3 mil M$ (H.4.1). Y "liquidez neta de la Fed" (activos - TGA - RRP) es una heurística de agregadores que cambia 330 mil M$ según cómo se trate ese repo extranjero: no citarla como cifra oficial.
+
+- 2026-10-17 (R42, R43): "récord de interés abierto", "ratio largo/corto", "liquidez" y "volumen" engañan: el OI en dólares sube con el precio (usar contratos o monedas), la razón larga/corta de Binance cuenta cuentas y no dinero, y los totales de agregadores suman bolsas con unidades distintas. Valor emitido no es liquidez: RLUSD emitido en XRPL 1.029 M$ frente a un pool AMM de 4,8 M$ y ~6 M$/día de DEX (DefiLlama); en Stellar el 79 % de las operaciones van a pools y el ledger va al 98 % de capacidad (parte es bots).
+
+- 2026-10-17 (R40): titulares de CBDC mezclan "monederos" con usuarios activos (Jiangsu: 81 M monederos frente a 12 M activos al mes) y "obligación legal de ofrecer" con uso (rublo digital, 1-sep-2026). Un tercero puede seguir clasificando como piloto lo que el banco central ya apagó (Drex).
+
+- 2026-10-17 (R44, R45): "el OCC aprueba un banco cripto" casi siempre es aprobación PRELIMINAR condicional (cartas 1366, 1367, 1370); "BNY/State Street lanzan custodia cripto" no implica XRP/XLM (las notas listan BTC, ETH, SOL y USDC o ningún activo). "XRP/XLM serán cuánticamente seguros en 2028/2027" es un PLAN de la propia empresa o fundación, y "NIST obliga a migrar en 2030" es un borrador sin versión final (deprecated tras 2030, disallowed tras 2035); ninguna fuente leída afirma riesgo de robo hoy.
+
+- 2026-10-17 (R46): "el Brent prevé 105 $" es un ESCENARIO de la EIA (supuestos de Ormuz y bypasses), no un dato; mezclar medias mensuales por semanas de inicio da 118 $ para septiembre frente a los 114 $ oficiales de la STEO. Las actas del FOMC dan PCE subyacente 3,4 % (estimación) y el BLS IPC subyacente 2,6 %: no conciliado, no citar uno como "la inflación subyacente" sin decir cuál.

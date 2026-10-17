@@ -84,3 +84,11 @@ actualizado: 2026-10-07
 - "XRP cayó ~2 % en 36 h (1,34→1,31 $)" (línea de la apertura del 17-oct): el intervalo real de la tabla es de **24 h** (15-oct 23:00 → 16-oct 23:07 UTC); el porcentaje cuadra.
 - Para XRPN, "~473 M XRP ≈ 0,75 % de la circulación" pasa a ≈0,62 % con los 388,9 M XRP aportados en especie (8-K); y el "−1,05 %" del debut no es de apertura a cierre (16,68 → 16,91 $ es +1,4 %): falta la base del cierre previo [VERIFICAR].
 - Goldman, 13F 2T: el total de acciones es 7.390.191 (suma de sus cinco filas; antes 7.190.191), con variación +6,3 % frente a 4T.
+
+- 2026-10-17 (R40): 23-oct vence la letra tokenizada MAS TD26101Z (S$10 M, CBDC mayorista en SGD Testnet); 27-oct cierra la convocatoria de comercios del piloto del euro digital; el Banco de Inglaterra y el Tesoro anuncian decisión sobre la libra digital "later this year" (sin fecha).
+
+- 2026-10-17 (R44): 7-dic cierra la consulta de custodia de la SEC; BNY–Galaxy (staking) está "subject to regulatory review" y JPMD en Canton llega "en fases durante 2026", sin fechas; las aprobaciones finales del OCC (Ripple, Coinbase, Crypto.com, Protego) no tienen fecha.
+
+- 2026-10-17 (R46): Brent ≈ 126 $/b (el doble que hace un año) y la Fed cita la geopolítica; próximas fechas de energía: serie EIA 21-oct, STEO 10-nov (revisa los 105 $ de 4T26). Efecto sobre XRP/XLM solo por tipos y riesgo (R41): [ESPECULACIÓN].
+
+- 2026-10-17 (R45): hitos cuánticos (todos PLAN): 2S-2026 firmas post-cuánticas en Devnet de XRPL; 2026 ML-DSA en Soroban; 2027 CAP de Stellar; 2028 objetivo de enmienda de XRPL; NIST 2030/2035 solo en borrador. Swell (27-29-oct) y Meridian (28-29-oct) pueden traer anuncios técnicos [VERIFICAR].

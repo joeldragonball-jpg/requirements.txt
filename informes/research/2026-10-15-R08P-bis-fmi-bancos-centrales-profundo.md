@@ -1,5 +1,7 @@
 # BIS, FMI y bancos centrales (Agorá, mBridge, CBDC, tokenización) — informe único rápido+profundo (2026-10-15, R08P)
 
+> **Nota 2026-10-18 (R40):** el Observatorio Legislativo del Parlamento Europeo (2023/0212(COD)) muestra votación en comisión el 23-jun-2026 y confirmación del mandato de negociación por el pleno el 9-jul-2026; etapa vigente "Awaiting Parliament's position in 1st reading". No hay acuerdo final. Donde este informe dice "el trílogo sigue abierto" o lo deja como pendiente de comprobar, vale esta precisión. Ver informes/research/2026-10-17-R40-cbdc-por-pais-profundo.md.
+
 Etiquetas: **LEÍDO** = página oficial abierta con WebFetch (resumen del extractor, no PDF entero) · **extracto** = ficha/buscador de la fuente oficial · **secundaria** = prensa/despacho que cita la fuente. No es recomendación de compra/venta.
 
 **Acceso:** `bis.org` devolvió **ECONNRESET** en 5 intentos (comunicados p260527, p260623, ficha de Agorá y de mBridge): los datos del BIS vienen del texto que cita el buscador y de la nota del BCE. `ecb.europa.eu` (piloto euro digital, nota Agorá, página Pontes) e `imf.org` (blog y página del GFSR) SÍ abrieron. `federalreserve.gov` abrió solo el índice de 2026. Los PDFs de 97 páginas (informe Agorá), AER 2026 y GFSR cap. 3 **no se leyeron**; faltan en `research/fuentes/`.
