@@ -1,5 +1,6 @@
 # Tokenización de activos (RWA) global (2026-10-17, R26 profundo)
 
+> **Aviso (R38, 17-oct):** BUIDL "−1,41 %" (RWA.xyz, 30 d) y "2,68 → 2,17 mil M$" (−19 %, DefiLlama, un mes) miden cosas distintas o usan ventanas distintas: no usar "se mueve poco" para BUIDL hasta aclararlo [VERIFICAR].
 Plantilla: dossier-region (modo profundo). Etiquetas: **LEÍDO ENTERO** = documento primario descargado y leído en las partes relevantes; **API/página** = dato en vivo de un tercero (RWA.xyz, DefiLlama); **secundaria** = prensa/blog sin primario [VERIFICAR]. Sin recomendaciones de compra/venta.
 
 ## Resumen

@@ -1,5 +1,6 @@
 # R22 · Auditoría de coherencia y afirmaciones de todo el research (2026-10-15)
 
+> **Precisión (R38, 17-oct):** "500.000 M CNY ≈ 69-70 mil M$" depende del tipo de cambio: con 6,69-6,70 CNY/$ (H.10, 13-oct) son ~74,7 mil M$, no 69-70; sigue [VERIFICAR] sin el tipo de la fecha de origen.
 Modelo: Opus 5.5, esfuerzo medio · Plantilla: `auditoria-coherencia` · No es research nuevo: revisa lo ya escrito.
 Entradas leídas enteras: los 15 informes de `informes/research/` (R02, R10, calendario-regiones, R01P–R09P, R11P, R12P, R21), los tres archivos de lecciones del cerebro, las cuatro secciones "## Correcciones 2026-10-15" y `research/COLA.md`.
 Reglas: HECHOS separados de OPINIONES; sin recomendaciones de compra/venta; **no se ha tocado nada del cerebro** (todo lo que sigue son propuestas para que Joel las apruebe).

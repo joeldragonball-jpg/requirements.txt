@@ -83,3 +83,7 @@ actualizado: 2026-10-07
 - 2026-10-17 (R35): guías fiscales de cripto (exchanges, asesorías, agregadores) mezclan reglas viejas y propuestas: Brasil (17,5 % de la MP 1.303 presentado como vigente cuando habría caducado), Japón (20 % propuesto contado como ley), India (numeración de la ley de 2025 sin confirmar). Regla: tipo y plazo solo con texto de la autoridad; si no se pudo abrir, [VERIFICAR] y nunca copiar el tipo a una decisión.
 
 - 2026-10-17 (R31): al convertir tiempos del ledger XRPL (segundos desde 1-ene-2000) hay que verificar con un script y no a mano: un informe propio (R32) desfasó una hora la mayoría de un amendment y el error pasó al calendario. Un error propio repetido en varios informes parece confirmado sin serlo: contrastar siempre con el dato bruto.
+
+- 2026-10-17 (R38): un total de tabla puede no ser la suma de sus filas (R21: 7.190.191 acciones de Goldman frente a 7.390.191 de las cinco filas; +6,3 % y no +3,4 %) aunque los dólares sí cuadren. Recalcular con script totales y variaciones antes de citarlos; que cuadre una columna no prueba la otra.
+
+- 2026-10-17 (R38): rótulos de intervalo ("24 h", "36 h", "48 h") que no corresponden a las horas de la tabla: calcular el intervalo real entre la primera y la última columna antes de rotular. "XRP cayó ~2 % en 36 h" eran 24,1 h; otro informe llamaba "24 h" a una base de 48 h antes (-3,4 % en vez de -1,5 %).

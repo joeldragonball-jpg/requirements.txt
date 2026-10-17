@@ -1,5 +1,6 @@
 # Rusia y sanciones: cripto en el comercio exterior (2026-10-15, R06P profundo)
 
+> **Precisión (R38, 17-oct):** las dos conversiones de rublos de este informe usan tipos distintos (≈82 ₽/$ para ene-2026 y ≈91 ₽/$ para la media de 2025); no están anotados. Citar siempre el tipo y la fecha.
 Modo: no existía informe rápido R06; este archivo hace de rápido + profundo. Marca de lectura: LEÍDO ENTERO (página/artículo completo vía WebFetch) / extracto de buscador / secundaria. Sin recomendaciones de compra/venta. Es análisis regulatorio, no un manual de nada: lo que importa para Joel es qué cambia para XRP/XLM y para el riesgo de sanciones sobre plataformas.
 
 **Acceso:** `home.treasury.gov` SÍ abrió (2 comunicados primarios leídos). NO abrieron: `consilium.europa.eu` (403), `sozd.duma.gov.ru` (ECONNRESET), `cbr.ru` (404 en la URL probada), `tks.ru` y `ppt.ru` (ECONNRESET en 3 intentos). El texto de la ley rusa y los reglamentos de la UE no se leyeron: todo lo ruso y europeo viene de prensa y de analistas (Elliptic, Cooley, Interfax, Pravo.ru). Nada se obtuvo saltando captchas.

@@ -1,5 +1,6 @@
 # XRP Ledger a fondo (2026-10-17, R32 profundo)
 
+> **Precisión (R38, 17-oct):** la salida neta de escrow de 1.200 M son ~300 M **por liberación** (4 liberaciones de jul a oct); como media de calendario son ~334 M/mes (109 días = 3,6 meses).
 > **Corrección (R31, 17-oct):** donde este informe dice 10:34 UTC para la mayoría de `fixCleanup3_4_0`, es **09:34:30 UTC** del 9-oct (ledger 844853670); la posible activación es hacia el 23-oct ~09:34 UTC.
 Etiquetas: **LEDGER** = leído por mí hoy en el ledger (nodo público xrplcluster.com, rippled 3.4.1, ledger 107.720.958-107.720.963, 17-oct-2026 ~17:28 hora de España) · **PRIM-LEÍDA** = página oficial (xrpl.org, GitHub XRPLF, ripple.com) leída entera o la parte citada · **TERCERO** = xrpscan, VHS (data.xrpl.org), prensa. Sin recomendaciones de compra/venta.
 

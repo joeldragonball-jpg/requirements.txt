@@ -1,5 +1,6 @@
 # R13 — Casos bajistas por tesis (15-oct-2026)
 
+> **Aviso (R38, 17-oct):** con 2.178 M$ de ETF de XRP (21Shares/Bloomberg, 30-sep) la cuota de la capitalización es ~2,6 %, no ~1,7 % (base 1.440 M$ de SoSoValue a fin de agosto); las dos series no son comparables [VERIFICAR]. Con 388,9 M XRP (8-K) en vez de 473 M, la proporción de la circulación es ~0,62 %, no 0,75 %. El "−1,05 %" de XRPN no es de apertura a cierre (16,68 → 16,91 $ es +1,4 %); falta la base del cierre previo.
 > **Corrección (R31/R21b/R23, 17-oct):** Goldman NO salió por completo en 1T: conservó 110.000 acciones de XRPR en las tres fechas (R21b). Los "~473 M XRP" de Evernorth son del Form 425 a 31-dic-2025; el 8-K confirma 388.910.554 XRP aportados en especie y no da total tras el cierre (R23).
 Plantilla: `generica` (caso-bajista). Sin recomendaciones de compra/venta: esto solo ordena los argumentos CONTRARIOS a cada tesis que ya aparece en los dossiers y en el research R01P–R21. Hechos separados de opiniones. Tesis privada de Joel: no tocada.
 

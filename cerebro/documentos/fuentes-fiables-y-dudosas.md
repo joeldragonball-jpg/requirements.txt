@@ -77,3 +77,5 @@ actualizado: 2026-10-07
 - 2026-10-17 (R37): swell.ripple.com y meridian.stellar.org abren con WebFetch con las fechas del evento (partes interesadas); ripple.com/events/swell/ redirige (308) a swell.ripple.com. Para el calendario de reuniones y plazos regulatorios usar siempre la web del organismo (Fed, BCE, BoJ, BLS, Federal Register), no calendarios de terceros.
 
 - 2026-10-17 (R31): la FAQ de Form 13F de sec.gov (curl + UA) trae la tabla oficial de plazos por trimestre; federalregister.gov/api/v1/documents.json con conditions[agencies][]=federal-reserve-system y conditions[term] da fecha de publicación y cierre de comentarios de la Fed. 13f.info/data/cusip/<CUSIP>/<año>/<trimestre> sigue cuadrando con EDGAR.
+
+- 2026-10-17 (R38): dos series del mismo activo no son comparables sin ventana y fuente: ETF de XRP (KuCoin/SoSoValue 1.440 M$ a fin de agosto frente a 21Shares/Bloomberg 2.178 M$ a 30-sep) y BUIDL (RWA.xyz -1,4 % a 30 d frente a DefiLlama -19 % en un mes). Citar siempre serie, ventana y fecha.

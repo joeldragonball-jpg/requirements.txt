@@ -79,3 +79,8 @@ actualizado: 2026-10-07
 ## Correcciones 2026-10-17 (auditoría R31)
 - La mayoría de `fixCleanup3_4_0` (XRPL) empezó el 9-oct-2026 a las 09:34:30 UTC (nodo xrplcluster.com, majority 844853670, convertido con script); la línea R32 de este archivo que dice 10:34 UTC está desfasada una hora. Posible activación hacia el 23-oct a las ~09:34 UTC si mantiene al menos 25 de 32 votos [ESPECULACIÓN].
 - Las dos propuestas GENIUS de la Fed se publicaron en el Federal Register el 29-sep-2026 (docs 2026-19860 y 2026-19899) con comentarios hasta el 30-nov-2026; el 13F del 3T vence el lunes 16-nov-2026 (14-nov es sábado), según la tabla oficial de la SEC.
+
+## Correcciones 2026-10-17 (auditoría numérica R38)
+- "XRP cayó ~2 % en 36 h (1,34→1,31 $)" (línea de la apertura del 17-oct): el intervalo real de la tabla es de **24 h** (15-oct 23:00 → 16-oct 23:07 UTC); el porcentaje cuadra.
+- Para XRPN, "~473 M XRP ≈ 0,75 % de la circulación" pasa a ≈0,62 % con los 388,9 M XRP aportados en especie (8-K); y el "−1,05 %" del debut no es de apertura a cierre (16,68 → 16,91 $ es +1,4 %): falta la base del cierre previo [VERIFICAR].
+- Goldman, 13F 2T: el total de acciones es 7.390.191 (suma de sus cinco filas; antes 7.190.191), con variación +6,3 % frente a 4T.

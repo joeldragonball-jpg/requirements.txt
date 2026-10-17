@@ -1,5 +1,6 @@
 # Informe R00 (sesión "apertura", lanzada a las 18:24 hora local del sáb 17-oct) — actualización del informe de la mañana
 
+> **Corrección de rótulo (R38, 17-oct):** la columna base (15-oct ~16:00 UTC) está 48 h antes, no 24 h: con esa base XRP −3,4 % y XLM −4,1 %. Con la base del 16-oct ~16:25 UTC saldrían −1,5 % y −2,5 % (24 h).
 Complementa `2026-10-17-apertura.md` (no lo sustituye). `get_usage` no disponible: coste no medido. Cubre desde el 16-oct 23:00 UTC hasta el 17-oct ~16:25 UTC. Sábado: macro cerrada, solo cripto.
 
 ## 1. Mercado (CoinGecko API; Brent: Yahoo BZ=F cierre diario; ambas secundarias)
