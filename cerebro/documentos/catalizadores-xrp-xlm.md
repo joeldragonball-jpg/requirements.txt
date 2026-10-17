@@ -61,3 +61,5 @@ actualizado: 2026-10-07
 
 - 2026-10-17 (R30): Corea: comentarios FSC sobre tokenización hasta 11-nov-2026 y entrada en vigor 4-feb-2027; mercado minorista de activos virtuales 1S-2026: cap. −33 %, volumen −44 % (KoFIU). Rusia: reunión del tipo clave 23-oct (14,00 %). India: RBI limita derivados de la rupia (10-oct) por estrés petrolero; sin dato de e₹.
 - 2026-10-17 (aviso de series, R29): Brent ~105 $ (futuro frontal BZ=F, Yahoo, 13-oct) y ~126 $ (Brent al contado FOB Europa, EIA, 14-oct) son series distintas y no se pueden mezclar; la diferencia (~20 $) es de mercado, no de error, pero el pico de 135,5 $ (2-oct) sigue [VERIFICAR] con una segunda serie. Citar siempre cuál.
+
+- 2026-10-17 (R00 apertura-b): XRP -1,5 % (1,29 $) y XLM -2,5 % (0,177 $) en 24 h hasta mínimos de 48 h, BTC -0,4 %, sin catalizador propio; el Brent frontal subió +3,7 % el 16-oct (109,9 $, Yahoo). Causalidad no probada [ESPECULACIÓN].

@@ -71,3 +71,5 @@ actualizado: 2026-10-07
 - 2026-10-17 (R29): blogs de corredores y prediction markets presentan probabilidades de tipos (p. ej. "60 % de subida del BCE el 29-oct") como si fueran hechos; los hechos son los comunicados. Un salto diario de +20 $ en el Brent (2-oct, 135,5 $) en una serie oficial pide segunda serie antes de citarlo.
 
 - 2026-10-17 (R30): "falta de comunicado oficial" no es "no hay debate": en Corea la FSC (inglés) no trata la ley del won stablecoin entre el 3-sep y el 15-oct, pero eso no prueba que no se discuta en la Asamblea; marcar [VERIFICAR] en vez de afirmar ausencia.
+
+- 2026-10-17 (R00 apertura-b): artículos recicla­dos como "noticia de hoy" (Nasdaq sobre Evernorth de 2025, páginas "XRP News Today" sin fecha) salen en búsquedas por fecha; si el contexto (guerra comercial EE. UU.-China) no encaja con la fecha, descartar.
