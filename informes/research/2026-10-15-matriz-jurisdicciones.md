@@ -21,3 +21,13 @@ Resumen compacto de los informes R01P a R09P, R10, R11P, R12P, R21 y R22. **No e
 - **Dependen de prensa o despachos:** Brasil, Rusia, Japón, India, Corea, UE y BRICS. Las webs oficiales no abren (captcha, 403 o caídas).
 - **Ripple y Stellar:** la mayor parte procede de la propia empresa. Las licencias y los reconocimientos de RLUSD **no demuestran uso de XRP**.
 - **Nada de lo anterior es una recomendación.** Las opiniones y especulaciones están solo en los informes y llevan su etiqueta.
+
+## Actualización R30 (2026-10-17): cambios de estado
+Detalle en `2026-10-17-R30-segunda-pasada-jurisdicciones-profundo.md`. Solo cambios; el resto de celdas no se tocó.
+- **Corea:** de [S] a **[P]** (FSC, 1-oct-2026): tokenización de valores desde el **4-feb-2027**, comentarios hasta el **11-nov-2026**; mercado de activos virtuales en 1S-2026: capitalización −33 %, volumen diario −44 % (KoFIU/FSS). Ley básica y ley del won stablecoin: siguen [S].
+- **India:** [P] (RBI, 10-oct-2026): restricciones a derivados sobre la rupia (FERR 20 %, umbral 5 M$) y ventana de dólares para IOC/HPCL/BPCL desde el 12-oct. Sin comunicado del RBI sobre e₹ o cripto del 8 al 16-oct.
+- **Rusia:** [P] extracto (cbr.ru): tipo clave 14,00 % desde 27-jul-2026, inflación 6,4 % (sept), reunión **23-oct**.
+- **BCE / euro digital:** [P] (ecb.europa.eu): rulebook v0.91 (jul-2026), piloto 2027, emisión posible 2029 si la ley se adopta en 2026.
+- **Hong Kong:** [P] extracto (HKMA): Stablecoins Ordinance vigente 1-ago-2025 y licencias el 10-abr-2026.
+- **Emiratos (Dubái):** [P] extracto (VARA): circular de 6-oct-2026 sobre auditoría de activos de reserva. CBUAE sigue sin abrir.
+- **Sin cambios (siguen [S]):** Brasil, Japón (texto FIEA), BRICS (Declaración), ley rusa, Singapur (la consulta cerró el 16-oct; resultado aún no publicado).

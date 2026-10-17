@@ -14,6 +14,9 @@ Origen: auditoría R22 (§6). Descárgalos tú y déjalos en esta carpeta (`rese
 | 8 | Ley rusa 282-ФЗ | publication.pravo.gov.ru | `rusia-ley-282-fz-2026.pdf` | Régimen legal de la cripto en Rusia |
 | 9 | Reglamentos UE de los paquetes de sanciones 20.º y 21.º | eur-lex.europa.eu | `ue-paquete-20.pdf`, `ue-paquete-21.pdf` | Medidas cripto exactas |
 | 10 | Reforma FIEA de Japón y lista de criptoactivos | fsa.go.jp | `japon-fiea-reforma-2026.pdf` | Fecha de efecto y si XRP está en la lista |
+| 11 | Swift: Annual Review 2025 y comunicado del libro mayor compartido (9-jul-2026) | swift.com (403 desde aquí) | `swift-annual-review-2025.pdf`, `swift-ledger-2026-07-09.pdf` | Mensajes por día, cuota ISO 20022 tras el 22-nov-2025 y alcance real del piloto (R28) |
+| 12 | Comunicado de política monetaria del BCE del 10-sep-2026 (y proyecciones) | ecb.europa.eu > Prensa > Conferencias de prensa | `bce-decision-2026-09-10.pdf` | Confirma el tipo de depósito 2,50 % y la inflación citada (R29, hoy solo tabla vía WebFetch) |
+| 13 | Anexo PDF de la encuesta KoFIU/FSS de activos virtuales 1S-2026 | fsc.go.kr/eng/pr010101/87833 (adjunto) | `kofiu-vasp-1s-2026.pdf` | Desglose por activo, si lo hay (R30) |
 
 **Sin descarga (la SEC abre con `curl` y User-Agent identificado):** Regulation Crypto Assets (S7-2026-27), interpretación SEC–CFTC del 17-mar, propuesta de custodia del 1-oct, 13F del 3T (≈14-nov). Se leen en una tarea corta.
 

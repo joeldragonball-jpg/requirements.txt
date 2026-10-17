@@ -54,3 +54,10 @@ actualizado: 2026-10-07
 - 2026-10-17 (R26): SEC–DTC no-action 11-dic-2025 (piloto de tokenización: Russell 1000, Tesoro, ETF de índices; se retira a los 3 años del lanzamiento; lanzamiento previsto 2S-2026 [VERIFICAR]); orden SEC 17-sep-2026 de exención para venues de acciones tokenizadas con AMM: caduca a los 5 años. RWA.xyz 16-oct: Stellar 4.º (3,5 mil M$) y XRPL 10.º (0,497 mil M$) por valor RWA; efecto en precio de XLM/XRP no medido.
 
 - 2026-10-17 (R27): HK (SFC, fin jun-2026): 11 ETF cripto al contado, 451 M$; 13 VATP con licencia; proyecto de ley de 4 regimenes de activos virtuales en 2026. Europa (21Shares, 30-sep): ETP XRP ~914 M$ y Stellar ~104 M$; próximo informe de octubre ~primeros días de nov-2026. Efecto en precio no medido.
+
+- 2026-10-17 (R28): Nexus (NGP) go-live objetivo 2027 (nota NGP 9-feb-2026; operador PayNet+NETS; Indonesia 6.º país); Swift ledger piloto desde 9-jul-2026; Agorá informe 27-may-2026, valor real "esperado" sin fecha; G20 Bangkok 15-oct-2026 (nota FSB sobre stablecoins 12-oct); Swell 2026 en NY en oct [VERIFICAR día; R09P decía 27-29-oct].
+
+- 2026-10-17 (R29): macro con fecha oficial: FOMC 27-28-oct (sube 25 pb el 16-sep a 3,75-4,00 %), BCE 29-oct (depósito 2,50 %), BoJ 29-30-oct (1,25 % desde el 24-sep, 7-2), empleo EE. UU. 6-nov, IPC 10-nov (sept: 3,7 % a/a, subyacente 2,6 %), FOMC+SEP 8-9-dic. Brent spot ~126 $ (EIA 14-oct) vs. previsión STEO 105 $ 4T. Efecto en XRP/XLM no medido [ESPECULACIÓN].
+
+- 2026-10-17 (R30): Corea: comentarios FSC sobre tokenización hasta 11-nov-2026 y entrada en vigor 4-feb-2027; mercado minorista de activos virtuales 1S-2026: cap. −33 %, volumen −44 % (KoFIU). Rusia: reunión del tipo clave 23-oct (14,00 %). India: RBI limita derivados de la rupia (10-oct) por estrés petrolero; sin dato de e₹.
+- 2026-10-17 (aviso de series, R29): Brent ~105 $ (futuro frontal BZ=F, Yahoo, 13-oct) y ~126 $ (Brent al contado FOB Europa, EIA, 14-oct) son series distintas y no se pueden mezclar; la diferencia (~20 $) es de mercado, no de error, pero el pico de 135,5 $ (2-oct) sigue [VERIFICAR] con una segunda serie. Citar siempre cuál.

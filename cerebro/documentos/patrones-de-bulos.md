@@ -64,3 +64,10 @@ actualizado: 2026-10-07
 - 2026-10-17 (R26): "mercado RWA de X mil M$" mezcla "distribuido" (39,3 mil M$, RWA.xyz 16-oct), "representado" (371 mil M$) y stablecoins (292 mil M$): pedir siempre la definición. Guías que dan T-bills tokenizados de "7 mil M$" o "2,3 mil M$" no cuadran con la tabla del día (diez primeros ~13 mil M$) [secundaria].
 
 - 2026-10-17 (R27): "ETF de XRP en Europa/Canadá/HK" se cita sin fecha ni base; el dato comparable (21Shares/Bloomberg 30-sep-2026) es XRP Europa ~914 M$ (~6 % del AUM de ETP cripto) frente a ~2.178 M$ en ETF de EE. UU.; estructuras distintas (ETP vs ETF), cifras de emisor = parte interesada. Canadá 2026: solo un dato suelto de Evolve (C$31 M, jun) [VERIFICAR].
+
+- 2026-10-17 (R28): titulares de "Ripple Payments 80-100 mil M$" mezclan acumulado de toda la historia (95 mil M$ nov-2025 → 100 mil M$ mar-2026) con ritmo anual, y ninguno separa XRP; las cifras de ODL (1.200 M$, 14-35 mil M$, 80 mil M$) salen de agregadores/Binance Square sin fuente reproducible. Pedir siempre: ¿acumulado o anual?, ¿qué parte en XRP?
+- 2026-10-17 (R28): "libro mayor de Swift en vivo" = piloto de 17 bancos con depósitos tokenizados desde el 9-jul-2026, no producción ni cripto abierta; no confundir con adopción de XRP/XLM.
+
+- 2026-10-17 (R29): blogs de corredores y prediction markets presentan probabilidades de tipos (p. ej. "60 % de subida del BCE el 29-oct") como si fueran hechos; los hechos son los comunicados. Un salto diario de +20 $ en el Brent (2-oct, 135,5 $) en una serie oficial pide segunda serie antes de citarlo.
+
+- 2026-10-17 (R30): "falta de comunicado oficial" no es "no hay debate": en Corea la FSC (inglés) no trata la ley del won stablecoin entre el 3-sep y el 15-oct, pero eso no prueba que no se discuta en la Asamblea; marcar [VERIFICAR] en vez de afirmar ausencia.
