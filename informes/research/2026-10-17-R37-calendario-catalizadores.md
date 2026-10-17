@@ -1,5 +1,6 @@
 # Calendario único de catalizadores a 90 días (17-oct-2026 → 15-ene-2027) · R37
 
+> **Corrección (R31, 17-oct):** donde este informe dice 10:34 UTC para la mayoría de `fixCleanup3_4_0`, es **09:34:30 UTC** del 9-oct (ledger 844853670); la posible activación es hacia el 23-oct ~09:34 UTC. Además: la activación puede resistir la pérdida de 1 voto (26 de 32, umbral 25), no "ni un voto"; el 13F del 3T vence el **lunes 16-nov-2026** (R31, tabla oficial de la SEC), no el 14-nov.
 Fusiona `2026-10-14-R10-calendario.md`, `2026-10-15-calendario-regiones.md` y las secciones de fechas de R23-R35. Solo fechas futuras. Sin recomendaciones de compra/venta. Hoy es sábado 17-oct-2026.
 Estado: **LEÍDO** = fuente primaria leída en este proyecto (informe de origen entre paréntesis) · **extracto** = leída en parte · **secundaria** = prensa/calendario de terceros · **[VERIFICAR]** = sin confirmar · **[ESPECULACIÓN]** = depende de una decisión futura. Los eventos "sin fecha" van al final.
 

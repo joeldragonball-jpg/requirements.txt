@@ -73,3 +73,9 @@ actualizado: 2026-10-07
 - 2026-10-17 (R35): DAC8 se aplica desde 1-ene-2026 (primer año de reporte 2026; primer intercambio hasta 30-sep-2027); EE. UU. 1099-DA con base desde 1-ene-2026; Japón (20 % separado) y Brasil (MP 1.303) sin fecha firme [ESPECULACIÓN]. Sin movimiento de precio atribuible.
 
 - 2026-10-17 (R37): confirmadas en sus webs oficiales Swell 2026 = 27-29-oct, Nueva York (swell.ripple.com) y Meridian = 28-29-oct, Lisboa (meridian.stellar.org); el plazo del 13F del 3T cae en fin de semana (14-nov es sábado: probable lunes 16-nov) [VERIFICAR]. Semana grande: 27-30-oct (Swell, Meridian, FOMC, BCE, BoJ).
+
+- 2026-10-17 (R31, auditoría): la Fed publicó sus dos propuestas GENIUS en el Federal Register el 29-sep (docs 2026-19860 y 2026-19899) con comentarios hasta el 30-nov-2026; el 13F del 3T vence el lunes 16-nov-2026 (tabla oficial de la SEC, FAQ Form 13F). Stablecoins en Stellar según DefiLlama: 425 → 545 M$ entre el 12 y el 17-oct, causa sin identificar [VERIFICAR].
+
+## Correcciones 2026-10-17 (auditoría R31)
+- La mayoría de `fixCleanup3_4_0` (XRPL) empezó el 9-oct-2026 a las 09:34:30 UTC (nodo xrplcluster.com, majority 844853670, convertido con script); la línea R32 de este archivo que dice 10:34 UTC está desfasada una hora. Posible activación hacia el 23-oct a las ~09:34 UTC si mantiene al menos 25 de 32 votos [ESPECULACIÓN].
+- Las dos propuestas GENIUS de la Fed se publicaron en el Federal Register el 29-sep-2026 (docs 2026-19860 y 2026-19899) con comentarios hasta el 30-nov-2026; el 13F del 3T vence el lunes 16-nov-2026 (14-nov es sábado), según la tabla oficial de la SEC.

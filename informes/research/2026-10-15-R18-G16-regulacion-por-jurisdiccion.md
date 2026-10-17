@@ -1,5 +1,6 @@
 # G16 · Cómo se regula lo cripto en el mundo: capas, licencias y jurisdicciones (2026-10-15, R18)
 
+> **Precisión (R31, 17-oct):** el CSV de ESMA descargado el 15-oct tiene 370 filas y 365 entidades distintas; donde este informe dice "370 entidades", léase 365 entidades en 370 filas.
 > Guía educativa de la serie G (continúa G1-G15 de `informes/dossiers/MAPA.md`), con foco **global**. Complementa la [matriz por jurisdicción](2026-10-15-matriz-jurisdicciones.md), que cubre Asia, BRICS, Rusia, Brasil, India y EE. UU. Aquí se añade lo que faltaba: los **estándares globales**, la **UE (MiCA)**, el **Reino Unido** y **Suiza**, y **cómo leer y comprobar una licencia**. España queda fuera (va en R20).
 > Etiquetas: **[P]** fuente oficial leída (al menos en parte) · **[S]** secundaria con cita (bufete, prensa, agregador) · **[VERIFICAR]** sin confirmar · **[ESPECULACIÓN]** opinión o previsión. **No es una recomendación de compra o venta.**
 
