@@ -145,6 +145,17 @@ def mostrar():
         st.dataframe(pd.DataFrame(informes[:15]), hide_index=True, use_container_width=True)
         with st.expander(f"Ver los {len(informes)} informes"):
             st.dataframe(pd.DataFrame(informes), hide_index=True, use_container_width=True)
+        filtro = st.text_input("Buscar informe (por ejemplo: 13f, corea, stablecoins)", key="seg_filtro").strip().lower()
+        coinciden = [i for i in informes if not filtro or filtro in (i["Archivo"] + " " + i["Título"]).lower()]
+        elegido = st.selectbox("Leer un informe", [i["Archivo"] for i in coinciden], index=None,
+                               placeholder="Elige un informe para leerlo aquí", key="seg_informe")
+        if elegido:
+            ruta = INFORMES / elegido
+            try:
+                ruta.resolve().relative_to(INFORMES.resolve())      # solo archivos dentro de informes/research/
+                st.markdown(ruta.read_text(encoding="utf-8"))
+            except Exception:
+                st.error("No se puede leer ese informe.")
     else:
         st.info("Aún no hay informes en informes/research/.")
 
