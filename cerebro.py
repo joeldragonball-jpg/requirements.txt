@@ -188,8 +188,12 @@ Todavía no hay apuntes. Para añadirlos:
 
 def mostrar():
     docs = cargar_apuntes()
-    st.markdown("<h1 style='margin:0 0 8px;font-size:clamp(1.6rem,5vw,2.2rem);font-weight:700'>🧠 Mi Cerebro</h1>",
-                unsafe_allow_html=True)
+    # Con el Explorador (primer apartado) el mapa va primero y a pantalla grande; el resumen, el buscador y los menús quedan debajo
+    explorador_arriba = st.session_state.get("grupo_menu_cerebro", 0) == 0
+    cont_contenido = st.container() if explorador_arriba else None
+    if not explorador_arriba:
+        st.markdown("<h1 style='margin:0 0 8px;font-size:clamp(1.6rem,5vw,2.2rem);font-weight:700'>🧠 Mi Cerebro</h1>",
+                    unsafe_allow_html=True)
     if not docs:
         st.info(INSTRUCCIONES_VACIO)
         return
@@ -250,13 +254,26 @@ def mostrar():
         st.markdown("#### 💬 Pregúntale a tus apuntes")
         tab_chat(docs)
 
-    apartados = [("📚 Apuntes", lambda: tab_apuntes(docs)), ("🔤 Glosario", lambda: tab_glosario(todos_conceptos)),
+    def explorador_raices():
+        import importlib
+        import explorador
+        importlib.reload(explorador)
+        explorador.mostrar(todos_conceptos)
+
+    apartados = [("🌌 Explorador", explorador_raices), ("📚 Apuntes", lambda: tab_apuntes(docs)),
+                 ("🔤 Glosario", lambda: tab_glosario(todos_conceptos)),
                  ("📊 Datos", lambda: tab_datos(docs)), ("🎯 Mi cartera", lambda: tab_cartera(docs)),
                  ("📰 Actualidad", lambda: tab_actualidad(docs)), ("🗺️ Mapa", lambda: tab_mapa(docs)),
                  ("💭 Dudas y chat", dudas_y_chat), ("🔬 Dossiers", tab_dossiers), ("💸 Consumo", lambda: tab_consumo())]
     elegido = st.radio("Apartado", range(len(apartados)), horizontal=True, label_visibility="collapsed",
                        key="grupo_menu_cerebro", format_func=lambda k: apartados[k][0].replace(" ", "  \n", 1))
-    apartados[elegido][1]()
+    if (elegido == 0) != explorador_arriba:      # al cambiar de apartado, el menú vuelve arriba (o abajo con el Explorador)
+        st.rerun()
+    if cont_contenido is not None:
+        with cont_contenido:
+            apartados[elegido][1]()
+    else:
+        apartados[elegido][1]()
 
 
 def elegir_doc(docs, clave):

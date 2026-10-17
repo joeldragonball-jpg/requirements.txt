@@ -1,0 +1,549 @@
+{
+  "version": "2026-10-18",
+  "aviso": "Hechos y fuentes del research público (informes R01P a R49). Informativo: no es recomendación de compra ni venta. [P] = fuente primaria leída; [S] = secundaria o agregador. La fecha de cada hecho es la del evento; los datos de agregadores cambian a diario.",
+  "estados": {
+    "produccion": {
+      "nombre": "En producción",
+      "color": "#3fb68b"
+    },
+    "piloto": {
+      "nombre": "Piloto o prueba",
+      "color": "#d4a84b"
+    },
+    "plan": {
+      "nombre": "Plan o propuesta",
+      "color": "#5aa9e6"
+    },
+    "norma": {
+      "nombre": "Norma o decisión",
+      "color": "#9b8fe0"
+    },
+    "anuncio": {
+      "nombre": "Anuncio o noticia",
+      "color": "#8a97b0"
+    }
+  },
+  "nombra": {
+    "token": "Nombra XRP o XLM",
+    "red": "Solo la red o la empresa",
+    "indirecto": "Indirecto",
+    "no": "No los nombra"
+  },
+  "capas": [
+    {
+      "id": "cbdc",
+      "nombre": "Bancos centrales y CBDC",
+      "color": "#5aa9e6",
+      "resumen": "Dinero de banco central tokenizado y proyectos mayoristas.",
+      "produccion": "Pontes (BCE) en marcha desde el 21-sep-2026 [P]; mBridge opera, con el yuan digital en más del 95 % del volumen [S]; rublo digital obligatorio por fases desde el 1-sep-2026 [P].",
+      "piloto": "Agorá (BIS): prototipo terminado, siguiente fase con valor real y sin fecha [P]; letras tokenizadas de la MAS [P extracto]; libro mayor de Swift con 17 bancos [S].",
+      "plan": "Euro digital: piloto en 2S-2027 y emisión posible en 2029 si el Reglamento se adopta; el Parlamento tiene mandato de negociación [P].",
+      "xrp": "Ninguna fuente oficial leída (BIS, BCE, Fed, MAS, BRICS, mBridge) nombra XRP, XLM, Ripple ni Stellar.",
+      "anillo": false,
+      "claves": [
+        "cbdc",
+        "banco central",
+        "mbridge",
+        "agorá",
+        "agora",
+        "pontes",
+        "euro digital",
+        "e-cny",
+        "rublo digital",
+        "drex",
+        "nexus",
+        "swift",
+        "bis "
+      ]
+    },
+    {
+      "id": "stable",
+      "nombre": "Stablecoins",
+      "color": "#3fb68b",
+      "resumen": "Dólares y euros en cadena; la base de los pagos con cripto.",
+      "produccion": "Unos 306.000 M$ en dólares, USDT y USDC ≈ 84 %; Ethereum y Tron las alojan [S]. MiCA en vigor con 25 emisores de dinero electrónico [P]. Hong Kong licenció a HSBC y Anchorpoint (10-abr-2026) [P].",
+      "piloto": "—",
+      "plan": "GENIUS Act: fecha efectiva prevista el 18-ene-2027; comentarios del Tesoro hasta el 19-oct y de la Fed hasta el 30-nov [P].",
+      "xrp": "Solo como red: RLUSD en XRPL ≈ 1.029 M$ [P ledger]; XRPL ≈ 1.108 M$ y Stellar ≈ 520 M$ en stablecoins, menos del 1 % cada una [S].",
+      "anillo": true,
+      "claves": [
+        "stablecoin",
+        "genius",
+        "mica",
+        "rlusd",
+        "usdc",
+        "usdt",
+        "emt",
+        "emisor"
+      ]
+    },
+    {
+      "id": "deposit",
+      "nombre": "Depósitos tokenizados",
+      "color": "#8b7fd6",
+      "resumen": "Dinero de banco comercial en cadena (JPMD y similares).",
+      "produccion": "JPMD de JPMorgan en Base para clientes institucionales [S].",
+      "piloto": "JPMD nativo en Canton, en fases durante 2026 [S].",
+      "plan": "Sin fechas publicadas para ampliar a más bancos.",
+      "xrp": "No: corre sobre Base y Canton.",
+      "anillo": false,
+      "claves": [
+        "depósito tokenizado",
+        "depósitos tokenizados",
+        "jpmd",
+        "kinexys",
+        "canton"
+      ]
+    },
+    {
+      "id": "puente",
+      "nombre": "Redes y activo puente",
+      "color": "#d4a84b",
+      "resumen": "XRPL y Stellar: infraestructura, DEX y uso de XRP/XLM como ruta.",
+      "produccion": "XRPL con 97 de 107 enmiendas activas; Stellar en protocolo 29 [P ledger]. Pool AMM XRP/RLUSD ≈ 4,8 M$ de TVL [P ledger].",
+      "piloto": "—",
+      "plan": "Ripple publica una hoja de ruta post-cuántica con «full readiness» no más tarde de 2028 [P empresa].",
+      "xrp": "Sí, pero pequeño: DEX XRPL ≈ 6,2 M$/día y Stellar ≈ 1,7 M$/día [S]. No hay cifra oficial de ODL liquidado en XRP.",
+      "anillo": true,
+      "claves": [
+        "xrpl",
+        "stellar",
+        "xlm",
+        "amm",
+        "dex",
+        "odl",
+        "puente",
+        "enmienda",
+        "cuántic",
+        "soroban",
+        "protocolo",
+        "ledger"
+      ]
+    },
+    {
+      "id": "token",
+      "nombre": "Tokenización (RWA)",
+      "color": "#c9739b",
+      "resumen": "Fondos, deuda y acciones tokenizados.",
+      "produccion": "≈ 39.300 M$ de RWA «distribuido» (RWA.xyz, tercero comercial) [S]; Stellar 4.ª red con ≈ 3.500 M$ [S].",
+      "piloto": "Exención de la SEC para acciones tokenizadas con AMM (17-sep-2026) y no-acción a DTC (11-dic-2025): marcos temporales [P].",
+      "plan": "DTCC prevé llevar activos de DTC a Stellar en 1S-2027 (comunicado no leído) [S]. Corea: tokenización de valores desde el 4-feb-2027 [P].",
+      "xrp": "Sí como red, sobre todo Stellar. Los fondos se pagan en dólares, no en XLM [ESPECULACIÓN razonada].",
+      "anillo": false,
+      "claves": [
+        "tokenización",
+        "tokenizacion",
+        "rwa",
+        "dtcc",
+        "blackrock",
+        "buidl",
+        "franklin",
+        "tokenizad"
+      ]
+    },
+    {
+      "id": "custodia",
+      "nombre": "Liquidación y custodia",
+      "color": "#d98b4f",
+      "resumen": "Bancos y custodios que guardan y liquidan activos digitales.",
+      "produccion": "BNY custodia BTC, ETH, SOL y USDC en la UE (registro CASP desde el 20-jul-2026) [P]; 215 entidades con custodia en el registro de ESMA [P].",
+      "piloto": "Aprobaciones del OCC a bancos cripto: PRELIMINARES o condicionales (Ripple, Coinbase, Crypto.com, Protego) [P].",
+      "plan": "BNY–Galaxy (staking) sujeto a revisión regulatoria; sin fecha [S].",
+      "xrp": "No en BNY ni en State Street [P]. La custodia de XRP la ofrecen firmas cripto [VERIFICAR por entidad].",
+      "anillo": false,
+      "claves": [
+        "custodia",
+        "bny",
+        "state street",
+        "occ",
+        "casp",
+        "esma",
+        "jpmorgan",
+        "banco"
+      ]
+    },
+    {
+      "id": "reg",
+      "nombre": "Regulación y política monetaria",
+      "color": "#7d8fb3",
+      "resumen": "Leyes, tribunales y bancos centrales que fijan las reglas.",
+      "produccion": "MiCA exigible desde el 1-jul-2026; licencias de Ripple (MiCA CASP, EMI en Luxemburgo, FCA, MAS) [P empresa y reguladores].",
+      "piloto": "—",
+      "plan": "CLARITY Act: el cierre de debate falló 49–50 el 15-sep-2026; Regulation Crypto Assets (SEC) es solo propuesta, con comentarios hasta el 20-oct [P].",
+      "xrp": "Las licencias son de Ripple (pagos y RLUSD) y no prueban demanda de XRP. Torres (2023) y el desistimiento (2025) sí nombran a XRP.",
+      "anillo": false,
+      "claves": [
+        "clarity",
+        "sec ",
+        "cftc",
+        "fed ",
+        "regulación",
+        "regulacion",
+        "fomc",
+        "gafi",
+        "tribunal",
+        "ley ",
+        "normativa",
+        "gobernanza"
+      ]
+    },
+    {
+      "id": "fondos",
+      "nombre": "Fondos, ETF y tesorerías",
+      "color": "#4bb5c9",
+      "resumen": "Productos que dan exposición a XRP y XLM.",
+      "produccion": "ETF spot de XRP en EE. UU. ≈ 2.178 M$ (emisor, 30-sep) [S]; declarantes 13F con ETF spot de XRP: 72 → 122 → 129 [P]; Evernorth (XRPN) cotiza desde el 12-oct [P].",
+      "piloto": "—",
+      "plan": "13F del 3T con plazo el 16-nov: repetir R21.",
+      "xrp": "Sí: aquí están casi todos los movimientos que nombran el token. En XLM no hay señal 13F.",
+      "anillo": false,
+      "claves": [
+        "etf",
+        "13f",
+        "evernorth",
+        "xrpn",
+        "21shares",
+        "interés abierto",
+        "derivados",
+        "cme",
+        "tesorería",
+        "fondo"
+      ]
+    }
+  ],
+  "movimientos": [
+    {
+      "fecha": "2023-07-13",
+      "capa": "reg",
+      "actor": "Juzgado SDNY (Torres)",
+      "texto": "Sentencia: las ventas programáticas de XRP no son valores.",
+      "estado": "norma",
+      "nombra": "token",
+      "fuente": "CourtListener [P] · R48"
+    },
+    {
+      "fecha": "2025-01-23",
+      "capa": "custodia",
+      "actor": "SEC",
+      "texto": "El SAB 122 retira el SAB 121 sobre custodia de activos digitales.",
+      "estado": "norma",
+      "nombra": "no",
+      "fuente": "SEC [P] · R44"
+    },
+    {
+      "fecha": "2025-03-02",
+      "capa": "reg",
+      "actor": "Presidente de EE. UU.",
+      "texto": "Post que cita XRP en la reserva estratégica. No consta norma posterior que lo ejecute para XRP.",
+      "estado": "anuncio",
+      "nombra": "token",
+      "fuente": "Truth Social, vía prensa [S] · R48"
+    },
+    {
+      "fecha": "2025-06-18",
+      "capa": "fondos",
+      "actor": "3iQ (Canadá)",
+      "texto": "ETF spot de XRP (XRPQ).",
+      "estado": "produccion",
+      "nombra": "token",
+      "fuente": "nota de 3iQ [P empresa] · R27"
+    },
+    {
+      "fecha": "2025-07-18",
+      "capa": "stable",
+      "actor": "Congreso de EE. UU.",
+      "texto": "Se firma la GENIUS Act para stablecoins.",
+      "estado": "norma",
+      "nombra": "no",
+      "fuente": "[P] · R25"
+    },
+    {
+      "fecha": "2025-08-07",
+      "capa": "reg",
+      "actor": "SEC y Ripple",
+      "texto": "Desisten de los recursos; queda la multa de 125 M$.",
+      "estado": "norma",
+      "nombra": "token",
+      "fuente": "SEC LR-26369 [P] · R34"
+    },
+    {
+      "fecha": "2025-11-13",
+      "capa": "fondos",
+      "actor": "Canary",
+      "texto": "Primer ETF spot de XRP en EE. UU. (XRPC).",
+      "estado": "produccion",
+      "nombra": "token",
+      "fuente": "Canary / SEC, vía prensa [S] · R48"
+    },
+    {
+      "fecha": "2025-11-15",
+      "capa": "cbdc",
+      "actor": "Banco Central de Brasil",
+      "texto": "Se apaga el Drex con blockchain; nueva fase por casos de uso (mes aproximado).",
+      "estado": "piloto",
+      "nombra": "no",
+      "fuente": "[S] · R03P, R40"
+    },
+    {
+      "fecha": "2025-12-11",
+      "capa": "token",
+      "actor": "SEC",
+      "texto": "Carta de no-acción a DTC para tokenización.",
+      "estado": "norma",
+      "nombra": "no",
+      "fuente": "[P] · R26"
+    },
+    {
+      "fecha": "2025-12-12",
+      "capa": "custodia",
+      "actor": "OCC",
+      "texto": "Aprobación condicional de Ripple National Trust Bank.",
+      "estado": "norma",
+      "nombra": "red",
+      "fuente": "nota de Ripple [P empresa] · R34, R44"
+    },
+    {
+      "fecha": "2026-01-07",
+      "capa": "deposit",
+      "actor": "JPMorgan / Canton",
+      "texto": "JPMD nativo en Canton, «en fases durante 2026».",
+      "estado": "plan",
+      "nombra": "no",
+      "fuente": "nota de Canton [S] · R44"
+    },
+    {
+      "fecha": "2026-01-15",
+      "capa": "custodia",
+      "actor": "State Street",
+      "texto": "Anuncia su plataforma de activos digitales.",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "prensa [S] · R44"
+    },
+    {
+      "fecha": "2026-03-03",
+      "capa": "puente",
+      "actor": "Ripple",
+      "texto": "Nota de Ripple Payments (más de 100.000 M$ acumulados) sin mencionar XRP en el texto.",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "ripple.com [P empresa] · R28"
+    },
+    {
+      "fecha": "2026-04-10",
+      "capa": "stable",
+      "actor": "HKMA (Hong Kong)",
+      "texto": "Primeras licencias de stablecoin: HSBC y Anchorpoint.",
+      "estado": "norma",
+      "nombra": "no",
+      "fuente": "registro HKMA [P] · R25"
+    },
+    {
+      "fecha": "2026-04-20",
+      "capa": "puente",
+      "actor": "Ripple",
+      "texto": "Hoja de ruta post-cuántica del XRPL: «full readiness» no más tarde de 2028.",
+      "estado": "plan",
+      "nombra": "red",
+      "fuente": "ripple.com [P empresa] · R45"
+    },
+    {
+      "fecha": "2026-05-27",
+      "capa": "cbdc",
+      "actor": "BIS",
+      "texto": "Agorá: prototipo concluido; siguiente fase con valor real, sin fecha.",
+      "estado": "piloto",
+      "nombra": "no",
+      "fuente": "bis.org [P] · R08P"
+    },
+    {
+      "fecha": "2026-05-27",
+      "capa": "token",
+      "actor": "DTCC",
+      "texto": "Plan de tokenizar activos de DTC en Stellar en 1S-2027.",
+      "estado": "plan",
+      "nombra": "red",
+      "fuente": "dtcc.com no leída; prensa [S] · R09P, R48"
+    },
+    {
+      "fecha": "2026-06-24",
+      "capa": "stable",
+      "actor": "JFSA / SBI (Japón)",
+      "texto": "RLUSD aprobado como «Type 4», solo en Ethereum.",
+      "estado": "norma",
+      "nombra": "no",
+      "fuente": "[S] · R09P"
+    },
+    {
+      "fecha": "2026-06-28",
+      "capa": "cbdc",
+      "actor": "BIS",
+      "texto": "Informe anual: las stablecoins suspenden los 4 tests de dinero; propone un libro mayor unificado.",
+      "estado": "norma",
+      "nombra": "no",
+      "fuente": "bis.org [P] · R08P"
+    },
+    {
+      "fecha": "2026-06-30",
+      "capa": "fondos",
+      "actor": "Gestores 13F",
+      "texto": "Declarantes con ETF spot de XRP: 72 (4T-2025), 122 (1T) y 129 (2T-2026); Goldman, el mayor por filial bróker-dealer.",
+      "estado": "produccion",
+      "nombra": "token",
+      "fuente": "EDGAR 13F XML [P] · R21b"
+    },
+    {
+      "fecha": "2026-07-06",
+      "capa": "reg",
+      "actor": "CSSF / Ripple",
+      "texto": "Licencia MiCA CASP de Ripple en Luxemburgo.",
+      "estado": "norma",
+      "nombra": "red",
+      "fuente": "nota de Ripple [P empresa] · R34"
+    },
+    {
+      "fecha": "2026-07-09",
+      "capa": "cbdc",
+      "actor": "Parlamento Europeo",
+      "texto": "Mandato de negociación del euro digital; sin acuerdo final.",
+      "estado": "plan",
+      "nombra": "no",
+      "fuente": "Observatorio Legislativo [P] · R40"
+    },
+    {
+      "fecha": "2026-07-20",
+      "capa": "custodia",
+      "actor": "ESMA",
+      "texto": "BNY entra en el registro CASP (custodia), por notificación.",
+      "estado": "norma",
+      "nombra": "no",
+      "fuente": "registro ESMA [P] · R44"
+    },
+    {
+      "fecha": "2026-09-01",
+      "capa": "cbdc",
+      "actor": "Banco de Rusia",
+      "texto": "Rublo digital obligatorio por fases; 87.000 monederos en 10 días.",
+      "estado": "produccion",
+      "nombra": "no",
+      "fuente": "cbr.ru [P] · R40"
+    },
+    {
+      "fecha": "2026-09-15",
+      "capa": "reg",
+      "actor": "Senado de EE. UU.",
+      "texto": "El cierre de debate de CLARITY fracasa 49–50.",
+      "estado": "norma",
+      "nombra": "indirecto",
+      "fuente": "registro del Senado, vía prensa [S] · R48"
+    },
+    {
+      "fecha": "2026-09-16",
+      "capa": "reg",
+      "actor": "Reserva Federal",
+      "texto": "Sube 25 pb los tipos, a 3,75-4,00 %.",
+      "estado": "norma",
+      "nombra": "no",
+      "fuente": "federalreserve.gov [P] · R29"
+    },
+    {
+      "fecha": "2026-09-17",
+      "capa": "token",
+      "actor": "SEC",
+      "texto": "Exención para acciones tokenizadas con AMM.",
+      "estado": "norma",
+      "nombra": "no",
+      "fuente": "[P] · R26"
+    },
+    {
+      "fecha": "2026-09-20",
+      "capa": "cbdc",
+      "actor": "Arabia Saudí (vía FT)",
+      "texto": "Confirma que ya no está en mBridge.",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "FT [S] · R01P"
+    },
+    {
+      "fecha": "2026-09-21",
+      "capa": "cbdc",
+      "actor": "BCE",
+      "texto": "Pontes (liquidación mayorista) en marcha.",
+      "estado": "produccion",
+      "nombra": "no",
+      "fuente": "ecb.europa.eu [P] · R08P"
+    },
+    {
+      "fecha": "2026-09-24",
+      "capa": "stable",
+      "actor": "Reserva Federal",
+      "texto": "Propuestas de reglas de la GENIUS Act para comentario (hasta el 30-nov).",
+      "estado": "norma",
+      "nombra": "no",
+      "fuente": "federalreserve.gov [P] · R08P"
+    },
+    {
+      "fecha": "2026-09-30",
+      "capa": "fondos",
+      "actor": "21Shares (emisor)",
+      "texto": "ETF de XRP en EE. UU. ≈ 2.178 M$ (entradas de 2026 ≈ 864 M$); ETP europeos de XRP ≈ 914 M$ y de Stellar ≈ 104 M$.",
+      "estado": "produccion",
+      "nombra": "token",
+      "fuente": "21Shares [S] · R27"
+    },
+    {
+      "fecha": "2026-10-01",
+      "capa": "puente",
+      "actor": "Stellar",
+      "texto": "La red pasa al protocolo 29.",
+      "estado": "produccion",
+      "nombra": "red",
+      "fuente": "ledger [P] · R33"
+    },
+    {
+      "fecha": "2026-10-01",
+      "capa": "token",
+      "actor": "FSC (Corea)",
+      "texto": "Tokenización de valores permitida desde el 4-feb-2027.",
+      "estado": "plan",
+      "nombra": "no",
+      "fuente": "fsc.go.kr [P] · R30"
+    },
+    {
+      "fecha": "2026-10-08",
+      "capa": "custodia",
+      "actor": "BNY",
+      "texto": "Custodia de BTC, ETH, SOL y USDC en la UE; sin XRP ni XLM.",
+      "estado": "produccion",
+      "nombra": "no",
+      "fuente": "nota de BNY [P empresa] · R44"
+    },
+    {
+      "fecha": "2026-10-09",
+      "capa": "puente",
+      "actor": "Validadores del XRPL",
+      "texto": "Se activan BatchV1_1 y fixBatchV1_2 tras parchear un fallo crítico.",
+      "estado": "produccion",
+      "nombra": "red",
+      "fuente": "ledger y xrpl.org [P] · R32"
+    },
+    {
+      "fecha": "2026-10-12",
+      "capa": "fondos",
+      "actor": "Evernorth (XRPN)",
+      "texto": "Empieza a cotizar en Nasdaq con 388,9 M XRP aportados en especie, según el 8-K.",
+      "estado": "produccion",
+      "nombra": "token",
+      "fuente": "SEC 8-K [P] · R23"
+    },
+    {
+      "fecha": "2026-10-15",
+      "capa": "puente",
+      "actor": "Ripple",
+      "texto": "Notas sobre CSD Brasil, Standard Chartered y Meritz: hablan de XRPL y RLUSD, no del token (fecha aproximada de octubre).",
+      "estado": "anuncio",
+      "nombra": "red",
+      "fuente": "ripple.com [P empresa] · R34"
+    }
+  ]
+}

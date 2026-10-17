@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--alto:820px;--bg:#050816;--panel:rgba(9,14,30,.88);--linea:rgba(148,163,184,.16);--texto:#e6ebf5;--suave:#93a1bd;--oro:#d4a84b}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--texto);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-variant-numeric:tabular-nums}
+#app{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:10px;padding:6px;height:var(--alto);transition:grid-template-columns .5s ease}
+#app.sel{grid-template-columns:minmax(0,1fr) 620px}
+@media (max-width:900px){#app,#app.sel{grid-template-columns:1fr;height:auto}#lienzo{height:70vh}}
+#izq{display:flex;flex-direction:column;gap:8px;min-width:0;min-height:0}
+.vidrio{background:var(--panel);border:1px solid var(--linea);border-radius:10px}
+#barra{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:7px 10px}
+#barra button,#barra input[type=text]{background:rgba(15,23,42,.9);color:var(--texto);border:1px solid var(--linea);border-radius:6px;padding:6px 11px;font:inherit;font-size:13px;transition:.15s}
+#barra button{cursor:pointer}#barra button:hover{border-color:var(--oro);color:#fff}
+#barra label{color:var(--suave);display:flex;gap:6px;align-items:center;font-size:12.5px}
+#tiempo{flex:1 1 280px;display:flex;gap:10px;align-items:center}
+#pista{flex:1;position:relative}
+#pista input[type=range]{width:100%;accent-color:var(--oro);margin:0;display:block;height:16px}
+#marcas{position:relative;height:16px;margin-top:1px}
+#marcas i{position:absolute;bottom:0;width:2px;opacity:.95}
+#marcas span{position:absolute;top:0;font-size:10px;color:var(--suave);transform:translateX(-50%);letter-spacing:.04em}
+#fecha{min-width:92px;color:#f1d58a;font-weight:700;letter-spacing:.03em}
+#lienzo{flex:1;min-height:0;position:relative;border:1px solid var(--linea);border-radius:12px;overflow:hidden;
+  background:radial-gradient(ellipse 60% 50% at 20% 25%,rgba(99,102,241,.20),transparent 70%),
+             radial-gradient(ellipse 55% 45% at 85% 80%,rgba(190,70,130,.14),transparent 70%),
+             radial-gradient(ellipse 50% 40% at 70% 15%,rgba(34,160,190,.12),transparent 70%),
+             radial-gradient(ellipse at center,#0b1230 0%,#050816 78%)}
+svg{width:100%;height:100%;display:block}
+#marca{position:absolute;left:16px;top:12px;pointer-events:none}
+#marca b{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#c8d3ea;font-weight:600}
+#marca div{color:var(--suave);font-size:12px;margin-top:2px}
+#leyendaMapa{position:absolute;left:16px;bottom:12px;display:flex;flex-wrap:wrap;gap:4px 14px;max-width:75%;pointer-events:none}
+#leyendaMapa span{font-size:11px;color:var(--suave);display:flex;gap:6px;align-items:center;letter-spacing:.02em}
+#tip{position:absolute;pointer-events:none;background:rgba(6,10,24,.96);border:1px solid var(--linea);border-left:3px solid var(--oro);border-radius:6px;padding:8px 11px;font-size:12px;max-width:260px;opacity:0;transition:opacity .15s;z-index:3;box-shadow:0 8px 28px rgba(0,0,0,.55)}
+.planeta{cursor:pointer;outline:none}
+.planeta .nombre{pointer-events:none;fill:#d6deef;font-size:10px;text-anchor:middle;paint-order:stroke;stroke:#050816;stroke-width:3.5px;stroke-linejoin:round;font-weight:600;letter-spacing:.09em;text-transform:uppercase}
+.planeta .num{pointer-events:none;font-size:12px;font-weight:800;fill:#071022;text-anchor:middle}
+.planeta .rotulo{pointer-events:none;fill:#e6ebf5;font-size:8.5px;paint-order:stroke;stroke:#050816;stroke-width:3px;stroke-linejoin:round;letter-spacing:.02em}
+.planeta:focus-visible .disco{stroke:#fff;stroke-width:2}
+.orbita{fill:none;stroke-width:1}
+.estrella{animation:tw 5s ease-in-out infinite}
+.barrido{transform-origin:0 0;animation:girar 70s linear infinite}
+.luna{transition:opacity .5s}
+.anillo-sel{fill:none;stroke-width:1.4;stroke-dasharray:3 4;transform-box:fill-box;transform-origin:center;animation:girar 14s linear infinite}
+.pulso{fill:none;stroke-width:1.6;animation:p 1.3s ease-out forwards}
+@keyframes tw{0%,100%{opacity:.12}50%{opacity:.7}}
+@keyframes girar{to{transform:rotate(360deg)}}
+@keyframes p{from{r:14;opacity:.9}to{r:56;opacity:0}}
+@keyframes entra{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.estrella,.barrido,.anillo-sel{animation:none}#app{transition:none}}
+#panel{padding:14px 16px;overflow:auto;min-height:0}
+#panel .entra{animation:entra .35s ease both}
+h2{margin:0 0 6px;font-size:17px;font-weight:650;letter-spacing:.01em}
+h3{margin:18px 0 7px;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--suave);font-weight:600;border-bottom:1px solid var(--linea);padding-bottom:5px}
+.nota{color:var(--suave);font-size:12px}
+.cabecera{border-radius:8px;padding:12px 14px;margin-bottom:10px;border:1px solid var(--linea);border-left-width:4px;background:rgba(15,23,42,.6)}
+.barra-apilada{display:flex;height:10px;border-radius:5px;overflow:hidden;margin:8px 0}
+.leyenda{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px}.leyenda span{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--suave)}
+.punto{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.item{border-top:1px solid var(--linea);padding:10px 0}.item b{color:#fff;font-weight:650}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}.chip{font-size:11px;border:1px solid var(--linea);border-radius:4px;padding:1px 8px;color:var(--suave);display:flex;gap:6px;align-items:center;background:rgba(15,23,42,.7)}
+.fuente{font-size:11px;color:var(--suave)}
+.bloque{background:rgba(15,23,42,.6);border:1px solid var(--linea);border-radius:6px;padding:8px 11px;margin:7px 0;border-left-width:3px}
+.volver{background:rgba(15,23,42,.9);color:var(--texto);border:1px solid var(--linea);border-radius:6px;padding:5px 11px;cursor:pointer;margin-bottom:10px;font:inherit;font-size:12.5px}
+.volver:hover{border-color:var(--oro)}
+.capa-fila{display:flex;align-items:center;gap:10px;width:100%;background:rgba(15,23,42,.55);border:1px solid var(--linea);border-radius:6px;padding:8px 11px;margin:5px 0;color:var(--texto);cursor:pointer;font:inherit;font-size:13px;text-align:left;transition:.15s}
+.capa-fila:hover{border-color:var(--oro);background:rgba(30,41,70,.55)}
+.capa-fila .esf{width:11px;height:11px;border-radius:50%;flex:none}.capa-fila .n{margin-left:auto;font-weight:700;color:#f1d58a}
+.capa-fila .sub{color:var(--suave);font-size:11px}
+details.doc{background:rgba(15,23,42,.55);border:1px solid var(--linea);border-radius:6px;margin:6px 0;padding:0}
+details.doc summary{cursor:pointer;padding:8px 11px;list-style:none;display:flex;gap:8px;align-items:baseline}
+details.doc summary::-webkit-details-marker{display:none}
+details.doc[open]{border-color:rgba(212,168,75,.55)}
+details.doc .cuerpo{padding:0 11px 10px;color:#cdd6ea;font-size:12.5px}
+.etq{font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;padding:1px 6px;border-radius:3px;border:1px solid;flex:none}
+</style></head><body>
+<div id="app">
+  <div id="izq">
+    <div id="barra" class="vidrio">
+      <button id="btnOrbitas" title="Pausar o reanudar el giro">⏸ Órbitas</button>
+      <div id="tiempo"><button id="btnPlay" title="Reproducir los hechos por fecha">▶ Tiempo</button>
+        <div id="pista"><input type="range" id="slider" min="0" max="100" value="100" aria-label="Fecha"><div id="marcas"></div></div>
+        <span id="fecha"></span></div>
+      <input type="text" id="buscar" placeholder="Buscar (Pontes, OCC, DTCC…)" aria-label="Buscar">
+      <label><input type="checkbox" id="soloToken"> Solo los que nombran XRP o XLM</label>
+      <button id="btnVolver" title="Volver a la vista general">⌂ Vista general</button>
+    </div>
+    <div id="lienzo">
+      <svg id="svg" viewBox="-520 -360 1040 720" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa de raíles financieros"></svg>
+      <div id="marca"><b>Sistema de raíles</b><div id="subtitulo"></div></div>
+      <div id="leyendaMapa"></div>
+      <div id="tip"></div>
+    </div>
+  </div>
+  <aside id="panel" class="vidrio"></aside>
+</div>
+<script id="datos" type="application/json">__DATOS__</script>
+<script>
+const D = JSON.parse(document.getElementById('datos').textContent);
+const NS = 'http://www.w3.org/2000/svg';
+const OK = c => /^#[0-9a-fA-F]{6}$/.test(c) ? c : '#94a3b8';
+const svg = document.getElementById('svg'), panel = document.getElementById('panel'), slider = document.getElementById('slider'), app = document.getElementById('app');
+const $ = id => document.getElementById(id);
+function S(tag, attrs, padre, texto){ const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]); if (texto !== undefined) e.textContent = texto; if (padre) padre.appendChild(e); return e; }
+function H(tag, cls, padre, texto){ const e = document.createElement(tag); if (cls) e.className = cls;
+  if (texto !== undefined) e.textContent = texto; if (padre) padre.appendChild(e); return e; }
+const hex = c => [1,3,5].map(i => parseInt(c.slice(i, i+2), 16));
+const aHex = a => '#' + a.map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0')).join('');
+const mezcla = (c, t, k) => { const a = hex(c), b = hex(t); return aHex(a.map((v, i) => v + (b[i] - v) * k)); };
+const rgba = (c, a) => { const [r, g, b] = hex(c); return `rgba(${r},${g},${b},${a})`; };
+const ORO = '#d4a84b';
+const corto = (t, n) => t.length > n ? t.slice(0, n - 1) + '…' : t;
+
+function medirAlto(){ let h = 860; try { h = Math.max(720, Math.min((window.parent.innerHeight || 900) - 70, 1000)); } catch (e) {} document.documentElement.style.setProperty('--alto', h + 'px'); return h; }
+medirAlto();
+// El marco de Streamlit y su contenedor deben medir lo mismo que la página, para que nada de debajo se solape con el mapa
+function ajustarAlto(){ try { const fe = window.frameElement; if (!fe) return; const h = (app.offsetHeight + 14) + 'px'; fe.style.height = h;
+  const p = fe.parentElement; if (p){ p.style.height = h; p.style.minHeight = h; } } catch (e) {} }
+try { window.parent.addEventListener('resize', () => { medirAlto(); ajustarAlto(); }); } catch (e) {}
+
+const dia = f => Date.UTC(+f.slice(0,4), +f.slice(5,7)-1, +f.slice(8,10)) / 86400000;
+const movs = D.movimientos.map(m => ({...m, d: dia(m.fecha)})).sort((a,b) => a.d - b.d);
+const d0 = movs[0].d, d1 = movs[movs.length-1].d;
+slider.min = 0; slider.max = d1 - d0; slider.value = d1 - d0;
+const fmt = d => new Date(d * 86400000).toISOString().slice(0,10).split('-').reverse().join('-');
+const fmtC = f => f.slice(8,10) + '/' + f.slice(5,7) + '/' + f.slice(2,4);
+const est = D.estados, colEst = k => OK((est[k] || {}).color);
+const colNombra = {token: '#38bdf8', red: '#8b7fd6', indirecto: '#d4a84b', no: '#475569'};
+const colTipo = {Research: '#5aa9e6', Dossier: '#d4a84b', Apunte: '#3fb68b'};
+
+let sel = null, orbitasPausadas = false, reproduciendo = false, vistos = {};
+const RY = .72;
+const capas = D.capas.map((c, i) => ({...c, color: OK(c.color), i, rx: 118 + i * 48, a: (i * 2.399) % (Math.PI * 2),
+  v: 0.10 / Math.pow(1 + i, 0.5) * (i % 2 ? -1 : 1), R: 16, docs: c.docs || {inv: [], glo: []}}));
+
+const defs = S('defs', {}, svg);
+const fGlow = S('filter', {id: 'glow', x: '-80%', y: '-80%', width: '260%', height: '260%'}, defs);
+S('feGaussianBlur', {stdDeviation: 1.6, result: 'b'}, fGlow);
+const fm = S('feMerge', {}, fGlow); S('feMergeNode', {in: 'b'}, fm); S('feMergeNode', {in: 'SourceGraphic'}, fm);
+const nucleo = S('radialGradient', {id: 'nucleo'}, defs);
+[['0%', '#16224a'], ['70%', '#0a1230'], ['100%', '#060b1f']].forEach(([o, c]) => S('stop', {offset: o, 'stop-color': c}, nucleo));
+const aura = S('radialGradient', {id: 'aura'}, defs);
+S('stop', {offset: '0%', 'stop-color': 'rgba(212,168,75,.22)'}, aura); S('stop', {offset: '100%', 'stop-color': 'rgba(212,168,75,0)'}, aura);
+capas.forEach(c => {
+  const g = S('linearGradient', {id: 'pg' + c.i, x1: 0, y1: 0, x2: 1, y2: 1}, defs);
+  S('stop', {offset: '0%', 'stop-color': mezcla(c.color, '#ffffff', .22)}, g);
+  S('stop', {offset: '100%', 'stop-color': mezcla(c.color, '#000000', .38)}, g);
+  const h = S('radialGradient', {id: 'hg' + c.i}, defs);
+  S('stop', {offset: '0%', 'stop-color': c.color, 'stop-opacity': .32}, h); S('stop', {offset: '100%', 'stop-color': c.color, 'stop-opacity': 0}, h);
+});
+
+let semilla = 11; const rnd = () => (semilla = (semilla * 16807) % 2147483647) / 2147483647;
+const fondo = S('g', {}, svg);
+for (let i = 0; i < 70; i++){
+  const e = S('circle', {class: 'estrella', cx: ((rnd() - .5) * 1100).toFixed(1), cy: ((rnd() - .5) * 760).toFixed(1), r: (rnd() * 1 + .25).toFixed(2), fill: '#fff'}, fondo);
+  e.style.animationDuration = (3 + rnd() * 5).toFixed(1) + 's'; e.style.animationDelay = (-rnd() * 6).toFixed(1) + 's';
+}
+const ejes = S('g', {stroke: 'rgba(148,163,184,.10)', 'stroke-width': 1}, svg);
+S('line', {x1: -500, y1: 0, x2: 500, y2: 0}, ejes); S('line', {x1: 0, y1: -350, x2: 0, y2: 350}, ejes);
+const rxMax = capas[capas.length - 1].rx + 34;
+for (let k = 0; k < 120; k++){ const a = k * Math.PI / 60, l = k % 10 === 0 ? 9 : 4;
+  S('line', {x1: Math.cos(a) * rxMax, y1: Math.sin(a) * rxMax * RY, x2: Math.cos(a) * (rxMax + l), y2: Math.sin(a) * (rxMax + l) * RY, stroke: 'rgba(148,163,184,.28)', 'stroke-width': 1}, ejes); }
+
+const gOrbitas = S('g', {}, svg), gEnlaces = S('g', {}, svg), gEstelas = S('g', {}, svg);
+capas.forEach(c => {
+  c.orbita = S('ellipse', {class: 'orbita', cx: 0, cy: 0, rx: c.rx, ry: c.rx * RY, stroke: 'rgba(148,163,184,.17)'}, gOrbitas);
+  c.enlace = S('line', {x1: 0, y1: 0, x2: 0, y2: 0, stroke: rgba(c.color, .22), 'stroke-width': 1}, gEnlaces);
+  c.estela = S('path', {fill: 'none', stroke: c.color, 'stroke-width': 2, 'stroke-linecap': 'round', opacity: .4}, gEstelas);
+});
+
+S('circle', {cx: 0, cy: 0, r: 120, fill: 'url(#aura)'}, svg);
+const nuc = S('g', {}, svg);
+S('circle', {cx: 0, cy: 0, r: 50, fill: 'url(#nucleo)', stroke: 'rgba(212,168,75,.7)', 'stroke-width': 1.4}, nuc);
+S('circle', {cx: 0, cy: 0, r: 44, fill: 'none', stroke: 'rgba(212,168,75,.22)', 'stroke-width': 1}, nuc);
+for (let k = 0; k < 60; k++){ const a = k * Math.PI / 30, l = k % 5 === 0 ? 5 : 2.5;
+  S('line', {x1: Math.cos(a) * 50, y1: Math.sin(a) * 50, x2: Math.cos(a) * (50 + l), y2: Math.sin(a) * (50 + l), stroke: 'rgba(212,168,75,.5)', 'stroke-width': 1}, nuc); }
+const barrido = S('g', {class: 'barrido'}, nuc);
+S('path', {d: 'M 0 0 L 44 0 A 44 44 0 0 1 38.1 22 Z', fill: 'rgba(212,168,75,.20)'}, barrido);
+S('line', {x1: 0, y1: 0, x2: 44, y2: 0, stroke: 'rgba(241,213,138,.65)', 'stroke-width': 1}, barrido);
+S('text', {x: 0, y: -2, 'text-anchor': 'middle', 'font-size': 8.5, 'font-weight': 700, fill: '#f1d58a', 'letter-spacing': '.14em'}, nuc, 'DINERO Y');
+S('text', {x: 0, y: 9, 'text-anchor': 'middle', 'font-size': 8.5, 'font-weight': 700, fill: '#f1d58a', 'letter-spacing': '.14em'}, nuc, 'LIQUIDACIÓN');
+
+const gPlanetas = S('g', {}, svg), tip = $('tip');
+capas.forEach(c => {
+  c.g = S('g', {class: 'planeta', tabindex: 0, role: 'button', 'aria-label': c.nombre}, gPlanetas);
+  c.halo = S('circle', {cx: 0, cy: 0, r: 40, fill: `url(#hg${c.i})`}, c.g);
+  c.selAnillo = S('circle', {class: 'anillo-sel', cx: 0, cy: 0, r: 30, stroke: c.color, opacity: 0}, c.g);
+  c.pulso = S('circle', {class: 'pulso', cx: 0, cy: 0, r: 14, stroke: c.color, opacity: 0}, c.g);
+  c.donut = S('g', {}, c.g);
+  c.lideres = S('g', {}, c.g);
+  if (c.anillo) c.aro = S('circle', {cx: 0, cy: 0, r: 26, fill: 'none', stroke: rgba(c.color, .55), 'stroke-width': 1, 'stroke-dasharray': '1 3'}, c.g);
+  c.disco = S('circle', {class: 'disco', cx: 0, cy: 0, r: 16, fill: `url(#pg${c.i})`, stroke: mezcla(c.color, '#ffffff', .45), 'stroke-width': 1.2}, c.g);
+  c.interno = S('circle', {cx: 0, cy: 0, r: 11, fill: 'none', stroke: 'rgba(255,255,255,.2)', 'stroke-width': .8}, c.g);
+  c.num = S('text', {class: 'num', x: 0, y: 4.2}, c.g, '0');
+  c.rot = S('text', {class: 'nombre', x: 0, y: 32}, c.g, c.nombre);
+  c.lunas = [];
+  c.g.addEventListener('pointerenter', () => { c.hover = true; mostrarTip(c); });
+  c.g.addEventListener('pointermove', e => moverTip(e));
+  c.g.addEventListener('pointerleave', () => { c.hover = false; tip.style.opacity = 0; });
+  c.g.addEventListener('click', () => seleccionar(c));
+  c.g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); seleccionar(c); } });
+});
+movs.forEach(m => { const c = capas.find(x => x.id === m.capa); if (!c) return; m.capaObj = c;
+  const rango = c.lunas.length, token = m.nombra === 'token';
+  m.lider = S('line', {x1: 0, y1: 0, x2: 0, y2: 0, stroke: rgba(c.color, .35), 'stroke-width': .8, opacity: 0}, c.lideres);
+  const luna = S('circle', {class: 'luna', r: token ? 3.4 : 2.4, fill: colEst(m.estado), stroke: token ? colNombra.token : 'rgba(255,255,255,.35)', 'stroke-width': token ? 1.5 : .6, opacity: 0}, c.g);
+  if (token) luna.setAttribute('filter', 'url(#glow)');
+  S('title', {}, luna, `${m.fecha} · ${m.actor}`);
+  m.rotulo = S('text', {class: 'rotulo', opacity: 0}, c.g, `${fmtC(m.fecha)} · ${corto(m.actor, 26)}`);
+  m.luna = luna; m.x = 0; m.y = 0; m.fase = rnd() * 6.28; m.dist = 13 + Math.floor(rango / 5) * 8 + (rango % 5) * 3; m.vel = (0.7 + rnd() * .6) * (rango % 2 ? 1 : -1) / (1 + Math.floor(rango / 5) * .35);
+  m.vis = false; c.lunas.push(m); });
+
+const marcas = $('marcas');
+movs.forEach(m => { const i = H('i', '', marcas); i.style.left = ((m.d - d0) / (d1 - d0) * 100) + '%'; i.style.height = (m.nombra === 'token' ? 12 : 7) + 'px'; i.style.background = colEst(m.estado); i.title = m.fecha + ' · ' + m.actor; });
+for (let y = new Date(d0 * 86400000).getUTCFullYear() + 1; y <= new Date(d1 * 86400000).getUTCFullYear(); y++){
+  const t = H('span', '', marcas, String(y)); t.style.left = ((dia(`${y}-01-01`) - d0) / (d1 - d0) * 100) + '%'; t.style.top = '-1px'; t.style.color = '#cbd5e1'; }
+const ley = $('leyendaMapa');
+Object.keys(est).forEach(k => { const s = H('span', '', ley); const p = H('span', 'punto', s); p.style.background = colEst(k); s.appendChild(document.createTextNode(est[k].nombre)); });
+
+function filtros(){ return {corte: d0 + (+slider.value), q: $('buscar').value.trim().toLowerCase(), solo: $('soloToken').checked}; }
+function pasa(m, f){ return m.d <= f.corte && (!f.solo || m.nombra === 'token') && (!f.q || (m.actor + ' ' + m.texto + ' ' + m.fuente).toLowerCase().includes(f.q)); }
+function visibles(capaId){ const f = filtros(); return movs.filter(m => (!capaId || m.capa === capaId) && pasa(m, f)); }
+const pos = c => [Math.cos(c.a) * c.rx, Math.sin(c.a) * c.rx * RY];
+
+function mostrarTip(c){
+  const v = visibles(c.id), t = v.filter(m => m.nombra === 'token').length;
+  tip.textContent = ''; tip.style.borderLeftColor = c.color;
+  const b = H('b', '', tip, c.nombre); b.style.color = mezcla(c.color, '#fff', .3);
+  H('div', 'nota', tip, `${v.length} hechos · ${t} nombran XRP o XLM`);
+  H('div', 'nota', tip, `${c.docs.inv.length} documentos · ${c.docs.glo.length} términos del glosario`);
+  H('div', 'nota', tip, c.resumen);
+  tip.style.opacity = 1;
+}
+function moverTip(e){ const r = $('lienzo').getBoundingClientRect(); tip.style.left = Math.min(e.clientX - r.left + 16, r.width - 270) + 'px'; tip.style.top = Math.max(e.clientY - r.top - 10, 6) + 'px'; }
+
+let ultimo = performance.now(), tiempo = 0;
+function frame(now){
+  const dt = Math.min(0.05, (now - ultimo) / 1000); ultimo = now; tiempo += dt;
+  capas.forEach(c => {
+    if (!orbitasPausadas && c !== sel && !c.hover) c.a += c.v * dt;
+    const [x, y] = pos(c);
+    c.g.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
+    c.enlace.setAttribute('x2', x.toFixed(1)); c.enlace.setAttribute('y2', y.toFixed(1));
+    const sg = c.v > 0 ? 1 : -1, a0 = c.a - sg * .5, p0 = [Math.cos(a0) * c.rx, Math.sin(a0) * c.rx * RY];
+    c.estela.setAttribute('d', `M ${p0[0].toFixed(1)} ${p0[1].toFixed(1)} A ${c.rx} ${(c.rx * RY).toFixed(1)} 0 0 ${sg > 0 ? 1 : 0} ${x.toFixed(1)} ${y.toFixed(1)}`);
+    const vis = c.lunas.filter(m => m.vis), n = vis.length;
+    c.lunas.forEach(m => {
+      if (!m.vis){ m.rotulo.setAttribute('opacity', 0); m.lider.setAttribute('opacity', 0); return; }
+      let tx, ty;
+      if (c === sel){                                     // al acercarse, cada hecho se coloca en un anillo con su rótulo
+        const k = vis.indexOf(m), ang = -Math.PI / 2 + k * 2 * Math.PI / n, rr = c.R + 58 + (k % 2) * 16;
+        tx = Math.cos(ang) * rr * 1.15; ty = Math.sin(ang) * rr * .9;
+      } else { const a = m.fase + tiempo * m.vel; tx = Math.cos(a) * (c.R + m.dist); ty = Math.sin(a) * (c.R + m.dist) * .8; }
+      m.x += (tx - m.x) * .14; m.y += (ty - m.y) * .14;
+      m.luna.setAttribute('cx', m.x.toFixed(1)); m.luna.setAttribute('cy', m.y.toFixed(1));
+      const enSel = c === sel;
+      m.rotulo.setAttribute('x', (m.x + (m.x >= 0 ? 8 : -8)).toFixed(1)); m.rotulo.setAttribute('y', (m.y + 3).toFixed(1));
+      m.rotulo.setAttribute('text-anchor', m.x >= 0 ? 'start' : 'end'); m.rotulo.setAttribute('opacity', enSel ? 1 : 0);
+      m.lider.setAttribute('x2', m.x.toFixed(1)); m.lider.setAttribute('y2', m.y.toFixed(1)); m.lider.setAttribute('opacity', enSel ? 1 : 0);
+    });
+  });
+  if (reproduciendo){ const nuevo = +slider.value + 5; if (nuevo >= +slider.max){ slider.value = slider.max; reproduciendo = false; $('btnPlay').textContent = '▶ Tiempo'; } else slider.value = nuevo; refrescar(true); }
+  animarVista(dt);
+  requestAnimationFrame(frame);
+}
+const VISTA0 = {x: -520, y: -360, w: 1040, h: 720};
+let vista = {...VISTA0}, destino = {...VISTA0};
+function animarVista(dt){
+  const k = 1 - Math.pow(0.0008, dt);
+  if (sel){ const [x, y] = pos(sel), r = $('lienzo').getBoundingClientRect(), asp = (r.width || 1000) / (r.height || 700), w = 600; destino = {x: x - w / 2, y: y - w / asp / 2, w, h: w / asp}; }
+  for (const p of ['x','y','w','h']) vista[p] += (destino[p] - vista[p]) * k;
+  svg.setAttribute('viewBox', `${vista.x.toFixed(1)} ${vista.y.toFixed(1)} ${vista.w.toFixed(1)} ${vista.h.toFixed(1)}`);
+}
+
+// Anillo de estados alrededor de la capa elegida: cuánto está en producción, piloto, plan…
+function dibujarDonut(c, vs){
+  c.donut.textContent = '';
+  if (c !== sel || !vs.length) return;
+  const rr = c.R * 1.45, tot = vs.length; let a = -Math.PI / 2;
+  Object.keys(est).forEach(k => { const n = vs.filter(m => m.estado === k).length; if (!n) return;
+    const a1 = a + (n / tot) * 2 * Math.PI, gap = tot > 1 ? .07 : 0, s0 = a + gap, s1 = a1 - gap;
+    const p = (an) => [Math.cos(an) * rr, Math.sin(an) * rr];
+    const [x0, y0] = p(s0), [x1, y1] = p(s1);
+    S('path', {d: `M ${x0.toFixed(1)} ${y0.toFixed(1)} A ${rr.toFixed(1)} ${rr.toFixed(1)} 0 ${(s1 - s0) > Math.PI ? 1 : 0} 1 ${x1.toFixed(1)} ${y1.toFixed(1)}`, fill: 'none', stroke: colEst(k), 'stroke-width': 4, 'stroke-linecap': 'butt', opacity: .95}, c.donut);
+    a = a1; });
+}
+
+function refrescar(animado){
+  const f = filtros();
+  app.classList.toggle('sel', !!sel);
+  $('fecha').textContent = fmt(f.corte); $('subtitulo').textContent = 'situación a ' + fmt(f.corte);
+  capas.forEach(c => {
+    const vs = visibles(c.id), n = vs.length;
+    c.R = 15 + 3.4 * Math.sqrt(n);
+    c.disco.setAttribute('r', c.R.toFixed(1)); c.interno.setAttribute('r', (c.R * .68).toFixed(1));
+    c.halo.setAttribute('r', (c.R * 2.6).toFixed(1));
+    if (c.aro) c.aro.setAttribute('r', (c.R * 1.5).toFixed(1));
+    c.selAnillo.setAttribute('r', (c.R * 1.75).toFixed(1)); c.selAnillo.setAttribute('opacity', c === sel ? .9 : 0);
+    c.num.textContent = n; c.rot.setAttribute('y', (c.R + 17).toFixed(1));
+    const dim = (sel && c !== sel) || (n === 0 && (f.q || f.solo));
+    c.g.style.opacity = dim ? .3 : 1; c.g.style.transition = 'opacity .4s';
+    c.orbita.setAttribute('stroke', c === sel ? rgba(c.color, .7) : 'rgba(148,163,184,.17)');
+    c.enlace.setAttribute('stroke', rgba(c.color, dim ? .05 : .22));
+    c.lunas.forEach(m => { const v = pasa(m, f); if (v && !m.vis && animado){ c.pulso.setAttribute('opacity', 0); c.pulso.classList.remove('pulso'); void c.pulso.getBoundingClientRect(); c.pulso.classList.add('pulso'); c.pulso.setAttribute('opacity', .9); }
+      m.vis = v; m.luna.setAttribute('opacity', v ? 1 : 0); });
+    dibujarDonut(c, vs);
+    vistos[c.id] = n;
+  });
+  dibujarPanel();
+  setTimeout(ajustarAlto, 60);
+}
+
+function insignia(m, padre){
+  const a = H('span', 'chip', padre); const p = H('span', 'punto', a); p.style.background = colEst(m.estado);
+  a.appendChild(document.createTextNode((est[m.estado] || {nombre: m.estado}).nombre));
+  const b = H('span', 'chip', padre); const q = H('span', 'punto', b); q.style.background = colNombra[m.nombra] || '#475569'; b.appendChild(document.createTextNode(D.nombra[m.nombra] || m.nombra));
+}
+function listaMovs(padre, lista){
+  if (!lista.length){ H('p', 'nota', padre, 'Ningún hecho con estos filtros y esta fecha.'); return; }
+  lista.slice().sort((a, b) => b.d - a.d).forEach((m, i) => {
+    const it = H('div', 'item entra', padre); it.style.animationDelay = (i * 30) + 'ms';
+    const t = H('div', '', it); H('span', 'nota', t, m.fecha + ' · '); H('b', '', t, m.actor);
+    H('div', '', it, m.texto);
+    const ch = H('div', 'chips', it); insignia(m, ch);
+    H('div', 'fuente', it, 'Fuente: ' + m.fuente + (sel ? '' : ' · capa: ' + (m.capaObj ? m.capaObj.nombre : m.capa)));
+  });
+}
+const donde = {Research: 'En la app: 📌 Seguimiento → «Leer un informe».', Dossier: 'En la app: 🧠 Cerebro → Dossiers.', Apunte: 'En la app: 🧠 Cerebro → Apuntes.'};
+function tarjetaDoc(padre, d, i){
+  const det = H('details', 'doc entra', padre); det.style.animationDelay = (i * 30) + 'ms';
+  const s = H('summary', '', det); const col = colTipo[d.tipo] || '#94a3b8';
+  const e = H('span', 'etq', s, d.id ? `${d.tipo} · ${d.id}` : d.tipo); e.style.color = col; e.style.borderColor = rgba(col, .6);
+  H('span', '', s, d.titulo);
+  const cu = H('div', 'cuerpo', det); H('div', '', cu, d.resumen || '(sin resumen)');
+  const f = H('div', 'fuente', cu, 'Archivo: ' + d.archivo + ' · ' + (donde[d.tipo] || '')); f.style.marginTop = '6px';
+}
+function bloqueDocs(padre, c){
+  const q = filtros().q, ok = t => !q || t.toLowerCase().includes(q);
+  const inv = c.docs.inv.filter(d => ok(d.titulo + ' ' + d.resumen)), glo = c.docs.glo.filter(g => ok(g.t + ' ' + g.d));
+  H('h3', '', padre, `Investigaciones y dossiers relacionados (${inv.length})`);
+  if (!inv.length) H('p', 'nota', padre, 'Ningún documento coincide con la búsqueda.'); else inv.forEach((d, i) => tarjetaDoc(padre, d, i));
+  H('h3', '', padre, `Glosario relacionado (${glo.length})`);
+  if (!glo.length) H('p', 'nota', padre, 'Ningún término coincide con la búsqueda.');
+  glo.forEach((g, i) => { const det = H('details', 'doc entra', padre); det.style.animationDelay = (i * 25) + 'ms';
+    const s = H('summary', '', det); H('b', '', s, g.t); const cu = H('div', 'cuerpo', det); H('div', '', cu, g.d); });
+}
+
+function dibujarPanel(){
+  const antes = panel.scrollTop; panel.textContent = '';
+  const f = filtros();
+  if (!sel){
+    const c0 = H('div', 'cabecera entra', panel); c0.style.borderLeftColor = ORO;
+    H('h2', '', c0, 'Explorador de raíles'); H('p', 'nota', c0, D.aviso);
+    const todos = visibles(), cuenta = {token: 0, red: 0, indirecto: 0, no: 0};
+    todos.forEach(m => cuenta[m.nombra] = (cuenta[m.nombra] || 0) + 1);
+    H('h3', '', panel, `Hechos visibles: ${todos.length} de ${movs.length}`);
+    const barra = H('div', 'barra-apilada', panel);
+    ['token', 'red', 'indirecto', 'no'].forEach(k => { if (cuenta[k]){ const s = H('div', '', barra); s.style.flex = cuenta[k]; s.style.background = colNombra[k]; s.title = D.nombra[k] + ': ' + cuenta[k]; } });
+    const ley = H('div', 'leyenda', panel);
+    ['token', 'red', 'indirecto', 'no'].forEach(k => { const s = H('span', '', ley); const p = H('span', 'punto', s); p.style.background = colNombra[k]; s.appendChild(document.createTextNode(`${D.nombra[k]}: ${cuenta[k] || 0}`)); });
+    H('h3', '', panel, 'Capas');
+    capas.forEach((c, i) => {
+      const b = H('button', 'capa-fila entra', panel); b.style.animationDelay = (i * 25) + 'ms';
+      const e = H('span', 'esf', b); e.style.background = c.color;
+      const nombre = H('span', '', b, c.nombre); H('span', 'sub', b, `  ${c.docs.inv.length} docs · ${c.docs.glo.length} términos`);
+      H('span', 'n', b, String(visibles(c.id).length));
+      b.addEventListener('click', () => seleccionar(c));
+    });
+    const bib = D.biblioteca || {};
+    H('h3', '', panel, 'Biblioteca conectada');
+    H('p', 'nota', panel, `El mapa está enlazado con ${bib.docs || 0} documentos (research, dossiers y apuntes) y ${bib.glosario || 0} términos del glosario. Cada capa muestra los más relacionados; esta es la lectura recomendada para empezar:`);
+    capas.forEach((c, i) => { if (c.docs.inv[0]){ tarjetaDoc(panel, {...c.docs.inv[0], titulo: c.nombre + ' — ' + c.docs.inv[0].titulo}, i); } });
+    H('h3', '', panel, 'Cómo leerlo');
+    H('p', 'nota', panel, 'Cada disco es una capa del sistema y cada punto a su alrededor, un hecho. Los puntos con aro azul nombran XRP o XLM. Pulsa una capa para acercarte: sus hechos se ordenan con su fecha y un anillo muestra en qué estado están. «▶ Tiempo» reproduce los hechos por fecha.');
+    H('h3', '', panel, 'Últimos hechos');
+    listaMovs(panel, todos.slice(-5));
+  } else {
+    const b = H('button', 'volver', panel, '← Volver al mapa'); b.addEventListener('click', () => seleccionar(null));
+    const cab = H('div', 'cabecera entra', panel); cab.style.borderLeftColor = sel.color;
+    const t = H('h2', '', cab, sel.nombre); t.style.color = mezcla(sel.color, '#fff', .35);
+    H('p', 'nota', cab, sel.resumen);
+    const vs = visibles(sel.id), cnt = {};
+    vs.forEach(m => cnt[m.estado] = (cnt[m.estado] || 0) + 1);
+    const chips = H('div', 'chips', cab);
+    Object.keys(est).forEach(k => { if (cnt[k]){ const a = H('span', 'chip', chips); const p = H('span', 'punto', a); p.style.background = colEst(k); a.appendChild(document.createTextNode(`${est[k].nombre}: ${cnt[k]}`)); } });
+    [['En producción', 'produccion', 'produccion'], ['Piloto o prueba', 'piloto', 'piloto'], ['Plan o propuesta', 'plan', 'plan'], ['¿Nombra XRP o XLM?', 'xrp', null]].forEach(([tit, k, ek], i) => {
+      const bl = H('div', 'bloque entra', panel); bl.style.animationDelay = (60 + i * 50) + 'ms'; bl.style.borderLeftColor = ek ? colEst(ek) : colNombra.token;
+      const h = H('div', 'nota', bl, tit); h.style.fontWeight = 700; H('div', '', bl, sel[k] || '—'); });
+    if (f.corte < d1) H('p', 'nota', panel, 'Los cuadros de arriba describen la situación a octubre de 2026; la lista de abajo sí respeta la fecha del deslizador.');
+    H('h3', '', panel, 'Hechos de esta capa');
+    listaMovs(panel, vs);
+    bloqueDocs(panel, sel);
+  }
+  panel.scrollTop = antes;
+}
+
+function seleccionar(c){
+  sel = (c === sel) ? null : c;
+  if (!sel) destino = {...VISTA0};
+  refrescar(false); panel.scrollTop = 0;
+}
+$('btnVolver').addEventListener('click', () => seleccionar(null));
+$('btnOrbitas').addEventListener('click', e => { orbitasPausadas = !orbitasPausadas; e.target.textContent = orbitasPausadas ? '▶ Órbitas' : '⏸ Órbitas'; });
+$('btnPlay').addEventListener('click', e => { if (!reproduciendo){ if (+slider.value >= +slider.max) slider.value = 0; reproduciendo = true; e.target.textContent = '⏸ Tiempo'; vistos = {}; capas.forEach(c => c.lunas.forEach(m => { m.vis = false; })); } else { reproduciendo = false; e.target.textContent = '▶ Tiempo'; } });
+slider.addEventListener('input', () => { reproduciendo = false; $('btnPlay').textContent = '▶ Tiempo'; refrescar(false); });
+$('buscar').addEventListener('input', () => refrescar(false));
+$('soloToken').addEventListener('change', () => refrescar(false));
+try { new ResizeObserver(ajustarAlto).observe(app); } catch (e) {}
+refrescar(false); requestAnimationFrame(frame); ajustarAlto();
+</script></body></html>
