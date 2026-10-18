@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-19 (v2)",
+  "version": "2026-10-19b",
   "aviso": "Radar regulatorio construido solo con informes, dossiers, apuntes y el calendario del repo (sin búsquedas nuevas). Informativo: no es recomendación de compra ni venta. Fuente: P = documento oficial leído; S = prensa, despacho o agregador; VERIFICAR = sin dato o sin confirmar.",
   "escala": {
     "0": "Sin marco (o prohibido)",
@@ -98,14 +98,14 @@
       "jur": "eeuu",
       "tema": "stablecoins",
       "etapa": 3,
-      "estado": "La GENIUS Act es ley desde el 18-jul-2025, pero no está en vigor: la fecha efectiva prevista es el 18-ene-2027 y las normas de OCC, Tesoro y Fed siguen en propuesta.",
+      "estado": "La GENIUS Act es ley desde el 18-jul-2025, pero no está en vigor: entra el 18-ene-2027 o 120 días después de las normas finales, lo que llegue antes. Ninguna agencia ha publicado aún la norma final; el Comptroller dijo el 15-oct-2026 que la OCC quiere tenerla a finales de octubre.",
       "fecha": "2026-09-29",
       "fuente": "P",
       "proxima": {
-        "fecha": "2026-10-19",
-        "que": "Cierre de comentarios a la propuesta del Tesoro."
+        "fecha": "2026-10-31",
+        "que": "Objetivo de la OCC para su norma final (declaración del Comptroller, secundaria) [VERIFICAR]."
       },
-      "falta": "Normas finales de OCC, Tesoro y Fed; decisión del Tesoro sobre qué regímenes extranjeros son «comparables».",
+      "falta": "Normas finales de OCC, Tesoro y Fed (si salen antes de sep-2026 + 120 días, la fecha efectiva se adelanta); decisión del Tesoro sobre regímenes extranjeros «comparables».",
       "hitos": [
         {
           "fecha": "2025-07-18",
@@ -122,26 +122,31 @@
         {
           "fecha": "2026-09-29",
           "que": "Propuestas de la Fed publicadas en el Federal Register."
+        },
+        {
+          "fecha": "2026-10-15",
+          "que": "El Comptroller adelanta a finales de octubre el objetivo de la norma final de la OCC (según prensa)."
         }
       ],
       "informes": [
         "R25",
         "R18",
-        "Dossier Stablecoins (9-oct)"
+        "Dossier Stablecoins (9-oct)",
+        "Radar v2 research (19-oct)"
       ]
     },
     {
       "jur": "eeuu",
       "tema": "ley_marco",
       "etapa": 2,
-      "estado": "La ley de estructura de mercado (CLARITY Act) está bloqueada: la Cámara la aprobó 294-134 el 17-jul-2025, pero el cierre de debate falló 49-50 en el Senado el 15-sep-2026. Mientras tanto la SEC tramita la Regulation Crypto Assets (propuesta) y la interpretación SEC-CFTC trata a XRP y XLM como materias primas digitales.",
+      "estado": "La ley de estructura de mercado (CLARITY Act) está bloqueada: la Cámara la aprobó 294-134 el 17-jul-2025 y el cierre de debate falló 49-50 en el Senado el 15-sep-2026, con los 49 votos a favor republicanos. Tillis votó no para poder pedir que se repita la votación, así que sigue abierta una segunda votación sin nueva moción; no hay fecha.",
       "fecha": "2026-10-05",
       "fuente": "S",
       "proxima": {
         "fecha": "2026-10-20",
         "que": "Cierre de comentarios a la Regulation Crypto Assets (SEC)."
       },
-      "falta": "Aprobación de la CLARITY Act en el Senado; norma final de la SEC; decisión de la CFTC sobre las Regulation CTX y CAM.",
+      "falta": "Segunda votación de cierre de debate (moción de Tillis) o reintroducción en 2027; norma final de la SEC; decisión de la CFTC sobre las Regulation CTX y CAM.",
       "hitos": [
         {
           "fecha": "2025-07-17",
@@ -160,6 +165,10 @@
           "que": "Falla el cierre de debate de la CLARITY Act en el Senado (49-50) [S: registro del Senado vía prensa]."
         },
         {
+          "fecha": "2026-09-15",
+          "que": "Tillis presenta la moción para reconsiderar el cierre de debate (registro del Senado según prensa)."
+        },
+        {
           "fecha": "2026-10-05",
           "que": "La CFTC publica un aviso previo (ANPRM) sobre las Regulation CTX y CAM."
         }
@@ -168,7 +177,8 @@
         "R18",
         "R23",
         "R48",
-        "Dossier CLARITY (9-oct)"
+        "Dossier CLARITY (9-oct)",
+        "Radar v2 research (19-oct)"
       ]
     },
     {
@@ -348,18 +358,26 @@
       "jur": "ue",
       "tema": "stablecoins",
       "etapa": 5,
-      "estado": "MiCA está en vigor para las stablecoins: el registro de ESMA lista 25 emisores de EMT y ningún emisor de ART; Tether no figura.",
+      "estado": "MiCA está en vigor para las stablecoins: el registro de ESMA lista 25 emisores de EMT y ningún emisor de ART; Tether no figura. Sobre la multi-emisión, la consulta de la Comisión (cerró el 31-ago-2026) reconoce que MiCA no la prohíbe, mientras la EBA (24-sep-2026) y el SEBC piden aclaración o límites; no hay guía publicada.",
       "fecha": "2026-10-08",
       "fuente": "P",
       "proxima": {
         "fecha": "2027-01-08",
         "que": "Posible fin del plazo de ESMA para stablecoins no conformes [VERIFICAR]."
       },
-      "falta": "Decisión formal sobre la multi-emisión [VERIFICAR]; texto íntegro del comunicado de ESMA del 8-oct-2026.",
+      "falta": "Guía de la Comisión sobre la multi-emisión; texto íntegro del comunicado de ESMA del 8-oct-2026.",
       "hitos": [
         {
           "fecha": "2024-07-01",
           "que": "Circle Internet Financial Europe autorizada como emisor de EMT."
+        },
+        {
+          "fecha": "2026-08-31",
+          "que": "Cierra la consulta de la Comisión sobre la revisión de MiCA (según despachos)."
+        },
+        {
+          "fecha": "2026-09-24",
+          "que": "La EBA alerta de riesgos de la multi-emisión con terceros países (según prensa)."
         },
         {
           "fecha": "2026-10-08",
@@ -369,7 +387,8 @@
       "informes": [
         "R25",
         "R18",
-        "Dossier Stablecoins (9-oct)"
+        "Dossier Stablecoins (9-oct)",
+        "Radar v2 research (19-oct)"
       ]
     },
     {
@@ -475,14 +494,14 @@
       "jur": "ue",
       "tema": "cbdc",
       "etapa": 2,
-      "estado": "El Reglamento del euro digital está en trámite: el Parlamento tiene mandato de negociación desde el 9-jul-2026, sin acuerdo final; la emisión sería posible en 2029 si la ley se adopta en 2026.",
+      "estado": "El Reglamento del euro digital está en trámite: el Consejo fijó su posición negociadora el 19-dic-2025 (con un techo de tenencia que fija el BCE dentro de un máximo del Consejo) y el Parlamento tiene mandato desde el 9-jul-2026; falta el acuerdo en trílogo. La emisión sería posible en 2029 si la ley se adopta en 2026.",
       "fecha": "2026-07-09",
       "fuente": "P",
       "proxima": {
         "fecha": "2026-10-27",
         "que": "Cierre de la convocatoria a comercios del piloto [VERIFICAR]."
       },
-      "falta": "Acuerdo en trílogo; confirmar la posición del Consejo (R40 no la ve; el dossier la fecha el 19-dic-2025) [VERIFICAR].",
+      "falta": "Acuerdo en trílogo; la página oficial del Consejo dio 403 (posición confirmada por la cronología del Consejo en el buscador y por dos despachos).",
       "hitos": [
         {
           "fecha": "2023-06-28",
@@ -494,7 +513,7 @@
         },
         {
           "fecha": "2025-12-19",
-          "que": "Posición del Consejo según el dossier (secundaria, sin confirmar)."
+          "que": "El Consejo acuerda su posición negociadora (cronología del Consejo y despachos; la página dio 403)."
         },
         {
           "fecha": "2026-06-23",
@@ -510,7 +529,8 @@
         "R30",
         "R08P",
         "Dossier Euro digital (9-oct)",
-        "Cruce de fichas (19-oct)"
+        "Cruce de fichas (19-oct)",
+        "Radar v2 research (19-oct)"
       ]
     },
     {
@@ -724,17 +744,23 @@
       "jur": "sg",
       "tema": "politica",
       "etapa": null,
-      "estado": "No hay research sobre la política monetaria de esta jurisdicción.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
+      "estado": "La MAS mantuvo el 14-oct-2026 la pendiente, la anchura y el centro de la banda del S$NEER (la moneda sigue apreciándose dentro de la banda); prevé inflación subyacente del 1,5-2,0 % y general del ~2,0 % en 2026. La MAS no usa tipos de interés: su instrumento es el tipo de cambio.",
+      "fecha": "2026-10-14",
+      "fuente": "P",
       "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
-      "informes": [
-        "R29"
+      "falta": "Fecha de la próxima declaración (no figura en la página); en el sondeo de Bloomberg 17 de 20 economistas esperaban un endurecimiento.",
+      "hitos": [
+        {
+          "fecha": "2026-10-14",
+          "que": "Declaración de política monetaria: banda sin cambios."
+        }
       ],
-      "dir": null,
-      "valor": null
+      "informes": [
+        "R29",
+        "Radar v2 research (19-oct)"
+      ],
+      "dir": "mantiene",
+      "valor": "Banda S$NEER sin cambios"
     },
     {
       "jur": "hk",
@@ -816,44 +842,70 @@
     {
       "jur": "hk",
       "tema": "tokenizacion",
-      "etapa": null,
-      "estado": "Solo consta la circular de la SFC (may-2026) sobre fondos autorizados que usen stablecoins y depósitos tokenizados; no hay research sobre el marco de tokenización de valores.",
-      "fecha": "2026-05",
+      "etapa": 1,
+      "estado": "La HKMA tiene en piloto EnsembleTX (desde nov-2025, todo 2026), donde bancos liquidan activos tokenizados (sobre todo fondos monetarios) con depósitos tokenizados en entrega contra pago; la SFC regula los fondos que usan stablecoins y depósitos tokenizados (circular de may-2026).",
+      "fecha": "2026-05-29",
       "fuente": "P",
       "proxima": null,
-      "falta": "Research sobre la tokenización de valores en Hong Kong.",
-      "hitos": [],
+      "falta": "Marco legal de valores tokenizados; volumen del piloto.",
+      "hitos": [
+        {
+          "fecha": "2025-11-13",
+          "que": "La HKMA lanza EnsembleTX con transacciones de valor real."
+        },
+        {
+          "fecha": "2026-05",
+          "que": "Circular de la SFC sobre fondos con stablecoins y depósitos tokenizados."
+        }
+      ],
       "informes": [
-        "R27"
+        "R27",
+        "Radar v2 research (19-oct)"
       ]
     },
     {
       "jur": "hk",
       "tema": "custodia",
-      "etapa": null,
-      "estado": "No hay research sobre la custodia cripto en Hong Kong.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
+      "etapa": 1,
+      "estado": "El Gobierno y la SFC concluyeron el 24-dic-2025 la consulta sobre un régimen de licencias para custodios de activos virtuales (custodia de claves privadas) y prevén presentar el proyecto de ley al Consejo Legislativo en 2026, sin periodo transitorio para los custodios existentes.",
+      "fecha": "2025-12-24",
+      "fuente": "P",
       "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
+      "falta": "Proyecto de ley presentado al Consejo Legislativo (el informe trimestral de la SFC de abr-jun 2026 aún lo da como objetivo).",
+      "hitos": [
+        {
+          "fecha": "2025-12-24",
+          "que": "Conclusiones de la consulta de FSTB y SFC sobre los regímenes de dealers y custodios."
+        }
+      ],
       "informes": [
-        "R07P"
+        "R07P",
+        "Radar v2 research (19-oct)"
       ]
     },
     {
       "jur": "hk",
       "tema": "cbdc",
-      "etapa": null,
-      "estado": "No hay research sobre el e-HKD; la HKMA es fundadora de mBridge según la ficha del BIS.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
+      "etapa": 1,
+      "estado": "La HKMA prioriza el e-HKD mayorista para entidades financieras: el informe de la fase 2 del piloto concluye que el uso minorista no compensa por ahora. El piloto EnsembleTX liquida operaciones reales con depósitos tokenizados durante 2026 y el siguiente paso es liquidar en dinero de banco central tokenizado.",
+      "fecha": "2026-05-29",
+      "fuente": "P",
       "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
+      "falta": "Fecha de la liquidación en CBDC mayorista dentro de Ensemble; informe de casos de uso.",
+      "hitos": [
+        {
+          "fecha": "2025-11-13",
+          "que": "La HKMA anuncia la fase de Ensemble con transacciones de valor real."
+        },
+        {
+          "fecha": "2026-05-29",
+          "que": "Discurso de la HKMA: el siguiente paso es liquidar depósitos tokenizados en CBDC."
+        }
+      ],
       "informes": [
         "R16",
-        "R07P"
+        "R07P",
+        "Radar v2 research (19-oct)"
       ]
     },
     {
@@ -874,27 +926,36 @@
       "jur": "hk",
       "tema": "politica",
       "etapa": null,
-      "estado": "No hay research sobre la política monetaria de esta jurisdicción.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
-      "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
-      "informes": [
-        "R29"
+      "estado": "La HKMA subió el tipo base 25 pb, a 4,25 %, el 17-sep-2026, al día siguiente de la subida de la Fed, porque el dólar de Hong Kong está ligado al dólar (banda 7,75-7,85); los grandes bancos no movieron su tipo preferente.",
+      "fecha": "2026-09-17",
+      "fuente": "S",
+      "proxima": {
+        "fecha": "2026-10-29",
+        "que": "Decisión de la Fed (28-oct en EE. UU.), que la HKMA sigue al día siguiente."
+      },
+      "falta": "Comunicado de la HKMA leído (una fuente da 5,0 %: parece error).",
+      "hitos": [
+        {
+          "fecha": "2026-09-17",
+          "que": "La HKMA sube el tipo base a 4,25 % (primera subida desde jul-2023)."
+        }
       ],
-      "dir": null,
-      "valor": null
+      "informes": [
+        "R29",
+        "Radar v2 research (19-oct)"
+      ],
+      "dir": "sube",
+      "valor": "4,25 %"
     },
     {
       "jur": "kr",
       "tema": "stablecoins",
       "etapa": 2,
-      "estado": "La ley del won stablecoin sigue sin aprobar: hay 10 proyectos en la Asamblea y disputa sobre si el emisor debe ser un consorcio con mayoría de bancos.",
-      "fecha": "2026-07-29",
+      "estado": "La ley del won stablecoin sigue sin aprobar: el 8-oct-2026 el presidente de la FSC dijo en la auditoría parlamentaria que el texto está en «coordinación final»; sigue la disputa sobre si el emisor debe ser un consorcio con mayoría de bancos (51 %), que defiende el Banco de Corea.",
+      "fecha": "2026-10-08",
       "fuente": "S",
       "proxima": null,
-      "falta": "Presentación del proyecto unificado partido-Gobierno; texto oficial; postura actual del Banco de Corea.",
+      "falta": "Presentación formal del proyecto unificado en la Asamblea (sin número de ley a 19-oct); texto oficial.",
       "hitos": [
         {
           "fecha": "2026-01-28",
@@ -907,12 +968,17 @@
         {
           "fecha": "2026-07-29",
           "que": "El presidente de la FSC dice que el proyecto está preparado con discrepancias."
+        },
+        {
+          "fecha": "2026-10-08",
+          "que": "La FSC dice en la auditoría parlamentaria que el proyecto está en coordinación final (según prensa)."
         }
       ],
       "informes": [
         "R05P",
         "R30",
-        "R25"
+        "R25",
+        "Radar v2 research (19-oct)"
       ]
     },
     {
@@ -1032,17 +1098,30 @@
       "jur": "kr",
       "tema": "politica",
       "etapa": null,
-      "estado": "No hay research sobre la política monetaria de esta jurisdicción.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
-      "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
-      "informes": [
-        "R29"
+      "estado": "El Banco de Corea subió el tipo base 25 pb, a 3,00 %, el 27-ago-2026 (6 votos a 1), segunda subida seguida tras la de julio; cita un crecimiento previsto del 3,3 % y una inflación que seguirá por encima del objetivo.",
+      "fecha": "2026-08-27",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2026-10-22",
+        "que": "Reunión del Banco de Corea sobre el tipo base."
+      },
+      "falta": "Resultado de la reunión del 22-oct-2026.",
+      "hitos": [
+        {
+          "fecha": "2026-07-16",
+          "que": "Sube de 2,50 % a 2,75 % (primera subida desde 2023)."
+        },
+        {
+          "fecha": "2026-08-27",
+          "que": "Sube de 2,75 % a 3,00 % (6-1)."
+        }
       ],
-      "dir": null,
-      "valor": null
+      "informes": [
+        "R29",
+        "Radar v2 research (19-oct)"
+      ],
+      "dir": "sube",
+      "valor": "3,00 %"
     },
     {
       "jur": "jp",
@@ -1068,27 +1147,36 @@
       "jur": "jp",
       "tema": "ley_marco",
       "etapa": 3,
-      "estado": "La Dieta aprobó el 15-jul-2026 la reforma que pasa la cripto a la FIEA (información privilegiada, informes de emisores, penas mayores); no está en vigor.",
+      "estado": "La Dieta aprobó el 15-jul-2026 la reforma que pasa la cripto a la FIEA, promulgada el 23-jul-2026 como Ley n.º 64 de 2026 según un despacho; entra en vigor por orden del Gabinete, como tarde el 23-jul-2027, con seis meses de adaptación para los exchanges.",
       "fecha": "2026-07-15",
       "fuente": "S",
       "proxima": {
-        "fecha": "2027-07",
-        "que": "Fecha máxima de efecto de la reforma («dentro de un año») [VERIFICAR]."
+        "fecha": "2027-07-23",
+        "que": "Fecha máxima de entrada en vigor de la reforma [VERIFICAR en la FSA]."
       },
-      "falta": "Texto de la ley y fecha de efecto; lista de criptoactivos incluidos.",
+      "falta": "Orden del Gabinete con la fecha de entrada en vigor y texto oficial (FSA o Gaceta); lista de criptoactivos incluidos.",
       "hitos": [
         {
           "fecha": "2026-02-16",
           "que": "Informe del grupo de trabajo de la FSA sobre criptoactivos."
         },
         {
+          "fecha": "2026-04-10",
+          "que": "El Gabinete aprueba el proyecto de ley (según prensa)."
+        },
+        {
           "fecha": "2026-07-15",
           "que": "La Dieta aprueba la reforma de la FIEA (según prensa)."
+        },
+        {
+          "fecha": "2026-07-23",
+          "que": "Promulgación como Ley n.º 64 de 2026 (según un despacho) [VERIFICAR]."
         }
       ],
       "informes": [
         "R07P",
-        "R30"
+        "R30",
+        "Radar v2 research (19-oct)"
       ]
     },
     {
@@ -1329,22 +1417,34 @@
       "jur": "in",
       "tema": "politica",
       "etapa": null,
-      "estado": "El RBI endureció el 10-oct-2026 el control sobre derivados de la rupia (FERR 20 %, umbral de 5 M$) y abrió desde el 12-oct una ventana de dólares para IOC, HPCL y BPCL; no hay tipo oficial leído.",
+      "estado": "El RBI subió el tipo repo 25 pb, a 5,50 %, el 7-oct-2026 (voto unánime), primera subida desde feb-2023, y pasó a una postura de «endurecimiento calibrado»; el 10-oct limitó además los derivados sobre la rupia y abrió una ventana de dólares para las petroleras.",
       "fecha": "2026-10-10",
       "fuente": "P",
-      "proxima": null,
-      "falta": "Tipo oficial del RBI y comunicados sobre e₹ o cripto.",
+      "proxima": {
+        "fecha": "2026-12-04",
+        "que": "Decisión del Comité de Política Monetaria (2-4 de diciembre)."
+      },
+      "falta": "Comunicado completo leído (solo extractos de rbi.org.in).",
       "hitos": [
+        {
+          "fecha": "2026-08-05",
+          "que": "El RBI mantiene el repo en 5,25 % con postura neutral."
+        },
+        {
+          "fecha": "2026-10-07",
+          "que": "El RBI sube el repo a 5,50 %."
+        },
         {
           "fecha": "2026-10-10",
           "que": "Restricciones del RBI a derivados sobre la rupia."
         }
       ],
       "informes": [
-        "R30"
+        "R30",
+        "Radar v2 research (19-oct)"
       ],
-      "dir": "n/d",
-      "valor": "—"
+      "dir": "sube",
+      "valor": "5,50 %"
     },
     {
       "jur": "br",
@@ -1521,17 +1621,30 @@
       "jur": "br",
       "tema": "politica",
       "etapa": null,
-      "estado": "No hay research sobre la política monetaria de esta jurisdicción.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
-      "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
-      "informes": [
-        "R29"
+      "estado": "El Copom bajó la Selic 25 pb, a 13,75 %, el 16-sep-2026 (281.ª reunión, unánime), quinto recorte seguido; dice que mantendrá una política «adecuadamente restrictiva» porque la inflación sigue por encima de la meta. Es de los pocos grandes bancos centrales que bajan tipos.",
+      "fecha": "2026-09-16",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2026-11-04",
+        "que": "Siguiente reunión del Copom (3-4 de noviembre)."
+      },
+      "falta": "Riesgos al alza que cita el propio Copom (petróleo, Oriente Medio y política fiscal).",
+      "hitos": [
+        {
+          "fecha": "2026-08",
+          "que": "El Copom baja la Selic a 14,00 % (280.ª reunión)."
+        },
+        {
+          "fecha": "2026-09-16",
+          "que": "El Copom baja la Selic a 13,75 % (281.ª reunión)."
+        }
       ],
-      "dir": null,
-      "valor": null
+      "informes": [
+        "R29",
+        "Radar v2 research (19-oct)"
+      ],
+      "dir": "baja",
+      "valor": "13,75 %"
     },
     {
       "jur": "ru",
@@ -1824,17 +1937,26 @@
       "jur": "ae",
       "tema": "politica",
       "etapa": null,
-      "estado": "No hay research sobre la política monetaria de esta jurisdicción.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
-      "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
-      "informes": [
-        "R29"
+      "estado": "El Banco Central de los EAU subió el tipo base 25 pb, de 3,65 % a 3,90 %, con efecto el 17-sep-2026, siguiendo a la Fed porque el tipo base está anclado al interés de reservas de la Fed.",
+      "fecha": "2026-09-17",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2026-10-28",
+        "que": "Decisión de la Fed, que el CBUAE replica."
+      },
+      "falta": "Ninguno: el tipo sigue a la Fed.",
+      "hitos": [
+        {
+          "fecha": "2026-09-16",
+          "que": "El CBUAE anuncia la subida del tipo base a 3,90 %."
+        }
       ],
-      "dir": null,
-      "valor": null
+      "informes": [
+        "R29",
+        "Radar v2 research (19-oct)"
+      ],
+      "dir": "sube",
+      "valor": "3,90 %"
     },
     {
       "jur": "cn",
