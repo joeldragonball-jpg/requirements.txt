@@ -83,6 +83,9 @@ details.doc .chips{margin:2px 0 6px}
 .radar-cel small{font-size:8.5px;font-weight:600;opacity:.85}
 .radar-cel.nd{border-style:dashed;background:transparent !important;color:var(--suave);font-weight:400}
 .radar-cel:hover{filter:brightness(1.25)}.radar-cel.on{outline:2px solid var(--oro);outline-offset:1px}
+.contraste{border:1px solid rgba(212,168,75,.45);background:rgba(212,168,75,.06);border-radius:8px;padding:2px 10px 8px;margin:10px 0}
+.contraste h3{border-bottom-color:rgba(212,168,75,.35);color:#f1d58a}
+.contraste details.doc{background:rgba(15,23,42,.7)}
 .hitos{margin:6px 0 0;padding:0;list-style:none;border-left:2px solid var(--linea)}.hitos li{position:relative;padding:2px 0 6px 12px;font-size:12.5px;color:#cdd6ea}
 .hitos li::before{content:'';position:absolute;left:-5px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--oro)}
 .hitos .cuando{color:#f1d58a;margin-right:6px}
@@ -587,6 +590,33 @@ function radarVista(padre, titulo){
   }
   H('p', 'nota', padre, 'Versión ' + (RADAR.version || '') + ' · ' + RADAR.aviso);
 }
+const CONTR = D.contraste;
+const VEREDICTO = {respaldado: ['Respaldado', '#3fb68b'], parcial: ['Respaldado en parte', '#d4a84b'], sin_respaldo: ['Sin respaldo', '#d9904a'],
+  contradicho: ['Contradicho', '#e06c6c'], no_comprobable: ['No comprobable', '#8a97b0']};
+function contrasteBloque(padre, puntos, titulo){
+  if (!CONTR || !(puntos || []).length) return;
+  const cj = H('div', 'contraste', padre);
+  H('h3', '', cj, titulo);
+  const cu = {}; puntos.forEach(p => cu[p.veredicto] = (cu[p.veredicto] || 0) + 1);
+  const ley = H('div', 'leyenda', cj);
+  Object.keys(VEREDICTO).forEach(k => { if (cu[k]){ const s = H('span', '', ley); const q = H('span', 'punto', s); q.style.background = VEREDICTO[k][1]; s.appendChild(document.createTextNode(`${VEREDICTO[k][0]}: ${cu[k]}`)); } });
+  puntos.forEach((p, i) => {
+    const v = VEREDICTO[p.veredicto] || [p.veredicto, '#8a97b0'];
+    const det = H('details', 'doc entra', cj); det.style.animationDelay = (i * 30) + 'ms'; det.style.borderLeft = `3px solid ${v[1]}`;
+    const s = H('summary', '', det);
+    const e = H('span', 'etq', s, v[0]); e.style.color = v[1]; e.style.borderColor = rgba(v[1], .6);
+    H('span', 'hecho-t', s, p.punto);
+    if (p.especulacion){ const x = H('span', 'etq', s, 'Especulación'); x.style.color = NIVEL.ESP[1]; x.style.borderColor = rgba(NIVEL.ESP[1], .6); }
+    const c2 = H('div', 'cuerpo', det);
+    H('div', '', c2, p.razonamiento || '');
+    if ((p.evidencia || []).length){ const ht = H('div', 'nota', c2, 'Evidencia'); ht.style.cssText = 'margin-top:8px;font-weight:700'; }
+    const ul = H('ul', 'ficha-ul', c2);
+    (p.evidencia || []).forEach(ev => { const li = H('li', '', ul); li.appendChild(document.createTextNode(`${ev.t} `)); const nf = NIVEL[ev.nivel === 'VERIFICAR' ? 'VER' : ev.nivel];
+      const f = H('span', 'fuente', li, `(${ev.fuente}${nf ? ' · ' + nf[0].toLowerCase() : ''})`); });
+    if (p.abierto){ const o = H('div', 'nota', c2); o.style.marginTop = '6px'; H('b', '', o, 'Qué falta comprobar: '); o.appendChild(document.createTextNode(p.abierto)); }
+  });
+  H('p', 'nota', cj, CONTR.aviso || 'Contraste privado de tu tesis con la evidencia del repo. Informativo: no es recomendación.');
+}
 function listaEventos(padre, lista, conCapa){
   if (!lista.length){ H('p', 'nota', padre, 'No hay fechas próximas con los temas elegidos.'); return; }
   lista.forEach((e, i) => {
@@ -606,6 +636,7 @@ function dibujarPanel(){
   if (!sel){
     const c0 = H('div', 'cabecera entra', panel); c0.style.borderLeftColor = ORO;
     H('h2', '', c0, 'Explorador de raíles'); H('p', 'nota', c0, D.aviso);
+    if (CONTR) contrasteBloque(panel, CONTR.generales, 'Contraste general con tu tesis (privado, solo en tu PC)');
     H('h3', '', panel, 'Capas');
     capas.forEach((c, i) => {
       const b = H('button', 'capa-fila entra', panel); b.style.animationDelay = (i * 25) + 'ms';
@@ -644,6 +675,7 @@ function dibujarPanel(){
     vs.forEach(m => cnt[m.estado] = (cnt[m.estado] || 0) + 1);
     const chips = H('div', 'chips', cab);
     Object.keys(est).forEach(k => { if (cnt[k]){ const a = H('span', 'chip', chips); const p = H('span', 'punto', a); p.style.background = colEst(k); a.appendChild(document.createTextNode(`${est[k].nombre}: ${cnt[k]}`)); } });
+    if (CONTR && CONTR.capas) contrasteBloque(panel, CONTR.capas[sel.id], 'Contraste con tu tesis (privado, solo en tu PC)');
     if (sel.id === 'reg') radarVista(panel, 'Radar regulatorio por país y tema');
     fichaAnalista(panel, sel);
     H('h3', '', panel, 'Cifras clave');

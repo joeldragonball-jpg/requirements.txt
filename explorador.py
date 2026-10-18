@@ -211,6 +211,10 @@ def _html(conceptos):
         datos["radar"] = json.loads((CARPETA / "regulacion.json").read_text(encoding="utf-8"))
     except Exception:
         datos["radar"] = None            # sin el archivo del radar, el mapa funciona igual (sin esa sección)
+    try:                              # contraste privado con la tesis: solo existe en tu PC (privado/ no se sube a GitHub)
+        datos["contraste"] = json.loads((RAIZ / "privado" / "contraste-tesis.json").read_text(encoding="utf-8"))
+    except Exception:
+        datos["contraste"] = None
     datos["biblioteca"] = rel.get("_totales", {})
     hoy = date.today().isoformat()
     datos["calendario"] = {"hoy": hoy, "temas": TEMAS, "eventos": _calendario(hoy, _version())}
