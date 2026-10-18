@@ -223,7 +223,37 @@
             "Unión Europea"
           ]
         }
-      ]
+      ],
+      "ficha": {
+        "hace": "Dinero de banco central en forma digital: minorista (para el público) y mayorista (entre bancos).",
+        "controla": "Cada banco central. La plataforma es pública: en Rusia todas las operaciones pasan por la plataforma del Banco de Rusia.",
+        "falta": [
+          "Euro digital: sin acuerdo final; el Parlamento Europeo tiene mandato de negociación desde el 9-jul-2026 y falta la posición del Consejo.",
+          "Las cifras de uso de China, India y Rusia no se han podido verificar en fuente primaria."
+        ],
+        "madurez": {
+          "n": 3,
+          "t": "Lo mayorista ya hace pruebas reales (Pontes en marcha, subastas de letras tokenizadas de la MAS). En minorista solo hay 3 lanzamientos completos en el mundo (Bahamas, Jamaica, Nigeria) y las economías avanzadas se retiran."
+        },
+        "favor": [
+          "La CBDC mayorista (Singapur, Pontes del BCE, Agorá) normaliza los rieles DLT con dinero de banco central.",
+          "Rusia pasa del piloto al despliegue obligatorio por fases (desde el 1-sep-2026)."
+        ],
+        "contra": [
+          "Son monedas públicas con plataforma propia: pueden competir con los puentes privados. El efecto sobre XRP y XLM es [ESPECULACIÓN].",
+          "Brasil retiró la parte DLT del Drex y el circulante del piloto indio bajó un 24 %."
+        ],
+        "vigilar": [
+          "Posición del Consejo de la UE sobre el euro digital (sin fecha).",
+          "Resultado de las subastas de letras tokenizadas de la MAS.",
+          "Siguiente fase de Agorá (BIS) con valor real: sin fecha."
+        ],
+        "informes": [
+          "R40",
+          "R08P",
+          "R28"
+        ]
+      }
     },
     {
       "id": "stable",
@@ -371,7 +401,38 @@
             "EE. UU."
           ]
         }
-      ]
+      ],
+      "ficha": {
+        "hace": "Monedas ligadas al dólar o al euro que circulan en cadena; son la base de los pagos con cripto.",
+        "controla": "Emisores privados (USDT y USDC suman ≈ 84 % del total) bajo reguladores: MiCA en la UE, la HKMA en Hong Kong y la GENIUS Act en EE. UU.",
+        "falta": [
+          "GENIUS Act: fecha efectiva prevista ≈ 18-ene-2027; comentarios del Tesoro hasta el 19-oct-2026.",
+          "UE: sin decisión formal sobre la «multi-emisión» (misma moneda emitida por entidades de dentro y de fuera) [VERIFICAR].",
+          "Falta leer la atestación de Tether y el informe de reservas de Circle."
+        ],
+        "madurez": {
+          "n": 4,
+          "t": "Mercado de ≈ 306.000 M$ con marcos legales ya en vigor (MiCA, Hong Kong) o con fecha (EE. UU.); pero concentrado y casi todo en dólares."
+        },
+        "favor": [
+          "Marcos legales en vigor o con fecha; 25 emisores de dinero electrónico autorizados en la UE y 2 licencias en Hong Kong.",
+          "Los bancos pueden emitir (filiales de bancos asegurados en EE. UU.); RLUSD supera los 2.400 M$."
+        ],
+        "contra": [
+          "Concentración: USDT y USDC ≈ 84 % del total; su suministro bajó algo en el último mes según DefiLlama.",
+          "Incertidumbre regulatoria (multi-emisión en la UE, condición de «comparabilidad» en EE. UU.); India y Brasil restringen; los bancos centrales prefieren CBDC."
+        ],
+        "vigilar": [
+          "19-oct-2026: cierre de comentarios del Tesoro a la norma de la GENIUS Act.",
+          "30-nov-2026: cierre de comentarios de la Fed.",
+          "≈ 18-ene-2027: fecha efectiva de la GENIUS Act."
+        ],
+        "informes": [
+          "R25",
+          "R24",
+          "R34"
+        ]
+      }
     },
     {
       "id": "deposit",
@@ -461,7 +522,32 @@
           ],
           "pais": []
         }
-      ]
+      ],
+      "ficha": {
+        "hace": "Dinero de un banco comercial representado como token (JPMD). Es un depósito bancario, no una stablecoin.",
+        "controla": "El banco emisor (JPMorgan) y la red donde corre: Base y Canton.",
+        "falta": [
+          "No hay cifras oficiales de volumen de JPMD.",
+          "Sin fechas publicadas para ampliar a más bancos."
+        ],
+        "madurez": {
+          "n": 2,
+          "t": "Un solo caso relevante, JPMD, ya en producción en Base para clientes institucionales (fuente secundaria); la versión nativa en Canton, «en fases durante 2026», sin confirmación de fases hechas."
+        },
+        "favor": [
+          "Un gran banco lo usa en producción sobre una red pública (Base)."
+        ],
+        "contra": [
+          "Compite con las stablecoins y corre en redes distintas de XRPL y Stellar."
+        ],
+        "vigilar": [
+          "Confirmación de las fases de JPMD en Canton durante 2026.",
+          "Cifras oficiales de JPMD."
+        ],
+        "informes": [
+          "R44"
+        ]
+      }
     },
     {
       "id": "puente",
@@ -591,7 +677,38 @@
           ],
           "pais": []
         }
-      ]
+      ],
+      "ficha": {
+        "hace": "Redes públicas (XRPL, Stellar) que liquidan y cambian activos entre sí; XRP y XLM hacen de comisión o de ruta.",
+        "controla": "Los validadores de cada red, que votan las enmiendas (XRPL: 97 de 107 activas); Ripple y la Stellar Development Foundation pesan mucho en el desarrollo.",
+        "falta": [
+          "Fondo real de liquidez: el libro XRP/RLUSD tiene ≈ 100.000 $ de fondo a ±2 % y el pool AMM ≈ 4,8 M$.",
+          "No hay cifra oficial de ODL liquidado en XRP.",
+          "Hoja de ruta post-cuántica de Ripple: «full readiness» no más tarde de 2028; ninguna enmienda activa es post-cuántica."
+        ],
+        "madurez": {
+          "n": 3,
+          "t": "Redes en producción con uso real pero modesto: DEX de ≈ 6,2 M$/día en XRPL y ≈ 1,7 M$/día en Stellar."
+        },
+        "favor": [
+          "Stellar crece: TVL +76 % en un año y ≈ 489,5 M$ de USDC emitido.",
+          "El AMM de XRPL tiene comisión baja (0,205 %) y diferencial bajo."
+        ],
+        "contra": [
+          "El TVL de XRPL es la mitad del de hace un año.",
+          "El pool AMM XRP/RLUSD vale ≈ 4,8 M$ frente a 1.029 M$ de RLUSD en la red; gran parte del tráfico de Stellar son bots y tokens exóticos."
+        ],
+        "vigilar": [
+          "23-oct-2026: posible activación de fixCleanup3_4_0 en el XRPL (≈ 09:34 UTC).",
+          "27-30-oct: Swell y Meridian."
+        ],
+        "informes": [
+          "R43",
+          "R32",
+          "R33",
+          "R45"
+        ]
+      }
     },
     {
       "id": "token",
@@ -732,7 +849,36 @@
             "Corea del Sur"
           ]
         }
-      ]
+      ],
+      "ficha": {
+        "hace": "Fondos, deuda, oro y acciones representados como tokens en cadena.",
+        "controla": "Las gestoras y plataformas emisoras (BlackRock, Franklin, Securitize…) dentro de marcos temporales de la SEC y con la DTCC como infraestructura.",
+        "falta": [
+          "Cifras oficiales de BlackRock, Franklin y WisdomTree: las páginas de las gestoras no se abrieron.",
+          "Si el servicio de DTC ya opera (estaba previsto para 2S-2026) y qué redes aprueba."
+        ],
+        "madurez": {
+          "n": 3,
+          "t": "Valor «distribuido» ≈ 39.300 M$ (frente a ≈ 371.200 M$ «representado»), concentrado en fondos monetarios del Tesoro y oro; las exenciones de la SEC son temporales y condicionadas."
+        },
+        "favor": [
+          "Marcos primarios reales: no-acción a DTC (11-dic-2025) y exención de la SEC para acciones tokenizadas con AMM (17-sep-2026).",
+          "Stellar y XRPL están entre las 10 primeras redes por RWA."
+        ],
+        "contra": [
+          "El valor distribuido es ≈ 10 % del «representado»; las cifras vienen de RWA.xyz, un tercero con incentivo comercial.",
+          "Las exenciones duran 3 y 5 años y tienen condiciones."
+        ],
+        "vigilar": [
+          "Lanzamiento del servicio de DTC (2S-2026; en Stellar, 1S-2027 según prensa).",
+          "4-feb-2027: Corea permite la tokenización de valores."
+        ],
+        "informes": [
+          "R26",
+          "R09P",
+          "R30"
+        ]
+      }
     },
     {
       "id": "custodia",
@@ -882,7 +1028,35 @@
           ],
           "pais": []
         }
-      ]
+      ],
+      "ficha": {
+        "hace": "Bancos y custodios que guardan activos digitales y liquidan operaciones.",
+        "controla": "Los propios bancos con licencia: en la UE el registro CASP de ESMA (215 entidades con custodia) y en EE. UU. el OCC.",
+        "falta": [
+          "Las aprobaciones del OCC son preliminares o condicionales y pueden estar recurridas por la ICBA.",
+          "Qué activos custodian BitGo Europe, Zodia y Coinbase Luxembourg, sin fuente primaria [VERIFICAR]."
+        ],
+        "madurez": {
+          "n": 3,
+          "t": "BNY custodia BTC, ETH, SOL y USDC en la UE y hay 215 entidades con custodia en MiCA; en EE. UU. las aprobaciones son condicionales."
+        },
+        "favor": [
+          "Custodios globales ya ofrecen servicio regulado (BNY en la UE, State Street con plataforma propia).",
+          "Con el SAB 122 el balance de un custodio no tiene que reconocer el activo como pasivo [ESPECULACIÓN sobre el efecto]."
+        ],
+        "contra": [
+          "BNY y State Street no nombran XRP ni XLM: custodian BTC, ETH, SOL y USDC.",
+          "Servicios para «select institutions» y aprobaciones condicionales."
+        ],
+        "vigilar": [
+          "Estado final de las aprobaciones del OCC.",
+          "BNY–Galaxy (staking): sujeto a revisión regulatoria, sin fecha."
+        ],
+        "informes": [
+          "R44",
+          "R19"
+        ]
+      }
     },
     {
       "id": "reg",
@@ -1011,7 +1185,37 @@
             "EE. UU."
           ]
         }
-      ]
+      ],
+      "ficha": {
+        "hace": "Leyes, tribunales y bancos centrales que fijan las reglas del juego y el coste del dinero.",
+        "controla": "Legisladores y reguladores de cada jurisdicción (SEC, CFTC, ESMA, MAS…) y los bancos centrales (Fed, BCE, BoJ).",
+        "falta": [
+          "CLARITY Act: el cierre de debate falló 49–50 el 15-sep-2026; no hay ley de mercado aprobada.",
+          "Regulation Crypto Assets (SEC) es solo una propuesta, con comentarios hasta el 20-oct-2026."
+        ],
+        "madurez": {
+          "n": 3,
+          "t": "La UE (MiCA) y Hong Kong tienen régimen en vigor; en EE. UU. hay normas propuestas y la ley de mercado está bloqueada."
+        },
+        "favor": [
+          "MiCA exigible desde el 1-jul-2026; Ripple tiene licencias (MiCA CASP, EMI en Luxemburgo, FCA, MAS).",
+          "El IPC subyacente de EE. UU. (2,6 %) es mucho menor que el general: la inflación es de oferta y puede ceder si baja el crudo."
+        ],
+        "contra": [
+          "Fed (3,75–4,00 %), BCE (2,50 %) y BoJ (1,25 %) han subido tipos a la vez; el BoJ promete seguir.",
+          "Brent ≈ 126 $/barril frente a una previsión oficial de 105 $ para el 4T; empleo de EE. UU. +29.000 con inflación alta."
+        ],
+        "vigilar": [
+          "20-oct-2026: cierre de comentarios de Regulation Crypto Assets (SEC).",
+          "27-28-oct: FOMC; 29-oct: BCE; 29-30-oct: BoJ."
+        ],
+        "informes": [
+          "R29",
+          "R25",
+          "R18",
+          "R48"
+        ]
+      }
     },
     {
       "id": "fondos",
@@ -1140,7 +1344,38 @@
           ],
           "pais": []
         }
-      ]
+      ],
+      "ficha": {
+        "hace": "Productos cotizados que dan exposición a XRP y XLM (ETF, ETP) y vehículos de tesorería.",
+        "controla": "Los emisores (Canary, 21Shares, WisdomTree, 3iQ, Evernorth), las bolsas y los supervisores (SEC, SFC en Hong Kong).",
+        "falta": [
+          "13F del 3T con plazo el 16-nov-2026: repetir R21.",
+          "Datos actuales de Canadá y desglose europeo por producto.",
+          "Japón y Corea: sin ETF aprobado hasta donde se ha comprobado [VERIFICAR]."
+        ],
+        "madurez": {
+          "n": 4,
+          "t": "ETF de XRP en EE. UU. ≈ 2.178 M$ y 129 declarantes 13F; en XLM no hay señal 13F."
+        },
+        "favor": [
+          "Entradas netas positivas en 2026: ≈ 864 M$ en los ETF de XRP de EE. UU.; Hong Kong crece un 55 % desde el lanzamiento.",
+          "Declarantes 13F: 72 → 122 → 129."
+        ],
+        "contra": [
+          "XRP es ≈ 6 % del AUM de ETP cripto en Europa y Bitcoin domina (≈ 61 %).",
+          "Los flujos dependen del precio y de pocos emisores; las entradas de septiembre en Europa fueron pequeñas (7,4 M$)."
+        ],
+        "vigilar": [
+          "16-nov-2026: plazo de los 13F del 3T.",
+          "Evernorth (XRPN), cotizada desde el 12-oct-2026."
+        ],
+        "informes": [
+          "R27",
+          "R21b",
+          "R42",
+          "R23"
+        ]
+      }
     }
   ],
   "movimientos": [

@@ -37,6 +37,19 @@ for c in d["capas"]:
                 aviso(dn, f"pendiente de verificar: «{h['t'][:60]}»")
             if k != "xrp" and not h.get("k"):
                 aviso(dn, f"sin etiqueta de fuente [P]/[S]: «{h['t'][:50]}»")
+    fi = c.get("ficha")
+    if not fi:
+        aviso(c["id"], "sin ficha del analista")
+    else:
+        for k in ("hace", "controla", "falta", "madurez", "favor", "contra", "vigilar", "informes"):
+            if not fi.get(k):
+                aviso(f"{c['id']}.ficha", f"falta «{k}»")
+        if fi.get("madurez", {}).get("n") not in (1, 2, 3, 4, 5):
+            aviso(f"{c['id']}.ficha", "madurez fuera de la escala 1-5")
+        for k in ("falta", "favor", "contra", "vigilar"):
+            for t in fi.get(k, []):
+                if not empieza_bien(t):
+                    aviso(f"{c['id']}.ficha.{k}", f"no empieza con mayúscula: «{t[:40]}»")
     if len(c["claves"]) < 8:
         aviso(c["id"], f"pocas palabras clave ({len(c['claves'])}); mejora el enlace con documentos y glosario")
     for x in c["cifras"]:

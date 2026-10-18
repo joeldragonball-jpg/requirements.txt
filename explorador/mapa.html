@@ -74,6 +74,12 @@ h3{margin:18px 0 7px;font-size:11px;text-transform:uppercase;letter-spacing:.14e
 .chip.clic{cursor:pointer}.chip.clic:hover{border-color:var(--oro);color:#fff}
 details.doc .chips{margin:2px 0 6px}
 .hecho-t{flex:1}
+.ficha-ul{margin:4px 0 0;padding-left:18px;font-size:12.5px;color:#cdd6ea}.ficha-ul li{margin:2px 0}
+.ficha-fila{display:flex;gap:10px;align-items:baseline;margin:3px 0;font-size:12.5px}
+.ficha-fila .etq-f{flex:none;min-width:92px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--suave)}
+.ficha-pts{letter-spacing:.18em;font-size:15px}
+.ficha-dos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:900px){.ficha-dos{grid-template-columns:1fr}}
 .bloque{background:rgba(15,23,42,.6);border:1px solid var(--linea);border-radius:6px;padding:8px 11px;margin:7px 0;border-left-width:3px}
 .volver{background:rgba(15,23,42,.9);color:var(--texto);border:1px solid var(--linea);border-radius:6px;padding:5px 11px;cursor:pointer;margin-bottom:10px;font:inherit;font-size:12.5px}
 .volver:hover{border-color:var(--oro)}
@@ -479,6 +485,29 @@ function tarjetasCifras(padre, lista){
   lista.forEach(({capa, c}, i) => { const t = H('div', 'cifra entra', g); t.style.animationDelay = (i * 30) + 'ms'; t.style.borderTopColor = capa.color;
     const v = H('b', '', t, c.v); v.style.color = mezcla(capa.color, '#fff', .3); H('span', '', t, c.e); H('small', '', t, c.f); });
 }
+function fichaAnalista(padre, c){
+  const fi = c.ficha; if (!fi) return;
+  H('h3', '', padre, 'Ficha del analista');
+  const hs = ['produccion', 'piloto', 'plan'].flatMap(k => Array.isArray(c[k]) ? c[k] : []);
+  const cu = {P: 0, S: 0, ESP: 0, VER: 0}; hs.forEach(h => { if (cu[h.k] !== undefined) cu[h.k]++; });
+  const fechas = movs.filter(m => m.capa === c.id).map(m => m.fecha).sort();
+  const fila = (tit, texto) => { const f = H('div', 'ficha-fila', padre); H('span', 'etq-f', f, tit); H('span', '', f, texto); return f; };
+  fila('Qué hace', fi.hace); fila('Quién la controla', fi.controla);
+  const m = H('div', 'bloque entra', padre); m.style.borderLeftColor = c.color;
+  const fm = H('div', 'ficha-fila', m); H('span', 'etq-f', fm, 'Madurez'); const pt = H('span', 'ficha-pts', fm, '●'.repeat(fi.madurez.n) + '○'.repeat(5 - fi.madurez.n)); pt.style.color = mezcla(c.color, '#fff', .3);
+  H('span', 'nota', fm, `${fi.madurez.n} de 5 · valoración propia del mapa`);
+  H('div', 'nota', m, fi.madurez.t);
+  H('div', 'nota', m, 'Escala: 1 idea o propuesta · 2 primeros productos o pruebas · 3 producción limitada · 4 producción relevante · 5 estándar masivo.');
+  const ev = H('div', 'ficha-fila', m); H('span', 'etq-f', ev, 'Evidencia');
+  H('span', '', ev, `${cu.P} primarias · ${cu.S} secundarias${cu.ESP ? ' · ' + cu.ESP + ' especulación' : ''}${cu.VER ? ' · ' + cu.VER + ' por verificar' : ''}${fechas.length ? ' · último hecho: ' + fechas[fechas.length - 1] : ''}`);
+  const cab = H('div', 'nota', padre, 'Qué falta para que funcione a escala'); cab.style.fontWeight = 700; cab.style.marginTop = '8px'; listaFicha(padre, fi.falta);
+  const dos = H('div', 'ficha-dos', padre);
+  [['A favor (hechos)', fi.favor, colEst('produccion')], ['En contra (hechos)', fi.contra, '#e06c6c']].forEach(([tit, items, col]) => {
+    const b = H('div', 'bloque', dos); b.style.borderLeftColor = col; const t = H('div', 'nota', b, tit); t.style.fontWeight = 700; listaFicha(b, items); });
+  const v = H('div', 'nota', padre, 'Qué vigilar (fechas y datos pendientes)'); v.style.fontWeight = 700; v.style.marginTop = '8px'; listaFicha(padre, fi.vigilar);
+  H('p', 'nota', padre, 'Informes de origen: ' + (fi.informes || []).join(', ') + '. Informativo: no es recomendación de compra ni venta.');
+}
+function listaFicha(padre, items){ const ul = H('ul', 'ficha-ul', padre); (items || []).forEach(t => H('li', '', ul, t)); }
 function listaEventos(padre, lista, conCapa){
   if (!lista.length){ H('p', 'nota', padre, 'No hay fechas próximas con los temas elegidos.'); return; }
   lista.forEach((e, i) => {
@@ -535,6 +564,7 @@ function dibujarPanel(){
     vs.forEach(m => cnt[m.estado] = (cnt[m.estado] || 0) + 1);
     const chips = H('div', 'chips', cab);
     Object.keys(est).forEach(k => { if (cnt[k]){ const a = H('span', 'chip', chips); const p = H('span', 'punto', a); p.style.background = colEst(k); a.appendChild(document.createTextNode(`${est[k].nombre}: ${cnt[k]}`)); } });
+    fichaAnalista(panel, sel);
     H('h3', '', panel, 'Cifras clave');
     tarjetasCifras(panel, sel.cifras.map(c => ({capa: sel, c})));
     [['En producción', 'produccion', 'produccion'], ['Piloto o prueba', 'piloto', 'piloto'], ['Plan o propuesta', 'plan', 'plan'], ['¿Nombra XRP o XLM?', 'xrp', null]].forEach(([tit, k, ek], i) => {
