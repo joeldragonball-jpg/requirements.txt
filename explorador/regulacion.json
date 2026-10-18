@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-19",
+  "version": "2026-10-19 (v2)",
   "aviso": "Radar regulatorio construido solo con informes, dossiers, apuntes y el calendario del repo (sin búsquedas nuevas). Informativo: no es recomendación de compra ni venta. Fuente: P = documento oficial leído; S = prensa, despacho o agregador; VERIFICAR = sin dato o sin confirmar.",
   "escala": {
     "0": "Sin marco (o prohibido)",
@@ -15,8 +15,12 @@
       "nombre": "Stablecoins"
     },
     {
-      "id": "mercado",
-      "nombre": "Mercado y ETF"
+      "id": "ley_marco",
+      "nombre": "Ley marco de mercado"
+    },
+    {
+      "id": "etf",
+      "nombre": "ETF y productos"
     },
     {
       "id": "tokenizacion",
@@ -33,6 +37,10 @@
     {
       "id": "fiscal",
       "nombre": "Fiscal"
+    },
+    {
+      "id": "politica",
+      "nombre": "Política monetaria"
     }
   ],
   "jurisdicciones": [
@@ -124,28 +132,20 @@
     },
     {
       "jur": "eeuu",
-      "tema": "mercado",
-      "etapa": 4,
-      "estado": "Cotizan ETF al contado de XRP bajo la ley vigente y la interpretación SEC-CFTC trata a XRP y XLM como materias primas digitales; la ley de estructura de mercado (CLARITY) sigue bloqueada y la Regulation Crypto Assets es una propuesta.",
+      "tema": "ley_marco",
+      "etapa": 2,
+      "estado": "La ley de estructura de mercado (CLARITY Act) está bloqueada: la Cámara la aprobó 294-134 el 17-jul-2025, pero el cierre de debate falló 49-50 en el Senado el 15-sep-2026. Mientras tanto la SEC tramita la Regulation Crypto Assets (propuesta) y la interpretación SEC-CFTC trata a XRP y XLM como materias primas digitales.",
       "fecha": "2026-10-05",
-      "fuente": "P",
+      "fuente": "S",
       "proxima": {
         "fecha": "2026-10-20",
         "que": "Cierre de comentarios a la Regulation Crypto Assets (SEC)."
       },
-      "falta": "Ley de estructura de mercado; norma final de la SEC; ETF al contado de XLM (GXLM sigue como trust en OTC).",
+      "falta": "Aprobación de la CLARITY Act en el Senado; norma final de la SEC; decisión de la CFTC sobre las Regulation CTX y CAM.",
       "hitos": [
         {
           "fecha": "2025-07-17",
           "que": "La Cámara aprueba la CLARITY Act (294-134)."
-        },
-        {
-          "fecha": "2025-09-17",
-          "que": "Estándares genéricos de cotización para productos de materias primas digitales."
-        },
-        {
-          "fecha": "2025-11-13",
-          "que": "Primer ETF al contado de XRP (Canary XRPC, según prensa)."
         },
         {
           "fecha": "2026-03-17",
@@ -157,7 +157,7 @@
         },
         {
           "fecha": "2026-09-15",
-          "que": "Falla el cierre de debate de la CLARITY Act en el Senado (49-50)."
+          "que": "Falla el cierre de debate de la CLARITY Act en el Senado (49-50) [S: registro del Senado vía prensa]."
         },
         {
           "fecha": "2026-10-05",
@@ -167,8 +167,32 @@
       "informes": [
         "R18",
         "R23",
+        "R48",
+        "Dossier CLARITY (9-oct)"
+      ]
+    },
+    {
+      "jur": "eeuu",
+      "tema": "etf",
+      "etapa": 5,
+      "estado": "Cotizan ETF al contado de XRP bajo la ley vigente (estándares genéricos de cotización de la SEC); el ETF al contado de XLM no existe: GXLM sigue como trust en OTC.",
+      "fecha": "2025-11-13",
+      "fuente": "P",
+      "proxima": null,
+      "falta": "ETF al contado de XLM; cifra de AUM de XRP a fecha actual (R27 y el dossier ETF no coinciden) [VERIFICAR].",
+      "hitos": [
+        {
+          "fecha": "2025-09-17",
+          "que": "Estándares genéricos de cotización para productos de materias primas digitales."
+        },
+        {
+          "fecha": "2025-11-13",
+          "que": "Primer ETF al contado de XRP (Canary XRPC, según prensa)."
+        }
+      ],
+      "informes": [
         "R27",
-        "Dossier CLARITY (9-oct)",
+        "R23",
         "Dossier ETF (9-oct)"
       ]
     },
@@ -288,6 +312,39 @@
       ]
     },
     {
+      "jur": "eeuu",
+      "tema": "politica",
+      "etapa": null,
+      "estado": "La Fed subió 25 pb a 3,75–4,00 % el 16-sep-2026 (voto 12–0). El IPC de septiembre es 3,7 % interanual (energía +20,4 %, subyacente 2,6 %), el empleo no agrícola +29.000 y el paro 4,2 %. El Tesoro a 10 años rinde 5,09 % (máximo 5,31 % el 5-oct).",
+      "fecha": "2026-10-14",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2026-10-28",
+        "que": "Reunión del FOMC (27-28 de octubre)."
+      },
+      "falta": "Actas del FOMC del 15-16 de septiembre en fuente primaria.",
+      "hitos": [
+        {
+          "fecha": "2026-09-16",
+          "que": "La Fed sube 25 pb a 3,75–4,00 %."
+        },
+        {
+          "fecha": "2026-10-02",
+          "que": "Empleo no agrícola de septiembre: +29.000; paro 4,2 %."
+        },
+        {
+          "fecha": "2026-10-14",
+          "que": "IPC de septiembre: 3,7 % interanual (agosto 3,4 %)."
+        }
+      ],
+      "informes": [
+        "R29",
+        "R41"
+      ],
+      "dir": "sube",
+      "valor": "3,75–4,00 %"
+    },
+    {
       "jur": "ue",
       "tema": "stablecoins",
       "etapa": 5,
@@ -317,9 +374,9 @@
     },
     {
       "jur": "ue",
-      "tema": "mercado",
+      "tema": "ley_marco",
       "etapa": 5,
-      "estado": "Desde el 1-jul-2026 no hay transición: solo los CASP autorizados por MiCA pueden atender a clientes de la UE; el registro de ESMA tiene unas 375 entidades y en Europa cotizan ETP físicos de XRP (≈ 914 M$) y de XLM (≈ 104 M$).",
+      "estado": "Desde el 1-jul-2026 no hay transición en MiCA: solo los CASP autorizados pueden atender a clientes de la UE; el registro de ESMA tiene unas 375 entidades.",
       "fecha": "2026-07-01",
       "fuente": "P",
       "proxima": {
@@ -343,9 +400,22 @@
       ],
       "informes": [
         "R18",
-        "R27",
         "R44",
         "R06P"
+      ]
+    },
+    {
+      "jur": "ue",
+      "tema": "etf",
+      "etapa": 5,
+      "estado": "En Europa cotizan ETP físicos de XRP (≈ 914 M$) y de XLM (≈ 104 M$) según el informe de 21Shares a 30-sep-2026, que es a la vez emisor.",
+      "fecha": "2026-09-30",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Desglose por producto (informe completo de 21Shares y documentos KID).",
+      "hitos": [],
+      "informes": [
+        "R27"
       ]
     },
     {
@@ -470,6 +540,34 @@
       ]
     },
     {
+      "jur": "ue",
+      "tema": "politica",
+      "etapa": null,
+      "estado": "El BCE subió el tipo de depósito a 2,50 % (efectivo el 16-sep-2026; antes 2,25 % desde el 17-jun).",
+      "fecha": "2026-09-16",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2026-10-29",
+        "que": "Reunión del BCE."
+      },
+      "falta": "Comunicado y proyecciones del BCE de septiembre, que no se pudieron leer enteros.",
+      "hitos": [
+        {
+          "fecha": "2026-06-17",
+          "que": "Depósito a 2,25 %."
+        },
+        {
+          "fecha": "2026-09-16",
+          "que": "Depósito a 2,50 %."
+        }
+      ],
+      "informes": [
+        "R29"
+      ],
+      "dir": "sube",
+      "valor": "2,50 %"
+    },
+    {
       "jur": "sg",
       "tema": "stablecoins",
       "etapa": 1,
@@ -500,13 +598,13 @@
     },
     {
       "jur": "sg",
-      "tema": "mercado",
+      "tema": "ley_marco",
       "etapa": 5,
-      "estado": "Los servicios con tokens de pago digital necesitan licencia de la MAS y, desde el 30-jun-2025, el régimen DTSP obliga a cesar a quien sirve solo a clientes de fuera; no hay dato sobre ETF cripto.",
+      "estado": "Los servicios con tokens de pago digital necesitan licencia de la MAS y, desde el 30-jun-2025, el régimen DTSP obliga a cesar a quien sirve solo a clientes de fuera.",
       "fecha": "2025-06-30",
       "fuente": "S",
       "proxima": null,
-      "falta": "ETF cripto en Singapur: sin dato [VERIFICAR]; texto de MAS sobre la ampliación de la licencia de Ripple.",
+      "falta": "Texto de la MAS sobre la ampliación de la licencia de Ripple.",
       "hitos": [
         {
           "fecha": "2023",
@@ -517,6 +615,20 @@
           "que": "Entra en vigor el régimen DTSP (parte 9 de la FSMA 2022)."
         }
       ],
+      "informes": [
+        "R04P"
+      ]
+    },
+    {
+      "jur": "sg",
+      "tema": "etf",
+      "etapa": null,
+      "estado": "No hay dato sobre ETF cripto en Singapur.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
       "informes": [
         "R04P"
       ]
@@ -609,6 +721,22 @@
       ]
     },
     {
+      "jur": "sg",
+      "tema": "politica",
+      "etapa": null,
+      "estado": "No hay research sobre la política monetaria de esta jurisdicción.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R29"
+      ],
+      "dir": null,
+      "valor": null
+    },
+    {
       "jur": "hk",
       "tema": "stablecoins",
       "etapa": 5,
@@ -639,9 +767,29 @@
     },
     {
       "jur": "hk",
-      "tema": "mercado",
+      "tema": "ley_marco",
       "etapa": 5,
-      "estado": "La SFC tiene 13 plataformas licenciadas y 11 ETF cripto al contado con 451 M$ (jun-2026); no consta ETF de XRP.",
+      "estado": "La SFC tiene 13 plataformas licenciadas (informe trimestral abr-jun 2026).",
+      "fecha": "2026-06-30",
+      "fuente": "P",
+      "proxima": null,
+      "falta": "Registro oficial de la SFC entero.",
+      "hitos": [
+        {
+          "fecha": "2026-06-30",
+          "que": "Informe trimestral de la SFC: 11 ETF y 13 plataformas."
+        }
+      ],
+      "informes": [
+        "R27",
+        "R07P"
+      ]
+    },
+    {
+      "jur": "hk",
+      "tema": "etf",
+      "etapa": 5,
+      "estado": "Hay 11 ETF cripto al contado con 451 M$ (jun-2026); no consta ETF de XRP.",
       "fecha": "2026-06-30",
       "fuente": "P",
       "proxima": null,
@@ -723,6 +871,22 @@
       ]
     },
     {
+      "jur": "hk",
+      "tema": "politica",
+      "etapa": null,
+      "estado": "No hay research sobre la política monetaria de esta jurisdicción.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R29"
+      ],
+      "dir": null,
+      "valor": null
+    },
+    {
       "jur": "kr",
       "tema": "stablecoins",
       "etapa": 2,
@@ -753,13 +917,13 @@
     },
     {
       "jur": "kr",
-      "tema": "mercado",
+      "tema": "ley_marco",
       "etapa": 2,
-      "estado": "Los exchanges operan registrados ante KoFIU (17 exchanges y 9 custodios), pero la Ley Básica de Activos Digitales (2.ª fase) y los ETF al contado siguen sin aprobar.",
+      "estado": "Los exchanges operan registrados ante KoFIU (17 exchanges y 9 custodios), pero la Ley Básica de Activos Digitales (2.ª fase) sigue sin aprobar: hay un proyecto preparado según la FSC.",
       "fecha": "2026-10-01",
       "fuente": "S",
       "proxima": null,
-      "falta": "Ley de la 2.ª fase; ETF al contado; guía de inversión corporativa.",
+      "falta": "Ley de la 2.ª fase; guía de inversión corporativa.",
       "hitos": [
         {
           "fecha": "2026-07-29",
@@ -770,6 +934,21 @@
           "que": "KoFIU y FSS publican la encuesta del 1S-2026: capitalización −33 % y volumen −44 %."
         }
       ],
+      "informes": [
+        "R05P",
+        "R30"
+      ]
+    },
+    {
+      "jur": "kr",
+      "tema": "etf",
+      "etapa": 0,
+      "estado": "No hay ETF cripto al contado aprobado.",
+      "fecha": "2026-10-01",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Aprobación de la ley de la 2.ª fase y de los ETF al contado.",
+      "hitos": [],
       "informes": [
         "R05P",
         "R30"
@@ -850,6 +1029,22 @@
       ]
     },
     {
+      "jur": "kr",
+      "tema": "politica",
+      "etapa": null,
+      "estado": "No hay research sobre la política monetaria de esta jurisdicción.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R29"
+      ],
+      "dir": null,
+      "valor": null
+    },
+    {
       "jur": "jp",
       "tema": "stablecoins",
       "etapa": 5,
@@ -871,16 +1066,16 @@
     },
     {
       "jur": "jp",
-      "tema": "mercado",
+      "tema": "ley_marco",
       "etapa": 3,
-      "estado": "La Dieta aprobó el 15-jul-2026 la reforma que pasa la cripto a la FIEA (información privilegiada, informes de emisores, penas mayores), que no está en vigor; no hay ETF cripto aprobado.",
+      "estado": "La Dieta aprobó el 15-jul-2026 la reforma que pasa la cripto a la FIEA (información privilegiada, informes de emisores, penas mayores); no está en vigor.",
       "fecha": "2026-07-15",
       "fuente": "S",
       "proxima": {
         "fecha": "2027-07",
         "que": "Fecha máxima de efecto de la reforma («dentro de un año») [VERIFICAR]."
       },
-      "falta": "Texto de la ley y fecha de efecto; lista de criptoactivos incluidos; ETF (2027 o ejercicio 2028 según fuentes).",
+      "falta": "Texto de la ley y fecha de efecto; lista de criptoactivos incluidos.",
       "hitos": [
         {
           "fecha": "2026-02-16",
@@ -893,7 +1088,21 @@
       ],
       "informes": [
         "R07P",
-        "R30",
+        "R30"
+      ]
+    },
+    {
+      "jur": "jp",
+      "tema": "etf",
+      "etapa": 0,
+      "estado": "No hay ETF cripto aprobado; según las fuentes, llegarían en 2027 o en el ejercicio 2028 [VERIFICAR].",
+      "fecha": "2026-07-15",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "FSA y JPX en fuente primaria.",
+      "hitos": [],
+      "informes": [
+        "R07P",
         "R27"
       ]
     },
@@ -963,6 +1172,30 @@
       ]
     },
     {
+      "jur": "jp",
+      "tema": "politica",
+      "etapa": null,
+      "estado": "El BoJ subió a 1,25 % el 18-sep-2026 (7–2, efectivo el 24-sep) y dice que seguirá subiendo; el yen ronda los 158 por dólar.",
+      "fecha": "2026-09-18",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2026-10-30",
+        "que": "Reunión del BoJ (29-30 de octubre) con Informe de Perspectivas."
+      },
+      "falta": "Nivel actual del yen y posible intervención del Ministerio de Finanzas.",
+      "hitos": [
+        {
+          "fecha": "2026-09-18",
+          "que": "El BoJ sube a 1,25 % (7–2)."
+        }
+      ],
+      "informes": [
+        "R29"
+      ],
+      "dir": "sube",
+      "valor": "1,25 %"
+    },
+    {
       "jur": "in",
       "tema": "stablecoins",
       "etapa": 0,
@@ -984,7 +1217,7 @@
     },
     {
       "jur": "in",
-      "tema": "mercado",
+      "tema": "ley_marco",
       "etapa": 1,
       "estado": "No hay ley cripto: los activos digitales solo tienen régimen fiscal y antiblanqueo, y la comisión parlamentaria recomienda considerar un marco interino con organismos autorregulados.",
       "fecha": "2026-07-23",
@@ -1000,6 +1233,20 @@
       "informes": [
         "R02P",
         "R30"
+      ]
+    },
+    {
+      "jur": "in",
+      "tema": "etf",
+      "etapa": null,
+      "estado": "No hay dato sobre ETF cripto en India.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R02P"
       ]
     },
     {
@@ -1079,6 +1326,27 @@
       ]
     },
     {
+      "jur": "in",
+      "tema": "politica",
+      "etapa": null,
+      "estado": "El RBI endureció el 10-oct-2026 el control sobre derivados de la rupia (FERR 20 %, umbral de 5 M$) y abrió desde el 12-oct una ventana de dólares para IOC, HPCL y BPCL; no hay tipo oficial leído.",
+      "fecha": "2026-10-10",
+      "fuente": "P",
+      "proxima": null,
+      "falta": "Tipo oficial del RBI y comunicados sobre e₹ o cripto.",
+      "hitos": [
+        {
+          "fecha": "2026-10-10",
+          "que": "Restricciones del RBI a derivados sobre la rupia."
+        }
+      ],
+      "informes": [
+        "R30"
+      ],
+      "dir": "n/d",
+      "valor": "—"
+    },
+    {
       "jur": "br",
       "tema": "stablecoins",
       "etapa": 4,
@@ -1116,16 +1384,16 @@
     },
     {
       "jur": "br",
-      "tema": "mercado",
+      "tema": "ley_marco",
       "etapa": 4,
-      "estado": "Los proveedores cripto (PSAV) tienen marco completo desde el 2-feb-2026 y los existentes deben pedir autorización en 270 días; no hay dato sobre ETF cripto en Brasil.",
+      "estado": "Los proveedores cripto (PSAV) tienen marco completo desde el 2-feb-2026 y los existentes deben pedir autorización en 270 días.",
       "fecha": "2026-02-02",
       "fuente": "S",
       "proxima": {
         "fecha": "2026-10-30",
         "que": "Fin del plazo de 270 días para pedir autorización (cálculo propio) [VERIFICAR]."
       },
-      "falta": "Lista oficial de PSAV autorizadas; si Ripple pidió la licencia; ETF cripto en Brasil (sin dato).",
+      "falta": "Lista oficial de PSAV autorizadas; si Ripple pidió la licencia.",
       "hitos": [
         {
           "fecha": "2025-11-10",
@@ -1143,6 +1411,20 @@
       "informes": [
         "R03P",
         "R30"
+      ]
+    },
+    {
+      "jur": "br",
+      "tema": "etf",
+      "etapa": null,
+      "estado": "No hay dato sobre ETF cripto en Brasil.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R03P"
       ]
     },
     {
@@ -1236,6 +1518,22 @@
       ]
     },
     {
+      "jur": "br",
+      "tema": "politica",
+      "etapa": null,
+      "estado": "No hay research sobre la política monetaria de esta jurisdicción.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R29"
+      ],
+      "dir": null,
+      "valor": null
+    },
+    {
       "jur": "ru",
       "tema": "stablecoins",
       "etapa": null,
@@ -1251,7 +1549,7 @@
     },
     {
       "jur": "ru",
-      "tema": "mercado",
+      "tema": "ley_marco",
       "etapa": 4,
       "estado": "La ley 282-ФЗ rige desde el 1-sep-2026: la cripto es propiedad, hay registro de intermediarios y los pagos internos siguen prohibidos, salvo en el comercio exterior.",
       "fecha": "2026-09-01",
@@ -1282,6 +1580,20 @@
       "informes": [
         "R06P",
         "R30"
+      ]
+    },
+    {
+      "jur": "ru",
+      "tema": "etf",
+      "etapa": null,
+      "estado": "No hay dato sobre ETF cripto en Rusia.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R06P"
       ]
     },
     {
@@ -1363,6 +1675,25 @@
       ]
     },
     {
+      "jur": "ru",
+      "tema": "politica",
+      "etapa": null,
+      "estado": "El Banco de Rusia tiene el tipo clave en 14,00 % desde el 27-jul-2026; la inflación de septiembre es 6,4 %.",
+      "fecha": "2026-07-27",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2026-10-23",
+        "que": "Reunión del Banco de Rusia."
+      },
+      "falta": "Sentido del último cambio (sube, baja o mantiene) [VERIFICAR].",
+      "hitos": [],
+      "informes": [
+        "R30"
+      ],
+      "dir": "n/d",
+      "valor": "Tipo clave 14,00 %"
+    },
+    {
       "jur": "ae",
       "tema": "stablecoins",
       "etapa": 5,
@@ -1392,7 +1723,7 @@
     },
     {
       "jur": "ae",
-      "tema": "mercado",
+      "tema": "ley_marco",
       "etapa": 5,
       "estado": "Tres capas supervisan la cripto (ADGM/FSRA, DIFC/DFSA y VARA) y el CBUAE federal; el plazo para licenciarse bajo el Decreto-Ley 6/2025 venció el 16-sep-2026 sin información verificada.",
       "fecha": "2026-09-16",
@@ -1409,6 +1740,20 @@
           "que": "Vence el plazo de licencia federal (posible prórroga)."
         }
       ],
+      "informes": [
+        "R07P"
+      ]
+    },
+    {
+      "jur": "ae",
+      "tema": "etf",
+      "etapa": null,
+      "estado": "No hay dato sobre ETF cripto en Emiratos.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
       "informes": [
         "R07P"
       ]
@@ -1476,6 +1821,22 @@
       ]
     },
     {
+      "jur": "ae",
+      "tema": "politica",
+      "etapa": null,
+      "estado": "No hay research sobre la política monetaria de esta jurisdicción.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R29"
+      ],
+      "dir": null,
+      "valor": null
+    },
+    {
       "jur": "cn",
       "tema": "stablecoins",
       "etapa": null,
@@ -1491,9 +1852,21 @@
     },
     {
       "jur": "cn",
-      "tema": "mercado",
+      "tema": "ley_marco",
       "etapa": null,
-      "estado": "No hay research sobre el mercado cripto en China.",
+      "estado": "No hay research sobre el marco de mercado cripto en China.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": []
+    },
+    {
+      "jur": "cn",
+      "tema": "etf",
+      "etapa": null,
+      "estado": "No hay research sobre ETF cripto en China.",
       "fecha": null,
       "fuente": "VERIFICAR",
       "proxima": null,
@@ -1571,6 +1944,25 @@
       "informes": []
     },
     {
+      "jur": "cn",
+      "tema": "politica",
+      "etapa": null,
+      "estado": "La PBoC mantiene el LPR a 1 año en 3,0 % y a 5 años en 3,5 %; es la excepción entre los grandes bancos centrales que suben tipos.",
+      "fecha": "2026-10",
+      "fuente": "S",
+      "proxima": {
+        "fecha": "2026-10-20",
+        "que": "Publicación del LPR de octubre."
+      },
+      "falta": "Informe de Política Monetaria del 2T-2026 y datos de crédito en pbc.gov.cn (versión china).",
+      "hitos": [],
+      "informes": [
+        "R29"
+      ],
+      "dir": "mantiene",
+      "valor": "LPR 3,0 % / 3,5 %"
+    },
+    {
       "jur": "brics",
       "tema": "stablecoins",
       "etapa": 1,
@@ -1597,7 +1989,7 @@
     },
     {
       "jur": "brics",
-      "tema": "mercado",
+      "tema": "ley_marco",
       "etapa": 0,
       "estado": "No hay marco vinculante: GAFI, FSB e IOSCO dictan estándares; según el GAFI, el 83 % de las jurisdicciones encuestadas tienen la Travel Rule legislada, pero solo ~40 % la supervisa.",
       "fecha": "2026-07-16",
@@ -1617,6 +2009,18 @@
       "informes": [
         "R18"
       ]
+    },
+    {
+      "jur": "brics",
+      "tema": "etf",
+      "etapa": null,
+      "estado": "No aplica: no hay ETF a escala supranacional.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": []
     },
     {
       "jur": "brics",
@@ -1693,6 +2097,23 @@
       "informes": [
         "R35"
       ]
+    },
+    {
+      "jur": "brics",
+      "tema": "politica",
+      "etapa": null,
+      "estado": "Entorno global: la Fed, el BCE y el BoJ suben tipos a la vez; el Brent ronda los 126,6 $ el 14-oct, unos 20 $ por encima de la previsión oficial de la EIA para el 4T (105 $), con la ruta de Ormuz restringida.",
+      "fecha": "2026-10-14",
+      "fuente": "P",
+      "proxima": null,
+      "falta": "Confirmar el pico del 2-oct (135,5 $) con una segunda serie.",
+      "hitos": [],
+      "informes": [
+        "R29",
+        "R46"
+      ],
+      "dir": "sube",
+      "valor": "Brent ≈ 126 $/barril"
     }
   ],
   "huecos": [
@@ -1719,6 +2140,16 @@
     {
       "zona": "Custodia fuera de EE. UU. y la UE",
       "nota": "Ningún informe trata la custodia cripto en Asia, Emiratos o BRICS."
+    },
+    {
+      "zona": "Política monetaria",
+      "nota": "Solo Fed, BCE, BoJ, PBoC, Banco de Rusia y RBI (R29, R30). Sin leer: MAS, HKMA, Banco de Corea, BCB/Copom, bancos de los Emiratos y demás emergentes."
     }
-  ]
+  ],
+  "escala_politica": {
+    "sube": "Sube tipos",
+    "mantiene": "Mantiene",
+    "baja": "Baja tipos",
+    "n/d": "Sin dirección conocida"
+  }
 }

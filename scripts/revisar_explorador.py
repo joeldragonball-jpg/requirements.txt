@@ -112,7 +112,17 @@ if RUTA_REG.exists():
             aviso(dn, "celda repetida")
         vistas.add(clave)
         etapa = cel.get("etapa")
-        if etapa is None:
+        if cel.get("tema") == "politica" and etapa is None and cel.get("dir") is not None:
+            # La política monetaria no usa etapa: usa dirección (sube, mantiene, baja, n/d)
+            if cel["dir"] not in r.get("escala_politica", {}):
+                aviso(dn, f"dirección no válida: {cel['dir']}")
+            if not fecha_ok(cel.get("fecha")):
+                aviso(dn, f"fecha del último cambio no válida: {cel.get('fecha')}")
+            if not cel.get("informes"):
+                aviso(dn, "sin informes de origen")
+            if not cel.get("valor"):
+                aviso(dn, "sin valor (nivel de tipos u otro dato)")
+        elif etapa is None:
             sin_dato += 1
             if cel.get("fuente") == "VERIFICAR" and cel.get("fecha") is not None:
                 aviso(dn, "celda sin dato con fecha")

@@ -75,8 +75,8 @@ h3{margin:18px 0 7px;font-size:11px;text-transform:uppercase;letter-spacing:.14e
 .chip.clic{cursor:pointer}.chip.clic:hover{border-color:var(--oro);color:#fff}
 details.doc .chips{margin:2px 0 6px}
 .hecho-t{flex:1}
-.radar-grid{display:grid;grid-template-columns:minmax(78px,1.5fr) repeat(6,minmax(0,1fr));gap:4px;margin:8px 0}
-.radar-th{writing-mode:vertical-rl;transform:rotate(180deg);height:84px;white-space:nowrap;font-size:11px;color:var(--suave);justify-self:center;align-self:end;text-align:left}
+.radar-grid{display:grid;gap:4px;margin:8px 0}
+.radar-th{writing-mode:vertical-rl;transform:rotate(180deg);height:116px;white-space:nowrap;font-size:11px;color:var(--suave);justify-self:center;align-self:end;text-align:left}
 .radar-jur{appearance:none;background:none;border:1px solid transparent;border-radius:5px;color:var(--texto);font:inherit;font-size:12px;text-align:left;padding:3px 6px;cursor:pointer}
 .radar-jur:hover,.radar-jur.on{border-color:var(--oro)}
 .radar-cel{appearance:none;height:30px;border-radius:5px;border:1px solid;font:inherit;font-weight:700;font-size:13px;cursor:pointer;color:#fff;display:flex;align-items:center;justify-content:center;gap:3px;padding:0}
@@ -525,17 +525,21 @@ const RADAR = D.radar;
 const ETAPA_COL = ['#e06c6c', '#d9904a', '#d4a84b', '#8bb86a', '#3fb68b', '#2ee6a6'];
 let radarSel = null;   // {jur, tema?}
 const celdaRadar = (j, t) => RADAR.celdas.find(c => c.jur === j && c.tema === t);
+const DIR_COL = {'sube': '#d9904a', 'mantiene': '#8a97b0', 'baja': '#5aa9e6', 'n/d': '#64748b'};
+const DIR_SIM = {'sube': '▲', 'mantiene': '▬', 'baja': '▼', 'n/d': '•'};
+const tieneDato = c => !!c && (c.etapa !== null || !!c.dir);
+const colCelda = c => c.etapa !== null ? ETAPA_COL[c.etapa] : (DIR_COL[c.dir] || '#475569');
 const nomJur = id => (RADAR.jurisdicciones.find(j => j.id === id) || {nombre: id}).nombre;
 const nomTema = id => (RADAR.temas.find(t => t.id === id) || {nombre: id}).nombre;
 const nivelFuente = f => NIVEL[f === 'VERIFICAR' ? 'VER' : f] || null;
 function etapaChip(padre, c){
   const a = H('span', 'chip', padre); const p = H('span', 'punto', a);
-  p.style.background = c.etapa === null ? '#475569' : ETAPA_COL[c.etapa];
-  a.appendChild(document.createTextNode(c.etapa === null ? 'Sin dato' : `Etapa ${c.etapa}: ${RADAR.escala[c.etapa]}`));
+  p.style.background = tieneDato(c) ? colCelda(c) : '#475569';
+  a.appendChild(document.createTextNode(c.etapa !== null ? `Etapa ${c.etapa}: ${RADAR.escala[c.etapa]}` : (c.dir ? `${RADAR.escala_politica[c.dir]}${c.valor && c.valor !== '—' ? ': ' + c.valor : ''}` : 'Sin dato')));
 }
 function radarCelda(padre, c){
   const nf = nivelFuente(c.fuente);
-  const b = H('div', 'bloque entra', padre); b.style.borderLeftColor = c.etapa === null ? '#475569' : ETAPA_COL[c.etapa];
+  const b = H('div', 'bloque entra', padre); b.style.borderLeftColor = tieneDato(c) ? colCelda(c) : '#475569';
   const t = H('div', '', b); H('b', '', t, `${nomJur(c.jur)} · ${nomTema(c.tema)}`);
   const ch = H('div', 'chips', b); etapaChip(ch, c);
   if (nf){ const e = H('span', 'etq', ch, nf[0]); e.style.color = nf[1]; e.style.borderColor = rgba(nf[1], .6); e.title = nf[2]; }
@@ -553,9 +557,9 @@ function radarCelda(padre, c){
 function radarVista(padre, titulo){
   if (!RADAR) return;
   H('h3', '', padre, titulo);
-  const con = RADAR.celdas.filter(c => c.etapa !== null).length;
+  const con = RADAR.celdas.filter(tieneDato).length;
   H('p', 'nota', padre, `${con} de ${RADAR.celdas.length} celdas con dato; el resto se muestra con guion y está marcado [VERIFICAR]. La etapa es la de la norma, no una valoración de si es buena o mala. Pulsa una celda para ver cómo ha avanzado, o un país para ver todos sus temas.`);
-  const g = H('div', 'radar-grid', padre);
+  const g = H('div', 'radar-grid', padre); g.style.gridTemplateColumns = `minmax(78px,1.5fr) repeat(${RADAR.temas.length},minmax(0,1fr))`;
   H('div', '', g);
   RADAR.temas.forEach(t => { const th = H('div', 'radar-th', g, t.nombre); th.title = t.nombre; });
   RADAR.jurisdicciones.forEach(j => {
@@ -563,16 +567,20 @@ function radarVista(padre, titulo){
     bj.title = 'Ver todos los temas de ' + j.nombre;
     bj.addEventListener('click', () => { radarSel = (radarSel && radarSel.jur === j.id && !radarSel.tema) ? null : {jur: j.id}; dibujarPanel(); });
     RADAR.temas.forEach(t => {
-      const c = celdaRadar(j.id, t.id), nd = !c || c.etapa === null;
+      const c = celdaRadar(j.id, t.id), nd = !tieneDato(c);
       const b = H('button', 'radar-cel' + (nd ? ' nd' : '') + (radarSel && radarSel.jur === j.id && radarSel.tema === t.id ? ' on' : ''), g);
-      if (!nd){ const col = ETAPA_COL[c.etapa]; b.style.background = rgba(col, .3); b.style.borderColor = rgba(col, .8); b.appendChild(document.createTextNode(String(c.etapa))); H('small', '', b, c.fuente === 'VERIFICAR' ? '?' : c.fuente); }
+      if (!nd){ const col = colCelda(c); b.style.background = rgba(col, .3); b.style.borderColor = rgba(col, .8); b.appendChild(document.createTextNode(c.etapa !== null ? String(c.etapa) : DIR_SIM[c.dir] || '•')); H('small', '', b, c.fuente === 'VERIFICAR' ? '?' : c.fuente); }
       else b.appendChild(document.createTextNode('—'));
-      b.title = `${j.nombre} · ${t.nombre}: ` + (nd ? 'sin dato' : `etapa ${c.etapa}, ${RADAR.escala[c.etapa]}`);
+      b.title = `${j.nombre} · ${t.nombre}: ` + (nd ? 'sin dato' : (c.etapa !== null ? `etapa ${c.etapa}, ${RADAR.escala[c.etapa]}` : `${RADAR.escala_politica[c.dir]}${c.valor && c.valor !== '—' ? ', ' + c.valor : ''}`));
       b.addEventListener('click', () => { radarSel = (radarSel && radarSel.jur === j.id && radarSel.tema === t.id) ? null : {jur: j.id, tema: t.id}; dibujarPanel(); });
     });
   });
   const ley = H('div', 'leyenda', padre);
   Object.keys(RADAR.escala).forEach(k => { const s = H('span', '', ley); const p = H('span', 'punto', s); p.style.background = ETAPA_COL[k]; s.appendChild(document.createTextNode(`${k} ${RADAR.escala[k]}`)); });
+  const ley2 = H('div', 'leyenda', padre);
+  const t0 = H('span', '', ley2, 'Política monetaria (última columna):'); t0.style.color = '#cdd6ea';
+  Object.keys(RADAR.escala_politica).forEach(k => { const s = H('span', '', ley2); const p = H('span', 'punto', s); p.style.background = DIR_COL[k]; s.appendChild(document.createTextNode(`${DIR_SIM[k]} ${RADAR.escala_politica[k]}`)); });
+  H('p', 'nota', padre, 'En política monetaria el color indica la dirección del último movimiento, no si es bueno o malo.');
   if (radarSel){
     if (radarSel.tema){ const c = celdaRadar(radarSel.jur, radarSel.tema); if (c) radarCelda(padre, c); }
     else RADAR.temas.forEach(t => { const c = celdaRadar(radarSel.jur, t.id); if (c) radarCelda(padre, c); });
