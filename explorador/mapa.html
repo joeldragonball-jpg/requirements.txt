@@ -97,6 +97,21 @@ details.doc .cuerpo{padding:0 11px 10px;color:#cdd6ea;font-size:12.5px}
 .fila-ev .rombo{width:10px;height:10px;transform:rotate(45deg);flex:none;border:1px solid rgba(255,255,255,.6)}
 .fila-ev .cuando{font-size:11.5px;color:#f1d58a;white-space:nowrap;min-width:78px}
 .estrella-ev{color:#ffd166}
+/* Móvil y ventanas estrechas: solo reordena y compacta; en pantallas anchas no cambia nada */
+@media (max-width:900px){
+  #lienzo{flex:none;height:auto;aspect-ratio:1/1.05;min-height:0}
+  #barra{gap:6px;padding:6px 8px}
+  #barra button,#barra input[type=text]{padding:5px 9px;font-size:12.5px}
+  #tiempo{flex:1 1 100%}
+  #barra input[type=text]{flex:1 1 100%}
+  #calBarra{flex-wrap:wrap;gap:4px 10px;padding:6px 8px}
+  #calTit{width:100%}
+  #calPista{flex:1 1 100%;min-width:0}
+  #calTemas{flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:3px;-webkit-overflow-scrolling:touch}
+  .tema{white-space:nowrap;flex:none}
+  #panel{overflow:visible}
+  .cifras{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 </style></head><body>
 <div id="app">
   <div id="izq">
