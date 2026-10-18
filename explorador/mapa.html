@@ -71,6 +71,9 @@ h3{margin:18px 0 7px;font-size:11px;text-transform:uppercase;letter-spacing:.14e
 .item{border-top:1px solid var(--linea);padding:10px 0}.item b{color:#fff;font-weight:650}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}.chip{font-size:11px;border:1px solid var(--linea);border-radius:4px;padding:1px 8px;color:var(--suave);display:flex;gap:6px;align-items:center;background:rgba(15,23,42,.7)}
 .fuente{font-size:11px;color:var(--suave)}
+.chip.clic{cursor:pointer}.chip.clic:hover{border-color:var(--oro);color:#fff}
+details.doc .chips{margin:2px 0 6px}
+.hecho-t{flex:1}
 .bloque{background:rgba(15,23,42,.6);border:1px solid var(--linea);border-radius:6px;padding:8px 11px;margin:7px 0;border-left-width:3px}
 .volver{background:rgba(15,23,42,.9);color:var(--texto);border:1px solid var(--linea);border-radius:6px;padding:5px 11px;cursor:pointer;margin-bottom:10px;font:inherit;font-size:12.5px}
 .volver:hover{border-color:var(--oro)}
@@ -292,7 +295,7 @@ function dibujarCalendario(){
 }
 
 function filtros(){ return {corte: d0 + (+slider.value), q: $('buscar').value.trim().toLowerCase(), solo: $('soloToken').checked}; }
-function pasa(m, f){ return m.d <= f.corte && (!f.solo || m.nombra === 'token') && (!f.q || (m.actor + ' ' + m.texto + ' ' + m.fuente).toLowerCase().includes(f.q)); }
+function pasa(m, f){ return m.d <= f.corte && (!f.solo || m.nombra === 'token') && (!f.q || (m.actor + ' ' + m.texto + ' ' + m.fuente + ' ' + [].concat(m.ent || [], m.act || [], m.pais || []).join(' ')).toLowerCase().includes(f.q)); }
 function visibles(capaId){ const f = filtros(); return movs.filter(m => (!capaId || m.capa === capaId) && pasa(m, f)); }
 const pos = c => [Math.cos(c.a) * c.rx, Math.sin(c.a) * c.rx * RY];
 
@@ -395,13 +398,45 @@ function insignia(m, padre){
   a.appendChild(document.createTextNode((est[m.estado] || {nombre: m.estado}).nombre));
   const b = H('span', 'chip', padre); const q = H('span', 'punto', b); q.style.background = colNombra[m.nombra] || '#475569'; b.appendChild(document.createTextNode(D.nombra[m.nombra] || m.nombra));
 }
+const NIVEL = {P: ['Fuente primaria', '#3fb68b', 'Documento oficial o dato de registro leído directamente.'],
+  S: ['Fuente secundaria', '#d4a84b', 'Prensa, agregador o tercero: puede cambiar o contener errores.'],
+  ESP: ['Especulación', '#9b8fe0', 'Inferencia o opinión razonada: no es un hecho verificado.'],
+  VER: ['Por verificar', '#e06c6c', 'Dato pendiente de confirmar con una fuente primaria.']};
+function chipsEtiquetas(padre, o){
+  [['ent', 'Entidad'], ['act', 'Activo'], ['pais', 'País']].forEach(([k, tit]) => (o[k] || []).forEach(v => {
+    const c = H('span', 'chip clic', padre, v); c.title = tit + ': pulsa para filtrar el mapa por «' + v + '»';
+    c.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); $('buscar').value = v; refrescar(false); });
+  }));
+}
+const GENERICOS = ['ripple', 'stellar', 'xrpl'];
+function relacionados(c, hecho){
+  const t = (hecho.ent || []).map(x => x.toLowerCase().replace(/ \(.*\)/, ''));
+  if (!t.length) return [];
+  return c.docs.inv.filter(d => t.some(x => (GENERICOS.includes(x) ? d.titulo : d.titulo + ' ' + d.resumen).toLowerCase().includes(x))).slice(0, 2);
+}
+function bloqueHechos(padre, c, tit, k, color, retraso){
+  const bl = H('div', 'bloque entra', padre); bl.style.animationDelay = retraso + 'ms'; bl.style.borderLeftColor = color;
+  const cab = H('div', 'nota', bl, tit); cab.style.fontWeight = 700;
+  const v = c[k];
+  if (typeof v === 'string'){ H('div', '', bl, v || '—'); return; }
+  if (!v.length){ H('div', 'nota', bl, 'Sin datos en esta categoría.'); return; }
+  v.forEach(hecho => {
+    const det = H('details', 'doc', bl), s = H('summary', '', det), nv = NIVEL[hecho.k];
+    if (nv){ const e = H('span', 'etq', s, nv[0]); e.style.color = nv[1]; e.style.borderColor = rgba(nv[1], .6); e.title = nv[2]; }
+    H('span', 'hecho-t', s, hecho.t);
+    const cu = H('div', 'cuerpo', det);
+    if ((hecho.ent || []).length + (hecho.act || []).length + (hecho.pais || []).length) chipsEtiquetas(H('div', 'chips', cu), hecho);
+    H('div', 'fuente', cu, nv ? `${nv[0]}${hecho.n && hecho.n !== hecho.k ? ' (' + hecho.n + ')' : ''}: ${nv[2]}` : 'Sin etiqueta de fuente: dato de contexto del propio mapa.');
+    relacionados(c, hecho).forEach((d, i) => tarjetaDoc(cu, d, i));
+  });
+}
 function listaMovs(padre, lista){
   if (!lista.length){ H('p', 'nota', padre, 'Ningún hecho con estos filtros y esta fecha.'); return; }
   lista.slice().sort((a, b) => b.d - a.d).forEach((m, i) => {
     const it = H('div', 'item entra', padre); it.style.animationDelay = (i * 30) + 'ms';
     const t = H('div', '', it); H('span', 'nota', t, m.fecha + ' · '); H('b', '', t, m.actor);
     H('div', '', it, m.texto);
-    const ch = H('div', 'chips', it); insignia(m, ch);
+    const ch = H('div', 'chips', it); insignia(m, ch); chipsEtiquetas(ch, m);
     H('div', 'fuente', it, 'Fuente: ' + m.fuente + (sel ? '' : ' · capa: ' + (m.capaObj ? m.capaObj.nombre : m.capa)));
   });
 }
@@ -488,8 +523,7 @@ function dibujarPanel(){
     H('h3', '', panel, 'Cifras clave');
     tarjetasCifras(panel, sel.cifras.map(c => ({capa: sel, c})));
     [['En producción', 'produccion', 'produccion'], ['Piloto o prueba', 'piloto', 'piloto'], ['Plan o propuesta', 'plan', 'plan'], ['¿Nombra XRP o XLM?', 'xrp', null]].forEach(([tit, k, ek], i) => {
-      const bl = H('div', 'bloque entra', panel); bl.style.animationDelay = (60 + i * 50) + 'ms'; bl.style.borderLeftColor = ek ? colEst(ek) : colNombra.token;
-      const h = H('div', 'nota', bl, tit); h.style.fontWeight = 700; H('div', '', bl, sel[k] || '—'); });
+      bloqueHechos(panel, sel, tit, k, ek ? colEst(ek) : colNombra.token, 60 + i * 50); });
     if (f.corte < d1) H('p', 'nota', panel, 'Los cuadros de arriba describen la situación a octubre de 2026; la lista de abajo sí respeta la fecha del deslizador.');
     H('h3', '', panel, `Fechas próximas de esta capa (${evVisibles(sel.id).length})`);
     listaEventos(panel, evVisibles(sel.id).slice(0, 10), false);
