@@ -1,14 +1,15 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
 <style>
-:root{--alto:820px;--bg:#050816;--panel:rgba(9,14,30,.88);--linea:rgba(148,163,184,.16);--texto:#e6ebf5;--suave:#93a1bd;--oro:#d4a84b}
+:root{color-scheme:dark;--alto:820px;--bg:#050816;--panel:rgba(9,14,30,.88);--linea:rgba(148,163,184,.16);--texto:#e6ebf5;--suave:#93a1bd;--oro:#d4a84b}
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--texto);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-variant-numeric:tabular-nums}
+html,body{margin:0;background:transparent;color:var(--texto);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-variant-numeric:tabular-nums}
 #app{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:10px;padding:6px;height:var(--alto);transition:grid-template-columns .5s ease}
 #app.sel{grid-template-columns:minmax(0,1fr) 620px}
 @media (max-width:900px){#app,#app.sel{grid-template-columns:1fr;height:auto}#lienzo{height:70vh}}
 #izq{display:flex;flex-direction:column;gap:8px;min-width:0;min-height:0}
-.vidrio{background:var(--panel);border:1px solid var(--linea);border-radius:10px}
+.vidrio{background:rgba(9,14,30,.5);border:1px solid rgba(148,163,184,.12);border-radius:10px;backdrop-filter:blur(8px)}
 #barra{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:7px 10px}
 #barra button,#barra input[type=text]{background:rgba(15,23,42,.9);color:var(--texto);border:1px solid var(--linea);border-radius:6px;padding:6px 11px;font:inherit;font-size:13px;transition:.15s}
 #barra button{cursor:pointer}#barra button:hover{border-color:var(--oro);color:#fff}
@@ -20,21 +21,28 @@ html,body{margin:0;background:var(--bg);color:var(--texto);font:14px/1.45 system
 #marcas i{position:absolute;bottom:0;width:2px;opacity:.95}
 #marcas span{position:absolute;top:0;font-size:10px;color:var(--suave);transform:translateX(-50%);letter-spacing:.04em}
 #fecha{min-width:92px;color:#f1d58a;font-weight:700;letter-spacing:.03em}
-#lienzo{flex:1;min-height:0;position:relative;border:1px solid var(--linea);border-radius:12px;overflow:hidden;
-  background:radial-gradient(ellipse 60% 50% at 20% 25%,rgba(99,102,241,.20),transparent 70%),
-             radial-gradient(ellipse 55% 45% at 85% 80%,rgba(190,70,130,.14),transparent 70%),
-             radial-gradient(ellipse 50% 40% at 70% 15%,rgba(34,160,190,.12),transparent 70%),
-             radial-gradient(ellipse at center,#0b1230 0%,#050816 78%)}
+#calBarra{display:flex;gap:12px;align-items:center;padding:6px 10px}
+#calTit{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--suave);white-space:nowrap}
+#calPista{position:relative;flex:1;height:30px;min-width:200px}
+#calPista .hoy{position:absolute;top:2px;bottom:2px;width:1px;background:rgba(241,213,138,.7)}
+#calPista .mes{position:absolute;bottom:-2px;font-size:9.5px;color:var(--suave);transform:translateX(-50%)}
+#calPista .ev{position:absolute;top:4px;width:11px;height:11px;transform:translateX(-50%) rotate(45deg);border:1px solid rgba(255,255,255,.75);cursor:pointer}
+#calPista .ev.alto{width:14px;height:14px;top:2px;box-shadow:0 0 10px currentColor}
+#calTemas{display:flex;flex-wrap:wrap;gap:4px 10px}
+.tema{display:flex;gap:6px;align-items:center;font-size:11px;color:var(--suave);cursor:pointer;user-select:none;padding:1px 6px;border-radius:4px;border:1px solid transparent}
+.tema i{width:9px;height:9px;transform:rotate(45deg);display:inline-block;flex:none}
+.tema.off{opacity:.35}.tema:hover{border-color:var(--linea)}
+#lienzo{flex:1;min-height:0;position:relative;overflow:hidden;background:none;border:none}
 svg{width:100%;height:100%;display:block}
 #marca{position:absolute;left:16px;top:12px;pointer-events:none}
 #marca b{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#c8d3ea;font-weight:600}
 #marca div{color:var(--suave);font-size:12px;margin-top:2px}
 #leyendaMapa{position:absolute;left:16px;bottom:12px;display:flex;flex-wrap:wrap;gap:4px 14px;max-width:75%;pointer-events:none}
 #leyendaMapa span{font-size:11px;color:var(--suave);display:flex;gap:6px;align-items:center;letter-spacing:.02em}
-#tip{position:absolute;pointer-events:none;background:rgba(6,10,24,.96);border:1px solid var(--linea);border-left:3px solid var(--oro);border-radius:6px;padding:8px 11px;font-size:12px;max-width:260px;opacity:0;transition:opacity .15s;z-index:3;box-shadow:0 8px 28px rgba(0,0,0,.55)}
+#tip{position:absolute;pointer-events:none;background:rgba(6,10,24,.96);border:1px solid var(--linea);border-left:3px solid var(--oro);border-radius:6px;padding:8px 11px;font-size:12px;max-width:270px;opacity:0;transition:opacity .15s;z-index:3;box-shadow:0 8px 28px rgba(0,0,0,.55)}
 .planeta{cursor:pointer;outline:none}
 .planeta .nombre{pointer-events:none;fill:#d6deef;font-size:10px;text-anchor:middle;paint-order:stroke;stroke:#050816;stroke-width:3.5px;stroke-linejoin:round;font-weight:600;letter-spacing:.09em;text-transform:uppercase}
-.planeta .num{pointer-events:none;font-size:12px;font-weight:800;fill:#071022;text-anchor:middle}
+.planeta .cuenta{pointer-events:none;font-size:8.5px;font-weight:800;fill:#fff;text-anchor:middle}
 .planeta .rotulo{pointer-events:none;fill:#e6ebf5;font-size:8.5px;paint-order:stroke;stroke:#050816;stroke-width:3px;stroke-linejoin:round;letter-spacing:.02em}
 .planeta:focus-visible .disco{stroke:#fff;stroke-width:2}
 .orbita{fill:none;stroke-width:1}
@@ -43,14 +51,16 @@ svg{width:100%;height:100%;display:block}
 .luna{transition:opacity .5s}
 .anillo-sel{fill:none;stroke-width:1.4;stroke-dasharray:3 4;transform-box:fill-box;transform-origin:center;animation:girar 14s linear infinite}
 .pulso{fill:none;stroke-width:1.6;animation:p 1.3s ease-out forwards}
+.cerca{transform-box:fill-box;transform-origin:center;animation:latido 1.4s ease-in-out infinite}
 @keyframes tw{0%,100%{opacity:.12}50%{opacity:.7}}
 @keyframes girar{to{transform:rotate(360deg)}}
 @keyframes p{from{r:14;opacity:.9}to{r:56;opacity:0}}
+@keyframes latido{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
 @keyframes entra{from{opacity:0}to{opacity:1}}
-@media (prefers-reduced-motion:reduce){.estrella,.barrido,.anillo-sel{animation:none}#app{transition:none}}
+@media (prefers-reduced-motion:reduce){.estrella,.barrido,.anillo-sel,.cerca{animation:none}#app{transition:none}}
 #panel{padding:14px 16px;overflow:auto;min-height:0}
 #panel .entra{animation:entra .35s ease both}
-h2{margin:0 0 6px;font-size:17px;font-weight:650;letter-spacing:.01em}
+h2{margin:0 0 6px;font-size:17px;font-weight:650;letter-spacing:.01em;display:flex;gap:10px;align-items:center}
 h3{margin:18px 0 7px;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--suave);font-weight:600;border-bottom:1px solid var(--linea);padding-bottom:5px}
 .nota{color:var(--suave);font-size:12px}
 .cabecera{border-radius:8px;padding:12px 14px;margin-bottom:10px;border:1px solid var(--linea);border-left-width:4px;background:rgba(15,23,42,.6)}
@@ -63,16 +73,26 @@ h3{margin:18px 0 7px;font-size:11px;text-transform:uppercase;letter-spacing:.14e
 .bloque{background:rgba(15,23,42,.6);border:1px solid var(--linea);border-radius:6px;padding:8px 11px;margin:7px 0;border-left-width:3px}
 .volver{background:rgba(15,23,42,.9);color:var(--texto);border:1px solid var(--linea);border-radius:6px;padding:5px 11px;cursor:pointer;margin-bottom:10px;font:inherit;font-size:12.5px}
 .volver:hover{border-color:var(--oro)}
-.capa-fila{display:flex;align-items:center;gap:10px;width:100%;background:rgba(15,23,42,.55);border:1px solid var(--linea);border-radius:6px;padding:8px 11px;margin:5px 0;color:var(--texto);cursor:pointer;font:inherit;font-size:13px;text-align:left;transition:.15s}
+.capa-fila{display:flex;align-items:center;gap:10px;width:100%;background:rgba(15,23,42,.55);border:1px solid var(--linea);border-radius:6px;padding:7px 11px;margin:5px 0;color:var(--texto);cursor:pointer;font:inherit;font-size:13px;text-align:left;transition:.15s}
 .capa-fila:hover{border-color:var(--oro);background:rgba(30,41,70,.55)}
-.capa-fila .esf{width:11px;height:11px;border-radius:50%;flex:none}.capa-fila .n{margin-left:auto;font-weight:700;color:#f1d58a}
+.capa-fila .n{margin-left:auto;font-weight:700;color:#f1d58a}
 .capa-fila .sub{color:var(--suave);font-size:11px}
+.ico{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;flex:none}
 details.doc{background:rgba(15,23,42,.55);border:1px solid var(--linea);border-radius:6px;margin:6px 0;padding:0}
 details.doc summary{cursor:pointer;padding:8px 11px;list-style:none;display:flex;gap:8px;align-items:baseline}
 details.doc summary::-webkit-details-marker{display:none}
 details.doc[open]{border-color:rgba(212,168,75,.55)}
 details.doc .cuerpo{padding:0 11px 10px;color:#cdd6ea;font-size:12.5px}
 .etq{font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;padding:1px 6px;border-radius:3px;border:1px solid;flex:none}
+.cifras{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:8px;margin:6px 0}
+.cifra{background:rgba(15,23,42,.62);border:1px solid var(--linea);border-top-width:3px;border-radius:7px;padding:9px 11px}
+.cifra b{display:block;font-size:19px;line-height:1.15;letter-spacing:-.01em}
+.cifra span{display:block;font-size:12px;color:#c5cee2;margin-top:3px}
+.cifra small{display:block;font-size:10.5px;color:var(--suave);margin-top:5px}
+.fila-ev summary{align-items:center}
+.fila-ev .rombo{width:10px;height:10px;transform:rotate(45deg);flex:none;border:1px solid rgba(255,255,255,.6)}
+.fila-ev .cuando{font-size:11.5px;color:#f1d58a;white-space:nowrap;min-width:78px}
+.estrella-ev{color:#ffd166}
 </style></head><body>
 <div id="app">
   <div id="izq">
@@ -85,6 +105,7 @@ details.doc .cuerpo{padding:0 11px 10px;color:#cdd6ea;font-size:12.5px}
       <label><input type="checkbox" id="soloToken"> Solo los que nombran XRP o XLM</label>
       <button id="btnVolver" title="Volver a la vista general">⌂ Vista general</button>
     </div>
+    <div id="calBarra" class="vidrio"><span id="calTit">Calendario<br>próximos 120 días</span><div id="calPista"></div><div id="calTemas"></div></div>
     <div id="lienzo">
       <svg id="svg" viewBox="-520 -360 1040 720" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa de raíles financieros"></svg>
       <div id="marca"><b>Sistema de raíles</b><div id="subtitulo"></div></div>
@@ -105,16 +126,33 @@ function S(tag, attrs, padre, texto){ const e = document.createElementNS(NS, tag
   for (const k in attrs) e.setAttribute(k, attrs[k]); if (texto !== undefined) e.textContent = texto; if (padre) padre.appendChild(e); return e; }
 function H(tag, cls, padre, texto){ const e = document.createElement(tag); if (cls) e.className = cls;
   if (texto !== undefined) e.textContent = texto; if (padre) padre.appendChild(e); return e; }
-const hex = c => [1,3,5].map(i => parseInt(c.slice(i, i+2), 16));
+const hex = c => c.length === 4 ? [1,2,3].map(i => parseInt(c[i] + c[i], 16)) : [1,3,5].map(i => parseInt(c.slice(i, i+2), 16));
 const aHex = a => '#' + a.map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0')).join('');
 const mezcla = (c, t, k) => { const a = hex(c), b = hex(t); return aHex(a.map((v, i) => v + (b[i] - v) * k)); };
 const rgba = (c, a) => { const [r, g, b] = hex(c); return `rgba(${r},${g},${b},${a})`; };
 const ORO = '#d4a84b';
 const corto = (t, n) => t.length > n ? t.slice(0, n - 1) + '…' : t;
 
-function medirAlto(){ let h = 860; try { h = Math.max(720, Math.min((window.parent.innerHeight || 900) - 70, 1000)); } catch (e) {} document.documentElement.style.setProperty('--alto', h + 'px'); return h; }
+// ---------- Iconos de cada capa (trazo fino, estilo institucional)
+const ICONOS = {
+  cbdc: [['path','M3 20h18'],['path','M5 17v-6'],['path','M9.5 17v-6'],['path','M14.5 17v-6'],['path','M19 17v-6'],['path','M3 9l9-5.5L21 9z']],
+  stable: [['circle',{cx:12,cy:12,r:9}],['path','M12 6.5v11'],['path','M15 9.3c0-1.3-1.3-2.2-3-2.2s-3 .9-3 2.3 1.3 2 3 2.4 3 1 3 2.4-1.3 2.3-3 2.3-3-.9-3-2.2']],
+  deposit: [['rect',{x:4,y:5,width:16,height:14,rx:2}],['circle',{cx:12,cy:12,r:3.2}],['path','M12 8.8V7.5'],['path','M12 16.5v-1.3'],['path','M8.8 12H7.5'],['path','M16.5 12h-1.3']],
+  puente: [['path','M3 18.5h18'],['path','M5 18.5V8.5'],['path','M19 18.5V8.5'],['path','M5 8.5c3 0 4.5 4 7 4s4-4 7-4'],['path','M9 18.5v-4.2'],['path','M12 18.5v-6'],['path','M15 18.5v-4.2']],
+  token: [['path','M12 3.5L3.5 8 12 12.5 20.5 8z'],['path','M3.5 12.2L12 16.7l8.5-4.5'],['path','M3.5 16.4L12 20.9l8.5-4.5']],
+  custodia: [['path','M12 3l7.5 3v5.2c0 4.6-3.1 8.1-7.5 9.8-4.4-1.7-7.5-5.2-7.5-9.8V6z'],['circle',{cx:12,cy:10.5,r:2}],['path','M12 12.5v3']],
+  reg: [['path','M12 4v16'],['path','M8 20h8'],['path','M5 7h14'],['path','M5 7l-2.8 6.2h5.6z'],['path','M19 7l-2.8 6.2h5.6z']],
+  fondos: [['path','M6 4.5v3'],['path','M6 15v4'],['path','M12 3v3'],['path','M12 14.5v4.5'],['path','M18 6.5v3.5'],['path','M18 17v3'],['rect',{x:4.5,y:7.5,width:3,height:7.5}],['rect',{x:10.5,y:6,width:3,height:8.5}],['rect',{x:16.5,y:10,width:3,height:7}]]
+};
+function pintarIcono(grupo, id){ (ICONOS[id] || ICONOS.cbdc).forEach(([t, a]) => S(t, typeof a === 'string' ? {d: a} : a, grupo)); }
+function iconoHTML(id, px, color, fondo){
+  const w = H('span', 'ico'); w.style.width = w.style.height = (px + 10) + 'px'; w.style.background = fondo || rgba(color, .18); w.style.border = `1px solid ${rgba(color, .55)}`;
+  const s = document.createElementNS(NS, 'svg'); s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('width', px); s.setAttribute('height', px);
+  const g = S('g', {fill: 'none', stroke: color, 'stroke-width': 1.7, 'stroke-linecap': 'round', 'stroke-linejoin': 'round'}, s); pintarIcono(g, id); w.appendChild(s); return w;
+}
+
+function medirAlto(){ let h = 860; try { h = Math.max(760, Math.min((window.parent.innerHeight || 900) - 60, 1000)); } catch (e) {} document.documentElement.style.setProperty('--alto', h + 'px'); return h; }
 medirAlto();
-// El marco de Streamlit y su contenedor deben medir lo mismo que la página, para que nada de debajo se solape con el mapa
 function ajustarAlto(){ try { const fe = window.frameElement; if (!fe) return; const h = (app.offsetHeight + 14) + 'px'; fe.style.height = h;
   const p = fe.parentElement; if (p){ p.style.height = h; p.style.minHeight = h; } } catch (e) {} }
 try { window.parent.addEventListener('resize', () => { medirAlto(); ajustarAlto(); }); } catch (e) {}
@@ -129,10 +167,20 @@ const est = D.estados, colEst = k => OK((est[k] || {}).color);
 const colNombra = {token: '#38bdf8', red: '#8b7fd6', indirecto: '#d4a84b', no: '#475569'};
 const colTipo = {Research: '#5aa9e6', Dossier: '#d4a84b', Apunte: '#3fb68b'};
 
+// ---------- Calendario: fechas próximas por tema
+const CAL = D.calendario || {hoy: '', temas: {}, eventos: []};
+const HOY = CAL.hoy ? dia(CAL.hoy) : d1;
+const temasActivos = new Set(Object.keys(CAL.temas));
+const colTema = t => OK((CAL.temas[t] || {}).color);
+const eventos = (CAL.eventos || []).map(e => ({...e, d0: dia(e.ini), d1: dia(e.fin)}));
+const enDias = e => Math.round(e.d0 - HOY);
+const cuando = e => { const n = enDias(e); return e.d0 <= HOY && e.d1 >= HOY ? 'en curso' : n === 0 ? 'hoy' : n === 1 ? 'mañana' : `en ${n} días`; };
+const evVisibles = (capaId, dias) => eventos.filter(e => temasActivos.has(e.tema) && (!capaId || e.capa === capaId) && (dias === undefined || enDias(e) <= dias));
+
 let sel = null, orbitasPausadas = false, reproduciendo = false, vistos = {};
 const RY = .72;
 const capas = D.capas.map((c, i) => ({...c, color: OK(c.color), i, rx: 118 + i * 48, a: (i * 2.399) % (Math.PI * 2),
-  v: 0.10 / Math.pow(1 + i, 0.5) * (i % 2 ? -1 : 1), R: 16, docs: c.docs || {inv: [], glo: []}}));
+  v: 0.10 / Math.pow(1 + i, 0.5) * (i % 2 ? -1 : 1), R: 16, docs: c.docs || {inv: [], glo: []}, cifras: c.cifras || []}));
 
 const defs = S('defs', {}, svg);
 const fGlow = S('filter', {id: 'glow', x: '-80%', y: '-80%', width: '260%', height: '260%'}, defs);
@@ -144,8 +192,8 @@ const aura = S('radialGradient', {id: 'aura'}, defs);
 S('stop', {offset: '0%', 'stop-color': 'rgba(212,168,75,.22)'}, aura); S('stop', {offset: '100%', 'stop-color': 'rgba(212,168,75,0)'}, aura);
 capas.forEach(c => {
   const g = S('linearGradient', {id: 'pg' + c.i, x1: 0, y1: 0, x2: 1, y2: 1}, defs);
-  S('stop', {offset: '0%', 'stop-color': mezcla(c.color, '#ffffff', .22)}, g);
-  S('stop', {offset: '100%', 'stop-color': mezcla(c.color, '#000000', .38)}, g);
+  S('stop', {offset: '0%', 'stop-color': mezcla(c.color, '#ffffff', .12)}, g);
+  S('stop', {offset: '100%', 'stop-color': mezcla(c.color, '#000000', .5)}, g);
   const h = S('radialGradient', {id: 'hg' + c.i}, defs);
   S('stop', {offset: '0%', 'stop-color': c.color, 'stop-opacity': .32}, h); S('stop', {offset: '100%', 'stop-color': c.color, 'stop-opacity': 0}, h);
 });
@@ -176,10 +224,13 @@ S('circle', {cx: 0, cy: 0, r: 44, fill: 'none', stroke: 'rgba(212,168,75,.22)', 
 for (let k = 0; k < 60; k++){ const a = k * Math.PI / 30, l = k % 5 === 0 ? 5 : 2.5;
   S('line', {x1: Math.cos(a) * 50, y1: Math.sin(a) * 50, x2: Math.cos(a) * (50 + l), y2: Math.sin(a) * (50 + l), stroke: 'rgba(212,168,75,.5)', 'stroke-width': 1}, nuc); }
 const barrido = S('g', {class: 'barrido'}, nuc);
-S('path', {d: 'M 0 0 L 44 0 A 44 44 0 0 1 38.1 22 Z', fill: 'rgba(212,168,75,.20)'}, barrido);
-S('line', {x1: 0, y1: 0, x2: 44, y2: 0, stroke: 'rgba(241,213,138,.65)', 'stroke-width': 1}, barrido);
-S('text', {x: 0, y: -2, 'text-anchor': 'middle', 'font-size': 8.5, 'font-weight': 700, fill: '#f1d58a', 'letter-spacing': '.14em'}, nuc, 'DINERO Y');
-S('text', {x: 0, y: 9, 'text-anchor': 'middle', 'font-size': 8.5, 'font-weight': 700, fill: '#f1d58a', 'letter-spacing': '.14em'}, nuc, 'LIQUIDACIÓN');
+S('path', {d: 'M 0 0 L 44 0 A 44 44 0 0 1 38.1 22 Z', fill: 'rgba(212,168,75,.16)'}, barrido);
+S('line', {x1: 0, y1: 0, x2: 44, y2: 0, stroke: 'rgba(241,213,138,.55)', 'stroke-width': 1}, barrido);
+const globo = S('g', {fill: 'none', stroke: '#f1d58a', 'stroke-width': 1.1, transform: 'translate(0 -20)'}, nuc);
+S('circle', {cx: 0, cy: 0, r: 8}, globo); S('ellipse', {cx: 0, cy: 0, rx: 3.4, ry: 8}, globo); S('line', {x1: -8, y1: 0, x2: 8, y2: 0}, globo);
+S('path', {d: 'M -7 -4 Q 0 -2.6 7 -4 M -7 4 Q 0 2.6 7 4'}, globo);
+S('text', {x: 0, y: 11, 'text-anchor': 'middle', 'font-size': 8, 'font-weight': 700, fill: '#f1d58a', 'letter-spacing': '.14em'}, nuc, 'DINERO Y');
+S('text', {x: 0, y: 21, 'text-anchor': 'middle', 'font-size': 8, 'font-weight': 700, fill: '#f1d58a', 'letter-spacing': '.14em'}, nuc, 'LIQUIDACIÓN');
 
 const gPlanetas = S('g', {}, svg), tip = $('tip');
 capas.forEach(c => {
@@ -191,8 +242,13 @@ capas.forEach(c => {
   c.lideres = S('g', {}, c.g);
   if (c.anillo) c.aro = S('circle', {cx: 0, cy: 0, r: 26, fill: 'none', stroke: rgba(c.color, .55), 'stroke-width': 1, 'stroke-dasharray': '1 3'}, c.g);
   c.disco = S('circle', {class: 'disco', cx: 0, cy: 0, r: 16, fill: `url(#pg${c.i})`, stroke: mezcla(c.color, '#ffffff', .45), 'stroke-width': 1.2}, c.g);
-  c.interno = S('circle', {cx: 0, cy: 0, r: 11, fill: 'none', stroke: 'rgba(255,255,255,.2)', 'stroke-width': .8}, c.g);
-  c.num = S('text', {class: 'num', x: 0, y: 4.2}, c.g, '0');
+  c.interno = S('circle', {cx: 0, cy: 0, r: 11, fill: 'none', stroke: 'rgba(255,255,255,.18)', 'stroke-width': .8}, c.g);
+  c.icono = S('g', {fill: 'none', stroke: '#fff', 'stroke-width': 1.7, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'pointer-events': 'none'}, c.g); pintarIcono(c.icono, c.id);
+  c.insCirc = S('circle', {cx: 12, cy: 12, r: 8, fill: '#0b1230', stroke: c.color, 'stroke-width': 1.2}, c.g);
+  c.num = S('text', {class: 'cuenta', x: 12, y: 15}, c.g, '0');
+  c.cal = S('g', {}, c.g);
+  c.calRombo = S('rect', {x: -4.5, y: -4.5, width: 9, height: 9, transform: 'rotate(45)', stroke: '#fff', 'stroke-width': .9, opacity: 0}, c.cal);
+  c.calNum = S('text', {class: 'cuenta', x: 0, y: 3, opacity: 0, fill: '#0b1230'}, c.cal, '');
   c.rot = S('text', {class: 'nombre', x: 0, y: 32}, c.g, c.nombre);
   c.lunas = [];
   c.g.addEventListener('pointerenter', () => { c.hover = true; mostrarTip(c); });
@@ -218,21 +274,39 @@ for (let y = new Date(d0 * 86400000).getUTCFullYear() + 1; y <= new Date(d1 * 86
 const ley = $('leyendaMapa');
 Object.keys(est).forEach(k => { const s = H('span', '', ley); const p = H('span', 'punto', s); p.style.background = colEst(k); s.appendChild(document.createTextNode(est[k].nombre)); });
 
+// Barra del calendario: rombos de colores por tema, más grandes si el impacto es alto
+const DIAS_CAL = 120;
+function dibujarCalendario(){
+  const pista = $('calPista'); pista.textContent = '';
+  const hoyL = H('div', 'hoy', pista); hoyL.style.left = '0%'; hoyL.title = 'Hoy';
+  for (let k = 0; k <= 4; k++){ const dd = HOY + k * 30; const m = H('span', 'mes', pista, new Date(dd * 86400000).toLocaleDateString('es-ES', {month: 'short', timeZone: 'UTC'})); m.style.left = (k * 30 / DIAS_CAL * 100) + '%'; }
+  eventos.filter(e => temasActivos.has(e.tema) && enDias(e) <= DIAS_CAL && e.d1 >= HOY).forEach(e => {
+    const r = H('div', 'ev' + (e.impacto === 'alto' ? ' alto' : ''), pista); const x = Math.max(0, Math.min(100, (e.d0 - HOY) / DIAS_CAL * 100));
+    r.style.left = x + '%'; r.style.background = colTema(e.tema); r.style.color = colTema(e.tema);
+    r.style.opacity = e.aprox ? .55 : 1; r.title = `${fmtC(e.ini)} · ${e.titulo}${e.impacto === 'alto' ? ' (impacto alto)' : ''}${e.aprox ? ' · fecha aproximada' : ''}`;
+    r.addEventListener('click', () => { const c = capas.find(x => x.id === e.capa); if (c && sel !== c) seleccionar(c); });
+  });
+  const t = $('calTemas'); t.textContent = '';
+  Object.keys(CAL.temas).forEach(k => { const b = H('span', 'tema' + (temasActivos.has(k) ? '' : ' off'), t); const i = H('i', '', b); i.style.background = colTema(k); b.appendChild(document.createTextNode(CAL.temas[k].nombre));
+    b.title = 'Pulsa para mostrar u ocultar este tema'; b.addEventListener('click', () => { temasActivos.has(k) ? temasActivos.delete(k) : temasActivos.add(k); dibujarCalendario(); refrescar(false); }); });
+}
+
 function filtros(){ return {corte: d0 + (+slider.value), q: $('buscar').value.trim().toLowerCase(), solo: $('soloToken').checked}; }
 function pasa(m, f){ return m.d <= f.corte && (!f.solo || m.nombra === 'token') && (!f.q || (m.actor + ' ' + m.texto + ' ' + m.fuente).toLowerCase().includes(f.q)); }
 function visibles(capaId){ const f = filtros(); return movs.filter(m => (!capaId || m.capa === capaId) && pasa(m, f)); }
 const pos = c => [Math.cos(c.a) * c.rx, Math.sin(c.a) * c.rx * RY];
 
 function mostrarTip(c){
-  const v = visibles(c.id), t = v.filter(m => m.nombra === 'token').length;
+  const v = visibles(c.id), t = v.filter(m => m.nombra === 'token').length, ev = evVisibles(c.id, 120);
   tip.textContent = ''; tip.style.borderLeftColor = c.color;
   const b = H('b', '', tip, c.nombre); b.style.color = mezcla(c.color, '#fff', .3);
   H('div', 'nota', tip, `${v.length} hechos · ${t} nombran XRP o XLM`);
-  H('div', 'nota', tip, `${c.docs.inv.length} documentos · ${c.docs.glo.length} términos del glosario`);
+  H('div', 'nota', tip, `${c.docs.inv.length} documentos · ${c.docs.glo.length} términos · ${ev.length} fechas próximas`);
+  if (ev[0]) H('div', 'nota', tip, `Próxima: ${fmtC(ev[0].ini)} · ${corto(ev[0].titulo, 60)}`);
   H('div', 'nota', tip, c.resumen);
   tip.style.opacity = 1;
 }
-function moverTip(e){ const r = $('lienzo').getBoundingClientRect(); tip.style.left = Math.min(e.clientX - r.left + 16, r.width - 270) + 'px'; tip.style.top = Math.max(e.clientY - r.top - 10, 6) + 'px'; }
+function moverTip(e){ const r = $('lienzo').getBoundingClientRect(); tip.style.left = Math.min(e.clientX - r.left + 16, r.width - 280) + 'px'; tip.style.top = Math.max(e.clientY - r.top - 10, 6) + 'px'; }
 
 let ultimo = performance.now(), tiempo = 0;
 function frame(now){
@@ -248,7 +322,7 @@ function frame(now){
     c.lunas.forEach(m => {
       if (!m.vis){ m.rotulo.setAttribute('opacity', 0); m.lider.setAttribute('opacity', 0); return; }
       let tx, ty;
-      if (c === sel){                                     // al acercarse, cada hecho se coloca en un anillo con su rótulo
+      if (c === sel){
         const k = vis.indexOf(m), ang = -Math.PI / 2 + k * 2 * Math.PI / n, rr = c.R + 58 + (k % 2) * 16;
         tx = Math.cos(ang) * rr * 1.15; ty = Math.sin(ang) * rr * .9;
       } else { const a = m.fase + tiempo * m.vel; tx = Math.cos(a) * (c.R + m.dist); ty = Math.sin(a) * (c.R + m.dist) * .8; }
@@ -273,15 +347,13 @@ function animarVista(dt){
   svg.setAttribute('viewBox', `${vista.x.toFixed(1)} ${vista.y.toFixed(1)} ${vista.w.toFixed(1)} ${vista.h.toFixed(1)}`);
 }
 
-// Anillo de estados alrededor de la capa elegida: cuánto está en producción, piloto, plan…
 function dibujarDonut(c, vs){
   c.donut.textContent = '';
   if (c !== sel || !vs.length) return;
   const rr = c.R * 1.45, tot = vs.length; let a = -Math.PI / 2;
   Object.keys(est).forEach(k => { const n = vs.filter(m => m.estado === k).length; if (!n) return;
     const a1 = a + (n / tot) * 2 * Math.PI, gap = tot > 1 ? .07 : 0, s0 = a + gap, s1 = a1 - gap;
-    const p = (an) => [Math.cos(an) * rr, Math.sin(an) * rr];
-    const [x0, y0] = p(s0), [x1, y1] = p(s1);
+    const p = an => [Math.cos(an) * rr, Math.sin(an) * rr], [x0, y0] = p(s0), [x1, y1] = p(s1);
     S('path', {d: `M ${x0.toFixed(1)} ${y0.toFixed(1)} A ${rr.toFixed(1)} ${rr.toFixed(1)} 0 ${(s1 - s0) > Math.PI ? 1 : 0} 1 ${x1.toFixed(1)} ${y1.toFixed(1)}`, fill: 'none', stroke: colEst(k), 'stroke-width': 4, 'stroke-linecap': 'butt', opacity: .95}, c.donut);
     a = a1; });
 }
@@ -292,12 +364,19 @@ function refrescar(animado){
   $('fecha').textContent = fmt(f.corte); $('subtitulo').textContent = 'situación a ' + fmt(f.corte);
   capas.forEach(c => {
     const vs = visibles(c.id), n = vs.length;
-    c.R = 15 + 3.4 * Math.sqrt(n);
-    c.disco.setAttribute('r', c.R.toFixed(1)); c.interno.setAttribute('r', (c.R * .68).toFixed(1));
+    c.R = 17 + 3.2 * Math.sqrt(n);
+    c.disco.setAttribute('r', c.R.toFixed(1)); c.interno.setAttribute('r', (c.R * .72).toFixed(1));
     c.halo.setAttribute('r', (c.R * 2.6).toFixed(1));
+    c.icono.setAttribute('transform', `scale(${(c.R * .062).toFixed(3)}) translate(-12 -12)`);
+    c.insCirc.setAttribute('cx', (c.R * .78).toFixed(1)); c.insCirc.setAttribute('cy', (c.R * .78).toFixed(1));
+    c.num.setAttribute('x', (c.R * .78).toFixed(1)); c.num.setAttribute('y', (c.R * .78 + 3).toFixed(1));
     if (c.aro) c.aro.setAttribute('r', (c.R * 1.5).toFixed(1));
     c.selAnillo.setAttribute('r', (c.R * 1.75).toFixed(1)); c.selAnillo.setAttribute('opacity', c === sel ? .9 : 0);
     c.num.textContent = n; c.rot.setAttribute('y', (c.R + 17).toFixed(1));
+    const ev = evVisibles(c.id, DIAS_CAL);
+    c.cal.setAttribute('transform', `translate(${(-c.R * .85).toFixed(1)} ${(-c.R * .85).toFixed(1)})`);
+    if (ev.length){ c.calRombo.setAttribute('fill', colTema(ev[0].tema)); c.calRombo.setAttribute('opacity', 1); c.calNum.textContent = ev.length > 1 ? ev.length : ''; c.calNum.setAttribute('opacity', ev.length > 1 ? 1 : 0);
+      c.calRombo.setAttribute('class', enDias(ev[0]) <= 7 ? 'cerca' : ''); } else { c.calRombo.setAttribute('opacity', 0); c.calNum.setAttribute('opacity', 0); }
     const dim = (sel && c !== sel) || (n === 0 && (f.q || f.solo));
     c.g.style.opacity = dim ? .3 : 1; c.g.style.transition = 'opacity .4s';
     c.orbita.setAttribute('stroke', c === sel ? rgba(c.color, .7) : 'rgba(148,163,184,.17)');
@@ -345,6 +424,23 @@ function bloqueDocs(padre, c){
   glo.forEach((g, i) => { const det = H('details', 'doc entra', padre); det.style.animationDelay = (i * 25) + 'ms';
     const s = H('summary', '', det); H('b', '', s, g.t); const cu = H('div', 'cuerpo', det); H('div', '', cu, g.d); });
 }
+function tarjetasCifras(padre, lista){
+  const g = H('div', 'cifras', padre);
+  lista.forEach(({capa, c}, i) => { const t = H('div', 'cifra entra', g); t.style.animationDelay = (i * 30) + 'ms'; t.style.borderTopColor = capa.color;
+    const v = H('b', '', t, c.v); v.style.color = mezcla(capa.color, '#fff', .3); H('span', '', t, c.e); H('small', '', t, c.f); });
+}
+function listaEventos(padre, lista, conCapa){
+  if (!lista.length){ H('p', 'nota', padre, 'No hay fechas próximas con los temas elegidos.'); return; }
+  lista.forEach((e, i) => {
+    const det = H('details', 'doc fila-ev entra', padre); det.style.animationDelay = (i * 25) + 'ms'; det.style.borderLeft = `3px solid ${colTema(e.tema)}`;
+    const s = H('summary', '', det); const r = H('span', 'rombo', s); r.style.background = colTema(e.tema);
+    H('span', 'cuando', s, `${fmtC(e.ini)} · ${cuando(e)}`);
+    if (e.impacto === 'alto') H('span', 'estrella-ev', s, '★');
+    H('span', '', s, corto(e.titulo, 86));
+    const cu = H('div', 'cuerpo', det); H('div', '', cu, e.detalle || '');
+    const f = H('div', 'fuente', cu, `${(CAL.temas[e.tema] || {}).nombre || e.tema}${e.aprox ? ' · fecha aproximada' : ''}${e.fuente ? ' · fuente: ' + e.fuente : ''}${conCapa ? ' · capa: ' + ((capas.find(c => c.id === e.capa) || {}).nombre || e.capa) : ''}`); f.style.marginTop = '6px';
+  });
+}
 
 function dibujarPanel(){
   const antes = panel.scrollTop; panel.textContent = '';
@@ -352,42 +448,51 @@ function dibujarPanel(){
   if (!sel){
     const c0 = H('div', 'cabecera entra', panel); c0.style.borderLeftColor = ORO;
     H('h2', '', c0, 'Explorador de raíles'); H('p', 'nota', c0, D.aviso);
+    H('h3', '', panel, 'Capas');
+    capas.forEach((c, i) => {
+      const b = H('button', 'capa-fila entra', panel); b.style.animationDelay = (i * 25) + 'ms';
+      b.appendChild(iconoHTML(c.id, 16, mezcla(c.color, '#fff', .25), rgba(c.color, .22)));
+      const bl = H('span', '', b); H('div', '', bl, c.nombre); H('div', 'sub', bl, `${c.docs.inv.length} docs · ${c.docs.glo.length} términos · ${evVisibles(c.id, DIAS_CAL).length} fechas`);
+      H('span', 'n', b, String(visibles(c.id).length));
+      b.addEventListener('click', () => seleccionar(c));
+    });
+    H('h3', '', panel, 'Cifras clave');
+    tarjetasCifras(panel, capas.filter(c => c.cifras[0]).map(c => ({capa: c, c: c.cifras[0]})));
+    H('h3', '', panel, 'Próximas fechas');
+    H('p', 'nota', panel, 'Rombos de color según el tema; ★ = impacto alto. Pulsa un tema en la barra de calendario para mostrarlo u ocultarlo.');
+    listaEventos(panel, evVisibles(null, 90).slice(0, 8), true);
     const todos = visibles(), cuenta = {token: 0, red: 0, indirecto: 0, no: 0};
     todos.forEach(m => cuenta[m.nombra] = (cuenta[m.nombra] || 0) + 1);
     H('h3', '', panel, `Hechos visibles: ${todos.length} de ${movs.length}`);
     const barra = H('div', 'barra-apilada', panel);
     ['token', 'red', 'indirecto', 'no'].forEach(k => { if (cuenta[k]){ const s = H('div', '', barra); s.style.flex = cuenta[k]; s.style.background = colNombra[k]; s.title = D.nombra[k] + ': ' + cuenta[k]; } });
-    const ley = H('div', 'leyenda', panel);
-    ['token', 'red', 'indirecto', 'no'].forEach(k => { const s = H('span', '', ley); const p = H('span', 'punto', s); p.style.background = colNombra[k]; s.appendChild(document.createTextNode(`${D.nombra[k]}: ${cuenta[k] || 0}`)); });
-    H('h3', '', panel, 'Capas');
-    capas.forEach((c, i) => {
-      const b = H('button', 'capa-fila entra', panel); b.style.animationDelay = (i * 25) + 'ms';
-      const e = H('span', 'esf', b); e.style.background = c.color;
-      const nombre = H('span', '', b, c.nombre); H('span', 'sub', b, `  ${c.docs.inv.length} docs · ${c.docs.glo.length} términos`);
-      H('span', 'n', b, String(visibles(c.id).length));
-      b.addEventListener('click', () => seleccionar(c));
-    });
+    const ley2 = H('div', 'leyenda', panel);
+    ['token', 'red', 'indirecto', 'no'].forEach(k => { const s = H('span', '', ley2); const p = H('span', 'punto', s); p.style.background = colNombra[k]; s.appendChild(document.createTextNode(`${D.nombra[k]}: ${cuenta[k] || 0}`)); });
     const bib = D.biblioteca || {};
     H('h3', '', panel, 'Biblioteca conectada');
-    H('p', 'nota', panel, `El mapa está enlazado con ${bib.docs || 0} documentos (research, dossiers y apuntes) y ${bib.glosario || 0} términos del glosario. Cada capa muestra los más relacionados; esta es la lectura recomendada para empezar:`);
+    H('p', 'nota', panel, `El mapa está enlazado con ${bib.docs || 0} documentos (research, dossiers y apuntes) y ${bib.glosario || 0} términos del glosario. Lectura recomendada para empezar:`);
     capas.forEach((c, i) => { if (c.docs.inv[0]){ tarjetaDoc(panel, {...c.docs.inv[0], titulo: c.nombre + ' — ' + c.docs.inv[0].titulo}, i); } });
     H('h3', '', panel, 'Cómo leerlo');
-    H('p', 'nota', panel, 'Cada disco es una capa del sistema y cada punto a su alrededor, un hecho. Los puntos con aro azul nombran XRP o XLM. Pulsa una capa para acercarte: sus hechos se ordenan con su fecha y un anillo muestra en qué estado están. «▶ Tiempo» reproduce los hechos por fecha.');
+    H('p', 'nota', panel, 'Cada disco es una capa del sistema; el número en su esquina son los hechos visibles y el rombo de color, fechas próximas del calendario. Los puntos a su alrededor son los hechos, y los de aro azul nombran XRP o XLM. Pulsa una capa para acercarte; «▶ Tiempo» reproduce los hechos por fecha.');
     H('h3', '', panel, 'Últimos hechos');
     listaMovs(panel, todos.slice(-5));
   } else {
     const b = H('button', 'volver', panel, '← Volver al mapa'); b.addEventListener('click', () => seleccionar(null));
     const cab = H('div', 'cabecera entra', panel); cab.style.borderLeftColor = sel.color;
-    const t = H('h2', '', cab, sel.nombre); t.style.color = mezcla(sel.color, '#fff', .35);
+    const t = H('h2', '', cab); t.appendChild(iconoHTML(sel.id, 20, mezcla(sel.color, '#fff', .3), rgba(sel.color, .22))); const tn = H('span', '', t, sel.nombre); tn.style.color = mezcla(sel.color, '#fff', .35);
     H('p', 'nota', cab, sel.resumen);
     const vs = visibles(sel.id), cnt = {};
     vs.forEach(m => cnt[m.estado] = (cnt[m.estado] || 0) + 1);
     const chips = H('div', 'chips', cab);
     Object.keys(est).forEach(k => { if (cnt[k]){ const a = H('span', 'chip', chips); const p = H('span', 'punto', a); p.style.background = colEst(k); a.appendChild(document.createTextNode(`${est[k].nombre}: ${cnt[k]}`)); } });
+    H('h3', '', panel, 'Cifras clave');
+    tarjetasCifras(panel, sel.cifras.map(c => ({capa: sel, c})));
     [['En producción', 'produccion', 'produccion'], ['Piloto o prueba', 'piloto', 'piloto'], ['Plan o propuesta', 'plan', 'plan'], ['¿Nombra XRP o XLM?', 'xrp', null]].forEach(([tit, k, ek], i) => {
       const bl = H('div', 'bloque entra', panel); bl.style.animationDelay = (60 + i * 50) + 'ms'; bl.style.borderLeftColor = ek ? colEst(ek) : colNombra.token;
       const h = H('div', 'nota', bl, tit); h.style.fontWeight = 700; H('div', '', bl, sel[k] || '—'); });
     if (f.corte < d1) H('p', 'nota', panel, 'Los cuadros de arriba describen la situación a octubre de 2026; la lista de abajo sí respeta la fecha del deslizador.');
+    H('h3', '', panel, `Fechas próximas de esta capa (${evVisibles(sel.id).length})`);
+    listaEventos(panel, evVisibles(sel.id).slice(0, 10), false);
     H('h3', '', panel, 'Hechos de esta capa');
     listaMovs(panel, vs);
     bloqueDocs(panel, sel);
@@ -407,5 +512,5 @@ slider.addEventListener('input', () => { reproduciendo = false; $('btnPlay').tex
 $('buscar').addEventListener('input', () => refrescar(false));
 $('soloToken').addEventListener('change', () => refrescar(false));
 try { new ResizeObserver(ajustarAlto).observe(app); } catch (e) {}
-refrescar(false); requestAnimationFrame(frame); ajustarAlto();
+dibujarCalendario(); refrescar(false); requestAnimationFrame(frame); ajustarAlto();
 </script></body></html>

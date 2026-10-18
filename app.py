@@ -262,23 +262,35 @@ try:
     _HAY_HOJA = bool(st.secrets.get("SHEET_ID"))
 except Exception:
     _HAY_HOJA = False
-_SECCIONES = ["📊 Cartera"]
+_SECCIONES = []
+if _HAY_HOJA or not _LOCAL:          # en tu PC sin la hoja de la cartera (sin el secreto SHEET_ID) no hay cartera que mostrar
+    _SECCIONES.append("📊 Cartera")
 if _LOCAL or _CEREBRO_PUBLICO:
     _SECCIONES += ["🧠 Cerebro", "📌 Seguimiento"]
 if _LOCAL:
     _SECCIONES += ["🔒 Privado"]
+if not _SECCIONES:
+    _SECCIONES = ["📊 Cartera"]
 if st.session_state.get("seccion") not in _SECCIONES:
     st.session_state.pop("seccion", None)
-if len(_SECCIONES) > 1:
-    # En tu PC sin la hoja de la cartera (no tienes el secreto SHEET_ID), empieza en el Cerebro
-    seccion = st.radio("Sección", _SECCIONES, horizontal=True, label_visibility="collapsed", key="seccion",
-                       index=0 if (_HAY_HOJA or not _LOCAL) else 1)
-else:
-    seccion = _SECCIONES[0]
+seccion = st.session_state.get("seccion", _SECCIONES[0])
+
+
+def menu_secciones():
+    """Menú de secciones (Cerebro, Seguimiento, Privado): va al final de la página, junto a los demás menús."""
+    if len(_SECCIONES) > 1:
+        nueva = st.radio("Sección", _SECCIONES, horizontal=True, label_visibility="collapsed", key="seccion")
+        if nueva != seccion:
+            st.rerun()
+
+
+if seccion == "📊 Cartera":
+    menu_secciones()                 # en la cartera, que es larga, el menú se queda arriba
 if seccion == "🔒 Privado":
     import importlib
     importlib.reload(privado_vista)
     privado_vista.mostrar()
+    menu_secciones()
     listo()
     st.stop()
 if seccion == "📌 Seguimiento":
@@ -286,6 +298,7 @@ if seccion == "📌 Seguimiento":
     import seguimiento
     importlib.reload(seguimiento)
     seguimiento.mostrar()
+    menu_secciones()
     listo()
     st.stop()
 if seccion == "🧠 Cerebro":
@@ -293,6 +306,7 @@ if seccion == "🧠 Cerebro":
     import cerebro
     importlib.reload(cerebro)  # así siempre usa la última versión de cerebro.py subida a GitHub
     cerebro.mostrar()
+    menu_secciones()
     listo()
     st.stop()
 

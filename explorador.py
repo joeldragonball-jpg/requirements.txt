@@ -4,8 +4,11 @@ Solo lee archivos del repositorio (explorador/, informes/, cerebro/): sin IA, si
 Seguridad: el JSON se incrusta como datos (no como código) y el HTML/JS pinta todo con textContent, nunca con innerHTML."""
 import json
 import re
+import tomllib
 import unicodedata
+from datetime import date, timedelta
 from pathlib import Path
+from urllib.parse import urlsplit
 
 import streamlit as st
 import streamlit.components.v1 as components
@@ -115,6 +118,14 @@ def _relacionados(conceptos_clave, firma):
     return resultado
 
 
+def _version():
+    """Cambia al editar este archivo (para que la caché no sirva resultados de una versión antigua del código)."""
+    try:
+        return str(Path(__file__).stat().st_mtime)
+    except Exception:
+        return ""
+
+
 def _firma():
     """Cambia cuando cambia algún documento, para refrescar la caché."""
     n, ultimo = 0, 0.0
@@ -123,7 +134,71 @@ def _firma():
             for p in carpeta.glob("*.md"):
                 n += 1
                 ultimo = max(ultimo, p.stat().st_mtime)
-    return f"{n}-{ultimo}"
+    return f"{n}-{ultimo}-{_version()}"
+
+
+
+# ---------------------------------------------------------------- calendario (eventos/calendario.toml)
+TEMAS = {"reg": {"nombre": "Regulación", "color": "#ff7a59"},
+         "tok": {"nombre": "Tokenización y digital assets", "color": "#2ee6a6"},
+         "cbdc": {"nombre": "CBDC y bancos centrales digitales", "color": "#6cb4ff"},
+         "fondos": {"nombre": "Fondos y ETF", "color": "#ffd166"},
+         "macro": {"nombre": "Macro y política monetaria", "color": "#b8a1ff"},
+         "fiscal": {"nombre": "Fiscalidad y reporte", "color": "#aab4c8"}}
+# Orden de prioridad al clasificar: lo más específico primero
+PALABRAS_TEMA = [("cbdc", ["euro digital", "cbdc", "mas bill", "rublo", "pontes", "nexus", "agora", "bis "]),
+                 ("tok", ["tokeniz", "dtcc", "stellar", "xrpl", "escrow", "enmienda", "swell", "meridian", "protocolo", "rwa", "ripple"]),
+                 ("fondos", ["13f", "etf", "xrpn", "evernorth", "21shares", "opciones de etf"]),
+                 ("reg", ["comentarios", "sec:", "sec ", "cftc", "genius", "clarity", "mica", "esma", "regulaci", "licencia", "senado",
+                          "stablecoin", "norma", "fsc", "corea", "brasil", "autorizaci"]),
+                 ("fiscal", ["dac8", "modelo 721", "campana de la renta", "ejercicio fiscal", "renta 2026"]),
+                 ("macro", ["fomc", "fed", "bce", "banco de japon", "ipc", "empleo", "pce", "pib", "brent", "opep", "eia", "aie", "petroleo",
+                            "elecciones", "tesoro", "g20", "apec", "rbi", "lpr", "inflacion"])]
+CAPA_DE_TEMA = {"reg": "reg", "cbdc": "cbdc", "fondos": "fondos", "macro": "reg", "fiscal": "custodia"}
+
+
+def _tema_y_capa(titulo, detalle):
+    t = _plano(titulo + " " + detalle)
+    for tema, claves in PALABRAS_TEMA:
+        if any(_plano(k) in t for k in claves):
+            if tema == "tok":
+                capa = "puente" if any(k in t for k in ("xrpl", "stellar", "escrow", "enmienda", "swell", "meridian", "protocolo")) else "token"
+                return tema, capa
+            capa = CAPA_DE_TEMA[tema]
+            if tema == "reg":                     # la regulación se reparte entre las capas que afecta
+                if any(k in t for k in ("stablecoin", "genius", "mica")):
+                    capa = "stable"
+                elif "custodia" in t:
+                    capa = "custodia"
+            return tema, capa
+    return "macro", "reg"
+
+
+@st.cache_data(ttl=600, show_spinner=False)
+def _calendario(hoy_iso, version_codigo=""):
+    """Eventos futuros del calendario, clasificados por tema y asignados a una capa del mapa."""
+    try:
+        with open(RAIZ / "eventos" / "calendario.toml", "rb") as fh:
+            crudos = tomllib.load(fh).get("eventos", [])
+    except Exception:
+        return []
+    hoy = date.fromisoformat(hoy_iso)
+    limite = hoy + timedelta(days=270)
+    out = []
+    for e in crudos:
+        try:
+            ini = date.fromisoformat(e["fecha"])
+            fin = date.fromisoformat(e.get("hasta", e["fecha"]))
+        except Exception:
+            continue
+        if fin < hoy or ini > limite:
+            continue
+        tema, capa = _tema_y_capa(str(e.get("titulo", "")), str(e.get("detalle", "")))
+        dominio = urlsplit(str(e.get("fuente", ""))).netloc.replace("www.", "")
+        out.append({"ini": ini.isoformat(), "fin": fin.isoformat(), "titulo": str(e.get("titulo", ""))[:150],
+                    "detalle": _limpiar(str(e.get("detalle", "")))[:230], "impacto": str(e.get("impacto", "bajo")),
+                    "aprox": bool(e.get("aproximado")), "fuente": dominio, "tema": tema, "capa": capa})
+    return sorted(out, key=lambda x: x["ini"])
 
 
 def _html(conceptos):
@@ -133,6 +208,8 @@ def _html(conceptos):
     for capa in datos["capas"]:
         capa["docs"] = rel.get(capa["id"], {"inv": [], "glo": []})
     datos["biblioteca"] = rel.get("_totales", {})
+    hoy = date.today().isoformat()
+    datos["calendario"] = {"hoy": hoy, "temas": TEMAS, "eventos": _calendario(hoy, _version())}
     # Dentro de <script type="application/json"> hay que evitar que el texto cierre la etiqueta
     texto = json.dumps(datos, ensure_ascii=False).replace("</", "<\\/").replace("<!--", "<\\!--")
     return plantilla.replace("__DATOS__", texto)
@@ -140,8 +217,15 @@ def _html(conceptos):
 
 def mostrar(conceptos=None):
     # El mapa ocupa todo el ancho de la página (sin los márgenes de Streamlit)
+    # Fondo de toda la página igual que el del mapa (el mapa es transparente), para que se vea como una sola pantalla
     st.markdown("<style>.block-container{max-width:100% !important;padding-left:1.2rem !important;padding-right:1.2rem !important;"
-                "padding-top:1rem !important}</style>", unsafe_allow_html=True)
+                "padding-top:1rem !important}"
+                "html,body,.stApp,[data-testid='stAppViewContainer'],[data-testid='stMain']{background:"
+                "radial-gradient(ellipse 55% 38% at 14% 12%,rgba(99,102,241,.22),transparent 70%),"
+                "radial-gradient(ellipse 45% 34% at 92% 30%,rgba(190,70,130,.15),transparent 70%),"
+                "radial-gradient(ellipse 45% 30% at 72% 4%,rgba(34,160,190,.13),transparent 70%),"
+                "radial-gradient(ellipse 80% 60% at 50% 32%,#0b1230 0%,#050816 85%) fixed !important}"
+                "[data-testid='stHeader']{background:transparent !important}</style>", unsafe_allow_html=True)
     try:
         html = _html(conceptos)
     except Exception as e:
