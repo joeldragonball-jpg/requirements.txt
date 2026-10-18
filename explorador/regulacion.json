@@ -1,0 +1,1724 @@
+{
+  "version": "2026-10-19",
+  "aviso": "Radar regulatorio construido solo con informes, dossiers, apuntes y el calendario del repo (sin búsquedas nuevas). Informativo: no es recomendación de compra ni venta. Fuente: P = documento oficial leído; S = prensa, despacho o agregador; VERIFICAR = sin dato o sin confirmar.",
+  "escala": {
+    "0": "Sin marco (o prohibido)",
+    "1": "Propuesta, consulta o piloto sin norma",
+    "2": "En trámite legislativo",
+    "3": "Aprobada, sin entrar en vigor",
+    "4": "En vigor",
+    "5": "En vigor con licencias o supervisión activa"
+  },
+  "temas": [
+    {
+      "id": "stablecoins",
+      "nombre": "Stablecoins"
+    },
+    {
+      "id": "mercado",
+      "nombre": "Mercado y ETF"
+    },
+    {
+      "id": "tokenizacion",
+      "nombre": "Tokenización"
+    },
+    {
+      "id": "custodia",
+      "nombre": "Custodia"
+    },
+    {
+      "id": "cbdc",
+      "nombre": "CBDC"
+    },
+    {
+      "id": "fiscal",
+      "nombre": "Fiscal"
+    }
+  ],
+  "jurisdicciones": [
+    {
+      "id": "eeuu",
+      "nombre": "EE. UU."
+    },
+    {
+      "id": "ue",
+      "nombre": "Unión Europea"
+    },
+    {
+      "id": "sg",
+      "nombre": "Singapur"
+    },
+    {
+      "id": "hk",
+      "nombre": "Hong Kong"
+    },
+    {
+      "id": "kr",
+      "nombre": "Corea del Sur"
+    },
+    {
+      "id": "jp",
+      "nombre": "Japón"
+    },
+    {
+      "id": "in",
+      "nombre": "India"
+    },
+    {
+      "id": "br",
+      "nombre": "Brasil"
+    },
+    {
+      "id": "ru",
+      "nombre": "Rusia"
+    },
+    {
+      "id": "ae",
+      "nombre": "Emiratos Árabes Unidos"
+    },
+    {
+      "id": "cn",
+      "nombre": "China"
+    },
+    {
+      "id": "brics",
+      "nombre": "BRICS / BIS (supranacional)"
+    }
+  ],
+  "celdas": [
+    {
+      "jur": "eeuu",
+      "tema": "stablecoins",
+      "etapa": 3,
+      "estado": "La GENIUS Act es ley desde el 18-jul-2025, pero no está en vigor: la fecha efectiva prevista es el 18-ene-2027 y las normas de OCC, Tesoro y Fed siguen en propuesta.",
+      "fecha": "2026-09-29",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2026-10-19",
+        "que": "Cierre de comentarios a la propuesta del Tesoro."
+      },
+      "falta": "Normas finales de OCC, Tesoro y Fed; decisión del Tesoro sobre qué regímenes extranjeros son «comparables».",
+      "hitos": [
+        {
+          "fecha": "2025-07-18",
+          "que": "Se firma la GENIUS Act (Ley Pública 119-27)."
+        },
+        {
+          "fecha": "2026-03-02",
+          "que": "Propuesta de la OCC publicada en el Federal Register."
+        },
+        {
+          "fecha": "2026-08-18",
+          "que": "Propuesta del Tesoro sobre emisión, oferta y venta."
+        },
+        {
+          "fecha": "2026-09-29",
+          "que": "Propuestas de la Fed publicadas en el Federal Register."
+        }
+      ],
+      "informes": [
+        "R25",
+        "R18",
+        "Dossier Stablecoins (9-oct)"
+      ]
+    },
+    {
+      "jur": "eeuu",
+      "tema": "mercado",
+      "etapa": 4,
+      "estado": "Cotizan ETF al contado de XRP bajo la ley vigente y la interpretación SEC-CFTC trata a XRP y XLM como materias primas digitales; la ley de estructura de mercado (CLARITY) sigue bloqueada y la Regulation Crypto Assets es una propuesta.",
+      "fecha": "2026-10-05",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2026-10-20",
+        "que": "Cierre de comentarios a la Regulation Crypto Assets (SEC)."
+      },
+      "falta": "Ley de estructura de mercado; norma final de la SEC; ETF al contado de XLM (GXLM sigue como trust en OTC).",
+      "hitos": [
+        {
+          "fecha": "2025-07-17",
+          "que": "La Cámara aprueba la CLARITY Act (294-134)."
+        },
+        {
+          "fecha": "2025-09-17",
+          "que": "Estándares genéricos de cotización para productos de materias primas digitales."
+        },
+        {
+          "fecha": "2025-11-13",
+          "que": "Primer ETF al contado de XRP (Canary XRPC, según prensa)."
+        },
+        {
+          "fecha": "2026-03-17",
+          "que": "Interpretación SEC-CFTC: XRP y XLM entre los 16 ejemplos de materias primas digitales."
+        },
+        {
+          "fecha": "2026-08-18",
+          "que": "La SEC propone la Regulation Crypto Assets."
+        },
+        {
+          "fecha": "2026-09-15",
+          "que": "Falla el cierre de debate de la CLARITY Act en el Senado (49-50)."
+        },
+        {
+          "fecha": "2026-10-05",
+          "que": "La CFTC publica un aviso previo (ANPRM) sobre las Regulation CTX y CAM."
+        }
+      ],
+      "informes": [
+        "R18",
+        "R23",
+        "R27",
+        "Dossier CLARITY (9-oct)",
+        "Dossier ETF (9-oct)"
+      ]
+    },
+    {
+      "jur": "eeuu",
+      "tema": "tokenizacion",
+      "etapa": 4,
+      "estado": "La SEC permite la tokenización con marcos temporales: no-acción al piloto de DTC (11-dic-2025, tres años) y exención para negociar acciones tokenizadas con AMM con permisos (17-sep-2026, cinco años).",
+      "fecha": "2026-09-17",
+      "fuente": "P",
+      "proxima": null,
+      "falta": "Comunicado de DTC de lanzamiento efectivo del servicio; marcos permanentes que sustituyan a las exenciones.",
+      "hitos": [
+        {
+          "fecha": "2025-12-11",
+          "que": "No-acción del personal de la SEC al piloto de tokenización de DTC."
+        },
+        {
+          "fecha": "2026-01-28",
+          "que": "Declaración de tres divisiones de la SEC sobre tokenización por emisor y por terceros."
+        },
+        {
+          "fecha": "2026-09-17",
+          "que": "Exención de la SEC para «Tokenized Securities Venues» (publicada el 22-sep)."
+        }
+      ],
+      "informes": [
+        "R26",
+        "R16"
+      ]
+    },
+    {
+      "jur": "eeuu",
+      "tema": "custodia",
+      "etapa": 4,
+      "estado": "Los custodios no tienen que registrar el activo como pasivo (SAB 122) y la OCC ha dado aprobaciones preliminares condicionales a bancos fiduciarios cripto; la norma de custodia de la SEC para asesores y fondos está en propuesta.",
+      "fecha": "2026-10-01",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2026-12-07",
+        "que": "Cierre de comentarios a la propuesta de custodia de la SEC."
+      },
+      "falta": "Aprobaciones finales de la OCC; norma final de custodia de la SEC; resultado de la demanda de la ICBA contra el OCC [VERIFICAR].",
+      "hitos": [
+        {
+          "fecha": "2025-01-23",
+          "que": "SAB 122 rescinde el SAB 121 (vigente el 30-ene-2025)."
+        },
+        {
+          "fecha": "2025-12-12",
+          "que": "Aprobación condicional de Ripple National Trust Bank (nota de Ripple)."
+        },
+        {
+          "fecha": "2026-04-02",
+          "que": "Aprobación preliminar condicional de Coinbase National Trust Company (OCC #1370)."
+        },
+        {
+          "fecha": "2026-10-01",
+          "que": "La SEC propone reglas de custodia cripto para asesores y fondos."
+        }
+      ],
+      "informes": [
+        "R44",
+        "R34",
+        "Dossier ETF (9-oct)"
+      ]
+    },
+    {
+      "jur": "eeuu",
+      "tema": "cbdc",
+      "etapa": 0,
+      "estado": "No hay CBDC: la orden ejecutiva 14178 prohíbe establecerla o promoverla; la ley Anti-CBDC pasó la Cámara pero no el Senado.",
+      "fecha": "2025-01-23",
+      "fuente": "P",
+      "proxima": null,
+      "falta": "Ley Anti-CBDC en el Senado (no es ley).",
+      "hitos": [
+        {
+          "fecha": "2025-01-23",
+          "que": "Orden ejecutiva 14178 (Federal Register 2025-02123)."
+        },
+        {
+          "fecha": "2025-07",
+          "que": "La Cámara aprueba la ley Anti-CBDC (219-217, según prensa)."
+        }
+      ],
+      "informes": [
+        "Dossier Euro digital (9-oct)",
+        "R40"
+      ]
+    },
+    {
+      "jur": "eeuu",
+      "tema": "fiscal",
+      "etapa": 5,
+      "estado": "Los activos digitales tributan como propiedad y los brokers informan en el Form 1099-DA: ingresos brutos desde 2025 y base de coste desde 2026.",
+      "fecha": "2026-01-01",
+      "fuente": "P",
+      "proxima": null,
+      "falta": "Tipos de ganancias a largo plazo (IRS Topic 409, no leído).",
+      "hitos": [
+        {
+          "fecha": "2025-01-01",
+          "que": "Form 1099-DA: los brokers informan de ingresos brutos."
+        },
+        {
+          "fecha": "2026-01-01",
+          "que": "Form 1099-DA: los brokers informan también de la base de coste."
+        },
+        {
+          "fecha": "2026-09-02",
+          "que": "El IRS actualiza su página de activos digitales."
+        }
+      ],
+      "informes": [
+        "R35"
+      ]
+    },
+    {
+      "jur": "ue",
+      "tema": "stablecoins",
+      "etapa": 5,
+      "estado": "MiCA está en vigor para las stablecoins: el registro de ESMA lista 25 emisores de EMT y ningún emisor de ART; Tether no figura.",
+      "fecha": "2026-10-08",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2027-01-08",
+        "que": "Posible fin del plazo de ESMA para stablecoins no conformes [VERIFICAR]."
+      },
+      "falta": "Decisión formal sobre la multi-emisión [VERIFICAR]; texto íntegro del comunicado de ESMA del 8-oct-2026.",
+      "hitos": [
+        {
+          "fecha": "2024-07-01",
+          "que": "Circle Internet Financial Europe autorizada como emisor de EMT."
+        },
+        {
+          "fecha": "2026-10-08",
+          "que": "ESMA pide a los CASP dejar de prestar servicios con stablecoins no conformes con MiCA (plazo de tres meses, sin confirmar)."
+        }
+      ],
+      "informes": [
+        "R25",
+        "R18",
+        "Dossier Stablecoins (9-oct)"
+      ]
+    },
+    {
+      "jur": "ue",
+      "tema": "mercado",
+      "etapa": 5,
+      "estado": "Desde el 1-jul-2026 no hay transición: solo los CASP autorizados por MiCA pueden atender a clientes de la UE; el registro de ESMA tiene unas 375 entidades y en Europa cotizan ETP físicos de XRP (≈ 914 M$) y de XLM (≈ 104 M$).",
+      "fecha": "2026-07-01",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2027-07-10",
+        "que": "El Reglamento antiblanqueo de la UE (AMLR) se aplica a los CASP (según analistas)."
+      },
+      "falta": "Libros blancos MiCA notificados de XRP o XLM (OTHER.csv de ESMA, no revisado).",
+      "hitos": [
+        {
+          "fecha": "2026-06-29",
+          "que": "La CSSF autoriza a Ripple Payments Europe como CASP (cambio y transferencias, sin custodia)."
+        },
+        {
+          "fecha": "2026-07-01",
+          "que": "Termina el periodo transitorio de MiCA."
+        },
+        {
+          "fecha": "2026-08-25",
+          "que": "Ciudadanos rusos y bielorrusos ya no pueden poseer ni dirigir CASP de la UE (21.º paquete, según analistas)."
+        }
+      ],
+      "informes": [
+        "R18",
+        "R27",
+        "R44",
+        "R06P"
+      ]
+    },
+    {
+      "jur": "ue",
+      "tema": "tokenizacion",
+      "etapa": 4,
+      "estado": "El BCE liquida activos tokenizados en dinero de banco central con Pontes desde el 21-sep-2026, solo para entidades con acceso a T2 y operadores DLT elegibles; Appia es el plan para 2028.",
+      "fecha": "2026-09-21",
+      "fuente": "P",
+      "proxima": null,
+      "falta": "Lista oficial de participantes y horario de Pontes [VERIFICAR]; 24/7 previsto hacia 2028 (secundaria).",
+      "hitos": [
+        {
+          "fecha": "2026-03-11",
+          "que": "Nota del BCE sobre Appia."
+        },
+        {
+          "fecha": "2026-09-21",
+          "que": "Lanzamiento inicial de Pontes."
+        }
+      ],
+      "informes": [
+        "R08P",
+        "R40",
+        "Dossier Pagos transfronterizos (9-oct)"
+      ]
+    },
+    {
+      "jur": "ue",
+      "tema": "custodia",
+      "etapa": 5,
+      "estado": "MiCA obliga a los custodios a segregar los activos de clientes y responder por pérdidas atribuibles (art. 75); 215 entidades del registro de ESMA prestan custodia, entre ellas BNY, Deutsche Bank, BBVA y CaixaBank.",
+      "fecha": "2026-10-12",
+      "fuente": "P",
+      "proxima": null,
+      "falta": "Qué activos custodia cada entidad, en especial XRP y XLM [VERIFICAR].",
+      "hitos": [
+        {
+          "fecha": "2025-02-07",
+          "que": "Clearstream Banking entra en el registro con servicio de custodia."
+        },
+        {
+          "fecha": "2026-07-20",
+          "que": "BNY SA/NV entra en el registro por notificación."
+        },
+        {
+          "fecha": "2026-10-12",
+          "que": "Deutsche Bank entra en el registro."
+        }
+      ],
+      "informes": [
+        "R44",
+        "Dossier Custodia (9-oct)"
+      ]
+    },
+    {
+      "jur": "ue",
+      "tema": "cbdc",
+      "etapa": 2,
+      "estado": "El Reglamento del euro digital está en trámite: el Parlamento tiene mandato de negociación desde el 9-jul-2026, sin acuerdo final; la emisión sería posible en 2029 si la ley se adopta en 2026.",
+      "fecha": "2026-07-09",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2026-10-27",
+        "que": "Cierre de la convocatoria a comercios del piloto [VERIFICAR]."
+      },
+      "falta": "Acuerdo en trílogo; confirmar la posición del Consejo (R40 no la ve; el dossier la fecha el 19-dic-2025) [VERIFICAR].",
+      "hitos": [
+        {
+          "fecha": "2023-06-28",
+          "que": "Propuesta de la Comisión (COM(2023)0369)."
+        },
+        {
+          "fecha": "2025-10",
+          "que": "El BCE pasa a la fase siguiente tras la preparación."
+        },
+        {
+          "fecha": "2025-12-19",
+          "que": "Posición del Consejo según el dossier (secundaria, sin confirmar)."
+        },
+        {
+          "fecha": "2026-06-23",
+          "que": "Votación en la comisión ECON del Parlamento."
+        },
+        {
+          "fecha": "2026-07-09",
+          "que": "El pleno confirma el mandato de negociación."
+        }
+      ],
+      "informes": [
+        "R40",
+        "R30",
+        "R08P",
+        "Dossier Euro digital (9-oct)",
+        "Cruce de fichas (19-oct)"
+      ]
+    },
+    {
+      "jur": "ue",
+      "tema": "fiscal",
+      "etapa": 4,
+      "estado": "DAC8 se aplica desde el 1-ene-2026: los proveedores cripto informan de las operaciones de residentes de la UE; el impuesto en sí sigue siendo nacional.",
+      "fecha": "2026-01-01",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2026-12-31",
+        "que": "Cierre del primer año de reporte DAC8."
+      },
+      "falta": "Primer intercambio entre autoridades (antes del 30-sep-2027).",
+      "hitos": [
+        {
+          "fecha": "2023-10-24",
+          "que": "DAC8 publicada en el DOUE."
+        },
+        {
+          "fecha": "2026-01-01",
+          "que": "DAC8 empieza a aplicarse (primer año de reporte)."
+        }
+      ],
+      "informes": [
+        "R35"
+      ]
+    },
+    {
+      "jur": "sg",
+      "tema": "stablecoins",
+      "etapa": 1,
+      "estado": "La MAS consultó hasta el 16-oct-2026 un borrador de enmiendas a la Payment Services Act para stablecoins, con pocos emisores, prohibición de intereses y reconocimiento de extranjeras; no hay fecha de entrada en vigor.",
+      "fecha": "2026-10-16",
+      "fuente": "P",
+      "proxima": null,
+      "falta": "Respuesta de la MAS a la consulta; ley final y legislación subsidiaria (reservas, plazos de redención).",
+      "hitos": [
+        {
+          "fecha": "2023-08",
+          "que": "Marco de stablecoins de 2023 (respuesta de la MAS)."
+        },
+        {
+          "fecha": "2026-09-01",
+          "que": "Publicación de la consulta P015-2026."
+        },
+        {
+          "fecha": "2026-10-16",
+          "que": "Cierre de la consulta."
+        }
+      ],
+      "informes": [
+        "R24",
+        "R04P",
+        "R30"
+      ]
+    },
+    {
+      "jur": "sg",
+      "tema": "mercado",
+      "etapa": 5,
+      "estado": "Los servicios con tokens de pago digital necesitan licencia de la MAS y, desde el 30-jun-2025, el régimen DTSP obliga a cesar a quien sirve solo a clientes de fuera; no hay dato sobre ETF cripto.",
+      "fecha": "2025-06-30",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "ETF cripto en Singapur: sin dato [VERIFICAR]; texto de MAS sobre la ampliación de la licencia de Ripple.",
+      "hitos": [
+        {
+          "fecha": "2023",
+          "que": "Ripple Markets APAC obtiene licencia MPI (según Ripple y prensa)."
+        },
+        {
+          "fecha": "2025-06-30",
+          "que": "Entra en vigor el régimen DTSP (parte 9 de la FSMA 2022)."
+        }
+      ],
+      "informes": [
+        "R04P"
+      ]
+    },
+    {
+      "jur": "sg",
+      "tema": "tokenizacion",
+      "etapa": 1,
+      "estado": "La MAS prueba letras tokenizadas liquidadas con CBDC mayorista (SGD Testnet), solo para institucionales y sin resultados publicados.",
+      "fecha": "2026-10-09",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2026-10-23",
+        "que": "Vence la letra tokenizada TD26101Z."
+      },
+      "falta": "Resultados de las subastas; marco permanente de tokenización.",
+      "hitos": [
+        {
+          "fecha": "2026-09-21",
+          "que": "Subasta de la letra tokenizada TD26100F (S$1 M)."
+        },
+        {
+          "fecha": "2026-10-07",
+          "que": "Subasta de la letra tokenizada TD26101Z (S$10 M)."
+        }
+      ],
+      "informes": [
+        "R40",
+        "R04P",
+        "R30"
+      ]
+    },
+    {
+      "jur": "sg",
+      "tema": "custodia",
+      "etapa": null,
+      "estado": "No hay research sobre la custodia cripto en Singapur; solo consta que las reservas de stablecoins irían en fideicomiso con custodios licenciados (consulta P015).",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R24"
+      ]
+    },
+    {
+      "jur": "sg",
+      "tema": "cbdc",
+      "etapa": 1,
+      "estado": "Solo CBDC mayorista en pruebas: préstamos interbancarios liquidados con SGD mayorista (nov-2025) y letras tokenizadas en 2026; no hay CBDC minorista.",
+      "fecha": "2026-10-09",
+      "fuente": "S",
+      "proxima": {
+        "fecha": "2026-10-23",
+        "que": "Vence la letra tokenizada TD26101Z."
+      },
+      "falta": "Nota de la MAS sobre la prueba de nov-2025 [VERIFICAR]; resultados de las letras.",
+      "hitos": [
+        {
+          "fecha": "2025-11-13",
+          "que": "Prueba en vivo de préstamos interbancarios con CBDC mayorista (DBS, OCBC y UOB, según prensa)."
+        },
+        {
+          "fecha": "2026-10-09",
+          "que": "Emisión de la letra tokenizada TD26101Z."
+        }
+      ],
+      "informes": [
+        "R40"
+      ]
+    },
+    {
+      "jur": "sg",
+      "tema": "fiscal",
+      "etapa": 4,
+      "estado": "Las ganancias por vender tokens de pago solo tributan si son de naturaleza de ingreso (comercio habitual), según la guía de IRAS; no hay impuesto sobre ganancias de capital.",
+      "fecha": "2026-01-30",
+      "fuente": "P",
+      "proxima": null,
+      "falta": "Exención del GST para tokens de pago (solo secundaria).",
+      "hitos": [
+        {
+          "fecha": "2026-01-30",
+          "que": "IRAS publica la e-Tax Guide sobre tokens digitales."
+        }
+      ],
+      "informes": [
+        "R35"
+      ]
+    },
+    {
+      "jur": "hk",
+      "tema": "stablecoins",
+      "etapa": 5,
+      "estado": "La Stablecoins Ordinance (Cap. 656) rige desde el 1-ago-2025 y la HKMA concedió el 10-abr-2026 las dos primeras licencias (Anchorpoint y HSBC), ambas para stablecoins en HKD.",
+      "fecha": "2026-04-10",
+      "fuente": "P",
+      "proxima": null,
+      "falta": "Lanzamiento efectivo de las stablecoins de HSBC y Anchorpoint; nuevas licencias.",
+      "hitos": [
+        {
+          "fecha": "2025-08-01",
+          "que": "Entra en vigor la Stablecoins Ordinance."
+        },
+        {
+          "fecha": "2026-04-10",
+          "que": "Primeras dos licencias de emisor."
+        },
+        {
+          "fecha": "2026-05",
+          "que": "Circular de la SFC sobre fondos que usen stablecoins licenciadas y depósitos tokenizados."
+        }
+      ],
+      "informes": [
+        "R25",
+        "R30",
+        "R07P"
+      ]
+    },
+    {
+      "jur": "hk",
+      "tema": "mercado",
+      "etapa": 5,
+      "estado": "La SFC tiene 13 plataformas licenciadas y 11 ETF cripto al contado con 451 M$ (jun-2026); no consta ETF de XRP.",
+      "fecha": "2026-06-30",
+      "fuente": "P",
+      "proxima": null,
+      "falta": "Confirmar en el registro de fondos de la SFC que no hay ETF de XRP [VERIFICAR].",
+      "hitos": [
+        {
+          "fecha": "2024-04",
+          "que": "Primeros ETF al contado de bitcoin y ether."
+        },
+        {
+          "fecha": "2025-10-27",
+          "que": "Empieza a cotizar el ETF al contado de Solana de ChinaAMC (según prensa)."
+        },
+        {
+          "fecha": "2026-06-30",
+          "que": "Informe trimestral de la SFC: 11 ETF y 13 plataformas."
+        }
+      ],
+      "informes": [
+        "R27",
+        "R07P"
+      ]
+    },
+    {
+      "jur": "hk",
+      "tema": "tokenizacion",
+      "etapa": null,
+      "estado": "Solo consta la circular de la SFC (may-2026) sobre fondos autorizados que usen stablecoins y depósitos tokenizados; no hay research sobre el marco de tokenización de valores.",
+      "fecha": "2026-05",
+      "fuente": "P",
+      "proxima": null,
+      "falta": "Research sobre la tokenización de valores en Hong Kong.",
+      "hitos": [],
+      "informes": [
+        "R27"
+      ]
+    },
+    {
+      "jur": "hk",
+      "tema": "custodia",
+      "etapa": null,
+      "estado": "No hay research sobre la custodia cripto en Hong Kong.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R07P"
+      ]
+    },
+    {
+      "jur": "hk",
+      "tema": "cbdc",
+      "etapa": null,
+      "estado": "No hay research sobre el e-HKD; la HKMA es fundadora de mBridge según la ficha del BIS.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R16",
+        "R07P"
+      ]
+    },
+    {
+      "jur": "hk",
+      "tema": "fiscal",
+      "etapa": null,
+      "estado": "No hay research sobre la fiscalidad cripto en Hong Kong.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R35"
+      ]
+    },
+    {
+      "jur": "kr",
+      "tema": "stablecoins",
+      "etapa": 2,
+      "estado": "La ley del won stablecoin sigue sin aprobar: hay 10 proyectos en la Asamblea y disputa sobre si el emisor debe ser un consorcio con mayoría de bancos.",
+      "fecha": "2026-07-29",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Presentación del proyecto unificado partido-Gobierno; texto oficial; postura actual del Banco de Corea.",
+      "hitos": [
+        {
+          "fecha": "2026-01-28",
+          "que": "El grupo del partido acuerda un capital mínimo de 5.000 M KRW para emisores [VERIFICAR]."
+        },
+        {
+          "fecha": "2026-07-14",
+          "que": "El Gobierno fija el objetivo de aprobar la ley este año."
+        },
+        {
+          "fecha": "2026-07-29",
+          "que": "El presidente de la FSC dice que el proyecto está preparado con discrepancias."
+        }
+      ],
+      "informes": [
+        "R05P",
+        "R30",
+        "R25"
+      ]
+    },
+    {
+      "jur": "kr",
+      "tema": "mercado",
+      "etapa": 2,
+      "estado": "Los exchanges operan registrados ante KoFIU (17 exchanges y 9 custodios), pero la Ley Básica de Activos Digitales (2.ª fase) y los ETF al contado siguen sin aprobar.",
+      "fecha": "2026-10-01",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Ley de la 2.ª fase; ETF al contado; guía de inversión corporativa.",
+      "hitos": [
+        {
+          "fecha": "2026-07-29",
+          "que": "La FSC dice que el proyecto de ley está preparado."
+        },
+        {
+          "fecha": "2026-10-01",
+          "que": "KoFIU y FSS publican la encuesta del 1S-2026: capitalización −33 % y volumen −44 %."
+        }
+      ],
+      "informes": [
+        "R05P",
+        "R30"
+      ]
+    },
+    {
+      "jur": "kr",
+      "tema": "tokenizacion",
+      "etapa": 3,
+      "estado": "La tokenización de valores empieza el 4-feb-2027 con la FSCMA y la Ley de Registro Electrónico revisadas; las reglas están en consulta hasta el 11-nov-2026.",
+      "fecha": "2026-10-01",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2026-11-11",
+        "que": "Cierre de comentarios a las reglas de la FSC."
+      },
+      "falta": "Reglas finales tras la consulta.",
+      "hitos": [
+        {
+          "fecha": "2026-09-04",
+          "que": "La FSC publica la hoja de ruta en tres fases."
+        },
+        {
+          "fecha": "2026-10-01",
+          "que": "La FSC propone las reglas de tokenización."
+        }
+      ],
+      "informes": [
+        "R30"
+      ]
+    },
+    {
+      "jur": "kr",
+      "tema": "custodia",
+      "etapa": 4,
+      "estado": "Hay 9 custodios registrados ante KoFIU y Meritz Securities estudia con Ripple la custodia y la tokenización dentro de la regulación vigente; el registro es antiblanqueo, no una licencia de custodia específica.",
+      "fecha": "2026-10-07",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Marco de custodia de la 2.ª fase de la ley; comunicado oficial de Meritz y Ripple.",
+      "hitos": [
+        {
+          "fecha": "2026-10-07",
+          "que": "Anuncio de la alianza Meritz Securities–Ripple (sin mención a XRP)."
+        }
+      ],
+      "informes": [
+        "R30",
+        "R05P"
+      ]
+    },
+    {
+      "jur": "kr",
+      "tema": "cbdc",
+      "etapa": null,
+      "estado": "No hay research sobre el proyecto del Banco de Corea (Hangang).",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R05P"
+      ]
+    },
+    {
+      "jur": "kr",
+      "tema": "fiscal",
+      "etapa": null,
+      "estado": "La fiscalidad cripto coreana no se ha revisado; estaría aplazada a 2027 según conocimiento previo.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R05P"
+      ]
+    },
+    {
+      "jur": "jp",
+      "tema": "stablecoins",
+      "etapa": 5,
+      "estado": "Japón tiene marco de stablecoins desde 2023 y la JFSA aprobó RLUSD como «Type 4», distribuido por SBI VC Trade desde jun-2026 (solo en Ethereum).",
+      "fecha": "2026-06-24",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Confirmación en la FSA de la aprobación de RLUSD.",
+      "hitos": [
+        {
+          "fecha": "2026-06-24",
+          "que": "SBI VC Trade empieza a distribuir RLUSD (24/25-jun, según prensa)."
+        }
+      ],
+      "informes": [
+        "R07P",
+        "R09P"
+      ]
+    },
+    {
+      "jur": "jp",
+      "tema": "mercado",
+      "etapa": 3,
+      "estado": "La Dieta aprobó el 15-jul-2026 la reforma que pasa la cripto a la FIEA (información privilegiada, informes de emisores, penas mayores), que no está en vigor; no hay ETF cripto aprobado.",
+      "fecha": "2026-07-15",
+      "fuente": "S",
+      "proxima": {
+        "fecha": "2027-07",
+        "que": "Fecha máxima de efecto de la reforma («dentro de un año») [VERIFICAR]."
+      },
+      "falta": "Texto de la ley y fecha de efecto; lista de criptoactivos incluidos; ETF (2027 o ejercicio 2028 según fuentes).",
+      "hitos": [
+        {
+          "fecha": "2026-02-16",
+          "que": "Informe del grupo de trabajo de la FSA sobre criptoactivos."
+        },
+        {
+          "fecha": "2026-07-15",
+          "que": "La Dieta aprueba la reforma de la FIEA (según prensa)."
+        }
+      ],
+      "informes": [
+        "R07P",
+        "R30",
+        "R27"
+      ]
+    },
+    {
+      "jur": "jp",
+      "tema": "tokenizacion",
+      "etapa": null,
+      "estado": "No hay research sobre la tokenización en Japón.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R07P"
+      ]
+    },
+    {
+      "jur": "jp",
+      "tema": "custodia",
+      "etapa": null,
+      "estado": "No hay research sobre la custodia cripto en Japón.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R07P"
+      ]
+    },
+    {
+      "jur": "jp",
+      "tema": "cbdc",
+      "etapa": null,
+      "estado": "No hay research sobre el yen digital.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R07P"
+      ]
+    },
+    {
+      "jur": "jp",
+      "tema": "fiscal",
+      "etapa": 4,
+      "estado": "Hoy las ganancias cripto se suman a la renta como ingresos varios (hasta ~55 %); la reforma fiscal propone un 20 % separado, sin fecha firme.",
+      "fecha": "2026-07-15",
+      "fuente": "S",
+      "proxima": {
+        "fecha": "2028-01",
+        "que": "Posible impuesto separado del ~20 % (previsión)."
+      },
+      "falta": "Texto de la reforma fiscal y fecha de aplicación.",
+      "hitos": [
+        {
+          "fecha": "2026-04-01",
+          "que": "Texto de la NTA vigente a esta fecha (solo remite a su PDF)."
+        }
+      ],
+      "informes": [
+        "R35",
+        "R07P"
+      ]
+    },
+    {
+      "jur": "in",
+      "tema": "stablecoins",
+      "etapa": 0,
+      "estado": "No hay marco para stablecoins: el RBI las ve como un riesgo y prefiere la CBDC, y el Gobierno estudia un enfoque que podría ser distinto.",
+      "fecha": "2025-12-31",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Documento oficial del RBI o del Ministerio de Finanzas; texto del Economic Survey.",
+      "hitos": [
+        {
+          "fecha": "2025-12-31",
+          "que": "Informe de Estabilidad Financiera del RBI: prefiere CBDC a stablecoins."
+        }
+      ],
+      "informes": [
+        "R02P",
+        "R25"
+      ]
+    },
+    {
+      "jur": "in",
+      "tema": "mercado",
+      "etapa": 1,
+      "estado": "No hay ley cripto: los activos digitales solo tienen régimen fiscal y antiblanqueo, y la comisión parlamentaria recomienda considerar un marco interino con organismos autorregulados.",
+      "fecha": "2026-07-23",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Respuesta del Gobierno al informe n.º 36; lista oficial de VASP registrados en FIU-IND.",
+      "hitos": [
+        {
+          "fecha": "2026-07-23",
+          "que": "Informe n.º 36 de la Comisión de Finanzas sobre el Código de Mercados de Valores."
+        }
+      ],
+      "informes": [
+        "R02P",
+        "R30"
+      ]
+    },
+    {
+      "jur": "in",
+      "tema": "tokenizacion",
+      "etapa": null,
+      "estado": "Solo consta un piloto mayorista de certificados de depósito tokenizados del RBI (secundaria); no hay research sobre un marco de tokenización.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R40",
+        "R02P"
+      ]
+    },
+    {
+      "jur": "in",
+      "tema": "custodia",
+      "etapa": null,
+      "estado": "No hay research sobre la custodia cripto en India.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R02P"
+      ]
+    },
+    {
+      "jur": "in",
+      "tema": "cbdc",
+      "etapa": 1,
+      "estado": "El e₹ sigue en piloto y su circulación minorista cayó un 24 % (771,7 crore ₹ a 31-mar-2026); el RBI prevé pilotos transfronterizos en 2026-27.",
+      "fecha": "2026-03-31",
+      "fuente": "S",
+      "proxima": {
+        "fecha": "2026-12",
+        "que": "Informe de Estabilidad Financiera del RBI [VERIFICAR fecha]."
+      },
+      "falta": "Tabla del e₹ en el Informe Anual del RBI (captcha); detalle de los pilotos con EAU y Singapur.",
+      "hitos": [
+        {
+          "fecha": "2025-03-31",
+          "que": "Circulación del e₹ minorista: 1.016,46 crore ₹."
+        },
+        {
+          "fecha": "2026-03-31",
+          "que": "Circulación del e₹ minorista: 771,66 crore ₹ (−24 %)."
+        }
+      ],
+      "informes": [
+        "R40",
+        "R02P"
+      ]
+    },
+    {
+      "jur": "in",
+      "tema": "fiscal",
+      "etapa": 5,
+      "estado": "Las ganancias de activos digitales tributan al 30 % fijo sin compensar pérdidas, con una retención del 1 % (sección 194S) desde el 1-jul-2022.",
+      "fecha": "2022-07-01",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Numeración en la nueva ley del IRPF de 2025 y texto oficial (403).",
+      "hitos": [
+        {
+          "fecha": "2022-07-01",
+          "que": "Entra en vigor la retención del 1 % (TDS 194S)."
+        }
+      ],
+      "informes": [
+        "R35",
+        "R02P"
+      ]
+    },
+    {
+      "jur": "br",
+      "tema": "stablecoins",
+      "etapa": 4,
+      "estado": "El Banco Central trata las operaciones con stablecoins como cambio (Res. 521) y desde el 1-oct-2026 prohíbe usarlas para liquidar en eFX (Res. 561); una retención de 24 h para envíos grandes llega en 2027.",
+      "fecha": "2026-10-01",
+      "fuente": "S",
+      "proxima": {
+        "fecha": "2027-01-01",
+        "que": "Retención de hasta 24 h en envíos de más de 10.000 USD (Res. 584) [VERIFICAR]."
+      },
+      "falta": "Textos oficiales de las resoluciones (la web del BCB no abre); votación del PL 4.308.",
+      "hitos": [
+        {
+          "fecha": "2026-02-02",
+          "que": "Entran en vigor las Res. 519, 520 y 521."
+        },
+        {
+          "fecha": "2026-04-30",
+          "que": "Se publica la Res. 561."
+        },
+        {
+          "fecha": "2026-08-07",
+          "que": "Se publica la Res. 584 (retención de 24 h) [VERIFICAR]."
+        },
+        {
+          "fecha": "2026-10-01",
+          "que": "Entra en vigor la Res. 561."
+        }
+      ],
+      "informes": [
+        "R03P",
+        "R25",
+        "R30"
+      ]
+    },
+    {
+      "jur": "br",
+      "tema": "mercado",
+      "etapa": 4,
+      "estado": "Los proveedores cripto (PSAV) tienen marco completo desde el 2-feb-2026 y los existentes deben pedir autorización en 270 días; no hay dato sobre ETF cripto en Brasil.",
+      "fecha": "2026-02-02",
+      "fuente": "S",
+      "proxima": {
+        "fecha": "2026-10-30",
+        "que": "Fin del plazo de 270 días para pedir autorización (cálculo propio) [VERIFICAR]."
+      },
+      "falta": "Lista oficial de PSAV autorizadas; si Ripple pidió la licencia; ETF cripto en Brasil (sin dato).",
+      "hitos": [
+        {
+          "fecha": "2025-11-10",
+          "que": "Se publican las Res. 519, 520 y 521."
+        },
+        {
+          "fecha": "2026-02-02",
+          "que": "Entran en vigor."
+        },
+        {
+          "fecha": "2026-03-17",
+          "que": "Ripple anuncia que planea pedir la licencia de PSAV."
+        }
+      ],
+      "informes": [
+        "R03P",
+        "R30"
+      ]
+    },
+    {
+      "jur": "br",
+      "tema": "tokenizacion",
+      "etapa": 1,
+      "estado": "No hay ley de tokens de valores: las ofertas usan la Res. 88 de la CVM (crowdfunding), cuya reforma se consultó hasta ene-2026; CSD BR refleja en el XRPL participaciones de fondos en un entorno con permisos.",
+      "fecha": "2026-01",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Decisión de la CVM sobre la reforma de la Res. 88.",
+      "hitos": [
+        {
+          "fecha": "2026-01",
+          "que": "Cierra la consulta pública de la CVM sobre la Res. 88."
+        },
+        {
+          "fecha": "2026-09-29",
+          "que": "CSD BR y Ripple: primera fase de reflejo de fondos de BTG en el XRPL (nota de Ripple)."
+        }
+      ],
+      "informes": [
+        "R03P",
+        "Dossier Tokenización (9-oct)"
+      ]
+    },
+    {
+      "jur": "br",
+      "tema": "custodia",
+      "etapa": 4,
+      "estado": "La custodia es uno de los tres tipos de PSAV que regula la Res. 520, vigente desde el 2-feb-2026.",
+      "fecha": "2026-02-02",
+      "fuente": "S",
+      "proxima": {
+        "fecha": "2026-10-30",
+        "que": "Fin del plazo para pedir autorización (cálculo propio) [VERIFICAR]."
+      },
+      "falta": "Lista de custodios autorizados.",
+      "hitos": [
+        {
+          "fecha": "2026-02-02",
+          "que": "Entra en vigor la Res. 520."
+        }
+      ],
+      "informes": [
+        "R03P"
+      ]
+    },
+    {
+      "jur": "br",
+      "tema": "cbdc",
+      "etapa": 0,
+      "estado": "El Banco Central apagó la plataforma del Drex el 10-nov-2025; la nueva fase va por casos de uso (garantías de crédito) sin tokenización, así que no hay CBDC en marcha.",
+      "fecha": "2025-11-10",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Comunicado oficial del BCB; el Atlantic Council aún lo clasifica como piloto de crédito tokenizado [VERIFICAR].",
+      "hitos": [
+        {
+          "fecha": "2025-11-10",
+          "que": "El BCB desactiva la plataforma Drex."
+        }
+      ],
+      "informes": [
+        "R03P",
+        "R40"
+      ]
+    },
+    {
+      "jur": "br",
+      "tema": "fiscal",
+      "etapa": 4,
+      "estado": "Las ganancias tributan por tramos del 15 al 22,5 % con exención de ventas mensuales de hasta 35.000 R$; la MP 1.303 habría caducado y el sistema DeCripto sustituye a la IN 1.888.",
+      "fecha": "2025-11-14",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Textos de la Receita Federal (IN 2.291) y confirmación de la caducidad de la MP 1.303.",
+      "hitos": [
+        {
+          "fecha": "2025-10-08",
+          "que": "La MP 1.303 habría perdido vigencia (una sola fuente)."
+        },
+        {
+          "fecha": "2025-11-14",
+          "que": "IN RFB 2.291 (DeCripto); operaciones a declarar desde jul-2026."
+        }
+      ],
+      "informes": [
+        "R35",
+        "R03P"
+      ]
+    },
+    {
+      "jur": "ru",
+      "tema": "stablecoins",
+      "etapa": null,
+      "estado": "La ley rusa crearía una categoría para stablecoins extranjeras, pero solo consta en un extracto; el rublo-stablecoin A7A5 está sancionado por la UE y EE. UU.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Texto oficial de la ley 282-ФЗ.",
+      "hitos": [],
+      "informes": [
+        "R06P"
+      ]
+    },
+    {
+      "jur": "ru",
+      "tema": "mercado",
+      "etapa": 4,
+      "estado": "La ley 282-ФЗ rige desde el 1-sep-2026: la cripto es propiedad, hay registro de intermediarios y los pagos internos siguen prohibidos, salvo en el comercio exterior.",
+      "fecha": "2026-09-01",
+      "fuente": "S",
+      "proxima": {
+        "fecha": "2027-07-01",
+        "que": "Fin de la tolerancia a casas de cambio cripto sin registro."
+      },
+      "falta": "Texto oficial de la ley (la web no abrió); registro de intermediarios del Banco de Rusia.",
+      "hitos": [
+        {
+          "fecha": "2024-09-01",
+          "que": "Régimen experimental de pagos exteriores con cripto."
+        },
+        {
+          "fecha": "2026-08-04",
+          "que": "Se firma la ley 282-ФЗ."
+        },
+        {
+          "fecha": "2026-09-01",
+          "que": "Entra en vigor."
+        },
+        {
+          "fecha": "2026-09-07",
+          "que": "El Banco de Rusia consulta el control de divisas para pagos cripto [VERIFICAR]."
+        }
+      ],
+      "informes": [
+        "R06P",
+        "R30"
+      ]
+    },
+    {
+      "jur": "ru",
+      "tema": "tokenizacion",
+      "etapa": null,
+      "estado": "No hay research sobre los «derechos digitales» (tokenización) de la ley rusa.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R06P"
+      ]
+    },
+    {
+      "jur": "ru",
+      "tema": "custodia",
+      "etapa": 4,
+      "estado": "La ley 282-ФЗ incluye a los depositarios entre los intermediarios regulados por el Banco de Rusia.",
+      "fecha": "2026-09-01",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Texto oficial y requisitos de los depositarios.",
+      "hitos": [
+        {
+          "fecha": "2026-09-01",
+          "que": "Entra en vigor la ley 282-ФЗ."
+        }
+      ],
+      "informes": [
+        "R06P"
+      ]
+    },
+    {
+      "jur": "ru",
+      "tema": "cbdc",
+      "etapa": 5,
+      "estado": "El rublo digital está en uso amplio desde el 1-sep-2026: los mayores bancos y comercios deben ofrecerlo y todas las operaciones pasan por la plataforma del Banco de Rusia.",
+      "fecha": "2026-09-01",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2027-09-01",
+        "que": "Segunda fase obligatoria (bancos con licencia universal)."
+      },
+      "falta": "Cifras oficiales de uso (cbr.ru no las publica en las páginas leídas).",
+      "hitos": [
+        {
+          "fecha": "2023-08",
+          "que": "Piloto con dinero real (13 bancos)."
+        },
+        {
+          "fecha": "2026-09-01",
+          "que": "Inicio del uso amplio."
+        },
+        {
+          "fecha": "2026-09-17",
+          "que": "Primeras cifras: 87.000 monederos y más de 50.000 operaciones en 10 días (según prensa)."
+        }
+      ],
+      "informes": [
+        "R40",
+        "R01P"
+      ]
+    },
+    {
+      "jur": "ru",
+      "tema": "fiscal",
+      "etapa": null,
+      "estado": "No hay research sobre la fiscalidad cripto en Rusia.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R35"
+      ]
+    },
+    {
+      "jur": "ae",
+      "tema": "stablecoins",
+      "etapa": 5,
+      "estado": "Las zonas francas supervisan stablecoins: la FSRA y la DFSA reconocen RLUSD (anunciado por Ripple) y VARA emitió el 6-oct-2026 una circular sobre auditoría de activos de reserva.",
+      "fecha": "2026-10-06",
+      "fuente": "P",
+      "proxima": null,
+      "falta": "Qué pasó con el plazo federal del CBUAE del 16-sep-2026 [VERIFICAR]; texto de la circular de VARA.",
+      "hitos": [
+        {
+          "fecha": "2025-06",
+          "que": "La DFSA aprueba RLUSD (según Ripple)."
+        },
+        {
+          "fecha": "2025-11-27",
+          "que": "La FSRA reconoce RLUSD como token referenciado a fiat aceptado (según Ripple)."
+        },
+        {
+          "fecha": "2026-10-06",
+          "que": "Circular de VARA sobre auditoría de activos de reserva."
+        }
+      ],
+      "informes": [
+        "R07P",
+        "R30"
+      ]
+    },
+    {
+      "jur": "ae",
+      "tema": "mercado",
+      "etapa": 5,
+      "estado": "Tres capas supervisan la cripto (ADGM/FSRA, DIFC/DFSA y VARA) y el CBUAE federal; el plazo para licenciarse bajo el Decreto-Ley 6/2025 venció el 16-sep-2026 sin información verificada.",
+      "fecha": "2026-09-16",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Fuentes primarias del CBUAE, VARA, DFSA y FSRA.",
+      "hitos": [
+        {
+          "fecha": "2025-09-16",
+          "que": "Entra en vigor el Decreto-Ley Federal 6/2025."
+        },
+        {
+          "fecha": "2026-09-16",
+          "que": "Vence el plazo de licencia federal (posible prórroga)."
+        }
+      ],
+      "informes": [
+        "R07P"
+      ]
+    },
+    {
+      "jur": "ae",
+      "tema": "tokenizacion",
+      "etapa": null,
+      "estado": "No hay research sobre la tokenización en Emiratos.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R07P"
+      ]
+    },
+    {
+      "jur": "ae",
+      "tema": "custodia",
+      "etapa": null,
+      "estado": "No hay research sobre la custodia cripto en Emiratos.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R07P"
+      ]
+    },
+    {
+      "jur": "ae",
+      "tema": "cbdc",
+      "etapa": null,
+      "estado": "Solo consta el anuncio del dirham digital en 2025 y conversaciones para un piloto con India.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R07P",
+        "R02P"
+      ]
+    },
+    {
+      "jur": "ae",
+      "tema": "fiscal",
+      "etapa": 4,
+      "estado": "La transferencia y conversión de activos virtuales está exenta de IVA desde el 15-nov-2024 (retroactiva a 2018), según asesorías.",
+      "fecha": "2024-11-15",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Guía de la FTA; impuesto de sociedades del 9 % (no verificado).",
+      "hitos": [
+        {
+          "fecha": "2024-11-15",
+          "que": "Cabinet Decision 100/2024 sobre el IVA de los activos virtuales."
+        }
+      ],
+      "informes": [
+        "R35"
+      ]
+    },
+    {
+      "jur": "cn",
+      "tema": "stablecoins",
+      "etapa": null,
+      "estado": "No hay research; un apunte dice que China prohíbe las stablecoins privadas, sacado de un vídeo.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "Apunte regulacion-por-jurisdicciones"
+      ]
+    },
+    {
+      "jur": "cn",
+      "tema": "mercado",
+      "etapa": null,
+      "estado": "No hay research sobre el mercado cripto en China.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": []
+    },
+    {
+      "jur": "cn",
+      "tema": "tokenizacion",
+      "etapa": null,
+      "estado": "No hay research sobre la tokenización en China.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": []
+    },
+    {
+      "jur": "cn",
+      "tema": "custodia",
+      "etapa": null,
+      "estado": "No hay research sobre la custodia cripto en China.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": []
+    },
+    {
+      "jur": "cn",
+      "tema": "cbdc",
+      "etapa": 4,
+      "estado": "El e-CNY es el mayor piloto del mundo y desde el 1-ene-2026 se trata como depósito bancario que puede pagar intereses; hay 30 operadores y domina mBridge (más del 95 %).",
+      "fecha": "2026-08-17",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Comunicado de la PBoC del plan de acción y cifras nacionales de 2026.",
+      "hitos": [
+        {
+          "fecha": "2025-11",
+          "que": "3.480 M de operaciones y 16,7 billones de RMB acumulados (tercero)."
+        },
+        {
+          "fecha": "2026-01-01",
+          "que": "El e-CNY pasa a ser depósito remunerado."
+        },
+        {
+          "fecha": "2026-06-16",
+          "que": "26 instituciones firman en el centro internacional de operaciones del e-CNY (Shanghái)."
+        },
+        {
+          "fecha": "2026-08-17",
+          "que": "La PBoC añade 8 bancos operadores: 30 en total."
+        }
+      ],
+      "informes": [
+        "R40",
+        "R01P",
+        "Dossier Euro digital (9-oct)"
+      ]
+    },
+    {
+      "jur": "cn",
+      "tema": "fiscal",
+      "etapa": null,
+      "estado": "No hay research sobre la fiscalidad cripto en China.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": []
+    },
+    {
+      "jur": "brics",
+      "tema": "stablecoins",
+      "etapa": 1,
+      "estado": "El BIS considera que las stablecoins actuales no cumplen los criterios de buen dinero y el Comité de Basilea revisa su estándar de capital cripto, con XRP y XLM en el grupo de trato duro.",
+      "fecha": "2026-02-25",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Resultado de la revisión de Basilea (bis.org no abre).",
+      "hitos": [
+        {
+          "fecha": "2026-01-01",
+          "que": "Fecha de aplicación prevista del estándar cripto de Basilea."
+        },
+        {
+          "fecha": "2026-02-25",
+          "que": "Basilea acelera la revisión del estándar (según prensa)."
+        }
+      ],
+      "informes": [
+        "R18",
+        "R08P",
+        "Dossier Euro digital (9-oct)"
+      ]
+    },
+    {
+      "jur": "brics",
+      "tema": "mercado",
+      "etapa": 0,
+      "estado": "No hay marco vinculante: GAFI, FSB e IOSCO dictan estándares; según el GAFI, el 83 % de las jurisdicciones encuestadas tienen la Travel Rule legislada, pero solo ~40 % la supervisa.",
+      "fecha": "2026-07-16",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Informe del GAFI de jul-2026 entero (403).",
+      "hitos": [
+        {
+          "fecha": "2025-10-16",
+          "que": "Revisiones temáticas del FSB y de IOSCO."
+        },
+        {
+          "fecha": "2026-07-16",
+          "que": "7.ª actualización del GAFI sobre activos virtuales."
+        }
+      ],
+      "informes": [
+        "R18"
+      ]
+    },
+    {
+      "jur": "brics",
+      "tema": "tokenizacion",
+      "etapa": 1,
+      "estado": "Agorá (BIS con siete bancos centrales) es un prototipo de reservas y depósitos tokenizados cuya siguiente fase sería con valor real, sin fecha.",
+      "fecha": "2026-05-27",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Informe del prototipo Agorá (bis.org no abre).",
+      "hitos": [
+        {
+          "fecha": "2026-05-27",
+          "que": "Nota del BCE sobre el prototipo Agorá."
+        }
+      ],
+      "informes": [
+        "R08P",
+        "R28"
+      ]
+    },
+    {
+      "jur": "brics",
+      "tema": "custodia",
+      "etapa": null,
+      "estado": "No hay estándar de custodia supranacional revisado en el research.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R18"
+      ]
+    },
+    {
+      "jur": "brics",
+      "tema": "cbdc",
+      "etapa": 1,
+      "estado": "La cumbre BRICS de Nueva Delhi apoyó la interoperabilidad de pagos y las monedas locales sin moneda común ni plazos; mBridge opera dominado por el yuan digital, sin el BIS ni Arabia Saudí.",
+      "fecha": "2026-09-13",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Texto oficial de la Declaración de Nueva Delhi (403).",
+      "hitos": [
+        {
+          "fecha": "2024-10",
+          "que": "El BIS sale de mBridge."
+        },
+        {
+          "fecha": "2025-05-13",
+          "que": "Arabia Saudí termina su prueba de concepto en mBridge (se supo el 20-sep-2026)."
+        },
+        {
+          "fecha": "2026-09-13",
+          "que": "Cierre de la cumbre de Nueva Delhi."
+        }
+      ],
+      "informes": [
+        "R01P",
+        "R40"
+      ]
+    },
+    {
+      "jur": "brics",
+      "tema": "fiscal",
+      "etapa": null,
+      "estado": "Solo consta que 76 jurisdicciones se han comprometido con el CARF de la OCDE (secundaria).",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "R35"
+      ]
+    }
+  ],
+  "huecos": [
+    {
+      "zona": "Sudáfrica, Indonesia, Egipto, Etiopía e Irán",
+      "nota": "Miembros o socios de BRICS sin research propio (R01P solo cubre la cumbre)."
+    },
+    {
+      "zona": "Arabia Saudí",
+      "nota": "Solo consta su salida de mBridge; sin research de regulación."
+    },
+    {
+      "zona": "Reino Unido y Suiza",
+      "nota": "Cubiertos en R18 (G16) pero fuera de esta matriz; el régimen británico entraría en vigor el 25-oct-2027 [P]."
+    },
+    {
+      "zona": "Canadá y Australia",
+      "nota": "Canadá solo por los ETF de XRP (R27); Australia sin research."
+    },
+    {
+      "zona": "China",
+      "nota": "Solo hay research de CBDC; mercado, stablecoins, tokenización, custodia y fiscal sin datos."
+    },
+    {
+      "zona": "Custodia fuera de EE. UU. y la UE",
+      "nota": "Ningún informe trata la custodia cripto en Asia, Emiratos o BRICS."
+    }
+  ]
+}
