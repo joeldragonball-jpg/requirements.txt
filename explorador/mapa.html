@@ -75,6 +75,17 @@ h3{margin:18px 0 7px;font-size:11px;text-transform:uppercase;letter-spacing:.14e
 .chip.clic{cursor:pointer}.chip.clic:hover{border-color:var(--oro);color:#fff}
 details.doc .chips{margin:2px 0 6px}
 .hecho-t{flex:1}
+.radar-grid{display:grid;grid-template-columns:minmax(78px,1.5fr) repeat(6,minmax(0,1fr));gap:4px;margin:8px 0}
+.radar-th{writing-mode:vertical-rl;transform:rotate(180deg);height:84px;white-space:nowrap;font-size:11px;color:var(--suave);justify-self:center;align-self:end;text-align:left}
+.radar-jur{appearance:none;background:none;border:1px solid transparent;border-radius:5px;color:var(--texto);font:inherit;font-size:12px;text-align:left;padding:3px 6px;cursor:pointer}
+.radar-jur:hover,.radar-jur.on{border-color:var(--oro)}
+.radar-cel{appearance:none;height:30px;border-radius:5px;border:1px solid;font:inherit;font-weight:700;font-size:13px;cursor:pointer;color:#fff;display:flex;align-items:center;justify-content:center;gap:3px;padding:0}
+.radar-cel small{font-size:8.5px;font-weight:600;opacity:.85}
+.radar-cel.nd{border-style:dashed;background:transparent !important;color:var(--suave);font-weight:400}
+.radar-cel:hover{filter:brightness(1.25)}.radar-cel.on{outline:2px solid var(--oro);outline-offset:1px}
+.hitos{margin:6px 0 0;padding:0;list-style:none;border-left:2px solid var(--linea)}.hitos li{position:relative;padding:2px 0 6px 12px;font-size:12.5px;color:#cdd6ea}
+.hitos li::before{content:'';position:absolute;left:-5px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--oro)}
+.hitos .cuando{color:#f1d58a;margin-right:6px}
 .ficha-ul{margin:4px 0 0;padding-left:18px;font-size:12.5px;color:#cdd6ea}.ficha-ul li{margin:2px 0}
 .ficha-fila{display:flex;gap:10px;align-items:baseline;margin:3px 0;font-size:12.5px}
 .ficha-fila .etq-f{flex:none;min-width:92px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--suave)}
@@ -510,6 +521,64 @@ function fichaAnalista(padre, c){
   H('p', 'nota', padre, 'Informes de origen: ' + (fi.informes || []).join(', ') + '. Informativo: no es recomendación de compra ni venta.');
 }
 function listaFicha(padre, items){ const ul = H('ul', 'ficha-ul', padre); (items || []).forEach(t => H('li', '', ul, t)); }
+const RADAR = D.radar;
+const ETAPA_COL = ['#e06c6c', '#d9904a', '#d4a84b', '#8bb86a', '#3fb68b', '#2ee6a6'];
+let radarSel = null;   // {jur, tema?}
+const celdaRadar = (j, t) => RADAR.celdas.find(c => c.jur === j && c.tema === t);
+const nomJur = id => (RADAR.jurisdicciones.find(j => j.id === id) || {nombre: id}).nombre;
+const nomTema = id => (RADAR.temas.find(t => t.id === id) || {nombre: id}).nombre;
+const nivelFuente = f => NIVEL[f === 'VERIFICAR' ? 'VER' : f] || null;
+function etapaChip(padre, c){
+  const a = H('span', 'chip', padre); const p = H('span', 'punto', a);
+  p.style.background = c.etapa === null ? '#475569' : ETAPA_COL[c.etapa];
+  a.appendChild(document.createTextNode(c.etapa === null ? 'Sin dato' : `Etapa ${c.etapa}: ${RADAR.escala[c.etapa]}`));
+}
+function radarCelda(padre, c){
+  const nf = nivelFuente(c.fuente);
+  const b = H('div', 'bloque entra', padre); b.style.borderLeftColor = c.etapa === null ? '#475569' : ETAPA_COL[c.etapa];
+  const t = H('div', '', b); H('b', '', t, `${nomJur(c.jur)} · ${nomTema(c.tema)}`);
+  const ch = H('div', 'chips', b); etapaChip(ch, c);
+  if (nf){ const e = H('span', 'etq', ch, nf[0]); e.style.color = nf[1]; e.style.borderColor = rgba(nf[1], .6); e.title = nf[2]; }
+  if (c.fecha) H('span', 'chip', ch, 'Último cambio: ' + c.fecha);
+  H('div', '', b, c.estado);
+  if (c.proxima){ const x = H('div', 'nota', b); x.style.marginTop = '6px'; H('b', '', x, 'Próxima fecha: '); x.appendChild(document.createTextNode(`${c.proxima.fecha} · ${c.proxima.que}`)); }
+  if (c.falta){ const x = H('div', 'nota', b); x.style.marginTop = '4px'; H('b', '', x, 'Qué falta: '); x.appendChild(document.createTextNode(c.falta)); }
+  if ((c.hitos || []).length){
+    const h = H('div', 'nota', b, 'Cómo ha avanzado'); h.style.cssText = 'margin-top:8px;font-weight:700';
+    const ul = H('ul', 'hitos', b);
+    c.hitos.slice().sort((x, y) => String(x.fecha).localeCompare(String(y.fecha))).forEach(m => { const li = H('li', '', ul); H('span', 'cuando', li, m.fecha); li.appendChild(document.createTextNode(m.que)); });
+  }
+  if ((c.informes || []).length){ const f = H('div', 'fuente', b, 'Informes de origen: ' + c.informes.join(', ')); f.style.marginTop = '6px'; }
+}
+function radarVista(padre, titulo){
+  if (!RADAR) return;
+  H('h3', '', padre, titulo);
+  const con = RADAR.celdas.filter(c => c.etapa !== null).length;
+  H('p', 'nota', padre, `${con} de ${RADAR.celdas.length} celdas con dato; el resto se muestra con guion y está marcado [VERIFICAR]. La etapa es la de la norma, no una valoración de si es buena o mala. Pulsa una celda para ver cómo ha avanzado, o un país para ver todos sus temas.`);
+  const g = H('div', 'radar-grid', padre);
+  H('div', '', g);
+  RADAR.temas.forEach(t => { const th = H('div', 'radar-th', g, t.nombre); th.title = t.nombre; });
+  RADAR.jurisdicciones.forEach(j => {
+    const bj = H('button', 'radar-jur' + (radarSel && radarSel.jur === j.id && !radarSel.tema ? ' on' : ''), g, j.nombre.replace(' (supranacional)', '').replace('Emiratos Árabes Unidos', 'Emiratos'));
+    bj.title = 'Ver todos los temas de ' + j.nombre;
+    bj.addEventListener('click', () => { radarSel = (radarSel && radarSel.jur === j.id && !radarSel.tema) ? null : {jur: j.id}; dibujarPanel(); });
+    RADAR.temas.forEach(t => {
+      const c = celdaRadar(j.id, t.id), nd = !c || c.etapa === null;
+      const b = H('button', 'radar-cel' + (nd ? ' nd' : '') + (radarSel && radarSel.jur === j.id && radarSel.tema === t.id ? ' on' : ''), g);
+      if (!nd){ const col = ETAPA_COL[c.etapa]; b.style.background = rgba(col, .3); b.style.borderColor = rgba(col, .8); b.appendChild(document.createTextNode(String(c.etapa))); H('small', '', b, c.fuente === 'VERIFICAR' ? '?' : c.fuente); }
+      else b.appendChild(document.createTextNode('—'));
+      b.title = `${j.nombre} · ${t.nombre}: ` + (nd ? 'sin dato' : `etapa ${c.etapa}, ${RADAR.escala[c.etapa]}`);
+      b.addEventListener('click', () => { radarSel = (radarSel && radarSel.jur === j.id && radarSel.tema === t.id) ? null : {jur: j.id, tema: t.id}; dibujarPanel(); });
+    });
+  });
+  const ley = H('div', 'leyenda', padre);
+  Object.keys(RADAR.escala).forEach(k => { const s = H('span', '', ley); const p = H('span', 'punto', s); p.style.background = ETAPA_COL[k]; s.appendChild(document.createTextNode(`${k} ${RADAR.escala[k]}`)); });
+  if (radarSel){
+    if (radarSel.tema){ const c = celdaRadar(radarSel.jur, radarSel.tema); if (c) radarCelda(padre, c); }
+    else RADAR.temas.forEach(t => { const c = celdaRadar(radarSel.jur, t.id); if (c) radarCelda(padre, c); });
+  }
+  H('p', 'nota', padre, 'Versión ' + (RADAR.version || '') + ' · ' + RADAR.aviso);
+}
 function listaEventos(padre, lista, conCapa){
   if (!lista.length){ H('p', 'nota', padre, 'No hay fechas próximas con los temas elegidos.'); return; }
   lista.forEach((e, i) => {
@@ -539,6 +608,7 @@ function dibujarPanel(){
     });
     H('h3', '', panel, 'Cifras clave');
     tarjetasCifras(panel, capas.filter(c => c.cifras[0]).map(c => ({capa: c, c: c.cifras[0]})));
+    radarVista(panel, 'Radar regulatorio');
     H('h3', '', panel, 'Próximas fechas');
     H('p', 'nota', panel, 'Rombos de color según el tema; ★ = impacto alto. Pulsa un tema en la barra de calendario para mostrarlo u ocultarlo.');
     listaEventos(panel, evVisibles(null, 90).slice(0, 8), true);
@@ -566,6 +636,7 @@ function dibujarPanel(){
     vs.forEach(m => cnt[m.estado] = (cnt[m.estado] || 0) + 1);
     const chips = H('div', 'chips', cab);
     Object.keys(est).forEach(k => { if (cnt[k]){ const a = H('span', 'chip', chips); const p = H('span', 'punto', a); p.style.background = colEst(k); a.appendChild(document.createTextNode(`${est[k].nombre}: ${cnt[k]}`)); } });
+    if (sel.id === 'reg') radarVista(panel, 'Radar regulatorio por país y tema');
     fichaAnalista(panel, sel);
     H('h3', '', panel, 'Cifras clave');
     tarjetasCifras(panel, sel.cifras.map(c => ({capa: sel, c})));

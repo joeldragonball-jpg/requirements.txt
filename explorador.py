@@ -207,6 +207,10 @@ def _html(conceptos):
     rel = _relacionados(json.dumps(conceptos or [], ensure_ascii=False, sort_keys=True), _firma())
     for capa in datos["capas"]:
         capa["docs"] = rel.get(capa["id"], {"inv": [], "glo": []})
+    try:
+        datos["radar"] = json.loads((CARPETA / "regulacion.json").read_text(encoding="utf-8"))
+    except Exception:
+        datos["radar"] = None            # sin el archivo del radar, el mapa funciona igual (sin esa sección)
     datos["biblioteca"] = rel.get("_totales", {})
     hoy = date.today().isoformat()
     datos["calendario"] = {"hoy": hoy, "temas": TEMAS, "eventos": _calendario(hoy, _version())}
