@@ -219,13 +219,13 @@ def mostrar(conceptos=None):
     # El mapa ocupa todo el ancho de la página (sin los márgenes de Streamlit)
     # Fondo de toda la página igual que el del mapa (el mapa es transparente), para que se vea como una sola pantalla
     st.markdown("<style>.block-container{max-width:100% !important;padding-left:1.2rem !important;padding-right:1.2rem !important;"
-                "padding-top:1rem !important}"
+                "padding-top:0 !important;padding-bottom:.5rem !important}"
                 "html,body,.stApp,[data-testid='stAppViewContainer'],[data-testid='stMain']{background:"
                 "radial-gradient(ellipse 55% 38% at 14% 12%,rgba(99,102,241,.22),transparent 70%),"
                 "radial-gradient(ellipse 45% 34% at 92% 30%,rgba(190,70,130,.15),transparent 70%),"
                 "radial-gradient(ellipse 45% 30% at 72% 4%,rgba(34,160,190,.13),transparent 70%),"
                 "radial-gradient(ellipse 80% 60% at 50% 32%,#0b1230 0%,#050816 85%) fixed !important}"
-                "[data-testid='stHeader']{background:transparent !important}</style>", unsafe_allow_html=True)
+                "[data-testid='stHeader']{display:none !important}</style>", unsafe_allow_html=True)
     try:
         html = _html(conceptos)
     except Exception as e:
