@@ -18,4 +18,11 @@ Corrección de lo que decía el radar: la Res. 584 NO es un tema aparte de «env
 - `incometaxindia.gov.in` bloquea `curl`; solo se leyó con Chrome.
 
 ## Sigue pendiente
-China (PBoC, CSRC, en chino), Indonesia (OJK), Egipto y Etiopía (textos oficiales), PDF del GAFI y del piloto Hangang, numeración de la ley india de 2025.
+Indonesia (OJK), Egipto y Etiopía (textos oficiales), cifra de ~40 % de supervisión en el PDF del GAFI y numeración de la ley india de 2025. (China y Hangang se cerraron después; ver la ampliación de abajo.)
+
+## Ampliación (misma sesión): Hangang, GAFI y China
+| Tema | Fuente leída | Resultado |
+|---|---|---|
+| Corea · Hangang Fase 1 | PDF oficial del Banco de Corea (74 páginas, `curl`; URL sacada de la ficha del documento con WebFetch) | Piloto real abr-jun 2025, 7 bancos, hasta 100.000 usuarios, ~81.000 monederos y ~1.640 millones de wones convertidos [P] |
+| GAFI · 7.ª actualización | Nota de prensa HTML del GAFI (Chrome; el PDF da 403 a `curl` y Chrome no lo muestra como texto) | 83 % con Travel Rule (73 % en 2025), 11 más en marcha, ~97 % del mercado; stablecoins dominan la actividad ilícita identificada. La cifra de ~40 % de supervisión no aparece [VERIFICAR] |
+| China · Notice 42 (银发〔2026〕42号) | Texto íntegro en pbc.gov.cn (Chrome; `curl` no conecta con csrc.gov.cn) | 19 artículos leídos: prohibición de cripto y de RWA salvo aprobación, stablecoins ligadas al RMB sin permiso, bancos sin servicios, minería cerrada, derogación de 银发〔2021〕237号 [P] |
