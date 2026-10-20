@@ -363,7 +363,7 @@ function mostrarTip(c){
   if (PAN && PAN.stablecoins && c.id === 'stable') H('div', 'nota', tip, `Datos al día: ${pnUSD(PAN.stablecoins.total)} en circulación · ${pnFmt(PAN.stablecoins.top[0].usd / PAN.stablecoins.total * 100, 0)} % ${PAN.stablecoins.top[0].simbolo} [S]`);
   if (PAN && PAN.stablecoins && c.id === 'puente') H('div', 'nota', tip, `Datos al día: ${pnUSD(PAN.stablecoins.xrpl.total)} en stablecoins en el XRPL · ${pnUSD(PAN.stablecoins.stellar.total)} en Stellar [S]`);
   if (c.id === 'reg' && tiposFilas().length) H('div', 'nota', tip, `Datos al día: ${tiposFilas().filter(x => x.dir === 'sube').length} de ${tiposFilas().length} bancos centrales subieron tipos en su último movimiento`);
-  if (PAN && PAN.tic && c.id === 'cbdc') H('div', 'nota', tip, `Datos al día: ${pnFmt(PAN.tic.total[0], 0)} MM$ de deuda de EE. UU. en manos extranjeras (${PAN.tic.meses[0]}) [P]`);
+  if (PAN && PAN.tic && c.id === 'cbdc') H('div', 'nota', tip, `Datos al día: $${pnFmt(PAN.tic.total[0], 0)} mil M de deuda de EE. UU. en manos extranjeras (${PAN.tic.meses[0]}) [P]`);
   if (ev[0]) H('div', 'nota', tip, `Próxima: ${fmtC(ev[0].ini)} · ${corto(ev[0].titulo, 60)}`);
   H('div', 'nota', tip, c.resumen);
   tip.style.opacity = 1;
@@ -635,8 +635,8 @@ function radarVista(padre, titulo){
 const CONTR = D.contraste;
 // ---- Datos al día (explorador/paneles.json, generado por scripts/actualizar_paneles.py): se cuelgan de las capas del mapa
 const PAN = D.paneles;
-const pnFmt = (v, d = 1) => v == null ? '—' : v.toLocaleString('es-ES', {minimumFractionDigits: d, maximumFractionDigits: d});
-const pnUSD = v => v >= 2e9 ? pnFmt(v / 1e9, 1) + ' MM$' : v >= 1e6 ? pnFmt(v / 1e6, 0) + ' M$' : pnFmt(v / 1e3, 0) + ' mil $';
+const pnFmt = (v, d = 1) => v == null ? '—' : v.toLocaleString('es-ES', {minimumFractionDigits: d, maximumFractionDigits: d, useGrouping: 'always'});
+const pnUSD = v => v >= 2e9 ? '$' + pnFmt(v / 1e9, 1) + ' mil M' : v >= 1e6 ? '$' + pnFmt(v / 1e6, 0) + ' M' : '$' + pnFmt(v / 1e3, 0) + ' mil';
 const pnPct = (a, b) => (a == null || b == null || !b) ? null : (a / b - 1) * 100;
 function pnCambio(td, p){
   if (p == null){ td.textContent = '—'; td.className = 'pn-n'; return; }
@@ -672,7 +672,7 @@ function datosGlobales(padre){
   }
   if (t){
     const j = t.paises.find(p => p.clave === 'Japan'), c = t.paises.find(p => p.clave === 'China, Mainland');
-    k.push([pnFmt(t.total[0], 0) + ' MM$', 'Deuda de EE. UU. en manos extranjeras [P]', 'cbdc']);
+    k.push(['$' + pnFmt(t.total[0], 0) + ' mil M', 'Deuda de EE. UU. en manos extranjeras [P]', 'cbdc']);
     if (j) k.push([(pnPct(j.serie[0], j.serie[12]) > 0 ? '+' : '') + pnFmt(pnPct(j.serie[0], j.serie[12]), 1) + ' %', 'Japón, 12 meses (deuda EE. UU.) [P]', 'cbdc']);
     if (c) k.push([(pnPct(c.serie[0], c.serie[12]) > 0 ? '+' : '') + pnFmt(pnPct(c.serie[0], c.serie[12]), 1) + ' %', 'China, 12 meses (deuda EE. UU.) [P]', 'cbdc']);
   }
@@ -703,12 +703,12 @@ function datosCapa(padre, id){
     pnTabla(b, ['Stablecoin', 'Circulación', '% cadena'], pnCadena(s.xrpl, 5));
     H('p', 'nota', b, `Stellar: ${s.stellar.n} stablecoins, ${pnUSD(s.stellar.total)}.`);
     pnTabla(b, ['Stablecoin', 'Circulación', '% cadena'], pnCadena(s.stellar, 5));
-    pnPie(b, 'El dossier del 9-oct leyó 1.140 M$ de RLUSD en el propio ledger el 17-oct; no se mezclan métodos.', 'DefiLlama', PAN.leido);
+    pnPie(b, 'El dossier del 9-oct leyó $1.140 M de RLUSD en el propio ledger el 17-oct; no se mezclan métodos.', 'DefiLlama', PAN.leido);
   }
   if (id === 'cbdc' && t){
     const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: quién tiene deuda de EE. UU. [P]');
-    pnKpi(b, [[pnFmt(t.total[0], 0) + ' MM$', 'Total extranjero · ' + t.meses[0]], [t.oficial ? pnFmt(t.oficial[0], 0) + ' MM$' : '—', 'De ellos, oficiales (bancos centrales y Estados)']]);
-    pnTabla(b, ['País (custodia)', t.meses[0] + ' MM$', '6 meses', '12 meses'], t.paises.slice(0, 8).map(p => ({celdas: [p.nombre, pnFmt(p.serie[0]), td => pnCambio(td, pnPct(p.serie[0], p.serie[6])), td => pnCambio(td, pnPct(p.serie[0], p.serie[12]))]})));
+    pnKpi(b, [['$' + pnFmt(t.total[0], 0) + ' mil M', 'Total extranjero · ' + t.meses[0]], [t.oficial ? '$' + pnFmt(t.oficial[0], 0) + ' mil M' : '—', 'De ellos, oficiales (bancos centrales y Estados)']]);
+    pnTabla(b, ['País (custodia)', t.meses[0] + ' ($ mil M)', '6 meses', '12 meses'], t.paises.slice(0, 8).map(p => ({celdas: [p.nombre, pnFmt(p.serie[0]), td => pnCambio(td, pnPct(p.serie[0], p.serie[6])), td => pnCambio(td, pnPct(p.serie[0], p.serie[12]))]})));
     pnPie(b, 'Mide dónde está la custodia, no el propietario final, e incluye cambios de valor: una bajada no es necesariamente una venta.', 'Tesoro de EE. UU. (TIC, tabla 5)', PAN.leido);
   }
 }
@@ -785,7 +785,7 @@ function dibujarPanel(){
     H('p', 'nota', panel, `El mapa está enlazado con ${bib.docs || 0} documentos (research, dossiers y apuntes) y ${bib.glosario || 0} términos del glosario. Lectura recomendada para empezar:`);
     capas.forEach((c, i) => { if (c.docs.inv[0]){ tarjetaDoc(panel, {...c.docs.inv[0], titulo: c.nombre + ' — ' + c.docs.inv[0].titulo}, i); } });
     H('h3', '', panel, 'Cómo leerlo');
-    H('p', 'nota', panel, 'Cada disco es una capa del sistema; el número en su esquina son los hechos visibles y el rombo de color, fechas próximas del calendario. Los puntos a su alrededor son los hechos, y los de aro azul nombran XRP o XLM. Pulsa una capa para acercarte; «▶ Tiempo» reproduce los hechos por fecha.');
+    H('p', 'nota', panel, 'Cada disco es una capa del sistema; el número en su esquina son los hechos visibles y el rombo de color, fechas próximas del calendario. Los puntos a su alrededor son los hechos, y los de aro azul nombran XRP o XLM. Pulsa una capa para acercarte; «▶ Tiempo» reproduce los hechos por fecha. Los bloques verdes «Datos al día» son cifras abiertas que se actualizan por separado y cada una lleva su fuente y su nivel [P] o [S].');
     H('h3', '', panel, 'Últimos hechos');
     listaMovs(panel, todos.slice(-5));
   } else {

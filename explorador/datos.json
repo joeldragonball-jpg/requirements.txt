@@ -1,6 +1,6 @@
 {
   "version": "2026-10-18",
-  "aviso": "Hechos y fuentes del research público (informes R01P a R49). Informativo: no es recomendación de compra ni venta. [P] = fuente primaria leída; [S] = secundaria o agregador. La fecha de cada hecho es la del evento; los datos de agregadores cambian a diario.",
+  "aviso": "Hechos y fuentes del research público (informes R01P a R49). Informativo: no es recomendación de compra ni venta. [P] = fuente primaria leída; [S] = secundaria o agregador. La fecha de cada hecho es la del evento; los datos de agregadores cambian a diario. Importes: $ = dólar de EE. UU.; € = euro; otras monedas con su símbolo (S$ Singapur, HK$ Hong Kong, ₩ won, R$ real, ₽ rublo, CN¥ yuan); M = millones y mil M = miles de millones.",
   "estados": {
     "produccion": {
       "nombre": "En producción",
@@ -34,7 +34,7 @@
       "id": "cbdc",
       "nombre": "Bancos centrales y CBDC",
       "color": "#5aa9e6",
-      "resumen": "Dinero de banco central tokenizado y proyectos mayoristas.",
+      "resumen": "Los bancos centrales emiten o prueban dinero digital propio (CBDC). El minorista es para el público; el mayorista, solo para liquidar entre bancos.",
       "produccion": [
         {
           "t": "Pontes (BCE) en marcha desde el 21-sep-2026.",
@@ -183,7 +183,7 @@
           "pais": []
         },
         {
-          "v": "≈55.500 M$",
+          "v": "≈$55,5 mil M",
           "e": "Acumulados en mBridge; el yuan digital, más del 95 % del volumen",
           "f": "tercero [S] · R28, R40",
           "ent": [
@@ -225,7 +225,7 @@
         }
       ],
       "ficha": {
-        "hace": "Dinero de banco central en forma digital: minorista (para el público) y mayorista (entre bancos). (R40; dossier Euro digital 9-oct)",
+        "hace": "Dinero de banco central en formato digital (CBDC). El minorista es para el público; el mayorista lo usan solo los bancos para liquidar entre ellos. (R40; dossier Euro digital 9-oct)",
         "controla": "Cada banco central. La plataforma es pública: en Rusia todas las operaciones pasan por la plataforma del Banco de Rusia. (R40, cbr.ru leído)",
         "falta": [
           "Euro digital: sin acuerdo final; el Parlamento Europeo tiene mandato de negociación desde el 9-jul-2026. El Consejo de la UE fijó su posición el 19-dic-2025 [P: nota de prensa oficial abierta en Chrome el 20-oct; se leyeron los puntos principales, no el texto íntegro]. (R40; dossier Euro digital 9-oct; verificación en Chrome 21-oct)",
@@ -262,10 +262,10 @@
       "id": "stable",
       "nombre": "Stablecoins",
       "color": "#3fb68b",
-      "resumen": "Dólares y euros en cadena; la base de los pagos con cripto.",
+      "resumen": "Monedas digitales ligadas al dólar ($) o al euro (€) que circulan en cadenas de bloques. Son la base de los pagos con cripto.",
       "produccion": [
         {
-          "t": "Unos 306.000 M$ en dólares, USDT y USDC ≈ 84 %; Ethereum y Tron las alojan.",
+          "t": "Unos $306 mil M en dólares, USDT y USDC ≈ 84 %; Ethereum y Tron las alojan.",
           "k": "S",
           "n": "S",
           "ent": [],
@@ -320,7 +320,7 @@
       ],
       "xrp": [
         {
-          "t": "Solo como red: RLUSD en XRPL ≈ 1.029 M$.",
+          "t": "Solo como red: RLUSD en XRPL ≈ $1.029 M.",
           "k": "P",
           "n": "P ledger",
           "ent": [
@@ -333,7 +333,7 @@
           "pais": []
         },
         {
-          "t": "XRPL ≈ 1.108 M$ y Stellar ≈ 520 M$ en stablecoins, menos del 1 % cada una.",
+          "t": "XRPL ≈ $1.108 M y Stellar ≈ $520 M en stablecoins, menos del 1 % cada una.",
           "k": "S",
           "n": "S",
           "ent": [
@@ -357,7 +357,7 @@
       ],
       "cifras": [
         {
-          "v": "≈306.000 M$",
+          "v": "≈$306 mil M",
           "e": "En stablecoins en dólares; USDT y USDC ≈ 84 %",
           "f": "DefiLlama, 17-oct-2026 [S] · R25",
           "ent": [],
@@ -380,8 +380,8 @@
           ]
         },
         {
-          "v": "1.029 M$",
-          "e": "De RLUSD emitidos en el XRPL (2.432 M$ en total)",
+          "v": "$1.029 M",
+          "e": "De RLUSD emitidos en el XRPL ($2.432 M en total)",
           "f": "ledger [P] · R34",
           "ent": [
             "Ripple",
@@ -406,7 +406,7 @@
         }
       ],
       "ficha": {
-        "hace": "Monedas ligadas al dólar o al euro que circulan en cadena; son la base de los pagos con cripto. (R25; dossier Stablecoins 9-oct)",
+        "hace": "Monedas digitales ligadas al dólar ($) o al euro (€) que circulan en cadenas de bloques y son la base de los pagos con cripto. Las emiten empresas privadas. (R25; dossier Stablecoins 9-oct)",
         "controla": "Emisores privados (USDT y USDC suman ≈ 84 % del total) bajo reguladores: MiCA en la UE, la HKMA en Hong Kong y la GENIUS Act en EE. UU. (R25, DefiLlama 17-oct; el dossier Stablecoins 9-oct daba ≈ 82 %)",
         "falta": [
           "GENIUS Act: fecha efectiva prevista ≈ 18-ene-2027; los comentarios del Tesoro cerraron el 19-oct-2026 y la OCC no había publicado su norma final a 20-oct (objetivo: fin de octubre) [S]. (R25; dossier Stablecoins 9-oct, Federal Register 2026-16796; radar v4, 20-oct)",
@@ -415,16 +415,16 @@
         ],
         "madurez": {
           "n": 4,
-          "t": "Mercado de ≈ 306.000 M$ con marcos legales ya en vigor (MiCA, Hong Kong) o con fecha (EE. UU.); pero concentrado y casi todo en dólares. (R25, DefiLlama 17-oct; 313.000 M$ el 9-oct en el dossier Stablecoins 9-oct)"
+          "t": "Mercado de ≈ $306 mil M con marcos legales ya en vigor (MiCA, Hong Kong) o con fecha (EE. UU.); pero concentrado y casi todo en dólares. (R25, DefiLlama 17-oct; $313 mil M el 9-oct en el dossier Stablecoins 9-oct)"
         },
         "favor": [
           "Marcos legales en vigor o con fecha; 25 emisores de dinero electrónico autorizados en la UE y 2 licencias en Hong Kong. (R25: ESMA y registro de la HKMA)",
-          "Los bancos pueden emitir (filiales de bancos asegurados en EE. UU.); RLUSD supera los 2.400 M$. (R25; 2.466 M$ el 9-oct en el dossier Stablecoins 9-oct)"
+          "Los bancos pueden emitir (filiales de bancos asegurados en EE. UU.); RLUSD supera los $2.400 M. (R25; $2.466 M el 9-oct en el dossier Stablecoins 9-oct)"
         ],
         "contra": [
           "Concentración: USDT y USDC ≈ 84 % del total; su suministro bajó algo en el último mes según DefiLlama. (R25)",
           "Incertidumbre regulatoria (multi-emisión en la UE, condición de «comparabilidad» en EE. UU.); India y Brasil restringen; los bancos centrales prefieren CBDC. (R25; dossier Stablecoins 9-oct)",
-          "RLUSD en el XRPL: 1.140 M el 9-oct y 1.029 M el 17-oct, ambos leídos en el ledger; la causa de la bajada no está medida. (dossier Stablecoins 9-oct; R34; R43)"
+          "RLUSD en el XRPL: $1.140 M el 9-oct y $1.029 M el 17-oct, ambos leídos en el ledger; la causa de la bajada no está medida. (dossier Stablecoins 9-oct; R34; R43)"
         ],
         "vigilar": [
           "Norma final de la OCC para la GENIUS Act (objetivo fin de octubre, sin publicar a 20-oct); los comentarios del Tesoro ya cerraron el 19-oct-2026. (R25; radar v4)",
@@ -443,7 +443,7 @@
       "id": "deposit",
       "nombre": "Depósitos tokenizados",
       "color": "#8b7fd6",
-      "resumen": "Dinero de banco comercial en cadena (JPMD y similares).",
+      "resumen": "Depósitos de un banco comercial representados como tokens (por ejemplo JPMD). Siguen siendo dinero del banco, no una stablecoin.",
       "produccion": [
         {
           "t": "JPMD de JPMorgan en Base para clientes institucionales.",
@@ -535,7 +535,7 @@
         }
       ],
       "ficha": {
-        "hace": "Dinero de un banco comercial representado como token (JPMD). Es un depósito bancario, no una stablecoin. (R44; apunte xrp-macro-fiscalidad)",
+        "hace": "Dinero de un banco comercial representado como token (por ejemplo JPMD). Es un depósito bancario, no una stablecoin. (R44; apunte xrp-macro-fiscalidad)",
         "controla": "El banco emisor (JPMorgan) y la red donde corre: Base y Canton. (R44, secundaria)",
         "falta": [
           "No hay cifras oficiales de volumen de JPMD. (R44)",
@@ -568,7 +568,7 @@
       "id": "puente",
       "nombre": "Redes y activo puente",
       "color": "#d4a84b",
-      "resumen": "XRPL y Stellar: infraestructura, DEX y uso de XRP/XLM como ruta.",
+      "resumen": "El XRP Ledger (XRPL) y Stellar son redes públicas que liquidan pagos y cambian unos activos por otros. XRP y XLM sirven de comisión o de ruta intermedia.",
       "produccion": [
         {
           "t": "XRPL con 97 de 107 enmiendas activas; Stellar en protocolo 29.",
@@ -582,7 +582,7 @@
           "pais": []
         },
         {
-          "t": "Pool AMM XRP/RLUSD ≈ 4,8 M$ de TVL.",
+          "t": "Pool AMM XRP/RLUSD ≈ $4,8 M de TVL.",
           "k": "P",
           "n": "P ledger",
           "ent": [
@@ -610,7 +610,7 @@
       ],
       "xrp": [
         {
-          "t": "Sí, pero pequeño: DEX XRPL ≈ 6,2 M$/día y Stellar ≈ 1,7 M$/día.",
+          "t": "Sí, pero pequeño: DEX XRPL ≈ $6,2 M/día y Stellar ≈ $1,7 M/día.",
           "k": "S",
           "n": "S",
           "ent": [
@@ -658,7 +658,7 @@
           "pais": []
         },
         {
-          "v": "≈4,8 M$",
+          "v": "≈$4,8 M",
           "e": "De TVL en el pool AMM XRP/RLUSD",
           "f": "ledger [P] · R43",
           "ent": [
@@ -671,7 +671,7 @@
           "pais": []
         },
         {
-          "v": "6,2 M$ / 1,7 M$",
+          "v": "$6,2 M / $1,7 M",
           "e": "De volumen diario de DEX en XRPL / Stellar",
           "f": "DefiLlama [S] · R43",
           "ent": [
@@ -695,24 +695,24 @@
         }
       ],
       "ficha": {
-        "hace": "Redes públicas (XRPL, Stellar) que liquidan y cambian activos entre sí; XRP y XLM hacen de comisión o de ruta. (R43; dossier Infraestructura on-chain 9-oct)",
+        "hace": "Redes públicas (XRPL y Stellar) que liquidan pagos y cambian activos entre sí; XRP y XLM sirven de comisión o de ruta intermedia. (R43; dossier Infraestructura on-chain 9-oct)",
         "controla": "Los validadores de cada red, que votan las enmiendas (XRPL: 97 de 107 activas; hace falta > 80 % durante 2 semanas); Ripple y la Stellar Development Foundation pesan mucho en el desarrollo. (dossier Infraestructura on-chain 9-oct, ledger leído; R45 lo repite el 17-oct)",
         "falta": [
-          "Fondo real de liquidez: el libro XRP/RLUSD tiene ≈ 100.000 $ de fondo a ±2 % y el pool AMM ≈ 4,8 M$. (R43, ledger 17-oct)",
-          "No hay cifra oficial de ODL liquidado en XRP. (R43; el dossier Pagos transfronterizos 9-oct califica de dudosa la cifra «ODL 35.000 M$»)",
+          "Fondo real de liquidez: el libro XRP/RLUSD tiene ≈ $100.000 de fondo a ±2 % y el pool AMM ≈ $4,8 M. (R43, ledger 17-oct)",
+          "No hay cifra oficial de ODL liquidado en XRP. (R43; el dossier Pagos transfronterizos 9-oct califica de dudosa la cifra «ODL $35 mil M»)",
           "Hoja de ruta post-cuántica de Ripple: «full readiness» no más tarde de 2028; ninguna enmienda activa es post-cuántica. En Stellar, CAP-87 (firmas ML-DSA en Soroban) está aceptada sin fecha. (R45; dossier Infraestructura on-chain 9-oct)"
         ],
         "madurez": {
           "n": 3,
-          "t": "Redes en producción con uso real pero modesto: DEX de ≈ 6,2 M$/día en XRPL y ≈ 1,7 M$/día en Stellar. (R43, DefiLlama)"
+          "t": "Redes en producción con uso real pero modesto: DEX de ≈ $6,2 M/día en XRPL y ≈ $1,7 M/día en Stellar. (R43, DefiLlama)"
         },
         "favor": [
-          "Stellar crece: TVL +76 % en un año y ≈ 489,5 M$ de USDC emitido. Es TVL de DeFi; no confundir con los ≈ 4.000 M$ de RWA del dossier Stellar RWA 9-oct. (R43, DefiLlama y Horizon)",
+          "Stellar crece: TVL +76 % en un año y ≈ $489,5 M de USDC emitido. Es TVL de DeFi; no confundir con los ≈ $4.000 M de RWA del dossier Stellar RWA 9-oct. (R43, DefiLlama y Horizon)",
           "El AMM de XRPL tiene comisión baja (0,205 %) y diferencial bajo. (R43, ledger)"
         ],
         "contra": [
           "El TVL de XRPL es la mitad del de hace un año. (R43, DefiLlama)",
-          "El pool AMM XRP/RLUSD vale ≈ 4,8 M$ frente a 1.029 M$ de RLUSD en la red. (R43, ledger)",
+          "El pool AMM XRP/RLUSD vale ≈ $4,8 M frente a $1.029 M de RLUSD en la red. (R43, ledger)",
           "En Stellar, el 79 % de las últimas operaciones fueron contra pools y el ledger iba al 98 %: compatible con bots de arbitraje, sin poder separar usuarios de bots [ESPECULACIÓN]. (R43)"
         ],
         "vigilar": [
@@ -732,10 +732,10 @@
       "id": "token",
       "nombre": "Tokenización (RWA)",
       "color": "#c9739b",
-      "resumen": "Fondos, deuda y acciones tokenizados.",
+      "resumen": "Fondos, deuda, oro y acciones representados como tokens en una cadena de bloques, para poder emitirlos y transferirlos de forma digital.",
       "produccion": [
         {
-          "t": "≈ 39.300 M$ de RWA «distribuido» (RWA.xyz, tercero comercial).",
+          "t": "≈ $39,3 mil M de RWA «distribuido» (RWA.xyz, tercero comercial).",
           "k": "S",
           "n": "S",
           "ent": [],
@@ -743,7 +743,7 @@
           "pais": []
         },
         {
-          "t": "Stellar 4.ª red con ≈ 3.500 M$.",
+          "t": "Stellar 4.ª red con ≈ $3.500 M.",
           "k": "S",
           "n": "S",
           "ent": [
@@ -827,7 +827,7 @@
       ],
       "cifras": [
         {
-          "v": "≈39.300 M$",
+          "v": "≈$39,3 mil M",
           "e": "De RWA «distribuido» en cadena",
           "f": "RWA.xyz, 16-oct [S] · R26",
           "ent": [],
@@ -835,7 +835,7 @@
           "pais": []
         },
         {
-          "v": "≈3.500 M$",
+          "v": "≈$3.500 M",
           "e": "En Stellar, 4.ª red por RWA",
           "f": "RWA.xyz [S] · R26",
           "ent": [
@@ -869,15 +869,15 @@
         }
       ],
       "ficha": {
-        "hace": "Fondos, deuda, oro y acciones representados como tokens en cadena. (R26; dossier Tokenización 9-oct)",
+        "hace": "Fondos, deuda, oro y acciones representados como tokens en una cadena de bloques. (R26; dossier Tokenización 9-oct)",
         "controla": "Las gestoras y plataformas emisoras (BlackRock, Franklin, Securitize…) dentro de marcos temporales de la SEC y con la DTCC como infraestructura. (R26)",
         "falta": [
-          "Cifras oficiales de BlackRock, Franklin y WisdomTree: las páginas de las gestoras no se abrieron. (R26; el dossier Tokenización 9-oct sí leyó la de Franklin: 813,5 M$ a 31-may-2026)",
+          "Cifras oficiales de BlackRock, Franklin y WisdomTree: las páginas de las gestoras no se abrieron. (R26; el dossier Tokenización 9-oct sí leyó la de Franklin: $813,5 M a 31-may-2026)",
           "Si el servicio de DTC ya opera (estaba previsto para 2S-2026) y qué redes aprueba. El apunte xrp-macro-fiscalidad lo da por «confirmado en octubre», pero R16 no encontró el comunicado [VERIFICAR]. (R26; R16)"
         ],
         "madurez": {
           "n": 3,
-          "t": "Valor «distribuido» ≈ 39.300 M$ (frente a ≈ 371.200 M$ «representado»), concentrado en fondos monetarios del Tesoro y oro; las exenciones de la SEC son temporales y condicionadas. (R26, RWA.xyz 17-oct; ≈ 37.000 M$ en agosto según el dossier Tokenización 9-oct)"
+          "t": "Valor «distribuido» ≈ $39,3 mil M (frente a ≈ $371,2 mil M «representado»), concentrado en fondos monetarios del Tesoro y oro; las exenciones de la SEC son temporales y condicionadas. (R26, RWA.xyz 17-oct; ≈ $37 mil M en agosto según el dossier Tokenización 9-oct)"
         },
         "favor": [
           "Marcos primarios reales: no-acción a DTC (11-dic-2025) y exención de la SEC para acciones tokenizadas con AMM (17-sep-2026). (R26, SEC leído)",
@@ -905,7 +905,7 @@
       "id": "custodia",
       "nombre": "Liquidación y custodia",
       "color": "#d98b4f",
-      "resumen": "Bancos y custodios que guardan y liquidan activos digitales.",
+      "resumen": "Bancos y custodios que guardan activos digitales por cuenta de otros y liquidan las operaciones. Los vigilan reguladores como la ESMA (UE) o el OCC (EE. UU.).",
       "produccion": [
         {
           "t": "BNY custodia BTC, ETH, SOL y USDC en la UE (registro CASP desde el 20-jul-2026).",
@@ -1051,7 +1051,7 @@
         }
       ],
       "ficha": {
-        "hace": "Bancos y custodios que guardan activos digitales y liquidan operaciones. (R44; dossier Custodia 9-oct)",
+        "hace": "Bancos y custodios que guardan activos digitales por cuenta de otros y liquidan operaciones. (R44; dossier Custodia 9-oct)",
         "controla": "Los propios bancos con licencia: en la UE el registro CASP de ESMA (194 entidades con custodia en el CSV del 20-oct; R44 contaba 215) y en EE. UU. el OCC. (R44, registro leído; el dossier Custodia 9-oct citaba 312 CASP vía un tercero y R18 cuenta 370 entidades: recuentos distintos)",
         "falta": [
           "Las aprobaciones del OCC son preliminares o condicionales y pueden estar recurridas por la ICBA. (R44; el apunte xrp-macro-fiscalidad recoge las condicionales de Ripple, BitGo, Circle, Fidelity y Paxos en dic-2025)",
@@ -1085,7 +1085,7 @@
       "id": "reg",
       "nombre": "Regulación y política monetaria",
       "color": "#7d8fb3",
-      "resumen": "Leyes, tribunales y bancos centrales que fijan las reglas.",
+      "resumen": "Las leyes, los tribunales y los bancos centrales que fijan las reglas del juego y el coste del dinero (los tipos de interés).",
       "produccion": [
         {
           "t": "MiCA exigible desde el 1-jul-2026; licencias de Ripple (MiCA CASP, EMI en Luxemburgo, FCA, MAS).",
@@ -1194,7 +1194,7 @@
           ]
         },
         {
-          "v": "≈126 $/barril",
+          "v": "≈$126 por barril",
           "e": "Brent spot el 14-oct-2026, el doble que hace un año",
           "f": "EIA [P] · R46",
           "ent": [],
@@ -1231,7 +1231,7 @@
         ],
         "contra": [
           "Fed (3,75–4,00 %), BCE (2,50 %) y BoJ (1,25 %) han subido tipos a la vez; el BoJ promete seguir. (R29; Fed y BCE coinciden con el dossier Macro 9-oct)",
-          "Brent ≈ 126 $/barril frente a una previsión oficial de 105 $ para el 4T; empleo de EE. UU. +29.000 con inflación alta. (R29, EIA y BLS; dossier Macro 9-oct)"
+          "Brent ≈ $126 por barril frente a una previsión oficial de $105 para el 4T; empleo de EE. UU. +29.000 con inflación alta. (R29, EIA y BLS; dossier Macro 9-oct)"
         ],
         "vigilar": [
           "Tras el cierre de comentarios de Regulation Crypto Assets (20-oct-2026): cartas destacadas y próximo paso de la SEC; CFTC hasta el 14-dic-2026. (T03 verificado; dossier CLARITY 9-oct)",
@@ -1251,10 +1251,10 @@
       "id": "fondos",
       "nombre": "Fondos, ETF y tesorerías",
       "color": "#4bb5c9",
-      "resumen": "Productos que dan exposición a XRP y XLM.",
+      "resumen": "ETF y otros productos cotizados que dan exposición a XRP y XLM, y empresas que acumulan XRP como tesorería.",
       "produccion": [
         {
-          "t": "ETF spot de XRP en EE. UU. ≈ 2.178 M$ (emisor, 30-sep).",
+          "t": "ETF spot de XRP en EE. UU. ≈ $2.178 M (emisor, 30-sep).",
           "k": "S",
           "n": "S",
           "ent": [],
@@ -1332,9 +1332,9 @@
       ],
       "cifras": [
         {
-          "v": "≈2.178 M$",
+          "v": "≈$2.178 M",
           "e": "En ETF de XRP de EE. UU. a 30-sep-2026",
-          "f": "21Shares, emisor [S] · R27; el dossier ETF daba 1.560 M$ a 8-oct en los 5 ETF spot: métrica a confirmar [VERIFICAR]",
+          "f": "21Shares, emisor [S] · R27; el dossier ETF daba $1.560 M a 8-oct en los 5 ETF spot: métrica a confirmar [VERIFICAR]",
           "ent": [],
           "act": [
             "XRP"
@@ -1355,7 +1355,7 @@
         },
         {
           "v": "380,65 M XRP",
-          "e": "De interés abierto en CME (≈490 M$), 13-oct-2026",
+          "e": "De interés abierto en CME (≈$490 M), 13-oct-2026",
           "f": "CFTC [P] · R42",
           "ent": [
             "CME"
@@ -1379,7 +1379,7 @@
         }
       ],
       "ficha": {
-        "hace": "Productos cotizados que dan exposición a XRP y XLM (ETF, ETP) y vehículos de tesorería. (R27; dossier ETF 9-oct)",
+        "hace": "Productos cotizados que dan exposición a XRP y XLM (ETF y ETP) y vehículos de empresas que acumulan XRP. (R27; dossier ETF 9-oct)",
         "controla": "Los emisores (Canary, 21Shares, WisdomTree, 3iQ, Evernorth), las bolsas y los supervisores (SEC, SFC en Hong Kong). (R27; R23)",
         "falta": [
           "13F del 3T: plazo de 45 días tras el 30-sep, que caen en sábado 14-nov; la ficha toma el 16-nov como primer día hábil [VERIFICAR]. Repetir R21. (R21b; apunte catalizadores)",
@@ -1388,17 +1388,17 @@
         ],
         "madurez": {
           "n": 4,
-          "t": "ETF de XRP en EE. UU. ≈ 2.178 M$ a 30-sep (R27) y 129 declarantes 13F (R21b); el dossier ETF 9-oct daba 1.560 M$ a 8-oct en los 5 ETF spot (SoSoValue): fechas y quizá métricas distintas [VERIFICAR qué productos cuenta R27]. En XLM no hay ETF spot ni señal 13F, solo el trust GXLM en OTC (dossier ETF 9-oct)."
+          "t": "ETF de XRP en EE. UU. ≈ $2.178 M a 30-sep (R27) y 129 declarantes 13F (R21b); el dossier ETF 9-oct daba $1.560 M a 8-oct en los 5 ETF spot (SoSoValue): fechas y quizá métricas distintas [VERIFICAR qué productos cuenta R27]. En XLM no hay ETF spot ni señal 13F, solo el trust GXLM en OTC (dossier ETF 9-oct)."
         },
         "favor": [
-          "Entradas netas positivas en 2026: ≈ 864 M$ en los ETF de XRP de EE. UU. (R27, 30-sep)",
+          "Entradas netas positivas en 2026: ≈ $864 M en los ETF de XRP de EE. UU. (R27, 30-sep)",
           "En Hong Kong, los 11 ETF cripto al contado crecen un 55 % desde 2024; la SFC no nombra XRP. (R27, SFC leído)",
           "Declarantes 13F: 72 → 122 → 129. (R21b)"
         ],
         "contra": [
           "XRP es ≈ 6 % del AUM de ETP cripto en Europa y Bitcoin domina (≈ 61 %). (R27)",
-          "Los flujos dependen del precio y de pocos emisores; las entradas de septiembre en Europa fueron pequeñas (7,4 M$). (R27)",
-          "A 8-oct, los ETF de XRP tenían más entradas acumuladas (1.810 M$) que activos (1.560 M$): pérdida latente media. (dossier ETF 9-oct, SoSoValue)"
+          "Los flujos dependen del precio y de pocos emisores; las entradas de septiembre en Europa fueron pequeñas ($7,4 M). (R27)",
+          "A 8-oct, los ETF de XRP tenían más entradas acumuladas ($1.810 M) que activos ($1.560 M): pérdida latente media. (dossier ETF 9-oct, SoSoValue)"
         ],
         "vigilar": [
           "16-nov-2026: plazo de los 13F del 3T (ver «Qué falta»). (R21b)",
@@ -1504,7 +1504,7 @@
       "fecha": "2025-08-07",
       "capa": "reg",
       "actor": "SEC y Ripple",
-      "texto": "Desisten de los recursos; queda la multa de 125 M$.",
+      "texto": "Desisten de los recursos; queda la multa de $125 M.",
       "estado": "norma",
       "nombra": "token",
       "fuente": "SEC LR-26369 [P] · R34",
@@ -1620,7 +1620,7 @@
       "fecha": "2026-03-03",
       "capa": "puente",
       "actor": "Ripple",
-      "texto": "Nota de Ripple Payments (más de 100.000 M$ acumulados) sin mencionar XRP en el texto.",
+      "texto": "Nota de Ripple Payments (más de $100 mil M acumulados) sin mencionar XRP en el texto.",
       "estado": "anuncio",
       "nombra": "no",
       "fuente": "ripple.com [P empresa] · R28",
@@ -1922,7 +1922,7 @@
       "fecha": "2026-09-30",
       "capa": "fondos",
       "actor": "21Shares (emisor)",
-      "texto": "ETF de XRP en EE. UU. ≈ 2.178 M$ (entradas de 2026 ≈ 864 M$); ETP europeos de XRP ≈ 914 M$ y de Stellar ≈ 104 M$.",
+      "texto": "ETF de XRP en EE. UU. ≈ $2.178 M (entradas de 2026 ≈ $864 M); ETP europeos de XRP ≈ $914 M y de Stellar ≈ $104 M.",
       "estado": "produccion",
       "nombra": "token",
       "fuente": "21Shares [S] · R27",

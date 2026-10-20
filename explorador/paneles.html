@@ -50,9 +50,9 @@ svg.spark{vertical-align:middle}
 <script>
 const D = JSON.parse(document.getElementById('datos').textContent);
 const MES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-const fm = (v,d=1)=> v==null? '—' : v.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});
+const fm = (v,d=1)=> v==null? '—' : v.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d,useGrouping:'always'});
 const mesTxt = m => { const [a,b]=m.split('-'); return MES[+b-1]+'-'+a; };
-const fUSD = v => v>=2e9? fm(v/1e9,1)+' MM$' : v>=1e6? fm(v/1e6,0)+' M$' : fm(v/1e3,0)+' mil $';
+const fUSD = v => v>=2e9? '$'+fm(v/1e9,1)+' mil M' : v>=1e6? '$'+fm(v/1e6,0)+' M' : '$'+fm(v/1e3,0)+' mil';
 function pct(a,b){ return (a==null||b==null||!b)? null : (a/b-1)*100; }
 function cambio(p){
   if(p==null) return '<span class="neutro">—</span>';
@@ -82,12 +82,12 @@ function panelTIC(){
   return `<div class="panel vidrio"><h2>¿Quién tiene deuda de EE. UU.?</h2>
   <p class="que">Mayores tenedores extranjeros de bonos y letras del Tesoro de EE. UU. Fuente: Tesoro de EE. UU., sistema TIC, tabla 5 · último mes: <b>${mesTxt(ult)}</b> · <span class="nivel P">P</span> fuente primaria</p>
   <div class="kpis">
-   <div class="kpi"><div class="v">${fm(t.total[0],0)} MM$</div><div class="e">Total extranjero · ${mesTxt(ult)}</div></div>
-   <div class="kpi"><div class="v">${of?fm(of[0],0)+' MM$':'—'}</div><div class="e">De ellos, oficiales (bancos centrales y Estados)</div></div>
+   <div class="kpi"><div class="v">$${fm(t.total[0],0)} mil M</div><div class="e">Total extranjero · ${mesTxt(ult)}</div></div>
+   <div class="kpi"><div class="v">${of?'$'+fm(of[0],0)+' mil M':'—'}</div><div class="e">De ellos, oficiales (bancos centrales y Estados)</div></div>
    <div class="kpi"><div class="v">${cambio(pct(t.total[0],t.total[12]))}</div><div class="e">Total frente a ${mesTxt(hace12||ult)}</div></div>
   </div>
   <div class="aviso"><b>Cómo leerlo:</b> ${t.nota}</div>
-  <table><thead><tr><th>País (donde está la custodia)</th><th>${mesTxt(ult)} (MM$)</th><th>% del total</th><th class="hm"></th><th>vs mes ant.</th><th>vs 6 meses</th><th>vs 12 meses</th><th class="hm">13 meses</th></tr></thead><tbody>${filas}
+  <table><thead><tr><th>País (donde está la custodia)</th><th>${mesTxt(ult)} ($ mil M)</th><th>% del total</th><th class="hm"></th><th>vs mes ant.</th><th>vs 6 meses</th><th>vs 12 meses</th><th class="hm">13 meses</th></tr></thead><tbody>${filas}
   <tr><td class="neutro">Resto de países</td><td class="n neutro">${fm(t.otros[0])}</td><td class="n neutro">${fm(t.otros[0]/t.total[0]*100,1)} %</td><td class="hm"></td><td class="n">${cambio(pct(t.otros[0],t.otros[1]))}</td><td class="n">${cambio(pct(t.otros[0],t.otros[6]))}</td><td class="n">${cambio(pct(t.otros[0],t.otros[12]))}</td><td class="hm">${spark(t.otros.slice().reverse())}</td></tr></tbody></table>
   <p class="pie">Fuente: <a style="color:#f1d58a" href="${t.fuente}" target="_blank" rel="noopener">${t.fuente}</a>. Los valores están en miles de millones de dólares y se publican con unas 6-7 semanas de retraso. Una variación mezcla compras o ventas con cambios de valor de mercado: no es un flujo.</p></div>`;
 }
@@ -108,7 +108,7 @@ function panelStable(){
   <table><thead><tr><th>Stablecoin</th><th>Circulación</th><th>% del total</th><th>7 días</th><th>30 días</th><th class="hm">Ligada a</th><th class="hm">Respaldo</th><th class="hm">Cadenas</th></tr></thead><tbody>${filas}</tbody></table>
   <p class="pie">Fuente: <a style="color:#f1d58a" href="${s.fuente}" target="_blank" rel="noopener">${s.fuente}</a>. ${s.nota}</p></div>
   <div class="dos">${cad(s.xrpl,'el XRP Ledger (XRPL)')}${cad(s.stellar,'Stellar')}</div>
-  <div class="aviso">Contraste: el dossier de stablecoins del 9-oct leyó en el propio XRPL unos 1.140 M$ de RLUSD (ledger, 17-oct); DefiLlama muestra hoy ${fUSD((s.xrpl.top.find(f=>f.simbolo==='RLUSD')||{usd:0}).usd)} en XRPL. Difieren por fecha y método: no se mezclan.</div>`;
+  <div class="aviso">Contraste: el dossier de stablecoins del 9-oct leyó en el propio XRPL unos $1.140 M de RLUSD (ledger, 17-oct); DefiLlama muestra hoy ${fUSD((s.xrpl.top.find(f=>f.simbolo==='RLUSD')||{usd:0}).usd)} en XRPL. Difieren por fecha y método: no se mezclan.</div>`;
 }
 
 const DSIM={sube:['▲','#d9904a','subió'],mantiene:['▬','#8a97b0','mantuvo'],baja:['▼','#5aa9e6','bajó'],'n/d':['•','#64748b','sin dato']};
