@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-20",
+  "version": "2026-10-20b",
   "aviso": "Radar regulatorio construido solo con informes, dossiers, apuntes y el calendario del repo (sin búsquedas nuevas). Informativo: no es recomendación de compra ni venta. Fuente: P = documento oficial leído; S = prensa, despacho o agregador; VERIFICAR = sin dato o sin confirmar.",
   "escala": {
     "0": "Sin marco (o prohibido)",
@@ -91,6 +91,14 @@
     {
       "id": "brics",
       "nombre": "BRICS / BIS (supranacional)"
+    },
+    {
+      "id": "za",
+      "nombre": "Sudáfrica"
+    },
+    {
+      "id": "id",
+      "nombre": "Indonesia"
     }
   ],
   "celdas": [
@@ -105,7 +113,7 @@
         "fecha": "2026-10-31",
         "que": "Objetivo de la OCC para su norma final (declaración del Comptroller, secundaria) [VERIFICAR]."
       },
-      "falta": "Normas finales de OCC, Tesoro y Fed (si salen antes de sep-2026 + 120 días, la fecha efectiva se adelanta); decisión del Tesoro sobre regímenes extranjeros «comparables».",
+      "falta": "Norma final de la OCC (no publicada a 20-oct-2026 según la búsqueda; objetivo «fin de octubre») y de Tesoro y Fed; regímenes extranjeros «comparables».",
       "hitos": [
         {
           "fecha": "2025-07-18",
@@ -138,7 +146,8 @@
         "Dossier Stablecoins (9-oct)",
         "Radar v2 research (19-oct)",
         "Gemini T02 verificado (19-oct)",
-        "Auditoría del Explorador (20-oct)"
+        "Auditoría del Explorador (20-oct)",
+        "Radar v3 research (20-oct)"
       ]
     },
     {
@@ -507,14 +516,14 @@
       "jur": "ue",
       "tema": "cbdc",
       "etapa": 2,
-      "estado": "El Reglamento del euro digital está en trámite: el Consejo fijó su posición negociadora el 19-dic-2025 [S], con un techo de tenencia que fijaría el BCE dentro de un máximo del Consejo [S, VERIFICAR] y el Parlamento tiene mandato desde el 9-jul-2026; falta el acuerdo en trílogo. La emisión sería posible en 2029 si la ley se adopta en 2026. El BCE prevé un piloto de 12 meses desde el 2S-2027 con 36 proveedores de servicios de pago.",
+      "estado": "El Reglamento del euro digital está en trámite: el Consejo fijó su posición negociadora el 19-dic-2025, con límites de tenencia que fijaría el BCE dentro de un techo global acordado por el Consejo y revisado al menos cada dos años [P: nota de prensa del Consejo, leída en extracto; la página dio 403] y el Parlamento tiene mandato desde el 9-jul-2026; falta el acuerdo en trílogo. La emisión sería posible en 2029 si la ley se adopta en 2026. El BCE prevé un piloto de 12 meses desde el 2S-2027 con 36 proveedores de servicios de pago.",
       "fecha": "2026-10-06",
       "fuente": "P",
       "proxima": {
         "fecha": "2026-10-27",
         "que": "Cierre de la convocatoria a comercios del piloto [VERIFICAR]."
       },
-      "falta": "Acuerdo en trílogo; la página oficial del Consejo dio 403 (posición confirmada por la cronología del Consejo en el buscador y por dos despachos); lista nominal de los 36 proveedores del piloto.",
+      "falta": "Acuerdo en trílogo; texto completo del mandato del Consejo (la web del Consejo da 403; el texto consta en el buscador).",
       "hitos": [
         {
           "fecha": "2023-06-28",
@@ -527,6 +536,10 @@
         {
           "fecha": "2025-12-19",
           "que": "El Consejo acuerda su posición negociadora (cronología del Consejo y despachos; la página dio 403)."
+        },
+        {
+          "fecha": "2025-12-19",
+          "que": "Nota de prensa del Consejo: posición sobre el euro digital y el efectivo; comisiones a comercios con tope durante al menos cinco años."
         },
         {
           "fecha": "2026-06-23",
@@ -557,7 +570,8 @@
         "Cruce de fichas (19-oct)",
         "Radar v2 research (19-oct)",
         "Gemini T04 verificado (19-oct)",
-        "Auditoría del Explorador (20-oct)"
+        "Auditoría del Explorador (20-oct)",
+        "Radar v3 research (20-oct)"
       ]
     },
     {
@@ -775,8 +789,20 @@
       "fecha": "2026-10-14",
       "fuente": "P",
       "proxima": null,
-      "falta": "Fecha de la próxima declaración (no figura en la página); en el sondeo de Bloomberg 17 de 20 economistas esperaban un endurecimiento.",
+      "falta": "Fecha de la próxima declaración (las declaraciones son trimestrales: ene, abr, jul y oct).",
       "hitos": [
+        {
+          "fecha": "2026-01-29",
+          "que": "La MAS mantiene la pendiente de la banda."
+        },
+        {
+          "fecha": "2026-04-14",
+          "que": "La MAS sube ligeramente la pendiente."
+        },
+        {
+          "fecha": "2026-07",
+          "que": "La MAS sube muy ligeramente la pendiente (menos que en abril)."
+        },
         {
           "fecha": "2026-10-14",
           "que": "Declaración de política monetaria: banda sin cambios."
@@ -784,7 +810,8 @@
       ],
       "informes": [
         "R29",
-        "Radar v2 research (19-oct)"
+        "Radar v2 research (19-oct)",
+        "Radar v3 research (20-oct)"
       ],
       "dir": "mantiene",
       "valor": "Banda S$NEER sin cambios"
@@ -954,14 +981,14 @@
       "jur": "hk",
       "tema": "politica",
       "etapa": null,
-      "estado": "La HKMA subió el tipo base 25 pb, a 4,25 %, el 17-sep-2026, al día siguiente de la subida de la Fed, porque el dólar de Hong Kong está ligado al dólar (banda 7,75-7,85); los grandes bancos no movieron su tipo preferente.",
+      "estado": "La HKMA subió el tipo base 25 pb, de 4,00 % a 4,25 %, el 17-sep-2026, según su fórmula (50 pb sobre el extremo inferior del rango de la Fed); el dólar de Hong Kong está ligado al dólar (banda 7,75-7,85) y los grandes bancos no movieron su tipo preferente.",
       "fecha": "2026-09-17",
-      "fuente": "S",
+      "fuente": "P",
       "proxima": {
         "fecha": "2026-10-29",
         "que": "Decisión de la Fed (28-oct en EE. UU.), que la HKMA sigue al día siguiente."
       },
-      "falta": "Comunicado de la HKMA leído (una fuente da 5,0 %: parece error).",
+      "falta": "Ninguno: el tipo sigue a la Fed por fórmula. La cifra de 5,0 % de una fuente era un error.",
       "hitos": [
         {
           "fecha": "2026-09-17",
@@ -970,7 +997,8 @@
       ],
       "informes": [
         "R29",
-        "Radar v2 research (19-oct)"
+        "Radar v2 research (19-oct)",
+        "Radar v3 research (20-oct)"
       ],
       "dir": "sube",
       "valor": "4,25 %"
@@ -1175,14 +1203,14 @@
       "jur": "jp",
       "tema": "ley_marco",
       "etapa": 3,
-      "estado": "La Dieta aprobó el 15-jul-2026 la reforma que pasa la cripto a la FIEA, promulgada el 23-jul-2026 como Ley n.º 64 de 2026 según un despacho; entra en vigor por orden del Gabinete, como tarde el 23-jul-2027, con seis meses de adaptación para los exchanges.",
+      "estado": "La Dieta aprobó el 15-jul-2026 la reforma que pasa la cripto de la Ley de Servicios de Pago a la FIEA, promulgada el 23-jul-2026. Las penas por operar sin registro y los poderes de la SESC rigen desde el 12-ago-2026; el resto entra por orden del Gabinete, sin fecha publicada (como tarde un año tras la promulgación, según un despacho).",
       "fecha": "2026-07-23",
-      "fuente": "S",
+      "fuente": "P",
       "proxima": {
         "fecha": "2027-07-23",
         "que": "Fecha máxima de entrada en vigor de la reforma [VERIFICAR en la FSA]."
       },
-      "falta": "Orden del Gabinete con la fecha de entrada en vigor y texto oficial (FSA o Gaceta); lista de criptoactivos incluidos.",
+      "falta": "Orden del Gabinete con la fecha del cuerpo principal; lista de criptoactivos incluidos.",
       "hitos": [
         {
           "fecha": "2026-02-16",
@@ -1198,14 +1226,23 @@
         },
         {
           "fecha": "2026-07-23",
-          "que": "Promulgación como Ley n.º 64 de 2026 (según un despacho) [VERIFICAR]."
+          "que": "Promulgación de la ley (documento del FSA para la reforma fiscal 2027; fecha coherente con la entrada en vigor parcial a los 20 días)."
+        },
+        {
+          "fecha": "2026-07-24",
+          "que": "El Gabinete aprueba la orden de entrada en vigor parcial (FSA, 29-jul-2026)."
+        },
+        {
+          "fecha": "2026-08-12",
+          "que": "Entran en vigor las penas por operar sin registro y los poderes de investigación de la SESC (FSA)."
         }
       ],
       "informes": [
         "R07P",
         "R30",
         "Radar v2 research (19-oct)",
-        "Auditoría del Explorador (20-oct)"
+        "Auditoría del Explorador (20-oct)",
+        "Radar v3 research (20-oct)"
       ]
     },
     {
@@ -1990,52 +2027,83 @@
     {
       "jur": "cn",
       "tema": "stablecoins",
-      "etapa": null,
-      "estado": "No hay research; un apunte dice que China prohíbe las stablecoins privadas, sacado de un vídeo.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
+      "etapa": 0,
+      "estado": "La Notice 42 trata las stablecoins ligadas a monedas fiat como moneda virtual porque «ejercen parte de las funciones» del dinero legal; nadie puede emitir fuera del país una stablecoin ligada al renminbi sin autorización. El gobernador de la PBoC dice que vigila las stablecoins extranjeras.",
+      "fecha": "2026-02-06",
+      "fuente": "S",
       "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
+      "falta": "Texto oficial de la PBoC.",
+      "hitos": [
+        {
+          "fecha": "2026-02-06",
+          "que": "La Notice 42 incluye las stablecoins en la prohibición."
+        }
+      ],
       "informes": [
-        "Apunte regulacion-por-jurisdicciones"
+        "Apunte regulacion-por-jurisdicciones",
+        "Radar v3 research (20-oct)"
       ]
     },
     {
       "jur": "cn",
       "tema": "ley_marco",
-      "etapa": null,
-      "estado": "No hay research sobre el marco de mercado cripto en China.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
+      "etapa": 0,
+      "estado": "La actividad con criptomonedas es una «actividad financiera ilegal» en China continental. La Notice 42 de 2026 (银发〔2026〕42号, PBoC y otros siete departamentos, 6-feb-2026) sustituye a la de 2021, mantiene la prohibición y dice que bitcoin, ether o USDT no tienen curso legal.",
+      "fecha": "2026-02-06",
+      "fuente": "S",
       "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
-      "informes": []
+      "falta": "Texto oficial en pbc.gov.cn (solo leído vía prensa china que reproduce el texto).",
+      "hitos": [
+        {
+          "fecha": "2021-09",
+          "que": "Notice de 2021 sobre especulación con monedas virtuales (derogada en 2026)."
+        },
+        {
+          "fecha": "2026-02-06",
+          "que": "Publicación de la Notice 42, en vigor desde su publicación."
+        }
+      ],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
     },
     {
       "jur": "cn",
       "tema": "etf",
-      "etapa": null,
-      "estado": "No hay research sobre ETF cripto en China.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
+      "etapa": 0,
+      "estado": "No hay ETF cripto en China continental y los fondos del Southbound Connect no pueden comprar los ETF cripto de Hong Kong (información de 2024).",
+      "fecha": "2024-04",
+      "fuente": "S",
       "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
-      "informes": []
+      "falta": "Confirmar en la lista de valores elegibles de HKEX que la exclusión sigue en 2026 [VERIFICAR].",
+      "hitos": [
+        {
+          "fecha": "2024-04",
+          "que": "Emisores de ETF de Hong Kong confirman que el Southbound no puede comprarlos."
+        }
+      ],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
     },
     {
       "jur": "cn",
       "tema": "tokenizacion",
-      "etapa": null,
-      "estado": "No hay research sobre la tokenización en China.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
+      "etapa": 0,
+      "estado": "La Notice 42 prohíbe la tokenización de activos reales (RWA) en China continental salvo autorización y sobre infraestructura financiera designada; según Reuters, la CSRC pidió a grandes brókers chinos pausar sus proyectos de RWA en Hong Kong.",
+      "fecha": "2026-02-06",
+      "fuente": "S",
       "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
-      "informes": []
+      "falta": "Texto oficial; fecha y alcance de la indicación de la CSRC (informal, sin comunicado).",
+      "hitos": [
+        {
+          "fecha": "2026-02-06",
+          "que": "La Notice 42 define y prohíbe la tokenización de activos reales salvo autorización."
+        }
+      ],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
     },
     {
       "jur": "cn",
@@ -2086,29 +2154,32 @@
       "jur": "cn",
       "tema": "fiscal",
       "etapa": null,
-      "estado": "No hay research sobre la fiscalidad cripto en China.",
+      "estado": "No hay regla fiscal específica de cripto leída. Desde ene-2026 el fisco presiona para declarar la renta mundial (2022-2024) y usa los datos del CRS; que las criptomonedas entren en ese reporte no está confirmado.",
       "fecha": null,
       "fuente": "VERIFICAR",
       "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
+      "falta": "Norma fiscal sobre cripto; aplicación del CRS o del CARF a criptoactivos en China.",
       "hitos": [],
-      "informes": []
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
     },
     {
       "jur": "cn",
       "tema": "politica",
       "etapa": null,
-      "estado": "La PBoC mantiene el LPR a 1 año en 3,0 % y a 5 años en 3,5 %; es la excepción entre los grandes bancos centrales que suben tipos.",
+      "estado": "La PBoC mantiene el LPR a 1 año en 3,0 % y a 5 años en 3,5 % (fijaciones de jul y ago-2026) y el repo a 7 días sin cambios desde may-2025; es la excepción entre los grandes bancos centrales que suben tipos.",
       "fecha": "2026-10",
       "fuente": "S",
       "proxima": {
-        "fecha": "2026-10-20",
-        "que": "Publicación del LPR de octubre."
+        "fecha": "2026-11-20",
+        "que": "Siguiente fijación mensual del LPR."
       },
-      "falta": "Informe de Política Monetaria del 2T-2026 y datos de crédito en pbc.gov.cn (versión china).",
+      "falta": "Fijación del LPR del 20-oct-2026 (pendiente al cerrar este informe).",
       "hitos": [],
       "informes": [
-        "R29"
+        "R29",
+        "Radar v3 research (20-oct)"
       ],
       "dir": "mantiene",
       "valor": "LPR 3,0 % / 3,5 %"
@@ -2265,12 +2336,271 @@
       ],
       "dir": "sube",
       "valor": "Brent ≈ 126 $/barril"
+    },
+    {
+      "jur": "za",
+      "tema": "stablecoins",
+      "etapa": null,
+      "estado": "No hay research sobre este tema en esta jurisdicción.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
+    },
+    {
+      "jur": "za",
+      "tema": "ley_marco",
+      "etapa": 5,
+      "estado": "Los criptoactivos son productos financieros desde 2022 y sus proveedores necesitan licencia de la FSCA: a 31-mar-2026 había 533 solicitudes, 310 aprobadas y 81 investigaciones a operadores sin licencia.",
+      "fecha": "2026-03-31",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Informe oficial de la FSCA (cifras vía despachos y prensa).",
+      "hitos": [
+        {
+          "fecha": "2022-10-19",
+          "que": "Aviso General 1350: los criptoactivos pasan a ser productos financieros."
+        },
+        {
+          "fecha": "2026-03-31",
+          "que": "Balance de la FSCA: 310 licencias aprobadas."
+        }
+      ],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
+    },
+    {
+      "jur": "za",
+      "tema": "etf",
+      "etapa": null,
+      "estado": "No hay research sobre este tema en esta jurisdicción.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
+    },
+    {
+      "jur": "za",
+      "tema": "tokenizacion",
+      "etapa": null,
+      "estado": "No hay research sobre este tema en esta jurisdicción.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
+    },
+    {
+      "jur": "za",
+      "tema": "custodia",
+      "etapa": null,
+      "estado": "No hay research sobre este tema en esta jurisdicción.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
+    },
+    {
+      "jur": "za",
+      "tema": "cbdc",
+      "etapa": null,
+      "estado": "No hay research sobre este tema en esta jurisdicción.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
+    },
+    {
+      "jur": "za",
+      "tema": "fiscal",
+      "etapa": 5,
+      "estado": "El marco de la OCDE para reportar criptoactivos (CARF) rige desde el 1-mar-2026: los proveedores informan a SARS; no crea impuestos nuevos, pero facilita comprobar lo declarado.",
+      "fecha": "2026-03-01",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2027-02-28",
+        "que": "Fin del primer periodo de reporte del CARF."
+      },
+      "falta": "Guía de SARS sobre ganancias de capital frente a renta en cripto (no leída).",
+      "hitos": [
+        {
+          "fecha": "2026-03-01",
+          "que": "Entra en vigor el CARF (SARS)."
+        }
+      ],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
+    },
+    {
+      "jur": "za",
+      "tema": "politica",
+      "etapa": null,
+      "estado": "El Banco de la Reserva mantuvo el repo en 7,00 % el 23-jul-2026 (4 votos frente a 2 que pedían subir 25 pb), contra lo que esperaba el mercado; no hay dato leído de la reunión de septiembre.",
+      "fecha": "2026-07-23",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Decisión de septiembre de 2026 y comunicado oficial del SARB; una nota da 6,75 % para una reunión anterior [VERIFICAR].",
+      "hitos": [],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ],
+      "dir": "mantiene",
+      "valor": "7,00 %"
+    },
+    {
+      "jur": "id",
+      "tema": "stablecoins",
+      "etapa": 1,
+      "estado": "La OJK prepara nuevas actividades, entre ellas stablecoins respaldadas en rupias, tokenización y custodia; no hay norma publicada.",
+      "fecha": "2026-08",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Propuesta o consulta oficial de la OJK.",
+      "hitos": [
+        {
+          "fecha": "2026-08",
+          "que": "La OJK anuncia que prepara stablecoins en rupias (según la radio pública RRI)."
+        }
+      ],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
+    },
+    {
+      "jur": "id",
+      "tema": "ley_marco",
+      "etapa": 5,
+      "estado": "La OJK supervisa los criptoactivos como activo de inversión (no de pago) y la Ley 4/2026, en vigor desde el 17-jun-2026, le permite suspender o bloquear plataformas, también extranjeras; en ago-2026 había 23,2 M de cuentas cripto.",
+      "fecha": "2026-06-17",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Texto oficial de la ley y de la hoja de ruta 2026-2031 de la OJK.",
+      "hitos": [
+        {
+          "fecha": "2026-06-17",
+          "que": "Entra en vigor la Ley 4/2026 (reforma de la ley P2SK)."
+        },
+        {
+          "fecha": "2026-08",
+          "que": "La OJK cuenta 23,21 M de cuentas cripto y 23,16 billones de IDR negociados en el mes."
+        }
+      ],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
+    },
+    {
+      "jur": "id",
+      "tema": "etf",
+      "etapa": null,
+      "estado": "No hay research sobre este tema en esta jurisdicción.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
+    },
+    {
+      "jur": "id",
+      "tema": "tokenizacion",
+      "etapa": null,
+      "estado": "No hay research sobre este tema en esta jurisdicción.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
+    },
+    {
+      "jur": "id",
+      "tema": "custodia",
+      "etapa": null,
+      "estado": "No hay research sobre este tema en esta jurisdicción.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
+    },
+    {
+      "jur": "id",
+      "tema": "cbdc",
+      "etapa": null,
+      "estado": "No hay research sobre este tema en esta jurisdicción.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
+    },
+    {
+      "jur": "id",
+      "tema": "fiscal",
+      "etapa": null,
+      "estado": "No hay research sobre este tema en esta jurisdicción.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Research específico sobre este tema y país.",
+      "hitos": [],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ]
+    },
+    {
+      "jur": "id",
+      "tema": "politica",
+      "etapa": null,
+      "estado": "Bank Indonesia mantuvo el BI-Rate en 5,75 % en septiembre de 2026 (tercera pausa) tras subir 100 pb en el año para defender la rupia, que cae más del 7,4 % frente al dólar.",
+      "fecha": "2026-09",
+      "fuente": "S",
+      "proxima": null,
+      "falta": "Comunicado oficial de Bank Indonesia y decisión de octubre.",
+      "hitos": [],
+      "informes": [
+        "Radar v3 research (20-oct)"
+      ],
+      "dir": "mantiene",
+      "valor": "5,75 %"
     }
   ],
   "huecos": [
     {
-      "zona": "Sudáfrica, Indonesia, Egipto, Etiopía e Irán",
-      "nota": "Miembros o socios de BRICS sin research propio (R01P solo cubre la cumbre)."
+      "zona": "Egipto, Etiopía e Irán",
+      "nota": "Socios de BRICS sin research suficiente: de Irán solo constan la prohibición bancaria de 2018 y el piloto del rial digital en Kish (2024), y de Egipto y Etiopía nada fiable (búsqueda del 20-oct-2026)."
     },
     {
       "zona": "Arabia Saudí",
@@ -2286,7 +2616,7 @@
     },
     {
       "zona": "China",
-      "nota": "Solo hay research de CBDC; mercado, stablecoins, tokenización, custodia y fiscal sin datos."
+      "nota": "Con la Notice 42 de 2026 se cubren ley marco, stablecoins, tokenización y ETF [S]; custodia y fiscal siguen sin dato."
     },
     {
       "zona": "Custodia fuera de EE. UU. y la UE",
