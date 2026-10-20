@@ -260,7 +260,7 @@ def mostrar():
         importlib.reload(explorador)
         explorador.mostrar(todos_conceptos)
 
-    apartados = [("🌌 Explorador", explorador_raices), ("📚 Apuntes", lambda: tab_apuntes(docs)),
+    apartados = [("🌌 Explorador", explorador_raices), ("💹 Paneles", tab_paneles), ("📚 Apuntes", lambda: tab_apuntes(docs)),
                  ("🔤 Glosario", lambda: tab_glosario(todos_conceptos)),
                  ("📊 Datos", lambda: tab_datos(docs)), ("🎯 Mi cartera", lambda: tab_cartera(docs)),
                  ("📰 Actualidad", lambda: tab_actualidad(docs)), ("🗺️ Mapa", lambda: tab_mapa(docs)),
@@ -522,6 +522,16 @@ def tab_opiniones(docs, verif):
     for titulo, cuerpo in grupos_negrita(seccion(d, "dudas")):
         with st.expander(titulo):
             st.markdown(md(cuerpo))
+
+
+def tab_paneles():
+    try:
+        import importlib
+        import paneles
+        importlib.reload(paneles)
+        paneles.mostrar()
+    except Exception as e:
+        st.caption(f"Paneles no disponibles ({type(e).__name__}).")
 
 
 def tab_actualidad(docs):

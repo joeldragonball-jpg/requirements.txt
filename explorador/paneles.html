@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<style>
+:root{color-scheme:dark;--linea:rgba(148,163,184,.16);--texto:#e6ebf5;--suave:#93a1bd;--oro:#d4a84b;--sube:#5fd0a0;--baja:#f08a7a}
+*{box-sizing:border-box}
+html,body{margin:0;background:transparent;color:var(--texto);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#app{padding:4px 6px 14px;display:flex;flex-direction:column;gap:10px}
+.vidrio{background:rgba(9,14,30,.5);border:1px solid rgba(148,163,184,.12);border-radius:10px;backdrop-filter:blur(8px)}
+h1{margin:2px 4px 0;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#c8d3ea;font-weight:600}
+#sub{margin:0 4px;color:var(--suave);font-size:12px}
+.pestanas{display:flex;flex-wrap:wrap;gap:6px;padding:7px 10px}
+.chip{background:rgba(15,23,42,.9);color:var(--texto);border:1px solid var(--linea);border-radius:6px;padding:5px 12px;font:inherit;font-size:13px;cursor:pointer}
+.chip:hover{border-color:var(--oro);color:#fff}
+.chip.on{border-color:var(--oro);background:rgba(212,168,75,.14);color:#f1d58a}
+.panel{padding:12px 14px}
+.panel h2{margin:0 0 2px;font-size:16px;color:#f1d58a}
+.panel .que{margin:0 0 8px;color:var(--suave);font-size:12.5px}
+.kpis{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.kpi{border:1px solid var(--linea);border-radius:8px;padding:6px 12px;background:rgba(15,23,42,.6);min-width:150px}
+.kpi .v{font-size:19px;font-weight:700;color:#f1d58a}
+.kpi .e{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--suave)}
+.aviso{border:1px solid rgba(212,168,75,.4);background:rgba(212,168,75,.08);border-radius:8px;padding:8px 12px;font-size:12.5px;color:#e9d9ad;margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);text-align:right;padding:5px 8px;border-bottom:1px solid var(--linea);font-weight:600;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+td{padding:5px 8px;border-bottom:1px solid rgba(148,163,184,.08);text-align:right;white-space:nowrap}
+tr:hover td{background:rgba(212,168,75,.06)}
+td.n{font-variant-numeric:tabular-nums}
+.sube{color:var(--sube)}.baja{color:var(--baja)}.neutro{color:var(--suave)}
+.barra{display:inline-block;height:8px;border-radius:4px;background:linear-gradient(90deg,#d4a84b,#f1d58a);vertical-align:middle}
+.nivel{padding:0 6px;border-radius:4px;font-weight:700;font-size:11px;border:1px solid;display:inline-block}
+.nivel.P{color:#5fd0a0;border-color:#5fd0a0}.nivel.S{color:#f1d58a;border-color:#d4a84b}
+.pie{margin-top:8px;color:var(--suave);font-size:11.5px}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:900px){.dos{grid-template-columns:1fr}.panel{padding:10px}table{font-size:12px}th,td{padding:4px 5px}.hm{display:none}}
+.sel{background:rgba(212,168,75,.1)}
+td.tag{color:var(--suave);font-size:11.5px;text-align:left}
+.mini{font-size:11.5px;color:var(--suave)}
+svg.spark{vertical-align:middle}
+.fila-xrp td{color:#f1d58a;font-weight:600}
+</style></head><body>
+<div id="app">
+ <h1>Paneles de datos</h1>
+ <p id="sub"></p>
+ <div class="pestanas vidrio" id="pest"></div>
+ <div id="cont"></div>
+</div>
+<script type="application/json" id="datos">__DATOS__</script>
+<script>
+const D = JSON.parse(document.getElementById('datos').textContent);
+const MES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+const fm = (v,d=1)=> v==null? '—' : v.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});
+const mesTxt = m => { const [a,b]=m.split('-'); return MES[+b-1]+'-'+a; };
+const fUSD = v => v>=1e9? fm(v/1e9,1)+' MM$' : v>=1e6? fm(v/1e6,0)+' M$' : fm(v/1e3,0)+' mil $';
+function pct(a,b){ return (a==null||b==null||!b)? null : (a/b-1)*100; }
+function cambio(p){
+  if(p==null) return '<span class="neutro">—</span>';
+  const c = Math.abs(p)<0.05? 'neutro' : p>0? 'sube':'baja';
+  return `<span class="${c}">${p>0?'+':''}${fm(p,1)} %</span>`;
+}
+function spark(serie, w=110, h=22){        // serie del más antiguo al más reciente
+  const mn=Math.min(...serie), mx=Math.max(...serie), r=(mx-mn)||1;
+  const pts=serie.map((v,i)=>`${(i/(serie.length-1)*(w-4)+2).toFixed(1)},${(h-3-(v-mn)/r*(h-6)).toFixed(1)}`).join(' ');
+  const ult=serie[serie.length-1], pri=serie[0], col=ult>=pri?'#5fd0a0':'#f08a7a';
+  return `<svg class="spark" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><polyline fill="none" stroke="${col}" stroke-width="1.6" points="${pts}"/></svg>`;
+}
+document.getElementById('sub').textContent = 'Datos abiertos leídos el '+D.leido+'. Cada cifra lleva su fuente, su fecha y su nivel: [P] primaria, [S] secundaria.';
+
+function panelTIC(){
+  const t=D.tic; if(!t) return '<div class="aviso">No hay datos de la tabla TIC. Ejecuta scripts/actualizar_paneles.py.</div>';
+  const n=t.meses.length, ult=t.meses[0], hace12=t.meses[12]??null, hace6=t.meses[6]??null, hace1=t.meses[1];
+  const maxV=Math.max(...t.paises.map(p=>p.serie[0]));
+  const filas=t.paises.map((p,i)=>{
+    const s=p.serie;
+    return `<tr><td>${i+1}. ${p.nombre}</td><td class="n">${fm(s[0])}</td><td class="n">${fm(s[0]/t.total[0]*100,1)} %</td>
+    <td class="hm"><span class="barra" style="width:${(s[0]/maxV*90).toFixed(0)}px"></span></td>
+    <td class="n">${cambio(pct(s[0],s[1]))}</td><td class="n">${cambio(pct(s[0],s[6]))}</td><td class="n">${cambio(pct(s[0],s[12]))}</td>
+    <td class="hm">${spark(s.slice().reverse())}</td></tr>`;
+  }).join('');
+  const of=t.oficial;
+  return `<div class="panel vidrio"><h2>¿Quién tiene deuda de EE. UU.?</h2>
+  <p class="que">Mayores tenedores extranjeros de bonos y letras del Tesoro de EE. UU. Fuente: Tesoro de EE. UU., sistema TIC, tabla 5 · último mes: <b>${mesTxt(ult)}</b> · <span class="nivel P">P</span> fuente primaria</p>
+  <div class="kpis">
+   <div class="kpi"><div class="v">${fm(t.total[0],0)} MM$</div><div class="e">Total extranjero · ${mesTxt(ult)}</div></div>
+   <div class="kpi"><div class="v">${of?fm(of[0],0)+' MM$':'—'}</div><div class="e">De ellos, oficiales (bancos centrales y Estados)</div></div>
+   <div class="kpi"><div class="v">${cambio(pct(t.total[0],t.total[12]))}</div><div class="e">Total frente a ${mesTxt(hace12||ult)}</div></div>
+  </div>
+  <div class="aviso"><b>Cómo leerlo:</b> ${t.nota}</div>
+  <table><thead><tr><th>País (donde está la custodia)</th><th>${mesTxt(ult)} (MM$)</th><th>% del total</th><th class="hm"></th><th>vs mes ant.</th><th>vs 6 meses</th><th>vs 12 meses</th><th class="hm">13 meses</th></tr></thead><tbody>${filas}
+  <tr><td class="neutro">Resto de países</td><td class="n neutro">${fm(t.otros[0])}</td><td class="n neutro">${fm(t.otros[0]/t.total[0]*100,1)} %</td><td class="hm"></td><td class="n">${cambio(pct(t.otros[0],t.otros[1]))}</td><td class="n">${cambio(pct(t.otros[0],t.otros[6]))}</td><td class="n">${cambio(pct(t.otros[0],t.otros[12]))}</td><td class="hm">${spark(t.otros.slice().reverse())}</td></tr></tbody></table>
+  <p class="pie">Fuente: <a style="color:#f1d58a" href="${t.fuente}" target="_blank" rel="noopener">${t.fuente}</a>. Los valores están en miles de millones de dólares y se publican con unas 6-7 semanas de retraso. Una variación mezcla compras o ventas con cambios de valor de mercado: no es un flujo.</p></div>`;
+}
+
+const MEC={'fiat-backed':'Respaldo en dinero y letras','crypto-backed':'Respaldo en cripto','algorithmic':'Algorítmica','':'—'};
+function panelStable(){
+  const s=D.stablecoins; if(!s) return '<div class="aviso">No hay datos de stablecoins. Ejecuta scripts/actualizar_paneles.py.</div>';
+  const filas=s.top.map((x,i)=>`<tr class="${x.simbolo==='RLUSD'?'fila-xrp':''}"><td>${i+1}. <b>${x.simbolo}</b> <span class="mini">${x.nombre}</span></td>
+   <td class="n">${fUSD(x.usd)}</td><td class="n">${fm(x.usd/s.total*100,1)} %</td><td class="n">${cambio(x.cambio_7d)}</td><td class="n">${cambio(x.cambio_30d)}</td>
+   <td class="tag hm">${x.ligada==='USD'?'Dólar':x.ligada}</td><td class="tag hm">${MEC[x.mecanismo]||x.mecanismo}</td><td class="n hm">${x.n_cadenas}</td></tr>`).join('');
+  const cad=(c,nombre)=>`<div class="panel vidrio"><h2>En ${nombre}</h2><p class="que">${c.n} stablecoins con saldo · total ${fUSD(c.total)}</p>
+   <table><thead><tr><th>Stablecoin</th><th>Circulación</th><th>% de la cadena</th></tr></thead><tbody>${c.top.map(f=>`<tr class="${f.simbolo==='RLUSD'?'fila-xrp':''}"><td><b>${f.simbolo}</b> <span class="mini">${f.nombre}</span></td><td class="n">${fUSD(f.usd)}</td><td class="n">${fm(f.usd/c.total*100,1)} %</td></tr>`).join('')}</tbody></table></div>`;
+  return `<div class="panel vidrio"><h2>Stablecoins: quién emite y cuánto circula</h2>
+  <p class="que">Los 15 mayores por circulación. DefiLlama · <span class="nivel S">S</span> agregador (cifras estimadas)</p>
+  <div class="kpis"><div class="kpi"><div class="v">${fUSD(s.total)}</div><div class="e">Circulación total (${s.n_activos} activos)</div></div>
+   <div class="kpi"><div class="v">${fm(s.top[0].usd/s.total*100,0)} %</div><div class="e">Cuota de ${s.top[0].simbolo}</div></div>
+   <div class="kpi"><div class="v">${fm((s.top[0].usd+s.top[1].usd)/s.total*100,0)} %</div><div class="e">Cuota de ${s.top[0].simbolo} + ${s.top[1].simbolo}</div></div></div>
+  <table><thead><tr><th>Stablecoin</th><th>Circulación</th><th>% del total</th><th>7 días</th><th>30 días</th><th class="hm">Ligada a</th><th class="hm">Respaldo</th><th class="hm">Cadenas</th></tr></thead><tbody>${filas}</tbody></table>
+  <p class="pie">Fuente: <a style="color:#f1d58a" href="${s.fuente}" target="_blank" rel="noopener">${s.fuente}</a>. ${s.nota}</p></div>
+  <div class="dos">${cad(s.xrpl,'el XRP Ledger (XRPL)')}${cad(s.stellar,'Stellar')}</div>
+  <div class="aviso">Contraste: el dossier de stablecoins del 9-oct leyó en el propio XRPL unos 1.140 M$ de RLUSD (ledger, 17-oct); DefiLlama muestra hoy ${fUSD((s.xrpl.top.find(f=>f.simbolo==='RLUSD')||{usd:0}).usd)} en XRPL. Difieren por fecha y método: no se mezclan.</div>`;
+}
+
+const PEST=[['tic','Deuda de EE. UU.',panelTIC],['stable','Stablecoins',panelStable]];
+let act=PEST[0][0];
+function pinta(){
+  document.getElementById('pest').innerHTML=PEST.map(p=>`<button class="chip ${p[0]===act?'on':''}" data-k="${p[0]}">${p[1]}</button>`).join('')+'<span class="mini" style="align-self:center;margin-left:8px">Próximos: tipos por país · deuda por país · CBDC y redes</span>';
+  document.getElementById('cont').innerHTML=PEST.find(p=>p[0]===act)[2]();
+  document.querySelectorAll('#pest .chip').forEach(b=>b.onclick=()=>{act=b.dataset.k;pinta();});
+}
+pinta();
+</script></body></html>
