@@ -27,3 +27,5 @@ Fuente: Gemini Deep Research (Gem «Research cripto», exportado el 18-oct-2026)
 
 ## Qué cambiar en el Explorador (propuesta, no aplicada)
 - Radar, celda UE · CBDC: añadir el hito «Piloto de 12 meses desde el 2S-2027 con 36 proveedores (BCE, discurso de Cipollone)» [P] y el objetivo de acuerdo político antes de fin de año [S].
+
+- 2026-10-21 (revisión Opus): el «techo legal de tenencia» del Consejo ya consta en fuente primaria: la nota de prensa del Consejo (19-dic-2025) fija que el BCE decide los límites dentro de un techo global acordado por el Consejo y revisado al menos cada dos años [P]. «Prevalece una fórmula de compromiso» sigue [VERIFICAR].
