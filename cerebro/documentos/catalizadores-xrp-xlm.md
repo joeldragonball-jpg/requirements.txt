@@ -95,3 +95,5 @@ actualizado: 2026-10-07
 
 - 2026-10-18 (R48, sobre 19 eventos, tasa base XRP/XLM desde 2023): movimiento propio fuera de lo normal (cola ≤5 %) en Jackson Hole 22-ago-2025 (+2,5 % en 1 h), FOMC que sube 16-sep-2026 (+1,5/+2,4 % en 1 h), cloture de CLARITY 15-sep-2026 (−4,7/−3,9 % en 1 h), arancel a China 10-oct-2025, sentencia Torres 13-jul-2023 (+61 % en 24 h) y DTCC–Stellar 27-may-2026 (XLM +34 % en 24 h, hora sin verificar). Sin efecto detectable el día de: debut XRPC (13-nov-2025), XRPN (12-oct-2026), IPC, PPI, empleo y minutas de oct-2026. Muestra pequeña y sesgada.
 - 2026-10-18 (R49): washouts (≥7 % en ≤6 h con rebote ≥50 %): ~28/año; se concentran de 15:00 a 19:59 UTC (41 de 109 en XRP, 40 de 106 en XLM; esperados ~22) y no destacan en fin de mes/trimestre, escrow del día 1, vencimientos ni 13F. Entre el 47 % (XLM) y el 61 % (XRP) con BTC cayendo ≥3 %.
+
+- 2026-10-20 (R00 cierre): XRP +2,0 % y XLM +1,2 % desde las 00:00 UTC frente a BTC +0,8 % sin noticia fechada que lo explique; atribuir la subida a un hito (p. ej. cierre de comentarios de la SEC) sin hora ni fuente sería lectura de agregador (ver R48).
