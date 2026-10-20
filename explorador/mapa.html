@@ -91,6 +91,13 @@ details.doc .chips{margin:2px 0 6px}
 .contraste{border:1px solid rgba(212,168,75,.45);background:rgba(212,168,75,.06);border-radius:8px;padding:2px 10px 8px;margin:10px 0}
 .contraste h3{border-bottom-color:rgba(212,168,75,.35);color:#f1d58a}
 .contraste details.doc{background:rgba(15,23,42,.7)}
+details.sec{border:1px solid var(--linea);border-radius:8px;margin:8px 0;background:rgba(15,23,42,.35)}
+details.sec>summary{cursor:pointer;padding:7px 10px;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--suave);font-weight:600;list-style:none}
+details.sec>summary::-webkit-details-marker{display:none}
+details.sec>summary::before{content:'▸ ';color:var(--oro)}
+details.sec[open]>summary::before{content:'▾ '}
+details.sec[open]>summary{border-bottom:1px solid var(--linea)}
+details.sec>.sec-c{padding:4px 10px 8px}
 .pn{border:1px solid rgba(95,208,160,.35);background:rgba(95,208,160,.05);border-radius:8px;padding:2px 10px 8px;margin:10px 0}
 .pn h3{border-bottom-color:rgba(95,208,160,.3);color:#9fe0c3}
 .pn-k{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
@@ -591,7 +598,7 @@ function radarCelda(padre, c, compacto){
 }
 function radarVista(padre, titulo){
   if (!RADAR) return;
-  H('h3', '', padre, titulo);
+  if (titulo) H('h3', '', padre, titulo);
   const con = RADAR.celdas.filter(tieneDato).length;
   H('p', 'nota', padre, `${con} de ${RADAR.celdas.length} celdas con dato; el resto se muestra con guion y está marcado [VERIFICAR]. La etapa es la de la norma, no una valoración de si es buena o mala. Pulsa una celda para ver cómo ha avanzado, o un país para ver todos sus temas; pulsa un segundo país para compararlos (un tercer pulso reinicia). Un punto ámbar marca celdas sin revisar hace más de ${DIAS_REVISION} días.`);
   const g = H('div', 'radar-grid', padre); g.style.gridTemplateColumns = `minmax(78px,1.5fr) repeat(${RADAR.temas.length},minmax(0,1fr))`;
@@ -633,6 +640,13 @@ function radarVista(padre, titulo){
   H('p', 'nota', padre, 'Versión ' + (RADAR.version || '') + ' · ' + RADAR.aviso);
 }
 const CONTR = D.contraste;
+const secEstado = {};
+function seccion(padre, titulo, abierta){
+  const clave = titulo.split(':')[0];
+  const d = H('details', 'sec', padre); if (clave in secEstado ? secEstado[clave] : abierta) d.open = true;
+  H('summary', '', d, titulo); d.addEventListener('toggle', () => { secEstado[clave] = d.open; });
+  return H('div', 'sec-c', d);
+}
 // ---- Datos al día (explorador/paneles.json, generado por scripts/actualizar_paneles.py): se cuelgan de las capas del mapa
 const PAN = D.paneles;
 const pnFmt = (v, d = 1) => v == null ? '—' : v.toLocaleString('es-ES', {minimumFractionDigits: d, maximumFractionDigits: d, useGrouping: 'always'});
@@ -658,6 +672,17 @@ function pnKpi(padre, lista){
 }
 function pnTop(s, n){ return s.top.slice(0, n).map(x => ({xrp: x.simbolo === 'RLUSD', celdas: [x.simbolo, pnUSD(x.usd), pnFmt(x.usd / s.total * 100, 1) + ' %', td => pnCambio(td, x.cambio_30d)]})); }
 function pnCadena(c, n){ return c.top.slice(0, n).map(f => ({xrp: f.simbolo === 'RLUSD', celdas: [f.simbolo, pnUSD(f.usd), pnFmt(f.usd / c.total * 100, 1) + ' %']})); }
+function cifrasVivas(c){
+  const out = c.cifras.map(x => ({...x})), s = PAN && PAN.stablecoins;
+  if (c.id === 'stable' && s && out[0]) out[0] = {...out[0], v: '≈' + pnUSD(s.total), e: 'En stablecoins en total; USDT y USDC ≈ ' + pnFmt((s.top[0].usd + s.top[1].usd) / s.total * 100, 0) + ' %',
+    f: 'DefiLlama, leído ' + PAN.leido.slice(0, 10) + ' [S] · se actualiza solo'};
+  return out;
+}
+const pnPrecio = v => v >= 1000 ? '$' + pnFmt(v, 0) : v >= 1 ? '$' + pnFmt(v, 2) : '$' + pnFmt(v, 4);
+function pnMercado(b){
+  const m = PAN && PAN.mercado; if (!m) return;
+  pnTabla(b, ['Activo', 'Precio', 'Capitalización', '24 h'], m.activos.map(a => ({xrp: a.simbolo !== 'BTC', celdas: [a.simbolo, pnPrecio(a.precio), pnUSD(a.capitalizacion), td => pnCambio(td, a.cambio_24h)]})));
+}
 function tiposFilas(){ return (typeof RADAR !== 'undefined' && RADAR) ? RADAR.celdas.filter(c => c.tema === 'politica' && c.valor && c.jur !== 'brics') : []; }
 function datosGlobales(padre){
   const tp = tiposFilas();
@@ -670,6 +695,7 @@ function datosGlobales(padre){
     k.push([pnUSD(s.total), 'Stablecoins en circulación [S]', 'stable'], [pnFmt(s.top[0].usd / s.total * 100, 0) + ' %', 'Cuota de ' + s.top[0].simbolo + ' [S]', 'stable']);
     k.push([pnUSD(s.xrpl.total), 'Stablecoins en el XRPL [S]', 'puente'], [pnUSD(s.stellar.total), 'Stablecoins en Stellar [S]', 'puente'], [pnUSD(rl), 'RLUSD en el XRPL [S]', 'puente']);
   }
+  if (PAN && PAN.mercado) PAN.mercado.activos.filter(a => a.simbolo !== 'BTC').forEach(a => k.push([pnPrecio(a.precio) + ' (' + (a.cambio_24h > 0 ? '+' : '') + pnFmt(a.cambio_24h, 1) + ' %)', 'Precio de ' + a.simbolo + ' [S]', 'puente']));
   if (t){
     const j = t.paises.find(p => p.clave === 'Japan'), c = t.paises.find(p => p.clave === 'China, Mainland');
     k.push(['$' + pnFmt(t.total[0], 0) + ' mil M', 'Deuda de EE. UU. en manos extranjeras [P]', 'cbdc']);
@@ -691,6 +717,7 @@ function datosCapa(padre, id){
     H('p', 'nota', b, 'Nivel y movimiento, no si el tipo es alto o bajo: sin la inflación de cada país no son comparables. Singapur gestiona una banda de tipo de cambio y China publica el LPR. Fuente: columna «política monetaria» del radar regulatorio (arriba), con su etiqueta [P]/[S] por país.');
   }
   if (!PAN) return;
+  const rw = PAN.rwa;
   if (id === 'stable' && s){
     const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: stablecoins [S]');
     pnKpi(b, [[pnUSD(s.total), 'Circulación total (' + s.n_activos + ' activos)'], [pnFmt(s.top[0].usd / s.total * 100, 0) + ' %', 'Cuota de ' + s.top[0].simbolo], [pnFmt((s.top[0].usd + s.top[1].usd) / s.total * 100, 0) + ' %', s.top[0].simbolo + ' + ' + s.top[1].simbolo]]);
@@ -699,11 +726,27 @@ function datosCapa(padre, id){
   }
   if (id === 'puente' && s){
     const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: stablecoins en el XRPL y en Stellar [S]');
+    pnMercado(b);
     H('p', 'nota', b, `XRPL: ${s.xrpl.n} stablecoins, ${pnUSD(s.xrpl.total)}.`);
     pnTabla(b, ['Stablecoin', 'Circulación', '% cadena'], pnCadena(s.xrpl, 5));
     H('p', 'nota', b, `Stellar: ${s.stellar.n} stablecoins, ${pnUSD(s.stellar.total)}.`);
     pnTabla(b, ['Stablecoin', 'Circulación', '% cadena'], pnCadena(s.stellar, 5));
     pnPie(b, 'El dossier del 9-oct leyó $1.140 M de RLUSD en el propio ledger el 17-oct; no se mezclan métodos.', 'DefiLlama', PAN.leido);
+  }
+  if (id === 'token' && rw){
+    const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: protocolos RWA en DeFi [S]');
+    pnKpi(b, [[pnUSD(rw.total), 'Valor bloqueado en ' + rw.n + ' protocolos RWA'], [pnUSD(rw.stellar), 'De ellos, en Stellar'], [pnUSD(rw.xrpl), 'De ellos, en el XRPL']]);
+    pnTabla(b, ['Protocolo', 'Valor bloqueado', '7 días'], rw.top.map(x => ({celdas: [x.nombre, pnUSD(x.usd), td => pnCambio(td, x.cambio_7d)]})));
+    pnPie(b, rw.nota, 'DefiLlama (protocolos)', PAN.leido);
+  }
+  if (id === 'fondos' && PAN.mercado){
+    const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: mercado de XRP y XLM [S]');
+    pnMercado(b);
+    H('p', 'nota', b, 'No hay una fuente abierta gratuita fiable de entradas y salidas diarias de los ETF; las cifras de ETF de esta capa vienen de informes (R27) con su fecha. Fuente de precios: CoinGecko, leído el ' + PAN.leido + '.');
+  }
+  if (id === 'deposit'){
+    const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: sin fuente abierta');
+    H('p', 'nota', b, 'JPMorgan no publica cifras oficiales de volumen de JPMD (R44) y no hay una fuente abierta fiable de depósitos tokenizados. Se mostrarán aquí cuando exista.');
   }
   if (id === 'cbdc' && t){
     const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: quién tiene deuda de EE. UU. [P]');
@@ -758,36 +801,34 @@ function dibujarPanel(){
     const c0 = H('div', 'cabecera entra', panel); c0.style.borderLeftColor = ORO;
     H('h2', '', c0, 'Explorador de raíles'); H('p', 'nota', c0, D.aviso);
     if (CONTR) contrasteBloque(panel, CONTR.generales, 'Contraste general con tu tesis (privado, solo en tu PC)');
-    H('h3', '', panel, 'Capas');
+    const sCapas = seccion(panel, 'Capas', true);
     capas.forEach((c, i) => {
-      const b = H('button', 'capa-fila entra', panel); b.style.animationDelay = (i * 25) + 'ms';
+      const b = H('button', 'capa-fila entra', sCapas); b.style.animationDelay = (i * 25) + 'ms';
       b.appendChild(iconoHTML(c.id, 16, mezcla(c.color, '#fff', .25), rgba(c.color, .22)));
       const bl = H('span', '', b); H('div', '', bl, c.nombre); H('div', 'sub', bl, `${c.docs.inv.length} docs · ${c.docs.glo.length} términos · ${evVisibles(c.id, DIAS_CAL).length} fechas`);
       H('span', 'n', b, String(visibles(c.id).length));
       b.addEventListener('click', () => seleccionar(c));
     });
     datosGlobales(panel);
-    H('h3', '', panel, 'Cifras clave');
-    tarjetasCifras(panel, capas.filter(c => c.cifras[0]).map(c => ({capa: c, c: c.cifras[0]})));
-    radarVista(panel, 'Radar regulatorio');
-    H('h3', '', panel, 'Próximas fechas');
-    H('p', 'nota', panel, 'Rombos de color según el tema; ★ = impacto alto. Pulsa un tema en la barra de calendario para mostrarlo u ocultarlo.');
-    listaEventos(panel, evVisibles(null, 90).slice(0, 8), true);
+    tarjetasCifras(seccion(panel, 'Cifras clave', false), capas.filter(c => c.cifras[0]).map(c => ({capa: c, c: cifrasVivas(c)[0]})));
+    radarVista(seccion(panel, 'Radar regulatorio por país y tema', false), '');
+    const sFe = seccion(panel, 'Próximas fechas', true);
+    H('p', 'nota', sFe, 'Rombos de color según el tema; ★ = impacto alto. Pulsa un tema en la barra de calendario para mostrarlo u ocultarlo.');
+    listaEventos(sFe, evVisibles(null, 90).slice(0, 8), true);
     const todos = visibles(), cuenta = {token: 0, red: 0, indirecto: 0, no: 0};
     todos.forEach(m => cuenta[m.nombra] = (cuenta[m.nombra] || 0) + 1);
-    H('h3', '', panel, `Hechos visibles: ${todos.length} de ${movs.length}`);
-    const barra = H('div', 'barra-apilada', panel);
+    const sHe = seccion(panel, `Hechos visibles: ${todos.length} de ${movs.length}`, false);
+    const barra = H('div', 'barra-apilada', sHe);
     ['token', 'red', 'indirecto', 'no'].forEach(k => { if (cuenta[k]){ const s = H('div', '', barra); s.style.flex = cuenta[k]; s.style.background = colNombra[k]; s.title = D.nombra[k] + ': ' + cuenta[k]; } });
-    const ley2 = H('div', 'leyenda', panel);
+    const ley2 = H('div', 'leyenda', sHe);
     ['token', 'red', 'indirecto', 'no'].forEach(k => { const s = H('span', '', ley2); const p = H('span', 'punto', s); p.style.background = colNombra[k]; s.appendChild(document.createTextNode(`${D.nombra[k]}: ${cuenta[k] || 0}`)); });
     const bib = D.biblioteca || {};
-    H('h3', '', panel, 'Biblioteca conectada');
-    H('p', 'nota', panel, `El mapa está enlazado con ${bib.docs || 0} documentos (research, dossiers y apuntes) y ${bib.glosario || 0} términos del glosario. Lectura recomendada para empezar:`);
-    capas.forEach((c, i) => { if (c.docs.inv[0]){ tarjetaDoc(panel, {...c.docs.inv[0], titulo: c.nombre + ' — ' + c.docs.inv[0].titulo}, i); } });
-    H('h3', '', panel, 'Cómo leerlo');
-    H('p', 'nota', panel, 'Cada disco es una capa del sistema; el número en su esquina son los hechos visibles y el rombo de color, fechas próximas del calendario. Los puntos a su alrededor son los hechos, y los de aro azul nombran XRP o XLM. Pulsa una capa para acercarte; «▶ Tiempo» reproduce los hechos por fecha. Los bloques verdes «Datos al día» son cifras abiertas que se actualizan por separado y cada una lleva su fuente y su nivel [P] o [S].');
-    H('h3', '', panel, 'Últimos hechos');
-    listaMovs(panel, todos.slice(-5));
+    const sBi = seccion(panel, 'Biblioteca conectada', false);
+    H('p', 'nota', sBi, `El mapa está enlazado con ${bib.docs || 0} documentos (research, dossiers y apuntes) y ${bib.glosario || 0} términos del glosario. Lectura recomendada para empezar:`);
+    capas.forEach((c, i) => { if (c.docs.inv[0]){ tarjetaDoc(sBi, {...c.docs.inv[0], titulo: c.nombre + ' — ' + c.docs.inv[0].titulo}, i); } });
+    const sLe = seccion(panel, 'Cómo leerlo', false);
+    H('p', 'nota', sLe, 'Cada disco es una capa del sistema; el número en su esquina son los hechos visibles y el rombo de color, fechas próximas del calendario. Los puntos a su alrededor son los hechos, y los de aro azul nombran XRP o XLM. Pulsa una capa para acercarte; «▶ Tiempo» reproduce los hechos por fecha. Los bloques verdes «Datos al día» son cifras abiertas que se actualizan por separado y cada una lleva su fuente y su nivel [P] o [S].');
+    listaMovs(seccion(panel, 'Últimos hechos', false), todos.slice(-5));
   } else {
     const b = H('button', 'volver', panel, '← Volver al mapa'); b.addEventListener('click', () => seleccionar(null));
     const cab = H('div', 'cabecera entra', panel); cab.style.borderLeftColor = sel.color;
@@ -802,7 +843,7 @@ function dibujarPanel(){
     fichaAnalista(panel, sel);
     datosCapa(panel, sel.id);
     H('h3', '', panel, 'Cifras clave');
-    tarjetasCifras(panel, sel.cifras.map(c => ({capa: sel, c})));
+    tarjetasCifras(panel, cifrasVivas(sel).map(c => ({capa: sel, c})));
     [['En producción', 'produccion', 'produccion'], ['Piloto o prueba', 'piloto', 'piloto'], ['Plan o propuesta', 'plan', 'plan'], ['¿Nombra XRP o XLM?', 'xrp', null]].forEach(([tit, k, ek], i) => {
       bloqueHechos(panel, sel, tit, k, ek ? colEst(ek) : colNombra.token, 60 + i * 50); });
     if (f.corte < d1) H('p', 'nota', panel, 'Los cuadros de arriba describen la situación a octubre de 2026; la lista de abajo sí respeta la fecha del deslizador.');

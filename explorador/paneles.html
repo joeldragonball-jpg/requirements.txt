@@ -132,7 +132,20 @@ function panelTipos(){
   <p class="pie">Fuente: radar regulatorio (explorador/regulacion.json), con sus informes y su etiqueta [P]/[S] por país. Fechas de reunión según el calendario del repo y las notas de cada banco; algunas son aproximadas [VERIFICAR].</p></div>`;
 }
 
-const PEST=[['tic','Deuda de EE. UU.',panelTIC],['stable','Stablecoins',panelStable],['tipos','Tipos de interés',panelTipos]];
+const fPrecio = v => v>=1000? '$'+fm(v,0) : v>=1? '$'+fm(v,2) : '$'+fm(v,4);
+function panelMercadoRWA(){
+  const m=D.mercado, r=D.rwa; if(!m&&!r) return '<div class="aviso">No hay datos. Ejecuta scripts/actualizar_paneles.py.</div>';
+  const mer = m? `<div class="panel vidrio"><h2>Mercado de XRP y XLM</h2><p class="que">Precio, capitalización y variación en 24 h · CoinGecko · <span class="nivel S">S</span> agregador</p>
+   <table><thead><tr><th>Activo</th><th>Precio</th><th>Capitalización</th><th>24 h</th></tr></thead><tbody>${m.activos.map(a=>`<tr class="${a.simbolo!=='BTC'?'fila-xrp':''}"><td><b>${a.simbolo}</b> <span class="mini">${a.nombre}</span></td><td class="n">${fPrecio(a.precio)}</td><td class="n">${fUSD(a.capitalizacion)}</td><td class="n">${cambio(a.cambio_24h)}</td></tr>`).join('')}</tbody></table>
+   <p class="pie">Leído el ${D.leido}. Fuente: <a style="color:#f1d58a" href="${m.fuente}" target="_blank" rel="noopener">CoinGecko</a>.</p></div>` : '';
+  const rw = r? `<div class="panel vidrio"><h2>Protocolos RWA en DeFi</h2><p class="que">Valor bloqueado (TVL) en protocolos que DefiLlama clasifica como RWA · <span class="nivel S">S</span> agregador</p>
+   <div class="kpis"><div class="kpi"><div class="v">${fUSD(r.total)}</div><div class="e">En ${r.n} protocolos</div></div><div class="kpi"><div class="v">${fUSD(r.stellar)}</div><div class="e">De ellos, en Stellar</div></div><div class="kpi"><div class="v">${fUSD(r.xrpl)}</div><div class="e">De ellos, en el XRPL</div></div></div>
+   <div class="aviso"><b>Cómo leerlo:</b> ${r.nota}</div>
+   <table><thead><tr><th>Protocolo</th><th>Valor bloqueado</th><th>7 días</th><th class="hm">Cadenas</th></tr></thead><tbody>${r.top.map(x=>`<tr><td>${x.nombre}</td><td class="n">${fUSD(x.usd)}</td><td class="n">${cambio(x.cambio_7d)}</td><td class="tag hm">${(x.cadenas||[]).join(', ')}</td></tr>`).join('')}</tbody></table>
+   <p class="pie">Fuente: <a style="color:#f1d58a" href="${r.fuente}" target="_blank" rel="noopener">DefiLlama</a>, leído el ${D.leido}.</p></div>` : '';
+  return mer+rw;
+}
+const PEST=[['tic','Deuda de EE. UU.',panelTIC],['stable','Stablecoins',panelStable],['tipos','Tipos de interés',panelTipos],['rwa','Mercado y RWA',panelMercadoRWA]];
 let act=PEST[0][0];
 function pinta(){
   document.getElementById('pest').innerHTML=PEST.map(p=>`<button class="chip ${p[0]===act?'on':''}" data-k="${p[0]}">${p[1]}</button>`).join('')+'<span class="mini" style="align-self:center;margin-left:8px">Próximos: deuda por país · CBDC y redes</span>';

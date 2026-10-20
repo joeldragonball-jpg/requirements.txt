@@ -1,5 +1,5 @@
 {
- "leido": "2026-10-20 21:38 UTC",
+ "leido": "2026-10-20 21:55 UTC",
  "tic": {
   "fuente": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt",
   "nivel": "P",
@@ -447,7 +447,7 @@
    3919.8
   ],
   "nota": "Los datos se recogen sobre todo de custodios y brókeres de EE. UU. Si los valores están en cuentas de custodia en el extranjero, pueden no atribuirse a su propietario real (Tesoro, TIC FAQ n.º 7); por eso Bélgica, Luxemburgo o las Islas Caimán suben tanto. Las tenencias incluyen cambios de valor de mercado: una bajada no es necesariamente una venta.",
-  "leido": "2026-10-20 21:38 UTC"
+  "leido": "2026-10-20 21:55 UTC"
  },
  "stablecoins": {
   "fuente": "https://stablecoins.llama.fi/stablecoins?includePrices=true",
@@ -796,6 +796,122 @@
    ]
   },
   "nota": "DefiLlama es un agregador: sus cifras de circulación son estimaciones y pueden diferir de las atestaciones de cada emisor. Las monedas ligadas al euro se pasan a dólares con su propio precio. La lista de DefiLlama incluye también fondos tokenizados de letras (p. ej. BUIDL) y monedas sintéticas (p. ej. USDe): no todo lo que aparece es una stablecoin de pago, y el «respaldo» es la clasificación de DefiLlama.",
-  "leido": "2026-10-20 21:38 UTC"
+  "leido": "2026-10-20 21:55 UTC"
+ },
+ "rwa": {
+  "fuente": "https://api.llama.fi/protocols",
+  "nivel": "S",
+  "unidad": "dólares (USD)",
+  "n": 102,
+  "total": 4030605961.446356,
+  "top": [
+   {
+    "nombre": "Ethena USDtb",
+    "usd": 477392797.63401496,
+    "cambio_7d": 0.8322706034583405,
+    "cadenas": [
+     "Ethereum"
+    ]
+   },
+   {
+    "nombre": "Re",
+    "usd": 450622091.3297247,
+    "cambio_7d": 8.018956788435673,
+    "cadenas": [
+     "Ethereum",
+     "Base",
+     "Arbitrum"
+    ]
+   },
+   {
+    "nombre": "Huma",
+    "usd": 378625723.7928775,
+    "cambio_7d": -6.7375078966696975,
+    "cadenas": [
+     "Solana",
+     "Ethereum",
+     "Stellar"
+    ]
+   },
+   {
+    "nombre": "Anemoy Capital",
+    "usd": 332796107.14182353,
+    "cambio_7d": -0.254589497387272,
+    "cadenas": [
+     "Ethereum",
+     "Base",
+     "Celo"
+    ]
+   },
+   {
+    "nombre": "OnRe",
+    "usd": 293973263.390216,
+    "cambio_7d": 0.4837114257926629,
+    "cadenas": [
+     "Solana"
+    ]
+   },
+   {
+    "nombre": "USD AI",
+    "usd": 263118892.571941,
+    "cambio_7d": -24.400123214977796,
+    "cadenas": [
+     "Arbitrum"
+    ]
+   },
+   {
+    "nombre": "OpenTrade",
+    "usd": 247698422.05698323,
+    "cambio_7d": -1.6251802141277665,
+    "cadenas": [
+     "Avalanche",
+     "Ethereum",
+     "Plume Mainnet"
+    ]
+   },
+   {
+    "nombre": "Plume Vaults",
+    "usd": 226989858.37055093,
+    "cambio_7d": -3.837140179784342,
+    "cadenas": [
+     "Ethereum",
+     "Plume Mainnet",
+     "Solana"
+    ]
+   }
+  ],
+  "stellar": 6892006.011356342,
+  "xrpl": 0,
+  "nota": "Es el valor bloqueado (TVL) en protocolos DeFi que DefiLlama clasifica como RWA: NO es el valor total de activos tokenizados. Otras metodologías (p. ej. RWA.xyz) dan cifras mucho mayores porque cuentan fondos y bonos tokenizados fuera de DeFi.",
+  "leido": "2026-10-20 21:55 UTC"
+ },
+ "mercado": {
+  "fuente": "https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin&vs_currencies=usd&include_market_cap=true&include_24hr_change=true",
+  "nivel": "S",
+  "unidad": "dólares (USD)",
+  "activos": [
+   {
+    "simbolo": "XRP",
+    "nombre": "XRP",
+    "precio": 1.33,
+    "capitalizacion": 84016807213.56102,
+    "cambio_24h": 2.22998930016338
+   },
+   {
+    "simbolo": "XLM",
+    "nombre": "Stellar Lumens",
+    "precio": 0.181445,
+    "capitalizacion": 6388843561.572826,
+    "cambio_24h": 2.6734343054958205
+   },
+   {
+    "simbolo": "BTC",
+    "nombre": "Bitcoin",
+    "precio": 82817,
+    "capitalizacion": 1664550511999.2205,
+    "cambio_24h": 1.0698912062837234
+   }
+  ],
+  "leido": "2026-10-20 21:55 UTC"
  }
 }

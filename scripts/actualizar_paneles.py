@@ -116,6 +116,36 @@ def leer_stablecoins():
     }
 
 
+URL_PROTOCOLOS = "https://api.llama.fi/protocols"
+URL_PRECIOS = "https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin&vs_currencies=usd&include_market_cap=true&include_24hr_change=true"
+
+
+def leer_rwa():
+    protocolos = json.loads(descargar(URL_PROTOCOLOS))
+    rwa = [p for p in protocolos if (p.get("category") or "") == "RWA" and p.get("tvl")]
+    rwa.sort(key=lambda p: -p["tvl"])
+    if len(rwa) < 20:
+        raise ValueError("la lista de protocolos RWA es demasiado corta")
+    return {
+        "fuente": URL_PROTOCOLOS, "nivel": "S", "unidad": "dólares (USD)", "n": len(rwa), "total": sum(p["tvl"] for p in rwa),
+        "top": [{"nombre": p["name"], "usd": p["tvl"], "cambio_7d": p.get("change_7d"), "cadenas": (p.get("chains") or [])[:3]} for p in rwa[:8]],
+        "stellar": sum((p.get("chainTvls") or {}).get("Stellar", 0) for p in rwa),
+        "xrpl": sum((p.get("chainTvls") or {}).get("XRPL", 0) for p in rwa),
+        "nota": ("Es el valor bloqueado (TVL) en protocolos DeFi que DefiLlama clasifica como RWA: NO es el valor total de activos tokenizados. "
+                 "Otras metodologías (p. ej. RWA.xyz) dan cifras mucho mayores porque cuentan fondos y bonos tokenizados fuera de DeFi."),
+    }
+
+
+def leer_mercado():
+    d = json.loads(descargar(URL_PRECIOS))
+    salida = {"fuente": URL_PRECIOS, "nivel": "S", "unidad": "dólares (USD)", "activos": []}
+    for clave, simbolo, nombre in (("ripple", "XRP", "XRP"), ("stellar", "XLM", "Stellar Lumens"), ("bitcoin", "BTC", "Bitcoin")):
+        x = d[clave]
+        salida["activos"].append({"simbolo": simbolo, "nombre": nombre, "precio": x["usd"], "capitalizacion": x.get("usd_market_cap"),
+                                  "cambio_24h": x.get("usd_24h_change")})
+    return salida
+
+
 def main():
     previo = {}
     if SALIDA.exists():
@@ -125,7 +155,7 @@ def main():
             previo = {}
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado)):
         try:
             salida[clave] = funcion()
             salida[clave]["leido"] = salida["leido"]
