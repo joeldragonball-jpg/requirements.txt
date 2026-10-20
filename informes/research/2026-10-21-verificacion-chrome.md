@@ -1,0 +1,21 @@
+# Verificación con Chrome y descargas directas (sesión del 21-oct-2026)
+
+Objetivo: cerrar celdas del radar que seguían [S] por páginas oficiales que daban 403. Método: Chrome (extensión) solo para **localizar la URL oficial y abrir páginas que bloquean a mi lector**; cuando el PDF o la API estaban abiertos, `curl` + `pdftotext` (más barato). No se inició sesión en ninguna cuenta.
+
+| Tema | Fuente oficial leída | Resultado | Etiqueta |
+|---|---|---|---|
+| UE · Euro digital (posición del Consejo) | Nota de prensa del Consejo, 19-dic-2025 (Chrome; el texto extraído solo dio el pie de página, se leyeron los párrafos con `find`) | Confirmada: «Council agrees position on the digital euro and on strengthening the role of cash»; límites de tenencia, uso sin conexión, tarifas máximas y entrada en negociación con el Parlamento | [P] (no texto íntegro) |
+| GAFI · 7.ª actualización | Página oficial, 16-jul-2026 (Chrome) | Fecha y resumen confirmados: avances, brechas, fraude industrializado, mal uso de stablecoins, P2P, offshore y DeFi. El PDF de 3 MB no se leyó, así que las cifras del 83 % y ~40 % siguen sin comprobar | [P] el resumen; cifras [VERIFICAR] |
+| BRICS · Declaración de Nueva Delhi | PDF oficial de brics2026.gov.in (URL hallada en Chrome; descargado con `curl`, 45 páginas) | Fecha 12-sep-2026. Párr. 90: interoperabilidad de pagos, monedas locales, «sin talla única». **No aparecen** CBDC, stablecoin, cripto ni activos digitales (búsqueda en todo el texto) | [P] |
+| India · fiscal | Páginas oficiales de las secciones 115BBH y 194S (Chrome; `curl` da Access Denied) | 115BBH: 30 % sobre la transferencia de activos digitales virtuales, sin deducciones salvo el coste y sin compensar pérdidas. 194S confirmada, el 1 % no se vio en el elemento leído. La numeración en la Income-tax Act 2025 no se localizó | [P] 30 %; 1 % [S] |
+| Brasil · Banco Central | API oficial de normas del BCB (con `curl`) | Res. 521 (10-nov-2025): lleva a los prestadores de activos virtuales al mercado de cambios. Res. 561 (30-abr-2026, DOU 5-may-2026): prohíbe usar activos virtuales para liquidar el eFX; vigente desde 1-oct-2026. Res. 584 (7-ago-2026, DOU 11-ago-2026): retención de 24 h en transferencias a entidades extranjeras de activos virtuales o carteras autocustodiadas, desde 1-ene-2027, con umbral de 10.000 USD o política de riesgos | [P] |
+
+Corrección de lo que decía el radar: la Res. 584 NO es un tema aparte de «envíos de más de 10.000 USD» en general, sino de **activos virtuales** hacia entidades extranjeras o carteras autocustodiadas; el [VERIFICAR] sobre su fecha queda cerrado (vigencia 1-ene-2027).
+
+## Lo que aprendí del método
+- Chrome sirve para **encontrar la URL oficial** y para páginas con 403; después, si es un PDF o una API abierta, `curl` lo lee sin gastar contexto. El texto de `get_page_text` a veces solo devuelve el pie de página (sitios del Consejo de la UE): usar `find` con una frase concreta y no `read_page` completo (gasta mucho por los menús).
+- La API del BCB (`bcb.gov.br/api/conteudo/app/normativos/exibenormativo?p1=Resolução BCB&p2=NÚMERO`) devuelve el texto del normativo en JSON.
+- `incometaxindia.gov.in` bloquea `curl`; solo se leyó con Chrome.
+
+## Sigue pendiente
+China (PBoC, CSRC, en chino), Indonesia (OJK), Egipto y Etiopía (textos oficiales), PDF del GAFI y del piloto Hangang, numeración de la ley india de 2025.

@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-21b",
+  "version": "2026-10-21d",
   "aviso": "Radar regulatorio construido solo con informes, dossiers, apuntes y el calendario del repo (sin búsquedas nuevas). Informativo: no es recomendación de compra ni venta. Fuente: P = documento oficial leído; S = prensa, despacho o agregador; VERIFICAR = sin dato o sin confirmar.",
   "escala": {
     "0": "Sin marco (o prohibido)",
@@ -554,7 +554,7 @@
       "jur": "ue",
       "tema": "cbdc",
       "etapa": 2,
-      "estado": "El Reglamento del euro digital está en trámite: el Consejo fijó su posición negociadora el 19-dic-2025, con límites de tenencia que fijaría el BCE dentro de un techo global acordado por el Consejo y revisado al menos cada dos años [P: nota de prensa del Consejo, leída en extracto; la página dio 403] y el Parlamento tiene mandato desde el 9-jul-2026; falta el acuerdo en trílogo. La emisión sería posible en 2029 si la ley se adopta en 2026. El BCE prevé un piloto de 12 meses desde el 2S-2027 con 36 proveedores de servicios de pago.",
+      "estado": "El Reglamento del euro digital está en trámite: el Consejo fijó su posición negociadora el 19-dic-2025, con límites de tenencia que fijaría el BCE dentro de un techo global acordado por el Consejo y revisado al menos cada dos años [P: nota de prensa del Consejo, abierta en Chrome el 20-oct; se leyeron titular, fecha y los párrafos sobre límites, uso sin conexión, tarifas máximas y negociación con el Parlamento, no el texto íntegro] y el Parlamento tiene mandato desde el 9-jul-2026; falta el acuerdo en trílogo. La emisión sería posible en 2029 si la ley se adopta en 2026. El BCE prevé un piloto de 12 meses desde el 2S-2027 con 36 proveedores de servicios de pago.",
       "fecha": "2026-10-06",
       "fuente": "P",
       "revisado": "2026-10-20",
@@ -562,7 +562,7 @@
         "fecha": "2026-10-27",
         "que": "Cierre de la convocatoria a comercios del piloto [VERIFICAR]."
       },
-      "falta": "Acuerdo en trílogo; texto completo del mandato del Consejo (la web del Consejo da 403; el texto consta en el buscador).",
+      "falta": "Acuerdo en trílogo; texto íntegro del mandato del Consejo (la nota de prensa ya está leída en parte, sin 403 en Chrome).",
       "hitos": [
         {
           "fecha": "2023-06-28",
@@ -574,7 +574,7 @@
         },
         {
           "fecha": "2025-12-19",
-          "que": "El Consejo acuerda su posición negociadora (cronología del Consejo y despachos; la página dio 403)."
+          "que": "El Consejo acuerda su posición negociadora (nota de prensa del Consejo, 19-dic-2025, leída en Chrome [P])."
         },
         {
           "fecha": "2025-12-19",
@@ -610,7 +610,8 @@
         "Radar v2 research (19-oct)",
         "Gemini T04 verificado (19-oct)",
         "Auditoría del Explorador (20-oct)",
-        "Radar v3 research (20-oct)"
+        "Radar v3 research (20-oct)",
+        "Verificación en Chrome (21-oct)"
       ]
     },
     {
@@ -1550,12 +1551,12 @@
       "jur": "in",
       "tema": "fiscal",
       "etapa": 5,
-      "estado": "Las ganancias de activos digitales tributan al 30 % fijo sin compensar pérdidas, con una retención del 1 % (sección 194S) desde el 1-jul-2022.",
+      "estado": "Las ganancias por transferir activos digitales virtuales tributan al 30 % sin deducir gastos salvo el coste de adquisición ni compensar pérdidas (sección 115BBH de la ley de 1961, texto oficial leído en Chrome [P]); la sección 194S establece la retención sobre el pago por la transferencia (el 1 % consta en un resumen del Departamento, [S]).",
       "fecha": "2022-07-01",
-      "fuente": "S",
+      "fuente": "P",
       "revisado": "2026-10-20",
       "proxima": null,
-      "falta": "Numeración en la nueva ley del IRPF de 2025 y texto oficial (403).",
+      "falta": "Numeración en la nueva Income-tax Act 2025 (la web oficial tiene su página, pero no se localizó el texto de las secciones) y comprobar el 1 % de la 194S en el propio artículo.",
       "hitos": [
         {
           "fecha": "2022-07-01",
@@ -1564,7 +1565,8 @@
       ],
       "informes": [
         "R35",
-        "R02P"
+        "R02P",
+        "Verificación en Chrome (21-oct)"
       ]
     },
     {
@@ -1605,31 +1607,27 @@
       "jur": "br",
       "tema": "stablecoins",
       "etapa": 4,
-      "estado": "El Banco Central trata las operaciones con stablecoins como cambio (Res. 521) y desde el 1-oct-2026 prohíbe usarlas para liquidar en eFX (Res. 561); una retención de 24 h para envíos grandes llega en 2027.",
+      "estado": "El Banco Central incluye a los prestadores de servicios de activos virtuales en el mercado de cambios (Res. BCB 521, 10-nov-2025) y desde el 1-oct-2026 prohíbe usar activos virtuales para liquidar el pago del servicio eFX con la contraparte en el exterior (Res. BCB 561, de 30-abr-2026, DOU 5-may-2026). Desde el 1-ene-2027 (Res. BCB 584, de 7-ago-2026, DOU 11-ago-2026) las entidades solo podrán ejecutar órdenes de transferencia de activos virtuales 24 h después de recibir los fondos cuando el destino sea una entidad extranjera del mercado de activos virtuales o una cartera autocustodiada y la operación supere 10.000 USD (por operación o por día) o lo exija su política de riesgos. Textos leídos en la API oficial del Banco Central [P].",
       "fecha": "2026-10-01",
-      "fuente": "S",
+      "fuente": "P",
       "revisado": "2026-10-20",
       "proxima": {
         "fecha": "2027-01-01",
-        "que": "Retención de hasta 24 h en envíos de más de 10.000 USD (Res. 584) [VERIFICAR]."
+        "que": "Entra en vigor la retención de 24 h de la Res. BCB 584."
       },
-      "falta": "Texto oficial de la Res. 561 (no localizada en bcb.gov.br); votación del PL 4.308.",
+      "falta": "Votación del PL 4.308; guía del Banco Central sobre «carteras autocustodiadas» (el texto remite a regulación específica).",
       "hitos": [
         {
           "fecha": "2026-02-02",
-          "que": "Entran en vigor las Res. 519, 520 y 521."
+          "que": "Entran en vigor las Res. 519, 520 y 521 (la 521, de 10-nov-2025, lleva a los prestadores de activos virtuales al mercado de cambios [P]; la fecha de vigencia no se comprobó)."
         },
         {
           "fecha": "2026-04-30",
-          "que": "Se publica la Res. 561."
+          "que": "Se firma la Res. BCB 561 (DOU 5-may-2026) [P]."
         },
         {
           "fecha": "2026-08-07",
-          "que": "Se publica la Res. 584 (retención de 24 h) [VERIFICAR]."
-        },
-        {
-          "fecha": "2026-08-07",
-          "que": "Res. BCB 584 sobre transferencias a monederos autocustodiados (citada en el Voto 107/2026 del BCB)."
+          "que": "Res. BCB 584 (firmada el 7-ago, DOU 11-ago-2026): retención de 24 h en ciertas transferencias de activos virtuales, desde el 1-ene-2027 [P]."
         },
         {
           "fecha": "2026-10-01",
@@ -1640,7 +1638,8 @@
         "R03P",
         "R25",
         "R30",
-        "Radar v4 research (20-oct)"
+        "Radar v4 research (20-oct)",
+        "Verificación en la API del Banco Central (21-oct)"
       ]
     },
     {
@@ -2366,7 +2365,7 @@
       "fuente": "S",
       "revisado": "2026-10-20",
       "proxima": null,
-      "falta": "Informe del GAFI de jul-2026 entero (403).",
+      "falta": "Informe completo del GAFI de jul-2026 (PDF de 3 MB sin leer; la página oficial confirma fecha 16-jul-2026 y contenido general): cifras del 83 % de Travel Rule y ~40 % de supervisión [VERIFICAR en el PDF].",
       "hitos": [
         {
           "fecha": "2025-10-16",
@@ -2374,11 +2373,12 @@
         },
         {
           "fecha": "2026-07-16",
-          "que": "7.ª actualización del GAFI sobre activos virtuales."
+          "que": "7.ª actualización del GAFI sobre activos virtuales (página oficial leída en Chrome [P]: avances, brechas, fraude industrializado, mal uso de stablecoins, P2P y DeFi)."
         }
       ],
       "informes": [
-        "R18"
+        "R18",
+        "Verificación en Chrome (21-oct)"
       ]
     },
     {
@@ -2432,12 +2432,12 @@
       "jur": "brics",
       "tema": "cbdc",
       "etapa": 1,
-      "estado": "La cumbre BRICS de Nueva Delhi apoyó la interoperabilidad de pagos y las monedas locales sin moneda común ni plazos; mBridge opera dominado por el yuan digital, sin el BIS ni Arabia Saudí.",
-      "fecha": "2026-09-13",
-      "fuente": "S",
+      "estado": "La Declaración de Nueva Delhi (12-sep-2026, PDF oficial de brics2026.gov.in leído entero) apoya estudiar la interoperabilidad de los canales de pago y mensajería y promover el comercio en monedas locales, «sin talla única» (párr. 90), y alienta al Grupo de Trabajo de Pagos a seguir. El texto no menciona CBDC, stablecoins ni criptoactivos (búsqueda de esas palabras en las 45 páginas) y no fija moneda común ni plazos. Lo de mBridge (domina el yuan digital, sin el BIS ni Arabia Saudí) sigue siendo [S].",
+      "fecha": "2026-09-12",
+      "fuente": "P",
       "revisado": "2026-10-20",
       "proxima": null,
-      "falta": "Texto oficial de la Declaración de Nueva Delhi (403).",
+      "falta": "Fuente primaria de mBridge (BIS, bancos centrales participantes); ficha del Grupo de Trabajo de Pagos de los BRICS.",
       "hitos": [
         {
           "fecha": "2024-10",
@@ -2448,13 +2448,14 @@
           "que": "Arabia Saudí termina su prueba de concepto en mBridge (se supo el 20-sep-2026)."
         },
         {
-          "fecha": "2026-09-13",
-          "que": "Cierre de la cumbre de Nueva Delhi."
+          "fecha": "2026-09-12",
+          "que": "Declaración de Nueva Delhi: pagos transfronterizos e interoperabilidad, sin mención a CBDC ni cripto [P]."
         }
       ],
       "informes": [
         "R01P",
-        "R40"
+        "R40",
+        "Verificación en Chrome (21-oct)"
       ]
     },
     {
