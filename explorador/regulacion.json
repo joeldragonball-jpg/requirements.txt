@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-20b",
+  "version": "2026-10-20c",
   "aviso": "Radar regulatorio construido solo con informes, dossiers, apuntes y el calendario del repo (sin búsquedas nuevas). Informativo: no es recomendación de compra ni venta. Fuente: P = documento oficial leído; S = prensa, despacho o agregador; VERIFICAR = sin dato o sin confirmar.",
   "escala": {
     "0": "Sin marco (o prohibido)",
@@ -113,7 +113,7 @@
         "fecha": "2026-10-31",
         "que": "Objetivo de la OCC para su norma final (declaración del Comptroller, secundaria) [VERIFICAR]."
       },
-      "falta": "Norma final de la OCC (no publicada a 20-oct-2026 según la búsqueda; objetivo «fin de octubre») y de Tesoro y Fed; regímenes extranjeros «comparables».",
+      "falta": "Norma final de la OCC: sin publicar a 20-oct-2026 (objetivo «fin de octubre», declaración del Comptroller del 15-oct); normas de Tesoro y Fed; regímenes extranjeros «comparables».",
       "hitos": [
         {
           "fecha": "2025-07-18",
@@ -147,7 +147,8 @@
         "Radar v2 research (19-oct)",
         "Gemini T02 verificado (19-oct)",
         "Auditoría del Explorador (20-oct)",
-        "Radar v3 research (20-oct)"
+        "Radar v3 research (20-oct)",
+        "Radar v4 research (20-oct)"
       ]
     },
     {
@@ -386,7 +387,7 @@
         "fecha": "2027-01-08",
         "que": "Posible fin del plazo de ESMA para stablecoins no conformes [VERIFICAR]."
       },
-      "falta": "Guía de la Comisión sobre la multi-emisión; texto íntegro del comunicado de ESMA del 8-oct-2026.",
+      "falta": "Guía de la Comisión sobre la multi-emisión: sigue sin publicarse a 20-oct-2026; la Comisión dice que trabaja en ella y la JERS y el BCE piden salvaguardas; texto íntegro del comunicado de ESMA del 8-oct-2026.",
       "hitos": [
         {
           "fecha": "2024-07-01",
@@ -409,7 +410,8 @@
         "R25",
         "R18",
         "Dossier Stablecoins (9-oct)",
-        "Radar v2 research (19-oct)"
+        "Radar v2 research (19-oct)",
+        "Radar v4 research (20-oct)"
       ]
     },
     {
@@ -436,13 +438,18 @@
         {
           "fecha": "2026-08-25",
           "que": "Ciudadanos rusos y bielorrusos ya no pueden poseer ni dirigir CASP de la UE (21.º paquete, según analistas)."
+        },
+        {
+          "fecha": "2026-10-15",
+          "que": "Registro de ESMA: 376 entidades en 379 filas, 3 con fecha de autorización futura (CSV del 20-oct)."
         }
       ],
       "informes": [
         "R18",
         "R44",
         "R06P",
-        "Auditoría del Explorador (20-oct)"
+        "Auditoría del Explorador (20-oct)",
+        "Radar v4 research (20-oct)"
       ]
     },
     {
@@ -488,11 +495,11 @@
       "jur": "ue",
       "tema": "custodia",
       "etapa": 5,
-      "estado": "MiCA obliga a los custodios a segregar los activos de clientes y responder por pérdidas atribuibles (art. 75); 215 entidades del registro de ESMA prestan custodia, entre ellas BNY, Deutsche Bank, BBVA y CaixaBank.",
-      "fecha": "2026-10-12",
+      "estado": "MiCA obliga a los custodios a segregar los activos de clientes y responder por pérdidas atribuibles (art. 75). El registro de ESMA (CSV descargado el 20-oct-2026, actualizado el 15-oct) da 194 entidades con custodia; R44 contaba 215 el 17-oct, con otro método o con otra versión del registro [VERIFICAR]. Entre ellas están BNY, Deutsche Bank, BBVA y CaixaBank.",
+      "fecha": "2026-10-15",
       "fuente": "P",
       "proxima": null,
-      "falta": "Qué activos custodia cada entidad, en especial XRP y XLM [VERIFICAR].",
+      "falta": "Explicar la diferencia 215 frente a 194; qué activos custodia cada entidad, en especial XRP y XLM [VERIFICAR].",
       "hitos": [
         {
           "fecha": "2025-02-07",
@@ -509,7 +516,8 @@
       ],
       "informes": [
         "R44",
-        "Dossier Custodia (9-oct)"
+        "Dossier Custodia (9-oct)",
+        "Radar v4 research (20-oct)"
       ]
     },
     {
@@ -1436,14 +1444,14 @@
       "jur": "in",
       "tema": "cbdc",
       "etapa": 1,
-      "estado": "El e₹ sigue en piloto y su circulación minorista cayó un 24 % (771,7 crore ₹ a 31-mar-2026); el RBI prevé pilotos transfronterizos en 2026-27.",
+      "estado": "El e₹ sigue en piloto minorista y mayorista según la página de preguntas frecuentes del RBI (actualizada el 1-oct-2026); el Informe Anual 2025-26 habla de pilotos con transferencias públicas programables y de pilotos transfronterizos bilaterales. La caída de la circulación minorista del 24 % (771,7 crore ₹ a 31-mar-2026) es de prensa [S].",
       "fecha": "2026-03-31",
-      "fuente": "S",
+      "fuente": "P",
       "proxima": {
         "fecha": "2026-12",
         "que": "Informe de Estabilidad Financiera del RBI [VERIFICAR fecha]."
       },
-      "falta": "Tabla del e₹ en el Informe Anual del RBI (captcha); detalle de los pilotos con EAU y Singapur.",
+      "falta": "Tabla del e₹ del Informe Anual (el PDF del RBI pide captcha).",
       "hitos": [
         {
           "fecha": "2025-03-31",
@@ -1452,11 +1460,20 @@
         {
           "fecha": "2026-03-31",
           "que": "Circulación del e₹ minorista: 771,66 crore ₹ (−24 %)."
+        },
+        {
+          "fecha": "2026-05-29",
+          "que": "Informe Anual 2025-26 del RBI (pilotos programables y transfronterizos)."
+        },
+        {
+          "fecha": "2026-10-01",
+          "que": "El RBI actualiza sus preguntas frecuentes: el e₹ sigue en piloto."
         }
       ],
       "informes": [
         "R40",
-        "R02P"
+        "R02P",
+        "Radar v4 research (20-oct)"
       ]
     },
     {
@@ -1523,7 +1540,7 @@
         "fecha": "2027-01-01",
         "que": "Retención de hasta 24 h en envíos de más de 10.000 USD (Res. 584) [VERIFICAR]."
       },
-      "falta": "Textos oficiales de las resoluciones (la web del BCB no abre); votación del PL 4.308.",
+      "falta": "Texto oficial de la Res. 561 (no localizada en bcb.gov.br); votación del PL 4.308.",
       "hitos": [
         {
           "fecha": "2026-02-02",
@@ -1538,6 +1555,10 @@
           "que": "Se publica la Res. 584 (retención de 24 h) [VERIFICAR]."
         },
         {
+          "fecha": "2026-08-07",
+          "que": "Res. BCB 584 sobre transferencias a monederos autocustodiados (citada en el Voto 107/2026 del BCB)."
+        },
+        {
           "fecha": "2026-10-01",
           "que": "Entra en vigor la Res. 561."
         }
@@ -1545,21 +1566,22 @@
       "informes": [
         "R03P",
         "R25",
-        "R30"
+        "R30",
+        "Radar v4 research (20-oct)"
       ]
     },
     {
       "jur": "br",
       "tema": "ley_marco",
       "etapa": 4,
-      "estado": "Los proveedores cripto (PSAV) tienen marco completo desde el 2-feb-2026 y los existentes deben pedir autorización en 270 días.",
+      "estado": "Los proveedores cripto (PSAV) tienen marco completo desde el 2-feb-2026 (Res. BCB 519, 520 y 521) y, según el Voto 107/2026 del Banco Central, octubre de 2026 es el plazo final de la Res. 520 para que los que ya operaban pidan autorización. No hay dato sobre ETF cripto en Brasil.",
       "fecha": "2026-02-02",
-      "fuente": "S",
+      "fuente": "P",
       "proxima": {
-        "fecha": "2026-10-30",
-        "que": "Fin del plazo de 270 días para pedir autorización (cálculo propio) [VERIFICAR]."
+        "fecha": "2026-10",
+        "que": "Fin del plazo para que los proveedores existentes pidan autorización (Res. 520, según el Voto 107/2026 del BCB)."
       },
-      "falta": "Lista oficial de PSAV autorizadas; si Ripple pidió la licencia.",
+      "falta": "Lista oficial de PSAV autorizadas; si Ripple pidió la licencia; texto de las resoluciones (normativos.bcb.gov.br solo sirve PDF).",
       "hitos": [
         {
           "fecha": "2025-11-10",
@@ -1572,11 +1594,16 @@
         {
           "fecha": "2026-03-17",
           "que": "Ripple anuncia que planea pedir la licencia de PSAV."
+        },
+        {
+          "fecha": "2026-09-22",
+          "que": "Voto 107/2026 del BCB: octubre de 2026, plazo final para pedir autorización."
         }
       ],
       "informes": [
         "R03P",
-        "R30"
+        "R30",
+        "Radar v4 research (20-oct)"
       ]
     },
     {
@@ -1621,14 +1648,14 @@
       "jur": "br",
       "tema": "custodia",
       "etapa": 4,
-      "estado": "La custodia es uno de los tres tipos de PSAV que regula la Res. 520, vigente desde el 2-feb-2026.",
+      "estado": "La custodia es uno de los tres tipos de PSAV de la Res. 520, vigente desde el 2-feb-2026; desde el 1-oct-2026 las transferencias de 10.000 US$ o más a monederos autocustodiados deben comunicarse al Coaf (propuesta del Voto 107/2026).",
       "fecha": "2026-02-02",
-      "fuente": "S",
+      "fuente": "P",
       "proxima": {
-        "fecha": "2026-10-30",
-        "que": "Fin del plazo para pedir autorización (cálculo propio) [VERIFICAR]."
+        "fecha": "2026-10",
+        "que": "Fin del plazo para pedir autorización (Res. 520)."
       },
-      "falta": "Lista de custodios autorizados.",
+      "falta": "Lista de custodios autorizados; confirmar que la resolución del Voto 107 se publicó.",
       "hitos": [
         {
           "fecha": "2026-02-02",
@@ -1636,7 +1663,8 @@
         }
       ],
       "informes": [
-        "R03P"
+        "R03P",
+        "Radar v4 research (20-oct)"
       ]
     },
     {
@@ -1715,33 +1743,47 @@
     {
       "jur": "ru",
       "tema": "stablecoins",
-      "etapa": null,
-      "estado": "La ley rusa crearía una categoría para stablecoins extranjeras, pero solo consta en un extracto; el rublo-stablecoin A7A5 está sancionado por la UE y EE. UU.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
+      "etapa": 4,
+      "estado": "La ley rusa no define «stablecoin»: según el Banco de Rusia, las stablecoins extranjeras son monedas digitales o «instrumentos digitales extranjeros» y siguen el régimen de las monedas digitales de la ley 282-ФЗ. El rublo-stablecoin A7A5 está sancionado por la UE y la red A7 por EE. UU.",
+      "fecha": "2026-09-01",
+      "fuente": "P",
       "proxima": null,
-      "falta": "Texto oficial de la ley 282-ФЗ.",
-      "hitos": [],
+      "falta": "Texto de la guía del Banco de Rusia; volumen de A7A5 tras las sanciones (solo analistas).",
+      "hitos": [
+        {
+          "fecha": "2026-09-01",
+          "que": "Entra en vigor la ley 282-ФЗ."
+        }
+      ],
       "informes": [
-        "R06P"
+        "R06P",
+        "Radar v4 research (20-oct)"
       ]
     },
     {
       "jur": "ru",
       "tema": "ley_marco",
       "etapa": 4,
-      "estado": "La ley 282-ФЗ rige desde el 1-sep-2026: la cripto es propiedad, hay registro de intermediarios y los pagos internos siguen prohibidos, salvo en el comercio exterior.",
+      "estado": "La ley 282-ФЗ «sobre monedas digitales y derechos digitales» (aprobada por la Duma el 21-jul y el Consejo de la Federación el 24-jul, firmada el 4-ago-2026) rige desde el 1-sep-2026: regula emisión, circulación, minería y a los intermediarios (organizadores, casas de cambio, depositarios, brókers) y prohíbe pagar bienes y servicios con cripto salvo en contratos de comercio exterior. Desde el 1-jul-2027 los residentes solo podrán operar a través de organizadores autorizados.",
       "fecha": "2026-09-01",
-      "fuente": "S",
+      "fuente": "P",
       "proxima": {
         "fecha": "2027-07-01",
         "que": "Fin de la tolerancia a casas de cambio cripto sin registro."
       },
-      "falta": "Texto oficial de la ley (la web no abrió); registro de intermediarios del Banco de Rusia.",
+      "falta": "Texto completo leído (solo extractos de publication.pravo.gov.ru, kremlin.ru y cbr.ru); registro de intermediarios del Banco de Rusia.",
       "hitos": [
         {
           "fecha": "2024-09-01",
           "que": "Régimen experimental de pagos exteriores con cripto."
+        },
+        {
+          "fecha": "2026-07-21",
+          "que": "La Duma aprueba la ley (kremlin.ru)."
+        },
+        {
+          "fecha": "2026-07-24",
+          "que": "El Consejo de la Federación la aprueba (kremlin.ru)."
         },
         {
           "fecha": "2026-08-04",
@@ -1758,7 +1800,8 @@
       ],
       "informes": [
         "R06P",
-        "R30"
+        "R30",
+        "Radar v4 research (20-oct)"
       ]
     },
     {
@@ -1793,11 +1836,11 @@
       "jur": "ru",
       "tema": "custodia",
       "etapa": 4,
-      "estado": "La ley 282-ФЗ incluye a los depositarios entre los intermediarios regulados por el Banco de Rusia.",
+      "estado": "La ley 282-ФЗ incluye a los depositarios digitales entre los intermediarios regulados por el Banco de Rusia; desde el 1-jul-2027 no se permiten transferencias directas entre particulares ni a monederos no custodiados, según el resumen del texto.",
       "fecha": "2026-09-01",
-      "fuente": "S",
+      "fuente": "P",
       "proxima": null,
-      "falta": "Texto oficial y requisitos de los depositarios.",
+      "falta": "Requisitos concretos de los depositarios y texto completo de los artículos 30 y 31.",
       "hitos": [
         {
           "fecha": "2026-09-01",
@@ -1805,7 +1848,8 @@
         }
       ],
       "informes": [
-        "R06P"
+        "R06P",
+        "Radar v4 research (20-oct)"
       ]
     },
     {
@@ -1904,23 +1948,32 @@
       "jur": "ae",
       "tema": "ley_marco",
       "etapa": 5,
-      "estado": "Tres capas supervisan la cripto (ADGM/FSRA, DIFC/DFSA y VARA) y el CBUAE federal; el plazo para licenciarse bajo el Decreto-Ley 6/2025 venció el 16-sep-2026 sin información verificada.",
+      "estado": "El Decreto-Ley Federal 6/2025 (en vigor desde el 16-sep-2025) extiende la supervisión del Banco Central a las actividades financieras hechas con tecnología descentralizada, incluidos los tokens de pago de activos virtuales y las DeFi; su art. 184 dio un año de adaptación, prorrogable por el Consejo del Banco Central. Además supervisan las zonas francas (ADGM/FSRA, DIFC/DFSA) y VARA en Dubái.",
       "fecha": "2026-09-16",
-      "fuente": "S",
+      "fuente": "P",
       "proxima": null,
-      "falta": "Fuentes primarias del CBUAE, VARA, DFSA y FSRA.",
+      "falta": "Si el Consejo del Banco Central prorrogó el plazo que venció el 16-sep-2026 (no consta en el rulebook ni en las noticias) [VERIFICAR].",
       "hitos": [
         {
           "fecha": "2025-09-16",
           "que": "Entra en vigor el Decreto-Ley Federal 6/2025."
         },
         {
+          "fecha": "2025-09-16",
+          "que": "Entra en vigor el Decreto-Ley Federal 6/2025 (rulebook del CBUAE)."
+        },
+        {
           "fecha": "2026-09-16",
           "que": "Vence el plazo de licencia federal (posible prórroga)."
+        },
+        {
+          "fecha": "2026-09-16",
+          "que": "Vence el año de adaptación del art. 184, sin prórroga publicada."
         }
       ],
       "informes": [
-        "R07P"
+        "R07P",
+        "Radar v4 research (20-oct)"
       ]
     },
     {
@@ -2600,7 +2653,7 @@
   "huecos": [
     {
       "zona": "Egipto, Etiopía e Irán",
-      "nota": "Socios de BRICS sin research suficiente: de Irán solo constan la prohibición bancaria de 2018 y el piloto del rial digital en Kish (2024), y de Egipto y Etiopía nada fiable (búsqueda del 20-oct-2026)."
+      "nota": "Búsqueda del 20-oct-2026, sin llegar a 3 celdas fiables. Egipto: el art. 206 de la Ley 194/2020 prohíbe la cripto sin licencia del Banco Central (ninguna concedida, según despachos) y el tipo de depósito estaba en 19 % en jul-2026 [S]. Etiopía: el Banco Nacional prohibió en feb y may-2026 el P2P cripto en birr y la custodia e intermediación no autorizadas; la minería sigue legal [S]. Irán: OFAC sancionó Nobitex (2-jun-2026) y otros exchanges; la supuesta prohibición total de dic-2025 tiene una sola fuente y no hay dato del rial digital [VERIFICAR]."
     },
     {
       "zona": "Arabia Saudí",
