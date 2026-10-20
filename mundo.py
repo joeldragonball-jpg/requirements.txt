@@ -23,7 +23,7 @@ PAISES = {"us": "EE. UU.", "eu": "Unión Europea", "uk": "Reino Unido", "ch": "S
           "sa": "Arabia Saudí", "ca": "Canadá", "int": "Internacional / BIS"}
 # Jurisdicciones de regulacion.json y países de datos.json -> casilla
 JUR = {"eeuu": "us", "ue": "eu", "sg": "sg", "hk": "hk", "kr": "kr", "jp": "jp", "in": "in", "br": "br", "ru": "ru",
-       "ae": "ae", "cn": "cn", "brics": "int", "za": "za", "id": "id"}
+       "ae": "ae", "cn": "cn", "brics": "int", "za": "za", "id": "id", "eg": "eg", "et": "et", "ir": "ir"}
 NOMBRE_A_PAIS = {"EE. UU.": "us", "Unión Europea": "eu", "Internacional": "int", "Brasil": "br", "Canadá": "ca",
                  "Hong Kong": "hk", "Japón": "jp", "Luxemburgo": "eu", "Rusia": "ru", "Arabia Saudí": "sa",
                  "Corea del Sur": "kr", "Reino Unido": "uk", "Suiza": "ch", "Singapur": "sg", "China": "cn",
