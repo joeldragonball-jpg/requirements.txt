@@ -44,3 +44,6 @@ Una tesorería cotizada aumenta su XRP por acción si emite acciones por encima 
 
 ## Correcciones 2026-10-17 (R23, 8-K de la SEC)
 - La cifra de "473 M de XRP" procede de un Form 425 con fecha 31-dic-2025 ("over 473 million XRP as of December 31, 2025"), no del 8-K del cierre. El 8-K (CIK 2092592, presentado el 13-oct-2026, leído entero) confirma **388.910.554 XRP aportados en especie** (suma de cinco partidas) y NO da un total de XRP tras el cierre. La diferencia (~84 M) es una resta propia, no un dato oficial [VERIFICAR]. Precios del 8-K: Signing XRP Price 2,36609 $ y Closing XRP Price 1,43069 $ (media de 3 días del CME CF XRP-Dollar). Es un vehículo de tesorería, no un ETF.
+
+## Resumen corregido (21-oct-2026, revisión del 18-oct)
+- XRPN cotiza desde el 12-oct-2026 (8-K de la SEC). Las «473 M de XRP» son una cifra pro forma del Form 425 de 31-dic-2025, no del 8-K del cierre; el 8-K confirma 388.910.554 XRP aportados en especie y no da un total posterior. Tomar 388,9 M como cifra oficial; el debut ya no es incierto.

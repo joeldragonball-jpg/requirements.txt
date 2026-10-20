@@ -97,3 +97,4 @@ actualizado: 2026-10-07
 - 2026-10-18 (R49): washouts (≥7 % en ≤6 h con rebote ≥50 %): ~28/año; se concentran de 15:00 a 19:59 UTC (41 de 109 en XRP, 40 de 106 en XLM; esperados ~22) y no destacan en fin de mes/trimestre, escrow del día 1, vencimientos ni 13F. Entre el 47 % (XLM) y el 61 % (XRP) con BTC cayendo ≥3 %.
 
 - 2026-10-20 (R00 cierre): XRP +2,0 % y XLM +1,2 % desde las 00:00 UTC frente a BTC +0,8 % sin noticia fechada que lo explique; atribuir la subida a un hito (p. ej. cierre de comentarios de la SEC) sin hora ni fuente sería lectura de agregador (ver R48).
+- 2026-10-21 (correcciones de la revisión del 18-oct): (a) fixCleanup3_4_0 en XRPL: la hora válida de la mayoría es 9-oct-2026 09:34:30 UTC (fuente directa); ignorar la línea de R32 con «10:34». (b) Brent: indicar siempre la serie; BZ=F (Yahoo) 109,28 $ el 20-oct vs. spot FOB Europa (EIA) ~126 $ el 14-oct no son comparables. (c) CLARITY 15-sep: fue un cloture fallido (49-50), no el rechazo de la ley.

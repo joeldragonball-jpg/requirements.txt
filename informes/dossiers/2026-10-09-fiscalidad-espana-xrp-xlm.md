@@ -7,7 +7,7 @@
 2. **Escala vigente (art. 66 y 76 Ley IRPF, tras la Ley 7/2024, efectos desde 1-ene-2025):** **19 % hasta 6.000 €; 21 % hasta 50.000 €; 23 % hasta 200.000 €; 27 % hasta 300.000 €; 30 % por encima** (suma de tramo estatal + autonómico). **No he encontrado cambios en 2026.** Algunas webs dicen 28 % por encima de 300.000 €: **contradice el BOE** (ver §3).
 3. **Pérdidas:** se compensan con ganancias del mismo año; el saldo negativo se compensa con rendimientos del capital mobiliario con límite del **25 %** y se arrastra **4 años** (art. 49.1 Ley IRPF, leído en el BOE).
 4. **Regla de los 2 meses / 1 año:** el art. 33.5 f) (2 meses) habla de **valores admitidos a negociación**; la DGT dice que las criptomonedas **no son valores negociados**, así que esa letra **no se les aplica** (secundaria). Queda abierta si se aplica el art. 33.5 e) (recompra en el año siguiente): **no he encontrado consulta de la DGT** que lo resuelva [VERIFICAR].
-5. **Método FIFO:** las ventas parciales de una misma cripto se imputan a las unidades **compradas primero** (DGT V1604-18, V0975-22; art. 37.2 Ley IRPF para valores). Un **TSJ del País Vasco** (9-ene-2025, rec. 75/2024) lo **rechazó** en el IRPF **foral** vasco; es una sentencia recurrible y no vincula al régimen común [VERIFICAR su firmeza].
+5. **Método FIFO [P]:** las ventas parciales de una misma cripto se imputan a las unidades **compradas primero** (AEAT, Manual práctico de Renta 2025, página del 17-mar-2026: «las adquiridas en primer lugar»; antes solo DGT V1604-18, V0975-22 y art. 37.2 Ley IRPF para valores). En una **permuta**, el valor de transmisión es el mayor entre el valor de mercado de lo recibido y de lo entregado [P] (mismo manual; R20, 18-oct-2026). Un **TSJ del País Vasco** (9-ene-2025, rec. 75/2024) lo **rechazó** en el IRPF **foral** vasco; es una sentencia recurrible y no vincula al régimen común [VERIFICAR su firmeza].
 6. **Obligaciones informativas:** hoy rigen los **modelos 172, 173 y 721** (Órdenes HFP/886 y 887/2023). **DAC8** entra desde el **1-ene-2026** (datos de 2026 se comunican en **enero de 2027**), y el **modelo 173 desaparece** y nace el **175** — pero la Orden es todavía **proyecto** (a 10-mar-2026).
 7. **Campaña de la renta:** la del ejercicio **2025** fue del **8-abr al 30-jun-2026** (AEAT, primaria). La del ejercicio **2026** (en 2027) **no está publicada**.
 8. **ETP frente a moneda:** un ETP/ETN europeo de XRP es un **valor de deuda cotizado**: se tributa **al vender** como ganancia patrimonial del ahorro, sin 721 pero sí posible **modelo 720** si está en custodia en el extranjero (DGT V0267-25, secundaria; casillas y detalles [VERIFICAR]).
@@ -72,11 +72,11 @@
 | Dato | Valor | Fuente |
 |---|---|---|
 | Qué es | Declaración informativa de **criptos custodiadas por entidades situadas en el extranjero** (no por tu wallet propia ni por exchanges españoles) | Orden HFP/886/2023; art. 42 quater RGAT |
-| Umbral | **50.000 €** de saldo conjunto a **31-dic**; si se supera, hay que informar de **todas** | Proyecto de RD DAC8 (reproduce el texto del art. 42 quater RGAT) y Orden proyecto (art. 15-16) |
+| Umbral | **50.000 €** de saldo conjunto a **31-dic**; si se supera, hay que informar de **todas** | **[P] FAQ de la AEAT (act. 8-sep-2026)**; el texto de la Orden HFP/886/2023 NO contiene «50.000» (R20, 18-oct-2026). Base legal: DA 18ª LGT, letra d). Antes: proyecto de RD DAC8 y Orden proyecto (art. 15-16) |
 | Plazo | **1-ene al 31-mar** del año siguiente | Proyecto de Orden, art. 17 (reproduce el vigente) |
 | Años siguientes | Solo si el saldo **sube más de 20.000 €** respecto a la última declaración | Proyecto de RD DAC8 |
 | Cambio 2026 | La Orden proyecto lo renombra "**criptoactivos** situados en el extranjero" y lo extiende a **toda la tenencia** (no solo la sujeta a DAC8); se aplicará por primera vez al **ejercicio 2026, presentado en 2027** | Proyecto de Orden (10-mar-2026), DF 3ª |
-| Sanciones | Las cifras varían entre webs (20 € por dato con mínimo 300 € y máximo 20.000 € según guiafiscal; "mínimo 10.000 €" según BM Consulting) | **Contradicción en secundarias** [VERIFICAR en la Ley General Tributaria, DA 18ª] |
+| Sanciones | Arts. 198 y 199 LGT [P, BOE leído el 18-oct-2026]: fuera de plazo, 20 € por dato (mín. 300 €, máx. 20.000 €); declaración incompleta o inexacta, 200 € por dato (sin magnitudes monetarias) o hasta el 2 % de las operaciones con mínimo de 500 € (con magnitudes monetarias). El «mínimo 10.000 €» de una asesoría no figura en esos artículos [ESPECULACIÓN: probable régimen anterior] | **Contradicción resuelta en parte (R20)** |
 
 ### 6.2 Modelos 172 y 173
 - **Modelo 172 (saldos):** lo presentan los **proveedores españoles** (o con presencia en España) sobre el saldo en cripto de sus clientes. **Modelo 173 (operaciones):** adquisiciones, transmisiones y permutas. Ambos regulados por la **Orden HFP/887/2023** (26-jul-2023).
@@ -102,7 +102,7 @@
 | Citas | Teléfono desde 6-may (cita desde 29-abr); oficinas desde 1-jun | AEAT (primaria) |
 | Campaña IRPF **2026** (en 2027) | **No publicada.** Mi estimación: abril → 30-jun-2027 | [ESPECULACIÓN] |
 | Datos fiscales | La AEAT puede mostrar referencias **CR1, CR2, CR3** (cuentas bancarias españolas, saldos y ventas/permutas en plataformas locales) | Secundaria (prensa) [VERIFICAR en la Renta WEB] |
-| Casillas | Bloque dedicado a **monedas virtuales: casillas 1800–1814** (ganancias/pérdidas); algunas guías citan la **1626** (clave "monedas virtuales") y la **0033** para staking/lending | **Secundarias, contradictorias** [VERIFICAR en el Manual de la Renta de la AEAT] |
+| Casillas | Bloque dedicado a **monedas virtuales: casillas 1800–1814** (ganancias/pérdidas); algunas guías citan la **1626** (clave "monedas virtuales") y la **0033** para staking/lending | **Secundarias, contradictorias.** NO verificadas para Renta 2025: el manual de la AEAT confirma el apartado F2 «transmisión o permuta de monedas virtuales» pero no da los números de casilla; 1800–1814 vienen del Modelo 100 de 2022 (R20, 18-oct-2026) [VERIFICAR] |
 | Dónde van | Venta y permuta → **ganancias patrimoniales, base del ahorro**; staking/lending → **capital mobiliario, base del ahorro**; airdrops → **ganancia patrimonial, base general**; estafa/quiebra → **base general** | DGT (arts. 25, 33, 46, 49 Ley IRPF) |
 | Obligación de declarar | Hay que declarar las operaciones con ganancia o pérdida **sin importe mínimo** (guías); los umbrales de no obligación del IRPF son otra cuestión | Secundarias [VERIFICAR] |
 
@@ -167,7 +167,7 @@
 - **Consultas de la DGT:** son **vinculantes para la Administración** solo para quien consulta; las demás son **criterio orientativo** (no son ley) y pueden cambiar. Muchas las conozco por **resúmenes**, no por el texto original.
 - **Proyectos de norma (RD, Orden):** pueden cambiar antes del BOE. Los "Ley XX/2025" confirman que no estaban numerados.
 - **Predicciones o titulares del tipo "Hacienda lo sabrá todo":** DAC8 comunica **totales**, no historial ni coste; el control real depende de la AEAT.
-- **Sanciones del 721:** hay **cifras contradictorias** en las webs; mejor no apoyarse en ninguna.
+- **Sanciones del 721:** mandan los arts. 198 y 199 LGT (ver tabla de §6.1); las cifras de webs que no coinciden con ellos no se usan.
 
 ## 13. Qué implica para XRP y XLM (sin consejos)
 - XRP y XLM se tratan **igual que cualquier otra cripto**: no hay régimen especial por el caso SEC o por su uso en pagos.
