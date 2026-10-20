@@ -81,6 +81,11 @@ details.doc .chips{margin:2px 0 6px}
 .radar-jur:hover,.radar-jur.on{border-color:var(--oro)}
 .radar-cel{appearance:none;height:30px;border-radius:5px;border:1px solid;font:inherit;font-weight:700;font-size:13px;cursor:pointer;color:#fff;display:flex;align-items:center;justify-content:center;gap:3px;padding:0}
 .radar-cel small{font-size:8.5px;font-weight:600;opacity:.85}
+.radar-cel{position:relative}
+.radar-cel.rv::after{content:"";position:absolute;top:3px;right:3px;width:6px;height:6px;border-radius:50%;background:#f0a830;box-shadow:0 0 0 1px rgba(0,0,0,.45)}
+.radar-comp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.radar-comp>div{min-width:0}
+.radar-comp h4{margin:0 0 6px;font-size:14px;color:var(--oro)}
 .radar-cel.nd{border-style:dashed;background:transparent !important;color:var(--suave);font-weight:400}
 .radar-cel:hover{filter:brightness(1.25)}.radar-cel.on{outline:2px solid var(--oro);outline-offset:1px}
 .contraste{border:1px solid rgba(212,168,75,.45);background:rgba(212,168,75,.06);border-radius:8px;padding:2px 10px 8px;margin:10px 0}
@@ -95,6 +100,7 @@ details.doc .chips{margin:2px 0 6px}
 .ficha-pts{letter-spacing:.18em;font-size:15px}
 .ficha-dos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 @media (max-width:900px){.ficha-dos{grid-template-columns:1fr}}
+@media (max-width:700px){.radar-comp{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;-webkit-overflow-scrolling:touch}.radar-comp>div{flex:0 0 88%;scroll-snap-align:start}}
 .bloque{background:rgba(15,23,42,.6);border:1px solid var(--linea);border-radius:6px;padding:8px 11px;margin:7px 0;border-left-width:3px}
 .volver{background:rgba(15,23,42,.9);color:var(--texto);border:1px solid var(--linea);border-radius:6px;padding:5px 11px;cursor:pointer;margin-bottom:10px;font:inherit;font-size:12.5px}
 .volver:hover{border-color:var(--oro)}
@@ -527,6 +533,7 @@ function listaFicha(padre, items){ const ul = H('ul', 'ficha-ul', padre); (items
 const RADAR = D.radar;
 const ETAPA_COL = ['#e06c6c', '#d9904a', '#d4a84b', '#8bb86a', '#3fb68b', '#2ee6a6'];
 let radarSel = null;   // {jur, tema?}
+let radarComp = [];    // países para comparar (0, 1 o 2)
 const celdaRadar = (j, t) => RADAR.celdas.find(c => c.jur === j && c.tema === t);
 const DIR_COL = {'sube': '#d9904a', 'mantiene': '#8a97b0', 'baja': '#5aa9e6', 'n/d': '#64748b'};
 const DIR_SIM = {'sube': '▲', 'mantiene': '▬', 'baja': '▼', 'n/d': '•'};
@@ -540,42 +547,55 @@ function etapaChip(padre, c){
   p.style.background = tieneDato(c) ? colCelda(c) : '#475569';
   a.appendChild(document.createTextNode(c.etapa !== null ? `Etapa ${c.etapa}: ${RADAR.escala[c.etapa]}` : (c.dir ? `${RADAR.escala_politica[c.dir]}${c.valor && c.valor !== '—' ? ': ' + c.valor : ''}` : 'Sin dato')));
 }
-function radarCelda(padre, c){
+const DIAS_REVISION = 30;
+function diasSinRevisar(c){
+  if (!c || !tieneDato(c) || !c.revisado) return null;
+  const r = Date.parse(c.revisado + 'T00:00:00');
+  return isNaN(r) ? null : Math.floor((Date.now() - r) / 86400000);
+}
+const caducada = c => { const d = diasSinRevisar(c); return d !== null && d > DIAS_REVISION; };
+function radarCelda(padre, c, compacto){
   const nf = nivelFuente(c.fuente);
   const b = H('div', 'bloque entra', padre); b.style.borderLeftColor = tieneDato(c) ? colCelda(c) : '#475569';
   const t = H('div', '', b); H('b', '', t, `${nomJur(c.jur)} · ${nomTema(c.tema)}`);
   const ch = H('div', 'chips', b); etapaChip(ch, c);
   if (nf){ const e = H('span', 'etq', ch, nf[0]); e.style.color = nf[1]; e.style.borderColor = rgba(nf[1], .6); e.title = nf[2]; }
   if (c.fecha) H('span', 'chip', ch, 'Último cambio: ' + c.fecha);
+  if (caducada(c)){ const a = H('span', 'chip', ch, 'Sin revisar desde ' + c.revisado); a.style.color = '#f0a830'; a.style.borderColor = 'rgba(240,168,48,.6)'; a.title = 'Han pasado más de ' + DIAS_REVISION + ' días desde la última comprobación'; }
+  else if (c.revisado && tieneDato(c)) H('span', 'chip', ch, 'Revisado: ' + c.revisado);
   H('div', '', b, c.estado);
   if (c.proxima){ const x = H('div', 'nota', b); x.style.marginTop = '6px'; H('b', '', x, 'Próxima fecha: '); x.appendChild(document.createTextNode(`${c.proxima.fecha} · ${c.proxima.que}`)); }
   if (c.falta){ const x = H('div', 'nota', b); x.style.marginTop = '4px'; H('b', '', x, 'Qué falta: '); x.appendChild(document.createTextNode(c.falta)); }
-  if ((c.hitos || []).length){
+  if (!compacto && (c.hitos || []).length){
     const h = H('div', 'nota', b, 'Cómo ha avanzado'); h.style.cssText = 'margin-top:8px;font-weight:700';
     const ul = H('ul', 'hitos', b);
     c.hitos.slice().sort((x, y) => String(x.fecha).localeCompare(String(y.fecha))).forEach(m => { const li = H('li', '', ul); H('span', 'cuando', li, m.fecha); li.appendChild(document.createTextNode(m.que)); });
   }
-  if ((c.informes || []).length){ const f = H('div', 'fuente', b, 'Informes de origen: ' + c.informes.join(', ')); f.style.marginTop = '6px'; }
+  if (!compacto && (c.informes || []).length){ const f = H('div', 'fuente', b, 'Informes de origen: ' + c.informes.join(', ')); f.style.marginTop = '6px'; }
 }
 function radarVista(padre, titulo){
   if (!RADAR) return;
   H('h3', '', padre, titulo);
   const con = RADAR.celdas.filter(tieneDato).length;
-  H('p', 'nota', padre, `${con} de ${RADAR.celdas.length} celdas con dato; el resto se muestra con guion y está marcado [VERIFICAR]. La etapa es la de la norma, no una valoración de si es buena o mala. Pulsa una celda para ver cómo ha avanzado, o un país para ver todos sus temas.`);
+  H('p', 'nota', padre, `${con} de ${RADAR.celdas.length} celdas con dato; el resto se muestra con guion y está marcado [VERIFICAR]. La etapa es la de la norma, no una valoración de si es buena o mala. Pulsa una celda para ver cómo ha avanzado, o un país para ver todos sus temas; pulsa un segundo país para compararlos (un tercer pulso reinicia). Un punto ámbar marca celdas sin revisar hace más de ${DIAS_REVISION} días.`);
   const g = H('div', 'radar-grid', padre); g.style.gridTemplateColumns = `minmax(78px,1.5fr) repeat(${RADAR.temas.length},minmax(0,1fr))`;
   H('div', '', g);
   RADAR.temas.forEach(t => { const th = H('div', 'radar-th', g, t.nombre); th.title = t.nombre; });
   RADAR.jurisdicciones.forEach(j => {
-    const bj = H('button', 'radar-jur' + (radarSel && radarSel.jur === j.id && !radarSel.tema ? ' on' : ''), g, j.nombre.replace(' (supranacional)', '').replace('Emiratos Árabes Unidos', 'Emiratos'));
-    bj.title = 'Ver todos los temas de ' + j.nombre;
-    bj.addEventListener('click', () => { radarSel = (radarSel && radarSel.jur === j.id && !radarSel.tema) ? null : {jur: j.id}; dibujarPanel(); });
+    const bj = H('button', 'radar-jur' + (radarComp.indexOf(j.id) >= 0 ? ' on' : ''), g, j.nombre.replace(' (supranacional)', '').replace('Emiratos Árabes Unidos', 'Emiratos'));
+    bj.title = 'Ver todos los temas de ' + j.nombre + ' (pulsa otro país para compararlos)';
+    bj.addEventListener('click', () => {
+      if (radarComp.length === 0){ radarComp = [j.id]; radarSel = {jur: j.id}; }
+      else if (radarComp.length === 1 && radarComp[0] !== j.id){ radarComp = [radarComp[0], j.id]; radarSel = null; }
+      else { radarComp = []; radarSel = null; }
+      dibujarPanel(); });
     RADAR.temas.forEach(t => {
       const c = celdaRadar(j.id, t.id), nd = !tieneDato(c);
-      const b = H('button', 'radar-cel' + (nd ? ' nd' : '') + (radarSel && radarSel.jur === j.id && radarSel.tema === t.id ? ' on' : ''), g);
+      const b = H('button', 'radar-cel' + (nd ? ' nd' : '') + (caducada(c) ? ' rv' : '') + (radarSel && radarSel.jur === j.id && radarSel.tema === t.id ? ' on' : ''), g);
       if (!nd){ const col = colCelda(c); b.style.background = rgba(col, .3); b.style.borderColor = rgba(col, .8); b.appendChild(document.createTextNode(c.etapa !== null ? String(c.etapa) : DIR_SIM[c.dir] || '•')); H('small', '', b, c.fuente === 'VERIFICAR' ? '?' : c.fuente); }
       else b.appendChild(document.createTextNode('—'));
-      b.title = `${j.nombre} · ${t.nombre}: ` + (nd ? 'sin dato' : (c.etapa !== null ? `etapa ${c.etapa}, ${RADAR.escala[c.etapa]}` : `${RADAR.escala_politica[c.dir]}${c.valor && c.valor !== '—' ? ', ' + c.valor : ''}`));
-      b.addEventListener('click', () => { radarSel = (radarSel && radarSel.jur === j.id && radarSel.tema === t.id) ? null : {jur: j.id, tema: t.id}; dibujarPanel(); });
+      b.title = `${j.nombre} · ${t.nombre}: ` + (nd ? 'sin dato' : (caducada(c) ? 'SIN REVISAR desde ' + c.revisado + ' · ' : '') + (c.etapa !== null ? `etapa ${c.etapa}, ${RADAR.escala[c.etapa]}` : `${RADAR.escala_politica[c.dir]}${c.valor && c.valor !== '—' ? ', ' + c.valor : ''}`));
+      b.addEventListener('click', () => { radarComp = []; radarSel = (radarSel && radarSel.jur === j.id && radarSel.tema === t.id) ? null : {jur: j.id, tema: t.id}; dibujarPanel(); });
     });
   });
   const ley = H('div', 'leyenda', padre);
@@ -584,7 +604,13 @@ function radarVista(padre, titulo){
   const t0 = H('span', '', ley2, 'Política monetaria (última columna):'); t0.style.color = '#cdd6ea';
   Object.keys(RADAR.escala_politica).forEach(k => { const s = H('span', '', ley2); const p = H('span', 'punto', s); p.style.background = DIR_COL[k]; s.appendChild(document.createTextNode(`${DIR_SIM[k]} ${RADAR.escala_politica[k]}`)); });
   H('p', 'nota', padre, 'En política monetaria el color indica la dirección del último movimiento, no si es bueno o malo.');
-  if (radarSel){
+  if (radarComp.length === 2){
+    const w = H('div', 'radar-comp', padre);
+    radarComp.forEach(id => {
+      const col = H('div', '', w); H('h4', '', col, nomJur(id));
+      RADAR.temas.forEach(t => { const c = celdaRadar(id, t.id); if (c) radarCelda(col, c, true); });
+    });
+  } else if (radarSel){
     if (radarSel.tema){ const c = celdaRadar(radarSel.jur, radarSel.tema); if (c) radarCelda(padre, c); }
     else RADAR.temas.forEach(t => { const c = celdaRadar(radarSel.jur, t.id); if (c) radarCelda(padre, c); });
   }

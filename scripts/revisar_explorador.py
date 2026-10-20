@@ -135,6 +135,13 @@ if RUTA_REG.exists():
                 aviso(dn, "sin informes de origen")
         if cel.get("fecha") is not None and not fecha_ok(cel["fecha"]):
             aviso(dn, f"fecha no válida: {cel['fecha']}")
+        if etapa is not None or cel.get("dir") is not None:
+            # Celda con dato: debe llevar la fecha de la última comprobación (AAAA-MM-DD completa)
+            rev = cel.get("revisado")
+            if not isinstance(rev, str) or not re.match(r"^\d{4}-\d{2}-\d{2}$", rev) or not fecha_ok(rev):
+                aviso(dn, f"campo «revisado» ausente o no válido (AAAA-MM-DD): {rev}")
+            elif rev > date.today().isoformat():
+                aviso(dn, f"«revisado» en el futuro: {rev}")
         if cel.get("fuente") not in ("P", "S", "VERIFICAR"):
             aviso(dn, f"fuente no válida: {cel.get('fuente')}")
         for k in ("estado", "falta"):
