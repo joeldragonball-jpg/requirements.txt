@@ -13,7 +13,7 @@ CARPETA = Path(__file__).parent / "explorador"
 
 def _version():
     s = 0.0
-    for p in (Path(__file__), CARPETA / "paneles.html", CARPETA / "paneles.json"):
+    for p in (Path(__file__), CARPETA / "paneles.html", CARPETA / "paneles.json", CARPETA / "regulacion.json"):
         try:
             s = max(s, p.stat().st_mtime)
         except Exception:
@@ -21,9 +21,29 @@ def _version():
     return s
 
 
+def _tipos():
+    """Tipos de interés por país: salen de las celdas «política monetaria» del radar (regulacion.json), ya verificadas allí."""
+    try:
+        r = json.loads((CARPETA / "regulacion.json").read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    nombres = {j["id"]: j["nombre"] for j in r.get("jurisdicciones", [])}
+    filas = []
+    for c in r.get("celdas", []):
+        if c.get("tema") != "politica" or not c.get("valor") or c.get("jur") == "brics":
+            continue
+        p = c.get("proxima") or {}
+        filas.append({"pais": nombres.get(c["jur"], c["jur"]), "valor": c["valor"], "dir": c.get("dir") or "n/d",
+                      "fecha": c.get("fecha"), "nivel": c.get("fuente"), "proxima": p.get("fecha"), "que": p.get("que", ""),
+                      "estado": c.get("estado", "")})
+    return filas
+
+
 @st.cache_data(ttl=600, show_spinner=False)
 def _html(version):
     datos = json.loads((CARPETA / "paneles.json").read_text(encoding="utf-8"))
+    datos["tipos"] = _tipos()
+    datos["hoy"] = __import__("datetime").date.today().isoformat()
     texto = json.dumps(datos, ensure_ascii=False).replace("</", "<\\/").replace("<!--", "<\\!--")
     return (CARPETA / "paneles.html").read_text(encoding="utf-8").replace("__DATOS__", texto)
 

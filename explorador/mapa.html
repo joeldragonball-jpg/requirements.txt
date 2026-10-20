@@ -362,6 +362,7 @@ function mostrarTip(c){
   H('div', 'nota', tip, `${c.docs.inv.length} documentos · ${c.docs.glo.length} términos · ${ev.length} fechas próximas`);
   if (PAN && PAN.stablecoins && c.id === 'stable') H('div', 'nota', tip, `Datos al día: ${pnUSD(PAN.stablecoins.total)} en circulación · ${pnFmt(PAN.stablecoins.top[0].usd / PAN.stablecoins.total * 100, 0)} % ${PAN.stablecoins.top[0].simbolo} [S]`);
   if (PAN && PAN.stablecoins && c.id === 'puente') H('div', 'nota', tip, `Datos al día: ${pnUSD(PAN.stablecoins.xrpl.total)} en stablecoins en el XRPL · ${pnUSD(PAN.stablecoins.stellar.total)} en Stellar [S]`);
+  if (c.id === 'reg' && tiposFilas().length) H('div', 'nota', tip, `Datos al día: ${tiposFilas().filter(x => x.dir === 'sube').length} de ${tiposFilas().length} bancos centrales subieron tipos en su último movimiento`);
   if (PAN && PAN.tic && c.id === 'cbdc') H('div', 'nota', tip, `Datos al día: ${pnFmt(PAN.tic.total[0], 0)} MM$ de deuda de EE. UU. en manos extranjeras (${PAN.tic.meses[0]}) [P]`);
   if (ev[0]) H('div', 'nota', tip, `Próxima: ${fmtC(ev[0].ini)} · ${corto(ev[0].titulo, 60)}`);
   H('div', 'nota', tip, c.resumen);
@@ -657,10 +658,13 @@ function pnKpi(padre, lista){
 }
 function pnTop(s, n){ return s.top.slice(0, n).map(x => ({xrp: x.simbolo === 'RLUSD', celdas: [x.simbolo, pnUSD(x.usd), pnFmt(x.usd / s.total * 100, 1) + ' %', td => pnCambio(td, x.cambio_30d)]})); }
 function pnCadena(c, n){ return c.top.slice(0, n).map(f => ({xrp: f.simbolo === 'RLUSD', celdas: [f.simbolo, pnUSD(f.usd), pnFmt(f.usd / c.total * 100, 1) + ' %']})); }
+function tiposFilas(){ return (typeof RADAR !== 'undefined' && RADAR) ? RADAR.celdas.filter(c => c.tema === 'politica' && c.valor && c.jur !== 'brics') : []; }
 function datosGlobales(padre){
-  if (!PAN || (!PAN.stablecoins && !PAN.tic)) return;
+  const tp = tiposFilas();
+  if ((!PAN || (!PAN.stablecoins && !PAN.tic)) && !tp.length) return;
   const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día (pulsa una cifra para ir a su capa)');
-  const k = [], s = PAN.stablecoins, t = PAN.tic;
+  const k = [], s = PAN && PAN.stablecoins, t = PAN && PAN.tic;
+  if (tp.length) k.push([tp.filter(c => c.dir === 'sube').length + ' de ' + tp.length, 'Bancos centrales que subieron tipos en su último movimiento [P/S]', 'reg']);
   if (s){
     const rl = (s.xrpl.top.find(f => f.simbolo === 'RLUSD') || {usd: 0}).usd;
     k.push([pnUSD(s.total), 'Stablecoins en circulación [S]', 'stable'], [pnFmt(s.top[0].usd / s.total * 100, 0) + ' %', 'Cuota de ' + s.top[0].simbolo + ' [S]', 'stable']);
@@ -673,11 +677,20 @@ function datosGlobales(padre){
     if (c) k.push([(pnPct(c.serie[0], c.serie[12]) > 0 ? '+' : '') + pnFmt(pnPct(c.serie[0], c.serie[12]), 1) + ' %', 'China, 12 meses (deuda EE. UU.) [P]', 'cbdc']);
   }
   pnKpi(b, k);
-  H('p', 'nota', b, `Leído el ${PAN.leido}. Detalle completo en el apartado «Paneles» del menú.`);
+  H('p', 'nota', b, `${PAN ? 'Leído el ' + PAN.leido + '. ' : ''}Detalle completo en el apartado «Paneles» del menú.`);
 }
 function datosCapa(padre, id){
+  const s = PAN && PAN.stablecoins, t = PAN && PAN.tic;
+  if (id === 'reg'){
+    const tp = tiposFilas(); if (!tp.length) return;
+    const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: tipos de interés de los bancos centrales');
+    const sub = tp.filter(c => c.dir === 'sube').length, man = tp.filter(c => c.dir === 'mantiene').length, baj = tp.filter(c => c.dir === 'baja').length;
+    pnKpi(b, [[sub + ' de ' + tp.length, 'Subieron tipos en su último movimiento'], [String(man), 'Mantuvieron'], [String(baj), 'Bajaron']]);
+    const hoy = D.calendario ? D.calendario.hoy : null;
+    pnTabla(b, ['País', 'Tipo', 'Mov.', 'Próxima reunión'], tp.map(c => ({celdas: [nomJur(c.jur), c.valor, td => { td.textContent = DIR_SIM[c.dir || 'n/d'] + ' ' + (c.dir || 'n/d'); td.style.color = DIR_COL[c.dir || 'n/d']; }, c.proxima && c.proxima.fecha ? c.proxima.fecha.slice(5).split('-').reverse().join('-') : '—']})));
+    H('p', 'nota', b, 'Nivel y movimiento, no si el tipo es alto o bajo: sin la inflación de cada país no son comparables. Singapur gestiona una banda de tipo de cambio y China publica el LPR. Fuente: columna «política monetaria» del radar regulatorio (arriba), con su etiqueta [P]/[S] por país.');
+  }
   if (!PAN) return;
-  const s = PAN.stablecoins, t = PAN.tic;
   if (id === 'stable' && s){
     const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: stablecoins [S]');
     pnKpi(b, [[pnUSD(s.total), 'Circulación total (' + s.n_activos + ' activos)'], [pnFmt(s.top[0].usd / s.total * 100, 0) + ' %', 'Cuota de ' + s.top[0].simbolo], [pnFmt((s.top[0].usd + s.top[1].usd) / s.total * 100, 0) + ' %', s.top[0].simbolo + ' + ' + s.top[1].simbolo]]);

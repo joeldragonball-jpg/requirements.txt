@@ -111,10 +111,31 @@ function panelStable(){
   <div class="aviso">Contraste: el dossier de stablecoins del 9-oct leyó en el propio XRPL unos 1.140 M$ de RLUSD (ledger, 17-oct); DefiLlama muestra hoy ${fUSD((s.xrpl.top.find(f=>f.simbolo==='RLUSD')||{usd:0}).usd)} en XRPL. Difieren por fecha y método: no se mezclan.</div>`;
 }
 
-const PEST=[['tic','Deuda de EE. UU.',panelTIC],['stable','Stablecoins',panelStable]];
+const DSIM={sube:['▲','#d9904a','subió'],mantiene:['▬','#8a97b0','mantuvo'],baja:['▼','#5aa9e6','bajó'],'n/d':['•','#64748b','sin dato']};
+function fechaCorta(iso){ if(!iso) return '—'; const p=iso.split('-'); return p.length>=3? p[2]+'-'+MES[+p[1]-1]+'-'+p[0].slice(2) : (p[1]? MES[+p[1]-1]+'-'+p[0] : iso); }
+function diasHasta(iso){ if(!iso||iso.length<10) return null; return Math.round((new Date(iso)-new Date(D.hoy))/86400000); }
+function panelTipos(){
+  const t=D.tipos||[]; if(!t.length) return '<div class="aviso">No hay datos de tipos.</div>';
+  const sub=t.filter(x=>x.dir==='sube').length, baj=t.filter(x=>x.dir==='baja').length, man=t.filter(x=>x.dir==='mantiene').length;
+  const prox=t.filter(x=>diasHasta(x.proxima)!=null&&diasHasta(x.proxima)>=0).sort((a,b)=>diasHasta(a.proxima)-diasHasta(b.proxima))[0];
+  const filas=t.map(x=>{ const s=DSIM[x.dir]||DSIM['n/d'], d=diasHasta(x.proxima);
+    return `<tr title="${x.estado.replace(/"/g,'&quot;')}"><td>${x.pais}</td><td class="n"><b>${x.valor}</b></td><td style="color:${s[1]}">${s[0]} ${s[2]}</td>
+    <td class="n">${fechaCorta(x.fecha)}</td><td class="n">${x.proxima? fechaCorta(x.proxima)+(d!=null&&d>=0?` <span class="mini">(en ${d} d)</span>`:''):'—'}</td>
+    <td><span class="nivel ${x.nivel==='P'?'P':'S'}">${x.nivel==='P'?'P':'S'}</span></td><td class="tag hm" style="white-space:normal;max-width:420px">${x.estado.length>150? x.estado.slice(0,150)+'…':x.estado}</td></tr>`; }).join('');
+  return `<div class="panel vidrio"><h2>Tipos de interés de los bancos centrales</h2>
+  <p class="que">Último tipo oficial y último movimiento (▲ subió · ▬ mantuvo · ▼ bajó) · vienen de la columna «política monetaria» del radar regulatorio, ya verificada allí</p>
+  <div class="kpis"><div class="kpi"><div class="v">${sub} de ${t.length}</div><div class="e">Subieron tipos en su último movimiento</div></div>
+   <div class="kpi"><div class="v">${man}</div><div class="e">Mantuvieron</div></div><div class="kpi"><div class="v">${baj}</div><div class="e">Bajaron</div></div>
+   ${prox?`<div class="kpi"><div class="v">${prox.pais}</div><div class="e">Próxima reunión: ${fechaCorta(prox.proxima)} (en ${diasHasta(prox.proxima)} d)</div></div>`:''}</div>
+  <div class="aviso">Los tipos no son comparables entre sí sin la inflación de cada país: este panel muestra el nivel y el movimiento, no si el tipo es «alto» o «bajo». Singapur gestiona una banda de tipo de cambio (no un tipo) y China publica el LPR. Pasa el ratón por una fila para ver el detalle completo.</div>
+  <table><thead><tr><th>País</th><th>Tipo</th><th>Último mov.</th><th title="Fecha de la información en el radar, no la del movimiento: la del movimiento está en «Qué pasó»">Dato de</th><th>Próxima reunión</th><th></th><th class="hm">Qué pasó</th></tr></thead><tbody>${filas}</tbody></table>
+  <p class="pie">Fuente: radar regulatorio (explorador/regulacion.json), con sus informes y su etiqueta [P]/[S] por país. Fechas de reunión según el calendario del repo y las notas de cada banco; algunas son aproximadas [VERIFICAR].</p></div>`;
+}
+
+const PEST=[['tic','Deuda de EE. UU.',panelTIC],['stable','Stablecoins',panelStable],['tipos','Tipos de interés',panelTipos]];
 let act=PEST[0][0];
 function pinta(){
-  document.getElementById('pest').innerHTML=PEST.map(p=>`<button class="chip ${p[0]===act?'on':''}" data-k="${p[0]}">${p[1]}</button>`).join('')+'<span class="mini" style="align-self:center;margin-left:8px">Próximos: tipos por país · deuda por país · CBDC y redes</span>';
+  document.getElementById('pest').innerHTML=PEST.map(p=>`<button class="chip ${p[0]===act?'on':''}" data-k="${p[0]}">${p[1]}</button>`).join('')+'<span class="mini" style="align-self:center;margin-left:8px">Próximos: deuda por país · CBDC y redes</span>';
   document.getElementById('cont').innerHTML=PEST.find(p=>p[0]===act)[2]();
   document.querySelectorAll('#pest .chip').forEach(b=>b.onclick=()=>{act=b.dataset.k;pinta();});
 }
