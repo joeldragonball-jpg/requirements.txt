@@ -475,11 +475,12 @@
       ],
       "plan": [
         {
-          "t": "Sin fechas publicadas para ampliar a más bancos.",
-          "k": "",
+          "t": "Sin fechas publicadas para ampliar JPMD a más bancos.",
+          "k": "S",
           "ent": [],
           "act": [],
-          "pais": []
+          "pais": [],
+          "n": "R44 (nota de Canton y prensa)"
         }
       ],
       "xrp": [
@@ -978,9 +979,9 @@
           "pais": []
         },
         {
-          "t": "La custodia de XRP la ofrecen firmas cripto.",
+          "t": "BitGo Europe, Zodia Custody y Coinbase Luxembourg tienen custodia autorizada en el registro de ESMA; que custodien XRP no consta en fuente primaria.",
           "k": "VER",
-          "n": "VERIFICAR por entidad",
+          "n": "Registro CASP de ESMA leído (R44); activos por entidad sin verificar",
           "ent": [],
           "act": [
             "XRP"
@@ -1288,11 +1289,12 @@
       "piloto": [],
       "plan": [
         {
-          "t": "13F del 3T con plazo el 16-nov: repetir R21.",
-          "k": "",
+          "t": "13F del 3T con plazo el 16-nov-2026: repetir R21.",
+          "k": "P",
           "ent": [],
           "act": [],
-          "pais": []
+          "pais": [],
+          "n": "Plazo de 45 días tras el trimestre; fecha hábil según R31 [VERIFICAR la regla del día hábil]"
         }
       ],
       "xrp": [
@@ -1332,7 +1334,7 @@
         {
           "v": "≈2.178 M$",
           "e": "En ETF de XRP de EE. UU. a 30-sep-2026",
-          "f": "21Shares, emisor [S] · R27",
+          "f": "21Shares, emisor [S] · R27; el dossier ETF daba 1.560 M$ a 8-oct en los 5 ETF spot: métrica a confirmar [VERIFICAR]",
           "ent": [],
           "act": [
             "XRP"
@@ -1488,7 +1490,7 @@
       "texto": "Se firma la GENIUS Act para stablecoins.",
       "estado": "norma",
       "nombra": "no",
-      "fuente": "[P] · R25",
+      "fuente": "Ley Pública 119-27, citada en la propuesta del Tesoro (Federal Register 2026-16796) [P] · R25",
       "ent": [
         "Congreso de EE. UU.",
         "GENIUS Act"
@@ -1516,6 +1518,22 @@
       ]
     },
     {
+      "fecha": "2025-11-10",
+      "capa": "cbdc",
+      "actor": "Banco Central de Brasil",
+      "texto": "El Banco Central desactiva la plataforma del Drex con blockchain (anunciado el 4-nov); nueva fase por casos de uso.",
+      "estado": "piloto",
+      "nombra": "no",
+      "fuente": "Portal de Prefeitura y Mundocoop (prensa brasileña) [S] · R03P, R40",
+      "ent": [
+        "Banco Central de Brasil"
+      ],
+      "act": [],
+      "pais": [
+        "Brasil"
+      ]
+    },
+    {
       "fecha": "2025-11-13",
       "capa": "fondos",
       "actor": "Canary",
@@ -1534,29 +1552,13 @@
       ]
     },
     {
-      "fecha": "2025-11-15",
-      "capa": "cbdc",
-      "actor": "Banco Central de Brasil",
-      "texto": "Se apaga el Drex con blockchain; nueva fase por casos de uso (mes aproximado).",
-      "estado": "piloto",
-      "nombra": "no",
-      "fuente": "[S] · R03P, R40",
-      "ent": [
-        "Banco Central de Brasil"
-      ],
-      "act": [],
-      "pais": [
-        "Brasil"
-      ]
-    },
-    {
       "fecha": "2025-12-11",
       "capa": "token",
       "actor": "SEC",
       "texto": "Carta de no-acción a DTC para tokenización.",
       "estado": "norma",
       "nombra": "no",
-      "fuente": "[P] · R26",
+      "fuente": "Carta de no-acción de la SEC a DTC (sec.gov, dtc-nal-121125.pdf) [P] · R26",
       "ent": [
         "DTCC",
         "SEC"
@@ -1700,7 +1702,7 @@
       "texto": "RLUSD aprobado como «Type 4», solo en Ethereum.",
       "estado": "norma",
       "nombra": "no",
-      "fuente": "[S] · R09P",
+      "fuente": "The Paypers, 24/7 Wall St y Stablecoininsider (prensa) [S] · R09P",
       "ent": [
         "Ripple",
         "JFSA"
@@ -1856,7 +1858,7 @@
       "texto": "Exención para acciones tokenizadas con AMM.",
       "estado": "norma",
       "nombra": "no",
-      "fuente": "[P] · R26",
+      "fuente": "Orden de exención de la SEC (Federal Register 2026-19388, 22-sep-2026) [P] · R26",
       "ent": [
         "SEC"
       ],
