@@ -215,6 +215,10 @@ def _html(conceptos):
         datos["contraste"] = json.loads((RAIZ / "privado" / "contraste-tesis.json").read_text(encoding="utf-8"))
     except Exception:
         datos["contraste"] = None
+    try:                              # datos al día de los paneles (scripts/actualizar_paneles.py): sin el archivo, el mapa funciona igual
+        datos["paneles"] = json.loads((CARPETA / "paneles.json").read_text(encoding="utf-8"))
+    except Exception:
+        datos["paneles"] = None
     datos["biblioteca"] = rel.get("_totales", {})
     hoy = date.today().isoformat()
     datos["calendario"] = {"hoy": hoy, "temas": TEMAS, "eventos": _calendario(hoy, _version())}

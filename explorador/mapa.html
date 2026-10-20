@@ -91,6 +91,18 @@ details.doc .chips{margin:2px 0 6px}
 .contraste{border:1px solid rgba(212,168,75,.45);background:rgba(212,168,75,.06);border-radius:8px;padding:2px 10px 8px;margin:10px 0}
 .contraste h3{border-bottom-color:rgba(212,168,75,.35);color:#f1d58a}
 .contraste details.doc{background:rgba(15,23,42,.7)}
+.pn{border:1px solid rgba(95,208,160,.35);background:rgba(95,208,160,.05);border-radius:8px;padding:2px 10px 8px;margin:10px 0}
+.pn h3{border-bottom-color:rgba(95,208,160,.3);color:#9fe0c3}
+.pn-k{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.pn-k button,.pn-k div{flex:1 1 120px;text-align:left;border:1px solid var(--linea);border-radius:6px;background:rgba(15,23,42,.7);color:var(--texto);padding:5px 9px;font:inherit}
+.pn-k button{cursor:pointer}.pn-k button:hover{border-color:var(--oro)}
+.pn-k .v{font-size:16px;font-weight:700;color:#f1d58a}.pn-k .e{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--suave)}
+table.pn-t{width:100%;border-collapse:collapse;font-size:12px}
+.pn-t th{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--suave);text-align:right;padding:3px 5px;border-bottom:1px solid var(--linea);font-weight:600}
+.pn-t th:first-child,.pn-t td:first-child{text-align:left}
+.pn-t td{padding:3px 5px;border-bottom:1px solid rgba(148,163,184,.08);text-align:right;white-space:nowrap}
+.pn-t tr.xrp td{color:#f1d58a;font-weight:600}
+.pn-s{color:#5fd0a0}.pn-b{color:#f08a7a}.pn-n{color:var(--suave)}
 .hitos{margin:6px 0 0;padding:0;list-style:none;border-left:2px solid var(--linea)}.hitos li{position:relative;padding:2px 0 6px 12px;font-size:12.5px;color:#cdd6ea}
 .hitos li::before{content:'';position:absolute;left:-5px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--oro)}
 .hitos .cuando{color:#f1d58a;margin-right:6px}
@@ -348,6 +360,9 @@ function mostrarTip(c){
   const b = H('b', '', tip, c.nombre); b.style.color = mezcla(c.color, '#fff', .3);
   H('div', 'nota', tip, `${v.length} hechos · ${t} nombran XRP o XLM`);
   H('div', 'nota', tip, `${c.docs.inv.length} documentos · ${c.docs.glo.length} términos · ${ev.length} fechas próximas`);
+  if (PAN && PAN.stablecoins && c.id === 'stable') H('div', 'nota', tip, `Datos al día: ${pnUSD(PAN.stablecoins.total)} en circulación · ${pnFmt(PAN.stablecoins.top[0].usd / PAN.stablecoins.total * 100, 0)} % ${PAN.stablecoins.top[0].simbolo} [S]`);
+  if (PAN && PAN.stablecoins && c.id === 'puente') H('div', 'nota', tip, `Datos al día: ${pnUSD(PAN.stablecoins.xrpl.total)} en stablecoins en el XRPL · ${pnUSD(PAN.stablecoins.stellar.total)} en Stellar [S]`);
+  if (PAN && PAN.tic && c.id === 'cbdc') H('div', 'nota', tip, `Datos al día: ${pnFmt(PAN.tic.total[0], 0)} MM$ de deuda de EE. UU. en manos extranjeras (${PAN.tic.meses[0]}) [P]`);
   if (ev[0]) H('div', 'nota', tip, `Próxima: ${fmtC(ev[0].ini)} · ${corto(ev[0].titulo, 60)}`);
   H('div', 'nota', tip, c.resumen);
   tip.style.opacity = 1;
@@ -617,6 +632,73 @@ function radarVista(padre, titulo){
   H('p', 'nota', padre, 'Versión ' + (RADAR.version || '') + ' · ' + RADAR.aviso);
 }
 const CONTR = D.contraste;
+// ---- Datos al día (explorador/paneles.json, generado por scripts/actualizar_paneles.py): se cuelgan de las capas del mapa
+const PAN = D.paneles;
+const pnFmt = (v, d = 1) => v == null ? '—' : v.toLocaleString('es-ES', {minimumFractionDigits: d, maximumFractionDigits: d});
+const pnUSD = v => v >= 2e9 ? pnFmt(v / 1e9, 1) + ' MM$' : v >= 1e6 ? pnFmt(v / 1e6, 0) + ' M$' : pnFmt(v / 1e3, 0) + ' mil $';
+const pnPct = (a, b) => (a == null || b == null || !b) ? null : (a / b - 1) * 100;
+function pnCambio(td, p){
+  if (p == null){ td.textContent = '—'; td.className = 'pn-n'; return; }
+  td.textContent = (p > 0 ? '+' : '') + pnFmt(p, 1) + ' %'; td.className = Math.abs(p) < 0.05 ? 'pn-n' : p > 0 ? 'pn-s' : 'pn-b';
+}
+function pnTabla(padre, cab, filas){
+  const t = H('table', 'pn-t', padre), th = H('tr', '', H('thead', '', t));
+  cab.forEach(c => H('th', '', th, c));
+  const tb = H('tbody', '', t);
+  filas.forEach(f => { const tr = H('tr', f.xrp ? 'xrp' : '', tb); f.celdas.forEach(c => { const td = H('td', '', tr); if (typeof c === 'function') c(td); else td.textContent = c; }); });
+}
+function pnPie(padre, texto, fuente, leido){ H('p', 'nota', padre, `${texto} Fuente: ${fuente}. Leído el ${leido}.`); }
+function pnKpi(padre, lista){
+  const k = H('div', 'pn-k', padre);
+  lista.forEach(([v, e, capaId]) => {
+    const el = H(capaId ? 'button' : 'div', '', k); H('div', 'v', el, v); H('div', 'e', el, e);
+    if (capaId) el.addEventListener('click', () => seleccionar(capas.find(c => c.id === capaId)));
+  });
+}
+function pnTop(s, n){ return s.top.slice(0, n).map(x => ({xrp: x.simbolo === 'RLUSD', celdas: [x.simbolo, pnUSD(x.usd), pnFmt(x.usd / s.total * 100, 1) + ' %', td => pnCambio(td, x.cambio_30d)]})); }
+function pnCadena(c, n){ return c.top.slice(0, n).map(f => ({xrp: f.simbolo === 'RLUSD', celdas: [f.simbolo, pnUSD(f.usd), pnFmt(f.usd / c.total * 100, 1) + ' %']})); }
+function datosGlobales(padre){
+  if (!PAN || (!PAN.stablecoins && !PAN.tic)) return;
+  const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día (pulsa una cifra para ir a su capa)');
+  const k = [], s = PAN.stablecoins, t = PAN.tic;
+  if (s){
+    const rl = (s.xrpl.top.find(f => f.simbolo === 'RLUSD') || {usd: 0}).usd;
+    k.push([pnUSD(s.total), 'Stablecoins en circulación [S]', 'stable'], [pnFmt(s.top[0].usd / s.total * 100, 0) + ' %', 'Cuota de ' + s.top[0].simbolo + ' [S]', 'stable']);
+    k.push([pnUSD(s.xrpl.total), 'Stablecoins en el XRPL [S]', 'puente'], [pnUSD(s.stellar.total), 'Stablecoins en Stellar [S]', 'puente'], [pnUSD(rl), 'RLUSD en el XRPL [S]', 'puente']);
+  }
+  if (t){
+    const j = t.paises.find(p => p.clave === 'Japan'), c = t.paises.find(p => p.clave === 'China, Mainland');
+    k.push([pnFmt(t.total[0], 0) + ' MM$', 'Deuda de EE. UU. en manos extranjeras [P]', 'cbdc']);
+    if (j) k.push([(pnPct(j.serie[0], j.serie[12]) > 0 ? '+' : '') + pnFmt(pnPct(j.serie[0], j.serie[12]), 1) + ' %', 'Japón, 12 meses (deuda EE. UU.) [P]', 'cbdc']);
+    if (c) k.push([(pnPct(c.serie[0], c.serie[12]) > 0 ? '+' : '') + pnFmt(pnPct(c.serie[0], c.serie[12]), 1) + ' %', 'China, 12 meses (deuda EE. UU.) [P]', 'cbdc']);
+  }
+  pnKpi(b, k);
+  H('p', 'nota', b, `Leído el ${PAN.leido}. Detalle completo en el apartado «Paneles» del menú.`);
+}
+function datosCapa(padre, id){
+  if (!PAN) return;
+  const s = PAN.stablecoins, t = PAN.tic;
+  if (id === 'stable' && s){
+    const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: stablecoins [S]');
+    pnKpi(b, [[pnUSD(s.total), 'Circulación total (' + s.n_activos + ' activos)'], [pnFmt(s.top[0].usd / s.total * 100, 0) + ' %', 'Cuota de ' + s.top[0].simbolo], [pnFmt((s.top[0].usd + s.top[1].usd) / s.total * 100, 0) + ' %', s.top[0].simbolo + ' + ' + s.top[1].simbolo]]);
+    pnTabla(b, ['Stablecoin', 'Circulación', '% total', '30 días'], pnTop(s, 8));
+    pnPie(b, 'Agregador: cifras estimadas, y la lista incluye fondos tokenizados y monedas sintéticas.', 'DefiLlama', PAN.leido);
+  }
+  if (id === 'puente' && s){
+    const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: stablecoins en el XRPL y en Stellar [S]');
+    H('p', 'nota', b, `XRPL: ${s.xrpl.n} stablecoins, ${pnUSD(s.xrpl.total)}.`);
+    pnTabla(b, ['Stablecoin', 'Circulación', '% cadena'], pnCadena(s.xrpl, 5));
+    H('p', 'nota', b, `Stellar: ${s.stellar.n} stablecoins, ${pnUSD(s.stellar.total)}.`);
+    pnTabla(b, ['Stablecoin', 'Circulación', '% cadena'], pnCadena(s.stellar, 5));
+    pnPie(b, 'El dossier del 9-oct leyó 1.140 M$ de RLUSD en el propio ledger el 17-oct; no se mezclan métodos.', 'DefiLlama', PAN.leido);
+  }
+  if (id === 'cbdc' && t){
+    const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: quién tiene deuda de EE. UU. [P]');
+    pnKpi(b, [[pnFmt(t.total[0], 0) + ' MM$', 'Total extranjero · ' + t.meses[0]], [t.oficial ? pnFmt(t.oficial[0], 0) + ' MM$' : '—', 'De ellos, oficiales (bancos centrales y Estados)']]);
+    pnTabla(b, ['País (custodia)', t.meses[0] + ' MM$', '6 meses', '12 meses'], t.paises.slice(0, 8).map(p => ({celdas: [p.nombre, pnFmt(p.serie[0]), td => pnCambio(td, pnPct(p.serie[0], p.serie[6])), td => pnCambio(td, pnPct(p.serie[0], p.serie[12]))]})));
+    pnPie(b, 'Mide dónde está la custodia, no el propietario final, e incluye cambios de valor: una bajada no es necesariamente una venta.', 'Tesoro de EE. UU. (TIC, tabla 5)', PAN.leido);
+  }
+}
 const VEREDICTO = {respaldado: ['Respaldado', '#3fb68b'], parcial: ['Respaldado en parte', '#d4a84b'], sin_respaldo: ['Sin respaldo', '#d9904a'],
   contradicho: ['Contradicho', '#e06c6c'], no_comprobable: ['No comprobable', '#8a97b0']};
 function contrasteBloque(padre, puntos, titulo){
@@ -671,6 +753,7 @@ function dibujarPanel(){
       H('span', 'n', b, String(visibles(c.id).length));
       b.addEventListener('click', () => seleccionar(c));
     });
+    datosGlobales(panel);
     H('h3', '', panel, 'Cifras clave');
     tarjetasCifras(panel, capas.filter(c => c.cifras[0]).map(c => ({capa: c, c: c.cifras[0]})));
     radarVista(panel, 'Radar regulatorio');
@@ -704,6 +787,7 @@ function dibujarPanel(){
     if (CONTR && CONTR.capas) contrasteBloque(panel, CONTR.capas[sel.id], 'Contraste con tu tesis (privado, solo en tu PC)');
     if (sel.id === 'reg') radarVista(panel, 'Radar regulatorio por país y tema');
     fichaAnalista(panel, sel);
+    datosCapa(panel, sel.id);
     H('h3', '', panel, 'Cifras clave');
     tarjetasCifras(panel, sel.cifras.map(c => ({capa: sel, c})));
     [['En producción', 'produccion', 'produccion'], ['Piloto o prueba', 'piloto', 'piloto'], ['Plan o propuesta', 'plan', 'plan'], ['¿Nombra XRP o XLM?', 'xrp', null]].forEach(([tit, k, ek], i) => {

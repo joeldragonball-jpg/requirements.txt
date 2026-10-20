@@ -52,7 +52,7 @@ const D = JSON.parse(document.getElementById('datos').textContent);
 const MES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
 const fm = (v,d=1)=> v==null? '—' : v.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});
 const mesTxt = m => { const [a,b]=m.split('-'); return MES[+b-1]+'-'+a; };
-const fUSD = v => v>=1e9? fm(v/1e9,1)+' MM$' : v>=1e6? fm(v/1e6,0)+' M$' : fm(v/1e3,0)+' mil $';
+const fUSD = v => v>=2e9? fm(v/1e9,1)+' MM$' : v>=1e6? fm(v/1e6,0)+' M$' : fm(v/1e3,0)+' mil $';
 function pct(a,b){ return (a==null||b==null||!b)? null : (a/b-1)*100; }
 function cambio(p){
   if(p==null) return '<span class="neutro">—</span>';
