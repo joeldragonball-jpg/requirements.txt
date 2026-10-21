@@ -716,6 +716,15 @@ function datosCapa(padre, id){
     pnTabla(b, ['País', 'Tipo', 'Mov.', 'Próxima reunión'], tp.map(c => ({celdas: [nomJur(c.jur), c.valor, td => { td.textContent = DIR_SIM[c.dir || 'n/d'] + ' ' + (c.dir || 'n/d'); td.style.color = DIR_COL[c.dir || 'n/d']; }, c.proxima && c.proxima.fecha ? c.proxima.fecha.slice(5).split('-').reverse().join('-') : '—']})));
     H('p', 'nota', b, 'Nivel y movimiento, no si el tipo es alto o bajo: sin la inflación de cada país no son comparables. Singapur gestiona una banda de tipo de cambio y China publica el LPR. Fuente: columna «política monetaria» del radar regulatorio (arriba), con su etiqueta [P]/[S] por país.');
   }
+  if (id === 'reg' && PAN && PAN.deuda){
+    const d = PAN.deuda, i26 = d.anios.indexOf('2026');
+    const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: deuda pública y rendimientos a 10 años [P]');
+    const ry = d.rendimientos || {};
+    pnKpi(b, [[ry.USA ? pnFmt(ry.USA.valor, 2) + ' %' : '—', 'Bono de EE. UU. a 10 años' + (ry.USA ? ' (' + ry.USA.fecha + ')' : '')], [ry.JPN ? pnFmt(ry.JPN.valor, 2) + ' %' : '—', 'Bono de Japón a 10 años' + (ry.JPN ? ' (' + ry.JPN.fecha + ')' : '')]]);
+    const filas = d.paises.slice().sort((a, c) => c.deuda[i26] - a.deuda[i26]).map(p => ({celdas: [p.nombre, pnFmt(p.deuda[i26], 1) + ' %', (p.saldo[i26] > 0 ? '+' : '') + pnFmt(p.saldo[i26], 1) + ' %']}));
+    pnTabla(b, ['País', 'Deuda/PIB 2026', 'Saldo 2026'], filas);
+    H('p', 'nota', b, d.edicion + '. Proyecciones, no datos cerrados. Detalle y rendimientos por país en Paneles → Deuda pública.');
+  }
   if (!PAN) return;
   const rw = PAN.rwa;
   if (id === 'stable' && s){

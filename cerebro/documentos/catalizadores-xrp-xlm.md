@@ -98,3 +98,4 @@ actualizado: 2026-10-07
 
 - 2026-10-20 (R00 cierre): XRP +2,0 % y XLM +1,2 % desde las 00:00 UTC frente a BTC +0,8 % sin noticia fechada que lo explique; atribuir la subida a un hito (p. ej. cierre de comentarios de la SEC) sin hora ni fuente sería lectura de agregador (ver R48).
 - 2026-10-21 (correcciones de la revisión del 18-oct): (a) fixCleanup3_4_0 en XRPL: la hora válida de la mayoría es 9-oct-2026 09:34:30 UTC (fuente directa); ignorar la línea de R32 con «10:34». (b) Brent: indicar siempre la serie; BZ=F (Yahoo) 109,28 $ el 20-oct vs. spot FOB Europa (EIA) ~126 $ el 14-oct no son comparables. (c) CLARITY 15-sep: fue un cloture fallido (49-50), no el rechazo de la ley.
+- 2026-10-21 (R00 cierre): sin catalizador nuevo en la tarde: BTC $84.516 → $84.623, XRP $1,38 → $1,39, XLM sin cambio entre 17:00 y 18:00 UTC; en 24 h XRP +4,4 % vs BTC +2,3 % sin noticia propia fechada (lo que sí hubo: Ripple Prime y bolsa tecnológica); no atribuir.

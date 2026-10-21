@@ -39,6 +39,15 @@ td.tag{color:var(--suave);font-size:11.5px;text-align:left}
 .mini{font-size:11.5px;color:var(--suave)}
 svg.spark{vertical-align:middle}
 .fila-xrp td{color:#f1d58a;font-weight:600}
+.gl-barra{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.gl-barra input{background:rgba(15,23,42,.9);color:var(--texto);border:1px solid var(--linea);border-radius:6px;padding:6px 10px;font:inherit;min-width:220px}
+.gl-barra select{background:rgba(15,23,42,.9);color:var(--texto);border:1px solid var(--linea);border-radius:6px;padding:6px 8px;font:inherit}
+.gl{border-bottom:1px solid rgba(148,163,184,.1);padding:7px 2px}
+.gl summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+.gl summary b{color:#f1d58a}
+.gl p{margin:6px 0 2px;color:var(--texto);font-size:13px}
+.etq{font-size:10.5px;padding:0 6px;border-radius:4px;border:1px solid var(--linea);color:var(--suave)}
+.etq.v{color:#f08a7a;border-color:#f08a7a}
 </style></head><body>
 <div id="app">
  <h1>Paneles de datos</h1>
@@ -145,11 +154,54 @@ function panelMercadoRWA(){
    <p class="pie">Fuente: <a style="color:#f1d58a" href="${r.fuente}" target="_blank" rel="noopener">DefiLlama</a>, leído el ${D.leido}.</p></div>` : '';
   return mer+rw;
 }
-const PEST=[['tic','Deuda de EE. UU.',panelTIC],['stable','Stablecoins',panelStable],['tipos','Tipos de interés',panelTipos],['rwa','Mercado y RWA',panelMercadoRWA]];
+const esc = t => String(t==null?'':t).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let glQ='', glC='';
+function panelGlosario(){
+  const g=D.glosario||[]; if(!g.length) return '<div class="aviso">No hay glosario cargado.</div>';
+  const nom={}; (D.capas||[]).forEach(c=>nom[c.id]=c.nombre);
+  const plano=t=>t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  const q=plano(glQ);
+  const lista=g.filter(x=>(!q||plano(x.t+' '+x.d).includes(q))&&(!glC||x.capas.includes(glC)));
+  const filas=lista.map(x=>`<details class="gl"><summary><b>${esc(x.t)}</b>${x.capas.map(c=>`<span class="etq">${esc(nom[c]||c)}</span>`).join('')}${x.ver?'<span class="etq v">VERIFICAR</span>':''}</summary>
+   <p>${esc(x.d)}</p><p class="mini">Fuente: ${esc(x.f)||'—'}${x.e?' · Estado: '+esc(x.e):''}</p></details>`).join('');
+  return `<div class="panel vidrio"><h2>Glosario</h2>
+  <p class="que">${g.length} términos de los informes R16, con la capa del mapa de órbitas donde encajan (por palabras clave). Pulsa un término para ver su definición, fuente y estado.</p>
+  <div class="gl-barra"><input id="glq" type="search" placeholder="Buscar término o palabra…" value="${esc(glQ)}">
+   <select id="glc"><option value="">Todas las capas</option>${(D.capas||[]).map(c=>`<option value="${esc(c.id)}"${c.id===glC?' selected':''}>${esc(c.nombre)}</option>`).join('')}</select>
+   <span class="mini">${lista.length} de ${g.length}</span></div>
+  ${filas||'<p class="mini">Ningún término coincide.</p>'}
+  <p class="pie">Fuente: informes/research/*R16-glosario*.md. Las definiciones apoyadas solo en fuentes secundarias llevan la marca VERIFICAR. Informativo, sin recomendaciones.</p></div>`;
+}
+function panelDeuda(){
+  const d=D.deuda; if(!d) return '<div class="aviso">No hay datos de deuda. Ejecuta scripts/actualizar_paneles.py.</div>';
+  const ix=a=>d.anios.indexOf(a), i25=ix('2025'), i26=ix('2026'), i30=ix('2030'), i23=ix('2023');
+  const RE={USA:'USA',JPN:'JPN',GBR:'GBR',DEU:'EUR',FRA:'EUR',ITA:'EUR',ESP:'EUR'};
+  const orden=d.paises.slice().sort((a,b)=>b.deuda[i26]-a.deuda[i26]);
+  const mx=Math.max(...d.paises.map(p=>p.deuda[i26]));
+  const dsal=v=>v==null?'—':`<span class="${v<0?'baja':'sube'}">${v>0?'+':''}${fm(v,1)} %</span>`;
+  const filas=orden.map(p=>{ const r=d.rendimientos&&d.rendimientos[RE[p.id]];
+    const rt=r? `<b>${fm(r.valor,2)} %</b> <span class="nivel ${r.nivel}" title="${esc(r.fuente)}">${r.nivel}</span> <span class="mini">${fechaCorta(r.fecha)}${RE[p.id]==='EUR'?' · zona euro':''}</span>` : '<span class="neutro">sin fuente abierta leída</span>';
+    return `<tr><td>${esc(p.nombre)}</td><td class="n"><b>${fm(p.deuda[i26])} %</b></td><td class="hm"><span class="barra" style="width:${(p.deuda[i26]/mx*90).toFixed(0)}px"></span></td>
+     <td class="n">${(p.deuda[i26]-p.deuda[i23]>0?'+':'')+fm(p.deuda[i26]-p.deuda[i23],1)} pp</td><td class="n">${fm(p.deuda[i30])} %</td><td class="n">${dsal(p.saldo[i25])}</td><td class="n">${dsal(p.saldo[i26])}</td><td class="n">${rt}</td></tr>`;}).join('');
+  const rend=Object.entries(d.rendimientos||{}).map(([k,v])=>`<li>${esc(v.fuente)} · ${fechaCorta(v.fecha)} · <span class="nivel ${v.nivel}">${v.nivel}</span></li>`).join('');
+  return `<div class="panel vidrio"><h2>Deuda pública por país</h2>
+  <p class="que">Deuda bruta del conjunto de las administraciones, déficit (−) o superávit (+) y rendimiento de los bonos a 10 años · ${esc(d.edicion)} · <span class="nivel P">P</span> FMI</p>
+  <div class="kpis"><div class="kpi"><div class="v">${esc(orden[0].nombre)}</div><div class="e">Mayor deuda/PIB en 2026: ${fm(orden[0].deuda[i26])} %</div></div>
+   <div class="kpi"><div class="v">${fm(d.paises.find(p=>p.id==='USA').deuda[i26])} %</div><div class="e">EE. UU. 2026 · saldo ${fm(d.paises.find(p=>p.id==='USA').saldo[i26])} % del PIB</div></div>
+   <div class="kpi"><div class="v">${fm(d.rendimientos&&d.rendimientos.USA?d.rendimientos.USA.valor:null,2)} %</div><div class="e">Bono de EE. UU. a 10 años · ${d.rendimientos&&d.rendimientos.USA?fechaCorta(d.rendimientos.USA.fecha):'—'}</div></div></div>
+  <div class="aviso"><b>Cómo leerlo:</b> las cifras de 2025 en adelante son estimaciones y proyecciones del FMI, no datos cerrados. «Deuda bruta» no resta los activos que tiene el Estado: en Japón y Singapur es muy alta, pero ambos tienen grandes activos públicos, y la de Singapur se emitiría en buena parte sin necesidad de financiar un déficit (su saldo es superávit) [VERIFICAR con la MAS]. Un rendimiento alto no dice por sí solo si la deuda es «mala»: depende de la inflación, el crecimiento y la moneda. Los rendimientos de la zona euro son de la curva del BCE (emisores AAA), no de cada país. Informativo, sin recomendaciones.</div>
+  <table><thead><tr><th>País</th><th>Deuda/PIB 2026</th><th class="hm"></th><th title="Cambio de la deuda/PIB entre 2023 y 2026, en puntos porcentuales">vs 2023</th><th>2030 (proyec.)</th><th>Saldo 2025</th><th>Saldo 2026</th><th>Rendimiento a 10 años</th></tr></thead><tbody>${filas}</tbody></table>
+  <p class="pie">Deuda y saldo: <a style="color:#f1d58a" href="${d.fuente}" target="_blank" rel="noopener">FMI, Perspectivas de la Economía Mundial</a>, leído el ${esc(d.leido)} (${esc(d.como)}). Rendimientos, leídos el ${esc(D.leido)}:</p><ul class="pie">${rend}</ul>
+  <p class="pie">España y las demás zonas con rendimiento «sin fuente abierta leída» no tienen aún una fuente oficial gratuita comprobada; se añadirán solo con fuente primaria.</p></div>`;
+}
+const PEST=[['tic','Deuda de EE. UU.',panelTIC],['deuda','Deuda pública',panelDeuda],['stable','Stablecoins',panelStable],['tipos','Tipos de interés',panelTipos],['rwa','Mercado y RWA',panelMercadoRWA],['glo','Glosario',panelGlosario]];
 let act=PEST[0][0];
 function pinta(){
   document.getElementById('pest').innerHTML=PEST.map(p=>`<button class="chip ${p[0]===act?'on':''}" data-k="${p[0]}">${p[1]}</button>`).join('')+'<span class="mini" style="align-self:center;margin-left:8px">Próximos: deuda por país · CBDC y redes</span>';
   document.getElementById('cont').innerHTML=PEST.find(p=>p[0]===act)[2]();
+  const q=document.getElementById('glq'), c=document.getElementById('glc');
+  if(q){ q.oninput=()=>{glQ=q.value; const pos=q.selectionStart; pinta(); const n=document.getElementById('glq'); n.focus(); n.setSelectionRange(pos,pos);}; }
+  if(c){ c.onchange=()=>{glC=c.value; pinta();}; }
   document.querySelectorAll('#pest .chip').forEach(b=>b.onclick=()=>{act=b.dataset.k;pinta();});
 }
 pinta();

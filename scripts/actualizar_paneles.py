@@ -7,15 +7,22 @@ Fuentes abiertas:
 Uso:  python scripts/actualizar_paneles.py
 Si una fuente falla, se conserva lo que ya había de esa fuente en paneles.json y se avisa.
 """
+import csv
+import io
 import json
 import sys
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 SALIDA = Path(__file__).resolve().parent.parent / "explorador" / "paneles.json"
 URL_TIC = "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt"
 URL_LLAMA = "https://stablecoins.llama.fi/stablecoins?includePrices=true"
+URL_UST = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv"
+URL_JGB = "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/jgbcme.csv"
+URL_BCE = "https://data-api.ecb.europa.eu/service/data/YC/B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y?lastNObservations=3&format=jsondata"
+URL_BOE = "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom={d1}&Dateto={d2}&SeriesCodes=IUDMNZC&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N"
+FMI = Path(__file__).resolve().parent.parent / "explorador" / "deuda-fmi.json"
 NOMBRES_TIC = {
     "Japan": "Japón", "United Kingdom": "Reino Unido", "China, Mainland": "China continental", "Belgium": "Bélgica",
     "Canada": "Canadá", "Cayman Islands": "Islas Caimán", "Luxembourg": "Luxemburgo", "France": "Francia",
@@ -146,6 +153,57 @@ def leer_mercado():
     return salida
 
 
+def leer_deuda():
+    """Deuda pública por país: FMI (archivo manual, la API da 403 a curl) + rendimiento a 10 años de fuentes oficiales abiertas."""
+    base = json.loads(FMI.read_text(encoding="utf-8"))
+    rend = {}
+    fallos = []
+
+    def probar(pais, funcion):
+        try:
+            rend[pais] = funcion()
+        except Exception as e:
+            fallos.append(f"{pais}: {type(e).__name__}: {e}")
+
+    def ust():
+        filas = list(csv.DictReader(io.StringIO(descargar(URL_UST))))
+        f = max(filas, key=lambda r: datetime.strptime(r["Date"], "%m/%d/%Y"))
+        return {"valor": float(f["10 Yr"]), "fecha": datetime.strptime(f["Date"], "%m/%d/%Y").strftime("%Y-%m-%d"), "nivel": "P",
+                "fuente": "Tesoro de EE. UU., curva diaria de rendimientos (bonos a 10 años)"}
+
+    def jgb():
+        lineas = [l for l in descargar(URL_JGB).splitlines() if l[:4].isdigit()]
+        celdas = lineas[-1].split(",")
+        y, m, d = celdas[0].split("/")
+        return {"valor": float(celdas[10]), "fecha": f"{y}-{int(m):02d}-{int(d):02d}", "nivel": "P",
+                "fuente": "Ministerio de Finanzas de Japón, rendimientos de JGB a 10 años"}
+
+    def bce():
+        j = json.loads(descargar(URL_BCE))
+        obs = list(j["dataSets"][0]["series"].values())[0]["observations"]
+        fechas = j["structure"]["dimensions"]["observation"][0]["values"]
+        k = max(obs, key=int)
+        return {"valor": round(obs[k][0], 2), "fecha": fechas[int(k)]["id"], "nivel": "P",
+                "fuente": "BCE, curva de rendimientos de la zona euro (emisores AAA, 10 años); no es solo Alemania"}
+
+    def boe():
+        hoy = datetime.now(timezone.utc)
+        f = lambda t: t.strftime("%d/%b/%Y")
+        url = URL_BOE.format(d1=f(hoy - timedelta(days=14)), d2=f(hoy))
+        lineas = [l for l in descargar(url).splitlines()[1:] if l.strip()]
+        fecha, v = lineas[-1].split(",")
+        return {"valor": round(float(v), 2), "fecha": datetime.strptime(fecha, "%d %b %Y").strftime("%Y-%m-%d"), "nivel": "S",
+                "fuente": "Banco de Inglaterra, serie IUDMNZC (rendimiento nominal a 10 años); definición exacta [VERIFICAR]"}
+
+    probar("USA", ust)
+    probar("JPN", jgb)
+    probar("EUR", bce)
+    probar("GBR", boe)
+    base["rendimientos"] = rend
+    base["fallos"] = fallos
+    return base
+
+
 def main():
     previo = {}
     if SALIDA.exists():
@@ -155,7 +213,7 @@ def main():
             previo = {}
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda)):
         try:
             salida[clave] = funcion()
             salida[clave]["leido"] = salida["leido"]
@@ -170,6 +228,10 @@ def main():
     st = salida.get("stablecoins")
     if st:
         print(f"Stablecoins: {st['n_activos']} activos, total {st['total'] / 1e9:,.1f} MM$; XRPL {st['xrpl']['total'] / 1e6:,.0f} M$; Stellar {st['stellar']['total'] / 1e6:,.0f} M$")
+    de = salida.get("deuda")
+    if de:
+        print("Deuda: %d países FMI; rendimientos a 10 años: %s" % (len(de["paises"]), ", ".join(f"{k} {v['valor']} % ({v['fecha']})" for k, v in de["rendimientos"].items())))
+        fallos += de.get("fallos", [])
     for f in fallos:
         print("AVISO (se conserva lo anterior si existía):", f)
     return 1 if fallos else 0

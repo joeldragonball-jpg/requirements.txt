@@ -3,17 +3,21 @@
 Los datos los genera scripts/actualizar_paneles.py en explorador/paneles.json; esta página solo los lee.
 """
 import json
+import re
+import unicodedata
 from pathlib import Path
 
 import streamlit as st
 import streamlit.components.v1 as components
 
-CARPETA = Path(__file__).parent / "explorador"
+RAIZ = Path(__file__).parent
+CARPETA = RAIZ / "explorador"
 
 
 def _version():
     s = 0.0
-    for p in (Path(__file__), CARPETA / "paneles.html", CARPETA / "paneles.json", CARPETA / "regulacion.json"):
+    glos = list((RAIZ / "informes" / "research").glob("*R16-glosario*.md"))
+    for p in (Path(__file__), CARPETA / "paneles.html", CARPETA / "paneles.json", CARPETA / "regulacion.json", CARPETA / "datos.json", *glos):
         try:
             s = max(s, p.stat().st_mtime)
         except Exception:
@@ -39,10 +43,50 @@ def _tipos():
     return filas
 
 
+def _plano(texto):
+    return "".join(c for c in unicodedata.normalize("NFD", texto.lower()) if unicodedata.category(c) != "Mn")
+
+
+def _limpiar(md):
+    md = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", md)
+    md = re.sub(r"[*_`>#|]+", "", md)
+    return re.sub(r"\s+", " ", md).strip()
+
+
+def _glosario():
+    """Términos de las tablas R16 (informes/research) con su capa del mapa de órbitas (por palabras clave de datos.json)."""
+    try:
+        capas = json.loads((CARPETA / "datos.json").read_text(encoding="utf-8"))["capas"]
+    except Exception:
+        return []
+    filas, vistos = [], set()
+    for ruta in sorted((RAIZ / "informes" / "research").glob("*R16-glosario*.md")):
+        for linea in ruta.read_text(encoding="utf-8").splitlines():
+            m = re.match(r"^\|\s*\*\*(.+?)\*\*[^|]*\|\s*(.+?)\s*\|\s*(.*?)\s*\|\s*(.*?)\s*\|\s*$", linea)
+            if not m:
+                continue
+            term, defi, fuente, estado = (_limpiar(g) for g in m.groups())
+            clave = _plano(term)
+            if clave in vistos:
+                continue
+            vistos.add(clave)
+            t, c = _plano(term), _plano(defi)
+            pts = [(sum(4 * t.count(_plano(k)) + min(c.count(_plano(k)), 3) for k in capa.get("claves", [])), capa["id"]) for capa in capas]
+            filas.append({"t": term, "d": defi[:700], "f": fuente[:200], "e": estado[:200],
+                          "capas": [i for p, i in sorted(pts, reverse=True) if p >= 2][:3], "ver": "VERIFICAR" in estado.upper() or "VERIFICAR" in defi.upper()})
+    filas.sort(key=lambda x: _plano(x["t"]))
+    return filas
+
+
 @st.cache_data(ttl=600, show_spinner=False)
 def _html(version):
     datos = json.loads((CARPETA / "paneles.json").read_text(encoding="utf-8"))
     datos["tipos"] = _tipos()
+    datos["glosario"] = _glosario()
+    try:
+        datos["capas"] = [{"id": c["id"], "nombre": c["nombre"]} for c in json.loads((CARPETA / "datos.json").read_text(encoding="utf-8"))["capas"]]
+    except Exception:
+        datos["capas"] = []
     datos["hoy"] = __import__("datetime").date.today().isoformat()
     texto = json.dumps(datos, ensure_ascii=False).replace("</", "<\\/").replace("<!--", "<\\!--")
     return (CARPETA / "paneles.html").read_text(encoding="utf-8").replace("__DATOS__", texto)

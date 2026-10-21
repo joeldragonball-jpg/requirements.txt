@@ -104,3 +104,4 @@ actualizado: 2026-10-07
 - 2026-10-18 (R49): "washout" sin umbral fijado es relato: con caída ≥7 % en ≤6 h y rebote ≥50 % en ≤12 h hay ~28 al año por moneda (con 5 %, ~65; con 10 %, ~13); decir siempre qué criterio se usó. El −55,8 % de XRPUSDT del 10-oct-2025 en Binance es un extremo de bolsa (BTC −3,2 % esa hora), no el movimiento del mercado.
 
 - 2026-10-21 (R00 apertura): «El Brent supera los 110 $» era el pico de la mañana (111,31 $ en la serie horaria BZ=F) y el precio a las 16:48 UTC era 108,48 $: un titular de umbral describe el máximo, no el nivel actual; pedir serie, hora y último valor.
+- 2026-10-21 (R00 cierre): «BTC sube por SpaceX» y «SpaceX-Tesla exploran fusión con 30.000 BTC» son titulares de CoinDesk sin comunicado de las empresas: un verbo de intención («explore») no es hecho; simultaneidad con el precio no prueba causa.
