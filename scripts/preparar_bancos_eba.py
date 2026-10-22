@@ -53,6 +53,8 @@ def main():
     s = sov[(sov.Item == ITEM_SOB) & (sov.Maturity == "8") & (sov.Accounting_portfolio == "0")]
     cet = oth[(oth.Item == ITEM_CET1) & (oth.Sheet == "Capital")]
     activos = oth[(oth.Label.str.upper() == "TOTAL ASSETS") & (oth.Sheet == "Assets")]
+    pasivos = oth[(oth.Item == "2521215") & (oth.Sheet == "Liabilities") & (oth.Exposure == "0")]
+    totpas = oth[(oth.Item == "2521214") & (oth.Sheet == "Liabilities")]
     out = []
     for _, b in bancos.iterrows():
         lei = b["LEI_Code"]
@@ -72,6 +74,13 @@ def main():
         fila["cet1"] = round(float(c.iloc[0]), 0) if len(c) else None
         a = activos[(activos.LEI_Code == lei) & (activos.Period == PERIODO)].Amount
         fila["activos"] = round(float(a.iloc[0]), 0) if len(a) else None
+        for clave, instr in (("emitidos", "40"), ("subordinada", "41")):      # pasivos: deuda emitida por el propio banco (bonos, cédulas, subordinada)
+            e = pasivos[(pasivos.LEI_Code == lei) & (pasivos.Period == PERIODO) & (pasivos.Financial_instruments == instr)].Amount
+            fila[clave] = round(float(e.iloc[0]), 0) if len(e) else None
+        pt = totpas[(totpas.LEI_Code == lei) & (totpas.Period == PERIODO)].Amount
+        fila["pasivos"] = round(float(pt.iloc[0]), 0) if len(pt) else None
+        if fila.get("emitidos") and fila.get("pasivos"):
+            fila["emitidos_sobre_pasivos"] = round(100 * fila["emitidos"] / fila["pasivos"], 1)
         if fila.get("total"):
             fila["total_sobre_cet1"] = round(fila["total"] / fila["cet1"], 2) if fila["cet1"] else None
             fila["total_sobre_activos"] = round(100 * fila["total"] / fila["activos"], 1) if fila["activos"] else None
@@ -85,7 +94,8 @@ def main():
         "nivel": "P",
         "nota": "Exposición directa en balance a deuda soberana: valor contable bruto de los activos financieros no derivados frente a cada país emisor, al mayor nivel de consolidación. "
                 "El importe por país incluye bonos y préstamos y NO es solo deuda negociable; el alcance exacto de «soberano» (administraciones centrales, regionales y locales; bancos centrales) está en la guía de la EBA [VERIFICAR]. "
-                "La EBA interrumpe el ejercicio desde junio de 2025: este es el último corte de este conjunto.",
+                "La EBA interrumpe el ejercicio desde junio de 2025: este es el último corte de este conjunto. "
+                "Deuda que emite el propio banco: partida «Debt securities issued» de su pasivo (bonos, cédulas y subordinada), valor contable.",
         "bancos": [x for x in out if x.get("total")],
     }
     SALIDA.write_text(json.dumps(datos, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")

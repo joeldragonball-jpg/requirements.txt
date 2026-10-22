@@ -17,7 +17,7 @@ CARPETA = RAIZ / "explorador"
 def _version():
     s = 0.0
     glos = list((RAIZ / "informes" / "research").glob("*R16-glosario*.md"))
-    for p in (Path(__file__), CARPETA / "paneles.html", CARPETA / "paneles.json", CARPETA / "regulacion.json", CARPETA / "datos.json", CARPETA / "bancos-eba.json", *glos):
+    for p in (Path(__file__), CARPETA / "paneles.html", CARPETA / "paneles.json", CARPETA / "regulacion.json", CARPETA / "datos.json", CARPETA / "bancos-eba.json", CARPETA / "calificaciones.json", CARPETA / "reservas.json", *glos):
         try:
             s = max(s, p.stat().st_mtime)
         except Exception:
@@ -83,6 +83,14 @@ def _html(version):
     datos = json.loads((CARPETA / "paneles.json").read_text(encoding="utf-8"))
     datos["tipos"] = _tipos()
     datos["glosario"] = _glosario()
+    try:
+        datos["reservas"] = json.loads((CARPETA / "reservas.json").read_text(encoding="utf-8"))
+    except Exception:
+        datos["reservas"] = None
+    try:
+        datos["calif"] = json.loads((CARPETA / "calificaciones.json").read_text(encoding="utf-8"))
+    except Exception:
+        datos["calif"] = None
     try:
         datos["bancos"] = json.loads((CARPETA / "bancos-eba.json").read_text(encoding="utf-8"))
     except Exception:

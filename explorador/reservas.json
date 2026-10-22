@@ -1,0 +1,37 @@
+{
+ "leido": "2026-10-22",
+ "como": "Datos leídos a mano de fuentes oficiales (FMI, World Gold Council, SAFE, Ministerio de Finanzas de Japón, Fed, BCE, Banco de Japón). Se actualizan al hacer un R00 o al revisar los paneles. Informe: informes/research/2026-10-22-D07-quien-compra-y-vende-deuda.md",
+ "cofer": {
+  "titulo": "Reservas oficiales de divisas del mundo, por moneda (COFER, FMI)",
+  "periodo": "2.º trimestre de 2026", "anterior": "1.er trimestre de 2026", "total": "$13,22 billones (antes $13,10 billones)",
+  "nivel": "P", "fuente": "https://data.imf.org/en/news/imf%20data%20brief%20september%2030", "fecha": "30-sep-2026",
+  "monedas": [["Dólar de EE. UU.", 56.70, 57.18], ["Euro", 20.60, 20.04], ["Yen", 4.96, 5.43], ["Renminbi", 2.11, 1.98], ["Otras monedas (conjunto)", null, null]],
+  "nota": "El FMI dice que los tipos de cambio se movieron dentro de ±2 %, así que el cambio de cuotas refleja sobre todo otros precios o reasignaciones. «Otras monedas» sigue por encima del 6 %."
+ },
+ "oro": {
+  "titulo": "Compras netas de oro de los bancos centrales (World Gold Council)",
+  "nivel": "P", "fuente": "https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-q2-2026/central-banks", "fecha": "Datos a 30-jun-2026, publicados el 30-jul-2026",
+  "kpis": [["289 t", "2.º trimestre de 2026 (récord para un segundo trimestre; +62 % interanual)"], ["345 t", "Primer semestre (el más bajo desde 2022)"], ["57 t", "1.er trimestre, revisado desde 244 t"]],
+  "filas": [["Polonia", "+51 t", "632 t en reservas"], ["China", "+33 t", "2.346 t en reservas"], ["Uzbekistán", "+16 t", ""], ["Kazajistán", "+15 t", ""], ["Rusia", "−22 t", "mayor vendedor del trimestre"], ["Turquía", "−4 t", ""]],
+  "nota": "Las cifras de oro se revisan mucho (el 1.er trimestre bajó de 244 t a 57 t)."
+ },
+ "bancos_centrales": {
+  "titulo": "Lo que tienen los bancos centrales",
+  "filas": [
+   ["Reserva Federal", "$4.570,6 mil M en bonos del Tesoro (+$373,2 mil M en un año); $1.898,2 mil M en hipotecas; activo total $6.755,6 mil M", "Semana al 14-oct-2026", "P", "https://www.federalreserve.gov/releases/h41/current/"],
+   ["Eurosistema (BCE)", "PSPP €1.642,7 mil M y PEPP €1.268,8 mil M (cartera de política monetaria €3.316 mil M el 9-oct, frente a €3.459 mil M el 12-jun)", "16-oct-2026", "P", "https://www.ecb.europa.eu/press/annual-reports-financial-statements/wfs/2026/html/ecb.fs261020.en.html"],
+   ["Banco de Japón", "Alrededor del 50 % de los JGB en circulación (feb-2026); máximo cercano a ¥590 billones; −¥49 billones entre jun-2024 y mar-2026; compras de ~¥2,7 billones al mes que se recortarán ¥0,2 billones por trimestre hasta ene-mar 2027 y ~¥2 billones al mes desde abril de 2027", "Feb y jun-2026", "P", "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k260616d.pdf"]
+  ]
+ },
+ "reservas": {
+  "titulo": "Reservas de Japón y China",
+  "filas": [
+   ["China (SAFE)", "$3.438,3 mil M a fin de agosto; +$19,5 mil M (+0,57 %) por tipo de cambio y precios de activos. En la tabla TIC su custodia de deuda de EE. UU. es $590,7 mil M en agosto ($699,7 mil M un año antes)", "Ago-2026", "P", "https://www.safe.gov.cn/en/2026/0907/2460.html"],
+   ["Japón (MoF)", "Intervención cambiaria de ¥15.399,3 mil M entre el 30-jul y el 26-ago (la página no dice el sentido). Reservas de $1,207 billones en agosto frente a $1,287 billones en julio, descenso mensual récord (prensa)", "Ago-2026", "S", "https://www.mof.go.jp/english/policy/international_policy/reference/feio/monthly/20260828e.html"]
+  ]
+ },
+ "avisos": [
+  "La tabla TIC (panel «Deuda de EE. UU.») mide custodia, no propietario final, e incluye cambios de valoración: una caída no es una venta.",
+  "Sin serie abierta comprobada de tenencias de bonos de EE. UU. de la zona euro ni de compras de oro del BCE: en la cola de research."
+ ]
+}
