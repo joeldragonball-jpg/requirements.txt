@@ -244,7 +244,7 @@ const evVisibles = (capaId, dias) => eventos.filter(e => temasActivos.has(e.tema
 
 let sel = null, orbitasPausadas = false, reproduciendo = false, vistos = {};
 const RY = .72;
-const capas = D.capas.map((c, i) => ({...c, color: OK(c.color), i, rx: 118 + i * 48, a: (i * 2.399) % (Math.PI * 2),
+const capas = D.capas.map((c, i) => ({...c, color: OK(c.color), i, rx: 118 + i * (D.capas.length > 8 ? 40 : 48), a: (i * 2.399) % (Math.PI * 2),
   v: 0.10 / Math.pow(1 + i, 0.5) * (i % 2 ? -1 : 1), R: 16, docs: c.docs || {inv: [], glo: []}, cifras: c.cifras || []}));
 
 const defs = S('defs', {}, svg);
@@ -370,6 +370,7 @@ function mostrarTip(c){
   { const np = pnCoinciden(c.id, filtros().q); if (np) H('div', 'nota', tip, `${np} dato${np > 1 ? 's' : ''} al día coinciden con la búsqueda`); }
   if (PAN && PAN.stablecoins && c.id === 'stable') H('div', 'nota', tip, `Datos al día: ${pnUSD(PAN.stablecoins.total)} en circulación · ${pnFmt(PAN.stablecoins.top[0].usd / PAN.stablecoins.total * 100, 0)} % ${PAN.stablecoins.top[0].simbolo} [S]`);
   if (PAN && PAN.stablecoins && c.id === 'puente') H('div', 'nota', tip, `Datos al día: ${pnUSD(PAN.stablecoins.xrpl.total)} en stablecoins en el XRPL · ${pnUSD(PAN.stablecoins.stellar.total)} en Stellar [S]`);
+  if (PAN && PAN.bonos && c.id === 'deuda'){ const q = PAN.bonos.paises.find(x => x.id === 'ESP'), u = PAN.bonos.paises.find(x => x.id === 'USA'); if (q && u) H('div', 'nota', tip, `Datos al día: bono a 10 años de España ${pnFmt(q.plazos['10A'], 2)} % · EE. UU. ${pnFmt(u.plazos['10A'], 2)} % [P]`); }
   if (c.id === 'reg' && tiposFilas().length) H('div', 'nota', tip, `Datos al día: ${tiposFilas().filter(x => x.dir === 'sube').length} de ${tiposFilas().length} bancos centrales subieron tipos en su último movimiento`);
   if (PAN && PAN.tic && c.id === 'cbdc') H('div', 'nota', tip, `Datos al día: $${pnFmt(PAN.tic.total[0], 0)} mil M de deuda de EE. UU. en manos extranjeras (${PAN.tic.meses[0]}) [P]`);
   if (ev[0]) H('div', 'nota', tip, `Próxima: ${fmtC(ev[0].ini)} · ${corto(ev[0].titulo, 60)}`);
@@ -678,6 +679,11 @@ function cifrasVivas(c){
   const out = c.cifras.map(x => ({...x})), s = PAN && PAN.stablecoins;
   if (c.id === 'stable' && s && out[0]) out[0] = {...out[0], v: '≈' + pnUSD(s.total), e: 'En stablecoins en total; USDT y USDC ≈ ' + pnFmt((s.top[0].usd + s.top[1].usd) / s.total * 100, 0) + ' %',
     f: 'DefiLlama, leído ' + PAN.leido.slice(0, 10) + ' [S] · se actualiza solo'};
+  const bo = PAN && PAN.bonos && PAN.bonos.paises ? Object.fromEntries(PAN.bonos.paises.map(q => [q.id, q])) : null;
+  if (c.id === 'deuda' && bo){
+    const viva = (i, id, txt) => { const q = bo[id]; if (q && q.plazos['10A'] != null && out[i]) out[i] = {...out[i], v: pnFmt(q.plazos['10A'], 2) + ' %', e: txt + ' (' + q.fecha + ')', f: out[i].f.replace(/ · .*$/, '') + ' · se actualiza solo'}; };
+    viva(0, 'USA', 'Bono de EE. UU. a 10 años'); viva(2, 'ESP', 'España, bono a 10 años'); viva(3, 'JPN', 'Japón, bono a 10 años');
+  }
   return out;
 }
 const pnPrecio = v => v >= 1000 ? '$' + pnFmt(v, 0) : v >= 1 ? '$' + pnFmt(v, 2) : '$' + pnFmt(v, 4);
@@ -693,9 +699,12 @@ function pnTextos(id){
   if (id === 'puente'){ if (s) out.push(...cad(s.xrpl), ...cad(s.stellar)); if (PAN && PAN.mercado) out.push(...PAN.mercado.activos.map(a => a.simbolo + ' ' + a.nombre)); }
   if (id === 'cbdc' && PAN && PAN.tic) out.push(...PAN.tic.paises.map(p => p.nombre + ' ' + (p.clave || '')));
   if (id === 'token' && PAN && PAN.rwa) out.push(...PAN.rwa.top.map(x => x.nombre));
+  if (id === 'deuda'){
+    if (PAN && PAN.bonos) out.push(...PAN.bonos.paises.map(q => q.nombre + ' bono rendimiento'), ...Object.values(PAN.bonos.mensual10 || {}).map(x => x.nombre + ' diferencial'));
+    if (PAN && PAN.deuda) out.push(...PAN.deuda.paises.map(q => q.nombre + ' deuda pública'));
+  }
   if (id === 'reg'){
     tiposFilas().forEach(c => out.push(nomJur(c.jur) + ' ' + c.valor + ' tipo de interés banco central'));
-    if (PAN && PAN.deuda) out.push(...PAN.deuda.paises.map(p => p.nombre + ' deuda pública'), ...Object.values(PAN.deuda.rendimientos || {}).map(r => r.fuente));
   }
   return out;
 }
@@ -706,6 +715,7 @@ function datosGlobales(padre){
   if ((!PAN || (!PAN.stablecoins && !PAN.tic)) && !tp.length) return;
   const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día (pulsa una cifra para ir a su capa)');
   const k = [], s = PAN && PAN.stablecoins, t = PAN && PAN.tic;
+  if (PAN && PAN.bonos){ const q = id => PAN.bonos.paises.find(x => x.id === id); [['ESP', 'Bono de España a 10 años [P]'], ['FRA', 'Francia, TEC 10 [P]'], ['USA', 'Bono de EE. UU. a 10 años [P]']].forEach(([id, t]) => { const x = q(id); if (x && x.plazos['10A'] != null) k.push([pnFmt(x.plazos['10A'], 2) + ' %', t, 'deuda']); }); }
   if (tp.length) k.push([tp.filter(c => c.dir === 'sube').length + ' de ' + tp.length, 'Bancos centrales que subieron tipos en su último movimiento [P/S]', 'reg']);
   if (s){
     const rl = (s.xrpl.top.find(f => f.simbolo === 'RLUSD') || {usd: 0}).usd;
@@ -733,14 +743,25 @@ function datosCapa(padre, id){
     pnTabla(b, ['País', 'Tipo', 'Mov.', 'Próxima reunión'], tp.map(c => ({celdas: [nomJur(c.jur), c.valor, td => { td.textContent = DIR_SIM[c.dir || 'n/d'] + ' ' + (c.dir || 'n/d'); td.style.color = DIR_COL[c.dir || 'n/d']; }, c.proxima && c.proxima.fecha ? c.proxima.fecha.slice(5).split('-').reverse().join('-') : '—']})));
     H('p', 'nota', b, 'Nivel y movimiento, no si el tipo es alto o bajo: sin la inflación de cada país no son comparables. Singapur gestiona una banda de tipo de cambio y China publica el LPR. Fuente: columna «política monetaria» del radar regulatorio (arriba), con su etiqueta [P]/[S] por país.');
   }
-  if (id === 'reg' && PAN && PAN.deuda){
-    const d = PAN.deuda, i26 = d.anios.indexOf('2026');
-    const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: deuda pública y rendimientos a 10 años [P]');
-    const ry = d.rendimientos || {};
-    pnKpi(b, [[ry.USA ? pnFmt(ry.USA.valor, 2) + ' %' : '—', 'Bono de EE. UU. a 10 años' + (ry.USA ? ' (' + ry.USA.fecha + ')' : '')], [ry.JPN ? pnFmt(ry.JPN.valor, 2) + ' %' : '—', 'Bono de Japón a 10 años' + (ry.JPN ? ' (' + ry.JPN.fecha + ')' : '')]]);
-    const filas = d.paises.slice().sort((a, c) => c.deuda[i26] - a.deuda[i26]).map(p => ({celdas: [p.nombre, pnFmt(p.deuda[i26], 1) + ' %', (p.saldo[i26] > 0 ? '+' : '') + pnFmt(p.saldo[i26], 1) + ' %']}));
-    pnTabla(b, ['País', 'Deuda/PIB 2026', 'Saldo 2026'], filas);
-    H('p', 'nota', b, d.edicion + '. Proyecciones, no datos cerrados. Detalle y rendimientos por país en Paneles → Deuda pública.');
+  if (id === 'deuda' && PAN && (PAN.bonos || PAN.deuda)){
+    if (PAN.bonos && PAN.bonos.paises.length){
+      const P = Object.fromEntries(PAN.bonos.paises.map(q => [q.id, q]));
+      const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: bonos a 10 y 30 años [P]');
+      const kp = (id, t) => P[id] && P[id].plazos['10A'] != null ? [pnFmt(P[id].plazos['10A'], 2) + ' %', t + ' (' + P[id].fecha + ')'] : null;
+      pnKpi(b, [kp('ESP', 'España, 10 años'), kp('FRA', 'Francia, TEC 10'), kp('USA', 'EE. UU., 10 años'), kp('JPN', 'Japón, 10 años')].filter(Boolean));
+      const dp = (q, k) => q.plazos[k] != null && q.prev && q.prev[k] != null ? ((q.plazos[k] - q.prev[k]) * 100 > 0 ? '+' : '') + pnFmt((q.plazos[k] - q.prev[k]) * 100, 0) + ' pb' : '—';
+      pnTabla(b, ['País', '10 años', '30 años', '10 a. vs ayer'], ['ESP', 'FRA', 'USA', 'JPN', 'EUR', 'GBR'].filter(k => P[k]).map(k => ({celdas: [P[k].nombre, P[k].plazos['10A'] != null ? pnFmt(P[k].plazos['10A'], 2) + ' %' : '—', P[k].plazos['30A'] != null ? pnFmt(P[k].plazos['30A'], 2) + ' %' : '—', dp(P[k], '10A')]})));
+      const m = PAN.bonos.mensual10 || {};
+      if (m.DE) H('p', 'nota', b, 'Diferencial frente a Alemania (media mensual a 10 años, BCE, ' + m.DE.mes + '): ' + ['ES', 'FR', 'IT'].filter(k => m[k]).map(k => m[k].nombre + ' +' + pnFmt((m[k].valor - m.DE.valor) * 100, 0) + ' pb').join(' · ') + '.');
+      H('p', 'nota', b, 'Las curvas no se calculan igual en cada país (vencimiento constante, mercado, «par», emisores AAA). Más plazos y la curva dibujada en Paneles → Bonos y curvas. Informativo, sin recomendaciones.');
+    }
+    if (PAN.deuda){
+      const d = PAN.deuda, i26 = d.anios.indexOf('2026');
+      const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: deuda pública por país (FMI) [P]');
+      const filas = d.paises.slice().sort((a, c) => c.deuda[i26] - a.deuda[i26]).map(p => ({celdas: [p.nombre, pnFmt(p.deuda[i26], 1) + ' %', (p.saldo[i26] > 0 ? '+' : '') + pnFmt(p.saldo[i26], 1) + ' %']}));
+      pnTabla(b, ['País', 'Deuda/PIB 2026', 'Saldo 2026'], filas);
+      H('p', 'nota', b, d.edicion + '. Proyecciones, no datos cerrados. Detalle en Paneles → Deuda pública.');
+    }
   }
   if (!PAN) return;
   const rw = PAN.rwa;

@@ -8,6 +8,7 @@ Uso:  python scripts/actualizar_paneles.py
 Si una fuente falla, se conserva lo que ya había de esa fuente en paneles.json y se avisa.
 """
 import csv
+import gzip
 import io
 import json
 import sys
@@ -22,6 +23,12 @@ URL_UST = "https://home.treasury.gov/resource-center/data-chart-center/interest-
 URL_JGB = "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/jgbcme.csv"
 URL_BCE = "https://data-api.ecb.europa.eu/service/data/YC/B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y?lastNObservations=3&format=jsondata"
 URL_BOE = "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom={d1}&Dateto={d2}&SeriesCodes=IUDMNZC&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N"
+URL_BCE_YC = "https://data-api.ecb.europa.eu/service/data/YC/B.U2.EUR.4F.G_N_A.SV_C_YM.SR_{p}?lastNObservations={n}&format=jsondata"
+URL_BCE_IRS = "https://data-api.ecb.europa.eu/service/data/IRS/M.{c}.L.L40.CI.0000.EUR.N.Z?lastNObservations=3&format=jsondata"
+URL_BDE = "https://app.bde.es/bierest/resources/srdatosapp/listaSeries?idioma=es&series={s}&rango=3M"
+BDE_SERIES = {"D_DTES00B7": "3M", "D_DTES00U7": "1A", "D_G0B1F0ZN": "3A", "D_G0B1F0ZO": "5A", "D_G0B1F0ZP": "10A", "D_G0B1F0ZQ": "15A"}
+BOE_PAR = {"IUDSNPY": "5A", "IUDMNPY": "10A", "IUDLNPY": "20A"}
+BONOS_MANUAL = Path(__file__).resolve().parent.parent / "explorador" / "bonos-manual.json"
 FMI = Path(__file__).resolve().parent.parent / "explorador" / "deuda-fmi.json"
 NOMBRES_TIC = {
     "Japan": "Japón", "United Kingdom": "Reino Unido", "China, Mainland": "China continental", "Belgium": "Bélgica",
@@ -37,7 +44,10 @@ NOMBRES_TIC = {
 def descargar(url):
     peticion = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(peticion, timeout=40) as r:
-        return r.read().decode("utf-8", errors="replace")
+        datos = r.read()
+    if datos[:2] == b"\x1f\x8b":            # el Banco de España responde comprimido aunque no se le pida
+        datos = gzip.decompress(datos)
+    return datos.decode("utf-8", errors="replace")
 
 
 def leer_tic():
@@ -153,6 +163,121 @@ def leer_mercado():
     return salida
 
 
+def _num(x):
+    try:
+        return float(x)
+    except Exception:
+        return None
+
+
+def leer_bonos():
+    """Rendimientos de bonos y letras por plazo (3M a 30A) de fuentes oficiales abiertas. Sin IA."""
+    out, fallos = [], []
+
+    def anade(pais, nombre, nivel, fuente, plazos, prev, fecha, hist10=None, url=None):
+        out.append({"id": pais, "nombre": nombre, "nivel": nivel, "fuente": fuente, "fecha": fecha, "plazos": plazos,
+                    "prev": prev, "hist10": hist10 or [], "url": url})
+
+    def probar(nombre, f):
+        try:
+            f()
+        except Exception as e:
+            fallos.append(f"{nombre}: {type(e).__name__}: {e}")
+
+    def eeuu():
+        filas = sorted(csv.DictReader(io.StringIO(descargar(URL_UST))), key=lambda r: datetime.strptime(r["Date"], "%m/%d/%Y"))
+        col = {"3M": "3 Mo", "6M": "6 Mo", "1A": "1 Yr", "2A": "2 Yr", "5A": "5 Yr", "10A": "10 Yr", "30A": "30 Yr"}
+        f1, f0 = filas[-1], filas[-2]
+        anade("USA", "EE. UU.", "P", "Tesoro de EE. UU., curva diaria de rendimientos (bonos del Tesoro a vencimiento constante)",
+              {k: _num(f1[v]) for k, v in col.items()}, {k: _num(f0[v]) for k, v in col.items()},
+              datetime.strptime(f1["Date"], "%m/%d/%Y").strftime("%Y-%m-%d"),
+              [[datetime.strptime(r["Date"], "%m/%d/%Y").strftime("%Y-%m-%d"), _num(r["10 Yr"])] for r in filas[-22:]],
+              "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve")
+
+    def japon():
+        lineas = [l for l in descargar(URL_JGB).splitlines() if l[:4].isdigit()]
+        cab = ["1A", "2A", "3A", "4A", "5A", "6A", "7A", "8A", "9A", "10A", "15A", "20A", "25A", "30A", "40A"]
+
+        def fila(l):
+            c = l.split(",")
+            y, m, d = c[0].split("/")
+            return f"{y}-{int(m):02d}-{int(d):02d}", {k: _num(v) for k, v in zip(cab, c[1:])}
+
+        (f1, v1), (_, v0) = fila(lineas[-1]), fila(lineas[-2])
+        keep = ("1A", "2A", "3A", "5A", "10A", "20A", "30A")
+        anade("JPN", "Japón", "P", "Ministerio de Finanzas de Japón, rendimientos de JGB (bonos del Estado) por plazo",
+              {k: v1[k] for k in keep}, {k: v0[k] for k in keep}, f1, [[fila(l)[0], fila(l)[1]["10A"]] for l in lineas[-22:]],
+              "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/index.htm")
+
+    def zona_euro():
+        pl = {"3M": "3M", "1A": "1Y", "2A": "2Y", "5A": "5Y", "10A": "10Y", "30A": "30Y"}
+        v1, v0, fecha, hist = {}, {}, None, []
+        for k, p in pl.items():
+            j = json.loads(descargar(URL_BCE_YC.format(p=p, n=22 if k == "10A" else 2)))
+            obs = list(j["dataSets"][0]["series"].values())[0]["observations"]
+            fechas = [x["id"] for x in j["structure"]["dimensions"]["observation"][0]["values"]]
+            idx = sorted(obs, key=int)
+            v1[k] = round(obs[idx[-1]][0], 3)
+            v0[k] = round(obs[idx[-2]][0], 3)
+            if k == "10A":
+                fecha = fechas[int(idx[-1])]
+                hist = [[fechas[int(i)], round(obs[i][0], 3)] for i in idx]
+        anade("EUR", "Zona euro (AAA)", "P", "BCE, curva de rendimientos de la zona euro (emisores con calificación AAA; no es la de un país)",
+              v1, v0, fecha, hist, "https://data.ecb.europa.eu/data/datasets/YC")
+
+    def espana():
+        j = json.loads(descargar(URL_BDE.format(s=",".join(BDE_SERIES))))
+        v1, v0, hist, fecha = {}, {}, [], None
+        for ser in j:
+            k = BDE_SERIES[ser["serie"]]
+            v1[k], v0[k] = ser["valores"][0], ser["valores"][1]
+            if k == "10A":
+                fecha = ser["fechas"][0][:10]
+                hist = [[f[:10], v] for f, v in zip(ser["fechas"][:22], ser["valores"][:22])][::-1]
+        anade("ESP", "España", "P", "Banco de España, tipos de interés del mercado secundario de deuda del Estado (letras y bonos y obligaciones, operaciones simples al contado)",
+              v1, v0, fecha, hist, "https://www.bde.es/webbe/es/estadisticas/temas/mercados-financieros.html")
+
+    def reino_unido():
+        v1, v0, fecha = {}, {}, None
+        hoy = datetime.now(timezone.utc)
+        for cod, k in BOE_PAR.items():
+            url = ("https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom=%s&Dateto=%s&SeriesCodes=%s&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N"
+                   % ((hoy - timedelta(days=14)).strftime("%d/%b/%Y"), hoy.strftime("%d/%b/%Y"), cod))
+            lineas = [l for l in descargar(url).splitlines()[1:] if l.strip()]
+            f, v = lineas[-1].split(",")
+            v1[k] = round(float(v), 3)
+            v0[k] = round(float(lineas[-2].split(",")[1]), 3)
+            fecha = datetime.strptime(f, "%d %b %Y").strftime("%Y-%m-%d")
+        anade("GBR", "Reino Unido", "P", "Banco de Inglaterra, rendimiento nominal «par» de los gilts (series IUDSNPY, IUDMNPY, IUDLNPY)",
+              v1, v0, fecha, [], "https://www.bankofengland.co.uk/statistics/yield-curves")
+
+    def francia():
+        m = json.loads(BONOS_MANUAL.read_text(encoding="utf-8"))["francia"]
+        serie = m["serie10"]
+        anade("FRA", m["nombre"], m["nivel"], m["fuente"], {"10A": serie[-1][1]}, {"10A": serie[-2][1]}, serie[-1][0], serie, m["url"])
+
+    for nombre, f in (("EE. UU.", eeuu), ("Japón", japon), ("Zona euro", zona_euro), ("España", espana), ("Reino Unido", reino_unido), ("Francia", francia)):
+        probar(nombre, f)
+    mensual = {}
+    for c, n in (("DE", "Alemania"), ("ES", "España"), ("FR", "Francia"), ("IT", "Italia")):
+        try:
+            j = json.loads(descargar(URL_BCE_IRS.format(c=c)))
+            obs = list(j["dataSets"][0]["series"].values())[0]["observations"]
+            fechas = [x["id"] for x in j["structure"]["dimensions"]["observation"][0]["values"]]
+            idx = sorted(obs, key=int)
+            mensual[c] = {"nombre": n, "mes": fechas[int(idx[-1])], "valor": round(obs[idx[-1]][0], 3),
+                          "mes_ant": fechas[int(idx[-2])], "valor_ant": round(obs[idx[-2]][0], 3)}
+        except Exception as e:
+            fallos.append(f"BCE mensual {c}: {type(e).__name__}: {e}")
+    paises = {p["id"]: p for p in out}
+    previo = (PREVIO.get("bonos") or {}).get("paises") or []
+    for p in previo:                              # si una fuente falla, se conserva el dato anterior (con su fecha)
+        if p["id"] not in paises:
+            out.append(p)
+    return {"paises": out, "mensual10": mensual, "fallos": fallos,
+            "nota_mensual": "Rendimiento medio mensual del bono a 10 años que usa el BCE para los criterios de convergencia: sirve para comparar países euro entre sí (Alemania, España, Francia, Italia), con ~1 mes de retraso."}
+
+
 def leer_deuda():
     """Deuda pública por país: FMI (archivo manual, la API da 403 a curl) + rendimiento a 10 años de fuentes oficiales abiertas."""
     base = json.loads(FMI.read_text(encoding="utf-8"))
@@ -204,16 +329,21 @@ def leer_deuda():
     return base
 
 
+PREVIO = {}
+
+
 def main():
+    global PREVIO
     previo = {}
     if SALIDA.exists():
         try:
             previo = json.loads(SALIDA.read_text(encoding="utf-8"))
         except Exception:
             previo = {}
+    PREVIO = previo
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos)):
         try:
             salida[clave] = funcion()
             salida[clave]["leido"] = salida["leido"]
@@ -228,6 +358,10 @@ def main():
     st = salida.get("stablecoins")
     if st:
         print(f"Stablecoins: {st['n_activos']} activos, total {st['total'] / 1e9:,.1f} MM$; XRPL {st['xrpl']['total'] / 1e6:,.0f} M$; Stellar {st['stellar']['total'] / 1e6:,.0f} M$")
+    bo = salida.get("bonos")
+    if bo:
+        print("Bonos: %s; mensual 10A: %s" % (", ".join(f"{p['id']} {p['plazos'].get('10A')} ({p['fecha']})" for p in bo["paises"]), ", ".join(f"{k} {v['valor']}" for k, v in bo["mensual10"].items())))
+        fallos += bo.get("fallos", [])
     de = salida.get("deuda")
     if de:
         print("Deuda: %d países FMI; rendimientos a 10 años: %s" % (len(de["paises"]), ", ".join(f"{k} {v['valor']} % ({v['fecha']})" for k, v in de["rendimientos"].items())))

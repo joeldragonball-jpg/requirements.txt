@@ -171,6 +171,8 @@ def _tema_y_capa(titulo, detalle):
                 elif "custodia" in t:
                     capa = "custodia"
             return tema, capa
+    if any(k in t for k in ("bono ", "bonos", "deuda publica", "subasta de deuda", "letras del tesoro")):
+        return "macro", "deuda"            # emisiones y deuda soberana: capa «Deuda soberana y bonos»
     return "macro", "reg"
 
 

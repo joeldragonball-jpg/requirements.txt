@@ -39,6 +39,7 @@ td.tag{color:var(--suave);font-size:11.5px;text-align:left}
 .mini{font-size:11.5px;color:var(--suave)}
 svg.spark{vertical-align:middle}
 .fila-xrp td{color:#f1d58a;font-weight:600}
+.pto{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:baseline}
 .gl-barra{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
 .gl-barra input{background:rgba(15,23,42,.9);color:var(--texto);border:1px solid var(--linea);border-radius:6px;padding:6px 10px;font:inherit;min-width:220px}
 .gl-barra select{background:rgba(15,23,42,.9);color:var(--texto);border:1px solid var(--linea);border-radius:6px;padding:6px 8px;font:inherit}
@@ -175,12 +176,14 @@ function panelGlosario(){
 function panelDeuda(){
   const d=D.deuda; if(!d) return '<div class="aviso">No hay datos de deuda. Ejecuta scripts/actualizar_paneles.py.</div>';
   const ix=a=>d.anios.indexOf(a), i25=ix('2025'), i26=ix('2026'), i30=ix('2030'), i23=ix('2023');
-  const RE={USA:'USA',JPN:'JPN',GBR:'GBR',DEU:'EUR',FRA:'EUR',ITA:'EUR',ESP:'EUR'};
+  const RE={USA:'USA',JPN:'JPN',GBR:'GBR',DEU:'M:DE',FRA:'FRA',ITA:'M:IT',ESP:'ESP'};
+  const yb={}; ((D.bonos&&D.bonos.paises)||[]).forEach(q=>{ if(q.plazos&&q.plazos['10A']!=null) yb[q.id]={valor:q.plazos['10A'],fecha:q.fecha,nivel:q.nivel,fuente:q.fuente}; });
+  const mm=(D.bonos&&D.bonos.mensual10)||{}; Object.keys(mm).forEach(k=>{ yb['M:'+k]={valor:mm[k].valor,fecha:mm[k].mes,nivel:'P',fuente:'BCE, media mensual del bono a 10 años',mensual:true}; });
   const orden=d.paises.slice().sort((a,b)=>b.deuda[i26]-a.deuda[i26]);
   const mx=Math.max(...d.paises.map(p=>p.deuda[i26]));
   const dsal=v=>v==null?'—':`<span class="${v<0?'baja':'sube'}">${v>0?'+':''}${fm(v,1)} %</span>`;
-  const filas=orden.map(p=>{ const r=d.rendimientos&&d.rendimientos[RE[p.id]];
-    const rt=r? `<b>${fm(r.valor,2)} %</b> <span class="nivel ${r.nivel}" title="${esc(r.fuente)}">${r.nivel}</span> <span class="mini">${fechaCorta(r.fecha)}${RE[p.id]==='EUR'?' · zona euro':''}</span>` : '<span class="neutro">sin fuente abierta leída</span>';
+  const filas=orden.map(p=>{ const r=yb[RE[p.id]]||(d.rendimientos&&d.rendimientos[RE[p.id]]);
+    const rt=r? `<b>${fm(r.valor,2)} %</b> <span class="nivel ${r.nivel}" title="${esc(r.fuente)}">${r.nivel}</span> <span class="mini">${fechaCorta(r.fecha)}${r&&r.mensual?' · media mensual':''}</span>` : '<span class="neutro">sin fuente abierta leída</span>';
     return `<tr><td>${esc(p.nombre)}</td><td class="n"><b>${fm(p.deuda[i26])} %</b></td><td class="hm"><span class="barra" style="width:${(p.deuda[i26]/mx*90).toFixed(0)}px"></span></td>
      <td class="n">${(p.deuda[i26]-p.deuda[i23]>0?'+':'')+fm(p.deuda[i26]-p.deuda[i23],1)} pp</td><td class="n">${fm(p.deuda[i30])} %</td><td class="n">${dsal(p.saldo[i25])}</td><td class="n">${dsal(p.saldo[i26])}</td><td class="n">${rt}</td></tr>`;}).join('');
   const rend=Object.entries(d.rendimientos||{}).map(([k,v])=>`<li>${esc(v.fuente)} · ${fechaCorta(v.fecha)} · <span class="nivel ${v.nivel}">${v.nivel}</span></li>`).join('');
@@ -189,16 +192,69 @@ function panelDeuda(){
   <div class="kpis"><div class="kpi"><div class="v">${esc(orden[0].nombre)}</div><div class="e">Mayor deuda/PIB en 2026: ${fm(orden[0].deuda[i26])} %</div></div>
    <div class="kpi"><div class="v">${fm(d.paises.find(p=>p.id==='USA').deuda[i26])} %</div><div class="e">EE. UU. 2026 · saldo ${fm(d.paises.find(p=>p.id==='USA').saldo[i26])} % del PIB</div></div>
    <div class="kpi"><div class="v">${fm(d.rendimientos&&d.rendimientos.USA?d.rendimientos.USA.valor:null,2)} %</div><div class="e">Bono de EE. UU. a 10 años · ${d.rendimientos&&d.rendimientos.USA?fechaCorta(d.rendimientos.USA.fecha):'—'}</div></div></div>
-  <div class="aviso"><b>Cómo leerlo:</b> las cifras de 2025 en adelante son estimaciones y proyecciones del FMI, no datos cerrados. «Deuda bruta» no resta los activos que tiene el Estado: en Japón y Singapur es muy alta, pero ambos tienen grandes activos públicos, y la de Singapur es, según el MOF y la MAS, en su mayor parte deuda emitida con fines distintos de gastar (las emisiones se invierten y no se pueden gastar) [P]; que toda la deuda bruta esté cubierta por activos no consta en esas fuentes. Un rendimiento alto no dice por sí solo si la deuda es «mala»: depende de la inflación, el crecimiento y la moneda. Los rendimientos de la zona euro son de la curva del BCE (emisores AAA), no de cada país. Informativo, sin recomendaciones.</div>
+  <div class="aviso"><b>Cómo leerlo:</b> las cifras de 2025 en adelante son estimaciones y proyecciones del FMI, no datos cerrados. «Deuda bruta» no resta los activos que tiene el Estado: en Japón y Singapur es muy alta, pero ambos tienen grandes activos públicos, y la de Singapur es, según el MOF y la MAS, en su mayor parte deuda emitida con fines distintos de gastar (las emisiones se invierten y no se pueden gastar) [P]; que toda la deuda bruta esté cubierta por activos no consta en esas fuentes. Un rendimiento alto no dice por sí solo si la deuda es «mala»: depende de la inflación, el crecimiento y la moneda. Los rendimientos de España (Banco de España) y Francia (TEC 10 de la AFT) son de cada país; Alemania e Italia no tienen serie diaria abierta y solo se ven en el panel «Bonos y curvas» (mensual, BCE). Informativo, sin recomendaciones.</div>
   <table><thead><tr><th>País</th><th>Deuda/PIB 2026</th><th class="hm"></th><th title="Cambio de la deuda/PIB entre 2023 y 2026, en puntos porcentuales">vs 2023</th><th>2030 (proyec.)</th><th>Saldo 2025</th><th>Saldo 2026</th><th>Rendimiento a 10 años</th></tr></thead><tbody>${filas}</tbody></table>
   <p class="pie">Deuda y saldo: <a style="color:#f1d58a" href="${d.fuente}" target="_blank" rel="noopener">FMI, Perspectivas de la Economía Mundial</a>, leído el ${esc(d.leido)} (${esc(d.como)}). Rendimientos, leídos el ${esc(D.leido)}:</p><ul class="pie">${rend}</ul>
   <p class="pie">España y las demás zonas con rendimiento «sin fuente abierta leída» no tienen aún una fuente oficial gratuita comprobada; se añadirán solo con fuente primaria.</p></div>`;
 }
-const PEST=[['tic','Deuda de EE. UU.',panelTIC],['deuda','Deuda pública',panelDeuda],['stable','Stablecoins',panelStable],['tipos','Tipos de interés',panelTipos],['rwa','Mercado y RWA',panelMercadoRWA],['glo','Glosario',panelGlosario]];
+const PL_BONOS=['3M','1A','2A','3A','5A','10A','15A','20A','30A'];
+const COL_BONOS={ESP:'#f1d58a',FRA:'#6cb4ff',USA:'#5fd0a0',JPN:'#f08a7a',EUR:'#b8a1ff',GBR:'#aab4c8'};
+let bonosOff=new Set(['GBR']);
+function curvaBonos(paises){
+  const W=640,H=270,ml=44,mr=14,mt=12,mb=30;
+  const vis=paises.filter(p=>!bonosOff.has(p.id));
+  const vals=vis.flatMap(p=>PL_BONOS.map(k=>p.plazos[k]).filter(v=>v!=null));
+  if(!vals.length) return '<p class="mini">Activa algún país.</p>';
+  const mn=Math.floor(Math.min(...vals)*2-0.5)/2, mx=Math.ceil(Math.max(...vals)*2+0.5)/2;
+  const X=i=>ml+i*(W-ml-mr)/(PL_BONOS.length-1), Y=v=>mt+(1-(v-mn)/(mx-mn))*(H-mt-mb);
+  let g='';
+  for(let v=mn;v<=mx+1e-9;v+=0.5){ g+=`<line x1="${ml}" x2="${W-mr}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}" stroke="rgba(148,163,184,.14)"/><text x="${ml-6}" y="${(Y(v)+4).toFixed(1)}" text-anchor="end" font-size="10" fill="#93a1bd">${fm(v,1)}</text>`; }
+  PL_BONOS.forEach((k,i)=>{ g+=`<text x="${X(i).toFixed(1)}" y="${H-10}" text-anchor="middle" font-size="10.5" fill="#93a1bd">${k.replace('A',' a.').replace('M',' m')}</text>`; });
+  vis.forEach(p=>{
+    const pts=PL_BONOS.map((k,i)=>p.plazos[k]!=null?[X(i),Y(p.plazos[k]),k,p.plazos[k]]:null).filter(Boolean);
+    const c=COL_BONOS[p.id]||'#fff';
+    if(pts.length>1) g+=`<polyline fill="none" stroke="${c}" stroke-width="2" points="${pts.map(q=>q[0].toFixed(1)+','+q[1].toFixed(1)).join(' ')}"/>`;
+    pts.forEach(q=>{ g+=`<circle cx="${q[0].toFixed(1)}" cy="${q[1].toFixed(1)}" r="3.6" fill="${c}"><title>${esc(p.nombre)} · ${q[2]}: ${fm(q[3],2)} % (${fechaCorta(p.fecha)})</title></circle>`; });
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:720px" role="img" aria-label="Curvas de rendimientos por plazo">${g}</svg>`;
+}
+function panelBonos(){
+  const b=D.bonos; if(!b||!b.paises||!b.paises.length) return '<div class="aviso">No hay datos de bonos. Ejecuta scripts/actualizar_paneles.py.</div>';
+  const P=Object.fromEntries(b.paises.map(p=>[p.id,p]));
+  const orden=['ESP','FRA','USA','JPN','EUR','GBR'].filter(k=>P[k]).map(k=>P[k]);
+  const pb=(p,k)=> (p.plazos[k]!=null&&p.prev&&p.prev[k]!=null)? (p.plazos[k]-p.prev[k])*100 : null;
+  const dpb=v=> v==null?'<span class="neutro">—</span>':`<span class="${Math.abs(v)<0.5?'neutro':v>0?'sube':'baja'}">${v>0?'+':''}${fm(v,0)} pb</span>`;
+  const celdas=p=>PL_BONOS.map(k=>`<td class="n ${['3M','3A','15A','20A'].includes(k)?'hm':''}">${p.plazos[k]!=null?fm(p.plazos[k],2):'<span class="neutro">—</span>'}</td>`).join('');
+  const filas=orden.map(p=>`<tr><td><span class="pto" style="background:${COL_BONOS[p.id]}"></span>${esc(p.nombre)}</td>${celdas(p)}<td class="n">${dpb(pb(p,'10A'))}</td>
+    <td class="hm">${p.hist10&&p.hist10.length>3?spark(p.hist10.map(x=>x[1])):''}</td><td class="n hm">${fechaCorta(p.fecha)}</td><td><span class="nivel ${p.nivel==='P'?'P':'S'}" title="${esc(p.fuente)}">${p.nivel}</span></td></tr>`).join('');
+  const chips=orden.map(p=>`<button class="chip ${bonosOff.has(p.id)?'':'on'}" data-bono="${p.id}"><span class="pto" style="background:${COL_BONOS[p.id]}"></span>${esc(p.nombre)}</button>`).join('');
+  const m=b.mensual10||{}, de=m.DE;
+  const mfilas=['DE','ES','FR','IT'].filter(k=>m[k]).map(k=>{ const x=m[k], sp=de&&k!=='DE'?(x.valor-de.valor)*100:null, spa=de&&k!=='DE'?(x.valor_ant-de.valor_ant)*100:null;
+    return `<tr><td>${esc(x.nombre)}</td><td class="n"><b>${fm(x.valor,2)} %</b></td><td class="n">${fm(x.valor_ant,2)} %</td><td class="n">${k==='DE'?'<span class="neutro">referencia</span>':'+'+fm(sp,0)+' pb'}</td><td class="n hm">${k==='DE'?'':'+'+fm(spa,0)+' pb'}</td>
+     <td class="hm">${k==='DE'?'':`<span class="barra" style="width:${Math.max(2,sp/1.4).toFixed(0)}px;background:${COL_BONOS[{ES:'ESP',FR:'FRA',IT:'ESP'}[k]]||'#d4a84b'}"></span>`}</td></tr>`;}).join('');
+  const us=P.USA, es=P.ESP, fr=P.FRA, jp=P.JPN;
+  const k=(p,l,pl)=>p&&p.plazos[pl]!=null?`<div class="kpi"><div class="v">${fm(p.plazos[pl],2)} %</div><div class="e">${l} · ${fechaCorta(p.fecha)}</div></div>`:'';
+  return `<div class="panel vidrio"><h2>Bonos y letras: rendimientos por plazo</h2>
+  <p class="que">Cuánto paga cada Estado por endeudarse a distintos plazos (de 3 meses a 30 años) · fuentes oficiales abiertas · <span class="nivel P">P</span> primaria</p>
+  <div class="kpis">${k(es,'España, bono a 10 años','10A')}${k(fr,'Francia, TEC 10','10A')}${k(us,'EE. UU., 10 años','10A')}${k(us,'EE. UU., 30 años','30A')}${k(jp,'Japón, 10 años','10A')}${k(jp,'Japón, 30 años','30A')}</div>
+  <div class="aviso"><b>Cómo leerlo:</b> el rendimiento es lo que cobra quien compra el bono si lo mantiene hasta el final: sube cuando el precio baja. Una curva «hacia arriba» (más a más plazo) es lo normal; si los plazos cortos pagan más que los largos se dice que está «invertida». <b>Las curvas de cada país no son idénticas en método</b> (vencimiento constante en EE. UU., operaciones de mercado en España, «par» en Reino Unido, emisores AAA en la zona euro), así que comparan bien la forma y menos bien el decimal. Informativo, sin recomendaciones.</div>
+  <div class="gl-barra">${chips}</div>
+  ${curvaBonos(orden)}
+  <table><thead><tr><th>País / curva</th>${PL_BONOS.map(k=>`<th class="${['3M','3A','15A','20A'].includes(k)?'hm':''}">${k.replace('A',' a.').replace('M',' m')}</th>`).join('')}<th title="Cambio del 10 años frente al dato anterior, en puntos básicos (1 pb = 0,01 %)">10 a. vs ayer</th><th class="hm">10 a., 22 días</th><th class="hm">Fecha</th><th>Nivel</th></tr></thead><tbody>${filas}</tbody></table>
+  <p class="pie">Fuentes (pasa el ratón por la P): ${orden.map(p=>`<a style="color:#f1d58a" href="${esc(p.url||'#')}" target="_blank" rel="noopener">${esc(p.nombre)}</a>`).join(' · ')}. Leído el ${esc(D.leido)}. España: letras a 3 meses y 1 año y bonos a 3, 5, 10 y 15 años (el Banco de España no publica 30 años). Francia: solo el índice TEC 10 (la AFT bloquea la descarga automática: se actualiza a mano en explorador/bonos-manual.json, leído el ${esc((b.paises.find(p=>p.id==='FRA')||{}).fecha||'—')}). Reino Unido oculto por defecto (curva «par»).</p></div>
+  <div class="panel vidrio"><h2>Zona euro: cuánto más paga cada país que Alemania</h2>
+  <p class="que">Bono a 10 años, media mensual, BCE <span class="nivel P">P</span> · el diferencial («prima de riesgo») mide la desconfianza relativa frente al país de referencia</p>
+  <table><thead><tr><th>País</th><th>${esc(fechaCorta((m.DE||{}).mes)||'mes')}</th><th>${esc(fechaCorta((m.DE||{}).mes_ant)||'mes ant.')}</th><th>Diferencial vs Alemania</th><th class="hm">Mes anterior</th><th class="hm"></th></tr></thead><tbody>${mfilas}</tbody></table>
+  <p class="pie">${esc(b.nota_mensual||'')} Dato diario: España y Francia arriba; Italia y Alemania no tienen aún una serie diaria oficial abierta comprobada (en la cola de research). Un diferencial mayor no significa por sí solo impago: depende de la deuda, el déficit y el crecimiento.</p></div>
+  <div class="aviso"><b>Huecos, marcados:</b> China (rendimientos de los bonos del Estado): sin fuente oficial abierta leída; Italia y Alemania a diario; 30 años de España, Francia e Italia. Están en la cola de research (research/COLA-DEUDA-BONOS.md).</div>`;
+}
+
+const PEST=[['tic','Deuda de EE. UU.',panelTIC],['deuda','Deuda pública',panelDeuda],['bonos','Bonos y curvas',panelBonos],['stable','Stablecoins',panelStable],['tipos','Tipos de interés',panelTipos],['rwa','Mercado y RWA',panelMercadoRWA],['glo','Glosario',panelGlosario]];
 let act=PEST[0][0];
 function pinta(){
   document.getElementById('pest').innerHTML=PEST.map(p=>`<button class="chip ${p[0]===act?'on':''}" data-k="${p[0]}">${p[1]}</button>`).join('')+'<span class="mini" style="align-self:center;margin-left:8px">Próximos: deuda por país · CBDC y redes</span>';
   document.getElementById('cont').innerHTML=PEST.find(p=>p[0]===act)[2]();
+  document.querySelectorAll('[data-bono]').forEach(b=>b.onclick=()=>{const k=b.dataset.bono; bonosOff.has(k)?bonosOff.delete(k):bonosOff.add(k); pinta();});
   const q=document.getElementById('glq'), c=document.getElementById('glc');
   if(q){ q.oninput=()=>{glQ=q.value; const pos=q.selectionStart; pinta(); const n=document.getElementById('glq'); n.focus(); n.setSelectionRange(pos,pos);}; }
   if(c){ c.onchange=()=>{glC=c.value; pinta();}; }
