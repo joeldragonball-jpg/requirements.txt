@@ -243,7 +243,9 @@ def mostrar(conceptos=None):
                 "radial-gradient(ellipse 45% 34% at 92% 30%,rgba(190,70,130,.15),transparent 70%),"
                 "radial-gradient(ellipse 45% 30% at 72% 4%,rgba(34,160,190,.13),transparent 70%),"
                 "radial-gradient(ellipse 80% 60% at 50% 32%,#0b1230 0%,#050816 85%) fixed !important}"
-                "[data-testid='stHeader']{display:none !important}</style>", unsafe_allow_html=True)
+                "[data-testid='stHeader']{display:none !important}"
+                "*::-webkit-scrollbar{width:4px;height:4px}*::-webkit-scrollbar-track{background:rgba(148,163,184,.08)}"
+                "*::-webkit-scrollbar-thumb{background:rgba(226,232,240,.45);border-radius:2px}*::-webkit-scrollbar-thumb:hover{background:rgba(241,213,138,.85)}</style>", unsafe_allow_html=True)
     try:
         html = _html(conceptos)
     except Exception as e:

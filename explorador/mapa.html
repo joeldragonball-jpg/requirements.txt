@@ -4,11 +4,13 @@
 <style>
 :root{color-scheme:dark;--alto:820px;--bg:#050816;--panel:rgba(9,14,30,.88);--linea:rgba(148,163,184,.16);--texto:#e6ebf5;--suave:#93a1bd;--oro:#d4a84b}
 *{box-sizing:border-box}
-html,body{margin:0;background:transparent;color:var(--texto);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-variant-numeric:tabular-nums}
-#app{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:10px;padding:2px 6px 6px;height:var(--alto);transition:grid-template-columns .5s ease}
-#app.sel{grid-template-columns:minmax(0,1fr) minmax(620px,50%)}
-#app.sel #panel{zoom:1.2}
-@media (max-width:900px){#app,#app.sel{grid-template-columns:1fr;height:auto}#lienzo{height:70vh}}
+::-webkit-scrollbar{width:3px;height:3px}
+::-webkit-scrollbar-track{background:rgba(148,163,184,.08);border-radius:2px}
+::-webkit-scrollbar-thumb{background:rgba(226,232,240,.5);border-radius:2px}
+::-webkit-scrollbar-thumb:hover{background:rgba(241,213,138,.85)}
+@supports not selector(::-webkit-scrollbar){*{scrollbar-width:thin;scrollbar-color:rgba(226,232,240,.45) rgba(148,163,184,.08)}}
+html,body{margin:0;overflow:hidden;background:transparent;color:var(--texto);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-variant-numeric:tabular-nums}
+#app{display:grid;grid-template-columns:minmax(0,1fr);padding:2px 6px 6px;height:var(--alto);--pw:520px}
 #izq{display:flex;flex-direction:column;gap:8px;min-width:0;min-height:0}
 .vidrio{background:rgba(9,14,30,.5);border:1px solid rgba(148,163,184,.12);border-radius:10px;backdrop-filter:blur(8px)}
 #barra{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:7px 10px}
@@ -34,6 +36,37 @@ html,body{margin:0;background:transparent;color:var(--texto);font:14px/1.45 syst
 .tema i{width:9px;height:9px;transform:rotate(45deg);display:inline-block;flex:none}
 .tema.off{opacity:.35}.tema:hover{border-color:var(--linea)}
 #lienzo{flex:1;min-height:0;position:relative;overflow:hidden;background:none;border:none}
+#vistaIzq{display:none;position:absolute;inset:0 var(--pwa,0px) 0 0;z-index:2;pointer-events:none;grid-template-columns:minmax(0,1fr) var(--hw,420px) minmax(0,1fr);grid-template-rows:minmax(0,1fr) var(--hh,400px) minmax(0,1fr);gap:8px;padding:6px}
+#app.sel #vistaIzq{display:grid}
+.zona{display:flex;flex-wrap:wrap;gap:12px 14px;justify-content:center;overflow:hidden;min-height:0;padding:12px 8px;pointer-events:none}
+#vistaIzq.quieto .zona{overflow-y:auto}
+.zona.top{grid-column:1/4;grid-row:1;align-content:flex-end}
+.zona.bajo{grid-column:1/4;grid-row:3;align-content:flex-start}
+.zona.izq,.zona.der{flex-direction:column;flex-wrap:nowrap;justify-content:center;align-content:stretch}
+.zona.bajo{flex-wrap:nowrap;align-items:flex-start}
+.zona.bajo .pi{flex:1 1 0;min-width:0;max-width:230px}
+.zona.izq .pi,.zona.der .pi{font-size:11.8px;line-height:1.34;padding:11px 12px 8px}
+.zona.izq{grid-column:1;grid-row:2}
+.zona.der{grid-column:3;grid-row:2}
+.pi{position:relative;pointer-events:auto;flex:1 1 170px;max-width:290px;min-width:140px;padding:13px 13px 10px;font-size:12.6px;line-height:1.4;color:#e4e9f6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;border-radius:3px 3px 9px 3px;border:1px solid color-mix(in srgb,var(--c) 50%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 28%,#0d1430),color-mix(in srgb,var(--c) 11%,#090e24));box-shadow:0 10px 22px rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.07) inset;opacity:0;transform:translate(var(--fx,0px),var(--fy,0px)) scale(.12) rotate(0deg);transition:transform .75s cubic-bezier(.2,.9,.25,1) var(--d,0ms),opacity .4s ease var(--d,0ms)}
+.pi::before{content:'';position:absolute;top:-7px;left:50%;width:48px;height:13px;margin-left:-24px;background:rgba(255,255,255,.17);transform:rotate(-2.5deg);border-radius:2px}
+.zona.izq .pi,.zona.der .pi{flex:0 0 auto;max-width:none;min-width:0}
+.pi.ancha{flex:1.7 1 290px;max-width:420px}
+#vistaIzq.abierto .pi{opacity:1;transform:none}
+#vistaIzq.abierto .pi:hover{transform:scale(1.03);z-index:3}
+#vistaIzq.plegando .pi{transition:transform .6s cubic-bezier(.55,0,.9,.35) var(--dc,0ms),opacity .3s ease calc(var(--dc,0ms) + .3s)}
+.pi .pt{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 65%,#fff);font-weight:700;margin-bottom:4px}
+.pi h2{font-size:17px;margin:0 0 4px}
+.pi ul{margin:0;padding-left:15px}.pi li{margin:2px 0}
+.pi .big{display:block;font-size:25px;font-weight:700;line-height:1.1;margin-bottom:2px}
+.pi .sub{color:#a9b6cf;font-size:11.5px;margin-top:3px}
+.pi .pts{letter-spacing:.18em;font-size:14px}
+.zona.bajo .pi .clamp{-webkit-line-clamp:3}
+.zona.bajo .pi .sub.clamp{-webkit-line-clamp:1}
+.pi .clamp{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.pi .chips{margin:4px 0 0}
+.onda{position:absolute;border-radius:50%;border:2px solid #f1d58a;opacity:0;pointer-events:none;z-index:1;animation:onda 1.1s cubic-bezier(.2,.7,.3,1) both}
+@keyframes onda{0%{transform:scale(.9);opacity:.95}100%{transform:scale(3.6);opacity:0}}
 svg{width:100%;height:100%;display:block}
 #cab{display:flex;flex-wrap:wrap;align-items:center;gap:2px 18px;padding:0 6px;pointer-events:none}
 #marca{display:flex;align-items:baseline;gap:12px}
@@ -60,7 +93,9 @@ svg{width:100%;height:100%;display:block}
 @keyframes latido{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
 @keyframes entra{from{opacity:0}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.estrella,.barrido,.anillo-sel,.cerca{animation:none}#app{transition:none}}
-#panel{padding:14px 16px;overflow:auto;min-height:0}
+#panel{position:absolute;z-index:4;top:0;right:0;bottom:0;width:var(--pw);padding:14px 16px;overflow:auto;min-height:0;background:rgba(7,11,26,.95);box-shadow:none;visibility:hidden;transform:translateX(calc(100% + 60px));transition:transform .6s cubic-bezier(.22,.8,.25,1),box-shadow .3s ease,visibility 0s .6s;will-change:transform}
+#panel:not(.abierto){overflow:hidden}
+#panel.abierto{transform:none;visibility:visible;box-shadow:-18px 0 40px rgba(0,0,0,.45);transition:transform .6s cubic-bezier(.22,.8,.25,1),box-shadow .5s ease,visibility 0s 0s}
 #panel .entra{animation:entra .35s ease both}
 h2{margin:0 0 6px;font-size:17px;font-weight:650;letter-spacing:.01em;display:flex;gap:10px;align-items:center}
 h3{margin:18px 0 7px;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--suave);font-weight:600;border-bottom:1px solid var(--linea);padding-bottom:5px}
@@ -155,8 +190,9 @@ details.doc .cuerpo{padding:0 11px 10px;color:#cdd6ea;font-size:12.5px}
   #calPista{flex:1 1 100%;min-width:0}
   #calTemas{flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:3px;-webkit-overflow-scrolling:touch}
   .tema{white-space:nowrap;flex:none}
-  #panel{overflow:visible}
-  #app.sel #panel{zoom:1.08}
+  #vistaIzq,#app.sel #vistaIzq{display:none}
+  #panel,#izq{min-width:0}
+  .pn{overflow-x:auto}
   .cifras{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 </style></head><body>
@@ -170,15 +206,17 @@ details.doc .cuerpo{padding:0 11px 10px;color:#cdd6ea;font-size:12.5px}
         <span id="fecha"></span></div>
       <input type="text" id="buscar" placeholder="Buscar (Pontes, OCC, DTCC…)" aria-label="Buscar">
       <label><input type="checkbox" id="soloToken"> Solo los que nombran XRP o XLM</label>
+      <button id="btnPanel" title="Abrir o cerrar el panel de información">☰ Panel</button>
       <button id="btnVolver" title="Volver a la vista general">⌂ Vista general</button>
     </div>
     <div id="calBarra" class="vidrio"><span id="calTit">Calendario<br>próximos 120 días</span><div id="calPista"></div><div id="calTemas"></div></div>
     <div id="lienzo">
       <svg id="svg" viewBox="-520 -360 1040 720" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa de raíles financieros"></svg>
+      <aside id="panel" class="vidrio"></aside>
+      <div id="vistaIzq"></div>
       <div id="tip"></div>
     </div>
   </div>
-  <aside id="panel" class="vidrio"></aside>
 </div>
 <script id="datos" type="application/json">__DATOS__</script>
 <script>
@@ -216,7 +254,8 @@ function iconoHTML(id, px, color, fondo){
   const g = S('g', {fill: 'none', stroke: color, 'stroke-width': 1.7, 'stroke-linecap': 'round', 'stroke-linejoin': 'round'}, s); pintarIcono(g, id); w.appendChild(s); return w;
 }
 
-function medirAlto(){ let h = 860; try { h = Math.max(760, Math.min((window.parent.innerHeight || 900) - 60, 1000)); } catch (e) {} document.documentElement.style.setProperty('--alto', h + 'px'); return h; }
+var altoSel = false, anchoSel = 600, cxSel = .5, panelVisible = false, panelAncho = 520;
+function medirAlto(){ let h = 860; try { const ih = window.parent.innerHeight || 900; h = altoSel ? Math.max(900, Math.min(ih - 10, 1300)) : Math.max(780, Math.min(ih + 20, 1100)); } catch (e) {} document.documentElement.style.setProperty('--alto', h + 'px'); return h; }
 medirAlto();
 function ajustarAlto(){ try { const fe = window.frameElement; if (!fe) return; const h = (app.offsetHeight + 14) + 'px'; fe.style.height = h;
   const p = fe.parentElement; if (p){ p.style.height = h; p.style.minHeight = h; } } catch (e) {} }
@@ -401,7 +440,7 @@ function frame(now){
       m.luna.setAttribute('cx', m.x.toFixed(1)); m.luna.setAttribute('cy', m.y.toFixed(1));
       const enSel = c === sel;
       m.rotulo.setAttribute('x', (m.x + (m.x >= 0 ? 8 : -8)).toFixed(1)); m.rotulo.setAttribute('y', (m.y + 3).toFixed(1));
-      m.rotulo.setAttribute('text-anchor', m.x >= 0 ? 'start' : 'end'); m.rotulo.setAttribute('opacity', enSel ? 1 : 0);
+      m.rotulo.setAttribute('text-anchor', m.x >= 0 ? 'start' : 'end'); m.rotulo.setAttribute('opacity', enSel && !tarjetasAbiertas() ? 1 : 0);
       m.lider.setAttribute('x2', m.x.toFixed(1)); m.lider.setAttribute('y2', m.y.toFixed(1)); m.lider.setAttribute('opacity', enSel ? 1 : 0);
     });
   });
@@ -409,11 +448,11 @@ function frame(now){
   animarVista(dt);
   requestAnimationFrame(frame);
 }
-const VISTA0 = {x: -520, y: -360, w: 1040, h: 720};
+const VISTA0 = {x: -492, y: -340, w: 984, h: 680};
 let vista = {...VISTA0}, destino = {...VISTA0};
 function animarVista(dt){
   const k = 1 - Math.pow(0.0008, dt);
-  if (sel){ const [x, y] = pos(sel), r = $('lienzo').getBoundingClientRect(), asp = (r.width || 1000) / (r.height || 700), w = 600; destino = {x: x - w / 2, y: y - w / asp / 2, w, h: w / asp}; }
+  if (sel){ const [x, y] = pos(sel), r = $('lienzo').getBoundingClientRect(), asp = (r.width || 1000) / (r.height || 700), w = anchoSel; destino = {x: x - w * cxSel, y: y - (w / asp) * .5, w, h: w / asp}; }
   for (const p of ['x','y','w','h']) vista[p] += (destino[p] - vista[p]) * k;
   svg.setAttribute('viewBox', `${vista.x.toFixed(1)} ${vista.y.toFixed(1)} ${vista.w.toFixed(1)} ${vista.h.toFixed(1)}`);
 }
@@ -532,7 +571,8 @@ function tarjetasCifras(padre, lista){
   lista.forEach(({capa, c}, i) => { const t = H('div', 'cifra entra', g); t.style.animationDelay = (i * 30) + 'ms'; t.style.borderTopColor = capa.color;
     const v = H('b', '', t, c.v); v.style.color = mezcla(capa.color, '#fff', .3); H('span', '', t, c.e); H('small', '', t, c.f); });
 }
-function fichaAnalista(padre, c){
+function fichaAnalista(padre, c, padreB){
+  padreB = padreB || padre;
   const fi = c.ficha; if (!fi) return;
   H('h3', '', padre, 'Ficha del analista');
   const hs = ['produccion', 'piloto', 'plan'].flatMap(k => Array.isArray(c[k]) ? c[k] : []);
@@ -548,11 +588,34 @@ function fichaAnalista(padre, c){
   const ev = H('div', 'ficha-fila', m); H('span', 'etq-f', ev, 'Evidencia');
   H('span', '', ev, `${cu.P} primarias · ${cu.S} secundarias${cu.ESP ? ' · ' + cu.ESP + ' especulación' : ''}${cu.VER ? ' · ' + cu.VER + ' por verificar' : ''}${fechas.length ? ' · último hecho: ' + fechas[fechas.length - 1] : ''}`);
   const cab = H('div', 'nota', padre, 'Qué falta para que funcione a escala'); cab.style.fontWeight = 700; cab.style.marginTop = '8px'; listaFicha(padre, fi.falta);
-  const dos = H('div', 'ficha-dos', padre);
+  const dos = H('div', 'ficha-dos', padreB);
   [['A favor (hechos)', fi.favor, colEst('produccion')], ['En contra (hechos)', fi.contra, '#e06c6c']].forEach(([tit, items, col]) => {
     const b = H('div', 'bloque', dos); b.style.borderLeftColor = col; const t = H('div', 'nota', b, tit); t.style.fontWeight = 700; listaFicha(b, items); });
-  const v = H('div', 'nota', padre, 'Qué vigilar (fechas y datos pendientes)'); v.style.fontWeight = 700; v.style.marginTop = '8px'; listaFicha(padre, fi.vigilar);
-  H('p', 'nota', padre, 'Informes de origen: ' + (fi.informes || []).join(', ') + '. Informativo: no es recomendación de compra ni venta.');
+  const v = H('div', 'nota', padreB, 'Qué vigilar (fechas y datos pendientes)'); v.style.fontWeight = 700; v.style.marginTop = '8px'; listaFicha(padreB, fi.vigilar);
+  H('p', 'nota', padreB, 'Informes de origen: ' + (fi.informes || []).join(', ') + '. Informativo: no es recomendación de compra ni venta.');
+}
+const ROT = [-1.4, .9, -.7, 1.2, -1, .6, -.5, 1.1, -.9, .7];
+function fichaPostits(c, pi){
+  const fi = c.ficha; if (!fi) return;
+  const hs = ['produccion', 'piloto', 'plan'].flatMap(k => Array.isArray(c[k]) ? c[k] : []);
+  const cu = {P: 0, S: 0, ESP: 0, VER: 0}; hs.forEach(h => { if (cu[h.k] !== undefined) cu[h.k]++; });
+  const fechas = movs.filter(m => m.capa === c.id).map(m => m.fecha).sort();
+  H('div', '', pi('top', '#5aa9e6', 'Qué hace'), fi.hace);
+  H('div', '', pi('top', '#a78bfa', 'Quién la controla'), fi.controla);
+  const m = pi('top', '#d4a84b', 'Madurez');
+  const pt = H('div', 'pts', m, '●'.repeat(fi.madurez.n) + '○'.repeat(5 - fi.madurez.n)); pt.style.color = mezcla(c.color, '#fff', .3);
+  H('div', '', m, `${fi.madurez.n} de 5 · ${fi.madurez.t}`);
+  H('div', 'sub', m, `${cu.P} primarias · ${cu.S} secundarias${cu.ESP ? ' · ' + cu.ESP + ' especulación' : ''}${cu.VER ? ' · ' + cu.VER + ' por verificar' : ''}${fechas.length ? ' · último hecho: ' + fechas[fechas.length - 1] : ''}`);
+  listaFicha(pi('izq', colEst('produccion'), 'A favor (hechos)'), fi.favor);
+  listaFicha(pi('izq', '#e06c6c', 'En contra (hechos)'), fi.contra);
+  listaFicha(pi('der', '#d9904a', 'Qué falta para que funcione a escala'), fi.falta);
+  listaFicha(pi('der', '#e0b04a', 'Qué vigilar (fechas y datos pendientes)'), fi.vigilar);
+}
+function postitsAbajo(c, vs, pi){
+  cifrasVivas(c).slice(0, 4).forEach(x => { const n = pi('bajo', c.color, 'Cifra clave'); const v = H('b', 'big', n, x.v); v.style.color = mezcla(c.color, '#fff', .3);
+    H('div', 'clamp', n, x.e); H('div', 'sub clamp', n, x.f); });
+  vs.slice().sort((a, b) => b.d - a.d).slice(0, 3).forEach(m => { const n = pi('bajo', colEst(m.estado), 'Hecho · ' + m.fecha);
+    H('b', '', n, m.actor); H('div', 'clamp', n, m.texto); H('div', 'sub clamp', n, 'Fuente: ' + corto(m.fuente, 60)); });
 }
 function listaFicha(padre, items){ const ul = H('ul', 'ficha-ul', padre); (items || []).forEach(t => H('li', '', ul, t)); }
 const RADAR = D.radar;
@@ -851,9 +914,11 @@ function listaEventos(padre, lista, conCapa){
 }
 
 function dibujarPanel(){
-  const antes = panel.scrollTop; panel.textContent = '';
+  const antes = panel.scrollTop, izq = $('vistaIzq'); panel.textContent = ''; izq.textContent = '';
+  const movil = window.matchMedia('(max-width:900px)').matches;
   const f = filtros();
   if (!sel){
+    const x = H('button', 'volver', panel, '✕ Cerrar panel'); x.addEventListener('click', alternarPanel);
     const c0 = H('div', 'cabecera entra', panel); c0.style.borderLeftColor = ORO;
     H('h2', '', c0, 'Explorador de raíles'); H('p', 'nota', c0, D.aviso);
     if (CONTR) contrasteBloque(panel, CONTR.generales, 'Contraste general con tu tesis (privado, solo en tu PC)');
@@ -887,7 +952,11 @@ function dibujarPanel(){
     listaMovs(seccion(panel, 'Últimos hechos', false), todos.slice(-5));
   } else {
     const b = H('button', 'volver', panel, '← Volver al mapa'); b.addEventListener('click', () => seleccionar(null));
-    const cab = H('div', 'cabecera entra', panel); cab.style.borderLeftColor = sel.color;
+    const zon = movil ? null : ['top', 'izq', 'der', 'bajo'].reduce((o, k) => (o[k] = H('div', 'zona ' + k, izq), o), {});
+    let ni = 0;
+    const pi = (zona, color, titulo) => { const e = H('div', 'pi', zon[zona]); e.style.setProperty('--c', color); e.style.setProperty('--r', ROT[ni % ROT.length] + 'deg');
+      e.style.setProperty('--d', (ni * 75) + 'ms'); e.style.setProperty('--dc', (ni * 32) + 'ms'); ni++; if (titulo) H('div', 'pt', e, titulo); return e; };
+    const cab = movil ? H('div', 'cabecera entra', panel) : pi('top', sel.color, null); if (!movil) cab.classList.add('ancha'); else cab.style.borderLeftColor = sel.color;
     const t = H('h2', '', cab); t.appendChild(iconoHTML(sel.id, 20, mezcla(sel.color, '#fff', .3), rgba(sel.color, .22))); const tn = H('span', '', t, sel.nombre); tn.style.color = mezcla(sel.color, '#fff', .35);
     H('p', 'nota', cab, sel.resumen);
     const vs = visibles(sel.id), cnt = {};
@@ -896,10 +965,10 @@ function dibujarPanel(){
     Object.keys(est).forEach(k => { if (cnt[k]){ const a = H('span', 'chip', chips); const p = H('span', 'punto', a); p.style.background = colEst(k); a.appendChild(document.createTextNode(`${est[k].nombre}: ${cnt[k]}`)); } });
     if (CONTR && CONTR.capas) contrasteBloque(panel, CONTR.capas[sel.id], 'Contraste con tu tesis (privado, solo en tu PC)');
     if (sel.id === 'reg') radarVista(panel, 'Radar regulatorio por país y tema');
-    fichaAnalista(panel, sel);
+    if (movil) fichaAnalista(panel, sel); else fichaPostits(sel, pi);
     datosCapa(panel, sel.id);
-    H('h3', '', panel, 'Cifras clave');
-    tarjetasCifras(panel, cifrasVivas(sel).map(c => ({capa: sel, c})));
+    if (movil){ H('h3', '', panel, 'Cifras clave'); tarjetasCifras(panel, cifrasVivas(sel).map(c => ({capa: sel, c}))); }
+    else postitsAbajo(sel, vs, pi);
     [['En producción', 'produccion', 'produccion'], ['Piloto o prueba', 'piloto', 'piloto'], ['Plan o propuesta', 'plan', 'plan'], ['¿Nombra XRP o XLM?', 'xrp', null]].forEach(([tit, k, ek], i) => {
       bloqueHechos(panel, sel, tit, k, ek ? colEst(ek) : colNombra.token, 60 + i * 50); });
     if (f.corte < d1) H('p', 'nota', panel, 'Los cuadros de arriba describen la situación a octubre de 2026; la lista de abajo sí respeta la fecha del deslizador.');
@@ -910,19 +979,66 @@ function dibujarPanel(){
     bloqueDocs(panel, sel);
   }
   panel.scrollTop = antes;
+  if (animAbrir){ animAbrir = false; ajustarLados(); posicionarNotas(); setTimeout(() => { posicionarNotas(); izq.classList.add('abierto'); }, 220); setTimeout(() => { if (izq.classList.contains('abierto')) izq.classList.add('quieto'); }, 2000); }
+  else if (!movil && sel) posicionarNotas();
 }
 
-function seleccionar(c){
+let animAbrir = false, cerrando = false;
+const tarjetasAbiertas = () => !window.matchMedia('(max-width:900px)').matches;
+const pwEfectivo = () => (sel && (panelVisible || cerrando)) ? panelAncho : 0;
+function ajustarLados(){
+  const lw = $('lienzo').clientWidth || 1000, lh = $('lienzo').clientHeight || 700, izq = $('vistaIzq');
+  panelAncho = Math.max(440, Math.min(Math.round(lw * .34), 700)); app.style.setProperty('--pw', panelAncho + 'px');
+  const pw = pwEfectivo(), ow = lw - pw;
+  const hw = Math.max(300, Math.min(Math.round(ow * .35), 440)), hh = Math.max(300, Math.min(Math.round(lh * .52), 460));
+  izq.style.setProperty('--pwa', pw + 'px'); izq.style.setProperty('--hw', hw + 'px'); izq.style.setProperty('--hh', hh + 'px');
+  const esc = Math.min(hw / 280, hh / 320);
+  anchoSel = Math.max(420, Math.round(lw / esc)); cxSel = ow / 2 / lw;
+}
+function actualizarPanel(){ panel.classList.toggle('abierto', panelVisible); }
+function posicionarNotas(){
+  const iz = $('vistaIzq'), W = iz.clientWidth, Hh = iz.clientHeight;
+  iz.querySelectorAll('.pi').forEach(e => { e.style.setProperty('--fx', (W / 2 - (e.offsetLeft + e.offsetWidth / 2)) + 'px'); e.style.setProperty('--fy', (Hh / 2 - (e.offsetTop + e.offsetHeight / 2)) + 'px'); });
+}
+function aplicarSeleccion(c){
   sel = (c === sel) ? null : c;
   if (!sel) destino = {...VISTA0};
+  panelVisible = !!sel;
+  altoSel = !!sel; medirAlto(); ajustarAlto();
+  const izq = $('vistaIzq'); izq.classList.remove('abierto', 'quieto'); if (sel){ animAbrir = true; }
+  cerrando = false; ajustarLados(); actualizarPanel();
   refrescar(false); panel.scrollTop = 0;
 }
+function seleccionar(c){
+  if (cerrando) return;
+  if (sel && (c === null || c === sel)){      // al volver: el panel se desliza fuera, las notas se recogen hacia la esfera, una onda y la vista se aleja hasta la órbita
+    cerrando = true; const iz = $('vistaIzq'), c0 = sel;
+    iz.classList.remove('abierto', 'quieto'); iz.classList.add('plegando');
+    setTimeout(() => { panelVisible = false; actualizarPanel(); }, 780);          // 1.º se recogen los post-its; 2.º se va el panel
+    setTimeout(() => ondasEsfera(c0), 1000);                                        // 3 pulsos (0,7 s cada uno, cada 0,12 s) terminan hacia 1,94 s
+    setTimeout(() => { aplicarSeleccion(null); iz.classList.remove('plegando'); }, 1960);   // y solo entonces la vista se aleja y se centra
+    return;
+  }
+  aplicarSeleccion(c);
+}
+function ondasEsfera(c){     // pulsos de luz que salen de la propia esfera del tema, donde esté en pantalla
+  const lz = $('lienzo'), lr = lz.getBoundingClientRect(), r = c.disco.getBoundingClientRect();
+  const d = Math.max(30, Math.round(r.width * 1.15)), cx = r.left + r.width / 2 - lr.left, cy = r.top + r.height / 2 - lr.top;
+  [0, 120, 240].forEach(ms => { const o = H('div', 'onda', lz); o.style.cssText = `left:${cx - d / 2}px;top:${cy - d / 2}px;width:${d}px;height:${d}px;border-color:${mezcla(c.color, '#fff', .35)};animation-duration:.7s;animation-delay:${ms}ms`;
+    setTimeout(() => o.remove(), 1000); });
+}
+function alternarPanel(){
+  if (cerrando) return;
+  panelVisible = !panelVisible; ajustarLados(); actualizarPanel();
+  if (sel) setTimeout(posicionarNotas, 50);
+}
+$('btnPanel').addEventListener('click', alternarPanel);
 $('btnVolver').addEventListener('click', () => seleccionar(null));
 $('btnOrbitas').addEventListener('click', e => { orbitasPausadas = !orbitasPausadas; e.target.textContent = orbitasPausadas ? '▶ Órbitas' : '⏸ Órbitas'; });
 $('btnPlay').addEventListener('click', e => { if (!reproduciendo){ if (+slider.value >= +slider.max) slider.value = 0; reproduciendo = true; e.target.textContent = '⏸ Tiempo'; vistos = {}; capas.forEach(c => c.lunas.forEach(m => { m.vis = false; })); } else { reproduciendo = false; e.target.textContent = '▶ Tiempo'; } });
 slider.addEventListener('input', () => { reproduciendo = false; $('btnPlay').textContent = '▶ Tiempo'; refrescar(false); });
 $('buscar').addEventListener('input', () => refrescar(false));
 $('soloToken').addEventListener('change', () => refrescar(false));
-try { new ResizeObserver(ajustarAlto).observe(app); } catch (e) {}
+try { new ResizeObserver(ajustarAlto).observe(app); new ResizeObserver(() => { if (sel){ ajustarLados(); posicionarNotas(); } }).observe($('lienzo')); } catch (e) {}
 dibujarCalendario(); refrescar(false); requestAnimationFrame(frame); ajustarAlto();
 </script></body></html>

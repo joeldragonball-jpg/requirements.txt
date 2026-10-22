@@ -239,6 +239,8 @@ def mostrar():
         t_rev = tarjeta("⚠️ Datos a verificar", pend, "", "#f59e0b" if pend else None)
     pie = " · ".join(f"{_h.escape(d['titulo'])} (actualizado {_h.escape(str(d['meta'].get('actualizado', '—')))})" for d in principales)
     pie += (f" · {enviados} documento(s) enviados al bot" if enviados else "") + (f" · {semanas} semana(s) de actualidad" if semanas else "")
+    if explorador_arriba:    # con el Explorador a pantalla grande, las cifras y el buscador quedan lejos, bajo el mapa
+        st.markdown("<style>.kpis{margin-top:45vh !important}</style>", unsafe_allow_html=True)
     st.markdown("<div class='kpis'>" + tarjeta("📄 Documentos", len(docs)) + tarjeta("📚 Bloques temáticos", n_temas)
                 + tarjeta("🔤 Conceptos", len(todos_conceptos)) + t_rev + f"</div><div class='meta'>{pie}</div>",
                 unsafe_allow_html=True)
