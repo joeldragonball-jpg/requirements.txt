@@ -75,3 +75,17 @@ Calendario: BoJ 30-oct [VERIFICAR]; midterms 3-nov-2026; regla final de stableco
 
 ## [VERIFICAR] pendientes
 OCC (norma de depósitos tokenizados), cartas a la SEC, votos de la Cámara, BIS PDF completo (8 MB, participantes), BLS IPC, Daily Treasury Statement 14-oct, recompras de 6.000 M$, fecha del BoJ, oro y World Gold Council, entrevista de La Salla, cifras de Swift/JPM, precios XRP/XLM.
+
+## Verificación posterior (22-oct, noche, por otra sesión)
+| # | Afirmación | Resultado |
+|---|---|---|
+| 10 | Caja del Tesoro a 14-oct: 886.000 M$, −94.000 M$ en 2 semanas | **[P] confirmada**: cierre del 14-oct = $885.823 M (Daily Treasury Statement, API de FiscalData); el 30-sep era $984.046 M, es decir −$98.223 M en dos semanas (el vídeo dice −94.000: cifra aproximada) |
+| 13 | IPC sept: 0,6 % mensual, subyacente 0,3 % mensual | **[P] confirmadas** en el BLS (nota del 14-oct); el «esperado» sigue en agregadores |
+| 15 | El BoJ decide el 30-oct | **[P] confirmado**: reunión 29-30 oct, con Outlook Report el 30 (boj.or.jp, leído en T17) |
+| 16 | La OCC «sacó sus reglas» y la banca cambió de bando | **Parcial** [P/S]: la OCC publicó el 21-oct la norma final de la GENIUS (NR 2026-92, vigente el 18-ene-2027); separa las stablecoins de pago de los depósitos tokenizados. La ABA criticó que la norma permite recompensas (The Block). No hay una norma aparte «de depósitos tokenizados» |
+| 17 | Cartas a la SEC de Ripple y Coinbase | **Parcial** [S]: en el expediente S7-2026-27 (Regulation Crypto Assets) aparecen comentarios del 21-oct de Nasdaq, Bitwise y otros, y Coinbase figura entre los comentaristas; la carta de Ripple que consta es del 7-may-2026 en otro expediente (S7-2026-09). La coalición con Stellar, Hedera, Cardano… no localizada |
+| 19 | «Clarity pasó el Congreso con 300 votos» | **Aproximado** [S: congress.gov]: la Cámara aprobó la H.R. 3633 por **294-134** el 17-jul-2025; en el Senado la votación de cierre falló 49-50 el 15-sep-2026 |
+| 26 | Oro >4.000 y >4.600 $ | **Parcial** [P: World Gold Council]: 4.563 $/oz en agosto de 2026; **máximo histórico 5.405 $ el 29-ene-2026** (el vídeo no lo menciona); el banco central de China sumó 63 t en el 3T. El «+248 % en 10 años» sin comprobar |
+| 27 | Entrevista de La Salla (DTCC) | **No localizada**; sí consta que DTCC prevé el lanzamiento completo de su servicio de tokenización en octubre de 2026 (pruebas con más de 30 firmas el 15-jul) y los activos tokenizados de DTC en Stellar en el 1S-2027 [S: CoinDesk, DTCC] |
+| — | BIS WP 1374 PDF completo | **No accesible**: bis.org no responde desde este equipo (curl y navegador); se mantiene [S] |
+Siguen sin comprobar: recompras del Tesoro de 6.000 M$, cifras de Swift/JPM (239 bancos, 4.000 corresponsales), Garlinghouse «14 %» (matizado), vetar a Ripple en Sibos, XRP +16.000 %, precios de XRP y XLM de grabación.

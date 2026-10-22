@@ -17,7 +17,7 @@ Siguientes: Fed 8-9 dic (con SEP); BCE 16-17 dic; BoJ 17-18 dic (estas dos últi
 
 ## 3. Datos que llegan a la reunión
 - **EE. UU.:** IPC de septiembre **3,7 %** interanual (agosto 3,4 %), subyacente **2,6 %** (2,4 %); gasolina +34,2 %, más de la mitad del aumento mensual [P: BLS, 14-oct]. Empleo de septiembre **+29.000**, paro **4,2 %** [P: BLS, 2-oct].
-- **Zona euro:** inflación de septiembre **3,8 %** (máximo desde sept-2023), energía +18,8 %, subyacente 2,5 % [S: CNBC sobre Eurostat; Eurostat no leído → [VERIFICAR]].
+- **Zona euro:** inflación de septiembre **3,8 %** (3,2 % en agosto), energía +18,8 % (revisada a 18,9 %) [P: Eurostat, estimación rápida del 2-oct-2026 y dato final del 16-oct]; subyacente 2,5 % [S: CNBC]. Próxima estimación rápida: 4-nov-2026 [P].
 - **Japón:** IPC subyacente de agosto 1,7 % (argumento de los dos discrepantes) [S: CNBC].
 - **Energía:** Brent ≈ $113 el 22-oct (serie horaria de Yahoo, máx. de 2 días) [S, serie única].
 
@@ -39,7 +39,7 @@ Siguientes: Fed 8-9 dic (con SEP); BCE 16-17 dic; BoJ 17-18 dic (estas dos últi
 ## 7. Qué comprobar el 28-30 oct
 1. Comunicado de la Fed (28, 14:00 ET): rango, votos, disidentes, cambios de texto, nota de implementación; rueda de prensa de Warsh.
 2. BCE (29): tipos, texto sobre «reunión a reunión», rueda de prensa.
-3. PIB 3T y PCE de septiembre (29, 08:30 ET; fecha del calendario del repo, fuente indirecta [VERIFICAR] en bea.gov).
+3. PIB 3T (avance) y PCE de septiembre: **29-oct, 08:30 ET** [P: calendario de la BEA, leído el 22-oct].
 4. BoJ (30): tipo, votos, previsiones del Outlook Report.
 
 ## Fuentes
