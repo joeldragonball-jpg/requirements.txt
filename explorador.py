@@ -221,6 +221,10 @@ def _html(conceptos):
         datos["paneles"] = json.loads((CARPETA / "paneles.json").read_text(encoding="utf-8"))
     except Exception:
         datos["paneles"] = None
+    try:                              # exposición soberana por banco (scripts/preparar_bancos_eba.py)
+        datos["bancos"] = json.loads((CARPETA / "bancos-eba.json").read_text(encoding="utf-8"))
+    except Exception:
+        datos["bancos"] = None
     datos["biblioteca"] = rel.get("_totales", {})
     hoy = date.today().isoformat()
     datos["calendario"] = {"hoy": hoy, "temas": TEMAS, "eventos": _calendario(hoy, _version())}

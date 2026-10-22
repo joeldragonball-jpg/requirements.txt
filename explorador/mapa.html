@@ -651,6 +651,7 @@ function seccion(padre, titulo, abierta){
 }
 // ---- Datos al día (explorador/paneles.json, generado por scripts/actualizar_paneles.py): se cuelgan de las capas del mapa
 const PAN = D.paneles;
+const BAN = D.bancos || null;
 const pnFmt = (v, d = 1) => v == null ? '—' : v.toLocaleString('es-ES', {minimumFractionDigits: d, maximumFractionDigits: d, useGrouping: 'always'});
 const pnUSD = v => v >= 2e9 ? '$' + pnFmt(v / 1e9, 1) + ' mil M' : v >= 1e6 ? '$' + pnFmt(v / 1e6, 0) + ' M' : '$' + pnFmt(v / 1e3, 0) + ' mil';
 const pnPct = (a, b) => (a == null || b == null || !b) ? null : (a / b - 1) * 100;
@@ -754,6 +755,14 @@ function datosCapa(padre, id){
       const m = PAN.bonos.mensual10 || {};
       if (m.DE) H('p', 'nota', b, 'Diferencial frente a Alemania (media mensual a 10 años, BCE, ' + m.DE.mes + '): ' + ['ES', 'FR', 'IT'].filter(k => m[k]).map(k => m[k].nombre + ' +' + pnFmt((m[k].valor - m.DE.valor) * 100, 0) + ' pb').join(' · ') + '.');
       H('p', 'nota', b, 'Las curvas no se calculan igual en cada país (vencimiento constante, mercado, «par», emisores AAA). Más plazos y la curva dibujada en Paneles → Bonos y curvas. Informativo, sin recomendaciones.');
+    }
+    if (BAN && BAN.bancos){
+      const b = H('div', 'pn', padre); H('h3', '', b, 'Datos: deuda soberana en el balance de los bancos (EBA) [P]');
+      const mm = v => v == null ? '—' : pnFmt(v / 1000, Math.abs(v) >= 10000 ? 0 : 1);
+      const filas = [];
+      [['ES', 'España'], ['FR', 'Francia'], ['IT', 'Italia']].forEach(([pc, n]) => BAN.bancos.filter(x => x.pais === pc).sort((a, c) => c.total - a.total).slice(0, 4).forEach(x => filas.push({celdas: [x.nombre.replace(/, S\.A\.| S\.p\.A\.| SOCIETA' PER AZIONI/gi, '').replace(/[,\s]+$/, '').trim(), n, mm(x.total) + ' mil M€', x.total_sobre_cet1 != null ? pnFmt(x.total_sobre_cet1, 1) + '×' : '—', x.nacional_pct != null ? pnFmt(x.nacional_pct, 0) + ' %' : '—']})));
+      pnTabla(b, ['Banco', 'País', 'Deuda soberana', '× CET1', 'Del propio país'], filas);
+      H('p', 'nota', b, 'Corte ' + BAN.periodo + ' (la EBA interrumpió el ejercicio; no hay corte más reciente). Valor contable bruto frente a todos los Estados, al mayor nivel de consolidación. «× CET1» compara con el capital de máxima calidad: no es lo que perdería. Los 116 bancos y su detalle, en Paneles → Deuda por banco.');
     }
     if (PAN.deuda){
       const d = PAN.deuda, i26 = d.anios.indexOf('2026');

@@ -1498,6 +1498,41 @@
             "Reino Unido",
             "China"
           ]
+        },
+        {
+          "t": "Bancos europeos (EBA, 30-jun-2025): Banco Santander tiene €212,7 mil M en deuda soberana (2,6 veces su capital CET1), BBVA €135,6 mil M (2,6×) y CaixaBank €102,5 mil M (3,5×); BNP Paribas €366,2 mil M (3,7×); UniCredit €149,4 mil M (3,2×) e Intesa Sanpaolo €133,5 mil M (3,3×).",
+          "k": "P",
+          "n": "EBA, ejercicio de transparencia 2025 [P]; importe = valor contable bruto frente a todos los países emisores, no solo bonos",
+          "ent": [
+            "Banco Santander",
+            "BBVA",
+            "CaixaBank",
+            "BNP Paribas",
+            "UniCredit",
+            "Intesa Sanpaolo"
+          ],
+          "act": [],
+          "pais": [
+            "España",
+            "Francia",
+            "Italia"
+          ]
+        },
+        {
+          "t": "Sesgo doméstico: de la deuda soberana de CaixaBank, el 69,7 % es de España; en BPCE, el 69,7 % de Francia; en Intesa, el 31,9 % de Italia (Santander 30,1 % y BNP 14,9 %, con filiales fuera).",
+          "k": "P",
+          "n": "EBA, ejercicio de transparencia 2025 [P] · cálculo propio sobre sus cifras",
+          "ent": [
+            "CaixaBank",
+            "BPCE",
+            "Intesa Sanpaolo"
+          ],
+          "act": [],
+          "pais": [
+            "España",
+            "Francia",
+            "Italia"
+          ]
         }
       ],
       "piloto": [],
@@ -1532,7 +1567,18 @@
         "fmi",
         "déficit",
         "prima de riesgo",
-        "diferencial"
+        "diferencial",
+        "banco",
+        "bancos",
+        "eba",
+        "cet1",
+        "exposición soberana",
+        "santander",
+        "bbva",
+        "caixabank",
+        "bnp",
+        "intesa",
+        "unicredit"
       ],
       "cifras": [
         {
@@ -1592,6 +1638,18 @@
           "pais": [
             "Japón"
           ]
+        },
+        {
+          "v": "€603 mil M",
+          "e": "Deuda soberana en los balances de los 10 bancos españoles de la muestra de la EBA (30-jun-2025); €302 mil M son deuda de España",
+          "f": "EBA [P] · cálculo propio sobre sus cifras",
+          "ent": [
+            "EBA"
+          ],
+          "act": [],
+          "pais": [
+            "España"
+          ]
         }
       ],
       "ficha": {
@@ -1601,7 +1659,9 @@
           "Rendimientos diarios de Italia y Alemania con fuente oficial abierta (hoy solo la media mensual del BCE, con ~1 mes de retraso).",
           "China: rendimientos de los bonos del Estado sin fuente oficial abierta leída.",
           "Plazo de 30 años de España, Francia e Italia.",
-          "Quién compra y vende deuda fuera de EE. UU. (Japón, China, zona euro): sin serie abierta mensual comprobada."
+          "Quién compra y vende deuda fuera de EE. UU. (Japón, China, zona euro): sin serie abierta mensual comprobada.",
+          "Corte de la EBA: 30-jun-2025. La EBA interrumpe el ejercicio y remite al Pillar 3 Data Hub (cortes más recientes, sin procesar aquí).",
+          "Deuda que emiten los propios bancos (bonos bancarios) y balances de bancos centrales: en la cola de research (D06)."
         ],
         "madurez": {
           "n": 4,
@@ -2321,6 +2381,25 @@
       "pais": [
         "EE. UU.",
         "Japón"
+      ]
+    },
+    {
+      "fecha": "2025-06-30",
+      "capa": "deuda",
+      "actor": "EBA",
+      "texto": "Último corte del ejercicio de transparencia de la UE: 116 bancos con €3.914 mil M de exposición soberana directa en total; la EBA interrumpe el ejercicio desde junio de 2025.",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "EBA, tr_sov.csv [P] · cálculo propio",
+      "ent": [
+        "EBA"
+      ],
+      "act": [],
+      "pais": [
+        "España",
+        "Francia",
+        "Italia",
+        "Alemania"
       ]
     }
   ]

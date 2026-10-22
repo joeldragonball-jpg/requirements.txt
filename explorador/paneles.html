@@ -249,11 +249,56 @@ function panelBonos(){
   <div class="aviso"><b>Huecos, marcados:</b> China (rendimientos de los bonos del Estado): sin fuente oficial abierta leída; Italia y Alemania a diario; 30 años de España, Francia e Italia. Están en la cola de research (research/COLA-DEUDA-BONOS.md).</div>`;
 }
 
-const PEST=[['tic','Deuda de EE. UU.',panelTIC],['deuda','Deuda pública',panelDeuda],['bonos','Bonos y curvas',panelBonos],['stable','Stablecoins',panelStable],['tipos','Tipos de interés',panelTipos],['rwa','Mercado y RWA',panelMercadoRWA],['glo','Glosario',panelGlosario]];
+let banPais='ES', banQ='', banOrden='total', banTodos=false, banSel=null;
+const BAN_PAISES=[['ES','España'],['FR','Francia'],['IT','Italia'],['DE','Alemania'],['*','Todos'],['O','Otros']];
+const BAN_EMISORES={ES:'España',FR:'Francia',IT:'Italia',DE:'Alemania',JP:'Japón',US:'EE. UU.',CN:'China',GB:'Reino Unido'};
+const mmE=v=>v==null?'—':(Math.abs(v)>=10000? fm(v/1000,0):fm(v/1000,1));      // millones de € -> miles de millones
+function panelBancos(){
+  const b=D.bancos; if(!b||!b.bancos) return '<div class="aviso">No hay datos de bancos. Ejecuta scripts/preparar_bancos_eba.py.</div>';
+  const plano=t=>String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  const q=plano(banQ);
+  let L=b.bancos.filter(x=> (banPais==='*'||(banPais==='O'?!['ES','FR','IT','DE'].includes(x.pais):x.pais===banPais)) && (!q||plano(x.nombre+' '+x.pais_nombre).includes(q)));
+  const clave={total:x=>-(x.total||0), cet1:x=>-(x.total_sobre_cet1||0), nacional:x=>-(x.nacional_pct==null?-1:x.nacional_pct), nombre:x=>plano(x.nombre)};
+  L=L.slice().sort((a,c)=>{const A=clave[banOrden](a), C=clave[banOrden](c); return A<C?-1:A>C?1:0;});
+  const tot=L.reduce((s,x)=>s+(x.total||0),0), tp=k=>L.reduce((s,x)=>s+((x.prioridad||{})[k]||0),0);
+  const lista=banTodos?L:L.slice(0,25);
+  const filas=lista.map(x=>{
+    const top=Object.entries(x.por_pais||{}).slice(0,3).map(([k,v])=>`${esc(k)} ${mmE(v)}`).join(' · ');
+    const abierto=banSel===x.lei;
+    let det='';
+    if(abierto){
+      const mx=Math.max(...Object.values(x.por_pais||{}),1);
+      const barras=Object.entries(x.por_pais||{}).map(([k,v])=>`<div style="display:flex;align-items:center;gap:8px;margin:2px 0"><span style="width:120px;font-size:12px">${esc(k)}</span><span class="barra" style="width:${(v/mx*220).toFixed(0)}px"></span><span class="mini">${mmE(v)} mil M€ · ${fm(v/x.total*100,1)} %</span></div>`).join('');
+      const cam=Object.keys(BAN_EMISORES).map(k=>{const a=(x.prioridad||{})[k], p=(x.prioridad_ant||{})[k]; if(a==null) return ''; const dv=p?(a/p-1)*100:null; return `<tr><td>${BAN_EMISORES[k]}</td><td class="n">${mmE(p)}</td><td class="n">${mmE(a)}</td><td class="n">${p?cambio(dv):'<span class="neutro">—</span>'}</td></tr>`;}).join('');
+      det=`<tr><td colspan="7" style="white-space:normal;text-align:left;background:rgba(212,168,75,.05)"><div class="dos"><div><b>Mayores países emisores (30-jun-2025)</b>${barras}</div>
+        <div><b>Cambio de los países que más importan (mil M€)</b><table><thead><tr><th>País</th><th>dic-2024</th><th>jun-2025</th><th>Cambio</th></tr></thead><tbody>${cam}</tbody></table></div></div>
+        <p class="mini">Capital de máxima calidad (CET1): ${mmE(x.cet1)} mil M€ · activos totales: ${mmE(x.activos)} mil M€ · LEI ${esc(x.lei)}</p></td></tr>`;
+    }
+    return `<tr data-lei="${esc(x.lei)}" style="cursor:pointer" class="${abierto?'sel':''}"><td>${esc(x.nombre)}</td><td class="tag">${esc(x.pais)}</td><td class="n"><b>${mmE(x.total)}</b></td>
+     <td class="n">${x.total_sobre_cet1!=null?fm(x.total_sobre_cet1,1)+'×':'—'}</td><td class="n hm">${x.total_sobre_activos!=null?fm(x.total_sobre_activos,1)+' %':'—'}</td><td class="n hm">${x.nacional_pct!=null?fm(x.nacional_pct,0)+' %':'—'}</td><td class="tag hm" style="white-space:normal">${top}</td></tr>${det}`;}).join('');
+  const chips=BAN_PAISES.map(([k,n])=>`<button class="chip ${banPais===k?'on':''}" data-banpais="${k}">${n}</button>`).join('');
+  const ks=(v,e)=>`<div class="kpi"><div class="v">${v}</div><div class="e">${e}</div></div>`;
+  return `<div class="panel vidrio"><h2>Deuda soberana en el balance de cada banco</h2>
+  <p class="que">Cuánta deuda de Estados tiene cada banco europeo, por país emisor · ${esc(b.fuente)} · corte ${fechaCorta(b.periodo)} · <span class="nivel P">P</span> primaria</p>
+  <div class="kpis">${ks(L.length,'Bancos en esta vista (de '+b.bancos.length+')')}${ks(mmE(tot)+' mil M€','Exposición soberana total de la vista')}${ks(mmE(tp('ES'))+' mil M€','Deuda de España en estos bancos')}${ks(mmE(tp('FR'))+' · '+mmE(tp('IT')),'Francia · Italia (mil M€)')}${ks(mmE(tp('JP'))+' · '+mmE(tp('US')),'Japón · EE. UU. (mil M€)')}</div>
+  <div class="aviso"><b>Cómo leerlo:</b> el importe es el valor contable bruto de lo que el banco tiene frente a cada Estado en su balance (bonos y también préstamos), al mayor nivel de consolidación: incluye la deuda que los bancos del grupo compran en sus países de actividad (por ejemplo, filiales en Latinoamérica). «× CET1» compara esa deuda con el capital de máxima calidad del banco: <b>no es lo que perdería</b>, sino cuánto pesa esa cartera frente a su colchón de capital. «% del propio país» es la parte que corresponde al país de la sede (el llamado sesgo doméstico). Corte de ${fechaCorta(b.periodo)}. ${esc(b.nota)} Informativo, sin recomendaciones.</div>
+  <div class="gl-barra">${chips}<input id="banq" type="search" placeholder="Buscar banco…" value="${esc(banQ)}">
+   <select id="banord"><option value="total"${banOrden==='total'?' selected':''}>Ordenar por deuda total</option><option value="cet1"${banOrden==='cet1'?' selected':''}>Ordenar por × CET1</option><option value="nacional"${banOrden==='nacional'?' selected':''}>Ordenar por % del propio país</option><option value="nombre"${banOrden==='nombre'?' selected':''}>Ordenar por nombre</option></select></div>
+  <table><thead><tr><th>Banco (pulsa para ver el detalle)</th><th>País</th><th title="Miles de millones de euros">Deuda soberana (mil M€)</th><th title="Deuda soberana dividida entre el capital CET1">× CET1</th><th class="hm">% de su activo</th><th class="hm" title="Parte de la deuda soberana que es del país de su sede">% del propio país</th><th class="hm">Mayores emisores (mil M€)</th></tr></thead><tbody>${filas}</tbody></table>
+  ${L.length>25?`<p class="mini"><button class="chip" id="bantodos">${banTodos?'Mostrar solo los 25 primeros':'Mostrar los '+L.length+' bancos'}</button></p>`:''}
+  <p class="pie">Fuente: <a style="color:#f1d58a" href="${esc(b.url)}" target="_blank" rel="noopener">EBA, ejercicio de transparencia de la UE 2025</a> (tablas de soberanos y de capital). Importes en ${esc(b.unidad)}; aquí en miles de millones. Datos de la propia EBA a partir de los informes supervisores de cada banco.</p></div>`;
+}
+
+const PEST=[['tic','Deuda de EE. UU.',panelTIC],['deuda','Deuda pública',panelDeuda],['bonos','Bonos y curvas',panelBonos],['bancos','Deuda por banco',panelBancos],['stable','Stablecoins',panelStable],['tipos','Tipos de interés',panelTipos],['rwa','Mercado y RWA',panelMercadoRWA],['glo','Glosario',panelGlosario]];
 let act=PEST[0][0];
 function pinta(){
   document.getElementById('pest').innerHTML=PEST.map(p=>`<button class="chip ${p[0]===act?'on':''}" data-k="${p[0]}">${p[1]}</button>`).join('')+'<span class="mini" style="align-self:center;margin-left:8px">Próximos: deuda por país · CBDC y redes</span>';
   document.getElementById('cont').innerHTML=PEST.find(p=>p[0]===act)[2]();
+  document.querySelectorAll('[data-banpais]').forEach(b=>b.onclick=()=>{banPais=b.dataset.banpais; banTodos=false; banSel=null; pinta();});
+  document.querySelectorAll('tr[data-lei]').forEach(r=>r.onclick=()=>{banSel=banSel===r.dataset.lei?null:r.dataset.lei; pinta();});
+  const bq=document.getElementById('banq'); if(bq) bq.oninput=()=>{banQ=bq.value; banSel=null; const pos=bq.selectionStart; pinta(); const n=document.getElementById('banq'); n.focus(); n.setSelectionRange(pos,pos);};
+  const bo=document.getElementById('banord'); if(bo) bo.onchange=()=>{banOrden=bo.value; pinta();};
+  const bt=document.getElementById('bantodos'); if(bt) bt.onclick=()=>{banTodos=!banTodos; pinta();};
   document.querySelectorAll('[data-bono]').forEach(b=>b.onclick=()=>{const k=b.dataset.bono; bonosOff.has(k)?bonosOff.delete(k):bonosOff.add(k); pinta();});
   const q=document.getElementById('glq'), c=document.getElementById('glc');
   if(q){ q.oninput=()=>{glQ=q.value; const pos=q.selectionStart; pinta(); const n=document.getElementById('glq'); n.focus(); n.setSelectionRange(pos,pos);}; }
