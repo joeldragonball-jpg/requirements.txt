@@ -191,3 +191,5 @@
 - No he confirmado la **publicación en el BOE** de la ley, el RD y la Orden de DAC8.
 - No he encontrado el **calendario de la campaña de 2027**, ni cambios de **tipos** para 2027.
 - No he verificado las **casillas** en el Manual de la Renta ni las cifras de **Patrimonio** por comunidad en la normativa autonómica.
+
+> **Nota 2026-10-21 (verificación en el BOE, texto consolidado de la LGT):** el art. 198.1 fija para las declaraciones informativas de los arts. 93 y 94 20 € por dato (mín. 300 €, máx. 20.000 €) y el art. 198.2 reduce a la mitad la sanción y sus límites (10 € por dato, mín. 150 €, máx. 10.000 €) si se presentan fuera de plazo sin requerimiento previo [P]. Que esos importes sean los aplicables al modelo 721 concreto no lo dice el artículo: [VERIFICAR] con la normativa específica del 721.
