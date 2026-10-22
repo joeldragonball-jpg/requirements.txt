@@ -192,8 +192,8 @@ def leer_deuda():
         url = URL_BOE.format(d1=f(hoy - timedelta(days=14)), d2=f(hoy))
         lineas = [l for l in descargar(url).splitlines()[1:] if l.strip()]
         fecha, v = lineas[-1].split(",")
-        return {"valor": round(float(v), 2), "fecha": datetime.strptime(fecha, "%d %b %Y").strftime("%Y-%m-%d"), "nivel": "S",
-                "fuente": "Banco de Inglaterra, serie IUDMNZC: por su código, rendimiento nominal cupón cero a ~10 años (sin descripción oficial leída; la versión «par» IUDMNPY da 5,37 % el 19-oct, así que no es comparable con otros bonos a 10 años) [VERIFICAR]"}
+        return {"valor": round(float(v), 2), "fecha": datetime.strptime(fecha, "%d %b %Y").strftime("%Y-%m-%d"), "nivel": "P",
+                "fuente": "Banco de Inglaterra, serie IUDMNZC («Yield from British Government Securities - 10 year Nominal Zero Coupon»): rendimiento cupón cero, no «par»; la versión par (IUDMNPY) da 5,37 % el 19-oct, así que no es comparable con otros bonos a 10 años"}
 
     probar("USA", ust)
     probar("JPN", jgb)

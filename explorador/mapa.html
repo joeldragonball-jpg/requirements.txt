@@ -367,6 +367,7 @@ function mostrarTip(c){
   const b = H('b', '', tip, c.nombre); b.style.color = mezcla(c.color, '#fff', .3);
   H('div', 'nota', tip, `${v.length} hechos · ${t} nombran XRP o XLM`);
   H('div', 'nota', tip, `${c.docs.inv.length} documentos · ${c.docs.glo.length} términos · ${ev.length} fechas próximas`);
+  { const np = pnCoinciden(c.id, filtros().q); if (np) H('div', 'nota', tip, `${np} dato${np > 1 ? 's' : ''} al día coinciden con la búsqueda`); }
   if (PAN && PAN.stablecoins && c.id === 'stable') H('div', 'nota', tip, `Datos al día: ${pnUSD(PAN.stablecoins.total)} en circulación · ${pnFmt(PAN.stablecoins.top[0].usd / PAN.stablecoins.total * 100, 0)} % ${PAN.stablecoins.top[0].simbolo} [S]`);
   if (PAN && PAN.stablecoins && c.id === 'puente') H('div', 'nota', tip, `Datos al día: ${pnUSD(PAN.stablecoins.xrpl.total)} en stablecoins en el XRPL · ${pnUSD(PAN.stablecoins.stellar.total)} en Stellar [S]`);
   if (c.id === 'reg' && tiposFilas().length) H('div', 'nota', tip, `Datos al día: ${tiposFilas().filter(x => x.dir === 'sube').length} de ${tiposFilas().length} bancos centrales subieron tipos en su último movimiento`);
@@ -446,7 +447,7 @@ function refrescar(animado){
     c.cal.setAttribute('transform', `translate(${(-c.R * .85).toFixed(1)} ${(-c.R * .85).toFixed(1)})`);
     if (ev.length){ c.calRombo.setAttribute('fill', colTema(ev[0].tema)); c.calRombo.setAttribute('opacity', 1); c.calNum.textContent = ev.length > 1 ? ev.length : ''; c.calNum.setAttribute('opacity', ev.length > 1 ? 1 : 0);
       c.calRombo.setAttribute('class', enDias(ev[0]) <= 7 ? 'cerca' : ''); } else { c.calRombo.setAttribute('opacity', 0); c.calNum.setAttribute('opacity', 0); }
-    const dim = (sel && c !== sel) || (n === 0 && (f.q || f.solo));
+    const nPan = pnCoinciden(c.id, f.q), dim = (sel && c !== sel) || (n === 0 && nPan === 0 && (f.q || f.solo));
     c.g.style.opacity = dim ? .3 : 1; c.g.style.transition = 'opacity .4s';
     c.orbita.setAttribute('stroke', c === sel ? rgba(c.color, .7) : 'rgba(148,163,184,.17)');
     c.enlace.setAttribute('stroke', rgba(c.color, dim ? .05 : .22));
@@ -657,10 +658,11 @@ function pnCambio(td, p){
   td.textContent = (p > 0 ? '+' : '') + pnFmt(p, 1) + ' %'; td.className = Math.abs(p) < 0.05 ? 'pn-n' : p > 0 ? 'pn-s' : 'pn-b';
 }
 function pnTabla(padre, cab, filas){
+  const qBus = filtros().q;
   const t = H('table', 'pn-t', padre), th = H('tr', '', H('thead', '', t));
   cab.forEach(c => H('th', '', th, c));
   const tb = H('tbody', '', t);
-  filas.forEach(f => { const tr = H('tr', f.xrp ? 'xrp' : '', tb); f.celdas.forEach(c => { const td = H('td', '', tr); if (typeof c === 'function') c(td); else td.textContent = c; }); });
+  filas.forEach(f => { const tr = H('tr', f.xrp ? 'xrp' : '', tb); f.celdas.forEach(c => { const td = H('td', '', tr); if (typeof c === 'function') c(td); else td.textContent = c; }); if (qBus && tr.textContent.toLowerCase().includes(qBus)) tr.classList.add('xrp'); });
 }
 function pnPie(padre, texto, fuente, leido){ H('p', 'nota', padre, `${texto} Fuente: ${fuente}. Leído el ${leido}.`); }
 function pnKpi(padre, lista){
@@ -683,6 +685,21 @@ function pnMercado(b){
   const m = PAN && PAN.mercado; if (!m) return;
   pnTabla(b, ['Activo', 'Precio', 'Capitalización', '24 h'], m.activos.map(a => ({xrp: a.simbolo !== 'BTC', celdas: [a.simbolo, pnPrecio(a.precio), pnUSD(a.capitalizacion), td => pnCambio(td, a.cambio_24h)]})));
 }
+// Datos al día (paneles) que coinciden con la búsqueda, por capa: se suman a los hechos para que la capa no se atenúe y se vea en la ficha.
+function pnTextos(id){
+  const s = PAN && PAN.stablecoins, out = [];
+  const cad = c => c ? c.top.map(x => x.simbolo + ' ' + x.nombre) : [];
+  if (id === 'stable' && s) out.push(...s.top.map(x => x.simbolo + ' ' + x.nombre));
+  if (id === 'puente'){ if (s) out.push(...cad(s.xrpl), ...cad(s.stellar)); if (PAN && PAN.mercado) out.push(...PAN.mercado.activos.map(a => a.simbolo + ' ' + a.nombre)); }
+  if (id === 'cbdc' && PAN && PAN.tic) out.push(...PAN.tic.paises.map(p => p.nombre + ' ' + (p.clave || '')));
+  if (id === 'token' && PAN && PAN.rwa) out.push(...PAN.rwa.top.map(x => x.nombre));
+  if (id === 'reg'){
+    tiposFilas().forEach(c => out.push(nomJur(c.jur) + ' ' + c.valor + ' tipo de interés banco central'));
+    if (PAN && PAN.deuda) out.push(...PAN.deuda.paises.map(p => p.nombre + ' deuda pública'), ...Object.values(PAN.deuda.rendimientos || {}).map(r => r.fuente));
+  }
+  return out;
+}
+function pnCoinciden(id, q){ return q ? pnTextos(id).filter(t => t.toLowerCase().includes(q)).length : 0; }
 function tiposFilas(){ return (typeof RADAR !== 'undefined' && RADAR) ? RADAR.celdas.filter(c => c.tema === 'politica' && c.valor && c.jur !== 'brics') : []; }
 function datosGlobales(padre){
   const tp = tiposFilas();
