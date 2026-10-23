@@ -109,3 +109,5 @@ actualizado: 2026-10-07
 - 2026-10-23: XRPN (Evernorth) debutó el 12-oct (abrió ≈16,68 $, máx. ≈19,40, cierre ≈16,91 según un medio) frente a 38-40 $ del SPAC; XRP ≈1,40 $. Sin movimiento atribuible de XRP.
 - 2026-10-23: 20-oct (cartas a la SEC) y 21-oct (norma final de la OCC sobre GENIUS) no tienen movimiento propio de precio medido; XRP 1,38 → 1,30 en esos días lo explicaron Brent, tecnológicas y bonos (ver R00 del 22-oct).
 - 2026-10-23 (vídeo de predicción): Ripple Prime acepta XRP como colateral solo dentro de su bróker; el CME no lo acepta (Higgins, mar-2026) [S]. Sin movimiento de precio atribuible; relevante como posible catalizador de demanda, aún no medido.
+- 2026-10-23 (R00 cierre): Dow −1,2 %, S&P −0,5 %, Nasdaq −0,2 %, WTI +4,2 %, oro −1,2 % y 10 años 5,00 %; BTC −0,2 %, XRP $1,30 plano (−0,15 %) y XLM −0,55 %. Un día de caída del Dow sin reacción medible de XRP/XLM. [ESPECULACIÓN] descontado o falta de causa propia.
+- 2026-10-22/23: salidas de $635 M en los ETF de bitcoin de EE. UU. (mayores desde el 25-jun, Farside vía CoinDesk [S]) y BTC −0,2 % al día siguiente; XRP sin cambio. Sin relación medida.
