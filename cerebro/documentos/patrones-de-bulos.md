@@ -115,3 +115,5 @@ actualizado: 2026-10-07
 - 2026-10-23: «garantías de hasta 100.000 €» de un exchange es la garantía de depósitos bancarios, no de criptoactivos; MiCA no crea un fondo equivalente. Mirar los términos del exchange.
 - 2026-10-23: «el BIS/bancos centrales usan el estándar» (SDMX) no equivale a «usan el XRPL»: el BIS lo probó en DevNet, con datos sintéticos y sin bancos centrales socios. Estándar ≠ prueba piloto ≠ adopción.
 - 2026-10-23: una «contradicción de fecha» de una nota previa (exención de la SEC del 17-sep) era un error mío; la fecha del vídeo era correcta. Buscar el hecho en dos fuentes antes de declarar contradicción.
+- 2026-10-23 (vídeo de predicción de XRP): una cita del BIS sobre «volver a Sibos 2027 (Singapur, 20-23 sep) para revisar avances» se presentó como «fecha confirmada de pagos transfronterizos en funcionamiento». Una fecha de revisión no es un hito de producción: leer el clip entero, no el resumen del canal.
+- 2026-10-23: «el BIS ve retrasos» lo dice en realidad el FSB (Moloney, 8-jul-2026); atribuir a un organismo equivocado es un patrón habitual al resumir. Comprobar quién habla.

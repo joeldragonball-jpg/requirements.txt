@@ -108,3 +108,4 @@ actualizado: 2026-10-07
 - 2026-10-23 (vídeos, rastreo): IPC de sept. del 14-oct (3,7 % frente a 3,6 % esperado) → 15-oct Kospi −7,57 % y Nikkei −4,90 % (un agregador); el canal ata la caída de XRP a esa semana; sin medición propia.
 - 2026-10-23: XRPN (Evernorth) debutó el 12-oct (abrió ≈16,68 $, máx. ≈19,40, cierre ≈16,91 según un medio) frente a 38-40 $ del SPAC; XRP ≈1,40 $. Sin movimiento atribuible de XRP.
 - 2026-10-23: 20-oct (cartas a la SEC) y 21-oct (norma final de la OCC sobre GENIUS) no tienen movimiento propio de precio medido; XRP 1,38 → 1,30 en esos días lo explicaron Brent, tecnológicas y bonos (ver R00 del 22-oct).
+- 2026-10-23 (vídeo de predicción): Ripple Prime acepta XRP como colateral solo dentro de su bróker; el CME no lo acepta (Higgins, mar-2026) [S]. Sin movimiento de precio atribuible; relevante como posible catalizador de demanda, aún no medido.
