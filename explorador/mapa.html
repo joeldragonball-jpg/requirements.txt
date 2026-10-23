@@ -40,30 +40,30 @@ html,body{margin:0;overflow:hidden;background:transparent;color:var(--texto);fon
 #app.sel #vistaIzq{display:grid}
 .zona{display:flex;flex-wrap:wrap;gap:12px 14px;justify-content:center;overflow:hidden;min-height:0;padding:12px 8px;pointer-events:none}
 #vistaIzq.quieto .zona{overflow-y:auto}
-.zona.top{grid-column:1/4;grid-row:1;align-content:flex-end}
+.zona.top{grid-column:1/4;grid-row:1;align-content:safe flex-end}
 .zona.bajo{grid-column:1/4;grid-row:3;align-content:flex-start}
 .zona.izq,.zona.der{flex-direction:column;flex-wrap:nowrap;justify-content:center;align-content:stretch}
 .zona.bajo{flex-wrap:nowrap;align-items:flex-start}
-.zona.bajo .pi{flex:1 1 0;min-width:0;max-width:230px}
-.zona.izq .pi,.zona.der .pi{font-size:11.8px;line-height:1.34;padding:11px 12px 8px}
+.zona.bajo .pi{flex:1 1 0;min-width:0;max-width:340px}
+.zona.izq .pi,.zona.der .pi{font-size:var(--pfl,15.5px);line-height:1.38;padding:14px 16px 11px}
 .zona.izq{grid-column:1;grid-row:2}
 .zona.der{grid-column:3;grid-row:2}
-.pi{position:relative;pointer-events:auto;flex:1 1 170px;max-width:290px;min-width:140px;padding:13px 13px 10px;font-size:12.6px;line-height:1.4;color:#e4e9f6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;border-radius:3px 3px 9px 3px;border:1px solid color-mix(in srgb,var(--c) 50%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 28%,#0d1430),color-mix(in srgb,var(--c) 11%,#090e24));box-shadow:0 10px 22px rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.07) inset;opacity:0;transform:translate(var(--fx,0px),var(--fy,0px)) scale(.12) rotate(0deg);transition:transform .75s cubic-bezier(.2,.9,.25,1) var(--d,0ms),opacity .4s ease var(--d,0ms)}
+.pi{position:relative;pointer-events:auto;flex:1 1 220px;max-width:400px;min-width:180px;padding:16px 18px 13px;font-size:var(--pf,16.5px);line-height:1.42;color:#e4e9f6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;border-radius:3px 3px 9px 3px;border:1px solid color-mix(in srgb,var(--c) 50%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 28%,#0d1430),color-mix(in srgb,var(--c) 11%,#090e24));box-shadow:0 10px 22px rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.07) inset;opacity:0;transform:translate(var(--fx,0px),var(--fy,0px)) scale(.12) rotate(0deg);transition:transform .75s cubic-bezier(.2,.9,.25,1) var(--d,0ms),opacity .4s ease var(--d,0ms)}
 .pi::before{content:'';position:absolute;top:-7px;left:50%;width:48px;height:13px;margin-left:-24px;background:rgba(255,255,255,.17);transform:rotate(-2.5deg);border-radius:2px}
 .zona.izq .pi,.zona.der .pi{flex:0 0 auto;max-width:none;min-width:0}
-.pi.ancha{flex:1.7 1 290px;max-width:420px}
+.pi.ancha{flex:1.7 1 340px;max-width:560px}
 #vistaIzq.abierto .pi{opacity:1;transform:none}
 #vistaIzq.abierto .pi:hover{transform:scale(1.03);z-index:3}
 #vistaIzq.plegando .pi{transition:transform .6s cubic-bezier(.55,0,.9,.35) var(--dc,0ms),opacity .3s ease calc(var(--dc,0ms) + .3s)}
-.pi .pt{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 65%,#fff);font-weight:700;margin-bottom:4px}
-.pi h2{font-size:17px;margin:0 0 4px}
-.pi ul{margin:0;padding-left:15px}.pi li{margin:2px 0}
-.pi .big{display:block;font-size:25px;font-weight:700;line-height:1.1;margin-bottom:2px}
-.pi .sub{color:#a9b6cf;font-size:11.5px;margin-top:3px}
-.pi .pts{letter-spacing:.18em;font-size:14px}
-.zona.bajo .pi .clamp{-webkit-line-clamp:3}
+.pi .pt{font-size:.8em;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 65%,#fff);font-weight:700;margin-bottom:4px}
+.pi h2{font-size:1.4em;margin:0 0 4px}
+.pi .ficha-ul{font-size:inherit}.pi ul{margin:0;padding-left:18px}.pi li{margin:4px 0}
+.pi .big{display:block;font-size:2em;font-weight:700;line-height:1.1;margin-bottom:2px}
+.pi .sub{color:#a9b6cf;font-size:.88em;margin-top:3px}
+.pi .pts{letter-spacing:.18em;font-size:1.1em}
+.zona.bajo .pi .clamp{-webkit-line-clamp:4}
 .zona.bajo .pi .sub.clamp{-webkit-line-clamp:1}
-.pi .clamp{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.pi .clamp{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
 .pi .chips{margin:4px 0 0}
 .onda{position:absolute;border-radius:50%;border:2px solid #f1d58a;opacity:0;pointer-events:none;z-index:1;animation:onda 1.1s cubic-bezier(.2,.7,.3,1) both}
 @keyframes onda{0%{transform:scale(.9);opacity:.95}100%{transform:scale(3.6);opacity:0}}
@@ -988,12 +988,25 @@ const tarjetasAbiertas = () => !window.matchMedia('(max-width:900px)').matches;
 const pwEfectivo = () => (sel && (panelVisible || cerrando)) ? panelAncho : 0;
 function ajustarLados(){
   const lw = $('lienzo').clientWidth || 1000, lh = $('lienzo').clientHeight || 700, izq = $('vistaIzq');
-  panelAncho = Math.max(440, Math.min(Math.round(lw * .34), 700)); app.style.setProperty('--pw', panelAncho + 'px');
+  panelAncho = Math.max(440, Math.min(Math.round(lw * .31), 640)); app.style.setProperty('--pw', panelAncho + 'px');
   const pw = pwEfectivo(), ow = lw - pw;
-  const hw = Math.max(300, Math.min(Math.round(ow * .35), 440)), hh = Math.max(300, Math.min(Math.round(lh * .52), 460));
+  const hw = Math.max(300, Math.min(Math.round(ow * .35), 440)), hh = Math.max(300, Math.min(Math.round(lh * .40), 400));
   izq.style.setProperty('--pwa', pw + 'px'); izq.style.setProperty('--hw', hw + 'px'); izq.style.setProperty('--hh', hh + 'px');
+  ajustarLetra(izq, Math.min(20, ow / 70));
   const esc = Math.min(hw / 280, hh / 320);
   anchoSel = Math.max(420, Math.round(lw / esc)); cxSel = ow / 2 / lw;
+}
+// Letra de los post-its: empieza lo más grande que permite la pantalla y baja de medio en medio punto hasta que ningún post-it se corte (mínimo 13,5 px; si aun así una columna no cabe, se desplaza).
+// Se mide por posición de layout (offsetTop), a la que no afectan las transformaciones de la animación.
+function ajustarLetra(izq, maxPx){
+  const zonas = [...izq.querySelectorAll('.zona')];
+  const cabe = () => zonas.every(z => [...z.querySelectorAll('.pi')].every(n => n.offsetTop >= z.offsetTop - 1 && n.offsetTop + n.offsetHeight <= z.offsetTop + z.clientHeight + 2));
+  let pf = Math.max(13.5, maxPx);
+  for (; pf > 13.5; pf -= .5){
+    izq.style.setProperty('--pf', pf.toFixed(1) + 'px'); izq.style.setProperty('--pfl', (pf * .94).toFixed(1) + 'px');
+    if (cabe()) return;
+  }
+  izq.style.setProperty("--pf", "13.5px"); izq.style.setProperty("--pfl", "13px");
 }
 function actualizarPanel(){ panel.classList.toggle('abierto', panelVisible); }
 function posicionarNotas(){
