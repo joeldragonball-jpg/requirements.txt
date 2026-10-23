@@ -465,7 +465,7 @@
       "revisado": "2026-10-22",
       "proxima": {
         "fecha": "2027-07-10",
-        "que": "El Reglamento antiblanqueo de la UE (AMLR) se aplica a los CASP (guía del EDPB; EUR-Lex no cargó) [S]."
+        "que": "El Reglamento antiblanqueo de la UE (AMLR) se aplica a los CASP (art. 90; el art. 79(1) prohíbe las cuentas anónimas de cripto) [P, EUR-Lex leído el 23-oct]."
       },
       "falta": "Qué entidades UE custodian XRP en concreto (el registro no lista activos por entidad); fechas del registro posteriores a hoy en 4 filas.",
       "hitos": [
@@ -1121,10 +1121,18 @@
       "estado": "Los exchanges operan registrados ante KoFIU (17 exchanges y 9 custodios), pero la Ley Básica de Activos Digitales (2.ª fase) sigue sin aprobar: hay un proyecto preparado según la FSC.",
       "fecha": "2026-10-01",
       "fuente": "S",
-      "revisado": "2026-10-20",
+      "revisado": "2026-10-24",
       "proxima": null,
-      "falta": "Ley de la 2.ª fase; guía de inversión corporativa.",
+      "falta": "Estado de la ley unificada en la Asamblea (el sistema de proyectos no se leyó); guía de inversión corporativa.",
       "hitos": [
+        {
+          "fecha": "2026-01-29",
+          "que": "La Asamblea aprueba la reforma que permite a KoFIU revisar antecedentes penales de accionistas mayoritarios de proveedores de activos virtuales [P, FSC]."
+        },
+        {
+          "fecha": "2026-04-06",
+          "que": "La FSC y 5 exchanges acuerdan mejoras tras el pago erróneo de Bithumb: 3 de 5 concilian saldos solo cada 24 h [P, FSC]."
+        },
         {
           "fecha": "2026-07-29",
           "que": "La FSC dice que el proyecto de ley está preparado."
@@ -1136,7 +1144,8 @@
       ],
       "informes": [
         "R05P",
-        "R30"
+        "R30",
+        "T07 (24-oct)"
       ]
     },
     {
@@ -1234,16 +1243,26 @@
     {
       "jur": "kr",
       "tema": "fiscal",
-      "etapa": null,
-      "estado": "La fiscalidad cripto coreana no se ha revisado; estaría aplazada a 2027 según conocimiento previo.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
-      "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
+      "etapa": 3,
+      "estado": "El impuesto sobre ganancias de activos virtuales (20 %, 22 % con el local, desde ₩2,5 M) entra en vigor el 1-ene-2027 según la ley vigente; el proyecto fiscal del Gobierno del 3-ago-2026 no trae aplazamiento y la primera declaración sería en mayo de 2028. Falta la aprobación final de la Asamblea y la oposición propone derogarlo o aplazarlo [S: prensa; texto de la ley no leído].",
+      "fecha": "2026-08-03",
+      "fuente": "S",
+      "proxima": {
+        "fecha": "2027-01-01",
+        "que": "Entrada en vigor del impuesto si no se aprueba otro aplazamiento."
+      },
+      "falta": "Texto de la Ley del Impuesto sobre la Renta y aprobación de la reforma fiscal 2026 (diciembre).",
+      "hitos": [
+        {
+          "fecha": "2026-08-03",
+          "que": "El Gobierno presenta la reforma fiscal 2026 sin aplazar el impuesto cripto [S]."
+        }
+      ],
       "informes": [
-        "R05P"
-      ]
+        "R05P",
+        "T07 (24-oct)"
+      ],
+      "revisado": "2026-10-24"
     },
     {
       "jur": "kr",
@@ -1685,15 +1704,15 @@
       "jur": "br",
       "tema": "ley_marco",
       "etapa": 4,
-      "estado": "Los proveedores cripto (PSAV) tienen marco completo desde el 2-feb-2026 (Res. BCB 519, 520 y 521) y, según el Voto 107/2026 del Banco Central, octubre de 2026 es el plazo final de la Res. 520 para que los que ya operaban pidan autorización. No hay dato sobre ETF cripto en Brasil.",
+      "estado": "Los proveedores cripto (PSAV) tienen marco completo desde el 2-feb-2026 (Res. BCB 519, 520 y 521) y, según el Voto 107/2026 del Banco Central, el plazo de la Res. 520 (art. 88) para que los que ya operaban pidan autorización vence el 30-oct-2026 (270 días desde el 2-feb); la Res. 589 (23-sep-2026) fija desde el 6-nov-2026 el veto a que bancos y entidades de pago operen con proveedores no autorizados. Textos leídos en la API del Banco Central [P]. No hay dato sobre ETF cripto en Brasil.",
       "fecha": "2026-02-02",
       "fuente": "P",
-      "revisado": "2026-10-20",
+      "revisado": "2026-10-24",
       "proxima": {
-        "fecha": "2026-10",
-        "que": "Fin del plazo para que los proveedores existentes pidan autorización (Res. 520, según el Voto 107/2026 del BCB)."
+        "fecha": "2026-10-30",
+        "que": "Vence el plazo para que los proveedores existentes pidan autorización (Res. 520, art. 88); el 6-nov entra el veto bancario a proveedores no autorizados (Res. 589)."
       },
-      "falta": "Lista oficial de PSAV autorizadas; si Ripple pidió la licencia; texto de las resoluciones (normativos.bcb.gov.br solo sirve PDF).",
+      "falta": "Lista oficial de PSAV autorizadas o con solicitud presentada; si Ripple pidió la licencia (T11, 24-oct).",
       "hitos": [
         {
           "fecha": "2025-11-10",
@@ -1764,10 +1783,10 @@
       "estado": "La custodia es uno de los tres tipos de PSAV de la Res. 520, vigente desde el 2-feb-2026; desde el 1-oct-2026 las transferencias de $10.000 o más a monederos autocustodiados deben comunicarse al Coaf (propuesta del Voto 107/2026).",
       "fecha": "2026-02-02",
       "fuente": "P",
-      "revisado": "2026-10-20",
+      "revisado": "2026-10-24",
       "proxima": {
-        "fecha": "2026-10",
-        "que": "Fin del plazo para pedir autorización (Res. 520)."
+        "fecha": "2026-10-30",
+        "que": "Vence el plazo para pedir autorización (Res. 520, art. 88): 30-oct-2026."
       },
       "falta": "Lista de custodios autorizados; confirmar que la resolución del Voto 107 se publicó.",
       "hitos": [

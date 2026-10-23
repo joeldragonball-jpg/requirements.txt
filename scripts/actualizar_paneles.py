@@ -73,7 +73,7 @@ def leer_tic():
     if len(meses) < 13 or len(paises) < 10 or "Grand Total" not in resumen:
         raise ValueError("la tabla TIC no tiene el formato esperado")
     return {
-        "fuente": URL_TIC, "nivel": "P", "unidad": "miles de millones de dólares (MM$)", "meses": meses,
+        "fuente": URL_TIC, "nivel": "P", "unidad": "mil M de $", "meses": meses,
         "paises": paises, "otros": resumen["All Other"], "total": resumen["Grand Total"],
         "oficial": resumen.get("Of Which: Foreign Official"),
         "nota": ("Los datos se recogen sobre todo de custodios y brókeres de EE. UU. Si los valores están en cuentas de custodia en el "

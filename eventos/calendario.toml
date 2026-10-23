@@ -1,5 +1,5 @@
 # Calendario de eventos que mueven mercado (macro + cripto). Fechas comprobadas en la fuente oficial indicada el 2026-10-07.
-# Para añadir uno, copia un bloque. fecha = primer día; hasta = último día (opcional). impacto: alto | medio.
+# Para añadir uno, copia un bloque. fecha = primer día; hasta = último día (opcional). impacto: alto | medio | bajo.
 # Las horas son de Nueva York (ET) y están en el texto; no se convierten para evitar errores con los cambios de hora.
 
 [[eventos]]
@@ -177,7 +177,7 @@ fuente = "https://www.ecb.europa.eu/paym/retail/instant_payments/html/instant_pa
 
 [[eventos]]
 fecha = "2026-10-12"
-titulo = "Evernorth (XRPN): debut previsto en Nasdaq"
+titulo = "Evernorth (XRPN): debut en Nasdaq (cumplido el 12-oct)"
 detalle = "Cumplido: XRPN empezó a cotizar el 12-oct-2026 tras aplazarse desde el 8-oct; cierre del primer día en torno a $17 según un medio [S]."
 impacto = "medio"
 aproximado = true
@@ -334,11 +334,11 @@ fuente = "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm"
 
 [[eventos]]
 fecha = "2026-10-30"
-titulo = "Brasil: plazo (~270 días) para pedir autorización a proveedores existentes"
-detalle = "Cálculo propio a partir de una sola fuente (Lefosse); fecha sin confirmar en el Banco Central de Brasil (R03P)."
-impacto = "bajo"
-aproximado = true
-fuente = "https://www.bcb.gov.br/"
+titulo = "Brasil: último día para que los proveedores cripto existentes pidan autorización al Banco Central (Res. BCB 520, art. 88)"
+detalle = "270 días desde la entrada en vigor de la Res. 520 (2-feb-2026) [P, texto leído en la API del BCB el 24-oct; la fecha es un cálculo sobre ese texto]. Quien lo pide a tiempo puede seguir operando hasta que el BCB resuelva (art. 88, § 6)."
+impacto = "medio"
+aproximado = false
+fuente = "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?tipo=Resolu%C3%A7%C3%A3o%20BCB&numero=520"
 
 [[eventos]]
 fecha = "2026-11-11"
@@ -363,12 +363,20 @@ impacto = "bajo"
 fuente = "https://www.fsc.go.kr/eng/"
 
 [[eventos]]
-fecha = "2026-11-30"
-titulo = "Brasil: quien no pidió autorización debe cesar"
-detalle = "Cálculo propio a partir de una sola fuente (Lefosse); sin confirmar (R03P)."
+fecha = "2026-11-29"
+titulo = "Brasil: quien no pidió autorización debe cesar sus servicios de activos virtuales"
+detalle = "Res. BCB 520, art. 88, § 7: cesar «en hasta treinta días» tras el fin del plazo (30-oct) [P]; el día exacto es un cálculo sobre el texto."
 impacto = "bajo"
-aproximado = true
-fuente = "https://www.bcb.gov.br/"
+aproximado = false
+fuente = "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?tipo=Resolu%C3%A7%C3%A3o%20BCB&numero=520"
+
+[[eventos]]
+fecha = "2026-11-06"
+titulo = "Brasil: bancos y entidades de pago no podrán operar con proveedores cripto no autorizados (Res. BCB 589, art. 91)"
+detalle = "La Res. 589 (23-sep-2026) retrasa el veto del 30-oct al 6-nov y suprime la excepción de proveedores «en proceso de autorización»: cuenta solo la autorización concedida [P, API del BCB, 24-oct]. [ESPECULACIÓN] sobre cuántos proveedores estarán autorizados para esa fecha: no hay lista oficial localizada."
+impacto = "medio"
+aproximado = false
+fuente = "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?tipo=Resolu%C3%A7%C3%A3o%20BCB&numero=589"
 
 [[eventos]]
 fecha = "2026-12-01"
@@ -467,10 +475,10 @@ fuente = "https://www.pbc.gov.cn/en/"
 [[eventos]]
 fecha = "2027-01-01"
 titulo = "Brasil: retención de hasta 24 h en envíos de más de $10.000 a proveedores extranjeros o autocustodia (Res. BCB 584)"
-detalle = "La Res. 584 (7-ago-2026) la cita el Voto 107/2026 del BCB; la fecha de vigencia sale de prensa jurídica [VERIFICAR] (R03P, radar v4)."
+detalle = "Res. BCB 584 (7-ago-2026, DOU 11-ago): entra en vigor el 1-ene-2027 [P, texto leído en la API del BCB el 24-oct]; la retención cubre también las stablecoins."
 impacto = "bajo"
-aproximado = true
-fuente = "https://normativos.bcb.gov.br/Votos/BCB/2026107/Voto_do_BC_107_2026.pdf"
+aproximado = false
+fuente = "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?tipo=Resolu%C3%A7%C3%A3o%20BCB&numero=584"
 
 [[eventos]]
 fecha = "2027-02-28"
@@ -520,8 +528,8 @@ fuente = "https://www.bok.or.kr/eng/main/contents.do?menuNo=400020"
 
 [[eventos]]
 fecha = "2026-10-23"
-titulo = "Francia: revisión de Moody's prevista el 23-oct, sin resultado publicado a las 20:06 UTC (Aa3, perspectiva negativa)"
-detalle = "Fecha de la próxima revisión según la Agence France Trésor; las agencias pueden mantener, rebajar o cambiar la perspectiva. Última acción de Moody's: 10-abr-2026."
+titulo = "Francia: revisión de Moody's prevista el 23-oct, resultado aún sin publicar a 24-oct (Aa3, perspectiva negativa)"
+detalle = "Fecha de la próxima revisión según la Agence France Trésor; las agencias pueden mantener, rebajar o cambiar la perspectiva. Última acción de Moody's: 10-abr-2026. A 24-oct la tabla de la AFT sigue mostrando Aa3 negativa con próxima fecha 23-oct y la búsqueda web no devuelve ninguna acción posterior [VERIFICAR en moodys.com o en la AFT]."
 impacto = "medio"
 aproximado = false
 fuente = "https://www.aft.gouv.fr/en/frances-credit-ratings"
@@ -589,3 +597,100 @@ detalle = "El BIS habló de volver al laboratorio de políticas de Sibos en Sing
 impacto = "medio"
 aproximado = true
 fuente = "https://www.swift.com/insights/events/sibos-2027"
+
+[[eventos]]
+fecha = "2026-10-26"
+titulo = "EE. UU.: subasta de notas del Tesoro a 2 años ($69 mil M)"
+detalle = "Importe anunciado el 22-oct por el Tesoro de EE. UU. (TreasuryDirect); liquidación el 2-nov. [P, calendario oficial leído el 24-oct]"
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.treasurydirect.gov/auctions/upcoming/"
+
+[[eventos]]
+fecha = "2026-10-27"
+titulo = "EE. UU.: subasta de notas del Tesoro a 5 años ($70 mil M)"
+detalle = "Importe anunciado el 22-oct por el Tesoro de EE. UU. (TreasuryDirect); liquidación el 2-nov. [P, calendario oficial leído el 24-oct]"
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.treasurydirect.gov/auctions/upcoming/"
+
+[[eventos]]
+fecha = "2026-10-29"
+titulo = "EE. UU.: subasta de notas del Tesoro a 7 años ($44 mil M)"
+detalle = "Importe anunciado el 22-oct por el Tesoro de EE. UU. (TreasuryDirect); liquidación el 2-nov. [P, calendario oficial leído el 24-oct]"
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.treasurydirect.gov/auctions/upcoming/"
+
+[[eventos]]
+fecha = "2026-10-29"
+titulo = "Japón: subasta de bonos a 2 años"
+detalle = "Calendario del Ministerio de Finanzas de Japón. [P, calendario oficial leído el 24-oct]"
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/2610e.htm"
+
+[[eventos]]
+fecha = "2026-11-05"
+titulo = "Japón: subasta de bonos a 10 años"
+detalle = "Calendario del Ministerio de Finanzas de Japón. [P, calendario oficial leído el 24-oct]"
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/2611e.htm"
+
+[[eventos]]
+fecha = "2026-11-10"
+titulo = "Japón: subasta de bonos a 30 años"
+detalle = "Calendario del Ministerio de Finanzas de Japón; las subastas de largo plazo son las más seguidas por la demanda de los inversores locales. [P, calendario oficial leído el 24-oct]"
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/2611e.htm"
+
+[[eventos]]
+fecha = "2026-11-25"
+titulo = "Japón: subasta de bonos a 40 años"
+detalle = "Calendario del Ministerio de Finanzas de Japón. [P, calendario oficial leído el 24-oct]"
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/2611e.htm"
+
+[[eventos]]
+fecha = "2026-11-03"
+titulo = "España: Letras del Tesoro a 6 y 12 meses"
+detalle = "Tesoro Público (el 10-nov, a 3 y 9 meses). [P, calendario oficial leído el 24-oct]"
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.tesoro.es/deuda-publica/subastas/calendario"
+
+[[eventos]]
+fecha = "2026-11-05"
+titulo = "España: subasta de Bonos y Obligaciones del Estado"
+detalle = "Tesoro Público (siguiente: 19-nov; en diciembre, 10 y 17). [P, calendario oficial leído el 24-oct]"
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.tesoro.es/deuda-publica/subastas/calendario"
+
+[[eventos]]
+fecha = "2026-11-05"
+titulo = "Francia: subasta de OAT a largo plazo"
+detalle = "Agence France Trésor, calendario indicativo (la AFT puede cancelar o añadir subastas; el detalle se anuncia días antes). [P, calendario oficial leído el 24-oct]"
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.aft.gouv.fr/en/auction-indicative-calendars"
+
+[[eventos]]
+fecha = "2026-11-19"
+titulo = "Francia: subasta de OAT a medio plazo e indexadas"
+detalle = "Agence France Trésor, calendario indicativo (la AFT puede cancelar o añadir subastas; el detalle se anuncia días antes). [P, calendario oficial leído el 24-oct]"
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.aft.gouv.fr/en/auction-indicative-calendars"
+
+[[eventos]]
+fecha = "2027-01-01"
+titulo = "Corea: entra en vigor el impuesto sobre ganancias de activos virtuales (20 %, 22 % con el local, desde ₩2,5 M)"
+detalle = "Según la ley vigente (prórroga de dic-2024) y el proyecto fiscal del Gobierno del 3-ago-2026, que no trae aplazamiento [S: Asiae, M-Block]; falta la aprobación de la Asamblea en diciembre y la oposición pide derogarlo o aplazarlo. Primera declaración en mayo de 2028. Texto de la ley no leído [VERIFICAR]."
+impacto = "bajo"
+aproximado = false
+fuente = "https://view.asiae.co.kr/article/2026080308361151042"
+

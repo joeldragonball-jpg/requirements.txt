@@ -10,7 +10,8 @@ Fuente de la lista: documento «01 Prompt maestro» de la carpeta de Drive «Gem
 | T03 | Regulation Crypto Assets (SEC) | Hecho y verificado (20-oct) |
 | T04 | Euro digital | Hecho y verificado |
 | T05, T17, T19, T20, T21, T22, T24 | MiCA, bancos centrales 27-30 oct, ETF de XRP/XLM, DTCC, custodia, XRPL y Stellar, fiscalidad internacional | Hechos (22 y 23-oct; informes en `informes/research/`) |
-| T06-T16, T18, T23, T25 | resto | **Pendientes**; ver el orden de abajo |
+| T07, T11, T18 | Corea; Brasil; energía | Hechos el 24-oct (`2026-10-24-T07-corea-del-sur.md`, `…T11-brasil.md`, `…T18-energia-actualizacion.md`) |
+| T06, T08-T10, T12-T16, T23, T25 | resto | **Pendientes**; ver el orden de abajo |
 
 ## Orden propuesto (por caducidad y valor)
 1. **T17** Bancos centrales 27-30 oct (FOMC, BCE, BoJ): antes del 27-oct. Hoy ya hay curvas de bonos y tipos en los paneles; falta el research de decisiones, datos y calendario.
