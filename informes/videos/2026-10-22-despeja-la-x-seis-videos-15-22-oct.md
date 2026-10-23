@@ -195,3 +195,12 @@ Cifra de 11.500 entidades de Swift; 4.000 corresponsales de JPM y su papel en la
 - V5: el dato de compras de bancos centrales (244 t en 1T y 289 t en 2T-2026) está en [S] en la tabla y en `research/fuentes-de-los-videos.md` figuraba [P]; vale [S] (solo extractos). La nota de DTCC sobre Stellar también es [S] hasta leer la página entera.
 - V1: las cartas de la SEC son [P] solo en cuanto a su existencia en el listado del expediente; su contenido (p. ej. la carta de Ripple) sigue en [S] mediante medios.
 - Sin hallazgos de claves, nada de la tesis de Joel y solo fragmentos cortos con minuto (sin transcripciones); `noticias/config.toml` no se ha tocado.
+
+### Resuelto el 23-oct-2026 (auditoría de coherencia; no se reescribe lo anterior)
+| Punto de arriba | Estado actual |
+|---|---|
+| «No hay norma final de la OCC» (fila 41 y nota del 22-oct) | **Resuelto:** la OCC publicó la norma final de la ley GENIUS el 21-oct (NR 2026-92), vigente el 18-ene-2027 [P] |
+| «8 MB» y test con Chainlink en el WP 1374 | **8 MB consta** (corpus sintético, pág. 28 del PDF); Chainlink solo aparece como trabajo previo; el PDF se leyó entero el 23-oct [P] |
+| Swift «11.500 organizaciones» | **Confirmado**: informe anual 2024 de Swift y web «Who we are» (más de 11.500 instituciones) [P, vía buscador] |
+| Cartas a la SEC (S7-2026-27) | La carta conjunta (Stellar DF, Cardano Foundation, Chainlink Labs, Aptos, Ava y Hedera) y la de Coinbase figuran en el listado [P]; la de Ripple solo en medios [S] |
+| Banco de Japón | Decide el 30-oct [P] (calendario del BoJ; informe T17) |

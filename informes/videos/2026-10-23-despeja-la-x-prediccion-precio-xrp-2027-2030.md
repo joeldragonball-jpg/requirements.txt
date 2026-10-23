@@ -64,3 +64,6 @@ El canal abandona la tesis de que XRP sustituirá a Swift: reconoce que hay otra
 - **Matizado o contradicho:** la fecha del BIS (es una revisión en Sibos 2027); «el BIS ve retrasos» (lo dice el FSB); euro digital 1S-2027 (las fuentes dicen 2S-2027 piloto y 2029); cifras de Fink (10 % frente a 11 %); Garlinghouse (CEO, proyección).
 - **[VERIFICAR] pendientes:** declaración original de «no queremos una sola empresa privada» (autor y fecha); identidad de la responsable del BIS y entrevista original de Sibos TV; qué «otras dos redes» confirmó el canal; entrevista de Higgins (17-mar-2026) y alcance real del colateral XRP en Ripple Prime y NSCC; XLM «>0,70»; podcast de Claver de esta semana; fechas exactas de Sibos 2027 en Swift (Wikipedia discrepa); texto oficial del FSB/CPMI sobre un hito de 2027; liberaciones de escrow de Ripple.
 - **No hay [J]:** no se aportaron observaciones propias.
+
+### Nota de la auditoría del 23-oct-2026
+- **Evernorth:** los «≈473 M de XRP» son una cifra pro forma del Form 425 (a 31-dic-2025); el 8-K confirma 388,9 M de XRP aportados en especie. No usar 473 M como dato confirmado.

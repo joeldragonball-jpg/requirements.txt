@@ -5,7 +5,7 @@ Objetivo: que se vea siempre de qué moneda y de qué magnitud es una cifra. Apl
 ## Monedas (símbolo delante, sin espacio)
 | Moneda | Símbolo | Ejemplo |
 |---|---|---|
-| Dólar de EE. UU. | `$` (`US$` cuando en la misma frase hay otros dólares) | `$2.178 M` |
+| Dólar de EE. UU. | `$` (`US$` cuando en la misma frase hay otros dólares) | `$2.000 M` |
 | Euro | `€` | `€50.000` |
 | Libra esterlina | `£` | `£1 M` |
 | Yen japonés | `¥` | `¥1 M` |
@@ -20,7 +20,7 @@ Objetivo: que se vea siempre de qué moneda y de qué magnitud es una cifra. Apl
 
 ## Magnitudes
 - `M` = millones (`$954 M`). `mil M` = miles de millones (`$306 mil M`). No usar `MM`, `MM$` ni `B` (en español «billón» son 10^12 y «MM» es ambiguo).
-- Se pasa a `mil M` desde 10.000 M (`$39,3 mil M`); por debajo se deja en `M` (`$2.178 M`).
+- Se pasa a `mil M` desde 10.000 M (`$39,3 mil M`); por debajo se deja en `M` (`$2.000 M`).
 - Tasas y precios: `$126 por barril`, `3,75–4,00 %` (espacio antes de `%`).
 - Separadores españoles: punto para miles y coma para decimales; en pantalla se fuerza el punto de miles también en 4 cifras (`9.332`).
 
