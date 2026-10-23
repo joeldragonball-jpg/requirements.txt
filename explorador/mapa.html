@@ -2,7 +2,7 @@
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
 <style>
-:root{color-scheme:dark;--alto:820px;--bg:#050816;--panel:rgba(9,14,30,.88);--linea:rgba(148,163,184,.16);--texto:#e6ebf5;--suave:#93a1bd;--oro:#d4a84b}
+:root{color-scheme:dark;--alto:820px;--bg:#050816;--panel:rgba(9,14,30,.88);--linea:rgba(148,163,184,.16);--texto:#e6ebf5;--suave:#a8b5cd;--oro:#d4a84b}
 *{box-sizing:border-box}
 ::-webkit-scrollbar{width:3px;height:3px}
 ::-webkit-scrollbar-track{background:rgba(148,163,184,.08);border-radius:2px}
@@ -40,7 +40,7 @@ html,body{margin:0;overflow:hidden;background:transparent;color:var(--texto);fon
 #app.sel #vistaIzq{display:grid}
 .zona{display:flex;flex-wrap:wrap;gap:12px 14px;justify-content:center;overflow:hidden;min-height:0;padding:12px 8px;pointer-events:none}
 #vistaIzq.quieto .zona{overflow-y:auto}
-.zona.top{grid-column:1/4;grid-row:1;align-content:safe flex-end}
+.zona.top{grid-column:1/4;grid-row:1;align-content:safe flex-end;align-items:flex-start}   /* cada post-it mide lo que ocupa su texto, no la altura del más alto de la fila */
 .zona.bajo{grid-column:1/4;grid-row:3;align-content:flex-start}
 .zona.izq,.zona.der{flex-direction:column;flex-wrap:nowrap;justify-content:center;align-content:stretch}
 .zona.bajo{flex-wrap:nowrap;align-items:flex-start}
@@ -93,10 +93,11 @@ svg{width:100%;height:100%;display:block}
 @keyframes latido{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
 @keyframes entra{from{opacity:0}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.estrella,.barrido,.anillo-sel,.cerca{animation:none}#app{transition:none}}
-#panel{position:absolute;z-index:4;top:0;right:0;bottom:0;width:var(--pw);padding:14px 16px;overflow:auto;min-height:0;background:rgba(7,11,26,.95);box-shadow:none;visibility:hidden;transform:translateX(calc(100% + 60px));transition:transform .6s cubic-bezier(.22,.8,.25,1),box-shadow .3s ease,visibility 0s .6s;will-change:transform}
+#panel{position:absolute;z-index:4;top:0;right:0;bottom:0;width:var(--pw);padding:14px 16px;overflow:auto;min-height:0;background:rgba(7,11,26,.95);box-shadow:none;visibility:hidden;transform:translateX(calc(100% + 60px));transition:transform .6s cubic-bezier(.22,.8,.25,1),box-shadow .3s ease,visibility 0s .6s;}
 #panel:not(.abierto){overflow:hidden}
 #panel.abierto{transform:none;visibility:visible;box-shadow:-18px 0 40px rgba(0,0,0,.45);transition:transform .6s cubic-bezier(.22,.8,.25,1),box-shadow .5s ease,visibility 0s 0s}
-#panel .entra{animation:entra .35s ease both}
+#panel .entra{animation:entra .35s ease backwards}   /* 'backwards': al terminar no queda ninguna capa de animación y el texto se dibuja nítido */
+@media (min-width:901px){#panel{zoom:1.2;width:calc(var(--pw) / 1.2)}}   /* letra del panel un 20 % mayor, sin pérdida de nitidez */
 h2{margin:0 0 6px;font-size:17px;font-weight:650;letter-spacing:.01em;display:flex;gap:10px;align-items:center}
 h3{margin:18px 0 7px;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--suave);font-weight:600;border-bottom:1px solid var(--linea);padding-bottom:5px}
 .nota{color:var(--suave);font-size:12px}
@@ -138,9 +139,9 @@ details.sec>.sec-c{padding:4px 10px 8px}
 .pn-k{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
 .pn-k button,.pn-k div{flex:1 1 120px;text-align:left;border:1px solid var(--linea);border-radius:6px;background:rgba(15,23,42,.7);color:var(--texto);padding:5px 9px;font:inherit}
 .pn-k button{cursor:pointer}.pn-k button:hover{border-color:var(--oro)}
-.pn-k .v{font-size:16px;font-weight:700;color:#f1d58a}.pn-k .e{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--suave)}
+.pn-k .v{font-size:16px;font-weight:700;color:#f1d58a}.pn-k .e{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--suave)}
 table.pn-t{width:100%;border-collapse:collapse;font-size:12px}
-.pn-t th{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--suave);text-align:right;padding:3px 5px;border-bottom:1px solid var(--linea);font-weight:600}
+.pn-t th{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--suave);text-align:right;padding:3px 5px;border-bottom:1px solid var(--linea);font-weight:600}
 .pn-t th:first-child,.pn-t td:first-child{text-align:left}
 .pn-t td{padding:3px 5px;border-bottom:1px solid rgba(148,163,184,.08);text-align:right;white-space:nowrap}
 .pn-t tr.xrp td{color:#f1d58a;font-weight:600}
@@ -150,7 +151,7 @@ table.pn-t{width:100%;border-collapse:collapse;font-size:12px}
 .hitos .cuando{color:#f1d58a;margin-right:6px}
 .ficha-ul{margin:4px 0 0;padding-left:18px;font-size:12.5px;color:#cdd6ea}.ficha-ul li{margin:2px 0}
 .ficha-fila{display:flex;gap:10px;align-items:baseline;margin:3px 0;font-size:12.5px}
-.ficha-fila .etq-f{flex:none;min-width:92px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--suave)}
+.ficha-fila .etq-f{flex:none;min-width:92px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--suave)}
 .ficha-pts{letter-spacing:.18em;font-size:15px}
 .ficha-dos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 @media (max-width:900px){.ficha-dos{grid-template-columns:1fr}}
@@ -168,7 +169,7 @@ details.doc summary{cursor:pointer;padding:8px 11px;list-style:none;display:flex
 details.doc summary::-webkit-details-marker{display:none}
 details.doc[open]{border-color:rgba(212,168,75,.55)}
 details.doc .cuerpo{padding:0 11px 10px;color:#cdd6ea;font-size:12.5px}
-.etq{font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;padding:1px 6px;border-radius:3px;border:1px solid;flex:none}
+.etq{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;padding:1px 6px;border-radius:3px;border:1px solid;flex:none}
 .cifras{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:8px;margin:6px 0}
 .cifra{background:rgba(15,23,42,.62);border:1px solid var(--linea);border-top-width:3px;border-radius:7px;padding:9px 11px}
 .cifra b{display:block;font-size:19px;line-height:1.15;letter-spacing:-.01em}
