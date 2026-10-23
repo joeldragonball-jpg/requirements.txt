@@ -73,3 +73,24 @@ No tratada en los vídeos. [VERIFICAR] cómo tributaría una acción cotizada en
 - **Coinciden:** ambos mantienen la misma cautela ("mucho bombo, poco avance real"). Pero **son del mismo canal y autor: no cuenta como confirmación independiente.**
 - **Se contradicen:** nada relevante. Matiz: el vídeo 2 ve la regulación "en buena dirección" y el 1 es pesimista con XRPN; son temas distintos.
 - **Misma fuente, mismo mensaje:** las citas de Selig y del CEO de Evernorth vienen de entrevistas públicas; prueban lo que dijeron, no que lo que afirman sea cierto.
+
+
+## Fuentes rastreadas y razonamiento (rastreo del 23-oct-2026)
+> Tipos: **A** verificable · **B** [RAZONADO] · **C** [ESPECULACIÓN]. Vídeos del 6-oct (CFTC) y 7-oct (Evernorth). El rastreo incluye lo ocurrido después de los vídeos.
+
+| Afirmación | Hecho y cuándo | Quién | Primera aparición | Fuente encontrada | Tipo y etiqueta |
+|---|---|---|---|---|---|
+| Debut aplazado al lunes 12-oct | **XRPN empezó a cotizar el 12-oct-2026 en Nasdaq**: abrió ≈16,68 $, subió hasta ≈19,40 $ y cerró ≈16,91 $ (-1 %) según un medio; otros dan cifras algo distintas | Evernorth / Nasdaq | Medios, 9-12 oct | [Yellow](https://yellow.com/news/ripple-backed-evernorth-slips-nasdaq-debut) y [Crypto News](https://crypto.news/evernorth-pushes-xrpn-nasdaq-trading-debut-to-oct-12/) [S]; cierre oficial **no verificado**; un medio da otra apertura (10,50 $), lo descarto como atípico | A · [S]; aplazamiento a 12-oct **confirmado** (cierra el [VERIFICAR] de la fila 5) |
+| ~473 M de XRP; ~300 M$ en caja | Form 425 (SEC), datos a 31-dic-2025; medios valoran 473 M XRP en ≈657 M$ con XRP ≈1,40 $ | Evernorth / SEC | EDGAR | [Form 425](https://www.sec.gov/Archives/edgar/data/2092592/000095010326004974/dp244512_425.htm) [P]; valor en dólares [S] | A · [P] la cantidad; [S] el valor |
+| «Cae un 50 % en un día» / 38-40 $ el viernes | Era la acción del SPAC (Armada II) antes de fusionarse | Mercado | Medios, 7-oct | [S] (nota previa) | A · [S]; **tras el debut, la acción cotiza en torno a 17 $**, muy por debajo de los 38-40 $ que el canal usaba para su cálculo |
+| «Precio medio de compra 2,36 $/XRP» | — | — | — | **Fuente no encontrada** (probé: la búsqueda de coste medio tras el debut; el Form 425 no lo recoge) | A · [VERIFICAR] |
+| CTX y CAM de la CFTC (5-oct) | ANPRM sobre *Regulation Crypto Asset Transactions* y *Crypto Asset Markets* | CFTC (presidente Selig) | Nota 9307-26 | [CFTC 9307-26](https://www.cftc.gov/PressRoom/PressReleases/9307-26) [P]; [The Block](https://www.theblock.co/news/markets/2026-10-05-cftc-rulemaking-leveraged-retail-crypto-trading-regulation-ctx-cam-417701) [S] | A · [P] |
+| Selig: «solo el Congreso puede obligar a todos los exchanges» | Declaración recogida por The Block, 5-oct | Michael Selig | The Block | [S] | A · [S] |
+| Entrevista al CEO de Evernorth (reinversión del rendimiento) | — | CEO de Evernorth | — | **Entrevista original no localizada** | A · [VERIFICAR] |
+
+**B · «Pagar 4-4,5 veces el valor de caja equivale a comprar XRP a ~6 $; si la prima cae, la rueda se frena» — [RAZONADO].** Mecanismo: una tesorería cotizada aumenta su cantidad de XRP *por acción* solo si emite acciones por encima de su valor liquidativo; si la prima se comprime, emitir deja de ser positivo y deja de comprar. La aritmética del canal es lógica, pero depende de dos datos sin verificar (valor de caja por acción y precio medio de compra). Tras el debut, la acción en torno a 17 $ indica que la prima **ya se comprimió** frente a los 38-40 $ del SPAC. Contraargumento fuerte: el comportamiento de un SPAC antes y después de la fusión (rescates, flotante pequeño) distorsiona la prima; el precio del primer día no es el «régimen». **Confirmaría:** cotización sostenida cerca de su valor liquidativo y ausencia de nuevas emisiones; informe trimestral con XRP por acción. **Tumbaría:** emisión de acciones con prima y compras de XRP anunciadas.
+**B · «La CFTC tendrá reglas antes que la ley; no sustituye a la Clarity» — [RAZONADO].** Verdad parcial comprobada: la propia CFTC dice que solo el Congreso puede obligar a todos los exchanges. Una ANPRM no es norma. Contraargumento: aun sin obligar, una norma de la CFTC sobre derivados minoristas ya cambia lo que ofrecen los exchanges regulados.
+**C ·** «El primero que venda gana», «puede acabar en desplome total»; XRP «bajó de 1,52 a 1,49 por la CFTC»: predicción y causalidad de un movimiento de centavos, no comprobables.
+
+### Sin fuente
+Precio medio de 2,36 $; entrevista del CEO; cierre oficial del primer día; cálculo del valor de caja por acción.
