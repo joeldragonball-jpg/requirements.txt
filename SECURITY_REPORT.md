@@ -1,6 +1,6 @@
 # 🟡 REVISAR — Informe de seguridad
 
-**Fecha:** 2026-10-22 · **Última comprobación:** 2026-10-22 (no repetir búsquedas ya hechas hoy) · Repositorio público: este informe no incluye datos del equipo local.
+**Fecha:** 2026-10-22 · **Última comprobación:** 2026-10-23, 🟢 sin cambios respecto al 22-oct (no repetir búsquedas ya hechas hoy) · Repositorio público: este informe no incluye datos del equipo local.
 
 ## Resumen
 1. El aviso del vídeo se **confirma en lo esencial** en fuentes oficiales: hay parches de seguridad en Node.js (21-oct), Python (1-oct y 21-oct), Go (8 y 19-oct) y Java (Oracle CPU, 20-oct); en Rust no hay aviso oficial del lenguaje en octubre.
