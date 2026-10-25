@@ -54,7 +54,7 @@ def cola_r():
     """Tareas R/G de research/COLA.md con su estado y el coste real anotado."""
     out = []
     for linea in leer(RAIZ / "research" / "COLA.md").splitlines():
-        if not re.match(r"\|\s*[RG]\d+[A-Za-z]*\s*\|", linea):
+        if not re.match(r"\|\s*[RGW]\d+[A-Za-z]*\s*\|", linea):
             continue
         c = [x.strip() for x in linea.strip().strip("|").split("|")]
         if len(c) < 9:
@@ -205,6 +205,31 @@ def bots():
     return out
 
 
+PLAN = {"W01": ("Tipos de interés", "2 %"), "W02": ("Deuda y subastas", "2 %"), "W03": ("Países (huecos del radar)", "4 %"), "W04": ("ETF y flujos", "3 %"),
+        "W05": ("Verificación por lotes", "3 %"), "W06": ("Voces y predicciones", "3 %"), "W07": ("Research de fuentes", "3 %"), "W08": ("Auditoría mensual", "4 %"),
+        "W09": ("Resumen semanal", "1,5 %"), "W10": ("Energía y geopolítica", "2 %")}
+DIAS = {0: ["W01"], 1: ["W02"], 2: ["W03"], 3: ["W05"], 4: ["W06", "W09"], 5: ["W10"], 6: []}   # lunes = 0
+
+
+def toca(hoy):
+    ids = list(DIAS[hoy.weekday()])
+    if hoy.weekday() == 3 and hoy.isocalendar()[1] % 2 == 0:
+        ids.append("W04")                                   # ETF: cada dos semanas
+    if hoy.weekday() == 5 and hoy.day <= 7:
+        ids.append("W07")                                   # fuentes: primer sábado del mes
+    if hoy.weekday() == 2 and hoy.day >= 22:
+        ids = ["W08"] + [i for i in ids if i != "W03"]      # auditoría: último miércoles del mes
+    return [{"id": i, "nombre": PLAN[i][0], "coste": PLAN[i][1], "prompt": f"research/prompts/{i}-*.md"} for i in ids]
+
+
+def semana():
+    hoy = date.today()
+    lunes = hoy - timedelta(days=hoy.weekday())
+    nombres = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"]
+    return {"hoy": toca(hoy), "dias": [{"dia": nombres[i], "fecha": (lunes + timedelta(days=i)).isoformat(), "tareas": [t["id"] for t in toca(lunes + timedelta(days=i))],
+                                      "es_hoy": (lunes + timedelta(days=i)) == hoy} for i in range(7)]}
+
+
 def porcentaje(texto):
     m = re.search(r"(<|~|≈)?\s*(\d+(?:[.,]\d+)?)\s*%", texto or "")
     if not m:
@@ -244,7 +269,7 @@ def construir(bots_estado=False):
     contables = [t for t in colas if t["estado"] in ("hecha", "pendiente")]
     return {
         "generado": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
-        "hoy": r00(),
+        "hoy": r00(), "semana": semana(),
         "resumen": {"hechas": sum(1 for t in contables if t["estado"] == "hecha"), "pendientes": sum(1 for t in contables if t["estado"] == "pendiente"),
                     "por_cola": {o: {"hechas": sum(1 for t in contables if t["origen"] == o and t["estado"] == "hecha"),
                                      "pendientes": sum(1 for t in contables if t["origen"] == o and t["estado"] == "pendiente")} for o in ("R", "T", "D")}},

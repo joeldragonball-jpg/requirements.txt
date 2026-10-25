@@ -42,6 +42,9 @@ def mostrar():
     r = d["resumen"]
     c4.metric("Tareas hechas", f"{r['hechas']} de {r['hechas'] + r['pendientes']}")
     st.progress(r["hechas"] / max(1, r["hechas"] + r["pendientes"]))
+    toca = d.get("semana", {}).get("hoy", [])
+    st.markdown("**Hoy toca:** " + (" · ".join(f"`{t['id']}` {t['nombre']} (≈ {t['coste']})" for t in toca) if toca else "solo el R00 (día ligero)")
+                + " — prompts en `research/prompts/`")
     st.caption(" · ".join(f"{ORIGEN[o]}: {v['hechas']} hechas, {v['pendientes']} pendientes" for o, v in r["por_cola"].items()))
 
     # --- Qué toca ahora
