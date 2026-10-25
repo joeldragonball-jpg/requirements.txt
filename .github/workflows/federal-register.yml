@@ -1,0 +1,43 @@
+name: Vigilante del Federal Register
+
+on:
+  schedule:
+    - cron: "17 13,21 * * 1-5"   # días laborables, 13:17 y 21:17 UTC (el Federal Register publica por la mañana de EE. UU.)
+  workflow_dispatch:
+
+concurrency: federal-register
+
+permissions:
+  contents: read
+
+jobs:
+  vigilar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # La memoria (qué documentos ya avisó) se guarda en la caché de GitHub: sin commits ni IA.
+      - name: Recuperar estado
+        uses: actions/cache/restore@v4
+        with:
+          path: alertas/estado_federal_register.json
+          key: estado-federal-register-${{ github.run_id }}
+          restore-keys: estado-federal-register-
+
+      - name: Vigilar el Federal Register
+        run: python scripts/vigilante_federal_register.py
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Guardar estado
+        if: always() && hashFiles('alertas/estado_federal_register.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: alertas/estado_federal_register.json
+          key: estado-federal-register-${{ github.run_id }}

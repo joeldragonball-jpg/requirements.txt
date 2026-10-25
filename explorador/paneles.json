@@ -1,5 +1,5 @@
 {
- "leido": "2026-10-25 18:25 UTC",
+ "leido": "2026-10-25 18:52 UTC",
  "tic": {
   "fuente": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt",
   "nivel": "P",
@@ -447,7 +447,7 @@
    3919.8
   ],
   "nota": "Los datos se recogen sobre todo de custodios y brókeres de EE. UU. Si los valores están en cuentas de custodia en el extranjero, pueden no atribuirse a su propietario real (Tesoro, TIC FAQ n.º 7); por eso Bélgica, Luxemburgo o las Islas Caimán suben tanto. Las tenencias incluyen cambios de valor de mercado: una bajada no es necesariamente una venta.",
-  "leido": "2026-10-25 18:25 UTC"
+  "leido": "2026-10-25 18:52 UTC"
  },
  "stablecoins": {
   "fuente": "https://stablecoins.llama.fi/stablecoins?includePrices=true",
@@ -796,14 +796,14 @@
    ]
   },
   "nota": "DefiLlama es un agregador: sus cifras de circulación son estimaciones y pueden diferir de las atestaciones de cada emisor. Las monedas ligadas al euro se pasan a dólares con su propio precio. La lista de DefiLlama incluye también fondos tokenizados de letras (p. ej. BUIDL) y monedas sintéticas (p. ej. USDe): no todo lo que aparece es una stablecoin de pago, y el «respaldo» es la clasificación de DefiLlama.",
-  "leido": "2026-10-25 18:25 UTC"
+  "leido": "2026-10-25 18:52 UTC"
  },
  "rwa": {
   "fuente": "https://api.llama.fi/protocols",
   "nivel": "S",
   "unidad": "dólares (USD)",
   "n": 103,
-  "total": 4138067143.7571025,
+  "total": 4138028953.0446835,
   "top": [
    {
     "nombre": "Ethena USDtb",
@@ -845,16 +845,16 @@
    },
    {
     "nombre": "OnRe",
-    "usd": 295457691.7785523,
-    "cambio_7d": 0.6277065567303168,
+    "usd": 295440299.41685694,
+    "cambio_7d": 0.616702570176102,
     "cadenas": [
      "Solana"
     ]
    },
    {
     "nombre": "USD AI",
-    "usd": 266149026.02887237,
-    "cambio_7d": 1.3567885824086403,
+    "usd": 266092251.9066661,
+    "cambio_7d": 1.3257245004138838,
     "cadenas": [
      "Arbitrum"
     ]
@@ -880,10 +880,10 @@
     ]
    }
   ],
-  "stellar": 6890908.581954687,
+  "stellar": 6890682.964410875,
   "xrpl": 0,
   "nota": "Es el valor bloqueado (TVL) en protocolos DeFi que DefiLlama clasifica como RWA: NO es el valor total de activos tokenizados. Otras metodologías (p. ej. RWA.xyz) dan cifras mucho mayores porque cuentan fondos y bonos tokenizados fuera de DeFi.",
-  "leido": "2026-10-25 18:25 UTC"
+  "leido": "2026-10-25 18:52 UTC"
  },
  "mercado": {
   "fuente": "https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin,ethereum&vs_currencies=usd&include_market_cap=true&include_24hr_change=true",
@@ -894,38 +894,38 @@
     "simbolo": "XRP",
     "nombre": "XRP",
     "precio": 1.3,
-    "capitalizacion": 82451341876.76105,
-    "cambio_24h": 1.739661638864946
+    "capitalizacion": 82435000334.07498,
+    "cambio_24h": 1.3495522547669399
    },
    {
     "simbolo": "XLM",
     "nombre": "Stellar Lumens",
-    "precio": 0.169572,
-    "capitalizacion": 5972918060.383537,
-    "cambio_24h": -0.12174533940828233
+    "precio": 0.169713,
+    "capitalizacion": 5978139941.924134,
+    "cambio_24h": -0.23771739156023208
    },
    {
     "simbolo": "BTC",
     "nombre": "Bitcoin",
-    "precio": 80641,
-    "capitalizacion": 1621244494255.3335,
-    "cambio_24h": 0.5167625843165333
+    "precio": 80612,
+    "capitalizacion": 1620633489800.8167,
+    "cambio_24h": 0.37828300424131933
    },
    {
     "simbolo": "ETH",
     "nombre": "Ether",
-    "precio": 2353.42,
-    "capitalizacion": 287532811675.635,
-    "cambio_24h": 1.3100370899153253
+    "precio": 2354.65,
+    "capitalizacion": 287650716856.09393,
+    "cambio_24h": 0.9895002261405673
    }
   ],
-  "leido": "2026-10-25 18:25 UTC"
+  "leido": "2026-10-25 18:52 UTC"
  },
  "deuda": {
   "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP",
   "fuente_saldo": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP",
   "edicion": "World Economic Outlook, octubre de 2026 (actualizado por el FMI el 8-oct-2026)",
-  "leido": "2026-10-25 18:25 UTC",
+  "leido": "2026-10-25 18:52 UTC",
   "como": "El FMI da 403 a curl: los datos se leen una vez con el navegador (fetch en la propia web del FMI) y se pegan aquí. Para refrescarlos tras la siguiente edición del WEO (abril de 2027), repetir ese paso.",
   "anios": [
    "2023",
@@ -1807,7 +1807,7 @@
   },
   "fallos": [],
   "nota_mensual": "Rendimiento medio mensual del bono a 10 años que usa el BCE para los criterios de convergencia: sirve para comparar países euro entre sí (Alemania, España, Francia, Italia), con ~1 mes de retraso.",
-  "leido": "2026-10-25 18:25 UTC"
+  "leido": "2026-10-25 18:52 UTC"
  },
  "indices": {
   "fuente": "https://finance.yahoo.com/",
@@ -1851,7 +1851,7 @@
     "fecha": "2026-10-23",
     "cambio_1d": -0.31,
     "moneda": "EUR",
-    "cambio_1d_usd": -0.46
+    "cambio_1d_usd": -0.33
    },
    {
     "simbolo": "^IBEX",
@@ -1861,7 +1861,7 @@
     "fecha": "2026-10-23",
     "cambio_1d": 0.4,
     "moneda": "EUR",
-    "cambio_1d_usd": 0.25
+    "cambio_1d_usd": 0.39
    },
    {
     "simbolo": "^N225",
@@ -1905,7 +1905,7 @@
    }
   ],
   "fallos": [],
-  "leido": "2026-10-25 18:25 UTC"
+  "leido": "2026-10-25 18:52 UTC"
  },
  "watchlist": {
   "fuente": "https://finance.yahoo.com/",
@@ -1921,7 +1921,9 @@
     "cambio_1d": -0.01,
     "cambio_1s": -0.39,
     "cambio_3m": 4.54,
-    "ytd": 16.68
+    "ytd": 16.68,
+    "div_12m": 0.84,
+    "n_repartos": 4
    },
    {
     "ticker": "IWDA",
@@ -1933,7 +1935,9 @@
     "cambio_1d": -0.04,
     "cambio_1s": -0.51,
     "cambio_3m": 3.7,
-    "ytd": 16.46
+    "ytd": 16.46,
+    "div_12m": null,
+    "n_repartos": 0
    },
    {
     "ticker": "KO",
@@ -1945,7 +1949,9 @@
     "cambio_1d": -2.76,
     "cambio_1s": -1.27,
     "cambio_3m": 12.72,
-    "ytd": 32.61
+    "ytd": 32.61,
+    "div_12m": 2.27,
+    "n_repartos": 4
    },
    {
     "ticker": "JNJ",
@@ -1957,7 +1963,9 @@
     "cambio_1d": -1.42,
     "cambio_1s": 3.23,
     "cambio_3m": 0.16,
-    "ytd": 27.48
+    "ytd": 27.48,
+    "div_12m": 2.0,
+    "n_repartos": 4
    },
    {
     "ticker": "PG",
@@ -1969,7 +1977,9 @@
     "cambio_1d": -2.76,
     "cambio_1s": 1.05,
     "cambio_3m": 9.23,
-    "ytd": 12.36
+    "ytd": 12.36,
+    "div_12m": 2.69,
+    "n_repartos": 4
    },
    {
     "ticker": "MO",
@@ -1981,7 +1991,9 @@
     "cambio_1d": -2.31,
     "cambio_1s": -1.07,
     "cambio_3m": 1.81,
-    "ytd": 28.88
+    "ytd": 28.88,
+    "div_12m": 5.77,
+    "n_repartos": 4
    },
    {
     "ticker": "KMB",
@@ -1993,7 +2005,9 @@
     "cambio_1d": -1.93,
     "cambio_1s": 4.34,
     "cambio_3m": 0.41,
-    "ytd": 9.18
+    "ytd": 9.18,
+    "div_12m": 4.63,
+    "n_repartos": 4
    },
    {
     "ticker": "CIBR",
@@ -2005,7 +2019,9 @@
     "cambio_1d": 3.22,
     "cambio_1s": 7.39,
     "cambio_3m": 20.05,
-    "ytd": 48.52
+    "ytd": 48.52,
+    "div_12m": 0.37,
+    "n_repartos": 4
    },
    {
     "ticker": "SMH",
@@ -2017,7 +2033,9 @@
     "cambio_1d": 0.74,
     "cambio_1s": -2.33,
     "cambio_3m": -6.06,
-    "ytd": 46.39
+    "ytd": 46.39,
+    "div_12m": 0.21,
+    "n_repartos": 1
    },
    {
     "ticker": "SOXX",
@@ -2029,7 +2047,9 @@
     "cambio_1d": 0.53,
     "cambio_1s": -3.08,
     "cambio_3m": -9.26,
-    "ytd": 58.79
+    "ytd": 58.79,
+    "div_12m": 0.26,
+    "n_repartos": 4
    },
    {
     "ticker": "BOTZ",
@@ -2041,7 +2061,9 @@
     "cambio_1d": 1.04,
     "cambio_1s": -0.0,
     "cambio_3m": -2.39,
-    "ytd": -8.86
+    "ytd": -8.86,
+    "div_12m": 0.53,
+    "n_repartos": 2
    },
    {
     "ticker": "TSM",
@@ -2053,7 +2075,9 @@
     "cambio_1d": 1.49,
     "cambio_1s": 1.43,
     "cambio_3m": 3.74,
-    "ytd": 37.72
+    "ytd": 37.72,
+    "div_12m": 0.92,
+    "n_repartos": 4
    },
    {
     "ticker": "EEM",
@@ -2065,7 +2089,9 @@
     "cambio_1d": 0.47,
     "cambio_1s": -1.34,
     "cambio_3m": -2.08,
-    "ytd": 13.34
+    "ytd": 13.34,
+    "div_12m": 1.8,
+    "n_repartos": 2
    },
    {
     "ticker": "AAPL",
@@ -2077,7 +2103,9 @@
     "cambio_1d": -0.14,
     "cambio_1s": 1.24,
     "cambio_3m": 4.42,
-    "ytd": 27.91
+    "ytd": 27.91,
+    "div_12m": 0.3,
+    "n_repartos": 4
    },
    {
     "ticker": "SMCI",
@@ -2089,7 +2117,9 @@
     "cambio_1d": -2.31,
     "cambio_1s": 4.14,
     "cambio_3m": 9.44,
-    "ytd": 12.54
+    "ytd": 12.54,
+    "div_12m": null,
+    "n_repartos": 0
    },
    {
     "ticker": "QQQ",
@@ -2101,7 +2131,9 @@
     "cambio_1d": -0.01,
     "cambio_1s": -0.76,
     "cambio_3m": 2.95,
-    "ytd": 14.67
+    "ytd": 14.67,
+    "div_12m": 0.44,
+    "n_repartos": 4
    },
    {
     "ticker": "NOBL",
@@ -2113,7 +2145,9 @@
     "cambio_1d": -1.05,
     "cambio_1s": 2.05,
     "cambio_3m": 2.48,
-    "ytd": 12.08
+    "ytd": 12.08,
+    "div_12m": 2.01,
+    "n_repartos": 4
    },
    {
     "ticker": "UNH",
@@ -2125,7 +2159,9 @@
     "cambio_1d": -1.62,
     "cambio_1s": 4.15,
     "cambio_3m": -0.63,
-    "ytd": 26.65
+    "ytd": 26.65,
+    "div_12m": 2.17,
+    "n_repartos": 4
    },
    {
     "ticker": "O",
@@ -2137,7 +2173,9 @@
     "cambio_1d": -0.3,
     "cambio_1s": 1.44,
     "cambio_3m": -13.28,
-    "ytd": 0.92
+    "ytd": 0.92,
+    "div_12m": 5.71,
+    "n_repartos": 12
    },
    {
     "ticker": "PLD",
@@ -2149,7 +2187,9 @@
     "cambio_1d": -0.17,
     "cambio_1s": 0.56,
     "cambio_3m": -14.35,
-    "ytd": -0.95
+    "ytd": -0.95,
+    "div_12m": 3.34,
+    "n_repartos": 4
    },
    {
     "ticker": "GLD",
@@ -2161,7 +2201,9 @@
     "cambio_1d": -0.65,
     "cambio_1s": -4.03,
     "cambio_3m": -1.42,
-    "ytd": -7.49
+    "ytd": -7.49,
+    "div_12m": null,
+    "n_repartos": 0
    },
    {
     "ticker": "RIO",
@@ -2173,7 +2215,9 @@
     "cambio_1d": -0.86,
     "cambio_1s": -7.64,
     "cambio_3m": -8.55,
-    "ytd": 4.24
+    "ytd": 4.24,
+    "div_12m": 5.57,
+    "n_repartos": 2
    },
    {
     "ticker": "IWM",
@@ -2185,7 +2229,9 @@
     "cambio_1d": -0.33,
     "cambio_1s": 1.96,
     "cambio_3m": -5.3,
-    "ytd": 12.02
+    "ytd": 12.02,
+    "div_12m": 0.99,
+    "n_repartos": 4
    },
    {
     "ticker": "WSML",
@@ -2197,11 +2243,13 @@
     "cambio_1d": -0.37,
     "cambio_1s": 0.22,
     "cambio_3m": -1.38,
-    "ytd": 11.19
+    "ytd": 11.19,
+    "div_12m": 2.88,
+    "n_repartos": 2
    }
   ],
   "fallos": [],
-  "leido": "2026-10-25 18:25 UTC"
+  "leido": "2026-10-25 18:52 UTC"
  },
  "tipos_vivos": {
   "fuente": "Bancos centrales (ver cada fila)",
@@ -2280,7 +2328,7 @@
   ],
   "fallos": [],
   "nota": "Valores leídos de la fuente oficial de cada banco. «Último cambio» es la fecha en que cambió el valor en la serie, no la de la reunión.",
-  "leido": "2026-10-25 18:25 UTC"
+  "leido": "2026-10-25 18:52 UTC"
  },
  "tipos_bis": {
   "fuente": "https://data.bis.org/topics/CBPOL",
@@ -2368,6 +2416,6 @@
    }
   ],
   "fallos": [],
-  "leido": "2026-10-25 18:25 UTC"
+  "leido": "2026-10-25 18:52 UTC"
  }
 }

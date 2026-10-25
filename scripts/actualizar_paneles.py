@@ -213,7 +213,7 @@ def leer_watchlist():
     salida = {"fuente": "https://finance.yahoo.com/", "nivel": "S", "valores": [], "fallos": []}
     for v in lista:
         try:
-            d = json.loads(descargar(URL_YAHOO.format(s=urllib.request.quote(v["yahoo"])) .replace("range=5d", "range=1y")))["chart"]["result"][0]
+            d = json.loads(descargar(URL_YAHOO.format(s=urllib.request.quote(v["yahoo"])) .replace("range=5d", "range=1y") + "&events=div"))["chart"]["result"][0]
             pares = [(datetime.fromtimestamp(t, timezone.utc).date(), c) for t, c in zip(d["timestamp"], d["indicators"]["quote"][0]["close"]) if c]
             if len(pares) < 2:
                 raise ValueError("menos de 2 cierres")
@@ -222,11 +222,14 @@ def leer_watchlist():
             def desde(dias):
                 previos = [c for f, c in pares if f <= hoy - timedelta(days=dias)]
                 return round((ultimo / previos[-1] - 1) * 100, 2) if previos else None
+            repartos = [x["amount"] for x in ((d.get("events") or {}).get("dividends") or {}).values()
+                        if datetime.fromtimestamp(x["date"], timezone.utc).date() > hoy - timedelta(days=365)]
+            div12 = round(sum(repartos) / ultimo * 100, 2) if repartos else None   # dividendos de los últimos 12 meses / precio actual
             anio = [c for f, c in pares if f.year < hoy.year]
             ytd = round((ultimo / (anio[-1] if anio else pares[0][1]) - 1) * 100, 2)
             salida["valores"].append({"ticker": v["ticker"], "nombre": v["nombre"], "categoria": v.get("categoria", "Otros"), "precio": round(ultimo, 2),
                                       "moneda": d["meta"].get("currency"), "fecha": pares[-1][0].isoformat(),
-                                      "cambio_1d": round((pares[-1][1] / pares[-2][1] - 1) * 100, 2), "cambio_1s": desde(7), "cambio_3m": desde(91), "ytd": ytd})
+                                      "cambio_1d": round((pares[-1][1] / pares[-2][1] - 1) * 100, 2), "cambio_1s": desde(7), "cambio_3m": desde(91), "ytd": ytd, "div_12m": div12, "n_repartos": len(repartos)})
         except Exception as e:
             salida["fallos"].append(f"watchlist {v.get('ticker')}: {type(e).__name__}: {e}")
     if not salida["valores"]:
