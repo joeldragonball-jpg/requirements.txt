@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Mi Cerebro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0f17">
+<meta name="color-scheme" content="dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Cerebro">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icono-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/icono-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<script>
+/* iPhone con la app instalada: se quita viewport-fit=cover (bugs de WebKit 237961 y 281063, banda oscura abajo), como en la app de la cartera. */
+if (navigator.standalone === true) {
+  document.documentElement.classList.add("ios-sa");
+  var m = document.querySelector('meta[name="viewport"]');
+  if (m) m.setAttribute("content", m.getAttribute("content").replace(/,?\s*viewport-fit=cover/, ""));
+}
+</script>
+<style>
+:root{--bg:#0b0f17;--card:#141b29;--card2:#19233a;--linea:#25304a;--txt:#eef2fb;--sub:#9aa7c2;--oro:#f1d58a;--sube:#4fe3a1;--baja:#ff6b7d;--azul:#6ea8ff;--ambar:#ffb15c;--r:20px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{background:radial-gradient(900px 500px at 85% -10%,#1d2a52 0,transparent 60%),radial-gradient(700px 400px at -10% 30%,#2a1d4a55 0,transparent 60%),var(--bg)}
+.app{max-width:480px;height:100dvh;margin:0 auto;display:flex;flex-direction:column;position:relative}
+header{display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top) + 14px) 18px 6px}
+header h1{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--sub);margin:0;font-weight:600}
+header .fecha{font-size:24px;font-weight:700;margin-top:2px;letter-spacing:-.01em}
+.btn-ico{width:44px;height:44px;border-radius:14px;background:var(--card);border:1px solid var(--linea);display:grid;place-items:center;color:var(--txt);cursor:pointer;transition:transform .15s}
+.btn-ico:active{transform:scale(.92)}
+main{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:8px 16px 24px;scroll-behavior:smooth}
+main::-webkit-scrollbar{display:none}
+.vista{animation:entra .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes entra{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sube{color:var(--sube)}.baja{color:var(--baja)}.neutro{color:var(--sub)}
+.card{background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--linea);border-radius:var(--r);padding:14px;margin-bottom:12px;opacity:0;animation:sube-card .5s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i,0)*70ms)}
+@keyframes sube-card{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+.titulo-sec{display:flex;align-items:baseline;justify-content:space-between;margin:16px 4px 8px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);font-weight:600}
+.titulo-sec a{color:var(--oro);text-transform:none;letter-spacing:0;font-size:13px;text-decoration:none;cursor:pointer}
+.hero{display:flex;gap:16px;align-items:center;background:linear-gradient(135deg,#2a3a78,#1b2347 60%,#2d1f55);border-color:#3c4d92}
+.hero small{color:#bcc7ec;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.hero h2{font-size:19px;margin:4px 0 6px;line-height:1.25}
+.hero p{margin:0;color:#c9d2f0;font-size:14px}
+.anillo{position:relative;width:92px;height:92px;flex:none}
+.anillo svg{transform:rotate(-90deg)}
+.anillo circle{fill:none;stroke-width:9;stroke-linecap:round}
+.anillo .fondo{stroke:#ffffff1f}
+.anillo .prog{stroke:var(--oro);stroke-dasharray:264;stroke-dashoffset:264;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1)}
+.anillo .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1;gap:3px}
+.anillo .num b{font-size:28px}.anillo .num span{font-size:11px;color:#bcc7ec;display:block}
+.rejilla{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mini{padding:14px;margin:0}
+.mini .sim{font-size:13px;color:var(--sub);font-weight:600;display:flex;justify-content:space-between}
+.mini .precio{font-size:23px;font-weight:700;margin:6px 0 8px;letter-spacing:-.02em}
+.medidor{height:6px;border-radius:6px;background:#ffffff14;position:relative;overflow:hidden}
+.medidor i{position:absolute;top:0;bottom:0;border-radius:6px;width:0;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.chip-cambio{font-size:13px;font-weight:700}
+.carril{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 8px;margin:0 -16px;padding-left:16px;padding-right:16px;scroll-snap-type:x mandatory}
+.carril::-webkit-scrollbar{display:none}
+.pildora{flex:none;scroll-snap-align:start;min-width:138px;background:var(--card);border:1px solid var(--linea);border-radius:18px;padding:12px 14px}
+.pildora .n{font-size:12px;color:var(--sub);font-weight:600}.pildora .v{font-size:21px;font-weight:700;margin:4px 0 2px;letter-spacing:-.01em}.pildora .p{font-size:12px}
+.evento{display:flex;gap:14px;align-items:center;padding:12px 14px;margin-bottom:10px;background:var(--card);border:1px solid var(--linea);border-radius:18px}
+.dia{flex:none;width:52px;text-align:center;border-radius:14px;padding:6px 0;background:#ffffff0d}
+.dia b{display:block;font-size:22px;line-height:1}.dia span{font-size:11px;color:var(--sub);text-transform:uppercase}
+.evento h4{margin:0 0 3px;font-size:15px;line-height:1.25}.evento p{margin:0;font-size:13px;color:var(--sub)}
+.pun{width:10px;height:10px;border-radius:50%;flex:none}
+.alto{background:var(--baja);box-shadow:0 0 12px var(--baja)}.medio{background:var(--ambar)}.bajo{background:var(--azul)}
+.chips{display:flex;gap:8px;overflow-x:auto;margin:0 -16px 14px;padding:0 16px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:9px 15px;border-radius:999px;border:1px solid var(--linea);background:var(--card);color:var(--sub);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s}
+.chip.on{background:var(--oro);border-color:var(--oro);color:#241b00}
+.barra-fila{display:grid;grid-template-columns:78px 1fr 104px;gap:10px;align-items:center;margin:11px 0;font-size:14px}
+.barra-fila .nom{color:var(--sub)}.barra-fila .val{text-align:right;font-weight:700;white-space:nowrap}
+.barra{height:10px;border-radius:10px;background:#ffffff12;overflow:hidden}.barra i{display:block;height:100%;width:0;border-radius:10px;background:linear-gradient(90deg,var(--azul),#9a7bff);transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.aviso{font-size:12px;color:var(--ambar)}
+.nota{display:flex;gap:12px;margin-bottom:12px;padding:14px;background:var(--card);border:1px solid var(--linea);border-radius:18px}
+.nota .pt{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:16px;background:conic-gradient(var(--oro) calc(var(--n)*10%),#ffffff14 0)}
+.nota .pt span{width:32px;height:32px;border-radius:50%;background:var(--card);display:grid;place-items:center}
+.nota h4{margin:0 0 4px;font-size:15px;line-height:1.3}.nota .meta{font-size:12px;color:var(--sub)}
+.nota .mas{display:none;margin-top:8px;font-size:14px;color:#c6cfe6}.nota.abierta .mas{display:block;animation:entra .3s}
+.etq{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;background:#ffffff14;color:var(--sub);margin-right:6px}
+.avatar{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:16px;color:#10131c}
+.voz{display:flex;gap:12px;padding:14px;margin-bottom:12px;background:var(--card);border:1px solid var(--linea);border-radius:18px}
+.voz h4{margin:0 0 2px;font-size:15px}.voz p{margin:6px 0 0;font-size:14px;color:#c6cfe6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.voz.abierta p{-webkit-line-clamp:unset}
+.buscador{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--linea);border-radius:16px;padding:0 14px;margin-bottom:14px}
+.buscador input{flex:1;background:none;border:0;outline:0;color:var(--txt);font-size:16px;padding:14px 0}
+.seg{display:flex;background:var(--card);border-radius:14px;padding:4px;margin-bottom:14px;border:1px solid var(--linea)}
+.seg button{flex:1;padding:10px;border:0;border-radius:10px;background:none;color:var(--sub);font-weight:700;font-size:14px;cursor:pointer}
+.seg button.on{background:var(--card2);color:var(--oro)}
+.item-md{display:block;padding:13px 14px;margin-bottom:10px;background:var(--card);border:1px solid var(--linea);border-radius:16px;color:var(--txt);text-decoration:none}
+.item-md small{color:var(--sub)}
+nav{display:flex;padding:8px 8px calc(env(safe-area-inset-bottom) + 8px);background:#0d1320ee;backdrop-filter:blur(14px);border-top:1px solid var(--linea)}
+nav button{flex:1;background:none;border:0;color:var(--sub);display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:6px 0;cursor:pointer;position:relative;transition:color .2s}
+nav button svg{transition:transform .25s}
+nav button.on{color:var(--oro)}nav button.on svg{transform:translateY(-3px) scale(1.12)}
+nav button.on::after{content:"";position:absolute;top:-9px;width:28px;height:3px;border-radius:3px;background:var(--oro);animation:entra .3s}
+.cinta{overflow:hidden;white-space:nowrap;border-radius:14px;background:var(--card);border:1px solid var(--linea);margin-bottom:14px;padding:9px 0;font-size:13px}
+.cinta div{display:inline-block;animation:marcha 40s linear infinite}
+@keyframes marcha{to{transform:translateX(-50%)}}
+.cinta span{margin-right:26px;font-weight:600}
+#busqueda{position:absolute;inset:0;background:#0b0f17f2;backdrop-filter:blur(10px);z-index:10;padding:calc(env(safe-area-inset-top) + 16px) 16px;overflow-y:auto;display:none}
+#busqueda.on{display:block;animation:entra .25s}
+.mas{display:none;margin-top:10px;font-size:14px;color:#c6cfe6;line-height:1.5}
+.abierta>.mas,.abierta .mas{display:block;animation:entra .3s}
+.flecha{flex:none;color:var(--sub);transition:transform .25s;font-size:18px;align-self:center}
+.abierta .flecha{transform:rotate(180deg)}
+.enlace{display:inline-block;margin-top:10px;padding:9px 14px;border-radius:12px;background:var(--oro);color:#241b00!important;font-weight:700;font-size:14px;text-decoration:none}
+.meta2{font-size:12px;color:var(--sub);margin-top:6px}
+.pie{font-size:12px;color:var(--sub);text-align:center;margin:18px 0 6px}
+#splash{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+  background:radial-gradient(700px 480px at 70% 0,#1d2a52 0,transparent 60%),radial-gradient(600px 400px at 0 90%,#2a1d4a66 0,transparent 60%),#0b0f17;transition:opacity .7s ease,transform .7s ease}
+#splash.fuera{opacity:0;transform:scale(1.06);pointer-events:none}
+#splash .logo{width:132px;height:132px;animation:aparece 1s cubic-bezier(.2,.8,.2,1) both}
+#splash .giro{transform-origin:60px 60px;animation:gira 7s linear infinite}
+#splash .giro2{transform-origin:60px 60px;animation:gira 11s linear infinite reverse}
+#splash .nucleo{transform-origin:60px 60px;animation:late 1.8s ease-in-out infinite}
+#splash .nombre{font-size:28px;font-weight:800;letter-spacing:-.01em;animation:sube-card .9s .25s cubic-bezier(.2,.8,.2,1) both}
+#splash .estado{font-size:13px;color:var(--sub);letter-spacing:.08em;text-transform:uppercase;animation:sube-card .9s .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes aparece{from{opacity:0;transform:scale(.6) rotate(-40deg)}to{opacity:1;transform:none}}
+@keyframes gira{to{transform:rotate(360deg)}}
+@keyframes late{50%{transform:scale(1.22)}}
+.ios-sa .app{position:fixed;inset:0;height:auto;padding-top:env(safe-area-inset-top,0px)}
+.ios-sa header{padding-top:10px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.card{opacity:1}}
+</style>
+</head>
+<body>
+<div id="splash"><svg class="logo" viewBox="0 0 120 120" aria-hidden="true"><defs>
+ <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#6ea8ff"/><stop offset="1" stop-color="#9a7bff"/></linearGradient>
+ <linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#f1d58a"/><stop offset="1" stop-color="#ff9ad5"/></linearGradient>
+ <radialGradient id="g3"><stop offset="0" stop-color="#fff6d9"/><stop offset=".55" stop-color="#f1d58a"/><stop offset="1" stop-color="#c79a3a"/></radialGradient></defs>
+ <g class="giro"><ellipse cx="60" cy="60" rx="41" ry="16" fill="none" stroke="url(#g1)" stroke-width="4.5" transform="rotate(-45 60 60)"/><circle cx="26" cy="38" r="4.2" fill="#9a7bff"/></g>
+ <g class="giro2"><ellipse cx="60" cy="60" rx="41" ry="16" fill="none" stroke="url(#g2)" stroke-width="4.5" transform="rotate(45 60 60)"/><circle cx="94" cy="38" r="4.2" fill="#ff9ad5"/></g>
+ <ellipse cx="60" cy="60" rx="41" ry="16" fill="none" stroke="#4fe3a1" stroke-opacity=".55" stroke-width="3.5"/>
+ <circle class="nucleo" cx="60" cy="60" r="11.5" fill="url(#g3)"/></svg>
+ <div class="nombre">Mi Cerebro</div><div class="estado">Cargando datos…</div></div>
+<div class="app">
+  <header><div><h1>Mi Cerebro</h1><div class="fecha" id="fecha"></div></div><div class="btn-ico" id="bbus" aria-label="Buscar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></div></header>
+  <main id="main"></main>
+  <nav id="nav"></nav>
+  <div id="busqueda"><div class="buscador"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9aa7c2" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" placeholder="Busca tipos, voces, noticias, eventos…" autocomplete="off"><span id="cerrar" style="color:var(--oro);font-weight:700;cursor:pointer">Cerrar</span></div><div id="resultados"></div></div>
+</div>
+<script>
+let D = null;
+const HOY = new Date(); HOY.setHours(12, 0, 0, 0);
+const MES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'], DIA = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+const esc = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fm = (v, d = 2) => v == null ? '—' : v.toLocaleString('es-ES', {minimumFractionDigits: d, maximumFractionDigits: d, useGrouping: 'always'});
+const dias = iso => Math.round((new Date(iso + 'T12:00:00') - HOY) / 86400000);
+let EUR = null, MON = '', PRE = '$'; const conv = v => EUR ? v / EUR : v;
+const dec = v => { v = conv(v); return v >= 1000 ? 0 : v >= 1 ? 2 : 4; };
+const precio = v => PRE + fm(conv(v), dec(v)) + MON;
+const signo = v => (v > 0 ? '+' : '') + fm(v, 1) + ' %';
+const cls = v => Math.abs(v) < 0.05 ? 'neutro' : v > 0 ? 'sube' : 'baja';
+const ICO = {
+  hoy: '<path d="M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>', mercado: '<path d="M3 17l5-5 4 4 8-9"/><path d="M15 7h5v5"/>',
+  agenda: '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/>', noticias: '<path d="M5 4h11a3 3 0 013 3v13H7a3 3 0 01-3-3V5a1 1 0 011-1z"/><path d="M8 9h8M8 13h8M8 17h5"/>',
+  cerebro: '<path d="M9 4a3 3 0 00-3 3 3 3 0 00-2 5 3 3 0 002 5 3 3 0 006 0V4a3 3 0 00-3 0zM15 4a3 3 0 013 3 3 3 0 012 5 3 3 0 01-2 5 3 3 0 01-6 0"/>'};
+const TABS = [['hoy','Hoy'],['mercado','Mercado'],['agenda','Agenda'],['noticias','Noticias'],['cerebro','Cerebro']];
+let tab = 'hoy', filtroAg = 'todos', filtroNo = 'todas', segCer = 'voces';
+
+document.getElementById('fecha').textContent = DIA[HOY.getDay()][0].toUpperCase() + DIA[HOY.getDay()].slice(1) + ' ' + HOY.getDate() + ' ' + MES[HOY.getMonth()];
+document.getElementById('nav').innerHTML = TABS.map(([id, n]) => `<button data-t="${id}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICO[id]}</svg>${n}</button>`).join('');
+
+function contar(){ // animación: los números suben hasta su valor
+  document.querySelectorAll('[data-c]').forEach(el => {
+    const fin = parseFloat(el.dataset.c), dec = +el.dataset.d || 0, pre = el.dataset.p || '', suf = el.dataset.s || '', t0 = performance.now();
+    const paso = t => { const k = Math.min(1, (t - t0) / 900), e = 1 - Math.pow(1 - k, 3); el.textContent = pre + fm(fin * e, dec) + suf; if (k < 1) requestAnimationFrame(paso); };
+    requestAnimationFrame(paso);
+  });
+  setTimeout(() => {
+    document.querySelectorAll('[data-w]').forEach(el => el.style.width = el.dataset.w);
+    document.querySelectorAll('.prog').forEach(el => el.style.strokeDashoffset = el.dataset.o);
+  }, 80);
+}
+const cab = (t, a) => `<div class="titulo-sec"><span>${t}</span>${a ? `<a data-ir="${a[1]}">${a[0]} ›</a>` : ''}</div>`;
+const IMP = {alto: 'Impacto alto', medio: 'Impacto medio', bajo: 'Impacto bajo'};
+const fila = (e, i) => { const d = new Date(e.fecha + 'T12:00:00'), n = dias(e.fecha), h = e.hasta ? new Date(e.hasta + 'T12:00:00') : null;
+  return `<div class="evento card" style="--i:${i};margin-bottom:10px;flex-wrap:wrap" data-abre><div class="dia"><b>${d.getDate()}</b><span>${MES[d.getMonth()]}</span></div><div style="flex:1;min-width:0"><h4>${esc(e.titulo)}</h4><p>${n === 0 ? 'Hoy' : n === 1 ? 'Mañana' : 'En ' + n + ' días'}${e.aprox ? ' · fecha aproximada' : ''}</p></div><span class="pun ${e.impacto}"></span><span class="flecha">⌄</span>
+  <div class="mas" style="flex-basis:100%"><b>Qué se espera:</b> ${esc(e.detalle) || 'Sin más detalle.'}${h ? `<div class="meta2">Hasta el ${h.getDate()} ${MES[h.getMonth()]}</div>` : ''}<div class="meta2">${IMP[e.impacto] || ''}${e.aprox ? ' · fecha sin confirmar' : ' · fecha confirmada'}</div>${e.fuente ? `<a class="enlace" target="_blank" rel="noopener" href="${esc(e.fuente)}">Abrir la fuente ›</a>` : ''}</div></div>`; };
+
+const valA = a => a.precio_eur != null ? a.precio_eur : conv(a.precio);
+const decV = v => v >= 1000 ? 0 : v >= 1 ? 2 : 4;
+const precioA = a => PRE + fm(valA(a), decV(valA(a))) + MON;
+const petroleoHTML = i0 => { const P = D.petroleo; if (!P) return ''; const L = Object.values(P);
+  return cab('Petróleo (barril)') + `<div class="rejilla">${L.map((p, i) => `<div class="card mini" style="--i:${i0 + i}"><div class="sim"><span>${esc(p.nombre.split(' ')[0])}</span><span class="chip-cambio ${cls(p.cambio_1d)}">${p.cambio_1d > 0 ? '▲' : '▼'} ${signo(p.cambio_1d)}</span></div>
+   <div class="precio" data-c="${p.valor}" data-d="2" data-p="$">0</div><div class="meta2" style="margin:0">${EUR ? '≈ ' + fm(p.valor / EUR, 2) + ' € · ' : ''}futuro · ${esc(p.fecha.slice(5))}</div></div>`).join('')}</div>`; };
+function vHoy(){
+  const ev = D.eventos, grande = ev.find(e => e.impacto === 'alto' && !e.aprox) || ev[0] || {titulo: 'Sin eventos próximos', detalle: '', fecha: HOY.toISOString().slice(0, 10)}, dd = Math.max(0, dias(grande.fecha)), off = Math.round(264 * (dd / 14 > 1 ? 1 : dd / 14));
+  const cinta = [...D.mercado.map(a => `${a.simbolo} ${precioA(a)} <b class="${cls(a.cambio_24h)}">${signo(a.cambio_24h)}</b>`), ...Object.values(D.petroleo || {}).map(p => `${esc(p.nombre.split(' ')[0])} $${fm(p.valor, 2)} <b class="${cls(p.cambio_1d)}">${signo(p.cambio_1d)}</b>`), ...D.indices.map(i => `${i.nombre} ${fm(i.valor, 0)} <b class="${cls(i.cambio_1d)}">${signo(i.cambio_1d)}</b>`)].map(t => `<span>${t}</span>`).join('');
+  const noti = (D.noticias || [])[0];
+  return `<div class="vista">
+  <div class="card hero" style="--i:0"><div style="flex:1"><small>Lo más importante ahora</small><h2>${esc(grande.titulo)}</h2><p>${esc(grande.detalle.split('. ')[0]).slice(0, 110)}</p></div>
+   <div class="anillo"><svg width="92" height="92"><circle class="fondo" cx="46" cy="46" r="42"/><circle class="prog" cx="46" cy="46" r="42" data-o="${off}"/></svg><div class="num"><div><b data-c="${dd}">0</b><span>${dd === 1 ? 'día' : 'días'}</span></div></div></div></div>
+  <div class="cinta"><div>${cinta}${cinta}</div></div>
+  ${cab('Digital assets', ['Mercado', 'mercado'])}
+  <div class="rejilla">${D.mercado.map((a, i) => `<div class="card mini" style="--i:${i + 1}"><div class="sim"><span>${a.simbolo}</span><span class="chip-cambio ${cls(a.cambio_24h)}">${a.cambio_24h > 0 ? '▲' : '▼'} ${signo(a.cambio_24h)}</span></div>
+   <div class="precio" data-c="${valA(a)}" data-d="${decV(valA(a))}" data-p="${PRE}" data-s="${MON}">0</div><div class="medidor"><i style="${a.cambio_24h >= 0 ? 'left:50%;background:var(--sube)' : 'right:50%;background:var(--baja)'}" data-w="${Math.min(50, Math.abs(a.cambio_24h) * 12)}%"></i></div></div>`).join('')}</div>
+  ${petroleoHTML(5)}
+  ${cab('Tipos de interés', ['Ver todos', 'mercado'])}
+  <div class="carril">${D.tipos.map(t => `<div class="pildora"><div class="n">${esc(t.pais)}</div><div class="v">${esc(t.valor.replace(' %', '%'))}</div><div class="p ${t.cambio_pb > 0 ? 'baja' : 'sube'}">${t.cambio_pb == null ? '' : (t.cambio_pb > 0 ? '▲ +' : '▼ ') + t.cambio_pb + ' pb'} <span class="neutro">· ${(t.ultimo_cambio || '').slice(0, 7)}</span></div></div>`).join('')}</div>
+  ${cab('Próximos eventos', ['Agenda', 'agenda'])}${ev.slice(0, 3).map((e, i) => fila(e, i)).join('')}
+  ${noti ? cab('Última noticia importante', ['Noticias', 'noticias']) + notaHTML(noti, 0) : ''}
+  <div class="pie">Datos públicos · actualizado ${esc(D.generado || D.leido || '')}${EUR ? ' · precios en € al cambio del BCE (' + fm(EUR, 4) + ' USD/€, ' + D.eur.fecha + ')' : ''}</div></div>`;
+}
+function vMercado(){
+  const maxT = 14, bar = (nom, num, txt, i) => `<div class="barra-fila"><span class="nom">${esc(nom)}</span><div class="barra"><i data-w="${Math.max(4, num)}%"></i></div><span class="val">${esc(txt)}</span></div>`;
+  const nombres = {USA: 'EE. UU.', JPN: 'Japón', EUR: 'Zona euro', ESP: 'España', FRA: 'Francia', GBR: 'R. Unido'};
+  return `<div class="vista">
+  <div class="card" style="--i:0"><div class="titulo-sec" style="margin:0 0 6px"><span>Tipos oficiales al día</span></div>${D.tipos.map(t => bar(t.pais, t.num / maxT * 100, t.valor)).join('')}<div class="aviso" style="margin-top:8px;${D.tipos.some(t => t.coincide_radar === false) ? '' : 'color:var(--sube)'}">Se leen solos de cada banco central · ${D.tipos.some(t => t.coincide_radar === false) ? '⚠ hay diferencias con el radar' : '✓ coinciden con el radar'}</div></div>
+  <div class="card" style="--i:1"><div class="titulo-sec" style="margin:0 0 6px"><span>Bono a 10 años</span></div>${D.bonos.map(b => bar(nombres[b.id] || b.id, b.valor / 6 * 100, fm(b.valor, 2) + ' %')).join('')}<div class="aviso" style="margin-top:8px;color:var(--sub)">Último dato publicado de cada país</div></div>
+  ${petroleoHTML(2)}
+  ${cab('Bolsas')}<div class="rejilla">${D.indices.map((x, i) => `<div class="card mini" style="--i:${i + 2}"><div class="sim"><span>${esc(x.nombre)}</span></div><div class="precio" data-c="${x.valor}" data-d="0">0</div><div class="chip-cambio ${cls(x.cambio_1d)}">${x.cambio_1d > 0 ? '▲' : '▼'} ${signo(x.cambio_1d)} <span class="neutro" style="font-weight:500">· ${x.fecha.slice(5)}</span></div></div>`).join('')}</div>
+  <div class="pie">Índices y petróleo (futuros): Yahoo Finance [S, referencia no oficial] · barril en dólares</div></div>`;
+}
+function vAgenda(){
+  const lista = D.eventos.filter(e => filtroAg === 'todos' || e.impacto === filtroAg);
+  return `<div class="vista"><div class="chips">${[['todos','Todos'],['alto','Alto impacto'],['medio','Medio'],['bajo','Bajo']].map(([k, n]) => `<div class="chip ${filtroAg === k ? 'on' : ''}" data-fa="${k}">${n}</div>`).join('')}</div>${lista.map((e, i) => fila(e, i)).join('') || '<div class="pie">Sin eventos</div>'}</div>`;
+}
+function notaHTML(n, i){
+  return `<div class="nota card" style="--i:${i};padding:14px" data-abre><div class="pt" style="--n:${n.nota}"><span>${n.nota}</span></div><div style="flex:1"><h4>${esc(n.titulo)}</h4><div class="meta"><span class="etq">${esc(n.tema)}</span>${esc(n.fecha.replace('T', ' '))}</div><div class="mas">${esc(n.resumen)}<br><br><b>Por qué importa:</b> ${esc(n.por_que)}<div class="meta2">${esc(n.fuente)}</div><a class="enlace" target="_blank" rel="noopener" href="${esc(n.url)}">Leer la noticia ›</a></div></div></div>`;
+}
+function vNoticias(){
+  const temas = [...new Set(D.noticias.map(n => n.tema))].slice(0, 4), lista = D.noticias.filter(n => filtroNo === 'todas' || (filtroNo === 'top' ? n.nota >= 9 : n.tema === filtroNo));
+  return `<div class="vista"><div class="chips"><div class="chip ${filtroNo === 'todas' ? 'on' : ''}" data-fn="todas">Todas</div><div class="chip ${filtroNo === 'top' ? 'on' : ''}" data-fn="top">Urgentes (9+)</div>${temas.map(t => `<div class="chip ${filtroNo === t ? 'on' : ''}" data-fn="${esc(t)}">${esc(t)}</div>`).join('')}</div>${lista.map((n, i) => notaHTML(n, i)).join('')}<div class="pie">Toca una noticia para ver el resumen · nota 1-10 del bot</div></div>`;
+}
+let NIV = {};
+const COL = {P: '#4fe3a1', D: '#6ea8ff', S: '#ffb15c', C: '#ff9ad5', R: '#c4a6ff', E: '#9aa7c2'};
+const vozHTML = (v, i) => `<div class="voz card" style="--i:${i};padding:14px;margin-bottom:12px" data-abre><div class="avatar" style="background:${COL[v.nivel] || '#9aa7c2'}">${esc(v.quien.trim()[0])}</div><div style="flex:1"><h4>${esc(v.quien)}</h4><div class="meta" style="font-size:12px;color:var(--sub)"><span class="etq">Nivel ${esc(v.nivel)}</span><span class="etq">${esc(v.conf)}</span>${esc(v.cuando)}</div><p>${esc(v.texto)}</p><div class="mas">${NIV[v.nivel] ? `<div class="meta2"><b>Nivel ${esc(v.nivel)}:</b> ${esc(NIV[v.nivel][0])}. ${esc(NIV[v.nivel][2])}</div>` : ''}${v.plazo ? `<div class="meta2"><b>Plazo prometido:</b> ${esc(v.plazo.prometido)} · ${esc(v.plazo.estado)}${v.plazo.resultado ? ' · ' + esc(v.plazo.resultado) : ''}</div>` : ''}${v.video ? `<div class="meta2"><b>Visto en:</b> ${esc(v.video.canal)}, ${esc(v.video.fecha)}${v.video.min ? ' (min ' + esc(v.video.min) + ')' : ''}</div>` : ''}${v.nota ? `<div class="meta2">${esc(v.nota).slice(0, 320)}</div>` : ''}${v.fuente && v.fuente.url ? `<a class="enlace" target="_blank" rel="noopener" href="${esc(v.fuente.url)}">Fuente: ${esc((v.fuente.n || 'abrir').slice(0, 40))} ›</a>` : ''}</div></div></div>`;
+const mdHTML = (x, i) => `<div class="item-md card" style="--i:${i};padding:13px 14px;margin-bottom:10px;display:flex;flex-wrap:wrap;gap:6px" data-abre><div style="flex:1;min-width:0"><small>${esc(x.fecha)}</small><div style="margin-top:3px;font-weight:600">${esc(x.titulo)}</div></div><span class="flecha">⌄</span><div class="mas" style="flex-basis:100%">${esc(x.resumen) || 'Sin resumen.'}<br><a class="enlace" target="_blank" rel="noopener" href="https://github.com/joeldragonball-jpg/requirements.txt/blob/main/${esc(x.ruta)}">Abrir el informe completo ›</a></div></div>`;
+function vCerebro(){
+  const cuerpo = segCer === 'voces' ? D.voces.map(vozHTML).join('') : segCer === 'videos' ? D.videos.map(mdHTML).join('') : [...D.informes, ...D.investigacion].map(mdHTML).join('');
+  return `<div class="vista"><div class="buscador" id="abrebus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9aa7c2" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span style="color:var(--sub);padding:14px 0">Buscar en todo el Cerebro…</span></div>
+  <div class="seg">${[['voces','Voces'],['videos','Vídeos'],['informes','Informes']].map(([k, n]) => `<button class="${segCer === k ? 'on' : ''}" data-sc="${k}">${n}</button>`).join('')}</div>${cuerpo}<div class="pie">Voces: nivel P = fuente primaria · D = declaración localizada · S = prensa</div></div>`;
+}
+const VISTAS = {hoy: vHoy, mercado: vMercado, agenda: vAgenda, noticias: vNoticias, cerebro: vCerebro};
+function pintar(){
+  document.getElementById('main').innerHTML = VISTAS[tab]();
+  document.querySelectorAll('#nav button').forEach(b => b.classList.toggle('on', b.dataset.t === tab));
+  contar();
+}
+document.addEventListener('click', e => {
+  if (e.target.closest('a')) return;
+  const t = e.target.closest('[data-t],[data-ir],[data-fa],[data-fn],[data-sc],[data-abre],#abrebus,#bbus,#cerrar');
+  if (!t) return;
+  if (t.dataset.t) { tab = t.dataset.t; document.getElementById('main').scrollTo(0, 0); pintar(); }
+  else if (t.dataset.ir) { tab = t.dataset.ir; document.getElementById('main').scrollTo(0, 0); pintar(); }
+  else if (t.dataset.fa) { filtroAg = t.dataset.fa; pintar(); }
+  else if (t.dataset.fn) { filtroNo = t.dataset.fn; pintar(); }
+  else if (t.dataset.sc) { segCer = t.dataset.sc; pintar(); }
+  else if (t.hasAttribute('data-abre')) t.classList.toggle('abierta');
+  else if (t.id === 'abrebus' || t.id === 'bbus') { document.getElementById('busqueda').classList.add('on'); document.getElementById('q').focus(); }
+  else if (t.id === 'cerrar') document.getElementById('busqueda').classList.remove('on');
+});
+const INDICE = () => [...D.voces.map(v => ({k: 'Voz', t: v.quien, s: v.texto})), ...D.noticias.map(n => ({k: 'Noticia', t: n.titulo, s: n.resumen})), ...D.eventos.map(e => ({k: 'Evento', t: e.titulo, s: e.detalle})),
+  ...D.tipos.map(t => ({k: 'Tipo', t: t.pais + ' ' + t.valor, s: t.banco})), ...[...D.informes, ...D.investigacion, ...D.videos].map(x => ({k: 'Informe', t: x.titulo, s: x.fecha + ' ' + (x.resumen || '')}))];
+const plano = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+document.getElementById('q').addEventListener('input', e => {
+  const q = plano(e.target.value.trim()); const r = q.length < 2 ? [] : INDICE().filter(x => plano(x.t + ' ' + x.s).includes(q)).slice(0, 30);
+  document.getElementById('resultados').innerHTML = r.length ? r.map(x => `<div class="item-md" style="margin-bottom:10px"><span class="etq">${x.k}</span><div style="margin-top:6px;font-weight:600">${esc(x.t)}</div><small>${esc(String(x.s).slice(0, 120))}</small></div>`).join('') : `<div class="pie">${q.length < 2 ? 'Escribe al menos 2 letras' : 'Sin resultados'}</div>`;
+});
+const RAW = 'https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/datos/noticias/noticias.json';
+const sinCartera = t => /cartera|tesis|tu XRP|tu XLM/i.test(t || '') ? '' : (t || '');
+const repintar = () => { if (!document.querySelector('.abierta') && !document.getElementById('busqueda').classList.contains('on')) pintar(); };
+function vivo(){   // al abrir: noticias recientes y precios cripto en euros, sin bloquear la pantalla
+  fetch(RAW, {cache: 'no-cache'}).then(r => r.json()).then(j => {
+    const l = (j.noticias || []).filter(x => +x.puntuacion >= 7).sort((a, b) => b.fecha.localeCompare(a.fecha)).slice(0, 25)
+      .map(x => ({titulo: x.titulo, resumen: sinCartera(x.resumen), por_que: sinCartera(x.por_que), tema: x.tema, nota: +x.puntuacion, fuente: x.fuente, fecha: x.fecha.slice(0, 16), url: x.url}));
+    if (l.length){ D.noticias = l; if (tab === 'noticias' || tab === 'hoy') repintar(); }
+  }).catch(() => {});
+  fetch('https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin,ethereum&vs_currencies=eur&include_24hr_change=true').then(r => r.json()).then(j => {
+    const m = {XRP: 'ripple', XLM: 'stellar', BTC: 'bitcoin', ETH: 'ethereum'};
+    D.mercado.forEach(a => { const x = j[m[a.simbolo]]; if (x && x.eur){ a.precio_eur = x.eur; if (x.eur_24h_change != null) a.cambio_24h = x.eur_24h_change; } });
+    if (tab === 'hoy') repintar();
+  }).catch(() => {});
+}
+function iniciar(d){
+  D = d; EUR = D.eur && D.eur.tipo ? D.eur.tipo : null; MON = EUR ? ' €' : ''; PRE = EUR ? '' : '$'; NIV = D.niveles || {};
+  D.noticias = D.noticias || []; D.eventos = (D.eventos || []).filter(e => dias(e.hasta || e.fecha) >= 0);
+  pintar(); vivo();
+}
+const t0 = performance.now();
+fetch('data.json').then(r => r.json()).then(d => {
+  setTimeout(() => { iniciar(d); const sp = document.getElementById('splash'); sp.classList.add('fuera'); setTimeout(() => sp.remove(), 800); }, Math.max(0, 1300 - (performance.now() - t0)));
+}).catch(() => { document.querySelector('#splash .estado').textContent = 'Sin conexión ni datos guardados: ábrela una vez con internet'; });
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>
