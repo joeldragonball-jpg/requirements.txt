@@ -170,6 +170,81 @@ if RUTA_REG.exists():
 else:
     aviso("regulacion", "no existe explorador/regulacion.json")
 
+# ---- Voces (explorador/voces.json) y cruce privado con la tesis (privado/voces-tesis.json, solo local)
+RUTA_VOC = RUTA.parent / "voces.json"
+RUTA_TES = RUTA.parent.parent / "privado" / "voces-tesis.json"
+n_voces = 0
+if RUTA_VOC.exists():
+    vz = json.loads(RUTA_VOC.read_text(encoding="utf-8"))
+    niveles, confs = set(vz["niveles"]), set(vz["confirmaciones"])
+    vistos, ids_voz = set(), set()
+    for v in vz["voces"]:
+        n_voces += 1
+        dv = f"voz {v.get('id', '?')}"
+        if v.get("id") in vistos:
+            aviso(dv, "id repetido")
+        vistos.add(v.get("id")); ids_voz.add(v.get("id"))
+        if v.get("nivel") not in niveles:
+            aviso(dv, f"nivel desconocido: {v.get('nivel')}")
+        if v.get("conf") not in confs:
+            aviso(dv, f"confirmación desconocida: {v.get('conf')}")
+        if not re.fullmatch(r"\d{4}(-\d{2}(-\d{2})?)?", str(v.get("cuando", ""))):
+            aviso(dv, f"fecha no válida: {v.get('cuando')}")
+        for k in v.get("capas", []):
+            if k not in ids:
+                aviso(dv, f"capa inexistente: {k}")
+        if not v.get("capas"):
+            aviso(dv, "sin capa")
+        if not v.get("texto") or not empieza_bien(v["texto"]) or not v["texto"].rstrip().endswith((".", "»", ")")):
+            aviso(dv, f"texto sin mayúscula inicial o sin punto final: «{(v.get('texto') or '')[:40]}»")
+        url = (v.get("fuente") or {}).get("url", "")
+        if v.get("nivel") in ("P", "D") and not url:
+            aviso(dv, "nivel P o D sin enlace a la fuente (una declaración localizada necesita saber dónde se localizó)")
+        if url and not url.startswith("https://"):
+            aviso(dv, f"el enlace de la fuente no es https: {url[:40]}")
+        if v.get("nivel") == "P" and v.get("conf") in ("sin_confirmar", "contradicha"):
+            aviso(dv, "un hecho de fuente primaria no puede estar «sin confirmar» o «contradicha»")
+        if v.get("nivel") in ("E", "C") and v.get("conf") == "confirmada":
+            aviso(dv, "una especulación o una afirmación del canal no puede constar como «confirmada»")
+        pz = v.get("plazo")
+        if pz:
+            for k in ("dicho", "prometido"):
+                if k in pz and not re.fullmatch(r"\d{4}(-\d{2}(-\d{2})?)?", str(pz[k])):
+                    aviso(dv, f"plazo con {k} no válido: {pz[k]}")
+            if pz.get("estado") not in ("cumplido", "pendiente", "incumplido", "retrasado", "distinto"):
+                aviso(dv, f"estado de plazo desconocido: {pz.get('estado')}")
+            if pz.get("dicho") and pz.get("prometido") and str(pz["dicho"]) > str(pz["prometido"]):
+                aviso(dv, "plazo: «dicho» es posterior a «prometido»")
+        vid = v.get("video")
+        if vid and vid.get("url") and not vid["url"].startswith("https://"):
+            aviso(dv, "enlace de vídeo no https")
+    # misma persona o institución con la misma cifra en dos declaraciones distintas: aviso de posible duplicado
+    por_texto = {}
+    for v in vz["voces"]:
+        clave = (v["quien"].split(" (")[0], v["cuando"], tuple(sorted(v.get("capas", []))))
+        por_texto.setdefault(clave, []).append(v["id"])
+    for clave, lst in por_texto.items():
+        if len(lst) > 1:
+            aviso("voces", f"posible duplicado ({clave[0]}, {clave[1]}): {', '.join(lst)}")
+    if RUTA_TES.exists():
+        vt = json.loads(RUTA_TES.read_text(encoding="utf-8"))
+        hids = {h["id"] for h in vt["hipotesis"]}
+        for p in vt["pruebas"]:
+            for h in hids:
+                if p["celdas"].get(h) not in ("C", "I", "N"):
+                    aviso(f"tesis prueba {p['id']}", f"celda de {h} sin valor C/I/N")
+            for idv in p["voces"]:
+                if idv not in ids_voz:
+                    aviso(f"tesis prueba {p['id']}", f"voz inexistente: {idv}")
+        for k, pr in vt["premisas"].items():
+            for rol_ in pr["roles"]:
+                if rol_["voz"] not in ids_voz:
+                    aviso(f"tesis premisa {k}", f"voz inexistente: {rol_['voz']}")
+                if rol_["rol"] not in ("apoya", "contradice", "matiza"):
+                    aviso(f"tesis premisa {k}", f"rol desconocido: {rol_['rol']}")
+else:
+    aviso("voces", "no existe explorador/voces.json")
+
 print("\n".join(avisos) if avisos else "Sin avisos.")
 print(f"\n{len(avisos)} aviso(s) en {len(d['capas'])} capas y {len(d['movimientos'])} movimientos.")
 if RUTA_REG.exists():

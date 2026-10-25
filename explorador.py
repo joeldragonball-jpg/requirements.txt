@@ -221,6 +221,14 @@ def _html(conceptos):
         datos["paneles"] = json.loads((CARPETA / "paneles.json").read_text(encoding="utf-8"))
     except Exception:
         datos["paneles"] = None
+    try:                              # voces: declaraciones de personas e instituciones (informes de vídeos y research)
+        datos["voces"] = json.loads((CARPETA / "voces.json").read_text(encoding="utf-8"))
+    except Exception:
+        datos["voces"] = None
+    try:                              # cruce privado de las voces con la tesis: solo existe en tu PC (privado/ no se sube a GitHub)
+        datos["voces_tesis"] = json.loads((RAIZ / "privado" / "voces-tesis.json").read_text(encoding="utf-8"))
+    except Exception:
+        datos["voces_tesis"] = None
     try:                              # exposición soberana por banco (scripts/preparar_bancos_eba.py)
         datos["bancos"] = json.loads((CARPETA / "bancos-eba.json").read_text(encoding="utf-8"))
     except Exception:

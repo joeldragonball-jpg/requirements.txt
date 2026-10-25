@@ -45,7 +45,7 @@ html,body{margin:0;overflow:hidden;background:transparent;color:var(--texto);fon
 .zona.izq,.zona.der{flex-direction:column;flex-wrap:nowrap;justify-content:center;align-content:stretch}
 .zona.bajo{flex-wrap:nowrap;align-items:flex-start}
 .zona.bajo .pi{flex:1 1 0;min-width:0;max-width:340px}
-.zona.izq .pi,.zona.der .pi{font-size:var(--pfl,15.5px);line-height:1.38;padding:14px 16px 11px}
+.zona.izq .pi,.zona.der .pi{font-size:var(--pf,16.5px);line-height:1.38;padding:14px 16px 11px}
 .zona.izq{grid-column:1;grid-row:2}
 .zona.der{grid-column:3;grid-row:2}
 .pi{position:relative;pointer-events:auto;flex:1 1 220px;max-width:400px;min-width:180px;padding:16px 18px 13px;font-size:var(--pf,16.5px);line-height:1.42;color:#e4e9f6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;border-radius:3px 3px 9px 3px;border:1px solid color-mix(in srgb,var(--c) 50%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 28%,#0d1430),color-mix(in srgb,var(--c) 11%,#090e24));box-shadow:0 10px 22px rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.07) inset;opacity:0;transform:translate(var(--fx,0px),var(--fy,0px)) scale(.12) rotate(0deg);transition:transform .75s cubic-bezier(.2,.9,.25,1) var(--d,0ms),opacity .4s ease var(--d,0ms)}
@@ -55,13 +55,15 @@ html,body{margin:0;overflow:hidden;background:transparent;color:var(--texto);fon
 #vistaIzq.abierto .pi{opacity:1;transform:none}
 #vistaIzq.abierto .pi:hover{transform:scale(1.03);z-index:3}
 #vistaIzq.plegando .pi{transition:transform .6s cubic-bezier(.55,0,.9,.35) var(--dc,0ms),opacity .3s ease calc(var(--dc,0ms) + .3s)}
-.pi .pt{font-size:.8em;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 65%,#fff);font-weight:700;margin-bottom:4px}
+.pi .pt{font-size:.85em;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 65%,#fff);font-weight:700;margin-bottom:4px}
 .pi h2{font-size:1.4em;margin:0 0 4px}
 .pi .ficha-ul{font-size:inherit}.pi ul{margin:0;padding-left:18px}.pi li{margin:4px 0}
 .pi .big{display:block;font-size:2em;font-weight:700;line-height:1.1;margin-bottom:2px}
-.pi .sub{color:#a9b6cf;font-size:.88em;margin-top:3px}
-.pi .pts{letter-spacing:.18em;font-size:1.1em}
+.pi .sub{color:#a9b6cf;font-size:.85em;margin-top:3px}
+.pi .pts{letter-spacing:.18em;font-size:1em}
+.pi .nota,.pi .chip,.pi .fuente,.pi .etq{font-size:.85em}   /* escala única de los post-its: título 1,4 · cifra 2 · texto 1 · detalle y etiquetas 0,85 (em de la letra del post-it) */
 .zona.bajo .pi .clamp{-webkit-line-clamp:4}
+#vistaIzq.recorte .zona.top .pi>div:not(.pt):not(.pts):not(.sub){display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
 .zona.bajo .pi .sub.clamp{-webkit-line-clamp:1}
 .pi .clamp{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
 .pi .chips{margin:4px 0 0}
@@ -124,6 +126,13 @@ details.doc .chips{margin:2px 0 6px}
 .radar-comp h4{margin:0 0 6px;font-size:14px;color:var(--oro)}
 .radar-cel.nd{border-style:dashed;background:transparent !important;color:var(--suave);font-weight:400}
 .radar-cel:hover{filter:brightness(1.25)}.radar-cel.on{outline:2px solid var(--oro);outline-offset:1px}
+button.chip{font:inherit;font-size:11px;color:var(--suave);cursor:pointer}
+.vsum{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}.vsum .hecho-t{flex:1 1 100%;min-width:0}
+table.ach{table-layout:fixed;width:100%}table.ach th{font-size:10px;word-break:break-word;vertical-align:bottom}table.ach th:first-child,table.ach td:first-child{width:46%}table.ach td:first-child{word-break:break-word}
+.vlink{color:#8ab4f8;text-decoration:underline}.vsel{background:#0d1430;color:var(--texto);border:1px solid var(--linea);border-radius:4px;padding:2px 6px;font:inherit;font-size:12px;max-width:100%}
+.chip.clic{cursor:pointer;user-select:none}.chip.clic.on{border-color:var(--oro);color:#f1d58a}#btnVoces.on{border-color:var(--oro);color:#f1d58a}.vtabs{margin:8px 0}
+.plz-bar{height:5px;background:rgba(148,163,184,.18);border-radius:3px;margin:6px 0 2px;overflow:hidden}.plz-bar>div{height:100%}
+table.ach td,table.ach th{padding:4px 5px}.ach-f{cursor:pointer}.ach-f:hover{background:rgba(212,168,75,.08)}.ach-n td{background:rgba(15,23,42,.7);padding:8px 10px}
 .contraste{border:1px solid rgba(212,168,75,.45);background:rgba(212,168,75,.06);border-radius:8px;padding:2px 10px 8px;margin:10px 0}
 .contraste h3{border-bottom-color:rgba(212,168,75,.35);color:#f1d58a}
 .contraste details.doc{background:rgba(15,23,42,.7)}
@@ -207,6 +216,7 @@ details.doc .cuerpo{padding:0 11px 10px;color:#cdd6ea;font-size:12.5px}
         <span id="fecha"></span></div>
       <input type="text" id="buscar" placeholder="Buscar (Pontes, OCC, DTCC…)" aria-label="Buscar">
       <label><input type="checkbox" id="soloToken"> Solo los que nombran XRP o XLM</label>
+      <button id="btnVoces" title="Declaraciones de personas e instituciones: nivel, confirmación, plazos, utilidad y tu tesis">🗣 Voces</button>
       <button id="btnPanel" title="Abrir o cerrar el panel de información">☰ Panel</button>
       <button id="btnVolver" title="Volver a la vista general">⌂ Vista general</button>
     </div>
@@ -914,11 +924,204 @@ function listaEventos(padre, lista, conCapa){
   });
 }
 
+// ---- Voces: declaraciones de personas e instituciones (explorador/voces.json) y cruce privado con la tesis (privado/voces-tesis.json, solo en tu PC)
+const VZ = D.voces, VT = D.voces_tesis;
+const VOCES = VZ ? VZ.voces.slice().sort((a, b) => String(b.cuando).localeCompare(String(a.cuando))) : [];
+let vistaVoces = false;
+const vf = {tab: 'dec', niv: {}, conf: '', uso: '', capa: ''};
+const VTABS = [['dec', 'Declaraciones'], ['per', 'Personas'], ['plz', 'Plazos'], ['can', 'Canales'], ['uso', 'Utilidad'], ['red', 'Redes'], ['tes', 'Tesis (privado)']];
+const PLZ = {cumplido: ['Cumplido', '#3fb68b'], pendiente: ['Pendiente', '#d4a84b'], incumplido: ['Incumplido', '#e06c6c'], retrasado: ['Retrasado (el plazo se movió)', '#e0904a'], distinto: ['Distinto de lo dicho', '#a78bfa']};
+const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+const fechaVoz = s => { const p = String(s).split('-'); return p.length === 3 ? `${+p[2]}-${MESES[+p[1] - 1]}-${p[0]}` : p.length === 2 ? `${MESES[+p[1] - 1]}-${p[0]}` : String(s); };
+const aFecha = s => new Date(s.length === 4 ? s + '-12-31' : s.length === 7 ? s + '-28' : s);
+const nombreCapa = id => (capas.find(c => c.id === id) || {nombre: id}).nombre;
+const vNiv = k => (VZ.niveles[k] || [k, '#8a97b0', '']);
+const vConf = k => (VZ.confirmaciones[k] || [k, '#8a97b0']);
+const rolesDe = id => !VT ? [] : Object.keys(VT.premisas).flatMap(p => VT.premisas[p].roles.filter(r => r.voz === id).map(r => ({p, rol: r.rol, nota: r.nota})));
+const porId = id => VOCES.find(v => v.id === id);
+function etiqueta(padre, texto, col, titulo){ const e = H('span', 'etq', padre, texto); e.style.color = col; e.style.borderColor = rgba(col, .6); if (titulo) e.title = titulo; return e; }
+function enlace(padre, texto, url){ if (!/^https:\/\//.test(url || '')){ H('span', '', padre, texto); return; } const a = H('a', 'vlink', padre, texto); a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+const vTexto = v => [v.quien, v.texto, v.nota, v.fuente && v.fuente.n, (v.redes || []).join(' '), (v.tokens || []).join(' '), (v.usos || []).join(' '), (v.capas || []).map(nombreCapa).join(' ')].join(' ').toLowerCase();
+function vPasa(v){ const q = filtros().q;
+  if (q && !vTexto(v).includes(q)) return false;
+  if (vf.niv[v.nivel] === false) return false;
+  if (vf.conf && v.conf !== vf.conf) return false;
+  if (vf.uso && !(v.usos || []).includes(vf.uso)) return false;
+  if (vf.capa && !(v.capas || []).includes(vf.capa)) return false;
+  return true; }
+function vozTarjeta(padre, v, i){
+  const n = vNiv(v.nivel), c = vConf(v.conf);
+  const det = H('details', 'doc entra', padre); det.style.animationDelay = Math.min(i, 12) * 25 + 'ms'; det.style.borderLeft = `3px solid ${n[1]}`;
+  const s = H('summary', 'vsum', det); etiqueta(s, n[0], n[1], n[2]); etiqueta(s, c[0], c[1]);
+  const t = H('span', 'hecho-t', s); H('b', '', t, v.quien); t.appendChild(document.createTextNode(` · ${fechaVoz(v.cuando)} — ${corto(v.texto, 90)}`));
+  const cu = H('div', 'cuerpo', det);
+  H('div', '', cu, v.texto);
+  if (v.nota){ const x = H('div', 'nota', cu, v.nota); x.style.marginTop = '6px'; }
+  const f = H('div', 'fuente', cu); f.style.marginTop = '6px'; f.appendChild(document.createTextNode('Fuente: ')); enlace(f, (v.fuente && v.fuente.n) || 'sin fuente localizada', v.fuente && v.fuente.url);
+  if (v.video){ const g = H('div', 'fuente', cu); g.appendChild(document.createTextNode(`En el vídeo de ${v.video.canal} (${v.video.fecha}${v.video.min ? ', min. ' + v.video.min : ''}) `)); if (v.video.url) enlace(g, '· abrir', v.video.url); }
+  if (v.plazo){ const p = H('div', 'nota', cu); p.style.marginTop = '4px'; p.textContent = `Plazo: ${v.plazo.dicho ? 'dicho ' + fechaVoz(v.plazo.dicho) + ' → ' : ''}prometido ${fechaVoz(v.plazo.prometido)} · ${PLZ[v.plazo.estado][0]}. ${v.plazo.resultado || ''}`; }
+  if (v.plazo && v.plazo.contexto){ const q = H('div', 'nota', cu); q.style.marginTop = '4px'; q.textContent = 'Contexto: ' + v.plazo.contexto; }
+  const ch = H('div', 'chips', cu);
+  [...(v.capas || []).map(nombreCapa), ...(v.redes || []), ...(v.tokens || []), ...(v.usos || [])].forEach(x => H('span', 'chip', ch, x));
+  const rl = rolesDe(v.id);
+  if (rl.length){ const tt = H('div', 'nota', cu); tt.style.cssText = 'margin-top:6px;color:#f1d58a'; tt.textContent = 'Tu tesis (privado): ' + rl.map(r => `premisa (${r.p}) ${r.rol}`).join(' · '); }
+}
+function barraConf(padre, lista){ const cu = {}; lista.forEach(v => cu[v.conf] = (cu[v.conf] || 0) + 1);
+  const b = H('div', 'barra-apilada', padre);
+  Object.keys(VZ.confirmaciones).forEach(k => { if (cu[k]){ const s = H('div', '', b); s.style.flex = cu[k]; s.style.background = vConf(k)[1]; s.title = vConf(k)[0] + ': ' + cu[k]; } });
+  const ley = H('div', 'leyenda', padre);
+  Object.keys(VZ.confirmaciones).forEach(k => { const s = H('span', '', ley); const p = H('span', 'punto', s); p.style.background = vConf(k)[1]; s.appendChild(document.createTextNode(`${vConf(k)[0]}: ${cu[k] || 0}`)); });
+}
+function vocesPestana(padre){
+  const lista = VOCES.filter(vPasa);
+  const barra = H('div', 'chips', padre);
+  Object.keys(VZ.niveles).forEach(k => { const n = vNiv(k), act = vf.niv[k] !== false; const b = H('button', 'chip clic' + (act ? ' on' : ''), barra, n[0]); b.style.borderColor = rgba(n[1], act ? .9 : .3); b.style.color = act ? n[1] : '#6b7a99'; b.title = n[2];
+    b.addEventListener('click', () => { vf.niv[k] = act ? false : true; dibujarPanel(); }); });
+  const fila = H('div', 'chips', padre);
+  const sel2 = (valor, opciones, cambio) => { const s = H('select', 'vsel', fila); opciones.forEach(([v, t]) => { const o = H('option', '', s, t); o.value = v; }); s.value = valor; s.addEventListener('change', () => { cambio(s.value); dibujarPanel(); }); };
+  sel2(vf.conf, [['', 'Cualquier confirmación'], ...Object.keys(VZ.confirmaciones).map(k => [k, vConf(k)[0]])], v => vf.conf = v);
+  const usos = [...new Set(VOCES.flatMap(v => v.usos || []))].sort();
+  sel2(vf.uso, [['', 'Cualquier uso'], ...usos.map(u => [u, u])], v => vf.uso = v);
+  sel2(vf.capa, [['', 'Todas las capas'], ...capas.map(c => [c.id, c.nombre])], v => vf.capa = v);
+  H('p', 'nota', padre, `${lista.length} de ${VOCES.length} voces${filtros().q ? ' · filtradas también por la búsqueda de arriba' : ''}. Pulsa una para ver el texto, la fuente y el minuto del vídeo.`);
+  barraConf(padre, lista);
+  lista.forEach((v, i) => vozTarjeta(padre, v, i));
+}
+function personasPestana(padre){
+  const g = new Map(); VOCES.forEach(v => { const k = v.quien.replace(/\s*\(.*$/, '').trim(); (g.get(k) || g.set(k, []).get(k)).push(v); });
+  const filas = [...g.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]));
+  H('p', 'nota', padre, `${filas.length} personas o instituciones. Se agrupan por nombre; pulsa una para ver todo lo que dijo, en orden de fecha.`);
+  filas.forEach(([nombre, l], i) => {
+    const det = H('details', 'doc entra', padre); det.style.animationDelay = Math.min(i, 12) * 20 + 'ms';
+    const s = H('summary', 'vsum', det); H('b', '', s, nombre); H('span', 'nota', s, ` · ${l.length} ${l.length === 1 ? 'declaración' : 'declaraciones'}`);
+    const niv = [...new Set(l.map(v => v.nivel))]; niv.forEach(k => etiqueta(s, vNiv(k)[0], vNiv(k)[1]));
+    const cu = H('div', 'cuerpo', det);
+    l.slice().sort((a, b) => String(a.cuando).localeCompare(String(b.cuando))).forEach((v, j) => vozTarjeta(cu, v, j));
+  });
+}
+function plazosPestana(padre){
+  const hoy = new Date(D.calendario.hoy), l = VOCES.filter(v => v.plazo).sort((a, b) => aFecha(a.plazo.prometido) - aFecha(b.plazo.prometido));
+  const cu = {}; l.forEach(v => cu[v.plazo.estado] = (cu[v.plazo.estado] || 0) + 1);
+  H('p', 'nota', padre, 'Lo que se dijo que pasaría y cuándo, frente a lo que ha pasado. Sirve para ponderar cada voz con el tiempo: la barra mide cuánto del plazo ha transcurrido.');
+  const ley = H('div', 'leyenda', padre);
+  Object.keys(PLZ).forEach(k => { const s = H('span', '', ley); const p = H('span', 'punto', s); p.style.background = PLZ[k][1]; s.appendChild(document.createTextNode(`${PLZ[k][0]}: ${cu[k] || 0}`)); });
+  l.forEach((v, i) => {
+    const z = v.plazo, col = PLZ[z.estado][1];
+    const det = H('div', 'bloque entra', padre); det.style.borderLeftColor = col; det.style.animationDelay = Math.min(i, 12) * 20 + 'ms';
+    const t = H('div', '', det); H('b', '', t, fechaVoz(z.prometido) + ' · '); t.appendChild(document.createTextNode(`${v.quien}: ${corto(v.texto, 110)}`));
+    const ch = H('div', 'chips', det); etiqueta(ch, PLZ[z.estado][0], col); etiqueta(ch, vNiv(v.nivel)[0], vNiv(v.nivel)[1]); etiqueta(ch, vConf(v.conf)[0], vConf(v.conf)[1]);
+    if (z.dicho){ const ini = aFecha(z.dicho), fin = aFecha(z.prometido), pct = Math.max(0, Math.min(100, (hoy - ini) / (fin - ini) * 100));
+      const b = H('div', 'plz-bar', det); const r = H('div', '', b); r.style.width = pct.toFixed(0) + '%'; r.style.background = col; b.title = `Dicho ${fechaVoz(z.dicho)} → ${fechaVoz(z.prometido)}: ${pct.toFixed(0)} % del plazo`; }
+    H('div', 'nota', det, `${z.dicho ? 'Dicho ' + fechaVoz(z.dicho) + '. ' : ''}${z.resultado || ''}`);
+  });
+}
+function canalesPestana(padre){
+  const g = new Map(); VOCES.filter(v => v.video).forEach(v => (g.get(v.video.canal) || g.set(v.video.canal, []).get(v.video.canal)).push(v));
+  H('p', 'nota', padre, 'Marcador de cada canal con las afirmaciones ya revisadas. No es una nota al canal: solo cuenta lo que se ha comprobado hasta hoy, y cada afirmación está en la pestaña Declaraciones con su fuente.');
+  [...g.entries()].forEach(([canal, l]) => {
+    const b = H('div', 'bloque entra', padre); b.style.borderLeftColor = ORO;
+    H('h3', '', b, canal).style.marginTop = '0';
+    const ok = l.filter(v => v.conf === 'confirmada' || v.conf === 'compatible').length;
+    H('p', '', b, `${l.length} afirmaciones revisadas: ${ok} confirmadas o compatibles con los datos (${Math.round(ok / l.length * 100)} %).`);
+    barraConf(b, l);
+    const niv = {}; l.forEach(v => niv[v.nivel] = (niv[v.nivel] || 0) + 1);
+    const ch = H('div', 'chips', b); Object.keys(niv).forEach(k => etiqueta(ch, `${vNiv(k)[0]}: ${niv[k]}`, vNiv(k)[1]));
+    const meta = (VZ.canales || []).find(c => canal.startsWith(c.nombre.split(' (')[0])); if (meta) H('p', 'nota', b, meta.nota);
+  });
+}
+function utilidadPestana(padre){
+  const bucket = v => (v.nivel === 'E' || v.nivel === 'C' || v.nivel === 'R' || v.conf === 'sin_confirmar' || v.conf === 'contradicha') ? 'op' : (v.plazo && v.plazo.estado === 'pendiente' ? 'plan' : 'hoy');
+  const cols = [['hoy', 'Existe hoy', '#3fb68b'], ['plan', 'Piloto o plan con fecha', '#5aa9e6'], ['op', 'Opinión o sin confirmar', '#e06c6c']];
+  H('p', 'nota', padre, 'Para qué se puede usar una red o un activo, según las voces recogidas: rendimiento, colateral, avales y pagos. «Existe hoy» exige un hecho o una declaración confirmada y sin plazo pendiente.');
+  ['rendimiento', 'colateral', 'avales', 'préstamos', 'pagos', 'repo', 'liquidación', 'datos'].forEach((u, i) => {
+    const l = VOCES.filter(v => (v.usos || []).includes(u));
+    const b = H('div', 'bloque entra', padre); b.style.borderLeftColor = ORO; b.style.animationDelay = i * 25 + 'ms';
+    const h = H('h3', '', b, `${u[0].toUpperCase() + u.slice(1)} (${l.length})`); h.style.marginTop = '0';
+    if (!l.length){ H('p', 'nota', b, 'Ninguna voz recogida todavía sobre este uso. No significa que no exista: no ha salido en los vídeos ni en los informes analizados.'); return; }
+    cols.forEach(([k, t, col]) => { const m = l.filter(v => bucket(v) === k); if (!m.length) return;
+      const cab = H('div', 'nota', b); cab.style.cssText = 'margin-top:6px;font-weight:700;color:' + col; cab.textContent = `${t} (${m.length})`;
+      m.forEach((v, j) => vozTarjeta(b, v, j)); });
+  });
+}
+function redesPestana(padre){
+  const g = new Map(); VOCES.forEach(v => (v.redes || []).forEach(r => (g.get(r) || g.set(r, []).get(r)).push(v)));
+  const filas = [...g.entries()].sort((a, b) => b[1].length - a[1].length);
+  H('p', 'nota', padre, 'Qué redes aparecen en las declaraciones y con qué nivel de evidencia. Que una red se nombre mucho no mide cuánto se usa: para eso están las cifras de abajo.');
+  const s = PAN && PAN.stablecoins;
+  if (s){ const b = H('div', 'bloque entra', padre); b.style.borderLeftColor = '#2ee6a6'; H('h3', '', b, 'Foto de hoy: stablecoins por red [S]').style.marginTop = '0';
+    [['XRPL', s.xrpl.total], ['Stellar', s.stellar.total]].forEach(([n, v]) => H('div', '', b, `${n}: ${pnUSD(v)} (${pnFmt(v / s.total * 100, 2)} % de ${pnUSD(s.total)} en total)`));
+    H('p', 'nota', b, 'DefiLlama, leído ' + (PAN.leido || '') + '. Es una foto de un día: falta la serie en el tiempo para saber si estas redes ganan o pierden cuota frente a Ethereum, Tron, Solana o Canton.'); }
+  filas.forEach(([r, l], i) => {
+    const det = H('details', 'doc entra', padre); det.style.animationDelay = Math.min(i, 12) * 20 + 'ms';
+    const sm = H('summary', 'vsum', det); H('b', '', sm, r); H('span', 'nota', sm, ` · ${l.length} ${l.length === 1 ? 'voz' : 'voces'}`);
+    [...new Set(l.map(v => v.nivel))].forEach(k => etiqueta(sm, vNiv(k)[0], vNiv(k)[1]));
+    const cu = H('div', 'cuerpo', det); l.forEach((v, j) => vozTarjeta(cu, v, j));
+  });
+}
+const ACH = {C: ['✓', '#3fb68b', 'Consistente'], I: ['✕', '#e06c6c', 'Inconsistente'], N: ['·', '#64748b', 'Neutral o poco diagnóstica']};
+function tesisPestana(padre){
+  const cj = H('div', 'contraste', padre); H('h3', '', cj, 'Tu tesis frente a las voces (privado, solo en tu PC)');
+  H('p', 'nota', cj, VT.aviso);
+  H('h3', '', cj, 'Hipótesis en competencia (método ACH)');
+  H('p', 'nota', cj, 'Cada fila es una prueba; cada columna, una hipótesis. Se mira qué hipótesis acumula MENOS pruebas en contra (✕): el método busca refutar, no confirmar. Pulsa una fila para ver el porqué.');
+  const tb = H('table', 'pn-t ach', cj), th = H('tr', '', H('thead', '', tb)); H('th', '', th, 'Prueba').style.textAlign = 'left';
+  VT.hipotesis.forEach(h => { const c = H('th', '', th, h.nombre); c.title = h.desc; });
+  const cb = H('tbody', '', tb);
+  VT.pruebas.forEach(p => { const tr = H('tr', 'ach-f', cb); const td = H('td', '', tr, corto(p.texto, 90)); td.style.textAlign = 'left'; td.title = p.texto;
+    VT.hipotesis.forEach(h => { const a = ACH[p.celdas[h.id]] || ACH.N; const c = H('td', '', tr, a[0]); c.style.color = a[1]; c.style.fontWeight = '700'; c.style.textAlign = 'center'; c.title = a[2]; });
+    tr.addEventListener('click', () => { const ya = tr.nextSibling && tr.nextSibling.classList && tr.nextSibling.classList.contains('ach-n'); if (ya){ tr.nextSibling.remove(); return; }
+      const n = document.createElement('tr'); n.className = 'ach-n'; const c = H('td', '', n); c.colSpan = VT.hipotesis.length + 1; c.style.textAlign = 'left';
+      H('div', '', c, p.texto); H('div', 'nota', c, p.nota); const vv = H('div', 'nota', c); vv.textContent = 'Voces: ' + p.voces.map(id => { const v = porId(id); return v ? v.quien.replace(/\s*\(.*$/, '') + ' (' + fechaVoz(v.cuando) + ')' : id; }).join(' · ');
+      tr.after(n); }); });
+  const cuI = VT.hipotesis.map(h => VT.pruebas.filter(p => p.celdas[h.id] === 'I').length), cuC = VT.hipotesis.map(h => VT.pruebas.filter(p => p.celdas[h.id] === 'C').length), minI = Math.min(...cuI);
+  const f1 = H('tr', '', cb), f2 = H('tr', '', cb); H('td', '', f1, 'Pruebas en contra (✕)').style.textAlign = 'left'; H('td', '', f2, 'Pruebas a favor (✓)').style.textAlign = 'left';
+  VT.hipotesis.forEach((h, i) => { const a = H('td', '', f1, String(cuI[i])); a.style.cssText = 'text-align:center;font-weight:700;color:' + (cuI[i] === minI ? '#3fb68b' : '#e06c6c'); H('td', '', f2, String(cuC[i])).style.textAlign = 'center'; });
+  H('p', 'nota', cj, 'En verde, la hipótesis con menos pruebas en contra hoy. Con tan pocas pruebas y valoradas a mano, es una orientación para estudiar, no una conclusión; y varias hipótesis pueden darse a la vez (tu premisa d).');
+  if ((VT.lecturas || []).length){ H('h3', '', cj, 'Tu lectura de algunas voces ([J])'); VT.lecturas.forEach(l => { const v = porId(l.voz), b = H('div', 'bloque', cj); b.style.borderLeftColor = '#a78bfa'; const t = H('div', '', b); H('b', '', t, (v ? v.quien.replace(/\s*\(.*$/, '') : l.voz) + ' ' + l.etiqueta + ': '); t.appendChild(document.createTextNode(l.texto)); const n = H('div', 'nota', b, l.matiz); n.style.marginTop = '4px'; }); }
+  H('h3', '', cj, 'Tus premisas y qué voces las apoyan o las contradicen');
+  const RC = {apoya: '#3fb68b', contradice: '#e06c6c', matiza: '#d4a84b'};
+  Object.keys(VT.premisas).forEach(k => { const pr = VT.premisas[k]; const b = H('div', 'bloque', cj); b.style.borderLeftColor = ORO;
+    const t = H('div', '', b); H('b', '', t, `(${k}) `); t.appendChild(document.createTextNode(pr.nombre));
+    pr.roles.forEach(r => { const v = porId(r.voz); const f = H('div', 'nota', b); etiqueta(f, r.rol, RC[r.rol] || '#8a97b0'); f.appendChild(document.createTextNode(` ${v ? v.quien.replace(/\s*\(.*$/, '') : r.voz}: ${r.nota}`)); }); });
+}
+function vocesVista(padre){
+  const x = H('button', 'volver', padre, '✕ Cerrar voces'); x.addEventListener('click', cerrarVoces);
+  const c0 = H('div', 'cabecera entra', padre); c0.style.borderLeftColor = ORO;
+  H('h2', '', c0, 'Voces'); if (!VZ){ H('p', 'nota', c0, 'No hay datos de voces (falta explorador/voces.json).'); return; }
+  H('p', 'nota', c0, VZ.aviso);
+  const ley = H('div', 'chips', c0); Object.keys(VZ.niveles).forEach(k => etiqueta(ley, vNiv(k)[0], vNiv(k)[1], vNiv(k)[2]));
+  const tb = H('div', 'chips vtabs', padre);
+  VTABS.forEach(([k, t]) => { if (k === 'tes' && !VT) return; const b = H('button', 'chip clic' + (vf.tab === k ? ' on' : ''), tb, t); b.addEventListener('click', () => { vf.tab = k; dibujarPanel(); panel.scrollTop = 0; }); });
+  ({dec: vocesPestana, per: personasPestana, plz: plazosPestana, can: canalesPestana, uso: utilidadPestana, red: redesPestana, tes: tesisPestana}[vf.tab] || vocesPestana)(padre);
+  H('p', 'nota', padre, 'Declaración no es prueba: el nivel dice cómo de bien localizada está la cita y la confirmación, cuánto la respaldan los datos. Informativo: no es recomendación de compra ni de venta.');
+}
+function abrirVoces(capaId){
+  if (cerrando) return;
+  vf.capa = capaId || ''; vistaVoces = true; $('btnVoces').classList.add('on');
+  const mostrar = () => { panelVisible = true; ajustarLados(); actualizarPanel(); dibujarPanel(); panel.scrollTop = 0; };
+  if (sel){ seleccionar(null); setTimeout(mostrar, 2100); } else mostrar();
+}
+function cerrarVoces(){ vistaVoces = false; $('btnVoces').classList.remove('on'); panelVisible = false; ajustarLados(); actualizarPanel(); dibujarPanel(); }
+function vocesCapa(padre, capaId){
+  if (!VZ) return; const l = VOCES.filter(v => (v.capas || []).includes(capaId)); if (!l.length) return;
+  const s = seccion(padre, `Voces de esta capa: ${l.length}`, true);
+  H('p', 'nota', s, 'Qué han dicho personas e instituciones, con su nivel y su confirmación. Una declaración no es un hecho: pulsa para ver la fuente.');
+  l.slice(0, 6).forEach((v, i) => vozTarjeta(s, v, i));
+  if (l.length > 6){ const b = H('button', 'chip clic', s, `Ver las ${l.length} en Voces`); b.addEventListener('click', () => abrirVoces(capaId)); }
+}
+function vocesResumen(padre){
+  if (!VZ) return; const s = seccion(padre, `Voces recientes: ${VOCES.length}`, true);
+  H('p', 'nota', s, 'Declaraciones de personas e instituciones con su nivel de evidencia y su confirmación, plazos prometidos, utilidad (rendimiento, colateral, avales)' + (VT ? ' y tu tesis (solo en tu PC).' : '.'));
+  barraConf(s, VOCES);
+  VOCES.slice(0, 4).forEach((v, i) => vozTarjeta(s, v, i));
+  const b = H('button', 'chip clic', s, 'Abrir Voces'); b.addEventListener('click', () => abrirVoces(''));
+}
 function dibujarPanel(){
   const antes = panel.scrollTop, izq = $('vistaIzq'); panel.textContent = ''; izq.textContent = '';
   const movil = window.matchMedia('(max-width:900px)').matches;
   const f = filtros();
-  if (!sel){
+  if (!sel && vistaVoces){ vocesVista(panel); }
+  else if (!sel){
     const x = H('button', 'volver', panel, '✕ Cerrar panel'); x.addEventListener('click', alternarPanel);
     const c0 = H('div', 'cabecera entra', panel); c0.style.borderLeftColor = ORO;
     H('h2', '', c0, 'Explorador de raíles'); H('p', 'nota', c0, D.aviso);
@@ -933,6 +1136,7 @@ function dibujarPanel(){
     });
     datosGlobales(panel);
     tarjetasCifras(seccion(panel, 'Cifras clave', false), capas.filter(c => c.cifras[0]).map(c => ({capa: c, c: cifrasVivas(c)[0]})));
+    vocesResumen(panel);
     radarVista(seccion(panel, 'Radar regulatorio por país y tema', false), '');
     const sFe = seccion(panel, 'Próximas fechas', true);
     H('p', 'nota', sFe, 'Rombos de color según el tema; ★ = impacto alto. Pulsa un tema en la barra de calendario para mostrarlo u ocultarlo.');
@@ -964,7 +1168,9 @@ function dibujarPanel(){
     vs.forEach(m => cnt[m.estado] = (cnt[m.estado] || 0) + 1);
     const chips = H('div', 'chips', cab);
     Object.keys(est).forEach(k => { if (cnt[k]){ const a = H('span', 'chip', chips); const p = H('span', 'punto', a); p.style.background = colEst(k); a.appendChild(document.createTextNode(`${est[k].nombre}: ${cnt[k]}`)); } });
+    if (VZ){ const nv = VOCES.filter(v => (v.capas || []).includes(sel.id)).length; if (nv){ const a = H('span', 'chip clic', chips, '🗣 ' + nv + (nv === 1 ? ' voz' : ' voces')); a.title = 'Abrir las voces de esta capa'; a.addEventListener('click', () => abrirVoces(sel.id)); } }
     if (CONTR && CONTR.capas) contrasteBloque(panel, CONTR.capas[sel.id], 'Contraste con tu tesis (privado, solo en tu PC)');
+    vocesCapa(panel, sel.id);
     if (sel.id === 'reg') radarVista(panel, 'Radar regulatorio por país y tema');
     if (movil) fichaAnalista(panel, sel); else fichaPostits(sel, pi);
     datosCapa(panel, sel.id);
@@ -981,7 +1187,7 @@ function dibujarPanel(){
   }
   panel.scrollTop = antes;
   if (animAbrir){ animAbrir = false; ajustarLados(); posicionarNotas(); setTimeout(() => { posicionarNotas(); izq.classList.add('abierto'); }, 220); setTimeout(() => { if (izq.classList.contains('abierto')) izq.classList.add('quieto'); }, 2000); }
-  else if (!movil && sel) posicionarNotas();
+  else if (!movil && sel){ ajustarLados(); posicionarNotas(); }   // al cambiar de capa se vuelve a ajustar la letra al texto nuevo
 }
 
 let animAbrir = false, cerrando = false;
@@ -997,17 +1203,19 @@ function ajustarLados(){
   const esc = Math.min(hw / 280, hh / 320);
   anchoSel = Math.max(420, Math.round(lw / esc)); cxSel = ow / 2 / lw;
 }
-// Letra de los post-its: empieza lo más grande que permite la pantalla y baja de medio en medio punto hasta que ningún post-it se corte (mínimo 13,5 px; si aun así una columna no cabe, se desplaza).
+// Letra de los post-its: empieza lo más grande que permite la pantalla y baja de punto en punto (tamaño entero, igual en todas las capas) hasta que ningún post-it se corte (mínimo 13 px; si aun así una columna no cabe, se desplaza).
 // Se mide por posición de layout (offsetTop), a la que no afectan las transformaciones de la animación.
 function ajustarLetra(izq, maxPx){
   const zonas = [...izq.querySelectorAll('.zona')];
   const cabe = () => zonas.every(z => [...z.querySelectorAll('.pi')].every(n => n.offsetTop >= z.offsetTop - 1 && n.offsetTop + n.offsetHeight <= z.offsetTop + z.clientHeight + 2));
-  let pf = Math.max(13.5, maxPx);
-  for (; pf > 13.5; pf -= .5){
-    izq.style.setProperty('--pf', pf.toFixed(1) + 'px'); izq.style.setProperty('--pfl', (pf * .94).toFixed(1) + 'px');
+  izq.classList.remove('recorte');
+  let pf = Math.max(13, Math.floor(maxPx));
+  for (; pf > 13; pf -= 1){
+    izq.style.setProperty('--pf', pf + 'px');
     if (cabe()) return;
   }
-  izq.style.setProperty("--pf", "13.5px"); izq.style.setProperty("--pfl", "13px");
+  izq.style.setProperty('--pf', '13px');
+  if (!cabe()) izq.classList.add('recorte');   // con el panel abierto no hay sitio: los textos largos de arriba se acortan (el texto completo está en el panel)
 }
 function actualizarPanel(){ panel.classList.toggle('abierto', panelVisible); }
 function posicionarNotas(){
@@ -1015,6 +1223,7 @@ function posicionarNotas(){
   iz.querySelectorAll('.pi').forEach(e => { e.style.setProperty('--fx', (W / 2 - (e.offsetLeft + e.offsetWidth / 2)) + 'px'); e.style.setProperty('--fy', (Hh / 2 - (e.offsetTop + e.offsetHeight / 2)) + 'px'); });
 }
 function aplicarSeleccion(c){
+  if (c){ vistaVoces = false; $('btnVoces').classList.remove('on'); }
   sel = (c === sel) ? null : c;
   if (!sel) destino = {...VISTA0};
   panelVisible = !!sel;
@@ -1047,6 +1256,7 @@ function alternarPanel(){
   if (sel) setTimeout(posicionarNotas, 50);
 }
 $('btnPanel').addEventListener('click', alternarPanel);
+$('btnVoces').addEventListener('click', () => { if (vistaVoces) cerrarVoces(); else abrirVoces(''); });
 $('btnVolver').addEventListener('click', () => seleccionar(null));
 $('btnOrbitas').addEventListener('click', e => { orbitasPausadas = !orbitasPausadas; e.target.textContent = orbitasPausadas ? '▶ Órbitas' : '⏸ Órbitas'; });
 $('btnPlay').addEventListener('click', e => { if (!reproduciendo){ if (+slider.value >= +slider.max) slider.value = 0; reproduciendo = true; e.target.textContent = '⏸ Tiempo'; vistos = {}; capas.forEach(c => c.lunas.forEach(m => { m.vis = false; })); } else { reproduciendo = false; e.target.textContent = '▶ Tiempo'; } });
