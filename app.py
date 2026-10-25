@@ -136,48 +136,65 @@ st.markdown("""
 # No toca alturas ni safe-area de la página.
 st.markdown("""
     <style>
-    :root {--bg:#0b0f17; --panel:#111724; --panel2:#151d2e; --linea:#1f2a40; --txt:#e8edf7; --sub:#8b98b3; --acc:#3b82f6;
-           --sube:#22c55e; --baja:#ef4444; --oro:#f1d58a;}
-    .stApp {background: linear-gradient(180deg, var(--bg) 0, var(--bg) 16px, transparent 140px),
-                        radial-gradient(900px 420px at 80% 0, #14213d 0, transparent 65%), var(--bg);}
+    :root {--bg:#0b0f17; --panel:#141b29; --panel2:#19233a; --linea:#25304a; --txt:#eef2fb; --sub:#9aa7c2; --acc:#6ea8ff;
+           --sube:#4fe3a1; --baja:#ff6b7d; --oro:#f1d58a; --r:20px;}
+    .stApp {background: linear-gradient(180deg, var(--bg) 0, var(--bg) 16px, transparent 150px),
+                        radial-gradient(900px 500px at 85% 6%, #1d2a52 0, transparent 60%),
+                        radial-gradient(700px 400px at -10% 35%, #2a1d4a55 0, transparent 60%), var(--bg);}
     .block-container {max-width: 1200px;}
     @keyframes entra {from {opacity: 0; transform: translateY(8px)} to {opacity: 1; transform: none}}
     @media (prefers-reduced-motion: reduce) {* {animation: none !important; transition: none !important;}}
 
-    /* Indicadores: paneles planos con cifras tabulares, filete de color a la izquierda y minigráfico en la tarjeta principal */
-    .kpis {gap: 8px;}
-    .kpi {background: linear-gradient(180deg, var(--panel2), var(--panel)); border: 1px solid var(--linea); border-left: 3px solid #334155;
-          border-radius: 10px; padding: 10px 14px; animation: entra .35s ease both; animation-delay: calc(var(--i, 0) * 50ms);}
-    .kpi.up {border-left-color: var(--sube);} .kpi.dn {border-left-color: var(--baja);}
-    .kpi .lbl {color: var(--sub); font-size: .64rem; letter-spacing: .12em; font-weight: 600; text-transform: uppercase;}
-    .kpi .val {color: var(--txt); font-size: 1.45rem; font-weight: 650; letter-spacing: -.01em; line-height: 1.25;
-               font-variant-numeric: tabular-nums; font-feature-settings: "tnum";}
-    .kpi .dlt {display: inline-block; margin-top: 2px; padding: 1px 8px; border-radius: 4px; font-size: .75rem; font-weight: 700;
-               font-variant-numeric: tabular-nums;}
-    .kpi .dlt.up {background: #22c55e1f; color: var(--sube);} .kpi .dlt.dn {background: #ef44441f; color: var(--baja);}
+    /* Tarjetas como en docs/movil: degradado suave, borde fino, números grandes y poco por pantalla */
+    .kpis {display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 4px 0;}
+    .kpi {background: linear-gradient(160deg, var(--panel2), var(--panel)); border: 1px solid var(--linea); border-radius: var(--r);
+          padding: 14px; animation: sube-card .5s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i, 0) * 70ms);}
+    @keyframes sube-card {from {opacity: 0; transform: translateY(16px) scale(.98)} to {opacity: 1; transform: none}}
+    .kpi .lbl {display: flex; justify-content: space-between; align-items: center; color: var(--sub); font-size: .72rem;
+               letter-spacing: .08em; font-weight: 700; text-transform: uppercase;}
+    .kpi .ic {width: 26px; height: 26px; border-radius: 9px; display: grid; place-items: center; background: #ffffff12; color: var(--oro);
+              font-size: .8rem; letter-spacing: 0;}
+    .kpi .val {color: var(--txt); font-size: 1.4rem; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; margin: 6px 0 2px;
+               font-variant-numeric: tabular-nums; white-space: nowrap;}
+    .kpi .dlt {display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: .78rem; font-weight: 700; font-variant-numeric: tabular-nums;}
+    .kpi .dlt.up {background: #4fe3a122; color: var(--sube);} .kpi .dlt.dn {background: #ff6b7d22; color: var(--baja);}
     .kpi .val.up {color: var(--sube);} .kpi .val.dn {color: var(--baja);}
-    .kpi.hero {border-left-color: var(--acc); background: linear-gradient(135deg, #172554 0%, #111724 70%); padding: 9px 16px;}
-    .kpi.hero .val {font-size: 1.9rem; letter-spacing: -.02em; line-height: 1.15;}
-    .kpi.hero .sub {display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 2px; font-size: .78rem; color: var(--sub);
-                    font-variant-numeric: tabular-nums;}
-    .kpi.hero .sub b {font-weight: 700;} .kpi.hero .sub b.up {color: var(--sube);} .kpi.hero .sub b.dn {color: var(--baja);}
-    .kpi.hero svg.spark {display: block; width: 100%; height: 26px; margin-top: 4px; overflow: visible;}
+    .kpi.hero {grid-column: 1 / -1; background: linear-gradient(135deg, #2a3a78, #1b2347 60%, #2d1f55); border-color: #3c4d92; padding: 12px 16px;}
+    .kpi.hero .lbl {color: #bcc7ec;}
+    .kpi.hero .val {font-size: 2rem; font-weight: 800; letter-spacing: -.03em; margin: 2px 0 6px;}
+    .kpi.hero .sub {display: flex; flex-wrap: wrap; gap: 6px;}
+    .pill {display: inline-flex; padding: 3px 11px; border-radius: 999px; font-size: .78rem; font-weight: 700; background: #ffffff14;
+           font-variant-numeric: tabular-nums;}
+    .pill.up {background: #4fe3a122; color: var(--sube);} .pill.dn {background: #ff6b7d22; color: var(--baja);}
+    .kpi.hero svg.spark {display: block; width: 100%; height: 28px; margin-top: 6px; overflow: visible;}
     .kpis-mini {display: flex; gap: 8px; margin: 2px 0 8px;}
-    .kpis-mini .kpi {flex: 1 1 0; min-width: 0; padding: 6px 12px; border-radius: 8px;}
-    .kpis-mini .kpi .val {font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-    .kpis-mini .kpi .lbl {font-size: .58rem;}
-    .meta {color: #5d6b88; font-size: .7rem;}
+    .kpis-mini .kpi {flex: 1 1 0; min-width: 0; padding: 8px 12px; border-radius: 16px;}
+    .kpis-mini .kpi .val {font-size: 1rem; margin: 2px 0 0; overflow: hidden; text-overflow: ellipsis;}
+    .kpis-mini .kpi .lbl {font-size: .6rem;} .kpis-mini .kpi .ic {display: none;}
+    .meta {color: #6b7a99; font-size: .7rem;}
+    @media (min-width: 900px) {.kpis {grid-template-columns: repeat(4, 1fr);}}
+    /* Posiciones: tarjeta con avatar, importes y barra de peso */
+    .pcard {background: linear-gradient(160deg, var(--panel2), var(--panel)); border: 1px solid var(--linea); border-radius: var(--r);
+            padding: 14px; margin-bottom: 10px; animation: sube-card .5s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i, 0) * 70ms);}
+    .pcard .fila {display: grid; grid-template-columns: 44px 1fr auto; gap: 12px; align-items: center;}
+    .pcard .av {width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: .8rem; color: #10131c;}
+    .pcard h4 {margin: 0; font-size: 1rem; font-weight: 700; color: var(--txt);} .pcard p {margin: 2px 0 0; font-size: .8rem; color: var(--sub);}
+    .pcard .der {text-align: right; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--txt);}
+    .pcard .der small {display: block; font-weight: 700; font-size: .8rem;}
+    .pcard .der small.up {color: var(--sube);} .pcard .der small.dn {color: var(--baja);}
+    .pcard .barra {height: 8px; border-radius: 8px; background: #ffffff12; overflow: hidden; margin-top: 10px;}
+    .pcard .barra i {display: block; height: 100%; border-radius: 8px;}
+    [data-testid="stMetric"] {background: linear-gradient(160deg, var(--panel2), var(--panel)); border: 1px solid var(--linea);
+                              border-radius: 16px; padding: 10px 14px;}
+    [data-testid="stMetricValue"] {font-variant-numeric: tabular-nums; font-weight: 800;}
+    [data-testid="stMetricLabel"] p {text-transform: uppercase; letter-spacing: .08em; font-size: .7rem; color: var(--sub); font-weight: 700;}
+    [data-testid="stPlotlyChart"] {background: linear-gradient(160deg, var(--panel2), var(--panel)); border: 1px solid var(--linea);
+                                   border-radius: var(--r); padding: 8px 6px 2px;}
+    [data-testid="stDataFrame"] {border: 1px solid var(--linea); border-radius: 16px; overflow: hidden;}
+    [data-testid="stVerticalBlockBorderWrapper"] {border-radius: 18px; border-color: var(--linea);}
+    .stMarkdown h5 {font-size: .76rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--sub); margin: 18px 4px 8px;}
+    .stMarkdown h5 {border: 0; padding: 0;}
     .fecha-cab {color: var(--sub); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 6px; padding-left: 2px;}
-    [data-testid="stMetric"] {background: linear-gradient(180deg, var(--panel2), var(--panel)); border: 1px solid var(--linea);
-                              border-radius: 10px; padding: 8px 12px;}
-    [data-testid="stMetricValue"] {font-variant-numeric: tabular-nums;}
-    [data-testid="stMetricLabel"] p {text-transform: uppercase; letter-spacing: .08em; font-size: .68rem; color: var(--sub);}
-    [data-testid="stPlotlyChart"] {background: linear-gradient(180deg, var(--panel2), var(--panel)); border: 1px solid var(--linea);
-                                   border-radius: 10px; padding: 8px 6px 2px;}
-    [data-testid="stDataFrame"] {border: 1px solid var(--linea); border-radius: 10px; overflow: hidden;}
-    /* Títulos de panel: mayúsculas pequeñas con filete, como un terminal */
-    .stMarkdown h5 {font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--sub);
-                    border-left: 3px solid var(--acc); padding: 0 0 0 9px; margin: 14px 0 6px;}
 
     /* Barra inferior fija (como la versión móvil de docs/movil): iconos de línea, nombre debajo y raya dorada en el activo */
     .st-key-dest_menu, .stApp:has(.modo-barra) .st-key-seccion {position: fixed !important; left: 10px; right: 10px; bottom: calc(env(safe-area-inset-bottom, 0px) * .5 + 8px);
@@ -210,7 +227,7 @@ st.markdown("""
     .stApp:has(.modo-barra) .st-key-seccion [role="radiogroup"] > div:nth-child(4) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='10' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 018 0v3'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='10' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 018 0v3'/%3E%3C/svg%3E");}
     .block-container {padding-bottom: 92px;}
     @media (max-width: 640px) {
-        .kpi .val {font-size: 1.25rem;} .kpi.hero .val {font-size: 1.75rem;}
+        .kpi .val {font-size: 1.3rem;} .kpi.hero .val {font-size: 1.85rem;}
         .kpis-mini .kpi .val {font-size: .92rem;}
     }
     .st-key-pill_menu [role="radiogroup"] {display: flex !important; flex-wrap: nowrap !important; overflow-x: auto; gap: 8px;
@@ -435,7 +452,7 @@ NOTICIAS_URL = "https://raw.githubusercontent.com/joeldragonball-jpg/requirement
 ALERTAS_URL = "https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/main/alertas/config.toml"
 MADRID = ZoneInfo("Europe/Madrid")
 
-POS, NEG, MUTED, GRID = "#10b981", "#ef4444", "#94a3b8", "#1f2a40"
+POS, NEG, MUTED, GRID = "#4fe3a1", "#ff6b7d", "#9aa7c2", "#1f2a40"
 MESES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
          "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
 MESES_CORTOS = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
@@ -1052,10 +1069,9 @@ def _spark(serie, color):
             f"<polyline points='{linea}' fill='none' stroke='{color}' stroke-width='1.6' vector-effect='non-scaling-stroke'/></svg>")
 
 
-def kpi_card(label, value, delta=None, ayuda=None, hero=False, colorear=False, i=0, extra=""):
-    """Tarjeta HTML: así en el móvil caben 2 por fila en vez de una debajo de otra.
-    hero: la tarjeta grande de arriba. colorear: valor y filete en verde/rojo según su signo. i: orden de entrada.
-    extra: HTML ya construido por el código (minigráfico, línea de resumen)."""
+def kpi_card(label, value, delta=None, ayuda=None, hero=False, colorear=False, ic="", i=0, extra=""):
+    """Tarjeta HTML (dos por fila en el móvil). hero: la tarjeta grande de arriba. colorear: valor en verde/rojo según su signo.
+    ic: símbolo corto de la esquina. i: orden de entrada (animación). extra: HTML ya construido por el código."""
     from html import escape
     dlt = ""
     if delta and delta != "—":
@@ -1064,18 +1080,19 @@ def kpi_card(label, value, delta=None, ayuda=None, hero=False, colorear=False, i
     clase = ""
     if colorear and value not in ("—", None):
         clase = " dn" if str(value).strip().startswith("-") else " up"
-    return (f"<div class='kpi{' hero' if hero else ''}{clase}'{titulo} style='--i:{i}'><div class='lbl'>{escape(str(label))}</div>"
+    icono = f"<span class='ic'>{escape(ic)}</span>" if ic else ""
+    return (f"<div class='kpi{' hero' if hero else ''}'{titulo} style='--i:{i}'><div class='lbl'>{escape(str(label))}{icono}</div>"
             f"<div class='val{clase}'>{escape(str(value))}</div>{dlt}{extra}</div>")
 
 
 def _resumen_hero():
-    """Línea bajo el valor total: beneficio, hoy y TIR, más el minigráfico de 30 días."""
-    def trozo(txt, v, cifra):
+    """Bajo el valor total: beneficio y hoy en pastillas, más un minigráfico fino de 30 días."""
+    def pastilla(txt, v, cifra):
         c = "" if v is None or pd.isna(v) or v == 0 else (" up" if v > 0 else " dn")
-        return f"<span>{txt} <b class='{c.strip()}'>{cifra}</b></span>"
-    partes = [trozo("Beneficio", pnl_total, f"{eur(pnl_total, sign=True)} ({pct(pnl_total_pct)})")]
+        return f"<span class='pill{c}'>{txt} {cifra}</span>"
+    partes = [pastilla("Beneficio", pnl_total, f"{eur(pnl_total, sign=True)} ({pct(pnl_total_pct)})")]
     if live:
-        partes.append(trozo("Hoy", hoy_eur, f"{eur(hoy_eur, sign=True)} ({pct(hoy_pct)})"))
+        partes.append(pastilla("Hoy", hoy_eur, f"{eur(hoy_eur, sign=True)} ({pct(hoy_pct)})"))
     chispa = ""
     if not daily.empty:
         ult = daily[daily.index >= daily.index.max() - pd.Timedelta(days=30)]
@@ -1084,13 +1101,13 @@ def _resumen_hero():
 
 
 kpis = [
-    ("Valor actual", eur(val_total), None, None, True, False),
-    ("Invertido", eur(inv_total), None, "Dinero puesto menos dinero retirado con ventas (incluye comisiones).", False, False),
-    ("Beneficio", eur(pnl_total, sign=True), pct(pnl_total_pct), "Beneficio no realizado: valor actual menos invertido.", False, True),
+    ("Valor actual", eur(val_total), None, None, True, False, ""),
+    ("Invertido", eur(inv_total), None, "Dinero puesto menos dinero retirado con ventas (incluye comisiones).", False, False, "€"),
+    ("Beneficio", eur(pnl_total, sign=True), pct(pnl_total_pct), "Beneficio no realizado: valor actual menos invertido.", False, True, "↗"),
     ("Hoy", eur(hoy_eur, sign=True) if live else "—", pct(hoy_pct) if live else None,
-     "Variación desde la apertura del día (00:00 UTC) en Kraken.", False, True),
+     "Variación desde la apertura del día (00:00 UTC) en Kraken.", False, True, "☀"),
     ("TIR anual", pct(tir) if tir is not None else "—", None,
-     "Rentabilidad anualizada teniendo en cuenta cuándo metiste cada euro. Es la cifra comparable con un depósito o un fondo.", False, False),
+     "Rentabilidad anualizada teniendo en cuenta cuándo metiste cada euro. Es la cifra comparable con un depósito o un fondo.", False, False, "%"),
 ]
 if _sec == 0:
     st.markdown("<div class='kpis'>" + "".join(kpi_card(*k, i=n, extra=_resumen_hero() if n == 0 else "")
@@ -1128,13 +1145,22 @@ if 0 in _SEL:
                 mercado_30 = ult["valor"].iloc[-1] - ult["valor"].iloc[0] - ult["flujo"].iloc[1:].sum()
                 st.caption(f"En 30 días has aportado {eur(ult['flujo'].iloc[1:].sum())} y el mercado te ha dado "
                            f"**{eur(mercado_30, sign=True)}**.")
-            for r in pos.itertuples():
-                hoy_txt = ""
+            st.markdown("##### Tus posiciones")
+            from html import escape as _esc
+            _tarjetas = []
+            for n, r in enumerate(pos.itertuples()):
                 if pd.notna(r.hoy_pct):
-                    color = POS if r.hoy_pct >= 0 else NEG
-                    hoy_txt = f" <span style='color:{color}'>{pct(r.hoy_pct)} hoy</span>"
-                st.markdown(f"<span style='color:{TOKENS[r.token]['color']}'>●</span> **{r.token}** {eur(r.precio, 4)}"
-                            f"{hoy_txt} · {eur(r.valor)}", unsafe_allow_html=True)
+                    hoy_txt = f"<small class='{'up' if r.hoy_pct >= 0 else 'dn'}'>{_esc(pct(r.hoy_pct))} hoy</small>"
+                else:
+                    hoy_txt = ""
+                color = TOKENS[r.token]["color"]
+                _tarjetas.append(
+                    f"<div class='pcard' style='--i:{n}'><div class='fila'>"
+                    f"<div class='av' style='background:{color}'>{_esc(r.token)}</div>"
+                    f"<div><h4>{_esc(r.token)}</h4><p>{_esc(fmt(r.cantidad, 0))} uds · precio {_esc(eur(r.precio, 4))}</p></div>"
+                    f"<div class='der'>{_esc(eur(r.valor))}{hoy_txt}</div></div>"
+                    f"<div class='barra'><i style='width:{max(0, min(100, float(r.peso))):.0f}%;background:{color}'></i></div></div>")
+            st.markdown("".join(_tarjetas), unsafe_allow_html=True)
 
         with i2:
             st.markdown("##### Tus alertas")
