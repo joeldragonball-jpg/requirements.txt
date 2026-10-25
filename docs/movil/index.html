@@ -106,9 +106,13 @@ nav button svg{transition:transform .25s}
 nav button.on{color:var(--oro)}nav button.on svg{transform:translateY(-3px) scale(1.12)}
 nav button.on::after{content:"";position:absolute;top:-9px;width:28px;height:3px;border-radius:3px;background:var(--oro);animation:entra .3s}
 .cinta{overflow:hidden;white-space:nowrap;border-radius:14px;background:var(--card);border:1px solid var(--linea);margin-bottom:14px;padding:9px 0;font-size:13px}
-.cinta div{display:inline-block;animation:marcha 40s linear infinite}
+.cinta div{display:inline-block;animation:marcha 55s linear infinite}
 @keyframes marcha{to{transform:translateX(-50%)}}
-.cinta span{margin-right:26px;font-weight:600}
+.cinta span{display:inline-flex;align-items:baseline;gap:7px;padding:0 16px;border-left:1px solid var(--linea)}
+.cinta span:first-child{border-left:0}
+.cinta .n{font-style:normal;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--sub)}
+.cinta .p{font-size:15px;font-weight:800;color:var(--txt);letter-spacing:-.01em}
+.cinta .c{font-style:normal;font-size:12px;font-weight:700}
 #busqueda{position:absolute;inset:0;background:#0b0f17f2;backdrop-filter:blur(10px);z-index:10;padding:calc(env(safe-area-inset-top) + 16px) 16px;overflow-y:auto;display:none}
 #busqueda.on{display:block;animation:entra .25s}
 .mas{display:none;margin-top:10px;font-size:14px;color:#c6cfe6;line-height:1.5}
@@ -198,7 +202,8 @@ const petroleoHTML = i0 => { const P = D.petroleo; if (!P) return ''; const L = 
    <div class="precio" data-c="${p.valor}" data-d="2" data-p="$">0</div><div class="meta2" style="margin:0">${EUR ? '≈ ' + fm(p.valor / EUR, 2) + ' € · ' : ''}futuro · ${esc(p.fecha.slice(5))}</div></div>`).join('')}</div>`; };
 function vHoy(){
   const ev = D.eventos, grande = ev.find(e => e.impacto === 'alto' && !e.aprox) || ev[0] || {titulo: 'Sin eventos próximos', detalle: '', fecha: HOY.toISOString().slice(0, 10)}, dd = Math.max(0, dias(grande.fecha)), off = Math.round(264 * (dd / 14 > 1 ? 1 : dd / 14));
-  const cinta = [...D.mercado.map(a => `${a.simbolo} ${precioA(a)} <b class="${cls(a.cambio_24h)}">${signo(a.cambio_24h)}</b>`), ...Object.values(D.petroleo || {}).map(p => `${esc(p.nombre.split(' ')[0])} $${fm(p.valor, 2)} <b class="${cls(p.cambio_1d)}">${signo(p.cambio_1d)}</b>`), ...D.indices.map(i => `${i.nombre} ${fm(i.valor, 0)} <b class="${cls(i.cambio_1d)}">${signo(i.cambio_1d)}</b>`)].map(t => `<span>${t}</span>`).join('');
+  const it = (n, p, c) => `<i class="n">${n}</i><b class="p">${p}</b><em class="c ${cls(c)}">${c > 0.05 ? '▲' : c < -0.05 ? '▼' : ''} ${signo(c)}</em>`;
+  const cinta = [...D.mercado.map(a => it(esc(a.simbolo), precioA(a), a.cambio_24h)), ...Object.values(D.petroleo || {}).map(p => it(esc(p.nombre.split(' ')[0]), '$' + fm(p.valor, 2), p.cambio_1d)), ...D.indices.map(x => it(esc(x.nombre), fm(x.valor, 0), x.cambio_1d))].map(t => `<span>${t}</span>`).join('');
   const noti = (D.noticias || [])[0];
   return `<div class="vista">
   <div class="card hero" style="--i:0"><div style="flex:1"><small>Lo más importante ahora</small><h2>${esc(grande.titulo)}</h2><p>${esc(grande.detalle.split('. ')[0]).slice(0, 110)}</p></div>
