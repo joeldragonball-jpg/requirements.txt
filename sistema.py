@@ -12,14 +12,15 @@ REPO = "joeldragonball-jpg/requirements.txt"
 # archivo del workflow, nombre, horas máximas razonables sin ejecutarse (GitHub retrasa o salta algunas ejecuciones)
 WORKFLOWS = [
     ("alertas.yml", "Alertas de precio", 2.5),
-    ("noticias.yml", "Noticias con IA", 3.0),
-    ("votos.yml", "Votos de noticias", 2.0),
+    ("noticias.yml", "Noticias con IA", 7.0),     # GitHub retrasa los programados: huecos de 3-6 h son normales
+    ("votos.yml", "Votos de noticias", 6.0),
     ("onchain.yml", "Vigilancia on-chain", 2.5),
     ("escrow.yml", "Escrow de Ripple", 30),
     ("eventos.yml", "Aviso de eventos", 30),
     ("despertador.yml", "Despertador de la app", 8),
     ("revision.yml", "Revisión semanal del cerebro", 24 * 8),
     ("verificar.yml", "Verificación mensual", 24 * 35),
+    ("paneles.yml", "Paneles de datos", 72),     # solo corre de lunes a viernes: el fin de semana no cuenta como retraso
 ]
 
 
