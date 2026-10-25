@@ -39,6 +39,14 @@ jobs:
         continue-on-error: true
         run: python scripts/construir_movil.py
 
+      # Seguimiento (PC y móvil): lee las colas, informes, predicciones y el estado de los bots. Sin IA ni claves propias.
+      - name: Construir los datos de Seguimiento
+        id: seguimiento
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/construir_seguimiento.py
+
       - name: Comprobar el archivo
         run: |
           python - <<'EOF'
@@ -53,13 +61,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add explorador/paneles.json docs/movil/data.json
+          git add explorador/paneles.json docs/movil/data.json docs/movil/seguimiento.json
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -m "Paneles de datos: actualización automática (sin IA)"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"
 
       - name: Avisar si alguna fuente falló
-        if: steps.datos.outcome == 'failure' || steps.movil.outcome == 'failure'
+        if: steps.datos.outcome == 'failure' || steps.movil.outcome == 'failure' || steps.seguimiento.outcome == 'failure'
         run: |
           echo "::warning::Alguna fuente falló; se conservó el dato anterior de esa parte. Revisa el registro del paso «Descargar los datos»."

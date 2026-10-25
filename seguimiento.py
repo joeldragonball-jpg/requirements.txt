@@ -1,154 +1,109 @@
-"""Pestaña «Seguimiento»: avance de la cola de research, informes recientes, último informe diario y próximas fechas.
-Solo lee archivos del repositorio (research/COLA.md, informes/ y eventos/calendario.toml). Sin IA, sin APIs, sin coste."""
-import re
-import tomllib
-from datetime import date
+"""Pestaña «Seguimiento»: qué se ha hecho, qué falta y qué caduca primero (research diario, colas de temas, plazos, predicciones, auditorías, bots).
+Los datos los calcula scripts/construir_seguimiento.py (los mismos que usa la app móvil). Solo lee archivos del repositorio y la API pública de GitHub:
+sin IA y sin coste."""
+import sys
 from pathlib import Path
 
 import pandas as pd
 import streamlit as st
 
 RAIZ = Path(__file__).parent
-COLA = RAIZ / "research" / "COLA.md"
+sys.path.insert(0, str(RAIZ / "scripts"))
+import construir_seguimiento as datos_seg   # noqa: E402
+
 INFORMES = RAIZ / "informes" / "research"
 DIARIOS = RAIZ / "informes"
-CALENDARIO = RAIZ / "eventos" / "calendario.toml"
+ORIGEN = {"R": "Research (R/G)", "T": "Temas (T)", "D": "Deuda (D)"}
 
 
-def _leer(ruta):
-    try:
-        return ruta.read_text(encoding="utf-8")
-    except Exception:
-        return ""
+@st.cache_data(ttl=300, show_spinner=False)
+def _datos():
+    return datos_seg.construir(bots_estado=True)
 
 
-def _estado(texto):
-    t = texto.strip().lower()
-    if t.startswith("hecho"):
-        return "hecha"
-    if "cubierto por" in t or "cubierta por" in t:
-        return "cubierta"
-    if t.startswith("recurrente"):
-        return "recurrente"
-    if t.startswith("pendiente"):
-        return "pendiente"
-    return "otro"
-
-
-def cargar_cola():
-    """Filas de la tabla de research/COLA.md (las que empiezan por | R.. o | G..)."""
-    filas = []
-    for linea in _leer(COLA).splitlines():
-        if not re.match(r"\|\s*[RG]\d+[A-Za-z]*\s*\|", linea):
-            continue
-        celdas = [c.strip() for c in linea.strip().strip("|").split("|")]
-        if len(celdas) < 9:
-            continue
-        estado_txt = " | ".join(celdas[8:])
-        filas.append({"ID": celdas[0], "Tema": celdas[1], "Modelo": celdas[3], "Esfuerzo": celdas[4],
-                      "Tam.": celdas[5], "Estado": _estado(estado_txt), "Detalle": estado_txt})
-    return filas
-
-
-def cargar_informes():
-    """Informes de informes/research/ (fecha y tarea sacadas del nombre; título de la primera línea)."""
-    out = []
-    for f in sorted(INFORMES.glob("*.md")):
-        m = re.match(r"(\d{4}-\d{2}-\d{2})-(.+)\.md$", f.name)
-        if not m:
-            continue
-        primera = _leer(f).split("\n", 1)[0].lstrip("# ").strip()
-        out.append({"Fecha": m.group(1), "Archivo": f.name, "Título": primera[:110]})
-    return sorted(out, key=lambda x: (x["Fecha"], x["Archivo"]), reverse=True)
-
-
-def ultimo_diario():
-    """Último informe diario (apertura/cierre/intradía) de informes/."""
-    cand = [f for f in DIARIOS.glob("2*.md") if re.search(r"(apertura|cierre|intradia|revision|inicial)", f.name)]
-    return max(cand, key=lambda f: f.name) if cand else None
-
-
-def proximas_fechas(n=10):
-    try:
-        with open(CALENDARIO, "rb") as fh:
-            evs = tomllib.load(fh).get("eventos", [])
-    except Exception:
-        return []
-    hoy = date.today()
-    out = []
-    for e in evs:
-        try:
-            ini = date.fromisoformat(e["fecha"])
-            fin = date.fromisoformat(e.get("hasta", e["fecha"]))
-        except Exception:
-            continue
-        if fin >= hoy:
-            out.append({**e, "ini": ini, "fin": fin, "dias": (ini - hoy).days})
-    return sorted(out, key=lambda e: e["ini"])[:n]
+def _cuando(dias):
+    if dias is None:
+        return "sin fecha"
+    return "hoy" if dias == 0 else "mañana" if dias == 1 else f"en {dias} días"
 
 
 def mostrar():
-    st.markdown("<h1 style='margin:0 0 8px;font-size:clamp(1.6rem,5vw,2.2rem);font-weight:700'>📌 Seguimiento</h1>",
-                unsafe_allow_html=True)
-    st.caption("Qué se ha hecho, qué falta y qué viene. Lee los archivos del repositorio: no usa IA ni cuesta nada.")
+    st.markdown("<h1 style='margin:0 0 8px;font-size:clamp(1.6rem,5vw,2.2rem);font-weight:700'>📌 Seguimiento</h1>", unsafe_allow_html=True)
+    st.caption("Qué se ha hecho, qué falta y qué caduca primero. Lee archivos del repositorio: no usa IA ni cuesta nada.")
+    d = _datos()
 
-    cola = cargar_cola()
-    informes = cargar_informes()
+    # --- Hoy
+    h = d["hoy"]
+    st.markdown("##### ☀️ Hoy")
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("R00 apertura", "✅ hecho" if h["apertura"] else "⏳ pendiente", help=f"Último: {h['ultima_apertura']}")
+    c2.metric("R00 cierre", "✅ hecho" if h["cierre"] else "⏳ pendiente", help=f"Último: {h['ultimo_cierre']}")
+    c3.metric("Racha", f"{h['racha']} días", help="Días seguidos con al menos un R00")
+    r = d["resumen"]
+    c4.metric("Tareas hechas", f"{r['hechas']} de {r['hechas'] + r['pendientes']}")
+    st.progress(r["hechas"] / max(1, r["hechas"] + r["pendientes"]))
+    st.caption(" · ".join(f"{ORIGEN[o]}: {v['hechas']} hechas, {v['pendientes']} pendientes" for o, v in r["por_cola"].items()))
 
-    # --- Avance de la cola
-    st.markdown("##### 🧭 Avance de la cola de research")
-    if not cola:
-        st.info("No encuentro research/COLA.md o su tabla.")
-    else:
-        hechas = sum(1 for c in cola if c["Estado"] == "hecha")
-        pend = [c for c in cola if c["Estado"] == "pendiente"]
-        contables = [c for c in cola if c["Estado"] in ("hecha", "pendiente")]
-        c1, c2, c3 = st.columns(3)
-        c1.metric("Hechas", hechas)
-        c2.metric("Pendientes", len(pend))
-        c3.metric("Informes guardados", len(informes))
-        if contables:
-            st.progress(hechas / len(contables), text=f"{hechas} de {len(contables)} tareas con trabajo propio")
-        if pend:
-            st.markdown("**Pendientes:**")
-            st.dataframe(pd.DataFrame(pend)[["ID", "Tema", "Modelo", "Esfuerzo", "Tam."]],
-                         hide_index=True, use_container_width=True)
-        with st.expander("Ver toda la cola"):
-            st.dataframe(pd.DataFrame(cola)[["ID", "Tema", "Modelo", "Estado"]], hide_index=True,
-                         use_container_width=True)
-
-    # --- Próximas fechas
-    st.markdown("##### 🗓️ Próximas fechas")
-    prox = proximas_fechas()
-    if not prox:
-        st.info("No hay fechas futuras en eventos/calendario.toml.")
-    else:
-        filas = []
-        for e in prox:
-            if e["dias"] < 0:
-                cuando = "en curso"
-            elif e["dias"] == 0:
-                cuando = "hoy"
-            elif e["dias"] == 1:
-                cuando = "mañana"
-            else:
-                cuando = f"en {e['dias']} días"
-            marca = {"alto": "🔴", "medio": "🟡"}.get(e.get("impacto"), "⚪")
-            filas.append({"": marca, "Fecha": e["ini"].strftime("%d-%m-%Y"), "Cuándo": cuando,
-                          "Evento": e["titulo"] + (" (aprox.)" if e.get("aproximado") else "")})
+    # --- Qué toca ahora
+    st.markdown("##### 🎯 Qué toca ahora (lo que caduca antes, primero)")
+    if d["pendientes"]:
+        filas = [{"ID": t["id"], "Tema": t["tema"][:90], "Cola": ORIGEN.get(t["origen"], t["origen"]),
+                  "Plazo": _cuando(t["plazo"]["dias"]) if t["plazo"] else "—", "Fecha": t["plazo"]["fecha"] if t["plazo"] else "",
+                  "Evento": t["plazo"]["evento"] if t["plazo"] else ""} for t in d["pendientes"]]
         st.dataframe(pd.DataFrame(filas), hide_index=True, use_container_width=True)
-        st.caption("Las fechas con «aprox.» no se avisan por Telegram hasta confirmarlas.")
+    else:
+        st.success("No queda nada pendiente en las colas.")
+
+    # --- Plazos y predicciones
+    st.markdown("##### 🗓️ Próximas fechas importantes")
+    if d["plazos"]:
+        st.dataframe(pd.DataFrame([{"": "🔴" if e["impacto"] == "alto" else "🟡", "Fecha": e["fecha"], "Cuándo": _cuando(e["dias"]), "Evento": e["titulo"]} for e in d["plazos"]]),
+                     hide_index=True, use_container_width=True)
+    st.markdown("##### 🔮 Predicciones registradas")
+    p = d["predicciones"]
+    st.caption(f"{len(p['abiertas'])} sin resolver · {len(p['resueltas'])} resueltas (se comprueban al llegar su fecha límite)")
+    if p["abiertas"]:
+        st.dataframe(pd.DataFrame([{"#": x["n"], "Quién": x["quien"][:40], "Predicción": x["que"], "Límite": x["limite"] or "sin fecha", "Cuándo": _cuando(x["dias"])}
+                                   for x in p["abiertas"][:15]]), hide_index=True, use_container_width=True)
+        with st.expander(f"Ver las {len(p['abiertas'])} sin resolver y las {len(p['resueltas'])} resueltas"):
+            st.dataframe(pd.DataFrame([{"#": x["n"], "Quién": x["quien"], "Predicción": x["que"], "Límite": x["limite"] or "—", "Resultado": x["resultado"]}
+                                       for x in p["abiertas"] + p["resueltas"]]), hide_index=True, use_container_width=True)
+
+    # --- Auditorías
+    a = d["auditorias"]
+    st.markdown("##### 🔎 Auditoría de coherencia")
+    if a:
+        st.caption(f"{a['archivo']} · {a['abiertos']} abiertos · {a['cerrados']} cerrados")
+        abiertos = [x for x in a["hallazgos"] if x["estado"] == "abierto"]
+        if abiertos:
+            st.dataframe(pd.DataFrame([{"ID": x["id"], "Gravedad": x["sev"], "Dónde": x["donde"], "Qué": x["que"]} for x in abiertos]), hide_index=True,
+                         use_container_width=True)
+        else:
+            st.success("Todos los hallazgos están cerrados.")
+    else:
+        st.info("Aún no hay auditorías en informes/research/.")
+
+    # --- Bots y cuota
+    st.markdown("##### 🤖 Bots (GitHub Actions)")
+    if d["bots"]:
+        st.dataframe(pd.DataFrame([{"": "🟢" if b["ok"] else "🔴" if b["ok"] is False else "⚪", "Bot": b["nombre"], "Último": b["conclusion"],
+                                    "Hace (h)": b["horas"], "Tolerancia (h)": b["tolerancia"]} for b in d["bots"]]), hide_index=True, use_container_width=True)
+        st.caption("Los programados de GitHub se retrasan a veces unas horas: la tolerancia lo tiene en cuenta.")
+    st.markdown("##### 📊 Cuota gastada por tarea (medida)")
+    q = d["cuota"]
+    st.caption(f"≈ {q['total']} % de cuota semanal sumada en {q['n']} tareas con coste anotado (columna «Real» de research/COLA.md; «<1 %» cuenta como 0,5).")
+    if q["tareas"]:
+        st.dataframe(pd.DataFrame([{"ID": x["id"], "Tema": x["tema"], "% cuota": x["pct"]} for x in q["tareas"]]), hide_index=True, use_container_width=True)
 
     # --- Informes recientes
-    st.markdown("##### 📄 Informes de research recientes")
+    st.markdown("##### 📄 Informes recientes")
+    informes = d["informes"]
     if informes:
-        st.dataframe(pd.DataFrame(informes[:15]), hide_index=True, use_container_width=True)
-        with st.expander(f"Ver los {len(informes)} informes"):
-            st.dataframe(pd.DataFrame(informes), hide_index=True, use_container_width=True)
+        st.dataframe(pd.DataFrame([{"Fecha": i["fecha"], "Tipo": i["tipo"], "Título": i["titulo"]} for i in informes]), hide_index=True, use_container_width=True)
+        archivos = sorted(INFORMES.glob("*.md"), reverse=True)
         filtro = st.text_input("Buscar informe (por ejemplo: 13f, corea, stablecoins)", key="seg_filtro").strip().lower()
-        coinciden = [i for i in informes if not filtro or filtro in (i["Archivo"] + " " + i["Título"]).lower()]
-        elegido = st.selectbox("Leer un informe", [i["Archivo"] for i in coinciden], index=None,
-                               placeholder="Elige un informe para leerlo aquí", key="seg_informe")
+        coinciden = [f.name for f in archivos if not filtro or filtro in f.name.lower()]
+        elegido = st.selectbox("Leer un informe", coinciden, index=None, placeholder="Elige un informe para leerlo aquí", key="seg_informe")
         if elegido:
             ruta = INFORMES / elegido
             try:
@@ -156,16 +111,14 @@ def mostrar():
                 st.markdown(ruta.read_text(encoding="utf-8"))
             except Exception:
                 st.error("No se puede leer ese informe.")
-    else:
-        st.info("Aún no hay informes en informes/research/.")
 
     # --- Último informe diario
     st.markdown("##### 🌅 Último informe diario")
-    f = ultimo_diario()
-    if f is None:
-        st.info("No hay informes diarios en informes/.")
-    else:
-        texto = _leer(f)
+    cand = [f for f in DIARIOS.glob("2*.md") if any(k in f.name for k in ("apertura", "cierre", "intradia", "revision", "inicial"))]
+    if cand:
+        f = max(cand, key=lambda x: x.name)
         st.caption(f"Archivo: {f.name}")
         with st.expander("Leer", expanded=False):
-            st.markdown(texto)
+            st.markdown(f.read_text(encoding="utf-8"))
+    else:
+        st.info("No hay informes diarios en informes/.")
