@@ -132,90 +132,99 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Aspecto de app móvil (mismo lenguaje visual que docs/movil): tarjetas con degradado, números grandes, barra inferior.
-# Va aparte y detrás del bloque anterior para ganarle en igualdad de especificidad. No toca alturas ni safe-area de la página.
+# Aspecto de terminal financiero (sobrio y denso; mismo color base que docs/movil). Va aparte y detrás del bloque anterior.
+# No toca alturas ni safe-area de la página.
 st.markdown("""
     <style>
-    :root {--bg:#0b0f17; --card:#141b29; --card2:#19233a; --linea:#25304a; --txt:#eef2fb; --sub:#9aa7c2; --oro:#f1d58a;
-           --sube:#4fe3a1; --baja:#ff6b7d; --ez: cubic-bezier(.2,.8,.2,1);}
-    /* borde superior del color base: se funde con la barra de estado del móvil */
-    .stApp {background: linear-gradient(180deg, var(--bg) 0, var(--bg) 16px, transparent 150px),
-                        radial-gradient(900px 500px at 85% 4%, #1d2a52 0, transparent 60%),
-                        radial-gradient(700px 400px at -10% 35%, #2a1d4a55 0, transparent 60%), var(--bg);}
-    .block-container {padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px)); max-width: 1100px;}
-    @keyframes entra {from {opacity: 0; transform: translateY(12px)} to {opacity: 1; transform: none}}
-    @keyframes sube-card {from {opacity: 0; transform: translateY(16px) scale(.98)} to {opacity: 1; transform: none}}
+    :root {--bg:#0b0f17; --panel:#111724; --panel2:#151d2e; --linea:#1f2a40; --txt:#e8edf7; --sub:#8b98b3; --acc:#3b82f6;
+           --sube:#22c55e; --baja:#ef4444; --oro:#f1d58a;}
+    .stApp {background: linear-gradient(180deg, var(--bg) 0, var(--bg) 16px, transparent 140px),
+                        radial-gradient(900px 420px at 80% 0, #14213d 0, transparent 65%), var(--bg);}
+    .block-container {max-width: 1200px;}
+    @keyframes entra {from {opacity: 0; transform: translateY(8px)} to {opacity: 1; transform: none}}
     @media (prefers-reduced-motion: reduce) {* {animation: none !important; transition: none !important;}}
 
-    /* Tarjetas de indicadores */
-    .kpi {background: linear-gradient(160deg, var(--card2), var(--card)); border: 1px solid var(--linea); border-radius: 20px;
-          padding: 14px 16px; opacity: 0; animation: sube-card .5s var(--ez) forwards; animation-delay: calc(var(--i, 0) * 70ms);}
-    .kpi .lbl {color: var(--sub); font-size: .72rem; letter-spacing: .1em; font-weight: 600;}
-    .kpi .val {color: var(--txt); font-size: 1.55rem; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums;
-               line-height: 1.3; margin-top: 2px;}
-    .kpi .dlt {display: inline-block; margin-top: 4px; padding: 2px 10px; border-radius: 999px; font-size: .8rem; font-weight: 700;
+    /* Indicadores: paneles planos con cifras tabulares, filete de color a la izquierda y minigráfico en la tarjeta principal */
+    .kpis {gap: 8px;}
+    .kpi {background: linear-gradient(180deg, var(--panel2), var(--panel)); border: 1px solid var(--linea); border-left: 3px solid #334155;
+          border-radius: 10px; padding: 10px 14px; animation: entra .35s ease both; animation-delay: calc(var(--i, 0) * 50ms);}
+    .kpi.up {border-left-color: var(--sube);} .kpi.dn {border-left-color: var(--baja);}
+    .kpi .lbl {color: var(--sub); font-size: .64rem; letter-spacing: .12em; font-weight: 600; text-transform: uppercase;}
+    .kpi .val {color: var(--txt); font-size: 1.45rem; font-weight: 650; letter-spacing: -.01em; line-height: 1.25;
+               font-variant-numeric: tabular-nums; font-feature-settings: "tnum";}
+    .kpi .dlt {display: inline-block; margin-top: 2px; padding: 1px 8px; border-radius: 4px; font-size: .75rem; font-weight: 700;
                font-variant-numeric: tabular-nums;}
-    .kpi .dlt.up {background: #4fe3a11f; color: var(--sube);}
-    .kpi .dlt.dn {background: #ff6b7d1f; color: var(--baja);}
-    .kpi.hero {background: linear-gradient(135deg, #2a3a78, #1b2347 60%, #2d1f55); border-color: #3c4d92; padding: 18px 20px;}
-    .kpi.hero .lbl {color: #bcc7ec;}
-    .kpi.hero .val {font-size: 2.7rem; letter-spacing: -.03em; line-height: 1.15;}
+    .kpi .dlt.up {background: #22c55e1f; color: var(--sube);} .kpi .dlt.dn {background: #ef44441f; color: var(--baja);}
     .kpi .val.up {color: var(--sube);} .kpi .val.dn {color: var(--baja);}
+    .kpi.hero {border-left-color: var(--acc); background: linear-gradient(135deg, #172554 0%, #111724 70%); padding: 14px 18px;}
+    .kpi.hero .val {font-size: 2.5rem; letter-spacing: -.03em; line-height: 1.15;}
+    .kpi.hero .sub {display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 6px; font-size: .78rem; color: var(--sub);
+                    font-variant-numeric: tabular-nums;}
+    .kpi.hero .sub b {font-weight: 700;} .kpi.hero .sub b.up {color: var(--sube);} .kpi.hero .sub b.dn {color: var(--baja);}
+    .kpi.hero svg.spark {display: block; width: 100%; height: 46px; margin-top: 8px; overflow: visible;}
     .kpis-mini {display: flex; gap: 8px; margin: 2px 0 8px;}
-    .kpis-mini .kpi {flex: 1 1 0; min-width: 0; padding: 8px 12px; border-radius: 16px;}
-    .kpis-mini .kpi .val {font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-    .kpis-mini .kpi .lbl {font-size: .62rem;}
-    .meta {color: #6b7a99;}
-    [data-testid="stMetric"] {background: linear-gradient(160deg, var(--card2), var(--card)); border: 1px solid var(--linea);
-                              border-radius: 16px; padding: 10px 14px;}
-    [data-testid="stMetricValue"] {font-variant-numeric: tabular-nums; letter-spacing: -.02em;}
-    [data-testid="stPlotlyChart"] {background: linear-gradient(160deg, #19233a66, #141b2966); border: 1px solid var(--linea);
-                                   border-radius: 18px; padding: 6px; animation: entra .45s var(--ez);}
-    h5 {letter-spacing: .02em;}
+    .kpis-mini .kpi {flex: 1 1 0; min-width: 0; padding: 6px 12px; border-radius: 8px;}
+    .kpis-mini .kpi .val {font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+    .kpis-mini .kpi .lbl {font-size: .58rem;}
+    .meta {color: #5d6b88; font-size: .7rem;}
+    .fecha-cab {color: var(--sub); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin: -6px 0 4px;}
+    [data-testid="stMetric"] {background: linear-gradient(180deg, var(--panel2), var(--panel)); border: 1px solid var(--linea);
+                              border-radius: 10px; padding: 8px 12px;}
+    [data-testid="stMetricValue"] {font-variant-numeric: tabular-nums;}
+    [data-testid="stMetricLabel"] p {text-transform: uppercase; letter-spacing: .08em; font-size: .68rem; color: var(--sub);}
+    [data-testid="stPlotlyChart"] {background: linear-gradient(180deg, var(--panel2), var(--panel)); border: 1px solid var(--linea);
+                                   border-radius: 10px; padding: 8px 6px 2px;}
+    [data-testid="stDataFrame"] {border: 1px solid var(--linea); border-radius: 10px; overflow: hidden;}
+    /* Títulos de panel: mayúsculas pequeñas con filete, como un terminal */
+    .stMarkdown h5 {font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--sub);
+                    border-left: 3px solid var(--acc); padding: 0 0 0 9px; margin: 14px 0 6px;}
 
-    /* Apartados del destino (pastillas con deslizamiento horizontal, como los "chips" de la versión móvil) */
+    /* Barra inferior fija (como la versión móvil de docs/movil): iconos de línea, nombre debajo y raya dorada en el activo */
+    .st-key-dest_menu, .stApp:has(.modo-barra) .st-key-seccion {position: fixed !important; left: 0; right: 0; bottom: 0; z-index: 999;
+        width: 100% !important; margin: 0 !important; background: #0d1320ee; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+        border-top: 1px solid var(--linea); padding: 8px 8px calc(env(safe-area-inset-bottom, 0px) + 8px);}
+    .st-key-dest_menu [data-testid="stRadio"], .st-key-dest_menu [role="radiogroup"],
+    .stApp:has(.modo-barra) .st-key-seccion [role="radiogroup"] {width: 100%; max-width: 640px; margin: 0 auto;}
+    .st-key-dest_menu [role="radiogroup"], .stApp:has(.modo-barra) .st-key-seccion [role="radiogroup"] {display: grid !important;
+        grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr)); gap: 0;}
+    .st-key-dest_menu label[data-testid="stRadioOption"], .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] {background: none !important; border: 0 !important; border-radius: 0; min-height: 56px; padding: 4px 0 !important; display: flex !important;
+        width: 100% !important; flex-direction: column; justify-content: center; align-items: center; gap: 4px; text-align: center; position: relative;}
+    .st-key-dest_menu label[data-testid="stRadioOption"]::before, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"]::before {content: ""; display: block; width: 24px; height: 24px; background: currentColor;
+        -webkit-mask: center / contain no-repeat; mask: center / contain no-repeat; transition: transform .25s;}
+    .st-key-dest_menu label[data-testid="stRadioOption"], .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] {color: var(--sub);}
+    .st-key-dest_menu label[data-testid="stRadioOption"] > div, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] > div {width: 100%; justify-content: center;}
+    .st-key-dest_menu label[data-testid="stRadioOption"] p, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] p {font-size: .69rem; font-weight: 600; color: inherit; text-align: center; line-height: 1.2; letter-spacing: 0;
+        word-break: keep-all; overflow-wrap: normal;}
+    .st-key-dest_menu label[data-testid="stRadioOption"][data-selected="true"], .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"][data-selected="true"] {color: var(--oro);}
+    .st-key-dest_menu label[data-testid="stRadioOption"][data-selected="true"]::before, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"][data-selected="true"]::before {transform: translateY(-2px) scale(1.12);}
+    .st-key-dest_menu label[data-testid="stRadioOption"][data-selected="true"]::after, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"][data-selected="true"]::after {content: ""; position: absolute; top: -9px; left: 50%;
+        width: 28px; margin-left: -14px; height: 3px; border-radius: 3px; background: var(--oro); animation: entra .3s;}
+    .st-key-dest_menu [role="radiogroup"] > div:nth-child(1) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z'/%3E%3C/svg%3E");}
+    .st-key-dest_menu [role="radiogroup"] > div:nth-child(2) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='6' width='18' height='14' rx='3'/%3E%3Cpath d='M3 10h18M16 15h2'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='6' width='18' height='14' rx='3'/%3E%3Cpath d='M3 10h18M16 15h2'/%3E%3C/svg%3E");}
+    .st-key-dest_menu [role="radiogroup"] > div:nth-child(3) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 17l5-5 4 4 8-9'/%3E%3Cpath d='M15 7h5v5'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 17l5-5 4 4 8-9'/%3E%3Cpath d='M15 7h5v5'/%3E%3C/svg%3E");}
+    .st-key-dest_menu [role="radiogroup"] > div:nth-child(4) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4h11a3 3 0 013 3v13H7a3 3 0 01-3-3V5a1 1 0 011-1z'/%3E%3Cpath d='M8 9h8M8 13h8M8 17h5'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4h11a3 3 0 013 3v13H7a3 3 0 01-3-3V5a1 1 0 011-1z'/%3E%3Cpath d='M8 9h8M8 13h8M8 17h5'/%3E%3C/svg%3E");}
+    .st-key-dest_menu [role="radiogroup"] > div:nth-child(5) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='5' cy='12' r='1.5'/%3E%3Ccircle cx='12' cy='12' r='1.5'/%3E%3Ccircle cx='19' cy='12' r='1.5'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='5' cy='12' r='1.5'/%3E%3Ccircle cx='12' cy='12' r='1.5'/%3E%3Ccircle cx='19' cy='12' r='1.5'/%3E%3C/svg%3E");}
+    .stApp:has(.modo-barra) .st-key-seccion [role="radiogroup"] > div:nth-child(1) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='6' width='18' height='14' rx='3'/%3E%3Cpath d='M3 10h18M16 15h2'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='6' width='18' height='14' rx='3'/%3E%3Cpath d='M3 10h18M16 15h2'/%3E%3C/svg%3E");}
+    .stApp:has(.modo-barra) .st-key-seccion [role="radiogroup"] > div:nth-child(2) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 4a3 3 0 00-3 3 3 3 0 00-2 5 3 3 0 002 5 3 3 0 006 0V4a3 3 0 00-3 0zM15 4a3 3 0 013 3 3 3 0 012 5 3 3 0 01-2 5 3 3 0 01-6 0'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 4a3 3 0 00-3 3 3 3 0 00-2 5 3 3 0 002 5 3 3 0 006 0V4a3 3 0 00-3 0zM15 4a3 3 0 013 3 3 3 0 012 5 3 3 0 01-2 5 3 3 0 01-6 0'/%3E%3C/svg%3E");}
+    .stApp:has(.modo-barra) .st-key-seccion [role="radiogroup"] > div:nth-child(3) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='3'/%3E%3Cpath d='M8 3v4M16 3v4M3 10h18'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='3'/%3E%3Cpath d='M8 3v4M16 3v4M3 10h18'/%3E%3C/svg%3E");}
+    .stApp:has(.modo-barra) .st-key-seccion [role="radiogroup"] > div:nth-child(4) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='10' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 018 0v3'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='10' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 018 0v3'/%3E%3C/svg%3E");}
+    .block-container {padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px));}
+    @media (max-width: 640px) {
+        .kpi .val {font-size: 1.25rem;} .kpi.hero .val {font-size: 2.2rem;}
+        .kpis-mini .kpi .val {font-size: .92rem;}
+    }
     .st-key-pill_menu [role="radiogroup"] {display: flex !important; flex-wrap: nowrap !important; overflow-x: auto; gap: 8px;
                                            padding: 2px 2px 8px; scrollbar-width: none; -webkit-overflow-scrolling: touch;}
     .st-key-pill_menu [role="radiogroup"]::-webkit-scrollbar {display: none;}
-    .st-key-pill_menu label[data-testid="stRadioOption"] {flex: none; width: auto !important; min-height: 40px; padding: 8px 15px;
-                                  border-radius: 999px; background: var(--card); border-color: var(--linea); transition: all .2s;}
-    .st-key-pill_menu label[data-testid="stRadioOption"] p {font-size: .9rem; font-weight: 600; color: var(--sub); white-space: nowrap;}
+    .st-key-pill_menu label[data-testid="stRadioOption"] {flex: none; width: auto !important; min-height: 38px; padding: 7px 16px;
+                                  border-radius: 999px; background: var(--panel); border-color: var(--linea); transition: all .2s;}
+    .st-key-pill_menu label[data-testid="stRadioOption"] p {font-size: .86rem; font-weight: 600; color: var(--sub); white-space: nowrap;}
     .st-key-pill_menu label[data-testid="stRadioOption"][data-selected="true"] {background: var(--oro); border-color: var(--oro);}
     .st-key-pill_menu label[data-testid="stRadioOption"][data-selected="true"] p {color: #241b00;}
     .st-key-pill_menu [role="radiogroup"] > div {width: auto;}
-
-    /* Barra inferior fija: 5 destinos con icono arriba y nombre debajo */
-    .st-key-dest_menu, .stApp:has(.modo-barra) .st-key-seccion {position: fixed !important; left: 0; right: 0; bottom: 0; z-index: 999;
-        width: 100% !important; margin: 0 !important; background: #0d1320ee; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
-        border-top: 1px solid var(--linea); padding: 6px 8px calc(env(safe-area-inset-bottom, 0px) + 6px);}
-    .st-key-dest_menu [data-testid="stRadio"], .st-key-dest_menu [role="radiogroup"] {width: 100%; max-width: 640px; margin: 0 auto;}
-    .st-key-dest_menu [role="radiogroup"], .stApp:has(.modo-barra) .st-key-seccion [role="radiogroup"] {display: grid !important;
-        grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr)); gap: 2px;}
-    .st-key-dest_menu label[data-testid="stRadioOption"], .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] {
-        background: none !important; border: 0 !important; border-radius: 12px; min-height: 62px; padding: 6px 0 !important;
-        width: 100% !important; justify-content: center; text-align: center; position: relative; transition: color .2s;}
-    .st-key-dest_menu label[data-testid="stRadioOption"] > div, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] > div {
-        width: 100%; justify-content: center;}
-    .st-key-dest_menu label[data-testid="stRadioOption"] p, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] p {
-        font-size: .68rem; font-weight: 600; color: var(--sub); text-align: center; line-height: 1.5; letter-spacing: 0;
-        word-break: keep-all; overflow-wrap: normal;}
-    .st-key-dest_menu label[data-testid="stRadioOption"] p::first-line, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] p::first-line {
-        font-size: 1.9rem; line-height: 1.25;}
-    .st-key-dest_menu label[data-testid="stRadioOption"][data-selected="true"] p,
-    .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"][data-selected="true"] p {color: var(--oro);}
-    .st-key-dest_menu label[data-testid="stRadioOption"][data-selected="true"]::after,
-    .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"][data-selected="true"]::after {
-        content: ""; position: absolute; top: -7px; left: 50%; width: 28px; margin-left: -14px; height: 3px; border-radius: 3px;
-        background: var(--oro); animation: entra .3s;}
-    /* Secciones dentro de «Más»: tarjetas grandes */
-    .stApp:not(:has(.modo-barra)) .st-key-seccion [role="radiogroup"] {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;}
-    .stApp:not(:has(.modo-barra)) .st-key-seccion label[data-testid="stRadioOption"] {width: 100%; min-height: 64px; border-radius: 18px;
-        background: linear-gradient(160deg, var(--card2), var(--card)); border-color: var(--linea); justify-content: center;}
-    .stApp:not(:has(.modo-barra)) .st-key-seccion label[data-testid="stRadioOption"][data-selected="true"] {border-color: var(--oro);}
-    @media (max-width: 640px) {
-        .kpi .val {font-size: 1.3rem;} .kpi.hero .val {font-size: 2.4rem;}
-        .kpis-mini .kpi .val {font-size: .95rem;}
-    }
+    /* Cambio de sección (Cerebro, Seguimiento, Privado) */
+    .st-key-seccion [role="radiogroup"] {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;}
+    .st-key-seccion label[data-testid="stRadioOption"] {width: 100%; min-height: 52px; justify-content: center;}
     </style>
 """, unsafe_allow_html=True)
 
@@ -364,7 +373,7 @@ seccion = st.session_state.get("seccion", _SECCIONES[0])
 
 
 def menu_secciones():
-    """Menú de secciones (Cartera, Cerebro, Seguimiento, Privado). En las secciones de apuntes es la barra inferior fija;
+    """Menú de secciones (Cartera, Cerebro, Seguimiento, Privado). En Cerebro, Seguimiento y Privado es la barra inferior fija;
     en la Cartera va dentro de «Más» como tarjetas (la barra de abajo es la de los destinos de la cartera)."""
     if len(_SECCIONES) > 1:
         en_barra = seccion != "📊 Cartera"
@@ -372,7 +381,7 @@ def menu_secciones():
             st.markdown(f"<div class='modo-barra' style='display:none'></div><style>.st-key-seccion{{--n:{len(_SECCIONES)}}}</style>",
                         unsafe_allow_html=True)
         nueva = st.radio("Sección", _SECCIONES, horizontal=True, label_visibility="collapsed", key="seccion",
-                         format_func=(lambda t: t.replace(" ", "  \n", 1)) if en_barra else str)
+                         format_func=(lambda t: t.split(" ", 1)[1]) if en_barra else str)
         if nueva != seccion:
             st.rerun()
 
@@ -477,8 +486,11 @@ def style_fig(fig, height=360):
         hoverlabel=dict(bgcolor="#19233a", bordercolor="#25304a", font=dict(color="#eef2fb")),
         font=dict(family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif", color="#9aa7c2"),
     )
-    fig.update_xaxes(showgrid=False, title=None, fixedrange=True)     # fixedrange: sin zoom con los dedos
-    fig.update_yaxes(gridcolor=GRID, title=None, fixedrange=True)
+    fig.update_xaxes(showgrid=True, gridcolor="#18223a", gridwidth=1, title=None, fixedrange=True, showline=True, linecolor="#25304a",
+                     ticks="outside", tickcolor="#25304a", tickfont=dict(size=11), showspikes=True, spikemode="across",
+                     spikethickness=1, spikecolor="#4b5a7a", spikedash="dot")   # fixedrange: sin zoom con los dedos
+    fig.update_yaxes(gridcolor=GRID, gridwidth=1, title=None, fixedrange=True, zeroline=True, zerolinecolor="#2a3652",
+                     tickfont=dict(size=11))
     fig.update_layout(dragmode=False)
     return fig
 
@@ -854,6 +866,9 @@ with st.container(key="cab"):
         h1.markdown(_titulo, unsafe_allow_html=True)
     else:
         h1.title("⚡ Mi Cartera Cripto")
+    _hoy = datetime.now(MADRID)
+    h1.markdown(f"<div class='fecha-cab'>{('Lunes Martes Miércoles Jueves Viernes Sábado Domingo'.split())[_hoy.weekday()]} "
+                f"{_hoy.day} {MESES_CORTOS[_hoy.month - 1].lower()}</div>", unsafe_allow_html=True)
     try:
         _ajustes = h2.popover("⚙️", help="Ajustes y actualizar datos")
     except Exception:                      # versiones antiguas de Streamlit sin popover
@@ -1010,20 +1025,35 @@ _DESTINOS = [("🏠 Inicio", [0]),
              ("📰 Mercado", [8, 9, 10]),               # Noticias, Watchlist, Eventos
              ("⚙️ Más", [11])]                         # Sistema + cambio de sección (Cerebro, Seguimiento, Privado)
 _dest = st.radio("Destino", range(len(_DESTINOS)), horizontal=True, label_visibility="collapsed", key="dest_menu",
-                 format_func=lambda d: _DESTINOS[d][0].replace(" ", "  \n", 1))      # icono arriba y nombre debajo
+                 format_func=lambda d: _DESTINOS[d][0].split(" ", 1)[1])      # el icono lo pone el CSS (SVG de línea)
 _apartados = _DESTINOS[_dest][1]
 if len(_apartados) > 1:
     if st.session_state.get("pill_menu") not in _apartados:      # al cambiar de destino se empieza por su primer apartado
         st.session_state["pill_menu"] = _apartados[0]
     _sec = st.radio("Apartado", _apartados, horizontal=True, label_visibility="collapsed", key="pill_menu",
-                    format_func=lambda i: _NOMBRES[i])
+                    format_func=lambda i: _NOMBRES[i].split(" ", 1)[1])
 else:
     _sec = _apartados[0]
 
 
-def kpi_card(label, value, delta=None, ayuda=None, hero=False, colorear=False, i=0):
+def _spark(serie, color):
+    """Minigráfico SVG (línea y área) con los valores diarios; solo números calculados, ningún texto externo."""
+    v = [float(x) for x in serie if pd.notna(x)]
+    if len(v) < 3:
+        return ""
+    lo, hi = min(v), max(v)
+    rng = (hi - lo) or 1.0
+    pts = [(i / (len(v) - 1) * 300, 44 - (x - lo) / rng * 40) for i, x in enumerate(v)]
+    linea = " ".join(f"{x:.1f},{y:.1f}" for x, y in pts)
+    return (f"<svg class='spark' viewBox='0 0 300 46' preserveAspectRatio='none'>"
+            f"<polygon points='0,46 {linea} 300,46' fill='{color}' fill-opacity='.14'/>"
+            f"<polyline points='{linea}' fill='none' stroke='{color}' stroke-width='1.6' vector-effect='non-scaling-stroke'/></svg>")
+
+
+def kpi_card(label, value, delta=None, ayuda=None, hero=False, colorear=False, i=0, extra=""):
     """Tarjeta HTML: así en el móvil caben 2 por fila en vez de una debajo de otra.
-    hero: la tarjeta grande de arriba. colorear: valor en verde/rojo según su signo. i: orden de entrada (animación)."""
+    hero: la tarjeta grande de arriba. colorear: valor y filete en verde/rojo según su signo. i: orden de entrada.
+    extra: HTML ya construido por el código (minigráfico, línea de resumen)."""
     from html import escape
     dlt = ""
     if delta and delta != "—":
@@ -1032,21 +1062,37 @@ def kpi_card(label, value, delta=None, ayuda=None, hero=False, colorear=False, i
     clase = ""
     if colorear and value not in ("—", None):
         clase = " dn" if str(value).strip().startswith("-") else " up"
-    return (f"<div class='kpi{' hero' if hero else ''}'{titulo} style='--i:{i}'><div class='lbl'>{escape(str(label)).upper()}</div>"
-            f"<div class='val{clase}'>{escape(str(value))}</div>{dlt}</div>")
+    return (f"<div class='kpi{' hero' if hero else ''}{clase}'{titulo} style='--i:{i}'><div class='lbl'>{escape(str(label))}</div>"
+            f"<div class='val{clase}'>{escape(str(value))}</div>{dlt}{extra}</div>")
+
+
+def _resumen_hero():
+    """Línea bajo el valor total: beneficio, hoy y TIR, más el minigráfico de 30 días."""
+    def trozo(txt, v, cifra):
+        c = "" if v is None or pd.isna(v) or v == 0 else (" up" if v > 0 else " dn")
+        return f"<span>{txt} <b class='{c.strip()}'>{cifra}</b></span>"
+    partes = [trozo("Beneficio", pnl_total, f"{eur(pnl_total, sign=True)} ({pct(pnl_total_pct)})")]
+    if live:
+        partes.append(trozo("Hoy", hoy_eur, f"{eur(hoy_eur, sign=True)} ({pct(hoy_pct)})"))
+    chispa = ""
+    if not daily.empty:
+        ult = daily[daily.index >= daily.index.max() - pd.Timedelta(days=30)]
+        chispa = _spark(ult["valor"], POS if pnl_total >= 0 else NEG)
+    return "<div class='sub'>" + "".join(partes) + "</div>" + chispa
 
 
 kpis = [
-    ("💰 Valor actual", eur(val_total), None, None, True, False),
-    ("📥 Invertido", eur(inv_total), None, "Dinero puesto menos dinero retirado con ventas (incluye comisiones).", False, False),
-    ("📈 Beneficio", eur(pnl_total, sign=True), pct(pnl_total_pct), "Beneficio no realizado: valor actual menos invertido.", False, True),
-    ("☀️ Hoy", eur(hoy_eur, sign=True) if live else "—", pct(hoy_pct) if live else None,
+    ("Valor actual", eur(val_total), None, None, True, False),
+    ("Invertido", eur(inv_total), None, "Dinero puesto menos dinero retirado con ventas (incluye comisiones).", False, False),
+    ("Beneficio", eur(pnl_total, sign=True), pct(pnl_total_pct), "Beneficio no realizado: valor actual menos invertido.", False, True),
+    ("Hoy", eur(hoy_eur, sign=True) if live else "—", pct(hoy_pct) if live else None,
      "Variación desde la apertura del día (00:00 UTC) en Kraken.", False, True),
-    ("🎯 TIR anual", pct(tir) if tir is not None else "—", None,
+    ("TIR anual", pct(tir) if tir is not None else "—", None,
      "Rentabilidad anualizada teniendo en cuenta cuándo metiste cada euro. Es la cifra comparable con un depósito o un fondo.", False, False),
 ]
 if _sec == 0:
-    st.markdown("<div class='kpis'>" + "".join(kpi_card(*k, i=n) for n, k in enumerate(kpis)) + "</div>"
+    st.markdown("<div class='kpis'>" + "".join(kpi_card(*k, i=n, extra=_resumen_hero() if n == 0 else "")
+                                              for n, k in enumerate(kpis)) + "</div>"
                 f"<div class='meta'>{_pie_datos}</div>", unsafe_allow_html=True)
 else:      # en el resto de apartados, una tira compacta (valor, beneficio y hoy) para no quitar sitio al contenido
     st.markdown("<div class='kpis-mini'>" + "".join(kpi_card(*kpis[n][:2], delta=None, colorear=kpis[n][5], i=j)
@@ -1065,14 +1111,15 @@ if 0 in _SEL:
     with tabs[0]:
         i1, i2 = st.columns([3, 2], gap="large")
         with i1:
-            st.markdown("##### 📈 Últimos 30 días")
+            st.markdown("##### Últimos 30 días")
             if not daily.empty:
                 ult = daily[daily.index >= daily.index.max() - pd.Timedelta(days=30)]
                 fig = go.Figure()
-                fig.add_trace(go.Scatter(x=ult.index, y=ult["valor"], name="Valor", mode="lines",
-                                         line=dict(color="#3b82f6", width=2.5), hovertemplate="%{y:,.2f} €"))
                 fig.add_trace(go.Scatter(x=ult.index, y=ult["invertido"], name="Invertido", mode="lines",
                                          line=dict(color=MUTED, width=1.5, dash="dash"), hovertemplate="%{y:,.2f} €"))
+                fig.add_trace(go.Scatter(x=ult.index, y=ult["valor"], name="Valor", mode="lines", fill="tonexty",
+                                         fillcolor="rgba(59,130,246,.16)", line=dict(color="#3b82f6", width=2.5),
+                                         hovertemplate="%{y:,.2f} €"))
                 fig = style_fig(fig, 260)
                 fig.update_yaxes(ticksuffix=" €")
                 chart(fig)
@@ -1088,7 +1135,7 @@ if 0 in _SEL:
                             f"{hoy_txt} · {eur(r.valor)}", unsafe_allow_html=True)
 
         with i2:
-            st.markdown("##### 🔔 Tus alertas")
+            st.markdown("##### Tus alertas")
             cfg_alertas = load_alertas()
             if not cfg_alertas:
                 st.caption("No se pudo leer la configuración del bot de alertas.")
@@ -1111,7 +1158,7 @@ if 0 in _SEL:
                 st.caption(f"También te avisa si un token se mueve más de un {cfg_alertas.get('movimiento_brusco_pct', 7)} % "
                            "en 24 h. Los niveles se cambian en `alertas/config.toml` en GitHub.")
 
-            st.markdown("##### 📰 Últimas noticias")
+            st.markdown("##### Últimas noticias")
             ultimas = sorted(load_noticias(), key=lambda n: n.get("fecha_envio", ""), reverse=True)[:3]
             if not ultimas:
                 st.caption("Todavía no hay noticias.")
@@ -1182,7 +1229,7 @@ if 1 in _SEL:
                               annotations=[dict(text=centro, showarrow=False, font=dict(size=15))])
             return fig
 
-        st.markdown("##### 📊 Distribución de la cartera")
+        st.markdown("##### Distribución de la cartera")
         d1, d2 = st.columns(2, gap="large")
         with d1:
             with st.container(border=True):
@@ -1279,7 +1326,7 @@ if 3 in _SEL:
             st.info("No hay operaciones para calcular rentabilidades.")
         else:
             # --- Tu estrategia (comprar poco a poco) frente a meterlo todo el primer día ---
-            st.markdown("##### 🧭 Tu estrategia frente al mercado")
+            st.markdown("##### Tu estrategia frente al mercado")
             alt = todo_de_golpe(tx, prices, current, daily.index)
             valor_hoy = daily["valor"].iloc[-1]
             dif = valor_hoy - alt.iloc[-1]
