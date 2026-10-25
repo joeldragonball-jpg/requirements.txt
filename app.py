@@ -45,11 +45,11 @@ st.markdown("""
     .kpi.hero .val {font-size: 2.4rem; line-height: 1.2;}
     .meta {color: #64748b; font-size: 0.72rem; margin: 2px 2px 14px;}
     /* Menú principal: losetas cuadradas con icono grande (4 en ordenador, 2x2 en el móvil) */
-    [class*="st-key-grupo_menu"] div[role="radiogroup"] {display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; width: 100%;}
-    [class*="st-key-grupo_menu"] div[role="radiogroup"] > label {flex-direction: column; justify-content: center; text-align: center;
+    .st-key-grupo_menu_cerebro div[role="radiogroup"] {display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; width: 100%;}
+    .st-key-grupo_menu_cerebro div[role="radiogroup"] > label {flex-direction: column; justify-content: center; text-align: center;
                                                        min-height: 84px; border-radius: 14px; padding: 8px;}
-    [class*="st-key-grupo_menu"] div[role="radiogroup"] > label p {font-size: 0.95rem; line-height: 1.35; text-align: center;}
-    [class*="st-key-grupo_menu"] div[role="radiogroup"] > label p::first-line {font-size: 1.9rem;}
+    .st-key-grupo_menu_cerebro div[role="radiogroup"] > label p {font-size: 0.95rem; line-height: 1.35; text-align: center;}
+    .st-key-grupo_menu_cerebro div[role="radiogroup"] > label p::first-line {font-size: 1.9rem;}
     /* Móvil/tablet: sin zoom al tocar dos veces ni al pellizcar los gráficos; el dedo desliza la página */
     html, body {touch-action: manipulation;}
     .js-plotly-plot, .js-plotly-plot * {touch-action: pan-y !important;}
@@ -62,7 +62,7 @@ st.markdown("""
     div[role="radiogroup"] > label p {margin: 0; font-weight: 600;}
     /* Menú del cerebro: 9 losetas, todas en una fila en pantallas anchas */
     @media (min-width: 900px) {
-        [class*="st-key-grupo_menu_cerebro"] div[role="radiogroup"] {grid-template-columns: repeat(9, minmax(0, 1fr));}
+        .st-key-grupo_menu_cerebro div[role="radiogroup"] {grid-template-columns: repeat(9, minmax(0, 1fr));}
     }
     .st-key-noticias_vista [role="radiogroup"] {display: flex; flex-wrap: wrap; gap: 8px;}
     .st-key-noticias_vista label[data-testid="stRadioOption"] {width: auto; padding: 6px 14px;}
@@ -82,10 +82,10 @@ st.markdown("""
         .kpis {grid-template-columns: repeat(2, 1fr); gap: 8px;}
         .kpi .val {font-size: 1.2rem;}
         .kpi.hero .val {font-size: 2.1rem;}
-        [class*="st-key-grupo_menu"] div[role="radiogroup"] {grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px;}
-        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] {padding: 6px 2px; min-height: 76px;}
-        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p {font-size: 0.68rem; letter-spacing: -0.01em;}
-        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p::first-line {font-size: 1.6rem;}
+        .st-key-grupo_menu_cerebro div[role="radiogroup"] {grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px;}
+        .st-key-grupo_menu_cerebro label[data-testid="stRadioOption"] {padding: 6px 2px; min-height: 76px;}
+        .st-key-grupo_menu_cerebro label[data-testid="stRadioOption"] p {font-size: 0.68rem; letter-spacing: -0.01em;}
+        .st-key-grupo_menu_cerebro label[data-testid="stRadioOption"] p::first-line {font-size: 1.6rem;}
     }
 
     /* --- Opciones de los menús (selectores reales: label[data-testid="stRadioOption"]) --- */
@@ -98,9 +98,9 @@ st.markdown("""
     .st-key-seccion [role="radiogroup"] {display: flex; gap: 8px;}
     .st-key-seccion label[data-testid="stRadioOption"] {width: auto; padding: 6px 16px;}
     /* Losetas del menú principal */
-    [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] {height: 100%; min-height: 84px; justify-content: center; text-align: center; padding: 6px 4px;}
-    [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] > div {width: 100%; justify-content: center;}
-    [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p {text-align: center; font-size: 0.95rem; line-height: 1.35;}
+    .st-key-grupo_menu_cerebro label[data-testid="stRadioOption"] {height: 100%; min-height: 84px; justify-content: center; text-align: center; padding: 6px 4px;}
+    .st-key-grupo_menu_cerebro label[data-testid="stRadioOption"] > div {width: 100%; justify-content: center;}
+    .st-key-grupo_menu_cerebro label[data-testid="stRadioOption"] p {text-align: center; font-size: 0.95rem; line-height: 1.35;}
     /* Tarjetas de los apartados */
     [class*="st-key-sub_"] label[data-testid="stRadioOption"] {min-height: 60px; justify-content: flex-start;}
     [class*="st-key-sub_"] label[data-testid="stRadioOption"][data-selected="true"] {background: #16233d; border-color: #3b82f6;}
@@ -108,8 +108,8 @@ st.markdown("""
     [class*="st-key-sub_"] label[data-testid="stRadioOption"] p strong {color: #e5e7eb; font-size: 1rem; font-weight: 600;}
     [class*="st-key-sub_"] [role="radiogroup"] > div {width: 100%;}
     [class*="st-key-sub_"] label[data-testid="stRadioOption"] > div {width: 100%;}
-    [class*="st-key-grupo_menu"] [role="radiogroup"] > div {width: 100%; height: 100%;}
-    [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p::first-line {font-size: 1.9rem;}
+    .st-key-grupo_menu_cerebro [role="radiogroup"] > div {width: 100%; height: 100%;}
+    .st-key-grupo_menu_cerebro label[data-testid="stRadioOption"] p::first-line {font-size: 1.9rem;}
     /* Cabecera: título a la izquierda y ajustes a la derecha en la misma fila, también en el móvil */
     .st-key-cab [data-testid="stHorizontalBlock"] {flex-wrap: nowrap !important; align-items: center;}
     .st-key-cab [data-testid="stColumn"] {min-width: 0 !important;}
@@ -119,15 +119,102 @@ st.markdown("""
     @media (max-width: 640px) {
         /* Safari de iPhone encogía el menú a su contenido: se fuerza el ancho completo y columnas con medida propia
            (ancho de pantalla menos los márgenes de 16 px a cada lado y los 3 huecos de 6 px) */
-        [class*="st-key-grupo_menu"], [class*="st-key-grupo_menu"] [data-testid="stRadio"] {width: 100% !important; max-width: 100% !important;}
-        [class*="st-key-grupo_menu"] div[role="radiogroup"] {width: 100% !important; max-width: 100% !important; box-sizing: border-box;
+        .st-key-grupo_menu_cerebro, .st-key-grupo_menu_cerebro [data-testid="stRadio"] {width: 100% !important; max-width: 100% !important;}
+        .st-key-grupo_menu_cerebro div[role="radiogroup"] {width: 100% !important; max-width: 100% !important; box-sizing: border-box;
                                                            grid-template-columns: repeat(4, calc((100vw - 50px) / 4)) !important;
                                                            justify-content: space-between !important; gap: 6px !important;}
-        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] {padding: 6px 0 !important; min-height: 76px !important;
+        .st-key-grupo_menu_cerebro label[data-testid="stRadioOption"] {padding: 6px 0 !important; min-height: 76px !important;
                                                                        width: 100% !important; box-sizing: border-box;}
-        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p {font-size: 0.76rem !important; letter-spacing: -0.02em !important;
+        .st-key-grupo_menu_cerebro label[data-testid="stRadioOption"] p {font-size: 0.76rem !important; letter-spacing: -0.02em !important;
                                                                          word-break: keep-all; overflow-wrap: normal;}
-        [class*="st-key-grupo_menu"] label[data-testid="stRadioOption"] p::first-line {font-size: 1.6rem !important;}
+        .st-key-grupo_menu_cerebro label[data-testid="stRadioOption"] p::first-line {font-size: 1.6rem !important;}
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Aspecto de app móvil (mismo lenguaje visual que docs/movil): tarjetas con degradado, números grandes, barra inferior.
+# Va aparte y detrás del bloque anterior para ganarle en igualdad de especificidad. No toca alturas ni safe-area de la página.
+st.markdown("""
+    <style>
+    :root {--bg:#0b0f17; --card:#141b29; --card2:#19233a; --linea:#25304a; --txt:#eef2fb; --sub:#9aa7c2; --oro:#f1d58a;
+           --sube:#4fe3a1; --baja:#ff6b7d; --ez: cubic-bezier(.2,.8,.2,1);}
+    /* borde superior del color base: se funde con la barra de estado del móvil */
+    .stApp {background: linear-gradient(180deg, var(--bg) 0, var(--bg) 16px, transparent 150px),
+                        radial-gradient(900px 500px at 85% 4%, #1d2a52 0, transparent 60%),
+                        radial-gradient(700px 400px at -10% 35%, #2a1d4a55 0, transparent 60%), var(--bg);}
+    .block-container {padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px)); max-width: 1100px;}
+    @keyframes entra {from {opacity: 0; transform: translateY(12px)} to {opacity: 1; transform: none}}
+    @keyframes sube-card {from {opacity: 0; transform: translateY(16px) scale(.98)} to {opacity: 1; transform: none}}
+    @media (prefers-reduced-motion: reduce) {* {animation: none !important; transition: none !important;}}
+
+    /* Tarjetas de indicadores */
+    .kpi {background: linear-gradient(160deg, var(--card2), var(--card)); border: 1px solid var(--linea); border-radius: 20px;
+          padding: 14px 16px; opacity: 0; animation: sube-card .5s var(--ez) forwards; animation-delay: calc(var(--i, 0) * 70ms);}
+    .kpi .lbl {color: var(--sub); font-size: .72rem; letter-spacing: .1em; font-weight: 600;}
+    .kpi .val {color: var(--txt); font-size: 1.55rem; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums;
+               line-height: 1.3; margin-top: 2px;}
+    .kpi .dlt {display: inline-block; margin-top: 4px; padding: 2px 10px; border-radius: 999px; font-size: .8rem; font-weight: 700;
+               font-variant-numeric: tabular-nums;}
+    .kpi .dlt.up {background: #4fe3a11f; color: var(--sube);}
+    .kpi .dlt.dn {background: #ff6b7d1f; color: var(--baja);}
+    .kpi.hero {background: linear-gradient(135deg, #2a3a78, #1b2347 60%, #2d1f55); border-color: #3c4d92; padding: 18px 20px;}
+    .kpi.hero .lbl {color: #bcc7ec;}
+    .kpi.hero .val {font-size: 2.7rem; letter-spacing: -.03em; line-height: 1.15;}
+    .kpi .val.up {color: var(--sube);} .kpi .val.dn {color: var(--baja);}
+    .kpis-mini {display: flex; gap: 8px; margin: 2px 0 8px;}
+    .kpis-mini .kpi {flex: 1 1 0; min-width: 0; padding: 8px 12px; border-radius: 16px;}
+    .kpis-mini .kpi .val {font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+    .kpis-mini .kpi .lbl {font-size: .62rem;}
+    .meta {color: #6b7a99;}
+    [data-testid="stMetric"] {background: linear-gradient(160deg, var(--card2), var(--card)); border: 1px solid var(--linea);
+                              border-radius: 16px; padding: 10px 14px;}
+    [data-testid="stMetricValue"] {font-variant-numeric: tabular-nums; letter-spacing: -.02em;}
+    [data-testid="stPlotlyChart"] {background: linear-gradient(160deg, #19233a66, #141b2966); border: 1px solid var(--linea);
+                                   border-radius: 18px; padding: 6px; animation: entra .45s var(--ez);}
+    h5 {letter-spacing: .02em;}
+
+    /* Apartados del destino (pastillas con deslizamiento horizontal, como los "chips" de la versión móvil) */
+    .st-key-pill_menu [role="radiogroup"] {display: flex !important; flex-wrap: nowrap !important; overflow-x: auto; gap: 8px;
+                                           padding: 2px 2px 8px; scrollbar-width: none; -webkit-overflow-scrolling: touch;}
+    .st-key-pill_menu [role="radiogroup"]::-webkit-scrollbar {display: none;}
+    .st-key-pill_menu label[data-testid="stRadioOption"] {flex: none; width: auto !important; min-height: 40px; padding: 8px 15px;
+                                  border-radius: 999px; background: var(--card); border-color: var(--linea); transition: all .2s;}
+    .st-key-pill_menu label[data-testid="stRadioOption"] p {font-size: .9rem; font-weight: 600; color: var(--sub); white-space: nowrap;}
+    .st-key-pill_menu label[data-testid="stRadioOption"][data-selected="true"] {background: var(--oro); border-color: var(--oro);}
+    .st-key-pill_menu label[data-testid="stRadioOption"][data-selected="true"] p {color: #241b00;}
+    .st-key-pill_menu [role="radiogroup"] > div {width: auto;}
+
+    /* Barra inferior fija: 5 destinos con icono arriba y nombre debajo */
+    .st-key-dest_menu, .stApp:has(.modo-barra) .st-key-seccion {position: fixed !important; left: 0; right: 0; bottom: 0; z-index: 999;
+        width: 100% !important; margin: 0 !important; background: #0d1320ee; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+        border-top: 1px solid var(--linea); padding: 6px 8px calc(env(safe-area-inset-bottom, 0px) + 6px);}
+    .st-key-dest_menu [data-testid="stRadio"], .st-key-dest_menu [role="radiogroup"] {width: 100%; max-width: 640px; margin: 0 auto;}
+    .st-key-dest_menu [role="radiogroup"], .stApp:has(.modo-barra) .st-key-seccion [role="radiogroup"] {display: grid !important;
+        grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr)); gap: 2px;}
+    .st-key-dest_menu label[data-testid="stRadioOption"], .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] {
+        background: none !important; border: 0 !important; border-radius: 12px; min-height: 62px; padding: 6px 0 !important;
+        width: 100% !important; justify-content: center; text-align: center; position: relative; transition: color .2s;}
+    .st-key-dest_menu label[data-testid="stRadioOption"] > div, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] > div {
+        width: 100%; justify-content: center;}
+    .st-key-dest_menu label[data-testid="stRadioOption"] p, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] p {
+        font-size: .68rem; font-weight: 600; color: var(--sub); text-align: center; line-height: 1.5; letter-spacing: 0;
+        word-break: keep-all; overflow-wrap: normal;}
+    .st-key-dest_menu label[data-testid="stRadioOption"] p::first-line, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] p::first-line {
+        font-size: 1.9rem; line-height: 1.25;}
+    .st-key-dest_menu label[data-testid="stRadioOption"][data-selected="true"] p,
+    .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"][data-selected="true"] p {color: var(--oro);}
+    .st-key-dest_menu label[data-testid="stRadioOption"][data-selected="true"]::after,
+    .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"][data-selected="true"]::after {
+        content: ""; position: absolute; top: -7px; left: 50%; width: 28px; margin-left: -14px; height: 3px; border-radius: 3px;
+        background: var(--oro); animation: entra .3s;}
+    /* Secciones dentro de «Más»: tarjetas grandes */
+    .stApp:not(:has(.modo-barra)) .st-key-seccion [role="radiogroup"] {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;}
+    .stApp:not(:has(.modo-barra)) .st-key-seccion label[data-testid="stRadioOption"] {width: 100%; min-height: 64px; border-radius: 18px;
+        background: linear-gradient(160deg, var(--card2), var(--card)); border-color: var(--linea); justify-content: center;}
+    .stApp:not(:has(.modo-barra)) .st-key-seccion label[data-testid="stRadioOption"][data-selected="true"] {border-color: var(--oro);}
+    @media (max-width: 640px) {
+        .kpi .val {font-size: 1.3rem;} .kpi.hero .val {font-size: 2.4rem;}
+        .kpis-mini .kpi .val {font-size: .95rem;}
     }
     </style>
 """, unsafe_allow_html=True)
@@ -277,15 +364,19 @@ seccion = st.session_state.get("seccion", _SECCIONES[0])
 
 
 def menu_secciones():
-    """Menú de secciones (Cerebro, Seguimiento, Privado): va al final de la página, junto a los demás menús."""
+    """Menú de secciones (Cartera, Cerebro, Seguimiento, Privado). En las secciones de apuntes es la barra inferior fija;
+    en la Cartera va dentro de «Más» como tarjetas (la barra de abajo es la de los destinos de la cartera)."""
     if len(_SECCIONES) > 1:
-        nueva = st.radio("Sección", _SECCIONES, horizontal=True, label_visibility="collapsed", key="seccion")
+        en_barra = seccion != "📊 Cartera"
+        if en_barra:
+            st.markdown(f"<div class='modo-barra' style='display:none'></div><style>.st-key-seccion{{--n:{len(_SECCIONES)}}}</style>",
+                        unsafe_allow_html=True)
+        nueva = st.radio("Sección", _SECCIONES, horizontal=True, label_visibility="collapsed", key="seccion",
+                         format_func=(lambda t: t.replace(" ", "  \n", 1)) if en_barra else str)
         if nueva != seccion:
             st.rerun()
 
 
-if seccion == "📊 Cartera":
-    menu_secciones()                 # en la cartera, que es larga, el menú se queda arriba
 if seccion == "🔒 Privado":
     import importlib
     importlib.reload(privado_vista)
@@ -333,7 +424,7 @@ NOTICIAS_URL = "https://raw.githubusercontent.com/joeldragonball-jpg/requirement
 ALERTAS_URL = "https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/main/alertas/config.toml"
 MADRID = ZoneInfo("Europe/Madrid")
 
-POS, NEG, MUTED, GRID = "#10b981", "#ef4444", "#94a3b8", "#262c3a"
+POS, NEG, MUTED, GRID = "#10b981", "#ef4444", "#94a3b8", "#1f2a40"
 MESES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
          "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
 MESES_CORTOS = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
@@ -383,7 +474,8 @@ def style_fig(fig, height=360):
         height=height, margin=dict(l=10, r=10, t=30, b=10), hovermode="x unified",
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
         separators=",.",
-        hoverlabel=dict(bgcolor="#151921", bordercolor="#262c3a", font=dict(color="#e5e7eb")),
+        hoverlabel=dict(bgcolor="#19233a", bordercolor="#25304a", font=dict(color="#eef2fb")),
+        font=dict(family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif", color="#9aa7c2"),
     )
     fig.update_xaxes(showgrid=False, title=None, fixedrange=True)     # fixedrange: sin zoom con los dedos
     fig.update_yaxes(gridcolor=GRID, title=None, fixedrange=True)
@@ -907,40 +999,62 @@ if not tx.empty:
     tir = xirr(list(flujos["fecha"].clip(upper=pd.Timestamp.now().normalize())) + [pd.Timestamp.now().normalize()],
                list(-flujos["total"]) + [val_total])
 
-def kpi_card(label, value, delta=None, ayuda=None, hero=False, colorear=False):
+# Menú en dos niveles: barra inferior fija con 5 destinos y, arriba, pastillas con los apartados de cada destino.
+# _sec sigue siendo el índice del apartado (0-11) que usa el resto del código; solo se ejecuta el código del apartado elegido
+# (la app carga más rápido y consulta menos fuentes).
+_NOMBRES = ["🏠 Inicio", "💼 Posiciones", "📈 Evolución", "📅 Rentabilidad", "🧾 Operaciones", "🛡️ Riesgo", "🧮 Simuladores",
+            "🏛️ Fiscalidad", "📰 Noticias", "👀 Watchlist", "🗓️ Eventos", "🩺 Sistema"]
+_DESTINOS = [("🏠 Inicio", [0]),
+             ("💼 Cartera", [1, 4, 7]),                # Posiciones, Operaciones, Fiscalidad
+             ("📈 Análisis", [2, 3, 5, 6]),            # Evolución, Rentabilidad, Riesgo, Simuladores
+             ("📰 Mercado", [8, 9, 10]),               # Noticias, Watchlist, Eventos
+             ("⚙️ Más", [11])]                         # Sistema + cambio de sección (Cerebro, Seguimiento, Privado)
+_dest = st.radio("Destino", range(len(_DESTINOS)), horizontal=True, label_visibility="collapsed", key="dest_menu",
+                 format_func=lambda d: _DESTINOS[d][0].replace(" ", "  \n", 1))      # icono arriba y nombre debajo
+_apartados = _DESTINOS[_dest][1]
+if len(_apartados) > 1:
+    if st.session_state.get("pill_menu") not in _apartados:      # al cambiar de destino se empieza por su primer apartado
+        st.session_state["pill_menu"] = _apartados[0]
+    _sec = st.radio("Apartado", _apartados, horizontal=True, label_visibility="collapsed", key="pill_menu",
+                    format_func=lambda i: _NOMBRES[i])
+else:
+    _sec = _apartados[0]
+
+
+def kpi_card(label, value, delta=None, ayuda=None, hero=False, colorear=False, i=0):
     """Tarjeta HTML: así en el móvil caben 2 por fila en vez de una debajo de otra.
-    hero: la tarjeta grande de arriba. colorear: valor en verde/rojo según su signo."""
+    hero: la tarjeta grande de arriba. colorear: valor en verde/rojo según su signo. i: orden de entrada (animación)."""
+    from html import escape
     dlt = ""
     if delta and delta != "—":
-        color = NEG if delta.strip().startswith("-") else POS
-        dlt = f"<div class='dlt' style='color:{color}'>{delta}</div>"
-    titulo = f" title='{ayuda}'" if ayuda else ""
-    estilo = ""
+        dlt = f"<div class='dlt {'dn' if delta.strip().startswith('-') else 'up'}'>{escape(str(delta))}</div>"
+    titulo = f" title='{escape(str(ayuda), quote=True)}'" if ayuda else ""
+    clase = ""
     if colorear and value not in ("—", None):
-        estilo = f" style='color:{NEG if str(value).strip().startswith('-') else POS}'"
-    return (f"<div class='kpi{' hero' if hero else ''}'{titulo}><div class='lbl'>{label}</div>"
-            f"<div class='val'{estilo}>{value}</div>{dlt}</div>")
+        clase = " dn" if str(value).strip().startswith("-") else " up"
+    return (f"<div class='kpi{' hero' if hero else ''}'{titulo} style='--i:{i}'><div class='lbl'>{escape(str(label)).upper()}</div>"
+            f"<div class='val{clase}'>{escape(str(value))}</div>{dlt}</div>")
 
 
 kpis = [
-    ("Valor actual", eur(val_total), None, None, True, False),
-    ("Invertido", eur(inv_total), None, "Dinero puesto menos dinero retirado con ventas (incluye comisiones).", False, False),
-    ("Beneficio", eur(pnl_total, sign=True), pct(pnl_total_pct), "Beneficio no realizado: valor actual menos invertido.", False, True),
-    ("Hoy", eur(hoy_eur, sign=True) if live else "—", pct(hoy_pct) if live else None,
+    ("💰 Valor actual", eur(val_total), None, None, True, False),
+    ("📥 Invertido", eur(inv_total), None, "Dinero puesto menos dinero retirado con ventas (incluye comisiones).", False, False),
+    ("📈 Beneficio", eur(pnl_total, sign=True), pct(pnl_total_pct), "Beneficio no realizado: valor actual menos invertido.", False, True),
+    ("☀️ Hoy", eur(hoy_eur, sign=True) if live else "—", pct(hoy_pct) if live else None,
      "Variación desde la apertura del día (00:00 UTC) en Kraken.", False, True),
-    ("TIR anual", pct(tir) if tir is not None else "—", None,
+    ("🎯 TIR anual", pct(tir) if tir is not None else "—", None,
      "Rentabilidad anualizada teniendo en cuenta cuándo metiste cada euro. Es la cifra comparable con un depósito o un fondo.", False, False),
 ]
-st.markdown("<div class='kpis'>" + "".join(kpi_card(*k) for k in kpis) + "</div>"
-            f"<div class='meta'>{_pie_datos}</div>", unsafe_allow_html=True)
+if _sec == 0:
+    st.markdown("<div class='kpis'>" + "".join(kpi_card(*k, i=n) for n, k in enumerate(kpis)) + "</div>"
+                f"<div class='meta'>{_pie_datos}</div>", unsafe_allow_html=True)
+else:      # en el resto de apartados, una tira compacta (valor, beneficio y hoy) para no quitar sitio al contenido
+    st.markdown("<div class='kpis-mini'>" + "".join(kpi_card(*kpis[n][:2], delta=None, colorear=kpis[n][5], i=j)
+                                                    for j, n in enumerate((0, 2, 3))) + "</div>", unsafe_allow_html=True)
 
-# Menú en dos niveles (más cómodo en el móvil que 12 pestañas en una fila): primero el grupo, luego sus pestañas.
-# Solo se ejecuta el código del grupo elegido (la app carga más rápido y consulta menos fuentes).
-_NOMBRES = ["🏠 Inicio", "💼 Posiciones", "📈 Evolución", "📅 Rentabilidad", "🧾 Operaciones", "🛡️ Riesgo", "🧮 Simuladores",
-            "🏛️ Fiscalidad", "📰 Noticias", "👀 Watchlist", "🗓️ Eventos", "🩺 Sistema"]
-_ORDEN = [0, 1, 2, 3, 4, 7, 8, 9, 10, 5, 6, 11]      # Inicio, Posiciones, Evolución, Rentabilidad, Operaciones, Fiscalidad, Noticias...
-_sec = st.radio("Menú", _ORDEN, horizontal=True, label_visibility="collapsed", key="grupo_menu",
-                format_func=lambda i: _NOMBRES[i].replace(" ", "  \n", 1))   # icono arriba y nombre debajo (loseta)
+# Cambio de sección (Cerebro, Seguimiento, Privado): en «Más», con tarjetas grandes
+if _dest == len(_DESTINOS) - 1:
+    menu_secciones()
 _SEL = [_sec]
 tabs = {_sec: st.container()}
 
