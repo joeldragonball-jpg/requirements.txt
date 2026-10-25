@@ -65,6 +65,11 @@ def mostrar():
         st.success("No queda nada pendiente en las colas.")
 
     # --- Plazos y predicciones
+    fr = d.get("frescura")
+    if fr:
+        st.markdown("##### 🧭 Qué se está quedando viejo (se calcula solo, sin IA)")
+        st.dataframe(pd.DataFrame([{"": {"alerta": "🔴", "aviso": "🟡", "ok": "🟢"}[f["nivel"]], "Dónde": f["area"], "Qué": f["titulo"], "Cuántos": f["n"],
+                                    "Detalle": f["detalle"], "Lo pone al día": f["rutina"]} for f in fr["items"]]), hide_index=True, use_container_width=True)
     st.markdown("##### 🗓️ Próximas fechas importantes")
     if d["plazos"]:
         st.dataframe(pd.DataFrame([{"": "🔴" if e["impacto"] == "alto" else "🟡", "Fecha": e["fecha"], "Cuándo": _cuando(e["dias"]), "Evento": e["titulo"]} for e in d["plazos"]]),

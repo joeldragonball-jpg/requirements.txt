@@ -278,6 +278,79 @@ def informes_recientes(n=12):
     return sorted(out, key=lambda x: (x["fecha"], x["ruta"]), reverse=True)[:n]
 
 
+def frescura():
+    """Qué datos del Explorador, del cerebro y de los paneles manuales se están quedando viejos y qué rutina los pone al día (sin IA)."""
+    hoy = date.today()
+    items = []
+
+    def anadir(area, titulo, n, detalle, rutina, nivel):
+        items.append({"area": area, "titulo": titulo, "n": n, "detalle": detalle, "rutina": rutina, "nivel": nivel})
+    try:
+        reg = json.loads(leer(RAIZ / "explorador" / "regulacion.json"))
+        celdas = reg.get("celdas", [])
+        sin_dato = [c for c in celdas if c.get("etapa") is None and c.get("tema") != "politica"]
+        por_jur = {}
+        for c in sin_dato:
+            por_jur[c["jur"]] = por_jur.get(c["jur"], 0) + 1
+        top = ", ".join(f"{j.upper()} {n}" for j, n in sorted(por_jur.items(), key=lambda x: -x[1])[:5])
+        anadir("Radar regulatorio", "Celdas sin dato", len(sin_dato), f"Más huecos: {top}" if top else "", "W03", "aviso" if sin_dato else "ok")
+        viejas = [c for c in celdas if c.get("revisado") and (hoy - date.fromisoformat(c["revisado"][:10])).days > 30]
+        anadir("Radar regulatorio", "Celdas sin revisar en más de 30 días", len(viejas), "Se revisan con la rutina de países", "W03", "alerta" if len(viejas) > 10 else "aviso" if viejas else "ok")
+        pasadas = [c for c in celdas if isinstance(c.get("proxima"), dict) and c["proxima"].get("fecha", "9999")[:10] < hoy.isoformat()]
+        anadir("Radar regulatorio", "Fechas previstas ya pasadas sin actualizar", len(pasadas),
+               "; ".join(f"{c['jur'].upper()}/{c['tema']}" for c in pasadas[:4]), "W03", "alerta" if pasadas else "ok")
+    except Exception as e:
+        anadir("Radar regulatorio", f"No se pudo leer ({type(e).__name__})", 0, "", "W03", "aviso")
+    try:
+        vs = json.loads(leer(RAIZ / "explorador" / "voces.json")).get("voces", [])
+        sin = [v for v in vs if v.get("conf") == "sin_confirmar"]
+        viejas = [v for v in sin if v.get("cuando") and (hoy - date.fromisoformat((v["cuando"] + "-01")[:10] if len(v["cuando"]) == 7 else v["cuando"][:10])).days > 14]
+        anadir("Voces", "Voces sin confirmar", len(sin), f"{len(viejas)} llevan más de 14 días" if viejas else "", "W06", "alerta" if len(viejas) > 3 else "aviso" if sin else "ok")
+    except Exception as e:
+        anadir("Voces", f"No se pudo leer ({type(e).__name__})", 0, "", "W06", "aviso")
+    try:
+        pr = predicciones()
+        vencidas = [x for x in pr["abiertas"] if x.get("limite") and x["limite"] < hoy.isoformat()]
+        anadir("Predicciones", "Vencidas sin resultado", len(vencidas), ", ".join(f"#{x['n']}" for x in vencidas[:6]) if vencidas else "", "W06", "alerta" if vencidas else "ok")
+    except Exception as e:
+        anadir("Predicciones", f"No se pudo leer ({type(e).__name__})", 0, "", "W06", "aviso")
+    try:
+        man = json.loads(leer(RAIZ / "explorador" / "liquidez-manual.json"))
+        retraso = []
+        for clave in ("jp", "cn"):
+            f = man.get(clave, {}).get("fecha")
+            if f:
+                dias = (hoy - date.fromisoformat(f[:7] + "-01")).days
+                if dias > 75:
+                    retraso.append(f"{clave.upper()} ({f})")
+        anadir("Datos a mano", "Liquidez de Japón y China", len(retraso), ", ".join(retraso) if retraso else "al día (dato del último mes publicado)", "W01", "alerta" if retraso else "ok")
+    except Exception as e:
+        anadir("Datos a mano", f"No se pudo leer ({type(e).__name__})", 0, "", "W01", "aviso")
+    try:
+        pan = json.loads(leer(RAIZ / "explorador" / "paneles.json"))
+        leido = datetime.strptime(pan["leido"][:16], "%Y-%m-%d %H:%M").date() if pan.get("leido") else None
+        dias = (hoy - leido).days if leido else None
+        anadir("Paneles automáticos", "Última lectura de datos", dias if dias is not None else 0, f"leído el {pan.get('leido', '?')[:16]} UTC", "paneles.yml (L-V 21:30 UTC)",
+               "ok" if dias is not None and dias <= 3 else "alerta")
+    except Exception as e:
+        anadir("Paneles automáticos", f"No se pudo leer ({type(e).__name__})", 0, "", "paneles.yml", "aviso")
+    semanales = sorted((RAIZ / "cerebro" / "actualidad").glob("*.md"))
+    if semanales:
+        ultima = semanales[-1]
+        m = re.match(r"(\d{4})-W(\d{2})", ultima.name)
+        if m:
+            lunes = date.fromisocalendar(int(m.group(1)), int(m.group(2)), 1)
+            dias = (hoy - lunes).days
+            anadir("Cerebro", "Último resumen semanal del bot", dias, f"{ultima.stem}", "cerebro.yml", "ok" if dias <= 14 else "alerta")
+    revs = sorted(f for f in (RAIZ / "informes").glob("*-revision.md"))
+    if revs:
+        dias = (hoy - date.fromisoformat(revs[-1].name[:10])).days
+        anadir("Cerebro", "Última revisión semanal del cerebro", dias, revs[-1].name, "revision.yml", "ok" if dias <= 10 else "alerta")
+    orden = {"alerta": 0, "aviso": 1, "ok": 2}
+    items.sort(key=lambda x: orden[x["nivel"]])
+    return {"items": items, "resumen": {k: sum(1 for x in items if x["nivel"] == k) for k in ("alerta", "aviso", "ok")}}
+
+
 def construir(bots_estado=False):
     colas = cola_r() + cola_t() + cola_d()
     eventos = eventos_futuros()
@@ -309,7 +382,7 @@ def construir(bots_estado=False):
         "predicciones": predicciones(), "auditorias": auditorias(),
         "bots": bots() if bots_estado else [],
         "cuota": {"total": round(sum(c["pct"] for c in cuota), 1), "tareas": sorted(cuota, key=lambda c: -c["pct"])[:8], "n": len(cuota)},
-        "informes": informes_recientes(),
+        "informes": informes_recientes(), "frescura": frescura(),
     }
 
 

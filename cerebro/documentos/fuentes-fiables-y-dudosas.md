@@ -129,3 +129,4 @@ actualizado: 2026-10-07
 - 2026-10-25 (W10): el IMF PortWatch tiene API abierta (ArcGIS, servicio Daily_Chokepoints_Data) con tránsitos diarios del estrecho de Ormuz [P]; se lee con curl y da el dato con unos días de retraso (último: 18-oct). Mejor que los agregadores de prensa.
 - 2026-10-25: los PDF del Banco de Japón (boj.or.jp/statistics/money/ms/msAAMM.pdf) no los lee WebFetch; sirven con `pdftotext -raw` sobre el PDF descargado, pero la tabla sale desordenada: confirmar la fila.
 - 2026-10-25 (revisión): la serie diaria de rendimientos del Tesoro de EE. UU. se lee con curl en home.treasury.gov (CSV daily_treasury_yield_curve) [P]; sirve para cazar cifras sin plazo.
+- 2026-10-25: el M2 de Japón sale en boj.or.jp/statistics/money/ms/msAAMM.pdf (preliminar del mes anterior, hacia el día 9-14 de cada mes); la tabla se lee con pdftotext -raw. Lo marca como viejo el panel «Qué se está quedando viejo».
