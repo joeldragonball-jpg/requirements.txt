@@ -168,10 +168,10 @@ const precio = v => PRE + fm(conv(v), dec(v)) + MON;
 const signo = v => (v > 0 ? '+' : '') + fm(v, 1) + ' %';
 const cls = v => Math.abs(v) < 0.05 ? 'neutro' : v > 0 ? 'sube' : 'baja';
 const ICO = {
-  hoy: '<path d="M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>', mercado: '<path d="M3 17l5-5 4 4 8-9"/><path d="M15 7h5v5"/>',
+  hoy: '<path d="M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>', centro: '<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>', mercado: '<path d="M3 17l5-5 4 4 8-9"/><path d="M15 7h5v5"/>',
   agenda: '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/>', noticias: '<path d="M5 4h11a3 3 0 013 3v13H7a3 3 0 01-3-3V5a1 1 0 011-1z"/><path d="M8 9h8M8 13h8M8 17h5"/>',
   cerebro: '<path d="M9 4a3 3 0 00-3 3 3 3 0 00-2 5 3 3 0 002 5 3 3 0 006 0V4a3 3 0 00-3 0zM15 4a3 3 0 013 3 3 3 0 012 5 3 3 0 01-2 5 3 3 0 01-6 0"/>'};
-const TABS = [['hoy','Hoy'],['mercado','Mercado'],['agenda','Agenda'],['noticias','Noticias'],['cerebro','Cerebro']];
+const TABS = [['hoy','Hoy'],['centro','Centro'],['mercado','Mercado'],['agenda','Agenda'],['noticias','Noticias'],['cerebro','Cerebro']];
 let tab = 'hoy', filtroAg = 'todos', filtroNo = 'todas', segCer = 'seg';
 
 document.getElementById('fecha').textContent = DIA[HOY.getDay()][0].toUpperCase() + DIA[HOY.getDay()].slice(1) + ' ' + HOY.getDate() + ' ' + MES[HOY.getMonth()];
@@ -290,7 +290,26 @@ function vCerebro(){
   return `<div class="vista"><div class="buscador" id="abrebus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9aa7c2" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span style="color:var(--sub);padding:14px 0">Buscar en todo el Cerebro…</span></div>
   <div class="seg">${[['seg','Seguimiento'],['voces','Voces'],['videos','Vídeos'],['informes','Informes']].map(([k, n]) => `<button class="${segCer === k ? 'on' : ''}" data-sc="${k}">${n}</button>`).join('')}</div>${cuerpo}<div class="pie">Voces: nivel P = fuente primaria · D = declaración localizada · S = prensa</div></div>`;
 }
-const VISTAS = {hoy: vHoy, mercado: vMercado, agenda: vAgenda, noticias: vNoticias, cerebro: vCerebro};
+const ESTC = {hecho: ['✓', 'var(--sube)', 'Hecho'], parcial: ['◐', 'var(--ambar)', 'En parte'], falta: ['○', 'var(--sub)', 'Falta']};
+function vCentro(){
+  const M = D.centro || [], tot = {hecho: 0, parcial: 0, falta: 0};
+  M.forEach(m => Object.keys(tot).forEach(k => tot[k] += m.n[k]));
+  const tarjeta = (m, i) => { const n = m.n.hecho + m.n.parcial + m.n.falta, w = k => (m.n[k] / n * 100).toFixed(0) + '%';
+    return `<div class="card" style="--i:${i + 1};padding:14px;border-left:4px solid ${m.color}" data-abre>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><div><span class="neutro" style="font-size:11px;font-weight:700;letter-spacing:.06em">MÓDULO ${m.id} · ${esc(m.apodo.toUpperCase())}</span><h3 style="margin:2px 0 0;font-size:18px">${esc(m.nombre)}</h3></div><span class="flecha neutro" style="font-size:18px">⌄</span></div>
+    <div class="meta2" style="margin:4px 0 8px">${esc(m.resumen)}</div>
+    <div style="display:flex;height:8px;border-radius:8px;overflow:hidden;background:#ffffff12"><i style="width:${w('hecho')};background:var(--sube)"></i><i style="width:${w('parcial')};background:var(--ambar)"></i></div>
+    <div class="meta2" style="margin-top:6px"><b style="color:var(--sube)">${m.n.hecho}</b> hecho · <b style="color:var(--ambar)">${m.n.parcial}</b> en parte · <b>${m.n.falta}</b> por hacer${m.ultimo ? ` · último ${m.ultimo.fecha.slice(5)}` : ''}</div>
+    <div class="mas">${m.ultimo ? `<div class="meta2" style="margin:0 0 8px">Último informe: ${esc(m.ultimo.titulo)} (${m.ultimo.fecha})</div>` : ''}${m.elementos.map(e => { const [ic, col, nom] = ESTC[e.estado] || ESTC.falta;
+      return `<div style="display:flex;gap:10px;padding:7px 0;border-top:1px solid rgba(255,255,255,.07);align-items:baseline"><b style="color:${col};width:16px;text-align:center" title="${nom}">${ic}</b><span style="flex:1;font-size:14px;line-height:1.35${e.estado === 'falta' ? ';color:var(--sub)' : ''}">${esc(e.texto)}</span>${e.ir ? `<span data-ir2="${e.ir}" style="color:var(--oro);font-size:13px;white-space:nowrap;cursor:pointer;padding:4px 0 4px 8px">Ver ›</span>` : ''}</div>`; }).join('')}</div></div>`; };
+  const huecos = M.flatMap(m => m.elementos.filter(e => e.estado === 'falta').map(e => ({m: m.nombre, t: e.texto, c: m.color})));
+  return `<div class="vista">
+  <div class="card hero" style="--i:0"><div style="flex:1"><small>Centro de operaciones y análisis</small><h2>Todo en un sitio</h2><p>${tot.hecho} cosas hechas · ${tot.parcial} en parte · ${tot.falta} por hacer. Toca un módulo para ver qué incluye.</p></div></div>
+  ${M.map(tarjeta).join('')}
+  ${cab('Huecos por cubrir')}<div class="card" style="--i:8;padding:6px 14px">${huecos.map((h, k) => `<div style="display:flex;gap:10px;padding:9px 0;${k ? 'border-top:1px solid rgba(255,255,255,.07)' : ''};align-items:baseline"><span style="width:8px;height:8px;border-radius:50%;background:${h.c};flex:none;margin-top:5px"></span><span style="font-size:14px;line-height:1.35">${esc(h.t)}<span class="meta2" style="display:block;margin:2px 0 0">${esc(h.m)}</span></span></div>`).join('') || '<div class="pie">Sin huecos</div>'}</div>
+  <div class="pie">Plano editable en explorador/centro.json. Lo privado (tesis, patrimonio, suscripciones) va solo en privado/ y no se publica aquí.</div></div>`;
+}
+const VISTAS = {hoy: vHoy, centro: vCentro, mercado: vMercado, agenda: vAgenda, noticias: vNoticias, cerebro: vCerebro};
 function pintar(){
   document.getElementById('main').innerHTML = VISTAS[tab]();
   document.querySelectorAll('#nav button').forEach(b => b.classList.toggle('on', b.dataset.t === tab));
@@ -298,9 +317,10 @@ function pintar(){
 }
 document.addEventListener('click', e => {
   if (e.target.closest('a')) return;
-  const t = e.target.closest('[data-t],[data-ir],[data-fa],[data-fn],[data-sc],[data-abre],#abrebus,#bbus,#cerrar');
+  const t = e.target.closest('[data-t],[data-ir],[data-ir2],[data-fa],[data-fn],[data-sc],[data-abre],#abrebus,#bbus,#cerrar');
   if (!t) return;
   if (t.dataset.t) { tab = t.dataset.t; document.getElementById('main').scrollTo(0, 0); pintar(); }
+  else if (t.dataset.ir2) { const [a, b] = t.dataset.ir2.split(':'); tab = a; if (b) segCer = b; document.getElementById('main').scrollTo(0, 0); pintar(); }
   else if (t.dataset.ir) { tab = t.dataset.ir; document.getElementById('main').scrollTo(0, 0); pintar(); }
   else if (t.dataset.fa) { filtroAg = t.dataset.fa; pintar(); }
   else if (t.dataset.fn) { filtroNo = t.dataset.fn; pintar(); }

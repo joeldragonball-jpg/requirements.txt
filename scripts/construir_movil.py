@@ -122,6 +122,23 @@ def petroleo():
     return salida
 
 
+def centro():
+    """Plano del Centro (explorador/centro.json) con el informe más reciente de cada módulo y el recuento por estado."""
+    plano = cargar("explorador/centro.json")
+    salida = []
+    for m in plano["modulos"]:
+        archivos = sorted({a for patron in m.get("patron", []) for a in RAIZ.glob(patron)}, key=lambda a: a.name[:10])
+        ultimo = None
+        for a in reversed(archivos):
+            if re.match(r"\d{4}-\d{2}-\d{2}", a.name):
+                ultimo = {"fecha": a.name[:10], "titulo": titulo_md(a).split(" — lanzada")[0]}
+                break
+        estados = [e["estado"] for e in m["elementos"]]
+        salida.append({"id": m["id"], "nombre": m["nombre"], "apodo": m["apodo"], "color": m["color"], "resumen": m["resumen"],
+                       "elementos": m["elementos"], "ultimo": ultimo, "n": {k: estados.count(k) for k in ("hecho", "parcial", "falta")}})
+    return salida
+
+
 def main():
     previo = {}
     if SALIDA.exists():
@@ -138,7 +155,7 @@ def main():
         "watchlist": p.get("watchlist", {}).get("valores", []),
         "bonos": [{"id": k, "valor": bonos[k]["plazos"].get("10A"), "fecha": bonos[k]["fecha"]} for k in ("USA", "JPN", "EUR", "ESP", "FRA", "GBR") if k in bonos],
         "eventos": eventos(), "voces": voces(), "niveles": cargar("explorador/voces.json").get("niveles", {}),
-        "informes": lista_md("informes", 6), "investigacion": lista_md("informes/research", 8), "videos": lista_md("informes/videos", 6),
+        "informes": lista_md("informes", 6), "investigacion": lista_md("informes/research", 8), "videos": lista_md("informes/videos", 6), "centro": centro(),
     }
     fallos = []
     for clave, funcion in (("eur", cambio_euro), ("petroleo", petroleo), ("noticias", noticias)):
