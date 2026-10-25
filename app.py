@@ -330,6 +330,13 @@ st.markdown("""
     @media (max-width: 640px) {.block-container {padding-left: 16px !important; padding-right: 16px !important;}}
     /* Barra inferior: fondo y borde de la paleta */
     .st-key-dest_menu, .stApp:has(.modo-barra) .st-key-seccion {background: rgba(13,19,32,.93); border-color: var(--linea);}
+    /* Sin huecos fantasma arriba: los elementos de 0 px (estilos, componentes con script) no deben sumar el hueco entre bloques */
+    [data-testid="stElementContainer"][height="0px"] {position: absolute; width: 1px; height: 0; overflow: hidden;}
+    [data-testid="stElementContainer"]:has(style):not(:has(p, span, svg, img, table, details, ul, ol, h1, h2, h3, h4, h5, h6, .panel, .kpis, .meta, .fecha-cab, .pcard)) {display: none;}
+    .meta {margin: -6px 2px 0;}
+    .stMarkdown h5 {margin: 10px 4px 6px;}
+    /* Indicadores de Cartera: todos del mismo alto para que las filas queden alineadas */
+    [data-testid="stVerticalBlockBorderWrapper"] [data-testid="stMetric"] {min-height: 88px;}
     </style>
 """, unsafe_allow_html=True)
 
@@ -447,7 +454,7 @@ def listo():
 
 if str(st.query_params.get("via", "")) == "shell":
     # Abierta desde la página de entrada (dentro de un marco): ella ya reserva el espacio de la barra de estado del iPhone
-    st.markdown("<style>.block-container{padding-top:1.2rem !important}"
+    st.markdown("<style>.block-container{padding-top:.5rem !important}"
                 # el marco ya llega al borde de la pantalla: la barra flotante baja sin depender de la zona segura (env), que ahí no es fiable
                 ".st-key-dest_menu, .stApp:has(.modo-barra) .st-key-seccion {bottom: 10px !important}</style>", unsafe_allow_html=True)
 ajustes_movil()
@@ -1057,7 +1064,7 @@ with st.spinner("Cargando cartera..."):
     live = live_prices() if use_live else {}
     hist = {tok: price_history(tok) for tok in TOKENS}
 
-linea_estado()
+# (el aviso de bots se retiró de las pantallas: el estado está en Más → Sistema)
 
 if pos.empty:
     st.warning("La hoja de resumen no tiene posiciones. Revisa que tenga las columnas 'Token' y 'Cantidad'.")
@@ -1266,23 +1273,8 @@ tabs = {_sec: st.container()}
 # =============================================================================
 if 0 in _SEL:
     with tabs[0]:
-        i1, i2 = st.columns([3, 2], gap="large")
+        i1, i2 = st.columns([3, 2], gap="small")
         with i1:
-            st.markdown("##### Últimos 30 días")
-            if not daily.empty:
-                ult = daily[daily.index >= daily.index.max() - pd.Timedelta(days=30)]
-                fig = go.Figure()
-                fig.add_trace(go.Scatter(x=ult.index, y=ult["invertido"], name="Invertido", mode="lines",
-                                         line=dict(color=MUTED, width=1.5, dash="dash"), hovertemplate="%{y:,.2f} €"))
-                fig.add_trace(go.Scatter(x=ult.index, y=ult["valor"], name="Valor", mode="lines", fill="tonexty",
-                                         fillcolor="rgba(110,168,255,.16)", line=dict(color="#6ea8ff", width=2.5),
-                                         hovertemplate="%{y:,.2f} €"))
-                fig = style_fig(fig, 190)
-                fig.update_yaxes(ticksuffix=" €")
-                chart(fig)
-                mercado_30 = ult["valor"].iloc[-1] - ult["valor"].iloc[0] - ult["flujo"].iloc[1:].sum()
-                st.caption(f"En 30 días has aportado {eur(ult['flujo'].iloc[1:].sum())} y el mercado te ha dado "
-                           f"**{eur(mercado_30, sign=True)}**.")
             st.markdown("##### Tus posiciones")
             from html import escape as _esc
             _filas = []
@@ -1300,6 +1292,21 @@ if 0 in _SEL:
                     f"<div class='barra'><i style='width:{max(0, min(100, float(r.peso))):.0f}%;background:{color}'></i></div></div>")
             st.markdown(f"<div class='panel{_anim}' style='--i:1'>{''.join(_filas)}</div>", unsafe_allow_html=True)
 
+            st.markdown("##### Últimos 30 días")
+            if not daily.empty:
+                ult = daily[daily.index >= daily.index.max() - pd.Timedelta(days=30)]
+                fig = go.Figure()
+                fig.add_trace(go.Scatter(x=ult.index, y=ult["invertido"], name="Invertido", mode="lines",
+                                         line=dict(color=MUTED, width=1.5, dash="dash"), hovertemplate="%{y:,.2f} €"))
+                fig.add_trace(go.Scatter(x=ult.index, y=ult["valor"], name="Valor", mode="lines", fill="tonexty",
+                                         fillcolor="rgba(110,168,255,.16)", line=dict(color="#6ea8ff", width=2.5),
+                                         hovertemplate="%{y:,.2f} €"))
+                fig = style_fig(fig, 190)
+                fig.update_yaxes(ticksuffix=" €")
+                chart(fig)
+                mercado_30 = ult["valor"].iloc[-1] - ult["valor"].iloc[0] - ult["flujo"].iloc[1:].sum()
+                st.caption(f"En 30 días has aportado {eur(ult['flujo'].iloc[1:].sum())} y el mercado te ha dado "
+                           f"**{eur(mercado_30, sign=True)}**.")
         with i2:
             st.markdown("##### Tus alertas")
             cfg_alertas = load_alertas()
@@ -1708,16 +1715,19 @@ if 6 in _SEL:
                       delta=eur(nuevo_pm - rc["precio_medio"], 4, sign=True) + " vs actual", delta_color="inverse")
 
             st.markdown("**¿Cuánto tendría que comprar para bajar mi precio medio a…?**")
-            objetivo_pm = st.number_input("Precio medio objetivo (€)", min_value=0.000001,
-                                          value=float(round(rc["precio_medio"] * 0.95, 5)), format="%.5f")
+            q1, q2 = st.columns(2)
+            with q1:
+                objetivo_pm = st.number_input("Precio medio objetivo (€)", min_value=0.000001,
+                                              value=float(round(rc["precio_medio"] * 0.95, 5)), format="%.5f")
             p_ef = precio_c / (1 - fee / 100)
-            if objetivo_pm >= rc["precio_medio"]:
-                st.caption("Pon un objetivo por debajo de tu precio medio actual.")
-            elif objetivo_pm <= p_ef:
-                st.warning(f"Imposible comprando a {eur(precio_c, 4)}: tu precio medio nunca bajará de {eur(p_ef, 4)} (precio + comisión).")
-            else:
-                necesario = (objetivo_pm * rc["cantidad"] - rc["invertido"]) / (1 - objetivo_pm / p_ef)
-                st.success(f"Necesitarías invertir **{eur(necesario)}** a {eur(precio_c, 4)} para dejar tu precio medio en {eur(objetivo_pm, 4)}.")
+            with q2:
+                if objetivo_pm >= rc["precio_medio"]:
+                    st.caption("Pon un objetivo por debajo de tu precio medio actual.")
+                elif objetivo_pm <= p_ef:
+                    st.warning(f"Imposible comprando a {eur(precio_c, 4)}: tu precio medio nunca bajará de {eur(p_ef, 4)} (precio + comisión).")
+                else:
+                    necesario = (objetivo_pm * rc["cantidad"] - rc["invertido"]) / (1 - objetivo_pm / p_ef)
+                    st.success(f"Necesitarías invertir **{eur(necesario)}** a {eur(precio_c, 4)} para dejar tu precio medio en {eur(objetivo_pm, 4)}.")
 
         st.divider()
         st.subheader("🎯 Simulador de objetivos")
