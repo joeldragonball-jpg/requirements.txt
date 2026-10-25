@@ -15,6 +15,8 @@ import requests
 import streamlit as st
 
 CARPETA = Path(__file__).parent / "cerebro"
+# Apuntes marcados como HISTÓRICO: se ven en la app pero no van al chat (lo vigente está en documentos/resumen-vigente-xrp.md)
+HISTORICOS = {"apuntes_xrp_macro_fiscalidad_2026.md"}
 DOSSIERS = Path(__file__).parent / "informes" / "dossiers"   # investigaciones profundas, fuera de cerebro/ a propósito (no entran en el chat)
 MODELO = "claude-sonnet-5-5"
 REPO = "joeldragonball-jpg/requirements.txt"
@@ -696,7 +698,8 @@ def tab_chat(docs):
 def preguntar(clave, docs, historial):
     import anthropic
 
-    apuntes = "\n\n".join(f"<documento titulo=\"{d['titulo']}\">\n{d['texto']}\n</documento>" for d in docs)
+    apuntes = "\n\n".join(f"<documento titulo=\"{d['titulo']}\">\n{d['texto']}\n</documento>" for d in docs
+                          if Path(d["archivo"]).name not in HISTORICOS)
     noticias = "\n".join(f"- ({n['fecha_envio'][:10]}, {n['tema']}) {n['titulo']}: {n['resumen']}"
                          + (f" [Relación con sus apuntes: {n['actualiza_apuntes']}]" if n.get("actualiza_apuntes") else "")
                          for n in noticias_recientes(30))

@@ -17,6 +17,8 @@ import requests
 
 RAIZ = Path(__file__).resolve().parent.parent
 CARPETA = RAIZ / "cerebro"
+# Apuntes marcados como HISTÓRICO: se conservan pero no se leen (lo vigente está en documentos/resumen-vigente-xrp.md)
+HISTORICOS = {"apuntes_xrp_macro_fiscalidad_2026.md"}
 MODELO = "claude-sonnet-5-5"
 MADRID = ZoneInfo("Europe/Madrid")
 
@@ -112,6 +114,8 @@ def lo_que_ya_sabe():
     """Temas, etiquetas y conceptos que ya tiene, para no repetirlos y relacionar lo nuevo."""
     lineas = []
     for p in sorted(CARPETA.rglob("*.md")):
+        if p.name in HISTORICOS:
+            continue
         texto = p.read_text(encoding="utf-8")
         tema = re.search(r"^tema:\s*(.+)$", texto, re.M)
         conceptos = re.findall(r"^\s*-\s+\*\*(.+?)\*\*", texto.split("## Conceptos", 1)[-1].split("\n## ", 1)[0], re.M)

@@ -50,6 +50,9 @@ MAX_POR_FUENTE = 12      # titulares más recientes que se leen de cada fuente
 HORAS_ANTIGUEDAD = 36    # ignora noticias más antiguas que esto
 
 CARPETA_CEREBRO = AQUI.parent / "cerebro"   # tus apuntes (.md), los mismos que muestra la app
+# Apuntes HISTÓRICOS (no entran en el extracto) y el resumen vigente que los sustituye
+HISTORICOS = {"apuntes_xrp_macro_fiscalidad_2026.md"}
+RESUMEN_VIGENTE = CARPETA_CEREBRO / "documentos" / "resumen-vigente-xrp.md"
 MAX_CHARS_CEREBRO = 14000                   # ~3.500 tokens: lo esencial de tus apuntes, sin disparar el coste
 USO = []                                    # tokens gastados en esta ejecución (se guardan en el historial)
 AHORRO = [False]                            # True si este mes se ha superado el tope de gasto (ver vigilar_gasto)
@@ -730,8 +733,11 @@ def extracto_cerebro(titulos=None):
     puntos clave, relación con tu cartera y datos pendientes de verificar (no la explicación entera)."""
     secciones_utiles = ("resumen", "puntos clave", "relaci", "dudas")
     partes = []
-    # Primero tus apuntes principales y después las 4 semanas de actualidad más recientes
-    archivos = sorted(CARPETA_CEREBRO.glob("*.md")) + sorted(CARPETA_CEREBRO.glob("actualidad/*.md"), reverse=True)[:4]
+    # Primero tus apuntes principales (sin los históricos, con el resumen vigente) y después las 4 semanas de actualidad
+    principales = [p for p in sorted(CARPETA_CEREBRO.glob("*.md")) if p.name not in HISTORICOS]
+    if RESUMEN_VIGENTE.exists():
+        principales.insert(0, RESUMEN_VIGENTE)
+    archivos = principales + sorted(CARPETA_CEREBRO.glob("actualidad/*.md"), reverse=True)[:4]
     for p in archivos:
         texto = p.read_text(encoding="utf-8")
         tema = re.search(r"^tema:\s*(.+)$", texto, re.M)

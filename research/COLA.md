@@ -93,7 +93,7 @@ Reglas fijas: fuente primaria en su idioma original (traducida por mí, con enla
 | C05 | Hueco del Centro: Archivo de precedentes históricos (formato fijo) | generica | Sonnet | medio | M | 3 % | | pendiente (prompt en research/prompts/C05-precedentes.md) |
 | C06 | Hueco del Centro: Vigilante de SEC EDGAR (ETF, DTCC, 13F) | generica | Sonnet | medio | M | <1 % | | pendiente (prompt en research/prompts/C06-edgar.md) |
 | C07 | Hueco del Centro: Control de suscripciones y software (privado) | generica | Sonnet | medio | S | <1 % | | pendiente (prompt en research/prompts/C07-suscripciones.md) |
-| C08 | Consolidar el archivo principal del cerebro en un resumen vigente (opción B, una sola vez) | generica | Opus | medio | M | 4 % | | pendiente (prompt en research/prompts/C08-consolidar-cerebro.md; sesión nueva tras el reinicio del martes 27-oct) |
+| C08 | Consolidar el archivo principal del cerebro en un resumen vigente (opción B, una sola vez) | generica | Opus | medio | M | 4 % | ~1 % | hecho 2026-10-25 (informes/research/2026-10-25-C08-consolidacion.md; cerebro/documentos/resumen-vigente-xrp.md) |
 | C09 | Lote de verificación de dudas del cerebro (revisión del 25-oct) | generica | Sonnet | medio | M | 3 % | ≈1 % (semanal 82→82 %; ventana 5 h 37→39 %) | hecho 2026-10-26 (informes/research/2026-10-26-C09-verificaciones-cerebro.md) |
 | C10 | Auditoría cruzada de cifras de los resúmenes semanales del bot (W41-W43) con series primarias | generica | Sonnet | medio | M | 3 % | ~0 % del semanal (82 % al empezar y al acabar; 5 h: 39 → ~42 %) | hecho 2026-10-26 (informes/research/2026-10-26-C10-auditoria-resumenes.md) |
 
