@@ -81,10 +81,10 @@ Reglas fijas: fuente primaria en su idioma original (traducida por mí, con enla
 | W03 | Regulación por países: huecos del radar a [P] (2 países por sesión) | generica | Sonnet | medio | M | 4 % | | recurrente (prompt en research/prompts/W03-*.md) |
 | W04 | ETF de XRP/XLM, flujos y 13F (quincenal) | generica | Sonnet | medio | M | 3 % | | recurrente (prompt en research/prompts/W04-*.md) |
 | W05 | Verificación por lotes de [VERIFICAR] (15-20 por sesión) | generica | Sonnet | medio | M | 3 % | | recurrente (prompt en research/prompts/W05-*.md) |
-| W06 | Voces y predicciones: comprobar, confirmar y añadir voces nuevas | generica | Sonnet | medio | M | 3 % | | recurrente (prompt en research/prompts/W06-*.md) |
-| W07 | Research de fuentes (mensual): enlaces, APIs abiertas y bots candidatos | generica | Sonnet | medio | M | 3 % | | recurrente (prompt en research/prompts/W07-*.md) |
+| W06 | Voces y predicciones: comprobar, confirmar y añadir voces nuevas | generica | Sonnet | medio | M | 3 % | ~2 % (sesión del 25-oct con W07 y W09; semanal 76 % al abrir; no medido por separado) | recurrente (prompt en research/prompts/W06-*.md) |
+| W07 | Research de fuentes (mensual): enlaces, APIs abiertas y bots candidatos | generica | Sonnet | medio | M | 3 % | ~1 % (sin IA nueva: resultados previos; medido junto a W06) | recurrente (prompt en research/prompts/W07-*.md) |
 | W08 | Auditoría mensual de coherencia y huecos | generica | Opus | medio | L | 4 % | | recurrente (prompt en research/prompts/W08-*.md) |
-| W09 | Resumen semanal y plan de la semana siguiente | generica | Sonnet | medio | S | 1,5 % | | recurrente (prompt en research/prompts/W09-*.md) |
+| W09 | Resumen semanal y plan de la semana siguiente | generica | Sonnet | medio | S | 1,5 % | <1 % (sin búsquedas) | recurrente (prompt en research/prompts/W09-*.md) |
 | W10 | Energía y geopolítica (Brent, WTI, Ormuz, OPEP+, EIA) | generica | Sonnet | medio | S | 2 % | | recurrente (prompt en research/prompts/W10-*.md) |
 
 ## Orden sugerido para esta semana (hasta el 20-oct)
