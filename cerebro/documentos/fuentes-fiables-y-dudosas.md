@@ -139,3 +139,5 @@ actualizado: 2026-10-07
 - 2026-10-26 (C09): sec.gov da 403/descarga a curl y al navegador con PDF directo; funciona abrir una página de sec.gov y hacer fetch del PDF dentro de la página con pdf.js (texto completo [P]). Los despachos contaron «18» activos donde el texto oficial lista 16: leer el original.
 - 2026-10-26 (C10): [P] abiertas con curl y User-Agent propio: CSV del Tesoro, FRED fredgraph.csv (CPIAUCSL, PPIFIS, DCOILBRENTEU, DFEDTARU/L, CBBTCUSD) y PortWatch (ArcGIS Daily_Chokepoints_Data); LBMA en FRED bloqueó. PPIFIS = PPI de demanda final (6,3 %); PPIACO da 12,8 %.
 - 2026-10-26 (C10): el spot EIA/FRED del Brent (Dated) va 10-25 $ por encima del futuro continuo (Yahoo BZ=F) en octubre; los resúmenes W41-W43 mezclan ambos. Yahoo chart (curl) sirve para Ibex y Brent futuro [S].
+- 2026-10-26 (W06): fiable [P]: discurso de Lagarde en ecb.europa.eu (8-may-2026) y nota del BIS p250624; la prensa había dado «mayo» sin día.
+- 2026-10-26 (W06): dudosa: sitios que republican notas del BCE (Lovguiden, Pontes 21-sep) sin original; S&P y Bloomberg dan 403/paywall: citar como [S].
