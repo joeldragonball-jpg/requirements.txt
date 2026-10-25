@@ -167,7 +167,7 @@ st.markdown("""
     .kpis-mini .kpi .val {font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
     .kpis-mini .kpi .lbl {font-size: .58rem;}
     .meta {color: #5d6b88; font-size: .7rem;}
-    .fecha-cab {color: var(--sub); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin: -6px 0 4px;}
+    .fecha-cab {color: var(--sub); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 6px; padding-left: 2px;}
     [data-testid="stMetric"] {background: linear-gradient(180deg, var(--panel2), var(--panel)); border: 1px solid var(--linea);
                               border-radius: 10px; padding: 8px 12px;}
     [data-testid="stMetricValue"] {font-variant-numeric: tabular-nums;}
@@ -180,25 +180,25 @@ st.markdown("""
                     border-left: 3px solid var(--acc); padding: 0 0 0 9px; margin: 14px 0 6px;}
 
     /* Barra inferior fija (como la versión móvil de docs/movil): iconos de línea, nombre debajo y raya dorada en el activo */
-    .st-key-dest_menu, .stApp:has(.modo-barra) .st-key-seccion {position: fixed !important; left: 0; right: 0; bottom: 0; z-index: 999;
-        width: 100% !important; margin: 0 !important; background: #0d1320ee; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
-        border-top: 1px solid var(--linea); padding: 8px 8px calc(env(safe-area-inset-bottom, 0px) + 8px);}
+    .st-key-dest_menu, .stApp:has(.modo-barra) .st-key-seccion {position: fixed !important; left: 10px; right: 10px; bottom: calc(env(safe-area-inset-bottom, 0px) * .5 + 8px);
+        z-index: 999; width: auto !important; max-width: 560px; margin: 0 auto !important; padding: 4px !important;
+        background: #0d1320f2; -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+        border: 1px solid #2a3858; border-radius: 22px; box-shadow: 0 10px 30px #000000b0, inset 0 1px 0 #ffffff12;}
     .st-key-dest_menu [data-testid="stRadio"], .st-key-dest_menu [role="radiogroup"],
     .stApp:has(.modo-barra) .st-key-seccion [role="radiogroup"] {width: 100%; max-width: 640px; margin: 0 auto;}
     .st-key-dest_menu [role="radiogroup"], .stApp:has(.modo-barra) .st-key-seccion [role="radiogroup"] {display: grid !important;
         grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr)); gap: 0;}
-    .st-key-dest_menu label[data-testid="stRadioOption"], .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] {background: none !important; border: 0 !important; border-radius: 0; min-height: 56px; padding: 4px 0 !important; display: flex !important;
-        width: 100% !important; flex-direction: column; justify-content: center; align-items: center; gap: 4px; text-align: center; position: relative;}
-    .st-key-dest_menu label[data-testid="stRadioOption"]::before, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"]::before {content: ""; display: block; width: 24px; height: 24px; background: currentColor;
+    .st-key-dest_menu label[data-testid="stRadioOption"], .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] {background: none !important; border: 0 !important; border-radius: 0; min-height: 46px; padding: 5px 0 3px !important; display: flex !important;
+        width: 100% !important; flex-direction: column; justify-content: center; align-items: center; gap: 2px; text-align: center; position: relative; border-radius: 18px !important;}
+    .st-key-dest_menu label[data-testid="stRadioOption"]::before, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"]::before {content: ""; display: block; width: 22px; height: 22px; background: currentColor;
         -webkit-mask: center / contain no-repeat; mask: center / contain no-repeat; transition: transform .25s;}
     .st-key-dest_menu label[data-testid="stRadioOption"], .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] {color: var(--sub);}
     .st-key-dest_menu label[data-testid="stRadioOption"] > div, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] > div {width: 100%; justify-content: center;}
-    .st-key-dest_menu label[data-testid="stRadioOption"] p, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] p {font-size: .69rem; font-weight: 600; color: inherit; text-align: center; line-height: 1.2; letter-spacing: 0;
+    .st-key-dest_menu label[data-testid="stRadioOption"] p, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"] p {font-size: .64rem; font-weight: 600; color: inherit; text-align: center; line-height: 1.15; letter-spacing: 0;
         word-break: keep-all; overflow-wrap: normal;}
     .st-key-dest_menu label[data-testid="stRadioOption"][data-selected="true"], .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"][data-selected="true"] {color: var(--oro);}
-    .st-key-dest_menu label[data-testid="stRadioOption"][data-selected="true"]::before, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"][data-selected="true"]::before {transform: translateY(-2px) scale(1.12);}
-    .st-key-dest_menu label[data-testid="stRadioOption"][data-selected="true"]::after, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"][data-selected="true"]::after {content: ""; position: absolute; top: -9px; left: 50%;
-        width: 28px; margin-left: -14px; height: 3px; border-radius: 3px; background: var(--oro); animation: entra .3s;}
+    .st-key-dest_menu label[data-testid="stRadioOption"][data-selected="true"]::before, .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"][data-selected="true"]::before {transform: scale(1.1);}
+    .st-key-dest_menu label[data-testid="stRadioOption"][data-selected="true"], .stApp:has(.modo-barra) .st-key-seccion label[data-testid="stRadioOption"][data-selected="true"] {background: #f1d58a1c !important; box-shadow: inset 0 0 0 1px #f1d58a33;}
     .st-key-dest_menu [role="radiogroup"] > div:nth-child(1) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z'/%3E%3C/svg%3E");}
     .st-key-dest_menu [role="radiogroup"] > div:nth-child(2) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='6' width='18' height='14' rx='3'/%3E%3Cpath d='M3 10h18M16 15h2'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='6' width='18' height='14' rx='3'/%3E%3Cpath d='M3 10h18M16 15h2'/%3E%3C/svg%3E");}
     .st-key-dest_menu [role="radiogroup"] > div:nth-child(3) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 17l5-5 4 4 8-9'/%3E%3Cpath d='M15 7h5v5'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 17l5-5 4 4 8-9'/%3E%3Cpath d='M15 7h5v5'/%3E%3C/svg%3E");}
@@ -208,7 +208,7 @@ st.markdown("""
     .stApp:has(.modo-barra) .st-key-seccion [role="radiogroup"] > div:nth-child(2) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 4a3 3 0 00-3 3 3 3 0 00-2 5 3 3 0 002 5 3 3 0 006 0V4a3 3 0 00-3 0zM15 4a3 3 0 013 3 3 3 0 012 5 3 3 0 01-2 5 3 3 0 01-6 0'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 4a3 3 0 00-3 3 3 3 0 00-2 5 3 3 0 002 5 3 3 0 006 0V4a3 3 0 00-3 0zM15 4a3 3 0 013 3 3 3 0 012 5 3 3 0 01-2 5 3 3 0 01-6 0'/%3E%3C/svg%3E");}
     .stApp:has(.modo-barra) .st-key-seccion [role="radiogroup"] > div:nth-child(3) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='3'/%3E%3Cpath d='M8 3v4M16 3v4M3 10h18'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='3'/%3E%3Cpath d='M8 3v4M16 3v4M3 10h18'/%3E%3C/svg%3E");}
     .stApp:has(.modo-barra) .st-key-seccion [role="radiogroup"] > div:nth-child(4) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='10' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 018 0v3'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='10' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 018 0v3'/%3E%3C/svg%3E");}
-    .block-container {padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px));}
+    .block-container {padding-bottom: 92px;}
     @media (max-width: 640px) {
         .kpi .val {font-size: 1.25rem;} .kpi.hero .val {font-size: 2.2rem;}
         .kpis-mini .kpi .val {font-size: .92rem;}
@@ -342,7 +342,9 @@ def listo():
 
 if str(st.query_params.get("via", "")) == "shell":
     # Abierta desde la página de entrada (dentro de un marco): ella ya reserva el espacio de la barra de estado del iPhone
-    st.markdown("<style>.block-container{padding-top:1.2rem !important}</style>", unsafe_allow_html=True)
+    st.markdown("<style>.block-container{padding-top:1.2rem !important}"
+                # el marco ya llega al borde de la pantalla: la barra flotante baja sin depender de la zona segura (env), que ahí no es fiable
+                ".st-key-dest_menu, .stApp:has(.modo-barra) .st-key-seccion {bottom: 10px !important}</style>", unsafe_allow_html=True)
 ajustes_movil()
 candado()
 
