@@ -1,0 +1,20 @@
+# C09 · Verificación de las dudas del cerebro (revisión del 25-oct-2026)
+
+Fecha: 2026-10-26 · Niveles: [P] primaria leída · [S] prensa/agregador · [VERIFICAR] · [ESPECULACIÓN]
+
+| # | Duda | Estado | Resultado | Nivel |
+|---|---|---|---|---|
+| 1 | ITP joven en Cataluña | **Resuelta** | Edad: **35 años o menos** en la fecha de devengo (antes 32), para transmisiones desde el 27-06-2025. Tipo reducido 5 % (TUJ), con base ≤ 36.000 € en el último IRPF y vivienda habitual (residir en 12 meses y 3 años). Tramos generales: **10 %** hasta 600.000 €; **11 %** de 600.000 a 900.000 €; **12 %** de 900.000 a 1,5 M€; **13 %** más de 1,5 M€ (la página no da fecha de vigencia; la escala anterior llegaba hasta 1 M€ hasta el 26-06-2025). [Tarifas ATC](https://atc.gencat.cat/es/tributs/itpajd/tpo/tarifes-tipus/) | [P] |
+| 2 | SEC-CFTC 17-mar-2026: ¿XRP y XLM? ¿16 o 18? | **Resuelta** | El texto oficial (Release 33-11412 / 34-105020, 68 págs.; leído con pdf.js en el navegador integrado) lista **16** «ejemplos de digital commodities»: Aptos, Avalanche, Bitcoin, Bitcoin Cash, Cardano, Chainlink, Dogecoin, Ether, Hedera, Litecoin, Polkadot, Shiba Inu, Solana, **Stellar (XLM)**, Tezos y **XRP**. Nombra a ambos. El «18» de algunos despachos no consta en el texto. [PDF SEC](https://www.sec.gov/files/rules/interp/2026/33-11412.pdf) · [página SEC](https://www.sec.gov/rules-regulations/2026/03/s7-2026-09) | [P] |
+| 3 | «Sección 404» de CLARITY | **Parcial** | Existe como **sección del texto de compromiso Tillis–Alsobrooks** (mayo 2026), citada así por Consumer Federation of America (8-may-2026): «ningún covered party pagará, directa o indirectamente, intereses o rendimiento… solo por mantener» stablecoins; «económica o funcionalmente equivalente» a intereses de depósito bancario. Excluye a emisores permitidos; exceptúa recompensas ligadas a actividad (§404(c)(3)(A)(iii) según prensa). **No he leído el texto legislativo en congress.gov**: la cita es de segunda mano. [CFA](https://consumerfed.org/clarity-act-section-404-ban-on-stablecoin-yield-not-found/) | [S] / [VERIFICAR] el texto en congress.gov |
+| 4 | Adquisiciones de Ripple | **Resuelta en lo esencial** | Hidden Road 1.250 M$ · GTreasury 1.000 M$ · Rail 200 M$ · Metaco 250 M$ → **suma con precio = 2.700 M$** (coincide con el cerebro). Standard Custody (2024) y Palisade (nov-2025): sin precio publicado. BC Payments (Australia): solo anunciada, cierre no confirmado. Solvexia: **no verificada** en esta sesión. Fuentes: [CFOtech (GTreasury)](https://cfotech.com.au/story/ripple-acquires-gtreasury-for-usd-1-billion-to-boost-treasury-services), [CryptoPotato](https://cryptopotato.com/here-are-ripples-5-big-moves-since-2023-and-what-they-mean-for-xrp/) y resultados de búsqueda; no leí notas de prensa de Ripple. El «+4.000 M$» sigue sin sostenerse | [S] |
+| 5 | Debut de XRPN (12-oct) | **Resuelta** | El −1,05 % es **cierre 16,91 $ frente al cierre previo ≈ 17,09 $** (−0,18 $), no frente a la apertura: abrió a 16,68 $, tocó ≈ 19,39 $ y cerró 16,91 $. Por eso «+1,4 % desde la apertura» y «−1,05 %» no se contradicen: distinta base. El cierre previo 17,09 $ es cálculo a partir de «−18 centavos» (no figura como cifra); su origen (cierre del vehículo SPAC) es [VERIFICAR]. Un flash de KuCoin (+1,49 %) es de media sesión. [Bitcoin.com](https://news.bitcoin.com/evernorth-hits-nasdaq-with-473-million-xrp-as-xrpn-trading-begins/) · [AltcoinBuzz](https://www.altcoinbuzz.io/evernorth-slips-1-05-in-debut-with-xrp-tranche-46-below-cost) | [S] |
+
+## Pendiente (sigue abierto)
+- Texto legislativo de la sección 404 en congress.gov (versión y número exacto).
+- Solvexia, precio de Standard Custody/Palisade y cierre de BC Payments en notas de Ripple.
+- Origen del cierre previo 17,09 $ de XRPN (8-K / nota de Nasdaq).
+- Fecha de entrada en vigor de la escala 10-13 % del ITP (supuesta 27-06-2025, deducción propia).
+
+## Líneas añadidas al cerebro
+Ver final de `cerebro/documentos/estado-vigente-y-correcciones.md` y una línea en cada archivo de lecciones.

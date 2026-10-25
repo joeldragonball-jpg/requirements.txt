@@ -50,3 +50,11 @@ Los archivos del cerebro conservan afirmaciones antiguas junto a sus correccione
 - ¿Nombra la interpretación SEC-CFTC del 17-mar-2026 a XRP y XLM? Leer el texto oficial (sec.gov bloquea la lectura automática: usar el navegador integrado).
 - «Sección 404» de CLARITY (intereses sobre stablecoins): localizar el borrador.
 - Fuente de cada adquisición de Ripple y base del −1,05 % de XRPN.
+
+## Verificaciones C09 (26-oct-2026)
+- **ITP joven Cataluña:** tipo reducido 5 % para ≤ 35 años (antes 32) desde el 27-06-2025, base ≤ 36.000 €, vivienda habitual; tramos generales 10 % (hasta 600.000 €), 11 % (hasta 900.000 €), 12 % (hasta 1,5 M€), 13 % (más) [P: Agència Tributària de Catalunya, atc.gencat.cat/es/tributs/itpajd/tpo/tarifes-tipus]. Resuelto.
+- **SEC-CFTC 17-mar-2026 (Release 33-11412):** lista 16 digital commodities y nombra a **XRP y Stellar (XLM)**; el «18» no está en el texto [P: sec.gov/files/rules/interp/2026/33-11412.pdf]. Resuelto.
+- **Sección 404 de CLARITY:** existe en el texto de compromiso Tillis–Alsobrooks (mayo 2026): prohíbe a los covered parties pagar rendimiento «solo por mantener» stablecoins, con excepción de recompensas por actividad [S: Consumer Federation of America, 8-may-2026]. [VERIFICAR] el texto en congress.gov.
+- **Adquisiciones de Ripple con precio:** Hidden Road 1.250 M$ + GTreasury 1.000 M$ + Rail 200 M$ + Metaco 250 M$ = 2.700 M$ [S]. Standard Custody y Palisade sin precio; BC Payments no cerrada; Solvexia [VERIFICAR].
+- **XRPN debut 12-oct:** el −1,05 % es cierre 16,91 $ frente al cierre previo ≈ 17,09 $ [S: Bitcoin.com]; desde la apertura (16,68 $) fue +1,4 %. Se puede usar citando la base.
+- Dudas de «Dudas y datos a verificar» resueltas arriba: ITP, SEC-CFTC y −1,05 %; abiertas: texto de la sección 404, Solvexia y precios no publicados.

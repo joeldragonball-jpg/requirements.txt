@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-21k",
+  "version": "2026-10-25w",
   "aviso": "Radar regulatorio construido solo con informes, dossiers, apuntes y el calendario del repo (sin búsquedas nuevas). Informativo: no es recomendación de compra ni venta. Fuente: P = documento oficial leído; S = prensa, despacho o agregador; VERIFICAR = sin dato o sin confirmar.",
   "escala": {
     "0": "Sin marco (o prohibido)",
@@ -721,12 +721,12 @@
       "jur": "sg",
       "tema": "ley_marco",
       "etapa": 5,
-      "estado": "Los servicios con tokens de pago digital necesitan licencia de la MAS y, desde el 30-jun-2025, el régimen DTSP obliga a cesar a quien sirve solo a clientes de fuera.",
+      "estado": "Los servicios con tokens de pago digital (DPT) dentro de Singapur necesitan licencia de la MAS. Para los servicios con tokens digitales prestados solo a clientes de fuera, la MAS fijó el listón de licencia muy alto y dijo que en general no concedería licencias: desde el 30-jun-2025 (Parte 9 de la ley FSM de 2022, sin periodo transitorio) quien sirve solo al exterior tenía que cesar o suspender esa actividad [P: nota de la MAS y directrices de licencia de DTSP].",
       "fecha": "2025-06-30",
-      "fuente": "S",
-      "revisado": "2026-10-20",
+      "fuente": "P",
+      "revisado": "2026-10-25",
       "proxima": null,
-      "falta": "Texto de la MAS sobre la ampliación de la licencia de Ripple.",
+      "falta": "Texto de la MAS sobre la ampliación de la licencia de Ripple [VERIFICAR]; qué proveedores concretos cesaron o siguen con licencia.",
       "hitos": [
         {
           "fecha": "2023",
@@ -738,92 +738,128 @@
         }
       ],
       "informes": [
-        "R04P"
-      ]
+        "R04P",
+        "W03"
+      ],
+      "url": "https://www.mas.gov.sg/news/media-releases/2025/mas-clarifies-regulatory-regime-for-digital-token-service-providers"
     },
     {
       "jur": "sg",
       "tema": "etf",
-      "etapa": null,
-      "estado": "No hay dato sobre ETF cripto en Singapur.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
+      "etapa": 0,
+      "estado": "No hay ETF de criptomonedas autorizado para minoristas en Singapur. La MAS dijo en el Parlamento (5-abr-2021) que «los fondos de criptomonedas tampoco están autorizados para su venta a minoristas» [P]; la prensa (ene-2024) cuenta que la MAS reiteró que los ETF de bitcóin al contado no están aprobados para minoristas [S]. La consulta de la MAS P014-2026 (jul-2026, enmiendas al Código de esquemas de inversión colectiva) no menciona cripto en su texto [P, leída].",
+      "fecha": "2021-04-05",
+      "fuente": "P",
       "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
+      "falta": "Declaración reciente de la MAS sobre productos cripto cotizados (la única de 2024 es de prensa); si algún producto cotiza en SGX para institucionales o acreditados [VERIFICAR].",
+      "hitos": [
+        {
+          "fecha": "2021-04-05",
+          "que": "Respuesta de la MAS en el Parlamento: los fondos cripto no están autorizados para minoristas."
+        },
+        {
+          "fecha": "2026-07-09",
+          "que": "La MAS publica la consulta P014-2026 sobre el Código de esquemas de inversión colectiva, sin referencias a cripto."
+        }
+      ],
       "informes": [
-        "R04P"
-      ]
+        "R04P",
+        "W03"
+      ],
+      "url": "https://www.mas.gov.sg/news/parliamentary-replies/2021/reply-to-parliamentary-question-on-crypto-asset-market",
+      "revisado": "2026-10-25"
     },
     {
       "jur": "sg",
       "tema": "tokenizacion",
       "etapa": 1,
-      "estado": "La MAS prueba letras tokenizadas liquidadas con CBDC mayorista (SGD Testnet), solo para institucionales y sin resultados publicados.",
-      "fecha": "2026-10-09",
+      "estado": "La MAS probó dos letras tokenizadas liquidadas con CBDC mayorista (SGD Testnet), solo para inversores institucionales: la TD26100F (S$1 M, emitida el 23-sep y vencida el 30-sep) y la TD26101Z (S$10 M, emitida el 9-oct y vencida el 23-oct); la web de la MAS no lista nuevas subastas ni resultados [P]. El 9-oct-2026 el director gerente de la MAS dijo que el siguiente paso es liquidar letras tokenizadas con CBDC mayorista dentro de la iniciativa BLOOM (sin fecha) [P].",
+      "fecha": "2026-10-23",
       "fuente": "P",
-      "revisado": "2026-10-20",
-      "proxima": {
-        "fecha": "2026-10-23",
-        "que": "Vence la letra tokenizada TD26101Z."
-      },
-      "falta": "Resultados de las subastas; marco permanente de tokenización.",
+      "revisado": "2026-10-25",
+      "proxima": null,
+      "falta": "Resultados de las subastas; marco permanente de tokenización; fecha de la siguiente fase de BLOOM.",
       "hitos": [
         {
-          "fecha": "2026-09-21",
-          "que": "Subasta de la letra tokenizada TD26100F (S$1 M)."
+          "fecha": "2026-09-23",
+          "que": "Emisión de la letra tokenizada TD26100F (S$1 M; vence el 30-sep)."
         },
         {
-          "fecha": "2026-10-07",
-          "que": "Subasta de la letra tokenizada TD26101Z (S$10 M)."
+          "fecha": "2026-10-09",
+          "que": "Emisión de la letra tokenizada TD26101Z (S$10 M)."
+        },
+        {
+          "fecha": "2026-10-23",
+          "que": "Vence la letra TD26101Z; la web de la MAS no lista más subastas."
         }
       ],
       "informes": [
         "R40",
         "R04P",
-        "R30"
-      ]
+        "R30",
+        "W03"
+      ],
+      "url": "https://www.mas.gov.sg/bonds-and-bills/auctions-and-issuance-calendar/mas-bills-type-tokenised-mas-bill"
     },
     {
       "jur": "sg",
       "tema": "custodia",
-      "etapa": null,
-      "estado": "No hay research sobre la custodia cripto en Singapur; solo consta que las reservas de stablecoins irían en fideicomiso con custodios licenciados (consulta P015).",
-      "fecha": null,
-      "fuente": "VERIFICAR",
+      "etapa": 5,
+      "estado": "Los proveedores de servicios con tokens de pago digital (DPT) con licencia deben custodiar los activos de los clientes en una cuenta fiduciaria (trust) segregada de sus fondos propios, propia o con una entidad custodia; al menos el 90 % de los DPT de los clientes debe guardarse siempre sin conexión a internet (almacenamiento en frío), y la MAS restringe que presten o hagan staking con los DPT de clientes minoristas. Las directrices PS-G03 (2-abr-2024, revisadas el 19-sep-2024) fijan estos requisitos y la MAS dató su efecto el 4-oct-2024 [P]. La propia MAS avisa de que la segregación no evita demoras en recuperar activos si el proveedor quiebra.",
+      "fecha": "2024-10-04",
+      "fuente": "P",
       "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
+      "falta": "Texto de las enmiendas al reglamento de servicios de pago (solo se leyeron las directrices); cómo se aplica a la custodia de stablecoins con la consulta P015.",
+      "hitos": [
+        {
+          "fecha": "2024-04-02",
+          "que": "La MAS publica las directrices PS-G03 de salvaguardas al consumidor para proveedores de DPT."
+        },
+        {
+          "fecha": "2024-09-19",
+          "que": "Revisión de las directrices PS-G03."
+        },
+        {
+          "fecha": "2024-10-04",
+          "que": "Entran en vigor las reglas de segregación y cuenta fiduciaria para activos de clientes."
+        }
+      ],
       "informes": [
-        "R24"
-      ]
+        "R24",
+        "W03"
+      ],
+      "url": "https://www.mas.gov.sg/-/media/mas-media-library/regulation/guidelines/pso/ps-g03-guidelines-on-consumer-protection-measures-by-digital-payment-token-service-providers/guidelines-on-provision-of-consumer-protection-safeguards-by-digital-payment-token-service-providers.pdf",
+      "revisado": "2026-10-25"
     },
     {
       "jur": "sg",
       "tema": "cbdc",
       "etapa": 1,
-      "estado": "Solo CBDC mayorista en pruebas: préstamos interbancarios liquidados con SGD mayorista (nov-2025) y letras tokenizadas en 2026; no hay CBDC minorista.",
-      "fecha": "2026-10-09",
-      "fuente": "S",
-      "revisado": "2026-10-20",
-      "proxima": {
-        "fecha": "2026-10-23",
-        "que": "Vence la letra tokenizada TD26101Z."
-      },
-      "falta": "Nota de la MAS sobre la prueba de nov-2025 [VERIFICAR]; resultados de las letras.",
+      "estado": "Solo CBDC mayorista en pruebas, sin CBDC minorista: el 13-nov-2025 la MAS anunció la primera emisión real de dólar singapurense mayorista, usada por DBS, OCBC y UOB para liquidar préstamos interbancarios a un día en la SGD Testnet [P]; en 2026 la MAS probó con ella dos letras tokenizadas, la última vencida el 23-oct [P]. No hay fecha de paso a producción.",
+      "fecha": "2026-10-23",
+      "fuente": "P",
+      "revisado": "2026-10-25",
+      "proxima": null,
+      "falta": "Resultados publicados de las pruebas; fecha de una fase posterior y su alcance (BLOOM).",
       "hitos": [
         {
           "fecha": "2025-11-13",
-          "que": "Prueba en vivo de préstamos interbancarios con CBDC mayorista (DBS, OCBC y UOB, según prensa)."
+          "que": "Prueba en vivo de préstamos interbancarios con CBDC mayorista (DBS, OCBC y UOB; comunicado de la MAS)."
         },
         {
           "fecha": "2026-10-09",
-          "que": "Emisión de la letra tokenizada TD26101Z."
+          "que": "Emisión de la letra tokenizada TD26101Z liquidada con CBDC mayorista."
+        },
+        {
+          "fecha": "2026-10-23",
+          "que": "Vence la letra TD26101Z."
         }
       ],
       "informes": [
-        "R40"
-      ]
+        "R40",
+        "W03"
+      ],
+      "url": "https://www.mas.gov.sg/news/media-releases/2025/mas-announces-successful-live-trial-of-settlement-of-interbank-overnight-lending"
     },
     {
       "jur": "sg",
@@ -852,9 +888,12 @@
       "estado": "La MAS mantuvo el 14-oct-2026 la pendiente, la anchura y el centro de la banda del S$NEER (la moneda sigue apreciándose dentro de la banda); prevé inflación subyacente del 1,5-2,0 % y general del ~2,0 % en 2026. La MAS no usa tipos de interés: su instrumento es el tipo de cambio.",
       "fecha": "2026-10-14",
       "fuente": "P",
-      "revisado": "2026-10-20",
-      "proxima": null,
-      "falta": "Fecha de la próxima declaración (las declaraciones son trimestrales: ene, abr, jul y oct).",
+      "revisado": "2026-10-25",
+      "proxima": {
+        "fecha": "2027-01-29",
+        "que": "Declaración trimestral de política monetaria de la MAS (la fecha es un límite máximo del calendario de la MAS, sin día exacto)."
+      },
+      "falta": "Día exacto de la declaración de enero de 2027 (el calendario de la MAS solo dice «no más tarde del 29-ene»).",
       "hitos": [
         {
           "fecha": "2026-01-29",
@@ -1375,57 +1414,108 @@
       "estado": "No hay ETF cripto aprobado en Japón. La propia FSA explica en su documento de debate (10-abr-2025, leído) que, con las leyes vigentes, los criptoactivos no son «activos especificados» que puedan ser el objetivo principal de un fondo de inversión, y por eso no se pueden constituir ETF cripto (art. 3 del decreto de aplicación de la ley de fondos de inversión) [P, de 2025]. La reforma fiscal de 2026 ya prevé tributación separada también para los ETF cripto, lo que apunta a que se permitirán, pero no se localizó el decreto ni un anuncio de la JPX ni de ninguna gestora; las fuentes hablan de 2027 o del ejercicio 2028 [S, VERIFICAR].",
       "fecha": "2026-07-15",
       "fuente": "S",
-      "revisado": "2026-10-21",
+      "revisado": "2026-10-25",
       "proxima": null,
-      "falta": "Modificación del decreto que permita constituir ETF cripto (FSA) y anuncio de la JPX; ver si sigue sin aprobarse a fecha de hoy.",
+      "falta": "Modificación del decreto que permita constituir ETF cripto (FSA) y anuncio de la JPX; la FSA (abr-2026) cita los ETF de EE. UU. como motivo de la reforma y prevé regular la gestión de inversiones en cripto, pero no consta decreto [VERIFICAR a fecha de hoy].",
       "hitos": [],
       "informes": [
         "R07P",
         "R27",
         "Documento de debate de la FSA, 10-abr-2025 (21-oct)"
-      ]
+      ],
+      "url": "https://www.fsa.go.jp/common/diet/221/02/03.pdf"
     },
     {
       "jur": "jp",
       "tema": "tokenizacion",
-      "etapa": null,
-      "estado": "No hay research sobre la tokenización en Japón.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
-      "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
+      "etapa": 5,
+      "estado": "Los security tokens (valores representados en blockchain, «derechos con registro electrónico transferible») están regulados en la ley de instrumentos financieros (FIEA) desde la reforma de 2019 y se emiten con empresas registradas; la FSA recoge que el volumen acumulado emitido sigue creciendo, sobre todo con inmuebles (gráfico del Japan STO Association a dic-2025; cifra no leída [VERIFICAR]). El 20-oct-2026 la FSA abrió la primera sesión de su grupo de estudio sobre finanzas digitales y descentralizadas (stablecoins y tokenización de depósitos, security tokens, DEX/DeFi, sistema de anotación en cuenta y liquidación) y prepara con el foro «on-chain» una hoja de ruta público-privada con resumen intermedio a principios de 2027 [P].",
+      "fecha": "2026-10-20",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2027-01",
+        "que": "Segunda sesión del grupo de estudio y resumen intermedio del foro de finanzas «on-chain» (principios de 2027; sin día)."
+      },
+      "falta": "Cifra de emisión acumulada; propuestas concretas sobre tokenización de valores y de deuda pública; fecha de cualquier reforma legal.",
+      "hitos": [
+        {
+          "fecha": "2026-07-21",
+          "que": "La FSA publica su estrategia financiera con el foro de finanzas «on-chain» para la era de la IA, con resumen intermedio a principios de 2027."
+        },
+        {
+          "fecha": "2026-10-20",
+          "que": "Primera sesión del grupo de estudio de la FSA sobre finanzas digitales y descentralizadas."
+        }
+      ],
       "informes": [
-        "R07P"
-      ]
+        "R07P",
+        "W03"
+      ],
+      "url": "https://www.fsa.go.jp/singi/digital_2026/shiryo/261020/jimukyoku.pdf",
+      "revisado": "2026-10-25"
     },
     {
       "jur": "jp",
       "tema": "custodia",
-      "etapa": null,
-      "estado": "No hay research sobre la custodia cripto en Japón.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
-      "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
+      "etapa": 4,
+      "estado": "Hoy los exchanges registrados deben guardar los criptoactivos de los clientes con medidas de seguridad, en principio en cold wallet (claves sin conexión permanente a internet); la FSA lo recoge en su explicación de la reforma de abril de 2026 [P]. La reforma de la FIEA (promulgada el 23-jul-2026, con el cuerpo principal aún sin entrar en vigor) traslada esas reglas a la FIEA, con fondo de responsabilidad (art. 46-5) para compensar fugas, regulación de los proveedores de sistemas clave de custodia, control de la externalización y préstamos de cripto de clientes como actividad regulada [P]. El 95 % mínimo en frío y su base legal aparecen solo en despachos de abogados de 2020 [VERIFICAR].",
+      "fecha": "2026-07-23",
+      "fuente": "P",
+      "proxima": {
+        "fecha": "2027-07-23",
+        "que": "Fecha máxima de entrada en vigor del cuerpo principal de la reforma, incluida la nueva custodia [VERIFICAR en la FSA]."
+      },
+      "falta": "Orden del gabinete y orden ministerial con los porcentajes de reserva y de cold wallet; texto vigente del reglamento (e-Gov).",
+      "hitos": [
+        {
+          "fecha": "2026-04",
+          "que": "La FSA presenta la explicación del proyecto de ley que traslada la regulación cripto a la FIEA."
+        },
+        {
+          "fecha": "2026-07-23",
+          "que": "Se promulga la reforma de la FIEA y la ley de servicios de pago."
+        }
+      ],
       "informes": [
-        "R07P"
-      ]
+        "R07P",
+        "W03"
+      ],
+      "url": "https://www.fsa.go.jp/common/diet/221/02/03.pdf",
+      "revisado": "2026-10-25"
     },
     {
       "jur": "jp",
       "tema": "cbdc",
-      "etapa": null,
-      "estado": "No hay research sobre el yen digital.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
+      "etapa": 1,
+      "estado": "El Banco de Japón sigue en fase piloto del yen digital: en el informe de progreso de junio de 2026 repite que hoy no está decidido si se emitirá una CBDC y que lo decidirá un debate nacional; sus pruebas de rendimiento procesaron 50.000 transacciones por segundo y no hallaron un obstáculo técnico insalvable de capacidad [P]. Los ministerios y el Banco publicaron un informe de progreso conjunto el 19-jun-2026 y el consejo de enlace sobre CBDC tuvo su 11.ª reunión (acta del 2-jul-2026) [P].",
+      "fecha": "2026-06-10",
+      "fuente": "P",
       "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
+      "falta": "Fecha del siguiente informe de progreso o reunión del consejo de enlace; decisión de emisión (sin plazo).",
+      "hitos": [
+        {
+          "fecha": "2023-04",
+          "que": "Empieza el experimento piloto del Banco de Japón tras la prueba de concepto."
+        },
+        {
+          "fecha": "2026-06-10",
+          "que": "El Banco de Japón publica el informe de progreso del piloto."
+        },
+        {
+          "fecha": "2026-06-19",
+          "que": "Informe de progreso del grupo de enlace de ministerios y Banco de Japón."
+        },
+        {
+          "fecha": "2026-07-02",
+          "que": "Acta de la 11.ª reunión del consejo de enlace sobre CBDC."
+        }
+      ],
       "informes": [
-        "R07P"
-      ]
+        "R07P",
+        "W03"
+      ],
+      "url": "https://www.boj.or.jp/paym/digital/dig260610c.pdf",
+      "revisado": "2026-10-25"
     },
     {
       "jur": "jp",
@@ -1464,12 +1554,12 @@
       "estado": "El BoJ subió a 1,25 % el 18-sep-2026 (7–2, efectivo el 24-sep) y dice que seguirá subiendo; el yen ronda los 158 por dólar.",
       "fecha": "2026-09-18",
       "fuente": "P",
-      "revisado": "2026-10-20",
+      "revisado": "2026-10-25",
       "proxima": {
         "fecha": "2026-10-30",
-        "que": "Reunión del BoJ (29-30 de octubre) con Informe de Perspectivas."
+        "que": "Decisión del Banco de Japón (reunión del 29 al 30-oct) con Informe de Perspectivas [P: calendario del BoJ]."
       },
-      "falta": "Nivel actual del yen y posible intervención del Ministerio de Finanzas.",
+      "falta": "Nivel actual del yen y posible intervención del Ministerio de Finanzas; la siguiente reunión será el 17-18 de diciembre.",
       "hitos": [
         {
           "fecha": "2026-09-18",
@@ -2041,20 +2131,33 @@
       "jur": "ru",
       "tema": "politica",
       "etapa": null,
-      "estado": "El Banco de Rusia tiene el tipo clave en 14,00 % desde el 27-jul-2026; la inflación de septiembre es 6,4 %.",
-      "fecha": "2026-07-27",
+      "estado": "El Banco de Rusia mantuvo el tipo clave en 14,00 % el 23-oct-2026 (segunda pausa seguida tras la del 11-sep y diez recortes previos) y subió su previsión de inflación de 2026 a 7,1-7,6 % (antes 6-7 %); el último cambio fue el recorte a 14,00 % del 27-jul-2026. Inflación de septiembre: 6,4 %.",
+      "fecha": "2026-10-23",
       "fuente": "P",
-      "revisado": "2026-10-20",
+      "revisado": "2026-10-25",
       "proxima": {
-        "fecha": "2026-10-23",
-        "que": "Reunión del Banco de Rusia."
+        "fecha": "2026-12-18",
+        "que": "Siguiente reunión del Banco de Rusia (cbr.ru, nota del 23-oct)."
       },
-      "falta": "Sentido del último cambio (sube, baja o mantiene) [VERIFICAR].",
-      "hitos": [],
+      "falta": "Reparto de votos y comunicado entero (la nota de cbr.ru leída no da votos); previsión de inflación 7,1-7,6 % solo vía prensa (Reuters/Moscow Times) [VERIFICAR].",
+      "hitos": [
+        {
+          "fecha": "2026-07-27",
+          "que": "Recorte a 14,00 %."
+        },
+        {
+          "fecha": "2026-09-11",
+          "que": "Mantiene 14,00 %."
+        },
+        {
+          "fecha": "2026-10-23",
+          "que": "Mantiene 14,00 %."
+        }
+      ],
       "informes": [
         "R30"
       ],
-      "dir": "n/d",
+      "dir": "mantiene",
       "valor": "Tipo clave 14,00 %"
     },
     {
@@ -2374,15 +2477,15 @@
       "jur": "cn",
       "tema": "politica",
       "etapa": null,
-      "estado": "La PBoC mantiene el LPR a 1 año en 3,0 % y a 5 años en 3,5 % (fijaciones de jul y ago-2026) y el repo a 7 días sin cambios desde may-2025; es la excepción entre los grandes bancos centrales que suben tipos.",
-      "fecha": "2026-10",
+      "estado": "La PBoC dejó el LPR a 1 año en 3,0 % y a 5 años en 3,5 % en la fijación del 20-oct-2026 (17.º mes sin cambios, según prensa/Trading Economics [S]); el repo a 7 días no cambia desde may-2025. Es la excepción entre los grandes bancos centrales que suben tipos; el BIS recoge 3,00 % con dato del 19-oct.",
+      "fecha": "2026-10-20",
       "fuente": "S",
-      "revisado": "2026-10-20",
+      "revisado": "2026-10-25",
       "proxima": {
         "fecha": "2026-11-20",
         "que": "Siguiente fijación mensual del LPR."
       },
-      "falta": "Fijación del LPR del 20-oct-2026 (pendiente al cerrar este informe).",
+      "falta": "Nota oficial de la PBoC de la fijación del 20-oct (pbc.gov.cn no se abrió; cifra solo en prensa y BIS) [VERIFICAR].",
       "hitos": [],
       "informes": [
         "R29",
@@ -2676,8 +2779,11 @@
       "fecha": "2026-09-25",
       "fuente": "S",
       "revisado": "2026-10-25",
-      "proxima": null,
-      "falta": "Comunicado oficial del SARB de septiembre (no abierto; la cifra coincide con el BIS y con la prensa) y fecha de la próxima reunión (noviembre) [VERIFICAR].",
+      "proxima": {
+        "fecha": "2026-11-19",
+        "que": "Anuncio del MPC del SARB (resbank.co.za, «Upcoming Announcements», leído el 25-oct) [P]."
+      },
+      "falta": "Comunicado del MPC de septiembre: resbank.co.za respondió 404 en la URL del comunicado y la página de tipos vino vacía (valor cargado por JavaScript); la cifra de 7,25 % sigue en prensa y BIS [S]. Solo la fecha de la próxima reunión es [P].",
       "hitos": [],
       "informes": [
         "Radar v3 research (20-oct)"
@@ -2803,12 +2909,12 @@
       "jur": "id",
       "tema": "politica",
       "etapa": null,
-      "estado": "Bank Indonesia mantuvo el BI-Rate en 5,75 % en septiembre de 2026 (tercera pausa) tras subir 100 pb en el año para defender la rupia, que cae más del 7,4 % frente al dólar.",
-      "fecha": "2026-09",
+      "estado": "Bank Indonesia mantuvo el BI-Rate en 5,75 % el 21-oct-2026 (reunión del 20-21; quinta decisión sin cambios; 19 de 38 economistas de Bloomberg esperaban subida) y subió el tipo de la facilidad de depósito a 5,00 %; la facilidad de crédito sigue en 6,50 %. Ha subido 100 pb en el año para defender la rupia, que ha caído ~7,9 % frente al dólar [S: prensa indonesia/RRI]. El BIS recoge 5,75 %.",
+      "fecha": "2026-10-21",
       "fuente": "S",
-      "revisado": "2026-10-20",
+      "revisado": "2026-10-25",
       "proxima": null,
-      "falta": "Comunicado oficial de Bank Indonesia y decisión de octubre.",
+      "falta": "Comunicado oficial de Bank Indonesia (bi.go.id no abierto) y fecha de la reunión de noviembre [VERIFICAR].",
       "hitos": [],
       "informes": [
         "Radar v3 research (20-oct)"
