@@ -269,7 +269,7 @@ def construir(bots_estado=False):
     contables = [t for t in colas if t["estado"] in ("hecha", "pendiente")]
     return {
         "generado": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
-        "hoy": r00(), "semana": semana(),
+        "hoy": r00(), "semana": semana(), "plan": {k: {"nombre": v[0], "coste": v[1]} for k, v in PLAN.items()},
         "resumen": {"hechas": sum(1 for t in contables if t["estado"] == "hecha"), "pendientes": sum(1 for t in contables if t["estado"] == "pendiente"),
                     "por_cola": {o: {"hechas": sum(1 for t in contables if t["origen"] == o and t["estado"] == "hecha"),
                                      "pendientes": sum(1 for t in contables if t["origen"] == o and t["estado"] == "pendiente")} for o in ("R", "T", "D")}},

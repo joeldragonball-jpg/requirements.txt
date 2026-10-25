@@ -239,6 +239,15 @@ let NIV = {};
 const COL = {P: '#4fe3a1', D: '#6ea8ff', S: '#ffb15c', C: '#ff9ad5', R: '#c4a6ff', E: '#9aa7c2'};
 const vozHTML = (v, i) => `<div class="voz card" style="--i:${i};padding:14px;margin-bottom:12px" data-abre><div class="avatar" style="background:${COL[v.nivel] || '#9aa7c2'}">${esc(v.quien.trim()[0])}</div><div style="flex:1"><h4>${esc(v.quien)}</h4><div class="meta" style="font-size:12px;color:var(--sub)"><span class="etq">Nivel ${esc(v.nivel)}</span><span class="etq">${esc(v.conf)}</span>${esc(v.cuando)}</div><p>${esc(v.texto)}</p><div class="mas">${NIV[v.nivel] ? `<div class="meta2"><b>Nivel ${esc(v.nivel)}:</b> ${esc(NIV[v.nivel][0])}. ${esc(NIV[v.nivel][2])}</div>` : ''}${v.plazo ? `<div class="meta2"><b>Plazo prometido:</b> ${esc(v.plazo.prometido)} · ${esc(v.plazo.estado)}${v.plazo.resultado ? ' · ' + esc(v.plazo.resultado) : ''}</div>` : ''}${v.video ? `<div class="meta2"><b>Visto en:</b> ${esc(v.video.canal)}, ${esc(v.video.fecha)}${v.video.min ? ' (min ' + esc(v.video.min) + ')' : ''}</div>` : ''}${v.nota ? `<div class="meta2">${esc(v.nota).slice(0, 320)}</div>` : ''}${v.fuente && v.fuente.url ? `<a class="enlace" target="_blank" rel="noopener" href="${esc(v.fuente.url)}">Fuente: ${esc((v.fuente.n || 'abrir').slice(0, 40))} ›</a>` : ''}</div></div></div>`;
 const mdHTML = (x, i) => `<div class="item-md card" style="--i:${i};padding:13px 14px;margin-bottom:10px;display:flex;flex-wrap:wrap;gap:6px" data-abre><div style="flex:1;min-width:0"><small>${esc(x.fecha)}</small><div style="margin-top:3px;font-weight:600">${esc(x.titulo)}</div></div><span class="flecha">⌄</span><div class="mas" style="flex-basis:100%">${esc(x.resumen) || 'Sin resumen.'}<br><a class="enlace" target="_blank" rel="noopener" href="https://github.com/joeldragonball-jpg/requirements.txt/blob/main/${esc(x.ruta)}">Abrir el informe completo ›</a></div></div>`;
+const DIAS_W = [['W01'], ['W02'], ['W03'], ['W05'], ['W06', 'W09'], ['W10'], []];   // lunes = 0 (igual que scripts/construir_seguimiento.py)
+function semanaISO(d){ const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())); const n = t.getUTCDay() || 7; t.setUTCDate(t.getUTCDate() + 4 - n);
+  return Math.ceil(((t - new Date(Date.UTC(t.getUTCFullYear(), 0, 1))) / 86400000 + 1) / 7); }
+function tocaHoy(){ const d = new Date(), wd = (d.getDay() + 6) % 7; let ids = [...DIAS_W[wd]];
+  if (wd === 3 && semanaISO(d) % 2 === 0) ids.push('W04');
+  if (wd === 5 && d.getDate() <= 7) ids.push('W07');
+  if (wd === 2 && d.getDate() >= 22) ids = ['W08', ...ids.filter(i => i !== 'W03')];
+  return ids; }
+const hoyISO = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
 const cuando = n => n == null ? 'sin fecha' : n === 0 ? 'hoy' : n === 1 ? 'mañana' : 'en ' + n + ' d';
 const cl = n => n == null ? '' : n <= 3 ? 'mal' : n <= 10 ? 'ya' : '';
 function vSeg(){
@@ -247,7 +256,7 @@ function vSeg(){
   const aud = S.auditorias, pr = S.predicciones, q = S.cuota;
   const hero = `<div class="card hero" style="--i:0;display:block"><small>Hoy en el research</small>
    <div style="display:flex;gap:10px;margin:10px 0 12px;flex-wrap:wrap"><span class="bd ${h.apertura ? 'ok' : 'ya'}">${h.apertura ? '✓' : '⏳'} R00 apertura</span><span class="bd ${h.cierre ? 'ok' : 'ya'}">${h.cierre ? '✓' : '⏳'} R00 cierre</span></div>
-   ${S.semana && S.semana.hoy.length ? `<div class="meta2" style="margin:0 0 10px"><b>Hoy toca:</b> ${S.semana.hoy.map(t => `<span class="bd" style="color:var(--oro)">${esc(t.id)} ${esc(t.nombre)} · ${esc(t.coste)}</span>`).join(' ')}</div>` : ''}
+   <div class="meta2" style="margin:0 0 10px"><b>Hoy toca:</b> ${tocaHoy().length ? tocaHoy().map(i => `<span class="bd" style="color:var(--oro)">${esc(i)} ${esc(((S.plan || {})[i] || {}).nombre || '')} · ${esc(((S.plan || {})[i] || {}).coste || '')}</span>`).join(' ') : 'solo el R00 (día ligero)'}</div>
    <div style="display:flex;align-items:baseline;gap:18px"><div><div class="precio" style="font-size:34px;margin:0" data-c="${h.racha}" data-d="0" data-s=" días">0</div><div class="meta2" style="margin:0">racha con R00</div></div>
    <div style="flex:1"><div style="display:flex;justify-content:space-between;font-size:13px;color:#c9d2f0"><span>${r.hechas} hechas</span><span>${r.pendientes} pendientes</span></div><div class="barra" style="margin-top:6px"><i data-w="${pct}%"></i></div></div></div></div>`;
   const toca = `${cab('Qué toca ahora')}<div class="card" style="--i:1;padding:6px 14px">${S.pendientes.slice(0, 8).map(t => `<div class="fil"><span class="id">${esc(t.id)}</span><span class="t">${esc(t.tema.slice(0, 80))}</span>${t.plazo ? `<span class="bd ${cl(t.plazo.dias)}">${cuando(t.plazo.dias)}</span>` : ''}</div>`).join('') || '<div class="pie">Nada pendiente</div>'}</div>
@@ -307,7 +316,13 @@ function vivo(){   // al abrir: noticias recientes y precios cripto en euros, si
   }).catch(() => {});
 }
 function cargarSeg(){
-  fetch('seguimiento.json').then(r => r.json()).then(j => { D.seg = j; if (tab === 'cerebro' && segCer === 'seg') repintar(); }).catch(() => {});
+  fetch('seguimiento.json').then(r => r.json()).then(j => { D.seg = j; if (tab === 'cerebro' && segCer === 'seg') repintar(); comprobarR00(j); }).catch(() => {});
+}
+function comprobarR00(j){   // ¿están ya los R00 de HOY en el repo? (comprobación en vivo; el JSON es de la última noche)
+  const f = hoyISO(), base = 'https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/main/informes/' + f + '-';
+  j.hoy = {...j.hoy, fecha: f, apertura: false, cierre: false};
+  Promise.all(['apertura', 'cierre'].map(k => fetch(base + k + '.md', {method: 'HEAD', cache: 'no-cache'}).then(r => { j.hoy[k] = r.ok; }).catch(() => {})))
+    .then(() => { if (tab === 'cerebro' && segCer === 'seg') repintar(); });
 }
 function iniciar(d){
   D = d; EUR = D.eur && D.eur.tipo ? D.eur.tipo : null; MON = EUR ? ' €' : ''; PRE = EUR ? '' : '$'; NIV = D.niveles || {};
