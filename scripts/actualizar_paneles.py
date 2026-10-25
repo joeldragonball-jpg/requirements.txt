@@ -11,6 +11,7 @@ import csv
 import gzip
 import io
 import json
+import re
 import sys
 import urllib.request
 from datetime import datetime, timedelta, timezone
@@ -134,7 +135,14 @@ def leer_stablecoins():
 
 
 URL_PROTOCOLOS = "https://api.llama.fi/protocols"
-URL_PRECIOS = "https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin&vs_currencies=usd&include_market_cap=true&include_24hr_change=true"
+URL_PRECIOS = "https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin,ethereum&vs_currencies=usd&include_market_cap=true&include_24hr_change=true"
+URL_YAHOO = "https://query1.finance.yahoo.com/v8/finance/chart/{s}?range=5d&interval=1d"
+INDICES = (("^GSPC", "S&P 500", "EE. UU."), ("^IXIC", "Nasdaq Composite", "EE. UU."), ("^STOXX50E", "Euro Stoxx 50", "Zona euro"), ("^IBEX", "Ibex 35", "España"))
+URL_NYFED = "https://markets.newyorkfed.org/api/rates/unsecured/effr/search.json?startDate={d1}&endDate={d2}"
+URL_BCE_TIPO = "https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?startPeriod={d1}&format=csvdata"
+URL_BOE_TIPO = "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom={d1}&Dateto={d2}&SeriesCodes=IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N"
+URL_BCB_TIPO = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json&dataInicial={d1}&dataFinal={d2}"
+URL_BOC_TIPO = "https://www.bankofcanada.ca/valet/observations/V39079/json?start_date={d1}"
 
 
 def leer_rwa():
@@ -156,11 +164,121 @@ def leer_rwa():
 def leer_mercado():
     d = json.loads(descargar(URL_PRECIOS))
     salida = {"fuente": URL_PRECIOS, "nivel": "S", "unidad": "dólares (USD)", "activos": []}
-    for clave, simbolo, nombre in (("ripple", "XRP", "XRP"), ("stellar", "XLM", "Stellar Lumens"), ("bitcoin", "BTC", "Bitcoin")):
+    for clave, simbolo, nombre in (("ripple", "XRP", "XRP"), ("stellar", "XLM", "Stellar Lumens"), ("bitcoin", "BTC", "Bitcoin"), ("ethereum", "ETH", "Ether")):
         x = d[clave]
         salida["activos"].append({"simbolo": simbolo, "nombre": nombre, "precio": x["usd"], "capitalizacion": x.get("usd_market_cap"),
                                   "cambio_24h": x.get("usd_24h_change")})
     return salida
+
+
+def leer_indices():
+    """Cierre diario de 4 índices bursátiles (Yahoo Finance, no oficial [S]). Si uno falla se avisa y se sigue con los demás."""
+    salida = {"fuente": "https://finance.yahoo.com/", "nivel": "S", "indices": [], "fallos": []}
+    for simbolo, nombre, zona in INDICES:
+        try:
+            d = json.loads(descargar(URL_YAHOO.format(s=urllib.request.quote(simbolo))))["chart"]["result"][0]
+            cierres = d["indicators"]["quote"][0]["close"]
+            pares = [(datetime.fromtimestamp(t, timezone.utc).strftime("%Y-%m-%d"), c) for t, c in zip(d["timestamp"], cierres) if c]
+            if len(pares) < 2:
+                raise ValueError("menos de 2 cierres")
+            (f0, c0), (f1, c1) = pares[-2], pares[-1]
+            salida["indices"].append({"simbolo": simbolo, "nombre": nombre, "zona": zona, "valor": round(c1, 2), "fecha": f1,
+                                      "cambio_1d": round((c1 / c0 - 1) * 100, 2), "moneda": d["meta"].get("currency")})
+        except Exception as e:
+            salida["fallos"].append(f"índice {simbolo}: {type(e).__name__}: {e}")
+    if not salida["indices"]:
+        raise ValueError("ningún índice disponible")
+    return salida
+
+
+def _ultimo_cambio(serie):
+    """serie = [(fecha ISO, valor)] ordenada; devuelve (valor actual, fecha del último cambio, valor anterior)."""
+    serie = [(f, v) for f, v in serie if v is not None]
+    actual = serie[-1][1]
+    for i in range(len(serie) - 1, 0, -1):
+        if abs(serie[i][1] - serie[i - 1][1]) > 1e-9:
+            return actual, serie[i][0], serie[i - 1][1]
+    return actual, None, None
+
+
+def _pct(v):
+    return f"{v:.2f}".replace(".", ",") + " %"
+
+
+def leer_tipos():
+    """Tipos oficiales al día de 5 bancos centrales con fuente abierta [P]; el resto sigue a mano en el radar (regulacion.json)."""
+    hoy = datetime.now(timezone.utc)
+    hoy_iso = hoy.strftime("%Y-%m-%d")
+    d1y = (hoy - timedelta(days=500)).strftime("%Y-%m-%d")
+    filas, fallos = [], []
+
+    def anadir(jur, pais, banco, valor_txt, num, fecha_cambio, previo, leido, fuente, url):
+        filas.append({"jur": jur, "pais": pais, "banco": banco, "valor": valor_txt, "num": num, "ultimo_cambio": fecha_cambio,
+                      "cambio_pb": None if previo is None else round((num - previo) * 100), "dato_de": leido, "fuente": fuente, "url": url})
+
+    try:    # Reserva Federal: rango objetivo, en el archivo del Banco de la Reserva Federal de Nueva York (primaria)
+        r = sorted(json.loads(descargar(URL_NYFED.format(d1=d1y, d2=hoy_iso)))["refRates"], key=lambda x: x["effectiveDate"])
+        n, f, pv = _ultimo_cambio([(x["effectiveDate"], x.get("targetRateTo")) for x in r])
+        ult = r[-1]
+        rango = f"{ult['targetRateFrom']:.2f}".replace(".", ",") + "–" + _pct(ult["targetRateTo"])
+        anadir("eeuu", "EE. UU.", "Reserva Federal (rango objetivo)", rango, n, f, pv, ult["effectiveDate"],
+               "Banco de la Reserva Federal de Nueva York (EFFR y rango objetivo)", "https://www.newyorkfed.org/markets/reference-rates/effr")
+    except Exception as e:
+        fallos.append(f"tipo Fed: {type(e).__name__}: {e}")
+    try:    # BCE: tipo de la facilidad de depósito (primaria)
+        serie = sorted((x["TIME_PERIOD"], _num(x["OBS_VALUE"])) for x in csv.DictReader(io.StringIO(descargar(URL_BCE_TIPO.format(d1=d1y)))))
+        n, f, pv = _ultimo_cambio(serie)
+        anadir("ue", "Zona euro", "BCE (facilidad de depósito)", _pct(n), n, f, pv, serie[-1][0], "BCE, data-api.ecb.europa.eu (FM, DFR)",
+               "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html")
+    except Exception as e:
+        fallos.append(f"tipo BCE: {type(e).__name__}: {e}")
+    try:    # Banco de Inglaterra: Bank Rate (primaria)
+        meses = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        fmt = lambda t: f"{t.day:02d}/{meses[t.month - 1]}/{t.year}"
+        serie = []
+        for linea in descargar(URL_BOE_TIPO.format(d1=fmt(hoy - timedelta(days=500)), d2=fmt(hoy))).splitlines():
+            partes = [x.strip() for x in linea.split(",")]
+            if len(partes) == 2 and _num(partes[1]) is not None:
+                serie.append((datetime.strptime(partes[0], "%d %b %Y").strftime("%Y-%m-%d"), _num(partes[1])))
+        serie.sort()
+        n, f, pv = _ultimo_cambio(serie)
+        anadir("uk", "Reino Unido", "Banco de Inglaterra (Bank Rate)", _pct(n), n, f, pv, serie[-1][0],
+               "Banco de Inglaterra, base de datos estadística (IUDBEDR)", "https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp")
+    except Exception as e:
+        fallos.append(f"tipo BoE: {type(e).__name__}: {e}")
+    try:    # Brasil: meta de la Selic del Copom (SGS 432; la serie trae fechas futuras y se ignoran)
+        filas_j = json.loads(descargar(URL_BCB_TIPO.format(d1=(hoy - timedelta(days=500)).strftime("%d/%m/%Y"), d2=hoy.strftime("%d/%m/%Y"))))
+        serie = sorted((datetime.strptime(x["data"], "%d/%m/%Y").strftime("%Y-%m-%d"), _num(x["valor"])) for x in filas_j)
+        serie = [x for x in serie if x[0] <= hoy_iso]
+        n, f, pv = _ultimo_cambio(serie)
+        anadir("br", "Brasil", "Banco Central de Brasil (meta Selic)", _pct(n), n, f, pv, serie[-1][0], "Banco Central de Brasil, SGS 432",
+               "https://www.bcb.gov.br/controleinflacao/historicotaxasjuros")
+    except Exception as e:
+        fallos.append(f"tipo Brasil: {type(e).__name__}: {e}")
+    try:    # Canadá: tipo objetivo a un día (Valet API del Banco de Canadá)
+        serie = sorted((x["d"], _num(x["V39079"]["v"])) for x in json.loads(descargar(URL_BOC_TIPO.format(d1=d1y)))["observations"])
+        n, f, pv = _ultimo_cambio(serie)
+        anadir("ca", "Canadá", "Banco de Canadá (tipo a un día)", _pct(n), n, f, pv, serie[-1][0], "Banco de Canadá, Valet API (V39079)",
+               "https://www.bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/")
+    except Exception as e:
+        fallos.append(f"tipo Canadá: {type(e).__name__}: {e}")
+    if not filas:
+        raise ValueError("ningún tipo disponible: " + "; ".join(fallos))
+    try:    # comparación con el radar: números del texto «valor» de la celda de política monetaria
+        radar = json.loads((SALIDA.parent / "regulacion.json").read_text(encoding="utf-8"))
+        valores = {c["jur"]: c.get("valor") for c in radar["celdas"] if c.get("tema") == "politica"}
+    except Exception:
+        valores = {}
+    for fila in filas:
+        v = valores.get(fila["jur"])
+        fila["radar"] = v
+        if v is None:
+            fila["coincide_radar"] = None
+            continue
+        numeros = [float(x.replace(",", ".")) for x in re.findall(r"\d+,\d+|\d+", v)]
+        fila["coincide_radar"] = any(abs(fila["num"] - x) < 0.006 for x in numeros)
+    return {"fuente": "Bancos centrales (ver cada fila)", "nivel": "P", "paises": filas, "fallos": fallos,
+            "nota": "Valores leídos de la fuente oficial de cada banco. «Último cambio» es la fecha en que cambió el valor en la serie, no la de la reunión."}
 
 
 def _num(x):
@@ -343,7 +461,7 @@ def main():
     PREVIO = previo
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("tipos_vivos", leer_tipos)):
         try:
             salida[clave] = funcion()
             salida[clave]["leido"] = salida["leido"]
@@ -366,6 +484,14 @@ def main():
     if de:
         print("Deuda: %d países FMI; rendimientos a 10 años: %s" % (len(de["paises"]), ", ".join(f"{k} {v['valor']} % ({v['fecha']})" for k, v in de["rendimientos"].items())))
         fallos += de.get("fallos", [])
+    ix = salida.get("indices")
+    if ix:
+        print("Índices: " + ", ".join(f"{i['nombre']} {i['valor']:,.0f} ({i['cambio_1d']:+.2f} %, {i['fecha']})" for i in ix["indices"]))
+        fallos += ix.get("fallos", [])
+    ti = salida.get("tipos_vivos")
+    if ti:
+        print("Tipos: " + ", ".join(f"{p['pais']} {p['valor']}" + ("" if p.get("coincide_radar") in (True, None) else " (¡no coincide con el radar: " + str(p["radar"]) + "!)") for p in ti["paises"]))
+        fallos += ti.get("fallos", [])
     for f in fallos:
         print("AVISO (se conserva lo anterior si existía):", f)
     return 1 if fallos else 0

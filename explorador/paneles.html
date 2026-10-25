@@ -130,9 +130,17 @@ function panelTipos(){
   const prox=t.filter(x=>diasHasta(x.proxima)!=null&&diasHasta(x.proxima)>=0).sort((a,b)=>diasHasta(a.proxima)-diasHasta(b.proxima))[0];
   const filas=t.map(x=>{ const s=DSIM[x.dir]||DSIM['n/d'], d=diasHasta(x.proxima);
     return `<tr title="${x.estado.replace(/"/g,'&quot;')}"><td>${x.pais}</td><td class="n"><b>${x.valor}</b></td><td style="color:${s[1]}">${s[0]} ${s[2]}</td>
-    <td class="n">${fechaCorta(x.fecha)}</td><td class="n">${x.proxima? fechaCorta(x.proxima)+(d!=null&&d>=0?` <span class="mini">(en ${d} d)</span>`:''):'—'}</td>
+    <td class="n">${fechaCorta(x.fecha)}</td><td class="n">${x.proxima? fechaCorta(x.proxima)+(d!=null&&d>=0?` <span class="mini">(en ${d} d)</span>`:` <span class="mini" style="color:#ffb15c" title="La reunión prevista ya pasó y el radar no se ha actualizado: comprobarla en la fuente del banco central">⚠ pasó: revisar</span>`):'—'}</td>
     <td><span class="nivel ${x.nivel==='P'?'P':'S'}">${x.nivel==='P'?'P':'S'}</span></td><td class="tag hm" style="white-space:normal;max-width:420px">${x.estado.length>150? x.estado.slice(0,150)+'…':x.estado}</td></tr>`; }).join('');
-  return `<div class="panel vidrio"><h2>Tipos de interés de los bancos centrales</h2>
+  const V=(D.tipos_vivos&&D.tipos_vivos.paises)||[];
+  const vivos=V.length? `<div class="panel vidrio"><h2>Tipos al día (automático)</h2>
+   <p class="que">Leídos de la fuente oficial de cada banco central cada día laborable · <span class="nivel P">P</span> primaria · si no coincide con el radar, el radar está desactualizado</p>
+   <table><thead><tr><th>País</th><th>Banco</th><th>Tipo</th><th>Último cambio</th><th>Radar</th><th class="hm">Fuente</th></tr></thead><tbody>${V.map(x=>`<tr><td>${x.pais}</td><td>${x.banco}</td><td class="n"><b>${x.valor}</b></td>
+   <td class="n">${x.ultimo_cambio? fechaCorta(x.ultimo_cambio)+(x.cambio_pb!=null?` <span class="mini">(${x.cambio_pb>0?'+':''}${x.cambio_pb} pb)</span>`:''):'—'}</td>
+   <td>${x.coincide_radar===true?'<span style="color:#7ee0a1">✓ coincide</span>':x.coincide_radar===false?`<span style="color:#ffb15c" title="El radar dice: ${esc(x.radar)}">⚠ el radar dice ${esc(x.radar)}</span>`:'<span class="mini">no está en el radar</span>'}</td>
+   <td class="tag hm"><a style="color:#f1d58a" href="${x.url}" target="_blank" rel="noopener">${esc(x.fuente)}</a></td></tr>`).join('')}</tbody></table>
+   <p class="pie">Leído el ${D.leido}. ${D.tipos_vivos.nota} Los demás países (Corea, Japón, China, India, Rusia…) no tienen una fuente abierta fácil de leer sin navegador y se mantienen a mano en el radar.</p></div>`:'';
+  return vivos+`<div class="panel vidrio"><h2>Tipos de interés de los bancos centrales</h2>
   <p class="que">Último tipo oficial y último movimiento (▲ subió · ▬ mantuvo · ▼ bajó) · vienen de la columna «política monetaria» del radar regulatorio, ya verificada allí</p>
   <div class="kpis"><div class="kpi"><div class="v">${sub} de ${t.length}</div><div class="e">Subieron tipos en su último movimiento</div></div>
    <div class="kpi"><div class="v">${man}</div><div class="e">Mantuvieron</div></div><div class="kpi"><div class="v">${baj}</div><div class="e">Bajaron</div></div>
@@ -145,15 +153,19 @@ function panelTipos(){
 const fPrecio = v => v>=1000? '$'+fm(v,0) : v>=1? '$'+fm(v,2) : '$'+fm(v,4);
 function panelMercadoRWA(){
   const m=D.mercado, r=D.rwa; if(!m&&!r) return '<div class="aviso">No hay datos. Ejecuta scripts/actualizar_paneles.py.</div>';
-  const mer = m? `<div class="panel vidrio"><h2>Mercado de XRP y XLM</h2><p class="que">Precio, capitalización y variación en 24 h · CoinGecko · <span class="nivel S">S</span> agregador</p>
-   <table><thead><tr><th>Activo</th><th>Precio</th><th>Capitalización</th><th>24 h</th></tr></thead><tbody>${m.activos.map(a=>`<tr class="${a.simbolo!=='BTC'?'fila-xrp':''}"><td><b>${a.simbolo}</b> <span class="mini">${a.nombre}</span></td><td class="n">${fPrecio(a.precio)}</td><td class="n">${fUSD(a.capitalizacion)}</td><td class="n">${cambio(a.cambio_24h)}</td></tr>`).join('')}</tbody></table>
+  const mer = m? `<div class="panel vidrio"><h2>Mercado de digital assets (BTC, ETH, XRP y XLM)</h2><p class="que">Precio, capitalización y variación en 24 h · CoinGecko · <span class="nivel S">S</span> agregador</p>
+   <table><thead><tr><th>Activo</th><th>Precio</th><th>Capitalización</th><th>24 h</th></tr></thead><tbody>${m.activos.map(a=>`<tr class="${a.simbolo==='XRP'||a.simbolo==='XLM'?'fila-xrp':''}"><td><b>${a.simbolo}</b> <span class="mini">${a.nombre}</span></td><td class="n">${fPrecio(a.precio)}</td><td class="n">${fUSD(a.capitalizacion)}</td><td class="n">${cambio(a.cambio_24h)}</td></tr>`).join('')}</tbody></table>
    <p class="pie">Leído el ${D.leido}. Fuente: <a style="color:#f1d58a" href="${m.fuente}" target="_blank" rel="noopener">CoinGecko</a>.</p></div>` : '';
+  const I=D.indices&&D.indices.indices;
+  const ind = I&&I.length? `<div class="panel vidrio"><h2>Bolsas: cuatro índices</h2><p class="que">Último cierre diario y variación frente al cierre anterior · Yahoo Finance · <span class="nivel S">S</span> no oficial; si falla, se conserva el dato anterior</p>
+   <table><thead><tr><th>Índice</th><th>Zona</th><th>Cierre</th><th>1 día</th><th>Fecha</th></tr></thead><tbody>${I.map(i=>`<tr><td><b>${i.nombre}</b></td><td>${i.zona}</td><td class="n">${fm(i.valor,0)}</td><td class="n">${cambio(i.cambio_1d)}</td><td class="n">${fechaCorta(i.fecha)}</td></tr>`).join('')}</tbody></table>
+   <p class="pie">Leído el ${D.leido}. Los índices están en puntos, no en dólares; los datos de fin de semana y festivos repiten el último cierre. Fuente: <a style="color:#f1d58a" href="${D.indices.fuente}" target="_blank" rel="noopener">Yahoo Finance</a>.</p></div>` : '';
   const rw = r? `<div class="panel vidrio"><h2>Protocolos RWA en DeFi</h2><p class="que">Valor bloqueado (TVL) en protocolos que DefiLlama clasifica como RWA · <span class="nivel S">S</span> agregador</p>
    <div class="kpis"><div class="kpi"><div class="v">${fUSD(r.total)}</div><div class="e">En ${r.n} protocolos</div></div><div class="kpi"><div class="v">${fUSD(r.stellar)}</div><div class="e">De ellos, en Stellar</div></div><div class="kpi"><div class="v">${fUSD(r.xrpl)}</div><div class="e">De ellos, en el XRPL</div></div></div>
    <div class="aviso"><b>Cómo leerlo:</b> ${r.nota}</div>
    <table><thead><tr><th>Protocolo</th><th>Valor bloqueado</th><th>7 días</th><th class="hm">Cadenas</th></tr></thead><tbody>${r.top.map(x=>`<tr><td>${x.nombre}</td><td class="n">${fUSD(x.usd)}</td><td class="n">${cambio(x.cambio_7d)}</td><td class="tag hm">${(x.cadenas||[]).join(', ')}</td></tr>`).join('')}</tbody></table>
    <p class="pie">Fuente: <a style="color:#f1d58a" href="${r.fuente}" target="_blank" rel="noopener">DefiLlama</a>, leído el ${D.leido}.</p></div>` : '';
-  return mer+rw;
+  return mer+ind+rw;
 }
 const esc = t => String(t==null?'':t).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let glQ='', glC='';

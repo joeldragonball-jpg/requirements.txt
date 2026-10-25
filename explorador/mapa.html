@@ -764,7 +764,7 @@ function cifrasVivas(c){
 const pnPrecio = v => v >= 1000 ? '$' + pnFmt(v, 0) : v >= 1 ? '$' + pnFmt(v, 2) : '$' + pnFmt(v, 4);
 function pnMercado(b){
   const m = PAN && PAN.mercado; if (!m) return;
-  pnTabla(b, ['Activo', 'Precio', 'Capitalización', '24 h'], m.activos.map(a => ({xrp: a.simbolo !== 'BTC', celdas: [a.simbolo, pnPrecio(a.precio), pnUSD(a.capitalizacion), td => pnCambio(td, a.cambio_24h)]})));
+  pnTabla(b, ['Activo', 'Precio', 'Capitalización', '24 h'], m.activos.map(a => ({xrp: a.simbolo === 'XRP' || a.simbolo === 'XLM', celdas: [a.simbolo, pnPrecio(a.precio), pnUSD(a.capitalizacion), td => pnCambio(td, a.cambio_24h)]})));
 }
 // Datos al día (paneles) que coinciden con la búsqueda, por capa: se suman a los hechos para que la capa no se atenúe y se vea en la ficha.
 function pnTextos(id){
@@ -797,7 +797,7 @@ function datosGlobales(padre){
     k.push([pnUSD(s.total), 'Stablecoins en circulación [S]', 'stable'], [pnFmt(s.top[0].usd / s.total * 100, 0) + ' %', 'Cuota de ' + s.top[0].simbolo + ' [S]', 'stable']);
     k.push([pnUSD(s.xrpl.total), 'Stablecoins en el XRPL [S]', 'puente'], [pnUSD(s.stellar.total), 'Stablecoins en Stellar [S]', 'puente'], [pnUSD(rl), 'RLUSD en el XRPL [S]', 'puente']);
   }
-  if (PAN && PAN.mercado) PAN.mercado.activos.filter(a => a.simbolo !== 'BTC').forEach(a => k.push([pnPrecio(a.precio) + ' (' + (a.cambio_24h > 0 ? '+' : '') + pnFmt(a.cambio_24h, 1) + ' %)', 'Precio de ' + a.simbolo + ' [S]', 'puente']));
+  if (PAN && PAN.mercado) PAN.mercado.activos.filter(a => a.simbolo === 'XRP' || a.simbolo === 'XLM').forEach(a => k.push([pnPrecio(a.precio) + ' (' + (a.cambio_24h > 0 ? '+' : '') + pnFmt(a.cambio_24h, 1) + ' %)', 'Precio de ' + a.simbolo + ' [S]', 'puente']));
   if (t){
     const j = t.paises.find(p => p.clave === 'Japan'), c = t.paises.find(p => p.clave === 'China, Mainland');
     k.push(['$' + pnFmt(t.total[0], 0) + ' mil M', 'Deuda de EE. UU. en manos extranjeras [P]', 'cbdc']);
@@ -812,6 +812,11 @@ function datosCapa(padre, id){
   if (id === 'reg'){
     const tp = tiposFilas(); if (!tp.length) return;
     const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: tipos de interés de los bancos centrales');
+    const tv = PAN && PAN.tipos_vivos && PAN.tipos_vivos.paises;
+    if (tv && tv.length){
+      H('p', 'nota', b, 'Al día (se leen solos de la fuente oficial de cada banco, cada día laborable) [P]:');
+      pnTabla(b, ['País', 'Tipo', 'Último cambio', 'Radar'], tv.map(x => ({celdas: [x.pais, x.valor, (x.ultimo_cambio || '—') + (x.cambio_pb != null ? ' (' + (x.cambio_pb > 0 ? '+' : '') + x.cambio_pb + ' pb)' : ''), x.coincide_radar === false ? '⚠ el radar dice ' + x.radar : x.coincide_radar ? '✓ coincide' : 'no está en el radar']})));
+    }
     const sub = tp.filter(c => c.dir === 'sube').length, man = tp.filter(c => c.dir === 'mantiene').length, baj = tp.filter(c => c.dir === 'baja').length;
     pnKpi(b, [[sub + ' de ' + tp.length, 'Subieron tipos en su último movimiento'], [String(man), 'Mantuvieron'], [String(baj), 'Bajaron']]);
     const hoy = D.calendario ? D.calendario.hoy : null;
@@ -870,8 +875,12 @@ function datosCapa(padre, id){
     pnPie(b, rw.nota, 'DefiLlama (protocolos)', PAN.leido);
   }
   if (id === 'fondos' && PAN.mercado){
-    const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: mercado de XRP y XLM [S]');
+    const b = H('div', 'pn', padre); H('h3', '', b, 'Datos al día: BTC, ETH, XRP y XLM [S]');
     pnMercado(b);
+    if (PAN.indices && PAN.indices.indices.length){
+      H('h3', '', b, 'Datos al día: cuatro bolsas [S, Yahoo Finance]');
+      pnTabla(b, ['Índice', 'Cierre', '1 día', 'Fecha'], PAN.indices.indices.map(i => ({celdas: [i.nombre + ' (' + i.zona + ')', pnFmt(i.valor, 0), td => pnCambio(td, i.cambio_1d), i.fecha]})));
+    }
     H('p', 'nota', b, 'No hay una fuente abierta gratuita fiable de entradas y salidas diarias de los ETF; las cifras de ETF de esta capa vienen de informes (R27) con su fecha. Fuente de precios: CoinGecko, leído el ' + PAN.leido + '.');
   }
   if (id === 'deposit'){
