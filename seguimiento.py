@@ -47,8 +47,15 @@ def mostrar():
                 + " — prompts en `research/prompts/`")
     st.caption(" · ".join(f"{ORIGEN[o]}: {v['hechas']} hechas, {v['pendientes']} pendientes" for o, v in r["por_cola"].items()))
 
+    # --- Rutinas
+    st.markdown("##### 🔁 Rutina de research (actualizar, verificar, revisar)")
+    st.dataframe(pd.DataFrame([{"ID": x["id"], "Tarea": x["nombre"], "Tipo": x["tipo"], "Cada": x["cada"], "Coste": x["coste"],
+                                "Último": x["ultimo"] or "sin hacer", "Estado": "⚠ atrasada" if x["atrasada"] else "✓ al día"} for x in d["rutinas"]]),
+                 hide_index=True, use_container_width=True)
+    st.caption("Actualizar = datos que cambian (tipos, deuda, ETF, energía). Nuevo = temas sin cubrir (países, deuda por país). Verificar/revisar = cerrar [VERIFICAR], voces, auditorías, fuentes.")
+
     # --- Qué toca ahora
-    st.markdown("##### 🎯 Qué toca ahora (lo que caduca antes, primero)")
+    st.markdown("##### 🎯 Research nuevo por hacer (el plazo solo se muestra si vence en menos de 45 días)")
     if d["pendientes"]:
         filas = [{"ID": t["id"], "Tema": t["tema"][:90], "Cola": ORIGEN.get(t["origen"], t["origen"]),
                   "Plazo": _cuando(t["plazo"]["dias"]) if t["plazo"] else "—", "Fecha": t["plazo"]["fecha"] if t["plazo"] else "",

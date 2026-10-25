@@ -211,6 +211,35 @@ PLAN = {"W01": ("Tipos de interés", "2 %"), "W02": ("Deuda y subastas", "2 %"),
 DIAS = {0: ["W01"], 1: ["W02"], 2: ["W03"], 3: ["W05"], 4: ["W06", "W09"], 5: ["W10"], 6: []}   # lunes = 0
 
 
+TIPOS = {"W01": "actualizar", "W02": "actualizar", "W04": "actualizar", "W10": "actualizar", "W03": "nuevo", "W05": "verificar", "W06": "verificar",
+         "W07": "fuentes", "W08": "revisar", "W09": "revisar"}
+CADA = {"W01": (7, "cada lunes"), "W02": (7, "cada martes"), "W03": (7, "cada miércoles"), "W04": (14, "cada 2 jueves"), "W05": (7, "cada jueves"),
+        "W06": (7, "cada viernes"), "W07": (31, "1.ª semana del mes"), "W08": (31, "última semana del mes"), "W09": (7, "cada viernes"), "W10": (7, "fin de semana")}
+
+
+EQUIV = {"W01": ["*-T17-*.md"], "W02": ["*-D0*.md"], "W03": ["*-T0[6-9]-*.md", "*-T1[0-6]-*.md"], "W04": ["*-T19-*.md"], "W05": ["*verificaciones-pendientes*.md"],
+         "W08": ["*auditoria-coherencia*.md"], "W10": ["*-T18-*.md"]}
+
+
+def ultimo_w(ident):
+    """Fecha del último informe de la rutina (archivos informes/research/AAAA-MM-DD-Wxx-*.md)."""
+    patrones = [f"*-{ident}-*.md"] + EQUIV.get(ident, [])        # también cuenta lo hecho antes de que existiera la rutina
+    fechas = [f.name[:10] for pat in patrones for f in (RAIZ / "informes" / "research").glob(pat) if re.match(r"\d{4}-\d{2}-\d{2}", f.name)]
+    return max(fechas) if fechas else None
+
+
+def rutinas():
+    hoy = date.today()
+    out = []
+    for i, (nombre, coste) in PLAN.items():
+        u = ultimo_w(i)
+        dias = (hoy - date.fromisoformat(u)).days if u else None
+        limite, cada = CADA[i]
+        out.append({"id": i, "nombre": nombre, "coste": coste, "tipo": TIPOS[i], "cada": cada, "ultimo": u, "dias": dias,
+                    "atrasada": dias is None or dias > limite + 1})
+    return out
+
+
 def toca(hoy):
     ids = list(DIAS[hoy.weekday()])
     if hoy.weekday() == 3 and hoy.isocalendar()[1] % 2 == 0:
@@ -259,7 +288,9 @@ def construir(bots_estado=False):
         claves = CLAVES.get(t["id"], [])
         plazo = next((e for e in eventos if any(k.lower() in e["titulo"].lower() for k in claves) and not e["aprox"]), None) \
             or next((e for e in eventos if any(k.lower() in e["titulo"].lower() for k in claves)), None) if claves else None
-        pendientes.append({**t, "plazo": ({"fecha": plazo["fecha"], "dias": plazo["dias"], "evento": plazo["titulo"][:90]} if plazo else None)})
+        if plazo and plazo["dias"] > 45:
+            plazo = None
+        pendientes.append({**t, "tipo": "nuevo", "plazo": ({"fecha": plazo["fecha"], "dias": plazo["dias"], "evento": plazo["titulo"][:90]} if plazo else None)})
     pendientes.sort(key=lambda t: (t["plazo"] is None, t["plazo"]["dias"] if t["plazo"] else 0, t["id"]))
     cuota = []
     for t in colas:
@@ -269,7 +300,7 @@ def construir(bots_estado=False):
     contables = [t for t in colas if t["estado"] in ("hecha", "pendiente")]
     return {
         "generado": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
-        "hoy": r00(), "semana": semana(), "plan": {k: {"nombre": v[0], "coste": v[1]} for k, v in PLAN.items()},
+        "hoy": r00(), "semana": semana(), "plan": {k: {"nombre": v[0], "coste": v[1]} for k, v in PLAN.items()}, "rutinas": rutinas(),
         "resumen": {"hechas": sum(1 for t in contables if t["estado"] == "hecha"), "pendientes": sum(1 for t in contables if t["estado"] == "pendiente"),
                     "por_cola": {o: {"hechas": sum(1 for t in contables if t["origen"] == o and t["estado"] == "hecha"),
                                      "pendientes": sum(1 for t in contables if t["origen"] == o and t["estado"] == "pendiente")} for o in ("R", "T", "D")}},
