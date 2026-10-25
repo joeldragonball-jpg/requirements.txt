@@ -54,3 +54,4 @@ Salen del plano del Centro (`explorador/centro.json`, pestaña «Centro» del m�
 - **Hechas el 25-oct:** C01 gasto en defensa y C02 liquidez M2 (informes en `informes/research/`; falta ponerlas en el panel).
 - **Orden propuesto, una por semana en la ranura de fin de semana (donde W10 deje hueco) y solo si el semanal está por debajo del 70 %:** C03 matriz de riesgos (3 %) → C05 archivo de precedentes (3 %) → C04 cuadro de valoración (3 %) → C06 vigilante de EDGAR (código, sin IA) → C07 suscripciones (Joel aporta datos; en `privado/`).
 - Al acabar cada una se actualiza el estado en `explorador/centro.json` y se regenera con `python scripts/construir_movil.py`.
+- **Tras el repaso del cerebro (25-oct):** C08 consolidar el archivo principal (4 %, Opus, sesión nueva tras el martes 27-oct), C09 lote de verificación de dudas del cerebro (3 %, jueves con W05) y C10 auditoría cruzada de los resúmenes semanales del bot (3 %, junto a la W08 de fin de mes).

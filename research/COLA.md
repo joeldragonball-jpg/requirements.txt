@@ -93,6 +93,9 @@ Reglas fijas: fuente primaria en su idioma original (traducida por mí, con enla
 | C05 | Hueco del Centro: Archivo de precedentes históricos (formato fijo) | generica | Sonnet | medio | M | 3 % | | pendiente (prompt en research/prompts/C05-precedentes.md) |
 | C06 | Hueco del Centro: Vigilante de SEC EDGAR (ETF, DTCC, 13F) | generica | Sonnet | medio | M | <1 % | | pendiente (prompt en research/prompts/C06-edgar.md) |
 | C07 | Hueco del Centro: Control de suscripciones y software (privado) | generica | Sonnet | medio | S | <1 % | | pendiente (prompt en research/prompts/C07-suscripciones.md) |
+| C08 | Consolidar el archivo principal del cerebro en un resumen vigente (opción B, una sola vez) | generica | Opus | medio | M | 4 % | | pendiente (prompt en research/prompts/C08-consolidar-cerebro.md; sesión nueva tras el reinicio del martes 27-oct) |
+| C09 | Lote de verificación de dudas del cerebro (revisión del 25-oct) | generica | Sonnet | medio | M | 3 % | | pendiente (prompt en research/prompts/C09-verificar-cerebro.md) |
+| C10 | Auditoría cruzada de cifras de los resúmenes semanales del bot (W41-W43) con series primarias | generica | Sonnet | medio | M | 3 % | | pendiente (prompt en research/prompts/C10-auditoria-resumenes.md) |
 
 ## Orden sugerido para esta semana (hasta el 20-oct)
 R02P (profundo, mide coste) → según su coste, repetir en versión profunda: R01, R08, R09, R11, R12 → R00 diario → R17 (día 19). Como las versiones rápidas cuestan ~1-2 %, para aprovechar la cuota usar la versión profunda. Reserva: dejar ~10 % para una auditoría final.
