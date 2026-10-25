@@ -37,13 +37,13 @@ st.markdown("""
     [data-testid="stMetricValue"] {font-size: 1.45rem;}
     /* Tarjetas de indicadores: 5 en fila en ordenador, 2 por fila en el móvil */
     .kpis {display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 4px 0 4px;}
-    .kpi {background: #151921; border: 1px solid #262c3a; border-radius: 14px; padding: 12px 14px;}
-    .kpi .lbl {color: #94a3b8; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em;}
-    .kpi .val {color: #e5e7eb; font-size: 1.4rem; font-weight: 700; line-height: 1.4; white-space: nowrap;}
+    .kpi {background: #141b29; border: 1px solid #25304a; border-radius: 14px; padding: 12px 14px;}
+    .kpi .lbl {color: #9aa7c2; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em;}
+    .kpi .val {color: #eef2fb; font-size: 1.4rem; font-weight: 700; line-height: 1.4; white-space: nowrap;}
     .kpi .dlt {font-size: 0.85rem; font-weight: 600;}
-    .kpi.hero {grid-column: 1 / -1; background: linear-gradient(135deg, #16233d 0%, #151921 70%); border-color: #2a3a5c; padding: 16px 18px;}
+    .kpi.hero {grid-column: 1 / -1; background: linear-gradient(135deg, #19233a 0%, #141b29 70%); border-color: #2a3a5c; padding: 16px 18px;}
     .kpi.hero .val {font-size: 2.4rem; line-height: 1.2;}
-    .meta {color: #64748b; font-size: 0.72rem; margin: 2px 2px 14px;}
+    .meta {color: #6b7a99; font-size: 0.72rem; margin: 2px 2px 14px;}
     /* Menú principal: losetas cuadradas con icono grande (4 en ordenador, 2x2 en el móvil) */
     .st-key-grupo_menu_cerebro div[role="radiogroup"] {display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; width: 100%;}
     .st-key-grupo_menu_cerebro div[role="radiogroup"] > label {flex-direction: column; justify-content: center; text-align: center;
@@ -55,9 +55,9 @@ st.markdown("""
     .js-plotly-plot, .js-plotly-plot * {touch-action: pan-y !important;}
     /* Menús como botones grandes (más fáciles de tocar que los círculos de radio) */
     div[role="radiogroup"] {gap: 6px; flex-wrap: wrap;}
-    div[role="radiogroup"] > label {background: #151921; border: 1px solid #262c3a; border-radius: 10px; padding: 6px 12px;
+    div[role="radiogroup"] > label {background: #141b29; border: 1px solid #25304a; border-radius: 10px; padding: 6px 12px;
                                     margin: 0 !important; min-height: 40px; align-items: center;}
-    div[role="radiogroup"] > label:has(input:checked) {background: #1d4ed8; border-color: #3b82f6;}
+    div[role="radiogroup"] > label:has(input:checked) {background: #19233a; border-color: #f1d58a;}
     div[role="radiogroup"] > label > div:first-child {display: none;}
     div[role="radiogroup"] > label p {margin: 0; font-weight: 600;}
     /* Menú del cerebro: 9 losetas, todas en una fila en pantallas anchas */
@@ -70,9 +70,9 @@ st.markdown("""
     [class*="st-key-sub_"] div[role="radiogroup"] {display: flex; flex-direction: column; gap: 8px; width: 100%;}
     [class*="st-key-sub_"] div[role="radiogroup"] > label {width: 100%; justify-content: flex-start; padding: 10px 14px;
                                                           min-height: 58px; border-radius: 12px;}
-    [class*="st-key-sub_"] div[role="radiogroup"] > label:has(input:checked) {background: #16233d; border-color: #3b82f6;}
-    [class*="st-key-sub_"] div[role="radiogroup"] > label p {text-align: left; font-size: 0.82rem; color: #94a3b8; line-height: 1.4; font-weight: 400;}
-    [class*="st-key-sub_"] div[role="radiogroup"] > label p strong {color: #e5e7eb; font-size: 1rem; font-weight: 600;}
+    [class*="st-key-sub_"] div[role="radiogroup"] > label:has(input:checked) {background: #19233a; border-color: #6ea8ff;}
+    [class*="st-key-sub_"] div[role="radiogroup"] > label p {text-align: left; font-size: 0.82rem; color: #9aa7c2; line-height: 1.4; font-weight: 400;}
+    [class*="st-key-sub_"] div[role="radiogroup"] > label p strong {color: #eef2fb; font-size: 1rem; font-weight: 600;}
     /* Botón de ajustes pegado a la derecha, separado del título */
     [data-testid="stPopover"] {display: flex; justify-content: flex-end;}
     /* Pestañas: reparten el ancho (sin deslizar) */
@@ -89,9 +89,10 @@ st.markdown("""
     }
 
     /* --- Opciones de los menús (selectores reales: label[data-testid="stRadioOption"]) --- */
-    label[data-testid="stRadioOption"] {background: #151921; border: 1px solid #262c3a; border-radius: 12px; padding: 8px 14px;
+    label[data-testid="stRadioOption"] {background: #141b29; border: 1px solid #25304a; border-radius: 12px; padding: 8px 14px;
                                         min-height: 44px; margin: 0 !important; box-sizing: border-box; width: 100%;}
-    label[data-testid="stRadioOption"][data-selected="true"] {background: #1d4ed8; border-color: #3b82f6;}
+    label[data-testid="stRadioOption"][data-selected="true"] {background: #19233a; border-color: #f1d58a;}
+    label[data-testid="stRadioOption"][data-selected="true"] p {color: #f1d58a;}
     label[data-testid="stRadioOption"] > div > div:first-child {display: none;}           /* el círculo del radio */
     label[data-testid="stRadioOption"] p {margin: 0; font-weight: 600;}
     /* Cartera / Cerebro en una fila, sin ocupar todo el ancho */
@@ -103,9 +104,9 @@ st.markdown("""
     .st-key-grupo_menu_cerebro label[data-testid="stRadioOption"] p {text-align: center; font-size: 0.95rem; line-height: 1.35;}
     /* Tarjetas de los apartados */
     [class*="st-key-sub_"] label[data-testid="stRadioOption"] {min-height: 60px; justify-content: flex-start;}
-    [class*="st-key-sub_"] label[data-testid="stRadioOption"][data-selected="true"] {background: #16233d; border-color: #3b82f6;}
-    [class*="st-key-sub_"] label[data-testid="stRadioOption"] p {text-align: left; font-size: 0.82rem; color: #94a3b8; font-weight: 400; line-height: 1.4;}
-    [class*="st-key-sub_"] label[data-testid="stRadioOption"] p strong {color: #e5e7eb; font-size: 1rem; font-weight: 600;}
+    [class*="st-key-sub_"] label[data-testid="stRadioOption"][data-selected="true"] {background: #19233a; border-color: #6ea8ff;}
+    [class*="st-key-sub_"] label[data-testid="stRadioOption"] p {text-align: left; font-size: 0.82rem; color: #9aa7c2; font-weight: 400; line-height: 1.4;}
+    [class*="st-key-sub_"] label[data-testid="stRadioOption"] p strong {color: #eef2fb; font-size: 1rem; font-weight: 600;}
     [class*="st-key-sub_"] [role="radiogroup"] > div {width: 100%;}
     [class*="st-key-sub_"] label[data-testid="stRadioOption"] > div {width: 100%;}
     .st-key-grupo_menu_cerebro [role="radiogroup"] > div {width: 100%; height: 100%;}
@@ -242,6 +243,93 @@ st.markdown("""
     /* Cambio de sección (Cerebro, Seguimiento, Privado) */
     .st-key-seccion [role="radiogroup"] {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;}
     .st-key-seccion label[data-testid="stRadioOption"] {width: 100%; min-height: 52px; justify-content: center;}
+    /* Densidad: menos aire y más ancho útil (también en el iPhone) */
+    [data-testid="stVerticalBlock"] {gap: .6rem;}
+    .block-container {padding-top: calc(.5rem + env(safe-area-inset-top, 0px)) !important; padding-bottom: 104px;}
+    .st-key-cab {min-height: 52px;}
+    .st-key-cab h1 {font-size: 1.3rem !important; line-height: 1.2 !important; margin: 0 !important; padding: 0 !important;}
+    .kpi:not(.hero) {padding: 8px 12px;}
+    .kpi:not(.hero) .lbl {font-size: .64rem;} .kpi:not(.hero) .ic {width: 20px; height: 20px; border-radius: 7px; font-size: .68rem;}
+    .kpi:not(.hero) .val {display: inline-block; font-size: 1.15rem; margin: 2px 6px 0 0;}
+    .kpi:not(.hero) .dlt {display: inline-block; padding: 0 8px; font-size: .72rem;}
+    .kpi.hero {padding: 10px 14px;} .kpi.hero .val {font-size: 1.75rem; margin: 0 0 4px;} .kpi.hero svg.spark {height: 22px; margin-top: 4px;}
+    .kpis {gap: 8px;}
+    .pcard {padding: 10px 12px; margin-bottom: 8px;} .pcard .fila {grid-template-columns: 34px 1fr auto; gap: 10px;}
+    .pcard .av {width: 34px; height: 34px; font-size: .68rem;} .pcard h4 {font-size: .95rem;} .pcard p {font-size: .74rem;}
+    .pcard .barra {height: 5px; margin-top: 8px;}
+    [data-testid="stVerticalBlockBorderWrapper"] {overflow-x: hidden;}
+    [data-testid="stMetricLabel"], [data-testid="stMetricValue"], [data-testid="stMetricDelta"] {max-width: 100%;}
+    [data-testid="stMetricValue"] div, [data-testid="stMetricLabel"] p {overflow: hidden; text-overflow: ellipsis;}
+    /* Aviso de bots: punto pequeño que abre el detalle al tocarlo */
+    details.bots {margin: 0 0 4px;}
+    details.bots summary {list-style: none; display: inline-block; padding: 2px 10px; border-radius: 999px; background: #ffb15c1f;
+                          color: #ffb15c; font-size: .78rem; font-weight: 700; cursor: pointer;}
+    details.bots summary::-webkit-details-marker {display: none;}
+    details.bots div {margin-top: 6px; font-size: .78rem; color: var(--sub);}
+    @media (max-width: 640px) {
+        .block-container {padding-left: 14px !important; padding-right: 14px !important;}
+        /* Filas de indicadores (st.metric): 2 por fila en el móvil en vez de una debajo de otra */
+        [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] > [data-testid="stVerticalBlock"] > [data-testid="stElementContainer"] > [data-testid="stMetric"]) {
+            flex-wrap: wrap !important; gap: 8px !important;}
+        [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] > [data-testid="stVerticalBlock"] > [data-testid="stElementContainer"] > [data-testid="stMetric"]) > [data-testid="stColumn"] {
+            flex: 0 0 calc(50% - 4px) !important; min-width: 0 !important; width: calc(50% - 4px) !important;}
+        [data-testid="stMetric"] {padding: 6px 10px;}
+        [data-testid="stMetricValue"] {font-size: 1.1rem;}
+        [data-testid="stMetricLabel"] p {font-size: .62rem;}
+        [data-testid="stMetricDelta"] {font-size: .7rem;}
+    }
+    /* ===== Paneles grandes agrupados (listas tipo iOS): un panel por tema, sin tarjetas dentro de tarjetas ===== */
+    :root {--card: #141b29; --card2: #19233a; --azul: #6ea8ff;}
+    @property --cnt {syntax: '<integer>'; initial-value: 0; inherits: false;}
+    @keyframes sube {from {opacity: 0; transform: translateY(18px) scale(.98)} to {opacity: 1; transform: none}}
+    @keyframes cuenta {from {--cnt: 0} to {--cnt: var(--fin)}}
+    @keyframes oculta {to {visibility: hidden}}
+    @keyframes aparece {from {opacity: 0} to {opacity: 1}}
+    @keyframes crece {from {width: 0}}
+    .panel {background: linear-gradient(160deg, var(--card2), var(--card)); border: 1px solid var(--linea); border-radius: 20px;
+            padding: 14px 16px; margin-bottom: 12px;}
+    .panel.anim {animation: sube .5s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i, 0) * 70ms);}
+    .panel .tit {color: var(--sub); font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;}
+    .panel .gran {color: var(--txt); font-size: 2.2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.15; margin: 2px 0 0;
+                  font-variant-numeric: tabular-nums;}
+    .panel svg.spark {display: block; width: 100%; height: 26px; margin-top: 6px; overflow: visible;}
+    .panel .rejilla {display: grid; grid-template-columns: 1fr 1fr; margin-top: 10px;}
+    .panel .m {padding: 9px 0 2px; border-top: 1px solid var(--linea);}
+    .panel .m:nth-child(odd) {padding-right: 12px;}
+    .panel .m:nth-child(even) {padding-left: 12px; border-left: 1px solid var(--linea);}
+    .panel .m .l {color: var(--sub); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;}
+    .panel .m .v {color: var(--txt); font-size: 1.2rem; font-weight: 800; letter-spacing: -.02em; font-variant-numeric: tabular-nums; white-space: nowrap;}
+    .panel .m .d {font-size: .8rem; font-weight: 700; font-variant-numeric: tabular-nums;}
+    .panel .up {color: var(--sube);} .panel .dn {color: var(--baja);} .panel .nu {color: var(--sub);}
+    .panel .fila {display: grid; grid-template-columns: 34px 1fr auto; gap: 10px; align-items: center; padding: 10px 0 8px; border-top: 1px solid var(--linea);}
+    .panel .fila:first-of-type {border-top: 0; padding-top: 2px;}
+    .panel .av {width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: .68rem; color: #10131c;}
+    .panel .fila h4 {margin: 0; font-size: .95rem; font-weight: 700; color: var(--txt);} .panel .fila p {margin: 1px 0 0; font-size: .78rem; color: var(--sub);}
+    .panel .der {text-align: right; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--txt);}
+    .panel .der small {display: block; font-weight: 700; font-size: .8rem;}
+    .panel .barra {grid-column: 1 / -1; height: 5px; border-radius: 5px; background: #ffffff12; overflow: hidden;}
+    .panel .barra i {display: block; height: 100%; border-radius: 5px;}
+    .panel.anim .barra i {animation: crece 1s cubic-bezier(.2,.8,.2,1) both;}
+    /* Número que cuenta hasta su valor (sin JavaScript): al terminar se enseña el texto final con su formato */
+    .cu {display: inline-grid;} .cu > * {grid-area: 1 / 1;}
+    .cu .c {counter-reset: n var(--cnt); animation: cuenta .9s cubic-bezier(.2,.8,.2,1) both, oculta 0s linear .9s forwards;}
+    .cu .c::after {content: var(--pre, "") counter(n) var(--suf, "");}
+    .cu .f {animation: aparece 0s linear .9s both;}
+    @media (prefers-reduced-motion: reduce) {.cu .c {display: none;}}
+    /* Paneles de Streamlit (contenedores con borde) con el mismo aspecto; las métricas dentro van planas, separadas por líneas */
+    [data-testid="stVerticalBlockBorderWrapper"] {background: linear-gradient(160deg, var(--card2), var(--card)); border-radius: 20px;}
+    [data-testid="stVerticalBlockBorderWrapper"] [data-testid="stMetric"] {background: none; border: 0; border-radius: 0; padding: 8px 0 2px;
+                                                                           border-top: 1px solid var(--linea);}
+    /* Espacio: escala 4/8/12/16 */
+    [data-testid="stVerticalBlock"] {gap: .75rem;}
+    .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4 {margin: 0; padding: .25rem 0;}
+    [data-testid="stMarkdownContainer"] p {margin-bottom: .4rem;}
+    hr {margin: .75rem 0 !important;}
+    .stMarkdown h5 {font-size: .8125rem; letter-spacing: .1em; margin: 16px 4px 8px;}
+    .block-container {max-width: 1100px; padding-bottom: 96px;}
+    @media (max-width: 640px) {.block-container {padding-left: 16px !important; padding-right: 16px !important;}}
+    /* Barra inferior: fondo y borde de la paleta */
+    .st-key-dest_menu, .stApp:has(.modo-barra) .st-key-seccion {background: rgba(13,19,32,.93); border-color: var(--linea);}
     </style>
 """, unsafe_allow_html=True)
 
@@ -275,7 +363,7 @@ def candado():
                         unsafe_allow_html=True)
         st.markdown('<div style="text-align:center;font-size:clamp(1.6rem,6vw,2.1rem);font-weight:700;line-height:1.2">'
                     'Mi Cartera Cripto</div>'
-                    '<div style="text-align:center;color:#94a3b8;margin:6px 0 18px">🔒 Acceso privado</div>',
+                    '<div style="text-align:center;color:#9aa7c2;margin:6px 0 18px">🔒 Acceso privado</div>',
                     unsafe_allow_html=True)
         intento = st.text_input("Contraseña", type="password", key="app_clave_input",
                                 placeholder="Contraseña", label_visibility="collapsed")
@@ -442,8 +530,8 @@ SHEET_BASE = f"https://docs.google.com/spreadsheets/d/e/{SHEET_ID}/pub?single=tr
 GID_RESUMEN = "1415212158"
 
 TOKENS = {
-    "XRP": {"gid": "2015592342", "kraken": "XRPEUR", "coingecko": "ripple", "color": "#3b82f6"},
-    "XLM": {"gid": "108352087", "kraken": "XLMEUR", "coingecko": "stellar", "color": "#10b981"},
+    "XRP": {"gid": "2015592342", "kraken": "XRPEUR", "coingecko": "ripple", "color": "#6ea8ff"},
+    "XLM": {"gid": "108352087", "kraken": "XLMEUR", "coingecko": "stellar", "color": "#4fe3a1"},
 }
 COLD_WALLETS = {"LEDGER"}  # el resto se considera custodia en exchange
 # Noticias que guarda el bot (noticias/noticias.py) en la rama 'datos' del repositorio
@@ -452,7 +540,7 @@ NOTICIAS_URL = "https://raw.githubusercontent.com/joeldragonball-jpg/requirement
 ALERTAS_URL = "https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/main/alertas/config.toml"
 MADRID = ZoneInfo("Europe/Madrid")
 
-POS, NEG, MUTED, GRID = "#4fe3a1", "#ff6b7d", "#9aa7c2", "#1f2a40"
+POS, NEG, MUTED, GRID = "#4fe3a1", "#ff6b7d", "#9aa7c2", "rgba(37,48,74,.55)"
 MESES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
          "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
 MESES_CORTOS = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
@@ -505,10 +593,10 @@ def style_fig(fig, height=360):
         hoverlabel=dict(bgcolor="#19233a", bordercolor="#25304a", font=dict(color="#eef2fb")),
         font=dict(family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif", color="#9aa7c2"),
     )
-    fig.update_xaxes(showgrid=True, gridcolor="#18223a", gridwidth=1, title=None, fixedrange=True, showline=True, linecolor="#25304a",
+    fig.update_xaxes(showgrid=True, gridcolor="rgba(37,48,74,.4)", gridwidth=1, title=None, fixedrange=True, showline=True, linecolor="#25304a",
                      ticks="outside", tickcolor="#25304a", tickfont=dict(size=11), showspikes=True, spikemode="across",
                      spikethickness=1, spikecolor="#4b5a7a", spikedash="dot")   # fixedrange: sin zoom con los dedos
-    fig.update_yaxes(gridcolor=GRID, gridwidth=1, title=None, fixedrange=True, zeroline=True, zerolinecolor="#2a3652",
+    fig.update_yaxes(gridcolor=GRID, gridwidth=1, title=None, fixedrange=True, zeroline=True, zerolinecolor="#25304a",
                      tickfont=dict(size=11))
     fig.update_layout(dragmode=False)
     return fig
@@ -921,7 +1009,9 @@ def linea_estado():
         import sistema
         problemas, _ = sistema.resumen_bots()
         if problemas:
-            st.caption(f"⚠️ Bots con retraso o fallo: {', '.join(problemas)} (mira 🩺 Sistema)")
+            from html import escape
+            st.markdown(f"<details class='bots'><summary>● Bots</summary><div>Con retraso o fallo: {escape(', '.join(problemas))}. "
+                        "Detalle en Más → Sistema.</div></details>", unsafe_allow_html=True)
     except Exception:
         pass
 
@@ -1069,6 +1159,56 @@ def _spark(serie, color):
             f"<polyline points='{linea}' fill='none' stroke='{color}' stroke-width='1.6' vector-effect='non-scaling-stroke'/></svg>")
 
 
+# La animación de entrada solo corre la primera vez que se pinta cada apartado: cada clic relanza el script y, si no, parpadearía.
+_vistos = st.session_state.setdefault("anim_visto", set())
+_anim = " anim" if _sec not in _vistos else ""
+_vistos.add(_sec)
+
+
+def _cuenta(x, texto):
+    """Número que cuenta hasta su valor (CSS puro). x: importe en euros; texto: el importe ya formateado (es-ES), que se
+    enseña al terminar. Sin animación (o sin dato) devuelve solo el texto."""
+    from html import escape
+    if not _anim or x is None or pd.isna(x):
+        return escape(str(texto))
+    pre = "-" if x < 0 else ("+" if str(texto).startswith("+") else "")
+    return (f"<span class='cu' style='--fin:{int(abs(round(float(x))))};--pre:\"{pre}\";--suf:\" €\"'>"
+            f"<span class='c' aria-hidden='true'></span><span class='f'>{escape(str(texto))}</span></span>")
+
+
+def _flecha(v):
+    return "nu" if v is None or pd.isna(v) or v == 0 else ("up" if v > 0 else "dn")
+
+
+def panel_resumen():
+    """UN panel: valor de la cartera grande arriba y, debajo, 4 métricas en rejilla de 2 columnas separadas por líneas."""
+    from html import escape
+    chispa = ""
+    if not daily.empty:
+        ult = daily[daily.index >= daily.index.max() - pd.Timedelta(days=30)]
+        chispa = _spark(ult["valor"], POS if pnl_total >= 0 else NEG)
+    def celda(titulo, valor_html, v, delta=None, ayuda=""):
+        c = _flecha(v)
+        sim = {"up": "▲ ", "dn": "▼ "}.get(c, "")
+        d = f"<div class='d {c}'>{sim}{escape(delta)}</div>" if delta else ""
+        return (f"<div class='m' title='{escape(ayuda, quote=True)}'><div class='l'>{titulo}</div>"
+                f"<div class='v {c if c != 'nu' else ''}'>{valor_html}</div>{d}</div>")
+    celdas = [
+        celda("Invertido", _cuenta(inv_total, eur(inv_total)), None, None,
+              "Dinero puesto menos dinero retirado con ventas (incluye comisiones)."),
+        celda("Beneficio", _cuenta(pnl_total, eur(pnl_total, sign=True)), pnl_total, pct(pnl_total_pct),
+              "Beneficio no realizado: valor actual menos invertido."),
+        celda("Hoy", _cuenta(hoy_eur, eur(hoy_eur, sign=True)) if live else "—", hoy_eur if live else None,
+              pct(hoy_pct) if live else None, "Variación desde la apertura del día (00:00 UTC) en Kraken."),
+        celda("TIR anual", escape(pct(tir)) if tir is not None else "—", tir, None,
+              "Rentabilidad anualizada teniendo en cuenta cuándo metiste cada euro. Es la cifra comparable con un depósito o un fondo."),
+    ]
+    return (f"<div class='panel{_anim}' style='--i:0'><div class='tit'>Valor actual</div>"
+            f"<div class='gran'>{_cuenta(val_total, eur(val_total))}</div>{chispa}"
+            f"<div class='rejilla'>{''.join(celdas)}</div></div>"
+            f"<div class='meta'>{escape(_pie_datos)}</div>")
+
+
 def kpi_card(label, value, delta=None, ayuda=None, hero=False, colorear=False, ic="", i=0, extra=""):
     """Tarjeta HTML (dos por fila en el móvil). hero: la tarjeta grande de arriba. colorear: valor en verde/rojo según su signo.
     ic: símbolo corto de la esquina. i: orden de entrada (animación). extra: HTML ya construido por el código."""
@@ -1110,9 +1250,7 @@ kpis = [
      "Rentabilidad anualizada teniendo en cuenta cuándo metiste cada euro. Es la cifra comparable con un depósito o un fondo.", False, False, "%"),
 ]
 if _sec == 0:
-    st.markdown("<div class='kpis'>" + "".join(kpi_card(*k, i=n, extra=_resumen_hero() if n == 0 else "")
-                                              for n, k in enumerate(kpis)) + "</div>"
-                f"<div class='meta'>{_pie_datos}</div>", unsafe_allow_html=True)
+    st.markdown(panel_resumen(), unsafe_allow_html=True)
 else:      # en el resto de apartados, una tira compacta (valor, beneficio y hoy) para no quitar sitio al contenido
     st.markdown("<div class='kpis-mini'>" + "".join(kpi_card(*kpis[n][:2], delta=None, colorear=kpis[n][5], i=j)
                                                     for j, n in enumerate((0, 2, 3))) + "</div>", unsafe_allow_html=True)
@@ -1137,9 +1275,9 @@ if 0 in _SEL:
                 fig.add_trace(go.Scatter(x=ult.index, y=ult["invertido"], name="Invertido", mode="lines",
                                          line=dict(color=MUTED, width=1.5, dash="dash"), hovertemplate="%{y:,.2f} €"))
                 fig.add_trace(go.Scatter(x=ult.index, y=ult["valor"], name="Valor", mode="lines", fill="tonexty",
-                                         fillcolor="rgba(59,130,246,.16)", line=dict(color="#3b82f6", width=2.5),
+                                         fillcolor="rgba(110,168,255,.16)", line=dict(color="#6ea8ff", width=2.5),
                                          hovertemplate="%{y:,.2f} €"))
-                fig = style_fig(fig, 260)
+                fig = style_fig(fig, 190)
                 fig.update_yaxes(ticksuffix=" €")
                 chart(fig)
                 mercado_30 = ult["valor"].iloc[-1] - ult["valor"].iloc[0] - ult["flujo"].iloc[1:].sum()
@@ -1147,20 +1285,20 @@ if 0 in _SEL:
                            f"**{eur(mercado_30, sign=True)}**.")
             st.markdown("##### Tus posiciones")
             from html import escape as _esc
-            _tarjetas = []
+            _filas = []
             for n, r in enumerate(pos.itertuples()):
                 if pd.notna(r.hoy_pct):
-                    hoy_txt = f"<small class='{'up' if r.hoy_pct >= 0 else 'dn'}'>{_esc(pct(r.hoy_pct))} hoy</small>"
+                    hoy_txt = f"<small class='{'up' if r.hoy_pct >= 0 else 'dn'}'>{'▲' if r.hoy_pct >= 0 else '▼'} {_esc(pct(r.hoy_pct))} hoy</small>"
                 else:
                     hoy_txt = ""
                 color = TOKENS[r.token]["color"]
-                _tarjetas.append(
-                    f"<div class='pcard' style='--i:{n}'><div class='fila'>"
+                _filas.append(
+                    f"<div class='fila'>"
                     f"<div class='av' style='background:{color}'>{_esc(r.token)}</div>"
                     f"<div><h4>{_esc(r.token)}</h4><p>{_esc(fmt(r.cantidad, 0))} uds · precio {_esc(eur(r.precio, 4))}</p></div>"
-                    f"<div class='der'>{_esc(eur(r.valor))}{hoy_txt}</div></div>"
+                    f"<div class='der'>{_cuenta(r.valor, eur(r.valor))}{hoy_txt}</div>"
                     f"<div class='barra'><i style='width:{max(0, min(100, float(r.peso))):.0f}%;background:{color}'></i></div></div>")
-            st.markdown("".join(_tarjetas), unsafe_allow_html=True)
+            st.markdown(f"<div class='panel{_anim}' style='--i:1'>{''.join(_filas)}</div>", unsafe_allow_html=True)
 
         with i2:
             st.markdown("##### Tus alertas")
@@ -1208,14 +1346,13 @@ if 1 in _SEL:
                     st.markdown(f"#### {r.token} &nbsp; <span style='color:{MUTED};font-size:0.9rem'>"
                                 f"{fmt(r.cantidad, 2)} tokens · {fmt(r.peso, 1)} % de la cartera</span>",
                                 unsafe_allow_html=True)
-                    # Fila 1: el dinero (lo que pusiste → lo que vale → la diferencia)
-                    c1, c2, c3 = st.columns(3)
+                    # El dinero (lo que pusiste → lo que vale → la diferencia) y los precios: 6 indicadores en una sola fila
+                    # (en el móvil se reparten en 3 filas de 2)
+                    c1, c2, c3, c4, c5, c6 = st.columns(6)
                     c1.metric("💶 Invertido", eur(r.invertido),
                               help="Dinero que has metido en este token, menos lo que has sacado con ventas (incluye comisiones).")
                     c2.metric("💰 Valor actual", eur(r.valor), delta=pct(r.hoy_pct) + " hoy" if pd.notna(r.hoy_pct) else None)
                     c3.metric("📈 Beneficio", eur(r.pnl, sign=True), delta=pct(r.pnl_pct))
-                    # Fila 2: los precios
-                    c4, c5, c6 = st.columns(3)
                     c4.metric("⚖️ Precio medio", eur(r.precio_medio, 4),
                               help="Tu punto de equilibrio: invertido neto / tokens. Por encima de este precio ganas.")
                     c5.metric("🏷️ Precio actual", eur(r.precio, 4),
@@ -1229,9 +1366,9 @@ if 1 in _SEL:
                         ancho_val = min(100, ratio * 100)
                         st.markdown(
                             f"<div style='font-size:0.8rem;color:{MUTED};margin:2px 0 4px'>Invertido vs valor actual</div>"
-                            f"<div style='background:#1f2937;border-radius:6px;height:10px;margin-bottom:4px'>"
+                            f"<div style='background:#25304a;border-radius:6px;height:10px;margin-bottom:4px'>"
                             f"<div style='width:{ancho_inv:.1f}%;background:{MUTED};height:10px;border-radius:6px'></div></div>"
-                            f"<div style='background:#1f2937;border-radius:6px;height:10px'>"
+                            f"<div style='background:#25304a;border-radius:6px;height:10px'>"
                             f"<div style='width:{ancho_val:.1f}%;background:{color};height:10px;border-radius:6px'></div></div>"
                             f"<div style='font-size:0.8rem;color:{MUTED};margin-top:4px'>Cada 1 € invertido vale hoy "
                             f"<b style='color:{color}'>{fmt(ratio, 2)} €</b></div>",
@@ -1272,7 +1409,7 @@ if 1 in _SEL:
             if cust_total:
                 with st.container(border=True):
                     st.markdown("**Por custodia**")
-                    colores = ["#6366f1" if w in COLD_WALLETS else "#f59e0b" for w in cust_total]
+                    colores = ["#9a7bff" if w in COLD_WALLETS else "#f1d58a" for w in cust_total]
                     chart(donut(list(cust_total), list(cust_total.values()), f"{len(cust_total)} sitios", colores))
                 en_exchange = sum(v for w, v in cust_total.items() if w not in COLD_WALLETS)
                 frac_ex = en_exchange / sum(cust_total.values()) * 100
@@ -1292,8 +1429,8 @@ if 2 in _SEL:
             fig = go.Figure()
             if vista == "Total":
                 fig.add_trace(go.Scatter(x=daily.index, y=daily["valor"], name="Valor", mode="lines",
-                                         line=dict(color="#3b82f6", width=2), fill="tozeroy",
-                                         fillcolor="rgba(59,130,246,0.15)", customdata=daily["valor"] - daily["invertido"],
+                                         line=dict(color="#6ea8ff", width=2), fill="tozeroy",
+                                         fillcolor="rgba(110,168,255,0.15)", customdata=daily["valor"] - daily["invertido"],
                                          hovertemplate="%{y:,.2f} € (beneficio %{customdata:+,.2f} €)"))
                 fig.add_trace(go.Scatter(x=daily.index, y=daily["invertido"], name="Invertido neto", mode="lines",
                                          line=dict(color=MUTED, width=2, dash="dash"), hovertemplate="%{y:,.2f} €"))
@@ -1308,7 +1445,7 @@ if 2 in _SEL:
                          dict(count=6, label="6M", step="month", stepmode="backward"),
                          dict(count=1, label="1A", step="year", stepmode="backward"),
                          dict(step="all", label="Todo")],
-                bgcolor="#151921", activecolor="#3b82f6", font=dict(color="#e5e7eb")))
+                bgcolor="#141b29", activecolor="#6ea8ff", font=dict(color="#eef2fb")))
             # Leyenda abajo para que los botones 1M/3M/... no la tapen
             fig.update_layout(legend=dict(orientation="h", yanchor="top", y=-0.12, xanchor="left", x=0),
                               margin=dict(l=10, r=10, t=40, b=50))
@@ -1328,7 +1465,7 @@ if 2 in _SEL:
             fig.add_trace(go.Scatter(x=d.index, y=d["precio"], name="Precio de mercado", mode="lines",
                                      line=dict(color=TOKENS[tok_dca]["color"], width=1.5), hovertemplate="%{y:,.4f} €"))
             fig.add_trace(go.Scatter(x=pm.index, y=pm, name="Tu precio medio", mode="lines",
-                                     line=dict(color="#f59e0b", width=2.5, shape="hv"), hovertemplate="%{y:,.4f} €"))
+                                     line=dict(color="#f1d58a", width=2.5, shape="hv"), hovertemplate="%{y:,.4f} €"))
             if not compras.empty:
                 size = 7 + 14 * np.sqrt(compras["total"].clip(lower=0) / compras["total"].max())
                 fig.add_trace(go.Scatter(x=compras["fecha"], y=compras["precio"], name="Compras", mode="markers",
@@ -1365,9 +1502,9 @@ if 3 in _SEL:
             e3.metric("Diferencia a tu favor" if dif >= 0 else "Diferencia en tu contra", eur(dif, sign=True))
             fig = go.Figure()
             fig.add_trace(go.Scatter(x=daily.index, y=daily["valor"], name="Tu cartera", mode="lines",
-                                     line=dict(color="#3b82f6", width=2), hovertemplate="%{y:,.2f} €"))
+                                     line=dict(color="#6ea8ff", width=2), hovertemplate="%{y:,.2f} €"))
             fig.add_trace(go.Scatter(x=alt.index, y=alt, name="Todo de golpe el primer día", mode="lines",
-                                     line=dict(color="#f59e0b", width=1.5, dash="dot"), hovertemplate="%{y:,.2f} €"))
+                                     line=dict(color="#f1d58a", width=1.5, dash="dot"), hovertemplate="%{y:,.2f} €"))
             fig = style_fig(fig, 280)
             fig.update_yaxes(ticksuffix=" €")
             chart(fig)
@@ -1397,7 +1534,7 @@ if 3 in _SEL:
             lim = float(min(max(10.0, np.nanmax(np.abs(np.array(z, dtype=float)))), 60.0))
             fig = go.Figure(go.Heatmap(
                 z=z, x=MESES_CORTOS + ["Año"], y=[str(y) for y in years], text=text, texttemplate="%{text}",
-                colorscale=[[0, "#b91c1c"], [0.5, "#1f2937"], [1, "#059669"]], zmid=0, zmin=-lim, zmax=lim,
+                colorscale=[[0, "#b91c1c"], [0.5, "#25304a"], [1, "#059669"]], zmid=0, zmin=-lim, zmax=lim,
                 showscale=False, xgap=3, ygap=3, hovertemplate="%{x} %{y}: %{text}<extra></extra>"))
             fig = style_fig(fig, 90 + 55 * len(years))
             fig.update_layout(hovermode="closest")
@@ -1482,7 +1619,7 @@ if 4 in _SEL:
             plat["pct"] = plat["comision"] / plat["total"] * 100
             plat = plat.sort_values("pct")
             fig = go.Figure(go.Bar(x=plat["pct"], y=plat.index, orientation="h",
-                                   marker_color=[POS if v < 1 else ("#f59e0b" if v < 3 else NEG) for v in plat["pct"]],
+                                   marker_color=[POS if v < 1 else ("#f1d58a" if v < 3 else NEG) for v in plat["pct"]],
                                    text=[f"{fmt(v, 2)} % · {eur(c)} en {n} compras" for v, c, n in zip(plat["pct"], plat["comision"], plat["n"])],
                                    textposition="auto", hoverinfo="skip"))
             fig = style_fig(fig, 80 + 45 * len(plat))
