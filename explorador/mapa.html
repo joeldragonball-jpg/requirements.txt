@@ -544,7 +544,7 @@ function bloqueHechos(padre, c, tit, k, color, retraso){
     H('span', 'hecho-t', s, hecho.t);
     const cu = H('div', 'cuerpo', det);
     if ((hecho.ent || []).length + (hecho.act || []).length + (hecho.pais || []).length) chipsEtiquetas(H('div', 'chips', cu), hecho);
-    H('div', 'fuente', cu, nv ? `${nv[0]}${hecho.n && hecho.n !== hecho.k ? ' (' + hecho.n + ')' : ''}: ${nv[2]}` : 'Sin etiqueta de fuente: dato de contexto del propio mapa.');
+    H('div', 'fuente', cu, nv ? `${nv[0]}${(hecho.f || (hecho.n && hecho.n !== hecho.k ? hecho.n : '')) ? ' (' + (hecho.f || hecho.n) + ')' : ''}: ${nv[2]}` : 'Sin etiqueta de fuente: dato de contexto del propio mapa.');
     relacionados(c, hecho).forEach((d, i) => tarjetaDoc(cu, d, i));
   });
 }
