@@ -137,8 +137,9 @@ def leer_stablecoins():
 URL_PROTOCOLOS = "https://api.llama.fi/protocols"
 URL_PRECIOS = "https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin,ethereum&vs_currencies=usd&include_market_cap=true&include_24hr_change=true"
 URL_YAHOO = "https://query1.finance.yahoo.com/v8/finance/chart/{s}?range=5d&interval=1d"
-INDICES = (("^GSPC", "S&P 500", "EE. UU."), ("^IXIC", "Nasdaq Composite", "EE. UU."), ("^STOXX50E", "Euro Stoxx 50", "Zona euro"), ("^IBEX", "Ibex 35", "España"),
-           ("ES=F", "Futuros S&P 500", "EE. UU. (futuros)"), ("^N225", "Nikkei 225", "Japón"), ("^KS11", "Kospi", "Corea del Sur"), ("000001.SS", "Shanghái Composite", "China"), ("^HSI", "Hang Seng", "Hong Kong"))
+INDICES = (("^GSPC", "S&P 500", "EE. UU."), ("ES=F", "Futuros S&P 500", "EE. UU. (futuros)"), ("^IXIC", "Nasdaq Composite", "EE. UU."),
+           ("^STOXX50E", "Euro Stoxx 50", "Zona euro"), ("^IBEX", "Ibex 35", "España"), ("^N225", "Nikkei 225", "Japón"),
+           ("^KS11", "Kospi", "Corea del Sur"), ("000001.SS", "Shanghái Composite", "China"), ("^HSI", "Hang Seng", "Hong Kong"))
 URL_NYFED = "https://markets.newyorkfed.org/api/rates/unsecured/effr/search.json?startDate={d1}&endDate={d2}"
 URL_BCE_TIPO = "https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?startPeriod={d1}&format=csvdata"
 URL_BOE_TIPO = "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom={d1}&Dateto={d2}&SeriesCodes=IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N"
@@ -183,8 +184,19 @@ def leer_indices():
             if len(pares) < 2:
                 raise ValueError("menos de 2 cierres")
             (f0, c0), (f1, c1) = pares[-2], pares[-1]
-            salida["indices"].append({"simbolo": simbolo, "nombre": nombre, "zona": zona, "valor": round(c1, 2), "fecha": f1,
-                                      "cambio_1d": round((c1 / c0 - 1) * 100, 2), "moneda": d["meta"].get("currency")})
+            moneda = d["meta"].get("currency")
+            fila = {"simbolo": simbolo, "nombre": nombre, "zona": zona, "valor": round(c1, 2), "fecha": f1,
+                    "cambio_1d": round((c1 / c0 - 1) * 100, 2), "moneda": moneda}
+            if moneda == "USD":
+                fila["cambio_1d_usd"] = fila["cambio_1d"]
+            else:   # el índice son puntos, no dinero: lo que sí se puede convertir es lo que habría ganado o perdido un inversor en dólares
+                try:
+                    fx = json.loads(descargar(URL_YAHOO.format(s=f"{moneda}USD=X")))["chart"]["result"][0]
+                    cx = [c for c in fx["indicators"]["quote"][0]["close"] if c]
+                    fila["cambio_1d_usd"] = round(((c1 / c0) * (cx[-1] / cx[-2]) - 1) * 100, 2)
+                except Exception as e:
+                    salida["fallos"].append(f"divisa {moneda}USD: {type(e).__name__}: {e}")
+            salida["indices"].append(fila)
         except Exception as e:
             salida["fallos"].append(f"índice {simbolo}: {type(e).__name__}: {e}")
     if not salida["indices"]:
@@ -214,7 +226,7 @@ def leer_watchlist():
             ytd = round((ultimo / (anio[-1] if anio else pares[0][1]) - 1) * 100, 2)
             salida["valores"].append({"ticker": v["ticker"], "nombre": v["nombre"], "categoria": v.get("categoria", "Otros"), "precio": round(ultimo, 2),
                                       "moneda": d["meta"].get("currency"), "fecha": pares[-1][0].isoformat(),
-                                      "cambio_1d": round((pares[-1][1] / pares[-2][1] - 1) * 100, 2), "cambio_3m": desde(91), "ytd": ytd})
+                                      "cambio_1d": round((pares[-1][1] / pares[-2][1] - 1) * 100, 2), "cambio_1s": desde(7), "cambio_3m": desde(91), "ytd": ytd})
         except Exception as e:
             salida["fallos"].append(f"watchlist {v.get('ticker')}: {type(e).__name__}: {e}")
     if not salida["valores"]:

@@ -1,5 +1,5 @@
 {
- "leido": "2026-10-25 18:20 UTC",
+ "leido": "2026-10-25 18:25 UTC",
  "tic": {
   "fuente": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt",
   "nivel": "P",
@@ -447,7 +447,7 @@
    3919.8
   ],
   "nota": "Los datos se recogen sobre todo de custodios y brókeres de EE. UU. Si los valores están en cuentas de custodia en el extranjero, pueden no atribuirse a su propietario real (Tesoro, TIC FAQ n.º 7); por eso Bélgica, Luxemburgo o las Islas Caimán suben tanto. Las tenencias incluyen cambios de valor de mercado: una bajada no es necesariamente una venta.",
-  "leido": "2026-10-25 18:20 UTC"
+  "leido": "2026-10-25 18:25 UTC"
  },
  "stablecoins": {
   "fuente": "https://stablecoins.llama.fi/stablecoins?includePrices=true",
@@ -796,7 +796,7 @@
    ]
   },
   "nota": "DefiLlama es un agregador: sus cifras de circulación son estimaciones y pueden diferir de las atestaciones de cada emisor. Las monedas ligadas al euro se pasan a dólares con su propio precio. La lista de DefiLlama incluye también fondos tokenizados de letras (p. ej. BUIDL) y monedas sintéticas (p. ej. USDe): no todo lo que aparece es una stablecoin de pago, y el «respaldo» es la clasificación de DefiLlama.",
-  "leido": "2026-10-25 18:20 UTC"
+  "leido": "2026-10-25 18:25 UTC"
  },
  "rwa": {
   "fuente": "https://api.llama.fi/protocols",
@@ -883,7 +883,7 @@
   "stellar": 6890908.581954687,
   "xrpl": 0,
   "nota": "Es el valor bloqueado (TVL) en protocolos DeFi que DefiLlama clasifica como RWA: NO es el valor total de activos tokenizados. Otras metodologías (p. ej. RWA.xyz) dan cifras mucho mayores porque cuentan fondos y bonos tokenizados fuera de DeFi.",
-  "leido": "2026-10-25 18:20 UTC"
+  "leido": "2026-10-25 18:25 UTC"
  },
  "mercado": {
   "fuente": "https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin,ethereum&vs_currencies=usd&include_market_cap=true&include_24hr_change=true",
@@ -894,38 +894,38 @@
     "simbolo": "XRP",
     "nombre": "XRP",
     "precio": 1.3,
-    "capitalizacion": 82452556942.1459,
-    "cambio_24h": 1.6745262013842566
+    "capitalizacion": 82451341876.76105,
+    "cambio_24h": 1.739661638864946
    },
    {
     "simbolo": "XLM",
     "nombre": "Stellar Lumens",
-    "precio": 0.169589,
-    "capitalizacion": 5974190413.317109,
-    "cambio_24h": -0.16228535071306477
+    "precio": 0.169572,
+    "capitalizacion": 5972918060.383537,
+    "cambio_24h": -0.12174533940828233
    },
    {
     "simbolo": "BTC",
     "nombre": "Bitcoin",
-    "precio": 80636,
-    "capitalizacion": 1621038562357.8699,
-    "cambio_24h": 0.43497194280829365
+    "precio": 80641,
+    "capitalizacion": 1621244494255.3335,
+    "cambio_24h": 0.5167625843165333
    },
    {
     "simbolo": "ETH",
     "nombre": "Ether",
-    "precio": 2353.1,
-    "capitalizacion": 287455109324.1332,
-    "cambio_24h": 1.2227366401850635
+    "precio": 2353.42,
+    "capitalizacion": 287532811675.635,
+    "cambio_24h": 1.3100370899153253
    }
   ],
-  "leido": "2026-10-25 18:20 UTC"
+  "leido": "2026-10-25 18:25 UTC"
  },
  "deuda": {
   "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP",
   "fuente_saldo": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP",
   "edicion": "World Economic Outlook, octubre de 2026 (actualizado por el FMI el 8-oct-2026)",
-  "leido": "2026-10-25 18:20 UTC",
+  "leido": "2026-10-25 18:25 UTC",
   "como": "El FMI da 403 a curl: los datos se leen una vez con el navegador (fetch en la propia web del FMI) y se pegan aquí. Para refrescarlos tras la siguiente edición del WEO (abril de 2027), repetir ese paso.",
   "anios": [
    "2023",
@@ -1807,7 +1807,7 @@
   },
   "fallos": [],
   "nota_mensual": "Rendimiento medio mensual del bono a 10 años que usa el BCE para los criterios de convergencia: sirve para comparar países euro entre sí (Alemania, España, Francia, Italia), con ~1 mes de retraso.",
-  "leido": "2026-10-25 18:20 UTC"
+  "leido": "2026-10-25 18:25 UTC"
  },
  "indices": {
   "fuente": "https://finance.yahoo.com/",
@@ -1820,34 +1820,8 @@
     "valor": 7623.68,
     "fecha": "2026-10-23",
     "cambio_1d": -0.52,
-    "moneda": "USD"
-   },
-   {
-    "simbolo": "^IXIC",
-    "nombre": "Nasdaq Composite",
-    "zona": "EE. UU.",
-    "valor": 25955.34,
-    "fecha": "2026-10-23",
-    "cambio_1d": -0.21,
-    "moneda": "USD"
-   },
-   {
-    "simbolo": "^STOXX50E",
-    "nombre": "Euro Stoxx 50",
-    "zona": "Zona euro",
-    "valor": 6068.22,
-    "fecha": "2026-10-23",
-    "cambio_1d": -0.31,
-    "moneda": "EUR"
-   },
-   {
-    "simbolo": "^IBEX",
-    "nombre": "Ibex 35",
-    "zona": "España",
-    "valor": 18989.8,
-    "fecha": "2026-10-23",
-    "cambio_1d": 0.4,
-    "moneda": "EUR"
+    "moneda": "USD",
+    "cambio_1d_usd": -0.52
    },
    {
     "simbolo": "ES=F",
@@ -1856,7 +1830,38 @@
     "valor": 7659.75,
     "fecha": "2026-10-23",
     "cambio_1d": -0.58,
-    "moneda": "USD"
+    "moneda": "USD",
+    "cambio_1d_usd": -0.58
+   },
+   {
+    "simbolo": "^IXIC",
+    "nombre": "Nasdaq Composite",
+    "zona": "EE. UU.",
+    "valor": 25955.34,
+    "fecha": "2026-10-23",
+    "cambio_1d": -0.21,
+    "moneda": "USD",
+    "cambio_1d_usd": -0.21
+   },
+   {
+    "simbolo": "^STOXX50E",
+    "nombre": "Euro Stoxx 50",
+    "zona": "Zona euro",
+    "valor": 6068.22,
+    "fecha": "2026-10-23",
+    "cambio_1d": -0.31,
+    "moneda": "EUR",
+    "cambio_1d_usd": -0.46
+   },
+   {
+    "simbolo": "^IBEX",
+    "nombre": "Ibex 35",
+    "zona": "España",
+    "valor": 18989.8,
+    "fecha": "2026-10-23",
+    "cambio_1d": 0.4,
+    "moneda": "EUR",
+    "cambio_1d_usd": 0.25
    },
    {
     "simbolo": "^N225",
@@ -1865,7 +1870,8 @@
     "valor": 62693.16,
     "fecha": "2026-10-23",
     "cambio_1d": -0.34,
-    "moneda": "JPY"
+    "moneda": "JPY",
+    "cambio_1d_usd": -0.54
    },
    {
     "simbolo": "^KS11",
@@ -1874,7 +1880,8 @@
     "valor": 5550.3,
     "fecha": "2026-10-23",
     "cambio_1d": 0.3,
-    "moneda": "KRW"
+    "moneda": "KRW",
+    "cambio_1d_usd": 0.48
    },
    {
     "simbolo": "000001.SS",
@@ -1883,7 +1890,8 @@
     "valor": 3690.48,
     "fecha": "2026-10-23",
     "cambio_1d": 0.89,
-    "moneda": "CNY"
+    "moneda": "CNY",
+    "cambio_1d_usd": 1.15
    },
    {
     "simbolo": "^HSI",
@@ -1892,11 +1900,12 @@
     "valor": 23093.37,
     "fecha": "2026-10-23",
     "cambio_1d": 0.69,
-    "moneda": "HKD"
+    "moneda": "HKD",
+    "cambio_1d_usd": 0.63
    }
   ],
   "fallos": [],
-  "leido": "2026-10-25 18:20 UTC"
+  "leido": "2026-10-25 18:25 UTC"
  },
  "watchlist": {
   "fuente": "https://finance.yahoo.com/",
@@ -1910,6 +1919,7 @@
     "moneda": "EUR",
     "fecha": "2026-10-23",
     "cambio_1d": -0.01,
+    "cambio_1s": -0.39,
     "cambio_3m": 4.54,
     "ytd": 16.68
    },
@@ -1921,6 +1931,7 @@
     "moneda": "EUR",
     "fecha": "2026-10-23",
     "cambio_1d": -0.04,
+    "cambio_1s": -0.51,
     "cambio_3m": 3.7,
     "ytd": 16.46
    },
@@ -1932,6 +1943,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -2.76,
+    "cambio_1s": -1.27,
     "cambio_3m": 12.72,
     "ytd": 32.61
    },
@@ -1943,6 +1955,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -1.42,
+    "cambio_1s": 3.23,
     "cambio_3m": 0.16,
     "ytd": 27.48
    },
@@ -1954,6 +1967,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -2.76,
+    "cambio_1s": 1.05,
     "cambio_3m": 9.23,
     "ytd": 12.36
    },
@@ -1965,6 +1979,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -2.31,
+    "cambio_1s": -1.07,
     "cambio_3m": 1.81,
     "ytd": 28.88
    },
@@ -1976,6 +1991,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -1.93,
+    "cambio_1s": 4.34,
     "cambio_3m": 0.41,
     "ytd": 9.18
    },
@@ -1987,6 +2003,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": 3.22,
+    "cambio_1s": 7.39,
     "cambio_3m": 20.05,
     "ytd": 48.52
    },
@@ -1998,6 +2015,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": 0.74,
+    "cambio_1s": -2.33,
     "cambio_3m": -6.06,
     "ytd": 46.39
    },
@@ -2009,6 +2027,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": 0.53,
+    "cambio_1s": -3.08,
     "cambio_3m": -9.26,
     "ytd": 58.79
    },
@@ -2020,6 +2039,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": 1.04,
+    "cambio_1s": -0.0,
     "cambio_3m": -2.39,
     "ytd": -8.86
    },
@@ -2031,6 +2051,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": 1.49,
+    "cambio_1s": 1.43,
     "cambio_3m": 3.74,
     "ytd": 37.72
    },
@@ -2042,6 +2063,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": 0.47,
+    "cambio_1s": -1.34,
     "cambio_3m": -2.08,
     "ytd": 13.34
    },
@@ -2053,6 +2075,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -0.14,
+    "cambio_1s": 1.24,
     "cambio_3m": 4.42,
     "ytd": 27.91
    },
@@ -2064,6 +2087,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -2.31,
+    "cambio_1s": 4.14,
     "cambio_3m": 9.44,
     "ytd": 12.54
    },
@@ -2075,6 +2099,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -0.01,
+    "cambio_1s": -0.76,
     "cambio_3m": 2.95,
     "ytd": 14.67
    },
@@ -2086,6 +2111,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -1.05,
+    "cambio_1s": 2.05,
     "cambio_3m": 2.48,
     "ytd": 12.08
    },
@@ -2097,6 +2123,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -1.62,
+    "cambio_1s": 4.15,
     "cambio_3m": -0.63,
     "ytd": 26.65
    },
@@ -2108,6 +2135,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -0.3,
+    "cambio_1s": 1.44,
     "cambio_3m": -13.28,
     "ytd": 0.92
    },
@@ -2119,6 +2147,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -0.17,
+    "cambio_1s": 0.56,
     "cambio_3m": -14.35,
     "ytd": -0.95
    },
@@ -2130,6 +2159,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -0.65,
+    "cambio_1s": -4.03,
     "cambio_3m": -1.42,
     "ytd": -7.49
    },
@@ -2141,6 +2171,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -0.86,
+    "cambio_1s": -7.64,
     "cambio_3m": -8.55,
     "ytd": 4.24
    },
@@ -2152,6 +2183,7 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -0.33,
+    "cambio_1s": 1.96,
     "cambio_3m": -5.3,
     "ytd": 12.02
    },
@@ -2163,12 +2195,13 @@
     "moneda": "USD",
     "fecha": "2026-10-23",
     "cambio_1d": -0.37,
+    "cambio_1s": 0.22,
     "cambio_3m": -1.38,
     "ytd": 11.19
    }
   ],
   "fallos": [],
-  "leido": "2026-10-25 18:20 UTC"
+  "leido": "2026-10-25 18:25 UTC"
  },
  "tipos_vivos": {
   "fuente": "Bancos centrales (ver cada fila)",
@@ -2247,7 +2280,7 @@
   ],
   "fallos": [],
   "nota": "Valores leídos de la fuente oficial de cada banco. «Último cambio» es la fecha en que cambió el valor en la serie, no la de la reunión.",
-  "leido": "2026-10-25 18:20 UTC"
+  "leido": "2026-10-25 18:25 UTC"
  },
  "tipos_bis": {
   "fuente": "https://data.bis.org/topics/CBPOL",
@@ -2335,6 +2368,6 @@
    }
   ],
   "fallos": [],
-  "leido": "2026-10-25 18:20 UTC"
+  "leido": "2026-10-25 18:25 UTC"
  }
 }
