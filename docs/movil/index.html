@@ -339,7 +339,11 @@ const t0 = performance.now();
 fetch('data.json').then(r => r.json()).then(d => {
   setTimeout(() => { iniciar(d); const sp = document.getElementById('splash'); sp.classList.add('fuera'); setTimeout(() => sp.remove(), 800); }, Math.max(0, 1300 - (performance.now() - t0)));
 }).catch(() => { document.querySelector('#splash .estado').textContent = 'Sin conexión ni datos guardados: ábrela una vez con internet'; });
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+if ('serviceWorker' in navigator){
+  const tenia = !!navigator.serviceWorker.controller, recargar = () => { if (tenia && !window.__rec){ window.__rec = true; location.reload(); } };
+  navigator.serviceWorker.addEventListener('controllerchange', recargar);   // versión nueva instalada: se recarga sola una vez
+  navigator.serviceWorker.register('sw.js').then(r => r.update()).catch(() => {});
+}
 </script>
 </body>
 </html>
