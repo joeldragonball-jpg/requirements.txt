@@ -126,3 +126,5 @@ actualizado: 2026-10-07
 - 2026-10-25: el BIS Data Portal (WS_CBPOL) da el tipo oficial de 12 países [P]; puede ir con retraso de días: contrastar con el banco central (BIS dice ZA 7,25 %, el radar 7,00 %) [VERIFICAR].
 - 2026-10-25 (C01): la API del Banco Mundial (gasto militar % PIB) responde bien pero tarda hasta 30 s por país: pedir en paralelo con timeout. Su cifra puede diferir de la OTAN (Polonia 4,50 % frente a 4,3 %) por definición.
 - 2026-10-25 (C02): FRED (M2SL) y el BCE (BSI, M3 variación anual) se leen con curl sin clave; comprobar siempre el título de la serie del BCE antes de fiarse del código.
+- 2026-10-25 (W10): el IMF PortWatch tiene API abierta (ArcGIS, servicio Daily_Chokepoints_Data) con tránsitos diarios del estrecho de Ormuz [P]; se lee con curl y da el dato con unos días de retraso (último: 18-oct). Mejor que los agregadores de prensa.
+- 2026-10-25: los PDF del Banco de Japón (boj.or.jp/statistics/money/ms/msAAMM.pdf) no los lee WebFetch; sirven con `pdftotext -raw` sobre el PDF descargado, pero la tabla sale desordenada: confirmar la fila.

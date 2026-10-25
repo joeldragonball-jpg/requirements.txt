@@ -13,6 +13,7 @@ import io
 import json
 import re
 import sys
+import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -260,6 +261,81 @@ def leer_tipos_bis():
         raise ValueError("el BIS no devolvió ningún tipo")
     filas.sort(key=lambda x: -x["num"])
     return {"fuente": "https://data.bis.org/topics/CBPOL", "nivel": "P", "paises": filas, "fallos": fallos}
+
+
+PAISES_DEFENSA = {"US": "EE. UU.", "CN": "China", "RU": "Rusia", "IN": "India", "DE": "Alemania", "FR": "Francia", "GB": "Reino Unido", "ES": "España",
+                  "PL": "Polonia", "JP": "Japón", "KR": "Corea del Sur", "IL": "Israel", "SA": "Arabia Saudí", "TR": "Turquía", "UA": "Ucrania"}
+
+
+def leer_defensa():
+    """Gasto militar en % del PIB (Banco Mundial, indicador MS.MIL.XPND.GD.ZS, reutiliza datos de SIPRI) [P]. La API tarda: en paralelo, con reintento."""
+    from concurrent.futures import ThreadPoolExecutor
+
+    def uno(codigo):
+        url = f"https://api.worldbank.org/v2/country/{codigo}/indicator/MS.MIL.XPND.GD.ZS?format=json&per_page=60&date=2014:2026"
+        for _ in range(2):
+            try:
+                peticion = urllib.request.Request(url, headers={"User-Agent": "cartera-joel/1.0 (uso personal)"})
+                with urllib.request.urlopen(peticion, timeout=30) as r:
+                    datos = json.loads(r.read().decode("utf-8"))[1]
+                return codigo, sorted(((x["date"], x["value"]) for x in datos if x["value"] is not None), reverse=True)
+            except Exception:
+                pass
+        return codigo, None
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        res = dict(ex.map(uno, PAISES_DEFENSA))
+    filas, fallos = [], []
+    for cod, nombre in PAISES_DEFENSA.items():
+        serie = res.get(cod)
+        if not serie:
+            fallos.append(f"defensa {cod}: sin datos")
+            continue
+        anio, valor = serie[0]
+        previo = next((v for a, v in serie if int(a) <= int(anio) - 10), None)
+        filas.append({"id": cod, "pais": nombre, "valor": round(valor, 2), "anio": anio, "hace_10": None if previo is None else round(previo, 2)})
+    if not filas:
+        raise ValueError("el Banco Mundial no devolvió ningún país")
+    filas.sort(key=lambda x: -x["valor"])
+    return {"fuente": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS", "nivel": "P", "paises": filas, "fallos": fallos}
+
+
+URL_PORTWATCH = "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query"
+LIQUIDEZ_MANUAL = Path(__file__).resolve().parent.parent / "explorador" / "liquidez-manual.json"
+
+
+def leer_ormuz():
+    """Barcos al día por el estrecho de Ormuz (IMF PortWatch, API abierta; dato propio del FMI con retraso de días) [P]."""
+    import collections
+    params = urllib.parse.urlencode({"where": "portname='Strait of Hormuz' AND date >= '2026-01-01'", "outFields": "date,n_total,n_tanker",
+                                     "orderByFields": "date ASC", "resultRecordCount": "500", "f": "json"})
+    datos = json.loads(descargar(f"{URL_PORTWATCH}?{params}"))["features"]
+    filas = [(f["attributes"]["date"][:10], f["attributes"]["n_total"] or 0, f["attributes"]["n_tanker"] or 0) for f in datos]
+    if not filas:
+        raise ValueError("PortWatch no devolvió datos")
+    meses = collections.defaultdict(list)
+    for fecha, total, petro in filas:
+        meses[fecha[:7]].append((total, petro))
+    mensual = [{"mes": m, "dias": len(v), "total": round(sum(x[0] for x in v) / len(v), 1), "petroleros": round(sum(x[1] for x in v) / len(v), 1)} for m, v in sorted(meses.items())]
+    ultimos = filas[-7:]
+    return {"fuente": "https://portwatch.imf.org/", "nivel": "P", "ultimo": {"fecha": filas[-1][0], "total": filas[-1][1], "petroleros": filas[-1][2]},
+            "media_7d": round(sum(x[1] for x in ultimos) / len(ultimos), 1), "mensual": mensual}
+
+
+def leer_liquidez():
+    """M2 de EE. UU. (FRED, variación interanual) y M3 de la zona euro (BCE, variación anual) [P]."""
+    with urllib.request.urlopen(urllib.request.Request("https://fred.stlouisfed.org/graph/fredgraph.csv?id=M2SL&cosd=2024-01-01", headers={"User-Agent": "cartera-joel/1.0 (uso personal)"}), timeout=40) as r:
+        filas = list(csv.reader(io.StringIO(r.read().decode("utf-8"))))[1:]
+    m2 = {f: float(v) for f, v in filas if v not in (".", "")}
+    ult = max(m2)
+    ant = f"{int(ult[:4]) - 1}{ult[4:]}"
+    peticion = urllib.request.Request("https://data-api.ecb.europa.eu/service/data/BSI/M.U2.Y.V.M30.X.I.U2.2300.Z01.A?lastNObservations=13&format=csvdata",
+                                      headers={"Accept": "text/csv", "User-Agent": "cartera-joel/1.0 (uso personal)"})
+    with urllib.request.urlopen(peticion, timeout=40) as r:
+        m3 = [(f["TIME_PERIOD"], float(f["OBS_VALUE"])) for f in csv.DictReader(io.StringIO(r.read().decode("utf-8")))]
+    manual = json.loads(LIQUIDEZ_MANUAL.read_text(encoding="utf-8")) if LIQUIDEZ_MANUAL.exists() else {}
+    return {"fuente": "FRED (M2SL) y BCE (BSI, M3)", "nivel": "P", "manual": manual,
+            "us": {"serie": "M2 EE. UU.", "fecha": ult[:7], "valor_mil_m": round(m2[ult] / 1000, 2), "interanual": round((m2[ult] / m2[ant] - 1) * 100, 2) if ant in m2 else None},
+            "ea": {"serie": "M3 zona euro", "fecha": m3[-1][0], "interanual": round(m3[-1][1], 2), "hace_12m": round(m3[0][1], 2)}}
 
 
 def _ultimo_cambio(serie):
@@ -532,7 +608,7 @@ def main():
     PREVIO = previo
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("ormuz", leer_ormuz)):
         try:
             salida[clave] = funcion()
             salida[clave]["leido"] = salida["leido"]

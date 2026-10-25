@@ -86,9 +86,9 @@ Reglas fijas: fuente primaria en su idioma original (traducida por mí, con enla
 | W08 | Auditoría mensual de coherencia y huecos | generica | Opus | medio | L | 4 % | | recurrente (prompt en research/prompts/W08-*.md) |
 | W09 | Resumen semanal y plan de la semana siguiente | generica | Sonnet | medio | S | 1,5 % | <1 % (sin búsquedas) | recurrente (prompt en research/prompts/W09-*.md) |
 | W10 | Energía y geopolítica (Brent, WTI, Ormuz, OPEP+, EIA) | generica | Sonnet | medio | S | 2 % | | recurrente (prompt en research/prompts/W10-*.md) |
-| C01 | Hueco del Centro: Gasto en defensa (% del PIB) | generica | Sonnet | medio | S | 1,5 % | ~0,5 % (medido junto con C02 y la pestaña Centro; semanal 77 % → 78 %) | hecho 2026-10-25 (informe en informes/research/; falta automatizar en el panel) |
-| C02 | Hueco del Centro: Liquidez global (M2) y agregados monetarios | generica | Sonnet | medio | S | 1,5 % | ~0,5 % (medido junto con C02 y la pestaña Centro; semanal 77 % → 78 %) | hecho 2026-10-25 (informe en informes/research/; falta automatizar en el panel) |
-| C03 | Hueco del Centro: Matriz de riesgos y escenarios de estrés (cisnes negros) | generica | Sonnet | medio | M | 3 % | | pendiente (prompt en research/prompts/C03-matriz-riesgos.md) |
+| C01 | Hueco del Centro: Gasto en defensa (% del PIB) | generica | Sonnet | medio | S | 1,5 % | ~0,5 % (medido junto con C02 y la pestaña Centro; semanal 77 % → 78 %) | hecho 2026-10-25 (informe en informes/research/; ya está en el panel de Mercado) |
+| C02 | Hueco del Centro: Liquidez global (M2) y agregados monetarios | generica | Sonnet | medio | S | 1,5 % | ~0,5 % (medido junto con C02 y la pestaña Centro; semanal 77 % → 78 %) | hecho 2026-10-25 (EE. UU., euro, Japón y China; ya en el panel de Mercado) |
+| C03 | Hueco del Centro: Matriz de riesgos y escenarios de estrés (cisnes negros) | generica | Sonnet | medio | M | 3 % | ~1 % (W10, C02 con Japón y China y C03 juntas: semanal 78 % → 79 %) | hecho 2026-10-25 (informes/research/2026-10-25-C03-matriz-de-riesgos.md) |
 | C04 | Hueco del Centro: Cuadro de valoración por sector (PER, EV/EBITDA, FCF yield) | generica | Sonnet | medio | M | 3 % | | pendiente (prompt en research/prompts/C04-valoracion.md) |
 | C05 | Hueco del Centro: Archivo de precedentes históricos (formato fijo) | generica | Sonnet | medio | M | 3 % | | pendiente (prompt en research/prompts/C05-precedentes.md) |
 | C06 | Hueco del Centro: Vigilante de SEC EDGAR (ETF, DTCC, 13F) | generica | Sonnet | medio | M | <1 % | | pendiente (prompt en research/prompts/C06-edgar.md) |
