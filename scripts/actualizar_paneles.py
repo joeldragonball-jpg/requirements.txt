@@ -138,7 +138,7 @@ URL_PROTOCOLOS = "https://api.llama.fi/protocols"
 URL_PRECIOS = "https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin,ethereum&vs_currencies=usd&include_market_cap=true&include_24hr_change=true"
 URL_YAHOO = "https://query1.finance.yahoo.com/v8/finance/chart/{s}?range=5d&interval=1d"
 INDICES = (("^GSPC", "S&P 500", "EE. UU."), ("^IXIC", "Nasdaq Composite", "EE. UU."), ("^STOXX50E", "Euro Stoxx 50", "Zona euro"), ("^IBEX", "Ibex 35", "España"),
-           ("ES=F", "Futuros S&P 500", "EE. UU. (futuros)"), ("^N225", "Nikkei 225", "Japón"), ("^KS11", "Kospi", "Corea del Sur"), ("000001.SS", "Shanghái Composite", "China"))
+           ("ES=F", "Futuros S&P 500", "EE. UU. (futuros)"), ("^N225", "Nikkei 225", "Japón"), ("^KS11", "Kospi", "Corea del Sur"), ("000001.SS", "Shanghái Composite", "China"), ("^HSI", "Hang Seng", "Hong Kong"))
 URL_NYFED = "https://markets.newyorkfed.org/api/rates/unsecured/effr/search.json?startDate={d1}&endDate={d2}"
 URL_BCE_TIPO = "https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?startPeriod={d1}&format=csvdata"
 URL_BOE_TIPO = "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom={d1}&Dateto={d2}&SeriesCodes=IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N"
@@ -173,7 +173,7 @@ def leer_mercado():
 
 
 def leer_indices():
-    """Cierre diario de 8 índices bursátiles y los futuros del S&P 500 (el contrato cambia de vencimiento: ES=F salta cada trimestre) (Yahoo Finance, no oficial [S]). Si uno falla se avisa y se sigue con los demás."""
+    """Cierre diario de 9 índices bursátiles y los futuros del S&P 500 (el contrato cambia de vencimiento: ES=F salta cada trimestre) (Yahoo Finance, no oficial [S]). Si uno falla se avisa y se sigue con los demás."""
     salida = {"fuente": "https://finance.yahoo.com/", "nivel": "S", "indices": [], "fallos": []}
     for simbolo, nombre, zona in INDICES:
         try:
@@ -190,6 +190,61 @@ def leer_indices():
     if not salida["indices"]:
         raise ValueError("ningún índice disponible")
     return salida
+
+
+def leer_watchlist():
+    """Valores de watchlist.toml (los que SIGO, no posiciones) con precio y rentabilidades (Yahoo Finance, no oficial [S])."""
+    import tomllib
+    with open(SALIDA.parent.parent / "watchlist.toml", "rb") as fh:
+        lista = tomllib.load(fh).get("valores", [])
+    hoy = datetime.now(timezone.utc).date()
+    salida = {"fuente": "https://finance.yahoo.com/", "nivel": "S", "valores": [], "fallos": []}
+    for v in lista:
+        try:
+            d = json.loads(descargar(URL_YAHOO.format(s=urllib.request.quote(v["yahoo"])) .replace("range=5d", "range=1y")))["chart"]["result"][0]
+            pares = [(datetime.fromtimestamp(t, timezone.utc).date(), c) for t, c in zip(d["timestamp"], d["indicators"]["quote"][0]["close"]) if c]
+            if len(pares) < 2:
+                raise ValueError("menos de 2 cierres")
+            ultimo = float(d["meta"].get("regularMarketPrice") or pares[-1][1])
+
+            def desde(dias):
+                previos = [c for f, c in pares if f <= hoy - timedelta(days=dias)]
+                return round((ultimo / previos[-1] - 1) * 100, 2) if previos else None
+            anio = [c for f, c in pares if f.year < hoy.year]
+            ytd = round((ultimo / (anio[-1] if anio else pares[0][1]) - 1) * 100, 2)
+            salida["valores"].append({"ticker": v["ticker"], "nombre": v["nombre"], "categoria": v.get("categoria", "Otros"), "precio": round(ultimo, 2),
+                                      "moneda": d["meta"].get("currency"), "fecha": pares[-1][0].isoformat(),
+                                      "cambio_1d": round((pares[-1][1] / pares[-2][1] - 1) * 100, 2), "cambio_3m": desde(91), "ytd": ytd})
+        except Exception as e:
+            salida["fallos"].append(f"watchlist {v.get('ticker')}: {type(e).__name__}: {e}")
+    if not salida["valores"]:
+        raise ValueError("ningún valor de la watchlist disponible")
+    return salida
+
+
+URL_BIS_TIPOS = "https://stats.bis.org/api/v2/data/dataflow/BIS/WS_CBPOL/1.0/D.CH+CN+HK+ID+IN+JP+KR+MX+RU+ZA?lastNObservations=1"
+PAISES_BIS = {"CH": "Suiza", "CN": "China", "HK": "Hong Kong", "ID": "Indonesia", "IN": "India", "JP": "Japón", "KR": "Corea del Sur",
+              "MX": "México", "RU": "Rusia", "ZA": "Sudáfrica"}
+
+
+def leer_tipos_bis():
+    """Último tipo oficial de 10 bancos centrales según el BIS (Data Portal, SDMX CSV) [P vía BIS]. El BIS puede ir días por detrás del banco central."""
+    peticion = urllib.request.Request(URL_BIS_TIPOS, headers={"Accept": "application/vnd.sdmx.data+csv;version=1.0.0", "User-Agent": "cartera-joel/1.0 (uso personal)"})
+    with urllib.request.urlopen(peticion, timeout=30) as r:
+        texto = r.read().decode("utf-8")
+    filas, fallos = [], []
+    for f in csv.DictReader(io.StringIO(texto)):
+        try:
+            cod = f["REF_AREA"]
+            valor = float(f["OBS_VALUE"])
+            filas.append({"id": cod, "pais": PAISES_BIS.get(cod, cod), "banco": f.get("SOURCE_REF", ""), "num": valor,
+                          "valor": f"{valor:.2f}".replace(".", ",") + " %", "dato_de": f["TIME_PERIOD"]})
+        except Exception as e:
+            fallos.append(f"BIS {f.get('REF_AREA')}: {type(e).__name__}: {e}")
+    if not filas:
+        raise ValueError("el BIS no devolvió ningún tipo")
+    filas.sort(key=lambda x: -x["num"])
+    return {"fuente": "https://data.bis.org/topics/CBPOL", "nivel": "P", "paises": filas, "fallos": fallos}
 
 
 def _ultimo_cambio(serie):
@@ -462,7 +517,7 @@ def main():
     PREVIO = previo
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("tipos_vivos", leer_tipos)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis)):
         try:
             salida[clave] = funcion()
             salida[clave]["leido"] = salida["leido"]

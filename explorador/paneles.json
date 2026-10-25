@@ -1,5 +1,5 @@
 {
- "leido": "2026-10-25 18:14 UTC",
+ "leido": "2026-10-25 18:20 UTC",
  "tic": {
   "fuente": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt",
   "nivel": "P",
@@ -447,7 +447,7 @@
    3919.8
   ],
   "nota": "Los datos se recogen sobre todo de custodios y brókeres de EE. UU. Si los valores están en cuentas de custodia en el extranjero, pueden no atribuirse a su propietario real (Tesoro, TIC FAQ n.º 7); por eso Bélgica, Luxemburgo o las Islas Caimán suben tanto. Las tenencias incluyen cambios de valor de mercado: una bajada no es necesariamente una venta.",
-  "leido": "2026-10-25 18:14 UTC"
+  "leido": "2026-10-25 18:20 UTC"
  },
  "stablecoins": {
   "fuente": "https://stablecoins.llama.fi/stablecoins?includePrices=true",
@@ -796,7 +796,7 @@
    ]
   },
   "nota": "DefiLlama es un agregador: sus cifras de circulación son estimaciones y pueden diferir de las atestaciones de cada emisor. Las monedas ligadas al euro se pasan a dólares con su propio precio. La lista de DefiLlama incluye también fondos tokenizados de letras (p. ej. BUIDL) y monedas sintéticas (p. ej. USDe): no todo lo que aparece es una stablecoin de pago, y el «respaldo» es la clasificación de DefiLlama.",
-  "leido": "2026-10-25 18:14 UTC"
+  "leido": "2026-10-25 18:20 UTC"
  },
  "rwa": {
   "fuente": "https://api.llama.fi/protocols",
@@ -883,7 +883,7 @@
   "stellar": 6890908.581954687,
   "xrpl": 0,
   "nota": "Es el valor bloqueado (TVL) en protocolos DeFi que DefiLlama clasifica como RWA: NO es el valor total de activos tokenizados. Otras metodologías (p. ej. RWA.xyz) dan cifras mucho mayores porque cuentan fondos y bonos tokenizados fuera de DeFi.",
-  "leido": "2026-10-25 18:14 UTC"
+  "leido": "2026-10-25 18:20 UTC"
  },
  "mercado": {
   "fuente": "https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin,ethereum&vs_currencies=usd&include_market_cap=true&include_24hr_change=true",
@@ -894,38 +894,38 @@
     "simbolo": "XRP",
     "nombre": "XRP",
     "precio": 1.3,
-    "capitalizacion": 82406740355.23973,
-    "cambio_24h": 1.8245901425958597
+    "capitalizacion": 82452556942.1459,
+    "cambio_24h": 1.6745262013842566
    },
    {
     "simbolo": "XLM",
     "nombre": "Stellar Lumens",
-    "precio": 0.169462,
-    "capitalizacion": 5969023623.820781,
-    "cambio_24h": -0.09187354597106362
+    "precio": 0.169589,
+    "capitalizacion": 5974190413.317109,
+    "cambio_24h": -0.16228535071306477
    },
    {
     "simbolo": "BTC",
     "nombre": "Bitcoin",
-    "precio": 80618,
-    "capitalizacion": 1621159433896.9814,
-    "cambio_24h": 0.41430642766526166
+    "precio": 80636,
+    "capitalizacion": 1621038562357.8699,
+    "cambio_24h": 0.43497194280829365
    },
    {
     "simbolo": "ETH",
     "nombre": "Ether",
-    "precio": 2352.64,
-    "capitalizacion": 287436067515.1331,
-    "cambio_24h": 1.2214153833587444
+    "precio": 2353.1,
+    "capitalizacion": 287455109324.1332,
+    "cambio_24h": 1.2227366401850635
    }
   ],
-  "leido": "2026-10-25 18:14 UTC"
+  "leido": "2026-10-25 18:20 UTC"
  },
  "deuda": {
   "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP",
   "fuente_saldo": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP",
   "edicion": "World Economic Outlook, octubre de 2026 (actualizado por el FMI el 8-oct-2026)",
-  "leido": "2026-10-25 18:14 UTC",
+  "leido": "2026-10-25 18:20 UTC",
   "como": "El FMI da 403 a curl: los datos se leen una vez con el navegador (fetch en la propia web del FMI) y se pegan aquí. Para refrescarlos tras la siguiente edición del WEO (abril de 2027), repetir ese paso.",
   "anios": [
    "2023",
@@ -1807,7 +1807,7 @@
   },
   "fallos": [],
   "nota_mensual": "Rendimiento medio mensual del bono a 10 años que usa el BCE para los criterios de convergencia: sirve para comparar países euro entre sí (Alemania, España, Francia, Italia), con ~1 mes de retraso.",
-  "leido": "2026-10-25 18:14 UTC"
+  "leido": "2026-10-25 18:20 UTC"
  },
  "indices": {
   "fuente": "https://finance.yahoo.com/",
@@ -1884,10 +1884,291 @@
     "fecha": "2026-10-23",
     "cambio_1d": 0.89,
     "moneda": "CNY"
+   },
+   {
+    "simbolo": "^HSI",
+    "nombre": "Hang Seng",
+    "zona": "Hong Kong",
+    "valor": 23093.37,
+    "fecha": "2026-10-23",
+    "cambio_1d": 0.69,
+    "moneda": "HKD"
    }
   ],
   "fallos": [],
-  "leido": "2026-10-25 18:14 UTC"
+  "leido": "2026-10-25 18:20 UTC"
+ },
+ "watchlist": {
+  "fuente": "https://finance.yahoo.com/",
+  "nivel": "S",
+  "valores": [
+   {
+    "ticker": "VUSA",
+    "nombre": "Vanguard S&P 500 UCITS ETF (Dist)",
+    "categoria": "Núcleo (S&P 500)",
+    "precio": 129.58,
+    "moneda": "EUR",
+    "fecha": "2026-10-23",
+    "cambio_1d": -0.01,
+    "cambio_3m": 4.54,
+    "ytd": 16.68
+   },
+   {
+    "ticker": "IWDA",
+    "nombre": "iShares Core MSCI World UCITS ETF (Acc)",
+    "categoria": "Núcleo (Mundo)",
+    "precio": 129.89,
+    "moneda": "EUR",
+    "fecha": "2026-10-23",
+    "cambio_1d": -0.04,
+    "cambio_3m": 3.7,
+    "ytd": 16.46
+   },
+   {
+    "ticker": "KO",
+    "nombre": "Coca-Cola",
+    "categoria": "Dividendos seguros",
+    "precio": 92.71,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -2.76,
+    "cambio_3m": 12.72,
+    "ytd": 32.61
+   },
+   {
+    "ticker": "JNJ",
+    "nombre": "Johnson & Johnson",
+    "categoria": "Dividendos seguros",
+    "precio": 263.81,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -1.42,
+    "cambio_3m": 0.16,
+    "ytd": 27.48
+   },
+   {
+    "ticker": "PG",
+    "nombre": "Procter & Gamble",
+    "categoria": "Dividendos seguros",
+    "precio": 161.02,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -2.76,
+    "cambio_3m": 9.23,
+    "ytd": 12.36
+   },
+   {
+    "ticker": "MO",
+    "nombre": "Altria Group",
+    "categoria": "Alta rentabilidad (dividendos)",
+    "precio": 74.31,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -2.31,
+    "cambio_3m": 1.81,
+    "ytd": 28.88
+   },
+   {
+    "ticker": "KMB",
+    "nombre": "Kimberly-Clark",
+    "categoria": "Alta rentabilidad (dividendos)",
+    "precio": 110.15,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -1.93,
+    "cambio_3m": 0.41,
+    "ytd": 9.18
+   },
+   {
+    "ticker": "CIBR",
+    "nombre": "First Trust NASDAQ Cybersecurity ETF",
+    "categoria": "Ciberseguridad",
+    "precio": 106.12,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": 3.22,
+    "cambio_3m": 20.05,
+    "ytd": 48.52
+   },
+   {
+    "ticker": "SMH",
+    "nombre": "VanEck Semiconductor ETF",
+    "categoria": "Crecimiento volátil (IA/chips)",
+    "precio": 527.2,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": 0.74,
+    "cambio_3m": -6.06,
+    "ytd": 46.39
+   },
+   {
+    "ticker": "SOXX",
+    "nombre": "iShares Semiconductor ETF",
+    "categoria": "Crecimiento volátil (IA/chips)",
+    "precio": 478.2,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": 0.53,
+    "cambio_3m": -9.26,
+    "ytd": 58.79
+   },
+   {
+    "ticker": "BOTZ",
+    "nombre": "Global X Robotics & AI ETF",
+    "categoria": "Crecimiento volátil (IA/chips)",
+    "precio": 33.02,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": 1.04,
+    "cambio_3m": -2.39,
+    "ytd": -8.86
+   },
+   {
+    "ticker": "TSM",
+    "nombre": "Taiwan Semiconductor (ADR)",
+    "categoria": "Mercados emergentes",
+    "precio": 418.51,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": 1.49,
+    "cambio_3m": 3.74,
+    "ytd": 37.72
+   },
+   {
+    "ticker": "EEM",
+    "nombre": "iShares MSCI Emerging Markets ETF",
+    "categoria": "Mercados emergentes",
+    "precio": 62.01,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": 0.47,
+    "cambio_3m": -2.08,
+    "ytd": 13.34
+   },
+   {
+    "ticker": "AAPL",
+    "nombre": "Apple",
+    "categoria": "Tecnología",
+    "precio": 347.73,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -0.14,
+    "cambio_3m": 4.42,
+    "ytd": 27.91
+   },
+   {
+    "ticker": "SMCI",
+    "nombre": "Super Micro Computer",
+    "categoria": "Tecnología",
+    "precio": 32.94,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -2.31,
+    "cambio_3m": 9.44,
+    "ytd": 12.54
+   },
+   {
+    "ticker": "QQQ",
+    "nombre": "Invesco QQQ Trust",
+    "categoria": "Tecnología (más allá de chips)",
+    "precio": 704.4,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -0.01,
+    "cambio_3m": 2.95,
+    "ytd": 14.67
+   },
+   {
+    "ticker": "NOBL",
+    "nombre": "ProShares S&P 500 Dividend Aristocrats",
+    "categoria": "Dividendos aristócratas",
+    "precio": 58.32,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -1.05,
+    "cambio_3m": 2.48,
+    "ytd": 12.08
+   },
+   {
+    "ticker": "UNH",
+    "nombre": "UnitedHealth Group",
+    "categoria": "Salud (estable)",
+    "precio": 418.09,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -1.62,
+    "cambio_3m": -0.63,
+    "ytd": 26.65
+   },
+   {
+    "ticker": "O",
+    "nombre": "Realty Income",
+    "categoria": "Inmuebles (REITs)",
+    "precio": 56.89,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -0.3,
+    "cambio_3m": -13.28,
+    "ytd": 0.92
+   },
+   {
+    "ticker": "PLD",
+    "nombre": "Prologis",
+    "categoria": "Inmuebles (REITs)",
+    "precio": 126.45,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -0.17,
+    "cambio_3m": -14.35,
+    "ytd": -0.95
+   },
+   {
+    "ticker": "GLD",
+    "nombre": "SPDR Gold Trust",
+    "categoria": "Materias primas",
+    "precio": 366.61,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -0.65,
+    "cambio_3m": -1.42,
+    "ytd": -7.49
+   },
+   {
+    "ticker": "RIO",
+    "nombre": "Rio Tinto (ADR)",
+    "categoria": "Materias primas",
+    "precio": 83.42,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -0.86,
+    "cambio_3m": -8.55,
+    "ytd": 4.24
+   },
+   {
+    "ticker": "IWM",
+    "nombre": "iShares Russell 2000 ETF",
+    "categoria": "Small caps",
+    "precio": 275.75,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -0.33,
+    "cambio_3m": -5.3,
+    "ytd": 12.02
+   },
+   {
+    "ticker": "WSML",
+    "nombre": "iShares MSCI World Small-Cap ETF (cotiza en EE. UU.; la versión europea UCITS es WSML.L o IUSN.DE)",
+    "categoria": "Small caps",
+    "precio": 33.83,
+    "moneda": "USD",
+    "fecha": "2026-10-23",
+    "cambio_1d": -0.37,
+    "cambio_3m": -1.38,
+    "ytd": 11.19
+   }
+  ],
+  "fallos": [],
+  "leido": "2026-10-25 18:20 UTC"
  },
  "tipos_vivos": {
   "fuente": "Bancos centrales (ver cada fila)",
@@ -1966,6 +2247,94 @@
   ],
   "fallos": [],
   "nota": "Valores leídos de la fuente oficial de cada banco. «Último cambio» es la fecha en que cambió el valor en la serie, no la de la reunión.",
-  "leido": "2026-10-25 18:14 UTC"
+  "leido": "2026-10-25 18:20 UTC"
+ },
+ "tipos_bis": {
+  "fuente": "https://data.bis.org/topics/CBPOL",
+  "nivel": "P",
+  "paises": [
+   {
+    "id": "RU",
+    "pais": "Rusia",
+    "banco": "Bank of Russia",
+    "num": 14.0,
+    "valor": "14,00 %",
+    "dato_de": "2026-10-20"
+   },
+   {
+    "id": "ZA",
+    "pais": "Sudáfrica",
+    "banco": "South African Reserve Bank",
+    "num": 7.25,
+    "valor": "7,25 %",
+    "dato_de": "2026-10-19"
+   },
+   {
+    "id": "MX",
+    "pais": "México",
+    "banco": "Bank of Mexico",
+    "num": 6.5,
+    "valor": "6,50 %",
+    "dato_de": "2026-10-20"
+   },
+   {
+    "id": "ID",
+    "pais": "Indonesia",
+    "banco": "Bank Indonesia",
+    "num": 5.75,
+    "valor": "5,75 %",
+    "dato_de": "2026-10-19"
+   },
+   {
+    "id": "IN",
+    "pais": "India",
+    "banco": "Reserve Bank of India",
+    "num": 5.5,
+    "valor": "5,50 %",
+    "dato_de": "2026-10-19"
+   },
+   {
+    "id": "HK",
+    "pais": "Hong Kong",
+    "banco": "Hong Kong Monetary Authority",
+    "num": 4.25,
+    "valor": "4,25 %",
+    "dato_de": "2026-10-14"
+   },
+   {
+    "id": "CN",
+    "pais": "China",
+    "banco": "People's Bank of China",
+    "num": 3.0,
+    "valor": "3,00 %",
+    "dato_de": "2026-10-19"
+   },
+   {
+    "id": "KR",
+    "pais": "Corea del Sur",
+    "banco": "Bank of Korea",
+    "num": 3.0,
+    "valor": "3,00 %",
+    "dato_de": "2026-10-08"
+   },
+   {
+    "id": "JP",
+    "pais": "Japón",
+    "banco": "Bank of Japan",
+    "num": 1.25,
+    "valor": "1,25 %",
+    "dato_de": "2026-10-20"
+   },
+   {
+    "id": "CH",
+    "pais": "Suiza",
+    "banco": "Swiss National Bank",
+    "num": 0.0,
+    "valor": "0,00 %",
+    "dato_de": "2026-10-20"
+   }
+  ],
+  "fallos": [],
+  "leido": "2026-10-25 18:20 UTC"
  }
 }

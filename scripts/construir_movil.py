@@ -134,7 +134,8 @@ def main():
     datos = {
         "generado": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"), "leido": p.get("leido"),
         "mercado": p.get("mercado", {}).get("activos", []), "indices": p.get("indices", {}).get("indices", []),
-        "tipos": p.get("tipos_vivos", {}).get("paises", []),
+        "tipos": p.get("tipos_vivos", {}).get("paises", []), "tipos_bis": p.get("tipos_bis", {}).get("paises", []),
+        "watchlist": p.get("watchlist", {}).get("valores", []),
         "bonos": [{"id": k, "valor": bonos[k]["plazos"].get("10A"), "fecha": bonos[k]["fecha"]} for k in ("USA", "JPN", "EUR", "ESP", "FRA", "GBR") if k in bonos],
         "eventos": eventos(), "voces": voces(), "niveles": cargar("explorador/voces.json").get("niveles", {}),
         "informes": lista_md("informes", 6), "investigacion": lista_md("informes/research", 8), "videos": lista_md("informes/videos", 6),
