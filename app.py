@@ -337,6 +337,23 @@ st.markdown("""
     .stMarkdown h5 {margin: 10px 4px 6px;}
     /* Indicadores de Cartera: todos del mismo alto para que las filas queden alineadas */
     [data-testid="stVerticalBlockBorderWrapper"] [data-testid="stMetric"] {min-height: 88px;}
+    /* Cartera: el panel de cada token (contenedor con clave), métricas planas y del mismo alto, custodia compacta */
+    [class*="st-key-pos_"] {background: linear-gradient(160deg, var(--card2), var(--card)); border: 1px solid var(--linea) !important;
+                            border-radius: 20px !important; padding: 14px 16px !important; gap: .5rem;}
+    [data-testid="stMetric"] {background: none !important; border: 0 !important; border-radius: 0 !important; border-top: 1px solid var(--linea) !important;
+                              padding: 10px 0 6px !important; min-height: 96px;}
+    @media (max-width: 640px) {
+        [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] > [data-testid="stVerticalBlock"] > [data-testid="stElementContainer"] > [data-testid="stMetric"]) > [data-testid="stColumn"]:nth-child(even) [data-testid="stMetric"] {
+            border-left: 1px solid var(--linea) !important; padding-left: 12px !important;}
+        [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] > [data-testid="stVerticalBlock"] > [data-testid="stElementContainer"] > [data-testid="stMetric"]) {gap: 0 !important;}
+        [data-testid="stHorizontalBlock"]:has(> [data-testid="stColumn"] > [data-testid="stVerticalBlock"] > [data-testid="stElementContainer"] > [data-testid="stMetric"]) > [data-testid="stColumn"] {
+            flex: 0 0 50% !important; width: 50% !important;}
+    }
+    .cust {margin-top: 6px;} .cust .tit {color: var(--sub); font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px;}
+    .cust .cr {display: flex; justify-content: space-between; gap: 8px; font-size: .85rem; color: var(--txt); margin-top: 8px;}
+    .cust .cr span:last-child {color: var(--sub); text-align: right; font-variant-numeric: tabular-nums;}
+    .cust .cb {height: 5px; border-radius: 5px; background: #ffffff12; overflow: hidden; margin-top: 4px;}
+    .cust .cb i {display: block; height: 100%; border-radius: 5px; background: var(--oro);}
     </style>
 """, unsafe_allow_html=True)
 
@@ -1349,7 +1366,7 @@ if 1 in _SEL:
     with tabs[1]:
         with st.container():
             for r in pos.itertuples():
-                with st.container(border=True):
+                with st.container(border=True, key=f"pos_{r.token}"):
                     st.markdown(f"#### {r.token} &nbsp; <span style='color:{MUTED};font-size:0.9rem'>"
                                 f"{fmt(r.cantidad, 2)} tokens · {fmt(r.peso, 1)} % de la cartera</span>",
                                 unsafe_allow_html=True)
@@ -1383,11 +1400,16 @@ if 1 in _SEL:
 
                     wallets = custody.get(r.token, {})
                     if wallets:
-                        st.caption("🔒 Custodia")
+                        from html import escape as _e
+                        _filas = []
                         for w, q in sorted(wallets.items(), key=lambda x: -x[1]):
                             frac = min(q / r.cantidad, 1.0) if r.cantidad > 0 else 0.0
                             icono = "🧊" if w in COLD_WALLETS else "🏦"
-                            st.progress(frac, text=f"{icono} {w}: {fmt(q, 2)} {r.token} · {eur(q * r.precio)} · {fmt(frac * 100, 1)} %")
+                            _filas.append(f"<div class='cr'><span>{icono} {_e(str(w))}</span>"
+                                          f"<span>{_e(fmt(q, 2))} {_e(r.token)} · {_e(eur(q * r.precio))} · {_e(fmt(frac * 100, 1))} %</span></div>"
+                                          f"<div class='cb'><i style='width:{frac * 100:.1f}%'></i></div>")
+                        st.markdown("<div class='cust'><div class='tit'>Custodia</div>" + "".join(_filas) + "</div>",
+                                    unsafe_allow_html=True)
 
         # Distribución: los dos gráficos debajo de las tarjetas, uno al lado del otro
         def donut(labels, values, centro, colores=None):
