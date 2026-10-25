@@ -125,3 +125,4 @@ actualizado: 2026-10-07
 - 2026-10-25 (W06): una cita atribuida (Claver) puede mezclar fechas y cifras: la frase «los plazos se alargan» es de ene-2026 y sus objetivos allí son otros ($750, $1.500-2.000) que los de la ficha; contrastar siempre cifra y fecha con el medio original.
 - 2026-10-25: titulares de «lanza» frente a «prevé lanzar» (JPM Coin en Canton, DTCC): el cuerpo del texto suele describir un despliegue por fases; no dar por operativo sin nota primaria.
 - 2026-10-25 (W10): cuando dos fuentes dan fechas distintas de un hecho (cierre de Ormuz: 4-mar frente a 27-mar), buscar una serie primaria diaria que lo fije; PortWatch lo resolvió a favor del 4-mar.
+- 2026-10-25 (revisión): una cifra sin plazo («el Treasury llegó al 5,34 %») puede ser el 30 años o un bono de otro país; contrastar con la serie diaria del Tesoro antes de copiarla. Los resúmenes automáticos de prensa mezclan series.

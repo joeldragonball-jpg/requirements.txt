@@ -128,3 +128,4 @@ actualizado: 2026-10-07
 - 2026-10-25 (C02): FRED (M2SL) y el BCE (BSI, M3 variación anual) se leen con curl sin clave; comprobar siempre el título de la serie del BCE antes de fiarse del código.
 - 2026-10-25 (W10): el IMF PortWatch tiene API abierta (ArcGIS, servicio Daily_Chokepoints_Data) con tránsitos diarios del estrecho de Ormuz [P]; se lee con curl y da el dato con unos días de retraso (último: 18-oct). Mejor que los agregadores de prensa.
 - 2026-10-25: los PDF del Banco de Japón (boj.or.jp/statistics/money/ms/msAAMM.pdf) no los lee WebFetch; sirven con `pdftotext -raw` sobre el PDF descargado, pero la tabla sale desordenada: confirmar la fila.
+- 2026-10-25 (revisión): la serie diaria de rendimientos del Tesoro de EE. UU. se lee con curl en home.treasury.gov (CSV daily_treasury_yield_curve) [P]; sirve para cazar cifras sin plazo.
