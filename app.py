@@ -156,12 +156,12 @@ st.markdown("""
                font-variant-numeric: tabular-nums;}
     .kpi .dlt.up {background: #22c55e1f; color: var(--sube);} .kpi .dlt.dn {background: #ef44441f; color: var(--baja);}
     .kpi .val.up {color: var(--sube);} .kpi .val.dn {color: var(--baja);}
-    .kpi.hero {border-left-color: var(--acc); background: linear-gradient(135deg, #172554 0%, #111724 70%); padding: 14px 18px;}
-    .kpi.hero .val {font-size: 2.5rem; letter-spacing: -.03em; line-height: 1.15;}
-    .kpi.hero .sub {display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 6px; font-size: .78rem; color: var(--sub);
+    .kpi.hero {border-left-color: var(--acc); background: linear-gradient(135deg, #172554 0%, #111724 70%); padding: 9px 16px;}
+    .kpi.hero .val {font-size: 1.9rem; letter-spacing: -.02em; line-height: 1.15;}
+    .kpi.hero .sub {display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 2px; font-size: .78rem; color: var(--sub);
                     font-variant-numeric: tabular-nums;}
     .kpi.hero .sub b {font-weight: 700;} .kpi.hero .sub b.up {color: var(--sube);} .kpi.hero .sub b.dn {color: var(--baja);}
-    .kpi.hero svg.spark {display: block; width: 100%; height: 46px; margin-top: 8px; overflow: visible;}
+    .kpi.hero svg.spark {display: block; width: 100%; height: 26px; margin-top: 4px; overflow: visible;}
     .kpis-mini {display: flex; gap: 8px; margin: 2px 0 8px;}
     .kpis-mini .kpi {flex: 1 1 0; min-width: 0; padding: 6px 12px; border-radius: 8px;}
     .kpis-mini .kpi .val {font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
@@ -210,7 +210,7 @@ st.markdown("""
     .stApp:has(.modo-barra) .st-key-seccion [role="radiogroup"] > div:nth-child(4) label[data-testid="stRadioOption"]::before {-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='10' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 018 0v3'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='10' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 018 0v3'/%3E%3C/svg%3E");}
     .block-container {padding-bottom: 92px;}
     @media (max-width: 640px) {
-        .kpi .val {font-size: 1.25rem;} .kpi.hero .val {font-size: 2.2rem;}
+        .kpi .val {font-size: 1.25rem;} .kpi.hero .val {font-size: 1.75rem;}
         .kpis-mini .kpi .val {font-size: .92rem;}
     }
     .st-key-pill_menu [role="radiogroup"] {display: flex !important; flex-wrap: nowrap !important; overflow-x: auto; gap: 8px;
