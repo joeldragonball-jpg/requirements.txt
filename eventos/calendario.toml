@@ -126,7 +126,7 @@ fuente = "https://sede.agenciatributaria.gob.es/"
 [[eventos]]
 fecha = "2026-11-04"
 titulo = "XRPL: posible activación de la enmienda fixCleanup3_4_0 (aplazada)"
-detalle = "Iba a activarse el 23-oct (09:34 UTC), pero el apoyo cayó a 26 de 35 validadores el 21-oct (hacen falta 29) y la cuenta atrás de 14 días se reinició: nueva fecha 4-nov 14:46 UTC según XRPLWin (CoinDesk, 22-oct) [S]. Si el apoyo baja de 29 en cualquier control, vuelve a reiniciarse. Incluye arreglos de Permissioned DEX, MPT, vaults y PaymentBurn."
+detalle = "Iba a activarse el 23-oct (09:34 UTC), pero el apoyo cayó el 21-oct por debajo del umbral y la cuenta atrás de 14 días se reinició. [P] Consulta `feature` al nodo xrplcluster.com (23, 24 y 25-oct): la enmienda sigue sin activarse (`enabled: false`) y tiene mayoría registrada desde el 21-oct 14:46:22 UTC; la activación más temprana es el 4-nov 14:46 UTC. [S] CoinDesk/XRPLWin (22-oct): el apoyo cayó a 26 de 35 validadores y hacen falta 29 (≈ 80 % de los validadores de confianza activos); XRPScan da 29 de 32 con umbral 25, así que los denominadores (35 y 32) vienen de fuentes distintas. Si el apoyo baja del umbral en cualquier control, vuelve a reiniciarse. Incluye arreglos de Permissioned DEX, MPT, vaults y PaymentBurn."
 impacto = "bajo"
 aproximado = true
 fuente = "https://www.coindesk.com/tech/2026/10/22/xrp-ledger-bug-fix-moved-to-november-after-validator-support-dipped-for-two-hours"
