@@ -48,3 +48,9 @@ R00 diario: < 1 % cada uno (≈ 5 % a la semana). Total aproximado: 25 % por sem
 - Hasta cuándo dura tu suscripción, para repartir este plan en bloques (cada bloque = 4 semanas).
 - Si quieres un aviso por Telegram el día de cada reunión de un banco central (ya hay avisos del calendario; añadirlo cuesta < 1 %).
 - Si activamos el modo ahorro cuando el semanal pase del 60 % el miércoles.
+
+## 7. Huecos del Centro (C01-C07, desde el 25-oct-2026)
+Salen del plano del Centro (`explorador/centro.json`, pestaña «Centro» del móvil). Cada una tiene su prompt en `research/prompts/C0x-*.md` y su fila en `research/COLA.md` (se ven en el Seguimiento).
+- **Hechas el 25-oct:** C01 gasto en defensa y C02 liquidez M2 (informes en `informes/research/`; falta ponerlas en el panel).
+- **Orden propuesto, una por semana en la ranura de fin de semana (donde W10 deje hueco) y solo si el semanal está por debajo del 70 %:** C03 matriz de riesgos (3 %) → C05 archivo de precedentes (3 %) → C04 cuadro de valoración (3 %) → C06 vigilante de EDGAR (código, sin IA) → C07 suscripciones (Joel aporta datos; en `privado/`).
+- Al acabar cada una se actualiza el estado en `explorador/centro.json` y se regenera con `python scripts/construir_movil.py`.

@@ -54,7 +54,7 @@ def cola_r():
     """Tareas R/G de research/COLA.md con su estado y el coste real anotado."""
     out = []
     for linea in leer(RAIZ / "research" / "COLA.md").splitlines():
-        if not re.match(r"\|\s*[RGW]\d+[A-Za-z]*\s*\|", linea):
+        if not re.match(r"\|\s*[RGWC]\d+[A-Za-z]*\s*\|", linea):
             continue
         c = [x.strip() for x in linea.strip().strip("|").split("|")]
         if len(c) < 9:

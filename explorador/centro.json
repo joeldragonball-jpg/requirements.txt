@@ -3,66 +3,207 @@
   "aviso": "Plano del Centro de Operaciones y Análisis (inspirado en un documento de Joel con Gemini, 25-oct-2026). Se edita a mano: estado = hecho | parcial | falta. 'ir' = pestaña de la app móvil a la que lleva ('cerebro:informes' = pestaña Cerebro, apartado Informes). 'patron' = informes cuya fecha más reciente se muestra como «último». Nada privado aquí: tesis, patrimonio y suscripciones van en privado/.",
   "modulos": [
     {
-      "id": "01", "nombre": "Macro y geopolítica", "apodo": "El Radar", "color": "#6ea8ff",
+      "id": "01",
+      "nombre": "Macro y geopolítica",
+      "apodo": "El Radar",
+      "color": "#6ea8ff",
       "resumen": "El contexto global: tipos, deuda, energía, regiones y fechas clave.",
-      "patron": ["informes/research/*-T[0-9]*.md", "informes/research/*-D[0-9]*.md", "informes/research/*-R[0-9]*.md"],
+      "patron": [
+        "informes/research/*-T[0-9]*.md",
+        "informes/research/*-D[0-9]*.md",
+        "informes/research/*-R[0-9]*.md"
+      ],
       "elementos": [
-        {"texto": "Fichas por país y región (Corea, Brasil, Ripple/Stellar por región…)", "estado": "hecho", "ir": "cerebro:informes"},
-        {"texto": "Barómetro: tipos de interés, bonos a 10 años y deuda", "estado": "hecho", "ir": "mercado"},
-        {"texto": "Calendario de bancos centrales y eventos de impacto", "estado": "hecho", "ir": "agenda"},
-        {"texto": "Energía y rutas críticas (petróleo, Ormuz)", "estado": "parcial", "ir": "mercado"},
-        {"texto": "Gasto en defensa como % del PIB", "estado": "falta"},
-        {"texto": "Liquidez global (M2)", "estado": "falta"},
-        {"texto": "Matriz de riesgos y escenarios de estrés (cisnes negros)", "estado": "falta"}
+        {
+          "texto": "Fichas por país y región (Corea, Brasil, Ripple/Stellar por región…)",
+          "estado": "hecho",
+          "ir": "cerebro:informes"
+        },
+        {
+          "texto": "Barómetro: tipos de interés, bonos a 10 años y deuda",
+          "estado": "hecho",
+          "ir": "mercado"
+        },
+        {
+          "texto": "Calendario de bancos centrales y eventos de impacto",
+          "estado": "hecho",
+          "ir": "agenda"
+        },
+        {
+          "texto": "Energía y rutas críticas (petróleo, Ormuz)",
+          "estado": "parcial",
+          "ir": "mercado"
+        },
+        {
+          "texto": "Gasto en defensa como % del PIB (informe hecho; falta ponerlo en el panel)",
+          "estado": "parcial",
+          "tarea": "C01",
+          "ir": "cerebro:informes"
+        },
+        {
+          "texto": "Liquidez global (M2 de EE. UU. +5,7 %, M3 euro +3,5 %; falta Japón/China y el panel)",
+          "estado": "parcial",
+          "tarea": "C02",
+          "ir": "cerebro:informes"
+        },
+        {
+          "texto": "Matriz de riesgos y escenarios de estrés (cisnes negros)",
+          "estado": "falta",
+          "tarea": "C03"
+        }
       ]
     },
     {
-      "id": "02", "nombre": "Mercados y cartera", "apodo": "El Capital", "color": "#4fe3a1",
+      "id": "02",
+      "nombre": "Mercados y cartera",
+      "apodo": "El Capital",
+      "color": "#4fe3a1",
       "resumen": "Precios, valores que sigo, noticias filtradas y alertas.",
-      "patron": ["informes/*-apertura.md", "informes/*-cierre.md"],
+      "patron": [
+        "informes/*-apertura.md",
+        "informes/*-cierre.md"
+      ],
       "elementos": [
-        {"texto": "Bolsas, futuros, divisas y petróleo en la portada", "estado": "hecho", "ir": "mercado"},
-        {"texto": "Watchlist con rentabilidades y dividendos", "estado": "hecho", "ir": "mercado"},
-        {"texto": "Cartera y posiciones (app del ordenador)", "estado": "hecho"},
-        {"texto": "Bot de noticias con filtro por importancia", "estado": "hecho", "ir": "noticias"},
-        {"texto": "Alertas por Telegram (precios, movimientos bruscos)", "estado": "hecho"},
-        {"texto": "Cuadro de valoración (PER, EV/EBITDA, FCF yield) por sector", "estado": "falta"}
+        {
+          "texto": "Bolsas, futuros, divisas y petróleo en la portada",
+          "estado": "hecho",
+          "ir": "mercado"
+        },
+        {
+          "texto": "Watchlist con rentabilidades y dividendos",
+          "estado": "hecho",
+          "ir": "mercado"
+        },
+        {
+          "texto": "Cartera y posiciones (app del ordenador)",
+          "estado": "hecho"
+        },
+        {
+          "texto": "Bot de noticias con filtro por importancia",
+          "estado": "hecho",
+          "ir": "noticias"
+        },
+        {
+          "texto": "Alertas por Telegram (precios, movimientos bruscos)",
+          "estado": "hecho"
+        },
+        {
+          "texto": "Cuadro de valoración (PER, EV/EBITDA, FCF yield) por sector",
+          "estado": "falta",
+          "tarea": "C04"
+        }
       ]
     },
     {
-      "id": "03", "nombre": "Investigación y verificación", "apodo": "El Cerebro", "color": "#a78bfa",
+      "id": "03",
+      "nombre": "Investigación y verificación",
+      "apodo": "El Cerebro",
+      "color": "#a78bfa",
       "resumen": "Voces, predicciones y verificación contra fuentes primarias.",
-      "patron": ["informes/research/*-W05-*.md", "informes/research/*-W06-*.md", "informes/research/*-W08-*.md", "informes/research/*auditoria*.md", "informes/research/*verificaciones*.md"],
+      "patron": [
+        "informes/research/*-W05-*.md",
+        "informes/research/*-W06-*.md",
+        "informes/research/*-W08-*.md",
+        "informes/research/*auditoria*.md",
+        "informes/research/*verificaciones*.md"
+      ],
       "elementos": [
-        {"texto": "Voces con nivel de confianza y predicciones con resultado", "estado": "hecho", "ir": "cerebro:voces"},
-        {"texto": "Verificación por niveles: fuente primaria [P], medios [S], dicho [D]", "estado": "hecho"},
-        {"texto": "Contraste alcista y bajista en cada informe (abogado del diablo)", "estado": "parcial"},
-        {"texto": "Tesis viva (solo en privado/, no se publica)", "estado": "parcial"},
-        {"texto": "Archivo de precedentes históricos con formato fijo", "estado": "falta"}
+        {
+          "texto": "Voces con nivel de confianza y predicciones con resultado",
+          "estado": "hecho",
+          "ir": "cerebro:voces"
+        },
+        {
+          "texto": "Verificación por niveles: fuente primaria [P], medios [S], dicho [D]",
+          "estado": "hecho"
+        },
+        {
+          "texto": "Contraste alcista y bajista en cada informe (abogado del diablo)",
+          "estado": "parcial"
+        },
+        {
+          "texto": "Tesis viva (solo en privado/, no se publica)",
+          "estado": "parcial"
+        },
+        {
+          "texto": "Archivo de precedentes históricos con formato fijo",
+          "estado": "falta",
+          "tarea": "C05"
+        }
       ]
     },
     {
-      "id": "04", "nombre": "Fiscal y legal", "apodo": "El Búnker", "color": "#f1d58a",
+      "id": "04",
+      "nombre": "Fiscal y legal",
+      "apodo": "El Búnker",
+      "color": "#f1d58a",
       "resumen": "Fiscalidad en España y cambios de normas.",
-      "patron": ["informes/research/*T24*.md", "informes/research/*T05*.md", "informes/research/*T21*.md"],
+      "patron": [
+        "informes/research/*T24*.md",
+        "informes/research/*T05*.md",
+        "informes/research/*T21*.md"
+      ],
       "elementos": [
-        {"texto": "Fiscalidad cripto en España y DAC8", "estado": "hecho", "ir": "cerebro:informes"},
-        {"texto": "Fiscalidad internacional y radar regulatorio por países", "estado": "hecho", "ir": "cerebro:informes"},
-        {"texto": "Vigilante del Federal Register (normas nuevas de EE. UU. por Telegram)", "estado": "parcial"},
-        {"texto": "Vigilante de SEC EDGAR (ETF, DTCC, 13F)", "estado": "falta"},
-        {"texto": "Estructuración patrimonial (solo en privado/)", "estado": "parcial"}
+        {
+          "texto": "Fiscalidad cripto en España y DAC8",
+          "estado": "hecho",
+          "ir": "cerebro:informes"
+        },
+        {
+          "texto": "Fiscalidad internacional y radar regulatorio por países",
+          "estado": "hecho",
+          "ir": "cerebro:informes"
+        },
+        {
+          "texto": "Vigilante del Federal Register (normas nuevas de EE. UU. por Telegram)",
+          "estado": "parcial"
+        },
+        {
+          "texto": "Vigilante de SEC EDGAR (ETF, DTCC, 13F)",
+          "estado": "falta",
+          "tarea": "C06"
+        },
+        {
+          "texto": "Estructuración patrimonial (solo en privado/)",
+          "estado": "parcial"
+        }
       ]
     },
     {
-      "id": "05", "nombre": "Sistema y herramientas", "apodo": "El Gestor", "color": "#ffb15c",
+      "id": "05",
+      "nombre": "Sistema y herramientas",
+      "apodo": "El Gestor",
+      "color": "#ffb15c",
       "resumen": "Rutinas, prompts, costes y salud de los bots.",
-      "patron": ["informes/research/*-W09-*.md", "informes/research/*-W07-*.md"],
+      "patron": [
+        "informes/research/*-W09-*.md",
+        "informes/research/*-W07-*.md"
+      ],
       "elementos": [
-        {"texto": "Seguimiento: qué toca hoy y cuándo se actualizó cada cosa", "estado": "hecho", "ir": "cerebro:seg"},
-        {"texto": "Prompts de research W01-W10 y plan semanal con costes", "estado": "hecho"},
-        {"texto": "Uso de la cuota y costes de cada tarea", "estado": "hecho", "ir": "cerebro:seg"},
-        {"texto": "Estado de los bots y de los datos automáticos", "estado": "hecho", "ir": "cerebro:seg"},
-        {"texto": "Control de suscripciones y software (solo en privado/)", "estado": "falta"}
+        {
+          "texto": "Seguimiento: qué toca hoy y cuándo se actualizó cada cosa",
+          "estado": "hecho",
+          "ir": "cerebro:seg"
+        },
+        {
+          "texto": "Prompts de research W01-W10 y plan semanal con costes",
+          "estado": "hecho"
+        },
+        {
+          "texto": "Uso de la cuota y costes de cada tarea",
+          "estado": "hecho",
+          "ir": "cerebro:seg"
+        },
+        {
+          "texto": "Estado de los bots y de los datos automáticos",
+          "estado": "hecho",
+          "ir": "cerebro:seg"
+        },
+        {
+          "texto": "Control de suscripciones y software (solo en privado/)",
+          "estado": "falta",
+          "tarea": "C07"
+        }
       ]
     }
   ]

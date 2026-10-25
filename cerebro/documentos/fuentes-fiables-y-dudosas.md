@@ -124,3 +124,5 @@ actualizado: 2026-10-07
 - 2026-10-25 (W07): de 96 URLs del explorador, 74 dan 200, 19 dan 403 a curl (sec.gov, bls.gov, swift, opec, aft.gouv…), 2 EUR-Lex 202 (solo navegador) y 1 roto (sz.gov.cn/APEC). No se salta el bloqueo: se usa API o navegador.
 - 2026-10-25: APIs abiertas que se leen con curl y User-Agent propio: Federal Register, SEC EDGAR, Banco Mundial, Eurostat, BIS, BCE, NY Fed, FiscalData, CFTC, FRED CSV. El FMI DataMapper da 403.
 - 2026-10-25: el BIS Data Portal (WS_CBPOL) da el tipo oficial de 12 países [P]; puede ir con retraso de días: contrastar con el banco central (BIS dice ZA 7,25 %, el radar 7,00 %) [VERIFICAR].
+- 2026-10-25 (C01): la API del Banco Mundial (gasto militar % PIB) responde bien pero tarda hasta 30 s por país: pedir en paralelo con timeout. Su cifra puede diferir de la OTAN (Polonia 4,50 % frente a 4,3 %) por definición.
+- 2026-10-25 (C02): FRED (M2SL) y el BCE (BSI, M3 variación anual) se leen con curl sin clave; comprobar siempre el título de la serie del BCE antes de fiarse del código.
