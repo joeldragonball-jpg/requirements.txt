@@ -137,7 +137,8 @@ def leer_stablecoins():
 URL_PROTOCOLOS = "https://api.llama.fi/protocols"
 URL_PRECIOS = "https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin,ethereum&vs_currencies=usd&include_market_cap=true&include_24hr_change=true"
 URL_YAHOO = "https://query1.finance.yahoo.com/v8/finance/chart/{s}?range=5d&interval=1d"
-INDICES = (("^GSPC", "S&P 500", "EE. UU."), ("^IXIC", "Nasdaq Composite", "EE. UU."), ("^STOXX50E", "Euro Stoxx 50", "Zona euro"), ("^IBEX", "Ibex 35", "España"))
+INDICES = (("^GSPC", "S&P 500", "EE. UU."), ("^IXIC", "Nasdaq Composite", "EE. UU."), ("^STOXX50E", "Euro Stoxx 50", "Zona euro"), ("^IBEX", "Ibex 35", "España"),
+           ("ES=F", "Futuros S&P 500", "EE. UU. (futuros)"), ("^N225", "Nikkei 225", "Japón"), ("^KS11", "Kospi", "Corea del Sur"), ("000001.SS", "Shanghái Composite", "China"))
 URL_NYFED = "https://markets.newyorkfed.org/api/rates/unsecured/effr/search.json?startDate={d1}&endDate={d2}"
 URL_BCE_TIPO = "https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?startPeriod={d1}&format=csvdata"
 URL_BOE_TIPO = "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom={d1}&Dateto={d2}&SeriesCodes=IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N"
@@ -172,7 +173,7 @@ def leer_mercado():
 
 
 def leer_indices():
-    """Cierre diario de 4 índices bursátiles (Yahoo Finance, no oficial [S]). Si uno falla se avisa y se sigue con los demás."""
+    """Cierre diario de 8 índices bursátiles y los futuros del S&P 500 (el contrato cambia de vencimiento: ES=F salta cada trimestre) (Yahoo Finance, no oficial [S]). Si uno falla se avisa y se sigue con los demás."""
     salida = {"fuente": "https://finance.yahoo.com/", "nivel": "S", "indices": [], "fallos": []}
     for simbolo, nombre, zona in INDICES:
         try:
