@@ -661,7 +661,8 @@ def to_num(series):
     return series.map(parse_num).astype(float)
 
 
-@st.cache_data(ttl=60, show_spinner=False)
+# Las hojas de Google se releen cada 30 min (tus movimientos son pocos al día); tras anotar uno, ⚙️ → «Actualizar datos» las relee al momento.
+@st.cache_data(ttl=1800, show_spinner=False)
 def fetch_sheet(gid):
     return pd.read_csv(SHEET_BASE + gid, header=None, dtype=str, on_bad_lines="skip")
 
@@ -686,7 +687,7 @@ def find_col(df, *keys, exclude=None):
     return None
 
 
-@st.cache_data(ttl=60, show_spinner=False)
+@st.cache_data(ttl=1800, show_spinner=False)
 def load_positions():
     t = table_from_raw(fetch_sheet(GID_RESUMEN), ("TOKEN", "CANTIDAD"))
     if t.empty:
@@ -718,7 +719,7 @@ def load_positions():
     return pos, custody, desconocidos
 
 
-@st.cache_data(ttl=60, show_spinner=False)
+@st.cache_data(ttl=1800, show_spinner=False)
 def load_transactions():
     frames, errores = [], []
     for tok, cfg in TOKENS.items():
@@ -1007,7 +1008,7 @@ with st.container(key="cab"):
     with _ajustes:
         use_live = st.toggle("Precio en vivo", value=True,
                              help="Activado: precio actual de Kraken (cada 30 s). Desactivado: el precio de tu Google Sheet.")
-        if st.button("🔄 Actualizar datos", **WIDE):
+        if st.button("🔄 Actualizar datos", help="Vuelve a leer ahora las hojas de Google (se releen solas cada 30 min)", **WIDE):
             st.cache_data.clear()
             st.rerun()
 
