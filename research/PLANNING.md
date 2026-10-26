@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-26 22:30 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-26 22:44 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -18,6 +18,10 @@ Hechas en este periodo: W01, W02, W03, W04, W06, W07, W08
 - C05 · Archivo de precedentes históricos (formato fijo) · Sonnet M · ~3 % · `research/prompts/C05-precedentes.md`
 - C06 · Vigilante de SEC EDGAR (ETF, DTCC, 13F) · Sonnet M · ~<1 % · `research/prompts/C06-edgar.md`
 - C07 · Control de suscripciones y software (privado) · Sonnet S · ~<1 % · `research/prompts/C07-suscripciones.md`
+- C12 · Cerebro del escritorio al día: índice autogenerado de la investigación · Sonnet S · ~1 % · `research/prompts/C12-indice-cerebro.md`
+- C14 · Órbita: capas nuevas (energía, liquidez, riesgos) y enlace de cada elemento a su · Sonnet M · ~3 % · `research/prompts/C14-orbita.md`
+- C15 · Manual de mantenimiento y paquete de continuidad sin Claude · Sonnet M · ~2 % · `research/prompts/C15-continuidad.md`
+- C16 · Revisión del coste de los bots que usan la API de Anthropic · Sonnet S · ~1 % · `research/prompts/C16-costes-api.md`
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T09 · Hong Kong · vence/ocurre 2026-10-29 (Hong Kong y Emiratos: la HKMA (4,25 %) y)
 - T13 · Emiratos Árabes · vence/ocurre 2026-10-29 (Hong Kong y Emiratos: la HKMA (4,25 %) y)
@@ -40,6 +44,10 @@ Hechas en este periodo: W01, W02, W03, W04, W06, W07, W08
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 **Pasadas puntuales de rutinas (W)** · detalle en `research/COLA.md`
 - W01B · Tipos de interés: segunda pasada tras las decisiones de la Fed, el BCE
+- W03B · Países: Hong Kong (T09) e India (T10), segunda pasada de la rotación
+- W03C · Países: China (T14) y Rusia (T12)
+- W03D · Países: Emiratos (T13), BRICS (T15) y organismos (T16)
+- W03E · Países: Irán, Egipto y Etiopía (huecos del radar)
 
 ## Auditorías abiertas
 - C13 (Media): Cero enlaces: el campo fuente solo vale P/S/VERIFICAR. No hay forma de pulsar y llegar a la fuente. (voces.jso

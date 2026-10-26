@@ -98,6 +98,17 @@ Reglas fijas: fuente primaria en su idioma original (traducida por mí, con enla
 | C09 | Lote de verificación de dudas del cerebro (revisión del 25-oct) | generica | Sonnet | medio | M | 3 % | ≈1 % (semanal 82→82 %; ventana 5 h 37→39 %) | hecho 2026-10-26 (informes/research/2026-10-26-C09-verificaciones-cerebro.md) |
 | C10 | Auditoría cruzada de cifras de los resúmenes semanales del bot (W41-W43) con series primarias | generica | Sonnet | medio | M | 3 % | ~0 % del semanal (82 % al empezar y al acabar; 5 h: 39 → ~42 %) | hecho 2026-10-26 (informes/research/2026-10-26-C10-auditoria-resumenes.md) |
 | C11 | Comprobar el Worker de Cloudflare que lanza los bots de alertas y on-chain (lo hace Joel; 0 % de cuota) | generica | Joel | bajo | S | 0 % | 0 % | hecho 2026-10-26 (el Worker lanzó workflow_dispatch de alertas y on-chain a las 22:00 y 22:02 UTC, ambas con éxito; cron */30 activo) |
+| C12 | Cerebro del escritorio al día: índice autogenerado de la investigación | generica | Sonnet | medio | S | 1 % | | pendiente (prompt en research/prompts/C12-indice-cerebro.md) |
+| C14 | Órbita: capas nuevas (energía, liquidez, riesgos) y enlace de cada elemento a su informe | generica | Sonnet | medio | M | 3 % | | pendiente (prompt en research/prompts/C14-orbita.md) |
+| C15 | Manual de mantenimiento y paquete de continuidad sin Claude | generica | Sonnet | medio | M | 2 % | | pendiente (prompt en research/prompts/C15-continuidad.md) |
+| C16 | Revisión del coste de los bots que usan la API de Anthropic | generica | Sonnet | medio | S | 1 % | | pendiente (prompt en research/prompts/C16-costes-api.md) |
+| W03B | Países: Hong Kong (T09) e India (T10), segunda pasada de la rotación | generica | Sonnet | medio | M | 2 % | | pendiente (prompt en research/prompts/W03-paises.md; semana 2 de la rotación) |
+| W03C | Países: China (T14) y Rusia (T12) | generica | Sonnet | medio | M | 2 % | | pendiente (prompt en research/prompts/W03-paises.md; semana 3) |
+| W03D | Países: Emiratos (T13), BRICS (T15) y organismos (T16) | generica | Sonnet | medio | M | 2 % | | pendiente (prompt en research/prompts/W03-paises.md; semana 4) |
+| W03E | Países: Irán, Egipto y Etiopía (huecos del radar) | generica | Sonnet | medio | M | 2 % | | pendiente (prompt en research/prompts/W03-paises.md) |
+| W03F | Países: Sudáfrica e Indonesia (huecos del radar) | generica | Sonnet | medio | M | 2 % | | pendiente (prompt en research/prompts/W03-paises.md) |
+| W05B | Verificación por lotes de [VERIFICAR]: cripto y regulación (segundo lote) | generica | Sonnet | medio | M | 2 % | | pendiente (prompt en research/prompts/W05-verificacion.md) |
+| W05C | Verificación por lotes de [VERIFICAR]: macro, fiscalidad y renta fija (tercer lote) | generica | Sonnet | medio | M | 2 % | | pendiente (prompt en research/prompts/W05-verificacion.md) |
 
 ## Orden sugerido para esta semana (hasta el 20-oct)
 R02P (profundo, mide coste) → según su coste, repetir en versión profunda: R01, R08, R09, R11, R12 → R00 diario → R17 (día 19). Como las versiones rápidas cuestan ~1-2 %, para aprovechar la cuota usar la versión profunda. Reserva: dejar ~10 % para una auditoría final.
