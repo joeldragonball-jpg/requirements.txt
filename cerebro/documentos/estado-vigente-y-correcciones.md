@@ -58,3 +58,5 @@ Los archivos del cerebro conservan afirmaciones antiguas junto a sus correccione
 - **Adquisiciones de Ripple con precio:** Hidden Road 1.250 M$ + GTreasury 1.000 M$ + Rail 200 M$ + Metaco 250 M$ = 2.700 M$ [S]. Standard Custody y Palisade sin precio; BC Payments no cerrada; Solvexia [VERIFICAR].
 - **XRPN debut 12-oct:** el −1,05 % es cierre 16,91 $ frente al cierre previo ≈ 17,09 $ [S: Bitcoin.com]; desde la apertura (16,68 $) fue +1,4 %. Se puede usar citando la base.
 - Dudas de «Dudas y datos a verificar» resueltas arriba: ITP, SEC-CFTC y −1,05 %; abiertas: texto de la sección 404, Solvexia y precios no publicados.
+
+- Índice de los informes por tema (autogenerado): ver `indice-investigacion.md`.

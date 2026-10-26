@@ -142,3 +142,5 @@ Precios y niveles de mayo-2026 (oro, Brent ~$100-112, 10 años ~4,58 %, BTC ~$77
 - [VERIFICAR] Consulta DGT V0648-24 leída en petete; fiscalidad de tokens LP de AMM.
 - [VERIFICAR] El «Treasury al 5,34 %» del resumen W43 (casi seguro el 30 años, 5,33 %) y la cifra de Bloomberg sobre flujos de crudo frente a PortWatch. → W08 (cruce de resúmenes con series primarias)
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
+
+- Índice de los informes por tema (autogenerado): ver `indice-investigacion.md`.
