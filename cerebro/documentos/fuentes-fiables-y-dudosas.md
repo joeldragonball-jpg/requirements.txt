@@ -141,3 +141,5 @@ actualizado: 2026-10-07
 - 2026-10-26 (C10): el spot EIA/FRED del Brent (Dated) va 10-25 $ por encima del futuro continuo (Yahoo BZ=F) en octubre; los resúmenes W41-W43 mezclan ambos. Yahoo chart (curl) sirve para Ibex y Brent futuro [S].
 - 2026-10-26 (W06): fiable [P]: discurso de Lagarde en ecb.europa.eu (8-may-2026) y nota del BIS p250624; la prensa había dado «mayo» sin día.
 - 2026-10-26 (W06): dudosa: sitios que republican notas del BCE (Lovguiden, Pontes 21-sep) sin original; S&P y Bloomberg dan 403/paywall: citar como [S].
+- 2026-10-26 (R00 apertura): fiable [P]: gazette.gc.ca (Parte I) abre con WebFetch y da el texto completo de reglamentos propuestos de Canadá (stablecoins, 24-oct); la página es larga (leer por tramos con offset).
+- 2026-10-26 (R00 apertura): coindesk.com/latest-crypto-news y sus notas abren con WebFetch y sirven de radar diario [S]; el buscador web no devuelve noticias del mismo día (da resultados de meses antes).
