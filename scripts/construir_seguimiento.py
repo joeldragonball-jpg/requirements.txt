@@ -59,8 +59,9 @@ def cola_r():
         c = [x.strip() for x in linea.strip().strip("|").split("|")]
         if len(c) < 9:
             continue
+        ruta = re.search(r"research/prompts/[^\s;)]+", " | ".join(c[8:]))
         out.append({"id": c[0], "tema": limpiar(c[1]), "estado": estado(" | ".join(c[8:])), "detalle": limpiar(" | ".join(c[8:]))[:140],
-                    "tam": c[5], "modelo": c[3], "real": limpiar(c[7]), "origen": "R"})
+                    "tam": c[5], "modelo": c[3], "est": c[6], "real": limpiar(c[7]), "prompt": ruta.group(0) if ruta else "", "origen": "R"})
     return out
 
 
@@ -386,10 +387,76 @@ def construir(bots_estado=False):
     }
 
 
+def planning_md(d):
+    """Resumen corto y autogenerado de TODO lo que hay por hacer (research/PLANNING.md): lo lee /research en vez de COLA.md y los informes."""
+    hoy = date.today()
+    dias = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"]
+    L = [f"# PLANNING (autogenerado, no editar a mano) · {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}", "",
+         "Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. "
+         "`/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.", ""]
+    h = d["hoy"]
+    L += [f"## Hoy ({dias[hoy.weekday()]} {hoy.isoformat()})",
+          f"- R00 apertura {'✓' if h['apertura'] else '⏳ pendiente'} · cierre {'✓' if h['cierre'] else '⏳ pendiente (desde las 15:00)'} · racha {h['racha']} días"]
+    rut = {r["id"]: r for r in d["rutinas"]}
+    for t in d["semana"]["hoy"]:
+        r = rut.get(t["id"], {})
+        L.append(f"- Rutina del día: **{t['id']} {t['nombre']}** (~{t['coste']}) · último {r.get('ultimo') or 'nunca'}"
+                 f"{' · AL DÍA' if r.get('dias') is not None and r['dias'] <= 0 else ''} · `{t['prompt']}`")
+    L += ["", "## Semana por días"]
+    L.append(" · ".join(f"{x['dia']}{'*' if x['es_hoy'] else ''}: {', '.join(x['tareas']) or '—'}" for x in d["semana"]["dias"]) + "  (* = hoy)")
+    atras = [r for r in d["rutinas"] if r["atrasada"]]
+    L.append("Rutinas atrasadas: " + (", ".join(f"{r['id']} ({r['ultimo'] or 'nunca'})" for r in atras) if atras else "ninguna"))
+
+    L += ["", "## Research nuevo pendiente (por sección)"]
+    pend = d["pendientes"]
+    c_ = [t for t in pend if t["id"].startswith("C")]
+    if c_:
+        L.append("**Centro y revisión del cerebro (C)**")
+        for t in c_:
+            L.append(f"- {t['id']} · {t['tema'].replace('Hueco del Centro: ', '')[:80]} · {t.get('modelo', '')} {t.get('tam', '')} · ~{t.get('est', '?')} · `{t.get('prompt', '')}`")
+    for pref, nombre, fichero in (("T", "Países y temas (T)", "research/COLA-TEMAS-GEMINI.md"), ("D", "Deuda y bonos (D)", "research/COLA-DEUDA-BONOS.md"),
+                                  ("R", "Otros research (R)", "research/COLA.md")):
+        xs = [t for t in pend if t["id"].startswith(pref)]
+        if xs:
+            L.append(f"**{nombre}** · detalle en `{fichero}`")
+            for t in xs:
+                plazo = f" · vence/ocurre {t['plazo']['fecha']} ({t['plazo']['evento'][:40]})" if t.get("plazo") else ""
+                L.append(f"- {t['id']} · {t['tema'][:70]}{plazo}")
+    L += ["", "## Auditorías abiertas"]
+    a = d.get("auditorias") or {}
+    ab = [x for x in a.get("hallazgos", []) if x["estado"] == "abierto"]
+    L += [f"- {x['id']} ({x['sev']}): {x['que'][:110]}" for x in ab] or ["- ninguna"]
+    L.append("- Auditoría mensual W08: última semana del mes (miércoles)")
+
+    L += ["", "## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)"]
+    try:
+        txt = leer(RAIZ / "cerebro" / "documentos" / "resumen-vigente-xrp.md")
+        bloque = txt.split("## Dudas y datos a verificar", 1)[1]
+        abiertas = [x.strip()[2:].strip() for x in bloque.splitlines() if x.strip().startswith("- [VERIFICAR]")]
+        L += [f"- {x[:150]}" for x in abiertas[:10]] or ["- ninguna anotada"]
+        if len(abiertas) > 10:
+            L.append(f"- … y {len(abiertas) - 10} más en `cerebro/documentos/resumen-vigente-xrp.md`")
+    except Exception:
+        L.append("- (no se pudo leer `cerebro/documentos/resumen-vigente-xrp.md`)")
+
+    L += ["", "## Qué se está quedando viejo (frescura)"]
+    fr = [f for f in (d.get("frescura") or {}).get("items", []) if f["nivel"] != "ok"]
+    L += [f"- {'🔴' if f['nivel'] == 'alerta' else '🟡'} {f['area']}: {f['titulo']} ({f['n']}) → {f['rutina']}" + (f" · {f['detalle'][:80]}" if f["detalle"] else "") for f in fr] or ["- todo al día"]
+    mal = [b["nombre"] for b in d.get("bots", []) if b.get("ok") is False]
+    L += ["", "## Bots con problema", "- " + (", ".join(mal) if mal else "ninguno")]
+
+    L += ["", "## Predicciones que vencen en 14 días"]
+    pr = [x for x in d["predicciones"]["abiertas"] if x.get("limite") and x["limite"] <= (hoy + timedelta(days=14)).isoformat()]
+    L += [f"- #{x.get('n', '?')} · {x['limite']} · {str(x.get('texto') or x.get('quien') or '')[:80]}" for x in pr[:8]] or ["- ninguna"]
+    L += ["", "## Próximas fechas clave"] + [f"- {e['fecha']} · {e['titulo'][:90]}" for e in d["plazos"][:7]]
+    return "\n".join(L) + "\n"
+
+
 def main():
     datos = construir(bots_estado=True)
     SALIDA.parent.mkdir(parents=True, exist_ok=True)
     SALIDA.write_text(json.dumps(datos, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    (RAIZ / "research" / "PLANNING.md").write_text(planning_md(datos), encoding="utf-8")
     r = datos["resumen"]
     print(f"seguimiento.json: {r['hechas']} hechas, {r['pendientes']} pendientes ({r['por_cola']}), R00 hoy: apertura={datos['hoy']['apertura']} cierre={datos['hoy']['cierre']} "
           f"racha={datos['hoy']['racha']}, predicciones abiertas={len(datos['predicciones']['abiertas'])}, auditoría abiertos={(datos['auditorias'] or {}).get('abiertos')}, "
