@@ -257,11 +257,22 @@ const mdHTML = (x, i) => `<div class="item-md card" style="--i:${i};padding:13px
 const DIAS_W = [['W01'], ['W02'], ['W03'], ['W05'], ['W06', 'W09'], ['W10'], []];   // lunes = 0 (igual que scripts/construir_seguimiento.py)
 function semanaISO(d){ const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())); const n = t.getUTCDay() || 7; t.setUTCDate(t.getUTCDate() + 4 - n);
   return Math.ceil(((t - new Date(Date.UTC(t.getUTCFullYear(), 0, 1))) / 86400000 + 1) / 7); }
-function tocaHoy(){ const d = new Date(), wd = (d.getDay() + 6) % 7; let ids = [...DIAS_W[wd]];
+const LIM_W = {W01: 7, W02: 7, W03: 7, W04: 14, W05: 7, W06: 7, W07: 31, W08: 31, W09: 7, W10: 7};
+function hechaPeriodo(id){   // ¿está hecha esta rutina en el periodo actual (semana, quincena o mes)? Usa la fecha de su último informe.
+  const r = ((D.seg || {}).rutinas || []).find(q => q.id === id); if (!r || !r.ultimo) return false;
+  const u = new Date(r.ultimo + 'T12:00:00'), hoy = new Date(), lim = LIM_W[id] || 7;
+  const lunes = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() - ((hoy.getDay() + 6) % 7), 0, 0, 0);
+  if (lim <= 7) return u >= lunes;
+  if (lim <= 14) return (hoy - u) / 86400000 < 14;
+  return u.getFullYear() === hoy.getFullYear() && u.getMonth() === hoy.getMonth();
+}
+function tocaHoyTodo(){ const d = new Date(), wd = (d.getDay() + 6) % 7; let ids = [...DIAS_W[wd]];
   if (wd === 3 && semanaISO(d) % 2 === 0) ids.push('W04');
   if (wd === 5 && d.getDate() <= 7) ids.push('W07');
   if (wd === 2 && d.getDate() >= 22) ids = ['W08', ...ids.filter(i => i !== 'W03')];
   return ids; }
+function tocaHoy(){ return tocaHoyTodo().filter(i => !hechaPeriodo(i)); }   // lo que falta hoy
+function hechoHoy(){ return tocaHoyTodo().filter(i => hechaPeriodo(i)); }   // lo de hoy que ya está hecho
 const hoyISO = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
 const cuando = n => n == null ? 'sin fecha' : n === 0 ? 'hoy' : n === 1 ? 'mañana' : 'en ' + n + ' d';
 const cl = n => n == null ? '' : n <= 3 ? 'mal' : n <= 10 ? 'ya' : '';
@@ -271,7 +282,7 @@ function vSeg(){
   const aud = S.auditorias, pr = S.predicciones, q = S.cuota;
   const hero = `<div class="card hero" style="--i:0;display:block"><small>Hoy en el research</small>
    <div style="display:flex;gap:10px;margin:10px 0 12px;flex-wrap:wrap"><span class="bd ${h.apertura ? 'ok' : 'ya'}">${h.apertura ? '✓' : '⏳'} R00 apertura</span><span class="bd ${h.cierre ? 'ok' : 'ya'}">${h.cierre ? '✓' : '⏳'} R00 cierre</span></div>
-   <div class="meta2" style="margin:0 0 10px"><b>Hoy toca:</b> ${tocaHoy().length ? tocaHoy().map(i => `<span class="bd" style="color:var(--oro)">${esc(i)} ${esc(((S.plan || {})[i] || {}).nombre || '')} · ${esc(((S.plan || {})[i] || {}).coste || '')}</span>`).join(' ') : 'solo el R00 (día ligero)'}</div>
+   <div class="meta2" style="margin:0 0 10px"><b>Hoy toca:</b> ${tocaHoy().length ? tocaHoy().map(i => `<span class="bd" style="color:var(--oro)">${esc(i)} ${esc(((S.plan || {})[i] || {}).nombre || '')} · ${esc(((S.plan || {})[i] || {}).coste || '')}</span>`).join(' ') : (hechoHoy().length ? 'todo lo de hoy está hecho ✓' : 'solo el R00 (día ligero)')}${hechoHoy().length ? ' ' + hechoHoy().map(i => `<span class="bd ok">✓ ${esc(i)} hecha</span>`).join(' ') : ''}</div>
    <div style="display:flex;align-items:baseline;gap:18px"><div><div class="precio" style="font-size:34px;margin:0" data-c="${h.racha}" data-d="0" data-s=" días">0</div><div class="meta2" style="margin:0">racha con R00</div></div>
    <div style="flex:1"><div style="display:flex;justify-content:space-between;font-size:13px;color:#c9d2f0"><span>${r.hechas} hechas</span><span>${r.pendientes} pendientes</span></div><div class="barra" style="margin-top:6px"><i data-w="${pct}%"></i></div></div></div></div>`;
   const RUT = S.rutinas || [], grupo = tipos => RUT.filter(x => tipos.includes(x.tipo));
@@ -359,7 +370,15 @@ function vivo(){   // al abrir: noticias recientes y precios cripto en euros, si
   }).catch(() => {});
 }
 function cargarSeg(){
-  fetch('seguimiento.json').then(r => r.json()).then(j => { D.seg = j; if ((tab === 'cerebro' && segCer === 'seg') || tab === 'agenda') repintar(); comprobarR00(j); }).catch(() => {});
+  fetch('seguimiento.json').then(r => r.json()).then(j => { D.seg = j; if ((tab === 'cerebro' && segCer === 'seg') || tab === 'agenda') repintar(); comprobarW(j); comprobarR00(j); }).catch(() => {});
+}
+function comprobarW(j){   // ¿hay ya informes nuevos de las rutinas en el repo? Lista informes/research en GitHub (1 petición) y actualiza «último» sin esperar a la próxima generación del JSON
+  fetch('https://api.github.com/repos/joeldragonball-jpg/requirements.txt/contents/informes/research?ref=main', {cache: 'no-cache'}).then(r => r.ok ? r.json() : []).then(lista => {
+    const hoy = new Date(); let cambio = false;
+    (j.rutinas || []).forEach(r => { const f = lista.map(q => q.name).filter(n => new RegExp('^\\d{4}-\\d{2}-\\d{2}-' + r.id + '-').test(n)).map(n => n.slice(0, 10)).sort().pop();
+      if (f && (!r.ultimo || f > r.ultimo)) { r.ultimo = f; r.dias = Math.round((hoy - new Date(f + 'T12:00:00')) / 86400000); cambio = true; } });
+    if (cambio && ((tab === 'cerebro' && segCer === 'seg') || tab === 'hoy')) repintar();
+  }).catch(() => {});
 }
 function comprobarR00(j){   // ¿están ya los R00 de HOY en el repo? (comprobación en vivo; el JSON es de la última noche)
   const f = hoyISO(), base = 'https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/main/informes/' + f + '-';
