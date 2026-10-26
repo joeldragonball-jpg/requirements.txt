@@ -1,14 +1,17 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-26 18:45 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-26 18:49 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
-## Hoy (lun 2026-10-26)
+## Hoy (lun 2026-10-26): solo lo casi obligatorio
 - R00 apertura ✓ · cierre ⏳ pendiente (desde las 15:00) · racha 10 días
-- Rutina del día: **W01 Tipos de interés** (~2 %) · último 2026-10-26 · AL DÍA · `research/prompts/W01-*.md`
+- Fija de hoy (lunes: semana de bancos centrales): **W01 Tipos de interés** (~2 %) · último 2026-10-26 · `research/prompts/W01-*.md`
 
-## Semana por días
-lun*: W01 · mar: W02 · mié: W08 · jue: W05, W04 · vie: W06, W09 · sáb: W10 · dom: —  (* = hoy)
-Rutinas atrasadas: ninguna
+## Rutinas W: lo que falta este periodo (sin día fijo; se hacen cuando haya hueco, de más atrasada a menos)
+- W05 · Verificación por lotes · ~3 % · cada jueves · último 2026-10-23 · `research/prompts/W05-*.md`
+- W02 · Deuda y subastas · ~2 % · cada martes · último 2026-10-24 · `research/prompts/W02-*.md`
+- W09 · Resumen semanal · ~1,5 % · cada viernes · último 2026-10-25 · `research/prompts/W09-*.md`
+- W10 · Energía y geopolítica · ~2 % · fin de semana · último 2026-10-25 · `research/prompts/W10-*.md`
+Hechas en este periodo: W01, W03, W04, W06, W07, W08
 
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**

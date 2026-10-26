@@ -395,17 +395,41 @@ def planning_md(d):
          "Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. "
          "`/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.", ""]
     h = d["hoy"]
-    L += [f"## Hoy ({dias[hoy.weekday()]} {hoy.isoformat()})",
+    lunes = hoy - timedelta(days=hoy.weekday())
+    L += [f"## Hoy ({dias[hoy.weekday()]} {hoy.isoformat()}): solo lo casi obligatorio",
           f"- R00 apertura {'✓' if h['apertura'] else '⏳ pendiente'} · cierre {'✓' if h['cierre'] else '⏳ pendiente (desde las 15:00)'} · racha {h['racha']} días"]
     rut = {r["id"]: r for r in d["rutinas"]}
-    for t in d["semana"]["hoy"]:
-        r = rut.get(t["id"], {})
-        L.append(f"- Rutina del día: **{t['id']} {t['nombre']}** (~{t['coste']}) · último {r.get('ultimo') or 'nunca'}"
-                 f"{' · AL DÍA' if r.get('dias') is not None and r['dias'] <= 0 else ''} · `{t['prompt']}`")
-    L += ["", "## Semana por días"]
-    L.append(" · ".join(f"{x['dia']}{'*' if x['es_hoy'] else ''}: {', '.join(x['tareas']) or '—'}" for x in d["semana"]["dias"]) + "  (* = hoy)")
-    atras = [r for r in d["rutinas"] if r["atrasada"]]
-    L.append("Rutinas atrasadas: " + (", ".join(f"{r['id']} ({r['ultimo'] or 'nunca'})" for r in atras) if atras else "ninguna"))
+    fijas = []
+    if hoy.weekday() == 0:
+        fijas.append(("W01", "lunes: semana de bancos centrales"))
+    if hoy.weekday() == 4:
+        fijas.append(("W09", "viernes: resumen semanal"))
+    if hoy.weekday() == 2 and hoy.day >= 22:
+        fijas.append(("W08", "último miércoles del mes: auditoría mensual"))
+    for i, motivo in fijas:
+        r = rut.get(i, {})
+        L.append(f"- Fija de hoy ({motivo}): **{i} {r.get('nombre', '')}** (~{r.get('coste', '?')}) · último {r.get('ultimo') or 'nunca'} · `research/prompts/{i}-*.md`")
+    if not fijas:
+        L.append("- Sin rutina fija hoy: elige por prioridad en las secciones de abajo.")
+
+    L += ["", "## Rutinas W: lo que falta este periodo (sin día fijo; se hacen cuando haya hueco, de más atrasada a menos)"]
+
+    def hecha(r):
+        u = r["ultimo"]
+        if not u:
+            return False
+        f = date.fromisoformat(u)
+        limite = CADA[r["id"]][0]
+        if limite <= 7:
+            return f >= lunes
+        if limite <= 14:
+            return (hoy - f).days < 14
+        return (f.year, f.month) == (hoy.year, hoy.month)
+    faltan = sorted((r for r in d["rutinas"] if not hecha(r)), key=lambda r: -(r["dias"] if r["dias"] is not None else 999))
+    for r in faltan:
+        L.append(f"- {r['id']} · {r['nombre']} · ~{r['coste']} · {r['cada']} · último {r['ultimo'] or 'nunca'}{' · ATRASADA' if r['atrasada'] else ''} · `research/prompts/{r['id']}-*.md`")
+    hechas = [r["id"] for r in d["rutinas"] if hecha(r)]
+    L.append("Hechas en este periodo: " + (", ".join(hechas) if hechas else "ninguna"))
 
     L += ["", "## Research nuevo pendiente (por sección)"]
     pend = d["pendientes"]
