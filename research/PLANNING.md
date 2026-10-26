@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-26 18:55 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-26 20:05 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -8,10 +8,9 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 
 ## Rutinas W: lo que falta este periodo (sin día fijo; se hacen cuando haya hueco, de más atrasada a menos)
 - W05 · Verificación por lotes · ~3 % · cada jueves · último 2026-10-23 · `research/prompts/W05-*.md`
-- W02 · Deuda y subastas · ~2 % · cada martes · último 2026-10-24 · `research/prompts/W02-*.md`
 - W09 · Resumen semanal · ~1,5 % · cada viernes · último 2026-10-25 · `research/prompts/W09-*.md`
 - W10 · Energía y geopolítica · ~2 % · fin de semana · último 2026-10-25 · `research/prompts/W10-*.md`
-Hechas en este periodo: W01, W03, W04, W06, W07, W08
+Hechas en este periodo: W01, W02, W03, W04, W06, W07, W08
 
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**
@@ -39,9 +38,10 @@ Hechas en este periodo: W01, W03, W04, W06, W07, W08
 - R17 · Resumen semanal de 1 página (para imprimir)
 - R36 · PROFUNDO: Segunda pasada con los PDFs que haya en research/fuentes/ (R
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
+**Pasadas puntuales de rutinas (W)** · detalle en `research/COLA.md`
+- W01B · Tipos de interés: segunda pasada tras las decisiones de la Fed, el BCE
 
 ## Auditorías abiertas
-- C7 (Media): «Moody's Francia: revisión de hoy (Aa3, negativa)»: el cierre del 23-oct la deja pendiente (sin noticia a las 
 - C13 (Media): Cero enlaces: el campo fuente solo vale P/S/VERIFICAR. No hay forma de pulsar y llegar a la fuente. (voces.jso
 - Auditoría mensual W08: última semana del mes (miércoles)
 
@@ -61,11 +61,11 @@ Hechas en este periodo: W01, W03, W04, W06, W07, W08
 - 🟡 Voces: Voces sin confirmar (6) → W06 · 3 llevan más de 14 días
 
 ## Bots con problema
-- Alertas de precio, Vigilancia on-chain
+- Alertas de precio
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-10-21 · EE. UU.: la OCC publica su norma final de la GENIUS Act (alto) → ⏳ SIN research: decidir (EV)
-- 2026-10-23 · Francia: revisión de Moody's prevista el 23-oct, resultado aún sin pub (medio) → ✓ cubierto por W02 del 2026-10-24
+- 2026-10-23 · Francia: revisión de Moody's prevista el 23-oct, resultado sin confirm (medio) → ✓ cubierto por W02 del 2026-10-26
 Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.
 
 ## Calendario: próximos 14 días de impacto y qué los cubre

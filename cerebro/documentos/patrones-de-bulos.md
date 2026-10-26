@@ -137,3 +137,4 @@ actualizado: 2026-10-07
 - 2026-10-26 (W06): un recuento de agencia («6 de 11 stablecoins», S&P ago-2026) sin página oficial abierta ni segunda fuente queda sin confirmar; lo comprobable (USDT «weak», 26-nov-2025) no avala la cifra.
 - 2026-10-26 (R00 apertura): «el Ibovespa cae un 20 %» tras la victoria de Lula mezcla el futuro en su peor momento con el contado, que se detuvo (circuit breaker) tras −10 %. Distinguir futuro, intradía y cierre antes de citar una caída.
 - 2026-10-26 (R00 apertura): «Corea aplaza el impuesto cripto a 2029» es una propuesta de un diputado más fuentes anónimas (Newsis), no una ley; sería el cuarto aplazamiento y requiere votación (≈ dic).
+- 2026-10-26 (W02): una calificación «mantenida» que se cita como hecho sin comunicado (Moody's Francia, 23-oct) no vale: la tabla de la AFT no la recoge y las búsquedas devuelven la del 10-abr; esperar moodys.com o la AFT.

@@ -477,7 +477,7 @@ def planning_md(d):
         for t in c_:
             L.append(f"- {t['id']} · {t['tema'].replace('Hueco del Centro: ', '')[:80]} · {t.get('modelo', '')} {t.get('tam', '')} · ~{t.get('est', '?')} · `{t.get('prompt', '')}`")
     for pref, nombre, fichero in (("T", "Países y temas (T)", "research/COLA-TEMAS-GEMINI.md"), ("D", "Deuda y bonos (D)", "research/COLA-DEUDA-BONOS.md"),
-                                  ("R", "Otros research (R)", "research/COLA.md")):
+                                  ("R", "Otros research (R)", "research/COLA.md"), ("W", "Pasadas puntuales de rutinas (W)", "research/COLA.md")):
         xs = [t for t in pend if t["id"].startswith(pref)]
         if xs:
             L.append(f"**{nombre}** · detalle en `{fichero}`")

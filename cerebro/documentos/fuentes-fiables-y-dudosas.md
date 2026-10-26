@@ -143,3 +143,4 @@ actualizado: 2026-10-07
 - 2026-10-26 (W06): dudosa: sitios que republican notas del BCE (Lovguiden, Pontes 21-sep) sin original; S&P y Bloomberg dan 403/paywall: citar como [S].
 - 2026-10-26 (R00 apertura): fiable [P]: gazette.gc.ca (Parte I) abre con WebFetch y da el texto completo de reglamentos propuestos de Canadá (stablecoins, 24-oct); la página es larga (leer por tramos con offset).
 - 2026-10-26 (R00 apertura): coindesk.com/latest-crypto-news y sus notas abren con WebFetch y sirven de radar diario [S]; el buscador web no devuelve noticias del mismo día (da resultados de meses antes).
+- 2026-10-26 (W02): fiable [P]: aft.gouv.fr abre en el navegador integrado y su página de últimas adjudicaciones da rendimientos por bono; TreasuryDirect API (curl) da el resultado de la subasta del mismo día. Dudoso: la tabla de calificaciones de la AFT va por detrás de la agencia.
