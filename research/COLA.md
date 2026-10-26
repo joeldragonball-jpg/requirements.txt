@@ -97,6 +97,7 @@ Reglas fijas: fuente primaria en su idioma original (traducida por mí, con enla
 | C08 | Consolidar el archivo principal del cerebro en un resumen vigente (opción B, una sola vez) | generica | Opus | medio | M | 4 % | ~1 % | hecho 2026-10-25 (informes/research/2026-10-25-C08-consolidacion.md; cerebro/documentos/resumen-vigente-xrp.md) |
 | C09 | Lote de verificación de dudas del cerebro (revisión del 25-oct) | generica | Sonnet | medio | M | 3 % | ≈1 % (semanal 82→82 %; ventana 5 h 37→39 %) | hecho 2026-10-26 (informes/research/2026-10-26-C09-verificaciones-cerebro.md) |
 | C10 | Auditoría cruzada de cifras de los resúmenes semanales del bot (W41-W43) con series primarias | generica | Sonnet | medio | M | 3 % | ~0 % del semanal (82 % al empezar y al acabar; 5 h: 39 → ~42 %) | hecho 2026-10-26 (informes/research/2026-10-26-C10-auditoria-resumenes.md) |
+| C11 | Comprobar el Worker de Cloudflare que lanza los bots de alertas y on-chain (lo hace Joel; 0 % de cuota) | generica | Joel | bajo | S | 0 % | 0 % | hecho 2026-10-26 (el Worker lanzó workflow_dispatch de alertas y on-chain a las 22:00 y 22:02 UTC, ambas con éxito; cron */30 activo) |
 
 ## Orden sugerido para esta semana (hasta el 20-oct)
 R02P (profundo, mide coste) → según su coste, repetir en versión profunda: R01, R08, R09, R11, R12 → R00 diario → R17 (día 19). Como las versiones rápidas cuestan ~1-2 %, para aprovechar la cuota usar la versión profunda. Reserva: dejar ~10 % para una auditoría final.
