@@ -191,8 +191,8 @@ function contar(){ // animación: los números suben hasta su valor
 const cab = (t, a) => `<div class="titulo-sec"><span>${t}</span>${a ? `<a data-ir="${a[1]}">${a[0]} ›</a>` : ''}</div>`;
 const IMP = {alto: 'Impacto alto', medio: 'Impacto medio', bajo: 'Impacto bajo'};
 const fila = (e, i) => { const d = new Date(e.fecha + 'T12:00:00'), n = dias(e.fecha), h = e.hasta ? new Date(e.hasta + 'T12:00:00') : null;
-  return `<div class="evento card" style="--i:${i};margin-bottom:10px;flex-wrap:wrap" data-abre><div class="dia"><b>${d.getDate()}</b><span>${MES[d.getMonth()]}</span></div><div style="flex:1;min-width:0"><h4>${esc(e.titulo)}</h4><p>${n === 0 ? 'Hoy' : n === 1 ? 'Mañana' : 'En ' + n + ' días'}${e.aprox ? ' · fecha aproximada' : ''}</p></div><span class="pun ${e.impacto}"></span><span class="flecha">⌄</span>
-  <div class="mas" style="flex-basis:100%"><b>Qué se espera:</b> ${esc(e.detalle) || 'Sin más detalle.'}${h ? `<div class="meta2">Hasta el ${h.getDate()} ${MES[h.getMonth()]}</div>` : ''}<div class="meta2">${IMP[e.impacto] || ''}${e.aprox ? ' · fecha sin confirmar' : ' · fecha confirmada'}</div>${e.fuente ? `<a class="enlace" target="_blank" rel="noopener" href="${esc(e.fuente)}">Abrir la fuente ›</a>` : ''}</div></div>`; };
+  return `<div class="evento card" style="--i:${i};margin-bottom:10px;flex-wrap:wrap" data-abre><div class="dia"><b>${d.getDate()}</b><span>${MES[d.getMonth()]}</span></div><div style="flex:1;min-width:0"><h4>${esc(e.titulo)}</h4><p>${n < 0 ? (h ? 'En curso · hasta el ' + h.getDate() + ' ' + MES[h.getMonth()] : 'Hoy') : n === 0 ? 'Hoy' : n === 1 ? 'Mañana' : 'En ' + n + ' días'}${e.aprox ? ' · fecha aproximada' : ''}</p></div><span class="pun ${e.impacto}"></span><span class="flecha">⌄</span>
+  <div class="mas" style="flex-basis:100%"><b>Qué se espera:</b> ${esc(e.detalle) || 'Sin más detalle.'}${h ? `<div class="meta2">Hasta el ${h.getDate()} ${MES[h.getMonth()]}</div>` : ''}<div class="meta2">${IMP[e.impacto] || ''}${e.aprox ? ' · fecha sin confirmar' : ' · fecha confirmada'}</div><div class="meta2">${e.cubre ? 'Research: lo cubre ' + esc(e.cubre.rutina) + ' (' + esc(e.cubre.que) + ')' : (e.impacto === 'bajo' ? '' : 'Research: sin rutina asignada, se valora aparte')}</div>${e.fuente ? `<a class="enlace" target="_blank" rel="noopener" href="${esc(e.fuente)}">Abrir la fuente ›</a>` : ''}</div></div>`; };
 
 const valA = a => a.precio_eur != null ? a.precio_eur : conv(a.precio);
 const decV = v => v >= 1000 ? 0 : v >= 1 ? 2 : 4;
@@ -239,7 +239,9 @@ function vMercado(){
 }
 function vAgenda(){
   const lista = D.eventos.filter(e => filtroAg === 'todos' || e.impacto === filtroAg);
-  return `<div class="vista"><div class="chips">${[['todos','Todos'],['alto','Alto impacto'],['medio','Medio'],['bajo','Bajo']].map(([k, n]) => `<div class="chip ${filtroAg === k ? 'on' : ''}" data-fa="${k}">${n}</div>`).join('')}</div>${lista.map((e, i) => fila(e, i)).join('') || '<div class="pie">Sin eventos</div>'}</div>`;
+  const EP = (D.seg && D.seg.eventos && D.seg.eventos.pasados) || [];
+  const pasados = EP.length ? `${cab('Ya pasaron: ¿hace falta research?')}<div class="card" style="--i:1;padding:6px 14px">${EP.map(e => `<div class="fil"><span class="t">${esc(e.titulo.slice(0, 70))}<div class="meta2" style="margin:2px 0 0">${e.fecha.slice(5)} · ${esc(e.impacto)}</div></span><span class="bd ${e.estado === 'por_revisar' ? 'ya' : 'ok'}">${e.estado === 'por_revisar' ? 'sin research' : '✓ ' + esc(e.detalle)}</span></div>`).join('')}</div><div class="meta2" style="margin:-4px 4px 8px">Los «sin research» los decide Joel: se lanzan con /research EV o se descartan.</div>` : '';
+  return `<div class="vista">${pasados}<div class="chips">${[['todos','Todos'],['alto','Alto impacto'],['medio','Medio'],['bajo','Bajo']].map(([k, n]) => `<div class="chip ${filtroAg === k ? 'on' : ''}" data-fa="${k}">${n}</div>`).join('')}</div>${lista.map((e, i) => fila(e, i)).join('') || '<div class="pie">Sin eventos</div>'}</div>`;
 }
 function notaHTML(n, i){
   return `<div class="nota card" style="--i:${i};padding:14px" data-abre><div class="pt" style="--n:${n.nota}"><span>${n.nota}</span></div><div style="flex:1"><h4>${esc(n.titulo)}</h4><div class="meta"><span class="etq">${esc(n.tema)}</span>${esc(n.fecha.replace('T', ' '))}</div><div class="mas">${esc(n.resumen)}<br><br><b>Por qué importa:</b> ${esc(n.por_que)}<div class="meta2">${esc(n.fuente)}</div><a class="enlace" target="_blank" rel="noopener" href="${esc(n.url)}">Leer la noticia ›</a></div></div></div>`;
@@ -357,7 +359,7 @@ function vivo(){   // al abrir: noticias recientes y precios cripto en euros, si
   }).catch(() => {});
 }
 function cargarSeg(){
-  fetch('seguimiento.json').then(r => r.json()).then(j => { D.seg = j; if (tab === 'cerebro' && segCer === 'seg') repintar(); comprobarR00(j); }).catch(() => {});
+  fetch('seguimiento.json').then(r => r.json()).then(j => { D.seg = j; if ((tab === 'cerebro' && segCer === 'seg') || tab === 'agenda') repintar(); comprobarR00(j); }).catch(() => {});
 }
 function comprobarR00(j){   // ¿están ya los R00 de HOY en el repo? (comprobación en vivo; el JSON es de la última noche)
   const f = hoyISO(), base = 'https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/main/informes/' + f + '-';

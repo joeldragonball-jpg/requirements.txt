@@ -383,8 +383,46 @@ def construir(bots_estado=False):
         "predicciones": predicciones(), "auditorias": auditorias(),
         "bots": bots() if bots_estado else [],
         "cuota": {"total": round(sum(c["pct"] for c in cuota), 1), "tareas": sorted(cuota, key=lambda c: -c["pct"])[:8], "n": len(cuota)},
-        "informes": informes_recientes(), "frescura": frescura(),
+        "informes": informes_recientes(), "frescura": frescura(), "eventos": eventos_calendario(),
     }
+
+
+def eventos_calendario():
+    """Eventos de los últimos 10 días que importan (alto impacto o con rutina asociada) y de los próximos 14, con qué rutina los cubre y si ya está cubierto."""
+    try:
+        with open(RAIZ / "eventos" / "calendario.toml", "rb") as f:
+            evs = tomllib.load(f)["eventos"]
+        reglas = json.loads(leer(RAIZ / "eventos" / "vinculos.json"))["reglas"]
+        revisados = json.loads(leer(RAIZ / "eventos" / "revisados.json")).get("revisados", {})
+    except Exception:
+        return {"pasados": [], "proximos": []}
+    hoy = date.today()
+
+    def regla(titulo):
+        minus = titulo.lower()
+        return next((r for r in reglas if any(w in minus for w in r["palabras"])), None)
+    pasados, proximos = [], []
+    for e in sorted(evs, key=lambda e: e["fecha"]):
+        try:
+            ini = date.fromisoformat(e["fecha"])
+            fin = date.fromisoformat(e["hasta"]) if e.get("hasta") else ini
+        except Exception:
+            continue
+        imp = e.get("impacto", "bajo")
+        r = regla(e["titulo"])
+        base = {"fecha": e["fecha"], "hasta": e.get("hasta"), "titulo": e["titulo"], "impacto": imp, "rutina": r["rutina"] if r else None, "que": r["que"] if r else None}
+        if hoy - timedelta(days=10) <= fin < hoy and (imp == "alto" or (imp == "medio" and r)):
+            clave = f"{e['fecha']}|{e['titulo'][:30]}"
+            if clave in revisados:
+                estado, detalle = "revisado", revisados[clave].get("estado", "hecho")
+            elif r and (ultimo_w(r["rutina"]) or "") >= fin.isoformat():
+                estado, detalle = "cubierto", f"{r['rutina']} del {ultimo_w(r['rutina'])}"
+            else:
+                estado, detalle = "por_revisar", ""
+            pasados.append({**base, "estado": estado, "detalle": detalle})
+        elif fin >= hoy and ini <= hoy + timedelta(days=14) and (imp in ("alto", "medio")):
+            proximos.append({**base, "en_curso": ini < hoy})
+    return {"pasados": pasados, "proximos": proximos}
 
 
 def planning_md(d):
@@ -469,6 +507,20 @@ def planning_md(d):
     mal = [b["nombre"] for b in d.get("bots", []) if b.get("ok") is False]
     L += ["", "## Bots con problema", "- " + (", ".join(mal) if mal else "ninguno")]
 
+    ev = d.get("eventos") or {"pasados": [], "proximos": []}
+    L += ["", "## Calendario: ya pasaron (10 días) y qué falta decidir"]
+    for e in ev["pasados"]:
+        marca = {"cubierto": f"✓ cubierto por {e['detalle']}", "revisado": f"✓ revisado ({e['detalle']})", "por_revisar": "⏳ SIN research: decidir (EV)"}[e["estado"]]
+        L.append(f"- {e['fecha']} · {e['titulo'][:70]} ({e['impacto']}) → {marca}")
+    if not ev["pasados"]:
+        L.append("- ninguno")
+    L.append("Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.")
+    L += ["", "## Calendario: próximos 14 días de impacto y qué los cubre"]
+    for e in ev["proximos"][:12]:
+        cub = f"cubre {e['rutina']} ({e['que']})" if e["rutina"] else "sin rutina: valorar research EV"
+        L.append(f"- {e['fecha']}{('→' + e['hasta'][5:]) if e.get('hasta') else ''} · {e['titulo'][:60]} ({e['impacto']}){' · EN CURSO' if e.get('en_curso') else ''} → {cub}")
+    if not ev["proximos"]:
+        L.append("- ninguno")
     L += ["", "## Predicciones que vencen en 14 días"]
     pr = [x for x in d["predicciones"]["abiertas"] if x.get("limite") and x["limite"] <= (hoy + timedelta(days=14)).isoformat()]
     L += [f"- #{x.get('n', '?')} · {x['limite']} · {str(x.get('texto') or x.get('quien') or '')[:80]}" for x in pr[:8]] or ["- ninguna"]

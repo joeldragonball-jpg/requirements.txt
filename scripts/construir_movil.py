@@ -69,6 +69,19 @@ def lista_md(carpeta, n):
     return [{"titulo": titulo_md(r), "fecha": r.stem[:10], "ruta": r.relative_to(RAIZ).as_posix(), "resumen": resumen_md(r)} for r in rutas]
 
 
+def cubre(titulo):
+    """Rutina de research que cubre este evento (eventos/vinculos.json) o None."""
+    try:
+        reglas = json.loads((RAIZ / "eventos" / "vinculos.json").read_text(encoding="utf-8"))["reglas"]
+    except Exception:
+        return None
+    minus = titulo.lower()
+    for r in reglas:
+        if any(p in minus for p in r["palabras"]):
+            return {"rutina": r["rutina"], "que": r["que"]}
+    return None
+
+
 def eventos(dias=150):
     with open(RAIZ / "eventos" / "calendario.toml", "rb") as f:
         evs = tomllib.load(f)["eventos"]
@@ -82,7 +95,7 @@ def eventos(dias=150):
         fin = date.fromisoformat(e["hasta"]) if e.get("hasta") else d
         if fin >= hoy and (d - hoy).days <= dias:
             out.append({"fecha": e["fecha"], "hasta": e.get("hasta"), "titulo": e["titulo"], "detalle": e.get("detalle", ""),
-                        "impacto": e.get("impacto", "bajo"), "aprox": bool(e.get("aproximado")), "fuente": e.get("fuente", "")})
+                        "impacto": e.get("impacto", "bajo"), "aprox": bool(e.get("aproximado")), "fuente": e.get("fuente", ""), "cubre": cubre(e["titulo"])})
     return out
 
 

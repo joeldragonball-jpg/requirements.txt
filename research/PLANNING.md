@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-26 18:49 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-26 18:55 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -62,6 +62,25 @@ Hechas en este periodo: W01, W03, W04, W06, W07, W08
 
 ## Bots con problema
 - Alertas de precio, Vigilancia on-chain
+
+## Calendario: ya pasaron (10 días) y qué falta decidir
+- 2026-10-21 · EE. UU.: la OCC publica su norma final de la GENIUS Act (alto) → ⏳ SIN research: decidir (EV)
+- 2026-10-23 · Francia: revisión de Moody's prevista el 23-oct, resultado aún sin pub (medio) → ✓ cubierto por W02 del 2026-10-24
+Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.
+
+## Calendario: próximos 14 días de impacto y qué los cubre
+- 2026-10-27→10-29 · Swell 2026 (Ripple), Nueva York (medio) → sin rutina: valorar research EV
+- 2026-10-27→10-28 · Reunión de la Fed (FOMC) (alto) → cubre W01 (Tipos de interés)
+- 2026-10-28→10-29 · Reunión del BCE (alto) → cubre W01 (Tipos de interés)
+- 2026-10-28→10-29 · Meridian 2026 (Stellar), Lisboa (medio) → sin rutina: valorar research EV
+- 2026-10-28 · Canadá: decisión del Banco de Canadá sobre el tipo oficial (medio) → cubre W01 (Tipos de interés)
+- 2026-10-29 · PIB de EE. UU. (3T, avance) y gasto en consumo PCE de septie (alto) → cubre W01 (Datos macro y tipos)
+- 2026-10-29→10-30 · Reunión del Banco de Japón (alto) → cubre W01 (Tipos de interés)
+- 2026-10-30 · Brasil: último día para que los proveedores cripto existente (medio) → cubre W01 (Tipos de interés)
+- 2026-10-31 · DTCC: lanzamiento previsto del servicio de tokenización de D (medio) → cubre W04 (ETF y flujos)
+- 2026-11-01 · OPEP+ (7 países): reunión mensual (medio) → cubre W10 (Energía y geopolítica)
+- 2026-11-03 · EE. UU.: elecciones de mitad de mandato (alto) → cubre W06 (Voces y predicciones)
+- 2026-11-03 · Australia: decisión del RBA sobre el tipo de efectivo (medio) → cubre W01 (Tipos de interés)
 
 ## Predicciones que vencen en 14 días
 - #44 · 2026-10-31 · DTCC (nota de prensa)
