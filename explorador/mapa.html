@@ -680,6 +680,7 @@ function radarCelda(padre, c, compacto){
   if (caducada(c)){ const a = H('span', 'chip', ch, 'Sin revisar desde ' + c.revisado); a.style.color = '#f0a830'; a.style.borderColor = 'rgba(240,168,48,.6)'; a.title = 'Han pasado más de ' + DIAS_REVISION + ' días desde la última comprobación'; }
   else if (c.revisado && tieneDato(c)) H('span', 'chip', ch, 'Revisado: ' + c.revisado);
   H('div', '', b, c.estado);
+  if (c.url){ const f = H('div', 'fuente', b); f.style.marginTop = '6px'; f.appendChild(document.createTextNode('Fuente: ')); enlace(f, c.url.replace(/^https:\/\/(www\.)?/, '').split('/')[0], c.url); }
   if (c.proxima){ const x = H('div', 'nota', b); x.style.marginTop = '6px'; H('b', '', x, 'Próxima fecha: '); x.appendChild(document.createTextNode(`${c.proxima.fecha} · ${c.proxima.que}`)); }
   if (c.falta){ const x = H('div', 'nota', b); x.style.marginTop = '4px'; H('b', '', x, 'Qué falta: '); x.appendChild(document.createTextNode(c.falta)); }
   if (!compacto && (c.hitos || []).length){
