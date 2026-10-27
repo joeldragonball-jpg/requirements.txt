@@ -33,7 +33,9 @@ header h1{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var
 header .fecha{font-size:24px;font-weight:700;margin-top:2px;letter-spacing:-.01em}
 .btn-ico{width:44px;height:44px;border-radius:14px;background:var(--card);border:1px solid var(--linea);display:grid;place-items:center;color:var(--txt);cursor:pointer;transition:transform .15s}
 .btn-ico:active{transform:scale(.92)}
-main{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:8px 16px 24px;scroll-behavior:smooth}
+main{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:8px 16px 24px}
+main.quieto .card{animation:none;opacity:1}
+main.quieto .barra i,main.quieto .medidor i,main.quieto .anillo .prog{transition:none}
 main::-webkit-scrollbar{display:none}
 .vista{animation:entra .45s cubic-bezier(.2,.8,.2,1)}
 @keyframes entra{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
@@ -177,16 +179,22 @@ let tab = 'hoy', filtroAg = 'todos', filtroNo = 'todas', segCer = 'seg', filtroP
 document.getElementById('fecha').textContent = DIA[HOY.getDay()][0].toUpperCase() + DIA[HOY.getDay()].slice(1) + ' ' + HOY.getDate() + ' ' + MES[HOY.getMonth()];
 document.getElementById('nav').innerHTML = TABS.map(([id, n]) => `<button data-t="${id}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICO[id]}</svg>${n}</button>`).join('');
 
-function contar(){ // animación: los números suben hasta su valor
+function contar(quieto){ // animación: los números suben hasta su valor (quieto = sin animar, al cambiar de filtro)
+  const poner = () => {
+    document.querySelectorAll('[data-w]').forEach(el => el.style.width = el.dataset.w);
+    document.querySelectorAll('.prog').forEach(el => el.style.strokeDashoffset = el.dataset.o);
+  };
+  if (quieto) {
+    document.querySelectorAll('[data-c]').forEach(el => { el.textContent = (el.dataset.p || '') + fm(parseFloat(el.dataset.c), +el.dataset.d || 0) + (el.dataset.s || ''); });
+    poner();
+    return;
+  }
   document.querySelectorAll('[data-c]').forEach(el => {
     const fin = parseFloat(el.dataset.c), dec = +el.dataset.d || 0, pre = el.dataset.p || '', suf = el.dataset.s || '', t0 = performance.now();
     const paso = t => { const k = Math.min(1, (t - t0) / 900), e = 1 - Math.pow(1 - k, 3); el.textContent = pre + fm(fin * e, dec) + suf; if (k < 1) requestAnimationFrame(paso); };
     requestAnimationFrame(paso);
   });
-  setTimeout(() => {
-    document.querySelectorAll('[data-w]').forEach(el => el.style.width = el.dataset.w);
-    document.querySelectorAll('.prog').forEach(el => el.style.strokeDashoffset = el.dataset.o);
-  }, 80);
+  setTimeout(poner, 80);
 }
 const cab = (t, a) => `<div class="titulo-sec"><span>${t}</span>${a ? `<a data-ir="${a[1]}">${a[0]} ›</a>` : ''}</div>`;
 const IMP = {alto: 'Impacto alto', medio: 'Impacto medio', bajo: 'Impacto bajo'};
@@ -359,11 +367,12 @@ function pintar(ancla){
   const m = document.getElementById('main');
   const antes = ancla && m.querySelector(ancla);
   const y = antes ? antes.getBoundingClientRect().top : null;
+  m.classList.toggle('quieto', !!ancla);
   m.innerHTML = VISTAS[tab]();
   const despues = y !== null && m.querySelector(ancla);
   if (despues) m.scrollTop += despues.getBoundingClientRect().top - y;
   document.querySelectorAll('#nav button').forEach(b => b.classList.toggle('on', b.dataset.t === tab));
-  contar();
+  contar(!!ancla);
 }
 document.addEventListener('click', e => {
   if (e.target.closest('a')) return;
