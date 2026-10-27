@@ -1,4 +1,4 @@
-"""Genera el prompt de relevo para abrir una sesión nueva cuando la conversación llega al 65 % de contexto (sin IA).
+"""Genera el prompt de relevo para abrir una sesión nueva cuando la conversación llega al 75 % de contexto (sin IA).
 
 Uso:  python scripts/generar_relevo.py --resumen "3-5 líneas de lo hecho y lo pendiente"
 Escribe privado/relevo.md (esa carpeta no se sube) y lo imprime para copiarlo y pegarlo en una sesión nueva."""
@@ -31,7 +31,7 @@ Estado al hacer el relevo:
 
 Resumen de la sesión anterior: {args.resumen}
 
-Reglas que siguen: commit y push solo cuando yo diga «sube» (commit por nombre de archivo; `git pull` y `git push` en comandos separados); al terminar o añadir una tarea, actualiza `research/COLA.md` y regenera con `python scripts/construir_movil.py` y `python scripts/construir_seguimiento.py`; trabaja en sesiones cortas y avísame cuando el contexto llegue al 65 % con un prompt de relevo (`python scripts/generar_relevo.py`); no lances workflows ni llames a la API de Anthropic sin pedírmelo; la suscripción de Claude termina hacia el 4-5 de noviembre: prioriza lo que quede funcionando solo."""
+Reglas que siguen: commit y push solo cuando yo diga «sube» (commit por nombre de archivo; `git pull` y `git push` en comandos separados); al terminar o añadir una tarea, actualiza `research/COLA.md` y regenera con `python scripts/construir_movil.py` y `python scripts/construir_seguimiento.py`; trabaja en sesiones cortas y avísame cuando el contexto llegue al 75 % (nunca pasar del 85 %) con un prompt de relevo (`python scripts/generar_relevo.py`); no lances workflows ni llames a la API de Anthropic sin pedírmelo; la suscripción de Claude termina hacia el 4-5 de noviembre: prioriza lo que quede funcionando solo."""
     destino = RAIZ / "privado" / "relevo.md"
     destino.parent.mkdir(exist_ok=True)
     destino.write_text(texto + "\n", encoding="utf-8")
