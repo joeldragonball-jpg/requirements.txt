@@ -365,10 +365,11 @@ def frescura():
     return {"items": items, "resumen": {k: sum(1 for x in items if x["nivel"] == k) for k in ("alerta", "aviso", "ok")}}
 
 
-GEMINI_DIAS = {0: ("NOTICIAS-24h", "noticias del día (XRP/XLM, cripto, macro)"), 1: ("W02-deuda", "deuda, subastas y calificaciones"),
-               2: ("NOTICIAS-24h", "noticias del día (XRP/XLM, cripto, macro)"), 3: ("W05-verificacion", "primera pasada de [VERIFICAR] (Claude te da la lista)"),
-               4: ("NOTICIAS-24h", "noticias del día (XRP/XLM, cripto, macro)"), 5: ("W10-energia", "energía y geopolítica"),
-               6: ("NOTICIAS-24h", "noticias del día y bulos de la semana")}
+# Rutina G (C20): una rotación por día, sin repetir; prompts en research/gemini/. Domingo repite XRP/XLM y bulos van el viernes.
+GEMINI_DIAS = {0: ("G01-xrp-xlm-24h", "noticias XRP/XLM de las últimas 24 h"), 1: ("G03-macro-tipos", "macro y tipos"),
+               2: ("G02-cripto-regulacion", "cripto y regulación"), 3: ("G04-etf-flujos", "ETF y flujos"),
+               4: ("G05-bulos-semana", "bulos y desmentidos de la semana"), 5: ("G06-energia-geopolitica", "energía y geopolítica"),
+               6: ("G01-xrp-xlm-24h", "noticias XRP/XLM de las últimas 24 h")}
 
 
 def gemini():
@@ -382,7 +383,9 @@ def gemini():
     prompt, tema = (("EV-post-evento", f"evento: {ev['titulo'][:70]}") if ev else GEMINI_DIAS[hoy.weekday()])
     sesiones = uso.get("sesiones", [])
     return {"hoy": {"prompt": prompt, "tema": tema, "archivo": f"research/gemini/{prompt}.md", "evento": bool(ev)},
-            "hecho": any(x.get("fecha") == hoy.isoformat() for x in sesiones), "norma": uso.get("norma", ""),
+            "hecho": any(x.get("fecha") == hoy.isoformat() for x in sesiones),
+            "parada": (uso.get("parada") or {}).get("nota", "") if (uso.get("parada") or {}).get("fecha") == hoy.isoformat() else "",
+            "norma": uso.get("norma", ""),
             "avisos": uso.get("avisos", [])[-3:], "sesiones": sesiones[-5:]}
 
 
@@ -491,7 +494,8 @@ def planning_md(d):
     g = d.get("gemini")
     if g:
         L += ["", "## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)",
-              f"- Hoy: **{g['hoy']['tema']}** · prompt `{g['hoy']['archivo']}` · {'✓ hecha' if g['hecho'] else '⏳ pendiente'}",
+              f"- Gemini del día: toca **{g['hoy']['tema']}** · prompt `{g['hoy']['archivo']}` · "
+              + ("⏸ parada por límite: " + g["parada"] if g.get("parada") else ('✓ hecha' if g['hecho'] else '⏳ pendiente')),
               f"- Norma: {g['norma']}"]
         for av in g["avisos"]:
             L.append(f"- Aviso de límite ({av.get('fecha', '?')}): {av.get('nota', '')}")

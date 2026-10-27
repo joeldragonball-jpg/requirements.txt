@@ -29,6 +29,7 @@ import requests
 
 AQUI = Path(__file__).parent
 CONFIG = tomllib.loads((AQUI / "config.toml").read_text(encoding="utf-8"))
+import manuales   # C18: noticias manuales (mismo directorio)
 MADRID = ZoneInfo("Europe/Madrid")
 
 TG_TOKEN = os.environ.get("TELEGRAM_TOKEN", "").strip()
@@ -55,6 +56,7 @@ HISTORICOS = {"apuntes_xrp_macro_fiscalidad_2026.md"}
 RESUMEN_VIGENTE = CARPETA_CEREBRO / "documentos" / "resumen-vigente-xrp.md"
 MAX_CHARS_CEREBRO = 14000                   # ~3.500 tokens: lo esencial de tus apuntes, sin disparar el coste
 USO = []                                    # tokens gastados en esta ejecución (se guardan en el historial)
+EXTRA_EVENTO = [1.0]                        # >1 si hoy hay un evento de impacto alto y modo_evento está activo (C18)
 AHORRO = [False]                            # True si este mes se ha superado el tope de gasto (ver vigilar_gasto)
 PREVIO = []                                 # llamadas ya guardadas en el historial (main las carga; sirven para los topes del día)
 EUR_POR_USD = 0.89                          # solo para mostrar euros aproximados en los avisos
@@ -569,7 +571,7 @@ macro, mercados, petróleo, geopolítica): como mucho un tercio sobre XRP/XLM.{l
 def triaje(candidatas):
     """Primera criba barata: el modelo pequeño lee solo los títulos y deja pasar a los mejores.
     El modelo caro solo verá a los supervivientes."""
-    maximo = CONFIG.get("max_tras_triaje", 25)
+    maximo = round(CONFIG.get("max_tras_triaje", 25) * EXTRA_EVENTO[0])
     modelo = CONFIG.get("modelo_triaje", "")
     if not modelo or len(candidatas) <= maximo:
         return candidatas
@@ -836,7 +838,12 @@ def equilibrar(elegidas):
 
 
 def enviar_noticia(n):
-    texto = ((f"🚨 <b>URGENTE</b>\n" if n.get("urgente") else "")
+    cabecera = ""
+    if n.get("origen") == "manual":
+        tipo = "research manual de evento" if n.get("nivel") == "evento" else "research manual ligero"
+        cabecera = (f"🔎 <i>{tipo.capitalize()}: {html.escape(n.get('evento', ''))} · {html.escape(n.get('etiqueta', ''))}"
+                    "</i>\n" + (f"⚠️ <b>Posible bulo:</b> {html.escape(n['motivo_bulo'])}\n" if n.get("bulo") else "") + "\n")
+    texto = ((f"🚨 <b>URGENTE</b>\n" if n.get("urgente") else "") + cabecera
              + f"{ICONOS.get(n['tema'], '📰')} <b>{html.escape(n['tema'])}</b> · ⭐ {n['puntuacion']}/10\n\n"
              f"<b>{html.escape(n['titulo'])}</b>\n\n{html.escape(n['resumen'])}\n\n"
              f"💡 <i>{html.escape(n['por_que'])}</i>\n\n"
@@ -846,6 +853,63 @@ def enviar_noticia(n):
     res = telegram("sendMessage", chat_id=TG_CHAT, text=texto, parse_mode="HTML",
                    disable_web_page_preview=True, reply_markup=botones(n["id"]))
     return (res.get("result") or {}).get("message_id")
+
+
+def importar_manuales(db):
+    """C18 · Envía las noticias de noticias/manuales/*.json (research hecho a mano). SIN IA de pago: solo Python.
+    Evita duplicados (enlace/título ya guardados o enviados), las marca origen=manual, las envía a Telegram y las guarda
+    en el historial (cuentan en los 👍/👎 y salen en el móvil). Devuelve cuántas ha enviado. No consume cupo diario."""
+    ahora_es = datetime.now(MADRID)
+    if not PRUEBA and not 8 <= ahora_es.hour < 23:
+        return 0     # nada de avisos de madrugada; saldrán en la siguiente ejecución
+    hechas = set(db.setdefault("manuales_enviados", []))
+    ids_guardadas = {n["id"] for n in db["noticias"]}
+    pendientes = []
+    for ruta in manuales.listar():
+        datos, errores = manuales.cargar(ruta)
+        if errores:
+            print(f"Manual {ruta.name} ignorado: {'; '.join(errores[:3])}")
+            continue
+        for m in datos["noticias"]:
+            nid = id_noticia(m["url"], m["titulo"])
+            if nid in hechas or nid in ids_guardadas:
+                continue
+            if m["nota"] < CONFIG.get("nota_minima", 6):
+                continue
+            pendientes.append((nid, datos, m))
+    pendientes.sort(key=lambda t: -t[2]["nota"])
+    enviadas = 0
+    for nid, datos, m in pendientes[:CONFIG.get("max_manuales_por_ejecucion", 25)]:
+        if es_repeticion(m["titulo"], db):
+            print(f"Manual repetido (mismo título ya enviado): {m['titulo'][:70]!r}")
+            hechas.add(nid)
+            continue
+        n = {"id": nid, "titulo": m["titulo"], "resumen": m["resumen"],
+             "por_que": f"[{m['etiqueta']}] {m['fiabilidad']}", "tema": m["tema"], "puntuacion": m["nota"],
+             "fuente": m["fuente"], "url": m["url"], "origen": "manual", "nivel": datos["nivel"],
+             "evento": datos["evento"], "etiqueta": m["etiqueta"], "bulo": m["bulo"],
+             "motivo_bulo": m.get("motivo_bulo", ""), "fecha_noticia": m["fecha"]}
+        n["msg_id"] = enviar_noticia(n)
+        n["fecha_envio"] = datetime.now(timezone.utc).isoformat()
+        n["valoracion"] = 0
+        db["noticias"].append(n)
+        hechas.add(nid)
+        enviadas += 1
+    db["manuales_enviados"] = sorted(hechas)[-1500:]
+    return enviadas
+
+
+def evento_alto_hoy(ahora_es):
+    """Título de un evento de impacto «alto» de eventos/calendario.toml que cae hoy, o None."""
+    try:
+        cal = tomllib.loads((AQUI.parent / "eventos" / "calendario.toml").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    hoy = f"{ahora_es:%Y-%m-%d}"
+    for e in cal.get("eventos", []):
+        if e.get("impacto") == "alto" and str(e.get("fecha")) <= hoy <= str(e.get("hasta", e.get("fecha"))):
+            return e.get("titulo")
+    return None
 
 
 def resumen_semanal(db):
@@ -1027,6 +1091,17 @@ def main():
     ahora_es = datetime.now(MADRID)
     clave = franja_pendiente(db, ahora_es)
 
+    # C18 · research manual (sin IA de pago). Se envía en cualquier ejecución horaria, sin esperar a una franja.
+    manuales_enviadas = importar_manuales(db)
+    if manuales_enviadas:
+        cambios.append(f"{manuales_enviadas} manuales")
+    # C18 · modo evento (apagado por defecto): más cupo solo en días con evento de impacto alto en el calendario
+    if CONFIG.get("modo_evento", False):
+        titulo_evento = evento_alto_hoy(ahora_es)
+        if titulo_evento:
+            EXTRA_EVENTO[0] = 1 + CONFIG.get("modo_evento_aumento_pct", 30) / 100
+            print(f"Modo evento activo ({titulo_evento}): cupo y triaje ×{EXTRA_EVENTO[0]:.2f}")
+
     # Leer las fuentes es gratis: se hace en cada ejecución (cada hora) para vigilar las alertas urgentes
     candidatas = leer_fuentes(db) if (PRUEBA or clave or CONFIG.get("palabras_urgentes")) else []
     urgentes = alertas_urgentes(db, candidatas)
@@ -1037,8 +1112,9 @@ def main():
 
     if PRUEBA or clave:
         hoy = f"{ahora_es:%Y-%m-%d}"
-        enviadas_hoy = sum(1 for n in db["noticias"] if n["fecha_envio"].startswith(hoy) and not n.get("urgente"))
-        restantes = CONFIG["max_noticias_dia"] - enviadas_hoy
+        enviadas_hoy = sum(1 for n in db["noticias"] if n["fecha_envio"].startswith(hoy) and not n.get("urgente")
+                           and n.get("origen") != "manual")
+        restantes = round(CONFIG["max_noticias_dia"] * EXTRA_EVENTO[0]) - enviadas_hoy
         cupo = 3 if PRUEBA else calcular_cupo(restantes, int(clave[-2:]))
         vistos = set(db["vistos"])
         candidatas = [c for c in candidatas if c["id"] not in vistos]   # sin las ya enviadas como urgentes

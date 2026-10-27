@@ -261,3 +261,11 @@ url = "https://news.google.com/rss/search?q=Brent+OR+WTI+oil+price+when:1d&hl=en
 [[fuentes]]
 nombre = "EIA · Today in Energy"
 url = "https://www.eia.gov/rss/todayinenergy.xml"
+
+# --- C18 · Noticias manuales (carpeta noticias/manuales/, sin IA de pago): tope de envíos por ejecución horaria.
+max_manuales_por_ejecucion = 25
+# --- C18 · Modo evento (APAGADO por defecto). En días con un evento de impacto «alto» de eventos/calendario.toml sube
+# --- max_noticias_dia y max_tras_triaje un X %. Coste extra estimado: ver informes/research/2026-10-27-C18-noticias-manuales.md.
+# --- Sigue mandando tope_diario_usd (C17): al superarlo, las selecciones pasan a modelo_ahorro.
+modo_evento = false
+modo_evento_aumento_pct = 30
