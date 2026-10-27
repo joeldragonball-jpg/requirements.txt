@@ -1,0 +1,16 @@
+# C19 · Gemini CLI como primera pasada de research (puente Claude → Gemini)
+
+Coste estimado: ~2 % de la cuota semanal · Cuándo: sin día fijo, en sesión nueva (tras el reinicio del martes 27-oct)
+
+## Pega esto en una sesión nueva
+
+```
+
+Sesión corta (máx. 20 min). Sigue CLAUDE.md: español claro, sin recomendaciones de compra/venta, cada dato con fuente y fecha, etiquetas [P] (primaria leída) / [S] (prensa o agregador) / [VERIFICAR] / [ESPECULACIÓN], nunca claves ni secretos, no lances workflows ni llames a la API de Anthropic, y no hagas commit ni push sin mi OK (enséñame `git status` antes). Antes de leer informes usa `python scripts/buscar_informes.py "<consulta>" -n 6` (BM25 local) y lee solo desde la línea que salga. Webs que dan 403 a curl (EUR-Lex, BIS, SEC, FMI): navegador integrado y `fetch` dentro de la página (PDF con pdf.js); no saltes controles anti-bots. Cifras con símbolo delante y «mil M» (guía `research/GUIA-ESTILO-CIFRAS.md`). Al acabar: coste real en la fila de `research/COLA.md`, ejecuta `python scripts/construir_seguimiento.py` (actualiza la fecha de «último» en el Seguimiento del PC y del móvil) e incluye `docs/movil/seguimiento.json` en el commit, máx. 5 líneas nuevas en cada archivo de lecciones de `cerebro/documentos/` (patrones-de-bulos, fuentes-fiables-y-dudosas, catalizadores-xrp-xlm), resumen de 5 líneas, las 2 cosas a vigilar y 3 líneas de seguridad.
+
+Tarea C19: Gemini CLI como primera pasada de research (puente Claude → Gemini).
+Contexto: Joel tiene Gemini (plan Plus) y quiere que Claude lance a Gemini las tareas de recogida (noticias de días de evento y research sin evento) para gastar la cuota de Claude solo en verificar y consolidar. No hay plugin Claude↔Gemini; la vía es Gemini CLI (`@google/gemini-cli`, Node 22 ya instalado; el paquete y los límites gratis se comprueban [VERIFICAR]).
+Haz: 1) PIDE permiso a Joel antes de instalar (descarga de npm: nombre, fuente y tamaño), instala Gemini CLI y comprueba `gemini --version`; el inicio de sesión con la cuenta de Google lo hace Joel en el navegador (nunca metas credenciales ni claves); 2) crea `scripts/gemini_tarea.py` (solo biblioteca estándar): recibe el id de un prompt de `research/gemini/` (ej. EV-post-evento) y parámetros (fecha, título del evento o país), monta el prompt completo, lo pasa a `gemini -p` en modo no interactivo con tiempo límite, guarda la respuesta cruda en `informes/gemini/AAAA-MM-DD-<id>-<slug>.md` (NO dentro de `cerebro/`) y escribe el límite/uso que muestre la herramienta; 3) prueba con UN prompt (el EV del FOMC 27-28 oct o W01) y enséñame el resultado y cuánto de la cuota de Gemini gastó; 4) regla de calidad: todo lo que venga de Gemini entra como [S] o [VERIFICAR] hasta que Claude lo contraste con la fuente primaria; escribe en el informe 3 datos clave a verificar; 5) documenta en `MANTENIMIENTO.md` (apartado «Si ya no hay Claude») cómo se usa a mano.
+Salida: `scripts/gemini_tarea.py`, un informe de prueba en `informes/gemini/` e `informes/research/AAAA-MM-DD-C19-gemini-cli.md` corto. No hagas commit.
+Al acabar: fila C19 de `research/COLA.md` con el coste real (get_usage antes y después), `python scripts/construir_movil.py` y `python scripts/construir_seguimiento.py`.
+```

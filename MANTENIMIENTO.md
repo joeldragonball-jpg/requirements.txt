@@ -94,3 +94,8 @@ python scripts/construir_seguimiento.py
 - Renovar el token de GitHub del Worker (§3) y vigilar el gasto de la API.
 - Revisar el aviso de seguridad (`seguridad_rapida.py`) de vez en cuando; los parches y saltos de versión mayor se deciden a mano.
 - Commit y push con `git` de siempre (`git pull` primero; los bots también escriben en el repo).
+
+## 8. Gemini CLI (primera pasada de research)
+- Instalado en el PC con `npm install -g @google/gemini-cli` (versión 0.65.0). **27-oct-2026: «Login with Google» ya no sirve:** Google respondió `IneligibleTierError: This client is no longer supported for Gemini Code Assist for individuals` (migrar a Antigravity). La vía que queda para la CLI es una clave de API de Google AI Studio en la variable `GEMINI_API_KEY` (nunca en el repo) [VERIFICAR gratuidad y límites].
+- Puente: `python scripts/gemini_tarea.py <prompt> --param "clave=valor"` (prompts en `research/gemini/`; `--dry-run` solo muestra el prompt). La respuesta cruda va a `informes/gemini/` y es [S] o [VERIFICAR] hasta contrastarla con la fuente primaria. Ejemplo: `python scripts/gemini_tarea.py EV-post-evento --param "evento=2026-10-28 Reunión de la Fed (FOMC)"`.
+- No usa la API de Anthropic. El límite de uso gratis depende de tu cuenta de Google [VERIFICAR].

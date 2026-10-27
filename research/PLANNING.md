@@ -1,10 +1,15 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-26 23:28 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-27 00:22 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Hoy (mar 2026-10-27): solo lo casi obligatorio
 - R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 15:00) · racha 10 días
 - Sin rutina fija hoy: elige por prioridad en las secciones de abajo.
+
+## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
+- Hoy: **evento: Reunión de la Fed (FOMC)** · prompt `research/gemini/EV-post-evento.md` · ⏳ pendiente
+- Norma: 1 consulta ligera al día (unas 15 fuentes), sin repetirla. Si Gemini avisa de límite, Joel lo anota aquí y se para por hoy. La cuota se comparte con NotebookLM.
+- Aviso de límite (antes del 2026-10-27): Una consulta de ~47 fuentes lanzada 2-3 veces agotó el límite; la cuota ya estaba gastada en NotebookLM.
 
 ## Rutinas W: lo que falta este periodo (sin día fijo; se hacen cuando haya hueco, de más atrasada a menos)
 - W05 · Verificación por lotes · ~3 % · cada jueves · último 2026-10-23 · `research/prompts/W05-*.md`
@@ -17,6 +22,9 @@ Hechas en este periodo: W01, W02, W03, W04, W06, W07, W08
 - C04 · Cuadro de valoración por sector (PER, EV/EBITDA, FCF yield) · Sonnet M · ~3 % · `research/prompts/C04-valoracion.md`
 - C05 · Archivo de precedentes históricos (formato fijo) · Sonnet M · ~3 % · `research/prompts/C05-precedentes.md`
 - C14 · Órbita: capas nuevas (energía, liquidez, riesgos) y enlace de cada elemento a su · Sonnet M · ~3 % · `research/prompts/C14-orbita.md`
+- C17 · Control del gasto del bot de noticias: topes por día y panel «Gasto del bot» en  · Sonnet M · ~3 % · `research/prompts/C17-gasto-bots.md`
+- C18 · Research manual de noticias en días de evento: entrada al bot, Telegram y cerebr · Sonnet M · ~3 % · `research/prompts/C18-noticias-manuales.md`
+- C20 · Rutina G: Gemini gratis en días sin evento y Claude solo verifica; entra al Segu · Sonnet S · ~2 % · `research/prompts/C20-rutina-gemini.md`
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T09 · Hong Kong · vence/ocurre 2026-10-29 (Hong Kong y Emiratos: la HKMA (4,25 %) y)
 - T13 · Emiratos Árabes · vence/ocurre 2026-10-29 (Hong Kong y Emiratos: la HKMA (4,25 %) y)
@@ -45,7 +53,6 @@ Hechas en este periodo: W01, W02, W03, W04, W06, W07, W08
 - W03E · Países: Irán, Egipto y Etiopía (huecos del radar)
 - W03F · Países: Sudáfrica e Indonesia (huecos del radar)
 - W05B · Verificación por lotes de [VERIFICAR]: cripto y regulación (segundo lo
-- W05C · Verificación por lotes de [VERIFICAR]: macro, fiscalidad y renta fija 
 
 ## Auditorías abiertas
 - C13 (Media): Cero enlaces: el campo fuente solo vale P/S/VERIFICAR. No hay forma de pulsar y llegar a la fuente. (voces.jso

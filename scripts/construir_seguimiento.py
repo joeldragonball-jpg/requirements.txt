@@ -194,6 +194,10 @@ def bots():
     if os.environ.get("GITHUB_TOKEN"):
         cab["Authorization"] = "Bearer " + os.environ["GITHUB_TOKEN"]
     out = []
+    try:    # si GitHub no responde (p. ej. límite de consultas sin token), se conserva el último valor bueno
+        previo = {b["nombre"]: b for b in json.loads(leer(SALIDA) or "{}").get("bots", []) if b.get("ok") is not None}
+    except Exception:
+        previo = {}
     for archivo, nombre, tol in WORKFLOWS:
         try:
             r = json.load(urllib.request.urlopen(urllib.request.Request(
@@ -202,7 +206,7 @@ def bots():
             ok = r["conclusion"] == "success" and horas <= tol
             out.append({"nombre": nombre, "ok": ok, "conclusion": r["conclusion"] or r["status"], "horas": round(horas, 1), "tolerancia": tol})
         except Exception:
-            out.append({"nombre": nombre, "ok": None, "conclusion": "sin dato", "horas": None, "tolerancia": tol})
+            out.append(previo.get(nombre) or {"nombre": nombre, "ok": None, "conclusion": "sin dato", "horas": None, "tolerancia": tol})
     return out
 
 
@@ -352,6 +356,27 @@ def frescura():
     return {"items": items, "resumen": {k: sum(1 for x in items if x["nivel"] == k) for k in ("alerta", "aviso", "ok")}}
 
 
+GEMINI_DIAS = {0: ("NOTICIAS-24h", "noticias del día (XRP/XLM, cripto, macro)"), 1: ("W02-deuda", "deuda, subastas y calificaciones"),
+               2: ("NOTICIAS-24h", "noticias del día (XRP/XLM, cripto, macro)"), 3: ("W05-verificacion", "primera pasada de [VERIFICAR] (Claude te da la lista)"),
+               4: ("NOTICIAS-24h", "noticias del día (XRP/XLM, cripto, macro)"), 5: ("W10-energia", "energía y geopolítica"),
+               6: ("NOTICIAS-24h", "noticias del día y bulos de la semana")}
+
+
+def gemini():
+    """Tarea de Gemini del día (gratis, 1 consulta ligera; flujo manual: Claude da el prompt, Joel lo pega en la app) y su registro de uso."""
+    hoy = date.today()
+    try:
+        uso = json.loads(leer(RAIZ / "research" / "gemini-uso.json") or "{}")
+    except Exception:
+        uso = {}
+    ev = next((e for e in eventos_futuros() if e["impacto"] == "alto" and e["dias"] <= 1 and not e["aprox"]), None)
+    prompt, tema = (("EV-post-evento", f"evento: {ev['titulo'][:70]}") if ev else GEMINI_DIAS[hoy.weekday()])
+    sesiones = uso.get("sesiones", [])
+    return {"hoy": {"prompt": prompt, "tema": tema, "archivo": f"research/gemini/{prompt}.md", "evento": bool(ev)},
+            "hecho": any(x.get("fecha") == hoy.isoformat() for x in sesiones), "norma": uso.get("norma", ""),
+            "avisos": uso.get("avisos", [])[-3:], "sesiones": sesiones[-5:]}
+
+
 def construir(bots_estado=False):
     colas = cola_r() + cola_t() + cola_d()
     eventos = eventos_futuros()
@@ -383,7 +408,7 @@ def construir(bots_estado=False):
         "predicciones": predicciones(), "auditorias": auditorias(),
         "bots": bots() if bots_estado else [],
         "cuota": {"total": round(sum(c["pct"] for c in cuota), 1), "tareas": sorted(cuota, key=lambda c: -c["pct"])[:8], "n": len(cuota)},
-        "informes": informes_recientes(), "frescura": frescura(), "eventos": eventos_calendario(),
+        "informes": informes_recientes(), "frescura": frescura(), "eventos": eventos_calendario(), "gemini": gemini(),
     }
 
 
@@ -449,6 +474,14 @@ def planning_md(d):
         L.append(f"- Fija de hoy ({motivo}): **{i} {r.get('nombre', '')}** (~{r.get('coste', '?')}) · último {r.get('ultimo') or 'nunca'} · `research/prompts/{i}-*.md`")
     if not fijas:
         L.append("- Sin rutina fija hoy: elige por prioridad en las secciones de abajo.")
+
+    g = d.get("gemini")
+    if g:
+        L += ["", "## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)",
+              f"- Hoy: **{g['hoy']['tema']}** · prompt `{g['hoy']['archivo']}` · {'✓ hecha' if g['hecho'] else '⏳ pendiente'}",
+              f"- Norma: {g['norma']}"]
+        for av in g["avisos"]:
+            L.append(f"- Aviso de límite ({av.get('fecha', '?')}): {av.get('nota', '')}")
 
     L += ["", "## Rutinas W: lo que falta este periodo (sin día fijo; se hacen cuando haya hueco, de más atrasada a menos)"]
 
