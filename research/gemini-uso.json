@@ -40,6 +40,12 @@
    "prompt": "D-bonos-ligera · D01 Italia (prueba Google Search sin Deep Research)",
    "fuentes_aprox": 15,
    "nota": "Verificados 4 datos: 5 a y 10 a de subasta correctos [P] en el MEF y 10 a secundario 4,509% [S]; FALLOS: dio el 2 a de subasta como no encontrado (estaba en Teleborsa, 3,55% el 27-oct) y mezcló el BTPei 30 a (2,10% real) con nominales. Sirve de mapa de fuentes, no de dato final. Informe: informes/gemini/2026-10-27-D01-bonos-italia.md"
+  },
+  {
+   "fecha": "2026-10-27",
+   "prompt": "D-bonos-ligera · D02 Alemania (Google Search, con exclusion de indexados)",
+   "fuentes_aprox": 15,
+   "nota": "3 de 5 datos confirmados (10 a secundario 3,36 %, 30 a subasta 3,80 %); el 2 a de subasta 27-oct 3,08 % marcado P no se pudo confirmar y coincide con el secundario; serie BBSIS-10Y dudosa; dice 'alta demanda' con cobertura 1,1 en el Schatz del 6-oct. La Bundesbank cortó la conexion desde este equipo. Informe: informes/gemini/2026-10-27-D02-bonos-alemania.md"
   }
  ],
  "parar_al_pct": 80,
@@ -79,7 +85,7 @@
   },
   "D-bonos-ligera": {
    "estado": "mejorar",
-   "nota": "Probado 27-oct con D01 Italia: fuentes y URLs reales, 2 cifras de subasta correctas, pero omite datos de su propia fuente y mezcla nominal con indexado. Pedir 'solo BTP nominales, excluye BTPei/BTP Italia' y repetir con D02."
+   "nota": "Probado 27-oct con D01 Italia: fuentes y URLs reales, 2 cifras de subasta correctas, pero omite datos de su propia fuente y mezcla nominal con indexado. Pedir 'solo BTP nominales, excluye BTPei/BTP Italia' y repetir con D02. D02 (27-oct): sin omisiones ni indexados tras la correccion, pero etiqueta P no fiable (cifra copiada del secundario); abrir siempre el PDF."
   }
  }
 }
