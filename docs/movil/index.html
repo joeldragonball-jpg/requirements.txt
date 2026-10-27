@@ -363,16 +363,19 @@ function vCentro(){
   <div class="pie">Plano editable en explorador/centro.json. Lo privado (tesis, patrimonio, suscripciones) va solo en privado/ y no se publica aquí.</div></div>`;
 }
 const VISTAS = {hoy: vHoy, centro: vCentro, mercado: vMercado, agenda: vAgenda, noticias: vNoticias, cerebro: vCerebro};
-function pintar(ancla){
+function pintar(ancla, quieto){
   const m = document.getElementById('main');
+  quieto = quieto || !!ancla;
   const antes = ancla && m.querySelector(ancla);
   const y = antes ? antes.getBoundingClientRect().top : null;
-  m.classList.toggle('quieto', !!ancla);
+  const alto = m.scrollTop;
+  m.classList.toggle('quieto', quieto);
   m.innerHTML = VISTAS[tab]();
   const despues = y !== null && m.querySelector(ancla);
   if (despues) m.scrollTop += despues.getBoundingClientRect().top - y;
+  else if (quieto) m.scrollTop = alto;
   document.querySelectorAll('#nav button').forEach(b => b.classList.toggle('on', b.dataset.t === tab));
-  contar(!!ancla);
+  contar(quieto);
 }
 document.addEventListener('click', e => {
   if (e.target.closest('a')) return;
@@ -398,7 +401,7 @@ document.getElementById('q').addEventListener('input', e => {
 });
 const RAW = 'https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/datos/noticias/noticias.json';
 const sinCartera = t => /cartera|tesis|tu XRP|tu XLM/i.test(t || '') ? '' : (t || '');
-const repintar = () => { if (!document.querySelector('.abierta') && !document.getElementById('busqueda').classList.contains('on')) pintar(); };
+const repintar = () => { if (!document.querySelector('.abierta') && !document.getElementById('busqueda').classList.contains('on')) pintar(null, true); };   // repintado de fondo: sin animar y sin mover el scroll
 function vivo(){   // al abrir: noticias recientes y precios cripto en euros, sin bloquear la pantalla
   fetch(RAW, {cache: 'no-cache'}).then(r => r.json()).then(j => {
     const l = (j.noticias || []).filter(x => +x.puntuacion >= 7).sort((a, b) => b.fecha.localeCompare(a.fecha)).slice(0, 25)
