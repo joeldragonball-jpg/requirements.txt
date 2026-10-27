@@ -1,67 +1,73 @@
 {
-  "norma": "1 consulta ligera al día (unas 15 fuentes), sin repetirla. Rutina G (C20): una rotación por día; si Gemini avisa de límite o llegas al 80 %, se para por hoy y se anota en «parada». La cuota se comparte con NotebookLM.",
-  "avisos": [
-    {
-      "fecha": "antes del 2026-10-27",
-      "nota": "Una consulta de ~47 fuentes lanzada 2-3 veces agotó el límite; la cuota ya estaba gastada en NotebookLM."
-    },
-    {
-      "fecha": "2026-10-27",
-      "nota": "Tras W03 Sudáfrica+Indonesia, Deep Research queda desactivado hasta las 04:00 (hora de Madrid) del 27-oct, con el uso general en ~4 %. Hizo 200+ búsquedas web aunque el prompt pedía máx. 15 fuentes: el tope del prompt no se respeta. Límite oficial de Deep Research sin confirmar; de momento, 1 Deep Research por ventana (reinicio 04:00)."
-    }
-  ],
-  "sesiones": [
-    {
-      "fecha": "2026-10-27",
-      "prompt": "W03-paises (Sudáfrica + Indonesia)",
-      "fuentes_aprox": 15,
-      "nota": "Verificados 5 datos con fuente primaria; manual cripto del SARB (límites ZAR 5.000/25.000) sin contrastar. Informe: informes/gemini/2026-10-27-W03-sudafrica-indonesia.md"
-    },
-    {
-      "fecha": "2026-10-27",
-      "prompt": "W03-paises (Irán + Egipto)",
-      "fuentes_aprox": 117,
-      "nota": "Segunda Deep Research seguida sin bloqueo (la primera aviso de 04:00 no se aplicó). Contrastado OFAC 2-jun-2026 y FAQ 1257 [P]; Ley 194/2020 sin leer (FATF 403). Informe: informes/gemini/2026-10-27-W03-iran-egipto.md"
-    }
-  ],
-  "parar_al_pct": 80,
-  "parada": {},
-  "prompts": {
-    "G01-xrp-xlm-24h": {
-      "estado": "sin probar",
-      "nota": ""
-    },
-    "G02-cripto-regulacion": {
-      "estado": "sin probar",
-      "nota": ""
-    },
-    "G03-macro-tipos": {
-      "estado": "sin probar",
-      "nota": ""
-    },
-    "G04-etf-flujos": {
-      "estado": "sin probar",
-      "nota": ""
-    },
-    "G05-bulos-semana": {
-      "estado": "sin probar",
-      "nota": ""
-    },
-    "G06-energia-geopolitica": {
-      "estado": "sin probar",
-      "nota": ""
-    },
-    "EV-noticias-evento": {
-      "estado": "sin probar",
-      "nota": ""
-    },
-    "EV-noticias-ligera": {
-      "estado": "sin probar",
-      "nota": ""
-    },
-    "EV-post-evento": {
-      "estado": "bueno",
-      "nota": "usado en W03 (27-oct)"
-    }
+ "norma": "1 consulta ligera al día (unas 15 fuentes), sin repetirla. Rutina G (C20): una rotación por día; si Gemini avisa de límite o llegas al 80 %, se para por hoy y se anota en «parada». La cuota se comparte con NotebookLM.",
+ "avisos": [
+  {
+   "fecha": "antes del 2026-10-27",
+   "nota": "Una consulta de ~47 fuentes lanzada 2-3 veces agotó el límite; la cuota ya estaba gastada en NotebookLM."
+  },
+  {
+   "fecha": "2026-10-27",
+   "nota": "Tras W03 Sudáfrica+Indonesia, Deep Research queda desactivado hasta las 04:00 (hora de Madrid) del 27-oct, con el uso general en ~4 %. Hizo 200+ búsquedas web aunque el prompt pedía máx. 15 fuentes: el tope del prompt no se respeta. Límite oficial de Deep Research sin confirmar; de momento, 1 Deep Research por ventana (reinicio 04:00)."
   }
+ ],
+ "sesiones": [
+  {
+   "fecha": "2026-10-27",
+   "prompt": "W03-paises (Sudáfrica + Indonesia)",
+   "fuentes_aprox": 15,
+   "nota": "Verificados 5 datos con fuente primaria; manual cripto del SARB (límites ZAR 5.000/25.000) sin contrastar. Informe: informes/gemini/2026-10-27-W03-sudafrica-indonesia.md"
+  },
+  {
+   "fecha": "2026-10-27",
+   "prompt": "W03-paises (Irán + Egipto)",
+   "fuentes_aprox": 117,
+   "nota": "Segunda Deep Research seguida sin bloqueo (la primera aviso de 04:00 no se aplicó). Contrastado OFAC 2-jun-2026 y FAQ 1257 [P]; Ley 194/2020 sin leer (FATF 403). Informe: informes/gemini/2026-10-27-W03-iran-egipto.md"
+  },
+  {
+   "fecha": "2026-10-27",
+   "prompt": "EV-noticias-ligera (tanda de tarde, prueba Gemini con busqueda de Google)",
+   "fuentes_aprox": 15,
+   "nota": "4 piezas verificadas y enviadas a noticias/manuales/ (tuberia C18). Se le escapo JQQQ en Stellar. Informe: informes/gemini/2026-10-27-EV-noticias-ligera-tanda-tarde.md"
+  }
+ ],
+ "parar_al_pct": 80,
+ "parada": {},
+ "prompts": {
+  "G01-xrp-xlm-24h": {
+   "estado": "sin probar",
+   "nota": ""
+  },
+  "G02-cripto-regulacion": {
+   "estado": "sin probar",
+   "nota": ""
+  },
+  "G03-macro-tipos": {
+   "estado": "sin probar",
+   "nota": ""
+  },
+  "G04-etf-flujos": {
+   "estado": "sin probar",
+   "nota": ""
+  },
+  "G05-bulos-semana": {
+   "estado": "sin probar",
+   "nota": ""
+  },
+  "G06-energia-geopolitica": {
+   "estado": "sin probar",
+   "nota": ""
+  },
+  "EV-noticias-evento": {
+   "estado": "sin probar",
+   "nota": ""
+  },
+  "EV-noticias-ligera": {
+   "estado": "probado",
+   "nota": "27-oct: funciona con la orden 'usa la busqueda de Google'; 4 piezas, 1 desfasada (Fed 16-sep), duraderos sin confirmar. Comparada con Claude en informes/research/2026-10-27-EV-noticias-ligera-claude.md"
+  },
+  "EV-post-evento": {
+   "estado": "bueno",
+   "nota": "usado en W03 (27-oct)"
+  }
+ }
 }
