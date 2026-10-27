@@ -13,7 +13,8 @@ Fuente de la lista: documento «01 Prompt maestro» de la carpeta de Drive «Gem
 | T07, T11, T18 | Corea; Brasil; energía | Hechos el 24-oct (`2026-10-24-T07-corea-del-sur.md`, `…T11-brasil.md`, `…T18-energia-actualizacion.md`) |
 | T23 | Ripple y Stellar por región | Hecho el 25-oct (`2026-10-25-T23-ripple-y-stellar-por-region.md`) |
 | T06, T08 | Japón y Singapur | Hechos el 25-oct (W03; `informes/research/2026-10-26-W03-japon-singapur.md`) |
-| T09, T10, T12-T16, T25 | resto | **Pendientes**; ver el orden de abajo |
+| T09, T10, T13, T14 | Hong Kong, India, Emiratos y China | Hechos el 27-oct (`informes/research/2026-10-27-T09-hong-kong.md`, `…T10-india.md`, `…T13-emiratos.md`, `…T14-china.md`); contrastados el RBI (5,50 %) y la HKMA (4,25 %); celdas nuevas casi todas [S] |
+| T12, T15, T16, T25 | Rusia, BRICS sin cubrir, organismos y tema libre | **Pendientes**; ver el orden de abajo |
 
 ## Orden propuesto (por caducidad y valor)
 1. **T17** Bancos centrales 27-30 oct (FOMC, BCE, BoJ): antes del 27-oct. Hoy ya hay curvas de bonos y tipos en los paneles; falta el research de decisiones, datos y calendario.

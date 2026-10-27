@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-27 02:36 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-27 02:49 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -25,10 +25,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - C18 · Research manual de noticias en días de evento: entrada al bot, Telegram y cerebr · Sonnet M · ~3 % · `research/prompts/C18-noticias-manuales.md`
 - C20 · Rutina G: Gemini gratis en días sin evento y Claude solo verifica; entra al Segu · Sonnet S · ~2 % · `research/prompts/C20-rutina-gemini.md`
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
-- T09 · Hong Kong · vence/ocurre 2026-10-29 (Hong Kong y Emiratos: la HKMA (4,25 %) y)
-- T13 · Emiratos Árabes · vence/ocurre 2026-10-29 (Hong Kong y Emiratos: la HKMA (4,25 %) y)
-- T14 · China · vence/ocurre 2026-11-20 (China: fijación mensual del LPR (hoy 3,0)
-- T10 · India · vence/ocurre 2026-12-02 (Reunión del RBI (India))
 - T12 · Rusia
 - T15 · BRICS sin cubrir
 - T16 · Organismos internacionales
@@ -46,9 +42,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 **Pasadas puntuales de rutinas (W)** · detalle en `research/COLA.md`
 - W01B · Tipos de interés: segunda pasada tras las decisiones de la Fed, el BCE
-- W03B · Países: Hong Kong (T09) e India (T10), segunda pasada de la rotación
-- W03C · Países: China (T14) y Rusia (T12)
-- W03D · Países: Emiratos (T13), BRICS (T15) y organismos (T16)
 - W05C · Verificación por lotes de [VERIFICAR]: macro, fiscalidad y renta fija 
 
 ## Auditorías abiertas
@@ -67,7 +60,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Qué se está quedando viejo (frescura)
-- 🟡 Radar regulatorio: Celdas sin dato (40) → W03 · Más huecos: EG 5, ET 5, IR 5, AE 4, ZA 4
+- 🟡 Radar regulatorio: Celdas sin dato (33) → W03 · Más huecos: EG 5, ET 5, IR 5, ZA 4, ID 4
 - 🟡 Voces: Voces sin confirmar (4) → W06 · 1 llevan más de 14 días
 
 ## Bots con problema
