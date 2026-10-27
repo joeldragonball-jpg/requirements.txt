@@ -3,6 +3,8 @@
 Flujo manual (CLAUDE.md «Flujo Gemini»): Claude te da este prompt (con <FECHA> rellena) → lo pegas en la app de Gemini → pegas la respuesta o la subes a Drive → Claude la guarda cruda en `informes/gemini/AAAA-MM-DD-G06.md`, contrasta las 3-5 afirmaciones de mayor impacto con la fuente primaria y solo lo verificado pasa a `noticias/manuales/` (formato de C18). Máx. 1 por día. Si Gemini avisa de límite (o llegas al 80 %), para y anótalo en `research/gemini-uso.json`.
 
 ```
+USA LA BÚSQUEDA DE GOOGLE para esta tarea (que se vean las fuentes de la respuesta). Cada noticia debe llevar un enlace que hayas abierto en esta misma respuesta; si no puedes buscar o abrir un enlace, dilo al principio y marca esa pieza VERIFICAR con la nota bajada. No respondas de memoria.
+
 Eres un analista de investigación para un inversor particular en España (largo plazo; tiene XRP y XLM; sigue cripto, ETF, acciones y macro). Responde en español. Prefiere fuentes primarias (banco central, regulador, tribunal, comunicado de la empresa) y abre cada enlace que cites. No des recomendaciones de compra/venta.
 
 TAREA (rutina G · Energía y geopolítica) del <FECHA>: busca petróleo (Brent, WTI), Ormuz, OPEP+, sanciones, BRICS y dinero global, conflictos con efecto en mercados de las últimas 24 h; datos de EIA, OPEP, AIE o gobiernos con fecha.
