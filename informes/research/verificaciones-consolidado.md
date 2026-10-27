@@ -1,0 +1,35 @@
+# Verificaciones consolidadas de [VERIFICAR] (se añade al final, nunca se borra)
+
+Los informes originales no se reescriben: aquí se cierra cada punto. Etiquetas: [P] primaria leída · [S] prensa o agregador · [VERIFICAR].
+
+## Lote W05 · 2026-10-27
+
+| ID | Afirmación | Origen | Resultado | Fuente y fecha |
+|---|---|---|---|---|
+| W05-01 | MEI 2026 = 0,90 puntos (0,75 empresa, 0,15 trabajador) | PLANNING / cerebro fiscalidad (hoy [S]) | **Confirmado [P]**. Calendario completo: 2025 0,80 · 2026 0,90 · 2027 1,00 · 2028 1,10 · 2029 1,20 (1,00 empresa y 0,20 trabajador, la tasa plena del art. 127 bis: 1,2 puntos). El 2026 sale literal de la disposición transitoria 43.ª. Nota: [S] atribuye a RDL 3/2026 la aplicación provisional sin Presupuestos; no leído en el BOE [VERIFICAR]. | BOE-A-2023-6967 (RDL 2/2023), leído 2026-10-27 |
+| W05-02 | Cloture CLARITY (H.R. 3633) 49-50 el 15-sep-2026 | PLANNING / revisión 25-oct | **Parcial [S]**: la prensa coincide (49-50, 4 republicanos en contra: Collins, Hawley, Moran, Tillis; moción de reconsiderar de Tillis). senate.gov devuelve «Unauthorized» al acceso automático, no se forzó. Sigue sin [P]. | The Defiant, Bitcoin.com News, 2026-09 [S] |
+| W05-03 | Texto literal de la sección 404 de CLARITY | cerebro (apuntes, revisión 7-oct) | **Sigue sin verificar**: congress.gov bloquea con control anti-bot (Cloudflare), no se saltó. Hace falta que Joel lo abra a mano o un navegador con sesión. | congress.gov/bill/119th-congress/house-bill/3633/text, intento 2026-10-27 |
+| W05-04 | Fecha de Palisade: 3-nov frente a ~4-nov-2025 | PLANNING | **Resuelto [S]**: anuncio el lunes 3-nov-2025 (Decrypt, Privsource); la nota de King & Spalding (asesor de Ripple) lleva fecha 30-oct-2025. El «4-nov» es la fecha de artículos secundarios (FXStreet). Unificar a «anunciada el 3-nov-2025». Cierre: sin fecha publicada. | decrypt.co/347216; privsource.com; kslaw.com [S] |
+| W05-05 | Precio de Palisade | PLANNING / revisión 18-oct | **Sin precio publicado** (Decrypt). No sumar a los 4.000 M$; los ~200 M$ son solo de Rail. Sigue sin [P] (ripple.com daba 404 en la URL probada). | decrypt.co, 2025-11-03 [S] |
+| W05-06 | Standard Custody: precio y cierre | PLANNING | **Precio no divulgado** [S]; cierre sin confirmar en estas fuentes. Anuncio 13-feb-2024 (BusinessWire). Solvexia: la búsqueda no devuelve nada, afirmación **sin verificar**. | businesswire.com 2024-02-13; benzinga [S] |
+| W05-07 | Integración de Chainlink CCIP en producción en SWIFT | PLANNING | **No confirmado [P]**: fuentes secundarias dicen que pasó de piloto a producción en nov-2025 (UBS AM como primer gestor), pero son agregadores de calidad mixta; falta nota de Swift o Chainlink. Se mantiene [VERIFICAR]. | analyticsinsight.net, sarsonfunds.com [S] |
+| W05-08 | Modelos 172/175/721 y DAC8 en el BOE | PLANNING | **Sigue sin verificar**: solo hay un proyecto de orden de la AEAT (marzo 2026) con modelos 042, 172, 175, 721 y 289; el 173 se derogaría desde el ejercicio 2026. No se halló orden publicada ni ley de transposición en el BOE. El régimen vigente sigue siendo HFP/886/2023 y HFP/887/2023. | sede.agenciatributaria.gob.es; cuatrecasas.com [S] |
+| W05-09 | Escala del ahorro (art. 66 LIRPF) vigente en 2026 | PLANNING | **Sin verificar**: el artículo no apareció en el tramo leído del BOE consolidado (BOE-A-2006-20764). Pendiente de lectura dirigida. | BOE, intento 2026-10-27 |
+
+**Conteo del lote:** 9 puntos tratados · 2 cerrados (W05-01 MEI, W05-04 Palisade) · 3 parciales con fuente [S] (W05-02, 05, 06) · 4 siguen abiertos (W05-03, 07, 08, 09). Quedan abiertos del PLANNING: 7 de 9 (el DGT V0648-24 y el «Treasury 5,34 %» no se tocaron).
+
+## Qué hace falta de Joel
+- Abrir a mano en el navegador normal: congress.gov (sección 404) y senate.gov (voto del 15-sep); ambos bloquean el acceso automático.
+
+## Lote W05B · 2026-10-27 (cripto y regulación, segunda pasada)
+
+| ID | Afirmación | Origen | Resultado | Fuente y fecha |
+|---|---|---|---|---|
+| W05B-01 | Solvexia: ¿la compró Ripple y a qué precio? | PLANNING / C09 | **Aclarado [S]**: la compró **GTreasury** (propiedad de Ripple desde oct-2025, 1.000 M$), anunciada el 6-ene-2026; es una empresa de Sídney de automatización de conciliación e informes regulatorios. Precio no divulgado. Cierre sin dato. | asianetnews, bitcoin.com, privsource, 2026-01-06 [S] |
+| W05B-02 | BC Payments Australia: anuncio, cierre y precio | PLANNING / C09 | **Anuncio confirmado**: 10-mar-2026 (para obtener licencia AFSL); precio no divulgado [P-parcial: The Block cita el comunicado]. **Cierre sin confirmar**: una nota dice «previsto 1-abr» (The Australian vía prensa), pero no hay aviso de cierre ni dato del registro de licencias de ASIC. | theblock.co/post/393127, 2026-03-10 [S]; ASIC por consultar [VERIFICAR] |
+| W05B-03 | DTCC: «lanzamiento previsto el 31-oct» (calendario y predicción #44) | PLANNING / eventos | **Corregido [P]**: la nota de DTCC del 4-may-2026 dice «plans to launch the service in October 2026», **sin día**. El «31-oct» no figura en la fuente primaria; es un tope puesto por nosotros. Julio 2026: transacciones reales limitadas (LFDT Besu, red privada de DTCC y Canton) [S]. Carta de no-acción de la SEC por 3 años [S]. | dtcc.com/press-releases/2026/dtcc-advances-development-of-new-tokenization-service, 2026-05-04 [P] |
+| W05B-04 | JPM Coin (JPMD) en Canton | ideas pendientes | **Planeado, no confirmado en producción [P]**: el 7-ene-2026 Digital Asset y Kinexys «unveiled plans to issue» JPMD de forma nativa en Canton, «in phases throughout 2026». Antes ya estaba en Base (nov-2025) [S]. No encontré aviso de que esté vivo. | canton.network/news, 2026-01-07 [P] |
+
+**Conteo W05B:** 4 puntos · 2 cerrados (Solvexia, DTCC sin día fijo) · 2 parciales (BC Payments cierre, JPMD en producción). Acumulado hoy (W05 + W05B): 13 tratados · 4 cerrados · 5 parciales · 4 abiertos.
+
+**Implicación para el calendario [P]:** la predicción #44 (DTCC, 31-oct) y el evento «DTCC: lanzamiento previsto 31-oct» deben leerse como «octubre de 2026, sin día». Si DTCC no anuncia nada el 31-oct, no es un fallo de la predicción sino de la fecha puesta; hay que releer la nota de DTCC de esos días antes de resolverla.

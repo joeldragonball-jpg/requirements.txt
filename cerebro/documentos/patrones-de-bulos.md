@@ -140,3 +140,5 @@ actualizado: 2026-10-07
 - 2026-10-26 (W02): una calificación «mantenida» que se cita como hecho sin comunicado (Moody's Francia, 23-oct) no vale: la tabla de la AFT no la recoge y las búsquedas devuelven la del 10-abr; esperar moodys.com o la AFT.
 - 2026-10-26 (R00 cierre): un cotizador incrustado en una nota (BTC $84.459) contradecía el texto de la misma nota (≈ $80.400): widget desfasado, usar el texto o la API; "acuerdo con Irán" se apoya en fuentes sin nombre.
 - 2026-10-27 (R00 apertura): titular ambiguo — CoinDesk (26-oct) decía que Goldman recorta un 25 % el objetivo del Kospi y al día siguiente el índice sube +4,6 %; no usar titulares sin cifra como explicación de un movimiento.
+- 2026-10-27 (W05): fecha de un anuncio que bailaba entre 3-nov y «~4-nov» (Palisade): el 4-nov era la fecha de artículos de segunda mano; usar la del comunicado o la del asesor legal (30-oct, King & Spalding) antes que la del titular.
+- 2026-10-27 (W05B): una fecha exacta de calendario (DTCC «31-oct») no estaba en la nota oficial, que solo dice «octubre de 2026»: antes de marcar una predicción como fallida, comprobar que el día lo dio la fuente y no un resumen.
