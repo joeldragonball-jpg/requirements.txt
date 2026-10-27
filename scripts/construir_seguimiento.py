@@ -386,7 +386,8 @@ def prompts_gemini(uso, hoy):
         if not m:
             continue
         est = (uso.get("prompts") or {}).get(pid, {})
-        out.append({"id": pid, "texto": m.group(1).replace("<FECHA>", hoy.isoformat()),
+        h = re.search(r"^#\s*\S+\s*·\s*(.*?)(?:\s+—.*)?$", txt, re.M)
+        out.append({"id": pid, "desc": h.group(1).strip() if h else "", "texto": m.group(1).replace("<FECHA>", hoy.isoformat()),
                     "estado": est.get("estado", "sin probar"), "nota": est.get("nota", "")})
     return out
 
