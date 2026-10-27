@@ -25,7 +25,7 @@
   },
   {
    "fecha": "2026-10-27",
-   "prompt": "EV-noticias-ligera (tanda de tarde, prueba Gemini con busqueda de Google)",
+   "prompt": "NOTICIAS-DIA · tarde (antes EV-noticias-ligera; prueba Gemini con busqueda de Google)",
    "fuentes_aprox": 15,
    "nota": "4 piezas verificadas y enviadas a noticias/manuales/ (tuberia C18). Se le escapo JQQQ en Stellar. Informe: informes/gemini/2026-10-27-EV-noticias-ligera-tanda-tarde.md"
   }
@@ -33,41 +33,37 @@
  "parar_al_pct": 80,
  "parada": {},
  "prompts": {
-  "G01-xrp-xlm-24h": {
+  "xrp-xlm": {
    "estado": "sin probar",
    "nota": ""
   },
-  "G02-cripto-regulacion": {
+  "macro-tipos": {
    "estado": "sin probar",
    "nota": ""
   },
-  "G03-macro-tipos": {
+  "cripto-regulacion": {
    "estado": "sin probar",
    "nota": ""
   },
-  "G04-etf-flujos": {
+  "etf-flujos": {
    "estado": "sin probar",
    "nota": ""
   },
-  "G05-bulos-semana": {
+  "bulos": {
    "estado": "sin probar",
    "nota": ""
   },
-  "G06-energia-geopolitica": {
+  "energia-geopolitica": {
    "estado": "sin probar",
    "nota": ""
   },
-  "EV-noticias-evento": {
-   "estado": "sin probar",
-   "nota": ""
-  },
-  "EV-noticias-ligera": {
+  "tarde": {
    "estado": "mejorar",
-   "nota": "Probado 27-oct: la tuberia funciona (con la orden 'usa la busqueda de Google'), pero 1 de 4 piezas era vieja (Fed del 16-sep), se dejo JQQQ (Stellar, nota 8) y los duraderos no se pudieron confirmar. Mejora: exigir que la fecha de cada pieza sea de hoy. Comparada con Claude: informes/research/2026-10-27-EV-noticias-ligera-claude.md"
+   "nota": "Probado 27-oct (con el prompt antiguo EV-noticias-ligera): la tuberia funciona con la orden 'usa la busqueda de Google', pero 1 de 4 piezas era vieja (Fed del 16-sep), se dejo JQQQ (Stellar, nota 8) y los duraderos no se confirmaron. El prompt unico ya exige fecha de publicacion en el periodo; volver a probar. Comparada con Claude: informes/research/2026-10-27-EV-noticias-ligera-claude.md"
   },
-  "EV-post-evento": {
+  "evento": {
    "estado": "sin probar",
-   "nota": "Corregido 27-oct: no se ha ejecutado nunca con un evento real (la nota anterior 'usado en W03' era de otro prompt). Primera prueba real: tras el FOMC del 28-oct."
+   "nota": ""
   }
  }
 }

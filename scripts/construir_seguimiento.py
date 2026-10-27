@@ -372,30 +372,30 @@ def frescura():
     return {"items": items, "resumen": {k: sum(1 for x in items if x["nivel"] == k) for k in ("alerta", "aviso", "ok")}}
 
 
-# Rutina G (C20): una rotación por día, sin repetir; prompts en research/gemini/. Domingo repite XRP/XLM y bulos van el viernes.
-GEMINI_DIAS = {0: ("G01-xrp-xlm-24h", "noticias XRP/XLM de las últimas 24 h"), 1: ("G03-macro-tipos", "macro y tipos"),
-               2: ("G02-cripto-regulacion", "cripto y regulación"), 3: ("G04-etf-flujos", "ETF y flujos"),
-               4: ("G05-bulos-semana", "bulos y desmentidos de la semana"), 5: ("G06-energia-geopolitica", "energía y geopolítica"),
-               6: ("G01-xrp-xlm-24h", "noticias XRP/XLM de las últimas 24 h")}
+# Rutina G (C20): un solo prompt (research/gemini/NOTICIAS-DIA.md) con el tema del día; la rotación elige el tema por día de la semana.
+GEMINI_DIAS = {0: "xrp-xlm", 1: "macro-tipos", 2: "cripto-regulacion", 3: "etf-flujos", 4: "bulos", 5: "energia-geopolitica", 6: "xrp-xlm"}
 
 
-PROMPTS_GEMINI = ["G01-xrp-xlm-24h", "G03-macro-tipos", "G02-cripto-regulacion", "G04-etf-flujos", "G05-bulos-semana",
-                  "G06-energia-geopolitica", "EV-noticias-evento", "EV-noticias-ligera", "EV-post-evento"]
-
-
-def prompts_gemini(uso, hoy):
-    """Texto de cada prompt de Gemini (primer bloque de código de research/gemini/*.md) para copiarlo desde el móvil,
-    con su estado de mejora (research/gemini-uso.json → «prompts»: {id: {estado: sin probar|bueno|mejorar, nota}})."""
+def temas_gemini(uso, hoy, ev):
+    """Temas del prompt único: lee la lista de research/gemini/NOTICIAS-DIA.md y deja el texto final de cada uno (fecha y evento rellenos)
+    con su estado de prueba (research/gemini-uso.json → «prompts»: {id_tema: {estado: sin probar|bueno|mejorar, nota}})."""
+    txt = leer(RAIZ / "research" / "gemini" / "NOTICIAS-DIA.md")
+    m = re.search(r"```\n(.*?)\n```", txt, re.S)
+    if not m:
+        return []
+    plantilla = m.group(1)
+    evento = ev["titulo"][:90] if ev else "<EVENTO: escribe fecha y título>"
     out = []
-    for pid in PROMPTS_GEMINI:
-        txt = leer(RAIZ / "research" / "gemini" / f"{pid}.md")
-        m = re.search(r"```\n(.*?)\n```", txt, re.S)
-        if not m:
+    for linea in txt.splitlines():
+        t = re.match(r"- `([\w-]+)` \| (.*?) \| (.*?) \| (\d+) \|\s*(.*)$", linea)
+        if not t:
             continue
-        est = (uso.get("prompts") or {}).get(pid, {})
-        h = re.search(r"^#\s*\S+\s*·\s*(.*?)(?:\s+—.*)?$", txt, re.M)
-        out.append({"id": pid, "desc": h.group(1).strip() if h else "", "texto": m.group(1).replace("<FECHA>", hoy.isoformat()),
-                    "estado": est.get("estado", "sin probar"), "nota": est.get("nota", "")})
+        tid, nombre, tarea, mx, extra = t.groups()
+        nombre, tarea = nombre.replace("<EVENTO>", evento), tarea.replace("<EVENTO>", evento)
+        texto = (plantilla.replace("<NOMBRE>", nombre).replace("<TAREA>", tarea).replace("<MAX>", mx)
+                 .replace("<EXTRA>", " " + extra.strip() if extra.strip() else ""))
+        est = (uso.get("prompts") or {}).get(tid, {})
+        out.append({"id": tid, "nombre": nombre, "texto": texto, "estado": est.get("estado", "sin probar"), "nota": est.get("nota", "")})
     return out
 
 
@@ -413,11 +413,13 @@ def gemini():
     except Exception:
         uso = {}
     ev = next((e for e in eventos_futuros() if e["impacto"] == "alto" and e["dias"] <= 1 and not e["aprox"]), None)
-    prompt, tema = (("EV-post-evento", f"evento: {ev['titulo'][:70]}") if ev else GEMINI_DIAS[hoy.weekday()])
+    tid = "evento" if ev else GEMINI_DIAS[hoy.weekday()]
+    temas = temas_gemini(uso, hoy, ev)
+    nombre = next((t["nombre"] for t in temas if t["id"] == tid), tid)
     sesiones = uso.get("sesiones", [])
-    return {"hoy": {"prompt": prompt, "tema": tema, "archivo": f"research/gemini/{prompt}.md", "evento": bool(ev)},
-            "prompts": prompts_gemini(uso, hoy), "manuales": manuales_estado(),
-            "hecho": any(x.get("fecha") == hoy.isoformat() and str(x.get("prompt", "")).startswith(prompt) for x in sesiones),
+    return {"hoy": {"prompt": "NOTICIAS-DIA", "tema_id": tid, "tema": nombre, "archivo": "research/gemini/NOTICIAS-DIA.md", "evento": bool(ev)},
+            "temas": temas, "manuales": manuales_estado(),
+            "hecho": any(x.get("fecha") == hoy.isoformat() and tid in str(x.get("prompt", "")) for x in sesiones),
             "parada": (uso.get("parada") or {}).get("nota", "") if (uso.get("parada") or {}).get("fecha") == hoy.isoformat() else "",
             "norma": uso.get("norma", ""),
             "avisos": uso.get("avisos", [])[-3:], "sesiones": sesiones[-5:]}
