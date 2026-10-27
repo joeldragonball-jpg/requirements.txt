@@ -462,7 +462,9 @@ function frame(now){
   animarVista(dt);
   requestAnimationFrame(frame);
 }
-const VISTA0 = {x: -492, y: -340, w: 984, h: 680};
+// Vista inicial: abarca todas las órbitas (con 12 capas la exterior sale de los ±340 de antes y se cortaba en pantalla completa); margen abajo para las etiquetas y la barra de navegación.
+const R0 = Math.max(...capas.map(c => c.rx)) + 30, HY = R0 * RY;
+const VISTA0 = {x: -R0, y: -(HY + 22), w: 2 * R0, h: 2 * HY + 110};
 let vista = {...VISTA0}, destino = {...VISTA0};
 function animarVista(dt){
   const k = 1 - Math.pow(0.0008, dt);

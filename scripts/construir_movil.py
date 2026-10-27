@@ -66,6 +66,16 @@ def resumen_md(ruta, maximo=380):
     return texto[:maximo].rsplit(" ", 1)[0] + "…" if len(texto) > maximo else texto
 
 
+def valoracion():
+    """Cuadro de valoración sectorial (explorador/valoracion.json, lo escribe scripts/valoracion_sectorial.py)."""
+    try:
+        v = json.loads((RAIZ / "explorador" / "valoracion.json").read_text(encoding="utf-8"))
+        cols = ("sector", "ticker", "precio", "cap_mm", "per", "ev_ebitda", "fcf_yield_pct", "periodo", "notas")
+        return {"generado": v.get("generado", ""), "aviso": v.get("aviso", ""), "filas": [{k: x.get(k) for k in cols} for x in v.get("filas", [])]}
+    except Exception:
+        return {}
+
+
 def lista_md(carpeta, n):
     rutas = sorted((r for r in (RAIZ / carpeta).glob("*.md") if re.match(r"\d{4}-\d{2}-\d{2}", r.name)), reverse=True)[:n]
     try:    # informes/research/tipos.json: lo que NO es análisis de mercado (auditorías, calendarios, glosarios…) sale con la etiqueta «Informe»
@@ -254,6 +264,7 @@ def main():
         "tipos": p.get("tipos_vivos", {}).get("paises", []), "tipos_bis": p.get("tipos_bis", {}).get("paises", []),
         "watchlist": p.get("watchlist", {}).get("valores", []),
         "defensa": p.get("defensa", {}).get("paises", []), "liquidez": p.get("liquidez", {}), "ormuz": p.get("ormuz", {}),
+        "valoracion": valoracion(),
         "bonos": [{"id": k, "valor": bonos[k]["plazos"].get("10A"), "fecha": bonos[k]["fecha"]} for k in ("USA", "JPN", "EUR", "ESP", "FRA", "GBR") if k in bonos],
         "eventos": eventos(), "voces": voces(), "niveles": cargar("explorador/voces.json").get("niveles", {}),
         "informes": lista_md("informes", 6), "investigacion": lista_md("informes/research", 8), "videos": lista_md("informes/videos", 6), "centro": centro(),

@@ -30,6 +30,12 @@ jobs:
         continue-on-error: true
         run: python scripts/actualizar_paneles.py
 
+      # Cuadro de valoración sectorial (C26): precio de Yahoo + SEC companyfacts, 18 valores. Sin IA ni claves; si falla conserva el anterior.
+      - name: Actualizar la valoración sectorial
+        id: valoracion
+        continue-on-error: true
+        run: python scripts/valoracion_sectorial.py
+
       # Versión móvil (docs/movil): resume los datos públicos y el petróleo en docs/movil/data.json. Sin IA y sin claves.
       - name: Traer la rama de noticias (solo lectura)
         run: git fetch origin datos:refs/remotes/origin/datos --depth=1
@@ -61,13 +67,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add explorador/paneles.json docs/movil/data.json docs/movil/seguimiento.json research/PLANNING.md
+          git add explorador/paneles.json explorador/valoracion.json docs/movil/data.json docs/movil/seguimiento.json research/PLANNING.md
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -m "Paneles de datos: actualización automática (sin IA)"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"
 
       - name: Avisar si alguna fuente falló
-        if: steps.datos.outcome == 'failure' || steps.movil.outcome == 'failure' || steps.seguimiento.outcome == 'failure'
+        if: steps.datos.outcome == 'failure' || steps.movil.outcome == 'failure' || steps.valoracion.outcome == 'failure' || steps.seguimiento.outcome == 'failure'
         run: |
           echo "::warning::Alguna fuente falló; se conservó el dato anterior de esa parte. Revisa el registro del paso «Descargar los datos»."
