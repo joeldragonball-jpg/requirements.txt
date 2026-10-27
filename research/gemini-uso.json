@@ -28,6 +28,12 @@
    "prompt": "NOTICIAS-DIA · tarde (antes EV-noticias-ligera; prueba Gemini con busqueda de Google)",
    "fuentes_aprox": 15,
    "nota": "4 piezas verificadas y enviadas a noticias/manuales/ (tuberia C18). Se le escapo JQQQ en Stellar. Informe: informes/gemini/2026-10-27-EV-noticias-ligera-tanda-tarde.md"
+  },
+  {
+   "fecha": "2026-10-27",
+   "prompt": "NOTICIAS-DIA · evento (FOMC, un día antes de la decisión)",
+   "fuentes_aprox": 15,
+   "nota": "3 piezas; verificados 5 datos (calendario y rango en federalreserve.gov). Solo 1 pasa a noticias/manuales. Omitió que en septiembre la Fed subió 25 pb. Mejor lanzar el tema Evento tras la decisión. Informe: informes/gemini/2026-10-27-NOTICIAS-DIA-evento-fomc.md"
   }
  ],
  "parar_al_pct": 80,
@@ -62,8 +68,8 @@
    "nota": "Probado 27-oct (con el prompt antiguo EV-noticias-ligera): la tuberia funciona con la orden 'usa la busqueda de Google', pero 1 de 4 piezas era vieja (Fed del 16-sep), se dejo JQQQ (Stellar, nota 8) y los duraderos no se confirmaron. El prompt unico ya exige fecha de publicacion en el periodo; volver a probar. Comparada con Claude: informes/research/2026-10-27-EV-noticias-ligera-claude.md"
   },
   "evento": {
-   "estado": "sin probar",
-   "nota": ""
+   "estado": "mejorar",
+   "nota": "Probado 27-oct (día previo a la decisión): solo previa; omitió el alza de septiembre. Repetir tras las 19:00 Madrid del 28-oct."
   }
  }
 }
