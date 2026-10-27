@@ -24,3 +24,9 @@ Ya estaban en el calendario (EE. UU. 5 y 7 años 27 y 29-oct; Japón 2 años 29-
 
 ## Cambios en archivos
 `explorador/calificaciones.json` (nota/fecha de Francia), `eventos/calendario.toml` (Moody's Francia y resultado 2 años EE. UU.), `research/auditorias-estado.json` (C7 cerrado).
+
+## Caso alcista / bajista (añadido 27-oct-2026, C27; sin predicción, solo con datos de este informe)
+Tema: deuda de Francia.
+- **Alcista:** la demanda en las subastas del 1 y el 15-oct fue sólida (cobertura 2,0-3,0 en largo plazo y 2,2-2,3 en medio); la curva sube de forma ordenada con el plazo (4,01 % a ~4 años, 5,40 % a ~22).
+- **Bajista:** el TEC 10 reciente (5,13-5,14 %) está por encima del 4,93 % de la subasta del 1-oct, lo que apunta a subida del 10 años en octubre; el resultado de Moody's del 23-oct sigue sin confirmar [VERIFICAR].
+- **Sesgo:** las subastas dan puntos de fechas distintas, no una curva del mismo día.

@@ -68,7 +68,12 @@ def resumen_md(ruta, maximo=380):
 
 def lista_md(carpeta, n):
     rutas = sorted((r for r in (RAIZ / carpeta).glob("*.md") if re.match(r"\d{4}-\d{2}-\d{2}", r.name)), reverse=True)[:n]
-    return [{"titulo": titulo_md(r), "fecha": r.stem[:10], "ruta": r.relative_to(RAIZ).as_posix(), "resumen": resumen_md(r)} for r in rutas]
+    try:    # informes/research/tipos.json: lo que NO es análisis de mercado (auditorías, calendarios, glosarios…) sale con la etiqueta «Informe»
+        no_analisis = set(json.loads((RAIZ / carpeta / "tipos.json").read_text(encoding="utf-8")).get("informe", []))
+    except Exception:
+        no_analisis = set()
+    return [{"titulo": titulo_md(r), "fecha": r.stem[:10], "ruta": r.relative_to(RAIZ).as_posix(), "resumen": resumen_md(r),
+             "tipo": "informe" if r.name in no_analisis else "analisis"} for r in rutas]
 
 
 def cubre(titulo):
