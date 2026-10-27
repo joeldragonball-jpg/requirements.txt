@@ -125,6 +125,9 @@ def observaciones():
 
 
 def main():
+    # La consola de Windows (cp1252) no imprime los emojis del veredicto
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     ap = argparse.ArgumentParser()
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args()

@@ -248,8 +248,27 @@ function notaHTML(n, i){
 }
 function vNoticias(){
   const temas = [...new Set(D.noticias.map(n => n.tema))].slice(0, 4), lista = D.noticias.filter(n => filtroNo === 'todas' || (filtroNo === 'top' ? n.nota >= 9 : n.tema === filtroNo));
-  return `<div class="vista"><div class="chips"><div class="chip ${filtroNo === 'todas' ? 'on' : ''}" data-fn="todas">Todas</div><div class="chip ${filtroNo === 'top' ? 'on' : ''}" data-fn="top">Urgentes (9+)</div>${temas.map(t => `<div class="chip ${filtroNo === t ? 'on' : ''}" data-fn="${esc(t)}">${esc(t)}</div>`).join('')}</div>${lista.map((n, i) => notaHTML(n, i)).join('')}<div class="pie">Toca una noticia para ver el resumen · nota 1-10 del bot</div></div>`;
+  return `<div class="vista"><div class="chips"><div class="chip ${filtroNo === 'todas' ? 'on' : ''}" data-fn="todas">Todas</div><div class="chip ${filtroNo === 'top' ? 'on' : ''}" data-fn="top">Urgentes (9+)</div>${temas.map(t => `<div class="chip ${filtroNo === t ? 'on' : ''}" data-fn="${esc(t)}">${esc(t)}</div>`).join('')}</div>${lista.map((n, i) => notaHTML(n, i)).join('')}<div class="pie">Toca una noticia para ver el resumen · nota 1-10 del bot</div>${gastoHTML()}</div>`;
 }
+function gastoHTML(){   // panel «Gasto del bot»: cifras de noticias.json (rama datos), calculadas por scripts/construir_movil.py
+  const G = D.gasto; if (!G) return '';
+  const usd = x => '$' + fm(x, 2), maxD = Math.max(...G.dias.map(d => d.usd), 0.01), maxO = Math.max(...Object.values(G.origen), 0.01);
+  const pct = G.mes.tope ? Math.min(100, G.mes.usd / G.mes.tope * 100) : 0, T = G.topes, sin = v => v ? usdSi(v) : 'sin tope';
+  const barras = (e, mx) => Object.entries(e).map(([k, v]) => `<div style="display:flex;align-items:center;gap:8px;font-size:13px;margin:5px 0"><span style="width:112px;flex:none">${esc(k)}</span><span style="flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,.07)"><i style="display:block;height:8px;border-radius:4px;width:${v / mx * 100}%;background:var(--sube)"></i></span><b style="width:54px;text-align:right">${usd(v)}</b></div>`).join('');
+  const emb = G.embudo.length ? G.embudo.map(e => `${esc(e.fecha.slice(5))}: ${e.entran} entran · ${e.triaje} tras triaje · ${e.enviadas} enviadas`).join('<br>') : 'Aún sin registro del embudo (entran / pasan el triaje); empieza a guardarse con la próxima ejecución del bot.';
+  const env = G.enviadas.map(e => `${esc(e.fecha.slice(5))}: ${e.n}`).join(' · ');
+  return cab('Gasto del bot de noticias') + `<div class="card" style="--i:2;padding:14px">
+   <div style="display:flex;justify-content:space-between;align-items:baseline"><span>Mes ${esc(G.mes.clave)}</span><b>${usd(G.mes.usd)} de ${G.mes.tope ? usd(G.mes.tope) : 'sin tope'}</b></div>
+   <div style="height:8px;border-radius:4px;background:rgba(255,255,255,.07);margin:8px 0 12px"><i style="display:block;height:8px;border-radius:4px;width:${pct}%;background:${pct >= 80 ? 'var(--baja)' : 'var(--sube)'}"></i></div>
+   <div class="meta2" style="margin:0 0 4px">Por día (últimos ${G.dias.length})</div>${barras(Object.fromEntries(G.dias.map(d => [d.fecha.slice(5), d.usd])), maxD)}
+   <div class="meta2" style="margin:10px 0 4px">Por origen (14 días)</div>${barras(G.origen, maxO)}
+   <div class="meta2" style="margin:10px 0 4px">Por modelo (14 días)</div>${barras(G.modelo, maxO)}
+   <div class="meta2" style="margin:10px 0 4px">Cuántas noticias filtra el bot</div><div style="font-size:13px;line-height:1.5">${emb}<br><span class="meta2">Enviadas por día: ${env}</span></div>
+   <div class="meta2" style="margin:10px 0 4px">Topes (se cambian en noticias/config.toml)</div>
+   <div style="font-size:13px;line-height:1.55">Mensual: ${sin(T.tope_mensual_usd)} · Diario: ${sin(T.tope_diario_usd)}<br>Llamadas Sonnet al día: ${T.max_llamadas_sonnet_dia || 'sin tope'} · Tandas de alerta urgente al día: ${T.max_alertas_urgentes_dia || 'sin tope'}<br>Avisos urgentes enviados por 24 h: ${T.max_urgentes_dia} · Noticias al día: ${T.max_noticias_dia} · Máx. tras triaje: ${T.max_tras_triaje} · Nota mínima: ${T.nota_minima}</div>
+   <div class="meta2" style="margin-top:10px">${esc(G.nota)}</div></div>`;
+}
+const usdSi = v => '$' + fm(v, 2);
 let NIV = {};
 const COL = {P: '#4fe3a1', D: '#6ea8ff', S: '#ffb15c', C: '#ff9ad5', R: '#c4a6ff', E: '#9aa7c2'};
 const vozHTML = (v, i) => `<div class="voz card" style="--i:${i};padding:14px;margin-bottom:12px" data-abre><div class="avatar" style="background:${COL[v.nivel] || '#9aa7c2'}">${esc(v.quien.trim()[0])}</div><div style="flex:1"><h4>${esc(v.quien)}</h4><div class="meta" style="font-size:12px;color:var(--sub)"><span class="etq">Nivel ${esc(v.nivel)}</span><span class="etq">${esc(v.conf)}</span>${esc(v.cuando)}</div><p>${esc(v.texto)}</p><div class="mas">${NIV[v.nivel] ? `<div class="meta2"><b>Nivel ${esc(v.nivel)}:</b> ${esc(NIV[v.nivel][0])}. ${esc(NIV[v.nivel][2])}</div>` : ''}${v.plazo ? `<div class="meta2"><b>Plazo prometido:</b> ${esc(v.plazo.prometido)} · ${esc(v.plazo.estado)}${v.plazo.resultado ? ' · ' + esc(v.plazo.resultado) : ''}</div>` : ''}${v.video ? `<div class="meta2"><b>Visto en:</b> ${esc(v.video.canal)}, ${esc(v.video.fecha)}${v.video.min ? ' (min ' + esc(v.video.min) + ')' : ''}</div>` : ''}${v.nota ? `<div class="meta2">${esc(v.nota).slice(0, 320)}</div>` : ''}${v.fuente && v.fuente.url ? `<a class="enlace" target="_blank" rel="noopener" href="${esc(v.fuente.url)}">Fuente: ${esc((v.fuente.n || 'abrir').slice(0, 40))} ›</a>` : ''}</div></div></div>`;

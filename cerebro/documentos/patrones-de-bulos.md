@@ -139,3 +139,4 @@ actualizado: 2026-10-07
 - 2026-10-26 (R00 apertura): «Corea aplaza el impuesto cripto a 2029» es una propuesta de un diputado más fuentes anónimas (Newsis), no una ley; sería el cuarto aplazamiento y requiere votación (≈ dic).
 - 2026-10-26 (W02): una calificación «mantenida» que se cita como hecho sin comunicado (Moody's Francia, 23-oct) no vale: la tabla de la AFT no la recoge y las búsquedas devuelven la del 10-abr; esperar moodys.com o la AFT.
 - 2026-10-26 (R00 cierre): un cotizador incrustado en una nota (BTC $84.459) contradecía el texto de la misma nota (≈ $80.400): widget desfasado, usar el texto o la API; "acuerdo con Irán" se apoya en fuentes sin nombre.
+- 2026-10-27 (R00 apertura): titular ambiguo — CoinDesk (26-oct) decía que Goldman recorta un 25 % el objetivo del Kospi y al día siguiente el índice sube +4,6 %; no usar titulares sin cifra como explicación de un movimiento.

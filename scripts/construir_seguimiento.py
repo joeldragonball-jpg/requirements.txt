@@ -137,6 +137,13 @@ def r00():
         m = re.match(r"(\d{4}-\d{2}-\d{2})-(apertura|cierre)", f.name)
         if m:
             fechas[m.group(2)].add(m.group(1))
+            # Recuperación retroactiva: «cubre: AAAA-MM-DD-apertura, AAAA-MM-DD-cierre» en la cabecera
+            try:
+                cabecera = "\n".join(f.read_text(encoding="utf-8").splitlines()[:15])
+            except Exception:
+                continue
+            for fe, tipo in re.findall(r"(\d{4}-\d{2}-\d{2})-(apertura|cierre)", "\n".join(l for l in cabecera.splitlines() if l.lower().startswith("cubre:"))):
+                fechas[tipo].add(fe)
     hoy = date.today()
     todos = fechas["apertura"] | fechas["cierre"]
     racha, d = 0, hoy if hoy.isoformat() in todos else hoy - timedelta(days=1)

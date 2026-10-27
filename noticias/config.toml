@@ -64,6 +64,14 @@ max_tras_triaje = 25
 # --- y las selecciones/resúmenes pasan a modelo_ahorro hasta fin de mes. No cuenta verificar.py ni el chat. 0 = sin tope.
 tope_mensual_usd = 12.0     # ≈ 10,7 €; el gasto normal ronda 4-6 $ al mes
 modelo_ahorro = "claude-haiku-4-5"
+# --- Topes por día (hora de España). Todos 0 = sin tope (comportamiento de siempre). Se miran antes de cada llamada.
+# tope_diario_usd: si el bot ya ha gastado hoy esa cifra, las selecciones y resúmenes usan modelo_ahorro hasta medianoche.
+tope_diario_usd = 0
+# max_llamadas_sonnet_dia: máximo de llamadas del día a un modelo que no sea Haiku (Sonnet normal: 4 franjas, ~4-5 al día); superado, pasa a modelo_ahorro.
+max_llamadas_sonnet_dia = 0
+# max_alertas_urgentes_dia: máximo de tandas que se pagan al día en la alerta urgente (Haiku). Superado, no se llama a la IA hasta mañana.
+# (No confundir con max_urgentes_dia, que limita los avisos ENVIADOS por cada 24 h.)
+max_alertas_urgentes_dia = 0
 max_lineas_dudas = 12       # de tus apuntes, solo los N puntos de "Dudas y datos a verificar" más relacionados con los titulares de hoy (ahorra tokens)
 umbral_duplicado = 0.55     # 0-1: cuánto se parecen dos títulos para considerarlos la misma noticia (sin IA)
 dias_repeticion = 4        # no enviar otra noticia casi igual a una enviada en los últimos N días (sin IA; también se lo dice al modelo)

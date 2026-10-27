@@ -4,6 +4,7 @@ y el cambio USD/EUR del BCE. Si una fuente falla se conserva el valor anterior d
 
 Uso:  python scripts/construir_movil.py
 En GitHub Actions lo ejecuta el workflow «Actualizar paneles de datos» tras scripts/actualizar_paneles.py."""
+import ast
 import csv
 import io
 import json
@@ -12,8 +13,9 @@ import subprocess
 import sys
 import tomllib
 import urllib.request
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone, tzinfo
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 RAIZ = Path(__file__).resolve().parent.parent
 SALIDA = RAIZ / "docs" / "movil" / "data.json"
@@ -113,6 +115,79 @@ def noticias(n=20):
              "fuente": x["fuente"], "fecha": x["fecha"][:16], "url": x["url"]} for x in lista[:n]]
 
 
+def zona_madrid():
+    """Europe/Madrid; en Windows sin el paquete tzdata, aproxima con la regla europea (UTC+1, UTC+2 del último domingo de marzo al de octubre)."""
+    try:
+        return ZoneInfo("Europe/Madrid")
+    except Exception:
+        class Madrid(tzinfo):
+            def _ultimo_domingo(self, a, m):
+                d = date(a, m, 31)
+                return d.replace(day=31 - (d.weekday() + 1) % 7)
+
+            def utcoffset(self, dt):
+                a = dt.year
+                ini = datetime.combine(self._ultimo_domingo(a, 3), datetime.min.time()) + timedelta(hours=2)
+                fin = datetime.combine(self._ultimo_domingo(a, 10), datetime.min.time()) + timedelta(hours=3)
+                return timedelta(hours=2 if ini <= dt.replace(tzinfo=None) < fin else 1)
+
+            def dst(self, dt):
+                return self.utcoffset(dt) - timedelta(hours=1)
+
+            def fromutc(self, dt):
+                u = dt.replace(tzinfo=None)
+                return (u + timedelta(hours=1)).replace(tzinfo=self) if self.utcoffset(u + timedelta(hours=1)) == timedelta(hours=1)                     else (u + timedelta(hours=2)).replace(tzinfo=self)
+        return Madrid()
+
+
+def gasto_bot(dias=14):
+    """Panel «Gasto del bot»: lee el registro `uso` (y `embudo`) de noticias.json en la rama datos. Solo cifras, sin secretos.
+    Precios y topes salen de noticias/noticias.py y noticias/config.toml, para que cuadren con el propio bot."""
+    t = subprocess.run(["git", "show", "origin/datos:noticias/noticias.json"], capture_output=True, text=True, encoding="utf-8", cwd=RAIZ).stdout
+    db = json.loads(t)
+    fuente = (RAIZ / "noticias" / "noticias.py").read_text(encoding="utf-8")
+    precios = ast.literal_eval(re.search(r"PRECIOS_USD = (\{.*?\})", fuente, re.S).group(1))
+    cfg = tomllib.loads((RAIZ / "noticias" / "config.toml").read_text(encoding="utf-8"))
+    madrid = zona_madrid()
+
+    def coste(u):
+        p = next((v for k, v in precios.items() if str(u.get("modelo", "")).startswith(k)), precios["claude-sonnet-5-5"])
+        return (u.get("entrada", 0) * p[0] + u.get("salida", 0) * p[1] + u.get("cache_lectura", 0) * p[2] + u.get("cache_escritura", 0) * p[3]) / 1e6
+
+    modelo_corto = lambda m: "Haiku" if "haiku" in m else "Sonnet" if "sonnet" in m else "Opus" if "opus" in m else m
+    por_dia, por_mes, por_origen, por_modelo = {}, {}, {}, {}
+    hoy = datetime.now(madrid).date()
+    for u in db.get("uso", []):
+        f = datetime.fromisoformat(u["fecha"]).astimezone(madrid)
+        c = coste(u)
+        d = por_dia.setdefault(f.strftime("%Y-%m-%d"), {"total": 0.0, "llamadas": 0})
+        d["total"] += c
+        d["llamadas"] += 1
+        por_mes[f.strftime("%Y-%m")] = por_mes.get(f.strftime("%Y-%m"), 0) + c
+        if (hoy - f.date()).days < dias:
+            por_origen[u.get("origen", "?")] = por_origen.get(u.get("origen", "?"), 0) + c
+            por_modelo[modelo_corto(u.get("modelo", ""))] = por_modelo.get(modelo_corto(u.get("modelo", "")), 0) + c
+    ultimos = sorted(por_dia)[-dias:]
+    mes = hoy.strftime("%Y-%m")
+    embudo = db.get("embudo", {})
+    enviadas_dia = {}
+    for n in db.get("noticias", []):
+        k = datetime.fromisoformat(n["fecha_envio"]).astimezone(madrid).strftime("%Y-%m-%d")
+        enviadas_dia[k] = enviadas_dia.get(k, 0) + 1
+    r = lambda x: round(x, 3)
+    return {
+        "dias": [{"fecha": k, "usd": r(por_dia[k]["total"]), "llamadas": por_dia[k]["llamadas"]} for k in ultimos],
+        "origen": {k: r(v) for k, v in sorted(por_origen.items(), key=lambda kv: -kv[1])},
+        "modelo": {k: r(v) for k, v in sorted(por_modelo.items(), key=lambda kv: -kv[1])},
+        "mes": {"clave": mes, "usd": r(por_mes.get(mes, 0)), "tope": cfg.get("tope_mensual_usd", 0)},
+        "topes": {k: cfg.get(k, 0) for k in ("tope_mensual_usd", "tope_diario_usd", "max_llamadas_sonnet_dia", "max_alertas_urgentes_dia",
+                                              "max_urgentes_dia", "max_noticias_dia", "max_tras_triaje", "nota_minima", "modelo_ahorro")},
+        "embudo": [{"fecha": k, **embudo[k]} for k in sorted(embudo)[-7:]],
+        "enviadas": [{"fecha": k, "n": enviadas_dia[k]} for k in sorted(enviadas_dia)[-7:]],
+        "nota": "Solo cuenta las llamadas de este bot (noticias.json, rama datos). No incluye cerebro, revisión ni verificación mensual: la consola de Anthropic da más.",
+    }
+
+
 def voces(n=20):
     v = cargar("explorador/voces.json")
     lista = v["voces"] if isinstance(v, dict) else v
@@ -172,7 +247,7 @@ def main():
         "informes": lista_md("informes", 6), "investigacion": lista_md("informes/research", 8), "videos": lista_md("informes/videos", 6), "centro": centro(),
     }
     fallos = []
-    for clave, funcion in (("eur", cambio_euro), ("petroleo", petroleo), ("noticias", noticias)):
+    for clave, funcion in (("eur", cambio_euro), ("petroleo", petroleo), ("noticias", noticias), ("gasto", gasto_bot)):
         try:
             valor = funcion()
             if valor is None:

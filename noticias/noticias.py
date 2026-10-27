@@ -56,6 +56,7 @@ RESUMEN_VIGENTE = CARPETA_CEREBRO / "documentos" / "resumen-vigente-xrp.md"
 MAX_CHARS_CEREBRO = 14000                   # ~3.500 tokens: lo esencial de tus apuntes, sin disparar el coste
 USO = []                                    # tokens gastados en esta ejecución (se guardan en el historial)
 AHORRO = [False]                            # True si este mes se ha superado el tope de gasto (ver vigilar_gasto)
+PREVIO = []                                 # llamadas ya guardadas en el historial (main las carga; sirven para los topes del día)
 EUR_POR_USD = 0.89                          # solo para mostrar euros aproximados en los avisos
 # Tarifa oficial en $ por millón de tokens: entrada, salida, lectura de caché, escritura de caché (5 min).
 # Mantener igual que PRECIOS de cerebro.py (que es lo que enseña la pestaña Consumo IA de la app).
@@ -294,10 +295,34 @@ def registrar_uso(resp, origen):
                 "cache_escritura": getattr(u, "cache_creation_input_tokens", 0) or 0})
 
 
+def usos_hoy():
+    """Llamadas a la IA de HOY (hora de España): las del historial más las de esta ejecución."""
+    hoy = f"{datetime.now(MADRID):%Y-%m-%d}"
+    return [u for u in PREVIO + USO
+            if datetime.fromisoformat(u["fecha"]).astimezone(MADRID).strftime("%Y-%m-%d") == hoy]
+
+
+def tope_diario_superado():
+    """tope_diario_usd: si el bot ya ha gastado hoy más de esa cifra, las llamadas grandes usan modelo_ahorro. 0 = sin tope."""
+    tope = CONFIG.get("tope_diario_usd", 0)
+    return bool(tope) and sum(coste_usd(u) for u in usos_hoy()) >= tope
+
+
+def sonnet_dia_superado():
+    """max_llamadas_sonnet_dia: llamadas de hoy a un modelo que no es Haiku; superado el máximo, pasa a modelo_ahorro. 0 = sin tope."""
+    maximo = CONFIG.get("max_llamadas_sonnet_dia", 0)
+    return bool(maximo) and sum(1 for u in usos_hoy() if not str(u.get("modelo", "")).startswith("claude-haiku")) >= maximo
+
+
+def alertas_pagadas_hoy():
+    return sum(1 for u in usos_hoy() if u.get("origen") == "alerta urgente")
+
+
 def llamar_claude(system, prompt, esquema=None, max_tokens=16000, origen="noticias", modelo=None):
     client = anthropic.Anthropic()
-    if not modelo:   # con el tope de gasto superado, las llamadas "grandes" pasan al modelo de ahorro
-        modelo = (CONFIG.get("modelo_ahorro") if AHORRO[0] else "") or CONFIG.get("modelo", "claude-opus-5-5")
+    if not modelo:   # con el tope de gasto (mensual o diario) superado, las llamadas "grandes" pasan al modelo de ahorro
+        ahorro = AHORRO[0] or tope_diario_superado() or sonnet_dia_superado()
+        modelo = (CONFIG.get("modelo_ahorro") if ahorro else "") or CONFIG.get("modelo", "claude-opus-5-5")
     params = {"model": modelo, "max_tokens": max_tokens, "system": system,
               "messages": [{"role": "user", "content": prompt}]}
     output_config = {"format": {"type": "json_schema", "schema": esquema}} if esquema else {}
@@ -474,6 +499,10 @@ def alertas_urgentes(db, candidatas):
     cupo = CONFIG.get("max_urgentes_dia", 4) - sum(1 for n in db["noticias"]
                                                     if n.get("urgente") and n["fecha_envio"] >= ultimas_24h)
     if cupo <= 0:
+        return 0
+    maximo_pagadas = CONFIG.get("max_alertas_urgentes_dia", 0)
+    if maximo_pagadas and alertas_pagadas_hoy() >= maximo_pagadas:
+        print(f"Alertas urgentes: ya se han evaluado {maximo_pagadas} tandas hoy (max_alertas_urgentes_dia); no se llama a la IA.")
         return 0
     patron = re.compile("|".join(re.escape(sin_acentos(p)) for p in palabras))
     recientes = (ahora - timedelta(hours=CONFIG.get("horas_urgente", 4))).isoformat()
@@ -983,6 +1012,7 @@ def main():
         return solo_votos()
 
     db, sha = cargar_db()
+    PREVIO[:] = db.get("uso", [])
     db_antes = {"urg_vistos": list(db["urg_vistos"]), "aviso_votos": db.get("aviso_votos")}
     cambios = []
     if vigilar_gasto(db):
@@ -1014,7 +1044,10 @@ def main():
         candidatas = [c for c in candidatas if c["id"] not in vistos]   # sin las ya enviadas como urgentes
         print(f"{len(candidatas)} titulares nuevos · cupo de esta franja: {cupo}")
         db["vistos"] += [c["id"] for c in candidatas]   # todos cuentan como leídos, aunque el filtro los descarte
+        embudo = db.setdefault("embudo", {}).setdefault(hoy, {"entran": 0, "triaje": 0, "enviadas": 0})   # para el panel «Gasto del bot»
+        embudo["entran"] += len(candidatas)
         candidatas = triaje(deduplicar(candidatas)) if cupo > 0 else []
+        embudo["triaje"] += len(candidatas)
         enviadas = 0
         if candidatas and cupo > 0:
             for n in equilibrar(seleccionar(db, candidatas, maximo=cupo * 2)):
@@ -1028,6 +1061,9 @@ def main():
                 n["valoracion"] = 0
                 db["noticias"].append(n)
                 enviadas += 1
+        embudo["enviadas"] += enviadas
+        for viejo in sorted(db["embudo"])[:-45]:     # solo se guardan los últimos 45 días
+            del db["embudo"][viejo]
         if PRUEBA and not enviadas:
             telegram("sendMessage", chat_id=TG_CHAT,
                      text="📰 El recopilador de noticias funciona, pero ahora mismo no hay ninguna nueva que merezca la pena.")
