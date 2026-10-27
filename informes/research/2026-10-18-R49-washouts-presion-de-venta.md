@@ -65,3 +65,9 @@ La mediana del funding de los perpetuos en el último cobro previo al mínimo es
 3. **Vencimientos reales** (CME XRP/XLM; Bybit/Deribit-type opciones): calendarios oficiales para sustituir la aproximación.
 4. **OI y funding por hora** del archivo propio: empezar a guardar una serie diaria desde hoy (script sin IA) para dentro de 3-6 meses.
 5. Mismo estudio con **USD de CoinGecko/Kraken** para ver cuánto del resultado es de la base USDT.
+
+## Caso alcista / bajista (añadido 27-oct-2026, C27; sin predicción, solo con datos de este informe)
+Tema: caídas bruscas con rebote (washouts) en XRP y XLM.
+- **Alcista:** el rebote es la norma en la definición usada (≥ 50 % de la caída recuperado en ≤ 12 h) y entre el 47 % (XLM) y el 61 % (XRP) coincide con caída de BTC, es decir, no es debilidad propia del activo. Fin de mes, fin de trimestre, escrow, vencimientos y FOMC no destacan.
+- **Bajista:** son frecuentes (≈ 28-29 al año por moneda, más de dos al mes) y se concentran de forma significativa en la sesión de EE. UU. (15:00-19:59 UTC, z ≈ 4,3). El resto de caídas (39-53 %) es más propio del activo, y no se puede medir la causa (sin serie pública de liquidaciones).
+- **Sesgo:** la cifra depende del umbral (5 %: 251/228; 10 %: 48/45) y el −55,8 % del 10-oct-2025 en Binance mezcla cascada real y fallo de precio de la bolsa.

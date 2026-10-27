@@ -76,3 +76,9 @@ Entre eventos tipo A, el «inicio observado» (hora con mayor |exceso| en ±6 h,
 3. Eventos de XLM: actualizaciones de protocolo de Stellar, SDF trimestral, listados; solo hay 1 evento específico de XLM (E19).
 4. Hora de cada anuncio de Ripple (Swell 27-29-oct-2026, alianzas): medir **después**, no antes.
 5. CoinGecko/CoinMarketCap con los mismos eventos para ver la sensibilidad a la fuente (USDT vs USD).
+
+## Caso alcista / bajista (añadido 27-oct-2026, C27; sin predicción, solo con datos de este informe)
+Tema: si las noticias mueven el precio de XRP y XLM.
+- **Alcista (la noticia sí cuenta):** 11 de 32 pares salen de lo normal, y los más claros van en la dirección de la noticia: sentencia Torres (+61 % de exceso), desestimación (+8 %), fracaso del cloture de CLARITY (−6,9 %) y DTCC–Stellar (XLM, +34 % en 24 h).
+- **Bajista (la noticia casi nunca cuenta):** 15 de 32 pares no muestran efecto detectable; IPC, PPI, empleo, minutas y ETF/tesorería (XRPC, XRPN) no se distinguen del ruido, y de 5 FOMC solo 1 sale de lo normal. El post de la reserva (E16) subió +16,7 % y lo devolvió.
+- **Sesgo:** 19 eventos elegidos a posteriori y 2-3 falsos positivos esperables por azar; coincidencia en el tiempo no prueba causa.

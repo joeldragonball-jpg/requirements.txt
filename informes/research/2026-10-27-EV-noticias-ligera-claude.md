@@ -33,3 +33,9 @@ Mismo prompt que Gemini (`research/gemini/EV-noticias-ligera.md`), ejecutado por
 | Mejor uso | Barrido amplio de titulares | Verificar con fuente primaria y leer páginas concretas (CoinDesk/Ripple/Fed) |
 
 Conclusión: se complementan. Lo que mejor funcionó aquí fue **leer páginas de portada con fecha** (CoinDesk «latest») y luego buscar cada titular; las búsquedas genéricas por fecha fallan. La noticia JQQQ prueba que Gemini se deja piezas de nota alta.
+
+## Caso alcista / bajista (añadido 27-oct-2026, C27; sin predicción, solo con datos de este informe)
+Tema: noticias de la tarde del 27-oct para XRP y XLM, en el arranque del FOMC.
+- **Alcista:** aprobación final de la OCC al banco fiduciario nacional de Ripple (nota de Ripple, [P]) y lanzamiento de JQQQ, fondo tokenizado del Nasdaq-100 sobre Stellar (caso de uso RWA; CoinDesk, [S]).
+- **Bajista:** CoinDesk dice que el anuncio de la OCC no movió el precio de XRP; JQQQ es solo para institucionales no estadounidenses (mínimo $100.000) y no implica demanda de XLM por sí solo; Bitcoin bajo $80.000 al empezar el FOMC [VERIFICAR].
+- **Sesgo:** la nota de la OCC viene de la propia empresa (promoción) y «primer fondo licenciado» es afirmación de los emisores; las probabilidades de la Fed son de principios de octubre, desfasadas.

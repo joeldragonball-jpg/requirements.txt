@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-27 19:02 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-27 19:18 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -20,7 +20,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
-- C27 ◐ en parte · Centro · Investigación: añadir caso alcista y bajista a los informes de research · Sonnet M · ~3 % · ``
 - C28 · Centro · Cerebro visual: auditoría de la Órbita (12 capas, 63 movimientos) frent · Sonnet M · ~3 % · `research/prompts/C28-auditoria-orbita.md`
 - C29 · Centro · Energía, Ormuz y guerra ↔ noticias ↔ Órbita · Sonnet M · ~3 % · `research/prompts/C29-energia-guerra.md`
 - C30 · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`

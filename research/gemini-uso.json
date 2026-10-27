@@ -34,6 +34,12 @@
    "prompt": "NOTICIAS-DIA · evento (FOMC, un día antes de la decisión)",
    "fuentes_aprox": 15,
    "nota": "3 piezas; verificados 5 datos (calendario y rango en federalreserve.gov). Solo 1 pasa a noticias/manuales. Omitió que en septiembre la Fed subió 25 pb. Mejor lanzar el tema Evento tras la decisión. Informe: informes/gemini/2026-10-27-NOTICIAS-DIA-evento-fomc.md"
+  },
+  {
+   "fecha": "2026-10-27",
+   "prompt": "D-bonos-ligera · D01 Italia (prueba Google Search sin Deep Research)",
+   "fuentes_aprox": 15,
+   "nota": "Verificados 4 datos: 5 a y 10 a de subasta correctos [P] en el MEF y 10 a secundario 4,509% [S]; FALLOS: dio el 2 a de subasta como no encontrado (estaba en Teleborsa, 3,55% el 27-oct) y mezcló el BTPei 30 a (2,10% real) con nominales. Sirve de mapa de fuentes, no de dato final. Informe: informes/gemini/2026-10-27-D01-bonos-italia.md"
   }
  ],
  "parar_al_pct": 80,
@@ -70,6 +76,10 @@
   "evento": {
    "estado": "mejorar",
    "nota": "Probado 27-oct (día previo a la decisión): solo previa; omitió el alza de septiembre. Repetir tras las 19:00 Madrid del 28-oct."
+  },
+  "D-bonos-ligera": {
+   "estado": "mejorar",
+   "nota": "Probado 27-oct con D01 Italia: fuentes y URLs reales, 2 cifras de subasta correctas, pero omite datos de su propia fuente y mezcla nominal con indexado. Pedir 'solo BTP nominales, excluye BTPei/BTP Italia' y repetir con D02."
   }
  }
 }
