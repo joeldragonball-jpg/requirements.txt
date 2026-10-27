@@ -47,6 +47,8 @@ def estado(texto):
         return "recurrente"
     if t.startswith("pendiente"):
         return "pendiente"
+    if t.startswith("parcial"):
+        return "parcial"          # hecha en parte: lo que falta sigue siendo trabajo pendiente y se ve en el Seguimiento
     return "otro"
 
 
@@ -389,7 +391,7 @@ def construir(bots_estado=False):
     eventos = eventos_futuros()
     pendientes = []
     for t in colas:
-        if t["estado"] != "pendiente":
+        if t["estado"] not in ("pendiente", "parcial"):
             continue
         claves = CLAVES.get(t["id"], [])
         plazo = next((e for e in eventos if any(k.lower() in e["titulo"].lower() for k in claves) and not e["aprox"]), None) \
@@ -403,14 +405,18 @@ def construir(bots_estado=False):
         v = porcentaje(t.get("real", ""))
         if v is not None:
             cuota.append({"id": t["id"], "tema": t["tema"][:60], "pct": v})
-    contables = [t for t in colas if t["estado"] in ("hecha", "pendiente")]
+    contables = [t for t in colas if t["estado"] in ("hecha", "pendiente", "parcial")]
+    pend = lambda t: t["estado"] in ("pendiente", "parcial")
+    # Todo el plan, sin recortes: cada fila de las colas (R, G, W, C, T, D) con su estado, para el «centro de control» del móvil
+    todo = [{"id": t["id"], "tema": t["tema"][:120], "estado": t["estado"], "origen": t["origen"], "detalle": t.get("detalle", "")[:200],
+             "est": t.get("est", ""), "real": t.get("real", ""), "prompt": t.get("prompt", "")} for t in colas]
     return {
         "generado": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "hoy": r00(), "semana": semana(), "plan": {k: {"nombre": v[0], "coste": v[1]} for k, v in PLAN.items()}, "rutinas": rutinas(),
-        "resumen": {"hechas": sum(1 for t in contables if t["estado"] == "hecha"), "pendientes": sum(1 for t in contables if t["estado"] == "pendiente"),
+        "resumen": {"hechas": sum(1 for t in contables if t["estado"] == "hecha"), "pendientes": sum(1 for t in contables if pend(t)), "parciales": sum(1 for t in contables if t["estado"] == "parcial"),
                     "por_cola": {o: {"hechas": sum(1 for t in contables if t["origen"] == o and t["estado"] == "hecha"),
-                                     "pendientes": sum(1 for t in contables if t["origen"] == o and t["estado"] == "pendiente")} for o in ("R", "T", "D")}},
-        "pendientes": pendientes[:30],
+                                     "pendientes": sum(1 for t in contables if t["origen"] == o and pend(t))} for o in ("R", "T", "D")}},
+        "pendientes": pendientes, "todo": todo,
         "plazos": [e for e in eventos if e["impacto"] in ("alto", "medio") and not e["aprox"]][:8],
         "predicciones": predicciones(), "auditorias": auditorias(),
         "bots": bots() if bots_estado else [],
@@ -515,7 +521,7 @@ def planning_md(d):
     if c_:
         L.append("**Centro y revisión del cerebro (C)**")
         for t in c_:
-            L.append(f"- {t['id']} · {t['tema'].replace('Hueco del Centro: ', '')[:80]} · {t.get('modelo', '')} {t.get('tam', '')} · ~{t.get('est', '?')} · `{t.get('prompt', '')}`")
+            L.append(f"- {t['id']}{' ◐ en parte' if t['estado'] == 'parcial' else ''} · {t['tema'].replace('Hueco del Centro: ', '')[:80]} · {t.get('modelo', '')} {t.get('tam', '')} · ~{t.get('est', '?')} · `{t.get('prompt', '')}`")
     for pref, nombre, fichero in (("T", "Países y temas (T)", "research/COLA-TEMAS-GEMINI.md"), ("D", "Deuda y bonos (D)", "research/COLA-DEUDA-BONOS.md"),
                                   ("R", "Otros research (R)", "research/COLA.md"), ("W", "Pasadas puntuales de rutinas (W)", "research/COLA.md")):
         xs = [t for t in pend if t["id"].startswith(pref)]
@@ -523,7 +529,7 @@ def planning_md(d):
             L.append(f"**{nombre}** · detalle en `{fichero}`")
             for t in xs:
                 plazo = f" · vence/ocurre {t['plazo']['fecha']} ({t['plazo']['evento'][:40]})" if t.get("plazo") else ""
-                L.append(f"- {t['id']} · {t['tema'][:70]}{plazo}")
+                L.append(f"- {t['id']}{' ◐ en parte' if t['estado'] == 'parcial' else ''} · {t['tema'][:70]}{plazo}")
     L += ["", "## Auditorías abiertas"]
     a = d.get("auditorias") or {}
     ab = [x for x in a.get("hallazgos", []) if x["estado"] == "abierto"]
