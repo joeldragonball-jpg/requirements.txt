@@ -122,6 +122,8 @@ nav button.on::after{content:"";position:absolute;top:-9px;width:28px;height:3px
 .abierta>.mas,.abierta .mas{display:block;animation:entra .3s}
 .flecha{flex:none;color:var(--sub);transition:transform .25s;font-size:18px;align-self:center}
 .abierta .flecha{transform:rotate(180deg)}
+.cdt{display:none;margin:0 0 8px 26px;font-size:13px;line-height:1.45;color:#c6cfe6}
+.abierta~.cdt{display:block;animation:entra .3s}
 .gmbox{display:none}
 .abierta~.gmbox{display:block;animation:entra .3s}
 .enlace{display:inline-block;margin-top:10px;padding:9px 14px;border-radius:12px;background:var(--oro);color:#241b00!important;font-weight:700;font-size:14px;text-decoration:none}
@@ -351,6 +353,8 @@ function vCerebro(){
   <div class="seg">${[['seg','Seguimiento'],['voces','Voces'],['videos','Vídeos'],['informes','Informes']].map(([k, n]) => `<button class="${segCer === k ? 'on' : ''}" data-sc="${k}">${n}</button>`).join('')}</div>${cuerpo}<div class="pie">Voces: nivel P = fuente primaria · D = declaración localizada · S = prensa</div></div>`;
 }
 const ESTC = {hecho: ['✓', 'var(--sube)', 'Hecho'], parcial: ['◐', 'var(--ambar)', 'En parte'], falta: ['○', 'var(--sub)', 'Falta']};
+const TES = {hecha: 'hecha en el Seguimiento', pendiente: 'pendiente en el Seguimiento', parcial: 'en parte en el Seguimiento'};
+const cdt = e => `<div class="cdt">${e.falta ? `<div><b>Falta:</b> ${esc(e.falta)}</div>` : ''}${e.quien ? `<div><b>Quién:</b> ${esc(e.quien)}</div>` : ''}${e.tarea ? `<div><b>Tarea ${esc(e.tarea)}:</b> ${esc(TES[e.tarea_estado] || 'sin estado')} <span data-ir2="cerebro:seg" style="color:var(--oro);cursor:pointer;white-space:nowrap">Ver en el Seguimiento ›</span></div>` : ''}</div>`;
 function vCentro(){
   const M = D.centro || [], tot = {hecho: 0, parcial: 0, falta: 0};
   M.forEach(m => Object.keys(tot).forEach(k => tot[k] += m.n[k]));
@@ -360,13 +364,13 @@ function vCentro(){
     <div class="meta2" style="margin:4px 0 8px">${esc(m.resumen)}</div>
     <div style="display:flex;height:8px;border-radius:8px;overflow:hidden;background:#ffffff12"><i style="width:${w('hecho')};background:var(--sube)"></i><i style="width:${w('parcial')};background:var(--ambar)"></i></div>
     <div class="meta2" style="margin-top:6px"><b style="color:var(--sube)">${m.n.hecho}</b> hecho · <b style="color:var(--ambar)">${m.n.parcial}</b> en parte · <b>${m.n.falta}</b> por hacer${m.ultimo ? ` · último ${m.ultimo.fecha.slice(5)}` : ''}</div>
-    <div class="mas">${m.ultimo ? `<div class="meta2" style="margin:0 0 8px">Último informe: ${esc(m.ultimo.titulo)} (${m.ultimo.fecha})</div>` : ''}${m.elementos.map(e => { const [ic, col, nom] = ESTC[e.estado] || ESTC.falta;
-      return `<div style="display:flex;gap:10px;padding:7px 0;border-top:1px solid rgba(255,255,255,.07);align-items:baseline"><b style="color:${col};width:16px;text-align:center" title="${nom}">${ic}</b><span style="flex:1;font-size:14px;line-height:1.35${e.estado === 'falta' ? ';color:var(--sub)' : ''}">${esc(e.texto)}${e.tarea && e.estado !== 'hecho' ? ` <span class="etq" style="margin:0">${e.tarea}</span>` : ''}</span>${e.ir ? `<span data-ir2="${e.ir}" style="color:var(--oro);font-size:13px;white-space:nowrap;cursor:pointer;padding:4px 0 4px 8px">Ver ›</span>` : ''}</div>`; }).join('')}</div></div>`; };
-  const huecos = M.flatMap(m => m.elementos.filter(e => e.estado === 'falta').map(e => ({m: m.nombre, t: e.texto, c: m.color, id: e.tarea})));
+    <div class="mas">${m.ultimo ? `<div class="meta2" style="margin:0 0 8px">Último informe: ${esc(m.ultimo.titulo)} (${m.ultimo.fecha})</div>` : ''}${m.elementos.map(e => { const [ic, col, nom] = ESTC[e.estado] || ESTC.falta; const ab = e.estado !== 'hecho' && (e.falta || e.tarea);
+      return `<div style="border-top:1px solid rgba(255,255,255,.07)"><div ${ab ? 'data-abre ' : ''}style="display:flex;gap:10px;padding:7px 0;align-items:baseline"><b style="color:${col};width:16px;text-align:center" title="${nom}">${ic}</b><span style="flex:1;font-size:14px;line-height:1.35${e.estado === 'falta' ? ';color:var(--sub)' : ''}">${esc(e.texto)}${e.tarea && e.estado !== 'hecho' ? ` <span class="etq" style="margin:0">${e.tarea}</span>` : ''}</span>${e.ir ? `<span data-ir2="${e.ir}" style="color:var(--oro);font-size:13px;white-space:nowrap;cursor:pointer;padding:4px 0 4px 8px">Ver ›</span>` : ''}${ab ? '<span class="flecha neutro">▾</span>' : ''}</div>${ab ? cdt(e) : ''}</div>`; }).join('')}</div></div>`; };
+  const huecos = M.flatMap(m => m.elementos.filter(e => e.estado !== 'hecho').map(e => ({m: m.nombre, c: m.color, e})));
   return `<div class="vista">
   <div class="card hero" style="--i:0"><div style="flex:1"><small>Centro de operaciones y análisis</small><h2>Todo en un sitio</h2><p>${tot.hecho} cosas hechas · ${tot.parcial} en parte · ${tot.falta} por hacer. Toca un módulo para ver qué incluye.</p></div></div>
   ${M.map(tarjeta).join('')}
-  ${cab('Huecos por cubrir')}<div class="card" style="--i:8;padding:6px 14px">${huecos.map((h, k) => `<div style="display:flex;gap:10px;padding:9px 0;${k ? 'border-top:1px solid rgba(255,255,255,.07)' : ''};align-items:baseline"><span style="width:8px;height:8px;border-radius:50%;background:${h.c};flex:none;margin-top:5px"></span><span style="font-size:14px;line-height:1.35">${esc(h.t)}<span class="meta2" style="display:block;margin:2px 0 0">${esc(h.m)}${h.id ? ` · tarea ${h.id} en el Seguimiento` : ''}</span></span></div>`).join('') || '<div class="pie">Sin huecos</div>'}</div>
+  ${cab('Qué falta para completar los módulos')}<div class="card" style="--i:8;padding:6px 14px">${huecos.map((h, k) => `<div style="${k ? 'border-top:1px solid rgba(255,255,255,.07)' : ''}"><div data-abre style="display:flex;gap:10px;padding:9px 0;align-items:baseline"><span style="width:8px;height:8px;border-radius:50%;background:${h.c};flex:none;margin-top:5px"></span><span style="flex:1;font-size:14px;line-height:1.35">${esc(h.e.texto)}<span class="meta2" style="display:block;margin:2px 0 0">${esc(h.m)}${h.e.quien ? ' · ' + esc(h.e.quien) : ''}${h.e.tarea ? ' · ' + esc(h.e.tarea) : ''}</span></span><span class="flecha neutro">▾</span></div>${cdt(h.e) || ''}</div>`).join('') || '<div class="pie">Todo completo</div>'}</div>
   <div class="pie">Plano editable en explorador/centro.json. Lo privado (tesis, patrimonio, suscripciones) va solo en privado/ y no se publica aquí.</div></div>`;
 }
 const VISTAS = {hoy: vHoy, centro: vCentro, mercado: vMercado, agenda: vAgenda, noticias: vNoticias, cerebro: vCerebro};

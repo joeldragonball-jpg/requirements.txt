@@ -213,6 +213,9 @@ def petroleo():
 def centro():
     """Plano del Centro (explorador/centro.json) con el informe más reciente de cada módulo y el recuento por estado."""
     plano = cargar("explorador/centro.json")
+    sys.path.insert(0, str(RAIZ / "scripts"))
+    from construir_seguimiento import cola_r
+    colas = {t["id"]: t for t in cola_r()}
     salida = []
     for m in plano["modulos"]:
         archivos = sorted({a for patron in m.get("patron", []) for a in RAIZ.glob(patron)}, key=lambda a: a.name[:10])
@@ -222,6 +225,10 @@ def centro():
                 ultimo = {"fecha": a.name[:10], "titulo": titulo_md(a).split(" — lanzada")[0]}
                 break
         estados = [e["estado"] for e in m["elementos"]]
+        for e in m["elementos"]:   # estado vivo de la tarea de la cola (research/COLA.md) para no depender de lo escrito a mano aquí
+            t = colas.get(e.get("tarea", ""))
+            if t:
+                e["tarea_estado"], e["tarea_detalle"] = t["estado"], t["detalle"][:160]
         salida.append({"id": m["id"], "nombre": m["nombre"], "apodo": m["apodo"], "color": m["color"], "resumen": m["resumen"],
                        "elementos": m["elementos"], "ultimo": ultimo, "n": {k: estados.count(k) for k in ("hecho", "parcial", "falta")}})
     return salida
