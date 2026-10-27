@@ -13,8 +13,11 @@ Fuente de la lista: documento «01 Prompt maestro» de la carpeta de Drive «Gem
 | T07, T11, T18 | Corea; Brasil; energía | Hechos el 24-oct (`2026-10-24-T07-corea-del-sur.md`, `…T11-brasil.md`, `…T18-energia-actualizacion.md`) |
 | T23 | Ripple y Stellar por región | Hecho el 25-oct (`2026-10-25-T23-ripple-y-stellar-por-region.md`) |
 | T06, T08 | Japón y Singapur | Hechos el 25-oct (W03; `informes/research/2026-10-26-W03-japon-singapur.md`) |
+| T12 | Rusia | Hecho el 27-oct (`informes/research/2026-10-27-T12-rusia.md`): ley 282-ФЗ leída entera en kremlin.ru, lista del Banco de Rusia (solo BTC, ETH y USDT), rublo digital y tipo clave 14,00 % en cbr.ru [P] |
 | T09, T10, T13, T14 | Hong Kong, India, Emiratos y China | Hechos el 27-oct (`informes/research/2026-10-27-T09-hong-kong.md`, `…T10-india.md`, `…T13-emiratos.md`, `…T14-china.md`); contrastados el RBI (5,50 %) y la HKMA (4,25 %); celdas nuevas casi todas [S] |
-| T12, T15, T16, T25 | Rusia, BRICS sin cubrir, organismos y tema libre | **Pendientes**; ver el orden de abajo |
+| T15 | BRICS sin cubrir | **Hecho 27-oct** (informes/research/2026-10-27-T15-brics.md): Etiopía, mBridge y BRICS Pay; quedan [VERIFICAR] el aviso etíope de jul-2026, el texto del FT y las celdas ETF/custodia/tokenización/fiscal de los cinco países |
+| T16 | Organismos internacionales | **Hecho 27-oct** (informes/research/2026-10-27-T16-organismos.md): BIS, FSB, FMI y GAFI leídos [P]; quedan [VERIFICAR] los dos documentos del FMI de oct-2026 (imf.org bloquea), el informe del GAFI de stablecoins (mar-2026) y el G20 Implementation Monitoring Review 2026 |
+| T25 | Tema libre | **Pendiente**; ver el orden de abajo |
 
 ## Orden propuesto (por caducidad y valor)
 1. **T17** Bancos centrales 27-30 oct (FOMC, BCE, BoJ): antes del 27-oct. Hoy ya hay curvas de bonos y tipos en los paneles; falta el research de decisiones, datos y calendario.
@@ -44,8 +47,8 @@ Sesión corta (máx. 20 min). Lee research/COLA-TEMAS-GEMINI.md y la guía resea
 - **T12 Rusia:** ley 282-ФЗ, rublo digital, A7A5 y sanciones, Banco de Rusia (tipo clave 14,00 %, reunión del 23-oct).
 - **T13 Emiratos Árabes:** ADGM, DIFC, VARA y CBUAE; plazo del Decreto-Ley 6/2025 vencido el 16-sep-2026; reconocimiento de RLUSD.
 - **T14 China:** e-CNY (depósito remunerado desde el 1-ene-2026), estado del mercado cripto, stablecoins offshore, LPR de la PBoC, tokenización y fiscalidad.
-- **T15 BRICS sin cubrir:** Sudáfrica, Indonesia, Egipto, Etiopía e Irán (regulación cripto, CBDC, pagos), BRICS Pay y mBridge.
-- **T16 Organismos internacionales:** BIS, FMI, FSB y GAFI; informes recientes sobre stablecoins, tokenización, Agorá y Travel Rule.
+- **T15 BRICS sin cubrir (HECHO 27-oct, ver informes/research/2026-10-27-T15-brics.md):** Sudáfrica, Indonesia, Egipto, Etiopía e Irán (regulación cripto, CBDC, pagos), BRICS Pay y mBridge.
+- **T16 Organismos internacionales (HECHO 27-oct, ver informes/research/2026-10-27-T16-organismos.md):** BIS, FMI, FSB y GAFI; informes recientes sobre stablecoins, tokenización, Agorá y Travel Rule.
 - **T17 Bancos centrales 27-30 oct:** Fed (FOMC), BCE y BoJ; decisiones recientes, datos y calendario; efecto en la liquidez (sin predicción de precio).
 - **T18 Energía y geopolítica:** Brent, ruta de Ormuz, previsión de la EIA y efecto en la política de los bancos centrales.
 - **T19 ETF de XRP y XLM en EE. UU.:** AUM por emisor, entradas netas, diferencia entre cifras de 30-sep (≈ $2.178 M) y 8-oct (≈ $1.560 M), declarantes 13F.

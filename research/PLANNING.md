@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-27 03:47 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-27 04:34 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -22,9 +22,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - C18 · Research manual de noticias en días de evento: entrada al bot, Telegram y cerebr · Sonnet M · ~3 % · `research/prompts/C18-noticias-manuales.md`
 - C20 · Rutina G: Gemini gratis en días sin evento y Claude solo verifica; entra al Segu · Sonnet S · ~2 % · `research/prompts/C20-rutina-gemini.md`
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
-- T12 · Rusia
-- T15 · BRICS sin cubrir
-- T16 · Organismos internacionales
 - T25 · Tema libre
 **Deuda y bonos (D)** · detalle en `research/COLA-DEUDA-BONOS.md`
 - D01 · Italia: rendimientos diarios de BTP a 2, 5, 10 y 30 años con fuente of
@@ -39,8 +36,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 **Pasadas puntuales de rutinas (W)** · detalle en `research/COLA.md`
 - W01B · Tipos de interés: segunda pasada tras las decisiones de la Fed, el BCE
-- W03C ◐ en parte · Países: China (T14) y Rusia (T12)
-- W03D ◐ en parte · Países: Emiratos (T13), BRICS (T15) y organismos (T16)
 - W03E ◐ en parte · Países: Irán, Egipto y Etiopía (huecos del radar)
 - W05C · Verificación por lotes de [VERIFICAR]: macro, fiscalidad y renta fija 
 
@@ -60,7 +55,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Qué se está quedando viejo (frescura)
-- 🟡 Radar regulatorio: Celdas sin dato (33) → W03 · Más huecos: EG 5, ET 5, IR 5, ZA 4, ID 4
+- 🟡 Radar regulatorio: Celdas sin dato (26) → W03 · Más huecos: EG 5, IR 5, ET 4, ZA 3, ID 3
 - 🟡 Voces: Voces sin confirmar (4) → W06 · 1 llevan más de 14 días
 
 ## Bots con problema
