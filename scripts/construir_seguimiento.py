@@ -417,7 +417,7 @@ def gemini():
     sesiones = uso.get("sesiones", [])
     return {"hoy": {"prompt": prompt, "tema": tema, "archivo": f"research/gemini/{prompt}.md", "evento": bool(ev)},
             "prompts": prompts_gemini(uso, hoy), "manuales": manuales_estado(),
-            "hecho": any(x.get("fecha") == hoy.isoformat() for x in sesiones),
+            "hecho": any(x.get("fecha") == hoy.isoformat() and str(x.get("prompt", "")).startswith(prompt) for x in sesiones),
             "parada": (uso.get("parada") or {}).get("nota", "") if (uso.get("parada") or {}).get("fecha") == hoy.isoformat() else "",
             "norma": uso.get("norma", ""),
             "avisos": uso.get("avisos", [])[-3:], "sesiones": sesiones[-5:]}
