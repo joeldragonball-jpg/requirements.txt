@@ -355,8 +355,13 @@ function vCentro(){
   <div class="pie">Plano editable en explorador/centro.json. Lo privado (tesis, patrimonio, suscripciones) va solo en privado/ y no se publica aquí.</div></div>`;
 }
 const VISTAS = {hoy: vHoy, centro: vCentro, mercado: vMercado, agenda: vAgenda, noticias: vNoticias, cerebro: vCerebro};
-function pintar(){
-  document.getElementById('main').innerHTML = VISTAS[tab]();
+function pintar(ancla){
+  const m = document.getElementById('main');
+  const antes = ancla && m.querySelector(ancla);
+  const y = antes ? antes.getBoundingClientRect().top : null;
+  m.innerHTML = VISTAS[tab]();
+  const despues = y !== null && m.querySelector(ancla);
+  if (despues) m.scrollTop += despues.getBoundingClientRect().top - y;
   document.querySelectorAll('#nav button').forEach(b => b.classList.toggle('on', b.dataset.t === tab));
   contar();
 }
@@ -367,10 +372,10 @@ document.addEventListener('click', e => {
   if (t.dataset.t) { tab = t.dataset.t; document.getElementById('main').scrollTo(0, 0); pintar(); }
   else if (t.dataset.ir2) { const [a, b] = t.dataset.ir2.split(':'); tab = a; if (b) segCer = b; document.getElementById('main').scrollTo(0, 0); pintar(); }
   else if (t.dataset.ir) { tab = t.dataset.ir; document.getElementById('main').scrollTo(0, 0); pintar(); }
-  else if (t.dataset.fa) { filtroAg = t.dataset.fa; pintar(); }
-  else if (t.dataset.fn) { filtroNo = t.dataset.fn; pintar(); }
-  else if (t.dataset.pf) { filtroPl = t.dataset.pf; pintar(); }
-  else if (t.dataset.sc) { segCer = t.dataset.sc; pintar(); }
+  else if (t.dataset.fa) { filtroAg = t.dataset.fa; pintar(`[data-fa="${filtroAg}"]`); }
+  else if (t.dataset.fn) { filtroNo = t.dataset.fn; pintar(`[data-fn="${filtroNo}"]`); }
+  else if (t.dataset.pf) { filtroPl = t.dataset.pf; pintar(`[data-pf="${filtroPl}"]`); }
+  else if (t.dataset.sc) { segCer = t.dataset.sc; pintar(`[data-sc="${segCer}"]`); }
   else if (t.hasAttribute('data-abre')) t.classList.toggle('abierta');
   else if (t.id === 'abrebus' || t.id === 'bbus') { document.getElementById('busqueda').classList.add('on'); document.getElementById('q').focus(); }
   else if (t.id === 'cerrar') document.getElementById('busqueda').classList.remove('on');
