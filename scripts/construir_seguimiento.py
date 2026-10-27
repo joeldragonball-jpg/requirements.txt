@@ -372,6 +372,31 @@ GEMINI_DIAS = {0: ("G01-xrp-xlm-24h", "noticias XRP/XLM de las últimas 24 h"), 
                6: ("G01-xrp-xlm-24h", "noticias XRP/XLM de las últimas 24 h")}
 
 
+PROMPTS_GEMINI = ["G01-xrp-xlm-24h", "G03-macro-tipos", "G02-cripto-regulacion", "G04-etf-flujos", "G05-bulos-semana",
+                  "G06-energia-geopolitica", "EV-noticias-evento", "EV-noticias-ligera", "EV-post-evento"]
+
+
+def prompts_gemini(uso, hoy):
+    """Texto de cada prompt de Gemini (primer bloque de código de research/gemini/*.md) para copiarlo desde el móvil,
+    con su estado de mejora (research/gemini-uso.json → «prompts»: {id: {estado: sin probar|bueno|mejorar, nota}})."""
+    out = []
+    for pid in PROMPTS_GEMINI:
+        txt = leer(RAIZ / "research" / "gemini" / f"{pid}.md")
+        m = re.search(r"```\n(.*?)\n```", txt, re.S)
+        if not m:
+            continue
+        est = (uso.get("prompts") or {}).get(pid, {})
+        out.append({"id": pid, "texto": m.group(1).replace("<FECHA>", hoy.isoformat()),
+                    "estado": est.get("estado", "sin probar"), "nota": est.get("nota", "")})
+    return out
+
+
+def manuales_estado():
+    """Detección de noticias manuales (C18): cuántos JSON hay en noticias/manuales/ y el último (sin los «_ejemplo»)."""
+    arch = sorted(p.name for p in (RAIZ / "noticias" / "manuales").glob("*.json") if not p.name.startswith("_"))
+    return {"archivos": len(arch), "ultimo": arch[-1] if arch else ""}
+
+
 def gemini():
     """Tarea de Gemini del día (gratis, 1 consulta ligera; flujo manual: Claude da el prompt, Joel lo pega en la app) y su registro de uso."""
     hoy = date.today()
@@ -383,6 +408,7 @@ def gemini():
     prompt, tema = (("EV-post-evento", f"evento: {ev['titulo'][:70]}") if ev else GEMINI_DIAS[hoy.weekday()])
     sesiones = uso.get("sesiones", [])
     return {"hoy": {"prompt": prompt, "tema": tema, "archivo": f"research/gemini/{prompt}.md", "evento": bool(ev)},
+            "prompts": prompts_gemini(uso, hoy), "manuales": manuales_estado(),
             "hecho": any(x.get("fecha") == hoy.isoformat() for x in sesiones),
             "parada": (uso.get("parada") or {}).get("nota", "") if (uso.get("parada") or {}).get("fecha") == hoy.isoformat() else "",
             "norma": uso.get("norma", ""),
