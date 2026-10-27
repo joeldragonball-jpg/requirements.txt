@@ -33,3 +33,20 @@ Los informes originales no se reescriben: aquí se cierra cada punto. Etiquetas:
 **Conteo W05B:** 4 puntos · 2 cerrados (Solvexia, DTCC sin día fijo) · 2 parciales (BC Payments cierre, JPMD en producción). Acumulado hoy (W05 + W05B): 13 tratados · 4 cerrados · 5 parciales · 4 abiertos.
 
 **Implicación para el calendario [P]:** la predicción #44 (DTCC, 31-oct) y el evento «DTCC: lanzamiento previsto 31-oct» deben leerse como «octubre de 2026, sin día». Si DTCC no anuncia nada el 31-oct, no es un fallo de la predicción sino de la fecha puesta; hay que releer la nota de DTCC de esos días antes de resolverla.
+
+
+## Lote W05C · 2026-10-27 (macro, fiscalidad y renta fija, tercer lote)
+
+| ID | Afirmación | Origen | Resultado | Fuente y fecha |
+|---|---|---|---|---|
+| W05C-01 | «Treasury al 5,34 %» (resumen W43) | PLANNING / C10 | **Cerrado [P]**: serie diaria del Tesoro: 23-oct 10 años 5,00 % y 30 años **5,33 %**; 22-oct 5,29 %; 26-oct 5,31 %. Ningún 10 años llegó a 5,34 %. Es el 30 años (un error de una centésima). | home.treasury.gov, Daily Treasury Par Yield Curve, oct-2026 [P], leída 2026-10-27 |
+| W05C-02 | Fecha de Palisade: 3-nov frente a ~4-nov-2025 | PLANNING | **Cerrado [P]**: la nota de Ripple lleva la fecha «SAN FRANCISCO, NOVEMBER 3, 2025». Sin precio ni cierre en la nota. Unificar a **3-nov-2025**. | ripple.com/ripple-press/ripple-acquires-palisade-to-offer-comprehensive-digital-asset-custody-solution, 2025-11-03 [P] |
+| W05C-03 | MEI 2026 (0,9 %) leído en el BOE | PLANNING | **Sigue [S]**: varias guías dan 0,9 % total para 2026 (una cita RDL 3/2026 y Orden PJC/297/2026); reparto 0,75/0,15 en la mayoría y 0,72/0,18 en una (discrepa). Sin texto del BOE leído. Calendario: 1 % en 2027 y 1,2 % desde 2029 [S]. | grupo2000.es, holded.com, ineaf.es, oct-2026 [S]; BOE por leer [VERIFICAR] |
+| W05C-04 | Vigencia 2026 de la escala del ahorro (art. 66 LIRPF) | PLANNING | **Parcial [S]**: una guía con datos del BOE y BBVA coinciden en territorio común: 19 % hasta 6.000 €, 21 % hasta 50.000 €, 23 % hasta 200.000 €, 27 % hasta 300.000 € y 30 % desde 300.000 €, sin cambios 2025-2026. País Vasco tiene escala nueva desde 1-ene-2026; Navarra sin confirmar. Art. 66 sin leer. | guiafiscal.es/irpf/tramos-irpf-2026 (5-jul-2026) y bbvamijubilacion.es [S]; BOE [VERIFICAR] |
+| W05C-05 | Modelos 172/175/721 y DAC8: texto definitivo en el BOE | PLANNING | **Corregido**: es un **proyecto** de orden ministerial (consulta pública del 10-mar-2026) que aprobaría los modelos 042, 172, 175 y 721 para criptoactivos y modificaría la HAP/1695/2016. No hay orden publicada en el BOE. Primer año de datos DAC8: 2026; declaraciones de proveedores desde 2027; intercambio entre Estados antes del 30-sep-2027 [S]. Una guía cita la consulta DGT V0848/26 (cripto en autocustodia no va en el 721), sin leer. | hacienda.gob.es/sgt/normativadoctrina/proyectos/09032026-main-proyecto-om-dac8.pdf [P: título y enlace vistos en el buscador, PDF no abierto]; diariobitcoin, guiafiscal [S] |
+| W05C-06 | Cloture CLARITY 49-50 en senate.gov | PLANNING | **Sigue abierto**: senate.gov devuelve 403 al acceso automático (intento anotado, sin saltar el bloqueo). La prensa solo da el calendario del voto de procedimiento del 15-sep, no el resultado. Joel debe abrirlo en su navegador. | senate.gov roll_call_lists (403) [VERIFICAR] |
+| W05C-07 | FOMC 27-28 oct: probabilidades de mantener | C21 | **Nota**: las probabilidades (≈80-83 % mantener) son de principios de octubre en agregadores; fuente válida solo el comunicado del 28-oct a las 14:00 ET. | federalreserve.gov [VERIFICAR] hasta el 28-oct |
+
+**Conteo W05C:** 7 puntos · 2 cerrados (Treasury 30 años, Palisade 3-nov) · 3 parciales (MEI, escala del ahorro, modelos/DAC8) · 2 abiertos (cloture 49-50 por 403, FOMC hasta el 28-oct). Acumulado hoy (W05 + W05B + W05C): 20 tratados · 6 cerrados · 8 parciales · 6 abiertos.
+
+**Implicación [P]:** no citar los modelos 172/175/721 reformados ni DAC8 como «en vigor en el BOE»: hoy son proyecto de orden y calendario de la directiva.
