@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-27 02:53 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-27 03:47 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -19,9 +19,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**
-- C04 · Cuadro de valoración por sector (PER, EV/EBITDA, FCF yield) · Sonnet M · ~3 % · `research/prompts/C04-valoracion.md`
-- C05 · Archivo de precedentes históricos (formato fijo) · Sonnet M · ~3 % · `research/prompts/C05-precedentes.md`
-- C14 · Órbita: capas nuevas (energía, liquidez, riesgos) y enlace de cada elemento a su · Sonnet M · ~3 % · `research/prompts/C14-orbita.md`
 - C18 · Research manual de noticias en días de evento: entrada al bot, Telegram y cerebr · Sonnet M · ~3 % · `research/prompts/C18-noticias-manuales.md`
 - C20 · Rutina G: Gemini gratis en días sin evento y Claude solo verifica; entra al Segu · Sonnet S · ~2 % · `research/prompts/C20-rutina-gemini.md`
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`

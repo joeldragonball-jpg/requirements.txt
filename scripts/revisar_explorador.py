@@ -20,6 +20,20 @@ def empieza_bien(t):
     return not primero.isalpha() or primero.isupper() or bool(re.match(r"[a-z][A-Z]", t.lstrip("≈ ")))
 
 
+RAIZ = RUTA.parent.parent
+
+
+def comprobar_informe(donde, x):
+    """El campo opcional «informe» debe ser una ruta dentro de informes/ de un .md que exista."""
+    if "informe" not in x:
+        return
+    r = x["informe"]
+    if not isinstance(r, str) or not r.startswith("informes/") or not r.endswith(".md") or ".." in r:
+        aviso(donde, f"«informe» no es una ruta válida dentro de informes/: {r!r}")
+    elif not (RAIZ / r).is_file():
+        aviso(donde, f"«informe» apunta a un archivo que no existe: {r}")
+
+
 ids = {c["id"] for c in d["capas"]}
 for c in d["capas"]:
     for k in ("produccion", "piloto", "plan", "xrp"):
@@ -73,6 +87,13 @@ for m in d["movimientos"]:
         aviso(dn, "sin etiquetas de entidad, activo ni país")
     if not empieza_bien(m["texto"]):
         aviso(dn, "el texto no empieza con mayúscula")
+    comprobar_informe(dn, m)
+
+for c in d["capas"]:
+    for k in ("produccion", "piloto", "plan", "xrp"):
+        if isinstance(c.get(k), list):
+            for hecho in c[k]:
+                comprobar_informe(f"{c['id']}.{k}", hecho)
 
 
 # --- Radar regulatorio (explorador/regulacion.json) ---

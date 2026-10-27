@@ -66,4 +66,4 @@ Hueco del Centro (módulo 01, Radar). Es una herramienta de lectura, **no una pr
 
 ## Huecos
 - Escenario 7 sin informe propio. Probabilidades sin base estadística.
-- Falta cruzar con el archivo de precedentes (C05) cuando exista.
+- Archivo de precedentes (C05) ya existe: `cerebro/documentos/archivo-de-precedentes.md` (27-oct-2026); falta cruzar cada escenario con su precedente.

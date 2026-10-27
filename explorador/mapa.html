@@ -256,6 +256,9 @@ const ICONOS = {
   token: [['path','M12 3.5L3.5 8 12 12.5 20.5 8z'],['path','M3.5 12.2L12 16.7l8.5-4.5'],['path','M3.5 16.4L12 20.9l8.5-4.5']],
   custodia: [['path','M12 3l7.5 3v5.2c0 4.6-3.1 8.1-7.5 9.8-4.4-1.7-7.5-5.2-7.5-9.8V6z'],['circle',{cx:12,cy:10.5,r:2}],['path','M12 12.5v3']],
   reg: [['path','M12 4v16'],['path','M8 20h8'],['path','M5 7h14'],['path','M5 7l-2.8 6.2h5.6z'],['path','M19 7l-2.8 6.2h5.6z']],
+  energia: [['path','M12 3.5c3.2 3.6 5 6.2 5 9a5 5 0 0 1-10 0c0-2.800 1.800-5.400 5-9z'],['path','M9.800 14.200a2.400 2.400 0 0 0 2.200 2.200']],
+  liquidez: [['path','M12 3.500c3 3.400 5 6 5 8.500a5 5 0 0 1-10 0c0-2.500 2-5.100 5-8.500z'],['path','M4 20c2.500-1.500 5-1.500 8 0s5.500 1.500 8 0']],
+  riesgos: [['path','M12 3.500l9 16H3z'],['path','M12 10v4.500'],['path','M12 17.200v.1']],
   fondos: [['path','M6 4.5v3'],['path','M6 15v4'],['path','M12 3v3'],['path','M12 14.5v4.5'],['path','M18 6.5v3.5'],['path','M18 17v3'],['rect',{x:4.5,y:7.5,width:3,height:7.5}],['rect',{x:10.5,y:6,width:3,height:8.5}],['rect',{x:16.5,y:10,width:3,height:7}]]
 };
 function pintarIcono(grupo, id){ (ICONOS[id] || ICONOS.cbdc).forEach(([t, a]) => S(t, typeof a === 'string' ? {d: a} : a, grupo)); }
@@ -545,6 +548,7 @@ function bloqueHechos(padre, c, tit, k, color, retraso){
     const cu = H('div', 'cuerpo', det);
     if ((hecho.ent || []).length + (hecho.act || []).length + (hecho.pais || []).length) chipsEtiquetas(H('div', 'chips', cu), hecho);
     H('div', 'fuente', cu, nv ? `${nv[0]}${(hecho.f || (hecho.n && hecho.n !== hecho.k ? hecho.n : '')) ? ' (' + (hecho.f || hecho.n) + ')' : ''}: ${nv[2]}` : 'Sin etiqueta de fuente: dato de contexto del propio mapa.');
+    enlaceInforme(cu, hecho);
     relacionados(c, hecho).forEach((d, i) => tarjetaDoc(cu, d, i));
   });
 }
@@ -556,7 +560,18 @@ function listaMovs(padre, lista){
     H('div', '', it, m.texto);
     const ch = H('div', 'chips', it); insignia(m, ch); chipsEtiquetas(ch, m);
     H('div', 'fuente', it, 'Fuente: ' + m.fuente + (sel ? '' : ' · capa: ' + (m.capaObj ? m.capaObj.nombre : m.capa)));
+    enlaceInforme(it, m);
   });
+}
+// Enlace «Abrir el informe» a la copia del informe en GitHub (D.base_informes + ruta dentro de informes/); solo si el elemento trae el campo «informe».
+function enlaceInforme(padre, x){
+  if (!x || !x.informe) return;
+  const nombre = x.informe.split('/').pop().replace(/\.md$/, '');
+  const f = H('div', 'fuente', padre); f.style.marginTop = '6px';
+  if (!D.base_informes){ f.textContent = 'Informe: ' + x.informe; return; }
+  const a = document.createElement('a'); a.href = D.base_informes + x.informe.split('/').map(encodeURIComponent).join('/');
+  a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = 'Abrir el informe'; a.title = nombre; a.style.color = '#f1d58a';
+  f.appendChild(a); f.appendChild(document.createTextNode(' · ' + nombre));
 }
 const donde = {Research: 'En la app: 📌 Seguimiento → «Leer un informe».', Dossier: 'En la app: 🧠 Cerebro → Dossiers.', Apunte: 'En la app: 🧠 Cerebro → Apuntes.'};
 function tarjetaDoc(padre, d, i){

@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-18",
+  "version": "2026-10-27",
   "aviso": "Hechos y fuentes del research público (informes R01P a R49). Informativo: no es recomendación de compra ni venta. [P] = fuente primaria leída; [S] = secundaria o agregador. La fecha de cada hecho es la del evento; los datos de agregadores cambian a diario. Importes: $ = dólar de EE. UU.; € = euro; otras monedas con su símbolo (S$ Singapur, HK$ Hong Kong, ₩ won, R$ real, ₽ rublo, CN¥ yuan); M = millones y mil M = miles de millones.",
   "estados": {
     "produccion": {
@@ -1698,6 +1698,634 @@
           "Panel de deuda y bonos (22-oct)"
         ]
       }
+    },
+    {
+      "id": "energia",
+      "nombre": "Energía y Ormuz",
+      "color": "#e8913a",
+      "resumen": "Petróleo y gas, y el paso por el estrecho de Ormuz: cuántos barcos cruzan al día, a cuánto cotizan el Brent y el WTI y qué prevé la agencia de energía de EE. UU. Es la primera pieza de la cadena energía → inflación → tipos → bonos → activos de riesgo.",
+      "produccion": [
+        {
+          "t": "Ormuz: la media de barcos al día fue de 3,7 en la última semana con dato (hasta el 18-oct), frente a 78,3 de media en febrero; el tráfico se hundió entre el 28-feb (57 barcos) y el 4-mar (0).",
+          "k": "P",
+          "n": "P",
+          "f": "IMF PortWatch, API abierta [P] · leída el 25-oct; último dato publicado: 18-oct",
+          "ent": [
+            "IMF PortWatch"
+          ],
+          "act": [],
+          "pais": [
+            "Irán"
+          ],
+          "informe": "informes/research/2026-10-25-W10-energia.md"
+        },
+        {
+          "t": "Brent al contado (EIA): $125,78 el 13-oct, máximo de $126,55 el 14-oct y $115,22 el 20-oct; último dato publicado el 21-oct.",
+          "k": "P",
+          "n": "P",
+          "f": "EIA, serie pet_pri_spt_s1_d [P] · leída el 24-oct",
+          "ent": [
+            "EIA"
+          ],
+          "act": [],
+          "pais": [
+            "EE. UU."
+          ],
+          "informe": "informes/research/2026-10-24-T18-energia-actualizacion.md"
+        },
+        {
+          "t": "WTI Cushing (EIA): $95,39 el 13-oct, $110,01 el 19-oct y $107,89 el 20-oct; el diferencial Brent–WTI pasó de ≈ $30 a ≈ $7,3 entre el 15 y el 20-oct (causa sin verificar).",
+          "k": "P",
+          "n": "P",
+          "f": "EIA [P] · leída el 24-oct; la causa del diferencial es [VERIFICAR]",
+          "ent": [
+            "EIA"
+          ],
+          "act": [],
+          "pais": [
+            "EE. UU."
+          ],
+          "informe": "informes/research/2026-10-24-T18-energia-actualizacion.md"
+        },
+        {
+          "t": "STEO de octubre (publicado el 6-oct): Brent al contado de media $105 por barril en el 4T-2026, $14 más que en septiembre.",
+          "k": "P",
+          "n": "P",
+          "f": "EIA, Short-Term Energy Outlook [P] · leído el 24-oct",
+          "ent": [
+            "EIA"
+          ],
+          "act": [],
+          "pais": [
+            "EE. UU."
+          ],
+          "informe": "informes/research/2026-10-24-T18-energia-actualizacion.md"
+        },
+        {
+          "t": "Brent, futuro continuo: cierre de $113,17 el 22-oct y de $111,97 el 23-oct. No es comparable día a día con el spot de la EIA.",
+          "k": "S",
+          "n": "S",
+          "f": "R00 de cierre del 23-oct (Yahoo Finance) [S]",
+          "ent": [
+            "Yahoo Finance"
+          ],
+          "act": [],
+          "pais": [],
+          "informe": "informes/research/2026-10-24-T18-energia-actualizacion.md"
+        }
+      ],
+      "piloto": [],
+      "plan": [],
+      "xrp": [
+        {
+          "t": "No nombra XRP ni XLM. La relación es indirecta: petróleo alto empuja la inflación esperada y los rendimientos de los bonos, y la combinación frena a los activos sin flujo de caja como las criptomonedas. Cualquier efecto sobre el precio de XRP o XLM es [ESPECULACIÓN].",
+          "k": "ESP",
+          "n": "ESP",
+          "f": "Lectura propia sobre C03 (escenarios 1 y 3)",
+          "ent": [],
+          "act": [],
+          "pais": [],
+          "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
+        }
+      ],
+      "anillo": false,
+      "claves": [
+        "petróleo",
+        "brent",
+        "wti",
+        "ormuz",
+        "opep",
+        "opep+",
+        "eia",
+        "steo",
+        "energía",
+        "gas",
+        "crudo",
+        "oleoducto",
+        "portwatch",
+        "inflación",
+        "barril"
+      ],
+      "cifras": [
+        {
+          "v": "3,7",
+          "e": "Barcos al día por Ormuz, media de los 7 últimos días con dato (hasta el 18-oct-2026); en febrero fueron 78,3",
+          "f": "IMF PortWatch [P]",
+          "ent": [
+            "IMF PortWatch"
+          ],
+          "act": [],
+          "pais": [
+            "Irán"
+          ]
+        },
+        {
+          "v": "$115,22",
+          "e": "Brent al contado (EIA, 20-oct-2026); pico de $126,55 el 14-oct",
+          "f": "EIA [P]",
+          "ent": [
+            "EIA"
+          ],
+          "act": [],
+          "pais": [
+            "EE. UU."
+          ]
+        },
+        {
+          "v": "$107,89",
+          "e": "WTI Cushing (EIA, 20-oct-2026)",
+          "f": "EIA [P]",
+          "ent": [
+            "EIA"
+          ],
+          "act": [],
+          "pais": [
+            "EE. UU."
+          ]
+        },
+        {
+          "v": "$105",
+          "e": "Brent previsto por la EIA de media en el 4T-2026 (STEO de octubre)",
+          "f": "EIA [P]",
+          "ent": [
+            "EIA"
+          ],
+          "act": [],
+          "pais": [
+            "EE. UU."
+          ]
+        }
+      ],
+      "ficha": {
+        "hace": "Transporta y fija el precio de la energía; el crudo y el gas entran en casi todos los costes, así que mueven la inflación y, por ella, las decisiones de los bancos centrales. (EIA, IMF PortWatch)",
+        "controla": "Los productores (OPEP+, EE. UU.), los países ribereños de Ormuz y las aseguradoras marítimas; el precio lo fija el mercado y la EIA solo publica datos y previsiones.",
+        "falta": [
+          "OPEP+: la reunión de 7 países del 1-nov no tiene fuente leída de 2026 (los resultados localizados son de 2025): confirmar en opec.org [VERIFICAR].",
+          "Causa de la compresión Brent–WTI del 16 al 20-oct [VERIFICAR].",
+          "Flujo en barriles por Ormuz después del 2T-2026: PortWatch cuenta barcos, no barriles.",
+          "Informe mensual de la AIE del 13-nov: fecha leída por buscador, sin confirmar en iea.org [VERIFICAR]."
+        ],
+        "madurez": {
+          "n": 3,
+          "t": "Hay series oficiales abiertas (PortWatch y EIA) con 1-3 días de retraso, pero faltan barriles por Ormuz, la AIE y OPEP+."
+        },
+        "favor": [
+          "Datos primarios y abiertos para barcos, precios spot y previsión.",
+          "El tráfico (≈ 5 % del de febrero) y los precios (> $110) cuentan la misma historia de oferta recortada."
+        ],
+        "contra": [
+          "Con 4 barcos al día el petróleo sigue en $110: parte del crudo llega por oleoductos o inventarios, y el precio descuenta una oferta recortada, no una ausencia total [ESPECULACIÓN].",
+          "El spot de la EIA y el futuro continuo son series distintas y no se comparan día a día.",
+          "Un agregador asistido por IA cita un récord de ataques a petroleros (FT, 10-oct) sin verificar."
+        ],
+        "vigilar": [
+          "28-oct: nueva actualización del spot de la EIA. 1-nov: reunión de OPEP+ [VERIFICAR]. 10-nov: STEO de noviembre.",
+          "Tránsitos por encima de 20 al día durante dos semanas seguidas desmentirían el escenario de cierre (C03)."
+        ],
+        "informes": [
+          "W10 Energía y Ormuz (25-oct)",
+          "T18 Energía, actualización (24-oct)",
+          "R46 Geopolítica y energía (17-oct)"
+        ]
+      }
+    },
+    {
+      "id": "liquidez",
+      "nombre": "Liquidez y tipos oficiales",
+      "color": "#4cc3c9",
+      "resumen": "Cuánto dinero crece en las grandes economías (M2 de EE. UU., Japón y China; M3 del euro) y a qué precio lo fijan los bancos centrales (tipos oficiales). Es el «grifo» sobre el que se apoyan los precios de los activos; la relación con el precio no es estable.",
+      "produccion": [
+        {
+          "t": "EE. UU.: el M2 sube un 5,66 % interanual en agosto de 2026 ($23.342,8 mil M frente a $22.092,6 mil M un año antes); acelera desde +3,85 % en nov-2025.",
+          "k": "P",
+          "n": "P",
+          "f": "FRED, serie M2SL [P] · cálculo propio sobre sus cifras",
+          "ent": [
+            "Reserva Federal",
+            "FRED"
+          ],
+          "act": [],
+          "pais": [
+            "EE. UU."
+          ],
+          "informe": "informes/research/2026-10-25-C02-liquidez-m2.md"
+        },
+        {
+          "t": "Zona euro: el M3 sube un 3,49 % interanual en agosto de 2026 (+2,94 % un año antes).",
+          "k": "P",
+          "n": "P",
+          "f": "BCE Data Portal, serie BSI M3 [P]",
+          "ent": [
+            "BCE"
+          ],
+          "act": [],
+          "pais": [
+            "Zona euro"
+          ],
+          "informe": "informes/research/2026-10-25-C02-liquidez-m2.md"
+        },
+        {
+          "t": "Japón: el M2 sube un 2,0 % interanual en agosto de 2026 (cifra preliminar; M3 +1,2 %).",
+          "k": "P",
+          "n": "P",
+          "f": "Banco de Japón, Money Stock, nota del 9-sep-2026 [P]; la tabla del PDF sale desordenada: confirmar en boj.or.jp",
+          "ent": [
+            "Banco de Japón"
+          ],
+          "act": [],
+          "pais": [
+            "Japón"
+          ],
+          "informe": "informes/research/2026-10-25-C02-liquidez-m2.md"
+        },
+        {
+          "t": "China: el M2 sube un 7,2 % interanual en septiembre de 2026 (agosto +7,5 %); M1 +3,2 %.",
+          "k": "S",
+          "n": "S",
+          "f": "PBoC según Xinhua y China Daily, 15-oct [S]; no se leyó la web del banco",
+          "ent": [
+            "PBoC"
+          ],
+          "act": [],
+          "pais": [
+            "China"
+          ],
+          "informe": "informes/research/2026-10-25-C02-liquidez-m2.md"
+        },
+        {
+          "t": "Tipos oficiales (25-oct): Fed 3,75–4,00 %, BCE 2,50 %, Banco de Inglaterra 3,75 %, Canadá 2,25 %, Banco de Japón 1,25 %, Corea 3,00 %, India 5,50 %.",
+          "k": "P",
+          "n": "P",
+          "f": "BIS, WS_CBPOL (leído el 25-oct) y paneles del explorador [P]",
+          "ent": [
+            "Reserva Federal",
+            "BCE",
+            "Banco de Inglaterra",
+            "Banco de Japón",
+            "BIS"
+          ],
+          "act": [],
+          "pais": [
+            "EE. UU.",
+            "Zona euro",
+            "Reino Unido",
+            "Japón"
+          ],
+          "informe": "informes/research/2026-10-26-W01-tipos-de-interes.md"
+        },
+        {
+          "t": "Rusia mantiene el tipo en 14,00 % el 23-oct (segunda pausa); próxima reunión el 18-dic.",
+          "k": "P",
+          "n": "P",
+          "f": "Banco de Rusia, cbr.ru [P] (decisión y fecha); la previsión de inflación es de Reuters [S]",
+          "ent": [
+            "Banco de Rusia"
+          ],
+          "act": [],
+          "pais": [
+            "Rusia"
+          ],
+          "informe": "informes/research/2026-10-26-W01-tipos-de-interes.md"
+        }
+      ],
+      "piloto": [],
+      "plan": [],
+      "xrp": [
+        {
+          "t": "No nombra XRP ni XLM. La relación es indirecta: se suele citar el M2 como «viento de cola» de los activos de riesgo, pero la relación no es estable (en 2022-2023 el M2 de EE. UU. cayó y los activos de riesgo se recuperaron igualmente). Cualquier umbral del tipo «M2 +5 % implica alza» es [ESPECULACIÓN].",
+          "k": "ESP",
+          "n": "ESP",
+          "f": "Lectura propia sobre C02",
+          "ent": [],
+          "act": [],
+          "pais": [],
+          "informe": "informes/research/2026-10-25-C02-liquidez-m2.md"
+        }
+      ],
+      "anillo": false,
+      "claves": [
+        "m2",
+        "m3",
+        "liquidez",
+        "oferta monetaria",
+        "dinero",
+        "tipos de interés",
+        "tipo oficial",
+        "fed",
+        "fomc",
+        "bce",
+        "banco de japón",
+        "pboc",
+        "fred",
+        "balance",
+        "tga"
+      ],
+      "cifras": [
+        {
+          "v": "+5,66 %",
+          "e": "M2 de EE. UU., variación interanual (agosto de 2026)",
+          "f": "FRED, M2SL [P] · cálculo propio",
+          "ent": [
+            "FRED"
+          ],
+          "act": [],
+          "pais": [
+            "EE. UU."
+          ]
+        },
+        {
+          "v": "+3,49 %",
+          "e": "M3 de la zona euro, variación anual (agosto de 2026)",
+          "f": "BCE [P]",
+          "ent": [
+            "BCE"
+          ],
+          "act": [],
+          "pais": [
+            "Zona euro"
+          ]
+        },
+        {
+          "v": "+2,0 %",
+          "e": "M2 de Japón, variación interanual (agosto de 2026, preliminar)",
+          "f": "Banco de Japón [P] · confirmar en boj.or.jp",
+          "ent": [
+            "Banco de Japón"
+          ],
+          "act": [],
+          "pais": [
+            "Japón"
+          ]
+        },
+        {
+          "v": "+7,2 %",
+          "e": "M2 de China, variación interanual (septiembre de 2026)",
+          "f": "PBoC según Xinhua [S]",
+          "ent": [
+            "PBoC"
+          ],
+          "act": [],
+          "pais": [
+            "China"
+          ]
+        },
+        {
+          "v": "3,75–4,00 %",
+          "e": "Rango de tipos de la Fed (25-oct-2026)",
+          "f": "BIS / Reserva Federal [P]",
+          "ent": [
+            "Reserva Federal"
+          ],
+          "act": [],
+          "pais": [
+            "EE. UU."
+          ]
+        }
+      ],
+      "ficha": {
+        "hace": "Mide cuánto dinero hay en circulación y a qué precio lo ofrecen los bancos centrales; es el contexto de los precios de bonos, bolsa y cripto. (FRED, BCE, Banco de Japón, PBoC, BIS)",
+        "controla": "Los bancos centrales fijan el tipo oficial y, con su balance, influyen en el dinero; los bancos comerciales crean la mayor parte del M2 al prestar.",
+        "falta": [
+          "Liquidez neta (balance de la Fed menos la cuenta del Tesoro y los repos inversos): no calculada.",
+          "Japón y China van a mano en explorador/liquidez-manual.json: FRED tiene sus series paradas (2017-2018 y 2023).",
+          "El M2 de China viene de prensa [S]: no se leyó la web del PBoC.",
+          "Retraso de publicación: el último dato de M2 y M3 es de agosto."
+        ],
+        "madurez": {
+          "n": 3,
+          "t": "EE. UU. y la zona euro tienen API abierta; Japón y China se actualizan a mano cada mes y el de China es de prensa."
+        },
+        "favor": [
+          "El M2 de EE. UU. (+5,66 %) y el M3 del euro (+3,49 %) crecen más que hace un año, y quien sigue el indicador lo usa como viento de cola.",
+          "Fuentes oficiales abiertas y con fecha para dos de las cuatro áreas."
+        ],
+        "contra": [
+          "La relación entre M2 y precios de activos no es estable y el M2 incluye ahorro que no se invierte; correlación no es causalidad.",
+          "La narrativa «M2 como gasolina» la repiten sobre todo cuentas y newsletters cripto con interés en ella; los bancos centrales lo tratan como un indicador entre muchos.",
+          "Con inflación por energía, el tipo oficial puede subir aunque el dinero crezca (C03, escenario 3)."
+        ],
+        "vigilar": [
+          "28-29 oct: decisiones de la Fed y el BCE; 30-oct: Banco de Japón.",
+          "Próxima publicación mensual de M2 y M3 (septiembre) y si la aceleración del M2 de EE. UU. continúa."
+        ],
+        "informes": [
+          "C02 Liquidez global M2 (25-oct)",
+          "W01 Tipos de interés (25-oct)",
+          "R29 Macro global (17-oct)"
+        ]
+      }
+    },
+    {
+      "id": "riesgos",
+      "nombre": "Matriz de riesgos",
+      "color": "#d95b8a",
+      "resumen": "Siete escenarios de estrés a 12 meses con su base observada, qué los desmentiría y en qué indicador de la app se siguen. Es un inventario de riesgos para leer, no una predicción ni una cartera: las probabilidades son juicio propio [ESPECULACIÓN] y los escenarios se solapan.",
+      "produccion": [],
+      "piloto": [],
+      "plan": [
+        {
+          "t": "1. Ormuz sigue casi cerrado: probabilidad a 12 meses alta [ESPECULACIÓN]. Base observada: 3,7 barcos al día frente a 78,3 en febrero (PortWatch) y Brent de $112 a $126 en octubre. Lo desmentiría: más de 20 tránsitos al día durante dos semanas seguidas.",
+          "k": "ESP",
+          "n": "ESP",
+          "f": "C03 Matriz de riesgos (25-oct-2026); probabilidades = juicio propio, sin modelo estadístico",
+          "ent": [
+            "IMF PortWatch",
+            "EIA"
+          ],
+          "act": [],
+          "pais": [
+            "Irán"
+          ],
+          "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
+        },
+        {
+          "t": "2. Estrés en bonos largos (EE. UU., Francia, Japón): probabilidad a 12 meses media [ESPECULACIÓN]. Base observada: bono de EE. UU. a 10 años en 5,00 %, Francia en 5,13 % y Japón en 2,91 %; Moody's mantuvo a Francia en Aa3 con perspectiva negativa [S]. Lo desmentiría: subastas con buena demanda y rendimientos estables o a la baja.",
+          "k": "ESP",
+          "n": "ESP",
+          "f": "C03 Matriz de riesgos (25-oct-2026); probabilidades = juicio propio, sin modelo estadístico",
+          "ent": [
+            "Tesoro de EE. UU.",
+            "Agence France Trésor",
+            "Moody's"
+          ],
+          "act": [],
+          "pais": [
+            "EE. UU.",
+            "Francia",
+            "Japón"
+          ],
+          "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
+        },
+        {
+          "t": "3. Inflación por energía obliga a nuevas subidas de tipos: probabilidad a 12 meses media [ESPECULACIÓN]. Base observada: la Fed en 3,75–4,00 % y la mayoría de sus minutas ve apropiada otra subida antes de fin de año. Lo desmentiría: una pausa de la Fed con inflación a la baja.",
+          "k": "ESP",
+          "n": "ESP",
+          "f": "C03 Matriz de riesgos (25-oct-2026); probabilidades = juicio propio, sin modelo estadístico",
+          "ent": [
+            "Reserva Federal",
+            "BCE",
+            "Banco de Japón"
+          ],
+          "act": [],
+          "pais": [
+            "EE. UU.",
+            "Zona euro",
+            "Japón"
+          ],
+          "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
+        },
+        {
+          "t": "4. Reapertura negociada de Ormuz: probabilidad a 12 meses baja-media [ESPECULACIÓN]. Base observada: alto el fuego de dos semanas en abril y conversaciones fallidas; ninguna recuperación sostenida del tráfico (máximo mensual: 12,9 barcos al día en junio). Lo desmentiría: nuevos ataques a petroleros o ausencia de acuerdo.",
+          "k": "ESP",
+          "n": "ESP",
+          "f": "C03 Matriz de riesgos (25-oct-2026); probabilidades = juicio propio, sin modelo estadístico",
+          "ent": [
+            "IMF PortWatch"
+          ],
+          "act": [],
+          "pais": [
+            "Irán",
+            "EE. UU."
+          ],
+          "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
+        },
+        {
+          "t": "5. La ley CLARITY se aprueba en el lame-duck: probabilidad a 12 meses media-baja [ESPECULACIÓN]. Base observada: Polymarket da ≈ 34 % de firma en 2026 [S]; la norma final de la OCC sobre stablecoins (ley GENIUS) ya se publicó. Lo desmentiría: fracaso del cierre de debate o cambio de mayorías.",
+          "k": "ESP",
+          "n": "ESP",
+          "f": "C03 Matriz de riesgos (25-oct-2026); probabilidades = juicio propio, sin modelo estadístico",
+          "ent": [
+            "Senado de EE. UU.",
+            "OCC"
+          ],
+          "act": [],
+          "pais": [
+            "EE. UU."
+          ],
+          "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
+        },
+        {
+          "t": "6. Pérdida de paridad de una stablecoin grande: probabilidad a 12 meses baja [ESPECULACIÓN]. Base observada: S&P califica a USDT en 5 (débil) y a USDC y EURC en 2 (fuerte) [S, sin contrastar con S&P]. Lo desmentiría: mejora de reservas auditadas y de las notas.",
+          "k": "ESP",
+          "n": "ESP",
+          "f": "C03 Matriz de riesgos (25-oct-2026); probabilidades = juicio propio, sin modelo estadístico",
+          "ent": [
+            "S&P"
+          ],
+          "act": [
+            "USDT",
+            "USDC"
+          ],
+          "pais": [],
+          "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
+        },
+        {
+          "t": "7. Tensión en Taiwán o en la cadena de chips: probabilidad a 12 meses baja [ESPECULACIÓN]. Base observada: el repo no tiene informe propio sobre este riesgo [hueco]; solo figuran SMH, SOXX y TSM en la watchlist. Lo desmentiría: ausencia de bloqueos, ejercicios o sanciones nuevas; sin datos primarios aquí.",
+          "k": "ESP",
+          "n": "ESP",
+          "f": "C03 Matriz de riesgos (25-oct-2026); probabilidades = juicio propio, sin modelo estadístico",
+          "ent": [],
+          "act": [],
+          "pais": [
+            "Taiwán"
+          ],
+          "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
+        }
+      ],
+      "xrp": [
+        {
+          "t": "Nombra XRP o XLM solo de forma indirecta: los escenarios 1 a 4 actúan por inflación, tipos y bonos; el 5 (CLARITY) y el 6 (stablecoins) tocan al sector cripto y la regulación. Ningún escenario dice qué comprar o vender; sus efectos sobre XRP o XLM son [ESPECULACIÓN].",
+          "k": "ESP",
+          "n": "ESP",
+          "f": "Lectura propia sobre C03",
+          "ent": [],
+          "act": [],
+          "pais": [],
+          "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
+        }
+      ],
+      "anillo": false,
+      "claves": [
+        "riesgo",
+        "riesgos",
+        "escenario",
+        "escenarios",
+        "estrés",
+        "matriz",
+        "probabilidad",
+        "ormuz",
+        "bonos largos",
+        "clarity",
+        "paridad",
+        "depeg",
+        "taiwán",
+        "chips",
+        "lame-duck"
+      ],
+      "cifras": [
+        {
+          "v": "7",
+          "e": "Escenarios de estrés a 12 meses (probabilidad [ESPECULACIÓN])",
+          "f": "C03 Matriz de riesgos (25-oct-2026)",
+          "ent": [],
+          "act": [],
+          "pais": []
+        },
+        {
+          "v": "Alta",
+          "e": "Ormuz sigue casi cerrado: el único escenario con probabilidad alta [ESPECULACIÓN]",
+          "f": "C03 Matriz de riesgos (25-oct-2026)",
+          "ent": [
+            "IMF PortWatch"
+          ],
+          "act": [],
+          "pais": [
+            "Irán"
+          ]
+        },
+        {
+          "v": "1 sin informe",
+          "e": "Taiwán o cadena de chips: escenario sin informe propio en el repo [hueco]",
+          "f": "C03 Matriz de riesgos (25-oct-2026)",
+          "ent": [],
+          "act": [],
+          "pais": [
+            "Taiwán"
+          ]
+        }
+      ],
+      "ficha": {
+        "hace": "Ordena los riesgos que pueden mover bolsa, bonos y cripto en los próximos 12 meses y los enlaza con el indicador de la app que los sigue. Herramienta de lectura, no predicción. (C03)",
+        "controla": "Nadie: son juicios del propio analista sobre hechos de otras capas (energía, bonos, tipos, regulación y stablecoins).",
+        "falta": [
+          "Probabilidades sin base estadística: son juicio propio [ESPECULACIÓN].",
+          "Escenario 7 (Taiwán): sin informe propio ni datos primarios [VERIFICAR] y programar un informe.",
+          "Cruce de cada escenario con su precedente histórico (archivo de precedentes C05).",
+          "Los escenarios se solapan (1 y 3 se alimentan; 4 desmonta a 1 y a 3): no se suman."
+        ],
+        "madurez": {
+          "n": 2,
+          "t": "Inventario útil pero basado en juicio propio; solo los hechos de partida salen de informes con fuente."
+        },
+        "favor": [
+          "Cada escenario trae su base con fuente y fecha, lo que lo desmentiría y el indicador para seguirlo.",
+          "Reúne en un sitio riesgos que los informes sueltos no conectan."
+        ],
+        "contra": [
+          "Las probabilidades son subjetivas y pueden dar falsa precisión.",
+          "Los vídeos de «colapso» venden miedo y son [E] salvo dato primario; la prensa de mercado exagera los titulares diarios.",
+          "Un inventario de riesgos no es una cartera ni dice qué hacer."
+        ],
+        "vigilar": [
+          "28-30 oct: Fed, BCE y Banco de Japón (escenario 3); 3-nov: elecciones de EE. UU. (escenario 5).",
+          "Tránsitos por Ormuz y rendimientos del bono a 10 años (escenarios 1, 2 y 4)."
+        ],
+        "informes": [
+          "C03 Matriz de riesgos (25-oct)",
+          "C04 Valoración sectorial (27-oct)",
+          "C05 Archivo de precedentes (27-oct)"
+        ]
+      }
     }
   ],
   "movimientos": [
@@ -1717,7 +2345,8 @@
       ],
       "pais": [
         "EE. UU."
-      ]
+      ],
+      "informe": "informes/research/2026-10-18-R48-estudio-eventos-noticia-precio.md"
     },
     {
       "fecha": "2025-01-23",
@@ -1733,7 +2362,8 @@
       "act": [],
       "pais": [
         "EE. UU."
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R44-bancos-custodia-institucional-profundo.md"
     },
     {
       "fecha": "2025-03-02",
@@ -1749,7 +2379,8 @@
       ],
       "pais": [
         "EE. UU."
-      ]
+      ],
+      "informe": "informes/research/2026-10-18-R48-estudio-eventos-noticia-precio.md"
     },
     {
       "fecha": "2025-06-18",
@@ -1767,7 +2398,8 @@
       ],
       "pais": [
         "Canadá"
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R27-etf-cripto-fuera-de-eeuu-profundo.md"
     },
     {
       "fecha": "2025-07-18",
@@ -1784,7 +2416,8 @@
       "act": [],
       "pais": [
         "EE. UU."
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R25-stablecoins-mundo-profundo.md"
     },
     {
       "fecha": "2025-08-07",
@@ -1801,7 +2434,8 @@
       "act": [],
       "pais": [
         "EE. UU."
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R34-ripple-empresa-profundo.md"
     },
     {
       "fecha": "2025-11-10",
@@ -1817,7 +2451,8 @@
       "act": [],
       "pais": [
         "Brasil"
-      ]
+      ],
+      "informe": "informes/research/2026-10-15-R03P-brasil-profundo.md"
     },
     {
       "fecha": "2025-11-13",
@@ -1835,7 +2470,8 @@
       ],
       "pais": [
         "EE. UU."
-      ]
+      ],
+      "informe": "informes/research/2026-10-18-R48-estudio-eventos-noticia-precio.md"
     },
     {
       "fecha": "2025-12-11",
@@ -1852,7 +2488,8 @@
       "act": [],
       "pais": [
         "EE. UU."
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R26-tokenizacion-rwa-profundo.md"
     },
     {
       "fecha": "2025-12-12",
@@ -1869,7 +2506,8 @@
       "act": [],
       "pais": [
         "EE. UU."
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R34-ripple-empresa-profundo.md"
     },
     {
       "fecha": "2026-01-07",
@@ -1886,7 +2524,8 @@
       "act": [
         "JPMD"
       ],
-      "pais": []
+      "pais": [],
+      "informe": "informes/research/2026-10-17-R44-bancos-custodia-institucional-profundo.md"
     },
     {
       "fecha": "2026-01-15",
@@ -1900,7 +2539,8 @@
         "State Street"
       ],
       "act": [],
-      "pais": []
+      "pais": [],
+      "informe": "informes/research/2026-10-17-R44-bancos-custodia-institucional-profundo.md"
     },
     {
       "fecha": "2026-03-03",
@@ -1916,7 +2556,8 @@
       "act": [
         "XRP"
       ],
-      "pais": []
+      "pais": [],
+      "informe": "informes/research/2026-10-17-R28-pagos-transfronterizos-profundo.md"
     },
     {
       "fecha": "2026-04-10",
@@ -1933,7 +2574,8 @@
       "act": [],
       "pais": [
         "Hong Kong"
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R25-stablecoins-mundo-profundo.md"
     },
     {
       "fecha": "2026-04-20",
@@ -1948,7 +2590,8 @@
         "XRPL"
       ],
       "act": [],
-      "pais": []
+      "pais": [],
+      "informe": "informes/research/2026-10-17-R45-riesgo-cuantico-seguridad-profundo.md"
     },
     {
       "fecha": "2026-05-27",
@@ -1964,7 +2607,8 @@
       "act": [],
       "pais": [
         "Internacional"
-      ]
+      ],
+      "informe": "informes/research/2026-10-15-R08P-bis-fmi-bancos-centrales-profundo.md"
     },
     {
       "fecha": "2026-05-27",
@@ -1979,7 +2623,8 @@
         "DTCC"
       ],
       "act": [],
-      "pais": []
+      "pais": [],
+      "informe": "informes/research/2026-10-15-R09P-ripple-stellar-por-region-profundo.md"
     },
     {
       "fecha": "2026-06-24",
@@ -1998,7 +2643,8 @@
       ],
       "pais": [
         "Japón"
-      ]
+      ],
+      "informe": "informes/research/2026-10-15-R09P-ripple-stellar-por-region-profundo.md"
     },
     {
       "fecha": "2026-06-28",
@@ -2014,7 +2660,8 @@
       "act": [],
       "pais": [
         "Internacional"
-      ]
+      ],
+      "informe": "informes/research/2026-10-15-R08P-bis-fmi-bancos-centrales-profundo.md"
     },
     {
       "fecha": "2026-06-30",
@@ -2030,7 +2677,8 @@
       "act": [
         "XRP"
       ],
-      "pais": []
+      "pais": [],
+      "informe": "informes/research/2026-10-15-R21b-13f-segunda-pasada.md"
     },
     {
       "fecha": "2026-07-06",
@@ -2049,7 +2697,8 @@
       "pais": [
         "Unión Europea",
         "Luxemburgo"
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R34-ripple-empresa-profundo.md"
     },
     {
       "fecha": "2026-07-09",
@@ -2068,7 +2717,8 @@
       ],
       "pais": [
         "Unión Europea"
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R40-cbdc-por-pais-profundo.md"
     },
     {
       "fecha": "2026-07-20",
@@ -2085,7 +2735,8 @@
       "act": [],
       "pais": [
         "Unión Europea"
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R44-bancos-custodia-institucional-profundo.md"
     },
     {
       "fecha": "2026-09-01",
@@ -2103,7 +2754,8 @@
       ],
       "pais": [
         "Rusia"
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R40-cbdc-por-pais-profundo.md"
     },
     {
       "fecha": "2026-09-15",
@@ -2119,7 +2771,8 @@
       "act": [],
       "pais": [
         "EE. UU."
-      ]
+      ],
+      "informe": "informes/research/2026-10-18-R48-estudio-eventos-noticia-precio.md"
     },
     {
       "fecha": "2026-09-16",
@@ -2135,7 +2788,8 @@
       "act": [],
       "pais": [
         "EE. UU."
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R29-macro-global-profundo.md"
     },
     {
       "fecha": "2026-09-17",
@@ -2151,7 +2805,8 @@
       "act": [],
       "pais": [
         "EE. UU."
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R26-tokenizacion-rwa-profundo.md"
     },
     {
       "fecha": "2026-09-20",
@@ -2169,7 +2824,8 @@
       "pais": [
         "Internacional",
         "Arabia Saudí"
-      ]
+      ],
+      "informe": "informes/research/2026-10-15-R01P-brics-pagos-profundo.md"
     },
     {
       "fecha": "2026-09-21",
@@ -2185,7 +2841,8 @@
       "act": [],
       "pais": [
         "Unión Europea"
-      ]
+      ],
+      "informe": "informes/research/2026-10-15-R08P-bis-fmi-bancos-centrales-profundo.md"
     },
     {
       "fecha": "2026-09-24",
@@ -2202,7 +2859,8 @@
       "act": [],
       "pais": [
         "EE. UU."
-      ]
+      ],
+      "informe": "informes/research/2026-10-15-R08P-bis-fmi-bancos-centrales-profundo.md"
     },
     {
       "fecha": "2026-09-30",
@@ -2221,7 +2879,8 @@
       ],
       "pais": [
         "EE. UU."
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R27-etf-cripto-fuera-de-eeuu-profundo.md"
     },
     {
       "fecha": "2026-10-01",
@@ -2235,7 +2894,8 @@
         "Stellar"
       ],
       "act": [],
-      "pais": []
+      "pais": [],
+      "informe": "informes/research/2026-10-17-R33-stellar-profundo.md"
     },
     {
       "fecha": "2026-10-01",
@@ -2251,7 +2911,8 @@
       "act": [],
       "pais": [
         "Corea del Sur"
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R30-segunda-pasada-jurisdicciones-profundo.md"
     },
     {
       "fecha": "2026-10-08",
@@ -2274,7 +2935,8 @@
       ],
       "pais": [
         "Unión Europea"
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R44-bancos-custodia-institucional-profundo.md"
     },
     {
       "fecha": "2026-10-09",
@@ -2288,7 +2950,8 @@
         "XRPL"
       ],
       "act": [],
-      "pais": []
+      "pais": [],
+      "informe": "informes/research/2026-10-17-R32-xrp-ledger-profundo.md"
     },
     {
       "fecha": "2026-10-12",
@@ -2304,7 +2967,8 @@
       "act": [
         "XRP"
       ],
-      "pais": []
+      "pais": [],
+      "informe": "informes/research/2026-10-17-R23-verificacion-sec.md"
     },
     {
       "fecha": "2026-10-15",
@@ -2324,7 +2988,8 @@
       ],
       "pais": [
         "Brasil"
-      ]
+      ],
+      "informe": "informes/research/2026-10-17-R34-ripple-empresa-profundo.md"
     },
     {
       "fecha": "2026-10-22",
@@ -2445,6 +3110,340 @@
         "Japón",
         "EE. UU."
       ]
+    },
+    {
+      "fecha": "2026-03-04",
+      "capa": "energia",
+      "actor": "IMF PortWatch",
+      "texto": "El tráfico por Ormuz llega a 0 barcos al día el 4-mar (57 el 28-feb): fecha de cierre resuelta con datos.",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "IMF PortWatch, API abierta [P] · W10",
+      "ent": [
+        "IMF PortWatch"
+      ],
+      "act": [],
+      "pais": [
+        "Irán"
+      ],
+      "informe": "informes/research/2026-10-25-W10-energia.md"
+    },
+    {
+      "fecha": "2026-10-06",
+      "capa": "energia",
+      "actor": "EIA",
+      "texto": "El STEO de octubre prevé Brent al contado de $105 de media en el 4T-2026, $14 más que en septiembre.",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "EIA, STEO [P] · T18",
+      "ent": [
+        "EIA"
+      ],
+      "act": [],
+      "pais": [
+        "EE. UU."
+      ],
+      "informe": "informes/research/2026-10-24-T18-energia-actualizacion.md"
+    },
+    {
+      "fecha": "2026-10-14",
+      "capa": "energia",
+      "actor": "EIA",
+      "texto": "Brent al contado en $126,55, máximo de octubre; baja a $115,22 el 20-oct.",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "EIA, serie spot [P] · T18",
+      "ent": [
+        "EIA"
+      ],
+      "act": [],
+      "pais": [
+        "EE. UU."
+      ],
+      "informe": "informes/research/2026-10-24-T18-energia-actualizacion.md"
+    },
+    {
+      "fecha": "2026-10-18",
+      "capa": "energia",
+      "actor": "IMF PortWatch",
+      "texto": "La media de los últimos 7 días es de 3,7 barcos al día por Ormuz, ≈ 5 % de febrero (78,3).",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "IMF PortWatch, API abierta [P] · W10",
+      "ent": [
+        "IMF PortWatch"
+      ],
+      "act": [],
+      "pais": [
+        "Irán"
+      ],
+      "informe": "informes/research/2026-10-25-W10-energia.md"
+    },
+    {
+      "fecha": "2026-10-20",
+      "capa": "energia",
+      "actor": "EIA",
+      "texto": "WTI Cushing en $107,89; el diferencial Brent–WTI baja a ≈ $7,3 (causa sin verificar).",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "EIA, serie spot [P] · T18",
+      "ent": [
+        "EIA"
+      ],
+      "act": [],
+      "pais": [
+        "EE. UU."
+      ],
+      "informe": "informes/research/2026-10-24-T18-energia-actualizacion.md"
+    },
+    {
+      "fecha": "2026-10-23",
+      "capa": "energia",
+      "actor": "Mercado (Yahoo Finance)",
+      "texto": "El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "Yahoo Finance vía R00 [S] · T18",
+      "ent": [
+        "Yahoo Finance"
+      ],
+      "act": [],
+      "pais": [],
+      "informe": "informes/research/2026-10-24-T18-energia-actualizacion.md"
+    },
+    {
+      "fecha": "2026-08-31",
+      "capa": "liquidez",
+      "actor": "Reserva Federal (FRED)",
+      "texto": "El M2 de EE. UU. sube un 5,66 % interanual en agosto ($23.342,8 mil M).",
+      "estado": "anuncio",
+      "nombra": "indirecto",
+      "fuente": "FRED, M2SL [P] · C02",
+      "ent": [
+        "Reserva Federal",
+        "FRED"
+      ],
+      "act": [],
+      "pais": [
+        "EE. UU."
+      ],
+      "informe": "informes/research/2026-10-25-C02-liquidez-m2.md"
+    },
+    {
+      "fecha": "2026-08-31",
+      "capa": "liquidez",
+      "actor": "BCE",
+      "texto": "El M3 de la zona euro sube un 3,49 % interanual en agosto (+2,94 % un año antes).",
+      "estado": "anuncio",
+      "nombra": "indirecto",
+      "fuente": "BCE Data Portal [P] · C02",
+      "ent": [
+        "BCE"
+      ],
+      "act": [],
+      "pais": [
+        "Zona euro"
+      ],
+      "informe": "informes/research/2026-10-25-C02-liquidez-m2.md"
+    },
+    {
+      "fecha": "2026-08-31",
+      "capa": "liquidez",
+      "actor": "Banco de Japón",
+      "texto": "El M2 de Japón sube un 2,0 % interanual en agosto (preliminar); el PDF sale desordenado y la fila se debe confirmar.",
+      "estado": "anuncio",
+      "nombra": "indirecto",
+      "fuente": "Banco de Japón, Money Stock [P] · C02",
+      "ent": [
+        "Banco de Japón"
+      ],
+      "act": [],
+      "pais": [
+        "Japón"
+      ],
+      "informe": "informes/research/2026-10-25-C02-liquidez-m2.md"
+    },
+    {
+      "fecha": "2026-09-30",
+      "capa": "liquidez",
+      "actor": "PBoC",
+      "texto": "El M2 de China sube un 7,2 % interanual en septiembre (agosto +7,5 %).",
+      "estado": "anuncio",
+      "nombra": "indirecto",
+      "fuente": "Xinhua y China Daily [S] · C02",
+      "ent": [
+        "PBoC"
+      ],
+      "act": [],
+      "pais": [
+        "China"
+      ],
+      "informe": "informes/research/2026-10-25-C02-liquidez-m2.md"
+    },
+    {
+      "fecha": "2026-10-23",
+      "capa": "liquidez",
+      "actor": "Banco de Rusia",
+      "texto": "Mantiene el tipo en 14,00 % (segunda pausa); próxima reunión el 18-dic.",
+      "estado": "norma",
+      "nombra": "no",
+      "fuente": "cbr.ru [P] · W01",
+      "ent": [
+        "Banco de Rusia"
+      ],
+      "act": [],
+      "pais": [
+        "Rusia"
+      ],
+      "informe": "informes/research/2026-10-26-W01-tipos-de-interes.md"
+    },
+    {
+      "fecha": "2026-10-25",
+      "capa": "liquidez",
+      "actor": "Fed, BCE y Banco de Japón",
+      "texto": "Tipos oficiales vigentes: Fed 3,75–4,00 %, BCE 2,50 % y Banco de Japón 1,25 %; decisiones del 28 al 30-oct.",
+      "estado": "norma",
+      "nombra": "no",
+      "fuente": "BIS, WS_CBPOL [P] · W01",
+      "ent": [
+        "Reserva Federal",
+        "BCE",
+        "Banco de Japón",
+        "BIS"
+      ],
+      "act": [],
+      "pais": [
+        "EE. UU.",
+        "Zona euro",
+        "Japón"
+      ],
+      "informe": "informes/research/2026-10-26-W01-tipos-de-interes.md"
+    },
+    {
+      "fecha": "2026-10-25",
+      "capa": "riesgos",
+      "actor": "Escenario 1",
+      "texto": "Ormuz sigue casi cerrado (probabilidad alta): probabilidad a 12 meses [ESPECULACIÓN], con base observada y lo que lo desmentiría en el informe.",
+      "estado": "plan",
+      "nombra": "no",
+      "fuente": "C03 Matriz de riesgos [ESPECULACIÓN]",
+      "ent": [
+        "IMF PortWatch",
+        "EIA"
+      ],
+      "act": [],
+      "pais": [
+        "Irán"
+      ],
+      "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
+    },
+    {
+      "fecha": "2026-10-25",
+      "capa": "riesgos",
+      "actor": "Escenario 2",
+      "texto": "Estrés en bonos largos (media): probabilidad a 12 meses [ESPECULACIÓN], con base observada y lo que lo desmentiría en el informe.",
+      "estado": "plan",
+      "nombra": "no",
+      "fuente": "C03 Matriz de riesgos [ESPECULACIÓN]",
+      "ent": [
+        "Tesoro de EE. UU.",
+        "Agence France Trésor"
+      ],
+      "act": [],
+      "pais": [
+        "EE. UU.",
+        "Francia",
+        "Japón"
+      ],
+      "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
+    },
+    {
+      "fecha": "2026-10-25",
+      "capa": "riesgos",
+      "actor": "Escenario 3",
+      "texto": "Inflación por energía obliga a nuevas subidas de tipos (media): probabilidad a 12 meses [ESPECULACIÓN], con base observada y lo que lo desmentiría en el informe.",
+      "estado": "plan",
+      "nombra": "no",
+      "fuente": "C03 Matriz de riesgos [ESPECULACIÓN]",
+      "ent": [
+        "Reserva Federal",
+        "BCE",
+        "Banco de Japón"
+      ],
+      "act": [],
+      "pais": [
+        "EE. UU.",
+        "Zona euro",
+        "Japón"
+      ],
+      "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
+    },
+    {
+      "fecha": "2026-10-25",
+      "capa": "riesgos",
+      "actor": "Escenario 4",
+      "texto": "Reapertura negociada de Ormuz (baja-media): probabilidad a 12 meses [ESPECULACIÓN], con base observada y lo que lo desmentiría en el informe.",
+      "estado": "plan",
+      "nombra": "no",
+      "fuente": "C03 Matriz de riesgos [ESPECULACIÓN]",
+      "ent": [
+        "IMF PortWatch"
+      ],
+      "act": [],
+      "pais": [
+        "Irán",
+        "EE. UU."
+      ],
+      "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
+    },
+    {
+      "fecha": "2026-10-25",
+      "capa": "riesgos",
+      "actor": "Escenario 5",
+      "texto": "La ley CLARITY se aprueba en el lame-duck (media-baja): probabilidad a 12 meses [ESPECULACIÓN], con base observada y lo que lo desmentiría en el informe.",
+      "estado": "plan",
+      "nombra": "indirecto",
+      "fuente": "C03 Matriz de riesgos [ESPECULACIÓN]",
+      "ent": [
+        "Senado de EE. UU.",
+        "OCC"
+      ],
+      "act": [],
+      "pais": [
+        "EE. UU."
+      ],
+      "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
+    },
+    {
+      "fecha": "2026-10-25",
+      "capa": "riesgos",
+      "actor": "Escenario 6",
+      "texto": "Pérdida de paridad de una stablecoin grande (baja): probabilidad a 12 meses [ESPECULACIÓN], con base observada y lo que lo desmentiría en el informe.",
+      "estado": "plan",
+      "nombra": "indirecto",
+      "fuente": "C03 Matriz de riesgos [ESPECULACIÓN]",
+      "ent": [
+        "S&P"
+      ],
+      "act": [],
+      "pais": [],
+      "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
+    },
+    {
+      "fecha": "2026-10-25",
+      "capa": "riesgos",
+      "actor": "Escenario 7",
+      "texto": "Tensión en Taiwán o en la cadena de chips (baja): probabilidad a 12 meses [ESPECULACIÓN], con base observada y lo que lo desmentiría en el informe.",
+      "estado": "plan",
+      "nombra": "no",
+      "fuente": "C03 Matriz de riesgos [ESPECULACIÓN]",
+      "ent": [],
+      "act": [],
+      "pais": [
+        "Taiwán"
+      ],
+      "informe": "informes/research/2026-10-25-C03-matriz-de-riesgos.md"
     }
-  ]
+  ],
+  "base_informes": "https://github.com/joeldragonball-jpg/requirements.txt/blob/main/"
 }
