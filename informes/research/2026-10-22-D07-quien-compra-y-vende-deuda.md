@@ -49,3 +49,9 @@ Hecho por Claude (sin Gemini) con fuentes oficiales leídas hoy, más prensa com
 
 ## Fuentes
 data.imf.org (30-sep-2026); gold.org (Gold Demand Trends Q2 2026, 30-jul-2026); safe.gov.cn (7-sep y 7-oct-2026); mof.go.jp (operaciones de intervención, 28-ago-2026); ticdata.treasury.gov (tabla 5); federalreserve.gov (H.4.1, 15-oct-2026); ecb.europa.eu (estado semanal, 20-oct-2026); boj.or.jp (junio y febrero de 2026); cnbc.com (7-sep, 19-may-2026, secundarias).
+
+## Caso alcista / bajista (añadido 27-oct-2026, C27; sin predicción, solo con datos de este informe)
+Tema: ¿pierde demanda la deuda de EE. UU. y el dólar entre los grandes tenedores?
+- **Alcista (para el dólar y el Tesoro):** la cuota del dólar sigue en 56,70 % de las reservas y el FMI atribuye el cambio a precios de activos y reasignaciones (variación de tipos de ±2 %), no a ventas; la Fed (+$373,2 mil M en un año) y el total de tenedores extranjeros ($9.331,7 mil M) siguen siendo enormes; TIC mide custodia, así que una caída no es necesariamente una venta.
+- **Bajista (para el dólar y el Tesoro):** la cuota del dólar bajó (57,18 % → 56,70 %), China bajó su custodia de $699,7 mil M a $590,7 mil M en un año, Japón intervino con ¥15.399,3 mil M y los bancos centrales compraron 289 t de oro en el 2T (récord para un 2T).
+- **Sesgo:** la narrativa de «desdolarización» la repiten sobre todo medios y cuentas con tesis previa; con estos datos no está demostrada [ESPECULACIÓN]. Las cifras de oro se revisan mucho (1T: 244 t → 57 t).

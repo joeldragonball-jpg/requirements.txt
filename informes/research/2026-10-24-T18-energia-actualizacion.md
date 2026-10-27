@@ -27,3 +27,9 @@ Actualización corta sobre `2026-10-17-R46-geopolitica-energia-ormuz-profundo.md
 3. Flujo de Ormuz posterior al 2T-2026 (R46 cita 4,9 mb/d en el 2T frente a 21,6 mb/d en el 4T-2025).
 
 Sin cambios en el calendario: las fechas del 1-nov y del 10-nov ya existían y la del 10-nov queda confirmada como [P].
+
+## Caso alcista / bajista (añadido 27-oct-2026, C27; sin predicción de precio, solo con datos de este informe)
+Tema: nivel del petróleo.
+- **Alcista (precio más alto):** el STEO ya prevé Brent medio de $105/b en el 4T (+$14/b frente a septiembre), con ataques al oleoducto este-oeste saudí y retiradas de inventarios globales.
+- **Bajista (precio más bajo):** el spot cayó $11 entre el 15 y el 20-oct (de $126,35 a $115,22), el futuro cerró el 23-oct en $111,97 y la previsión de $105 del 4T queda por debajo del spot de mediados de mes.
+- **Sesgo:** la EIA y las series de Yahoo no son comparables día a día; la compresión Brent–WTI no tiene causa verificada [VERIFICAR].

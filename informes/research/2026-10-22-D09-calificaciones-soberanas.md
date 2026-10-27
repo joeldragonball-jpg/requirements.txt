@@ -36,3 +36,9 @@ Método de lectura de la tabla del MoF: es una rejilla de países por escalón y
 
 ## Fuentes
 aft.gouv.fr/en/frances-credit-ratings (22-oct-2026); tesoro.es/en/deuda-publica/calificacion-crediticia (22-oct-2026); mof.go.jp, Debt Management Report 2026 (PDF `esaimu2026-3-ho.pdf`, página 19 del anexo, leído con pdf.js el 22-oct-2026).
+
+## Caso alcista / bajista (añadido 27-oct-2026, C27; sin predicción, solo con datos de este informe)
+Tema: crédito soberano de Francia (el caso vivo).
+- **Alcista:** la nota sigue alta (Aa3 / A+ / A+) y cuatro agencias tienen perspectiva estable (S&P, Fitch, Scope y KBRA); R&I y JCR la mantienen en AAA (con perspectiva negativa).
+- **Bajista:** Moody's (negativa desde abr-2026), DBRS, R&I y JCR tienen perspectiva negativa; un recorte de Moody's es el riesgo más cercano y su resultado del 23-oct sigue sin confirmar [VERIFICAR, ver W02 del 26-oct].
+- **Sesgo:** las agencias cobran al emisor y sus notas son opiniones; este informe no recoge perspectivas de los otros seis países.

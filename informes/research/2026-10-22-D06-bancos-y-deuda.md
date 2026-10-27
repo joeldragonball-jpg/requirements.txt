@@ -28,3 +28,9 @@ Hecho por Claude (sin Gemini). Sin recomendaciones. El detalle por banco está e
 
 ## Fuentes
 eba.europa.eu/eu-wide-transparency-exercise-0 (tablas tr_sov.csv, tr_oth.csv, TR_Metadata.xlsx, leídas el 22-oct-2026); federalreserve.gov (H.4.1 del 15-oct-2026); ecb.europa.eu (estado financiero consolidado del Eurosistema a 16-oct-2026).
+
+## Caso alcista / bajista (añadido 27-oct-2026, C27; sin predicción, solo con datos de este informe)
+Tema: ¿es sana la relación entre los bancos europeos y la deuda soberana que tienen?
+- **Alcista (sistema más sólido):** la exposición está repartida (116 bancos, €3.914 mil M) y la EBA publica el detalle por banco y país emisor; los grandes tienen deuda soberana propia de su país pero también diversificada (Latinoamérica es el mayor emisor de Santander).
+- **Bajista (riesgo de contagio):** los 10 bancos españoles de la muestra acumulan €302 mil M de deuda de España, así que un problema del emisor golpea al banco; el último corte (30-jun-2025) tiene más de un año de retraso y no se puede comprobar si cambió [VERIFICAR].
+- **Sesgo:** el dato mide valor contable bruto (bonos y préstamos), no pérdida potencial; ninguna de las dos lecturas sale solo de esta tabla.

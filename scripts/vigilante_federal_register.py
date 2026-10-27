@@ -1,4 +1,4 @@
-"""Vigilante del Federal Register (sin IA): avisa por Telegram de documentos nuevos sobre cripto, stablecoins y tokenización.
+"""Vigilante del Federal Register (sin IA): avisa por Telegram de documentos nuevos sobre cripto, stablecoins y tokenización, y de los avisos SR-DTC (DTCC).
 
 Fuente: API abierta del Federal Register (primaria, [P]). La memoria de lo ya avisado va en alertas/estado_federal_register.json.
 Sin TELEGRAM_TOKEN y TELEGRAM_CHAT_ID solo imprime (modo prueba). La primera vez solo apunta lo existente, sin avisar,
@@ -17,17 +17,26 @@ from pathlib import Path
 ESTADO = Path(__file__).resolve().parent.parent / "alertas" / "estado_federal_register.json"
 API = "https://www.federalregister.gov/api/v1/documents.json"
 TERMINOS = '"digital asset" OR stablecoin OR "crypto asset" OR tokenization OR cryptocurrency OR "virtual currency" OR "payment stablecoin"'
+TERMINOS_DTC = '"Self-Regulatory Organizations" AND "Depository Trust Company"'   # DTCC no va por EDGAR: sus SR-DTC salen aquí como avisos de la SEC
 CAMPOS = ("title", "document_number", "html_url", "publication_date", "type", "agency_names", "abstract")
 TIPOS = {"Rule": "Norma final", "Proposed Rule": "Propuesta de norma", "Notice": "Aviso", "Presidential Document": "Documento presidencial"}
 USER_AGENT = "cartera-joel/1.0 (uso personal; vigilante Federal Register)"
 
 
-def buscar(desde):
-    params = [("conditions[term]", TERMINOS), ("conditions[publication_date][gte]", desde), ("order", "newest"), ("per_page", "50")]
+def consultar(termino, desde):
+    params = [("conditions[term]", termino), ("conditions[publication_date][gte]", desde), ("order", "newest"), ("per_page", "50")]
     params += [("fields[]", c) for c in CAMPOS]
     peticion = urllib.request.Request(API + "?" + urllib.parse.urlencode(params), headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(peticion, timeout=30) as r:
         return json.loads(r.read().decode("utf-8")).get("results", [])
+
+
+def buscar(desde):
+    docs = {d["document_number"]: d for d in consultar(TERMINOS, desde)}
+    for d in consultar(TERMINOS_DTC, desde):     # solo los de The Depository Trust Company (no NSCC/FICC ni citas sueltas)
+        if "Depository Trust Company" in d["title"]:
+            docs.setdefault(d["document_number"], d)
+    return sorted(docs.values(), key=lambda d: d["publication_date"], reverse=True)
 
 
 def mensaje(d):

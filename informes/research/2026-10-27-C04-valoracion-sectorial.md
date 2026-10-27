@@ -73,3 +73,9 @@ Capitalización y valor de empresa (EV) en `mil M` de dólares. TTM = últimos 1
 
 ## 6. Cifras y fechas
 Todas las cifras: SEC EDGAR companyfacts 10-K/10-Q hasta jun-sep-2026 [P]; precios Yahoo cierre 26-oct-2026 [S]; cálculos propios.
+
+## Caso alcista / bajista (añadido 27-oct-2026, C27; sin predicción, solo con datos de este informe)
+Tema: lo que dicen los múltiplos de la tabla, sector a sector. No dice si un valor está «barato» o «caro».
+- **Alcista (lectura favorable):** Defensa combina FCF yield alto (3,6-5,7 %) con múltiplos medios (PER 17,8-31,7); Energía tiene EV/EBITDA bajo (6,5-12,5) y FCF yield de hasta 8,4 % (EOG); NVDA (PER 27,0) y QCOM (PER 20,4) no están en la zona extrema de la tabla.
+- **Bajista (lectura desfavorable):** Ciberseguridad tiene PER no significativo en PANW, CRWD y ZS y FCF yield de 0,6-2,4 %; AVGO (PER 41,1) y FTNT (63,4) están en la zona alta; en Energía, el EV/EBITDA bajo es normal del sector, no «descuento», y el PER de XOM (30,2) usa un TTM desfasado.
+- **Sesgo:** son fotos de ciclos distintos con periodos mezclados; la remuneración en acciones infla el FCF de software; un PER bajo en semis puede ser el pico del ciclo. Cifras sin segunda fuente: ver [VERIFICAR] arriba.
