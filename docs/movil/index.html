@@ -34,6 +34,7 @@ header .fecha{font-size:24px;font-weight:700;margin-top:2px;letter-spacing:-.01e
 .btn-ico{width:44px;height:44px;border-radius:14px;background:var(--card);border:1px solid var(--linea);display:grid;place-items:center;color:var(--txt);cursor:pointer;transition:transform .15s}
 .btn-ico:active{transform:scale(.92)}
 main{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:8px 16px 24px}
+[data-c]{font-variant-numeric:tabular-nums;white-space:nowrap}
 main.quieto .card{animation:none;opacity:1}
 main.quieto .barra i,main.quieto .medidor i,main.quieto .anillo .prog{transition:none}
 main::-webkit-scrollbar{display:none}
@@ -52,7 +53,7 @@ main::-webkit-scrollbar{display:none}
 .anillo svg{transform:rotate(-90deg)}
 .anillo circle{fill:none;stroke-width:9;stroke-linecap:round}
 .anillo .fondo{stroke:#ffffff1f}
-.anillo .prog{stroke:var(--oro);stroke-dasharray:264;stroke-dashoffset:264;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1)}
+.anillo .prog{stroke:var(--oro);stroke-dasharray:264;stroke-dashoffset:264;transition:stroke-dashoffset 2s cubic-bezier(.2,.8,.2,1)}
 .anillo .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1;gap:3px}
 .anillo .num b{font-size:28px}.anillo .num span{font-size:11px;color:#bcc7ec;display:block}
 .rejilla{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -60,7 +61,7 @@ main::-webkit-scrollbar{display:none}
 .mini .sim{font-size:13px;color:var(--sub);font-weight:600;display:flex;justify-content:space-between}
 .mini .precio{font-size:23px;font-weight:700;margin:6px 0 8px;letter-spacing:-.02em}
 .medidor{height:6px;border-radius:6px;background:#ffffff14;position:relative;overflow:hidden}
-.medidor i{position:absolute;top:0;bottom:0;border-radius:6px;width:0;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.medidor i{position:absolute;top:0;bottom:0;border-radius:6px;width:0;transition:width 1.8s cubic-bezier(.2,.8,.2,1)}
 .chip-cambio{font-size:13px;font-weight:700}
 .carril{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 8px;margin:0 -16px;padding-left:16px;padding-right:16px;scroll-snap-type:x mandatory}
 .carril::-webkit-scrollbar{display:none}
@@ -78,7 +79,7 @@ main::-webkit-scrollbar{display:none}
 .chip.on{background:var(--oro);border-color:var(--oro);color:#241b00}
 .barra-fila{display:grid;grid-template-columns:78px 1fr 104px;gap:10px;align-items:center;margin:11px 0;font-size:14px}
 .barra-fila .nom{color:var(--sub)}.barra-fila .val{text-align:right;font-weight:700;white-space:nowrap}
-.barra{height:10px;border-radius:10px;background:#ffffff12;overflow:hidden}.barra i{display:block;height:100%;width:0;border-radius:10px;background:linear-gradient(90deg,var(--azul),#9a7bff);transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.barra{height:10px;border-radius:10px;background:#ffffff12;overflow:hidden}.barra i{display:block;height:100%;width:0;border-radius:10px;background:linear-gradient(90deg,var(--azul),#9a7bff);transition:width 1.8s cubic-bezier(.2,.8,.2,1)}
 .aviso{font-size:12px;color:var(--ambar)}
 .nota{display:flex;gap:12px;margin-bottom:12px;padding:14px;background:var(--card);border:1px solid var(--linea);border-radius:18px}
 .nota .pt{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:16px;background:conic-gradient(var(--oro) calc(var(--n)*10%),#ffffff14 0)}
@@ -191,7 +192,7 @@ function contar(quieto){ // animación: los números suben hasta su valor (quiet
   }
   document.querySelectorAll('[data-c]').forEach(el => {
     const fin = parseFloat(el.dataset.c), dec = +el.dataset.d || 0, pre = el.dataset.p || '', suf = el.dataset.s || '', t0 = performance.now();
-    const paso = t => { const k = Math.min(1, (t - t0) / 900), e = 1 - Math.pow(1 - k, 3); el.textContent = pre + fm(fin * e, dec) + suf; if (k < 1) requestAnimationFrame(paso); };
+    const paso = t => { const k = Math.min(1, (t - t0) / 1800), e = 1 - Math.pow(1 - k, 3); el.textContent = pre + fm(fin * e, dec) + suf; if (k < 1) requestAnimationFrame(paso); };
     requestAnimationFrame(paso);
   });
   setTimeout(poner, 80);
@@ -310,8 +311,8 @@ function vSeg(){
   const hero = `<div class="card hero" style="--i:0;display:block"><small>Hoy en el research</small>
    <div style="display:flex;gap:10px;margin:10px 0 12px;flex-wrap:wrap"><span class="bd ${h.apertura ? 'ok' : 'ya'}">${h.apertura ? '✓' : '⏳'} R00 apertura</span><span class="bd ${h.cierre ? 'ok' : 'ya'}">${h.cierre ? '✓' : '⏳'} R00 cierre</span></div>
    <div class="meta2" style="margin:0 0 10px"><b>Hoy toca:</b> ${tocaHoy().length ? tocaHoy().map(i => `<span class="bd" style="color:var(--oro)">${esc(i)} ${esc(((S.plan || {})[i] || {}).nombre || '')} · ${esc(((S.plan || {})[i] || {}).coste || '')}</span>`).join(' ') : (hechoHoy().length ? 'todo lo de hoy está hecho ✓' : 'solo el R00 (día ligero)')}${hechoHoy().length ? ' ' + hechoHoy().map(i => `<span class="bd ok">✓ ${esc(i)} hecha</span>`).join(' ') : ''}</div>
-   <div style="display:flex;align-items:baseline;gap:18px"><div><div class="precio" style="font-size:34px;margin:0" data-c="${h.racha}" data-d="0" data-s=" días">0</div><div class="meta2" style="margin:0">racha con R00</div></div>
-   <div style="flex:1"><div style="display:flex;justify-content:space-between;font-size:13px;color:#c9d2f0"><span>${r.hechas} hechas</span><span>${r.pendientes} pendientes${r.parciales ? ' (' + r.parciales + ' en parte)' : ''}</span></div><div class="barra" style="margin-top:6px"><i data-w="${pct}%"></i></div></div></div></div>`;
+   <div><div class="precio" style="font-size:34px;margin:0" data-c="${h.racha}" data-d="0" data-s=" días">0</div><div class="meta2" style="margin:0">racha con R00</div></div>
+   <div style="margin-top:14px"><div style="display:flex;justify-content:space-between;gap:10px;font-size:13px;color:#c9d2f0"><span>${r.hechas} hechas</span><span style="text-align:right">${r.pendientes} pendientes${r.parciales ? ' (' + r.parciales + ' en parte)' : ''}</span></div><div class="barra" style="margin-top:6px"><i data-w="${pct}%"></i></div></div></div>`;
   const GM = S.gemini, gemHtml = GM ? `${cab('🟣 Tarea para Gemini (gratis)')}<div class="card" style="--i:1;padding:6px 14px"><div class="fil"><span class="id" style="color:#a78bfa">G</span><span class="t">${esc(GM.hoy.tema)}<div class="meta2" style="margin:2px 0 0">Prompt: ${esc(GM.hoy.archivo)} · lo pides a Claude y lo pegas tú en la app de Gemini</div></span><span class="bd ${GM.hecho ? 'ok' : 'ya'}">${GM.hecho ? '✓ hecha' : '⏳ pendiente'}</span></div>${(GM.avisos || []).map(a => `<div class="meta2" style="margin:6px 0 2px">⚠ ${esc(a.fecha)}: ${esc(a.nota)}</div>`).join('')}</div><div class="meta2" style="margin:-4px 4px 4px">${esc(GM.norma)}</div>` : '';
   const RUT = S.rutinas || [], grupo = tipos => RUT.filter(x => tipos.includes(x.tipo));
   const rutFila = x => `<div class="fil"><span class="id">${esc(x.id)}</span><span class="t">${esc(x.nombre)}<div class="meta2" style="margin:2px 0 0">${esc(x.cada)} · ≈ ${esc(x.coste)}</div></span><span class="bd ${x.ultimo ? (x.atrasada ? 'ya' : 'ok') : 'mal'}">${x.ultimo ? 'hace ' + x.dias + ' d' : 'sin hacer'}</span></div>`;
