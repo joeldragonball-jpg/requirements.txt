@@ -57,7 +57,7 @@
    "fecha": "2026-10-27",
    "prompt": "MEDIDA DE USO (Joel, final del dia)",
    "fuentes_aprox": 0,
-   "nota": "Contador de Gemini: 43 % en la ventana corta (diaria o de pocas horas; hora de reinicio sin anotar) y 3 % del limite semanal, tras unas 7-8 consultas del dia (FOMC, D01, D02, Prueba B de D03-D05 y las de W03/tanda de tarde, si cuentan en la misma ventana). Siempre 3.1 Pro, esfuerzo medio, busqueda de Google, sin Deep Research. Estimacion de Claude, no medida por consulta: con este uso la semana no limita y la ventana corta permite varias consultas ligeras al dia; la norma de 1 consulta/dia se queda corta. Deep Research sigue siendo lo que agota el limite (1 por ventana)."
+   "nota": "Contador de Gemini: 43 % en la ventana corta (diaria o de pocas horas; hora de reinicio sin anotar) y 3 % del limite semanal, tras unas 7-8 consultas del dia (FOMC, D01, D02, Prueba B de D03-D05 y las de W03/tanda de tarde, si cuentan en la misma ventana). Siempre 3.1 Pro, esfuerzo medio, busqueda de Google, sin Deep Research. Estimacion de Claude, no medida por consulta: con este uso la semana no limita y la ventana corta permite varias consultas ligeras al dia; la norma de 1 consulta/dia se queda corta. Deep Research sigue siendo lo que agota el limite (1 por ventana). Dato de Joel: la sesion diaria empezo a las 00:47 de la noche (hora local; si es ventana de 24 h, se reinicia a esa hora, a confirmar). Con eso, todo lo del dia (W03 de la manana incluido) cuenta en el 43 %, asi que las ~7-8 consultas siguen en pie."
   }
  ],
  "parar_al_pct": 80,
@@ -99,5 +99,6 @@
    "estado": "mejorar",
    "nota": "Probado 27-oct con D01 Italia: fuentes y URLs reales, 2 cifras de subasta correctas, pero omite datos de su propia fuente y mezcla nominal con indexado. Pedir 'solo BTP nominales, excluye BTPei/BTP Italia' y repetir con D02. D02 (27-oct): sin omisiones ni indexados tras la correccion, pero etiqueta P no fiable (cifra copiada del secundario); abrir siempre el PDF. Prueba B (27-oct, 3 bloques): coste ok, secundarios casi todos bien (1 error de 20 pb en Francia 10 a), subastas 0/11. Para subastas y series diarias usar la fuente oficial directa."
   }
- }
+ },
+ "reinicio_ventana_diaria": "00:47 de la noche (hora local, dato de Joel 27-oct; sin confirmar si es ventana de 24 h)"
 }
