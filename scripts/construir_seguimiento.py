@@ -45,8 +45,8 @@ def estado(texto):
         return "cubierta"
     if t.startswith("recurrente"):
         return "recurrente"
-    if t.startswith("pendiente"):
-        return "pendiente"
+    if t.startswith(("pendiente", "programada")):
+        return "pendiente"        # «programada AAAA-MM-DD» = pendiente con día fijo (campo cuando)
     if t.startswith("parcial"):
         return "parcial"          # hecha en parte: lo que falta sigue siendo trabajo pendiente y se ve en el Seguimiento
     return "otro"
@@ -62,8 +62,15 @@ def cola_r():
         if len(c) < 9:
             continue
         ruta = re.search(r"research/prompts/[^\s;)]+", " | ".join(c[8:]))
-        out.append({"id": c[0], "tema": limpiar(c[1]), "estado": estado(" | ".join(c[8:])), "detalle": limpiar(" | ".join(c[8:]))[:140],
-                    "tam": c[5], "modelo": c[3], "est": c[6], "real": limpiar(c[7]), "prompt": ruta.group(0) if ruta else "", "origen": "R"})
+        txt = " | ".join(c[8:])
+        # Convenciones de la cola: «programada AAAA-MM-DD» (día fijo) y, en las «parcial», «FALTA: … BLOQUEO: …»
+        cuando = re.search(r"programada\s+(\d{4}-\d{2}-\d{2})", txt, re.I)
+        falta = re.search(r"FALTA:\s*(.+?)(?=\s*BLOQUEO:|$)", txt)
+        bloqueo = re.search(r"BLOQUEO:\s*(.+)", txt)
+        out.append({"id": c[0], "tema": limpiar(c[1]), "estado": estado(txt), "detalle": limpiar(txt)[:140],
+                    "tam": c[5], "modelo": c[3], "est": c[6], "real": limpiar(c[7]), "prompt": ruta.group(0) if ruta else "", "origen": "R",
+                    "cuando": cuando.group(1) if cuando else "", "falta": limpiar(falta.group(1))[:260] if falta else "",
+                    "bloqueo": limpiar(bloqueo.group(1))[:200] if bloqueo else ""})
     return out
 
 
@@ -439,7 +446,8 @@ def construir(bots_estado=False):
     pend = lambda t: t["estado"] in ("pendiente", "parcial")
     # Todo el plan, sin recortes: cada fila de las colas (R, G, W, C, T, D) con su estado, para el «centro de control» del móvil
     todo = [{"id": t["id"], "tema": t["tema"][:120], "estado": t["estado"], "origen": t["origen"], "detalle": t.get("detalle", "")[:200],
-             "est": t.get("est", ""), "real": t.get("real", ""), "prompt": t.get("prompt", "")} for t in colas]
+             "est": t.get("est", ""), "real": t.get("real", ""), "prompt": t.get("prompt", ""),
+             "cuando": t.get("cuando", ""), "falta": t.get("falta", ""), "bloqueo": t.get("bloqueo", "")} for t in colas]
     return {
         "generado": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "hoy": r00(), "semana": semana(), "plan": {k: {"nombre": v[0], "coste": v[1]} for k, v in PLAN.items()}, "rutinas": rutinas(),
@@ -560,6 +568,10 @@ def planning_md(d):
             L.append(f"**{nombre}** · detalle en `{fichero}`")
             for t in xs:
                 plazo = f" · vence/ocurre {t['plazo']['fecha']} ({t['plazo']['evento'][:40]})" if t.get("plazo") else ""
+                if t.get("cuando"):
+                    plazo += f" · 📅 programada {t['cuando']}"
+                if t.get("bloqueo"):
+                    plazo += f" · bloqueo: {t['bloqueo'][:60]}"
                 L.append(f"- {t['id']}{' ◐ en parte' if t['estado'] == 'parcial' else ''} · {t['tema'][:70]}{plazo}")
     L += ["", "## Auditorías abiertas"]
     a = d.get("auditorias") or {}
