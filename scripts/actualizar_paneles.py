@@ -148,6 +148,28 @@ URL_BCB_TIPO = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=
 URL_BOC_TIPO = "https://www.bankofcanada.ca/valet/observations/V39079/json?start_date={d1}"
 
 
+def rwa_por_cadena(rwa, n=10):
+    """TVL RWA de DefiLlama sumado por cadena (sin las claves «-borrowed», «-staking», «-pool2», que repiten valor).
+    Devuelve las n mayores y, siempre, XRPL y Stellar con su puesto, aunque no entren en el top."""
+    tot = {}
+    for p in rwa:
+        for k, v in (p.get("chainTvls") or {}).items():
+            if "-" in k or k.lower() in ("staking", "borrowed", "pool2", "vesting", "offers"):
+                continue
+            tot[k] = tot.get(k, 0) + (v or 0)
+    orden = sorted(tot.items(), key=lambda kv: -kv[1])
+    total = sum(tot.values()) or 1
+    fila = lambda i, k, v: {"cadena": k, "usd": v, "pct": v / total * 100, "puesto": i + 1,
+                            "n_protocolos": sum(1 for p in rwa if (p.get("chainTvls") or {}).get(k))}
+    filas = [fila(i, k, v) for i, (k, v) in enumerate(orden[:n])]
+    for nombre in ("XRPL", "Stellar"):
+        if nombre not in [f["cadena"] for f in filas]:
+            for i, (k, v) in enumerate(orden):
+                if k == nombre:
+                    filas.append(fila(i, k, v))
+    return {"n_cadenas": len(orden), "top": filas}
+
+
 def leer_rwa():
     protocolos = json.loads(descargar(URL_PROTOCOLOS))
     rwa = [p for p in protocolos if (p.get("category") or "") == "RWA" and p.get("tvl")]
@@ -159,6 +181,7 @@ def leer_rwa():
         "top": [{"nombre": p["name"], "usd": p["tvl"], "cambio_7d": p.get("change_7d"), "cadenas": (p.get("chains") or [])[:3]} for p in rwa[:8]],
         "stellar": sum((p.get("chainTvls") or {}).get("Stellar", 0) for p in rwa),
         "xrpl": sum((p.get("chainTvls") or {}).get("XRPL", 0) for p in rwa),
+        "por_cadena": rwa_por_cadena(rwa),
         "nota": ("Es el valor bloqueado (TVL) en protocolos DeFi que DefiLlama clasifica como RWA: NO es el valor total de activos tokenizados. "
                  "Otras metodologías (p. ej. RWA.xyz) dan cifras mucho mayores porque cuentan fondos y bonos tokenizados fuera de DeFi."),
     }
