@@ -134,6 +134,10 @@ def _firma():
             for p in carpeta.glob("*.md"):
                 n += 1
                 ultimo = max(ultimo, p.stat().st_mtime)
+    for p in CARPETA.glob("*.json"):      # los paneles y datos de explorador/ también cambian la firma (si no, la app sirve la caché vieja)
+        ultimo = max(ultimo, p.stat().st_mtime)
+    for p in CARPETA.glob("*.html"):
+        ultimo = max(ultimo, p.stat().st_mtime)
     return f"{n}-{ultimo}-{_version()}"
 
 
@@ -233,7 +237,7 @@ def _html(conceptos):
         datos["bancos"] = json.loads((CARPETA / "bancos-eba.json").read_text(encoding="utf-8"))
     except Exception:
         datos["bancos"] = None
-    for clave, archivo in (("calificaciones", "calificaciones"), ("deuda_fmi", "deuda-fmi"), ("valoracion", "valoracion"), ("reservas", "reservas")):
+    for clave, archivo in (("calificaciones", "calificaciones"), ("deuda_fmi", "deuda-fmi"), ("valoracion", "valoracion"), ("reservas", "reservas"), ("rwa_cadena_manual", "rwa-por-cadena-manual"), ("cbdc_blockchains", "cbdc-blockchains")):
         try:                          # tablas de los paneles de datos (solo lectura); sin el archivo, esa tabla no sale
             datos[clave] = json.loads((CARPETA / f"{archivo}.json").read_text(encoding="utf-8"))
         except Exception:

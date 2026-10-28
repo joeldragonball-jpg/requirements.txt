@@ -1,0 +1,171 @@
+{
+ "leido": "2026-10-29",
+ "nivel": "S",
+ "respuesta": [
+  "Sí hay CBDC mayoristas y dinero de banco central usado sobre registros distribuidos, pero en redes permisionadas operadas por bancos centrales o consorcios.",
+  "No se encontró ninguna fuente primaria de una CBDC real corriendo en una blockchain pública (XRPL, Stellar, Ethereum, Solana).",
+  "Un particular no puede pagar ni recibir CBDC en una blockchain: los casos sólidos son mayoristas (bancos con cuenta en el banco central)."
+ ],
+ "tipos": {
+  "a": "CBDC emitida por un banco central en un registro distribuido",
+  "b": "Depósito bancario tokenizado",
+  "c": "Stablecoin",
+  "d": "Liquidación de activos tokenizados contra reserva del banco central"
+ },
+ "nota": "Pasada ligera: casi todo viene de resúmenes de buscador y prensa [S]; solo se leyó en directo la página del BCE sobre Pontes. Muchas noticias mezclan los cuatro tipos. Ninguno de los casos con volumen real (mBridge, Pontes, Helvetia) usa XRPL, Stellar, XRP ni XLM.",
+ "filas": [
+  {
+   "proyecto": "Pontes (BCE)",
+   "tipo": "d",
+   "tecnologia": "Enlace entre plataformas DLT de mercado y TARGET/T2 (Hash-Link para DvP); no es una cadena pública",
+   "participa": "Entidades con acceso a T2 y operadores DLT (prensa: Clearstream, SWIAT, Cashlink, Axiology)",
+   "estado": "Producción inicial desde 21-sep-2026; volúmenes no publicados [VERIFICAR]",
+   "fuente": "Página del BCE sobre Pontes (leída 29-oct-2026); operadores: Ledger Insights",
+   "nivel": "P"
+  },
+  {
+   "proyecto": "Appia (BCE)",
+   "tipo": "d",
+   "tecnologia": "Hoja de ruta de largo plazo",
+   "participa": "Eurosistema y mercado",
+   "estado": "Plan/blueprint 2028",
+   "fuente": "BCE, 11-mar-2026 (vía dossier del euro digital)",
+   "nivel": "P"
+  },
+  {
+   "proyecto": "Project Agorá (BIS + 7 bancos centrales + ~40 bancos)",
+   "tipo": "b+d",
+   "tecnologia": "Prototipo: cada banco central en su libro, con capa compartida tokenizada",
+   "participa": "Bancos comerciales y centrales",
+   "estado": "Prototipo/pruebas; informe 27-may-2026; siguiente fase con valor real (Banco de Canadá). Cifra de ~1 M$ en pruebas [VERIFICAR]",
+   "fuente": "BIS 27-may-2026 (vía buscador; bis.org no abrió); Orrick 29-may-2026",
+   "nivel": "S"
+  },
+  {
+   "proyecto": "mBridge (China, Hong Kong, Tailandia, EAU, Arabia Saudí)",
+   "tipo": "a mayorista",
+   "tecnologia": "Cadena permisionada del consorcio; el BIS salió en oct-2024",
+   "participa": "Bancos comerciales participantes",
+   "estado": "Operativo: ~55.500 M$ acumulados, >4.000 operaciones, ~95 % e-CNY (Atlantic Council, ene-2026); Bank of China dice >600.000 M RMB a jun-2026, sin fuente primaria",
+   "fuente": "Atlantic Council vía The Block/Cointelegraph (ene-2026); Ledger Insights",
+   "nivel": "S"
+  },
+  {
+   "proyecto": "e-CNY (China)",
+   "tipo": "a minorista",
+   "tecnologia": "No pública; operadores designados",
+   "participa": "Particulares y empresas vía bancos",
+   "estado": "Producción; paga interés desde 1-ene-2026",
+   "fuente": "Dossier del euro digital (prensa, 2026)",
+   "nivel": "S"
+  },
+  {
+   "proyecto": "Helvetia (Suiza)",
+   "tipo": "a mayorista",
+   "tecnologia": "SIX Digital Exchange (DLT regulada)",
+   "participa": "Bancos miembros de SDX",
+   "estado": "Piloto en producción desde finales de 2023, ampliado hasta mediados de 2027; el SNB aclara que no es compromiso permanente",
+   "fuente": "SNB, página del piloto Helvetia (vía buscador)",
+   "nivel": "P"
+  },
+  {
+   "proyecto": "Singapur: wCBDC, BLOOM, letras MAS tokenizadas",
+   "tipo": "a mayorista + b/c",
+   "tecnologia": "SGD Testnet; BLOOM para pasivos bancarios tokenizados y stablecoins",
+   "participa": "DBS, OCBC, UOB",
+   "estado": "Liquidación en vivo de un préstamo interbancario con wCBDC en nov-2025; letras MAS tokenizadas previstas en 2026 [VERIFICAR si se ejecutaron]",
+   "fuente": "MAS (página Tokenised MAS Bill; informe anual 2025-26)",
+   "nivel": "P"
+  },
+  {
+   "proyecto": "Hong Kong: Ensemble / EnsembleTX",
+   "tipo": "b+d",
+   "tecnologia": "Liquidación en HKD RTGS, 24/7 gradual",
+   "participa": "7 bancos, 13 participantes",
+   "estado": "Piloto de valor real desde 13-nov-2025, durante 2026. e-HKD: sin datos [VERIFICAR]",
+   "fuente": "HKMA, nota 13-nov-2025 y discurso 12-mar-2026",
+   "nivel": "P"
+  },
+  {
+   "proyecto": "Brasil: Drex",
+   "tipo": "a (originalmente)",
+   "tecnologia": "Hyperledger Besu (permisionada); en ago-2025 se aparcó la DLT",
+   "participa": "Bancos",
+   "estado": "Reorientado: el lanzamiento de 2026 sería sin blockchain ni tokenización [VERIFICAR]",
+   "fuente": "Prensa (Jornal Contábil, Finadium, ago-2025)",
+   "nivel": "S"
+  },
+  {
+   "proyecto": "EAU: Dirham digital",
+   "tipo": "a minorista",
+   "tecnologia": "Registro blockchain permisionado (según prensa)",
+   "participa": "Bancos autorizados y monederos",
+   "estado": "Piloto desde 11-nov-2025; lanzamiento previsto oct-dic 2026 [VERIFICAR si ya salió]",
+   "fuente": "Prensa (Payments Intelligence, Khaleej Times, mar-2026)",
+   "nivel": "S"
+  },
+  {
+   "proyecto": "Rusia: rublo digital",
+   "tipo": "a minorista",
+   "tecnologia": "Plataforma del Banco de Rusia (no pública)",
+   "participa": "Grandes bancos y comercios desde 1-sep-2026; el resto en 2027-28",
+   "estado": "Despliegue por fases, obligado por ley",
+   "fuente": "Interfax, Glenbrook, unchained (ago-sep-2026)",
+   "nivel": "S"
+  },
+  {
+   "proyecto": "India: e₹",
+   "tipo": "a",
+   "tecnologia": "—",
+   "participa": "—",
+   "estado": "Sin datos en esta búsqueda [VERIFICAR]",
+   "fuente": "—",
+   "nivel": "S"
+  },
+  {
+   "proyecto": "Kazajistán: tenge digital",
+   "tipo": "a minorista",
+   "tecnologia": "Piloto con registro tipo blockchain; pruebas con BNB Chain anunciadas en oct-2022",
+   "participa": "Bancos de segundo nivel",
+   "estado": "Piloto con usuarios reales; sin evidencia de CBDC en BNB Chain en producción",
+   "fuente": "Banco Nacional de Kazajistán; The Block, 27-oct-2022",
+   "nivel": "S"
+  },
+  {
+   "proyecto": "Palau (Ripple, XRPL)",
+   "tipo": "c (stablecoin, no CBDC)",
+   "tecnologia": "XRPL, red pública",
+   "participa": "~200 empleados públicos y comercios",
+   "estado": "Piloto de 2023, fecha exacta de cierre [VERIFICAR]; fue un token respaldado 1:1 en dólares, no moneda soberana",
+   "fuente": "Business Wire y Forkast, jul-2023 (comunicado de empresa)",
+   "nivel": "S"
+  },
+  {
+   "proyecto": "Bután, Montenegro, Georgia, Colombia (Ripple)",
+   "tipo": "exploratorio",
+   "tecnologia": "Plataforma CBDC de Ripple (tecnología XRPL permisionada)",
+   "participa": "Bancos centrales",
+   "estado": "Acuerdos y pilotos de 2021-2023; sin estado verificado en 2026 [VERIFICAR]",
+   "fuente": "The Block, Kitco, Fintech Futures (2021-2023)",
+   "nivel": "S"
+  },
+  {
+   "proyecto": "Ucrania: e-hryvnia (Stellar)",
+   "tipo": "c / dinero electrónico",
+   "tecnologia": "Stellar",
+   "participa": "TASCOMBANK y Bitt (no el banco central)",
+   "estado": "Piloto dic-2021, informe ene-2023; el NBU emitiría la e-hryvnia por otro carril",
+   "fuente": "Stellar.org (comunicado), NBU",
+   "nivel": "S"
+  }
+ ],
+ "pendiente": [
+  "Volúmenes de Pontes",
+  "mBridge con fuente primaria",
+  "Drex y Dirham digital en 2026",
+  "e-HKD",
+  "India e₹",
+  "Pruebas de bancos centrales en Ethereum, Solana u otras redes públicas"
+ ],
+ "informe": "informes/research/2026-10-29-C51-cbdc-en-blockchains.md"
+}

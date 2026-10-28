@@ -216,7 +216,7 @@ function lugar(j,t){const nj=R.jurisdicciones.find(x=>x.id===j),nt=R.temas.find(
 function cargar(){
   const G=window.parent&&window.parent.DATOS;
   if(!G||!G.radar){$('estado').textContent='Sin datos: esta plantilla se abre desde la Órbita.';return}
-  D=G;R=G.radar;V=G.voces;P=G.paneles;CAL=G.calificaciones;FMI=G.deuda_fmi;VAL=G.valoracion;BAN=G.bancos;RES=G.reservas;
+  D=G;R=G.radar;V=G.voces;P=G.paneles;CAL=G.calificaciones;FMI=G.deuda_fmi;VAL=G.valoracion;BAN=G.bancos;RES=G.reservas;window.RWAM=G.rwa_cadena_manual;window.CBDCB=G.cbdc_blockchains;
   X=G.calendario?{calendario:G.calendario,docs:Object.fromEntries(G.capas.map(c=>[c.id,c.docs]))}:null;
   $('estado').textContent='Datos reales: radar '+R.revisado+' · Órbita '+D.version+(P?' · paneles '+P.leido:'');
   for(const j of R.jurisdicciones){const o=el('option',null,j.nombre);o.value=j.id;$('fpais').append(o)}
@@ -278,11 +278,35 @@ function nCadenas(){
   const s=P.stablecoins;const w=el('div','cols2');
   for(const [k,nom] of [['xrpl','XRP Ledger'],['stellar','Stellar']]){const c=s[k];const d=el('div');d.append(el('h3',null,nom+': '+c.n+' stablecoins, '+usd(c.total)));
     d.append(tabla([{t:'Stablecoin',f:r=>r.simbolo},{t:'En circulación',n:1,f:r=>usd(r.usd)},{t:'% de la cadena',n:1,f:r=>num(r.usd/c.total*100,1)+' %'}],c.top.slice(0,6)));w.append(d)}
+  const q=P.stablecoins_primarias;
+  if(q&&q.monedas){const box=el('div');box.style.gridColumn='1 / -1';box.append(el('h3',null,'Cifra en cadena (fuente primaria [P]) frente a DefiLlama [S]'));
+    const ll=m=>(m.cadena==='XRPL'?s.xrpl:s.stellar).top.find(f=>f.simbolo===m.id);
+    box.append(tabla([{t:'Moneda',f:m=>m.id+' en '+m.cadena},{t:'En cadena [P]',n:1,f:m=>m.id.startsWith('EUR')?num(m.cantidad/1e6,2)+' millones de €':usd(m.cantidad)},
+      {t:'DefiLlama [S]',n:1,f:m=>{const l=ll(m);return l?usd(l.usd):'—'}},
+      {t:'Diferencia',n:1,f:m=>{const l=ll(m);return (!l||m.id.startsWith('EUR'))?'no comparable':cambio((l.usd-m.cantidad)/m.cantidad*100,'%',1)}},
+      {t:'Método',f:m=>m.metodo}],q.monedas));
+    const ce=q.contraste_emisor&&q.contraste_emisor.RLUSD;
+    box.append(el('div','nota-v','Leído '+q.leido+'. Direcciones de emisor sacadas de las webs oficiales de Ripple y Circle. '+(ce?'Ripple (transparencia, '+ce.fecha+'): '+usd(ce.total_todas_cadenas)+' de RLUSD en TODAS las cadenas y '+usd(ce.reservas)+' de reservas; el XRPL es solo una parte. ':'')+(q.pendiente_verificar||'')));w.append(box)}
   return w}
+function nCbdc(){
+  const c=window.CBDCB;const w=el('div');
+  const ul=el('ul');for(const x of c.respuesta)ul.append(el('li',null,x));w.append(ul);
+  const filt=el('div','pills');let tipo='';
+  const cont=el('div');
+  const pinta=()=>{cont.textContent='';cont.append(tabla([{t:'País / proyecto',f:f=>f.proyecto},{t:'Tipo',f:f=>f.tipo},{t:'Tecnología',f:f=>f.tecnologia},{t:'Quién participa',f:f=>f.participa},{t:'Estado',f:f=>f.estado},{t:'Fuente',f:f=>f.fuente},{t:'Nivel',f:f=>nivelBadge(f.nivel)}],c.filas.filter(f=>!tipo||f.tipo.split(/[ +(/]/)[0]===tipo)))};
+  for(const [k,nom] of [['','Todos']].concat(Object.entries(c.tipos).map(([k,v])=>[k,k+' · '+v]))){const b=el('span','pill'+(k===tipo?' on':''),nom);b.onclick=()=>{tipo=k;[...filt.children].forEach(x=>x.classList.toggle('on',x===b));pinta()};filt.append(b)}
+  w.append(filt,cont);pinta();
+  w.append(el('h3',null,'Pendiente de verificar'));const l=el('ul');for(const x of c.pendiente)l.append(el('li',null,x));w.append(l);
+  w.append(el('div','nota-v',c.nota+' Informe: '+c.informe));return w}
 function nRwa(){
   const r=P.rwa;const w=el('div');
   w.append(kpis([[usd(r.total),'Valor bloqueado en '+r.n+' protocolos RWA'],[usd(r.stellar),'De ellos, en Stellar'],[usd(r.xrpl),'De ellos, en el XRPL']]));
   w.append(tabla([{t:'Protocolo',f:x=>x.nombre},{t:'Valor bloqueado',n:1,f:x=>usd(x.usd)},{t:'Frente a hace 7 días',n:1,f:x=>cambio(x.cambio_7d,'%',2)},{t:'Cadenas',f:x=>(x.cadenas||[]).join(', ')}],(r.top||[]).slice(0,12)));
+  if(r.por_cadena){w.append(el('h3',null,'Por blockchain (DefiLlama [S], automático: las 10 mayores de '+r.por_cadena.n_cadenas+', más XRPL y Stellar)'));
+    w.append(tabla([{t:'#',n:1,f:c=>c.puesto},{t:'Cadena',f:c=>c.cadena},{t:'Valor bloqueado',n:1,f:c=>usd(c.usd)},{t:'% del total',n:1,f:c=>num(c.pct,1)+' %'},{t:'Protocolos',n:1,f:c=>c.n_protocolos}],r.por_cadena.top))}
+  if(window.RWAM){const m=window.RWAM;w.append(el('h3',null,'Valor tokenizado por cadena (RWA.xyz [S], manual, leído '+m.leido+')'));
+    w.append(tabla([{t:'Cadena',f:c=>c.cadena},{t:'Distribuido',n:1,f:c=>usd(c.distribuido)},{t:'Representado',n:1,f:c=>usd(c.representado)},{t:'Emisores con cifra',f:c=>c.emisores}],m.cadenas));
+    w.append(el('div','nota-v',m.nota+' '+m.pendiente))}
   w.append(el('div','nota-v',r.nota));return w}
 function nMercado(){
   return kpis((P.mercado.activos||[]).map(a=>[ '$'+num(a.precio,a.precio<10?4:0),a.nombre+' ('+a.simbolo+') · capitalización '+usd(a.capitalizacion),cambio(a.cambio_24h,'% en 24 h',2)]))}
@@ -678,6 +702,7 @@ function pPaneles(){
     add(bloque('Estrecho de Ormuz: tráfico de buques','Cuántos buques cruzan el estrecho por donde pasa buena parte del petróleo. Una caída fuerte indica cierre o bloqueo.',pie(P.ormuz,'IMF PortWatch'),nOrmuz()));
     add(bloque('Gasto en defensa','Porcentaje del PIB que cada país dedica a defensa, frente a hace 10 años.',pie(P.defensa,'Banco Mundial'),nDefensa(),false));
   }
+  if(window.CBDCB)add(bloque('CBDC dentro de blockchains: qué existe y quién puede pagar o recibir','¿Se pueden pagar o recibir CBDC en blockchains? Respuesta corta y casos con tecnología, participantes y estado.',{nivel:'S',t:'Prensa y fuentes oficiales parciales · leído '+window.CBDCB.leido},nCbdc(),false));
   if(CAL)add(bloque('Calificaciones soberanas','Nota de solvencia que dan las agencias a cada país.',{nivel:'P',t:'Agencias y tesoros · leído '+CAL.leido},nCalif()));
   if(FMI)add(bloque('Deuda pública sobre el PIB (FMI)','Deuda total del gobierno como % del PIB; 2026 y años siguientes son previsiones.',{nivel:'P',t:FMI.edicion+' · leído '+FMI.leido},nFmi()));
   if(RES)add(bloque('Reservas de divisas, oro y balances de bancos centrales',null,{nivel:'P',t:'FMI, World Gold Council, bancos centrales · leído '+RES.leido},nReservas(),false));
