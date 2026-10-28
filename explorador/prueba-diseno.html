@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
-<title>Prueba de diseño de la Órbita (C41C, v3)</title>
+<title>Prueba de diseño de la Órbita (C41C, v4)</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
 :root{--bg:#0e1420;--panel:#161e2e;--lin:#2a3550;--tx:#e6ebf5;--tx2:#9fb0cf;--ac:#5aa9e6;--nul:#1b2336;--sube:#3fb68b;--baja:#e06c6c}
@@ -15,14 +15,14 @@ nav button.on{background:var(--ac);color:#06101c;font-weight:600}
 .barra{display:flex;gap:14px;flex-wrap:wrap;align-items:center;padding:7px 20px;background:var(--panel);border-bottom:1px solid var(--lin);font-size:13px;color:var(--tx2)}
 select,button,input[type=text]{background:var(--bg);color:var(--tx);border:1px solid var(--lin);border-radius:6px;padding:4px 8px;font:inherit}
 button.on{background:var(--ac);color:#06101c}
-main{padding:14px 20px}
+main{padding:14px 20px;max-width:2400px;margin:0 auto}
 section.vista{display:none}section.vista.on{display:block}
 .caja{background:var(--panel);border:1px solid var(--lin);border-radius:10px;padding:12px;margin-bottom:12px}
 .caja>h2:first-child{margin-top:0}
-.grid2{display:grid;grid-template-columns:1fr 360px;gap:14px;align-items:start}
-.cols2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.cols4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) clamp(340px,24vw,520px);gap:14px;align-items:start}
+.cols2{display:grid;grid-template-columns:repeat(auto-fit,minmax(520px,1fr));gap:12px;align-items:start}
+.cols3{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:12px;align-items:start}
+.cols4{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;align-items:start}
 .kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:6px 0}
 .kpi{background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:7px 10px}
 .kpi b{display:block;font-size:18px}.kpi span{font-size:12px;color:var(--tx2)}
@@ -48,8 +48,8 @@ td.c .ch{display:flex;align-items:center;justify-content:center;gap:4px;height:1
 .nodo{position:absolute;top:8px;width:13px;height:13px;border-radius:50%;border:2px solid #0008;cursor:pointer;transform:translateX(-50%)}
 .nodo.sel{outline:2px solid #fff}
 .ruler{margin-left:190px;display:flex;justify-content:space-between;font-size:11px;color:var(--tx2)}
-.lado{background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:10px;font-size:13px;min-height:200px;position:sticky;top:8px;max-height:85vh;overflow:auto}
-.noticias{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.lado{background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:10px;font-size:13px;position:sticky;top:8px;max-height:85vh;overflow:auto}
+.noticias{display:grid;gap:12px;align-items:start}
 .nota{border-left:4px solid;padding:4px 8px;margin-bottom:6px;background:var(--bg);font-size:12.5px}
 .n24{border-color:#e05050}.n7{border-color:#e8943a}.n30{border-color:#8a94a8}
 .ej{background:#3a2d10;color:#ffd98a;padding:1px 6px;border-radius:4px;font-size:11px}
@@ -60,7 +60,7 @@ td.c .ch{display:flex;align-items:center;justify-content:center;gap:4px;height:1
 .pill{border:1px solid var(--lin);border-radius:16px;padding:4px 11px;cursor:pointer;background:var(--bg);color:var(--tx2);font-size:13px}
 .pill.on{color:var(--tx);border-width:2px}
 .pill i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
-.lista{display:grid;gap:6px}
+.lista{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(520px,1fr));align-items:start}
 .item{background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:7px 10px}
 .hecho{background:var(--bg);border-left:3px solid var(--lin);border-radius:4px;padding:5px 8px;margin-bottom:5px;font-size:13px}
 .cab-capa{border-left:5px solid var(--lin)}
@@ -78,9 +78,54 @@ details.bl{margin-bottom:10px}details.bl>summary{cursor:pointer;font-weight:600;
 .bars div{flex:1;background:var(--ac);min-width:6px;position:relative}
 .bars small{position:absolute;bottom:-16px;left:0;font-size:10px;color:var(--tx2)}
 svg.sp{vertical-align:middle}
+.masonry{display:block}
+.mbanda{display:flex;gap:14px;align-items:flex-start;margin-bottom:10px}
+.mcol{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:10px}
+.masonry>details.bl,.mcol>details.bl,.mcol>.grp{overflow-x:auto;min-width:0}
+.masonry>details.bl{margin-bottom:10px}
+.rej{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:12px;align-items:start}
+.ficha{display:block}.ficha .grp{min-width:0}
+.ficha h3:first-child{margin-top:0}
+.vacias{display:flex;flex-wrap:wrap;gap:6px 14px;padding:6px 10px;margin-bottom:12px;background:var(--panel);border:1px dashed var(--lin);border-radius:8px;font-size:12.5px;color:var(--tx2)}
+.vacias b{color:var(--tx)}
+.mes{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:6px 10px;align-items:start;margin-bottom:6px}
+.mes .hecho{margin:0}
+.alt{border-top:1px dashed var(--lin);margin-top:8px;padding-top:6px}
+.alt h4{margin:0 0 4px;font-size:12px;color:var(--tx2);font-weight:600}
+.clic{cursor:pointer}
+.clic:hover{background:#1c2740}
+.cuentas{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+/* ---- v4: pulido y movimiento sobrio ---- */
+table tr{transition:background-color .15s}
+table tr:hover td{background:#1b2640}
+table.mat tr:hover td.c{background:inherit}
+table.mat td.c:not(.nodato){transition:transform .12s,filter .12s}
+table.mat td.c:not(.nodato):hover{filter:brightness(1.25);transform:scale(1.06);position:relative;z-index:1}
+.kpi,.tarj,.hecho,.item,.nota,.pill{transition:border-color .15s,background-color .15s,transform .15s}
+.kpi:hover,.tarj:hover,.item:hover{border-color:var(--ac);transform:translateY(-1px)}
+.hecho:hover,.nota:hover{background:#1b2640}
+.pill:hover{border-color:var(--ac);color:var(--tx)}
+nav button{transition:background-color .15s,color .15s}nav button:hover:not(.on){color:var(--tx);background:#1b2640}
+.nodo{transition:transform .12s}.nodo:hover{transform:translateX(-50%) scale(1.35)}
+.vista.ent{animation:ent .28s ease-out}
+.vista.fx .caja,.vista.fx .vacias,.vista.fx .pills{animation:sube .5s ease-out both}
+.vista.fx>.caja:nth-child(2),.vista.fx>.cols2>.caja:nth-child(2),.vista.fx>.cols3>.caja:nth-child(2){animation-delay:.08s}
+.vista.fx>.caja:nth-child(3),.vista.fx>.cols3>.caja:nth-child(3){animation-delay:.16s}
+.vista.fx>.caja:nth-child(n+4){animation-delay:.22s}
+.vista.fx .kpi,.vista.fx .tarj{animation:sube .45s ease-out both}
+.vista.fx .kpi:nth-child(2){animation-delay:.04s}.vista.fx .kpi:nth-child(3){animation-delay:.08s}.vista.fx .kpi:nth-child(4){animation-delay:.12s}.vista.fx .kpi:nth-child(n+5){animation-delay:.16s}
+.vista.fx .barrita{transform-origin:left;animation:ancho .8s ease-out both .2s}
+.vista.fx .bars div{transform-origin:bottom;animation:alto .7s ease-out both .2s}
+.vista.fx svg.sp polyline{stroke-dasharray:1;stroke-dashoffset:1;animation:dibuja 1s ease-out forwards .2s}
+@keyframes ent{from{opacity:0}to{opacity:1}}
+@keyframes sube{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes ancho{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes alto{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes dibuja{to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style></head><body>
 <header>
-<h1>Prueba de diseño de la Órbita (C41C · v3) <span class="ej">prototipo</span></h1>
+<h1>Prueba de diseño de la Órbita (C41C · v4) <span class="ej">prototipo</span></h1>
 <div class="aviso">Solo para ordenador. Usa datos reales: lee los JSON de <code>explorador/</code> y <code>prueba-datos.json</code> (calendario y documentos por capa, generado con <code>scripts/exportar_prueba_orbita.py</code>) en modo lectura; no escribe nada ni está enlazado desde el resto. Informativo, no es recomendación de compra ni venta. No incluye la vista animada de raíles (sigue en <code>mapa.html</code>, sin tocar) ni el contraste privado con tu tesis (solo existe en tu PC).</div>
 </header>
 <nav id="nav"></nav>
@@ -126,7 +171,7 @@ function spark(arr,w=90,h=22,col='#5aa9e6'){
   const mn=Math.min(...a),mx=Math.max(...a),r=mx-mn||1;
   const pts=a.map((v,i)=>(i/(a.length-1)*(w-4)+2).toFixed(1)+','+(h-3-(v-mn)/r*(h-6)).toFixed(1)).join(' ');
   const ns='http://www.w3.org/2000/svg';const s=document.createElementNS(ns,'svg');s.setAttribute('width',w);s.setAttribute('height',h);s.setAttribute('class','sp');
-  const p=document.createElementNS(ns,'polyline');p.setAttribute('points',pts);p.setAttribute('fill','none');p.setAttribute('stroke',col);p.setAttribute('stroke-width','1.6');s.append(p);
+  const p=document.createElementNS(ns,'polyline');p.setAttribute('points',pts);p.setAttribute('pathLength','1');p.setAttribute('fill','none');p.setAttribute('stroke',col);p.setAttribute('stroke-width','1.6');s.append(p);
   const t=document.createElementNS(ns,'title');t.textContent='mín '+num(mn,2)+' · máx '+num(mx,2);s.append(t);return s}
 function barra(p,col){const b=el('span','barrita');b.style.width=Math.max(2,Math.min(100,p))+'px';if(col)b.style.background=col;return b}
 function tabla(cols,filas){
@@ -174,7 +219,21 @@ async function cargar(){
   $('dsem').onclick=()=>{modo='sem';$('dsem').className='on';$('ddat').className='';pintarTodo()};
   $('ddat').onclick=()=>{modo='dat';$('ddat').className='on';$('dsem').className='';pintarTodo()};
   ir(tab)}
-function ir(id){tab=id;location.hash=id;for(const [i] of TABS){$('v-'+i).classList.toggle('on',i===id);$('t-'+i).classList.toggle('on',i===id)}pintarTodo()}
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches,vistos=new Set();
+function ir(id){tab=id;location.hash=id;for(const [i] of TABS){$('v-'+i).classList.toggle('on',i===id);$('t-'+i).classList.toggle('on',i===id)}
+  const sec=$('v-'+id);sec.classList.remove('ent','fx');void sec.offsetWidth;const primera=!vistos.has(id);
+  if(!RM){sec.classList.add('ent');if(primera){sec.classList.add('fx');clearTimeout(sec.tfx);sec.tfx=setTimeout(()=>sec.classList.remove('fx'),1800)}}
+  pintarTodo();if(primera){vistos.add(id);contar(sec)}}
+/* las cifras grandes cuentan hacia arriba una sola vez, la primera vez que se ve cada pestaña */
+function contar(sec){
+  if(RM)return;
+  sec.querySelectorAll('.kpi b,.cifra').forEach(e=>{
+    if(e.children.length)return;const t=e.textContent;const m=t.match(/\d[\d.]*(?:,\d+)?/);if(!m)return;
+    const dec=m[0].includes(',')?m[0].split(',')[1].length:0;const fin=parseFloat(m[0].replace(/\./g,'').replace(',','.'));if(!isFinite(fin)||fin===0)return;
+    const pre=t.slice(0,m.index),suf=t.slice(m.index+m[0].length),t0=performance.now();
+    const paso=ahora=>{const k=Math.min(1,(ahora-t0)/800),v=fin*(1-Math.pow(1-k,3));
+      e.textContent=k<1?pre+v.toLocaleString('es-ES',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf:t;if(k<1)requestAnimationFrame(paso)};
+    requestAnimationFrame(paso)})}
 function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paneles:pPaneles})[tab]()}
 
 /* ---------- bloques de datos reutilizables (Capas y Paneles) ---------- */
@@ -251,10 +310,10 @@ function nWatch(){
 function nVal(){
   return tabla([{t:'Sector',f:r=>r.sector},{t:'Ticker',f:r=>r.ticker},{t:'Empresa',f:r=>r.empresa},{t:'Precio',n:1,f:r=>num(r.precio,2)},{t:'PER (veces beneficio)',n:1,f:r=>num(r.per,1)},{t:'EV/EBITDA',n:1,f:r=>num(r.ev_ebitda,1)},{t:'Rentabilidad por caja libre',n:1,f:r=>num(r.fcf_yield_pct,1)+' %'},{t:'Periodo',f:r=>r.periodo}],VAL.filas)}
 function nReservas(){
-  const w=el('div');
-  const c=RES.cofer;w.append(el('h3',null,c.titulo+' · '+c.periodo+' (antes: '+c.anterior+')'),el('div','que','Total: '+c.total+'. Peso de cada moneda en las reservas oficiales.'),tabla([{t:'Moneda',f:x=>x[0]},{t:c.periodo,n:1,f:x=>x[1]},{t:c.anterior,n:1,f:x=>x[2]}],c.monedas));
-  const o=RES.oro;w.append(el('h3',null,o.titulo),el('div','que',o.fecha),kpis(o.kpis.map(k=>[k[0],k[1]])),tabla([{t:'País',f:x=>x[0]},{t:'Compra neta',n:1,f:x=>x[1]},{t:'Reservas de oro',n:1,f:x=>x[2]}],o.filas));
-  for(const k of ['bancos_centrales','reservas']){const s=RES[k];w.append(el('h3',null,s.titulo),tabla([{t:'Quién',f:x=>x[0]},{t:'Qué tiene',f:x=>x[1]},{t:'Fecha',f:x=>x[2]},{t:'Nivel',f:x=>nivelBadge(x[3])},{t:'Fuente',f:x=>{if(!x[4])return '—';const a=el('a',null,'abrir');a.href=x[4];a.target='_blank';return a}}],s.filas))}
+  const w=el('div','rej');const gp=()=>{const d=el('div');w.append(d);return d};
+  const c=RES.cofer;let d=gp();d.append(el('h3',null,c.titulo+' · '+c.periodo+' (antes: '+c.anterior+')'),el('div','que','Total: '+c.total+'. Peso de cada moneda en las reservas oficiales.'),tabla([{t:'Moneda',f:x=>x[0]},{t:c.periodo,n:1,f:x=>x[1]},{t:c.anterior,n:1,f:x=>x[2]}],c.monedas));
+  const o=RES.oro;d=gp();d.append(el('h3',null,o.titulo),el('div','que',o.fecha),kpis(o.kpis.map(k=>[k[0],k[1]])),tabla([{t:'País',f:x=>x[0]},{t:'Compra neta',n:1,f:x=>x[1]},{t:'Reservas de oro',n:1,f:x=>x[2]}],o.filas));
+  for(const k of ['bancos_centrales','reservas']){const q=RES[k];d=gp();d.append(el('h3',null,q.titulo),tabla([{t:'Quién',f:x=>x[0]},{t:'Qué tiene',f:x=>x[1]},{t:'Fecha',f:x=>x[2]},{t:'Nivel',f:x=>nivelBadge(x[3])},{t:'Fuente',f:x=>{if(!x[4])return '—';const a=el('a',null,'abrir');a.href=x[4];a.target='_blank';return a}}],q.filas))}
   return w}
 
 /* ---------- 1 · Resumen ---------- */
@@ -300,50 +359,73 @@ function pCapas(){
   const nc=R.celdas.length;if(c.id==='reg')ch.append(el('span','chip','Radar: '+nc+' celdas (pestaña Matriz)'));
   cab.append(ch);s.append(cab);
   /* los 4 cuadros de hechos, en paralelo */
-  const hs=el('div','cols4');
+  const hs=el('div','cols4');const vac=el('div','vacias');
   for(const [k,tit,ek] of ORD){
     const col=el('div','caja');const colr=ek?colEst(ek):'#e8b64a';col.style.borderTop='3px solid '+colr;
     const lst=(c[k]||[]).filter(h=>certOk(h.k||'P'));
+    if(!lst.length){const tot=(c[k]||[]).length;const sp=el('span');sp.append(el('b',null,tit+': '),document.createTextNode(tot?'0 con este filtro de certeza ('+tot+' sin filtrar)':'sin hechos en esta capa; en el resto de capas hay '+D.capas.reduce((a,x)=>a+(x[k]||[]).length,0)));vac.append(sp);continue}
     col.append(el('h3',null,tit+' ('+lst.length+')'));
-    if(!lst.length)col.append(el('div','nota-v','Nada con este filtro.'));
     for(const h of lst){const d=el('div','hecho');d.style.borderLeftColor=colr;
       d.append(el('span','badge '+bcl(h.k),h.k||'?'),document.createTextNode(h.t));
       const m=el('div');m.append(chips((h.ent||[]).concat(h.act||[],h.pais||[])));d.append(m);col.append(d)}
     hs.append(col)}
-  s.append(hs);
+  if(hs.children.length)s.append(hs);if(vac.children.length)s.append(vac);
   /* datos al día + cifras + ficha del analista */
   const f=c.ficha||{};
-  const g3=el('div','cols3');
+  const g3=el('div','cols2');
   const cDatos=el('div','caja');cDatos.append(el('h2',null,'Datos al día'));datosCapa(cDatos,c.id);
   const cCif=el('div','caja');cCif.append(el('h2',null,'Cifras clave'));
-  const gc=el('div','kpis');gc.style.gridTemplateColumns='1fr';
+  const gc=el('div','kpis');gc.style.gridTemplateColumns='repeat(auto-fill,minmax(230px,1fr))';
   for(const x of c.cifras||[]){const k=el('div','tarj');k.append(el('div','cifra',x.v),el('div',null,x.e),el('div','nota-v',x.f));if(x.ent||x.pais)k.append(chips((x.ent||[]).concat(x.pais||[])));gc.append(k)}
   cCif.append(gc);
-  const cFi=el('div','caja');cFi.append(el('h2',null,'Ficha del analista'));
+  const cFi=el('div','caja');cFi.append(el('h2',null,'Ficha del analista'));const fi=masonry('ficha',innerWidth>=1500?3:innerWidth>=1000?2:1);cFi.append(fi);
   const rot={hace:'Qué hace',controla:'Quién la controla',falta:'Lo que falta o no se sabe',madurez:'Madurez',favor:'A favor',contra:'En contra',vigilar:'Qué vigilar',informes:'Informes'};
-  for(const k in f){if(f[k]==null||(Array.isArray(f[k])&&!f[k].length))continue;cFi.append(el('h3',null,rot[k]||k));
-    if(k==='madurez'&&typeof f[k]==='object'){cFi.append(el('div',null,'Nivel '+f[k].n+' de 5: '+f[k].t))}else cFi.append(gen(f[k]))}
-  g3.append(cDatos,cCif,cFi);s.append(g3);
+  for(const k in f){if(f[k]==null||(Array.isArray(f[k])&&!f[k].length))continue;const gp=el('div','grp');gp.append(el('h3',null,rot[k]||k));
+    if(k==='madurez'&&typeof f[k]==='object'){gp.append(el('div',null,'Nivel '+f[k].n+' de 5: '+f[k].t))}else gp.append(gen(f[k]));fi.append(gp)}
+  if(!fi.textContent.length)fi.appendChild(el('p','nota-v','Esta capa aún no tiene ficha del analista; los hechos y cifras están en los cuadros de arriba.'));
+  if(!gc.children.length)gc.append(el('p','nota-v','Esta capa aún no tiene cifras clave propias. Hechos registrados: '+vs.length+'.'));
+  s.append(cDatos,cCif,cFi);
   /* fechas próximas y hechos */
   const g2=el('div','cols2');
   const cEv=el('div','caja');const evs=X?X.calendario.eventos.filter(e=>e.capa===c.id&&e.fin>=HOYS):[];
   cEv.append(el('h2',null,'Fechas próximas de esta capa ('+evs.length+')'));
-  cEv.append(evs.length?tabla([{t:'Fecha',f:e=>e.ini===e.fin?e.ini:e.ini+' → '+e.fin},{t:'Qué',f:e=>{const q=el('span');q.append(el('b',null,(e.impacto==='alto'?'★ ':'')+e.titulo),el('div','nota-v',e.detalle));return q}},{t:'Fuente',f:e=>e.fuente}],evs):el('p','nota-v','Ninguna.'));
+  cEv.append(evs.length?tabla([{t:'Fecha',f:e=>e.ini===e.fin?e.ini:e.ini+' → '+e.fin},{t:'Qué',f:e=>{const q=el('span');q.append(el('b',null,(e.impacto==='alto'?'★ ':'')+e.titulo),el('div','nota-v',e.detalle));return q}},{t:'Fuente',f:e=>e.fuente}],evs):altEventos(c.id));
   const cMov=el('div','caja');cMov.append(el('h2',null,'Hechos de esta capa ('+vs.length+')'));
-  cMov.append(vs.length?tabla([{t:'Fecha',f:m=>m.fecha},{t:'Actor',f:m=>m.actor},{t:'Hecho',f:m=>m.texto},{t:'Estado',f:m=>{const q=el('span');const i=el('i');i.style.cssText='display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;background:'+colEst(m.estado);q.append(i,document.createTextNode((D.estados[m.estado]||{}).nombre||m.estado));return q}}],vs):el('p','nota-v','Ninguno con este filtro.'));
-  g2.append(cEv,cMov);s.append(g2);
+  cMov.append(vs.length?tabla([{t:'Fecha',f:m=>m.fecha},{t:'Actor',f:m=>m.actor},{t:'Hecho',f:m=>m.texto},{t:'Estado',f:m=>{const q=el('span');const i=el('i');i.style.cssText='display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;background:'+colEst(m.estado);q.append(i,document.createTextNode((D.estados[m.estado]||{}).nombre||m.estado));return q}}],vs):altHechos(c.id));
+  g2.style.gridTemplateColumns='minmax(0,.8fr) minmax(0,1.2fr)';g2.append(cEv,cMov);s.append(g2);
   /* biblioteca */
   const dc=X&&X.docs[c.id];
   if(dc){const cb=el('div','caja');cb.append(el('h2',null,'Biblioteca de esta capa: '+dc.inv.length+' documentos y '+dc.glo.length+' términos'));
-    cb.append(el('div','cols2')) ;const cc=cb.lastChild;
-    const a=el('div');a.append(el('h3',null,'Documentos'));for(const d of dc.inv){const it=el('div','hecho');it.append(el('span','badge',d.tipo),el('b',null,d.titulo));const r=d.resumen.length>320?d.resumen.slice(0,320)+'…':d.resumen;it.append(el('div','nota-v',r));it.append(el('div','nota-v',d.archivo));a.append(it)}
-    const b=el('div');b.append(el('h3',null,'Glosario'));for(const t of dc.glo){const it=el('div','hecho');it.append(el('b',null,t.t+': '),document.createTextNode(t.d.length>260?t.d.slice(0,260)+'…':t.d));b.append(it)}
-    cc.append(a,b);s.append(cb)}
+    const cc=cb;
+    const a=el('div','lista');a.style.gridTemplateColumns='repeat(auto-fill,minmax(440px,1fr))';a.before=null;const ha=el('h3',null,'Documentos');for(const d of dc.inv){const it=el('div','hecho');it.append(el('span','badge',d.tipo),el('b',null,d.titulo));const r=d.resumen.length>320?d.resumen.slice(0,320)+'…':d.resumen;it.append(el('div','nota-v',r));it.append(el('div','nota-v',d.archivo));a.append(it)}
+    const b=el('div','lista');b.style.gridTemplateColumns='repeat(auto-fill,minmax(380px,1fr))';const hb=el('h3',null,'Glosario');for(const t of dc.glo){const it=el('div','hecho');it.append(el('b',null,t.t+': '),document.createTextNode(t.d.length>260?t.d.slice(0,260)+'…':t.d));b.append(it)}
+    cc.append(ha,a,hb,b);s.append(cb)}
 }
+function altEventos(id){
+  const d=el('div');d.append(el('p','nota-v','Ninguna fecha próxima registrada para esta capa.'));
+  const ev=X?X.calendario.eventos.filter(e=>e.fin>=HOYS).slice(0,4):[];
+  if(ev.length){const a=el('div','alt');a.append(el('h4',null,'Mientras tanto, las próximas fechas de otras capas'));a.append(tabla([{t:'Fecha',f:e=>e.ini},{t:'Qué',f:e=>e.titulo},{t:'Capa',f:e=>capaNom(e.capa)}],ev));d.append(a)}
+  return d}
+function altHechos(id){
+  const d=el('div');d.append(el('p','nota-v','Ningún hecho de esta capa con los filtros actuales.'));
+  const l=D.movimientos.filter(m=>m.capa!==id&&paisOk(m)).sort((a,b)=>a.fecha<b.fecha?1:-1).slice(0,4);
+  if(l.length){const a=el('div','alt');a.append(el('h4',null,'Mientras tanto, lo último en otras capas'));a.append(tabla([{t:'Fecha',f:m=>m.fecha},{t:'Capa',f:m=>capaNom(m.capa)},{t:'Hecho',f:m=>m.texto}],l));d.append(a)}
+  return d}
+/* columnas equilibradas por JS (las columnas CSS dejaban zonas sin pintar al hacer scroll) */
+function ncols(){return innerWidth>=2200?3:innerWidth>=1150?2:1}
+function peso(x){const t=x.textContent.length;return 40+(x.open===false?0:t/7+x.querySelectorAll('tr,li,.kpi,.hecho').length*14)}
+function masonry(cls,fijas){
+  const c=el('div',cls||'masonry');let banda=null;
+  c.append=function(...ns){for(const x of ns){
+    if(x.classList&&x.classList.contains('ancho')){banda=null;c.appendChild(x);continue}
+    if(!banda){banda=el('div','mbanda');banda.cols=[];const n=fijas||ncols();for(let i=0;i<n;i++){const k=el('div','mcol');k.peso=0;banda.cols.push(k);banda.appendChild(k)}c.appendChild(banda)}
+    const k=banda.cols.reduce((a,b)=>a.peso<=b.peso?a:b);k.appendChild(x);k.peso+=peso(x)}};
+  return c}
 /* qué «datos al día» enseña cada capa (igual que la Órbita actual) */
 function datosCapa(pad,id){
   if(!P){pad.append(el('p','nota-v','Falta paneles.json.'));return}
-  const caj=(tit,nodo,pie)=>pad.append(bloque(tit,null,pie,nodo));
+  const mz=masonry();pad.append(mz);const anchos=/Bonos|Deuda|Quién tiene|Liquidez/;
+  const caj=(tit,nodo,pie)=>{const b=bloque(tit,null,pie,nodo);if(anchos.test(tit))b.classList.add('ancho');mz.append(b)};
   const pie=(b,t)=>({nivel:b.nivel,t:t+' · leído '+(b.leido||P.leido)});
   if(id==='reg')caj('Tipos de interés de los bancos centrales',nTipos(),pie(P.tipos_vivos,'Bancos centrales'));
   else if(id==='deuda'){caj('Bonos del Estado: rendimiento a cada plazo',nBonos(['ESP','FRA','USA','JPN','EUR','GBR']),{t:'Rendimiento anual que paga cada bono; el cambio es frente al día anterior, en puntos básicos (100 pb = 1 punto)'});
@@ -356,7 +438,8 @@ function datosCapa(pad,id){
   else if(id==='cbdc')caj('Quién tiene deuda de EE. UU.',nTic(8),pie(P.tic,'Tesoro de EE. UU. (TIC)'));
   else if(id==='liquidez'){caj('Liquidez: cantidad de dinero',nLiquidez(),pie(P.liquidez,'FRED, BCE'));caj('Tipos oficiales de los bancos centrales',nTipos(),pie(P.tipos_vivos,'Bancos centrales'))}
   else if(id==='energia')caj('Estrecho de Ormuz',nOrmuz(),pie(P.ormuz,'IMF PortWatch'));
-  else pad.append(el('p','nota-v','Esta capa no tiene paneles de datos al día; sus hechos y cifras están en los cuadros de arriba.'));
+  else{mz.remove();pad.append(el('p','nota-v','Esta capa no tiene paneles de datos al día; sus hechos y cifras están en los cuadros de arriba.'));
+    if(P){pad.append(el('div','alt'));pad.lastChild.append(el('h4',null,'Mientras tanto, cifras generales de mercado (CoinGecko, '+P.leido+')'),nMercado())}}
 }
 
 /* ---------- 3 · Línea de tiempo ---------- */
@@ -377,14 +460,14 @@ function pTiempo(){
   const span=HOY-ini;const ruler=el('div','ruler');
   for(let k=0;k<=4;k++)ruler.append(el('span',null,new Date(+ini+span*k/4).toISOString().slice(0,7)));
   izq.append(ruler);
-  let tot=0;const bq=buscaTL.trim().toLowerCase();
+  let tot=0;const vis=[];const bq=buscaTL.trim().toLowerCase();
   for(const cp of D.capas){
     if(capasOff.has(cp.id))continue;
     const ca=el('div','carril');ca.append(el('div','nom',cp.nombre));const eje=el('div','eje');
     for(const mv of D.movimientos){
       if(mv.capa!==cp.id||!paisOk(mv))continue;
       if(bq&&!(mv.actor+' '+mv.texto+' '+(mv.act||[]).join(' ')+' '+(mv.ent||[]).join(' ')).toLowerCase().includes(bq))continue;
-      const t=new Date(mv.fecha+'T00:00:00');if(t<ini||t>HOY)continue;tot++;
+      const t=new Date(mv.fecha+'T00:00:00');if(t<ini||t>HOY)continue;tot++;vis.push(mv);
       const n=el('div','nodo');n.style.left=((t-ini)/span*100)+'%';n.style.background=colEst(mv.estado);
       if(selMov===mv)n.classList.add('sel');n.title=mv.fecha+' · '+mv.actor;
       n.onclick=()=>{selMov=mv;pTiempo()};eje.append(n)}
@@ -392,7 +475,13 @@ function pTiempo(){
   const lg=el('div','leyenda');for(const k in D.estados){const sp=el('span');const i=el('i');i.style.background=D.estados[k].color;sp.append(i,D.estados[k].nombre);lg.append(sp)}
   izq.append(lg,el('div','nota-v',tot+' movimientos visibles de '+D.movimientos.length+'.'));
   const lado=el('div','lado');
-  if(!selMov)lado.textContent='Haz clic en un punto para ver el hecho completo, la fuente y el nivel de certeza.';
+  if(!selMov){
+    lado.append(el('b',null,'Haz clic en un punto para ver el hecho completo, la fuente y el nivel de certeza.'));
+    const cn={};vis.forEach(m=>cn[m.estado]=(cn[m.estado]||0)+1);const ch=el('div','cuentas');
+    for(const k in D.estados)if(cn[k]){const x=el('span','chip',D.estados[k].nombre+': '+cn[k]);x.style.borderColor=D.estados[k].color;ch.append(x)}
+    lado.append(ch,el('h3',null,'Lo más reciente en pantalla'));
+    for(const m of vis.slice().sort((a,b)=>a.fecha<b.fecha?1:-1).slice(0,8)){const d=el('div','hecho clic');d.style.borderLeftColor=colEst(m.estado);d.append(el('b',null,m.fecha+' · '+m.actor+': '),document.createTextNode(m.texto.length>150?m.texto.slice(0,150)+'…':m.texto));d.onclick=()=>{selMov=m;pTiempo()};lado.append(d)}
+    if(!vis.length)lado.append(el('p','nota-v','Ningún movimiento con este rango o filtro; prueba «Todo el periodo».'))}
   else ficha(lado,selMov);
   g.append(izq,lado);c.append(g);s.append(c);
 }
@@ -417,11 +506,12 @@ function pCalendario(){
   c.append(pl);
   const ev=X.calendario.eventos.filter(e=>e.fin>=HOYS&&(!calTema||e.tema===calTema));
   c.append(el('div','nota-v',ev.length+' fechas. ★ = impacto alto. Los anuncios no son hechos hasta que se confirmen.'));
-  let mes='';
-  for(const e of ev){const m=e.ini.slice(0,7);if(m!==mes){mes=m;c.append(el('h3',null,m))}
+  let mes='',gm=null;
+  if(!ev.length){const a=el('div','alt');a.append(el('h4',null,'Sin fechas para este tema; las próximas de cualquier tema'));a.append(tabla([{t:'Fecha',f:e=>e.ini},{t:'Qué',f:e=>e.titulo},{t:'Capa',f:e=>capaNom(e.capa)}],X.calendario.eventos.filter(e=>e.fin>=HOYS).slice(0,6)));c.append(a)}
+  for(const e of ev){const m=e.ini.slice(0,7);if(m!==mes){mes=m;c.append(el('h3',null,m));gm=el('div','mes');c.append(gm)}
     const t=X.calendario.temas[e.tema]||{color:'#888',nombre:e.tema};
     const d=el('div','hecho');d.style.borderLeftColor=t.color;
-    d.append(el('b',null,(e.ini===e.fin?e.ini:e.ini+' → '+e.fin)+' · '+(e.impacto==='alto'?'★ ':'')+e.titulo+(e.aprox?' (fecha aproximada)':'')),el('div',null,e.detalle),el('div','nota-v',capaNom(e.capa)+' · '+t.nombre+' · fuente: '+e.fuente));c.append(d)}
+    d.append(el('b',null,(e.ini===e.fin?e.ini:e.ini+' → '+e.fin)+' · '+(e.impacto==='alto'?'★ ':'')+e.titulo+(e.aprox?' (fecha aproximada)':'')),el('div',null,e.detalle),el('div','nota-v',capaNom(e.capa)+' · '+t.nombre+' · fuente: '+e.fuente));gm.append(d)}
   s.append(c);
 }
 
@@ -459,7 +549,15 @@ function pMatriz(){
     m.append(tr)}
   izq.append(m);
   const lado=el('div','lado');
-  if(!selCelda)lado.textContent='Haz clic en una celda: aquí sale el hecho completo, lo que falta, la próxima fecha, los hitos y los informes. Pasar el ratón enseña un resumen.';
+  if(!selCelda){
+    lado.append(el('b',null,'Haz clic en una celda para ver el hecho completo, lo que falta, la próxima fecha, los hitos y los informes. Pasar el ratón enseña un resumen.'));
+    const cs=R.celdas.filter(x=>x.etapa!=null&&(!fp||x.jur===fp));const cn={};cs.forEach(x=>cn[x.etapa]=(cn[x.etapa]||0)+1);
+    lado.append(el('h3',null,'Celdas por etapa ('+cs.length+')'));
+    for(const k in R.escala){const f=el('div');const sp=el('span','barrita');sp.style.background=COL[k];sp.style.width=Math.max(2,(cn[k]||0)/Math.max(1,cs.length)*200)+'px';f.append(document.createTextNode(k+' '+R.escala[k]+': '+(cn[k]||0)+' '),sp);lado.append(f)}
+    lado.append(el('h3',null,'Revisadas más recientemente'));
+    for(const x of cs.filter(x=>x.revisado).sort((a,b)=>a.revisado<b.revisado?1:-1).slice(0,6)){
+      const j=R.jurisdicciones.find(q=>q.id===x.jur),t=R.temas.find(q=>q.id===x.tema);if(!j||!t)continue;
+      const d=el('div','hecho clic');d.style.borderLeftColor=COL[x.etapa];d.append(el('b',null,j.nombre+' · '+t.nombre),el('div','nota-v','Etapa '+x.etapa+' · revisado '+x.revisado));d.onclick=()=>{selCelda=[x,j,t];pMatriz()};lado.append(d)}}
   else{const [x,j,t]=selCelda;lado.append(el('b',null,j.nombre+' · '+t.nombre),el('p',null,x.estado||'Sin dato'));
     const d=el('dl');const add=(k,v)=>{d.append(el('dt',null,k));const dd=el('dd');if(v instanceof Node)dd.append(v);else dd.textContent=v;d.append(dd)};
     add('Etapa',x.etapa==null?'sin dato':x.etapa+' · '+R.escala[x.etapa]);add('Fecha',x.fecha||'—');add('Nivel',x.fuente||'—');add('Revisado',x.revisado||'—');
@@ -490,12 +588,16 @@ function pNoticias(){
   c.append(el('div','aviso','Hoy es '+HOYS+'. El último movimiento real de la Órbita es del '+ult+', así que 24 h sale vacío hasta que C35 añada noticias con caducidad. Lo de más de 30 días pasa al archivo ('+g.arch.length+' ahora).'));
   const cols=el('div','noticias');
   const tit={n24:'Últimas 24 h',n7:'Hasta 7 días',n30:'Hasta 30 días'};
+  cols.style.gridTemplateColumns=['n24','n7','n30'].map(k=>g[k].length?'minmax(0,1fr)':'minmax(170px,.4fr)').join(' ');
+  const ultM=D.movimientos.filter(paisOk).sort((a,b)=>a.fecha<b.fecha?1:-1)[0];
   for(const k of ['n24','n7','n30']){
     const col=el('div');col.append(el('h3',null,tit[k]+' ('+g[k].length+')'));
-    if(!g[k].length)col.append(el('div','nota n30','Nada en este tramo.'));
+    if(!g[k].length){col.append(el('div','nota n30','Nada en este tramo.'));if(ultM)col.append(el('div','nota-v','Lo último registrado: '+ultM.fecha+' · '+ultM.actor+' ('+dias(ultM.fecha)+' días).'))}
     for(const m of g[k].sort((a,b)=>a.fecha<b.fecha?1:-1)){const n=el('div','nota '+k);n.append(el('b',null,m.fecha+' '+m.actor+': '),document.createTextNode(m.texto));col.append(n)}
     cols.append(col)}
   c.append(cols);
+  const cc={};g.arch.forEach(m=>cc[m.capa]=(cc[m.capa]||0)+1);
+  const rs=el('div','cuentas');rs.append(el('b',null,'Archivo por capa: '));for(const k in cc)rs.append(el('span','chip',capaNom(k)+': '+cc[k]));c.append(rs);
   const det=el('details');det.append(el('summary',null,'Archivo (más de 30 días): '+g.arch.length));
   det.append(tabla([{t:'Fecha',f:m=>m.fecha},{t:'Capa',f:m=>capaNom(m.capa)},{t:'Actor',f:m=>m.actor},{t:'Hecho',f:m=>m.texto}],g.arch.sort((a,b)=>a.fecha<b.fecha?1:-1)));
   c.append(det);s.append(c);
@@ -517,6 +619,8 @@ function pVoces(){
   const l=V.voces.filter(v=>(!vNivel||v.nivel===vNivel)&&(!vConf||v.conf===vConf)&&(!vCapa||(v.capas||[]).includes(vCapa))&&(!vBusca||(v.quien+' '+v.texto).toLowerCase().includes(vBusca.toLowerCase())));
   const cnt={};for(const v of l)cnt[v.conf]=(cnt[v.conf]||0)+1;
   c.append(el('div','nota-v',l.length+' voces · '+Object.keys(cnt).map(k=>V.confirmaciones[k][0]+' '+cnt[k]).join(' · ')));
+  if(!l.length){const a=el('div','alt');a.append(el('h4',null,'Ninguna voz con estos filtros. Las más recientes de las '+V.voces.length+':'));
+    for(const v of V.voces.slice().sort((a,b)=>a.cuando<b.cuando?1:-1).slice(0,3)){const d=el('div','hecho');d.append(el('b',null,v.quien+' · '+v.cuando+': '),document.createTextNode(v.texto));a.append(d)}c.append(a)}
   const ls=el('div','lista');
   for(const v of l.sort((a,b)=>a.cuando<b.cuando?1:-1)){
     const it=el('div','item');
@@ -535,27 +639,29 @@ function pPaneles(){
   const s=$('v-paneles');s.textContent='';
   const c=el('div','caja');c.append(el('h2',null,'Paneles de datos: cada bloque dice qué mide, en qué unidad, de dónde sale y cuándo se leyó'));
   const pie=(b,t)=>({nivel:b.nivel,t:t+' · leído '+(b.leido||(P&&P.leido))});
+  const mz=masonry();
+  const add=b=>{if(/^(Bonos|Cartera|Valoraci|Bancos europeos|Reservas|Deuda p|Calificaciones|Gasto)/.test(b.firstChild.textContent))b.classList.add('ancho');mz.append(b)};
   if(P){
-    c.append(bloque('Bonos del Estado: rendimiento a cada plazo','Es el % anual que paga cada bono según su vencimiento (3 meses, 1 año, 10 años…). Si el rendimiento sube, el precio del bono baja. En pequeño, el cambio frente al día anterior en puntos básicos (100 pb = 1 punto). Las curvas no se calculan igual en cada país.',{nivel:'P',t:'Tesoro de EE. UU., Banco de Japón, BCE, Tesoro de España, AFT de Francia · leído '+P.bonos.leido},nBonos()));
-    c.append(bloque('Tipos oficiales de los bancos centrales','El tipo con el que cada banco central presta al sistema: lo que más mueve el coste del dinero. «pb» = puntos básicos (25 pb = 0,25 puntos).',pie(P.tipos_vivos,'Bancos centrales'),nTipos()));
-    c.append(bloque('Tipos de otros bancos centrales (BIS)',null,pie(P.tipos_bis,'BIS'),tabla([{t:'País',f:r=>r.pais},{t:'Banco central',f:r=>r.banco},{t:'Tipo oficial (% anual)',n:1,f:r=>r.valor},{t:'Dato de',f:r=>r.dato_de}],P.tipos_bis.paises)));
-    c.append(bloque('Deuda de EE. UU. en manos extranjeras','Cuánta deuda del Tesoro de EE. UU. custodia cada país (no es el propietario final, e incluye cambios de valor: una bajada no es necesariamente una venta). Miles de millones de dólares.',pie(P.tic,'Tesoro de EE. UU., tabla TIC'),nTic()));
-    c.append(bloque('Stablecoins: las mayores','Monedas digitales ligadas a una divisa (casi todas al dólar). «En circulación» es el valor emitido hoy.',pie(P.stablecoins,'DefiLlama, agregador'),nStable()));
-    c.append(bloque('Stablecoins en el XRPL y en Stellar',null,pie(P.stablecoins,'DefiLlama'),nCadenas()));
-    c.append(bloque('Protocolos RWA en DeFi','Activos del mundo real (bonos, fondos…) llevados a cadena. Ojo: es el valor bloqueado en DeFi, NO el total tokenizado.',pie(P.rwa,'DefiLlama'),nRwa()));
-    c.append(bloque('Precios de XRP, XLM, BTC y ETH',null,pie(P.mercado,'CoinGecko'),nMercado()));
-    c.append(bloque('Bolsas',null,pie(P.indices,'Yahoo Finance'),nIndices()));
-    c.append(bloque('Cartera de seguimiento (ETF y valores)',null,pie(P.watchlist,'Yahoo Finance'),nWatch(),false));
-    c.append(bloque('Liquidez: cantidad de dinero en la economía','M2 (EE. UU., Japón, China) y M3 (zona euro): cuánto dinero hay y a qué ritmo crece. Es contexto, no una señal por sí sola.',pie(P.liquidez,'FRED y BCE; Japón y China a mano'),nLiquidez()));
-    c.append(bloque('Estrecho de Ormuz: tráfico de buques','Cuántos buques cruzan el estrecho por donde pasa buena parte del petróleo. Una caída fuerte indica cierre o bloqueo.',pie(P.ormuz,'IMF PortWatch'),nOrmuz()));
-    c.append(bloque('Gasto en defensa','Porcentaje del PIB que cada país dedica a defensa, frente a hace 10 años.',pie(P.defensa,'Banco Mundial'),nDefensa(),false));
+    add(bloque('Bonos del Estado: rendimiento a cada plazo','Es el % anual que paga cada bono según su vencimiento (3 meses, 1 año, 10 años…). Si el rendimiento sube, el precio del bono baja. En pequeño, el cambio frente al día anterior en puntos básicos (100 pb = 1 punto). Las curvas no se calculan igual en cada país.',{nivel:'P',t:'Tesoro de EE. UU., Banco de Japón, BCE, Tesoro de España, AFT de Francia · leído '+P.bonos.leido},nBonos()));
+    add(bloque('Tipos oficiales de los bancos centrales','El tipo con el que cada banco central presta al sistema: lo que más mueve el coste del dinero. «pb» = puntos básicos (25 pb = 0,25 puntos).',pie(P.tipos_vivos,'Bancos centrales'),nTipos()));
+    add(bloque('Tipos de otros bancos centrales (BIS)',null,pie(P.tipos_bis,'BIS'),tabla([{t:'País',f:r=>r.pais},{t:'Banco central',f:r=>r.banco},{t:'Tipo oficial (% anual)',n:1,f:r=>r.valor},{t:'Dato de',f:r=>r.dato_de}],P.tipos_bis.paises)));
+    add(bloque('Deuda de EE. UU. en manos extranjeras','Cuánta deuda del Tesoro de EE. UU. custodia cada país (no es el propietario final, e incluye cambios de valor: una bajada no es necesariamente una venta). Miles de millones de dólares.',pie(P.tic,'Tesoro de EE. UU., tabla TIC'),nTic()));
+    add(bloque('Stablecoins: las mayores','Monedas digitales ligadas a una divisa (casi todas al dólar). «En circulación» es el valor emitido hoy.',pie(P.stablecoins,'DefiLlama, agregador'),nStable()));
+    add(bloque('Stablecoins en el XRPL y en Stellar',null,pie(P.stablecoins,'DefiLlama'),nCadenas()));
+    add(bloque('Protocolos RWA en DeFi','Activos del mundo real (bonos, fondos…) llevados a cadena. Ojo: es el valor bloqueado en DeFi, NO el total tokenizado.',pie(P.rwa,'DefiLlama'),nRwa()));
+    add(bloque('Precios de XRP, XLM, BTC y ETH',null,pie(P.mercado,'CoinGecko'),nMercado()));
+    add(bloque('Bolsas',null,pie(P.indices,'Yahoo Finance'),nIndices()));
+    add(bloque('Cartera de seguimiento (ETF y valores)',null,pie(P.watchlist,'Yahoo Finance'),nWatch(),false));
+    add(bloque('Liquidez: cantidad de dinero en la economía','M2 (EE. UU., Japón, China) y M3 (zona euro): cuánto dinero hay y a qué ritmo crece. Es contexto, no una señal por sí sola.',pie(P.liquidez,'FRED y BCE; Japón y China a mano'),nLiquidez()));
+    add(bloque('Estrecho de Ormuz: tráfico de buques','Cuántos buques cruzan el estrecho por donde pasa buena parte del petróleo. Una caída fuerte indica cierre o bloqueo.',pie(P.ormuz,'IMF PortWatch'),nOrmuz()));
+    add(bloque('Gasto en defensa','Porcentaje del PIB que cada país dedica a defensa, frente a hace 10 años.',pie(P.defensa,'Banco Mundial'),nDefensa(),false));
   }
-  if(CAL)c.append(bloque('Calificaciones soberanas','Nota de solvencia que dan las agencias a cada país.',{nivel:'P',t:'Agencias y tesoros · leído '+CAL.leido},nCalif()));
-  if(FMI)c.append(bloque('Deuda pública sobre el PIB (FMI)','Deuda total del gobierno como % del PIB; 2026 y años siguientes son previsiones.',{nivel:'P',t:FMI.edicion+' · leído '+FMI.leido},nFmi()));
-  if(RES)c.append(bloque('Reservas de divisas, oro y balances de bancos centrales',null,{nivel:'P',t:'FMI, World Gold Council, bancos centrales · leído '+RES.leido},nReservas(),false));
-  if(VAL)c.append(bloque('Valoración de 18 valores (PER, EV/EBITDA, caja libre)',VAL.aviso,{t:'Cálculo propio con datos de las empresas · '+VAL.generado.slice(0,10)},nVal(),false));
-  if(BAN)c.append(bloque('Bancos europeos: deuda soberana en su balance (EBA)','Lo que cada banco tiene en bonos de Estados; el capital CET1 es su colchón de máxima calidad. Los 15 mayores de '+BAN.bancos.length+'.',{nivel:BAN.nivel,t:'EBA, corte '+BAN.periodo},nEbaTop(15),false));
-  s.append(c);
+  if(CAL)add(bloque('Calificaciones soberanas','Nota de solvencia que dan las agencias a cada país.',{nivel:'P',t:'Agencias y tesoros · leído '+CAL.leido},nCalif()));
+  if(FMI)add(bloque('Deuda pública sobre el PIB (FMI)','Deuda total del gobierno como % del PIB; 2026 y años siguientes son previsiones.',{nivel:'P',t:FMI.edicion+' · leído '+FMI.leido},nFmi()));
+  if(RES)add(bloque('Reservas de divisas, oro y balances de bancos centrales',null,{nivel:'P',t:'FMI, World Gold Council, bancos centrales · leído '+RES.leido},nReservas(),false));
+  if(VAL)add(bloque('Valoración de 18 valores (PER, EV/EBITDA, caja libre)',VAL.aviso,{t:'Cálculo propio con datos de las empresas · '+VAL.generado.slice(0,10)},nVal(),false));
+  if(BAN)add(bloque('Bancos europeos: deuda soberana en su balance (EBA)','Lo que cada banco tiene en bonos de Estados; el capital CET1 es su colchón de máxima calidad. Los 15 mayores de '+BAN.bancos.length+'.',{nivel:BAN.nivel,t:'EBA, corte '+BAN.periodo},nEbaTop(15),false));
+  c.append(mz);s.append(c);
 }
 cargar();
 </script></body></html>
