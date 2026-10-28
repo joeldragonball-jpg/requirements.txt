@@ -12,9 +12,9 @@ Mapa de los informes más recientes por tema. Lo genera `scripts/indice_investig
 Por tema, los 3 informes más recientes (fecha · título · ruta · una frase de su resumen).
 
 ## Auditorías y verificaciones
+- 2026-10-28 · Revisión de predicciones y verificaciones de octubre (28-oct-2026) · DTCC #44 y otras 4 (`informes/research/2026-10-28-W05-predicciones-octubre-dtcc.md`): Pedida por Joel el 28 oct. Alcance: lo previsto para octubre (o con fecha límite ya vencida) que seguía sin verificar en informes/predicciones.md .…
 - 2026-10-28 · C38 · Auditoría de cobertura: qué sabemos, dónde está y qué falta en la Órbita (incluye C28) (`informes/research/2026-10-28-C38-auditoria-cobertura.md`): Informes: 118 en informes/research/ (R 50 · T 18 · C 16 · W 10 · D 4 · EV 2 · otros 18: radar v2 v5, auditorías, calendarios); 11 en informes/gemini/…
 - 2026-10-27 · W05 · Verificación por lotes · 27-oct-2026 (`informes/research/2026-10-27-W05-verificacion-lote.md`): Detalle y tabla en verificaciones consolidado.md (sección «Lote W05 · 2026 10 27»).
-- 2026-10-26 · C10 · Auditoría de cifras de los resúmenes semanales del bot (W41-W43) (`informes/research/2026-10-26-C10-auditoria-resumenes.md`): Series usadas (leídas el 25 oct 2026 con curl y User Agent propio):
 
 ## Voces y predicciones
 - 2026-10-27 · W06 (parcial) · Voces v045, v049 y v050 · 27-oct-2026 (`informes/research/2026-10-27-W06-voces-v045-v049-v050.md`): v045 S&P, estabilidad de stablecoins sin confirmar compatible con los datos fintechnews.sg (5 ago 2026) da el recuento exacto (11 evaluadas, 6 con…

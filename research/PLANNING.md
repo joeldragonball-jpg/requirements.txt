@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-28 16:27 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-28 17:15 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -84,17 +84,16 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 - 2026-10-27→10-28 · Reunión de la Fed (FOMC) (alto) · EN CURSO → cubre W01 (Tipos de interés)
 - 2026-10-28→10-29 · Reunión del BCE (alto) → cubre W01 (Tipos de interés)
 - 2026-10-28→10-29 · Meridian 2026 (Stellar), Lisboa (medio) → sin rutina: valorar research EV
+- 2026-10-28 · DTCC: lanzamiento del servicio de tokenización de DTC (hecho (medio) → cubre W04 (ETF y flujos)
 - 2026-10-28 · Canadá: decisión del Banco de Canadá sobre el tipo oficial (medio) → cubre W01 (Tipos de interés)
 - 2026-10-29 · PIB de EE. UU. (3T, avance) y gasto en consumo PCE de septie (alto) → cubre W01 (Datos macro y tipos)
 - 2026-10-29→10-30 · Reunión del Banco de Japón (alto) → cubre W01 (Tipos de interés)
 - 2026-10-30 · Brasil: último día para que los proveedores cripto existente (medio) → cubre W01 (Tipos de interés)
-- 2026-10-31 · DTCC: lanzamiento previsto del servicio de tokenización de D (medio) → cubre W04 (ETF y flujos)
 - 2026-11-01 · OPEP+ (7 países): reunión mensual (medio) → cubre W10 (Energía y geopolítica)
 - 2026-11-03 · EE. UU.: elecciones de mitad de mandato (alto) → cubre W06 (Voces y predicciones)
 - 2026-11-03 · Australia: decisión del RBA sobre el tipo de efectivo (medio) → cubre W01 (Tipos de interés)
 
 ## Predicciones que vencen en 14 días
-- #44 · 2026-10-31 · DTCC (nota de prensa)
 - #31 · 2026-11-01 · OPEP+ (7 países, comunicado)
 - #7 · 2026-11-03 · CEO de Solana Policy Institute
 - #25 · 2026-11-03 · Donald Trump (Truth Social, citado por CNBC)
@@ -102,8 +101,8 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 ## Próximas fechas clave
 - 2026-10-28 · Reunión del BCE
 - 2026-10-28 · Meridian 2026 (Stellar), Lisboa
+- 2026-10-28 · DTCC: lanzamiento del servicio de tokenización de DTC (hecho el 28-oct-2026)
 - 2026-10-28 · Canadá: decisión del Banco de Canadá sobre el tipo oficial
 - 2026-10-29 · PIB de EE. UU. (3T, avance) y gasto en consumo PCE de septiembre
 - 2026-10-29 · Reunión del Banco de Japón
 - 2026-10-30 · Brasil: último día para que los proveedores cripto existentes pidan autorización al Banco 
-- 2026-11-01 · OPEP+ (7 países): reunión mensual
