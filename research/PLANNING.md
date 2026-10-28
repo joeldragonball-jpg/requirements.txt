@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-28 00:34 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-28 00:39 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -20,7 +20,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
-- C28 · Centro · Cerebro visual: auditoría de la Órbita (12 capas, 63 movimientos) frent · Sonnet M · ~3 % · `research/prompts/C28-auditoria-orbita.md`
 - C29 · Centro · Energía, Ormuz y guerra ↔ noticias ↔ Órbita · Sonnet M · ~3 % · `research/prompts/C29-energia-guerra.md`
 - C30 · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
@@ -30,6 +29,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - C35 · Centro · Noticias en la Órbita · Sonnet M · ~3 % · `research/prompts/C35-noticias-en-orbita.md`
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
 - C37 ◐ en parte · Centro · Auditoría C13: enlace a la fuente primaria en cada celda del radar regu · Sonnet S · ~1,5 % · `research/prompts/C37-urls-radar-pendientes.md`
+- C38 · Centro · Auditoría de cobertura: inventario de lo que sabemos, cómo está distrib · Sonnet M · ~5 % · `research/prompts/C38-auditoria-cobertura-orbita.md`
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T25 · Tema libre
 **Deuda y bonos (D)** · detalle en `research/COLA-DEUDA-BONOS.md`
@@ -68,7 +68,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - 🟡 Voces: Voces sin confirmar (4) → W06 · 1 llevan más de 14 días
 
 ## Bots con problema
-- ninguno
+- Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-10-21 · EE. UU.: la OCC publica su norma final de la GENIUS Act (alto) → ✓ revisado (hecho)
