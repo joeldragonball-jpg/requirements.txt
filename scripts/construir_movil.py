@@ -124,6 +124,8 @@ def noticias(n=20):
     except Exception:
         return None
     lista = [x for x in lista if str(x.get("puntuacion", "0")).isdigit() and int(x["puntuacion"]) >= 7]
+    for x in lista:   # las noticias manuales (C18) traen fecha_envio/fecha_noticia en vez de fecha
+        x["fecha"] = x.get("fecha") or x.get("fecha_envio") or x.get("fecha_noticia") or ""
     lista.sort(key=lambda x: x["fecha"], reverse=True)
     limpio = lambda s: "" if re.search(r"cartera|tesis|tu XRP|tu XLM", s, re.I) else s
     return [{"titulo": x["titulo"], "resumen": limpio(x.get("resumen", "")), "por_que": limpio(x.get("por_que", "")), "tema": x["tema"], "nota": int(x["puntuacion"]),

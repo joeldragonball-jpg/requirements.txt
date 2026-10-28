@@ -18,7 +18,7 @@ SALIDA = RAIZ / "docs" / "movil" / "seguimiento.json"
 REPO = "joeldragonball-jpg/requirements.txt"
 WORKFLOWS = [("alertas.yml", "Alertas de precio", 2.5), ("noticias.yml", "Noticias con IA", 7.0), ("votos.yml", "Votos de noticias", 6.0),
              ("onchain.yml", "Vigilancia on-chain", 2.5), ("escrow.yml", "Escrow de Ripple", 30), ("eventos.yml", "Aviso de eventos", 30),
-             ("despertador.yml", "Despertador de la app", 8), ("revision.yml", "Revisión semanal del cerebro", 24 * 8),
+             ("despertador.yml", "Despertador de la app", 12), ("revision.yml", "Revisión semanal del cerebro", 24 * 8),
              ("verificar.yml", "Verificación mensual", 24 * 35), ("paneles.yml", "Paneles de datos", 72)]
 # Palabras del calendario que enlazan una tarea pendiente con su próximo plazo
 CLAVES = {"T06": ["Japón", "FIEA", "BoJ"], "T07": ["Corea"], "T08": ["Singapur", "MAS"], "T09": ["Hong Kong", "HKMA"], "T10": ["India", "RBI"],
