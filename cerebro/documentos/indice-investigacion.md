@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-10-27
+actualizado: 2026-10-28
 ---
 # Índice de la investigación
 
@@ -12,9 +12,9 @@ Mapa de los informes más recientes por tema. Lo genera `scripts/indice_investig
 Por tema, los 3 informes más recientes (fecha · título · ruta · una frase de su resumen).
 
 ## Auditorías y verificaciones
+- 2026-10-28 · C38 · Auditoría de cobertura: qué sabemos, dónde está y qué falta en la Órbita (incluye C28) (`informes/research/2026-10-28-C38-auditoria-cobertura.md`): Informes: 118 en informes/research/ (R 50 · T 18 · C 16 · W 10 · D 4 · EV 2 · otros 18: radar v2 v5, auditorías, calendarios); 11 en informes/gemini/…
+- 2026-10-27 · W05 · Verificación por lotes · 27-oct-2026 (`informes/research/2026-10-27-W05-verificacion-lote.md`): Detalle y tabla en verificaciones consolidado.md (sección «Lote W05 · 2026 10 27»).
 - 2026-10-26 · C10 · Auditoría de cifras de los resúmenes semanales del bot (W41-W43) (`informes/research/2026-10-26-C10-auditoria-resumenes.md`): Series usadas (leídas el 25 oct 2026 con curl y User Agent propio):
-- 2026-10-26 · C09 · Verificación de las dudas del cerebro (revisión del 25-oct-2026) (`informes/research/2026-10-26-C09-verificaciones-cerebro.md`): 1 ITP joven en Cataluña Resuelta Edad: 35 años o menos en la fecha de devengo (antes 32), para transmisiones desde el 27 06 2025. Tipo reducido 5 %…
-- 2026-10-25 · Repaso del cerebro: contradicciones y resúmenes (25-oct-2026) (`informes/research/2026-10-25-revision-cerebro-contradicciones.md`): Resultado de cada hallazgo de la revisión del bot
 
 ## Voces y predicciones
 - 2026-10-27 · W06 (parcial) · Voces v045, v049 y v050 · 27-oct-2026 (`informes/research/2026-10-27-W06-voces-v045-v049-v050.md`): v045 S&P, estabilidad de stablecoins sin confirmar compatible con los datos fintechnews.sg (5 ago 2026) da el recuento exacto (11 evaluadas, 6 con…
@@ -47,19 +47,19 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-23 · T19 — ETF de XRP y XLM en EE. UU.: AUM, flujos, 13F y la diferencia 2.178 M$ frente a 1.560 M$ (`informes/research/2026-10-23-T19-etf-xrp-xlm-eeuu.md`): Fondo Ticker AUM al 22 oct 2026 [S: The Block]
 
 ## Regulación por país
-- 2026-10-26 · W03 · Regulación por países: Japón (T06) y Singapur (T08) (`informes/research/2026-10-26-W03-japon-singapur.md`): Singapur Ley marco 5, [S] 5, [P] (nota y directrices de la MAS sobre DTSP)
-- 2026-10-24 · T11 Brasil: plazo PSAV, Res. BCB 589/2026 y calendario (24-oct-2026) (`informes/research/2026-10-24-T11-brasil.md`): Confirmado [P] el plazo del 30 oct 2026 : la Res. BCB 520 (art. 88, I) da 270 días desde su entrada en vigor (2 feb 2026) a las sociedades que ya…
-- 2026-10-24 · T07 Corea del Sur: ley de activos digitales, won stablecoin, ETF, fiscalidad y tokenización (24-oct-2026) (`informes/research/2026-10-24-T07-corea-del-sur.md`): Ley Básica de Activos Digitales (2.ª fase) y ley del won stablecoin: siguen sin aprobar [S]. Última noticia: el 8 oct el presidente de la FSC dijo en…
+- 2026-10-27 · W03E · Países: Irán, Egipto y Etiopía · 2026-10-27 (`informes/research/2026-10-27-W03E-iran-egipto-etiopia.md`): Segunda pasada tras la de Gemini ( informes/gemini/2026 10 27 W03 iran egipto.md ) y T15. Sesión corta de Claude, unas 8 búsquedas y lecturas.
+- 2026-10-27 · T16 · Organismos internacionales: BIS, FMI, FSB y GAFI (27-oct-2026) (`informes/research/2026-10-27-T16-organismos.md`): Los cuatro organismos coinciden en el diagnóstico: las stablecoins actuales son sobre todo dólar (99 %) y cripto trading, y la apuesta de futuro es…
+- 2026-10-27 · T15 · BRICS sin cubrir: Etiopía, BRICS Pay, mBridge y celdas abiertas (27-oct-2026) (`informes/research/2026-10-27-T15-brics.md`): Etiopía: el Banco Nacional publicó el 27 feb 2026 un aviso (leído en su web [P]) que prohíbe el P2P cripto en birr y anuncia un marco integral en…
 
 ## Sesiones diarias (apertura y cierre)
+- 2026-10-27 · Informe de CIERRE — 2026-10-27 (mar) (`informes/2026-10-27-cierre.md`): BTC ≈ $80.400 (cae bajo $80.000 por la mañana y vuelve), XRP $1,32 (+1,9 %), XLM $0,169; las bolsas suben (S&P +1,4 %).
 - 2026-10-27 · Informe de APERTURA — 2026-10-27 (mar) (`informes/2026-10-27-apertura.md`): cubre: (ninguno pendiente; las R00 del 26 oct, apertura y cierre, ya existían. Esta sesión añade el cierre final de EE. UU. del 26 oct y la sesión de…
 - 2026-10-26 · Informe de CIERRE — 2026-10-26 (lun) (`informes/2026-10-26-cierre.md`): Cripto plano a la baja: BTC ≈ $79.900, XRP $1,29, XLM $0,168; sin catalizador propio.
-- 2026-10-26 · Informe de APERTURA — 2026-10-26 (lun) — lanzada a las 16:18 hora local (15:19 UTC) (`informes/2026-10-26-apertura.md`): R00 de apertura pedida expresamente (por la hora, la regla habría dicho cierre). Cubre desde el cierre del domingo ( 2026 10 25 cierre.md , 13:51…
 
 ## Otros
+- 2026-10-27 · Prueba comparativa · EV-noticias-ligera con Claude (tanda de tarde 27-oct-2026) (`informes/research/2026-10-27-EV-noticias-ligera-claude.md`): Mismo prompt que Gemini ( research/gemini/EV noticias ligera.md ), ejecutado por Claude con WebSearch/WebFetch (~13 llamadas, nivel «ligero»). NO…
 - 2026-10-27 · EV · EE. UU.: la OCC publica su norma final de la GENIUS Act (21-oct-2026) (`informes/research/2026-10-27-EV-occ-genius-norma-final.md`): A quién aplica: emisores permitidos de stablecoins de pago, emisores extranjeros bajo jurisdicción de la OCC y ciertas actividades de custodia de…
-- 2026-10-26 · C16 · Coste de los bots que usan la API de Anthropic (2026-10-26) (`informes/research/2026-10-26-C16-costes-api.md`): Sin llamar a la API ni tocar secretos. Datos: código de los scripts, workflows y el registro de uso real del bot de noticias (rama datos ,…
-- 2026-10-26 · C06 · Vigilante de SEC EDGAR (2026-10-26) (`informes/research/2026-10-26-C06-edgar.md`): scripts/vigilante edgar.py (sin IA, solo biblioteca estándar) consulta la búsqueda de texto completo de EDGAR ( efts.sec.gov , [P]) con User Agent…
+- 2026-10-27 · C26 · Cuadro de valoración sectorial automático — 27-oct-2026 (`informes/research/2026-10-27-C26-valoracion-automatica.md`): Información para decidir tú; no es una recomendación de compra ni de venta.
 
 ## Dudas y datos a verificar
 Las frases son extractos sin comprobar: lo dudoso está marcado [VERIFICAR] en el informe original.

@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-28 00:43 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-28 00:51 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -29,7 +29,8 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - C35 · Centro · Noticias en la Órbita · Sonnet M · ~3 % · `research/prompts/C35-noticias-en-orbita.md`
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
 - C37 ◐ en parte · Centro · Auditoría C13: enlace a la fuente primaria en cada celda del radar regu · Sonnet S · ~1,5 % · `research/prompts/C37-urls-radar-pendientes.md`
-- C38 · Centro · Auditoría de cobertura: inventario de lo que sabemos, cómo está distrib · Sonnet M · ~5 % · `research/prompts/C38-auditoria-cobertura-orbita.md`
+- C39 · Centro · Volcar a la Órbita lo ya investigado sin movimiento (países T07-T16 y W · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
+- C40 · Radar · Jurisdicciones fuera del radar: Reino Unido, Suiza, Canadá, Australia y  · Sonnet M · ~3 % · `research/prompts/C40-jurisdicciones-fuera-del-radar.md`
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T25 · Tema libre
 **Deuda y bonos (D)** · detalle en `research/COLA-DEUDA-BONOS.md`
