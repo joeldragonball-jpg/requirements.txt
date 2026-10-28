@@ -5,7 +5,17 @@
 :root{color-scheme:dark;--linea:rgba(148,163,184,.16);--texto:#e6ebf5;--suave:#93a1bd;--oro:#d4a84b}
 *{box-sizing:border-box}
 html,body{margin:0;background:transparent;color:var(--texto);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-#app{padding:4px 6px 10px;display:flex;flex-direction:column;gap:8px}
+#app{padding:4px 6px 10px;display:grid;grid-template-columns:minmax(0,1fr) clamp(340px,30vw,560px);gap:8px 12px;align-items:start}
+#izqM{display:flex;flex-direction:column;gap:8px;min-width:0}
+#lado{position:sticky;top:6px;max-height:calc(100vh - 14px);overflow:auto;padding:10px;display:flex;flex-direction:column;gap:8px;min-width:0}
+#lado h2{margin:0;font-size:15px}
+#lado h3{margin:6px 0 2px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--suave)}
+.et-fila{display:grid;grid-template-columns:14px minmax(0,1fr);gap:2px 8px;align-items:start;font-size:12.5px;padding:3px 0;border-bottom:1px solid rgba(148,163,184,.1)}
+.et-fila i{width:12px;height:12px;border-radius:3px;margin-top:3px}
+.et-fila small{grid-column:2;color:var(--suave);font-size:11.5px}
+.leyetapa{display:flex;flex-wrap:wrap;gap:3px 10px;font-size:11.5px;color:var(--suave);padding:2px 6px}
+.leyetapa i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.cuad{stroke:rgba(255,255,255,.35);stroke-width:.6}.cuad.nod{fill:rgba(148,163,184,.14);stroke:rgba(148,163,184,.25)}.cuad.noP{stroke-dasharray:2 1.5;stroke:#fff}
 .vidrio{background:rgba(9,14,30,.5);border:1px solid rgba(148,163,184,.12);border-radius:10px;backdrop-filter:blur(8px)}
 h1{margin:2px 4px 0;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#c8d3ea;font-weight:600}
 #sub{margin:0 4px;color:var(--suave);font-size:12px}
@@ -25,9 +35,6 @@ h1{margin:2px 4px 0;font-size:12px;letter-spacing:.22em;text-transform:uppercase
 .casilla text{fill:#cdd6ea;font-family:system-ui,sans-serif;pointer-events:none}
 .casilla .n{fill:#f1d58a;font-weight:700}
 .casilla .nom{fill:#93a1bd}
-.punto{cursor:pointer;stroke:rgba(255,255,255,.55);stroke-width:.6}
-.punto:hover{stroke:#fff;stroke-width:1.4}
-.punto.futuro{stroke-width:1.2;stroke:#f1d58a}
 #estado{padding:2px 6px;color:var(--suave);font-size:12.5px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
 #estado b{color:#f1d58a}
 #lista{display:flex;flex-direction:column;gap:6px}
@@ -45,19 +52,25 @@ h1{margin:2px 4px 0;font-size:12px;letter-spacing:.22em;text-transform:uppercase
 .det p{margin:0 0 5px}.det .k{color:var(--suave)}
 #mas{align-self:center}
 .aviso{color:var(--suave);font-size:11.5px;margin:2px 6px}
-@media (max-width:900px){#app{padding:2px 2px 8px}.fila{padding:6px 7px}.chip{padding:5px 9px}}
+@media (max-width:900px){#app{display:flex;flex-direction:column}#lado{position:static;max-height:none}#app{padding:2px 2px 8px}.fila{padding:6px 7px}.chip{padding:5px 9px}}
 </style></head><body>
 <div id="app">
+<div id="izqM">
 <h1>Mapamundi de actualidad</h1>
 <p id="sub"></p>
 <div class="vidrio fila" id="fPeriodo"></div>
 <div class="vidrio fila" id="fTema"></div>
 <div class="vidrio fila" id="fNivel"></div>
 <div class="vidrio" id="mapa"></div>
+<div class="leyetapa" id="leyetapa"></div>
+<p class="aviso" id="aviso"></p>
+</div>
+<aside class="vidrio" id="lado">
+<div id="ficha"></div>
 <div id="estado"></div>
 <div id="lista"></div>
 <button class="chip" id="mas" hidden></button>
-<p class="aviso" id="aviso"></p>
+</aside>
 </div>
 <script id="datos" type="application/json">__DATOS__</script>
 <script>
@@ -70,6 +83,8 @@ const MESES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov'
 const fmt = s => { const p = (s||'').split('-'); return p.length === 3 ? (+p[2]) + ' ' + MESES[+p[1]-1] + ' ' + p[0] : (s||''); };
 const NIVELES = {P:'[P] fuente primaria', S:'[S] fuente secundaria', VERIFICAR:'[VERIFICAR] sin confirmar'};
 const COLOR = t => (D.temas[t] || {}).color || '#8a97b0';
+const ETAPA_COL = ['#e06c6c', '#d9904a', '#d4a84b', '#8bb86a', '#3fb68b', '#2ee6a6'];
+function etapasDe(p){ const m = {}; (D.etapas[p] || []).forEach(x => m[x.tema] = x); return (D.temas_reg || []).map(t => ({nombre:t.nombre, id:t.id, x:m[t.id] || null})); }
 const f = {pais:null, tema:new Set(Object.keys(D.temas)), nivel:null, periodo:'todo', abierto:null, limite:25};
 
 // Posición (columna, fila) de cada casilla: aproximación geográfica en ordenador, cuadrícula en móvil
@@ -112,20 +127,34 @@ function pintarMapa(){
     const g = sv('g', {class:'casilla' + (f.pais === p ? ' sel' : '') + (lista.length ? '' : ' vacia'), tabindex:'0', role:'button', 'aria-label':D.paises[p] + ': ' + lista.length + ' eventos'}, s);
     sv('rect', {x, y, width:anc, height:alt, rx:8}, g);
     sv('text', {x:x+7, y:y+15, 'font-size':11, 'font-weight':600}, g, p === 'int' ? 'BIS' : p.toUpperCase());
-    sv('text', {x:x+anc-7, y:y+15, 'font-size':12, 'text-anchor':'end', class:'n'}, g, String(lista.length));
+    const et = etapasDe(p), conDato = et.filter(q => q.x).length;
+    sv('text', {x:x+anc-7, y:y+15, 'font-size':10.5, 'text-anchor':'end', class:'n'}, g, conDato ? conDato + '/' + et.length + ' temas' : 'sin dato');
     sv('text', {x:x+7, y:y+28, 'font-size':9.5, class:'nom'}, g, D.paises[p].length > 17 ? D.paises[p].slice(0,16) + '…' : D.paises[p]);
-    const cols = movil ? 7 : 8, maxp = movil ? 14 : 24, d = movil ? 11 : 11.2;
-    lista.slice(0, maxp).forEach((e, k) => {
-      const cx = x + 10 + (k % cols) * d, cy = y + 40 + Math.floor(k / cols) * d;
-      const pt = sv('circle', {cx, cy, r:4, class:'punto' + (e.futuro ? ' futuro' : ''), fill:COLOR(e.tema)}, g);
-      sv('title', {}, pt, fmt(e.fecha) + ' · ' + e.tit.slice(0, 90));
-      pt.addEventListener('click', ev => { ev.stopPropagation(); f.pais = p; f.abierto = e.id; f.limite = Math.max(f.limite, 999); todo(true); });
+    // una casilla por tema del radar regulatorio, coloreada por su etapa (0-5); gris = sin research; borde discontinuo = no [P]
+    const cols = 4, tam = movil ? 17 : 19, hueco = 3, ox = x + (anc - (cols*tam + (cols-1)*hueco)) / 2;
+    et.forEach((q, k) => {
+      const cx = ox + (k % cols) * (tam + hueco), cy = y + 36 + Math.floor(k / cols) * (tam + hueco);
+      const r = sv('rect', {x:cx, y:cy, width:tam, height:tam, rx:3, class:'cuad' + (q.x ? (q.x.nivel === 'P' ? '' : ' noP') : ' nod')}, g);
+      if (q.x) r.setAttribute('fill', ETAPA_COL[q.x.etapa] || '#888');
+      sv('title', {}, r, D.paises[p] + ' · ' + q.nombre + ': ' + (q.x ? 'etapa ' + q.x.etapa + ' · ' + (D.escala[q.x.etapa] || '') : 'sin dato'));
     });
-    if (lista.length > maxp) sv('text', {x:x+anc-7, y:y+alt-6, 'font-size':9.5, 'text-anchor':'end', class:'nom'}, g, '+' + (lista.length - maxp));
     const alterna = () => { f.pais = f.pais === p ? null : p; f.limite = 25; f.abierto = null; todo(); };
     g.addEventListener('click', alterna);
     g.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); alterna(); } });
   });
+}
+
+function pintarFicha(){
+  const F = $('ficha'); F.textContent = '';
+  el('h2', {}, F, f.pais ? D.paises[f.pais] : 'Todos los países');
+  if (!f.pais){ el('p', {class:'aviso'}, F, 'Haz clic en una casilla para ver la etapa de cada tema y los eventos de ese país. Cada cuadradito es un tema del radar regulatorio (pasa el ratón para el detalle).'); return; }
+  el('h3', {}, F, 'Etapa regulatoria por tema');
+  const et = etapasDe(f.pais);
+  if (!et.some(q => q.x)) el('p', {class:'aviso'}, F, 'Sin research de regulación para este país en el radar.');
+  et.forEach(q => { const a = el('div', {class:'et-fila'}, F), i = el('i', {}, a); i.style.background = q.x ? ETAPA_COL[q.x.etapa] : 'rgba(148,163,184,.25)';
+    const t = el('span', {}, a); el('b', {}, t, q.nombre); t.appendChild(document.createTextNode(q.x ? ' · etapa ' + q.x.etapa + ': ' + (D.escala[q.x.etapa] || '') + ' · ' + (q.x.nivel === 'VERIFICAR' ? '[VERIFICAR]' : '[' + q.x.nivel + ']') : ' · sin dato'));
+    if (q.x) el('small', {}, a, (q.x.revisado ? 'Revisado ' + fmt(q.x.revisado) + '. ' : '') + q.x.estado); });
+  el('h3', {}, F, 'Eventos de este país');
 }
 
 function pintarLista(irA){
@@ -159,7 +188,11 @@ function pintarLista(irA){
   if (irA && f.abierto !== null){ const n = $('ev' + f.abierto); if (n) n.scrollIntoView({block:'center'}); }
 }
 
-function todo(irA){ pintarFiltros(); pintarMapa(); pintarLista(irA); }
+function pintarLey(){ const l = $('leyetapa'); l.textContent = ''; el('span', {}, l, 'Etapa:');
+  Object.keys(D.escala).forEach(k => { const s = el('span', {}, l); const i = el('i', {}, s); i.style.background = ETAPA_COL[k]; s.appendChild(document.createTextNode(k + ' ' + D.escala[k])); });
+  const s = el('span', {}, l); const i = el('i', {}, s); i.style.background = 'rgba(148,163,184,.25)'; s.appendChild(document.createTextNode('sin dato · borde discontinuo = fuente no primaria')); }
+function todo(irA){ pintarFiltros(); pintarMapa(); pintarFicha(); pintarLista(irA); }
+pintarLey();
 $('sub').textContent = 'Situación a ' + fmt(D.hoy) + ' · ' + D.eventos.length + ' eventos de calendario, radar regulatorio y movimientos. Cada punto es un evento (borde dorado = próximo).';
 $('aviso').textContent = 'Informativo: no es recomendación de compra ni venta. País asignado por palabras clave o por la jurisdicción de la celda; lo no ubicable va a «Internacional / BIS». [P] fuente primaria · [S] secundaria · [VERIFICAR] sin confirmar.';
 let ancho = window.innerWidth;

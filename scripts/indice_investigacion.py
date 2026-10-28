@@ -74,6 +74,38 @@ def fecha(nombre):
     return m.group(1) if m else "0000-00-00"
 
 
+# (país_id, palabras clave en nombre o título) para el índice completo por país
+PAISES = [
+    ("US", ["eeuu", "ee-uu", "ee. uu", "genius", "clarity", "tesoro", "occ"]),
+    ("EU", ["mica", "bce", "esma", "euro-digital", "euro digital", "europa"]),
+    ("JP", ["japon", "japón", "boj"]), ("KR", ["corea"]), ("SG", ["singapur"]),
+    ("HK", ["hong-kong", "hong kong"]), ("CN", ["china", "pboc", "yuan"]),
+    ("IN", ["india"]), ("BR", ["brasil"]), ("RU", ["rusia"]), ("IR", ["iran", "irán", "ormuz"]),
+    ("ES", ["españa", "espana", "irpf", "cnmv"]), ("FR", ["francia"]),
+    ("GB", ["reino unido"]), ("AE", ["emiratos"]), ("INT", ["brics", "bis-", "fmi", "imf"]),
+]
+
+
+def paises(nombre, tit):
+    texto = (nombre + " " + tit).lower()
+    return [pid for pid, claves in PAISES if any(c in texto for c in claves)]
+
+
+def fichas_todas():
+    """Todos los informes (sin tope) con tema, países, fecha y una frase. Para explorador/indice/informes.json."""
+    out = []
+    for c in CARPETAS:
+        d = RAIZ / c
+        if not d.is_dir():
+            continue
+        for p in sorted(d.glob("*.md")):
+            txt = leer(p)
+            tit = titulo(txt, p.stem)
+            out.append({"ruta": p.relative_to(RAIZ).as_posix(), "fecha": fecha(p.name), "titulo": tit,
+                        "tema": tema(p.stem, tit), "pais_id": paises(p.stem, tit), "frase": frase(txt)})
+    return sorted(out, key=lambda x: (x["fecha"], x["ruta"]), reverse=True)
+
+
 def main():
     fichas = {}
     for c in CARPETAS:

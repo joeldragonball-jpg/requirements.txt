@@ -16,23 +16,23 @@ html,body{margin:0;overflow:hidden;background:transparent;color:var(--texto);fon
 #barra{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:7px 10px}
 #barra button,#barra input[type=text]{background:rgba(15,23,42,.9);color:var(--texto);border:1px solid var(--linea);border-radius:6px;padding:6px 11px;font:inherit;font-size:13px;transition:.15s}
 #barra button{cursor:pointer}#barra button:hover{border-color:var(--oro);color:#fff}
-#barra label{color:var(--suave);display:flex;gap:6px;align-items:center;font-size:12.5px}
+#barra label{color:var(--suave);display:flex;gap:6px;align-items:center;font-size:13px}
 #tiempo{flex:1 1 280px;display:flex;gap:10px;align-items:center}
 #pista{flex:1;position:relative}
 #pista input[type=range]{width:100%;accent-color:var(--oro);margin:0;display:block;height:16px}
 #marcas{position:relative;height:16px;margin-top:1px}
 #marcas i{position:absolute;bottom:0;width:2px;opacity:.95}
-#marcas span{position:absolute;top:0;font-size:10px;color:var(--suave);transform:translateX(-50%);letter-spacing:.04em}
+#marcas span{position:absolute;top:0;font-size:13px;color:var(--suave);transform:translateX(-50%);letter-spacing:.04em}
 #fecha{min-width:92px;color:#f1d58a;font-weight:700;letter-spacing:.03em}
 #calBarra{display:flex;gap:12px;align-items:center;padding:6px 10px}
-#calTit{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--suave);white-space:nowrap}
+#calTit{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--suave);white-space:nowrap}
 #calPista{position:relative;flex:1;height:30px;min-width:200px}
 #calPista .hoy{position:absolute;top:2px;bottom:2px;width:1px;background:rgba(241,213,138,.7)}
-#calPista .mes{position:absolute;bottom:-2px;font-size:9.5px;color:var(--suave);transform:translateX(-50%)}
+#calPista .mes{position:absolute;bottom:-2px;font-size:13px;color:var(--suave);transform:translateX(-50%)}
 #calPista .ev{position:absolute;top:4px;width:11px;height:11px;transform:translateX(-50%) rotate(45deg);border:1px solid rgba(255,255,255,.75);cursor:pointer}
 #calPista .ev.alto{width:14px;height:14px;top:2px;box-shadow:0 0 10px currentColor}
 #calTemas{display:flex;flex-wrap:wrap;gap:4px 10px}
-.tema{display:flex;gap:6px;align-items:center;font-size:11px;color:var(--suave);cursor:pointer;user-select:none;padding:1px 6px;border-radius:4px;border:1px solid transparent}
+.tema{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--suave);cursor:pointer;user-select:none;padding:1px 6px;border-radius:4px;border:1px solid transparent}
 .tema i{width:9px;height:9px;transform:rotate(45deg);display:inline-block;flex:none}
 .tema.off{opacity:.35}.tema:hover{border-color:var(--linea)}
 #lienzo{flex:1;min-height:0;position:relative;overflow:hidden;background:none;border:none}
@@ -55,32 +55,28 @@ html,body{margin:0;overflow:hidden;background:transparent;color:var(--texto);fon
 #vistaIzq.abierto .pi{opacity:1;transform:none}
 #vistaIzq.abierto .pi:hover{transform:scale(1.03);z-index:3}
 #vistaIzq.plegando .pi{transition:transform .6s cubic-bezier(.55,0,.9,.35) var(--dc,0ms),opacity .3s ease calc(var(--dc,0ms) + .3s)}
-.pi .pt{font-size:.85em;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 65%,#fff);font-weight:700;margin-bottom:4px}
+.pi .pt{font-size:max(13px,.85em);letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 65%,#fff);font-weight:700;margin-bottom:4px}
 .pi h2{font-size:1.4em;margin:0 0 4px}
 .pi .ficha-ul{font-size:inherit}.pi ul{margin:0;padding-left:18px}.pi li{margin:4px 0}
 .pi .big{display:block;font-size:2em;font-weight:700;line-height:1.1;margin-bottom:2px}
-.pi .sub{color:#a9b6cf;font-size:.85em;margin-top:3px}
+.pi .sub{color:#a9b6cf;font-size:max(13px,.85em);margin-top:3px}
 .pi .pts{letter-spacing:.18em;font-size:1em}
-.pi .nota,.pi .chip,.pi .fuente,.pi .etq{font-size:.85em}   /* escala única de los post-its: título 1,4 · cifra 2 · texto 1 · detalle y etiquetas 0,85 (em de la letra del post-it) */
-.zona.bajo .pi .clamp{-webkit-line-clamp:4}
-#vistaIzq.recorte .zona.top .pi>div:not(.pt):not(.pts):not(.sub){display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
-.zona.bajo .pi .sub.clamp{-webkit-line-clamp:1}
-.pi .clamp{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.pi .nota,.pi .chip,.pi .fuente,.pi .etq{font-size:max(13px,.85em)}   /* escala única de los post-its: título 1,4 · cifra 2 · texto 1 · detalle y etiquetas 0,85 (em de la letra del post-it) */
 .pi .chips{margin:4px 0 0}
 .onda{position:absolute;border-radius:50%;border:2px solid #f1d58a;opacity:0;pointer-events:none;z-index:1;animation:onda 1.1s cubic-bezier(.2,.7,.3,1) both}
 @keyframes onda{0%{transform:scale(.9);opacity:.95}100%{transform:scale(3.6);opacity:0}}
 svg{width:100%;height:100%;display:block}
 #cab{display:flex;flex-wrap:wrap;align-items:center;gap:2px 18px;padding:0 6px;pointer-events:none}
 #marca{display:flex;align-items:baseline;gap:12px}
-#marca b{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#c8d3ea;font-weight:600}
-#marca div{color:var(--suave);font-size:12px}
+#marca b{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#c8d3ea;font-weight:600}
+#marca div{color:var(--suave);font-size:13px}
 #leyendaMapa{display:flex;flex-wrap:wrap;gap:2px 14px;pointer-events:none}
-#leyendaMapa span{font-size:11px;color:var(--suave);display:flex;gap:6px;align-items:center;letter-spacing:.02em}
-#tip{position:absolute;pointer-events:none;background:rgba(6,10,24,.96);border:1px solid var(--linea);border-left:3px solid var(--oro);border-radius:6px;padding:8px 11px;font-size:12px;max-width:270px;opacity:0;transition:opacity .15s;z-index:3;box-shadow:0 8px 28px rgba(0,0,0,.55)}
+#leyendaMapa span{font-size:13px;color:var(--suave);display:flex;gap:6px;align-items:center;letter-spacing:.02em}
+#tip{position:absolute;pointer-events:none;background:rgba(6,10,24,.96);border:1px solid var(--linea);border-left:3px solid var(--oro);border-radius:6px;padding:8px 11px;font-size:13px;max-width:270px;opacity:0;transition:opacity .15s;z-index:3;box-shadow:0 8px 28px rgba(0,0,0,.55)}
 .planeta{cursor:pointer;outline:none}
-.planeta .nombre{pointer-events:none;fill:#d6deef;font-size:10px;text-anchor:middle;paint-order:stroke;stroke:#050816;stroke-width:3.5px;stroke-linejoin:round;font-weight:600;letter-spacing:.09em;text-transform:uppercase}
-.planeta .cuenta{pointer-events:none;font-size:8.5px;font-weight:800;fill:#fff;text-anchor:middle}
-.planeta .rotulo{pointer-events:none;fill:#e6ebf5;font-size:8.5px;paint-order:stroke;stroke:#050816;stroke-width:3px;stroke-linejoin:round;letter-spacing:.02em}
+.planeta .nombre{pointer-events:none;fill:#d6deef;font-size:13px;text-anchor:middle;paint-order:stroke;stroke:#050816;stroke-width:3.5px;stroke-linejoin:round;font-weight:600;letter-spacing:.09em;text-transform:uppercase}
+.planeta .cuenta{pointer-events:none;font-size:13px;font-weight:800;fill:#fff;text-anchor:middle}
+.planeta .rotulo{pointer-events:none;fill:#e6ebf5;font-size:13px;paint-order:stroke;stroke:#050816;stroke-width:3px;stroke-linejoin:round;letter-spacing:.02em}
 .planeta:focus-visible .disco{stroke:#fff;stroke-width:2}
 .orbita{fill:none;stroke-width:1}
 .estrella{animation:tw 5s ease-in-out infinite}
@@ -101,24 +97,24 @@ svg{width:100%;height:100%;display:block}
 #panel .entra{animation:entra .35s ease backwards}   /* 'backwards': al terminar no queda ninguna capa de animación y el texto se dibuja nítido */
 @media (min-width:901px){#panel{zoom:1.2;width:calc(var(--pw) / 1.2)}}   /* letra del panel un 20 % mayor, sin pérdida de nitidez */
 h2{margin:0 0 6px;font-size:17px;font-weight:650;letter-spacing:.01em;display:flex;gap:10px;align-items:center}
-h3{margin:18px 0 7px;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--suave);font-weight:600;border-bottom:1px solid var(--linea);padding-bottom:5px}
-.nota{color:var(--suave);font-size:12px}
+h3{margin:18px 0 7px;font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--suave);font-weight:600;border-bottom:1px solid var(--linea);padding-bottom:5px}
+.nota{color:var(--suave);font-size:13px}
 .cabecera{border-radius:8px;padding:12px 14px;margin-bottom:10px;border:1px solid var(--linea);border-left-width:4px;background:rgba(15,23,42,.6)}
 .barra-apilada{display:flex;height:10px;border-radius:5px;overflow:hidden;margin:8px 0}
-.leyenda{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px}.leyenda span{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--suave)}
+.leyenda{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px}.leyenda span{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--suave)}
 .punto{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
 .item{border-top:1px solid var(--linea);padding:10px 0}.item b{color:#fff;font-weight:650}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}.chip{font-size:11px;border:1px solid var(--linea);border-radius:4px;padding:1px 8px;color:var(--suave);display:flex;gap:6px;align-items:center;background:rgba(15,23,42,.7)}
-.fuente{font-size:11px;color:var(--suave)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}.chip{font-size:13px;border:1px solid var(--linea);border-radius:4px;padding:1px 8px;color:var(--suave);display:flex;gap:6px;align-items:center;background:rgba(15,23,42,.7)}
+.fuente{font-size:13px;color:var(--suave)}
 .chip.clic{cursor:pointer}.chip.clic:hover{border-color:var(--oro);color:#fff}
 details.doc .chips{margin:2px 0 6px}
 .hecho-t{flex:1}
 .radar-grid{display:grid;gap:4px;margin:8px 0}
-.radar-th{writing-mode:vertical-rl;transform:rotate(180deg);height:116px;white-space:nowrap;font-size:11px;color:var(--suave);justify-self:center;align-self:end;text-align:left}
-.radar-jur{appearance:none;background:none;border:1px solid transparent;border-radius:5px;color:var(--texto);font:inherit;font-size:12px;text-align:left;padding:3px 6px;cursor:pointer}
+.radar-th{writing-mode:vertical-rl;transform:rotate(180deg);height:116px;white-space:nowrap;font-size:13px;color:var(--suave);justify-self:center;align-self:end;text-align:left}
+.radar-jur{appearance:none;background:none;border:1px solid transparent;border-radius:5px;color:var(--texto);font:inherit;font-size:13px;text-align:left;padding:3px 6px;cursor:pointer}
 .radar-jur:hover,.radar-jur.on{border-color:var(--oro)}
 .radar-cel{appearance:none;height:30px;border-radius:5px;border:1px solid;font:inherit;font-weight:700;font-size:13px;cursor:pointer;color:#fff;display:flex;align-items:center;justify-content:center;gap:3px;padding:0}
-.radar-cel small{font-size:8.5px;font-weight:600;opacity:.85}
+.radar-cel small{font-size:13px;font-weight:600;opacity:.85}
 .radar-cel{position:relative}
 .radar-cel.rv::after{content:"";position:absolute;top:3px;right:3px;width:6px;height:6px;border-radius:50%;background:#f0a830;box-shadow:0 0 0 1px rgba(0,0,0,.45)}
 .radar-comp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
@@ -126,10 +122,10 @@ details.doc .chips{margin:2px 0 6px}
 .radar-comp h4{margin:0 0 6px;font-size:14px;color:var(--oro)}
 .radar-cel.nd{border-style:dashed;background:transparent !important;color:var(--suave);font-weight:400}
 .radar-cel:hover{filter:brightness(1.25)}.radar-cel.on{outline:2px solid var(--oro);outline-offset:1px}
-button.chip{font:inherit;font-size:11px;color:var(--suave);cursor:pointer}
+button.chip{font:inherit;font-size:13px;color:var(--suave);cursor:pointer}
 .vsum{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}.vsum .hecho-t{flex:1 1 100%;min-width:0}
-table.ach{table-layout:fixed;width:100%}table.ach th{font-size:10px;word-break:break-word;vertical-align:bottom}table.ach th:first-child,table.ach td:first-child{width:46%}table.ach td:first-child{word-break:break-word}
-.vlink{color:#8ab4f8;text-decoration:underline}.vsel{background:#0d1430;color:var(--texto);border:1px solid var(--linea);border-radius:4px;padding:2px 6px;font:inherit;font-size:12px;max-width:100%}
+table.ach{table-layout:fixed;width:100%}table.ach th{font-size:13px;word-break:break-word;vertical-align:bottom}table.ach th:first-child,table.ach td:first-child{width:46%}table.ach td:first-child{word-break:break-word}
+.vlink{color:#8ab4f8;text-decoration:underline}.vsel{background:#0d1430;color:var(--texto);border:1px solid var(--linea);border-radius:4px;padding:2px 6px;font:inherit;font-size:13px;max-width:100%}
 .chip.clic{cursor:pointer;user-select:none}.chip.clic.on{border-color:var(--oro);color:#f1d58a}#btnVoces.on{border-color:var(--oro);color:#f1d58a}.vtabs{margin:8px 0}
 .plz-bar{height:5px;background:rgba(148,163,184,.18);border-radius:3px;margin:6px 0 2px;overflow:hidden}.plz-bar>div{height:100%}
 table.ach td,table.ach th{padding:4px 5px}.ach-f{cursor:pointer}.ach-f:hover{background:rgba(212,168,75,.08)}.ach-n td{background:rgba(15,23,42,.7);padding:8px 10px}
@@ -137,7 +133,7 @@ table.ach td,table.ach th{padding:4px 5px}.ach-f{cursor:pointer}.ach-f:hover{bac
 .contraste h3{border-bottom-color:rgba(212,168,75,.35);color:#f1d58a}
 .contraste details.doc{background:rgba(15,23,42,.7)}
 details.sec{border:1px solid var(--linea);border-radius:8px;margin:8px 0;background:rgba(15,23,42,.35)}
-details.sec>summary{cursor:pointer;padding:7px 10px;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--suave);font-weight:600;list-style:none}
+details.sec>summary{cursor:pointer;padding:7px 10px;font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--suave);font-weight:600;list-style:none}
 details.sec>summary::-webkit-details-marker{display:none}
 details.sec>summary::before{content:'▸ ';color:var(--oro)}
 details.sec[open]>summary::before{content:'▾ '}
@@ -148,51 +144,56 @@ details.sec>.sec-c{padding:4px 10px 8px}
 .pn-k{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
 .pn-k button,.pn-k div{flex:1 1 120px;text-align:left;border:1px solid var(--linea);border-radius:6px;background:rgba(15,23,42,.7);color:var(--texto);padding:5px 9px;font:inherit}
 .pn-k button{cursor:pointer}.pn-k button:hover{border-color:var(--oro)}
-.pn-k .v{font-size:16px;font-weight:700;color:#f1d58a}.pn-k .e{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--suave)}
-table.pn-t{width:100%;border-collapse:collapse;font-size:12px}
-.pn-t th{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--suave);text-align:right;padding:3px 5px;border-bottom:1px solid var(--linea);font-weight:600}
+.pn-k .v{font-size:16px;font-weight:700;color:#f1d58a}.pn-k .e{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--suave)}
+table.pn-t{width:100%;border-collapse:collapse;font-size:13px}
+.pn-t th{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--suave);text-align:right;padding:3px 5px;border-bottom:1px solid var(--linea);font-weight:600}
 .pn-t th:first-child,.pn-t td:first-child{text-align:left}
 .pn-t td{padding:3px 5px;border-bottom:1px solid rgba(148,163,184,.08);text-align:right;white-space:nowrap}
 .pn-t tr.xrp td{color:#f1d58a;font-weight:600}
 .pn-s{color:#5fd0a0}.pn-b{color:#f08a7a}.pn-n{color:var(--suave)}
-.hitos{margin:6px 0 0;padding:0;list-style:none;border-left:2px solid var(--linea)}.hitos li{position:relative;padding:2px 0 6px 12px;font-size:12.5px;color:#cdd6ea}
+.hitos{margin:6px 0 0;padding:0;list-style:none;border-left:2px solid var(--linea)}.hitos li{position:relative;padding:2px 0 6px 12px;font-size:13px;color:#cdd6ea}
 .hitos li::before{content:'';position:absolute;left:-5px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--oro)}
 .hitos .cuando{color:#f1d58a;margin-right:6px}
-.ficha-ul{margin:4px 0 0;padding-left:18px;font-size:12.5px;color:#cdd6ea}.ficha-ul li{margin:2px 0}
-.ficha-fila{display:flex;gap:10px;align-items:baseline;margin:3px 0;font-size:12.5px}
-.ficha-fila .etq-f{flex:none;min-width:92px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--suave)}
+.ficha-ul{margin:4px 0 0;padding-left:18px;font-size:13px;color:#cdd6ea}.ficha-ul li{margin:2px 0}
+.ficha-fila{display:flex;gap:10px;align-items:baseline;margin:3px 0;font-size:13px}
+.ficha-fila .etq-f{flex:none;min-width:92px;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--suave)}
 .ficha-pts{letter-spacing:.18em;font-size:15px}
 .ficha-dos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+/* C44: tarjetas de capa en columna lateral izquierda (no flotantes), con desplazamiento; letra fija ≥13 px y sin cortes */
+#app.sel #vistaIzq{display:flex;flex-direction:column;gap:14px;inset:0 var(--pwa,0px) 0 auto;left:0;right:auto;width:var(--colw,340px);padding:14px 10px 18px;overflow-y:auto;pointer-events:auto;background:linear-gradient(90deg,rgba(5,8,22,.78),rgba(5,8,22,.45))}
+#vistaIzq .zona{display:contents}
+#vistaIzq .pi,#vistaIzq .pi.ancha{flex:0 0 auto;width:100%;min-width:0;max-width:none;font-size:var(--pf,14px);line-height:1.4;padding:14px 16px 11px}
+#vistaIzq .fred{display:flex;flex-wrap:wrap;gap:4px 12px;margin:6px 0 2px;padding:5px 0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);font-size:max(13px,.85em);color:var(--suave)}#vistaIzq .fred b{color:#f1d58a;font-weight:600}
 @media (max-width:900px){.ficha-dos{grid-template-columns:1fr}}
 @media (max-width:700px){.radar-comp{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;-webkit-overflow-scrolling:touch}.radar-comp>div{flex:0 0 88%;scroll-snap-align:start}}
 .bloque{background:rgba(15,23,42,.6);border:1px solid var(--linea);border-radius:6px;padding:8px 11px;margin:7px 0;border-left-width:3px}
-.volver{background:rgba(15,23,42,.9);color:var(--texto);border:1px solid var(--linea);border-radius:6px;padding:5px 11px;cursor:pointer;margin-bottom:10px;font:inherit;font-size:12.5px}
+.volver{background:rgba(15,23,42,.9);color:var(--texto);border:1px solid var(--linea);border-radius:6px;padding:5px 11px;cursor:pointer;margin-bottom:10px;font:inherit;font-size:13px}
 .volver:hover{border-color:var(--oro)}
 .capa-fila{display:flex;align-items:center;gap:10px;width:100%;background:rgba(15,23,42,.55);border:1px solid var(--linea);border-radius:6px;padding:7px 11px;margin:5px 0;color:var(--texto);cursor:pointer;font:inherit;font-size:13px;text-align:left;transition:.15s}
 .capa-fila:hover{border-color:var(--oro);background:rgba(30,41,70,.55)}
 .capa-fila .n{margin-left:auto;font-weight:700;color:#f1d58a}
-.capa-fila .sub{color:var(--suave);font-size:11px}
+.capa-fila .sub{color:var(--suave);font-size:13px}
 .ico{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;flex:none}
 details.doc{background:rgba(15,23,42,.55);border:1px solid var(--linea);border-radius:6px;margin:6px 0;padding:0}
 details.doc summary{cursor:pointer;padding:8px 11px;list-style:none;display:flex;gap:8px;align-items:baseline}
 details.doc summary::-webkit-details-marker{display:none}
 details.doc[open]{border-color:rgba(212,168,75,.55)}
-details.doc .cuerpo{padding:0 11px 10px;color:#cdd6ea;font-size:12.5px}
-.etq{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;padding:1px 6px;border-radius:3px;border:1px solid;flex:none}
+details.doc .cuerpo{padding:0 11px 10px;color:#cdd6ea;font-size:13px}
+.etq{font-size:13px;text-transform:uppercase;letter-spacing:.08em;padding:1px 6px;border-radius:3px;border:1px solid;flex:none}
 .cifras{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:8px;margin:6px 0}
 .cifra{background:rgba(15,23,42,.62);border:1px solid var(--linea);border-top-width:3px;border-radius:7px;padding:9px 11px}
 .cifra b{display:block;font-size:19px;line-height:1.15;letter-spacing:-.01em}
-.cifra span{display:block;font-size:12px;color:#c5cee2;margin-top:3px}
-.cifra small{display:block;font-size:10.5px;color:var(--suave);margin-top:5px}
+.cifra span{display:block;font-size:13px;color:#c5cee2;margin-top:3px}
+.cifra small{display:block;font-size:13px;color:var(--suave);margin-top:5px}
 .fila-ev summary{align-items:center}
 .fila-ev .rombo{width:10px;height:10px;transform:rotate(45deg);flex:none;border:1px solid rgba(255,255,255,.6)}
-.fila-ev .cuando{font-size:11.5px;color:#f1d58a;white-space:nowrap;min-width:78px}
+.fila-ev .cuando{font-size:13px;color:#f1d58a;white-space:nowrap;min-width:78px}
 .estrella-ev{color:#ffd166}
 /* Móvil y ventanas estrechas: solo reordena y compacta; en pantallas anchas no cambia nada */
 @media (max-width:900px){
   #lienzo{flex:none;height:auto;aspect-ratio:1/1.05;min-height:0}
   #barra{gap:6px;padding:6px 8px}
-  #barra button,#barra input[type=text]{padding:5px 9px;font-size:12.5px}
+  #barra button,#barra input[type=text]{padding:5px 9px;font-size:13px}
   #tiempo{flex:1 1 100%}
   #barra input[type=text]{flex:1 1 100%}
   #calBarra{flex-wrap:wrap;gap:4px 10px;padding:6px 8px}
@@ -205,12 +206,21 @@ details.doc .cuerpo{padding:0 11px 10px;color:#cdd6ea;font-size:12.5px}
   .pn{overflow-x:auto}
   .cifras{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+#pest{display:flex;flex-wrap:wrap;gap:4px;padding:4px 8px 0}
+#pest button{font:inherit;font-size:13px;color:var(--suave);background:rgba(15,23,42,.8);border:1px solid var(--linea);border-bottom:none;border-radius:8px 8px 0 0;padding:6px 13px;cursor:pointer;transition:.15s}
+#pest button:hover{color:#fff;border-color:var(--oro)}
+#pest button.on{background:var(--oro);color:#1a1405;font-weight:600;border-color:var(--oro)}
+#vistasWrap{margin:0 6px;border:1px solid var(--linea);border-radius:0 8px 8px 8px;overflow:hidden;background:#0e1420}
+#vistasWrap[hidden]{display:none}
+#vistasMarco{display:block;width:100%;height:100%;border:0;background:#0e1420}
 </style></head><body>
+<nav id="pest" aria-label="Vistas de la Órbita"></nav>
+<div id="vistasWrap" hidden><iframe id="vistasMarco" title="Vistas de datos de la Órbita"></iframe></div>
 <div id="app">
   <div id="izq">
     <div id="cab"><div id="marca"><b>Sistema de raíles</b><div id="subtitulo"></div></div><div id="leyendaMapa"></div></div>
     <div id="barra" class="vidrio">
-      <button id="btnOrbitas" title="Pausar o reanudar el giro">⏸ Órbitas</button>
+      <button id="btnOrbitas" title="Girar o parar las órbitas">▶ Girar</button>
       <div id="tiempo"><button id="btnPlay" title="Reproducir los hechos por fecha">▶ Tiempo</button>
         <div id="pista"><input type="range" id="slider" min="0" max="100" value="100" aria-label="Fecha"><div id="marcas"></div></div>
         <span id="fecha"></span></div>
@@ -230,6 +240,7 @@ details.doc .cuerpo{padding:0 11px 10px;color:#cdd6ea;font-size:12.5px}
   </div>
 </div>
 <script id="datos" type="application/json">__DATOS__</script>
+<script id="vistasHtml" type="application/json">__VISTAS__</script>
 <script>
 const D = JSON.parse(document.getElementById('datos').textContent);
 const NS = 'http://www.w3.org/2000/svg';
@@ -268,10 +279,10 @@ function iconoHTML(id, px, color, fondo){
   const g = S('g', {fill: 'none', stroke: color, 'stroke-width': 1.7, 'stroke-linecap': 'round', 'stroke-linejoin': 'round'}, s); pintarIcono(g, id); w.appendChild(s); return w;
 }
 
-var altoSel = false, anchoSel = 600, cxSel = .5, panelVisible = false, panelAncho = 520;
+var enVistas = false, altoSel = false, anchoSel = 600, cxSel = .5, panelVisible = false, panelAncho = 520;
 function medirAlto(){ let h = 860; try { const ih = window.parent.innerHeight || 900; h = altoSel ? Math.max(900, Math.min(ih - 10, 1300)) : Math.max(780, Math.min(ih + 20, 1100)); } catch (e) {} document.documentElement.style.setProperty('--alto', h + 'px'); return h; }
 medirAlto();
-function ajustarAlto(){ try { const fe = window.frameElement; if (!fe) return; const h = (app.offsetHeight + 14) + 'px'; fe.style.height = h;
+function ajustarAlto(){ try { const fe = window.frameElement; if (!fe) return; if (enVistas) return; const h = (app.offsetHeight + 14 + pest.offsetHeight) + 'px'; fe.style.height = h;
   const p = fe.parentElement; if (p){ p.style.height = h; p.style.minHeight = h; } } catch (e) {} }
 try { window.parent.addEventListener('resize', () => { medirAlto(); ajustarAlto(); }); } catch (e) {}
 
@@ -295,7 +306,7 @@ const enDias = e => Math.round(e.d0 - HOY);
 const cuando = e => { const n = enDias(e); return e.d0 <= HOY && e.d1 >= HOY ? 'en curso' : n === 0 ? 'hoy' : n === 1 ? 'mañana' : `en ${n} días`; };
 const evVisibles = (capaId, dias) => eventos.filter(e => temasActivos.has(e.tema) && (!capaId || e.capa === capaId) && (dias === undefined || enDias(e) <= dias));
 
-let sel = null, orbitasPausadas = false, reproduciendo = false, vistos = {};
+let sel = null, orbitasPausadas = true, reproduciendo = false, vistos = {};
 const RY = .72;
 const capas = D.capas.map((c, i) => ({...c, color: OK(c.color), i, rx: 118 + i * (D.capas.length > 8 ? 40 : 48), a: (i * 2.399) % (Math.PI * 2),
   v: 0.10 / Math.pow(1 + i, 0.5) * (i % 2 ? -1 : 1), R: 16, docs: c.docs || {inv: [], glo: []}, cifras: c.cifras || []}));
@@ -426,7 +437,7 @@ function mostrarTip(c){
   if (PAN && PAN.bonos && c.id === 'deuda'){ const q = PAN.bonos.paises.find(x => x.id === 'ESP'), u = PAN.bonos.paises.find(x => x.id === 'USA'); if (q && u) H('div', 'nota', tip, `Datos al día: bono a 10 años de España ${pnFmt(q.plazos['10A'], 2)} % · EE. UU. ${pnFmt(u.plazos['10A'], 2)} % [P]`); }
   if (c.id === 'reg' && tiposFilas().length) H('div', 'nota', tip, `Datos al día: ${tiposFilas().filter(x => x.dir === 'sube').length} de ${tiposFilas().length} bancos centrales subieron tipos en su último movimiento`);
   if (PAN && PAN.tic && c.id === 'cbdc') H('div', 'nota', tip, `Datos al día: $${pnFmt(PAN.tic.total[0], 0)} mil M de deuda de EE. UU. en manos extranjeras (${PAN.tic.meses[0]}) [P]`);
-  if (ev[0]) H('div', 'nota', tip, `Próxima: ${fmtC(ev[0].ini)} · ${corto(ev[0].titulo, 60)}`);
+  if (ev[0]) H('div', 'nota', tip, `Próxima: ${fmtC(ev[0].ini)} · ${ev[0].titulo}`);
   H('div', 'nota', tip, c.resumen);
   tip.style.opacity = 1;
 }
@@ -641,9 +652,9 @@ function fichaPostits(c, pi){
 }
 function postitsAbajo(c, vs, pi){
   cifrasVivas(c).slice(0, 4).forEach(x => { const n = pi('bajo', c.color, 'Cifra clave'); const v = H('b', 'big', n, x.v); v.style.color = mezcla(c.color, '#fff', .3);
-    H('div', 'clamp', n, x.e); H('div', 'sub clamp', n, x.f); });
+    H('div', '', n, x.e); H('div', 'sub', n, x.f); });
   vs.slice().sort((a, b) => b.d - a.d).slice(0, 3).forEach(m => { const n = pi('bajo', colEst(m.estado), 'Hecho · ' + m.fecha);
-    H('b', '', n, m.actor); H('div', 'clamp', n, m.texto); H('div', 'sub clamp', n, 'Fuente: ' + corto(m.fuente, 60)); });
+    H('b', '', n, m.actor); H('div', '', n, m.texto); H('div', 'sub', n, 'Fuente: ' + m.fuente); });
 }
 function listaFicha(padre, items){ const ul = H('ul', 'ficha-ul', padre); (items || []).forEach(t => H('li', '', ul, t)); }
 const RADAR = D.radar;
@@ -945,7 +956,7 @@ function listaEventos(padre, lista, conCapa){
     const s = H('summary', '', det); const r = H('span', 'rombo', s); r.style.background = colTema(e.tema);
     H('span', 'cuando', s, `${fmtC(e.ini)} · ${cuando(e)}`);
     if (e.impacto === 'alto') H('span', 'estrella-ev', s, '★');
-    H('span', '', s, corto(e.titulo, 86));
+    H('span', '', s, e.titulo);
     const cu = H('div', 'cuerpo', det); H('div', '', cu, e.detalle || '');
     const f = H('div', 'fuente', cu, `${(CAL.temas[e.tema] || {}).nombre || e.tema}${e.aprox ? ' · fecha aproximada' : ''}${e.fuente ? ' · fuente: ' + e.fuente : ''}${conCapa ? ' · capa: ' + ((capas.find(c => c.id === e.capa) || {}).nombre || e.capa) : ''}`); f.style.marginTop = '6px';
   });
@@ -980,7 +991,7 @@ function vozTarjeta(padre, v, i){
   const n = vNiv(v.nivel), c = vConf(v.conf);
   const det = H('details', 'doc entra', padre); det.style.animationDelay = Math.min(i, 12) * 25 + 'ms'; det.style.borderLeft = `3px solid ${n[1]}`;
   const s = H('summary', 'vsum', det); etiqueta(s, n[0], n[1], n[2]); etiqueta(s, c[0], c[1]);
-  const t = H('span', 'hecho-t', s); H('b', '', t, v.quien); t.appendChild(document.createTextNode(` · ${fechaVoz(v.cuando)} — ${corto(v.texto, 90)}`));
+  const t = H('span', 'hecho-t', s); H('b', '', t, v.quien); t.appendChild(document.createTextNode(` · ${fechaVoz(v.cuando)} — ${v.texto}`));
   const cu = H('div', 'cuerpo', det);
   H('div', '', cu, v.texto);
   if (v.nota){ const x = H('div', 'nota', cu, v.nota); x.style.marginTop = '6px'; }
@@ -1035,7 +1046,7 @@ function plazosPestana(padre){
   l.forEach((v, i) => {
     const z = v.plazo, col = PLZ[z.estado][1];
     const det = H('div', 'bloque entra', padre); det.style.borderLeftColor = col; det.style.animationDelay = Math.min(i, 12) * 20 + 'ms';
-    const t = H('div', '', det); H('b', '', t, fechaVoz(z.prometido) + ' · '); t.appendChild(document.createTextNode(`${v.quien}: ${corto(v.texto, 110)}`));
+    const t = H('div', '', det); H('b', '', t, fechaVoz(z.prometido) + ' · '); t.appendChild(document.createTextNode(`${v.quien}: ${v.texto}`));
     const ch = H('div', 'chips', det); etiqueta(ch, PLZ[z.estado][0], col); etiqueta(ch, vNiv(v.nivel)[0], vNiv(v.nivel)[1]); etiqueta(ch, vConf(v.conf)[0], vConf(v.conf)[1]);
     if (z.dicho){ const ini = aFecha(z.dicho), fin = aFecha(z.prometido), pct = Math.max(0, Math.min(100, (hoy - ini) / (fin - ini) * 100));
       const b = H('div', 'plz-bar', det); const r = H('div', '', b); r.style.width = pct.toFixed(0) + '%'; r.style.background = col; b.title = `Dicho ${fechaVoz(z.dicho)} → ${fechaVoz(z.prometido)}: ${pct.toFixed(0)} % del plazo`; }
@@ -1094,7 +1105,7 @@ function tesisPestana(padre){
   const tb = H('table', 'pn-t ach', cj), th = H('tr', '', H('thead', '', tb)); H('th', '', th, 'Prueba').style.textAlign = 'left';
   VT.hipotesis.forEach(h => { const c = H('th', '', th, h.nombre); c.title = h.desc; });
   const cb = H('tbody', '', tb);
-  VT.pruebas.forEach(p => { const tr = H('tr', 'ach-f', cb); const td = H('td', '', tr, corto(p.texto, 90)); td.style.textAlign = 'left'; td.title = p.texto;
+  VT.pruebas.forEach(p => { const tr = H('tr', 'ach-f', cb); const td = H('td', '', tr, p.texto); td.style.textAlign = 'left'; td.title = p.texto;
     VT.hipotesis.forEach(h => { const a = ACH[p.celdas[h.id]] || ACH.N; const c = H('td', '', tr, a[0]); c.style.color = a[1]; c.style.fontWeight = '700'; c.style.textAlign = 'center'; c.title = a[2]; });
     tr.addEventListener('click', () => { const ya = tr.nextSibling && tr.nextSibling.classList && tr.nextSibling.classList.contains('ach-n'); if (ya){ tr.nextSibling.remove(); return; }
       const n = document.createElement('tr'); n.className = 'ach-n'; const c = H('td', '', n); c.colSpan = VT.hipotesis.length + 1; c.style.textAlign = 'left';
@@ -1191,6 +1202,9 @@ function dibujarPanel(){
     const cab = movil ? H('div', 'cabecera entra', panel) : pi('top', sel.color, null); if (!movil) cab.classList.add('ancha'); else cab.style.borderLeftColor = sel.color;
     const t = H('h2', '', cab); t.appendChild(iconoHTML(sel.id, 20, mezcla(sel.color, '#fff', .3), rgba(sel.color, .22))); const tn = H('span', '', t, sel.nombre); tn.style.color = mezcla(sel.color, '#fff', .35);
     H('p', 'nota', cab, sel.resumen);
+    { const cv = cifrasVivas(sel), fu = (cv[0] && cv[0].f) || '', niv = (fu.match(/\[(P|S|J)\]/) || [])[1], pe = sel.proxima || (evVisibles(sel.id)[0] ? {fecha: fmtC(evVisibles(sel.id)[0].ini)} : null);
+      const fr = H('div', 'fred', cab);
+      [['Actualizado', D.version || '—'], ['Próxima revisión', pe ? pe.fecha : 'sin fecha'], ['Fuente', fu.replace(/\s*\[[A-Z]\].*$/, '') || 'ver informes'], ['Nivel', niv ? '[' + niv + ']' : '[VERIFICAR]']].forEach(([k, v]) => { const x = H('span', '', fr); H('b', '', x, k + ': '); x.appendChild(document.createTextNode(v)); }); }
     const vs = visibles(sel.id), cnt = {};
     vs.forEach(m => cnt[m.estado] = (cnt[m.estado] || 0) + 1);
     const chips = H('div', 'chips', cab);
@@ -1224,25 +1238,17 @@ function ajustarLados(){
   const lw = $('lienzo').clientWidth || 1000, lh = $('lienzo').clientHeight || 700, izq = $('vistaIzq');
   panelAncho = Math.max(440, Math.min(Math.round(lw * .31), 640)); app.style.setProperty('--pw', panelAncho + 'px');
   const pw = pwEfectivo(), ow = lw - pw;
-  const hw = Math.max(300, Math.min(Math.round(ow * .35), 440)), hh = Math.max(300, Math.min(Math.round(lh * .40), 400));
-  izq.style.setProperty('--pwa', pw + 'px'); izq.style.setProperty('--hw', hw + 'px'); izq.style.setProperty('--hh', hh + 'px');
-  ajustarLetra(izq, Math.min(20, ow / 70));
+  const colw = Math.max(300, Math.min(Math.round(ow * .26), 400)), vw = ow - colw;
+  const hw = Math.max(300, Math.min(Math.round(vw * .5), 440)), hh = Math.max(300, Math.min(Math.round(lh * .40), 400));
+  izq.style.setProperty('--pwa', pw + 'px'); izq.style.setProperty('--hw', hw + 'px'); izq.style.setProperty('--hh', hh + 'px'); izq.style.setProperty('--colw', colw + 'px');
+  ajustarLetra(izq, Math.min(15, ow / 90));
   const esc = Math.min(hw / 280, hh / 320);
-  anchoSel = Math.max(420, Math.round(lw / esc)); cxSel = ow / 2 / lw;
+  anchoSel = Math.max(420, Math.round(lw / esc)); cxSel = (colw + vw / 2) / lw;
 }
-// Letra de los post-its: empieza lo más grande que permite la pantalla y baja de punto en punto (tamaño entero, igual en todas las capas) hasta que ningún post-it se corte (mínimo 13 px; si aun así una columna no cabe, se desplaza).
-// Se mide por posición de layout (offsetTop), a la que no afectan las transformaciones de la animación.
+// Letra de los post-its (columna lateral con desplazamiento): tamaño entero, igual en todas las capas, nunca por debajo de 13 px y sin recortar texto.
 function ajustarLetra(izq, maxPx){
-  const zonas = [...izq.querySelectorAll('.zona')];
-  const cabe = () => zonas.every(z => [...z.querySelectorAll('.pi')].every(n => n.offsetTop >= z.offsetTop - 1 && n.offsetTop + n.offsetHeight <= z.offsetTop + z.clientHeight + 2));
   izq.classList.remove('recorte');
-  let pf = Math.max(13, Math.floor(maxPx));
-  for (; pf > 13; pf -= 1){
-    izq.style.setProperty('--pf', pf + 'px');
-    if (cabe()) return;
-  }
-  izq.style.setProperty('--pf', '13px');
-  if (!cabe()) izq.classList.add('recorte');   // con el panel abierto no hay sitio: los textos largos de arriba se acortan (el texto completo está en el panel)
+  izq.style.setProperty('--pf', Math.max(14, Math.min(16, Math.floor(maxPx))) + 'px');
 }
 function actualizarPanel(){ panel.classList.toggle('abierto', panelVisible); }
 function posicionarNotas(){
@@ -1285,11 +1291,39 @@ function alternarPanel(){
 $('btnPanel').addEventListener('click', alternarPanel);
 $('btnVoces').addEventListener('click', () => { if (vistaVoces) cerrarVoces(); else abrirVoces(''); });
 $('btnVolver').addEventListener('click', () => seleccionar(null));
-$('btnOrbitas').addEventListener('click', e => { orbitasPausadas = !orbitasPausadas; e.target.textContent = orbitasPausadas ? '▶ Órbitas' : '⏸ Órbitas'; });
+$('btnOrbitas').addEventListener('click', e => { orbitasPausadas = !orbitasPausadas; e.target.textContent = orbitasPausadas ? '▶ Girar' : '⏸ Parar giro'; });
 $('btnPlay').addEventListener('click', e => { if (!reproduciendo){ if (+slider.value >= +slider.max) slider.value = 0; reproduciendo = true; e.target.textContent = '⏸ Tiempo'; vistos = {}; capas.forEach(c => c.lunas.forEach(m => { m.vis = false; })); } else { reproduciendo = false; e.target.textContent = '▶ Tiempo'; } });
 slider.addEventListener('input', () => { reproduciendo = false; $('btnPlay').textContent = '▶ Tiempo'; refrescar(false); });
 $('buscar').addEventListener('input', () => refrescar(false));
 $('soloToken').addEventListener('change', () => refrescar(false));
 try { new ResizeObserver(ajustarAlto).observe(app); new ResizeObserver(() => { if (sel){ ajustarLados(); posicionarNotas(); } }).observe($('lienzo')); } catch (e) {}
 dibujarCalendario(); refrescar(false); requestAnimationFrame(frame); ajustarAlto();
+
+// Pestañas: «Órbita» es esta pantalla; las demás son la plantilla vistas.html dentro de un marco (CSS y JS aparte, sin mezclarse).
+window.DATOS = D;           // las vistas leen los mismos datos que la Órbita (solo lectura)
+const VISTAS = [['orbita', '🪐 Órbita'], ['resumen', 'Resumen'], ['capas', 'Capas'], ['tiempo', 'Línea de tiempo'], ['calendario', 'Calendario'],
+  ['matriz', 'Matriz país × tema'], ['noticias', 'Noticias'], ['voces', 'Voces'], ['paneles', 'Paneles de datos']];
+const marco = $('vistasMarco'), envoltura = $('vistasWrap');
+let vistaPend = null;
+VISTAS.forEach(([id, nombre]) => { const b = H('button', '', pest, nombre); b.dataset.v = id; b.addEventListener('click', () => irVista(id)); });
+function tamVistas(){
+  let ih = 900; try { ih = window.parent.innerHeight || 900; } catch (e) {}
+  const h = Math.max(700, Math.min(ih - 6, 1300)), hb = pest.offsetHeight;
+  envoltura.style.height = (h - hb - 4) + 'px';
+  try { const fe = window.frameElement; if (fe){ fe.style.height = h + 'px'; const p = fe.parentElement; if (p){ p.style.height = h + 'px'; p.style.minHeight = h + 'px'; } } } catch (e) {}
+}
+function irVista(id){
+  pest.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v === id));
+  enVistas = id !== 'orbita';
+  app.style.display = enVistas ? 'none' : ''; envoltura.hidden = !enVistas;
+  if (!enVistas){ medirAlto(); ajustarAlto(); return; }
+  tamVistas();
+  if (!marco.getAttribute('srcdoc')){
+    vistaPend = id;
+    marco.addEventListener('load', () => { try { marco.contentWindow.ir(vistaPend); } catch (e) {} }, {once: true});
+    marco.srcdoc = JSON.parse($('vistasHtml').textContent);
+  } else { try { marco.contentWindow.ir(id); } catch (e) {} }
+}
+try { window.parent.addEventListener('resize', () => { if (enVistas) tamVistas(); }); } catch (e) {}
+irVista('orbita');
 </script></body></html>

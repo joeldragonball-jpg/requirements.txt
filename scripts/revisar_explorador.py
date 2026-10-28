@@ -221,7 +221,7 @@ if RUTA_VOC.exists():
         url = (v.get("fuente") or {}).get("url", "")
         if v.get("nivel") in ("P", "D") and not url:
             aviso(dv, "nivel P o D sin enlace a la fuente (una declaración localizada necesita saber dónde se localizó)")
-        if url and not url.startswith("https://"):
+        if url and not url.startswith(("https://", "http://")):
             aviso(dv, f"el enlace de la fuente no es https: {url[:40]}")
         if v.get("nivel") == "P" and v.get("conf") in ("sin_confirmar", "contradicha"):
             aviso(dv, "un hecho de fuente primaria no puede estar «sin confirmar» o «contradicha»")
@@ -237,7 +237,7 @@ if RUTA_VOC.exists():
             if pz.get("dicho") and pz.get("prometido") and str(pz["dicho"]) > str(pz["prometido"]):
                 aviso(dv, "plazo: «dicho» es posterior a «prometido»")
         vid = v.get("video")
-        if vid and vid.get("url") and not vid["url"].startswith("https://"):
+        if vid and vid.get("url") and not vid["url"].startswith(("https://", "http://")):
             aviso(dv, "enlace de vídeo no https")
     # misma persona o institución con la misma cifra en dos declaraciones distintas: aviso de posible duplicado
     por_texto = {}
@@ -265,6 +265,44 @@ if RUTA_VOC.exists():
                     aviso(f"tesis premisa {k}", f"rol desconocido: {rol_['rol']}")
 else:
     aviso("voces", "no existe explorador/voces.json")
+
+# ---- Esquema común (C43): campos opcionales nuevos; solo se comprueba su forma si existen
+ISO2 = re.compile(r"^[A-Z]{2,3}$")
+
+
+def comprobar_comun(donde, x):
+    pid = x.get("pais_id")
+    if pid is not None:
+        for p in ([pid] if isinstance(pid, str) else pid if isinstance(pid, list) else [None]):
+            if not isinstance(p, str) or not ISO2.match(p):
+                aviso(donde, f"«pais_id» no es un código de país en mayúsculas: {p!r}")
+    if "nivel" in x and x["nivel"] not in ("P", "S", "V"):
+        aviso(donde, f"«nivel» debe ser P, S o V: {x['nivel']!r}")
+    for k in ("fecha", "caduca"):
+        if k in x and x[k] is not None and not fecha_ok(x[k]):
+            aviso(donde, f"«{k}» no es una fecha válida: {x[k]!r}")
+    if "revisar" in x and not isinstance(x["revisar"], bool):
+        aviso(donde, "«revisar» debe ser verdadero o falso")
+    if "url" in x and x["url"] is not None and not str(x["url"]).startswith(("https://", "http://")):
+        aviso(donde, f"«url» debe empezar por http:// o https://: {x['url']!r}")
+    for k in ("sesgo", "perspectivas"):
+        if k in x and not isinstance(x[k], (str, list)):
+            aviso(donde, f"«{k}» debe ser texto o lista")
+
+
+for m in d["movimientos"]:
+    comprobar_comun(f"movimiento {m.get('fecha')} {m.get('actor')}", m)
+for c in d["capas"]:
+    for k, v in c.items():
+        if isinstance(v, list):
+            for e in v:
+                if isinstance(e, dict):
+                    comprobar_comun(f"{c['id']}.{k}", e)
+if RUTA_REG.exists():
+    for j in r.get("jurisdicciones", []):
+        comprobar_comun(f"regulacion jurisdicción {j['id']}", j)
+    for cel in r.get("celdas", []):
+        comprobar_comun(f"regulacion {cel.get('jur')}.{cel.get('tema')}", cel)
 
 print("\n".join(avisos) if avisos else "Sin avisos.")
 print(f"\n{len(avisos)} aviso(s) en {len(d['capas'])} capas y {len(d['movimientos'])} movimientos.")

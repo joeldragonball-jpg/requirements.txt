@@ -233,12 +233,18 @@ def _html(conceptos):
         datos["bancos"] = json.loads((CARPETA / "bancos-eba.json").read_text(encoding="utf-8"))
     except Exception:
         datos["bancos"] = None
+    for clave, archivo in (("calificaciones", "calificaciones"), ("deuda_fmi", "deuda-fmi"), ("valoracion", "valoracion"), ("reservas", "reservas")):
+        try:                          # tablas de los paneles de datos (solo lectura); sin el archivo, esa tabla no sale
+            datos[clave] = json.loads((CARPETA / f"{archivo}.json").read_text(encoding="utf-8"))
+        except Exception:
+            datos[clave] = None
     datos["biblioteca"] = rel.get("_totales", {})
     hoy = date.today().isoformat()
     datos["calendario"] = {"hoy": hoy, "temas": TEMAS, "eventos": _calendario(hoy, _version())}
     # Dentro de <script type="application/json"> hay que evitar que el texto cierre la etiqueta
     texto = json.dumps(datos, ensure_ascii=False).replace("</", "<\\/").replace("<!--", "<\\!--")
-    return plantilla.replace("__DATOS__", texto)
+    vistas = json.dumps((CARPETA / "vistas.html").read_text(encoding="utf-8"), ensure_ascii=False).replace("</", "<\\/").replace("<!--", "<\\!--")
+    return plantilla.replace("__VISTAS__", vistas).replace("__DATOS__", texto)
 
 
 def mostrar(conceptos=None):

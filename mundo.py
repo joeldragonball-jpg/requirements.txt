@@ -154,7 +154,18 @@ def _construir(hoy_iso):
     out = fut + pas
     for i, e in enumerate(out):
         e["id"] = i
-    return {"hoy": hoy_iso, "paises": PAISES, "temas": explorador.TEMAS, "eventos": out}
+    # etapa regulatoria de cada país por tema (solo lectura de regulacion.json): es lo que pinta la casilla
+    etapas, temas_r, escala_r = {}, [], {}
+    if rad:
+        temas_r = [{"id": t["id"], "nombre": t["nombre"]} for t in rad.get("temas", [])]
+        escala_r = rad.get("escala", {})
+        for c in rad.get("celdas", []):
+            pais = JUR.get(c.get("jur"))
+            if pais and c.get("etapa") is not None:
+                etapas.setdefault(pais, []).append({"tema": c.get("tema"), "etapa": c["etapa"], "nivel": _nivel("[" + str(c.get("fuente", "")) + "]"),
+                                                    "revisado": str(c.get("revisado", "")), "estado": str(c.get("estado", ""))[:420]})
+    return {"hoy": hoy_iso, "paises": PAISES, "temas": explorador.TEMAS, "eventos": out,
+            "etapas": etapas, "temas_reg": temas_r, "escala": escala_r}
 
 
 def _version():
