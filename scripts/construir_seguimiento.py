@@ -513,7 +513,7 @@ def planning_md(d):
     h = d["hoy"]
     lunes = hoy - timedelta(days=hoy.weekday())
     L += [f"## Hoy ({dias[hoy.weekday()]} {hoy.isoformat()}): solo lo casi obligatorio",
-          f"- R00 apertura {'✓' if h['apertura'] else '⏳ pendiente'} · cierre {'✓' if h['cierre'] else '⏳ pendiente (desde las 15:00)'} · racha {h['racha']} días"]
+          f"- R00 apertura {'✓' if h['apertura'] else '⏳ pendiente'} · cierre {'✓' if h['cierre'] else '⏳ pendiente (desde las 22:00, cierre de EE. UU.)'} · racha {h['racha']} días"]
     rut = {r["id"]: r for r in d["rutinas"]}
     fijas = []
     if hoy.weekday() == 0:

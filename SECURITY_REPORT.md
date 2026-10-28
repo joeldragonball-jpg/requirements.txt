@@ -1,6 +1,6 @@
 # 🟡 REVISAR — Informe de seguridad
 
-**Fecha:** 2026-10-22 · **Última comprobación:** 2026-10-26, 🟢 sin cambios respecto al 22-oct (no repetir búsquedas ya hechas hoy) · Repositorio público: este informe no incluye datos del equipo local.
+**Fecha:** 2026-10-22 · **Última comprobación:** 2026-10-28, 🔴→🟡 el script marcó que CISA KEV añadió el 27-oct el CVE-2026-111497 (Brotli) como explotado activamente; comprobado a mano: sin exposición en el código; solo queda por saber el Brotli del Chromium de `despertador.yml` (no comprobado; solo visita nuestra propia app de Streamlit) (no repetir búsquedas ya hechas hoy) · Repositorio público: este informe no incluye datos del equipo local.
 
 ## Resumen
 1. El aviso del vídeo se **confirma en lo esencial** en fuentes oficiales: hay parches de seguridad en Node.js (21-oct), Python (1-oct y 21-oct), Go (8 y 19-oct) y Java (Oracle CPU, 20-oct); en Rust no hay aviso oficial del lenguaje en octubre.
@@ -24,7 +24,7 @@ Python (única dependencia real): app con `uv` (Python 3.14.8, OpenSSL 3.5.9), w
 | Go: correcciones de seguridad en go1.27.2 y go1.26.9 (8-oct: `go`, `crypto/tls`, `html/template`, `net/http`, `net/textproto`, `os`) y go1.27.3 / go1.26.10 (19-oct: `crypto/x509`) | No indicada | Versiones anteriores | Las citadas | [go.dev/doc/devel/release](https://go.dev/doc/devel/release) | No (sin Go). La página no lista CVE |
 | Java: Oracle CPU de octubre 2026 (20-oct): 55 parches de Java SE, 49 explotables por red sin autenticación según Oracle | Variada | JDK 8u, 11, 17, 21, 25, 27 anteriores | 27.0.1, 25.0.5, 21.0.13, 17.0.21, 11.0.33, 8u511 | [Oracle CPU oct-2026](https://www.oracle.com/security-alerts/cpuoct2026.html) | No (sin Java) |
 | Rust: sin aviso oficial del lenguaje en octubre. El de Cargo (CVE-2026-33056) es de marzo (corregido en 1.94.1). Avisos de crates (rustls RUSTSEC-2026-0346 a 0349 y otros) | Baja a media | n/d | rustls 0.23.46 | [Blog de Rust](https://blog.rust-lang.org/2026/03/21/cve-2026-33056/); crates: **no verificado** en rustsec.org (solo vi referencias de terceros) | No (sin Rust) |
-| CISA KEV (octubre 2026) | n/d | n/d | n/d | [Catálogo KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) | No: ninguna entrada de octubre nombra Node, Python, Go, Rust, Java, OpenSSL, Streamlit ni una CA |
+| CISA KEV (octubre 2026) | n/d | n/d | n/d | [Catálogo KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) | **Actualizado 28-oct:** KEV añadió el 27-oct CVE-2026-111497 (Google Brotli, valor de retorno sin comprobar; vencimiento CISA 10-nov; corregido en Brotli 1.2.1) como explotado activamente. En el código: no afecta (`brotli`/`brotlicffi` no están y `requirements.txt` no los pide). Sin comprobar: el Chromium de Playwright en `despertador.yml` (solo abre nuestra app de Streamlit; el runner se destruye en cada ejecución). Resto de entradas de octubre (Adobe Commerce, PHP): no nos nombran |
 
 ## Veredicto sobre las afirmaciones del vídeo
 | Afirmación | Resultado |
