@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-28 18:52 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-28 19:13 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -31,8 +31,12 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - C37 ◐ en parte · Centro · Auditoría C13: enlace a la fuente primaria en cada celda del radar regu · Sonnet S · ~1,5 % · `research/prompts/C37-urls-radar-pendientes.md`
 - C39 · Centro · Volcar a la Órbita lo ya investigado sin movimiento (países T07-T16 y W · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
 - C40 · Radar · Jurisdicciones fuera del radar: Reino Unido, Suiza, Canadá, Australia y  · Sonnet M · ~3 % · `research/prompts/C40-jurisdicciones-fuera-del-radar.md`
-- C41C · Centro · Fusión del diseño de la Órbita (C41A + C41B): coincidencias, discrepanc · Opus S · ~5 % · `research/prompts/C41C-fusion-diseno-orbita.md`
 - C42 · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
+- C43 · Centro · Índice de datos generado y esquema común (campos nuevos sin renombrar)  · Sonnet M · ~3 % · `research/prompts/C43-indice-y-esquema-comun.md`
+- C44 · Centro · Arreglos rápidos de mapa.html: giro apagado, texto ≥13 px, tarjetas lat · Sonnet S · ~2 % · `research/prompts/C44-arreglos-rapidos-mapa.md`
+- C45 · Centro · Pestaña Matriz país × tema (del prototipo) con certeza y selector semáf · Sonnet M · ~3 % · `research/prompts/C45-pestana-matriz-pais-tema.md`
+- C46 · Centro · Línea de tiempo con panel lateral, carriles colapsables y filtros globa · Sonnet M · ~4 % · `research/prompts/C46-linea-tiempo-lateral-y-filtros.md`
+- C47 · Centro · mundo.html: etapa por tema en vez de contar eventos, listado en panel l · Sonnet S · ~1 % · `research/prompts/C47-mundo-etapa-por-tema.md`
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T25 · Tema libre
 **Deuda y bonos (D)** · detalle en `research/COLA-DEUDA-BONOS.md`
