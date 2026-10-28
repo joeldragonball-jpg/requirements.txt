@@ -103,6 +103,21 @@ function panelTIC(){
 }
 
 const MEC={'fiat-backed':'Respaldo en dinero y letras','crypto-backed':'Respaldo en cripto','algorithmic':'Algorítmica','':'—'};
+function primarias(s){
+  const q=D.stablecoins_primarias; if(!q||!q.monedas) return '';
+  const filas=q.monedas.map(m=>{
+    const lista=(m.cadena==='XRPL'?s.xrpl:s.stellar).top.find(f=>f.simbolo===m.id);
+    const ll=lista?lista.usd:null, eur=m.id.startsWith('EUR');
+    const prim=m.cantidad==null?'<span class="mini">sin dato</span>':(eur?fm(m.cantidad/1e6,2)+' M€':fUSD(m.cantidad));
+    const dif=(ll==null||m.cantidad==null||eur)?'<span class="mini">'+(eur?'moneda en euros: no comparable directo':'—')+'</span>':cambio((ll-m.cantidad)/m.cantidad*100);
+    return `<tr><td><b>${m.id}</b> en ${m.cadena}<div class="mini">emisor ${m.emisor.slice(0,6)}…${m.emisor.slice(-4)} · <a style="color:#f1d58a" href="${m.fuente_direccion}" target="_blank" rel="noopener">dirección oficial</a></div></td>
+     <td class="n">${prim} <span class="nivel P">P</span></td><td class="n">${ll==null?'—':fUSD(ll)} <span class="nivel S">S</span></td><td class="n">${dif}</td></tr>`}).join('');
+  const rl=(q.contraste_emisor||{}).RLUSD;
+  return `<div class="panel vidrio"><h2>Cifra en cadena frente a DefiLlama</h2>
+  <p class="que">Leído en el propio ledger (XRPL <code>gateway_balances</code>, Stellar Horizon) con la dirección del emisor tomada de su web oficial · ${q.leido}. La diferencia es DefiLlama respecto a la cadena.</p>
+  <table><thead><tr><th>Stablecoin</th><th>En cadena</th><th>DefiLlama</th><th>Diferencia</th></tr></thead><tbody>${filas}</tbody></table>
+  <p class="pie">${rl?`Atestación de Ripple (${rl.fecha}): ${fm(rl.total_todas_cadenas/1e6,1)} M$ de RLUSD en TODAS las cadenas, con reservas de ${fm(rl.reservas/1e6,1)} M$; no es comparable con la cifra del XRPL. <a style="color:#f1d58a" href="${rl.fuente}" target="_blank" rel="noopener">fuente</a>. `:''}${q.pendiente_verificar}</p></div>`;
+}
 function panelStable(){
   const s=D.stablecoins; if(!s) return '<div class="aviso">No hay datos de stablecoins. Ejecuta scripts/actualizar_paneles.py.</div>';
   const filas=s.top.map((x,i)=>`<tr class="${x.simbolo==='RLUSD'?'fila-xrp':''}"><td>${i+1}. <b>${x.simbolo}</b> <span class="mini">${x.nombre}</span></td>
@@ -118,6 +133,7 @@ function panelStable(){
   <table><thead><tr><th>Stablecoin</th><th>Circulación</th><th>% del total</th><th>7 días</th><th>30 días</th><th class="hm">Ligada a</th><th class="hm">Respaldo</th><th class="hm">Cadenas</th></tr></thead><tbody>${filas}</tbody></table>
   <p class="pie">Fuente: <a style="color:#f1d58a" href="${s.fuente}" target="_blank" rel="noopener">${s.fuente}</a>. ${s.nota}</p></div>
   <div class="dos">${cad(s.xrpl,'el XRP Ledger (XRPL)')}${cad(s.stellar,'Stellar')}</div>
+  ${primarias(s)}
   <div class="aviso">Contraste: el dossier de stablecoins del 9-oct leyó en el propio XRPL unos $1.140 M de RLUSD (ledger, 17-oct); DefiLlama muestra hoy ${fUSD((s.xrpl.top.find(f=>f.simbolo==='RLUSD')||{usd:0}).usd)} en XRPL. Difieren por fecha y método: no se mezclan.</div>`;
 }
 

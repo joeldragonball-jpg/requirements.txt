@@ -2731,5 +2731,65 @@
    }
   ],
   "leido": "2026-10-28 21:30 UTC"
+ },
+ "stablecoins_primarias": {
+  "leido": "2026-10-28 23:14 UTC",
+  "nivel": "P",
+  "monedas": [
+   {
+    "id": "RLUSD",
+    "cadena": "XRPL",
+    "emisor": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+    "fuente_direccion": "https://docs.ripple.com/products/stablecoin/overview/token-addresses",
+    "cantidad": 977635475.8615472,
+    "ledger": 107967947,
+    "metodo": "XRPL gateway_balances (obligaciones del emisor)",
+    "nivel": "P",
+    "leido": "2026-10-28 23:14 UTC"
+   },
+   {
+    "id": "USDC",
+    "cadena": "XRPL",
+    "emisor": "rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE",
+    "fuente_direccion": "https://developers.circle.com/stablecoins/usdc-contract-addresses",
+    "cantidad": 4473692.618900799,
+    "ledger": 107967947,
+    "metodo": "XRPL gateway_balances (obligaciones del emisor)",
+    "nivel": "P",
+    "leido": "2026-10-28 23:14 UTC"
+   },
+   {
+    "id": "USDC",
+    "cadena": "Stellar",
+    "emisor": "GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN",
+    "fuente_direccion": "https://developers.circle.com/stablecoins/usdc-contract-addresses",
+    "cantidad": 342567374.339704,
+    "ledger": null,
+    "metodo": "Stellar Horizon /assets (cuentas + reclamables + pools + contratos)",
+    "nivel": "P",
+    "leido": "2026-10-28 23:14 UTC"
+   },
+   {
+    "id": "EURC",
+    "cadena": "Stellar",
+    "emisor": "GDHU6WRG4IEQXM5NZ4BMPKOXHW76MZM4Y2IEMFDVXBSDP6SJY4ITNPP2",
+    "fuente_direccion": "https://developers.circle.com/stablecoins/eurc-contract-addresses",
+    "cantidad": 3957184.0484924004,
+    "ledger": null,
+    "metodo": "Stellar Horizon /assets (cuentas + reclamables + pools + contratos)",
+    "nivel": "P",
+    "leido": "2026-10-28 23:14 UTC"
+   }
+  ],
+  "contraste_emisor": {
+   "RLUSD": {
+    "fuente": "https://ripple.com/products/stablecoin/transparency/",
+    "fecha": "2026-10-22",
+    "total_todas_cadenas": 2382800000.0,
+    "reservas": 2528000000.0,
+    "nota": "Cifra del emisor para TODAS las cadenas; la del XRPL es solo una parte."
+   }
+  },
+  "pendiente_verificar": "USDV, EURCV, YLDS y otras que DefiLlama lista en XRPL/Stellar: dirección oficial del emisor no confirmada [VERIFICAR]."
  }
 }
