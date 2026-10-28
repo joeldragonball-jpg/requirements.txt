@@ -1,13 +1,13 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-27 22:18 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-28 00:34 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
-## Hoy (mar 2026-10-27): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ✓ · racha 11 días
-- Sin rutina fija hoy: elige por prioridad en las secciones de abajo.
+## Hoy (mié 2026-10-28): solo lo casi obligatorio
+- R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 15:00) · racha 11 días
+- Fija de hoy (último miércoles del mes: auditoría mensual): **W08 Auditoría mensual** (~4 %) · último 2026-10-24 · `research/prompts/W08-*.md`
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
-- Gemini del día: toca **Evento: Reunión de la Fed (FOMC)** · prompt `research/gemini/NOTICIAS-DIA.md` · ✓ hecha
+- Gemini del día: toca **Evento: Reunión del BCE** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
 - Norma: 1 consulta ligera al día (unas 15 fuentes), sin repetirla. Rutina G (C20): una rotación por día; si Gemini avisa de límite o llegas al 80 %, se para por hoy y se anota en «parada». La cuota se comparte con NotebookLM.
 - Aviso de límite (antes del 2026-10-27): Una consulta de ~47 fuentes lanzada 2-3 veces agotó el límite; la cuota ya estaba gastada en NotebookLM.
 - Aviso de límite (2026-10-27): Tras W03 Sudáfrica+Indonesia, Deep Research queda desactivado hasta las 04:00 (hora de Madrid) del 27-oct, con el uso general en ~4 %. Hizo 200+ búsquedas web aunque el prompt pedía máx. 15 fuentes: el tope del prompt no se respeta. Límite oficial de Deep Research sin confirmar; de momento, 1 Deep Research por ventana (reinicio 04:00).
@@ -63,6 +63,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Qué se está quedando viejo (frescura)
+- 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (1) → W03 · UE/cbdc
 - 🟡 Radar regulatorio: Celdas sin dato (26) → W03 · Más huecos: EG 5, IR 5, ET 4, ZA 3, ID 3
 - 🟡 Voces: Voces sin confirmar (4) → W06 · 1 llevan más de 14 días
 
@@ -75,8 +76,8 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.
 
 ## Calendario: próximos 14 días de impacto y qué los cubre
-- 2026-10-27→10-29 · Swell 2026 (Ripple), Nueva York (medio) → sin rutina: valorar research EV
-- 2026-10-27→10-28 · Reunión de la Fed (FOMC) (alto) → cubre W01 (Tipos de interés)
+- 2026-10-27→10-29 · Swell 2026 (Ripple), Nueva York (medio) · EN CURSO → sin rutina: valorar research EV
+- 2026-10-27→10-28 · Reunión de la Fed (FOMC) (alto) · EN CURSO → cubre W01 (Tipos de interés)
 - 2026-10-28→10-29 · Reunión del BCE (alto) → cubre W01 (Tipos de interés)
 - 2026-10-28→10-29 · Meridian 2026 (Stellar), Lisboa (medio) → sin rutina: valorar research EV
 - 2026-10-28 · Canadá: decisión del Banco de Canadá sobre el tipo oficial (medio) → cubre W01 (Tipos de interés)
@@ -95,10 +96,10 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 - #25 · 2026-11-03 · Donald Trump (Truth Social, citado por CNBC)
 
 ## Próximas fechas clave
-- 2026-10-27 · Swell 2026 (Ripple), Nueva York
-- 2026-10-27 · Reunión de la Fed (FOMC)
 - 2026-10-28 · Reunión del BCE
 - 2026-10-28 · Meridian 2026 (Stellar), Lisboa
 - 2026-10-28 · Canadá: decisión del Banco de Canadá sobre el tipo oficial
 - 2026-10-29 · PIB de EE. UU. (3T, avance) y gasto en consumo PCE de septiembre
 - 2026-10-29 · Reunión del Banco de Japón
+- 2026-10-30 · Brasil: último día para que los proveedores cripto existentes pidan autorización al Banco 
+- 2026-11-01 · OPEP+ (7 países): reunión mensual
