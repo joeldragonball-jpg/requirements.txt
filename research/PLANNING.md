@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-28 20:12 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-28 20:17 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -26,7 +26,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - C32 · Centro · Móvil: pantalla principal de precios, tipos, petróleo e inflación + aud · Sonnet M · ~3 % · `research/prompts/C32-movil-principal.md`
 - C33 · Compactación semanal: repasar los informes de la semana, consolidar en el cerebr · Sonnet M · ~3 % · ``
 - C34 ◐ en parte · Bots · Noticias: el cron horario de GitHub solo se ejecutó 5-6 veces al día (27- · Joel+Claude S · ~~0 % cuota (el coste de API lo limitan las franjas del bot) · ``
-- C35 · Centro · Noticias en la Órbita · Sonnet M · ~3 % · `research/prompts/C35-noticias-en-orbita.md`
+- C35 ◐ en parte · Centro · Noticias en la Órbita · Sonnet M · ~3 % · `research/prompts/C35-noticias-en-orbita.md`
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
 - C37 ◐ en parte · Centro · Auditoría C13: enlace a la fuente primaria en cada celda del radar regu · Sonnet S · ~1,5 % · `research/prompts/C37-urls-radar-pendientes.md`
 - C39 · Centro · Volcar a la Órbita lo ya investigado sin movimiento (países T07-T16 y W · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
