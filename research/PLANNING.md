@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-28 01:07 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-28 01:14 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -31,6 +31,9 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - C37 ◐ en parte · Centro · Auditoría C13: enlace a la fuente primaria en cada celda del radar regu · Sonnet S · ~1,5 % · `research/prompts/C37-urls-radar-pendientes.md`
 - C39 · Centro · Volcar a la Órbita lo ya investigado sin movimiento (países T07-T16 y W · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
 - C40 · Radar · Jurisdicciones fuera del radar: Reino Unido, Suiza, Canadá, Australia y  · Sonnet M · ~3 % · `research/prompts/C40-jurisdicciones-fuera-del-radar.md`
+- C41A · Centro · Diseño de la Órbita para ordenador: ver cómo se ve, comparar con 8-10 w · Opus M · ~4 % · `research/prompts/C41A-diseno-orbita-pc.md`
+- C41B · Centro · Diseño de la Órbita: vista independiente con Gemini (búsqueda de Google · Gemini S · ~0 % · ``
+- C41C · Centro · Fusión del diseño de la Órbita (C41A + C41B): coincidencias, discrepanc · Opus S · ~2 % · `research/prompts/C41C-fusion-diseno-orbita.md`
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T25 · Tema libre
 **Deuda y bonos (D)** · detalle en `research/COLA-DEUDA-BONOS.md`
