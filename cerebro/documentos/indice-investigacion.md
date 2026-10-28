@@ -57,9 +57,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-26 · Informe de CIERRE — 2026-10-26 (lun) (`informes/2026-10-26-cierre.md`): Cripto plano a la baja: BTC ≈ $79.900, XRP $1,29, XLM $0,168; sin catalizador propio.
 
 ## Otros
+- 2026-10-28 · C41A · Diseño de la Órbita para ordenador: cómo se ve, cómo se organiza y cómo se recoge la información (`informes/research/2026-10-28-C41A-diseno-orbita.md`): mapa.html (Órbita). 12 capas giran alrededor de «Dinero y liquidación». Arriba están el calendario de 120 días, la línea de tiempo, el buscador y los…
 - 2026-10-27 · Prueba comparativa · EV-noticias-ligera con Claude (tanda de tarde 27-oct-2026) (`informes/research/2026-10-27-EV-noticias-ligera-claude.md`): Mismo prompt que Gemini ( research/gemini/EV noticias ligera.md ), ejecutado por Claude con WebSearch/WebFetch (~13 llamadas, nivel «ligero»). NO…
 - 2026-10-27 · EV · EE. UU.: la OCC publica su norma final de la GENIUS Act (21-oct-2026) (`informes/research/2026-10-27-EV-occ-genius-norma-final.md`): A quién aplica: emisores permitidos de stablecoins de pago, emisores extranjeros bajo jurisdicción de la OCC y ciertas actividades de custodia de…
-- 2026-10-27 · C26 · Cuadro de valoración sectorial automático — 27-oct-2026 (`informes/research/2026-10-27-C26-valoracion-automatica.md`): Información para decidir tú; no es una recomendación de compra ni de venta.
 
 ## Dudas y datos a verificar
 Las frases son extractos sin comprobar: lo dudoso está marcado [VERIFICAR] en el informe original.

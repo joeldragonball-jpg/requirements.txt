@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rendimientos y colateral</title>
+<style>
+:root{--fondo:#0e1117;--panel:#161b24;--borde:#2a3140;--texto:#e6e9ef;--suave:#9aa3b2;--acento:#d4a84b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fondo);color:var(--texto);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+.aviso{background:#5a1d1d;color:#ffd9d9;padding:8px 16px;font-weight:600;text-align:center}
+header{padding:14px 16px;border-bottom:1px solid var(--borde)}
+h1{font-size:18px;margin:0 0 4px}
+header p{margin:0;color:var(--suave);font-size:13px;max-width:1100px}
+.meta{display:flex;gap:24px;padding:10px 16px;font-size:12px;color:var(--suave);border-bottom:1px solid var(--borde);flex-wrap:wrap}
+.meta b{color:var(--texto)}
+.wrap{padding:12px 16px;overflow:auto}
+table{border-collapse:collapse;width:100%;min-width:1100px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--borde);text-align:left;vertical-align:top;font-size:13px}
+th{font-size:12px;color:var(--suave);position:sticky;top:0;background:var(--fondo)}
+tr.grupo td{background:var(--panel);font-weight:700;color:var(--acento);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.chip{display:inline-block;border-radius:10px;padding:1px 8px;font-size:11px;font-weight:700}
+.P{background:#1d6e4c}.S{background:#4a4a8a}.V{background:#7a5a1a}
+.leg{display:inline-block;border-radius:4px;padding:1px 6px;font-size:11px;border:1px solid var(--borde)}
+.ok{border-color:#2e8b57;color:#7fd6a4}.parc{border-color:#b8860b;color:#e6c46a}.no{border-color:#a33;color:#f08a8a}
+.nota{font-size:12px;color:var(--suave);padding:10px 16px;border-top:1px solid var(--borde);max-width:1200px}
+</style>
+</head>
+<body>
+<div class="aviso">MAQUETA C41A · DATOS DE EJEMPLO: ninguna tasa, plataforma, licencia ni fecha de esta página es real</div>
+<header>
+  <h1>Rendimientos y colateral</h1>
+  <p>Qué formas hay de obtener rendimiento o usar un activo como garantía, dónde están reguladas y qué riesgo principal tienen. Solo hechos con fuente y fecha: no dice dónde operar ni qué contratar.</p>
+</header>
+<div class="meta">
+  <span>Actualizado: <b>EJEMPLO 2026-10-28</b></span>
+  <span>Próxima revisión: <b>30 días</b> (las tasas: 7 días)</span>
+  <span>Alimentado por: <b>W04 (flujos), R43 (DEX/AMM), R44 (custodia), fila nueva de research</b></span>
+</div>
+<div class="wrap"><table id="t"></table></div>
+<div class="nota">Cómo se lee: la tasa es un dato puntual con fecha (cambia a diario y no garantiza nada); la columna «Estado legal» viene del radar por país y tema; la certeza sigue la regla de siempre ([P] leído en la fuente primaria, [S] prensa, [VERIFICAR] sin confirmar). Cada fila tendría su ficha mínima (hecho, fecha, fuente, nivel, efecto en cartera, alcista/bajista, revisar, caduca), igual que la vista país × tema.</div>
+<script>
+// FILAS DE EJEMPLO: estructura propuesta, valores inventados.
+const G=[
+ ["Staking y validación",[["Staking nativo (redes PoS)","Token de red PoS","Exchange regulado (ejemplo)","Jurisdicción A","ok","X,X %","Bloqueo y penalización","V"],
+   ["XRP / XLM: sin staking nativo de protocolo (dato a confirmar)","XRP, XLM","—","—","parc","—","Productos «earn» de terceros","V"]]],
+ ["Préstamo (lending)",[["Lending centralizado (CeFi)","Stablecoin","Plataforma con licencia (ejemplo)","Jurisdicción B","parc","X,X %","Contraparte e insolvencia","S"],
+   ["Lending en cadena (DeFi)","Stablecoin, XRP","Protocolo (ejemplo)","Sin jurisdicción clara","no","X,X %","Contrato inteligente y liquidaciones","S"]]],
+ ["Liquidez (AMM / DEX)",[["Fondo de liquidez AMM en XRPL","XRP + stablecoin","AMM nativo XRPL","—","parc","X,X %","Pérdida impermanente","P"]]],
+ ["Colateral",[["Préstamo con garantía cripto","XRP, BTC","Banco o bróker (ejemplo)","Jurisdicción C","ok","Ratio X %","Margin call / liquidación","P"],
+   ["Colateral tokenizado (repos, fondos monetarios)","Fondo monetario tokenizado","Cámara o custodio (ejemplo)","Jurisdicción D","parc","Ratio X %","Operativo y legal","S"]]],
+ ["Rendimiento de tesorería tokenizada",[["Letras del Tesoro tokenizadas","Fondo tokenizado","Gestora (ejemplo)","Jurisdicción A","ok","X,X %","Acceso solo para inversores cualificados","P"]]]
+];
+const est={ok:"<span class='leg ok'>Regulado</span>",parc:"<span class='leg parc'>Parcial / en trámite</span>",no:"<span class='leg no'>Sin marco</span>"};
+const cer={P:"<span class='chip P'>[P]</span>",S:"<span class='chip S'>[S]</span>",V:"<span class='chip V'>[VERIFICAR]</span>"};
+let h="<tr><th>Modalidad</th><th>Activo</th><th>Dónde (tipo)</th><th>Jurisdicción</th><th>Estado legal</th><th class='num'>Tasa / ratio</th><th>Riesgo principal</th><th>Fuente y fecha</th><th>Certeza</th></tr>";
+G.forEach(([g,f])=>{h+=`<tr class="grupo"><td colspan="9">${g}</td></tr>`;
+ f.forEach(r=>{h+=`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${est[r[4]]}</td><td class="num">${r[5]}</td><td>${r[6]}</td><td><a href="#" style="color:var(--acento)">fuente-ejemplo</a> · EJEMPLO</td><td>${cer[r[7]]}</td></tr>`;});});
+document.getElementById("t").innerHTML=h;
+</script>
+</body>
+</html>

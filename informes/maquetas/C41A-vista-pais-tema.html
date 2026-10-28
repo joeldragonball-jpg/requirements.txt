@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vista país × tema</title>
+<style>
+:root{--fondo:#0e1117;--panel:#161b24;--borde:#2a3140;--texto:#e6e9ef;--suave:#9aa3b2;--acento:#d4a84b;
+--e0:#3a2328;--e1:#4a3a1f;--e2:#5a4a1c;--e3:#2f4a5a;--e4:#245a45;--e5:#1d6e4c;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fondo);color:var(--texto);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+.aviso{background:#5a1d1d;color:#ffd9d9;padding:8px 16px;font-weight:600;text-align:center}
+header{display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--borde)}
+h1{font-size:18px;margin:0 16px 0 0}
+.filtros button{background:var(--panel);color:var(--texto);border:1px solid var(--borde);border-radius:6px;padding:5px 10px;font-size:13px;cursor:pointer}
+.filtros button.on{border-color:var(--acento);color:var(--acento)}
+.leyenda{display:flex;gap:10px;font-size:12px;color:var(--suave);flex-wrap:wrap}
+.leyenda i{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-3px;margin-right:4px}
+main{display:grid;grid-template-columns:1fr 380px;min-height:calc(100vh - 120px)}
+.tabla{overflow:auto;padding:12px 16px}
+table{border-collapse:separate;border-spacing:3px;width:100%}
+th{font-size:12px;color:var(--suave);font-weight:600;text-align:left;padding:4px 6px;position:sticky;top:0;background:var(--fondo)}
+th.pais{min-width:130px}
+td.pais{font-weight:600;font-size:13px;white-space:nowrap}
+td.c{height:44px;min-width:92px;border-radius:5px;padding:4px 6px;cursor:pointer;font-size:12px;vertical-align:top;border:1px solid transparent}
+td.c:hover,td.c.sel{border-color:var(--acento)}
+td.c b{display:block;font-size:13px}
+td.c small{color:#c8cfdb}
+td.c.S{background-image:repeating-linear-gradient(135deg,transparent 0 6px,rgba(255,255,255,.07) 6px 12px)}
+td.c.V{outline:1px dashed #e0a040;outline-offset:-3px}
+td.c.nuevo::after{content:"●";color:var(--acento);float:right}
+td.vacio{background:transparent;border:1px dashed var(--borde);color:var(--suave)}
+aside{border-left:1px solid var(--borde);padding:16px;background:var(--panel)}
+aside h2{font-size:16px;margin:0 0 4px}
+aside .meta{font-size:12px;color:var(--suave);margin-bottom:12px}
+aside dl{display:grid;grid-template-columns:110px 1fr;gap:6px 10px;font-size:13px;margin:0}
+aside dt{color:var(--suave)}
+aside a{color:var(--acento)}
+.chip{display:inline-block;border-radius:10px;padding:1px 8px;font-size:11px;font-weight:700}
+.P{background:#1d6e4c}.Sc{background:#4a4a8a}.Vc{background:#7a5a1a}
+.nota{font-size:12px;color:var(--suave);padding:8px 16px;border-top:1px solid var(--borde)}
+</style>
+</head>
+<body>
+<div class="aviso">MAQUETA C41A · DATOS DE EJEMPLO: ningún estado, fecha ni enlace de esta página es real</div>
+<header>
+  <h1>Vista país × tema</h1>
+  <div class="filtros" id="filtros">
+    <button class="on" data-f="todo">Todo</button>
+    <button data-f="30">Cambios en 30 días</button>
+    <button data-f="P">Solo [P]</button>
+    <button data-f="cad">Revisión vencida</button>
+  </div>
+  <div class="leyenda">
+    <span><i style="background:var(--e0)"></i>0 sin marco</span>
+    <span><i style="background:var(--e1)"></i>1 consulta</span>
+    <span><i style="background:var(--e2)"></i>2 en trámite</span>
+    <span><i style="background:var(--e3)"></i>3 aprobada</span>
+    <span><i style="background:var(--e4)"></i>4 en vigor</span>
+    <span><i style="background:var(--e5)"></i>5 con licencias</span>
+    <span>· liso = [P] · rayado = [S] · borde discontinuo = [VERIFICAR] · ● = cambio en 30 días</span>
+  </div>
+</header>
+<main>
+  <div class="tabla"><table id="t"></table></div>
+  <aside id="ficha"><h2>Elige una celda</h2><div class="meta">La ficha muestra el hecho, la fecha, la fuente con enlace, el nivel de certeza, qué falta y cuándo se revisa.</div></aside>
+</main>
+<div class="nota">Columnas nuevas propuestas en C41A: «Legal de uso», «Rendimientos» y «Colateral» (hoy no existen en regulacion.json). Las demás salen de los 8 temas actuales del radar. La línea de tiempo (Órbita) queda como segunda vista: el botón «Ver en la Órbita» de la ficha filtraría los movimientos de ese país y tema.</div>
+<script>
+const TEMAS=["Legal de uso","Ley marco","Stablecoins","ETF","Custodia","Tokenización","CBDC","Fiscal","Rendimientos","Colateral"];
+const PAISES=["EE. UU.","Unión Europea","Singapur","Hong Kong","Corea del Sur","Japón","India","Brasil","Emiratos","China"];
+// Generador determinista de EJEMPLOS: no son datos reales.
+function ej(i,j){const s=(i*7+j*13)%17;if(s===16)return null;
+  return {etapa:s%6,nivel:["P","P","S","V"][s%4],fecha:`2026-${String(1+(s%10)).padStart(2,"0")}-${String(1+(s*3)%28).padStart(2,"0")}`,
+  nuevo:s%5===0,vencida:s%7===0};}
+const t=document.getElementById("t");let filtro="todo";
+function pinta(){
+  let h="<tr><th class='pais'>País</th>"+TEMAS.map(x=>`<th>${x}</th>`).join("")+"</tr>";
+  PAISES.forEach((p,i)=>{h+=`<tr><td class='pais'>${p}</td>`;
+    TEMAS.forEach((tm,j)=>{const c=ej(i,j);
+      if(!c){h+="<td class='c vacio'>sin research</td>";return;}
+      const oculto=(filtro==="30"&&!c.nuevo)||(filtro==="P"&&c.nivel!=="P")||(filtro==="cad"&&!c.vencida);
+      h+=`<td class="c ${c.nivel==='S'?'S':''} ${c.nivel==='V'?'V':''} ${c.nuevo?'nuevo':''}" style="background-color:var(--e${c.etapa});opacity:${oculto?.18:1}" data-i="${i}" data-j="${j}"><b>Etapa ${c.etapa}</b><small>${c.fecha}</small></td>`;});
+    h+="</tr>";});
+  t.innerHTML=h;}
+t.addEventListener("click",e=>{const td=e.target.closest("td.c[data-i]");if(!td)return;
+  document.querySelectorAll("td.sel").forEach(x=>x.classList.remove("sel"));td.classList.add("sel");
+  const i=+td.dataset.i,j=+td.dataset.j,c=ej(i,j),chip={P:"<span class='chip P'>[P]</span>",S:"<span class='chip Sc'>[S]</span>",V:"<span class='chip Vc'>[VERIFICAR]</span>"}[c.nivel];
+  document.getElementById("ficha").innerHTML=`<h2>${PAISES[i]} · ${TEMAS[j]}</h2>
+  <div class="meta">EJEMPLO · revisado ${c.fecha} · próxima revisión ${c.vencida?"<b style='color:#e0a040'>vencida</b>":"en 7 días"}</div>
+  <dl><dt>Etapa</dt><dd>${c.etapa} de 5 ${chip}</dd>
+  <dt>Hecho</dt><dd>Texto de ejemplo: qué norma, quién la aprobó y desde cuándo aplica (máx. 2 líneas).</dd>
+  <dt>Fecha</dt><dd>${c.fecha}</dd>
+  <dt>Fuente</dt><dd><a href="#">regulador-de-ejemplo.gov/nota</a> (idioma original)</dd>
+  <dt>Qué falta</dt><dd>Ejemplo: texto oficial publicado / reglamento de desarrollo.</dd>
+  <dt>Efecto cartera</dt><dd>Ejemplo de una línea, sin recomendación.</dd>
+  <dt>Alcista</dt><dd>Ejemplo.</dd><dt>Bajista</dt><dd>Ejemplo.</dd>
+  <dt>Informes</dt><dd><a href="#">T07</a> · <a href="#">R05P</a></dd>
+  <dt>Órbita</dt><dd><a href="#">Ver en la Órbita (3 movimientos)</a></dd></dl>`;});
+document.getElementById("filtros").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
+  document.querySelectorAll("#filtros button").forEach(x=>x.classList.remove("on"));b.classList.add("on");filtro=b.dataset.f;pinta();});
+pinta();
+</script>
+</body>
+</html>
