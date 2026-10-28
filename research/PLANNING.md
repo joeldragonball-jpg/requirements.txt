@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-28 18:39 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-28 18:52 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -31,7 +31,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - C37 ◐ en parte · Centro · Auditoría C13: enlace a la fuente primaria en cada celda del radar regu · Sonnet S · ~1,5 % · `research/prompts/C37-urls-radar-pendientes.md`
 - C39 · Centro · Volcar a la Órbita lo ya investigado sin movimiento (países T07-T16 y W · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
 - C40 · Radar · Jurisdicciones fuera del radar: Reino Unido, Suiza, Canadá, Australia y  · Sonnet M · ~3 % · `research/prompts/C40-jurisdicciones-fuera-del-radar.md`
-- C41C · Centro · Fusión del diseño de la Órbita (C41A + C41B): coincidencias, discrepanc · Opus S · ~2 % · `research/prompts/C41C-fusion-diseno-orbita.md`
+- C41C · Centro · Fusión del diseño de la Órbita (C41A + C41B): coincidencias, discrepanc · Opus S · ~5 % · `research/prompts/C41C-fusion-diseno-orbita.md`
 - C42 · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T25 · Tema libre
@@ -71,7 +71,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - 🟡 Voces: Voces sin confirmar (4) → W06 · 1 llevan más de 14 días
 
 ## Bots con problema
-- ninguno
+- Despertador de la app
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-10-21 · EE. UU.: la OCC publica su norma final de la GENIUS Act (alto) → ✓ revisado (hecho)
