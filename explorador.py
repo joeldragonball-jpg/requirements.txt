@@ -245,18 +245,10 @@ def _html(conceptos):
     datos["biblioteca"] = rel.get("_totales", {})
     hoy = date.today().isoformat()
     datos["calendario"] = {"hoy": hoy, "temas": TEMAS, "eventos": _calendario(hoy, _version())}
-    mundo_html = ""
-    try:                              # pestaña «Mapa mundi»: eventos por país y etapa regulatoria por tema (mundo.py), solo lectura
-        import mundo
-        datos["mundo"] = mundo._construir(hoy)
-        mundo_html = (CARPETA / "mundo.html").read_text(encoding="utf-8").replace("__DATOS__", "null")
-    except Exception:
-        datos["mundo"] = None         # sin ese mapa, el resto de la Órbita funciona igual
     # Dentro de <script type="application/json"> hay que evitar que el texto cierre la etiqueta
     texto = json.dumps(datos, ensure_ascii=False).replace("</", "<\\/").replace("<!--", "<\\!--")
     vistas = json.dumps((CARPETA / "vistas.html").read_text(encoding="utf-8"), ensure_ascii=False).replace("</", "<\\/").replace("<!--", "<\\!--")
-    mundo_js = json.dumps(mundo_html, ensure_ascii=False).replace("</", "<\\/").replace("<!--", "<\\!--")
-    return plantilla.replace("__VISTAS__", vistas).replace("__MUNDO__", mundo_js).replace("__DATOS__", texto)
+    return plantilla.replace("__VISTAS__", vistas).replace("__DATOS__", texto)
 
 
 def mostrar(conceptos=None):

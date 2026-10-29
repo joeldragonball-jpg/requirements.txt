@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-29 00:31 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-29 00:37 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -33,7 +33,11 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - C40 · Radar · Jurisdicciones fuera del radar: Reino Unido, Suiza, Canadá, Australia y  · Sonnet M · ~3 % · `research/prompts/C40-jurisdicciones-fuera-del-radar.md`
 - C42 · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
 - C50 ◐ en parte · Centro · Tokenización por blockchain con mejor fuente: DefiLlama (ya en el panel · Sonnet M · ~3 % · `research/prompts/C50-rwa-por-cadena-mejor-fuente.md`
-- C53 ◐ en parte · Centro · Órbita: pestaña «Eventos y noticias» (antes Mapa mundi): lista única co · Sonnet S · ~0 % · ``
+- C53 ◐ en parte · (BORRADA 29-oct por duplicar Calendario y Noticias; sus ideas pasan a C54-C55) C · Sonnet S · ~0 % · ``
+- C54 · Centro · Noticias: tipo de fuente (primaria/prensa) como etiqueta neutra y verif · Sonnet M · ~2 % · `research/prompts/C54-C57-seguimiento-noticias-verificacion.md`
+- C55 · Centro · Seguimiento (PC y móvil): verificaciones pendientes con antigüedad, eve · Sonnet M · ~2 % · `research/prompts/C54-C57-seguimiento-noticias-verificacion.md`
+- C56 · Research · Verificar noticias de prensa de los últimos 14 días de importancia al · Sonnet M · ~2 % · `research/prompts/C54-C57-seguimiento-noticias-verificacion.md`
+- C57 · Research · EV Swell 2026 (Ripple) y Meridian 2026 (Stellar): anuncios técnicos y · Sonnet M · ~2 % · `research/prompts/C54-C57-seguimiento-noticias-verificacion.md`
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T25 · Tema libre
 **Deuda y bonos (D)** · detalle en `research/COLA-DEUDA-BONOS.md`
@@ -77,9 +81,9 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-10-21 · EE. UU.: la OCC publica su norma final de la GENIUS Act (alto) → ✓ revisado (hecho)
 - 2026-10-23 · Francia: revisión de Moody's prevista el 23-oct, resultado sin confirm (medio) → ✓ cubierto por W02 del 2026-10-29
-- 2026-10-27 · Reunión de la Fed (FOMC) (alto) → ⏳ SIN research: decidir (EV)
-- 2026-10-28 · DTCC: lanzamiento del servicio de tokenización de DTC (hecho el 28-oct (medio) → ⏳ SIN research: decidir (EV)
-- 2026-10-28 · Canadá: decisión del Banco de Canadá sobre el tipo oficial (medio) → ⏳ SIN research: decidir (EV)
+- 2026-10-27 · Reunión de la Fed (FOMC) (alto) → ✓ revisado (hecho)
+- 2026-10-28 · DTCC: lanzamiento del servicio de tokenización de DTC (hecho el 28-oct (medio) → ✓ revisado (hecho)
+- 2026-10-28 · Canadá: decisión del Banco de Canadá sobre el tipo oficial (medio) → ✓ revisado (hecho)
 Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.
 
 ## Calendario: próximos 14 días de impacto y qué los cubre

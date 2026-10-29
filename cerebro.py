@@ -544,7 +544,6 @@ def tab_paneles():
 def tab_actualidad(docs):
     st.caption("Las noticias que te llegan alimentan tu cerebro: el chat las tiene en cuenta y cada domingo "
                "el bot las convierte en un archivo de apuntes de la semana.")
-    st.caption("Los eventos y noticias (por tema, país y verificación) están ahora en la Órbita, pestaña «Eventos y noticias».")
     recientes = noticias_recientes(30)
     relacionadas = [n for n in recientes if n.get("actualiza_apuntes")]
     st.markdown("### 🧠 Noticias que tocan tus apuntes")

@@ -15,19 +15,17 @@ html,body{margin:0;overflow:hidden;background:transparent;color:var(--texto);fon
 </style></head><body>
 <nav id="pest" aria-label="Vistas de la Órbita"></nav>
 <div class="marco" id="vistasWrap"><iframe id="vistasMarco" title="Vistas de datos de la Órbita"></iframe></div>
-<div class="marco" id="mundoWrap" hidden><iframe id="mundoMarco" title="Eventos y noticias por tema, país y verificación"></iframe></div>
 <script id="vistasHtml" type="application/json">__VISTAS__</script>
-<script id="mundoHtml" type="application/json">__MUNDO__</script>
 <script id="datos" type="application/json">__DATOS__</script>
 <script>
 // La Órbita es esta carcasa de pestañas; cada pestaña vive en un marco con su propio CSS y JS (sin mezclarse).
-// Las vistas (vistas.html) y el mapa mundi (mundo.html) leen los mismos datos, solo lectura, desde window.DATOS.
+// Las vistas (vistas.html) leen los mismos datos, solo lectura, desde window.DATOS.
 const $ = id => document.getElementById(id);
 window.DATOS = JSON.parse($('datos').textContent);
 const pest = $('pest');
 const VISTAS = [['resumen', 'Resumen'], ['capas', 'Capas'], ['tiempo', 'Línea de tiempo'], ['calendario', 'Calendario'],
-  ['matriz', 'Matriz país × tema'], ['mundo', 'Eventos y noticias'], ['noticias', 'Noticias'], ['voces', 'Voces'], ['paneles', 'Paneles de datos']];
-const MARCOS = {vistas: [$('vistasWrap'), $('vistasMarco'), 'vistasHtml'], mundo: [$('mundoWrap'), $('mundoMarco'), 'mundoHtml']};
+  ['matriz', 'Matriz país × tema'], ['noticias', 'Noticias'], ['voces', 'Voces'], ['paneles', 'Paneles de datos']];
+const MARCOS = {vistas: [$('vistasWrap'), $('vistasMarco'), 'vistasHtml']};
 let actual = 'resumen';
 VISTAS.forEach(([id, nombre]) => { const b = document.createElement('button'); b.textContent = nombre; b.dataset.v = id; b.addEventListener('click', () => irVista(id)); pest.appendChild(b); });
 function tamano(){
@@ -44,7 +42,7 @@ function tamano(){
 function irVista(id){
   actual = id;
   pest.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v === id));
-  const clave = id === 'mundo' ? 'mundo' : 'vistas';
+  const clave = 'vistas';
   for (const k in MARCOS) MARCOS[k][0].hidden = k !== clave;
   tamano();
   const [, marco, fuente] = MARCOS[clave];
