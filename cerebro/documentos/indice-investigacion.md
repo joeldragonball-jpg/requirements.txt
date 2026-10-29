@@ -52,9 +52,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-29 · C37 · Enlaces a fuente oficial del radar regulatorio · 2026-10-29 (`informes/research/2026-10-29-C37-urls-radar.md`): Continuación de 2026 10 27 C13 urls radar.md . Cada enlace se abrió y se comprobó que dice lo que dice la celda (curl con agente de navegador o…
 
 ## Sesiones diarias (apertura y cierre)
+- 2026-10-29 · Informe de CIERRE — 2026-10-29 (jue) (`informes/2026-10-29-cierre.md`): BCE mantiene 2,50 % (unánime); Lagarde deja la presidencia en febrero de 2027.
 - 2026-10-29 · Informe de APERTURA — 2026-10-29 (jue) (`informes/2026-10-29-apertura.md`): Asia mixta (Nikkei +1,1 %; Seúl −1,2 %; HK −0,6 %; Shanghái −0,8 %); Europa al alza salvo IBEX.
 - 2026-10-28 · Informe de CIERRE — 2026-10-28 (mié) (`informes/2026-10-28-cierre.md`): Bloque que cubre: SOLO el cierre de América (Wall Street, Tesoro, cripto del día y decisión macro de la tarde). Asia y Europa quedan para la apertura…
-- 2026-10-28 · Informe de APERTURA — 2026-10-28 (mié) (`informes/2026-10-28-apertura.md`): Hecha a las 16:45 (Madrid), a petición de Joel y con él despierto: lectura en directo de Asia (ya cerrada), Europa (a media tarde) y las primeras…
 
 ## Otros
 - 2026-10-29 · EV · Reunión del FOMC del 27-28 oct 2026 (hecho el 29-oct-2026) (`informes/research/2026-10-29-EV-fomc-28-oct.md`): La Fed mantiene el rango objetivo en 3,75 % 4,00 % .
