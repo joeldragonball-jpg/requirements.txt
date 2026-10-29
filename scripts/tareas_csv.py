@@ -9,6 +9,7 @@ import csv
 import io
 import sys
 import urllib.request
+from datetime import date, timedelta
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -37,6 +38,8 @@ def cargar(ruta=CSV):
             if not (r.get("id") or "").strip():
                 continue
             r = {k: (r.get(k) or "").strip() for k in COLUMNAS}
+            if r["cuando"].isdigit():   # Sheets publica las fechas como número de serie (días desde 1899-12-30)
+                r["cuando"] = (date(1899, 12, 30) + timedelta(days=int(r["cuando"]))).isoformat()
             r["bruto"] = r["estado"]
             r["estado"] = a_interno(r["estado"].lower(), r["tipo"].lower())
             out.append(r)
