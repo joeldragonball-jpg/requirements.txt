@@ -14,6 +14,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(RAIZ / "scripts"))
 SALIDA = RAIZ / "docs" / "movil" / "seguimiento.json"
 REPO = "joeldragonball-jpg/requirements.txt"
 WORKFLOWS = [("alertas.yml", "Alertas de precio", 2.5), ("noticias.yml", "Noticias con IA", 7.0), ("votos.yml", "Votos de noticias", 6.0),
@@ -52,7 +53,7 @@ def estado(texto):
     return "otro"
 
 
-def cola_r():
+def _cola_r_md():
     """Tareas R/G de research/COLA.md con su estado y el coste real anotado."""
     out = []
     for linea in leer(RAIZ / "research" / "COLA.md").splitlines():
@@ -86,7 +87,7 @@ def expandir(ids):
     return out
 
 
-def cola_t():
+def _cola_t_md():
     """Temas T01-T25 (nombre de la lista y estado de la tabla «Estado»)."""
     texto = leer(RAIZ / "research" / "COLA-TEMAS-GEMINI.md")
     nombres = {f"T{int(m.group(1)):02d}": limpiar(m.group(2)) for m in re.finditer(r"^- \*\*T(\d+)\s*([^*:]*?):?\*\*", texto, re.M)}
@@ -103,7 +104,7 @@ def cola_t():
     return [{"id": i, "tema": nombres.get(i, i), "estado": estados.get(i, "pendiente"), "origen": "T"} for i in sorted(set(nombres) | set(estados))]
 
 
-def cola_d():
+def _cola_d_md():
     out = []
     for linea in leer(RAIZ / "research" / "COLA-DEUDA-BONOS.md").splitlines():
         if not re.match(r"\|\s*D\d+\s*\|", linea):
@@ -118,6 +119,27 @@ def cola_d():
             tema = "(parcial) " + re.sub(r"\(a\)\s*HECHO el [^:]*:\s*", "", c[1], flags=re.I)
         out.append({"id": c[0], "tema": limpiar(tema)[:110], "estado": "hecha" if hecho else ("parcial" if parcial else "pendiente"), "origen": "D"})
     return out
+
+
+def _desde_csv(origen, respaldo):
+    """Fuente única: research/tareas.csv (Sheet publicada); si no existe, las COLA*.md antiguas."""
+    import tareas_csv
+    filas = tareas_csv.cargar()
+    if not filas:
+        return respaldo()
+    return [{**f, "origen": "R" if f["origen"] in ("R", "G", "W", "C") else f["origen"]} for f in filas if f["origen"] == origen or (origen == "R" and f["origen"] in ("R", "G", "W", "C"))]
+
+
+def cola_r():
+    return _desde_csv("R", _cola_r_md)
+
+
+def cola_t():
+    return _desde_csv("T", _cola_t_md)
+
+
+def cola_d():
+    return _desde_csv("D", _cola_d_md)
 
 
 def eventos_futuros():

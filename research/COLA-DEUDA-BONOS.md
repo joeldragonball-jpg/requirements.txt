@@ -1,5 +1,7 @@
 # Cola de research: deuda soberana, bonos y bancos (22-oct-2026)
 
+> **HISTÓRICO desde 29-oct-2026:** el estado de las tareas vive en `research/tareas.csv` (Google Sheet publicada; estados: pendiente, en curso, en parte, bloqueada, hecha). Este archivo conserva los prompts y el detalle; no actualices aquí el estado.
+
 Para completar la capa «Deuda soberana y bonos» del mapa de órbitas y los paneles «Bonos y curvas» y «Deuda pública». Prioridad de países (pedido de Joel): **España, Francia, Italia, Japón y Estados Unidos**, luego **China** y la **Unión Europea**; el resto, poco.
 
 Reglas: fuente oficial y abierta primero ([P]); lo que solo salga de un agregador o de prensa va [S]; si no se puede verificar, [VERIFICAR]. Sin recomendaciones. Todo dato lleva fecha y fuente. Nada de la tesis de Joel.

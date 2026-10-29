@@ -1,5 +1,7 @@
 # Cola de research (global: macro, geopolítica y digital assets)
 
+> **HISTÓRICO desde 29-oct-2026:** el estado de las tareas vive en `research/tareas.csv` (Google Sheet publicada; estados: pendiente, en curso, en parte, bloqueada, hecha). Este archivo conserva los prompts y el detalle; no actualices aquí el estado.
+
 Cómo se usa: abre una sesión NUEVA (menos historial = menos cuota), cambia al modelo indicado en la columna "Modelo" y escribe `/research <ID>` (por ejemplo `/research R10`). El comando lee este archivo y la plantilla, hace el trabajo, guarda el informe en `informes/research/` y marca aquí el estado y el coste real. Para ver el menú escribe `/research` sin nada.
 
 Costes = **estimación** en % de la cuota semanal (plan Pro). Se calibran con el uso real: al terminar cada tarea se anota el coste medido en "Real".

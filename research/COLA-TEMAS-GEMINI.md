@@ -1,5 +1,7 @@
 # Temas T01-T25 del Gem «Research cripto»: estado y cola para hacerlos con Claude (22-oct-2026)
 
+> **HISTÓRICO desde 29-oct-2026:** el estado de las tareas vive en `research/tareas.csv` (Google Sheet publicada; estados: pendiente, en curso, en parte, bloqueada, hecha). Este archivo conserva los prompts y el detalle; no actualices aquí el estado.
+
 Fuente de la lista: documento «01 Prompt maestro» de la carpeta de Drive «Gemini research» (leído el 22-oct-2026). Joel pidió que los haga Claude en vez de Gemini: se hacen con las mismas reglas del prompt maestro (tres perspectivas: oficial, despachos y analistas, voces críticas; hechos separados de opiniones; [P]/[S]/[VERIFICAR]; sin recomendaciones ni predicciones de precio) y las secciones de entrega de siempre. Cada tema va a `informes/research/AAAA-MM-DD-Txx-tema.md` y lo verificado actualiza el radar (`explorador/regulacion.json`), las fichas (`explorador/datos.json`) y el calendario.
 
 ## Estado
