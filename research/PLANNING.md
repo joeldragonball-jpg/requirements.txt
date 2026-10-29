@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-# PLANNING (autogenerado, no editar a mano) · 2026-10-29 01:10 UTC
-=======
-# PLANNING (autogenerado, no editar a mano) · 2026-10-29 01:24 UTC
->>>>>>> Stashed changes
+# PLANNING (autogenerado, no editar a mano) · 2026-10-29 01:32 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -77,7 +73,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - [media] 2026-09-30 (29 d) · ETF de XRP en EE. UU. ≈ $1.430 M a 22-oct [S]; ETP europeos de XRP ≈ $914 M y de Stellar ≈ $104 M.
 - [media] 2026-09-30 (29 d) · El M2 de China sube un 7,2 % interanual en septiembre (agosto +7,5 %).
 - [media] 2026-10-23 (6 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
-- [media] 2026-10-26 (3 d) · Los hutíes dicen haber atacado el oleoducto Este-Oeste saudí.
+- [media] 2026-10-25 (4 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov (hoy solo [S]). → W05
 - … y 18 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
@@ -86,7 +82,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - 🟡 Voces: Voces sin confirmar (4) → W06 · 1 llevan más de 14 días
 
 ## Bots con problema
-- Paneles de datos
+- ninguno
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-10-21 · EE. UU.: la OCC publica su norma final de la GENIUS Act (alto) → ✓ revisado (hecho)

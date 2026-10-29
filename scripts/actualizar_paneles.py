@@ -548,7 +548,14 @@ def leer_bonos():
     def francia():
         m = json.loads(BONOS_MANUAL.read_text(encoding="utf-8"))["francia"]
         serie = m["serie10"]
-        anade("FRA", m["nombre"], m["nivel"], m["fuente"], {"10A": serie[-1][1]}, {"10A": serie[-2][1]}, serie[-1][0], serie, m["url"])
+        plazos, fuente = {"10A": serie[-1][1]}, m["fuente"]
+        sub = m.get("subastas")
+        if sub:     # 3A, 5A y 30A: la AFT no da curva diaria; se usa la última subasta de la OAT más cercana (no secundario)
+            for k in ("3A", "5A", "30A"):
+                plazos[k] = sub["plazos"][k]["valor"]
+            fuente += ". 3A, 5A y 30A = última subasta de la OAT más cercana (%s; no secundario): %s" % (
+                ", ".join("%s %s" % (k, sub["plazos"][k]["fecha"]) for k in ("3A", "5A", "30A")), sub["fuente"])
+        anade("FRA", m["nombre"], m["nivel"], fuente, plazos, {"10A": serie[-2][1]}, serie[-1][0], serie, m["url"])
 
     def china():       # ChinaBond no tiene API abierta: la curva se lee en el navegador y se pega en bonos-manual.json
         m = json.loads(BONOS_MANUAL.read_text(encoding="utf-8"))["china"]
