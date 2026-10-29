@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-29 21:25 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-29 21:32 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -51,15 +51,15 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
+- [alta] 2026-10-29 (0 d) · Lagarde dejará la presidencia del BCE el 7 de febrero.
 - [media] 2026-09-30 (29 d) · ETF de XRP en EE. UU. ≈ $1.430 M a 22-oct [S]; ETP europeos de XRP ≈ $914 M y de Stellar ≈ $104 M.
 - [media] 2026-10-23 (6 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
-- [media] 2026-10-25 (4 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov (hoy solo [S]). → W05
-- [media] 2026-10-25 (4 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
-- [media] 2026-10-25 (4 d) · [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov). → W05
-- [media] 2026-10-25 (4 d) · [VERIFICAR] MEI 2026 leído en el propio BOE (hoy [S]). → W05
-- [media] 2026-10-25 (4 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF) y texto definitivo de los modelos 172/175/72
-- [media] 2026-10-25 (4 d) · [VERIFICAR] Consulta DGT V0648-24 leída en petete; fiscalidad de tokens LP de AMM.
-- … y 15 más en el Seguimiento
+- [media] 2026-10-26 (3 d) · El petróleo se desploma más de un 6 %
+- [media] 2026-10-27 (2 d) · La Fed mantiene los tipos
+- [media] 2026-10-27 (2 d) · Coinbase da 3 días
+- [media] 2026-10-27 (2 d) · Ripple no ha movido los 1.000 M de XRP liberados el 1 de octubre, a las puertas de Swell.
+- [media] 2026-10-27 (2 d) · El petróleo se prepara para una nueva escalada con Irán tras las elecciones de EE. UU.
+- … y 20 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (2) → W03 · UE/cbdc; AE/politica
@@ -67,7 +67,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - 🟡 Voces: Voces sin confirmar (4) → W06 · 1 llevan más de 14 días
 
 ## Bots con problema
-- Despertador de la app
+- Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-10-21 · EE. UU.: la OCC publica su norma final de la GENIUS Act (alto) → ✓ revisado (hecho)
