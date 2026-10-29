@@ -361,6 +361,98 @@ def leer_liquidez():
             "ea": {"serie": "M3 zona euro", "fecha": m3[-1][0], "interanual": round(m3[-1][1], 2), "hace_12m": round(m3[0][1], 2)}}
 
 
+def _json_url(url, datos=None, cabeceras=None, t=40):
+    c = {"User-Agent": "cartera-joel/1.0 (uso personal)", **(cabeceras or {})}
+    with urllib.request.urlopen(urllib.request.Request(url, data=datos, headers=c), timeout=t) as r:
+        return r.read().decode("utf-8", "replace")
+
+
+def _yoy_de_indices(serie):
+    """serie = [(AAAA-MM, índice)] ordenada; devuelve (interanual último mes, interanual mes anterior, último mes)."""
+    d = dict(serie)
+    meses = sorted(d)
+
+    def yoy(m):
+        a = f"{int(m[:4]) - 1}{m[4:]}"
+        return round((d[m] / d[a] - 1) * 100, 1) if a in d else None
+    return yoy(meses[-1]), yoy(meses[-2]), meses[-1]
+
+
+def _fred_serie(sid, desde):
+    texto = _json_url(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={desde}", t=60)
+    return [(f[:7], float(v)) for f, v in list(csv.reader(io.StringIO(texto)))[1:] if v not in (".", "")]
+
+
+def leer_inflacion():
+    """IPC interanual por país, solo de fuentes abiertas y sin clave [P]; si una falla se conserva su dato anterior."""
+    previo = {p["id"]: p for p in PREVIO.get("inflacion", {}).get("paises", [])}
+    meses_ons = {m: i + 1 for i, m in enumerate("JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC".split())}
+    desde = f"{datetime.now(timezone.utc).year - 2}-01-01"
+
+    def eeuu():
+        r = json.loads(_json_url("https://api.bls.gov/publicAPI/v2/timeseries/data/CUUR0000SA0?startyear=%d&endyear=%d" % (datetime.now(timezone.utc).year - 1, datetime.now(timezone.utc).year)))
+        serie = sorted((f"{x['year']}-{x['period'][1:]}", float(x["value"])) for x in r["Results"]["series"][0]["data"] if x["period"].startswith("M") and x["period"] != "M13" and x["value"] != "-")
+        return _yoy_de_indices(serie)
+
+    def eeuu_pce():
+        return _yoy_de_indices(_fred_serie("PCEPI", desde))
+
+    def bce(geo):
+        def f():
+            t = _json_url(f"https://data-api.ecb.europa.eu/service/data/ICP/M.{geo}.N.000000.4.ANR?lastNObservations=2&format=csvdata", cabeceras={"Accept": "text/csv"})
+            v = [(x["TIME_PERIOD"], float(x["OBS_VALUE"])) for x in csv.DictReader(io.StringIO(t))]
+            return v[-1][1], v[-2][1], v[-1][0]
+        return f
+
+    def reino_unido():
+        filas = list(csv.reader(io.StringIO(_json_url("https://www.ons.gov.uk/generator?format=csv&uri=/economy/inflationandpriceindices/timeseries/d7g7/mm23"))))
+        v = [(f"{a.split()[0]}-{meses_ons[a.split()[1]]:02d}", float(b)) for a, b in filas if re.fullmatch(r"\d{4} [A-Z]{3}", a)]
+        return v[-1][1], v[-2][1], v[-1][0]
+
+    def canada():
+        r = json.loads(_json_url("https://www150.statcan.gc.ca/t1/wds/rest/getDataFromVectorsAndLatestNPeriods", datos=json.dumps([{"vectorId": 41690973, "latestN": 14}]).encode(), cabeceras={"Content-Type": "application/json"}))
+        return _yoy_de_indices([(p["refPer"][:7], float(p["value"])) for p in r[0]["object"]["vectorDataPoint"]])
+
+    def brasil():
+        r = json.loads(_json_url("https://apisidra.ibge.gov.br/values/t/1737/n1/all/v/2265/p/last%202"))
+        pt = {"janeiro": 1, "fevereiro": 2, "março": 3, "abril": 4, "maio": 5, "junho": 6, "julho": 7, "agosto": 8, "setembro": 9, "outubro": 10, "novembro": 11, "dezembro": 12}
+        v = [(f"{x['D3N'].split()[1]}-{pt[x['D3N'].split()[0]]:02d}", float(x["V"])) for x in r[1:]]
+        return v[-1][1], v[-2][1], v[-1][0]
+
+    def fred_oecd(sid):
+        def f():
+            v = _fred_serie(sid, desde)
+            return round(v[-1][1], 1), round(v[-2][1], 1), v[-1][0]
+        return f
+
+    fuentes = [
+        ("us", "EE. UU.", "IPC (BLS, NSA)", "https://www.bls.gov/cpi/", eeuu),
+        ("us_pce", "EE. UU.", "PCE (BEA vía FRED)", "https://fred.stlouisfed.org/series/PCEPI", eeuu_pce),
+        ("ea", "Zona euro", "IPCA (BCE/Eurostat)", "https://data.ecb.europa.eu/", bce("U2")),
+        ("es", "España", "IPCA (BCE/Eurostat; el IPC del INE puede diferir)", "https://data.ecb.europa.eu/", bce("ES")),
+        ("uk", "Reino Unido", "IPC (ONS)", "https://www.ons.gov.uk/economy/inflationandpriceindices", reino_unido),
+        ("ca", "Canadá", "IPC (Statistics Canada, tabla 18-10-0004)", "https://www150.statcan.gc.ca/", canada),
+        ("br", "Brasil", "IPCA 12 meses (IBGE)", "https://sidra.ibge.gov.br/tabela/1737", brasil),
+        ("jp", "Japón", "IPC (OCDE vía FRED) [S]", "https://fred.stlouisfed.org/series/CPALTT01JPM659N", fred_oecd("CPALTT01JPM659N")),
+        ("cn", "China", "IPC (OCDE vía FRED) [S]", "https://fred.stlouisfed.org/series/CPALTT01CNM659N", fred_oecd("CPALTT01CNM659N")),
+    ]
+    paises, fallos = [], []
+    for pid, pais, serie, url, f in fuentes:
+        try:
+            ia, ant, fecha = f()
+            retraso = (datetime.now(timezone.utc).year - int(fecha[:4])) * 12 + datetime.now(timezone.utc).month - int(fecha[5:7])
+            paises.append({"id": pid, "pais": pais, "serie": serie, "interanual": ia, "anterior": ant, "fecha": fecha, "retraso_meses": retraso, "fuente": url, "nivel": "S" if "[S]" in serie else "P"})
+            if retraso > 3:
+                fallos.append(f"inflacion {pid}: el último dato es de {fecha} ({retraso} meses de retraso); revisar la fuente")
+        except Exception as e:
+            fallos.append(f"inflacion {pid}: {type(e).__name__}: {e}")
+            if pid in previo:
+                paises.append(previo[pid])
+    if not paises:
+        raise RuntimeError("ninguna fuente de inflación respondió")
+    return {"fuente": "BLS, BCE, ONS, Statistics Canada, IBGE, FRED", "nivel": "P", "paises": paises, "fallos": fallos}
+
+
 def _ultimo_cambio(serie):
     """serie = [(fecha ISO, valor)] ordenada; devuelve (valor actual, fecha del último cambio, valor anterior)."""
     serie = [(f, v) for f, v in serie if v is not None]
@@ -652,7 +744,7 @@ def main():
     PREVIO = previo
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("ormuz", leer_ormuz)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("ormuz", leer_ormuz)):
         try:
             salida[clave] = funcion()
             salida[clave]["leido"] = salida["leido"]
@@ -683,6 +775,10 @@ def main():
     if ti:
         print("Tipos: " + ", ".join(f"{p['pais']} {p['valor']}" + ("" if p.get("coincide_radar") in (True, None) else " (¡no coincide con el radar: " + str(p["radar"]) + "!)") for p in ti["paises"]))
         fallos += ti.get("fallos", [])
+    inf = salida.get("inflacion")
+    if inf:
+        print("Inflación: " + ", ".join(f"{p['id']} {p['interanual']} % ({p['fecha']})" for p in inf["paises"]))
+        fallos += inf.get("fallos", [])
     for f in fallos:
         print("AVISO (se conserva lo anterior si existía):", f)
     return 1 if fallos else 0

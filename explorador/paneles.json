@@ -2768,5 +2768,85 @@
    }
   ],
   "leido": "2026-10-29 01:30 UTC"
+ },
+ "inflacion": {
+  "fuente": "BLS, BCE, ONS, Statistics Canada, IBGE, FRED",
+  "nivel": "P",
+  "paises": [
+   {
+    "id": "us",
+    "pais": "EE. UU.",
+    "serie": "IPC (BLS, NSA)",
+    "interanual": 3.7,
+    "anterior": 3.4,
+    "fecha": "2026-09",
+    "retraso_meses": 1,
+    "fuente": "https://www.bls.gov/cpi/",
+    "nivel": "P"
+   },
+   {
+    "id": "ea",
+    "pais": "Zona euro",
+    "serie": "IPCA (BCE/Eurostat)",
+    "interanual": 1.9,
+    "anterior": 2.1,
+    "fecha": "2025-12",
+    "retraso_meses": 10,
+    "fuente": "https://data.ecb.europa.eu/",
+    "nivel": "P"
+   },
+   {
+    "id": "es",
+    "pais": "España",
+    "serie": "IPCA (BCE/Eurostat; el IPC del INE puede diferir)",
+    "interanual": 3.0,
+    "anterior": 3.2,
+    "fecha": "2025-12",
+    "retraso_meses": 10,
+    "fuente": "https://data.ecb.europa.eu/",
+    "nivel": "P"
+   },
+   {
+    "id": "uk",
+    "pais": "Reino Unido",
+    "serie": "IPC (ONS)",
+    "interanual": 3.5,
+    "anterior": 3.1,
+    "fecha": "2026-09",
+    "retraso_meses": 1,
+    "fuente": "https://www.ons.gov.uk/economy/inflationandpriceindices",
+    "nivel": "P"
+   },
+   {
+    "id": "ca",
+    "pais": "Canadá",
+    "serie": "IPC (Statistics Canada, tabla 18-10-0004)",
+    "interanual": 3.1,
+    "anterior": 3.0,
+    "fecha": "2026-09",
+    "retraso_meses": 1,
+    "fuente": "https://www150.statcan.gc.ca/",
+    "nivel": "P"
+   },
+   {
+    "id": "br",
+    "pais": "Brasil",
+    "serie": "IPCA 12 meses (IBGE)",
+    "interanual": 4.58,
+    "anterior": 4.22,
+    "fecha": "2026-09",
+    "retraso_meses": 1,
+    "fuente": "https://sidra.ibge.gov.br/tabela/1737",
+    "nivel": "P"
+   }
+  ],
+  "fallos": [
+   "inflacion us_pce: TimeoutError: The read operation timed out",
+   "inflacion ea: el último dato es de 2025-12 (10 meses de retraso); revisar la fuente",
+   "inflacion es: el último dato es de 2025-12 (10 meses de retraso); revisar la fuente",
+   "inflacion jp: TimeoutError: The read operation timed out",
+   "inflacion cn: TimeoutError: The read operation timed out"
+  ],
+  "leido": "2026-10-29 20:38 UTC"
  }
 }
