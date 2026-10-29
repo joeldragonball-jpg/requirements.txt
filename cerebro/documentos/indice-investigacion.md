@@ -12,9 +12,9 @@ Mapa de los informes más recientes por tema. Lo genera `scripts/indice_investig
 Por tema, los 3 informes más recientes (fecha · título · ruta · una frase de su resumen).
 
 ## Auditorías y verificaciones
+- 2026-10-29 · C56 · Verificación de noticias de prensa (29-oct-2026) (`informes/research/2026-10-29-C56-verificacion-noticias.md`): Método: web (WebSearch/WebFetch, sin API de Anthropic) contra fuentes oficiales. Tipo de fuente ≠ verificación. Estado de cada pieza en…
 - 2026-10-28 · Revisión de predicciones y verificaciones de octubre (28-oct-2026) · DTCC #44 y otras 4 (`informes/research/2026-10-28-W05-predicciones-octubre-dtcc.md`): Pedida por Joel el 28 oct. Alcance: lo previsto para octubre (o con fecha límite ya vencida) que seguía sin verificar en informes/predicciones.md .…
 - 2026-10-28 · C38 · Auditoría de cobertura: qué sabemos, dónde está y qué falta en la Órbita (incluye C28) (`informes/research/2026-10-28-C38-auditoria-cobertura.md`): Informes: 118 en informes/research/ (R 50 · T 18 · C 16 · W 10 · D 4 · EV 2 · otros 18: radar v2 v5, auditorías, calendarios); 11 en informes/gemini/…
-- 2026-10-27 · W05 · Verificación por lotes · 27-oct-2026 (`informes/research/2026-10-27-W05-verificacion-lote.md`): Detalle y tabla en verificaciones consolidado.md (sección «Lote W05 · 2026 10 27»).
 
 ## Voces y predicciones
 - 2026-10-27 · W06 (parcial) · Voces v045, v049 y v050 · 27-oct-2026 (`informes/research/2026-10-27-W06-voces-v045-v049-v050.md`): v045 S&P, estabilidad de stablecoins sin confirmar compatible con los datos fintechnews.sg (5 ago 2026) da el recuento exacto (11 evaluadas, 6 con…
@@ -32,9 +32,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-17 · Geopolítica y energía: Ormuz, petróleo, sanciones y cadena de suministro (2026-10-17, R46 profundo) (`informes/research/2026-10-17-R46-geopolitica-energia-ormuz-profundo.md`): HECHO: el petróleo ya es el doble que hace un año y el mercado físico sigue ajustado. Brent al contado 126,55 $/b el 14 oct 2026 frente a 63,00 $/b…
 
 ## Deuda y bonos
+- 2026-10-29 · D01-D06 · Deuda y bonos: pasada del 29-oct-2026 (sin API de Anthropic) (`informes/research/2026-10-29-D01-D06-deuda-bonos-pasada.md`): Resultado corto: una cifra nueva con fuente oficial (España 30 a) y el estado real de cada acceso. Nada de esto es recomendación.
 - 2026-10-26 · W02 · Deuda, subastas y calificaciones · D03 Francia (26-oct-2026) (`informes/research/2026-10-26-W02-deuda-d03-francia.md`): AFT, leída en directo el 26 oct [P]: Moody's Aa3 negativa, última acción 10 abr 2026, «próxima fecha» 23 oct (no actualizada). S&P A+ estable (29…
 - 2026-10-24 · D08 Calendario de subastas de deuda (24-oct-2026) (`informes/research/2026-10-24-D08-subastas-deuda.md`): Sin recomendaciones de compra/venta. Solo calendario: no hay predicción de demanda. [P] = web oficial leída el 24 oct.
-- 2026-10-22 · D09 · Calificaciones soberanas de 7 países (22-oct-2026) (`informes/research/2026-10-22-D09-calificaciones-soberanas.md`): Francia es el caso vivo: Moody's Aa3 con perspectiva negativa tiene revisión programada mañana, 23 oct 2026 ; S&P (A+, estable) el 27 nov [P: AFT].
 
 ## Macro y tipos
 - 2026-10-26 · W01 · Tipos de interés (lunes) (`informes/research/2026-10-26-W01-tipos-de-interes.md`): Qué cambió en el radar ( explorador/regulacion.json , celdas politica )
@@ -42,9 +42,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-25 · C02 · Liquidez global (M2) y agregados monetarios (25-oct-2026) (`informes/research/2026-10-25-C02-liquidez-m2.md`): Hueco del Centro (módulo 01, Radar). Lectura con curl y User Agent propio de APIs abiertas. Última observación: agosto de 2026 (publicación mensual…
 
 ## Cripto y ETF
+- 2026-10-29 · EV · Swell 2026 (Ripple) y Meridian 2026 (Stellar) · 29-oct-2026 (C57) (`informes/research/2026-10-29-EV-swell-meridian.md`): Swell (Nueva York, 27 29 oct): HECHOS [P, comunicados de Ripple]
 - 2026-10-29 · C49 · Stablecoins del XRPL y Stellar con fuente primaria (29-oct-2026) (`informes/research/2026-10-29-C49-stablecoins-primarias.md`): Qué se hizo: scripts/stablecoins primarias.py (sin IA) lee el propio ledger y guarda stablecoins primarias en explorador/paneles.json ; el panel…
 - 2026-10-25 · T23 Ripple y Stellar por región: licencias, alianzas y qué nombran del token (25-oct-2026) (`informes/research/2026-10-25-T23-ripple-y-stellar-por-region.md`): Brasil: CSD BR refleja participaciones de fondos de BTG Pactual en el XRPL (estándar MPT), en un entorno con permisos y solo para clientes brasileños…
-- 2026-10-23 · T20 — DTCC y tokenización: ¿se lanzó ya el servicio?, redes, Stellar en 1S-2027 y Collateral AppChain (`informes/research/2026-10-23-T20-dtcc-tokenizacion.md`): ¿Se ha lanzado ya el servicio previsto para octubre?
 
 ## Regulación por país
 - 2026-10-29 · C51 · CBDC dentro de blockchains: qué existe y quién puede pagar o recibir (`informes/research/2026-10-29-C51-cbdc-en-blockchains.md`): Método: WebSearch estándar + una lectura directa de la página del BCE sobre Pontes. Casi todo lo demás es resumen de buscador/prensa, no lectura de…
@@ -52,14 +52,14 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-27 · T16 · Organismos internacionales: BIS, FMI, FSB y GAFI (27-oct-2026) (`informes/research/2026-10-27-T16-organismos.md`): Los cuatro organismos coinciden en el diagnóstico: las stablecoins actuales son sobre todo dólar (99 %) y cripto trading, y la apuesta de futuro es…
 
 ## Sesiones diarias (apertura y cierre)
+- 2026-10-29 · Informe de APERTURA — 2026-10-29 (jue) (`informes/2026-10-29-apertura.md`): Asia mixta (Nikkei +1,1 %; Seúl −1,2 %; HK −0,6 %; Shanghái −0,8 %); Europa al alza salvo IBEX.
 - 2026-10-28 · Informe de CIERRE — 2026-10-28 (mié) (`informes/2026-10-28-cierre.md`): Bloque que cubre: SOLO el cierre de América (Wall Street, Tesoro, cripto del día y decisión macro de la tarde). Asia y Europa quedan para la apertura…
 - 2026-10-28 · Informe de APERTURA — 2026-10-28 (mié) (`informes/2026-10-28-apertura.md`): Hecha a las 16:45 (Madrid), a petición de Joel y con él despierto: lectura en directo de Asia (ya cerrada), Europa (a media tarde) y las primeras…
-- 2026-10-27 · Informe de CIERRE — 2026-10-27 (mar) (`informes/2026-10-27-cierre.md`): BTC ≈ $80.400 (cae bajo $80.000 por la mañana y vuelve), XRP $1,32 (+1,9 %), XLM $0,169; las bolsas suben (S&P +1,4 %).
 
 ## Otros
+- 2026-10-29 · EV · Reunión del FOMC del 27-28 oct 2026 (hecho el 29-oct-2026) (`informes/research/2026-10-29-EV-fomc-28-oct.md`): La Fed mantiene el rango objetivo en 3,75 % 4,00 % .
 - 2026-10-29 · C50 · Valor tokenizado por blockchain: mejor fuente (29-oct-2026) (`informes/research/2026-10-29-C50-rwa-por-cadena.md`): Nivel: [S] = agregador/prensa; [P] = emisor o fuente oficial; [VERIFICAR] = sin contrastar. Información, no recomendación.
 - 2026-10-28 · C41C · Fusión del diseño de la Órbita (C41A Claude + C41B Gemini) · 28-oct-2026 (`informes/research/2026-10-28-C41C-fusion-diseno.md`): Sin IA de pago ni cambios en datos reales, mapa.html , mundo.html ni paneles.html . Solo este informe, filas nuevas en la cola y un prototipo aparte:…
-- 2026-10-28 · C41A · Diseño de la Órbita para ordenador: cómo se ve, cómo se organiza y cómo se recoge la información (`informes/research/2026-10-28-C41A-diseno-orbita.md`): mapa.html (Órbita). 12 capas giran alrededor de «Dinero y liquidación». Arriba están el calendario de 120 días, la línea de tiempo, el buscador y los…
 
 ## Dudas y datos a verificar
 Las frases son extractos sin comprobar: lo dudoso está marcado [VERIFICAR] en el informe original.
