@@ -433,8 +433,37 @@ function vivo(){   // al abrir: noticias recientes y precios cripto en euros, si
     if (tab === 'hoy') repintar();
   }).catch(() => {});
 }
+const HOJA_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTzwpaF-f9q_w5TzwDKE_sCy0wfeCkkxugxPGCsEp79dcx1tt3AYiDJlThugX1IYdiSEZF-o81u9_4G/pub?output=csv';
+function csvFilas(txt){   // CSV con comillas y saltos de línea dentro de campo
+  const F = []; let f = [], c = '', q = false;
+  for (let i = 0; i < txt.length; i++){ const ch = txt[i];
+    if (q){ if (ch === '"'){ if (txt[i + 1] === '"'){ c += '"'; i++; } else q = false; } else c += ch; }
+    else if (ch === '"') q = true; else if (ch === ',') { f.push(c); c = ''; }
+    else if (ch === '\n' || ch === '\r'){ if (ch === '\r' && txt[i + 1] === '\n') i++; f.push(c); c = ''; if (f.length > 1 || f[0]) F.push(f); f = []; }
+    else c += ch; }
+  if (c || f.length){ f.push(c); F.push(f); }
+  return F;
+}
+function cargarHoja(j){   // El Seguimiento vive en una Google Sheet publicada como CSV; si falla, se queda seguimiento.json
+  fetch(HOJA_CSV, {cache: 'no-cache'}).then(r => r.ok ? r.text() : Promise.reject()).then(txt => {
+    const F = csvFilas(txt), cab = F.shift(); if (!cab || cab[0] !== 'id' || cab[3] !== 'estado') return;
+    const todo = F.filter(f => f[0]).map(f => { const o = {}; cab.forEach((k, i) => o[k] = (f[i] || '').trim());
+      const e = o.estado.toLowerCase(), tipo = o.tipo.toLowerCase();
+      const est = ['recurrente', 'cubierta', 'otro'].includes(tipo) ? tipo : ({'en parte': 'parcial', 'en curso': 'pendiente', 'bloqueada': 'pendiente'}[e] || e);
+      const cuando = /^\d{5}$/.test(o.cuando) ? new Date(Date.UTC(1899, 11, 30) + (+o.cuando) * 86400000).toISOString().slice(0, 10) : o.cuando;
+      return {id: o.id, tema: o.tema.slice(0, 120), estado: est, origen: o.origen, detalle: o.detalle.slice(0, 200), est: o.est, real: o.real, prompt: o.prompt, cuando, falta: o.falta, bloqueo: o.bloqueo}; });
+    if (todo.length < 20) return;   // hoja vacía o rota: no pisar el respaldo
+    const cont = todo.filter(t => ['hecha', 'pendiente', 'parcial'].includes(t.estado)), ab = t => t.estado === 'pendiente' || t.estado === 'parcial';
+    const por = {}; ['R', 'T', 'D'].forEach(o => por[o] = {hechas: cont.filter(t => t.origen === o && t.estado === 'hecha').length, pendientes: cont.filter(t => t.origen === o && ab(t)).length});
+    const abiertas = new Set(todo.filter(ab).map(t => t.id));
+    j.todo = todo; j.pendientes = (j.pendientes || []).filter(t => abiertas.has(t.id));
+    j.resumen = Object.assign(j.resumen || {}, {hechas: cont.filter(t => t.estado === 'hecha').length, pendientes: cont.filter(ab).length, parciales: cont.filter(t => t.estado === 'parcial').length, por_cola: por});
+    j.desdeHoja = true;
+    if ((tab === 'cerebro' && segCer === 'seg') || tab === 'agenda') repintar();
+  }).catch(() => {});
+}
 function cargarSeg(){
-  fetch('seguimiento.json').then(r => r.json()).then(j => { D.seg = j; if ((tab === 'cerebro' && segCer === 'seg') || tab === 'agenda') repintar(); comprobarW(j); comprobarR00(j); }).catch(() => {});
+  fetch('seguimiento.json').then(r => r.json()).then(j => { D.seg = j; cargarHoja(j); if ((tab === 'cerebro' && segCer === 'seg') || tab === 'agenda') repintar(); comprobarW(j); comprobarR00(j); }).catch(() => {});
 }
 function comprobarW(j){   // ¿hay ya informes nuevos de las rutinas en el repo? Lista informes/research en GitHub (1 petición) y actualiza «último» sin esperar a la próxima generación del JSON
   fetch('https://api.github.com/repos/joeldragonball-jpg/requirements.txt/contents/informes/research?ref=main', {cache: 'no-cache'}).then(r => r.ok ? r.json() : []).then(lista => {
