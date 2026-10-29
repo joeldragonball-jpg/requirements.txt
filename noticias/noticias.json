@@ -7657,6 +7657,46 @@
    "msg_id": 335,
    "fecha_envio": "2026-10-29T12:01:48.722422+00:00",
    "valoracion": 0
+  },
+  {
+   "id": "cb55cc155866",
+   "titulo": "Los ETF de bitcoin al contado de EE. UU. suman $137,3 M de entradas el 28-oct, tercer día seguido de flujo positivo",
+   "resumen": "IBIT $136,0 M y BITB $1,3 M; 27-oct: +$176,0 M; 26-oct: +$110,3 M. Antes, 22 y 23-oct sumaron salidas por $635,6 M y $137,9 M. Lectura alcista: la demanda institucional se recupera con el precio cerca de los $80.000. Lectura bajista: tres días de entradas apenas compensan las salidas de la semana anterior y casi todo viene de un solo fondo (IBIT).",
+   "por_que": "[S] Agregador que recopila datos de los emisores; sin sesgo comercial relevante, pero no es el dato oficial del emisor y las cifras pueden revisarse.",
+   "tema": "Economía y mercados",
+   "puntuacion": 7,
+   "fuente": "Farside Investors (tabla diaria de flujos, leída el 29-oct)",
+   "url": "https://farside.co.uk/btc/",
+   "origen": "manual",
+   "nivel": "ligera",
+   "evento": "ETF y flujos (tanda ligera, prueba de la rutina con Claude)",
+   "etiqueta": "S",
+   "bulo": false,
+   "motivo_bulo": "",
+   "fecha_noticia": "2026-10-28T21:00:00Z",
+   "msg_id": 338,
+   "fecha_envio": "2026-10-29T15:01:11.208528+00:00",
+   "valoracion": 0
+  },
+  {
+   "id": "2097d918e741",
+   "titulo": "Los ETF de ether pierden $21,4 M el 28-oct (tercera jornada de salidas) y los de Solana $5,7 M",
+   "resumen": "ETH: −$21,4 M el 28-oct (ETHA −$44,8 M compensado por entradas en otros fondos), −$60,2 M el 27-oct y −$88,6 M el 26-oct. SOL: −$5,7 M el 28-oct y −$19,2 M el 27-oct. Lectura bajista: el capital institucional sigue saliendo de las altcoins mientras entra en bitcoin. Lectura alcista: las salidas diarias son pequeñas frente a los activos bajo gestión. No se localizaron cifras verificables de los ETF de XRP del 27 y 28-oct.",
+   "por_que": "[S] Agregador de datos de emisores; mismos límites que la pieza de bitcoin.",
+   "tema": "Cripto y regulación",
+   "puntuacion": 7,
+   "fuente": "Farside Investors (tablas de ETH y SOL, leídas el 29-oct)",
+   "url": "https://farside.co.uk/eth/",
+   "origen": "manual",
+   "nivel": "ligera",
+   "evento": "ETF y flujos (tanda ligera, prueba de la rutina con Claude)",
+   "etiqueta": "S",
+   "bulo": false,
+   "motivo_bulo": "",
+   "fecha_noticia": "2026-10-28T21:00:00Z",
+   "msg_id": 339,
+   "fecha_envio": "2026-10-29T15:01:11.626162+00:00",
+   "valoracion": 0
   }
  ],
  "envios": [
@@ -7723,10 +7763,6 @@
  ],
  "semanal": "2026-W43",
  "urg_vistos": [
-  "e0f11261b573",
-  "c786cc10401f",
-  "b84a7b413047",
-  "a7933da61ab1",
   "b70292def320",
   "50ac79b2f9cd",
   "d77844e3b876",
@@ -8222,7 +8258,11 @@
   "9469c38f866d",
   "3691a765b6dd",
   "56f8ec940fdc",
-  "6655b7f19660"
+  "6655b7f19660",
+  "844fe7b872b3",
+  "200d609c95e1",
+  "48b11135c5a9",
+  "e5c960f8a054"
  ],
  "avisos_gasto": {
   "2026-10": {}
@@ -12889,13 +12929,24 @@
    "salida": 302,
    "cache_lectura": 0,
    "cache_escritura": 0
+  },
+  {
+   "fecha": "2026-10-29T15:01:39.083314+00:00",
+   "origen": "alerta urgente",
+   "modelo": "claude-haiku-4-5-20251001",
+   "entrada": 2296,
+   "salida": 1058,
+   "cache_lectura": 0,
+   "cache_escritura": 0
   }
  ],
  "manuales_enviados": [
+  "2097d918e741",
   "38e93945a15a",
   "46b55b37f486",
   "58b1d4145604",
   "aeccf4beef2c",
+  "cb55cc155866",
   "fe283a4d738a"
  ],
  "embudo": {
