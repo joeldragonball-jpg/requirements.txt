@@ -40,6 +40,11 @@ jobs:
       - name: Traer la rama de noticias (solo lectura)
         run: git fetch origin datos:refs/remotes/origin/datos --depth=1
 
+      # Noticias del bot (nota ≥ 7, últimas 72 h) como movimientos de la Órbita con caducidad (C35). Sin IA ni red.
+      - name: Colgar las noticias en la Órbita
+        continue-on-error: true
+        run: python scripts/noticias_a_orbita.py
+
       - name: Construir los datos de la versión móvil
         id: movil
         continue-on-error: true
@@ -67,7 +72,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add explorador/paneles.json explorador/valoracion.json docs/movil/data.json docs/movil/seguimiento.json research/PLANNING.md
+          git add explorador/paneles.json explorador/valoracion.json explorador/datos.json explorador/noticias-archivo.json docs/movil/data.json docs/movil/seguimiento.json research/PLANNING.md
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -m "Paneles de datos: actualización automática (sin IA)"
           git pull --rebase origin "${GITHUB_REF_NAME}"

@@ -27,3 +27,10 @@ Con fuente primaria: nada completo. Pendiente en webs oficiales (franklintemplet
 - **Manual (mensual, Claude/Gemini):** RWA.xyz distributed y represented por cadena (sin API gratuita), con fecha.
 - **Manual (mensual/trimestral):** cifras de emisores [P] desde su web o atestación; anotar fecha y si es total multicadena o por cadena.
 - Mostrar siempre las dos métricas de RWA.xyz y un pie con la definición.
+
+## Segunda pasada (29-oct, tarde)
+- **[P] Franklin Templeton, página del fondo FOBXX/BENJI (leída en Chrome el 29-oct):** activos netos totales **$667,96 M a 30-sep-2026** (se actualiza mensualmente). Es el total en todas las cadenas; la web oficial no da el desglose por red.
+- [S] The Block (12-ago-2026, citando RWA.xyz): ≈ $726 M, la mayoría en Stellar; una guía de Eco (T1-2026) decía ≈ $828 M. Las tres cifras difieren por fecha y método: usar la oficial para el total y no inferir el reparto por cadena.
+- [S] Ondo USDY por cadena (coinpaprika con datos de Ondo, ago-2026): Ethereum ≈ $1.100 M, Stellar ≈ $534 M, SEI ≈ $258 M, Solana ≈ $179 M; USDY total $2.150 M; OUSG $366,9 M (21-ago-2026). Sin cifra de XRPL para USDY.
+- [S] BlackRock BUIDL: ≈ $2.930 M a 14-jul-2026 (Ethereum > $1.000 M, Avalanche ≈ $900 M, Solana > $550 M según un medio; otro medio da otro reparto): no usar el reparto por cadena sin el panel de Securitize.
+- **Qué queda sin resolver (HECHO, no se puede cerrar más sin pantalla interactiva):** los paneles por cadena de Ondo, Securitize y stellar.org son dinámicos y no dan texto; la parte XRPL sigue sin cifra primaria. Se deja en revisión mensual a mano. Frecuencia acordada: DefiLlama semanal automática; RWA.xyz y emisores, mensual a mano.

@@ -32,9 +32,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-17 · Geopolítica y energía: Ormuz, petróleo, sanciones y cadena de suministro (2026-10-17, R46 profundo) (`informes/research/2026-10-17-R46-geopolitica-energia-ormuz-profundo.md`): HECHO: el petróleo ya es el doble que hace un año y el mercado físico sigue ajustado. Brent al contado 126,55 $/b el 14 oct 2026 frente a 63,00 $/b…
 
 ## Deuda y bonos
+- 2026-10-29 · D01–D03, D05: tipo a 10 años mensual por país, fuente oficial del BCE (29-oct-2026) (`informes/research/2026-10-29-D-bce-tipo-10a-mensual.md`): Curva diaria de la zona euro (no por país): serie YC.B.U2.EUR.4F.G N A.SV C YM.SR 10Y , última observación 28 oct 2026.
 - 2026-10-29 · D01-D06 · Deuda y bonos: pasada del 29-oct-2026 (sin API de Anthropic) (`informes/research/2026-10-29-D01-D06-deuda-bonos-pasada.md`): Resultado corto: una cifra nueva con fuente oficial (España 30 a) y el estado real de cada acceso. Nada de esto es recomendación.
 - 2026-10-26 · W02 · Deuda, subastas y calificaciones · D03 Francia (26-oct-2026) (`informes/research/2026-10-26-W02-deuda-d03-francia.md`): AFT, leída en directo el 26 oct [P]: Moody's Aa3 negativa, última acción 10 abr 2026, «próxima fecha» 23 oct (no actualizada). S&P A+ estable (29…
-- 2026-10-24 · D08 Calendario de subastas de deuda (24-oct-2026) (`informes/research/2026-10-24-D08-subastas-deuda.md`): Sin recomendaciones de compra/venta. Solo calendario: no hay predicción de demanda. [P] = web oficial leída el 24 oct.
 
 ## Macro y tipos
 - 2026-10-26 · W01 · Tipos de interés (lunes) (`informes/research/2026-10-26-W01-tipos-de-interes.md`): Qué cambió en el radar ( explorador/regulacion.json , celdas politica )

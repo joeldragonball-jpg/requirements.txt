@@ -14,3 +14,6 @@ Tarea C36: rutina de noticias manuales que cubra días casuales y eventos, con e
 4. Comprobar con python scripts/ de validación de manuales antes de dejarlas.
 Informe corto en informes/research/AAAA-MM-DD-C36-rutina-noticias.md.
 ```
+
+## Actualización 29-oct-2026
+La parte «Gemini del día» ya no se usa (no convenció a Joel): las tandas las hace Claude con `research/prompts/NOTICIAS-claude.md` (misma rotación y mismo formato JSON, con búsqueda web comprobable). Gemini queda solo para lo que Joel pida expresamente.
