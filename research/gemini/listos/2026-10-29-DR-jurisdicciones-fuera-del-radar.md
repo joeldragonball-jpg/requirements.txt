@@ -1,0 +1,15 @@
+# Gemini Deep Research · Jurisdicciones fuera del radar (C40) (listo para pegar)
+
+Usa UNA sola Deep Research por ventana (el límite se reinicia a las 04:00 de Madrid; las anteriores gastaron la cuota con 200+ búsquedas). Pégalo en Gemini con Deep Research activado. Al volver: guardo el crudo en `informes/gemini/`, verifico 3-5 datos con la fuente primaria y propongo las celdas de `regulacion.json` (no las añado sin tu OK). Anotar en `research/gemini-uso.json`.
+
+```
+Eres un analista de investigación para un inversor particular en España (largo plazo; tiene XRP y XLM; sigue cripto, ETF, acciones y macro). Responde en español, claro y práctico. No des recomendaciones de compra ni venta. Sé honesto con la certeza: separa HECHOS (leídos en una fuente) de OPINIONES y PREDICCIONES, y marca cada dato con una etiqueta: [P] = leído en la fuente primaria (regulador, banco central, ley, gobierno, empresa), [S] = prensa, despacho de abogados o agregador, [VERIFICAR] = no pude confirmarlo. No respondas de memoria: abre cada enlace que cites y pon la URL y la fecha de la fuente. Si una web no se abre, dilo y deja el dato como [VERIFICAR]. No inventes URLs, fechas ni cifras.
+
+TAREA (Deep Research): regulación cripto en cinco jurisdicciones que mi radar aún no cubre: Reino Unido, Suiza, Canadá, Australia y Arabia Saudí. Fecha de hoy: 29-oct-2026; usa solo información publicada hasta hoy.
+
+Para CADA país rellena estos 8 temas: stablecoins, ley marco cripto, ETF cripto, tokenización de activos, custodia, moneda digital de banco central (CBDC), fiscalidad, y política monetaria del banco central (tipo oficial actual y fecha de la próxima reunión). Para cada tema da: etapa (1 = nada, 2 = consulta o propuesta, 3 = norma aprobada pendiente de vigencia, 4 = en vigor), una frase con el estado, la fecha del hito más reciente y la fuente primaria con URL. Fuentes primarias esperadas: Reino Unido (FCA, HM Treasury, Banco de Inglaterra, HMRC), Suiza (FINMA, Banco Nacional Suizo, Consejo Federal), Canadá (CSA, OSC, Banco de Canadá, Finanzas Canadá, CRA), Australia (ASIC, Tesoro, RBA, ATO), Arabia Saudí (SAMA, CMA, ZATCA).
+
+Después, por país: (a) qué se dice de XRP, XLM, Ripple o Stellar (licencias, ETF, alianzas, litigios), solo con fuente; (b) la próxima cita con fecha (reunión del banco central, plazo de consulta, entrada en vigor); (c) el mayor riesgo regulatorio para un tenedor de cripto residente fuera de ese país (qué cambia para él, si algo).
+
+Formato de salida: un informe en Markdown con (1) un resumen de 5 líneas, (2) una tabla por país con las columnas Tema | Etapa | Estado | Fecha | Fuente (URL), (3) la sección «XRP/XLM», (4) la sección «Próximas citas», (5) caso alcista frente a bajista para cripto en ese país y sesgos de las fuentes (despachos de abogados con interés comercial, prensa especializada con hype), y (6) una lista final de lo que quedó [VERIFICAR] y por qué. Longitud máxima: unas 3 páginas. Cifras con el símbolo delante y «mil M» para miles de millones.
+```

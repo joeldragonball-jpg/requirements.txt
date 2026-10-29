@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-29 20:56 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-29 20:59 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -45,24 +45,22 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
 - [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov (hoy solo [S]). → W05
 - [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, Solvexia) y cierre de BC Payments Australi
-- [VERIFICAR] Fecha de Palisade: 3-nov frente a ~4-nov-2025 (unificar con ripple.com). → W05
 - [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov). → W05
 - [VERIFICAR] MEI 2026 leído en el propio BOE (hoy [S]). → W05
 - [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF) y texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE. → W05
 - [VERIFICAR] Consulta DGT V0648-24 leída en petete; fiscalidad de tokens LP de AMM.
-- [VERIFICAR] El «Treasury al 5,34 %» del resumen W43 (casi seguro el 30 años, 5,33 %) y la cifra de Bloomberg sobre flujos de crudo frente a PortWatch.
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [alta] 2026-10-26 (3 d) · El petróleo se desploma más de un 6 % por la diplomacia con Irán.
-- [alta] 2026-10-27 (2 d) · Coinbase da 3 días para adaptar USDT y otras stablecoins a MiCA.
-- [alta] 2026-10-28 (1 d) · Un ataque a Ras Tanura lleva el Brent por encima de 114 $.
-- [alta] 2026-10-28 (1 d) · EE. UU. avisa al Golfo de una posible reanudación corta e intensa de la guerra con Irán tras las elecciones.
 - [media] 2026-09-30 (29 d) · ETF de XRP en EE. UU. ≈ $1.430 M a 22-oct [S]; ETP europeos de XRP ≈ $914 M y de Stellar ≈ $104 M.
-- [media] 2026-09-30 (29 d) · El M2 de China sube un 7,2 % interanual en septiembre (agosto +7,5 %).
 - [media] 2026-10-23 (6 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
 - [media] 2026-10-25 (4 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov (hoy solo [S]). → W05
-- … y 18 más en el Seguimiento
+- [media] 2026-10-25 (4 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
+- [media] 2026-10-25 (4 d) · [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov). → W05
+- [media] 2026-10-25 (4 d) · [VERIFICAR] MEI 2026 leído en el propio BOE (hoy [S]). → W05
+- [media] 2026-10-25 (4 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF) y texto definitivo de los modelos 172/175/72
+- [media] 2026-10-25 (4 d) · [VERIFICAR] Consulta DGT V0648-24 leída en petete; fiscalidad de tokens LP de AMM.
+- … y 15 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (2) → W03 · UE/cbdc; AE/politica

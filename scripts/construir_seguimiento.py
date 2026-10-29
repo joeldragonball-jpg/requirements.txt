@@ -487,6 +487,10 @@ def verificaciones():
         imp = "media" if nota is None else ("alta" if nota >= 8 else "media" if nota >= 7 else "baja")
         out.append({"tipo": "prensa", "texto": m["texto"][:140], "fecha": m["fecha"], "dias": dias, "imp": imp, "estado": "sin_contrastar", "con": m.get("actor", "")[:60]})
     try:
+        resueltos = [_norm(x) for x in json.loads(leer(RAIZ / "eventos" / "verificados.json")).get("resueltos_resumen", [])]
+    except Exception:
+        resueltos = []
+    try:
         ruta = RAIZ / "cerebro" / "documentos" / "resumen-vigente-xrp.md"
         lineas = leer(ruta).splitlines()
         ini = next(i for i, l in enumerate(lineas) if l.startswith("## Dudas y datos a verificar"))
@@ -504,7 +508,7 @@ def verificaciones():
             l = lineas[i].strip()
             if l.startswith("## "):
                 break
-            if l.startswith("- [VERIFICAR]"):
+            if l.startswith("- [VERIFICAR]") and not any(r in _norm(l) for r in resueltos):
                 f = fechas.get(i, "")
                 out.append({"tipo": "verificar", "texto": l[2:].strip()[:160], "fecha": f, "dias": (hoy - date.fromisoformat(f)).days if f else None, "imp": "media", "estado": "sin_contrastar", "con": ""})
     except Exception:
@@ -674,7 +678,11 @@ def planning_md(d):
     try:
         txt = leer(RAIZ / "cerebro" / "documentos" / "resumen-vigente-xrp.md")
         bloque = txt.split("## Dudas y datos a verificar", 1)[1]
-        abiertas = [x.strip()[2:].strip() for x in bloque.splitlines() if x.strip().startswith("- [VERIFICAR]")]
+        try:
+            cerrados = [_norm(x) for x in json.loads(leer(RAIZ / "eventos" / "verificados.json")).get("resueltos_resumen", [])]
+        except Exception:
+            cerrados = []
+        abiertas = [x.strip()[2:].strip() for x in bloque.splitlines() if x.strip().startswith("- [VERIFICAR]") and not any(r in _norm(x) for r in cerrados)]
         L += [f"- {x[:150]}" for x in abiertas[:10]] or ["- ninguna anotada"]
         if len(abiertas) > 10:
             L.append(f"- … y {len(abiertas) - 10} más en `cerebro/documentos/resumen-vigente-xrp.md`")
