@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-29 14:36 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-29 20:34 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -25,7 +25,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
 - C32 · Centro · Móvil: pantalla principal de precios, tipos, petróleo e inflación + aud · Sonnet M · ~3 % · `research/prompts/C32-movil-principal.md`
 - C33 · Compactación semanal: repasar los informes de la semana, consolidar en el cerebr · Sonnet M · ~3 % · ``
-- C34 · Bots · Noticias: el cron horario de GitHub solo se ejecutó 5-6 veces al día (27- · Joel+Claude S · ~~0 % cuota (el coste de API lo limitan las franjas del bot) · ``
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
 - C39 · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
 - C40 · Radar · Jurisdicciones fuera del radar: Reino Unido, Suiza, Canadá, Australia y  · Sonnet M · ~3 % · `research/prompts/C40-jurisdicciones-fuera-del-radar.md`
