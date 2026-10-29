@@ -70,6 +70,16 @@ def _nivel(texto):
     return "P" if "[P]" in t else ("S" if "[S]" in t else "VERIFICAR")
 
 
+ENERGIA = ["ormuz", "opep", "opec", "petroleo", "brent", "wti", "gas natural", "guerra", "sancion", "elecciones", "geopolit",
+           "energia", "crudo", "aranceles", "otan", "conflicto", "cumbre de lideres", "apec"]
+
+
+def _energia(texto):
+    """Energía y geopolítica: tema aparte (no existe en el radar regulatorio); se detecta por palabras clave, sin IA."""
+    t = _plano(texto)
+    return any(k in t for k in ENERGIA)
+
+
 def _leer_json(ruta):
     try:
         return json.loads(ruta.read_text(encoding="utf-8"))
@@ -97,11 +107,13 @@ def _construir(hoy_iso):
             for e in tomllib.load(fh).get("eventos", []):
                 tit, det = str(e.get("titulo", "")), str(e.get("detalle", ""))
                 tema, _ = explorador._tema_y_capa(tit, det)
+                if _energia(tit + " " + det):
+                    tema = "energia"
                 dom = urlsplit(str(e.get("fuente", ""))).netloc.replace("www.", "")
                 nivel = "VERIFICAR" if e.get("aproximado") else ("P" if dom.endswith(OFICIAL) else "S")
                 anadir(fecha=e.get("fecha"), hasta=str(e.get("hasta", "")), tit=tit[:150], que=explorador._limpiar(det)[:400],
                        quien=dom or "—", paises=_paises(tit + " " + det), tema=tema, nivel=nivel, fuente=dom or "—",
-                       origen="Calendario", impacto=str(e.get("impacto", "")),
+                       origen="Calendario", impacto=str(e.get("impacto", "")), imp={"alto": "alta", "medio": "media"}.get(str(e.get("impacto", "")), "baja"),
                        contexto="Fecha aproximada: se fijará con la fuente." if e.get("aproximado") else "")
     except Exception:
         pass
@@ -120,7 +132,7 @@ def _construir(hoy_iso):
                    f"{escala.get(str(c.get('etapa')), '')}. {c.get('estado', '')}")
             if c.get("falta"):
                 ctx += " Pendiente: " + str(c["falta"])
-            base = dict(paises=[pais], tema=TEMA_REG.get(tema_r, "reg"), origen="Radar regulatorio", impacto="",
+            base = dict(paises=[pais], tema=TEMA_REG.get(tema_r, "reg"), origen="Radar regulatorio", impacto="", imp="media" if nivel == "P" else "baja",
                         contexto=ctx[:900], quien=jurs.get(c["jur"], ""), hasta="",
                         fuente="Radar · " + ", ".join(c.get("informes", [])[:2]))
             for h in c.get("hitos", []):
@@ -138,9 +150,11 @@ def _construir(hoy_iso):
             paises = [NOMBRE_A_PAIS.get(p, "int") for p in m.get("pais", [])] or ["int"]
             texto = str(m.get("texto", ""))
             tema, _ = explorador._tema_y_capa(texto, str(m.get("capa", "")))
+            if _energia(texto):
+                tema = "energia"
             anadir(fecha=m.get("fecha"), hasta="", tit=texto[:150], que=texto[:400], quien=str(m.get("actor", "")),
                    paises=list(dict.fromkeys(paises)), tema=tema, nivel=_nivel(m.get("fuente", "")),
-                   fuente=str(m.get("fuente", ""))[:120], origen="Movimientos", impacto="",
+                   fuente=str(m.get("fuente", ""))[:120], origen="Movimientos", impacto="", imp="media" if m.get("nombra") else "baja",
                    contexto="Estado: " + str(m.get("estado", "")) + ". Nombra a XRP/XLM: " + str(m.get("nombra", "")) + ".")
     # quita duplicados (misma fecha, país y arranque del texto)
     vistos, unicos = set(), []
@@ -152,8 +166,18 @@ def _construir(hoy_iso):
     fut = sorted([e for e in unicos if e["futuro"]], key=lambda e: e["fecha"])
     pas = sorted([e for e in unicos if not e["futuro"]], key=lambda e: e["fecha"], reverse=True)
     out = fut + pas
+    reg = (_leer_json(RAIZ / "eventos" / "verificados.json") or {}).get("eventos", [])
     for i, e in enumerate(out):
         e["id"] = i
+        # TIPO de fuente (nivel: P/S/VERIFICAR) y VERIFICACIÓN son cosas distintas: la prensa puede ser cierta.
+        # Confirmado = fuente primaria o anotado en eventos/verificados.json; si no, «sin contrastar». «edad» = días desde el hecho,
+        # solo para lo ocurrido, sin contrastar y de importancia alta o media (lo bajo no genera avisos).
+        e["ver"], e["ver_con"], e["ver_fecha"] = ("confirmado", "su propia fuente primaria", "") if e["nivel"] == "P" else ("sin_contrastar", "", "")
+        for r in reg:
+            if str(r.get("fecha")) == e["fecha"] and _plano(str(r.get("contiene", ""))) in _plano(e["tit"] + " " + e["que"]):
+                e["ver"], e["ver_con"], e["ver_fecha"] = r.get("estado", "confirmado"), str(r.get("con", "")), str(r.get("verificado", ""))
+                break
+        e["edad"] = (hoy - date.fromisoformat(e["fecha"])).days if (e["ver"] == "sin_contrastar" and not e["futuro"] and e["imp"] != "baja") else None
     # etapa regulatoria de cada país por tema (solo lectura de regulacion.json): es lo que pinta la casilla
     etapas, temas_r, escala_r = {}, [], {}
     if rad:
@@ -164,14 +188,14 @@ def _construir(hoy_iso):
             if pais and c.get("etapa") is not None:
                 etapas.setdefault(pais, []).append({"tema": c.get("tema"), "etapa": c["etapa"], "nivel": _nivel("[" + str(c.get("fuente", "")) + "]"),
                                                     "revisado": str(c.get("revisado", "")), "estado": str(c.get("estado", ""))[:420]})
-    return {"hoy": hoy_iso, "paises": PAISES, "temas": explorador.TEMAS, "eventos": out,
+    return {"hoy": hoy_iso, "paises": PAISES, "temas": {**explorador.TEMAS, "energia": {"nombre": "Energía y geopolítica", "color": "#e8a33d"}}, "eventos": out,
             "etapas": etapas, "temas_reg": temas_r, "escala": escala_r}
 
 
 def _version():
     s = 0.0
     for p in (Path(__file__), CARPETA / "mundo.html", CARPETA / "regulacion.json", CARPETA / "datos.json",
-              RAIZ / "eventos" / "calendario.toml"):
+              RAIZ / "eventos" / "calendario.toml", RAIZ / "eventos" / "verificados.json"):
         try:
             s = max(s, p.stat().st_mtime)
         except Exception:

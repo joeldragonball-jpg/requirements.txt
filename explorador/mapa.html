@@ -15,7 +15,7 @@ html,body{margin:0;overflow:hidden;background:transparent;color:var(--texto);fon
 </style></head><body>
 <nav id="pest" aria-label="Vistas de la Órbita"></nav>
 <div class="marco" id="vistasWrap"><iframe id="vistasMarco" title="Vistas de datos de la Órbita"></iframe></div>
-<div class="marco" id="mundoWrap" hidden><iframe id="mundoMarco" title="Mapa mundi: etapa regulatoria y eventos por país"></iframe></div>
+<div class="marco" id="mundoWrap" hidden><iframe id="mundoMarco" title="Eventos y noticias por tema, país y verificación"></iframe></div>
 <script id="vistasHtml" type="application/json">__VISTAS__</script>
 <script id="mundoHtml" type="application/json">__MUNDO__</script>
 <script id="datos" type="application/json">__DATOS__</script>
@@ -26,7 +26,7 @@ const $ = id => document.getElementById(id);
 window.DATOS = JSON.parse($('datos').textContent);
 const pest = $('pest');
 const VISTAS = [['resumen', 'Resumen'], ['capas', 'Capas'], ['tiempo', 'Línea de tiempo'], ['calendario', 'Calendario'],
-  ['matriz', 'Matriz país × tema'], ['mundo', 'Mapa mundi'], ['noticias', 'Noticias'], ['voces', 'Voces'], ['paneles', 'Paneles de datos']];
+  ['matriz', 'Matriz país × tema'], ['mundo', 'Eventos y noticias'], ['noticias', 'Noticias'], ['voces', 'Voces'], ['paneles', 'Paneles de datos']];
 const MARCOS = {vistas: [$('vistasWrap'), $('vistasMarco'), 'vistasHtml'], mundo: [$('mundoWrap'), $('mundoMarco'), 'mundoHtml']};
 let actual = 'resumen';
 VISTAS.forEach(([id, nombre]) => { const b = document.createElement('button'); b.textContent = nombre; b.dataset.v = id; b.addEventListener('click', () => irVista(id)); pest.appendChild(b); });

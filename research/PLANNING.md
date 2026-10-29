@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-29 00:18 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-29 00:31 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -33,6 +33,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - C40 · Radar · Jurisdicciones fuera del radar: Reino Unido, Suiza, Canadá, Australia y  · Sonnet M · ~3 % · `research/prompts/C40-jurisdicciones-fuera-del-radar.md`
 - C42 · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
 - C50 ◐ en parte · Centro · Tokenización por blockchain con mejor fuente: DefiLlama (ya en el panel · Sonnet M · ~3 % · `research/prompts/C50-rwa-por-cadena-mejor-fuente.md`
+- C53 ◐ en parte · Centro · Órbita: pestaña «Eventos y noticias» (antes Mapa mundi): lista única co · Sonnet S · ~0 % · ``
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T25 · Tema libre
 **Deuda y bonos (D)** · detalle en `research/COLA-DEUDA-BONOS.md`
