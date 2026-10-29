@@ -31,8 +31,13 @@ const MARCOS = {vistas: [$('vistasWrap'), $('vistasMarco'), 'vistasHtml'], mundo
 let actual = 'resumen';
 VISTAS.forEach(([id, nombre]) => { const b = document.createElement('button'); b.textContent = nombre; b.dataset.v = id; b.addEventListener('click', () => irVista(id)); pest.appendChild(b); });
 function tamano(){
-  let ih = 800; try { ih = window.parent.innerHeight || 800; } catch (e) {}
-  const h = Math.max(480, Math.min(ih - 6, 1300)), hb = pest.offsetHeight;
+  // Una sola barra de desplazamiento: el marco ocupa justo lo que queda entre su posición y la barra inferior fija de la página
+  let ih = 800, arriba = 0, abajo = 6; try { ih = window.parent.innerHeight || 800; } catch (e) {}
+  try {
+    const fe0 = window.frameElement; if (fe0) arriba = Math.max(0, fe0.getBoundingClientRect().top);
+    const bar = window.parent.document.querySelector('.st-key-seccion'); if (bar) abajo = bar.getBoundingClientRect().height + 22;
+  } catch (e) { abajo = 84; }
+  const h = Math.max(420, Math.min(ih - arriba - abajo, 1300)), hb = pest.offsetHeight;
   Object.values(MARCOS).forEach(m => { m[0].style.height = (h - hb - 4) + 'px'; });
   try { const fe = window.frameElement; if (fe){ fe.style.height = h + 'px'; const p = fe.parentElement; if (p){ p.style.height = h + 'px'; p.style.minHeight = h + 'px'; } } } catch (e) {}
 }

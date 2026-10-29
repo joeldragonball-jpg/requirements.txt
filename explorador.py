@@ -270,6 +270,13 @@ def mostrar(conceptos=None):
                 "radial-gradient(ellipse 45% 30% at 72% 4%,rgba(34,160,190,.13),transparent 70%),"
                 "radial-gradient(ellipse 80% 60% at 50% 32%,#0b1230 0%,#050816 85%) fixed !important}"
                 "[data-testid='stHeader']{display:none !important}"
+                "html,body,.stApp,[data-testid='stAppViewContainer'],[data-testid='stMain']{overflow:hidden !important}"
+                "[data-testid='stPopover']{position:fixed !important;right:14px;bottom:84px;z-index:1000;width:auto !important}"
+                "[data-testid='stPopover'] button{padding:4px 10px !important;min-height:0 !important;font-size:.78rem !important;opacity:.85}"
+                "[data-testid='stPopoverBody'] .st-key-grupo_menu_cerebro div[role='radiogroup']{display:flex !important;flex-direction:column !important;gap:2px !important}"
+                "[data-testid='stPopoverBody'] .st-key-grupo_menu_cerebro label[data-testid='stRadioOption']{min-height:0 !important;height:auto !important;padding:4px 10px !important;flex-direction:row !important;text-align:left !important}"
+                "[data-testid='stPopoverBody'] .st-key-grupo_menu_cerebro label p{font-size:.9rem !important}"
+                "[data-testid='stPopoverBody'] .st-key-grupo_menu_cerebro label p::first-line{font-size:.9rem !important}"
                 "*::-webkit-scrollbar{width:4px;height:4px}*::-webkit-scrollbar-track{background:rgba(148,163,184,.08)}"
                 "*::-webkit-scrollbar-thumb{background:rgba(226,232,240,.45);border-radius:2px}*::-webkit-scrollbar-thumb:hover{background:rgba(241,213,138,.85)}</style>", unsafe_allow_html=True)
     try:

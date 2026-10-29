@@ -522,8 +522,14 @@ def leer_bonos():
             if k == "10A":
                 fecha = ser["fechas"][0][:10]
                 hist = [[f[:10], v] for f, v in zip(ser["fechas"][:22], ser["valores"][:22])][::-1]
-        anade("ESP", "España", "P", "Banco de España, tipos de interés del mercado secundario de deuda del Estado (letras y bonos y obligaciones, operaciones simples al contado)",
-              v1, v0, fecha, hist, "https://www.bde.es/webbe/es/estadisticas/temas/mercados-financieros.html")
+        fuente = "Banco de España, tipos de interés del mercado secundario de deuda del Estado (letras y bonos y obligaciones, operaciones simples al contado)"
+        try:    # 30 años: el Banco de España no lo publica; se usa la última subasta del Tesoro (BOE), que NO es secundario
+            m30 = json.loads(BONOS_MANUAL.read_text(encoding="utf-8"))["espana_30a"]
+            v1["30A"] = m30["rendimiento"]
+            fuente += ". 30A = subasta del Tesoro del %s (no secundario): %s" % (m30["fecha"], m30["fuente"])
+        except Exception:
+            pass
+        anade("ESP", "España", "P", fuente, v1, v0, fecha, hist, "https://www.bde.es/webbe/es/estadisticas/temas/mercados-financieros.html")
 
     def reino_unido():
         v1, v0, fecha = {}, {}, None

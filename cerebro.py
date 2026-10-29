@@ -241,15 +241,13 @@ def mostrar():
         t_rev = tarjeta("⚠️ Datos a verificar", pend, "", "#f59e0b" if pend else None)
     pie = " · ".join(f"{_h.escape(d['titulo'])} (actualizado {_h.escape(str(d['meta'].get('actualizado', '—')))})" for d in principales)
     pie += (f" · {enviados} documento(s) enviados al bot" if enviados else "") + (f" · {semanas} semana(s) de actualidad" if semanas else "")
-    if explorador_arriba:    # con el Explorador a pantalla grande, las cifras y el buscador quedan lejos, bajo el mapa
-        st.markdown("<style>.kpis{margin-top:45vh !important}</style>", unsafe_allow_html=True)
-    st.markdown("<div class='kpis'>" + tarjeta("📄 Documentos", len(docs)) + tarjeta("📚 Bloques temáticos", n_temas)
-                + tarjeta("🔤 Conceptos", len(todos_conceptos)) + t_rev + f"</div><div class='meta'>{pie}</div>",
-                unsafe_allow_html=True)
-
-    buscar = st.text_input("🔎 Buscar en todos tus apuntes", placeholder="p. ej. LTV, Modelo 721, Ormuz, FIFO…")
-    if buscar.strip():
-        mostrar_busqueda(docs, buscar.strip())
+    if not explorador_arriba:    # con el Explorador a pantalla completa no hay nada bajo el mapa; cifras y buscador salen en los demás apartados
+        st.markdown("<div class='kpis'>" + tarjeta("📄 Documentos", len(docs)) + tarjeta("📚 Bloques temáticos", n_temas)
+                    + tarjeta("🔤 Conceptos", len(todos_conceptos)) + t_rev + f"</div><div class='meta'>{pie}</div>",
+                    unsafe_allow_html=True)
+        buscar = st.text_input("🔎 Buscar en todos tus apuntes", placeholder="p. ej. LTV, Modelo 721, Ormuz, FIFO…")
+        if buscar.strip():
+            mostrar_busqueda(docs, buscar.strip())
 
     # Menú de losetas (mismo estilo que el de la cartera); solo se ejecuta el apartado elegido
     def dudas_y_chat():
@@ -269,8 +267,13 @@ def mostrar():
                  ("📊 Datos", lambda: tab_datos(docs)), ("🎯 Mi cartera", lambda: tab_cartera(docs)),
                  ("📰 Actualidad", lambda: tab_actualidad(docs)), ("🗺️ Mapa", lambda: tab_mapa(docs)),
                  ("💭 Dudas y chat", dudas_y_chat), ("🔬 Dossiers", tab_dossiers), ("💸 Consumo", lambda: tab_consumo())]
-    elegido = st.radio("Apartado", range(len(apartados)), horizontal=True, label_visibility="collapsed",
-                       key="grupo_menu_cerebro", format_func=lambda k: apartados[k][0].replace(" ", "  \n", 1))
+    if explorador_arriba:    # sin menú a la vista: un botón flotante pequeño (no ocupa sitio) con los demás apartados
+        with st.popover("☰ Apartados"):
+            elegido = st.radio("Apartado", range(len(apartados)), label_visibility="collapsed",
+                               key="grupo_menu_cerebro", format_func=lambda k: apartados[k][0])
+    else:
+        elegido = st.radio("Apartado", range(len(apartados)), horizontal=True, label_visibility="collapsed",
+                           key="grupo_menu_cerebro", format_func=lambda k: apartados[k][0].replace(" ", "  \n", 1))
     if (elegido == 0) != explorador_arriba:      # al cambiar de apartado, el menú vuelve arriba (o abajo con el Explorador)
         st.rerun()
     if cont_contenido is not None:
