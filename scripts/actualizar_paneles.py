@@ -550,7 +550,15 @@ def leer_bonos():
         serie = m["serie10"]
         anade("FRA", m["nombre"], m["nivel"], m["fuente"], {"10A": serie[-1][1]}, {"10A": serie[-2][1]}, serie[-1][0], serie, m["url"])
 
-    for nombre, f in (("EE. UU.", eeuu), ("Japón", japon), ("Zona euro", zona_euro), ("España", espana), ("Reino Unido", reino_unido), ("Francia", francia)):
+    def china():       # ChinaBond no tiene API abierta: la curva se lee en el navegador y se pega en bonos-manual.json
+        m = json.loads(BONOS_MANUAL.read_text(encoding="utf-8"))["china"]
+        anade("CHN", m["nombre"], m["nivel"], m["fuente"], m["plazos"], {}, m["fecha"], [], m["url"])
+
+    def italia():      # solo el 30 años (emisión sindicada del MEF); el resto de plazos de Italia no tiene fuente abierta diaria
+        m = json.loads(BONOS_MANUAL.read_text(encoding="utf-8"))["italia_30a"]
+        anade("ITA", "Italia", "P", "MEF (Tesoro). 30A = " + m["fuente"], {"30A": m["rendimiento"]}, {}, m["fecha"], [], m["url"])
+
+    for nombre, f in (("EE. UU.", eeuu), ("Japón", japon), ("Zona euro", zona_euro), ("España", espana), ("Reino Unido", reino_unido), ("Francia", francia), ("China", china), ("Italia", italia)):
         probar(nombre, f)
     mensual = {}
     for c, n in (("DE", "Alemania"), ("ES", "España"), ("FR", "Francia"), ("IT", "Italia")):

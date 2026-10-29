@@ -113,10 +113,10 @@ def cola_d():
             continue
         hecho = c[1].upper().startswith("HECHO")
         tema = re.sub(r"^HECHO el [^.(]*(\([^)]*\))?\.?\s*", "", c[1], flags=re.I) if hecho else c[1]
-        parcial = not hecho and "HECHO" in c[1].upper()
+        parcial = not hecho and ("HECHO" in c[1].upper() or "parcial" in linea.lower())
         if parcial:
             tema = "(parcial) " + re.sub(r"\(a\)\s*HECHO el [^:]*:\s*", "", c[1], flags=re.I)
-        out.append({"id": c[0], "tema": limpiar(tema)[:110], "estado": "hecha" if hecho else "pendiente", "origen": "D"})
+        out.append({"id": c[0], "tema": limpiar(tema)[:110], "estado": "hecha" if hecho else ("parcial" if parcial else "pendiente"), "origen": "D"})
     return out
 
 

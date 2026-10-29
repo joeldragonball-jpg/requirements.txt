@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 # PLANNING (autogenerado, no editar a mano) · 2026-10-29 01:10 UTC
+=======
+# PLANNING (autogenerado, no editar a mano) · 2026-10-29 01:24 UTC
+>>>>>>> Stashed changes
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -37,12 +41,11 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T25 · Tema libre
 **Deuda y bonos (D)** · detalle en `research/COLA-DEUDA-BONOS.md`
-- D01 · Italia: rendimientos diarios de BTP a 2, 5, 10 y 30 años con fuente of
-- D02 · Alemania: rendimientos diarios de Bund (2, 5, 10, 30 a): Bundesbank (A
-- D03 · Francia: curva OAT por plazos (2, 5, 10, 30 a) además del TEC 10 y des
-- D04 · China: rendimientos de los bonos del Estado (1, 2, 5, 10, 30 a) de Chi
-- D05 · 30 años de España e Italia (y Francia si D03 no lo trae): bono a 30 añ
-- D06 · (parcial) Bancos y deuda: exposición soberana de 116 bancos europeos (
+- D01 ◐ en parte · (parcial) Italia: rendimientos diarios de BTP a 2, 5, 10 y 30 años con
+- D02 ◐ en parte · (parcial) Alemania: rendimientos diarios de Bund (2, 5, 10, 30 a): Bun
+- D03 ◐ en parte · (parcial) Francia: curva OAT por plazos (2, 5, 10, 30 a) además del TE
+- D05 ◐ en parte · (parcial) 30 años de España e Italia (y Francia si D03 no lo trae): bo
+- D06 ◐ en parte · (parcial) Bancos y deuda: exposición soberana de 116 bancos europeos (
 **Otros research (R)** · detalle en `research/COLA.md`
 - R17 · Resumen semanal de 1 página (para imprimir)
 - R36 · PROFUNDO: Segunda pasada con los PDFs que haya en research/fuentes/ (R
