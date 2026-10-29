@@ -698,7 +698,7 @@ function pVoces(){
 function pPaneles(){
   const s=$('v-paneles');s.textContent='';
   const c=el('div','caja');c.append(el('h2',null,'Paneles de datos: cada bloque dice qué mide, en qué unidad, de dónde sale y cuándo se leyó'));
-  const pie=(b,t)=>({nivel:b.nivel,t:t+' · leído '+(b.leido||(P&&P.leido))});
+  const pie=(b,t)=>{b=b||{};return {nivel:b.nivel,t:t+' · leído '+(b.leido||(P&&P.leido))}};   // un bloque ausente de paneles.json no debe tumbar toda la pestaña
   const mz=masonry();
   const add=b=>{if(/^(Bonos|Cartera|Valoraci|Bancos europeos|Reservas|Deuda p|Calificaciones|Gasto)/.test(b.firstChild.textContent))b.classList.add('ancho');mz.append(b)};
   if(P){
