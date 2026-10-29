@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-29 20:59 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-29 21:25 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -27,7 +27,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - C33 · Compactación semanal: repasar los informes de la semana, consolidar en el cerebr · Sonnet M · ~3 % · ``
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
 - C39 · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
-- C40 · Radar · Jurisdicciones fuera del radar: Reino Unido, Suiza, Canadá, Australia y  · Sonnet M · ~3 % · `research/prompts/C40-jurisdicciones-fuera-del-radar.md`
 - C42 · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T25 · Tema libre
@@ -64,11 +63,11 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (2) → W03 · UE/cbdc; AE/politica
-- 🟡 Radar regulatorio: Celdas sin dato (23) → W03 · Más huecos: EG 5, ET 4, ZA 3, ID 3, IN 2
+- 🟡 Radar regulatorio: Celdas sin dato (49) → W03 · Más huecos: CH 7, AU 7, UK 6, CA 6, EG 5
 - 🟡 Voces: Voces sin confirmar (4) → W06 · 1 llevan más de 14 días
 
 ## Bots con problema
-- ninguno
+- Despertador de la app
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-10-21 · EE. UU.: la OCC publica su norma final de la GENIUS Act (alto) → ✓ revisado (hecho)
