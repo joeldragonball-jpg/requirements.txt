@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-29 14:27 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-29 14:36 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -27,7 +27,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - C33 · Compactación semanal: repasar los informes de la semana, consolidar en el cerebr · Sonnet M · ~3 % · ``
 - C34 · Bots · Noticias: el cron horario de GitHub solo se ejecutó 5-6 veces al día (27- · Joel+Claude S · ~~0 % cuota (el coste de API lo limitan las franjas del bot) · ``
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
-- C37 ◐ en parte · Centro · Auditoría C13: enlace a la fuente primaria en cada celda del radar regu · Sonnet S · ~1,5 % · `research/prompts/C37-urls-radar-pendientes.md`
 - C39 · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
 - C40 · Radar · Jurisdicciones fuera del radar: Reino Unido, Suiza, Canadá, Australia y  · Sonnet M · ~3 % · `research/prompts/C40-jurisdicciones-fuera-del-radar.md`
 - C42 · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
@@ -41,7 +40,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 **Pasadas puntuales de rutinas (W)** · detalle en `research/COLA.md`
 - W01B · Tipos de interés: segunda pasada tras las decisiones de la Fed, el BCE · 📅 programada 2026-10-29
-- W03E ◐ en parte · Países: Irán, Egipto y Etiopía (huecos del radar) · bloqueo: PDF de Joel en research/fuentes/ (relanzar sin los PDF no lo
 
 ## Auditorías abiertas
 - C13 (Media): Cero enlaces: el campo fuente solo vale P/S/VERIFICAR. No hay forma de pulsar y llegar a la fuente. (voces.jso
@@ -71,7 +69,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (3) → W03 · EEUU/politica; UE/cbdc; AE/politica
-- 🟡 Radar regulatorio: Celdas sin dato (26) → W03 · Más huecos: EG 5, IR 5, ET 4, ZA 3, ID 3
+- 🟡 Radar regulatorio: Celdas sin dato (23) → W03 · Más huecos: EG 5, ET 4, ZA 3, ID 3, IN 2
 - 🟡 Voces: Voces sin confirmar (4) → W06 · 1 llevan más de 14 días
 
 ## Bots con problema
