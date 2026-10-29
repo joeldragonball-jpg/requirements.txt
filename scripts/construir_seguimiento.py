@@ -425,6 +425,72 @@ def gemini():
             "avisos": uso.get("avisos", [])[-3:], "sesiones": sesiones[-5:]}
 
 
+def _norm(t):
+    return re.sub(r"[̀-ͯ]", "", __import__("unicodedata").normalize("NFD", t or "")).lower()
+
+
+def verificaciones():
+    """Lo que está sin contrastar o dudoso, con antigüedad y orden por importancia (alta > media > baja, y dentro, lo más viejo primero).
+    Fuentes: noticias de prensa del Explorador sin entrada en eventos/verificados.json, entradas dudosas/desmentidas de ese registro y los [VERIFICAR] del resumen vigente."""
+    hoy = date.today()
+    orden = {"alta": 0, "media": 1, "baja": 2}
+    try:
+        reg = json.loads(leer(RAIZ / "eventos" / "verificados.json")).get("eventos", [])
+    except Exception:
+        reg = []
+    out = []
+    for v in reg:
+        if v.get("estado") in ("dudoso", "desmentido"):
+            try:
+                dias = (hoy - date.fromisoformat(v.get("fecha", ""))).days
+            except Exception:
+                dias = None
+            out.append({"tipo": "registro", "texto": v.get("contiene", "")[:140], "fecha": v.get("fecha", ""), "dias": dias, "imp": "media", "estado": v["estado"], "con": v.get("con", "")})
+    try:
+        movs = json.loads(leer(RAIZ / "explorador" / "datos.json")).get("movimientos", [])
+    except Exception:
+        movs = []
+    for m in movs:
+        if m.get("nivel") != "S":
+            continue
+        try:
+            dias = (hoy - date.fromisoformat(m["fecha"])).days
+        except Exception:
+            continue
+        if dias > 30:
+            continue
+        if any((not v.get("fecha") or v["fecha"] == m["fecha"]) and v.get("contiene") and _norm(v["contiene"]) in _norm(m["texto"]) for v in reg):
+            continue
+        nota = m.get("nota_bot")
+        imp = "media" if nota is None else ("alta" if nota >= 8 else "media" if nota >= 7 else "baja")
+        out.append({"tipo": "prensa", "texto": m["texto"][:140], "fecha": m["fecha"], "dias": dias, "imp": imp, "estado": "sin_contrastar", "con": m.get("actor", "")[:60]})
+    try:
+        ruta = RAIZ / "cerebro" / "documentos" / "resumen-vigente-xrp.md"
+        lineas = leer(ruta).splitlines()
+        ini = next(i for i, l in enumerate(lineas) if l.startswith("## Dudas y datos a verificar"))
+        fechas = {}
+        try:
+            import subprocess
+            b = subprocess.run(["git", "blame", "--date=short", "-e", "--", str(ruta)], cwd=RAIZ, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=20).stdout.splitlines()
+            for i, l in enumerate(b):
+                f = re.search(r"(\d{4}-\d{2}-\d{2})", l)
+                if f:
+                    fechas[i] = f.group(1)
+        except Exception:
+            pass
+        for i in range(ini + 1, len(lineas)):
+            l = lineas[i].strip()
+            if l.startswith("## "):
+                break
+            if l.startswith("- [VERIFICAR]"):
+                f = fechas.get(i, "")
+                out.append({"tipo": "verificar", "texto": l[2:].strip()[:160], "fecha": f, "dias": (hoy - date.fromisoformat(f)).days if f else None, "imp": "media", "estado": "sin_contrastar", "con": ""})
+    except Exception:
+        pass
+    out.sort(key=lambda x: (orden[x["imp"]], -(x["dias"] if x["dias"] is not None else -1)))
+    return out
+
+
 def construir(bots_estado=False):
     colas = cola_r() + cola_t() + cola_d()
     eventos = eventos_futuros()
@@ -462,6 +528,7 @@ def construir(bots_estado=False):
         "bots": bots() if bots_estado else [],
         "cuota": {"total": round(sum(c["pct"] for c in cuota), 1), "tareas": sorted(cuota, key=lambda c: -c["pct"])[:8], "n": len(cuota)},
         "informes": informes_recientes(), "frescura": frescura(), "eventos": eventos_calendario(), "gemini": gemini(),
+        "verificaciones": verificaciones(),
     }
 
 
@@ -592,6 +659,11 @@ def planning_md(d):
     except Exception:
         L.append("- (no se pudo leer `cerebro/documentos/resumen-vigente-xrp.md`)")
 
+    ver = d.get("verificaciones") or []
+    L += ["", "## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)"]
+    L += [f"- [{x['imp']}] {x['fecha'] or 's/f'} ({str(x['dias']) + ' d' if x['dias'] is not None else 'edad desconocida'}) · {x['texto'][:110]}" for x in ver[:8]] or ["- ninguna"]
+    if len(ver) > 8:
+        L.append(f"- … y {len(ver) - 8} más en el Seguimiento")
     L += ["", "## Qué se está quedando viejo (frescura)"]
     fr = [f for f in (d.get("frescura") or {}).get("items", []) if f["nivel"] != "ok"]
     L += [f"- {'🔴' if f['nivel'] == 'alerta' else '🟡'} {f['area']}: {f['titulo']} ({f['n']}) → {f['rutina']}" + (f" · {f['detalle'][:80]}" if f["detalle"] else "") for f in fr] or ["- todo al día"]

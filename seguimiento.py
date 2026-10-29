@@ -47,13 +47,6 @@ def mostrar():
                 + " — prompts en `research/prompts/`")
     st.caption(" · ".join(f"{ORIGEN[o]}: {v['hechas']} hechas, {v['pendientes']} pendientes" for o, v in r["por_cola"].items()))
 
-    # --- Rutinas
-    st.markdown("##### 🔁 Rutina de research (actualizar, verificar, revisar)")
-    st.dataframe(pd.DataFrame([{"ID": x["id"], "Tarea": x["nombre"], "Tipo": x["tipo"], "Cada": x["cada"], "Coste": x["coste"],
-                                "Último": x["ultimo"] or "sin hacer", "Estado": "⚠ atrasada" if x["atrasada"] else "✓ al día"} for x in d["rutinas"]]),
-                 hide_index=True, use_container_width=True)
-    st.caption("Actualizar = datos que cambian (tipos, deuda, ETF, energía). Nuevo = temas sin cubrir (países, deuda por país). Verificar/revisar = cerrar [VERIFICAR], voces, auditorías, fuentes.")
-
     # --- Qué toca ahora
     st.markdown("##### 🎯 Research nuevo por hacer (el plazo solo se muestra si vence en menos de 45 días)")
     if d["pendientes"]:
@@ -64,76 +57,106 @@ def mostrar():
     else:
         st.success("No queda nada pendiente en las colas.")
 
-    # --- Plazos y predicciones
-    fr = d.get("frescura")
-    if fr:
-        st.markdown("##### 🧭 Qué se está quedando viejo (se calcula solo, sin IA)")
-        st.dataframe(pd.DataFrame([{"": {"alerta": "🔴", "aviso": "🟡", "ok": "🟢"}[f["nivel"]], "Dónde": f["area"], "Qué": f["titulo"], "Cuántos": f["n"],
-                                    "Detalle": f["detalle"], "Lo pone al día": f["rutina"]} for f in fr["items"]]), hide_index=True, use_container_width=True)
-    st.markdown("##### 🗓️ Próximas fechas importantes")
-    if d["plazos"]:
-        st.dataframe(pd.DataFrame([{"": "🔴" if e["impacto"] == "alto" else "🟡", "Fecha": e["fecha"], "Cuándo": _cuando(e["dias"]), "Evento": e["titulo"]} for e in d["plazos"]]),
+    # --- Verificaciones pendientes
+    st.markdown("##### 🔎 Verificaciones pendientes (por importancia y antigüedad)")
+    ver = d.get("verificaciones") or []
+    if ver:
+        st.caption("Noticias de prensa sin contrastar, entradas dudosas y [VERIFICAR] del resumen. El tipo de fuente no es la verificación: una noticia de prensa puede ser cierta. Se anotan en eventos/verificados.json.")
+        st.dataframe(pd.DataFrame([{"Importancia": x["imp"], "Fecha": x["fecha"] or "s/f", "Antigüedad": f"{x['dias']} d" if x["dias"] is not None else "desconocida",
+                                    "Estado": {"sin_contrastar": "◐ sin contrastar", "dudoso": "✖ dudoso", "desmentido": "✖ desmentido"}.get(x["estado"], x["estado"]),
+                                    "Qué": x["texto"], "Origen": x["con"]} for x in ver]), hide_index=True, use_container_width=True)
+    else:
+        st.success("No hay verificaciones pendientes.")
+
+    # --- Eventos pasados
+    pas = (d.get("eventos") or {}).get("pasados") or []
+    st.markdown("##### 🗓️ Eventos de los últimos 10 días y su estado")
+    if pas:
+        marca = {"cubierto": "✓ cubierto", "revisado": "✓ revisado", "por_revisar": "⏳ SIN research"}
+        st.dataframe(pd.DataFrame([{"Fecha": e["fecha"], "Evento": e["titulo"], "Impacto": e["impacto"], "Estado": marca.get(e["estado"], e["estado"]), "Detalle": e["detalle"]} for e in pas]),
                      hide_index=True, use_container_width=True)
-    st.markdown("##### 🔮 Predicciones registradas")
-    p = d["predicciones"]
-    st.caption(f"{len(p['abiertas'])} sin resolver · {len(p['resueltas'])} resueltas (se comprueban al llegar su fecha límite)")
-    if p["abiertas"]:
-        st.dataframe(pd.DataFrame([{"#": x["n"], "Quién": x["quien"][:40], "Predicción": x["que"], "Límite": x["limite"] or "sin fecha", "Cuándo": _cuando(x["dias"])}
-                                   for x in p["abiertas"][:15]]), hide_index=True, use_container_width=True)
-        with st.expander(f"Ver las {len(p['abiertas'])} sin resolver y las {len(p['resueltas'])} resueltas"):
-            st.dataframe(pd.DataFrame([{"#": x["n"], "Quién": x["quien"], "Predicción": x["que"], "Límite": x["limite"] or "—", "Resultado": x["resultado"]}
-                                       for x in p["abiertas"] + p["resueltas"]]), hide_index=True, use_container_width=True)
+        st.caption("Lo hecho sale como hecho y no se repite. Para los «SIN research»: /research EV <fecha> <título>; descartar: eventos/revisados.json.")
+    else:
+        st.caption("Ningún evento relevante en los últimos 10 días.")
 
-    # --- Auditorías
-    a = d["auditorias"]
-    st.markdown("##### 🔎 Auditoría de coherencia")
-    if a:
-        st.caption(f"{a['archivo']} · {a['abiertos']} abiertos · {a['cerrados']} cerrados")
-        abiertos = [x for x in a["hallazgos"] if x["estado"] == "abierto"]
-        if abiertos:
-            st.dataframe(pd.DataFrame([{"ID": x["id"], "Gravedad": x["sev"], "Dónde": x["donde"], "Qué": x["que"]} for x in abiertos]), hide_index=True,
-                         use_container_width=True)
+    # --- Todo lo demás, plegado
+    st.markdown("##### 📂 Más detalle")
+    t_rut, t_viejo, t_pred, t_bots, t_inf = st.tabs(["🔁 Rutinas", "🧭 Viejo y fechas", "🔮 Predicciones y auditoría", "🤖 Bots y cuota", "📄 Informes"])
+    with t_rut:
+        st.markdown("##### 🔁 Rutina de research (actualizar, verificar, revisar)")
+        st.dataframe(pd.DataFrame([{"ID": x["id"], "Tarea": x["nombre"], "Tipo": x["tipo"], "Cada": x["cada"], "Coste": x["coste"],
+                                    "Último": x["ultimo"] or "sin hacer", "Estado": "⚠ atrasada" if x["atrasada"] else "✓ al día"} for x in d["rutinas"]]),
+                     hide_index=True, use_container_width=True)
+        st.caption("Actualizar = datos que cambian (tipos, deuda, ETF, energía). Nuevo = temas sin cubrir (países, deuda por país). Verificar/revisar = cerrar [VERIFICAR], voces, auditorías, fuentes.")
+
+    with t_viejo:
+        fr = d.get("frescura")
+        if fr:
+            st.markdown("##### 🧭 Qué se está quedando viejo (se calcula solo, sin IA)")
+            st.dataframe(pd.DataFrame([{"": {"alerta": "🔴", "aviso": "🟡", "ok": "🟢"}[f["nivel"]], "Dónde": f["area"], "Qué": f["titulo"], "Cuántos": f["n"],
+                                        "Detalle": f["detalle"], "Lo pone al día": f["rutina"]} for f in fr["items"]]), hide_index=True, use_container_width=True)
+        st.markdown("##### 🗓️ Próximas fechas importantes")
+        if d["plazos"]:
+            st.dataframe(pd.DataFrame([{"": "🔴" if e["impacto"] == "alto" else "🟡", "Fecha": e["fecha"], "Cuándo": _cuando(e["dias"]), "Evento": e["titulo"]} for e in d["plazos"]]),
+                         hide_index=True, use_container_width=True)
+
+    with t_pred:
+        st.markdown("##### 🔮 Predicciones registradas")
+        p = d["predicciones"]
+        st.caption(f"{len(p['abiertas'])} sin resolver · {len(p['resueltas'])} resueltas (se comprueban al llegar su fecha límite)")
+        if p["abiertas"]:
+            st.dataframe(pd.DataFrame([{"#": x["n"], "Quién": x["quien"][:40], "Predicción": x["que"], "Límite": x["limite"] or "sin fecha", "Cuándo": _cuando(x["dias"])}
+                                       for x in p["abiertas"][:15]]), hide_index=True, use_container_width=True)
+            with st.expander(f"Ver las {len(p['abiertas'])} sin resolver y las {len(p['resueltas'])} resueltas"):
+                st.dataframe(pd.DataFrame([{"#": x["n"], "Quién": x["quien"], "Predicción": x["que"], "Límite": x["limite"] or "—", "Resultado": x["resultado"]}
+                                           for x in p["abiertas"] + p["resueltas"]]), hide_index=True, use_container_width=True)
+        a = d["auditorias"]
+        st.markdown("##### 🔎 Auditoría de coherencia")
+        if a:
+            st.caption(f"{a['archivo']} · {a['abiertos']} abiertos · {a['cerrados']} cerrados")
+            abiertos = [x for x in a["hallazgos"] if x["estado"] == "abierto"]
+            if abiertos:
+                st.dataframe(pd.DataFrame([{"ID": x["id"], "Gravedad": x["sev"], "Dónde": x["donde"], "Qué": x["que"]} for x in abiertos]), hide_index=True,
+                             use_container_width=True)
+            else:
+                st.success("Todos los hallazgos están cerrados.")
         else:
-            st.success("Todos los hallazgos están cerrados.")
-    else:
-        st.info("Aún no hay auditorías en informes/research/.")
+            st.info("Aún no hay auditorías en informes/research/.")
 
-    # --- Bots y cuota
-    st.markdown("##### 🤖 Bots (GitHub Actions)")
-    if d["bots"]:
-        st.dataframe(pd.DataFrame([{"": "🟢" if b["ok"] else "🔴" if b["ok"] is False else "⚪", "Bot": b["nombre"], "Último": b["conclusion"],
-                                    "Hace (h)": b["horas"], "Tolerancia (h)": b["tolerancia"]} for b in d["bots"]]), hide_index=True, use_container_width=True)
-        st.caption("Los programados de GitHub se retrasan a veces unas horas: la tolerancia lo tiene en cuenta.")
-    st.markdown("##### 📊 Cuota gastada por tarea (medida)")
-    q = d["cuota"]
-    st.caption(f"≈ {q['total']} % de cuota semanal sumada en {q['n']} tareas con coste anotado (columna «Real» de research/COLA.md; «<1 %» cuenta como 0,5).")
-    if q["tareas"]:
-        st.dataframe(pd.DataFrame([{"ID": x["id"], "Tema": x["tema"], "% cuota": x["pct"]} for x in q["tareas"]]), hide_index=True, use_container_width=True)
+    with t_bots:
+        st.markdown("##### 🤖 Bots (GitHub Actions)")
+        if d["bots"]:
+            st.dataframe(pd.DataFrame([{"": "🟢" if b["ok"] else "🔴" if b["ok"] is False else "⚪", "Bot": b["nombre"], "Último": b["conclusion"],
+                                        "Hace (h)": b["horas"], "Tolerancia (h)": b["tolerancia"]} for b in d["bots"]]), hide_index=True, use_container_width=True)
+            st.caption("Los programados de GitHub se retrasan a veces unas horas: la tolerancia lo tiene en cuenta.")
+        st.markdown("##### 📊 Cuota gastada por tarea (medida)")
+        q = d["cuota"]
+        st.caption(f"≈ {q['total']} % de cuota semanal sumada en {q['n']} tareas con coste anotado (columna «Real» de research/COLA.md; «<1 %» cuenta como 0,5).")
+        if q["tareas"]:
+            st.dataframe(pd.DataFrame([{"ID": x["id"], "Tema": x["tema"], "% cuota": x["pct"]} for x in q["tareas"]]), hide_index=True, use_container_width=True)
 
-    # --- Informes recientes
-    st.markdown("##### 📄 Informes recientes")
-    informes = d["informes"]
-    if informes:
-        st.dataframe(pd.DataFrame([{"Fecha": i["fecha"], "Tipo": i["tipo"], "Título": i["titulo"]} for i in informes]), hide_index=True, use_container_width=True)
-        archivos = sorted(INFORMES.glob("*.md"), reverse=True)
-        filtro = st.text_input("Buscar informe (por ejemplo: 13f, corea, stablecoins)", key="seg_filtro").strip().lower()
-        coinciden = [f.name for f in archivos if not filtro or filtro in f.name.lower()]
-        elegido = st.selectbox("Leer un informe", coinciden, index=None, placeholder="Elige un informe para leerlo aquí", key="seg_informe")
-        if elegido:
-            ruta = INFORMES / elegido
-            try:
-                ruta.resolve().relative_to(INFORMES.resolve())      # solo archivos dentro de informes/research/
-                st.markdown(ruta.read_text(encoding="utf-8"))
-            except Exception:
-                st.error("No se puede leer ese informe.")
-
-    # --- Último informe diario
-    st.markdown("##### 🌅 Último informe diario")
-    cand = [f for f in DIARIOS.glob("2*.md") if any(k in f.name for k in ("apertura", "cierre", "intradia", "revision", "inicial"))]
-    if cand:
-        f = max(cand, key=lambda x: x.name)
-        st.caption(f"Archivo: {f.name}")
-        with st.expander("Leer", expanded=False):
-            st.markdown(f.read_text(encoding="utf-8"))
-    else:
-        st.info("No hay informes diarios en informes/.")
+    with t_inf:
+        st.markdown("##### 📄 Informes recientes")
+        informes = d["informes"]
+        if informes:
+            st.dataframe(pd.DataFrame([{"Fecha": i["fecha"], "Tipo": i["tipo"], "Título": i["titulo"]} for i in informes]), hide_index=True, use_container_width=True)
+            archivos = sorted(INFORMES.glob("*.md"), reverse=True)
+            filtro = st.text_input("Buscar informe (por ejemplo: 13f, corea, stablecoins)", key="seg_filtro").strip().lower()
+            coinciden = [f.name for f in archivos if not filtro or filtro in f.name.lower()]
+            elegido = st.selectbox("Leer un informe", coinciden, index=None, placeholder="Elige un informe para leerlo aquí", key="seg_informe")
+            if elegido:
+                ruta = INFORMES / elegido
+                try:
+                    ruta.resolve().relative_to(INFORMES.resolve())      # solo archivos dentro de informes/research/
+                    st.markdown(ruta.read_text(encoding="utf-8"))
+                except Exception:
+                    st.error("No se puede leer ese informe.")
+        st.markdown("##### 🌅 Último informe diario")
+        cand = [f for f in DIARIOS.glob("2*.md") if any(k in f.name for k in ("apertura", "cierre", "intradia", "revision", "inicial"))]
+        if cand:
+            f = max(cand, key=lambda x: x.name)
+            st.caption(f"Archivo: {f.name}")
+            with st.expander("Leer", expanded=False):
+                st.markdown(f.read_text(encoding="utf-8"))
+        else:
+            st.info("No hay informes diarios en informes/.")

@@ -1,0 +1,53 @@
+{
+ "como": "Registro de eventos contrastados (o dudosos). El TIPO de fuente (primaria o prensa) y la VERIFICACIÓN son cosas distintas: una noticia de prensa puede ser cierta. Un evento con fuente primaria [P] cuenta como confirmado solo; los demás quedan «sin contrastar» hasta que se anota aquí con quién se contrastó. Lo rellena W05 o la sesión que verifique. Campos: fecha (la del evento), contiene (texto del título; las tildes dan igual), estado (confirmado | dudoso | desmentido), con (con qué o quién se contrastó), url, verificado (fecha de la comprobación).",
+ "eventos": [
+  {
+   "fecha": "2026-10-26",
+   "contiene": "La Fed anunciara su decision de tipos",
+   "estado": "confirmado",
+   "con": "nota de la Fed del 28-oct: decisión 14:00 ET, tipos mantenidos en 3,75-4 %",
+   "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+   "verificado": "2026-10-29"
+  },
+  {
+   "fecha": "2026-10-28",
+   "contiene": "Hoy decide la Fed",
+   "estado": "confirmado",
+   "con": "nota de la Fed del 28-oct (mantiene 3,75-4 %, voto 10-2)",
+   "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+   "verificado": "2026-10-29"
+  },
+  {
+   "fecha": "2026-10-27",
+   "contiene": "La Fed mantiene los tipos",
+   "estado": "dudoso",
+   "con": "el mantenimiento es cierto (Fed 28-oct), pero la noticia lleva fecha del 27, antes de la decisión; «máximos de tres años» no aparece en la nota (dice «inflación elevada»)",
+   "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+   "verificado": "2026-10-29"
+  },
+  {
+   "fecha": "2026-10-27",
+   "contiene": "Ripple recibe la aprobacion final",
+   "estado": "confirmado",
+   "con": "comunicado de Ripple del 26-oct en ripple.com («Ripple receives final OCC approval», fuente de la empresa) y anuncio del CEO; documento de la OCC aún sin localizar (su índice llega al 25-sep). Confirmado por la empresa, falta el documento oficial",
+   "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-actions/index-interpretations-and-actions.html",
+   "verificado": "2026-10-29"
+  },
+  {
+   "fecha": "2026-10-27",
+   "contiene": "La OCC concede la aprobacion final",
+   "estado": "confirmado",
+   "con": "comunicado de Ripple del 26-oct en ripple.com («Ripple receives final OCC approval», fuente de la empresa) y anuncio del CEO; documento de la OCC aún sin localizar (su índice llega al 25-sep). Confirmado por la empresa, falta el documento oficial",
+   "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-actions/index-interpretations-and-actions.html",
+   "verificado": "2026-10-29"
+  },
+  {
+   "fecha": "2026-10-26",
+   "contiene": "Aviva y Ripple tokenizan",
+   "estado": "confirmado",
+   "con": "comunicado de Ripple del 26-oct (clase tokenizada del Sterling Liquidity Fund en XRPL; fondo ~22.000 M£, ≈29.000 M$). Es una clase NUEVA distinta de la del fondo en USD de julio; la corrección de C57 anula la duda de C56",
+   "url": "https://ripple.com/ripple-press/aviva-investors-expands-its-tokenised-offering-with-the-launch-of-a-sterling-liquidity-fund-tokenised-share-class/",
+   "verificado": "2026-10-29"
+  }
+ ]
+}

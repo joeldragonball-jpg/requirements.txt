@@ -54,7 +54,7 @@ td.c .ch{display:flex;align-items:center;justify-content:center;gap:7px;font-siz
 .n24{border-color:#ff5d5d;background:rgba(255,93,93,.12)}.n7{border-color:#f0a04a;background:rgba(240,160,74,.1)}.n30{border-color:#8a94a8;background:rgba(138,148,168,.08)}
 .ej{background:#3a2d10;color:#ffd98a;padding:1px 6px;border-radius:4px;font-size:13px}
 .badge{display:inline-block;border-radius:4px;padding:0 6px;font-size:13.5px;border:1px solid var(--lin);color:var(--tx2);margin-right:4px}
-.badge{font-weight:700}.badge.P{border-color:#2fe08f;color:#2fe08f;background:rgba(47,224,143,.14)}.badge.S{border-color:#e8b64a;color:#e8b64a;background:rgba(232,182,74,.14)}.badge.V{border-color:#ff6b6b;color:#ff6b6b;background:rgba(255,107,107,.14)}
+.badge{font-weight:700}.badge.P{border-color:#2fe08f;color:#2fe08f;background:rgba(47,224,143,.14)}.badge.S{border-color:#e8b64a;color:#e8b64a;background:rgba(232,182,74,.14)}.badge.V{border-color:#ff6b6b;color:#ff6b6b;background:rgba(255,107,107,.14)}.tipo-f{border:1px solid var(--lin);border-radius:4px;padding:0 6px;font-size:var(--fs-xs);color:var(--tx2)}.ver{font-weight:700}.ver.ok{color:#2fe08f}.ver.sc{color:var(--tx2)}.ver.alerta{color:#e8b64a}.ver.mal{color:#ff6b6b}
 .ctag{padding:3px 6px!important;font-size:11.5px;font-weight:800;line-height:1;padding:2px 4px;border-radius:4px;background:rgba(8,12,22,.85);border:1px solid}.ctag.P{color:#2fe08f}.ctag.S{color:#e8b64a}.ctag.V{color:#ff6b6b}
 .imp{display:inline-block;border-radius:4px;padding:0 6px;font-size:13px;font-weight:700;border:1px solid var(--lin);color:var(--tx2);margin-right:6px}.imp.alto{background:#ff6b6b;border-color:#ff6b6b;color:#1a0707}.imp.medio{border-color:#e8b64a;color:#e8b64a;background:rgba(232,182,74,.12)}.imp.bajo{opacity:.75}
 .ev{--c:#888;border:1px solid var(--lin);border-left:5px solid var(--c);border-radius:6px;padding:clamp(4px,.4vw,6px) clamp(6px,.7vw,10px);font-size:var(--fs-s);background:linear-gradient(90deg,color-mix(in srgb,var(--c) 15%,transparent),transparent 65%),var(--bg);transition:transform .15s,box-shadow .15s}.ev:hover{transform:translateY(-1px);box-shadow:0 0 12px color-mix(in srgb,var(--c) 30%,transparent)}
@@ -617,6 +617,19 @@ function tip(ev,x,j,t){
 }
 
 /* ---------- 6 · Noticias ---------- */
+function normT(x){return (x||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase()}
+/* El TIPO de fuente (primaria/prensa) no es la verificación. Primaria = confirmada sola; el resto, según eventos/verificados.json. */
+function verifNoticia(m){
+  const reg=(D.verificados||[]).find(v=>(!v.fecha||v.fecha===m.fecha)&&v.contiene&&normT(m.texto).includes(normT(v.contiene)));
+  if(reg){const con=reg.con?' · '+reg.con:'';
+    if(reg.estado==='confirmado')return {cl:'ok',t:'✔ Confirmado'+con};
+    if(reg.estado==='desmentido')return {cl:'mal',t:'✖ Desmentido'+con};
+    return {cl:'mal',t:'✖ Dudoso'+con}}
+  if(m.nivel==='P')return {cl:'ok',t:'✔ Confirmado (fuente primaria)'};
+  const imp=m.origen!=='noticia'||(m.nota_bot||0)>=7;
+  if(imp&&dias(m.fecha)>7)return {cl:'alerta',t:'◐ Sin contrastar (más de 7 días)'};
+  return {cl:'sc',t:'◐ Sin contrastar'};
+}
 function pNoticias(){
   const s=$('v-noticias');s.textContent='';
   const c=el('div','caja');c.append(el('h2',null,'Noticias con caducidad (24 h · 7 días · 30 días)'));
@@ -634,7 +647,8 @@ function pNoticias(){
     for(const m of g[k].sort((a,b)=>a.fecha<b.fecha?1:-1)){
       const n=el('div','nota '+k);
       const cab=el('div','cab');cab.append(el('b',null,m.fecha),el('span','capa-tag',capaNom(m.capa)));
-      if(m.nivel)cab.append(el('span','badge '+m.nivel,m.nivel==='P'?'[P] oficial':m.nivel==='S'?'[S] prensa':'[VERIFICAR]'));
+      cab.append(el('span','tipo-f','Fuente: '+(m.nivel==='P'?'primaria':m.nivel==='S'?'prensa':'sin clasificar')));
+      const vf=verifNoticia(m);cab.append(el('span','ver '+vf.cl,vf.t));
       if(m.caduca)cab.append(el('span',null,'caduca '+m.caduca));
       n.append(cab,el('div','txt',m.texto));
       const pie=el('div','pie');pie.append(document.createTextNode(m.actor));

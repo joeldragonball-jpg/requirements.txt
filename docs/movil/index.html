@@ -144,6 +144,7 @@ nav button.on::after{content:"";position:absolute;top:-9px;width:28px;height:3px
 .ios-sa .app{position:fixed;inset:0;height:auto;padding-top:env(safe-area-inset-top,0px)}
 .ios-sa header{padding-top:10px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.card{opacity:1}}
+.plegado{margin:14px 0}.plegado>summary{cursor:pointer;padding:12px 14px;border-radius:12px;background:var(--card,#1a2238);color:var(--sub,#9aa7c2);font-size:14px;list-style:none}.plegado>summary::-webkit-details-marker{display:none}.plegado[open]>summary{margin-bottom:8px}
 </style>
 </head>
 <body>
@@ -346,7 +347,12 @@ function vSeg(){
   const planHtml = TODO.length ? `${cab('Todo el plan, sin ocultar nada')}<div class="chips"><div class="chip ${filtroPl === 'abiertas' ? 'on' : ''}" data-pf="abiertas">Falta (${cntE(ab)})</div><div class="chip ${filtroPl === 'hechas' ? 'on' : ''}" data-pf="hechas">Hechas (${cntE(t => t.estado === 'hecha' || t.estado === 'cubierta')})</div><div class="chip ${filtroPl === 'todas' ? 'on' : ''}" data-pf="todas">Todas (${TODO.length})</div></div>
    ${GRP.map(([p, n]) => { const L = visT.filter(t => t.id[0] === p); return L.length ? `<div class="meta2" style="margin:10px 4px 4px"><b>${n}</b> · ${L.length}</div><div class="card" style="padding:6px 14px">${L.map(planFila).join('')}</div>` : ''; }).join('') || '<div class="pie">Nada en esta vista</div>'}<div class="meta2" style="margin:4px 4px 8px">Toca una fila para ver su detalle. «En parte» = se hizo una parte y queda el resto (al abrir la fila verás qué falta y qué lo bloquea). 📅 = tiene día fijo, no se lanza antes. Sale de research/COLA.md, igual que research/PLANNING.md.</div>` : '';
   const inf = `${cab('Informes recientes')}${S.informes.slice(0, 8).map((x, i) => mdHTML({fecha: x.fecha, titulo: x.titulo, ruta: x.ruta, resumen: 'Tipo: ' + x.tipo}, i)).join('')}`;
-  return hero + gemHtml + planHtml + toca + frescura + plazos + pred + audit + bots + cuota + inf + `<div class="pie">Actualizado ${esc(S.generado)}</div>`;
+  const VER = S.verificaciones || [], IMPV = {alta: 'mal', media: 'ya', baja: ''};
+  const verHtml = `${cab('Verificaciones pendientes')}<div class="card" style="--i:1;padding:6px 14px">${VER.slice(0, 6).map(x => `<div class="fil" data-abre style="flex-wrap:wrap"><span class="t">${esc(x.texto.slice(0, 90))}<div class="meta2" style="margin:2px 0 0">${x.dias != null ? 'hace ' + x.dias + ' d' : 'edad desconocida'} · ${x.estado === 'sin_contrastar' ? '◐ sin contrastar' : '✖ ' + esc(x.estado)}</div></span><span class="bd ${IMPV[x.imp] || ''}">${esc(x.imp)}</span><div class="mas" style="flex-basis:100%">${esc(x.texto)}${x.con ? `<div class="meta2"><b>Origen:</b> ${esc(x.con)}</div>` : ''}</div></div>`).join('') || '<div class="pie">Nada pendiente de verificar</div>'}</div><div class="meta2" style="margin:-4px 4px 4px">${VER.length} en total, por importancia y antigüedad. El tipo de fuente (primaria o prensa) no es la verificación: una noticia de prensa puede ser cierta.</div>`;
+  const EP = ((S.eventos || {}).pasados || []).filter(e => e.estado === 'por_revisar');
+  const epHtml = EP.length ? `${cab('Eventos pasados sin research')}<div class="card" style="--i:1;padding:6px 14px">${EP.map(e => `<div class="fil"><span class="t">${esc(e.titulo.slice(0, 80))}<div class="meta2" style="margin:2px 0 0">${esc(e.fecha)} · /research EV</div></span><span class="bd ya">⏳</span></div>`).join('')}</div>` : '';
+  const resto = gemHtml + planHtml + toca + frescura + plazos + pred + audit + bots + cuota + inf;
+  return hero + verHtml + epHtml + `<details class="plegado"><summary>Más detalle: plan completo, rutinas, plazos, predicciones, bots e informes</summary>${resto}</details><div class="pie">Actualizado ${esc(S.generado)}</div>`;
 }
 function vCerebro(){
   const cuerpo = segCer === 'seg' ? vSeg() : segCer === 'voces' ? D.voces.map(vozHTML).join('') : segCer === 'videos' ? D.videos.map(mdHTML).join('') : [...D.informes, ...D.investigacion].map(mdHTML).join('');

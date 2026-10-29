@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-29 00:37 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-29 00:55 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -34,10 +34,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - C42 · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
 - C50 ◐ en parte · Centro · Tokenización por blockchain con mejor fuente: DefiLlama (ya en el panel · Sonnet M · ~3 % · `research/prompts/C50-rwa-por-cadena-mejor-fuente.md`
 - C53 ◐ en parte · (BORRADA 29-oct por duplicar Calendario y Noticias; sus ideas pasan a C54-C55) C · Sonnet S · ~0 % · ``
-- C54 · Centro · Noticias: tipo de fuente (primaria/prensa) como etiqueta neutra y verif · Sonnet M · ~2 % · `research/prompts/C54-C57-seguimiento-noticias-verificacion.md`
-- C55 · Centro · Seguimiento (PC y móvil): verificaciones pendientes con antigüedad, eve · Sonnet M · ~2 % · `research/prompts/C54-C57-seguimiento-noticias-verificacion.md`
-- C56 · Research · Verificar noticias de prensa de los últimos 14 días de importancia al · Sonnet M · ~2 % · `research/prompts/C54-C57-seguimiento-noticias-verificacion.md`
-- C57 · Research · EV Swell 2026 (Ripple) y Meridian 2026 (Stellar): anuncios técnicos y · Sonnet M · ~2 % · `research/prompts/C54-C57-seguimiento-noticias-verificacion.md`
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T25 · Tema libre
 **Deuda y bonos (D)** · detalle en `research/COLA-DEUDA-BONOS.md`
@@ -70,6 +66,17 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - [VERIFICAR] El «Treasury al 5,34 %» del resumen W43 (casi seguro el 30 años, 5,33 %) y la cifra de Bloomberg sobre flujos de crudo frente a PortWatch.
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
+## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
+- [alta] 2026-10-26 (3 d) · El petróleo se desploma más de un 6 % por la diplomacia con Irán.
+- [alta] 2026-10-27 (2 d) · Coinbase da 3 días para adaptar USDT y otras stablecoins a MiCA.
+- [alta] 2026-10-28 (1 d) · Un ataque a Ras Tanura lleva el Brent por encima de 114 $.
+- [alta] 2026-10-28 (1 d) · EE. UU. avisa al Golfo de una posible reanudación corta e intensa de la guerra con Irán tras las elecciones.
+- [media] 2026-09-30 (29 d) · ETF de XRP en EE. UU. ≈ $1.430 M a 22-oct [S]; ETP europeos de XRP ≈ $914 M y de Stellar ≈ $104 M.
+- [media] 2026-09-30 (29 d) · El M2 de China sube un 7,2 % interanual en septiembre (agosto +7,5 %).
+- [media] 2026-10-23 (6 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
+- [media] 2026-10-25 (4 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov (hoy solo [S]). → W05
+- … y 18 más en el Seguimiento
+
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (3) → W03 · EEUU/politica; UE/cbdc; AE/politica
 - 🟡 Radar regulatorio: Celdas sin dato (26) → W03 · Más huecos: EG 5, IR 5, ET 4, ZA 3, ID 3
@@ -96,9 +103,9 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 - 2026-11-01 · OPEP+ (7 países): reunión mensual (medio) → cubre W10 (Energía y geopolítica)
 - 2026-11-03 · EE. UU.: elecciones de mitad de mandato (alto) → cubre W06 (Voces y predicciones)
 - 2026-11-03 · Australia: decisión del RBA sobre el tipo de efectivo (medio) → cubre W01 (Tipos de interés)
+- 2026-11-03 · Stellar: voto de testnet de Protocol 30 (Bell) (medio) → sin rutina: valorar research EV
 - 2026-11-04 · Tesoro de EE. UU.: anuncio trimestral de refinanciación (medio) → cubre W02 (Deuda y subastas)
 - 2026-11-05 · Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,7 (alto) → cubre W01 (Tipos de interés)
-- 2026-11-06 · Empleo EE. UU. (informe de octubre) (alto) → cubre W01 (Datos macro y tipos)
 
 ## Predicciones que vencen en 14 días
 - #31 · 2026-11-01 · OPEP+ (7 países, comunicado)
@@ -112,4 +119,4 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 - 2026-11-01 · OPEP+ (7 países): reunión mensual
 - 2026-11-03 · EE. UU.: elecciones de mitad de mandato
 - 2026-11-03 · Australia: decisión del RBA sobre el tipo de efectivo
-- 2026-11-05 · Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,75 %)
+- 2026-11-03 · Stellar: voto de testnet de Protocol 30 (Bell)
