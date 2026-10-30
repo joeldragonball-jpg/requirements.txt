@@ -1,10 +1,10 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-30 15:38 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-30 15:58 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Hoy (vie 2026-10-30): solo lo casi obligatorio
 - R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 14 días
-- Fija de hoy (viernes: resumen semanal): **W09 Resumen semanal** (~1,5 %) · último 2026-10-25 · `research/prompts/W09-*.md`
+- Fija de hoy (viernes: resumen semanal): **W09 Resumen semanal** (~1,5 %) · último 2026-10-30 · `research/prompts/W09-*.md`
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
 - Gemini del día: toca **Bulos y desmentidos de la semana** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
@@ -13,9 +13,8 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 - Aviso de límite (2026-10-27): Tras W03 Sudáfrica+Indonesia, Deep Research queda desactivado hasta las 04:00 (hora de Madrid) del 27-oct, con el uso general en ~4 %. Hizo 200+ búsquedas web aunque el prompt pedía máx. 15 fuentes: el tope del prompt no se respeta. Límite oficial de Deep Research sin confirmar; de momento, 1 Deep Research por ventana (reinicio 04:00).
 
 ## Rutinas W: lo que falta este periodo (sin día fijo; se hacen cuando haya hueco, de más atrasada a menos)
-- W09 · Resumen semanal · ~1,5 % · cada viernes · último 2026-10-25 · `research/prompts/W09-*.md`
 - W10 · Energía y geopolítica · ~2 % · fin de semana · último 2026-10-25 · `research/prompts/W10-*.md`
-Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
+Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09
 
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**
@@ -54,7 +53,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [alta] 2026-10-29 (1 d) · Lagarde dejará la presidencia del BCE el 7 de febrero.
 - [media] 2026-09-30 (30 d) · ETF de XRP en EE. UU. ≈ $1.430 M a 22-oct [S]; ETP europeos de XRP ≈ $914 M y de Stellar ≈ $104 M.
 - [media] 2026-10-09 (21 d) · Trump dice que no atacará Irán antes de las elecciones del 3-nov (titular del bot; fuente primaria sin abrir).
 - [media] 2026-10-21 (9 d) · El bot recoge «el Brent supera 110 $ al fallar las conversaciones con Irán» (15:20 UTC). Brent 109,34 → 110,04
@@ -62,7 +60,8 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - [media] 2026-10-23 (7 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
 - [media] 2026-10-23 (7 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
 - [media] 2026-10-25 (5 d) · Lula gana la 2.ª vuelta con ~51,7 % frente a ~48,2 % de Flávio Bolsonaro, que no reconoce el resultado.
-- … y 28 más en el Seguimiento
+- [media] 2026-10-25 (5 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov (hoy solo [S]). → W05
+- … y 27 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (4) → W03 · UE/cbdc; HK/politica; AE/politica; EG/politica
@@ -77,10 +76,10 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - 2026-10-21 · EE. UU.: la OCC publica su norma final de la GENIUS Act (alto) → ✓ revisado (hecho)
 - 2026-10-23 · Francia: revisión de Moody's prevista el 23-oct, resultado sin confirm (medio) → ✓ cubierto por W02 del 2026-10-29
 - 2026-10-27 · Reunión de la Fed (FOMC) (alto) → ✓ revisado (hecho)
-- 2026-10-28 · Reunión del BCE (alto) → ⏳ SIN research: decidir (EV)
+- 2026-10-28 · Reunión del BCE (alto) → ✓ revisado (hecho)
 - 2026-10-28 · DTCC: lanzamiento del servicio de tokenización de DTC (hecho el 28-oct (medio) → ✓ revisado (hecho)
 - 2026-10-28 · Canadá: decisión del Banco de Canadá sobre el tipo oficial (medio) → ✓ revisado (hecho)
-- 2026-10-29 · PIB de EE. UU. (3T, avance) y gasto en consumo PCE de septiembre (alto) → ⏳ SIN research: decidir (EV)
+- 2026-10-29 · PIB de EE. UU. (3T, avance) y gasto en consumo PCE de septiembre (alto) → ✓ revisado (hecho)
 Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.
 
 ## Calendario: próximos 14 días de impacto y qué los cubre

@@ -165,3 +165,4 @@ actualizado: 2026-10-07
 
 - 30-oct-2026: para Swell/Meridian, fiables = ripple.com/ripple-press y stellar.org/blog/foundation-news; los benchmarks de Project Thruput son propios (solo motor de ejecución, FutureNet) y los datos de Ripple (ingresos, RLUSD) son cifras de la empresa.
 - 30-oct-2026: para decisiones del Banco de Japón, primaria = boj.or.jp/en/mopo/mpmdeci (PDF k+fecha+a); si no se puede leer, marcar la decisión [S] con 2+ fuentes. Flujos de ETF: SoSoValue y Farside (agregadores [S]).
+- 30-oct-2026: Eurostat congeló `prc_hicp_manr` (y el BCE la serie `ICP`) en dic-2025 al pasar a ECOICOP 2; la serie viva es `prc_hicp_minr` (coicop18=TOTAL). Una tabla «atascada» no es dato nuevo: comprobar el campo `updated`. BCE y BEA cargan en el navegador integrado sin 403.

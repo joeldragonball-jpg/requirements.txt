@@ -132,3 +132,4 @@ actualizado: 2026-10-07
 
 - 30-oct-2026: Swell (OCC final a Ripple National Trust Bank, BNY/C2FO en XRPL) y Meridian (Project Thruput) no movieron el precio: XRP -4,9 % y XLM -3,8 % el 29-oct junto a BTC -1,5 %.
 - 30-oct-2026: BoJ mantiene 1,25 % y duplica la venta de ETF; Nasdaq −2 % y BTC −4 % en la misma jornada (coincidencia, no causa); ETF al contado de XRP +8,4 M$ el 29-oct frente a −116 M$ del total cripto [S].
+- 30-oct-2026: salida anunciada de Lagarde (7-feb-2027), PIB 3T +3,4 % y PCE 3,6 % interanual no movieron cripto por sí solos: XRP −6,7 % y BTC −2,8 % el 29-oct con causa no verificada; el contexto dominante es energía cara y tipos altos [ESPECULACIÓN].
