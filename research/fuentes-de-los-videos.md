@@ -59,3 +59,30 @@ Lectura del PDF del BIS cuando responda bis.org; verificar en TreasuryDirect las
 
 ## Correcciones de nivel (revisión del 23-oct-2026)
 - WGC (Gold Demand Trends), nota de DTCC sobre Stellar y calendario de la Fed figuran como [P] pero solo se vieron por extractos o titular: tratarlos como [S] hasta leer la página completa. Las cartas de la SEC (S7-2026-27) son [P] solo en cuanto a su existencia en el listado; los PDF no se abrieron.
+
+## Tanda V01 (vídeo del 26-oct: hilo de Schwartz)
+| Fuente | Enlace | Para qué sirve | Nivel |
+|---|---|---|---|
+| Post de David Schwartz en X (23-oct-2026) | (no abierto; buscar en su cuenta) | Original de la frase «muy improbable» | [VERIFICAR] |
+| Coin Alert News | https://coinalertnews.com/news/2026/10/23/ripple-cto-xrpl-xrp-demand | Citas literales del hilo (vía U.Today y CoinTurk) | [S] |
+| U.Today, quema de XRP y paralelo con XLM | https://u.today/will-xrp-burn-guarantee-price-gains-ripple-cto-emeritus-draws-xlm-parallel | Argumento de Schwartz sobre la quema | [S] |
+| The Block, quema de XLM (4-nov-2019) | https://www.theblock.co/news/ecosystems/2019-11-04-the-stellar-foundation-has-burned-over-50-of-the-total-xlm-token-supply-canceling-airdrop-programs-45793 | 55.000 M XLM quemados; reacción de precio | [S] |
+| Stellar Development Foundation, entrada de blog sobre la quema (nov-2019) | (no abierta; buscar en stellar.org) | Primaria de la quema | [VERIFICAR] |
+| Clip de Frank La Salla («aceite/grasa») | (no localizado) | Origen de la cita del vídeo | [VERIFICAR] |
+
+## Tanda V01-bis (vídeos del 28, 29 y 30-oct)
+| Fuente | Enlace | Para qué sirve | Nivel |
+|---|---|---|---|
+| Goldman Sachs, nota de petróleo (oct-2026) | (no abierta; buscar en goldmansachs.com/insights) | Objetivo de Brent de 90 $ (dic-2026) y escenario de 125 $ | [VERIFICAR] |
+| Yahoo Finance sobre el objetivo de 90 $ | https://finance.yahoo.com/markets/article/goldman-sachs-raises-december-oil-price-target-to-90-citing-significant-risk-from-iran-war-163353812.html | Resumen de la revisión de Goldman | [S] |
+| Tesoro de EE. UU. (OFAC), licencia general de diésel ruso | (no abierta; buscar en home.treasury.gov) | Licencia hasta el 7-abr-2027 | [VERIFICAR] |
+| Ukranews, acuerdo de diésel Trump–Putin | https://ukranews.com/en/amp/news/1180341-we-reached-agreement-with-putin-on-supplying-diesel-to-us-and-global-markets-trump | Anuncio del 9-oct y volúmenes previstos | [S] |
+| Bloomberg, venta de deuda francesa por Japón (5-oct) | https://www.bloomberg.com/news/articles/2026-10-05/french-bonds-at-risk-of-more-japanese-selling-on-outsized-stake | Gestoras japonesas y bonos franceses | [S] |
+| Bloomberg, vídeo de Garlinghouse en Swell (28-oct) | https://www.bloomberg.com/news/videos/2026-10-28/xrp-at-the-heart-of-everything-ripple-does-garlinghouse-video | Original de las respuestas de Garlinghouse | [VERIFICAR] (no abierto) |
+| Cryptonews / TheCryptoBasic, Swell 2026 | https://cryptonews.net/news/altcoins/33670942/ | Citas de Garlinghouse y Schwartz | [S] |
+| CNBC, hackeo de Binance (29 y 30-oct) | https://www.cnbc.com/2026/10/29/circle-tether-freeze-funds-impacted-by-potential-binance-security-issue.html | Cifras, congelaciones, versión de Binance | [S] |
+| TRM Labs, atribución a Corea del Norte | https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history | Atribución y raíz del ataque | [S] (extracto) |
+| Elliptic, hackeo de Binance | https://www.elliptic.co/insights/binance-largest-hack-in-history/ | Atribución «probable» y congelaciones | [S] |
+| Binance, comunicado oficial y informe de causa raíz | (no localizados) | Causa, cifra definitiva y calendario de retiradas | [VERIFICAR] |
+| Clip de Alsobrooks (fecha y medio) | (no localizado) | Origen de la cita de los 70 millones | [VERIFICAR] |
+

@@ -55,3 +55,4 @@ No aplica. Fuentes fiscales: BOE y aeat.es (ver los dossiers de fiscalidad).
 - Dirección actual de las notas de prensa de BlackRock [VERIFICAR].
 - Si Swift permite leer las fechas de Sibos 2027 sin navegador.
 - Revisar esta lista cada mes con la auditoría.
+- 30-oct-2026 (V01): Goldman Sachs (nota de petróleo), OFAC/Tesoro (licencia de diésel ruso), Binance (comunicado y causa raíz) y Ripple (comunicados de Swell) siguen sin leerse en origen; ver research/fuentes-de-los-videos.md, tanda V01-bis.
