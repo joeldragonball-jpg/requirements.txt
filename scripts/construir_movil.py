@@ -227,6 +227,29 @@ def petroleo():
     return salida
 
 
+def regulacion():
+    """Radar regulatorio (explorador/regulacion.json) compactado para el móvil: una lista de temas por jurisdicción."""
+    try:
+        r = cargar("explorador/regulacion.json")
+    except Exception:
+        return {}
+
+    def corta(t, n=260):
+        t = (t or "").strip()
+        if len(t) <= n:
+            return t
+        corte = t[:n].rsplit(". ", 1)[0]
+        return (corte if len(corte) > 80 else t[:n].rsplit(" ", 1)[0]) + ("." if corte != t[:n].rsplit(" ", 1)[0] else "…")
+    temas = {t["id"]: t["nombre"] for t in r.get("temas", [])}
+    jurs = []
+    for j in r.get("jurisdicciones", []):
+        cel = [{"t": temas.get(c["tema"], c["tema"]), "e": c.get("etapa"), "txt": corta(c.get("estado")), "f": c.get("fecha"), "nv": c.get("nivel"), "u": c.get("url"), "px": c.get("proxima")}
+               for c in r.get("celdas", []) if c["jur"] == j["id"]]
+        if cel:
+            jurs.append({"id": j["id"], "n": j["nombre"], "celdas": cel})
+    return {"aviso": r.get("aviso"), "escala": r.get("escala"), "revisado": r.get("revisado"), "jurs": jurs}
+
+
 def paises():
     """Una sola ficha por país (C60): política (C58), indicadores (C59) y estabilidad (C61), compactada para el móvil."""
     try:
@@ -289,7 +312,7 @@ def main():
         "mercado": p.get("mercado", {}).get("activos", []), "indices": p.get("indices", {}).get("indices", []),
         "tipos": p.get("tipos_vivos", {}).get("paises", []), "tipos_bis": p.get("tipos_bis", {}).get("paises", []),
         "watchlist": p.get("watchlist", {}).get("valores", []),
-        "defensa": p.get("defensa", {}).get("paises", []), "liquidez": p.get("liquidez", {}), "inflacion": p.get("inflacion", {}).get("paises", []), "ormuz": p.get("ormuz", {}), "hitos_petroleo": cargar("explorador/hitos_petroleo.json"), "elecciones": cargar("explorador/elecciones.json"), "paises": paises(),
+        "defensa": p.get("defensa", {}).get("paises", []), "liquidez": p.get("liquidez", {}), "inflacion": p.get("inflacion", {}).get("paises", []), "ormuz": p.get("ormuz", {}), "hitos_petroleo": cargar("explorador/hitos_petroleo.json"), "elecciones": cargar("explorador/elecciones.json"), "paises": paises(), "regulacion": regulacion(),
         "valoracion": valoracion(),
         "bonos": [{"id": k, "valor": bonos[k]["plazos"].get("10A"), "fecha": bonos[k]["fecha"]} for k in ("USA", "JPN", "EUR", "ESP", "FRA", "GBR") if k in bonos],
         "eventos": eventos(), "voces": voces(), "niveles": cargar("explorador/voces.json").get("niveles", {}),

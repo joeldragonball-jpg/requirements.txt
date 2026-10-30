@@ -188,6 +188,17 @@ function fichaPais(p) {
     ${hitos ? '<div class="titulo-sec" style="margin:14px 0 0"><span>Hitos</span></div>' + hitos : ''}
     <div class="titulo-sec" style="margin:14px 0 0"><span>Lectura <small>[OPINIÓN] [ESPECULACIÓN]</small></span></div><div style="margin-top:6px">${esc(o.lectura || '')}</div><div style="margin-top:6px">${esc(p.lectura_est || '')}</div></div></div>`;
 }
+function regCard(HOY) {
+  const R = D.regulacion; if (!R || !R.jurs || !R.jurs.length) return '';
+  const ESC = R.escala || {}, col = e => e == null ? 'var(--sub)' : e >= 4 ? 'var(--sube)' : e >= 2 ? 'var(--ambar)' : 'var(--baja)';
+  const celda = c => `<div style="border-top:1px solid rgba(255,255,255,.07);padding:9px 0"><div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline"><b>${esc(c.t)}</b><span class="meta2" style="color:${col(c.e)}">${c.e == null ? 'sin dato' : '●'.repeat(c.e) + '○'.repeat(5 - c.e)}</span></div>
+    <div class="meta2" style="color:${col(c.e)};margin:2px 0 4px">${c.e == null ? 'Sin investigar' : esc(ESC[c.e] || '')}</div><div style="font-size:14px;line-height:1.4">${esc(c.txt)}</div>
+    <div class="meta2" style="margin-top:4px">${c.nv ? `<span class="nivel ${esc(c.nv)}">${esc(c.nv)}</span> ` : ''}${esc(c.f || '')}${c.u ? ` · <a href="${esc(c.u)}" target="_blank" rel="noopener">fuente</a>` : ''}${c.px && c.px.fecha ? ` · próximo: ${esc(c.px.fecha)} (${dias(c.px.fecha) >= 0 ? 'en ' + dias(c.px.fecha) + ' d' : 'pasado'})` : ''}</div></div>`;
+  return `<div class="card rg" style="--i:1;padding:13px 14px;display:flex;flex-wrap:wrap;gap:6px" data-abre><div style="flex:1;min-width:0"><div class="titulo-sec" style="margin:0"><span>Regulación cripto por país</span></div><small>${R.jurs.length} jurisdicciones · stablecoins, ETF, custodia, CBDC… · toca para abrir</small></div><span class="flecha">⌄</span><div class="mas" style="flex-basis:100%;min-width:0;max-width:100%">
+    <div class="chips" style="margin:10px 0;overflow-x:auto;flex-wrap:nowrap;max-width:100%">${R.jurs.map((j, k) => `<div class="chip ${k ? '' : 'on'}" data-rj="${esc(j.id)}" style="flex:none">${esc(j.n)}</div>`).join('')}</div>
+    ${R.jurs.map((j, k) => `<div class="rj" data-j="${esc(j.id)}"${k ? ' style="display:none"' : ''}>${j.celdas.map(celda).join('')}</div>`).join('')}
+    <div class="aviso" style="margin-top:10px;color:var(--sub)">Escala: 0 sin marco · 5 en vigor con supervisión activa. Resumen de cada celda: el texto completo y los hitos están en el Explorador del escritorio. [P] oficial · [S] secundaria. Revisado ${esc(R.revisado || '')}. Información, no asesoramiento.</div></div></div>`;
+}
 function paisesCard(HOY) {
   const P = D.paises && D.paises.paises; if (!P || !P.length) return '';
   const fila = p => { const o = p.pol, pe = o.proxima_eleccion || {}, g = p.bloque === 'UE' ? 'ue' : 'pot', d = /^\d{4}-\d{2}-\d{2}$/.test(pe.fecha || '') ? Math.round((new Date(pe.fecha) - new Date(HOY)) / 864e5) : null;
@@ -295,7 +306,7 @@ function vAgenda(){
   const pasados = EP.length ? `${cab('Ya pasaron: ¿hace falta research?')}<div class="card" style="--i:1;padding:6px 14px">${EP.map(e => `<div class="fil"><span class="t">${esc(e.titulo.slice(0, 70))}<div class="meta2" style="margin:2px 0 0">${e.fecha.slice(5)} · ${esc(e.impacto)}</div></span><span class="bd ${e.estado === 'por_revisar' ? 'ya' : 'ok'}">${e.estado === 'por_revisar' ? 'sin research' : '✓ ' + esc(e.detalle)}</span></div>`).join('')}</div><div class="meta2" style="margin:-4px 4px 8px">Los «sin research» los decide Joel: se lanzan con /research EV o se descartan.</div>` : '';
   const EL = D.elecciones && (D.elecciones.paises || []).filter(x => x.fecha).slice().sort((a, b) => a.fecha.localeCompare(b.fecha)), HOY = new Date().toISOString().slice(0, 10);
   const elecciones = EL && EL.length ? `<div class="card" style="--i:1;padding:13px 14px;display:flex;flex-wrap:wrap;gap:6px" data-abre><div style="flex:1;min-width:0"><div class="titulo-sec" style="margin:0"><span>Elecciones próximas</span></div><small>${EL.filter(x => x.fecha >= HOY).slice(0, 2).map(x => esc(x.pais) + ' ' + esc(x.fecha.slice(8)) + '-' + esc(x.fecha.slice(5, 7))).join(' · ')} · toca para ver todas</small></div><span class="flecha">⌄</span><div class="mas" style="flex-basis:100%">${EL.map(x => `<div style="margin-top:10px"><b>${esc(x.pais)}</b> · ${esc(x.fecha)}${x.aproximada ? ' (aprox.)' : ''}${x.fecha < HOY ? ' · ya celebrada' : ''} <span class="aviso" style="color:var(--sub)">[${esc(x.nivel)}]</span><br><small>${esc(x.tipo)}</small><br><small style="color:var(--sub)">${esc(x.hechos)}</small></div>`).join('')}<div class="aviso" style="margin-top:8px;color:var(--sub)">${esc(D.elecciones.nota)}</div></div></div>` : '';
-  return `<div class="vista">${elecciones}${paisesCard(HOY)}${pasados}<div class="chips">${[['todos','Todos'],['alto','Alto impacto'],['medio','Medio'],['bajo','Bajo']].map(([k, n]) => `<div class="chip ${filtroAg === k ? 'on' : ''}" data-fa="${k}">${n}</div>`).join('')}</div>${lista.map((e, i) => fila(e, i)).join('') || '<div class="pie">Sin eventos</div>'}</div>`;
+  return `<div class="vista">${elecciones}${paisesCard(HOY)}${regCard(HOY)}${pasados}<div class="chips">${[['todos','Todos'],['alto','Alto impacto'],['medio','Medio'],['bajo','Bajo']].map(([k, n]) => `<div class="chip ${filtroAg === k ? 'on' : ''}" data-fa="${k}">${n}</div>`).join('')}</div>${lista.map((e, i) => fila(e, i)).join('') || '<div class="pie">Sin eventos</div>'}</div>`;
 }
 function notaHTML(n, i){
   return `<div class="nota card" style="--i:${i};padding:14px" data-abre><div class="pt" style="--n:${n.nota}"><span>${n.nota}</span></div><div style="flex:1"><h4>${esc(n.titulo)}</h4><div class="meta"><span class="etq">${esc(n.tema)}</span>${esc(n.fecha.replace('T', ' '))}</div><div class="mas">${esc(n.resumen)}<br><br><b>Por qué importa:</b> ${esc(n.por_que)}<div class="meta2">${esc(n.fuente)}</div><a class="enlace" target="_blank" rel="noopener" href="${esc(n.url)}">Leer la noticia ›</a></div></div></div>`;
@@ -432,7 +443,7 @@ function pintar(ancla, quieto){
 }
 document.addEventListener('click', e => {
   if (e.target.closest('a')) return;
-  const t = e.target.closest('[data-act],[data-t],[data-ir],[data-ir2],[data-fa],[data-fn],[data-pf],[data-sc],[data-abre],[data-gt],[data-fpa],[data-cel],#abrebus,#bbus,#cerrar');
+  const t = e.target.closest('[data-act],[data-t],[data-ir],[data-ir2],[data-fa],[data-fn],[data-pf],[data-sc],[data-abre],[data-gt],[data-fpa],[data-rj],[data-cel],#abrebus,#bbus,#cerrar');
   if (!t) return;
   if (t.dataset.t) { tab = t.dataset.t; document.getElementById('main').scrollTo(0, 0); pintar(); }
   else if (t.dataset.ir2) { const [a, b] = t.dataset.ir2.split(':'); tab = a; if (b) segCer = b; document.getElementById('main').scrollTo(0, 0); pintar(); }
@@ -443,6 +454,7 @@ document.addEventListener('click', e => {
   else if (t.dataset.pf) { filtroPl = t.dataset.pf; pintar(`[data-pf="${filtroPl}"]`); }
   else if (t.dataset.sc) { segCer = t.dataset.sc; pintar(`[data-sc="${segCer}"]`); }
   else if (t.dataset.gt) { document.getElementById('gmtema').innerHTML = window.gmTemaHtml(t.dataset.gt); document.querySelectorAll('[data-gt]').forEach(c => c.classList.toggle('on', c === t)); }
+  else if (t.dataset.rj) { const c = t.closest('.rg'); c.querySelectorAll('.rj').forEach(x => x.style.display = x.dataset.j === t.dataset.rj ? '' : 'none'); c.querySelectorAll('[data-rj]').forEach(x => x.classList.toggle('on', x === t)); }
   else if (t.dataset.fpa) { const c = t.closest('.pg'); c.dataset.g = t.dataset.fpa; c.querySelectorAll('[data-fpa]').forEach(x => x.classList.toggle('on', x === t)); }
   else if (t.dataset.cel) t.closest('.pg').querySelector('.paistip').textContent = t.dataset.cel;
   else if (t.hasAttribute('data-abre')) t.classList.toggle('abierta');
