@@ -733,6 +733,13 @@ def leer_deuda():
 PREVIO = {}
 
 
+def leer_indicadores():
+    """Indicadores económicos y sociales por país (C59): Eurostat, Banco Mundial y FMI; ver scripts/indicadores.py."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from indicadores import leer_indicadores as _leer
+    return _leer(PREVIO.get("indicadores"))
+
+
 def main():
     global PREVIO
     previo = {}
@@ -744,7 +751,7 @@ def main():
     PREVIO = previo
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("ormuz", leer_ormuz)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz)):
         try:
             salida[clave] = funcion()
             salida[clave]["leido"] = salida["leido"]
@@ -779,6 +786,10 @@ def main():
     if inf:
         print("Inflación: " + ", ".join(f"{p['id']} {p['interanual']} % ({p['fecha']})" for p in inf["paises"]))
         fallos += inf.get("fallos", [])
+    ii = salida.get("indicadores")
+    if ii:
+        print("Indicadores: %d países, %d con aviso" % (len(ii["paises"]), len(ii.get("fallos", []))))
+        fallos += ii.get("fallos", [])
     for f in fallos:
         print("AVISO (se conserva lo anterior si existía):", f)
     return 1 if fallos else 0

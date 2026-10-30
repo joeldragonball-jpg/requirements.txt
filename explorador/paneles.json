@@ -2849,5 +2849,1073 @@
    "inflacion cn: TimeoutError: The read operation timed out"
   ],
   "leido": "2026-10-29 20:38 UTC"
+ },
+ "indicadores": {
+  "paises": [
+   {
+    "id": "ES",
+    "pais": "España",
+    "indicadores": {
+     "ipc": {
+      "valor": 3.0,
+      "unidad": "% interanual",
+      "fecha": "2025-12",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_manr",
+      "nivel": "P",
+      "definicion": "IPCA (índice armonizado de la UE), tasa anual del último mes",
+      "periodicidad": "mensual"
+     },
+     "paro": {
+      "valor": 10.0,
+      "unidad": "% población activa",
+      "fecha": "2026-08",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m",
+      "nivel": "P",
+      "definicion": "Paro total, desestacionalizado (definición OIT)",
+      "periodicidad": "mensual"
+     },
+     "paro_juvenil": {
+      "valor": 22.7,
+      "unidad": "% población activa",
+      "fecha": "2026-08",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m",
+      "nivel": "P",
+      "definicion": "Paro de menores de 25 años, desestacionalizado (definición OIT)",
+      "periodicidad": "mensual"
+     },
+     "pib": {
+      "valor": 2.6,
+      "unidad": "% interanual (volumen)",
+      "fecha": "2026-Q2",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp",
+      "nivel": "P",
+      "definicion": "PIB trimestral en volumen frente al mismo trimestre del año anterior, corregido",
+      "periodicidad": "trimestral"
+     },
+     "deuda": {
+      "valor": 100.5,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1",
+      "nivel": "P",
+      "definicion": "Deuda bruta de las administraciones públicas (Maastricht)",
+      "periodicidad": "anual"
+     },
+     "deficit": {
+      "valor": -2.4,
+      "unidad": "% del PIB (negativo = déficit)",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1",
+      "nivel": "P",
+      "definicion": "Capacidad (+) o necesidad (−) de financiación de las administraciones públicas",
+      "periodicidad": "anual"
+     },
+     "pobreza": {
+      "valor": 25.7,
+      "unidad": "% de la población",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/ilc_peps01n",
+      "nivel": "P",
+      "definicion": "AROPE: riesgo de pobreza o exclusión social (pobreza relativa tras transferencias, privación material grave o hogares con muy baja intensidad laboral)",
+      "periodicidad": "anual"
+     },
+     "gini": {
+      "valor": 30.8,
+      "unidad": "puntos (0-100)",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/ilc_di12",
+      "nivel": "P",
+      "definicion": "Gini de la renta disponible equivalente",
+      "periodicidad": "anual"
+     },
+     "salario_minimo": {
+      "valor": 1425,
+      "unidad": "€ al mes",
+      "fecha": "2026-S2",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/earn_mw_cur",
+      "nivel": "P",
+      "definicion": "Salario mínimo bruto mensual legal (semestral)",
+      "periodicidad": "semestral"
+     }
+    }
+   },
+   {
+    "id": "DE",
+    "pais": "Alemania",
+    "indicadores": {
+     "ipc": {
+      "valor": 2.0,
+      "unidad": "% interanual",
+      "fecha": "2025-12",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_manr",
+      "nivel": "P",
+      "definicion": "IPCA (índice armonizado de la UE), tasa anual del último mes",
+      "periodicidad": "mensual"
+     },
+     "paro": {
+      "valor": 4.0,
+      "unidad": "% población activa",
+      "fecha": "2026-08",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m",
+      "nivel": "P",
+      "definicion": "Paro total, desestacionalizado (definición OIT)",
+      "periodicidad": "mensual"
+     },
+     "paro_juvenil": {
+      "valor": 7.4,
+      "unidad": "% población activa",
+      "fecha": "2026-08",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m",
+      "nivel": "P",
+      "definicion": "Paro de menores de 25 años, desestacionalizado (definición OIT)",
+      "periodicidad": "mensual"
+     },
+     "pib": {
+      "valor": 1.0,
+      "unidad": "% interanual (volumen)",
+      "fecha": "2026-Q2",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp",
+      "nivel": "P",
+      "definicion": "PIB trimestral en volumen frente al mismo trimestre del año anterior, corregido",
+      "periodicidad": "trimestral"
+     },
+     "deuda": {
+      "valor": 62.8,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1",
+      "nivel": "P",
+      "definicion": "Deuda bruta de las administraciones públicas (Maastricht)",
+      "periodicidad": "anual"
+     },
+     "deficit": {
+      "valor": -2.9,
+      "unidad": "% del PIB (negativo = déficit)",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1",
+      "nivel": "P",
+      "definicion": "Capacidad (+) o necesidad (−) de financiación de las administraciones públicas",
+      "periodicidad": "anual"
+     },
+     "pobreza": {
+      "valor": 21.2,
+      "unidad": "% de la población",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/ilc_peps01n",
+      "nivel": "P",
+      "definicion": "AROPE: riesgo de pobreza o exclusión social (pobreza relativa tras transferencias, privación material grave o hogares con muy baja intensidad laboral)",
+      "periodicidad": "anual"
+     },
+     "gini": {
+      "valor": 30.1,
+      "unidad": "puntos (0-100)",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/ilc_di12",
+      "nivel": "P",
+      "definicion": "Gini de la renta disponible equivalente",
+      "periodicidad": "anual"
+     },
+     "salario_minimo": {
+      "valor": 2343,
+      "unidad": "€ al mes",
+      "fecha": "2026-S2",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/earn_mw_cur",
+      "nivel": "P",
+      "definicion": "Salario mínimo bruto mensual legal (semestral)",
+      "periodicidad": "semestral"
+     }
+    }
+   },
+   {
+    "id": "FR",
+    "pais": "Francia",
+    "indicadores": {
+     "ipc": {
+      "valor": 0.7,
+      "unidad": "% interanual",
+      "fecha": "2025-12",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_manr",
+      "nivel": "P",
+      "definicion": "IPCA (índice armonizado de la UE), tasa anual del último mes",
+      "periodicidad": "mensual"
+     },
+     "paro": {
+      "valor": 8.2,
+      "unidad": "% población activa",
+      "fecha": "2026-08",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m",
+      "nivel": "P",
+      "definicion": "Paro total, desestacionalizado (definición OIT)",
+      "periodicidad": "mensual"
+     },
+     "paro_juvenil": {
+      "valor": 20.6,
+      "unidad": "% población activa",
+      "fecha": "2026-08",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m",
+      "nivel": "P",
+      "definicion": "Paro de menores de 25 años, desestacionalizado (definición OIT)",
+      "periodicidad": "mensual"
+     },
+     "pib": {
+      "valor": 0.5,
+      "unidad": "% interanual (volumen)",
+      "fecha": "2026-Q2",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp",
+      "nivel": "P",
+      "definicion": "PIB trimestral en volumen frente al mismo trimestre del año anterior, corregido",
+      "periodicidad": "trimestral"
+     },
+     "deuda": {
+      "valor": 115.7,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1",
+      "nivel": "P",
+      "definicion": "Deuda bruta de las administraciones públicas (Maastricht)",
+      "periodicidad": "anual"
+     },
+     "deficit": {
+      "valor": -5.1,
+      "unidad": "% del PIB (negativo = déficit)",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1",
+      "nivel": "P",
+      "definicion": "Capacidad (+) o necesidad (−) de financiación de las administraciones públicas",
+      "periodicidad": "anual"
+     },
+     "pobreza": {
+      "valor": 20.8,
+      "unidad": "% de la población",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/ilc_peps01n",
+      "nivel": "P",
+      "definicion": "AROPE: riesgo de pobreza o exclusión social (pobreza relativa tras transferencias, privación material grave o hogares con muy baja intensidad laboral)",
+      "periodicidad": "anual"
+     },
+     "gini": {
+      "valor": 30.4,
+      "unidad": "puntos (0-100)",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/ilc_di12",
+      "nivel": "P",
+      "definicion": "Gini de la renta disponible equivalente",
+      "periodicidad": "anual"
+     },
+     "salario_minimo": {
+      "valor": 1867,
+      "unidad": "€ al mes",
+      "fecha": "2026-S2",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/earn_mw_cur",
+      "nivel": "P",
+      "definicion": "Salario mínimo bruto mensual legal (semestral)",
+      "periodicidad": "semestral"
+     }
+    }
+   },
+   {
+    "id": "IT",
+    "pais": "Italia",
+    "indicadores": {
+     "ipc": {
+      "valor": 1.2,
+      "unidad": "% interanual",
+      "fecha": "2025-12",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_manr",
+      "nivel": "P",
+      "definicion": "IPCA (índice armonizado de la UE), tasa anual del último mes",
+      "periodicidad": "mensual"
+     },
+     "paro": {
+      "valor": 6.2,
+      "unidad": "% población activa",
+      "fecha": "2026-08",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m",
+      "nivel": "P",
+      "definicion": "Paro total, desestacionalizado (definición OIT)",
+      "periodicidad": "mensual"
+     },
+     "paro_juvenil": {
+      "valor": 20.3,
+      "unidad": "% población activa",
+      "fecha": "2026-08",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m",
+      "nivel": "P",
+      "definicion": "Paro de menores de 25 años, desestacionalizado (definición OIT)",
+      "periodicidad": "mensual"
+     },
+     "pib": {
+      "valor": 1.0,
+      "unidad": "% interanual (volumen)",
+      "fecha": "2026-Q2",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp",
+      "nivel": "P",
+      "definicion": "PIB trimestral en volumen frente al mismo trimestre del año anterior, corregido",
+      "periodicidad": "trimestral"
+     },
+     "deuda": {
+      "valor": 136.7,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1",
+      "nivel": "P",
+      "definicion": "Deuda bruta de las administraciones públicas (Maastricht)",
+      "periodicidad": "anual"
+     },
+     "deficit": {
+      "valor": -3.1,
+      "unidad": "% del PIB (negativo = déficit)",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1",
+      "nivel": "P",
+      "definicion": "Capacidad (+) o necesidad (−) de financiación de las administraciones públicas",
+      "periodicidad": "anual"
+     },
+     "pobreza": {
+      "valor": 22.6,
+      "unidad": "% de la población",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/ilc_peps01n",
+      "nivel": "P",
+      "definicion": "AROPE: riesgo de pobreza o exclusión social (pobreza relativa tras transferencias, privación material grave o hogares con muy baja intensidad laboral)",
+      "periodicidad": "anual"
+     },
+     "gini": {
+      "valor": 31.0,
+      "unidad": "puntos (0-100)",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/ilc_di12",
+      "nivel": "P",
+      "definicion": "Gini de la renta disponible equivalente",
+      "periodicidad": "anual"
+     },
+     "salario_minimo": {
+      "valor": null,
+      "unidad": "€ al mes",
+      "fecha": null,
+      "fuente": "Eurostat (sin dato)",
+      "nivel": "V",
+      "definicion": "Italia no tiene salario mínimo legal; los convenios colectivos fijan los mínimos [VERIFICAR]",
+      "periodicidad": "—"
+     }
+    }
+   },
+   {
+    "id": "NL",
+    "pais": "Países Bajos",
+    "indicadores": {
+     "ipc": {
+      "valor": 2.7,
+      "unidad": "% interanual",
+      "fecha": "2025-12",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_manr",
+      "nivel": "P",
+      "definicion": "IPCA (índice armonizado de la UE), tasa anual del último mes",
+      "periodicidad": "mensual"
+     },
+     "paro": {
+      "valor": 4.0,
+      "unidad": "% población activa",
+      "fecha": "2026-09",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m",
+      "nivel": "P",
+      "definicion": "Paro total, desestacionalizado (definición OIT)",
+      "periodicidad": "mensual"
+     },
+     "paro_juvenil": {
+      "valor": 8.8,
+      "unidad": "% población activa",
+      "fecha": "2026-09",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m",
+      "nivel": "P",
+      "definicion": "Paro de menores de 25 años, desestacionalizado (definición OIT)",
+      "periodicidad": "mensual"
+     },
+     "pib": {
+      "valor": 1.8,
+      "unidad": "% interanual (volumen)",
+      "fecha": "2026-Q2",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp",
+      "nivel": "P",
+      "definicion": "PIB trimestral en volumen frente al mismo trimestre del año anterior, corregido",
+      "periodicidad": "trimestral"
+     },
+     "deuda": {
+      "valor": 44.7,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1",
+      "nivel": "P",
+      "definicion": "Deuda bruta de las administraciones públicas (Maastricht)",
+      "periodicidad": "anual"
+     },
+     "deficit": {
+      "valor": -1.6,
+      "unidad": "% del PIB (negativo = déficit)",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1",
+      "nivel": "P",
+      "definicion": "Capacidad (+) o necesidad (−) de financiación de las administraciones públicas",
+      "periodicidad": "anual"
+     },
+     "pobreza": {
+      "valor": 15.8,
+      "unidad": "% de la población",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/ilc_peps01n",
+      "nivel": "P",
+      "definicion": "AROPE: riesgo de pobreza o exclusión social (pobreza relativa tras transferencias, privación material grave o hogares con muy baja intensidad laboral)",
+      "periodicidad": "anual"
+     },
+     "gini": {
+      "valor": 25.9,
+      "unidad": "puntos (0-100)",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/ilc_di12",
+      "nivel": "P",
+      "definicion": "Gini de la renta disponible equivalente",
+      "periodicidad": "anual"
+     },
+     "salario_minimo": {
+      "valor": 2338,
+      "unidad": "€ al mes",
+      "fecha": "2026-S2",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/earn_mw_cur",
+      "nivel": "P",
+      "definicion": "Salario mínimo bruto mensual legal (semestral)",
+      "periodicidad": "semestral"
+     }
+    }
+   },
+   {
+    "id": "PL",
+    "pais": "Polonia",
+    "indicadores": {
+     "ipc": {
+      "valor": 2.5,
+      "unidad": "% interanual",
+      "fecha": "2025-12",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_manr",
+      "nivel": "P",
+      "definicion": "IPCA (índice armonizado de la UE), tasa anual del último mes",
+      "periodicidad": "mensual"
+     },
+     "paro": {
+      "valor": 3.4,
+      "unidad": "% población activa",
+      "fecha": "2026-08",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m",
+      "nivel": "P",
+      "definicion": "Paro total, desestacionalizado (definición OIT)",
+      "periodicidad": "mensual"
+     },
+     "paro_juvenil": {
+      "valor": 11.3,
+      "unidad": "% población activa",
+      "fecha": "2026-08",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m",
+      "nivel": "P",
+      "definicion": "Paro de menores de 25 años, desestacionalizado (definición OIT)",
+      "periodicidad": "mensual"
+     },
+     "pib": {
+      "valor": 4.0,
+      "unidad": "% interanual (volumen)",
+      "fecha": "2026-Q2",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/namq_10_gdp",
+      "nivel": "P",
+      "definicion": "PIB trimestral en volumen frente al mismo trimestre del año anterior, corregido",
+      "periodicidad": "trimestral"
+     },
+     "deuda": {
+      "valor": 59.6,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1",
+      "nivel": "P",
+      "definicion": "Deuda bruta de las administraciones públicas (Maastricht)",
+      "periodicidad": "anual"
+     },
+     "deficit": {
+      "valor": -7.2,
+      "unidad": "% del PIB (negativo = déficit)",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1",
+      "nivel": "P",
+      "definicion": "Capacidad (+) o necesidad (−) de financiación de las administraciones públicas",
+      "periodicidad": "anual"
+     },
+     "pobreza": {
+      "valor": 15.0,
+      "unidad": "% de la población",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/ilc_peps01n",
+      "nivel": "P",
+      "definicion": "AROPE: riesgo de pobreza o exclusión social (pobreza relativa tras transferencias, privación material grave o hogares con muy baja intensidad laboral)",
+      "periodicidad": "anual"
+     },
+     "gini": {
+      "valor": 24.9,
+      "unidad": "puntos (0-100)",
+      "fecha": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/ilc_di12",
+      "nivel": "P",
+      "definicion": "Gini de la renta disponible equivalente",
+      "periodicidad": "anual"
+     },
+     "salario_minimo": {
+      "valor": 1119,
+      "unidad": "€ al mes",
+      "fecha": "2026-S2",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/earn_mw_cur",
+      "nivel": "P",
+      "definicion": "Salario mínimo bruto mensual legal (semestral)",
+      "periodicidad": "semestral"
+     }
+    }
+   },
+   {
+    "id": "US",
+    "pais": "EE. UU.",
+    "indicadores": {
+     "ipc": {
+      "valor": 2.9,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta."
+     },
+     "paro": {
+      "valor": 4.2,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "paro_juvenil": {
+      "valor": 9.3,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "pib": {
+      "valor": 2.2,
+      "unidad": "% anual (volumen)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "deuda": {
+      "valor": 124.4,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXWDG_NGDP",
+      "nivel": "P",
+      "definicion": "Deuda bruta de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación."
+     },
+     "deficit": {
+      "valor": -7.1,
+      "unidad": "% del PIB (negativo = déficit)",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXCNL_NGDP",
+      "nivel": "P",
+      "definicion": "Préstamo neto (+) / endeudamiento neto (−) de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación."
+     },
+     "gini": {
+      "valor": 41.8,
+      "unidad": "puntos (0-100)",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular"
+     },
+     "salario_minimo": {
+      "valor": 7.25,
+      "unidad": "$ por hora (federal)",
+      "fecha": "2009-07",
+      "fuente": "U.S. Department of Labor (federal); muchos estados fijan uno mayor",
+      "nivel": "V",
+      "definicion": "Mínimo federal vigente; los estados pueden superarlo [VERIFICAR en dol.gov]",
+      "periodicidad": "cuando lo cambia el Congreso"
+     },
+     "pobreza": {
+      "valor": null,
+      "unidad": "% de la población",
+      "fecha": null,
+      "fuente": "U.S. Census Bureau (Current Population Survey)",
+      "nivel": "V",
+      "definicion": "Tasa oficial de pobreza (umbral absoluto del Census, antes de impuestos y con transferencias en efectivo). La última edición sale cada septiembre [VERIFICAR en census.gov]",
+      "periodicidad": "anual (septiembre)"
+     }
+    }
+   },
+   {
+    "id": "CN",
+    "pais": "China",
+    "indicadores": {
+     "ipc": {
+      "valor": 0.1,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta."
+     },
+     "paro": {
+      "valor": 4.6,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "paro_juvenil": {
+      "valor": 15.8,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "pib": {
+      "valor": 5.0,
+      "unidad": "% anual (volumen)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "deuda": {
+      "valor": 98.6,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXWDG_NGDP",
+      "nivel": "P",
+      "definicion": "Deuda bruta de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación."
+     },
+     "deficit": {
+      "valor": -7.9,
+      "unidad": "% del PIB (negativo = déficit)",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXCNL_NGDP",
+      "nivel": "P",
+      "definicion": "Préstamo neto (+) / endeudamiento neto (−) de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación."
+     },
+     "pobreza": {
+      "valor": 0,
+      "unidad": "% de la población",
+      "fecha": "2020",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.NAHC",
+      "nivel": "P",
+      "definicion": "Pobreza según la línea nacional de cada país (no comparable con AROPE ni entre países)",
+      "periodicidad": "irregular"
+     },
+     "gini": {
+      "valor": 36,
+      "unidad": "puntos (0-100)",
+      "fecha": "2022",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular"
+     },
+     "salario_minimo": {
+      "valor": null,
+      "unidad": "yuanes al mes",
+      "fecha": null,
+      "fuente": "Gobiernos provinciales",
+      "nivel": "V",
+      "definicion": "No hay mínimo nacional único: lo fija cada provincia y ciudad [VERIFICAR]",
+      "periodicidad": "irregular"
+     }
+    }
+   },
+   {
+    "id": "JP",
+    "pais": "Japón",
+    "indicadores": {
+     "ipc": {
+      "valor": 3.2,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta."
+     },
+     "paro": {
+      "valor": 2.5,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "paro_juvenil": {
+      "valor": 3.9,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "pib": {
+      "valor": 1.2,
+      "unidad": "% anual (volumen)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "deuda": {
+      "valor": 204.8,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXWDG_NGDP",
+      "nivel": "P",
+      "definicion": "Deuda bruta de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación."
+     },
+     "deficit": {
+      "valor": -0.7,
+      "unidad": "% del PIB (negativo = déficit)",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXCNL_NGDP",
+      "nivel": "P",
+      "definicion": "Préstamo neto (+) / endeudamiento neto (−) de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación."
+     },
+     "gini": {
+      "valor": 32.3,
+      "unidad": "puntos (0-100)",
+      "fecha": "2020",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular"
+     },
+     "salario_minimo": {
+      "valor": null,
+      "unidad": "¥ por hora",
+      "fecha": null,
+      "fuente": "Ministerio de Sanidad, Trabajo y Bienestar",
+      "nivel": "V",
+      "definicion": "No hay mínimo nacional único: se fija por prefectura; media ponderada nacional [VERIFICAR]",
+      "periodicidad": "anual (octubre)"
+     },
+     "pobreza": {
+      "valor": null,
+      "unidad": "% de la población",
+      "fecha": null,
+      "fuente": "Ministerio de Sanidad, Trabajo y Bienestar (encuesta de condiciones de vida)",
+      "nivel": "V",
+      "definicion": "Pobreza relativa nacional (50 % de la mediana de renta disponible equivalente); cifra no leída [VERIFICAR]",
+      "periodicidad": "trienal"
+     }
+    }
+   },
+   {
+    "id": "IN",
+    "pais": "India",
+    "indicadores": {
+     "ipc": {
+      "valor": 2.4,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta."
+     },
+     "paro": {
+      "valor": 4.2,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "paro_juvenil": {
+      "valor": 16.0,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "pib": {
+      "valor": 7.6,
+      "unidad": "% anual (volumen)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "deuda": {
+      "valor": 84.3,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXWDG_NGDP",
+      "nivel": "P",
+      "definicion": "Deuda bruta de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación."
+     },
+     "deficit": {
+      "valor": -7.4,
+      "unidad": "% del PIB (negativo = déficit)",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXCNL_NGDP",
+      "nivel": "P",
+      "definicion": "Préstamo neto (+) / endeudamiento neto (−) de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación."
+     },
+     "pobreza": {
+      "valor": 21.9,
+      "unidad": "% de la población",
+      "fecha": "2011",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.NAHC",
+      "nivel": "P",
+      "definicion": "Pobreza según la línea nacional de cada país (no comparable con AROPE ni entre países)",
+      "periodicidad": "irregular"
+     },
+     "gini": {
+      "valor": 23,
+      "unidad": "puntos (0-100)",
+      "fecha": "2023",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular"
+     },
+     "salario_minimo": {
+      "valor": null,
+      "unidad": "rupias al día",
+      "fecha": null,
+      "fuente": "Gobiernos estatales y Ministerio de Trabajo",
+      "nivel": "V",
+      "definicion": "Salario mínimo por estado y sector; existe un «piso» nacional no vinculante [VERIFICAR]",
+      "periodicidad": "irregular"
+     }
+    }
+   },
+   {
+    "id": "GB",
+    "pais": "Reino Unido",
+    "indicadores": {
+     "ipc": {
+      "valor": 3.9,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta."
+     },
+     "paro": {
+      "valor": 4.7,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "paro_juvenil": {
+      "valor": 14.6,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "pib": {
+      "valor": 1.4,
+      "unidad": "% anual (volumen)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "deuda": {
+      "valor": 102.1,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXWDG_NGDP",
+      "nivel": "P",
+      "definicion": "Deuda bruta de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación."
+     },
+     "deficit": {
+      "valor": -5.3,
+      "unidad": "% del PIB (negativo = déficit)",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXCNL_NGDP",
+      "nivel": "P",
+      "definicion": "Préstamo neto (+) / endeudamiento neto (−) de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación."
+     },
+     "pobreza": {
+      "valor": 18.6,
+      "unidad": "% de la población",
+      "fecha": "2017",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.NAHC",
+      "nivel": "P",
+      "definicion": "Pobreza según la línea nacional de cada país (no comparable con AROPE ni entre países)",
+      "periodicidad": "irregular"
+     },
+     "gini": {
+      "valor": 32.4,
+      "unidad": "puntos (0-100)",
+      "fecha": "2021",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular"
+     },
+     "salario_minimo": {
+      "valor": 12.71,
+      "unidad": "£ por hora (mayores de 21)",
+      "fecha": "2026-04",
+      "fuente": "gov.uk (National Living Wage)",
+      "nivel": "V",
+      "definicion": "National Living Wage desde abril de 2026 [VERIFICAR en gov.uk]",
+      "periodicidad": "anual (abril)"
+     }
+    }
+   },
+   {
+    "id": "RU",
+    "pais": "Rusia",
+    "indicadores": {
+     "ipc": {
+      "valor": 8.7,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta."
+     },
+     "paro": {
+      "valor": 2.1,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "paro_juvenil": {
+      "valor": 7.6,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "pib": {
+      "valor": 1.0,
+      "unidad": "% anual (volumen)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual"
+     },
+     "deuda": {
+      "valor": 16.6,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXWDG_NGDP",
+      "nivel": "P",
+      "definicion": "Deuda bruta de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación."
+     },
+     "deficit": {
+      "valor": -3.9,
+      "unidad": "% del PIB (negativo = déficit)",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXCNL_NGDP",
+      "nivel": "P",
+      "definicion": "Préstamo neto (+) / endeudamiento neto (−) de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación."
+     },
+     "pobreza": {
+      "valor": 7.2,
+      "unidad": "% de la población",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.NAHC",
+      "nivel": "P",
+      "definicion": "Pobreza según la línea nacional de cada país (no comparable con AROPE ni entre países)",
+      "periodicidad": "irregular"
+     },
+     "gini": {
+      "valor": 33,
+      "unidad": "puntos (0-100)",
+      "fecha": "2023",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular"
+     },
+     "salario_minimo": {
+      "valor": 27093,
+      "unidad": "rublos al mes",
+      "fecha": "2026-01",
+      "fuente": "Gobierno de Rusia (MROT)",
+      "nivel": "V",
+      "definicion": "Mínimo federal (MROT) desde el 1-ene-2026 [VERIFICAR en fuente oficial]",
+      "periodicidad": "anual (enero)"
+     }
+    }
+   }
+  ],
+  "fallos": [],
+  "leido": "2026-10-30 00:27 UTC"
  }
 }
