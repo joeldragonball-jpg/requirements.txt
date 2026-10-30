@@ -119,6 +119,8 @@ nav button.on::after{content:"";position:absolute;top:-9px;width:28px;height:3px
 #busqueda{position:absolute;inset:0;background:#0b0f17f2;backdrop-filter:blur(10px);z-index:10;padding:calc(env(safe-area-inset-top) + 16px) 16px;overflow-y:auto;display:none}
 #busqueda.on{display:block;animation:entra .25s}
 .mas{display:none;margin-top:10px;font-size:14px;color:#c6cfe6;line-height:1.5}
+.pgrid{display:grid;grid-template-columns:1.2fr repeat(4,1fr);gap:4px 6px;font-size:13px;align-items:center}.pgrid.h{font-size:11px;color:var(--sub);margin-bottom:4px}.cel{display:block;padding:5px 2px;border-radius:8px;background:#ffffff0d;text-align:center;cursor:pointer}
+.pg[data-g=ue] .g-pot,.pg[data-g=pot] .g-ue{display:none}.mas2{display:none;margin-top:6px;font-size:14px;color:#c6cfe6;line-height:1.45}.fp.abierta>.mas2{display:block;animation:entra .3s}.fp.abierta>.flecha2{transform:rotate(180deg)}
 .abierta>.mas,.abierta .mas{display:block;animation:entra .3s}
 .flecha{flex:none;color:var(--sub);transition:transform .25s;font-size:18px;align-self:center}
 .abierta .flecha{transform:rotate(180deg)}
@@ -168,6 +170,35 @@ let D = null;
 const HOY = new Date(); HOY.setHours(12, 0, 0, 0);
 const MES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'], DIA = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
 const esc = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const NOMI = {ipc: 'IPC', paro: 'Paro', paro_juvenil: 'Paro juvenil', pib: 'PIB', deuda: 'Deuda pública', deficit: 'Déficit', pobreza: 'Pobreza', gini: 'Gini', salario_minimo: 'Salario mínimo'};
+const NOMD = {sanidad: 'Sanidad', vivienda: 'Vivienda', infraestructuras: 'Infraestructuras y energía', trabajo: 'Trabajo y protección', educacion: 'Educación', seguridad: 'Seguridad y gobernanza', demografia: 'Demografía y migración'};
+const nfp = (v, u) => { if (v == null) return '—'; const n = Number(v).toLocaleString('es-ES', {maximumFractionDigits: 2}), m = /^([$£€¥])\s*(.*)$/.exec(u || ''); return m ? m[1] + n + (m[2] ? ' ' + m[2] : '') : n + (u ? ' ' + u : ''); };
+const corto = x => !x || x.v == null ? '—' : Number(x.v).toLocaleString('es-ES', {maximumFractionDigits: 1}) + (/%/.test(x.u || '') ? ' %' : '');
+const celP = (x, n) => `<span class="cel" data-cel="${esc(n + ': ' + (x && x.v != null ? nfp(x.v, x.u) + ' · ' + (x.f || 'sin fecha') + ' · ' + x.fu + ' · [' + x.nv + '] · ' + (x.def || '') : 'sin dato' + (x && x.def ? ' · ' + x.def : '')))}">${corto(x)}</span>`;
+function fichaPais(p) {
+  const o = p.pol, pe = o.proxima_eleccion || {}, ul = o.ultima_eleccion || {};
+  const kv = (k, v) => v ? `<div style="margin-top:7px"><small style="color:var(--sub)">${k}</small><br>${esc(v)}</div>` : '';
+  const ind = Object.entries(p.ind).map(([k, x]) => `<div class="fil"><span class="t">${NOMI[k] || k}<div class="meta2" style="margin:2px 0 0">${esc(x.fu)} · ${esc(x.f || 'sin fecha')} · [${esc(x.nv)}]${x.v == null && x.def ? ' · ' + esc(x.def) : ''}</div></span><b>${esc(nfp(x.v, x.u))}</b></div>`).join('');
+  const est = Object.entries(p.est).map(([d, cs]) => `<div style="margin-top:10px"><b>${NOMD[d] || d}</b>${cs.map(c => `<div class="fil"><span class="t">${esc(c.n)}<div class="meta2" style="margin:2px 0 0">${esc(c.f)} · ${esc(c.a || 'sin año')} · [${esc(c.nv)}]${c.nota ? ' · ' + esc(c.nota) : ''}</div></span><b>${esc(nfp(c.v, c.u))}</b></div>`).join('')}</div>`).join('');
+  const hitos = (p.hitos || []).map(h => `<div style="margin-top:6px">${esc(h.fecha)} · ${esc(h.texto)} <small>[${esc(h.nivel)}]</small></div>`).join('');
+  return `<div class="fp g-${p.bloque === 'UE' ? 'ue' : 'pot'}" data-abre style="margin-top:8px;border-top:1px solid var(--linea);padding-top:8px;display:flex;flex-wrap:wrap"><div style="flex:1"><b>${esc(p.pais)}</b> <small style="color:var(--sub)">${esc(o.jefe_gobierno || '')}</small></div><span class="flecha flecha2">⌄</span>
+    <div class="mas2" style="flex-basis:100%"><div class="titulo-sec" style="margin:8px 0 0"><span>Política</span></div>${kv('Sistema', o.sistema)}${kv('Reparto del poder', o.reparto_poder)}${kv('Jefe de Estado', o.jefe_estado)}${kv('Gobierno', o.gobierno)}${kv('Familia política', o.familia)}${kv('Apoyo parlamentario', o.apoyo)}${kv('Oposición', o.oposicion)}${kv('Próxima elección', (pe.fecha || 'sin fecha') + ' · ' + (pe.tipo || ''))}${kv('Última elección', (ul.fecha || '—') + ' · ' + (ul.resultado || ''))}${kv('Temas clave', o.temas_clave)}${kv('Sistemas públicos', o.sistemas_publicos)}<div class="meta2">Fuente: ${esc(o.fuente)} · [${esc(o.nivel)}] · ${esc(o.fecha_dato)}</div>
+    <div class="titulo-sec" style="margin:14px 0 0"><span>Indicadores económicos</span></div>${ind}
+    <div class="titulo-sec" style="margin:14px 0 0"><span>Servicios públicos y estabilidad</span></div>${est}
+    ${hitos ? '<div class="titulo-sec" style="margin:14px 0 0"><span>Hitos</span></div>' + hitos : ''}
+    <div class="titulo-sec" style="margin:14px 0 0"><span>Lectura <small>[OPINIÓN] [ESPECULACIÓN]</small></span></div><div style="margin-top:6px">${esc(o.lectura || '')}</div><div style="margin-top:6px">${esc(p.lectura_est || '')}</div></div></div>`;
+}
+function paisesCard(HOY) {
+  const P = D.paises && D.paises.paises; if (!P || !P.length) return '';
+  const fila = p => { const o = p.pol, pe = o.proxima_eleccion || {}, g = p.bloque === 'UE' ? 'ue' : 'pot', d = /^\d{4}-\d{2}-\d{2}$/.test(pe.fecha || '') ? Math.round((new Date(pe.fecha) - new Date(HOY)) / 864e5) : null;
+    return `<div class="g-${g}"><div class="pgrid"><b>${esc(p.pais)}</b>${celP(p.ind.ipc, 'IPC')}${celP(p.ind.paro, 'Paro')}${celP(p.ind.deuda, 'Deuda/PIB')}${celP(p.ind.pobreza, 'Pobreza')}</div><div class="meta2" style="margin:2px 0 8px">${esc((o.gobierno || '').slice(0, 70))} · ${esc(o.familia || '')} · ${d == null ? 'elección sin fecha fija' : d >= 0 ? 'elección en ' + d + ' días' : 'elección hace ' + (-d) + ' días'}</div></div>`; };
+  return `<div class="card pg" data-g="ue" style="--i:1;padding:13px 14px;display:flex;flex-wrap:wrap;gap:6px" data-abre><div style="flex:1;min-width:0"><div class="titulo-sec" style="margin:0"><span>Comparar países</span></div><small>12 países · política, indicadores y estabilidad · toca para abrir</small></div><span class="flecha">⌄</span><div class="mas" style="flex-basis:100%">
+    <div class="chips" style="margin:10px 0"><div class="chip on" data-fpa="ue">UE</div><div class="chip" data-fpa="pot">Potencias</div></div>
+    <div class="pgrid h"><span>País</span><span>IPC</span><span>Paro</span><span>Deuda</span><span>Pobreza</span></div>${P.map(fila).join('')}
+    <div class="paistip meta2" style="min-height:34px;margin:4px 0 10px">Toca una cifra para ver fecha, fuente y nivel.</div>
+    ${P.map(fichaPais).join('')}
+    <div class="aviso" style="margin-top:10px;color:var(--sub)">${esc(D.paises.nota)} Sin puntuaciones propias ni ranking. Informes: ${(D.paises.informes || []).map(x => esc(x.split('/').pop())).join(' · ')}</div></div></div>`;
+}
 const fm = (v, d = 2) => v == null ? '—' : v.toLocaleString('es-ES', {minimumFractionDigits: d, maximumFractionDigits: d, useGrouping: 'always'});
 const dias = iso => Math.round((new Date(iso + 'T12:00:00') - HOY) / 86400000);
 let EUR = null, MON = '', PRE = '$'; const conv = v => EUR ? v / EUR : v;
@@ -264,7 +295,7 @@ function vAgenda(){
   const pasados = EP.length ? `${cab('Ya pasaron: ¿hace falta research?')}<div class="card" style="--i:1;padding:6px 14px">${EP.map(e => `<div class="fil"><span class="t">${esc(e.titulo.slice(0, 70))}<div class="meta2" style="margin:2px 0 0">${e.fecha.slice(5)} · ${esc(e.impacto)}</div></span><span class="bd ${e.estado === 'por_revisar' ? 'ya' : 'ok'}">${e.estado === 'por_revisar' ? 'sin research' : '✓ ' + esc(e.detalle)}</span></div>`).join('')}</div><div class="meta2" style="margin:-4px 4px 8px">Los «sin research» los decide Joel: se lanzan con /research EV o se descartan.</div>` : '';
   const EL = D.elecciones && (D.elecciones.paises || []).filter(x => x.fecha).slice().sort((a, b) => a.fecha.localeCompare(b.fecha)), HOY = new Date().toISOString().slice(0, 10);
   const elecciones = EL && EL.length ? `<div class="card" style="--i:1;padding:13px 14px;display:flex;flex-wrap:wrap;gap:6px" data-abre><div style="flex:1;min-width:0"><div class="titulo-sec" style="margin:0"><span>Elecciones próximas</span></div><small>${EL.filter(x => x.fecha >= HOY).slice(0, 2).map(x => esc(x.pais) + ' ' + esc(x.fecha.slice(8)) + '-' + esc(x.fecha.slice(5, 7))).join(' · ')} · toca para ver todas</small></div><span class="flecha">⌄</span><div class="mas" style="flex-basis:100%">${EL.map(x => `<div style="margin-top:10px"><b>${esc(x.pais)}</b> · ${esc(x.fecha)}${x.aproximada ? ' (aprox.)' : ''}${x.fecha < HOY ? ' · ya celebrada' : ''} <span class="aviso" style="color:var(--sub)">[${esc(x.nivel)}]</span><br><small>${esc(x.tipo)}</small><br><small style="color:var(--sub)">${esc(x.hechos)}</small></div>`).join('')}<div class="aviso" style="margin-top:8px;color:var(--sub)">${esc(D.elecciones.nota)}</div></div></div>` : '';
-  return `<div class="vista">${elecciones}${pasados}<div class="chips">${[['todos','Todos'],['alto','Alto impacto'],['medio','Medio'],['bajo','Bajo']].map(([k, n]) => `<div class="chip ${filtroAg === k ? 'on' : ''}" data-fa="${k}">${n}</div>`).join('')}</div>${lista.map((e, i) => fila(e, i)).join('') || '<div class="pie">Sin eventos</div>'}</div>`;
+  return `<div class="vista">${elecciones}${paisesCard(HOY)}${pasados}<div class="chips">${[['todos','Todos'],['alto','Alto impacto'],['medio','Medio'],['bajo','Bajo']].map(([k, n]) => `<div class="chip ${filtroAg === k ? 'on' : ''}" data-fa="${k}">${n}</div>`).join('')}</div>${lista.map((e, i) => fila(e, i)).join('') || '<div class="pie">Sin eventos</div>'}</div>`;
 }
 function notaHTML(n, i){
   return `<div class="nota card" style="--i:${i};padding:14px" data-abre><div class="pt" style="--n:${n.nota}"><span>${n.nota}</span></div><div style="flex:1"><h4>${esc(n.titulo)}</h4><div class="meta"><span class="etq">${esc(n.tema)}</span>${esc(n.fecha.replace('T', ' '))}</div><div class="mas">${esc(n.resumen)}<br><br><b>Por qué importa:</b> ${esc(n.por_que)}<div class="meta2">${esc(n.fuente)}</div><a class="enlace" target="_blank" rel="noopener" href="${esc(n.url)}">Leer la noticia ›</a></div></div></div>`;
@@ -401,7 +432,7 @@ function pintar(ancla, quieto){
 }
 document.addEventListener('click', e => {
   if (e.target.closest('a')) return;
-  const t = e.target.closest('[data-act],[data-t],[data-ir],[data-ir2],[data-fa],[data-fn],[data-pf],[data-sc],[data-abre],[data-gt],#abrebus,#bbus,#cerrar');
+  const t = e.target.closest('[data-act],[data-t],[data-ir],[data-ir2],[data-fa],[data-fn],[data-pf],[data-sc],[data-abre],[data-gt],[data-fpa],[data-cel],#abrebus,#bbus,#cerrar');
   if (!t) return;
   if (t.dataset.t) { tab = t.dataset.t; document.getElementById('main').scrollTo(0, 0); pintar(); }
   else if (t.dataset.ir2) { const [a, b] = t.dataset.ir2.split(':'); tab = a; if (b) segCer = b; document.getElementById('main').scrollTo(0, 0); pintar(); }
@@ -412,6 +443,8 @@ document.addEventListener('click', e => {
   else if (t.dataset.pf) { filtroPl = t.dataset.pf; pintar(`[data-pf="${filtroPl}"]`); }
   else if (t.dataset.sc) { segCer = t.dataset.sc; pintar(`[data-sc="${segCer}"]`); }
   else if (t.dataset.gt) { document.getElementById('gmtema').innerHTML = window.gmTemaHtml(t.dataset.gt); document.querySelectorAll('[data-gt]').forEach(c => c.classList.toggle('on', c === t)); }
+  else if (t.dataset.fpa) { const c = t.closest('.pg'); c.dataset.g = t.dataset.fpa; c.querySelectorAll('[data-fpa]').forEach(x => x.classList.toggle('on', x === t)); }
+  else if (t.dataset.cel) t.closest('.pg').querySelector('.paistip').textContent = t.dataset.cel;
   else if (t.hasAttribute('data-abre')) t.classList.toggle('abierta');
   else if (t.id === 'abrebus' || t.id === 'bbus') { document.getElementById('busqueda').classList.add('on'); document.getElementById('q').focus(); }
   else if (t.id === 'cerrar') document.getElementById('busqueda').classList.remove('on');

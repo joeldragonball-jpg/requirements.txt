@@ -150,6 +150,7 @@ nav button{transition:background-color .15s,color .15s}nav button:hover:not(.on)
 <section class="vista" id="v-matriz"></section>
 <section class="vista" id="v-noticias"></section>
 <section class="vista" id="v-voces"></section>
+<section class="vista" id="v-paises"></section>
 <section class="vista" id="v-paneles"></section>
 </main>
 <div id="tip"></div>
@@ -163,7 +164,7 @@ const cert=f=>f==='P'?'🛡':(f==='S'?'◐':'△');
 const bcl=n=>n==='P'?'P':(n&&n[0]==='S'?'S':'V');
 const num=(x,d=1)=>x==null||isNaN(x)?'—':Number(x).toLocaleString('es-ES',{maximumFractionDigits:d,minimumFractionDigits:d>1&&Math.abs(x)<100?Math.min(d,2):0});
 const usd=x=>x==null?'—':'$'+(Math.abs(x)>=1e12?num(x/1e12,2)+' billones':Math.abs(x)>=1e9?num(x/1e9,1)+' mil millones':Math.abs(x)>=1e6?num(x/1e6,0)+' millones':num(x,0));
-const TABS=[['resumen','Resumen'],['capas','Capas'],['tiempo','Línea de tiempo'],['calendario','Calendario'],['matriz','Matriz país × tema'],['noticias','Noticias'],['voces','Voces'],['paneles','Paneles de datos']];
+const TABS=[['resumen','Resumen'],['capas','Capas'],['tiempo','Línea de tiempo'],['calendario','Calendario'],['matriz','Matriz país × tema'],['noticias','Noticias'],['voces','Voces'],['paises','Países'],['paneles','Paneles de datos']];
 let R,D,V,P,CAL,FMI,VAL,BAN,RES,X,modo='sem',selMov=null,selCapa=null,selCelda=null,tab='resumen',listo=false;
 
 /* ---------- utilidades de pintado ---------- */
@@ -240,7 +241,7 @@ function contar(sec){
     const paso=ahora=>{const k=Math.min(1,(ahora-t0)/800),v=fin*(1-Math.pow(1-k,3));
       e.textContent=k<1?pre+v.toLocaleString('es-ES',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf:t;if(k<1)requestAnimationFrame(paso)};
     requestAnimationFrame(paso)})}
-function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paneles:pPaneles})[tab]()}
+function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,paneles:pPaneles})[tab]()}
 
 /* ---------- bloques de datos reutilizables (Capas y Paneles) ---------- */
 const PL=['3M','6M','1A','2A','3A','5A','10A','15A','20A','30A'];
@@ -665,6 +666,41 @@ function pNoticias(){
 
 /* ---------- 7 · Voces ---------- */
 let vNivel='',vConf='',vBusca='',vCapa='';
+/* ---------- Países: política (C58) + indicadores (C59) + estabilidad (C61), todo por país, solo cifras publicadas ---------- */
+let grupoPa='UE';
+const NOMI={ipc:'IPC',paro:'Paro',paro_juvenil:'Paro juvenil',pib:'PIB',deuda:'Deuda pública',deficit:'Déficit',pobreza:'Pobreza',gini:'Gini',salario_minimo:'Salario mínimo'};
+const NOMD={sanidad:'Sanidad',vivienda:'Vivienda',infraestructuras:'Infraestructuras y energía',trabajo:'Trabajo',educacion:'Educación',seguridad:'Seguridad y gobernanza',demografia:'Demografía y migración'};
+const fuentePa=u=>/eurostat/.test(u||'')?'Eurostat':/worldbank/.test(u||'')?'Banco Mundial':/imf\.org/.test(u||'')?'FMI':(u||'').slice(0,40);
+function nfp(v,u){if(v==null)return '—';const n=Number(v).toLocaleString('es-ES',{maximumFractionDigits:2}),m=/^([$£€¥])\s*(.*)$/.exec(u||'');return m?m[1]+n+(m[2]?' '+m[2]:''):n+(u?' '+u:'')}
+function pPaises(){
+  const s=$('v-paises');s.textContent='';
+  const F=(D.paises_fichas||{}).paises||[],ES=((D.estabilidad||{}).paises)||[],IN=((P&&P.indicadores)||{}).paises||[];
+  if(!F.length){s.appendChild(el('p','','Sin datos de países (explorador/paises.json).'));return}
+  const nombreGrupo=g=>g==='UE'?'UE':'Potencias',lista=F.filter(f=>(f.bloque==='UE')===(grupoPa==='UE'));
+  const sel=el('div','');sel.style.margin='6px 0';
+  ['UE','Potencias'].forEach(g=>{const b=el('button','chip',g);b.style.cursor='pointer';b.style.padding='4px 14px';if(g===grupoPa){b.style.background='var(--oro,#d4a84b)';b.style.color='#1a1405'}b.onclick=()=>{grupoPa=g;pPaises()};sel.appendChild(b)});
+  s.appendChild(sel);
+  s.appendChild(el('p','',(D.paises_fichas.nota||'')+' Sin puntuaciones propias ni ranking: cada celda muestra la cifra publicada; pasa el ratón para ver año, fuente y nivel.'));
+  const t=el('table','');const h=el('tr','');h.appendChild(el('th','','Indicador'));lista.forEach(f=>h.appendChild(el('th','n',f.pais)));t.appendChild(h);
+  const fila=(nombre,celdas,sec)=>{const r=el('tr','');if(sec){const c=el('th','',nombre);c.colSpan=lista.length+1;r.appendChild(c)}else{r.appendChild(el('td','',nombre));celdas.forEach(c=>r.appendChild(c))}t.appendChild(r)};
+  const td=(txt,tip)=>{const c=el('td','n',txt);if(tip)c.title=tip;return c};
+  fila('Política',null,true);
+  fila('Gobierno',lista.map(f=>{const c=el('td','',(f.gobierno||'—').slice(0,60));c.title=f.apoyo||'';return c}));
+  fila('Familia política',lista.map(f=>td(f.familia||'—')));
+  fila('Próxima elección',lista.map(f=>{const p=f.proxima_eleccion||{};return td(p.fecha||'sin fecha',p.tipo||'')}));
+  fila('Indicadores económicos',null,true);
+  Object.keys(NOMI).forEach(k=>fila(NOMI[k],lista.map(f=>{const x=((IN.find(i=>i.id===f.id)||{}).indicadores||{})[k];return x?td(nfp(x.valor,x.unidad),(x.fecha||'sin fecha')+' · '+fuentePa(x.fuente)+' · ['+x.nivel+'] · '+(x.definicion||'')):td('—')})));
+  const dims=Object.keys(NOMD);
+  dims.forEach(d=>{
+    fila(NOMD[d],null,true);
+    const nombres=[];ES.forEach(e=>((e.dimensiones[d]||{}).cifras||[]).forEach(c=>{if(!nombres.includes(c.nombre))nombres.push(c.nombre)}));
+    nombres.forEach(n=>fila(n,lista.map(f=>{const e=ES.find(x=>x.id===f.id),c=e&&((e.dimensiones[d]||{}).cifras||[]).find(z=>z.nombre===n);return c&&c.valor!=null?td(nfp(c.valor,c.unidad),(c.anio||'sin año')+' · '+fuentePa(c.fuente)+' · ['+c.nivel+'] · '+(c.nota||'')):td('—')})))});
+  const w=el('div','');w.style.overflowX='auto';w.appendChild(t);s.appendChild(w);
+  lista.forEach(f=>{const e=ES.find(x=>x.id===f.id)||{};const d=document.createElement('details');d.style.margin='8px 0';
+    d.appendChild(el('summary','',f.pais+' · '+(f.jefe_gobierno||'')));
+    [['Sistema',f.sistema],['Reparto del poder',f.reparto_poder],['Jefe de Estado',f.jefe_estado],['Apoyo parlamentario',f.apoyo],['Oposición',f.oposicion],['Última elección',((f.ultima_eleccion||{}).fecha||'—')+' · '+((f.ultima_eleccion||{}).resultado||'')],['Temas clave',f.temas_clave],['Sistemas públicos',f.sistemas_publicos],['Lectura [OPINIÓN]',f.lectura],['Estabilidad [OPINIÓN]',e.lectura],['Fuente',(f.fuente||'')+' · ['+f.nivel+'] · '+f.fecha_dato]].forEach(([k,v])=>{if(v){const p=el('p','',k+': '+v);d.appendChild(p)}});
+    s.appendChild(d)});
+}
 function pVoces(){
   const s=$('v-voces');s.textContent='';
   if(!V){s.textContent='No se pudo leer voces.json';return}

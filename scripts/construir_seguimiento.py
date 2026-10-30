@@ -345,6 +345,23 @@ def frescura():
     except Exception as e:
         anadir("Radar regulatorio", f"No se pudo leer ({type(e).__name__})", 0, "", "W03", "aviso")
     try:
+        fp = json.loads(leer(RAIZ / "explorador" / "paises.json")).get("paises", [])
+
+        def _dias(f):
+            f = str(f or "")
+            f = f + "-01-01" if len(f) == 4 else f + "-01" if len(f) == 7 else f
+            return (hoy - date.fromisoformat(f[:10])).days
+        viejos = []
+        for x in fp:
+            try:
+                if _dias(x.get("fecha_dato")) > 90:
+                    viejos.append(x["pais"])
+            except ValueError:
+                viejos.append(x["pais"])
+        anadir("Países (política)", "Fichas con datos de más de 90 días o sin fecha", len(viejos), ", ".join(viejos[:6]), "W11", "aviso" if viejos else "ok")
+    except Exception as e:
+        anadir("Países (política)", f"No se pudo leer ({type(e).__name__})", 0, "", "W11", "aviso")
+    try:
         vs = json.loads(leer(RAIZ / "explorador" / "voces.json")).get("voces", [])
         sin = [v for v in vs if v.get("conf") == "sin_confirmar"]
         viejas = [v for v in sin if v.get("cuando") and (hoy - date.fromisoformat((v["cuando"] + "-01")[:10] if len(v["cuando"]) == 7 else v["cuando"][:10])).days > 14]
