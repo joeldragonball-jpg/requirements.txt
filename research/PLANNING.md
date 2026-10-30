@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-30 00:05 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-30 00:08 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -53,13 +53,13 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
 - [alta] 2026-10-29 (1 d) · Lagarde dejará la presidencia del BCE el 7 de febrero.
 - [media] 2026-09-30 (30 d) · ETF de XRP en EE. UU. ≈ $1.430 M a 22-oct [S]; ETP europeos de XRP ≈ $914 M y de Stellar ≈ $104 M.
-- [media] 2026-10-05 (25 d) · Sánchez disuelve las Cortes y convoca elecciones generales el 29-nov (Real Decreto 806/2026 según prensa; veri
 - [media] 2026-10-09 (21 d) · Trump dice que no atacará Irán antes de las elecciones del 3-nov (titular del bot; fuente primaria sin abrir).
 - [media] 2026-10-21 (9 d) · El bot recoge «el Brent supera 110 $ al fallar las conversaciones con Irán» (15:20 UTC). Brent 109,34 → 110,04
 - [media] 2026-10-22 (8 d) · Ataques hutíes a Arabia Saudí (dron en Shaybah de Aramco); Irán dice que alcanzó 7 petroleros, CENTCOM lo desm
 - [media] 2026-10-23 (7 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
 - [media] 2026-10-23 (7 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
-- … y 30 más en el Seguimiento
+- [media] 2026-10-25 (5 d) · Lula gana la 2.ª vuelta con ~51,7 % frente a ~48,2 % de Flávio Bolsonaro, que no reconoce el resultado.
+- … y 28 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (4) → W03 · UE/cbdc; HK/politica; AE/politica; EG/politica
