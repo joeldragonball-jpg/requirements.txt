@@ -100,7 +100,7 @@ def leer_indicadores(previo=None):
 
         if geo:
             ue = "https://ec.europa.eu/eurostat/databrowser/view/"
-            poner("ipc", lambda: _ind(*(lambda v: (v[0], "% interanual", v[1], ue + "prc_hicp_manr", "P", "IPCA (índice armonizado de la UE), tasa anual del último mes", "mensual"))(_eurostat("prc_hicp_manr", geo=geo, coicop="CP00", unit="RCH_A"))))
+            poner("ipc", lambda: _ind(*(lambda v: (v[0], "% interanual", v[1], ue + "prc_hicp_minr", "P", "IPCA (índice armonizado de la UE, ECOICOP 2), tasa anual del último mes", "mensual"))(_eurostat("prc_hicp_minr", geo=geo, coicop18="TOTAL", unit="RCH_A"))))
             poner("paro", lambda: _ind(*(lambda v: (v[0], "% población activa", v[1], ue + "une_rt_m", "P", "Paro total, desestacionalizado (definición OIT)", "mensual"))(_eurostat("une_rt_m", geo=geo, s_adj="SA", age="TOTAL", sex="T", unit="PC_ACT"))))
             poner("paro_juvenil", lambda: _ind(*(lambda v: (v[0], "% población activa", v[1], ue + "une_rt_m", "P", "Paro de menores de 25 años, desestacionalizado (definición OIT)", "mensual"))(_eurostat("une_rt_m", geo=geo, s_adj="SA", age="Y_LT25", sex="T", unit="PC_ACT"))))
             poner("pib", lambda: _ind(*(lambda v: (v[0], "% interanual (volumen)", v[1], ue + "namq_10_gdp", "P", "PIB trimestral en volumen frente al mismo trimestre del año anterior, corregido", "trimestral"))(_eurostat("namq_10_gdp", geo=geo, s_adj="SCA", na_item="B1GQ", unit="CLV_PCH_SM"))))

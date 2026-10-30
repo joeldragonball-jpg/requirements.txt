@@ -46,6 +46,14 @@ EUROSTAT = [
     ("trabajo", "Gasto en pensiones de vejez", "spr_exp_sum", {"spdep": "OLD_AGE" if False else "TOTAL"}, "", ""),
 ]
 EUROSTAT = EUROSTAT[:1]
+# C63: para los países de la UE, Eurostat publica 1-2 años antes que el Banco Mundial. Sustituye la cifra del BM solo si el año es más reciente.
+# (nombre de la cifra a sustituir, dataset, filtros, divisor, nota)
+REEMPLAZO_UE = [
+    ("Gasto sanitario total", "hlth_sha11_hf", {"icha11_hf": "TOT_HF", "unit": "PC_GDP"}, 1, "Eurostat (SHA 2011, mismo concepto que OMS GHED); público + privado"),
+    ("Gasto público en educación", "gov_10a_exp", {"cofog99": "GF09", "sector": "S13", "na_item": "TE", "unit": "PC_GDP"}, 1, "Eurostat (COFOG, administraciones públicas); definición distinta de la del Banco Mundial: no comparable con la cifra de países no UE ni con la serie anterior"),
+    ("Médicos", "hlth_rs_prs2", {"wstatus": "PRACT", "med_spec": "PHYS", "unit": "P_HTHAB"}, 100, "Eurostat: médicos en ejercicio; definiciones nacionales"),
+    ("Camas hospitalarias", "hlth_rs_bds1", {"facility": "HBEDT", "hlthcare": "TOTAL", "unit": "P_HTHAB"}, 100, "Eurostat: camas hospitalarias totales"),
+]
 
 
 def _get(url, t=60):
@@ -118,6 +126,24 @@ def main():
         if geo:
             for dim, n, ds, fil, u, nota in EUROSTAT:
                 anadir(dim, n, lambda ds=ds, fil=fil: _eurostat(ds, geo, **fil), u, nota)
+        if geo:
+            for n, ds, fil, div, nota in REEMPLAZO_UE:
+                for d in dims.values():
+                    for k, c in enumerate(d["cifras"]):
+                        if c["nombre"] != n:
+                            continue
+                        try:
+                            _ANT[0] = None
+                            v, anio, fuente = _eurostat(ds, geo, **fil)
+                            if c.get("anio") and anio <= str(c["anio"]):
+                                continue
+                            nueva = dict(c, valor=round(v / div, 2) if div != 1 else v, anio=anio, fuente=fuente, nota=nota)
+                            nueva.pop("anterior", None), nueva.pop("anterior_anio", None)
+                            if _ANT[0]:
+                                nueva["anterior"], nueva["anterior_anio"] = round(_ANT[0][0] / div, 2) if div != 1 else _ANT[0][0], _ANT[0][1]
+                            d["cifras"][k] = nueva
+                        except Exception as e:
+                            fallos.append(f"{pid}/{n} (Eurostat): {type(e).__name__}: {e}")
         m = manual.get(pid, {})
         for dim, extra in (m.get("dimensiones") or {}).items():
             d = dims.setdefault(dim, {"cifras": [], "hitos": []})

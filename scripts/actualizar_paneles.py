@@ -398,10 +398,11 @@ def leer_inflacion():
         return _yoy_de_indices(_fred_serie("PCEPI", desde))
 
     def bce(geo):
+        # El IPCA antiguo (ICP del BCE y prc_hicp_manr) quedó congelado en dic-2025 al pasar a ECOICOP 2; prc_hicp_minr trae la serie viva.
         def f():
-            t = _json_url(f"https://data-api.ecb.europa.eu/service/data/ICP/M.{geo}.N.000000.4.ANR?lastNObservations=2&format=csvdata", cabeceras={"Accept": "text/csv"})
-            v = [(x["TIME_PERIOD"], float(x["OBS_VALUE"])) for x in csv.DictReader(io.StringIO(t))]
-            return v[-1][1], v[-2][1], v[-1][0]
+            from indicadores import _eurostat, _ANT
+            v = _eurostat("prc_hicp_minr", geo={"U2": "EA"}.get(geo, geo), coicop18="TOTAL", unit="RCH_A")
+            return v[0], _ANT[0][0], v[1]
         return f
 
     def reino_unido():
@@ -428,8 +429,8 @@ def leer_inflacion():
     fuentes = [
         ("us", "EE. UU.", "IPC (BLS, NSA)", "https://www.bls.gov/cpi/", eeuu),
         ("us_pce", "EE. UU.", "PCE (BEA vía FRED)", "https://fred.stlouisfed.org/series/PCEPI", eeuu_pce),
-        ("ea", "Zona euro", "IPCA (BCE/Eurostat)", "https://data.ecb.europa.eu/", bce("U2")),
-        ("es", "España", "IPCA (BCE/Eurostat; el IPC del INE puede diferir)", "https://data.ecb.europa.eu/", bce("ES")),
+        ("ea", "Zona euro", "IPCA (Eurostat, ECOICOP 2)", "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr", bce("U2")),
+        ("es", "España", "IPCA (Eurostat, ECOICOP 2; el IPC del INE puede diferir)", "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr", bce("ES")),
         ("uk", "Reino Unido", "IPC (ONS)", "https://www.ons.gov.uk/economy/inflationandpriceindices", reino_unido),
         ("ca", "Canadá", "IPC (Statistics Canada, tabla 18-10-0004)", "https://www150.statcan.gc.ca/", canada),
         ("br", "Brasil", "IPCA 12 meses (IBGE)", "https://sidra.ibge.gov.br/tabela/1737", brasil),
