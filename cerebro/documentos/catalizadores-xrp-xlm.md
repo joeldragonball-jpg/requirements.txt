@@ -129,3 +129,5 @@ actualizado: 2026-10-07
 - 2026-10-27 (T16): vigilar el pleno del GAFI (28-30 oct; resultados el 30-oct a las 17:00 CEST, sin punto cripto anunciado) y la actualización de Basilea sobre el estándar de capital cripto (antes de fin de 2026, sin día). Sin movimiento de precio atribuible a estos organismos [ESPECULACIÓN: impacto indirecto vía bancos].
 - 2026-10-27 (C18): los días de evento del calendario (FOMC 28-oct, BCE 29-oct, DTCC 31-oct, elecciones EE. UU. 3-nov, Swell 27-29 y Meridian 28-29) son donde más rumores sobre XRP/XLM aparecen; el research manual de evento los recoge con etiqueta P/S/VERIFICAR y sin tratar anuncios como hechos.
 - 2026-10-27 (R00 cierre): aprobación final de la OCC al banco fiduciario de Ripple (anuncio el 26-oct por la noche, tras la condicional de dic-2025): XRP ≈ $1,25–1,32 y +1,9 % en 24 h, sin reacción atribuible; noticia esperada y ya descontada [S]. FOMC del 28-oct: tipo 3,75 %–4,00 % tras la subida del 16-sep (12–0 [P]).
+
+- 30-oct-2026: Swell (OCC final a Ripple National Trust Bank, BNY/C2FO en XRPL) y Meridian (Project Thruput) no movieron el precio: XRP -4,9 % y XLM -3,8 % el 29-oct junto a BTC -1,5 %.
