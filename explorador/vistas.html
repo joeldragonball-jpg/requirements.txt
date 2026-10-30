@@ -835,10 +835,7 @@ function pEspana(){
     const orden=L=>L.slice().sort((a,b)=>b.obligaciones_2025-a.obligaciones_2025);
     const mins=orden(B.secciones.filter(x=>x.tipo==='ministerio')),otros=orden(B.secciones.filter(x=>x.tipo!=='ministerio'));
     const pieE={nivel:'P',t:'IGAE, ejecución del presupuesto del Estado · M€ · leído '+B.leido};
-    add(bloque('Por ministerio: crédito inicial, definitivo y obligaciones',B.nota,pieE,conL(B.lecturas.ministerios,u,
-      tabla([{t:'Ministerio',f:r=>r.nombre},...ejec],mins),
-      el('h3',null,'Fuera de los ministerios: deuda, pensiones de funcionarios, UE, CCAA y entes locales, órganos constitucionales'),
-      tabla([{t:'Partida',f:r=>r.nombre},{t:'Tipo',f:r=>r.tipo},...ejec],otros))));
+    add(bloque('Cómo leer el presupuesto del Estado',B.nota,pieE,conL(B.lecturas.ministerios,u)));
     const CM=B.capitulos_por_ministerio;
     if(CM){
       const pie7={nivel:CM.nivel,t:'IGAE · obligaciones de 2025 · M€ · leído '+B.leido};
@@ -848,7 +845,7 @@ function pEspana(){
         const d=el('details','bl'),sm=el('summary','ms'),mxp=Math.max(...CM.secciones.map(z=>z.pct_total_estado||0));
         const c1=el('span','nm',x.seccion),c2=el('span','im',n1(x.total)+' '),c3=el('span','pc'),c4=el('span','hb');
         c2.append(el('small',null,'M€'));const bi=el('i');bi.style.width=Math.max(2,x.pct_total_estado/mxp*100)+'%';c3.append(bi,el('b',null,fx(x.pct_total_estado,2)+' % del Estado'));
-        c4.append(el('em',null,fx(x.por_habitante,2)+' €'),document.createTextNode(' / hab.'));sm.append(c1,c2,c3,c4);d.append(sm);
+        c4.append(el('em',null,fx(x.por_habitante,2)+' €'),document.createTextNode(' / hab.'));sm.append(c1,c2,c3,c4);d.append(sm);const sec=B.secciones.find(z=>z.nombre===x.seccion);if(sec)d.append(el('h3',null,'Crédito inicial, definitivo y obligaciones'),tabla(ejec,[sec]));if(x.explicacion)d.append(el('p','nota-v',x.explicacion));
         const caps=Object.entries(x.capitulos).filter(([,v])=>v);
         d.append(el('h3',null,'Por capítulo económico'),tabla([{t:'Capítulo',f:r=>r[0]+' · '+CM.leyenda[r[0]]},{t:'M€',n:1,f:r=>n1(r[1])},{t:'% del ministerio',f:r=>pbar(r[1]/x.total*100)}],caps));
         d.append(el('h3',null,'Programas mayores'),tabla([{t:'Programa',f:r=>r.n},{t:'M€',n:1,f:r=>n1(r.o)},{t:'% del ministerio',f:r=>pbar(r.o/x.total*100)}],x.programas));
@@ -858,7 +855,9 @@ function pEspana(){
         if(x.altos_cargos.obligaciones||x.eventuales.obligaciones)d.append(el('p','nota-v','Altos cargos (art. 10): '+fx(x.altos_cargos.obligaciones,2)+' M€ · Personal eventual (art. 11): '+fx(x.eventuales.obligaciones,2)+' M€ · Personal total (cap. 1): '+n1(x.capitulos['1'])+' M€, '+n1(x.pct_personal)+' % del ministerio.'));
         if(Math.abs(x.partidas_sin_leer)>1)d.append(el('p','nota-v','Centros y destinos sin clasificar frente al total oficial: '+n1(x.partidas_sin_leer)+' M€.'));
         dentro.append(d)}
-      add(bloque('Dentro de cada ministerio: capítulos, programas, centros y destino de las transferencias','Abre cada ministerio. Están ordenados por obligaciones de 2025.',pie7,dentro));
+      const resto=B.secciones.filter(z=>!CM.secciones.some(c=>c.seccion===z.nombre&&c.total));
+      if(resto.length)dentro.append(el('h3',null,'Partidas sin obligaciones reconocidas en 2025'),tabla([{t:'Partida',f:r=>r.nombre},...ejec],resto));
+      add(bloque('Presupuesto del Estado por ministerio y partida: ejecución, capítulos, programas, centros y destino','Abre cada una. Ordenadas por obligaciones de 2025; incluye los ministerios y las partidas fuera de ellos (deuda, pensiones de funcionarios, UE, entes territoriales, órganos constitucionales).',pie7,dentro));
       add(bloque('Altos cargos y personal eventual por ministerio','Coste presupuestado y ejecutado en 2025 de los artículos 10 y 11 de cada sección. Solo presupuesto del Estado.',pie7,conL(null,
         tabla([{t:'Sección',f:r=>r.seccion},{t:'Altos cargos, M€',n:1,f:r=>fx(r.altos_cargos.obligaciones,2)},{t:'Eventuales, M€',n:1,f:r=>fx(r.eventuales.obligaciones,2)},{t:'Personal total, M€',n:1,f:r=>n1(r.capitulos['1'])},{t:'% de personal en la sección',n:1,f:r=>n1(r.pct_personal)}],CM.secciones.filter(r=>r.altos_cargos.obligaciones||r.eventuales.obligaciones).sort((a,b)=>b.altos_cargos.obligaciones-a.altos_cargos.obligaciones)),
         el('h3',null,'Número de cargos y retribuciones oficiales'),dat([CM.altos_cargos_numero,...CM.retribuciones])),false));
