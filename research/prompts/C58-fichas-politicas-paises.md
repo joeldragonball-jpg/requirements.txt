@@ -1,0 +1,16 @@
+# C58 · Fichas políticas por país (12 países)
+
+Coste estimado: ~3 % de la cuota semanal · Cuándo: sin día fijo, en sesión nueva; antes de C60
+
+## Pega esto en una sesión nueva
+
+```
+Sesión corta (máx. 20 min). Sigue CLAUDE.md: español claro, sin recomendaciones de compra/venta ni predicción de resultados, cada dato con fuente y fecha, etiquetas [P] (primaria leída) / [S] (prensa o agregador) / [VERIFICAR] / [ESPECULACIÓN], contraste alcista/bajista y sesgos de la fuente, nunca claves ni secretos, no lances workflows ni llames a la API de Anthropic, no hagas commit ni push sin mi «sube» (enséñame `git status` antes). No leas enteros app.py ni apuntes; para informes usa `python scripts/buscar_informes.py "<consulta>" -n 6`. Webs que dan 403 a curl: navegador integrado, sin saltar controles anti-bots. Todo lo nuevo en el móvil va en desplegables, cerrado por defecto. Cifras con símbolo delante y «mil M» (research/GUIA-ESTILO-CIFRAS.md). Al terminar: fila en research/COLA.md con coste real, `python scripts/construir_movil.py` y `python scripts/construir_seguimiento.py`, y cierra con «¿Actualizo el Seguimiento y el planning?».
+
+Tarea C58: ficha política comparable de 12 países: UE → España, Alemania, Francia, Italia, Países Bajos, Polonia; potencias → EE. UU., China, Japón, India, Reino Unido, Rusia. Ids de `explorador/elecciones.json` donde ya existan (no dupliques datos de elecciones: enlaza).
+Por país, en `explorador/paises.json` (archivo nuevo, lista «paises»; campos: id, pais, bloque, sistema, reparto_poder, jefe_estado, jefe_gobierno, gobierno (partido o coalición), familia (familia política: conservadora, socialdemócrata, liberal, populista, nacionalista, partido único…), apoyo (escaños o mayoría y fecha), oposicion, proxima_eleccion {fecha, tipo, enlace al id de elecciones.json}, ultima_eleccion {fecha, participacion, resultado}, temas_clave (regulación cripto, deuda, energía; máx. 2 líneas), fuente, nivel, fecha_dato).
+Fuentes: parlamentos, ministerios de interior, comisiones electorales, diarios oficiales (BOE, Bundestag, Assemblée, Camera, Tweede Kamer, Sejm, Congress.gov, NPC, Kantei, Lok Sabha, UK Parliament, Duma). Prensa solo como [S]. China y Rusia: describe el sistema sin inventar competitividad electoral; marca [VERIFICAR] lo que no se pueda contrastar.
+Neutralidad: describe, no juzgues partidos; las etiquetas de familia política con la fuente (p. ej. ParlGov, Manifesto, Wikipedia solo como [S]). Escenarios de efecto en cripto/deuda/energía solo como [ESPECULACIÓN].
+Móvil: no lo construyas aquí (lo hace C60), pero valida el JSON con `python scripts/revisar_explorador.py` si lo reconoce.
+Informe en informes/research/AAAA-MM-DD-C58-fichas-politicas.md (máx. 1 página: qué se cubrió, qué no, 3-5 datos contrastados con la fuente oficial).
+```
