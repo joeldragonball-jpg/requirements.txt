@@ -7,6 +7,8 @@
 
 **Probado** en el navegador integrado: tarjeta, selector, ficha y cifra desplegables, sin errores nuevos (4 × 404 de iconos ya existentes); Órbita con 6+6 países y 42 filas.
 
-**No hecho:** pestaña «Países» dentro del tablero de datos (explorador/paneles.html); capa «Política y elecciones» de la Órbita con un movimiento por país (datos.json); hitos por país (siguen vacíos); enlaces clicables a los informes (solo nombres de archivo).
+**Completado después (mismo día):** pestaña «Países» en el tablero de datos (paneles.html, con paneles.py), movimientos de la capa «Política y elecciones» para IT, NL, PL, CN, JP, IN, GB y RU (ya existían FR, DE, ES, BR y US; 102 movimientos, 0 avisos de `revisar_explorador.py`), enlaces C58/C59/C61 en la ficha del móvil y un hito (España, vivienda, nivel S).
+
+**Sigue pendiente:** hitos por país (casi todos sin fuente oficial leída) y el vínculo entre la votación de vivienda y la disolución de las Cortes (solo prensa). El movimiento de India (generales 2024) es de memoria, nivel V.
 
 **Avisos:** el IPC de los países de la UE sale del último dato de Eurostat disponible (en España, dic-2025: la fecha va en la celda al tocarla); los de potencias son medias anuales del Banco Mundial, no comparables con el IPCA.

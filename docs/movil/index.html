@@ -197,7 +197,7 @@ function paisesCard(HOY) {
     <div class="pgrid h"><span>País</span><span>IPC</span><span>Paro</span><span>Deuda</span><span>Pobreza</span></div>${P.map(fila).join('')}
     <div class="paistip meta2" style="min-height:34px;margin:4px 0 10px">Toca una cifra para ver fecha, fuente y nivel.</div>
     ${P.map(fichaPais).join('')}
-    <div class="aviso" style="margin-top:10px;color:var(--sub)">${esc(D.paises.nota)} Sin puntuaciones propias ni ranking. Informes: ${(D.paises.informes || []).map(x => esc(x.split('/').pop())).join(' · ')}</div></div></div>`;
+    <div class="aviso" style="margin-top:10px;color:var(--sub)">${esc(D.paises.nota)} Sin puntuaciones propias ni ranking. Informes: ${(D.paises.informes || []).map(x => `<a href="https://github.com/joeldragonball-jpg/requirements.txt/blob/main/${esc(x)}" target="_blank" rel="noopener">${esc(x.split('/').pop().slice(11, 14))}</a>`).join(' · ')}</div></div></div>`;
 }
 const fm = (v, d = 2) => v == null ? '—' : v.toLocaleString('es-ES', {minimumFractionDigits: d, maximumFractionDigits: d, useGrouping: 'always'});
 const dias = iso => Math.round((new Date(iso + 'T12:00:00') - HOY) / 86400000);

@@ -337,11 +337,40 @@ function panelReservas(){
   ${bloque(r.bancos_centrales)}${bloque(r.reservas)}</div>`;
 }
 
-const PEST=[['tic','Deuda de EE. UU.',panelTIC],['deuda','Deuda pública',panelDeuda],['bonos','Bonos y curvas',panelBonos],['bancos','Deuda por banco',panelBancos],['reservas','Reservas y bancos centrales',panelReservas],['stable','Stablecoins',panelStable],['tipos','Tipos de interés',panelTipos],['rwa','Mercado y RWA',panelMercadoRWA],['glo','Glosario',panelGlosario]];
+/* Países (C60): política (C58) + indicadores (C59) + estabilidad (C61); solo cifras publicadas, sin ranking */
+let grupoPa='UE';
+const NOMI={ipc:'IPC',paro:'Paro',paro_juvenil:'Paro juvenil',pib:'PIB',deuda:'Deuda pública',deficit:'Déficit',pobreza:'Pobreza',gini:'Gini',salario_minimo:'Salario mínimo'};
+const NOMD={sanidad:'Sanidad',vivienda:'Vivienda',infraestructuras:'Infraestructuras y energía',trabajo:'Trabajo',educacion:'Educación',seguridad:'Seguridad y gobernanza',demografia:'Demografía y migración'};
+const fuentePa=u=>/eurostat/.test(u||'')?'Eurostat':/worldbank/.test(u||'')?'Banco Mundial':/imf\.org/.test(u||'')?'FMI':(u||'').slice(0,40);
+function nfp(v,u){ if(v==null) return '—'; const n=Number(v).toLocaleString('es-ES',{maximumFractionDigits:2}), m=/^([$£€¥])\s*(.*)$/.exec(u||''); return m? m[1]+n+(m[2]?' '+m[2]:'') : n+(u?' '+u:''); }
+function panelPaises(){
+  const F=(D.paises_fichas||{}).paises||[], ES=(D.estabilidad||{}).paises||[], IN=(D.indicadores||{}).paises||[];
+  if(!F.length) return '<div class="aviso">No hay fichas de países (explorador/paises.json).</div>';
+  const lista=F.filter(f=>(f.bloque==='UE')===(grupoPa==='UE'));
+  const sel=['UE','Potencias'].map(g=>`<button class="chip ${g===grupoPa?'on':''}" data-grpa="${g}">${g}</button>`).join(' ');
+  const cab='<tr><th>Indicador</th>'+lista.map(f=>`<th>${esc(f.pais)}</th>`).join('')+'</tr>';
+  const sec=t=>`<tr><th colspan="${lista.length+1}" style="text-align:left;padding-top:12px;color:var(--oro)">${esc(t)}</th></tr>`;
+  const cel=(txt,tip)=>`<td class="n" title="${esc(tip||'')}">${esc(txt)}</td>`;
+  let filas=sec('Política');
+  filas+='<tr><td>Gobierno</td>'+lista.map(f=>`<td title="${esc(f.apoyo||'')}">${esc((f.gobierno||'—').slice(0,60))}</td>`).join('')+'</tr>';
+  filas+='<tr><td>Familia política</td>'+lista.map(f=>cel(f.familia||'—')).join('')+'</tr>';
+  filas+='<tr><td>Próxima elección</td>'+lista.map(f=>{const p=f.proxima_eleccion||{}; return cel(p.fecha||'sin fecha',p.tipo);}).join('')+'</tr>';
+  filas+=sec('Indicadores económicos');
+  Object.keys(NOMI).forEach(k=>{ filas+=`<tr><td>${NOMI[k]}</td>`+lista.map(f=>{const x=((IN.find(i=>i.id===f.id)||{}).indicadores||{})[k]; return x? cel(nfp(x.valor,x.unidad),(x.fecha||'sin fecha')+' · '+fuentePa(x.fuente)+' · ['+x.nivel+'] · '+(x.definicion||'')) : cel('—');}).join('')+'</tr>'; });
+  Object.keys(NOMD).forEach(d=>{
+    filas+=sec(NOMD[d]);
+    const nombres=[]; ES.forEach(e=>((e.dimensiones[d]||{}).cifras||[]).forEach(c=>{ if(!nombres.includes(c.nombre)) nombres.push(c.nombre); }));
+    nombres.forEach(n=>{ filas+=`<tr><td>${esc(n)}</td>`+lista.map(f=>{const e=ES.find(x=>x.id===f.id), c=e&&((e.dimensiones[d]||{}).cifras||[]).find(z=>z.nombre===n); return c&&c.valor!=null? cel(nfp(c.valor,c.unidad),(c.anio||'sin año')+' · '+fuentePa(c.fuente)+' · ['+c.nivel+'] · '+(c.nota||'')) : cel('—');}).join('')+'</tr>'; });
+  });
+  const lects=lista.map(f=>{const e=ES.find(x=>x.id===f.id)||{}; return `<details style="margin:8px 0"><summary>${esc(f.pais)} · ${esc(f.jefe_gobierno||'')}</summary><p>${esc(f.lectura||'')}</p><p>${esc(e.lectura||'')}</p></details>`;}).join('');
+  return `<div class="mini" style="margin:6px 0">${esc((D.paises_fichas||{}).nota||'')} Pasa el ratón por una cifra para ver año, fuente y nivel.</div><div style="margin:8px 0">${sel}</div><div style="overflow-x:auto"><table>${cab}${filas}</table></div><h3>Lecturas [OPINIÓN]</h3>${lects}`;
+}
+const PEST=[['tic','Deuda de EE. UU.',panelTIC],['deuda','Deuda pública',panelDeuda],['bonos','Bonos y curvas',panelBonos],['bancos','Deuda por banco',panelBancos],['reservas','Reservas y bancos centrales',panelReservas],['stable','Stablecoins',panelStable],['tipos','Tipos de interés',panelTipos],['rwa','Mercado y RWA',panelMercadoRWA],['paises','Países',panelPaises],['glo','Glosario',panelGlosario]];
 let act=PEST[0][0];
 function pinta(){
   document.getElementById('pest').innerHTML=PEST.map(p=>`<button class="chip ${p[0]===act?'on':''}" data-k="${p[0]}">${p[1]}</button>`).join('')+'<span class="mini" style="align-self:center;margin-left:8px">Próximos: deuda por país · CBDC y redes</span>';
   document.getElementById('cont').innerHTML=PEST.find(p=>p[0]===act)[2]();
+  document.querySelectorAll('[data-grpa]').forEach(b=>b.onclick=()=>{grupoPa=b.dataset.grpa; pinta();});
   document.querySelectorAll('[data-banpais]').forEach(b=>b.onclick=()=>{banPais=b.dataset.banpais; banTodos=false; banSel=null; pinta();});
   document.querySelectorAll('tr[data-lei]').forEach(r=>r.onclick=()=>{banSel=banSel===r.dataset.lei?null:r.dataset.lei; pinta();});
   const bq=document.getElementById('banq'); if(bq) bq.oninput=()=>{banQ=bq.value; banSel=null; const pos=bq.selectionStart; pinta(); const n=document.getElementById('banq'); n.focus(); n.setSelectionRange(pos,pos);};
