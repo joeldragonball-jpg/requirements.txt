@@ -78,7 +78,7 @@ dl{margin:4px 0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px}dt{colo
 a{color:var(--ac)}
 .nota-v{color:var(--tx2);font-size:14px;margin:4px 0}
 .que{color:var(--tx2);font-size:14.5px;margin:2px 0 6px}
-details.bl{margin-bottom:clamp(4px,.5vw,10px)}details.bl>summary{cursor:pointer;font-weight:600;padding:4px 0}
+details.bl{margin-bottom:clamp(4px,.5vw,10px)}details.bl>summary{cursor:pointer;font-weight:600;padding:4px 0}.ms{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(88px,.9fr) minmax(110px,1.2fr) minmax(86px,.8fr);gap:10px;align-items:center;padding:7px 10px;margin:2px 0;border:1px solid var(--lin);border-radius:8px;background:var(--panel);list-style:none}details.bl>summary.ms::-webkit-details-marker{display:none}.ms:hover{background:#1b2640;border-color:var(--ac)}details[open]>summary.ms{background:#1b2640;border-color:var(--ac)}.ms .nm{font-weight:700;color:var(--tx);letter-spacing:.01em}.ms .nm::before{content:'▸  ';color:var(--ac)}details[open]>summary.ms .nm::before{content:'▾  '}.ms .im{font-weight:700;color:#f1d58a;text-align:right;white-space:nowrap}.ms .im small{color:var(--tx2);font-weight:400}.ms .pc{position:relative;height:20px;background:var(--nul);border-radius:5px;overflow:hidden}.ms .pc i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#27578f,var(--ac))}.ms .pc b{position:relative;padding-left:7px;font-size:.85em;color:#fff;line-height:20px}.ms .hb{color:var(--tx2);font-size:.86em;text-align:right;white-space:nowrap}.ms .hb em{font-style:normal;color:var(--tx);font-weight:600}.pb{display:inline-block;position:relative;min-width:110px;height:18px;background:var(--nul);border-radius:4px;overflow:hidden;vertical-align:middle}.pb i{position:absolute;top:0;bottom:0;left:0;background:#27578f}.pb b{position:relative;padding-left:6px;font-size:.88em;line-height:18px}@media(max-width:700px){.ms{grid-template-columns:1fr 1fr}.ms .nm{grid-column:1/-1}}
 .barrita{display:inline-block;height:9px;background:var(--ac);border-radius:2px;vertical-align:middle}
 .bars{display:flex;align-items:flex-end;gap:3px;height:70px}
 .bars div{flex:1;background:var(--ac);min-width:6px;position:relative}
@@ -183,6 +183,7 @@ function spark(arr,w=90,h=22,col='#5aa9e6'){
   const p=document.createElementNS(ns,'polyline');p.setAttribute('points',pts);p.setAttribute('pathLength','1');p.setAttribute('fill','none');p.setAttribute('stroke',col);p.setAttribute('stroke-width','1.6');s.append(p);
   const t=document.createElementNS(ns,'title');t.textContent='mín '+num(mn,2)+' · máx '+num(mx,2);s.append(t);return s}
 function barra(p,col){const b=el('span','barrita');b.style.width=Math.max(2,Math.min(100,p))+'px';if(col)b.style.background=col;return b}
+function pbar(v){const s=el('span','pb'),i=el('i');i.style.width=Math.min(100,Math.max(0,v))+'%';s.append(i,el('b',null,v.toLocaleString('es-ES',{minimumFractionDigits:1,maximumFractionDigits:1})+' %'));return s}
 function tabla(cols,filas){
   const t=el('table');const h=el('tr');
   for(const c of cols)h.append(el('th',c.n?'n':'',c.t));t.append(h);
@@ -844,10 +845,13 @@ function pEspana(){
       const dentro=el('div');dentro.append(el('p','nota-v',CM.nota));
       for(const x of CM.secciones){
         if(!x.total)continue;
-        const d=el('details','bl');d.append(el('summary',null,x.seccion+' · '+n1(x.total)+' M€ · '+fx(x.pct_total_estado,2)+' % del Estado · '+fx(x.por_habitante,2)+' € por habitante'));
+        const d=el('details','bl'),sm=el('summary','ms'),mxp=Math.max(...CM.secciones.map(z=>z.pct_total_estado||0));
+        const c1=el('span','nm',x.seccion),c2=el('span','im',n1(x.total)+' '),c3=el('span','pc'),c4=el('span','hb');
+        c2.append(el('small',null,'M€'));const bi=el('i');bi.style.width=Math.max(2,x.pct_total_estado/mxp*100)+'%';c3.append(bi,el('b',null,fx(x.pct_total_estado,2)+' % del Estado'));
+        c4.append(el('em',null,fx(x.por_habitante,2)+' €'),document.createTextNode(' / hab.'));sm.append(c1,c2,c3,c4);d.append(sm);
         const caps=Object.entries(x.capitulos).filter(([,v])=>v);
-        d.append(el('h3',null,'Por capítulo económico'),tabla([{t:'Capítulo',f:r=>r[0]+' · '+CM.leyenda[r[0]]},{t:'M€',n:1,f:r=>n1(r[1])},{t:'% del ministerio',n:1,f:r=>n1(r[1]/x.total*100)}],caps));
-        d.append(el('h3',null,'Programas mayores'),tabla([{t:'Programa',f:r=>r.n},{t:'M€',n:1,f:r=>n1(r.o)},{t:'%',n:1,f:r=>n1(r.o/x.total*100)}],x.programas));
+        d.append(el('h3',null,'Por capítulo económico'),tabla([{t:'Capítulo',f:r=>r[0]+' · '+CM.leyenda[r[0]]},{t:'M€',n:1,f:r=>n1(r[1])},{t:'% del ministerio',f:r=>pbar(r[1]/x.total*100)}],caps));
+        d.append(el('h3',null,'Programas mayores'),tabla([{t:'Programa',f:r=>r.n},{t:'M€',n:1,f:r=>n1(r.o)},{t:'% del ministerio',f:r=>pbar(r.o/x.total*100)}],x.programas));
         if(x.centros.length)d.append(el('h3',null,'Centros gestores'),tabla([{t:'Centro',f:r=>r.n},{t:'Inicial',n:1,f:r=>n1(r.ini)},{t:'Definitivo',n:1,f:r=>n1(r.def)},{t:'Obligaciones',n:1,f:r=>n1(r.o)}],x.centros));
         const des=Object.entries(x.destino).filter(([,v])=>v);
         if(des.length)d.append(el('h3',null,'A quién transfiere'),tabla([{t:'Destino',f:r=>r[0]},{t:'M€',n:1,f:r=>n1(r[1])}],des),tabla([{t:'Transferencia mayor',f:r=>r.n},{t:'Centro',f:r=>r.centro},{t:'Destino',f:r=>r.dest},{t:'M€',n:1,f:r=>n1(r.o)}],x.transf_mayores));

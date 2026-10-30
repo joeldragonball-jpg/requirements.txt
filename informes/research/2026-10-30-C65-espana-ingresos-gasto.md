@@ -34,3 +34,17 @@ Ingresos +16 % real frente a gasto +13 %: el saldo mejora, pero el déficit tota
 
 ## 5. Sin hacer
 IVA y Sociedades en euros (cuadro 0 del informe anual), SEPE oficial de 2025, PISA, justicia, trenes, obra de vivienda, Grecia/MEDE/UE/FONPRODE oficiales, corrección por envejecimiento, y la capa en el Panel informativo (escritorio) y la viñeta «España» del móvil (Joel 30-oct).
+
+## Verificaciones del 30-oct (tarde)
+| Cifra | Antes | Ahora | Fuente |
+|---|---|---|---|
+| Impuesto sobre Sociedades 2025 | sin importe | **42.266 M€ (+8,1 %)** [P] | AEAT, informe anual 2025 (pág. actualizada 23-abr-2026) |
+| Ingresos tributarios totales 2025 | sin dato | **325.356 M€ (+10,4 %)** [P] | AEAT, resumen del informe anual |
+| Beneficiarios de prestaciones por desempleo | 1.838.267 (nov-2025, prensa [S]) | **1.763.649 en sep-2026** [P]; nov-2025 confirmado en el Excel | SEPE, Informe-202609 e Informe-202511, hoja BP-1.1 |
+| Tasa de cobertura | 81,16 % (nov-2025, prensa) | **80,82 % en sep-2026** [P]; nov-2025 81,16 % confirmado | SEPE, hoja TC-1.1a |
+| Abandono educativo temprano 18-24 | 12,8 % (Funcas [S]) | **12,8 % (2025), UE-27 9,1 %** [P] | Eurostat edat_lfse_14, actualizado 10-sep-2026 |
+| FONPRODE | sin cifra | cartera de **518 M€ en 67 países (2023)** [P] | AECID, página del 3-jul-2026 |
+
+**Siguen sin cifra oficial leída ([VERIFICAR]):** IRPF (142.466 M€ de prensa) e IVA (solo variaciones: IRPF +10,1 %, IVA +9,9 %; los importes están en los cuadros xls 1.3 y 1.5, cuya URL dio 404); ingresos por fraude (22.743 M€, prensa); gasto mensual del SEPE (el Excel no lo trae) y su presupuesto 2025 (prorrogado de 2024; el PDF no se pudo extraer); préstamo a Grecia (Banco de España/Tesoro no accesibles); capital del MEDE (la página de capital da 404; solo el total del MEDE, 81.100 M€); saldo con la UE 2024 (el dominio de Hacienda no resuelve); créditos concedidos y devueltos de FONPRODE tras 2022.
+
+Archivos tocados: `explorador/espana-manual.json` y, regenerado con `scripts/espana_fiscal.py`, `explorador/espana.json`. Los Excel del SEPE se leyeron en una carpeta aparte, con la verificación de certificados activa.
