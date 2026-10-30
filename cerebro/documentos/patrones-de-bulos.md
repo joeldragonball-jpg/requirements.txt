@@ -154,3 +154,4 @@ actualizado: 2026-10-07
 
 - 30-oct-2026: Cointelegraph y otros agregadores recirculan artículos de Swell 2025 (4-5 nov, ronda de $500 M) como si fueran del Swell 2026; mirar siempre la fecha del propio artículo y contrastar con el comunicado de Ripple.
 - 30-oct-2026: las cifras de índices de EE. UU. del mismo día difieren entre fuentes (Nasdaq 100 −3 % en Bloomberg frente a Nasdaq Comp. −1,4 % en Yahoo): decir cuál índice y a qué hora; ETF de XRP «con entradas» en prensa a veces es publicidad (crypto.news, minería en la nube): usar SoSoValue/Farside.
+- 30-oct-2026: rumor de una gran gestora (BlackRock) en fechas de evento (Swell) sin comunicado ni registro en EDGAR: tratar como VERIFICAR, no como bulo ni como hecho; y ante un hackeo, las cifras iniciales cambian (Binance: 2.800 → 6.300 M$) y el primer comunicado puede editarse.
