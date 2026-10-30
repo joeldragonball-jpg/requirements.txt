@@ -699,30 +699,57 @@ const NOMI={ipc:'IPC',paro:'Paro',paro_juvenil:'Paro juvenil',pib:'PIB',deuda:'D
 const NOMD={sanidad:'Sanidad',vivienda:'Vivienda',infraestructuras:'Infraestructuras y energía',trabajo:'Trabajo',educacion:'Educación',seguridad:'Seguridad y gobernanza',demografia:'Demografía y migración'};
 const fuentePa=u=>/eurostat/.test(u||'')?'Eurostat':/worldbank/.test(u||'')?'Banco Mundial':/imf\.org/.test(u||'')?'FMI':(u||'').slice(0,40);
 function nfp(v,u){if(v==null)return '—';const n=Number(v).toLocaleString('es-ES',{maximumFractionDigits:2}),m=/^([$£€¥])\s*(.*)$/.exec(u||'');return m?m[1]+n+(m[2]?' '+m[2]:''):n+(u?' '+u:'')}
+/* Países: secciones plegables; cada cifra en tres líneas: valor (con color y flecha), año/fecha y «antes» */
+const BUENO_SUBE_N=/esperanza|gasto sanitario|gasto público en educación|banda ancha|médicos|camas|control de la corrupción|estabilidad política|imperio de la ley/i;
+const MALO_SUBE_N=/mortalidad|homicidios|empleo vulnerable|sobrecarga|ratio de dependencia/i;
+const SUELTA_UNID=/ (% |por |suscripciones|años|hijos|\$|estimación|personas).*$/;
+const cortaUnid=(v,u)=>nfp(v,u).replace(SUELTA_UNID,m=>/^ %/.test(m)?' %':'');
+function tendGen(nombre,valor,ant,antf,clave){if(valor==null||ant==null)return null;const d=valor-ant;
+  if(Math.abs(d)<0.005*Math.max(1,Math.abs(ant)))return{c:'#9aa7c2',f:'●',t:'sin cambio frente a '+(antf||'el dato anterior')};
+  let signo=null;if(clave)signo=BUENO_SUBE[clave]?1:-1;else if(BUENO_SUBE_N.test(nombre))signo=1;else if(MALO_SUBE_N.test(nombre))signo=-1;
+  const col=signo==null?'#9aa7c2':((d>0)===(signo>0))?'#4fe3a1':'#ff6b7d';
+  return{c:col,f:d>0?'▲':'▼',t:(signo==null?'cambia':col==='#4fe3a1'?'mejora':'empeora')+' ('+(d>0?'+':'')+d.toLocaleString('es-ES',{maximumFractionDigits:2})+' frente a '+(antf||'el dato anterior')+')'}}
+function celdaCifra(nombre,valor,unidad,fecha,ant,antf,tip,clave){
+  const c=el('td','n');c.title=tip||'';
+  if(valor==null){c.textContent='—';return c}
+  const t=tendGen(nombre,valor,ant,antf,clave);
+  const v=el('div','',cortaUnid(valor,unidad));v.style.cssText='font-weight:700;font-size:1.05em'+(t?';color:'+t.c:'');
+  if(t){const a=el('span','',' '+t.f);a.style.cssText='font-size:.7em;color:'+t.c;v.appendChild(a);c.title+=' · '+t.t}
+  c.appendChild(v);
+  const f=el('div','nota-v',fecha||'sin fecha');f.style.fontSize='.78em';c.appendChild(f);
+  if(ant!=null){const a=el('div','nota-v','antes '+cortaUnid(ant,unidad)+(antf?' ('+antf+')':''));a.style.fontSize='.78em';c.appendChild(a)}
+  return c}
+const UNID_FILA={ipc:'% anual, último mes',paro:'% de la población activa',paro_juvenil:'% de activos menores de 25',pib:'% anual, en volumen',deuda:'% del PIB',deficit:'% del PIB',pobreza:'% de la población',gini:'0 = igualdad, 100 = desigualdad',salario_minimo:'euros o moneda local'};
+function seccionPa(titulo,sub,abierta){const d=document.createElement('details');if(abierta)d.open=true;d.style.margin='10px 0';const s=el('summary','',titulo);s.style.cssText='font-weight:700;cursor:pointer;font-size:1.05em';d.appendChild(s);if(sub){d.appendChild(el('p','nota-v',sub))}return d}
 function pPaises(){
   const s=$('v-paises');s.textContent='';
   const F=(D.paises_fichas||{}).paises||[],ES=((D.estabilidad||{}).paises)||[],IN=((P&&P.indicadores)||{}).paises||[];
   if(!F.length){s.appendChild(el('p','','Sin datos de países (explorador/paises.json).'));return}
-  const nombreGrupo=g=>g==='UE'?'UE':'Potencias',lista=F.filter(f=>(f.bloque==='UE')===(grupoPa==='UE'));
+  const lista=F.filter(f=>(f.bloque==='UE')===(grupoPa==='UE'));
   const sel=el('div','');sel.style.margin='6px 0';
   ['UE','Potencias'].forEach(g=>{const b=el('button','chip',g);b.style.cursor='pointer';b.style.padding='4px 14px';if(g===grupoPa){b.style.background='var(--oro,#d4a84b)';b.style.color='#1a1405'}b.onclick=()=>{grupoPa=g;pPaises()};sel.appendChild(b)});
   s.appendChild(sel);
-  s.appendChild(el('p','',(D.paises_fichas.nota||'')+' Sin puntuaciones propias ni ranking: cada celda muestra la cifra publicada; pasa el ratón para ver año, fuente y nivel.'));
-  const t=el('table','');const h=el('tr','');h.appendChild(el('th','','Indicador'));lista.forEach(f=>h.appendChild(el('th','n',f.pais)));t.appendChild(h);
-  const fila=(nombre,celdas,sec)=>{const r=el('tr','');if(sec){const c=el('th','',nombre);c.colSpan=lista.length+1;r.appendChild(c)}else{r.appendChild(el('td','',nombre));celdas.forEach(c=>r.appendChild(c))}t.appendChild(r)};
-  const td=(txt,tip)=>{const c=el('td','n',txt);if(tip)c.title=tip;return c};
-  fila('Política',null,true);
-  fila('Gobierno',lista.map(f=>{const c=el('td','',(f.gobierno||'—').slice(0,60));c.title=f.apoyo||'';return c}));
-  fila('Familia política',lista.map(f=>td(f.familia||'—')));
-  fila('Próxima elección',lista.map(f=>{const p=f.proxima_eleccion||{};return td(p.fecha||'sin fecha',p.tipo||'')}));
-  fila('Indicadores económicos',null,true);
-  Object.keys(NOMI).forEach(k=>fila(NOMI[k],lista.map(f=>{const x=((IN.find(i=>i.id===f.id)||{}).indicadores||{})[k];if(!x)return td('—');const tn=tendPa(k,x),c=td(nfp(x.valor,x.unidad)+(tn?' '+tn.f:''),(x.fecha||'sin fecha')+' · '+fuentePa(x.fuente)+' · ['+x.nivel+'] · '+(x.definicion||'')+(tn?' · '+tn.t:''));if(tn)c.style.color=tn.c;return c})));
-  const dims=Object.keys(NOMD);
-  dims.forEach(d=>{
-    fila(NOMD[d],null,true);
+  s.appendChild(el('p','nota-v',(D.paises_fichas.nota||'')+' Sin puntuaciones propias ni ranking. Cada cifra: valor (arriba), año o mes (debajo) y «antes» con el dato anterior de la misma fuente. Verde = mejora, rojo = empeora, gris = sin juicio o sin cambio; sin color = no hay dato anterior. Pasa el ratón para ver fuente, nivel y definición.'));
+  const tabla0=()=>{const t=el('table','');const h=el('tr','');h.appendChild(el('th','',''));lista.forEach(f=>h.appendChild(el('th','n',f.pais)));t.appendChild(h);return t};
+  const env=(t)=>{const x=el('div','');x.style.overflowX='auto';x.appendChild(t);return x};
+  const nom=(txt,sub)=>{const c=el('td','',txt);if(sub){const n=el('div','nota-v',sub);n.style.fontSize='.78em';c.appendChild(n)}return c};
+  const sp=seccionPa('Política','Gobierno, familia política y próxima elección.',true),tp=tabla0();
+  [['Gobierno',f=>{const c=el('td','',(f.gobierno||'—').slice(0,70));c.title=f.apoyo||'';return c}],['Familia política',f=>el('td','',f.familia||'—')],['Próxima elección',f=>{const p=f.proxima_eleccion||{};const c=el('td','',(p.fecha||'sin fecha')+(p.tipo?' · '+p.tipo.slice(0,50):''));c.title=p.tipo||'';return c}]].forEach(([n,fn])=>{const r=el('tr','');r.appendChild(nom(n));lista.forEach(f=>r.appendChild(fn(f)));tp.appendChild(r)});
+  sp.appendChild(env(tp));s.appendChild(sp);
+  const se=seccionPa('Indicadores económicos','IPC, empleo, crecimiento, deuda y pobreza.',true),te=tabla0();
+  Object.keys(NOMI).forEach(k=>{const r=el('tr','');r.appendChild(nom(NOMI[k],UNID_FILA[k]));
+    lista.forEach(f=>{const x=((IN.find(i=>i.id===f.id)||{}).indicadores||{})[k];
+      r.appendChild(x?celdaCifra(NOMI[k],x.valor,x.unidad,x.fecha,x.anterior,x.anterior_fecha,(x.fecha||'sin fecha')+' · '+fuentePa(x.fuente)+' · ['+x.nivel+'] · '+(x.definicion||''),k):celdaCifra(NOMI[k],null))});te.appendChild(r)});
+  se.appendChild(env(te));s.appendChild(se);
+  Object.keys(NOMD).forEach((d,idx)=>{
     const nombres=[];ES.forEach(e=>((e.dimensiones[d]||{}).cifras||[]).forEach(c=>{if(!nombres.includes(c.nombre))nombres.push(c.nombre)}));
-    nombres.forEach(n=>fila(n,lista.map(f=>{const e=ES.find(x=>x.id===f.id),c=e&&((e.dimensiones[d]||{}).cifras||[]).find(z=>z.nombre===n);return c&&c.valor!=null?td(nfp(c.valor,c.unidad),(c.anio||'sin año')+' · '+fuentePa(c.fuente)+' · ['+c.nivel+'] · '+(c.nota||'')):td('—')})))});
-  const w=el('div','');w.style.overflowX='auto';w.appendChild(t);s.appendChild(w);
+    if(!nombres.length)return;
+    const sd=seccionPa(NOMD[d],null,idx<2),td2=tabla0();
+    nombres.forEach(n=>{const r=el('tr','');let u='';ES.forEach(e=>{const c=((e.dimensiones[d]||{}).cifras||[]).find(z=>z.nombre===n);if(c&&!u)u=c.unidad||''});r.appendChild(nom(n,u));
+      lista.forEach(f=>{const e=ES.find(x=>x.id===f.id),c=e&&((e.dimensiones[d]||{}).cifras||[]).find(z=>z.nombre===n);
+        r.appendChild(c&&c.valor!=null?celdaCifra(n,c.valor,c.unidad,c.anio,c.anterior,c.anterior_anio,(c.anio||'sin año')+' · '+fuentePa(c.fuente)+' · ['+c.nivel+'] · '+(c.nota||'')):celdaCifra(n,null))});td2.appendChild(r)});
+    sd.appendChild(env(td2));s.appendChild(sd)});
+  s.appendChild(el('h3','','Ficha de cada país'));
   lista.forEach(f=>{const e=ES.find(x=>x.id===f.id)||{};const d=document.createElement('details');d.style.margin='8px 0';
     d.appendChild(el('summary','',f.pais+' · '+(f.jefe_gobierno||'')));
     [['Sistema',f.sistema],['Reparto del poder',f.reparto_poder],['Jefe de Estado',f.jefe_estado],['Apoyo parlamentario',f.apoyo],['Oposición',f.oposicion],['Última elección',((f.ultima_eleccion||{}).fecha||'—')+' · '+((f.ultima_eleccion||{}).resultado||'')],['Temas clave',f.temas_clave],['Sistemas públicos',f.sistemas_publicos],['Lectura [OPINIÓN]',f.lectura],['Estabilidad [OPINIÓN]',e.lectura],['Fuente',(f.fuente||'')+' · ['+f.nivel+'] · '+f.fecha_dato]].forEach(([k,v])=>{if(v){const p=el('p','',k+': '+v);d.appendChild(p)}});

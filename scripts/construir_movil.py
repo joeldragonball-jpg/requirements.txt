@@ -303,7 +303,7 @@ def paises():
     for f in fich.get("paises", []):
         i = f["id"]
         e = est.get(i, {})
-        dims = {d: [{"n": c["nombre"], "v": c["valor"], "u": c["unidad"], "a": c["anio"], "f": fuente(c.get("fuente")), "nv": c.get("nivel"), "nota": c.get("nota", "")} for c in v.get("cifras", [])] for d, v in e.get("dimensiones", {}).items()}
+        dims = {d: [{"n": c["nombre"], "v": c["valor"], "u": c["unidad"], "a": c["anio"], "f": fuente(c.get("fuente")), "nv": c.get("nivel"), "nota": c.get("nota", ""), "ant": c.get("anterior"), "anf": c.get("anterior_anio")} for c in v.get("cifras", [])] for d, v in e.get("dimensiones", {}).items()}
         hitos = [h for v in e.get("dimensiones", {}).values() for h in v.get("hitos", [])]
         salida.append({"id": i, "pais": f["pais"], "bloque": f["bloque"], "pol": {k: f.get(k) for k in ("sistema", "reparto_poder", "jefe_estado", "jefe_gobierno", "gobierno", "familia", "apoyo", "oposicion", "proxima_eleccion", "ultima_eleccion", "temas_clave", "sistemas_publicos", "lectura", "fuente", "nivel", "fecha_dato")},
                        "ind": {k: {"v": x.get("valor"), "u": x.get("unidad"), "f": x.get("fecha"), "nv": x.get("nivel"), "def": x.get("definicion"), "fu": fuente(x.get("fuente")), "per": x.get("periodicidad"), "ant": x.get("anterior"), "antf": x.get("anterior_fecha")} for k, x in ind.get(i, {}).items()},

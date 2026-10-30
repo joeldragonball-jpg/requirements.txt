@@ -54,13 +54,21 @@ def _get(url, t=60):
         return json.loads(f.read().decode("utf-8", "replace"))
 
 
+_ANT = [None]      # (valor, periodo) del dato anterior del último indicador leído; lo recoge anadir()
+
+
+def _red(v):
+    return round(v, 2) if abs(v) < 10 else round(v, 1) if abs(v) < 1000 else round(v)
+
+
 def _bm(iso, ind):
-    j = _get(f"https://api.worldbank.org/v2/country/{iso}/indicator/{ind}?format=json&mrnev=1")
-    if len(j) < 2 or not j[1] or j[1][0]["value"] is None:
+    j = _get(f"https://api.worldbank.org/v2/country/{iso}/indicator/{ind}?format=json&mrv=8")
+    con = [x for x in (j[1] if len(j) > 1 and j[1] else []) if x.get("value") is not None]
+    if not con:
         raise ValueError("sin datos")
-    f = j[1][0]
-    v = f["value"]
-    return (round(v, 2) if abs(v) < 10 else round(v, 1) if abs(v) < 1000 else round(v)), f["date"], "https://data.worldbank.org/indicator/" + ind
+    f = con[0]
+    _ANT[0] = (_red(con[1]["value"]), con[1]["date"]) if len(con) > 1 else None
+    return _red(f["value"]), f["date"], "https://data.worldbank.org/indicator/" + ind
 
 
 def _eurostat(dataset, geo, **filtros):
@@ -71,6 +79,8 @@ def _eurostat(dataset, geo, **filtros):
     if not vals:
         raise ValueError("sin datos")
     i = max(vals)
+    ant = [k for k in sorted(vals, reverse=True) if k < i]
+    _ANT[0] = (round(vals[ant[0]], 1), tiempos[ant[0]]) if ant else None
     return round(vals[i], 1), tiempos[i], "https://ec.europa.eu/eurostat/databrowser/view/" + dataset
 
 
@@ -93,8 +103,11 @@ def main():
                 dims.setdefault(dim, {"cifras": [], "hitos": []})["cifras"].append(ya)
                 return
             try:
+                _ANT[0] = None
                 v, anio, fuente = fn()
                 cifra = {"nombre": nombre_c, "valor": v, "unidad": unidad, "anio": anio, "fuente": fuente, "nivel": "P", "nota": nota}
+                if _ANT[0]:
+                    cifra["anterior"], cifra["anterior_anio"] = _ANT[0]
             except Exception as e:
                 fallos.append(f"{pid}/{nombre_c}: {type(e).__name__}: {e}")
                 cifra = antiguo.get(nombre_c) or {"nombre": nombre_c, "valor": None, "unidad": unidad, "anio": None, "fuente": "", "nivel": "VERIFICAR", "nota": "sin dato"}
