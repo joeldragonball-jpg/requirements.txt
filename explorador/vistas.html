@@ -838,10 +838,6 @@ function pEspana(){
       tabla([{t:'Ministerio',f:r=>r.nombre},...ejec],mins),
       el('h3',null,'Fuera de los ministerios: deuda, pensiones de funcionarios, UE, CCAA y entes locales, órganos constitucionales'),
       tabla([{t:'Partida',f:r=>r.nombre},{t:'Tipo',f:r=>r.tipo},...ejec],otros))));
-    add(bloque('Programas concretos: igualdad, IMV, becas, inmigración, cooperación, dependencia…','Partida exacta con su código. Las aportaciones a la Seguridad Social son la parte que paga el Estado.',pieE,conL(B.lecturas.igualdad,
-      tabla([{t:'Bloque',f:r=>r.grupo},{t:'Programa',f:r=>r.nombre},{t:'Código',f:r=>r.codigo},...ejec,{t:'Nota',f:r=>r.nota}],B.programas))));
-    add(bloque('Lo que no se puede aislar','Sin partida propia o sin cifra publicada: no se estima.',{t:'Enfermedades raras, CIBERER, CATE, violencia de género total'},
-      tabla([{t:'Tema',f:r=>r.tema},{t:'Qué hay',f:r=>r.texto},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Fuente',f:r=>lnk(r.fuente)}],B.no_aislable)));
     const CM=B.capitulos_por_ministerio;
     if(CM){
       const pie7={nivel:CM.nivel,t:'IGAE · obligaciones de 2025 · M€ · leído '+B.leido};
@@ -863,6 +859,10 @@ function pEspana(){
         tabla([{t:'Sección',f:r=>r.seccion},{t:'Altos cargos, M€',n:1,f:r=>fx(r.altos_cargos.obligaciones,2)},{t:'Eventuales, M€',n:1,f:r=>fx(r.eventuales.obligaciones,2)},{t:'Personal total, M€',n:1,f:r=>n1(r.capitulos['1'])},{t:'% de personal en la sección',n:1,f:r=>n1(r.pct_personal)}],CM.secciones.filter(r=>r.altos_cargos.obligaciones||r.eventuales.obligaciones).sort((a,b)=>b.altos_cargos.obligaciones-a.altos_cargos.obligaciones)),
         el('h3',null,'Número de cargos y retribuciones oficiales'),dat([CM.altos_cargos_numero,...CM.retribuciones])),false));
     }
+    add(bloque('Programas concretos: igualdad, IMV, becas, inmigración, cooperación, dependencia…','Partida exacta con su código. Las aportaciones a la Seguridad Social son la parte que paga el Estado.',pieE,conL(B.lecturas.igualdad,
+      tabla([{t:'Bloque',f:r=>r.grupo},{t:'Programa',f:r=>r.nombre},{t:'Código',f:r=>r.codigo},...ejec,{t:'Nota',f:r=>r.nota}],B.programas))));
+    add(bloque('Lo que no se puede aislar','Sin partida propia o sin cifra publicada: no se estima.',{t:'Enfermedades raras, CIBERER, CATE, violencia de género total'},
+      tabla([{t:'Tema',f:r=>r.tema},{t:'Qué hay',f:r=>r.texto},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Fuente',f:r=>lnk(r.fuente)}],B.no_aislable)));
     const FM=B.fuera_de_ministerios;
     if(FM){
       const pa=FM.administraciones_2024;

@@ -5,9 +5,9 @@
       "valor": 7.25,
       "unidad": "$ por hora (federal)",
       "fecha": "2009-07",
-      "fuente": "U.S. Department of Labor (federal); muchos estados fijan uno mayor",
-      "nivel": "V",
-      "definicion": "Mínimo federal vigente; los estados pueden superarlo [VERIFICAR en dol.gov]",
+      "fuente": "https://www.dol.gov/general/topic/wages/minimumwage",
+      "nivel": "P",
+      "definicion": "Mínimo federal para empleados cubiertos por la FLSA, leído en dol.gov el 30-oct-2026 (en vigor desde el 24-jul-2009, según dol.gov/agencies/whd/minimum-wage/history); si un estado fija uno mayor, se aplica el más alto.",
       "periodicidad": "cuando lo cambia el Congreso"
     },
     "pobreza": {
@@ -38,6 +38,24 @@
       "nivel": "V",
       "definicion": "National Living Wage desde abril de 2026 [VERIFICAR en gov.uk]",
       "periodicidad": "anual (abril)"
+    },
+    "gini": {
+      "valor": 32.7,
+      "unidad": "puntos (0-100)",
+      "fecha": "FYE 2025",
+      "fuente": "https://www.ons.gov.uk/peoplepopulationandcommunity/personalandhouseholdfinances/incomeandwealth/bulletins/householddisposableincomeandinequality/financialyearending2025",
+      "nivel": "P",
+      "definicion": "Gini de la renta disponible de los hogares (ONS, publicado el 2-oct-2026; baja 0,2 puntos). DWP (HBAI, 26-mar-2026) da 33 antes de vivienda y 37 después. La muestra de la encuesta del ONS cayó un 29 % y tiene avisos de calidad.",
+      "periodicidad": "anual"
+    },
+    "pobreza": {
+      "valor": 16,
+      "unidad": "% de la población",
+      "fecha": "FYE 2025",
+      "fuente": "https://www.gov.uk/government/statistics/households-below-average-income-for-financial-years-ending-1995-to-2025/households-below-average-income-an-analysis-of-the-uk-income-distribution-fye-1995-to-fye-2025",
+      "nivel": "P",
+      "definicion": "Pobreza relativa (menos del 60 % de la mediana) antes de vivienda; 20 % después de vivienda (DWP HBAI, 26-mar-2026). Sube desde 15 % y 19 %, no significativo. Ruptura de serie por datos administrativos vinculados: no comparable con años anteriores.",
+      "periodicidad": "anual"
     }
   },
   "RU": {
