@@ -454,9 +454,35 @@ function masonry(cls,fijas){
     const k=banda.cols.reduce((a,b)=>a.peso<=b.peso?a:b);k.appendChild(x);k.peso+=peso(x)}};
   return c}
 /* qué «datos al día» enseña cada capa (igual que la Órbita actual) */
+/* ---------- Capa Política: comparar países (IPC, paro, deuda, pobreza…) con color frente al dato anterior ---------- */
+const BUENO_SUBE={pib:1,deficit:1,salario_minimo:1};
+function tendPa(k,x){if(!x||x.valor==null||x.anterior==null)return null;const d=x.valor-x.anterior;if(Math.abs(d)<0.05)return{c:'#9aa7c2',f:'●',t:'sin cambio frente a '+(x.anterior_fecha||'el dato anterior')};const mej=(d>0)===!!BUENO_SUBE[k];return{c:mej?'#4fe3a1':'#ff6b7d',f:d>0?'▲':'▼',t:(mej?'mejora':'empeora')+' ('+(d>0?'+':'')+d.toLocaleString('es-ES',{maximumFractionDigits:1})+' frente a '+(x.anterior_fecha||'el dato anterior')+')'}}
+function nComparar(){
+  const F=(D.paises_fichas||{}).paises||[],IN=((P&&P.indicadores)||{}).paises||[];
+  const w=el('div','');w.style.overflowX='auto';
+  w.appendChild(el('p','nota-v','Cifras publicadas (Eurostat, Banco Mundial, FMI). ▲▼ = cambio frente al dato anterior de la misma fuente: verde mejora, rojo empeora (para IPC, paro, deuda y pobreza subir es malo; para PIB y déficit, bueno). Sin color = no hay dato anterior. Sin ranking propio; pasa el ratón para ver fecha, fuente y nivel.'));
+  const t=el('table','');const cols=[['ipc','IPC'],['paro','Paro'],['pib','PIB'],['deuda','Deuda/PIB'],['pobreza','Pobreza']];
+  const h=el('tr','');['País','Gobierno','Próxima elección'].forEach(x=>h.appendChild(el('th','',x)));cols.forEach(c=>h.appendChild(el('th','n',c[1])));t.appendChild(h);
+  const hoy=new Date();
+  for(const f of F){const r=el('tr','');r.appendChild(el('td','',f.pais));const g=el('td','',(f.gobierno||'—').slice(0,48));g.title=(f.gobierno||'')+' · '+(f.familia||'');r.appendChild(g);
+    const pe=f.proxima_eleccion||{},d=pe.fecha&&/^\d{4}-\d{2}-\d{2}$/.test(pe.fecha)?Math.round((new Date(pe.fecha)-hoy)/864e5):null;
+    const e=el('td','',(pe.fecha||'sin fecha')+(d==null?'':d>=0?' ('+d+' d)':''));e.title=pe.tipo||'';r.appendChild(e);
+    for(const [k] of cols){const x=((IN.find(i=>i.id===f.id)||{}).indicadores||{})[k];const c=el('td','n',x&&x.valor!=null?nfp(x.valor,x.unidad).replace(/ % .*$/,' %'):'—');
+      if(x&&x.valor!=null){const tn=tendPa(k,x);c.title=(x.fecha||'sin fecha')+' · '+fuentePa(x.fuente)+' · ['+x.nivel+'] · '+(x.definicion||'')+(tn?' · '+tn.t:'');if(tn){const a=el('span','',' '+tn.f);a.style.color=tn.c;a.style.fontSize='.75em';c.style.color=tn.c;c.appendChild(a)}}
+      r.appendChild(c)}
+    t.appendChild(r)}
+  w.appendChild(t);
+  const b=el('button','chip','Ver la ficha completa de cada país (política, indicadores y estabilidad) →');b.style.cssText='cursor:pointer;margin-top:8px;padding:5px 12px';b.onclick=()=>ir('paises');w.appendChild(b);
+  return w}
+function nElecciones(){
+  const E=((D.elecciones||{}).paises||[]).slice().sort((a,b)=>(a.fecha||'9999').localeCompare(b.fecha||'9999')),hoy=new Date();
+  return tabla([{t:'País',f:r=>r.pais},{t:'Fecha',f:r=>{const d=r.fecha&&/^\d{4}-\d{2}-\d{2}$/.test(r.fecha)?Math.round((new Date(r.fecha)-hoy)/864e5):null;return (r.fecha||'sin fecha fija')+(d==null?'':d>=0?' (en '+d+' d)':' (hace '+(-d)+' d)')}},{t:'Qué se vota',f:r=>r.tipo},{t:'Nivel',f:r=>nivelBadge(r.nivel)}],E)}
+function nPetroleoHitos(){
+  const H=((D.hitos_petroleo||{}).hitos||[]).slice().reverse();
+  return tabla([{t:'Fecha',f:r=>r.fecha},{t:'Qué pasó',f:r=>r.hecho},{t:'Brent ($)',n:1,f:r=>r.brent?r.brent[0]+' → '+r.brent[1]:'—'},{t:'Nivel',f:r=>nivelBadge(r.nivel)}],H)}
 function datosCapa(pad,id){
   if(!P){pad.append(el('p','nota-v','Falta paneles.json.'));return}
-  const mz=masonry();pad.append(mz);const anchos=/Bonos|Deuda|Quién tiene|Liquidez/;
+  const mz=masonry();pad.append(mz);const anchos=/Bonos|Deuda|Quién tiene|Liquidez|Comparar|Elecciones|Hitos/;
   const caj=(tit,nodo,pie)=>{const b=bloque(tit,null,pie,nodo);if(anchos.test(tit))b.classList.add('ancho');mz.append(b)};
   const pie=(b,t)=>({nivel:b.nivel,t:t+' · leído '+(b.leido||P.leido)});
   if(id==='reg')caj('Tipos de interés de los bancos centrales',nTipos(),pie(P.tipos_vivos,'Bancos centrales'));
@@ -469,7 +495,8 @@ function datosCapa(pad,id){
   else if(id==='fondos'){caj('BTC, ETH, XRP y XLM',nMercado(),pie(P.mercado,'CoinGecko'));caj('Bolsas',nIndices(),pie(P.indices,'Yahoo Finance'))}
   else if(id==='cbdc')caj('Quién tiene deuda de EE. UU.',nTic(8),pie(P.tic,'Tesoro de EE. UU. (TIC)'));
   else if(id==='liquidez'){caj('Liquidez: cantidad de dinero',nLiquidez(),pie(P.liquidez,'FRED, BCE'));caj('Tipos oficiales de los bancos centrales',nTipos(),pie(P.tipos_vivos,'Bancos centrales'))}
-  else if(id==='energia')caj('Estrecho de Ormuz',nOrmuz(),pie(P.ormuz,'IMF PortWatch'));
+  else if(id==='energia'){caj('Estrecho de Ormuz',nOrmuz(),pie(P.ormuz,'IMF PortWatch'));if((D.hitos_petroleo||{}).hitos)caj('Hitos del petróleo (Brent)',nPetroleoHitos(),{nivel:'S',t:'explorador/hitos_petroleo.json'})}
+  else if(id==='politica'){if((D.paises_fichas||{}).paises)caj('Comparar países: IPC, paro, PIB, deuda y pobreza',nComparar(),{nivel:'P',t:'Eurostat, Banco Mundial y FMI · leído '+(((P||{}).indicadores||{}).leido||'')});if((D.elecciones||{}).paises)caj('Elecciones por fecha',nElecciones(),{nivel:'S',t:'explorador/elecciones.json'})}
   else{mz.remove();pad.append(el('p','nota-v','Esta capa no tiene paneles de datos al día; sus hechos y cifras están en los cuadros de arriba.'));
     if(P){pad.append(el('div','alt'));pad.lastChild.append(el('h4',null,'Mientras tanto, cifras generales de mercado (CoinGecko, '+P.leido+')'),nMercado())}}
 }
@@ -689,7 +716,7 @@ function pPaises(){
   fila('Familia política',lista.map(f=>td(f.familia||'—')));
   fila('Próxima elección',lista.map(f=>{const p=f.proxima_eleccion||{};return td(p.fecha||'sin fecha',p.tipo||'')}));
   fila('Indicadores económicos',null,true);
-  Object.keys(NOMI).forEach(k=>fila(NOMI[k],lista.map(f=>{const x=((IN.find(i=>i.id===f.id)||{}).indicadores||{})[k];return x?td(nfp(x.valor,x.unidad),(x.fecha||'sin fecha')+' · '+fuentePa(x.fuente)+' · ['+x.nivel+'] · '+(x.definicion||'')):td('—')})));
+  Object.keys(NOMI).forEach(k=>fila(NOMI[k],lista.map(f=>{const x=((IN.find(i=>i.id===f.id)||{}).indicadores||{})[k];if(!x)return td('—');const tn=tendPa(k,x),c=td(nfp(x.valor,x.unidad)+(tn?' '+tn.f:''),(x.fecha||'sin fecha')+' · '+fuentePa(x.fuente)+' · ['+x.nivel+'] · '+(x.definicion||'')+(tn?' · '+tn.t:''));if(tn)c.style.color=tn.c;return c})));
   const dims=Object.keys(NOMD);
   dims.forEach(d=>{
     fila(NOMD[d],null,true);

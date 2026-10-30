@@ -243,7 +243,7 @@ def _html(conceptos):
         datos["verificados"] = json.loads((RAIZ / "eventos" / "verificados.json").read_text(encoding="utf-8")).get("eventos", [])
     except Exception:
         datos["verificados"] = []
-    for clave, archivo in (("calificaciones", "calificaciones"), ("deuda_fmi", "deuda-fmi"), ("valoracion", "valoracion"), ("reservas", "reservas"), ("rwa_cadena_manual", "rwa-por-cadena-manual"), ("cbdc_blockchains", "cbdc-blockchains"), ("paises_fichas", "paises"), ("estabilidad", "estabilidad")):
+    for clave, archivo in (("calificaciones", "calificaciones"), ("deuda_fmi", "deuda-fmi"), ("valoracion", "valoracion"), ("reservas", "reservas"), ("rwa_cadena_manual", "rwa-por-cadena-manual"), ("cbdc_blockchains", "cbdc-blockchains"), ("paises_fichas", "paises"), ("estabilidad", "estabilidad"), ("elecciones", "elecciones"), ("hitos_petroleo", "hitos_petroleo")):
         try:                          # tablas de los paneles de datos (solo lectura); sin el archivo, esa tabla no sale
             datos[clave] = json.loads((CARPETA / f"{archivo}.json").read_text(encoding="utf-8"))
         except Exception:

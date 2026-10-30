@@ -1,11 +1,11 @@
 @echo off
 chcp 65001 >nul
-title Mi Cerebro - app local
+title Panel informativo - app local
 cd /d "%~dp0"
 
 echo.
 echo  ===============================================
-echo    MI CEREBRO  (app local: Cerebro, Seguimiento,
+echo    PANEL INFORMATIVO  (app local: Cerebro, Seguimiento,
 echo    Privado)  -  http://localhost:8791
 echo  ===============================================
 echo.

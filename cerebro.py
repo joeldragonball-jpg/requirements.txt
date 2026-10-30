@@ -194,7 +194,7 @@ def mostrar():
     explorador_arriba = st.session_state.get("grupo_menu_cerebro", 0) == 0
     cont_contenido = st.container() if explorador_arriba else None
     if not explorador_arriba:
-        st.markdown("<h1 style='margin:0 0 8px;font-size:clamp(1.6rem,5vw,2.2rem);font-weight:700'>🧠 Mi Cerebro</h1>",
+        st.markdown("<h1 style='margin:0 0 8px;font-size:clamp(1.6rem,5vw,2.2rem);font-weight:700'>🧠 Panel informativo</h1>",
                     unsafe_allow_html=True)
     if not docs:
         st.info(INSTRUCCIONES_VACIO)

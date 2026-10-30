@@ -20,7 +20,7 @@ PAISES = [
     ("IN", "India", None, "IND"), ("GB", "Reino Unido", None, "GBR"), ("RU", "Rusia", None, "RUS"),
 ]
 URL_EUROSTAT = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/{d}?{q}&format=JSON"
-URL_BM = "https://api.worldbank.org/v2/country/{c}/indicator/{i}?format=json&mrnev=1"
+URL_BM = "https://api.worldbank.org/v2/country/{c}/indicator/{i}?format=json&mrv=6"
 URL_FMI = "https://www.imf.org/external/datamapper/api/v1/{i}/{c}"
 
 
@@ -28,6 +28,9 @@ def _get(url, t=40):
     r = urllib.request.Request(url, headers={"User-Agent": "cartera-joel/1.0 (uso personal)"})
     with urllib.request.urlopen(r, timeout=t) as f:
         return json.loads(f.read().decode("utf-8", "replace"))
+
+
+_ANT = [None]      # valor del periodo anterior del último indicador leído: (valor, periodo); lo recoge poner()
 
 
 def _eurostat(dataset, **filtros):
@@ -39,6 +42,8 @@ def _eurostat(dataset, **filtros):
     if not vals:
         raise ValueError("sin datos")
     i = max(vals)
+    ant = [k for k in sorted(vals, reverse=True) if k < i]
+    _ANT[0] = (round(vals[ant[0]], 1), tiempos[ant[0]]) if ant else None
     return round(vals[i], 1), tiempos[i], j.get("updated", "")[:10]
 
 
@@ -46,9 +51,11 @@ def _bm(pais, indicador):
     j = _get(URL_BM.format(c=pais, i=indicador))
     if len(j) < 2 or not j[1]:
         raise ValueError("sin datos")
-    f = j[1][0]
-    if f["value"] is None:
+    con = [x for x in j[1] if x.get("value") is not None]
+    if not con:
         raise ValueError("sin datos")
+    f = con[0]
+    _ANT[0] = (round(con[1]["value"], 1), con[1]["date"]) if len(con) > 1 else None
     return round(f["value"], 1), f["date"], j[0].get("lastupdated", "")
 
 
@@ -58,6 +65,7 @@ def _fmi(pais, campo):
     i = j["anios"].index("2025")
     for p in j["paises"]:
         if p["id"] == pais:
+            _ANT[0] = (round(p[campo][i - 1], 1), "2024") if i > 0 and p[campo][i - 1] is not None else None
             return round(p[campo][i], 1), "2025"
     raise ValueError("país sin dato en deuda-fmi.json")
 
@@ -79,7 +87,12 @@ def leer_indicadores(previo=None):
 
         def poner(clave, fn):
             try:
+                _ANT[0] = None
                 ind[clave] = fn()
+                if _ANT[0]:
+                    ind[clave]["anterior"], ind[clave]["anterior_fecha"] = _ANT[0]
+                elif clave in previo_p.get(pid, {}) and previo_p[pid][clave].get("fecha") != ind[clave].get("fecha") and previo_p[pid][clave].get("valor") is not None:
+                    ind[clave]["anterior"], ind[clave]["anterior_fecha"] = previo_p[pid][clave]["valor"], previo_p[pid][clave].get("fecha")
             except Exception as e:
                 fallos.append(f"{pid}/{clave}: {type(e).__name__}: {e}")
                 if clave in previo_p.get(pid, {}):

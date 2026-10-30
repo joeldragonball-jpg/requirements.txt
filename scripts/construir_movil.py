@@ -306,7 +306,7 @@ def paises():
         dims = {d: [{"n": c["nombre"], "v": c["valor"], "u": c["unidad"], "a": c["anio"], "f": fuente(c.get("fuente")), "nv": c.get("nivel"), "nota": c.get("nota", "")} for c in v.get("cifras", [])] for d, v in e.get("dimensiones", {}).items()}
         hitos = [h for v in e.get("dimensiones", {}).values() for h in v.get("hitos", [])]
         salida.append({"id": i, "pais": f["pais"], "bloque": f["bloque"], "pol": {k: f.get(k) for k in ("sistema", "reparto_poder", "jefe_estado", "jefe_gobierno", "gobierno", "familia", "apoyo", "oposicion", "proxima_eleccion", "ultima_eleccion", "temas_clave", "sistemas_publicos", "lectura", "fuente", "nivel", "fecha_dato")},
-                       "ind": {k: {"v": x.get("valor"), "u": x.get("unidad"), "f": x.get("fecha"), "nv": x.get("nivel"), "def": x.get("definicion"), "fu": fuente(x.get("fuente")), "per": x.get("periodicidad")} for k, x in ind.get(i, {}).items()},
+                       "ind": {k: {"v": x.get("valor"), "u": x.get("unidad"), "f": x.get("fecha"), "nv": x.get("nivel"), "def": x.get("definicion"), "fu": fuente(x.get("fuente")), "per": x.get("periodicidad"), "ant": x.get("anterior"), "antf": x.get("anterior_fecha")} for k, x in ind.get(i, {}).items()},
                        "est": dims, "hitos": hitos, "lectura_est": e.get("lectura")})
     return {"nota": fich.get("nota"), "nota_est": cargar("explorador/estabilidad.json").get("nota"), "paises": salida,
             "informes": ["informes/research/2026-10-30-C58-fichas-politicas.md", "informes/research/2026-10-30-C59-indicadores.md", "informes/research/2026-10-30-C61-estabilidad.md"]}
