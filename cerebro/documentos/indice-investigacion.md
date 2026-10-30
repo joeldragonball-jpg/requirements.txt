@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-10-29
+actualizado: 2026-10-30
 ---
 # Índice de la investigación
 
@@ -27,9 +27,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-14 · India: RBI, e₹, UPI, fiscalidad y regulación cripto (2026-10-14, R02) (`informes/research/2026-10-14-R02-india.md`): India mantiene dos carriles opuestos: infraestructura pública de pagos muy exitosa (UPI, ~24.000 M de operaciones/mes) y un e₹ piloto aún pequeño;…
 
 ## Energía y Ormuz
+- 2026-10-30 · C29 · Petróleo, Ormuz y guerra ↔ noticias ↔ Órbita (`informes/research/2026-10-30-C29-energia-guerra-noticias.md`): Los hitos diplomáticos y militares de octubre salen de los informes diarios del repo (titulares de CoinDesk, CNBC, Al Jazeera y el bot) [S] : no abrí…
 - 2026-10-25 · W10 · Energía y geopolítica: Ormuz con datos primarios (25-oct-2026) (`informes/research/2026-10-25-W10-energia.md`): Continúa 2026 10 24 T18 energia actualizacion.md . Hoy es domingo: los mercados están cerrados desde el viernes, así que no hay precios nuevos de…
 - 2026-10-24 · T18 Energía y geopolítica: actualización de datos primarios (24-oct-2026) (`informes/research/2026-10-24-T18-energia-actualizacion.md`): Actualización corta sobre 2026 10 17 R46 geopolitica energia ormuz profundo.md y el dossier G9; no repite su análisis. Sin recomendaciones ni…
-- 2026-10-17 · Geopolítica y energía: Ormuz, petróleo, sanciones y cadena de suministro (2026-10-17, R46 profundo) (`informes/research/2026-10-17-R46-geopolitica-energia-ormuz-profundo.md`): HECHO: el petróleo ya es el doble que hace un año y el mercado físico sigue ajustado. Brent al contado 126,55 $/b el 14 oct 2026 frente a 63,00 $/b…
 
 ## Deuda y bonos
 - 2026-10-29 · D01–D03, D05: tipo a 10 años mensual por país, fuente oficial del BCE (29-oct-2026) (`informes/research/2026-10-29-D-bce-tipo-10a-mensual.md`): Curva diaria de la zona euro (no por país): serie YC.B.U2.EUR.4F.G N A.SV C YM.SR 10Y , última observación 28 oct 2026.
@@ -42,9 +42,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-25 · C03 · Matriz de riesgos y escenarios de estrés (25-oct-2026) (`informes/research/2026-10-25-C03-matriz-de-riesgos.md`): Hueco del Centro (módulo 01, Radar). Es una herramienta de lectura, no una predicción ni una recomendación . Las probabilidades son juicios míos a 12…
 
 ## Cripto y ETF
+- 2026-10-30 · EV · Swell 2026 (Ripple, 27-29 oct) y Meridian 2026 (Stellar, 28-29 oct) · 30-oct-2026 (`informes/research/2026-10-30-EV-swell-meridian.md`): HECHOS [P] (comunicado de Ripple, 28 oct 2026):
 - 2026-10-29 · W04 · ETF de XRP/XLM, flujos y 13F (29-oct-2026) (`informes/research/2026-10-29-W04-etf.md`): Sin recomendaciones ni predicciones de precio. [P] = fuente primaria leída; [S] = agregador o prensa; [VERIFICAR] = sin comprobar.
 - 2026-10-29 · EV · Swell 2026 (Ripple) y Meridian 2026 (Stellar) · 29-oct-2026 (C57) (`informes/research/2026-10-29-EV-swell-meridian.md`): Swell (Nueva York, 27 29 oct): HECHOS [P, comunicados de Ripple]
-- 2026-10-29 · C49 · Stablecoins del XRPL y Stellar con fuente primaria (29-oct-2026) (`informes/research/2026-10-29-C49-stablecoins-primarias.md`): Qué se hizo: scripts/stablecoins primarias.py (sin IA) lee el propio ledger y guarda stablecoins primarias en explorador/paneles.json ; el panel…
 
 ## Regulación por país
 - 2026-10-29 · W03E · Irán, Egipto y Etiopía, pasada 3 · 2026-10-29 (`informes/research/2026-10-29-W03E-pasada3.md`): Tercera pasada con fuentes oficiales abiertas hoy (Chrome y curl). Edita solo explorador/regulacion.json . Sin recomendaciones: el radar describe…
@@ -57,9 +57,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-28 · Informe de CIERRE — 2026-10-28 (mié) (`informes/2026-10-28-cierre.md`): Bloque que cubre: SOLO el cierre de América (Wall Street, Tesoro, cripto del día y decisión macro de la tarde). Asia y Europa quedan para la apertura…
 
 ## Otros
+- 2026-10-30 · C30 · Política y elecciones por país (`informes/research/2026-10-30-C30-politica-elecciones.md`): Ninguna fecha está confirmada en fuente oficial : no abrí el BOE, el Congreso, Légifrance ni comisiones electorales. Todo viene de prensa y…
 - 2026-10-29 · EV · Reunión del FOMC del 27-28 oct 2026 (hecho el 29-oct-2026) (`informes/research/2026-10-29-EV-fomc-28-oct.md`): La Fed mantiene el rango objetivo en 3,75 % 4,00 % .
 - 2026-10-29 · C50 · Valor tokenizado por blockchain: mejor fuente (29-oct-2026) (`informes/research/2026-10-29-C50-rwa-por-cadena.md`): Nivel: [S] = agregador/prensa; [P] = emisor o fuente oficial; [VERIFICAR] = sin contrastar. Información, no recomendación.
-- 2026-10-28 · C41C · Fusión del diseño de la Órbita (C41A Claude + C41B Gemini) · 28-oct-2026 (`informes/research/2026-10-28-C41C-fusion-diseno.md`): Sin IA de pago ni cambios en datos reales, mapa.html , mundo.html ni paneles.html . Solo este informe, filas nuevas en la cola y un prototipo aparte:…
 
 ## Dudas y datos a verificar
 Las frases son extractos sin comprobar: lo dudoso está marcado [VERIFICAR] en el informe original.

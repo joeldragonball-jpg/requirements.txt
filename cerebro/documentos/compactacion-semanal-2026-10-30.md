@@ -9,7 +9,7 @@ Base: informes de `informes/research/` de la semana (65 archivos), leídos por s
 
 **Regulación y cripto.** OCC: norma final de la GENIUS Act (NR 2026-92, 21-oct) [P], con el PDF por leer. Ripple recibe la aprobación final de la OCC para su banco fiduciario (comunicado de la empresa; documento OCC aún por localizar) y RLUSD llega a Coinbase y Robinhood Chain [S, EV-swell-meridian]. Fondos de XRP: activos ≈ $1.509 M, flujo del día $0 y discrepancia de GXRP entre fuentes (W04) [VERIFICAR]. BIS y FMI coinciden: la apuesta es la tokenización anclada en dinero de banco central, no la stablecoin privada (T16); una CBDC no se puede usar por particulares en una blockchain abierta (C51).
 
-**Países.** Hechos de regulación por país con lectura primaria: Rusia (ley 282-ФЗ), China (Notice 42), Hong Kong, India, Corea, Brasil; Irán, Egipto y Etiopía siguen en [S] (W03E). Política: España vota el 29-nov (C30) y Brasil ya votó el 25-oct; ninguna fecha electoral está confirmada en fuente oficial.
+**Países.** Hechos de regulación por país con lectura primaria: Rusia (ley 282-ФЗ), China (Notice 42), Hong Kong, India, Corea, Brasil; Irán, Egipto y Etiopía siguen en [S] (W03E). Política: España vota el 29-nov, fecha confirmada en el BOE [P] (Real Decreto 806/2026); Brasil ya votó el 25-oct; las demás fechas electorales siguen en prensa [S] (C30).
 
 **Deuda.** Moody's sobre Francia el 23-oct sigue sin comunicado localizado [VERIFICAR] (W02); no hay curva diaria de la AFT más allá del 10 años. Sin serie de la EBA tras junio de 2025 (D06).
 

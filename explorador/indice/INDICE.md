@@ -1,6 +1,6 @@
 # Índice de datos del Explorador (autogenerado)
 
-Generado el 2026-10-28 por `python scripts/indice_datos.py` (sin IA, solo lectura de los JSON). No editar a mano.
+Generado el 2026-10-30 por `python scripts/indice_datos.py` (sin IA, solo lectura de los JSON). No editar a mano.
 
 ## Cómo se usa
 Buscar un dato aquí → abrir el archivo → ir al campo. `por-pais.json`, `por-tema.json`, `cambios.json` e `informes.json` enumeran cada elemento con su huella común.
@@ -42,20 +42,20 @@ Buscar un dato aquí → abrir el archivo → ir al campo. `por-pais.json`, `por
 Rellenado hoy: `regulacion.json` (jurisdicciones: `pais_id`; celdas: `pais_id`, `nivel`, `revisar` y `caduca` si hay `revisado`) y `datos.json` (movimientos y hechos o cifras de las capas con país: `pais_id`, `nivel`, `revisar` cuando procede). El resto de JSON, sin tocar. `python scripts/revisar_explorador.py` comprueba la forma de estos campos.
 
 ## Recuento
-- Elementos con huella común: 323 (28 países, 18 temas).
-- Informes indexados: 206.
-- Cambios en 7 días: 90 datos y 78 informes; en 30 días: 152 y 199.
+- Elementos con huella común: 386 (31 países, 18 temas).
+- Informes indexados: 227.
+- Cambios en 7 días: 140 datos y 83 informes; en 30 días: 213 y 220.
 
 ## Informes por tema
 | Tema | Informes |
 |---|---|
-| Auditorías y verificaciones | 25 |
-| Cripto y ETF | 35 |
-| Deuda y bonos | 6 |
-| Energía y Ormuz | 4 |
+| Auditorías y verificaciones | 26 |
+| Cripto y ETF | 39 |
+| Deuda y bonos | 8 |
+| Energía y Ormuz | 5 |
 | Fiscal | 8 |
-| Macro y tipos | 9 |
-| Otros | 41 |
-| Regulación por país | 30 |
-| Sesiones diarias (apertura y cierre) | 41 |
+| Macro y tipos | 10 |
+| Otros | 46 |
+| Regulación por país | 34 |
+| Sesiones diarias (apertura y cierre) | 44 |
 | Voces y predicciones | 7 |
