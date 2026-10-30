@@ -227,6 +227,44 @@ def petroleo():
     return salida
 
 
+def datos_panel():
+    """Pestaña Datos del móvil: deuda, calificaciones, reservas, stablecoins/RWA y tenedores de deuda de EE. UU. (compactado de explorador/)."""
+    try:
+        pn = cargar("explorador/paneles.json")
+    except Exception:
+        return {}
+    sal = {}
+    dd = pn.get("deuda") or {}
+    if dd.get("paises"):
+        anios = dd.get("anios", [])
+        i26, i30 = (anios.index("2026") if "2026" in anios else None), (anios.index("2030") if "2030" in anios else None)
+        sal["deuda"] = {"edicion": dd.get("edicion"), "nivel": "P", "fuente": "FMI, WEO",
+                        "paises": [{"id": x["id"], "n": x["nombre"], "d": x["deuda"][i26], "s": x["saldo"][i26], "d30": x["deuda"][i30]} for x in dd["paises"] if i26 is not None and i30 is not None],
+                        "rend": {k: {"v": v.get("valor"), "f": v.get("fecha")} for k, v in (dd.get("rendimientos") or {}).items()}}
+    try:
+        cal = cargar("explorador/calificaciones.json")
+        sal["calif"] = {"leido": cal.get("leido"), "paises": [{k: x.get(k) for k in ("id", "nombre", "moody", "sp", "fitch", "otras", "nivel", "fuente", "nota")} for x in cal.get("paises", [])]}
+    except Exception:
+        pass
+    try:
+        res = cargar("explorador/reservas.json")
+        sal["cofer"] = res.get("cofer")
+    except Exception:
+        pass
+    st, rw, tic = pn.get("stablecoins") or {}, pn.get("rwa") or {}, pn.get("tic") or {}
+    if st:
+        sal["stable"] = {"total": st.get("total"), "n": st.get("n_activos"), "nivel": st.get("nivel"), "leido": st.get("leido"),
+                         "top": [{k: x.get(k) for k in ("simbolo", "nombre", "usd", "cambio_7d", "cambio_30d")} for x in st.get("top", [])[:6]],
+                         "xrpl": {"total": (st.get("xrpl") or {}).get("total"), "top": [{k: x.get(k) for k in ("simbolo", "usd")} for x in (st.get("xrpl") or {}).get("top", [])[:3]]}}
+    if rw:
+        sal["rwa"] = {"total": rw.get("total"), "n": rw.get("n"), "nivel": rw.get("nivel"), "stellar": rw.get("stellar"), "xrpl": rw.get("xrpl"),
+                      "top": [{k: x.get(k) for k in ("nombre", "usd", "cambio_7d")} for x in rw.get("top", [])[:5]]}
+    if tic.get("paises"):
+        sal["tic"] = {"mes": tic["meses"][0], "mes0": tic["meses"][-1], "nivel": tic.get("nivel"), "total": tic["total"][0], "total0": tic["total"][-1],
+                      "paises": [{"n": x["nombre"], "v": x["serie"][0], "v0": x["serie"][-1]} for x in tic["paises"][:8]]}
+    return sal
+
+
 def regulacion():
     """Radar regulatorio (explorador/regulacion.json) compactado para el móvil: una lista de temas por jurisdicción."""
     try:
@@ -312,7 +350,7 @@ def main():
         "mercado": p.get("mercado", {}).get("activos", []), "indices": p.get("indices", {}).get("indices", []),
         "tipos": p.get("tipos_vivos", {}).get("paises", []), "tipos_bis": p.get("tipos_bis", {}).get("paises", []),
         "watchlist": p.get("watchlist", {}).get("valores", []),
-        "defensa": p.get("defensa", {}).get("paises", []), "liquidez": p.get("liquidez", {}), "inflacion": p.get("inflacion", {}).get("paises", []), "ormuz": p.get("ormuz", {}), "hitos_petroleo": cargar("explorador/hitos_petroleo.json"), "elecciones": cargar("explorador/elecciones.json"), "paises": paises(), "regulacion": regulacion(),
+        "defensa": p.get("defensa", {}).get("paises", []), "liquidez": p.get("liquidez", {}), "inflacion": p.get("inflacion", {}).get("paises", []), "ormuz": p.get("ormuz", {}), "hitos_petroleo": cargar("explorador/hitos_petroleo.json"), "elecciones": cargar("explorador/elecciones.json"), "paises": paises(), "regulacion": regulacion(), "datos": datos_panel(),
         "valoracion": valoracion(),
         "bonos": [{"id": k, "valor": bonos[k]["plazos"].get("10A"), "fecha": bonos[k]["fecha"]} for k in ("USA", "JPN", "EUR", "ESP", "FRA", "GBR") if k in bonos],
         "eventos": eventos(), "voces": voces(), "niveles": cargar("explorador/voces.json").get("niveles", {}),

@@ -1991,10 +1991,10 @@
       "resumen": "Petróleo y gas, y el paso por el estrecho de Ormuz: cuántos barcos cruzan al día, a cuánto cotizan el Brent y el WTI y qué prevé la agencia de energía de EE. UU. Es la primera pieza de la cadena energía → inflación → tipos → bonos → activos de riesgo.",
       "produccion": [
         {
-          "t": "Ormuz: la media de barcos al día fue de 3,7 en la última semana con dato (hasta el 18-oct), frente a 78,3 de media en febrero; el tráfico se hundió entre el 28-feb (57 barcos) y el 4-mar (0).",
+          "t": "Ormuz: la media de barcos al día fue de 3,3 en la última semana con dato (hasta el 25-oct; 2 barcos ese día, 1 petrolero), frente a 78,3 de media en febrero; el tráfico se hundió entre el 28-feb (57 barcos) y el 4-mar (0). Media mensual: 3,6 en septiembre y 3,5 en octubre.",
           "k": "P",
           "n": "P",
-          "f": "IMF PortWatch, API abierta [P] · leída el 25-oct; último dato publicado: 18-oct",
+          "f": "IMF PortWatch, API abierta [P] · leída el 29-oct; último dato publicado: 25-oct",
           "ent": [
             "IMF PortWatch"
           ],
@@ -2113,8 +2113,8 @@
       ],
       "cifras": [
         {
-          "v": "3,7",
-          "e": "Barcos al día por Ormuz, media de los 7 últimos días con dato (hasta el 18-oct-2026); en febrero fueron 78,3",
+          "v": "3,3",
+          "e": "Barcos al día por Ormuz, media de los 7 últimos días con dato (hasta el 25-oct-2026); en febrero fueron 78,3",
           "f": "IMF PortWatch [P]",
           "ent": [
             "IMF PortWatch"
@@ -2214,7 +2214,7 @@
       "id": "politica",
       "nombre": "Política y elecciones",
       "color": "#c46b9a",
-      "resumen": "Calendario electoral de las economías que mueven mercado (EE. UU., España, Francia, Italia, Alemania, Brasil, Japón, India, México, Argentina) y qué se vota. Sirve para saber cuándo una votación puede cambiar la regulación cripto, la deuda o la energía; no predice resultados.",
+      "resumen": "Calendario electoral y ficha política de 15 países (EE. UU., España, Francia, Italia, Alemania, Países Bajos, Polonia, Reino Unido, Rusia, China, Japón, India, Brasil, México, Argentina, Corea y Canadá) y qué se vota. Sirve para saber cuándo una votación puede cambiar la regulación cripto, la deuda o la energía; no predice resultados. Detalle por país (política, indicadores y estabilidad) en Paneles → Países.",
       "produccion": [],
       "piloto": [],
       "plan": [],
@@ -2230,7 +2230,52 @@
         "encuestas",
         "parlamento"
       ],
-      "cifras": [],
+      "cifras": [
+        {
+          "v": "3-nov-2026",
+          "e": "Elecciones de mitad de mandato en EE. UU. (435 escaños de la Cámara, 35 del Senado); la CLARITY Act se juega en la sesión posterior",
+          "f": "explorador/elecciones.json [S]",
+          "ent": [],
+          "act": [],
+          "pais": [
+            "EE. UU."
+          ],
+          "pais_id": [
+            "US"
+          ],
+          "nivel": "S"
+        },
+        {
+          "v": "29-nov-2026",
+          "e": "Elecciones generales anticipadas en España, fecha confirmada en el BOE (art. 2 del RD 806/2026)",
+          "f": "BOE-A-2026-20742 [P]",
+          "ent": [
+            "BOE"
+          ],
+          "act": [],
+          "pais": [
+            "España"
+          ],
+          "pais_id": [
+            "ES"
+          ],
+          "nivel": "P"
+        },
+        {
+          "v": "25-oct-2026",
+          "e": "Lula gana la 2.ª vuelta en Brasil con ~51,7 % (prensa); Bolsonaro no reconoce el resultado",
+          "f": "prensa [S]",
+          "ent": [],
+          "act": [],
+          "pais": [
+            "Brasil"
+          ],
+          "pais_id": [
+            "BR"
+          ],
+          "nivel": "S"
+        }
+      ],
       "ficha": {
         "hace": "Decide quién legisla sobre cripto, deuda y energía en cada país; las votaciones fijan cuándo puede cambiar esa regulación. (Prensa; sin fuente oficial abierta aún)",
         "controla": "Los votantes y los parlamentos; las fechas oficiales las publican los diarios oficiales y las comisiones electorales.",

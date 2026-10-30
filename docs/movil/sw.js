@@ -1,6 +1,6 @@
 /* Service worker de Mi Cerebro (móvil): la app abre al instante desde la caché y se actualiza sola en segundo plano
    (estrategia «caché primero, red después»). Solo toca archivos del propio sitio; las noticias y los precios en vivo van por red. */
-const V = "cerebro-movil-40";
+const V = "cerebro-movil-41";
 const BASE = ["./", "index.html", "manifest.webmanifest", "assets/icono-192.png", "assets/icono-180.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(V).then(c => c.addAll(BASE)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => {

@@ -218,10 +218,10 @@ const precio = v => PRE + fm(conv(v), dec(v)) + MON;
 const signo = v => (v > 0 ? '+' : '') + fm(v, 1) + ' %';
 const cls = v => Math.abs(v) < 0.05 ? 'neutro' : v > 0 ? 'sube' : 'baja';
 const ICO = {
-  hoy: '<path d="M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>', centro: '<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>', mercado: '<path d="M3 17l5-5 4 4 8-9"/><path d="M15 7h5v5"/>',
+  hoy: '<path d="M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>', centro: '<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>', mercado: '<path d="M3 17l5-5 4 4 8-9"/><path d="M15 7h5v5"/>', datos: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
   agenda: '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/>', noticias: '<path d="M5 4h11a3 3 0 013 3v13H7a3 3 0 01-3-3V5a1 1 0 011-1z"/><path d="M8 9h8M8 13h8M8 17h5"/>',
   cerebro: '<path d="M9 4a3 3 0 00-3 3 3 3 0 00-2 5 3 3 0 002 5 3 3 0 006 0V4a3 3 0 00-3 0zM15 4a3 3 0 013 3 3 3 0 012 5 3 3 0 01-2 5 3 3 0 01-6 0"/>'};
-const TABS = [['hoy','Hoy'],['centro','Centro'],['mercado','Mercado'],['agenda','Agenda'],['noticias','Noticias'],['cerebro','Cerebro']];
+const TABS = [['hoy','Hoy'],['centro','Centro'],['mercado','Mercado'],['datos','Datos'],['agenda','Agenda'],['noticias','Noticias'],['cerebro','Cerebro']];
 let tab = 'hoy', filtroAg = 'todos', filtroNo = 'todas', segCer = 'seg', filtroPl = 'abiertas';
 
 document.getElementById('fecha').textContent = DIA[HOY.getDay()][0].toUpperCase() + DIA[HOY.getDay()].slice(1) + ' ' + HOY.getDate() + ' ' + MES[HOY.getMonth()];
@@ -426,7 +426,30 @@ function vCentro(){
   ${cab('Qué falta para completar los módulos')}<div class="card" style="--i:8;padding:6px 14px">${huecos.map((h, k) => `<div style="${k ? 'border-top:1px solid rgba(255,255,255,.07)' : ''}"><div data-abre style="display:flex;gap:10px;padding:9px 0;align-items:baseline"><span style="width:8px;height:8px;border-radius:50%;background:${h.c};flex:none;margin-top:5px"></span><span style="flex:1;font-size:14px;line-height:1.35">${esc(h.e.texto)}<span class="meta2" style="display:block;margin:2px 0 0">${esc(h.m)}${h.e.quien ? ' · ' + esc(h.e.quien) : ''}${h.e.tarea ? ' · ' + esc(h.e.tarea) : ''}</span></span><span class="flecha neutro">▾</span></div>${cdt(h.e) || ''}</div>`).join('') || '<div class="pie">Todo completo</div>'}</div>
   <div class="pie">Plano editable en explorador/centro.json. Lo privado (tesis, patrimonio, suscripciones) va solo en privado/ y no se publica aquí.</div></div>`;
 }
-const VISTAS = {hoy: vHoy, centro: vCentro, mercado: vMercado, agenda: vAgenda, noticias: vNoticias, cerebro: vCerebro};
+function vDatos() {
+  const X = D.datos || {}, mM = v => v == null ? '—' : v >= 1e12 ? fm(v / 1e12, 2) + ' B$' : v >= 1e9 ? fm(v / 1e9, 1) + ' mil M$' : fm(v / 1e6, 0) + ' M$';
+  const bf = (nom, num, max, txt) => `<div class="barra-fila"><span class="nom">${esc(nom)}</span><div class="barra"><i data-w="${Math.max(3, Math.min(100, num / max * 100))}%"></i></div><span class="val">${txt}</span></div>`;
+  const tj = (tit, sub, cuerpo, i) => `<div class="card" style="--i:${i};padding:13px 14px;display:flex;flex-wrap:wrap;gap:6px" data-abre><div style="flex:1;min-width:0"><div class="titulo-sec" style="margin:0"><span>${tit}</span></div><small>${sub}</small></div><span class="flecha">⌄</span><div class="mas" style="flex-basis:100%;min-width:0;max-width:100%">${cuerpo}</div></div>`;
+  const niv = n => n ? `<span class="nivel ${esc(n)}">${esc(n)}</span> ` : '';
+  const out = [];
+  if (X.deuda) { const L = X.deuda.paises.slice().sort((a, b) => b.d - a.d), mx = Math.max(...L.map(x => x.d));
+    out.push(tj('Deuda pública', 'deuda y déficit 2026, % del PIB', `<div class="meta2" style="margin:8px 0">${niv(X.deuda.nivel)}${esc(X.deuda.fuente)} · ${esc(X.deuda.edicion || '')}</div>${L.map(x => bf(x.n, x.d, mx, fm(x.d, 0) + ' %')).join('')}
+      <div class="meta2" style="margin:8px 0 4px">Déficit (saldo) 2026 y deuda prevista 2030:</div>${L.map(x => `<div style="display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.07);padding:6px 0"><span>${esc(x.n)}</span><span class="meta2">saldo ${fm(x.s, 1)} % · 2030: ${fm(x.d30, 0)} %</span></div>`).join('')}
+      <div class="aviso" style="margin-top:8px;color:var(--sub)">Previsiones del FMI, no datos cerrados. Sin ranking propio.</div>`, 1)); }
+  if (X.tic) { const t = X.tic, L = t.paises.slice().sort((a, b) => b.v - a.v), mx = L[0].v;
+    out.push(tj('Quién tiene deuda de EE. UU.', `tenedores extranjeros · ${esc(t.mes)}`, `<div class="meta2" style="margin:8px 0">${niv(t.nivel)}Tesoro de EE. UU. (TIC) · miles de millones de $ · cambio frente a ${esc(t.mes0)}</div>${L.map(x => bf(x.n, x.v, mx, fm(x.v, 0) + ' <span class="' + cls(x.v - x.v0) + '" style="font-size:12px">' + (x.v >= x.v0 ? '+' : '') + fm(x.v - x.v0, 0) + '</span>')).join('')}<div class="meta2" style="margin-top:8px">Total extranjero: ${fm(t.total, 0)} (hace un año ${fm(t.total0, 0)}).</div>`, 2)); }
+  if (X.calif) out.push(tj('Calificaciones de deuda', `${X.calif.paises.length} países · Moody's, S&P y Fitch`, `<div class="pgrid h" style="grid-template-columns:1.3fr 1fr 1fr 1fr;margin-top:10px"><span>País</span><span>Moody's</span><span>S&amp;P</span><span>Fitch</span></div>${X.calif.paises.map(x => `<div class="pgrid" style="grid-template-columns:1.3fr 1fr 1fr 1fr;padding:5px 0;border-top:1px solid rgba(255,255,255,.07)"><span>${esc(x.nombre)}</span><b>${esc(x.moody)}</b><b>${esc(x.sp)}</b><b>${esc(x.fitch)}</b></div>`).join('')}<div class="aviso" style="margin-top:8px;color:var(--sub)">Fuentes oficiales de cada Tesoro [P]. Las fechas de algunas acciones son antiguas: pueden existir cambios posteriores [VERIFICAR]. Leído ${esc(X.calif.leido || '')}.</div>`, 3));
+  if (X.cofer) { const c = X.cofer, M = (c.monedas || []).filter(m => m[1] != null);
+    out.push(tj('Reservas de los bancos centrales', `por moneda · ${esc(c.periodo || '')}`, `<div class="meta2" style="margin:8px 0">${niv(c.nivel)}FMI (COFER) · total ${esc(c.total || '')}</div>${M.map(m => bf(m[0], m[1], 60, fm(m[1], 1) + ' % <span class="' + cls(m[1] - m[2]) + '" style="font-size:12px">' + (m[1] >= m[2] ? '+' : '') + fm(m[1] - m[2], 1) + '</span>')).join('')}<div class="aviso" style="margin-top:8px;color:var(--sub)">${esc(c.nota || '')}</div>`, 4)); }
+  if (X.stable) { const s = X.stable, mx = s.top[0].usd;
+    out.push(tj('Stablecoins y tokenización', `${mM(s.total)} en stablecoins · RWA ${mM((X.rwa || {}).total)}`, `<div class="meta2" style="margin:8px 0">${niv(s.nivel)}DefiLlama [S] · ${s.n} stablecoins · variación a 7 días</div>${s.top.map(x => bf(x.simbolo, x.usd, mx, mM(x.usd) + ' <span class="' + cls(x.cambio_7d) + '" style="font-size:12px">' + signo(x.cambio_7d) + '</span>')).join('')}
+      <div class="meta2" style="margin:10px 0 4px">En XRPL: ${mM(s.xrpl.total)} (${s.xrpl.top.map(x => esc(x.simbolo) + ' ' + mM(x.usd)).join(' · ')})</div>
+      ${X.rwa ? `<div class="meta2" style="margin:10px 0 4px">Activos reales tokenizados (RWA): ${mM(X.rwa.total)} en ${X.rwa.n} protocolos. En Stellar: ${mM(X.rwa.stellar)}; en XRPL: ${mM(X.rwa.xrpl)} (DefiLlama no los mide bien: [VERIFICAR] en rwa.xyz).</div>${X.rwa.top.map(x => `<div style="display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.07);padding:6px 0"><span>${esc(x.nombre)}</span><span class="meta2">${mM(x.usd)} · <span class="${cls(x.cambio_7d)}">${signo(x.cambio_7d)}</span></span></div>`).join('')}` : ''}`, 5)); }
+  return `<div class="vista"><div class="card hero" style="--i:0"><div style="flex:1"><small>Panel de datos</small><h2>Cifras que mueven el mercado</h2><p>Deuda, calificaciones, reservas y stablecoins. Política, regulación e inflación están en Agenda y Mercado. Toca una tarjeta para abrirla.</p></div></div>
+  ${out.join('') || '<div class="card">Sin datos todavía (explorador/paneles.json).</div>'}
+  <div class="pie">Cifras publicadas por sus fuentes; nada de aquí es una recomendación. [P] oficial · [S] secundaria.</div></div>`;
+}
+const VISTAS = {hoy: vHoy, centro: vCentro, datos: vDatos, mercado: vMercado, agenda: vAgenda, noticias: vNoticias, cerebro: vCerebro};
 function pintar(ancla, quieto){
   const m = document.getElementById('main');
   quieto = quieto || !!ancla;
