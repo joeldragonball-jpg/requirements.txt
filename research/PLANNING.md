@@ -1,9 +1,9 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-30 03:57 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-30 14:07 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Hoy (vie 2026-10-30): solo lo casi obligatorio
-- R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 13 días
+- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 14 días
 - Fija de hoy (viernes: resumen semanal): **W09 Resumen semanal** (~1,5 %) · último 2026-10-25 · `research/prompts/W09-*.md`
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)

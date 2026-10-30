@@ -131,3 +131,4 @@ actualizado: 2026-10-07
 - 2026-10-27 (R00 cierre): aprobación final de la OCC al banco fiduciario de Ripple (anuncio el 26-oct por la noche, tras la condicional de dic-2025): XRP ≈ $1,25–1,32 y +1,9 % en 24 h, sin reacción atribuible; noticia esperada y ya descontada [S]. FOMC del 28-oct: tipo 3,75 %–4,00 % tras la subida del 16-sep (12–0 [P]).
 
 - 30-oct-2026: Swell (OCC final a Ripple National Trust Bank, BNY/C2FO en XRPL) y Meridian (Project Thruput) no movieron el precio: XRP -4,9 % y XLM -3,8 % el 29-oct junto a BTC -1,5 %.
+- 30-oct-2026: BoJ mantiene 1,25 % y duplica la venta de ETF; Nasdaq −2 % y BTC −4 % en la misma jornada (coincidencia, no causa); ETF al contado de XRP +8,4 M$ el 29-oct frente a −116 M$ del total cripto [S].

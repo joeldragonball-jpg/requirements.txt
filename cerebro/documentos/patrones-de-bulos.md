@@ -153,3 +153,4 @@ actualizado: 2026-10-07
 - 2026-10-29 (W05): un titular de bot con una causa concreta («un ataque a Ras Tanura lleva el Brent a 114 $») puede no tener ninguna fuente que lo respalde: el nivel de precio sí constaba, la causa no. Antes de usar la causa, buscarla con fecha; un «−6 %» de petróleo fue un mínimo intradía que se recuperó, y «3 días» de Coinbase era en realidad un plazo fijo (30-oct).
 
 - 30-oct-2026: Cointelegraph y otros agregadores recirculan artículos de Swell 2025 (4-5 nov, ronda de $500 M) como si fueran del Swell 2026; mirar siempre la fecha del propio artículo y contrastar con el comunicado de Ripple.
+- 30-oct-2026: las cifras de índices de EE. UU. del mismo día difieren entre fuentes (Nasdaq 100 −3 % en Bloomberg frente a Nasdaq Comp. −1,4 % en Yahoo): decir cuál índice y a qué hora; ETF de XRP «con entradas» en prensa a veces es publicidad (crypto.news, minería en la nube): usar SoSoValue/Farside.

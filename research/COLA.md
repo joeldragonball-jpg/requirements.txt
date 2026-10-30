@@ -15,7 +15,7 @@ Reglas fijas: fuente primaria en su idioma original (traducida por mí, con enla
 
 | ID | Tema | Plantilla | Modelo | Esfuerzo | Tam. | Est. | Real | Estado |
 |----|------|-----------|--------|----------|------|------|------|--------|
-| R00 | Apertura/cierre diario (macro + XRP/XLM) | sesion-diaria | Sonnet | bajo | S | 3 % | ≈1 % cada una (apertura 26-oct con Opus: semanal 84 % → 85 %; 24-25 oct <1 %; cierre 26-oct con Sonnet: semanal 92 % → 92 %, <1 %) | recurrente (última: hecho 2026-10-26); apertura 27-oct (retroactiva: cierre EE. UU. + Asia): semanal 0 % → 0 % (<1 %), 5 h 0 → 2 % |
+| R00 | Apertura/cierre diario (macro + XRP/XLM) | sesion-diaria | Sonnet | bajo | S | 3 % | ≈1 % cada una (apertura 26-oct con Opus: semanal 84 % → 85 %; 24-25 oct <1 %; cierre 26-oct con Sonnet: semanal 92 % → 92 %, <1 %) | recurrente (última: hecho 2026-10-26); apertura 27-oct (retroactiva: cierre EE. UU. + Asia): semanal 0 % → 0 % (<1 %), 5 h 0 → 2 %; apertura 30-oct: semanal 45 % → 45 % (<1 %), 5 h 2 → 3 % |
 | R01 | BRICS y pagos transfronterizos (BRICS Pay, mBridge, yuan/rublo digital) | dossier-region | Sonnet | medio | L | 4 % | | pendiente (cubierto por R01P) |
 | R01P | BRICS PROFUNDO (informe único rápido+profundo; PIB y brics2026.gov.in dan 403: declaración leída vía prensa con cita) | dossier-region (profundo) | Sonnet | alto | L+ | sin medir | ~1 % semanal (36 → 37 %, medidor sin decimales; 5h: 6→9 %, ~50k tokens de contexto) | hecho 2026-10-15 |
 | R02 | India (RBI, e₹, UPI, fiscalidad y regulación cripto) | dossier-region | Sonnet | medio | M | 2 % | <1 % (33 → 33 %, medidor sin decimales; 5h: 33→34 %) | hecho 2026-10-14 (prueba A/B) |

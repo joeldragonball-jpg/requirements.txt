@@ -52,14 +52,14 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-29 · C40 · Jurisdicciones fuera del radar: Reino Unido, Suiza, Canadá, Australia y Arabia Saudí (Gemini Deep Resear (`informes/research/2026-10-29-C40-jurisdicciones-gemini-verificado.md`): Verificación (6 datos contra fuente primaria, todos leídos hoy)
 
 ## Sesiones diarias (apertura y cierre)
+- 2026-10-30 · Informe de APERTURA — 2026-10-30 (vie) (`informes/2026-10-30-apertura.md`): Banco de Japón mantiene 1,25 % (8 1, Takata pide 1,50 %) y duplica la venta de ETF [S]; yen algo más fuerte.
 - 2026-10-29 · Informe de CIERRE — 2026-10-29 (jue) (`informes/2026-10-29-cierre.md`): BCE mantiene 2,50 % (unánime); Lagarde deja la presidencia en febrero de 2027.
 - 2026-10-29 · Informe de APERTURA — 2026-10-29 (jue) (`informes/2026-10-29-apertura.md`): Asia mixta (Nikkei +1,1 %; Seúl −1,2 %; HK −0,6 %; Shanghái −0,8 %); Europa al alza salvo IBEX.
-- 2026-10-28 · Informe de CIERRE — 2026-10-28 (mié) (`informes/2026-10-28-cierre.md`): Bloque que cubre: SOLO el cierre de América (Wall Street, Tesoro, cripto del día y decisión macro de la tarde). Asia y Europa quedan para la apertura…
 
 ## Otros
-- 2026-10-30 · C30 · Política y elecciones por país (`informes/research/2026-10-30-C30-politica-elecciones.md`): Ninguna fecha está confirmada en fuente oficial : no abrí el BOE, el Congreso, Légifrance ni comisiones electorales. Todo viene de prensa y…
-- 2026-10-29 · EV · Reunión del FOMC del 27-28 oct 2026 (hecho el 29-oct-2026) (`informes/research/2026-10-29-EV-fomc-28-oct.md`): La Fed mantiene el rango objetivo en 3,75 % 4,00 % .
-- 2026-10-29 · C50 · Valor tokenizado por blockchain: mejor fuente (29-oct-2026) (`informes/research/2026-10-29-C50-rwa-por-cadena.md`): Nivel: [S] = agregador/prensa; [P] = emisor o fuente oficial; [VERIFICAR] = sin contrastar. Información, no recomendación.
+- 2026-10-30 · C61 · Servicios públicos y estabilidad social de 12 países (30-oct-2026) (`informes/research/2026-10-30-C61-estabilidad.md`): Código: scripts/estabilidad.py . Resultado: explorador/estabilidad.json (19 20 cifras por país, 234 en total); lecturas en explorador/estabilidad…
+- 2026-10-30 · C60 · Una página por país en el móvil y la Órbita (30-oct-2026) (`informes/research/2026-10-30-C60-comparador.md`): Móvil (pestaña Agenda, debajo de «Elecciones próximas»): tarjeta desplegable «Comparar países» (cerrada). Selector UE / Potencias; tabla País · IPC ·…
+- 2026-10-30 · C59 · Indicadores económicos y sociales de 12 países (30-oct-2026) (`informes/research/2026-10-30-C59-indicadores.md`): Código: scripts/indicadores.py ( leer indicadores() , enganchado en actualizar paneles.py ). Resultado en explorador/paneles.json clave…
 
 ## Dudas y datos a verificar
 Las frases son extractos sin comprobar: lo dudoso está marcado [VERIFICAR] en el informe original.

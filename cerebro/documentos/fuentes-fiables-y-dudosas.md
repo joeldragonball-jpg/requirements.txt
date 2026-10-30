@@ -164,3 +164,4 @@ actualizado: 2026-10-07
 - 2026-10-29 (W04): SoSoValue carga en Chrome (no con curl) y da activos y entradas por fondo; los agregadores discrepan en un fondo (GXRP $28 M frente a $87 M), así que sumar siempre por fondo y comparar con el total de la página. El 8-K de Evernorth no da el total de XRP: la cifra de 473 M es de la propia empresa.
 
 - 30-oct-2026: para Swell/Meridian, fiables = ripple.com/ripple-press y stellar.org/blog/foundation-news; los benchmarks de Project Thruput son propios (solo motor de ejecución, FutureNet) y los datos de Ripple (ingresos, RLUSD) son cifras de la empresa.
+- 30-oct-2026: para decisiones del Banco de Japón, primaria = boj.or.jp/en/mopo/mpmdeci (PDF k+fecha+a); si no se puede leer, marcar la decisión [S] con 2+ fuentes. Flujos de ETF: SoSoValue y Farside (agregadores [S]).
