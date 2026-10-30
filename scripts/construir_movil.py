@@ -282,7 +282,19 @@ def espana():
         if i["id"] in ("ingresos", "gasto", "imp_renta", "imp_produccion", "cotizaciones", "f_proteccion", "f_sanidad", "f_educacion", "f_defensa", "f_intereses"):
             a = sorted(i["serie"])
             fiscal.append({"n": i["nombre"].replace("·", "").strip(), "a": a[-1], "v": i["serie"][a[-1]], "v0": i["serie"][a[-2]], "pib": i.get("pct_pib", {}).get(a[-1])})
-    return {"leido": b.get("leido"), "vigencia": b["vigencia"]["texto"], "lecturas": b.get("lecturas", {}), "como": b.get("como_leerlo", []),
+    cm, fm, pp, cp = b.get("capitulos_por_ministerio", {}), b.get("fuera_de_ministerios", {}), b.get("personal_publico", {}), b.get("cargos_politicos", {})
+    detalle = {
+        "ley": cm.get("leyenda"), "nota": cm.get("nota"),
+        "sec": [{"n": s["seccion"], "t": s["total"], "p": s["pct_total_estado"], "h": s["por_habitante"], "c": {k: v for k, v in s["capitulos"].items() if v}, "pr": s["programas"][:6],
+                 "ce": [{"n": c["n"], "o": c["o"]} for c in s["centros"][:6]], "de": s["destino"], "tr": [{"n": x["n"][:110], "d": x["dest"], "o": x["o"]} for x in s["transf_mayores"][:3]],
+                 "ac": s["altos_cargos"]["obligaciones"], "ev": s["eventuales"]["obligaciones"]} for s in cm.get("secciones", []) if s["total"]],
+        "ret": [dato(x) for x in cm.get("retribuciones", [])], "num_ac": dato(cm["altos_cargos_numero"]) if cm else None,
+    } if cm else None
+    fuera = {"ss": [dato(x) for x in fm["seguridad_social"]["datos"]], "org": [{"n": x["nombre"], "o": x["obligaciones_2025"], "h": x["por_habitante"], "nota": x["nota"]} for x in fm["organismos"]["lista"]],
+             "sin": [dato(x) for x in fm["organismos"]["sin_dato"]], "adm": fm["administraciones_2024"], "par": dato(fm["parlamentos_autonomicos"]), "iue": [dato(x) for x in fm["intereses_y_ue"]]} if fm else None
+    personal = {"ef": pp["efectivos"], "epa": pp["epa"], "rem": pp["remuneracion"], "ue": pp["comparativa_ue"]} if pp else None
+    cargos = {"num": [dato(x) for x in cp["numero"]], "ret": [dato(x) for x in cp["retribuciones"]], "par": [dato(x) for x in cp["partidos"]], "suma": cp["suma_publicada"]} if cp else None
+    return {"detalle": detalle, "fuera": fuera, "personal": personal, "cargos": cargos, "leido": b.get("leido"), "vigencia": b["vigencia"]["texto"], "lecturas": b.get("lecturas", {}), "como": b.get("como_leerlo", []),
             "total": b.get("totales"), "no_aislable": [{"t": x["tema"], "x": x["texto"], "niv": x["nivel"]} for x in b.get("no_aislable", [])],
             "minist": [{"n": x["nombre"], "i": x["inicial_2025"], "o": x["obligaciones_2025"], "o26": x["obligaciones_2026_ago"]} for x in sorted((s for s in b["secciones"] if s["tipo"] == "ministerio"), key=lambda s: -s["obligaciones_2025"])],
             "prog": [{"g": x["grupo"], "n": x["nombre"], "i": x["inicial_2025"], "o": x["obligaciones_2025"], "nota": x.get("nota")} for x in b["programas"]],

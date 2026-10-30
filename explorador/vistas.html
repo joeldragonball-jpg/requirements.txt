@@ -826,6 +826,7 @@ function pEspana(){
   const conL=(tx,...ns)=>{const d=el('div');if(tx)d.append(el('p','nota-v',tx));d.append(...ns);return d};
   const add=b=>{b.classList.add('ancho');mz.append(b)};
   const mz=masonry();
+  const dat=L=>tabla([{t:'Dato',f:r=>r.nombre},{t:'Valor',n:1,f:r=>r.valor==null?'[VERIFICAR]':fx(r.valor,r.valor%1?2:0)+' '+(r.unidad||'')},{t:'Fecha',f:r=>String(r.anio||'')},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Nota',f:r=>r.nota},{t:'Fuente',f:r=>lnk(r.fuente)}],L);
   if(B){
     const v=el('p','nota-v');v.append(nivelBadge(B.vigencia.nivel),document.createTextNode(' '+B.vigencia.texto));c.append(v);
     const u=el('ul','nota-v');for(const t of B.como_leerlo)u.append(el('li',null,t));
@@ -841,15 +842,63 @@ function pEspana(){
       tabla([{t:'Bloque',f:r=>r.grupo},{t:'Programa',f:r=>r.nombre},{t:'Código',f:r=>r.codigo},...ejec,{t:'Nota',f:r=>r.nota}],B.programas))));
     add(bloque('Lo que no se puede aislar','Sin partida propia o sin cifra publicada: no se estima.',{t:'Enfermedades raras, CIBERER, CATE, violencia de género total'},
       tabla([{t:'Tema',f:r=>r.tema},{t:'Qué hay',f:r=>r.texto},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Fuente',f:r=>lnk(r.fuente)}],B.no_aislable)));
-    const pa=B.por_administracion_2024;
-    add(bloque('Quién gasta cada cosa: Estado, CCAA, ayuntamientos y Seguridad Social',pa.texto,{nivel:pa.nivel,t:'Eurostat · 2024 · M€ · actualizado '+pa.actualizado},
-      tabla([{t:'Función',f:r=>r.nombre},...pa.columnas.map((t,i)=>({t,n:1,f:r=>n0(r.valores[i])}))],pa.filas),false));
+    const CM=B.capitulos_por_ministerio;
+    if(CM){
+      const pie7={nivel:CM.nivel,t:'IGAE · obligaciones de 2025 · M€ · leído '+B.leido};
+      const dentro=el('div');dentro.append(el('p','nota-v',CM.nota));
+      for(const x of CM.secciones){
+        if(!x.total)continue;
+        const d=el('details','bl');d.append(el('summary',null,x.seccion+' · '+n1(x.total)+' M€ · '+fx(x.pct_total_estado,2)+' % del Estado · '+fx(x.por_habitante,2)+' € por habitante'));
+        const caps=Object.entries(x.capitulos).filter(([,v])=>v);
+        d.append(el('h3',null,'Por capítulo económico'),tabla([{t:'Capítulo',f:r=>r[0]+' · '+CM.leyenda[r[0]]},{t:'M€',n:1,f:r=>n1(r[1])},{t:'% del ministerio',n:1,f:r=>n1(r[1]/x.total*100)}],caps));
+        d.append(el('h3',null,'Programas mayores'),tabla([{t:'Programa',f:r=>r.n},{t:'M€',n:1,f:r=>n1(r.o)},{t:'%',n:1,f:r=>n1(r.o/x.total*100)}],x.programas));
+        if(x.centros.length)d.append(el('h3',null,'Centros gestores'),tabla([{t:'Centro',f:r=>r.n},{t:'Inicial',n:1,f:r=>n1(r.ini)},{t:'Definitivo',n:1,f:r=>n1(r.def)},{t:'Obligaciones',n:1,f:r=>n1(r.o)}],x.centros));
+        const des=Object.entries(x.destino).filter(([,v])=>v);
+        if(des.length)d.append(el('h3',null,'A quién transfiere'),tabla([{t:'Destino',f:r=>r[0]},{t:'M€',n:1,f:r=>n1(r[1])}],des),tabla([{t:'Transferencia mayor',f:r=>r.n},{t:'Centro',f:r=>r.centro},{t:'Destino',f:r=>r.dest},{t:'M€',n:1,f:r=>n1(r.o)}],x.transf_mayores));
+        if(x.altos_cargos.obligaciones||x.eventuales.obligaciones)d.append(el('p','nota-v','Altos cargos (art. 10): '+fx(x.altos_cargos.obligaciones,2)+' M€ · Personal eventual (art. 11): '+fx(x.eventuales.obligaciones,2)+' M€ · Personal total (cap. 1): '+n1(x.capitulos['1'])+' M€, '+n1(x.pct_personal)+' % del ministerio.'));
+        if(Math.abs(x.partidas_sin_leer)>1)d.append(el('p','nota-v','Centros y destinos sin clasificar frente al total oficial: '+n1(x.partidas_sin_leer)+' M€.'));
+        dentro.append(d)}
+      add(bloque('Dentro de cada ministerio: capítulos, programas, centros y destino de las transferencias','Abre cada ministerio. Están ordenados por obligaciones de 2025.',pie7,dentro));
+      add(bloque('Altos cargos y personal eventual por ministerio','Coste presupuestado y ejecutado en 2025 de los artículos 10 y 11 de cada sección. Solo presupuesto del Estado.',pie7,conL(null,
+        tabla([{t:'Sección',f:r=>r.seccion},{t:'Altos cargos, M€',n:1,f:r=>fx(r.altos_cargos.obligaciones,2)},{t:'Eventuales, M€',n:1,f:r=>fx(r.eventuales.obligaciones,2)},{t:'Personal total, M€',n:1,f:r=>n1(r.capitulos['1'])},{t:'% de personal en la sección',n:1,f:r=>n1(r.pct_personal)}],CM.secciones.filter(r=>r.altos_cargos.obligaciones||r.eventuales.obligaciones).sort((a,b)=>b.altos_cargos.obligaciones-a.altos_cargos.obligaciones)),
+        el('h3',null,'Número de cargos y retribuciones oficiales'),dat([CM.altos_cargos_numero,...CM.retribuciones])),false));
+    }
+    const FM=B.fuera_de_ministerios;
+    if(FM){
+      const pa=FM.administraciones_2024;
+      add(bloque('Fuera de los ministerios: Seguridad Social','Gasto por función y financiación: cotizaciones frente a transferencias del Estado.',{t:'Ministerio de Inclusión · IGAE · Eurostat · Fedea'},dat(FM.seguridad_social.datos),false));
+      add(bloque('Fuera de los ministerios: Casa Real, Cortes, tribunales, reguladores, RTVE y agencias',FM.organismos.nota,{nivel:'P',t:'IGAE · 2025 · M€'},conL(null,
+        tabla([{t:'Organismo',f:r=>r.nombre},{t:'M€',n:1,f:r=>n1(r.obligaciones_2025)},{t:'% del Estado',n:1,f:r=>fx(r.pct_total_estado,3)},{t:'€ por habitante',n:1,f:r=>fx(r.por_habitante,2)},{t:'Partida',f:r=>r.partida},{t:'Nota',f:r=>r.nota}],FM.organismos.lista),el('h3',null,'Sin dato leído'),dat(FM.organismos.sin_dato)),false));
+      add(bloque('Quién gasta cada cosa: Estado, CCAA, ayuntamientos y Seguridad Social',pa.texto,{nivel:pa.nivel,t:'Eurostat · 2024 · M€ · actualizado '+pa.actualizado},conL(null,
+        tabla([{t:'Función',f:r=>r.nombre},...pa.columnas.map((t,i)=>({t,n:1,f:r=>n0(r.valores[i])}))],pa.filas),dat([FM.parlamentos_autonomicos])),false));
+      add(bloque('Intereses de la deuda y aportación a la UE',null,{t:'IGAE · Eurostat'},dat(FM.intereses_y_ue),false));
+    }
+    const PP=B.personal_publico;
+    if(PP){
+      const r2=PP.remuneracion;
+      add(bloque('Personal público: cuántos son','Registro Central de Personal y EPA miden cosas distintas.',{nivel:'P',t:'Función Pública '+PP.efectivos.fecha+' · INE '+PP.epa.fecha},conL(PP.efectivos.nota,
+        tabla([{t:'Administración',f:r=>r.nombre},{t:'Efectivos',n:1,f:r=>n0(r.valores[0])},{t:'%',n:1,f:r=>fx(r.valores[1],2)},{t:'Funcionario de carrera',n:1,f:r=>n0(r.valores[2])},{t:'Laboral',n:1,f:r=>n0(r.valores[3])},{t:'Otro personal',n:1,f:r=>n0(r.valores[4])}],PP.efectivos.filas),
+        el('h3',null,'EPA, '+PP.epa.fecha+' ('+PP.epa.unidad+')'),el('p','nota-v',PP.epa.nota),tabla([{t:'Tipo',f:r=>r.nombre},{t:'Miles',n:1,f:r=>n1(r.valor)}],PP.epa.filas),dat([PP.sanidad_y_docencia])),false));
+      add(bloque('Personal público: cuánto cuesta',r2.nota,{nivel:r2.nivel,t:'Eurostat · actualizado '+r2.actualizado+' · '+n1(r2.pct_pib_2025)+' % del PIB en 2025 · '+n0(r2.por_efectivo_eur)+' € por efectivo'},conL(null,
+        tabla([{t:'Nivel',f:r=>r.nombre},{t:'2025, M€',n:1,f:r=>n0(r.m2025)},{t:'2024, M€',n:1,f:r=>n0(r.m2024)},{t:'% de su gasto',n:1,f:r=>n1(r.pct_gasto)},{t:'€ por habitante',n:1,f:r=>n0(r.por_habitante)}],r2.filas),
+        el('p','nota-v','Capítulo 1 del presupuesto del Estado en 2025: '+n1(r2.capitulo_1_estado_2025)+' M€.'),el('h3',null,'Por función, 2024'),tabla([{t:'Función',f:r=>r.nombre},{t:'M€',n:1,f:r=>n0(r.valor)},{t:'% de la remuneración',n:1,f:r=>n1(r.pct)}],r2.por_funcion_2024)),false));
+      const cu=PP.comparativa_ue;
+      add(bloque('Personal público: comparación con la UE',cu.texto,{nivel:cu.nivel,t:'Eurostat · actualizado '+cu.actualizado},tabla([{t:'País',f:r=>{const x=el('span',null,r.n);if(r.n==='España')x.style.fontWeight='700';return x}},{t:'% del PIB, 2024',n:1,f:r=>n1(r.pib24)},{t:'% del PIB, 2019',n:1,f:r=>n1(r.pib19)}],cu.paises),false));
+    }
+    const CP=B.cargos_politicos;
+    if(CP){
+      const su=CP.suma_publicada,li=el('ul','nota-v');for(const t of su.incluye_no)li.append(el('li',null,t));
+      add(bloque('Cargos políticos: cuántos, cuánto cobran y cuánto suma lo publicado',su.texto,{nivel:su.nivel,t:'IGAE, Congreso, Senado y prensa, según cada dato'},conL(null,
+        el('h3',null,'Suma de lo publicado, Estado, 2025'),tabla([{t:'Parte',f:r=>r.nombre},{t:'M€',n:1,f:r=>n1(r.valor)}],su.partes),
+        el('p','nota-v','Total: '+n1(su.total)+' M€ · '+fx(su.pct_gasto_aapp_2025,3)+' % del gasto de las AAPP · '+fx(su.pct_pib_2025,3)+' % del PIB · '+fx(su.por_habitante,2)+' € por habitante.'),
+        el('p','nota-v','No incluye:'),li,
+        el('h3',null,'Número'),dat(CP.numero),el('h3',null,'Retribuciones y subvenciones a grupos'),dat(CP.retribuciones),el('h3',null,'Partidos'),dat(CP.partidos))));
+    }
     const co=B.consolidado_ley_2023;
     add(bloque('Presupuesto consolidado de la ley de 2023 por políticas',co.texto,{nivel:co.nivel,t:'Hacienda, Informe Económico y Financiero · M€ · total '+n0(co.total)},
       tabla([{t:'Política',f:r=>r.nombre},{t:'M€',n:1,f:r=>n0(r.valor)},{t:'% del total',n:1,f:r=>n1(r.valor/co.total*100)}],co.politicas.slice().sort((a,b)=>b.valor-a.valor)),false));
     add(bloque('Ejecución por políticas de gasto',null,pieE,tabla([{t:'Política',f:r=>{const x=el('span',null,r.nombre);if(r.area)x.style.fontWeight='700';return x}},...ejec],B.politicas),false));
   }
-  const dat=L=>tabla([{t:'Dato',f:r=>r.nombre},{t:'Valor',n:1,f:r=>r.valor==null?'[VERIFICAR]':fx(r.valor,r.valor%1?1:0)+' '+(r.unidad||'')},{t:'Fecha',f:r=>String(r.anio||'')},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Nota',f:r=>r.nota},{t:'Fuente',f:r=>lnk(r.fuente)}],L);
   if(M.beneficiarios){
     add(bloque('Quién recibe: beneficiarios y su denominador','Cada dato con la población de referencia al lado. Las estadísticas miden nacionalidad, no origen: un español naturalizado cuenta como español.',{t:'[P] oficial leída · [S] secundaria · [VERIFICAR] no leído'},
       conL(B&&B.lecturas.beneficiarios,el('h3',null,'Población de referencia'),dat(M.poblacion_referencia),el('h3',null,'Prestaciones'),dat(M.beneficiarios),el('h3',null,'Requisitos legales de acceso'),

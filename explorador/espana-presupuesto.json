@@ -4,11 +4,12 @@
  "unidad": "M€ corrientes",
  "nota": "Ejecución del Presupuesto del Estado (IGAE, art. 136 de la Ley General Presupuestaria): crédito inicial, crédito definitivo y obligaciones reconocidas netas de 2025, último año cerrado, y lo ejecutado hasta agosto de 2026. Solo la Administración General del Estado: no incluye el gasto de la Seguridad Social, las CCAA ni los ayuntamientos.",
  "vigencia": {
-  "texto": "Siguen prorrogados los PGE de 2023: 2025 y 2026 parten del mismo crédito inicial (380.822 M€). El Consejo de Ministros fijó los criterios de la prórroga para 2026. El techo de gasto para 2027 (226.032 M€) se aprobó el 7-jul-2026; no se ha encontrado la presentación de un proyecto de PGE a 30-oct-2026 [VERIFICAR].",
+  "texto": "Siguen prorrogados los PGE de 2023: 2025 y 2026 parten del mismo crédito inicial (380.822 M€). El Consejo de Ministros fijó los criterios de la prórroga para 2026. El techo de gasto para 2027 (226.032 M€) se aprobó el 7-jul-2026. El Real Decreto 806/2026 disolvió las Cortes el 6-oct-2026 y convocó elecciones generales para el 29-nov-2026; no se ha encontrado un proyecto de PGE presentado.",
   "fuentes": [
    "https://www.congreso.es/l15p/e12/e_0120891_n_000.pdf",
    "https://www.hacienda.gob.es/es-es/prensa/noticias/noticiaspdf//426.pdf",
-   "https://www.hacienda.gob.es/es-es/prensa/noticias/paginas/2026/20260707-np-cm-techo-gastos-2027.aspx"
+   "https://www.hacienda.gob.es/es-es/prensa/noticias/paginas/2026/20260707-np-cm-techo-gastos-2027.aspx",
+   "https://boe.es/boe/dias/2026/10/06/pdfs/BOE-A-2026-20742.pdf"
   ],
   "nivel": "P"
  },
@@ -1255,5 +1256,6116 @@
    "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
    "nivel": "P"
   }
- ]
+ ],
+ "capitulos_por_ministerio": {
+  "unidad": "M€ · obligaciones reconocidas 2025",
+  "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf",
+  "nivel": "P",
+  "nota": "Capítulos: tabla oficial de la IGAE por programas y capítulos. Centros gestores, destinos y artículos 10 y 11: suma propia de las 11.950 partidas del mensual de la IGAE. «partidas_sin_leer» es lo que esa suma no alcanza frente al total oficial; la mayor diferencia es Defensa (254 M€) y Economía (236 M€). En Presidencia y Justicia, el artículo 10 no cuenta los 16,45 M€ del programa 112A (Tribunales de Justicia y Ministerio Fiscal). Solo presupuesto del Estado: los organismos autónomos y las agencias tienen presupuesto propio y aquí solo aparece lo que el ministerio les transfiere.",
+  "leyenda": {
+   "1": "Personal",
+   "2": "Bienes y servicios",
+   "3": "Gastos financieros",
+   "4": "Transferencias corrientes",
+   "6": "Inversiones reales",
+   "7": "Transferencias de capital",
+   "8": "Activos financieros",
+   "9": "Pasivos financieros"
+  },
+  "totales": {
+   "capitulos": {
+    "1": 22740.3,
+    "2": 6243.6,
+    "3": 35112.9,
+    "4": 165482.7,
+    "6": 14754.6,
+    "7": 19035.3,
+    "8": 38453.3,
+    "9": 121513.8
+   },
+   "total": 423336.4
+  },
+  "secciones": [
+   {
+    "seccion": "DEUDA PÚBLICA",
+    "tipo": "partida no ministerial",
+    "total": 156335.7,
+    "pct_total_estado": 36.93,
+    "por_habitante": 3139.17,
+    "capitulos": {
+     "1": 0.0,
+     "2": 0.0,
+     "3": 34822.1,
+     "4": 0.0,
+     "6": 0.0,
+     "7": 0.0,
+     "8": 0.0,
+     "9": 121513.6
+    },
+    "pct_personal": 0.0,
+    "programas": [
+     {
+      "n": "Amortiz. y gastos finan. de la deuda pública en euros",
+      "o": 156306.5
+     },
+     {
+      "n": "Amortiz. y gastos finan. de deuda pública en mon. extranjera",
+      "o": 29.2
+     }
+    ],
+    "centros": [
+     {
+      "cod": "0601",
+      "n": "BONOS, OBLIGACIONES Y OTRAS DEUDAS",
+      "ini": 120235.8,
+      "def": 146126.8,
+      "o": 145770.3
+     },
+     {
+      "cod": "0602",
+      "n": "PRÉSTAMOS",
+      "ini": 4728.9,
+      "def": 8556.4,
+      "o": 8239.7
+     },
+     {
+      "cod": "0603",
+      "n": "LETRAS DEL TESORO",
+      "ini": 1101.0,
+      "def": 2309.7,
+      "o": 2227.2
+     },
+     {
+      "cod": "0605",
+      "n": "OBLIGACIONES DIVERSAS",
+      "ini": 195.0,
+      "def": 195.0,
+      "o": 76.1
+     },
+     {
+      "cod": "0604",
+      "n": "DEUDAS ASUMIDAS",
+      "ini": 2536.1,
+      "def": 111.7,
+      "o": 22.5
+     }
+    ],
+    "destino": {},
+    "transf_mayores": [],
+    "altos_cargos": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "partidas_leidas": 156335.7,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "SISTEMAS DE FINANC. DE ENTES TERRIT.",
+    "tipo": "partida no ministerial",
+    "total": 54824.7,
+    "pct_total_estado": 12.95,
+    "por_habitante": 1100.86,
+    "capitulos": {
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 54824.7,
+     "6": 0.0,
+     "7": 0.0,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 0.0,
+    "programas": [
+     {
+      "n": "Transferencias a CC.AA por particip. en ingresos del Estado",
+      "o": 28059.0
+     },
+     {
+      "n": "Transferencias a EE.LL por particip. en ingresos del Estado",
+      "o": 25867.7
+     },
+     {
+      "n": "Otras transferencias a Comunidades Autónomas",
+      "o": 598.4
+     },
+     {
+      "n": "Otras transferencias a Entidades Locales",
+      "o": 270.0
+     },
+     {
+      "n": "Contingencias asociadas a la Depresión Aislada Niveles Altos",
+      "o": 29.6
+     }
+    ],
+    "centros": [
+     {
+      "cod": "3821",
+      "n": "SEC. GRAL. DE FINANC. AUTONÓMICA Y LOCAL. ENTIDADES LOCALES",
+      "ini": 21012.9,
+      "def": 26176.8,
+      "o": 26167.3
+     },
+     {
+      "cod": "3820",
+      "n": "SEC. GRAL. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. VARIAS CC.AA.",
+      "ini": 18393.1,
+      "def": 22290.7,
+      "o": 22290.7
+     },
+     {
+      "cod": "3802",
+      "n": "SEC. GRAL. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. CATALUÑA",
+      "ini": 1451.3,
+      "def": 1680.0,
+      "o": 1343.7
+     },
+     {
+      "cod": "3803",
+      "n": "SEC. GRAL. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. GALICIA",
+      "ini": 725.5,
+      "def": 862.5,
+      "o": 862.5
+     },
+     {
+      "cod": "3804",
+      "n": "SEC. GRAL. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. ANDALUCÍA",
+      "ini": 609.6,
+      "def": 724.3,
+      "o": 724.3
+     },
+     {
+      "cod": "3806",
+      "n": "SEC. GRAL. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. CANTABRIA",
+      "ini": 596.6,
+      "def": 708.8,
+      "o": 708.8
+     },
+     {
+      "cod": "3814",
+      "n": "SEC. GRAL. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. EXTREMADURA",
+      "ini": 541.7,
+      "def": 643.6,
+      "o": 643.6
+     },
+     {
+      "cod": "3817",
+      "n": "SEC. GRAL. DE FINANC. AUTONÓMICA Y LOCAL. CASTILLA Y LEÓN",
+      "ini": 526.8,
+      "def": 625.9,
+      "o": 625.9
+     }
+    ],
+    "destino": {
+     "CCAA": 28657.4,
+     "Entidades locales": 26167.3
+    },
+    "transf_mayores": [
+     {
+      "n": "Aportación del Estado al Fondo de Garantía",
+      "centro": "SEC. GRAL. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. VARIAS CC.AA.",
+      "ec": "453",
+      "dest": "CCAA",
+      "o": 13271.4
+     },
+     {
+      "n": "Entregas a cuenta a favor de los Municipios por su participación en los conceptos tributarios de los capítulos I y II del Presupuesto de Ingresos del Estado no susceptibl",
+      "centro": "SEC. GRAL. DE FINANC. AUTONÓMICA Y LOCAL. ENTIDADES LOCALES",
+      "ec": "46002",
+      "dest": "Entidades locales",
+      "o": 9454.1
+     },
+     {
+      "n": "Entregas a cuenta a las Diputaciones y Cabildos Insulares por su participación en los ingresos de los capítulos I y II del Presupuesto del Estado por recursos no suscepti",
+      "centro": "SEC. GRAL. DE FINANC. AUTONÓMICA Y LOCAL. ENTIDADES LOCALES",
+      "ec": "46101",
+      "dest": "Entidades locales",
+      "o": 7819.9
+     },
+     {
+      "n": "Entregas a cuenta a favor de los Municipios no incluidos en el modelo de cesión por su participación en los conceptos tributarios de los capítulos I y II del Presupuesto",
+      "centro": "SEC. GRAL. DE FINANC. AUTONÓMICA Y LOCAL. ENTIDADES LOCALES",
+      "ec": "46001",
+      "dest": "Entidades locales",
+      "o": 6729.3
+     },
+     {
+      "n": "Fondo de Competitividad",
+      "centro": "SEC. GRAL. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. VARIAS CC.AA.",
+      "ec": "45200",
+      "dest": "CCAA",
+      "o": 4978.6
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "partidas_leidas": 54824.7,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "INCLUSIÓN, S.S. Y MIGRACIONES",
+    "tipo": "ministerio",
+    "total": 54800.7,
+    "pct_total_estado": 12.94,
+    "por_habitante": 1100.38,
+    "capitulos": {
+     "1": 61.2,
+     "2": 1198.5,
+     "3": 0.1,
+     "4": 43236.9,
+     "6": 37.2,
+     "7": 62.1,
+     "8": 10204.5,
+     "9": 0.0
+    },
+    "pct_personal": 0.1,
+    "programas": [
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 53207.2
+     },
+     {
+      "n": "Acciones en favor de los inmigrantes",
+      "o": 1257.6
+     },
+     {
+      "n": "C22.I06 Fondo de impacto social (FIS)",
+      "o": 200.0
+     },
+     {
+      "n": "Acciones en favor de los emigrantes",
+      "o": 56.1
+     },
+     {
+      "n": "Dirección y Serv. Grales. de inclusión, S.S. y Migración",
+      "o": 41.7
+     },
+     {
+      "n": "C22.I05 Increm. capacid. y efic. sist. acogida solic. asilo",
+      "o": 16.7
+     },
+     {
+      "n": "Otros",
+      "o": 8.0
+     },
+     {
+      "n": "Análisis y definición de objetivos y políticas de Inclusión",
+      "o": 5.9
+     }
+    ],
+    "centros": [
+     {
+      "cod": "3202",
+      "n": "SECRETARÍA DE ESTADO DE SEGURIDAD SOCIAL Y PENSIONES",
+      "ini": 44743.8,
+      "def": 53160.0,
+      "o": 53158.6
+     },
+     {
+      "cod": "3203",
+      "n": "SECRETARÍA DE ESTADO DE MIGRACIONES",
+      "ini": 809.3,
+      "def": 1459.7,
+      "o": 1318.8
+     },
+     {
+      "cod": "3250",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 0.0,
+      "def": 430.9,
+      "o": 284.9
+     },
+     {
+      "cod": "3201",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 57.7,
+      "def": 42.1,
+      "o": 29.2
+     },
+     {
+      "cod": "3204",
+      "n": "SEC. GRAL. OBJETIVOS Y POLÍT. DE INCLUSIÓN Y PREVISIÓN SOC.",
+      "ini": 2.8,
+      "def": 7.2,
+      "o": 5.9
+     }
+    ],
+    "destino": {
+     "Seguridad Social": 43203.4,
+     "Exterior": 50.4,
+     "Familias e ISFL": 40.3,
+     "Entidades locales": 4.9,
+     "Otras entidades estatales": 0.0,
+     "CCAA": 0.0,
+     "Empresas y fundaciones públicas": 0.0
+    },
+    "transf_mayores": [
+     {
+      "n": "Aportación del Estado para financiar los complementos de pensiones mínimas del Sistema de la Seguridad Social.",
+      "centro": "SECRETARÍA DE ESTADO DE SEGURIDAD SOCIAL Y PENSIONES",
+      "ec": "423",
+      "dest": "Seguridad Social",
+      "o": 8732.3
+     },
+     {
+      "n": "Aportación del Estado al presupuesto de la Seguridad Social para otros conceptos",
+      "centro": "SECRETARÍA DE ESTADO DE SEGURIDAD SOCIAL Y PENSIONES",
+      "ec": "42509",
+      "dest": "Seguridad Social",
+      "o": 8543.6
+     },
+     {
+      "n": "Aportación del Estado a la Seguridad Social para financiar el Ingreso Mínimo Vital.",
+      "centro": "SECRETARÍA DE ESTADO DE SEGURIDAD SOCIAL Y PENSIONES",
+      "ec": "424",
+      "dest": "Seguridad Social",
+      "o": 4955.9
+     },
+     {
+      "n": "Aportación del Estado al presupuesto de la Seguridad Social para financiar las prestaciones no contributivas establecidas por la Ley 26/1990, de 20 de diciembre . Pension",
+      "centro": "SECRETARÍA DE ESTADO DE SEGURIDAD SOCIAL Y PENSIONES",
+      "ec": "42002",
+      "dest": "Seguridad Social",
+      "o": 3772.5
+     },
+     {
+      "n": "Aportación del Estado al presupuesto de la Seguridad Social para complementos de prestaciones contributivas, sujetos a limite de ingresos",
+      "centro": "SECRETARÍA DE ESTADO DE SEGURIDAD SOCIAL Y PENSIONES",
+      "ec": "42510",
+      "dest": "Seguridad Social",
+      "o": 3761.9
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.81,
+     "definitivo": 0.9,
+     "obligaciones": 0.89
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 1.04,
+     "definitivo": 1.16,
+     "obligaciones": 1.14
+    },
+    "partidas_leidas": 54797.4,
+    "partidas_sin_leer": 3.3
+   },
+   {
+    "seccion": "CLASES PASIVAS",
+    "tipo": "partida no ministerial",
+    "total": 23508.6,
+    "pct_total_estado": 5.55,
+    "por_habitante": 472.05,
+    "capitulos": {
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 23508.6,
+     "6": 0.0,
+     "7": 0.0,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 0.0,
+    "programas": [
+     {
+      "n": "Pensiones de Clases Pasivas",
+      "o": 23383.8
+     },
+     {
+      "n": "Pensiones de guerra",
+      "o": 63.4
+     },
+     {
+      "n": "Otras pensiones y prestaciones de Clases Pasivas",
+      "o": 61.0
+     },
+     {
+      "n": "Otros",
+      "o": 0.4
+     }
+    ],
+    "centros": [
+     {
+      "cod": "0701",
+      "n": "PENSIONES Y OTRAS PRESTACIONES DE CLASES PASIVAS",
+      "ini": 20499.8,
+      "def": 23524.8,
+      "o": 23508.6
+     }
+    ],
+    "destino": {
+     "Familias e ISFL": 23508.2,
+     "Seguridad Social": 0.4
+    },
+    "transf_mayores": [
+     {
+      "n": "Pensiones a funcionarios, de carácter civil",
+      "centro": "PENSIONES Y OTRAS PRESTACIONES DE CLASES PASIVAS",
+      "ec": "48200",
+      "dest": "Familias e ISFL",
+      "o": 17527.2
+     },
+     {
+      "n": "Pensiones a funcionarios, de carácter militar",
+      "centro": "PENSIONES Y OTRAS PRESTACIONES DE CLASES PASIVAS",
+      "ec": "48202",
+      "dest": "Familias e ISFL",
+      "o": 3301.8
+     },
+     {
+      "n": "Pensiones a familias, de carácter civil",
+      "centro": "PENSIONES Y OTRAS PRESTACIONES DE CLASES PASIVAS",
+      "ec": "48201",
+      "dest": "Familias e ISFL",
+      "o": 1457.0
+     },
+     {
+      "n": "Pensiones a familias, de carácter militar",
+      "centro": "PENSIONES Y OTRAS PRESTACIONES DE CLASES PASIVAS",
+      "ec": "48203",
+      "dest": "Familias e ISFL",
+      "o": 1097.8
+     },
+     {
+      "n": "Otras pensiones o indemnizaciones militares",
+      "centro": "PENSIONES Y OTRAS PRESTACIONES DE CLASES PASIVAS",
+      "ec": "48009",
+      "dest": "Familias e ISFL",
+      "o": 28.4
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "partidas_leidas": 23508.6,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "DEFENSA",
+    "tipo": "ministerio",
+    "total": 18806.1,
+    "pct_total_estado": 4.44,
+    "por_habitante": 377.62,
+    "capitulos": {
+     "1": 6364.1,
+     "2": 1986.1,
+     "3": 0.0,
+     "4": 613.3,
+     "6": 9148.8,
+     "7": 681.2,
+     "8": 12.7,
+     "9": 0.0
+    },
+    "pct_personal": 33.8,
+    "programas": [
+     {
+      "n": "Programas especiales de modernización",
+      "o": 5610.3
+     },
+     {
+      "n": "Gastos Operativos de las Fuerzas Armadas",
+      "o": 4237.7
+     },
+     {
+      "n": "Administración y Servicios Generales de Defensa",
+      "o": 3571.3
+     },
+     {
+      "n": "Apoyo Logístico",
+      "o": 1318.7
+     },
+     {
+      "n": "Modernización de las Fuerzas Armadas",
+      "o": 1250.1
+     },
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 969.5
+     },
+     {
+      "n": "Formación del Personal de las Fuerzas Armadas",
+      "o": 660.3
+     },
+     {
+      "n": "Personal en reserva",
+      "o": 614.4
+     }
+    ],
+    "centros": [
+     {
+      "cod": "1403",
+      "n": "SECRETARÍA DE ESTADO DE DEFENSA",
+      "ini": 6412.2,
+      "def": 10870.5,
+      "o": 10690.3
+     },
+     {
+      "cod": "1401",
+      "n": "MINISTERIO Y SUBSECRETARÍA",
+      "ini": 5484.4,
+      "def": 6415.4,
+      "o": 6377.4
+     },
+     {
+      "cod": "1412",
+      "n": "EJÉRCITO DE TIERRA",
+      "ini": 338.1,
+      "def": 574.0,
+      "o": 525.5
+     },
+     {
+      "cod": "1422",
+      "n": "EJÉRCITO DEL AIRE",
+      "ini": 166.0,
+      "def": 431.0,
+      "o": 401.0
+     },
+     {
+      "cod": "1417",
+      "n": "ARMADA",
+      "ini": 179.9,
+      "def": 322.7,
+      "o": 311.8
+     },
+     {
+      "cod": "1402",
+      "n": "CUARTEL GENERAL DEL EMAD",
+      "ini": 75.9,
+      "def": 202.9,
+      "o": 196.6
+     },
+     {
+      "cod": "1450",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 170.6,
+      "def": 75.5,
+      "o": 49.4
+     }
+    ],
+    "destino": {
+     "Otras entidades estatales": 856.9,
+     "Exterior": 184.9,
+     "Organismos autónomos": 110.4,
+     "CCAA": 14.7,
+     "Empresas y fundaciones públicas": 14.6,
+     "Familias e ISFL": 9.2
+    },
+    "transf_mayores": [
+     {
+      "n": "Al Centro Nacional de Inteligencia",
+      "centro": "SECRETARÍA DE ESTADO DE DEFENSA",
+      "ec": "737",
+      "dest": "Otras entidades estatales",
+      "o": 519.0
+     },
+     {
+      "n": "Al Centro Nacional de Inteligencia",
+      "centro": "SECRETARÍA DE ESTADO DE DEFENSA",
+      "ec": "437",
+      "dest": "Otras entidades estatales",
+      "o": 337.8
+     },
+     {
+      "n": "Contribución a la OTAN",
+      "centro": "SECRETARÍA DE ESTADO DE DEFENSA",
+      "ec": "49002",
+      "dest": "Exterior",
+      "o": 146.0
+     },
+     {
+      "n": "Al Instituto Nacional de Técnica Aeroespacial \"Esteban Terradas\"",
+      "centro": "SECRETARÍA DE ESTADO DE DEFENSA",
+      "ec": "71003",
+      "dest": "Organismos autónomos",
+      "o": 59.2
+     },
+     {
+      "n": "Al Instituto Nacional de Técnica Aeroespacial Esteban Terradas",
+      "centro": "SECRETARÍA DE ESTADO DE DEFENSA",
+      "ec": "41003",
+      "dest": "Organismos autónomos",
+      "o": 46.4
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 1.14,
+     "definitivo": 1.48,
+     "obligaciones": 1.41
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 1.1,
+     "definitivo": 1.12,
+     "obligaciones": 0.77
+    },
+    "partidas_leidas": 18551.9,
+    "partidas_sin_leer": 254.2
+   },
+   {
+    "seccion": "RELACIONES FINANCIERAS CON LA U. E.",
+    "tipo": "partida no ministerial",
+    "total": 17164.8,
+    "pct_total_estado": 4.05,
+    "por_habitante": 344.66,
+    "capitulos": {
+     "1": 0.0,
+     "2": 0.0,
+     "3": 2.5,
+     "4": 17098.5,
+     "6": 0.0,
+     "7": 63.8,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 0.0,
+    "programas": [
+     {
+      "n": "Transferencias al Presupuesto General de la Unión Europea",
+      "o": 16974.0
+     },
+     {
+      "n": "Cooperación a través del FED y del Fondo Europeo Apoyo Paz",
+      "o": 190.8
+     }
+    ],
+    "centros": [
+     {
+      "cod": "3401",
+      "n": "D.G. FONDOS COMUNITARIOS. RELACIONES FINANCIERA CON LA U.E.",
+      "ini": 18042.8,
+      "def": 17189.3,
+      "o": 17164.8
+     }
+    ],
+    "destino": {
+     "Exterior": 17162.3
+    },
+    "transf_mayores": [
+     {
+      "n": "Aportación a la Unión Europea por recurso propio basado en la Renta Nacional Bruta (RNB)",
+      "centro": "D.G. FONDOS COMUNITARIOS. RELACIONES FINANCIERA CON LA U.E.",
+      "ec": "492",
+      "dest": "Exterior",
+      "o": 10417.1
+     },
+     {
+      "n": "Aportación a la Unión Europea por la recaudación líquida en España de los recursos propios tradicionales, incluso obligaciones de ejercicios anteriores",
+      "centro": "D.G. FONDOS COMUNITARIOS. RELACIONES FINANCIERA CON LA U.E.",
+      "ec": "493",
+      "dest": "Exterior",
+      "o": 2920.3
+     },
+     {
+      "n": "Aportación a la Unión Europea por recurso propio procedente del IVA",
+      "centro": "D.G. FONDOS COMUNITARIOS. RELACIONES FINANCIERA CON LA U.E.",
+      "ec": "491",
+      "dest": "Exterior",
+      "o": 2436.1
+     },
+     {
+      "n": "Aportación a la Unión Europea por recurso propio basado en los residuos de envases de plástico no reciclados",
+      "centro": "D.G. FONDOS COMUNITARIOS. RELACIONES FINANCIERA CON LA U.E.",
+      "ec": "497",
+      "dest": "Exterior",
+      "o": 1147.9
+     },
+     {
+      "n": "Aportación al Fondo Europeo de Apoyo a la Paz",
+      "centro": "D.G. FONDOS COMUNITARIOS. RELACIONES FINANCIERA CON LA U.E.",
+      "ec": "499",
+      "dest": "Exterior",
+      "o": 127.0
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "partidas_leidas": 17164.8,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "TRANSPORTES Y MOVILIDAD SOSTENIBLE",
+    "tipo": "ministerio",
+    "total": 11506.1,
+    "pct_total_estado": 2.72,
+    "por_habitante": 231.04,
+    "capitulos": {
+     "1": 181.3,
+     "2": 62.7,
+     "3": 0.4,
+     "4": 6125.8,
+     "6": 3149.1,
+     "7": 713.2,
+     "8": 1273.5,
+     "9": 0.0
+    },
+    "pct_personal": 1.6,
+    "programas": [
+     {
+      "n": "Subvenciones y apoyo al transporte terrestre",
+      "o": 3210.4
+     },
+     {
+      "n": "Subvenciones y apoyo al transporte aéreo",
+      "o": 1679.0
+     },
+     {
+      "n": "Infraestructura del transporte ferroviario",
+      "o": 1609.3
+     },
+     {
+      "n": "Conservación y explotación de carreteras",
+      "o": 1549.0
+     },
+     {
+      "n": "Creación de infraestructura de carreteras",
+      "o": 1373.9
+     },
+     {
+      "n": "Subvenciones y apoyo al transporte marítimo",
+      "o": 325.5
+     },
+     {
+      "n": "C06.I02 Red Transeuropea de Transporte. Otras actuaciones",
+      "o": 257.5
+     },
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 253.6
+     }
+    ],
+    "centros": [
+     {
+      "cod": "1738",
+      "n": "DIRECCIÓN GENERAL DE CARRETERAS",
+      "ini": 2802.0,
+      "def": 3093.6,
+      "o": 3038.5
+     },
+     {
+      "cod": "1739",
+      "n": "DIRECCIÓN GENERAL DE TRANSPORTE TERRESTRE",
+      "ini": 2529.2,
+      "def": 2368.0,
+      "o": 2366.2
+     },
+     {
+      "cod": "1734",
+      "n": "DIRECCIÓN GENERAL DE AVIACIÓN CIVIL",
+      "ini": 584.2,
+      "def": 1690.4,
+      "o": 1689.1
+     },
+     {
+      "cod": "1740",
+      "n": "D. G. DE PLANIFICACIÓN Y EVALUACIÓN DE LA RED FERROVIARIA",
+      "ini": 1733.2,
+      "def": 1636.4,
+      "o": 1609.3
+     },
+     {
+      "cod": "1750",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 2591.0,
+      "def": 1935.7,
+      "o": 739.8
+     },
+     {
+      "cod": "1741",
+      "n": "DIRECCIÓN GENERAL DE ESTRATEGIAS DE MOVILIDAD",
+      "ini": 0.0,
+      "def": 738.8,
+      "o": 735.7
+     },
+     {
+      "cod": "1732",
+      "n": "DIRECCIÓN GENERAL DE MARINA MERCANTE",
+      "ini": 410.5,
+      "def": 580.0,
+      "o": 578.6
+     },
+     {
+      "cod": "1720",
+      "n": "S.E. DE TRANSPORTES, MOVILIDAD Y AGENDA URBANA",
+      "ini": 548.3,
+      "def": 399.2,
+      "o": 387.2
+     }
+    ],
+    "destino": {
+     "Empresas y fundaciones públicas": 2191.0,
+     "Familias e ISFL": 2015.4,
+     "CCAA": 1522.0,
+     "Empresas privadas": 510.4,
+     "Entidades locales": 342.3,
+     "Otras entidades estatales": 224.6,
+     "Organismos autónomos": 29.0,
+     "Exterior": 4.5
+    },
+    "transf_mayores": [
+     {
+      "n": "Renfe Viajeros, S.M.E., S.A. para la compensación de las Obligaciones de Servicio Público, pendiente de liquidación",
+      "centro": "DIRECCIÓN GENERAL DE TRANSPORTE TERRESTRE",
+      "ec": "442",
+      "dest": "Empresas y fundaciones públicas",
+      "o": 1103.8
+     },
+     {
+      "n": "Entre la Península y el Archipiélago Canario, así como entre las Islas Canarias",
+      "centro": "DIRECCIÓN GENERAL DE AVIACIÓN CIVIL",
+      "ec": "48301",
+      "dest": "Familias e ISFL",
+      "o": 941.0
+     },
+     {
+      "n": "Entre la Península y el Archipiélago Balear, así como entre las Islas Baleares",
+      "centro": "DIRECCIÓN GENERAL DE AVIACIÓN CIVIL",
+      "ec": "48302",
+      "dest": "Familias e ISFL",
+      "o": 361.7
+     },
+     {
+      "n": "Subvención al tráfico aéreo regular entre la Península y el Archipiélago Canario, así como entre las",
+      "centro": "DIRECCIÓN GENERAL DE AVIACIÓN CIVIL",
+      "ec": "484",
+      "dest": "Familias e ISFL",
+      "o": 319.2
+     },
+     {
+      "n": "Ayudas para reducción del precio de abonos y títulos multiviaje por parte de RENFE VIAJEROS S.M.E., S.A.",
+      "centro": "DIRECCIÓN GENERAL DE TRANSPORTE TERRESTRE",
+      "ec": "445",
+      "dest": "Empresas y fundaciones públicas",
+      "o": 307.8
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.9,
+     "definitivo": 1.21,
+     "obligaciones": 1.2
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.63,
+     "definitivo": 0.89,
+     "obligaciones": 0.89
+    },
+    "partidas_leidas": 11506.1,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "INTERIOR",
+    "tipo": "ministerio",
+    "total": 11144.4,
+    "pct_total_estado": 2.63,
+    "por_habitante": 223.78,
+    "capitulos": {
+     "1": 8899.9,
+     "2": 1369.7,
+     "3": 0.1,
+     "4": 317.6,
+     "6": 551.0,
+     "7": 6.0,
+     "8": 0.2,
+     "9": 0.0
+    },
+    "pct_personal": 79.9,
+    "programas": [
+     {
+      "n": "Seguridad ciudadana",
+      "o": 8522.6
+     },
+     {
+      "n": "Centros e Instituciones Penitenciarias",
+      "o": 1484.0
+     },
+     {
+      "n": "Fuerzas y Cuerpos en reserva",
+      "o": 343.7
+     },
+     {
+      "n": "Contingencias asociadas a la Depresión Aislada Niveles Altos",
+      "o": 231.0
+     },
+     {
+      "n": "Formación de Fuerzas y Cuerpos de Seguridad del Estado",
+      "o": 179.6
+     },
+     {
+      "n": "Actuaciones policiales en materia de droga",
+      "o": 131.5
+     },
+     {
+      "n": "C11.I04 Plan de Transición Energética en la AGE",
+      "o": 68.5
+     },
+     {
+      "n": "Elecciones y Partidos Políticos",
+      "o": 68.0
+     }
+    ],
+    "centros": [
+     {
+      "cod": "1603",
+      "n": "DIRECCIÓN GENERAL DE LA POLICÍA",
+      "ini": 3953.1,
+      "def": 4558.1,
+      "o": 4481.0
+     },
+     {
+      "cod": "1604",
+      "n": "DIRECCIÓN GENERAL DE LA GUARDIA CIVIL",
+      "ini": 3670.9,
+      "def": 4366.4,
+      "o": 4262.7
+     },
+     {
+      "cod": "1605",
+      "n": "SECRETARÍA GENERAL DE INSTITUCIONES PENITENCIARIAS",
+      "ini": 1326.3,
+      "def": 1528.6,
+      "o": 1484.0
+     },
+     {
+      "cod": "1602",
+      "n": "SECRETARÍA DE ESTADO DE SEGURIDAD",
+      "ini": 371.8,
+      "def": 516.8,
+      "o": 468.5
+     },
+     {
+      "cod": "1601",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 937.2,
+      "def": 652.7,
+      "o": 356.2
+     },
+     {
+      "cod": "1650",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 0.0,
+      "def": 216.0,
+      "o": 91.9
+     }
+    ],
+    "destino": {
+     "Familias e ISFL": 178.5,
+     "Entidades locales": 96.8,
+     "Exterior": 20.6,
+     "Empresas y fundaciones públicas": 18.6,
+     "Organismos autónomos": 6.0,
+     "CCAA": 2.4,
+     "Empresas privadas": 0.5,
+     "Otras entidades estatales": 0.0
+    },
+    "transf_mayores": [
+     {
+      "n": "Para atenciones de todo orden motivadas por siniestros, catástrofes u otros de reconocida urgencia",
+      "centro": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ec": "482",
+      "dest": "Familias e ISFL",
+      "o": 107.9
+     },
+     {
+      "n": "Para atenciones de todo orden motivadas por siniestros, catástrofes u otros de reconocida urgencia",
+      "centro": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ec": "461",
+      "dest": "Entidades locales",
+      "o": 91.6
+     },
+     {
+      "n": "Financiación a partidos políticos (Ley Orgánica 8/2007)",
+      "centro": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ec": "48501",
+      "dest": "Familias e ISFL",
+      "o": 52.7
+     },
+     {
+      "n": "Cooperación Internacional: Ayudas directas",
+      "centro": "SECRETARÍA DE ESTADO DE SEGURIDAD",
+      "ec": "49401",
+      "dest": "Exterior",
+      "o": 13.7
+     },
+     {
+      "n": "A Trabajo Penitenciario y Formación para el Empleo",
+      "centro": "SECRETARÍA GENERAL DE INSTITUCIONES PENITENCIARIAS",
+      "ec": "442",
+      "dest": "Empresas y fundaciones públicas",
+      "o": 12.2
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.97,
+     "definitivo": 1.1,
+     "obligaciones": 1.1
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.94,
+     "definitivo": 0.97,
+     "obligaciones": 0.96
+    },
+    "partidas_leidas": 11144.4,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "INDUSTRIA Y TURISMO",
+    "tipo": "ministerio",
+    "total": 9976.0,
+    "pct_total_estado": 2.36,
+    "por_habitante": 200.32,
+    "capitulos": {
+     "1": 36.6,
+     "2": 13.3,
+     "3": 0.0,
+     "4": 68.0,
+     "6": 15.4,
+     "7": 2547.1,
+     "8": 7295.8,
+     "9": 0.0
+    },
+    "pct_personal": 0.4,
+    "programas": [
+     {
+      "n": "Apoyo a la innovación tecnológica en el sector de la defensa",
+      "o": 5544.9
+     },
+     {
+      "n": "Contingencias asociadas a la Depresión Aislada Niveles Altos",
+      "o": 807.9
+     },
+     {
+      "n": "C31.I08 Rég. subv. proyectos descarbonización (préstamos)",
+      "o": 702.0
+     },
+     {
+      "n": "Desarrollo industrial",
+      "o": 621.9
+     },
+     {
+      "n": "C12.I02 Impulso Competit.Sostenib. indus. I+D+i+Digitilizac.",
+      "o": 414.9
+     },
+     {
+      "n": "C31.I05 Ayudas Progr. impulso competit.y sostenib.industrial",
+      "o": 331.4
+     },
+     {
+      "n": "Investigación y desarrollo tecnológico-industrial",
+      "o": 309.1
+     },
+     {
+      "n": "C12.I06 Rég. subven. proyectos estratég.vehículos electricos",
+      "o": 265.0
+     }
+    ],
+    "centros": [
+     {
+      "cod": "2009",
+      "n": "D.G. DE INDUSTRIA Y DE LA PEQUEÑA Y MEDIANA EMPRESA",
+      "ini": 3006.4,
+      "def": 7866.8,
+      "o": 7313.5
+     },
+     {
+      "cod": "2050",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 5092.3,
+      "def": 3821.0,
+      "o": 2416.2
+     },
+     {
+      "cod": "2004",
+      "n": "SECRETARÍA DE ESTADO DE TURISMO",
+      "ini": 249.2,
+      "def": 131.1,
+      "o": 126.6
+     },
+     {
+      "cod": "2010",
+      "n": "DIRECCIÓN GENERAL DE ESTRATEGIA INDUSTRIAL Y DE LA PEQUEÑA Y",
+      "ini": 1.7,
+      "def": 75.9,
+      "o": 55.4
+     },
+     {
+      "cod": "2001",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 54.3,
+      "def": 44.6,
+      "o": 37.9
+     },
+     {
+      "cod": "2003",
+      "n": "SECRETARÍA DE ESTADO DE COMERCIO EXTERIOR",
+      "ini": 14.0,
+      "def": 24.0,
+      "o": 21.3
+     },
+     {
+      "cod": "2002",
+      "n": "SECRETARÍA GENERAL TÉCNICA",
+      "ini": 4.4,
+      "def": 4.3,
+      "o": 4.1
+     }
+    ],
+    "destino": {
+     "Empresas privadas": 1625.7,
+     "Empresas y fundaciones públicas": 430.8,
+     "Entidades locales": 230.4,
+     "Familias e ISFL": 216.9,
+     "Organismos autónomos": 94.3,
+     "CCAA": 17.1,
+     "Exterior": 0.0
+    },
+    "transf_mayores": [
+     {
+      "n": "Programa de Compensación costes indirectos. Régimen de Comercio de Derechos de Emisión de Gases de Efecto Invernadero (RCDE). Financiado según el artículo 30.4 de la Ley",
+      "centro": "D.G. DE INDUSTRIA Y DE LA PEQUEÑA Y MEDIANA EMPRESA",
+      "ec": "771",
+      "dest": "Empresas privadas",
+      "o": 610.9
+     },
+     {
+      "n": "Apoyo a Proyectos Estratégicos para la Transición Industrial. Mecanismo de Recuperación y Resiliencia",
+      "centro": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ec": "77400",
+      "dest": "Empresas privadas",
+      "o": 414.8
+     },
+     {
+      "n": "Apoyo a Proyectos Estratégicos para la Transición Industrial. Mecanismo de Recuperación y Resilienci",
+      "centro": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ec": "774",
+      "dest": "Empresas privadas",
+      "o": 247.6
+     },
+     {
+      "n": "A SEPIDES para impulso de proyectos estratégicos en cadena de valor de otros sectores industriales",
+      "centro": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ec": "74709",
+      "dest": "Empresas y fundaciones públicas",
+      "o": 189.7
+     },
+     {
+      "n": "A Familias. PLAN REINICIA AUTO +",
+      "centro": "D.G. DE INDUSTRIA Y DE LA PEQUEÑA Y MEDIANA EMPRESA",
+      "ec": "780",
+      "dest": "Familias e ISFL",
+      "o": 146.4
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.55,
+     "definitivo": 0.83,
+     "obligaciones": 0.79
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 1.06,
+     "definitivo": 1.12,
+     "obligaciones": 0.96
+    },
+    "partidas_leidas": 9975.0,
+    "partidas_sin_leer": 1.0
+   },
+   {
+    "seccion": "HACIENDA",
+    "tipo": "ministerio",
+    "total": 9219.2,
+    "pct_total_estado": 2.18,
+    "por_habitante": 185.12,
+    "capitulos": {
+     "1": 390.5,
+     "2": 98.6,
+     "3": 0.3,
+     "4": 2646.5,
+     "6": 85.6,
+     "7": 175.9,
+     "8": 5821.7,
+     "9": 0.0
+    },
+    "pct_personal": 4.2,
+    "programas": [
+     {
+      "n": "Coordinación y relaciones financieras con los Entes Territ.",
+      "o": 4259.9
+     },
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 1892.9
+     },
+     {
+      "n": "Contingencias asociadas a la Depresión Aislada Niveles Altos",
+      "o": 1514.9
+     },
+     {
+      "n": "Dirección y Serv. Grales. Hacienda y Función Pública",
+      "o": 919.1
+     },
+     {
+      "n": "Gestión del Patrimonio del Estado",
+      "o": 177.0
+     },
+     {
+      "n": "Gestión del catastro inmobiliario",
+      "o": 108.8
+     },
+     {
+      "n": "Control interno y Contabilidad Pública",
+      "o": 102.3
+     },
+     {
+      "n": "Política presupuestaria",
+      "o": 100.4
+     }
+    ],
+    "centros": [
+     {
+      "cod": "1522",
+      "n": "SECRETARÍA GENERAL DE FINANCIACIÓN AUTONÓMICA Y LOCAL",
+      "ini": 16008.9,
+      "def": 14039.1,
+      "o": 5669.8
+     },
+     {
+      "cod": "1505",
+      "n": "SECRETARÍA DE ESTADO DE HACIENDA",
+      "ini": 1372.7,
+      "def": 2001.3,
+      "o": 2000.8
+     },
+     {
+      "cod": "1501",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 1107.0,
+      "def": 976.7,
+      "o": 911.8
+     },
+     {
+      "cod": "1504",
+      "n": "DIRECCIÓN GENERAL DEL PATRIMONIO DEL ESTADO",
+      "ini": 236.0,
+      "def": 226.9,
+      "o": 183.8
+     },
+     {
+      "cod": "1511",
+      "n": "INTERVENCIÓN GENERAL DE LA ADMINISTRACIÓN DEL ESTADO",
+      "ini": 133.9,
+      "def": 151.2,
+      "o": 147.5
+     },
+     {
+      "cod": "1514",
+      "n": "SECRETARÍA GENERAL DE FONDOS EUROPEOS",
+      "ini": 160.1,
+      "def": 165.0,
+      "o": 116.1
+     },
+     {
+      "cod": "1508",
+      "n": "DIRECCIÓN GENERAL DEL CATASTRO",
+      "ini": 114.0,
+      "def": 110.9,
+      "o": 108.8
+     },
+     {
+      "cod": "1509",
+      "n": "TRIBUNAL ECONÓMICO-ADMINISTRATIVO CENTRAL",
+      "ini": 31.3,
+      "def": 34.3,
+      "o": 33.8
+     }
+    ],
+    "destino": {
+     "Otras entidades estatales": 1821.7,
+     "Empresas y fundaciones públicas": 713.0,
+     "Empresas privadas": 214.3,
+     "Organismos autónomos": 71.2,
+     "Exterior": 1.8,
+     "Familias e ISFL": 0.5
+    },
+    "transf_mayores": [
+     {
+      "n": "A la A.E.A.T. para gastos de funcionamiento",
+      "centro": "SECRETARÍA DE ESTADO DE HACIENDA",
+      "ec": "43500",
+      "dest": "Otras entidades estatales",
+      "o": 1139.8
+     },
+     {
+      "n": "Para la prestación del servicio público de radio y televisión.",
+      "centro": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ec": "44200",
+      "dest": "Empresas y fundaciones públicas",
+      "o": 541.2
+     },
+     {
+      "n": "A LA AEAT POR LA PARTICIPACIÓN EN LA RECAUDACIÓN POR ACTOS DE LIQUIDACIÓN Y GESTIÓN R",
+      "centro": "SECRETARÍA DE ESTADO DE HACIENDA",
+      "ec": "43501",
+      "dest": "Otras entidades estatales",
+      "o": 516.8
+     },
+     {
+      "n": "A Correos para la prestación del SIEG",
+      "centro": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ec": "446",
+      "dest": "Empresas y fundaciones públicas",
+      "o": 150.0
+     },
+     {
+      "n": "Línea de ayudas directas a empresas y profesionales especialmente afectados por la DANA",
+      "centro": "SECRETARÍA DE ESTADO DE HACIENDA",
+      "ec": "470",
+      "dest": "Empresas privadas",
+      "o": 104.9
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 1.32,
+     "definitivo": 1.54,
+     "obligaciones": 1.54
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.85,
+     "definitivo": 1.05,
+     "obligaciones": 0.91
+    },
+    "partidas_leidas": 9219.2,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "TRANSICIÓN ECOLÓGICA Y RETO DEMOGR.",
+    "tipo": "ministerio",
+    "total": 8974.3,
+    "pct_total_estado": 2.12,
+    "por_habitante": 180.2,
+    "capitulos": {
+     "1": 110.0,
+     "2": 28.4,
+     "3": 0.0,
+     "4": 948.5,
+     "6": 486.0,
+     "7": 6676.3,
+     "8": 725.1,
+     "9": 0.0
+    },
+    "pct_personal": 1.2,
+    "programas": [
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 4880.2
+     },
+     {
+      "n": "Normativa y desarrollo energético",
+      "o": 1642.0
+     },
+     {
+      "n": "Direcc. y Serv. Grales para Transición Ecológica y Reto Dem.",
+      "o": 580.3
+     },
+     {
+      "n": "C31.I04 Infraestructuras eléctricas",
+      "o": 510.0
+     },
+     {
+      "n": "Contingencias asociadas a la Depresión Aislada Niveles Altos",
+      "o": 451.2
+     },
+     {
+      "n": "Gestión e infraestructuras del agua",
+      "o": 210.2
+     },
+     {
+      "n": "Protección y mejora del medio natural",
+      "o": 174.3
+     },
+     {
+      "n": "Calidad del agua",
+      "o": 117.0
+     }
+    ],
+    "centros": [
+     {
+      "cod": "2303",
+      "n": "SECRETARÍA DE ESTADO DE ENERGÍA",
+      "ini": 4552.3,
+      "def": 6057.7,
+      "o": 5985.6
+     },
+     {
+      "cod": "2305",
+      "n": "DIRECCIÓN GENERAL DEL AGUA",
+      "ini": 1046.4,
+      "def": 1444.8,
+      "o": 1175.3
+     },
+     {
+      "cod": "2350",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 4997.5,
+      "def": 2371.3,
+      "o": 758.8
+     },
+     {
+      "cod": "2312",
+      "n": "DIRECCIÓN GENERAL DE SERVICIOS",
+      "ini": 67.0,
+      "def": 407.4,
+      "o": 400.6
+     },
+     {
+      "cod": "2311",
+      "n": "D.G. BIODIVERSIDAD, BOSQUES Y DESERTIFICACIÓN",
+      "ini": 212.5,
+      "def": 245.2,
+      "o": 221.2
+     },
+     {
+      "cod": "2301",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 58.8,
+      "def": 179.2,
+      "o": 177.4
+     },
+     {
+      "cod": "2304",
+      "n": "SECRETARÍA DE ESTADO DE MEDIO AMBIENTE",
+      "ini": 112.1,
+      "def": 77.7,
+      "o": 77.6
+     },
+     {
+      "cod": "2306",
+      "n": "DIRECCIÓN GENERAL DE LA COSTA Y DEL MAR",
+      "ini": 96.7,
+      "def": 69.2,
+      "o": 62.4
+     }
+    ],
+    "destino": {
+     "Otras entidades estatales": 4466.4,
+     "Empresas privadas": 1025.4,
+     "Empresas y fundaciones públicas": 858.4,
+     "CCAA": 510.5,
+     "Organismos autónomos": 413.9,
+     "Entidades locales": 267.0,
+     "Exterior": 49.3,
+     "Familias e ISFL": 33.9
+    },
+    "transf_mayores": [
+     {
+      "n": "A la CNMC para financiar costes del sector eléctrico de acuerdo con la disposición adicional segunda de la Ley 15/2012, de 27 de diciembre, de medidas fiscales para la so",
+      "centro": "SECRETARÍA DE ESTADO DE ENERGÍA",
+      "ec": "738",
+      "dest": "Otras entidades estatales",
+      "o": 2408.3
+     },
+     {
+      "n": "A la CNMC para financiar costes del sector eléctrico. Financiado según el artículo 30.4 de la Ley 7/2021.",
+      "centro": "SECRETARÍA DE ESTADO DE ENERGÍA",
+      "ec": "737",
+      "dest": "Otras entidades estatales",
+      "o": 1100.0
+     },
+     {
+      "n": "A la CNMC para atender el extracoste de generación al que se refiere la disposición adicional decimoquinta de la Ley 24/2013, de 26 de diciembre, del Sector Eléctrico",
+      "centro": "SECRETARÍA DE ESTADO DE ENERGÍA",
+      "ec": "739",
+      "dest": "Otras entidades estatales",
+      "o": 836.2
+     },
+     {
+      "n": "Al IDAE para financiar el establecim. del Prog.incentivos ligados a la movilidad eléctrica MOVES III",
+      "centro": "SECRETARÍA DE ESTADO DE ENERGÍA",
+      "ec": "745",
+      "dest": "Empresas y fundaciones públicas",
+      "o": 680.6
+     },
+     {
+      "n": "Infraestructuras eléctricas. Mecanismo de Recuperación y Resiliencia",
+      "centro": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ec": "770",
+      "dest": "Empresas privadas",
+      "o": 510.0
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 1.14,
+     "definitivo": 1.41,
+     "obligaciones": 1.4
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 1.29,
+     "definitivo": 1.39,
+     "obligaciones": 1.36
+    },
+    "partidas_leidas": 8974.2,
+    "partidas_sin_leer": 0.1
+   },
+   {
+    "seccion": "PARA LA TRANSF. DIGITAL Y LA FUNCIÓN PÚBL.",
+    "tipo": "ministerio",
+    "total": 6394.2,
+    "pct_total_estado": 1.51,
+    "por_habitante": 128.39,
+    "capitulos": {
+     "1": 84.9,
+     "2": 31.1,
+     "3": 0.3,
+     "4": 95.7,
+     "6": 347.2,
+     "7": 523.9,
+     "8": 5311.2,
+     "9": 0.0
+    },
+    "pct_personal": 1.3,
+    "programas": [
+     {
+      "n": "C15.I09 PERTE Chip:Incremento capacidades industr. fabless",
+      "o": 3056.5
+     },
+     {
+      "n": "C13.I07 Fondo para escalar startups tecnológicas: Next Tech",
+      "o": 1300.0
+     },
+     {
+      "n": "C25.I03 Fondo SPAIN AUDIOV.HUB. PERTE nueva econ. lengua",
+      "o": 705.3
+     },
+     {
+      "n": "Innovación tecnológica de las telecomunicaciones",
+      "o": 265.7
+     },
+     {
+      "n": "Investigación y desarrollo de la Sociedad de la Información",
+      "o": 258.4
+     },
+     {
+      "n": "C12.I01 Espacios datos sectoriales (proyec. tractores)",
+      "o": 167.0
+     },
+     {
+      "n": "C15.I06 Despliegue 5G: redes, cambio tecnológico e innovac.",
+      "o": 161.3
+     },
+     {
+      "n": "C11.I01 Modernización AGE I+D+i+Digitilización",
+      "o": 112.2
+     }
+    ],
+    "centros": [
+     {
+      "cod": "3350",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 5058.5,
+      "def": 6147.4,
+      "o": 5645.6
+     },
+     {
+      "cod": "3303",
+      "n": "SECRETARÍA GENERAL DE UNIVERSIDADES",
+      "ini": 56.8,
+      "def": 298.5,
+      "o": 292.9
+     },
+     {
+      "cod": "3305",
+      "n": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL.PRINCIPADO ASTURIAS",
+      "ini": 47.5,
+      "def": 221.8,
+      "o": 188.2
+     },
+     {
+      "cod": "3304",
+      "n": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. ANDALUCÍA",
+      "ini": 234.5,
+      "def": 218.3,
+      "o": 128.7
+     },
+     {
+      "cod": "3306",
+      "n": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. CANTABRIA",
+      "ini": 50.2,
+      "def": 107.9,
+      "o": 107.5
+     },
+     {
+      "cod": "3301",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 27.0,
+      "def": 31.9,
+      "o": 29.3
+     },
+     {
+      "cod": "3302",
+      "n": "SECRETARÍA GENERAL TÉCNICA",
+      "ini": 1.8,
+      "def": 2.1,
+      "o": 2.0
+     }
+    ],
+    "destino": {
+     "Empresas privadas": 257.7,
+     "Empresas y fundaciones públicas": 110.6,
+     "CCAA": 108.5,
+     "Organismos autónomos": 88.5,
+     "Familias e ISFL": 34.2,
+     "Entidades locales": 8.0,
+     "Exterior": 6.2,
+     "Otras entidades estatales": 6.0
+    },
+    "transf_mayores": [
+     {
+      "n": "Despliegue 5G: redes, cambio tecnológico e innovación. Mecanismo de Recuperación y Resiliencia",
+      "centro": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ec": "77019",
+      "dest": "Empresas privadas",
+      "o": 161.3
+     },
+     {
+      "n": "Programa Espacios Datos Sectoriales en sectores productivos (contribución a proyectos tractores en comercio, agroalimentación, movilidad, turismo y salud). Mecanismo de R",
+      "centro": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ec": "77020",
+      "dest": "Empresas privadas",
+      "o": 79.6
+     },
+     {
+      "n": "Programa Espacios Datos Sectoriales en sectores productivos. MRR",
+      "centro": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ec": "75020",
+      "dest": "CCAA",
+      "o": 67.1
+     },
+     {
+      "n": "A MUFACE, para necesidades adicionales de concierto sanitario",
+      "centro": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. CANTABRIA",
+      "ec": "419",
+      "dest": "Organismos autónomos",
+      "o": 57.0
+     },
+     {
+      "n": "A RED.ES para refuerzo de las capacidades de Ciberseguridad",
+      "centro": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. ANDALUCÍA",
+      "ec": "74109",
+      "dest": "Empresas y fundaciones públicas",
+      "o": 43.9
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.89,
+     "definitivo": 1.2,
+     "obligaciones": 1.19
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 1.31,
+     "definitivo": 1.18,
+     "obligaciones": 1.16
+    },
+    "partidas_leidas": 6394.2,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "DERECHOS SOC., CONSUMO Y AGENDA 2030",
+    "tipo": "ministerio",
+    "total": 5329.4,
+    "pct_total_estado": 1.26,
+    "por_habitante": 107.01,
+    "capitulos": {
+     "1": 34.7,
+     "2": 20.2,
+     "3": 0.0,
+     "4": 5140.1,
+     "6": 4.3,
+     "7": 130.2,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 0.7,
+    "programas": [
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 4338.7
+     },
+     {
+      "n": "Otros servicios sociales del Estado",
+      "o": 731.5
+     },
+     {
+      "n": "C22.I01 Plan apoyos y cuidados de larga duración, eq. y tec.",
+      "o": 115.5
+     },
+     {
+      "n": "C22.I02 Plan Modern. Serv. Social:Transf. tecno. innov.",
+      "o": 45.4
+     },
+     {
+      "n": "Dirección y Servicios Grales de Dchos Sociales y Agenda 2030",
+      "o": 23.8
+     },
+     {
+      "n": "Agenda 2030",
+      "o": 23.4
+     },
+     {
+      "n": "Protección y prom. de derechos de consumidores y usuarios",
+      "o": 15.0
+     },
+     {
+      "n": "Regulación del juego",
+      "o": 10.9
+     }
+    ],
+    "centros": [
+     {
+      "cod": "2903",
+      "n": "SECRETARÍA DE ESTADO DE DERECHOS SOCIALES",
+      "ini": 3681.0,
+      "def": 4334.2,
+      "o": 4328.5
+     },
+     {
+      "cod": "2905",
+      "n": "D. G. DE DIVERSIDAD FAMILIAR Y SERVICIOS SOCIALES",
+      "ini": 443.2,
+      "def": 794.0,
+      "o": 729.7
+     },
+     {
+      "cod": "2950",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 0.0,
+      "def": 172.9,
+      "o": 166.2
+     },
+     {
+      "cod": "2907",
+      "n": "SECRETARÍA DE ESTADO PARA LA AGENDA 2030",
+      "ini": 24.6,
+      "def": 24.8,
+      "o": 23.4
+     },
+     {
+      "cod": "2901",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 29.2,
+      "def": 29.9,
+      "o": 22.5
+     },
+     {
+      "cod": "2909",
+      "n": "DIRECCIÓN GENERAL DE DERECHOS DE LOS ANIMALES",
+      "ini": 17.6,
+      "def": 18.1,
+      "o": 15.0
+     },
+     {
+      "cod": "2908",
+      "n": "D. G. DE POLÍTICAS PALANCA PARA CUMPLIMIENTO DE AGENDA 2030",
+      "ini": 15.4,
+      "def": 15.2,
+      "o": 14.9
+     },
+     {
+      "cod": "2910",
+      "n": "DIRECCIÓN GENERAL DE ORDENACIÓN DEL JUEGO",
+      "ini": 12.4,
+      "def": 15.0,
+      "o": 10.9
+     }
+    ],
+    "destino": {
+     "Seguridad Social": 4296.9,
+     "CCAA": 779.9,
+     "Familias e ISFL": 136.7,
+     "Organismos autónomos": 41.8,
+     "Entidades locales": 11.6,
+     "Exterior": 3.0,
+     "Empresas privadas": 0.1,
+     "Empresas y fundaciones públicas": 0.1,
+     "Otras entidades estatales": 0.0
+    },
+    "transf_mayores": [
+     {
+      "n": "Al IMSERSO, para mínimo garantizado en dependencia",
+      "centro": "SECRETARÍA DE ESTADO DE DERECHOS SOCIALES",
+      "ec": "42700",
+      "dest": "Seguridad Social",
+      "o": 2825.1
+     },
+     {
+      "n": "AL IMSERSO, nivel convenido en dependencia (SAAD)",
+      "centro": "SECRETARÍA DE ESTADO DE DERECHOS SOCIALES",
+      "ec": "428",
+      "dest": "Seguridad Social",
+      "o": 904.2
+     },
+     {
+      "n": "Para actividades de competencia autonómica de interés general consideradas de interés social con cargo al 0,7% del Impuesto sobre la Renta de las Personas Físicas y del I",
+      "centro": "D. G. DE DIVERSIDAD FAMILIAR Y SERVICIOS SOCIALES",
+      "ec": "454",
+      "dest": "CCAA",
+      "o": 375.7
+     },
+     {
+      "n": "Al IMSERSO SAAD, para la cobertura de cuotas sociales de cuidadores no profesionales de las personas en situación de dependencia",
+      "centro": "SECRETARÍA DE ESTADO DE DERECHOS SOCIALES",
+      "ec": "425",
+      "dest": "Seguridad Social",
+      "o": 271.5
+     },
+     {
+      "n": "Protección a la familia y atención a la pobreza infantil. Prestaciones básicas de servicios sociales",
+      "centro": "D. G. DE DIVERSIDAD FAMILIAR Y SERVICIOS SOCIALES",
+      "ec": "45307",
+      "dest": "CCAA",
+      "o": 198.7
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.87,
+     "definitivo": 0.94,
+     "obligaciones": 0.87
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.77,
+     "definitivo": 0.91,
+     "obligaciones": 0.87
+    },
+    "partidas_leidas": 5326.9,
+    "partidas_sin_leer": 2.5
+   },
+   {
+    "seccion": "ECONOMÍA, COMERCIO Y EMPRESA",
+    "tipo": "ministerio",
+    "total": 5021.6,
+    "pct_total_estado": 1.19,
+    "por_habitante": 100.83,
+    "capitulos": {
+     "1": 158.4,
+     "2": 102.9,
+     "3": 282.8,
+     "4": 680.2,
+     "6": 11.0,
+     "7": 338.9,
+     "8": 3447.4,
+     "9": 0.0
+    },
+    "pct_personal": 3.2,
+    "programas": [
+     {
+      "n": "C13.I13 Fondo de Resiliencia Autonómica",
+      "o": 2250.0
+     },
+     {
+      "n": "C13 I08 Fondo de Coinversión (FOCO)",
+      "o": 1050.0
+     },
+     {
+      "n": "Relaciones con Instituciones Financieras Multilaterales",
+      "o": 530.4
+     },
+     {
+      "n": "Gestión de la Deuda y de la Tesorería del Estado",
+      "o": 345.8
+     },
+     {
+      "n": "Promoción comercial e internacionalización de la empresa",
+      "o": 264.9
+     },
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 221.6
+     },
+     {
+      "n": "Direc. y Serv. Grales de Economía, Comercio y Empresa",
+      "o": 55.0
+     },
+     {
+      "n": "Previsión y política económica",
+      "o": 21.5
+     }
+    ],
+    "centros": [
+     {
+      "cod": "2750",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 1168.1,
+      "def": 14121.7,
+      "o": 3301.0
+     },
+     {
+      "cod": "2704",
+      "n": "SECRETARÍA GENERAL DEL TESORO Y FINANCIACIÓN INTERNACIONAL",
+      "ini": 581.0,
+      "def": 878.6,
+      "o": 876.2
+     },
+     {
+      "cod": "2703",
+      "n": "SECRETARÍA DE ESTADO DE ECONOMÍA Y APOYO A LA EMPRESA",
+      "ini": 241.8,
+      "def": 242.7,
+      "o": 242.6
+     },
+     {
+      "cod": "2714",
+      "n": "D. G. POLÍTICA DE INVESTIGACIÓN, DESARROLLO E INNOVACIÓN",
+      "ini": 273.2,
+      "def": 234.5,
+      "o": 122.4
+     },
+     {
+      "cod": "2710",
+      "n": "DIRECCIÓN GENERAL DE POLÍTICA COMERCIAL Y COMPETITIVIDAD",
+      "ini": 92.0,
+      "def": 100.3,
+      "o": 99.9
+     },
+     {
+      "cod": "2715",
+      "n": "SEC. GRAL. DE INDUSTRIA Y DE LA PEQUEÑA Y MEDIANA EMPRESA",
+      "ini": 74.5,
+      "def": 80.0,
+      "o": 78.2
+     },
+     {
+      "cod": "2701",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 52.9,
+      "def": 40.1,
+      "o": 37.1
+     },
+     {
+      "cod": "2707",
+      "n": "DIRECCIÓN GENERAL DE SEGUROS Y FONDOS DE PENSIONES",
+      "ini": 18.9,
+      "def": 20.9,
+      "o": 19.4
+     }
+    ],
+    "destino": {
+     "Exterior": 386.2,
+     "Empresas y fundaciones públicas": 169.7,
+     "Organismos autónomos": 162.4,
+     "Otras entidades estatales": 59.1,
+     "Familias e ISFL": 5.8,
+     "CCAA": 0.5,
+     "Empresas privadas": 0.0,
+     "Entidades locales": 0.0
+    },
+    "transf_mayores": [
+     {
+      "n": "Al Instituto Nacional de Estadística (INE)",
+      "centro": "SECRETARÍA DE ESTADO DE ECONOMÍA Y APOYO A LA EMPRESA",
+      "ec": "415",
+      "dest": "Organismos autónomos",
+      "o": 138.4
+     },
+     {
+      "n": "Fondos climáticos",
+      "centro": "SECRETARÍA GENERAL DEL TESORO Y FINANCIACIÓN INTERNACIONAL",
+      "ec": "49042",
+      "dest": "Exterior",
+      "o": 90.0
+     },
+     {
+      "n": "Asociación Internacional de Fomento (AIF) 21 reposición (BANCO MUNDIAL)”",
+      "centro": "SECRETARÍA GENERAL DEL TESORO Y FINANCIACIÓN INTERNACIONAL",
+      "ec": "49054",
+      "dest": "Exterior",
+      "o": 80.0
+     },
+     {
+      "n": "Para cobertura de las diferencias producidas por operaciones autorizadas al amparo de la Ley 14/2013, de 27 de septiembre, de apoyo a los emprendedores y su internacional",
+      "centro": "D. G. POLÍTICA DE INVESTIGACIÓN, DESARROLLO E INNOVACIÓN",
+      "ec": "444",
+      "dest": "Empresas y fundaciones públicas",
+      "o": 79.6
+     },
+     {
+      "n": "Al ICEX para sus operaciones de capital en el fomento de la internacionalización y atracción de inversiones extranjeras en España",
+      "centro": "DIRECCIÓN GENERAL DE POLÍTICA COMERCIAL Y COMPETITIVIDAD",
+      "ec": "74701",
+      "dest": "Empresas y fundaciones públicas",
+      "o": 66.8
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 1.08,
+     "definitivo": 1.13,
+     "obligaciones": 1.04
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 1.14,
+     "definitivo": 0.62,
+     "obligaciones": 0.61
+    },
+    "partidas_leidas": 4785.2,
+    "partidas_sin_leer": 236.4
+   },
+   {
+    "seccion": "VIVIENDA Y AGENDA URBANA",
+    "tipo": "ministerio",
+    "total": 4781.0,
+    "pct_total_estado": 1.13,
+    "por_habitante": 96.0,
+    "capitulos": {
+     "1": 22.0,
+     "2": 4.0,
+     "3": 0.2,
+     "4": 1.4,
+     "6": 18.5,
+     "7": 1118.6,
+     "8": 3616.1,
+     "9": 0.2
+    },
+    "pct_personal": 0.5,
+    "programas": [
+     {
+      "n": "Línea prestamos ICO para el impulso de la vivienda social",
+      "o": 3300.0
+     },
+     {
+      "n": "Promoción, admin. y ayudas para rehabilit. y acceso vivienda",
+      "o": 913.9
+     },
+     {
+      "n": "C02.I01 Rehabil. recuper. econ. soc. entornos residenciales",
+      "o": 394.2
+     },
+     {
+      "n": "Ordenación y fomento de la edificación",
+      "o": 83.3
+     },
+     {
+      "n": "Contingencias asociadas a la Depresión Aislada Niveles Altos",
+      "o": 35.0
+     },
+     {
+      "n": "Dirección y Servic. Grales. de Vivienda y Agenda Urbana",
+      "o": 26.2
+     },
+     {
+      "n": "C02.I02 Constr.viviend. alquiler soc. edific.energ.eficient.",
+      "o": 20.9
+     },
+     {
+      "n": "Otros",
+      "o": 7.5
+     }
+    ],
+    "centros": [
+     {
+      "cod": "2550",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 2480.0,
+      "def": 3813.9,
+      "o": 3715.1
+     },
+     {
+      "cod": "2509",
+      "n": "DIRECCIÓN GENERAL DE VIVIENDA Y SUELO",
+      "ini": 964.8,
+      "def": 1034.0,
+      "o": 939.9
+     },
+     {
+      "cod": "2510",
+      "n": "DIRECCIÓN GENERAL DE AGENDA URBANA Y ARQUITECTURA",
+      "ini": 32.8,
+      "def": 110.0,
+      "o": 96.6
+     },
+     {
+      "cod": "2501",
+      "n": "PRESIDENTE DEL GOBIERNO",
+      "ini": 7.0,
+      "def": 27.8,
+      "o": 26.2
+     },
+     {
+      "cod": "2507",
+      "n": "SECRETARÍA GENERAL DE AGENDA URBANA, VIVIENDA Y ARQUITECTURA",
+      "ini": 0.0,
+      "def": 2.9,
+      "o": 2.5
+     },
+     {
+      "cod": "2511",
+      "n": "DIRECCIÓN GENERAL DE PLANIFICACIÓN Y EVALUACIÓN",
+      "ini": 0.0,
+      "def": 1.0,
+      "o": 0.7
+     }
+    ],
+    "destino": {
+     "CCAA": 949.4,
+     "Familias e ISFL": 89.9,
+     "Entidades locales": 54.7,
+     "Empresas y fundaciones públicas": 23.4,
+     "Empresas privadas": 1.5,
+     "Otras entidades estatales": 0.9,
+     "Exterior": 0.2
+    },
+    "transf_mayores": [
+     {
+      "n": "Programas de rehabilitación para la recuperación económica y social. Mecanismo de Recuperación y Resiliencia",
+      "centro": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ec": "750",
+      "dest": "CCAA",
+      "o": 389.6
+     },
+     {
+      "n": "Subvenciones Plan Estatal de Vivienda",
+      "centro": "DIRECCIÓN GENERAL DE VIVIENDA Y SUELO",
+      "ec": "75301",
+      "dest": "CCAA",
+      "o": 345.9
+     },
+     {
+      "n": "Bono alquiler joven",
+      "centro": "DIRECCIÓN GENERAL DE VIVIENDA Y SUELO",
+      "ec": "754",
+      "dest": "CCAA",
+      "o": 187.2
+     },
+     {
+      "n": "Subsidiación de préstamos",
+      "centro": "DIRECCIÓN GENERAL DE VIVIENDA Y SUELO",
+      "ec": "78201",
+      "dest": "Familias e ISFL",
+      "o": 60.2
+     },
+     {
+      "n": "Actuaciones relacionadas con el 1 % Cultural",
+      "centro": "DIRECCIÓN GENERAL DE AGENDA URBANA Y ARQUITECTURA",
+      "ec": "764",
+      "dest": "Entidades locales",
+      "o": 39.7
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.27,
+     "definitivo": 0.68,
+     "obligaciones": 0.67
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.19,
+     "definitivo": 0.91,
+     "obligaciones": 0.91
+    },
+    "partidas_leidas": 4781.0,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "EDUCACIÓN, F. PROFESIONAL Y DEPORTES",
+    "tipo": "ministerio",
+    "total": 4725.3,
+    "pct_total_estado": 1.12,
+    "por_habitante": 94.88,
+    "capitulos": {
+     "1": 525.7,
+     "2": 45.4,
+     "3": 0.4,
+     "4": 4071.7,
+     "6": 15.9,
+     "7": 66.2,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 11.1,
+    "programas": [
+     {
+      "n": "Becas y ayudas a estudiantes",
+      "o": 2655.0
+     },
+     {
+      "n": "Formación Profesional para el Empleo",
+      "o": 821.1
+     },
+     {
+      "n": "Inversiones en centros educativos y otras activ. educativas",
+      "o": 375.3
+     },
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 225.8
+     },
+     {
+      "n": "Educación Infantil y Primaria",
+      "o": 221.9
+     },
+     {
+      "n": "Educación secundaria, formación profesional y EOI",
+      "o": 163.9
+     },
+     {
+      "n": "Educación en el exterior",
+      "o": 133.2
+     },
+     {
+      "n": "Dirección y Servicios Grales. de Educación, F. P. y Deportes",
+      "o": 57.8
+     }
+    ],
+    "centros": [
+     {
+      "cod": "1808",
+      "n": "DIRECCIÓN GENERAL DE PLANIFICACIÓN Y GESTIÓN EDUCATIVA",
+      "ini": 2661.7,
+      "def": 2786.0,
+      "o": 2779.9
+     },
+     {
+      "cod": "1805",
+      "n": "SECRETARÍA GENERAL DE FORMACIÓN PROFESIONAL",
+      "ini": 1453.8,
+      "def": 1443.0,
+      "o": 862.5
+     },
+     {
+      "cod": "1801",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 548.8,
+      "def": 602.8,
+      "o": 591.3
+     },
+     {
+      "cod": "1804",
+      "n": "DIRECCIÓN GENERAL DE EVALUACIÓN Y COOPERACIÓN TERRITORIAL",
+      "ini": 639.1,
+      "def": 616.6,
+      "o": 402.5
+     },
+     {
+      "cod": "1850",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 1406.7,
+      "def": 336.2,
+      "o": 67.2
+     },
+     {
+      "cod": "1803",
+      "n": "SECRETARÍA DE ESTADO DE EDUCACIÓN",
+      "ini": 14.6,
+      "def": 16.7,
+      "o": 16.5
+     },
+     {
+      "cod": "1802",
+      "n": "SECRETARÍA GENERAL TECNICA",
+      "ini": 6.1,
+      "def": 5.8,
+      "o": 5.6
+     }
+    ],
+    "destino": {
+     "Familias e ISFL": 2690.7,
+     "CCAA": 1212.4,
+     "Organismos autónomos": 221.3,
+     "Empresas y fundaciones públicas": 6.1,
+     "Otras entidades estatales": 4.6,
+     "Exterior": 1.9,
+     "Entidades locales": 0.9,
+     "Empresas privadas": 0.1
+    },
+    "transf_mayores": [
+     {
+      "n": "Becas y ayudas de carácter general para estudiantes universitarios y no universitarios",
+      "centro": "DIRECCIÓN GENERAL DE PLANIFICACIÓN Y GESTIÓN EDUCATIVA",
+      "ec": "48200",
+      "dest": "Familias e ISFL",
+      "o": 2281.8
+     },
+     {
+      "n": "Iniciativas de oferta formativa para trabajadores desempleados",
+      "centro": "SECRETARÍA GENERAL DE FORMACIÓN PROFESIONAL",
+      "ec": "45801",
+      "dest": "CCAA",
+      "o": 552.7
+     },
+     {
+      "n": "Compensación a las universidades de los precios públicos por los servicios académicos correspondientes a los alumnos becarios exentos de su pago",
+      "centro": "DIRECCIÓN GENERAL DE PLANIFICACIÓN Y GESTIÓN EDUCATIVA",
+      "ec": "48205",
+      "dest": "Familias e ISFL",
+      "o": 222.0
+     },
+     {
+      "n": "Programa de Refuerzo de la Competencia Matemática",
+      "centro": "DIRECCIÓN GENERAL DE EVALUACIÓN Y COOPERACIÓN TERRITORIAL",
+      "ec": "45102",
+      "dest": "CCAA",
+      "o": 120.6
+     },
+     {
+      "n": "Iniciativas de oferta formativa para trabajadores ocupados",
+      "centro": "SECRETARÍA GENERAL DE FORMACIÓN PROFESIONAL",
+      "ec": "45802",
+      "dest": "CCAA",
+      "o": 112.0
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.6,
+     "definitivo": 0.74,
+     "obligaciones": 0.74
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.76,
+     "definitivo": 0.94,
+     "obligaciones": 0.89
+    },
+    "partidas_leidas": 4725.3,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "CIENCIA, INNOVACIÓN Y UNIVERSIDADES",
+    "tipo": "ministerio",
+    "total": 4684.0,
+    "pct_total_estado": 1.11,
+    "por_habitante": 94.05,
+    "capitulos": {
+     "1": 29.8,
+     "2": 12.2,
+     "3": 0.0,
+     "4": 1397.0,
+     "6": 6.1,
+     "7": 2637.8,
+     "8": 601.0,
+     "9": 0.0
+    },
+    "pct_personal": 0.6,
+    "programas": [
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 2810.0
+     },
+     {
+      "n": "Fomento y coordinación de la investig. científica y técnica",
+      "o": 932.6
+     },
+     {
+      "n": "Investigación y desarrollo tecnológico-industrial",
+      "o": 518.0
+     },
+     {
+      "n": "Enseñanzas universitarias",
+      "o": 256.0
+     },
+     {
+      "n": "Investigación científica",
+      "o": 122.2
+     },
+     {
+      "n": "Dirección y Servic. Grales.de Ciencia, Innovación y Univers.",
+      "o": 30.6
+     },
+     {
+      "n": "C17.I02 Fortalecimiento de las capacidades, infraestructuras",
+      "o": 12.9
+     },
+     {
+      "n": "Otros",
+      "o": 1.9
+     }
+    ],
+    "centros": [
+     {
+      "cod": "2806",
+      "n": "SECRETARÍA GENERAL DE INVESTIGACIÓN",
+      "ini": 1727.0,
+      "def": 1967.1,
+      "o": 1963.1
+     },
+     {
+      "cod": "2808",
+      "n": "SECRETARÍA GENERAL DE INNOVACIÓN",
+      "ini": 1487.5,
+      "def": 1686.5,
+      "o": 830.4
+     },
+     {
+      "cod": "2807",
+      "n": "DIRECCIÓN GENERAL DE PLANIFICACIÓN DE LA INVESTIGACIÓN",
+      "ini": 2115.5,
+      "def": 2111.9,
+      "o": 742.6
+     },
+     {
+      "cod": "2850",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 1739.8,
+      "def": 771.8,
+      "o": 655.5
+     },
+     {
+      "cod": "2809",
+      "n": "SECRETARÍA GENERAL DE UNIVERSIDADES",
+      "ini": 296.8,
+      "def": 495.3,
+      "o": 442.7
+     },
+     {
+      "cod": "2801",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 78.7,
+      "def": 55.1,
+      "o": 47.7
+     },
+     {
+      "cod": "2802",
+      "n": "SECRETARÍA GENERAL TÉCNICA",
+      "ini": 3.1,
+      "def": 3.0,
+      "o": 2.0
+     }
+    ],
+    "destino": {
+     "Otras entidades estatales": 2239.3,
+     "Empresas y fundaciones públicas": 643.6,
+     "Organismos autónomos": 499.1,
+     "CCAA": 370.3,
+     "Exterior": 165.9,
+     "Familias e ISFL": 113.4,
+     "Entidades locales": 3.2,
+     "Empresas privadas": 0.1
+    },
+    "transf_mayores": [
+     {
+      "n": "A la AEI",
+      "centro": "SECRETARÍA GENERAL DE INVESTIGACIÓN",
+      "ec": "73100",
+      "dest": "Otras entidades estatales",
+      "o": 672.5
+     },
+     {
+      "n": "Al CSIC",
+      "centro": "SECRETARÍA GENERAL DE INVESTIGACIÓN",
+      "ec": "43000",
+      "dest": "Otras entidades estatales",
+      "o": 468.5
+     },
+     {
+      "n": "A la AEE para prevención y lucha de catástrofes naturales: nueva constelación atlántica ESCA+. MRR.",
+      "centro": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ec": "736",
+      "dest": "Otras entidades estatales",
+      "o": 325.0
+     },
+     {
+      "n": "A la AEE para la financiación de la participación en programas espaciales",
+      "centro": "SECRETARÍA GENERAL DE INNOVACIÓN",
+      "ec": "73201",
+      "dest": "Otras entidades estatales",
+      "o": 300.0
+     },
+     {
+      "n": "Al CDTI para subv. dentro del Plan Industrial y Tecnológico para la Seguridad y Defensa",
+      "centro": "SECRETARÍA GENERAL DE INNOVACIÓN",
+      "ec": "74927",
+      "dest": "Empresas y fundaciones públicas",
+      "o": 150.0
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.62,
+     "definitivo": 0.79,
+     "obligaciones": 0.77
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.69,
+     "definitivo": 0.88,
+     "obligaciones": 0.86
+    },
+    "partidas_leidas": 4684.0,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "PRESIDENCIA, JUSTICIA Y REL. CORTES",
+    "tipo": "ministerio",
+    "total": 2790.9,
+    "pct_total_estado": 0.66,
+    "por_habitante": 56.04,
+    "capitulos": {
+     "1": 2131.9,
+     "2": 224.5,
+     "3": 0.7,
+     "4": 172.8,
+     "6": 234.1,
+     "7": 26.4,
+     "8": 0.4,
+     "9": 0.0
+    },
+    "pct_personal": 76.4,
+    "programas": [
+     {
+      "n": "Tribunales de Justicia y Ministerio Fiscal",
+      "o": 2266.4
+     },
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 125.0
+     },
+     {
+      "n": "Cobertura informativa",
+      "o": 78.7
+     },
+     {
+      "n": "Presidencia del Gobierno",
+      "o": 76.6
+     },
+     {
+      "n": "Asesoramiento y defensa de los intereses del Estado",
+      "o": 72.7
+     },
+     {
+      "n": "Dirección y Servicios Generales de Justicia",
+      "o": 44.9
+     },
+     {
+      "n": "Relac. Cortes Grales, Secret del Gob. y apoyo Alta Dirección",
+      "o": 39.2
+     },
+     {
+      "n": "Registros vinculados con la Fe Pública",
+      "o": 35.5
+     }
+    ],
+    "centros": [
+     {
+      "cod": "1302",
+      "n": "SECRETARÍA DE ESTADO DE JUSTICIA",
+      "ini": 1676.4,
+      "def": 1951.1,
+      "o": 1916.2
+     },
+     {
+      "cod": "1306",
+      "n": "S.G. INNOVACIÓN Y CALIDAD SERV.PÚBL. JUSTICIA.MINIST. FISCAL",
+      "ini": 289.1,
+      "def": 351.3,
+      "o": 349.0
+     },
+     {
+      "cod": "1308",
+      "n": "SECRETARIADO DEL GOBIERNO Y RELACIONES CON LAS CORTES",
+      "ini": 158.4,
+      "def": 164.1,
+      "o": 157.5
+     },
+     {
+      "cod": "1307",
+      "n": "PRESIDENTE DEL GOBIERNO",
+      "ini": 134.0,
+      "def": 169.7,
+      "o": 155.3
+     },
+     {
+      "cod": "1304",
+      "n": "ABOGACÍA GRAL. DEL ESTADO-DIR. DEL SERV. JURIDICO DEL ESTADO",
+      "ini": 44.7,
+      "def": 82.2,
+      "o": 72.7
+     },
+     {
+      "cod": "1301",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 132.9,
+      "def": 52.7,
+      "o": 44.9
+     },
+     {
+      "cod": "1350",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 0.0,
+      "def": 45.7,
+      "o": 40.6
+     },
+     {
+      "cod": "1303",
+      "n": "DIRECCIÓN GENERAL DE SEGURIDAD JURÍDICA Y FE PÚBLICA",
+      "ini": 36.7,
+      "def": 36.8,
+      "o": 35.5
+     }
+    ],
+    "destino": {
+     "Organismos autónomos": 125.0,
+     "Familias e ISFL": 57.2,
+     "CCAA": 12.8,
+     "Entidades locales": 2.0,
+     "Empresas y fundaciones públicas": 2.0,
+     "Exterior": 0.2
+    },
+    "transf_mayores": [
+     {
+      "n": "Al Consejo de Administración del Patrimonio Nacional",
+      "centro": "SECRETARIADO DEL GOBIERNO Y RELACIONES CON LAS CORTES",
+      "ec": "417",
+      "dest": "Organismos autónomos",
+      "o": 67.0
+     },
+     {
+      "n": "Al Consejo General de la Abogacía Española como aportación del Estado para indemnizar a los abogados",
+      "centro": "SECRETARÍA DE ESTADO DE JUSTICIA",
+      "ec": "483",
+      "dest": "Familias e ISFL",
+      "o": 50.8
+     },
+     {
+      "n": "Al Consejo de Administración del Patrimonio Nacional",
+      "centro": "SECRETARIADO DEL GOBIERNO Y RELACIONES CON LAS CORTES",
+      "ec": "717",
+      "dest": "Organismos autónomos",
+      "o": 19.1
+     },
+     {
+      "n": "Al Centro de Investigaciones Sociológicas.",
+      "centro": "SECRETARIADO DEL GOBIERNO Y RELACIONES CON LAS CORTES",
+      "ec": "411",
+      "dest": "Organismos autónomos",
+      "o": 17.2
+     },
+     {
+      "n": "Al Centro de Estudios Jurídicos de la Administración de Justicia",
+      "centro": "SECRETARÍA DE ESTADO DE JUSTICIA",
+      "ec": "411",
+      "dest": "Organismos autónomos",
+      "o": 16.7
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 2.99,
+     "definitivo": 3.33,
+     "obligaciones": 3.24
+    },
+    "art10_tribunales_y_fiscalia": 16.45,
+    "eventuales": {
+     "inicial": 22.1,
+     "definitivo": 28.23,
+     "obligaciones": 27.7
+    },
+    "partidas_leidas": 2790.9,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "APORTAC. AL MUTUALISMO ADMINISTRATIVO",
+    "tipo": "partida no ministerial",
+    "total": 2496.1,
+    "pct_total_estado": 0.59,
+    "por_habitante": 50.12,
+    "capitulos": {
+     "1": 2401.6,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 94.4,
+     "6": 0.0,
+     "7": 0.0,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 96.2,
+    "programas": [
+     {
+      "n": "Aportaciones al Mutualismo Administrativo",
+      "o": 2401.6
+     },
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 94.4
+     }
+    ],
+    "centros": [
+     {
+      "cod": "0901",
+      "n": "DIRECCIÓN GENERAL DE PRESUPUESTOS",
+      "ini": 2379.5,
+      "def": 2496.1,
+      "o": 2496.1
+     }
+    ],
+    "destino": {
+     "Organismos autónomos": 94.4
+    },
+    "transf_mayores": [
+     {
+      "n": "Aportación del Estado a la Mutualidad General de Funcionarios Civiles del Estado, al Instituto Social de las Fuerzas Armadas y a la Mutualidad General Judicial, al amparo",
+      "centro": "DIRECCIÓN GENERAL DE PRESUPUESTOS",
+      "ec": "411",
+      "dest": "Organismos autónomos",
+      "o": 94.4
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "partidas_leidas": 2496.1,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "POLÍTICA TERRITORIAL Y MEM. DEMOCR.",
+    "tipo": "ministerio",
+    "total": 2259.5,
+    "pct_total_estado": 0.53,
+    "por_habitante": 45.37,
+    "capitulos": {
+     "1": 306.5,
+     "2": 61.4,
+     "3": 2.4,
+     "4": 12.0,
+     "6": 18.1,
+     "7": 1858.7,
+     "8": 0.4,
+     "9": 0.0
+    },
+    "pct_personal": 13.6,
+    "programas": [
+     {
+      "n": "Contingencias asociadas a la Depresión Aislada Niveles Altos",
+      "o": 1748.3
+     },
+     {
+      "n": "Administración General del Estado en el Territorio",
+      "o": 328.9
+     },
+     {
+      "n": "Cooperación económica local del Estado",
+      "o": 90.0
+     },
+     {
+      "n": "Memoria democrática",
+      "o": 28.3
+     },
+     {
+      "n": "C11.I03 Transf. Dig. Moderniz.CCAA y EELL.Transf. otras AAPP",
+      "o": 23.9
+     },
+     {
+      "n": "Dirección y Servic. Grales Política Territorial y Mem.Democ.",
+      "o": 22.0
+     },
+     {
+      "n": "Organización territ. Estado y desarrollo de sus sist. colab.",
+      "o": 14.0
+     },
+     {
+      "n": "Otros",
+      "o": 2.8
+     }
+    ],
+    "centros": [
+     {
+      "cod": "2202",
+      "n": "SECRETARÍA DE ESTADO DE POLÍTICA TERRITORIAL",
+      "ini": 356.1,
+      "def": 2237.2,
+      "o": 2180.4
+     },
+     {
+      "cod": "2203",
+      "n": "SECRETARÍA GENERAL DE COORDINACIÓN TERRITORIAL",
+      "ini": 14.0,
+      "def": 33.3,
+      "o": 28.7
+     },
+     {
+      "cod": "2250",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 0.0,
+      "def": 162.7,
+      "o": 26.5
+     },
+     {
+      "cod": "2201",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 41.4,
+      "def": 29.3,
+      "o": 22.7
+     }
+    ],
+    "destino": {
+     "Entidades locales": 1819.9,
+     "CCAA": 40.7,
+     "Familias e ISFL": 8.6,
+     "Empresas y fundaciones públicas": 0.9,
+     "Organismos autónomos": 0.3,
+     "Exterior": 0.3,
+     "Otras entidades estatales": 0.0
+    },
+    "transf_mayores": [
+     {
+      "n": "Subvenciones medidas urgentes de respuesta daños DANA art.5 del Real Decreto-ley 6/2024, 5-11-24",
+      "centro": "SECRETARÍA DE ESTADO DE POLÍTICA TERRITORIAL",
+      "ec": "76001",
+      "dest": "Entidades locales",
+      "o": 1745.3
+     },
+     {
+      "n": "A la Comunidad Autónoma de Aragón para financiar proyectos de inversión en la provincia de Teruel, incluyendo compensaciones por regularizaciones de ejercicios anteriores",
+      "centro": "SECRETARÍA DE ESTADO DE POLÍTICA TERRITORIAL",
+      "ec": "753",
+      "dest": "CCAA",
+      "o": 36.5
+     },
+     {
+      "n": "Subvenciones daños infraestructuras municipales, red provincial e insular. Declaracion ZAGEPC 2023",
+      "centro": "SECRETARÍA DE ESTADO DE POLÍTICA TERRITORIAL",
+      "ec": "76703",
+      "dest": "Entidades locales",
+      "o": 27.8
+     },
+     {
+      "n": "Para modernización de EE.LL. Mecanismo de Recuperación y Resiliencia",
+      "centro": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ec": "761",
+      "dest": "Entidades locales",
+      "o": 23.9
+     },
+     {
+      "n": "Subv. por daños en infraestructuras municipales, red viaria prov e insular. Declaracion ZAGEPZ 2024",
+      "centro": "SECRETARÍA DE ESTADO DE POLÍTICA TERRITORIAL",
+      "ec": "76704",
+      "dest": "Entidades locales",
+      "o": 8.6
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 2.1,
+     "definitivo": 2.61,
+     "obligaciones": 2.55
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 6.91,
+     "definitivo": 7.63,
+     "obligaciones": 7.54
+    },
+    "partidas_leidas": 2258.3,
+    "partidas_sin_leer": 1.2
+   },
+   {
+    "seccion": "ASUNTOS EXT., U. E. Y COOPERACIÓN",
+    "tipo": "ministerio",
+    "total": 1818.9,
+    "pct_total_estado": 0.43,
+    "por_habitante": 36.52,
+    "capitulos": {
+     "1": 386.3,
+     "2": 191.5,
+     "3": 0.0,
+     "4": 1084.4,
+     "6": 103.6,
+     "7": 47.5,
+     "8": 5.6,
+     "9": 0.0
+    },
+    "pct_personal": 21.2,
+    "programas": [
+     {
+      "n": "Acción del Estado en el exterior",
+      "o": 911.3
+     },
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 667.8
+     },
+     {
+      "n": "C11.I02 Proyect. tractores digitalización AGE. Politica Ext.",
+      "o": 74.1
+     },
+     {
+      "n": "Cooperación para el desarrollo",
+      "o": 72.6
+     },
+     {
+      "n": "Dirección y Servicios Grales Asuntos Exteriores, U.E y Coop.",
+      "o": 68.1
+     },
+     {
+      "n": "Acción Diplomática ante la Unión Europea",
+      "o": 23.4
+     },
+     {
+      "n": "Otros",
+      "o": 1.5
+     }
+    ],
+    "centros": [
+     {
+      "cod": "1203",
+      "n": "S.E COOPERACION INTERNACIONAL",
+      "ini": 882.5,
+      "def": 869.7,
+      "o": 640.0
+     },
+     {
+      "cod": "1201",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 533.4,
+      "def": 604.8,
+      "o": 573.4
+     },
+     {
+      "cod": "1204",
+      "n": "SECRETARÍA DE ESTADO DE ASUNTOS EXTERIORES Y GLOBALES",
+      "ini": 415.0,
+      "def": 405.1,
+      "o": 403.0
+     },
+     {
+      "cod": "1250",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 0.0,
+      "def": 101.6,
+      "o": 93.6
+     },
+     {
+      "cod": "1205",
+      "n": "S.E. PARA IBEROAMERICA Y EL CARIBE Y EL ESPAÑOL EN EL MUNDO",
+      "ini": 86.0,
+      "def": 85.7,
+      "o": 85.4
+     },
+     {
+      "cod": "1202",
+      "n": "SECRETARÍA DE ESTADO PARA LA UNIÓN EUROPEA",
+      "ini": 24.4,
+      "def": 25.8,
+      "o": 23.4
+     }
+    ],
+    "destino": {
+     "Otras entidades estatales": 667.8,
+     "Exterior": 438.2,
+     "Empresas y fundaciones públicas": 21.4,
+     "Familias e ISFL": 4.5
+    },
+    "transf_mayores": [
+     {
+      "n": "A la Agencia Española de Cooperación Internacional para el Desarrollo, para atender los gastos derivados de proyectos de Ayuda Oficial al Desarrollo, incluidos los propue",
+      "centro": "S.E COOPERACION INTERNACIONAL",
+      "ec": "430",
+      "dest": "Otras entidades estatales",
+      "o": 437.8
+     },
+     {
+      "n": "Contribuciones voluntarias en el ámbito político",
+      "centro": "SECRETARÍA DE ESTADO DE ASUNTOS EXTERIORES Y GLOBALES",
+      "ec": "49900",
+      "dest": "Exterior",
+      "o": 144.4
+     },
+     {
+      "n": "A la Agencia Española de Cooperación Internacional para el Desarrollo, para actividades de interés general consideradas de interés social reguladas por el artículo 2 del",
+      "centro": "S.E COOPERACION INTERNACIONAL",
+      "ec": "431",
+      "dest": "Otras entidades estatales",
+      "o": 99.7
+     },
+     {
+      "n": "Al Instituto Cervantes",
+      "centro": "S.E. PARA IBEROAMERICA Y EL CARIBE Y EL ESPAÑOL EN EL MUNDO",
+      "ec": "437",
+      "dest": "Otras entidades estatales",
+      "o": 74.1
+     },
+     {
+      "n": "Operaciones de Mantenimiento de la Paz de la Organización de Naciones Unidas (ONU)",
+      "centro": "SECRETARÍA DE ESTADO DE ASUNTOS EXTERIORES Y GLOBALES",
+      "ec": "49863",
+      "dest": "Exterior",
+      "o": 73.4
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 1.64,
+     "definitivo": 1.82,
+     "obligaciones": 1.79
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 1.85,
+     "definitivo": 1.69,
+     "obligaciones": 1.52
+    },
+    "partidas_leidas": 1818.9,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "AGRICULTURA, PESCA Y ALIMENTACIÓN",
+    "tipo": "ministerio",
+    "total": 1565.8,
+    "pct_total_estado": 0.37,
+    "por_habitante": 31.44,
+    "capitulos": {
+     "1": 80.3,
+     "2": 27.6,
+     "3": 0.0,
+     "4": 656.6,
+     "6": 309.8,
+     "7": 354.7,
+     "8": 136.9,
+     "9": 0.0
+    },
+    "pct_personal": 5.1,
+    "programas": [
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 621.0
+     },
+     {
+      "n": "Desarrollo del medio rural",
+      "o": 191.6
+     },
+     {
+      "n": "Dirección y Serv. Grales de Agricultura,Pesca y Alimentación",
+      "o": 157.4
+     },
+     {
+      "n": "Contingencias asociadas a la Depresión Aislada Niveles Altos",
+      "o": 153.8
+     },
+     {
+      "n": "Gest. recursos hídricos regadío,cam.nat. y otras infraest.",
+      "o": 137.7
+     },
+     {
+      "n": "Competitividad y calidad de la produc. y mercados agrarios",
+      "o": 58.3
+     },
+     {
+      "n": "Competitividad y calidad de la sanidad agraria",
+      "o": 54.1
+     },
+     {
+      "n": "Mejora de estructuras y mercados pesqueros",
+      "o": 46.7
+     }
+    ],
+    "centros": [
+     {
+      "cod": "2101",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 386.3,
+      "def": 539.0,
+      "o": 533.7
+     },
+     {
+      "cod": "2108",
+      "n": "D.G.DESARROLLO RURAL, INNOVACIÓN Y FORMACIÓN AGROALIMENTARIA",
+      "ini": 346.3,
+      "def": 531.2,
+      "o": 470.0
+     },
+     {
+      "cod": "2104",
+      "n": "SECRETARÍA GENERAL DE AGRICULTURA Y ALIMENTACIÓN",
+      "ini": 97.1,
+      "def": 275.8,
+      "o": 255.2
+     },
+     {
+      "cod": "2150",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 0.0,
+      "def": 93.4,
+      "o": 67.5
+     },
+     {
+      "cod": "2105",
+      "n": "DIRECCIÓN GENERAL DE PRODUCCIONES Y MERCADOS AGRARIOS",
+      "ini": 58.5,
+      "def": 68.5,
+      "o": 60.3
+     },
+     {
+      "cod": "2106",
+      "n": "DIRECCIÓN GENERAL DE SANIDAD DE LA PRODUCCIÓN AGRARIA",
+      "ini": 46.7,
+      "def": 59.3,
+      "o": 54.1
+     },
+     {
+      "cod": "2111",
+      "n": "DIRECCIÓN GENERAL DE ORDENACIÓN PESQUERA Y ACUICULTURA",
+      "ini": 62.3,
+      "def": 50.2,
+      "o": 46.7
+     },
+     {
+      "cod": "2107",
+      "n": "DIRECCIÓN GENERAL DE LA INDUSTRIA ALIMENTARIA",
+      "ini": 34.4,
+      "def": 30.8,
+      "o": 27.9
+     }
+    ],
+    "destino": {
+     "Organismos autónomos": 621.0,
+     "CCAA": 241.9,
+     "Empresas privadas": 100.2,
+     "Exterior": 27.0,
+     "Familias e ISFL": 20.5,
+     "Empresas y fundaciones públicas": 0.7,
+     "Entidades locales": 0.0
+    },
+    "transf_mayores": [
+     {
+      "n": "Para subvenciones del Plan Anual de Seguros Agrarios y liquidación de planes anteriores",
+      "centro": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ec": "41400",
+      "dest": "Organismos autónomos",
+      "o": 384.9
+     },
+     {
+      "n": "al FEGA para ayudas de la DANA",
+      "centro": "SECRETARÍA GENERAL DE AGRICULTURA Y ALIMENTACIÓN",
+      "ec": "411",
+      "dest": "Organismos autónomos",
+      "o": 177.5
+     },
+     {
+      "n": "Aportación AGE a intervenciones y medidas FEADER",
+      "centro": "D.G.DESARROLLO RURAL, INNOVACIÓN Y FORMACIÓN AGROALIMENTARIA",
+      "ec": "759",
+      "dest": "CCAA",
+      "o": 158.2
+     },
+     {
+      "n": "Ayudas a la industria transformadora de la pesca y acuicultura.",
+      "centro": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ec": "770",
+      "dest": "Empresas privadas",
+      "o": 30.9
+     },
+     {
+      "n": "Abono al Tesoro Público, por cuenta del Organismo Autónomo Fondo Español de Garantía Agraria (FEGA) de las diferencias puestas de manifiesto en las liquidaciones con la U",
+      "centro": "SECRETARÍA GENERAL DE AGRICULTURA Y ALIMENTACIÓN",
+      "ec": "490",
+      "dest": "Exterior",
+      "o": 25.0
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.84,
+     "definitivo": 1.02,
+     "obligaciones": 1.02
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.52,
+     "definitivo": 0.86,
+     "obligaciones": 0.85
+    },
+    "partidas_leidas": 1565.8,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "SANIDAD",
+    "tipo": "ministerio",
+    "total": 1235.1,
+    "pct_total_estado": 0.29,
+    "por_habitante": 24.8,
+    "capitulos": {
+     "1": 55.4,
+     "2": 215.6,
+     "3": 0.0,
+     "4": 764.8,
+     "6": 57.9,
+     "7": 141.4,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 4.5,
+    "programas": [
+     {
+      "n": "Salud pública, sanidad exterior y calidad",
+      "o": 441.3
+     },
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 423.6
+     },
+     {
+      "n": "Prestaciones sanitarias y farmacia",
+      "o": 183.9
+     },
+     {
+      "n": "Salud Digital, Información e Innov. del Sistema Nac. Salud",
+      "o": 51.3
+     },
+     {
+      "n": "Plan Nacional sobre Drogas",
+      "o": 41.6
+     },
+     {
+      "n": "Dirección y Servicios Generales de Sanidad",
+      "o": 30.1
+     },
+     {
+      "n": "Políticas de Salud y Ordenación Profesional",
+      "o": 25.6
+     },
+     {
+      "n": "C11.I02 Proyectos tractores digitalización AGE. Sanidad",
+      "o": 18.4
+     }
+    ],
+    "centros": [
+     {
+      "cod": "2604",
+      "n": "SECRETARÍA DE ESTADO DE SANIDAD",
+      "ini": 10.7,
+      "def": 580.5,
+      "o": 580.0
+     },
+     {
+      "cod": "2607",
+      "n": "DIRECCIÓN GENERAL DE SALUD PÚBLICA",
+      "ini": 676.2,
+      "def": 336.0,
+      "o": 215.3
+     },
+     {
+      "cod": "2609",
+      "n": "D.G CARTERA COMÚN DE SERV. DEL SISTEMA NAC. SALUD Y FARMACIA",
+      "ini": 453.5,
+      "def": 212.6,
+      "o": 185.0
+     },
+     {
+      "cod": "2606",
+      "n": "COMISIONADO DE SALUD MENTAL",
+      "ini": 41.6,
+      "def": 63.0,
+      "o": 60.9
+     },
+     {
+      "cod": "2618",
+      "n": "DELEGACIÓN DEL GOBIERNO PARA EL PLAN NACIONAL SOBRE DROGAS",
+      "ini": 15.1,
+      "def": 86.3,
+      "o": 44.4
+     },
+     {
+      "cod": "2605",
+      "n": "D.G. SALUD DIGITAL Y SISTEMAS INFORMAC. SISTEMA NAC. SALUD",
+      "ini": 19.7,
+      "def": 49.4,
+      "o": 43.4
+     },
+     {
+      "cod": "2650",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 0.0,
+      "def": 59.0,
+      "o": 30.4
+     },
+     {
+      "cod": "2612",
+      "n": "DIRECCIÓN GENERAL DE ORDENACIÓN PROFESIONAL",
+      "ini": 6.5,
+      "def": 25.5,
+      "o": 23.8
+     }
+    ],
+    "destino": {
+     "CCAA": 467.3,
+     "Seguridad Social": 401.7,
+     "Organismos autónomos": 14.0,
+     "Otras entidades estatales": 7.9,
+     "Familias e ISFL": 6.9,
+     "Entidades locales": 4.5,
+     "Exterior": 2.9,
+     "Empresas y fundaciones públicas": 0.9
+    },
+    "transf_mayores": [
+     {
+      "n": "Aportación del Estado a la Tesorería General de la Seguridad Social para financiar las operaciones c",
+      "centro": "SECRETARÍA DE ESTADO DE SANIDAD",
+      "ec": "421",
+      "dest": "Seguridad Social",
+      "o": 347.7
+     },
+     {
+      "n": "A CC.AA., para Marco estratégico de Atención Primaria y Comunitaria",
+      "centro": "SECRETARÍA DE ESTADO DE SANIDAD",
+      "ec": "750",
+      "dest": "CCAA",
+      "o": 86.8
+     },
+     {
+      "n": "A CC.AA., para Marco estratégico de Atención Primaria y Comunitaria",
+      "centro": "SECRETARÍA DE ESTADO DE SANIDAD",
+      "ec": "456",
+      "dest": "CCAA",
+      "o": 85.0
+     },
+     {
+      "n": "A Comunidades Autónomas, para el impulso de la ampliación de los servicios de salud bucodental en la cartera de servicios del SNS",
+      "centro": "D.G CARTERA COMÚN DE SERV. DEL SISTEMA NAC. SALUD Y FARMACIA",
+      "ec": "452",
+      "dest": "CCAA",
+      "o": 67.7
+     },
+     {
+      "n": "Fondo de Equidad - Fondo de Cohesión Sanitaria: Compensación por la Asistencia Sanitaria a pacientes residentes en España derivados entre Comunidades Autónomas para su at",
+      "centro": "D.G CARTERA COMÚN DE SERV. DEL SISTEMA NAC. SALUD Y FARMACIA",
+      "ec": "45302",
+      "dest": "CCAA",
+      "o": 44.3
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.73,
+     "definitivo": 0.93,
+     "obligaciones": 0.88
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.78,
+     "definitivo": 0.95,
+     "obligaciones": 0.91
+    },
+    "partidas_leidas": 1221.2,
+    "partidas_sin_leer": 13.9
+   },
+   {
+    "seccion": "CULTURA",
+    "tipo": "ministerio",
+    "total": 1038.9,
+    "pct_total_estado": 0.25,
+    "por_habitante": 20.86,
+    "capitulos": {
+     "1": 94.1,
+     "2": 49.9,
+     "3": 0.0,
+     "4": 683.6,
+     "6": 37.7,
+     "7": 173.1,
+     "8": 0.5,
+     "9": 0.0
+    },
+    "pct_personal": 9.1,
+    "programas": [
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 594.3
+     },
+     {
+      "n": "Promoción y cooperación cultural",
+      "o": 202.9
+     },
+     {
+      "n": "Museos",
+      "o": 84.4
+     },
+     {
+      "n": "Dirección y Servicios Generales de Cultura",
+      "o": 35.0
+     },
+     {
+      "n": "Archivos",
+      "o": 25.4
+     },
+     {
+      "n": "Conservación y restauración de bienes culturales",
+      "o": 22.8
+     },
+     {
+      "n": "Protección del Patrimonio Histórico",
+      "o": 20.1
+     },
+     {
+      "n": "Otros",
+      "o": 19.0
+     }
+    ],
+    "centros": [
+     {
+      "cod": "2401",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 745.0,
+      "def": 609.8,
+      "o": 585.4
+     },
+     {
+      "cod": "2404",
+      "n": "D.G.INDUSTRIAS CULTURALES, PROPIEDAD INTELECTUAL Y COOPERAC.",
+      "ini": 97.6,
+      "def": 234.6,
+      "o": 195.0
+     },
+     {
+      "cod": "2405",
+      "n": "DIRECCIÓN GENERAL DE PATRIMONIO CULTURAL Y BELLAS ARTES",
+      "ini": 167.8,
+      "def": 171.9,
+      "o": 157.5
+     },
+     {
+      "cod": "2450",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 0.0,
+      "def": 81.0,
+      "o": 70.4
+     },
+     {
+      "cod": "2403",
+      "n": "DIRECCIÓN GENERAL DEL LIBRO Y FOMENTO DE LA LECTURA",
+      "ini": 22.1,
+      "def": 25.9,
+      "o": 23.6
+     },
+     {
+      "cod": "2402",
+      "n": "SECRETARÍA GENERAL TÉCNICA",
+      "ini": 4.2,
+      "def": 5.0,
+      "o": 4.7
+     },
+     {
+      "cod": "2406",
+      "n": "SECRETARÍA GENERAL DE CULTURA Y DEPORTE",
+      "ini": 6.7,
+      "def": 2.2,
+      "o": 1.8
+     }
+    ],
+    "destino": {
+     "Organismos autónomos": 511.5,
+     "Familias e ISFL": 181.2,
+     "Otras entidades estatales": 82.8,
+     "Entidades locales": 28.3,
+     "Empresas y fundaciones públicas": 22.1,
+     "Empresas privadas": 16.2,
+     "CCAA": 13.3,
+     "Exterior": 1.2
+    },
+    "transf_mayores": [
+     {
+      "n": "Al Instituto Nacional de las Artes Escénicas y de la Música",
+      "centro": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ec": "416",
+      "dest": "Organismos autónomos",
+      "o": 155.9
+     },
+     {
+      "n": "Bono cultural joven",
+      "centro": "D.G.INDUSTRIAS CULTURALES, PROPIEDAD INTELECTUAL Y COOPERAC.",
+      "ec": "482",
+      "dest": "Familias e ISFL",
+      "o": 145.0
+     },
+     {
+      "n": "Al Instituto de la Cinematografía y de las Artes Audiovisuales. Dotación del Fondo de Protección a la Cinematografía",
+      "centro": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ec": "415",
+      "dest": "Organismos autónomos",
+      "o": 121.1
+     },
+     {
+      "n": "A la Gerencia de Infraestructuras y Equipamientos de Cultura",
+      "centro": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ec": "717",
+      "dest": "Organismos autónomos",
+      "o": 73.4
+     },
+     {
+      "n": "Al Instituto de la Cinematografía y de las Artes Audiovisuales para la promoción a través de las comunidades autónomas de la cinematografía en lenguas oficiales, de las s",
+      "centro": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ec": "413",
+      "dest": "Organismos autónomos",
+      "o": 39.0
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.52,
+     "definitivo": 0.6,
+     "obligaciones": 0.6
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.53,
+     "definitivo": 0.9,
+     "obligaciones": 0.9
+    },
+    "partidas_leidas": 1038.5,
+    "partidas_sin_leer": 0.4
+   },
+   {
+    "seccion": "TRABAJO Y ECONOMÍA SOCIAL",
+    "tipo": "ministerio",
+    "total": 636.4,
+    "pct_total_estado": 0.15,
+    "por_habitante": 12.78,
+    "capitulos": {
+     "1": 58.8,
+     "2": 35.4,
+     "3": 0.0,
+     "4": 442.7,
+     "6": 74.9,
+     "7": 24.6,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 9.2,
+    "programas": [
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 333.7
+     },
+     {
+      "n": "Dirección y Servicios Generales de Trabajo y Economía Social",
+      "o": 132.5
+     },
+     {
+      "n": "C23.I06 Plan integral imp. Ec.Soc.gener. tej.econ.inc.sost.",
+      "o": 54.9
+     },
+     {
+      "n": "C11.I04 Plan de Transición Energética en la AGE",
+      "o": 53.5
+     },
+     {
+      "n": "Administración de las relac. laborales y condic. de trabajo",
+      "o": 32.3
+     },
+     {
+      "n": "Desarrollo economía social y de respons. social empresas",
+      "o": 10.0
+     },
+     {
+      "n": "Desarrollo del trabajo autónomo",
+      "o": 8.6
+     },
+     {
+      "n": "C11.I02 Proyec. tractores digitaliz. AGE. Trab. y Ec. Social",
+      "o": 7.7
+     }
+    ],
+    "centros": [
+     {
+      "cod": "1903",
+      "n": "SECRETARÍA DE ESTADO DE EMPLEO Y ECONOMÍA SOCIAL",
+      "ini": 343.9,
+      "def": 334.1,
+      "o": 312.5
+     },
+     {
+      "cod": "1950",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 0.0,
+      "def": 355.1,
+      "o": 177.6
+     },
+     {
+      "cod": "1901",
+      "n": "MINISTERIO Y SUBSECRETARÍA",
+      "ini": 123.1,
+      "def": 157.8,
+      "o": 136.1
+     },
+     {
+      "cod": "1902",
+      "n": "SECRETARÍA DE ESTADO DE LA SEGURIDAD SOCIAL",
+      "ini": 9.8,
+      "def": 11.3,
+      "o": 10.0
+     }
+    ],
+    "destino": {
+     "Organismos autónomos": 321.0,
+     "Familias e ISFL": 82.1,
+     "Empresas privadas": 23.8,
+     "Empresas y fundaciones públicas": 15.9,
+     "CCAA": 11.4,
+     "Otras entidades estatales": 7.6,
+     "Seguridad Social": 5.1,
+     "Exterior": 0.4,
+     "Entidades locales": 0.0
+    },
+    "transf_mayores": [
+     {
+      "n": "Al O.E. Inspección de Trabajo y Seguridad Social. Para financiar su presupuesto",
+      "centro": "SECRETARÍA DE ESTADO DE EMPLEO Y ECONOMÍA SOCIAL",
+      "ec": "418",
+      "dest": "Organismos autónomos",
+      "o": 203.8
+     },
+     {
+      "n": "Al SEPE. Mecanismo de Recuperación y Resiliencia",
+      "centro": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ec": "413",
+      "dest": "Organismos autónomos",
+      "o": 53.6
+     },
+     {
+      "n": "A las organizaciones sindicales en proporción a su representatividad, según los resultados globales obtenidos en elecciones sindicales legalmente convocadas, por la reali",
+      "centro": "MINISTERIO Y SUBSECRETARÍA",
+      "ec": "48900",
+      "dest": "Familias e ISFL",
+      "o": 32.0
+     },
+     {
+      "n": "Al Servicio Público de Empleo Estatal. Para financiar medidas de reinserción laboral para el colectivo de trabajadores de 50 ó más años.",
+      "centro": "SECRETARÍA DE ESTADO DE EMPLEO Y ECONOMÍA SOCIAL",
+      "ec": "413",
+      "dest": "Organismos autónomos",
+      "o": 28.8
+     },
+     {
+      "n": "Desarrollo del Plan Integral a la Economía Social para la generación de un tejido económico inclusiv",
+      "centro": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ec": "481",
+      "dest": "Familias e ISFL",
+      "o": 25.4
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.55,
+     "definitivo": 0.9,
+     "obligaciones": 0.85
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 1.05,
+     "definitivo": 1.43,
+     "obligaciones": 1.36
+    },
+    "partidas_leidas": 636.1,
+    "partidas_sin_leer": 0.3
+   },
+   {
+    "seccion": "IGUALDAD",
+    "tipo": "ministerio",
+    "total": 481.3,
+    "pct_total_estado": 0.11,
+    "por_habitante": 9.66,
+    "capitulos": {
+     "1": 12.2,
+     "2": 8.9,
+     "3": 0.0,
+     "4": 421.3,
+     "6": 28.5,
+     "7": 10.4,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 2.5,
+    "programas": [
+     {
+      "n": "Actuaciones para la preven. integral violencia de género",
+      "o": 293.5
+     },
+     {
+      "n": "Igualdad de oportunidades entre mujeres y hombres",
+      "o": 151.8
+     },
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 19.3
+     },
+     {
+      "n": "Dirección y Servicios Generales de Igualdad",
+      "o": 10.3
+     },
+     {
+      "n": "Igualdad de trato y diversidad",
+      "o": 6.3
+     },
+     {
+      "n": "Otros",
+      "o": 0.1
+     }
+    ],
+    "centros": [
+     {
+      "cod": "3002",
+      "n": "S.E. DE IGUALDAD Y CONTRA LA VIOLENCIA DE GÉNERO",
+      "ini": 410.1,
+      "def": 393.2,
+      "o": 376.9
+     },
+     {
+      "cod": "3003",
+      "n": "DELEGACIÓN DEL GOBIERNO CONTRA LA VIOLENCIA DE GÉNERO",
+      "ini": 79.5,
+      "def": 95.0,
+      "o": 94.1
+     },
+     {
+      "cod": "3001",
+      "n": "MINISTERIO, SUBSECRETARÍA Y SERVICIOS GENERALES",
+      "ini": 13.3,
+      "def": 13.3,
+      "o": 10.3
+     },
+     {
+      "cod": "3050",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 0.0,
+      "def": 0.1,
+      "o": 0.0
+     }
+    ],
+    "destino": {
+     "CCAA": 322.3,
+     "Familias e ISFL": 47.9,
+     "Entidades locales": 40.1,
+     "Organismos autónomos": 19.3,
+     "Exterior": 2.1
+    },
+    "transf_mayores": [
+     {
+      "n": "Para el desarrollo de nuevas o ampliadas competencias reservadas a las Comunidades Autónomas en el Pacto de Estado contra la Violencia de Género.",
+      "centro": "S.E. DE IGUALDAD Y CONTRA LA VIOLENCIA DE GÉNERO",
+      "ec": "450",
+      "dest": "CCAA",
+      "o": 150.0
+     },
+     {
+      "n": "Para el desarrollo del Plan Corresponsables",
+      "centro": "S.E. DE IGUALDAD Y CONTRA LA VIOLENCIA DE GÉNERO",
+      "ec": "451",
+      "dest": "CCAA",
+      "o": 142.5
+     },
+     {
+      "n": "Para el desarrollo de nuevas o ampliadas competencias reservadas a las Entidades Locales en el Pacto de Estado contra la Violencia de Género",
+      "centro": "S.E. DE IGUALDAD Y CONTRA LA VIOLENCIA DE GÉNERO",
+      "ec": "460",
+      "dest": "Entidades locales",
+      "o": 40.0
+     },
+     {
+      "n": "Atención a mujeres víctimas de trata con fines de explotación sexual",
+      "centro": "DELEGACIÓN DEL GOBIERNO CONTRA LA VIOLENCIA DE GÉNERO",
+      "ec": "484",
+      "dest": "Familias e ISFL",
+      "o": 20.0
+     },
+     {
+      "n": "Al Instituto de las Mujeres, para el cumplimiento de sus fines",
+      "centro": "S.E. DE IGUALDAD Y CONTRA LA VIOLENCIA DE GÉNERO",
+      "ec": "416",
+      "dest": "Organismos autónomos",
+      "o": 18.5
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.53,
+     "definitivo": 0.64,
+     "obligaciones": 0.64
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.77,
+     "definitivo": 0.88,
+     "obligaciones": 0.88
+    },
+    "partidas_leidas": 481.3,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "FONDOS DE COMPENSACIÓN INTERTERRIT.",
+    "tipo": "partida no ministerial",
+    "total": 457.9,
+    "pct_total_estado": 0.11,
+    "por_habitante": 9.19,
+    "capitulos": {
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 0.0,
+     "6": 0.0,
+     "7": 457.9,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 0.0,
+    "programas": [
+     {
+      "n": "Transferencias a CC.AA por Fondos de Compen. Interterrit.",
+      "o": 457.9
+     }
+    ],
+    "centros": [
+     {
+      "cod": "3604",
+      "n": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. ANDALUCÍA",
+      "ini": 160.6,
+      "def": 160.6,
+      "o": 160.6
+     },
+     {
+      "cod": "3612",
+      "n": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. CANARIAS",
+      "ini": 62.1,
+      "def": 96.1,
+      "o": 81.4
+     },
+     {
+      "cod": "3609",
+      "n": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL.COMUNIDAD VALENCIANA",
+      "ini": 53.0,
+      "def": 53.0,
+      "o": 53.0
+     },
+     {
+      "cod": "3603",
+      "n": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. GALICIA",
+      "ini": 38.6,
+      "def": 85.7,
+      "o": 47.2
+     },
+     {
+      "cod": "3611",
+      "n": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. CASTILLA LA MANCHA",
+      "ini": 33.3,
+      "def": 33.3,
+      "o": 33.3
+     },
+     {
+      "cod": "3608",
+      "n": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. REGIÓN DE MURCIA",
+      "ini": 20.6,
+      "def": 28.5,
+      "o": 24.2
+     },
+     {
+      "cod": "3617",
+      "n": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. CASTILLA LEON",
+      "ini": 17.3,
+      "def": 21.6,
+      "o": 17.3
+     },
+     {
+      "cod": "3605",
+      "n": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. PRINCIPADO ASTURIAS",
+      "ini": 14.0,
+      "def": 14.0,
+      "o": 14.0
+     }
+    ],
+    "destino": {
+     "CCAA": 457.9
+    },
+    "transf_mayores": [
+     {
+      "n": "Fondo de Compensación",
+      "centro": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. ANDALUCÍA",
+      "ec": "755",
+      "dest": "CCAA",
+      "o": 120.4
+     },
+     {
+      "n": "Fondo de Compensación",
+      "centro": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. CANARIAS",
+      "ec": "755",
+      "dest": "CCAA",
+      "o": 40.5
+     },
+     {
+      "n": "Fondo Complementario",
+      "centro": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. ANDALUCÍA",
+      "ec": "756",
+      "dest": "CCAA",
+      "o": 40.1
+     },
+     {
+      "n": "Fondo de Compensación",
+      "centro": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL.COMUNIDAD VALENCIANA",
+      "ec": "755",
+      "dest": "CCAA",
+      "o": 39.8
+     },
+     {
+      "n": "Fondo de Compensación",
+      "centro": "S.G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. CASTILLA LA MANCHA",
+      "ec": "755",
+      "dest": "CCAA",
+      "o": 25.0
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "partidas_leidas": 457.9,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "CONTRATACIÓN CENTRALIZADA",
+    "tipo": "partida no ministerial",
+    "total": 341.0,
+    "pct_total_estado": 0.08,
+    "por_habitante": 6.85,
+    "capitulos": {
+     "1": 0.0,
+     "2": 341.0,
+     "3": 0.0,
+     "4": 0.0,
+     "6": 0.0,
+     "7": 0.0,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 0.0,
+    "programas": [
+     {
+      "n": "Contratación centralizada",
+      "o": 341.0
+     }
+    ],
+    "centros": [
+     {
+      "cod": "1001",
+      "n": "D.G. DE RACIONALIZACIÓN Y CENTRALIZACIÓN DE CONTRATACIÓN",
+      "ini": 317.1,
+      "def": 350.4,
+      "o": 341.0
+     }
+    ],
+    "destino": {},
+    "transf_mayores": [],
+    "altos_cargos": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "partidas_leidas": 341.0,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "JUVENTUD E INFANCIA",
+    "tipo": "ministerio",
+    "total": 296.5,
+    "pct_total_estado": 0.07,
+    "por_habitante": 5.95,
+    "capitulos": {
+     "1": 9.4,
+     "2": 2.3,
+     "3": 0.0,
+     "4": 261.3,
+     "6": 0.9,
+     "7": 22.7,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 3.2,
+    "programas": [
+     {
+      "n": "Atención a la infancia y a las familias",
+      "o": 234.7
+     },
+     {
+      "n": "Contingencias asociadas a la Depresión Aislada Niveles Altos",
+      "o": 39.9
+     },
+     {
+      "n": "Transferencias y libramientos internos",
+      "o": 12.7
+     },
+     {
+      "n": "Dirección y Servicios Generales de Juventud e Infancia",
+      "o": 8.4
+     },
+     {
+      "n": "C19.I01 Competencias digitales transversales. I+D+i+Digital.",
+      "o": 0.9
+     }
+    ],
+    "centros": [
+     {
+      "cod": "3104",
+      "n": "DIRECCIÓN GENERAL DE CONSUMO",
+      "ini": 53.7,
+      "def": 253.4,
+      "o": 246.6
+     },
+     {
+      "cod": "3103",
+      "n": "SECRETARÍA GENERAL DE CONSUMO Y JUEGO",
+      "ini": 0.3,
+      "def": 85.1,
+      "o": 40.6
+     },
+     {
+      "cod": "3101",
+      "n": "MINISTERIO Y SUBSECRETARÍA",
+      "ini": 9.4,
+      "def": 8.6,
+      "o": 7.3
+     },
+     {
+      "cod": "3102",
+      "n": "SECRETARÍA GENERAL TÉCNICA",
+      "ini": 1.0,
+      "def": 1.3,
+      "o": 1.1
+     },
+     {
+      "cod": "3150",
+      "n": "MECANISMO DE RECUPERACIÓN Y RESILIENCIA",
+      "ini": 97.0,
+      "def": 62.1,
+      "o": 0.8
+     }
+    ],
+    "destino": {
+     "CCAA": 229.6,
+     "Entidades locales": 34.2,
+     "Organismos autónomos": 12.6,
+     "Familias e ISFL": 7.4,
+     "Exterior": 0.1
+    },
+    "transf_mayores": [
+     {
+      "n": "Ayuda a la gestión de las Juntas Arbitrales adscritas a administraciones autonómicas",
+      "centro": "DIRECCIÓN GENERAL DE CONSUMO",
+      "ec": "451",
+      "dest": "CCAA",
+      "o": 100.0
+     },
+     {
+      "n": "Fondo para la atención a niños, niñas y adolescentes migrantes no acompañados",
+      "centro": "DIRECCIÓN GENERAL DE CONSUMO",
+      "ec": "452",
+      "dest": "CCAA",
+      "o": 94.6
+     },
+     {
+      "n": "Para la atención a niños, niñas y adolescentes migrantes no acompañados",
+      "centro": "DIRECCIÓN GENERAL DE CONSUMO",
+      "ec": "450",
+      "dest": "CCAA",
+      "o": 35.0
+     },
+     {
+      "n": "A Entidades Locales",
+      "centro": "SECRETARÍA GENERAL DE CONSUMO Y JUEGO",
+      "ec": "760",
+      "dest": "Entidades locales",
+      "o": 22.4
+     },
+     {
+      "n": "Al Instituto de la Juventud para el cumplimiento de sus fines",
+      "centro": "DIRECCIÓN GENERAL DE CONSUMO",
+      "ec": "410",
+      "dest": "Organismos autónomos",
+      "o": 12.3
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.33,
+     "definitivo": 0.46,
+     "obligaciones": 0.46
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.77,
+     "definitivo": 0.88,
+     "obligaciones": 0.87
+    },
+    "partidas_leidas": 296.4,
+    "partidas_sin_leer": 0.1
+   },
+   {
+    "seccion": "CORTES GENERALES",
+    "tipo": "órgano constitucional",
+    "total": 268.0,
+    "pct_total_estado": 0.06,
+    "por_habitante": 5.38,
+    "capitulos": {
+     "1": 164.2,
+     "2": 73.6,
+     "3": 0.4,
+     "4": 23.6,
+     "6": 6.1,
+     "7": 0.0,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 61.3,
+    "programas": [
+     {
+      "n": "Actividad legislativa",
+      "o": 268.0
+     }
+    ],
+    "centros": [
+     {
+      "cod": "0202",
+      "n": "CONGRESO DE LOS DIPUTADOS",
+      "ini": 110.4,
+      "def": 110.4,
+      "o": 110.4
+     },
+     {
+      "cod": "0201",
+      "n": "CORTES GENERALES",
+      "ini": 72.1,
+      "def": 72.1,
+      "o": 72.1
+     },
+     {
+      "cod": "0203",
+      "n": "SENADO",
+      "ini": 64.1,
+      "def": 64.1,
+      "o": 64.1
+     },
+     {
+      "cod": "0205",
+      "n": "DEFENSOR DEL PUEBLO",
+      "ini": 20.9,
+      "def": 20.9,
+      "o": 20.9
+     },
+     {
+      "cod": "0204",
+      "n": "JUNTA ELECTORAL CENTRAL",
+      "ini": 0.5,
+      "def": 0.5,
+      "o": 0.5
+     }
+    ],
+    "destino": {
+     "Familias e ISFL": 22.8,
+     "Exterior": 0.7,
+     "Otras entidades estatales": 0.0
+    },
+    "transf_mayores": [
+     {
+      "n": "A Familias e Instituciones sin fines de lucro",
+      "centro": "CONGRESO DE LOS DIPUTADOS",
+      "ec": "480",
+      "dest": "Familias e ISFL",
+      "o": 11.9
+     },
+     {
+      "n": "A familias e instituciones sin fines de lucro",
+      "centro": "SENADO",
+      "ec": "480",
+      "dest": "Familias e ISFL",
+      "o": 7.8
+     },
+     {
+      "n": "A Familias e Instituciones sin fines de lucro",
+      "centro": "CORTES GENERALES",
+      "ec": "480",
+      "dest": "Familias e ISFL",
+      "o": 3.0
+     },
+     {
+      "n": "Al exterior",
+      "centro": "CORTES GENERALES",
+      "ec": "490",
+      "dest": "Exterior",
+      "o": 0.7
+     },
+     {
+      "n": "A Familias e Instituciones sin fines de lucro",
+      "centro": "DEFENSOR DEL PUEBLO",
+      "ec": "480",
+      "dest": "Familias e ISFL",
+      "o": 0.2
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 40.23,
+     "definitivo": 40.23,
+     "obligaciones": 40.23
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 17.3,
+     "definitivo": 17.3,
+     "obligaciones": 17.3
+    },
+    "partidas_leidas": 268.0,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "OTRAS RELAC. FINANC. CON ENTES TERRIT.",
+    "tipo": "partida no ministerial",
+    "total": 257.5,
+    "pct_total_estado": 0.06,
+    "por_habitante": 5.17,
+    "capitulos": {
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 80.7,
+     "6": 0.0,
+     "7": 176.8,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 0.0,
+    "programas": [
+     {
+      "n": "Otras transferencias a Comunidades Autónomas",
+      "o": 215.1
+     },
+     {
+      "n": "Otras transferencias a Entidades Locales",
+      "o": 32.4
+     },
+     {
+      "n": "Infraestructura del transporte ferroviario",
+      "o": 10.0
+     }
+    ],
+    "centros": [
+     {
+      "cod": "3701",
+      "n": "S. G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. CC. AA.",
+      "ini": 383.7,
+      "def": 367.6,
+      "o": 225.1
+     },
+     {
+      "cod": "3702",
+      "n": "S. G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. ENTIDADES LOCALES",
+      "ini": 1907.4,
+      "def": 84.3,
+      "o": 32.4
+     }
+    ],
+    "destino": {
+     "CCAA": 225.1,
+     "Entidades locales": 32.4
+    },
+    "transf_mayores": [
+     {
+      "n": "Factor de Insularidad (Título III del Real Decreto-ley 4/2019, de 22 de febrero, del Régimen Especial de las Illes Balears)",
+      "centro": "S. G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. CC. AA.",
+      "ec": "753",
+      "dest": "CCAA",
+      "o": 159.5
+     },
+     {
+      "n": "A la Generalitat de Catalunya por el nuevo despliegue del cuerpo de Mossos d'Escuadra",
+      "centro": "S. G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. CC. AA.",
+      "ec": "452",
+      "dest": "CCAA",
+      "o": 53.0
+     },
+     {
+      "n": "Para financiar actuaciones en Melilla",
+      "centro": "S. G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. ENTIDADES LOCALES",
+      "ec": "465",
+      "dest": "Entidades locales",
+      "o": 10.2
+     },
+     {
+      "n": "Financiación de los costes de funcionamiento de las plantas desalinizadoras de las Ciudades de Ceuta y de Melilla",
+      "centro": "S. G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. ENTIDADES LOCALES",
+      "ec": "464",
+      "dest": "Entidades locales",
+      "o": 8.0
+     },
+     {
+      "n": "Para financiar inversiones en municipios del Campo de Gibraltar",
+      "centro": "S. G. DE FINANCIACIÓN AUTONÓMICA Y LOCAL. ENTIDADES LOCALES",
+      "ec": "765",
+      "dest": "Entidades locales",
+      "o": 7.3
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "partidas_leidas": 257.5,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "TRIBUNAL DE CUENTAS",
+    "tipo": "órgano constitucional",
+    "total": 75.1,
+    "pct_total_estado": 0.02,
+    "por_habitante": 1.51,
+    "capitulos": {
+     "1": 64.8,
+     "2": 6.8,
+     "3": 0.0,
+     "4": 0.0,
+     "6": 3.4,
+     "7": 0.0,
+     "8": 0.1,
+     "9": 0.0
+    },
+    "pct_personal": 86.3,
+    "programas": [
+     {
+      "n": "Control externo del Sector Público",
+      "o": 75.1
+     }
+    ],
+    "centros": [
+     {
+      "cod": "0301",
+      "n": "TRIBUNAL, FISCALÍA Y SERVICIOS GENERALES",
+      "ini": 78.4,
+      "def": 78.8,
+      "o": 75.1
+     }
+    ],
+    "destino": {
+     "Exterior": 0.0
+    },
+    "transf_mayores": [
+     {
+      "n": "Cuota de España al INTOSAI y OLACEFS",
+      "centro": "TRIBUNAL, FISCALÍA Y SERVICIOS GENERALES",
+      "ec": "490",
+      "dest": "Exterior",
+      "o": 0.0
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 1.62,
+     "definitivo": 1.79,
+     "obligaciones": 1.79
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 1.63,
+     "definitivo": 1.85,
+     "obligaciones": 1.85
+    },
+    "partidas_leidas": 75.1,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "CONSEJO GENERAL DEL PODER JUDICIAL",
+    "tipo": "órgano constitucional",
+    "total": 70.4,
+    "pct_total_estado": 0.02,
+    "por_habitante": 1.41,
+    "capitulos": {
+     "1": 44.0,
+     "2": 22.6,
+     "3": 0.0,
+     "4": 1.0,
+     "6": 2.9,
+     "7": 0.0,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 62.5,
+    "programas": [
+     {
+      "n": "Gobierno del Poder Judicial",
+      "o": 39.4
+     },
+     {
+      "n": "Selección y formación de jueces",
+      "o": 19.9
+     },
+     {
+      "n": "Documentación y publicaciones judiciales",
+      "o": 10.7
+     },
+     {
+      "n": "Otros",
+      "o": 0.4
+     }
+    ],
+    "centros": [
+     {
+      "cod": "0801",
+      "n": "CONSEJO GENERAL DEL PODER JUDICIAL",
+      "ini": 78.3,
+      "def": 79.6,
+      "o": 70.4
+     }
+    ],
+    "destino": {
+     "Familias e ISFL": 0.5,
+     "Otras entidades estatales": 0.4,
+     "Exterior": 0.0
+    },
+    "transf_mayores": [
+     {
+      "n": "A Asociaciones Judiciales",
+      "centro": "CONSEJO GENERAL DEL PODER JUDICIAL",
+      "ec": "483",
+      "dest": "Familias e ISFL",
+      "o": 0.4
+     },
+     {
+      "n": "A LA AGENCIA ESTATAL BOLETIN OFICIAL DEL ESTADO",
+      "centro": "CONSEJO GENERAL DEL PODER JUDICIAL",
+      "ec": "430",
+      "dest": "Otras entidades estatales",
+      "o": 0.4
+     },
+     {
+      "n": "Ayudas a la formación",
+      "centro": "CONSEJO GENERAL DEL PODER JUDICIAL",
+      "ec": "484",
+      "dest": "Familias e ISFL",
+      "o": 0.1
+     },
+     {
+      "n": "A Asociaciones Judiciales",
+      "centro": "CONSEJO GENERAL DEL PODER JUDICIAL",
+      "ec": "483",
+      "dest": "Familias e ISFL",
+      "o": 0.0
+     },
+     {
+      "n": "Cuotas a Organismos Internacionales",
+      "centro": "CONSEJO GENERAL DEL PODER JUDICIAL",
+      "ec": "490",
+      "dest": "Exterior",
+      "o": 0.0
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 3.03,
+     "definitivo": 3.08,
+     "obligaciones": 3.07
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 3.57,
+     "definitivo": 3.68,
+     "obligaciones": 3.66
+    },
+    "partidas_leidas": 70.4,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "TRIBUNAL CONSTITUCIONAL",
+    "tipo": "órgano constitucional",
+    "total": 30.1,
+    "pct_total_estado": 0.01,
+    "por_habitante": 0.6,
+    "capitulos": {
+     "1": 21.9,
+     "2": 7.6,
+     "3": 0.0,
+     "4": 0.2,
+     "6": 0.4,
+     "7": 0.0,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 72.8,
+    "programas": [
+     {
+      "n": "Control Constitucional",
+      "o": 30.1
+     }
+    ],
+    "centros": [
+     {
+      "cod": "0401",
+      "n": "TRIBUNAL CONSTITUCIONAL",
+      "ini": 30.5,
+      "def": 31.8,
+      "o": 30.1
+     }
+    ],
+    "destino": {
+     "Familias e ISFL": 0.2,
+     "Exterior": 0.0
+    },
+    "transf_mayores": [
+     {
+      "n": "Becas formación",
+      "centro": "TRIBUNAL CONSTITUCIONAL",
+      "ec": "487",
+      "dest": "Familias e ISFL",
+      "o": 0.1
+     },
+     {
+      "n": "A la Asociación de Letrados del Tribunal Constitucional",
+      "centro": "TRIBUNAL CONSTITUCIONAL",
+      "ec": "482",
+      "dest": "Familias e ISFL",
+      "o": 0.0
+     },
+     {
+      "n": "Premio \"Tomás y Valiente\"",
+      "centro": "TRIBUNAL CONSTITUCIONAL",
+      "ec": "488",
+      "dest": "Familias e ISFL",
+      "o": 0.0
+     },
+     {
+      "n": "Cuota a la Conferencia Mundial de Justicia Constitucional",
+      "centro": "TRIBUNAL CONSTITUCIONAL",
+      "ec": "490",
+      "dest": "Exterior",
+      "o": 0.0
+     },
+     {
+      "n": "Pensión exPresidentes del Tribunal Constitucional (Ley 21/86)",
+      "centro": "TRIBUNAL CONSTITUCIONAL",
+      "ec": "480",
+      "dest": "Familias e ISFL",
+      "o": 0.0
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 2.23,
+     "definitivo": 2.47,
+     "obligaciones": 2.47
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 1.22,
+     "definitivo": 1.47,
+     "obligaciones": 1.47
+    },
+    "partidas_leidas": 30.1,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "CONSEJO DE ESTADO",
+    "tipo": "órgano constitucional",
+    "total": 12.1,
+    "pct_total_estado": 0.0,
+    "por_habitante": 0.24,
+    "capitulos": {
+     "1": 9.7,
+     "2": 2.0,
+     "3": 0.0,
+     "4": 0.1,
+     "6": 0.3,
+     "7": 0.0,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 80.2,
+    "programas": [
+     {
+      "n": "Alto asesoramiento del Estado",
+      "o": 12.1
+     }
+    ],
+    "centros": [
+     {
+      "cod": "0501",
+      "n": "CONSEJO DE ESTADO",
+      "ini": 14.7,
+      "def": 14.7,
+      "o": 12.1
+     }
+    ],
+    "destino": {
+     "Familias e ISFL": 0.1
+    },
+    "transf_mayores": [
+     {
+      "n": "Indemnizaciones a Ex-Consejeros",
+      "centro": "CONSEJO DE ESTADO",
+      "ec": "48201",
+      "dest": "Familias e ISFL",
+      "o": 0.1
+     },
+     {
+      "n": "Indemnización a Ex-Presidentes",
+      "centro": "CONSEJO DE ESTADO",
+      "ec": "48200",
+      "dest": "Familias e ISFL",
+      "o": 0.0
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 1.03,
+     "definitivo": 1.03,
+     "obligaciones": 1.01
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.47,
+     "definitivo": 0.67,
+     "obligaciones": 0.56
+    },
+    "partidas_leidas": 12.1,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "CASA DE SU MAJESTAD EL REY",
+    "tipo": "órgano constitucional",
+    "total": 8.7,
+    "pct_total_estado": 0.0,
+    "por_habitante": 0.17,
+    "capitulos": {
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 8.7,
+     "6": 0.0,
+     "7": 0.0,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": 0.0,
+    "programas": [
+     {
+      "n": "Jefatura del Estado",
+      "o": 8.7
+     }
+    ],
+    "centros": [
+     {
+      "cod": "0101",
+      "n": "CASA DE SU MAJESTAD EL REY",
+      "ini": 8.4,
+      "def": 8.7,
+      "o": 8.7
+     }
+    ],
+    "destino": {
+     "Familias e ISFL": 8.7
+    },
+    "transf_mayores": [
+     {
+      "n": "A S.M. el Rey. Para el sostenimiento de su Familia y Casa (Art. 65 de la Constitución)",
+      "centro": "CASA DE SU MAJESTAD EL REY",
+      "ec": "480",
+      "dest": "Familias e ISFL",
+      "o": 8.7
+     }
+    ],
+    "altos_cargos": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "partidas_leidas": 8.7,
+    "partidas_sin_leer": 0.0
+   },
+   {
+    "seccion": "FONDO DE CONTINGENCIA",
+    "tipo": "partida no ministerial",
+    "total": 0,
+    "pct_total_estado": 0.0,
+    "por_habitante": 0.0,
+    "capitulos": {
+     "1": 0.0,
+     "2": 0.0,
+     "3": 0.0,
+     "4": 0.0,
+     "6": 0.0,
+     "7": 0.0,
+     "8": 0.0,
+     "9": 0.0
+    },
+    "pct_personal": null,
+    "programas": [
+     {
+      "n": "Fondo de contingencia de ejecución presupuestaria",
+      "o": 0.0
+     }
+    ],
+    "centros": [
+     {
+      "cod": "3501",
+      "n": "DIRECCIÓN GENERAL DE PRESUPUESTOS. FONDO DE CONTINGENCIA",
+      "ini": 3964.4,
+      "def": 864.8,
+      "o": 0.0
+     }
+    ],
+    "destino": {},
+    "transf_mayores": [],
+    "altos_cargos": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "art10_tribunales_y_fiscalia": 0.0,
+    "eventuales": {
+     "inicial": 0.0,
+     "definitivo": 0.0,
+     "obligaciones": 0.0
+    },
+    "partidas_leidas": 0.0,
+    "partidas_sin_leer": 0.0
+   }
+  ],
+  "altos_cargos_numero": {
+   "nombre": "Altos cargos y eventuales por ministerio: número",
+   "valor": null,
+   "unidad": "personas",
+   "anio": 2026,
+   "fuente": "https://transparencia.gob.es/publicidad-activa/por-materias/altos-cargos",
+   "nivel": "VERIFICAR",
+   "nota": "No se ha encontrado una tabla oficial con el número por ministerio. Prensa: 799 altos cargos en 2024 (The Objective) y 1.626 personas de designación política a finales de 2023 (Crónica Económica); fuentes críticas con el Gobierno, sin tabla oficial detrás que se haya leído."
+  },
+  "retribuciones": [
+   {
+    "nombre": "Presidente del Gobierno",
+    "valor": 90010.2,
+    "unidad": "€ al año",
+    "anio": "2023 (ley)",
+    "fuente": "https://www.iberley.es/legislacion/articulo-21-2023-pge",
+    "nivel": "P",
+    "nota": "Art. 21 de la Ley de PGE 2023. El Debate lo mantiene en esta cifra en enero de 2026 ([S])."
+   },
+   {
+    "nombre": "Vicepresidente del Gobierno",
+    "valor": 84600.72,
+    "unidad": "€ al año",
+    "anio": "2023 (ley)",
+    "fuente": "https://www.iberley.es/legislacion/articulo-21-2023-pge",
+    "nivel": "P",
+    "nota": ""
+   },
+   {
+    "nombre": "Ministro",
+    "valor": 79415.16,
+    "unidad": "€ al año",
+    "anio": "2023 (ley)",
+    "fuente": "https://www.iberley.es/legislacion/articulo-21-2023-pge",
+    "nivel": "P",
+    "nota": ""
+   },
+   {
+    "nombre": "Secretario de Estado",
+    "valor": 77893.18,
+    "unidad": "€ al año",
+    "anio": "2023 (ley)",
+    "fuente": "https://www.iberley.es/legislacion/articulo-21-2023-pge",
+    "nivel": "P",
+    "nota": "Suma propia de sueldo, complemento de destino y específico. Sin antigüedad ni pagas extraordinarias."
+   },
+   {
+    "nombre": "Subsecretario",
+    "valor": 69059.68,
+    "unidad": "€ al año",
+    "anio": "2023 (ley)",
+    "fuente": "https://www.iberley.es/legislacion/articulo-21-2023-pge",
+    "nivel": "P",
+    "nota": "Misma suma propia."
+   },
+   {
+    "nombre": "Director general",
+    "valor": 59048.4,
+    "unidad": "€ al año",
+    "anio": "2023 (ley)",
+    "fuente": "https://www.iberley.es/legislacion/articulo-21-2023-pge",
+    "nivel": "P",
+    "nota": "Misma suma propia."
+   },
+   {
+    "nombre": "Cuantías vigentes en 2026",
+    "valor": null,
+    "unidad": "€ al año",
+    "anio": 2026,
+    "fuente": "https://laadministracionaldia.inap.es/noticia.asp?id=1261940",
+    "nivel": "VERIFICAR",
+    "nota": "El RDL 14/2025 sube el sector público un 2,5 % en 2025 y un 1,5 % en 2026; no se ha leído cómo se aplica a cada alto cargo ni las cuantías resultantes. Algunos cargos cobran más que el ministro por régimen propio (prensa)."
+   }
+  ]
+ },
+ "fuera_de_ministerios": {
+  "seguridad_social": {
+   "fuente": "https://www.inclusion.gob.es/en/w/el-deficit-de-la-seguridad-social-se-reduce-al-0-4-del-pib-su-nivel-mas-bajo-desde-2011-gracias-al-incremento-de-los-ingresos-por-cotizaciones-sociales",
+   "datos": [
+    {
+     "nombre": "Cotizaciones sociales",
+     "valor": 176918,
+     "unidad": "M€",
+     "anio": 2025,
+     "fuente": "https://www.inclusion.gob.es/en/w/el-deficit-de-la-seguridad-social-se-reduce-al-0-4-del-pib-su-nivel-mas-bajo-desde-2011-gracias-al-incremento-de-los-ingresos-por-cotizaciones-sociales",
+     "nivel": "P",
+     "nota": "10,5 % del PIB; +6,9 %. Incluye 4.935 M€ del Mecanismo de Equidad Intergeneracional."
+    },
+    {
+     "nombre": "Saldo de la Seguridad Social que publica el Ministerio",
+     "valor": -7387,
+     "unidad": "M€",
+     "anio": 2025,
+     "fuente": "https://www.inclusion.gob.es/en/w/el-deficit-de-la-seguridad-social-se-reduce-al-0-4-del-pib-su-nivel-mas-bajo-desde-2011-gracias-al-incremento-de-los-ingresos-por-cotizaciones-sociales",
+     "nivel": "P",
+     "nota": "0,4 % del PIB, ya contando las transferencias del Estado."
+    },
+    {
+     "nombre": "Transferencias corrientes del Estado a la Seguridad Social",
+     "valor": 47815.3,
+     "unidad": "M€",
+     "anio": 2025,
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf",
+     "nivel": "P",
+     "nota": "Incluye IMV 4.955,9 M€, pensiones no contributivas 3.772,5 M€, complementos de mínimos 8.732,3 M€ y protección familiar 1.766,5 M€."
+    },
+    {
+     "nombre": "Préstamo del Estado a la Seguridad Social",
+     "valor": 10003.8,
+     "unidad": "M€",
+     "anio": 2025,
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf",
+     "nivel": "P",
+     "nota": "Capítulo 8: activo financiero, no transferencia."
+    },
+    {
+     "nombre": "Gasto en vejez del subsector Seguridad Social",
+     "valor": 135654,
+     "unidad": "M€",
+     "anio": 2024,
+     "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+     "nivel": "P",
+     "nota": "Eurostat, COFOG."
+    },
+    {
+     "nombre": "Enfermedad e invalidez",
+     "valor": 36112,
+     "unidad": "M€",
+     "anio": 2024,
+     "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+     "nivel": "P",
+     "nota": "Incluye incapacidad; Eurostat."
+    },
+    {
+     "nombre": "Desempleo",
+     "valor": 23737,
+     "unidad": "M€",
+     "anio": 2024,
+     "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+     "nivel": "P",
+     "nota": "Eurostat incluye al SEPE en el subsector Seguridad Social."
+    },
+    {
+     "nombre": "Saldo sin transferencias corrientes del Estado (Seguridad Social Ampliada)",
+     "valor": -67819,
+     "unidad": "M€",
+     "anio": 2024,
+     "fuente": "https://documentos.fedea.net/pubs/ap/2026/ap2026-03.pdf",
+     "nivel": "S",
+     "nota": "Fedea, con definición propia que suma clases pasivas: 172.543 M€ de cotizaciones y 58.301 M€ de transferencias en 2024. No se compara con el saldo del Ministerio."
+    }
+   ]
+  },
+  "organismos": {
+   "nota": "Lo que el Estado reconoce a cada uno en 2025. Sus ingresos propios no están aquí.",
+   "lista": [
+    {
+     "nombre": "Corporación RTVE",
+     "obligaciones_2025": 556.4,
+     "pct_total_estado": 0.131,
+     "por_habitante": 11.17,
+     "partida": "Transferencia corriente",
+     "nota": "Es la aportación del Estado, no su presupuesto total.",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Agencia Española de Cooperación (AECID)",
+     "obligaciones_2025": 556.4,
+     "pct_total_estado": 0.131,
+     "por_habitante": 11.17,
+     "partida": "Transferencia corriente",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "CSIC",
+     "obligaciones_2025": 482.0,
+     "pct_total_estado": 0.114,
+     "por_habitante": 9.68,
+     "partida": "Transferencia corriente",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Centro Nacional de Inteligencia",
+     "obligaciones_2025": 337.8,
+     "pct_total_estado": 0.08,
+     "por_habitante": 6.78,
+     "partida": "Transferencia corriente",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "CNMC",
+     "obligaciones_2025": 274.0,
+     "pct_total_estado": 0.065,
+     "por_habitante": 5.5,
+     "partida": "Transferencia corriente",
+     "nota": "Incluye el Fondo del Servicio Postal Universal (219,0 M€): no es el coste de funcionamiento de la CNMC.",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "UNED",
+     "obligaciones_2025": 111.8,
+     "pct_total_estado": 0.026,
+     "por_habitante": 2.24,
+     "partida": "Transferencia corriente",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Congreso de los Diputados",
+     "obligaciones_2025": 110.4,
+     "pct_total_estado": 0.026,
+     "por_habitante": 2.22,
+     "partida": "Servicio 0202",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Tribunal de Cuentas",
+     "obligaciones_2025": 75.1,
+     "pct_total_estado": 0.018,
+     "por_habitante": 1.51,
+     "partida": "Sección 03",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Instituto Cervantes",
+     "obligaciones_2025": 74.1,
+     "pct_total_estado": 0.018,
+     "por_habitante": 1.49,
+     "partida": "Transferencia corriente",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Cortes Generales (común)",
+     "obligaciones_2025": 72.1,
+     "pct_total_estado": 0.017,
+     "por_habitante": 1.45,
+     "partida": "Servicio 0201",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Consejo General del Poder Judicial",
+     "obligaciones_2025": 70.4,
+     "pct_total_estado": 0.017,
+     "por_habitante": 1.41,
+     "partida": "Sección 08",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Senado",
+     "obligaciones_2025": 64.1,
+     "pct_total_estado": 0.015,
+     "por_habitante": 1.29,
+     "partida": "Servicio 0203",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Tribunal Constitucional",
+     "obligaciones_2025": 30.1,
+     "pct_total_estado": 0.007,
+     "por_habitante": 0.6,
+     "partida": "Sección 04",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Agencia Estatal de Meteorología",
+     "obligaciones_2025": 28.9,
+     "pct_total_estado": 0.007,
+     "por_habitante": 0.58,
+     "partida": "Transferencia corriente",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Agencia Estatal de Investigación",
+     "obligaciones_2025": 28.4,
+     "pct_total_estado": 0.007,
+     "por_habitante": 0.57,
+     "partida": "Transferencia corriente",
+     "nota": "Solo la transferencia corriente.",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Defensor del Pueblo",
+     "obligaciones_2025": 20.9,
+     "pct_total_estado": 0.005,
+     "por_habitante": 0.42,
+     "partida": "Servicio 0205",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Agencia Espacial Española",
+     "obligaciones_2025": 14.0,
+     "pct_total_estado": 0.003,
+     "por_habitante": 0.28,
+     "partida": "Transferencia corriente",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Consejo de Estado",
+     "obligaciones_2025": 12.1,
+     "pct_total_estado": 0.003,
+     "por_habitante": 0.24,
+     "partida": "Sección 05",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Casa de Su Majestad el Rey",
+     "obligaciones_2025": 8.7,
+     "pct_total_estado": 0.002,
+     "por_habitante": 0.17,
+     "partida": "Sección 01",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    },
+    {
+     "nombre": "Junta Electoral Central",
+     "obligaciones_2025": 0.5,
+     "pct_total_estado": 0.0,
+     "por_habitante": 0.01,
+     "partida": "Servicio 0204",
+     "nota": "",
+     "nivel": "P",
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+    }
+   ],
+   "sin_dato": [
+    {
+     "nombre": "Banco de España",
+     "valor": null,
+     "unidad": "M€",
+     "anio": 2025,
+     "fuente": "https://www.bde.es",
+     "nivel": "VERIFICAR",
+     "nota": "Se financia con sus resultados; no se ha encontrado transferencia del Estado en la IGAE. Presupuesto propio no leído."
+    },
+    {
+     "nombre": "CNMV",
+     "valor": null,
+     "unidad": "M€",
+     "anio": 2025,
+     "fuente": "https://www.cnmv.es",
+     "nivel": "VERIFICAR",
+     "nota": "No se ha encontrado transferencia en la IGAE. Presupuesto propio no leído."
+    },
+    {
+     "nombre": "Presupuesto total de RTVE y de la CNMC",
+     "valor": null,
+     "unidad": "M€",
+     "anio": 2025,
+     "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf",
+     "nivel": "VERIFICAR",
+     "nota": "Solo se ha leído la aportación del Estado."
+    }
+   ]
+  },
+  "administraciones_2024": {
+   "texto": "Gasto por función y nivel (Eurostat, COFOG, 2024). Columnas sin consolidar: las transferencias entre administraciones se cuentan en las dos.",
+   "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+   "nivel": "P",
+   "actualizado": "2026-10-21",
+   "columnas": [
+    "Total AAPP",
+    "Estado",
+    "CCAA",
+    "Local",
+    "Seguridad Social"
+   ],
+   "filas": [
+    {
+     "nombre": "Gasto total",
+     "valores": [
+      725001.0,
+      357732.0,
+      268013.0,
+      97105.0,
+      252803.0
+     ]
+    },
+    {
+     "nombre": "Servicios generales",
+     "valores": [
+      92551.0,
+      253081.0,
+      49138.0,
+      32140.0,
+      8844.0
+     ]
+    },
+    {
+     "nombre": "· Órganos ejecutivos y legislativos, asuntos financieros y exteriores",
+     "valores": [
+      21444.0,
+      15526.0,
+      2374.0,
+      3544.0,
+      0.0
+     ]
+    },
+    {
+     "nombre": "· Intereses de la deuda",
+     "valores": [
+      39644.0,
+      34179.0,
+      6758.0,
+      1289.0,
+      311.0
+     ]
+    },
+    {
+     "nombre": "Defensa",
+     "valores": [
+      14233.0,
+      14233.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "nombre": "Orden público y seguridad",
+     "valores": [
+      28628.0,
+      14956.0,
+      7038.0,
+      6634.0,
+      0.0
+     ]
+    },
+    {
+     "nombre": "Asuntos económicos",
+     "valores": [
+      80908.0,
+      34121.0,
+      25538.0,
+      18106.0,
+      3143.0
+     ]
+    },
+    {
+     "nombre": "Medio ambiente",
+     "valores": [
+      15539.0,
+      1976.0,
+      3469.0,
+      10094.0,
+      0.0
+     ]
+    },
+    {
+     "nombre": "Vivienda y servicios comunitarios",
+     "valores": [
+      7613.0,
+      195.0,
+      3101.0,
+      4317.0,
+      0.0
+     ]
+    },
+    {
+     "nombre": "Sanidad",
+     "valores": [
+      102942.0,
+      3585.0,
+      96501.0,
+      883.0,
+      1973.0
+     ]
+    },
+    {
+     "nombre": "Cultura y ocio",
+     "valores": [
+      19193.0,
+      3375.0,
+      4343.0,
+      11475.0,
+      0.0
+     ]
+    },
+    {
+     "nombre": "Educación",
+     "valores": [
+      65862.0,
+      2665.0,
+      59766.0,
+      3419.0,
+      12.0
+     ]
+    },
+    {
+     "nombre": "Protección social",
+     "valores": [
+      297532.0,
+      29545.0,
+      19119.0,
+      10037.0,
+      238831.0
+     ]
+    },
+    {
+     "nombre": "· Vejez",
+     "valores": [
+      165050.0,
+      18563.0,
+      6722.0,
+      4111.0,
+      135654.0
+     ]
+    },
+    {
+     "nombre": "· Enfermedad e invalidez",
+     "valores": [
+      44019.0,
+      1416.0,
+      4674.0,
+      1817.0,
+      36112.0
+     ]
+    },
+    {
+     "nombre": "· Desempleo",
+     "valores": [
+      24077.0,
+      286.0,
+      25.0,
+      29.0,
+      23737.0
+     ]
+    },
+    {
+     "nombre": "· Familia",
+     "valores": [
+      15294.0,
+      5073.0,
+      2717.0,
+      1927.0,
+      5577.0
+     ]
+    },
+    {
+     "nombre": "· Exclusión social",
+     "valores": [
+      10878.0,
+      1262.0,
+      3915.0,
+      1913.0,
+      3788.0
+     ]
+    }
+   ]
+  },
+  "parlamentos_autonomicos": {
+   "nombre": "Gasto agregado de parlamentos y gobiernos autonómicos",
+   "valor": null,
+   "unidad": "M€",
+   "anio": 2024,
+   "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+   "nivel": "VERIFICAR",
+   "nota": "No se ha encontrado un agregado publicado. Lo más cercano: «órganos ejecutivos y legislativos, asuntos financieros y exteriores» de las CCAA, 2.374 M€ en 2024, que no equivale a parlamentos más gobiernos. Hay que sumar los presupuestos de cada cámara."
+  },
+  "intereses_y_ue": [
+   {
+    "nombre": "Intereses de la deuda del Estado",
+    "valor": 34822.1,
+    "unidad": "M€",
+    "anio": 2025,
+    "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf",
+    "nivel": "P",
+    "nota": "8.2 % de las obligaciones del Estado; 4.5 % del gasto de las AAPP; 699 € por habitante."
+   },
+   {
+    "nombre": "Intereses de todas las administraciones",
+    "valor": 39644,
+    "unidad": "M€",
+    "anio": 2024,
+    "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+    "nivel": "P",
+    "nota": "5.5 % del gasto de las AAPP de 2024."
+   },
+   {
+    "nombre": "Aportación al presupuesto de la UE",
+    "valor": 17164.8,
+    "unidad": "M€",
+    "anio": 2025,
+    "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf",
+    "nivel": "P",
+    "nota": "4.1 % de las obligaciones del Estado; 2.2 % del gasto de las AAPP; 345 € por habitante. Es lo pagado; lo recibido se ve aparte y su saldo sigue en [VERIFICAR]."
+   }
+  ]
+ },
+ "personal_publico": {
+  "efectivos": {
+   "fuente": "https://digital.gob.es/content/dam/portal-mtdfp/funcion-publica/rcp/boletin/2026_01/revision-agosto-2026/EPSAP_Enero_2026%20.pdf",
+   "nivel": "P",
+   "fecha": "ene-2026",
+   "nota": "Registro Central de Personal (EPSAP). Universidades a 31-dic-2024; Cataluña a 1-jul-2025. «Otro personal» agrupa lo que no es funcionario de carrera ni laboral; el resumen no separa interinos.",
+   "total": 3071725,
+   "columnas": [
+    "Efectivos",
+    "% del total",
+    "Funcionario de carrera",
+    "Laboral",
+    "Otro personal"
+   ],
+   "filas": [
+    {
+     "nombre": "Sector público del Estado",
+     "valores": [
+      546554,
+      17.79,
+      428847,
+      82937,
+      34770
+     ]
+    },
+    {
+     "nombre": "· Ministerios",
+     "valores": [
+      98224,
+      3.2,
+      66924,
+      22561,
+      8739
+     ]
+    },
+    {
+     "nombre": "· Organismos autónomos",
+     "valores": [
+      62492,
+      2.03,
+      47102,
+      12306,
+      3084
+     ]
+    },
+    {
+     "nombre": "· Entidades públicas empresariales",
+     "valores": [
+      24698,
+      0.8,
+      3,
+      24625,
+      70
+     ]
+    },
+    {
+     "nombre": "· Agencias estatales",
+     "valores": [
+      21190,
+      0.69,
+      10197,
+      10640,
+      353
+     ]
+    },
+    {
+     "nombre": "· Otros entes de derecho público",
+     "valores": [
+      36149,
+      1.18,
+      25845,
+      10133,
+      171
+     ]
+    },
+    {
+     "nombre": "· Fuerzas Armadas",
+     "valores": [
+      123504,
+      4.02,
+      116852,
+      0,
+      6652
+     ]
+    },
+    {
+     "nombre": "· Policía Nacional",
+     "valores": [
+      78740,
+      2.56,
+      73068,
+      0,
+      5672
+     ]
+    },
+    {
+     "nombre": "· Guardia Civil",
+     "valores": [
+      82609,
+      2.69,
+      76539,
+      0,
+      6070
+     ]
+    },
+    {
+     "nombre": "· Tribunales de instancia",
+     "valores": [
+      14381,
+      0.47,
+      10044,
+      467,
+      3870
+     ]
+    },
+    {
+     "nombre": "Comunidades autónomas",
+     "valores": [
+      1930273,
+      62.84,
+      1040611,
+      251306,
+      638356
+     ]
+    },
+    {
+     "nombre": "· Universidades transferidas",
+     "valores": [
+      192720,
+      6.27,
+      69128,
+      114443,
+      9149
+     ]
+    },
+    {
+     "nombre": "Administración local",
+     "valores": [
+      594898,
+      19.37,
+      217309,
+      287802,
+      89787
+     ]
+    },
+    {
+     "nombre": "TOTAL",
+     "valores": [
+      3071725,
+      100,
+      1686767,
+      622045,
+      762913
+     ]
+    }
+   ]
+  },
+  "epa": {
+   "fuente": "https://www.ine.es/jaxiT3/Tabla.htm?t=65193",
+   "nivel": "P",
+   "fecha": "3T-2026",
+   "unidad": "miles de asalariados",
+   "nota": "EPA: es una encuesta e incluye empresas públicas, por eso no coincide con el registro. 89.900 más que en el 2T ([S], prensa sobre la nota del INE).",
+   "filas": [
+    {
+     "nombre": "Total sector público",
+     "valor": 3736.8
+    },
+    {
+     "nombre": "Comunidades autónomas",
+     "valor": 2135.5
+    },
+    {
+     "nombre": "Local",
+     "valor": 725.9
+    },
+    {
+     "nombre": "Administración central",
+     "valor": 585.8
+    },
+    {
+     "nombre": "Empresas e instituciones públicas",
+     "valor": 208.1
+    },
+    {
+     "nombre": "Otro tipo",
+     "valor": 40.3
+    },
+    {
+     "nombre": "Seguridad Social",
+     "valor": 36.2
+    },
+    {
+     "nombre": "No sabe",
+     "valor": 5.0
+    }
+   ]
+  },
+  "sanidad_y_docencia": {
+   "nombre": "Efectivos de sanidad y docencia en las CCAA",
+   "valor": null,
+   "unidad": "personas",
+   "anio": "ene-2026",
+   "fuente": "https://digital.gob.es/content/dam/portal-mtdfp/funcion-publica/rcp/boletin/2026_01/revision-agosto-2026/EPSAP_Enero_2026%20.pdf",
+   "nivel": "VERIFICAR",
+   "nota": "No se ha extraído una tabla agregada por sector. Como aproximación de coste, ver la remuneración por función."
+  },
+  "remuneracion": {
+   "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main",
+   "nivel": "P",
+   "actualizado": "2026-10-21",
+   "nota": "Remuneración de asalariados (D1), cuentas nacionales. Incluye cotizaciones de empleador. Por nivel sin consolidar. El denominador por empleado mezcla perímetros: cuentas nacionales frente al registro.",
+   "filas": [
+    {
+     "nombre": "Todas las administraciones",
+     "m2025": 181502.0,
+     "m2024": 172737.0,
+     "pct_gasto": 23.7,
+     "por_habitante": 3645
+    },
+    {
+     "nombre": "Comunidades autónomas",
+     "m2025": 113282.0,
+     "m2024": 107998.0,
+     "pct_gasto": 39.6,
+     "por_habitante": 2275
+    },
+    {
+     "nombre": "Estado",
+     "m2025": 32574.0,
+     "m2024": 30617.0,
+     "pct_gasto": 8.7,
+     "por_habitante": 654
+    },
+    {
+     "nombre": "Local",
+     "m2025": 32491.0,
+     "m2024": 31000.0,
+     "pct_gasto": 31.6,
+     "por_habitante": 652
+    },
+    {
+     "nombre": "Seguridad Social",
+     "m2025": 3155.0,
+     "m2024": 3122.0,
+     "pct_gasto": 1.2,
+     "por_habitante": 63
+    }
+   ],
+   "pct_pib_2025": 10.7,
+   "por_efectivo_eur": 59088,
+   "capitulo_1_estado_2025": 22740.3,
+   "por_funcion_2024": [
+    {
+     "nombre": "Sanidad",
+     "valor": 46251.0,
+     "pct": 26.8
+    },
+    {
+     "nombre": "Educación",
+     "valor": 43635.0,
+     "pct": 25.3
+    },
+    {
+     "nombre": "Orden público y seguridad",
+     "valor": 23724.0,
+     "pct": 13.7
+    },
+    {
+     "nombre": "Servicios generales",
+     "valor": 17894.0,
+     "pct": 10.4
+    },
+    {
+     "nombre": "Asuntos económicos",
+     "valor": 14951.0,
+     "pct": 8.7
+    },
+    {
+     "nombre": "Protección social",
+     "valor": 9127.0,
+     "pct": 5.3
+    },
+    {
+     "nombre": "Defensa",
+     "valor": 7218.0,
+     "pct": 4.2
+    },
+    {
+     "nombre": "Cultura y ocio",
+     "valor": 5684.0,
+     "pct": 3.3
+    }
+   ]
+  },
+  "comparativa_ue": {
+   "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+   "nivel": "P",
+   "actualizado": "2026-10-21",
+   "texto": "Remuneración de asalariados públicos, % del PIB, 2024. España es la 18.ª de 27 con el 10.8 %; la UE-27, 10.2 %. Depende de cuánto servicio público presta directamente cada país.",
+   "paises": [
+    {
+     "n": "Dinamarca",
+     "pib24": 14.3,
+     "pib19": 15.1
+    },
+    {
+     "n": "Finlandia",
+     "pib24": 13.4,
+     "pib19": 12.6
+    },
+    {
+     "n": "Letonia",
+     "pib24": 13.2,
+     "pib19": 11.2
+    },
+    {
+     "n": "Croacia",
+     "pib24": 13.0,
+     "pib19": 11.7
+    },
+    {
+     "n": "Suecia",
+     "pib24": 12.6,
+     "pib19": 12.7
+    },
+    {
+     "n": "Bélgica",
+     "pib24": 12.5,
+     "pib19": 12.3
+    },
+    {
+     "n": "Francia",
+     "pib24": 12.4,
+     "pib19": 12.4
+    },
+    {
+     "n": "Estonia",
+     "pib24": 12.2,
+     "pib19": 10.7
+    },
+    {
+     "n": "Polonia",
+     "pib24": 11.7,
+     "pib19": 10.2
+    },
+    {
+     "n": "Lituania",
+     "pib24": 11.6,
+     "pib19": 10.1
+    },
+    {
+     "n": "Eslovaquia",
+     "pib24": 11.4,
+     "pib19": 10.3
+    },
+    {
+     "n": "Austria",
+     "pib24": 11.3,
+     "pib19": 10.6
+    },
+    {
+     "n": "Bulgaria",
+     "pib24": 11.3,
+     "pib19": 10.0
+    },
+    {
+     "n": "Eslovenia",
+     "pib24": 11.3,
+     "pib19": 11.4
+    },
+    {
+     "n": "Chipre",
+     "pib24": 11.2,
+     "pib19": 11.7
+    },
+    {
+     "n": "Rumanía",
+     "pib24": 11.2,
+     "pib19": 11.4
+    },
+    {
+     "n": "Luxemburgo",
+     "pib24": 11.1,
+     "pib19": 10.2
+    },
+    {
+     "n": "España",
+     "pib24": 10.8,
+     "pib19": 10.7
+    },
+    {
+     "n": "Portugal",
+     "pib24": 10.5,
+     "pib19": 10.8
+    },
+    {
+     "n": "Grecia",
+     "pib24": 10.4,
+     "pib19": 11.8
+    },
+    {
+     "n": "Hungría",
+     "pib24": 10.3,
+     "pib19": 10.4
+    },
+    {
+     "n": "Chequia",
+     "pib24": 9.6,
+     "pib19": 9.8
+    },
+    {
+     "n": "Malta",
+     "pib24": 9.6,
+     "pib19": 10.4
+    },
+    {
+     "n": "Italia",
+     "pib24": 9.0,
+     "pib19": 9.6
+    },
+    {
+     "n": "Países Bajos",
+     "pib24": 8.7,
+     "pib19": 8.3
+    },
+    {
+     "n": "Alemania",
+     "pib24": 8.3,
+     "pib19": 8.1
+    },
+    {
+     "n": "Irlanda",
+     "pib24": 6.1,
+     "pib19": 6.6
+    }
+   ],
+   "ue27": 10.2
+  }
+ },
+ "cargos_politicos": {
+  "numero": [
+   {
+    "nombre": "Diputados",
+    "valor": 350,
+    "unidad": "escaños",
+    "anio": "XV Legislatura",
+    "fuente": "https://www.congreso.es/es/cem/regecodip",
+    "nivel": "P",
+    "nota": "Cortes disueltas el 6-oct-2026; elecciones el 29-nov-2026 (RD 806/2026)."
+   },
+   {
+    "nombre": "Senadores",
+    "valor": 265,
+    "unidad": "escaños",
+    "anio": "XV Legislatura",
+    "fuente": "https://www.senado.es/web/composicionorganizacion/senadores/regimeneconomico/index.html",
+    "nivel": "P",
+    "nota": "Suma de los grupos que publica el Senado."
+   },
+   {
+    "nombre": "Eurodiputados españoles",
+    "valor": 61,
+    "unidad": "escaños",
+    "anio": "2024-2029",
+    "fuente": "https://www.europarl.europa.eu/spain/es/",
+    "nivel": "VERIFICAR",
+    "nota": "Sin fuente leída. Los paga el Parlamento Europeo, no el presupuesto español."
+   },
+   {
+    "nombre": "Diputados de los 17 parlamentos autonómicos",
+    "valor": null,
+    "unidad": "escaños",
+    "anio": 2026,
+    "fuente": "https://www.ine.es/uc/4oGQNHVo",
+    "nivel": "VERIFICAR",
+    "nota": "No se ha encontrado un total publicado. Hay que sumar la composición de cada cámara."
+   },
+   {
+    "nombre": "Consejeros y altos cargos autonómicos",
+    "valor": null,
+    "unidad": "personas",
+    "anio": 2026,
+    "fuente": "https://www.ine.es/uc/4oGQNHVo",
+    "nivel": "VERIFICAR",
+    "nota": "Sin total publicado."
+   },
+   {
+    "nombre": "Alcaldes",
+    "valor": 8131,
+    "unidad": "municipios",
+    "anio": 2023,
+    "fuente": "https://mpt.gob.es/dam/es/portal/prensa/notas_de_prensa/notas/2023/06/20230617EELL.pdf",
+    "nivel": "S",
+    "nota": "Nota del Ministerio de Política Territorial vista en buscador; no se pudo abrir."
+   },
+   {
+    "nombre": "Concejales",
+    "valor": 66964,
+    "unidad": "concejales",
+    "anio": 2023,
+    "fuente": "https://mpt.gob.es/dam/es/portal/prensa/notas_de_prensa/notas/2023/06/20230617EELL.pdf",
+    "nivel": "S",
+    "nota": "Misma nota. Otra fuente da 67.319. Reparto por tipo de municipio: [VERIFICAR]."
+   }
+  ],
+  "retribuciones": [
+   {
+    "nombre": "Diputado: asignación constitucional",
+    "valor": 3366.99,
+    "unidad": "€ al mes",
+    "anio": 2026,
+    "fuente": "https://www.congreso.es/es/cem/regecodip",
+    "nivel": "P",
+    "nota": "Igual para todos, con retención de IRPF."
+   },
+   {
+    "nombre": "Diputado: indemnización de gastos fuera de Madrid",
+    "valor": 2162.85,
+    "unidad": "€ al mes",
+    "anio": 2026,
+    "fuente": "https://www.congreso.es/es/cem/regecodip",
+    "nivel": "P",
+    "nota": "Exenta de IRPF. Por Madrid: 1.032,38 €. Las preguntas frecuentes de la misma web dan cifras anteriores."
+   },
+   {
+    "nombre": "Presidente del Congreso: complemento de Mesa",
+    "valor": 3683.74,
+    "unidad": "€ al mes",
+    "anio": 2026,
+    "fuente": "https://www.congreso.es/es/cem/regecodip",
+    "nivel": "P",
+    "nota": "Se suma a la asignación; hay otros complementos por cargo."
+   },
+   {
+    "nombre": "Senador: asignación constitucional",
+    "valor": 3417.54,
+    "unidad": "€ al mes",
+    "anio": 2026,
+    "fuente": "https://www.senado.es/web/composicionorganizacion/senadores/regimeneconomico/index.html",
+    "nivel": "P",
+    "nota": "14 pagas. Fecha de la página no confirmada."
+   },
+   {
+    "nombre": "Senador: indemnización fuera de Madrid",
+    "valor": 2193.5,
+    "unidad": "€ al mes",
+    "anio": 2026,
+    "fuente": "https://www.senado.es/web/composicionorganizacion/senadores/regimeneconomico/index.html",
+    "nivel": "P",
+    "nota": "14 pagas. Por Madrid: 1.046,08 €."
+   },
+   {
+    "nombre": "Subvención a grupos del Congreso",
+    "valor": 30346.72,
+    "unidad": "€ al mes por grupo",
+    "anio": 2026,
+    "fuente": "https://www.congreso.es/es/cem/regecodip",
+    "nivel": "P",
+    "nota": "Más 1.746,16 € al mes por diputado."
+   },
+   {
+    "nombre": "Alcaldes y concejales: total",
+    "valor": null,
+    "unidad": "M€",
+    "anio": 2023,
+    "fuente": "https://www.newtral.es/sueldos-alcaldes-2/20250306/",
+    "nivel": "VERIFICAR",
+    "nota": "ISPA publica sueldo por ayuntamiento, sin total. Unos 1.357 municipios no informaron en 2024 ([S], Newtral)."
+   },
+   {
+    "nombre": "Parlamentos autonómicos: total de retribuciones",
+    "valor": null,
+    "unidad": "M€",
+    "anio": 2026,
+    "fuente": "https://www.ine.es",
+    "nivel": "VERIFICAR",
+    "nota": "Sin total publicado."
+   }
+  ],
+  "partidos": [
+   {
+    "nombre": "Subvención de funcionamiento a partidos",
+    "valor": 52.7,
+    "unidad": "M€",
+    "anio": 2025,
+    "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf",
+    "nivel": "P",
+    "nota": "Ley Orgánica 8/2007. Mismo importe en 2026 según el BOE y prensa."
+   },
+   {
+    "nombre": "Asignación a partidos para seguridad",
+    "valor": 2.7,
+    "unidad": "M€",
+    "anio": 2025,
+    "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf",
+    "nivel": "P",
+    "nota": ""
+   },
+   {
+    "nombre": "Subvención de gastos electorales",
+    "valor": 2.5,
+    "unidad": "M€ obligados",
+    "anio": 2025,
+    "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf",
+    "nivel": "P",
+    "nota": "Crédito 56,1 M€. Varía mucho según haya elecciones."
+   },
+   {
+    "nombre": "Procesos electorales",
+    "valor": 9.0,
+    "unidad": "M€ obligados",
+    "anio": 2025,
+    "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf",
+    "nivel": "P",
+    "nota": "Crédito inicial 347,0 M€, reducido a 57,5 M€. Programa 924M completo: 68,0 M€."
+   },
+   {
+    "nombre": "Fundaciones de partidos",
+    "valor": 1.6,
+    "unidad": "M€",
+    "anio": 2025,
+    "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf",
+    "nivel": "P",
+    "nota": "Exteriores, partida 1203.143A.486."
+   },
+   {
+    "nombre": "Subvención electoral del 29-nov-2026 por escaño",
+    "valor": 21167.64,
+    "unidad": "€ por escaño",
+    "anio": 2026,
+    "fuente": "https://www.diariodeleon.es/nacional/261008/2099659/elecciones-generales-leon-2026-boe-confirma-son-ayudas-recibiran-partidos-escano-elecciones.html",
+    "nivel": "S",
+    "nota": "Más 0,81 € por voto al Congreso y 0,32 € al Senado. Prensa citando al BOE."
+   }
+  ],
+  "suma_publicada": {
+   "texto": "Solo la suma de lo publicado a nivel del Estado en 2025. No es el coste total de los cargos políticos: faltan las comunidades autónomas y los ayuntamientos.",
+   "partes": [
+    {
+     "nombre": "Congreso, Senado, Cortes común y Junta Electoral (presupuesto completo, con su personal)",
+     "valor": 247.1
+    },
+    {
+     "nombre": "Altos cargos de los ministerios (art. 10, sin tribunales ni fiscalía)",
+     "valor": 25.6
+    },
+    {
+     "nombre": "Personal eventual de los ministerios (art. 11)",
+     "valor": 54.8
+    },
+    {
+     "nombre": "Partidos: funcionamiento y seguridad",
+     "valor": 55.4
+    }
+   ],
+   "total": 382.9,
+   "pct_gasto_aapp_2025": 0.05,
+   "pct_pib_2025": 0.023,
+   "por_habitante": 7.69,
+   "incluye_no": [
+    "Parlamentos, gobiernos y altos cargos autonómicos",
+    "Alcaldes, concejales, diputaciones y cabildos",
+    "Altos cargos y eventuales de organismos autónomos, agencias y empresas públicas",
+    "Consejos de administración de empresas públicas",
+    "Cargos de confianza de entes locales sin publicar",
+    "Eurodiputados (los paga la UE)",
+    "Cotizaciones del empleador si no figuran en estos artículos"
+   ],
+   "nivel": "P",
+   "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
+  }
+ }
 }
