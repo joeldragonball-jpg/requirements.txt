@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-30 17:08 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-30 17:16 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -67,7 +67,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (4) → W03 · UE/cbdc; HK/politica; AE/politica; EG/politica
 - 🟡 Radar regulatorio: Celdas sin dato (49) → W03 · Más huecos: CH 7, AU 7, UK 6, CA 6, EG 5
 - 🟡 Países (política): Fichas con datos de más de 90 días o sin fecha (4) → W11 · Países Bajos, Polonia, China, India
-- 🟡 Voces: Voces sin confirmar (4) → W06 · 1 llevan más de 14 días
+- 🟡 Voces: Voces sin confirmar (5) → W06 · 2 llevan más de 14 días
 
 ## Bots con problema
 - Paneles de datos

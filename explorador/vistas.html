@@ -151,6 +151,7 @@ nav button{transition:background-color .15s,color .15s}nav button:hover:not(.on)
 <section class="vista" id="v-noticias"></section>
 <section class="vista" id="v-voces"></section>
 <section class="vista" id="v-paises"></section>
+<section class="vista" id="v-espana"></section>
 <section class="vista" id="v-paneles"></section>
 </main>
 <div id="tip"></div>
@@ -164,7 +165,7 @@ const cert=f=>f==='P'?'🛡':(f==='S'?'◐':'△');
 const bcl=n=>n==='P'?'P':(n&&n[0]==='S'?'S':'V');
 const num=(x,d=1)=>x==null||isNaN(x)?'—':Number(x).toLocaleString('es-ES',{maximumFractionDigits:d,minimumFractionDigits:d>1&&Math.abs(x)<100?Math.min(d,2):0});
 const usd=x=>x==null?'—':'$'+(Math.abs(x)>=1e12?num(x/1e12,2)+' billones':Math.abs(x)>=1e9?num(x/1e9,1)+' mil millones':Math.abs(x)>=1e6?num(x/1e6,0)+' millones':num(x,0));
-const TABS=[['resumen','Resumen'],['capas','Capas'],['tiempo','Línea de tiempo'],['calendario','Calendario'],['matriz','Matriz país × tema'],['noticias','Noticias'],['voces','Voces'],['paises','Países'],['paneles','Paneles de datos']];
+const TABS=[['resumen','Resumen'],['capas','Capas'],['tiempo','Línea de tiempo'],['calendario','Calendario'],['matriz','Matriz país × tema'],['noticias','Noticias'],['voces','Voces'],['paises','Países'],['espana','España'],['paneles','Paneles de datos']];
 let R,D,V,P,CAL,FMI,VAL,BAN,RES,X,modo='sem',selMov=null,selCapa=null,selCelda=null,tab='resumen',listo=false;
 
 /* ---------- utilidades de pintado ---------- */
@@ -241,7 +242,7 @@ function contar(sec){
     const paso=ahora=>{const k=Math.min(1,(ahora-t0)/800),v=fin*(1-Math.pow(1-k,3));
       e.textContent=k<1?pre+v.toLocaleString('es-ES',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf:t;if(k<1)requestAnimationFrame(paso)};
     requestAnimationFrame(paso)})}
-function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,paneles:pPaneles})[tab]()}
+function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles})[tab]()}
 
 /* ---------- bloques de datos reutilizables (Capas y Paneles) ---------- */
 const PL=['3M','6M','1A','2A','3A','5A','10A','15A','20A','30A'];
@@ -812,6 +813,60 @@ function pPaneles(){
   if(RES)add(bloque('Reservas de divisas, oro y balances de bancos centrales',null,{nivel:'P',t:'FMI, World Gold Council, bancos centrales · leído '+RES.leido},nReservas(),false));
   if(VAL)add(bloque('Valoración de 18 valores (PER, EV/EBITDA, caja libre)',VAL.aviso,{t:'Cálculo propio con datos de las empresas · '+VAL.generado.slice(0,10)},nVal(),false));
   if(BAN)add(bloque('Bancos europeos: deuda soberana en su balance (EBA)','Lo que cada banco tiene en bonos de Estados; el capital CET1 es su colchón de máxima calidad. Los 15 mayores de '+BAN.bancos.length+'.',{nivel:BAN.nivel,t:'EBA, corte '+BAN.periodo},nEbaTop(15),false));
+  c.append(mz);s.append(c);
+}
+/* ---------- España: ingresos, gasto por ministerio y quién recibe (C65 y C66). Solo cifras publicadas; lo que no existe se dice ---------- */
+function pEspana(){
+  const s=$('v-espana');s.textContent='';
+  const E=D.espana,B=D.espana_presupuesto,M=E&&E.manual||{};
+  if(!E&&!B){s.append(el('p','nota-v','Sin datos de España: faltan explorador/espana.json y espana-presupuesto.json.'));return}
+  const c=el('div','caja');c.append(el('h2',null,'España: cuánto entra, a dónde va cada euro y quién lo recibe'));
+  const fx=(v,d)=>v==null?'—':v.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d,useGrouping:'always'}),n1=v=>fx(v,1),n0=v=>fx(v,0);
+  const lnk=(u,t='fuente')=>{const a=el('a',null,t);a.href=u;a.target='_blank';a.rel='noopener';return a};
+  const conL=(tx,...ns)=>{const d=el('div');if(tx)d.append(el('p','nota-v',tx));d.append(...ns);return d};
+  const add=b=>{b.classList.add('ancho');mz.append(b)};
+  const mz=masonry();
+  if(B){
+    const v=el('p','nota-v');v.append(nivelBadge(B.vigencia.nivel),document.createTextNode(' '+B.vigencia.texto));c.append(v);
+    const u=el('ul','nota-v');for(const t of B.como_leerlo)u.append(el('li',null,t));
+    const ejec=[{t:'Inicial 2025',n:1,f:r=>n1(r.inicial_2025)},{t:'Definitivo 2025',n:1,f:r=>n1(r.definitivo_2025)},{t:'Obligaciones 2025',n:1,f:r=>n1(r.obligaciones_2025)},{t:'Definitivo 2026',n:1,f:r=>n1(r.definitivo_2026_ago)},{t:'Obligaciones hasta ago-2026',n:1,f:r=>n1(r.obligaciones_2026_ago)}];
+    const orden=L=>L.slice().sort((a,b)=>b.obligaciones_2025-a.obligaciones_2025);
+    const mins=orden(B.secciones.filter(x=>x.tipo==='ministerio')),otros=orden(B.secciones.filter(x=>x.tipo!=='ministerio'));
+    const pieE={nivel:'P',t:'IGAE, ejecución del presupuesto del Estado · M€ · leído '+B.leido};
+    add(bloque('Por ministerio: crédito inicial, definitivo y obligaciones',B.nota,pieE,conL(B.lecturas.ministerios,u,
+      tabla([{t:'Ministerio',f:r=>r.nombre},...ejec],mins),
+      el('h3',null,'Fuera de los ministerios: deuda, pensiones de funcionarios, UE, CCAA y entes locales, órganos constitucionales'),
+      tabla([{t:'Partida',f:r=>r.nombre},{t:'Tipo',f:r=>r.tipo},...ejec],otros))));
+    add(bloque('Programas concretos: igualdad, IMV, becas, inmigración, cooperación, dependencia…','Partida exacta con su código. Las aportaciones a la Seguridad Social son la parte que paga el Estado.',pieE,conL(B.lecturas.igualdad,
+      tabla([{t:'Bloque',f:r=>r.grupo},{t:'Programa',f:r=>r.nombre},{t:'Código',f:r=>r.codigo},...ejec,{t:'Nota',f:r=>r.nota}],B.programas))));
+    add(bloque('Lo que no se puede aislar','Sin partida propia o sin cifra publicada: no se estima.',{t:'Enfermedades raras, CIBERER, CATE, violencia de género total'},
+      tabla([{t:'Tema',f:r=>r.tema},{t:'Qué hay',f:r=>r.texto},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Fuente',f:r=>lnk(r.fuente)}],B.no_aislable)));
+    const pa=B.por_administracion_2024;
+    add(bloque('Quién gasta cada cosa: Estado, CCAA, ayuntamientos y Seguridad Social',pa.texto,{nivel:pa.nivel,t:'Eurostat · 2024 · M€ · actualizado '+pa.actualizado},
+      tabla([{t:'Función',f:r=>r.nombre},...pa.columnas.map((t,i)=>({t,n:1,f:r=>n0(r.valores[i])}))],pa.filas),false));
+    const co=B.consolidado_ley_2023;
+    add(bloque('Presupuesto consolidado de la ley de 2023 por políticas',co.texto,{nivel:co.nivel,t:'Hacienda, Informe Económico y Financiero · M€ · total '+n0(co.total)},
+      tabla([{t:'Política',f:r=>r.nombre},{t:'M€',n:1,f:r=>n0(r.valor)},{t:'% del total',n:1,f:r=>n1(r.valor/co.total*100)}],co.politicas.slice().sort((a,b)=>b.valor-a.valor)),false));
+    add(bloque('Ejecución por políticas de gasto',null,pieE,tabla([{t:'Política',f:r=>{const x=el('span',null,r.nombre);if(r.area)x.style.fontWeight='700';return x}},...ejec],B.politicas),false));
+  }
+  const dat=L=>tabla([{t:'Dato',f:r=>r.nombre},{t:'Valor',n:1,f:r=>r.valor==null?'[VERIFICAR]':fx(r.valor,r.valor%1?1:0)+' '+(r.unidad||'')},{t:'Fecha',f:r=>String(r.anio||'')},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Nota',f:r=>r.nota},{t:'Fuente',f:r=>lnk(r.fuente)}],L);
+  if(M.beneficiarios){
+    add(bloque('Quién recibe: beneficiarios y su denominador','Cada dato con la población de referencia al lado. Las estadísticas miden nacionalidad, no origen: un español naturalizado cuenta como español.',{t:'[P] oficial leída · [S] secundaria · [VERIFICAR] no leído'},
+      conL(B&&B.lecturas.beneficiarios,el('h3',null,'Población de referencia'),dat(M.poblacion_referencia),el('h3',null,'Prestaciones'),dat(M.beneficiarios),el('h3',null,'Requisitos legales de acceso'),
+        tabla([{t:'Prestación',f:r=>r.nombre},{t:'Requisito',f:r=>r.nota},{t:'Norma',f:r=>lnk(r.fuente,'BOE')}],M.requisitos_acceso),
+        el('h3',null,'Origen y «hijos de inmigrantes»: qué se puede cruzar'),dat(M.origen_ascendencia))));
+    add(bloque('Violencia de género: casos frente a gasto','CGPJ, INE y Delegación del Gobierno cuentan cosas distintas: conviene no mezclarlas.',{t:'CGPJ · INE · Delegación del Gobierno'},dat(M.violencia_genero),false));
+  }
+  if(E){
+    const fila=i=>{const a=Object.keys(i.serie).sort(),u=a[a.length-1],p=a[a.length-2],vu=i.serie[u],vp=i.serie[p];return{n:i.nombre,g:i.grupo,u,vu,vp,pib:i.pct_pib&&i.pct_pib[u],real:i.real_por_habitante&&i.real_por_habitante[u],sp:a.map(x=>i.serie[x]),d:vp?(vu-vp)/Math.abs(vp)*100:null}};
+    const F=E.indicadores.map(fila);
+    const cols=[{t:'Indicador',f:r=>r.n},{t:'Año',f:r=>r.u},{t:'M€',n:1,f:r=>n0(r.vu)},{t:'Frente al año anterior',n:1,f:r=>cambio(r.d)},{t:'% del PIB',n:1,f:r=>n1(r.pib)},{t:'€ reales por habitante',n:1,f:r=>n0(r.real)},{t:'Serie',f:r=>spark(r.sp)}];
+    add(bloque('Ingresos y gasto de todas las administraciones',E.nota,{nivel:'P',t:'Eurostat · leído '+E.leido},conL(B&&B.lecturas.ingresos,tabla(cols,F)),false));
+    const R2=(E.resultados||[]).map(r=>{const a=Object.keys(r.es).sort(),u=a[a.length-1];return{n:r.nombre,un:r.unidad,u,es:r.es[u],ue:r.ue27[u],d:a.length>1?r.es[u]-r.es[a[a.length-2]]:null,f:r.fuente}});
+    if(R2.length)add(bloque('Resultados de los servicios: España frente a la UE',null,{nivel:'P',t:'Eurostat'},tabla([{t:'Indicador',f:r=>r.n},{t:'Unidad',f:r=>r.un},{t:'Año',f:r=>r.u},{t:'España',n:1,f:r=>n1(r.es)},{t:'UE-27',n:1,f:r=>n1(r.ue)},{t:'Frente al año anterior',n:1,f:r=>cambio(r.d,'p.p.')},{t:'Fuente',f:r=>lnk(r.f)}],R2),false));
+    for(const [k,t] of [['recaudacion_aeat','Recaudación de la Agencia Tributaria'],['paro_sepe','Gasto en paro'],['exterior','Dinero al exterior y lo que vuelve'],['rescate_bancario','Rescate bancario'],['resultados_servicios','Listas de espera y abandono escolar']])
+      if(M[k])add(bloque(t,null,{t:'[P] oficial leída · [S] secundaria · [VERIFICAR] no leído'},dat(M[k]),false));
+  }
   c.append(mz);s.append(c);
 }
 let nc0=ncols(),tRz;addEventListener('resize',()=>{clearTimeout(tRz);tRz=setTimeout(()=>{if(listo&&ncols()!==nc0){nc0=ncols();pintarTodo()}},200)});

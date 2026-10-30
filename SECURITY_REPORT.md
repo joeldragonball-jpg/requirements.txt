@@ -1,6 +1,6 @@
 # 🟡 REVISAR — Informe de seguridad
 
-**Fecha:** 2026-10-22 · **Última comprobación:** 2026-10-28, 🔴→🟡 el script marcó que CISA KEV añadió el 27-oct el CVE-2026-111497 (Brotli) como explotado activamente; comprobado a mano: sin exposición en el código; solo queda por saber el Brotli del Chromium de `despertador.yml` (no comprobado; solo visita nuestra propia app de Streamlit) (no repetir búsquedas ya hechas hoy) · Repositorio público: este informe no incluye datos del equipo local.
+**Fecha:** 2026-10-22 · **Última comprobación:** 2026-10-30 (el script repite 🔴 por la misma entrada de KEV, aún dentro de su ventana de 3 días; sin novedades, Joel lo ha visto), 2026-10-28, 🔴→🟡 el script marcó que CISA KEV añadió el 27-oct el CVE-2026-111497 (Brotli) como explotado activamente; comprobado a mano: sin exposición en el código; solo queda por saber el Brotli del Chromium de `despertador.yml` (no comprobado; solo visita nuestra propia app de Streamlit) (no repetir búsquedas ya hechas hoy) · Repositorio público: este informe no incluye datos del equipo local.
 
 ## Resumen
 1. El aviso del vídeo se **confirma en lo esencial** en fuentes oficiales: hay parches de seguridad en Node.js (21-oct), Python (1-oct y 21-oct), Go (8 y 19-oct) y Java (Oracle CPU, 20-oct); en Rust no hay aviso oficial del lenguaje en octubre.

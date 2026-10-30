@@ -1,5 +1,5 @@
 {
- "_nota": "Datos de España sin API abierta, leídos el 30-oct-2026. Nivel P = fuente oficial leída; S = prensa o resumen de buscador; VERIFICAR = sin cifra leída. No escribir cifras de memoria.",
+ "_nota": "Datos de España sin API abierta, leídos el 30-oct-2026 (C65 y C66). Nivel P = fuente oficial leída; S = prensa o resumen de buscador; VERIFICAR = sin cifra leída. No escribir cifras de memoria.",
  "recaudacion_aeat": [
   {
    "nombre": "Ingresos tributarios totales (Agencia Tributaria)",
@@ -251,6 +251,367 @@
    "fuente": "https://www.funcas.es/wp-content/uploads/2026/02/Informe-sobre-el-abandono-educativo-temprano-en-Espana.pdf",
    "nivel": "S",
    "nota": "UE-27: 9,1 % en 2025 (Euronews, Eurostat). 2024: España 13,0 %, UE 9,4 %. [VERIFICAR] en Eurostat edat_lfse_14."
+  }
+ ],
+ "poblacion_referencia": [
+  {
+   "nombre": "Población residente",
+   "valor": 49801559,
+   "unidad": "personas",
+   "anio": "1-jul-2026",
+   "fuente": "https://www.ine.es/dyngs/Prensa/ECP2T26.htm",
+   "nivel": "P",
+   "nota": "Provisional (Estadística Continua de Población)."
+  },
+  {
+   "nombre": "Población de nacionalidad extranjera",
+   "valor": 7437543,
+   "unidad": "personas",
+   "anio": "1-jul-2026",
+   "fuente": "https://www.ine.es/dyngs/Prensa/ECP2T26.htm",
+   "nivel": "P",
+   "nota": "14,9 % de la población."
+  },
+  {
+   "nombre": "Población nacida en el extranjero",
+   "valor": 10291807,
+   "unidad": "personas",
+   "anio": "1-jul-2026",
+   "fuente": "https://www.ine.es/dyngs/Prensa/ECP2T26.htm",
+   "nivel": "P",
+   "nota": "20,7 % de la población. Incluye 3.370.854 españoles nacidos fuera."
+  },
+  {
+   "nombre": "Afiliados extranjeros a la Seguridad Social",
+   "valor": 3038158,
+   "unidad": "personas",
+   "anio": "ene-2026",
+   "fuente": "https://www.inclusion.gob.es/en/w/la-seguridad-social-comienza-2026-con-cerca-de-200.000-afiliados-extranjeros-mas-que-hace-un-ano",
+   "nivel": "P",
+   "nota": "14,1 % de los cotizantes. En mayo de 2026: 3.359.548 ([S], Junta de Extremadura), con parte de la subida ligada a la regularización."
+  },
+  {
+   "nombre": "Riesgo de pobreza de adultos con nacionalidad española",
+   "valor": 14.3,
+   "unidad": "%",
+   "anio": 2025,
+   "fuente": "https://ec.europa.eu/eurostat/databrowser/view/ilc_li31",
+   "nivel": "P",
+   "nota": "Eurostat, 18 años o más. Es el denominador útil para prestaciones condicionadas a la renta."
+  },
+  {
+   "nombre": "Riesgo de pobreza de adultos extranjeros",
+   "valor": 39.6,
+   "unidad": "%",
+   "anio": 2025,
+   "fuente": "https://ec.europa.eu/eurostat/databrowser/view/ilc_li31",
+   "nivel": "P",
+   "nota": "Fuera de la UE: 44,6 %; de otro país de la UE: 28,5 %."
+  }
+ ],
+ "beneficiarios": [
+  {
+   "nombre": "IMV: hogares",
+   "valor": 862859,
+   "unidad": "hogares",
+   "anio": "may-2026",
+   "fuente": "https://www.inclusion.gob.es/en/w/el-ingreso-minimo-vital-protege-a-mas-de-860.000-hogares-en-los-que-residen-mas-de-un-millon-de-ninos-ninas-y-adolescentes",
+   "nivel": "P",
+   "nota": "Junio: 860.458 ([S], nota de Moncloa vista en buscador)."
+  },
+  {
+   "nombre": "IMV: personas beneficiarias",
+   "valor": 2631545,
+   "unidad": "personas",
+   "anio": "may-2026",
+   "fuente": "https://www.inclusion.gob.es/en/w/el-ingreso-minimo-vital-protege-a-mas-de-860.000-hogares-en-los-que-residen-mas-de-un-millon-de-ninos-ninas-y-adolescentes",
+   "nivel": "P",
+   "nota": "En 590.959 hogares hay menores; 144.540 hogares son monoparentales."
+  },
+  {
+   "nombre": "IMV: cuantía media por hogar",
+   "valor": 538.7,
+   "unidad": "€ al mes",
+   "anio": "may-2026",
+   "fuente": "https://www.inclusion.gob.es/documents/20121/0/20260508+NP+IMV+mayo.pdf/1401a0ee-6432-df57-9af8-d0e20947fc67?t=1780642280852",
+   "nivel": "P",
+   "nota": "Nómina del mes: 500,2 M€. Por comunidad y tipo de hogar: tabla del INSS (Andalucía 268.568 hogares)."
+  },
+  {
+   "nombre": "IMV: titulares extranjeros",
+   "valor": 17,
+   "unidad": "% de los titulares (aprox.)",
+   "anio": "ene-jun 2026",
+   "fuente": "https://maldita.es/prebunking/20260710/ingreso-minimo-vital-espa%C3%B1oles-extranjeros/",
+   "nivel": "S",
+   "nota": "Datos de la Seguridad Social entregados a Maldita por transparencia. Entre el 16 % y el 17 % desde 2020. Mide titulares: no hay desglose por nacionalidad de todos los beneficiarios. Un español naturalizado cuenta como español."
+  },
+  {
+   "nombre": "Becas: beneficiarios, todas las administraciones",
+   "valor": 3079706,
+   "unidad": "personas",
+   "anio": "curso 2024-25",
+   "fuente": "https://www.educacionfpydeportes.gob.es/dam/jcr:fde16783-9b97-4170-9553-3f3074ed5d38/2024-25resumen.pdf",
+   "nivel": "P",
+   "nota": "62,9 % en enseñanza obligatoria, 19,2 % postobligatoria no universitaria y 17,9 % universitaria."
+  },
+  {
+   "nombre": "Becas: importe, todas las administraciones",
+   "valor": 3991.6,
+   "unidad": "M€",
+   "anio": "curso 2024-25",
+   "fuente": "https://www.educacionfpydeportes.gob.es/dam/jcr:fde16783-9b97-4170-9553-3f3074ed5d38/2024-25resumen.pdf",
+   "nivel": "P",
+   "nota": "Ministerios 2.565,3 M€ (64,3 %) con 1.492.566 beneficiarios; CCAA 1.426,3 M€."
+  },
+  {
+   "nombre": "Becas por nacionalidad",
+   "valor": null,
+   "unidad": "%",
+   "anio": "curso 2024-25",
+   "fuente": "https://www.educacionfpydeportes.gob.es/dam/jcr:fde16783-9b97-4170-9553-3f3074ed5d38/2024-25resumen.pdf",
+   "nivel": "VERIFICAR",
+   "nota": "No aparece en el resumen ni en el informe metodológico de la estadística. No se estima."
+  },
+  {
+   "nombre": "Beneficiarios de prestaciones por desempleo",
+   "valor": 1857263,
+   "unidad": "personas",
+   "anio": "jul-2026",
+   "fuente": "https://www.funcas.es/wp-content/uploads/2026/09/Afiliados-y-parados_2608.pdf",
+   "nivel": "S",
+   "nota": "Funcas con datos del Ministerio de Trabajo."
+  },
+  {
+   "nombre": "Desempleo: beneficiarios extranjeros",
+   "valor": 214524,
+   "unidad": "personas (media anual)",
+   "anio": 2024,
+   "fuente": "https://www.mites.gob.es/ficheros/ministerio/estadisticas/anuarios/2024/PEX/PEX_24.pdf",
+   "nivel": "P",
+   "nota": "11,8 % del total (11,1 % en 2023). Contributiva 135.998 (16,2 % de ese nivel), subsidio 62.799 (8,4 %), renta activa 10.981 (12,5 %). Marruecos 42.368, Colombia 11.355, Venezuela 7.668."
+  },
+  {
+   "nombre": "Desempleo: extranjeros, 2025",
+   "valor": null,
+   "unidad": "personas",
+   "anio": 2025,
+   "fuente": "https://www.vozpopuli.com/economia/record-de-parados-extranjeros-con-subsidio-los-beneficiarios-se-disparan-un-24.html",
+   "nivel": "VERIFICAR",
+   "nota": "La tabla PEX del anuario 2025 no estaba publicada en la ruta esperada. Prensa: 77.877 extranjeros con subsidio, +24 % ([S], no abierta)."
+  },
+  {
+   "nombre": "Pensiones no contributivas: pensionistas",
+   "valor": 462568,
+   "unidad": "personas",
+   "anio": "dic-2025",
+   "fuente": "https://imserso.es/documents/20123/12025099/iai2025_cap2.pdf/ee39f373-3bc2-feaf-ff63-a62e75c1c9f8",
+   "nivel": "P",
+   "nota": "Jubilación 296.498 e incapacidad 166.070. Importe bruto de 2025: 3.751,1 M€."
+  },
+  {
+   "nombre": "Pensiones no contributivas: extranjeros",
+   "valor": 36447,
+   "unidad": "personas",
+   "anio": "dic-2024",
+   "fuente": "https://maldita.es/malditobulo/20230424/no-no-pagamos-pensiones-a-mas-de-100-000-inmigrantes-que-jamas-cotizaron/",
+   "nivel": "S",
+   "nota": "7,91 % del total: 26.502 de fuera de la UE y 9.945 de la UE/EEE. En jubilación: 25.756 de 234.756 (10,97 %). Maldita citando al Imserso; la tabla original no se ha abierto."
+  },
+  {
+   "nombre": "Dependencia por nacionalidad",
+   "valor": null,
+   "unidad": "%",
+   "anio": 2026,
+   "fuente": "https://imserso.es/documents/d/global/f_general_202606",
+   "nivel": "VERIFICAR",
+   "nota": "No se ha encontrado publicado."
+  },
+  {
+   "nombre": "Cotizaciones pagadas por extranjeros",
+   "valor": null,
+   "unidad": "M€",
+   "anio": 2026,
+   "fuente": "https://www.seg-social.es",
+   "nivel": "VERIFICAR",
+   "nota": "No se ha encontrado una cifra oficial; se publica la afiliación, no lo cotizado por nacionalidad. No se estima."
+  }
+ ],
+ "requisitos_acceso": [
+  {
+   "nombre": "Ingreso Mínimo Vital",
+   "valor": null,
+   "unidad": "",
+   "anio": "vigente",
+   "fuente": "https://www.boe.es/buscar/act.php?id=BOE-A-2021-21007",
+   "nivel": "P",
+   "nota": "Art. 10 Ley 19/2021: residencia legal y efectiva, continuada durante al menos el año anterior a la solicitud. Sin plazo para menores incorporados al hogar, víctimas de trata y víctimas de violencia de género. Además, vulnerabilidad económica."
+  },
+  {
+   "nombre": "Pensión no contributiva de jubilación",
+   "valor": null,
+   "unidad": "",
+   "anio": "vigente",
+   "fuente": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724",
+   "nivel": "P",
+   "nota": "Art. 369 LGSS: 65 años, falta de rentas y 10 años de residencia legal entre los 16 años y la pensión, 2 de ellos consecutivos e inmediatamente anteriores."
+  },
+  {
+   "nombre": "Pensión no contributiva de invalidez",
+   "valor": null,
+   "unidad": "",
+   "anio": "vigente",
+   "fuente": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724",
+   "nivel": "P",
+   "nota": "Art. 363 LGSS: entre 18 y 65 años y 5 años de residencia legal, 2 de ellos inmediatamente anteriores."
+  },
+  {
+   "nombre": "Prestaciones por desempleo",
+   "valor": null,
+   "unidad": "",
+   "anio": "vigente",
+   "fuente": "https://www.boe.es/buscar/act.php?id=BOE-A-2000-544",
+   "nivel": "P",
+   "nota": "Art. 14 LO 4/2000: los extranjeros residentes acceden a la Seguridad Social en las mismas condiciones que los españoles. Requisitos generales en el art. 266 LGSS."
+  },
+  {
+   "nombre": "Becas del Estado",
+   "valor": null,
+   "unidad": "",
+   "anio": "vigente",
+   "fuente": "https://www.boe.es/buscar/act.php?id=BOE-A-2008-821",
+   "nivel": "P",
+   "nota": "Art. 4 RD 1721/2007: ser español; ciudadanos de la UE, residentes permanentes o trabajadores (salvo beca de matrícula); no comunitarios, según la ley de extranjería. Además, umbrales de renta y patrimonio."
+  }
+ ],
+ "origen_ascendencia": [
+  {
+   "nombre": "«Hijos de inmigrantes» en estadísticas de prestaciones",
+   "valor": null,
+   "unidad": "",
+   "anio": "vigente",
+   "fuente": "https://maldita.es/prebunking/20260710/ingreso-minimo-vital-espa%C3%B1oles-extranjeros/",
+   "nivel": "P",
+   "nota": "Los registros de prestaciones publican nacionalidad, no ascendencia. No hay forma de cruzarlo con datos publicados y no se infiere por apellido ni por origen supuesto."
+  },
+  {
+   "nombre": "EPA",
+   "valor": null,
+   "unidad": "",
+   "anio": "desde 2021",
+   "fuente": "https://www.funcas.es/wp-content/uploads/2025/09/Miyar_PS41.pdf",
+   "nivel": "S",
+   "nota": "Pregunta el país de nacimiento del padre y de la madre: permite estudiar empleo de descendientes de inmigrantes, no quién cobra cada prestación."
+  },
+  {
+   "nombre": "Encuesta de Condiciones de Vida",
+   "valor": null,
+   "unidad": "",
+   "anio": "módulo 2019",
+   "fuente": "https://ine.es/normativa/leyes/cse/cambio_meto_modulo_transmision_pobreza.pdf",
+   "nivel": "S",
+   "nota": "El módulo de transmisión de la pobreza incluye país de nacimiento y nacionalidad de los padres; es una muestra, no un registro. [VERIFICAR] si se mantiene en el módulo de 2023."
+  },
+  {
+   "nombre": "Censo de Población",
+   "valor": null,
+   "unidad": "",
+   "anio": "",
+   "fuente": "https://www.ine.es",
+   "nivel": "VERIFICAR",
+   "nota": "No se ha confirmado que publique el país de nacimiento de los padres."
+  }
+ ],
+ "violencia_genero": [
+  {
+   "nombre": "Denuncias",
+   "valor": 204342,
+   "unidad": "denuncias",
+   "anio": 2025,
+   "fuente": "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/En-Portada/Los-organos-judiciales-con-competencias-en-violencia-sobre-la-mujer-recibieron-en-2025-un-total-de-204-342-denuncias--de-las-que-el-71-61---fueron-presentadas-por-mujeres-victimas",
+   "nivel": "P",
+   "nota": "+2,64 %. Desde octubre de 2025 los juzgados asumen también violencia sexual fuera de la pareja (3.272 denuncias en el trimestre): la serie no es del todo comparable."
+  },
+  {
+   "nombre": "Mujeres víctimas en denuncias",
+   "valor": 185188,
+   "unidad": "mujeres",
+   "anio": 2025,
+   "fuente": "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/En-Portada/Los-organos-judiciales-con-competencias-en-violencia-sobre-la-mujer-recibieron-en-2025-un-total-de-204-342-denuncias--de-las-que-el-71-61---fueron-presentadas-por-mujeres-victimas",
+   "nivel": "P",
+   "nota": "+0,70 %. Extranjeras: 71.051. Dispensa de declarar: 20.977 (11,33 %)."
+  },
+  {
+   "nombre": "Órdenes de protección solicitadas",
+   "valor": 47944,
+   "unidad": "órdenes",
+   "anio": 2025,
+   "fuente": "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/En-Portada/Los-organos-judiciales-con-competencias-en-violencia-sobre-la-mujer-recibieron-en-2025-un-total-de-204-342-denuncias--de-las-que-el-71-61---fueron-presentadas-por-mujeres-victimas",
+   "nivel": "P",
+   "nota": "−2,68 %."
+  },
+  {
+   "nombre": "Órdenes de protección acordadas",
+   "valor": 32840,
+   "unidad": "órdenes",
+   "anio": 2025,
+   "fuente": "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/En-Portada/Los-organos-judiciales-con-competencias-en-violencia-sobre-la-mujer-recibieron-en-2025-un-total-de-204-342-denuncias--de-las-que-el-71-61---fueron-presentadas-por-mujeres-victimas",
+   "nivel": "P",
+   "nota": "68,4 % de las solicitadas; denegadas 14.851."
+  },
+  {
+   "nombre": "Sentencias",
+   "valor": 60942,
+   "unidad": "sentencias",
+   "anio": 2025,
+   "fuente": "https://www.poderjudicial.es/cgpj/es/Poder-Judicial/En-Portada/Los-organos-judiciales-con-competencias-en-violencia-sobre-la-mujer-recibieron-en-2025-un-total-de-204-342-denuncias--de-las-que-el-71-61---fueron-presentadas-por-mujeres-victimas",
+   "nivel": "P",
+   "nota": "82,36 % condenatorias."
+  },
+  {
+   "nombre": "Víctimas con medidas cautelares u orden de protección (INE)",
+   "valor": 33373,
+   "unidad": "mujeres",
+   "anio": 2025,
+   "fuente": "https://www.ine.es/dyngs/Prensa/EVDVG2025.htm",
+   "nivel": "P",
+   "nota": "−3,8 %; 1,5 por 1.000 mujeres de 14 años o más. Contabiliza menos que el CGPJ porque solo cuenta asuntos con medidas."
+  },
+  {
+   "nombre": "Feminicidios en pareja o expareja",
+   "valor": 48,
+   "unidad": "mujeres",
+   "anio": 2025,
+   "fuente": "https://violenciagenero.igualdad.gob.es/wp-content/uploads/Principales_datos_Diciembre_2025.pdf",
+   "nivel": "P",
+   "nota": "Dato oficial de diciembre de 2025; 1.343 desde 2003. La prensa de enero citaba 46 antes de confirmar casos."
+  },
+  {
+   "nombre": "Feminicidios en pareja o expareja, 2026 (hasta junio)",
+   "valor": 26,
+   "unidad": "mujeres",
+   "anio": "ene-jun 2026",
+   "fuente": "https://violenciagenero.igualdad.gob.es/wp-content/uploads/Principales_datos_Junio_2026.pdf",
+   "nivel": "P",
+   "nota": "Prensa: 43 hasta el 24-oct-2026 ([S], moncloa.com)."
+  },
+  {
+   "nombre": "Gasto del programa 232C frente a denuncias",
+   "valor": 1436,
+   "unidad": "€ por denuncia",
+   "anio": 2025,
+   "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf",
+   "nivel": "P",
+   "nota": "Cálculo propio: 293,5 M€ / 204.342. Solo el programa de Igualdad, sin Justicia, Interior ni CCAA; no mide el coste total por caso."
+  },
+  {
+   "nombre": "Juzgados especializados",
+   "valor": null,
+   "unidad": "juzgados",
+   "anio": 2025,
+   "fuente": "https://www.poderjudicial.es",
+   "nivel": "VERIFICAR",
+   "nota": "Número exacto no leído. Prensa: 50 plazas judiciales nuevas en 2025, +42 % ([S])."
   }
  ]
 }

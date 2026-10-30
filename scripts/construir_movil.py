@@ -262,7 +262,33 @@ def datos_panel():
     if tic.get("paises"):
         sal["tic"] = {"mes": tic["meses"][0], "mes0": tic["meses"][-1], "nivel": tic.get("nivel"), "total": tic["total"][0], "total0": tic["total"][-1],
                       "paises": [{"n": x["nombre"], "v": x["serie"][0], "v0": x["serie"][-1]} for x in tic["paises"][:8]]}
+    es = espana()
+    if es:
+        sal["espana"] = es
     return sal
+
+
+def espana():
+    """Tarjetas de España del móvil: ministerios, programas, beneficiarios y fiscal (explorador/espana*.json)."""
+    try:
+        b = cargar("explorador/espana-presupuesto.json")
+        e = cargar("explorador/espana.json")
+    except Exception:
+        return None
+    m = e.get("manual", {})
+    dato = lambda x: {"n": x["nombre"], "v": x.get("valor"), "u": x.get("unidad"), "a": x.get("anio"), "niv": x.get("nivel"), "nota": x.get("nota")}
+    fiscal = []
+    for i in e.get("indicadores", []):
+        if i["id"] in ("ingresos", "gasto", "imp_renta", "imp_produccion", "cotizaciones", "f_proteccion", "f_sanidad", "f_educacion", "f_defensa", "f_intereses"):
+            a = sorted(i["serie"])
+            fiscal.append({"n": i["nombre"].replace("·", "").strip(), "a": a[-1], "v": i["serie"][a[-1]], "v0": i["serie"][a[-2]], "pib": i.get("pct_pib", {}).get(a[-1])})
+    return {"leido": b.get("leido"), "vigencia": b["vigencia"]["texto"], "lecturas": b.get("lecturas", {}), "como": b.get("como_leerlo", []),
+            "total": b.get("totales"), "no_aislable": [{"t": x["tema"], "x": x["texto"], "niv": x["nivel"]} for x in b.get("no_aislable", [])],
+            "minist": [{"n": x["nombre"], "i": x["inicial_2025"], "o": x["obligaciones_2025"], "o26": x["obligaciones_2026_ago"]} for x in sorted((s for s in b["secciones"] if s["tipo"] == "ministerio"), key=lambda s: -s["obligaciones_2025"])],
+            "prog": [{"g": x["grupo"], "n": x["nombre"], "i": x["inicial_2025"], "o": x["obligaciones_2025"], "nota": x.get("nota")} for x in b["programas"]],
+            "pob": [dato(x) for x in m.get("poblacion_referencia", [])], "benef": [dato(x) for x in m.get("beneficiarios", [])],
+            "req": [{"n": x["nombre"], "x": x["nota"]} for x in m.get("requisitos_acceso", [])], "vg": [dato(x) for x in m.get("violencia_genero", [])],
+            "fiscal": fiscal, "leido_eurostat": e.get("leido")}
 
 
 def regulacion():
