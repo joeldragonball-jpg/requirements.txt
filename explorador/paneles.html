@@ -365,7 +365,15 @@ function panelPaises(){
   const lects=lista.map(f=>{const e=ES.find(x=>x.id===f.id)||{}; return `<details style="margin:8px 0"><summary>${esc(f.pais)} · ${esc(f.jefe_gobierno||'')}</summary><p>${esc(f.lectura||'')}</p><p>${esc(e.lectura||'')}</p></details>`;}).join('');
   return `<div class="mini" style="margin:6px 0">${esc((D.paises_fichas||{}).nota||'')} Pasa el ratón por una cifra para ver año, fuente y nivel.</div><div style="margin:8px 0">${sel}</div><div style="overflow-x:auto"><table>${cab}${filas}</table></div><h3>Lecturas [OPINIÓN]</h3>${lects}`;
 }
-const PEST=[['tic','Deuda de EE. UU.',panelTIC],['deuda','Deuda pública',panelDeuda],['bonos','Bonos y curvas',panelBonos],['bancos','Deuda por banco',panelBancos],['reservas','Reservas y bancos centrales',panelReservas],['stable','Stablecoins',panelStable],['tipos','Tipos de interés',panelTipos],['rwa','Mercado y RWA',panelMercadoRWA],['paises','Países',panelPaises],['glo','Glosario',panelGlosario]];
+function panelInflacion(){
+  const I=D.inflacion||{}, L=(I.paises||[]).slice().sort((a,b)=>b.interanual-a.interanual);
+  if(!L.length) return '<div class="aviso">No hay datos de inflación (explorador/paneles.json).</div>';
+  const mx=Math.max(10,...L.map(x=>x.interanual));
+  const filas=L.map(x=>{const viejo=(x.retraso_meses||0)>3;
+    return `<tr><td>${esc(x.pais)}</td><td class="n"><b>${fm(x.interanual)} %</b></td><td class="n">${x.anterior==null?'—':fm(x.anterior)+' %'}</td><td style="width:34%"><div style="background:#3a5a8c;height:8px;width:${Math.max(2,x.interanual/mx*100)}%;border-radius:4px;opacity:${viejo?.35:1}"></div></td><td class="tag">${esc(x.serie)}</td><td class="tag"><span class="nivel ${x.nivel}">${x.nivel}</span> <a style="color:#f1d58a" href="${esc(x.fuente)}" target="_blank" rel="noopener">${esc(x.fecha)}</a>${viejo?' <b style="color:#e0a040" title="El último dato publicado en la fuente es antiguo">⚠ desfasado</b>':''}</td></tr>`;}).join('');
+  return `<p class="que">Variación del IPC a 12 meses, último mes publicado. Periodos, definiciones (IPC, IPCA, PCE) y revisiones distintos: no comparar al decimal. Las filas con «⚠ desfasado» no son datos actuales [VERIFICAR].</p><div style="overflow-x:auto"><table><thead><tr><th>País</th><th>Interanual</th><th>Anterior</th><th></th><th>Serie</th><th>Fuente y mes</th></tr></thead><tbody>${filas}</tbody></table></div>`;
+}
+const PEST=[['tic','Deuda de EE. UU.',panelTIC],['deuda','Deuda pública',panelDeuda],['bonos','Bonos y curvas',panelBonos],['bancos','Deuda por banco',panelBancos],['reservas','Reservas y bancos centrales',panelReservas],['stable','Stablecoins',panelStable],['tipos','Tipos de interés',panelTipos],['infl','Inflación',panelInflacion],['rwa','Mercado y RWA',panelMercadoRWA],['paises','Países',panelPaises],['glo','Glosario',panelGlosario]];
 let act=PEST[0][0];
 function pinta(){
   document.getElementById('pest').innerHTML=PEST.map(p=>`<button class="chip ${p[0]===act?'on':''}" data-k="${p[0]}">${p[1]}</button>`).join('')+'<span class="mini" style="align-self:center;margin-left:8px">Próximos: deuda por país · CBDC y redes</span>';
