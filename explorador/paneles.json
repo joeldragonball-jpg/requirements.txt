@@ -3482,16 +3482,13 @@
         "pais": "EE. UU.",
         "indicadores": {
           "ipc": {
-            "valor": 2.9,
-            "unidad": "% interanual (media anual)",
-            "fecha": "2024",
-            "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+            "valor": 3.7,
+            "unidad": "% interanual",
+            "fecha": "2026-09",
+            "fuente": "https://www.bls.gov/news.release/cpi.nr0.htm",
             "nivel": "P",
-            "definicion": "IPC, media anual (Banco Mundial)",
-            "periodicidad": "anual",
-            "nota": "El último mes sale en el panel «inflacion» si hay API abierta.",
-            "anterior": 4.1,
-            "anterior_fecha": "2023"
+            "definicion": "IPC-U de EE. UU., septiembre de 2026 (BLS, 14-oct-2026): +3,7 % en 12 meses (agosto 3,4 %); subyacente +2,6 %. La gasolina subió 9,1 % en el mes. Distinto del PCE (3,6 % en septiembre, BEA).",
+            "periodicidad": "mensual"
           },
           "paro": {
             "valor": 4.2,
@@ -3551,12 +3548,12 @@
             "anterior_fecha": "2024"
           },
           "pobreza": {
-            "valor": null,
+            "valor": 10.2,
             "unidad": "% de la población",
-            "fecha": null,
-            "fuente": "U.S. Census Bureau (Current Population Survey)",
-            "nivel": "V",
-            "definicion": "Tasa oficial de pobreza (umbral absoluto del Census, antes de impuestos y con transferencias en efectivo). La última edición sale cada septiembre [VERIFICAR en census.gov]",
+            "fecha": "2025",
+            "fuente": "https://www.census.gov/newsroom/press-releases/2026/income-poverty-health-insurance-coverage.html",
+            "nivel": "P",
+            "definicion": "Tasa oficial de pobreza de EE. UU. en 2025 (CPS ASEC 2026, publicada el 15-sep-2026): umbral absoluto del Census, antes de impuestos y sin créditos fiscales; baja 0,5 puntos. La medida suplementaria (SPM, después de impuestos y transferencias) es 13,1 % y no cambió de forma significativa. Tasa de respuesta de la encuesta 61,3 %.",
             "periodicidad": "anual (septiembre)"
           },
           "gini": {

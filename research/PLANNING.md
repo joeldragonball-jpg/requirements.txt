@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-30 17:58 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-30 18:06 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -35,8 +35,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - R17 · Resumen semanal de 1 página (para imprimir)
 - R36 · PROFUNDO: Segunda pasada con los PDFs que haya en research/fuentes/ (R
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
-**Pasadas puntuales de rutinas (W)** · detalle en `research/COLA.md`
-- W11 · Política y elecciones: revisión semanal corta (fechas oficiales, encue
 
 ## Auditorías abiertas
 - C13 (Media): Cero enlaces: el campo fuente solo vale P/S/VERIFICAR. No hay forma de pulsar y llegar a la fuente. (voces.jso
