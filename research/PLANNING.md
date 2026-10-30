@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-29 23:10 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-30 00:00 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -20,8 +20,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
-- C29 · Centro · Energía, Ormuz y guerra ↔ noticias ↔ panel (pestañas Noticias, Calendar · Sonnet M · ~3 % · `research/prompts/C29-energia-guerra.md`
-- C30 · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
+- C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
 - C32 · Centro · Móvil: pantalla principal de precios, tipos, petróleo e inflación + aud · Sonnet M · ~3 % · `research/prompts/C32-movil-principal.md`
 - C33 · Compactación semanal: repasar los informes de la semana, consolidar en el cerebr · Sonnet M · ~3 % · ``
@@ -36,6 +35,8 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 - R17 · Resumen semanal de 1 página (para imprimir)
 - R36 · PROFUNDO: Segunda pasada con los PDFs que haya en research/fuentes/ (R
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
+**Pasadas puntuales de rutinas (W)** · detalle en `research/COLA.md`
+- W11 · Política y elecciones: revisión semanal corta (fechas oficiales, encue
 
 ## Auditorías abiertas
 - C13 (Media): Cero enlaces: el campo fuente solo vale P/S/VERIFICAR. No hay forma de pulsar y llegar a la fuente. (voces.jso
@@ -53,13 +54,13 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
 - [alta] 2026-10-29 (1 d) · Lagarde dejará la presidencia del BCE el 7 de febrero.
 - [media] 2026-09-30 (30 d) · ETF de XRP en EE. UU. ≈ $1.430 M a 22-oct [S]; ETP europeos de XRP ≈ $914 M y de Stellar ≈ $104 M.
+- [media] 2026-10-05 (25 d) · Sánchez disuelve las Cortes y convoca elecciones generales el 29-nov (Real Decreto 806/2026 según prensa; veri
+- [media] 2026-10-09 (21 d) · Trump dice que no atacará Irán antes de las elecciones del 3-nov (titular del bot; fuente primaria sin abrir).
+- [media] 2026-10-21 (9 d) · El bot recoge «el Brent supera 110 $ al fallar las conversaciones con Irán» (15:20 UTC). Brent 109,34 → 110,04
+- [media] 2026-10-22 (8 d) · Ataques hutíes a Arabia Saudí (dron en Shaybah de Aramco); Irán dice que alcanzó 7 petroleros, CENTCOM lo desm
 - [media] 2026-10-23 (7 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
-- [media] 2026-10-25 (5 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov (hoy solo [S]). → W05
-- [media] 2026-10-25 (5 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
-- [media] 2026-10-25 (5 d) · [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov). → W05
-- [media] 2026-10-25 (5 d) · [VERIFICAR] MEI 2026 leído en el propio BOE (hoy [S]). → W05
-- [media] 2026-10-25 (5 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF) y texto definitivo de los modelos 172/175/72
-- … y 20 más en el Seguimiento
+- [media] 2026-10-23 (7 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
+- … y 30 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (4) → W03 · UE/cbdc; HK/politica; AE/politica; EG/politica
@@ -83,7 +84,7 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 - 2026-10-29→10-30 · Reunión del Banco de Japón (alto) · EN CURSO → cubre W01 (Tipos de interés)
 - 2026-10-30 · Brasil: último día para que los proveedores cripto existente (medio) → cubre W01 (Tipos de interés)
 - 2026-11-01 · OPEP+ (7 países): reunión mensual (medio) → cubre W10 (Energía y geopolítica)
-- 2026-11-03 · EE. UU.: elecciones de mitad de mandato (alto) → cubre W06 (Voces y predicciones)
+- 2026-11-03 · EE. UU.: elecciones de mitad de mandato (alto) → cubre W11 (Política y elecciones)
 - 2026-11-03 · Australia: decisión del RBA sobre el tipo de efectivo (medio) → cubre W01 (Tipos de interés)
 - 2026-11-03 · Stellar: voto de testnet de Protocol 30 (Bell) (medio) → sin rutina: valorar research EV
 - 2026-11-04 · Tesoro de EE. UU.: anuncio trimestral de refinanciación (medio) → cubre W02 (Deuda y subastas)

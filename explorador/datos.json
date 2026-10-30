@@ -2211,6 +2211,57 @@
       }
     },
     {
+      "id": "politica",
+      "nombre": "Política y elecciones",
+      "color": "#c46b9a",
+      "resumen": "Calendario electoral de las economías que mueven mercado (EE. UU., España, Francia, Italia, Alemania, Brasil, Japón, India, México, Argentina) y qué se vota. Sirve para saber cuándo una votación puede cambiar la regulación cripto, la deuda o la energía; no predice resultados.",
+      "produccion": [],
+      "piloto": [],
+      "plan": [],
+      "xrp": [],
+      "anillo": false,
+      "claves": [
+        "elecciones",
+        "votación",
+        "presidencial",
+        "legislativas",
+        "midterm",
+        "coalición",
+        "encuestas",
+        "parlamento"
+      ],
+      "cifras": [],
+      "ficha": {
+        "hace": "Decide quién legisla sobre cripto, deuda y energía en cada país; las votaciones fijan cuándo puede cambiar esa regulación. (Prensa; sin fuente oficial abierta aún)",
+        "controla": "Los votantes y los parlamentos; las fechas oficiales las publican los diarios oficiales y las comisiones electorales.",
+        "falta": [
+          "Fechas oficiales (BOE, Légifrance, congress.gov, INE) de todas las citas: hoy son de prensa [VERIFICAR].",
+          "Reino Unido, Países Bajos, Corea del Sur y Canadá sin consultar.",
+          "Encuestas de España y de EE. UU. en una fuente neutral."
+        ],
+        "madurez": {
+          "n": 1,
+          "t": "Calendario de prensa sin una sola fuente oficial leída; sirve para saber cuándo mirar, no como dato verificado."
+        },
+        "favor": [
+          "Las fechas de EE. UU. (3-nov) y España (29-nov) coinciden en varias fuentes independientes."
+        ],
+        "contra": [
+          "Agregadores y mercados de predicción mezclan fechas y cifras antiguas; un titular daba el 27-abr para Francia y su texto el 18-abr.",
+          "Votar no prueba un efecto en cripto o energía: las hipótesis de bloque son [ESPECULACIÓN]."
+        ],
+        "vigilar": [
+          "3-nov: mitad de mandato en EE. UU. y fin del aviso de Trump sobre Irán.",
+          "29-nov: generales en España; 13-nov empieza la campaña.",
+          "Brasil: si Bolsonaro recurre y el TSE responde."
+        ],
+        "informes": [
+          "C30 Política y elecciones (30-oct)",
+          "C29 Energía, guerra y noticias (30-oct)"
+        ]
+      }
+    },
+    {
       "id": "liquidez",
       "nombre": "Liquidez y tipos oficiales",
       "color": "#4cc3c9",
@@ -4458,6 +4509,261 @@
       "nota_bot": 7,
       "revisado": "2026-10-29",
       "caduca": "2026-11-12"
+    },
+    {
+      "fecha": "2026-10-09",
+      "capa": "energia",
+      "actor": "Casa Blanca (Trump)",
+      "texto": "Trump dice que no atacará Irán antes de las elecciones del 3-nov (titular del bot; fuente primaria sin abrir). Brent 103,82 → 104,72 $ (+0.9 %), WTI 91,17 → 91,85 $ (futuros, último valor horario del día).",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "Informes diarios del repo [S] · Yahoo Finance BZ=F/CL=F [S] · C29",
+      "ent": [],
+      "act": [],
+      "pais": [
+        "EE. UU.",
+        "Irán"
+      ],
+      "informe": "informes/research/2026-10-30-C29-energia-guerra-noticias.md",
+      "pais_id": [
+        "US",
+        "IR"
+      ],
+      "nivel": "S"
+    },
+    {
+      "fecha": "2026-10-16",
+      "capa": "energia",
+      "actor": "Mercado de futuros",
+      "texto": "Salto de Brent y WTI sin causa documentada en el repo. Brent 105,62 → 109,86 $ (+4.0 %), WTI 96,15 → 99,02 $ (futuros, último valor horario del día).",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "Informes diarios del repo [S] · Yahoo Finance BZ=F/CL=F [S] · C29",
+      "ent": [],
+      "act": [],
+      "pais": [
+        "EE. UU."
+      ],
+      "informe": "informes/research/2026-10-30-C29-energia-guerra-noticias.md",
+      "pais_id": [
+        "US"
+      ],
+      "nivel": "V"
+    },
+    {
+      "fecha": "2026-10-21",
+      "capa": "energia",
+      "actor": "Irán y EE. UU.",
+      "texto": "El bot recoge «el Brent supera 110 $ al fallar las conversaciones con Irán» (15:20 UTC). Brent 109,34 → 110,04 $ (+0.6 %), WTI 98,42 → 97,99 $ (futuros, último valor horario del día).",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "Informes diarios del repo [S] · Yahoo Finance BZ=F/CL=F [S] · C29",
+      "ent": [],
+      "act": [],
+      "pais": [
+        "Irán",
+        "EE. UU."
+      ],
+      "informe": "informes/research/2026-10-30-C29-energia-guerra-noticias.md",
+      "pais_id": [
+        "IR",
+        "US"
+      ],
+      "nivel": "S"
+    },
+    {
+      "fecha": "2026-10-22",
+      "capa": "energia",
+      "actor": "Hutíes, Irán y CENTCOM",
+      "texto": "Ataques hutíes a Arabia Saudí (dron en Shaybah de Aramco); Irán dice que alcanzó 7 petroleros, CENTCOM lo desmiente. Brent 110,04 → 113,08 $ (+2.8 %), WTI 97,99 → 99,29 $ (futuros, último valor horario del día).",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "Informes diarios del repo [S] · Yahoo Finance BZ=F/CL=F [S] · C29",
+      "ent": [],
+      "act": [],
+      "pais": [
+        "Arabia Saudí",
+        "Irán"
+      ],
+      "informe": "informes/research/2026-10-30-C29-energia-guerra-noticias.md",
+      "pais_id": [
+        "SA",
+        "IR"
+      ],
+      "nivel": "S"
+    },
+    {
+      "fecha": "2026-10-23",
+      "capa": "energia",
+      "actor": "Hutíes y Arabia Saudí",
+      "texto": "Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29 → 103,27 $ (futuros, último valor horario del día).",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "Informes diarios del repo [S] · Yahoo Finance BZ=F/CL=F [S] · C29",
+      "ent": [],
+      "act": [],
+      "pais": [
+        "Arabia Saudí"
+      ],
+      "informe": "informes/research/2026-10-30-C29-energia-guerra-noticias.md",
+      "pais_id": [
+        "SA"
+      ],
+      "nivel": "S"
+    },
+    {
+      "fecha": "2026-10-26",
+      "capa": "energia",
+      "actor": "Catar, Irán y EE. UU.",
+      "texto": "Mediadores de Catar llegan a Teherán; FT: Irán recibe enviados saudíes, paquistaníes y turcos; Trump: sin ataque el domingo, opción abierta. Brent 111,7 → 110,37 $ (-1.2 %), WTI 103,27 → 101,49 $ (futuros, último valor horario del día).",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "Informes diarios del repo [S] · Yahoo Finance BZ=F/CL=F [S] · C29",
+      "ent": [],
+      "act": [],
+      "pais": [
+        "Irán",
+        "Catar"
+      ],
+      "informe": "informes/research/2026-10-30-C29-energia-guerra-noticias.md",
+      "pais_id": [
+        "IR",
+        "QA"
+      ],
+      "nivel": "S"
+    },
+    {
+      "fecha": "2026-07-01",
+      "capa": "politica",
+      "actor": "Gobierno de Francia",
+      "texto": "Fija la presidencial de 2027: 1.ª vuelta el 18-abr y 2.ª el 2-may.",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "Prensa [S]; ver explorador/elecciones.json · C30",
+      "ent": [],
+      "act": [],
+      "pais": [
+        "Francia"
+      ],
+      "informe": "informes/research/2026-10-30-C30-politica-elecciones.md",
+      "pais_id": [
+        "FR"
+      ],
+      "nivel": "S"
+    },
+    {
+      "fecha": "2026-09-06",
+      "capa": "politica",
+      "actor": "Alemania (Sajonia-Anhalt)",
+      "texto": "La AfD obtiene el 43,8 % y 39 de 83 escaños en Sajonia-Anhalt, a tres de gobernar sola.",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "Prensa [S]; ver explorador/elecciones.json · C30",
+      "ent": [],
+      "act": [],
+      "pais": [
+        "Alemania"
+      ],
+      "informe": "informes/research/2026-10-30-C30-politica-elecciones.md",
+      "pais_id": [
+        "DE"
+      ],
+      "nivel": "S"
+    },
+    {
+      "fecha": "2026-10-05",
+      "capa": "politica",
+      "actor": "Gobierno de España",
+      "texto": "Sánchez disuelve las Cortes y convoca elecciones generales el 29-nov (Real Decreto 806/2026 según prensa; verificar en el BOE).",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "Prensa [S]; ver explorador/elecciones.json · C30",
+      "ent": [],
+      "act": [],
+      "pais": [
+        "España"
+      ],
+      "informe": "informes/research/2026-10-30-C30-politica-elecciones.md",
+      "pais_id": [
+        "ES"
+      ],
+      "nivel": "S"
+    },
+    {
+      "fecha": "2026-10-25",
+      "capa": "politica",
+      "actor": "Brasil (TSE)",
+      "texto": "Lula gana la 2.ª vuelta con ~51,7 % frente a ~48,2 % de Flávio Bolsonaro, que no reconoce el resultado.",
+      "estado": "anuncio",
+      "nombra": "no",
+      "fuente": "Prensa [S]; ver explorador/elecciones.json · C30",
+      "ent": [],
+      "act": [],
+      "pais": [
+        "Brasil"
+      ],
+      "informe": "informes/research/2026-10-30-C30-politica-elecciones.md",
+      "pais_id": [
+        "BR"
+      ],
+      "nivel": "S"
+    },
+    {
+      "fecha": "2026-11-03",
+      "capa": "politica",
+      "actor": "Estados Unidos",
+      "texto": "Elecciones de mitad de mandato: 435 escaños de la Cámara y 35 del Senado; la CLARITY Act se juega en la sesión posterior.",
+      "estado": "plan",
+      "nombra": "no",
+      "fuente": "Prensa [S]; ver explorador/elecciones.json · C30",
+      "ent": [],
+      "act": [],
+      "pais": [
+        "EE. UU."
+      ],
+      "informe": "informes/research/2026-10-30-C30-politica-elecciones.md",
+      "pais_id": [
+        "US"
+      ],
+      "nivel": "S"
+    },
+    {
+      "fecha": "2026-11-29",
+      "capa": "politica",
+      "actor": "España",
+      "texto": "Elecciones generales anticipadas; campaña desde el 13-nov y nuevas Cortes el 23-dic.",
+      "estado": "plan",
+      "nombra": "no",
+      "fuente": "Prensa [S]; ver explorador/elecciones.json · C30",
+      "ent": [],
+      "act": [],
+      "pais": [
+        "España"
+      ],
+      "informe": "informes/research/2026-10-30-C30-politica-elecciones.md",
+      "pais_id": [
+        "ES"
+      ],
+      "nivel": "S"
+    },
+    {
+      "fecha": "2027-04-18",
+      "capa": "politica",
+      "actor": "Francia",
+      "texto": "Primera vuelta de la presidencial (2.ª vuelta el 2-may).",
+      "estado": "plan",
+      "nombra": "no",
+      "fuente": "Prensa [S]; ver explorador/elecciones.json · C30",
+      "ent": [],
+      "act": [],
+      "pais": [
+        "Francia"
+      ],
+      "informe": "informes/research/2026-10-30-C30-politica-elecciones.md",
+      "pais_id": [
+        "FR"
+      ],
+      "nivel": "S"
     }
   ],
   "base_informes": "https://github.com/joeldragonball-jpg/requirements.txt/blob/main/"
