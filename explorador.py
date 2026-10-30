@@ -16,7 +16,8 @@ import streamlit.components.v1 as components
 RAIZ = Path(__file__).parent
 CARPETA = RAIZ / "explorador"
 FUENTES_DOCS = [("Research", RAIZ / "informes" / "research"), ("Dossier", RAIZ / "informes" / "dossiers"),
-                ("Apunte", RAIZ / "cerebro" / "documentos")]
+                ("Apunte", RAIZ / "cerebro" / "documentos"),
+                ("Research", RAIZ / "informes" / "videos"), ("Research", RAIZ / "informes" / "gemini")]
 
 
 def _plano(texto):
@@ -60,6 +61,8 @@ def _documentos():
         for ruta in sorted(carpeta.glob("*.md")):
             if ruta.name == "MAPA.md":
                 continue
+            if carpeta.name == "gemini" and "verificado" not in ruta.name:
+                continue               # lo crudo de Gemini no se indexa: solo lo ya contrastado
             texto = _leer(ruta)
             if not texto:
                 continue
