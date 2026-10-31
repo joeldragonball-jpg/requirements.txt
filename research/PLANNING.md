@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-31 02:31 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-31 03:19 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -48,7 +48,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov (hoy solo [S]). → W05
 - [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, Solvexia) y cierre de BC Payments Australi
 - [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov). → W05
-- [VERIFICAR] MEI 2026 leído en el propio BOE (hoy [S]). → W05
 - [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF) y texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE. → W05
 - [VERIFICAR] Consulta DGT V0648-24 leída en petete; fiscalidad de tokens LP de AMM.
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
@@ -62,7 +61,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [media] 2026-10-25 (6 d) · Lula gana la 2.ª vuelta con ~51,7 % frente a ~48,2 % de Flávio Bolsonaro, que no reconoce el resultado.
 - [media] 2026-10-25 (6 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov (hoy solo [S]). → W05
 - [media] 2026-10-25 (6 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
-- … y 26 más en el Seguimiento
+- … y 25 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (7) → W03 · UE/cbdc; HK/politica; BR/ley_marco; BR/custodia
