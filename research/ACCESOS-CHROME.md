@@ -15,3 +15,7 @@ Regla de Joel (29-oct-2026): lo bloqueado para APIs o webs se intenta con la ext
 | W05/W08 | Sección 404 CLARITY, cloture, MEI y escala del ahorro en BOE | congress.gov, senate.gov, boe.es | Sin probar |
 
 Resuelto por navegador: D04 China (ChinaBond, navegador integrado, 29-oct).
+
+## 31-oct-2026 (W03 bloques A-C)
+- **bcb.gov.br (normativos de Brasil): FUNCIONA con Chrome.** Abrir `exibenormativo?tipo=Resolução%20BCB&numero=NNN`, esperar 4 s y leer `document.body.innerText` con `javascript_tool` en trozos (la salida se corta a ~1.500 caracteres; buscar por `indexOf('Art. N')`). Leída la Res. 589.
+- **PDF de finma.ch en Chrome: NO funciona** (el visor de PDF es una extensión de Chrome: `get_page_text` y las capturas fallan). Probar la página HTML de FINMA o descargar el PDF con el OK de Joel.
