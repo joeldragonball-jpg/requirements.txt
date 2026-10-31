@@ -528,8 +528,11 @@ function pintar(ancla, quieto){
   document.querySelectorAll('#nav button').forEach(b => b.classList.toggle('on', b.dataset.t === (ENMAS[tab] ? 'mas' : tab)));
   contar(quieto);
 }
-const fijarTema = n => { document.documentElement.dataset.t = n; };
+const colorBarra = () => { const c = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim(), m = document.querySelector('meta[name="theme-color"]'); if (c) { if (m) m.setAttribute('content', c); document.documentElement.style.backgroundColor = c; } };   // la franja de la hora y la batería (notch) toma este color
+const fijarTema = n => { document.documentElement.dataset.t = n; colorBarra(); };
+matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => setTimeout(colorBarra, 50));
 try { const g = localStorage.getItem('tema'); if (g === 'claro' || g === 'oscuro') fijarTema(g); } catch (e) {}
+colorBarra();
 document.getElementById('btema').addEventListener('click', e => { e.stopPropagation(); const a = document.documentElement.dataset.t || (matchMedia('(prefers-color-scheme: light)').matches ? 'claro' : 'oscuro'), n = a === 'claro' ? 'oscuro' : 'claro'; fijarTema(n); try { localStorage.setItem('tema', n); } catch (x) {} });
 document.addEventListener('click', e => {
   if (e.target.closest('a')) return;
