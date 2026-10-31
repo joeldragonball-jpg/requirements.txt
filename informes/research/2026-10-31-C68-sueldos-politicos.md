@@ -69,3 +69,12 @@ No se ha cuadrado: el total IGAE en altos cargos (art. 10) vs la suma por cargo 
 - El PDF de Hacienda hay que leerlo con `pdftotext -raw`, no con `-layout`.
 - La exportación del Portal (expTab.htm, base64 de filtros) da XLSX hasta 1.000 filas.
 - Para sueldos del Gobierno: ministro/presidente cuadran Ley↔Portal; SE/Subs/DG no.
+
+## C68B (31-oct): por qué el Portal supera a la tabla de la Ley
+Leído el art. 21 de la Ley 31/2022 en el BOE consolidado (act.php?id=BOE-A-2022-22128, texto informativo sin valor jurídico) [P]:
+- **Productividad:** el apartado Dos dice que secretarios de Estado, subsecretarios y directores generales «percibirán el complemento de productividad» que asigne el titular del departamento dentro de los créditos previstos (art. 23.Uno.E). La Ley no da importe: por eso el Portal supera a la tabla.
+- **Pagas extra:** cada una (junio y diciembre) lleva el complemento de destino mensual **más** el sueldo extra (761,87 / 817,09 / 872,90 € en 2023). Confirma que la cifra extra es «por paga». Mi suma anterior olvidaba el destino mensual en las extras.
+- **Suma corregida 2026 [S]:** SE 89.917,42 €; subsecretario 79.683,04 €; DG 68.342,26 € (antes 85.515 / 76.122 / 65.462).
+- **Diferencia restante con el Portal (medianas 2025):** ≈48.000 € (SE), ≈50.600 € (subsecretario), ≈37.000 € (DG). Que sea productividad más antigüedad es [ESPECULACIÓN] razonada: no hay desglose por persona publicado que lo pruebe [VERIFICAR].
+- Aviso: la Ley no regula indemnizaciones para estos cargos; trienios en 14 pagas aparte (apartado Cuatro).
+- **Sin hacer:** complementos del Senado, comunidades autónomas y cuadre con el art. 10 de la IGAE.
