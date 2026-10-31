@@ -57,9 +57,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-30 · Informe de APERTURA — 2026-10-30 (vie) (`informes/2026-10-30-apertura.md`): Banco de Japón mantiene 1,25 % (8 1, Takata pide 1,50 %) y duplica la venta de ETF [S]; yen algo más fuerte.
 
 ## Otros
+- 2026-10-31 · C70 · Auditoría de diseño de la app móvil y boceto «cómo quedaría» (31-oct-2026) (`informes/research/2026-10-31-C70-diseno-movil.md`): Boceto: docs/movil prueba/index.html (ver cómo abrirlo al final). La app real ( docs/movil/index.html , sw.js ) no se ha tocado .
 - 2026-10-31 · C68 · Sueldos de los cargos políticos: cuánto cobra cada cargo y dónde se desglosa (31-oct-2026) (`informes/research/2026-10-31-C68-sueldos-politicos.md`): Solo cifras publicadas. Nivel: [P] primaria leída · [S] suma o cálculo mío · [VERIFICAR] no cuadra o no leído. Sin recomendaciones.
 - 2026-10-30 · W11 · Política y elecciones: revisión semanal (30-oct-2026) (`informes/research/2026-10-30-W11-politica-elecciones.md`): Sin predicción de resultados ni recomendaciones. Etiquetas: [P] primaria leída · [S] prensa · [VERIFICAR] · [ESPECULACIÓN].
-- 2026-10-30 · EV · Reunión del BCE del 29-oct-2026 y salida de Lagarde (hecho el 30-oct-2026) (`informes/research/2026-10-30-EV-bce-29-oct.md`): El Consejo de Gobierno mantiene los tres tipos : facilidad de depósito 2,50 % , operaciones principales 2,65 % , facilidad marginal 2,90 % . Venían…
 
 ## Dudas y datos a verificar
 Las frases son extractos sin comprobar: lo dudoso está marcado [VERIFICAR] en el informe original.

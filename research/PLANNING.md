@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-10-31 02:04 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-10-31 02:17 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -31,7 +31,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C68 ◐ en parte · Centro · España · Sueldos de cada cargo político (presidente, ministros, secreta · Sonnet L · ~~6 % · `research/prompts/C68-sueldos-por-persona-politicos.md`
 - C68B ◐ en parte · Centro · España · Cuadrar sueldos de secretarios de Estado, subsecretarios y dir · Sonnet M · ~~3 % · `research/prompts/C68B-cuadrar-sueldos-segundo-nivel.md`
 - C69 · Centro · España · España: cada partida con 2024 y 2025 y su variación (IGAE 2024 · Sonnet L · ~~6 % · `research/prompts/C69-espana-2024-vs-2025.md`
-- C70 · Centro · Móvil · Auditoría de diseño de la app móvil con ejemplos de referencia  · Sonnet L · ~~6 % · `research/prompts/C70-auditoria-diseno-movil.md`
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T25 · Tema libre
 **Deuda y bonos (D)** · detalle en `research/COLA-DEUDA-BONOS.md`
@@ -67,7 +66,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (8) → W03 · UE/cbdc; HK/politica; JP/politica; BR/ley_marco
-- 🟡 Radar regulatorio: Celdas sin dato (49) → W03 · Más huecos: CH 7, AU 7, UK 6, CA 6, EG 5
+- 🟡 Radar regulatorio: Celdas sin dato (46) → W03 · Más huecos: AU 7, CH 6, CA 6, EG 5, ET 4
 - 🟡 Países (política): Fichas con datos de más de 90 días o sin fecha (5) → W11 · Italia, Países Bajos, Polonia, China, India
 - 🟡 Voces: Voces sin confirmar (7) → W06 · 3 llevan más de 14 días
 
