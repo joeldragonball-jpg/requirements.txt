@@ -895,7 +895,9 @@ function pEspana(){
         el('h3',null,'Suma de lo publicado, Estado, 2025'),tabla([{t:'Parte',f:r=>r.nombre},{t:'M€',n:1,f:r=>n1(r.valor)}],su.partes),
         el('p','nota-v','Total: '+n1(su.total)+' M€ · '+fx(su.pct_gasto_aapp_2025,3)+' % del gasto de las AAPP · '+fx(su.pct_pib_2025,3)+' % del PIB · '+fx(su.por_habitante,2)+' € por habitante.'),
         el('p','nota-v','No incluye:'),li,
-        el('h3',null,'Número'),dat(CP.numero),el('h3',null,'Retribuciones y subvenciones a grupos'),dat(CP.retribuciones),el('h3',null,'Partidos'),dat(CP.partidos))));
+        el('h3',null,'Número'),dat(CP.numero),el('h3',null,'Retribuciones y subvenciones a grupos'),dat(CP.retribuciones),
+        ...(CP.por_cargo?[el('h3',null,'Sueldo por cargo (Ley y Portal de Transparencia)'),dat(CP.por_cargo),el('h3',null,'Sueldo por cargo del Gobierno, 2025 (Portal de Transparencia)'),el('p','nota-v',CP.por_persona_nota),dat(CP.por_persona)]:[]),
+        el('h3',null,'Partidos'),dat(CP.partidos))));
     }
     const co=B.consolidado_ley_2023;
     add(bloque('Presupuesto consolidado de la ley de 2023 por políticas',co.texto,{nivel:co.nivel,t:'Hacienda, Informe Económico y Financiero · M€ · total '+n0(co.total)},

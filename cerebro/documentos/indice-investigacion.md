@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-10-30
+actualizado: 2026-10-31
 ---
 # Índice de la investigación
 
@@ -27,9 +27,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-14 · India: RBI, e₹, UPI, fiscalidad y regulación cripto (2026-10-14, R02) (`informes/research/2026-10-14-R02-india.md`): India mantiene dos carriles opuestos: infraestructura pública de pagos muy exitosa (UPI, ~24.000 M de operaciones/mes) y un e₹ piloto aún pequeño;…
 
 ## Energía y Ormuz
+- 2026-10-30 · W10 · Energía y geopolítica: cierre de semana y víspera de OPEP+ (30-oct-2026) (`informes/research/2026-10-30-W10-energia.md`): Continúa 2026 10 25 W10 energia.md y 2026 10 30 C29 energia guerra noticias.md . Sin recomendaciones ni predicciones de precio. Etiquetas: [P]…
 - 2026-10-30 · C29 · Petróleo, Ormuz y guerra ↔ noticias ↔ Órbita (`informes/research/2026-10-30-C29-energia-guerra-noticias.md`): Los hitos diplomáticos y militares de octubre salen de los informes diarios del repo (titulares de CoinDesk, CNBC, Al Jazeera y el bot) [S] : no abrí…
 - 2026-10-25 · W10 · Energía y geopolítica: Ormuz con datos primarios (25-oct-2026) (`informes/research/2026-10-25-W10-energia.md`): Continúa 2026 10 24 T18 energia actualizacion.md . Hoy es domingo: los mercados están cerrados desde el viernes, así que no hay precios nuevos de…
-- 2026-10-24 · T18 Energía y geopolítica: actualización de datos primarios (24-oct-2026) (`informes/research/2026-10-24-T18-energia-actualizacion.md`): Actualización corta sobre 2026 10 17 R46 geopolitica energia ormuz profundo.md y el dossier G9; no repite su análisis. Sin recomendaciones ni…
 
 ## Deuda y bonos
 - 2026-10-29 · D01–D03, D05: tipo a 10 años mensual por país, fuente oficial del BCE (29-oct-2026) (`informes/research/2026-10-29-D-bce-tipo-10a-mensual.md`): Curva diaria de la zona euro (no por país): serie YC.B.U2.EUR.4F.G N A.SV C YM.SR 10Y , última observación 28 oct 2026.
@@ -52,14 +52,14 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-29 · C40 · Jurisdicciones fuera del radar: Reino Unido, Suiza, Canadá, Australia y Arabia Saudí (Gemini Deep Resear (`informes/research/2026-10-29-C40-jurisdicciones-gemini-verificado.md`): Verificación (6 datos contra fuente primaria, todos leídos hoy)
 
 ## Sesiones diarias (apertura y cierre)
+- 2026-10-30 · W09 · Resumen semanal (26-30 oct-2026) y plan de la semana siguiente (`informes/research/2026-10-30-W09-resumen-semanal.md`): Tipos: la Fed mantiene 3,75–4,00 % (28 oct, 10–2; Cook y Hammack pedían subir 25 pb) [P]. El BCE mantiene depósito 2,50 % (29 oct) [P] y Lagarde…
+- 2026-10-30 · Informe de CIERRE — 2026-10-30 (vie) (`informes/2026-10-30-cierre.md`): BoJ mantiene 1,25 % (8–1, Takata pedía 1,5 %) y acelera la venta de ETF desde enero de 2027.
 - 2026-10-30 · Informe de APERTURA — 2026-10-30 (vie) (`informes/2026-10-30-apertura.md`): Banco de Japón mantiene 1,25 % (8 1, Takata pide 1,50 %) y duplica la venta de ETF [S]; yen algo más fuerte.
-- 2026-10-29 · Informe de CIERRE — 2026-10-29 (jue) (`informes/2026-10-29-cierre.md`): BCE mantiene 2,50 % (unánime); Lagarde deja la presidencia en febrero de 2027.
-- 2026-10-29 · Informe de APERTURA — 2026-10-29 (jue) (`informes/2026-10-29-apertura.md`): Asia mixta (Nikkei +1,1 %; Seúl −1,2 %; HK −0,6 %; Shanghái −0,8 %); Europa al alza salvo IBEX.
 
 ## Otros
-- 2026-10-30 · C61 · Servicios públicos y estabilidad social de 12 países (30-oct-2026) (`informes/research/2026-10-30-C61-estabilidad.md`): Código: scripts/estabilidad.py . Resultado: explorador/estabilidad.json (19 20 cifras por país, 234 en total); lecturas en explorador/estabilidad…
-- 2026-10-30 · C60 · Una página por país en el móvil y la Órbita (30-oct-2026) (`informes/research/2026-10-30-C60-comparador.md`): Móvil (pestaña Agenda, debajo de «Elecciones próximas»): tarjeta desplegable «Comparar países» (cerrada). Selector UE / Potencias; tabla País · IPC ·…
-- 2026-10-30 · C59 · Indicadores económicos y sociales de 12 países (30-oct-2026) (`informes/research/2026-10-30-C59-indicadores.md`): Código: scripts/indicadores.py ( leer indicadores() , enganchado en actualizar paneles.py ). Resultado en explorador/paneles.json clave…
+- 2026-10-31 · C68 · Sueldos de los cargos políticos: cuánto cobra cada cargo y dónde se desglosa (31-oct-2026) (`informes/research/2026-10-31-C68-sueldos-politicos.md`): Solo cifras publicadas. Nivel: [P] primaria leída · [S] suma o cálculo mío · [VERIFICAR] no cuadra o no leído. Sin recomendaciones.
+- 2026-10-30 · W11 · Política y elecciones: revisión semanal (30-oct-2026) (`informes/research/2026-10-30-W11-politica-elecciones.md`): Sin predicción de resultados ni recomendaciones. Etiquetas: [P] primaria leída · [S] prensa · [VERIFICAR] · [ESPECULACIÓN].
+- 2026-10-30 · EV · Reunión del BCE del 29-oct-2026 y salida de Lagarde (hecho el 30-oct-2026) (`informes/research/2026-10-30-EV-bce-29-oct.md`): El Consejo de Gobierno mantiene los tres tipos : facilidad de depósito 2,50 % , operaciones principales 2,65 % , facilidad marginal 2,90 % . Venían…
 
 ## Dudas y datos a verificar
 Las frases son extractos sin comprobar: lo dudoso está marcado [VERIFICAR] en el informe original.
