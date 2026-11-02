@@ -1,5 +1,5 @@
 {
- "leido": "2026-11-02 22:48 UTC",
+ "leido": "2026-11-02 22:54 UTC",
  "tic": {
   "fuente": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt",
   "nivel": "P",
@@ -447,7 +447,7 @@
    3919.8
   ],
   "nota": "Los datos se recogen sobre todo de custodios y brókeres de EE. UU. Si los valores están en cuentas de custodia en el extranjero, pueden no atribuirse a su propietario real (Tesoro, TIC FAQ n.º 7); por eso Bélgica, Luxemburgo o las Islas Caimán suben tanto. Las tenencias incluyen cambios de valor de mercado: una bajada no es necesariamente una venta.",
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  },
  "stablecoins": {
   "fuente": "https://stablecoins.llama.fi/stablecoins?includePrices=true",
@@ -796,7 +796,7 @@
    ]
   },
   "nota": "DefiLlama es un agregador: sus cifras de circulación son estimaciones y pueden diferir de las atestaciones de cada emisor. Las monedas ligadas al euro se pasan a dólares con su propio precio. La lista de DefiLlama incluye también fondos tokenizados de letras (p. ej. BUIDL) y monedas sintéticas (p. ej. USDe): no todo lo que aparece es una stablecoin de pago, y el «respaldo» es la clasificación de DefiLlama.",
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  },
  "rwa": {
   "fuente": "https://api.llama.fi/protocols",
@@ -964,7 +964,7 @@
    ]
   },
   "nota": "Es el valor bloqueado (TVL) en protocolos DeFi que DefiLlama clasifica como RWA: NO es el valor total de activos tokenizados. Otras metodologías (p. ej. RWA.xyz) dan cifras mucho mayores porque cuentan fondos y bonos tokenizados fuera de DeFi.",
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  },
  "mercado": {
   "fuente": "https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin,ethereum&vs_currencies=usd&include_market_cap=true&include_24hr_change=true",
@@ -975,38 +975,38 @@
     "simbolo": "XRP",
     "nombre": "XRP",
     "precio": 1.25,
-    "capitalizacion": 79069561484.11017,
-    "cambio_24h": 0.3523105636056634
+    "capitalizacion": 79115691163.43712,
+    "cambio_24h": 0.2314216613154872
    },
    {
     "simbolo": "XLM",
     "nombre": "Stellar Lumens",
-    "precio": 0.163193,
-    "capitalizacion": 5754075324.075862,
-    "cambio_24h": -2.4258635327185147
+    "precio": 0.163332,
+    "capitalizacion": 5755134705.686585,
+    "cambio_24h": -2.524555896830675
    },
    {
     "simbolo": "BTC",
     "nombre": "Bitcoin",
-    "precio": 76788,
-    "capitalizacion": 1542666882837.838,
-    "cambio_24h": -1.228682313696115
+    "precio": 76801,
+    "capitalizacion": 1544116062637.7944,
+    "cambio_24h": -1.2592619816944357
    },
    {
     "simbolo": "ETH",
     "nombre": "Ether",
-    "precio": 2250.84,
-    "capitalizacion": 274730655658.78818,
-    "cambio_24h": -0.2614767274631818
+    "precio": 2252.61,
+    "capitalizacion": 275270263327.76074,
+    "cambio_24h": -0.27854670692579037
    }
   ],
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  },
  "deuda": {
   "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP",
   "fuente_saldo": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP",
   "edicion": "World Economic Outlook, octubre de 2026 (actualizado por el FMI el 8-oct-2026)",
-  "leido": "2026-11-02 22:48 UTC",
+  "leido": "2026-11-02 22:54 UTC",
   "como": "El FMI da 403 a curl: los datos se leen una vez con el navegador (fetch en la propia web del FMI) y se pegan aquí. Para refrescarlos tras la siguiente edición del WEO (abril de 2027), repetir ese paso.",
   "anios": [
    "2023",
@@ -1946,7 +1946,7 @@
   },
   "fallos": [],
   "nota_mensual": "Rendimiento medio mensual del bono a 10 años que usa el BCE para los criterios de convergencia: sirve para comparar países euro entre sí (Alemania, España, Francia, Italia), con ~1 mes de retraso.",
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  },
  "indices": {
   "fuente": "https://finance.yahoo.com/",
@@ -1990,7 +1990,7 @@
     "fecha": "2026-11-02",
     "cambio_1d": 0.73,
     "moneda": "EUR",
-    "cambio_1d_usd": 0.81
+    "cambio_1d_usd": 0.8
    },
    {
     "simbolo": "^IBEX",
@@ -2000,7 +2000,7 @@
     "fecha": "2026-11-02",
     "cambio_1d": 1.63,
     "moneda": "EUR",
-    "cambio_1d_usd": 1.72
+    "cambio_1d_usd": 1.71
    },
    {
     "simbolo": "^N225",
@@ -2010,7 +2010,7 @@
     "fecha": "2026-10-30",
     "cambio_1d": -2.12,
     "moneda": "JPY",
-    "cambio_1d_usd": -2.17
+    "cambio_1d_usd": -2.15
    },
    {
     "simbolo": "^KS11",
@@ -2020,7 +2020,7 @@
     "fecha": "2026-10-30",
     "cambio_1d": -3.48,
     "moneda": "KRW",
-    "cambio_1d_usd": -4.03
+    "cambio_1d_usd": -4.02
    },
    {
     "simbolo": "000001.SS",
@@ -2050,7 +2050,7 @@
     "fecha": "2026-11-02",
     "cambio_1d": 0.63,
     "moneda": "EUR",
-    "cambio_1d_usd": 0.71
+    "cambio_1d_usd": 0.7
    },
    {
     "simbolo": "^FCHI",
@@ -2060,7 +2060,7 @@
     "fecha": "2026-11-02",
     "cambio_1d": 0.98,
     "moneda": "EUR",
-    "cambio_1d_usd": 1.06
+    "cambio_1d_usd": 1.05
    },
    {
     "simbolo": "^FTSE",
@@ -2070,7 +2070,7 @@
     "fecha": "2026-11-02",
     "cambio_1d": 0.29,
     "moneda": "GBP",
-    "cambio_1d_usd": 0.49
+    "cambio_1d_usd": 0.5
    },
    {
     "simbolo": "^NSEI",
@@ -2100,7 +2100,7 @@
     "fecha": "2026-11-02",
     "cambio_1d": -0.58,
     "moneda": "AUD",
-    "cambio_1d_usd": -0.96
+    "cambio_1d_usd": -0.97
    },
    {
     "simbolo": "^VIX",
@@ -2114,7 +2114,7 @@
    }
   ],
   "fallos": [],
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  },
  "watchlist": {
   "fuente": "https://finance.yahoo.com/",
@@ -2458,7 +2458,7 @@
    }
   ],
   "fallos": [],
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  },
  "tipos_vivos": {
   "fuente": "Bancos centrales (ver cada fila)",
@@ -2537,7 +2537,7 @@
   ],
   "fallos": [],
   "nota": "Valores leídos de la fuente oficial de cada banco. «Último cambio» es la fecha en que cambió el valor en la serie, no la de la reunión.",
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  },
  "tipos_bis": {
   "fuente": "https://data.bis.org/topics/CBPOL",
@@ -2625,7 +2625,7 @@
    }
   ],
   "fallos": [],
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  },
  "defensa": {
   "fuente": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS",
@@ -2738,7 +2738,7 @@
    }
   ],
   "fallos": [],
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  },
  "liquidez": {
   "fuente": "FRED (M2SL) y BCE (BSI, M3)",
@@ -2772,7 +2772,7 @@
    "interanual": 3.5,
    "hace_12m": 2.78
   },
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  },
  "inflacion": {
   "fuente": "BLS, Eurostat (zona euro y España), ONS, Statistics Canada, IBGE, BIS y FRED (PCE)",
@@ -2879,7 +2879,7 @@
    }
   ],
   "fallos": [],
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  },
  "indicadores": {
   "paises": [
@@ -4129,7 +4129,7 @@
    }
   ],
   "fallos": [],
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  },
  "ormuz": {
   "fuente": "https://portwatch.imf.org/",
@@ -4202,7 +4202,7 @@
     "petroleros": 0.6
    }
   ],
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  },
  "credito": {
   "fuente": "https://data.ecb.europa.eu/",
@@ -4627,7 +4627,7 @@
    }
   ],
   "fallos": [],
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  },
  "materias": {
   "fuente": "https://finance.yahoo.com/",
@@ -4705,6 +4705,6 @@
    }
   ],
   "fallos": [],
-  "leido": "2026-11-02 22:48 UTC"
+  "leido": "2026-11-02 22:54 UTC"
  }
 }
