@@ -1,5 +1,5 @@
 {
- "leido": "2026-11-02 18:36 UTC",
+ "leido": "2026-11-02 18:41 UTC",
  "tic": {
   "fuente": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt",
   "nivel": "P",
@@ -447,7 +447,7 @@
    3919.8
   ],
   "nota": "Los datos se recogen sobre todo de custodios y brókeres de EE. UU. Si los valores están en cuentas de custodia en el extranjero, pueden no atribuirse a su propietario real (Tesoro, TIC FAQ n.º 7); por eso Bélgica, Luxemburgo o las Islas Caimán suben tanto. Las tenencias incluyen cambios de valor de mercado: una bajada no es necesariamente una venta.",
-  "leido": "2026-11-02 18:36 UTC"
+  "leido": "2026-11-02 18:41 UTC"
  },
  "stablecoins": {
   "fuente": "https://stablecoins.llama.fi/stablecoins?includePrices=true",
@@ -796,7 +796,7 @@
    ]
   },
   "nota": "DefiLlama es un agregador: sus cifras de circulación son estimaciones y pueden diferir de las atestaciones de cada emisor. Las monedas ligadas al euro se pasan a dólares con su propio precio. La lista de DefiLlama incluye también fondos tokenizados de letras (p. ej. BUIDL) y monedas sintéticas (p. ej. USDe): no todo lo que aparece es una stablecoin de pago, y el «respaldo» es la clasificación de DefiLlama.",
-  "leido": "2026-11-02 18:36 UTC"
+  "leido": "2026-11-02 18:41 UTC"
  },
  "rwa": {
   "fuente": "https://api.llama.fi/protocols",
@@ -964,7 +964,7 @@
    ]
   },
   "nota": "Es el valor bloqueado (TVL) en protocolos DeFi que DefiLlama clasifica como RWA: NO es el valor total de activos tokenizados. Otras metodologías (p. ej. RWA.xyz) dan cifras mucho mayores porque cuentan fondos y bonos tokenizados fuera de DeFi.",
-  "leido": "2026-11-02 18:36 UTC"
+  "leido": "2026-11-02 18:41 UTC"
  },
  "mercado": {
   "fuente": "https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin,ethereum&vs_currencies=usd&include_market_cap=true&include_24hr_change=true",
@@ -975,38 +975,38 @@
     "simbolo": "XRP",
     "nombre": "XRP",
     "precio": 1.24,
-    "capitalizacion": 78350579054.13866,
-    "cambio_24h": -0.9438848888969269
+    "capitalizacion": 78511875854.92479,
+    "cambio_24h": -0.7420579692563518
    },
    {
     "simbolo": "XLM",
     "nombre": "Stellar Lumens",
-    "precio": 0.164958,
-    "capitalizacion": 5814993571.269189,
-    "cambio_24h": -1.7439061355885477
+    "precio": 0.165395,
+    "capitalizacion": 5830632527.695502,
+    "cambio_24h": -1.389692068089188
    },
    {
     "simbolo": "BTC",
     "nombre": "Bitcoin",
-    "precio": 76890,
-    "capitalizacion": 1545625219390.21,
-    "cambio_24h": -1.2938243609410767
+    "precio": 76994,
+    "capitalizacion": 1547831269081.0835,
+    "cambio_24h": -1.1869964272166302
    },
    {
     "simbolo": "ETH",
     "nombre": "Ether",
-    "precio": 2249.56,
-    "capitalizacion": 274818636017.9474,
-    "cambio_24h": -0.643484066800476
+    "precio": 2252.4,
+    "capitalizacion": 275188486315.49097,
+    "cambio_24h": -0.461809342929834
    }
   ],
-  "leido": "2026-11-02 18:36 UTC"
+  "leido": "2026-11-02 18:41 UTC"
  },
  "deuda": {
   "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP",
   "fuente_saldo": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP",
   "edicion": "World Economic Outlook, octubre de 2026 (actualizado por el FMI el 8-oct-2026)",
-  "leido": "2026-11-02 18:36 UTC",
+  "leido": "2026-11-02 18:41 UTC",
   "como": "El FMI da 403 a curl: los datos se leen una vez con el navegador (fetch en la propia web del FMI) y se pegan aquí. Para refrescarlos tras la siguiente edición del WEO (abril de 2027), repetir ese paso.",
   "anios": [
    "2023",
@@ -1946,7 +1946,7 @@
   },
   "fallos": [],
   "nota_mensual": "Rendimiento medio mensual del bono a 10 años que usa el BCE para los criterios de convergencia: sirve para comparar países euro entre sí (Alemania, España, Francia, Italia), con ~1 mes de retraso.",
-  "leido": "2026-11-02 18:36 UTC"
+  "leido": "2026-11-02 18:41 UTC"
  },
  "indices": {
   "fuente": "https://finance.yahoo.com/",
@@ -1956,31 +1956,31 @@
     "simbolo": "^GSPC",
     "nombre": "S&P 500",
     "zona": "EE. UU.",
-    "valor": 7605.09,
+    "valor": 7599.27,
     "fecha": "2026-11-02",
-    "cambio_1d": 0.33,
+    "cambio_1d": 0.25,
     "moneda": "USD",
-    "cambio_1d_usd": 0.33
+    "cambio_1d_usd": 0.25
    },
    {
     "simbolo": "ES=F",
     "nombre": "Futuros S&P 500",
     "zona": "EE. UU. (futuros)",
-    "valor": 7641.75,
+    "valor": 7640.25,
     "fecha": "2026-11-02",
-    "cambio_1d": 0.36,
+    "cambio_1d": 0.34,
     "moneda": "USD",
-    "cambio_1d_usd": 0.36
+    "cambio_1d_usd": 0.34
    },
    {
     "simbolo": "^IXIC",
     "nombre": "Nasdaq Composite",
     "zona": "EE. UU.",
-    "valor": 25490.62,
+    "valor": 25466.39,
     "fecha": "2026-11-02",
-    "cambio_1d": 0.21,
+    "cambio_1d": 0.12,
     "moneda": "USD",
-    "cambio_1d_usd": 0.21
+    "cambio_1d_usd": 0.12
    },
    {
     "simbolo": "^STOXX50E",
@@ -1989,8 +1989,7 @@
     "valor": 6176.06,
     "fecha": "2026-11-02",
     "cambio_1d": 0.73,
-    "moneda": "EUR",
-    "cambio_1d_usd": 0.86
+    "moneda": null
    },
    {
     "simbolo": "^IBEX",
@@ -2000,7 +1999,7 @@
     "fecha": "2026-11-02",
     "cambio_1d": 1.63,
     "moneda": "EUR",
-    "cambio_1d_usd": 1.76
+    "cambio_1d_usd": 1.77
    },
    {
     "simbolo": "^N225",
@@ -2010,7 +2009,7 @@
     "fecha": "2026-10-30",
     "cambio_1d": -2.12,
     "moneda": "JPY",
-    "cambio_1d_usd": -2.18
+    "cambio_1d_usd": -2.19
    },
    {
     "simbolo": "^KS11",
@@ -2020,7 +2019,7 @@
     "fecha": "2026-10-30",
     "cambio_1d": -3.48,
     "moneda": "KRW",
-    "cambio_1d_usd": -3.93
+    "cambio_1d_usd": -3.94
    },
    {
     "simbolo": "000001.SS",
@@ -2040,11 +2039,13 @@
     "fecha": "2026-10-30",
     "cambio_1d": 1.46,
     "moneda": "HKD",
-    "cambio_1d_usd": 1.46
+    "cambio_1d_usd": 1.45
    }
   ],
-  "fallos": [],
-  "leido": "2026-11-02 18:36 UTC"
+  "fallos": [
+   "divisa NoneUSD: HTTPError: HTTP Error 404: Not Found"
+  ],
+  "leido": "2026-11-02 18:41 UTC"
  },
  "watchlist": {
   "fuente": "https://finance.yahoo.com/",
@@ -2082,13 +2083,13 @@
     "ticker": "KO",
     "nombre": "Coca-Cola",
     "categoria": "Dividendos seguros",
-    "precio": 95.75,
+    "precio": 95.78,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": 1.78,
-    "cambio_1s": 3.29,
-    "cambio_3m": 10.23,
-    "ytd": 36.96,
+    "cambio_1d": 1.81,
+    "cambio_1s": 3.32,
+    "cambio_3m": 10.27,
+    "ytd": 37.0,
     "div_12m": 2.19,
     "n_repartos": 4
    },
@@ -2096,13 +2097,13 @@
     "ticker": "JNJ",
     "nombre": "Johnson & Johnson",
     "categoria": "Dividendos seguros",
-    "precio": 269.09,
+    "precio": 269.21,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": -1.5,
-    "cambio_1s": 1.05,
-    "cambio_3m": 5.77,
-    "ytd": 30.03,
+    "cambio_1d": -1.46,
+    "cambio_1s": 1.09,
+    "cambio_3m": 5.82,
+    "ytd": 30.09,
     "div_12m": 1.96,
     "n_repartos": 4
    },
@@ -2110,13 +2111,13 @@
     "ticker": "PG",
     "nombre": "Procter & Gamble",
     "categoria": "Dividendos seguros",
-    "precio": 163.89,
+    "precio": 163.97,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": 1.44,
-    "cambio_1s": 2.48,
-    "cambio_3m": 13.05,
-    "ytd": 14.36,
+    "cambio_1d": 1.49,
+    "cambio_1s": 2.53,
+    "cambio_3m": 13.11,
+    "ytd": 14.42,
     "div_12m": 2.64,
     "n_repartos": 4
    },
@@ -2124,41 +2125,41 @@
     "ticker": "MO",
     "nombre": "Altria Group",
     "categoria": "Alta rentabilidad (dividendos)",
-    "precio": 77.5,
+    "precio": 77.53,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": -0.67,
-    "cambio_1s": 5.28,
-    "cambio_3m": 13.54,
-    "ytd": 34.42,
-    "div_12m": 5.54,
+    "cambio_1d": -0.64,
+    "cambio_1s": 5.31,
+    "cambio_3m": 13.58,
+    "ytd": 34.46,
+    "div_12m": 5.53,
     "n_repartos": 4
    },
    {
     "ticker": "KMB",
     "nombre": "Kimberly-Clark",
     "categoria": "Alta rentabilidad (dividendos)",
-    "precio": 109.06,
+    "precio": 109.11,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": 1.04,
-    "cambio_1s": -0.52,
-    "cambio_3m": 1.39,
-    "ytd": 8.1,
-    "div_12m": 4.68,
+    "cambio_1d": 1.09,
+    "cambio_1s": -0.47,
+    "cambio_3m": 1.45,
+    "ytd": 8.15,
+    "div_12m": 4.67,
     "n_repartos": 4
    },
    {
     "ticker": "CIBR",
     "nombre": "First Trust NASDAQ Cybersecurity ETF",
     "categoria": "Ciberseguridad",
-    "precio": 98.93,
+    "precio": 98.77,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": -2.08,
-    "cambio_1s": -8.76,
-    "cambio_3m": 5.35,
-    "ytd": 38.46,
+    "cambio_1d": -2.24,
+    "cambio_1s": -8.91,
+    "cambio_3m": 5.18,
+    "ytd": 38.24,
     "div_12m": 0.4,
     "n_repartos": 4
    },
@@ -2166,13 +2167,13 @@
     "ticker": "SMH",
     "nombre": "VanEck Semiconductor ETF",
     "categoria": "Crecimiento volátil (IA/chips)",
-    "precio": 518.84,
+    "precio": 517.68,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": -0.7,
-    "cambio_1s": -4.21,
-    "cambio_3m": -4.88,
-    "ytd": 44.07,
+    "cambio_1d": -0.92,
+    "cambio_1s": -4.42,
+    "cambio_3m": -5.09,
+    "ytd": 43.75,
     "div_12m": 0.21,
     "n_repartos": 1
    },
@@ -2180,13 +2181,13 @@
     "ticker": "SOXX",
     "nombre": "iShares Semiconductor ETF",
     "categoria": "Crecimiento volátil (IA/chips)",
-    "precio": 464.22,
+    "precio": 462.99,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": -1.55,
-    "cambio_1s": -5.61,
-    "cambio_3m": -8.56,
-    "ytd": 54.15,
+    "cambio_1d": -1.81,
+    "cambio_1s": -5.86,
+    "cambio_3m": -8.8,
+    "ytd": 53.74,
     "div_12m": 0.27,
     "n_repartos": 4
    },
@@ -2194,13 +2195,13 @@
     "ticker": "BOTZ",
     "nombre": "Global X Robotics & AI ETF",
     "categoria": "Crecimiento volátil (IA/chips)",
-    "precio": 32.56,
+    "precio": 32.54,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": 1.06,
-    "cambio_1s": -1.75,
-    "cambio_3m": -9.38,
-    "ytd": -10.13,
+    "cambio_1d": 0.99,
+    "cambio_1s": -1.81,
+    "cambio_3m": -9.44,
+    "ytd": -10.18,
     "div_12m": 0.54,
     "n_repartos": 2
    },
@@ -2208,13 +2209,13 @@
     "ticker": "TSM",
     "nombre": "Taiwan Semiconductor (ADR)",
     "categoria": "Mercados emergentes",
-    "precio": 404.85,
+    "precio": 404.08,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": -0.32,
-    "cambio_1s": -4.6,
-    "cambio_3m": -0.31,
-    "ytd": 33.22,
+    "cambio_1d": -0.5,
+    "cambio_1s": -4.78,
+    "cambio_3m": -0.5,
+    "ytd": 32.97,
     "div_12m": 0.95,
     "n_repartos": 4
    },
@@ -2222,41 +2223,41 @@
     "ticker": "EEM",
     "nombre": "iShares MSCI Emerging Markets ETF",
     "categoria": "Mercados emergentes",
-    "precio": 61.75,
+    "precio": 61.69,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": 1.16,
-    "cambio_1s": -0.11,
-    "cambio_3m": -4.0,
-    "ytd": 12.87,
-    "div_12m": 1.8,
+    "cambio_1d": 1.06,
+    "cambio_1s": -0.22,
+    "cambio_3m": -4.1,
+    "ytd": 12.75,
+    "div_12m": 1.81,
     "n_repartos": 2
    },
    {
     "ticker": "AAPL",
     "nombre": "Apple",
     "categoria": "Tecnología",
-    "precio": 336.51,
+    "precio": 336.26,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": -2.35,
-    "cambio_1s": -2.15,
-    "cambio_3m": 10.91,
-    "ytd": 23.78,
-    "div_12m": 0.31,
+    "cambio_1d": -2.43,
+    "cambio_1s": -2.22,
+    "cambio_3m": 10.82,
+    "ytd": 23.69,
+    "div_12m": 0.32,
     "n_repartos": 4
    },
    {
     "ticker": "SMCI",
     "nombre": "Super Micro Computer",
     "categoria": "Tecnología",
-    "precio": 31.4,
+    "precio": 31.23,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": -4.7,
-    "cambio_1s": -3.95,
-    "cambio_3m": 9.64,
-    "ytd": 7.28,
+    "cambio_1d": -5.22,
+    "cambio_1s": -4.47,
+    "cambio_3m": 9.04,
+    "ytd": 6.7,
     "div_12m": null,
     "n_repartos": 0
    },
@@ -2264,13 +2265,13 @@
     "ticker": "QQQ",
     "nombre": "Invesco QQQ Trust",
     "categoria": "Tecnología (más allá de chips)",
-    "precio": 690.5,
+    "precio": 689.76,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": 0.0,
-    "cambio_1s": -3.05,
-    "cambio_3m": -1.37,
-    "ytd": 12.4,
+    "cambio_1d": -0.11,
+    "cambio_1s": -3.15,
+    "cambio_3m": -1.47,
+    "ytd": 12.28,
     "div_12m": 0.45,
     "n_repartos": 4
    },
@@ -2278,13 +2279,13 @@
     "ticker": "NOBL",
     "nombre": "ProShares S&P 500 Dividend Aristocrats",
     "categoria": "Dividendos aristócratas",
-    "precio": 60.16,
+    "precio": 60.18,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": 1.75,
-    "cambio_1s": 3.22,
-    "cambio_3m": 4.78,
-    "ytd": 15.62,
+    "cambio_1d": 1.78,
+    "cambio_1s": 3.24,
+    "cambio_3m": 4.81,
+    "ytd": 15.65,
     "div_12m": 1.95,
     "n_repartos": 4
    },
@@ -2292,13 +2293,13 @@
     "ticker": "UNH",
     "nombre": "UnitedHealth Group",
     "categoria": "Salud (estable)",
-    "precio": 397.34,
+    "precio": 397.56,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": -2.37,
-    "cambio_1s": -3.25,
-    "cambio_3m": -4.34,
-    "ytd": 20.37,
+    "cambio_1d": -2.31,
+    "cambio_1s": -3.2,
+    "cambio_3m": -4.29,
+    "ytd": 20.43,
     "div_12m": 2.28,
     "n_repartos": 4
    },
@@ -2306,27 +2307,27 @@
     "ticker": "O",
     "nombre": "Realty Income",
     "categoria": "Inmuebles (REITs)",
-    "precio": 57.27,
+    "precio": 57.38,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": 0.59,
-    "cambio_1s": 0.19,
-    "cambio_3m": -9.79,
-    "ytd": 1.59,
-    "div_12m": 5.68,
+    "cambio_1d": 0.78,
+    "cambio_1s": 0.38,
+    "cambio_3m": -9.62,
+    "ytd": 1.78,
+    "div_12m": 5.66,
     "n_repartos": 12
    },
    {
     "ticker": "PLD",
     "nombre": "Prologis",
     "categoria": "Inmuebles (REITs)",
-    "precio": 129.52,
+    "precio": 129.61,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": 1.2,
-    "cambio_1s": 2.54,
-    "cambio_3m": -10.15,
-    "ytd": 1.46,
+    "cambio_1d": 1.27,
+    "cambio_1s": 2.61,
+    "cambio_3m": -10.09,
+    "ytd": 1.53,
     "div_12m": 3.26,
     "n_repartos": 4
    },
@@ -2334,13 +2335,13 @@
     "ticker": "GLD",
     "nombre": "SPDR Gold Trust",
     "categoria": "Materias primas",
-    "precio": 362.85,
+    "precio": 362.41,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": 1.99,
-    "cambio_1s": -1.35,
-    "cambio_3m": -2.38,
-    "ytd": -8.44,
+    "cambio_1d": 1.86,
+    "cambio_1s": -1.47,
+    "cambio_3m": -2.5,
+    "ytd": -8.55,
     "div_12m": null,
     "n_repartos": 0
    },
@@ -2348,13 +2349,13 @@
     "ticker": "RIO",
     "nombre": "Rio Tinto (ADR)",
     "categoria": "Materias primas",
-    "precio": 83.25,
+    "precio": 83.13,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": 1.66,
-    "cambio_1s": -0.56,
-    "cambio_3m": -13.19,
-    "ytd": 4.02,
+    "cambio_1d": 1.52,
+    "cambio_1s": -0.7,
+    "cambio_3m": -13.31,
+    "ytd": 3.87,
     "div_12m": 5.59,
     "n_repartos": 2
    },
@@ -2362,13 +2363,13 @@
     "ticker": "IWM",
     "nombre": "iShares Russell 2000 ETF",
     "categoria": "Small caps",
-    "precio": 280.86,
+    "precio": 280.62,
     "moneda": "USD",
     "fecha": "2026-11-02",
-    "cambio_1d": 0.55,
-    "cambio_1s": 1.4,
-    "cambio_3m": -5.19,
-    "ytd": 14.1,
+    "cambio_1d": 0.46,
+    "cambio_1s": 1.31,
+    "cambio_3m": -5.27,
+    "ytd": 14.0,
     "div_12m": 0.97,
     "n_repartos": 4
    },
@@ -2388,7 +2389,7 @@
    }
   ],
   "fallos": [],
-  "leido": "2026-11-02 18:36 UTC"
+  "leido": "2026-11-02 18:41 UTC"
  },
  "tipos_vivos": {
   "fuente": "Bancos centrales (ver cada fila)",
@@ -2467,7 +2468,7 @@
   ],
   "fallos": [],
   "nota": "Valores leídos de la fuente oficial de cada banco. «Último cambio» es la fecha en que cambió el valor en la serie, no la de la reunión.",
-  "leido": "2026-11-02 18:36 UTC"
+  "leido": "2026-11-02 18:41 UTC"
  },
  "tipos_bis": {
   "fuente": "https://data.bis.org/topics/CBPOL",
@@ -2555,7 +2556,7 @@
    }
   ],
   "fallos": [],
-  "leido": "2026-11-02 18:36 UTC"
+  "leido": "2026-11-02 18:41 UTC"
  },
  "defensa": {
   "fuente": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS",
@@ -2668,7 +2669,7 @@
    }
   ],
   "fallos": [],
-  "leido": "2026-11-02 18:36 UTC"
+  "leido": "2026-11-02 18:41 UTC"
  },
  "liquidez": {
   "fuente": "FRED (M2SL) y BCE (BSI, M3)",
@@ -2809,10 +2810,11 @@
    }
   ],
   "fallos": [
-   "inflacion jp: el último dato es de 2021-06 (65 meses de retraso); revisar la fuente",
-   "inflacion cn: el último dato es de 2025-04 (19 meses de retraso); revisar la fuente"
+   "inflacion us_pce: TimeoutError: The read operation timed out",
+   "inflacion jp: TimeoutError: The read operation timed out",
+   "inflacion cn: TimeoutError: The read operation timed out"
   ],
-  "leido": "2026-11-02 18:36 UTC"
+  "leido": "2026-11-02 18:41 UTC"
  },
  "indicadores": {
   "paises": [
