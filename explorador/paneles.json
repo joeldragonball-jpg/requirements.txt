@@ -3539,13 +3539,13 @@
           "paro": {
             "valor": 4.2,
             "unidad": "% población activa",
-            "fecha": "2025",
-            "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+            "fecha": "2026-09",
+            "fuente": "https://www.bls.gov/news.release/empsit.nr0.htm",
             "nivel": "P",
-            "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
-            "periodicidad": "anual",
-            "anterior": 4.0,
-            "anterior_fecha": "2024"
+            "definicion": "Tasa de paro total desestacionalizada (BLS, CPS), leída por la API pública de BLS el 2-nov-2026. Sustituye al dato anual de 2025. Próxima publicación: 4-dic-2026 (informe de noviembre).",
+            "periodicidad": "mensual",
+            "anterior": 4.1,
+            "anterior_fecha": "2026-08"
           },
           "paro_juvenil": {
             "valor": 9.3,
@@ -3559,15 +3559,15 @@
             "anterior_fecha": "2024"
           },
           "pib": {
-            "valor": 2.2,
-            "unidad": "% anual (volumen)",
-            "fecha": "2025",
-            "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+            "valor": 3.4,
+            "unidad": "% trimestral anualizado (volumen)",
+            "fecha": "2026-Q3",
+            "fuente": "https://bea.gov/news/2026/gdp-advance-estimate-3rd-quarter-2026",
             "nivel": "P",
-            "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
-            "periodicidad": "anual",
-            "anterior": 2.8,
-            "anterior_fecha": "2024"
+            "definicion": "Estimación adelantada del PIB real, 3.er trimestre 2026 (BEA, 29-oct-2026, leída). OJO: es tasa trimestral anualizada, no interanual como en otros países. Segunda estimación: 25-nov-2026 (según BEA; su web avisa de que el calendario puede no estar al día).",
+            "periodicidad": "trimestral",
+            "anterior": 2.2,
+            "anterior_fecha": "2026-Q2"
           },
           "deuda": {
             "valor": 124.4,
@@ -3629,49 +3629,44 @@
         "pais": "China",
         "indicadores": {
           "ipc": {
-            "valor": 0.1,
-            "unidad": "% interanual (media anual)",
-            "fecha": "2025",
-            "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+            "valor": 0.9,
+            "unidad": "% interanual",
+            "fecha": "2026-09",
+            "fuente": "https://www.stats.gov.cn/english/PressRelease/202610/t20261015_1965500.html",
             "nivel": "P",
-            "definicion": "IPC, media anual (Banco Mundial)",
-            "periodicidad": "anual",
-            "nota": "El último mes sale en el panel «inflacion» si hay API abierta.",
-            "anterior": 0.2,
-            "anterior_fecha": "2024"
+            "definicion": "IPC nacional (NBS, nota de prensa del 15-oct-2026, leída); +0,2 % intermensual. Sustituye a la media anual del Banco Mundial. Octubre: mediados de nov-2026 [VERIFICAR fecha].",
+            "periodicidad": "mensual"
           },
           "paro": {
-            "valor": 4.6,
-            "unidad": "% población activa",
-            "fecha": "2025",
-            "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
-            "nivel": "P",
-            "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
-            "periodicidad": "anual",
-            "anterior": 4.6,
-            "anterior_fecha": "2024"
+            "valor": 5.2,
+            "unidad": "% población activa urbana",
+            "fecha": "2026-09",
+            "fuente": "https://www.stats.gov.cn/english/",
+            "nivel": "S",
+            "definicion": "Tasa de paro urbano encuestada, todas las ciudades (NBS vía prensa/agregador; el boletín de NBS no se ha abierto) [VERIFICAR]. Agosto 5,3 %. Definición propia de China, no comparable al dato OIT de Eurostat.",
+            "periodicidad": "mensual",
+            "anterior": 5.3,
+            "anterior_fecha": "2026-08"
           },
           "paro_juvenil": {
-            "valor": 15.8,
-            "unidad": "% población activa 15-24",
-            "fecha": "2025",
-            "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
-            "nivel": "P",
-            "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
-            "periodicidad": "anual",
-            "anterior": 15.0,
-            "anterior_fecha": "2024"
+            "valor": 18.0,
+            "unidad": "% (16-24 años, sin estudiantes)",
+            "fecha": "2026-09",
+            "fuente": "https://www.stats.gov.cn/english/",
+            "nivel": "S",
+            "definicion": "Paro juvenil urbano de 16 a 24 años excluyendo estudiantes (NBS vía prensa; no abierto en la fuente) [VERIFICAR]. Agosto 18,9 %. Definición distinta a la de la OIT/Eurostat.",
+            "periodicidad": "mensual",
+            "anterior": 18.9,
+            "anterior_fecha": "2026-08"
           },
           "pib": {
-            "valor": 5.0,
-            "unidad": "% anual (volumen)",
-            "fecha": "2025",
-            "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+            "valor": 4.5,
+            "unidad": "% interanual (volumen)",
+            "fecha": "2026-Q3",
+            "fuente": "https://www.stats.gov.cn/english/PressRelease/202610/t20261021_1965671.html",
             "nivel": "P",
-            "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
-            "periodicidad": "anual",
-            "anterior": 5.0,
-            "anterior_fecha": "2024"
+            "definicion": "PIB del 3.er trimestre 2026 (NBS, cálculo preliminar, leído); acumulado de los tres primeros trimestres +4,6 %. T2: 4,3 % según prensa [S].",
+            "periodicidad": "trimestral"
           },
           "deuda": {
             "valor": 98.6,
@@ -3735,16 +3730,15 @@
         "pais": "Japón",
         "indicadores": {
           "ipc": {
-            "valor": 3.2,
-            "unidad": "% interanual (media anual)",
-            "fecha": "2025",
-            "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
-            "nivel": "P",
-            "definicion": "IPC, media anual (Banco Mundial)",
-            "periodicidad": "anual",
-            "nota": "El último mes sale en el panel «inflacion» si hay API abierta.",
-            "anterior": 2.7,
-            "anterior_fecha": "2024"
+            "valor": 2.1,
+            "unidad": "% interanual (sin alimentos frescos)",
+            "fecha": "2026-09",
+            "fuente": "https://investinglive.com/news/japan-september-2026-headline-cpi-2-1-y-y-expected-2-1/",
+            "nivel": "S",
+            "definicion": "IPC subyacente de Japón (sin alimentos frescos) y general, ambos 2,1 %, publicado hacia el 23-oct-2026 (Oficina de Estadística de Japón; leído solo vía prensa) [VERIFICAR]. Sin alimentos frescos ni energía: 2,4 %.",
+            "periodicidad": "mensual",
+            "anterior": 1.7,
+            "anterior_fecha": "2026-08"
           },
           "paro": {
             "valor": 2.5,
@@ -3839,16 +3833,15 @@
         "pais": "India",
         "indicadores": {
           "ipc": {
-            "valor": 2.4,
-            "unidad": "% interanual (media anual)",
-            "fecha": "2025",
-            "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
-            "nivel": "P",
-            "definicion": "IPC, media anual (Banco Mundial)",
-            "periodicidad": "anual",
-            "nota": "El último mes sale en el panel «inflacion» si hay API abierta.",
-            "anterior": 5.0,
-            "anterior_fecha": "2024"
+            "valor": 5.54,
+            "unidad": "% interanual",
+            "fecha": "2026-09",
+            "fuente": "https://www.mospi.gov.in/uploads/latestreleasesfiles/1791801549227-Press%20Release%20for%20the%20month%20of%20September,%202026.pdf",
+            "nivel": "S",
+            "definicion": "IPC combinado nacional, provisional (MoSPI, publicado el 12-oct-2026; cifra vía prensa, PDF no abierto) [VERIFICAR]. Nueva serie con base 2024: no encadena con las anteriores. Alimentos 7,74 %. Octubre: 12-nov-2026.",
+            "periodicidad": "mensual",
+            "anterior": 4.83,
+            "anterior_fecha": "2026-08"
           },
           "paro": {
             "valor": 4.2,
@@ -3945,16 +3938,15 @@
         "pais": "Reino Unido",
         "indicadores": {
           "ipc": {
-            "valor": 3.9,
-            "unidad": "% interanual (media anual)",
-            "fecha": "2025",
-            "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+            "valor": 3.5,
+            "unidad": "% interanual",
+            "fecha": "2026-09",
+            "fuente": "https://www.ons.gov.uk/economy/inflationandpriceindices",
             "nivel": "P",
-            "definicion": "IPC, media anual (Banco Mundial)",
-            "periodicidad": "anual",
-            "nota": "El último mes sale en el panel «inflacion» si hay API abierta.",
-            "anterior": 3.3,
-            "anterior_fecha": "2024"
+            "definicion": "IPC (CPI) del Reino Unido, serie D7G7 del ONS, leída por API el 29-oct-2026.",
+            "periodicidad": "mensual",
+            "anterior": 3.1,
+            "anterior_fecha": "2026-08"
           },
           "paro": {
             "valor": 4.7,
@@ -4037,11 +4029,11 @@
           },
           "salario_minimo": {
             "valor": 12.71,
-            "unidad": "£ por hora (mayores de 21)",
+            "unidad": "£ por hora (National Living Wage, 21 años o más)",
             "fecha": "2026-04",
-            "fuente": "gov.uk (National Living Wage)",
-            "nivel": "V",
-            "definicion": "National Living Wage desde abril de 2026 [VERIFICAR en gov.uk]",
+            "fuente": "https://www.gov.uk/national-minimum-wage-rates",
+            "nivel": "P",
+            "definicion": "Tarifa vigente desde abril de 2026, leída en gov.uk el 2-nov-2026. Para abril de 2027 gov.uk publica £13,21. Sustituye a la cifra recordada (nivel V).",
             "periodicidad": "anual (abril)"
           }
         }
@@ -4051,16 +4043,15 @@
         "pais": "Rusia",
         "indicadores": {
           "ipc": {
-            "valor": 8.7,
-            "unidad": "% interanual (media anual)",
-            "fecha": "2025",
-            "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
-            "nivel": "P",
-            "definicion": "IPC, media anual (Banco Mundial)",
-            "periodicidad": "anual",
-            "nota": "El último mes sale en el panel «inflacion» si hay API abierta.",
-            "anterior": 8.4,
-            "anterior_fecha": "2024"
+            "valor": 6.35,
+            "unidad": "% interanual",
+            "fecha": "2026-09",
+            "fuente": "https://rosstat.gov.ru/",
+            "nivel": "S",
+            "definicion": "Inflación anual de septiembre 2026 (Rosstat, ~9-oct-2026; vía Interfax/TASS, no abierto en Rosstat) [VERIFICAR]; +0,35 % mensual. El 7,17 % de otras noticias es una cifra semanal del Ministerio de Economía: no comparable.",
+            "periodicidad": "mensual",
+            "anterior": 6.33,
+            "anterior_fecha": "2026-08"
           },
           "paro": {
             "valor": 2.1,

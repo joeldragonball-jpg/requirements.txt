@@ -12,28 +12,1263 @@
       "nivel": "S"
      }
     ]
+   },
+   "sanidad": {
+    "cifras": [
+     {
+      "nombre": "Gasto sanitario público (gobierno general)",
+      "valor": 6.75,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GD.ZS",
+      "nivel": "P",
+      "nota": "Parte pública; la total ya está en el panel. Comparable (SHA 2011).",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto sanitario público sobre el gasto total del Estado",
+      "valor": 14.85,
+      "unidad": "% del gasto público",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GE.ZS",
+      "nivel": "P",
+      "nota": "Peso de la sanidad en el presupuesto público.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Pago directo del paciente",
+      "valor": 20.86,
+      "unidad": "% del gasto sanitario",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.OOPC.CH.ZS",
+      "nivel": "P",
+      "nota": "Cuanto mayor, más financiación privada directa.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Probabilidad de morir entre 30 y 70 años por cardiovascular, cáncer, diabetes o respiratoria",
+      "valor": 9.3,
+      "unidad": "%",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.NCOM.ZS",
+      "nivel": "P",
+      "nota": "Estimación modelada OMS.",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad de menores de 5 años",
+      "valor": 3.2,
+      "unidad": "por 1.000 nacidos vivos",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.MORT",
+      "nivel": "P",
+      "nota": "Estimación modelada.",
+      "organismo": "UN IGME vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad materna",
+      "valor": 3,
+      "unidad": "por 100.000 nacidos vivos",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.MMRT",
+      "nivel": "P",
+      "nota": "Modelada; cifras bajas con mucho ruido.",
+      "organismo": "OMS/UNICEF/UNFPA/BM vía Banco Mundial"
+     },
+     {
+      "nombre": "Vacunación de sarampión (12-23 meses)",
+      "valor": 97,
+      "unidad": "% de niños",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.IMM.MEAS",
+      "nivel": "P",
+      "nota": "Una dosis.",
+      "organismo": "OMS/UNICEF vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en sanidad (COFOG 07)",
+      "valor": 6.5,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; incluye I+D y administración de salud.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "educacion": {
+    "cifras": [
+     {
+      "nombre": "Educación sobre el gasto total del Estado",
+      "valor": 9.88,
+      "unidad": "% del gasto público",
+      "anio": "2022",
+      "fuente": "https://api.worldbank.org/v2/indicator/SE.XPD.TOTL.GB.ZS",
+      "nivel": "P",
+      "nota": "Complementa el % del PIB ya cargado.",
+      "organismo": "UNESCO UIS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto en I+D (todos los sectores)",
+      "valor": 1.49,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/GB.XPD.RSDV.GD.ZS",
+      "nivel": "P",
+      "nota": "No es solo público.",
+      "organismo": "UNESCO UIS/OCDE vía Banco Mundial"
+     },
+     {
+      "nombre": "Abandono escolar temprano (18-24 años)",
+      "valor": 12.8,
+      "unidad": "% de 18-24",
+      "anio": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/edat_lfse_14",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE.",
+      "organismo": "Eurostat"
+     },
+     {
+      "nombre": "Gasto público en educación (COFOG 09)",
+      "valor": 4.1,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; incluye todos los niveles.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "trabajo": {
+    "cifras": [
+     {
+      "nombre": "Paro juvenil (15-24 años)",
+      "valor": 24.75,
+      "unidad": "% de la población activa joven",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "nota": "Modelada; difiere de Eurostat/oficinas nacionales.",
+      "organismo": "OIT (estimación modelada) vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en vejez (COFOG 1002, pensiones y otros)",
+      "valor": 10.4,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; no incluye todas las prestaciones.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "infraestructuras": {
+    "cifras": [
+     {
+      "nombre": "Formación bruta de capital fijo (pública y privada)",
+      "valor": 20.61,
+      "unidad": "% del PIB",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/NE.GDI.FTOT.ZS",
+      "nivel": "P",
+      "nota": "No separa inversión pública.",
+      "organismo": "Cuentas nacionales vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "seguridad": {
+    "cifras": [
+     {
+      "nombre": "Muertes por accidente de tráfico",
+      "valor": 3.9,
+      "unidad": "por 100.000 hab.",
+      "anio": "2019",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.TRAF.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS 2019, no la oficial de cada país.",
+      "organismo": "OMS Global Status Report vía Banco Mundial"
+     },
+     {
+      "nombre": "Muertes por suicidio",
+      "valor": 8.72,
+      "unidad": "por 100.000 hab.",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.SUIC.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS; sin ajustar por edad en esta serie [VERIFICAR].",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en orden público y seguridad (COFOG 03)",
+      "valor": 1.8,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; policía, tribunales y prisiones.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
    }
   }
  },
  "DE": {
   "lectura": "Gasto sanitario del 12,7 % del PIB (2025), imperio de la ley en 1,60 y control de la corrupción en 1,68 (WGI 2025, percepción). La sobrecarga de vivienda es la más alta de los seis países de la UE de esta lista (11,2 %), la migración neta sale negativa (−334.000 en 5 años, estimación ONU) y el 70 % de la energía es importada. [OPINIÓN]",
-  "dimensiones": {}
+  "dimensiones": {
+   "sanidad": {
+    "cifras": [
+     {
+      "nombre": "Gasto sanitario público (gobierno general)",
+      "valor": 9.29,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GD.ZS",
+      "nivel": "P",
+      "nota": "Parte pública; la total ya está en el panel. Comparable (SHA 2011).",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto sanitario público sobre el gasto total del Estado",
+      "valor": 19.21,
+      "unidad": "% del gasto público",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GE.ZS",
+      "nivel": "P",
+      "nota": "Peso de la sanidad en el presupuesto público.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Pago directo del paciente",
+      "valor": 10.71,
+      "unidad": "% del gasto sanitario",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.OOPC.CH.ZS",
+      "nivel": "P",
+      "nota": "Cuanto mayor, más financiación privada directa.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Probabilidad de morir entre 30 y 70 años por cardiovascular, cáncer, diabetes o respiratoria",
+      "valor": 11.6,
+      "unidad": "%",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.NCOM.ZS",
+      "nivel": "P",
+      "nota": "Estimación modelada OMS.",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad de menores de 5 años",
+      "valor": 3.7,
+      "unidad": "por 1.000 nacidos vivos",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.MORT",
+      "nivel": "P",
+      "nota": "Estimación modelada.",
+      "organismo": "UN IGME vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad materna",
+      "valor": 4,
+      "unidad": "por 100.000 nacidos vivos",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.MMRT",
+      "nivel": "P",
+      "nota": "Modelada; cifras bajas con mucho ruido.",
+      "organismo": "OMS/UNICEF/UNFPA/BM vía Banco Mundial"
+     },
+     {
+      "nombre": "Vacunación de sarampión (12-23 meses)",
+      "valor": 96,
+      "unidad": "% de niños",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.IMM.MEAS",
+      "nivel": "P",
+      "nota": "Una dosis.",
+      "organismo": "OMS/UNICEF vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en sanidad (COFOG 07)",
+      "valor": 7.6,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; incluye I+D y administración de salud.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "educacion": {
+    "cifras": [
+     {
+      "nombre": "Educación sobre el gasto total del Estado",
+      "valor": 10.68,
+      "unidad": "% del gasto público",
+      "anio": "2022",
+      "fuente": "https://api.worldbank.org/v2/indicator/SE.XPD.TOTL.GB.ZS",
+      "nivel": "P",
+      "nota": "Complementa el % del PIB ya cargado.",
+      "organismo": "UNESCO UIS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto en I+D (todos los sectores)",
+      "valor": 3.15,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/GB.XPD.RSDV.GD.ZS",
+      "nivel": "P",
+      "nota": "No es solo público.",
+      "organismo": "UNESCO UIS/OCDE vía Banco Mundial"
+     },
+     {
+      "nombre": "Abandono escolar temprano (18-24 años)",
+      "valor": 13.1,
+      "unidad": "% de 18-24",
+      "anio": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/edat_lfse_14",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE.",
+      "organismo": "Eurostat"
+     },
+     {
+      "nombre": "Gasto público en educación (COFOG 09)",
+      "valor": 4.5,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; incluye todos los niveles.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "trabajo": {
+    "cifras": [
+     {
+      "nombre": "Paro juvenil (15-24 años)",
+      "valor": 6.86,
+      "unidad": "% de la población activa joven",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "nota": "Modelada; difiere de Eurostat/oficinas nacionales.",
+      "organismo": "OIT (estimación modelada) vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en vejez (COFOG 1002, pensiones y otros)",
+      "valor": 9.9,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; no incluye todas las prestaciones.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "infraestructuras": {
+    "cifras": [
+     {
+      "nombre": "Formación bruta de capital fijo (pública y privada)",
+      "valor": 20.31,
+      "unidad": "% del PIB",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/NE.GDI.FTOT.ZS",
+      "nivel": "P",
+      "nota": "No separa inversión pública.",
+      "organismo": "Cuentas nacionales vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "seguridad": {
+    "cifras": [
+     {
+      "nombre": "Muertes por accidente de tráfico",
+      "valor": 3.8,
+      "unidad": "por 100.000 hab.",
+      "anio": "2019",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.TRAF.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS 2019, no la oficial de cada país.",
+      "organismo": "OMS Global Status Report vía Banco Mundial"
+     },
+     {
+      "nombre": "Muertes por suicidio",
+      "valor": 12.9,
+      "unidad": "por 100.000 hab.",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.SUIC.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS; sin ajustar por edad en esta serie [VERIFICAR].",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en orden público y seguridad (COFOG 03)",
+      "valor": 1.6,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; policía, tribunales y prisiones.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   }
+  }
  },
  "FR": {
   "lectura": "Gasto sanitario del 11,5 % del PIB y natalidad de 1,61 hijos por mujer, la más alta de los seis países de la UE de esta lista. Estabilidad política en −0,09 (WGI 2025, percepción) frente a imperio de la ley en 0,97: encaja con un Parlamento fragmentado. Los homicidios (1,34 por 100.000) son los más altos de los seis. [OPINIÓN]",
-  "dimensiones": {}
+  "dimensiones": {
+   "sanidad": {
+    "cifras": [
+     {
+      "nombre": "Gasto sanitario público (gobierno general)",
+      "valor": 7.89,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GD.ZS",
+      "nivel": "P",
+      "nota": "Parte pública; la total ya está en el panel. Comparable (SHA 2011).",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto sanitario público sobre el gasto total del Estado",
+      "valor": 13.81,
+      "unidad": "% del gasto público",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GE.ZS",
+      "nivel": "P",
+      "nota": "Peso de la sanidad en el presupuesto público.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Pago directo del paciente",
+      "valor": 9.23,
+      "unidad": "% del gasto sanitario",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.OOPC.CH.ZS",
+      "nivel": "P",
+      "nota": "Cuanto mayor, más financiación privada directa.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Probabilidad de morir entre 30 y 70 años por cardiovascular, cáncer, diabetes o respiratoria",
+      "valor": 10.2,
+      "unidad": "%",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.NCOM.ZS",
+      "nivel": "P",
+      "nota": "Estimación modelada OMS.",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad de menores de 5 años",
+      "valor": 4.3,
+      "unidad": "por 1.000 nacidos vivos",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.MORT",
+      "nivel": "P",
+      "nota": "Estimación modelada.",
+      "organismo": "UN IGME vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad materna",
+      "valor": 7,
+      "unidad": "por 100.000 nacidos vivos",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.MMRT",
+      "nivel": "P",
+      "nota": "Modelada; cifras bajas con mucho ruido.",
+      "organismo": "OMS/UNICEF/UNFPA/BM vía Banco Mundial"
+     },
+     {
+      "nombre": "Vacunación de sarampión (12-23 meses)",
+      "valor": 95,
+      "unidad": "% de niños",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.IMM.MEAS",
+      "nivel": "P",
+      "nota": "Una dosis.",
+      "organismo": "OMS/UNICEF vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en sanidad (COFOG 07)",
+      "valor": 8.9,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; incluye I+D y administración de salud.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "educacion": {
+    "cifras": [
+     {
+      "nombre": "Educación sobre el gasto total del Estado",
+      "valor": 9.12,
+      "unidad": "% del gasto público",
+      "anio": "2022",
+      "fuente": "https://api.worldbank.org/v2/indicator/SE.XPD.TOTL.GB.ZS",
+      "nivel": "P",
+      "nota": "Complementa el % del PIB ya cargado.",
+      "organismo": "UNESCO UIS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto en I+D (todos los sectores)",
+      "valor": 2.18,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/GB.XPD.RSDV.GD.ZS",
+      "nivel": "P",
+      "nota": "No es solo público.",
+      "organismo": "UNESCO UIS/OCDE vía Banco Mundial"
+     },
+     {
+      "nombre": "Abandono escolar temprano (18-24 años)",
+      "valor": 7.2,
+      "unidad": "% de 18-24",
+      "anio": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/edat_lfse_14",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE.",
+      "organismo": "Eurostat"
+     },
+     {
+      "nombre": "Gasto público en educación (COFOG 09)",
+      "valor": 5.1,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; incluye todos los niveles.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "trabajo": {
+    "cifras": [
+     {
+      "nombre": "Paro juvenil (15-24 años)",
+      "valor": 18.89,
+      "unidad": "% de la población activa joven",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "nota": "Modelada; difiere de Eurostat/oficinas nacionales.",
+      "organismo": "OIT (estimación modelada) vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en vejez (COFOG 1002, pensiones y otros)",
+      "valor": 13.4,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; no incluye todas las prestaciones.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "infraestructuras": {
+    "cifras": [
+     {
+      "nombre": "Formación bruta de capital fijo (pública y privada)",
+      "valor": 22.02,
+      "unidad": "% del PIB",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/NE.GDI.FTOT.ZS",
+      "nivel": "P",
+      "nota": "No separa inversión pública.",
+      "organismo": "Cuentas nacionales vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "seguridad": {
+    "cifras": [
+     {
+      "nombre": "Muertes por accidente de tráfico",
+      "valor": 5.1,
+      "unidad": "por 100.000 hab.",
+      "anio": "2019",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.TRAF.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS 2019, no la oficial de cada país.",
+      "organismo": "OMS Global Status Report vía Banco Mundial"
+     },
+     {
+      "nombre": "Muertes por suicidio",
+      "valor": 16.58,
+      "unidad": "por 100.000 hab.",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.SUIC.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS; sin ajustar por edad en esta serie [VERIFICAR].",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en orden público y seguridad (COFOG 03)",
+      "valor": 1.8,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; policía, tribunales y prisiones.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   }
+  }
  },
  "IT": {
   "lectura": "Vida de 84,0 años y mortalidad infantil de 2,3 con un gasto sanitario del 8,4 % del PIB. Vulnerabilidades en las cifras: 25,1 % de población de 65 años o más, 1,18 hijos por mujer, 14,3 % de empleo vulnerable y banda ancha fija de 31,8 por 100 hab., la más baja de la UE de esta lista salvo Polonia. A favor: poca sobrecarga de vivienda (5,0 %). [OPINIÓN]",
-  "dimensiones": {}
+  "dimensiones": {
+   "sanidad": {
+    "cifras": [
+     {
+      "nombre": "Gasto sanitario público (gobierno general)",
+      "valor": 6.14,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GD.ZS",
+      "nivel": "P",
+      "nota": "Parte pública; la total ya está en el panel. Comparable (SHA 2011).",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto sanitario público sobre el gasto total del Estado",
+      "valor": 11.44,
+      "unidad": "% del gasto público",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GE.ZS",
+      "nivel": "P",
+      "nota": "Peso de la sanidad en el presupuesto público.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Pago directo del paciente",
+      "valor": 22.31,
+      "unidad": "% del gasto sanitario",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.OOPC.CH.ZS",
+      "nivel": "P",
+      "nota": "Cuanto mayor, más financiación privada directa.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Probabilidad de morir entre 30 y 70 años por cardiovascular, cáncer, diabetes o respiratoria",
+      "valor": 9.1,
+      "unidad": "%",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.NCOM.ZS",
+      "nivel": "P",
+      "nota": "Estimación modelada OMS.",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad de menores de 5 años",
+      "valor": 2.7,
+      "unidad": "por 1.000 nacidos vivos",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.MORT",
+      "nivel": "P",
+      "nota": "Estimación modelada.",
+      "organismo": "UN IGME vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad materna",
+      "valor": 6,
+      "unidad": "por 100.000 nacidos vivos",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.MMRT",
+      "nivel": "P",
+      "nota": "Modelada; cifras bajas con mucho ruido.",
+      "organismo": "OMS/UNICEF/UNFPA/BM vía Banco Mundial"
+     },
+     {
+      "nombre": "Vacunación de sarampión (12-23 meses)",
+      "valor": 95,
+      "unidad": "% de niños",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.IMM.MEAS",
+      "nivel": "P",
+      "nota": "Una dosis.",
+      "organismo": "OMS/UNICEF vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en sanidad (COFOG 07)",
+      "valor": 6.6,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; incluye I+D y administración de salud.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "educacion": {
+    "cifras": [
+     {
+      "nombre": "Educación sobre el gasto total del Estado",
+      "valor": 7.41,
+      "unidad": "% del gasto público",
+      "anio": "2022",
+      "fuente": "https://api.worldbank.org/v2/indicator/SE.XPD.TOTL.GB.ZS",
+      "nivel": "P",
+      "nota": "Complementa el % del PIB ya cargado.",
+      "organismo": "UNESCO UIS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto en I+D (todos los sectores)",
+      "valor": 1.38,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/GB.XPD.RSDV.GD.ZS",
+      "nivel": "P",
+      "nota": "No es solo público.",
+      "organismo": "UNESCO UIS/OCDE vía Banco Mundial"
+     },
+     {
+      "nombre": "Abandono escolar temprano (18-24 años)",
+      "valor": 8.2,
+      "unidad": "% de 18-24",
+      "anio": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/edat_lfse_14",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE.",
+      "organismo": "Eurostat"
+     },
+     {
+      "nombre": "Gasto público en educación (COFOG 09)",
+      "valor": 4.0,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; incluye todos los niveles.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "trabajo": {
+    "cifras": [
+     {
+      "nombre": "Paro juvenil (15-24 años)",
+      "valor": 20.55,
+      "unidad": "% de la población activa joven",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "nota": "Modelada; difiere de Eurostat/oficinas nacionales.",
+      "organismo": "OIT (estimación modelada) vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en vejez (COFOG 1002, pensiones y otros)",
+      "valor": 13.9,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; no incluye todas las prestaciones.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "infraestructuras": {
+    "cifras": [
+     {
+      "nombre": "Formación bruta de capital fijo (pública y privada)",
+      "valor": 21.83,
+      "unidad": "% del PIB",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/NE.GDI.FTOT.ZS",
+      "nivel": "P",
+      "nota": "No separa inversión pública.",
+      "organismo": "Cuentas nacionales vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "seguridad": {
+    "cifras": [
+     {
+      "nombre": "Muertes por accidente de tráfico",
+      "valor": 5.3,
+      "unidad": "por 100.000 hab.",
+      "anio": "2019",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.TRAF.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS 2019, no la oficial de cada país.",
+      "organismo": "OMS Global Status Report vía Banco Mundial"
+     },
+     {
+      "nombre": "Muertes por suicidio",
+      "valor": 6.99,
+      "unidad": "por 100.000 hab.",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.SUIC.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS; sin ajustar por edad en esta serie [VERIFICAR].",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en orden público y seguridad (COFOG 03)",
+      "valor": 1.8,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; policía, tribunales y prisiones.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   }
+  }
  },
  "NL": {
   "lectura": "Control de la corrupción en 1,87 e imperio de la ley en 1,67 (WGI 2025, percepción); gasto sanitario del 10,2 % del PIB y banda ancha de 43 por 100 hab. Sobrecarga de vivienda de 6,5 % y camas hospitalarias de 2,2 por 1.000, bajas. El gobierno en minoría no aparece en estas cifras. [OPINIÓN]",
-  "dimensiones": {}
+  "dimensiones": {
+   "sanidad": {
+    "cifras": [
+     {
+      "nombre": "Gasto sanitario público (gobierno general)",
+      "valor": 6.72,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GD.ZS",
+      "nivel": "P",
+      "nota": "Parte pública; la total ya está en el panel. Comparable (SHA 2011).",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto sanitario público sobre el gasto total del Estado",
+      "valor": 15.56,
+      "unidad": "% del gasto público",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GE.ZS",
+      "nivel": "P",
+      "nota": "Peso de la sanidad en el presupuesto público.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Pago directo del paciente",
+      "valor": 11.79,
+      "unidad": "% del gasto sanitario",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.OOPC.CH.ZS",
+      "nivel": "P",
+      "nota": "Cuanto mayor, más financiación privada directa.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Probabilidad de morir entre 30 y 70 años por cardiovascular, cáncer, diabetes o respiratoria",
+      "valor": 9.9,
+      "unidad": "%",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.NCOM.ZS",
+      "nivel": "P",
+      "nota": "Estimación modelada OMS.",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad de menores de 5 años",
+      "valor": 3.9,
+      "unidad": "por 1.000 nacidos vivos",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.MORT",
+      "nivel": "P",
+      "nota": "Estimación modelada.",
+      "organismo": "UN IGME vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad materna",
+      "valor": 4,
+      "unidad": "por 100.000 nacidos vivos",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.MMRT",
+      "nivel": "P",
+      "nota": "Modelada; cifras bajas con mucho ruido.",
+      "organismo": "OMS/UNICEF/UNFPA/BM vía Banco Mundial"
+     },
+     {
+      "nombre": "Vacunación de sarampión (12-23 meses)",
+      "valor": 89,
+      "unidad": "% de niños",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.IMM.MEAS",
+      "nivel": "P",
+      "nota": "Una dosis.",
+      "organismo": "OMS/UNICEF vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en sanidad (COFOG 07)",
+      "valor": 7.3,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; incluye I+D y administración de salud.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "educacion": {
+    "cifras": [
+     {
+      "nombre": "Educación sobre el gasto total del Estado",
+      "valor": 11.97,
+      "unidad": "% del gasto público",
+      "anio": "2022",
+      "fuente": "https://api.worldbank.org/v2/indicator/SE.XPD.TOTL.GB.ZS",
+      "nivel": "P",
+      "nota": "Complementa el % del PIB ya cargado.",
+      "organismo": "UNESCO UIS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto en I+D (todos los sectores)",
+      "valor": 2.27,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/GB.XPD.RSDV.GD.ZS",
+      "nivel": "P",
+      "nota": "No es solo público.",
+      "organismo": "UNESCO UIS/OCDE vía Banco Mundial"
+     },
+     {
+      "nombre": "Abandono escolar temprano (18-24 años)",
+      "valor": 7.4,
+      "unidad": "% de 18-24",
+      "anio": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/edat_lfse_14",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE.",
+      "organismo": "Eurostat"
+     },
+     {
+      "nombre": "Gasto público en educación (COFOG 09)",
+      "valor": 5.1,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; incluye todos los niveles.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "trabajo": {
+    "cifras": [
+     {
+      "nombre": "Paro juvenil (15-24 años)",
+      "valor": 8.83,
+      "unidad": "% de la población activa joven",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "nota": "Modelada; difiere de Eurostat/oficinas nacionales.",
+      "organismo": "OIT (estimación modelada) vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en vejez (COFOG 1002, pensiones y otros)",
+      "valor": 6.1,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; no incluye todas las prestaciones.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "infraestructuras": {
+    "cifras": [
+     {
+      "nombre": "Formación bruta de capital fijo (pública y privada)",
+      "valor": 19.8,
+      "unidad": "% del PIB",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/NE.GDI.FTOT.ZS",
+      "nivel": "P",
+      "nota": "No separa inversión pública.",
+      "organismo": "Cuentas nacionales vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "seguridad": {
+    "cifras": [
+     {
+      "nombre": "Muertes por accidente de tráfico",
+      "valor": 4,
+      "unidad": "por 100.000 hab.",
+      "anio": "2019",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.TRAF.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS 2019, no la oficial de cada país.",
+      "organismo": "OMS Global Status Report vía Banco Mundial"
+     },
+     {
+      "nombre": "Muertes por suicidio",
+      "valor": 11.5,
+      "unidad": "por 100.000 hab.",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.SUIC.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS; sin ajustar por edad en esta serie [VERIFICAR].",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en orden público y seguridad (COFOG 03)",
+      "valor": 1.9,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; policía, tribunales y prisiones.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   }
+  }
  },
  "PL": {
   "lectura": "Sobrecarga de vivienda de 4,1 % y paro bajo (ver C59), con gasto sanitario de 8,1 % del PIB y esperanza de vida de 78,4 años, la menor de los seis países de la UE de esta lista. Banda ancha fija de 25,4 por 100 hab. y migración neta negativa (−331.000 en 5 años). Imperio de la ley en 0,57 (percepción), con la cohabitación presidente-gobierno como ruido político. [OPINIÓN]",
-  "dimensiones": {}
+  "dimensiones": {
+   "sanidad": {
+    "cifras": [
+     {
+      "nombre": "Gasto sanitario público (gobierno general)",
+      "valor": 5.5,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GD.ZS",
+      "nivel": "P",
+      "nota": "Parte pública; la total ya está en el panel. Comparable (SHA 2011).",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto sanitario público sobre el gasto total del Estado",
+      "valor": 11.75,
+      "unidad": "% del gasto público",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GE.ZS",
+      "nivel": "P",
+      "nota": "Peso de la sanidad en el presupuesto público.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Pago directo del paciente",
+      "valor": 16.21,
+      "unidad": "% del gasto sanitario",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.OOPC.CH.ZS",
+      "nivel": "P",
+      "nota": "Cuanto mayor, más financiación privada directa.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Probabilidad de morir entre 30 y 70 años por cardiovascular, cáncer, diabetes o respiratoria",
+      "valor": 17,
+      "unidad": "%",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.NCOM.ZS",
+      "nivel": "P",
+      "nota": "Estimación modelada OMS.",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad de menores de 5 años",
+      "valor": 4.2,
+      "unidad": "por 1.000 nacidos vivos",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.MORT",
+      "nivel": "P",
+      "nota": "Estimación modelada.",
+      "organismo": "UN IGME vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad materna",
+      "valor": 2,
+      "unidad": "por 100.000 nacidos vivos",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.MMRT",
+      "nivel": "P",
+      "nota": "Modelada; cifras bajas con mucho ruido.",
+      "organismo": "OMS/UNICEF/UNFPA/BM vía Banco Mundial"
+     },
+     {
+      "nombre": "Vacunación de sarampión (12-23 meses)",
+      "valor": 92,
+      "unidad": "% de niños",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.IMM.MEAS",
+      "nivel": "P",
+      "nota": "Una dosis.",
+      "organismo": "OMS/UNICEF vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en sanidad (COFOG 07)",
+      "valor": 6.1,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; incluye I+D y administración de salud.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "educacion": {
+    "cifras": [
+     {
+      "nombre": "Educación sobre el gasto total del Estado",
+      "valor": 9.97,
+      "unidad": "% del gasto público",
+      "anio": "2022",
+      "fuente": "https://api.worldbank.org/v2/indicator/SE.XPD.TOTL.GB.ZS",
+      "nivel": "P",
+      "nota": "Complementa el % del PIB ya cargado.",
+      "organismo": "UNESCO UIS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto en I+D (todos los sectores)",
+      "valor": 1.56,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/GB.XPD.RSDV.GD.ZS",
+      "nivel": "P",
+      "nota": "No es solo público.",
+      "organismo": "UNESCO UIS/OCDE vía Banco Mundial"
+     },
+     {
+      "nombre": "Abandono escolar temprano (18-24 años)",
+      "valor": 4.0,
+      "unidad": "% de 18-24",
+      "anio": "2025",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/edat_lfse_14",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE.",
+      "organismo": "Eurostat"
+     },
+     {
+      "nombre": "Gasto público en educación (COFOG 09)",
+      "valor": 5.6,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; incluye todos los niveles.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "trabajo": {
+    "cifras": [
+     {
+      "nombre": "Paro juvenil (15-24 años)",
+      "valor": 10.7,
+      "unidad": "% de la población activa joven",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "nota": "Modelada; difiere de Eurostat/oficinas nacionales.",
+      "organismo": "OIT (estimación modelada) vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en vejez (COFOG 1002, pensiones y otros)",
+      "valor": 10.8,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; no incluye todas las prestaciones.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   },
+   "infraestructuras": {
+    "cifras": [
+     {
+      "nombre": "Formación bruta de capital fijo (pública y privada)",
+      "valor": 17.03,
+      "unidad": "% del PIB",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/NE.GDI.FTOT.ZS",
+      "nivel": "P",
+      "nota": "No separa inversión pública.",
+      "organismo": "Cuentas nacionales vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "seguridad": {
+    "cifras": [
+     {
+      "nombre": "Muertes por accidente de tráfico",
+      "valor": 9.4,
+      "unidad": "por 100.000 hab.",
+      "anio": "2019",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.TRAF.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS 2019, no la oficial de cada país.",
+      "organismo": "OMS Global Status Report vía Banco Mundial"
+     },
+     {
+      "nombre": "Muertes por suicidio",
+      "valor": 13.67,
+      "unidad": "por 100.000 hab.",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.SUIC.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS; sin ajustar por edad en esta serie [VERIFICAR].",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto público en orden público y seguridad (COFOG 03)",
+      "valor": 2.4,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp",
+      "nivel": "P",
+      "nota": "Eurostat. Solo UE; policía, tribunales y prisiones.",
+      "organismo": "Eurostat"
+     }
+    ],
+    "hitos": []
+   }
+  }
  },
  "US": {
   "lectura": "Gasto sanitario de 16,7 % del PIB (13.473 $ por habitante, 2023) con esperanza de vida de 78,9 años y mortalidad infantil de 5,5; homicidios de 5,76 por 100.000. Es exportador neto de energía (−9,8 %) y su migración neta es la mayor de la lista. Estabilidad política en −0,30 (WGI, percepción). El contraste está entre gasto muy alto y resultados medios. [OPINIÓN]",
@@ -75,28 +1310,963 @@
      }
     ],
     "hitos": []
+   },
+   "sanidad": {
+    "cifras": [
+     {
+      "nombre": "Gasto sanitario público (gobierno general)",
+      "valor": 9.01,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GD.ZS",
+      "nivel": "P",
+      "nota": "Parte pública; la total ya está en el panel. Comparable (SHA 2011).",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto sanitario público sobre el gasto total del Estado",
+      "valor": 23.02,
+      "unidad": "% del gasto público",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GE.ZS",
+      "nivel": "P",
+      "nota": "Peso de la sanidad en el presupuesto público.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Pago directo del paciente",
+      "valor": 10.93,
+      "unidad": "% del gasto sanitario",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.OOPC.CH.ZS",
+      "nivel": "P",
+      "nota": "Cuanto mayor, más financiación privada directa.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Probabilidad de morir entre 30 y 70 años por cardiovascular, cáncer, diabetes o respiratoria",
+      "valor": 13.7,
+      "unidad": "%",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.NCOM.ZS",
+      "nivel": "P",
+      "nota": "Estimación modelada OMS.",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad de menores de 5 años",
+      "valor": 6.5,
+      "unidad": "por 1.000 nacidos vivos",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.MORT",
+      "nivel": "P",
+      "nota": "Estimación modelada.",
+      "organismo": "UN IGME vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad materna",
+      "valor": 17,
+      "unidad": "por 100.000 nacidos vivos",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.MMRT",
+      "nivel": "P",
+      "nota": "Modelada; cifras bajas con mucho ruido.",
+      "organismo": "OMS/UNICEF/UNFPA/BM vía Banco Mundial"
+     },
+     {
+      "nombre": "Vacunación de sarampión (12-23 meses)",
+      "valor": 92,
+      "unidad": "% de niños",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.IMM.MEAS",
+      "nivel": "P",
+      "nota": "Una dosis.",
+      "organismo": "OMS/UNICEF vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "educacion": {
+    "cifras": [
+     {
+      "nombre": "Educación sobre el gasto total del Estado",
+      "valor": 11.29,
+      "unidad": "% del gasto público",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SE.XPD.TOTL.GB.ZS",
+      "nivel": "P",
+      "nota": "Complementa el % del PIB ya cargado.",
+      "organismo": "UNESCO UIS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto en I+D (todos los sectores)",
+      "valor": 3.45,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/GB.XPD.RSDV.GD.ZS",
+      "nivel": "P",
+      "nota": "No es solo público.",
+      "organismo": "UNESCO UIS/OCDE vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "trabajo": {
+    "cifras": [
+     {
+      "nombre": "Paro juvenil (15-24 años)",
+      "valor": 9.34,
+      "unidad": "% de la población activa joven",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "nota": "Modelada; difiere de Eurostat/oficinas nacionales.",
+      "organismo": "OIT (estimación modelada) vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "infraestructuras": {
+    "cifras": [
+     {
+      "nombre": "Formación bruta de capital fijo (pública y privada)",
+      "valor": 21.35,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/NE.GDI.FTOT.ZS",
+      "nivel": "P",
+      "nota": "No separa inversión pública.",
+      "organismo": "Cuentas nacionales vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "seguridad": {
+    "cifras": [
+     {
+      "nombre": "Muertes por accidente de tráfico",
+      "valor": 12.7,
+      "unidad": "por 100.000 hab.",
+      "anio": "2019",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.TRAF.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS 2019, no la oficial de cada país.",
+      "organismo": "OMS Global Status Report vía Banco Mundial"
+     },
+     {
+      "nombre": "Muertes por suicidio",
+      "valor": 15.63,
+      "unidad": "por 100.000 hab.",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.SUIC.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS; sin ajustar por edad en esta serie [VERIFICAR].",
+      "organismo": "OMS vía Banco Mundial"
+     }
+    ],
+    "hitos": []
    }
   }
  },
  "CN": {
   "lectura": "Gasto sanitario de 5,9 % del PIB (763 $ por habitante) y esperanza de vida de 78,0 años. Empleo vulnerable de 33,4 % (en parte rural), 14,9 % de población de 65 años o más y migración neta negativa. Imperio de la ley en −0,43 y control de la corrupción en 0,07 (WGI, percepción de terceros, no cifras oficiales chinas). [OPINIÓN] [VERIFICAR] comparabilidad.",
-  "dimensiones": {}
+  "dimensiones": {
+   "sanidad": {
+    "cifras": [
+     {
+      "nombre": "Gasto sanitario público (gobierno general)",
+      "valor": 3.39,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GD.ZS",
+      "nivel": "P",
+      "nota": "Parte pública; la total ya está en el panel. Comparable (SHA 2011).",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto sanitario público sobre el gasto total del Estado",
+      "valor": 10.37,
+      "unidad": "% del gasto público",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GE.ZS",
+      "nivel": "P",
+      "nota": "Peso de la sanidad en el presupuesto público.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Pago directo del paciente",
+      "valor": 32.17,
+      "unidad": "% del gasto sanitario",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.OOPC.CH.ZS",
+      "nivel": "P",
+      "nota": "Cuanto mayor, más financiación privada directa.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Probabilidad de morir entre 30 y 70 años por cardiovascular, cáncer, diabetes o respiratoria",
+      "valor": 15.9,
+      "unidad": "%",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.NCOM.ZS",
+      "nivel": "P",
+      "nota": "Estimación modelada OMS.",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad de menores de 5 años",
+      "valor": 5.7,
+      "unidad": "por 1.000 nacidos vivos",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.MORT",
+      "nivel": "P",
+      "nota": "Estimación modelada.",
+      "organismo": "UN IGME vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad materna",
+      "valor": 16,
+      "unidad": "por 100.000 nacidos vivos",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.MMRT",
+      "nivel": "P",
+      "nota": "Modelada; cifras bajas con mucho ruido.",
+      "organismo": "OMS/UNICEF/UNFPA/BM vía Banco Mundial"
+     },
+     {
+      "nombre": "Vacunación de sarampión (12-23 meses)",
+      "valor": 95,
+      "unidad": "% de niños",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.IMM.MEAS",
+      "nivel": "P",
+      "nota": "Una dosis.",
+      "organismo": "OMS/UNICEF vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "educacion": {
+    "cifras": [
+     {
+      "nombre": "Educación sobre el gasto total del Estado",
+      "valor": 11.91,
+      "unidad": "% del gasto público",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SE.XPD.TOTL.GB.ZS",
+      "nivel": "P",
+      "nota": "Complementa el % del PIB ya cargado.",
+      "organismo": "UNESCO UIS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto en I+D (todos los sectores)",
+      "valor": 2.58,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/GB.XPD.RSDV.GD.ZS",
+      "nivel": "P",
+      "nota": "No es solo público.",
+      "organismo": "UNESCO UIS/OCDE vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "trabajo": {
+    "cifras": [
+     {
+      "nombre": "Paro juvenil (15-24 años)",
+      "valor": 15.79,
+      "unidad": "% de la población activa joven",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "nota": "Modelada; difiere de Eurostat/oficinas nacionales.",
+      "organismo": "OIT (estimación modelada) vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "infraestructuras": {
+    "cifras": [
+     {
+      "nombre": "Formación bruta de capital fijo (pública y privada)",
+      "valor": 39.65,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/NE.GDI.FTOT.ZS",
+      "nivel": "P",
+      "nota": "No separa inversión pública.",
+      "organismo": "Cuentas nacionales vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "seguridad": {
+    "cifras": [
+     {
+      "nombre": "Muertes por accidente de tráfico",
+      "valor": 17.4,
+      "unidad": "por 100.000 hab.",
+      "anio": "2019",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.TRAF.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS 2019, no la oficial de cada país.",
+      "organismo": "OMS Global Status Report vía Banco Mundial"
+     },
+     {
+      "nombre": "Muertes por suicidio",
+      "valor": 8.95,
+      "unidad": "por 100.000 hab.",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.SUIC.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS; sin ajustar por edad en esta serie [VERIFICAR].",
+      "organismo": "OMS vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   }
+  }
  },
  "JP": {
   "lectura": "La población más envejecida de la lista (30,0 % de 65 años o más, ratio de dependencia 70,2), con mortalidad infantil de 1,8, vida de 84,0 años y homicidios de 0,23 por 100.000. Estabilidad política en 1,26 (WGI, percepción). A favor: baja delincuencia y sanidad eficaz; en contra: natalidad de 5,7 por 1.000 y 87 % de energía importada. [OPINIÓN]",
-  "dimensiones": {}
+  "dimensiones": {
+   "sanidad": {
+    "cifras": [
+     {
+      "nombre": "Gasto sanitario público (gobierno general)",
+      "valor": 9.11,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GD.ZS",
+      "nivel": "P",
+      "nota": "Parte pública; la total ya está en el panel. Comparable (SHA 2011).",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto sanitario público sobre el gasto total del Estado",
+      "valor": 23.3,
+      "unidad": "% del gasto público",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GE.ZS",
+      "nivel": "P",
+      "nota": "Peso de la sanidad en el presupuesto público.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Pago directo del paciente",
+      "valor": 12.24,
+      "unidad": "% del gasto sanitario",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.OOPC.CH.ZS",
+      "nivel": "P",
+      "nota": "Cuanto mayor, más financiación privada directa.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Probabilidad de morir entre 30 y 70 años por cardiovascular, cáncer, diabetes o respiratoria",
+      "valor": 8,
+      "unidad": "%",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.NCOM.ZS",
+      "nivel": "P",
+      "nota": "Estimación modelada OMS.",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad de menores de 5 años",
+      "valor": 2.4,
+      "unidad": "por 1.000 nacidos vivos",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.MORT",
+      "nivel": "P",
+      "nota": "Estimación modelada.",
+      "organismo": "UN IGME vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad materna",
+      "valor": 3,
+      "unidad": "por 100.000 nacidos vivos",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.MMRT",
+      "nivel": "P",
+      "nota": "Modelada; cifras bajas con mucho ruido.",
+      "organismo": "OMS/UNICEF/UNFPA/BM vía Banco Mundial"
+     },
+     {
+      "nombre": "Vacunación de sarampión (12-23 meses)",
+      "valor": 95,
+      "unidad": "% de niños",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.IMM.MEAS",
+      "nivel": "P",
+      "nota": "Una dosis.",
+      "organismo": "OMS/UNICEF vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "educacion": {
+    "cifras": [
+     {
+      "nombre": "Educación sobre el gasto total del Estado",
+      "valor": null,
+      "unidad": "% del gasto público",
+      "anio": null,
+      "fuente": "https://api.worldbank.org/v2/indicator/SE.XPD.TOTL.GB.ZS",
+      "nivel": "VERIFICAR",
+      "nota": "Sin dato en el Banco Mundial para este país",
+      "organismo": "UNESCO UIS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto en I+D (todos los sectores)",
+      "valor": 3.44,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/GB.XPD.RSDV.GD.ZS",
+      "nivel": "P",
+      "nota": "No es solo público.",
+      "organismo": "UNESCO UIS/OCDE vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "trabajo": {
+    "cifras": [
+     {
+      "nombre": "Paro juvenil (15-24 años)",
+      "valor": 3.9,
+      "unidad": "% de la población activa joven",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "nota": "Modelada; difiere de Eurostat/oficinas nacionales.",
+      "organismo": "OIT (estimación modelada) vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "infraestructuras": {
+    "cifras": [
+     {
+      "nombre": "Formación bruta de capital fijo (pública y privada)",
+      "valor": 27.81,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/NE.GDI.FTOT.ZS",
+      "nivel": "P",
+      "nota": "No separa inversión pública.",
+      "organismo": "Cuentas nacionales vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "seguridad": {
+    "cifras": [
+     {
+      "nombre": "Muertes por accidente de tráfico",
+      "valor": 3.6,
+      "unidad": "por 100.000 hab.",
+      "anio": "2019",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.TRAF.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS 2019, no la oficial de cada país.",
+      "organismo": "OMS Global Status Report vía Banco Mundial"
+     },
+     {
+      "nombre": "Muertes por suicidio",
+      "valor": 17.43,
+      "unidad": "por 100.000 hab.",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.SUIC.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS; sin ajustar por edad en esta serie [VERIFICAR].",
+      "organismo": "OMS vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   }
+  }
  },
  "IN": {
   "lectura": "Población joven (7,4 % de 65 años o más) y crecimiento alto (ver C59), con gasto sanitario de 3,3 % del PIB (85 $ por habitante), mortalidad infantil de 23,3 y 0,72 médicos por 1.000. Empleo vulnerable de 71,6 %, banda ancha fija de 3,2 por 100 hab. Estabilidad política en −0,61 (WGI, percepción). La ventaja demográfica depende de crear empleo formal. [OPINIÓN]",
-  "dimensiones": {}
+  "dimensiones": {
+   "sanidad": {
+    "cifras": [
+     {
+      "nombre": "Gasto sanitario público (gobierno general)",
+      "valor": 1.3,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GD.ZS",
+      "nivel": "P",
+      "nota": "Parte pública; la total ya está en el panel. Comparable (SHA 2011).",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto sanitario público sobre el gasto total del Estado",
+      "valor": 4.59,
+      "unidad": "% del gasto público",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GE.ZS",
+      "nivel": "P",
+      "nota": "Peso de la sanidad en el presupuesto público.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Pago directo del paciente",
+      "valor": 43.89,
+      "unidad": "% del gasto sanitario",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.OOPC.CH.ZS",
+      "nivel": "P",
+      "nota": "Cuanto mayor, más financiación privada directa.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Probabilidad de morir entre 30 y 70 años por cardiovascular, cáncer, diabetes o respiratoria",
+      "valor": 23.6,
+      "unidad": "%",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.NCOM.ZS",
+      "nivel": "P",
+      "nota": "Estimación modelada OMS.",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad de menores de 5 años",
+      "valor": 26.6,
+      "unidad": "por 1.000 nacidos vivos",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.MORT",
+      "nivel": "P",
+      "nota": "Estimación modelada.",
+      "organismo": "UN IGME vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad materna",
+      "valor": 80,
+      "unidad": "por 100.000 nacidos vivos",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.MMRT",
+      "nivel": "P",
+      "nota": "Modelada; cifras bajas con mucho ruido.",
+      "organismo": "OMS/UNICEF/UNFPA/BM vía Banco Mundial"
+     },
+     {
+      "nombre": "Vacunación de sarampión (12-23 meses)",
+      "valor": 97,
+      "unidad": "% de niños",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.IMM.MEAS",
+      "nivel": "P",
+      "nota": "Una dosis.",
+      "organismo": "OMS/UNICEF vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "educacion": {
+    "cifras": [
+     {
+      "nombre": "Educación sobre el gasto total del Estado",
+      "valor": 14.16,
+      "unidad": "% del gasto público",
+      "anio": "2022",
+      "fuente": "https://api.worldbank.org/v2/indicator/SE.XPD.TOTL.GB.ZS",
+      "nivel": "P",
+      "nota": "Complementa el % del PIB ya cargado.",
+      "organismo": "UNESCO UIS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto en I+D (todos los sectores)",
+      "valor": null,
+      "unidad": "% del PIB",
+      "anio": null,
+      "fuente": "https://api.worldbank.org/v2/indicator/GB.XPD.RSDV.GD.ZS",
+      "nivel": "VERIFICAR",
+      "nota": "Sin dato en el Banco Mundial para este país",
+      "organismo": "UNESCO UIS/OCDE vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "trabajo": {
+    "cifras": [
+     {
+      "nombre": "Paro juvenil (15-24 años)",
+      "valor": 16.02,
+      "unidad": "% de la población activa joven",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "nota": "Modelada; difiere de Eurostat/oficinas nacionales.",
+      "organismo": "OIT (estimación modelada) vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "infraestructuras": {
+    "cifras": [
+     {
+      "nombre": "Formación bruta de capital fijo (pública y privada)",
+      "valor": 31.68,
+      "unidad": "% del PIB",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/NE.GDI.FTOT.ZS",
+      "nivel": "P",
+      "nota": "No separa inversión pública.",
+      "organismo": "Cuentas nacionales vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "seguridad": {
+    "cifras": [
+     {
+      "nombre": "Muertes por accidente de tráfico",
+      "valor": 15.6,
+      "unidad": "por 100.000 hab.",
+      "anio": "2019",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.TRAF.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS 2019, no la oficial de cada país.",
+      "organismo": "OMS Global Status Report vía Banco Mundial"
+     },
+     {
+      "nombre": "Muertes por suicidio",
+      "valor": 12.56,
+      "unidad": "por 100.000 hab.",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.SUIC.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS; sin ajustar por edad en esta serie [VERIFICAR].",
+      "organismo": "OMS vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   }
+  }
  },
  "GB": {
   "lectura": "Gasto sanitario de 11,1 % del PIB, vida de 81,4 años y control de la corrupción en 1,53 (WGI, percepción). Migración neta positiva y natalidad de 1,55 hijos por mujer. Camas por 1.000 bajas (2,4) y 47,6 % de energía importada. El cambio de primer ministro de julio no se ve aún en estas cifras. [OPINIÓN]",
-  "dimensiones": {}
+  "dimensiones": {
+   "sanidad": {
+    "cifras": [
+     {
+      "nombre": "Gasto sanitario público (gobierno general)",
+      "valor": 8.99,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GD.ZS",
+      "nivel": "P",
+      "nota": "Parte pública; la total ya está en el panel. Comparable (SHA 2011).",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto sanitario público sobre el gasto total del Estado",
+      "valor": 20.05,
+      "unidad": "% del gasto público",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GE.ZS",
+      "nivel": "P",
+      "nota": "Peso de la sanidad en el presupuesto público.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Pago directo del paciente",
+      "valor": 14.56,
+      "unidad": "% del gasto sanitario",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.OOPC.CH.ZS",
+      "nivel": "P",
+      "nota": "Cuanto mayor, más financiación privada directa.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Probabilidad de morir entre 30 y 70 años por cardiovascular, cáncer, diabetes o respiratoria",
+      "valor": 11,
+      "unidad": "%",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.NCOM.ZS",
+      "nivel": "P",
+      "nota": "Estimación modelada OMS.",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad de menores de 5 años",
+      "valor": 4.7,
+      "unidad": "por 1.000 nacidos vivos",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.MORT",
+      "nivel": "P",
+      "nota": "Estimación modelada.",
+      "organismo": "UN IGME vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad materna",
+      "valor": 8,
+      "unidad": "por 100.000 nacidos vivos",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.MMRT",
+      "nivel": "P",
+      "nota": "Modelada; cifras bajas con mucho ruido.",
+      "organismo": "OMS/UNICEF/UNFPA/BM vía Banco Mundial"
+     },
+     {
+      "nombre": "Vacunación de sarampión (12-23 meses)",
+      "valor": 89,
+      "unidad": "% de niños",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.IMM.MEAS",
+      "nivel": "P",
+      "nota": "Una dosis.",
+      "organismo": "OMS/UNICEF vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "educacion": {
+    "cifras": [
+     {
+      "nombre": "Educación sobre el gasto total del Estado",
+      "valor": 11.82,
+      "unidad": "% del gasto público",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SE.XPD.TOTL.GB.ZS",
+      "nivel": "P",
+      "nota": "Complementa el % del PIB ya cargado.",
+      "organismo": "UNESCO UIS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto en I+D (todos los sectores)",
+      "valor": 2.68,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/GB.XPD.RSDV.GD.ZS",
+      "nivel": "P",
+      "nota": "No es solo público.",
+      "organismo": "UNESCO UIS/OCDE vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "trabajo": {
+    "cifras": [
+     {
+      "nombre": "Paro juvenil (15-24 años)",
+      "valor": 14.65,
+      "unidad": "% de la población activa joven",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "nota": "Modelada; difiere de Eurostat/oficinas nacionales.",
+      "organismo": "OIT (estimación modelada) vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "infraestructuras": {
+    "cifras": [
+     {
+      "nombre": "Formación bruta de capital fijo (pública y privada)",
+      "valor": 18.88,
+      "unidad": "% del PIB",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/NE.GDI.FTOT.ZS",
+      "nivel": "P",
+      "nota": "No separa inversión pública.",
+      "organismo": "Cuentas nacionales vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "seguridad": {
+    "cifras": [
+     {
+      "nombre": "Muertes por accidente de tráfico",
+      "valor": 3.2,
+      "unidad": "por 100.000 hab.",
+      "anio": "2019",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.TRAF.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS 2019, no la oficial de cada país.",
+      "organismo": "OMS Global Status Report vía Banco Mundial"
+     },
+     {
+      "nombre": "Muertes por suicidio",
+      "valor": 9.55,
+      "unidad": "por 100.000 hab.",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.SUIC.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS; sin ajustar por edad en esta serie [VERIFICAR].",
+      "organismo": "OMS vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   }
+  }
  },
  "RU": {
   "lectura": "Esperanza de vida de 73,4 años, solo por encima de la India (72,2), homicidios de 6,77 por 100.000 (2021) y gasto sanitario de 7,0 % del PIB. Es exportador neto de energía (−70,7 %) y tiene 5,1 médicos por 1.000. Imperio de la ley en −1,27 y control de la corrupción en −0,98 (WGI, percepción de terceros). Hay que tomar con cautela las cifras de un país en guerra [VERIFICAR]. [OPINIÓN]",
-  "dimensiones": {}
+  "dimensiones": {
+   "sanidad": {
+    "cifras": [
+     {
+      "nombre": "Gasto sanitario público (gobierno general)",
+      "valor": 4.93,
+      "unidad": "% del PIB",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GD.ZS",
+      "nivel": "P",
+      "nota": "Parte pública; la total ya está en el panel. Comparable (SHA 2011).",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto sanitario público sobre el gasto total del Estado",
+      "valor": 13.67,
+      "unidad": "% del gasto público",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.GHED.GE.ZS",
+      "nivel": "P",
+      "nota": "Peso de la sanidad en el presupuesto público.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Pago directo del paciente",
+      "valor": 28.39,
+      "unidad": "% del gasto sanitario",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.XPD.OOPC.CH.ZS",
+      "nivel": "P",
+      "nota": "Cuanto mayor, más financiación privada directa.",
+      "organismo": "OMS GHED vía Banco Mundial"
+     },
+     {
+      "nombre": "Probabilidad de morir entre 30 y 70 años por cardiovascular, cáncer, diabetes o respiratoria",
+      "valor": 22.4,
+      "unidad": "%",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.NCOM.ZS",
+      "nivel": "P",
+      "nota": "Estimación modelada OMS.",
+      "organismo": "OMS vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad de menores de 5 años",
+      "valor": 5.2,
+      "unidad": "por 1.000 nacidos vivos",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.DYN.MORT",
+      "nivel": "P",
+      "nota": "Estimación modelada.",
+      "organismo": "UN IGME vía Banco Mundial"
+     },
+     {
+      "nombre": "Mortalidad materna",
+      "valor": 9,
+      "unidad": "por 100.000 nacidos vivos",
+      "anio": "2023",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.MMRT",
+      "nivel": "P",
+      "nota": "Modelada; cifras bajas con mucho ruido.",
+      "organismo": "OMS/UNICEF/UNFPA/BM vía Banco Mundial"
+     },
+     {
+      "nombre": "Vacunación de sarampión (12-23 meses)",
+      "valor": 97,
+      "unidad": "% de niños",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.IMM.MEAS",
+      "nivel": "P",
+      "nota": "Una dosis.",
+      "organismo": "OMS/UNICEF vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "educacion": {
+    "cifras": [
+     {
+      "nombre": "Educación sobre el gasto total del Estado",
+      "valor": null,
+      "unidad": "% del gasto público",
+      "anio": null,
+      "fuente": "https://api.worldbank.org/v2/indicator/SE.XPD.TOTL.GB.ZS",
+      "nivel": "VERIFICAR",
+      "nota": "Sin dato en el Banco Mundial para este país",
+      "organismo": "UNESCO UIS vía Banco Mundial"
+     },
+     {
+      "nombre": "Gasto en I+D (todos los sectores)",
+      "valor": 0.94,
+      "unidad": "% del PIB",
+      "anio": "2024",
+      "fuente": "https://api.worldbank.org/v2/indicator/GB.XPD.RSDV.GD.ZS",
+      "nivel": "P",
+      "nota": "No es solo público.",
+      "organismo": "UNESCO UIS/OCDE vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "trabajo": {
+    "cifras": [
+     {
+      "nombre": "Paro juvenil (15-24 años)",
+      "valor": 7.61,
+      "unidad": "% de la población activa joven",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "nota": "Modelada; difiere de Eurostat/oficinas nacionales.",
+      "organismo": "OIT (estimación modelada) vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "infraestructuras": {
+    "cifras": [
+     {
+      "nombre": "Formación bruta de capital fijo (pública y privada)",
+      "valor": 23.09,
+      "unidad": "% del PIB",
+      "anio": "2025",
+      "fuente": "https://api.worldbank.org/v2/indicator/NE.GDI.FTOT.ZS",
+      "nivel": "P",
+      "nota": "No separa inversión pública.",
+      "organismo": "Cuentas nacionales vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   },
+   "seguridad": {
+    "cifras": [
+     {
+      "nombre": "Muertes por accidente de tráfico",
+      "valor": 12,
+      "unidad": "por 100.000 hab.",
+      "anio": "2019",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.TRAF.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS 2019, no la oficial de cada país.",
+      "organismo": "OMS Global Status Report vía Banco Mundial"
+     },
+     {
+      "nombre": "Muertes por suicidio",
+      "valor": 21.37,
+      "unidad": "por 100.000 hab.",
+      "anio": "2021",
+      "fuente": "https://api.worldbank.org/v2/indicator/SH.STA.SUIC.P5",
+      "nivel": "P",
+      "nota": "Estimación OMS; sin ajustar por edad en esta serie [VERIFICAR].",
+      "organismo": "OMS vía Banco Mundial"
+     }
+    ],
+    "hitos": []
+   }
+  }
  },
  "_nota": "Lecturas escritas a mano con las cifras de estabilidad.json (nivel OPINIÓN); hitos de reformas por país: pendientes de fuente oficial [VERIFICAR]."
 }

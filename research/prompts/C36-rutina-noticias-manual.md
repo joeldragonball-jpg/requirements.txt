@@ -17,3 +17,6 @@ Informe corto en informes/research/AAAA-MM-DD-C36-rutina-noticias.md.
 
 ## Actualización 29-oct-2026
 La parte «Gemini del día» ya no se usa (no convenció a Joel): las tandas las hace Claude con `research/prompts/NOTICIAS-claude.md` (misma rotación y mismo formato JSON, con búsqueda web comprobable). Gemini queda solo para lo que Joel pida expresamente.
+
+## Actualización 2-nov-2026
+Hecha la rutina diaria completa (informe `informes/research/2026-11-02-C36-rutina-noticias.md`): tres temas nuevos en `NOTICIAS-DIA.md` (`politica-elecciones`, `bancos-centrales`, `geopolitica-guerra`) y el prompt de las elecciones de EE. UU. del 3-nov en `research/gemini/listos/`. Joel pidió el Gemini del día otra vez para este evento; el resto de tandas siguen con Claude salvo que él diga lo contrario.
