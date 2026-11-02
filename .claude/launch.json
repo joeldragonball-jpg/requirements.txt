@@ -29,6 +29,18 @@
         "docs/movil"
       ],
       "port": 8794
+    },
+    {
+      "name": "movil-estatico",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8795",
+        "--directory",
+        "docs"
+      ],
+      "port": 8795
     }
   ]
 }
