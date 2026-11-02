@@ -332,7 +332,12 @@ def leer_ormuz():
     import collections
     params = urllib.parse.urlencode({"where": "portname='Strait of Hormuz' AND date >= '2026-01-01'", "outFields": "date,n_total,n_tanker",
                                      "orderByFields": "date ASC", "resultRecordCount": "500", "f": "json"})
-    datos = json.loads(descargar(f"{URL_PORTWATCH}?{params}"))["features"]
+    for intento in range(5):  # el servidor de ArcGIS devuelve a ratos «Invalid URL» (400) con la misma consulta: se reintenta
+        respuesta = json.loads(descargar(f"{URL_PORTWATCH}?{params}"))
+        if "features" in respuesta:
+            break
+        time.sleep(2)
+    datos = respuesta["features"]
     filas = [(f["attributes"]["date"][:10], f["attributes"]["n_total"] or 0, f["attributes"]["n_tanker"] or 0) for f in datos]
     if not filas:
         raise ValueError("PortWatch no devolvió datos")
@@ -433,6 +438,13 @@ def leer_inflacion():
         v = [(f"{x['D3N'].split()[1]}-{pt[x['D3N'].split()[0]]:02d}", float(x["V"])) for x in r[1:]]
         return v[-1][1], v[-2][1], v[-1][0]
 
+    def bis_cpi(geo):
+        def f():
+            texto = _json_url(f"https://stats.bis.org/api/v2/data/dataflow/BIS/WS_LONG_CPI/1.0/M.{geo}.628?lastNObservations=15&format=csv", t=20)
+            serie = [(x["TIME_PERIOD"], float(x["OBS_VALUE"])) for x in csv.DictReader(io.StringIO(texto))]
+            return _yoy_de_indices(serie)
+        return f
+
     def fred_oecd(sid):
         def f():
             v = _fred_serie(sid, desde)
@@ -447,8 +459,8 @@ def leer_inflacion():
         ("uk", "Reino Unido", "IPC (ONS)", "https://www.ons.gov.uk/economy/inflationandpriceindices", reino_unido),
         ("ca", "Canadá", "IPC (Statistics Canada, tabla 18-10-0004)", "https://www150.statcan.gc.ca/", canada),
         ("br", "Brasil", "IPCA 12 meses (IBGE)", "https://sidra.ibge.gov.br/tabela/1737", brasil),
-        ("jp", "Japón", "IPC (OCDE vía FRED) [S]", "https://fred.stlouisfed.org/series/CPALTT01JPM659N", fred_oecd("CPALTT01JPM659N")),
-        ("cn", "China", "IPC (OCDE vía FRED) [S]", "https://fred.stlouisfed.org/series/CPALTT01CNM659N", fred_oecd("CPALTT01CNM659N")),
+        ("jp", "Japón", "IPC (índice del BIS, interanual calculado) [S]", "https://data.bis.org/topics/CPI", bis_cpi("JP")),
+        ("cn", "China", "IPC (índice del BIS, interanual calculado) [S]", "https://data.bis.org/topics/CPI", bis_cpi("CN")),
     ]
     paises, fallos = [], []
     for pid, pais, serie, url, f in fuentes:
