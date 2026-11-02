@@ -168,3 +168,7 @@ actualizado: 2026-10-07
 - 30-oct-2026: Eurostat congeló `prc_hicp_manr` (y el BCE la serie `ICP`) en dic-2025 al pasar a ECOICOP 2; la serie viva es `prc_hicp_minr` (coicop18=TOTAL). Una tabla «atascada» no es dato nuevo: comprobar el campo `updated`. BCE y BEA cargan en el navegador integrado sin 403.
 - 30-oct-2026 (V01): para hackeos, la primaria es el comunicado del exchange más el informe de causa raíz; hasta entonces las cifras y la causa (laptop vs. EIP-7702 / infraestructura de firma) cambian por horas. TRM, Chainalysis y Elliptic son útiles pero privadas: ninguna autoridad había confirmado la atribución a Corea del Norte.
 - 30-oct-2026 (V01): para entrevistas de Swell, Bloomberg/CNBC tienen el vídeo original; Cryptonews, TipRanks y similares son [S]. Las frases «de pasillo» no son más fiables que las oficiales: misma parte interesada.
+
+- 2-nov-2026 (W07): el FMI DataMapper sí se lee sin navegador en `www.imf.org/external/datamapper/api/v1/<indicador>/<ISO3>` (la variante `api.imf.org` da 404); no darlo por ⛔.
+- 2-nov-2026 (W07): CFTC: los `.txt` de `cftc.gov/dea` fallan; la API Socrata `publicreporting.cftc.gov/resource/6dca-aqww.json` responde. Un 200 no basta: comprobar el último periodo de la serie (Eurostat `prc_hicp_manr` da 200 pero está congelada).
+- 2-nov-2026 (W07): de 208 enlaces de voces, regulación y calendario, 34 dan 403 (sec.gov, bls.gov, prensa) y 3 dan 429 (límite de ritmo, no bloqueo); solo 1 estaba roto de verdad (HKMA).
