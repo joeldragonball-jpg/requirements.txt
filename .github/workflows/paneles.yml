@@ -30,6 +30,12 @@ jobs:
         continue-on-error: true
         run: python scripts/actualizar_paneles.py
 
+      # Histórico de precios diarios para «Ver reacción» de la línea de tiempo. Solo stdlib, sin IA ni claves; si un símbolo falla conserva la serie anterior.
+      - name: Actualizar el histórico de precios
+        id: precios_historico
+        continue-on-error: true
+        run: python scripts/actualizar_precios_historico.py
+
       # Cuadro de valoración sectorial (C26): precio de Yahoo + SEC companyfacts, 18 valores. Sin IA ni claves; si falla conserva el anterior.
       - name: Actualizar la valoración sectorial
         id: valoracion
@@ -72,7 +78,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add explorador/paneles.json explorador/valoracion.json explorador/datos.json explorador/noticias-archivo.json docs/movil/data.json docs/movil/seguimiento.json research/PLANNING.md
+          git add explorador/paneles.json explorador/precios_historico.json explorador/valoracion.json explorador/datos.json explorador/noticias-archivo.json docs/movil/data.json docs/movil/seguimiento.json research/PLANNING.md
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -m "Paneles de datos: actualización automática (sin IA)"
           git pull --rebase origin "${GITHUB_REF_NAME}"

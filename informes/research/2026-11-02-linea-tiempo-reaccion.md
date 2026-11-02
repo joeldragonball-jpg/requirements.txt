@@ -1,0 +1,9 @@
+# Línea de tiempo: «📈 Ver reacción» (2-nov-2026)
+
+- **Qué hace:** en la pestaña «Línea de tiempo» del Explorador, cada hecho (lista lateral y ficha) tiene «📈 Ver reacción». Se marcan hasta 3 eventos; el panel superpone el precio de un grupo de activos (Cripto: BTC, ETH, XRP, XLM · Stablecoins: USDT, USDC, RLUSD · Petróleo y energía: Brent, WTI, gas · Macro: S&P 500, Nasdaq, VIX, oro, 10 años EE. UU., DXY) en una ventana de ±3/7/14/30 días, rebasado a 100 en el último cierre ANTES del evento (stablecoins: desviación del peg en pb). Línea vertical continua = evento base; discontinuas = otros eventos marcados.
+- **Tabla «Reacción»:** % a día 0, +1, +3, +7 días y máximo movimiento en la ventana, ordenada por magnitud; dice quién reaccionó más. Tooltip con valor, % y fecha del cierre.
+- **Datos:** `scripts/actualizar_precios_historico.py` (sin IA, stdlib) → `explorador/precios_historico.json` (~400 días, Yahoo chart v8, nivel [S]); `explorador.py` lo inyecta como `precios_historico` (si falta, los botones se desactivan con el motivo).
+- **Límites:** correlación temporal, no causa [ESPECULACIÓN]; cierres diarios (no separa varias noticias del mismo día ni la hora); fines de semana y festivos sin cierre de bolsa (se usa el último cierre y se avisa); la fecha de la noticia puede ser anterior a su hora real; el último cierre puede ser provisional.
+- **Futuros continuos:** Brent, WTI, gas y oro cambian de contrato; los saltos diarios > 7 % se avisan [VERIFICAR] (p. ej. Brent −11,4 % el 2-nov: parte es cambio de contrato).
+- **Probado** con el hackeo de Binance (FBI, dom 1-nov), la caída del petróleo (2-nov) y los ataques hutíes (22-oct).
+- **Ideas siguientes:** añadir la línea a `paneles.yml` para que el bot lo actualice a diario; datos horarios para eventos recientes; comparar con la media de días «sin noticia» (estudio de eventos, R49); botón también en la pestaña Noticias; exportar la tabla a CSV.

@@ -47,6 +47,14 @@ td.c .ch{display:flex;align-items:center;justify-content:center;gap:7px;font-siz
 .carril .eje{position:relative;flex:1;height:100%;background:repeating-linear-gradient(90deg,transparent 0 calc(25% - 1px),#2a355088 calc(25% - 1px) 25%)}
 .nodo{position:absolute;top:50%;margin-top:calc(var(--nd)/-2);--nd:clamp(15px,1.1vw,22px);width:var(--nd);height:var(--nd);border-radius:50%;border:2px solid #0008;cursor:pointer;transform:translateX(-50%)}
 .nodo.sel{outline:2px solid #fff}
+.nodo.mk{box-shadow:0 0 0 3px #ffd166}
+.reac{background:var(--bg);border:1px solid var(--ac);border-radius:8px;padding:var(--pad);margin-bottom:var(--gap)}.reac h3{margin:0 0 6px}
+.bt-reac{font-size:var(--fs-xs);padding:1px 7px;margin:3px 0 0 6px;cursor:pointer}.bt-reac:disabled{opacity:.55;cursor:not-allowed}
+.reac-ctl{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:6px 0;font-size:var(--fs-s);color:var(--tx2)}
+.reac-graf{position:relative}.reac-graf svg{width:100%;height:auto;display:block}
+.reac-tip{position:absolute;display:none;background:#05080f;border:1px solid var(--ac);border-radius:6px;padding:6px 8px;font-size:var(--fs-xs);pointer-events:none;white-space:nowrap;z-index:3;line-height:1.45}
+.reac-ley{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:var(--fs-s);color:var(--tx2);margin:4px 0}.reac-ley i{display:inline-block;width:16px;height:3px;margin-right:5px;vertical-align:middle}
+.reac tr.top td{background:#ffd16618}.reac .aviso-r{border:1px dashed #e8b64a;border-radius:6px;padding:5px 8px;font-size:var(--fs-xs);color:var(--tx2);margin-top:8px}
 .ruler{margin-left:clamp(150px,14vw,280px);margin-bottom:4px;display:flex;justify-content:space-between;font-size:13px;color:var(--tx2)}
 .lado{line-height:1.5;background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:10px;font-size:15px;position:sticky;top:8px;max-height:85vh;overflow:auto}
 .noticias{display:grid;gap:clamp(12px,1.2vw,22px);align-items:start}.nota .cab{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;margin-bottom:3px;color:var(--tx2);font-size:var(--fs-xs)}.nota .cab b{color:var(--tx)}.nota .txt{font-size:var(--fs)}.nota .pie{margin-top:4px;font-size:var(--fs-xs);color:var(--tx2)}.capa-tag{border:1px solid var(--lin);border-radius:10px;padding:0 8px;font-size:var(--fs-xs)}
@@ -515,6 +523,7 @@ function pTiempo(){
   ctl.append(el('span',null,'Rango'),sr,q,el('span',null,'Capas visibles:'));
   for(const cp of D.capas){const l=el('label');const k=el('input');k.type='checkbox';k.checked=!capasOff.has(cp.id);k.onchange=()=>{k.checked?capasOff.delete(cp.id):capasOff.add(cp.id);pTiempo()};l.append(k,document.createTextNode(' '+cp.nombre));ctl.append(l)}
   c.append(ctl);
+  if(reac.length)c.append(panelReac());
   const g=el('div','grid2');const izq=el('div');
   let ini=new Date(Math.min(...D.movimientos.map(m=>+new Date(m.fecha))));
   if(rango!=='todo'){const x=new Date(HOY);x.setDate(x.getDate()-Number(rango));ini=x}
@@ -530,7 +539,7 @@ function pTiempo(){
       if(bq&&!(mv.actor+' '+mv.texto+' '+(mv.act||[]).join(' ')+' '+(mv.ent||[]).join(' ')).toLowerCase().includes(bq))continue;
       const t=new Date(mv.fecha+'T00:00:00');if(t<ini||t>HOY)continue;tot++;vis.push(mv);
       const n=el('div','nodo');n.style.left=((t-ini)/span*100)+'%';n.style.background=colEst(mv.estado);
-      if(selMov===mv)n.classList.add('sel');n.title=mv.fecha+' · '+mv.actor;
+      if(selMov===mv)n.classList.add('sel');if(reac.includes(mv))n.classList.add('mk');n.title=mv.fecha+' · '+mv.actor;
       if(mv.origen==='noticia')n.classList.add('noti');n.onclick=()=>{selMov=mv;pTiempo()};eje.append(n)}
     ca.append(eje);izq.append(ca)}
   const lg=el('div','leyenda');for(const k in D.estados){const sp=el('span');const i=el('i');i.style.background=D.estados[k].color;sp.append(i,D.estados[k].nombre);lg.append(sp)}
@@ -541,7 +550,7 @@ function pTiempo(){
     const cn={};vis.forEach(m=>cn[m.estado]=(cn[m.estado]||0)+1);const ch=el('div','cuentas');
     for(const k in D.estados)if(cn[k]){const x=el('span','chip',D.estados[k].nombre+': '+cn[k]);x.style.borderColor=D.estados[k].color;x.style.background=D.estados[k].color+'2e';ch.append(x)}
     lado.append(ch,el('h3',null,'Lo más reciente en pantalla'));
-    for(const m of vis.slice().sort((a,b)=>a.fecha<b.fecha?1:-1).slice(0,12)){const d=el('div','hecho clic');d.style.borderLeftColor=colEst(m.estado);d.append(el('b',null,m.fecha+' · '+m.actor+': '),document.createTextNode(m.texto.length>190?m.texto.slice(0,190)+'…':m.texto));d.onclick=()=>{selMov=m;pTiempo()};lado.append(d)}
+    for(const m of vis.slice().sort((a,b)=>a.fecha<b.fecha?1:-1).slice(0,12)){const d=el('div','hecho clic');d.style.borderLeftColor=colEst(m.estado);d.append(el('b',null,m.fecha+' · '+m.actor+': '),document.createTextNode(m.texto.length>190?m.texto.slice(0,190)+'…':m.texto),botonReac(m));d.onclick=()=>{selMov=m;pTiempo()};lado.append(d)}
     if(!vis.length)lado.append(el('p','nota-v','Ningún movimiento con este rango o filtro; prueba «Todo el periodo».'))}
   else ficha(lado,selMov);
   g.append(izq,lado);c.append(g);s.append(c);
@@ -555,8 +564,136 @@ function ficha(lado,mv){
   const u=urlInf(mv);if(u){const a=el('a',null,mv.informe.split('/').pop());a.href=u;a.target='_blank';add('Informe',a)}else add('Informe','—');
   if(mv.caduca)add('Caduca',mv.caduca+' · revisión '+(mv.frecuencia||'—'));
   if(mv.url){const a=el('a',null,'Abrir la noticia');a.href=mv.url;a.target='_blank';add('Enlace',a)}
-  lado.append(d);
+  const mot=reacMotivo(mv),br=el('div');br.append(botonReac(mv));if(mot&&!reac.includes(mv))br.append(el('div','nota-v',mot));
+  lado.append(br,d);
 }
+
+/* ---------- 3b · «Ver reacción»: precio de varios activos alrededor de 1-3 eventos (explorador/precios_historico.json) ---------- */
+let reac=[],reacBase=0,reacGrupo='cripto',reacVent=7;const reacSel={};
+const REAC_COL=['#5aa9e6','#ffd166','#2fe08f','#ff6b6b','#b8a1ff','#ff9f43','#9fe7ff'];
+const PH=()=>D&&D.precios_historico&&D.precios_historico.series?D.precios_historico:null;
+const sumaDias=(f,k)=>{const d=new Date(f+'T00:00:00Z');d.setUTCDate(d.getUTCDate()+k);return d.toISOString().slice(0,10)};
+const difDias=(a,b)=>Math.round((new Date(b+'T00:00:00Z')-new Date(a+'T00:00:00Z'))/864e5);
+const diaSem=f=>['dom','lun','mar','mié','jue','vie','sáb'][new Date(f+'T00:00:00Z').getUTCDay()];
+function reacRango(){const H=PH();let ini='9999',fin='';if(H)for(const k in H.series){const d=H.series[k].datos;if(d&&d.length){if(d[0][0]<ini)ini=d[0][0];if(d[d.length-1][0]>fin)fin=d[d.length-1][0]}}return [ini,fin]}
+function reacMotivo(mv){   // null si se puede ver la reacción; si no, el motivo
+  if(!PH())return 'Sin precios: falta explorador/precios_historico.json (python scripts/actualizar_precios_historico.py)';
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(mv.fecha||''))return 'Fecha no exacta';
+  const [ini,fin]=reacRango();
+  const hl=new Date(HOY-HOY.getTimezoneOffset()*6e4).toISOString().slice(0,10);   // fecha local (HOYS va en UTC)
+  if(mv.fecha>hl)return 'Evento futuro: aún no hay precios';
+  if(mv.fecha<=ini)return 'Sin precios antes del '+ini;
+  if(mv.fecha>fin)return 'Aún no hay cierre posterior al evento (último cierre: '+fin+')';
+  return null}
+function botonReac(mv){
+  const b=el('button','bt-reac'),on=reac.includes(mv),mot=reacMotivo(mv);
+  b.textContent=on?'✓ Marcado (quitar)':'📈 Ver reacción';if(on)b.classList.add('on');
+  if(!on&&mot){b.disabled=true;b.title=mot;b.textContent='📈 No disponible'}
+  else if(!on&&reac.length>=3){b.disabled=true;b.title='Máximo 3 eventos a la vez: quita uno'}
+  else b.title=on?'Quitar este evento del gráfico':'Superponer el precio de varios activos alrededor de esta fecha (máx. 3 eventos)';
+  b.onclick=e=>{e.stopPropagation();if(on)reac=reac.filter(x=>x!==mv);else{reac.push(mv);reacBase=reac.length-1;if(reac.length===1)reacGrupo=mv.capa==='energia'?'energia':mv.capa==='stable'?'stable':/stablecoin|usdt|usdc|tether|paridad/i.test(mv.texto)?'stable':reacGrupo}
+    reacBase=Math.max(0,Math.min(reacBase,reac.length-1));pTiempo();const p=$('reac-panel');if(p&&!on)p.scrollIntoView({block:'nearest'})};
+  return b}
+/* una serie alrededor de la fecha E: base = último cierre ANTES de E; v(c) = rebasado a 100 o, en stablecoins, desviación del peg en pb */
+function reacSerie(s,E,N,fin){
+  const d=s.datos||[],est=s.grupo==='stable';let ib=-1;
+  for(let i=0;i<d.length;i++){if(d[i][0]<E)ib=i;else break}
+  if(ib<0)return null;
+  const base=d[ib][1],v=c=>est?(c-1)*1e4:c/base*100,mov=c=>est?(c-1)*1e4:(c/base-1)*100;
+  const pts=d.filter(p=>p[0]>=sumaDias(E,-N)&&p[0]<=sumaDias(E,N)).map(p=>[difDias(E,p[0]),v(p[1]),p[0],p[1]]);
+  const en=k=>{const lim=sumaDias(E,k);if(lim>fin)return null;let r=null;for(let i=ib+1;i<d.length&&d[i][0]<=lim;i++)r=d[i];return r?{f:r[0],m:mov(r[1])}:null};
+  const pk={};for(const k of [0,1,3,7])pk[k]=en(k);
+  let mx=null;for(let i=ib+1;i<d.length&&d[i][0]<=sumaDias(E,N);i++){const m=mov(d[i][1]);if(!mx||Math.abs(m)>Math.abs(mx.m))mx={m,f:d[i][0]}}
+  const prim=d[ib+1]?d[ib+1][0]:null;
+  return {pts,base:d[ib],prim,pk,mx,est}}
+const fmov=(m,est)=>m==null?'—':(m>0?'+':'')+num(m,est||Math.abs(m)>=1?1:2)+(est?' pb':' %');
+function panelReac(){
+  const H=PH(),c=el('div','reac');c.id='reac-panel';
+  if(!H){c.append(el('p','nota-v','Sin precios: ejecuta python scripts/actualizar_precios_historico.py'));return c}
+  const fin=reacRango()[1];
+  c.append(el('h3',null,'📈 Reacción de precios alrededor de '+(reac.length===1?'1 evento':reac.length+' eventos')));
+  // eventos marcados: el elegido es la base (línea continua); los demás, líneas discontinuas
+  const pe=el('div','pills');
+  reac.forEach((m,j)=>{const p=el('div','pill'+(j===reacBase?' on':''));p.title='Centrar el gráfico en este evento';p.append(el('b',null,'E'+(j+1)+' '),document.createTextNode(m.fecha+' ('+diaSem(m.fecha)+') · '+m.actor+' '));
+    const x=el('span',null,'✕');x.title='Quitar';x.style.cssText='margin-left:6px;color:var(--baja)';x.onclick=e=>{e.stopPropagation();reac.splice(j,1);reacBase=Math.max(0,Math.min(reacBase,reac.length-1));pTiempo()};p.append(x);
+    p.onclick=()=>{reacBase=j;pTiempo()};pe.append(p)});
+  const q=el('div','pill',' Quitar todos');q.onclick=()=>{reac=[];pTiempo()};pe.append(q);c.append(pe);
+  const ev=reac[reacBase],E=ev.fecha;
+  c.append(el('div','nota-v','Base (E'+(reacBase+1)+'): '+ev.texto.slice(0,220)+(ev.texto.length>220?'…':'')));
+  // controles: grupo, activos y ventana
+  const ctl=el('div','reac-ctl');
+  const sg=el('select');for(const k in H.grupos){const o=el('option',null,H.grupos[k]);o.value=k;if(k===reacGrupo)o.selected=true;sg.append(o)}sg.onchange=()=>{reacGrupo=sg.value;pTiempo()};
+  const sv=el('select');for(const n of [3,7,14,30]){const o=el('option',null,'± '+n+' días');o.value=n;if(n===reacVent)o.selected=true;sv.append(o)}sv.onchange=()=>{reacVent=Number(sv.value);pTiempo()};
+  ctl.append(el('span',null,'Grupo'),sg,el('span',null,'Ventana'),sv,el('span',null,'Activos:'));
+  const sims=Object.keys(H.series).filter(k=>H.series[k].grupo===reacGrupo);
+  if(!reacSel[reacGrupo])reacSel[reacGrupo]=new Set(sims);
+  const sel=reacSel[reacGrupo];
+  sims.forEach((k,i)=>{const l=el('label');const x=el('input');x.type='checkbox';x.checked=sel.has(k);x.onchange=()=>{x.checked?sel.add(k):sel.delete(k);pTiempo()};
+    const sw=el('i');sw.style.cssText='display:inline-block;width:10px;height:10px;border-radius:2px;margin:0 4px;background:'+REAC_COL[i%REAC_COL.length];l.append(x,sw,document.createTextNode(H.series[k].nombre));ctl.append(l)});
+  c.append(ctl);
+  const N=reacVent,est=reacGrupo==='stable';
+  const filas=[];sims.forEach((k,i)=>{if(!sel.has(k))return;const r=reacSerie(H.series[k],E,N,fin);if(r)filas.push(Object.assign(r,{k,col:REAC_COL[i%REAC_COL.length],s:H.series[k]}))});
+  if(!filas.length){c.append(el('p','nota-v','Ningún activo con datos para esta fecha y selección.'));c.append(avisoReac(H));return c}
+  // fin de semana / festivo: decirlo
+  const notas=[];const dsE=new Date(E+'T00:00:00Z').getUTCDay();
+  if(dsE===0||dsE===6)notas.push('El evento cae en '+(dsE===6?'sábado':'domingo')+': bolsa, índices y futuros no cierran ese día.');
+  const raros=filas.filter(r=>r.base[0]<sumaDias(E,-1)||(r.prim&&r.prim>E));
+  if(raros.length){const g={};raros.forEach(r=>{const t='base '+diaSem(r.base[0])+' '+r.base[0]+' → primer cierre '+(r.prim?diaSem(r.prim)+' '+r.prim:'aún no hay');(g[t]=g[t]||[]).push(r.s.nombre)});
+    for(const t in g)notas.push(g[t].join(', ')+': se usa el último cierre disponible ('+t+').')}
+  if(notas.length){const n=el('div','nota-v');n.style.color='#e8b64a';n.textContent='⚠ '+notas.join(' ');c.append(n)}
+  c.append(grafReac(filas,E,N,est));
+  const ley=el('div','reac-ley');filas.forEach(r=>{const s=el('span');const i=el('i');i.style.background=r.col;s.append(i,document.createTextNode(r.s.nombre+(r.s.futuro_continuo?' *':'')));ley.append(s)});
+  const ie=el('span');const ii=el('i');ii.style.cssText='background:#fff;height:12px;width:2px';ie.append(ii,document.createTextNode('E'+(reacBase+1)+' (evento base)'+(reac.length>1?' · discontinuas: otros eventos marcados':'')));ley.append(ie);c.append(ley);
+  // tabla «Reacción», ordenada por la magnitud del mayor movimiento dentro de la ventana
+  filas.sort((a,b)=>Math.abs((b.mx||{m:0}).m)-Math.abs((a.mx||{m:0}).m));
+  const cel=x=>{if(!x)return el('span','igual','—');const s=cambio(x.m,est?'pb':'%',est||Math.abs(x.m)>=1?1:2);s.title='cierre del '+x.f;return s};
+  const tb=tabla([{t:'Activo',f:r=>{const s=el('span');const i=el('i');i.style.cssText='display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;background:'+r.col;s.append(i,document.createTextNode(r.s.nombre+(r.s.futuro_continuo?' *':'')));return s}},
+    {t:'Cierre previo',n:1,f:r=>num(r.base[1],r.base[1]<10?4:2)+' ('+r.base[0].slice(5)+')'},
+    {t:'Día 0',n:1,f:r=>cel(r.pk[0])},{t:'+1 d',n:1,f:r=>cel(r.pk[1])},{t:'+3 d',n:1,f:r=>cel(r.pk[3])},{t:'+7 d',n:1,f:r=>cel(r.pk[7])},
+    {t:'Máx. movimiento (±'+N+' d)',n:1,f:r=>{if(!r.mx)return '—';const s=el('span');s.append(cel(r.mx),document.createTextNode(' el '+r.mx.f.slice(5)));return s}}],filas);
+  tb.rows[1]&&tb.rows[1].classList.add('top');
+  c.append(el('h4',null,est?'Reacción: desviación respecto a 1 $ en puntos básicos (1 pb = 0,01 %)':'Reacción: % frente al último cierre antes del evento'),tb);
+  const t1=filas[0];if(t1&&t1.mx)c.append(el('p',null,'Reaccionó más (dentro de ±'+N+' días): '+t1.s.nombre+', '+fmov(t1.mx.m,est)+' el '+t1.mx.f+(filas[1]&&filas[1].mx?'; después '+filas[1].s.nombre+' ('+fmov(filas[1].mx.m,est)+').':'.')));
+  const nt=el('div','nota-v','«+k d» = último cierre hasta la fecha del evento + k días naturales; «—» = aún no hay cierre (futuro o fin de semana). El último cierre de la serie puede ser provisional (día en curso al leer). '+(est?'Stablecoins: desviación del peg en pb (no rebasado); cada columna es el nivel de ese día.':reacGrupo==='macro'?'VIX y 10 años: % sobre su nivel (volatilidad y rentabilidad, no precios).':'')+(filas.some(r=>r.s.futuro_continuo)?' * Futuro continuo: puede saltar al cambiar de contrato.':''));
+  c.append(nt);
+  const saltosV=filas.filter(r=>(r.s.saltos||[]).some(x=>Math.abs(difDias(E,x[0]))<=N));
+  if(saltosV.length){const w=el('div','nota-v');w.style.color='#e8b64a';w.textContent='⚠ Salto diario > 7 % dentro de la ventana en: '+saltosV.map(r=>r.s.nombre+' ('+r.s.saltos.filter(x=>Math.abs(difDias(E,x[0]))<=N).map(x=>x[0]+' '+fmov(x[1])).join(', ')+')').join('; ')+'. Puede ser cambio de contrato o movimiento real [VERIFICAR].';c.append(w)}
+  c.append(avisoReac(H));
+  return c}
+function avisoReac(H){const a=el('div','aviso-r');a.append(nivelBadge('S'),document.createTextNode(' Correlación temporal, no causa [ESPECULACIÓN]; datos diarios [S] (un día con varias noticias no se puede separar); fines de semana sin cierre de bolsa; la fecha de la noticia puede ser anterior a su hora real. Fuente: Yahoo Finance (no oficial) · leído '+H.leido+'.'));return a}
+function grafReac(filas,E,N,est){
+  const ns='http://www.w3.org/2000/svg',W=800,Hh=300,ml=56,mr=14,mt=18,mb=30;
+  const mk=(t,a)=>{const e=document.createElementNS(ns,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+  const svg=mk('svg',{viewBox:'0 0 '+W+' '+Hh,role:'img'});svg.append(mk('title',{}));svg.lastChild.textContent='Precio alrededor del '+E;
+  let lo=Infinity,hi=-Infinity;filas.forEach(r=>r.pts.forEach(p=>{lo=Math.min(lo,p[1]);hi=Math.max(hi,p[1])}));
+  const ref=est?0:100;lo=Math.min(lo,ref);hi=Math.max(hi,ref);const pad=(hi-lo)*.08||1;lo-=pad;hi+=pad;
+  const X=d=>ml+(d+N)/(2*N)*(W-ml-mr),Y=v=>mt+(hi-v)/(hi-lo)*(Hh-mt-mb);
+  // rejilla y ejes
+  for(let k=0;k<=4;k++){const v=lo+(hi-lo)*k/4;svg.append(mk('line',{x1:ml,x2:W-mr,y1:Y(v),y2:Y(v),stroke:'#2a3550','stroke-width':1}));const t=mk('text',{x:ml-6,y:Y(v)+4,'text-anchor':'end',fill:'#9fb0cf','font-size':11});t.textContent=num(v,est?0:Math.abs(hi-lo)<4?1:0);svg.append(t)}
+  svg.append(mk('line',{x1:ml,x2:W-mr,y1:Y(ref),y2:Y(ref),stroke:'#9fb0cf','stroke-dasharray':'4 4','stroke-width':1}));
+  const paso=N<=7?1:N<=14?2:5;
+  for(let d=-N;d<=N;d+=paso){const t=mk('text',{x:X(d),y:Hh-10,'text-anchor':'middle',fill:'#9fb0cf','font-size':11});t.textContent=sumaDias(E,d).slice(5);svg.append(t)}
+  const ly=mk('text',{x:4,y:12,fill:'#9fb0cf','font-size':11});ly.textContent=est?'pb vs 1 $':'base 100';svg.append(ly);
+  // líneas verticales de eventos
+  reac.forEach((m,j)=>{const d=difDias(E,m.fecha);if(Math.abs(d)>N)return;const b=j===reacBase;
+    svg.append(mk('line',{x1:X(d),x2:X(d),y1:mt-6,y2:Hh-mb,stroke:b?'#ffffff':'#c9d3e6','stroke-width':b?2:1.4,'stroke-dasharray':b?'':'5 4'}));
+    const t=mk('text',{x:X(d)+4,y:mt+2,fill:'#e6ebf5','font-size':12,'font-weight':700});t.textContent='E'+(j+1);svg.append(t)});
+  // series
+  filas.forEach(r=>{if(r.pts.length<1)return;const pts=r.pts.map(p=>X(p[0]).toFixed(1)+','+Y(p[1]).toFixed(1)).join(' ');
+    svg.append(mk('polyline',{points:pts,fill:'none',stroke:r.col,'stroke-width':2.2,'stroke-linejoin':'round'}));
+    r.pts.forEach(p=>svg.append(mk('circle',{cx:X(p[0]),cy:Y(p[1]),r:2.4,fill:r.col})))});
+  // tooltip: valor y fecha del cierre más cercano (hasta ese día) de cada activo
+  const wrap=el('div','reac-graf'),tip=el('div','reac-tip'),guia=mk('line',{y1:mt,y2:Hh-mb,stroke:'#ffffff55','stroke-width':1,visibility:'hidden'});svg.append(guia);
+  const capa=mk('rect',{x:ml,y:mt,width:W-ml-mr,height:Hh-mt-mb,fill:'transparent'});svg.append(capa);
+  capa.addEventListener('mousemove',e=>{const bb=svg.getBoundingClientRect(),sx=(e.clientX-bb.left)/bb.width*W;const d=Math.max(-N,Math.min(N,Math.round((sx-ml)/(W-ml-mr)*2*N-N)));
+    guia.setAttribute('x1',X(d));guia.setAttribute('x2',X(d));guia.setAttribute('visibility','visible');
+    const f=sumaDias(E,d);tip.textContent='';tip.append(el('b',null,diaSem(f)+' '+f+' (día '+(d>0?'+':'')+d+')'));
+    filas.forEach(r=>{let p=null;for(const q of r.pts)if(q[0]<=d)p=q;const ln=el('div');ln.style.color=r.col;
+      ln.textContent=r.s.nombre+': '+(p?(est?fmov(p[1],true)+' ('+num(p[3],4)+' $)':num(p[1],1)+' ('+fmov(p[1]-100)+') · '+num(p[3],p[3]<10?4:2)+' '+r.s.unidad)+(p[2]!==f?' · cierre del '+p[2]:''):'sin cierre');tip.append(ln)});
+    tip.style.display='block';const wx=e.clientX-wrap.getBoundingClientRect().left,wy=e.clientY-wrap.getBoundingClientRect().top;
+    tip.style.left=Math.min(wx+14,wrap.clientWidth-tip.offsetWidth-4)+'px';tip.style.top=Math.max(0,wy-tip.offsetHeight-10)+'px'});
+  capa.addEventListener('mouseleave',()=>{tip.style.display='none';guia.setAttribute('visibility','hidden')});
+  wrap.append(svg,tip);return wrap}
 
 /* ---------- 4 · Calendario ---------- */
 let calTema='';

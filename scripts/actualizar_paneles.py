@@ -354,7 +354,7 @@ def leer_credito():
                                      "anterior": v[-2][1], "hace_12m": v[0][1] if len(v) == 13 else None, "serie": [x[1] for x in v]})
         except Exception as e:
             salida["fallos"].append(f"crédito {sid}: {type(e).__name__}: {e}")
-    for leer in (_credito_freddie, _credito_boe, _credito_fed_h8, _credito_boj):
+    for leer in (_credito_freddie, _credito_boe, _credito_fed_h8, _credito_boj, _credito_bls):
         try:
             salida["series"] += leer()
         except Exception as e:
@@ -431,6 +431,40 @@ def _credito_boj():
     v = v[-13:]
     return [{"id": "cred_jp", "nombre": "Préstamos y descuentos de los bancos con licencia en Japón (Banco de Japón)", "pais": "Japón", "unidad": "miles de millones de ¥", "clave": "BoJ BS02 FAABK_FAAB2DBEA37",
              "valor": round(v[-1][1]), "fecha": f"{v[-1][0][:4]}-{v[-1][0][4:]}", "anterior": round(v[-2][1]), "hace_12m": round(v[0][1]), "serie": [round(x[1]) for x in v]}]
+
+
+def _credito_bls():
+    """Encuesta de préstamos bancarios del BCE (Bank Lending Survey, trimestral; API SDMX abierta, sin clave) [P]. Valor = % neto de bancos que endurecen (positivo) menos los que relajan;
+    en demanda, % neto de bancos que la ven subir (positivo) menos bajar. Zona euro: media ponderada (WFNET); España: % neto sin ponderar (FNET, pocos bancos, dato más ruidoso).
+    Cada serie lleva la expectativa del banco para el trimestre siguiente (horizonte F3). Últimas 5 rondas (hace 12 meses = la primera)."""
+    def trozo(area, agg, resto, n=5):
+        texto = _json_url(f"https://data-api.ecb.europa.eu/service/data/BLS/Q.{area}.ALL.{resto}.{agg}?lastNObservations={n}&format=csvdata", cabeceras={"Accept": "text/csv"}, t=20)
+        return [(x["TIME_PERIOD"], round(float(x["OBS_VALUE"]), 1)) for x in csv.DictReader(io.StringIO(texto)) if x.get("OBS_VALUE")]
+    temas = (("emp_crit", "Criterios de concesión de crédito a empresas", "O.E.Z", "ST.S"), ("viv_crit", "Criterios de concesión de hipotecas a hogares (vivienda)", "Z.H.H", "ST.S"),
+             ("con_crit", "Criterios de concesión de crédito al consumo", "Z.H.C", "ST.S"), ("emp_dem", "Demanda de crédito de empresas", "O.E.Z", "ZZ.D"),
+             ("viv_dem", "Demanda de hipotecas de hogares (vivienda)", "Z.H.H", "ZZ.D"), ("con_dem", "Demanda de crédito al consumo de hogares", "Z.H.C", "ZZ.D"))
+    salida = []
+    for area, pais, agg in (("U2", "Zona euro", "WFNET"), ("ES", "España", "FNET")):
+        for sid, nombre, cod, dom in temas:
+            try:
+                v = trozo(area, agg, f"{cod}.B3.{dom}")
+                if len(v) < 2:
+                    raise ValueError("menos de 2 rondas")
+                try:
+                    e = trozo(area, agg, f"{cod}.F3.{dom}", 1)
+                except Exception:
+                    e = []
+                f = lambda t: t.replace("-Q", "-T")
+                salida.append({"id": f"bls_{sid}_{'ea' if area == 'U2' else 'es'}", "nombre": f"BLS: {nombre} (% neto de bancos)", "pais": pais, "unidad": "% neto de bancos",
+                               "clave": f"BCE BLS Q.{area}.ALL.{cod}.B3.{dom}.{agg}", "valor": v[-1][1], "fecha": f(v[-1][0]), "anterior": v[-2][1],
+                               "hace_12m": v[0][1] if len(v) == 5 else None, "serie": [x[1] for x in v],
+                               "expectativa": e[-1][1] if e and e[-1][0] == v[-1][0] else None})
+            except Exception as ex:
+                if not (area == "ES" and "404" in str(ex)):
+                    raise ValueError(f"BLS {area} {sid}: {type(ex).__name__}: {ex}")
+    if not salida:
+        raise ValueError("BLS sin series")
+    return salida
 
 
 # (símbolo de Yahoo, nombre, unidad). Son futuros continuos: el contrato cambia de vencimiento y el cambio de un día puede incluir el salto.
