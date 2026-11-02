@@ -1,9 +1,7 @@
 name: Verificar apuntes
 
 on:
-  workflow_dispatch:          # botón "Run workflow" para lanzarlo a mano
-  schedule:
-    - cron: "17 6 1 * *"      # el día 1 de cada mes
+  workflow_dispatch:          # solo a mano (botón "Run workflow"): gasta API de Anthropic; las [VERIFICAR] se cierran en W05 con la suscripción
 
 permissions:
   contents: write             # para guardar el resultado en la rama 'datos'
