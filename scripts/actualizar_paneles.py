@@ -151,6 +151,26 @@ URL_BCB_TIPO = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=
 URL_BOC_TIPO = "https://www.bankofcanada.ca/valet/observations/V39079/json?start_date={d1}"
 
 
+URL_BCB_ULTIMOS = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados/ultimos/400?formato=json"
+
+
+def _json_reintentos(url, url_alt=None, intentos=4):
+    """El SGS del Banco Central de Brasil a veces responde con HTML (bloqueo/límite) en vez de JSON: se reintenta con espera creciente y, si sigue, se prueba la URL alternativa (últimos N datos)."""
+    ultimo = None
+    for i in range(intentos):
+        u = url if (i < intentos - 1 or not url_alt) else url_alt
+        try:
+            texto = descargar(u)
+            datos = json.loads(texto)
+            if isinstance(datos, list) and datos:
+                return datos
+            ultimo = ValueError(f"respuesta JSON sin lista de datos: {texto[:80]!r}")
+        except Exception as e:
+            ultimo = e
+        time.sleep(3 * (i + 1))
+    raise ultimo
+
+
 def rwa_por_cadena(rwa, n=10):
     """TVL RWA de DefiLlama sumado por cadena (sin las claves «-borrowed», «-staking», «-pool2», que repiten valor).
     Devuelve las n mayores y, siempre, XRPL y Stellar con su puesto, aunque no entren en el top."""
@@ -469,7 +489,8 @@ def _credito_bls():
 
 # (símbolo de Yahoo, nombre, unidad). Son futuros continuos: el contrato cambia de vencimiento y el cambio de un día puede incluir el salto.
 MATERIAS = (("GC=F", "Oro", "$ por onza"), ("SI=F", "Plata", "$ por onza"), ("HG=F", "Cobre", "$ por libra"), ("NG=F", "Gas natural (Henry Hub, EE. UU.)", "$ por MMBtu"),
-            ("ZW=F", "Trigo", "centavos por bushel"), ("ZC=F", "Maíz", "centavos por bushel"), ("KC=F", "Café", "centavos por libra"))
+            ("ZW=F", "Trigo", "centavos por bushel"), ("ZC=F", "Maíz", "centavos por bushel"), ("KC=F", "Café", "centavos por libra"),
+            ("BZ=F", "Petróleo Brent (futuro)", "$ por barril"))
 
 
 def leer_materias():
@@ -486,8 +507,56 @@ def leer_materias():
                                        "cambio_1d": round((c1 / c0 - 1) * 100, 2), "cambio_1m": round((c1 / pares[0][1] - 1) * 100, 1), "desde": pares[0][0]})
         except Exception as e:
             salida["fallos"].append(f"materia {simbolo}: {type(e).__name__}: {e}")
+    try:
+        salida["spot_eia"] = _spot_eia()
+    except Exception as e:
+        salida["fallos"].append(f"spot EIA: {type(e).__name__}: {e}")
+        previo = (PREVIO.get("materias") or {}).get("spot_eia")
+        if previo:
+            salida["spot_eia"] = previo
     if not salida["materias"]:
         raise ValueError("ninguna materia prima disponible")
+    return salida
+
+
+URL_EIA_SPOT = (("brent", "Brent spot (Europa)", "$ por barril", "https://www.eia.gov/dnav/pet/hist/RBRTED.htm", "BZ=F"),
+                ("henry_hub", "Henry Hub spot (gas natural)", "$ por MMBtu", "https://www.eia.gov/dnav/ng/hist/rngwhhdD.htm", "NG=F"))
+
+
+def _spot_eia():
+    """Precios spot diarios de la EIA (oficial [P], sin clave): se lee la tabla HTML pública «histórico diario» (filas = semanas, 5 columnas lun-vie)."""
+    salida = {"fuente": "https://www.eia.gov/dnav/pet/hist/RBRTED.htm", "nivel": "P", "series": []}
+    for id_, nombre, unidad, url, yahoo in URL_EIA_SPOT:
+        html_ = None
+        for intento in range(3):
+            try:
+                html_ = descargar(url)
+                break
+            except Exception:
+                time.sleep(2 * (intento + 1))
+        if html_ is None:
+            raise ValueError(f"{id_}: no se pudo descargar")
+        puntos = []
+        for m in re.finditer(r"<td class='B6'>(?:&nbsp;)*\s*(\d{4}) (\w{3})-(\d{2}) to [^<]*</td>((?:\s*<td class='B3'>[^<]*</td>){5})", html_):
+            try:
+                ini = datetime.strptime(f"{m.group(1)} {m.group(2)} {m.group(3)}", "%Y %b %d")
+            except ValueError:
+                continue
+            celdas = re.findall(r"<td class='B3'>([^<]*)</td>", m.group(4))
+            for i, c in enumerate(celdas):
+                c = c.strip()
+                if c and c not in ("NA", "--"):
+                    try:
+                        puntos.append(((ini + timedelta(days=i)).strftime("%Y-%m-%d"), float(c)))
+                    except ValueError:
+                        pass
+        puntos.sort()
+        if len(puntos) < 10:
+            raise ValueError(f"{id_}: tabla EIA con menos de 10 datos (¿cambió el formato?)")
+        (f0, v0), (f1, v1) = puntos[-2], puntos[-1]
+        ref = [p for p in puntos if p[0] <= (datetime.strptime(f1, "%Y-%m-%d") - timedelta(days=28)).strftime("%Y-%m-%d")]
+        salida["series"].append({"id": id_, "nombre": nombre, "unidad": unidad, "valor": v1, "fecha": f1, "cambio_1d": round((v1 / v0 - 1) * 100, 2) if v0 else None,
+                                 "cambio_1m": round((v1 / ref[-1][1] - 1) * 100, 1) if ref and ref[-1][1] else None, "url": url, "futuro_yahoo": yahoo})
     return salida
 
 
@@ -694,7 +763,7 @@ def leer_tipos():
     except Exception as e:
         fallos.append(f"tipo BoE: {type(e).__name__}: {e}")
     try:    # Brasil: meta de la Selic del Copom (SGS 432; la serie trae fechas futuras y se ignoran)
-        filas_j = json.loads(descargar(URL_BCB_TIPO.format(d1=(hoy - timedelta(days=500)).strftime("%d/%m/%Y"), d2=hoy.strftime("%d/%m/%Y"))))
+        filas_j = _json_reintentos(URL_BCB_TIPO.format(d1=(hoy - timedelta(days=500)).strftime("%d/%m/%Y"), d2=hoy.strftime("%d/%m/%Y")), URL_BCB_ULTIMOS)
         serie = sorted((datetime.strptime(x["data"], "%d/%m/%Y").strftime("%Y-%m-%d"), _num(x["valor"])) for x in filas_j)
         serie = [x for x in serie if x[0] <= hoy_iso]
         n, f, pv = _ultimo_cambio(serie)

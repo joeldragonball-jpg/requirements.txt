@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-02 23:10 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-02 23:51 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -77,7 +77,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - 🟡 Voces: Voces sin confirmar (7) → W06 · 3 llevan más de 14 días
 
 ## Bots con problema
-- Alertas de precio, Noticias con IA, Votos de noticias, Vigilancia on-chain, Verificación mensual
+- Verificación mensual
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-10-27 · Reunión de la Fed (FOMC) (alto) → ✓ revisado (hecho)
