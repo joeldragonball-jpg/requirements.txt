@@ -141,7 +141,9 @@ URL_PRECIOS = "https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,
 URL_YAHOO = "https://query1.finance.yahoo.com/v8/finance/chart/{s}?range=5d&interval=1d"
 INDICES = (("^GSPC", "S&P 500", "EE. UU."), ("ES=F", "Futuros S&P 500", "EE. UU. (futuros)"), ("^IXIC", "Nasdaq Composite", "EE. UU."),
            ("^STOXX50E", "Euro Stoxx 50", "Zona euro"), ("^IBEX", "Ibex 35", "España"), ("^N225", "Nikkei 225", "Japón"),
-           ("^KS11", "Kospi", "Corea del Sur"), ("000001.SS", "Shanghái Composite", "China"), ("^HSI", "Hang Seng", "Hong Kong"))
+           ("^KS11", "Kospi", "Corea del Sur"), ("000001.SS", "Shanghái Composite", "China"), ("^HSI", "Hang Seng", "Hong Kong"),
+           ("^GDAXI", "DAX 40", "Alemania"), ("^FCHI", "CAC 40", "Francia"), ("^FTSE", "FTSE 100", "Reino Unido"), ("^NSEI", "Nifty 50", "India"),
+           ("^BVSP", "Bovespa", "Brasil"), ("^AXJO", "S&P/ASX 200", "Australia"), ("^VIX", "VIX (volatilidad esperada del S&P 500)", "EE. UU."))
 URL_NYFED = "https://markets.newyorkfed.org/api/rates/unsecured/effr/search.json?startDate={d1}&endDate={d2}"
 URL_BCE_TIPO = "https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?startPeriod={d1}&format=csvdata"
 URL_BOE_TIPO = "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom={d1}&Dateto={d2}&SeriesCodes=IUDBEDR&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N"
@@ -327,6 +329,61 @@ URL_PORTWATCH = "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/servi
 LIQUIDEZ_MANUAL = Path(__file__).resolve().parent.parent / "explorador" / "liquidez-manual.json"
 
 
+
+# (id, nombre, país, clave de la serie en el BCE, unidad). Todas de la API abierta del BCE [P]; mensuales.
+CREDITO = (("euribor12", "Euríbor a 12 meses (media del mes)", "Zona euro", "FM/M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA", "%"),
+           ("hip_es", "Hipotecas nuevas para vivienda: TAE", "España", "MIR/M.ES.B.A2C.A.C.A.2250.EUR.N", "%"),
+           ("hip_ea", "Hipotecas nuevas para vivienda: TAE", "Zona euro", "MIR/M.U2.B.A2C.A.C.A.2250.EUR.N", "%"),
+           ("hip_es_tipo", "Hipotecas nuevas para vivienda: tipo pactado (sin comisiones)", "España", "MIR/M.ES.B.A2C.A.R.A.2250.EUR.N", "%"),
+           ("hog_es", "Crédito a hogares: variación a 12 meses", "España", "BSI/M.ES.N.A.A20.A.I.U2.2250.Z01.A", "%"),
+           ("hog_ea", "Crédito a hogares: variación a 12 meses", "Zona euro", "BSI/M.U2.N.A.A20.A.I.U2.2250.Z01.A", "%"),
+           ("emp_es", "Crédito a empresas no financieras: variación a 12 meses", "España", "BSI/M.ES.N.A.A20.A.I.U2.2240.Z01.A", "%"),
+           ("emp_ea", "Crédito a empresas no financieras: variación a 12 meses", "Zona euro", "BSI/M.U2.N.A.A20.A.I.U2.2240.Z01.A", "%"))
+
+
+def leer_credito():
+    """Euríbor, hipotecas nuevas y crédito a hogares y empresas (BCE, API abierta) [P]: dato, mes anterior, hace 12 meses y los últimos 13 meses."""
+    salida = {"fuente": "https://data.ecb.europa.eu/", "nivel": "P", "series": [], "fallos": []}
+    for sid, nombre, pais, clave, unidad in CREDITO:
+        try:
+            texto = _json_url(f"https://data-api.ecb.europa.eu/service/data/{clave}?lastNObservations=13&format=csvdata", cabeceras={"Accept": "text/csv"}, t=20)
+            v = [(x["TIME_PERIOD"], round(float(x["OBS_VALUE"]), 3)) for x in csv.DictReader(io.StringIO(texto)) if x.get("OBS_VALUE")]
+            if len(v) < 2:
+                raise ValueError("menos de 2 observaciones")
+            salida["series"].append({"id": sid, "nombre": nombre, "pais": pais, "unidad": unidad, "clave": clave, "valor": v[-1][1], "fecha": v[-1][0],
+                                     "anterior": v[-2][1], "hace_12m": v[0][1] if len(v) == 13 else None, "serie": [x[1] for x in v]})
+        except Exception as e:
+            salida["fallos"].append(f"crédito {sid}: {type(e).__name__}: {e}")
+    if not salida["series"]:
+        raise ValueError("ninguna serie de crédito disponible")
+    return salida
+
+
+# (símbolo de Yahoo, nombre, unidad). Son futuros continuos: el contrato cambia de vencimiento y el cambio de un día puede incluir el salto.
+MATERIAS = (("GC=F", "Oro", "$ por onza"), ("SI=F", "Plata", "$ por onza"), ("HG=F", "Cobre", "$ por libra"), ("NG=F", "Gas natural (Henry Hub, EE. UU.)", "$ por MMBtu"),
+            ("ZW=F", "Trigo", "centavos por bushel"), ("ZC=F", "Maíz", "centavos por bushel"), ("KC=F", "Café", "centavos por libra"))
+
+
+def leer_materias():
+    """Materias primas (futuros continuos, Yahoo Finance, no oficial [S]): último cierre, cambio de 1 día y de ~1 mes."""
+    salida = {"fuente": "https://finance.yahoo.com/", "nivel": "S", "materias": [], "fallos": []}
+    for simbolo, nombre, unidad in MATERIAS:
+        try:
+            d = json.loads(descargar(URL_YAHOO.format(s=urllib.request.quote(simbolo)).replace("range=5d", "range=1mo")))["chart"]["result"][0]
+            pares = [(datetime.fromtimestamp(t, timezone.utc).strftime("%Y-%m-%d"), c) for t, c in zip(d["timestamp"], d["indicators"]["quote"][0]["close"]) if c]
+            if len(pares) < 3:
+                raise ValueError("menos de 3 cierres")
+            (f0, c0), (f1, c1) = pares[-2], pares[-1]
+            salida["materias"].append({"simbolo": simbolo, "nombre": nombre, "unidad": unidad, "valor": round(c1, 3), "fecha": f1,
+                                       "cambio_1d": round((c1 / c0 - 1) * 100, 2), "cambio_1m": round((c1 / pares[0][1] - 1) * 100, 1), "desde": pares[0][0]})
+        except Exception as e:
+            salida["fallos"].append(f"materia {simbolo}: {type(e).__name__}: {e}")
+    if not salida["materias"]:
+        raise ValueError("ninguna materia prima disponible")
+    return salida
+
+
+
 def leer_ormuz():
     """Barcos al día por el estrecho de Ormuz (IMF PortWatch, API abierta; dato propio del FMI con retraso de días) [P]."""
     import collections
@@ -476,7 +533,7 @@ def leer_inflacion():
                 paises.append(previo[pid])
     if not paises:
         raise RuntimeError("ninguna fuente de inflación respondió")
-    return {"fuente": "BLS, BCE, ONS, Statistics Canada, IBGE, FRED", "nivel": "P", "paises": paises, "fallos": fallos}
+    return {"fuente": "BLS, BCE, ONS, Statistics Canada, IBGE, BIS y FRED (PCE)", "nivel": "P", "paises": paises, "fallos": fallos}
 
 
 def _ultimo_cambio(serie):
@@ -782,7 +839,7 @@ def main():
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
     limite = time.monotonic() + LIMITE_S
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias)):
         t0 = time.monotonic()
         if t0 > limite:
             fallos.append(f"{clave}: omitido por tiempo (más de {LIMITE_S} s en total)")
@@ -825,6 +882,14 @@ def main():
     if inf:
         print("Inflación: " + ", ".join(f"{p['id']} {p['interanual']} % ({p['fecha']})" for p in inf["paises"]))
         fallos += inf.get("fallos", [])
+    cr = salida.get("credito")
+    if cr:
+        print("Crédito: " + ", ".join(f"{s['id']} {s['valor']} ({s['fecha']})" for s in cr["series"]))
+        fallos += cr.get("fallos", [])
+    ma = salida.get("materias")
+    if ma:
+        print("Materias primas: " + ", ".join(f"{m['nombre']} {m['valor']} ({m['cambio_1d']:+.2f} %)" for m in ma["materias"]))
+        fallos += ma.get("fallos", [])
     ii = salida.get("indicadores")
     if ii:
         print("Indicadores: %d países, %d con aviso" % (len(ii["paises"]), len(ii.get("fallos", []))))

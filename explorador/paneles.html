@@ -140,6 +140,14 @@ function panelStable(){
 const DSIM={sube:['▲','#d9904a','subió'],mantiene:['▬','#8a97b0','mantuvo'],baja:['▼','#5aa9e6','bajó'],'n/d':['•','#64748b','sin dato']};
 function fechaCorta(iso){ if(!iso) return '—'; const p=iso.split('-'); return p.length>=3? p[2]+'-'+MES[+p[1]-1]+'-'+p[0].slice(2) : (p[1]? MES[+p[1]-1]+'-'+p[0] : iso); }
 function diasHasta(iso){ if(!iso||iso.length<10) return null; return Math.round((new Date(iso)-new Date(D.hoy))/86400000); }
+function panelCredito(){
+  const C=D.credito&&D.credito.series; if(!C||!C.length) return '';
+  const fila=s=>`<tr><td>${esc(s.nombre)}</td><td>${esc(s.pais)}</td><td class="n"><b>${fm(s.valor,2)} %</b></td><td class="n">${s.anterior==null?'—':fm(s.anterior,2)+' %'}</td><td class="n">${s.hace_12m==null?'—':fm(s.hace_12m,2)+' %'}</td><td>${s.serie&&s.serie.length>2?spark(s.serie):''}</td><td class="n">${esc(s.fecha)}</td></tr>`;
+  return `<div class="panel vidrio"><h2>Euríbor, hipotecas y crédito (zona euro y España)</h2><p class="que">Lo que pagan hogares y empresas por endeudarse y cuánto crece el crédito · API abierta del BCE · <span class="nivel P">P</span> primaria, mensual</p>
+   <div style="overflow-x:auto"><table><thead><tr><th>Serie</th><th>Zona</th><th>Último</th><th>Mes anterior</th><th>Hace 12 meses</th><th>13 meses</th><th>Mes</th></tr></thead><tbody>${C.map(fila).join('')}</tbody></table></div>
+   <div class="aviso"><b>Cómo leerlo:</b> la TAE incluye comisiones y gastos obligatorios; el tipo pactado no. El euríbor es una media mensual y las hipotecas nuevas se fijan con meses de retraso sobre él. El crédito es la variación a 12 meses del saldo concedido por bancos. Datos sin ajustar; no son una recomendación.</div>
+   <p class="pie">Leído el ${D.leido}. Fuente: <a style="color:#f1d58a" href="${D.credito.fuente}" target="_blank" rel="noopener">BCE (Data Portal)</a>: tablas FM, MIR y BSI.</p></div>`;
+}
 function panelTipos(){
   const t=D.tipos||[]; if(!t.length) return '<div class="aviso">No hay datos de tipos.</div>';
   const sub=t.filter(x=>x.dir==='sube').length, baj=t.filter(x=>x.dir==='baja').length, man=t.filter(x=>x.dir==='mantiene').length;
@@ -156,7 +164,7 @@ function panelTipos(){
    <td>${x.coincide_radar===true?'<span style="color:#7ee0a1">✓ coincide</span>':x.coincide_radar===false?`<span style="color:#ffb15c" title="El radar dice: ${esc(x.radar)}">⚠ el radar dice ${esc(x.radar)}</span>`:'<span class="mini">no está en el radar</span>'}</td>
    <td class="tag hm"><a style="color:#f1d58a" href="${x.url}" target="_blank" rel="noopener">${esc(x.fuente)}</a></td></tr>`).join('')}</tbody></table>
    <p class="pie">Leído el ${D.leido}. ${D.tipos_vivos.nota} Los demás países (Corea, Japón, China, India, Rusia…) no tienen una fuente abierta fácil de leer sin navegador y se mantienen a mano en el radar.</p></div>`:'';
-  return vivos+`<div class="panel vidrio"><h2>Tipos de interés de los bancos centrales</h2>
+  return vivos+panelCredito()+`<div class="panel vidrio"><h2>Tipos de interés de los bancos centrales</h2>
   <p class="que">Último tipo oficial y último movimiento (▲ subió · ▬ mantuvo · ▼ bajó) · vienen de la columna «política monetaria» del radar regulatorio, ya verificada allí</p>
   <div class="kpis"><div class="kpi"><div class="v">${sub} de ${t.length}</div><div class="e">Subieron tipos en su último movimiento</div></div>
    <div class="kpi"><div class="v">${man}</div><div class="e">Mantuvieron</div></div><div class="kpi"><div class="v">${baj}</div><div class="e">Bajaron</div></div>
@@ -173,7 +181,7 @@ function panelMercadoRWA(){
    <table><thead><tr><th>Activo</th><th>Precio</th><th>Capitalización</th><th>24 h</th></tr></thead><tbody>${m.activos.map(a=>`<tr class="${a.simbolo==='XRP'||a.simbolo==='XLM'?'fila-xrp':''}"><td><b>${a.simbolo}</b> <span class="mini">${a.nombre}</span></td><td class="n">${fPrecio(a.precio)}</td><td class="n">${fUSD(a.capitalizacion)}</td><td class="n">${cambio(a.cambio_24h)}</td></tr>`).join('')}</tbody></table>
    <p class="pie">Leído el ${D.leido}. Fuente: <a style="color:#f1d58a" href="${m.fuente}" target="_blank" rel="noopener">CoinGecko</a>.</p></div>` : '';
   const I=D.indices&&D.indices.indices;
-  const ind = I&&I.length? `<div class="panel vidrio"><h2>Bolsas: cuatro índices</h2><p class="que">Último cierre diario y variación frente al cierre anterior · Yahoo Finance · <span class="nivel S">S</span> no oficial; si falla, se conserva el dato anterior</p>
+  const ind = I&&I.length? `<div class="panel vidrio"><h2>Bolsas: índices y volatilidad</h2><p class="que">Último cierre diario y variación frente al cierre anterior · Yahoo Finance · <span class="nivel S">S</span> no oficial; si falla, se conserva el dato anterior</p>
    <table><thead><tr><th>Índice</th><th>Zona</th><th>Cierre</th><th>1 día</th><th>Fecha</th></tr></thead><tbody>${I.map(i=>`<tr><td><b>${i.nombre}</b></td><td>${i.zona}</td><td class="n">${fm(i.valor,0)}</td><td class="n">${cambio(i.cambio_1d)}</td><td class="n">${fechaCorta(i.fecha)}</td></tr>`).join('')}</tbody></table>
    <p class="pie">Leído el ${D.leido}. Los índices están en puntos, no en dólares; los datos de fin de semana y festivos repiten el último cierre. Fuente: <a style="color:#f1d58a" href="${D.indices.fuente}" target="_blank" rel="noopener">Yahoo Finance</a>.</p></div>` : '';
   const rw = r? `<div class="panel vidrio"><h2>Protocolos RWA en DeFi</h2><p class="que">Valor bloqueado (TVL) en protocolos que DefiLlama clasifica como RWA · <span class="nivel S">S</span> agregador</p>
@@ -182,7 +190,11 @@ function panelMercadoRWA(){
    ${r.por_cadena?`<h3>Por blockchain (las 10 mayores de ${r.por_cadena.n_cadenas}, más XRPL y Stellar)</h3><table><thead><tr><th>#</th><th>Cadena</th><th>Valor bloqueado</th><th>% del total</th><th class="hm">Protocolos</th></tr></thead><tbody>${r.por_cadena.top.map(c=>`<tr class="${c.cadena==='XRPL'||c.cadena==='Stellar'?'fila-xrp':''}"><td class="n">${c.puesto}</td><td><b>${c.cadena}</b></td><td class="n">${fUSD(c.usd)}</td><td class="n">${fm(c.pct,1)} %</td><td class="n hm">${c.n_protocolos}</td></tr>`).join('')}</tbody></table>`:''}
    <h3>Por protocolo</h3><table><thead><tr><th>Protocolo</th><th>Valor bloqueado</th><th>7 días</th><th class="hm">Cadenas</th></tr></thead><tbody>${r.top.map(x=>`<tr><td>${x.nombre}</td><td class="n">${fUSD(x.usd)}</td><td class="n">${cambio(x.cambio_7d)}</td><td class="tag hm">${(x.cadenas||[]).join(', ')}</td></tr>`).join('')}</tbody></table>
    <p class="pie">Fuente: <a style="color:#f1d58a" href="${r.fuente}" target="_blank" rel="noopener">DefiLlama</a>, leído el ${D.leido}.</p></div>` : '';
-  return mer+ind+rw;
+  const MT=D.materias&&D.materias.materias;
+  const mat = MT&&MT.length? `<div class="panel vidrio"><h2>Materias primas</h2><p class="que">Oro, plata, cobre, gas natural y cereales · futuros continuos · Yahoo Finance · <span class="nivel S">S</span> no oficial</p>
+   <table><thead><tr><th>Materia</th><th>Último cierre</th><th>Unidad</th><th>1 día</th><th>~1 mes</th><th>Fecha</th></tr></thead><tbody>${MT.map(m=>`<tr><td><b>${esc(m.nombre)}</b></td><td class="n">${fm(m.valor,m.valor<100?2:0)}</td><td class="tag">${esc(m.unidad)}</td><td class="n">${cambio(m.cambio_1d)}</td><td class="n">${cambio(m.cambio_1m)}</td><td class="n">${fechaCorta(m.fecha)}</td></tr>`).join('')}</tbody></table>
+   <p class="pie">Leído el ${D.leido}. Son contratos de futuros continuos: al cambiar de vencimiento el precio puede dar un salto que no es una subida real. El petróleo está en la pestaña «Energía y Ormuz». Es un dato, no una señal de compra o venta.</p></div>` : '';
+  return mer+ind+mat+rw;
 }
 const esc = t => String(t==null?'':t).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let glQ='', glC='';
@@ -390,7 +402,30 @@ function panelElecciones(){
     return `<tr><td><b>${esc(x.pais)}</b><div class="mini">${esc(x.tipo||'')}</div></td><td class="n">${esc(x.fecha||'sin fecha fija')}<div class="mini">${d==null?'':d>=0?'en '+d+' días':'hace '+(-d)+' días'}</div></td><td>${esc(x.hechos||'')}<div class="mini" style="margin-top:3px"><b>Efecto posible:</b> ${esc(x.efecto||'')}</div></td><td class="tag"><span class="nivel ${x.nivel}">${x.nivel}</span> ${x.fuente?`<a style="color:#f1d58a" href="${esc(x.fuente)}" target="_blank" rel="noopener">fuente</a>`:''}</td></tr>`;};
   return `<p class="que">${esc((D.elecciones||{}).nota||'')} Ordenadas por fecha; las pasadas y las sin fecha fija al final de su fecha. Las lecturas de efecto son [ESPECULACIÓN].</p><div style="overflow-x:auto"><table><thead><tr><th>País</th><th>Fecha</th><th>Situación</th><th>Fuente</th></tr></thead><tbody>${L.map(fila).join('')}</tbody></table></div>`;
 }
-const PEST=[['tic','Deuda de EE. UU.',panelTIC],['deuda','Deuda pública',panelDeuda],['bonos','Bonos y curvas',panelBonos],['bancos','Deuda por banco',panelBancos],['reservas','Reservas y bancos centrales',panelReservas],['stable','Stablecoins',panelStable],['tipos','Tipos de interés',panelTipos],['infl','Inflación',panelInflacion],['rwa','Mercado y RWA',panelMercadoRWA],['paises','Países',panelPaises],['elec','Elecciones',panelElecciones],['ener','Energía y Ormuz',panelEnergia],['glo','Glosario',panelGlosario]];
+const PROC={tic:['Deuda de EE. UU. (TIC)','Tesoro de EE. UU. (ticdata.treasury.gov)','mensual','Quién tiene deuda de EE. UU. y si la compra o la vende más.'],
+ stablecoins:['Stablecoins','DefiLlama','diaria','Cuánto circula y quién emite; se compara con la cifra en cadena de XRPL y Stellar.'],
+ rwa:['Activos tokenizados (RWA)','DefiLlama (protocolos)','diaria','Cuánto valor hay en DeFi ligado a activos reales; no es el total tokenizado.'],
+ mercado:['Cripto: BTC, ETH, XRP, XLM','CoinGecko','diaria','Precio de tus activos y de las referencias.'],
+ deuda:['Deuda pública','FMI (cifras manuales en deuda-fmi.json) y rendimientos del Tesoro, BCE y Japón','diaria / anual','Cuánto debe cada país y cuánto paga por ello.'],
+ bonos:['Bonos y curvas','Tesoro de EE. UU., BCE, Japón, Banco de Inglaterra y cifras manuales de subastas','diaria','Qué rendimiento exige el mercado por plazo.'],
+ indices:['Bolsas','Yahoo Finance','diaria','Cómo cierran las bolsas del mundo y la volatilidad (VIX).'],
+ materias:['Materias primas','Yahoo Finance (futuros)','diaria','Oro, cobre, gas y cereales: la economía real detrás de los precios.'],
+ watchlist:['Seguimiento de valores','Yahoo Finance','diaria','Los valores que sigues.'],
+ tipos_vivos:['Tipos al día','Fed de Nueva York, BCE, Banco de Inglaterra, Brasil y Canadá','diaria','Tipo oficial leído solo, para comprobar el radar.'],
+ tipos_bis:['Tipos de bancos centrales','BIS (data.bis.org)','mensual','Tipos de más países, de una fuente única.'],
+ defensa:['Gasto en defensa','Banco Mundial','anual','Cuánto gasta cada país en defensa sobre su PIB.'],
+ liquidez:['Liquidez (M2 y M3)','FRED (M2) y BCE (M3)','mensual','Cuánto dinero hay en el sistema; FRED falla a veces desde los servidores de GitHub.'],
+ inflacion:['Inflación','BLS, BCE, ONS, Statistics Canada, IBGE, BIS y FRED','mensual','Cuánto suben los precios, por país; el interanual de Japón y China se calcula del índice del BIS.'],
+ indicadores:['Indicadores por país','Eurostat, Banco Mundial y FMI','mensual / anual','Paro, PIB, deuda, déficit y desigualdad.'],
+ credito:['Euríbor, hipotecas y crédito','BCE (FM, MIR y BSI)','mensual','Lo que cuesta endeudarse y cuánto crece el crédito.'],
+ ormuz:['Ormuz (barcos al día)','FMI PortWatch','diaria, con retraso de días','Cuánto tráfico pasa por el estrecho del petróleo.']};
+function panelProcedencia(){
+  const filas=Object.keys(PROC).map(k=>{const p=PROC[k], x=D[k]||{}; const n=x.nivel; return `<tr><td><b>${esc(p[0])}</b></td><td>${esc(p[1])}</td><td>${esc(p[2])}</td><td>${n?`<span class="nivel ${n==='P'?'P':'S'}">${n==='P'?'P':'S'}</span>`:'<span class="mini">mixto</span>'}</td><td class="n">${esc(x.leido||'—')}</td><td class="tag" style="white-space:normal">${esc(p[3])}</td></tr>`;}).join('');
+  return `<div class="panel vidrio"><h2>De dónde sale cada panel</h2><p class="que">Cada cifra viene de una fuente abierta, sin IA y sin claves. Un proceso automático la descarga (lunes a viernes a las 21:30 UTC, tras el cierre de EE. UU.) con el script <code>scripts/actualizar_paneles.py</code> y la guarda en <code>explorador/paneles.json</code>. Si una fuente falla, se conserva el dato anterior y la fecha de «Leído» lo delata.</p>
+   <div style="overflow-x:auto"><table><thead><tr><th>Panel</th><th>Fuente</th><th>Cadencia</th><th>Nivel</th><th>Leído</th><th>Para qué sirve</th></tr></thead><tbody>${filas}</tbody></table></div>
+   <div class="aviso"><b>[P]</b> = organismo oficial o dato primario. <b>[S]</b> = agregador o web no oficial: útil, pero hay que contrastarlo. Ningún panel es una recomendación. Lo que sale en rojo en el Seguimiento («Última lectura de datos») es esta tabla con la fecha vieja.</div></div>`;
+}
+const PEST=[['tic','Deuda de EE. UU.',panelTIC],['deuda','Deuda pública',panelDeuda],['bonos','Bonos y curvas',panelBonos],['bancos','Deuda por banco',panelBancos],['reservas','Reservas y bancos centrales',panelReservas],['stable','Stablecoins',panelStable],['tipos','Tipos de interés',panelTipos],['infl','Inflación',panelInflacion],['rwa','Mercado y RWA',panelMercadoRWA],['paises','Países',panelPaises],['elec','Elecciones',panelElecciones],['ener','Energía y Ormuz',panelEnergia],['proc','De dónde sale',panelProcedencia],['glo','Glosario',panelGlosario]];
 let act=PEST[0][0];
 function pinta(){
   document.getElementById('pest').innerHTML=PEST.map(p=>`<button class="chip ${p[0]===act?'on':''}" data-k="${p[0]}">${p[1]}</button>`).join('')+'<span class="mini" style="align-self:center;margin-left:8px">Próximos: deuda por país · CBDC y redes</span>';
