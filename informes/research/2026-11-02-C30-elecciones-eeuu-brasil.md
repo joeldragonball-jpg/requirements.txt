@@ -47,3 +47,11 @@ Dinero: el súper PAC Fairshake acumuló unos 193 M$ (Coinbase 52,5 M$, Ripple 4
 
 ## 5. Archivos tocados y coste
 Solo este informe. No se tocó `elecciones.json`, calendario, vínculos ni móvil (la sesión principal consolida). Coste real aproximado: 6 búsquedas web estándar y unos pocos miles de tokens de lectura, <1 % de cuota.
+
+## 6. Actualización: Brasil leído en el TSE [P]
+Fuente primaria: resultados.tse.jus.br (Eleição Geral 2.º turno 25/10/2026, Presidente, Brasil), leída el 2-nov-2026 con el navegador integrado; sin captcha. Última actualización del TSE: **25/10/2026 23:26:38 (hora local)**.
+- Secciones: 499.248 de 499.248 totalizadas (100 %).
+- **Lula (PT-13): 64.256.232 votos, 51,79 %, «Eleito»**. **Flávio Bolsonaro (PL-22): 59.826.041 votos, 48,21 %**. Coincide exactamente con la prensa; pasa de [S] a **[P]**.
+- Votos totales 128.236.074; válidos 124.082.273 (96,76 %); en blanco 1.430.496 (1,12 %); nulos 2.723.305 (2,12 %).
+- Electorado apto 158.745.502; comparecimiento 80,78 %; **abstención 30.509.005 (19,22 %)**.
+- Sigue [S]/[VERIFICAR]: la pausa de difusión por la prórroga del STF y que Bolsonaro no reconozca el resultado (el TSE solo da números, no esto).

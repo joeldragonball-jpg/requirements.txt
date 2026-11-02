@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-02 17:34 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-02 17:38 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -57,12 +57,12 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - [media] 2026-10-22 (11 d) · hutiES a Arabia Saudi
 - [media] 2026-10-23 (10 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
 - [media] 2026-10-23 (10 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
-- [media] 2026-10-25 (8 d) · Lula gana la 2.ª vuelta con ~51,7 % frente a ~48,2 % de Flávio Bolsonaro, que no reconoce el resultado.
 - [media] 2026-10-25 (8 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov (hoy solo [S]). → W05
 - [media] 2026-10-25 (8 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
 - [media] 2026-10-25 (8 d) · [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov). → W05
 - [media] 2026-10-25 (8 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF) y texto definitivo de los modelos 172/175/72
-- … y 23 más en el Seguimiento
+- [media] 2026-10-25 (8 d) · [VERIFICAR] Consulta DGT V0648-24 leída en petete; fiscalidad de tokens LP de AMM.
+- … y 22 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (2) → W03 · AE/politica; BRICS/ley_marco
