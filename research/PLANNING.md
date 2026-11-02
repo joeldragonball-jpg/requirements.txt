@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-02 20:47 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-02 21:33 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -55,14 +55,14 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
 - [alta] 2026-10-31 (2 d) · Ataques a petroleros en el Estrecho de Ormuz: derrames llegan a costa emiratí.
-- [alta] 2026-10-31 (2 d) · Cuarto barco cisterna impactado en el Estrecho de Ormuz.
 - [alta] 2026-10-31 (2 d) · Wall Street se hunde: el Nasdaq cae un 3,6 %.
 - [alta] 2026-11-01 (1 d) · El FBI atribuye a Corea del Norte el hackeo de Binance y pide bloquear direcciones.
 - [alta] 2026-11-01 (1 d) · Binance registra salidas netas de 5.800 M$ al reanudar retiradas.
 - [alta] 2026-11-02 (0 d) · El petróleo se hunde un 7 % por señales de diplomacia entre EE. UU. e Irán.
+- [alta] 2026-11-02 (0 d) · Irán dice que reabriría Ormuz en dos días dentro de un acuerdo con EE. UU.
 - [alta] 2026-11-02 (0 d) · Binance reabre retiradas y dice haber cubierto el 95 % de las pérdidas del hackeo.
 - [alta] 2026-11-02 (0 d) · XRPL corregirá un fallo que habría permitido a socios de stablecoins emitir tokens nuevos.
-- … y 28 más en el Seguimiento
+- … y 29 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (2) → W03 · AE/politica; BRICS/ley_marco
@@ -71,7 +71,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - 🟡 Voces: Voces sin confirmar (7) → W06 · 3 llevan más de 14 días
 
 ## Bots con problema
-- Verificación mensual
+- Verificación mensual, Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-10-23 · Francia: revisión de Moody's prevista el 23-oct, resultado sin confirm (medio) → ✓ cubierto por W02 del 2026-11-02
