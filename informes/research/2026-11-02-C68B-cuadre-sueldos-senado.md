@@ -44,3 +44,26 @@ Presidente y consejeros de 1-2 comunidades: no abordado en esta sesión; ruta en
 ## Lecciones
 - Con python en Bash, usar `PYTHONIOENCODING=utf8`; no usar `-I` aquí (rompe el intérprete).
 - El JSON del Explorador reserializa exacto con `indent=1, ensure_ascii=False`.
+
+## Addendum (2-nov-2026): cuadre con la suma real de las filas del Portal
+**Método [P/S]:** exportación del Portal de Transparencia («Retribuciones de altos cargos», transparencia.gob.es/servicios-buscador, categoría `retribuciones_ind`), una consulta por cada uno de los 25 grupos de entes de la AGE listados en la portada, leída el 2-nov-2026 (lo publicado a 19-ene-2026). Filas de 2025: **692** únicas (el grupo de Hacienda llegó al tope de 1.000 filas, pero ordenado por año descendente, así que 2025 está completo). Suma propia con la columna «Retribución (€)»; nada de lo descargado se ejecutó. La cifra de ≈755 filas de la sesión del 31-oct venía de una exportación recortada y mezclada; esta la sustituye.
+
+| Categoría (2025) | Filas | Suma | Media |
+|---|---|---|---|
+| Presidente del Gobierno | 1 | €0,10 M | €95.944 |
+| Vicepresidentes (con ministerio) | 6 | €0,86 M | €142.973 (hay filas por cambio de titular) |
+| Ministros/as | 19 | €1,58 M | €83.176 |
+| Secretarios/as de Estado | 33 | €4,05 M | €122.610 |
+| Subsecretarios/as | 22 | €2,66 M | €120.820 |
+| Directores/as generales | 115 | €11,14 M | €96.851 |
+| **Subtotal cargos del art. 10 «clásicos» (1-6)** | **196** | **€20,38 M** | |
+| Otros (presidentes de organismos, secretarios generales, gabinetes, embajadores y mandos militares, Consejo de Seguridad Nuclear, AEPD…) | 496 | €42,71 M | €86.115 |
+| **Total de las 692 filas** | **692** | **€63,09 M** | |
+
+**Comparación con la IGAE (art. 10, altos cargos de los ministerios, 2025, sin tribunales ni fiscalía: €25,6 M):**
+- Con el subtotal de cargos clásicos: €20,38 M frente a €25,6 M → faltan **€5,2 M (−20 %)**. No cuadra.
+- Con las 692 filas: €63,09 M → sobran €37,5 M (+147 %), pero «Otros» incluye organismos con presupuesto propio (CSN, AEPD), embajadores y mandos militares, que no son altos cargos de las secciones ministeriales del Estado [VERIFICAR qué parte va al art. 10 y qué parte a otros artículos o secciones].
+- Lectura: la cifra aproximada anterior (≈€28,4 M con medianas) sobrestimaba; la suma real de los cargos clásicos queda por debajo del art. 10. Causas posibles sin probar [ESPECULACIÓN]: el art. 10 incluye otros altos cargos asimilados clasificados en «Otros» (p. ej. secretarios generales y delegados del Gobierno) y parte de la productividad pagada por otras vías. Hace falta la suma por ministerio contra la sección IGAE de cada uno para acotarlo.
+- Salvedades: la columna es lo pagado (incluye trienios y ceses/altas parciales); las filas no llevan nombre; el Portal no incluye cuota patronal, que va a otro artículo.
+
+**Cuadra:** no. Diferencia −€5,2 M (cargos clásicos) con la IGAE. **Abierto:** cuadre por ministerio y clasificación de «Otros».

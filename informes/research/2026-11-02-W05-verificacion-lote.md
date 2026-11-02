@@ -21,3 +21,14 @@ Cerrados como [S] contrastado: 1, 3, 5, 6, 8. Parciales: 4, 7. Siguen abiertos: 
 
 ## Siguen [VERIFICAR]
 Nota original de Moody's; cierre y precio de Standard Custody y Solvexia; sección 404 de CLARITY (govinfo); roll call del Senado; 7 petroleros y CENTCOM.
+
+## Añadido 2-nov (segunda pasada, navegador integrado; Chrome desconectado)
+Pasan a **[P]** (leído en la fuente primaria):
+- **Standard Custody: cierre** → nota de Ripple del 11-jun-2024: «recibió las aprobaciones regulatorias y está completa». Sin precio. [fuente](https://ripple.com/insights/paving-a-compliant-path-forward-ripple-closes-standard-custody-acquisition-and-appoints-jack-mcdonald-as-senior-vice-president-of-stablecoins/)
+- **Palisade** → nota de Ripple del 3-nov-2025; el texto leído no da precio. [fuente](https://ripple.com/ripple-press/ripple-acquires-palisade-to-offer-comprehensive-digital-asset-custody-solution/)
+- **OCC / RNTB** → nota de Ripple del 26-oct-2026; RLUSD sigue emitido por Standard Custody & Trust. [fuente](https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/)
+- **Sección 404 de CLARITY** → texto en govinfo (H.R. 3633, versión «Referred in Senate»): registro de bolsas de materias primas digitales (CEA sec. 5I). Ojo: es la versión de la Cámara, no necesariamente el texto de la sustitución del Senado. [fuente](https://www.govinfo.gov/content/pkg/BILLS-119hr3633rfs/html/BILLS-119hr3633rfs.htm)
+
+Siguen en [S]: A2 de Moody's (no hay nota en el sitemap de Ripple ni abrí moodys.com), Solvexia (sin nota en el sitemap de Ripple), Trump–Irán, Brent, hutíes, cloture 49-50 (no probé el Congressional Record).
+Precios: ninguna fuente primaria leída da precio de Standard Custody, Palisade ni Solvexia → siguen [VERIFICAR].
+Bloqueó: businesswire.com (429 anti-bot, no insistí); ripple.com/ripple-press/ (índice 404/dinámico: usé el sitemap).
