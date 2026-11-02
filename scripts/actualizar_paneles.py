@@ -347,8 +347,13 @@ def leer_ormuz():
 
 def leer_liquidez():
     """M2 de EE. UU. (FRED, variación interanual) y M3 de la zona euro (BCE, variación anual) [P]."""
-    with urllib.request.urlopen(urllib.request.Request("https://fred.stlouisfed.org/graph/fredgraph.csv?id=M2SL&cosd=2024-01-01", headers={"User-Agent": "cartera-joel/1.0 (uso personal)"}), timeout=40) as r:
-        filas = list(csv.reader(io.StringIO(r.read().decode("utf-8"))))[1:]
+    global FRED_CAIDO
+    try:
+        with urllib.request.urlopen(urllib.request.Request("https://fred.stlouisfed.org/graph/fredgraph.csv?id=M2SL&cosd=2024-01-01", headers={"User-Agent": "cartera-joel/1.0 (uso personal)"}), timeout=15) as r:
+            filas = list(csv.reader(io.StringIO(r.read().decode("utf-8"))))[1:]
+    except Exception:
+        FRED_CAIDO = True
+        raise
     m2 = {f: float(v) for f, v in filas if v not in (".", "")}
     ult = max(m2)
     ant = f"{int(ult[:4]) - 1}{ult[4:]}"
@@ -380,7 +385,14 @@ def _yoy_de_indices(serie):
 
 
 def _fred_serie(sid, desde):
-    texto = _json_url(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={desde}", t=60)
+    global FRED_CAIDO
+    if FRED_CAIDO:
+        raise TimeoutError("FRED no responde desde este equipo (omitido)")
+    try:
+        texto = _json_url(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={desde}", t=15)
+    except Exception:
+        FRED_CAIDO = True
+        raise
     return [(f[:7], float(v)) for f, v in list(csv.reader(io.StringIO(texto)))[1:] if v not in (".", "")]
 
 
@@ -742,6 +754,7 @@ def leer_indicadores():
     return _leer(PREVIO.get("indicadores"))
 
 
+FRED_CAIDO = False  # FRED no responde desde los runners de GitHub: tras el primer fallo se omite el resto
 LIMITE_S = 200  # tope total de descarga: el workflow corta a los 5 min y perdería todo
 
 
