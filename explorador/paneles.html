@@ -145,10 +145,10 @@ function panelCredito(){
   const C=D.credito&&D.credito.series; if(!C||!C.length) return '';
   const fc=(x)=>s_unidad_pct? fm(x,2)+' %' : fm(x,0);
   const fila=s=>{ s_unidad_pct=s.unidad==='%'; return `<tr><td>${esc(s.nombre)}</td><td>${esc(s.pais)}</td><td class="n"><b>${fc(s.valor)}</b></td><td class="n">${s.anterior==null?'—':fc(s.anterior)}</td><td class="n">${s.hace_12m==null?'—':fc(s.hace_12m)}</td><td>${s.serie&&s.serie.length>2?spark(s.serie):''}</td><td class="n">${esc(s.fecha)}</td></tr>`;};
-  return `<div class="panel vidrio"><h2>Euríbor, hipotecas y crédito (zona euro, España, EE. UU. y Reino Unido)</h2><p class="que">Lo que pagan hogares y empresas por endeudarse y cuánto crece el crédito · API abierta del BCE · <span class="nivel P">P</span> primaria, mensual</p>
+  return `<div class="panel vidrio"><h2>Euríbor, hipotecas y crédito (zona euro, España, EE. UU., Reino Unido y Japón)</h2><p class="que">Lo que pagan hogares y empresas por endeudarse y cuánto crece el crédito · API abierta del BCE · <span class="nivel P">P</span> primaria, mensual</p>
    <div style="overflow-x:auto"><table><thead><tr><th>Serie</th><th>Zona</th><th>Último</th><th>Mes anterior</th><th>Hace 12 meses</th><th>13 meses</th><th>Mes</th></tr></thead><tbody>${C.map(fila).join('')}</tbody></table></div>
    <div class="aviso"><b>Cómo leerlo:</b> la TAE incluye comisiones y gastos obligatorios; el tipo pactado no. El euríbor es una media mensual y las hipotecas nuevas se fijan con meses de retraso sobre él. El crédito es la variación a 12 meses del saldo concedido por bancos. Datos sin ajustar; no son una recomendación.</div>
-   <p class="pie">Leído el ${D.leido}. Fuentes: <a style="color:#f1d58a" href="${D.credito.fuente}" target="_blank" rel="noopener">BCE (Data Portal)</a>: tablas FM, MIR y BSI; Freddie Mac (encuesta semanal PMMS); Banco de Inglaterra (series IUMBV34 y LPMVTVX). Freddie Mac y las aprobaciones del Banco de Inglaterra no son comparables al decimal con la TAE del BCE: cada una mide algo distinto.</p></div>`;
+   <p class="pie">Leído el ${D.leido}. Fuentes: <a style="color:#f1d58a" href="${D.credito.fuente}" target="_blank" rel="noopener">BCE (Data Portal)</a>: tablas FM, MIR y BSI; Freddie Mac (encuesta semanal PMMS); Banco de Inglaterra (series IUMBV34 y LPMVTVX); Reserva Federal, estadística H.8 (copia en FRED, cotejada con federalreserve.gov/releases/h8: saldos desestacionalizados, miles de millones de $); Banco de Japón (API oficial, base BS02, préstamos y descuentos de bancos con licencia, miles de millones de ¥, fin de mes). Los saldos de EE. UU. y Japón están en su moneda y no son comparables entre sí. Freddie Mac y las aprobaciones del Banco de Inglaterra no son comparables al decimal con la TAE del BCE: cada una mide algo distinto.</p></div>`;
 }
 function panelTipos(){
   const t=D.tipos||[]; if(!t.length) return '<div class="aviso">No hay datos de tipos.</div>';
@@ -408,8 +408,8 @@ const PROC={tic:['Deuda de EE. UU. (TIC)','Tesoro de EE. UU. (ticdata.treasury.g
  stablecoins:['Stablecoins','DefiLlama','diaria','Cuánto circula y quién emite; se compara con la cifra en cadena de XRPL y Stellar.'],
  rwa:['Activos tokenizados (RWA)','DefiLlama (protocolos)','diaria','Cuánto valor hay en DeFi ligado a activos reales; no es el total tokenizado.'],
  mercado:['Cripto: BTC, ETH, XRP, XLM','CoinGecko','diaria','Precio de tus activos y de las referencias.'],
- deuda:['Deuda pública','FMI (cifras manuales en deuda-fmi.json) y rendimientos del Tesoro, BCE y Japón','diaria / anual','Cuánto debe cada país y cuánto paga por ello.'],
- bonos:['Bonos y curvas','Tesoro de EE. UU., BCE, Japón, Banco de Inglaterra y cifras manuales de subastas','diaria','Qué rendimiento exige el mercado por plazo.'],
+ deuda:['Deuda pública','FMI (cifras manuales en deuda-fmi.json) y rendimientos del Tesoro, BCE, Japón y Banco de Inglaterra','diaria / anual','Cuánto debe cada país y cuánto paga por ello.'],
+ bonos:['Bonos y curvas','Tesoro de EE. UU., BCE, Banco de España, Japón, Banco de Inglaterra y cifras manuales de subastas','diaria','Qué rendimiento exige el mercado por plazo.'],
  indices:['Bolsas','Yahoo Finance','diaria','Cómo cierran las bolsas del mundo y la volatilidad (VIX).'],
  materias:['Materias primas','Yahoo Finance (futuros)','diaria','Oro, cobre, gas y cereales: la economía real detrás de los precios.'],
  watchlist:['Seguimiento de valores','Yahoo Finance','diaria','Los valores que sigues.'],
@@ -417,9 +417,9 @@ const PROC={tic:['Deuda de EE. UU. (TIC)','Tesoro de EE. UU. (ticdata.treasury.g
  tipos_bis:['Tipos de bancos centrales','BIS (data.bis.org)','mensual','Tipos de más países, de una fuente única.'],
  defensa:['Gasto en defensa','Banco Mundial','anual','Cuánto gasta cada país en defensa sobre su PIB.'],
  liquidez:['Liquidez (M2 y M3)','FRED (M2) y BCE (M3)','mensual','Cuánto dinero hay en el sistema; FRED falla a veces desde los servidores de GitHub.'],
- inflacion:['Inflación','BLS, BCE, ONS, Statistics Canada, IBGE, BIS y FRED','mensual','Cuánto suben los precios, por país; el interanual de Japón y China se calcula del índice del BIS.'],
+ inflacion:['Inflación','BLS, Eurostat (zona euro y España), ONS, Statistics Canada, IBGE, BIS y FRED','mensual','Cuánto suben los precios, por país; el interanual de Japón y China se calcula del índice del BIS.'],
  indicadores:['Indicadores por país','Eurostat, Banco Mundial y FMI','mensual / anual','Paro, PIB, deuda, déficit y desigualdad.'],
- credito:['Euríbor, hipotecas y crédito','BCE (FM, MIR y BSI), Freddie Mac (EE. UU.) y Banco de Inglaterra','mensual (Freddie Mac, semanal)','Lo que cuesta endeudarse y cuánto crece el crédito.'],
+ credito:['Euríbor, hipotecas y crédito','BCE (FM, MIR y BSI), Freddie Mac y Reserva Federal H.8 (EE. UU.), Banco de Inglaterra y Banco de Japón','mensual (Freddie Mac, semanal)','Lo que cuesta endeudarse y cuánto crece el crédito.'],
  ormuz:['Ormuz (barcos al día)','FMI PortWatch','diaria, con retraso de días','Cuánto tráfico pasa por el estrecho del petróleo.']};
 function panelProcedencia(){
   const filas=Object.keys(PROC).map(k=>{const p=PROC[k], x=D[k]||{}; const n=x.nivel; return `<tr><td><b>${esc(p[0])}</b></td><td>${esc(p[1])}</td><td>${esc(p[2])}</td><td>${n?`<span class="nivel ${n==='P'?'P':'S'}">${n==='P'?'P':'S'}</span>`:'<span class="mini">mixto</span>'}</td><td class="n">${esc(x.leido||'—')}</td><td class="tag" style="white-space:normal">${esc(p[3])}</td></tr>`;}).join('');

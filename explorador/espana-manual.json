@@ -622,5 +622,109 @@
    "nivel": "VERIFICAR",
    "nota": "Número exacto no leído. Prensa: 50 plazas judiciales nuevas en 2025, +42 % ([S])."
   }
- ]
+ ],
+ "vivienda_hipotecas": [
+  {
+   "nombre": "Índice de Precios de Vivienda (INE), general: variación anual",
+   "valor": 12.2,
+   "unidad": "% interanual",
+   "periodo": "2T 2026",
+   "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/79563",
+   "nivel": "P",
+   "nota": "Trimestral +3,4 %. Vivienda nueva +7,4 % anual; segunda mano +12,9 %. Índice base 2025=100: 111,095. Leído por la API de INE el 2-nov-2026."
+  },
+  {
+   "nombre": "Valor tasado medio de vivienda libre (Ministerio de Vivienda)",
+   "valor": 2355,
+   "unidad": "€/m²",
+   "periodo": "2T 2026",
+   "fuente": "https://www.mivau.gob.es (Boletín OVS n.º 58, vía prensa/web de análisis)",
+   "nivel": "S",
+   "nota": "+12,5 % anual, +1,7 % trimestral, máximo de la serie. Es tasación, no precio firmado. Publicación oficial sin leer [VERIFICAR]."
+  },
+  {
+   "nombre": "Compraventas de vivienda (INE, ETDP)",
+   "valor": 49319,
+   "unidad": "n.º",
+   "periodo": "ago 2026",
+   "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/ETDP1826",
+   "nivel": "P",
+   "nota": "ago-2025: 47.708 (+3,4 % interanual). Nuevas 10.521; segunda mano 38.798. Mensual, 2026: 49.319-61.417."
+  },
+  {
+   "nombre": "Hipotecas sobre viviendas: número (INE, HPT)",
+   "valor": 33841,
+   "unidad": "n.º",
+   "periodo": "ago 2026",
+   "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/13896",
+   "nivel": "P",
+   "nota": "ago-2025: 33.065 (+2,3 %). Importe 6.134.856 mil €; importe medio calculado ≈181.300 € (ago-2025 ≈168.400 €; cálculo propio importe/número)."
+  },
+  {
+   "nombre": "Hipotecas sobre viviendas: tipo de interés medio (INE)",
+   "valor": 3.08,
+   "unidad": "%",
+   "periodo": "ago 2026",
+   "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/24457",
+   "nivel": "P",
+   "nota": "Fijo 3,16 %; variable 2,95 %. ago-2025: 2,88 %. Plazo medio 26 años (INE, tabla 24458)."
+  },
+  {
+   "nombre": "Hipotecas nuevas vivienda España: TAE (Banco de España/BCE, MIR)",
+   "valor": 3.04,
+   "unidad": "%",
+   "periodo": "sep 2026",
+   "fuente": "https://data-api.ecb.europa.eu MIR/M.ES.B.A2C.A.C.A.2250.EUR.N",
+   "nivel": "P",
+   "nota": "Tipo pactado 2,99 %. Ya en el panel de crédito (C71)."
+  },
+  {
+   "nombre": "Euríbor a 12 meses (media mensual)",
+   "valor": 3.239,
+   "unidad": "%",
+   "periodo": "oct 2026",
+   "fuente": "https://data-api.ecb.europa.eu FM/M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA",
+   "nivel": "P",
+   "nota": "oct-2025: 2,187 %. Ya en el panel de crédito (C71)."
+  },
+  {
+   "nombre": "Morosidad de la banca (ratio de dudosos), Banco de España",
+   "valor": 2.59,
+   "unidad": "%",
+   "periodo": "may 2026",
+   "fuente": "https://www.diariodeleon.es/economia/260725/2092208/morosidad-banca-cae-minimos-bajon-impagados.html (cita al Banco de España, 25-jul-2026)",
+   "nivel": "S",
+   "nota": "Saldo dudoso 31.967 M€; bancos, cajas y cooperativas 2,49 %. Dato oficial en bde.es sin leer [VERIFICAR]; jun-ago 2026 no localizados."
+  },
+  {
+   "nombre": "Precio de la vivienda / renta bruta por hogar (Banco de España)",
+   "valor": 7.98,
+   "unidad": "años",
+   "periodo": "4T 2025",
+   "fuente": "https://www.vozpopuli.com/economia/inmobiliario/el-esfuerzo-para-comprar-vivienda-supera-el-umbral-de-riesgo-del-banco-de-espana.html (cita al BdE, 13-abr-2026)",
+   "nivel": "S",
+   "nota": "Máx. de la serie 9,46 (3T 2007). Esfuerzo teórico anual 35,5 % frente a umbral de 35 % (misma fuente). Informe Anual 2025 del BdE (jun-2026): 4,3 años de renta neta en el conjunto de hogares, 6,8 en no propietarios, 7,1 en jóvenes. Sin leer en bde.es [VERIFICAR]."
+  }
+ ],
+ "vivienda_hipotecas_ejemplo": {
+  "nota": "EJEMPLO de cuota francesa, no predicción: C = P·i/(1-(1+i)^-n), i = tipo anual/12, n = 300 meses, P = 150.000 €. Sin comisiones ni seguros.",
+  "cuotas": [
+   {
+    "tipo_pct": 2.99,
+    "base": "tipo pactado medio nuevas hipotecas, sep-2026",
+    "cuota_eur": 710.54
+   },
+   {
+    "tipo_pct": 3.239,
+    "base": "euríbor 12m oct-2026 sin diferencial",
+    "cuota_eur": 730.1
+   },
+   {
+    "tipo_pct": 4.239,
+    "base": "euríbor + 1,0 pp de diferencial HIPOTÉTICO",
+    "cuota_eur": 811.68
+   }
+  ],
+  "sensibilidad": "cada +1 pp de tipo suma unos 80 € al mes en este ejemplo (≈ +11 %)."
+ }
 }

@@ -144,3 +144,5 @@ Precios y niveles de mayo-2026 (oro, Brent ~$100-112, 10 años ~4,58 %, BTC ~$77
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 - Índice de los informes por tema (autogenerado): ver `indice-investigacion.md`.
+
+- Nota de auditoría (2026-11-02, tras W08), sin cambiar lo anterior: la «sección 404» de CLARITY NO está en el texto de la Cámara (H.R. 3633, govinfo, EH y RFS): allí la sec. 404 es el registro de bolsas de materias primas digitales [P]. La 404 sobre rendimiento de stablecoins es la del compromiso del Senado Tillis–Alsobrooks (1-may-2026) [S: The Block; CFA]; su texto oficial sigue sin leer [VERIFICAR]. La CFA cree que ese texto deja pasar varias formas de rendimiento [S, opinión]. Detalle: research/informes/auditoria-2026-11-02-tras-W08.md.

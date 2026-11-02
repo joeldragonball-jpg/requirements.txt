@@ -354,7 +354,7 @@ def leer_credito():
                                      "anterior": v[-2][1], "hace_12m": v[0][1] if len(v) == 13 else None, "serie": [x[1] for x in v]})
         except Exception as e:
             salida["fallos"].append(f"crédito {sid}: {type(e).__name__}: {e}")
-    for leer in (_credito_freddie, _credito_boe):
+    for leer in (_credito_freddie, _credito_boe, _credito_fed_h8, _credito_boj):
         try:
             salida["series"] += leer()
         except Exception as e:
@@ -393,6 +393,44 @@ def _credito_boe():
         salida.append({"id": "hip_uk" if sid == "IUMBV34" else "aprob_uk", "nombre": nombre, "pais": "Reino Unido", "unidad": unidad, "clave": "BoE " + clave,
                        "valor": v[-1][1], "fecha": v[-1][0], "anterior": por[sid][-2][1] if len(por[sid]) > 1 else None, "hace_12m": v[0][1], "serie": [x[1] for x in v]})
     return salida
+
+
+def _credito_fed_h8():
+    """EE. UU.: crédito de los bancos comerciales (Reserva Federal, estadística H.8, mensual, desestacionalizada). Se lee por FRED (copia de la Fed) porque la descarga directa de federalreserve.gov
+    (datadownload) devuelve vacío y el XML oficial pesa 79 MB. Si FRED no responde (p. ej. desde los runners de GitHub), se avisa y se conserva el dato anterior. Últimos 13 meses."""
+    if FRED_CAIDO:
+        raise TimeoutError("FRED no responde desde este equipo (omitido)")
+    desde = (datetime.now(timezone.utc) - timedelta(days=480)).strftime("%Y-%m-%d")
+    salida = []
+    for sid, ident, nombre in (("LOANS", "cred_us_total", "Crédito bancario total: préstamos y arrendamientos (Fed H.8)"),
+                               ("REALLN", "cred_us_inmob", "Crédito bancario inmobiliario (Fed H.8)"),
+                               ("CONSUMER", "cred_us_cons", "Crédito bancario al consumo (Fed H.8)"),
+                               ("BUSLOANS", "cred_us_emp", "Crédito bancario a empresas: comercial e industrial (Fed H.8)")):
+        try:
+            texto = _json_url(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={desde}", t=15)
+        except Exception:
+            globals()["FRED_CAIDO"] = True
+            raise
+        v = [(f, float(x)) for f, x in list(csv.reader(io.StringIO(texto)))[1:] if x not in (".", "")]
+        if len(v) < 13:
+            raise ValueError(f"{sid}: menos de 13 meses")
+        v = v[-13:]
+        salida.append({"id": ident, "nombre": nombre, "pais": "EE. UU.", "unidad": "miles de millones de $", "clave": "Fed H.8 " + sid, "valor": round(v[-1][1], 1), "fecha": v[-1][0][:7],
+                       "anterior": round(v[-2][1], 1), "hace_12m": round(v[0][1], 1), "serie": [round(x[1], 1) for x in v]})
+    return salida
+
+
+def _credito_boj():
+    """Japón: préstamos y descuentos de los bancos con licencia nacional (Banco de Japón, API oficial de stat-search.boj.or.jp, sin clave) [P]. Mensual, fin de mes; en miles de millones de yenes."""
+    ini = (datetime.now(timezone.utc) - timedelta(days=450)).strftime("%Y%m")
+    texto = descargar(f"https://www.stat-search.boj.or.jp/api/v1/getDataCode?format=csv&lang=en&db=BS02&startDate={ini}&code=FAABK_FAAB2DBEA37")
+    filas = [f for f in csv.DictReader(io.StringIO(texto[texto.index("SERIES_CODE,"):])) if f.get("VALUES")]
+    v = sorted((f["SURVEY_DATES"], float(f["VALUES"]) / 10) for f in filas)  # 100 millones de yenes -> miles de millones
+    if len(v) < 13:
+        raise ValueError("BoJ: menos de 13 meses")
+    v = v[-13:]
+    return [{"id": "cred_jp", "nombre": "Préstamos y descuentos de los bancos con licencia en Japón (Banco de Japón)", "pais": "Japón", "unidad": "miles de millones de ¥", "clave": "BoJ BS02 FAABK_FAAB2DBEA37",
+             "valor": round(v[-1][1]), "fecha": f"{v[-1][0][:4]}-{v[-1][0][4:]}", "anterior": round(v[-2][1]), "hace_12m": round(v[0][1]), "serie": [round(x[1]) for x in v]}]
 
 
 # (símbolo de Yahoo, nombre, unidad). Son futuros continuos: el contrato cambia de vencimiento y el cambio de un día puede incluir el salto.
@@ -569,7 +607,7 @@ def leer_inflacion():
                 paises.append(previo[pid])
     if not paises:
         raise RuntimeError("ninguna fuente de inflación respondió")
-    return {"fuente": "BLS, BCE, ONS, Statistics Canada, IBGE, BIS y FRED (PCE)", "nivel": "P", "paises": paises, "fallos": fallos}
+    return {"fuente": "BLS, Eurostat (zona euro y España), ONS, Statistics Canada, IBGE, BIS y FRED (PCE)", "nivel": "P", "paises": paises, "fallos": fallos}
 
 
 def _ultimo_cambio(serie):
