@@ -354,8 +354,44 @@ def leer_credito():
                                      "anterior": v[-2][1], "hace_12m": v[0][1] if len(v) == 13 else None, "serie": [x[1] for x in v]})
         except Exception as e:
             salida["fallos"].append(f"crédito {sid}: {type(e).__name__}: {e}")
+    for leer in (_credito_freddie, _credito_boe):
+        try:
+            salida["series"] += leer()
+        except Exception as e:
+            salida["fallos"].append(f"crédito {leer.__name__}: {type(e).__name__}: {e}")
     if not salida["series"]:
         raise ValueError("ninguna serie de crédito disponible")
+    return salida
+
+
+def _credito_freddie():
+    """Hipoteca a 30 años en EE. UU.: media semanal de Freddie Mac (PMMS, encuesta a prestamistas) [P]. Serie: un punto cada 4 semanas."""
+    filas = [f for f in csv.reader(io.StringIO(descargar("https://www.freddiemac.com/pmms/docs/PMMS_history.csv")))][1:]
+    v = [(f[0], float(f[1])) for f in filas if len(f) > 1 and f[1].strip()]
+    if len(v) < 60:
+        raise ValueError("PMMS devolvió pocas filas")
+    m, d, a = v[-1][0].split("/")
+    return [{"id": "hip_us30", "nombre": "Hipoteca a 30 años (media semanal, Freddie Mac)", "pais": "EE. UU.", "unidad": "%", "clave": "freddiemac.com/pmms", "valor": v[-1][1],
+             "fecha": f"{a}-{int(m):02d}-{int(d):02d}", "anterior": v[-2][1], "hace_12m": v[-53][1], "serie": [v[-1 - 4 * i][1] for i in range(12, -1, -1)]}]
+
+
+def _credito_boe():
+    """Reino Unido (Banco de Inglaterra, base de datos abierta) [P]: hipoteca a 2 años fijos (75 % del valor) y aprobaciones de hipotecas para comprar vivienda."""
+    d1 = (datetime.now(timezone.utc) - timedelta(days=500)).strftime("%d/%b/%Y")
+    url = ("https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom=" + d1 +
+           "&Dateto=now&SeriesCodes=IUMBV34,LPMVTVX&CSVF=CN&UsingCodes=Y&VPD=Y&VFD=N")
+    por = {}
+    for f in csv.DictReader(io.StringIO(descargar(url))):
+        por.setdefault(f["SERIES"], []).append((datetime.strptime(f["DATE"], "%d %b %Y").strftime("%Y-%m"), float(f["VALUE"])))
+    salida = []
+    for sid, nombre, unidad, clave in (("IUMBV34", "Hipoteca a 2 años fijos, 75 % del valor (tipo medio de los bancos)", "%", "IUMBV34"),
+                                       ("LPMVTVX", "Hipotecas aprobadas para comprar vivienda (n.º al mes, desestacionalizado)", "aprobaciones", "LPMVTVX")):
+        v = sorted(por.get(sid, []))
+        if len(v) < 14:
+            raise ValueError(f"{sid}: menos de 14 observaciones")
+        v = v[-13:]
+        salida.append({"id": "hip_uk" if sid == "IUMBV34" else "aprob_uk", "nombre": nombre, "pais": "Reino Unido", "unidad": unidad, "clave": "BoE " + clave,
+                       "valor": v[-1][1], "fecha": v[-1][0], "anterior": por[sid][-2][1] if len(por[sid]) > 1 else None, "hace_12m": v[0][1], "serie": [x[1] for x in v]})
     return salida
 
 
@@ -389,11 +425,11 @@ def leer_ormuz():
     import collections
     params = urllib.parse.urlencode({"where": "portname='Strait of Hormuz' AND date >= '2026-01-01'", "outFields": "date,n_total,n_tanker",
                                      "orderByFields": "date ASC", "resultRecordCount": "500", "f": "json"})
-    for intento in range(5):  # el servidor de ArcGIS devuelve a ratos «Invalid URL» (400) con la misma consulta: se reintenta
+    for intento in range(8):  # el servidor de ArcGIS devuelve a ratos «Invalid URL» (400) con la misma consulta: se reintenta
         respuesta = json.loads(descargar(f"{URL_PORTWATCH}?{params}"))
         if "features" in respuesta:
             break
-        time.sleep(2)
+        time.sleep(3)
     datos = respuesta["features"]
     filas = [(f["attributes"]["date"][:10], f["attributes"]["n_total"] or 0, f["attributes"]["n_tanker"] or 0) for f in datos]
     if not filas:
