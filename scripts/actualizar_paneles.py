@@ -343,7 +343,7 @@ CREDITO = (("euribor12", "Euríbor a 12 meses (media del mes)", "Zona euro", "FM
 
 def leer_credito():
     """Euríbor, hipotecas nuevas y crédito a hogares y empresas (BCE, API abierta) [P]: dato, mes anterior, hace 12 meses y los últimos 13 meses."""
-    salida = {"fuente": "https://data.ecb.europa.eu/", "nivel": "P", "series": [], "fallos": []}
+    salida = {"fuente": "https://data.ecb.europa.eu/", "fuente_nombre": "BCE, Freddie Mac, Banco de Inglaterra, Reserva Federal (H.8) y Banco de Japón", "nivel": "P", "series": [], "fallos": []}
     for sid, nombre, pais, clave, unidad in CREDITO:
         try:
             texto = _json_url(f"https://data-api.ecb.europa.eu/service/data/{clave}?lastNObservations=13&format=csvdata", cabeceras={"Accept": "text/csv"}, t=20)
@@ -574,12 +574,6 @@ def leer_inflacion():
             texto = _json_url(f"https://stats.bis.org/api/v2/data/dataflow/BIS/WS_LONG_CPI/1.0/M.{geo}.628?lastNObservations=15&format=csv", t=20)
             serie = [(x["TIME_PERIOD"], float(x["OBS_VALUE"])) for x in csv.DictReader(io.StringIO(texto))]
             return _yoy_de_indices(serie)
-        return f
-
-    def fred_oecd(sid):
-        def f():
-            v = _fred_serie(sid, desde)
-            return round(v[-1][1], 1), round(v[-2][1], 1), v[-1][0]
         return f
 
     fuentes = [

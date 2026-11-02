@@ -904,6 +904,16 @@ function pEspana(){
       tabla([{t:'Política',f:r=>r.nombre},{t:'M€',n:1,f:r=>n0(r.valor)},{t:'% del total',n:1,f:r=>n1(r.valor/co.total*100)}],co.politicas.slice().sort((a,b)=>b.valor-a.valor)),false));
     add(bloque('Ejecución por políticas de gasto',null,pieE,tabla([{t:'Política',f:r=>{const x=el('span',null,r.nombre);if(r.area)x.style.fontWeight='700';return x}},...ejec],B.politicas),false));
   }
+  if(M.vivienda_hipotecas){
+    const vh=M.vivienda_hipotecas,ej=M.vivienda_hipotecas_ejemplo;
+    const url=u=>/^https?:/.test(u||'')?lnk(u):el('span',null,u||'[VERIFICAR]');
+    const partes=[tabla([{t:'Dato',f:r=>r.nombre},{t:'Valor',n:1,f:r=>r.valor==null?'[VERIFICAR]':fx(r.valor,r.valor%1?2:0)+' '+(r.unidad||'')},{t:'Periodo',f:r=>r.periodo||''},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Nota',f:r=>r.nota},{t:'Fuente',f:r=>url(r.fuente)}],vh)];
+    if(ej&&ej.cuotas){
+      partes.push(el('h3',null,'Cuota de ejemplo (ejemplo, no predicción)'),el('p','nota-v',ej.nota),
+        tabla([{t:'Tipo anual',n:1,f:r=>fx(r.tipo_pct,r.tipo_pct%1?2:0)+' %'},{t:'Base del tipo',f:r=>r.base},{t:'Cuota mensual',n:1,f:r=>fx(r.cuota_eur,2)+' €'}],ej.cuotas));
+      if(ej.sensibilidad)partes.push(el('p','nota-v',ej.sensibilidad))}
+    add(bloque('Vivienda e hipotecas: precios, tipos y esfuerzo','Cada dato con su nivel (P oficial leída, S secundaria), fuente y periodo. Informativo, sin recomendaciones.',{t:'INE · Ministerio de Vivienda · BCE · otras fuentes, según la fila'},conL(null,...partes),false));
+  }
   if(M.beneficiarios){
     add(bloque('Quién recibe: beneficiarios y su denominador','Cada dato con la población de referencia al lado. Las estadísticas miden nacionalidad, no origen: un español naturalizado cuenta como español.',{t:'[P] oficial leída · [S] secundaria · [VERIFICAR] no leído'},
       conL(B&&B.lecturas.beneficiarios,el('h3',null,'Población de referencia'),dat(M.poblacion_referencia),el('h3',null,'Prestaciones'),dat(M.beneficiarios),el('h3',null,'Requisitos legales de acceso'),

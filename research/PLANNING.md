@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-02 20:47 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-02 22:53 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -42,11 +42,17 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 
 ## Auditorías abiertas
-- ninguna
+- A1 (Media): Abierto: voces.json lo está editando otra sesión (W06); propuesta: v002→cumplido con la nota del 28-oct; v062→
+- A2 (Media): Abierto: propuesta, mostrar «P + novedades S» o añadir url a HK ETF
+- A3 (Media): Parcial: antes faltaban 23. Abierto: 9 celdas
+- A4 (Baja): Abierto
+- A5 (Media): Abierto: propuesta, 2-3 canales o analistas críticos o neutrales en el próximo lote de vídeos
+- A7 (Media): Abierto
+- A8 (Baja): Abierto solo v062
+- A9 (Baja): Cerrado (W07)
 - Auditoría mensual W08: última semana del mes (miércoles)
 
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
-- [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov (hoy solo [S]). → W05
 - [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, Solvexia) y cierre de BC Payments Australi
 - [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov). → W05
 - [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF) y texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE. → W05
@@ -54,15 +60,15 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [alta] 2026-10-31 (2 d) · Ataques a petroleros en el Estrecho de Ormuz: derrames llegan a costa emiratí.
-- [alta] 2026-10-31 (2 d) · Cuarto barco cisterna impactado en el Estrecho de Ormuz.
-- [alta] 2026-10-31 (2 d) · Wall Street se hunde: el Nasdaq cae un 3,6 %.
-- [alta] 2026-11-01 (1 d) · El FBI atribuye a Corea del Norte el hackeo de Binance y pide bloquear direcciones.
-- [alta] 2026-11-01 (1 d) · Binance registra salidas netas de 5.800 M$ al reanudar retiradas.
-- [alta] 2026-11-02 (0 d) · El petróleo se hunde un 7 % por señales de diplomacia entre EE. UU. e Irán.
-- [alta] 2026-11-02 (0 d) · Binance reabre retiradas y dice haber cubierto el 95 % de las pérdidas del hackeo.
-- [alta] 2026-11-02 (0 d) · XRPL corregirá un fallo que habría permitido a socios de stablecoins emitir tokens nuevos.
-- … y 28 más en el Seguimiento
+- [media] 2026-10-22 (11 d) · hutiES a Arabia Saudi
+- [media] 2026-10-22 (11 d) · hutiES a Arabia Saudi
+- [media] 2026-10-23 (10 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
+- [media] 2026-10-23 (10 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
+- [media] 2026-10-25 (8 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
+- [media] 2026-10-25 (8 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
+- [media] 2026-10-25 (8 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
+- [media] 2026-10-25 (8 d) · [VERIFICAR] Consulta DGT V0648-24 leída en petete
+- … y 32 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (2) → W03 · AE/politica; BRICS/ley_marco
@@ -71,7 +77,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - 🟡 Voces: Voces sin confirmar (7) → W06 · 3 llevan más de 14 días
 
 ## Bots con problema
-- Verificación mensual
+- Votos de noticias, Verificación mensual
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-10-23 · Francia: revisión de Moody's prevista el 23-oct, resultado sin confirm (medio) → ✓ cubierto por W02 del 2026-11-02

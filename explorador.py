@@ -139,7 +139,7 @@ def _firma():
                 ultimo = max(ultimo, p.stat().st_mtime)
     for p in CARPETA.glob("*.json"):      # los paneles y datos de explorador/ también cambian la firma (si no, la app sirve la caché vieja)
         ultimo = max(ultimo, p.stat().st_mtime)
-    for p in (RAIZ / "eventos").glob("verificados.json"):
+    for p in list((RAIZ / "eventos").glob("verificados.json")) + list((RAIZ / "research" / "verificaciones").glob("*.json")):
         ultimo = max(ultimo, p.stat().st_mtime)
     for p in CARPETA.glob("*.html"):
         ultimo = max(ultimo, p.stat().st_mtime)
@@ -246,6 +246,12 @@ def _html(conceptos):
         datos["verificados"] = json.loads((RAIZ / "eventos" / "verificados.json").read_text(encoding="utf-8")).get("eventos", [])
     except Exception:
         datos["verificados"] = []
+    for _p in sorted((RAIZ / "research" / "verificaciones").glob("*.json")):   # verificaciones de research/verificaciones/*.json: se suman; ausentes o inválidas se ignoran
+        try:
+            _ev = json.loads(_p.read_text(encoding="utf-8")).get("eventos", [])
+            datos["verificados"] += [e for e in _ev if isinstance(e, dict)]
+        except Exception:
+            pass
     for clave, archivo in (("calificaciones", "calificaciones"), ("deuda_fmi", "deuda-fmi"), ("valoracion", "valoracion"), ("reservas", "reservas"), ("rwa_cadena_manual", "rwa-por-cadena-manual"), ("cbdc_blockchains", "cbdc-blockchains"), ("paises_fichas", "paises"), ("estabilidad", "estabilidad"), ("elecciones", "elecciones"), ("hitos_petroleo", "hitos_petroleo"), ("espana", "espana"), ("espana_presupuesto", "espana-presupuesto")):
         try:                          # tablas de los paneles de datos (solo lectura); sin el archivo, esa tabla no sale
             datos[clave] = json.loads((CARPETA / f"{archivo}.json").read_text(encoding="utf-8"))

@@ -218,7 +218,7 @@ def auditorias():
     cerrados = set(estado_json.get(ruta.name, {}).get("cerrados", []))
     hallazgos = []
     for linea in leer(ruta).splitlines():
-        m = re.match(r"\|\s*(C\d+)\s*\|\s*(Alta|\*\*Alta\*\*|Media|Baja)\s*\|\s*([^|]*)\|\s*([^|]*)\|", linea)
+        m = re.match(r"\|\s*([A-Z]\d+)\s*\|\s*(Alta|\*\*Alta\*\*|Media|Baja)\s*\|\s*([^|]*)\|\s*([^|]*)\|", linea)
         if m:
             hallazgos.append({"id": m.group(1), "sev": m.group(2).strip("*"), "donde": limpiar(m.group(3))[:90], "que": limpiar(m.group(4))[:170],
                               "estado": "cerrado" if m.group(1) in cerrados else "abierto"})
@@ -477,6 +477,11 @@ def verificaciones():
         reg = json.loads(leer(RAIZ / "eventos" / "verificados.json")).get("eventos", [])
     except Exception:
         reg = []
+    for _p in sorted((RAIZ / "research" / "verificaciones").glob("*.json")):   # se suman las verificaciones de research/verificaciones/*.json (ausentes o inválidas se ignoran)
+        try:
+            reg += [e for e in json.loads(leer(_p)).get("eventos", []) if isinstance(e, dict)]
+        except Exception:
+            pass
     out = []
     for v in reg:
         if v.get("estado") in ("dudoso", "desmentido"):
