@@ -1,10 +1,10 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-02 22:56 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-02 23:01 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
-## Hoy (lun 2026-11-02): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 1 días
-- Fija de hoy (lunes: semana de bancos centrales): **W01 Tipos de interés** (~2 %) · último 2026-11-02 · `research/prompts/W01-*.md`
+## Hoy (mar 2026-11-03): solo lo casi obligatorio
+- R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 1 días
+- Sin rutina fija hoy: elige por prioridad en las secciones de abajo.
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
 - Gemini del día: toca **Evento: EE. UU.: elecciones de mitad de mandato** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
@@ -60,14 +60,14 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [alta] 2026-11-02 (0 d) · Irán dice que reabriría Ormuz en dos días dentro de un acuerdo con EE. UU.
-- [media] 2026-10-22 (11 d) · hutiES a Arabia Saudi
-- [media] 2026-10-22 (11 d) · hutiES a Arabia Saudi
-- [media] 2026-10-23 (10 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
-- [media] 2026-10-23 (10 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
-- [media] 2026-10-25 (8 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
-- [media] 2026-10-25 (8 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
-- [media] 2026-10-25 (8 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
+- [alta] 2026-11-02 (1 d) · Irán dice que reabriría Ormuz en dos días dentro de un acuerdo con EE. UU.
+- [media] 2026-10-22 (12 d) · hutiES a Arabia Saudi
+- [media] 2026-10-22 (12 d) · hutiES a Arabia Saudi
+- [media] 2026-10-23 (11 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
+- [media] 2026-10-23 (11 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
+- [media] 2026-10-25 (9 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
+- [media] 2026-10-25 (9 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
+- [media] 2026-10-25 (9 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
 - … y 34 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
@@ -77,10 +77,9 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - 🟡 Voces: Voces sin confirmar (7) → W06 · 3 llevan más de 14 días
 
 ## Bots con problema
-- Votos de noticias, Verificación mensual
+- Alertas de precio, Noticias con IA, Votos de noticias, Vigilancia on-chain, Verificación mensual
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
-- 2026-10-23 · Francia: revisión de Moody's prevista el 23-oct, resultado sin confirm (medio) → ✓ cubierto por W02 del 2026-11-02
 - 2026-10-27 · Reunión de la Fed (FOMC) (alto) → ✓ revisado (hecho)
 - 2026-10-28 · Reunión del BCE (alto) → ✓ revisado (hecho)
 - 2026-10-28 · DTCC: lanzamiento del servicio de tokenización de DTC (hecho el 28-oct (medio) → ✓ revisado (hecho)

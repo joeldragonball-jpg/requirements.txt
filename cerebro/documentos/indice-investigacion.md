@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-10-31
+actualizado: 2026-11-02
 ---
 # Índice de la investigación
 
@@ -12,14 +12,14 @@ Mapa de los informes más recientes por tema. Lo genera `scripts/indice_investig
 Por tema, los 3 informes más recientes (fecha · título · ruta · una frase de su resumen).
 
 ## Auditorías y verificaciones
-- 2026-10-29 · C56 · Verificación de noticias de prensa (29-oct-2026) (`informes/research/2026-10-29-C56-verificacion-noticias.md`): Método: web (WebSearch/WebFetch, sin API de Anthropic) contra fuentes oficiales. Tipo de fuente ≠ verificación. Estado de cada pieza en…
-- 2026-10-28 · Revisión de predicciones y verificaciones de octubre (28-oct-2026) · DTCC #44 y otras 4 (`informes/research/2026-10-28-W05-predicciones-octubre-dtcc.md`): Pedida por Joel el 28 oct. Alcance: lo previsto para octubre (o con fecha límite ya vencida) que seguía sin verificar en informes/predicciones.md .…
-- 2026-10-28 · C38 · Auditoría de cobertura: qué sabemos, dónde está y qué falta en la Órbita (incluye C28) (`informes/research/2026-10-28-C38-auditoria-cobertura.md`): Informes: 118 en informes/research/ (R 50 · T 18 · C 16 · W 10 · D 4 · EV 2 · otros 18: radar v2 v5, auditorías, calendarios); 11 en informes/gemini/…
+- 2026-11-02 · W08 · Auditoría de coherencia y huecos (2-nov-2026) (`informes/research/2026-11-02-W08-auditoria-coherencia-y-huecos.md`): Sin contradicciones de cifras en lo muestreado (Brent $105 en 4T 26 en EIA/voces/calendario; DTCC–Stellar 1S 2027; euro digital 2029/piloto 2027;…
+- 2026-11-02 · W05b · CLARITY: sección 404 leída en govinfo (2-nov-2026) (`informes/research/2026-11-02-W05b-clarity-seccion-404.md`): El apunte del cerebro dice que la «sección 404» de CLARITY prohíbe pagar intereses «estáticos» por tener stablecoins ( cerebro/apuntes xrp macro…
+- 2026-11-02 · W05 · Verificación por lotes (2-nov-2026) (`informes/research/2026-11-02-W05-verificacion-lote.md`): Método: búsqueda web (varios medios) porque Chrome/congress.gov/senate.gov están bloqueados y no se abrieron notas primarias. Por tanto casi todo…
 
 ## Voces y predicciones
+- 2026-11-02 · W07 · Research de fuentes (2-nov-2026) (`informes/research/2026-11-02-W07-fuentes.md`): Alcance: enlaces de explorador/voces.json , explorador/regulacion.json y eventos/calendario.toml ; prueba de fuentes primarias sin navegador. No…
+- 2026-11-02 · W06 · Voces y predicciones (2-nov-2026) (`informes/research/2026-11-02-W06-voces-predicciones.md`): Predicciones que vencían (actualizadas en informes/predicciones.md )
 - 2026-10-27 · W06 (parcial) · Voces v045, v049 y v050 · 27-oct-2026 (`informes/research/2026-10-27-W06-voces-v045-v049-v050.md`): v045 S&P, estabilidad de stablecoins sin confirmar compatible con los datos fintechnews.sg (5 ago 2026) da el recuento exacto (11 evaluadas, 6 con…
-- 2026-10-26 · W06 · Voces y predicciones (26-oct-2026) (`informes/research/2026-10-26-W06-voces-y-predicciones.md`): v046 Lagarde Sube a P/confirmada · fecha 8 may 2026 Discurso leído en…
-- 2026-10-25 · W07 · Research de fuentes (25-oct-2026) (`informes/research/2026-10-25-W07-fuentes.md`): Universo: 96 URLs únicas de explorador/voces.json , eventos/calendario.toml y explorador/calificaciones.json .
 
 ## Fiscal
 - 2026-10-23 · T24 — Fiscalidad internacional de cripto: CARF, DAC8 y formulario 1099-DA (`informes/research/2026-10-23-T24-fiscalidad-internacional-cripto.md`): CARF (OECD): marco de intercambio automático de información fiscal sobre cripto entre países (equivalente al CRS para cuentas bancarias). Los…
@@ -27,19 +27,19 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-14 · India: RBI, e₹, UPI, fiscalidad y regulación cripto (2026-10-14, R02) (`informes/research/2026-10-14-R02-india.md`): India mantiene dos carriles opuestos: infraestructura pública de pagos muy exitosa (UPI, ~24.000 M de operaciones/mes) y un e₹ piloto aún pequeño;…
 
 ## Energía y Ormuz
+- 2026-11-02 · W10 · Energía y geopolítica (2-nov-2026) (`informes/research/2026-11-02-W10-energia.md`): Continúa 2026 10 30 W10 energia.md . Sin recomendaciones ni predicciones de precio. Etiquetas: [P] · [S] · [VERIFICAR] · [ESPECULACIÓN].
 - 2026-10-30 · W10 · Energía y geopolítica: cierre de semana y víspera de OPEP+ (30-oct-2026) (`informes/research/2026-10-30-W10-energia.md`): Continúa 2026 10 25 W10 energia.md y 2026 10 30 C29 energia guerra noticias.md . Sin recomendaciones ni predicciones de precio. Etiquetas: [P]…
 - 2026-10-30 · C29 · Petróleo, Ormuz y guerra ↔ noticias ↔ Órbita (`informes/research/2026-10-30-C29-energia-guerra-noticias.md`): Los hitos diplomáticos y militares de octubre salen de los informes diarios del repo (titulares de CoinDesk, CNBC, Al Jazeera y el bot) [S] : no abrí…
-- 2026-10-25 · W10 · Energía y geopolítica: Ormuz con datos primarios (25-oct-2026) (`informes/research/2026-10-25-W10-energia.md`): Continúa 2026 10 24 T18 energia actualizacion.md . Hoy es domingo: los mercados están cerrados desde el viernes, así que no hay precios nuevos de…
 
 ## Deuda y bonos
+- 2026-11-02 · W02 · Deuda, subastas y calificaciones (2-nov-2026) (`informes/research/2026-11-02-W02-deuda.md`): 3 nov EE. UU. Se anuncian bills de 4, 8 y 17 semanas (liquidación 10 nov); importes aún sin publicar [P] TreasuryDirect API ( /securities/upcoming )
+- 2026-11-02 · D06 (a2) · Cortes recientes del Pillar 3 Data Hub de la EBA (2-nov-2026) (`informes/research/2026-11-02-D06-bancos-eba.md`): No se ha podido confirmar ningún corte más reciente que el del 30 jun 2025. El panel «Deuda por banco» ( explorador/bancos eba.json , 116 bancos)…
 - 2026-10-29 · D01–D03, D05: tipo a 10 años mensual por país, fuente oficial del BCE (29-oct-2026) (`informes/research/2026-10-29-D-bce-tipo-10a-mensual.md`): Curva diaria de la zona euro (no por país): serie YC.B.U2.EUR.4F.G N A.SV C YM.SR 10Y , última observación 28 oct 2026.
-- 2026-10-29 · D01-D06 · Deuda y bonos: pasada del 29-oct-2026 (sin API de Anthropic) (`informes/research/2026-10-29-D01-D06-deuda-bonos-pasada.md`): Resultado corto: una cifra nueva con fuente oficial (España 30 a) y el estado real de cada acceso. Nada de esto es recomendación.
-- 2026-10-26 · W02 · Deuda, subastas y calificaciones · D03 Francia (26-oct-2026) (`informes/research/2026-10-26-W02-deuda-d03-francia.md`): AFT, leída en directo el 26 oct [P]: Moody's Aa3 negativa, última acción 10 abr 2026, «próxima fecha» 23 oct (no actualizada). S&P A+ estable (29…
 
 ## Macro y tipos
+- 2026-11-02 · W01 · Tipos de interés (lunes 2-nov-2026) (`informes/research/2026-11-02-W01-tipos.md`): Reuniones de bancos centrales, próximos 10 días
 - 2026-10-29 · W01B · Tipos de interés, segunda pasada (29-oct-2026) (`informes/research/2026-10-29-W01B-tipos.md`): Hecha el 29 oct por la tarde, tras las decisiones de la Fed (28 oct), Canadá (28 oct) y el BCE (29 oct). Banco de Japón: aún sin decisión (se anuncia…
 - 2026-10-26 · W01 · Tipos de interés (lunes) (`informes/research/2026-10-26-W01-tipos-de-interes.md`): Qué cambió en el radar ( explorador/regulacion.json , celdas politica )
-- 2026-10-25 · C03 · Matriz de riesgos y escenarios de estrés (25-oct-2026) (`informes/research/2026-10-25-C03-matriz-de-riesgos.md`): Hueco del Centro (módulo 01, Radar). Es una herramienta de lectura, no una predicción ni una recomendación . Las probabilidades son juicios míos a 12…
 
 ## Cripto y ETF
 - 2026-10-30 · EV · Swell 2026 (Ripple, 27-29 oct) y Meridian 2026 (Stellar, 28-29 oct) · 30-oct-2026 (`informes/research/2026-10-30-EV-swell-meridian.md`): HECHOS [P] (comunicado de Ripple, 28 oct 2026):
@@ -47,19 +47,19 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-29 · EV · Swell 2026 (Ripple) y Meridian 2026 (Stellar) · 29-oct-2026 (C57) (`informes/research/2026-10-29-EV-swell-meridian.md`): Swell (Nueva York, 27 29 oct): HECHOS [P, comunicados de Ripple]
 
 ## Regulación por país
+- 2026-11-02 · W03 · Huecos del radar regulatorio (2-nov-2026) (`informes/research/2026-11-02-W03-huecos-paises.md`): Brasil (Res. BCB 520, texto consolidado en la API del BCB; modificada por la 589)
+- 2026-11-02 · C30 · Actualización 2-nov-2026: mitad de mandato EE. UU. (3-nov) y Brasil (2.ª vuelta 25-oct) (`informes/research/2026-11-02-C30-elecciones-eeuu-brasil.md`): Límite: Chrome no estaba conectado, así que no se pudo abrir resultados.tse.jus.br ; todo es [S] y no se leyó ninguna página, solo extractos de…
 - 2026-10-29 · W03E · Irán, Egipto y Etiopía, pasada 3 · 2026-10-29 (`informes/research/2026-10-29-W03E-pasada3.md`): Tercera pasada con fuentes oficiales abiertas hoy (Chrome y curl). Edita solo explorador/regulacion.json . Sin recomendaciones: el radar describe…
-- 2026-10-29 · C51 · CBDC dentro de blockchains: qué existe y quién puede pagar o recibir (`informes/research/2026-10-29-C51-cbdc-en-blockchains.md`): Método: WebSearch estándar + una lectura directa de la página del BCE sobre Pontes. Casi todo lo demás es resumen de buscador/prensa, no lectura de…
-- 2026-10-29 · C40 · Jurisdicciones fuera del radar: Reino Unido, Suiza, Canadá, Australia y Arabia Saudí (Gemini Deep Resear (`informes/research/2026-10-29-C40-jurisdicciones-gemini-verificado.md`): Verificación (6 datos contra fuente primaria, todos leídos hoy)
 
 ## Sesiones diarias (apertura y cierre)
-- 2026-10-30 · W09 · Resumen semanal (26-30 oct-2026) y plan de la semana siguiente (`informes/research/2026-10-30-W09-resumen-semanal.md`): Tipos: la Fed mantiene 3,75–4,00 % (28 oct, 10–2; Cook y Hammack pedían subir 25 pb) [P]. El BCE mantiene depósito 2,50 % (29 oct) [P] y Lagarde…
-- 2026-10-30 · Informe de CIERRE — 2026-10-30 (vie) (`informes/2026-10-30-cierre.md`): BoJ mantiene 1,25 % (8–1, Takata pedía 1,5 %) y acelera la venta de ETF desde enero de 2027.
-- 2026-10-30 · Informe de APERTURA — 2026-10-30 (vie) (`informes/2026-10-30-apertura.md`): Banco de Japón mantiene 1,25 % (8 1, Takata pide 1,50 %) y duplica la venta de ETF [S]; yen algo más fuerte.
+- 2026-11-02 · Revisión semanal del cerebro · 02/11/2026 (`informes/2026-11-02-revision.md`): Informe automático. No modifica nada del cerebro : tú decides qué corregir. Cada hallazgo lleva citas literales comprobadas contra los archivos.
+- 2026-11-02 · Informe de CIERRE — 2026-11-02 (lun) (`informes/2026-11-02-cierre.md`): Wall Street cierra mixto y revierte el rebote de la mañana: S&P −0,5 %, Nasdaq −1,1 %, Dow +0,4 %, VIX 21,2.
+- 2026-11-02 · Informe de APERTURA — 2026-11-02 (lun) (`informes/2026-11-02-apertura.md`): Rebote moderado tras el viernes: IBEX +1,63 %, Euro Stoxx +0,73 %, Kospi +2,24 %; S&P y Nasdaq +0,33 % a media sesión [S].
 
 ## Otros
-- 2026-10-31 · C70 · Auditoría de diseño de la app móvil y boceto «cómo quedaría» (31-oct-2026) (`informes/research/2026-10-31-C70-diseno-movil.md`): Boceto: docs/movil prueba/index.html (ver cómo abrirlo al final). La app real ( docs/movil/index.html , sw.js ) no se ha tocado .
-- 2026-10-31 · C68 · Sueldos de los cargos políticos: cuánto cobra cada cargo y dónde se desglosa (31-oct-2026) (`informes/research/2026-10-31-C68-sueldos-politicos.md`): Solo cifras publicadas. Nivel: [P] primaria leída · [S] suma o cálculo mío · [VERIFICAR] no cuadra o no leído. Sin recomendaciones.
-- 2026-10-30 · W11 · Política y elecciones: revisión semanal (30-oct-2026) (`informes/research/2026-10-30-W11-politica-elecciones.md`): Sin predicción de resultados ni recomendaciones. Etiquetas: [P] primaria leída · [S] prensa · [VERIFICAR] · [ESPECULACIÓN].
+- 2026-11-02 · C74 · Materias primas y crédito bancario: qué se publica y qué automatizar (2-nov-2026) (`informes/research/2026-11-02-C74-materias-primas-credito-bancario.md`): Mide: % neto de bancos del euro que endurecen (+) o relajan (−) criterios de concesión, condiciones y demanda de crédito (empresas, hogares vivienda,…
+- 2026-11-02 · C73 · España: vivienda, hipotecas y esfuerzo de acceso (2-nov-2026) (`informes/research/2026-11-02-C73-vivienda.md`): Explicativo, sin recomendaciones de compra. Etiquetas: [P] fuente oficial leída · [S] prensa o resumen · [VERIFICAR] · [ESPECULACIÓN]. Los datos de…
+- 2026-11-02 · C72 · Crédito e hipotecas fuera de la zona euro (parcial, 2-nov-2026) (`informes/research/2026-11-02-C72-credito.md`): Qué abre y ya está en el panel (pestaña Tipos, tabla «Euríbor, hipotecas y crédito»)
 
 ## Dudas y datos a verificar
 Las frases son extractos sin comprobar: lo dudoso está marcado [VERIFICAR] en el informe original.
