@@ -13,6 +13,7 @@ import io
 import json
 import re
 import sys
+import time
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
@@ -741,6 +742,9 @@ def leer_indicadores():
     return _leer(PREVIO.get("indicadores"))
 
 
+LIMITE_S = 200  # tope total de descarga: el workflow corta a los 5 min y perdería todo
+
+
 def main():
     global PREVIO
     previo = {}
@@ -752,7 +756,14 @@ def main():
     PREVIO = previo
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
+    limite = time.monotonic() + LIMITE_S
     for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz)):
+        t0 = time.monotonic()
+        if t0 > limite:
+            fallos.append(f"{clave}: omitido por tiempo (más de {LIMITE_S} s en total)")
+            if clave in previo:
+                salida[clave] = previo[clave]
+            continue
         try:
             salida[clave] = funcion()
             salida[clave]["leido"] = salida["leido"]
@@ -760,6 +771,8 @@ def main():
             fallos.append(f"{clave}: {type(e).__name__}: {e}")
             if clave in previo:
                 salida[clave] = previo[clave]
+        print(f"[tiempo] {clave}: {time.monotonic() - t0:.1f} s")
+        SALIDA.write_text(json.dumps(salida, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     SALIDA.write_text(json.dumps(salida, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     tic = salida.get("tic")
     if tic:

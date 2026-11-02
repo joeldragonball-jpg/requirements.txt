@@ -16,7 +16,7 @@ concurrency: paneles
 jobs:
   paneles:
     runs-on: ubuntu-24.04
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
 
