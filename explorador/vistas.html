@@ -1093,6 +1093,15 @@ function pEspana(){
     const cam=r=>{if(r.anterior==null)return '—';return r.unidad==='M€'?cambio((r.valor/r.anterior-1)*100,'%',2):cambio(r.valor-r.anterior,'p.p.',2)};
     add(bloque('Economía de España: IPC, PIB, paro, vivienda y costes laborales','Último dato de cada serie viva del INE y cambio frente al periodo anterior (puntos porcentuales; el PIB corriente, en %). «Avance» y «provisional» pueden revisarse. El paro EPA se calcula como parados entre activos.',{nivel:INE.nivel,t:'INE, API Tempus · leído '+(INE.leido||P.leido)},
       conL(null,tabla([{t:'Indicador',f:r=>r.nombre},{t:'Último dato',n:1,f:vf},{t:'Cambio',n:1,f:cam},{t:'Periodo',f:r=>r.periodo},{t:'Tipo de dato',f:r=>(r.tipo_dato||'—')+(r.calculado?' · calculado':'')},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Fuente',f:r=>lnk(r.fuente,r.serie)}],INE.filas),el('p','nota-v',INE.nota||''))))}
+  const DE=P&&P.espana_deuda;
+  if(DE&&DE.ccaa&&DE.ccaa.length){
+    const a=DE.aapp,tot=DE.ccaa_total,mx=Math.max(...DE.ccaa.map(x=>x.deuda||0));
+    const pie={nivel:DE.nivel,t:'Banco de España, deuda PDE (be1101, be1309) · '+DE.periodo+' · M€ · leído '+(DE.leido||P.leido)};
+    const info=el('p','nota-v','Deuda de todas las Administraciones Públicas: '+n0(a.deuda)+' M€ ('+fx(a.pct_pib,1)+' % del PIB de la serie del BdE) en '+a.periodo+'; hace un año, '+n0(a.hace_un_anio)+' M€. Las comunidades suman '+n0(tot.deuda)+' M€ ('+fx((tot.deuda/tot.hace_un_anio-1)*100,1)+' % en un año).');
+    add(bloque('Deuda de las comunidades autónomas (PDE, trimestral)',DE.nota,pie,conL(null,info,tabla([
+      {t:'Comunidad',f:r=>r.nombre},{t:'Deuda, M€',n:1,f:r=>n0(r.deuda)},{t:'% de las comunidades',f:r=>pbar(r.deuda/tot.deuda*100)},
+      {t:'Frente al trimestre anterior',n:1,f:r=>r.anterior?cambio((r.deuda/r.anterior-1)*100,'%',1):'—'},{t:'Frente a hace un año',n:1,f:r=>r.hace_un_anio?cambio((r.deuda/r.hace_un_anio-1)*100,'%',1):'—'}],DE.ccaa))));
+  }
   if(B){
     const v=el('p','nota-v');v.append(nivelBadge(B.vigencia.nivel),document.createTextNode(' '+B.vigencia.texto));c.append(v);
     const u=el('ul','nota-v');for(const t of B.como_leerlo)u.append(el('li',null,t));

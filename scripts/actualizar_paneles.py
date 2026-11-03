@@ -775,6 +775,60 @@ def leer_espana_ine():
             "nota": "Series vivas comprobadas el 3-nov-2026. «avance» y «provisional» pueden revisarse. Pendiente [VERIFICAR]: IPCA del INE (el IPCA de España ya sale de Eurostat en «inflacion») y salarios por convenio."}
 
 
+URL_BDE_CSV = "https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/"
+_MESES_BDE = {"MAR": "1T", "JUN": "2T", "SEP": "3T", "DIC": "4T"}
+
+
+def _bde_csv(nombre):
+    """CSV del Banco de España (cabeceras de 6 filas, una columna por serie, fechas «JUN 2026», cifras en miles de euros) [P]: (códigos, descripciones, {fecha: [valores]})."""
+    peticion = urllib.request.Request(URL_BDE_CSV + nombre, headers={"User-Agent": "cartera-joel/1.0 (uso personal)"})
+    with urllib.request.urlopen(peticion, timeout=40) as r:
+        datos = r.read()
+    if datos[:2] == b"\x1f\x8b":
+        datos = gzip.decompress(datos)
+    filas = list(csv.reader(io.StringIO(datos.decode("latin-1"))))
+    series = {}
+    for f in filas[6:]:
+        if f and re.fullmatch(r"[A-Z]{3} \d{4}", f[0]):
+            series[f[0]] = f[1:]
+    return filas[0][1:], filas[3][1:], series
+
+
+def _periodo_bde(fecha):
+    mes, anio = fecha.split()
+    return f"{_MESES_BDE[mes]}-{anio}"
+
+
+def leer_espana_deuda():
+    """España: deuda de las Administraciones Públicas (protocolo de déficit excesivo, PDE) y de cada comunidad autónoma, trimestral (Banco de España, be1101 y be1309) [P]."""
+    cod, des, ser = _bde_csv("be1309.csv")
+    fechas = list(ser)
+    if len(fechas) < 5:
+        raise ValueError("be1309: menos de 5 trimestres")
+    ult, ant, anio = fechas[-1], fechas[-2], fechas[-5]
+
+    def v(fecha, j):
+        x = ser[fecha][j]
+        return float(x) / 1000 if x not in ("", "_") else None
+
+    ccaa = []
+    for j in range(1, len(cod)):
+        nombre = des[j].split("CCAA. ", 1)[1].rsplit(". Deuda PDE", 1)[0]
+        ccaa.append({"nombre": nombre, "deuda": v(ult, j), "anterior": v(ant, j), "hace_un_anio": v(anio, j)})
+    ccaa.sort(key=lambda x: -(x["deuda"] or 0))
+    total = {"deuda": v(ult, 0), "anterior": v(ant, 0), "hace_un_anio": v(anio, 0)}
+    cod1, des1, ser1 = _bde_csv("be1101.csv")
+    j_pde, j_pib = cod1.index("DTNPDE2010_P00000_PS_APU"), cod1.index("DTNSEC2010_PIBPM")
+    f1 = [f for f in ser1 if ser1[f][j_pde] not in ("", "_")]
+    u1, a1 = f1[-1], f1[-5]
+    aapp = {"periodo": _periodo_bde(u1), "deuda": float(ser1[u1][j_pde]) / 1000, "hace_un_anio": float(ser1[a1][j_pde]) / 1000, "pib_4t": float(ser1[u1][j_pib]) / 1000}
+    aapp["pct_pib"] = round(aapp["deuda"] / aapp["pib_4t"] * 100, 1)
+    return {"fuente": "Banco de España, estadísticas de deuda PDE (be1101 y be1309)", "nivel": "P", "unidad": "M€", "periodo": _periodo_bde(ult), "periodo_anterior": _periodo_bde(ant), "periodo_hace_un_anio": _periodo_bde(anio),
+            "aapp": aapp, "ccaa_total": total, "ccaa": ccaa,
+            "url": "https://www.bde.es/webbe/es/estadisticas/temas/deuda-publica.html",
+            "nota": "Deuda PDE = deuda bruta consolidada de la definición europea de déficit excesivo. El % del PIB usa el PIB de la serie del propio Banco de España (base 2016, puede diferir del INE actual [VERIFICAR]). No incluye entidades locales ni el Estado por separado en este CSV."}
+
+
 def _ultimo_cambio(serie):
     """serie = [(fecha ISO, valor)] ordenada; devuelve (valor actual, fecha del último cambio, valor anterior)."""
     serie = [(f, v) for f, v in serie if v is not None]
@@ -1078,7 +1132,7 @@ def main():
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
     limite = time.monotonic() + LIMITE_S
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("espana_ine", leer_espana_ine), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("espana_ine", leer_espana_ine), ("espana_deuda", leer_espana_deuda), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias)):
         t0 = time.monotonic()
         if t0 > limite:
             fallos.append(f"{clave}: omitido por tiempo (más de {LIMITE_S} s en total)")
@@ -1125,6 +1179,9 @@ def main():
     if ine:
         print("España (INE): " + ", ".join(f"{f['id']} {f['valor']} ({f['periodo']}, {f['tipo_dato']})" for f in ine["filas"]))
         fallos += ine.get("fallos", [])
+    ed = salida.get("espana_deuda")
+    if ed:
+        print(f"España deuda PDE: AAPP {ed['aapp']['deuda']:,.0f} M€ ({ed['aapp']['pct_pib']} % PIB, {ed['aapp']['periodo']}); CCAA {ed['ccaa_total']['deuda']:,.0f} M€ ({ed['periodo']})")
     cr = salida.get("credito")
     if cr:
         print("Crédito: " + ", ".join(f"{s['id']} {s['valor']} ({s['fecha']})" for s in cr["series"]))
