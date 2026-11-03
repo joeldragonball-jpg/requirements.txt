@@ -280,3 +280,69 @@ Lectura (cálculos míos a partir de las tablas):
 
 Cómo se cerraría con rigor [PENDIENTE]: (1) listado anonimizado de víctimas con fecha y municipio del TSJCV/CGPJ o por transparencia; (2) microdatos INE de defunciones por municipio de Horta Sud (oct-dic 2024) frente a 2019-2023; (3) INE-ECM 2024 por causa; (4) intervalo numérico del panel MoMo; (5) microdatos DGT 2024 de la provincia.
 Sesgos: INE e ISCIII son estadísticas oficiales sin motivo político pero con límites técnicos; Maldita es un verificador con línea editorial propia; la jueza tiene interés institucional en la cifra; las alegaciones de ocultación son mayoritariamente anónimas o políticas y sin datos publicables.
+
+---
+
+## 7. Municipios (C78): INE por municipio frente al desglose del CID (3-nov-2026)
+
+### 7.a Qué datos municipales públicos del INE existen (HECHO, comprobado)
+- Operación INE «MNP Estadística de Defunciones» (Id 309), tabla 31917 «Defunciones por edad, sexo y mes de defunción» (variable «Capitales y principales municipios»). CSV público leído en streaming sin guardarlo en disco: https://www.ine.es/jaxiT3/files/t/es/csv_bdsc/31917.csv. Años en el CSV: 2019, 2023, 2024 (entre otros). El resto de tablas MNPD son provinciales o de comunidades; la API Tempus no permite filtrar municipios de esta tabla (error «restricciones de volumen»).
+- LIMITACIÓN CLAVE: en la provincia de Valencia la tabla solo incluye 5 municipios: València, Torrent, Paterna, Sagunt y Gandia. NO hay datos de Paiporta, Catarroja, Sedaví, Alfafar, Benetússer, Massanassa, Picanya ni Utiel (por debajo del umbral de «principales municipios» o no publicados) [VERIFICAR el umbral exacto en la metodología INE]. Para esos municipios habría que pedir microdatos al INE o el Registro Civil, o usar el Padrón/estadísticas de la Generalitat (Institut Valencià d'Estadística) [PENDIENTE].
+- Asignación: el MNP de defunciones asigna por lugar de residencia del fallecido (las series de Tempus llevan la etiqueta «Lugar de residencia»; mes de fallecimiento) [VERIFICAR en la nota metodológica]. La nota del CID asigna por municipio de **levantamiento del cadáver**. Son criterios distintos y no comparables uno a uno.
+- Estado de los datos: 2019, 2023 y 2024 figuran como definitivos en el INE para la serie provincial (comprobado en 6.a). La nota de prensa MNP 2024 del INE es del 19-nov-2025 (https://www.ine.es/dyngs/Prensa/MNP2024.htm); el MNP no dispone de resultados municipales mensuales provisionales públicos en lo que he podido ver [VERIFICAR].
+
+### 7.b Defunciones por municipio (todas las edades, ambos sexos; número absoluto)
+
+| Territorio | Oct-2019 | Oct-2023 | Oct-2024 | Nov-2023 | Nov-2024 | Dic-2023 | Dic-2024 | Año 2023 | Año 2024 |
+|---|---|---|---|---|---|---|---|---|---|
+| Provincia de Valencia | 1.775 | 1.883 | **2.051** | 1.880 | 1.879 | 2.247 | 2.210 | 24.123 | 23.864 |
+| València (ciudad) | 570 | 568 | 573 | 583 | 602 | 729 | 689 | 7.672 | 7.476 |
+| Torrent | 41 | 49 | **63** | 61 | 48 | 60 | 56 | 628 | 694 |
+| Paterna (control) | 35 | 35 | 32 | 40 | 36 | 49 | 45 | 469 | 472 |
+| Sagunt (control) | 52 | 70 | 57 | 48 | 58 | 57 | 51 | 722 | 640 |
+| Gandia (control) | 53 | 45 | 51 | 53 | 51 | 60 | 67 | 655 | 638 |
+
+Fuente: INE, tabla 31917 (CSV), cálculos míos. Oct-2019: València 570, Torrent 41, Paterna 35, Sagunt 52, Gandia 53.
+
+Lectura (cálculos míos):
+- Provincia: oct-2024 +168 frente a oct-2023 y +276 frente a oct-2019.
+- València ciudad: oct-2024 573 frente a 568 (2023): sin exceso visible. Encaja con que la nota del CID solo registre 16-17 levantamientos en la ciudad (efecto de ~+15 dentro de un ruido mensual de ±30-40) y con que muchas víctimas del Horta Sud residieran fuera de la ciudad.
+- Torrent: oct-2024 63 frente a 49 (2023) y 41 (2019): +14 y +22; nov-2024 baja a 48. La nota del CID registra 10 levantamientos en Torrent: cuadra en orden de magnitud, aunque el ruido mensual de una ciudad de ~90.000 hab. (±8-10) impide afirmarlo [ESPECULACIÓN].
+- Los controles fuera de la zona afectada (Paterna, Sagunt, Gandia) no muestran exceso en oct-2024 respecto a 2023.
+- Suma de los 5 municipios en oct-2024: 776 frente a 767 en oct-2023. Esos municipios aportan ~38 % de las defunciones de la provincia, pero concentran solo 26-27 de las 216 víctimas del CID (València 16, Torrent 10; Paterna, Sagunt y Gandia 0), lo que explica por qué el exceso provincial (~+170 a +230) NO se ve en ellos: la mayoría de las muertes ocurrió en municipios sin dato INE público.
+
+### 7.c Comparación con el desglose del CID (216 víctimas, nota del 14-nov-2024)
+
+| Municipio | CID (levantamiento) | INE municipal público | ¿Cuadra? |
+|---|---|---|---|
+| Paiporta | 45 | No publicado | No contrastable |
+| Catarroja | 25 | No publicado | No contrastable |
+| València | 16 | oct-24 573 vs 568 (+5) | Compatible: efecto pequeño y bajo el ruido |
+| Alfafar | 15 | No publicado | No contrastable |
+| Massanassa | 12 (texto: 11) | No publicado | No contrastable |
+| Benetússer, Picanya | 10 + 10 | No publicado | No contrastable |
+| Torrent | 10 | oct-24 63 vs 49 (+14) | Compatible en orden de magnitud |
+| Sedaví | 9 | No publicado | No contrastable |
+| Utiel | 6 | No publicado | No contrastable |
+| Resto de municipios | 58 en conjunto (Chiva 8, Cheste 7, Quart 7, Aldaia 6, Riba-roja 6, etc.) | No publicado | No contrastable |
+| Total provincia | 216 (14-nov-2024); oficial vigente 234 | exceso semanal +230 a +255 (6.a), mensual +168 | Cuadra a escala provincial; no a escala municipal |
+
+Qué NO cuadra o queda sin resolver:
+- Con las cifras públicas no se puede verificar por municipio ~88 % del recuento (190 de 216) del CID. La comprobación municipal real requiere datos de Registro Civil por municipio y fecha (INE microdatos o IVE) [PENDIENTE].
+- Una alarma habitual: que el INE cuente por residencia y el CID por lugar de levantamiento. Una persona de Paiporta fallecida en un hospital de València cuenta en el INE para Paiporta y en el CID (según el criterio de la nota) donde se levantó el cadáver; las diferencias entre ambos criterios son del orden de decenas, no de cientos [ESPECULACIÓN].
+
+### 7.d Causa de muerte (ECM 2024, operación Id 23): sí es pública a nivel provincial
+Fuente: INE, «Estadística de Defunciones según la Causa de Muerte», tabla 73035 (capítulos CIE-10 por sexo y provincia); series ECM148492 (XX. Causas externas de mortalidad, Valencia, total) y ECM148801 (todas las causas). Leídas vía API Tempus.
+
+| Año | Todas las causas, Valencia | Capítulo XX Causas externas, Valencia |
+|---|---|---|
+| 2019 | 22.840 | 834 |
+| 2022 | 25.955 | 941 |
+| 2023 | 24.123 | 911 |
+| **2024** | **23.864** | **1.114** |
+
+- HECHO: las causas externas suben +203 frente a 2023, +173 frente a 2022 y +280 frente a 2019, mientras el total de defunciones de 2024 baja 259 frente a 2023. Coherente con ~220-234 muertes por inundación, que se codifican en causas externas.
+- Caveats: el capítulo XX incluye accidentes, suicidios, caídas, etc., y su tendencia previa era creciente (834 en 2019, ~910-940 en 2022-2023): una línea base de ~925 deja ~+190 atribuibles al evento, con margen de varias decenas [ESPECULACIÓN]. Asignación por residencia del fallecido [VERIFICAR]; no hay desglose público municipal ni por «inundación» (CIE-10 X38) en las tablas leídas [PENDIENTE: lista detallada de 3 caracteres, si el INE la publica a nivel provincial].
+- Conclusión: tres comprobaciones públicas independientes (EDeS semanal +230/+255; MoMo +231; causas externas ECM +173/+203) apuntan al mismo orden de magnitud que la cifra oficial (219-234), sin sostener cientos o miles adicionales. Ninguna puede resolver diferencias de pocas decenas.
+
+Sesgos y fiabilidad: INE y ISCIII son estadísticas oficiales; los municipios pequeños tienen ruido mensual relevante; el criterio de residencia frente al de levantamiento impide el cruce municipal exacto.
