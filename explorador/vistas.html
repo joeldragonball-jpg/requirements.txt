@@ -1087,6 +1087,12 @@ function pEspana(){
   const add=b=>{b.classList.add('ancho');mz.append(b)};
   const mz=masonry();
   const dat=L=>tabla([{t:'Dato',f:r=>r.nombre},{t:'Valor',n:1,f:r=>r.valor==null?'[VERIFICAR]':fx(r.valor,r.valor%1?2:0)+' '+(r.unidad||'')},{t:'Fecha',f:r=>String(r.anio||'')},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Nota',f:r=>r.nota},{t:'Fuente',f:r=>lnk(r.fuente)}],L);
+  const INE=P&&P.espana_ine;
+  if(INE&&INE.filas&&INE.filas.length){
+    const vf=r=>fx(r.valor,r.unidad==='M€'?0:r.valor%1?2:0)+' '+(r.unidad==='M€'?'M€':'%');
+    const cam=r=>{if(r.anterior==null)return '—';return r.unidad==='M€'?cambio((r.valor/r.anterior-1)*100,'%',2):cambio(r.valor-r.anterior,'p.p.',2)};
+    add(bloque('Economía de España: IPC, PIB, paro, vivienda y costes laborales','Último dato de cada serie viva del INE y cambio frente al periodo anterior (puntos porcentuales; el PIB corriente, en %). «Avance» y «provisional» pueden revisarse. El paro EPA se calcula como parados entre activos.',{nivel:INE.nivel,t:'INE, API Tempus · leído '+(INE.leido||P.leido)},
+      conL(null,tabla([{t:'Indicador',f:r=>r.nombre},{t:'Último dato',n:1,f:vf},{t:'Cambio',n:1,f:cam},{t:'Periodo',f:r=>r.periodo},{t:'Tipo de dato',f:r=>(r.tipo_dato||'—')+(r.calculado?' · calculado':'')},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Fuente',f:r=>lnk(r.fuente,r.serie)}],INE.filas),el('p','nota-v',INE.nota||''))))}
   if(B){
     const v=el('p','nota-v');v.append(nivelBadge(B.vigencia.nivel),document.createTextNode(' '+B.vigencia.texto));c.append(v);
     const u=el('ul','nota-v');for(const t of B.como_leerlo)u.append(el('li',null,t));

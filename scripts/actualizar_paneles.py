@@ -284,13 +284,15 @@ def leer_watchlist():
     return salida
 
 
-URL_BIS_TIPOS = "https://stats.bis.org/api/v2/data/dataflow/BIS/WS_CBPOL/1.0/D.CH+CN+HK+ID+IN+JP+KR+MX+RU+ZA?lastNObservations=1"
+URL_BIS_TIPOS = "https://stats.bis.org/api/v2/data/dataflow/BIS/WS_CBPOL/1.0/D.CH+CN+HK+ID+IN+JP+KR+MX+RU+ZA+AU+NZ+SE+NO+CO+CL+PE?lastNObservations=1"
+# Fed, BCE, BoE, Canadá y Brasil NO van aquí: su fuente primaria manda (leer_tipos). Argentina no tiene tipo de política desde jul-2025.
 PAISES_BIS = {"CH": "Suiza", "CN": "China", "HK": "Hong Kong", "ID": "Indonesia", "IN": "India", "JP": "Japón", "KR": "Corea del Sur",
-              "MX": "México", "RU": "Rusia", "ZA": "Sudáfrica"}
+              "MX": "México", "RU": "Rusia", "ZA": "Sudáfrica", "AU": "Australia", "NZ": "Nueva Zelanda", "SE": "Suecia", "NO": "Noruega",
+              "CO": "Colombia", "CL": "Chile", "PE": "Perú"}
 
 
 def leer_tipos_bis():
-    """Último tipo oficial de 10 bancos centrales según el BIS (Data Portal, SDMX CSV) [P vía BIS]. El BIS puede ir días por detrás del banco central."""
+    """Último tipo oficial de 17 bancos centrales según el BIS (Data Portal, SDMX CSV) [P vía BIS]. El BIS puede ir días por detrás del banco central."""
     peticion = urllib.request.Request(URL_BIS_TIPOS, headers={"Accept": "application/vnd.sdmx.data+csv;version=1.0.0", "User-Agent": "cartera-joel/1.0 (uso personal)"})
     with urllib.request.urlopen(peticion, timeout=30) as r:
         texto = r.read().decode("utf-8")
@@ -306,7 +308,8 @@ def leer_tipos_bis():
     if not filas:
         raise ValueError("el BIS no devolvió ningún tipo")
     filas.sort(key=lambda x: -x["num"])
-    return {"fuente": "https://data.bis.org/topics/CBPOL", "nivel": "P", "paises": filas, "fallos": fallos}
+    return {"fuente": "https://data.bis.org/topics/CBPOL", "nivel": "P", "paises": filas, "fallos": fallos,
+            "nota": "Argentina: sin tipo de política desde jul-2025 (el BCRA ya no fija uno); no comparable. Fed, BCE, BoE, Canadá y Brasil van por su fuente primaria en «tipos_vivos»."}
 
 
 PAISES_DEFENSA = {"US": "EE. UU.", "CN": "China", "RU": "Rusia", "IN": "India", "DE": "Alemania", "FR": "Francia", "GB": "Reino Unido", "ES": "España",
@@ -707,6 +710,71 @@ def leer_inflacion():
     return {"fuente": "BLS, Eurostat (zona euro y España), ONS, Statistics Canada, IBGE, BIS y FRED (PCE)", "nivel": "P", "paises": paises, "fallos": fallos}
 
 
+_MESES_ES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
+
+
+def _ine_serie(cod, n=2):
+    """Últimos n datos de una serie viva del INE (API Tempus, sin clave) [P]: [(periodo legible, valor, tipo de dato)], el más reciente al final."""
+    r = json.loads(_json_url(f"https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/{cod}?nult={n}&det=2", t=30))
+    out = []
+    for d in r["Data"]:
+        if d.get("Valor") is None:
+            continue
+        p = d.get("NombrePeriodo", "")
+        m = re.fullmatch(r"(\d{4})M(\d{1,2})", p) or re.fullmatch(r"(\d{4})T(\d)", p)
+        if not m:
+            raise ValueError(f"{cod}: periodo desconocido {p!r}")
+        etiqueta = f"{_MESES_ES[int(m.group(2)) - 1]}-{m.group(1)}" if "M" in p else f"{m.group(2)}T-{m.group(1)}"
+        tipo = {"Definitivo": "definitivo", "Provisional": "provisional", "Avance": "avance"}.get((d.get("TipoDato") or {}).get("Nombre"), (d.get("TipoDato") or {}).get("Nombre", "").lower())
+        out.append((etiqueta, float(d["Valor"]), tipo))
+    if not out:
+        raise ValueError(f"{cod}: sin datos")
+    return out
+
+
+def leer_espana_ine():
+    """España (INE, API Tempus, series vivas): IPC, PIB, paro EPA, precios de la vivienda y coste laboral [P]. Si una serie falla se conserva su dato anterior."""
+    previo = {f["id"]: f for f in PREVIO.get("espana_ine", {}).get("filas", [])}
+    web = "https://www.ine.es/jaxiT3/Datos.htm?t="
+    filas, fallos = [], []
+
+    def simple(id_, nombre, cod, unidad, enlace, n=2):
+        def f():
+            s = _ine_serie(cod, n)
+            return {"valor": s[-1][1], "anterior": s[-2][1] if len(s) > 1 else None, "periodo": s[-1][0], "periodo_anterior": s[-2][0] if len(s) > 1 else None, "tipo_dato": s[-1][2], "unidad": unidad}
+        return (id_, nombre, cod, enlace, f)
+
+    def paro():
+        # La tasa de paro no tiene serie viva localizada: se calcula como parados / activos (EPA387800 / EPA387794), ambos de la misma encuesta.
+        pa, ac = _ine_serie("EPA387800", 2), _ine_serie("EPA387794", 2)
+        if pa[-1][0] != ac[-1][0]:
+            raise ValueError("parados y activos de periodos distintos")
+        return {"valor": round(pa[-1][1] / ac[-1][1] * 100, 2), "anterior": round(pa[-2][1] / ac[-2][1] * 100, 2), "periodo": pa[-1][0], "periodo_anterior": pa[-2][0],
+                "tipo_dato": pa[-1][2], "unidad": "% de la población activa", "calculado": True}
+
+    fuentes = [
+        simple("ipc", "IPC general, variación anual", "IPC290750", "% anual", "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176802"),
+        simple("pib_vol_aa", "PIB, volumen, variación anual (desest.)", "CNTR6654", "% anual", "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736164439"),
+        simple("pib_vol_tt", "PIB, volumen, variación trimestral (desest.)", "CNTR6653", "% trimestral", "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736164439"),
+        simple("pib_corr", "PIB a precios corrientes (desest.)", "CNTR6597", "M€", "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736164439"),
+        ("paro", "Tasa de paro (EPA), calculada", "EPA387800 / EPA387794", "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176918", paro),
+        simple("ipv", "Precio de la vivienda (IPV), variación anual", "IPV1376", "% anual", "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736152838"),
+        simple("coste_laboral", "Coste laboral total por trabajador (ETCL), variación anual", "ETCL14461", "% anual", "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177061"),
+    ]
+    for id_, nombre, cod, url, f in fuentes:
+        try:
+            d = f()
+            filas.append({"id": id_, "nombre": nombre, "serie": cod, "fuente": url, "nivel": "P", **d})
+        except Exception as e:
+            fallos.append(f"espana_ine {id_}: {type(e).__name__}: {e}")
+            if id_ in previo:
+                filas.append(previo[id_])
+    if not filas:
+        raise RuntimeError("el INE no devolvió ninguna serie")
+    return {"fuente": "INE, API Tempus (servicios.ine.es/wstempus)", "nivel": "P", "filas": filas, "fallos": fallos,
+            "nota": "Series vivas comprobadas el 3-nov-2026. «avance» y «provisional» pueden revisarse. Pendiente [VERIFICAR]: IPCA del INE (el IPCA de España ya sale de Eurostat en «inflacion») y salarios por convenio."}
+
+
 def _ultimo_cambio(serie):
     """serie = [(fecha ISO, valor)] ordenada; devuelve (valor actual, fecha del último cambio, valor anterior)."""
     serie = [(f, v) for f, v in serie if v is not None]
@@ -1010,7 +1078,7 @@ def main():
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
     limite = time.monotonic() + LIMITE_S
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("espana_ine", leer_espana_ine), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias)):
         t0 = time.monotonic()
         if t0 > limite:
             fallos.append(f"{clave}: omitido por tiempo (más de {LIMITE_S} s en total)")
@@ -1053,6 +1121,10 @@ def main():
     if inf:
         print("Inflación: " + ", ".join(f"{p['id']} {p['interanual']} % ({p['fecha']})" for p in inf["paises"]))
         fallos += inf.get("fallos", [])
+    ine = salida.get("espana_ine")
+    if ine:
+        print("España (INE): " + ", ".join(f"{f['id']} {f['valor']} ({f['periodo']}, {f['tipo_dato']})" for f in ine["filas"]))
+        fallos += ine.get("fallos", [])
     cr = salida.get("credito")
     if cr:
         print("Crédito: " + ", ".join(f"{s['id']} {s['valor']} ({s['fecha']})" for s in cr["series"]))
