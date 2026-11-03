@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-03 03:02 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-03 03:56 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -32,7 +32,8 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - C68 ◐ en parte · Centro · España · Sueldos de cada cargo político (presidente, ministros, secreta · Sonnet L · ~~6 % · `research/prompts/C68-sueldos-por-persona-politicos.md`
 - C68B ◐ en parte · Centro · España · Cuadrar sueldos de secretarios de Estado, subsecretarios y dir · Sonnet M · ~~3 % · `research/prompts/C68B-cuadrar-sueldos-segundo-nivel.md`
 - C69 · Centro · España · España: cada partida con 2024 y 2025 y su variación (IGAE 2024 · Sonnet L · ~~6 % · `research/prompts/C69-espana-2024-vs-2025.md`
-- C77 · Centro · España: gasto público y deuda por ministerio, comunidad, municipio y co · Opus L · ~ · ``
+- C77 ◐ en parte · Centro · España: gasto público y deuda por ministerio, comunidad, municipio y co · Opus L · ~ · ``
+- C78 · Centro · España: pendientes de C77 (INE por municipio de la DANA, muestreo PLACS · Sonnet L · ~ · ``
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T25 · Tema libre
 **Deuda y bonos (D)** · detalle en `research/COLA-DEUDA-BONOS.md`
@@ -43,9 +44,14 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 
 ## Auditorías abiertas
-- T4 (Baja): Omisiones de fuentes: BdE en Bonos, BoE en Deuda, cifras manuales en Liquidez e Indicadores
-- T7 (Baja): Hueco jun-2026 en la API del BCE, causa sin explicar [VERIFICAR]
-- T8 (Baja): «+3» de la Cámara se mide desde 2024 (215 D), no desde hoy [VERIFICAR]
+- A1 (Media): Abierto: voces.json lo está editando otra sesión (W06); propuesta: v002→cumplido con la nota del 28-oct; v062→
+- A2 (Media): Abierto: propuesta, mostrar «P + novedades S» o añadir url a HK ETF
+- A3 (Media): Parcial: antes faltaban 23. Abierto: 9 celdas
+- A4 (Baja): Abierto
+- A5 (Media): Abierto: propuesta, 2-3 canales o analistas críticos o neutrales en el próximo lote de vídeos
+- A7 (Media): Abierto
+- A8 (Baja): Abierto solo v062
+- A9 (Baja): Cerrado (W07)
 - Auditoría mensual W08: última semana del mes (miércoles)
 
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
@@ -73,7 +79,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - 🟡 Voces: Voces sin confirmar (7) → W06 · 3 llevan más de 14 días
 
 ## Bots con problema
-- Verificación mensual, Paneles de datos
+- Verificación mensual
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-10-27 · Reunión de la Fed (FOMC) (alto) → ✓ revisado (hecho)
