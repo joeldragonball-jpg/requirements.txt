@@ -168,12 +168,21 @@ CAPA_DE_TEMA = {"reg": "reg", "cbdc": "cbdc", "fondos": "fondos", "macro": "reg"
 
 def _tema_y_capa(titulo, detalle):
     t = _plano(titulo + " " + detalle)
+    tt = _plano(titulo)
+    if "jpmd" in tt or "jpm coin" in tt:               # depósitos tokenizados de bancos (si no, caían en «reg»)
+        return "tok", "deposit"
+    if "swift" in tt:
+        return "cbdc", "cbdc"
+    if not any(k in tt for k in PALABRAS_NORMA):      # el título manda: «Brasil: Copom» o «elecciones» no son regulación aunque el detalle cite una ley
+        capa_t = _capa_macro(tt, None)
+        if capa_t:
+            return "macro", capa_t
     for tema, claves in PALABRAS_TEMA:
         if any(_plano(k) in t for k in claves):
             if tema == "tok":
                 capa = "puente" if any(k in t for k in ("xrpl", "stellar", "escrow", "enmienda", "swell", "meridian", "protocolo")) else "token"
                 return tema, capa
-            capa = CAPA_DE_TEMA[tema]
+            capa = _capa_macro(t) if tema == "macro" else CAPA_DE_TEMA[tema]
             if tema == "reg":                     # la regulación se reparte entre las capas que afecta
                 if any(k in t for k in ("stablecoin", "genius", "mica")):
                     capa = "stable"
@@ -182,7 +191,28 @@ def _tema_y_capa(titulo, detalle):
             return tema, capa
     if any(k in t for k in ("bono ", "bonos", "deuda publica", "subasta de deuda", "letras del tesoro")):
         return "macro", "deuda"            # emisiones y deuda soberana: capa «Deuda soberana y bonos»
-    return "macro", "reg"
+    return "macro", _capa_macro(t)
+
+
+# El tema «macro» se reparte entre las capas de datos según de qué trate (antes todo caía en «reg» y las demás capas quedaban sin fechas)
+CAPAS_MACRO = [("deuda", [r"tesoro", r"subasta", r"refinanci", r"calificacion", r"\bbonos?\b", r"deuda"]),
+               ("energia", [r"brent", r"opep", r"opec", r"\beia\b", r"\baie\b", r"petroleo", r"ormuz", r"\bsteo\b", r"gas natural", r"energi"]),
+               ("politica", [r"eleccion", r"mitad de mandato", r"presidencial", r"referendum", r"\bg20\b", r"\bapec\b", r"cumbre"]),
+               ("riesgos", [r"credito", r"sloos", r"morosidad", r"quiebra", r"vivienda", r"hipotec", r"\bbls\b", r"estabilidad financiera"]),
+               ("liquidez", [r"fomc", r"\bfed\b", r"\bbce\b", r"\bbanco de\b", r"copom", r"\brba\b", r"\bboj\b", r"\brbi\b", r"\blpr\b", r"tipo", r"\bipc\b", r"\bpce\b", r"\bpib\b",
+                            r"empleo", r"inflacion", r"bank rate", r"balance"])]
+
+
+def _capa_macro(t, defecto="reg"):
+    """Capa de un evento macro a partir de su texto (ya sin acentos ni mayúsculas)."""
+    for capa, patrones in CAPAS_MACRO:
+        if any(re.search(pat, t) for pat in patrones):
+            return capa
+    return defecto
+
+
+PALABRAS_NORMA = ("cftc", "fincen", "comentarios", "ley ", "impuesto", "reglamento", "autoriz", "licencia", "antiblanqueo", "transferencias inmediatas",
+                  "sec:", "mica", "clarity", "reporte", "carf")
 
 
 @st.cache_data(ttl=600, show_spinner=False)
@@ -210,6 +240,28 @@ def _calendario(hoy_iso, version_codigo=""):
                     "detalle": _limpiar(str(e.get("detalle", "")))[:230], "impacto": str(e.get("impacto", "bajo")),
                     "aprox": bool(e.get("aproximado")), "fuente": dominio, "tema": tema, "capa": capa})
     return sorted(out, key=lambda x: x["ini"])
+
+
+def _novedades(hoy_iso, dias=7):
+    """Informes y dossiers de los últimos días (la fecha va al principio del nombre del archivo): lo que hay nuevo en los research."""
+    corte = (date.fromisoformat(hoy_iso) - timedelta(days=dias)).isoformat()
+    out = []
+    for tipo, carpeta in FUENTES_DOCS:
+        if tipo == "Apunte" or not carpeta.is_dir():
+            continue
+        for ruta in carpeta.glob("*.md"):
+            m = re.match(r"(\d{4}-\d{2}-\d{2})", ruta.name)
+            if not m or m.group(1) < corte or (carpeta.name == "gemini" and "verificado" not in ruta.name):
+                continue
+            texto = _leer(ruta)
+            if not texto:
+                continue
+            titulo = _titulo(texto, ruta)
+            _, capa = _tema_y_capa(titulo, "")
+            idm = re.search(r"-(R\d+[A-Za-z]*|G\d+|[CWT]\d+[A-Za-z]*)-", ruta.name)
+            out.append({"fecha": m.group(1), "tipo": tipo, "id": idm.group(1) if idm else "", "titulo": titulo, "resumen": _resumen(texto)[:260],
+                        "archivo": f"{ruta.parent.relative_to(RAIZ).as_posix()}/{ruta.name}", "capa": capa})
+    return sorted(out, key=lambda x: (x["fecha"], x["archivo"]), reverse=True)
 
 
 def _html(conceptos):
@@ -260,6 +312,7 @@ def _html(conceptos):
     datos["biblioteca"] = rel.get("_totales", {})
     hoy = date.today().isoformat()
     datos["calendario"] = {"hoy": hoy, "temas": TEMAS, "eventos": _calendario(hoy, _version())}
+    datos["novedades"] = _novedades(hoy)
     # Dentro de <script type="application/json"> hay que evitar que el texto cierre la etiqueta
     texto = json.dumps(datos, ensure_ascii=False).replace("</", "<\\/").replace("<!--", "<\\!--")
     vistas = json.dumps((CARPETA / "vistas.html").read_text(encoding="utf-8"), ensure_ascii=False).replace("</", "<\\/").replace("<!--", "<\\!--")
