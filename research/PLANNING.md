@@ -1,9 +1,9 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-03 20:07 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-03 21:10 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Hoy (mar 2026-11-03): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 2 días
+- R00 apertura ✓ · cierre ✓ · racha 2 días
 - Sin rutina fija hoy: elige por prioridad en las secciones de abajo.
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
@@ -34,7 +34,18 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - C69 · Centro · España · España: cada partida con 2024 y 2025 y su variación (IGAE 2024 · Sonnet L · ~~6 % · `research/prompts/C69-espana-2024-vs-2025.md`
 - C77 ◐ en parte · Centro · España: gasto público y deuda por ministerio, comunidad, municipio y co · Opus L · ~ · ``
 - C79 · Centro · España: PDF del Tesoro, AIReF, IGAE y AEAT (requieren OK de descarga),  · Sonnet M · ~ · ``
-- C80 ◐ en parte · Centro · Fuentes Fase 2: catálogo con estado (API/Chrome/bloqueada/manual) y cad · Sonnet M · ~ · ``
+- C80B ◐ en parte · Centro · Fuentes Fase 2: catálogo con estado (API/Chrome/bloqueada/manual) y cad · Sonnet M · ~ · ``
+- C86 · Centro · Indexar research/fuentes-nuevas, verificaciones y CATALOGO-FUENTES en e · Sonnet S · ~~1 % · ``
+- C87 · Centro · Separar público/privado: auditoría del repo público y plan de repo priv · Opus M · ~~3 % · ``
+- C88 · Centro · Endurecer el Worker de Cloudflare y los bots de pago: token fine-graine · Sonnet S · ~~1 % · ``
+- C89 · Centro · Endurecer candado() de app.py: cerrado por defecto, cookie/sesión en ve · Sonnet S · ~~2 % · ``
+- C90 · Centro · Revisión XSS: texto externo inyectado como HTML en docs/movil/index.htm · Sonnet S · ~~2 % · ``
+- C91 · Centro · Modelo de enlaces país↔evento↔activo↔voz↔predicción (enlaces.json, tesi · Sonnet M · ~~3 % · ``
+- C92 · Centro · Medición: normalizar predicciones (fecha límite, fuente_id), script de  · Sonnet M · ~~3 % · ``
+- C93 · Centro · Caducidad de [VERIFICAR]: fechar cada uno y cola de revisión · Sonnet M · ~~3 % · ``
+- C94 · Centro · Regenerar graphify y detectar contradicciones paneles↔manuales (sin IA) · Sonnet S · ~~1 % · ``
+- C95 · Centro · Plan de salida a producción para la familia: auth, hosting, copias, avi · Opus M · ~~3 % · ``
+- C96 · Centro · Consulta regulatoria de monetización [VERIFICAR con asesor/CNMV]: pregu · Sonnet S · ~~1 % · ``
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T25 · Tema libre
 **Deuda y bonos (D)** · detalle en `research/COLA-DEUDA-BONOS.md`
