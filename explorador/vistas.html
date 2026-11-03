@@ -1195,6 +1195,19 @@ function pEspana(){
         el('h3',null,'Origen y «hijos de inmigrantes»: qué se puede cruzar'),dat(M.origen_ascendencia))));
     add(bloque('Violencia de género: casos frente a gasto','CGPJ, INE y Delegación del Gobierno cuentan cosas distintas: conviene no mezclarlas.',{t:'CGPJ · INE · Delegación del Gobierno'},dat(M.violencia_genero),false));
   }
+  if(M.opacidad){
+    add(bloque('Hasta dónde llegan los datos oficiales: qué es público y qué es opaco','Contratación, subvenciones y deuda territorial: hasta qué nivel se puede bajar (contrato, empresa, comunidad, municipio) y qué no se publica. Investigación del 3-nov-2026 (research/fuentes-nuevas/F, G y H).',{t:'PLACSP · BDNS · Banco de España · Eurostat'},
+      tabla([{t:'Tema',f:r=>r.nombre},{t:'Qué sí y qué no',f:r=>r.nota},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Fuente',f:r=>lnk(r.fuente)}],M.opacidad)));
+  }
+  if(M.intereses_infra){
+    add(bloque('Intereses de la deuda e infraestructuras: inversión frente a mantenimiento','Recaudación récord frente a estado de las infraestructuras: lo que sí se publica es la inversión bruta y la depreciación agregadas; el gasto real de mantenimiento por infraestructura no aparece en datos abiertos. Las cifras de asociaciones del sector (S) llevan sesgo de quien pide más obra.',{t:'Eurostat · Tesoro · prensa y asociaciones (nivel S)'},dat(M.intereses_infra),false));
+  }
+  if(M.inmigracion){
+    add(bloque('Inmigración: cifras, gasto y debate sobre el saldo fiscal','Cada cifra con su fuente y nivel (P oficial, S prensa o estudio). Caso a favor: aporte al empleo y al PIB (Funcas, Banco de España). Caso en contra: coste de acogida, prisión preventiva y estudios de saldo vitalicio negativo (de origen partidista). Ninguno de los dos bandos tiene un saldo fiscal oficial por nacionalidad. Nada de esto es una recomendación.',{t:'INE · Interior · Seguridad Social · IGAE · estudios de terceros'},dat(M.inmigracion),false));
+  }
+  if(M.dana){
+    add(bloque('DANA de Valencia (29-oct-2024): fallecidos, contraste con mortalidad y dinero','Qué cuadra y qué no. HECHO: la cifra la fija hoy el juzgado instructor y ha ido subiendo por muertes tardías. HECHO: el exceso de mortalidad estimado por el ISCIII encaja con la cifra oficial; no respalda cientos o miles de muertes ocultas, aunque no distingue diferencias de unas decenas. Faltan por comprobar las series del INE por municipio y los datos de la DGT.',{t:'Juzgado de Catarroja · ISCIII (MoMo) · Consorcio · Gobierno'},dat(M.dana),false));
+  }
   if(E){
     const fila=i=>{const a=Object.keys(i.serie).sort(),u=a[a.length-1],p=a[a.length-2],vu=i.serie[u],vp=i.serie[p];return{n:i.nombre,g:i.grupo,u,vu,vp,pib:i.pct_pib&&i.pct_pib[u],real:i.real_por_habitante&&i.real_por_habitante[u],sp:a.map(x=>i.serie[x]),d:vp?(vu-vp)/Math.abs(vp)*100:null}};
     const F=E.indicadores.map(fila);
