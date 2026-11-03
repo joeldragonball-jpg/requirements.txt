@@ -138,6 +138,14 @@ def main():
         for f, tit, ruta, fr in v:
             out.append(f"- {f} · {tit} (`{ruta}`): {fr}")
         out.append("")
+    extra = sorted((RAIZ / "research" / "fuentes-nuevas").glob("*.md")) + [RAIZ / "research" / "CATALOGO-FUENTES.md"]
+    extra = [p for p in extra if p.is_file()]
+    if extra:
+        out.append("## Fuentes y datos nuevos (sin fecha en el nombre)")
+        for p in extra:
+            txt_p = leer(p)
+            out.append(f"- {titulo(txt_p, p.stem)} (`{p.relative_to(RAIZ).as_posix()}`): {frase(txt_p)}")
+        out.append("")
     out += ["## Dudas y datos a verificar", "Las frases son extractos sin comprobar: lo dudoso está marcado [VERIFICAR] en el informe original.", ""]
     txt = "\n".join(out)
     # recorta por el final si pasa del tope, quitando líneas de informes más antiguos
