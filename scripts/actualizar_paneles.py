@@ -829,6 +829,121 @@ def leer_espana_deuda():
             "nota": "Deuda PDE = deuda bruta consolidada de la definición europea de déficit excesivo. El % del PIB usa el PIB de la serie del propio Banco de España (base 2016, puede diferir del INE actual [VERIFICAR]). No incluye entidades locales ni el Estado por separado en este CSV."}
 
 
+def leer_espana_hipotecas():
+    """España: hipotecas constituidas sobre viviendas (INE, estadística de Hipotecas, API Tempus sin clave) [P]. Importe medio = importe / número (calculado)."""
+    web = "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176993"
+    n, im, ti = _ine_serie("HPT34618", 14), _ine_serie("HPT34565", 14), _ine_serie("HPT64408", 14)
+    if n[-1][0] != im[-1][0]:
+        raise ValueError("número e importe de periodos distintos")
+    mn, mi = dict((p, v) for p, v, _ in n), dict((p, v) for p, v, _ in im)
+
+    def medio(p):
+        return round(mi[p] / mn[p], 1) if p in mn and p in mi and mn[p] else None   # miles de euros por hipoteca
+    ult, ant = n[-1][0], n[-2][0]
+    hace12 = n[-13][0] if len(n) >= 13 else None
+    yoy = lambda d: round((d[ult] / d[hace12] - 1) * 100, 1) if hace12 and hace12 in d else None
+    return {"fuente": "INE, Hipotecas (API Tempus: HPT34618 número, HPT34565 importe en miles de €, HPT64408 tipo medio)", "nivel": "P", "url": web,
+            "periodo": ult, "tipo_dato": n[-1][2], "periodo_anterior": ant, "periodo_hace_12m": hace12,
+            "numero": {"valor": n[-1][1], "anterior": n[-2][1], "hace_12m": mn.get(hace12), "interanual_pct": yoy(mn)},
+            "importe_miles_eur": {"valor": im[-1][1], "anterior": im[-2][1], "hace_12m": mi.get(hace12), "interanual_pct": yoy(mi)},
+            "importe_medio_miles_eur": {"valor": medio(ult), "anterior": medio(ant), "hace_12m": medio(hace12) if hace12 else None, "calculado": True},
+            "tipo_interes_medio": {"valor": ti[-1][1], "anterior": ti[-2][1], "periodo": ti[-1][0], "unidad": "%"},
+            "nota": "Hipotecas constituidas sobre viviendas, total nacional, base nueva. Datos provisionales (se revisan). El INE publica con ~2,5 meses de retraso."}
+
+
+def leer_vivienda_eurostat():
+    """Precios de la vivienda (Eurostat prc_hpi_q, variación anual, todos los tipos de vivienda) para zona euro y países grandes [P]."""
+    geos = ["EA", "ES", "DE", "FR", "IT", "PT", "NL"]
+    q = urllib.parse.urlencode({"geo": geos, "purchase": "TOTAL", "unit": "RCH_A", "lastTimePeriod": 5, "format": "JSON"}, doseq=True)
+    j = json.loads(_json_url(f"https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hpi_q?{q}", t=40))
+    ids, size = j["id"], j["size"]
+    tiempos = {v: k for k, v in j["dimension"]["time"]["category"]["index"].items()}
+    geo_idx = {v: k for k, v in j["dimension"]["geo"]["category"]["index"].items()}
+    nt, ng = size[ids.index("time")], size[ids.index("geo")]
+    vals = {int(k): v for k, v in j["value"].items()}
+    nombres = {"EA": "Zona euro", "ES": "España", "DE": "Alemania", "FR": "Francia", "IT": "Italia", "PT": "Portugal", "NL": "Países Bajos"}
+    paises = []
+    for g in range(ng):
+        serie = [(tiempos[t], vals[g * nt + t]) for t in range(nt) if (g * nt + t) in vals]
+        if serie:
+            paises.append({"id": geo_idx[g], "pais": nombres.get(geo_idx[g], geo_idx[g]), "periodo": serie[-1][0], "interanual": round(serie[-1][1], 1),
+                           "anterior": round(serie[-2][1], 1) if len(serie) > 1 else None, "periodo_anterior": serie[-2][0] if len(serie) > 1 else None})
+    if not paises:
+        raise ValueError("sin datos")
+    return {"fuente": "Eurostat, prc_hpi_q (índice de precios de la vivienda, variación anual)", "nivel": "P", "actualizado": j.get("updated", "")[:10],
+            "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hpi_q", "paises": paises}
+
+
+def _sgs(cod, n=2):
+    """Últimos n datos de una serie del BCB (SGS, API abierta sin clave) [P]: [(fecha ISO, valor)]."""
+    r = json.loads(_json_url(f"https://api.bcb.gov.br/dados/serie/bcdata.sgs.{cod}/dados/ultimos/{n}?formato=json", t=30))
+    out = [(f"{x['data'][6:]}-{x['data'][3:5]}-{x['data'][:2]}", float(x["valor"])) for x in r if x.get("valor") not in (None, "")]
+    if not out:
+        raise ValueError(f"SGS {cod}: sin datos")
+    return out
+
+
+def leer_brasil():
+    """Brasil (BCB): Selic, tipo de financiación inmobiliaria (SGS 20774 y 25499) y expectativas Focus (Olinda) [P]. Si una serie falla se conserva la anterior."""
+    previo = {f["id"]: f for f in PREVIO.get("brasil", {}).get("filas", [])}
+    filas, fallos = [], []
+    web = "https://www.bcb.gov.br/estatisticas/"
+
+    def sgs(id_, nombre, cod, unidad):
+        def f():
+            s = _sgs(cod, 3)
+            return {"valor": s[-1][1], "anterior": s[-2][1] if len(s) > 1 else None, "fecha": s[-1][0], "fecha_anterior": s[-2][0] if len(s) > 1 else None, "unidad": unidad}
+        return (id_, nombre, f"SGS {cod}", f)
+
+    def focus(id_, nombre, entidad, indicador):
+        def f():
+            filtro = urllib.parse.quote(f"Indicador eq '{indicador}'")
+            url = f"https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/{entidad}?$top=40&$filter={filtro}&$orderby=Data%20desc&$format=json"
+            v = json.loads(_json_url(url, t=40))["value"]
+            if not v:
+                raise ValueError("sin datos")
+            fecha = v[0]["Data"]
+            anios = sorted((x["DataReferencia"] for x in v if x["Data"] == fecha and x.get("baseCalculo", 0) == 0))[:2]
+            return {"fecha": fecha, "unidad": "% (mediana de la encuesta Focus)", "por_anio": {x["DataReferencia"]: x["Mediana"] for x in v if x["Data"] == fecha and x["DataReferencia"] in anios and x.get("baseCalculo", 0) == 0}}
+        return (id_, nombre, entidad, f)
+
+    fuentes = [
+        sgs("selic", "Selic (meta, % anual)", 432, "% anual"),
+        sgs("fin_inmob", "Financiación inmobiliaria, serie SGS 20774 [VERIFICAR definición exacta]", 20774, "% (tipo medio anual)"),
+        sgs("fin_inmob_2", "Financiación inmobiliaria, serie SGS 25499 [VERIFICAR: valores ~0,9 sugieren morosidad, no tipo]", 25499, "%"),
+        focus("focus_ipca", "Focus: IPCA esperado", "ExpectativasMercadoAnuais", "IPCA"),
+        focus("focus_pib", "Focus: PIB esperado", "ExpectativasMercadoAnuais", "PIB Total"),
+        focus("focus_cambio", "Focus: tipo de cambio esperado (BRL/USD)", "ExpectativasMercadoAnuais", "Câmbio"),
+    ]
+    for id_, nombre, cod, f in fuentes:
+        try:
+            filas.append({"id": id_, "nombre": nombre, "serie": cod, "fuente": web, "nivel": "P", **f()})
+        except Exception as e:
+            fallos.append(f"brasil {id_}: {type(e).__name__}: {e}")
+            if id_ in previo:
+                filas.append(previo[id_])
+    try:
+        s = json.loads(_json_url("https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoSelic?$top=200&$filter=baseCalculo%20eq%200&$orderby=Data%20desc&$format=json", t=40))["value"]
+        fecha = s[0]["Data"]
+        ult_reunion = {}   # última reunión del Copom de cada año = Selic esperada a fin de año
+        for x in s:
+            if x["Data"] == fecha:
+                n, anio = x["Reuniao"][1:].split("/")
+                if anio not in ult_reunion or int(n) > ult_reunion[anio][0]:
+                    ult_reunion[anio] = (int(n), x["Mediana"])
+        anios = sorted(ult_reunion)[:2]
+        filas.append({"id": "focus_selic", "nombre": "Focus: Selic esperada (última reunión del Copom de cada año)", "serie": "ExpectativasMercadoSelic", "fuente": web, "nivel": "P", "fecha": fecha, "unidad": "% (mediana)",
+                      "por_anio": {a: ult_reunion[a][1] for a in anios}})
+    except Exception as e:
+        fallos.append(f"brasil focus_selic: {type(e).__name__}: {e}")
+        if "focus_selic" in previo:
+            filas.append(previo["focus_selic"])
+    if not filas:
+        raise RuntimeError("el BCB no devolvió ninguna serie")
+    return {"fuente": "Banco Central do Brasil: SGS (api.bcb.gov.br) y Olinda/Focus", "nivel": "P", "filas": filas, "fallos": fallos,
+            "nota": "Focus = expectativas de mercado [ESPECULACIÓN] (previsión de analistas, no dato). Los códigos 20774 y 25499 vienen del plan de datos; su definición exacta queda [VERIFICAR] en el catálogo del BCB."}
+
+
 def _ultimo_cambio(serie):
     """serie = [(fecha ISO, valor)] ordenada; devuelve (valor actual, fecha del último cambio, valor anterior)."""
     serie = [(f, v) for f, v in serie if v is not None]
@@ -1132,7 +1247,7 @@ def main():
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
     limite = time.monotonic() + LIMITE_S
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("espana_ine", leer_espana_ine), ("espana_deuda", leer_espana_deuda), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("espana_ine", leer_espana_ine), ("espana_deuda", leer_espana_deuda), ("espana_hipotecas", leer_espana_hipotecas), ("vivienda_eurostat", leer_vivienda_eurostat), ("brasil", leer_brasil), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias)):
         t0 = time.monotonic()
         if t0 > limite:
             fallos.append(f"{clave}: omitido por tiempo (más de {LIMITE_S} s en total)")
@@ -1182,6 +1297,16 @@ def main():
     ed = salida.get("espana_deuda")
     if ed:
         print(f"España deuda PDE: AAPP {ed['aapp']['deuda']:,.0f} M€ ({ed['aapp']['pct_pib']} % PIB, {ed['aapp']['periodo']}); CCAA {ed['ccaa_total']['deuda']:,.0f} M€ ({ed['periodo']})")
+    eh = salida.get("espana_hipotecas")
+    if eh:
+        print(f"España hipotecas viviendas ({eh['periodo']}): {eh['numero']['valor']:,.0f} (a/a {eh['numero']['interanual_pct']} %), importe medio {eh['importe_medio_miles_eur']['valor']} mil €, tipo {eh['tipo_interes_medio']['valor']} %")
+    ve = salida.get("vivienda_eurostat")
+    if ve:
+        print("Vivienda Eurostat a/a: " + ", ".join(f"{p['id']} {p['interanual']} % ({p['periodo']})" for p in ve["paises"]))
+    br = salida.get("brasil")
+    if br:
+        print("Brasil: " + ", ".join(f"{f['id']} {f.get('valor', f.get('por_anio'))}" for f in br["filas"]))
+        fallos += br.get("fallos", [])
     cr = salida.get("credito")
     if cr:
         print("Crédito: " + ", ".join(f"{s['id']} {s['valor']} ({s['fecha']})" for s in cr["series"]))
