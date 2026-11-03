@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-03 21:10 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-03 21:30 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -19,6 +19,15 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**
+- C100 · Centro · id estable en los 108 eventos de calendario.toml; desbloquea C91 · Sonnet S · ~~1 % · ``
+- C101 · Centro · Endurecer workflows: permisos mínimos, requirements con hashes, Actions · Sonnet S · ~~1 % · ``
+- C102 · Centro · Inventario de secretos y tokens fuera del repo (plantilla en privado/;  · Sonnet S · ~~1 % · ``
+- C103 · Centro · Auditar el Worker de votos (Joel pega el código sin secretos) · Sonnet S · ~~1 % · ``
+- C104 · Centro · Parche de seguridad en app.py y cerebro.py: postMessage con origen fijo · Sonnet S · ~~1,5 % · ``
+- C105 · Centro · Copias y recuperación: git bundle semanal y ensayo de restauración · Sonnet S · ~~1 % · ``
+- C106 · Centro · Bots frecuentes al Worker (requisito si el repo pasa a privado) · Sonnet M · ~~3 % · ``
+- C107 · Centro · Qué NO construir: comparativa con OpenBB, Koyfin, TradingView y paneles · Sonnet M · ~~3 % · ``
+- C108 · Centro · Criterios de medición y relleno de las 58 predicciones · Sonnet M · ~~3 % · ``
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
@@ -46,6 +55,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - C94 · Centro · Regenerar graphify y detectar contradicciones paneles↔manuales (sin IA) · Sonnet S · ~~1 % · ``
 - C95 · Centro · Plan de salida a producción para la familia: auth, hosting, copias, avi · Opus M · ~~3 % · ``
 - C96 · Centro · Consulta regulatoria de monetización [VERIFICAR con asesor/CNMV]: pregu · Sonnet S · ~~1 % · ``
+- C99 · Centro · Unificar ids de país (ISO-2 + tabla de alias); desbloquea C91 · Sonnet S · ~~1 % · ``
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
 - T25 · Tema libre
 **Deuda y bonos (D)** · detalle en `research/COLA-DEUDA-BONOS.md`
