@@ -5,12 +5,14 @@ Modelo: Sonnet · esfuerzo alto · ~6 % semanal · sesión NUEVA. Sin API de Ant
 ## Por qué existe
 Joel quiere que la terminal de inteligencia personal sea un panel de control de TODO, con la mayor automatización posible y sin tocarlo él. Las auditorías C81B/C98 miraron seguridad, cruces y medición, pero NO ampliaron los temas. Esta tarea lo hace.
 
-## Dos niveles que Joel pidió
+## Tres niveles que Joel pidió
 - **Nivel A, grandes países (superficial y automático):** los mismos 10-15 indicadores por país desde institutos de estadística y organismos (Banco Mundial, FMI, OCDE, Eurostat, BIS, oficinas nacionales): PIB, inflación, paro, deuda, tipos, balanza, población, demografía, desigualdad, gasto en defensa, energía.
 - **Nivel B, España (profundo):** pagos públicos, inversión pública y contratos (PLACSP, BDNS, IGAE, Intervención), catástrofes y emergencias, accidentes de tráfico (DGT), defunciones (INE, MoMo), delitos y criminalidad (Balance de Criminalidad del Ministerio del Interior), siniestralidad laboral, incendios, sanidad, vivienda. Ya existen: DANA (informe H), inmigración (G), recaudación vs infraestructuras (I), opacidad (J), comparativa K, hipotecas y vivienda.
 
+- **Nivel C, precios del día a día y sectores (añadido por Joel, 3-nov-2026):** un panel de referencia para ver «dónde empezó a cambiar todo» y qué sitios aguantan mejor. Costes de vida y producción: electricidad (mayorista y por zonas, p. ej. OMIE y ENTSO-E en España/Europa), gas, agua por zonas (dónde es más cara), petróleo, soja, trigo, maíz, arroz, azúcar, fertilizantes (urea, amoníaco, potasa), alimentos básicos (índice FAO). Tecnología e IA: semiconductores (chips de IA, AMD, TSMC, ASML), memoria RAM/DRAM y NAND (precios spot y contrato), centros de datos (capacidad, consumo eléctrico, inversión), nuevas empresas que entran en el mercado. Cada serie con fecha de partida («punto de referencia») para poder comparar trayectorias entre países o zonas. Usa solo fuentes oficiales o públicas con API/CSV; los precios de pago (TrendForce, etc.) se marcan «manual/[S]».
+
 ## Qué entregar (`informes/research/AAAA-MM-DD-C109-mapa-cobertura.md`, máx. ~6 páginas)
-1. **Matriz de cobertura**: tema × nivel (A/B) × estado hoy (ya en paneles / informe suelto / nada). Marca solo lo que compruebes en `explorador/paneles.json`, `explorador/*.json` e `informes/`.
+1. **Matriz de cobertura**: tema × nivel (A/B/C) × estado hoy (ya en paneles / informe suelto / nada). Marca solo lo que compruebes en `explorador/paneles.json`, `explorador/*.json` e `informes/`.
 2. **Para cada tema nuevo**: fuente oficial exacta, formato (API / CSV / XLS / PDF / solo Chrome / bloqueada), cadencia real de publicación, si requiere clave o descarga con OK de Joel, y si se puede automatizar SIN IA en `actualizar_paneles.py` o un script hermano. Prueba con curl y User-Agent identificado; no saltes anti-bots.
 3. **Plan de automatización**: qué ya corre solo, qué podría correr solo (con coste cero) y qué seguirá siendo manual. Un solo punto de entrada: reutilizar `paneles.yml` y el Worker, sin workflows ni capas nuevas.
 4. **Lista priorizada de tareas** (valor / coste / riesgo) lista para `research/tareas.csv`, con prompt de una línea, de modo que Joel pueda dejar a Claude en modo autónomo y solo aprobar lo marcado como «manual».
