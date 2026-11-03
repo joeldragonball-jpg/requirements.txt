@@ -41,6 +41,18 @@
         "docs"
       ],
       "port": 8795
+    },
+    {
+      "name": "explorador",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8796",
+        "--directory",
+        "explorador"
+      ],
+      "port": 8796
     }
   ]
 }

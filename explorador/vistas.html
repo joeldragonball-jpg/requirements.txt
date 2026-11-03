@@ -1058,6 +1058,19 @@ function pPaneles(){
     add(bloque('Tipos de otros bancos centrales (BIS)',null,pie(P.tipos_bis,'BIS'),tabla([{t:'País',f:r=>r.pais},{t:'Banco central',f:r=>r.banco},{t:'Tipo oficial (% anual)',n:1,f:r=>r.valor},{t:'Dato de',f:r=>r.dato_de}],P.tipos_bis.paises)));
     add(bloque('Deuda de EE. UU. en manos extranjeras','Cuánta deuda del Tesoro de EE. UU. custodia cada país (no es el propietario final, e incluye cambios de valor: una bajada no es necesariamente una venta). Miles de millones de dólares.',pie(P.tic,'Tesoro de EE. UU., tabla TIC'),nTic()));
     add(bloque('Stablecoins: las mayores','Monedas digitales ligadas a una divisa (casi todas al dólar). «En circulación» es el valor emitido hoy.',pie(P.stablecoins,'DefiLlama, agregador'),nStable()));
+    const BR=P.brasil;
+    if(BR&&BR.filas){
+      const fx2=(v,d)=>v==null?'—':v.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});
+      const lk=(u,t)=>{const a=el('a',null,t);a.href=u;a.target='_blank';a.rel='noopener';return a};
+      const sgs=BR.filas.filter(r=>r.serie&&r.serie.startsWith('SGS')),foc=BR.filas.filter(r=>!(r.serie&&r.serie.startsWith('SGS')));
+      const etq=r=>r.serie==='SGS 25499'?'VERIFICAR':r.nivel;
+      const cont=el('div');
+      cont.append(tabla([{t:'Serie',f:r=>r.nombre},{t:'Último',n:1,f:r=>fx2(r.valor,2)+' '+(r.unidad||'')},{t:'Anterior',n:1,f:r=>fx2(r.anterior,2)},{t:'Fecha del dato',f:r=>r.fecha},{t:'Nivel',f:r=>nivelBadge(etq(r))},{t:'Fuente',f:r=>lk(r.fuente,r.serie)}],sgs),
+        el('h3',null,'Focus (encuesta de mercado, mediana) [ESPECULACIÓN]'),
+        tabla([{t:'Variable',f:r=>r.nombre},{t:'Año',f:r=>Object.keys(r.por_anio).join(' / ')},{t:'Previsión',n:1,f:r=>Object.values(r.por_anio).map(v=>fx2(v,2)).join(' / ')},{t:'Fecha de la encuesta',f:r=>r.fecha},{t:'Nivel',f:()=>nivelBadge('S')},{t:'Fuente',f:r=>lk(r.fuente,r.serie)}],foc),
+        el('p','nota-v',BR.nota||''));
+      add(bloque('Brasil: Selic, financiación inmobiliaria y expectativas Focus','Banco Central do Brasil. SGS 25499 [VERIFICAR]: sus valores (~0,9) sugieren morosidad, no un tipo. La fecha de la Selic (2026-11-04) es posterior a la lectura: es la que publica la serie SGS 432 [VERIFICAR con el comunicado del Copom].',{nivel:BR.nivel,t:'BCB SGS y Olinda/Focus · leído '+(BR.leido||P.leido)},cont));
+    }
     add(bloque('Stablecoins en el XRPL y en Stellar',null,pie(P.stablecoins,'DefiLlama'),nCadenas()));
     add(bloque('Protocolos RWA en DeFi','Activos del mundo real (bonos, fondos…) llevados a cadena. Ojo: es el valor bloqueado en DeFi, NO el total tokenizado.',pie(P.rwa,'DefiLlama'),nRwa()));
     add(bloque('Precios de XRP, XLM, BTC y ETH',null,pie(P.mercado,'CoinGecko'),nMercado()));
@@ -1177,6 +1190,20 @@ function pEspana(){
     add(bloque('Presupuesto consolidado de la ley de 2023 por políticas',co.texto,{nivel:co.nivel,t:'Hacienda, Informe Económico y Financiero · M€ · total '+n0(co.total)},
       tabla([{t:'Política',f:r=>r.nombre},{t:'M€',n:1,f:r=>n0(r.valor)},{t:'% del total',n:1,f:r=>n1(r.valor/co.total*100)}],co.politicas.slice().sort((a,b)=>b.valor-a.valor)),false));
     add(bloque('Ejecución por políticas de gasto',null,pieE,tabla([{t:'Política',f:r=>{const x=el('span',null,r.nombre);if(r.area)x.style.fontWeight='700';return x}},...ejec],B.politicas),false));
+  }
+  const HI=P&&P.espana_hipotecas;
+  if(HI&&HI.numero){
+    const f=(k,u,d)=>{const x=HI[k];return {nombre:{numero:'Hipotecas sobre viviendas (número)',importe_miles_eur:'Importe total (miles de €)',importe_medio_miles_eur:'Importe medio por hipoteca (miles de €) · calculado'}[k],valor:x.valor,anterior:x.anterior,hace12:x.hace_12m,ia:x.interanual_pct,d}};
+    const filas=['numero','importe_miles_eur','importe_medio_miles_eur'].map(k=>f(k,null,k==='importe_medio_miles_eur'));
+    const ti=HI.tipo_interes_medio;
+    add(bloque('Hipotecas sobre viviendas en España (INE)',HI.nota,{nivel:HI.nivel,t:'INE, Hipotecas (Tempus HPT34618, HPT34565, HPT64408) · '+HI.periodo+' ('+HI.tipo_dato+') · leído '+(HI.leido||P.leido)},
+      conL(null,tabla([{t:'Dato',f:r=>r.nombre},{t:HI.periodo,n:1,f:r=>r.d?n1(r.valor):n0(r.valor)},{t:HI.periodo_anterior,n:1,f:r=>r.d?n1(r.anterior):n0(r.anterior)},{t:HI.periodo_hace_12m,n:1,f:r=>r.d?n1(r.hace12):n0(r.hace12)},{t:'Interanual',n:1,f:r=>r.ia==null?'—':cambio(r.ia,'%',1)},{t:'Nivel',f:()=>nivelBadge(HI.nivel)},{t:'Fuente',f:()=>lnk(HI.url,'INE')}],filas),
+        el('p','nota-v','Tipo de interés medio al inicio: '+fx(ti.valor,2)+' % ('+ti.periodo+'); mes anterior, '+fx(ti.anterior,2)+' %.'))));
+  }
+  const VE=P&&P.vivienda_eurostat;
+  if(VE&&VE.paises&&VE.paises.length){
+    add(bloque('Precio de la vivienda: España frente a otros países (Eurostat)','Variación anual del índice de precios de la vivienda (prc_hpi_q). Trimestral; el último trimestre puede revisarse.',{nivel:VE.nivel,t:'Eurostat prc_hpi_q · actualizado '+VE.actualizado+' · leído '+(VE.leido||P.leido)},
+      tabla([{t:'País',f:r=>{const x=el('span',null,r.pais);if(r.id==='ES')x.style.fontWeight='700';return x}},{t:'Periodo',f:r=>r.periodo},{t:'Interanual, %',n:1,f:r=>n1(r.interanual)},{t:'Trimestre anterior',f:r=>r.periodo_anterior},{t:'Anterior, %',n:1,f:r=>n1(r.anterior)},{t:'Nivel',f:()=>nivelBadge(VE.nivel)},{t:'Fuente',f:()=>lnk(VE.url,'Eurostat')}],VE.paises)));
   }
   if(M.vivienda_hipotecas){
     const vh=M.vivienda_hipotecas,ej=M.vivienda_hipotecas_ejemplo;
