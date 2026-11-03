@@ -1199,6 +1199,12 @@ function pEspana(){
     add(bloque('Hasta dónde llegan los datos oficiales: qué es público y qué es opaco','Contratación, subvenciones y deuda territorial: hasta qué nivel se puede bajar (contrato, empresa, comunidad, municipio) y qué no se publica. Investigación del 3-nov-2026 (research/fuentes-nuevas/F, G y H).',{t:'PLACSP · BDNS · Banco de España · Eurostat'},
       tabla([{t:'Tema',f:r=>r.nombre},{t:'Qué sí y qué no',f:r=>r.nota},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Fuente',f:r=>lnk(r.fuente)}],M.opacidad)));
   }
+  if(M.comparativa_internacional){
+    const C=M.comparativa_internacional,p1=v=>v==null?'—':fx(v,1),dl=(a,b)=>(a==null||b==null)?'—':cambio(b-a,'p.p.',1);
+    add(bloque(C.titulo,C.lectura,{nivel:C.nivel,t:C.fecha_ue},conL(null,
+      tabla([{t:'País',f:r=>r.pais},{t:'Gasto 2025',n:1,f:r=>p1(r.gasto_2025)},{t:'Frente a 2019',n:1,f:r=>dl(r.gasto_2019,r.gasto_2025)},{t:'Ingresos 2025',n:1,f:r=>p1(r.ingresos_2025)},{t:'Frente a 2019',n:1,f:r=>dl(r.ingresos_2019,r.ingresos_2025)},{t:'Inversión 2025',n:1,f:r=>p1(r.inversion_2025)},{t:'Intereses 2025',n:1,f:r=>p1(r.intereses_2025)},{t:'Deuda 2025',n:1,f:r=>p1(r.deuda_2025)},{t:'Deuda 2019',n:1,f:r=>p1(r.deuda_2019)}],C.filas),
+      el('h3',null,'EE. UU. (cifras de otra definición: no se suman a la tabla de arriba)'),dat(C.eeuu))));
+  }
   if(M.recaudacion){
     add(bloque('Recaudación récord frente a inversión en infraestructuras','HECHO: la recaudación tributaria está en récord (en euros y en % del PIB) y la inversión pública bruta supera hoy la depreciación contable. OPINIÓN: que las infraestructuras estén peor depende de cómo se mida; no existe una serie oficial homogénea de su estado, y las cifras de déficit de conservación las dan patronales y asociaciones con interés en más obra (nivel S). La recaudación por comunidad no se puede usar: casi la mitad figura en Madrid por domicilio fiscal y hay régimen foral.',{t:'AEAT · Eurostat · Fundación BBVA-Ivie · SEOPAN (S)'},dat(M.recaudacion),false));
   }

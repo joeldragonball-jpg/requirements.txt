@@ -2649,7 +2649,135 @@
     "nivel": "S",
     "nota": "Dato de Renfe vía prensa: 94,9 % puntuales solo en destino. No hay serie oficial homogénea del estado de las infraestructuras [VERIFICAR]."
    }
-  ]
+  ],
+  "comparativa_internacional": {
+   "titulo": "España frente a la zona euro y EE. UU. (% del PIB)",
+   "fuente_ue": "https://ec.europa.eu/eurostat/databrowser/product/page/gov_10a_main",
+   "fecha_ue": "Eurostat gov_10a_main y gov_10dd_edpt1, actualizado el 21-oct-2026; Administraciones Públicas (S13)",
+   "nivel": "P",
+   "filas": [
+    {
+     "pais": "España",
+     "gasto_2019": 42.0,
+     "gasto_2025": 45.3,
+     "ingresos_2019": 39.0,
+     "ingresos_2025": 42.9,
+     "inversion_2019": 2.2,
+     "inversion_2025": 3.0,
+     "intereses_2025": 2.4,
+     "deuda_2019": 97.7,
+     "deuda_2025": 100.5
+    },
+    {
+     "pais": "Zona euro (EA20)",
+     "gasto_2019": 47.0,
+     "gasto_2025": 49.8,
+     "ingresos_2019": 46.4,
+     "ingresos_2025": 46.8,
+     "inversion_2019": 3.0,
+     "inversion_2025": 3.7,
+     "intereses_2025": 1.9,
+     "deuda_2019": 83.5,
+     "deuda_2025": 87.7
+    },
+    {
+     "pais": "UE-27",
+     "gasto_2019": 46.6,
+     "gasto_2025": 49.4,
+     "ingresos_2019": 46.1,
+     "ingresos_2025": 46.3,
+     "inversion_2019": 3.2,
+     "inversion_2025": 3.9,
+     "intereses_2025": 1.9,
+     "deuda_2019": 77.4,
+     "deuda_2025": 81.5
+    },
+    {
+     "pais": "Alemania",
+     "gasto_2019": 45.3,
+     "gasto_2025": 50.1,
+     "ingresos_2019": 46.6,
+     "ingresos_2025": 47.2,
+     "inversion_2019": 2.7,
+     "inversion_2025": 3.5,
+     "intereses_2025": 1.1,
+     "deuda_2019": 58.3,
+     "deuda_2025": 62.8
+    },
+    {
+     "pais": "Francia",
+     "gasto_2019": 55.3,
+     "gasto_2025": 57.3,
+     "ingresos_2019": 53.0,
+     "ingresos_2025": 52.2,
+     "inversion_2019": 4.2,
+     "inversion_2025": 4.4,
+     "intereses_2025": 2.2,
+     "deuda_2019": 98.2,
+     "deuda_2025": 115.7
+    },
+    {
+     "pais": "Italia",
+     "gasto_2019": 48.6,
+     "gasto_2025": 51.1,
+     "ingresos_2019": 47.1,
+     "ingresos_2025": 48.0,
+     "inversion_2019": 2.4,
+     "inversion_2025": 3.9,
+     "intereses_2025": 3.8,
+     "deuda_2019": 134.2,
+     "deuda_2025": 136.7
+    }
+   ],
+   "eeuu": [
+    {
+     "nombre": "Gasto del Gobierno federal (NIPA)",
+     "valor": 24.2,
+     "unidad": "% del PIB",
+     "anio": "2025",
+     "nivel": "P",
+     "fuente": "https://fred.stlouisfed.org/series/FGEXPND",
+     "nota": "Media de los cuatro trimestres de 2025 sobre el PIB nominal (BEA vía FRED, leído el 3-nov-2026). 22,0 % en 2019. Los estados y municipios gastan otro 13,9 % (SLEXPND); sumar ambos duplica las transferencias federales a los estados, así que el total consolidado de las administraciones es menor [VERIFICAR el consolidado]."
+    },
+    {
+     "nombre": "Ingresos corrientes del Gobierno federal",
+     "valor": 18.5,
+     "unidad": "% del PIB",
+     "anio": "2025",
+     "nivel": "P",
+     "fuente": "https://fred.stlouisfed.org/series/FGRECPT",
+     "nota": "17,2 % en 2019. Solo federal; la serie de ingresos de estados y municipios no está en FRED sin clave. El déficit federal es la diferencia entre gasto e ingresos."
+    },
+    {
+     "nombre": "Deuda federal total",
+     "valor": 121.2,
+     "unidad": "% del PIB",
+     "anio": "2T-2026",
+     "nivel": "P",
+     "fuente": "https://fred.stlouisfed.org/series/GFDEGDQ188S",
+     "nota": "Incluye la deuda en manos de otras agencias federales; no es comparable con la deuda de las administraciones del protocolo europeo (Eurostat)."
+    },
+    {
+     "nombre": "Pagos de intereses de las administraciones",
+     "valor": 3.9,
+     "unidad": "% del PIB",
+     "anio": "2025",
+     "nivel": "P",
+     "fuente": "https://fred.stlouisfed.org/series/A091RC1Q027SBEA",
+     "nota": "2,7 % en 2019. El identificador y su definición exacta están por confirmar [VERIFICAR]."
+    },
+    {
+     "nombre": "Inversión bruta de las administraciones",
+     "valor": 3.6,
+     "unidad": "% del PIB",
+     "anio": "2025",
+     "nivel": "P",
+     "fuente": "https://fred.stlouisfed.org/series/A782RC1Q027SBEA",
+     "nota": "3,6 % también en 2019; la federal es 1,5 % (A787RC1Q027SBEA). Identificadores por confirmar [VERIFICAR]; incluye defensa."
+    }
+   ],
+   "lectura": "HECHOS: España gasta menos que la zona euro (45,3 % frente a 49,8 %) y recauda menos (42,9 % frente a 46,8 %), pero paga más intereses (2,4 % frente a 1,9 %) y su deuda es mayor (100,5 % frente a 87,7 %). La inversión pública española (3,0 %) está por debajo de la de la zona euro (3,7 %) y de Francia, Alemania e Italia. Caso favorable: la deuda española baja desde el 119,3 % de 2020 y la recaudación sube 3,9 puntos de PIB desde 2019. Caso desfavorable: el margen de gasto es menor porque los intereses pesan más que en Alemania (1,1 %) y la inversión sigue por debajo del promedio europeo. Los dos relatos dependen de qué año de partida se elija. Las diferencias de definición (administraciones consolidadas europeas frente a presupuestos federales de EE. UU.) impiden comparar con rigor a EE. UU."
+  }
  },
  "fallos": []
 }
