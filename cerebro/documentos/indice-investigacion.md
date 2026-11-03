@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-11-02
+actualizado: 2026-11-03
 ---
 # Índice de la investigación
 
@@ -32,9 +32,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-30 · C29 · Petróleo, Ormuz y guerra ↔ noticias ↔ Órbita (`informes/research/2026-10-30-C29-energia-guerra-noticias.md`): Los hitos diplomáticos y militares de octubre salen de los informes diarios del repo (titulares de CoinDesk, CNBC, Al Jazeera y el bot) [S] : no abrí…
 
 ## Deuda y bonos
+- 2026-11-03 · C77 · España: gasto y deuda, inmigración y catástrofes (síntesis, 3-nov-2026) (`informes/research/2026-11-03-C77-espana-gasto-inmigracion-dana.md`): Síntesis de tres informes crudos de agentes: research/fuentes nuevas/F gasto contratos deuda.md , G inmigracion.md y H catastrofes dana.md (léelos…
 - 2026-11-02 · W02 · Deuda, subastas y calificaciones (2-nov-2026) (`informes/research/2026-11-02-W02-deuda.md`): 3 nov EE. UU. Se anuncian bills de 4, 8 y 17 semanas (liquidación 10 nov); importes aún sin publicar [P] TreasuryDirect API ( /securities/upcoming )
 - 2026-11-02 · D06 (a2) · Cortes recientes del Pillar 3 Data Hub de la EBA (2-nov-2026) (`informes/research/2026-11-02-D06-bancos-eba.md`): No se ha podido confirmar ningún corte más reciente que el del 30 jun 2025. El panel «Deuda por banco» ( explorador/bancos eba.json , 116 bancos)…
-- 2026-10-29 · D01–D03, D05: tipo a 10 años mensual por país, fuente oficial del BCE (29-oct-2026) (`informes/research/2026-10-29-D-bce-tipo-10a-mensual.md`): Curva diaria de la zona euro (no por país): serie YC.B.U2.EUR.4F.G N A.SV C YM.SR 10Y , última observación 28 oct 2026.
 
 ## Macro y tipos
 - 2026-11-02 · W01 · Tipos de interés (lunes 2-nov-2026) (`informes/research/2026-11-02-W01-tipos.md`): Reuniones de bancos centrales, próximos 10 días
@@ -52,14 +52,14 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-29 · W03E · Irán, Egipto y Etiopía, pasada 3 · 2026-10-29 (`informes/research/2026-10-29-W03E-pasada3.md`): Tercera pasada con fuentes oficiales abiertas hoy (Chrome y curl). Edita solo explorador/regulacion.json . Sin recomendaciones: el radar describe…
 
 ## Sesiones diarias (apertura y cierre)
+- 2026-11-03 · Informe de APERTURA — 2026-11-03 (mar) (`informes/2026-11-03-apertura.md`): Europa cede (Euro Stoxx −0,51 %, IBEX −0,79 %, FTSE −1,14 %) y Wall Street sube a media sesión (S&P +0,45 %, Nasdaq +0,98 %) [S].
 - 2026-11-02 · Revisión semanal del cerebro · 02/11/2026 (`informes/2026-11-02-revision.md`): Informe automático. No modifica nada del cerebro : tú decides qué corregir. Cada hallazgo lleva citas literales comprobadas contra los archivos.
 - 2026-11-02 · Informe de CIERRE — 2026-11-02 (lun) (`informes/2026-11-02-cierre.md`): Wall Street cierra mixto y revierte el rebote de la mañana: S&P −0,5 %, Nasdaq −1,1 %, Dow +0,4 %, VIX 21,2.
-- 2026-11-02 · Informe de APERTURA — 2026-11-02 (lun) (`informes/2026-11-02-apertura.md`): Rebote moderado tras el viernes: IBEX +1,63 %, Euro Stoxx +0,73 %, Kospi +2,24 %; S&P y Nasdaq +0,33 % a media sesión [S].
 
 ## Otros
+- 2026-11-02 · Línea de tiempo: «📈 Ver reacción» (2-nov-2026) (`informes/research/2026-11-02-linea-tiempo-reaccion.md`): Qué hace: en la pestaña «Línea de tiempo» del Explorador, cada hecho (lista lateral y ficha) tiene «📈 Ver reacción». Se marcan hasta 3 eventos; el…
 - 2026-11-02 · C74 · Materias primas y crédito bancario: qué se publica y qué automatizar (2-nov-2026) (`informes/research/2026-11-02-C74-materias-primas-credito-bancario.md`): Mide: % neto de bancos del euro que endurecen (+) o relajan (−) criterios de concesión, condiciones y demanda de crédito (empresas, hogares vivienda,…
 - 2026-11-02 · C73 · España: vivienda, hipotecas y esfuerzo de acceso (2-nov-2026) (`informes/research/2026-11-02-C73-vivienda.md`): Explicativo, sin recomendaciones de compra. Etiquetas: [P] fuente oficial leída · [S] prensa o resumen · [VERIFICAR] · [ESPECULACIÓN]. Los datos de…
-- 2026-11-02 · C72 · Crédito e hipotecas fuera de la zona euro (parcial, 2-nov-2026) (`informes/research/2026-11-02-C72-credito.md`): Qué abre y ya está en el panel (pestaña Tipos, tabla «Euríbor, hipotecas y crédito»)
 
 ## Dudas y datos a verificar
 Las frases son extractos sin comprobar: lo dudoso está marcado [VERIFICAR] en el informe original.
