@@ -96,7 +96,7 @@ details.bl{margin-bottom:clamp(4px,.5vw,10px)}details.bl>summary{cursor:pointer;
 svg.sp{vertical-align:middle}
 .masonry{display:block}
 .mbanda{display:flex;gap:var(--gap);align-items:flex-start;margin-bottom:clamp(5px,.6vw,10px)}
-.mcol{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:clamp(5px,.6vw,10px)}
+.mcol:empty{display:none}.mcol{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:clamp(5px,.6vw,10px)}
 .masonry>details.bl,.mcol>details.bl,.mcol>.grp{overflow-x:auto;min-width:0}
 .masonry>details.bl{margin-bottom:clamp(5px,.6vw,10px)}
 .rej{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,clamp(280px,30vw,420px)),1fr));gap:var(--gap);align-items:start}
@@ -386,79 +386,156 @@ function pResumen(){
 }
 
 /* ---------- 2 · Capas ---------- */
-const ORD=[['produccion','En producción','produccion'],['piloto','Piloto o prueba','piloto'],['plan','Plan o propuesta','plan'],['xrp','¿Nombra XRP o XLM?',null]];
+/* La vista Capas agrupa las 13 capas originales en 7. Solo cambia AQUÍ: datos.json, la línea de tiempo, el calendario, la matriz y las voces siguen con las 13 capas.
+   Orden: primero las capas con más datos automáticos (dinero digital, tipos y deuda, crédito, energía) y después las de cripto y regulación. */
+const GRUPOS=[
+ {id:'dinero',nombre:'Dinero digital',ids:['cbdc','stable','deposit'],xrp:false,
+  que:'Las tres formas de dinero digital que se están construyendo. Van juntas porque cumplen la misma función (ser el dinero con el que se paga y se liquida en las redes nuevas) y lo que las separa es quién lo emite: un banco central (CBDC), una empresa privada (stablecoin) o un banco comercial (depósito tokenizado). La tabla de abajo las compara punto por punto.'},
+ {id:'tipos',nombre:'Tipos, liquidez y deuda',ids:['liquidez','deuda'],xrp:false,
+  que:'El precio del dinero (tipos oficiales de los bancos centrales), cuánto dinero hay en circulación (liquidez) y cuánto pagan y deben los Estados (bonos a cada plazo, deuda sobre el PIB y quién tiene esa deuda). Es la capa con más datos automáticos.'},
+ {id:'credito',nombre:'Crédito y riesgos',ids:['riesgos'],xrp:false,
+  que:'Cuánto cuesta y cuánto se concede el crédito a hogares y empresas, si los bancos endurecen o relajan sus criterios, la nota de solvencia de cada país y los riesgos que tiene apuntados el analista (escenarios que vigilar, no hechos ya ocurridos).'},
+ {id:'energia',nombre:'Energía y Ormuz',ids:['energia'],xrp:false,
+  que:'Precio del petróleo, el gas y otras materias primas (futuros y spot oficial de la EIA), tráfico diario de buques por el estrecho de Ormuz y los hitos que movieron el Brent.'},
+ {id:'railes',nombre:'Raíles y custodia',ids:['puente','custodia'],xrp:true,
+  que:'Por dónde viaja el dinero digital (redes y activos puente) y quién lo guarda y liquida (custodia y liquidación). Aquí sí se separa en su propia columna lo que nombra a XRP o XLM.'},
+ {id:'tokens',nombre:'Tokenización y fondos',ids:['token','fondos'],xrp:true,
+  que:'Activos reales llevados a una cadena de bloques (bonos, fondos monetarios: RWA) y los vehículos para invertir en cripto (ETF y tesorerías de empresas). Aquí sí se separa en su propia columna lo que nombra a XRP o XLM.'},
+ {id:'reglas',nombre:'Reglas y política',ids:['reg','politica'],xrp:false,
+  que:'Las leyes y los reguladores que deciden qué se puede hacer (MiCA, GENIUS Act, CLARITY Act…) y la política que las mueve: gobiernos, elecciones e indicadores de cada país.'}];
+/* comparativa de Dinero digital: sale de c.resumen, c.ficha (hace / controla / madurez) y c.cifras de cada capa; lo que la ficha no dice va como [VERIFICAR] */
+const COMP_DINERO=[
+ {id:'cbdc',tipo:'CBDC (moneda digital de banco central)',emite:'Cada banco central',respalda:'Es dinero del propio banco central, en formato digital',regula:'El propio banco central; la plataforma es pública (en Rusia, todas las operaciones pasan por la del Banco de Rusia)',para:'Minorista: el público. Mayorista: solo los bancos, para liquidar entre ellos',fuente:'Ficha de la capa (R40; dossier Euro digital 9-oct)'},
+ {id:'stable',tipo:'Stablecoin',emite:'Empresas privadas (USDT y USDC ≈ 84 % del total)',respalda:'Va ligada al dólar o al euro; qué reservas la cubren no lo detalla la ficha [VERIFICAR]',regula:'MiCA en la UE (25 emisores EMT autorizados), la HKMA en Hong Kong y la GENIUS Act en EE. UU. (fecha efectiva prevista: 18-ene-2027)',para:'Es la base de los pagos con cripto; a qué usuarios se dirige no lo detalla la ficha [VERIFICAR]',fuente:'Ficha y cifras de la capa (R25; DefiLlama 17-oct; registro ESMA)'},
+ {id:'deposit',tipo:'Depósito tokenizado',emite:'Un banco comercial (por ejemplo JPMorgan, con JPMD)',respalda:'Es un depósito del banco emisor representado como token; no es una stablecoin',regula:'La ficha no lo dice [VERIFICAR]. Corre en las redes Base y Canton',para:'Clientes institucionales (JPMD en Base; fuente secundaria)',fuente:'Ficha de la capa (R44; apunte xrp-macro-fiscalidad)'}];
+const ESTS=[['produccion','En producción','produccion'],['piloto','Piloto o prueba','piloto'],['plan','Plan o propuesta','plan'],['xrp','¿Nombra XRP o XLM?',null]];
+let selGrupo=null,selSub='';
+function puntoEst(e){const q=el('span');const i=el('i');i.style.cssText='display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;background:'+colEst(e);q.append(i,document.createTextNode((D.estados[e]||{}).nombre||e));return q}
+function chipCapa(id){const c=D.capas.find(x=>x.id===id);const x=el('span','chip',c?c.nombre:id);if(c){x.style.borderColor=c.color;x.style.background=c.color+'22'}return x}
 function pCapas(){
   const s=$('v-capas');s.textContent='';
-  if(!selCapa)selCapa=D.capas[0].id;
+  const G=GRUPOS.map(g=>({...g,capas:g.ids.map(i=>D.capas.find(c=>c.id===i)).filter(Boolean)})).filter(g=>g.capas.length);
+  /* si datos.json trae una capa nueva que no está en ningún grupo, se enseña sola para no perderla */
+  for(const c of D.capas)if(!GRUPOS.some(g=>g.ids.includes(c.id)))G.push({id:c.id,nombre:c.nombre,ids:[c.id],capas:[c],xrp:false,que:''});
+  let g=G.find(x=>x.id===selGrupo);if(!g){g=G[0];selGrupo=g.id;selSub=''}
   const pills=el('div','pills');
-  for(const c of D.capas){const n=D.movimientos.filter(m=>m.capa===c.id&&paisOk(m)).length;
-    const p=el('div','pill'+(selCapa===c.id?' on':''));const i=el('i');i.style.background=c.color;p.append(i,document.createTextNode(c.nombre+' · '+n));if(selCapa===c.id)p.style.borderColor=c.color;
-    p.onclick=()=>{selCapa=c.id;pCapas()};pills.append(p)}
+  for(const x of G){const n=D.movimientos.filter(m=>x.ids.includes(m.capa)&&paisOk(m)).length;
+    const p=el('div','pill'+(x===g?' on':''));const i=el('i');i.style.background=x.capas[0].color;p.append(i,document.createTextNode(x.nombre+' · '+n));if(x===g)p.style.borderColor=x.capas[0].color;
+    p.title='Reúne: '+x.capas.map(c=>c.nombre).join(', ')+' · '+n+' movimientos';
+    p.onclick=()=>{selGrupo=x.id;selSub='';pCapas()};pills.append(p)}
   s.append(pills);
-  const c=D.capas.find(x=>x.id===selCapa);
-  /* cabecera compacta */
-  const vs=D.movimientos.filter(m=>m.capa===c.id&&paisOk(m)).sort((a,b)=>a.fecha<b.fecha?1:-1);
-  const cab=el('div','caja cab-capa');cab.style.borderLeftColor=c.color;
-  cab.append(el('h2',null,c.nombre),el('div','que',c.resumen));
-  const cnt={};vs.forEach(m=>cnt[m.estado]=(cnt[m.estado]||0)+1);
-  const ch=el('div');for(const k in D.estados)if(cnt[k]){const x=el('span','chip',D.estados[k].nombre+': '+cnt[k]);x.style.borderColor=D.estados[k].color;x.style.background=D.estados[k].color+'2e';ch.append(x)}
-  const nv=V?V.voces.filter(v=>(v.capas||[]).includes(c.id)).length:0;
-  if(nv){const x=el('span','chip','🗣 '+nv+' voces');x.style.cursor='pointer';x.onclick=()=>{vCapa=c.id;ir('voces')};ch.append(x)}
-  const nc=R.celdas.length;if(c.id==='reg')ch.append(el('span','chip','Radar: '+nc+' celdas (pestaña Matriz)'));
-  cab.append(ch);s.append(cab);
-  /* los 4 cuadros de hechos, en paralelo */
-  const hs=el('div','cols4');const vac=el('div','vacias');
-  for(const [k,tit,ek] of ORD){
-    const col=el('div','caja');const colr=ek?colEst(ek):'#e8b64a';col.style.borderTop='3px solid '+colr;
-    const lst=(c[k]||[]).filter(h=>certOk(h.k||'P'));
-    if(!lst.length){const tot=(c[k]||[]).length;const sp=el('span');sp.append(el('b',null,tit+': '),document.createTextNode(tot?'0 con este filtro de certeza ('+tot+' sin filtrar)':'sin hechos en esta capa; en el resto de capas hay '+D.capas.reduce((a,x)=>a+(x[k]||[]).length,0)));vac.append(sp);continue}
-    col.append(el('h3',null,tit+' ('+lst.length+')'));
-    for(const h of lst){const d=el('div','hecho');d.style.borderLeftColor=colr;
-      d.append(el('span','badge '+bcl(h.k),h.k||'?'),document.createTextNode(h.t));
-      const m=el('div');m.append(chips((h.ent||[]).concat(h.act||[],h.pais||[])));d.append(m);col.append(d)}
-    hs.append(col)}
-  if(hs.children.length)s.append(hs);if(vac.children.length)s.append(vac);
-  /* datos al día + cifras + ficha del analista */
-  const f=c.ficha||{};
-  const g3=el('div','cols2');
-  const cDatos=el('div','caja');cDatos.append(el('h2',null,'Datos al día'));datosCapa(cDatos,c.id);
-  const cCif=el('div','caja');cCif.append(el('h2',null,'Cifras clave'));
-  const gc=el('div','kpis');gc.style.gridTemplateColumns='repeat(auto-fill,minmax(230px,1fr))';
-  for(const x of c.cifras||[]){const k=el('div','tarj');k.append(el('div','cifra',x.v),el('div',null,x.e),el('div','nota-v',x.f));if(x.ent||x.pais)k.append(chips((x.ent||[]).concat(x.pais||[])));gc.append(k)}
-  cCif.append(gc);
-  const cFi=el('div','caja');cFi.append(el('h2',null,'Ficha del analista'));const fi=masonry('ficha',innerWidth>=1500?3:innerWidth>=1000?2:1);cFi.append(fi);
+  const sub=selSub&&g.ids.includes(selSub)?selSub:'';
+  const ids=sub?[sub]:g.ids,cs=g.capas.filter(c=>ids.includes(c.id)),varias=g.capas.length>1;
+  const est=ESTS.filter(e=>e[0]!=='xrp'||g.xrp);
+  const pan=panelesGrupo(g.id).filter(p=>ids.includes(p.capa));
+  const vs=D.movimientos.filter(m=>ids.includes(m.capa)&&paisOk(m)).sort((a,b)=>a.fecha<b.fecha?1:-1);
+  const evs=X?X.calendario.eventos.filter(e=>ids.includes(e.capa)&&e.fin>=HOYS):[];
+  const docs=[],glo=[],vistoD=new Set(),vistoG=new Set();
+  for(const id of ids){const dc=X&&X.docs[id];if(!dc)continue;
+    for(const d of dc.inv||[]){const k=d.archivo+'|'+d.titulo;if(!vistoD.has(k)){vistoD.add(k);docs.push(d)}}
+    for(const t of dc.glo||[]){if(!vistoG.has(t.t)){vistoG.add(t.t);glo.push(t)}}}
+
+  /* (a) qué es y en qué se basa */
+  const cab=el('div','caja cab-capa');cab.style.borderLeftColor=g.capas[0].color;
+  cab.append(el('h2',null,g.nombre+': qué es y en qué se basa'));
+  if(g.que)cab.append(el('div','que',g.que));
+  const nh={};for(const c of cs)for(const [k,tit] of est)nh[tit]=(nh[tit]||0)+(c[k]||[]).length;
+  const nhTxt=Object.entries(nh).filter(x=>x[1]).map(x=>x[1]+' '+x[0].toLowerCase()).join(', ');
+  const fu=[...new Set(pan.map(p=>(p.pie.t||'').split(' · ')[0].replace(/^Rendimiento anual.*$/,'Tesoros nacionales y BCE')).filter(Boolean))];
+  cab.append(el('div','nota-v','En qué se basa: '+(nhTxt?'hechos fichados por el analista ('+nhTxt+'), ':'')+vs.length+' movimientos con fecha y fuente, '+docs.length+' documentos de research'+(fu.length?' y datos automáticos de '+fu.join('; '):'')+'. Certeza de cada dato: P = fuente primaria, S = prensa o agregador, V = [VERIFICAR].'));
+  if(varias){const sc=el('div','pills');sc.style.margin='8px 0 6px';sc.append(el('span','nota-v','Desglose:'));
+    for(const [k,nom] of [['','Todas ('+g.capas.length+')']].concat(g.capas.map(c=>[c.id,c.nombre]))){const b=el('span','pill'+(k===sub?' on':''),nom);b.onclick=()=>{selSub=k;pCapas()};sc.append(b)}
+    cab.append(sc)}
+  const sg=el('div',cs.length>1?'cols3':'');sg.style.marginTop='6px';
+  for(const c of cs){
+    const t=el('div','tarj');t.style.borderLeft='4px solid '+c.color;
+    if(varias){const h=el('h4',null,c.nombre);h.style.cursor='pointer';h.title='Ver solo esta parte';h.onclick=()=>{selSub=sub===c.id?'':c.id;pCapas()};t.append(h)}
+    t.append(el('div',null,c.resumen));
+    const cnt={};D.movimientos.filter(m=>m.capa===c.id&&paisOk(m)).forEach(m=>cnt[m.estado]=(cnt[m.estado]||0)+1);
+    const ch=el('div');ch.style.marginTop='4px';
+    for(const k in D.estados)if(cnt[k]){const x=el('span','chip',D.estados[k].nombre+': '+cnt[k]);x.style.borderColor=D.estados[k].color;x.style.background=D.estados[k].color+'2e';ch.append(x)}
+    const nv=V?V.voces.filter(v=>(v.capas||[]).includes(c.id)).length:0;
+    if(nv){const x=el('span','chip','🗣 '+nv+' voces');x.style.cursor='pointer';x.onclick=()=>{vCapa=c.id;ir('voces')};ch.append(x)}
+    if(c.id==='reg')ch.append(el('span','chip','Radar: '+R.celdas.length+' celdas (pestaña Matriz)'));
+    if(ch.children.length)t.append(ch);
+    /* cifras del analista que no se actualizan solas (las automáticas ya salen en «Datos al día») */
+    const cif=(c.cifras||[]).filter(x=>!/se actualiza solo/i.test(x.f||''));
+    if(cif.length){const u=el('ul');u.style.cssText='margin:6px 0 0;padding-left:18px';
+      for(const x of cif){const li=el('li');li.append(el('b',null,x.v+' '),document.createTextNode(x.e+' '),el('span','nota-v','('+x.f+')'));u.append(li)}
+      t.append(u)}
+    sg.append(t)}
+  cab.append(sg);
+  if(g.id==='dinero'&&!sub){
+    cab.append(el('h3',null,'Las tres, comparadas'));
+    const w=el('div');w.style.overflowX='auto';
+    const mad=id=>{const c=D.capas.find(x=>x.id===id);const m=c&&c.ficha&&c.ficha.madurez;return m&&typeof m==='object'?'Nivel '+m.n+' de 5. '+m.t:'[VERIFICAR]'};
+    w.append(tabla([{t:'Tipo',f:r=>{const q=el('b',null,r.tipo);const c=D.capas.find(x=>x.id===r.id);if(c)q.style.cssText='border-left:4px solid '+c.color+';padding-left:6px;display:inline-block';return q}},{t:'Quién lo emite',f:r=>r.emite},{t:'Qué lo respalda',f:r=>r.respalda},{t:'Quién lo regula',f:r=>r.regula},{t:'Para quién es',f:r=>r.para},{t:'Estado y madurez (escala del analista)',f:r=>mad(r.id)},{t:'De dónde sale',f:r=>el('span','nota-v',r.fuente)}],COMP_DINERO.filter(r=>D.capas.some(c=>c.id===r.id))));
+    cab.append(w)}
+  s.append(cab);
+
+  /* (b) datos al día, a todo el ancho */
+  const cDatos=el('div','caja');cDatos.append(el('h2',null,'Datos al día'+(sub?' · '+capaNom(sub):'')));
+  if(!P)cDatos.append(el('p','nota-v','Falta paneles.json.'));
+  else if(!pan.length)cDatos.append(el('p','nota-v',sub?'Esta parte no tiene paneles automáticos propios; los de la capa están en «Todas».':'Esta capa no tiene paneles automáticos; se basa en los hechos y documentos de abajo.'));
+  else{const mz=masonry();cDatos.append(mz);
+    for(const p of pan){const b=bloque(p.tit,null,p.pie,p.fn());if(p.ancho)b.classList.add('ancho');mz.append(b)}}
+  if(pan.length||sub)s.append(cDatos);
+
+  /* (c) hechos por estado */
+  const colsH=[],sinH=[];
+  for(const [k,tit,ek] of est){const todos=[];for(const c of cs)for(const h of c[k]||[])todos.push({h,c});
+    const lst=todos.filter(x=>certOk(x.h.k||'P'));
+    if(!lst.length){sinH.push(todos.length?tit+' (0 con este filtro de certeza; '+todos.length+' sin filtrar)':tit);continue}
+    colsH.push([tit,ek,lst])}
+  if(colsH.length){
+    const cH=el('div','caja');cH.append(el('h2',null,'Hechos por estado'));
+    const grid=el('div',colsH.length>1?'cols4':'');
+    for(const [tit,ek,lst] of colsH){
+      const col=el('div');const colr=ek?colEst(ek):'#e8b64a';col.style.cssText='border-top:3px solid '+colr+';padding-top:4px;min-width:0';
+      col.append(el('h3',null,tit+' ('+lst.length+')'));
+      const cont=el('div',colsH.length===1?'lista':'');
+      for(const {h,c} of lst){const d=el('div','hecho');d.style.borderLeftColor=colr;
+        d.append(el('span','badge '+bcl(h.k),h.k||'?'),document.createTextNode(h.t));
+        const m=el('div');if(varias&&!sub)m.append(chipCapa(c.id));m.append(chips((h.ent||[]).concat(h.act||[],h.pais||[])));d.append(m);cont.append(d)}
+      col.append(cont);grid.append(col)}
+    cH.append(grid);
+    if(sinH.length)cH.append(el('p','nota-v','Sin hechos en: '+sinH.join(' · ')+'.'));
+    s.append(cH)}
+  else if(sinH.length)s.append(el('div','vacias','Hechos por estado: ninguno en '+sinH.join(' · ')+'.'));
+
+  /* (d) próximas fechas y hechos recientes */
+  const colCapa=varias&&!sub?[{t:'Parte',f:x=>chipCapa(x.capa)}]:[];
+  const cEv=el('div','caja');cEv.append(el('h2',null,'Próximas fechas ('+evs.length+')'));
+  cEv.append(tabla([{t:'Fecha',f:e=>e.ini===e.fin?e.ini:e.ini+' → '+e.fin},{t:'Qué',f:e=>{const q=el('span');const tm=X.calendario.temas[e.tema]||{color:'#888'};const i=el('i','punto-tema');i.style.background=tm.color;q.append(i,el('b',null,(e.impacto==='alto'?'★ ':'')+e.titulo),el('div','nota-v',e.detalle));return q}}].concat(colCapa,[{t:'Fuente',f:e=>e.fuente}]),evs));
+  const cMov=el('div','caja');cMov.append(el('h2',null,'Hechos recientes ('+vs.length+')'));
+  const colsM=[{t:'Fecha',f:m=>m.fecha}].concat(colCapa,[{t:'Actor',f:m=>m.actor},{t:'Hecho',f:m=>m.texto},{t:'Estado',f:m=>puntoEst(m.estado)}]);
+  const N=12;cMov.append(tabla(colsM,vs.slice(0,N)));
+  if(vs.length>N){const dm=el('details');dm.append(el('summary',null,'Ver los '+(vs.length-N)+' anteriores'));dm.append(tabla(colsM,vs.slice(N)));cMov.append(dm)}
+  if(evs.length&&vs.length){const g2=el('div','cols2');g2.style.gridTemplateColumns='repeat(auto-fit,minmax(min(100%,520px),1fr))';g2.append(cEv,cMov);s.append(g2)}
+  else if(evs.length){cEv.append(el('p','nota-v','Ningún hecho registrado con los filtros actuales.'));s.append(cEv)}
+  else if(vs.length){cMov.firstChild.after(el('p','nota-v','Ninguna fecha próxima registrada para esta capa en el calendario.'));s.append(cMov)}
+  else s.append(el('div','vacias','Sin fechas próximas ni hechos con los filtros actuales.'));
+
+  /* (e) documentos y glosario */
+  if(docs.length||glo.length){
+    const cb=el('div','caja');cb.append(el('h2',null,'Documentos y glosario: '+docs.length+' documentos y '+glo.length+' términos'));
+    const tres='repeat(auto-fill,minmax(min(100%,360px),1fr))';
+    if(docs.length){const a=el('div','lista');a.style.gridTemplateColumns=tres;for(const d of docs){const it=el('div','hecho');it.append(el('span','badge',d.tipo),el('b',null,' '+d.titulo));const r=d.resumen.length>240?d.resumen.slice(0,240)+'…':d.resumen;it.append(el('div','nota-v',r),el('div','nota-v',d.archivo));a.append(it)}
+      cb.append(el('h3',null,'Documentos'),a)}
+    if(glo.length){const b=el('div','lista');b.style.gridTemplateColumns=tres;for(const t of glo){const it=el('div','hecho');it.append(el('b',null,t.t+': '),document.createTextNode(t.d.length>260?t.d.slice(0,260)+'…':t.d));b.append(it)}
+      cb.append(el('h3',null,'Glosario'),b)}
+    s.append(cb)}
+
+  /* (f) ficha del analista, plegada al final */
   const rot={hace:'Qué hace',controla:'Quién la controla',falta:'Lo que falta o no se sabe',madurez:'Madurez',favor:'A favor',contra:'En contra',vigilar:'Qué vigilar',informes:'Informes'};
-  for(const k in f){if(f[k]==null||(Array.isArray(f[k])&&!f[k].length))continue;const gp=el('div','grp');gp.append(el('h3',null,rot[k]||k));
-    if(k==='madurez'&&typeof f[k]==='object'){gp.append(el('div',null,'Nivel '+f[k].n+' de 5: '+f[k].t))}else gp.append(gen(f[k]));fi.append(gp)}
-  if(!fi.textContent.length)fi.appendChild(el('p','nota-v','Esta capa aún no tiene ficha del analista; los hechos y cifras están en los cuadros de arriba.'));
-  if(!gc.children.length)gc.append(el('p','nota-v','Esta capa aún no tiene cifras clave propias. Hechos registrados: '+vs.length+'.'));
-  s.append(cDatos,cCif,cFi);
-  /* fechas próximas y hechos */
-  const g2=el('div','cols2');
-  const cEv=el('div','caja');const evs=X?X.calendario.eventos.filter(e=>e.capa===c.id&&e.fin>=HOYS):[];
-  cEv.append(el('h2',null,'Fechas próximas de esta capa ('+evs.length+')'));
-  cEv.append(evs.length?tabla([{t:'Fecha',f:e=>e.ini===e.fin?e.ini:e.ini+' → '+e.fin},{t:'Qué',f:e=>{const q=el('span');const tm=X.calendario.temas[e.tema]||{color:'#888'};const i=el('i','punto-tema');i.style.background=tm.color;q.append(i,el('b',null,(e.impacto==='alto'?'★ ':'')+e.titulo),el('div','nota-v',e.detalle));return q}},{t:'Fuente',f:e=>e.fuente}],evs):altEventos(c.id));
-  const cMov=el('div','caja');cMov.append(el('h2',null,'Hechos de esta capa ('+vs.length+')'));
-  cMov.append(vs.length?tabla([{t:'Fecha',f:m=>m.fecha},{t:'Actor',f:m=>m.actor},{t:'Hecho',f:m=>m.texto},{t:'Estado',f:m=>{const q=el('span');const i=el('i');i.style.cssText='display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;background:'+colEst(m.estado);q.append(i,document.createTextNode((D.estados[m.estado]||{}).nombre||m.estado));return q}}],vs):altHechos(c.id));
-  g2.style.gridTemplateColumns='minmax(0,.8fr) minmax(0,1.2fr)';g2.append(cEv,cMov);s.append(g2);
-  /* biblioteca */
-  const dc=X&&X.docs[c.id];
-  if(dc){const cb=el('div','caja');cb.append(el('h2',null,'Biblioteca de esta capa: '+dc.inv.length+' documentos y '+dc.glo.length+' términos'));
-    const cc=cb;
-    const a=el('div','lista');a.style.gridTemplateColumns='repeat(auto-fill,minmax(440px,1fr))';a.before=null;const ha=el('h3',null,'Documentos');for(const d of dc.inv){const it=el('div','hecho');it.append(el('span','badge',d.tipo),el('b',null,d.titulo));const r=d.resumen.length>320?d.resumen.slice(0,320)+'…':d.resumen;it.append(el('div','nota-v',r));it.append(el('div','nota-v',d.archivo));a.append(it)}
-    const b=el('div','lista');b.style.gridTemplateColumns='repeat(auto-fill,minmax(380px,1fr))';const hb=el('h3',null,'Glosario');for(const t of dc.glo){const it=el('div','hecho');it.append(el('b',null,t.t+': '),document.createTextNode(t.d.length>260?t.d.slice(0,260)+'…':t.d));b.append(it)}
-    cc.append(ha,a,hb,b);s.append(cb)}
+  const dFi=el('details','caja');dFi.append(el('summary',null,'Ficha del analista (qué hace, quién la controla, a favor y en contra)'));let hay=false;
+  for(const c of cs){const f=c.ficha||{};const fi=masonry('ficha',innerWidth>=1500?3:innerWidth>=1000?2:1);
+    for(const k in f){if(f[k]==null||(Array.isArray(f[k])&&!f[k].length))continue;const gp=el('div','grp');gp.append(el('h3',null,rot[k]||k));
+      if(k==='madurez'&&typeof f[k]==='object'){gp.append(el('div',null,'Nivel '+f[k].n+' de 5: '+f[k].t))}else gp.append(gen(f[k]));fi.append(gp)}
+    if(!fi.textContent.length)continue;hay=true;
+    if(cs.length>1){const h=el('h3',null,c.nombre);h.style.borderBottom='2px solid '+c.color;dFi.append(h)}dFi.append(fi)}
+  if(hay)s.append(dFi);
 }
-function altEventos(id){
-  const d=el('div');d.append(el('p','nota-v','Ninguna fecha próxima registrada para esta capa.'));
-  const ev=X?X.calendario.eventos.filter(e=>e.fin>=HOYS).slice(0,4):[];
-  if(ev.length){const a=el('div','alt');a.append(el('h4',null,'Mientras tanto, las próximas fechas de otras capas'));a.append(tabla([{t:'Fecha',f:e=>e.ini},{t:'Qué',f:e=>e.titulo},{t:'Capa',f:e=>capaNom(e.capa)}],ev));d.append(a)}
-  return d}
-function altHechos(id){
-  const d=el('div');d.append(el('p','nota-v','Ningún hecho de esta capa con los filtros actuales.'));
-  const l=D.movimientos.filter(m=>m.capa!==id&&paisOk(m)).sort((a,b)=>a.fecha<b.fecha?1:-1).slice(0,4);
-  if(l.length){const a=el('div','alt');a.append(el('h4',null,'Mientras tanto, lo último en otras capas'));a.append(tabla([{t:'Fecha',f:m=>m.fecha},{t:'Capa',f:m=>capaNom(m.capa)},{t:'Hecho',f:m=>m.texto}],l));d.append(a)}
-  return d}
 /* columnas equilibradas por JS (las columnas CSS dejaban zonas sin pintar al hacer scroll) */
 function ncols(){return innerWidth>=2200?3:innerWidth>=1150?2:1}
 function peso(x){const t=x.textContent.length;return 40+(x.open===false?0:t/7+x.querySelectorAll('tr,li,.kpi,.hecho').length*14)}
@@ -469,7 +546,6 @@ function masonry(cls,fijas){
     if(!banda){banda=el('div','mbanda');banda.cols=[];const n=fijas||ncols();for(let i=0;i<n;i++){const k=el('div','mcol');k.peso=0;banda.cols.push(k);banda.appendChild(k)}c.appendChild(banda)}
     const k=banda.cols.reduce((a,b)=>a.peso<=b.peso?a:b);k.appendChild(x);k.peso+=peso(x)}};
   return c}
-/* qué «datos al día» enseña cada capa (igual que la Órbita actual) */
 /* ---------- Capa Política: comparar países (IPC, paro, deuda, pobreza…) con color frente al dato anterior ---------- */
 const BUENO_SUBE={pib:1,deficit:1,salario_minimo:1};
 function tendPa(k,x){if(!x||x.valor==null||x.anterior==null)return null;const d=x.valor-x.anterior;if(Math.abs(d)<0.05)return{c:'#9aa7c2',f:'●',t:'sin cambio frente a '+(x.anterior_fecha||'el dato anterior')};const mej=(d>0)===!!BUENO_SUBE[k];return{c:mej?'#4fe3a1':'#ff6b7d',f:d>0?'▲':'▼',t:(mej?'mejora':'empeora')+' ('+(d>0?'+':'')+d.toLocaleString('es-ES',{maximumFractionDigits:1})+' frente a '+(x.anterior_fecha||'el dato anterior')+')'}}
@@ -497,36 +573,63 @@ function nPetroleoHitos(){
   const H=((D.hitos_petroleo||{}).hitos||[]).slice().reverse();
   return tabla([{t:'Fecha',f:r=>r.fecha},{t:'Qué pasó',f:r=>r.hecho},{t:'Brent ($)',n:1,f:r=>r.brent?r.brent[0]+' → '+r.brent[1]:'—'},{t:'Nivel',f:r=>nivelBadge(r.nivel)}],H)}
 function nCredito(ids){
-  const C=((P.credito||{}).series||[]).filter(x=>ids.includes(x.id));
-  return tabla([{t:'Indicador',f:r=>r.nombre},{t:'País',f:r=>r.pais},{t:'Último',n:1,f:r=>num(r.valor,r.valor>1000?0:2)+' '+(r.unidad==='%'||String(r.unidad).includes('% neto')?'%':'')},{t:'Fecha',f:r=>r.fecha},
-    {t:'Hace 12 meses',n:1,f:r=>r.hace_12m==null?'—':num(r.hace_12m,r.hace_12m>1000?0:2)},{t:'Cambio frente al dato anterior',n:1,f:r=>r.anterior==null?'—':cambio(r.valor-r.anterior,'',2)},{t:'Serie',f:r=>spark(r.serie||[])}],C)}
+  const S=Object.fromEntries(((P.credito||{}).series||[]).filter(x=>ids.includes(x.id)).map(x=>[x.id,x]));
+  const corto=n=>n.replace(/^BLS: /,'').replace(/ \(Fed H\.8\)| \(Freddie Mac\)| \(Banco de Jap[oó]n\)| \(media semanal, Freddie Mac\)/,'').replace(/ \(% neto de bancos\)/,'');
+  const w=el('div');
+  const fmt=r=>num(r.valor,Math.abs(r.valor)>=1000?0:2)+(r.unidad==='%'?' %':'');
+  const grupo=(tit,nota,lista)=>{const F=lista.map(i=>S[i]).filter(Boolean);if(!F.length)return;
+    w.append(el('h3',null,tit));if(nota)w.append(el('p','nota-v',nota));
+    w.append(tabla([{t:'Indicador',f:r=>corto(r.nombre)},{t:'País',f:r=>r.pais},{t:'Último',n:1,f:r=>fmt(r)},{t:'Fecha',f:r=>r.fecha},{t:'Hace 12 meses',n:1,f:r=>r.hace_12m==null?'—':num(r.hace_12m,Math.abs(r.hace_12m)>=1000?0:2)},
+      {t:'Frente al dato anterior',n:1,f:r=>r.anterior==null?'—':cambio(r.valor-r.anterior,'',2)},{t:'Evolución',f:r=>spark(r.serie||[])}],F))};
+  grupo('1 · Lo que cuesta el crédito','Euríbor e hipotecas, ordenados por tipo de producto y, dentro de cada uno, por país.',['euribor12','hip_es','hip_es_tipo','hip_ea','hip_us30','hip_uk']);
+  grupo('2 · Cuánto crédito conceden los bancos','Crédito a hogares y empresas (BCE), crédito bancario de EE. UU. (Fed H.8), préstamos en Japón (BoJ) e hipotecas aprobadas en Reino Unido.',['hog_es','hog_ea','emp_ea','cred_us_total','cred_us_inmob','cred_us_cons','cred_us_emp','cred_jp','aprob_uk']);
+  const blsT=(tit,nota,modo)=>{
+    const tipos=[['emp','Empresas'],['viv','Hipotecas de hogares (vivienda)'],['con','Consumo de hogares']].filter(t=>S['bls_'+t[0]+'_'+modo+'_es']||S['bls_'+t[0]+'_'+modo+'_ea']);if(!tipos.length)return;
+    w.append(el('h3',null,tit));w.append(el('p','nota-v',nota));
+    const celda=r=>{if(!r)return '—';const q=el('span');q.append(document.createTextNode(num(r.valor,1)+' %  '),r.anterior==null?el('span'):cambio(r.valor-r.anterior,' pp',1));q.title=r.fecha+' · trimestre anterior: '+(r.anterior==null?'—':num(r.anterior,1));return q};
+    w.append(tabla([{t:'Tipo de crédito',f:t=>t[1]},{t:'España',n:1,f:t=>celda(S['bls_'+t[0]+'_'+modo+'_es'])},{t:'Zona euro',n:1,f:t=>celda(S['bls_'+t[0]+'_'+modo+'_ea'])},
+      {t:'Esperado (zona euro)',n:1,f:t=>{const r=S['bls_'+t[0]+'_'+modo+'_ea'];return r&&r.expectativa!=null?num(r.expectativa,1)+' %':'—'}},{t:'Evolución (zona euro)',f:t=>{const r=S['bls_'+t[0]+'_'+modo+'_ea'];return r?spark(r.serie||[]):'—'}}],tipos))};
+  blsT('3 · Encuesta de los bancos (BLS, BCE): criterios de concesión','Porcentaje neto de bancos que endurecen (positivo) o relajan (negativo) las condiciones. Último trimestre y cambio en puntos frente al anterior.','crit');
+  blsT('4 · Encuesta de los bancos (BLS, BCE): demanda de crédito','Porcentaje neto de bancos que notan más (positivo) o menos (negativo) demanda.','dem');
+  return w}
 function nMaterias(){
   const M=(P.materias||{}).materias||[],S=(((P.materias||{}).spot_eia)||{}).series||[];
   const filas=S.map(x=>({nombre:x.nombre+' (spot, EIA)',unidad:x.unidad,valor:x.valor,fecha:x.fecha,cambio_1d:x.cambio_1d,cambio_1m:x.cambio_1m})).concat(M);
   return tabla([{t:'Materia prima',f:r=>r.nombre},{t:'Último',n:1,f:r=>num(r.valor,2)+' '+(r.unidad||'')},{t:'Fecha',f:r=>r.fecha},{t:'1 día',n:1,f:r=>r.cambio_1d==null?'—':cambio(r.cambio_1d,'%',2)},{t:'1 mes',n:1,f:r=>r.cambio_1m==null?'—':cambio(r.cambio_1m,'%',2)}],filas)}
-function datosCapa(pad,id){
-  if(!P){pad.append(el('p','nota-v','Falta paneles.json.'));return}
-  const mz=masonry();pad.append(mz);const anchos=/Bonos|Deuda|Quién tiene|Liquidez|Comparar|Elecciones|Hitos|Crédito|Petróleo|Oro, cobre/;
-  const caj=(tit,nodo,pie)=>{const b=bloque(tit,null,pie,nodo);if(anchos.test(tit))b.classList.add('ancho');mz.append(b)};
+/* qué «datos al día» enseña cada grupo de la vista Capas: cada panel va una sola vez (antes se repetían tipos, stablecoins, EBA y materias primas en varias capas),
+   ordenados por tipo de dato y, dentro de cada tabla, por país. «capa» = la capa original a la que pertenece, para el desglose. */
+function panelesGrupo(gid){
+  if(!P)return [];
+  const L=[];const add=(capa,tit,fn,pie,ancho)=>L.push({capa,tit,fn,pie,ancho});
   const pie=(b,t)=>({nivel:b.nivel,t:t+' · leído '+(b.leido||P.leido)});
-  if(id==='reg')caj('Tipos de interés de los bancos centrales',nTipos(),pie(P.tipos_vivos,'Bancos centrales'));
-  else if(id==='deuda'){caj('Bonos del Estado: rendimiento a cada plazo',nBonos(['ESP','FRA','USA','JPN','EUR','GBR']),{t:'Rendimiento anual que paga cada bono; el cambio es frente al día anterior, en puntos básicos (100 pb = 1 punto)'});
-    if(BAN)caj('Deuda soberana en el balance de los bancos (EBA, España, Francia e Italia)',nEba([['ES','España'],['FR','Francia'],['IT','Italia']],4),{nivel:BAN.nivel,t:'EBA, corte '+BAN.periodo});
-    if(FMI)caj('Deuda pública sobre el PIB (FMI)',nFmi(),{nivel:'P',t:FMI.edicion+'. Proyecciones, no datos cerrados'});if(P.tic)caj('Quién tiene deuda de EE. UU.',nTic(8),pie(P.tic,'Tesoro de EE. UU. (TIC)'))}
-  else if(id==='stable')caj('Stablecoins',nStable(8),pie(P.stablecoins,'DefiLlama, agregador'));
-  else if(id==='puente'){caj('Precio de XRP y XLM',nMercado(),pie(P.mercado,'CoinGecko'));caj('Stablecoins en el XRPL y en Stellar',nCadenas(),pie(P.stablecoins,'DefiLlama'))}
-  else if(id==='token')caj('Protocolos RWA en DeFi',nRwa(),pie(P.rwa,'DefiLlama'));
-  else if(id==='fondos'){caj('BTC, ETH, XRP y XLM',nMercado(),pie(P.mercado,'CoinGecko'));caj('Bolsas',nIndices(),pie(P.indices,'Yahoo Finance'))}
-  else if(id==='cbdc')caj('Tipos oficiales de los bancos centrales',nTipos(),pie(P.tipos_vivos,'Bancos centrales'));
-  else if(id==='liquidez'){caj('Liquidez: cantidad de dinero',nLiquidez(),pie(P.liquidez,'FRED, BCE'));caj('Tipos oficiales de los bancos centrales',nTipos(),pie(P.tipos_vivos,'Bancos centrales'))}
-  else if(id==='energia'){caj('Estrecho de Ormuz',nOrmuz(),pie(P.ormuz,'IMF PortWatch'));if(P.materias)caj('Petróleo, gas y materias primas (futuros y spot oficial EIA)',nMaterias(),{nivel:P.materias.nivel,t:'Yahoo Finance y EIA · leído '+P.materias.leido});if((D.hitos_petroleo||{}).hitos)caj('Hitos del petróleo (Brent)',nPetroleoHitos(),{nivel:'S',t:'explorador/hitos_petroleo.json'})}
-  else if(id==='politica'){if((D.paises_fichas||{}).paises)caj('Comparar países: IPC, paro, PIB, deuda y pobreza',nComparar(),{nivel:'P',t:'Eurostat, Banco Mundial y FMI · leído '+(((P||{}).indicadores||{}).leido||'')});if((D.elecciones||{}).paises)caj('Elecciones por fecha',nElecciones(),{nivel:'S',t:'explorador/elecciones.json'})}
-  else if(id==='deposit'){if(P.credito)caj('Crédito bancario en EE. UU. (Fed H.8): lo que un depósito tokenizado representa',nCredito(['cred_us_total','cred_us_inmob','cred_us_cons','cred_us_emp']),{nivel:P.credito.nivel,t:'Reserva Federal H.8 · leído '+P.credito.leido});if(P.stablecoins)caj('Stablecoins, para comparar con los depósitos',nStable(5),pie(P.stablecoins,'DefiLlama, agregador'))}
-  else if(id==='custodia'){if(BAN)caj('Deuda soberana en el balance de los bancos (EBA): quién custodia riesgo',nEba([['ES','España'],['FR','Francia'],['IT','Italia']],4),{nivel:BAN.nivel,t:'EBA, corte '+BAN.periodo});if(P.materias)caj('Oro, cobre y materias primas (activos que se custodian)',nMaterias(),{nivel:P.materias.nivel,t:'Yahoo Finance y EIA · leído '+P.materias.leido})}
-  else if(id==='riesgos'){if(P.credito){caj('Crédito, hipotecas y criterios de concesión de los bancos (BCE, Fed, BoE, BoJ)',nCredito((P.credito.series||[]).map(x=>x.id)),{nivel:P.credito.nivel,t:'BCE, Freddie Mac, Fed, BoE y BoJ · leído '+P.credito.leido})};if(P.materias)caj('Materias primas',nMaterias(),{nivel:P.materias.nivel,t:'Yahoo Finance y EIA · leído '+P.materias.leido})}
-  else{mz.remove();pad.append(el('p','nota-v','Esta capa no tiene paneles de datos al día; sus hechos y cifras están en los cuadros de arriba.'));
-    if(P){pad.append(el('div','alt'));pad.lastChild.append(el('h4',null,'Mientras tanto, cifras generales de mercado (CoinGecko, '+P.leido+')'),nMercado())}}
-}
+  if(gid==='dinero'){
+    if(P.stablecoins)add('stable','Stablecoins en circulación',()=>nStable(10),pie(P.stablecoins,'DefiLlama, agregador'),true);
+    if(window.CBDCB)add('cbdc','CBDC dentro de blockchains: qué existe y quién puede pagar o recibir',nCbdc,{nivel:'S',t:'Prensa y fuentes oficiales parciales · leído '+window.CBDCB.leido},true)}
+  else if(gid==='tipos'){
+    if(P.liquidez)add('liquidez','Liquidez: cantidad de dinero',nLiquidez,pie(P.liquidez,'FRED, BCE'),false);
+    if(P.tipos_vivos)add('liquidez','Tipos oficiales de los bancos centrales',nTipos,pie(P.tipos_vivos,'Bancos centrales'),true);
+    if(P.bonos)add('deuda','Bonos del Estado: rendimiento a cada plazo',()=>nBonos(['ESP','FRA','USA','JPN','EUR','GBR']),{nivel:'P',t:'Tesoros nacionales y BCE · rendimiento anual de cada bono; el cambio es frente al día anterior, en puntos básicos (100 pb = 1 punto)'},true);
+    if(FMI)add('deuda','Deuda pública sobre el PIB (FMI)',nFmi,{nivel:'P',t:FMI.edicion+'. Proyecciones, no datos cerrados'},true);
+    if(P.tic)add('deuda','Quién tiene deuda de EE. UU.',()=>nTic(8),pie(P.tic,'Tesoro de EE. UU. (TIC)'),true);
+    if(BAN)add('deuda','Deuda soberana en el balance de los bancos (EBA: España, Francia e Italia)',()=>nEba([['ES','España'],['FR','Francia'],['IT','Italia']],4),{nivel:BAN.nivel,t:'EBA, corte '+BAN.periodo},true)}
+  else if(gid==='credito'){
+    if(P.credito)add('riesgos','Crédito, hipotecas y criterios de concesión de los bancos, por tipo y país',()=>nCredito((P.credito.series||[]).map(x=>x.id)),{nivel:P.credito.nivel,t:'BCE, Freddie Mac, Fed, BoE y BoJ · leído '+P.credito.leido},true);
+    if(CAL)add('riesgos','Calificaciones soberanas (nota de solvencia de cada país)',nCalif,{nivel:'P',t:'Agencias y tesoros · leído '+CAL.leido},true)}
+  else if(gid==='energia'){
+    if(P.ormuz)add('energia','Estrecho de Ormuz',nOrmuz,pie(P.ormuz,'IMF PortWatch'),false);
+    if(P.materias)add('energia','Petróleo, gas y materias primas (futuros y spot oficial EIA)',nMaterias,{nivel:P.materias.nivel,t:'Yahoo Finance y EIA · leído '+P.materias.leido},false);
+    if((D.hitos_petroleo||{}).hitos)add('energia','Hitos del petróleo (Brent)',nPetroleoHitos,{nivel:'S',t:'explorador/hitos_petroleo.json'},false)}
+  else if(gid==='railes'){
+    if(P.mercado)add('puente','Precio de XRP y XLM (y BTC y ETH como referencia)',nMercado,pie(P.mercado,'CoinGecko'),true);
+    if(P.stablecoins)add('puente','Stablecoins en el XRP Ledger y en Stellar',nCadenas,pie(P.stablecoins,'DefiLlama'),true)}
+  else if(gid==='tokens'){
+    if(P.rwa)add('token','Activos reales tokenizados (RWA) en DeFi',nRwa,pie(P.rwa,'DefiLlama'),true);
+    if(P.mercado)add('fondos','BTC, ETH, XRP y XLM',nMercado,pie(P.mercado,'CoinGecko'),true);
+    if(P.indices)add('fondos','Bolsas',nIndices,pie(P.indices,'Yahoo Finance'),true)}
+  else if(gid==='reglas'){
+    if((D.paises_fichas||{}).paises)add('politica','Comparar países: IPC, paro, PIB, deuda y pobreza',nComparar,{nivel:'P',t:'Eurostat, Banco Mundial y FMI · leído '+(((P||{}).indicadores||{}).leido||'')},true);
+    if((D.elecciones||{}).paises)add('politica','Elecciones por fecha',nElecciones,{nivel:'S',t:'explorador/elecciones.json'},true)}
+  return L}
 
 /* ---------- 3 · Línea de tiempo ---------- */
 let capasOff=new Set(),rango='365',buscaTL='',soloRx=false;
