@@ -918,6 +918,24 @@
    "fuente": "https://www.lamoncloa.gob.es/lang/en/gobierno/news/paginas/2025/20251003-dana-eu-solidarity-fund.aspx",
    "nivel": "S",
    "nota": "Otra cuenta da 9.927 M€ abonados de 16.600 «movilizados»; el desglose oficial no cuadra con sus partidas (~735 M€ sin detallar) [VERIFICAR]."
+  },
+  {
+   "nombre": "INE por municipio: València, Torrent, Paterna, Sagunt y Gandia, oct-2024",
+   "valor": 776,
+   "unidad": "defunciones",
+   "anio": "oct-2024",
+   "fuente": "https://www.ine.es/jaxiT3/Tabla.htm?t=31917",
+   "nivel": "P",
+   "nota": "Frente a 767 en oct-2023: sin exceso visible en el conjunto. Torrent 63 (49 en 2023; compatible con los 10 del CID, pero el ruido impide afirmarlo [ESPECULACIÓN]). El INE no publica Paiporta, Catarroja, Sedaví, Alfafar, Benetússer, Massanassa, Picanya ni Utiel: ~88 % de las 216 víctimas del CID no se pueden contrastar por municipio. El INE asigna por residencia [VERIFICAR] y el CID por lugar de levantamiento."
+  },
+  {
+   "nombre": "INE, causas externas de muerte en la provincia de Valencia",
+   "valor": 1114,
+   "unidad": "defunciones",
+   "anio": 2024,
+   "fuente": "https://www.ine.es/jaxiT3/Tabla.htm?t=73035",
+   "nivel": "P",
+   "nota": "Frente a 911 en 2023 (+203) y 834 en 2019, mientras el total bajó de 24.123 a 23.864. Coherente con 220-234 muertes por inundación; no hay desglose por inundación (CIE-10 X38) ni por municipio. Las tres comprobaciones (INE semanal, MoMo, causas externas) no sostienen cientos o miles de muertes adicionales, pero no distinguen diferencias de unas decenas."
   }
  ],
  "opacidad": [
@@ -928,7 +946,7 @@
    "anio": "",
    "fuente": "https://contrataciondelestado.es/wps/portal/DatosAbiertos",
    "nivel": "P",
-   "nota": "Sí: licitaciones y adjudicaciones con órgano, NIF del adjudicatario, importe, lotes y CPV (feed diario y ZIP mensual sin clave). No: facturas, pagos ni ejecución real; contratos menores solo en parte; emergencia y encargos a medios propios [VERIFICAR]."
+   "nota": "Sí: adjudicatario, NIF e importe en ~95 % de las adjudicaciones de una muestra de 2.519 entradas del feed (≈4 días, no aleatoria); 2,7 % con modificación de contrato (importe y plazo) y 14 de emergencia. Ejemplo: emergencia de Adif (túnel n.º 15, 1,71 M€ sin IVA) adjudicada el 3-mar-2026 y publicada el 30-oct-2026, ~8 meses de retraso. No: factura ni pago; sin contratos menores en el feed."
   },
   {
    "nombre": "Subvenciones (BDNS)",
@@ -937,7 +955,25 @@
    "anio": "",
    "fuente": "https://www.infosubvenciones.es/bdnstrans/",
    "nivel": "P",
-   "nota": "Sí: concesión individual con beneficiario, importe y órgano (API sin clave; 31,3 millones de concesiones; la última, del 2-nov-2026). Personas físicas con nombre enmascarado. No: el pago efectivo."
+   "nota": "Sí: concesión individual con beneficiario, importe y órgano; el ranking de grandes beneficiarios incluye nominativas y directas por real decreto (Cruz Roja 464,8 M€ en 2022 y 211,4 M€ en 2025; Accem 110,8 M€ y 10,6 M€). Parámetros que funcionan: nifCif, fechaDesde/fechaHasta, tipoAdministracion; otros filtros se ignoran sin avisar. No: el pago efectivo."
+  },
+  {
+   "nombre": "Facturas",
+   "valor": null,
+   "unidad": "",
+   "anio": "",
+   "fuente": "https://www.hacienda.gob.es/es-ES/Prensa/Noticias/Paginas/2026/20261022-NP-PMP-AGOSTO.aspx",
+   "nivel": "P",
+   "nota": "Una factura concreta no es pública. Solo agregados del periodo medio de pago (Hacienda, ~7 semanas de retraso): agosto 2026, CCAA 27,05 días, Administración Central 26,46, locales 30,15; deuda comercial 4.817,6 M€ (0,27 % del PIB); cinco CCAA superan 30 días (Baleares 53,42)."
+  },
+  {
+   "nombre": "Control: Tribunal de Cuentas, AIReF y transparencia",
+   "valor": null,
+   "unidad": "",
+   "anio": "",
+   "fuente": "https://www.tcu.es/",
+   "nivel": "S",
+   "nota": "El Tribunal de Cuentas tarda ~2 años (informe 1.481 sobre emergencia COVID, aprobado el 28-jul-2022: 347 contratos por 64,1 M€, 39 % sin plazo acreditado). Consejo de Transparencia, memoria 2025: 2.767 reclamaciones (+40,2 %), 45,5 % por silencio en las estatales. Informe de AIReF de jul-2026 e IGAE: solo título, sin conclusión leída [VERIFICAR]."
   },
   {
    "nombre": "Deuda de las comunidades",
@@ -1021,6 +1057,71 @@
    "fuente": "https://www.adif.es/",
    "nivel": "S",
    "nota": "Según prensa [VERIFICAR en Adif]. Informe final de la CIAF sobre Adamuz: no publicado a fecha de hoy."
+  }
+ ],
+ "recaudacion": [
+  {
+   "nombre": "Ingresos tributarios netos, enero-septiembre",
+   "valor": 248326,
+   "unidad": "M€",
+   "anio": "ene-sep 2026",
+   "fuente": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2026/IMR_26_09_es_es.pdf",
+   "nivel": "P",
+   "nota": "+10,0 % sobre 225.747 M€ (+8,0 % en términos homogéneos). IRPF 118.068 (+12,5 %), IVA 81.181 (+8,1 %), Sociedades 18.877 (+25,8 %, +7,0 % homogéneo), Especiales 15.718 (−8,5 %). Parte del salto viene de devoluciones muy altas en 2025 por sentencias (~1.122 M€); las medidas de 2026 restan 3.983 M€."
+  },
+  {
+   "nombre": "Ingresos tributarios netos, año completo",
+   "valor": 325356,
+   "unidad": "M€",
+   "anio": 2025,
+   "fuente": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2025/IMR_25_12_es_es.pdf",
+   "nivel": "P",
+   "nota": "+10,4 % sobre 294.734 M€ en 2024 y 271.935 M€ en 2023. IRPF 142.466, IVA 99.532, Sociedades 42.266, Especiales 23.083."
+  },
+  {
+   "nombre": "Recaudación como % del PIB",
+   "valor": 19.3,
+   "unidad": "% del PIB",
+   "anio": 2025,
+   "fuente": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2025/IMR_25_12_es_es.pdf",
+   "nivel": "P",
+   "nota": "Cálculo propio con el PIB de espana.json: 17,0 % en 2019; ≈ +25 % real frente a 2019. Récord en euros corrientes y en % del PIB desde 2019; el récord histórico frente a 2007 queda [VERIFICAR]."
+  },
+  {
+   "nombre": "Inversión pública bruta, % del PIB",
+   "valor": 3.0,
+   "unidad": "% del PIB",
+   "anio": 2025,
+   "fuente": "https://ec.europa.eu/eurostat/databrowser/product/page/gov_10a_main",
+   "nivel": "P",
+   "nota": "2,2 % en 2019. La inversión bruta (50.628 M€) supera la depreciación (39.764 M€) desde 2020; en 2013-2018 estuvo por debajo (mínimo 22.079 M€ en 2014). La depreciación no es gasto de mantenimiento."
+  },
+  {
+   "nombre": "Capital público neto, 2011-2023",
+   "valor": -3.7,
+   "unidad": "%",
+   "anio": "2011-2023",
+   "fuente": "https://www.fbbva.es/wp-content/uploads/2024/02/DE_2024_DT_1_2024_Stock_Ivie.pdf",
+   "nivel": "P",
+   "nota": "Fundación BBVA-Ivie (académica): cae y vuelve a crecer en los últimos tres años; la inversión pública de 2023 está un 45 % por debajo de la de 2009."
+  },
+  {
+   "nombre": "Licitación oficial de obra 2025 (SEOPAN, patronal de constructoras)",
+   "valor": 32260,
+   "unidad": "M€",
+   "anio": 2025,
+   "fuente": "https://seopan.es/wp-content/uploads/2026/04/Rueda-de-Prensa-DEF-24-ABRIL-15h56.pdf",
+   "nivel": "S",
+   "nota": "+10,2 %. Pide 127.000 M€ de conservación en diez años: emisor interesado en más obra. Su mantenimiento de Adif + Adif AV (753 M€ en 2019, 1.101 M€ en 2025) no es comparable con las cifras de la Asociación de la Carretera."
+  },
+  {
+   "nombre": "Trenes de Cercanías y Rodalies puntuales en todas las paradas",
+   "valor": 47.7,
+   "unidad": "%",
+   "anio": "ene-sep 2025",
+   "fuente": "https://es.ara.cat/sociedad/movilidad/mitad-trenes-cercanias-incumple-horario-propia-renfe_1_5526892.html",
+   "nivel": "S",
+   "nota": "Dato de Renfe vía prensa: 94,9 % puntuales solo en destino. No hay serie oficial homogénea del estado de las infraestructuras [VERIFICAR]."
   }
  ]
 }

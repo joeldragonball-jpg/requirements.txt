@@ -1199,6 +1199,9 @@ function pEspana(){
     add(bloque('Hasta dónde llegan los datos oficiales: qué es público y qué es opaco','Contratación, subvenciones y deuda territorial: hasta qué nivel se puede bajar (contrato, empresa, comunidad, municipio) y qué no se publica. Investigación del 3-nov-2026 (research/fuentes-nuevas/F, G y H).',{t:'PLACSP · BDNS · Banco de España · Eurostat'},
       tabla([{t:'Tema',f:r=>r.nombre},{t:'Qué sí y qué no',f:r=>r.nota},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Fuente',f:r=>lnk(r.fuente)}],M.opacidad)));
   }
+  if(M.recaudacion){
+    add(bloque('Recaudación récord frente a inversión en infraestructuras','HECHO: la recaudación tributaria está en récord (en euros y en % del PIB) y la inversión pública bruta supera hoy la depreciación contable. OPINIÓN: que las infraestructuras estén peor depende de cómo se mida; no existe una serie oficial homogénea de su estado, y las cifras de déficit de conservación las dan patronales y asociaciones con interés en más obra (nivel S). La recaudación por comunidad no se puede usar: casi la mitad figura en Madrid por domicilio fiscal y hay régimen foral.',{t:'AEAT · Eurostat · Fundación BBVA-Ivie · SEOPAN (S)'},dat(M.recaudacion),false));
+  }
   if(M.intereses_infra){
     add(bloque('Intereses de la deuda e infraestructuras: inversión frente a mantenimiento','Recaudación récord frente a estado de las infraestructuras: lo que sí se publica es la inversión bruta y la depreciación agregadas; el gasto real de mantenimiento por infraestructura no aparece en datos abiertos. Las cifras de asociaciones del sector (S) llevan sesgo de quien pide más obra.',{t:'Eurostat · Tesoro · prensa y asociaciones (nivel S)'},dat(M.intereses_infra),false));
   }
