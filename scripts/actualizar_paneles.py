@@ -978,10 +978,10 @@ def leer_tipos():
                "Banco de la Reserva Federal de Nueva York (EFFR y rango objetivo)", "https://www.newyorkfed.org/markets/reference-rates/effr")
     except Exception as e:
         fallos.append(f"tipo Fed: {type(e).__name__}: {e}")
-    try:    # BCE: tipo de la facilidad de depósito (primaria)
+    try:    # BCE: tipo de la facilidad de depósito (primaria). La serie solo trae los días de cambio: «dato_de» = hoy (tipo vigente leído hoy), no la fecha del último cambio (esa va en ultimo_cambio)
         serie = sorted((x["TIME_PERIOD"], _num(x["OBS_VALUE"])) for x in csv.DictReader(io.StringIO(descargar(URL_BCE_TIPO.format(d1=d1y)))))
         n, f, pv = _ultimo_cambio(serie)
-        anadir("ue", "Zona euro", "BCE (facilidad de depósito)", _pct(n), n, f, pv, serie[-1][0], "BCE, data-api.ecb.europa.eu (FM, DFR)",
+        anadir("ue", "Zona euro", "BCE (facilidad de depósito)", _pct(n), n, f, pv, hoy_iso, "BCE, data-api.ecb.europa.eu (FM, DFR)",
                "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html")
     except Exception as e:
         fallos.append(f"tipo BCE: {type(e).__name__}: {e}")
