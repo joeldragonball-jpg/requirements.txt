@@ -229,7 +229,7 @@ function lugar(j,t){const nj=R.jurisdicciones.find(x=>x.id===j),nt=R.temas.find(
 function cargar(){
   const G=window.parent&&window.parent.DATOS;
   if(!G||!G.radar){$('estado').textContent='Sin datos: esta plantilla se abre desde la Órbita.';return}
-  D=G;R=G.radar;V=G.voces;P=G.paneles;CAL=G.calificaciones;FMI=G.deuda_fmi;VAL=G.valoracion;BAN=G.bancos;RES=G.reservas;window.RWAM=G.rwa_cadena_manual;window.CBDCB=G.cbdc_blockchains;
+  D=G;R=G.radar;V=G.voces;P=G.paneles;CAL=G.calificaciones;FMI=G.deuda_fmi;VAL=G.valoracion;window.ENL=G.enlaces;BAN=G.bancos;RES=G.reservas;window.RWAM=G.rwa_cadena_manual;window.CBDCB=G.cbdc_blockchains;
   X=G.calendario?{calendario:G.calendario,docs:Object.fromEntries(G.capas.map(c=>[c.id,c.docs]))}:null;
   $('estado').textContent='Datos reales: radar '+R.revisado+' · Órbita '+D.version+(P?' · paneles '+P.leido:'');
   for(const j of R.jurisdicciones){const o=el('option',null,j.nombre);o.value=j.id;$('fpais').append(o)}
@@ -953,7 +953,7 @@ function pNoticias(){
 }
 
 /* ---------- 7 · Voces ---------- */
-let vNivel='',vConf='',vBusca='',vCapa='';
+let vNivel='',vConf='',vBusca='',vCapa='',vHilo='';
 /* ---------- Países: política (C58) + indicadores (C59) + estabilidad (C61), todo por país, solo cifras publicadas ---------- */
 let grupoPa='UE';
 const NOMI={ipc:'IPC',paro:'Paro',paro_juvenil:'Paro juvenil',pib:'PIB',deuda:'Deuda pública',deficit:'Déficit',pobreza:'Pobreza',gini:'Gini',salario_minimo:'Salario mínimo'};
@@ -1026,8 +1026,12 @@ function pVoces(){
   const sc=el('select');sc.append(Object.assign(el('option',null,'Toda confirmación'),{value:''}));for(const k in V.confirmaciones){const o=el('option',null,V.confirmaciones[k][0]);o.value=k;sc.append(o)}sc.value=vConf;sc.onchange=()=>{vConf=sc.value;pVoces()};
   const sk=el('select');sk.append(Object.assign(el('option',null,'Todas las capas'),{value:''}));for(const k of D.capas){const o=el('option',null,k.nombre);o.value=k.id;sk.append(o)}sk.value=vCapa;sk.onchange=()=>{vCapa=sk.value;pVoces()};
   const q=el('input');q.type='text';q.placeholder='Buscar…';q.value=vBusca;q.oninput=()=>{vBusca=q.value;clearTimeout(q.t);q.t=setTimeout(pVoces,250)};
-  f.append(sn,sc,sk,q);c.append(f);
-  const l=V.voces.filter(v=>(!vNivel||v.nivel===vNivel)&&(!vConf||v.conf===vConf)&&(!vCapa||(v.capas||[]).includes(vCapa))&&(!vBusca||(v.quien+' '+v.texto).toLowerCase().includes(vBusca.toLowerCase())));
+  const HI=(window.ENL&&window.ENL.enlaces)||[];
+  const sh=el('select');sh.append(Object.assign(el('option',null,'Todos los hilos'),{value:''}));for(const h of HI){const o=el('option',null,'Relacionado: '+h.tema);o.value=h.id;sh.append(o)}sh.value=vHilo;sh.onchange=()=>{vHilo=sh.value;pVoces()};
+  const hiloVoz=id=>HI.filter(h=>(h.voz||[]).includes(id));
+  const enHilo=vHilo?new Set((HI.find(h=>h.id===vHilo)||{}).voz||[]):null;
+  f.append(sn,sc,sk);if(HI.length)f.append(sh);f.append(q);c.append(f);
+  const l=V.voces.filter(v=>(!enHilo||enHilo.has(v.id))&&(!vNivel||v.nivel===vNivel)&&(!vConf||v.conf===vConf)&&(!vCapa||(v.capas||[]).includes(vCapa))&&(!vBusca||(v.quien+' '+v.texto).toLowerCase().includes(vBusca.toLowerCase())));
   const cnt={};for(const v of l)cnt[v.conf]=(cnt[v.conf]||0)+1;
   c.append(el('div','nota-v',l.length+' voces · '+Object.keys(cnt).map(k=>V.confirmaciones[k][0]+' '+cnt[k]).join(' · ')));
   if(!l.length){const a=el('div','alt');a.append(el('h4',null,'Ninguna voz con estos filtros. Las más recientes de las '+V.voces.length+':'));
@@ -1039,6 +1043,7 @@ function pVoces(){
     it.append(h,el('div',null,v.texto));
     const m=el('small');
     const partes=[];if(v.plazo&&v.plazo.prometido)partes.push('Plazo: '+v.plazo.prometido+' ('+v.plazo.estado+') '+(v.plazo.resultado||''));if(v.usos&&v.usos.length)partes.push('Usos: '+v.usos.join(', '));if(v.redes&&v.redes.length)partes.push('Redes: '+v.redes.join(', '));
+    const hv=hiloVoz(v.id);if(hv.length)partes.push('Hilo: '+hv.map(h=>h.tema).join(', '));
     m.textContent=partes.join(' · ');it.append(m);
     if(v.fuente&&v.fuente.url){const a=el('a',null,' · '+(v.fuente.n||'fuente'));a.href=v.fuente.url;a.target='_blank';it.append(a)}
     ls.append(it)}
