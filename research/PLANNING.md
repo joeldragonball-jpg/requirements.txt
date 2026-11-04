@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-04 23:24 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-04 23:40 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -31,10 +31,10 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - C118 · Nivel C · Fertilizantes y agua por zonas: Pink Sheet BM e INE · Sonnet M · ~~4 % · `Con OK de Joel para descargar el xlsx del Pink Sheet del Banco Mundial, extrae urea/amoníaco/potasa/DAP; busca precio del agua por CCAA en INE/AEAS y marca [VERIFICAR] lo no oficial`
 - C120 ◐ en parte · Nivel B · Fichas manuales: Interior (criminalidad), DGT, siniestralidad laboral  · Sonnet M · ~~4 % · `Con Chrome, comprueba y documenta en research/ACCESOS-CHROME.md las fuentes de Interior, DGT, Trabajo y EFFIS; no saltes anti-bots; guarda lo verificado en espana-manual.json`
 - C127 ◐ en parte · Tablero · Auditoría visual: Cifras clave más legibles y agrupadas, España ordena · Sonnet M · ~~3 % · `research/prompts/C127-auditoria-visual-tablero.md`
-- C129 · Tablero · Auditoría visual fuerte (con Opus): tablas, presupuestos y explicacion · Opus L · ~~7 % · `research/prompts/C129-auditoria-visual-opus.md`
 - C131 · Seguimiento · Replantear: 5 grupos claros (hoy, periódicas, bloqueadas, parciale · Sonnet M · ~~3 % · `research/prompts/C131-replantear-seguimiento.md`
 - C132 · Móvil · Centro de control: bolsas, ETFs, fondos indexados, materias primas (petr · Opus L · ~~6 % · `research/prompts/C132-centro-control-movil.md`
 - C133 · Países · Datos de 2025-2026, comparación histórica (2 y 5 años, máximo) y «duran · Opus L · ~~6 % · `research/prompts/C133-paises-historia-y-mandatos.md`
+- C134 · Tablero · Auditoría visual 2.ª pasada: Paneles (bonos 9×12, 203 celdas largas),  · Opus M · ~~3 % · `research/prompts/C134-auditoria-visual-2.md`
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`

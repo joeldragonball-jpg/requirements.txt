@@ -28,10 +28,10 @@ section.vista{display:none}section.vista.on{display:block}
 .kpi b{display:block;font-size:clamp(18px,.9vw + 8px,24px)}.kpi span{font-size:var(--fs-xs);color:var(--tx2)}
 .cc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px;margin:6px 0}
 .cc-b{background:var(--bg);border:1px solid var(--lin);border-top:3px solid var(--ac);border-radius:10px;padding:10px 12px}
-.cc-b h3{margin:0 0 6px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--tx2)}
+.cc-b h3{margin:0 0 6px;font-size:max(13px,.82rem);letter-spacing:.06em;text-transform:uppercase;color:var(--tx2)}
 .cc-g{margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--lin)}.cc-e{font-size:.85rem;color:var(--tx2)}
 .cc-g b{display:block;font-size:clamp(26px,1.6vw + 12px,36px);line-height:1.15}.cc-g .sube,.cc-g .baja,.cc-g .igual{font-size:.85rem}.cc-g .badge,.cc-l .badge{margin-left:6px;vertical-align:middle}
-.cc-f{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;padding:3px 0;font-size:.85rem}.cc-l{flex:1 1 55%;color:var(--tx2)}.cc-f b{font-size:1rem}.cc-f .sube,.cc-f .baja,.cc-f .igual{flex-basis:100%;text-align:right;font-size:.78rem}
+.cc-f{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;padding:3px 0;font-size:.85rem}.cc-l{flex:1 1 55%;color:var(--tx2)}.cc-f b{font-size:1rem}.cc-f .sube,.cc-f .baja,.cc-f .igual{flex-basis:100%;text-align:right;font-size:max(13px,.82rem)}
 table{border-collapse:collapse;width:100%}
 th,td{border:1px solid var(--lin);padding:clamp(4px,.4vw,7px) clamp(6px,.7vw,10px);font-size:var(--fs-s);text-align:left;vertical-align:top}
 th{color:var(--tx2);font-weight:600;background:#121a2a}
@@ -71,7 +71,7 @@ td.c .ch{display:flex;align-items:center;justify-content:center;gap:7px;font-siz
 .ej{background:#3a2d10;color:#ffd98a;padding:1px 6px;border-radius:4px;font-size:13px}
 .badge{display:inline-block;border-radius:4px;padding:0 6px;font-size:13.5px;border:1px solid var(--lin);color:var(--tx2);margin-right:4px}
 .badge{font-weight:700}.badge.P{border-color:#2fe08f;color:#2fe08f;background:rgba(47,224,143,.14)}.badge.S{border-color:#e8b64a;color:#e8b64a;background:rgba(232,182,74,.14)}.badge.V{border-color:#ff6b6b;color:#ff6b6b;background:rgba(255,107,107,.14)}.tipo-f{border:1px solid var(--lin);border-radius:4px;padding:0 6px;font-size:var(--fs-xs);color:var(--tx2)}.ver{font-weight:700}.ver.ok{color:#2fe08f}.ver.sc{color:var(--tx2)}.ver.alerta{color:#e8b64a}.ver.mal{color:#ff6b6b}
-.ctag{padding:3px 6px!important;font-size:11.5px;font-weight:800;line-height:1;padding:2px 4px;border-radius:4px;background:rgba(8,12,22,.85);border:1px solid}.ctag.P{color:#2fe08f}.ctag.S{color:#e8b64a}.ctag.V{color:#ff6b6b}
+.ctag{padding:3px 6px!important;font-size:12px;font-weight:800;line-height:1;padding:2px 4px;border-radius:4px;background:rgba(8,12,22,.85);border:1px solid}.ctag.P{color:#2fe08f}.ctag.S{color:#e8b64a}.ctag.V{color:#ff6b6b}
 .imp{display:inline-block;border-radius:4px;padding:0 6px;font-size:13px;font-weight:700;border:1px solid var(--lin);color:var(--tx2);margin-right:6px}.imp.alto{background:#ff6b6b;border-color:#ff6b6b;color:#1a0707}.imp.medio{border-color:#e8b64a;color:#e8b64a;background:rgba(232,182,74,.12)}.imp.bajo{opacity:.75}
 .ev{--c:#888;border:1px solid var(--lin);border-left:5px solid var(--c);border-radius:6px;padding:clamp(4px,.4vw,6px) clamp(6px,.7vw,10px);font-size:var(--fs-s);background:linear-gradient(90deg,color-mix(in srgb,var(--c) 15%,transparent),transparent 65%),var(--bg);transition:transform .15s,box-shadow .15s}.ev:hover{transform:translateY(-1px);box-shadow:0 0 12px color-mix(in srgb,var(--c) 30%,transparent)}
 .ev.alto{border-left-width:8px;border-color:color-mix(in srgb,var(--c) 60%,var(--lin));background:linear-gradient(90deg,color-mix(in srgb,var(--c) 28%,transparent),transparent 75%),var(--bg);box-shadow:0 0 14px color-mix(in srgb,var(--c) 22%,transparent)}.ev.bajo{opacity:.86}
@@ -94,11 +94,19 @@ dl{margin:4px 0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px}dt{colo
 a{color:var(--ac)}
 .nota-v{color:var(--tx2);font-size:14px;margin:4px 0}
 .que{color:var(--tx2);font-size:14.5px;margin:2px 0 6px}
-details.bl{margin-bottom:clamp(4px,.5vw,10px)}details.bl>summary{cursor:pointer;font-weight:600;padding:4px 0}.ms{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(88px,.9fr) minmax(110px,1.2fr) minmax(86px,.8fr);gap:10px;align-items:center;padding:7px 10px;margin:2px 0;border:1px solid var(--lin);border-radius:8px;background:var(--panel);list-style:none}details.bl>summary.ms::-webkit-details-marker{display:none}.ms:hover{background:#1b2640;border-color:var(--ac)}details[open]>summary.ms{background:#1b2640;border-color:var(--ac)}.ms .nm{font-weight:700;color:var(--tx);letter-spacing:.01em}.ms .nm::before{content:'▸  ';color:var(--ac)}details[open]>summary.ms .nm::before{content:'▾  '}.ms .im{font-weight:700;color:#f1d58a;text-align:right;white-space:nowrap}.ms .im small{color:var(--tx2);font-weight:400}.ms .pc{position:relative;height:20px;background:var(--nul);border-radius:5px;overflow:hidden}.ms .pc i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#27578f,var(--ac))}.ms .pc b{position:relative;padding-left:7px;font-size:.85em;color:#fff;line-height:20px}.ms .hb{color:var(--tx2);font-size:.86em;text-align:right;white-space:nowrap}.ms .hb em{font-style:normal;color:var(--tx);font-weight:600}.pb{display:inline-block;position:relative;min-width:110px;height:18px;background:var(--nul);border-radius:4px;overflow:hidden;vertical-align:middle}.pb i{position:absolute;top:0;bottom:0;left:0;background:#27578f}.pb b{position:relative;padding-left:6px;font-size:.88em;line-height:18px}@media(max-width:700px){.ms{grid-template-columns:1fr 1fr}.ms .nm{grid-column:1/-1}}
+details.bl{margin-bottom:clamp(4px,.5vw,10px)}details.bl>summary{cursor:pointer;font-weight:600;padding:4px 0}.ms{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(88px,.9fr) minmax(110px,1.2fr) minmax(86px,.8fr);gap:10px;align-items:center;padding:7px 10px;margin:2px 0;border:1px solid var(--lin);border-radius:8px;background:var(--panel);list-style:none}details.bl>summary.ms::-webkit-details-marker{display:none}.ms:hover{background:#1b2640;border-color:var(--ac)}details[open]>summary.ms{background:#1b2640;border-color:var(--ac)}.ms .nm{font-weight:700;color:var(--tx);letter-spacing:.01em}.ms .nm::before{content:'▸  ';color:var(--ac)}details[open]>summary.ms .nm::before{content:'▾  '}.ms .im{font-weight:700;color:#f1d58a;text-align:right;white-space:nowrap}.ms .im small{color:var(--tx2);font-weight:400}.ms .pc{position:relative;height:20px;background:var(--nul);border-radius:5px;overflow:hidden}.ms .pc i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#27578f,var(--ac))}.ms .pc b{position:relative;display:block;padding-left:7px;font-size:.85em;color:#fff;line-height:20px;white-space:nowrap;text-shadow:0 1px 2px #000}.ms .hb{color:var(--tx2);font-size:.86em;text-align:right;white-space:nowrap}.ms .hb em{font-style:normal;color:var(--tx);font-weight:600}.pb{display:inline-block;position:relative;min-width:110px;height:18px;background:var(--nul);border-radius:4px;overflow:hidden;vertical-align:middle}.pb i{position:absolute;top:0;bottom:0;left:0;background:#27578f}.pb b{position:relative;padding-left:6px;font-size:.88em;line-height:18px}@media(max-width:700px){.ms{grid-template-columns:1fr 1fr}.ms .nm{grid-column:1/-1}}
 .barrita{display:inline-block;height:9px;background:var(--ac);border-radius:2px;vertical-align:middle}
 .bars{display:flex;align-items:flex-end;gap:3px;height:70px}
 .bars div{flex:1;background:var(--ac);min-width:6px;position:relative}
-.bars small{position:absolute;bottom:-16px;left:0;font-size:11.5px;color:var(--tx2)}
+.bars small{position:absolute;bottom:-17px;left:0;font-size:13px;color:var(--tx2)}
+/* C129 · tarjetas con color (mismo ambiente que Cifras clave) para las cifras de cabecera de España */
+.kpis.vivo{gap:clamp(8px,.8vw,12px)}.kpis.vivo .kpi{--c:var(--ac);border-top:3px solid var(--c);border-radius:10px;padding:10px 12px;background:linear-gradient(180deg,color-mix(in srgb,var(--c) 12%,transparent),transparent 75%),var(--bg)}
+.kpis.vivo .kpi:nth-child(4n+2){--c:#2fe08f}.kpis.vivo .kpi:nth-child(4n+3){--c:#e8b64a}.kpis.vivo .kpi:nth-child(4n+4){--c:#c08bff}
+.kpis.vivo .kpi b{font-size:clamp(22px,1.2vw + 10px,32px);line-height:1.15}.kpis.vivo .kpi>span{display:block;margin-top:3px;font-size:var(--fs-s)}
+/* C129 · explicaciones: 1-2 líneas a la vista y el resto plegado */
+details.mas{margin:2px 0 6px;color:var(--tx2);font-size:var(--fs-xs)}details.mas>summary{cursor:pointer;color:var(--ac);font-weight:600;list-style:none;display:inline-block;padding:1px 0}details.mas>summary::-webkit-details-marker{display:none}details.mas>summary::before{content:'ⓘ ';}details.mas[open]>summary{margin-bottom:3px}details.mas>div{border-left:2px solid var(--lin);padding:2px 0 2px 10px;line-height:1.45}
+/* C129 · tamaño de letra del tablero */
+.letra{display:inline-flex;gap:3px;align-items:center}.letra button{padding:2px 9px;min-width:34px}.letra output{min-width:46px;text-align:center}
 svg.sp{vertical-align:middle}
 .masonry{display:block}
 .mbanda{display:flex;gap:var(--gap);align-items:flex-start;margin-bottom:clamp(5px,.6vw,10px)}
@@ -156,6 +164,7 @@ nav button{transition:background-color .15s,color .15s}nav button:hover:not(.on)
 <label>Certeza <select id="fcert"><option value="">Todas</option><option value="P">Solo [P]</option><option value="S">[P] y [S]</option></select></label>
 <label><input type="checkbox" id="fcambio"> Solo cambios en 30 días (matriz)</label>
 <span>Densidad matriz: <button id="dsem" class="on">Semáforo</button><button id="ddat">Datos</button></span>
+<span class="letra" title="Tamaño de letra del tablero; se recuerda en este navegador">Letra <button id="lmenos" aria-label="Letra más pequeña">A−</button><output id="lval"></output><button id="lmas" aria-label="Letra más grande">A+</button></span>
 <span id="estado"></span>
 </div>
 <main>
@@ -214,9 +223,17 @@ function inv(n){if(n&&n.classList){if(n.classList.contains('sube'))n.classList.r
 function kpis(l){const g=el('div','kpis');for(const x of l)if(x)g.append(kpi(...x));return g}
 function nivelBadge(n){return el('span','badge '+bcl(n),n||'?')}
 function chips(l){const s=el('span');for(const x of l||[])s.append(el('span','chip',x));return s}
+/* C129 · explicación corta: deja visible hasta la primera frase (≈170 caracteres) y pliega el resto en «Cómo se lee · sesgos · fuente» */
+function corto(tx,cls='que',lim=170){
+  if(typeof tx!=='string'||tx.length<=lim+40)return el('div',cls,tx);
+  let i=-1;const re=/[.;](?=\s)/g;let m;while((m=re.exec(tx))&&m.index<lim)i=m.index+1;
+  if(i<50)i=tx.lastIndexOf(' ',lim);if(i<1)return el('div',cls,tx);
+  const w=el('div',cls,tx.slice(0,i).trim());const d=el('details','mas');d.append(el('summary',null,'Cómo se lee · sesgos · fuente'),el('div',null,tx.slice(i).trim()));w.append(d);return w}
+/* zoom propio del tablero (control «Letra»): el ratón llega en píxeles de pantalla y las posiciones CSS van en píxeles con zoom */
+const zoomAct=()=>parseFloat(document.documentElement.style.zoom)||1;
 function bloque(tit,que,pie,cont,abierto=true){
   const d=el('details','bl');d.open=abierto;d.append(el('summary',null,tit));
-  if(que)d.append(el('div','que',que));d.append(cont);
+  if(que)d.append(corto(que));d.append(cont);
   if(pie){const p=el('div','nota-v');if(pie.nivel)p.append(nivelBadge(pie.nivel));p.append(document.createTextNode(' '+(pie.t||'')));d.append(p)}return d}
 function paisOk(mv){
   const fp=$('fpais').value;if(!fp)return true;
@@ -245,6 +262,11 @@ function cargar(){
   ['fpais','ftema','fcert','fcambio'].forEach(i=>$(i).onchange=pintarTodo);
   $('dsem').onclick=()=>{modo='sem';$('dsem').className='on';$('ddat').className='';pintarTodo()};
   $('ddat').onclick=()=>{modo='dat';$('ddat').className='on';$('dsem').className='';pintarTodo()};
+  /* C129 · Letra: si Chrome está alejado (p. ej. 80 %), arranca compensando; lo que elija Joel se recuerda */
+  const LZ=[.9,1,1.1,1.2,1.25,1.3,1.4,1.5];let zl=1;
+  try{const g=parseFloat(localStorage.getItem('orbita-letra'));if(g>=.8&&g<=1.6)zl=g;else if(devicePixelRatio<.95)zl=Math.min(1.3,Math.round(20/devicePixelRatio)/20)}catch(e){if(devicePixelRatio<.95)zl=Math.min(1.3,Math.round(20/devicePixelRatio)/20)}
+  const ponLetra=(z,guarda)=>{zl=z;document.documentElement.style.zoom=z===1?'':z;$('lval').textContent=Math.round(z*100)+' %';if(guarda)try{localStorage.setItem('orbita-letra',z)}catch(e){};if(listo){nc0=ncols();pintarTodo()}};
+  $('lmas').onclick=()=>ponLetra(LZ.find(x=>x>zl+.001)||zl,true);$('lmenos').onclick=()=>ponLetra([...LZ].reverse().find(x=>x<zl-.001)||zl,true);ponLetra(zl,false);
   listo=true;ir(tab)}
 const RM=matchMedia('(prefers-reduced-motion:reduce)').matches,vistos=new Set();
 function ir(id){tab=id;if(!listo)return;for(const [i] of TABS){$('v-'+i).classList.toggle('on',i===id)}
@@ -442,7 +464,7 @@ function pResumen(){
    Orden: primero las capas con más datos automáticos (dinero digital, tipos y deuda, crédito, energía) y después las de cripto y regulación. */
 const GRUPOS=[
  {id:'dinero',nombre:'Dinero digital',ids:['cbdc','stable','deposit'],xrp:false,
-  que:'Las tres formas de dinero digital que se están construyendo. Van juntas porque cumplen la misma función (ser el dinero con el que se paga y se liquida en las redes nuevas) y lo que las separa es quién lo emite: un banco central (CBDC), una empresa privada (stablecoin) o un banco comercial (depósito tokenizado). La tabla de abajo las compara punto por punto.'},
+  que:'Las tres formas de dinero digital que se están construyendo. Van juntas porque cumplen la misma función (ser el dinero con el que se paga y se liquida en las redes nuevas) y lo que las separa es quién lo emite: un banco central (CBDC), una empresa privada (stablecoin) o un banco comercial (depósito tokenizado). El desplegable de abajo las compara punto por punto.'},
  {id:'tipos',nombre:'Tipos, liquidez y deuda',ids:['liquidez','deuda'],xrp:false,
   que:'El precio del dinero (tipos oficiales de los bancos centrales), cuánto dinero hay en circulación (liquidez) y cuánto pagan y deben los Estados (bonos a cada plazo, deuda sobre el PIB y quién tiene esa deuda). Es la capa con más datos automáticos.'},
  {id:'credito',nombre:'Crédito y riesgos',ids:['riesgos'],xrp:false,
@@ -518,11 +540,12 @@ function pCapas(){
     sg.append(t)}
   cab.append(sg);
   if(g.id==='dinero'&&!sub){
-    cab.append(el('h3',null,'Las tres, comparadas'));
+    /* C129: la tabla de 7 columnas con párrafos repetía las tarjetas de arriba; ahora va plegada */
+    const dc=el('details','bl');dc.append(el('summary',null,'Las tres, comparadas en una tabla: emisor, respaldo, regulador, madurez y fuente'));cab.append(dc);
     const w=el('div');w.style.overflowX='auto';
     const mad=id=>{const c=D.capas.find(x=>x.id===id);const m=c&&c.ficha&&c.ficha.madurez;return m&&typeof m==='object'?'Nivel '+m.n+' de 5. '+m.t:'[VERIFICAR]'};
     w.append(tabla([{t:'Tipo',f:r=>{const q=el('b',null,r.tipo);const c=D.capas.find(x=>x.id===r.id);if(c)q.style.cssText='border-left:4px solid '+c.color+';padding-left:6px;display:inline-block';return q}},{t:'Quién lo emite',f:r=>r.emite},{t:'Qué lo respalda',f:r=>r.respalda},{t:'Quién lo regula',f:r=>r.regula},{t:'Para quién es',f:r=>r.para},{t:'Estado y madurez (escala del analista)',f:r=>mad(r.id)},{t:'De dónde sale',f:r=>el('span','nota-v',r.fuente)}],COMP_DINERO.filter(r=>D.capas.some(c=>c.id===r.id))));
-    cab.append(w)}
+    dc.append(w)}
   s.append(cab);
 
   /* (b) datos al día, a todo el ancho */
@@ -589,7 +612,7 @@ function pCapas(){
   if(hay)s.append(dFi);
 }
 /* columnas equilibradas por JS (las columnas CSS dejaban zonas sin pintar al hacer scroll) */
-function ncols(){return innerWidth>=2200?3:innerWidth>=1150?2:1}
+function ncols(){const w=innerWidth/zoomAct();return w>=2200?3:w>=1150?2:1}
 function peso(x){const t=x.textContent.length;return 40+(x.open===false?0:t/7+x.querySelectorAll('tr,li,.kpi,.hecho').length*14)}
 function masonry(cls,fijas){
   const c=el('div',cls||'masonry');let banda=null;
@@ -898,7 +921,7 @@ function grafReac(filas,E,N,est){
     const f=sumaDias(E,d);tip.textContent='';tip.append(el('b',null,diaSem(f)+' '+f+' (día '+(d>0?'+':'')+d+')'));
     filas.forEach(r=>{let p=null;for(const q of r.pts)if(q[0]<=d)p=q;const ln=el('div');ln.style.color=r.col;
       ln.textContent=r.s.nombre+': '+(p?(est?fmov(p[1],true)+' ('+num(p[3],4)+' $)':num(p[1],1)+' ('+fmov(p[1]-100)+') · '+num(p[3],p[3]<10?4:2)+' '+r.s.unidad)+(p[2]!==f?' · cierre del '+p[2]:''):'sin cierre');tip.append(ln)});
-    tip.style.display='block';const wx=e.clientX-wrap.getBoundingClientRect().left,wy=e.clientY-wrap.getBoundingClientRect().top;
+    tip.style.display='block';const zm=zoomAct(),wx=(e.clientX-wrap.getBoundingClientRect().left)/zm,wy=(e.clientY-wrap.getBoundingClientRect().top)/zm;
     tip.style.left=Math.min(wx+14,wrap.clientWidth-tip.offsetWidth-4)+'px';tip.style.top=Math.max(0,wy-tip.offsetHeight-10)+'px'});
   capa.addEventListener('mouseleave',()=>{tip.style.display='none';guia.setAttribute('visibility','hidden')});
   wrap.append(svg,tip);return wrap}
@@ -990,7 +1013,7 @@ function tip(ev,x,j,t){
   const e=$('tip');e.textContent='';e.append(el('b',null,j.nombre+' · '+t.nombre));
   for(const [k,v] of [['Etapa',x.etapa==null?'sin dato':x.etapa+' · '+R.escala[x.etapa]],['Hecho',(x.estado||'').length>240?x.estado.slice(0,240)+'…':x.estado],['Fecha',(x.fecha||'—')+' · nivel '+x.fuente]]){
     const d=el('div');d.append(el('b',null,k+': '),document.createTextNode(v));e.append(d)}
-  e.style.display='block';e.style.left=Math.min(ev.clientX+14,innerWidth-400)+'px';e.style.top=Math.min(ev.clientY+14,innerHeight-200)+'px';
+  const zm=zoomAct();e.style.display='block';e.style.left=Math.min((ev.clientX+14)/zm,innerWidth/zm-400)+'px';e.style.top=Math.min((ev.clientY+14)/zm,innerHeight/zm-200)+'px';
 }
 
 /* ---------- 6 · Noticias ---------- */
@@ -1066,8 +1089,9 @@ function celdaCifra(nombre,valor,unidad,fecha,ant,antf,tip,clave){
   const v=el('div','',cortaUnid(valor,unidad));v.style.cssText='font-weight:700;font-size:1.05em;color:'+(t?t.c:'#ffffff');
   if(t){const a=el('span','',' '+t.f);a.style.cssText='font-size:.7em;color:'+t.c;v.appendChild(a);c.title+=' · '+t.t}
   c.appendChild(v);
-  const f=el('div','nota-v',fecha||'sin fecha');f.style.fontSize='.78em';c.appendChild(f);
-  if(ant!=null){const a=el('div','nota-v','antes '+cortaUnid(ant,unidad)+(antf?' ('+antf+')':''));a.style.fontSize='.78em';c.appendChild(a)}
+  /* C129: fecha y valor anterior en UNA línea (antes eran dos de 12 px); la fecha del anterior va al pasar el ratón */
+  const f=el('div','nota-v',(fecha||'sin fecha')+(ant!=null?' · antes '+cortaUnid(ant,unidad):''));f.style.cssText='font-size:max(13px,.8em);margin:1px 0 0';c.appendChild(f);
+  if(ant!=null&&antf)c.title+=' · anterior: '+antf
   return c}
 const UNID_FILA={ipc:'% anual, último mes',paro:'% de la población activa',paro_juvenil:'% de activos menores de 25',pib:'% anual, en volumen',deuda:'% del PIB',deficit:'% del PIB',pobreza:'% de la población',gini:'0 = igualdad, 100 = desigualdad',salario_minimo:'euros o moneda local',balanza_corriente:'% del PIB (negativo = déficit exterior)',poblacion:'millones de habitantes',electricidad_pc:'kWh por habitante y año',gasto_defensa:'% del PIB'};
 function seccionPa(titulo,sub,abierta){const d=document.createElement('details');if(abierta)d.open=true;d.style.margin='10px 0';const s=el('summary','',titulo);s.style.cssText='font-weight:700;cursor:pointer;font-size:1.05em';d.appendChild(s);if(sub){d.appendChild(el('p','nota-v',sub))}return d}
@@ -1082,7 +1106,7 @@ function pPaises(){
   s.appendChild(el('p','nota-v',(D.paises_fichas.nota||'')+' Sin puntuaciones propias ni ranking. Cada cifra: valor (arriba), año o mes (debajo) y «antes» con el dato anterior de la misma fuente. Verde = mejora, rojo = empeora, gris = sin juicio o sin cambio; sin color = no hay dato anterior. Pasa el ratón para ver fuente, nivel y definición.'));
   const tabla0=()=>{const t=el('table','');const h=el('tr','');h.appendChild(el('th','',''));lista.forEach(f=>h.appendChild(el('th','n',f.pais)));t.appendChild(h);return t};
   const env=(t)=>{const x=el('div','');x.style.overflowX='auto';x.appendChild(t);return x};
-  const nom=(txt,sub)=>{const c=el('td','',txt);if(sub){const n=el('div','nota-v',sub);n.style.fontSize='.78em';c.appendChild(n)}return c};
+  const nom=(txt,sub)=>{const c=el('td','',txt);if(sub){const n=el('div','nota-v',sub);n.style.fontSize='max(13px,.8em)';c.appendChild(n)}return c};
   const sp=seccionPa('Política','Gobierno, familia política y próxima elección.',true),tp=tabla0();
   [['Gobierno',f=>{const c=el('td','',(f.gobierno||'—').slice(0,70));c.title=f.apoyo||'';return c}],['Familia política',f=>el('td','',f.familia||'—')],['Próxima elección',f=>{const p=f.proxima_eleccion||{};const c=el('td','',(p.fecha||'sin fecha')+(p.tipo?' · '+p.tipo.slice(0,50):''));c.title=p.tipo||'';return c}]].forEach(([n,fn])=>{const r=el('tr','');r.appendChild(nom(n));lista.forEach(f=>r.appendChild(fn(f)));tp.appendChild(r)});
   sp.appendChild(env(tp));s.appendChild(sp);
@@ -1216,7 +1240,7 @@ function pEspana(){
   const c=el('div','caja');c.append(el('h2',null,'España: cuánto entra, a dónde va cada euro y quién lo recibe'));
   const fx=(v,d)=>v==null?'—':v.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d,useGrouping:'always'}),n1=v=>fx(v,1),n0=v=>fx(v,0);
   const lnk=(u,t='fuente')=>{const a=el('a',null,t);a.href=u;a.target='_blank';a.rel='noopener';return a};
-  const conL=(tx,...ns)=>{const d=el('div');if(tx)d.append(el('p','nota-v',tx));d.append(...ns);return d};
+  const conL=(tx,...ns)=>{const d=el('div');if(tx)d.append(corto(tx,'nota-v',150));d.append(...ns);return d};
   const BL=[],TEMAS=[['eco','Economía y deuda'],['pre','Presupuesto y gasto'],['soc','Servicios y sociedad'],['seg','Seguridad y salud']];
   /* cada bloque va al tema que dice su título; lo que no encaja cae en Economía y deuda */
   const temaDe=t=>/^Economía de España/.test(t)?'eco':/Defunciones semanales|Muertos en carretera|Delitos|Incendios forestales|Siniestralidad vial|Accidentes de trabajo/i.test(t)||/DANA/.test(t)?'seg':/presupuesto|ministerio|Altos cargos|Programas concretos|aislar|Personal público|Cargos políticos|Ejecución por políticas|Subvenciones y contratación|Hasta dónde llegan/i.test(t)?'pre':/Quién recibe|Violencia de género|vivienda|hipoteca|Inmigración|Resultados de los servicios|Listas de espera/i.test(t)?'soc':'eco';
@@ -1245,11 +1269,11 @@ function pEspana(){
     const orden=L=>L.slice().sort((a,b)=>b.obligaciones_2025-a.obligaciones_2025);
     const mins=orden(B.secciones.filter(x=>x.tipo==='ministerio')),otros=orden(B.secciones.filter(x=>x.tipo!=='ministerio'));
     const pieE={nivel:'P',t:'IGAE, ejecución del presupuesto del Estado · M€ · leído '+B.leido};
-    add(bloque('Cómo leer el presupuesto del Estado',B.nota,pieE,conL(B.lecturas.ministerios,u)));
+    add(bloque('Cómo leer el presupuesto del Estado',B.nota,pieE,conL(B.lecturas.ministerios,u),false));
     const CM=B.capitulos_por_ministerio;
     if(CM){
       const pie7={nivel:CM.nivel,t:'IGAE · obligaciones de 2025 · M€ · leído '+B.leido};
-      const dentro=el('div');dentro.append(el('p','nota-v',CM.nota));
+      const dentro=el('div');dentro.append(corto(CM.nota,'nota-v',120));
       for(const x of CM.secciones){
         if(!x.total)continue;
         const d=el('details','bl'),sm=el('summary','ms'),mxp=Math.max(...CM.secciones.map(z=>z.pct_total_estado||0));
@@ -1425,7 +1449,7 @@ function pEspana(){
   TEMAS.forEach(([k,nom])=>{
     const lista=BL.filter(b=>b._t===k),mzk=masonry();lista.forEach(b=>mzk.append(b));
     const bt=el('button','chip',nom+' · '+lista.length);bt.style.cssText='cursor:pointer;padding:6px 16px';
-    if(k===subEs){bt.style.background='var(--oro,#d4a84b)';bt.style.color='#1a1405';panel=el('div');panel.append(kpis(RES[k]),mzk)}
+    if(k===subEs){bt.style.background='var(--oro,#d4a84b)';bt.style.color='#1a1405';panel=el('div');const kv=kpis(RES[k]);kv.classList.add('vivo');panel.append(kv,mzk)}
     bt.onclick=()=>{subEs=k;pEspana()};nav.append(bt)});
   c.append(nav,panel);s.append(c);
 }

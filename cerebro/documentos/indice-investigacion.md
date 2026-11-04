@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-11-04
+actualizado: 2026-11-05
 ---
 # Índice de la investigación
 
@@ -12,9 +12,9 @@ Mapa de los informes más recientes por tema. Lo genera `scripts/indice_investig
 Por tema, los 3 informes más recientes (fecha · título · ruta · una frase de su resumen).
 
 ## Auditorías y verificaciones
+- 2026-11-05 · C129 · Auditoría visual y de explicaciones del tablero (5-nov-2026) (`informes/research/2026-11-05-C129-auditoria-visual.md`): Modelo: Opus 5.5 · Archivo tocado: explorador/vistas.html (solo presentación y textos; ningún dato ni fuente cambiado).
 - 2026-11-04 · C127 · Auditoría visual, fase 1 (solo mirar, sin tocar código) (`informes/research/2026-11-04-C127-auditoria-visual-fase1.md`): Línea de tiempo Buena idea visual; poco legible por abajo.
 - 2026-11-04 · C109 · Mapa de cobertura temática y plan de automatización (4-nov-2026) (`informes/research/2026-11-04-C109-mapa-cobertura.md`): Nivel A (países) está bien cubierto: 12 países × 9 indicadores en paneles.json › indicadores (ipc, paro, paro juvenil, pib, deuda, déficit, pobreza,…
-- 2026-11-03 · Verificación grande del 2 y 3-nov-2026 (plantilla `research/plantillas/verificacion.md`) (`informes/research/2026-11-03-verificacion-grande.md`): Lectura hecha el 3 nov 2026 entre ≈19:40 y 21:00 (Madrid). Etiquetas: [P] confirmado con fuente primaria · [S] solo prensa · [DISCREPA] distinto de…
 
 ## Voces y predicciones
 - 2026-11-02 · W07 · Research de fuentes (2-nov-2026) (`informes/research/2026-11-02-W07-fuentes.md`): Alcance: enlaces de explorador/voces.json , explorador/regulacion.json y eventos/calendario.toml ; prueba de fuentes primarias sin navegador. No…
