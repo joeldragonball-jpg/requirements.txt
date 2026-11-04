@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-11-03
+actualizado: 2026-11-04
 ---
 # Índice de la investigación
 
@@ -52,14 +52,14 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-29 · W03E · Irán, Egipto y Etiopía, pasada 3 · 2026-10-29 (`informes/research/2026-10-29-W03E-pasada3.md`): Tercera pasada con fuentes oficiales abiertas hoy (Chrome y curl). Edita solo explorador/regulacion.json . Sin recomendaciones: el radar describe…
 
 ## Sesiones diarias (apertura y cierre)
+- 2026-11-04 · C58 · Cierre de huecos: EE. UU. midterms (4-nov-2026) (`informes/research/2026-11-04-C58-us-midterms.md`): Estado previo: paises.json (12 países) y elecciones.json ya existían; los huecos de NL/FR/IT/GB están en 2026 11 03 C58 huecos.md. Aquí solo EE. UU.…
 - 2026-11-03 · Informe de CIERRE — 2026-11-03 (mar) (`informes/2026-11-03-cierre.md`): Wall Street cierra mixto: S&P +0,4 %, Nasdaq +0,8 %, Dow −0,4 %, VIX 20,9.
 - 2026-11-03 · Informe de APERTURA — 2026-11-03 (mar) (`informes/2026-11-03-apertura.md`): Europa cede (Euro Stoxx −0,51 %, IBEX −0,79 %, FTSE −1,14 %) y Wall Street sube a media sesión (S&P +0,45 %, Nasdaq +0,98 %) [S].
-- 2026-11-03 · C31 · Inflación · cierre de huecos (3-nov-2026) (`informes/research/2026-11-03-C31-huecos.md`): Cifras a 12 meses, mes de referencia sep 2026. [P] fuente oficial leída o contrastada con su nota; [S] prensa/agregador. Sin recomendaciones.
 
 ## Otros
+- 2026-11-04 · C32 · Móvil: pantalla principal y auditoría de paneles (4-nov-2026) (`informes/research/2026-11-04-C32-movil-principal.md`): cubre: C32 · Probado en el navegador integrado a 375 px ( docs/movil/ , servidor local), sin llamar a ninguna API.
 - 2026-11-03 · Datos vivos automatizados (3-nov-2026) (`informes/research/2026-11-03-datos-vivos.md`): Funciones nuevas en scripts/actualizar paneles.py ; salida en explorador/paneles.json (claves nuevas). Si una fuente falla se conserva el dato…
 - 2026-11-03 · C58 · Fichas políticas · huecos que no dependen de las midterms (3-nov-2026) (`informes/research/2026-11-03-C58-huecos.md`): No se toca la Cámara de EE. UU. (elecciones hoy). Ni paises.json (lo vuelca C39 desde las filas). Nivel: [P] oficial leída; [S] prensa/buscador;…
-- 2026-11-02 · Línea de tiempo: «📈 Ver reacción» (2-nov-2026) (`informes/research/2026-11-02-linea-tiempo-reaccion.md`): Qué hace: en la pestaña «Línea de tiempo» del Explorador, cada hecho (lista lateral y ficha) tiene «📈 Ver reacción». Se marcan hasta 3 eventos; el…
 
 ## Fuentes y datos nuevos (sin fecha en el nombre)
 - A. Tipos de interés de los bancos centrales: fuentes y calendario de actualización (`research/fuentes-nuevas/A-tipos-bancos-centrales.md`): La tabla tipos vivos cubre 5 bancos con fuente primaria directa (Fed, BCE, BoE, BCB Brasil, Banco de Canadá) y tipos bis otros 10 vía BIS (RU, ZA,…
