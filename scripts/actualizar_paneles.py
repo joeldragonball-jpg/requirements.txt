@@ -44,6 +44,15 @@ URL_BDE = "https://app.bde.es/bierest/resources/srdatosapp/listaSeries?idioma=es
 BDE_SERIES = {"D_DTES00B7": "3M", "D_DTES00U7": "1A", "D_G0B1F0ZN": "3A", "D_G0B1F0ZO": "5A", "D_G0B1F0ZP": "10A", "D_G0B1F0ZQ": "15A"}
 BOE_PAR = {"IUDSNPY": "5A", "IUDMNPY": "10A", "IUDLNPY": "20A"}
 BONOS_MANUAL = Path(__file__).resolve().parent.parent / "explorador" / "bonos-manual.json"
+TIPOS_MANUAL = Path(__file__).resolve().parent.parent / "explorador" / "tipos-manual.json"
+
+
+def tipos_manuales():
+    """Tipos leídos a mano en la web del banco central (explorador/tipos-manual.json); sin el archivo, lista vacía."""
+    try:
+        return json.loads(TIPOS_MANUAL.read_text(encoding="utf-8")).get("tipos", [])
+    except Exception:
+        return []
 FMI = Path(__file__).resolve().parent.parent / "explorador" / "deuda-fmi.json"
 NOMBRES_TIC = {
     "Japan": "Japón", "United Kingdom": "Reino Unido", "China, Mainland": "China continental", "Belgium": "Bélgica",
@@ -319,6 +328,10 @@ def leer_tipos_bis():
             fallos.append(f"BIS {f.get('REF_AREA')}: {type(e).__name__}: {e}")
     if not filas:
         raise ValueError("el BIS no devolvió ningún tipo")
+    for m in tipos_manuales():    # el banco central leído a mano gana al BIS si su fecha es igual o posterior (el BIS va por detrás)
+        for i, f in enumerate(filas):
+            if f["id"] == m.get("id") and m["dato_de"] >= f["dato_de"]:
+                filas[i] = {**f, "num": m["num"], "valor": m["valor"], "dato_de": m["dato_de"], "banco": m["banco"], "fuente": m["fuente"], "url": m["url"]}
     filas.sort(key=lambda x: -x["num"])
     return {"fuente": "https://data.bis.org/topics/CBPOL", "nivel": "P", "paises": filas, "fallos": fallos,
             "nota": "Argentina: sin tipo de política desde jul-2025 (el BCRA ya no fija uno); no comparable. Fed, BCE, BoE, Canadá y Brasil van por su fuente primaria en «tipos_vivos»."}
@@ -1029,6 +1042,9 @@ def leer_tipos():
                "https://www.bankofcanada.ca/core-functions/monetary-policy/key-interest-rate/")
     except Exception as e:
         fallos.append(f"tipo Canadá: {type(e).__name__}: {e}")
+    for m in tipos_manuales():    # bancos centrales sin API abierta, leídos a mano con su fuente primaria
+        if not any(f["jur"] == m["jur"] for f in filas):
+            filas.append({k: m[k] for k in ("jur", "pais", "banco", "valor", "num", "ultimo_cambio", "cambio_pb", "dato_de", "fuente", "url")} | {"manual": True})
     if not filas:
         raise ValueError("ningún tipo disponible: " + "; ".join(fallos))
     try:    # comparación con el radar: números del texto «valor» de la celda de política monetaria

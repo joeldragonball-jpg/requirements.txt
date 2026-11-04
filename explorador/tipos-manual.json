@@ -1,0 +1,19 @@
+{
+ "_nota": "Tipos oficiales leídos a mano en la web del banco central (Chrome) cuando no hay API abierta o el BIS va por detrás. Se aplican en scripts/actualizar_paneles.py: entran en «tipos_vivos» y sustituyen al BIS si su fecha es igual o posterior. Al leer uno nuevo: añadir fila y fecha; quitar la fila cuando el BIS o una API ya la cubran.",
+ "tipos": [
+  {
+   "jur": "au",
+   "id": "AU",
+   "pais": "Australia",
+   "banco": "Banco de la Reserva de Australia (cash rate target)",
+   "valor": "4,85 %",
+   "num": 4.85,
+   "ultimo_cambio": "2026-11-03",
+   "cambio_pb": 25,
+   "dato_de": "2026-11-03",
+   "fuente": "RBA, comunicado 2026-30 «Statement by the Monetary Policy Board» (leído con Chrome el 2026-11-04; subida por 6 votos a 3)",
+   "url": "https://www.rba.gov.au/media-releases/2026/mr-26-30.html",
+   "nivel": "P"
+  }
+ ]
+}
