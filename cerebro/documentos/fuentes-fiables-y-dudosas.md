@@ -176,3 +176,4 @@ actualizado: 2026-10-07
 - 4-nov-2026: MOF Japón jgbcme.csv solo trae el mes en curso (a principios de mes, 1 fila y falla el «día anterior»); histórico completo en .../interest_rate/historical/jgbcme_all.csv (sin historical/ da 404).
 - 4-nov-2026: IMF PortWatch (ArcGIS Daily_Chokepoints_Data) devuelve «Invalid URL» 400 a toda consulta, también desde Chrome, y la capa ya figura como tabla: cambio del servidor, no un bloqueo que se salte. Ormuz queda con el último dato leído.
 - 4-nov-2026: los directos de CBS News sirven para proyecciones electorales [S]; el texto de AP en MS NOW no cargó (solo titular).
+- 4-nov-2026: Despeja La X (entrevista a Alba Puerro): contenido de formación, sin fuentes; los datos de mercado que cita se contrastan en medios [S] y la adopción de JPMorgan es colateral de préstamos para institucionales (Bloomberg/The Block), no tenencia propia.

@@ -86,3 +86,5 @@ Lectura del PDF del BIS cuando responda bis.org; verificar en TreasuryDirect las
 | Binance, comunicado oficial y informe de causa raíz | (no localizados) | Causa, cifra definitiva y calendario de retiradas | [VERIFICAR] |
 | Clip de Alsobrooks (fecha y medio) | (no localizado) | Origen de la cita de los 70 millones | [VERIFICAR] |
 
+| Tanda V01 (4-nov): Intel/oro 30-oct | https://thriveinmarkets.com/market-insights/evening-review-2026-10-30/ | Caída de Intel y oro citada por Alba Puerro | [S] (un solo medio) |
+| JPMorgan, colateral BTC/ETH (The Block, Bloomberg) | https://www.theblock.co/post/376038/jpmorgan-to-let-institutional-clients-pledge-btc-eth-loan-collateral | «JPMorgan ya adopta Bitcoin» | [S]; comunicado del banco sin localizar [VERIFICAR] |
