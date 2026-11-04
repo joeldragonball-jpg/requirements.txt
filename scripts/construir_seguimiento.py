@@ -606,8 +606,9 @@ def eventos_calendario():
         base = {"fecha": e["fecha"], "hasta": e.get("hasta"), "titulo": e["titulo"], "impacto": imp, "rutina": r["rutina"] if r else None, "que": r["que"] if r else None}
         if hoy - timedelta(days=10) <= fin < hoy and (imp == "alto" or (imp == "medio" and r)):
             clave = f"{e['fecha']}|{e['titulo'][:30]}"
-            if clave in revisados:
-                estado, detalle = "revisado", revisados[clave].get("estado", "hecho")
+            por_id = next((v for v in revisados.values() if e.get("id") and v.get("id") == e["id"]), None)
+            if por_id or clave in revisados:
+                estado, detalle = "revisado", (por_id or revisados[clave]).get("estado", "hecho")
             elif r and (ultimo_w(r["rutina"]) or "") >= fin.isoformat():
                 estado, detalle = "cubierto", f"{r['rutina']} del {ultimo_w(r['rutina'])}"
             else:
