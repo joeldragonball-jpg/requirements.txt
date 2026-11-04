@@ -722,8 +722,12 @@ function pTiempo(){
   const sr=el('select');for(const [v,t] of [['todo','Todo el periodo'],['365','Último año'],['90','Últimos 90 días']]){const o=el('option',null,t);o.value=v;if(v===rango)o.selected=true;sr.append(o)}
   sr.onchange=()=>{rango=sr.value;pTiempo()};
   const q=el('input');q.type='text';q.placeholder='Buscar (Pontes, OCC, DTCC…)';q.value=buscaTL;q.oninput=()=>{buscaTL=q.value;clearTimeout(q.t);q.t=setTimeout(pTiempo,250)};
-  ctl.append(el('span',null,'Rango'),sr,q,el('span',null,'Capas visibles:'));
-  for(const cp of D.capas){const l=el('label');const k=el('input');k.type='checkbox';k.checked=!capasOff.has(cp.id);k.onchange=()=>{k.checked?capasOff.delete(cp.id):capasOff.add(cp.id);pTiempo()};l.append(k,document.createTextNode(' '+cp.nombre));ctl.append(l)}
+  ctl.append(el('span',null,'Rango'),sr,q);
+  const dcp=el('details');dcp.style.cssText='flex-basis:100%';dcp.open=capasOff.size>0;
+  const scp=el('summary',null,'Capas visibles: '+(D.capas.length-capasOff.size)+' de '+D.capas.length);scp.style.cursor='pointer';dcp.append(scp);
+  const wcp=el('div');wcp.style.cssText='display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:6px';dcp.append(wcp);
+  for(const cp of D.capas){const l=el('label');const k=el('input');k.type='checkbox';k.checked=!capasOff.has(cp.id);k.onchange=()=>{k.checked?capasOff.delete(cp.id):capasOff.add(cp.id);pTiempo()};l.append(k,document.createTextNode(' '+cp.nombre));wcp.append(l)}
+  ctl.append(dcp);
   const lrx=el('label');const krx=el('input');krx.type='checkbox';krx.checked=soloRx;krx.onchange=()=>{soloRx=krx.checked;pTiempo()};lrx.append(krx,document.createTextNode(' Solo hechos con reacción de precios'));ctl.append(lrx);
   c.append(ctl);
   if(reac.length)c.append(panelReac());
