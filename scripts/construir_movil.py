@@ -262,6 +262,38 @@ def datos_panel():
     if tic.get("paises"):
         sal["tic"] = {"mes": tic["meses"][0], "mes0": tic["meses"][-1], "nivel": tic.get("nivel"), "total": tic["total"][0], "total0": tic["total"][-1],
                       "paises": [{"n": x["nombre"], "v": x["serie"][0], "v0": x["serie"][-1]} for x in tic["paises"][:8]]}
+    ep, al, ch = pn.get("energia_precios") or {}, pn.get("alimentos") or {}, pn.get("chips") or {}
+    if ep.get("omie_diario"):
+        pv = {x["fecha"]: x["media"] for x in ep.get("pvpc_diario", [])}
+        sal["luz"] = {"nivel": ep.get("nivel"), "leido": ep.get("leido"),
+                      "dias": [{"f": x["fecha"], "m": x["media"], "a": x["min"], "b": x["max"], "p": pv.get(x["fecha"])} for x in ep["omie_diario"][-7:]],
+                      "tarifas": [{"k": k, "n": (ep.get("eurostat") or {}).get(k, {}).get("nombre"), "p": [{"n": y["pais"], "v": y["eur_kwh"], "v0": y.get("anterior_eur_kwh"), "t": y["periodo"]} for y in (ep.get("eurostat") or {}).get(k, {}).get("paises", [])]} for k in ("hogares", "empresas") if (ep.get("eurostat") or {}).get(k)]}
+    if al.get("fao") or al.get("fred") or al.get("futuros"):
+        sal["comida"] = {"nivel": al.get("nivel"), "leido": al.get("leido"), "mes": (al.get("fao") or {}).get("mes"),
+                         "fao": [{k: x.get(k) for k in ("nombre", "valor", "interanual")} for x in (al.get("fao") or {}).get("indices", [])],
+                         "fred": [{k: x.get(k) for k in ("nombre", "valor", "unidad", "fecha", "interanual")} for x in al.get("fred", [])],
+                         "fut": [{k: x.get(k) for k in ("nombre", "valor", "unidad", "cambio_1m")} for x in al.get("futuros", [])]}
+    if ch.get("produccion") or ch.get("cotizaciones"):
+        sal["chips"] = {"nivel": ch.get("nivel"), "leido": ch.get("leido"),
+                        "prod": [{k: x.get(k) for k in ("nombre", "valor", "fecha", "interanual")} for x in ch.get("produccion", [])],
+                        "cot": [{k: x.get(k) for k in ("nombre", "simbolo", "valor", "cambio_1d", "cambio_1m")} for x in ch.get("cotizaciones", [])]}
+    try:
+        pg, mo, se = cargar("explorador/espana-pagos.json"), cargar("explorador/espana-mortalidad.json"), cargar("explorador/seguridad-eurostat.json")
+    except Exception:
+        pg = mo = se = None
+    if pg and pg.get("bdns"):
+        sal["pagos"] = {"nivel": pg.get("nivel"), "leido": pg.get("leido"), "nota": pg.get("nota"),
+                        "dias": [{"f": x["fecha"], "t": x["total"], "n": x.get("por_nivel", {})} for x in pg["bdns"].get("dias", [])[-7:]],
+                        "placsp": (pg.get("placsp") or {}).get("entradas_feed")}
+    if mo and mo.get("semanas"):
+        sal["muertes"] = {"nivel": mo.get("nivel"), "leido": mo.get("leido"), "nota": mo.get("nota"), "res": mo.get("resumen_anio_en_curso"),
+                          "sem": [{k: x.get(k) for k in ("anio", "semana", "defunciones", "exceso_vs_2015_2019", "tipo_dato")} for x in mo["semanas"][-8:]]}
+    if se:
+        es = next((p for p in (se.get("delitos") or {}).get("paises", []) if p.get("id") == "ES"), None)
+        sal["seg"] = {"leido": se.get("leido"), "aviso": (se.get("delitos") or {}).get("aviso"),
+                      "via": {"nivel": (se.get("carretera") or {}).get("nivel"), "p": [{k: x.get(k) for k in ("pais", "anio", "muertes", "por_millon_hab")} for x in (se.get("carretera") or {}).get("paises", [])]},
+                      "del": [{"n": v["delito"], "a": v["anio"], "v": v["registrados"], "v0": v["serie"].get(str(int(v["anio"]) - 5))} for v in ((es or {}).get("delitos") or {}).values()],
+                      "nota": (es or {}).get("nota_definicion")}
     es = espana()
     if es:
         sal["espana"] = es

@@ -395,8 +395,8 @@ const GRUPOS=[
   que:'El precio del dinero (tipos oficiales de los bancos centrales), cuánto dinero hay en circulación (liquidez) y cuánto pagan y deben los Estados (bonos a cada plazo, deuda sobre el PIB y quién tiene esa deuda). Es la capa con más datos automáticos.'},
  {id:'credito',nombre:'Crédito y riesgos',ids:['riesgos'],xrp:false,
   que:'Cuánto cuesta y cuánto se concede el crédito a hogares y empresas, si los bancos endurecen o relajan sus criterios, la nota de solvencia de cada país y los riesgos que tiene apuntados el analista (escenarios que vigilar, no hechos ya ocurridos).'},
- {id:'energia',nombre:'Energía y Ormuz',ids:['energia'],xrp:false,
-  que:'Precio del petróleo, el gas y otras materias primas (futuros y spot oficial de la EIA), tráfico diario de buques por el estrecho de Ormuz y los hitos que movieron el Brent.'},
+ {id:'energia',nombre:'Energía, alimentos y chips',ids:['energia'],xrp:false,
+  que:'Precio del petróleo, el gas, la electricidad, los alimentos, los chips y otras materias primas (futuros y spot oficial de la EIA), tráfico diario de buques por el estrecho de Ormuz y los hitos que movieron el Brent.'},
  {id:'railes',nombre:'Raíles y custodia',ids:['puente','custodia'],xrp:true,
   que:'Por dónde viaja el dinero digital (redes y activos puente) y quién lo guarda y liquida (custodia y liquidación). Aquí sí se separa en su propia columna lo que nombra a XRP o XLM.'},
  {id:'tokens',nombre:'Tokenización y fondos',ids:['token','fondos'],xrp:true,
@@ -596,6 +596,33 @@ function nMaterias(){
   const M=(P.materias||{}).materias||[],S=(((P.materias||{}).spot_eia)||{}).series||[];
   const filas=S.map(x=>({nombre:x.nombre+' (spot, EIA)',unidad:x.unidad,valor:x.valor,fecha:x.fecha,cambio_1d:x.cambio_1d,cambio_1m:x.cambio_1m})).concat(M);
   return tabla([{t:'Materia prima',f:r=>r.nombre},{t:'Último',n:1,f:r=>num(r.valor,2)+' '+(r.unidad||'')},{t:'Fecha',f:r=>r.fecha},{t:'1 día',n:1,f:r=>r.cambio_1d==null?'—':cambio(r.cambio_1d,'%',2)},{t:'1 mes',n:1,f:r=>r.cambio_1m==null?'—':cambio(r.cambio_1m,'%',2)}],filas)}
+function subt(w,t){w.append(el('p','nota-v',t))}
+function filaCamb(r){return r.cambio_1d==null?'—':cambio(r.cambio_1d,'%',2)}
+function nElectricidad(){
+  const E=P.energia_precios||{},w=el('div');
+  const pv=Object.fromEntries((E.pvpc_diario||[]).map(x=>[x.fecha,x]));
+  subt(w,'España, mercado mayorista (OMIE) y tarifa regulada (PVPC), €/MWh por día.');
+  w.append(tabla([{t:'Día',f:r=>r.fecha},{t:'OMIE media',n:1,f:r=>num(r.media,1)},{t:'OMIE mín',n:1,f:r=>num(r.min,1)},{t:'OMIE máx',n:1,f:r=>num(r.max,1)},{t:'PVPC media',n:1,f:r=>pv[r.fecha]?num(pv[r.fecha].media,1):'—'}],(E.omie_diario||[]).slice().reverse()));
+  for(const k of ['hogares','empresas']){const b=(E.eurostat||{})[k];if(!b)continue;
+    subt(w,b.nombre+' · Eurostat '+b.tabla+', €/kWh');
+    w.append(tabla([{t:'País',f:r=>r.pais},{t:'Periodo',f:r=>r.periodo},{t:'€/kWh',n:1,f:r=>num(r.eur_kwh,4)},{t:'Anterior',n:1,f:r=>num(r.anterior_eur_kwh,4)},{t:'Cambio',n:1,f:r=>r.anterior_eur_kwh?cambio((r.eur_kwh/r.anterior_eur_kwh-1)*100,'%',1):'—'}],b.paises||[]))}
+  return w}
+function nAlimentos(){
+  const A=P.alimentos||{},w=el('div'),F=A.fao||{};
+  subt(w,'Índice de precios de alimentos de la FAO (base '+(F.base||'')+'), mes '+(F.mes||'—')+'.');
+  w.append(tabla([{t:'Índice',f:r=>r.nombre},{t:'Valor',n:1,f:r=>num(r.valor,1)},{t:'Mes anterior',n:1,f:r=>num(r.mes_anterior,1)},{t:'Hace 12 m',n:1,f:r=>num(r.hace_12m,1)},{t:'Interanual',n:1,f:r=>cambio(r.interanual,'%',1)}],F.indices||[]));
+  subt(w,'Precios mensuales de materias agrícolas (FRED / Banco Mundial).');
+  w.append(tabla([{t:'Producto',f:r=>r.nombre},{t:'Último',n:1,f:r=>num(r.valor,1)+' '+(r.unidad||'')},{t:'Mes',f:r=>r.fecha},{t:'Mensual',n:1,f:r=>cambio(r.cambio_mensual,'%',1)},{t:'Interanual',n:1,f:r=>cambio(r.interanual,'%',1)}],A.fred||[]));
+  subt(w,'Futuros (Yahoo, nivel S).');
+  w.append(tabla([{t:'Futuro',f:r=>r.nombre},{t:'Último',n:1,f:r=>num(r.valor,2)+' '+(r.unidad||'')},{t:'Fecha',f:r=>r.fecha},{t:'1 día',n:1,f:filaCamb},{t:'1 mes',n:1,f:r=>r.cambio_1m==null?'—':cambio(r.cambio_1m,'%',1)}],A.futuros||[]));
+  return w}
+function nChips(){
+  const C=P.chips||{},w=el('div');
+  subt(w,'Producción y precios de semiconductores en EE. UU. (FRED, oficial).');
+  w.append(tabla([{t:'Serie',f:r=>r.nombre},{t:'Último',n:1,f:r=>num(r.valor,1)},{t:'Mes',f:r=>r.fecha},{t:'Mensual',n:1,f:r=>cambio(r.cambio_mensual,'%',1)},{t:'Interanual',n:1,f:r=>cambio(r.interanual,'%',1)}],C.produccion||[]));
+  subt(w,'Cotizaciones del sector (Yahoo, nivel S).');
+  w.append(tabla([{t:'Valor',f:r=>r.nombre+' ('+r.simbolo+')'},{t:'Último',n:1,f:r=>num(r.valor,2)},{t:'Fecha',f:r=>r.fecha},{t:'1 día',n:1,f:filaCamb},{t:'1 mes',n:1,f:r=>r.cambio_1m==null?'—':cambio(r.cambio_1m,'%',1)}],C.cotizaciones||[]));
+  return w}
 /* qué «datos al día» enseña cada grupo de la vista Capas: cada panel va una sola vez (antes se repetían tipos, stablecoins, EBA y materias primas en varias capas),
    ordenados por tipo de dato y, dentro de cada tabla, por país. «capa» = la capa original a la que pertenece, para el desglose. */
 function panelesGrupo(gid){
@@ -618,6 +645,9 @@ function panelesGrupo(gid){
   else if(gid==='energia'){
     if(P.ormuz)add('energia','Estrecho de Ormuz',nOrmuz,pie(P.ormuz,'IMF PortWatch'),false);
     if(P.materias)add('energia','Petróleo, gas y materias primas (futuros y spot oficial EIA)',nMaterias,{nivel:P.materias.nivel,t:'Yahoo Finance y EIA · leído '+P.materias.leido},false);
+    if(P.energia_precios)add('energia','Electricidad: precio diario en España (OMIE, PVPC) y tarifas por país (Eurostat)',nElectricidad,pie(P.energia_precios,'OMIE, REE y Eurostat'),true);
+    if(P.alimentos)add('energia','Alimentos y agricultura: índice FAO, precios mensuales y futuros',nAlimentos,pie(P.alimentos,'FAO, FRED y Yahoo'),true);
+    if(P.chips)add('energia','Chips y semiconductores: producción, precios y cotizaciones',nChips,pie(P.chips,'FRED y Yahoo'),true);
     if((D.hitos_petroleo||{}).hitos)add('energia','Hitos del petróleo (Brent)',nPetroleoHitos,{nivel:'S',t:'explorador/hitos_petroleo.json'},false)}
   else if(gid==='railes'){
     if(P.mercado)add('puente','Precio de XRP y XLM (y BTC y ETH como referencia)',nMercado,pie(P.mercado,'CoinGecko'),true);
@@ -1196,6 +1226,24 @@ function pEspana(){
       tabla([{t:'Política',f:r=>r.nombre},{t:'M€',n:1,f:r=>n0(r.valor)},{t:'% del total',n:1,f:r=>n1(r.valor/co.total*100)}],co.politicas.slice().sort((a,b)=>b.valor-a.valor)),false));
     add(bloque('Ejecución por políticas de gasto',null,pieE,tabla([{t:'Política',f:r=>{const x=el('span',null,r.nombre);if(r.area)x.style.fontWeight='700';return x}},...ejec],B.politicas),false));
   }
+  const PG=D.espana_pagos;
+  if(PG&&PG.bdns){
+    const w=el('div'),dias=PG.bdns.dias||[],niv=['ESTADO','AUTONOMICA','LOCAL','OTROS'];
+    w.append(tabla([{t:'Día',f:r=>r.fecha},{t:'Convocatorias',n:1,f:r=>n0(r.total)},...niv.map(k=>({t:k[0]+k.slice(1).toLowerCase(),n:1,f:r=>n0((r.por_nivel||{})[k])}))],dias.slice().reverse()));
+    if(PG.placsp)w.append(el('p','nota-v','Contratación (PLACSP): '+n0(PG.placsp.entradas_feed)+' entradas en el feed del '+Object.keys(PG.placsp.por_dia||{}).join(', ')+'.'));
+    add(bloque('Subvenciones y contratación pública: registros por día',PG.nota,{nivel:PG.nivel,t:'BDNS y Plataforma de Contratación · leído '+PG.leido},w,false))}
+  const MO=D.espana_mortalidad;
+  if(MO&&MO.semanas){
+    const r=MO.resumen_anio_en_curso||{};
+    add(bloque('Defunciones semanales y exceso estimado',MO.nota,{nivel:MO.nivel,t:'INE (EDeS) · '+MO.serie+' · leído '+MO.leido},conL(
+      r.anio?'En '+r.anio+' ('+r.semanas+' semanas): exceso de '+n0(r.exceso_vs_2015_2019)+' frente a 2015-2019 y de '+n0(r.exceso_vs_5_anios)+' frente a los 5 años previos.':null,
+      tabla([{t:'Semana',f:x=>x.anio+'-S'+x.semana},{t:'Fecha',f:x=>x.fecha},{t:'Defunciones',n:1,f:x=>n0(x.defunciones)},{t:'Exceso vs 2015-19',n:1,f:x=>n0(x.exceso_vs_2015_2019)},{t:'Exceso vs 5 años',n:1,f:x=>n0(x.exceso_vs_5_anios)},{t:'Dato',f:x=>x.tipo_dato}],MO.semanas.slice().reverse())),false))}
+  const SE=D.seguridad_eurostat;
+  if(SE){
+    if(SE.carretera){const k=SE.carretera;
+      add(bloque('Muertos en carretera: España frente a otros países',k.unidad,{nivel:k.nivel,t:'Eurostat '+k.tabla+' · actualizado '+k.actualizado},tabla([{t:'País',f:r=>r.pais},{t:'Año',f:r=>r.anio},{t:'Muertos',n:1,f:r=>n0(r.muertes)},{t:'Por millón de hab.',n:1,f:r=>n0(r.por_millon_hab)},{t:'Tendencia',f:r=>spark(Object.keys(r.serie_por_millon||{}).sort().map(a=>r.serie_por_millon[a]))}],k.paises),false))}
+    if(SE.delitos){const k=SE.delitos,es=(k.paises||[]).find(p=>p.id==='ES')||(k.paises||[])[0];
+      if(es)add(bloque('Delitos registrados por la policía en '+es.pais,(es.nota_definicion||'')+' '+(k.aviso||''),{nivel:k.nivel,t:'Eurostat '+k.tabla+' · actualizado '+k.actualizado},tabla([{t:'Delito',f:r=>r.delito},{t:'Año',f:r=>r.anio},{t:'Registrados',n:1,f:r=>n0(r.registrados)},{t:'Tendencia',f:r=>spark(Object.keys(r.serie||{}).sort().map(a=>r.serie[a]))}],Object.values(es.delitos||{})),false))}}
   const HI=P&&P.espana_hipotecas;
   if(HI&&HI.numero){
     const f=(k,u,d)=>{const x=HI[k];return {nombre:{numero:'Hipotecas sobre viviendas (número)',importe_miles_eur:'Importe total (miles de €)',importe_medio_miles_eur:'Importe medio por hipoteca (miles de €) · calculado'}[k],valor:x.valor,anterior:x.anterior,hace12:x.hace_12m,ia:x.interanual_pct,d}};

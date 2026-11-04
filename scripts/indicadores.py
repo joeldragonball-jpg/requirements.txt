@@ -47,16 +47,19 @@ def _eurostat(dataset, **filtros):
     return round(vals[i], 1), tiempos[i], j.get("updated", "")[:10]
 
 
-def _bm(pais, indicador):
-    j = _get(URL_BM.format(c=pais, i=indicador))
+def _bm(pais, indicador, dec=1, escala=1):
+    try:
+        j = _get(URL_BM.format(c=pais, i=indicador))
+    except TimeoutError:                       # el Banco Mundial da timeouts sueltos: un reintento
+        j = _get(URL_BM.format(c=pais, i=indicador), 60)
     if len(j) < 2 or not j[1]:
         raise ValueError("sin datos")
     con = [x for x in j[1] if x.get("value") is not None]
     if not con:
         raise ValueError("sin datos")
     f = con[0]
-    _ANT[0] = (round(con[1]["value"], 1), con[1]["date"]) if len(con) > 1 else None
-    return round(f["value"], 1), f["date"], j[0].get("lastupdated", "")
+    _ANT[0] = (round(con[1]["value"] / escala, dec), con[1]["date"]) if len(con) > 1 else None
+    return round(f["value"] / escala, dec), f["date"], j[0].get("lastupdated", "")
 
 
 def _fmi(pais, campo):
@@ -120,6 +123,12 @@ def leer_indicadores(previo=None):
             poner("deficit", lambda: _ind(*(lambda v: (v[0], "% del PIB (negativo = déficit)", v[1], f + "GGXCNL_NGDP", "P", "Préstamo neto (+) / endeudamiento neto (−) de las administraciones públicas (FMI, WEO octubre de 2026)", "anual", "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación."))(_fmi(iso, "saldo"))))
             poner("pobreza", lambda: _ind(*(lambda v: (v[0], "% de la población", v[1], bm + "SI.POV.NAHC", "P", "Pobreza según la línea nacional de cada país (no comparable con AROPE ni entre países)", "irregular"))(_bm(iso, "SI.POV.NAHC"))))
             poner("gini", lambda: _ind(*(lambda v: (v[0], "puntos (0-100)", v[1], bm + "SI.POV.GINI", "P", "Gini (Banco Mundial; encuestas de años distintos)", "irregular"))(_bm(iso, "SI.POV.GINI"))))
+        # C119: Banco Mundial v2 para los 12 países (población, electricidad per cápita, balanza corriente, gasto en defensa)
+        bm = "https://data.worldbank.org/indicator/"
+        poner("poblacion", lambda: _ind(*(lambda v: (v[0], "millones de habitantes", v[1], bm + "SP.POP.TOTL", "P", "Población total (Banco Mundial)", "anual"))(_bm(iso, "SP.POP.TOTL", 2, 1e6))))
+        poner("electricidad_pc", lambda: _ind(*(lambda v: (v[0], "kWh por habitante", v[1], bm + "EG.USE.ELEC.KH.PC", "P", "Consumo eléctrico per cápita (Banco Mundial, datos de la AIE)", "anual"))(_bm(iso, "EG.USE.ELEC.KH.PC", 0))))
+        poner("balanza_corriente", lambda: _ind(*(lambda v: (v[0], "% del PIB", v[1], bm + "BN.CAB.XOKA.GD.ZS", "P", "Balanza por cuenta corriente (Banco Mundial)", "anual"))(_bm(iso, "BN.CAB.XOKA.GD.ZS"))))
+        poner("gasto_defensa", lambda: _ind(*(lambda v: (v[0], "% del PIB", v[1], bm + "MS.MIL.XPND.GD.ZS", "P", "Gasto militar (SIPRI vía Banco Mundial)", "anual", "Definición SIPRI: no coincide con la de la OTAN."))(_bm(iso, "MS.MIL.XPND.GD.ZS", 2))))
         m = manual.get(pid, {})
         for clave, dato in m.items():
             ind[clave] = dato

@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-04 02:05 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-04 03:01 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -26,16 +26,9 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - C106 · Centro · Bots frecuentes al Worker (requisito si el repo pasa a privado) · Sonnet M · ~~3 % · ``
 - C107 · Centro · Qué NO construir: ver qué hacen ya gratis OpenBB, Koyfin, TradingView y · Sonnet M · ~~3 % · ``
 - C108 ◐ en parte · Centro · Criterios de medición y relleno de las 58 predicciones · Sonnet M · ~~3 % · ``
-- C110 · Nivel C · Panel de electricidad (OMIE + REE + Eurostat) sin IA · Sonnet M · ~~3 % · `Añade leer_electricidad() a scripts/actualizar_paneles.py: OMIE marginalpdbc (seguir redirección), REE apidatos y Eurostat nrg_pc_204/205; guarda en paneles.json › energia_precios con campo desde; si falla conserva lo anterior; no toques workflows`
 - C111 · Nivel C · Electricidad Europa por zonas con ENTSO-E · Sonnet S · ~~2 % · `Tras recibir el token de ENTSO-E como secreto, añade las zonas ES/FR/DE/IT/PT a leer_electricidad() sin mostrar el token`
-- C112 · Nivel C · Alimentos: FAO + soja/trigo/maíz/arroz/azúcar (FRED y Yahoo) · Sonnet M · ~~3 % · `Añade leer_alimentos() a actualizar_paneles.py: FAO food_price_indices_data.csv (extrae el enlace de la página), FRED PSOYBUSDM PWHEAMTUSDM PMAIZMTUSDM PRICENPQUSDM PSUGAISAUSDM y Yahoo ZS=F ZR=F SB=F; añade TTF=F a materias; campo desde`
-- C113 · Nivel C · Chips: producción FRED + SOXX/TSM/ASML/MU · Sonnet S · ~~2 % · `Añade leer_chips() con FRED IPG3344S y PCU334413334413 y Yahoo SOXX TSM ASML MU en paneles.json › chips; marca nivel S en Yahoo; sin recomendaciones`
-- C114 · Nivel B · Subvenciones BDNS y contratos PLACSP: conteos diarios · Sonnet M · ~~3 % · `Lee la API BDNS (convocatorias) y agrega por nivel y día; para PLACSP solo cuenta entradas del feed sin guardarlo (13 MB); salida a espana-pagos.json`
-- C115 · Nivel B · Muertes y delitos comparables (Eurostat tran_sf_roadus y crim_off_cat) · Sonnet M · ~~3 % · `Descarga tran_sf_roadus y crim_off_cat para ES/FR/DE/IT/PT y guarda serie anual con nota de definición por país`
-- C116 · Nivel B · Mortalidad (INE tabla 6552) y exceso de mortalidad · Sonnet M · ~~3 % · `Lee defunciones INE vía Tempus (tabla 6552, sin MoMo completo de 724 MB) y propón cómo mostrar exceso de mortalidad sin descargar ese CSV`
 - C117 · Nivel C · RAM/DRAM y centros de datos: ficha manual con fuentes [S] y proxy MU · Sonnet M · ~~4 % · `Busca solo fuentes públicas sobre precios DRAM/NAND y consumo eléctrico de centros de datos (IEA, EIA, comunicados); guarda en explorador/chips-manual.json con nivel S y fecha; marca [ESPECULACIÓN] en ciclos`
 - C118 · Nivel C · Fertilizantes y agua por zonas: Pink Sheet BM e INE · Sonnet M · ~~4 % · `Con OK de Joel para descargar el xlsx del Pink Sheet del Banco Mundial, extrae urea/amoníaco/potasa/DAP; busca precio del agua por CCAA en INE/AEAS y marca [VERIFICAR] lo no oficial`
-- C119 · Nivel A · Rellenar población, energía y balanza (Banco Mundial/Eurostat) para lo · Sonnet M · ~~3 % · `Amplía indicadores de paneles.json con población, consumo eléctrico per cápita (EG.USE.ELEC.KH.PC), balanza corriente y gasto defensa con Banco Mundial v2; mismos 12 países`
 - C120 · Nivel B · Fichas manuales: Interior (criminalidad), DGT, siniestralidad laboral  · Sonnet M · ~~4 % · `Con Chrome, comprueba y documenta en research/ACCESOS-CHROME.md las fuentes de Interior, DGT, Trabajo y EFFIS; no saltes anti-bots; guarda lo verificado en espana-manual.json`
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
@@ -122,6 +115,7 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 
 ## Calendario: próximos 14 días de impacto y qué los cubre
 - 2026-11-04 · Tesoro de EE. UU.: anuncio trimestral de refinanciación (medio) → cubre W02 (Deuda y subastas)
+- 2026-11-04 · Zona euro: IPCA adelantado de octubre (Eurostat) (medio) → cubre W01 (Datos macro y tipos)
 - 2026-11-05 · Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,7 (alto) → cubre W01 (Tipos de interés)
 - 2026-11-06 · Empleo EE. UU. (informe de octubre) (alto) → cubre W01 (Datos macro y tipos)
 - 2026-11-06 · Brasil: bancos y entidades de pago no podrán operar con prov (medio) → cubre W03 (Regulación por países)
@@ -132,17 +126,16 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 - 2026-11-11 · OPEP: informe mensual del mercado petrolero (noviembre) (medio) → cubre W10 (Energía y geopolítica)
 - 2026-11-13 · AIE: informe mensual del mercado petrolero (noviembre) (medio) → cubre W10 (Energía y geopolítica)
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → cubre W04 (ETF y flujos)
-- 2026-11-18→11-19 · APEC en Shenzhen: cumbre de líderes (medio) → cubre W03 (Regulación por países)
 
 ## Predicciones que vencen en 14 días
 - #7 · 2026-11-03 · CEO de Solana Policy Institute
 - #25 · 2026-11-03 · Donald Trump (Truth Social, citado por CNBC)
 
 ## Próximas fechas clave
+- 2026-11-04 · Zona euro: IPCA adelantado de octubre (Eurostat)
 - 2026-11-05 · Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,75 %)
 - 2026-11-06 · Empleo EE. UU. (informe de octubre)
 - 2026-11-06 · Brasil: bancos y entidades de pago no podrán operar con proveedores cripto no autorizados 
 - 2026-11-10 · Inflación EE. UU. (IPC de octubre)
 - 2026-11-10 · EIA: perspectivas de energía a corto plazo (STEO)
 - 2026-11-11 · Corea: fin de comentarios de la FSC sobre tokenización de valores
-- 2026-11-13 · AIE: informe mensual del mercado petrolero (noviembre)

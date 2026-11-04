@@ -493,7 +493,7 @@ def _credito_bls():
 # (símbolo de Yahoo, nombre, unidad). Son futuros continuos: el contrato cambia de vencimiento y el cambio de un día puede incluir el salto.
 MATERIAS = (("GC=F", "Oro", "$ por onza"), ("SI=F", "Plata", "$ por onza"), ("HG=F", "Cobre", "$ por libra"), ("NG=F", "Gas natural (Henry Hub, EE. UU.)", "$ por MMBtu"),
             ("ZW=F", "Trigo", "centavos por bushel"), ("ZC=F", "Maíz", "centavos por bushel"), ("KC=F", "Café", "centavos por libra"),
-            ("BZ=F", "Petróleo Brent (futuro)", "$ por barril"))
+            ("BZ=F", "Petróleo Brent (futuro)", "$ por barril"))  # TTF=F probado el 4-nov-2026: Yahoo no devuelve cierres suficientes (pendiente de ENTSO-E/otra fuente, C111)
 
 
 def leer_materias():
@@ -1231,6 +1231,27 @@ def leer_indicadores():
     return _leer(PREVIO.get("indicadores"))
 
 
+def _nuevo(nombre, clave):
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import paneles_nuevos
+    return getattr(paneles_nuevos, nombre)(PREVIO.get(clave))
+
+
+def leer_electricidad():
+    """C110: electricidad (OMIE, REE PVPC, Eurostat); ver scripts/paneles_nuevos.py."""
+    return _nuevo("leer_electricidad", "energia_precios")
+
+
+def leer_alimentos():
+    """C112: alimentos (FAO, FRED, Yahoo); ver scripts/paneles_nuevos.py."""
+    return _nuevo("leer_alimentos", "alimentos")
+
+
+def leer_chips():
+    """C113: chips (FRED, Yahoo); ver scripts/paneles_nuevos.py."""
+    return _nuevo("leer_chips", "chips")
+
+
 FRED_CAIDO = False  # FRED no responde desde los runners de GitHub: tras el primer fallo se omite el resto
 LIMITE_S = 200  # tope total de descarga: el workflow corta a los 5 min y perdería todo
 
@@ -1247,7 +1268,7 @@ def main():
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
     limite = time.monotonic() + LIMITE_S
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("espana_ine", leer_espana_ine), ("espana_deuda", leer_espana_deuda), ("espana_hipotecas", leer_espana_hipotecas), ("vivienda_eurostat", leer_vivienda_eurostat), ("brasil", leer_brasil), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("espana_ine", leer_espana_ine), ("espana_deuda", leer_espana_deuda), ("espana_hipotecas", leer_espana_hipotecas), ("vivienda_eurostat", leer_vivienda_eurostat), ("brasil", leer_brasil), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias), ("energia_precios", leer_electricidad), ("alimentos", leer_alimentos), ("chips", leer_chips)):
         t0 = time.monotonic()
         if t0 > limite:
             fallos.append(f"{clave}: omitido por tiempo (más de {LIMITE_S} s en total)")
@@ -1315,6 +1336,18 @@ def main():
     if ma:
         print("Materias primas: " + ", ".join(f"{m['nombre']} {m['valor']} ({m['cambio_1d']:+.2f} %)" for m in ma["materias"]))
         fallos += ma.get("fallos", [])
+    el = salida.get("energia_precios")
+    if el:
+        print("Electricidad: OMIE " + ", ".join(f"{d['fecha'][5:]} {d['media']}" for d in el["omie_diario"][-3:]) + " €/MWh")
+        fallos += el.get("fallos", [])
+    al = salida.get("alimentos")
+    if al:
+        print(f"Alimentos: FAO {al['fao']['indices'][0]['valor']} ({al['fao']['mes']})" if al.get("fao") else "Alimentos: sin FAO")
+        fallos += al.get("fallos", [])
+    ch = salida.get("chips")
+    if ch:
+        print("Chips: " + ", ".join(f"{c['simbolo']} {c['valor']} ({c['cambio_1d']:+.2f} %)" for c in ch["cotizaciones"]))
+        fallos += ch.get("fallos", [])
     ii = salida.get("indicadores")
     if ii:
         print("Indicadores: %d países, %d con aviso" % (len(ii["paises"]), len(ii.get("fallos", []))))
