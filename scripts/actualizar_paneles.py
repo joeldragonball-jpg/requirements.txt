@@ -24,6 +24,18 @@ URL_TIC = "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Do
 URL_LLAMA = "https://stablecoins.llama.fi/stablecoins?includePrices=true"
 URL_UST = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv"
 URL_JGB = "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/jgbcme.csv"
+URL_JGB_HIST = "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/historical/jgbcme_all.csv"
+
+
+def filas_jgb(minimo=22):
+    """Filas diarias de rendimientos de JGB (Ministerio de Finanzas). El archivo del mes en curso solo trae ese mes: a principios de mes
+    tiene 1 o 2 filas y fallaba el «día anterior»; si hay menos de «minimo», se completa con el histórico y se quitan fechas repetidas."""
+    lineas = [l for l in descargar(URL_JGB).splitlines() if l[:4].isdigit()]
+    if len(lineas) < minimo:
+        previas = [l for l in descargar(URL_JGB_HIST).splitlines() if l[:4].isdigit()]
+        fechas = {l.split(",")[0] for l in lineas}
+        lineas = [l for l in previas if l.split(",")[0] not in fechas] + lineas
+    return lineas
 URL_BCE = "https://data-api.ecb.europa.eu/service/data/YC/B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y?lastNObservations=3&format=jsondata"
 URL_BOE = "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom={d1}&Dateto={d2}&SeriesCodes=IUDMNZC&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N"
 URL_BCE_YC = "https://data-api.ecb.europa.eu/service/data/YC/B.U2.EUR.4F.G_N_A.SV_C_YM.SR_{p}?lastNObservations={n}&format=jsondata"
@@ -574,6 +586,8 @@ def leer_ormuz():
         if "features" in respuesta:
             break
         time.sleep(3)
+    if "features" not in respuesta:   # 4-nov-2026: la capa devuelve «Invalid URL» (400) siempre, también desde Chrome: cambio del servidor del FMI, no un fallo a ratos
+        raise ValueError(f"PortWatch no devuelve datos tras 8 intentos (respuesta: {respuesta.get('error')}); se conserva el último dato leído")
     datos = respuesta["features"]
     filas = [(f["attributes"]["date"][:10], f["attributes"]["n_total"] or 0, f["attributes"]["n_tanker"] or 0) for f in datos]
     if not filas:
@@ -1066,7 +1080,7 @@ def leer_bonos():
               "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve")
 
     def japon():
-        lineas = [l for l in descargar(URL_JGB).splitlines() if l[:4].isdigit()]
+        lineas = filas_jgb()
         cab = ["1A", "2A", "3A", "4A", "5A", "6A", "7A", "8A", "9A", "10A", "15A", "20A", "25A", "30A", "40A"]
 
         def fila(l):
@@ -1189,7 +1203,7 @@ def leer_deuda():
                 "fuente": "Tesoro de EE. UU., curva diaria de rendimientos (bonos a 10 años)"}
 
     def jgb():
-        lineas = [l for l in descargar(URL_JGB).splitlines() if l[:4].isdigit()]
+        lineas = filas_jgb(1)
         celdas = lineas[-1].split(",")
         y, m, d = celdas[0].split("/")
         return {"valor": float(celdas[10]), "fecha": f"{y}-{int(m):02d}-{int(d):02d}", "nivel": "P",

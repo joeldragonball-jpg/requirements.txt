@@ -172,3 +172,7 @@ actualizado: 2026-10-07
 - 2-nov-2026 (W07): el FMI DataMapper sí se lee sin navegador en `www.imf.org/external/datamapper/api/v1/<indicador>/<ISO3>` (la variante `api.imf.org` da 404); no darlo por ⛔.
 - 2-nov-2026 (W07): CFTC: los `.txt` de `cftc.gov/dea` fallan; la API Socrata `publicreporting.cftc.gov/resource/6dca-aqww.json` responde. Un 200 no basta: comprobar el último periodo de la serie (Eurostat `prc_hicp_manr` da 200 pero está congelada).
 - 2-nov-2026 (W07): de 208 enlaces de voces, regulación y calendario, 34 dan 403 (sec.gov, bls.gov, prensa) y 3 dan 429 (límite de ritmo, no bloqueo); solo 1 estaba roto de verdad (HKMA).
+- 4-nov-2026: rba.gov.au da «Access Denied» a curl pero abre en Chrome; el listado /monetary-policy/int-rate-decisions/2026/ enlaza el comunicado de cada reunión (3-nov = mr-26-30); un número mr-26-NN adivinado devuelve otro comunicado, seguir el enlace.
+- 4-nov-2026: MOF Japón jgbcme.csv solo trae el mes en curso (a principios de mes, 1 fila y falla el «día anterior»); histórico completo en .../interest_rate/historical/jgbcme_all.csv (sin historical/ da 404).
+- 4-nov-2026: IMF PortWatch (ArcGIS Daily_Chokepoints_Data) devuelve «Invalid URL» 400 a toda consulta, también desde Chrome, y la capa ya figura como tabla: cambio del servidor, no un bloqueo que se salte. Ormuz queda con el último dato leído.
+- 4-nov-2026: los directos de CBS News sirven para proyecciones electorales [S]; el texto de AP en MS NOW no cargó (solo titular).
