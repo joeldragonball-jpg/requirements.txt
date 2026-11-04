@@ -547,7 +547,7 @@ function masonry(cls,fijas){
     const k=banda.cols.reduce((a,b)=>a.peso<=b.peso?a:b);k.appendChild(x);k.peso+=peso(x)}};
   return c}
 /* ---------- Capa Política: comparar países (IPC, paro, deuda, pobreza…) con color frente al dato anterior ---------- */
-const BUENO_SUBE={pib:1,deficit:1,salario_minimo:1};
+const BUENO_SUBE={pib:1,deficit:1,salario_minimo:1,balanza_corriente:1};
 function tendPa(k,x){if(!x||x.valor==null||x.anterior==null)return null;const d=x.valor-x.anterior;if(Math.abs(d)<0.05)return{c:'#9aa7c2',f:'●',t:'sin cambio frente a '+(x.anterior_fecha||'el dato anterior')};const mej=(d>0)===!!BUENO_SUBE[k];return{c:mej?'#4fe3a1':'#ff6b7d',f:d>0?'▲':'▼',t:(mej?'mejora':'empeora')+' ('+(d>0?'+':'')+d.toLocaleString('es-ES',{maximumFractionDigits:1})+' frente a '+(x.anterior_fecha||'el dato anterior')+')'}}
 function nComparar(){
   const F=(D.paises_fichas||{}).paises||[],IN=((P&&P.indicadores)||{}).paises||[];
@@ -986,7 +986,8 @@ function pNoticias(){
 let vNivel='',vConf='',vBusca='',vCapa='',vHilo='';
 /* ---------- Países: política (C58) + indicadores (C59) + estabilidad (C61), todo por país, solo cifras publicadas ---------- */
 let grupoPa='UE';
-const NOMI={ipc:'IPC',paro:'Paro',paro_juvenil:'Paro juvenil',pib:'PIB',deuda:'Deuda pública',deficit:'Déficit',pobreza:'Pobreza',gini:'Gini',salario_minimo:'Salario mínimo'};
+const NOMI={ipc:'IPC',paro:'Paro',paro_juvenil:'Paro juvenil',pib:'PIB',deuda:'Deuda pública',deficit:'Déficit',pobreza:'Pobreza',gini:'Gini',salario_minimo:'Salario mínimo',balanza_corriente:'Balanza por cuenta corriente',poblacion:'Población',electricidad_pc:'Electricidad por habitante',gasto_defensa:'Gasto en defensa'};
+const NEUTRO_PA={poblacion:1,electricidad_pc:1,gasto_defensa:1};   // subir no es ni bueno ni malo: sin color
 const NOMD={sanidad:'Sanidad',vivienda:'Vivienda',infraestructuras:'Infraestructuras y energía',trabajo:'Trabajo',educacion:'Educación',seguridad:'Seguridad y gobernanza',demografia:'Demografía y migración'};
 const fuentePa=u=>/eurostat/.test(u||'')?'Eurostat':/worldbank/.test(u||'')?'Banco Mundial':/imf\.org/.test(u||'')?'FMI':(u||'').slice(0,40);
 function nfp(v,u){if(v==null)return '—';const n=Number(v).toLocaleString('es-ES',{maximumFractionDigits:2}),m=/^([$£€¥])\s*(.*)$/.exec(u||'');return m?m[1]+n+(m[2]?' '+m[2]:''):n+(u?' '+u:'')}
@@ -997,7 +998,7 @@ const SUELTA_UNID=/ (% |por |suscripciones|años|hijos|\$|estimación|personas).
 const cortaUnid=(v,u)=>nfp(v,u).replace(SUELTA_UNID,m=>/^ %/.test(m)?' %':'');
 function tendGen(nombre,valor,ant,antf,clave){if(valor==null||ant==null)return null;const d=valor-ant;
   if(Math.abs(d)<0.005*Math.max(1,Math.abs(ant)))return{c:'#9aa7c2',f:'●',t:'sin cambio frente a '+(antf||'el dato anterior')};
-  let signo=null;if(clave)signo=BUENO_SUBE[clave]?1:-1;else if(BUENO_SUBE_N.test(nombre))signo=1;else if(MALO_SUBE_N.test(nombre))signo=-1;
+  let signo=null;if(clave)signo=NEUTRO_PA[clave]?null:BUENO_SUBE[clave]?1:-1;else if(BUENO_SUBE_N.test(nombre))signo=1;else if(MALO_SUBE_N.test(nombre))signo=-1;
   const col=signo==null?'#9aa7c2':((d>0)===(signo>0))?'#4fe3a1':'#ff6b7d';
   return{c:col,f:d>0?'▲':'▼',t:(signo==null?'cambia':col==='#4fe3a1'?'mejora':'empeora')+' ('+(d>0?'+':'')+d.toLocaleString('es-ES',{maximumFractionDigits:2})+' frente a '+(antf||'el dato anterior')+')'}}
 function celdaCifra(nombre,valor,unidad,fecha,ant,antf,tip,clave){
@@ -1010,7 +1011,7 @@ function celdaCifra(nombre,valor,unidad,fecha,ant,antf,tip,clave){
   const f=el('div','nota-v',fecha||'sin fecha');f.style.fontSize='.78em';c.appendChild(f);
   if(ant!=null){const a=el('div','nota-v','antes '+cortaUnid(ant,unidad)+(antf?' ('+antf+')':''));a.style.fontSize='.78em';c.appendChild(a)}
   return c}
-const UNID_FILA={ipc:'% anual, último mes',paro:'% de la población activa',paro_juvenil:'% de activos menores de 25',pib:'% anual, en volumen',deuda:'% del PIB',deficit:'% del PIB',pobreza:'% de la población',gini:'0 = igualdad, 100 = desigualdad',salario_minimo:'euros o moneda local'};
+const UNID_FILA={ipc:'% anual, último mes',paro:'% de la población activa',paro_juvenil:'% de activos menores de 25',pib:'% anual, en volumen',deuda:'% del PIB',deficit:'% del PIB',pobreza:'% de la población',gini:'0 = igualdad, 100 = desigualdad',salario_minimo:'euros o moneda local',balanza_corriente:'% del PIB (negativo = déficit exterior)',poblacion:'millones de habitantes',electricidad_pc:'kWh por habitante y año',gasto_defensa:'% del PIB'};
 function seccionPa(titulo,sub,abierta){const d=document.createElement('details');if(abierta)d.open=true;d.style.margin='10px 0';const s=el('summary','',titulo);s.style.cssText='font-weight:700;cursor:pointer;font-size:1.05em';d.appendChild(s);if(sub){d.appendChild(el('p','nota-v',sub))}return d}
 function pPaises(){
   const s=$('v-paises');s.textContent='';
