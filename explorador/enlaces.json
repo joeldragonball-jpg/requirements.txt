@@ -1,0 +1,22 @@
+{
+ "_nota": "Hilos que unen país, evento, activo, voz, predicción e informe (C91, 4-nov-2026). Solo ids y rutas: nada de la tesis de Joel (eso vive en privado/). nivel = relacionado | fuente_de: nunca un efecto en el precio. Valida con python scripts/validar_ids.py.",
+ "version": 1,
+ "activos_validos": ["XRP", "XLM", "BTC", "ETH", "BRENT", "WTI", "EURUSD", "UST10Y", "SELIC"],
+ "enlaces": [
+  {"id": "e0001", "tema": "Brasil: autorización de proveedores cripto", "pais": ["BR"],
+   "evento": ["ev-2026-10-30-brasil-ultimo-dia-proveedores-cripto", "ev-2026-11-03-brasil-reunion-copom-selic-hoy", "ev-2026-11-06-brasil-bancos-entidades-pago-no", "ev-2026-11-29-brasil-quien-no-pidio-autorizacion", "ev-2027-01-01-brasil-retencion-hasta-24-h"],
+   "activo": ["SELIC"], "voz": [], "pred": [],
+   "informe": ["informes/research/2026-10-24-T11-brasil.md", "informes/research/2026-10-15-R03P-brasil-profundo.md"],
+   "nivel": "relacionado", "hueco": "Cuatro fechas reguladas y ninguna voz ni predicción registrada.", "revisado": "2026-11-04"},
+  {"id": "e0002", "tema": "Ormuz y petróleo", "pais": ["US"],
+   "evento": ["ev-2026-11-01-opep-7-paises-reunion-mensual", "ev-2026-11-11-opep-informe-mensual-mercado-petrolero", "ev-2026-11-13-aie-informe-mensual-mercado-petrolero"],
+   "activo": ["BRENT", "WTI"], "voz": [], "pred": ["p017", "p024", "p027", "p054"],
+   "informe": ["informes/research/2026-10-17-R46-geopolitica-energia-ormuz-profundo.md"],
+   "nivel": "relacionado", "hueco": "EIA, Goldman y el ministro iraní predicen, pero no existen como voces: no se les puede seguir el historial. Irán no está en paises.json.", "revisado": "2026-11-04"},
+  {"id": "e0003", "tema": "CLARITY Act", "pais": ["US"],
+   "evento": ["ev-2027-01-03-ee-uu-fin-119-o"],
+   "activo": ["XRP", "XLM"], "voz": ["v008", "v018", "v019", "v020", "v059"], "pred": ["p001", "p002", "p006", "p051"],
+   "informe": ["informes/research/2026-11-02-W05b-clarity-seccion-404.md"],
+   "nivel": "relacionado", "hueco": "La predicción p002 es de McHenry (v018), pero la columna «Quién» de predicciones.md es texto libre: hoy nada las une.", "revisado": "2026-11-04"}
+ ]
+}
