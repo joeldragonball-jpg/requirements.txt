@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-04 17:50 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-04 18:24 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -30,6 +30,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - C117 · Nivel C · RAM/DRAM y centros de datos: ficha manual con fuentes [S] y proxy MU · Sonnet M · ~~4 % · `Busca solo fuentes públicas sobre precios DRAM/NAND y consumo eléctrico de centros de datos (IEA, EIA, comunicados); guarda en explorador/chips-manual.json con nivel S y fecha; marca [ESPECULACIÓN] en ciclos`
 - C118 · Nivel C · Fertilizantes y agua por zonas: Pink Sheet BM e INE · Sonnet M · ~~4 % · `Con OK de Joel para descargar el xlsx del Pink Sheet del Banco Mundial, extrae urea/amoníaco/potasa/DAP; busca precio del agua por CCAA en INE/AEAS y marca [VERIFICAR] lo no oficial`
 - C120 ◐ en parte · Nivel B · Fichas manuales: Interior (criminalidad), DGT, siniestralidad laboral  · Sonnet M · ~~4 % · `Con Chrome, comprueba y documenta en research/ACCESOS-CHROME.md las fuentes de Interior, DGT, Trabajo y EFFIS; no saltes anti-bots; guarda lo verificado en espana-manual.json`
+- C127 ◐ en parte · Tablero · Auditoría visual: Cifras clave más legibles y agrupadas, España ordena · Sonnet M · ~~3 % · `research/prompts/C127-auditoria-visual-tablero.md`
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
@@ -92,12 +93,12 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (2) → W03 · AE/politica; BRICS/ley_marco
-- 🔴 Voces: Voces sin confirmar (7) → W06 · 4 llevan más de 14 días
+- 🔴 Voces: Voces sin confirmar (8) → W06 · 4 llevan más de 14 días
 - 🟡 Radar regulatorio: Celdas sin dato (30) → W03 · Más huecos: EG 5, ET 4, UK 4, ZA 3, ID 3
 - 🟡 Países (política): Fichas con datos de más de 90 días o sin fecha (1) → W11 · China
 
 ## Bots con problema
-- Verificación mensual
+- Noticias con IA, Verificación mensual
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-10-27 · Reunión de la Fed (FOMC) (alto) → ✓ revisado (hecho)

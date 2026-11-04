@@ -26,6 +26,12 @@ section.vista{display:none}section.vista.on{display:block}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,clamp(140px,14vw,190px)),1fr));gap:clamp(5px,.6vw,8px);margin:clamp(4px,.5vw,6px) 0}
 .kpi{background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:clamp(5px,.5vw,7px) clamp(7px,.8vw,10px)}
 .kpi b{display:block;font-size:clamp(18px,.9vw + 8px,24px)}.kpi span{font-size:var(--fs-xs);color:var(--tx2)}
+.cc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px;margin:6px 0}
+.cc-b{background:var(--bg);border:1px solid var(--lin);border-top:3px solid var(--ac);border-radius:10px;padding:10px 12px}
+.cc-b h3{margin:0 0 6px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--tx2)}
+.cc-g{margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--lin)}.cc-e{font-size:.85rem;color:var(--tx2)}
+.cc-g b{display:block;font-size:clamp(26px,1.6vw + 12px,36px);line-height:1.15}.cc-g .sube,.cc-g .baja,.cc-g .igual{font-size:.85rem}.cc-g .badge,.cc-l .badge{margin-left:6px;vertical-align:middle}
+.cc-f{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;padding:3px 0;font-size:.85rem}.cc-l{flex:1 1 55%;color:var(--tx2)}.cc-f b{font-size:1rem}.cc-f .sube,.cc-f .baja,.cc-f .igual{flex-basis:100%;text-align:right;font-size:.78rem}
 table{border-collapse:collapse;width:100%}
 th,td{border:1px solid var(--lin);padding:clamp(4px,.4vw,7px) clamp(6px,.7vw,10px);font-size:var(--fs-s);text-align:left;vertical-align:top}
 th{color:var(--tx2);font-weight:600;background:#121a2a}
@@ -367,30 +373,42 @@ function nReservas(){
 function pResumen(){
   const s=$('v-resumen');s.textContent='';
   const c1=el('div','caja');c1.append(el('h2',null,'Cifras clave'));
-  const us=P&&P.bonos.paises.find(p=>p.id==='USA'),sc=P&&P.stablecoins,tic=P&&P.tic,oz=P&&P.ormuz;
-  const gk=nMercado();
-  const gk2=kpis([sc?[usd(sc.total),'Stablecoins en circulación [S]']:null,sc?[usd(sc.xrpl.total),'Stablecoins en el XRPL [S]']:null,sc?[usd(sc.stellar.total),'Stablecoins en Stellar [S]']:null,
-    us?[num(us.plazos['10A'],2)+' %','Bono de EE. UU. a 10 años, '+us.fecha+' [P]',cambio((us.plazos['10A']-us.prev['10A'])*100,'puntos básicos',0)]:null,
-    tic?['$'+num(tic.total[0],0)+' mil millones','Deuda de EE. UU. en manos extranjeras, '+tic.meses[0]+' [P]',cambio((tic.total[0]/tic.total[12]-1)*100,'% en 12 meses')]:null,
-    oz?[oz.ultimo.total+' buques','Ormuz el '+oz.ultimo.fecha+' (media 7 días: '+num(oz.media_7d,1)+') [P]'+(avisoViejo(oz.ultimo.fecha)?' · '+avisoViejo(oz.ultimo.fecha)+', dato congelado':'')]:null]);
-  while(gk2.firstChild)gk.append(gk2.firstChild);c1.append(gk);
-  /* energía, alimentos, miedo y chips: lo que antes solo se veía dentro de las capas */
+  const n0=v=>num(v,0),us=P&&P.bonos.paises.find(p=>p.id==='USA'),sc=P&&P.stablecoins,tic=P&&P.tic,oz=P&&P.ormuz;
   const E=P&&P.energia_precios,om=E&&(E.omie_diario||[]),ou=om&&om[om.length-1],oa=om&&om[om.length-2],FA=P&&P.alimentos&&P.alimentos.fao,fi=FA&&(FA.indices||[])[0];
   const br=P&&P.materias&&(P.materias.materias||[]).find(x=>x.simbolo==='BZ=F'),vx=P&&P.indices&&P.indices.indices.find(x=>/^VIX/.test(x.nombre)),sx=P&&P.chips&&(P.chips.cotizaciones||[]).find(x=>x.simbolo==='SOXX');
-  const gk3=kpis([ou?[num(ou.media,0)+' €/MWh','Electricidad en España (OMIE), '+ou.fecha+' [P]',oa?cambio((ou.media/oa.media-1)*100,'% frente al día anterior',0):null]:null,
-    fi?[num(fi.valor,1),'Índice FAO de alimentos, '+FA.mes+' [P]',cambio(fi.interanual,'% interanual',1)]:null,
-    br?['$'+num(br.valor,1),'Brent (futuro), '+br.fecha+' [S]',cambio(br.cambio_1d,'% en un día',2)]:null,
-    vx?[num(vx.valor,1),'VIX, miedo en bolsa, '+vx.fecha+' [S]',cambio(vx.cambio_1d,'% en un día',1)]:null,
-    sx?['$'+num(sx.valor,0),'SOXX, chips, '+sx.fecha+' [S]',cambio(sx.cambio_1m,'% en un mes',1)]:null]);
-  while(gk3.firstChild)gk.append(gk3.firstChild);
-  /* España: subvenciones, mortalidad, carretera y delitos (detalle en la pestaña España) */
-  const n0=v=>num(v,0),MOr=D.espana_mortalidad,mw=MOr&&(MOr.semanas||[]).slice(-1)[0],SEr=D.seguridad_eurostat,PGr=D.espana_pagos,bd=PGr&&PGr.bdns&&(PGr.bdns.dias||[]).slice(-1)[0];
+  const MOr=D.espana_mortalidad,mw=MOr&&(MOr.semanas||[]).slice(-1)[0],SEr=D.seguridad_eurostat,PGr=D.espana_pagos,bd=PGr&&PGr.bdns&&(PGr.bdns.dias||[]).slice(-1)[0];
   const rc=SEr&&SEr.carretera&&(SEr.carretera.paises||[]).find(p=>p.id==='ES'),dl=SEr&&SEr.delitos&&(SEr.delitos.paises||[]).find(p=>p.id==='ES'),ho=dl&&dl.delitos&&dl.delitos.ICCS0101;
-  const gk4=kpis([bd?[n0(bd.total)+' convocatorias','Subvenciones publicadas en la BDNS, '+bd.fecha+' (España) [P]']:null,
-    mw?[n0(mw.defunciones)+' defunciones','España, semana '+mw.anio+'-S'+mw.semana+' ('+mw.tipo_dato+') [P]',cambio(mw.exceso_vs_5_anios,'frente a la media de 5 años',0)]:null,
-    rc?[n0(rc.por_millon_hab)+' por millón','Muertos en carretera en España, '+rc.anio+' (Eurostat) [P]']:null,
-    ho?[n0(ho.registrados)+' homicidios','Homicidios dolosos registrados en España, '+ho.anio+' (Eurostat) [P]']:null]);
-  while(gk4.firstChild)gk.append(gk4.firstChild);
+  const CA=(P&&P.mercado&&P.mercado.activos)||[],ac=s=>CA.find(a=>a.simbolo===s);
+  const pr=a=>'$'+num(a.precio,a.precio<10?4:0),capi=a=>a.nombre+' ('+a.simbolo+'), capitalización '+usd(a.capitalizacion);
+  /* un bloque: una cifra grande (lo que más importa) y filas pequeñas debajo; etiqueta corta arriba, nivel [P]/[S] y fecha al pasar el ratón */
+  function cc(titulo,color,g,filas){
+    const b=el('div','cc-b');b.style.borderTopColor=color;b.append(el('h3',null,titulo));
+    if(g){const gd=el('div','cc-g');gd.title=g.tip||'';gd.append(el('div','cc-e',g.e));gd.append(el('b','cifra',g.v));if(g.c)gd.append(g.c);if(g.n)gd.append(nivelBadge(g.n));b.append(gd)}
+    for(const f of filas){if(!f)continue;const r=el('div','cc-f');r.title=f.tip||'';const l=el('span','cc-l',f.e);if(f.n)l.append(' ',nivelBadge(f.n));r.append(l,el('b',null,f.v));if(f.c)r.append(f.c);b.append(r)}
+    return b}
+  const av=oz&&avisoViejo(oz.ultimo.fecha);
+  const gc=el('div','cc-grid');
+  gc.append(
+    cc('Cripto','#f5a623',ac('XRP')?{e:'XRP (lo que tienes)',v:pr(ac('XRP')),c:cambio(ac('XRP').cambio_24h,'% en 24 h',2),n:'S',tip:capi(ac('XRP'))}:null,[
+      ac('XLM')?{e:'Stellar (XLM)',v:pr(ac('XLM')),c:cambio(ac('XLM').cambio_24h,'% en 24 h',2),n:'S',tip:capi(ac('XLM'))}:null,
+      ac('BTC')?{e:'Bitcoin',v:pr(ac('BTC')),c:cambio(ac('BTC').cambio_24h,'% en 24 h',2),n:'S',tip:capi(ac('BTC'))}:null,
+      ac('ETH')?{e:'Ether',v:pr(ac('ETH')),c:cambio(ac('ETH').cambio_24h,'% en 24 h',2),n:'S',tip:capi(ac('ETH'))}:null,
+      sc?{e:'Stablecoins en circulación',v:usd(sc.total),n:'S',tip:'Total de stablecoins (DefiLlama)'}:null,
+      sc?{e:'…de ellas en el XRPL',v:usd(sc.xrpl.total),n:'S'}:null,
+      sc?{e:'…de ellas en Stellar',v:usd(sc.stellar.total),n:'S'}:null]),
+    cc('Tipos y deuda','#4aa3e8',us?{e:'Bono de EE. UU. a 10 años',v:num(us.plazos['10A'],2)+' %',c:cambio((us.plazos['10A']-us.prev['10A'])*100,'puntos básicos',0),n:'P',tip:'Dato del '+us.fecha}:null,[
+      tic?{e:'Deuda de EE. UU. en manos extranjeras',v:'$'+num(tic.total[0],0)+' mil M',c:cambio((tic.total[0]/tic.total[12]-1)*100,'% en 12 meses',1),n:'P',tip:'Mes '+tic.meses[0]}:null]),
+    cc('Energía y materias primas','#e8c14a',br?{e:'Petróleo Brent (futuro)',v:'$'+num(br.valor,1),c:cambio(br.cambio_1d,'% en un día',2),n:'S',tip:'Dato del '+br.fecha}:null,[
+      ou?{e:'Electricidad en España',v:num(ou.media,0)+' €/MWh',c:oa?cambio((ou.media/oa.media-1)*100,'% frente a ayer',0):null,n:'P',tip:'OMIE, '+ou.fecha}:null,
+      fi?{e:'Precio de los alimentos (FAO)',v:num(fi.valor,1),c:cambio(fi.interanual,'% interanual',1),n:'P',tip:'Índice FAO, '+FA.mes}:null,
+      oz?{e:'Barcos por Ormuz (1 día)',v:String(oz.ultimo.total),c:av?el('span','baja','⚠ '+av.replace('⚠ ','')+', dato congelado'):null,n:'P',tip:'Media 7 días: '+num(oz.media_7d,1)+' · dato del '+oz.ultimo.fecha}:null]),
+    cc('Miedo y chips','#c084fc',vx?{e:'VIX (miedo en la bolsa)',v:num(vx.valor,1),c:cambio(vx.cambio_1d,'% en un día',1),n:'S',tip:'Dato del '+vx.fecha}:null,[
+      sx?{e:'Chips (fondo SOXX)',v:'$'+num(sx.valor,0),c:cambio(sx.cambio_1m,'% en un mes',1),n:'S',tip:'Dato del '+sx.fecha}:null]),
+    cc('España','#4fe3a1',mw?{e:'Defunciones en la última semana ('+mw.anio+'-S'+mw.semana+')',v:n0(mw.defunciones),c:cambio(mw.exceso_vs_5_anios,'frente a la media de 5 años',0),n:'P',tip:'INE, '+mw.tipo_dato}:null,[
+      bd?{e:'Subvenciones nuevas publicadas ('+bd.fecha.slice(5)+')',v:n0(bd.total),n:'P',tip:'Convocatorias en la BDNS'}:null,
+      rc?{e:'Muertos en carretera por millón ('+rc.anio+')',v:n0(rc.por_millon_hab),n:'P',tip:'Eurostat'}:null,
+      ho?{e:'Homicidios dolosos ('+ho.anio+')',v:n0(ho.registrados),n:'P',tip:'Eurostat, registrados por la policía'}:null]));
+  c1.append(gc,el('p','nota-v','Una cifra grande por tema y las demás debajo. Pasa el ratón por una cifra para ver fecha y detalle. [P] fuente oficial · [S] prensa o agregador. Capitalizaciones y más series: pestaña Paneles de datos.'));
   s.append(c1);
   /* mayores movimientos del día: bolsas, materias primas, cripto y chips con variación de 2 % o más */
   if(P){const mv=[];
