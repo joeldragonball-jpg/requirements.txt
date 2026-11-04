@@ -1043,7 +1043,7 @@ function pNoticias(){
 /* ---------- 7 · Voces ---------- */
 let vNivel='',vConf='',vBusca='',vCapa='',vHilo='';
 /* ---------- Países: política (C58) + indicadores (C59) + estabilidad (C61), todo por país, solo cifras publicadas ---------- */
-let grupoPa='UE',subEs='eco';
+let grupoPa='UE',subEs='eco',paisSel='';
 const NOMI={ipc:'IPC',paro:'Paro',paro_juvenil:'Paro juvenil',pib:'PIB',deuda:'Deuda pública',deficit:'Déficit',pobreza:'Pobreza',gini:'Gini',salario_minimo:'Salario mínimo',balanza_corriente:'Balanza por cuenta corriente',poblacion:'Población',electricidad_pc:'Electricidad por habitante',gasto_defensa:'Gasto en defensa'};
 const NEUTRO_PA={poblacion:1,electricidad_pc:1,gasto_defensa:1};   // subir no es ni bueno ni malo: sin color
 const NOMD={sanidad:'Sanidad',vivienda:'Vivienda',infraestructuras:'Infraestructuras y energía',trabajo:'Trabajo',educacion:'Educación',seguridad:'Seguridad y gobernanza',demografia:'Demografía y migración'};
@@ -1072,13 +1072,13 @@ function celdaCifra(nombre,valor,unidad,fecha,ant,antf,tip,clave){
 const UNID_FILA={ipc:'% anual, último mes',paro:'% de la población activa',paro_juvenil:'% de activos menores de 25',pib:'% anual, en volumen',deuda:'% del PIB',deficit:'% del PIB',pobreza:'% de la población',gini:'0 = igualdad, 100 = desigualdad',salario_minimo:'euros o moneda local',balanza_corriente:'% del PIB (negativo = déficit exterior)',poblacion:'millones de habitantes',electricidad_pc:'kWh por habitante y año',gasto_defensa:'% del PIB'};
 function seccionPa(titulo,sub,abierta){const d=document.createElement('details');if(abierta)d.open=true;d.style.margin='10px 0';const s=el('summary','',titulo);s.style.cssText='font-weight:700;cursor:pointer;font-size:1.05em';d.appendChild(s);if(sub){d.appendChild(el('p','nota-v',sub))}return d}
 function pPaises(){
-  const s=$('v-paises');s.textContent='';
+  const S0=$('v-paises');S0.textContent='';const s=el('div','');
   const F=(D.paises_fichas||{}).paises||[],ES=((D.estabilidad||{}).paises)||[],IN=((P&&P.indicadores)||{}).paises||[];
-  if(!F.length){s.appendChild(el('p','','Sin datos de países (explorador/paises.json).'));return}
+  if(!F.length){S0.appendChild(el('p','','Sin datos de países (explorador/paises.json).'));return}
   const lista=F.filter(f=>(f.bloque==='UE')===(grupoPa==='UE'));
   const sel=el('div','');sel.style.margin='6px 0';
   ['UE','Potencias'].forEach(g=>{const b=el('button','chip',g);b.style.cursor='pointer';b.style.padding='4px 14px';if(g===grupoPa){b.style.background='var(--oro,#d4a84b)';b.style.color='#1a1405'}b.onclick=()=>{grupoPa=g;pPaises()};sel.appendChild(b)});
-  s.appendChild(sel);
+  S0.appendChild(sel);
   s.appendChild(el('p','nota-v',(D.paises_fichas.nota||'')+' Sin puntuaciones propias ni ranking. Cada cifra: valor (arriba), año o mes (debajo) y «antes» con el dato anterior de la misma fuente. Verde = mejora, rojo = empeora, gris = sin juicio o sin cambio; sin color = no hay dato anterior. Pasa el ratón para ver fuente, nivel y definición.'));
   const tabla0=()=>{const t=el('table','');const h=el('tr','');h.appendChild(el('th','',''));lista.forEach(f=>h.appendChild(el('th','n',f.pais)));t.appendChild(h);return t};
   const env=(t)=>{const x=el('div','');x.style.overflowX='auto';x.appendChild(t);return x};
@@ -1113,6 +1113,23 @@ function pPaises(){
     d.appendChild(el('summary','',f.pais+' · '+(f.jefe_gobierno||'')));
     [['Sistema',f.sistema],['Reparto del poder',f.reparto_poder],['Jefe de Estado',f.jefe_estado],['Apoyo parlamentario',f.apoyo],['Oposición',f.oposicion],['Última elección',((f.ultima_eleccion||{}).fecha||'—')+' · '+((f.ultima_eleccion||{}).resultado||'')],['Temas clave',f.temas_clave],['Sistemas públicos',f.sistemas_publicos],['Lectura [OPINIÓN]',f.lectura],['Estabilidad [OPINIÓN]',e.lectura],['Fuente',(f.fuente||'')+' · ['+f.nivel+'] · '+f.fecha_dato]].forEach(([k,v])=>{if(v){const p=el('p','',k+': '+v);d.appendChild(p)}});
     s.appendChild(d)});
+  /* vista de un solo país: 4 cifras grandes y el resto en lista; las tablas para comparar quedan plegadas debajo */
+  if(!paisSel||!lista.some(f=>f.id===paisSel))paisSel=lista[0].id;
+  const chs=el('div','');chs.style.cssText='display:flex;flex-wrap:wrap;gap:6px;margin:10px 0';
+  lista.forEach(f=>{const b=el('button','chip',f.pais);b.style.cssText='cursor:pointer;padding:5px 12px';if(f.id===paisSel){b.style.background='var(--oro,#d4a84b)';b.style.color='#1a1405'}b.onclick=()=>{paisSel=f.id;pPaises()};chs.appendChild(b)});
+  const fp=lista.find(f=>f.id===paisSel),ind=((IN.find(i=>i.id===paisSel)||{}).indicadores)||{},es1=ES.find(x=>x.id===paisSel)||{},pe=fp.proxima_eleccion||{};
+  const caja=el('div','caja');caja.appendChild(el('h2','',fp.pais));
+  caja.appendChild(el('div','nota-v',[fp.jefe_gobierno,fp.familia,pe.fecha?'Próxima elección: '+pe.fecha+(pe.tipo?' · '+pe.tipo.slice(0,60):''):''].filter(Boolean).join(' · ')));
+  const kk=['ipc','paro','pib','deuda'].filter(k=>ind[k]).map(k=>{const x=ind[k],t=tendGen(NOMI[k],x.valor,x.anterior,x.anterior_fecha,k);let a=null;if(t){a=el('div','',t.f+' antes '+cortaUnid(x.anterior,x.unidad));a.style.cssText='font-size:.85rem;color:'+t.c}return[cortaUnid(x.valor,x.unidad),NOMI[k]+' · '+(x.fecha||''),a]});
+  if(kk.length)caja.appendChild(kpis(kk));
+  const GR='display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:6px 18px;margin-top:8px';
+  const celda=(nombre,valor,unidad,fecha,ant,antf,clave,tip)=>{const t=tendGen(nombre,valor,ant,antf,clave);const r=el('div','');r.style.cssText='border-bottom:1px solid var(--lin);padding:5px 0';r.title=tip||'';const a=el('div','',nombre);a.style.cssText='font-size:.85rem;color:var(--tx2)';const v=el('b','',cortaUnid(valor,unidad)+(t?' '+t.f:''));v.style.cssText='font-size:1.15rem'+(t?';color:'+t.c:'');r.append(a,v,el('div','nota-v',(fecha||'sin fecha')+(ant!=null?' · antes '+cortaUnid(ant,unidad):'')));return r};
+  const lst=el('div','');lst.style.cssText=GR;
+  Object.keys(NOMI).filter(k=>!['ipc','paro','pib','deuda'].includes(k)).forEach(k=>{const x=ind[k];if(x&&x.valor!=null)lst.appendChild(celda(NOMI[k],x.valor,x.unidad,x.fecha,x.anterior,x.anterior_fecha,k,(fuentePa(x.fuente))+' · ['+x.nivel+'] · '+(x.definicion||'')))});
+  caja.appendChild(lst);
+  Object.keys(NOMD).forEach(d=>{const ok=(((es1.dimensiones||{})[d]||{}).cifras||[]).filter(c=>c.valor!=null);if(!ok.length)return;const dt=document.createElement('details');dt.style.marginTop='10px';dt.appendChild(el('summary','',NOMD[d]+' · '+ok.length+' cifras'));const g=el('div','');g.style.cssText=GR;ok.forEach(c=>g.appendChild(celda(c.nombre,c.valor,c.unidad,c.anio,c.anterior,c.anterior_anio,null,fuentePa(c.fuente)+' · ['+c.nivel+'] · '+(c.nota||''))));dt.appendChild(g);caja.appendChild(dt)});
+  const cmp=document.createElement('details');cmp.style.marginTop='14px';cmp.appendChild(el('summary','','Comparar todos los países (tablas completas)'));cmp.appendChild(s);
+  S0.append(chs,caja,cmp);
 }
 function pVoces(){
   const s=$('v-voces');s.textContent='';
@@ -1202,7 +1219,7 @@ function pEspana(){
   const conL=(tx,...ns)=>{const d=el('div');if(tx)d.append(el('p','nota-v',tx));d.append(...ns);return d};
   const BL=[],TEMAS=[['eco','Economía y deuda'],['pre','Presupuesto y gasto'],['soc','Servicios y sociedad'],['seg','Seguridad y salud']];
   /* cada bloque va al tema que dice su título; lo que no encaja cae en Economía y deuda */
-  const temaDe=t=>/^Economía de España/.test(t)?'eco':/Defunciones semanales|Muertos en carretera|Delitos/i.test(t)||/DANA/.test(t)?'seg':/presupuesto|ministerio|Altos cargos|Programas concretos|aislar|Personal público|Cargos políticos|Ejecución por políticas|Subvenciones y contratación|Hasta dónde llegan/i.test(t)?'pre':/Quién recibe|Violencia de género|vivienda|hipoteca|Inmigración|Resultados de los servicios|Listas de espera/i.test(t)?'soc':'eco';
+  const temaDe=t=>/^Economía de España/.test(t)?'eco':/Defunciones semanales|Muertos en carretera|Delitos|Incendios forestales|Siniestralidad vial|Accidentes de trabajo/i.test(t)||/DANA/.test(t)?'seg':/presupuesto|ministerio|Altos cargos|Programas concretos|aislar|Personal público|Cargos políticos|Ejecución por políticas|Subvenciones y contratación|Hasta dónde llegan/i.test(t)?'pre':/Quién recibe|Violencia de género|vivienda|hipoteca|Inmigración|Resultados de los servicios|Listas de espera/i.test(t)?'soc':'eco';
   const add=b=>{b.classList.add('ancho');b._t=temaDe((b.querySelector('summary')||{}).textContent||'');BL.push(b)};
   const mz=masonry();
   const dat=L=>tabla([{t:'Dato',f:r=>r.nombre},{t:'Valor',n:1,f:r=>r.valor==null?'[VERIFICAR]':fx(r.valor,r.valor%1?2:0)+' '+(r.unidad||'')},{t:'Fecha',f:r=>String(r.anio||'')},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Nota',f:r=>r.nota},{t:'Fuente',f:r=>lnk(r.fuente)}],L);
@@ -1375,6 +1392,8 @@ function pEspana(){
   if(M.dana){
     add(bloque('DANA de Valencia (29-oct-2024): fallecidos, contraste con mortalidad y dinero','Qué cuadra y qué no. HECHO: la cifra la fija hoy el juzgado instructor y ha ido subiendo por muertes tardías. HECHO: el exceso de mortalidad estimado por el ISCIII encaja con la cifra oficial; no respalda cientos o miles de muertes ocultas, aunque no distingue diferencias de unas decenas. Faltan por comprobar las series del INE por municipio y los datos de la DGT.',{t:'Juzgado de Catarroja · ISCIII (MoMo) · Consorcio · Gobierno'},dat(M.dana),false));
   }
+  for(const [k,t,n] of [['incendios_effis','Incendios forestales en España (EFFIS)','Superficie quemada y número de incendios. Fuente de la UE (Copernicus): solo cartografía incendios de unas 30 ha o más y puede incluir quemas de gestión.'],['siniestralidad_vial_dgt','Siniestralidad vial (DGT)','Datos consolidados de la DGT. No es la serie a 24 horas de los balances mensuales; la definición exacta está por verificar.'],['siniestralidad_laboral_trabajo','Accidentes de trabajo (Ministerio de Trabajo)','Avance de enero a agosto de 2026: puede cambiar al consolidarse. Incluye accidentes en jornada e in itinere.']])
+    if(M[k])add(bloque(t,n,{t:'[P] oficial leída · [S] secundaria · [VERIFICAR] no leído'},dat(M[k]),false));
   if(E){
     const fila=i=>{const a=Object.keys(i.serie).sort(),u=a[a.length-1],p=a[a.length-2],vu=i.serie[u],vp=i.serie[p];return{n:i.nombre,g:i.grupo,u,vu,vp,pib:i.pct_pib&&i.pct_pib[u],real:i.real_por_habitante&&i.real_por_habitante[u],sp:a.map(x=>i.serie[x]),d:vp?(vu-vp)/Math.abs(vp)*100:null}};
     const F=E.indicadores.map(fila);

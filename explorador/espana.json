@@ -1,6 +1,6 @@
 {
  "titulo": "España: ingresos y gasto público",
- "leido": "2026-11-02",
+ "leido": "2026-11-04",
  "nota": "Eurostat (cuentas nacionales de las administraciones públicas, sector S13). «Real por habitante» = euros de 2025 (deflactor del PIB) por habitante. Último año disponible varía: ingresos y gasto total llegan a 2025, las funciones COFOG a un año menos. Solo cifras publicadas; las lecturas son [OPINIÓN].",
  "contexto": {
   "pib": {
@@ -2777,7 +2777,78 @@
     }
    ],
    "lectura": "HECHOS: España gasta menos que la zona euro (45,3 % frente a 49,8 %) y recauda menos (42,9 % frente a 46,8 %), pero paga más intereses (2,4 % frente a 1,9 %) y su deuda es mayor (100,5 % frente a 87,7 %). La inversión pública española (3,0 %) está por debajo de la de la zona euro (3,7 %) y de Francia, Alemania e Italia. Caso favorable: la deuda española baja desde el 119,3 % de 2020 y la recaudación sube 3,9 puntos de PIB desde 2019. Caso desfavorable: el margen de gasto es menor porque los intereses pesan más que en Alemania (1,1 %) y la inversión sigue por debajo del promedio europeo. Los dos relatos dependen de qué año de partida se elija. Las diferencias de definición (administraciones consolidadas europeas frente a presupuestos federales de EE. UU.) impiden comparar con rigor a EE. UU."
-  }
+  },
+  "incendios_effis": [
+   {
+    "nombre": "Superficie quemada en España, 2025 (año completo)",
+    "valor": 393079,
+    "unidad": "ha",
+    "anio": 2025,
+    "fuente": "https://forest-fire.emergency.copernicus.eu/apps/effis.statistics/estimates",
+    "nivel": "P",
+    "nota": "EFFIS (Copernicus): incendios cartografiados de unas 30 ha o más; pueden incluir quemas de gestión. Leído con Chrome el 4-nov-2026. 350 incendios. Máximo de la serie 2006-2026."
+   },
+   {
+    "nombre": "Superficie quemada en España, 2026 (hasta el 4-nov)",
+    "valor": 301651,
+    "unidad": "ha",
+    "anio": 2026,
+    "fuente": "https://forest-fire.emergency.copernicus.eu/apps/effis.statistics/estimates",
+    "nivel": "P",
+    "nota": "EFFIS: 2026 se actualiza hasta la fecha actual, 470 incendios. Segundo valor más alto desde 2006 tras 2025. Comparar con 2022 (306.555 ha) y 2024 (42.615 ha)."
+   }
+  ],
+  "siniestralidad_vial_dgt": [
+   {
+    "nombre": "Fallecidos en siniestros de tráfico, 2025",
+    "valor": 1775,
+    "unidad": "personas",
+    "anio": 2025,
+    "fuente": "https://www.dgt.es/inicio/",
+    "nivel": "P",
+    "nota": "Portada de la DGT leída con Chrome el 4-nov-2026: «datos consolidados para vías urbanas e interurbanas», un 1 % menos que en 2024. No es la serie a 24 horas de los balances mensuales; definición exacta [VERIFICAR]."
+   },
+   {
+    "nombre": "Hospitalizados por siniestros de tráfico, 2025",
+    "valor": 9888,
+    "unidad": "personas",
+    "anio": 2025,
+    "fuente": "https://www.dgt.es/inicio/",
+    "nivel": "P",
+    "nota": "DGT: un 3 % más que en 2024 (mismos datos consolidados)."
+   }
+  ],
+  "siniestralidad_laboral_trabajo": [
+   {
+    "nombre": "Accidentes de trabajo con baja, enero-agosto 2026",
+    "valor": 413708,
+    "unidad": "accidentes",
+    "anio": "ene-ago 2026",
+    "fuente": "https://www.mites.gob.es/estadisticas/eat/eat26_08/ATR_08_2026.xlsx",
+    "nivel": "P",
+    "nota": "Ministerio de Trabajo, Estadística de Accidentes de Trabajo, avance enero-agosto 2026 (XLSX descargado con OK el 4-nov-2026, hojas ATR-R1 y ATR-R2). Es un avance: puede cambiar al consolidarse. Incluye accidentes en jornada e in itinere. Mismo periodo de 2025: 403.717 (+2,5 %). En jornada: 353.994 (+2,1 %); in itinere: 59.714 (+4,8 %)."
+   },
+   {
+    "nombre": "Accidentes de trabajo mortales, enero-agosto 2026",
+    "valor": 498,
+    "unidad": "personas",
+    "anio": "ene-ago 2026",
+    "fuente": "https://www.mites.gob.es/estadisticas/eat/eat26_08/ATR_08_2026.xlsx",
+    "nivel": "P",
+    "nota": "Ministerio de Trabajo, Estadística de Accidentes de Trabajo, avance enero-agosto 2026 (XLSX descargado con OK el 4-nov-2026, hojas ATR-R1 y ATR-R2). Es un avance: puede cambiar al consolidarse. Incluye accidentes en jornada e in itinere. Mismo periodo de 2025: 489 (+1,8 %). En jornada: 405 (398 en 2025); in itinere: 93 (91). Por cuenta propia: 55 frente a 35 (+57 %); asalariados: 443 frente a 454."
+   }
+  ],
+  "criminalidad_interior": [
+   {
+    "nombre": "Balance de criminalidad: último trimestre publicado (2.º trimestre 2026)",
+    "valor": null,
+    "unidad": "",
+    "anio": "2T 2026",
+    "fuente": "https://estadisticasdecriminalidad.ses.mir.es/publico/portalestadistico/balances",
+    "nivel": "VERIFICAR",
+    "nota": "El portal del Ministerio del Interior carga en Chrome y lista 1T y 2T de 2026, pero los datos están en una app interactiva (PC-Axis/JAXI, ruta /DatosBalanceAnt/20262/) y no se pudieron leer como texto. Cifras sin leer."
+   }
+  ]
  },
  "fallos": []
 }
