@@ -7,18 +7,21 @@ on:
 
 concurrency: onchain
 
+permissions:
+  contents: read                    # solo lee el repo (C101)
+
 jobs:
   onchain:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: "3.12"
       # La memoria (incidentes abiertos y saldos anteriores) se guarda en la caché de GitHub, sin commits
       - name: Recuperar estado
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: eventos/estado-onchain.json
           key: estado-onchain-${{ github.run_id }}
@@ -30,7 +33,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       - name: Guardar estado
         if: always() && hashFiles('eventos/estado-onchain.json') != ''
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: eventos/estado-onchain.json
           key: estado-onchain-${{ github.run_id }}
