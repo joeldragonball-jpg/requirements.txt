@@ -338,8 +338,12 @@ function nLiquidez(){
   const l=P.liquidez;const m=l.manual||{};
   return kpis([['$'+num(l.us.valor_mil_m,2)+' billones',l.us.serie+' ('+l.us.fecha+')',cambio(l.us.interanual,'% en 12 meses',2)],[num(l.ea.interanual,2)+' %',l.ea.serie+' ('+l.ea.fecha+'): crecimiento anual',cambio(l.ea.interanual-l.ea.hace_12m,'puntos frente a hace 12 meses',2)],
     m.jp?[num(m.jp.interanual,1)+' %',m.jp.serie+' ('+m.jp.fecha+'): crecimiento anual, '+m.jp.nivel]:null,m.cn?[num(m.cn.interanual,1)+' %',m.cn.serie+' ('+m.cn.fecha+'): crecimiento anual, '+m.cn.nivel]:null])}
+/* antigüedad de un dato en días frente a hoy; avisoViejo() devuelve un texto solo si pasa del umbral (para que un dato congelado no parezca de hoy) */
+function edadDias(f){const t=new Date(String(f).slice(0,10)+'T00:00:00Z');return isNaN(t)?null:Math.round((new Date(HOYS+'T00:00:00Z')-t)/864e5)}
+function avisoViejo(f,umbral=3){const n=edadDias(f);return n!=null&&n>umbral?'⚠ hace '+n+' días':''}
 function nOrmuz(){
   const o=P.ormuz;const w=el('div');
+  const av=avisoViejo(o.ultimo.fecha);if(av)w.append(el('p','nota-v',av+': el último dato leído es del '+o.ultimo.fecha+'. La fuente del FMI (PortWatch) dejó de responder el 4-nov y el panel conserva ese dato; no es la situación de hoy.'));
   w.append(kpis([[o.ultimo.total+' buques',o.ultimo.fecha+': último día ('+o.ultimo.petroleros+' petroleros)'],[num(o.media_7d,1)+' buques/día','Media de los últimos 7 días']]));
   const mx=Math.max(...o.mensual.map(x=>x.total));const b=el('div','bars');b.style.margin='6px 0 22px';
   for(const x of o.mensual){const d=el('div');d.style.height=Math.max(3,x.total/mx*100)+'%';d.title=x.mes+': '+num(x.total,1)+' buques/día de media ('+num(x.petroleros,1)+' petroleros)';d.append(el('small',null,x.mes.slice(5)));b.append(d)}
@@ -368,9 +372,29 @@ function pResumen(){
   const gk2=kpis([sc?[usd(sc.total),'Stablecoins en circulación [S]']:null,sc?[usd(sc.xrpl.total),'Stablecoins en el XRPL [S]']:null,sc?[usd(sc.stellar.total),'Stablecoins en Stellar [S]']:null,
     us?[num(us.plazos['10A'],2)+' %','Bono de EE. UU. a 10 años, '+us.fecha+' [P]',cambio((us.plazos['10A']-us.prev['10A'])*100,'puntos básicos',0)]:null,
     tic?['$'+num(tic.total[0],0)+' mil millones','Deuda de EE. UU. en manos extranjeras, '+tic.meses[0]+' [P]',cambio((tic.total[0]/tic.total[12]-1)*100,'% en 12 meses')]:null,
-    oz?[oz.ultimo.total+' buques','Ormuz el '+oz.ultimo.fecha+' (media 7 días: '+num(oz.media_7d,1)+') [P]']:null]);
+    oz?[oz.ultimo.total+' buques','Ormuz el '+oz.ultimo.fecha+' (media 7 días: '+num(oz.media_7d,1)+') [P]'+(avisoViejo(oz.ultimo.fecha)?' · '+avisoViejo(oz.ultimo.fecha)+', dato congelado':'')]:null]);
   while(gk2.firstChild)gk.append(gk2.firstChild);c1.append(gk);
+  /* energía, alimentos, miedo y chips: lo que antes solo se veía dentro de las capas */
+  const E=P&&P.energia_precios,om=E&&(E.omie_diario||[]),ou=om&&om[om.length-1],oa=om&&om[om.length-2],FA=P&&P.alimentos&&P.alimentos.fao,fi=FA&&(FA.indices||[])[0];
+  const br=P&&P.materias&&(P.materias.materias||[]).find(x=>x.simbolo==='BZ=F'),vx=P&&P.indices&&P.indices.indices.find(x=>/^VIX/.test(x.nombre)),sx=P&&P.chips&&(P.chips.cotizaciones||[]).find(x=>x.simbolo==='SOXX');
+  const gk3=kpis([ou?[num(ou.media,0)+' €/MWh','Electricidad en España (OMIE), '+ou.fecha+' [P]',oa?cambio((ou.media/oa.media-1)*100,'% frente al día anterior',0):null]:null,
+    fi?[num(fi.valor,1),'Índice FAO de alimentos, '+FA.mes+' [P]',cambio(fi.interanual,'% interanual',1)]:null,
+    br?['$'+num(br.valor,1),'Brent (futuro), '+br.fecha+' [S]',cambio(br.cambio_1d,'% en un día',2)]:null,
+    vx?[num(vx.valor,1),'VIX, miedo en bolsa, '+vx.fecha+' [S]',cambio(vx.cambio_1d,'% en un día',1)]:null,
+    sx?['$'+num(sx.valor,0),'SOXX, chips, '+sx.fecha+' [S]',cambio(sx.cambio_1m,'% en un mes',1)]:null]);
+  while(gk3.firstChild)gk.append(gk3.firstChild);
   s.append(c1);
+  /* mayores movimientos del día: bolsas, materias primas, cripto y chips con variación de 2 % o más */
+  if(P){const mv=[];
+    for(const x of ((P.indices||{}).indices||[]))mv.push({n:x.nombre,v:x.cambio_1d,f:x.fecha,u:'bolsa [S]'});
+    for(const x of ((P.materias||{}).materias||[]))mv.push({n:x.nombre,v:x.cambio_1d,f:x.fecha,u:'materia prima [S]'});
+    for(const x of ((P.mercado||{}).activos||[]))mv.push({n:x.nombre,v:x.cambio_24h,f:(P.mercado.leido||'').slice(0,10),u:'cripto, 24 h [S]'});
+    for(const x of ((P.chips||{}).cotizaciones||[]))mv.push({n:x.nombre,v:x.cambio_1d,f:x.fecha,u:'chips [S]'});
+    const gr=mv.filter(m=>m.v!=null&&Math.abs(m.v)>=2).sort((a,b)=>Math.abs(b.v)-Math.abs(a.v)).slice(0,10);
+    const cm=el('div','caja');cm.append(el('h2',null,'Mayores movimientos del día (2 % o más)'));
+    cm.append(gr.length?tabla([{t:'Activo',f:m=>m.n},{t:'Tipo',f:m=>m.u},{t:'Cambio',n:1,f:m=>cambio(m.v,'%',2)},{t:'Dato de',f:m=>m.f}],gr):el('p','nota-v','Ningún activo de los paneles se mueve un 2 % o más hoy.'));
+    cm.append(el('p','nota-v','Variación frente al cierre anterior de cada serie (Yahoo y CoinGecko, nivel S). Sirve para saber dónde mirar; la causa no está en el dato.'));
+    s.append(cm)}
   const g2=el('div','cols2');
   const c2=el('div','caja');c2.append(el('h2',null,'Últimos movimientos'));
   const ult=D.movimientos.filter(paisOk).slice().sort((a,b)=>a.fecha<b.fecha?1:-1).slice(0,10);
