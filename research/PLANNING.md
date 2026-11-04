@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-04 01:34 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-04 01:39 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -49,7 +49,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - C90 · Centro · Revisión XSS: texto externo inyectado como HTML en docs/movil/index.htm · Sonnet S · ~~2 % · ``
 - C91 ◐ en parte · Centro · Modelo de enlaces país↔evento↔activo↔voz↔predicción (enlaces.json, tesi · Sonnet M · ~~3 % · ``
 - C92 ◐ en parte · Centro · Medición: normalizar predicciones (fecha límite, fuente_id), script de  · Sonnet M · ~~3 % · ``
-- C94 · Centro · Regenerar graphify y detectar contradicciones paneles↔manuales (sin IA) · Sonnet S · ~~1 % · ``
 - C95 · Centro · Plan de salida a producción para la familia: auth, hosting, copias, avi · Opus M · ~~3 % · ``
 - C96 · Centro · Consulta regulatoria de monetización [VERIFICAR con asesor/CNMV]: pregu · Sonnet S · ~~1 % · ``
 **Países y temas (T)** · detalle en `research/COLA-TEMAS-GEMINI.md`
