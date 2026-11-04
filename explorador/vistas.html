@@ -383,6 +383,14 @@ function pResumen(){
     vx?[num(vx.valor,1),'VIX, miedo en bolsa, '+vx.fecha+' [S]',cambio(vx.cambio_1d,'% en un día',1)]:null,
     sx?['$'+num(sx.valor,0),'SOXX, chips, '+sx.fecha+' [S]',cambio(sx.cambio_1m,'% en un mes',1)]:null]);
   while(gk3.firstChild)gk.append(gk3.firstChild);
+  /* España: subvenciones, mortalidad, carretera y delitos (detalle en la pestaña España) */
+  const n0=v=>num(v,0),MOr=D.espana_mortalidad,mw=MOr&&(MOr.semanas||[]).slice(-1)[0],SEr=D.seguridad_eurostat,PGr=D.espana_pagos,bd=PGr&&PGr.bdns&&(PGr.bdns.dias||[]).slice(-1)[0];
+  const rc=SEr&&SEr.carretera&&(SEr.carretera.paises||[]).find(p=>p.id==='ES'),dl=SEr&&SEr.delitos&&(SEr.delitos.paises||[]).find(p=>p.id==='ES'),ho=dl&&dl.delitos&&dl.delitos.ICCS0101;
+  const gk4=kpis([bd?[n0(bd.total)+' convocatorias','Subvenciones publicadas en la BDNS, '+bd.fecha+' (España) [P]']:null,
+    mw?[n0(mw.defunciones)+' defunciones','España, semana '+mw.anio+'-S'+mw.semana+' ('+mw.tipo_dato+') [P]',cambio(mw.exceso_vs_5_anios,'frente a la media de 5 años',0)]:null,
+    rc?[n0(rc.por_millon_hab)+' por millón','Muertos en carretera en España, '+rc.anio+' (Eurostat) [P]']:null,
+    ho?[n0(ho.registrados)+' homicidios','Homicidios dolosos registrados en España, '+ho.anio+' (Eurostat) [P]']:null]);
+  while(gk4.firstChild)gk.append(gk4.firstChild);
   s.append(c1);
   /* mayores movimientos del día: bolsas, materias primas, cripto y chips con variación de 2 % o más */
   if(P){const mv=[];
@@ -1057,6 +1065,15 @@ function pPaises(){
     lista.forEach(f=>{const x=((IN.find(i=>i.id===f.id)||{}).indicadores||{})[k];
       r.appendChild(x?celdaCifra(NOMI[k],x.valor,x.unidad,x.fecha,x.anterior,x.anterior_fecha,(x.fecha||'sin fecha')+' · '+fuentePa(x.fuente)+' · ['+x.nivel+'] · '+(x.definicion||''),k):celdaCifra(NOMI[k],null))});te.appendChild(r)});
   se.appendChild(env(te));s.appendChild(se);
+  /* seguridad (Eurostat): solo ES, FR, DE, IT y PT tienen dato; el resto sale en blanco */
+  const SEG=D.seguridad_eurostat;
+  if(SEG&&SEG.carretera&&SEG.delitos){
+    const ss=seccionPa('Seguridad (Eurostat)','Muertos en carretera y homicidios dolosos por millón de habitantes. Solo países de la UE con dato en Eurostat; los homicidios se calculan dividiendo los registrados entre la población de la fila «Población» de arriba [cálculo propio]. Para España hay más (defunciones semanales, subvenciones) en la pestaña España.',false),ts=tabla0();
+    const anioAnt=(serie,a)=>{const k=Object.keys(serie||{}).sort();const i=k.indexOf(String(a));return i>0?[serie[k[i-1]],k[i-1]]:[null,null]};
+    const fila=(n,u,fn)=>{const r=el('tr','');r.appendChild(nom(n,u));lista.forEach(f=>r.appendChild(fn(f)));ts.appendChild(r)};
+    fila('Muertos en carretera','por millón de habitantes',f=>{const c=SEG.carretera.paises.find(p=>p.id===f.id);if(!c)return celdaCifra('Muertos en carretera',null);const a=anioAnt(c.serie,c.anio),pb=c.muertes&&c.por_millon_hab?c.muertes/c.por_millon_hab:null;return celdaCifra('Muertos en carretera',c.por_millon_hab,'por millón',c.anio,pb&&a[0]!=null?Math.round(a[0]/pb):null,a[1],'Eurostat '+SEG.carretera.tabla+' · ['+SEG.carretera.nivel+'] · '+(SEG.carretera.unidad||''),'carretera')});
+    fila('Homicidios dolosos','por millón de habitantes [cálculo propio]',f=>{const c=SEG.delitos.paises.find(p=>p.id===f.id),h=c&&c.delitos&&c.delitos.ICCS0101,pob=((IN.find(i=>i.id===f.id)||{}).indicadores||{}).poblacion;if(!h||!pob||!pob.valor)return celdaCifra('Homicidios dolosos',null);const a=anioAnt(h.serie,h.anio);return celdaCifra('Homicidios dolosos',Math.round(h.registrados/pob.valor*10)/10,'por millón',h.anio,a[0]!=null?Math.round(a[0]/pob.valor*10)/10:null,a[1],h.registrados+' registrados en '+h.anio+' ÷ '+pob.valor+' M hab. ('+(pob.fecha||'')+') · Eurostat '+SEG.delitos.tabla+' · ['+SEG.delitos.nivel+']','homicidios')});
+    ss.appendChild(env(ts));s.appendChild(ss)}
   Object.keys(NOMD).forEach((d,idx)=>{
     const nombres=[];ES.forEach(e=>((e.dimensiones[d]||{}).cifras||[]).forEach(c=>{if(!nombres.includes(c.nombre))nombres.push(c.nombre)}));
     if(!nombres.length)return;
