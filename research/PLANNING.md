@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-04 02:01 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-04 02:05 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -26,7 +26,17 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - C106 · Centro · Bots frecuentes al Worker (requisito si el repo pasa a privado) · Sonnet M · ~~3 % · ``
 - C107 · Centro · Qué NO construir: ver qué hacen ya gratis OpenBB, Koyfin, TradingView y · Sonnet M · ~~3 % · ``
 - C108 ◐ en parte · Centro · Criterios de medición y relleno de las 58 predicciones · Sonnet M · ~~3 % · ``
-- C109 · Centro · Mapa de cobertura temática (países a nivel superficial; España a fondo: · Sonnet L · ~~6 % · `research/prompts/C109-mapa-cobertura-y-automatizacion.md`
+- C110 · Nivel C · Panel de electricidad (OMIE + REE + Eurostat) sin IA · Sonnet M · ~~3 % · `Añade leer_electricidad() a scripts/actualizar_paneles.py: OMIE marginalpdbc (seguir redirección), REE apidatos y Eurostat nrg_pc_204/205; guarda en paneles.json › energia_precios con campo desde; si falla conserva lo anterior; no toques workflows`
+- C111 · Nivel C · Electricidad Europa por zonas con ENTSO-E · Sonnet S · ~~2 % · `Tras recibir el token de ENTSO-E como secreto, añade las zonas ES/FR/DE/IT/PT a leer_electricidad() sin mostrar el token`
+- C112 · Nivel C · Alimentos: FAO + soja/trigo/maíz/arroz/azúcar (FRED y Yahoo) · Sonnet M · ~~3 % · `Añade leer_alimentos() a actualizar_paneles.py: FAO food_price_indices_data.csv (extrae el enlace de la página), FRED PSOYBUSDM PWHEAMTUSDM PMAIZMTUSDM PRICENPQUSDM PSUGAISAUSDM y Yahoo ZS=F ZR=F SB=F; añade TTF=F a materias; campo desde`
+- C113 · Nivel C · Chips: producción FRED + SOXX/TSM/ASML/MU · Sonnet S · ~~2 % · `Añade leer_chips() con FRED IPG3344S y PCU334413334413 y Yahoo SOXX TSM ASML MU en paneles.json › chips; marca nivel S en Yahoo; sin recomendaciones`
+- C114 · Nivel B · Subvenciones BDNS y contratos PLACSP: conteos diarios · Sonnet M · ~~3 % · `Lee la API BDNS (convocatorias) y agrega por nivel y día; para PLACSP solo cuenta entradas del feed sin guardarlo (13 MB); salida a espana-pagos.json`
+- C115 · Nivel B · Muertes y delitos comparables (Eurostat tran_sf_roadus y crim_off_cat) · Sonnet M · ~~3 % · `Descarga tran_sf_roadus y crim_off_cat para ES/FR/DE/IT/PT y guarda serie anual con nota de definición por país`
+- C116 · Nivel B · Mortalidad (INE tabla 6552) y exceso de mortalidad · Sonnet M · ~~3 % · `Lee defunciones INE vía Tempus (tabla 6552, sin MoMo completo de 724 MB) y propón cómo mostrar exceso de mortalidad sin descargar ese CSV`
+- C117 · Nivel C · RAM/DRAM y centros de datos: ficha manual con fuentes [S] y proxy MU · Sonnet M · ~~4 % · `Busca solo fuentes públicas sobre precios DRAM/NAND y consumo eléctrico de centros de datos (IEA, EIA, comunicados); guarda en explorador/chips-manual.json con nivel S y fecha; marca [ESPECULACIÓN] en ciclos`
+- C118 · Nivel C · Fertilizantes y agua por zonas: Pink Sheet BM e INE · Sonnet M · ~~4 % · `Con OK de Joel para descargar el xlsx del Pink Sheet del Banco Mundial, extrae urea/amoníaco/potasa/DAP; busca precio del agua por CCAA en INE/AEAS y marca [VERIFICAR] lo no oficial`
+- C119 · Nivel A · Rellenar población, energía y balanza (Banco Mundial/Eurostat) para lo · Sonnet M · ~~3 % · `Amplía indicadores de paneles.json con población, consumo eléctrico per cápita (EG.USE.ELEC.KH.PC), balanza corriente y gasto defensa con Banco Mundial v2; mismos 12 países`
+- C120 · Nivel B · Fichas manuales: Interior (criminalidad), DGT, siniestralidad laboral  · Sonnet M · ~~4 % · `Con Chrome, comprueba y documenta en research/ACCESOS-CHROME.md las fuentes de Interior, DGT, Trabajo y EFFIS; no saltes anti-bots; guarda lo verificado en espana-manual.json`
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
@@ -38,7 +48,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - C61 ◐ en parte · Centro · Servicios públicos y estabilidad social por país: sanidad (gasto, hitos · Sonnet M · ~3 % · `research/prompts/C61-servicios-publicos-estabilidad.md`
 - C68 ◐ en parte · Centro · España · Sueldos de cada cargo político (presidente, ministros, secreta · Sonnet L · ~~6 % · `research/prompts/C68-sueldos-por-persona-politicos.md`
 - C68B ◐ en parte · Centro · España · Cuadrar sueldos de secretarios de Estado, subsecretarios y dir · Sonnet M · ~~3 % · `research/prompts/C68B-cuadrar-sueldos-segundo-nivel.md`
-- C69 · Centro · España · España: cada partida con 2024 y 2025 y su variación (IGAE 2024 · Sonnet L · ~~6 % · `research/prompts/C69-espana-2024-vs-2025.md`
+- C69 ◐ en parte · Centro · España · España: cada partida con 2024 y 2025 y su variación (IGAE 2024 · Sonnet L · ~~6 % · `research/prompts/C69-espana-2024-vs-2025.md`
 - C77 ◐ en parte · Centro · España: gasto público y deuda por ministerio, comunidad, municipio y co · Opus L · ~ · ``
 - C79 · Centro · España: PDF del Tesoro, AIReF, IGAE y AEAT (requieren OK de descarga),  · Sonnet M · ~ · ``
 - C80B ◐ en parte · Centro · Fuentes Fase 2: catálogo con estado (API/Chrome/bloqueada/manual) y cad · Sonnet M · ~ · ``
