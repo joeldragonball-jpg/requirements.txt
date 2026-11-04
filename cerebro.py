@@ -632,9 +632,11 @@ def chat_desbloqueado():
     """El chat gasta tu saldo de la IA: con APP_CLAVE en los Secrets de Streamlit solo lo usa quien sepa la contraseña."""
     clave = secreto("APP_CLAVE")
     if not clave:
-        st.warning("⚠️ El chat no tiene contraseña: cualquiera con el enlace de la app podría usarlo y gastar tu saldo. "
-                   "Añade `APP_CLAVE = \"una-contraseña\"` en Settings → Secrets de Streamlit.")
-        return True
+        import privado_vista
+        if privado_vista.disponible():   # en tu ordenador (existe privado/) sigue abierto
+            return True
+        st.error("🔒 El chat está cerrado: falta `APP_CLAVE` en Settings → Secrets de Streamlit (así nadie puede gastar tu saldo).")
+        return False
     if st.session_state.get("app_ok") or st.session_state.get("chat_ok"):   # app_ok: ya entró con la contraseña de la app
         return True
     if st.session_state.get("chat_intentos", 0) >= 5:
