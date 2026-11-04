@@ -1,9 +1,9 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-04 03:17 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-04 04:10 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Hoy (mié 2026-11-04): solo lo casi obligatorio
-- R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 2 días
+- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 3 días
 - Sin rutina fija hoy: elige por prioridad en las secciones de abajo.
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
@@ -93,7 +93,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (3) → W03 · AE/politica; BRICS/ley_marco; AU/politica
 - 🔴 Voces: Voces sin confirmar (7) → W06 · 4 llevan más de 14 días
-- 🔴 Predicciones: Vencidas sin resultado (2) → W06 · #7, #25
 - 🟡 Radar regulatorio: Celdas sin dato (30) → W03 · Más huecos: EG 5, ET 4, UK 4, ZA 3, ID 3
 - 🟡 Países (política): Fichas con datos de más de 90 días o sin fecha (1) → W11 · China
 
@@ -109,8 +108,8 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - 2026-10-29 · Reunión del Banco de Japón (alto) → ✓ cubierto por W01 del 2026-11-02
 - 2026-10-30 · Brasil: último día para que los proveedores cripto existentes pidan au (medio) → ✓ cubierto por W01 del 2026-11-02
 - 2026-11-01 · OPEP+ (7 países): reunión mensual (medio) → ✓ cubierto por W10 del 2026-11-02
-- 2026-11-03 · EE. UU.: elecciones de mitad de mandato (alto) → ⏳ SIN research: decidir (EV)
-- 2026-11-03 · Australia: decisión del RBA sobre el tipo de efectivo (medio) → ⏳ SIN research: decidir (EV)
+- 2026-11-03 · EE. UU.: elecciones de mitad de mandato (alto) → ✓ revisado (hecho)
+- 2026-11-03 · Australia: decisión del RBA sobre el tipo de efectivo (medio) → ✓ revisado (hecho)
 Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.
 
 ## Calendario: próximos 14 días de impacto y qué los cubre
@@ -128,8 +127,7 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → cubre W04 (ETF y flujos)
 
 ## Predicciones que vencen en 14 días
-- #7 · 2026-11-03 · CEO de Solana Policy Institute
-- #25 · 2026-11-03 · Donald Trump (Truth Social, citado por CNBC)
+- ninguna
 
 ## Próximas fechas clave
 - 2026-11-04 · Zona euro: IPCA adelantado de octubre (Eurostat)
