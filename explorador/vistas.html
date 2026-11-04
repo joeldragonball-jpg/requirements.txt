@@ -1279,6 +1279,13 @@ function pEspana(){
     const r=MO.resumen_anio_en_curso||{};
     add(bloque('Defunciones semanales y exceso estimado',MO.nota,{nivel:MO.nivel,t:'INE (EDeS) · '+MO.serie+' · leído '+MO.leido},conL(
       r.anio?'En '+r.anio+' ('+r.semanas+' semanas): exceso de '+n0(r.exceso_vs_2015_2019)+' frente a 2015-2019 y de '+n0(r.exceso_vs_5_anios)+' frente a los 5 años previos.':null,
+      (()=>{const w=el('div'),sm=MO.semanas,u=sm.slice(-26),ex=u.map(x=>x.exceso_vs_5_anios),sg=sm.slice(-52);
+        w.style.margin='6px 0 12px';
+        const f1=el('div','nota-v','Exceso semanal frente a la media de 5 años, últimas '+u.length+' semanas ('+u[0].fecha+' → '+u[u.length-1].fecha+'): mín '+n0(Math.min(...ex))+' · máx '+n0(Math.max(...ex))+' · última '+n0(ex[ex.length-1])+'. Por encima de la línea de cero hay más defunciones de lo habitual.');
+        const bw=420,bh=70,mx=Math.max(1,...ex.map(Math.abs)),b=el('div');b.style.cssText='display:flex;align-items:center;height:'+bh+'px;width:'+bw+'px;gap:1px;border-bottom:1px dashed #667;margin:6px 0';
+        ex.forEach(v=>{const d=el('div');d.style.cssText='flex:1;background:'+(v>0?'#ff6b7d':'#4fe3a1')+';height:'+Math.max(2,Math.abs(v)/mx*(bh/2))+'px;'+(v>0?'align-self:flex-end;margin-bottom:'+(bh/2)+'px':'align-self:flex-start;margin-top:'+(bh/2)+'px');d.title=v>0?'+'+n0(v):n0(v);b.append(d)});
+        const f2=el('div','nota-v','Defunciones por semana, últimas '+sg.length+' semanas: ');f2.append(spark(sg.map(x=>x.defunciones),260,30,'#5aa9e6'));
+        w.append(f1,b,f2);return w})(),
       tabla([{t:'Semana',f:x=>x.anio+'-S'+x.semana},{t:'Fecha',f:x=>x.fecha},{t:'Defunciones',n:1,f:x=>n0(x.defunciones)},{t:'Exceso vs 2015-19',n:1,f:x=>n0(x.exceso_vs_2015_2019)},{t:'Exceso vs 5 años',n:1,f:x=>n0(x.exceso_vs_5_anios)},{t:'Dato',f:x=>x.tipo_dato}],MO.semanas.slice().reverse())),false))}
   const SE=D.seguridad_eurostat;
   if(SE){
