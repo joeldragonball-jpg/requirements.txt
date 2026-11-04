@@ -1,9 +1,9 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-04 22:03 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-04 23:24 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
-## Hoy (mié 2026-11-04): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ✓ · racha 3 días
+## Hoy (jue 2026-11-05): solo lo casi obligatorio
+- R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 3 días
 - Sin rutina fija hoy: elige por prioridad en las secciones de abajo.
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
@@ -34,6 +34,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - C129 · Tablero · Auditoría visual fuerte (con Opus): tablas, presupuestos y explicacion · Opus L · ~~7 % · `research/prompts/C129-auditoria-visual-opus.md`
 - C131 · Seguimiento · Replantear: 5 grupos claros (hoy, periódicas, bloqueadas, parciale · Sonnet M · ~~3 % · `research/prompts/C131-replantear-seguimiento.md`
 - C132 · Móvil · Centro de control: bolsas, ETFs, fondos indexados, materias primas (petr · Opus L · ~~6 % · `research/prompts/C132-centro-control-movil.md`
+- C133 · Países · Datos de 2025-2026, comparación histórica (2 y 5 años, máximo) y «duran · Opus L · ~~6 % · `research/prompts/C133-paises-historia-y-mandatos.md`
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
@@ -84,18 +85,18 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [alta] 2026-11-04 (0 d) · Las bolsas se disparan tras la victoria demócrata en el Congreso.
-- [alta] 2026-11-04 (0 d) · El Dow sube 1.500 puntos y el Brent baja de 95 $.
-- [alta] 2026-11-04 (0 d) · El bono a 10 años cae 19 puntos básicos en un día.
-- [alta] 2026-11-04 (0 d) · Los demócratas ganan el Senado y cambia el mapa de la regulación cripto.
-- [alta] 2026-11-04 (0 d) · La SEC ve Canton Coin como materia prima digital y no recomendará acciones.
-- [media] 2026-10-22 (13 d) · hutiES a Arabia Saudi
-- [media] 2026-10-22 (13 d) · hutiES a Arabia Saudi
-- [media] 2026-10-23 (12 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
+- [alta] 2026-11-04 (1 d) · Las bolsas se disparan tras la victoria demócrata en el Congreso.
+- [alta] 2026-11-04 (1 d) · El Dow sube 1.500 puntos y el Brent baja de 95 $.
+- [alta] 2026-11-04 (1 d) · El bono a 10 años cae 19 puntos básicos en un día.
+- [alta] 2026-11-04 (1 d) · Los demócratas ganan el Senado y cambia el mapa de la regulación cripto.
+- [alta] 2026-11-04 (1 d) · La SEC ve Canton Coin como materia prima digital y no recomendará acciones.
+- [media] 2026-10-22 (14 d) · hutiES a Arabia Saudi
+- [media] 2026-10-22 (14 d) · hutiES a Arabia Saudi
+- [media] 2026-10-23 (13 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
 - … y 45 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
-- 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (2) → W03 · AE/politica; BRICS/ley_marco
+- 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (4) → W03 · BR/politica; RU/stablecoins; AE/politica; BRICS/ley_marco
 - 🔴 Voces: Voces sin confirmar (8) → W06 · 4 llevan más de 14 días
 - 🟡 Radar regulatorio: Celdas sin dato (30) → W03 · Más huecos: EG 5, ET 4, UK 4, ZA 3, ID 3
 - 🟡 Países (política): Fichas con datos de más de 90 días o sin fecha (1) → W11 · China
@@ -114,11 +115,11 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - 2026-11-01 · OPEP+ (7 países): reunión mensual (medio) → ✓ cubierto por W10 del 2026-11-02
 - 2026-11-03 · EE. UU.: elecciones de mitad de mandato (alto) → ✓ revisado (hecho)
 - 2026-11-03 · Australia: decisión del RBA sobre el tipo de efectivo (medio) → ✓ revisado (hecho)
+- 2026-11-04 · Tesoro de EE. UU.: anuncio trimestral de refinanciación (medio) → ⏳ SIN research: decidir (EV)
+- 2026-11-04 · Zona euro: IPCA adelantado de octubre (Eurostat) (medio) → ⏳ SIN research: decidir (EV)
 Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.
 
 ## Calendario: próximos 14 días de impacto y qué los cubre
-- 2026-11-04 · Tesoro de EE. UU.: anuncio trimestral de refinanciación (medio) → cubre W02 (Deuda y subastas)
-- 2026-11-04 · Zona euro: IPCA adelantado de octubre (Eurostat) (medio) → cubre W01 (Datos macro y tipos)
 - 2026-11-05 · Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,7 (alto) → cubre W01 (Tipos de interés)
 - 2026-11-06 · Empleo EE. UU. (informe de octubre) (alto) → cubre W01 (Datos macro y tipos)
 - 2026-11-06 · Brasil: bancos y entidades de pago no podrán operar con prov (medio) → cubre W03 (Regulación por países)
@@ -129,15 +130,17 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 - 2026-11-11 · OPEP: informe mensual del mercado petrolero (noviembre) (medio) → cubre W10 (Energía y geopolítica)
 - 2026-11-13 · AIE: informe mensual del mercado petrolero (noviembre) (medio) → cubre W10 (Energía y geopolítica)
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → cubre W04 (ETF y flujos)
+- 2026-11-18→11-19 · APEC en Shenzhen: cumbre de líderes (medio) → cubre W03 (Regulación por países)
+- 2026-11-18 · Reino Unido: IPC de octubre (ONS) (medio) → cubre W01 (Datos macro y tipos)
 
 ## Predicciones que vencen en 14 días
 - ninguna
 
 ## Próximas fechas clave
-- 2026-11-04 · Zona euro: IPCA adelantado de octubre (Eurostat)
 - 2026-11-05 · Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,75 %)
 - 2026-11-06 · Empleo EE. UU. (informe de octubre)
 - 2026-11-06 · Brasil: bancos y entidades de pago no podrán operar con proveedores cripto no autorizados 
 - 2026-11-10 · Inflación EE. UU. (IPC de octubre)
 - 2026-11-10 · EIA: perspectivas de energía a corto plazo (STEO)
 - 2026-11-11 · Corea: fin de comentarios de la FSC sobre tokenización de valores
+- 2026-11-13 · AIE: informe mensual del mercado petrolero (noviembre)
