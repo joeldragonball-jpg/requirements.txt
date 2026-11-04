@@ -12,9 +12,9 @@ Mapa de los informes más recientes por tema. Lo genera `scripts/indice_investig
 Por tema, los 3 informes más recientes (fecha · título · ruta · una frase de su resumen).
 
 ## Auditorías y verificaciones
+- 2026-11-04 · C127 · Auditoría visual, fase 1 (solo mirar, sin tocar código) (`informes/research/2026-11-04-C127-auditoria-visual-fase1.md`): Línea de tiempo Buena idea visual; poco legible por abajo.
 - 2026-11-04 · C109 · Mapa de cobertura temática y plan de automatización (4-nov-2026) (`informes/research/2026-11-04-C109-mapa-cobertura.md`): Nivel A (países) está bien cubierto: 12 países × 9 indicadores en paneles.json › indicadores (ipc, paro, paro juvenil, pib, deuda, déficit, pobreza,…
 - 2026-11-03 · Verificación grande del 2 y 3-nov-2026 (plantilla `research/plantillas/verificacion.md`) (`informes/research/2026-11-03-verificacion-grande.md`): Lectura hecha el 3 nov 2026 entre ≈19:40 y 21:00 (Madrid). Etiquetas: [P] confirmado con fuente primaria · [S] solo prensa · [DISCREPA] distinto de…
-- 2026-11-03 · C98 · Segunda pasada de la auditoría de visión (Opus, 3-nov-2026) (`informes/research/2026-11-03-C98-auditoria-opus.md`): C81 acierta en el diagnóstico general, pero se equivoca en los cimientos de los cruces : no existe un pais id común (hay tres esquemas de id de país)…
 
 ## Voces y predicciones
 - 2026-11-02 · W07 · Research de fuentes (2-nov-2026) (`informes/research/2026-11-02-W07-fuentes.md`): Alcance: enlaces de explorador/voces.json , explorador/regulacion.json y eventos/calendario.toml ; prueba de fuentes primarias sin navegador. No…
@@ -52,14 +52,14 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-29 · W03E · Irán, Egipto y Etiopía, pasada 3 · 2026-10-29 (`informes/research/2026-10-29-W03E-pasada3.md`): Tercera pasada con fuentes oficiales abiertas hoy (Chrome y curl). Edita solo explorador/regulacion.json . Sin recomendaciones: el radar describe…
 
 ## Sesiones diarias (apertura y cierre)
+- 2026-11-04 · Informe de CIERRE — 2026-11-04 (mié) (`informes/2026-11-04-cierre.md`): Wall Street sube fuerte (S&P +1,6 %, Dow +3,0 %, VIX 16,6) el día en que CBS informa de victoria demócrata en ambas cámaras [S; VERIFICAR].
+- 2026-11-04 · Informe de APERTURA — 2026-11-04 (mié) (`informes/2026-11-04-apertura.md`): Asia cae: Nikkei −3,56 %, Kospi −3,47 %; futuros del S&P −1,3 % [S].
 - 2026-11-04 · C58 · Cierre de huecos: EE. UU. midterms (4-nov-2026) (`informes/research/2026-11-04-C58-us-midterms.md`): Estado previo: paises.json (12 países) y elecciones.json ya existían; los huecos de NL/FR/IT/GB están en 2026 11 03 C58 huecos.md. Aquí solo EE. UU.…
-- 2026-11-03 · Informe de CIERRE — 2026-11-03 (mar) (`informes/2026-11-03-cierre.md`): Wall Street cierra mixto: S&P +0,4 %, Nasdaq +0,8 %, Dow −0,4 %, VIX 20,9.
-- 2026-11-03 · Informe de APERTURA — 2026-11-03 (mar) (`informes/2026-11-03-apertura.md`): Europa cede (Euro Stoxx −0,51 %, IBEX −0,79 %, FTSE −1,14 %) y Wall Street sube a media sesión (S&P +0,45 %, Nasdaq +0,98 %) [S].
 
 ## Otros
-- 2026-11-04 · C69 · España 2024 vs 2025, parte 2: euros por habitante en términos reales (`informes/research/2026-11-04-C69-espana-2024-2025-parte2.md`): € por habitante 2024 y 2025 y variación real para cada sección y el total del Estado. Método (todo ya en el repo, sin descargas nuevas):
-- 2026-11-04 · C32 · Móvil: pantalla principal y auditoría de paneles (4-nov-2026) (`informes/research/2026-11-04-C32-movil-principal.md`): cubre: C32 · Probado en el navegador integrado a 375 px ( docs/movil/ , servidor local), sin llamar a ninguna API.
-- 2026-11-03 · Datos vivos automatizados (3-nov-2026) (`informes/research/2026-11-03-datos-vivos.md`): Funciones nuevas en scripts/actualizar paneles.py ; salida en explorador/paneles.json (claves nuevas). Si una fuente falla se conserva el dato…
+- 2026-11-04 · EV · Elecciones de mitad de mandato de EE. UU. (3-nov-2026) (`informes/research/2026-11-04-EV-elecciones-eeuu.md`): Qué pasó (HECHOS según proyecciones, no recuento oficial)
+- 2026-11-04 · EV · Decisión del RBA (3-nov-2026) (`informes/research/2026-11-04-EV-rba-3-nov.md`): Sube el tipo objetivo 25 pb hasta 4,85 % (desde 4,60 %), por mayoría: 6 votos a favor y 3 por mantener en 4,60 %.
+- 2026-11-04 · Despeja La X — Entrevista a Alba Puerro (análisis técnico, ondas de Wolfe) (`informes/videos/2026-11-04-despeja-la-x-alba-puerro-ondas-de-wolfe.md`): Es un vídeo de formación, no de noticias. Ideas: (1) tener claro por qué se entra y salir solo si cambian los fundamentales o se pierde la…
 
 ## Fuentes y datos nuevos (sin fecha en el nombre)
 - A. Tipos de interés de los bancos centrales: fuentes y calendario de actualización (`research/fuentes-nuevas/A-tipos-bancos-centrales.md`): La tabla tipos vivos cubre 5 bancos con fuente primaria directa (Fed, BCE, BoE, BCB Brasil, Banco de Canadá) y tipos bis otros 10 vía BIS (RU, ZA,…

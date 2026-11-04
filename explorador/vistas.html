@@ -921,8 +921,10 @@ function pCalendario(){
   const ev=X.calendario.eventos.filter(e=>e.fin>=HOYS&&(!calTema||e.tema===calTema));
   c.append(el('div','nota-v',ev.length+' fechas. Color = tema; ★ ALTO = impacto alto (borde grueso y brillo). Los anuncios no son hechos hasta que se confirmen.'));
   let mes='',gm=null;
+  const top3=ev.filter(e=>e.impacto==='alto').slice(0,3);
+  if(top3.length){c.append(el('h3',null,'Lo más próximo (impacto alto)'));const gt=el('div','mes');top3.forEach(e=>gt.append(evCard(e)));c.append(gt)}
   if(!ev.length){const a=el('div','alt');a.append(el('h4',null,'Sin fechas para este tema; las próximas de cualquier tema'));a.append(tabla([{t:'Fecha',f:e=>e.ini},{t:'Qué',f:e=>e.titulo},{t:'Capa',f:e=>capaNom(e.capa)}],X.calendario.eventos.filter(e=>e.fin>=HOYS).slice(0,6)));c.append(a)}
-  for(const e of ev){const m=e.ini.slice(0,7);if(m!==mes){mes=m;c.append(el('h3',null,m));gm=el('div','mes');c.append(gm)}
+  for(const e of ev){if(top3.includes(e))continue;const m=e.ini.slice(0,7);if(m!==mes){mes=m;c.append(el('h3',null,m));gm=el('div','mes');c.append(gm)}
     gm.append(evCard(e))}
   s.append(c);
 }
