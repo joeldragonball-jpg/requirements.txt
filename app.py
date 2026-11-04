@@ -13,7 +13,7 @@ from pathlib import Path
 
 import streamlit.components.v1 as components
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime
+from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
 try:
@@ -358,20 +358,42 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-def candado():
-    """Contraseña de la app: la misma APP_CLAVE del chat (Settings → Secrets de Streamlit). Si no existe, la app queda
-    abierta como antes. Al acertarla, la dirección lleva una huella (?k=...): si guardas esa dirección en favoritos no te
-    la vuelve a pedir, ni al recargar ni cuando la pestaña se reconecta. La huella no revela la contraseña (es un HMAC),
-    pero quien tenga la dirección completa entra: no la compartas. Para anular todas las huellas, cambia APP_CLAVE."""
+ORIGEN_ENTRADA = "https://joeldragonball-jpg.github.io"   # página de entrada (docs/index.html): único destino del aviso listo()
+MAX_FALLOS, VENTANA_FALLOS = 8, 600                        # intentos fallidos de contraseña permitidos en 10 min, entre todas las sesiones
+
+
+@st.cache_resource
+def _fallos():
+    """Marcas de tiempo de las contraseñas falladas, compartidas por todas las sesiones de este servidor (en memoria)."""
+    return []
+
+
+def _huellas(clave):
+    """Huellas válidas del mes actual y del anterior: caducan solas, así una dirección filtrada deja de servir en 1-2 meses."""
+    hoy = datetime.now(ZoneInfo("Europe/Madrid"))
+    meses = (hoy, hoy.replace(day=1) - timedelta(days=1))
+    return [hmac.new(clave.encode(), f"cartera-app-v2|{m:%Y-%m}".encode(), hashlib.sha256).hexdigest()[:32] for m in meses]
+
+
+def candado(local=False):
+    """Contraseña de la app: la misma APP_CLAVE del chat (Settings → Secrets de Streamlit). Sin APP_CLAVE la app solo se
+    abre en tu ordenador (local=True, donde existe privado/); desplegada, queda cerrada. Al acertarla, la dirección lleva una
+    huella (?k=...) que caduca (mes actual + anterior): si guardas esa dirección en favoritos no te la vuelve a pedir
+    mientras sea válida. La huella no revela la contraseña (es un HMAC), pero quien tenga la dirección completa entra
+    hasta que caduque: no la compartas. Para anular todas las huellas ya, cambia APP_CLAVE."""
     try:
         clave = st.secrets.get("APP_CLAVE")
     except Exception:
         clave = None
     if not clave:
-        return
+        if local:
+            return
+        st.error("🔒 Acceso privado. Esta app necesita su contraseña configurada.")
+        st.stop()
     clave = str(clave)
-    huella = hmac.new(clave.encode(), b"cartera-app-v1", hashlib.sha256).hexdigest()[:32]
-    if st.session_state.get("app_ok") or hmac.compare_digest(str(st.query_params.get("k", "")).encode(), huella.encode()):
+    huellas = _huellas(clave)
+    k = str(st.query_params.get("k", "")).encode()
+    if st.session_state.get("app_ok") or any(hmac.compare_digest(k, h.encode()) for h in huellas):
         st.session_state["app_ok"] = True
         if st.session_state.pop("app_aviso", False):
             st.toast("Guarda esta página en favoritos tal cual: la dirección ya lleva tu acceso y no te pedirá la contraseña.",
@@ -392,13 +414,20 @@ def candado():
         intento = st.text_input("Contraseña", type="password", key="app_clave_input",
                                 placeholder="Contraseña", label_visibility="collapsed")
         if intento:
-            if hmac.compare_digest(intento.encode(), clave.encode()):
+            fallos = _fallos()
+            ahora = time.time()
+            fallos[:] = [f for f in fallos if ahora - f < VENTANA_FALLOS]
+            if len(fallos) >= MAX_FALLOS:
+                st.error("Demasiados intentos fallidos. Espera unos minutos.")
+            elif hmac.compare_digest(intento.encode(), clave.encode()):
                 st.session_state["app_ok"] = True
                 st.session_state["app_aviso"] = True
-                st.query_params["k"] = huella
+                st.query_params["k"] = huellas[0]
                 st.rerun()
-            time.sleep(1)   # frena los intentos seguidos
-            st.error("Contraseña incorrecta.")
+            else:
+                fallos.append(ahora)
+                time.sleep(1)   # frena los intentos seguidos
+                st.error("Contraseña incorrecta.")
     listo()   # la pantalla de contraseña ya está dibujada: la página de entrada puede retirarse
     st.stop()
 
@@ -463,7 +492,7 @@ def listo():
     try:
         components.html("""<script>try {
           var k = new URL(window.parent.location.href).searchParams.get('k');
-          window.top.postMessage({tipo: 'cartera-listo', k: k}, '*');
+          window.top.postMessage({tipo: 'cartera-listo', k: k}, '""" + ORIGEN_ENTRADA + """');
         } catch (e) {}</script>""", height=0)
     except Exception:
         pass
@@ -475,12 +504,12 @@ if str(st.query_params.get("via", "")) == "shell":
                 # el marco ya llega al borde de la pantalla: la barra flotante baja sin depender de la zona segura (env), que ahí no es fiable
                 ".st-key-dest_menu, .stApp:has(.modo-barra) .st-key-seccion {bottom: 10px !important}</style>", unsafe_allow_html=True)
 ajustes_movil()
-candado()
+import privado_vista
+_LOCAL = privado_vista.disponible()
+candado(local=_LOCAL)
 
 # Secciones: la app desplegada solo enseña la cartera (con sus noticias). Cerebro, Seguimiento y Privado salen en tu
 # ordenador (donde existe la carpeta privado/, que no se sube) o si pones MOSTRAR_CEREBRO = true en los Secrets.
-import privado_vista
-_LOCAL = privado_vista.disponible()
 try:
     _CEREBRO_PUBLICO = bool(st.secrets.get("MOSTRAR_CEREBRO"))
 except Exception:
