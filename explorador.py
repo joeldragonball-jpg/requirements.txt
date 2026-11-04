@@ -290,6 +290,10 @@ def _html(conceptos):
         datos["voces_tesis"] = json.loads((RAIZ / "privado" / "voces-tesis.json").read_text(encoding="utf-8"))
     except Exception:
         datos["voces_tesis"] = None
+    try:                              # hilos país↔evento↔activo↔voz↔predicción (C91): solo ids y rutas, sin tesis
+        datos["enlaces"] = json.loads((CARPETA / "enlaces.json").read_text(encoding="utf-8"))
+    except Exception:
+        datos["enlaces"] = None
     try:                              # exposición soberana por banco (scripts/preparar_bancos_eba.py)
         datos["bancos"] = json.loads((CARPETA / "bancos-eba.json").read_text(encoding="utf-8"))
     except Exception:
