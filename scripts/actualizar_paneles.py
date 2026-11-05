@@ -19,6 +19,9 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import yahoo_diario  # noqa: E402
+
 SALIDA = Path(__file__).resolve().parent.parent / "explorador" / "paneles.json"
 URL_TIC = "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt"
 URL_LLAMA = "https://stablecoins.llama.fi/stablecoins?includePrices=true"
@@ -160,7 +163,7 @@ def leer_stablecoins():
 URL_PROTOCOLOS = "https://api.llama.fi/protocols"
 URL_PRECIOS = "https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin,ethereum&vs_currencies=usd&include_market_cap=true&include_24hr_change=true"
 URL_YAHOO = "https://query1.finance.yahoo.com/v8/finance/chart/{s}?range=5d&interval=1d"
-INDICES = (("^GSPC", "S&P 500", "EE. UU."), ("ES=F", "Futuros S&P 500", "EE. UU. (futuros)"), ("^IXIC", "Nasdaq Composite", "EE. UU."),
+INDICES = (("^GSPC", "S&P 500", "EE. UU."), ("ES=F", "Futuros S&P 500", "EE. UU. (futuros)"), ("^IXIC", "Nasdaq Composite", "EE. UU."), ("^DJI", "Dow Jones Industrial", "EE. UU."),
            ("^STOXX50E", "Euro Stoxx 50", "Zona euro"), ("^IBEX", "Ibex 35", "España"), ("^N225", "Nikkei 225", "Japón"),
            ("^KS11", "Kospi", "Corea del Sur"), ("000001.SS", "Shanghái Composite", "China"), ("^HSI", "Hang Seng", "Hong Kong"),
            ("^GDAXI", "DAX 40", "Alemania"), ("^FCHI", "CAC 40", "Francia"), ("^FTSE", "FTSE 100", "Reino Unido"), ("^NSEI", "Nifty 50", "India"),
@@ -247,8 +250,7 @@ def leer_indices():
     for simbolo, nombre, zona in INDICES:
         try:
             d = json.loads(descargar(URL_YAHOO.format(s=urllib.request.quote(simbolo))))["chart"]["result"][0]
-            cierres = d["indicators"]["quote"][0]["close"]
-            pares = [(datetime.fromtimestamp(t, timezone.utc).strftime("%Y-%m-%d"), c) for t, c in zip(d["timestamp"], cierres) if c]
+            pares = yahoo_diario.cierres(d)   # fecha de la sesión en hora de la bolsa (C132)
             if len(pares) < 2:
                 raise ValueError("menos de 2 cierres")
             (f0, c0), (f1, c1) = pares[-2], pares[-1]
@@ -282,10 +284,10 @@ def leer_watchlist():
     for v in lista:
         try:
             d = json.loads(descargar(URL_YAHOO.format(s=urllib.request.quote(v["yahoo"])) .replace("range=5d", "range=1y") + "&events=div"))["chart"]["result"][0]
-            pares = [(datetime.fromtimestamp(t, timezone.utc).date(), c) for t, c in zip(d["timestamp"], d["indicators"]["quote"][0]["close"]) if c]
+            pares = [(datetime.strptime(f, "%Y-%m-%d").date(), c) for f, c in yahoo_diario.cierres(d)]   # fecha de sesión; el último par ya es el precio de mercado (C132)
             if len(pares) < 2:
                 raise ValueError("menos de 2 cierres")
-            ultimo = float(d["meta"].get("regularMarketPrice") or pares[-1][1])
+            ultimo = float(pares[-1][1])
 
             def desde(dias):
                 previos = [c for f, c in pares if f <= hoy - timedelta(days=dias)]
@@ -521,13 +523,49 @@ MATERIAS = (("GC=F", "Oro", "$ por onza"), ("SI=F", "Plata", "$ por onza"), ("HG
             ("BZ=F", "Petróleo Brent (futuro)", "$ por barril"))  # TTF=F probado el 4-nov-2026: Yahoo no devuelve cierres suficientes (pendiente de ENTSO-E/otra fuente, C111)
 
 
+DIVISAS_BCE = (("USD", "Dólar estadounidense"), ("GBP", "Libra esterlina"), ("CHF", "Franco suizo"), ("JPY", "Yen japonés"), ("CNY", "Yuan chino"))
+
+
+def leer_divisas():
+    """C132: cuánto vale 1 euro en otras monedas (tipo de referencia del BCE, oficial [P], ~16:00 CET, días hábiles) e índice del dólar DXY (Yahoo [S])."""
+    salida = {"fuente": "https://data.ecb.europa.eu/", "nivel": "P", "divisas": [], "fallos": []}
+    claves = "+".join(c for c, _ in DIVISAS_BCE)
+    texto = _json_url(f"https://data-api.ecb.europa.eu/service/data/EXR/D.{claves}.EUR.SP00.A?lastNObservations=2&format=csvdata", cabeceras={"Accept": "text/csv"}, t=20)
+    filas = {}
+    for f in csv.DictReader(io.StringIO(texto)):
+        if f.get("OBS_VALUE"):
+            filas.setdefault(f["CURRENCY"], []).append((f["TIME_PERIOD"], float(f["OBS_VALUE"])))
+    for cod, nombre in DIVISAS_BCE:
+        s = sorted(filas.get(cod, []))
+        if not s:
+            salida["fallos"].append(f"BCE {cod}: sin datos")
+            continue
+        f1, v1 = s[-1]
+        fila = {"codigo": cod, "nombre": nombre, "valor": v1, "fecha": f1, "nivel": "P",
+                "url": f"https://data.ecb.europa.eu/data/datasets/EXR/EXR.D.{cod}.EUR.SP00.A"}
+        if len(s) > 1:
+            fila["cambio_1d"] = round((v1 / s[-2][1] - 1) * 100, 2)
+        salida["divisas"].append(fila)
+    try:
+        d = json.loads(descargar(URL_YAHOO.format(s=urllib.request.quote("DX-Y.NYB"))))["chart"]["result"][0]
+        pares = yahoo_diario.cierres(d)
+        (f0, c0), (f1, c1) = pares[-2], pares[-1]
+        salida["dxy"] = {"nombre": "Índice del dólar (DXY)", "valor": round(c1, 2), "fecha": f1, "cambio_1d": round((c1 / c0 - 1) * 100, 2), "nivel": "S",
+                         "url": "https://finance.yahoo.com/quote/DX-Y.NYB"}
+    except Exception as e:
+        salida["fallos"].append(f"DXY: {type(e).__name__}: {e}")
+    if not salida["divisas"]:
+        raise ValueError("BCE sin tipos de cambio")
+    return salida
+
+
 def leer_materias():
     """Materias primas (futuros continuos, Yahoo Finance, no oficial [S]): último cierre, cambio de 1 día y de ~1 mes."""
     salida = {"fuente": "https://finance.yahoo.com/", "nivel": "S", "materias": [], "fallos": []}
     for simbolo, nombre, unidad in MATERIAS:
         try:
             d = json.loads(descargar(URL_YAHOO.format(s=urllib.request.quote(simbolo)).replace("range=5d", "range=1mo")))["chart"]["result"][0]
-            pares = [(datetime.fromtimestamp(t, timezone.utc).strftime("%Y-%m-%d"), c) for t, c in zip(d["timestamp"], d["indicators"]["quote"][0]["close"]) if c]
+            pares = yahoo_diario.cierres(d)   # fecha de la sesión en hora de la bolsa (C132)
             if len(pares) < 3:
                 raise ValueError("menos de 3 cierres")
             (f0, c0), (f1, c1) = pares[-2], pares[-1]
@@ -1298,7 +1336,7 @@ def main():
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
     limite = time.monotonic() + LIMITE_S
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("espana_ine", leer_espana_ine), ("espana_deuda", leer_espana_deuda), ("espana_hipotecas", leer_espana_hipotecas), ("vivienda_eurostat", leer_vivienda_eurostat), ("brasil", leer_brasil), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias), ("energia_precios", leer_electricidad), ("alimentos", leer_alimentos), ("chips", leer_chips)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("espana_ine", leer_espana_ine), ("espana_deuda", leer_espana_deuda), ("espana_hipotecas", leer_espana_hipotecas), ("vivienda_eurostat", leer_vivienda_eurostat), ("brasil", leer_brasil), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias), ("divisas", leer_divisas), ("energia_precios", leer_electricidad), ("alimentos", leer_alimentos), ("chips", leer_chips)):
         t0 = time.monotonic()
         if t0 > limite:
             fallos.append(f"{clave}: omitido por tiempo (más de {LIMITE_S} s en total)")

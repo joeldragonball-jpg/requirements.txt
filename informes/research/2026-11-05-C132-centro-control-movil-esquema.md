@@ -87,3 +87,11 @@ Coste estimado de la fase 2: ~3-4 % semanal (Opus o Sonnet; el diseño ya está 
 
 ## Lecciones
 - Antes de montar un panel nuevo, comprobar que una misma cifra no sale de dos scripts distintos (hoy el Brent: 104,06 frente a 94,89).
+
+## Fase 2 hecha (5-nov-2026, con el OK de Joel)
+- **Brent arreglado en la raíz**: `scripts/yahoo_diario.py` fecha cada cierre con la hora de la bolsa y usa el último precio de mercado. Se aplica a índices, materias primas, futuros de alimentos, petróleo del móvil y watchlist. Antes y después: Brent 104,06 $ «4-nov» / 94,89 $ «5-nov» → 94,67 $ con fecha 4-nov y −8,6 % en las dos fuentes. El mismo fallo afectaba a la watchlist: VWCE, IWDA y VUSA daban el precio de hoy con la variación del día anterior (−0,78 % «3-nov» → +1,07 % el 4-nov).
+- **Datos nuevos en el bot de paneles (sin IA)**: Dow Jones (`^DJI`), VWCE y SPY (en `watchlist.toml`), cacao (`CC=F`), divisas del BCE (USD, GBP, CHF, JPY, CNY) y DXY (`leer_divisas`, clave `divisas`). Aparecerán en el móvil cuando el bot de paneles corra con este código.
+- **`construir_movil.py`**: nueva clave `control` (7 grupos, ~14 KB).
+- **`docs/movil/index.html`**: bloque «Control» arriba de Mercado, hecho con `createElement` y `textContent`; lo de antes queda plegado en «Análisis y más datos». Caché del móvil `cerebro-movil-56`.
+- **Probado** a 375 px en modo oscuro y claro: 7 tarjetas y 49 cifras con los datos nuevos, sin desplazamiento lateral, sin errores nuevos en la consola.
+- Pendiente fuera de C132: gas TTF (C111), gasolina y diésel (Weekly Oil Bulletin) y valor liquidativo de fondos indexados.

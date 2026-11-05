@@ -17,6 +17,9 @@ from datetime import date, datetime, timedelta, timezone, tzinfo
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import yahoo_diario  # noqa: E402
+
 RAIZ = Path(__file__).resolve().parent.parent
 SALIDA = RAIZ / "docs" / "movil" / "data.json"
 URL_YAHOO = "https://query1.finance.yahoo.com/v8/finance/chart/{s}?range=5d&interval=1d"
@@ -221,7 +224,7 @@ def petroleo():
     salida = {}
     for clave, simbolo, nombre in PETROLEO:
         d = json.loads(descargar(URL_YAHOO.format(s=urllib.request.quote(simbolo))))["chart"]["result"][0]
-        pares = [(datetime.fromtimestamp(t, timezone.utc).strftime("%Y-%m-%d"), c) for t, c in zip(d["timestamp"], d["indicators"]["quote"][0]["close"]) if c]
+        pares = yahoo_diario.cierres(d)   # fecha de la sesión en hora de la bolsa, no la de la descarga (C132)
         (f0, c0), (f1, c1) = pares[-2], pares[-1]
         salida[clave] = {"nombre": nombre, "valor": round(c1, 2), "cambio_1d": round((c1 / c0 - 1) * 100, 2), "fecha": f1, "moneda": "USD"}
     return salida
@@ -406,6 +409,145 @@ def centro():
     return salida
 
 
+BU_T = {"ZW=F": 36.744, "ZS=F": 36.744, "ZC=F": 39.368}   # bushels por tonelada: trigo y soja 60 lb, maíz 56 lb
+LB_T = 2204.62                                           # libras por tonelada
+
+
+def control(p, datos):
+    """C132: «Control» del móvil (arriba de Mercado). Una fila por cifra, una sola fuente por cifra.
+    Campos: e etiqueta · u unidad · v valor · d decimales · t texto (si no es número) · c variación % · pp variación en puntos ·
+    per periodo de la variación · f fecha de la sesión o del dato · n nivel P/S · fu fuente · url · col precio|neutro ·
+    fr diario|semanal|mensual (para avisar de datos viejos) · x notas del detalle. Las cripto las pinta el móvil desde «mercado» (en vivo)."""
+    YH = ("Yahoo Finance", "https://finance.yahoo.com/")
+
+    def fila(e, v, u, f, n, fu, url, c=None, d=2, col="neutro", fr="diario", per="1 día", **extra):
+        if v is None:
+            return None
+        return {k: x for k, x in {"e": e, "v": v, "u": u, "d": d, "c": c, "per": per, "f": f, "n": n, "fu": fu, "url": url, "col": col, "fr": fr, **extra}.items() if x not in (None, [], "")}
+
+    grupos = []
+
+    def grupo(t, filas, nota=None):
+        filas = [x for x in filas if x]
+        if filas:
+            grupos.append({"t": t, "filas": filas, **({"nota": nota} if nota else {})})
+
+    idx = {x["simbolo"]: x for x in p.get("indices", {}).get("indices", [])}
+    orden = (("^GSPC", "S&P 500 · EE. UU."), ("^IXIC", "Nasdaq · EE. UU."), ("^DJI", "Dow Jones · EE. UU."), ("^STOXX50E", "Euro Stoxx 50 · zona euro"),
+             ("^IBEX", "IBEX 35 · España"), ("^GDAXI", "DAX · Alemania"), ("^N225", "Nikkei 225 · Japón"), ("^HSI", "Hang Seng · Hong Kong"),
+             ("000001.SS", "Shanghái · China"), ("^KS11", "Kospi · Corea del Sur"))
+
+    def bolsa(s, e, col="precio"):
+        x = idx.get(s)
+        if not x:
+            return None
+        nota = [f"Para un inversor en dólares: {x['cambio_1d_usd']:+.2f} % (índice + divisa)".replace(".", ",")] if x.get("moneda") != "USD" and x.get("cambio_1d_usd") is not None else []
+        return fila(e, x["valor"], f"puntos · cotiza en {x.get('moneda') or '?'}", x["fecha"], "S", *YH, c=x.get("cambio_1d"), col=col, x=nota)
+    grupo("Bolsas", [bolsa(s, e) for s, e in orden] + [bolsa("^VIX", "VIX · miedo esperado en el S&P 500", col="neutro")],
+          "Índices en puntos, no en dinero. El VIX sube cuando el mercado espera más sustos; va en gris.")
+
+    wl = {x["ticker"]: x for x in p.get("watchlist", {}).get("valores", [])}
+    etf = (("VWCE", "VWCE · todo el mundo (acumula)"), ("IWDA", "IWDA · países desarrollados (acumula)"), ("VUSA", "VUSA · S&P 500 (reparte)"),
+           ("SPY", "SPY · S&P 500 (EE. UU.)"), ("QQQ", "QQQ · Nasdaq 100 (EE. UU.)"))
+
+    def fondo(t, e):
+        x = wl.get(t)
+        if not x:
+            return None
+        notas = [f"{k}: {x[c]:+.2f} %".replace(".", ",") for k, c in (("1 semana", "cambio_1s"), ("3 meses", "cambio_3m"), ("en lo que va de año", "ytd")) if x.get(c) is not None]
+        return fila(e, x["precio"], {"EUR": "€", "USD": "$"}.get(x.get("moneda"), x.get("moneda") or ""), x["fecha"], "S", *YH, c=x.get("cambio_1d"), col="precio", x=[x["nombre"]] + notas)
+    grupo("ETFs y fondos indexados (referencia)", [fondo(t, e) for t, e in etf],
+          "Son referencias, no posiciones ni recomendaciones. Un fondo indexado que copia el mismo índice se mueve casi igual que su ETF.")
+
+    mat = {x["simbolo"]: x for x in p.get("materias", {}).get("materias", [])}
+    fut = {x["simbolo"]: x for x in p.get("alimentos", {}).get("futuros", [])}
+    eia = {x["id"]: x for x in (p.get("materias", {}).get("spot_eia") or {}).get("series", [])}
+
+    def futuro(s, e, u, factor=1.0, d=2, fuente=None):
+        x = mat.get(s) or fut.get(s)
+        if not x:
+            return None
+        notas = [f"Unidad original: {fm_es(x['valor'], 2)} {x.get('unidad', '')}"] if factor != 1.0 else []
+        if x.get("cambio_1m") is not None:
+            notas.append(f"Desde {x.get('desde', '')}: {x['cambio_1m']:+.1f} %".replace(".", ","))
+        return fila(e, round(x["valor"] * factor, d), u, x["fecha"], "S", *(fuente or YH), c=x.get("cambio_1d"), d=d, x=notas)
+
+    pet = datos.get("petroleo") or {}
+
+    def crudo(k, e):
+        x = pet.get(k)
+        if not x:
+            return None
+        notas = []
+        if k == "brent" and eia.get("brent"):
+            s = eia["brent"]
+            notas.append(f"Brent spot oficial (EIA, [P]): {fm_es(s['valor'], 2)} $ el {s['fecha']}; la EIA publica con días de retraso")
+        return fila(e, x["valor"], "$ el barril (futuro)", x["fecha"], "S", *YH, c=x.get("cambio_1d"), x=notas)
+
+    ep = p.get("energia_precios", {})
+
+    def luz(serie, e, fu):
+        s = ep.get(serie) or []
+        if not s:
+            return None
+        a, b = (s[-2] if len(s) > 1 else None), s[-1]
+        return fila(e, b["media"], "€/MWh (media del día)", b["fecha"], "P", *fu, c=round((b["media"] / a["media"] - 1) * 100, 2) if a and a["media"] else None, per="frente al día anterior",
+                    x=[f"Mínimo {fm_es(b['min'], 2)} · máximo {fm_es(b['max'], 2)} €/MWh"])
+    grupo("Energía", [crudo("brent", "Petróleo Brent"), crudo("wti", "Petróleo WTI (EE. UU.)"),
+                      futuro("NG=F", "Gas natural Henry Hub (EE. UU.)", "$ por MMBtu", d=3),
+                      luz("omie_diario", "Luz España · mercado mayorista (OMIE)", ("OMIE", "https://www.omie.es/es/market-results/daily/daily-market/daily-hourly-price")),
+                      luz("pvpc_diario", "Luz España · tarifa regulada PVPC", ("REE (Red Eléctrica)", "https://www.ree.es/es/datos/mercados/componentes-precio-energia-cierre-desglose"))],
+          "Flechas en gris: que la energía suba no es bueno ni malo para todos. Falta el gas europeo TTF (C111) y la gasolina y el diésel (boletín semanal de la UE).")
+
+    fao = next((x for x in (p.get("alimentos", {}).get("fao") or {}).get("indices", []) if x.get("nombre") == "Food Price Index"), None)
+    fao_meta = (p.get("alimentos", {}).get("fao") or {})
+    grupo("Alimentos", [futuro("ZW=F", "Trigo", "$ por tonelada", BU_T["ZW=F"] / 100, 0), futuro("ZC=F", "Maíz", "$ por tonelada", BU_T["ZC=F"] / 100, 0),
+                        futuro("ZS=F", "Soja", "$ por tonelada", BU_T["ZS=F"] / 100, 0), futuro("ZR=F", "Arroz", "$ por tonelada", LB_T / 100, 0),
+                        futuro("KC=F", "Café arábica", "$ por libra", 0.01), futuro("SB=F", "Azúcar", "$ por tonelada", LB_T / 100, 0),
+                        futuro("CC=F", "Cacao", "$ por tonelada", d=0),
+                        fila("Índice FAO de precios de los alimentos", fao["valor"], f"índice ({fao_meta.get('base', '2014-2016 = 100')})", fao_meta.get("mes"), "P",
+                             "FAO", fao_meta.get("fuente") or "https://www.fao.org/worldfoodsituation/foodpricesindex/en/", c=round((fao["valor"] / fao["mes_anterior"] - 1) * 100, 2) if fao.get("mes_anterior") else None,
+                             d=1, fr="mensual", per="1 mes", x=[f"Frente a hace 12 meses: {fao['interanual']:+.1f} %".replace(".", ",")] if fao.get("interanual") is not None else []) if fao else None],
+          "Futuros de Chicago y Nueva York convertidos a $ por tonelada (en el detalle, la unidad original). El índice FAO es mensual.")
+
+    grupo("Metales", [futuro("GC=F", "Oro", "$ por onza troy"), futuro("SI=F", "Plata", "$ por onza troy"), futuro("HG=F", "Cobre", "$ por tonelada", LB_T, 0)])
+
+    filas = []
+    dv = p.get("divisas", {})
+    for x in dv.get("divisas", []):
+        filas.append(fila(f"1 € en {x['nombre'].lower()}", x["valor"], x["codigo"], x["fecha"], "P", "BCE (tipo de referencia)", x["url"], c=x.get("cambio_1d"), d=2 if x["valor"] > 10 else 4))
+    if not dv.get("divisas") and datos.get("eur"):
+        filas.append(fila("1 € en dólar estadounidense", datos["eur"]["tipo"], "USD", datos["eur"]["fecha"], "P", "BCE (tipo de referencia)", "https://data.ecb.europa.eu/data/datasets/EXR/EXR.D.USD.EUR.SP00.A", d=4))
+    if dv.get("dxy"):
+        x = dv["dxy"]
+        filas.append(fila(x["nombre"], x["valor"], "índice frente a 6 monedas", x["fecha"], "S", *YH, c=x.get("cambio_1d")))
+    tv = {t["jur"]: t for t in p.get("tipos_vivos", {}).get("paises", [])}
+    tb = {t["id"]: t for t in p.get("tipos_bis", {}).get("paises", [])}
+    for t, e in ((tv.get("eeuu"), "Tipo oficial · Reserva Federal"), (tv.get("ue"), "Tipo oficial · BCE (depósito)"), (tb.get("JP"), "Tipo oficial · Banco de Japón")):
+        if t:
+            filas.append(fila(e, t["num"], "", t.get("dato_de"), "P", t.get("fuente") or "BIS (tipos oficiales)", "https://data.bis.org/topics/CBPOL" if t is tb.get("JP") else None,
+                              t=t["valor"], fr="diario", x=[f"Último cambio: {t['ultimo_cambio']}"] if t.get("ultimo_cambio") else []))
+    bonos = {q["id"]: q for q in p.get("bonos", {}).get("paises", [])}
+    for k, e in (("USA", "Bono a 10 años · EE. UU."), ("ESP", "Bono a 10 años · España"), ("EUR", "Bono a 10 años · zona euro AAA (curva BCE)")):
+        q = bonos.get(k)
+        if q and q["plazos"].get("10A") is not None:
+            ant = (q.get("prev") or {}).get("10A")
+            filas.append(fila(e, q["plazos"]["10A"], "% de rentabilidad", q["fecha"], q.get("nivel") or "P", q.get("fuente") or q.get("nombre") or "", q.get("url"),
+                              pp=round(q["plazos"]["10A"] - ant, 2) if ant is not None else None, per="frente al dato anterior"))
+    eur12 = next((s for s in p.get("credito", {}).get("series", []) if s["id"] == "euribor12"), None)
+    if eur12:
+        filas.append(fila("Euríbor a 12 meses (media del mes)", eur12["valor"], "%", eur12["fecha"], "P", "BCE", "https://data.ecb.europa.eu/data/datasets/FM/FM.M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA",
+                          d=3, pp=round(eur12["valor"] - eur12["anterior"], 3) if eur12.get("anterior") is not None else None, per="1 mes", fr="mensual",
+                          x=[f"Hace 12 meses: {fm_es(eur12['hace_12m'], 3)} %"] if eur12.get("hace_12m") is not None else []))
+    grupo("Divisas y tipos", filas, "Divisas: cuánto vale 1 euro. Tipos y bonos: la variación va en puntos, no en %.")
+    return {"generado": datos["generado"], "leido": p.get("leido"), "grupos": grupos}
+
+
+def fm_es(v, d=2):
+    """Número en formato español (punto de miles, coma decimal)."""
+    return f"{v:,.{d}f}".replace(",", " ").replace(".", ",").replace(" ", ".")
+
+
 def main():
     previo = {}
     if SALIDA.exists():
@@ -437,6 +579,12 @@ def main():
             fallos.append(f"{clave}: {type(e).__name__}: {e}")
             if clave in previo:
                 datos[clave] = previo[clave]
+    try:
+        datos["control"] = control(p, datos)
+    except Exception as e:
+        fallos.append(f"control: {type(e).__name__}: {e}")
+        if "control" in previo:
+            datos["control"] = previo["control"]
     SALIDA.parent.mkdir(parents=True, exist_ok=True)
     SALIDA.write_text(json.dumps(datos, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     print(f"data.json: {len(datos['eventos'])} eventos, {len(datos.get('noticias') or [])} noticias, {len(datos['voces'])} voces, "

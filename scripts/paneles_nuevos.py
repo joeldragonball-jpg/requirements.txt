@@ -12,6 +12,8 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
 
+import yahoo_diario
+
 UA = {"User-Agent": "Mozilla/5.0 (cartera-joel/1.0 uso personal)"}
 URL_YAHOO = "https://query1.finance.yahoo.com/v8/finance/chart/{s}?range=1mo&interval=1d"
 URL_EUROSTAT = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/{t}?format=JSON&lang=EN&{q}"
@@ -35,7 +37,7 @@ def _fred(sid, desde="2024-01-01"):
 
 def _yahoo(simbolo):
     d = json.loads(_get(URL_YAHOO.format(s=urllib.parse.quote(simbolo))))["chart"]["result"][0]
-    pares = [(datetime.fromtimestamp(t, timezone.utc).strftime("%Y-%m-%d"), c) for t, c in zip(d["timestamp"], d["indicators"]["quote"][0]["close"]) if c]
+    pares = yahoo_diario.cierres(d)   # fecha de la sesión en hora de la bolsa (C132)
     if len(pares) < 3:
         raise ValueError("menos de 3 cierres")
     (f0, c0), (f1, c1) = pares[-2], pares[-1]
@@ -154,7 +156,8 @@ def leer_electricidad(previo=None):
 
 FRED_ALIMENTOS = (("PSOYBUSDM", "Soja", "$ por tonelada"), ("PWHEAMTUSDM", "Trigo", "$ por tonelada"), ("PMAIZMTUSDM", "Maíz", "$ por tonelada"),
                   ("PRICENPQUSDM", "Arroz", "$ por tonelada"), ("PSUGAISAUSDM", "Azúcar", "centavos por libra"))
-YAHOO_ALIMENTOS = (("ZS=F", "Soja (futuro)", "centavos por bushel"), ("ZR=F", "Arroz bruto (futuro)", "$ por quintal"), ("SB=F", "Azúcar nº11 (futuro)", "centavos por libra"))
+YAHOO_ALIMENTOS = (("ZS=F", "Soja (futuro)", "centavos por bushel"), ("ZR=F", "Arroz bruto (futuro)", "$ por quintal"), ("SB=F", "Azúcar nº11 (futuro)", "centavos por libra"),
+                   ("CC=F", "Cacao (futuro, Nueva York)", "$ por tonelada"))
 URL_FAO = "https://www.fao.org/worldfoodsituation/foodpricesindex/en/"
 
 
