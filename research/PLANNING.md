@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-04 23:40 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-05 00:08 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -33,8 +33,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - C127 ◐ en parte · Tablero · Auditoría visual: Cifras clave más legibles y agrupadas, España ordena · Sonnet M · ~~3 % · `research/prompts/C127-auditoria-visual-tablero.md`
 - C131 · Seguimiento · Replantear: 5 grupos claros (hoy, periódicas, bloqueadas, parciale · Sonnet M · ~~3 % · `research/prompts/C131-replantear-seguimiento.md`
 - C132 · Móvil · Centro de control: bolsas, ETFs, fondos indexados, materias primas (petr · Opus L · ~~6 % · `research/prompts/C132-centro-control-movil.md`
-- C133 · Países · Datos de 2025-2026, comparación histórica (2 y 5 años, máximo) y «duran · Opus L · ~~6 % · `research/prompts/C133-paises-historia-y-mandatos.md`
-- C134 · Tablero · Auditoría visual 2.ª pasada: Paneles (bonos 9×12, 203 celdas largas),  · Opus M · ~~3 % · `research/prompts/C134-auditoria-visual-2.md`
+- C135 · Países · Refrescar la historia con el bot de paneles, mini-serie bajo las 4 cifr · Sonnet M · ~~3 % · `Lee informes/research/2026-11-05-C133-paises-historia-mandatos.md (sección Pendiente). Añade scripts/indicadores_historia.py al flujo de actualizar_paneles sin API de Anthropic; en pPaises pon spark() de la serie bajo cada cifra grande; verifica en webs oficiales las fechas de mandato marcadas S en explorador/mandatos.json y súbelas a P solo si las lees.`
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`

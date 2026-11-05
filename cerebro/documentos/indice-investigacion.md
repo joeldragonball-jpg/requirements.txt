@@ -12,9 +12,9 @@ Mapa de los informes más recientes por tema. Lo genera `scripts/indice_investig
 Por tema, los 3 informes más recientes (fecha · título · ruta · una frase de su resumen).
 
 ## Auditorías y verificaciones
+- 2026-11-05 · C134 · Auditoría visual del tablero, 2.ª pasada (5-nov-2026) (`informes/research/2026-11-05-C134-auditoria-visual-2.md`): Modelo: Opus. Solo presentación en explorador/vistas.html ; no se han tocado datos ni fuentes. Sin subir (falta «sube»).
 - 2026-11-05 · C129 · Auditoría visual y de explicaciones del tablero (5-nov-2026) (`informes/research/2026-11-05-C129-auditoria-visual.md`): Modelo: Opus 5.5 · Archivo tocado: explorador/vistas.html (solo presentación y textos; ningún dato ni fuente cambiado).
 - 2026-11-04 · C127 · Auditoría visual, fase 1 (solo mirar, sin tocar código) (`informes/research/2026-11-04-C127-auditoria-visual-fase1.md`): Línea de tiempo Buena idea visual; poco legible por abajo.
-- 2026-11-04 · C109 · Mapa de cobertura temática y plan de automatización (4-nov-2026) (`informes/research/2026-11-04-C109-mapa-cobertura.md`): Nivel A (países) está bien cubierto: 12 países × 9 indicadores en paneles.json › indicadores (ipc, paro, paro juvenil, pib, deuda, déficit, pobreza,…
 
 ## Voces y predicciones
 - 2026-11-02 · W07 · Research de fuentes (2-nov-2026) (`informes/research/2026-11-02-W07-fuentes.md`): Alcance: enlaces de explorador/voces.json , explorador/regulacion.json y eventos/calendario.toml ; prueba de fuentes primarias sin navegador. No…
@@ -57,9 +57,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-04 · C58 · Cierre de huecos: EE. UU. midterms (4-nov-2026) (`informes/research/2026-11-04-C58-us-midterms.md`): Estado previo: paises.json (12 países) y elecciones.json ya existían; los huecos de NL/FR/IT/GB están en 2026 11 03 C58 huecos.md. Aquí solo EE. UU.…
 
 ## Otros
+- 2026-11-05 · C133 · Países: datos 2025-2026, historia y «durante el mandato» (5-nov-2026) (`informes/research/2026-11-05-C133-paises-historia-mandatos.md`): Modelo: Opus. Plan aprobado por Joel el 5 nov, con 4 cambios: «máximo de la serie AAAA AAAA», nota del mandato previo en Putin, Trump y Xi, fechas de…
 - 2026-11-04 · EV · Elecciones de mitad de mandato de EE. UU. (3-nov-2026) (`informes/research/2026-11-04-EV-elecciones-eeuu.md`): Qué pasó (HECHOS según proyecciones, no recuento oficial)
 - 2026-11-04 · EV · Decisión del RBA (3-nov-2026) (`informes/research/2026-11-04-EV-rba-3-nov.md`): Sube el tipo objetivo 25 pb hasta 4,85 % (desde 4,60 %), por mayoría: 6 votos a favor y 3 por mantener en 4,60 %.
-- 2026-11-04 · Despeja La X — Entrevista a Alba Puerro (análisis técnico, ondas de Wolfe) (`informes/videos/2026-11-04-despeja-la-x-alba-puerro-ondas-de-wolfe.md`): Es un vídeo de formación, no de noticias. Ideas: (1) tener claro por qué se entra y salir solo si cambian los fundamentales o se pierde la…
 
 ## Fuentes y datos nuevos (sin fecha en el nombre)
 - A. Tipos de interés de los bancos centrales: fuentes y calendario de actualización (`research/fuentes-nuevas/A-tipos-bancos-centrales.md`): La tabla tipos vivos cubre 5 bancos con fuente primaria directa (Fed, BCE, BoE, BCB Brasil, Banco de Canadá) y tipos bis otros 10 vía BIS (RU, ZA,…

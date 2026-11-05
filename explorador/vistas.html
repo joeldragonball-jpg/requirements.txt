@@ -94,7 +94,7 @@ dl{margin:4px 0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px}dt{colo
 a{color:var(--ac)}
 .nota-v{color:var(--tx2);font-size:14px;margin:4px 0}
 .que{color:var(--tx2);font-size:14.5px;margin:2px 0 6px}
-details.bl{margin-bottom:clamp(4px,.5vw,10px)}details.bl>summary{cursor:pointer;font-weight:600;padding:4px 0}.ms{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(88px,.9fr) minmax(110px,1.2fr) minmax(86px,.8fr);gap:10px;align-items:center;padding:7px 10px;margin:2px 0;border:1px solid var(--lin);border-radius:8px;background:var(--panel);list-style:none}details.bl>summary.ms::-webkit-details-marker{display:none}.ms:hover{background:#1b2640;border-color:var(--ac)}details[open]>summary.ms{background:#1b2640;border-color:var(--ac)}.ms .nm{font-weight:700;color:var(--tx);letter-spacing:.01em}.ms .nm::before{content:'▸  ';color:var(--ac)}details[open]>summary.ms .nm::before{content:'▾  '}.ms .im{font-weight:700;color:#f1d58a;text-align:right;white-space:nowrap}.ms .im small{color:var(--tx2);font-weight:400}.ms .pc{position:relative;height:20px;background:var(--nul);border-radius:5px;overflow:hidden}.ms .pc i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#27578f,var(--ac))}.ms .pc b{position:relative;display:block;padding-left:7px;font-size:.85em;color:#fff;line-height:20px;white-space:nowrap;text-shadow:0 1px 2px #000}.ms .hb{color:var(--tx2);font-size:.86em;text-align:right;white-space:nowrap}.ms .hb em{font-style:normal;color:var(--tx);font-weight:600}.pb{display:inline-block;position:relative;min-width:110px;height:18px;background:var(--nul);border-radius:4px;overflow:hidden;vertical-align:middle}.pb i{position:absolute;top:0;bottom:0;left:0;background:#27578f}.pb b{position:relative;padding-left:6px;font-size:.88em;line-height:18px}@media(max-width:700px){.ms{grid-template-columns:1fr 1fr}.ms .nm{grid-column:1/-1}}
+details.bl{margin-bottom:clamp(4px,.5vw,10px)}details.bl>summary{cursor:pointer;font-weight:600;padding:4px 0}.ms{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(88px,.9fr) minmax(110px,1.2fr) minmax(86px,.8fr);gap:10px;align-items:center;padding:7px 10px;margin:2px 0;border:1px solid var(--lin);border-radius:8px;background:var(--panel);list-style:none}details.bl>summary.ms::-webkit-details-marker{display:none}.ms:hover{background:#1b2640;border-color:var(--ac)}details[open]>summary.ms{background:#1b2640;border-color:var(--ac)}.ms .nm{font-weight:700;color:var(--tx);letter-spacing:.01em}.ms .nm::before{content:'▸  ';color:var(--ac)}details[open]>summary.ms .nm::before{content:'▾  '}.ms .im{font-weight:700;color:#f1d58a;text-align:right;white-space:nowrap}.ms .im small{color:var(--tx2);font-weight:400;font-size:max(13px,.8em)}.ms .pc{position:relative;height:20px;background:var(--nul);border-radius:5px;overflow:hidden}.ms .pc i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#27578f,var(--ac))}.ms .pc b{position:relative;display:block;padding-left:7px;font-size:max(13px,.85em);color:#fff;line-height:20px;white-space:nowrap;text-shadow:0 1px 2px #000}.ms .hb{color:var(--tx2);font-size:max(13px,.86em);text-align:right;white-space:nowrap}.ms .hb em{font-style:normal;color:var(--tx);font-weight:600}.pb{display:inline-block;position:relative;min-width:110px;height:18px;background:var(--nul);border-radius:4px;overflow:hidden;vertical-align:middle}.pb i{position:absolute;top:0;bottom:0;left:0;background:#27578f}.pb b{position:relative;padding-left:6px;font-size:max(13px,.88em);line-height:18px}@media(max-width:700px){.ms{grid-template-columns:1fr 1fr}.ms .nm{grid-column:1/-1}}
 .barrita{display:inline-block;height:9px;background:var(--ac);border-radius:2px;vertical-align:middle}
 .bars{display:flex;align-items:flex-end;gap:3px;height:70px}
 .bars div{flex:1;background:var(--ac);min-width:6px;position:relative}
@@ -157,6 +157,23 @@ nav button{transition:background-color .15s,color .15s}nav button:hover:not(.on)
 @keyframes alto{from{transform:scaleY(0)}to{transform:scaleY(1)}}
 @keyframes dibuja{to{stroke-dashoffset:0}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+/* C134 · tablas anchas: la nota va al pasar el ratón (ⓘ) y los textos muy largos se recortan con el texto entero en el tooltip */
+.ntip{color:var(--ac);cursor:help;font-size:max(13px,.85em);margin-left:4px}td.recorta{cursor:help}
+/* C134 · curva de bonos: una línea por país */
+.curva{width:100%;max-width:1100px;height:auto;display:block;margin:4px 0 2px}.curva text{fill:var(--tx2);font-size:13px}.curva .eje{stroke:var(--lin)}.curva .rej{stroke:var(--lin);stroke-dasharray:2 4;opacity:.6}
+.curva circle{cursor:help}.curva circle:hover{r:6}.leyc{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:var(--fs-xs);color:var(--tx2);margin:2px 0 6px}.leyc i{display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}.leyc b{color:var(--tx);font-weight:600}
+/* C134 · Capas: fechas y hechos como tarjetas (fecha grande + una línea) */
+.evl{display:grid;gap:5px}.evl .ev{display:grid;grid-template-columns:minmax(76px,auto) minmax(0,1fr);gap:2px 10px;align-items:baseline}
+.ev .fe{font-weight:800;font-size:var(--fs);color:var(--tx);white-space:nowrap}.ev .fe small{display:block;font-weight:400;font-size:var(--fs-xs);color:var(--tx2)}
+.ev .lin{min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}.ev .pie{grid-column:2;font-size:var(--fs-xs);color:var(--tx2)}.ev .pie .chip{font-size:13px}
+/* C134 · Países: primera columna fija al desplazar las tablas de comparación */
+table.pega1 tr>*:first-child{position:sticky;left:0;z-index:1;background:var(--panel)}table.pega1 th:first-child{background:#121a2a}
+/* C133 · Países: avisos de historia y mandato */
+.aviso-s{border-left:4px solid #e8b64a;background:rgba(232,182,74,.1);padding:6px 10px;border-radius:6px;margin:8px 0;font-size:var(--fs-s)}
+ul.mand{list-style:none;padding:0;margin:6px 0;display:grid;gap:6px}ul.mand li{border:1px solid var(--lin);border-radius:8px;padding:7px 10px;background:var(--bg)}
+ul.mand .hito{color:#f1d58a;font-size:var(--fs-xs);margin-top:3px}ul.mand .aviso-c{color:var(--tx2);font-size:var(--fs-xs);font-style:italic;margin-top:2px}
+/* C134 · Presupuesto: 3 cifras arriba en cada ministerio abierto */
+.kpis.min3{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));margin:8px 0}
 </style></head><body>
 <div class="barra">
 <label>País <select id="fpais"><option value="">Todos</option></select></label>
@@ -209,12 +226,19 @@ function spark(arr,w=90,h=22,col='#5aa9e6'){
   const t=document.createElementNS(ns,'title');t.textContent='mín '+num(mn,2)+' · máx '+num(mx,2);s.append(t);return s}
 function barra(p,col){const b=el('span','barrita');b.style.width=Math.max(2,Math.min(100,p))+'px';if(col)b.style.background=col;return b}
 function pbar(v){const s=el('span','pb'),i=el('i');i.style.width=Math.min(100,Math.max(0,v))+'%';s.append(i,el('b',null,v.toLocaleString('es-ES',{minimumFractionDigits:1,maximumFractionDigits:1})+' %'));return s}
+/* C134 · con más de 6 columnas, la columna «Nota» pasa al tooltip de la fila (marca ⓘ) y los textos de más de 120 caracteres se recortan (entero al pasar el ratón) */
 function tabla(cols,filas){
-  const t=el('table');const h=el('tr');
-  for(const c of cols)h.append(el('th',c.n?'n':'',c.t));t.append(h);
+  const t=el('table');const h=el('tr');const ancha=cols.length>6;
+  const tips=ancha?cols.filter(c=>c.t==='Nota'):[],vis=cols.filter(c=>!tips.includes(c));
+  for(const c of vis)h.append(el('th',c.n?'n':'',c.t));t.append(h);
+  if(tips.length)h.firstChild.title='Las filas con ⓘ tienen una nota: pasa el ratón por encima';
   for(const f of filas){const r=el('tr');
-    for(const c of cols){const td=el('td',c.n?'n':'');const v=c.f?c.f(f):f[c.k];
-      if(v instanceof Node)td.append(v);else td.textContent=v==null?'—':v;r.append(td)}
+    for(const c of vis){const td=el('td',c.n?'n':'');const v=c.f?c.f(f):f[c.k];
+      if(v instanceof Node)td.append(v);else{const tx=v==null?'—':String(v);
+        if(ancha&&tx.length>120){td.textContent=tx.slice(0,tx.lastIndexOf(' ',100)>60?tx.lastIndexOf(' ',100):100)+'…';td.title=tx;td.classList.add('recorta')}else td.textContent=tx}
+      r.append(td)}
+    if(tips.length){const nt=tips.map(c=>{const v=c.f?c.f(f):f[c.k];return v instanceof Node?v.textContent:v}).filter(x=>x&&String(x).trim()).join(' · ');
+      if(nt){r.title=nt;r.firstChild.append(el('span','ntip','ⓘ'))}}
     t.append(r)}
   return t}
 function kpi(v,t,cam){const k=el('div','kpi');const b=el('b');if(v instanceof Node)b.append(v);else b.textContent=v;k.append(b,el('span',null,t));if(cam)k.append(cam);return k}
@@ -229,6 +253,12 @@ function corto(tx,cls='que',lim=170){
   let i=-1;const re=/[.;](?=\s)/g;let m;while((m=re.exec(tx))&&m.index<lim)i=m.index+1;
   if(i<50)i=tx.lastIndexOf(' ',lim);if(i<1)return el('div',cls,tx);
   const w=el('div',cls,tx.slice(0,i).trim());const d=el('details','mas');d.append(el('summary',null,'Cómo se lee · sesgos · fuente'),el('div',null,tx.slice(i).trim()));w.append(d);return w}
+/* C134 · los nombres de la IGAE vienen en MAYÚSCULAS: se muestran en tipo frase; las siglas con punto (S.S., U. E.) y los números romanos se respetan */
+function frase(t){if(typeof t!=='string'||t!==t.toUpperCase())return t;
+  const r=t.toLowerCase().replace(/(^|[\s(])((?:[a-záéíóúñ]\.\s?)+)(?=\s|$|,)/g,(m,p,q)=>q.replace(/\s/g,'').length<=4?p+q.toUpperCase():m);
+  /* órganos constitucionales y nombres propios: con mayúscula inicial en cada palabra, como en el BOE */
+  if(/^(TRIBUNAL|CONSEJO|CORTES|CASA) /.test(t))return r.replace(/[a-záéíóúñ]+/g,(w,i)=>i>0&&/^(de|del|el|la|las|los|y)$/.test(w)?w:w.charAt(0).toUpperCase()+w.slice(1));
+  return (r.charAt(0).toUpperCase()+r.slice(1)).replace(/\bcortes\b/,'Cortes').replace(/agenda 2030/,'Agenda 2030')}
 /* zoom propio del tablero (control «Letra»): el ratón llega en píxeles de pantalla y las posiciones CSS van en píxeles con zoom */
 const zoomAct=()=>parseFloat(document.documentElement.style.zoom)||1;
 function bloque(tit,que,pie,cont,abierto=true){
@@ -288,6 +318,31 @@ function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:
 /* ---------- bloques de datos reutilizables (Capas y Paneles) ---------- */
 const PL=['3M','6M','1A','2A','3A','5A','10A','15A','20A','30A'];
 const plazo=k=>{const n=parseInt(k);return k.endsWith('M')?n+' meses':n===1?'1 año':n+' años'};
+/* C134 · curva de rendimientos: eje X = plazos (equiespaciados), eje Y = % anual; cada punto dice país, plazo, valor y cambio del día */
+const COLC=['#5aa9e6','#e8b64a','#4fe3a1','#ff6b7d','#b48cff','#f58ad3','#2fd3e0','#c8d1e0','#ff9f43','#9bd75a'];
+function curvaBonos(ps,usados){
+  const ns='http://www.w3.org/2000/svg',W=900,H=290,mi=44,md=118,ar=14,ab=30;
+  const mk=(t,a)=>{const e=document.createElementNS(ns,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+  const vals=ps.flatMap(p=>usados.map(k=>p.plazos&&p.plazos[k]).filter(v=>v!=null));
+  if(!vals.length||usados.length<2)return el('span');
+  let y0=Math.floor(Math.min(0,...vals)),y1=Math.ceil(Math.max(...vals));if(y1===y0)y1=y0+1;
+  const X=i=>mi+i*(W-mi-md)/(usados.length-1),Y=v=>ar+(y1-v)/(y1-y0)*(H-ar-ab);
+  const s=mk('svg',{viewBox:'0 0 '+W+' '+H,class:'curva',role:'img','aria-label':'Curva de rendimientos por país y plazo'});
+  const paso=y1-y0>6?2:y1-y0>3?1:.5;
+  for(let v=y0;v<=y1+1e-9;v+=paso){s.append(mk('line',{x1:mi,x2:W-md,y1:Y(v),y2:Y(v),class:v===0?'eje':'rej'}));const t=mk('text',{x:mi-6,y:Y(v)+4,'text-anchor':'end'});t.textContent=num(v,paso<1?1:0)+' %';s.append(t)}
+  usados.forEach((k,i)=>{const t=mk('text',{x:X(i),y:H-10,'text-anchor':'middle'});t.textContent=k.replace('A',' a').replace('M',' m');s.append(t)});
+  const ley=el('div','leyc'),etq=[];
+  ps.forEach((p,j)=>{const col=COLC[j%COLC.length],pts=usados.map((k,i)=>p.plazos&&p.plazos[k]!=null?[X(i),Y(p.plazos[k]),k]:null).filter(Boolean);if(!pts.length)return;
+    s.append(mk('polyline',{points:pts.map(q=>q[0].toFixed(1)+','+q[1].toFixed(1)).join(' '),fill:'none',stroke:col,'stroke-width':2.2,'stroke-linejoin':'round'}));
+    for(const [x,y,k] of pts){const c=mk('circle',{cx:x,cy:y,r:3.6,fill:col});const tt=mk('title',{});
+      const d=p.prev&&p.prev[k]!=null?Math.round((p.plazos[k]-p.prev[k])*100):null;
+      tt.textContent=p.nombre+' · '+plazo(k)+': '+num(p.plazos[k],2)+' %'+(d!=null?' ('+(d>0?'▲ +':d<0?'▼ ':'= ')+d+' pb en el día)':'')+' · dato de '+p.fecha;c.append(tt);s.append(c)}
+    const u=pts[pts.length-1];etq.push({y:u[1],x:u[0],t:p.nombre,col});
+    const li=el('span');const i=el('i');i.style.background=col;li.append(i,el('b',null,p.nombre),document.createTextNode(' '+p.fecha+' '),nivelBadge(p.nivel));ley.append(li)});
+  /* nombre al final de cada línea, separando las etiquetas que se pisan */
+  etq.sort((a,b)=>a.y-b.y);for(let i=1;i<etq.length;i++)if(etq[i].y-etq[i-1].y<14)etq[i].y=etq[i-1].y+14;
+  for(const e of etq){const t=mk('text',{x:e.x+8,y:e.y+4});t.style.fill=e.col;t.textContent=e.t.length>15?e.t.slice(0,14)+'…':e.t;s.append(t)}
+  const w=el('div');w.append(s,ley,el('div','nota-v','Plazos a la misma distancia en el eje (no en proporción a los años). Pasa el ratón por un punto para ver el valor y el cambio del día.'));return w}
 function nBonos(ids){
   const ps=P.bonos.paises.filter(p=>!ids||ids.includes(p.id));
   const usados=PL.filter(k=>ps.some(p=>p.plazos&&p.plazos[k]!=null));
@@ -295,7 +350,8 @@ function nBonos(ids){
   for(const k of usados)cols.push({t:plazo(k),n:1,f:p=>{if(p.plazos[k]==null)return '—';const s=el('span');s.append(document.createTextNode(num(p.plazos[k],2)+' %'));
     if(p.prev&&p.prev[k]!=null){const d=(p.plazos[k]-p.prev[k])*100;const c=cambio(d,'pb',0);c.classList.add('cambio');s.append(c)}return s}});
   cols.push({t:'A 10 años, últimas semanas',f:p=>p.hist10&&p.hist10.length>1?spark(p.hist10.map(x=>x[1]),110,26):'—'});
-  const w=el('div');w.append(tabla(cols,ps));
+  const w=el('div');w.append(curvaBonos(ps,usados));
+  const dt=el('details');dt.append(el('summary',null,'Tabla con cada plazo y el cambio del día (pb) · '+ps.length+' países × '+usados.length+' plazos'),tabla(cols,ps));w.append(dt);
   const m=P.bonos.mensual10;
   if(m&&m.DE&&!ids){
     w.append(el('h3',null,'Diferencial de los bonos a 10 años frente a Alemania (media mensual del BCE, '+m.DE.mes+')'));
@@ -516,7 +572,9 @@ function pCapas(){
   const nh={};for(const c of cs)for(const [k,tit] of est)nh[tit]=(nh[tit]||0)+(c[k]||[]).length;
   const nhTxt=Object.entries(nh).filter(x=>x[1]).map(x=>x[1]+' '+x[0].toLowerCase()).join(', ');
   const fu=[...new Set(pan.map(p=>(p.pie.t||'').split(' · ')[0].replace(/^Rendimiento anual.*$/,'Tesoros nacionales y BCE')).filter(Boolean))];
-  cab.append(el('div','nota-v','En qué se basa: '+(nhTxt?'hechos fichados por el analista ('+nhTxt+'), ':'')+vs.length+' movimientos con fecha y fuente, '+docs.length+' documentos de research'+(fu.length?' y datos automáticos de '+fu.join('; '):'')+'. Certeza de cada dato: P = fuente primaria, S = prensa o agregador, V = [VERIFICAR].'));
+  /* C134 · plegada: solo se ve el título «En qué se basa» */
+  const dBase=el('details','mas nota-v');dBase.append(el('summary',null,'En qué se basa (fuentes y certeza)'));cab.append(dBase);
+  dBase.append(el('div','nota-v',(nhTxt?'Hechos fichados por el analista ('+nhTxt+'), ':'')+vs.length+' movimientos con fecha y fuente, '+docs.length+' documentos de research'+(fu.length?' y datos automáticos de '+fu.join('; '):'')+'. Certeza de cada dato: P = fuente primaria, S = prensa o agregador, V = [VERIFICAR].'));
   if(varias){const sc=el('div','pills');sc.style.margin='8px 0 6px';sc.append(el('span','nota-v','Desglose:'));
     for(const [k,nom] of [['','Todas ('+g.capas.length+')']].concat(g.capas.map(c=>[c.id,c.nombre]))){const b=el('span','pill'+(k===sub?' on':''),nom);b.onclick=()=>{selSub=k;pCapas()};sc.append(b)}
     cab.append(sc)}
@@ -579,13 +637,18 @@ function pCapas(){
   else if(sinH.length)s.append(el('div','vacias','Hechos por estado: ninguno en '+sinH.join(' · ')+'.'));
 
   /* (d) próximas fechas y hechos recientes */
-  const colCapa=varias&&!sub?[{t:'Parte',f:x=>chipCapa(x.capa)}]:[];
   const cEv=el('div','caja');cEv.append(el('h2',null,'Próximas fechas ('+evs.length+')'));
-  cEv.append(tabla([{t:'Fecha',f:e=>e.ini===e.fin?e.ini:e.ini+' → '+e.fin},{t:'Qué',f:e=>{const q=el('span');const tm=X.calendario.temas[e.tema]||{color:'#888'};const i=el('i','punto-tema');i.style.background=tm.color;q.append(i,el('b',null,(e.impacto==='alto'?'★ ':'')+e.titulo),el('div','nota-v',e.detalle));return q}}].concat(colCapa,[{t:'Fuente',f:e=>e.fuente}]),evs));
+  /* C134 · tarjetas .ev: fecha grande a la izquierda, una o dos líneas de texto y el resto (detalle, fuente) en el tooltip */
+  const fGr=f=>{const m=/^(\d{4})-(\d\d)-(\d\d)$/.exec(f||'');return m?[+m[3]+' '+['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][+m[2]-1],m[1]]:[f||'—','']};
+  const tarjeta=(col,cl,fecha,fin,lin,tip,pie)=>{const d=el('div','ev'+(cl?' '+cl:''));d.style.setProperty('--c',col);d.title=tip||'';
+    const [a,b]=fGr(fecha),fe=el('div','fe',a);if(fin&&fin!==fecha)fe.append(el('small',null,'→ '+fGr(fin)[0]));else if(b)fe.append(el('small',null,b));
+    const l=el('div','lin');l.append(...lin);d.append(fe,l);if(pie&&pie.length){const p=el('div','pie');p.append(...pie);d.append(p)}return d};
+  const tEv=e=>{const tm=X.calendario.temas[e.tema]||{color:'#888'};return tarjeta(tm.color,e.impacto||'',e.ini,e.fin,[el('b',null,(e.impacto==='alto'?'★ ':'')+e.titulo)],[e.detalle,e.fuente?'Fuente: '+e.fuente:''].filter(Boolean).join(' · '),[...(varias&&!sub?[chipCapa(e.capa)]:[]),document.createTextNode(e.fuente?' '+e.fuente.slice(0,60):'')])};
+  const tMv=m=>tarjeta(colEst(m.estado),'',m.fecha,null,[el('b',null,(m.actor||'')+(m.actor?': ':'')),document.createTextNode(m.texto||'')],(m.actor?m.actor+': ':'')+(m.texto||''),[...(varias&&!sub?[chipCapa(m.capa)]:[]),puntoEst(m.estado)]);
+  const lEv=el('div','evl');evs.forEach(e=>lEv.append(tEv(e)));cEv.append(lEv);
   const cMov=el('div','caja');cMov.append(el('h2',null,'Hechos recientes ('+vs.length+')'));
-  const colsM=[{t:'Fecha',f:m=>m.fecha}].concat(colCapa,[{t:'Actor',f:m=>m.actor},{t:'Hecho',f:m=>m.texto},{t:'Estado',f:m=>puntoEst(m.estado)}]);
-  const N=12;cMov.append(tabla(colsM,vs.slice(0,N)));
-  if(vs.length>N){const dm=el('details');dm.append(el('summary',null,'Ver los '+(vs.length-N)+' anteriores'));dm.append(tabla(colsM,vs.slice(N)));cMov.append(dm)}
+  const N=12,lMv=el('div','evl');vs.slice(0,N).forEach(m=>lMv.append(tMv(m)));cMov.append(lMv);
+  if(vs.length>N){const dm=el('details');dm.append(el('summary',null,'Ver los '+(vs.length-N)+' anteriores'));const l2=el('div','evl');vs.slice(N).forEach(m=>l2.append(tMv(m)));dm.append(l2);cMov.append(dm)}
   if(evs.length&&vs.length){const g2=el('div','cols2');g2.style.gridTemplateColumns='repeat(auto-fit,minmax(min(100%,520px),1fr))';g2.append(cEv,cMov);s.append(g2)}
   else if(evs.length){cEv.append(el('p','nota-v','Ningún hecho registrado con los filtros actuales.'));s.append(cEv)}
   else if(vs.length){cMov.firstChild.after(el('p','nota-v','Ninguna fecha próxima registrada para esta capa en el calendario.'));s.append(cMov)}
@@ -1087,13 +1150,75 @@ function celdaCifra(nombre,valor,unidad,fecha,ant,antf,tip,clave){
   if(valor==null){c.textContent='—';return c}
   const t=tendGen(nombre,valor,ant,antf,clave);
   const v=el('div','',cortaUnid(valor,unidad));v.style.cssText='font-weight:700;font-size:1.05em;color:'+(t?t.c:'#ffffff');
-  if(t){const a=el('span','',' '+t.f);a.style.cssText='font-size:.7em;color:'+t.c;v.appendChild(a);c.title+=' · '+t.t}
+  if(t){const a=el('span','',' '+t.f);a.style.cssText='font-size:max(13px,.85em);color:'+t.c;v.appendChild(a);c.title+=' · '+t.t}
   c.appendChild(v);
   /* C129: fecha y valor anterior en UNA línea (antes eran dos de 12 px); la fecha del anterior va al pasar el ratón */
   const f=el('div','nota-v',(fecha||'sin fecha')+(ant!=null?' · antes '+cortaUnid(ant,unidad):''));f.style.cssText='font-size:max(13px,.8em);margin:1px 0 0';c.appendChild(f);
   if(ant!=null&&antf)c.title+=' · anterior: '+antf
   return c}
 const UNID_FILA={ipc:'% anual, último mes',paro:'% de la población activa',paro_juvenil:'% de activos menores de 25',pib:'% anual, en volumen',deuda:'% del PIB',deficit:'% del PIB',pobreza:'% de la población',gini:'0 = igualdad, 100 = desigualdad',salario_minimo:'euros o moneda local',balanza_corriente:'% del PIB (negativo = déficit exterior)',poblacion:'millones de habitantes',electricidad_pc:'kWh por habitante y año',gasto_defensa:'% del PIB'};
+/* ---------- C133 · historia de cada indicador (hace 2 y 5 años, máximo y mínimo de la serie) y «durante el mandato» ---------- */
+const NOMH={ipc:'IPC',paro:'Paro',paro_juvenil:'Paro juvenil',pib:'PIB',deuda:'Deuda pública',deficit:'Déficit (− = déficit)',pobreza:'Pobreza o exclusión',pobreza_infantil:'Pobreza infantil',gini:'Gini'};
+/* contexto común a todos los países: se cita si se solapa con el mandato; no explica por sí solo ningún cambio */
+const EXTERNOS=[['2020-03','2021-12','pandemia de COVID-19'],['2022-02','2023-06','guerra de Ucrania y crisis de la energía'],['2022-07','2023-09','subidas rápidas de tipos del BCE y la Fed'],['2025-04','2026-12','aranceles de EE. UU.']];
+const finPer=p=>/^\d{4}$/.test(p)?p+'-12':/Q(\d)$/.test(p)?p.slice(0,4)+'-'+String(+p.slice(-1)*3).padStart(2,'0'):p.slice(0,7);
+function perAtras(p,n){const y=+p.slice(0,4)-n;return y+p.slice(4)}
+function enSerie(s,p){const i=s.p.indexOf(p);return i<0?null:[s.v[i],p]}
+/* último valor publicado ANTES de empezar el mandato (periodo que termina antes del mes de inicio) */
+function antesDe(s,ym){let r=null;s.p.forEach((p,i)=>{if(finPer(p)<ym)r=[s.v[i],p]});return r}
+function unidH(k){return k==='gini'?' puntos':' p. p.'}
+const punto=t=>/\.$/.test(t)?t:t+'.';
+const iniPer=p=>/^\d{4}$/.test(p)?p+'-01':/Q(\d)$/.test(p)?p.slice(0,4)+'-'+String(+p.slice(-1)*3-2).padStart(2,'0'):p.slice(0,7);
+function fmtH(k,v){return v==null?'—':num(v,1)+(k==='gini'?'':' %')}
+function bloqueHistoria(pid,ids){
+  const H=D.indicadores_historia,MD=D.mandatos;const w=el('div');if(!H||!H.paises||!H.paises[pid]){w.append(el('p','nota-v','Sin series históricas (explorador/indicadores-historia.json).'));return w}
+  const S=H.paises[pid],m=MD&&MD.paises&&MD.paises[pid],dud=(H.dudosas||{})[pid];
+  if(dud){const a=el('p','aviso-s');a.append(nivelBadge('S'),document.createTextNode(' '+dud));w.append(a)}
+  /* tabla de historia */
+  const filas=Object.keys(NOMH).filter(k=>S[k]&&S[k].v.length);
+  if(!filas.length){w.append(el('p','nota-v','Sin series para este país.'));return w}
+  const ult=k=>{const s=S[k];return [s.v[s.v.length-1],s.p[s.p.length-1]]};
+  const ext=(k,f)=>{const s=S[k];let i=0;s.v.forEach((v,j)=>{if(f(v,s.v[i]))i=j});return [s.v[i],s.p[i]]};
+  const cel=(k,x)=>x?fmtH(k,x[0])+' ('+x[1]+')':'—';
+  const t=tabla([{t:'Indicador',f:k=>{const s=el('span');s.append(el('b',null,NOMH[k]));const n=el('div','nota-v',S[k].unidad+' · '+(S[k].frec==='M'?'mensual':S[k].frec==='T'?'trimestral':'anual'));s.append(n);return s}},
+    {t:'Último',n:1,f:k=>{const u=ult(k);const s=el('span');s.append(el('b',null,fmtH(k,u[0])),el('div','nota-v',u[1]));return s}},
+    {t:'Hace 2 años',n:1,f:k=>cel(k,enSerie(S[k],perAtras(ult(k)[1],2)))},
+    {t:'Hace 5 años',n:1,f:k=>cel(k,enSerie(S[k],perAtras(ult(k)[1],5)))},
+    {t:'Máximo de la serie',n:1,f:k=>{const x=ext(k,(a,b)=>a>b);const s=el('span');s.append(document.createTextNode(cel(k,x)),el('div','nota-v','serie '+S[k].desde.slice(0,4)+'-'+S[k].hasta.slice(0,4)));return s}},
+    {t:'Mínimo de la serie',n:1,f:k=>{const x=ext(k,(a,b)=>a<b);const s=el('span');s.append(document.createTextNode(cel(k,x)),el('div','nota-v','serie '+S[k].desde.slice(0,4)+'-'+S[k].hasta.slice(0,4)));return s}},
+    {t:'Evolución',f:k=>spark(S[k].v,120,28)}],filas);
+  t.querySelectorAll('tr').forEach((r,i)=>{if(i){const k=filas[i-1];r.title=S[k].fuente+' · ['+S[k].nivel+']'+(S[k].nota?' · '+S[k].nota:'')}});
+  const dh=document.createElement('details');dh.open=true;dh.style.marginTop='12px';dh.append(el('summary','','Historia: último dato frente a hace 2 y 5 años, y máximo y mínimo de la serie'));
+  const env=el('div');env.style.overflowX='auto';env.append(t);dh.append(env,el('p','nota-v',(H.nota||'')+' «Hace 2/5 años» = mismo mes, trimestre o año; «—» si ese periodo no está publicado.'));w.append(dh);
+  /* durante el mandato */
+  if(!m)return w;
+  const dm=document.createElement('details');dm.open=true;dm.style.marginTop='12px';
+  dm.append(el('summary','','Durante el mandato de '+m.quien+' ('+m.cargo+', desde '+m.desde.slice(0,7)+')'));
+  const cab=el('p','nota-v');cab.append(nivelBadge(m.nivel),document.createTextNode(' Inicio del mandato: '+m.desde+(m.previo?' · '+m.previo:'')+(m.nota?' · '+m.nota:'')+' '));
+  if(m.fuente){const a=el('a',null,'fuente');a.href=m.fuente;a.target='_blank';a.rel='noopener';cab.append(a)}dm.append(cab);
+  const hoy=(D.calendario&&D.calendario.hoy)||new Date().toISOString().slice(0,10);
+  const meses=(+hoy.slice(0,4)-+m.desde.slice(0,4))*12+(+hoy.slice(5,7)-+m.desde.slice(5,7));
+  if(meses<24){const a=el('p','aviso-s','⚠ Mandato de menos de 2 años ('+meses+' meses): muchos indicadores anuales aún no tienen dato posterior al inicio y los cambios dicen poco todavía.');dm.append(a)}
+  const ym=m.desde.slice(0,7);const ul=el('ul','mand');
+  for(const k of filas){const s=S[k],ini=antesDe(s,ym),fin=ult(k),li=el('li');
+    if(!ini){li.append(el('b',null,NOMH[k]+': '),document.createTextNode('sin dato antes del inicio del mandato (la serie empieza en '+s.desde+').'));ul.append(li);continue}
+    if(iniPer(fin[1])<ym){li.append(el('b',null,NOMH[k]+': '),document.createTextNode('aún no hay un periodo publicado que empiece después del inicio del mandato (último: '+fmtH(k,fin[0])+' en '+fin[1]+').'));ul.append(li);continue}
+    const d=Math.round((fin[0]-ini[0])*10)/10;
+    li.append(el('b',null,NOMH[k]+': '),document.createTextNode('con '+m.quien+' en el cargo desde '+ym+', pasó de '+fmtH(k,ini[0])+' ('+ini[1]+') a '+fmtH(k,fin[0])+' ('+fin[1]+'): '+(d>0?'+':d<0?'−':'')+punto(num(Math.abs(d),1)+unidH(k))));
+    /* hitos: máximo o mínimo de la serie dentro del mandato */
+    const iMx=s.v.indexOf(Math.max(...s.v)),iMn=s.v.indexOf(Math.min(...s.v)),rg=s.desde.slice(0,4)+'-'+s.hasta.slice(0,4);
+    const hit=[];if(finPer(s.p[iMx])>=ym)hit.push('máximo de la serie '+rg+' en '+s.p[iMx]+' ('+fmtH(k,s.v[iMx])+')');if(finPer(s.p[iMn])>=ym)hit.push('mínimo de la serie '+rg+' en '+s.p[iMn]+' ('+fmtH(k,s.v[iMn])+')');
+    if(hit.length)li.append(el('div','hito','★ Durante el mandato: '+hit.join(' · ')+'.'));
+    /* contraste: los demás países del grupo entre los mismos dos periodos (si se movieron igual, apunta a un factor común) */
+    const otros=ids.filter(x=>x!==pid).map(x=>{const o=(H.paises[x]||{})[k];if(!o)return null;const a=enSerie(o,ini[1]),b=enSerie(o,fin[1]);return a&&b?b[0]-a[0]:null}).filter(x=>x!=null).sort((a,b)=>a-b);
+    if(otros.length>=2){const md=otros.length%2?otros[(otros.length-1)/2]:(otros[otros.length/2-1]+otros[otros.length/2])/2;const r=Math.round(md*10)/10;
+      li.append(el('div','nota-v','Contraste: en esos mismos periodos, la mediana de los otros '+otros.length+' países del grupo cambió '+(r>0?'+':r<0?'−':'')+punto(num(Math.abs(r),1)+unidH(k))))}
+    li.append(el('div','aviso-c','Coincide con el mandato; no prueba que lo causara.'));
+    ul.append(li)}
+  dm.append(ul);
+  const solapa=EXTERNOS.filter(([a,b])=>b>=ym&&a<=hoy.slice(0,7)).map(x=>x[2]+' ('+x[0]+' a '+x[1]+')');
+  if(solapa.length)dm.append(el('p','nota-v','Factores externos durante el mandato (contexto común a todos los países, no explicación): '+solapa.join('; ')+'.'));
+  w.append(dm);return w}
 function seccionPa(titulo,sub,abierta){const d=document.createElement('details');if(abierta)d.open=true;d.style.margin='10px 0';const s=el('summary','',titulo);s.style.cssText='font-weight:700;cursor:pointer;font-size:1.05em';d.appendChild(s);if(sub){d.appendChild(el('p','nota-v',sub))}return d}
 function pPaises(){
   const S0=$('v-paises');S0.textContent='';const s=el('div','');
@@ -1104,7 +1229,7 @@ function pPaises(){
   ['UE','Potencias'].forEach(g=>{const b=el('button','chip',g);b.style.cursor='pointer';b.style.padding='4px 14px';if(g===grupoPa){b.style.background='var(--oro,#d4a84b)';b.style.color='#1a1405'}b.onclick=()=>{grupoPa=g;pPaises()};sel.appendChild(b)});
   S0.appendChild(sel);
   s.appendChild(el('p','nota-v',(D.paises_fichas.nota||'')+' Sin puntuaciones propias ni ranking. Cada cifra: valor (arriba), año o mes (debajo) y «antes» con el dato anterior de la misma fuente. Verde = mejora, rojo = empeora, gris = sin juicio o sin cambio; sin color = no hay dato anterior. Pasa el ratón para ver fuente, nivel y definición.'));
-  const tabla0=()=>{const t=el('table','');const h=el('tr','');h.appendChild(el('th','',''));lista.forEach(f=>h.appendChild(el('th','n',f.pais)));t.appendChild(h);return t};
+  const tabla0=()=>{const t=el('table','pega1');const h=el('tr','');h.appendChild(el('th','',''));lista.forEach(f=>h.appendChild(el('th','n',f.pais)));t.appendChild(h);return t};
   const env=(t)=>{const x=el('div','');x.style.overflowX='auto';x.appendChild(t);return x};
   const nom=(txt,sub)=>{const c=el('td','',txt);if(sub){const n=el('div','nota-v',sub);n.style.fontSize='max(13px,.8em)';c.appendChild(n)}return c};
   const sp=seccionPa('Política','Gobierno, familia política y próxima elección.',true),tp=tabla0();
@@ -1122,7 +1247,7 @@ function pPaises(){
     const anioAnt=(serie,a)=>{const k=Object.keys(serie||{}).sort();const i=k.indexOf(String(a));return i>0?[serie[k[i-1]],k[i-1]]:[null,null]};
     const fila=(n,u,fn)=>{const r=el('tr','');r.appendChild(nom(n,u));lista.forEach(f=>r.appendChild(fn(f)));ts.appendChild(r)};
     fila('Muertos en carretera','por millón de habitantes',f=>{const c=SEG.carretera.paises.find(p=>p.id===f.id);if(!c)return celdaCifra('Muertos en carretera',null);const a=anioAnt(c.serie,c.anio),pb=c.muertes&&c.por_millon_hab?c.muertes/c.por_millon_hab:null;return celdaCifra('Muertos en carretera',c.por_millon_hab,'por millón',c.anio,pb&&a[0]!=null?Math.round(a[0]/pb):null,a[1],'Eurostat '+SEG.carretera.tabla+' · ['+SEG.carretera.nivel+'] · '+(SEG.carretera.unidad||''),'carretera')});
-    fila('Homicidios dolosos','por millón de habitantes [cálculo propio]',f=>{const c=SEG.delitos.paises.find(p=>p.id===f.id),h=c&&c.delitos&&c.delitos.ICCS0101,pob=((IN.find(i=>i.id===f.id)||{}).indicadores||{}).poblacion;if(!h||!pob||!pob.valor)return celdaCifra('Homicidios dolosos',null);const a=anioAnt(h.serie,h.anio);return celdaCifra('Homicidios dolosos',Math.round(h.registrados/pob.valor*10)/10,'por millón',h.anio,a[0]!=null?Math.round(a[0]/pob.valor*10)/10:null,a[1],h.registrados+' registrados en '+h.anio+' ÷ '+pob.valor+' M hab. ('+(pob.fecha||'')+') · Eurostat '+SEG.delitos.tabla+' · ['+SEG.delitos.nivel+']','homicidios')});
+    fila('Homicidios dolosos','por millón de habitantes [cálculo propio]',f=>{const c=SEG.delitos.paises.find(p=>p.id===f.id),h=c&&c.delitos&&c.delitos.ICCS0101,pob=((IN.find(i=>i.id===f.id)||{}).indicadores||{}).poblacion;if(!h||!pob||!pob.valor)return celdaCifra('Homicidios dolosos',null);const a=anioAnt(h.serie,h.anio);return celdaCifra('Homicidios dolosos',Math.round(h.registrados/pob.valor*10)/10,'por millón',h.anio,a[0]!=null?Math.round(a[0]/pob.valor*10)/10:null,a[1],h.registrados+' registrados en '+h.anio+' ÷ '+num(pob.valor,2)+' M hab. ('+(pob.fecha||'')+') · Eurostat '+SEG.delitos.tabla+' · ['+SEG.delitos.nivel+']','homicidios')});
     ss.appendChild(env(ts));s.appendChild(ss)}
   Object.keys(NOMD).forEach((d,idx)=>{
     const nombres=[];ES.forEach(e=>((e.dimensiones[d]||{}).cifras||[]).forEach(c=>{if(!nombres.includes(c.nombre))nombres.push(c.nombre)}));
@@ -1145,12 +1270,13 @@ function pPaises(){
   const caja=el('div','caja');caja.appendChild(el('h2','',fp.pais));
   caja.appendChild(el('div','nota-v',[fp.jefe_gobierno,fp.familia,pe.fecha?'Próxima elección: '+pe.fecha+(pe.tipo?' · '+pe.tipo.slice(0,60):''):''].filter(Boolean).join(' · ')));
   const kk=['ipc','paro','pib','deuda'].filter(k=>ind[k]).map(k=>{const x=ind[k],t=tendGen(NOMI[k],x.valor,x.anterior,x.anterior_fecha,k);let a=null;if(t){a=el('div','',t.f+' antes '+cortaUnid(x.anterior,x.unidad));a.style.cssText='font-size:.85rem;color:'+t.c}return[cortaUnid(x.valor,x.unidad),NOMI[k]+' · '+(x.fecha||''),a]});
-  if(kk.length)caja.appendChild(kpis(kk));
+  if(kk.length){const g=kpis(kk);g.style.maxWidth='1100px';caja.appendChild(g)}
   const GR='display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:6px 18px;margin-top:8px';
   const celda=(nombre,valor,unidad,fecha,ant,antf,clave,tip)=>{const t=tendGen(nombre,valor,ant,antf,clave);const r=el('div','');r.style.cssText='border-bottom:1px solid var(--lin);padding:5px 0';r.title=tip||'';const a=el('div','',nombre);a.style.cssText='font-size:.85rem;color:var(--tx2)';const v=el('b','',cortaUnid(valor,unidad)+(t?' '+t.f:''));v.style.cssText='font-size:1.15rem;color:'+(t?t.c:'#ffffff');r.append(a,v,el('div','nota-v',(fecha||'sin fecha')+(ant!=null?' · antes '+cortaUnid(ant,unidad):'')));return r};
   const lst=el('div','');lst.style.cssText=GR;
   Object.keys(NOMI).filter(k=>!['ipc','paro','pib','deuda'].includes(k)).forEach(k=>{const x=ind[k];if(x&&x.valor!=null)lst.appendChild(celda(NOMI[k],x.valor,x.unidad,x.fecha,x.anterior,x.anterior_fecha,k,(fuentePa(x.fuente))+' · ['+x.nivel+'] · '+(x.definicion||'')))});
   caja.appendChild(lst);
+  caja.appendChild(bloqueHistoria(paisSel,lista.map(f=>f.id)));
   Object.keys(NOMD).forEach(d=>{const ok=(((es1.dimensiones||{})[d]||{}).cifras||[]).filter(c=>c.valor!=null);if(!ok.length)return;const dt=document.createElement('details');dt.style.marginTop='10px';dt.appendChild(el('summary','',NOMD[d]+' · '+ok.length+' cifras'));const g=el('div','');g.style.cssText=GR;ok.forEach(c=>g.appendChild(celda(c.nombre,c.valor,c.unidad,c.anio,c.anterior,c.anterior_anio,null,fuentePa(c.fuente)+' · ['+c.nivel+'] · '+(c.nota||''))));dt.appendChild(g);caja.appendChild(dt)});
   const cmp=document.createElement('details');cmp.style.marginTop='14px';cmp.appendChild(el('summary','','Comparar todos los países (tablas completas)'));cmp.appendChild(s);
   S0.append(chs,caja,cmp);
@@ -1277,15 +1403,21 @@ function pEspana(){
       for(const x of CM.secciones){
         if(!x.total)continue;
         const d=el('details','bl'),sm=el('summary','ms'),mxp=Math.max(...CM.secciones.map(z=>z.pct_total_estado||0));
-        const c1=el('span','nm',x.seccion),c2=el('span','im',n1(x.total)+' '),c3=el('span','pc'),c4=el('span','hb');
+        const c1=el('span','nm',frase(x.seccion)),c2=el('span','im',n1(x.total)+' '),c3=el('span','pc'),c4=el('span','hb');
         c2.append(el('small',null,'M€'));const bi=el('i');bi.style.width=Math.max(2,x.pct_total_estado/mxp*100)+'%';c3.append(bi,el('b',null,fx(x.pct_total_estado,2)+' % del Estado'));
-        c4.append(el('em',null,fx(x.por_habitante,2)+' €'),document.createTextNode(' / hab.'));sm.append(c1,c2,c3,c4);d.append(sm);const sec=B.secciones.find(z=>z.nombre===x.seccion);if(sec)d.append(el('h3',null,'Crédito inicial, definitivo y obligaciones'),tabla(ejec,[sec]));if(x.explicacion)d.append(el('p','nota-v',x.explicacion));
+        c4.append(el('em',null,fx(x.por_habitante,2)+' €'),document.createTextNode(' / hab.'));c1.title=x.seccion;sm.append(c1,c2,c3,c4);d.append(sm);
+        /* C134 · arriba 3 cifras (total, % de personal, mayor programa); las 5-6 tablas quedan plegadas debajo */
+        const pm=(x.programas||[]).slice().sort((a,b)=>b.o-a.o)[0];
+        d.append(kpis([[n1(x.total)+' M€','Gasto total (obligaciones 2025)'],[n1(x.pct_personal)+' %','Personal (capítulo 1): '+n1(x.capitulos['1'])+' M€'],pm?[n1(pm.o)+' M€','Mayor programa: '+pm.n+' ('+n1(pm.o/x.total*100)+' %)']:null]));d.lastChild.classList.add('min3');
+        if(x.explicacion)d.append(el('p','nota-v',x.explicacion));
+        const tb=el('details');tb.append(el('summary',null,'Tablas: ejecución, capítulos, programas, centros y a quién transfiere'));d.append(tb);
+        const sec=B.secciones.find(z=>z.nombre===x.seccion);if(sec)tb.append(el('h3',null,'Crédito inicial, definitivo y obligaciones'),tabla(ejec,[sec]));
         const caps=Object.entries(x.capitulos).filter(([,v])=>v);
-        d.append(el('h3',null,'Por capítulo económico'),tabla([{t:'Capítulo',f:r=>r[0]+' · '+CM.leyenda[r[0]]},{t:'M€',n:1,f:r=>n1(r[1])},{t:'% del ministerio',f:r=>pbar(r[1]/x.total*100)}],caps));
-        d.append(el('h3',null,'Programas mayores'),tabla([{t:'Programa',f:r=>r.n},{t:'M€',n:1,f:r=>n1(r.o)},{t:'% del ministerio',f:r=>pbar(r.o/x.total*100)}],x.programas));
-        if(x.centros.length)d.append(el('h3',null,'Centros gestores'),tabla([{t:'Centro',f:r=>r.n},{t:'Inicial',n:1,f:r=>n1(r.ini)},{t:'Definitivo',n:1,f:r=>n1(r.def)},{t:'Obligaciones',n:1,f:r=>n1(r.o)}],x.centros));
+        tb.append(el('h3',null,'Por capítulo económico'),tabla([{t:'Capítulo',f:r=>r[0]+' · '+CM.leyenda[r[0]]},{t:'M€',n:1,f:r=>n1(r[1])},{t:'% del ministerio',f:r=>pbar(r[1]/x.total*100)}],caps));
+        tb.append(el('h3',null,'Programas mayores'),tabla([{t:'Programa',f:r=>r.n},{t:'M€',n:1,f:r=>n1(r.o)},{t:'% del ministerio',f:r=>pbar(r.o/x.total*100)}],x.programas));
+        if(x.centros.length)tb.append(el('h3',null,'Centros gestores'),tabla([{t:'Centro',f:r=>r.n},{t:'Inicial',n:1,f:r=>n1(r.ini)},{t:'Definitivo',n:1,f:r=>n1(r.def)},{t:'Obligaciones',n:1,f:r=>n1(r.o)}],x.centros));
         const des=Object.entries(x.destino).filter(([,v])=>v);
-        if(des.length)d.append(el('h3',null,'A quién transfiere'),tabla([{t:'Destino',f:r=>r[0]},{t:'M€',n:1,f:r=>n1(r[1])}],des),tabla([{t:'Transferencia mayor',f:r=>r.n},{t:'Centro',f:r=>r.centro},{t:'Destino',f:r=>r.dest},{t:'M€',n:1,f:r=>n1(r.o)}],x.transf_mayores));
+        if(des.length)tb.append(el('h3',null,'A quién transfiere'),tabla([{t:'Destino',f:r=>r[0]},{t:'M€',n:1,f:r=>n1(r[1])}],des),tabla([{t:'Transferencia mayor',f:r=>r.n},{t:'Centro',f:r=>r.centro},{t:'Destino',f:r=>r.dest},{t:'M€',n:1,f:r=>n1(r.o)}],x.transf_mayores));
         if(x.altos_cargos.obligaciones||x.eventuales.obligaciones)d.append(el('p','nota-v','Altos cargos (art. 10): '+fx(x.altos_cargos.obligaciones,2)+' M€ · Personal eventual (art. 11): '+fx(x.eventuales.obligaciones,2)+' M€ · Personal total (cap. 1): '+n1(x.capitulos['1'])+' M€, '+n1(x.pct_personal)+' % del ministerio.'));
         if(Math.abs(x.partidas_sin_leer)>1)d.append(el('p','nota-v','Centros y destinos sin clasificar frente al total oficial: '+n1(x.partidas_sin_leer)+' M€.'));
         dentro.append(d)}
@@ -1297,7 +1429,7 @@ function pEspana(){
         el('h3',null,'Número de cargos y retribuciones oficiales'),dat([CM.altos_cargos_numero,...CM.retribuciones])),false));
     }
     add(bloque('Programas concretos: igualdad, IMV, becas, inmigración, cooperación, dependencia…','Partida exacta con su código. Las aportaciones a la Seguridad Social son la parte que paga el Estado.',pieE,conL(B.lecturas.igualdad,
-      tabla([{t:'Bloque',f:r=>r.grupo},{t:'Programa',f:r=>r.nombre},{t:'Código',f:r=>r.codigo},...ejec,{t:'Nota',f:r=>[r.nota,r.nota_2024].filter(Boolean).join(' · ')}],B.programas))));
+      tabla([{t:'Bloque',f:r=>r.grupo},{t:'Programa',f:r=>r.nombre},{t:'Código',f:r=>r.codigo},...ejec,{t:'Nota',f:r=>[r.nota,r.nota_2024].filter(Boolean).join(' · ')}],B.programas)),false));
     add(bloque('Lo que no se puede aislar','Sin partida propia o sin cifra publicada: no se estima.',{t:'Enfermedades raras, CIBERER, CATE, violencia de género total'},
       tabla([{t:'Tema',f:r=>r.tema},{t:'Qué hay',f:r=>r.texto},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Fuente',f:r=>lnk(r.fuente)}],B.no_aislable)));
     const FM=B.fuera_de_ministerios;
