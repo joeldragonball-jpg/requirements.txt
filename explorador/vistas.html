@@ -170,6 +170,7 @@ nav button{transition:background-color .15s,color .15s}nav button:hover:not(.on)
 table.pega1 tr>*:first-child{position:sticky;left:0;z-index:1;background:var(--panel)}table.pega1 th:first-child{background:#121a2a}
 /* C133 · Países: avisos de historia y mandato */
 .aviso-s{border-left:4px solid #e8b64a;background:rgba(232,182,74,.1);padding:6px 10px;border-radius:6px;margin:8px 0;font-size:var(--fs-s)}
+.mand-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin-top:8px}.nota.mnd{border-color:#d4a84b;background:rgba(212,168,75,.08);margin-bottom:0}.mnd .cab{justify-content:space-between}.mnd-d{color:#f1d58a;font-weight:700}.mnd-g{font-size:1.5em;font-weight:800;margin:2px 0;color:var(--tx)}.mnd .hito{color:#f1d58a;font-size:var(--fs-xs);margin-top:3px}
 ul.mand{list-style:none;padding:0;margin:6px 0;display:grid;gap:6px}ul.mand li{border:1px solid var(--lin);border-radius:8px;padding:7px 10px;background:var(--bg)}
 ul.mand .hito{color:#f1d58a;font-size:var(--fs-xs);margin-top:3px}ul.mand .aviso-c{color:var(--tx2);font-size:var(--fs-xs);font-style:italic;margin-top:2px}
 /* C134 · Presupuesto: 3 cifras arriba en cada ministerio abierto */
@@ -1190,35 +1191,44 @@ function bloqueHistoria(pid,ids){
   t.querySelectorAll('tr').forEach((r,i)=>{if(i){const k=filas[i-1];r.title=S[k].fuente+' · ['+S[k].nivel+']'+(S[k].nota?' · '+S[k].nota:'')}});
   const dh=document.createElement('details');dh.open=true;dh.style.marginTop='12px';dh.append(el('summary','','Historia: último dato frente a hace 2 y 5 años, y máximo y mínimo de la serie'));
   const env=el('div');env.style.overflowX='auto';env.append(t);dh.append(env,el('p','nota-v',(H.nota||'')+' «Hace 2/5 años» = mismo mes, trimestre o año; «—» si ese periodo no está publicado.'));w.append(dh);
-  /* durante el mandato */
+  /* durante el mandato: el actual y, si existen, los anteriores (mandatos.json → previos) en mini-viñetas */
   if(!m)return w;
-  const dm=document.createElement('details');dm.open=true;dm.style.marginTop='12px';
-  dm.append(el('summary','','Durante el mandato de '+m.quien+' ('+m.cargo+', desde '+m.desde.slice(0,7)+')'));
-  const cab=el('p','nota-v');cab.append(nivelBadge(m.nivel),document.createTextNode(' Inicio del mandato: '+m.desde+(m.previo?' · '+m.previo:'')+(m.nota?' · '+m.nota:'')+' '));
-  if(m.fuente){const a=el('a',null,'fuente');a.href=m.fuente;a.target='_blank';a.rel='noopener';cab.append(a)}dm.append(cab);
+  const sec=el('div');sec.style.marginTop='12px';
+  sec.append(bloqueMandato(m,true,pid,ids,S,filas,H));
+  (m.previos||[]).slice().reverse().forEach(q=>sec.append(bloqueMandato(q,false,pid,ids,S,filas,H)));
+  w.append(sec);return w}
+/* C136 · un mandato = tarjetas pequeñas (una por indicador), con el mismo estilo que Noticias y Voces: cifra grande, periodo, hito y contraste */
+function bloqueMandato(mm,actual,pid,ids,S,filas,H){
+  const ym=mm.desde.slice(0,7),yh=mm.hasta?mm.hasta.slice(0,7):null;
   const hoy=(D.calendario&&D.calendario.hoy)||new Date().toISOString().slice(0,10);
-  const meses=(+hoy.slice(0,4)-+m.desde.slice(0,4))*12+(+hoy.slice(5,7)-+m.desde.slice(5,7));
-  if(meses<24){const a=el('p','aviso-s','⚠ Mandato de menos de 2 años ('+meses+' meses): muchos indicadores anuales aún no tienen dato posterior al inicio y los cambios dicen poco todavía.');dm.append(a)}
-  const ym=m.desde.slice(0,7);const ul=el('ul','mand');
-  for(const k of filas){const s=S[k],ini=antesDe(s,ym),fin=ult(k),li=el('li');
-    if(!ini){li.append(el('b',null,NOMH[k]+': '),document.createTextNode('sin dato antes del inicio del mandato (la serie empieza en '+s.desde+').'));ul.append(li);continue}
-    if(iniPer(fin[1])<ym){li.append(el('b',null,NOMH[k]+': '),document.createTextNode('aún no hay un periodo publicado que empiece después del inicio del mandato (último: '+fmtH(k,fin[0])+' en '+fin[1]+').'));ul.append(li);continue}
+  const dm=document.createElement('details');dm.open=actual;dm.style.marginTop='12px';
+  dm.append(el('summary','',(actual?'Durante el mandato de ':'Mandato anterior: ')+mm.quien+' ('+mm.cargo+', '+ym+(yh?' a '+yh:' hasta hoy')+')'));
+  const cab=el('p','nota-v');cab.append(nivelBadge(mm.nivel),document.createTextNode(' Inicio: '+mm.desde+(yh?' · fin: '+mm.hasta:'')+(mm.previo?' · '+mm.previo:'')+(mm.nota?' · '+mm.nota:'')+' '));
+  if(mm.fuente){const a=el('a',null,'fuente');a.href=mm.fuente;a.target='_blank';a.rel='noopener';cab.append(a)}dm.append(cab);
+  if(actual){const meses=(+hoy.slice(0,4)-+mm.desde.slice(0,4))*12+(+hoy.slice(5,7)-+mm.desde.slice(5,7));
+    if(meses<24)dm.append(el('p','aviso-s','⚠ Mandato de menos de 2 años ('+meses+' meses): muchos indicadores anuales aún no tienen dato posterior al inicio y los cambios dicen poco todavía.'))}
+  const g=el('div','mand-g');
+  for(const k of filas){const s=S[k],t=el('div','nota mnd'),c=el('div','cab');c.append(el('b',null,NOMH[k]));t.append(c);
+    let ini=antesDe(s,ym),aprox=false;
+    if(!ini&&iniPer(s.p[0])>=ym&&(!yh||iniPer(s.p[0])<=yh)){ini=[s.v[0],s.p[0]];aprox=true}
+    let fin=null;if(yh){s.p.forEach((p,i)=>{if(finPer(p)<=yh)fin=[s.v[i],p]})}else fin=[s.v[s.v.length-1],s.p[s.p.length-1]];
+    if(!ini||!fin||iniPer(fin[1])<ym){t.append(el('div','txt','Sin dato publicado dentro de este mandato (serie '+s.desde+' a '+s.hasta+').'));g.append(t);continue}
     const d=Math.round((fin[0]-ini[0])*10)/10;
-    li.append(el('b',null,NOMH[k]+': '),document.createTextNode('con '+m.quien+' en el cargo desde '+ym+', pasó de '+fmtH(k,ini[0])+' ('+ini[1]+') a '+fmtH(k,fin[0])+' ('+fin[1]+'): '+(d>0?'+':d<0?'−':'')+punto(num(Math.abs(d),1)+unidH(k))));
-    /* hitos: máximo o mínimo de la serie dentro del mandato */
+    const chip=el('span','mnd-d',(d>0?'▲ +':d<0?'▼ −':'= ')+num(Math.abs(d),1)+unidH(k));c.append(chip);
+    const big=el('div','mnd-g',fmtH(k,ini[0])+' → '+fmtH(k,fin[0]));t.append(big);
+    t.append(el('div','nota-v',ini[1]+(aprox?' (primer dato de la serie)':'')+' a '+fin[1]));
     const iMx=s.v.indexOf(Math.max(...s.v)),iMn=s.v.indexOf(Math.min(...s.v)),rg=s.desde.slice(0,4)+'-'+s.hasta.slice(0,4);
-    const hit=[];if(finPer(s.p[iMx])>=ym)hit.push('máximo de la serie '+rg+' en '+s.p[iMx]+' ('+fmtH(k,s.v[iMx])+')');if(finPer(s.p[iMn])>=ym)hit.push('mínimo de la serie '+rg+' en '+s.p[iMn]+' ('+fmtH(k,s.v[iMn])+')');
-    if(hit.length)li.append(el('div','hito','★ Durante el mandato: '+hit.join(' · ')+'.'));
-    /* contraste: los demás países del grupo entre los mismos dos periodos (si se movieron igual, apunta a un factor común) */
+    const dentro=p=>finPer(p)>=ym&&(!yh||finPer(p)<=yh);
+    const hit=[];if(dentro(s.p[iMx]))hit.push('máximo de la serie '+rg+' en '+s.p[iMx]+' ('+fmtH(k,s.v[iMx])+')');if(dentro(s.p[iMn]))hit.push('mínimo de la serie '+rg+' en '+s.p[iMn]+' ('+fmtH(k,s.v[iMn])+')');
+    if(hit.length)t.append(el('div','hito','★ '+hit.join(' · ')));
     const otros=ids.filter(x=>x!==pid).map(x=>{const o=(H.paises[x]||{})[k];if(!o)return null;const a=enSerie(o,ini[1]),b=enSerie(o,fin[1]);return a&&b?b[0]-a[0]:null}).filter(x=>x!=null).sort((a,b)=>a-b);
     if(otros.length>=2){const md=otros.length%2?otros[(otros.length-1)/2]:(otros[otros.length/2-1]+otros[otros.length/2])/2;const r=Math.round(md*10)/10;
-      li.append(el('div','nota-v','Contraste: en esos mismos periodos, la mediana de los otros '+otros.length+' países del grupo cambió '+(r>0?'+':r<0?'−':'')+punto(num(Math.abs(r),1)+unidH(k))))}
-    li.append(el('div','aviso-c','Coincide con el mandato; no prueba que lo causara.'));
-    ul.append(li)}
-  dm.append(ul);
-  const solapa=EXTERNOS.filter(([a,b])=>b>=ym&&a<=hoy.slice(0,7)).map(x=>x[2]+' ('+x[0]+' a '+x[1]+')');
-  if(solapa.length)dm.append(el('p','nota-v','Factores externos durante el mandato (contexto común a todos los países, no explicación): '+solapa.join('; ')+'.'));
-  w.append(dm);return w}
+      t.append(el('div','nota-v','Los otros '+otros.length+' países del grupo, en los mismos periodos: '+(r>0?'+':r<0?'−':'')+punto(num(Math.abs(r),1)+unidH(k))))}
+    g.append(t)}
+  dm.append(g);
+  const solapa=EXTERNOS.filter(([a,b])=>b>=ym&&a<=(yh||hoy.slice(0,7))).map(x=>x[2]+' ('+x[0]+' a '+x[1]+')');
+  dm.append(el('p','nota-v','Coincide con el mandato; no prueba que lo causara.'+(solapa.length?' Factores externos en esos años (contexto común, no explicación): '+solapa.join('; ')+'.':'')));
+  return dm}
 function seccionPa(titulo,sub,abierta){const d=document.createElement('details');if(abierta)d.open=true;d.style.margin='10px 0';const s=el('summary','',titulo);s.style.cssText='font-weight:700;cursor:pointer;font-size:1.05em';d.appendChild(s);if(sub){d.appendChild(el('p','nota-v',sub))}return d}
 function pPaises(){
   const S0=$('v-paises');S0.textContent='';const s=el('div','');

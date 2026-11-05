@@ -1,13 +1,13 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-05 00:37 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-05 00:44 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
 **Hoy (máx. 3):** R00 Apertura del día · Gemini Evento: Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,75 
 **Periódicas (próxima):** W05 11-05 · W06 11-06 · W09 11-06 · W07 11-07 · W10 11-07 · W01 11-09 · W02 11-10 · W03 11-11 · W04 11-12 · W08 11-25
-**Bloqueadas (13):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C87 (Propuesta de la auditoría C81 (informes/research/2) · C88 (Propuesta de la auditoría C81 (informes/research/2) · C89 (Propuesta de la auditoría C81 (informes/research/2) · C90 (Propuesta de la auditoría C81 (informes/research/2) · …
+**Bloqueadas (16):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C87 (Propuesta de la auditoría C81 (informes/research/2) · C88 (Propuesta de la auditoría C81 (informes/research/2) · C89 (Propuesta de la auditoría C81 (informes/research/2) · C90 (Propuesta de la auditoría C81 (informes/research/2) · …
 **Parciales (15):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
-**Hechas en 7 días (34):** C129, C131, C133, C134, C32, C86, C91, C93, C94, C99, C100, C109, C110, C112, C113
+**Hechas en 7 días (35):** C129, C131, C133, C134, C136, C32, C86, C91, C93, C94, C99, C100, C109, C110, C112
 
 ## Hoy (jue 2026-11-05): solo lo casi obligatorio
 - R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 3 días
@@ -39,6 +39,10 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - C120 ◐ en parte · Nivel B · Fichas manuales: Interior (criminalidad), DGT, siniestralidad laboral  · Sonnet M · ~~4 % · `Con Chrome, comprueba y documenta en research/ACCESOS-CHROME.md las fuentes de Interior, DGT, Trabajo y EFFIS; no saltes anti-bots; guarda lo verificado en espana-manual.json`
 - C127 ◐ en parte · Tablero · Auditoría visual: Cifras clave más legibles y agrupadas, España ordena · Sonnet M · ~~3 % · `research/prompts/C127-auditoria-visual-tablero.md`
 - C135 ◐ en parte · Países · Refrescar la historia con el bot de paneles, mini-serie bajo las 4 cifr · Sonnet M · ~~3 % · `Lee informes/research/2026-11-05-C133-paises-historia-mandatos.md (sección Pendiente). Añade scripts/indicadores_historia.py al flujo de actualizar_paneles sin API de Anthropic; en pPaises pon spark() de la serie bajo cada cifra grande; verifica en webs oficiales las fechas de mandato marcadas S en explorador/mandatos.json y súbelas a P solo si las lees.`
+- C137 · Países · Mandatos anteriores en el resto de países (como España): presidentes o  · Sonnet M · ~~4 % · `research/prompts/C137-mandatos-anteriores-paises.md`
+- C138 · Países · Cómo va la zona euro, la UE, las potencias y los BRICS: panel de bloque · Sonnet M · ~~4 % · `research/prompts/C138-bloques-euro-potencias-brics.md`
+- C139 · Países · Vigilar El Salvador y Argentina (indicadores, historia, mandatos) y, co · Sonnet L · ~~6 % · `research/prompts/C139-latam-el-salvador-argentina-venezuela-cuba.md`
+- C140 · Países · Leer en fuente oficial las fechas de mandato [S] (9 países) y las de Az · Sonnet S · ~~2 % · ``
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`

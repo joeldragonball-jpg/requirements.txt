@@ -19,6 +19,7 @@ RAIZ = Path(__file__).resolve().parent.parent
 SALIDA = RAIZ / "explorador" / "indicadores-historia.json"
 FMI_MANUAL = RAIZ / "explorador" / "indicadores-historia-fmi.json"
 DESDE = 2010
+SERIES_DESDE = {"ES": 2000}   # España llega hasta Aznar (C136); el resto, desde 2010
 UE = "https://ec.europa.eu/eurostat/databrowser/view/"
 BM = "https://data.worldbank.org/indicator/"
 URL_BM = "https://api.worldbank.org/v2/country/{c}/indicator/{i}?format=json&date={a}:{b}&per_page=100"
@@ -50,8 +51,8 @@ DUDOSAS = {"CN": "Las cifras oficiales de China (PIB, paro) se revisan poco y va
            "RU": "Desde 2022 Rusia publica menos datos y algunos con retraso o sin desglose; se muestran como [S]."}
 
 
-def _eurostat_serie(dataset, geo, filtros):
-    q = urllib.parse.urlencode({**filtros, "geo": geo, "sinceTimePeriod": str(DESDE) if dataset.startswith(("gov_", "ilc_")) else f"{DESDE}-01" if dataset != "namq_10_gdp" else f"{DESDE}-Q1"}, doseq=True)
+def _eurostat_serie(dataset, geo, filtros, desde=DESDE):
+    q = urllib.parse.urlencode({**filtros, "geo": geo, "sinceTimePeriod": str(desde) if dataset.startswith(("gov_", "ilc_")) else f"{desde}-01" if dataset != "namq_10_gdp" else f"{desde}-Q1"}, doseq=True)
     j = _get(URL_EUROSTAT.format(d=dataset, q=q), 60)
     tiempos = {v: k for k, v in j["dimension"]["time"]["category"]["index"].items()}
     return {tiempos[int(k)]: round(v, 1) for k, v in j["value"].items()}, j.get("updated", "")[:10]
@@ -87,11 +88,11 @@ def main():
         if geo:
             for clave, (ds, fil, unidad) in EUROSTAT.items():
                 try:
-                    d, act = _eurostat_serie(ds, geo, fil)
+                    d, act = _eurostat_serie(ds, geo, fil, SERIES_DESDE.get(pid, DESDE))
                     fuente = UE + ds
                     if clave == "ipc":   # se une la serie antigua (hasta 2025) con la nueva ECOICOP 2
                         try:
-                            viejo, _ = _eurostat_serie(IPC_ANTIGUO[0], geo, IPC_ANTIGUO[1])
+                            viejo, _ = _eurostat_serie(IPC_ANTIGUO[0], geo, IPC_ANTIGUO[1], SERIES_DESDE.get(pid, DESDE))
                             d = {**viejo, **d}
                             fuente += " (y prc_hicp_manr hasta su cierre)"
                         except Exception as e:
