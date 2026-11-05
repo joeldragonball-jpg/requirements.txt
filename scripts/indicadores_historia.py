@@ -18,8 +18,8 @@ from indicadores import PAISES, URL_EUROSTAT, _get  # mismas fuentes y países q
 RAIZ = Path(__file__).resolve().parent.parent
 SALIDA = RAIZ / "explorador" / "indicadores-historia.json"
 FMI_MANUAL = RAIZ / "explorador" / "indicadores-historia-fmi.json"
-DESDE = 2010
-SERIES_DESDE = {"ES": 2000}   # España llega hasta Aznar (C136); el resto, desde 2010
+DESDE = 2000
+SERIES_DESDE = {}   # excepciones por país si hiciera falta; por defecto todas desde 2000 (C137)
 UE = "https://ec.europa.eu/eurostat/databrowser/view/"
 BM = "https://data.worldbank.org/indicator/"
 URL_BM = "https://api.worldbank.org/v2/country/{c}/indicator/{i}?format=json&date={a}:{b}&per_page=100"
