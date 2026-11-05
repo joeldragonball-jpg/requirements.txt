@@ -58,8 +58,8 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 
 ## Otros
 - 2026-11-05 · C133 · Países: datos 2025-2026, historia y «durante el mandato» (5-nov-2026) (`informes/research/2026-11-05-C133-paises-historia-mandatos.md`): Modelo: Opus. Plan aprobado por Joel el 5 nov, con 4 cambios: «máximo de la serie AAAA AAAA», nota del mandato previo en Putin, Trump y Xi, fechas de…
+- 2026-11-05 · C132 · Centro de control para el móvil: esquema (5-nov-2026) (`informes/research/2026-11-05-C132-centro-control-movil-esquema.md`): Fase 1 de 2: solo diseño, sin código . Se implementa cuando Joel dé el visto bueno (paso 4 del prompt research/prompts/C132 centro control movil.md…
 - 2026-11-04 · EV · Elecciones de mitad de mandato de EE. UU. (3-nov-2026) (`informes/research/2026-11-04-EV-elecciones-eeuu.md`): Qué pasó (HECHOS según proyecciones, no recuento oficial)
-- 2026-11-04 · EV · Decisión del RBA (3-nov-2026) (`informes/research/2026-11-04-EV-rba-3-nov.md`): Sube el tipo objetivo 25 pb hasta 4,85 % (desde 4,60 %), por mayoría: 6 votos a favor y 3 por mantener en 4,60 %.
 
 ## Fuentes y datos nuevos (sin fecha en el nombre)
 - A. Tipos de interés de los bancos centrales: fuentes y calendario de actualización (`research/fuentes-nuevas/A-tipos-bancos-centrales.md`): La tabla tipos vivos cubre 5 bancos con fuente primaria directa (Fed, BCE, BoE, BCB Brasil, Banco de Canadá) y tipos bis otros 10 vía BIS (RU, ZA,…
