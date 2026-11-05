@@ -264,7 +264,8 @@ def _novedades(hoy_iso, dias=7):
     return sorted(out, key=lambda x: (x["fecha"], x["archivo"]), reverse=True)
 
 
-def _html(conceptos):
+def _html(conceptos, publico=False):
+    """publico=True: versión para publicar (docs/orbita/) SIN nada de privado/ (contraste y cruce con la tesis)."""
     plantilla = (CARPETA / "mapa.html").read_text(encoding="utf-8")
     datos = json.loads((CARPETA / "datos.json").read_text(encoding="utf-8"))
     rel = _relacionados(json.dumps(conceptos or [], ensure_ascii=False, sort_keys=True), _firma())
@@ -275,6 +276,8 @@ def _html(conceptos):
     except Exception:
         datos["radar"] = None            # sin el archivo del radar, el mapa funciona igual (sin esa sección)
     try:                              # contraste privado con la tesis: solo existe en tu PC (privado/ no se sube a GitHub)
+        if publico:
+            raise FileNotFoundError("versión pública: sin privado/")
         datos["contraste"] = json.loads((RAIZ / "privado" / "contraste-tesis.json").read_text(encoding="utf-8"))
     except Exception:
         datos["contraste"] = None
@@ -287,6 +290,8 @@ def _html(conceptos):
     except Exception:
         datos["voces"] = None
     try:                              # cruce privado de las voces con la tesis: solo existe en tu PC (privado/ no se sube a GitHub)
+        if publico:
+            raise FileNotFoundError("versión pública: sin privado/")
         datos["voces_tesis"] = json.loads((RAIZ / "privado" / "voces-tesis.json").read_text(encoding="utf-8"))
     except Exception:
         datos["voces_tesis"] = None

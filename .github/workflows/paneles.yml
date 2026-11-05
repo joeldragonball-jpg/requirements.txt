@@ -71,6 +71,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/construir_seguimiento.py
 
+      # Órbita para la tablet (C141): el Explorador completo como página suelta en docs/orbita/. Sin IA ni claves; sin nada de privado/.
+      - name: Construir la Órbita para la tablet
+        id: orbita
+        continue-on-error: true
+        run: python scripts/construir_orbita.py
+
       - name: Comprobar el archivo
         run: |
           python - <<'EOF'
@@ -85,7 +91,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add explorador/paneles.json explorador/indicadores-historia.json explorador/precios_historico.json explorador/valoracion.json explorador/datos.json explorador/noticias-archivo.json docs/movil/data.json docs/movil/seguimiento.json research/PLANNING.md
+          git add explorador/paneles.json explorador/indicadores-historia.json explorador/precios_historico.json explorador/valoracion.json explorador/datos.json explorador/noticias-archivo.json docs/movil/data.json docs/movil/seguimiento.json docs/orbita/index.html research/PLANNING.md
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -m "Paneles de datos: actualización automática (sin IA)"
           git pull --rebase origin "${GITHUB_REF_NAME}"
