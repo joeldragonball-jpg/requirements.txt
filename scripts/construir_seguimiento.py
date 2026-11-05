@@ -550,8 +550,10 @@ def grupos(colas, h, rut, gem):
         hoy_l.append({"id": "R00", "txt": "Apertura del día"})
     if not h["cierre"] and datetime.now().hour >= 22:
         hoy_l.append({"id": "R00", "txt": "Cierre del día (desde las 22:00)"})
+    hechas_hoy = {r["id"] for r in rut if r.get("ultimo") == hoy.isoformat()}
     for t in toca(hoy):
-        hoy_l.append({"id": t["id"], "txt": t["nombre"]})
+        if t["id"] not in hechas_hoy:
+            hoy_l.append({"id": t["id"], "txt": t["nombre"]})
     if gem and not gem.get("hecho") and not gem.get("parada"):
         hoy_l.append({"id": "Gemini", "txt": corto(gem["hoy"]["tema"], 70)})
     hoy_l = hoy_l[:3]

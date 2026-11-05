@@ -66,3 +66,18 @@ Los informes originales no se reescriben: aquí se cierra cada punto. Etiquetas:
 
 **Conteo W05D:** 8 puntos · 2 cerrados (FOMC, M2 China) · 4 parciales/corregidos (ETF XRP, Coinbase, petróleo −6 %, aviso al Golfo) · 2 sin verificar (Ras Tanura, CCIP-SWIFT). Acumulado 27 y 29-oct: 28 tratados.
 **Implicación:** no citar un ataque a Ras Tanura ni «3 días» para Coinbase; el plazo es el 30-oct.
+
+## W05 del 5-nov-2026 (lote de noticias del 4-nov y CLARITY)
+
+| ID | Afirmación | Archivo de origen | Resultado | Fuente y fecha |
+|---|---|---|---|---|
+| W05E-01 | Los demócratas ganan el Senado (3-nov) | Explorador (prensa, 4-nov) | **Confirmado [S]**: CBS (al menos 54 escaños), NBC, Yahoo y Northeastern coinciden; Mississippi (65 votos) y Alaska sin cerrar. «Cambia el mapa de la regulación cripto» = interpretación; recuento oficial sin leer [VERIFICAR] | cbsnews.com/live-updates/senate-election-results-2026, 5-nov |
+| W05E-02 | Las bolsas se disparan tras la victoria demócrata | Explorador | **Confirmado [S] el movimiento; la causa es [ESPECULACIÓN]**: S&P 500 +1,58 %, Nasdaq +1,44 %, Euro Stoxx +1,97 %, Ibex +3,0 %, VIX −20 % | Yahoo Finance vía paneles.json, cierre 4-nov |
+| W05E-03 | El Dow sube 1.500 puntos y el Brent baja de 95 $ | Explorador | **Dudoso**: Brent 94,6 $ (−8,7 %) en la serie fresca, pero la copia anterior daba 104,06 $; otro titular dice que el petróleo sube. Dow +1.500 (~3 %) no cuadra con el S&P +1,58 %; sin fuente | Yahoo BZ=F, 4-nov |
+| W05E-04 | El bono a 10 años cae 19 puntos básicos | Explorador | **Desmentido [P]**: 4,95 % → 4,90 % (−5 p. b.) | Tesoro de EE. UU., curva diaria, 4-nov |
+| W05E-05 | La SEC ve Canton Coin como materia prima digital, sin acciones | Explorador | **Sin verificar**: ninguna fuente muestra carta ni comunicado de la SEC sobre Canton; solo la taxonomía general de «materias primas digitales» (Bitcoin, Ether) | búsqueda web 5-nov; cerrar en sec.gov con Chrome |
+| W05E-06 | Cloture de CLARITY fallido 49-50 | PLANNING (VERIFICAR) | **Parcial [S]**: fuentes secundarias coinciden en 49-50 el 15-sep-2026 (voto 234, faltan 11 para los 60); los nombres de los 4 republicanos en contra se contradicen (Paul/Collins). Falta leer senate.gov | thedefiant.io, DLA Piper vía prensa, 5-nov |
+
+**Conteo W05E:** 6 puntos · 2 confirmados (Senado, bolsas) · 1 desmentido (bono −19 p. b.) · 1 parcial (CLARITY) · 2 sin cerrar (Dow/Brent, Canton Coin).
+**Implicación:** no citar «−19 p. b.» ni «Dow +1.500» ni lo de Canton Coin; el bono cayó 5 p. b.
+

@@ -1,9 +1,9 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-05 00:31 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-05 00:37 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** R00 Apertura del día · W05 Verificación por lotes · Gemini Evento: Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,75 
+**Hoy (máx. 3):** R00 Apertura del día · Gemini Evento: Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,75 
 **Periódicas (próxima):** W05 11-05 · W06 11-06 · W09 11-06 · W07 11-07 · W10 11-07 · W01 11-09 · W02 11-10 · W03 11-11 · W04 11-12 · W08 11-25
 **Bloqueadas (13):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C87 (Propuesta de la auditoría C81 (informes/research/2) · C88 (Propuesta de la auditoría C81 (informes/research/2) · C89 (Propuesta de la auditoría C81 (informes/research/2) · C90 (Propuesta de la auditoría C81 (informes/research/2) · …
 **Parciales (15):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
@@ -89,15 +89,15 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [alta] 2026-11-04 (1 d) · Las bolsas se disparan tras la victoria demócrata en el Congreso.
-- [alta] 2026-11-04 (1 d) · El Dow sube 1.500 puntos y el Brent baja de 95 $.
-- [alta] 2026-11-04 (1 d) · El bono a 10 años cae 19 puntos básicos en un día.
-- [alta] 2026-11-04 (1 d) · Los demócratas ganan el Senado y cambia el mapa de la regulación cripto.
-- [alta] 2026-11-04 (1 d) · La SEC ve Canton Coin como materia prima digital y no recomendará acciones.
 - [media] 2026-10-22 (14 d) · hutiES a Arabia Saudi
 - [media] 2026-10-22 (14 d) · hutiES a Arabia Saudi
 - [media] 2026-10-23 (13 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
-- … y 45 más en el Seguimiento
+- [media] 2026-10-23 (13 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
+- [media] 2026-10-25 (11 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
+- [media] 2026-10-25 (11 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
+- [media] 2026-10-25 (11 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
+- [media] 2026-10-25 (11 d) · [VERIFICAR] Consulta DGT V0648-24 leída en petete
+- … y 43 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (4) → W03 · BR/politica; RU/stablecoins; AE/politica; BRICS/ley_marco
