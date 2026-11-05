@@ -453,7 +453,13 @@ function vSeg(){
   const epHtml = EP.length ? `${cab('Eventos pasados sin research')}<div class="card" style="--i:1;padding:6px 14px">${EP.map(e => `<div class="fil"><span class="t">${esc(e.titulo.slice(0, 80))}<div class="meta2" style="margin:2px 0 0">${esc(e.fecha)} · /research EV</div></span><span class="bd ya">⏳</span></div>`).join('')}</div>` : '';
   const frescuraN = FR ? `${cab('Qué se está quedando viejo')}<div class="lista">${FR.items.map(f => `<div class="lr"><span class="semaf ${f.nivel === 'ok' ? 'ok' : f.nivel === 'alerta' ? 'mal' : 'ya'}"></span><div class="n">${esc(f.area)}: ${esc(f.titulo)}<small>${f.nivel === 'ok' ? 'al día' : f.n + ' · lo pone al día ' + esc(f.rutina)}</small></div></div>`).join('')}</div><div class="meta2" style="margin:-4px 4px 4px">${FR.resumen.alerta} urgentes · ${FR.resumen.aviso} a vigilar · ${FR.resumen.ok} al día.</div>` : '';
   const resto = gemHtml + planHtml + toca + plazos + pred + audit + bots + cuota + inf;
-  return hero + frescuraN + verHtml + epHtml + `<details class="plegado"><summary>Más detalle: plan completo, rutinas, plazos, predicciones, bots e informes</summary>${resto}</details>`;   // la hora de la última lectura va en el botón «↻» de «Todo el plan»
+  const G5 = S.grupos, g5f = (x, extra) => `<div class="fil"><span class="id">${esc(x.id)}</span><span class="t">${esc(x.txt)}${extra ? `<div class="meta2" style="margin:2px 0 0">${esc(extra)}</div>` : ''}</span></div>`;
+  const g5 = G5 ? `${cab('Vista en 5 grupos')}<div class="card" style="--i:1;padding:6px 14px"><div class="meta2"><b>Hoy (máx. 3)</b></div>${G5.hoy.map(x => g5f(x)).join('') || '<div class="meta2">Nada obligatorio.</div>'}`
+    + `<details class="plegado"><summary>Periódicas · ${G5.periodicas.length}</summary>${G5.periodicas.map(x => g5f(x, x.cada + ' · próxima ' + (x.proxima || '?') + (x.atrasada ? ' · ⚠ atrasada' : ''))).join('')}</details>`
+    + `<details class="plegado"><summary>Bloqueadas · ${G5.bloqueadas.length}</summary>${G5.bloqueadas.map(x => g5f(x, x.motivo)).join('')}</details>`
+    + `<details class="plegado"><summary>Parciales · ${G5.parciales.length}</summary>${G5.parciales.map(x => g5f(x, 'Falta: ' + x.falta)).join('')}</details>`
+    + `<details class="plegado"><summary>Hechas en 7 días · ${G5.hechas.length}</summary>${G5.hechas.map(x => g5f(x, x.fecha)).join('')}</details></div>` : '';
+  return hero + g5 + frescuraN + verHtml + epHtml + `<details class="plegado"><summary>Más detalle: plan completo, rutinas, plazos, predicciones, bots e informes</summary>${resto}</details>`;   // la hora de la última lectura va en el botón «↻» de «Todo el plan»
 }
 function vCerebro(){
   const cuerpo = segCer === 'seg' ? vSeg() : segCer === 'voces' ? D.voces.map(vozHTML).join('') : segCer === 'videos' ? D.videos.map(mdHTML).join('') : [...D.informes, ...D.investigacion].map(mdHTML).join('');

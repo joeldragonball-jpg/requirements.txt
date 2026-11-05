@@ -539,6 +539,41 @@ def verificaciones():
     return out
 
 
+def grupos(colas, h, rut, gem):
+    """C131: vista de UNA pantalla en 5 grupos fijos: Hoy (máx. 3), Periódicas (con próxima fecha), Bloqueadas (con motivo),
+    Parciales (qué falta) y Hechas recientes (7 días). Sale de las mismas filas que el resto del Seguimiento."""
+    hoy = date.today()
+    corto = lambda t, n=90: (t or "").strip()[:n]
+    # Hoy: lo casi obligatorio, tope 3
+    hoy_l = []
+    if not h["apertura"]:
+        hoy_l.append({"id": "R00", "txt": "Apertura del día"})
+    if not h["cierre"] and datetime.now().hour >= 22:
+        hoy_l.append({"id": "R00", "txt": "Cierre del día (desde las 22:00)"})
+    for t in toca(hoy):
+        hoy_l.append({"id": t["id"], "txt": t["nombre"]})
+    if gem and not gem.get("hecho") and not gem.get("parada"):
+        hoy_l.append({"id": "Gemini", "txt": corto(gem["hoy"]["tema"], 70)})
+    hoy_l = hoy_l[:3]
+    # Periódicas: cada rutina con su próxima fecha según el calendario fijo
+    per = []
+    for r in rut:
+        prox = next((hoy + timedelta(days=i) for i in range(0, 35) if any(x["id"] == r["id"] for x in toca(hoy + timedelta(days=i)))), None)
+        per.append({"id": r["id"], "txt": r["nombre"], "cada": r["cada"], "ultimo": r["ultimo"], "proxima": prox.isoformat() if prox else None, "atrasada": r["atrasada"]})
+    per.sort(key=lambda x: (x["proxima"] is None, x["proxima"] or ""))
+    abiertas = [t for t in colas if t["estado"] in ("pendiente", "parcial")]
+    bloq = [{"id": t["id"], "txt": corto(t["tema"], 80), "motivo": corto(t.get("bloqueo"), 120)} for t in abiertas
+            if t.get("bloqueo") and t["bloqueo"].strip().lower() not in ("ninguno", "-", "")]
+    parc = [{"id": t["id"], "txt": corto(t["tema"], 80), "falta": corto(t.get("falta") or t.get("detalle"), 140)} for t in colas if t["estado"] == "parcial"]
+    rec = []
+    for t in colas:
+        m = re.search(r"[Hh]echo? (\d{4}-\d{2}-\d{2})", t.get("detalle", "") or "")
+        if t["estado"] == "hecha" and m and (hoy - date.fromisoformat(m.group(1))).days <= 7:
+            rec.append({"id": t["id"], "txt": corto(t["tema"], 80), "fecha": m.group(1)})
+    rec.sort(key=lambda x: x["fecha"], reverse=True)
+    return {"hoy": hoy_l, "periodicas": per, "bloqueadas": bloq, "parciales": parc, "hechas": rec}
+
+
 def construir(bots_estado=False):
     colas = cola_r() + cola_t() + cola_d()
     eventos = eventos_futuros()
@@ -564,7 +599,7 @@ def construir(bots_estado=False):
     todo = [{"id": t["id"], "tema": t["tema"][:120], "estado": t["estado"], "origen": t["origen"], "detalle": t.get("detalle", "")[:200],
              "est": t.get("est", ""), "real": t.get("real", ""), "prompt": t.get("prompt", ""),
              "cuando": t.get("cuando", ""), "falta": t.get("falta", ""), "bloqueo": t.get("bloqueo", "")} for t in colas]
-    return {
+    out = {
         "generado": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "hoy": r00(), "semana": semana(), "plan": {k: {"nombre": v[0], "coste": v[1]} for k, v in PLAN.items()}, "rutinas": rutinas(),
         "resumen": {"hechas": sum(1 for t in contables if t["estado"] == "hecha"), "pendientes": sum(1 for t in contables if pend(t)), "parciales": sum(1 for t in contables if t["estado"] == "parcial"),
@@ -578,6 +613,8 @@ def construir(bots_estado=False):
         "informes": informes_recientes(), "frescura": frescura(), "eventos": eventos_calendario(), "gemini": gemini(),
         "verificaciones": verificaciones(),
     }
+    out["grupos"] = grupos(colas, out["hoy"], out["rutinas"], out["gemini"])
+    return out
 
 
 def eventos_calendario():
@@ -628,6 +665,13 @@ def planning_md(d):
          "`/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.", ""]
     h = d["hoy"]
     lunes = hoy - timedelta(days=hoy.weekday())
+    G = d.get("grupos")
+    if G:
+        L += ["## Vista en 5 grupos (C131)", "**Hoy (máx. 3):** " + (" · ".join(f"{x['id']} {x['txt']}" for x in G["hoy"]) or "nada obligatorio"),
+              "**Periódicas (próxima):** " + " · ".join(f"{x['id']} {x['proxima'][5:] if x['proxima'] else '?'}{'⚠' if x['atrasada'] else ''}" for x in G["periodicas"]),
+              f"**Bloqueadas ({len(G['bloqueadas'])}):** " + (" · ".join(f"{x['id']} ({x['motivo'][:50]})" for x in G["bloqueadas"][:6]) or "ninguna") + (" · …" if len(G["bloqueadas"]) > 6 else ""),
+              f"**Parciales ({len(G['parciales'])}):** " + (" · ".join(f"{x['id']} falta: {x['falta'][:50]}" for x in G["parciales"][:6]) or "ninguna") + (" · …" if len(G["parciales"]) > 6 else ""),
+              f"**Hechas en 7 días ({len(G['hechas'])}):** " + (", ".join(x["id"] for x in G["hechas"][:15]) or "ninguna"), ""]
     L += [f"## Hoy ({dias[hoy.weekday()]} {hoy.isoformat()}): solo lo casi obligatorio",
           f"- R00 apertura {'✓' if h['apertura'] else '⏳ pendiente'} · cierre {'✓' if h['cierre'] else '⏳ pendiente (desde las 22:00, cierre de EE. UU.)'} · racha {h['racha']} días"]
     rut = {r["id"]: r for r in d["rutinas"]}

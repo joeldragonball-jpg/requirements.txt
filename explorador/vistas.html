@@ -241,7 +241,7 @@ function tabla(cols,filas){
       if(nt){r.title=nt;r.firstChild.append(el('span','ntip','ⓘ'))}}
     t.append(r)}
   return t}
-function kpi(v,t,cam){const k=el('div','kpi');const b=el('b');if(v instanceof Node)b.append(v);else b.textContent=v;k.append(b,el('span',null,t));if(cam)k.append(cam);return k}
+function kpi(v,t,cam,ex){const k=el('div','kpi');const b=el('b');if(v instanceof Node)b.append(v);else b.textContent=v;k.append(b,el('span',null,t));if(cam)k.append(cam);if(ex)k.append(ex);return k}
 /* cuando subir es malo (paro, deuda, defunciones) la flecha va en rojo: se intercambian las clases de color de cambio() */
 function inv(n){if(n&&n.classList){if(n.classList.contains('sube'))n.classList.replace('sube','baja');else if(n.classList.contains('baja'))n.classList.replace('baja','sube')}return n}
 function kpis(l){const g=el('div','kpis');for(const x of l)if(x)g.append(kpi(...x));return g}
@@ -1269,7 +1269,9 @@ function pPaises(){
   const fp=lista.find(f=>f.id===paisSel),ind=((IN.find(i=>i.id===paisSel)||{}).indicadores)||{},es1=ES.find(x=>x.id===paisSel)||{},pe=fp.proxima_eleccion||{};
   const caja=el('div','caja');caja.appendChild(el('h2','',fp.pais));
   caja.appendChild(el('div','nota-v',[fp.jefe_gobierno,fp.familia,pe.fecha?'Próxima elección: '+pe.fecha+(pe.tipo?' · '+pe.tipo.slice(0,60):''):''].filter(Boolean).join(' · ')));
-  const kk=['ipc','paro','pib','deuda'].filter(k=>ind[k]).map(k=>{const x=ind[k],t=tendGen(NOMI[k],x.valor,x.anterior,x.anterior_fecha,k);let a=null;if(t){a=el('div','',t.f+' antes '+cortaUnid(x.anterior,x.unidad));a.style.cssText='font-size:.85rem;color:'+t.c}return[cortaUnid(x.valor,x.unidad),NOMI[k]+' · '+(x.fecha||''),a]});
+  const kk=['ipc','paro','pib','deuda'].filter(k=>ind[k]).map(k=>{const x=ind[k],t=tendGen(NOMI[k],x.valor,x.anterior,x.anterior_fecha,k);let a=null;if(t){a=el('div','',t.f+' antes '+cortaUnid(x.anterior,x.unidad));a.style.cssText='font-size:.85rem;color:'+t.c}/* C135 · mini-serie de los últimos 5 años bajo la cifra grande (explorador/indicadores-historia.json) */
+    let mini=null;const hs=((((D.indicadores_historia||{}).paises||{})[paisSel]||{})[k]);if(hs&&hs.v&&hs.v.length>2){const n=hs.frec==='M'?60:hs.frec==='T'?20:6,vv=hs.v.slice(-n);mini=el('div','');mini.style.marginTop='4px';mini.append(spark(vv,150,28),el('div','nota-v','últimos '+vv.length+(hs.frec==='M'?' meses':hs.frec==='T'?' trimestres':' años')+' · '+hs.p[hs.p.length-vv.length]+' a '+hs.p[hs.p.length-1]))}
+    return[cortaUnid(x.valor,x.unidad),NOMI[k]+' · '+(x.fecha||''),a,mini]});
   if(kk.length){const g=kpis(kk);g.style.maxWidth='1100px';caja.appendChild(g)}
   const GR='display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:6px 18px;margin-top:8px';
   const celda=(nombre,valor,unidad,fecha,ant,antf,clave,tip)=>{const t=tendGen(nombre,valor,ant,antf,clave);const r=el('div','');r.style.cssText='border-bottom:1px solid var(--lin);padding:5px 0';r.title=tip||'';const a=el('div','',nombre);a.style.cssText='font-size:.85rem;color:var(--tx2)';const v=el('b','',cortaUnid(valor,unidad)+(t?' '+t.f:''));v.style.cssText='font-size:1.15rem;color:'+(t?t.c:'#ffffff');r.append(a,v,el('div','nota-v',(fecha||'sin fecha')+(ant!=null?' · antes '+cortaUnid(ant,unidad):'')));return r};

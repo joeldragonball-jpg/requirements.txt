@@ -36,6 +36,13 @@ jobs:
         continue-on-error: true
         run: python scripts/actualizar_precios_historico.py
 
+      # Series históricas de Países (C135): Eurostat y Banco Mundial, sin IA ni claves; si falla conserva el archivo anterior.
+      # Las series de deuda/déficit del FMI se leen a mano tras cada WEO (explorador/indicadores-historia-fmi.json).
+      - name: Actualizar la historia de indicadores
+        id: historia
+        continue-on-error: true
+        run: python scripts/indicadores_historia.py
+
       # Cuadro de valoración sectorial (C26): precio de Yahoo + SEC companyfacts, 18 valores. Sin IA ni claves; si falla conserva el anterior.
       - name: Actualizar la valoración sectorial
         id: valoracion
@@ -78,7 +85,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add explorador/paneles.json explorador/precios_historico.json explorador/valoracion.json explorador/datos.json explorador/noticias-archivo.json docs/movil/data.json docs/movil/seguimiento.json research/PLANNING.md
+          git add explorador/paneles.json explorador/indicadores-historia.json explorador/precios_historico.json explorador/valoracion.json explorador/datos.json explorador/noticias-archivo.json docs/movil/data.json docs/movil/seguimiento.json research/PLANNING.md
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -m "Paneles de datos: actualización automática (sin IA)"
           git pull --rebase origin "${GITHUB_REF_NAME}"
