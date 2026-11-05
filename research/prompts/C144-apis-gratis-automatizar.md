@@ -1,0 +1,7 @@
+# C144 · Research a fondo: APIs y datos gratis para automatizar el tablero
+
+Sesión corta. Sigue CLAUDE.md. Sin claves en el repo, sin llamar a la API de Anthropic, sin lanzar workflows. Busca en GitHub (awesome-lists, issues), Reddit (r/algotrading, r/datasets, r/QuantFinance, r/spain, r/Bogleheads, r/ethfinance, r/Ripple, r/Stellar) y webs de documentación oficial. Cada hallazgo con URL, fecha, límite gratuito, si exige clave y qué sesgo tiene la fuente (promoción, comunidad anónima).
+
+Objetivo: sustituir lecturas manuales y webs bloqueadas del tablero. Para cada candidato: qué dato da, formato (JSON/CSV/RSS), frecuencia, límite gratis, licencia, fiabilidad [P/S].
+Áreas: (1) fechas de mandato y cargos (Wikidata SPARQL, Parlamento Europeo, datos abiertos de gobiernos); (2) justicia y boletines (BOE API de datos abiertos, CENDOJ, Poder Judicial RSS); (3) macro (Eurostat, FRED, BIS, IMF DataMapper, World Bank, BCE SDMX, INE API JSON); (4) mercados y cripto (CoinGecko, Binance público, Yahoo alternativas, Stooq); (5) eventos y noticias (GDELT, RSS oficiales, SEC EDGAR RSS, Federal Register API, GitHub releases de XRPL/Stellar); (6) calendarios económicos gratuitos.
+Salida: `informes/research/AAAA-MM-DD-C144-apis-gratis.md` con tabla ordenada por utilidad/coste, 5 candidatos recomendados con ejemplo de URL, y qué NO usar. Marca [VERIFICAR] lo que no probaste. Al acabar: fila en `research/COLA.md` y regenerar `construir_movil.py` y `construir_seguimiento.py`.

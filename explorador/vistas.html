@@ -97,6 +97,13 @@ td.c .ch{display:flex;align-items:center;justify-content:center;gap:7px;font-siz
 ul{margin:4px 0;padding-left:18px}li{margin:2px 0}
 dl{margin:4px 0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px}dt{color:var(--tx2)}dd{margin:0}
 a{color:var(--ac)}
+.jus-intro p{font-size:var(--fs);color:var(--tx);margin:4px 0 8px;max-width:78ch}
+.jus-card h4{font-size:clamp(17px,.5vw + 10px,20px);margin:0 0 6px}
+.jus-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}.jus-chip{font-size:var(--fs-xs);border:1px solid var(--lin);border-radius:99px;padding:2px 9px;color:var(--tx2)}.jus-chip.ok{color:var(--sube);border-color:var(--sube)}.jus-chip.no{color:#e8b64a;border-color:#e8b64a}
+.jus-fase,.jus-tx{font-size:var(--fs);color:var(--tx);margin:4px 0 8px}
+.jus-hecho{border-left:3px solid var(--ac);padding:2px 0 2px 10px;margin:8px 0}.jus-hecho b{color:var(--ac);font-size:var(--fs-s)}.jus-hecho p{font-size:var(--fs);color:var(--tx);margin:2px 0;line-height:1.45}
+.jus-pend,.jus-prensa{background:var(--nul);border-radius:8px;padding:6px 10px;margin-top:8px;font-size:var(--fs-s);color:var(--tx)}.jus-pend b{color:#e8b64a}.jus-prensa b{color:var(--tx2)}.jus-pend ul,.jus-prensa ul{margin:4px 0}
+.jus-sin{opacity:.92}
 .nota-v{color:var(--tx2);font-size:14px;margin:4px 0}
 .que{color:var(--tx2);font-size:14.5px;margin:2px 0 6px}
 details.bl{margin-bottom:clamp(4px,.5vw,10px)}details.bl>summary{cursor:pointer;font-weight:600;padding:4px 0}.ms{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(88px,.9fr) minmax(110px,1.2fr) minmax(86px,.8fr);gap:10px;align-items:center;padding:7px 10px;margin:2px 0;border:1px solid var(--lin);border-radius:8px;background:var(--panel);list-style:none}details.bl>summary.ms::-webkit-details-marker{display:none}.ms:hover{background:#1b2640;border-color:var(--ac)}details[open]>summary.ms{background:#1b2640;border-color:var(--ac)}.ms .nm{font-weight:700;color:var(--tx);letter-spacing:.01em}.ms .nm::before{content:'▸  ';color:var(--ac)}details[open]>summary.ms .nm::before{content:'▾  '}.ms .im{font-weight:700;color:#f1d58a;text-align:right;white-space:nowrap}.ms .im small{color:var(--tx2);font-weight:400;font-size:max(13px,.8em)}.ms .pc{position:relative;height:20px;background:var(--nul);border-radius:5px;overflow:hidden}.ms .pc i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#27578f,var(--ac))}.ms .pc b{position:relative;display:block;padding-left:7px;font-size:max(13px,.85em);color:#fff;line-height:20px;white-space:nowrap;text-shadow:0 1px 2px #000}.ms .hb{color:var(--tx2);font-size:max(13px,.86em);text-align:right;white-space:nowrap}.ms .hb em{font-style:normal;color:var(--tx);font-weight:600}.pb{display:inline-block;position:relative;min-width:110px;height:18px;background:var(--nul);border-radius:4px;overflow:hidden;vertical-align:middle}.pb i{position:absolute;top:0;bottom:0;left:0;background:#27578f}.pb b{position:relative;padding-left:6px;font-size:max(13px,.88em);line-height:18px}@media(max-width:700px){.ms{grid-template-columns:1fr 1fr}.ms .nm{grid-column:1/-1}}
@@ -1668,13 +1675,27 @@ function pEspana(){
     RES.jus.push([String(ok),'Casos con hechos de fuente oficial (de '+ns+')',null]);
     const ult=JU.casos.flatMap(x=>(x.hechos_judiciales||[]).map(h=>h.fecha)).sort().pop();
     if(ult)RES.jus.push([ult,'Última resolución recogida',null]);
+    const MES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    const fch=f=>{const m=/^(\d{4})-(\d\d)-(\d\d)$/.exec(f||'');return m?(+m[3])+' '+MES[+m[2]-1]+' '+m[1]:(f||'')};
+    const intro=el('div','jus-intro');
+    intro.append(el('p',null,'Aquí van solo los hechos que el Poder Judicial publica en sus notas de prensa, cada uno con su fecha y su enlace. Una investigación no es una condena: hasta que hay sentencia firme rige la presunción de inocencia.'));
+    intro.append(el('p',null,'Cada tarjeta es un caso. Arriba, en qué fase está; debajo, lo que ha pasado en orden de fechas; al final, lo que todavía no se ha comprobado. Si pone «Sin comprobar», no hay ningún hecho oficial leído y no se debe dar nada por cierto.'));
+    const g=el('div','rej jus-grid');
     for(const cs of JU.casos){
-      const w=el('div');
-      w.append(el('p','nota-v','Fase: '+cs.fase+' · '+cs.tribunal));
-      if(!(cs.hechos_judiciales||[]).length)w.append(el('p','nota-v','Sin hechos oficiales leídos todavía [VERIFICAR].'));
-      for(const h of cs.hechos_judiciales||[]){const q=el('p','nota-v',h.fecha+' · '+h.texto+' ');if(/^https?:/.test(h.fuente||'')){const a=el('a',null,'fuente');a.href=h.fuente;a.target='_blank';a.rel='noopener';q.append(a)}w.append(q)}
-      if((cs.pendiente||[]).length)w.append(el('p','nota-v','Pendiente: '+cs.pendiente.join('; ')+'.'));
-      add(bloque('Justicia · '+cs.nombre,null,{nivel:(cs.hechos_judiciales||[]).length?'P':'V',t:'Poder Judicial (notas de prensa) · presunción de inocencia: una investigación no es una condena'},w,false))}
+      const hs=(cs.hechos_judiciales||[]).slice().sort((x,y)=>(y.fecha||'').localeCompare(x.fecha||''));
+      const t=el('div','tarj jus-card'+(hs.length?'':' jus-sin'));
+      t.append(el('h4',null,cs.nombre));
+      const ch=el('div','jus-chips');ch.append(el('span','jus-chip '+(hs.length?'ok':'no'),hs.length?'Con hechos oficiales':'Sin comprobar'));ch.append(el('span','jus-chip',cs.tribunal));t.append(ch);
+      t.append(el('p','jus-fase','Fase: '+cs.fase));
+      if(!hs.length)t.append(el('p','jus-tx','Todavía no hay ningún hecho de fuente oficial leído para este caso [VERIFICAR].'));
+      for(const h of hs){const q=el('div','jus-hecho');q.append(el('b',null,fch(h.fecha)));q.append(el('p',null,h.texto+' '));
+        if(/^https?:/.test(h.fuente||'')){const a=el('a',null,'Ver nota oficial');a.href=h.fuente;a.target='_blank';a.rel='noopener';q.lastChild.append(a)}t.append(q)}
+      if((cs.filtraciones_prensa||[]).length){const q=el('div','jus-prensa');q.append(el('b',null,'Prensa (no oficial)'));const u=el('ul');for(const x of cs.filtraciones_prensa)u.append(el('li',null,typeof x==='string'?x:(x.texto||JSON.stringify(x))));q.append(u);t.append(q)}
+      if((cs.opinion||[]).length){const q=el('div','jus-prensa');q.append(el('b',null,'Opinión'));const u=el('ul');for(const x of cs.opinion)u.append(el('li',null,typeof x==='string'?x:(x.texto||JSON.stringify(x))));q.append(u);t.append(q)}
+      if((cs.pendiente||[]).length){const q=el('div','jus-pend');q.append(el('b',null,'Falta por comprobar'));const u=el('ul');for(const x of cs.pendiente)u.append(el('li',null,x));q.append(u);t.append(q)}
+      g.append(t)}
+    const wj=el('div');wj.append(intro,g);
+    add(bloque('Justicia · casos en curso',null,{nivel:'P',t:'Poder Judicial (notas de prensa) · presunción de inocencia: una investigación no es una condena'},wj,true));
   }
   const nav=el('div');nav.style.cssText='margin:10px 0;display:flex;gap:8px;flex-wrap:wrap';
   let panel=null;

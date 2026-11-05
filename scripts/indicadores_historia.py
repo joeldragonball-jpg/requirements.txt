@@ -19,7 +19,7 @@ RAIZ = Path(__file__).resolve().parent.parent
 SALIDA = RAIZ / "explorador" / "indicadores-historia.json"
 FMI_MANUAL = RAIZ / "explorador" / "indicadores-historia-fmi.json"
 DESDE = 2000
-SERIES_DESDE = {}   # excepciones por país si hiciera falta; por defecto todas desde 2000 (C137)
+SERIES_DESDE = {"ES": 1996}   # ES desde 1996: el mandato de Aznar empieza en mayo de 1996 (C137); el resto desde 2000
 UE = "https://ec.europa.eu/eurostat/databrowser/view/"
 BM = "https://data.worldbank.org/indicator/"
 URL_BM = "https://api.worldbank.org/v2/country/{c}/indicator/{i}?format=json&date={a}:{b}&per_page=100"
@@ -124,7 +124,7 @@ def main():
                                          "nivel": "S" if iso in ("CHN", "RUS") else "P", "actualizado": fmi.get("_leido", ""), "nota": "FMI, WEO " + fmi.get("_edicion", "") + "; el último año puede ser estimación."}
         salida[pid] = series
     out = {"generado": hoy.isoformat(), "desde": DESDE,
-           "nota": "Series desde " + str(DESDE) + ". UE: Eurostat; resto: Banco Mundial (anual) y FMI (deuda y déficit). Solo cifras publicadas; sin serie = no se muestra.",
+           "nota": "Series desde " + str(DESDE) + " (España desde 1996, inicio del mandato de Aznar; el IPC de Eurostat empieza en 1997-01). UE: Eurostat; resto: Banco Mundial (anual) y FMI (deuda y déficit). Solo cifras publicadas; sin serie = no se muestra.",
            "dudosas": DUDOSAS, "paises": salida, "fallos": fallos}
     SALIDA.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"{SALIDA.name}: {sum(len(s) for s in salida.values())} series, {len(fallos)} fallos")

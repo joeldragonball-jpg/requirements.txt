@@ -38,3 +38,5 @@ Resuelto por navegador: D04 China (ChinaBond, navegador integrado, 29-oct).
 - Ninguna fuente pidió captcha ni mostró bloqueo anti-bots.
 
 - **5-nov (W05D):** sec.gov OK en Chrome: el texto completo de EDGAR (efts.sec.gov/LATEST/search-index?q=...&dateRange=custom&startdt=..&enddt=..) devuelve JSON legible y los documentos de /Archives/ cargan. eia.gov carga, pero la tabla histórica del Brent (RBRTED) es enorme: no usar get_page_text. senate.gov sigue bloqueado.
+
+- **5-nov (C140, mandatos):** thepresidency.gov.za abre en Chrome (portada: investidura de Ramaphosa el 19-jun-2024; las URL /former-presidents y /president-cyril-ramaphosa dan 404). presidencia.gob.sv: bloqueo Cloudflare. presidenri.go.id: verificación anti-bots (no se salta). presidency.eg: carga sin texto útil. presidencia.gob.cu: sin texto. boletinoficial.gob.ar: cambia de dominio al leer, sin leer. Sin Chrome ni web-fetch: sis.gov.eg (certificado), asamblea.gob.sv (certificado), tsj.gob.ve y state.gov (403).

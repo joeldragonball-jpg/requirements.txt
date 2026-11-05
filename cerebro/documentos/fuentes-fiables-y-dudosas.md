@@ -178,3 +178,5 @@ actualizado: 2026-10-07
 - 4-nov-2026: los directos de CBS News sirven para proyecciones electorales [S]; el texto de AP en MS NOW no cargó (solo titular).
 - 4-nov-2026: Despeja La X (entrevista a Alba Puerro): contenido de formación, sin fuentes; los datos de mercado que cita se contrastan en medios [S] y la adopción de JPMorgan es colateral de préstamos para institucionales (Bloomberg/The Block), no tenencia propia.
 - 5-nov-2026 (W05): para cifras de mercado del día, la curva del Tesoro [P] y los cierres de Yahoo [S] guardados en paneles.json bastan para desmentir titulares; las copias de paneles.json pueden quedar viejas (Brent 104 $ frente a 94,6 $ en la serie fresca), así que citar siempre la hora de lectura.
+
+- 5-nov-2026 (W09): webs oficiales de gobiernos (presidencias de El Salvador, Indonesia, Egipto, Cuba) bloquean a lectores automáticos o no cargan; el dato de fecha se queda en [S] y se anota el bloqueo, no se rellena con Wikipedia ni de memoria.
