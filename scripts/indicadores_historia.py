@@ -48,7 +48,11 @@ BANCO_MUNDIAL = {
 }
 # estadísticas oficiales con fiabilidad discutida: se marcan [S] y se avisa en pantalla
 DUDOSAS = {"CN": "Las cifras oficiales de China (PIB, paro) se revisan poco y varios estudios las consideran suavizadas; se muestran como [S].",
-           "RU": "Desde 2022 Rusia publica menos datos y algunos con retraso o sin desglose; se muestran como [S]."}
+           "RU": "Desde 2022 Rusia publica menos datos y algunos con retraso o sin desglose; se muestran como [S].",
+           "VE": "Venezuela dejó de publicar buena parte de sus cifras oficiales y las series del Banco Mundial se cortan o son estimaciones; se muestran como [S].",
+           "CU": "Cuba publica pocas cifras, con retraso y sin series completas; lo que aparece es del Banco Mundial y se muestra como [S].",
+           "IR": "Irán publica con retraso y las cifras de empleo son estimaciones modelizadas; se muestran como [S].",
+           "ET": "Etiopía publica poco y con retraso; las cifras de empleo son estimaciones modelizadas; se muestran como [S]."}
 
 
 def _eurostat_serie(dataset, geo, filtros, desde=DESDE):

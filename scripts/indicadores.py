@@ -18,6 +18,10 @@ PAISES = [
     ("IT", "Italia", "IT", "ITA"), ("NL", "Países Bajos", "NL", "NLD"), ("PL", "Polonia", "PL", "POL"),
     ("US", "EE. UU.", None, "USA"), ("CN", "China", None, "CHN"), ("JP", "Japón", None, "JPN"),
     ("IN", "India", None, "IND"), ("GB", "Reino Unido", None, "GBR"), ("RU", "Rusia", None, "RUS"),
+    # C138-C139: BRICS ampliados y Latinoamérica (Banco Mundial; deuda y déficit del FMI solo si están en deuda-fmi.json)
+    ("BR", "Brasil", None, "BRA"), ("ZA", "Sudáfrica", None, "ZAF"), ("ID", "Indonesia", None, "IDN"), ("EG", "Egipto", None, "EGY"),
+    ("ET", "Etiopía", None, "ETH"), ("IR", "Irán", None, "IRN"), ("AE", "Emiratos Árabes Unidos", None, "ARE"),
+    ("SV", "El Salvador", None, "SLV"), ("AR", "Argentina", None, "ARG"), ("VE", "Venezuela", None, "VEN"), ("CU", "Cuba", None, "CUB"),
 ]
 URL_EUROSTAT = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/{d}?{q}&format=JSON"
 URL_BM = "https://api.worldbank.org/v2/country/{c}/indicator/{i}?format=json&mrv=6"

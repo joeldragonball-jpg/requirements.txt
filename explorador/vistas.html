@@ -1234,10 +1234,18 @@ function pPaises(){
   const S0=$('v-paises');S0.textContent='';const s=el('div','');
   const F=(D.paises_fichas||{}).paises||[],ES=((D.estabilidad||{}).paises)||[],IN=((P&&P.indicadores)||{}).paises||[];
   if(!F.length){S0.appendChild(el('p','','Sin datos de países (explorador/paises.json).'));return}
-  const lista=F.filter(f=>(f.bloque==='UE')===(grupoPa==='UE'));
+  /* C138-C139: cuatro grupos; BRICS y Latinoamérica por lista de ids (Brasil está en los dos) */
+  const GRUPOS_PA={UE:f=>f.bloque==='UE',Potencias:f=>f.bloque==='Potencias',BRICS:f=>['BR','RU','IN','CN','ZA','ID','EG','ET','IR','AE'].includes(f.id),'Latinoamérica':f=>['SV','AR','VE','CU','BR'].includes(f.id)};
+  const lista=F.filter(GRUPOS_PA[grupoPa]||GRUPOS_PA.UE);
   const sel=el('div','');sel.style.margin='6px 0';
-  ['UE','Potencias'].forEach(g=>{const b=el('button','chip',g);b.style.cursor='pointer';b.style.padding='4px 14px';if(g===grupoPa){b.style.background='var(--oro,#d4a84b)';b.style.color='#1a1405'}b.onclick=()=>{grupoPa=g;pPaises()};sel.appendChild(b)});
+  ['UE','Potencias','BRICS','Latinoamérica'].forEach(g=>{const b=el('button','chip',g);b.style.cursor='pointer';b.style.padding='4px 14px';if(g===grupoPa){b.style.background='var(--oro,#d4a84b)';b.style.color='#1a1405'}b.onclick=()=>{grupoPa=g;pPaises()};sel.appendChild(b)});
   S0.appendChild(sel);
+  /* C138 · «Cómo va cada bloque»: mediana del último dato de los países de cada grupo con dato; sin ranking ni recomendación */
+  {const md=a=>{a=a.slice().sort((x,y)=>x-y);return a.length?(a.length%2?a[(a.length-1)/2]:(a[a.length/2-1]+a[a.length/2])/2):null};
+   const dt=document.createElement('details');dt.style.margin='8px 0';dt.append(el('summary','','Cómo va cada bloque: mediana del último dato de sus países'));
+   const cols=Object.keys(GRUPOS_PA),ks=['ipc','paro','pib','deuda','deficit'];
+   const tb=tabla([{t:'Indicador',f:k=>NOMI[k]||k},...cols.map(g=>({t:g,n:1,f:k=>{const vs=[];F.filter(GRUPOS_PA[g]).forEach(f=>{const x=((IN.find(i=>i.id===f.id)||{}).indicadores||{})[k];if(x&&x.valor!=null&&typeof x.valor==='number')vs.push(x.valor)});const m=md(vs);const c=el('span');c.append(el('b',null,m==null?'—':num(m,1)+' %'),el('div','nota-v',vs.length+' de '+F.filter(GRUPOS_PA[g]).length+' países'));return c}}))],ks);
+   const env=el('div');env.style.overflowX='auto';env.append(tb);dt.append(env,el('p','nota-v','Mediana de los países de cada grupo que tienen dato: los periodos pueden diferir (el IPC de Venezuela es de 2016; Cuba casi no publica). Brasil cuenta en BRICS y en Latinoamérica. No es un ranking ni una recomendación; cifras de China, Rusia, Venezuela, Cuba, Irán y Etiopía con reservas [S].'));S0.appendChild(dt)}
   s.appendChild(el('p','nota-v',(D.paises_fichas.nota||'')+' Sin puntuaciones propias ni ranking. Cada cifra: valor (arriba), año o mes (debajo) y «antes» con el dato anterior de la misma fuente. Verde = mejora, rojo = empeora, gris = sin juicio o sin cambio; sin color = no hay dato anterior. Pasa el ratón para ver fuente, nivel y definición.'));
   const tabla0=()=>{const t=el('table','pega1');const h=el('tr','');h.appendChild(el('th','',''));lista.forEach(f=>h.appendChild(el('th','n',f.pais)));t.appendChild(h);return t};
   const env=(t)=>{const x=el('div','');x.style.overflowX='auto';x.appendChild(t);return x};

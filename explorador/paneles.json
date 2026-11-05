@@ -5160,10 +5160,1299 @@
       "periodicidad": "anual (enero)"
      }
     }
+   },
+   {
+    "id": "BR",
+    "pais": "Brasil",
+    "indicadores": {
+     "ipc": {
+      "valor": 5.0,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta.",
+      "anterior": 4.4,
+      "anterior_fecha": "2024"
+     },
+     "paro": {
+      "valor": 6.0,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 6.8,
+      "anterior_fecha": "2024"
+     },
+     "paro_juvenil": {
+      "valor": 14.0,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 15.7,
+      "anterior_fecha": "2024"
+     },
+     "pib": {
+      "valor": 2.3,
+      "unidad": "% anual (volumen)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 3.4,
+      "anterior_fecha": "2024"
+     },
+     "deuda": {
+      "valor": 93.3,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXWDG_NGDP",
+      "nivel": "P",
+      "definicion": "Deuda bruta de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación.",
+      "anterior": 87,
+      "anterior_fecha": "2024"
+     },
+     "deficit": {
+      "valor": -7.4,
+      "unidad": "% del PIB (negativo = déficit)",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXCNL_NGDP",
+      "nivel": "P",
+      "definicion": "Préstamo neto (+) / endeudamiento neto (−) de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación.",
+      "anterior": -6.3,
+      "anterior_fecha": "2024"
+     },
+     "gini": {
+      "valor": 50.3,
+      "unidad": "puntos (0-100)",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular",
+      "anterior": 51.5,
+      "anterior_fecha": "2023"
+     },
+     "poblacion": {
+      "valor": 212.81,
+      "unidad": "millones de habitantes",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+      "nivel": "P",
+      "definicion": "Población total (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 212.0,
+      "anterior_fecha": "2024"
+     },
+     "electricidad_pc": {
+      "valor": 3138.0,
+      "unidad": "kWh por habitante",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC",
+      "nivel": "P",
+      "definicion": "Consumo eléctrico per cápita (Banco Mundial, datos de la AIE)",
+      "periodicidad": "anual",
+      "anterior": 3068.0,
+      "anterior_fecha": "2024"
+     },
+     "balanza_corriente": {
+      "valor": -2.9,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/BN.CAB.XOKA.GD.ZS",
+      "nivel": "P",
+      "definicion": "Balanza por cuenta corriente (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": -3.0,
+      "anterior_fecha": "2024"
+     },
+     "gasto_defensa": {
+      "valor": 1.05,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS",
+      "nivel": "P",
+      "definicion": "Gasto militar (SIPRI vía Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "Definición SIPRI: no coincide con la de la OTAN.",
+      "anterior": 0.96,
+      "anterior_fecha": "2024"
+     }
+    }
+   },
+   {
+    "id": "ZA",
+    "pais": "Sudáfrica",
+    "indicadores": {
+     "ipc": {
+      "valor": 3.2,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta.",
+      "anterior": 4.4,
+      "anterior_fecha": "2024"
+     },
+     "paro": {
+      "valor": 32.4,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 32.3,
+      "anterior_fecha": "2024"
+     },
+     "paro_juvenil": {
+      "valor": 59.9,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 60.2,
+      "anterior_fecha": "2024"
+     },
+     "pib": {
+      "valor": 1.1,
+      "unidad": "% anual (volumen)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 0.5,
+      "anterior_fecha": "2024"
+     },
+     "deuda": {
+      "valor": 78.4,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXWDG_NGDP",
+      "nivel": "P",
+      "definicion": "Deuda bruta de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación.",
+      "anterior": 76,
+      "anterior_fecha": "2024"
+     },
+     "deficit": {
+      "valor": -5.6,
+      "unidad": "% del PIB (negativo = déficit)",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/GGXCNL_NGDP",
+      "nivel": "P",
+      "definicion": "Préstamo neto (+) / endeudamiento neto (−) de las administraciones públicas (FMI, WEO octubre de 2026)",
+      "periodicidad": "anual",
+      "nota": "Leída del navegador porque el FMI da 403 a los scripts; 2025 puede ser estimación.",
+      "anterior": -5.7,
+      "anterior_fecha": "2024"
+     },
+     "pobreza": {
+      "valor": 37.9,
+      "unidad": "% de la población",
+      "fecha": "2022",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.NAHC",
+      "nivel": "P",
+      "definicion": "Pobreza según la línea nacional de cada país (no comparable con AROPE ni entre países)",
+      "periodicidad": "irregular",
+      "anterior": 46.7,
+      "anterior_fecha": "2014"
+     },
+     "gini": {
+      "valor": 54.1,
+      "unidad": "puntos (0-100)",
+      "fecha": "2022",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular",
+      "anterior": 59.6,
+      "anterior_fecha": "2014"
+     },
+     "poblacion": {
+      "valor": 64.75,
+      "unidad": "millones de habitantes",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+      "nivel": "P",
+      "definicion": "Población total (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 64.01,
+      "anterior_fecha": "2024"
+     },
+     "electricidad_pc": {
+      "valor": 3308.0,
+      "unidad": "kWh por habitante",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC",
+      "nivel": "P",
+      "definicion": "Consumo eléctrico per cápita (Banco Mundial, datos de la AIE)",
+      "periodicidad": "anual",
+      "anterior": 3247.0,
+      "anterior_fecha": "2023"
+     },
+     "balanza_corriente": {
+      "valor": -0.4,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/BN.CAB.XOKA.GD.ZS",
+      "nivel": "P",
+      "definicion": "Balanza por cuenta corriente (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": -0.6,
+      "anterior_fecha": "2024"
+     },
+     "gasto_defensa": {
+      "valor": 0.74,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS",
+      "nivel": "P",
+      "definicion": "Gasto militar (SIPRI vía Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "Definición SIPRI: no coincide con la de la OTAN.",
+      "anterior": 0.76,
+      "anterior_fecha": "2024"
+     }
+    }
+   },
+   {
+    "id": "ID",
+    "pais": "Indonesia",
+    "indicadores": {
+     "ipc": {
+      "valor": 1.9,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta.",
+      "anterior": 2.2,
+      "anterior_fecha": "2024"
+     },
+     "paro": {
+      "valor": 3.2,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 3.3,
+      "anterior_fecha": "2024"
+     },
+     "paro_juvenil": {
+      "valor": 13.0,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 13.1,
+      "anterior_fecha": "2024"
+     },
+     "pib": {
+      "valor": 5.1,
+      "unidad": "% anual (volumen)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 5.0,
+      "anterior_fecha": "2024"
+     },
+     "pobreza": {
+      "valor": 8.5,
+      "unidad": "% de la población",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.NAHC",
+      "nivel": "P",
+      "definicion": "Pobreza según la línea nacional de cada país (no comparable con AROPE ni entre países)",
+      "periodicidad": "irregular",
+      "anterior": 9.0,
+      "anterior_fecha": "2024"
+     },
+     "gini": {
+      "valor": 34.4,
+      "unidad": "puntos (0-100)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular",
+      "anterior": 34.9,
+      "anterior_fecha": "2024"
+     },
+     "poblacion": {
+      "valor": 285.72,
+      "unidad": "millones de habitantes",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+      "nivel": "P",
+      "definicion": "Población total (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 283.49,
+      "anterior_fecha": "2024"
+     },
+     "electricidad_pc": {
+      "valor": 1611.0,
+      "unidad": "kWh por habitante",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC",
+      "nivel": "P",
+      "definicion": "Consumo eléctrico per cápita (Banco Mundial, datos de la AIE)",
+      "periodicidad": "anual",
+      "anterior": 1481.0,
+      "anterior_fecha": "2023"
+     },
+     "balanza_corriente": {
+      "valor": -0.1,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/BN.CAB.XOKA.GD.ZS",
+      "nivel": "P",
+      "definicion": "Balanza por cuenta corriente (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": -0.6,
+      "anterior_fecha": "2024"
+     },
+     "gasto_defensa": {
+      "valor": 1.04,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS",
+      "nivel": "P",
+      "definicion": "Gasto militar (SIPRI vía Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "Definición SIPRI: no coincide con la de la OTAN.",
+      "anterior": 0.86,
+      "anterior_fecha": "2024"
+     }
+    }
+   },
+   {
+    "id": "EG",
+    "pais": "Egipto",
+    "indicadores": {
+     "ipc": {
+      "valor": 14.1,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta.",
+      "anterior": 28.3,
+      "anterior_fecha": "2024"
+     },
+     "paro": {
+      "valor": 6.8,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 6.8,
+      "anterior_fecha": "2024"
+     },
+     "paro_juvenil": {
+      "valor": 18.3,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 17.3,
+      "anterior_fecha": "2024"
+     },
+     "pib": {
+      "valor": 4.4,
+      "unidad": "% anual (volumen)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 2.4,
+      "anterior_fecha": "2024"
+     },
+     "pobreza": {
+      "valor": 33.5,
+      "unidad": "% de la población",
+      "fecha": "2021",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.NAHC",
+      "nivel": "P",
+      "definicion": "Pobreza según la línea nacional de cada país (no comparable con AROPE ni entre países)",
+      "periodicidad": "irregular"
+     },
+     "gini": {
+      "valor": 28.5,
+      "unidad": "puntos (0-100)",
+      "fecha": "2021",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular",
+      "anterior": 31.9,
+      "anterior_fecha": "2019"
+     },
+     "poblacion": {
+      "valor": 118.37,
+      "unidad": "millones de habitantes",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+      "nivel": "P",
+      "definicion": "Población total (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 116.54,
+      "anterior_fecha": "2024"
+     },
+     "electricidad_pc": {
+      "valor": 1555.0,
+      "unidad": "kWh por habitante",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC",
+      "nivel": "P",
+      "definicion": "Consumo eléctrico per cápita (Banco Mundial, datos de la AIE)",
+      "periodicidad": "anual",
+      "anterior": 1525.0,
+      "anterior_fecha": "2023"
+     },
+     "balanza_corriente": {
+      "valor": -3.8,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/BN.CAB.XOKA.GD.ZS",
+      "nivel": "P",
+      "definicion": "Balanza por cuenta corriente (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": -5.7,
+      "anterior_fecha": "2024"
+     },
+     "gasto_defensa": {
+      "valor": 0.61,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS",
+      "nivel": "P",
+      "definicion": "Gasto militar (SIPRI vía Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "Definición SIPRI: no coincide con la de la OTAN.",
+      "anterior": 0.67,
+      "anterior_fecha": "2024"
+     }
+    }
+   },
+   {
+    "id": "ET",
+    "pais": "Etiopía",
+    "indicadores": {
+     "ipc": {
+      "valor": 13.2,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta.",
+      "anterior": 21.0,
+      "anterior_fecha": "2024"
+     },
+     "paro": {
+      "valor": 3.3,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 3.4,
+      "anterior_fecha": "2024"
+     },
+     "paro_juvenil": {
+      "valor": 5.4,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 5.4,
+      "anterior_fecha": "2024"
+     },
+     "pib": {
+      "valor": 9.8,
+      "unidad": "% anual (volumen)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 7.6,
+      "anterior_fecha": "2024"
+     },
+     "pobreza": {
+      "valor": 33.1,
+      "unidad": "% de la población",
+      "fecha": "2021",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.NAHC",
+      "nivel": "P",
+      "definicion": "Pobreza según la línea nacional de cada país (no comparable con AROPE ni entre países)",
+      "periodicidad": "irregular",
+      "anterior": 23.5,
+      "anterior_fecha": "2015"
+     },
+     "gini": {
+      "valor": 31.1,
+      "unidad": "puntos (0-100)",
+      "fecha": "2021",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular",
+      "anterior": 35.0,
+      "anterior_fecha": "2015"
+     },
+     "poblacion": {
+      "valor": 135.47,
+      "unidad": "millones de habitantes",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+      "nivel": "P",
+      "definicion": "Población total (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 132.06,
+      "anterior_fecha": "2024"
+     },
+     "electricidad_pc": {
+      "valor": 157.0,
+      "unidad": "kWh por habitante",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC",
+      "nivel": "P",
+      "definicion": "Consumo eléctrico per cápita (Banco Mundial, datos de la AIE)",
+      "periodicidad": "anual",
+      "anterior": 113.0,
+      "anterior_fecha": "2023"
+     },
+     "balanza_corriente": {
+      "valor": -2.5,
+      "unidad": "% del PIB",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/BN.CAB.XOKA.GD.ZS",
+      "nivel": "P",
+      "definicion": "Balanza por cuenta corriente (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": -3.5,
+      "anterior_fecha": "2023"
+     },
+     "gasto_defensa": {
+      "valor": 0.49,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS",
+      "nivel": "P",
+      "definicion": "Gasto militar (SIPRI vía Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "Definición SIPRI: no coincide con la de la OTAN.",
+      "anterior": 0.49,
+      "anterior_fecha": "2024"
+     }
+    }
+   },
+   {
+    "id": "IR",
+    "pais": "Irán",
+    "indicadores": {
+     "ipc": {
+      "valor": 42.2,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta.",
+      "anterior": 32.5,
+      "anterior_fecha": "2024"
+     },
+     "paro": {
+      "valor": 8.3,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 8.1,
+      "anterior_fecha": "2024"
+     },
+     "paro_juvenil": {
+      "valor": 21.9,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 21.3,
+      "anterior_fecha": "2024"
+     },
+     "pib": {
+      "valor": -2.8,
+      "unidad": "% anual (volumen)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 3.7,
+      "anterior_fecha": "2024"
+     },
+     "gini": {
+      "valor": 35.9,
+      "unidad": "puntos (0-100)",
+      "fecha": "2023",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular",
+      "anterior": 34.8,
+      "anterior_fecha": "2022"
+     },
+     "poblacion": {
+      "valor": 92.42,
+      "unidad": "millones de habitantes",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+      "nivel": "P",
+      "definicion": "Población total (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 91.57,
+      "anterior_fecha": "2024"
+     },
+     "electricidad_pc": {
+      "valor": 3910.0,
+      "unidad": "kWh por habitante",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC",
+      "nivel": "P",
+      "definicion": "Consumo eléctrico per cápita (Banco Mundial, datos de la AIE)",
+      "periodicidad": "anual",
+      "anterior": 3832.0,
+      "anterior_fecha": "2023"
+     },
+     "balanza_corriente": {
+      "valor": 11.4,
+      "unidad": "% del PIB",
+      "fecha": "2000",
+      "fuente": "https://data.worldbank.org/indicator/BN.CAB.XOKA.GD.ZS",
+      "nivel": "P",
+      "definicion": "Balanza por cuenta corriente (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 5.8,
+      "anterior_fecha": "1999"
+     },
+     "gasto_defensa": {
+      "valor": 2.09,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS",
+      "nivel": "P",
+      "definicion": "Gasto militar (SIPRI vía Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "Definición SIPRI: no coincide con la de la OTAN.",
+      "anterior": 2.22,
+      "anterior_fecha": "2024"
+     }
+    }
+   },
+   {
+    "id": "AE",
+    "pais": "Emiratos Árabes Unidos",
+    "indicadores": {
+     "ipc": {
+      "valor": 1.3,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta.",
+      "anterior": 1.7,
+      "anterior_fecha": "2024"
+     },
+     "paro": {
+      "valor": 2.2,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 2.2,
+      "anterior_fecha": "2024"
+     },
+     "paro_juvenil": {
+      "valor": 6.5,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 6.4,
+      "anterior_fecha": "2024"
+     },
+     "pib": {
+      "valor": 4.0,
+      "unidad": "% anual (volumen)",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 4.3,
+      "anterior_fecha": "2023"
+     },
+     "gini": {
+      "valor": 26.4,
+      "unidad": "puntos (0-100)",
+      "fecha": "2018",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular",
+      "anterior": 32.5,
+      "anterior_fecha": "2013"
+     },
+     "poblacion": {
+      "valor": 11.51,
+      "unidad": "millones de habitantes",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+      "nivel": "P",
+      "definicion": "Población total (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 10.99,
+      "anterior_fecha": "2024"
+     },
+     "electricidad_pc": {
+      "valor": 15361.0,
+      "unidad": "kWh por habitante",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC",
+      "nivel": "P",
+      "definicion": "Consumo eléctrico per cápita (Banco Mundial, datos de la AIE)",
+      "periodicidad": "anual",
+      "anterior": 15285.0,
+      "anterior_fecha": "2023"
+     },
+     "balanza_corriente": {
+      "valor": 15.7,
+      "unidad": "% del PIB",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/BN.CAB.XOKA.GD.ZS",
+      "nivel": "P",
+      "definicion": "Balanza por cuenta corriente (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 13.9,
+      "anterior_fecha": "2023"
+     },
+     "gasto_defensa": {
+      "valor": 5.64,
+      "unidad": "% del PIB",
+      "fecha": "2014",
+      "fuente": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS",
+      "nivel": "P",
+      "definicion": "Gasto militar (SIPRI vía Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "Definición SIPRI: no coincide con la de la OTAN.",
+      "anterior": 6.03,
+      "anterior_fecha": "2013"
+     }
+    }
+   },
+   {
+    "id": "SV",
+    "pais": "El Salvador",
+    "indicadores": {
+     "ipc": {
+      "valor": 0.3,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta."
+     },
+     "paro": {
+      "valor": 3.3,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 3.3,
+      "anterior_fecha": "2024"
+     },
+     "paro_juvenil": {
+      "valor": 7.8,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 7.5,
+      "anterior_fecha": "2024"
+     },
+     "pib": {
+      "valor": 3.9,
+      "unidad": "% anual (volumen)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 2.6,
+      "anterior_fecha": "2024"
+     },
+     "pobreza": {
+      "valor": 27.2,
+      "unidad": "% de la población",
+      "fecha": "2023",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.NAHC",
+      "nivel": "P",
+      "definicion": "Pobreza según la línea nacional de cada país (no comparable con AROPE ni entre países)",
+      "periodicidad": "irregular",
+      "anterior": 26.6,
+      "anterior_fecha": "2022"
+     },
+     "gini": {
+      "valor": 39.8,
+      "unidad": "puntos (0-100)",
+      "fecha": "2023",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular",
+      "anterior": 38.8,
+      "anterior_fecha": "2022"
+     },
+     "poblacion": {
+      "valor": 6.37,
+      "unidad": "millones de habitantes",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+      "nivel": "P",
+      "definicion": "Población total (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 6.34,
+      "anterior_fecha": "2024"
+     },
+     "electricidad_pc": {
+      "valor": 1208.0,
+      "unidad": "kWh por habitante",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC",
+      "nivel": "P",
+      "definicion": "Consumo eléctrico per cápita (Banco Mundial, datos de la AIE)",
+      "periodicidad": "anual",
+      "anterior": 1137.0,
+      "anterior_fecha": "2023"
+     },
+     "balanza_corriente": {
+      "valor": -3.5,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/BN.CAB.XOKA.GD.ZS",
+      "nivel": "P",
+      "definicion": "Balanza por cuenta corriente (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": -2.8,
+      "anterior_fecha": "2024"
+     },
+     "gasto_defensa": {
+      "valor": 1.34,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS",
+      "nivel": "P",
+      "definicion": "Gasto militar (SIPRI vía Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "Definición SIPRI: no coincide con la de la OTAN.",
+      "anterior": 1.39,
+      "anterior_fecha": "2024"
+     }
+    }
+   },
+   {
+    "id": "AR",
+    "pais": "Argentina",
+    "indicadores": {
+     "ipc": {
+      "valor": 219.9,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta.",
+      "anterior": 133.5,
+      "anterior_fecha": "2023"
+     },
+     "paro": {
+      "valor": 7.1,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 7.2,
+      "anterior_fecha": "2024"
+     },
+     "paro_juvenil": {
+      "valor": 19.2,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 19.2,
+      "anterior_fecha": "2024"
+     },
+     "pib": {
+      "valor": 4.4,
+      "unidad": "% anual (volumen)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": -1.3,
+      "anterior_fecha": "2024"
+     },
+     "pobreza": {
+      "valor": 28.2,
+      "unidad": "% de la población",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.NAHC",
+      "nivel": "P",
+      "definicion": "Pobreza según la línea nacional de cada país (no comparable con AROPE ni entre países)",
+      "periodicidad": "irregular",
+      "anterior": 38.1,
+      "anterior_fecha": "2024"
+     },
+     "gini": {
+      "valor": 42.4,
+      "unidad": "puntos (0-100)",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular",
+      "anterior": 42.4,
+      "anterior_fecha": "2023"
+     },
+     "poblacion": {
+      "valor": 45.85,
+      "unidad": "millones de habitantes",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+      "nivel": "P",
+      "definicion": "Población total (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 45.7,
+      "anterior_fecha": "2024"
+     },
+     "electricidad_pc": {
+      "valor": 2835.0,
+      "unidad": "kWh por habitante",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC",
+      "nivel": "P",
+      "definicion": "Consumo eléctrico per cápita (Banco Mundial, datos de la AIE)",
+      "periodicidad": "anual",
+      "anterior": 2822.0,
+      "anterior_fecha": "2024"
+     },
+     "balanza_corriente": {
+      "valor": -1.1,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/BN.CAB.XOKA.GD.ZS",
+      "nivel": "P",
+      "definicion": "Balanza por cuenta corriente (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 0.9,
+      "anterior_fecha": "2024"
+     },
+     "gasto_defensa": {
+      "valor": 0.56,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS",
+      "nivel": "P",
+      "definicion": "Gasto militar (SIPRI vía Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "Definición SIPRI: no coincide con la de la OTAN.",
+      "anterior": 0.65,
+      "anterior_fecha": "2024"
+     }
+    }
+   },
+   {
+    "id": "VE",
+    "pais": "Venezuela",
+    "indicadores": {
+     "ipc": {
+      "valor": 254.9,
+      "unidad": "% interanual (media anual)",
+      "fecha": "2016",
+      "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "nivel": "P",
+      "definicion": "IPC, media anual (Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "El último mes sale en el panel «inflacion» si hay API abierta.",
+      "anterior": 121.7,
+      "anterior_fecha": "2015"
+     },
+     "paro": {
+      "valor": 5.3,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 5.3,
+      "anterior_fecha": "2024"
+     },
+     "paro_juvenil": {
+      "valor": 10.4,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 10.2,
+      "anterior_fecha": "2024"
+     },
+     "pib": {
+      "valor": 1.6,
+      "unidad": "% anual (volumen)",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 5.5,
+      "anterior_fecha": "2024"
+     },
+     "pobreza": {
+      "valor": 33.1,
+      "unidad": "% de la población",
+      "fecha": "2015",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.NAHC",
+      "nivel": "P",
+      "definicion": "Pobreza según la línea nacional de cada país (no comparable con AROPE ni entre países)",
+      "periodicidad": "irregular",
+      "anterior": 29.5,
+      "anterior_fecha": "2014"
+     },
+     "gini": {
+      "valor": 44.7,
+      "unidad": "puntos (0-100)",
+      "fecha": "2006",
+      "fuente": "https://data.worldbank.org/indicator/SI.POV.GINI",
+      "nivel": "P",
+      "definicion": "Gini (Banco Mundial; encuestas de años distintos)",
+      "periodicidad": "irregular",
+      "anterior": 49.3,
+      "anterior_fecha": "2005"
+     },
+     "poblacion": {
+      "valor": 28.52,
+      "unidad": "millones de habitantes",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+      "nivel": "P",
+      "definicion": "Población total (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 28.41,
+      "anterior_fecha": "2024"
+     },
+     "electricidad_pc": {
+      "valor": 2362.0,
+      "unidad": "kWh por habitante",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC",
+      "nivel": "P",
+      "definicion": "Consumo eléctrico per cápita (Banco Mundial, datos de la AIE)",
+      "periodicidad": "anual",
+      "anterior": 1957.0,
+      "anterior_fecha": "2023"
+     },
+     "balanza_corriente": {
+      "valor": 0.6,
+      "unidad": "% del PIB",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/BN.CAB.XOKA.GD.ZS",
+      "nivel": "P",
+      "definicion": "Balanza por cuenta corriente (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 2.0,
+      "anterior_fecha": "2024"
+     },
+     "gasto_defensa": {
+      "valor": 2.23,
+      "unidad": "% del PIB",
+      "fecha": "2017",
+      "fuente": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS",
+      "nivel": "P",
+      "definicion": "Gasto militar (SIPRI vía Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "Definición SIPRI: no coincide con la de la OTAN.",
+      "anterior": 0.45,
+      "anterior_fecha": "2016"
+     }
+    }
+   },
+   {
+    "id": "CU",
+    "pais": "Cuba",
+    "indicadores": {
+     "paro": {
+      "valor": 1.7,
+      "unidad": "% población activa",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "P",
+      "definicion": "Paro total, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 1.8,
+      "anterior_fecha": "2024"
+     },
+     "paro_juvenil": {
+      "valor": 4.3,
+      "unidad": "% población activa 15-24",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SL.UEM.1524.ZS",
+      "nivel": "P",
+      "definicion": "Paro de 15 a 24 años, estimación modelo OIT (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 4.3,
+      "anterior_fecha": "2024"
+     },
+     "pib": {
+      "valor": -1.1,
+      "unidad": "% anual (volumen)",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "nivel": "P",
+      "definicion": "Crecimiento anual del PIB real (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": -1.9,
+      "anterior_fecha": "2023"
+     },
+     "poblacion": {
+      "valor": 10.94,
+      "unidad": "millones de habitantes",
+      "fecha": "2025",
+      "fuente": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+      "nivel": "P",
+      "definicion": "Población total (Banco Mundial)",
+      "periodicidad": "anual",
+      "anterior": 10.98,
+      "anterior_fecha": "2024"
+     },
+     "electricidad_pc": {
+      "valor": 1373.0,
+      "unidad": "kWh por habitante",
+      "fecha": "2024",
+      "fuente": "https://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC",
+      "nivel": "P",
+      "definicion": "Consumo eléctrico per cápita (Banco Mundial, datos de la AIE)",
+      "periodicidad": "anual",
+      "anterior": 1462.0,
+      "anterior_fecha": "2023"
+     },
+     "gasto_defensa": {
+      "valor": 2.88,
+      "unidad": "% del PIB",
+      "fecha": "2018",
+      "fuente": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS",
+      "nivel": "P",
+      "definicion": "Gasto militar (SIPRI vía Banco Mundial)",
+      "periodicidad": "anual",
+      "nota": "Definición SIPRI: no coincide con la de la OTAN.",
+      "anterior": 2.87,
+      "anterior_fecha": "2017"
+     }
+    }
    }
   ],
-  "fallos": [],
-  "leido": "2026-11-04 21:30 UTC"
+  "fallos": [
+   "BR/pobreza: ValueError: sin datos",
+   "ID/deuda: ValueError: país sin dato en deuda-fmi.json",
+   "ID/deficit: ValueError: país sin dato en deuda-fmi.json",
+   "EG/deuda: ValueError: país sin dato en deuda-fmi.json",
+   "EG/deficit: ValueError: país sin dato en deuda-fmi.json",
+   "ET/deuda: ValueError: país sin dato en deuda-fmi.json",
+   "ET/deficit: ValueError: país sin dato en deuda-fmi.json",
+   "IR/deuda: ValueError: país sin dato en deuda-fmi.json",
+   "IR/deficit: ValueError: país sin dato en deuda-fmi.json",
+   "IR/pobreza: ValueError: sin datos",
+   "AE/deuda: ValueError: país sin dato en deuda-fmi.json",
+   "AE/deficit: ValueError: país sin dato en deuda-fmi.json",
+   "AE/pobreza: ValueError: sin datos",
+   "SV/deuda: ValueError: país sin dato en deuda-fmi.json",
+   "SV/deficit: ValueError: país sin dato en deuda-fmi.json",
+   "AR/deuda: ValueError: país sin dato en deuda-fmi.json",
+   "AR/deficit: ValueError: país sin dato en deuda-fmi.json",
+   "VE/deuda: ValueError: país sin dato en deuda-fmi.json",
+   "VE/deficit: ValueError: país sin dato en deuda-fmi.json",
+   "CU/ipc: ValueError: sin datos",
+   "CU/deuda: ValueError: país sin dato en deuda-fmi.json",
+   "CU/deficit: ValueError: país sin dato en deuda-fmi.json",
+   "CU/pobreza: ValueError: sin datos",
+   "CU/gini: ValueError: sin datos",
+   "CU/balanza_corriente: ValueError: sin datos"
+  ]
  },
  "ormuz": {
   "fuente": "https://portwatch.imf.org/",
