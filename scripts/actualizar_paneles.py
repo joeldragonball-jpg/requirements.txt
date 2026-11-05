@@ -136,6 +136,7 @@ def leer_stablecoins():
         lista.append({
             "simbolo": a.get("symbol"), "nombre": a.get("name"), "ligada": peg.replace("pegged", ""),
             "mecanismo": a.get("pegMechanism", ""), "usd": circ * factor,
+            "precio": None if a.get("price") is None else round(float(a["price"]), 4),   # precio de mercado (DefiLlama): una ligada al dólar lejos de 1 $ = pérdida de paridad
             "cambio_7d": None if not previo_sem else (circ / previo_sem - 1) * 100,
             "cambio_30d": None if not previo_mes else (circ / previo_mes - 1) * 100,
             "n_cadenas": len(cadenas), "cadenas": cadenas[:6], "por_cadena": por_cadena,
@@ -274,11 +275,13 @@ def leer_indices():
     return salida
 
 
-def leer_watchlist():
-    """Valores de watchlist.toml (los que SIGO, no posiciones) con precio y rentabilidades (Yahoo Finance, no oficial [S])."""
+def leer_watchlist(lista=None):
+    """Valores de watchlist.toml (los que SIGO, no posiciones) con precio y rentabilidades (Yahoo Finance, no oficial [S]).
+    lista: otra lista de valores con el mismo formato (la usa scripts/precios_vivos.py para añadir cripto y ETF cripto)."""
     import tomllib
-    with open(SALIDA.parent.parent / "watchlist.toml", "rb") as fh:
-        lista = tomllib.load(fh).get("valores", [])
+    if lista is None:
+        with open(SALIDA.parent.parent / "watchlist.toml", "rb") as fh:
+            lista = tomllib.load(fh).get("valores", [])
     hoy = datetime.now(timezone.utc).date()
     salida = {"fuente": "https://finance.yahoo.com/", "nivel": "S", "valores": [], "fallos": []}
     for v in lista:
@@ -299,7 +302,8 @@ def leer_watchlist():
             ytd = round((ultimo / (anio[-1] if anio else pares[0][1]) - 1) * 100, 2)
             salida["valores"].append({"ticker": v["ticker"], "nombre": v["nombre"], "categoria": v.get("categoria", "Otros"), "precio": round(ultimo, 2),
                                       "moneda": d["meta"].get("currency"), "fecha": pares[-1][0].isoformat(),
-                                      "cambio_1d": round((pares[-1][1] / pares[-2][1] - 1) * 100, 2), "cambio_1s": desde(7), "cambio_3m": desde(91), "ytd": ytd, "div_12m": div12, "n_repartos": len(repartos)})
+                                      "cambio_1d": round((pares[-1][1] / pares[-2][1] - 1) * 100, 2), "cambio_1s": desde(7), "cambio_3m": desde(91), "ytd": ytd, "div_12m": div12, "n_repartos": len(repartos),
+                                      "serie": [round(float(c), 2 if ultimo >= 1 else 4) for f, c in pares[-60:]]})   # últimos ~60 cierres para el mini-gráfico
         except Exception as e:
             salida["fallos"].append(f"watchlist {v.get('ticker')}: {type(e).__name__}: {e}")
     if not salida["valores"]:

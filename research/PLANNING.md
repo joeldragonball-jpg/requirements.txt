@@ -1,12 +1,12 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-05 21:38 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-05 22:05 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
 **Hoy (máx. 3):** Gemini Evento: Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,75 
 **Periódicas (próxima):** W05 11-05 · W06 11-06 · W09 11-06 · W07 11-07 · W10 11-07 · W01 11-09 · W02 11-10 · W03 11-11 · W04 11-12 · W08 11-25
-**Bloqueadas (16):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C87 (Propuesta de la auditoría C81 (informes/research/2) · C88 (Propuesta de la auditoría C81 (informes/research/2) · C89 (Propuesta de la auditoría C81 (informes/research/2) · C90 (Propuesta de la auditoría C81 (informes/research/2) · …
-**Parciales (19):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
+**Bloqueadas (17):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C87 (Propuesta de la auditoría C81 (informes/research/2) · C88 (Propuesta de la auditoría C81 (informes/research/2) · C89 (Propuesta de la auditoría C81 (informes/research/2) · C90 (Propuesta de la auditoría C81 (informes/research/2) · …
+**Parciales (20):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
 **Hechas en 7 días (36):** C129, C131, C133, C134, C136, C141, C32, C86, C91, C93, C94, C99, C100, C109, C110
 
 ## Hoy (jue 2026-11-05): solo lo casi obligatorio
@@ -43,6 +43,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - C138 ◐ en parte · Países · Cómo va la zona euro, la UE, las potencias y los BRICS: panel de bloque · Sonnet M · ~~4 % · `research/prompts/C138-bloques-euro-potencias-brics.md`
 - C139 ◐ en parte · Países · Vigilar El Salvador y Argentina (indicadores, historia, mandatos) y, co · Sonnet L · ~~6 % · `research/prompts/C139-latam-el-salvador-argentina-venezuela-cuba.md`
 - C140 ◐ en parte · Países · Leer en fuente oficial las fechas de mandato [S] (9 países) y las de Az · Sonnet S · ~~2 % · ``
+- C142 ◐ en parte · Órbita en vivo: precios casi en tiempo real (cripto, stablecoins con precio, Bre · Sonnet M · ~~4 % · ``
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
