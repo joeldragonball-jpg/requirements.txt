@@ -1453,9 +1453,9 @@ function pEspana(){
   const fx=(v,d)=>v==null?'—':v.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d,useGrouping:'always'}),n1=v=>fx(v,1),n0=v=>fx(v,0);
   const lnk=(u,t='fuente')=>{const a=el('a',null,t);a.href=u;a.target='_blank';a.rel='noopener';return a};
   const conL=(tx,...ns)=>{const d=el('div');if(tx)d.append(corto(tx,'nota-v',150));d.append(...ns);return d};
-  const BL=[],TEMAS=[['eco','Economía y deuda'],['pre','Presupuesto y gasto'],['soc','Servicios y sociedad'],['seg','Seguridad y salud']];
+  const BL=[],TEMAS=[['eco','Economía y deuda'],['pre','Presupuesto y gasto'],['soc','Servicios y sociedad'],['seg','Seguridad y salud'],['jus','Justicia']];
   /* cada bloque va al tema que dice su título; lo que no encaja cae en Economía y deuda */
-  const temaDe=t=>/^Economía de España/.test(t)?'eco':/Defunciones semanales|Muertos en carretera|Delitos|Incendios forestales|Siniestralidad vial|Accidentes de trabajo/i.test(t)||/DANA/.test(t)?'seg':/presupuesto|ministerio|Altos cargos|Programas concretos|aislar|Personal público|Cargos políticos|Ejecución por políticas|Subvenciones y contratación|Hasta dónde llegan/i.test(t)?'pre':/Quién recibe|Violencia de género|vivienda|hipoteca|Inmigración|Resultados de los servicios|Listas de espera/i.test(t)?'soc':'eco';
+  const temaDe=t=>/^Justicia ·/.test(t)?'jus':/^Economía de España/.test(t)?'eco':/Defunciones semanales|Muertos en carretera|Delitos|Incendios forestales|Siniestralidad vial|Accidentes de trabajo/i.test(t)||/DANA/.test(t)?'seg':/presupuesto|ministerio|Altos cargos|Programas concretos|aislar|Personal público|Cargos políticos|Ejecución por políticas|Subvenciones y contratación|Hasta dónde llegan/i.test(t)?'pre':/Quién recibe|Violencia de género|vivienda|hipoteca|Inmigración|Resultados de los servicios|Listas de espera/i.test(t)?'soc':'eco';
   const add=b=>{b.classList.add('ancho');b._t=temaDe((b.querySelector('summary')||{}).textContent||'');BL.push(b)};
   const mz=masonry();
   const dat=L=>tabla([{t:'Dato',f:r=>r.nombre},{t:'Valor',n:1,f:r=>r.valor==null?'[VERIFICAR]':fx(r.valor,r.valor%1?2:0)+' '+(r.unidad||'')},{t:'Fecha',f:r=>String(r.anio||'')},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Nota',f:r=>r.nota},{t:'Fuente',f:r=>lnk(r.fuente)}],L);
@@ -1647,7 +1647,7 @@ function pEspana(){
       if(M[k])add(bloque(t,null,{t:'[P] oficial leída · [S] secundaria · [VERIFICAR] no leído'},dat(M[k]),false));
   }
   /* resumen de 3-4 cifras con flecha al principio de cada tema, y debajo el detalle en bloques */
-  const RES={eco:[],pre:[],soc:[],seg:[]},cp=r=>r.anterior==null?null:cambio(r.valor-r.anterior,'p.p.',2);
+  const RES={eco:[],pre:[],soc:[],seg:[],jus:[]},cp=r=>r.anterior==null?null:cambio(r.valor-r.anterior,'p.p.',2);
   const fi=re=>INE&&INE.filas&&INE.filas.find(r=>re.test(r.nombre));
   for(const [re,et] of [[/IPC general/i,'Inflación anual (IPC)'],[/PIB, volumen, variaci[oó]n anual/i,'Crecimiento anual (PIB)'],[/Tasa de paro/i,'Paro (EPA)']]){const r=fi(re);if(r)RES.eco.push([fx(r.valor,r.valor%1?1:0)+' %',et+' · '+r.periodo,/paro/i.test(et)?inv(cp(r)):cp(r)])}
   if(DE&&DE.aapp)RES.eco.push([fx(DE.aapp.pct_pib,1)+' %','Deuda de todas las administraciones, % del PIB · '+DE.aapp.periodo,inv(cambio((DE.aapp.deuda/DE.aapp.hace_un_anio-1)*100,'% en un año',1))]);
@@ -1662,6 +1662,20 @@ function pEspana(){
   if(rc2)RES.seg.push([n0(rc2.por_millon_hab),'Muertos en carretera por millón de habitantes ('+rc2.anio+')',null]);
   if(ho2&&ho2.ICCS0101)RES.seg.push([n0(ho2.ICCS0101.registrados),'Homicidios dolosos registrados ('+ho2.ICCS0101.anio+')',null]);
   if(dn&&dn.valor!=null)RES.seg.push([n0(dn.valor),'Fallecidos por la DANA (cifra judicial vigente)',null]);
+  const JU=D.espana_judicial;
+  if(JU&&JU.casos){
+    const ns=JU.casos.length,ok=JU.casos.filter(x=>(x.hechos_judiciales||[]).length).length;
+    RES.jus.push([String(ok),'Casos con hechos de fuente oficial (de '+ns+')',null]);
+    const ult=JU.casos.flatMap(x=>(x.hechos_judiciales||[]).map(h=>h.fecha)).sort().pop();
+    if(ult)RES.jus.push([ult,'Última resolución recogida',null]);
+    for(const cs of JU.casos){
+      const w=el('div');
+      w.append(el('p','nota-v','Fase: '+cs.fase+' · '+cs.tribunal));
+      if(!(cs.hechos_judiciales||[]).length)w.append(el('p','nota-v','Sin hechos oficiales leídos todavía [VERIFICAR].'));
+      for(const h of cs.hechos_judiciales||[]){const q=el('p','nota-v',h.fecha+' · '+h.texto+' ');if(/^https?:/.test(h.fuente||'')){const a=el('a',null,'fuente');a.href=h.fuente;a.target='_blank';a.rel='noopener';q.append(a)}w.append(q)}
+      if((cs.pendiente||[]).length)w.append(el('p','nota-v','Pendiente: '+cs.pendiente.join('; ')+'.'));
+      add(bloque('Justicia · '+cs.nombre,null,{nivel:(cs.hechos_judiciales||[]).length?'P':'V',t:'Poder Judicial (notas de prensa) · presunción de inocencia: una investigación no es una condena'},w,false))}
+  }
   const nav=el('div');nav.style.cssText='margin:10px 0;display:flex;gap:8px;flex-wrap:wrap';
   let panel=null;
   TEMAS.forEach(([k,nom])=>{
