@@ -1,5 +1,7 @@
 # Lo que necesito que hagas a mano (5-nov-2026)
 
+> **España (6-nov-2026):** lo que queda y solo puedes hacer tú, con pasos y enlaces, está en `research/ESPANA-PENDIENTE-JOEL.md`.
+
 Para cada punto: abre el enlace, y pásame el PDF descargado en `research/fuentes/` o una captura/pegado del texto. Nada de esto se salta bloqueos: son webs que no dejan entrar a un lector automático.
 
 | Para qué | Enlace exacto | Qué copiar o descargar |
