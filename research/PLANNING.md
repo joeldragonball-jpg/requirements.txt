@@ -1,12 +1,12 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-06 00:01 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-06 00:27 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
 **Hoy (máx. 3):** R00 Apertura del día · W06 Voces y predicciones · W09 Resumen semanal
 **Periódicas (próxima):** W06 11-06 · W09 11-06 · W07 11-07 · W10 11-07 · W01 11-09 · W02 11-10 · W03 11-11 · W04 11-12 · W05 11-12 · W08 11-25
-**Bloqueadas (17):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C87 (Propuesta de la auditoría C81 (informes/research/2) · C88 (Propuesta de la auditoría C81 (informes/research/2) · C89 (Propuesta de la auditoría C81 (informes/research/2) · C90 (Propuesta de la auditoría C81 (informes/research/2) · …
-**Parciales (21):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
+**Bloqueadas (16):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C87 (Propuesta de la auditoría C81 (informes/research/2) · C88 (Propuesta de la auditoría C81 (informes/research/2) · C89 (Propuesta de la auditoría C81 (informes/research/2) · C90 (Propuesta de la auditoría C81 (informes/research/2) · …
+**Parciales (20):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
 **Hechas en 7 días (35):** C129, C131, C133, C134, C136, C141, C32, C86, C91, C93, C94, C99, C100, C109, C110
 
 ## Hoy (vie 2026-11-06): solo lo casi obligatorio
@@ -42,7 +42,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C138 ◐ en parte · Países · Cómo va la zona euro, la UE, las potencias y los BRICS: panel de bloque · Sonnet M · ~~4 % · `research/prompts/C138-bloques-euro-potencias-brics.md`
 - C139 ◐ en parte · Países · Vigilar El Salvador y Argentina (indicadores, historia, mandatos) y, co · Sonnet L · ~~6 % · `research/prompts/C139-latam-el-salvador-argentina-venezuela-cuba.md`
 - C140 ◐ en parte · Países · Leer en fuente oficial las fechas de mandato [S] (9 países) y las de Az · Sonnet S · ~~2 % · ``
-- C142 ◐ en parte · Órbita en vivo: precios casi en tiempo real (cripto, stablecoins con precio, Bre · Sonnet M · ~~4 % · ``
 - C144 ◐ en parte · Centro · Research a fondo: APIs y datos gratis (GitHub, Reddit, documentación of · Sonnet L · ~~6 % · `research/prompts/C144-apis-gratis-automatizar.md`
 - C145 · Centro · Auditoría de verificación: Justicia, mandatos, series desde 1996 y list · Sonnet M · ~~3 % · `research/prompts/C145-auditoria-justicia-mandatos.md`
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
@@ -89,7 +88,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
 - [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, Solvexia) y cierre de BC Payments Australi
-- [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov). → W05
 - [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF) y texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE. → W05
 - [VERIFICAR] Consulta DGT V0648-24 leída en petete; fiscalidad de tokens LP de AMM.
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
@@ -103,7 +101,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [media] 2026-10-25 (12 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 - [media] 2026-10-25 (12 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
 - [media] 2026-10-25 (12 d) · [VERIFICAR] Consulta DGT V0648-24 leída en petete
-- … y 45 más en el Seguimiento
+- … y 44 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (5) → W03 · BR/politica; RU/stablecoins; AE/politica; BRICS/ley_marco
@@ -112,7 +110,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 🟡 Países (política): Fichas con datos de más de 90 días o sin fecha (12) → W11 · China, Brasil, Sudáfrica, Indonesia, Egipto, Etiopía
 
 ## Bots con problema
-- Alertas de precio, Noticias con IA, Vigilancia on-chain, Verificación mensual, Paneles de datos
+- Verificación mensual, Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-10-27 · Reunión de la Fed (FOMC) (alto) → ✓ revisado (hecho)

@@ -81,3 +81,5 @@ Los informes originales no se reescriben: aquí se cierra cada punto. Etiquetas:
 **Conteo W05E:** 6 puntos · 2 confirmados (Senado, bolsas) · 1 desmentido (bono −19 p. b.) · 1 parcial (CLARITY) · 2 sin cerrar (Dow/Brent, Canton Coin).
 **Implicación:** no citar «−19 p. b.» ni «Dow +1.500» ni lo de Canton Coin; el bono cayó 5 p. b.
 
+
+**W05F (6-nov, Joel con senate.gov):** Cloture CLARITY (H.R. 3633) **cerrado [P]**: votación nominal 234, 15-sep-2026 14:19, cloture rechazada (3/5); 49 sí, 50 no, 1 sin votar (Coons). Republicanos en contra: Collins, Hawley, Moran y Tillis. Coincide con la prensa. Sin causa atribuible aquí: el recuento no explica los motivos de voto.
