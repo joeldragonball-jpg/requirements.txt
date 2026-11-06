@@ -37,18 +37,19 @@ Todo lo demás de España ya está hecho o lo hago yo. Esto es lo que queda y po
 
 ---
 
-## 3. Tesoro Público: vida media y coste medio de la deuda (5 minutos)
+## 3. Tesoro Público: vida media y coste medio de la deuda — HECHO el 6-nov-2026
 
-**Qué desbloquea:** cuánto cuesta la deuda de España y cuánto tarda en vencer. Hoy tengo el **saldo por ISIN** (letras a 6-nov y bonos a 31-oct, página oficial legible), pero **no** la vida media, el tipo medio ni las emisiones de 2026, porque van en PDF/Excel que mis herramientas no leen desde la web.
+**Estado:** Joel bajó el boletín de octubre de 2026 y ya está volcado (nominal, vida media, tipo medio, financiación 2026). Pendiente solo el perfil de vencimientos (pág. 30), que mi lector no extrae [VERIFICAR]. Lo que sigue queda como referencia.
 
-**Qué haces:** abre estos cuatro enlaces y guarda lo que se descargue (si el navegador lo muestra en pantalla en vez de bajarlo, usa «Guardar como»):
-- https://www.tesoro.es/documents/d/tesoro/02-pdf
-- https://www.tesoro.es/documents/d/tesoro/03-pdf
-- https://www.tesoro.es/documents/d/tesoro/09-pdf
-- https://www.tesoro.es/documents/d/tesoro/11-pdf
+**Qué desbloquea:** cuánto cuesta la deuda de España y cuánto tarda en vencer. Hoy tengo el **saldo por ISIN** (página oficial legible), pero **no** la vida media, el tipo medio ni las financiación de 2026, porque van en PDF/Excel que mis herramientas no leen desde la web.
 
-No sé con seguridad qué contiene cada uno (el agente los mapeó como vida media, tipo medio y emisiones del año; no lo comprobó): **da igual el orden**, los leo todos. Si alguno no se descarga, pruébalo desde la página https://www.tesoro.es/deuda-publica/est%C3%A1disticas-mensuales (boletín de octubre de 2026). Aviso: puede que el agente ya haya provocado una descarga de `02-pdf` en Descargas; revisa y, si está, no hace falta repetirla.
-Después me dices «hecho 3».
+**Lo comprobé el 6-nov-2026 en la web del Tesoro (Chrome):** la página de «Estadísticas Mensuales» tiene un **boletín completo de octubre de 2026** y, además, cada tabla suelta. Lo más cómodo es bajar solo el boletín:
+- **Un solo archivo (recomendado):** https://www.tesoro.es/documents/d/tesoro/estadisticas_es-pdf («Boletín estadísticas octubre 2026»). Contiene todas las tablas de abajo.
+- Si prefieres tablas sueltas (cada una también existe en Excel, cambiando `-pdf` por `-xlsx`): `02` Vida media de la Deuda del Estado · `03` Tipo de interés medio de la Deuda del Estado · `09` Evolución de la financiación del Estado en 2026 · `11` Subastas (nominal emitido y rendimientos 2026-2025). Otras útiles: `01` nominal en circulación, `13` financiación neta 2026 y 2025, `14` perfil de vencimientos anual.
+  Enlace de cada una: `https://www.tesoro.es/documents/d/tesoro/NN-pdf` (con NN = 02, 03, 09, 11…).
+- Página de origen (ojo: lleva «í» con tilde): https://www.tesoro.es/deuda-publica/estad%C3%ADsticas-mensuales. Mi enlace anterior iba sin esa tilde y daba «Página no encontrada».
+
+**Qué haces:** abre el enlace del boletín y guarda el PDF en **Descargas** (si el navegador lo abre en pantalla, usa «Guardar como»). Me escribes «hecho 3». Yo lo leo desde Descargas, saco vida media, tipo medio, financiación y vencimientos, y los vuelco con fecha y nivel [P]. El archivo no entra en el repo.
 
 ---
 

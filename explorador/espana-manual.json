@@ -1056,7 +1056,7 @@
    "anio": "sep-2026",
    "fuente": "https://www.tesoro.es/en/deuda-publica/estad%C3%ADsticas-mensuales",
    "nivel": "P",
-   "nota": "Tipo medio 2,453 % (2,316 % en dic-2025) y vida media 7,85 años, según el boletín del Tesoro [VERIFICAR contra el PDF]."
+   "nota": "Tipo medio 2,453 % (2,316 % en dic-2025) y vida media 7,85 años a sep-2026: comprobado contra el PDF del Tesoro el 6-nov-2026 [P]. En oct-2026 el saldo baja a 1.567.964 M€ (ver bloque «Deuda del Estado (Tesoro)»)."
   },
   {
    "nombre": "Déficit de conservación de carreteras según la Asociación Española de la Carretera",
@@ -1440,6 +1440,44 @@
    "fuente": "https://www.airef.es/es/la-airef-preve-el-incumplimiento-del-plan-fiscal-comprometido-con-europa-desde-2026-pese-a-los-mecanismos-de-flexibilidad/",
    "nivel": "P",
    "nota": "Nota de la AIReF del 4-nov-2026, leída el 6-nov-2026 en airef.es. Para 2027: 2,2 %."
+  }
+ ],
+ "deuda_tesoro": [
+  {
+   "nombre": "Deuda del Estado en circulación (nominal)",
+   "valor": 1567964,
+   "unidad": "M€",
+   "anio": "oct-2026",
+   "fuente": "https://www.tesoro.es/documents/d/tesoro/estadisticas_es-pdf",
+   "nivel": "P",
+   "nota": "Boletín «Estadísticas de la Deuda del Estado», 31-oct-2026, leído el 6-nov-2026 del PDF. 1.516.859 M€ en dic-2025 (+3,4 %, cálculo mío). Letras 84.901, bonos 160.198, obligaciones 1.175.334, resto 44.328, indexados 147 y deuda asumida 81.431 M€ (saldos de la tabla de tipos). Nominal, no coincide con la deuda PDE de Maastricht."
+  },
+  {
+   "nombre": "Vida media de la Deuda del Estado",
+   "valor": 7.92,
+   "unidad": "años",
+   "anio": "oct-2026",
+   "fuente": "https://www.tesoro.es/documents/d/tesoro/estadisticas_es-pdf",
+   "nivel": "P",
+   "nota": "Boletín «Estadísticas de la Deuda del Estado», 31-oct-2026, leído el 6-nov-2026 del PDF. 7,87 en dic-2025 y 7,85 en dic-2024. Letras 0,40; bonos 2,12; obligaciones 9,01 años."
+  },
+  {
+   "nombre": "Tipo de interés medio de la deuda viva (moneda nacional)",
+   "valor": 2.489,
+   "unidad": "%",
+   "anio": "oct-2026",
+   "fuente": "https://www.tesoro.es/documents/d/tesoro/estadisticas_es-pdf",
+   "nivel": "P",
+   "nota": "Boletín «Estadísticas de la Deuda del Estado», 31-oct-2026, leído el 6-nov-2026 del PDF. 2,316 % en dic-2025 y 2,214 % en dic-2024: sube porque la deuda que vence se renueva a tipos más altos que el antiguo. Obligaciones 2,513 %; bonos 2,500 %; letras 2,464 %."
+  },
+  {
+   "nombre": "Financiación neta del Estado realizada en 2026",
+   "valor": 44.631,
+   "unidad": "miles de M€",
+   "anio": "hasta 31-oct-2026",
+   "fuente": "https://www.tesoro.es/documents/d/tesoro/estadisticas_es-pdf",
+   "nivel": "P",
+   "nota": "Boletín «Estadísticas de la Deuda del Estado», 31-oct-2026, leído el 6-nov-2026 del PDF. Prevista para todo 2026: 56,008 miles de M€ (80 % ejecutado). Bonos y obligaciones 40,697 de 56,262; letras 5,451 de 5,000 (ya superada); resto y divisas −1,517 de −5,254."
   }
  ]
 }
