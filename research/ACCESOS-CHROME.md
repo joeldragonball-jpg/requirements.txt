@@ -48,3 +48,5 @@ Resuelto por navegador: D04 China (ChinaBond, navegador integrado, 29-oct).
 - **6-nov (Cuba):** la raiz https://www.presidencia.gob.cu/ sale en blanco, pero https://www.presidencia.gob.cu/es/ abre (menu Presidencia/Gobierno/Noticias). No hay biografia con fecha: solo la Ley 136/2020 y noticias. Usar siempre la ruta /es/.
 - **6-nov (Egipto):** https://www.presidency.eg/en/ abre en Chrome si se espera ~6 s (la primera vez salia solo el pie). Paginas utiles: /en/الرئاسة/الرئيس/ (Sisi, octavo presidente) y /en/الرئاسة/الرؤساء-السابقون/ (fechas de Mubarak, SCAF, Morsi y Mansour; se despliegan al leer el texto).
 - **6-nov (Egipto):** https://www.presidency.eg/en/ abre en Chrome si se espera ~6 s (la primera vez salia solo el pie). Paginas utiles: /en/ + "The President" y "Former Presidents" (fechas de Mubarak, SCAF, Morsi y Mansour; se despliegan al leer el texto).
+
+- Interior (criminalidad), 6-nov-2026: la vía que funciona es que Joel descargue los PDF de publicaciones.html (Balance de Criminalidad 4T 2025 y 2T 2026) a Descargas; el texto se extrae del PDF (Word, texto plano, ~519 bloques) sin Chrome. La app JAXI y interior.gob.es siguen sin servir.
