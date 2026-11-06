@@ -1,16 +1,16 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-06 07:05 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-06 12:14 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** R00 Apertura del día · W06 Voces y predicciones · W09 Resumen semanal
+**Hoy (máx. 3):** W06 Voces y predicciones · W09 Resumen semanal · Gemini Evento: Empleo EE. UU. (informe de octubre)
 **Periódicas (próxima):** W06 11-06 · W09 11-06 · W07 11-07 · W10 11-07 · W01 11-09 · W02 11-10 · W03 11-11 · W04 11-12 · W05 11-12 · W08 11-25
 **Bloqueadas (15):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C87 (Propuesta de la auditoría C81 (informes/research/2) · C88 (Propuesta de la auditoría C81 (informes/research/2) · C89 (Propuesta de la auditoría C81 (informes/research/2) · C90 (Propuesta de la auditoría C81 (informes/research/2) · …
 **Parciales (19):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
 **Hechas en 7 días (36):** C145, C129, C131, C133, C134, C136, C141, C32, C86, C91, C93, C94, C99, C100, C109
 
 ## Hoy (vie 2026-11-06): solo lo casi obligatorio
-- R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 4 días
+- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 5 días
 - Fija de hoy (viernes: resumen semanal): **W09 Resumen semanal** (~1,5 %) · último 2026-11-05 · `research/prompts/W09-*.md`
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
@@ -74,9 +74,14 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 
 ## Auditorías abiertas
-- T4 (Baja): Omisiones de fuentes: BdE en Bonos, BoE en Deuda, cifras manuales en Liquidez e Indicadores
-- T7 (Baja): Hueco jun-2026 en la API del BCE, causa sin explicar [VERIFICAR]
-- T8 (Baja): «+3» de la Cámara se mide desde 2024 (215 D), no desde hoy [VERIFICAR]
+- A1 (Media): Abierto: voces.json lo está editando otra sesión (W06); propuesta: v002→cumplido con la nota del 28-oct; v062→
+- A2 (Media): Abierto: propuesta, mostrar «P + novedades S» o añadir url a HK ETF
+- A3 (Media): Parcial: antes faltaban 23. Abierto: 9 celdas
+- A4 (Baja): Abierto
+- A5 (Media): Abierto: propuesta, 2-3 canales o analistas críticos o neutrales en el próximo lote de vídeos
+- A7 (Media): Abierto
+- A8 (Baja): Abierto solo v062
+- A9 (Baja): Cerrado (W07)
 - Auditoría mensual W08: última semana del mes (miércoles)
 
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
@@ -103,7 +108,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 🟡 Países (política): Fichas con datos de más de 90 días o sin fecha (12) → W11 · China, Brasil, Sudáfrica, Indonesia, Egipto, Etiopía
 
 ## Bots con problema
-- Verificación mensual, Paneles de datos
+- Verificación mensual
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-10-27 · Reunión de la Fed (FOMC) (alto) → ✓ revisado (hecho)

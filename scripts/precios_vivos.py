@@ -111,8 +111,18 @@ def leer_seguimiento(fallos):
 
 def guardar_r00(salida, momento):
     """Guarda una foto corta (cripto y mercado) como apertura o cierre de HOY (hora de Madrid) en explorador/precios_r00.json; conserva 45 días."""
-    from zoneinfo import ZoneInfo
-    hoy = datetime.now(ZoneInfo("Europe/Madrid")).strftime("%Y-%m-%d")
+    try:
+        from zoneinfo import ZoneInfo
+        hoy = datetime.now(ZoneInfo("Europe/Madrid")).strftime("%Y-%m-%d")
+    except Exception:
+        # Windows sin base de zonas horarias (sin tzdata): CET/CEST a mano (último domingo de marzo a último de octubre, 01:00 UTC).
+        from datetime import timedelta, timezone as _tz
+        u = datetime.now(_tz.utc)
+        def _ult_dom(m):
+            d = datetime(u.year, m, 31, 1, tzinfo=_tz.utc)
+            return d - timedelta(days=(d.weekday() + 1) % 7)
+        verano = _ult_dom(3) <= u < _ult_dom(10)
+        hoy = (u + timedelta(hours=2 if verano else 1)).strftime("%Y-%m-%d")
     ruta = RAIZ / "explorador" / "precios_r00.json"
     try:
         datos = json.loads(ruta.read_text(encoding="utf-8"))

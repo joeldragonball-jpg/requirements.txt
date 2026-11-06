@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-11-05
+actualizado: 2026-11-06
 ---
 # Índice de la investigación
 
@@ -12,14 +12,14 @@ Mapa de los informes más recientes por tema. Lo genera `scripts/indice_investig
 Por tema, los 3 informes más recientes (fecha · título · ruta · una frase de su resumen).
 
 ## Auditorías y verificaciones
-- 2026-11-05 · C134 · Auditoría visual del tablero, 2.ª pasada (5-nov-2026) (`informes/research/2026-11-05-C134-auditoria-visual-2.md`): Modelo: Opus. Solo presentación en explorador/vistas.html ; no se han tocado datos ni fuentes. Sin subir (falta «sube»).
-- 2026-11-05 · C129 · Auditoría visual y de explicaciones del tablero (5-nov-2026) (`informes/research/2026-11-05-C129-auditoria-visual.md`): Modelo: Opus 5.5 · Archivo tocado: explorador/vistas.html (solo presentación y textos; ningún dato ni fuente cambiado).
-- 2026-11-04 · C127 · Auditoría visual, fase 1 (solo mirar, sin tocar código) (`informes/research/2026-11-04-C127-auditoria-visual-fase1.md`): Línea de tiempo Buena idea visual; poco legible por abajo.
+- 2026-11-06 · C145 · Auditoría de Justicia, mandatos y accesos manuales (6-nov-2026) (`informes/research/2026-11-06-C145-auditoria.md`): Justicia: 32 hechos, todos con fecha ISO, nivel P y dominio oficial (poderjudicial.es, boe.es, europarl.europa.eu); ningún P apunta a prensa.
+- 2026-11-05 · W05B · Lote corto con Chrome · 5-nov-2026 (noche) (`informes/research/2026-11-05-W05B-lote-chrome.md`): Objetivo: cerrar las 4 verificaciones abiertas de W05 con Chrome. Resultado: 1 cerrada (parcial → P), 1 bloqueada, 2 sin resolver.
+- 2026-11-05 · W05 · Verificación por lotes · 5-nov-2026 (`informes/research/2026-11-05-W05-verificacion.md`): Confirmado [S]: los demócratas ganan el Senado (CBS, NBC, Yahoo, Northeastern); el recuento oficial sigue sin leerse y «cambia el mapa cripto» es…
 
 ## Voces y predicciones
+- 2026-11-06 · C79 · Fuentes de España probadas con Chrome (6-nov-2026) (`informes/research/2026-11-06-C79-fuentes-espana.md`): Solo lectura; sin descargas. Chrome accedió sin captcha ni anti bot en todas.
 - 2026-11-02 · W07 · Research de fuentes (2-nov-2026) (`informes/research/2026-11-02-W07-fuentes.md`): Alcance: enlaces de explorador/voces.json , explorador/regulacion.json y eventos/calendario.toml ; prueba de fuentes primarias sin navegador. No…
 - 2026-11-02 · W06 · Voces y predicciones (2-nov-2026) (`informes/research/2026-11-02-W06-voces-predicciones.md`): Predicciones que vencían (actualizadas en informes/predicciones.md )
-- 2026-10-27 · W06 (parcial) · Voces v045, v049 y v050 · 27-oct-2026 (`informes/research/2026-10-27-W06-voces-v045-v049-v050.md`): v045 S&P, estabilidad de stablecoins sin confirmar compatible con los datos fintechnews.sg (5 ago 2026) da el recuento exacto (11 evaluadas, 6 con…
 
 ## Fiscal
 - 2026-10-23 · T24 — Fiscalidad internacional de cripto: CARF, DAC8 y formulario 1099-DA (`informes/research/2026-10-23-T24-fiscalidad-internacional-cripto.md`): CARF (OECD): marco de intercambio automático de información fiscal sobre cripto entre países (equivalente al CRS para cuentas bancarias). Los…
@@ -52,14 +52,14 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-29 · W03E · Irán, Egipto y Etiopía, pasada 3 · 2026-10-29 (`informes/research/2026-10-29-W03E-pasada3.md`): Tercera pasada con fuentes oficiales abiertas hoy (Chrome y curl). Edita solo explorador/regulacion.json . Sin recomendaciones: el radar describe…
 
 ## Sesiones diarias (apertura y cierre)
-- 2026-11-04 · Informe de CIERRE — 2026-11-04 (mié) (`informes/2026-11-04-cierre.md`): Wall Street sube fuerte (S&P +1,6 %, Dow +3,0 %, VIX 16,6) el día en que CBS informa de victoria demócrata en ambas cámaras [S; VERIFICAR].
-- 2026-11-04 · Informe de APERTURA — 2026-11-04 (mié) (`informes/2026-11-04-apertura.md`): Asia cae: Nikkei −3,56 %, Kospi −3,47 %; futuros del S&P −1,3 % [S].
-- 2026-11-04 · C58 · Cierre de huecos: EE. UU. midterms (4-nov-2026) (`informes/research/2026-11-04-C58-us-midterms.md`): Estado previo: paises.json (12 países) y elecciones.json ya existían; los huecos de NL/FR/IT/GB están en 2026 11 03 C58 huecos.md. Aquí solo EE. UU.…
+- 2026-11-06 · Informe de APERTURA — 2026-11-06 (vie) (`informes/2026-11-06-apertura.md`): Asia: Nikkei −6,0 %, Kospi −6,0 % (−11 % en dos días); Hang Seng −1,3 %, Shanghái −1,1 %.
+- 2026-11-05 · W09 · Resumen semanal (2-5 nov-2026) y plan de la semana siguiente (`informes/research/2026-11-05-W09-resumen-semanal.md`): Bolsa (HECHO [S, Yahoo]): semana de rebote y caída. S&P 500: 7.541 (2 nov) → 7.569 → 7.689 (4 nov, +1,58 %) → 7.354 (5 nov, −4,36 %) . Nasdaq −5,5 %…
+- 2026-11-05 · Informe de CIERRE — 2026-11-05 (jue) (`informes/2026-11-05-cierre.md`): Wall Street −4,4 % (S&P), Nasdaq −5,5 %, VIX 27: borra el rebote electoral.
 
 ## Otros
-- 2026-11-05 · C133 · Países: datos 2025-2026, historia y «durante el mandato» (5-nov-2026) (`informes/research/2026-11-05-C133-paises-historia-mandatos.md`): Modelo: Opus. Plan aprobado por Joel el 5 nov, con 4 cambios: «máximo de la serie AAAA AAAA», nota del mandato previo en Putin, Trump y Xi, fechas de…
-- 2026-11-05 · C132 · Centro de control para el móvil: esquema (5-nov-2026) (`informes/research/2026-11-05-C132-centro-control-movil-esquema.md`): Fase 1 de 2: solo diseño, sin código . Se implementa cuando Joel dé el visto bueno (paso 4 del prompt research/prompts/C132 centro control movil.md…
-- 2026-11-04 · EV · Elecciones de mitad de mandato de EE. UU. (3-nov-2026) (`informes/research/2026-11-04-EV-elecciones-eeuu.md`): Qué pasó (HECHOS según proyecciones, no recuento oficial)
+- 2026-11-06 · C69 · España 2024 vs 2025, segunda pasada (6-nov-2026) (`informes/research/2026-11-06-C69-espana-2024-2025.md`): Continúa informes/research/2026 11 02 C69 espana 2024 2025.md y 2026 11 04 C69 espana 2024 2025 parte2.md (no se reescriben).
+- 2026-11-06 · C68B · Sueldos de SE, subsecretarios y directores generales: caso concreto (6-nov-2026) (`informes/research/2026-11-06-C68B-sueldos-segundo-nivel.md`): Continúa 2026 10 31 C68 sueldos politicos.md (sección 2 y bloque C68B) y 2026 11 02 C68B cuadre sueldos senado.md . Nivel: [P] leído en original ·…
+- 2026-11-06 · C146-B · Justicia España: comprobación de «pendiente» (4 casos) (`informes/research/2026-11-06-C146-justicia-B.md`): Vías probadas en todos: buscador CGPJ ( /Buscadores?text=… , con espera de JS), lectura de cada nota completa en Chrome, y búsqueda restringida a…
 
 ## Fuentes y datos nuevos (sin fecha en el nombre)
 - A. Tipos de interés de los bancos centrales: fuentes y calendario de actualización (`research/fuentes-nuevas/A-tipos-bancos-centrales.md`): La tabla tipos vivos cubre 5 bancos con fuente primaria directa (Fed, BCE, BoE, BCB Brasil, Banco de Canadá) y tipos bis otros 10 vía BIS (RU, ZA,…
