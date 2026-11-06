@@ -1283,7 +1283,7 @@ function bloqueMandato(mm,actual,pid,ids,S,filas,H){
   const g=el('div','mand-g');
   for(const k of filas){const s=S[k],t=el('div','nota mnd'),c=el('div','cab');c.append(el('b',null,NOMH[k]));t.append(c);
     let ini=antesDe(s,ym),aprox=false;
-    if(!ini&&iniPer(s.p[0])>=ym&&(!yh||iniPer(s.p[0])<=yh)){ini=[s.v[0],s.p[0]];aprox=true}
+    if(!ini&&(iniPer(s.p[0])>=ym||(/^\d{4}$/.test(s.p[0])&&s.p[0]===ym.slice(0,4)))&&(!yh||iniPer(s.p[0])<=yh)){ini=[s.v[0],s.p[0]];aprox=true}
     let fin=null;if(yh){s.p.forEach((p,i)=>{if(finPer(p)<=yh)fin=[s.v[i],p]})}else fin=[s.v[s.v.length-1],s.p[s.p.length-1]];
     if(!ini||!fin||iniPer(fin[1])<ym){t.append(el('div','txt','Sin dato publicado dentro de este mandato (serie '+s.desde+' a '+s.hasta+').'));g.append(t);continue}
     const d=Math.round((fin[0]-ini[0])*10)/10;
