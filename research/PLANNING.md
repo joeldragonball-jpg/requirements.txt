@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-06 13:11 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-06 21:35 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -87,13 +87,13 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
 - [alta] 2026-11-05 (1 d) · El Banco de Inglaterra sube tipos y avisa de una inflación cercana al 5 %.
-- [alta] 2026-11-05 (1 d) · El S&P 500 se hunde un 3,8 % en una sesión, con las acciones de IA arrastrando.
 - [alta] 2026-11-06 (0 d) · Ataque a barcos en el Estrecho de Ormuz.
+- [alta] 2026-11-06 (0 d) · EE. UU. crea 165.000 empleos en octubre, muy por encima de lo esperado.
+- [alta] 2026-11-06 (0 d) · Se espera que la Fed mantenga su subida de tipos de diciembre tras el dato de empleo.
+- [alta] 2026-11-06 (0 d) · Daly (Fed): más subidas de tipos probables.
 - [media] 2026-10-22 (15 d) · hutiES a Arabia Saudi
 - [media] 2026-10-22 (15 d) · hutiES a Arabia Saudi
 - [media] 2026-10-23 (14 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
-- [media] 2026-10-23 (14 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
-- [media] 2026-10-25 (12 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
 - … y 49 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
