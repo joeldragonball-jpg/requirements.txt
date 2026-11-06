@@ -180,3 +180,5 @@ actualizado: 2026-10-07
 - 5-nov-2026 (W05): para cifras de mercado del día, la curva del Tesoro [P] y los cierres de Yahoo [S] guardados en paneles.json bastan para desmentir titulares; las copias de paneles.json pueden quedar viejas (Brent 104 $ frente a 94,6 $ en la serie fresca), así que citar siempre la hora de lectura.
 
 - 5-nov-2026 (W09): webs oficiales de gobiernos (presidencias de El Salvador, Indonesia, Egipto, Cuba) bloquean a lectores automáticos o no cargan; el dato de fecha se queda en [S] y se anota el bloqueo, no se rellena con Wikipedia ni de memoria.
+
+- 6-nov-2026 (W06): las voces escépticas útiles son BIS (stablecoins) y las asociaciones bancarias (depósitos), pero ambas tienen interés propio; sus afirmaciones se citan como posición, no como dato, y se busca el texto original en bis.org o en la carta de la ABA.

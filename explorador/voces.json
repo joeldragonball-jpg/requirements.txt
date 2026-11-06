@@ -1389,7 +1389,7 @@
       "cuando": "2025-08",
       "texto": "Dijo que el interés por los ETF de XRP sería menor que el de los de Bitcoin: cuanto más lejos de Bitcoin, menos capital atrae; aclaró que nunca dijo que no hubiera demanda.",
       "nivel": "S",
-      "conf": "sin_confirmar",
+      "conf": "compatible",
       "capas": [
         "fondos"
       ],
@@ -1402,7 +1402,7 @@
         "n": "DL News y agregadores (2025); fecha exacta y original [VERIFICAR]",
         "url": "https://www.dlnews.com/articles/markets/xrp-etf-approval-bet-on-polymarket-just-got-juicier/"
       },
-      "nota": "[W06 26-oct] Voz escéptica de ETF. Contrasta con Geraci (la demanda está infravalorada). Los flujos reales posteriores (~$1,4 mil M hacia marzo-2026, v047) se quedan entre ambas posturas. El día exacto no se localizó. [W06 27-oct] La fuente citada (DL News, 22-abr-2025) NO contiene la frase: solo dice que los ETF de altcoins harían «a minor dent». La aclaración («cuanto más lejos de Bitcoin, menos activos»; «nunca dijimos que no hubiera demanda») aparece en prensa secundaria fechada en agosto de 2025, no en octubre; sin original (X o entrevista). Se corrige la fecha a 2025-08 y queda sin confirmar. Dato posterior: Balchunas publicó el 13-nov-2025 que el XRPC movió $58 M el primer día (volumen más alto de un ETF lanzado ese año), prensa [S]."
+      "nota": "[W06 26-oct] Voz escéptica de ETF. Contrasta con Geraci (la demanda está infravalorada). Los flujos reales posteriores (~$1,4 mil M hacia marzo-2026, v047) se quedan entre ambas posturas. El día exacto no se localizó. [W06 27-oct] La fuente citada (DL News, 22-abr-2025) NO contiene la frase: solo dice que los ETF de altcoins harían «a minor dent». La aclaración («cuanto más lejos de Bitcoin, menos activos»; «nunca dijimos que no hubiera demanda») aparece en prensa secundaria fechada en agosto de 2025, no en octubre; sin original (X o entrevista). Se corrige la fecha a 2025-08 y queda sin confirmar. Dato posterior: Balchunas publicó el 13-nov-2025 que el XRPC movió $58 M el primer día (volumen más alto de un ETF lanzado ese año), prensa [S]. [W06 6-nov] La idea (interés menor que en los ETF de Bitcoin, no cero) la recogen CoinCentral y U.Today con una aclaración suya del 27-ago-2025 [S]; el post original en X sin leer [VERIFICAR]."
     },
     {
       "id": "v051",
@@ -1615,7 +1615,7 @@
         "min": "7:20-7:45",
         "url": "https://youtu.be/BCbE3fsKvOg"
       },
-      "nota": "[V01 30-oct] Atribución privada: Chainalysis dice «probablemente» y Elliptic «probable»; ninguna autoridad la ha confirmado."
+      "nota": "[V01 30-oct] Atribución privada: Chainalysis dice «probablemente» y Elliptic «probable»; ninguna autoridad la ha confirmado. [W06 6-nov] Prensa (Cointelegraph, otros) dice que Chainalysis y ZachXBT llegan a la misma atribución a TraderTraitor [S]; informe original de TRM sin leer y Binance no ha confirmado formalmente la atribución según una fuente. Sigue sin confirmar."
     },
     {
       "id": "v058",
@@ -1665,7 +1665,7 @@
         "min": "14:40-15:20",
         "url": "https://youtu.be/BCbE3fsKvOg"
       },
-      "nota": "[V01 30-oct] Cita no localizada con fecha; la cifra de 70 M procede de encuestas del sector. Complementa v020."
+      "nota": "[V01 30-oct] Cita no localizada con fecha; la cifra de 70 M procede de encuestas del sector. Complementa v020. [W06 6-nov] Lo comprobable: Alsobrooks y Tillis cerraron el 1-may-2026 el texto de rendimiento de stablecoins de CLARITY y ella condicionó su apoyo a un acuerdo de ética [S, Radom/Leodex/The Block]; el clip concreto sigue sin localizar."
     },
     {
       "id": "v060",
@@ -1815,6 +1815,94 @@
         "url": "https://youtu.be/uc6nvYbN_Ao"
       },
       "nota": "[V01 4-nov] Matiz: es colateral de préstamos para clientes institucionales, no tener BTC en su balance. Comunicado del banco sin leer [VERIFICAR]."
+    },
+    {
+      "id": "v065",
+      "quien": "BIS (Informe Económico Anual 2025)",
+      "cuando": "2025-06-24",
+      "texto": "Concluye que las stablecoins no pasan tres pruebas del dinero: unicidad (singleness), elasticidad e integridad.",
+      "nivel": "S",
+      "conf": "compatible",
+      "capas": [
+        "stable",
+        "reg"
+      ],
+      "redes": [],
+      "tokens": [],
+      "usos": [
+        "pagos"
+      ],
+      "fuente": {
+        "n": "The Block: BIS dice que las stablecoins suspenden tres pruebas clave",
+        "url": "https://www.theblock.co/post/359518/bis-stablecoins-tests-moniness-tokenization-circle"
+      },
+      "nota": "[W06 6-nov] Voz escéptica de un banco central de bancos centrales. Solo prensa; el informe en bis.org sin abrir [VERIFICAR]. HSBC discrepa de que la definición de «singleness» sea la adecuada [S]. Sesgo: la BIS defiende un papel central de los bancos centrales (tokenización sobre dinero de banco central)."
+    },
+    {
+      "id": "v066",
+      "quien": "American Bankers Association y otros 4 grupos bancarios",
+      "cuando": "2026-05",
+      "texto": "Dicen que el texto de rendimiento de stablecoins de CLARITY se queda corto para proteger los depósitos; citan estudios de que podría recortar los préstamos a consumidores, pymes y agricultores en una quinta parte o más.",
+      "nivel": "S",
+      "conf": "compatible",
+      "capas": [
+        "stable",
+        "deposit",
+        "reg"
+      ],
+      "redes": [],
+      "tokens": [],
+      "usos": [
+        "rendimiento"
+      ],
+      "fuente": {
+        "n": "Cointelegraph: la banca sigue diciendo que la propuesta de CLARITY no protege los depósitos",
+        "url": "https://cointelegraph.com/news/bankers-still-says-new-proposal-in-clarity-act-falls-short-of-protecting-bank-deposits"
+      },
+      "nota": "[W06 6-nov] Voz crítica con conflicto de interés evidente (los bancos compiten por los depósitos). Fecha exacta de la carta [VERIFICAR]; solo prensa."
+    },
+    {
+      "id": "v067",
+      "quien": "Jonathan Levin (CEO de Chainalysis)",
+      "cuando": "2026-10",
+      "texto": "Cifra el impacto del robo a Binance en unos 6.400 M$ y comparte la atribución a Corea del Norte (TraderTraitor).",
+      "nivel": "S",
+      "conf": "compatible",
+      "capas": [
+        "custodia"
+      ],
+      "redes": [],
+      "tokens": [],
+      "usos": [
+        "datos"
+      ],
+      "fuente": {
+        "n": "Cointelegraph: Corea del Norte vinculada al hackeo de 6.300 M$ a Binance",
+        "url": "https://cointelegraph.com/news/north-korea-linked-to-63b-binance-hack-by-crypto-investigators"
+      },
+      "nota": "[W06 6-nov] Fuente de analítica forense con interés comercial en mostrar casos; cifra algo distinta de la de TRM (≈6.360 M$) y de la de Binance. Solo prensa [VERIFICAR]."
+    },
+    {
+      "id": "v068",
+      "quien": "Angela Alsobrooks y Thom Tillis (senadores)",
+      "cuando": "2026-05-01",
+      "texto": "Cierran un texto que prohíbe a los emisores pagar rendimiento por simple tenencia de stablecoins de pago («saldos pasivos») para evitar la fuga de depósitos.",
+      "nivel": "S",
+      "conf": "compatible",
+      "capas": [
+        "stable",
+        "reg"
+      ],
+      "redes": [],
+      "tokens": [],
+      "usos": [
+        "rendimiento"
+      ],
+      "fuente": {
+        "n": "The Block: Coinbase dice que hay acuerdo sobre el rendimiento de stablecoins en CLARITY",
+        "url": "https://www.theblock.co/news/regulation/2026-05-02-coinbase-says-deal-reached-on-clarity-act-stablecoin-yield-clearing-path-to-long-stalled-senate-markup-399780"
+      },
+      "nota": "[W06 6-nov] Es una posición política, no un hecho de mercado. El comunicado conjunto sin leer [VERIFICAR]. Relacionada con v059 y v066."
     }
   ],
   "canales": [
