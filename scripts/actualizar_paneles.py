@@ -255,7 +255,7 @@ def leer_indices():
             if len(pares) < 2:
                 raise ValueError("menos de 2 cierres")
             (f0, c0), (f1, c1) = pares[-2], pares[-1]
-            moneda = d["meta"].get("currency")
+            moneda = d["meta"].get("currency") or {"^STOXX50E": "EUR", "^IBEX": "EUR", "^GDAXI": "EUR", "^N225": "JPY", "^HSI": "HKD", "000001.SS": "CNY", "^KS11": "KRW"}.get(simbolo)   # Yahoo a veces no da la moneda del Euro Stoxx: sin esto salía «NoneUSD=X» (404)
             fila = {"simbolo": simbolo, "nombre": nombre, "zona": zona, "valor": round(c1, 2), "fecha": f1,
                     "cambio_1d": round((c1 / c0 - 1) * 100, 2), "moneda": moneda}
             if moneda == "USD":

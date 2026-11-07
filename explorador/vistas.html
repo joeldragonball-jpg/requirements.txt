@@ -299,7 +299,7 @@ function cargar(){
   if(!G||!G.radar){$('estado').textContent='Sin datos: esta plantilla se abre desde la Órbita.';return}
   D=G;R=G.radar;V=G.voces;P=G.paneles;CAL=G.calificaciones;FMI=G.deuda_fmi;VAL=G.valoracion;window.ENL=G.enlaces;BAN=G.bancos;RES=G.reservas;window.RWAM=G.rwa_cadena_manual;window.CBDCB=G.cbdc_blockchains;
   X=G.calendario?{calendario:G.calendario,docs:Object.fromEntries(G.capas.map(c=>[c.id,c.docs]))}:null;
-  $('estado').textContent='Datos reales: radar '+R.revisado+' · Órbita '+D.version+(P?' · paneles '+P.leido:'');
+  $('estado').textContent='Datos reales: radar '+R.revisado+' · Órbita '+(D.movimientos.map(m=>m.fecha).filter(f=>f<=HOYS).sort().pop()||D.version)+(P?' · paneles '+P.leido:'');
   for(const j of R.jurisdicciones){const o=el('option',null,j.nombre);o.value=j.id;$('fpais').append(o)}
   for(const t of R.temas){const o=el('option',null,t.nombre);o.value=t.id;$('ftema').append(o)}
   ['fpais','ftema','fcert','fcambio'].forEach(i=>$(i).onchange=pintarTodo);
@@ -1170,14 +1170,14 @@ function verifNoticia(m){
 function pNoticias(){
   const s=$('v-noticias');s.textContent='';
   const c=el('div','caja');c.append(el('h2',null,'Noticias con caducidad (24 h · 7 días · 30 días)'));
-  const g={n24:[],n7:[],n30:[],arch:[]};
-  for(const m of D.movimientos.filter(paisOk)){const a=dias(m.fecha);if(a<=1)g.n24.push(m);else if(a<=7)g.n7.push(m);else if(a<=30)g.n30.push(m);else g.arch.push(m)}
+  const g={n24:[],n7:[],n30:[],arch:[],prox:[]};
+  for(const m of D.movimientos.filter(paisOk)){const a=dias(m.fecha);if(a<0)g.prox.push(m);else if(a<=1)g.n24.push(m);else if(a<=7)g.n7.push(m);else if(a<=30)g.n30.push(m);else g.arch.push(m)}
   const nNot=D.movimientos.filter(m=>m.origen==='noticia').length;
   c.append(el('div','nota-v','Hoy es '+HOYS+'. '+nNot+' noticias vigentes llegan del bot (nota ≥ 7) con caducidad; el resto son hechos del research. Lo de más de 30 días pasa al archivo ('+g.arch.length+' ahora).'));
   const cols=el('div','noticias');
   const tit={n24:'Últimas 24 h',n7:'Hasta 7 días',n30:'Hasta 30 días'};
   cols.style.gridTemplateColumns=['n24','n7','n30'].map(k=>g[k].length?'minmax(0,1fr)':'minmax(190px,.5fr)').join(' ');
-  const ultM=D.movimientos.filter(paisOk).sort((a,b)=>a.fecha<b.fecha?1:-1)[0];
+  const ultM=D.movimientos.filter(m=>paisOk(m)&&dias(m.fecha)>=0).sort((a,b)=>a.fecha<b.fecha?1:-1)[0];
   for(const k of ['n24','n7','n30']){
     const col=el('div');col.append(el('h3',null,tit[k]+' ('+g[k].length+')'));
     if(!g[k].length){col.append(el('div','nota n30','Nada en este tramo.'));if(ultM)col.append(el('div','nota-v','Lo último registrado: '+ultM.fecha+' · '+ultM.actor+' ('+dias(ultM.fecha)+' días).'))}
@@ -1193,6 +1193,8 @@ function pNoticias(){
       n.append(pie);col.append(n)}
     cols.append(col)}
   c.append(cols);
+  if(g.prox.length){const dp=el('details');dp.open=true;dp.append(el('summary',null,'Próximas (planificadas, aún no han ocurrido): '+g.prox.length));
+    dp.append(tabla([{t:'Fecha',f:m=>m.fecha},{t:'Capa',f:m=>capaNom(m.capa)},{t:'Actor',f:m=>m.actor},{t:'Plan',f:m=>m.texto},{t:'Fuente',f:m=>m.fuente||''}],g.prox.sort((a,b)=>a.fecha>b.fecha?1:-1)));c.append(dp)}
   const cc={};g.arch.forEach(m=>cc[m.capa]=(cc[m.capa]||0)+1);
   const rs=el('div','cuentas');rs.append(el('b',null,'Archivo por capa: '));for(const k in cc)rs.append(el('span','chip',capaNom(k)+': '+cc[k]));c.append(rs);
   const det=el('details');det.append(el('summary',null,'Archivo (más de 30 días): '+g.arch.length));
