@@ -187,6 +187,15 @@ ul.mand{list-style:none;padding:0;margin:6px 0;display:grid;gap:6px}ul.mand li{b
 ul.mand .hito{color:#f1d58a;font-size:var(--fs-xs);margin-top:3px}ul.mand .aviso-c{color:var(--tx2);font-size:var(--fs-xs);font-style:italic;margin-top:2px}
 /* C134 · Presupuesto: 3 cifras arriba en cada ministerio abierto */
 .kpis.min3{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));margin:8px 0}
+#v-voces .item small{font-size:var(--fs-xs)}.plazo-v{font-size:var(--fs-s);color:var(--tx2);margin:3px 0}
+small.per{color:var(--tx2);font-size:var(--fs-xs);font-weight:400}
+.cc-g small.per{display:block}
+.sem{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:5px;vertical-align:middle;border:1px solid rgba(255,255,255,.35)}
+.sem.v{background:#2fe08f}.sem.a{background:#e8b64a}.sem.r{background:#ff6b6b}.sem.g{background:#8a97b0}
+.pie-sem{color:var(--tx2);font-size:var(--fs-xs);margin:2px 0 4px}
+.idx{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;margin:4px 0 10px;padding:6px 10px;border:1px solid var(--lin);border-radius:8px;background:var(--panel);font-size:var(--fs-s)}.idx b{color:var(--tx2)}.idx a{color:var(--ac);cursor:pointer;text-decoration:none;border-bottom:1px dotted var(--ac)}
+.hoy ul{margin:4px 0;padding-left:20px}.hoy li{margin:2px 0}
+.mis .kpi b{font-size:clamp(18px,.9vw + 8px,24px)}.pie-leyenda{margin:14px 0 6px;padding:8px 12px;border:1px dashed var(--lin);border-radius:8px;color:var(--tx2);font-size:var(--fs-xs)}
 </style></head><body>
 <div class="barra">
 <label>País <select id="fpais"><option value="">Todos</option></select></label>
@@ -209,6 +218,7 @@ ul.mand .hito{color:#f1d58a;font-size:var(--fs-xs);margin-top:3px}ul.mand .aviso
 <section class="vista" id="v-espana"></section>
 <section class="vista" id="v-paneles"></section>
 </main>
+<div class="pie-leyenda" id="pie-comun"></div>
 <div id="tip"></div>
 <script>
 const $=id=>document.getElementById(id);
@@ -219,7 +229,9 @@ const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=nu
 const cert=f=>f==='P'?'🛡':(f==='S'?'◐':'△');
 const bcl=n=>n==='P'?'P':(n&&n[0]==='S'?'S':'V');
 const num=(x,d=1)=>x==null||isNaN(x)?'—':Number(x).toLocaleString('es-ES',{maximumFractionDigits:d,minimumFractionDigits:d>1&&Math.abs(x)<100?Math.min(d,2):0});
-const usd=x=>x==null?'—':'$'+(Math.abs(x)>=1e12?num(x/1e12,2)+' billones':Math.abs(x)>=1e9?num(x/1e9,1)+' mil millones':Math.abs(x)>=1e6?num(x/1e6,0)+' millones':num(x,0));
+const usd=x=>x==null?'—':'$'+(Math.abs(x)>=1e12?num(x/1e12,2)+' billones':Math.abs(x)>=1e9?num(x/1e9,1)+' mil M':Math.abs(x)>=1e6?num(x/1e6,0)+' M':num(x,0));
+/* C164 · separador de miles también en números de 4 cifras (es-ES no agrupa 1234) */
+const miles=t=>typeof t!=='string'?t:t.replace(/(?<![\d.,])\d{4,}(?=,\d|[^\d.,]|$)/g,m=>m.replace(/\B(?=(\d{3})+(?!\d))/g,'.'));
 const TABS=[['resumen','Resumen'],['capas','Capas'],['tiempo','Línea de tiempo'],['calendario','Calendario'],['matriz','Matriz país × tema'],['noticias','Noticias'],['voces','Voces'],['paises','Países'],['espana','España'],['paneles','Paneles de datos']];
 let R,D,V,P,CAL,FMI,VAL,BAN,RES,X,modo='sem',selMov=null,selCapa=null,selCelda=null,tab='resumen',listo=false;
 
@@ -310,7 +322,7 @@ function cargar(){
   try{const g=parseFloat(localStorage.getItem('orbita-letra'));if(g>=.8&&g<=1.6)zl=g;else if(devicePixelRatio<.95)zl=Math.min(1.3,Math.round(20/devicePixelRatio)/20)}catch(e){if(devicePixelRatio<.95)zl=Math.min(1.3,Math.round(20/devicePixelRatio)/20)}
   const ponLetra=(z,guarda)=>{zl=z;document.documentElement.style.zoom=z===1?'':z;$('lval').textContent=Math.round(z*100)+' %';if(guarda)try{localStorage.setItem('orbita-letra',z)}catch(e){};if(listo){nc0=ncols();pintarTodo()}};
   $('lmas').onclick=()=>ponLetra(LZ.find(x=>x>zl+.001)||zl,true);$('lmenos').onclick=()=>ponLetra([...LZ].reverse().find(x=>x<zl-.001)||zl,true);ponLetra(zl,false);
-  listo=true;ir(tab);vivoCargar()}
+  pieComun();listo=true;ir(tab);vivoCargar()}
 /* C142 · precios casi en vivo. Sobre la foto diaria (paneles.json) se superponen: 1) precios_vivos.json (rama «datos», lo renueva cada hora precios.yml) y 2) CoinGecko directo al abrir y cada 5 min.
    Si algo falla se queda la foto, con su fecha. No toca nada de privado/. */
 const URL_VIVO='https://raw.githubusercontent.com/joeldragonball-jpg/requirements.txt/datos/precios/precios_vivos.json',URL_CG='https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin,ethereum&vs_currencies=usd&include_market_cap=true&include_24hr_change=true';
@@ -331,12 +343,12 @@ function vivoCargar(){
   const peticion=u=>fetch(u,{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null);
   Promise.all([peticion(URL_VIVO),peticion(URL_CG)]).then(([j,cg])=>{
     if(!aplicarVivo(j,cg))return;
-    const hora=new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+    const hora=new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});window.HORAV=hora;
     const e=$('estado');if(e){e.textContent=e.textContent.replace(/ · en vivo.*$/,'');e.append(document.createTextNode(' · '));const t=el('span','vivo-tag');t.append(el('i'),document.createTextNode('en vivo '+hora+(j?' (bolsas y ETF: '+j.leido+')':' (solo cripto)')));e.append(t)}
     const y=document.scrollingElement?document.scrollingElement.scrollTop:0;pintarTodo();if(document.scrollingElement)document.scrollingElement.scrollTop=y});
   clearTimeout(vivoCargar.t);vivoCargar.t=setTimeout(vivoCargar,300000)}
 const RM=matchMedia('(prefers-reduced-motion:reduce)').matches,vistos=new Set();
-function ir(id){tab=id;if(!listo)return;for(const [i] of TABS){$('v-'+i).classList.toggle('on',i===id)}
+function ir(id){tab=id;if(!listo)return;ajustarFiltros(id);for(const [i] of TABS){$('v-'+i).classList.toggle('on',i===id)}
   const sec=$('v-'+id);sec.classList.remove('ent','fx');void sec.offsetWidth;const primera=!vistos.has(id);
   if(!RM){sec.classList.add('ent');if(primera){sec.classList.add('fx');clearTimeout(sec.tfx);sec.tfx=setTimeout(()=>sec.classList.remove('fx'),1800)}}
   pintarTodo();if(primera){vistos.add(id);contar(sec)}}
@@ -350,7 +362,7 @@ function contar(sec){
     const paso=ahora=>{const k=Math.min(1,(ahora-t0)/800),v=fin*(1-Math.pow(1-k,3));
       e.textContent=k<1?pre+v.toLocaleString('es-ES',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf:t;if(k<1)requestAnimationFrame(paso)};
     requestAnimationFrame(paso)})}
-function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles})[tab]()}
+function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles})[tab]();if(tab==='capas'||tab==='paneles'||tab==='noticias')anclas($('v-'+tab),tab)}
 
 /* ---------- bloques de datos reutilizables (Capas y Paneles) ---------- */
 const PL=['3M','6M','1A','2A','3A','5A','10A','15A','20A','30A'];
@@ -468,6 +480,94 @@ function nLiquidez(){
 /* antigüedad de un dato en días frente a hoy; avisoViejo() devuelve un texto solo si pasa del umbral (para que un dato congelado no parezca de hoy) */
 function edadDias(f){const t=new Date(String(f).slice(0,10)+'T00:00:00Z');return isNaN(t)?null:Math.round((new Date(HOYS+'T00:00:00Z')-t)/864e5)}
 function avisoViejo(f,umbral=3){const n=edadDias(f);return n!=null&&n>umbral?'⚠ hace '+n+' días':''}
+/* C161 · semáforo de frescura al pie de cada bloque de Paneles. Mismo criterio que el móvil (C154): verde ≤ 7 días, ámbar ≤ 14, rojo > 14.
+   La fecha es la de lectura del bloque; en Liquidez y Comparar países se toma la más antigua entre esa y la fecha de comprobación de su JSON manual (datos.json → manuales). */
+function semaforo(f){const n=edadDias(f);return n==null?{c:'g',n:null}:{c:n<=7?'v':n<=14?'a':'r',n}}
+function semBloque(b){
+  const pie=[...b.children].filter(x=>x.classList&&x.classList.contains('nota-v')).pop();
+  const tit=(b.firstChild&&b.firstChild.textContent)||'',M=D.manuales||{};
+  const fs=((pie&&pie.textContent)||'').match(/\d{4}-\d{2}-\d{2}/g)||[];
+  const lista=fs.length?[fs[fs.length-1]]:[];let man='';
+  if(/^Liquidez/.test(tit)&&M.liquidez){lista.push(M.liquidez);man='liquidez-manual.json: comprobado '+M.liquidez}
+  else if(/^Comparar pa/.test(tit)&&M.indicadores){lista.push(M.indicadores);man='indicadores-manual.json: comprobado '+M.indicadores}
+  const d=el('div','pie-sem');
+  if(!lista.length){d.append(el('i','sem g'),document.createTextNode('Frescura: este bloque no indica fecha de lectura.'));b.append(d);return d}
+  const f=lista.slice().sort()[0],r=semaforo(f);
+  const i=el('i','sem '+r.c);i.title='Verde ≤ 7 días · ámbar ≤ 14 · rojo > 14';
+  d.append(i,document.createTextNode('Frescura: '+(r.n===0?'de hoy':'hace '+r.n+' d')+' (dato del '+f+')'+(man?' · '+man:'')));b.append(d);return d}
+/* C165 · índice con anclas en las pestañas largas (Capas, Paneles y Noticias) */
+function anclas(s,tb){
+  const sel={capas:'.caja>h2',paneles:'details.bl>summary',noticias:'.noticias h3, .caja>details>summary'}[tb];if(!sel)return;
+  const L=[...s.querySelectorAll(sel)];if(L.length<2)return;
+  const nav=el('nav','idx');nav.append(el('b',null,'Ir a:'));
+  L.forEach((h,i)=>{const t=h.textContent.replace(/\s+/g,' ').trim(),dest=h.closest('details')||h,a=el('a',null,t.length>46?t.slice(0,44)+'…':t);
+    dest.id='a-'+tb+'-'+i;dest.style.scrollMarginTop='54px';a.href='#'+dest.id;
+    a.onclick=e=>{e.preventDefault();if(dest.tagName==='DETAILS')dest.open=true;dest.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})};nav.append(a)});
+  s.insertBefore(nav,s.firstChild)}
+/* C165 · «qué cambia hoy»: 5 líneas, solo hechos y fechas, sin recomendar */
+function cambiaHoy(){
+  const c=el('div','caja hoy');c.append(el('h2',null,'Qué cambia hoy ('+HOYS+')'));
+  const L=[];
+  const ult=D.movimientos.filter(m=>m.fecha<=HOYS).sort((a,b)=>a.fecha<b.fecha?1:-1)[0];
+  L.push(ult?'Último hecho registrado ('+ult.fecha+', '+(bcl(ult.nivel)==='V'?'sin verificar':ult.nivel)+'): '+ult.actor+' · '+ult.texto:'Sin hechos registrados.');
+  const mv=[];if(P){for(const x of ((P.indices||{}).indices||[]))mv.push({n:x.nombre,v:x.cambio_1d,f:x.fecha,u:'1 día'});
+    for(const x of ((P.materias||{}).materias||[]))mv.push({n:x.nombre,v:x.cambio_1d,f:x.fecha,u:'1 día'});
+    for(const x of ((P.mercado||{}).activos||[]))mv.push({n:x.nombre,v:x.cambio_24h,f:(P.mercado.leido||'').slice(0,10),u:'24 h'});
+    for(const x of ((P.chips||{}).cotizaciones||[]))mv.push({n:x.nombre,v:x.cambio_1d,f:x.fecha,u:'1 día'})}
+  const gr=mv.filter(m=>m.v!=null).sort((a,b)=>Math.abs(b.v)-Math.abs(a.v))[0];
+  L.push(gr?'Mayor variación de precio ('+gr.f+', [S]): '+gr.n+' '+(gr.v>0?'+':'')+num(gr.v,2)+' % en '+gr.u+'.':'Sin precios leídos hoy.');
+  const ev=X?X.calendario.eventos.filter(e=>e.fin>=HOYS)[0]:null;
+  L.push(ev?'Próxima fecha del calendario: '+(ev.ini===ev.fin?ev.ini:ev.ini+' → '+ev.fin)+' · '+ev.titulo+'.':'Sin fechas próximas en el calendario.');
+  const NV=D.novedades||[];
+  L.push(NV.length?'Última novedad de research ('+NV[0].fecha+'): '+(NV[0].id?NV[0].id+' · ':'')+NV[0].titulo+' ('+NV.length+' en 7 días).':'Sin novedades de research en 7 días.');
+  const oz=P&&P.ormuz,av=oz&&avisoViejo(oz.ultimo.fecha);
+  L.push('Datos de los paneles leídos el '+(P&&P.leido||'—')+(av?'; Ormuz conserva el dato del '+oz.ultimo.fecha+' ('+av.replace('⚠ ','')+')':'')+'.');
+  const u=el('ul');for(const t of L)u.append(el('li',null,t));c.append(u,el('p','nota-v','Solo hechos con su fecha; no es una recomendación. Nivel entre paréntesis cuando lo hay.'));return c}
+/* C163 · «Mis activos»: XRP y XLM con datos públicos y nivel de cada cifra; sin recomendar y sin tesis ni posiciones personales (eso vive en privado/) */
+function misActivos(){
+  const c=el('div','caja mis');c.append(el('h2',null,'Mis activos: XRP y XLM (datos públicos)'));
+  const CA=(P&&P.mercado&&P.mercado.activos)||[],sc=P&&P.stablecoins,fo=D.capas.find(x=>x.id==='fondos');
+  const per=window.HORAV?'en vivo '+window.HORAV+' · CoinGecko':'lectura '+((P&&P.mercado&&P.mercado.leido)||'—')+' · CoinGecko';
+  const cifF=(fo&&fo.cifras)||[],etf=cifF.find(x=>/ETF de XRP/.test(x.e)),f13=cifF.find(x=>/13F/.test(x.e));
+  const filas=(sim,cad,nom)=>{const a=CA.find(x=>x.simbolo===sim),R=[];
+    if(a){R.push({d:'Precio',v:'$'+num(a.precio,a.precio<10?4:2),n:'S',f:per});
+      R.push({d:'Cambio 24 h',v:cambio(a.cambio_24h,'%',2),n:'S',f:per});
+      R.push({d:'Capitalización',v:usd(a.capitalizacion),n:'S',f:per})}
+    if(cad)R.push({d:'Stablecoins en '+nom,v:usd(cad.total)+' ('+cad.n+' monedas)'+(cad.top&&cad.top[0]?' · mayor: '+cad.top[0].simbolo+' '+usd(cad.top[0].usd):''),n:'S',f:'DefiLlama · '+((sc&&sc.leido)||'—')});
+    return R};
+  const rx=filas('XRP',sc&&sc.xrpl,'el XRPL'),rl=filas('XLM',sc&&sc.stellar,'Stellar');
+  if(etf)rx.push({d:'ETF spot de XRP en EE. UU.',v:etf.v+' · '+etf.e,n:etf.nivel,f:etf.f});
+  if(f13)rx.push({d:'Declarantes 13F',v:f13.v+' · '+f13.e,n:f13.nivel,f:f13.f});
+  const nx=fo&&(fo.xrp||[]).find(x=>/XLM/.test(x.t));
+  rl.push({d:'ETF y 13F de XLM',v:nx?nx.t+' (solo el trust GXLM en OTC según el dossier ETF, 9-oct)':'Sin dato',n:nx&&nx.k?nx.k:'V',f:'Capa «Fondos, ETF y tesorerías»'+(nx&&nx.nota?' · '+nx.nota:'')});
+  const col=(tit,sim,fl)=>{const d=el('div');d.append(el('h3',null,tit));
+    d.append(tabla([{t:'Dato',f:r=>r.d},{t:'Valor',n:1,f:r=>r.v},{t:'Nivel',f:r=>nivelBadge(r.n)},{t:'Fuente y hora',f:r=>r.f}],fl));
+    const nov=D.movimientos.filter(m=>m.fecha<=HOYS&&(m.act||[]).includes(sim)).sort((a,b)=>a.fecha<b.fecha?1:-1).slice(0,4);
+    d.append(el('h4',null,'Novedades de la capa ('+sim+')'));
+    if(nov.length){const u=el('ul');for(const m of nov){const l=el('li');l.append(nivelBadge(m.nivel||'S'),document.createTextNode(m.fecha+' · '+capaNom(m.capa)+' · '+m.texto));u.append(l)}d.append(u)}
+    else d.append(el('p','nota-v','Sin movimientos recientes que nombren '+sim+'.'));return d};
+  const g=el('div','cols2');g.append(col('XRP','XRP',rx),col('XLM · Stellar','XLM',rl));c.append(g,
+    el('p','nota-v','Solo datos públicos con su nivel ([P] primaria · [S] prensa o agregador · [VERIFICAR] sin contrastar). No es una recomendación ni incluye posiciones o tesis personales.'));return c}
+/* C162 · una línea que explica los fallos de lectura de paneles.json */
+function lineaFallos(){
+  if(!P)return null;let ind=0,sinFmi=0,sinDato=0,fred=0,otros=0;const ndet=[];
+  for(const k in P){const f=P[k]&&P[k].fallos;if(!Array.isArray(f)||!f.length)continue;
+    for(const t of f){const s=String(t);if(k==='indicadores'){ind++;if(/sin dato en deuda-fmi/.test(s))sinFmi++;else sinDato++}else if(/FRED/.test(s)){fred++;ndet.push(k)}else otros++}}
+  if(!ind&&!fred&&!otros)return null;
+  const p=[];if(ind)p.push(ind+' series de la comparación de países sin dato ('+sinFmi+' porque el FMI no incluye ese país en su edición; '+sinDato+' porque la fuente no publica ese indicador para él)');
+  if(fred)p.push(fred+' lecturas de FRED sin respuesta ('+[...new Set(ndet)].join(', ')+'): se conserva el último dato bueno y su fecha manda en el semáforo');
+  if(otros)p.push(otros+' lectura(s) con otro fallo puntual (p. ej. la divisa de un índice), que se corrige en la siguiente actualización');
+  return 'Fallos de la última lectura: '+p.join('; ')+'. Un hueco es «sin dato», no un cero.'}
+/* C162 · leyenda de niveles única, en un pie común de todo el tablero */
+function pieComun(){const e=$('pie-comun');if(!e)return;e.textContent='';
+  e.append(el('b',null,'Niveles de certeza (para todo el tablero): '),document.createTextNode('P = fuente primaria leída · S = secundaria (prensa o agregador) · V = sin verificar [VERIFICAR] (ESP = [ESPECULACIÓN], opinión o previsión) · en Voces cada declaración tiene su propia leyenda de niveles. Semáforo de frescura de Paneles: verde ≤ 7 días · ámbar ≤ 14 · rojo > 14.'))}
+/* C164 · filtros de la barra: solo se ven en las pestañas donde actúan (P = país, T = tema, C = certeza, M = solo cambios/densidad de la matriz) */
+const FILTROS={resumen:'P',capas:'PC',tiempo:'P',noticias:'P',matriz:'PTCM'};
+function ajustarFiltros(id){const f=FILTROS[id]||'';
+  const mostrar=(el_,ok)=>{if(el_)el_.style.display=ok?'':'none'};
+  mostrar($('fpais').closest('label'),f.includes('P'));mostrar($('ftema').closest('label'),f.includes('T'));mostrar($('fcert').closest('label'),f.includes('C'));
+  mostrar($('fcambio').closest('label'),f.includes('M'));mostrar($('dsem').parentNode,f.includes('M'))}
+
 function nOrmuz(){
   const o=P.ormuz;const w=el('div');
   const av=avisoViejo(o.ultimo.fecha);if(av)w.append(el('p','nota-v',av+': el último dato leído es del '+o.ultimo.fecha+'. La fuente del FMI (PortWatch) dejó de responder el 4-nov y el panel conserva ese dato; no es la situación de hoy.'));
@@ -525,18 +625,19 @@ function pResumen(){
   /* C142 · primer precio del día (lo fija la sesión R00 de apertura): cuánto ha cambiado desde entonces */
   const desdeAp=(grupo,sim,ahora,etq,pre)=>{const v0=R0&&R0.apertura&&R0.apertura[grupo]&&R0.apertura[grupo][sim];if(!v0||ahora==null)return null;
     return {e:etq+' desde la apertura (R00)',v:pre+num(v0,v0<10?4:2)+' → '+pre+num(ahora,ahora<10?4:2),c:cambio((ahora/v0-1)*100,'%',2),n:'S',tip:'Apertura guardada a las '+R0.apertura.leido}};
+  const perM=window.HORAV?'en vivo '+window.HORAV:'lectura '+((P&&P.mercado&&P.mercado.leido)||'');
   const CA=(P&&P.mercado&&P.mercado.activos)||[],ac=s=>CA.find(a=>a.simbolo===s);
   const pr=a=>'$'+num(a.precio,a.precio<10?4:0),capi=a=>a.nombre+' ('+a.simbolo+'), capitalización '+usd(a.capitalizacion);
   /* un bloque: una cifra grande (lo que más importa) y filas pequeñas debajo; etiqueta corta arriba, nivel [P]/[S] y fecha al pasar el ratón */
   function cc(titulo,color,g,filas){
     const b=el('div','cc-b');b.style.borderTopColor=color;b.append(el('h3',null,titulo));
-    if(g){const gd=el('div','cc-g');gd.title=g.tip||'';gd.append(el('div','cc-e',g.e));gd.append(el('b','cifra',g.v));if(g.c)gd.append(g.c);if(g.n)gd.append(nivelBadge(g.n));b.append(gd)}
-    for(const f of filas){if(!f)continue;const r=el('div','cc-f');r.title=f.tip||'';const l=el('span','cc-l',f.e);if(f.n)l.append(' ',nivelBadge(f.n));r.append(l,el('b',null,f.v));if(f.c)r.append(f.c);b.append(r)}
+    if(g){const gd=el('div','cc-g');gd.title=g.tip||'';gd.append(el('div','cc-e',g.e));gd.append(el('b','cifra',miles(g.v)));if(g.p)gd.append(el('small','per','periodo: '+g.p));if(g.c)gd.append(g.c);if(g.n)gd.append(nivelBadge(g.n));b.append(gd)}
+    for(const f of filas){if(!f)continue;const r=el('div','cc-f');r.title=f.tip||'';const l=el('span','cc-l',f.e);if(f.n)l.append(' ',nivelBadge(f.n));if(f.p)l.append(el('small','per',' · '+f.p));r.append(l,el('b',null,miles(f.v)));if(f.c)r.append(f.c);b.append(r)}
     return b}
   const av=oz&&avisoViejo(oz.ultimo.fecha);
   const gc=el('div','cc-grid');
   gc.append(
-    cc('Cripto','#f5a623',ac('XRP')?{e:'XRP (lo que tienes)',v:pr(ac('XRP')),c:cambio(ac('XRP').cambio_24h,'% en 24 h',2),n:'S',tip:capi(ac('XRP'))}:null,[
+    cc('Cripto','#f5a623',ac('XRP')?{e:'XRP (lo que tienes)',v:pr(ac('XRP')),c:cambio(ac('XRP').cambio_24h,'% en 24 h',2),n:'S',p:perM,tip:capi(ac('XRP'))}:null,[
       ac('XRP')?desdeAp('cripto','XRP',ac('XRP').precio,'XRP','$'):null,
       ac('XLM')?{e:'Stellar (XLM)',v:pr(ac('XLM')),c:cambio(ac('XLM').cambio_24h,'% en 24 h',2),n:'S',tip:capi(ac('XLM'))}:null,
       ac('BTC')?{e:'Bitcoin',v:pr(ac('BTC')),c:cambio(ac('BTC').cambio_24h,'% en 24 h',2),n:'S',tip:capi(ac('BTC'))}:null,
@@ -546,23 +647,23 @@ function pResumen(){
       (()=>{const d=VIV&&VIV.stablecoins&&VIV.stablecoins.despegadas;return d&&d.length?{e:'Stablecoins despegadas del dólar',v:String(d.length),c:el('span','baja',d.slice(0,3).map(x=>x.simbolo).join(', ')),n:'S',tip:'Más de 20 M en circulación y más de 2 % lejos de 1 $'}:null})(),
       sc?{e:'…de ellas en el XRPL',v:usd(sc.xrpl.total),n:'S'}:null,
       sc?{e:'…de ellas en Stellar',v:usd(sc.stellar.total),n:'S'}:null]),
-    cc('Tipos y deuda','#4aa3e8',us?{e:'Bono de EE. UU. a 10 años',v:num(us.plazos['10A'],2)+' %',c:cambio((us.plazos['10A']-us.prev['10A'])*100,'puntos básicos',0),n:'P',tip:'Dato del '+us.fecha}:null,[
+    cc('Tipos y deuda','#4aa3e8',us?{e:'Bono de EE. UU. a 10 años',v:num(us.plazos['10A'],2)+' %',c:cambio((us.plazos['10A']-us.prev['10A'])*100,'puntos básicos',0),n:'P',p:us.fecha,tip:'Dato del '+us.fecha}:null,[
       VIV&&VIV.mercado&&VIV.mercado.us10y?{e:'Bono de EE. UU. a 10 años, en vivo',v:num(VIV.mercado.us10y.valor,2)+' %',c:cambio(VIV.mercado.us10y.cambio_1d,'puntos básicos',0),n:'S',tip:'Yahoo Finance (^TNX); el de arriba es el cierre oficial del Tesoro'}:null,
-      tic?{e:'Deuda de EE. UU. en manos extranjeras',v:'$'+num(tic.total[0],0)+' mil M',c:cambio((tic.total[0]/tic.total[12]-1)*100,'% en 12 meses',1),n:'P',tip:'Mes '+tic.meses[0]}:null]),
-    cc('Energía y materias primas','#e8c14a',br?{e:'Petróleo Brent (futuro)',v:'$'+num(br.valor,1),c:cambio(br.cambio_1d,'% en un día',2),n:'S',tip:'Dato del '+br.fecha}:null,[
+      tic?{e:'Deuda de EE. UU. en manos extranjeras',v:'$'+num(tic.total[0],0)+' mil M',c:cambio((tic.total[0]/tic.total[12]-1)*100,'% en 12 meses',1),n:'P',p:'mes '+tic.meses[0],tip:'Mes '+tic.meses[0]}:null]),
+    cc('Energía y materias primas','#e8c14a',br?{e:'Petróleo Brent (futuro)',v:'$'+num(br.valor,1),c:cambio(br.cambio_1d,'% en un día',2),n:'S',p:br.fecha,tip:'Dato del '+br.fecha}:null,[
       br?desdeAp('mercado','brent',br.valor,'Brent','$'):null,
-      ou?{e:'Electricidad en España',v:num(ou.media,0)+' €/MWh',c:oa?cambio((ou.media/oa.media-1)*100,'% frente a ayer',0):null,n:'P',tip:'OMIE, '+ou.fecha}:null,
-      fi?{e:'Precio de los alimentos (FAO)',v:num(fi.valor,1),c:cambio(fi.interanual,'% interanual',1),n:'P',tip:'Índice FAO, '+FA.mes}:null,
-      oz?{e:'Barcos por Ormuz (1 día)',v:String(oz.ultimo.total),c:av?el('span','baja','⚠ '+av.replace('⚠ ','')+', dato congelado'):null,n:'P',tip:'Media 7 días: '+num(oz.media_7d,1)+' · dato del '+oz.ultimo.fecha}:null]),
-    cc('Miedo y chips','#c084fc',vx?{e:'VIX (miedo en la bolsa)',v:num(vx.valor,1),c:cambio(vx.cambio_1d,'% en un día',1),n:'S',tip:'Dato del '+vx.fecha}:null,[
+      ou?{e:'Electricidad en España',v:num(ou.media,0)+' €/MWh',c:oa?cambio((ou.media/oa.media-1)*100,'% frente a ayer',0):null,n:'P',p:ou.fecha,tip:'OMIE, '+ou.fecha}:null,
+      fi?{e:'Precio de los alimentos (FAO)',v:num(fi.valor,1),c:cambio(fi.interanual,'% interanual',1),n:'P',p:FA.mes,tip:'Índice FAO, '+FA.mes}:null,
+      oz?{e:'Barcos por Ormuz (1 día)',v:String(oz.ultimo.total),c:av?el('span','baja','⚠ '+av.replace('⚠ ','')+', dato congelado'):null,n:'P',p:oz.ultimo.fecha,tip:'Media 7 días: '+num(oz.media_7d,1)+' · dato del '+oz.ultimo.fecha}:null]),
+    cc('Miedo y chips','#c084fc',vx?{e:'VIX (miedo en la bolsa)',v:num(vx.valor,1),c:cambio(vx.cambio_1d,'% en un día',1),n:'S',p:vx.fecha,tip:'Dato del '+vx.fecha}:null,[
       VIV&&VIV.miedo_cripto?{e:'Miedo y codicia cripto (0-100)',v:VIV.miedo_cripto.valor+' · '+({'Extreme Fear':'miedo extremo','Fear':'miedo','Neutral':'neutral','Greed':'codicia','Extreme Greed':'codicia extrema'}[VIV.miedo_cripto.clasificacion]||VIV.miedo_cripto.clasificacion),c:VIV.miedo_cripto.anterior!=null?el('span','igual','ayer '+VIV.miedo_cripto.anterior):null,n:'S',tip:'alternative.me, '+VIV.miedo_cripto.fecha}:null,
-      sx?{e:'Chips (fondo SOXX)',v:'$'+num(sx.valor,0),c:cambio(sx.cambio_1m,'% en un mes',1),n:'S',tip:'Dato del '+sx.fecha}:null]),
+      sx?{e:'Chips (fondo SOXX)',v:'$'+num(sx.valor,0),c:cambio(sx.cambio_1m,'% en un mes',1),n:'S',p:sx.fecha,tip:'Dato del '+sx.fecha}:null]),
     cc('España','#4fe3a1',mw?{e:'Defunciones en la última semana ('+mw.anio+'-S'+mw.semana+')',v:n0(mw.defunciones),c:inv(cambio(mw.exceso_vs_5_anios,'frente a la media de 5 años',0)),n:'P',tip:'INE, '+mw.tipo_dato}:null,[
       bd?{e:'Subvenciones nuevas publicadas ('+bd.fecha.slice(5)+')',v:n0(bd.total),n:'P',tip:'Convocatorias en la BDNS'}:null,
       rc?{e:'Muertos en carretera por millón ('+rc.anio+')',v:n0(rc.por_millon_hab),n:'P',tip:'Eurostat'}:null,
       ho?{e:'Homicidios dolosos ('+ho.anio+')',v:n0(ho.registrados),n:'P',tip:'Eurostat, registrados por la policía'}:null]));
   c1.append(gc,el('p','nota-v','Una cifra grande por tema y las demás debajo. Pasa el ratón por una cifra para ver fecha y detalle. [P] fuente oficial · [S] prensa o agregador. Capitalizaciones y más series: pestaña Paneles de datos.'));
-  s.append(c1);
+  s.append(cambiaHoy(),misActivos(),c1);
   /* mayores movimientos del día: bolsas, materias primas, cripto y chips con variación de 2 % o más */
   if(P){const mv=[];
     for(const x of ((P.indices||{}).indices||[]))mv.push({n:x.nombre,v:x.cambio_1d,f:x.fecha,u:'bolsa [S]'});
@@ -684,13 +785,13 @@ function pCapas(){
   if(!P)cDatos.append(el('p','nota-v','Falta paneles.json.'));
   else if(!pan.length)cDatos.append(el('p','nota-v',sub?'Esta parte no tiene paneles automáticos propios; los de la capa están en «Todas».':'Esta capa no tiene paneles automáticos; se basa en los hechos y documentos de abajo.'));
   else{const mz=masonry();cDatos.append(mz);
-    for(const p of pan){const b=bloque(p.tit,null,p.pie,p.fn());if(p.ancho)b.classList.add('ancho');mz.append(b)}}
+    for(const p of pan){const b=bloque(p.tit,null,p.pie,p.fn());if(p.ancho)b.classList.add('ancho');semBloque(b);mz.append(b)}}
   if(pan.length||sub)s.append(cDatos);
 
   /* (c) hechos por estado */
   const colsH=[],sinH=[];
   for(const [k,tit,ek] of est){const todos=[];for(const c of cs)for(const h of c[k]||[])todos.push({h,c});
-    const lst=todos.filter(x=>certOk(x.h.k||'P'));
+    const lst=todos.filter(x=>certOk(x.h.k||(x.h.nota?'S':'P')));
     if(!lst.length){sinH.push(todos.length?tit+' (0 con este filtro de certeza; '+todos.length+' sin filtrar)':tit);continue}
     colsH.push([tit,ek,lst])}
   if(colsH.length){
@@ -701,7 +802,7 @@ function pCapas(){
       col.append(el('h3',null,tit+' ('+lst.length+')'));
       const cont=el('div',colsH.length===1?'lista':'');
       for(const {h,c} of lst){const d=el('div','hecho');d.style.borderLeftColor=colr;
-        d.append(el('span','badge '+bcl(h.k),h.k||'?'),document.createTextNode(h.t));
+        d.append(el('span','badge '+bcl(h.k),h.k||'?'),document.createTextNode(h.t));if(h.nota)d.append(el('div','nota-v','Origen de la etiqueta: '+h.nota));
         const m=el('div');if(varias&&!sub)m.append(chipCapa(c.id));m.append(chips((h.ent||[]).concat(h.act||[],h.pais||[])));d.append(m);cont.append(d)}
       col.append(cont);grid.append(col)}
     cH.append(grid);
@@ -1402,9 +1503,12 @@ function pVoces(){
     const h=el('div');const bn=el('span','badge',V.niveles[v.nivel][0]),cn=V.niveles[v.nivel][1];bn.style.color=cn;bn.style.borderColor=cn;bn.style.background=cn+'24';const cf=V.confirmaciones[v.conf],bc=el('span','badge',cf?cf[0]:v.conf);if(cf){bc.style.color=cf[1];bc.style.borderColor=cf[1];bc.style.background=cf[1]+'24'}it.style.borderLeft='4px solid '+cn;h.append(bn,bc,el('b',null,v.quien+' · '+v.cuando));
     it.append(h,el('div',null,v.texto));
     const m=el('small');
-    const partes=[];if(v.plazo&&v.plazo.prometido)partes.push('Plazo: '+v.plazo.prometido+' ('+v.plazo.estado+') '+(v.plazo.resultado||''));if(v.usos&&v.usos.length)partes.push('Usos: '+v.usos.join(', '));if(v.redes&&v.redes.length)partes.push('Redes: '+v.redes.join(', '));
+    const partes=[];if(v.usos&&v.usos.length)partes.push('Usos: '+v.usos.join(', '));if(v.redes&&v.redes.length)partes.push('Redes: '+v.redes.join(', '));
     const hv=hiloVoz(v.id);if(hv.length)partes.push('Hilo: '+hv.map(h=>h.tema).join(', '));
-    m.textContent=partes.join(' · ');it.append(m);
+    m.textContent=partes.join(' · ');
+    /* C164 · el plazo se medía a 12,5 px (frente a 15 px del texto): ahora va aparte, a tamaño legible y marcado como intención [ESPECULACIÓN] */
+    if(v.plazo&&v.plazo.prometido){const pz=el('div','plazo-v');pz.append(el('span','badge V','ESP'),document.createTextNode('Plazo anunciado (intención, no hecho): '+v.plazo.prometido+' ('+v.plazo.estado+') '+(v.plazo.resultado||'')));it.append(pz)}
+    it.append(m);
     if(v.fuente&&v.fuente.url){const a=el('a',null,' · '+(v.fuente.n||'fuente'));a.href=v.fuente.url;a.target='_blank';it.append(a)}
     ls.append(it)}
   c.append(ls);s.append(c);
@@ -1416,7 +1520,7 @@ function pPaneles(){
   const c=el('div','caja');c.append(el('h2',null,'Paneles de datos: cada bloque dice qué mide, en qué unidad, de dónde sale y cuándo se leyó'));
   const pie=(b,t)=>{b=b||{};return {nivel:b.nivel,t:t+' · leído '+(b.leido||(P&&P.leido))}};   // un bloque ausente de paneles.json no debe tumbar toda la pestaña
   const mz=masonry();
-  const add=b=>{if(/^(Bonos|Cartera|Seguimiento|Valoraci|Bancos europeos|Reservas|Deuda p|Calificaciones|Gasto)/.test(b.firstChild.textContent))b.classList.add('ancho');mz.append(b)};
+  const add=b=>{if(/^(Bonos|Cartera|Seguimiento|Valoraci|Bancos europeos|Reservas|Deuda p|Calificaciones|Gasto)/.test(b.firstChild.textContent))b.classList.add('ancho');semBloque(b);mz.append(b)};
   if(P){
     add(bloque('Bonos del Estado: rendimiento a cada plazo','Es el % anual que paga cada bono según su vencimiento (3 meses, 1 año, 10 años…). Si el rendimiento sube, el precio del bono baja. En pequeño, el cambio frente al día anterior en puntos básicos (100 pb = 1 punto). Las curvas no se calculan igual en cada país.',{nivel:'P',t:'Tesoro de EE. UU., Banco de Japón, BCE, Tesoro de España, AFT de Francia · leído '+P.bonos.leido},nBonos()));
     add(bloque('Tipos oficiales de los bancos centrales','El tipo con el que cada banco central presta al sistema: lo que más mueve el coste del dinero. «pb» = puntos básicos (25 pb = 0,25 puntos).',pie(P.tipos_vivos,'Bancos centrales'),nTipos()));
@@ -1451,7 +1555,7 @@ function pPaneles(){
   if(RES)add(bloque('Reservas de divisas, oro y balances de bancos centrales',null,{nivel:'P',t:'FMI, World Gold Council, bancos centrales · leído '+RES.leido},nReservas(),false));
   if(VAL)add(bloque('Valoración de 18 valores (PER, EV/EBITDA, caja libre)',VAL.aviso,{t:'Cálculo propio con datos de las empresas · '+VAL.generado.slice(0,10)},nVal(),false));
   if(BAN)add(bloque('Bancos europeos: deuda soberana en su balance (EBA)','Lo que cada banco tiene en bonos de Estados; el capital CET1 es su colchón de máxima calidad. Los 15 mayores de '+BAN.bancos.length+'.',{nivel:BAN.nivel,t:'EBA, corte '+BAN.periodo},nEbaTop(15),false));
-  c.append(mz);s.append(c);
+  const lf=lineaFallos();if(lf)c.append(el('p','nota-v',lf));c.append(mz);s.append(c);
 }
 /* ---------- España: ingresos, gasto por ministerio y quién recibe (C65 y C66). Solo cifras publicadas; lo que no existe se dice ---------- */
 function pEspana(){

@@ -196,6 +196,12 @@ header .acc{display:flex;gap:8px}
 .ctl-pie{font-size:12.5px;color:var(--sub);margin-top:3px}.ctl-pie.ctl-viejo{color:var(--ambar)}
 .ctl-mas{font-size:13.5px}.ctl-mas>div{margin-top:3px}.ctl-mas a{color:var(--azul);overflow-wrap:anywhere}
 .ctl-nota{font-size:12.5px;color:var(--sub);margin:6px 0 2px;line-height:1.4}
+.nivel{display:inline-block;min-width:18px;text-align:center;padding:0 5px;border-radius:6px;font-size:12px;font-weight:800;margin-right:3px;border:1.5px solid transparent}
+.nivel.P{background:color-mix(in srgb,var(--sube) 18%,transparent);color:var(--sube)}.nivel.D{background:color-mix(in srgb,var(--azul) 18%,transparent);color:var(--azul)}
+.nivel.S{background:transparent;color:var(--ambar);border:1.5px dashed var(--ambar)}
+.ctl-card,.card[id^=dt]{scroll-margin-top:12px}
+.fr-fila{display:flex;align-items:center;gap:9px;padding:5px 0;font-size:14px}.fr-fila .semaf{width:11px;height:11px}.fr-fila small{margin-left:auto;color:var(--sub)}
+.act{border-left:4px solid var(--azul)}
 </style>
 </head>
 <body>
@@ -305,6 +311,9 @@ const GMC = {'xrp-xlm': 'XRP/XLM', 'macro-tipos': 'Macro', 'cripto-regulacion': 
 window.gmTexto = id => { const q = ((window.__GM || {}).temas || []).find(x => x.id === id); if (!q) return ''; const d = new Date(); return q.texto.split('<FECHA>').join(d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0')); };
 window.gmTemaHtml = id => { window.__gt = id; const q = ((window.__GM || {}).temas || []).find(x => x.id === id); if (!q) return ''; return `<div class="meta2" style="margin:8px 0 6px"><b>${esc(q.nombre)}</b> · ${q.estado === 'mejorar' ? '🔧 mejorar' : q.estado === 'bueno' ? '✓ bueno' : '· sin probar'}${q.nota ? ' · ' + esc(q.nota) : ''}</div><div style="text-align:right;margin-bottom:8px"><span class="bd ya" style="cursor:pointer" onclick="event.stopPropagation();copiarPrompt(this)">Copiar</span></div><pre style="white-space:pre-wrap;word-break:break-word;font:13px/1.4 ui-monospace,Consolas,monospace;margin:0;max-height:280px;overflow:auto;color:#c6cfe6">${esc(window.gmTexto(id))}</pre>`; };
 window.copiarPrompt = el => { const t = window.gmTexto(window.__gt); const ok = () => { el.textContent = '✓ Copiado'; setTimeout(() => el.textContent = 'Copiar', 1800); }; try { navigator.clipboard.writeText(t).then(ok, () => { window.prompt('Copia el prompt:', t); }); } catch (e) { window.prompt('Copia el prompt:', t); } };
+const LEYENDA = '<span class="nivel P">P</span> fuente oficial · <span class="nivel D">D</span> declaración localizada · <span class="nivel S">S</span> solo medios o agregador, sin primaria (borde discontinuo)';
+const irAncla = id => { const n = document.getElementById(id); if (n) n.scrollIntoView({behavior: 'smooth', block: 'start'}); };
+const chipsAncla = L => `<div class="chips" style="margin-bottom:10px">${L.map(([id, n]) => `<div class="chip" onclick="irAncla('${id}')">${n}</div>`).join('')}</div>`;
 const cab = (t, a) => `<div class="titulo-sec"><span>${t}</span>${a ? `<a data-ir="${a[1]}">${a[0]} ›</a>` : ''}</div>`;
 const IMP = {alto: 'Impacto alto', medio: 'Impacto medio', bajo: 'Impacto bajo'};
 const fila = (e, i) => { const d = new Date(e.fecha + 'T12:00:00'), n = dias(e.fecha), h = e.hasta ? new Date(e.hasta + 'T12:00:00') : null;
@@ -336,7 +345,12 @@ function vHoy(){
   const resumen = `<div class="resumen">${rsA('XRP')}${rsA('XLM')}${br ? rs('Brent', '$' + fm(br.valor, 1), fl(br.cambio_1d) + signo(br.cambio_1d) + ' 1 d', br.cambio_1d) : ''}${rsT('eeuu', 'Fed')}${rsT('ue', 'BCE')}${rsI('es', 'España')}${rsI('ea', 'euro')}${rsI('us', 'EE. UU.')}${mk('BTC') ? rsA('BTC') : ''}</div><div class="rsp">Cripto y Brent al día · «a dd/mm» = fecha del dato del tipo oficial · IPC: mes publicado y valor anterior. Toca para ver todo en Mercado.</div>`;
   const om = D.ormuz && D.ormuz.ultimo, nOrm = om ? Math.round((Date.now() - new Date(om.fecha + 'T00:00:00Z')) / 864e5) : 0;
   const bannerOrm = om && nOrm > 3 ? `<div class="aviso" style="margin:0 0 10px;border-left:3px solid var(--ambar);padding-left:10px" data-ir="mercado"><b style="color:var(--ambar)">⚠ Ormuz: último dato publicado ${esc(om.fecha)} (hace ${nOrm} días).</b> PortWatch (FMI) no ha publicado más; no es un dato de «cero barcos», es un dato que falta. Mira las noticias y la AIE antes de sacar conclusiones.</div>` : '';
-  return `<div class="vista">${resumen}${bannerOrm}
+  const A = D.activos || {}, ahoraA = a => a ? `${a.simbolo} ${precioA(a)} (${signo(a.cambio_24h)} 24 h)` : '';
+  const actReg = (A.reg || []).map(x => `<div class="meta2" style="margin:6px 0"><span class="nivel ${esc(x.n || 'S')}">${esc(x.n || 'S')}</span><b>${esc(x.e)}</b> · ${esc(x.f || '')}<br>${esc(x.txt)}${x.u && /^https:\/\//.test(x.u) ? ` <a class="enlace" target="_blank" rel="noopener" href="${esc(x.u)}">Fuente ›</a>` : ''}</div>`).join('');
+  const actRed = A.red ? `<div class="meta2" style="margin:6px 0"><span class="nivel P">P</span><b>Red</b> · ${esc(JSON.stringify(A.red).slice(0, 220))}</div>` : `<div class="meta2" style="margin:6px 0"><span class="nivel S">S</span><b>Red</b> · sin lectura de red guardada en el repo (la hace eventos/onchain.py y no guarda el estado aquí) [VERIFICAR]</div>`;
+  const actCamb = [mk('XRP'), mk('XLM')].filter(Boolean).map(a => `${a.simbolo} ${signo(a.cambio_24h)} en 24 h`).concat(A.cambios || []);
+  const misActivos = (mk('XRP') || mk('XLM')) ? `${cab('Mis activos: XRP y XLM')}<div class="card act" style="--i:1;padding:12px 14px" data-abre><div class="lr"><div class="n">${ahoraA(mk('XRP'))}</div></div><div class="lr"><div class="n">${ahoraA(mk('XLM'))}</div></div><div class="meta2" style="margin:6px 0"><b>Qué cambió desde ayer:</b> ${esc(actCamb.join(' · ') || 'sin cambios registrados')}</div><div class="mas">${actRed}${actReg}<div class="meta2">Precio: CoinGecko <span class="nivel S">S</span>. Solo hechos con fuente; no es una recomendación y aquí no va ninguna tesis personal. ${LEYENDA}.</div></div></div>` : '';
+  return `<div class="vista">${resumen}${bannerOrm}${misActivos}
   <div class="card hero" style="--i:0;border-left-color:${grande.impacto === 'alto' ? 'var(--baja)' : 'var(--ambar)'}"><div style="flex:none;text-align:center;min-width:64px"><b style="display:block;font-size:42px;line-height:1;letter-spacing:-.03em">${dd}</b><span style="font-size:13px;color:var(--sub)">${dd === 1 ? 'día' : 'días'}</span></div><div style="flex:1;min-width:0"><small>Lo más importante ahora</small><h2>${esc(grande.titulo)}</h2><p>${esc((grande.detalle || '').split('. ')[0]).slice(0, 110)}</p></div></div>
   ${S ? `<div class="kpis"><div class="kpi"><b>${h.racha}</b><span>días de racha</span></div><div class="kpi"><b>${pct}%</b><span>plan hecho</span></div><div class="kpi"><b class="${urg ? 'baja' : 'sube'}">${urg}</b><span>verif. urgentes</span></div></div>
   <div class="lista"><div class="lr" data-ir2="cerebro:seg" style="cursor:pointer"><div class="n">R00 apertura</div><span class="bd ${h.apertura ? 'ok' : 'ya'}">${h.apertura ? '✓ hecha' : '⏳ pendiente'}</span></div><div class="lr" data-ir2="cerebro:seg" style="cursor:pointer"><div class="n">R00 cierre</div><span class="bd ${h.cierre ? 'ok' : 'ya'}">${h.cierre ? '✓ hecha' : '⏳ pendiente'}</span></div></div>` : ''}
@@ -410,7 +424,7 @@ function gastoHTML(){   // panel «Gasto del bot»: cifras de noticias.json (ram
 const usdSi = v => '$' + fm(v, 2);
 let NIV = {};
 const COL = {P: '#4fe3a1', D: '#6ea8ff', S: '#ffb15c', C: '#ff9ad5', R: '#c4a6ff', E: '#9aa7c2'};
-const vozHTML = (v, i) => `<div class="voz card" style="--i:${i};padding:14px;margin-bottom:12px" data-abre><div class="avatar" style="background:${COL[v.nivel] || '#9aa7c2'}">${esc(v.quien.trim()[0])}</div><div style="flex:1"><h4>${esc(v.quien)}</h4><div class="meta" style="font-size:13px;color:var(--sub)"><span class="etq">Nivel ${esc(v.nivel)}</span><span class="etq">${esc(v.conf)}</span>${esc(v.cuando)}</div><p>${esc(v.texto)}</p><div class="mas">${NIV[v.nivel] ? `<div class="meta2"><b>Nivel ${esc(v.nivel)}:</b> ${esc(NIV[v.nivel][0])}. ${esc(NIV[v.nivel][2])}</div>` : ''}${v.plazo ? `<div class="meta2"><b>Plazo prometido:</b> ${esc(v.plazo.prometido)} · ${esc(v.plazo.estado)}${v.plazo.resultado ? ' · ' + esc(v.plazo.resultado) : ''}</div>` : ''}${v.video ? `<div class="meta2"><b>Visto en:</b> ${esc(v.video.canal)}, ${esc(v.video.fecha)}${v.video.min ? ' (min ' + esc(v.video.min) + ')' : ''}</div>` : ''}${v.nota ? `<div class="meta2">${esc(v.nota).slice(0, 320)}</div>` : ''}${v.fuente && v.fuente.url ? `<a class="enlace" target="_blank" rel="noopener" href="${esc(v.fuente.url)}">Fuente: ${esc((v.fuente.n || 'abrir').slice(0, 40))} ›</a>` : ''}</div></div></div>`;
+const vozHTML = (v, i) => `<div class="voz card" style="--i:${i};padding:14px;margin-bottom:12px" data-abre><div class="avatar" style="background:${COL[v.nivel] || '#9aa7c2'}">${esc(v.quien.trim()[0])}</div><div style="flex:1"><h4>${esc(v.quien)}</h4><div class="meta" style="font-size:13px;color:var(--sub)"><span class="nivel ${esc(v.nivel)}">${esc(v.nivel)}</span><span class="etq">Nivel ${esc(v.nivel)}</span><span class="etq">${esc(v.conf)}</span>${v.contra ? '<span class="etq">Contrapeso</span>' : ''}${esc(v.cuando)}</div><p>${esc(v.texto)}</p><div class="mas">${NIV[v.nivel] ? `<div class="meta2"><b>Nivel ${esc(v.nivel)}:</b> ${esc(NIV[v.nivel][0])}. ${esc(NIV[v.nivel][2])}</div>` : ''}${v.plazo ? `<div class="meta2"><b>Plazo prometido [ESPECULACIÓN]:</b> ${esc(v.plazo.prometido)} · intención declarada, no hecho · ${esc(v.plazo.estado)}${v.plazo.resultado ? ' · ' + esc(v.plazo.resultado) : ''}</div>` : ''}${v.video ? `<div class="meta2"><b>Visto en:</b> ${esc(v.video.canal)}, ${esc(v.video.fecha)}${v.video.min ? ' (min ' + esc(v.video.min) + ')' : ''}</div>` : ''}${v.nota ? `<div class="meta2">${esc(v.nota).slice(0, 320)}</div>` : ''}${v.fuente && v.fuente.url ? `<a class="enlace" target="_blank" rel="noopener" href="${esc(v.fuente.url)}">Fuente: ${esc((v.fuente.n || 'abrir').slice(0, 40))} ›</a>` : ''}</div></div></div>`;
 const mdHTML = (x, i) => `<div class="item-md card" style="--i:${i};padding:13px 14px;margin-bottom:10px;display:flex;flex-wrap:wrap;gap:6px" data-abre><div style="flex:1;min-width:0"><small>${esc(x.fecha)}${x.tipo === 'informe' ? ' · 📄 Informe (no es análisis)' : ''}</small><div style="margin-top:3px;font-weight:600">${esc(x.titulo)}</div></div><span class="flecha">⌄</span><div class="mas" style="flex-basis:100%">${esc(x.resumen) || 'Sin resumen.'}<br><a class="enlace" target="_blank" rel="noopener" href="https://github.com/joeldragonball-jpg/requirements.txt/blob/main/${esc(x.ruta)}">Abrir el informe completo ›</a></div></div>`;
 const DIAS_W = [['W01'], ['W02'], ['W03'], ['W05'], ['W06', 'W09'], ['W10'], []];   // lunes = 0 (igual que scripts/construir_seguimiento.py)
 function semanaISO(d){ const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())); const n = t.getUTCDay() || 7; t.setUTCDate(t.getUTCDate() + 4 - n);
@@ -480,7 +494,7 @@ function vSeg(){
   return hero + g5 + frescuraN + verHtml + epHtml + `<details class="plegado"><summary>Más detalle: plan completo, rutinas, plazos, predicciones, bots e informes</summary>${resto}</details>`;   // la hora de la última lectura va en el botón «↻» de «Todo el plan»
 }
 function vCerebro(){
-  const cuerpo = segCer === 'seg' ? vSeg() : segCer === 'voces' ? D.voces.map(vozHTML).join('') : segCer === 'videos' ? D.videos.map(mdHTML).join('') : [...D.informes, ...D.investigacion].map(mdHTML).join('');
+  const cuerpo = segCer === 'seg' ? vSeg() : segCer === 'voces' ? `<div class="pie" style="margin:0 0 10px;text-align:left">${LEYENDA}. Máximo 3 voces por entidad; las críticas o de reguladores llevan «Contrapeso». Plazos prometidos = [ESPECULACIÓN].</div>` + D.voces.map(vozHTML).join('') : segCer === 'videos' ? D.videos.map(mdHTML).join('') : [...D.informes, ...D.investigacion].map(mdHTML).join('');
   return `<div class="vista"><div class="buscador" id="abrebus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9aa7c2" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span style="color:var(--sub);padding:14px 0">Buscar en todo el Cerebro…</span></div>
   <div class="seg">${[['seg','Seguimiento'],['voces','Voces'],['videos','Vídeos'],['informes','Informes']].map(([k, n]) => `<button class="${segCer === k ? 'on' : ''}" data-sc="${k}">${n}</button>`).join('')}</div>${cuerpo}<div class="pie">Voces: nivel P = fuente primaria · D = declaración localizada · S = prensa</div></div>`;
 }
@@ -508,8 +522,9 @@ function vCentro(){
 function vDatos() {
   const X = D.datos || {}, mM = v => v == null ? '—' : v >= 1e12 ? fm(v / 1e12, 2) + ' B$' : v >= 1e9 ? fm(v / 1e9, 1) + ' mil M$' : fm(v / 1e6, 0) + ' M$';
   const bf = (nom, num, max, txt) => `<div class="barra-fila"><span class="nom">${esc(nom)}</span><div class="barra"><i data-w="${Math.max(3, Math.min(100, num / max * 100))}%"></i></div><span class="val">${txt}</span></div>`;
-  const tj = (tit, sub, cuerpo, i) => `<div class="card" style="--i:${i};padding:13px 14px;display:flex;flex-wrap:wrap;gap:6px" data-abre><div style="flex:1;min-width:0"><div class="titulo-sec" style="margin:0"><span>${tit}</span></div><small>${sub}</small></div><span class="flecha">⌄</span><div class="mas" style="flex-basis:100%;min-width:0;max-width:100%">${cuerpo}</div></div>`;
+  const tj = (tit, sub, cuerpo, i) => (tits.push(tit), `<div class="card" id="dt${tits.length}" style="--i:${i};padding:13px 14px;display:flex;flex-wrap:wrap;gap:6px" data-abre><div style="flex:1;min-width:0"><div class="titulo-sec" style="margin:0"><span>${tit}</span></div><small>${sub}</small></div><span class="flecha">⌄</span><div class="mas" style="flex-basis:100%;min-width:0;max-width:100%">${cuerpo}</div></div>`);
   const niv = n => n ? `<span class="nivel ${esc(n)}">${esc(n)}</span> ` : '';
+  const tits = [];
   const out = [];
   if (X.deuda) { const L = X.deuda.paises.slice().sort((a, b) => b.d - a.d), mx = Math.max(...L.map(x => x.d));
     out.push(tj('Deuda pública', 'deuda y déficit 2026, % del PIB', `<div class="meta2" style="margin:8px 0">${niv(X.deuda.nivel)}${esc(X.deuda.fuente)} · ${esc(X.deuda.edicion || '')}</div>${L.map(x => bf(x.n, x.d, mx, fm(x.d, 0) + ' %')).join('')}
@@ -555,8 +570,8 @@ function vDatos() {
       out.push(tj('España: cargos políticos', `suma publicada del Estado: ${fm(s.total, 1)} M€ · ${fm(s.por_habitante, 2)} € por habitante`, `<div class="meta2" style="margin:8px 0">${esc(s.texto)}</div>${s.partes.map(x => fi(esc(x.nombre), me(x.valor))).join('')}<div class="meta2" style="margin:8px 0">${fm(s.pct_gasto_aapp_2025, 3)} % del gasto de las AAPP · ${fm(s.pct_pib_2025, 3)} % del PIB. No incluye: ${s.incluye_no.map(esc).join('; ')}.</div>${tit('Número') + lista(c.num) + tit('Retribuciones') + lista(c.ret) + tit('Partidos') + lista(c.par)}`, 1)); }
     out.push(tj('España: ingresos y gasto', `todas las administraciones · Eurostat · leído ${esc(e.leido_eurostat || '')}`, `${e.fiscal.map(x => fi(esc(x.n), fm(x.v / 1000, 1) + ' mil M€', esc(x.a) + (x.pib != null ? ' · ' + fm(x.pib, 1) + ' % del PIB' : '') + ' · <span class="' + cls(x.v - x.v0) + '">' + signo((x.v - x.v0) / Math.abs(x.v0) * 100) + '</span> frente al año anterior')).join('')}<div class="aviso" style="margin-top:8px;color:var(--sub)">${esc(e.lecturas.ingresos || '')}</div>`, 1)); }
   return `<div class="vista"><div class="card hero" style="--i:0"><div style="flex:1"><small>Panel de datos</small><h2>Cifras que mueven el mercado</h2><p>Deuda, calificaciones, reservas, stablecoins y España. Política, regulación e inflación están en Agenda y Mercado. Toca una tarjeta para abrirla.</p></div></div>
-  ${out.join('') || '<div class="card">Sin datos todavía (explorador/paneles.json).</div>'}
-  <div class="pie">Cifras publicadas por sus fuentes; nada de aquí es una recomendación. [P] oficial · [S] secundaria.</div></div>`;
+  ${tits.length > 1 ? chipsAncla(tits.map((n, k) => ['dt' + (k + 1), esc(n)])) : ''}${out.join('') || '<div class="card">Sin datos todavía (explorador/paneles.json).</div>'}
+  <div class="pie">Cifras publicadas por sus fuentes; nada de aquí es una recomendación. ${LEYENDA}.</div></div>`;
 }
 function montarControl(){   // C132: bloque «Control» arriba de Mercado. Todo con createElement + textContent: ningún dato de fuera se interpreta como HTML (C90)
   const raiz = document.getElementById('control'); if (!raiz || !D) return;
@@ -568,7 +583,7 @@ function montarControl(){   // C132: bloque «Control» arriba de Mercado. Todo 
   const cripto = (D.mercado || []).map(a => ({e: a.nombre + (['XRP', 'XLM'].includes(a.simbolo) ? '' : ' · referencia'), v: a.precio_eur != null ? a.precio_eur : a.precio, u: a.precio_eur != null ? '€' : '$',
     d: (a.precio_eur != null ? a.precio_eur : a.precio) < 10 ? 4 : 0, c: a.cambio_24h, per: '24 h', f: a.precio_eur != null ? 'en vivo' : (D.leido || '').slice(0, 10), n: 'S', fu: 'CoinGecko', url: 'https://www.coingecko.com/', col: 'precio', fr: 'diario'}));
   const grupos = [{t: 'Mis cripto', filas: cripto, nota: 'En euros y en vivo al abrir la app (si CoinGecko responde); si no, el último dato en dólares.'}].concat(C.grupos || []).filter(g => (g.filas || []).length);
-  const filaDOM = r => {
+  const filaDOM = (r, uni) => {
     const w = el('div', 'ctl-fila'); w.setAttribute('data-abre', '');
     w.append(el('div', 'ctl-etq', r.e + (r.u ? ' · ' + r.u : '')));
     const lin = el('div', 'ctl-linea'); lin.append(el('div', 'ctl-num', r.t != null ? r.t : fm(r.v, r.d != null ? r.d : 2)));
@@ -577,7 +592,8 @@ function montarControl(){   // C132: bloque «Control» arriba de Mercado. Todo 
       lin.append(el('div', 'ctl-var ' + (r.col === 'precio' && !cero ? (ch > 0 ? 'sube' : 'baja') : 'neutro'), (cero ? '= ' : ch > 0 ? '▲ ' : '▼ ') + fm(Math.abs(ch), r.c != null ? (Math.abs(ch) >= 10 ? 1 : 2) : 2) + (r.c != null ? ' %' : ' p.p.'))); }
     w.append(lin);
     const v = viejo(r), cuando = r.f === 'en vivo' ? 'en vivo' : r.fr === 'mensual' ? 'dato de ' + fecha(r.f) : (v ? 'dato del ' : 'sesión ') + fecha(r.f);
-    w.append(el('div', 'ctl-pie' + (v ? ' ctl-viejo' : ''), [cuando, ch != null ? r.per : '', '[' + (r.n || '?') + '] ' + (r.fu || '')].filter(Boolean).join(' · ')));
+    const pie = el('div', 'ctl-pie' + (v ? ' ctl-viejo' : ''), [cuando, ch != null ? r.per : ''].filter(Boolean).join(' · ') + ' · ');
+    pie.append(el('span', 'nivel ' + (r.n || 'S'), r.n || '?')); if (!uni) pie.append(document.createTextNode(' ' + (r.fu || ''))); w.append(pie);
     const mas = el('div', 'mas ctl-mas'); (r.x || []).forEach(t => mas.append(el('div', null, t)));
     const fu = el('div', null, 'Fuente: ');
     if (r.url && /^https:\/\//.test(r.url)) { const a = el('a', null, r.fu || r.url); a.href = r.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; fu.append(a); } else fu.append(document.createTextNode(r.fu || '—'));
@@ -593,14 +609,26 @@ function montarControl(){   // C132: bloque «Control» arriba de Mercado. Todo 
     mayor ? 'Lo que más se mueve: ' + mayor.e.split(' · ')[0] + ' ' + (mayor.c > 0 ? '▲ ' : '▼ ') + fm(Math.abs(mayor.c), 1) + ' %' : '',
     nViejo ? nViejo + (nViejo === 1 ? ' dato tiene' : ' datos tienen') + ' 3 días hábiles o más (fecha en ámbar)' : 'Todos los datos diarios están al día'].filter(Boolean).join(' · ')));
   res.append(caja); raiz.append(res);
+  const FJ = D.frescura_json || [];   // C154: semáforo común verde ≤7 d, ámbar ≤14, rojo >14
+  if (FJ.length) {
+    const ed = f => Math.max(0, Math.floor((ahora - new Date(f + 'T12:00:00')) / 864e5)), niv3 = d => d <= 7 ? 'ok' : d <= 14 ? 'ya' : 'mal';
+    const L = FJ.map(x => ({...x, d: ed(x.f)})).sort((a, b) => b.d - a.d), nv = L.filter(x => niv3(x.d) === 'ok').length;
+    const cf = el('div', 'card ctl-card'); cf.style.setProperty('--i', 1); const tf = el('div', 'titulo-sec ctl-tit'); tf.append(el('span', null, 'Frescura de los datos')); cf.append(tf);
+    L.filter(x => niv3(x.d) !== 'ok').forEach(x => { const fl = el('div', 'fr-fila'); fl.append(el('span', 'semaf ' + niv3(x.d)), el('span', null, x.n), el('small', null, 'hace ' + x.d + ' d · ' + fecha(x.f))); cf.append(fl); });
+    cf.append(el('div', 'ctl-nota', nv + ' de ' + L.length + ' en verde (hasta 7 días): ' + L.filter(x => niv3(x.d) === 'ok').map(x => x.n).join(', ') + '. Ámbar hasta 14 días; rojo, más.'));
+    raiz.append(cf);
+  }
+  if (grupos.length > 2) { const ch = el('div', 'chips'); ch.style.marginBottom = '10px'; grupos.forEach((g, i) => { const c = el('div', 'chip', g.t); c.addEventListener('click', () => irAncla('cg' + i)); ch.append(c); }); raiz.append(ch); }
   grupos.forEach((g, i) => {
-    const c = el('div', 'card ctl-card'); c.style.setProperty('--i', i + 1);
+    const c = el('div', 'card ctl-card'); c.id = 'cg' + i; c.style.setProperty('--i', i + 1);
     const tt = el('div', 'titulo-sec ctl-tit'); tt.append(el('span', null, g.t)); c.append(tt);
-    g.filas.forEach(r => c.append(filaDOM(r)));
+    const uni = g.filas.length > 2 && g.filas.every(r => r.fu && r.fu === g.filas[0].fu);   // C156: fuente una sola vez por grupo
+    g.filas.forEach(r => c.append(filaDOM(r, uni)));
+    if (uni) c.append(el('div', 'ctl-nota', 'Fuente de todo el grupo: ' + g.filas[0].fu));
     if (g.nota) c.append(el('div', 'ctl-nota', g.nota));
     raiz.append(c);
   });
-  raiz.append(el('div', 'pie', 'Toca una cifra para ver la fuente y más detalle. Verde y rojo solo donde subir o bajar es claro (bolsas, ETFs, cripto); el resto, en gris. [P] fuente oficial · [S] agregador. Nada de esto es una recomendación.'));
+  raiz.append(el('div', 'pie', 'Toca una cifra para ver la fuente y más detalle. Verde y rojo solo donde subir o bajar es claro (bolsas, ETFs, cripto); el resto, en gris. Nada de esto es una recomendación.')); const pl = raiz.lastChild; if (pl) { pl.append(document.createElement('br')); const sp = document.createElement('span'); sp.innerHTML = LEYENDA; pl.append(sp); }   // leyenda fija del código, sin datos de fuera
 }
 const VISTAS = {mas: vMas, hoy: vHoy, centro: vCentro, datos: vDatos, mercado: vMercado, agenda: vAgenda, noticias: vNoticias, cerebro: vCerebro};
 function pintar(ancla, quieto){

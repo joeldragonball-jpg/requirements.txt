@@ -2,6 +2,7 @@
 Calendario, Matriz, Noticias, Voces, Países, España y Paneles) como página suelta, sin Streamlit, sin IA y sin claves.
 Usa el mismo código que la pestaña «Cerebro» del PC (explorador.py) pero en modo público: NO incluye nada de privado/
 (ni el contraste ni el cruce con la tesis). Uso: python scripts/construir_orbita.py"""
+import json
 import sys
 import types
 from pathlib import Path
@@ -28,7 +29,24 @@ CABECERA = ('<meta name="theme-color" content="#050816"><meta name="mobile-web-a
             '<style>html,body{background:#050816;margin:0;min-height:100%}</style>')
 
 
+def sincronizar_manuales():
+    """C161: copia la clave _actualizado de los JSON manuales a datos.json (clave «manuales») para el semáforo de frescura."""
+    ruta = RAIZ / "explorador" / "datos.json"
+    crudo = ruta.read_bytes().decode("utf-8")
+    datos = json.loads(crudo)
+    man = datos.setdefault("manuales", {"_nota": "Fecha de comprobación de los JSON manuales."})
+    for clave, archivo in (("indicadores", "indicadores-manual.json"), ("liquidez", "liquidez-manual.json")):
+        try:
+            man[clave] = json.loads((RAIZ / "explorador" / archivo).read_text(encoding="utf-8")).get("_actualizado")
+        except Exception:
+            man[clave] = None
+    nuevo = json.dumps(datos, ensure_ascii=False, indent=2).replace("\n", "\r\n")
+    if nuevo != crudo:
+        ruta.write_bytes(nuevo.encode("utf-8"))
+
+
 def main():
+    sincronizar_manuales()
     html = explorador._html(None, publico=True)
     if "privado" in html.lower() and "contraste-tesis" in html.lower():
         sys.exit("La página pública menciona archivos de privado/: no se escribe.")

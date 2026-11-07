@@ -220,11 +220,81 @@ def gasto_bot(dias=14):
     }
 
 
-def voces(n=20):
+def _entidad(q):
+    """C157: clave de la entidad de una voz (DTCC y su CEO cuentan como una sola)."""
+    b = q.lower()
+    if "dtcc" in b or "la salla" in b:
+        return "dtcc"
+    return re.split(r"\s*[(,]", b)[0].strip()
+
+
+def voces(n=40, max_entidad=3):
+    """Voces del móvil: máximo 3 por entidad (C157) para que una sola fuente no domine; el resto sigue en explorador/voces.json."""
     v = cargar("explorador/voces.json")
     lista = v["voces"] if isinstance(v, dict) else v
-    return [{"quien": x["quien"], "texto": x["texto"], "nivel": x["nivel"], "conf": x["conf"], "cuando": x.get("cuando", ""),
-             "fuente": x.get("fuente"), "video": x.get("video"), "plazo": x.get("plazo"), "nota": x.get("nota", "")} for x in lista[:n]]
+    cuenta, salida = {}, []
+    for x in lista:
+        k = _entidad(x["quien"])
+        cuenta[k] = cuenta.get(k, 0) + 1
+        if cuenta[k] > max_entidad:
+            continue
+        salida.append({"quien": x["quien"], "texto": x["texto"], "nivel": x["nivel"], "conf": x["conf"], "cuando": x.get("cuando", ""),
+                       "fuente": x.get("fuente"), "video": x.get("video"), "plazo": x.get("plazo"), "nota": x.get("nota", ""),
+                       "contra": "Contrapeso" in x.get("nota", "")})
+    contra = [x for x in salida if x["contra"]]
+    return (salida[:n - len(contra)] + contra) if len(salida) > n else salida
+
+
+FRESCURA_JSON = (("paneles.json", "Paneles de mercado", ("leido",)), ("precios_vivos.json", "Precios vivos", ("leido",)),
+                 ("indicadores-manual.json", "Indicadores (manual)", ("_actualizado",)), ("liquidez-manual.json", "Liquidez (manual)", ("_actualizado",)),
+                 ("indicadores-historia.json", "Historia de indicadores", ("generado",)), ("valoracion.json", "Valoración sectorial", ("generado",)),
+                 ("calificaciones.json", "Calificaciones", ("leido",)), ("reservas.json", "Reservas", ("leido",)), ("deuda-fmi.json", "Deuda (FMI)", ("leido",)),
+                 ("estabilidad.json", "Estabilidad", ("leido",)), ("paises.json", "Países", ("leido",)), ("elecciones.json", "Elecciones", ("leido",)),
+                 ("espana.json", "España", ("leido",)), ("espana-presupuesto.json", "Presupuesto de España", ("leido",)),
+                 ("cbdc-blockchains.json", "CBDC y blockchains", ("leido",)), ("rwa-por-cadena-manual.json", "RWA por cadena", ("leido",)),
+                 ("mandatos.json", "Mandatos", ("leido",)))
+
+
+def frescura_json():
+    """C154: fecha de cada JSON de explorador que muestra el móvil. El color (verde ≤7 d, ámbar ≤14, rojo >14) lo calcula el móvil al abrir."""
+    salida = []
+    for fich, nombre, claves in FRESCURA_JSON:
+        try:
+            d = cargar("explorador/" + fich)
+        except Exception:
+            continue
+        f = next((str(d[k])[:10] for k in claves if isinstance(d, dict) and d.get(k)), None)
+        if f and re.match(r"\d{4}-\d{2}-\d{2}$", f):
+            salida.append({"n": nombre, "f": f, "a": fich})
+    return salida
+
+
+def activos(previo=None):
+    """C155: bloque «Mis activos» (XRP, XLM). Solo hechos con fuente y etiqueta P/S; sin recomendar y sin tesis personal.
+    El precio lo pinta el móvil desde «mercado»; aquí van red, ETF y regulación, y qué cambió desde la última generación."""
+    try:
+        r = cargar("explorador/regulacion.json")
+    except Exception:
+        return {}
+    cel = {(c["jur"], c["tema"]): c for c in r.get("celdas", [])}
+
+    def c(j, tm, etq):
+        x = cel.get((j, tm))
+        if not x:
+            return None
+        txt = (x.get("estado") or "").strip()
+        return {"e": etq, "txt": txt[:300].rsplit(" ", 1)[0] + "…" if len(txt) > 300 else txt, "f": x.get("fecha"), "n": x.get("nivel"), "u": x.get("url")}
+    reg = [x for x in (c("eeuu", "etf", "ETF en EE. UU."), c("ue", "etf", "ETP en Europa"), c("eeuu", "ley_marco", "Ley de mercado en EE. UU.")) if x]
+    red = None
+    try:
+        est = cargar("eventos/estado-onchain.json")
+        red = {k: est[k] for k in est if k in ("xrpl", "stellar", "actualizado")} or None
+    except Exception:
+        red = None
+    prev = (previo or {}).get("activos", {}).get("firmas", {})
+    firmas = {x["e"]: [x.get("f"), x.get("n")] for x in reg}
+    cambios = [f"{k}: actualizado a {firmas[k][0]}" for k in firmas if k in prev and prev[k] != firmas[k]]
+    return {"reg": reg, "red": red, "firmas": firmas, "cambios": cambios, "revisado": r.get("revisado")}
 
 
 def cambio_euro():
@@ -582,7 +652,7 @@ def main():
         "defensa": p.get("defensa", {}).get("paises", []), "liquidez": p.get("liquidez", {}), "inflacion": p.get("inflacion", {}).get("paises", []), "ormuz": p.get("ormuz", {}), "hitos_petroleo": cargar("explorador/hitos_petroleo.json"), "elecciones": cargar("explorador/elecciones.json"), "paises": paises(), "regulacion": regulacion(), "datos": datos_panel(),
         "valoracion": valoracion(),
         "bonos": [{"id": k, "valor": bonos[k]["plazos"].get("10A"), "fecha": bonos[k]["fecha"]} for k in ("USA", "JPN", "EUR", "ESP", "FRA", "GBR") if k in bonos],
-        "eventos": eventos(), "voces": voces(), "niveles": cargar("explorador/voces.json").get("niveles", {}), "verificados": verificados(),
+        "eventos": eventos(), "voces": voces(), "frescura_json": frescura_json(), "activos": activos(previo), "niveles": cargar("explorador/voces.json").get("niveles", {}), "verificados": verificados(),
         "informes": lista_md("informes", 6), "investigacion": lista_md("informes/research", 8), "videos": lista_md("informes/videos", 6), "centro": centro(),
     }
     fallos = []
