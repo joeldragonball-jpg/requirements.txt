@@ -10,7 +10,7 @@ Es la **actualización de viernes** del W09 del jueves 5-nov (`2026-11-05-W09-re
 - **Empleo EE. UU. (6-nov):** solo titulares de prensa (165.000 empleos); **no verificado con la BLS** [VERIFICAR].
 
 ## 2. Qué se verificó
-- Banco de Inglaterra: la subida al 4,00 % sigue en [S]; hoy no encontré una crónica nueva. Cuenta como predicción #60 (Goldman), acertó [S].
+- Banco de Inglaterra: la subida al 4,00 % queda confirmada como [P] el 7-nov con la serie oficial IADB del banco (W07); hoy no encontré una crónica nueva. Cuenta como predicción #60 (Goldman), acertó [S].
 - W06 de hoy: 1 voz sube a «compatible» (v050), 4 voces nuevas (v065-v068), 7 siguen sin confirmar.
 
 ## 3. Qué falló o sigue en [VERIFICAR]

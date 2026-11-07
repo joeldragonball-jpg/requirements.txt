@@ -182,3 +182,4 @@ actualizado: 2026-10-07
 - 5-nov-2026 (W09): webs oficiales de gobiernos (presidencias de El Salvador, Indonesia, Egipto, Cuba) bloquean a lectores automáticos o no cargan; el dato de fecha se queda en [S] y se anota el bloqueo, no se rellena con Wikipedia ni de memoria.
 
 - 6-nov-2026 (W06): las voces escépticas útiles son BIS (stablecoins) y las asociaciones bancarias (depósitos), pero ambas tienen interés propio; sus afirmaciones se citan como posición, no como dato, y se busca el texto original en bis.org o en la carta de la ABA.
+- 7-nov-2026 (W07): una cifra de titular de banco central («sube tipos») se cierra en minutos con la serie oficial en CSV (Banco de Inglaterra IADB `IUDBEDR`, BCE, Valet de Canadá) sin navegador; y una API que responde 200 puede tener datos congelados (OCDE: IPC de España solo hasta dic-2025): mirar siempre la última fecha de la serie.

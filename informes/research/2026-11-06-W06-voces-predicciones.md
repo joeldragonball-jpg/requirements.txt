@@ -4,7 +4,7 @@ Segunda pasada de la semana (la primera fue el 2-nov). Sesión corta con búsque
 
 ## 1. Predicciones que vencen en 14 días o ya vencieron
 - `PLANNING.md` no marcaba ninguna en los próximos 14 días. Revisadas las de fecha límite ≤ 30-nov: #7 y #25 ya resueltas el 4-nov; #31 resuelta el 2-nov; **#19, #23, #24 siguen sin resolver** (cálculos sobre el ledger XRPL y la oferta de Irán sobre Ormuz, fecha 30-nov; no se comprobó el ledger hoy).
-- **Nueva #60** (Goldman Sachs: el Banco de Inglaterra subirá 25 pb en noviembre): **acertó** [S] según la prensa recogida en el W09 del 5-nov (4,00 %, voto 8-1). Mi búsqueda del 6-nov no halló la crónica; comunicado oficial sin abrir [VERIFICAR].
+- **Nueva #60** (Goldman Sachs: el Banco de Inglaterra subirá 25 pb en noviembre): **acertó** [S] según la prensa recogida en el W09 del 5-nov (4,00 %, voto 8-1); **[P] el 7-nov**: la serie oficial IADB del Banco de Inglaterra da 4,00 % el 5-nov. Mi búsqueda del 6-nov no halló la crónica; comunicado oficial sin abrir [VERIFICAR].
 
 ## 2. Voces «sin confirmar» (8 al empezar)
 | Voz | Resultado hoy |

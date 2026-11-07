@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-11-06
+actualizado: 2026-11-07
 ---
 # Índice de la investigación
 
@@ -12,14 +12,14 @@ Mapa de los informes más recientes por tema. Lo genera `scripts/indice_investig
 Por tema, los 3 informes más recientes (fecha · título · ruta · una frase de su resumen).
 
 ## Auditorías y verificaciones
+- 2026-11-07 · C150 · Auditoría de valoración: contenido y estética (7-nov-2026) (`informes/research/2026-11-07-C150-auditoria-valoracion.md`): La app móvil está bien en lo visual: sin desbordes a 375 px, sin texto < 11,5 px y contraste ≥ 4,5:1 en oscuro (comprobado por script en las…
 - 2026-11-06 · C145 · Auditoría de Justicia, mandatos y accesos manuales (6-nov-2026) (`informes/research/2026-11-06-C145-auditoria.md`): Justicia: 32 hechos, todos con fecha ISO, nivel P y dominio oficial (poderjudicial.es, boe.es, europarl.europa.eu); ningún P apunta a prensa.
 - 2026-11-05 · W05B · Lote corto con Chrome · 5-nov-2026 (noche) (`informes/research/2026-11-05-W05B-lote-chrome.md`): Objetivo: cerrar las 4 verificaciones abiertas de W05 con Chrome. Resultado: 1 cerrada (parcial → P), 1 bloqueada, 2 sin resolver.
-- 2026-11-05 · W05 · Verificación por lotes · 5-nov-2026 (`informes/research/2026-11-05-W05-verificacion.md`): Confirmado [S]: los demócratas ganan el Senado (CBS, NBC, Yahoo, Northeastern); el recuento oficial sigue sin leerse y «cambia el mapa cripto» es…
 
 ## Voces y predicciones
+- 2026-11-07 · W07 · Research de fuentes (sábado 7-nov-2026) (`informes/research/2026-11-07-W07-fuentes.md`): 231 enlaces probados: ninguno roto; 37 con 403 de los mismos dominios.
 - 2026-11-06 · W06 · Voces y predicciones (viernes 6-nov-2026) (`informes/research/2026-11-06-W06-voces-predicciones.md`): Segunda pasada de la semana (la primera fue el 2 nov). Sesión corta con búsqueda web; no se abrieron fuentes primarias (bis.org, bankofengland.co.uk,…
 - 2026-11-06 · C79 · Fuentes de España probadas con Chrome (6-nov-2026) (`informes/research/2026-11-06-C79-fuentes-espana.md`): Solo lectura; sin descargas. Chrome accedió sin captcha ni anti bot en todas.
-- 2026-11-02 · W07 · Research de fuentes (2-nov-2026) (`informes/research/2026-11-02-W07-fuentes.md`): Alcance: enlaces de explorador/voces.json , explorador/regulacion.json y eventos/calendario.toml ; prueba de fuentes primarias sin navegador. No…
 
 ## Fiscal
 - 2026-10-23 · T24 — Fiscalidad internacional de cripto: CARF, DAC8 y formulario 1099-DA (`informes/research/2026-10-23-T24-fiscalidad-internacional-cripto.md`): CARF (OECD): marco de intercambio automático de información fiscal sobre cripto entre países (equivalente al CRS para cuentas bancarias). Los…
@@ -27,9 +27,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-10-14 · India: RBI, e₹, UPI, fiscalidad y regulación cripto (2026-10-14, R02) (`informes/research/2026-10-14-R02-india.md`): India mantiene dos carriles opuestos: infraestructura pública de pagos muy exitosa (UPI, ~24.000 M de operaciones/mes) y un e₹ piloto aún pequeño;…
 
 ## Energía y Ormuz
+- 2026-11-07 · W10 · Energía y geopolítica (sábado 7-nov-2026) (`informes/research/2026-11-07-W10-energia.md`): Spot de la EIA al 3 nov: Brent 107,03 $ y WTI 99,64 $; futuro del 6 nov: 97,8 $ y 90,4 $.
 - 2026-11-02 · W10 · Energía y geopolítica (2-nov-2026) (`informes/research/2026-11-02-W10-energia.md`): Continúa 2026 10 30 W10 energia.md . Sin recomendaciones ni predicciones de precio. Etiquetas: [P] · [S] · [VERIFICAR] · [ESPECULACIÓN].
 - 2026-10-30 · W10 · Energía y geopolítica: cierre de semana y víspera de OPEP+ (30-oct-2026) (`informes/research/2026-10-30-W10-energia.md`): Continúa 2026 10 25 W10 energia.md y 2026 10 30 C29 energia guerra noticias.md . Sin recomendaciones ni predicciones de precio. Etiquetas: [P]…
-- 2026-10-30 · C29 · Petróleo, Ormuz y guerra ↔ noticias ↔ Órbita (`informes/research/2026-10-30-C29-energia-guerra-noticias.md`): Los hitos diplomáticos y militares de octubre salen de los informes diarios del repo (titulares de CoinDesk, CNBC, Al Jazeera y el bot) [S] : no abrí…
 
 ## Deuda y bonos
 - 2026-11-03 · C77 · España: gasto y deuda, inmigración y catástrofes (síntesis, 3-nov-2026) (`informes/research/2026-11-03-C77-espana-gasto-inmigracion-dana.md`): Síntesis de tres informes crudos de agentes: research/fuentes nuevas/F gasto contratos deuda.md , G inmigracion.md y H catastrofes dana.md (léelos…
