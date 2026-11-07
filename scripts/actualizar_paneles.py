@@ -590,6 +590,7 @@ def leer_materias():
 
 
 URL_EIA_SPOT = (("brent", "Brent spot (Europa)", "$ por barril", "https://www.eia.gov/dnav/pet/hist/RBRTED.htm", "BZ=F"),
+                ("wti", "WTI spot (Cushing, EE. UU.)", "$ por barril", "https://www.eia.gov/dnav/pet/hist/RWTCD.htm", "CL=F"),
                 ("henry_hub", "Henry Hub spot (gas natural)", "$ por MMBtu", "https://www.eia.gov/dnav/ng/hist/rngwhhdD.htm", "NG=F"))
 
 
@@ -607,7 +608,7 @@ def _spot_eia():
         if html_ is None:
             raise ValueError(f"{id_}: no se pudo descargar")
         puntos = []
-        for m in re.finditer(r"<td class='B6'>(?:&nbsp;)*\s*(\d{4}) (\w{3})-(\d{2}) to [^<]*</td>((?:\s*<td class='B3'>[^<]*</td>){5})", html_):
+        for m in re.finditer(r"<td class='B6'>(?:&nbsp;)*\s*(\d{4}) (\w{3})-\s*(\d{1,2}) to [^<]*</td>((?:\s*<td class='B3'>[^<]*</td>){5})", html_):
             try:
                 ini = datetime.strptime(f"{m.group(1)} {m.group(2)} {m.group(3)}", "%Y %b %d")
             except ValueError:

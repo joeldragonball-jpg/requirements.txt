@@ -135,6 +135,18 @@ def noticias(n=20):
              "fuente": x["fuente"], "fecha": x["fecha"][:16], "url": x["url"]} for x in lista[:n]]
 
 
+MONEDA_INDICE = {"^STOXX50E": "EUR", "^IBEX": "EUR", "^GDAXI": "EUR", "^N225": "JPY", "^HSI": "HKD", "000001.SS": "CNY", "^KS11": "KRW"}
+
+
+def verificados():
+    """C153: estado de contraste (confirmado, dudoso, desmentido) de titulares ya revisados (eventos/verificados.json) para etiquetar las noticias en la app."""
+    try:
+        d = json.loads((RAIZ / "eventos" / "verificados.json").read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    return [{"c": e["contiene"], "estado": e["estado"], "con": (e.get("con") or "")[:220], "url": e.get("url", "")} for e in d.get("eventos", []) if e.get("contiene") and e.get("estado")]
+
+
 def zona_madrid():
     """Europe/Madrid; en Windows sin el paquete tzdata, aproxima con la regla europea (UTC+1, UTC+2 del último domingo de marzo al de octubre)."""
     try:
@@ -442,7 +454,10 @@ def control(p, datos):
         if not x:
             return None
         nota = [f"Para un inversor en dólares: {x['cambio_1d_usd']:+.2f} % (índice + divisa)".replace(".", ",")] if x.get("moneda") != "USD" and x.get("cambio_1d_usd") is not None else []
-        return fila(e, x["valor"], f"puntos · cotiza en {x.get('moneda') or '?'}", x["fecha"], "S", *YH, c=x.get("cambio_1d"), col=col, x=nota)
+        moneda = x.get("moneda") or MONEDA_INDICE.get(s) or "USD"
+        if abs(x.get("cambio_1d") or 0) >= 4:   # C152: un salto grande no se deja sin contexto
+            nota = nota + ["Movimiento de más de un 4 % en un día: la causa no está verificada; lee el R00 de apertura de esa fecha (Seguimiento) antes de interpretarlo"]
+        return fila(e, x["valor"], f"puntos · cotiza en {moneda}", x["fecha"], "S", *YH, c=x.get("cambio_1d"), col=col, x=nota)
     grupo("Bolsas", [bolsa(s, e) for s, e in orden] + [bolsa("^VIX", "VIX · miedo esperado en el S&P 500", col="neutro")],
           "Índices en puntos, no en dinero. El VIX sube cuando el mercado espera más sustos; va en gris.")
 
@@ -479,10 +494,12 @@ def control(p, datos):
         if not x:
             return None
         notas = []
-        if k == "brent" and eia.get("brent"):
-            s = eia["brent"]
-            notas.append(f"Brent spot oficial (EIA, [P]): {fm_es(s['valor'], 2)} $ el {s['fecha']}; la EIA publica con días de retraso")
-        return fila(e, x["valor"], "$ el barril (futuro)", x["fecha"], "S", *YH, c=x.get("cambio_1d"), x=notas)
+        s = eia.get(k)
+        unidad = "$ el barril (futuro)"
+        if s:   # C151: spot oficial visible en la propia fila, con su fecha (no se resta al futuro de otro día)
+            unidad += f" · spot EIA [P] {fm_es(s['valor'], 2)} $ el {s['fecha'][8:]}/{s['fecha'][5:7]}"
+            notas.append(f"{s['nombre']} (EIA, [P]): {fm_es(s['valor'], 2)} $ el {s['fecha']}. Es crudo físico y la EIA publica con ~3 días de retraso: compara solo con el futuro de la MISMA fecha (suele estar 3-7 $ por encima)")
+        return fila(e, x["valor"], unidad, x["fecha"], "S", *YH, c=x.get("cambio_1d"), x=notas)
 
     ep = p.get("energia_precios", {})
 
@@ -565,7 +582,7 @@ def main():
         "defensa": p.get("defensa", {}).get("paises", []), "liquidez": p.get("liquidez", {}), "inflacion": p.get("inflacion", {}).get("paises", []), "ormuz": p.get("ormuz", {}), "hitos_petroleo": cargar("explorador/hitos_petroleo.json"), "elecciones": cargar("explorador/elecciones.json"), "paises": paises(), "regulacion": regulacion(), "datos": datos_panel(),
         "valoracion": valoracion(),
         "bonos": [{"id": k, "valor": bonos[k]["plazos"].get("10A"), "fecha": bonos[k]["fecha"]} for k in ("USA", "JPN", "EUR", "ESP", "FRA", "GBR") if k in bonos],
-        "eventos": eventos(), "voces": voces(), "niveles": cargar("explorador/voces.json").get("niveles", {}),
+        "eventos": eventos(), "voces": voces(), "niveles": cargar("explorador/voces.json").get("niveles", {}), "verificados": verificados(),
         "informes": lista_md("informes", 6), "investigacion": lista_md("informes/research", 8), "videos": lista_md("informes/videos", 6), "centro": centro(),
     }
     fallos = []

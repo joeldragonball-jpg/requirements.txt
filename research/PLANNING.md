@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-07 15:53 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-07 16:18 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -7,7 +7,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Periódicas (próxima):** W07 11-07 · W10 11-07 · W01 11-09 · W02 11-10 · W03 11-11 · W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W08 11-25
 **Bloqueadas (15):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C87 (Propuesta de la auditoría C81 (informes/research/2) · C88 (Propuesta de la auditoría C81 (informes/research/2) · C89 (Propuesta de la auditoría C81 (informes/research/2) · C90 (Propuesta de la auditoría C81 (informes/research/2) · …
 **Parciales (19):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
-**Hechas en 7 días (35):** C150, C145, C129, C131, C133, C134, C136, C141, C32, C86, C91, C93, C94, C99, C100
+**Hechas en 7 días (39):** C147, C150, C151, C152, C153, C145, C129, C131, C133, C134, C136, C141, C32, C86, C91
 
 ## Hoy (sáb 2026-11-07): solo lo casi obligatorio
 - R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 5 días
@@ -42,12 +42,8 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C139 ◐ en parte · Países · Vigilar El Salvador y Argentina (indicadores, historia, mandatos) y, co · Sonnet L · ~~6 % · `research/prompts/C139-latam-el-salvador-argentina-venezuela-cuba.md`
 - C140 ◐ en parte · Países · Leer en fuente oficial las fechas de mandato [S] (9 países) y las de Az · Sonnet S · ~~2 % · ``
 - C144 ◐ en parte · Centro · Research a fondo: APIs y datos gratis (GitHub, Reddit, documentación of · Sonnet L · ~~6 % · `research/prompts/C144-apis-gratis-automatizar.md`
-- C147 · Centro · Añadir WTI spot (RWTCD.htm) a _spot_eia() y mostrar spot y futuro junto · Sonnet S · ~~1 % · `En scripts/actualizar_paneles.py añade WTI Cushing (https://www.eia.gov/dnav/pet/hist/RWTCD.htm, mismo formato que Brent) a URL_EIA_SPOT con su contraparte de Yahoo CL=F; en docs/movil muestra «Spot EIA [P] · futuro [S]» con nota de retraso de 3 días y de que no se restan; sin IA`
 - C148 · Centro · scripts/comprobar_enlaces.py: comprobador mensual de enlaces (voces, ca · Sonnet S · ~~2 % · `Convierte el script de W07 del 7-nov en scripts/comprobar_enlaces.py: HEAD/GET con User-Agent de navegador, 8 en paralelo, sin saltar anti-bots; escribe docs/movil/enlaces.json (OK/403/404) y lista los 404 nuevos en el Seguimiento; URL con paréntesis bien tratadas; sin IA`
 - C149 · Centro · Lector del ledger XRPL (JSON-RPC público) para cerrar predicciones con  · Sonnet M · ~~2 % · `Prueba s1.ripple.com:51234 y un segundo nodo con POST (ledger_data, account_objects, feature) para comprobar las predicciones #19 y #23 (fixCleanup3_4_0 y escrow del 1-nov) con fuente [P]; devuelve fecha y hash del ledger; sin claves ni IA`
-- C151 · Centro · Banner único de Ormuz fuera de «Más datos» (fecha 25-oct frente a 4-nov · Sonnet S · ~~1 % · `Saca el aviso de dato congelado de Ormuz al banner de Hoy, unifica 25-oct/4-nov y muestra el spot EIA del mismo día junto al Brent futuro (se solapa con C147)`
-- C152 · Centro · Corregir «cotiza en ?» (Euro Stoxx) y mostrar en la app por qué cae Asi · Sonnet S · ~~1 % · `Arregla la moneda vacía en scripts/construir_movil.py:445 (EUR por defecto) y enlaza «Lo que más se mueve» con la explicación del R00 de apertura, con [S] y causa sin verificar`
-- C153 · Centro · Noticias sin «por_que» (11 de 20): rellenar u ocultar, y etiquetar opin · Sonnet S · ~~1 % · `Rellena el campo por_que de las noticias vacías o ocúltalas; etiqueta «opinión» a las que sean una persona (p. ej. Daly), sin recomendar`
 - C154 · Centro · Semáforo de frescura común (verde ≤7 d, ámbar ≤14, rojo >14) y fechas e · Sonnet M · ~~2 % · `Añade fecha a los dos JSON manuales y un semáforo para todos los JSON de explorador en el móvil y el Seguimiento`
 - C155 · Centro · Bloque «Mis activos» XRP/XLM en Hoy (precio, actividad de red con oncha · Sonnet M · ~~3 % · `Diseña un bloque XRP/XLM con precio, red, ETF y regulación con etiquetas P/S y «qué cambió desde ayer», sin recomendar; la tesis no va al repo`
 - C156 · Centro · Índice y anclas por grupo en Mercado y Paneles de datos; fuente una sol · Sonnet M · ~~2 % · `Añade anclas por grupo (Bolsas, Energía, Alimentos…) y compacta las filas repetidas en la vista Mercado móvil`
