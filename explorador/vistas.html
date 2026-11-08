@@ -211,7 +211,8 @@ small.per{color:var(--tx2);font-size:var(--fs-xs);font-weight:400}
 .mis .kpi b{font-size:clamp(18px,.9vw + 8px,24px)}.pie-leyenda{margin:14px 0 6px;padding:8px 12px;border:1px dashed var(--lin);border-radius:8px;color:var(--tx2);font-size:var(--fs-xs)}
 /* C211 · buscador global */
 .barra .gb{position:relative;flex:1 1 220px;min-width:170px;max-width:420px}
-#gbus{width:100%;box-sizing:border-box}
+#gbus{width:100%;box-sizing:border-box;background:#070b16;color:#c8d1e0;border:1px solid #243049;border-radius:6px;padding:6px 10px;color-scheme:dark}
+#gbus::placeholder{color:#6b7790}#gbus:focus{outline:1px solid var(--ac);border-color:var(--ac)}
 #gres{position:absolute;z-index:30;top:100%;left:0;right:0;max-height:60vh;overflow:auto;background:var(--panel);border:1px solid var(--lin);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.45);padding:4px;color:var(--tx)}
 #gres[hidden]{display:none}
 #gres h4{margin:6px 8px 2px;font-size:var(--fs-xs);color:var(--tx2);text-transform:uppercase;letter-spacing:.08em}
@@ -418,7 +419,8 @@ function contar(sec){
 function marcarScroll(e){const t=e&&e.target&&e.target.nodeType===1?[e.target]:document.querySelectorAll('table:not(.mat),.mis .cols2>div,details.bl,.grp,.mcol>.grp');
   t.forEach(x=>{if(!x.classList)return;const m=x.scrollWidth-x.clientWidth;x.classList.toggle('sc-d',m>4&&x.scrollLeft<m-4);x.classList.toggle('sc-i',m>4&&x.scrollLeft>4)})}
 document.addEventListener('scroll',marcarScroll,true);addEventListener('resize',()=>setTimeout(marcarScroll,50));
-function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles})[tab]();if(['capas','paneles','noticias','resumen','calendario','matriz','espana','paises'].includes(tab))anclas($('v-'+tab),tab);setTimeout(marcarScroll,60)}
+function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles})[tab]();if(['paneles','noticias','calendario','matriz','espana','paises'].includes(tab))anclas($('v-'+tab),tab);
+  if(tab==='espana')[...$('v-espana').querySelectorAll('details')].filter(d=>!d.parentElement.closest('details')).forEach(d=>{d.open=true});setTimeout(marcarScroll,60)}
 
 /* ---------- bloques de datos reutilizables (Capas y Paneles) ---------- */
 const PL=['3M','6M','1A','2A','3A','5A','10A','15A','20A','30A'];
