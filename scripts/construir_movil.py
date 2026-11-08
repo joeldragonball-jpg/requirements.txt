@@ -584,7 +584,7 @@ def control(p, datos):
                       futuro("NG=F", "Gas natural Henry Hub (EE. UU.)", "$ por MMBtu", d=3),
                       luz("omie_diario", "Luz España · mercado mayorista (OMIE)", ("OMIE", "https://www.omie.es/es/market-results/daily/daily-market/daily-hourly-price")),
                       luz("pvpc_diario", "Luz España · tarifa regulada PVPC", ("REE (Red Eléctrica)", "https://www.ree.es/es/datos/mercados/componentes-precio-energia-cierre-desglose"))],
-          "Flechas en gris: que la energía suba no es bueno ni malo para todos. Falta el gas europeo TTF (C111) y la gasolina y el diésel (boletín semanal de la UE).")
+          "Color de la flecha = solo dirección del precio; que la energía suba no es bueno ni malo para todos. Falta el gas europeo TTF (C111) y la gasolina y el diésel (boletín semanal de la UE).")
 
     fao = next((x for x in (p.get("alimentos", {}).get("fao") or {}).get("indices", []) if x.get("nombre") == "Food Price Index"), None)
     fao_meta = (p.get("alimentos", {}).get("fao") or {})

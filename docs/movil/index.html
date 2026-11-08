@@ -589,7 +589,7 @@ function montarControl(){   // C132: bloque «Control» arriba de Mercado. Todo 
     const lin = el('div', 'ctl-linea'); lin.append(el('div', 'ctl-num', r.t != null ? r.t : fm(r.v, r.d != null ? r.d : 2)));
     const ch = r.c != null ? r.c : r.pp;
     if (ch != null) { const cero = Math.abs(ch) < (r.c != null ? 0.05 : 0.005);
-      lin.append(el('div', 'ctl-var ' + (r.col === 'precio' && !cero ? (ch > 0 ? 'sube' : 'baja') : 'neutro'), (cero ? '= ' : ch > 0 ? '▲ ' : '▼ ') + fm(Math.abs(ch), r.c != null ? (Math.abs(ch) >= 10 ? 1 : 2) : 2) + (r.c != null ? ' %' : ' p.p.'))); }
+      lin.append(el('div', 'ctl-var ' + ((r.col === 'precio' || (r.c != null && !/^VIX/.test(r.e))) && !cero ? (ch > 0 ? 'sube' : 'baja') : 'neutro'), (cero ? '= ' : ch > 0 ? '▲ ' : '▼ ') + fm(Math.abs(ch), r.c != null ? (Math.abs(ch) >= 10 ? 1 : 2) : 2) + (r.c != null ? ' %' : ' p.p.'))); }
     w.append(lin);
     const v = viejo(r), cuando = r.f === 'en vivo' ? 'en vivo' : r.fr === 'mensual' ? 'dato de ' + fecha(r.f) : (v ? 'dato del ' : 'sesión ') + fecha(r.f);
     const pie = el('div', 'ctl-pie' + (v ? ' ctl-viejo' : ''), [cuando, ch != null ? r.per : ''].filter(Boolean).join(' · ') + ' · ');
@@ -621,14 +621,14 @@ function montarControl(){   // C132: bloque «Control» arriba de Mercado. Todo 
   if (grupos.length > 2) { const ch = el('div', 'chips'); ch.style.marginBottom = '10px'; grupos.forEach((g, i) => { const c = el('div', 'chip', g.t); c.addEventListener('click', () => irAncla('cg' + i)); ch.append(c); }); raiz.append(ch); }
   grupos.forEach((g, i) => {
     const c = el('div', 'card ctl-card'); c.id = 'cg' + i; c.style.setProperty('--i', i + 1);
-    const tt = el('div', 'titulo-sec ctl-tit'); tt.append(el('span', null, g.t)); c.append(tt);
+    const tt = el('div', 'titulo-sec ctl-tit'); tt.append(el('span', null, g.t)); const fs = g.filas.map(r => r.f).filter(f => f && /^\d{4}-\d{2}-\d{2}/.test(f)).sort(); if (fs.length) tt.append(el('small', null, 'último dato ' + fecha(fs[fs.length - 1].slice(0, 10)))); c.append(tt);
     const uni = g.filas.length > 2 && g.filas.every(r => r.fu && r.fu === g.filas[0].fu);   // C156: fuente una sola vez por grupo
     g.filas.forEach(r => c.append(filaDOM(r, uni)));
     if (uni) c.append(el('div', 'ctl-nota', 'Fuente de todo el grupo: ' + g.filas[0].fu));
     if (g.nota) c.append(el('div', 'ctl-nota', g.nota));
     raiz.append(c);
   });
-  raiz.append(el('div', 'pie', 'Toca una cifra para ver la fuente y más detalle. Verde y rojo solo donde subir o bajar es claro (bolsas, ETFs, cripto); el resto, en gris. Nada de esto es una recomendación.')); const pl = raiz.lastChild; if (pl) { pl.append(document.createElement('br')); const sp = document.createElement('span'); sp.innerHTML = LEYENDA; pl.append(sp); }   // leyenda fija del código, sin datos de fuera
+  raiz.append(el('div', 'pie', 'Toca una cifra para ver la fuente y más detalle. Verde y rojo marcan la dirección del precio (bolsas, ETFs, cripto, energía, metales, alimentos, divisas); no significan «bueno» o «malo». Tipos, VIX y puntos porcentuales, en gris. Nada de esto es una recomendación.')); const pl = raiz.lastChild; if (pl) { pl.append(document.createElement('br')); const sp = document.createElement('span'); sp.innerHTML = LEYENDA; pl.append(sp); }   // leyenda fija del código, sin datos de fuera
 }
 const VISTAS = {mas: vMas, hoy: vHoy, centro: vCentro, datos: vDatos, mercado: vMercado, agenda: vAgenda, noticias: vNoticias, cerebro: vCerebro};
 function pintar(ancla, quieto){
