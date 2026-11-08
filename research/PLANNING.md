@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-08 21:51 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-08 22:24 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -6,7 +6,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hoy (máx. 3):** R00 Cierre del día (desde las 22:00) · Gemini Noticias XRP / XLM de las últimas 24 h
 **Periódicas (próxima):** W01 11-09 · W02 11-10 · W03 11-11 · W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W08 11-25 · W07 12-05
 **Bloqueadas (15):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C87 (Propuesta de la auditoría C81 (informes/research/2) · C88 (Propuesta de la auditoría C81 (informes/research/2) · C89 (Propuesta de la auditoría C81 (informes/research/2) · C90 (Propuesta de la auditoría C81 (informes/research/2) · …
-**Parciales (26):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
+**Parciales (27):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
 **Hechas en 7 días (41):** C147, C150, C151, C152, C153, C159, C160, C145, C129, C131, C133, C134, C136, C141, C32
 
 ## Hoy (dom 2026-11-08): solo lo casi obligatorio
@@ -50,12 +50,38 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C180 ◐ en parte · Móvil · Mercado: variación % en color en TODAS las filas (energía, alimentos, di · Sonnet M · ~~3 % · ``
 - C181 · Móvil · Mercado: separar divisas por tipo (pares con euro, dólar, refugio, emerg · Opus M · ~~3 % · ``
 - C182 ◐ en parte · Auditoría de diseño: Móvil, Órbita, Tablero y Seguimiento a 375 / 768 / 1280 px  · Sonnet M · ~~3 % · ``
-- C183 · Auditoría de datos: muestreo de 10 cifras por pantalla contra su fuente primaria · Sonnet M · ~~3 % · ``
-- C184 · Auditoría de research: informes de la semana, qué sigue en S o [VERIFICAR] y qué · Sonnet M · ~~3 % · ``
-- C185 ◐ en parte · Valoración de la información: qué paneles aportan a decidir y cuáles sobran o fa · Opus S · ~~2 % · ``
+- C183 ◐ en parte · Auditoría de datos: muestreo de 10 cifras por pantalla contra su fuente primaria · Sonnet M · ~~3 % · ``
+- C184 ◐ en parte · Auditoría de research: informes de la semana, qué sigue en S o [VERIFICAR] y qué · Sonnet M · ~~3 % · ``
 - C186 · Research con Gemini (manual): qué muestran los mejores paneles de inversor parti · Sonnet S · ~~2 % · ``
-- C187 · Sello de frescura por dato: bot o script que escriba fecha/hora de última actual · Sonnet M · ~~3 % · ``
-- C188 · Calendario de research continuo: qué se actualiza, con qué disparador (calendari · Opus M · ~~3 % · ``
+- C189 · Quitar duplicados en Verificaciones pendientes y poner «hace N d» junto a cada c · Sonnet S · ~<0,3 % · ``
+- C190 · Corregir «1 días de racha» y mover racha y % de plan a Más · Sonnet S · ~<0,2 % · ``
+- C191 · Mostrar XRP/XLM una sola vez en Hoy · Sonnet S · ~<0,2 % · ``
+- C193 · Separar «Divisas y tipos» del Mercado en Divisas, Tipos oficiales y Bonos · Sonnet S · ~<0,3 % · ``
+- C194 · Mover «Frescura de los datos» bajo los precios en Mercado y dejar resumen · Sonnet S · ~<0,2 % · ``
+- C195 · Etiqueta común de fecha del dato en Energía y Alimentos · Sonnet S · ~<0,2 % · ``
+- C196 · Aviso ámbar a 7 días en RWA manual; anotar que congress.gov sí cargó con Chrome  · Sonnet S · ~<0,2 % · ``
+- C197 · Hora real de actualización por dato (leido_utc y valor_fecha_hora) en paneles y  · Sonnet M · ~~0,8 % · ``
+- C198 · Segunda fuente en cotizaciones (Stooq o FRED) con aviso si difieren más de 1 % · Sonnet M · ~~1 % · ``
+- C201 · Automatizar tipos-manual.json e indicadores-manual.json · Sonnet M · ~~2 % · ``
+- C203 · Fichas por activo (XRP, XLM, BTC, oro, ETF mundial) con fuente, nivel, hechos y  · Sonnet M · ~~2 % · ``
+- C205 · Vista de tesis privada en privado/ con evidencia a favor, en contra y sin dato · Opus L · ~~5 % · ``
+- C206 · Alertas por umbral y por evento (Telegram) para datos en rojo, tipos y noticias  · Opus L · ~~3 % · ``
+- C208 · Capa «Mi cartera» sin importes con el importador CSV · Opus L · ~~4 % · ``
+- C209 · Modo familia: vista reducida sin racha ni IA · Opus L · ~~2 % · ``
+- C210 · Capas nuevas: flujos de ETF de XRP/XLM, stablecoins, vivienda y combustibles UE · Opus L · ~~4 % · ``
+- C211 · Órbita: buscador global y barra «Ir a» común a todas las pestañas · Sonnet M · ~~0,8 % · ``
+- C212 · Órbita: filtro de país, capa y certeza compartido entre pestañas y guardado en e · Sonnet M · ~~0,6 % · ``
+- C213 · Órbita: enlaces entre datos (Calendario, Línea de tiempo, Matriz, Voces y ficha  · Sonnet M · ~~1,5 % · ``
+- C214 · Órbita en tablet: controles de 40 px, tablas con sombra y primera columna fija,  · Sonnet S · ~~0,5 % · ``
+- C215 · Órbita: cabecera con «lo más viejo es X» y semáforo de frescura clicable · Sonnet S · ~~0,3 % · ``
+- C216 · Órbita: índice lateral fijo en pestañas largas (Paneles, Capas, Voces) · Sonnet S · ~~0,4 % · ``
+- C217 · Órbita: comparador de países como vista (2-4 países, mismo periodo) · Opus L · ~~3 % · ``
+- C218 · Órbita: comparador de capas lado a lado · Sonnet M · ~~2 % · ``
+- C219 · Órbita: modo foco en Resumen (solo lo que cambió y lo que caduca) · Sonnet M · ~~0,8 % · ``
+- C220 · Órbita: Calendario con filtros por capa, país y mi cartera, y exportar .ics · Sonnet M · ~~0,8 % · ``
+- C221 · Órbita: glosario flotante y definición en cada cifra · Sonnet M · ~~1 % · ``
+- C222 · Órbita: pestaña Mercado con divisas por tipo, hora real por dato y segunda fuent · Sonnet M · ~~2 % · ``
+- C223 · Órbita: rendimiento con muchos datos (carga por pestaña, listas virtualizadas) · Opus L · ~~3 % · ``
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
