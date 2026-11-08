@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-08 21:07 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-08 21:23 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -45,7 +45,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C162 ◐ en parte · Órbita · Niveles y fallos legibles: etiquetar los 8 k vacíos de capas[].xrp, exp · Sonnet M · ~~2 % · `Etiqueta los k vacíos de capas[].xrp en datos.json (con la fuente que lo sostiene, no a ojo), explica en una línea los fallos de paneles.json y unifica la leyenda de niveles en un pie común`
 - C172 · Órbita y móvil · Pendientes de la auditoría visual: móvil con tema oscuro por de · Sonnet S · ~~2 % · `Lee informes/research/2026-11-07-auditoria-visual-tablet-pc.md (sección Pendientes). Fuerza el tema oscuro por defecto en docs/movil/index.html (líneas con prefers-color-scheme) salvo elección manual del usuario; matriz país×tema como lista a 375 px; sombra o indicador de scroll horizontal en tablas anchas; oculta el filtro País en «Mis activos»; verifica rutas del service worker en GitHub Pages`
 - C173 ◐ en parte · Centro · Verificar noticias pendientes de prioridad alta y de más de 14 días (7- · Sonnet S · ~~3 % · ``
-- C176 ◐ en parte · Centro · Verificar prensa 4-6 nov (7 noticias) · Sonnet S · ~~1 % · ``
+- C176 ◐ en parte · Centro · Verificar prensa 4-6 nov (7 noticias) · Sonnet S · ~8-nov (noche, con VPN y Chrome): Binance CONFIRMADO [P]: alerta del FBI leída entera (31-oct, TraderTraitor, >6.000 M$, ETH, direcciones listadas); CLARITY: estado oficial leído en congress.gov (Cámara 294-134 el 17-jul-2025; Senado cloture 49-50 el 15-sep-2026, Tillis pide reconsiderar); 31 %, Brent/WTI 4-6 nov y S&P 6-nov sin cambio · ``
 - C179 ◐ en parte · Países · W11 refresco de 6 fichas políticas (China, Brasil, Sudáfrica, Indonesia · Sonnet S · ~~2 % · ``
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
