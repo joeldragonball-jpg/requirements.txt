@@ -1,12 +1,12 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-08 20:55 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-08 21:07 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** Gemini Noticias XRP / XLM de las últimas 24 h
+**Hoy (máx. 3):** R00 Cierre del día (desde las 22:00) · Gemini Noticias XRP / XLM de las últimas 24 h
 **Periódicas (próxima):** W01 11-09 · W02 11-10 · W03 11-11 · W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W08 11-25 · W07 12-05
 **Bloqueadas (15):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C87 (Propuesta de la auditoría C81 (informes/research/2) · C88 (Propuesta de la auditoría C81 (informes/research/2) · C89 (Propuesta de la auditoría C81 (informes/research/2) · C90 (Propuesta de la auditoría C81 (informes/research/2) · …
-**Parciales (25):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
+**Parciales (23):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
 **Hechas en 7 días (41):** C147, C150, C151, C152, C153, C159, C160, C145, C129, C131, C133, C134, C136, C141, C32
 
 ## Hoy (dom 2026-11-08): solo lo casi obligatorio
@@ -43,11 +43,9 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C140 ◐ en parte · Países · Leer en fuente oficial las fechas de mandato [S] (9 países) y las de Az · Sonnet S · ~~2 % · ``
 - C144 ◐ en parte · Centro · Research a fondo: APIs y datos gratis (GitHub, Reddit, documentación of · Sonnet L · ~~6 % · `research/prompts/C144-apis-gratis-automatizar.md`
 - C162 ◐ en parte · Órbita · Niveles y fallos legibles: etiquetar los 8 k vacíos de capas[].xrp, exp · Sonnet M · ~~2 % · `Etiqueta los k vacíos de capas[].xrp en datos.json (con la fuente que lo sostiene, no a ojo), explica en una línea los fallos de paneles.json y unifica la leyenda de niveles en un pie común`
-- C170 ◐ en parte · Centro · Quitar la API de pago del bot de noticias: selección y resumen con regl · Sonnet M · ~~3 % · `Lee informes/research/2026-10-26-C16-costes-api.md y informes/borrador-reglas-filtro-noticias-g17.md. Diseña noticias/filtro_local.py sin IA: puntuación por reglas (fuente, palabras clave, deduplicación, BM25 contra temas de Joel), resumen = titular + primera frase de la fuente, sin «por qué importa» inventado; compara 1 semana de salida con la del bot con IA (noticias/noticias.json, campo uso) y propón: A) todo local, B) local + Gemini gratuito solo para resumen, C) local + Haiku solo para urgentes con tope. No toques noticias.py ni secretos; no actives workflows`
 - C172 · Órbita y móvil · Pendientes de la auditoría visual: móvil con tema oscuro por de · Sonnet S · ~~2 % · `Lee informes/research/2026-11-07-auditoria-visual-tablet-pc.md (sección Pendientes). Fuerza el tema oscuro por defecto en docs/movil/index.html (líneas con prefers-color-scheme) salvo elección manual del usuario; matriz país×tema como lista a 375 px; sombra o indicador de scroll horizontal en tablas anchas; oculta el filtro País en «Mis activos»; verifica rutas del service worker en GitHub Pages`
 - C173 ◐ en parte · Centro · Verificar noticias pendientes de prioridad alta y de más de 14 días (7- · Sonnet S · ~~3 % · ``
 - C176 ◐ en parte · Centro · Verificar prensa 4-6 nov (7 noticias) · Sonnet S · ~~1 % · ``
-- C178 ◐ en parte · Órbita · Paneles de crédito: spreads (FRED), estrés financiero (NFCI) y crédito/ · Sonnet M · ~~3 % · ``
 - C179 ◐ en parte · Países · W11 refresco de 6 fichas políticas (China, Brasil, Sudáfrica, Indonesia · Sonnet S · ~~2 % · ``
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
@@ -112,7 +110,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (7) → W03 · BR/ley_marco; BR/custodia; BR/politica; RU/stablecoins
 - 🔴 Voces: Voces sin confirmar (7) → W06 · 5 llevan más de 14 días
 - 🟡 Radar regulatorio: Celdas sin dato (30) → W03 · Más huecos: EG 5, ET 4, UK 4, ZA 3, ID 3
-- 🟡 Países (política): Fichas con datos de más de 90 días o sin fecha (6) → W11 · Irán, Emiratos Árabes Unidos, El Salvador, Argentina, Venezuela, Cuba
 
 ## Bots con problema
 - Verificación mensual

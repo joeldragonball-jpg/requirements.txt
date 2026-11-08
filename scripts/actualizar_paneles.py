@@ -1423,6 +1423,63 @@ def leer_bis_deuda():
     return salida
 
 
+def leer_banca():
+    """Solvencia y morosidad de los bancos españoles (BCE, dataset SUP, supervisión bancaria) [P]; trimestral, últimos 5 puntos. Códigos confirmados leyendo cada serie (título del BCE)."""
+    salida = {"fuente": "https://data.ecb.europa.eu/", "fuente_nombre": "BCE, supervisión bancaria (SUP)", "nivel": "P", "series": [], "fallos": []}
+    defs = (("npl", "I7000", "Morosidad (NPL): préstamos dudosos / préstamos", "%", False), ("cet1", "I4008", "Capital de máxima calidad (CET1)", "% de activos ponderados", True),
+            ("lcr", "I3017", "Ratio de cobertura de liquidez (LCR, mínimo 100 %)", "%", True), ("nsfr", "I3214", "Ratio de financiación estable (NSFR, mínimo 100 %)", "%", True))
+    for sid, cod, nombre, unidad, _ in defs:
+        for grupo, etiqueta in (("ALL", "todas las entidades supervisadas"), ("SII", "entidades significativas")):
+            clave = f"Q.ES.W0._Z.{cod}._T.{grupo}._Z._Z._Z.PCT.C"
+            try:
+                texto = _json_url(f"https://data-api.ecb.europa.eu/service/data/SUP/{clave}?lastNObservations=5&format=csvdata", cabeceras={"Accept": "text/csv"}, t=40)
+                filas = [f for f in csv.DictReader(io.StringIO(texto)) if f.get("OBS_VALUE")]
+                v = sorted((f["TIME_PERIOD"], float(f["OBS_VALUE"])) for f in filas)
+                if len(v) < 2:
+                    raise ValueError("pocas observaciones")
+                titulo = filas[-1].get("TITLE", "")
+                if cod == "I4008" and "CET1" not in titulo or cod == "I3017" and "Liquidity coverage" not in titulo or cod == "I3214" and "Net stable" not in titulo or cod == "I7000" and "Non-performing" not in titulo:
+                    raise ValueError("el título de la serie no coincide: " + titulo[:60])
+                salida["series"].append({"id": f"{sid}_{grupo.lower()}", "tema": sid, "nombre": nombre, "pais": "España", "grupo": etiqueta, "unidad": unidad, "clave": "BCE SUP " + clave,
+                                         "enlace": f"https://data.ecb.europa.eu/data/datasets/SUP/SUP.{clave}", "valor": v[-1][1], "fecha": v[-1][0].replace("-Q", "-T"), "anterior": v[-2][1],
+                                         "hace_4t": v[0][1] if len(v) == 5 else None, "serie": [p[1] for p in v]})
+            except Exception as e:
+                salida["fallos"].append(f"banca {sid} {grupo}: {type(e).__name__}: {e}")
+    if not salida["series"]:
+        raise ValueError("BCE SUP sin series")
+    return salida
+
+
+DEPEG = (("tether", "USDT", "Tether (USDT)", "https://tether.io/"), ("usd-coin", "USDC", "Circle (USDC)", "https://www.circle.com/transparency"),
+         ("ripple-usd", "RLUSD", "Ripple (RLUSD)", "https://ripple.com/products/stablecoin/"), ("usds", "USDS", "Sky (USDS)", "https://sky.money/"),
+         ("ethena-usde", "USDe", "Ethena (USDe)", "https://app.ethena.fi/dashboards/transparency"))
+
+
+def leer_depeg():
+    """Precio diario de stablecoins frente a 1 $ y desviación máxima de 30 días (DefiLlama /stablecoinprices, agregador, nivel S). Enlaces a las páginas del emisor: no se leen ni se afirma nada de ellas."""
+    salida = {"fuente": "https://defillama.com/stablecoins", "fuente_nombre": "DefiLlama (agregador, sin clave)", "nivel": "S", "series": [], "fallos": [], "umbral_aviso": 0.5}
+    datos = json.loads(_json_url("https://stablecoins.llama.fi/stablecoinprices", t=90))
+    datos = [d for d in datos if d.get("date")]
+    datos.sort(key=lambda d: d["date"])
+    ult = datos[-1]["date"]
+    ventana = [d for d in datos if d["date"] >= ult - 30 * 86400]
+    for gid, simb, nombre, enlace in DEPEG:
+        pts = [(d["date"], d["prices"][gid]) for d in ventana if d.get("prices", {}).get(gid) is not None]
+        if len(pts) < 5:
+            salida["fallos"].append(f"depeg {simb}: pocos precios en 30 días")
+            continue
+        dev = [(t, (p - 1) * 100) for t, p in pts]
+        tm, mx = max(dev, key=lambda x: abs(x[1]))
+        fecha = datetime.fromtimestamp(pts[-1][0], timezone.utc).strftime("%Y-%m-%d")
+        salida["series"].append({"id": simb.lower(), "nombre": nombre, "simbolo": simb, "enlace_emisor": enlace, "clave": "DefiLlama " + gid, "enlace": "https://defillama.com/stablecoin/" + gid,
+                                 "valor": round(pts[-1][1], 5), "fecha": fecha, "desv_pct": round(dev[-1][1], 3), "max_desv_30d": round(mx, 3),
+                                 "fecha_max_desv": datetime.fromtimestamp(tm, timezone.utc).strftime("%Y-%m-%d"), "aviso": abs(mx) > salida["umbral_aviso"],
+                                 "serie": [round(p, 4) for _, p in pts]})
+    if not salida["series"]:
+        raise ValueError("depeg sin series")
+    return salida
+
+
 FRED_CAIDO = False  # FRED no responde desde los runners de GitHub: tras el primer fallo se omite el resto
 LIMITE_S = 200  # tope total de descarga: el workflow corta a los 5 min y perdería todo
 
@@ -1440,7 +1497,7 @@ def main():
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
     limite = time.monotonic() + LIMITE_S
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("espana_ine", leer_espana_ine), ("espana_deuda", leer_espana_deuda), ("espana_hipotecas", leer_espana_hipotecas), ("vivienda_eurostat", leer_vivienda_eurostat), ("brasil", leer_brasil), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias), ("divisas", leer_divisas), ("energia_precios", leer_electricidad), ("alimentos", leer_alimentos), ("chips", leer_chips), ("spreads", leer_spreads), ("estres", leer_estres), ("bis_deuda", leer_bis_deuda)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("espana_ine", leer_espana_ine), ("espana_deuda", leer_espana_deuda), ("espana_hipotecas", leer_espana_hipotecas), ("vivienda_eurostat", leer_vivienda_eurostat), ("brasil", leer_brasil), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias), ("divisas", leer_divisas), ("energia_precios", leer_electricidad), ("alimentos", leer_alimentos), ("chips", leer_chips), ("spreads", leer_spreads), ("estres", leer_estres), ("bis_deuda", leer_bis_deuda), ("banca", leer_banca), ("depeg", leer_depeg)):
         if SOLO and clave not in SOLO:
             if clave in previo:
                 salida[clave] = previo[clave]

@@ -958,6 +958,27 @@ function nBisDeuda(){
     ['España ha reducido mucho su deuda privada y su DSR (11,7 %) está bajo.','Francia y China tienen una carga alta, y la deuda de las empresas de la zona euro es elevada.'],
     'no permite decir que habrá impagos ni compara países sin matices (definiciones, tipos fijos o variables, ahorro). Dato trimestral con ~5 meses de retraso. Alerta del tablero: DSR de España +1 pp en un año.');
   return w}
+function nBanca(){
+  const S=(P.banca||{}).series||[],w=el('div');
+  const enl=r=>{const a=el('a',null,r.clave.replace('BCE SUP ',''));a.href=r.enlace;a.target='_blank';a.rel='noopener';return a};
+  w.append(tabla([{t:'Indicador (España)',f:r=>r.nombre},{t:'Entidades',f:r=>r.grupo},{t:'Último',n:1,f:r=>num(r.valor,2)+' %'},{t:'Trimestre',f:r=>r.fecha},{t:'Anterior',n:1,f:r=>num(r.anterior,2)+' %'},
+    {t:'Hace 4 trimestres',n:1,f:r=>r.hace_4t==null?'—':num(r.hace_4t,2)+' %'},{t:'Evolución (5 trim.)',f:r=>spark(r.serie||[])},{t:'Serie',f:enl}],S));
+  lectura(w,'Mide la salud de los bancos españoles: morosidad (parte de los préstamos en dudoso), capital CET1 (colchón frente a pérdidas) y liquidez a 30 días (LCR) y a un año (NSFR).',
+    'Más morosidad o menos capital/liquidez = menos margen ante un shock; lo contrario = más margen.',
+    ['morosidad cerca de mínimos recientes y LCR/NSFR muy por encima del 100 % exigido indican bancos con holgura.','el CET1 ha bajado en el último trimestre y la liquidez es inferior a la de hace un año; la morosidad es un indicador retrasado (sube cuando ya hay problemas).'],
+    'no permite decir que un banco concreto esté sano ni anticipar una crisis; son medias del sistema, con ~4 meses de retraso, y no incluyen riesgo inmobiliario fuera de balance. Alerta del tablero: NPL +0,5 pp en un año.');
+  return w}
+function nDepeg(){
+  const B=P.depeg||{},S=B.series||[],w=el('div'),u=B.umbral_aviso||0.5;
+  w.append(tabla([{t:'Stablecoin',f:r=>r.nombre},{t:'Precio (USD)',n:1,f:r=>num(r.valor,4)},{t:'Fecha',f:r=>r.fecha},{t:'Desviación frente a 1 $',n:1,f:r=>cambio(r.desv_pct,'%',2)},
+    {t:'Desviación máx. 30 días',n:1,f:r=>{const c=el('span');c.append(cambio(r.max_desv_30d,'%',2),' ('+r.fecha_max_desv+')');if(r.aviso){c.style.color='var(--baja)';c.append(' ⚠ >'+u+' %')}return c}},
+    {t:'Evolución (30 días)',f:r=>spark(r.serie||[])},{t:'Datos',f:r=>{const a=el('a',null,'DefiLlama');a.href=r.enlace;a.target='_blank';a.rel='noopener';return a}},
+    {t:'Página del emisor (sin leer)',f:r=>{const a=el('a',null,'Reservas / transparencia');a.href=r.enlace_emisor;a.target='_blank';a.rel='noopener';return a}}],S));
+  lectura(w,'Compara el precio de mercado de cada stablecoin con 1 $ y la peor desviación de los últimos 30 días.',
+    'Desviación negativa sostenida = el mercado duda de que se pueda canjear a la par; cerca de 0 = paridad.',
+    ['desviaciones de centésimas de punto son ruido normal de mercado y la paridad se ha mantenido todo el mes.','RLUSD, USDT o USDe son emisores o mecanismos distintos: la calidad de las reservas o de la cobertura no se ve en el precio hasta que hay un problema.'],
+    'nada sobre las reservas: el precio es un agregador [S], no una prueba de respaldo. Las cifras de reservas están en las páginas de cada emisor (Circle, Tether, Ripple), que aquí solo se enlazan y no se han leído. Alerta del tablero: desviación > '+String(u).replace('.',',')+' %.');
+  return w}
 function nMaterias(){
   const M=(P.materias||{}).materias||[],S=(((P.materias||{}).spot_eia)||{}).series||[];
   const filas=S.map(x=>({nombre:x.nombre+' (spot, EIA)',unidad:x.unidad,valor:x.valor,fecha:x.fecha,cambio_1d:x.cambio_1d,cambio_1m:x.cambio_1m})).concat(M);
@@ -1010,6 +1031,8 @@ function panelesGrupo(gid){
     if(P.spreads)add('riesgos','Termómetro de spreads de crédito (HY, IG, BBB, CCC)',nSpreads,pie(P.spreads,'ICE BofA vía FRED'),true);
     if(P.estres)add('riesgos','Estrés financiero de EE. UU. (NFCI y STLFSI4)',nEstres,pie(P.estres,'Fed de Chicago y de St. Louis vía FRED'),true);
     if(P.bis_deuda)add('riesgos','Deuda privada sobre PIB y carga de la deuda (BIS)',nBisDeuda,pie(P.bis_deuda,'BIS'),true);
+    if(P.banca)add('riesgos','Solvencia y morosidad de los bancos españoles (BCE)',nBanca,pie(P.banca,'BCE, supervisión bancaria'),true);
+    if(P.depeg)add('riesgos','Alerta de depeg de stablecoins (USDT, USDC, RLUSD, USDS, USDe)',nDepeg,pie(P.depeg,'DefiLlama, agregador'),true);
     if(CAL)add('riesgos','Calificaciones soberanas (nota de solvencia de cada país)',nCalif,{nivel:'P',t:'Agencias y tesoros · leído '+CAL.leido},true)}
   else if(gid==='energia'){
     if(P.ormuz)add('energia','Estrecho de Ormuz',nOrmuz,pie(P.ormuz,'IMF PortWatch'),false);
