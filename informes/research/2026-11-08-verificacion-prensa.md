@@ -44,3 +44,17 @@ Nivel de acceso: Chrome (extensión) **no estaba conectado**; usé curl contra F
 - **CLARITY Act (H.R.3633) → estado oficial leído [P]** en congress.gov (all-actions): aprobada en la Cámara el 17-jul-2025 (294-134); en el Senado, en el calendario desde el 1-jun-2026 (Calendar No. 423). El 15-sep-2026 la cloture sobre la moción de proceder **no se invocó, 49-50** (Record Vote 234) y Tillis presentó moción de reconsideración. Último acto registrado: 15-sep-2026. La cifra del «31 %» sigue sin fuente (no es dato legislativo; sería de un mercado de predicción) [VERIFICAR].
 - **Egipto (NEA, elections.eg):** la web carga; en portada constan las resoluciones nº 1 y nº 2 de 2026 con el resultado final de las repeticiones (19 y 27 distritos). Texto de las resoluciones y participación 32,41 % no leídos aún.
 - **Etiopía (NEBE):** error 523 de Cloudflare también con VPN (servidor de origen caído). **Indonesia (OJK):** la página redirige a otro dominio y no se puede leer.
+
+## Binance: comunicado oficial leído (8-nov, noche)
+- **Recovery Update #9** (Binance Support, 6-nov-2026, 04:06; binance.com/en/support/announcement/detail/a2dd10b860a14c35a856fe9d66d6032c) [P]: reapertura progresiva de retiradas por red y activo «tras comprobaciones de seguridad»; los depósitos siguen abiertos. En la red ETH se reabren, entre otros, **XRP** y U; en la lista no aparece XLM. No da cifra del robo ni atribución; cita su canal de X para novedades. Es el noveno parte de recuperación: confirma que la reapertura va por fases, no que esté completa.
+- **No leído:** el hilo «Security Incident» en X ni los comunicados 1-8 (el 1-nov, ~95 % repuesto, sigue como [S] por prensa).
+- **KPU (Indonesia):** la web carga pero el buscador y las secciones no muestran contenido en la lectura de texto; calendario de las generales de 2029 sin confirmar [VERIFICAR].
+
+## Egipto: NEA leída (8-nov, noche)
+- **Resolución nº 2 de 2026 de la NEA** (elections.eg/events-menu/news/231-2-2026-30-2025) [P]: resultado final de la repetición en **27 distritos** de la primera fase, solo escaños del sistema individual; votación 31-dic-2025 y 1-ene-2026 en el exterior y 3-4-ene-2026 en Egipto. Confirma que la cifra de «27 distritos» de la ficha es correcta. La resolución nº 1 (19 distritos) existe en portada; no abierta.
+- **No aparece en el texto leído:** participación (32,41 %), número de diputados (568) ni fecha del 10-ene; el contenido está en un archivo adjunto («تحميل الملف») que no he abierto. La ficha de Egipto sigue en S para esos datos.
+
+## Indonesia y Etiopía: intento con otra VPN (8-nov, noche)
+- **NEBE (Etiopía):** sigue en error 523 de Cloudflare también desde Londres (21:32 UTC): caída del servidor de origen, no de la VPN.
+- **OJK:** no carga con esta VPN (la navegación no cambia de página). Singapur y Turquía tampoco, según Joel.
+- **Alcanzables:** pajak.go.id (DJP) y jdih.kemenkeu.go.id cargan. La página de resumen de JDIH solo mostró un enlace a PMK 53/2025; el texto de PMK 50/2025 no se leyó. Los resultados de búsqueda sobre PMK 50/2025 (0,21 % plataformas nacionales, 1 % extranjeras, sin IVA en la entrega, vigente desde 1-ago-2025) coinciden con la ficha, pero son extractos, no lectura de la norma [S]. Sin dato nuevo de OJK ni de KPU: Indonesia sigue en S.
