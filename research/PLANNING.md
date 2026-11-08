@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-08 22:24 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-08 22:34 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -69,12 +69,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C208 · Capa «Mi cartera» sin importes con el importador CSV · Opus L · ~~4 % · ``
 - C209 · Modo familia: vista reducida sin racha ni IA · Opus L · ~~2 % · ``
 - C210 · Capas nuevas: flujos de ETF de XRP/XLM, stablecoins, vivienda y combustibles UE · Opus L · ~~4 % · ``
-- C211 · Órbita: buscador global y barra «Ir a» común a todas las pestañas · Sonnet M · ~~0,8 % · ``
-- C212 · Órbita: filtro de país, capa y certeza compartido entre pestañas y guardado en e · Sonnet M · ~~0,6 % · ``
 - C213 · Órbita: enlaces entre datos (Calendario, Línea de tiempo, Matriz, Voces y ficha  · Sonnet M · ~~1,5 % · ``
-- C214 · Órbita en tablet: controles de 40 px, tablas con sombra y primera columna fija,  · Sonnet S · ~~0,5 % · ``
-- C215 · Órbita: cabecera con «lo más viejo es X» y semáforo de frescura clicable · Sonnet S · ~~0,3 % · ``
-- C216 · Órbita: índice lateral fijo en pestañas largas (Paneles, Capas, Voces) · Sonnet S · ~~0,4 % · ``
 - C217 · Órbita: comparador de países como vista (2-4 países, mismo periodo) · Opus L · ~~3 % · ``
 - C218 · Órbita: comparador de capas lado a lado · Sonnet M · ~~2 % · ``
 - C219 · Órbita: modo foco en Resumen (solo lo que cambió y lo que caduca) · Sonnet M · ~~0,8 % · ``

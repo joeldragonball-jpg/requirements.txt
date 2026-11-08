@@ -209,14 +209,48 @@ small.per{color:var(--tx2);font-size:var(--fs-xs);font-weight:400}
 .hoy ul{margin:4px 0;padding-left:20px}.hoy li{margin:2px 0}
 .mis .cols2{grid-template-columns:repeat(auto-fit,minmax(min(100%,600px),1fr))}.mis .cols2>div{min-width:0;overflow-x:auto}.mis td.n{white-space:normal;overflow-wrap:anywhere;min-width:7ch}.mis td,.mis th{overflow-wrap:anywhere}
 .mis .kpi b{font-size:clamp(18px,.9vw + 8px,24px)}.pie-leyenda{margin:14px 0 6px;padding:8px 12px;border:1px dashed var(--lin);border-radius:8px;color:var(--tx2);font-size:var(--fs-xs)}
+/* C211 · buscador global */
+.barra .gb{position:relative;flex:1 1 220px;min-width:170px;max-width:420px}
+#gbus{width:100%;box-sizing:border-box}
+#gres{position:absolute;z-index:30;top:100%;left:0;right:0;max-height:60vh;overflow:auto;background:var(--panel);border:1px solid var(--lin);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.45);padding:4px;color:var(--tx)}
+#gres[hidden]{display:none}
+#gres h4{margin:6px 8px 2px;font-size:var(--fs-xs);color:var(--tx2);text-transform:uppercase;letter-spacing:.08em}
+#gres button{display:block;width:100%;text-align:left;background:none;border:0;color:inherit;padding:8px 10px;border-radius:6px;cursor:pointer;font:inherit;min-height:40px}
+#gres button:hover,#gres button:focus{background:rgba(255,255,255,.08)}
+#gres small{color:var(--tx2)}
+/* C212 · filtros activos */
+#fact{color:var(--ac)}#fact button{margin-left:6px}
+/* C215 · cabecera: lo más viejo */
+#estado button{margin-left:4px}#estado span[hidden]{display:none}
+/* C216 · índice fijo arriba al desplazarse y botón subir */
+.idx{position:sticky;top:0;z-index:6;max-height:58px;overflow:auto}
+#subir{position:fixed;right:14px;bottom:14px;z-index:20;min-width:44px;min-height:44px;border-radius:22px;border:1px solid var(--lin);background:var(--panel);color:var(--tx);cursor:pointer;font:inherit;display:none}
+#subir.on{display:block}
+/* C214 · tablet: zonas de toque de 40 px, tablas con primera columna fija y Noticias sin desborde */
+@media (hover:none),(max-width:1100px){
+ .barra select,.barra button,.barra input[type=text],.barra input[type=search]{min-height:40px}
+ .barra input[type=checkbox]{width:22px;height:22px}
+ button,select,summary,.idx a,input[type=text],input[type=search]{min-height:40px}
+ summary{display:list-item;padding-top:8px;padding-bottom:8px}
+ .idx a{display:inline-flex;align-items:center;padding:0 6px}
+ a:not(.idx a){padding:11px 3px;margin:-11px -3px}
+}
+@media(max-width:820px){
+ table:not(.mat) th:first-child,table:not(.mat) td:first-child{position:sticky;left:0;background:var(--panel);z-index:1;box-shadow:2px 0 0 rgba(255,255,255,.08)}
+}
+@media(max-width:820px){.noticias{grid-template-columns:minmax(0,1fr)!important}}
+#v-noticias,#v-noticias *{overflow-wrap:anywhere;min-width:0;max-width:100%}
+#v-noticias img{height:auto}
 </style></head><body>
 <div class="barra">
+<span class="gb"><input id="gbus" type="search" placeholder="Buscar en todo o ir a una pestaña…" autocomplete="off" aria-label="Buscar en toda la Órbita"><div id="gres" hidden></div></span>
 <label>País <select id="fpais"><option value="">Todos</option></select></label>
 <label>Tema <select id="ftema"><option value="">Todos</option></select></label>
 <label>Certeza <select id="fcert"><option value="">Todas</option><option value="P">Solo [P]</option><option value="S">[P] y [S]</option></select></label>
 <label><input type="checkbox" id="fcambio"> Solo cambios en 30 días (matriz)</label>
 <span>Densidad matriz: <button id="dsem" class="on">Semáforo</button><button id="ddat">Datos</button></span>
 <span class="letra" title="Tamaño de letra del tablero; se recuerda en este navegador">Letra <button id="lmenos" aria-label="Letra más pequeña">A−</button><output id="lval"></output><button id="lmas" aria-label="Letra más grande">A+</button></span>
+<span id="fact"></span>
 <span id="estado"></span>
 </div>
 <main>
@@ -232,6 +266,7 @@ small.per{color:var(--tx2);font-size:var(--fs-xs);font-weight:400}
 <section class="vista" id="v-paneles"></section>
 </main>
 <div class="pie-leyenda" id="pie-comun"></div>
+<button id="subir" aria-label="Volver arriba" title="Volver arriba">↑</button>
 <div id="tip"></div>
 <script>
 const $=id=>document.getElementById(id);
@@ -328,6 +363,10 @@ function cargar(){
   for(const j of R.jurisdicciones){const o=el('option',null,j.nombre);o.value=j.id;$('fpais').append(o)}
   for(const t of R.temas){const o=el('option',null,t.nombre);o.value=t.id;$('ftema').append(o)}
   ['fpais','ftema','fcert','fcambio'].forEach(i=>$(i).onchange=pintarTodo);
+  /* C212 · los filtros se recuerdan en este navegador y se avisa de los activos aunque la pestaña no los muestre */
+  try{const gf=JSON.parse(localStorage.getItem('orbita-filtros')||'{}');['fpais','ftema','fcert'].forEach(i=>{if(gf[i]&&[...$(i).options].some(o=>o.value===gf[i]))$(i).value=gf[i]});if(gf.fcambio)$('fcambio').checked=true}catch(e){}
+  ['fpais','ftema','fcert','fcambio'].forEach(i=>$(i).addEventListener('change',()=>{try{localStorage.setItem('orbita-filtros',JSON.stringify({fpais:$('fpais').value,ftema:$('ftema').value,fcert:$('fcert').value,fcambio:$('fcambio').checked}))}catch(e){}filtrosActivos()}));
+  filtrosActivos();frescuraCabecera();busquedaGlobal();
   $('dsem').onclick=()=>{modo='sem';$('dsem').className='on';$('ddat').className='';pintarTodo()};
   $('ddat').onclick=()=>{modo='dat';$('ddat').className='on';$('dsem').className='';pintarTodo()};
   /* C129 · Letra: si Chrome está alejado (p. ej. 80 %), arranca compensando; lo que elija Joel se recuerda */
@@ -357,7 +396,7 @@ function vivoCargar(){
   Promise.all([peticion(URL_VIVO),peticion(URL_CG)]).then(([j,cg])=>{
     if(!aplicarVivo(j,cg))return;
     const hora=new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});window.HORAV=hora;
-    const e=$('estado');if(e){e.textContent=e.textContent.replace(/ · en vivo.*$/,'');e.append(document.createTextNode(' · '));const t=el('span','vivo-tag');t.append(el('i'),document.createTextNode('en vivo '+hora+(j?' (bolsas y ETF: '+j.leido+')':' (solo cripto)')));e.append(t)}
+    const e=$('estado');if(e){e.querySelectorAll('.vivo-sep,.vivo-tag').forEach(x=>x.remove());const sp=el('span','vivo-sep',' · ');e.append(sp);const t=el('span','vivo-tag');t.append(el('i'),document.createTextNode('en vivo '+hora+(j?' (bolsas y ETF: '+j.leido+')':' (solo cripto)')));e.append(t)}
     const y=document.scrollingElement?document.scrollingElement.scrollTop:0;pintarTodo();if(document.scrollingElement)document.scrollingElement.scrollTop=y});
   clearTimeout(vivoCargar.t);vivoCargar.t=setTimeout(vivoCargar,300000)}
 const RM=matchMedia('(prefers-reduced-motion:reduce)').matches,vistos=new Set();
@@ -379,7 +418,7 @@ function contar(sec){
 function marcarScroll(e){const t=e&&e.target&&e.target.nodeType===1?[e.target]:document.querySelectorAll('table:not(.mat),.mis .cols2>div,details.bl,.grp,.mcol>.grp');
   t.forEach(x=>{if(!x.classList)return;const m=x.scrollWidth-x.clientWidth;x.classList.toggle('sc-d',m>4&&x.scrollLeft<m-4);x.classList.toggle('sc-i',m>4&&x.scrollLeft>4)})}
 document.addEventListener('scroll',marcarScroll,true);addEventListener('resize',()=>setTimeout(marcarScroll,50));
-function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles})[tab]();if(tab==='capas'||tab==='paneles'||tab==='noticias')anclas($('v-'+tab),tab);setTimeout(marcarScroll,60)}
+function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles})[tab]();if(['capas','paneles','noticias','resumen','calendario','matriz','espana','paises'].includes(tab))anclas($('v-'+tab),tab);setTimeout(marcarScroll,60)}
 
 /* ---------- bloques de datos reutilizables (Capas y Paneles) ---------- */
 const PL=['3M','6M','1A','2A','3A','5A','10A','15A','20A','30A'];
@@ -512,9 +551,45 @@ function semBloque(b){
   const f=lista.slice().sort()[0],r=semaforo(f);
   const i=el('i','sem '+r.c);i.title='Verde ≤ 7 días · ámbar ≤ 14 · rojo > 14';
   d.append(i,document.createTextNode('Frescura: '+(r.n===0?'de hoy':'hace '+r.n+' d')+' (dato del '+f+')'+(man?' · '+man:'')));b.append(d);return d}
-/* C165 · índice con anclas en las pestañas largas (Capas, Paneles y Noticias) */
+/* C212 · resumen de los filtros activos con botón para quitarlos */
+function filtrosActivos(){const a=[];if($('fpais').value)a.push('país: '+$('fpais').selectedOptions[0].text);if($('ftema').value)a.push('tema: '+$('ftema').selectedOptions[0].text);if($('fcert').value)a.push('certeza: '+$('fcert').selectedOptions[0].text);if($('fcambio').checked)a.push('solo cambios');
+  const e=$('fact');e.textContent='';if(!a.length)return;e.append(document.createTextNode('Filtros activos: '+a.join(' · ')));
+  const b=el('button',null,'Quitar');b.onclick=()=>{$('fpais').value='';$('ftema').value='';$('fcert').value='';$('fcambio').checked=false;$('fpais').dispatchEvent(new Event('change'))};e.append(b)}
+/* C215 · cabecera: en vez de cuatro fechas, la más vieja con su semáforo y un botón para ver todas */
+function frescuraCabecera(){const M=D.manuales||{},e=$('estado');
+  const L=[['Radar de regulación',R.revisado],['Órbita (último movimiento)',D.movimientos.map(m=>m.fecha).filter(f=>f<=HOYS).sort().pop()||D.version],['Paneles de datos',P&&P.leido],['Indicadores (manual)',M.indicadores],['Liquidez (manual)',M.liquidez]]
+    .filter(x=>x[1]).map(x=>({n:x[0],f:String(x[1]).slice(0,10)})).map(x=>({...x,d:edadDias(x.f)})).filter(x=>x.d!=null);
+  if(!L.length)return;const o=L.slice().sort((a,b)=>b.d-a.d)[0],r=semaforo(o.f);
+  e.textContent='';const i=el('i','sem '+r.c);i.title='Verde ≤ 7 días · ámbar ≤ 14 · rojo > 14';
+  e.append(i,document.createTextNode('Lo más viejo: '+o.n+' ('+(o.d===0?'de hoy':'hace '+o.d+' d')+'). '));
+  const det=el('span',null,L.map(x=>x.n+': '+x.f+' (hace '+x.d+' d)').join(' · '));det.hidden=true;
+  const b=el('button',null,'Ver las fechas');b.onclick=()=>{det.hidden=!det.hidden};e.append(b,det)}
+/* C211 · buscador global: busca en hechos, voces, países y capas y abre la pestaña con la búsqueda ya puesta; vacío = lista de pestañas */
+function busquedaGlobal(){const inp=$('gbus'),res=$('gres');
+  const norm=t=>String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const cierra=()=>{res.hidden=true};
+  const irTab=id=>{try{if(window.parent&&window.parent.irVista)return window.parent.irVista(id)}catch(e){}ir(id)};
+  const abre=g=>{res.textContent='';let n=0;for(const [tit,items] of g){if(!items.length)continue;res.append(el('h4',null,tit));
+    for(const it of items){const b=el('button');b.append(document.createTextNode(it.t));if(it.s){b.append(document.createElement('br'),el('small',null,it.s))}b.onclick=()=>{cierra();it.f()};res.append(b);n++}}
+    if(!n)res.append(el('h4',null,'Sin resultados'));res.hidden=false};
+  const buscar=()=>{const raw=inp.value.trim(),q=norm(raw);
+    const tabs=TABS.filter(([i,t])=>!q||norm(t).includes(q)).map(([i,t])=>({t:t,s:'Abrir pestaña',f:()=>irTab(i)}));
+    if(!q){abre([['Ir a',tabs]]);return}
+    const paises=R.jurisdicciones.filter(j=>norm(j.nombre).includes(q)).slice(0,6).map(j=>({t:j.nombre,s:'Filtrar por país y abrir la matriz',f:()=>{$('fpais').value=j.id;$('fpais').dispatchEvent(new Event('change'));irTab('matriz')}}));
+    const capas=D.capas.filter(c=>norm(c.nombre).includes(q)).slice(0,5).map(c=>({t:c.nombre,s:'Capa',f:()=>irTab('capas')}));
+    const mov=D.movimientos.filter(m=>norm((m.actor||'')+' '+(m.texto||'')).includes(q)).sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha))).slice(0,6).map(m=>({t:(m.actor||'')+' · '+String(m.texto||'').slice(0,90),s:m.fecha+' · Línea de tiempo',f:()=>{buscaTL=raw;irTab('tiempo')}}));
+    const voz=((V&&V.voces)||[]).filter(v=>norm((v.quien||'')+' '+(v.texto||'')).includes(q)).slice(0,6).map(v=>({t:(v.quien||'')+' · '+String(v.texto||'').slice(0,90),s:'Voces',f:()=>{vBusca=raw;irTab('voces')}}));
+    abre([['Pestañas',tabs.slice(0,5)],['Países',paises],['Capas',capas],['Hechos',mov],['Voces',voz]])};
+  inp.addEventListener('input',()=>{clearTimeout(inp.t);inp.t=setTimeout(buscar,150)});
+  inp.addEventListener('focus',buscar);
+  inp.addEventListener('keydown',e=>{if(e.key==='Escape'){cierra();inp.blur()}if(e.key==='Enter'){const b=res.querySelector('button');if(b)b.click()}});
+  document.addEventListener('click',e=>{if(!e.target.closest('.gb'))cierra()})}
+/* C216 · botón «subir» en las pestañas largas */
+addEventListener('scroll',()=>{const b=$('subir');if(b)b.classList.toggle('on',(document.scrollingElement||document.documentElement).scrollTop>700)},{passive:true});
+document.addEventListener('DOMContentLoaded',()=>{$('subir').onclick=()=>scrollTo({top:0,behavior:RM?'auto':'smooth'})});
+/* C165 · índice con anclas en las pestañas largas (Capas, Paneles, Noticias y, desde C216, Resumen, Calendario, Matriz, España y Países) */
 function anclas(s,tb){
-  const sel={capas:'.caja>h2',paneles:'details.bl>summary',noticias:'.noticias h3, .caja>details>summary'}[tb];if(!sel)return;
+  const sel={capas:'.caja>h2',paneles:'details.bl>summary',noticias:'.noticias h3, .caja>details>summary',resumen:'h2',calendario:'h3',matriz:'h3',espana:'details>summary',paises:'details>summary'}[tb];if(!sel)return;
   const L=[...s.querySelectorAll(sel)];if(L.length<2)return;
   const nav=el('nav','idx');nav.append(el('b',null,'Ir a:'));
   L.forEach((h,i)=>{const t=h.textContent.replace(/\s+/g,' ').trim(),dest=h.closest('details')||h,a=el('a',null,t.length>46?t.slice(0,44)+'…':t);
