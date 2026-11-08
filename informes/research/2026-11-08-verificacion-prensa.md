@@ -58,3 +58,7 @@ Nivel de acceso: Chrome (extensión) **no estaba conectado**; usé curl contra F
 - **NEBE (Etiopía):** sigue en error 523 de Cloudflare también desde Londres (21:32 UTC): caída del servidor de origen, no de la VPN.
 - **OJK:** no carga con esta VPN (la navegación no cambia de página). Singapur y Turquía tampoco, según Joel.
 - **Alcanzables:** pajak.go.id (DJP) y jdih.kemenkeu.go.id cargan. La página de resumen de JDIH solo mostró un enlace a PMK 53/2025; el texto de PMK 50/2025 no se leyó. Los resultados de búsqueda sobre PMK 50/2025 (0,21 % plataformas nacionales, 1 % extranjeras, sin IVA en la entrega, vigente desde 1-ago-2025) coinciden con la ficha, pero son extractos, no lectura de la norma [S]. Sin dato nuevo de OJK ni de KPU: Indonesia sigue en S.
+
+## Egipto: PDF de la resolución nº 2 leído como imagen (8-nov, noche)
+- El PDF de la NEA (elections.eg/images/pdfs/laws/parliament_2025/2-2026.pdf, 9 páginas) es una imagen escaneada. Extraje las páginas y vi la 1 y la 9 [P]: la resolución se emite el **10-ene-2026**, con aprobación del consejo de la NEA ese mismo día; proclama a los ganadores del sistema individual en la repetición de la primera fase (votada 31-dic-2025/1-ene-2026 en el exterior y 3-4-ene-2026 en Egipto); firma el presidente de la NEA, juez Hazem Badawi. En la página 9, 4 ganadores (3 independientes y 1 de Mostaqbal Watan).
+- **No contiene** participación ni recuento total de diputados; siguen en Ahram [S]. Páginas 2-8 no leídas.
