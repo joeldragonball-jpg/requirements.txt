@@ -420,7 +420,7 @@ function marcarScroll(e){const t=e&&e.target&&e.target.nodeType===1?[e.target]:d
   t.forEach(x=>{if(!x.classList)return;const m=x.scrollWidth-x.clientWidth;x.classList.toggle('sc-d',m>4&&x.scrollLeft<m-4);x.classList.toggle('sc-i',m>4&&x.scrollLeft>4)})}
 document.addEventListener('scroll',marcarScroll,true);addEventListener('resize',()=>setTimeout(marcarScroll,50));
 function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles})[tab]();if(['paneles','noticias','calendario','matriz','espana','paises'].includes(tab))anclas($('v-'+tab),tab);
-  if(tab==='espana')[...$('v-espana').querySelectorAll('details')].filter(d=>!d.parentElement.closest('details')).forEach(d=>{d.open=true});setTimeout(marcarScroll,60)}
+  if(tab==='espana')[...$('v-espana').querySelectorAll('details')].filter(d=>!d.parentElement.closest('details')).forEach(d=>{let cer={};try{cer=JSON.parse(localStorage.getItem('orbita-esp-cerrados')||'{}')}catch(e){}const k=((d.querySelector('summary')||{}).textContent||'').trim().slice(0,60);d.open=!cer[k];d.addEventListener('toggle',()=>{try{const c2=JSON.parse(localStorage.getItem('orbita-esp-cerrados')||'{}');if(d.open)delete c2[k];else c2[k]=1;localStorage.setItem('orbita-esp-cerrados',JSON.stringify(c2))}catch(e){}})});setTimeout(marcarScroll,60)}
 
 /* ---------- bloques de datos reutilizables (Capas y Paneles) ---------- */
 const PL=['3M','6M','1A','2A','3A','5A','10A','15A','20A','30A'];
@@ -757,7 +757,7 @@ function pResumen(){
       rc?{e:'Muertos en carretera por millón ('+rc.anio+')',v:n0(rc.por_millon_hab),n:'P',tip:'Eurostat'}:null,
       ho?{e:'Homicidios dolosos ('+ho.anio+')',v:n0(ho.registrados),n:'P',tip:'Eurostat, registrados por la policía'}:null]));
   c1.append(gc,el('p','nota-v','Una cifra grande por tema y las demás debajo. Pasa el ratón por una cifra para ver fecha y detalle. [P] fuente oficial · [S] prensa o agregador. Capitalizaciones y más series: pestaña Paneles de datos.'));
-  s.append(cambiaHoy(),misActivos(),c1);
+  s.append(c1,cambiaHoy(),misActivos());
   /* mayores movimientos del día: bolsas, materias primas, cripto y chips con variación de 2 % o más */
   if(P){const mv=[];
     for(const x of ((P.indices||{}).indices||[]))mv.push({n:x.nombre,v:x.cambio_1d,f:x.fecha,u:'bolsa [S]'});
@@ -820,7 +820,7 @@ function pCapas(){
   for(const x of G){const n=D.movimientos.filter(m=>x.ids.includes(m.capa)&&paisOk(m)).length;
     const p=el('div','pill'+(x===g?' on':''));const i=el('i');i.style.background=x.capas[0].color;p.append(i,document.createTextNode(x.nombre+' · '+n));if(x===g)p.style.borderColor=x.capas[0].color;
     p.title='Reúne: '+x.capas.map(c=>c.nombre).join(', ')+' · '+n+' movimientos';
-    p.onclick=()=>{selGrupo=x.id;selSub='';pCapas()};pills.append(p)}
+    p.onclick=()=>{selGrupo=x.id;selSub='';pCapas();s.scrollIntoView({block:'start',behavior:RM?'auto':'smooth'})};pills.append(p)}
   s.append(pills);
   const sub=selSub&&g.ids.includes(selSub)?selSub:'';
   const ids=sub?[sub]:g.ids,cs=g.capas.filter(c=>ids.includes(c.id)),varias=g.capas.length>1;
@@ -1132,7 +1132,13 @@ function panelesGrupo(gid){
   return L}
 
 /* ---------- 3 · Línea de tiempo ---------- */
-let capasOff=new Set(),rango='365',buscaTL='',soloRx=false;
+let capasOff=new Set(),rango='365',buscaTL='',soloRx=false,focoTL='';
+/* C224 · foco por potencia o conflicto con color propio; los conflictos salen primero en «Lo más reciente» */
+const POT_TL=[['EE. UU.','#5aa9e6',['EE. UU.']],['China','#ff6b6b',['China','Hong Kong','Taiwán']],['Rusia','#b8a1ff',['Rusia']],['UE','#2fe08f',['Unión Europea','Zona euro','Alemania','Francia','Italia']],['India','#ff9f43',['India']],['Japón','#ffd166',['Japón']],['Reino Unido','#9fe7ff',['Reino Unido']],['España','#ff8fb1',['España']]];
+const CONF_TL=['Irán','Rusia','Ucrania','Israel','Palestina','Siria','Yemen','Taiwán'];
+const esConf=m=>(m.capa==='energia')||(m.pais||[]).some(p=>CONF_TL.includes(p))||/guerra|conflicto|ormuz|sanci[oó]n|misil|ataque/i.test((m.texto||'')+' '+(m.actor||''));
+const colPot=m=>{for(const [n,c,ps] of POT_TL)if((m.pais||[]).some(p=>ps.includes(p)))return c;return null};
+const focoOk=m=>!focoTL||(focoTL==='conf'?esConf(m):(POT_TL.find(x=>x[0]===focoTL)||[0,0,[]])[2].some(p=>(m.pais||[]).includes(p)));
 function pTiempo(){
   const s=$('v-tiempo');s.textContent='';
   const c=el('div','caja');
@@ -1148,6 +1154,10 @@ function pTiempo(){
   ctl.append(dcp);
   const lrx=el('label');const krx=el('input');krx.type='checkbox';krx.checked=soloRx;krx.onchange=()=>{soloRx=krx.checked;pTiempo()};lrx.append(krx,document.createTextNode(' Solo hechos con reacción de precios'));ctl.append(lrx);
   c.append(ctl);
+  const fb=el('div');fb.style.cssText='display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px';
+  const chipF=(id,txt,col)=>{const b=el('button',null,txt);b.style.cssText='border-radius:14px;padding:4px 12px;border:1px solid '+(col||'var(--lin)')+';background:'+(focoTL===id?(col||'#5aa9e6')+'55':'transparent')+';color:inherit;cursor:pointer;font:inherit';b.onclick=()=>{focoTL=focoTL===id?'':id;pTiempo()};fb.append(b)};
+  chipF('conf','⚔ Conflictos y guerras','#ff6b6b');POT_TL.forEach(x=>chipF(x[0],x[0],x[1]));
+  c.append(fb);
   if(reac.length)c.append(panelReac());
   else{const nrx=D.movimientos.filter(m=>!reacMotivo(m)).length;const ay=el('div','rx-ayuda');const ic=el('i');ay.append(ic,el('b',null,'📈 '+nrx+' hechos tienen reacción de precios'),document.createTextNode(': los puntos con aro azul. Haz clic en uno y pulsa «Ver reacción» (hasta 3 a la vez) para superponer Brent, bitcoin, stablecoins, etc. alrededor de esa fecha.'));c.append(ay)}
   const g=el('div','grid2');const izq=el('div');
@@ -1161,10 +1171,10 @@ function pTiempo(){
     if(capasOff.has(cp.id))continue;
     const ca=el('div','carril');ca.append(el('div','nom',cp.nombre));const eje=el('div','eje');
     for(const mv of D.movimientos){
-      if(mv.capa!==cp.id||!paisOk(mv))continue;
+      if(mv.capa!==cp.id||!paisOk(mv)||!focoOk(mv))continue;
       if(bq&&!(mv.actor+' '+mv.texto+' '+(mv.act||[]).join(' ')+' '+(mv.ent||[]).join(' ')).toLowerCase().includes(bq))continue;
       if(soloRx&&reacMotivo(mv))continue;const t=new Date(mv.fecha+'T00:00:00');if(t<ini||t>HOY)continue;tot++;vis.push(mv);
-      const n=el('div','nodo');n.style.left=((t-ini)/span*100)+'%';n.style.background=colEst(mv.estado);
+      const n=el('div','nodo');n.style.left=((t-ini)/span*100)+'%';n.style.background=colEst(mv.estado);{const cp2=colPot(mv);if(cp2)n.style.boxShadow='0 0 0 2px '+cp2}
       if(selMov===mv)n.classList.add('sel');if(reac.includes(mv))n.classList.add('mk');const rxok=!reacMotivo(mv);if(rxok)n.classList.add('rx');n.title=mv.fecha+' · '+mv.actor+(rxok?' · 📈 con reacción de precios':'');
       if(mv.origen==='noticia')n.classList.add('noti');n.onclick=()=>{selMov=mv;pTiempo()};eje.append(n)}
     ca.append(eje);izq.append(ca)}
@@ -1175,8 +1185,8 @@ function pTiempo(){
     lado.append(el('b',null,'Haz clic en un punto para ver el hecho completo, la fuente y el nivel de certeza.'));
     const cn={};vis.forEach(m=>cn[m.estado]=(cn[m.estado]||0)+1);const ch=el('div','cuentas');
     for(const k in D.estados)if(cn[k]){const x=el('span','chip',D.estados[k].nombre+': '+cn[k]);x.style.borderColor=D.estados[k].color;x.style.background=D.estados[k].color+'2e';ch.append(x)}
-    lado.append(ch,el('h3',null,'Lo más reciente en pantalla'));
-    for(const m of vis.slice().sort((a,b)=>a.fecha<b.fecha?1:-1).slice(0,12)){const d=el('div','hecho clic');d.style.borderLeftColor=colEst(m.estado);d.append(el('b',null,m.fecha+' · '+m.actor+': '),document.createTextNode(m.texto.length>190?m.texto.slice(0,190)+'…':m.texto),botonReac(m));d.onclick=()=>{selMov=m;pTiempo()};lado.append(d)}
+    lado.append(ch,el('h3',null,'Lo más reciente en pantalla (conflictos primero)'));
+    for(const m of vis.slice().sort((a,b)=>(esConf(b)-esConf(a))||(a.fecha<b.fecha?1:-1)).slice(0,14)){const d=el('div','hecho clic');d.style.borderLeftColor=colPot(m)||colEst(m.estado);d.style.borderLeftWidth='5px';d.style.padding='8px 10px';d.style.marginBottom='8px';if(esConf(m)){const t=el('span',null,'⚔ conflicto ');t.style.cssText='color:#ff6b6b;font-weight:700;font-size:var(--fs-xs)';d.append(t)}d.append(el('b',null,m.fecha+' · '+m.actor+': '),document.createTextNode(m.texto.length>240?m.texto.slice(0,240)+'…':m.texto),botonReac(m));if((m.pais||[]).length){const pp=el('div',null,m.pais.join(' · '));pp.style.cssText='font-size:var(--fs-xs);color:var(--tx2);margin-top:3px';d.append(pp)}d.onclick=()=>{selMov=m;pTiempo()};lado.append(d)}
     if(!vis.length)lado.append(el('p','nota-v','Ningún movimiento con este rango o filtro; prueba «Todo el periodo».'))}
   else ficha(lado,selMov);
   g.append(izq,lado);c.append(g);s.append(c);
