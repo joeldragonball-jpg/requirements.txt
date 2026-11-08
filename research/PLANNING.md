@@ -1,20 +1,20 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-07 18:57 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-08 20:55 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** R00 Apertura del día · Gemini Energía y geopolítica
-**Periódicas (próxima):** W07 11-07 · W10 11-07 · W01 11-09 · W02 11-10 · W03 11-11 · W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W08 11-25
+**Hoy (máx. 3):** Gemini Noticias XRP / XLM de las últimas 24 h
+**Periódicas (próxima):** W01 11-09 · W02 11-10 · W03 11-11 · W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W08 11-25 · W07 12-05
 **Bloqueadas (15):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C87 (Propuesta de la auditoría C81 (informes/research/2) · C88 (Propuesta de la auditoría C81 (informes/research/2) · C89 (Propuesta de la auditoría C81 (informes/research/2) · C90 (Propuesta de la auditoría C81 (informes/research/2) · …
-**Parciales (22):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
+**Parciales (25):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
 **Hechas en 7 días (41):** C147, C150, C151, C152, C153, C159, C160, C145, C129, C131, C133, C134, C136, C141, C32
 
-## Hoy (sáb 2026-11-07): solo lo casi obligatorio
-- R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 5 días
+## Hoy (dom 2026-11-08): solo lo casi obligatorio
+- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 1 días
 - Sin rutina fija hoy: elige por prioridad en las secciones de abajo.
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
-- Gemini del día: toca **Energía y geopolítica** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
+- Gemini del día: toca **Noticias XRP / XLM de las últimas 24 h** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
 - Norma: 1 consulta ligera al día (unas 15 fuentes), sin repetirla. Rutina G (C20): una rotación por día; si Gemini avisa de límite o llegas al 80 %, se para por hoy y se anota en «parada». La cuota se comparte con NotebookLM.
 - Aviso de límite (antes del 2026-10-27): Una consulta de ~47 fuentes lanzada 2-3 veces agotó el límite; la cuota ya estaba gastada en NotebookLM.
 - Aviso de límite (2026-10-27): Tras W03 Sudáfrica+Indonesia, Deep Research queda desactivado hasta las 04:00 (hora de Madrid) del 27-oct, con el uso general en ~4 %. Hizo 200+ búsquedas web aunque el prompt pedía máx. 15 fuentes: el tope del prompt no se respeta. Límite oficial de Deep Research sin confirmar; de momento, 1 Deep Research por ventana (reinicio 04:00).
@@ -46,6 +46,9 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C170 ◐ en parte · Centro · Quitar la API de pago del bot de noticias: selección y resumen con regl · Sonnet M · ~~3 % · `Lee informes/research/2026-10-26-C16-costes-api.md y informes/borrador-reglas-filtro-noticias-g17.md. Diseña noticias/filtro_local.py sin IA: puntuación por reglas (fuente, palabras clave, deduplicación, BM25 contra temas de Joel), resumen = titular + primera frase de la fuente, sin «por qué importa» inventado; compara 1 semana de salida con la del bot con IA (noticias/noticias.json, campo uso) y propón: A) todo local, B) local + Gemini gratuito solo para resumen, C) local + Haiku solo para urgentes con tope. No toques noticias.py ni secretos; no actives workflows`
 - C172 · Órbita y móvil · Pendientes de la auditoría visual: móvil con tema oscuro por de · Sonnet S · ~~2 % · `Lee informes/research/2026-11-07-auditoria-visual-tablet-pc.md (sección Pendientes). Fuerza el tema oscuro por defecto en docs/movil/index.html (líneas con prefers-color-scheme) salvo elección manual del usuario; matriz país×tema como lista a 375 px; sombra o indicador de scroll horizontal en tablas anchas; oculta el filtro País en «Mis activos»; verifica rutas del service worker en GitHub Pages`
 - C173 ◐ en parte · Centro · Verificar noticias pendientes de prioridad alta y de más de 14 días (7- · Sonnet S · ~~3 % · ``
+- C176 ◐ en parte · Centro · Verificar prensa 4-6 nov (7 noticias) · Sonnet S · ~~1 % · ``
+- C178 ◐ en parte · Órbita · Paneles de crédito: spreads (FRED), estrés financiero (NFCI) y crédito/ · Sonnet M · ~~3 % · ``
+- C179 ◐ en parte · Países · W11 refresco de 6 fichas políticas (China, Brasil, Sudáfrica, Indonesia · Sonnet S · ~~2 % · ``
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
@@ -95,40 +98,37 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [media] 2026-10-22 (16 d) · hutiES a Arabia Saudi
-- [media] 2026-10-22 (16 d) · hutiES a Arabia Saudi
-- [media] 2026-10-23 (15 d) · El futuro continuo del Brent cierra en $111,97
-- [media] 2026-10-23 (15 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
-- [media] 2026-10-23 (15 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
-- [media] 2026-10-25 (13 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
-- [media] 2026-10-25 (13 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
-- [media] 2026-10-25 (13 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
-- … y 47 más en el Seguimiento
+- [media] 2026-10-22 (17 d) · hutiES a Arabia Saudi
+- [media] 2026-10-22 (17 d) · hutiES a Arabia Saudi
+- [media] 2026-10-23 (16 d) · El futuro continuo del Brent cierra en $111,97
+- [media] 2026-10-23 (16 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
+- [media] 2026-10-23 (16 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
+- [media] 2026-10-25 (14 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
+- [media] 2026-10-25 (14 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
+- [media] 2026-10-25 (14 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
+- … y 53 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (7) → W03 · BR/ley_marco; BR/custodia; BR/politica; RU/stablecoins
 - 🔴 Voces: Voces sin confirmar (7) → W06 · 5 llevan más de 14 días
 - 🟡 Radar regulatorio: Celdas sin dato (30) → W03 · Más huecos: EG 5, ET 4, UK 4, ZA 3, ID 3
-- 🟡 Países (política): Fichas con datos de más de 90 días o sin fecha (12) → W11 · China, Brasil, Sudáfrica, Indonesia, Egipto, Etiopía
+- 🟡 Países (política): Fichas con datos de más de 90 días o sin fecha (6) → W11 · Irán, Emiratos Árabes Unidos, El Salvador, Argentina, Venezuela, Cuba
 
 ## Bots con problema
 - Verificación mensual
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
-- 2026-10-27 · Reunión de la Fed (FOMC) (alto) → ✓ revisado (hecho)
 - 2026-10-28 · Reunión del BCE (alto) → ✓ revisado (hecho)
-- 2026-10-28 · DTCC: lanzamiento del servicio de tokenización de DTC (hecho el 28-oct (medio) → ✓ revisado (hecho)
-- 2026-10-28 · Canadá: decisión del Banco de Canadá sobre el tipo oficial (medio) → ✓ revisado (hecho)
 - 2026-10-29 · PIB de EE. UU. (3T, avance) y gasto en consumo PCE de septiembre (alto) → ✓ revisado (hecho)
-- 2026-10-29 · Reunión del Banco de Japón (alto) → ✓ cubierto por W01 del 2026-11-02
-- 2026-10-30 · Brasil: último día para que los proveedores cripto existentes pidan au (medio) → ✓ cubierto por W01 del 2026-11-02
+- 2026-10-29 · Reunión del Banco de Japón (alto) → ✓ cubierto por W01 del 2026-11-08
+- 2026-10-30 · Brasil: último día para que los proveedores cripto existentes pidan au (medio) → ✓ cubierto por W01 del 2026-11-08
 - 2026-11-01 · OPEP+ (7 países): reunión mensual (medio) → ✓ cubierto por W10 del 2026-11-07
 - 2026-11-03 · EE. UU.: elecciones de mitad de mandato (alto) → ✓ revisado (hecho)
 - 2026-11-03 · Australia: decisión del RBA sobre el tipo de efectivo (medio) → ✓ revisado (hecho)
 - 2026-11-04 · Tesoro de EE. UU.: anuncio trimestral de refinanciación (medio) → ⏳ SIN research: decidir (EV)
-- 2026-11-04 · Zona euro: IPCA adelantado de octubre (Eurostat) (medio) → ⏳ SIN research: decidir (EV)
-- 2026-11-05 · Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,75 % → 4,00 (alto) → ⏳ SIN research: decidir (EV)
-- 2026-11-06 · Empleo EE. UU. (informe de octubre) (alto) → ⏳ SIN research: decidir (EV)
+- 2026-11-04 · Zona euro: IPCA adelantado de octubre (Eurostat) (medio) → ✓ cubierto por W01 del 2026-11-08
+- 2026-11-05 · Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,75 % → 4,00 (alto) → ✓ cubierto por W01 del 2026-11-08
+- 2026-11-06 · Empleo EE. UU. (informe de octubre) (alto) → ✓ cubierto por W01 del 2026-11-08
 - 2026-11-06 · Brasil: bancos y entidades de pago no podrán operar con proveedores cr (medio) → ⏳ SIN research: decidir (EV)
 Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.
 

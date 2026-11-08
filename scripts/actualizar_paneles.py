@@ -1325,6 +1325,104 @@ def leer_chips():
     return _nuevo("leer_chips", "chips")
 
 
+def _fred_csv(sid, dias):
+    """Serie diaria/semanal de FRED (fredgraph.csv, sin clave, certificados verificados) como [(AAAA-MM-DD, valor)]. Respeta FRED_CAIDO."""
+    if FRED_CAIDO:
+        raise TimeoutError("FRED no responde desde este equipo (omitido)")
+    desde = (datetime.now(timezone.utc) - timedelta(days=dias)).strftime("%Y-%m-%d")
+    try:
+        texto = _json_url(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={desde}", t=15)
+    except Exception:
+        globals()["FRED_CAIDO"] = True
+        raise
+    v = []
+    for f in list(csv.reader(io.StringIO(texto)))[1:]:
+        if len(f) > 1 and f[1] not in (".", ""):
+            v.append((f[0], float(f[1])))
+    if len(v) < 5:
+        raise ValueError(f"{sid}: pocas observaciones")
+    return v
+
+
+SPREADS = (("hy", "Alto rendimiento (high yield, bonos con nota baja)", "BAMLH0A0HYM2"), ("ig", "Grado de inversión (IG, empresas sólidas)", "BAMLC0A0CM"),
+           ("bbb", "Grado de inversión, escalón BBB (el más bajo)", "BAMLC0A4CBBB"), ("ccc", "CCC o inferior (la cola más débil)", "BAMLH0A3HYC"))
+
+
+def leer_spreads():
+    """Spreads de crédito ICE BofA (OAS, en puntos porcentuales sobre el Tesoro) vía FRED [P]. Valor, fecha, hace 1 mes, máximo y mínimo de 12 meses. Solo valor y fecha: licencia ICE [VERIFICAR]."""
+    salida = {"fuente": "https://fred.stlouisfed.org/", "fuente_nombre": "ICE BofA vía FRED (Reserva Federal de St. Louis)", "nivel": "P", "series": [], "fallos": [],
+              "umbral_hy": 5.0, "licencia": "[VERIFICAR] redistribución de datos ICE: se muestran solo valor y fecha con enlace a FRED"}
+    for sid, nombre, codigo in SPREADS:
+        try:
+            v = _fred_csv(codigo, 380)
+            f, x = v[-1]
+            lim = (datetime.strptime(f, "%Y-%m-%d") - timedelta(days=30)).strftime("%Y-%m-%d")
+            ant = [p for p in v if p[0] <= lim]
+            a12 = [p for p in v if p[0] >= (datetime.strptime(f, "%Y-%m-%d") - timedelta(days=365)).strftime("%Y-%m-%d")]
+            mx = max(a12, key=lambda p: p[1])
+            mn = min(a12, key=lambda p: p[1])
+            salida["series"].append({"id": sid, "nombre": nombre, "pais": "EE. UU.", "unidad": "%", "clave": "FRED " + codigo, "enlace": f"https://fred.stlouisfed.org/series/{codigo}",
+                                     "valor": x, "fecha": f, "hace_1m": ant[-1][1] if ant else None, "fecha_1m": ant[-1][0] if ant else None,
+                                     "max_12m": mx[1], "fecha_max_12m": mx[0], "min_12m": mn[1], "serie": [round(p[1], 2) for p in v[-260:][::5]]})
+        except Exception as e:
+            salida["fallos"].append(f"spreads {sid}: {type(e).__name__}: {e}")
+    if not salida["series"]:
+        raise ValueError("ningún spread disponible")
+    return salida
+
+
+def leer_estres():
+    """Condiciones financieras de EE. UU.: NFCI (Fed de Chicago) y STLFSI4 (Fed de St. Louis), semanales, vía FRED [P]. Positivo = más estrés que la media."""
+    salida = {"fuente": "https://fred.stlouisfed.org/", "fuente_nombre": "Reserva Federal de Chicago y de St. Louis vía FRED", "nivel": "P", "series": [], "fallos": []}
+    for sid, nombre, codigo in (("nfci", "Índice de condiciones financieras (NFCI, Fed de Chicago)", "NFCI"), ("stlfsi", "Índice de estrés financiero (STLFSI4, Fed de St. Louis)", "STLFSI4")):
+        try:
+            v = _fred_csv(codigo, 400)
+            f, x = v[-1]
+            lim = (datetime.strptime(f, "%Y-%m-%d") - timedelta(days=30)).strftime("%Y-%m-%d")
+            ant = [p for p in v if p[0] <= lim]
+            salida["series"].append({"id": sid, "nombre": nombre, "pais": "EE. UU.", "unidad": "índice (0 = media)", "clave": "FRED " + codigo, "enlace": f"https://fred.stlouisfed.org/series/{codigo}",
+                                     "valor": x, "fecha": f, "hace_1m": ant[-1][1] if ant else None, "fecha_1m": ant[-1][0] if ant else None,
+                                     "aviso": x > 0, "max_12m": max(p[1] for p in v[-52:]), "serie": [p[1] for p in v[-52:][::4]]})
+        except Exception as e:
+            salida["fallos"].append(f"estrés {sid}: {type(e).__name__}: {e}")
+    if not salida["series"]:
+        raise ValueError("ningún índice de estrés disponible")
+    return salida
+
+
+def leer_bis_deuda():
+    """Crédito privado sobre PIB (BIS, WS_TC) y servicio de la deuda (BIS, WS_DSR) [P]; API SDMX abierta de stats.bis.org. Último trimestre y hace 4 trimestres."""
+    salida = {"fuente": "https://data.bis.org/", "fuente_nombre": "Banco de Pagos Internacionales (BIS)", "nivel": "P", "series": [], "fallos": []}
+    paises = {"ES": "España", "XM": "Zona euro", "US": "EE. UU.", "DE": "Alemania", "FR": "Francia", "CN": "China"}
+    sect = {"P": "total sector privado", "H": "hogares", "N": "empresas no financieras"}
+
+    def pedir(ruta, pedazo):
+        texto = _json_url(f"https://stats.bis.org/api/v2/data/dataflow/BIS/{ruta}/{pedazo}?lastNObservations=5&format=csv", t=40)
+        por = {}
+        for f in csv.DictReader(io.StringIO(texto)):
+            if f.get("OBS_VALUE"):
+                por.setdefault(f["BORROWERS_CTY"] + "|" + (f.get("TC_BORROWERS") or f.get("DSR_BORROWERS")), []).append((f["TIME_PERIOD"], float(f["OBS_VALUE"])))
+        return por
+    for ruta, clave, tema, unidad, nombre in (("WS_TC/2.0", "Q.ES+XM+US.P+H+N.A.M.770.A", "tc", "% del PIB", "Crédito al sector privado no financiero"),
+                                               ("WS_DSR/1.0", "Q.ES+XM+US+DE+FR+CN.P", "dsr", "% de la renta", "Servicio de la deuda (intereses + amortización)")):
+        try:
+            por = pedir(ruta, clave)
+            for k, v in sorted(por.items()):
+                pa, se = k.split("|")
+                v.sort()
+                if len(v) < 2:
+                    continue
+                f = v[-1][0].replace("-Q", "-T")
+                salida["series"].append({"id": f"{tema}_{pa.lower()}_{se.lower()}", "tema": tema, "nombre": f"{nombre}: {sect.get(se, se)}", "pais": paises.get(pa, pa), "sector": sect.get(se, se),
+                                         "unidad": unidad, "clave": f"BIS {ruta} {pa}.{se}", "valor": v[-1][1], "fecha": f, "anterior": v[-2][1],
+                                         "hace_4t": v[0][1] if len(v) == 5 else None, "serie": [p[1] for p in v]})
+        except Exception as e:
+            salida["fallos"].append(f"BIS {tema}: {type(e).__name__}: {e} [VERIFICAR] clave alternativa por probar")
+    if not salida["series"]:
+        raise ValueError("BIS sin series")
+    return salida
+
+
 FRED_CAIDO = False  # FRED no responde desde los runners de GitHub: tras el primer fallo se omite el resto
 LIMITE_S = 200  # tope total de descarga: el workflow corta a los 5 min y perdería todo
 
@@ -1332,6 +1430,7 @@ LIMITE_S = 200  # tope total de descarga: el workflow corta a los 5 min y perder
 def main():
     global PREVIO
     previo = {}
+    SOLO = set(sys.argv[1:])  # opcional: «python scripts/actualizar_paneles.py spreads estres bis_deuda» lee solo esas claves y conserva el resto
     if SALIDA.exists():
         try:
             previo = json.loads(SALIDA.read_text(encoding="utf-8"))
@@ -1341,7 +1440,11 @@ def main():
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
     limite = time.monotonic() + LIMITE_S
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("espana_ine", leer_espana_ine), ("espana_deuda", leer_espana_deuda), ("espana_hipotecas", leer_espana_hipotecas), ("vivienda_eurostat", leer_vivienda_eurostat), ("brasil", leer_brasil), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias), ("divisas", leer_divisas), ("energia_precios", leer_electricidad), ("alimentos", leer_alimentos), ("chips", leer_chips)):
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("espana_ine", leer_espana_ine), ("espana_deuda", leer_espana_deuda), ("espana_hipotecas", leer_espana_hipotecas), ("vivienda_eurostat", leer_vivienda_eurostat), ("brasil", leer_brasil), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias), ("divisas", leer_divisas), ("energia_precios", leer_electricidad), ("alimentos", leer_alimentos), ("chips", leer_chips), ("spreads", leer_spreads), ("estres", leer_estres), ("bis_deuda", leer_bis_deuda)):
+        if SOLO and clave not in SOLO:
+            if clave in previo:
+                salida[clave] = previo[clave]
+            continue
         t0 = time.monotonic()
         if t0 > limite:
             fallos.append(f"{clave}: omitido por tiempo (más de {LIMITE_S} s en total)")

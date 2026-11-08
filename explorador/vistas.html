@@ -921,6 +921,43 @@ function nCredito(ids){
   blsT('3 · Encuesta de los bancos (BLS, BCE): criterios de concesión','Porcentaje neto de bancos que endurecen (positivo) o relajan (negativo) las condiciones. Último trimestre y cambio en puntos frente al anterior.','crit');
   blsT('4 · Encuesta de los bancos (BLS, BCE): demanda de crédito','Porcentaje neto de bancos que notan más (positivo) o menos (negativo) demanda.','dem');
   return w}
+/* Bloques de riesgo de crédito (spreads, estrés, deuda BIS): una línea de lectura neutra cada uno: qué mide, qué significa subir/bajar, alcista vs. bajista y qué NO permite concluir. */
+function lectura(w,q,s,b,n){const p=el('p','nota-v');p.style.cssText='border-left:3px solid var(--lin);padding:4px 10px;margin:8px 0';
+  p.append(el('b',null,'Lectura: '),document.createTextNode(q+' '+s+' Caso alcista: '+b[0]+' Caso bajista: '+b[1]+' No permite concluir: '+n));w.append(p)}
+function nSpreads(){
+  const B=P.spreads||{},S=B.series||[],w=el('div'),u=B.umbral_hy||5;
+  w.append(tabla([{t:'Tramo de crédito',f:r=>r.nombre},{t:'Último (puntos % sobre el Tesoro)',n:1,f:r=>{const c=el('span',null,num(r.valor,2)+' %');if(r.id==='hy'&&r.valor>u){c.style.color='var(--baja)';c.append(' ⚠ >'+u+' %')}return c}},{t:'Fecha',f:r=>r.fecha},
+    {t:'Hace 1 mes',n:1,f:r=>r.hace_1m==null?'—':num(r.hace_1m,2)+' %'},{t:'Cambio 1 mes',n:1,f:r=>r.hace_1m==null?'—':cambio((r.valor-r.hace_1m)*100,' pb',0)},
+    {t:'Máx. 12 meses',n:1,f:r=>num(r.max_12m,2)+' % ('+r.fecha_max_12m+')'},{t:'Evolución',f:r=>spark(r.serie||[])},{t:'Serie',f:r=>{const a=el('a',null,r.clave);a.href=r.enlace;a.target='_blank';a.rel='noopener';return a}}],S));
+  lectura(w,'El spread (OAS) es la prima extra que pagan las empresas por endeudarse frente al Tesoro de EE. UU.: mide el riesgo de impago que descuenta el mercado.',
+    'Subida = el mercado exige más compensación por riesgo; bajada = menos.',
+    ['spreads muy por debajo de los picos de estrés (p. ej. abril de 2025) indican que el mercado no ve impagos.','IG cerca o por debajo de 1 % es un nivel históricamente comprimido (poca compensación por riesgo) y el CCC muestra una cola débil.'],
+    'no predice una crisis ni el momento de una corrección; es EE. UU., no España. Señal de alerta del tablero: HY > '+u+' % o salto > 100 pb en un mes.');
+  w.append(el('p','nota-v','Solo valor y fecha, con enlace a FRED; la licencia de redistribución de ICE BofA está sin confirmar [VERIFICAR].'));
+  return w}
+function nEstres(){
+  const S=(P.estres||{}).series||[],w=el('div');
+  w.append(tabla([{t:'Índice',f:r=>r.nombre},{t:'Último',n:1,f:r=>{const c=el('span',null,num(r.valor,3));if(r.aviso){c.style.color='var(--baja)';c.append(' ⚠ >0')}return c}},{t:'Fecha',f:r=>r.fecha},
+    {t:'Hace 1 mes',n:1,f:r=>r.hace_1m==null?'—':num(r.hace_1m,3)},{t:'Cambio 1 mes',n:1,f:r=>r.hace_1m==null?'—':cambio(r.valor-r.hace_1m,'',3)},{t:'Estado',f:r=>r.aviso?'Estrés por encima de la media':'Condiciones holgadas (bajo la media)'},
+    {t:'Evolución (52 semanas)',f:r=>spark(r.serie||[])},{t:'Serie',f:r=>{const a=el('a',null,r.clave);a.href=r.enlace;a.target='_blank';a.rel='noopener';return a}}],S));
+  lectura(w,'Resumen semanal de decenas de indicadores de mercado y crédito de EE. UU.; 0 = condiciones medias históricas.',
+    'Subida = condiciones más tensas; bajada = más holgadas. Por encima de 0, el estrés supera la media.',
+    ['valores negativos significan financiación fácil y barata.','tras meses holgados, un giro rápido hacia 0 puede anticipar tensión; la holgura también puede alimentar excesos.'],
+    'no dice cuándo ni si habrá una crisis, ni mide la situación en España o la zona euro. Alerta del tablero: NFCI > 0 o STLFSI4 > 0.');
+  return w}
+function nBisDeuda(){
+  const S=(P.bis_deuda||{}).series||[],w=el('div');
+  const tt=(tit,nota,lista,unid)=>{const F=lista.map(i=>S.find(x=>x.id===i)).filter(Boolean);if(!F.length)return;
+    w.append(el('h3',null,tit));w.append(el('p','nota-v',nota));
+    w.append(tabla([{t:'Sector / país',f:r=>r.pais+' · '+r.sector},{t:'Último ('+unid+')',n:1,f:r=>num(r.valor,1)+' %'},{t:'Trimestre',f:r=>r.fecha},{t:'Hace 4 trimestres',n:1,f:r=>r.hace_4t==null?'—':num(r.hace_4t,1)+' %'},
+      {t:'Cambio 12 meses',n:1,f:r=>r.hace_4t==null?'—':cambio(r.valor-r.hace_4t,' pp',1)},{t:'Evolución',f:r=>spark(r.serie||[])}],F))};
+  tt('Crédito privado sobre el PIB','Deuda de hogares y empresas no financieras como % del PIB (BIS, ajustada por rupturas).',['tc_es_p','tc_es_h','tc_es_n','tc_xm_p','tc_xm_h','tc_xm_n','tc_us_p','tc_us_h','tc_us_n'],'% del PIB');
+  tt('Carga de la deuda del sector privado (DSR)','Intereses + amortización como % de la renta del sector privado (BIS).',['dsr_es_p','dsr_de_p','dsr_us_p','dsr_fr_p','dsr_cn_p'],'% de la renta');
+  lectura(w,'El crédito/PIB mide cuánta deuda privada hay respecto a la economía; el DSR, qué parte de la renta se va en pagarla.',
+    'Subida = más apalancamiento o más carga; bajada = desapalancamiento.',
+    ['España ha reducido mucho su deuda privada y su DSR (11,7 %) está bajo.','Francia y China tienen una carga alta, y la deuda de las empresas de la zona euro es elevada.'],
+    'no permite decir que habrá impagos ni compara países sin matices (definiciones, tipos fijos o variables, ahorro). Dato trimestral con ~5 meses de retraso. Alerta del tablero: DSR de España +1 pp en un año.');
+  return w}
 function nMaterias(){
   const M=(P.materias||{}).materias||[],S=(((P.materias||{}).spot_eia)||{}).series||[];
   const filas=S.map(x=>({nombre:x.nombre+' (spot, EIA)',unidad:x.unidad,valor:x.valor,fecha:x.fecha,cambio_1d:x.cambio_1d,cambio_1m:x.cambio_1m})).concat(M);
@@ -970,6 +1007,9 @@ function panelesGrupo(gid){
     if(BAN)add('deuda','Deuda soberana en el balance de los bancos (EBA: España, Francia e Italia)',()=>nEba([['ES','España'],['FR','Francia'],['IT','Italia']],4),{nivel:BAN.nivel,t:'EBA, corte '+BAN.periodo},true)}
   else if(gid==='credito'){
     if(P.credito)add('riesgos','Crédito, hipotecas y criterios de concesión de los bancos, por tipo y país',()=>nCredito((P.credito.series||[]).map(x=>x.id)),{nivel:P.credito.nivel,t:'BCE, Freddie Mac, Fed, BoE y BoJ · leído '+P.credito.leido},true);
+    if(P.spreads)add('riesgos','Termómetro de spreads de crédito (HY, IG, BBB, CCC)',nSpreads,pie(P.spreads,'ICE BofA vía FRED'),true);
+    if(P.estres)add('riesgos','Estrés financiero de EE. UU. (NFCI y STLFSI4)',nEstres,pie(P.estres,'Fed de Chicago y de St. Louis vía FRED'),true);
+    if(P.bis_deuda)add('riesgos','Deuda privada sobre PIB y carga de la deuda (BIS)',nBisDeuda,pie(P.bis_deuda,'BIS'),true);
     if(CAL)add('riesgos','Calificaciones soberanas (nota de solvencia de cada país)',nCalif,{nivel:'P',t:'Agencias y tesoros · leído '+CAL.leido},true)}
   else if(gid==='energia'){
     if(P.ormuz)add('energia','Estrecho de Ormuz',nOrmuz,pie(P.ormuz,'IMF PortWatch'),false);
