@@ -1,16 +1,16 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-09 20:30 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-09 21:11 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** R00 Apertura del día · W01 Tipos de interés · Gemini Evento: Inflación EE. UU. (IPC de octubre)
+**Hoy (máx. 3):** W01 Tipos de interés · Gemini Evento: Inflación EE. UU. (IPC de octubre)
 **Periódicas (próxima):** W01 11-09 · W02 11-10 · W03 11-11 · W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W08 11-25 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (25):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
 **Hechas en 7 días (41):** C147, C150, C151, C152, C153, C159, C160, C145, C129, C131, C133, C134, C136, C141, C32
 
 ## Hoy (lun 2026-11-09): solo lo casi obligatorio
-- R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 1 días
+- R00 apertura ✓ · cierre ✓ · racha 2 días
 - Fija de hoy (lunes: semana de bancos centrales): **W01 Tipos de interés** (~2 %) · último 2026-11-08 · `research/prompts/W01-*.md`
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
@@ -86,7 +86,10 @@ Hechas en este periodo: W04, W07, W08
 - C235 · Voces de otros ámbitos (bancos centrales, energía, política, economía) fichadas  · Opus M · ~~3 % · ``
 - C236 · IPC de EE. UU.: etiquetar «desestacionalizado / sin desestacionalizar» en móvil  · Sonnet S · ~~0,5 % · ``
 - C237 ◐ en parte · Revisar research/CRUCE-HECHOS.md: decidir qué hechos P van a la Línea de tiempo, · Opus M · ~~3 % · ``
+- C238 · Órbita · España: leyes nuevas y modificaciones (BOE, Congreso): estado, vigor y  · Sonnet L · ~~5 % · `research/prompts/C238-espana-leyes-boe.md`
+- C239 · Órbita · España: investigaciones y fondos públicos (Adif, Ministerio de Transpor · Sonnet L · ~~5 % · `research/prompts/C239-espana-investigaciones-fondos.md`
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
+- C240 · Formato de cifras: unidad y escala explícitas (M€, mil M€), punto de miles y com · Sonnet M · ~~2 % · `research/prompts/C240-formato-cifras-unidades.md`
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
