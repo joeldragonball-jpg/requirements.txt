@@ -593,7 +593,28 @@ def grupos(colas, h, rut, gem):
         if t["estado"] == "hecha" and m and (hoy - date.fromisoformat(m.group(1))).days <= 7:
             rec.append({"id": t["id"], "txt": corto(t["tema"], 80), "fecha": m.group(1)})
     rec.sort(key=lambda x: x["fecha"], reverse=True)
-    return {"hoy": hoy_l, "periodicas": per, "bloqueadas": bloq, "listas": listas, "cuentas": cuentas, "parciales": parc, "hechas": rec}
+    # Orden recomendado (research/orden.csv: id, orden, fase, fase_nombre): datos y research antes que diseño; sin fechas
+    fases = {}
+    try:
+        import csv as _csv
+        por_id = {t["id"]: t for t in colas}
+        with open(RAIZ / "research" / "orden.csv", encoding="utf-8", newline="") as fh:
+            for r in _csv.DictReader(fh):
+                t = por_id.get(r["id"])
+                if not t or t["estado"] not in ("pendiente", "parcial"):
+                    continue
+                fases.setdefault(int(r["fase"]), {"nombre": r["fase_nombre"], "items": []})["items"].append(
+                    {"id": r["id"], "orden": int(r["orden"]), "txt": corto(t["tema"], 90), "modelo": t.get("modelo", "")})
+    except OSError:
+        pass
+    orden = [fases[k] for k in sorted(fases)]
+    k_ = 0
+    for f_ in orden:
+        f_["items"].sort(key=lambda x: x["orden"])
+        for it_ in f_["items"]:
+            k_ += 1
+            it_["orden"] = k_
+    return {"hoy": hoy_l, "periodicas": per, "bloqueadas": bloq, "listas": listas, "cuentas": cuentas, "orden": orden, "parciales": parc, "hechas": rec}
 
 
 def construir(bots_estado=False):

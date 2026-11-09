@@ -488,6 +488,8 @@ function vSeg(){
   const G5 = S.grupos, g5f = (x, extra) => `<div class="fil"><span class="id">${esc(x.id)}</span><span class="t">${esc(x.txt)}${extra ? `<div class="meta2" style="margin:2px 0 0">${esc(extra)}</div>` : ''}</span></div>`;
   const CU = G5 && G5.cuentas;
   const g5 = G5 ? `${cab('Qué hay que hacer')}<div class="card" style="--i:1;padding:6px 14px">${CU ? `<div class="meta2" style="margin:2px 0 8px;line-height:1.5"><b>${CU.abiertas} tareas abiertas</b> = ${CU.sin_empezar} sin empezar + ${CU.parciales} a medias.<br>De ellas, <b>${CU.bloqueadas}</b> están bloqueadas de verdad (esperan a Joel o a Chrome/VPN) y <b>${CU.listas}</b> están listas para hacer. Las rutinas que se repiten van aparte.</div>` : ''}<div class="meta2"><b>Hoy (máx. 3)</b></div>${G5.hoy.map(x => g5f(x)).join('') || '<div class="meta2">Nada obligatorio.</div>'}`
+    + `<div class="meta2" style="margin:12px 0 4px"><b>Orden recomendado</b> (sin fechas: datos y research antes que diseño)</div>`
+    + (G5.orden || []).map((f, i) => `<details class="plegado"${i < 2 ? ' open' : ''}><summary>${esc(f.nombre)} · ${f.items.length}</summary>${f.items.map(x => g5f({id: x.id, txt: x.orden + '. ' + x.txt}, x.modelo)).join('')}</details>`).join('')
     + `<details class="plegado"><summary>Periódicas · ${G5.periodicas.length}</summary>${G5.periodicas.map(x => g5f(x, x.cada + ' · próxima ' + (x.proxima || '?') + (x.atrasada ? ' · ⚠ atrasada' : ''))).join('')}</details>`
     + `<details class="plegado"><summary>Bloqueadas de verdad · ${G5.bloqueadas.length}</summary>${G5.bloqueadas.map(x => g5f(x, 'Espera a: ' + (x.quien || '?') + ' · ' + x.motivo)).join('')}</details>`
     + Object.entries(G5.listas || {}).filter(([k, v]) => v.length).map(([k, v]) => `<details class="plegado"><summary>Listas para hacer · ${esc(k)} · ${v.length}</summary>${v.map(x => g5f(x, [x.modelo, x.cuando].filter(Boolean).join(' · '))).join('')}</details>`).join('')
@@ -641,7 +643,10 @@ function pintar(ancla, quieto){
   const alto = m.scrollTop;
   m.classList.toggle('quieto', quieto);
   const merAbierto = !!(m.querySelector('#mer-mas') || {}).open;   // al repintar Mercado (p. ej. llegan las cripto en vivo) no cerrar «Análisis y más datos»
+  const clavePl = d => { const sm = d.querySelector(':scope > summary'); return (sm ? sm.textContent : '').split(' · ').slice(0, 2).join(' · ').trim(); };
+  const abiertos = quieto ? [...m.querySelectorAll('details[open]')].map(clavePl) : [];   // los pliegues que el usuario ha abierto sobreviven a un repintado de fondo
   m.innerHTML = VISTAS[tab]();
+  if (abiertos.length) m.querySelectorAll('details').forEach(d => { if (abiertos.includes(clavePl(d))) d.open = true; });
   if (tab === 'mercado') { montarControl(); if (merAbierto && document.getElementById('mer-mas')) document.getElementById('mer-mas').open = true; }
   const despues = y !== null && m.querySelector(ancla);
   if (despues) m.scrollTop += despues.getBoundingClientRect().top - y;
