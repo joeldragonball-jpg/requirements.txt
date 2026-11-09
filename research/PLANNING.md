@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-09 21:11 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-09 21:23 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -90,6 +90,9 @@ Hechas en este periodo: W04, W07, W08
 - C239 · Órbita · España: investigaciones y fondos públicos (Adif, Ministerio de Transpor · Sonnet L · ~~5 % · `research/prompts/C239-espana-investigaciones-fondos.md`
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C240 · Formato de cifras: unidad y escala explícitas (M€, mil M€), punto de miles y com · Sonnet M · ~~2 % · `research/prompts/C240-formato-cifras-unidades.md`
+- C241 · Órbita · España: «a dónde va el dinero» (contratación pública PLACSP y subvencio · Fable L · ~~6 % · `research/LANZAR-FABLE-ESPANA.md`
+- C242 · Órbita · España: Congreso, partidos y altos cargos (votaciones, iniciativas, fin · Fable L · ~~5 % · `research/LANZAR-FABLE-ESPANA.md`
+- C243 · Órbita · España: empresas públicas (SEPI, Adif, Renfe, Correos…) y comparador de · Fable L · ~~5 % · `research/LANZAR-FABLE-ESPANA.md`
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
