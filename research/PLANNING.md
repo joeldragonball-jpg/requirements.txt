@@ -1,12 +1,12 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-08 23:38 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-09 00:16 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
 **Hoy (máx. 3):** R00 Apertura del día · W01 Tipos de interés · Gemini Evento: Inflación EE. UU. (IPC de octubre)
 **Periódicas (próxima):** W01 11-09 · W02 11-10 · W03 11-11 · W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W08 11-25 · W07 12-05
-**Bloqueadas (15):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C87 (Propuesta de la auditoría C81 (informes/research/2) · C88 (Propuesta de la auditoría C81 (informes/research/2) · C89 (Propuesta de la auditoría C81 (informes/research/2) · C90 (Propuesta de la auditoría C81 (informes/research/2) · …
-**Parciales (27):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
+**Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
+**Parciales (24):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
 **Hechas en 7 días (41):** C147, C150, C151, C152, C153, C159, C160, C145, C129, C131, C133, C134, C136, C141, C32
 
 ## Hoy (lun 2026-11-09): solo lo casi obligatorio
@@ -54,11 +54,7 @@ Hechas en este periodo: W04, W07, W08
 - C173 ◐ en parte · Centro · Verificar noticias pendientes de prioridad alta y de más de 14 días (7- · Sonnet S · ~~3 % · ``
 - C176 ◐ en parte · Centro · Verificar prensa 4-6 nov (7 noticias) · Sonnet S · ~~1 % · ``
 - C179 ◐ en parte · Países · W11 refresco de 6 fichas políticas (China, Brasil, Sudáfrica, Indonesia · Sonnet S · ~~2 % · ``
-- C180 ◐ en parte · Móvil · Mercado: variación % en color en TODAS las filas (energía, alimentos, di · Sonnet M · ~~3 % · ``
 - C181 · Móvil · Mercado: separar divisas por tipo (pares con euro, dólar, refugio, emerg · Opus M · ~~3 % · ``
-- C182 ◐ en parte · Auditoría de diseño: Móvil, Órbita, Tablero y Seguimiento a 375 / 768 / 1280 px  · Sonnet M · ~~3 % · ``
-- C183 ◐ en parte · Auditoría de datos: muestreo de 10 cifras por pantalla contra su fuente primaria · Sonnet M · ~~3 % · ``
-- C184 ◐ en parte · Auditoría de research: informes de la semana, qué sigue en S o [VERIFICAR] y qué · Sonnet M · ~~3 % · ``
 - C186 · Research con Gemini (manual): qué muestran los mejores paneles de inversor parti · Sonnet S · ~~2 % · ``
 - C189 · Quitar duplicados en Verificaciones pendientes y poner «hace N d» junto a cada c · Sonnet S · ~<0,3 % · ``
 - C190 · Corregir «1 días de racha» y mover racha y % de plan a Más · Sonnet S · ~<0,2 % · ``
@@ -84,13 +80,15 @@ Hechas en este periodo: W04, W07, W08
 - C221 · Órbita: glosario flotante y definición en cada cifra · Sonnet M · ~~1 % · ``
 - C222 · Órbita: pestaña Mercado con divisas por tipo, hora real por dato y segunda fuent · Sonnet M · ~~2 % · ``
 - C223 · Órbita: rendimiento con muchos datos (carga por pestaña, listas virtualizadas) · Opus L · ~~3 % · ``
-- C225 · Research de noticias más fuerte: grandes potencias y España, conflictos y guerra · Sonnet L · ~~5 % · ``
-- C228 · Más ideas y más información para la Órbita: lista ampliada de capas, paneles y d · Opus M · ~~3 % · ``
+- C225 ◐ en parte · Research de noticias más fuerte: grandes potencias y España, conflictos y guerra · Sonnet L · ~~5 % · ``
 - C229 · Órbita · España: pack macro (IPC desglosado, EPA, afiliación, salarios/SMI y Eur · Sonnet L · ~~4 % · ``
 - C230 · Órbita · España: vivienda (precio, alquiler, esfuerzo por CCAA), deuda autonómic · Sonnet L · ~~4 % · ``
 - C231 · Órbita · España: pensiones (gasto, déficit contributivo, fondo) y demografía (na · Sonnet M · ~~3 % · ``
 - C232 · Órbita · España: fiscalidad cripto (modelos 172/173/721), MiCA y CASP autorizado · Opus M · ~~3 % · ``
 - C233 · Órbita · España: energía (precio eléctrico OMIE/REE, combustibles vs UE, gas y d · Sonnet M · ~~3 % · ``
+- C234 · Leer TODOS los informes por lotes: extraer hechos [P] con fecha, fuente y nivel  · Sonnet L · ~~6 % · ``
+- C235 · Voces de otros ámbitos (bancos centrales, energía, política, economía) fichadas  · Opus M · ~~3 % · ``
+- C236 · IPC de EE. UU.: etiquetar «desestacionalizado / sin desestacionalizar» en móvil  · Sonnet S · ~~0,5 % · ``
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
@@ -148,10 +146,10 @@ Hechas en este periodo: W04, W07, W08
 - [media] 2026-10-25 (15 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
 - [media] 2026-10-25 (15 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 - [media] 2026-10-25 (15 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
-- … y 53 más en el Seguimiento
+- … y 54 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
-- 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (7) → W03 · BR/ley_marco; BR/custodia; BR/politica; RU/stablecoins
+- 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (6) → W03 · BR/ley_marco; BR/custodia; BR/politica; RU/stablecoins
 - 🔴 Voces: Voces sin confirmar (7) → W06 · 5 llevan más de 14 días
 - 🟡 Radar regulatorio: Celdas sin dato (30) → W03 · Más huecos: EG 5, ET 4, UK 4, ZA 3, ID 3
 

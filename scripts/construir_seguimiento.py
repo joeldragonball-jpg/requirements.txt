@@ -564,8 +564,28 @@ def grupos(colas, h, rut, gem):
         per.append({"id": r["id"], "txt": r["nombre"], "cada": r["cada"], "ultimo": r["ultimo"], "proxima": prox.isoformat() if prox else None, "atrasada": r["atrasada"]})
     per.sort(key=lambda x: (x["proxima"] is None, x["proxima"] or ""))
     abiertas = [t for t in colas if t["estado"] in ("pendiente", "parcial")]
-    bloq = [{"id": t["id"], "txt": corto(t["tema"], 80), "motivo": corto(t.get("bloqueo"), 120)} for t in abiertas
-            if t.get("bloqueo") and t["bloqueo"].strip().lower() not in ("ninguno", "-", "")]
+    # «Bloqueada» = espera de verdad a Joel (OK, decisión, pegar algo) o a Chrome/VPN. Una nota («propuesta de la auditoría», «manual») NO bloquea.
+    bloq = []
+    for t in abiertas:
+        bl = (t.get("bloqueo") or "").strip()
+        if not bl or bl.lower() in ("ninguno", "-"):
+            continue
+        quien = "Joel" if re.search(r"Joel|OK de descarga|decidir|pega", bl, re.I) else ("Chrome o VPN" if re.search(r"Chrome|VPN|403|bloquead", bl, re.I) else None)
+        if quien:
+            bloq.append({"id": t["id"], "txt": corto(t["tema"], 80), "motivo": corto(bl, 120), "quien": quien})
+    idb = {x["id"] for x in bloq}
+    SEG = re.compile(r"Endurecer|XSS|candado|secretos|Worker|Copias|público/privado|workflows|producción para la familia|regulatoria de monetización", re.I)
+    listas = {"Seguridad y puesta en producción": [], "Research por hacer": [], "Mejoras del tablero y del móvil": [], "Otras": []}
+    for t in abiertas:
+        if t["id"] in idb or t.get("origen") == "recurrente" or t.get("tipo") == "recurrente":
+            continue
+        fila = {"id": t["id"], "txt": corto(t["tema"], 90), "modelo": t.get("modelo", ""), "cuando": t.get("cuando", "")}
+        k = ("Seguridad y puesta en producción" if SEG.search(t["tema"] or "") else
+             "Mejoras del tablero y del móvil" if t.get("tipo") in ("mejora", "diseño", "build") else
+             "Research por hacer" if t.get("tipo") in ("research", "decisión") or (t["id"][:1] in "CRT") else "Otras")
+        listas[k].append(fila)
+    cuentas = {"abiertas": len(abiertas), "sin_empezar": sum(1 for t in abiertas if t["estado"] == "pendiente"), "parciales": sum(1 for t in abiertas if t["estado"] == "parcial"),
+               "bloqueadas": len(bloq), "listas": sum(len(v) for v in listas.values())}
     parc = [{"id": t["id"], "txt": corto(t["tema"], 80), "falta": corto(t.get("falta") or t.get("detalle"), 140)} for t in colas if t["estado"] == "parcial"]
     rec = []
     for t in colas:
@@ -573,7 +593,7 @@ def grupos(colas, h, rut, gem):
         if t["estado"] == "hecha" and m and (hoy - date.fromisoformat(m.group(1))).days <= 7:
             rec.append({"id": t["id"], "txt": corto(t["tema"], 80), "fecha": m.group(1)})
     rec.sort(key=lambda x: x["fecha"], reverse=True)
-    return {"hoy": hoy_l, "periodicas": per, "bloqueadas": bloq, "parciales": parc, "hechas": rec}
+    return {"hoy": hoy_l, "periodicas": per, "bloqueadas": bloq, "listas": listas, "cuentas": cuentas, "parciales": parc, "hechas": rec}
 
 
 def construir(bots_estado=False):
