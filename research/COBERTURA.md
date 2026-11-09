@@ -18,9 +18,9 @@ Ojo: solo cuenta la Línea de tiempo; la Matriz de regulación es otro almacén 
 | Matriz de riesgos | 8 | 2026-10-31 | 9 | {'sin nivel': 7, 'P': 1} |
 | Redes y activo puente | 11 | 2026-11-02 | 7 | {'sin nivel': 4, 'P': 2, 'S': 5} |
 | Política y elecciones | 14 | 2026-11-04 | 5 | {'S': 10, 'P': 3, 'V': 1} |
-| Regulación y política monetaria | 14 | 2026-11-05 | 4 | {'P': 6, 'S': 7, 'sin nivel': 1} |
-| Liquidez y tipos oficiales | 17 | 2026-11-06 | 3 | {'P': 11, 'S': 6} |
-| Energía y Ormuz | 16 | 2026-11-06 | 3 | {'P': 5, 'S': 10, 'V': 1} |
+| Regulación y política monetaria | 14 | 2026-11-08 | 1 | {'P': 6, 'S': 7, 'sin nivel': 1} |
+| Liquidez y tipos oficiales | 16 | 2026-11-08 | 1 | {'P': 11, 'S': 5} |
+| Energía y Ormuz | 15 | 2026-11-08 | 1 | {'P': 5, 'S': 9, 'V': 1} |
 
 ## 2. Concentración por país en los hechos
 
@@ -31,21 +31,20 @@ Menciones totales: 114. Las 3 primeras: EE. UU. 37 (32 %), Japón 11 (9 %), Irá
 
 ## 3. Calidad de los hechos
 
-- Sin nivel de certeza: 15 de 125.
-- Sin informe de respaldo: 27 de 125.
+- Sin nivel de certeza: 15 de 123.
+- Sin informe de respaldo: 25 de 123.
 - Con fecha futura: 2.
 
 ## 4. Posibles repeticiones (mismo actor y fecha, o texto casi igual)
 
-- 2026-11-04 · Google News · SEC/MiCA/CFTC (EN): Las probabilidades de la CLARITY Act caen al 31 %. ⟷ Demócratas de la Cámara preparan una ley cripto con más poder para la SEC y norm
-- 2026-11-06 · Google News · Mercados (EN): Se espera que la Fed mantenga su subida de tipos de diciembre tras el dato de em ⟷ Daly (Fed): más subidas de tipos probables.
+- 2026-11-08 · Google News · Mercados (EN): IPC caliente: se da por hecha una subida de tipos de la Fed, pero las bolsas sub ⟷ La Fed mantiene tipos en la primera reunión de Warsh como presidente.
 - 2026-09-16 · capas distintas: Sube 25 pb los tipos, a 3,75-4,00 %. ⟷ Sube los tipos (ola de subidas de septiembre).
 - 2026-09-24 · capas distintas: Propuestas de reglas de la GENIUS Act para comentario (hasta el 30-nov). ⟷ Sube el tipo hasta el 1,25 %.
 - 2026-10-08 · capas distintas: Custodia de BTC, ETH, SOL y USDC en la UE; sin XRP ni XLM. ⟷ BNY añadiría custodia de XRP y Ripple se acerca a 1.000 M$ de ingresos.
 
 ## 5. Tensiones entre hechos del mismo tema (revisar a mano)
 
-- Hechos que hablan de tipos: {'tipos: sube': 6}. Si hay de ambos signos en el mismo mes, comprobar que no se contradicen.
+- Hechos que hablan de tipos: {'tipos: sube': 4}. Si hay de ambos signos en el mismo mes, comprobar que no se contradicen.
 
 ## 6. Sincronía entre almacenes (para corregir, no para interpretar)
 
