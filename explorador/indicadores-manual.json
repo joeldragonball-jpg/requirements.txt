@@ -1,5 +1,5 @@
 {
-  "_actualizado": "2026-11-07",
+  "_actualizado": "2026-11-09",
   "_nota": "Datos sin API abierta: salario mínimo de las potencias. Nivel V = recordado, sin leer la norma oficial; [VERIFICAR] antes de citar. No se ordenan países.",
   "US": {
     "salario_minimo": {
@@ -30,12 +30,12 @@
       "periodicidad": "mensual"
     },
     "paro": {
-      "valor": 4.2,
+      "valor": 4.1,
       "unidad": "% población activa",
-      "fecha": "2026-09",
-      "fuente": "https://www.bls.gov/news.release/empsit.nr0.htm",
-      "nivel": "P",
-      "definicion": "Tasa de paro total desestacionalizada (BLS, CPS), leída por la API pública de BLS el 2-nov-2026. Sustituye al dato anual de 2025. Próxima publicación: 4-dic-2026 (informe de noviembre).",
+      "fecha": "2026-10",
+      "fuente": "https://fred.stlouisfed.org/series/UNRATE",
+      "nivel": "S",
+      "definicion": "Tasa de paro de EE. UU. (BLS), desestacionalizada, vía FRED.",
       "periodicidad": "mensual",
       "anterior": 4.1,
       "anterior_fecha": "2026-08"

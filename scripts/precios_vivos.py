@@ -20,7 +20,7 @@ import json
 import sys
 import time
 import urllib.parse
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -29,7 +29,11 @@ import yahoo_diario  # noqa: E402
 
 RAIZ = Path(__file__).resolve().parent.parent
 URL_COINGECKO = ("https://api.coingecko.com/api/v3/simple/price?ids=ripple,stellar,bitcoin,ethereum&vs_currencies=usd"
-                 "&include_market_cap=true&include_24hr_change=true")
+                 "&include_market_cap=true&include_24hr_change=true&include_last_updated_at=true")
+URL_COINBASE = "https://api.coinbase.com/v2/prices/{s}-USD/spot"     # segunda fuente cripto (C198), sin clave
+URL_FRED = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={i}&cosd={d}"   # segunda fuente de índices, VIX y bono 10 a. (C198), sin clave
+SEGUNDA = {"sp500": "SP500", "nasdaq": "NASDAQCOM", "vix": "VIXCLS", "us10y": "DGS10"}   # clave de MERCADO -> serie FRED
+UMBRAL_DIFERENCIA = 1.0      # % de diferencia entre fuentes a partir del cual se avisa
 URL_MIEDO = "https://api.alternative.me/fng/?limit=2"
 CRIPTO = (("ripple", "XRP", "XRP"), ("stellar", "XLM", "Stellar Lumens"), ("bitcoin", "BTC", "Bitcoin"), ("ethereum", "ETH", "Ether"))
 # (símbolo de Yahoo, clave corta, nombre, unidad)
@@ -51,8 +55,20 @@ def _json(url):
 
 def leer_cripto():
     d = _json(URL_COINGECKO)
-    return [{"simbolo": s, "nombre": n, "precio": d[k]["usd"], "capitalizacion": d[k].get("usd_market_cap"),
-             "cambio_24h": d[k].get("usd_24h_change")} for k, s, n in CRIPTO]
+    filas = []
+    for k, s, n in CRIPTO:
+        t = d[k].get("last_updated_at")
+        fila = {"simbolo": s, "nombre": n, "precio": d[k]["usd"], "capitalizacion": d[k].get("usd_market_cap"),
+                "cambio_24h": d[k].get("usd_24h_change"),
+                "valor_fecha_hora": datetime.fromtimestamp(t, timezone.utc).strftime("%Y-%m-%d %H:%M UTC") if t else None}
+        try:                                    # segunda fuente (Coinbase): si falla, se deja sin comprobar, no se rompe nada
+            otro = float(_json(URL_COINBASE.format(s=s))["data"]["amount"])
+            dif = round((fila["precio"] / otro - 1) * 100, 2)
+            fila["segunda_fuente"] = {"fuente": "Coinbase", "valor": otro, "diferencia_pct": dif, "aviso": abs(dif) > UMBRAL_DIFERENCIA}
+        except Exception:
+            pass
+        filas.append(fila)
+    return filas
 
 
 def leer_stablecoins():
@@ -91,11 +107,52 @@ def leer_mercado(fallos):
             if len(pares) < 2:
                 raise ValueError("menos de 2 cierres")
             (f0, c0), (f1, c1) = pares[-2], pares[-1]
-            salida[clave] = {"simbolo": simbolo, "nombre": nombre, "unidad": unidad, "valor": round(c1, 3), "fecha": f1,
+            hora = d.get("meta", {}).get("regularMarketTime")
+            salida[clave] = {"leido_utc": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+                             "valor_fecha_hora": datetime.fromtimestamp(hora, timezone.utc).strftime("%Y-%m-%d %H:%M UTC") if hora else None,
+                             "_pares": pares[-8:], "simbolo": simbolo, "nombre": nombre, "unidad": unidad, "valor": round(c1, 3), "fecha": f1,
                              "cambio_1d": round((c1 / c0 - 1) * 100, 2) if clave != "us10y" else round((c1 - c0) * 100, 1)}   # el bono: puntos básicos
         except Exception as e:
             fallos.append(f"{clave}: {type(e).__name__}: {e}")
+    comprobar_segunda_fuente(salida)
+    for v in salida.values():
+        v.pop("_pares", None)
     return salida
+
+
+def descargar_fred(url):
+    """FRED corta la conexión a los User-Agent de navegador y acepta el de curl; hasta 3 intentos."""
+    import urllib.request
+    for n in range(3):
+        try:
+            return urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "curl/8.4.0"}), timeout=40).read().decode("utf-8")
+        except Exception:
+            if n == 2:
+                raise
+            time.sleep(3)
+
+
+def comprobar_segunda_fuente(salida):
+    """C198: compara con FRED el último dato común (FRED va 1-2 días por detrás) y avisa si difiere más de UMBRAL_DIFERENCIA %."""
+    desde = (datetime.now(timezone.utc) - timedelta(days=12)).strftime("%Y-%m-%d")
+    for clave, serie in SEGUNDA.items():
+        v = salida.get(clave)
+        if not v:
+            continue
+        try:
+            filas = [f.split(",") for f in descargar_fred(URL_FRED.format(i=serie, d=desde)).strip().splitlines()[1:]]
+            fred = {f[0]: float(f[1]) for f in filas if len(f) == 2 and f[1] not in ("", ".")}
+            comunes = [f for f, _ in v["_pares"] if f in fred]
+            if not comunes:
+                continue
+            f = comunes[-1]
+            yahoo = dict(v["_pares"])[f]
+            dif = round((yahoo / fred[f] - 1) * 100, 2) if clave != "us10y" else round((yahoo - fred[f]) * 100, 1)
+            limite = UMBRAL_DIFERENCIA if clave != "us10y" else 5      # el bono se compara en puntos básicos
+            v["segunda_fuente"] = {"fuente": "FRED", "fecha": f, "valor": fred[f], "diferencia": dif,
+                                   "unidad_diferencia": "%" if clave != "us10y" else "pb", "aviso": abs(dif) > limite}
+        except Exception:
+            pass
 
 
 def leer_seguimiento(fallos):

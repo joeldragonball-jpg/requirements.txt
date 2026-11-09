@@ -25,6 +25,11 @@ jobs:
           python-version: "3.12"
 
       # El script solo usa la biblioteca estándar. Si una fuente falla conserva el dato anterior y sale con 1.
+      # C201: rellena sin IA ni claves el paro/IPC/PIB de EE. UU. (FRED) y el tipo de Suecia (Riksbank); si falla, conserva lo anterior.
+      - name: Automatizar datos manuales
+        continue-on-error: true
+        run: python scripts/automatizar_manuales.py
+
       - name: Descargar los datos
         id: datos
         continue-on-error: true
@@ -91,7 +96,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add explorador/paneles.json explorador/indicadores-historia.json explorador/precios_historico.json explorador/valoracion.json explorador/datos.json explorador/noticias-archivo.json docs/movil/data.json docs/movil/seguimiento.json docs/orbita/index.html research/PLANNING.md
+          git add explorador/indicadores-manual.json explorador/tipos-manual.json explorador/paneles.json explorador/indicadores-historia.json explorador/precios_historico.json explorador/valoracion.json explorador/datos.json explorador/noticias-archivo.json docs/movil/data.json docs/movil/seguimiento.json docs/orbita/index.html research/PLANNING.md
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -m "Paneles de datos: actualización automática (sin IA)"
           git pull --rebase origin "${GITHUB_REF_NAME}"

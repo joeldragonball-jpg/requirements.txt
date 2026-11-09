@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-09 19:08 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-09 19:41 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -63,9 +63,6 @@ Hechas en este periodo: W04, W07, W08
 - C194 · Mover «Frescura de los datos» bajo los precios en Mercado y dejar resumen · Sonnet S · ~<0,2 % · ``
 - C195 · Etiqueta común de fecha del dato en Energía y Alimentos · Sonnet S · ~<0,2 % · ``
 - C196 · Aviso ámbar a 7 días en RWA manual; anotar que congress.gov sí cargó con Chrome  · Sonnet S · ~<0,2 % · ``
-- C197 · Hora real de actualización por dato (leido_utc y valor_fecha_hora) en paneles y  · Sonnet M · ~~0,8 % · ``
-- C198 · Segunda fuente en cotizaciones (Stooq o FRED) con aviso si difieren más de 1 % · Sonnet M · ~~1 % · ``
-- C201 · Automatizar tipos-manual.json e indicadores-manual.json · Sonnet M · ~~2 % · ``
 - C203 · Fichas por activo (XRP, XLM, BTC, oro, ETF mundial) con fuente, nivel, hechos y  · Sonnet M · ~~2 % · ``
 - C205 · Vista de tesis privada en privado/ con evidencia a favor, en contra y sin dato · Opus L · ~~5 % · ``
 - C206 · Alertas por umbral y por evento (Telegram) para datos en rojo, tipos y noticias  · Opus L · ~~3 % · ``
@@ -86,9 +83,9 @@ Hechas en este periodo: W04, W07, W08
 - C231 · Órbita · España: pensiones (gasto, déficit contributivo, fondo) y demografía (na · Sonnet M · ~~3 % · ``
 - C232 · Órbita · España: fiscalidad cripto (modelos 172/173/721), MiCA y CASP autorizado · Opus M · ~~3 % · ``
 - C233 · Órbita · España: energía (precio eléctrico OMIE/REE, combustibles vs UE, gas y d · Sonnet M · ~~3 % · ``
-- C234 · Leer TODOS los informes por lotes: extraer hechos [P] con fecha, fuente y nivel  · Sonnet L · ~~6 % · ``
 - C235 · Voces de otros ámbitos (bancos centrales, energía, política, economía) fichadas  · Opus M · ~~3 % · ``
 - C236 · IPC de EE. UU.: etiquetar «desestacionalizado / sin desestacionalizar» en móvil  · Sonnet S · ~~0,5 % · ``
+- C237 · Revisar research/CRUCE-HECHOS.md: decidir qué hechos P van a la Línea de tiempo, · Opus M · ~~3 % · ``
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
