@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-09 21:23 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-09 21:41 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -124,14 +124,9 @@ Hechas en este periodo: W04, W07, W08
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 
 ## Auditorías abiertas
-- A1 (Media): Abierto: voces.json lo está editando otra sesión (W06); propuesta: v002→cumplido con la nota del 28-oct; v062→
-- A2 (Media): Abierto: propuesta, mostrar «P + novedades S» o añadir url a HK ETF
-- A3 (Media): Parcial: antes faltaban 23. Abierto: 9 celdas
-- A4 (Baja): Abierto
-- A5 (Media): Abierto: propuesta, 2-3 canales o analistas críticos o neutrales en el próximo lote de vídeos
-- A7 (Media): Abierto
-- A8 (Baja): Abierto solo v062
-- A9 (Baja): Cerrado (W07)
+- T4 (Baja): Omisiones de fuentes: BdE en Bonos, BoE en Deuda, cifras manuales en Liquidez e Indicadores
+- T7 (Baja): Hueco jun-2026 en la API del BCE, causa sin explicar [VERIFICAR]
+- T8 (Baja): «+3» de la Cámara se mide desde 2024 (215 D), no desde hoy [VERIFICAR]
 - Auditoría mensual W08: última semana del mes (miércoles)
 
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
@@ -144,12 +139,12 @@ Hechas en este periodo: W04, W07, W08
 - [alta] 2026-11-06 (3 d) · EE. UU. aísla al exchange MEXC del sistema financiero estadounidense.
 - [alta] 2026-11-07 (2 d) · Incendio de dos petroleros en el estrecho de Ormuz.
 - [alta] 2026-11-07 (2 d) · EE. UU. sanciona a ocho empresas canadienses de cambio por supuestos vínculos cripto con Irán.
-- [alta] 2026-11-08 (1 d) · IPC caliente: se da por hecha una subida de tipos de la Fed, pero las bolsas suben.
 - [alta] 2026-11-08 (1 d) · Irak pacta con EE. UU. poder exportar crudo por Ormuz.
+- [alta] 2026-11-08 (1 d) · IPC caliente: se da por hecha una subida de tipos de la Fed, pero las bolsas suben.
+- [alta] 2026-11-09 (0 d) · El Brent cae más de un 3 % y baja de 95 $.
+- [alta] 2026-11-09 (0 d) · El Brent cae casi un 5 % hasta 93,72 $.
 - [media] 2026-10-22 (18 d) · hutiES a Arabia Saudi
-- [media] 2026-10-22 (18 d) · hutiES a Arabia Saudi
-- [media] 2026-10-23 (17 d) · El futuro continuo del Brent cierra en $111,97
-- … y 59 más en el Seguimiento
+- … y 61 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (6) → W03 · BR/ley_marco; BR/custodia; BR/politica; RU/stablecoins
@@ -157,7 +152,7 @@ Hechas en este periodo: W04, W07, W08
 - 🟡 Radar regulatorio: Celdas sin dato (30) → W03 · Más huecos: EG 5, ET 4, UK 4, ZA 3, ID 3
 
 ## Bots con problema
-- Verificación mensual
+- Verificación mensual, Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-10-29 · Reunión del Banco de Japón (alto) → ✓ cubierto por W01 del 2026-11-08
