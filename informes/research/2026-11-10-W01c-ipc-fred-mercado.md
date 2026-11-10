@@ -73,3 +73,17 @@ Cerrados con fuente primaria: contraste con FRED, la rareza de la gasolina (Tabl
 
 ## Seguridad
 Sin claves ni secretos; solo lectura web de BLS, FRED, Tesoro y Yahoo (sin iniciar sesión). Sin workflows ni API de Anthropic; sin commit ni push; no se tocó `privado/` ni `cerebro/`.
+
+## Contraste adicional: serie CPILFESL descargada por Joel (10-nov-2026)
+Fuente: archivo `CPILFESL.csv` de FRED (St. Louis Fed; datos del BLS) que Joel bajó a mano; ene-oct 2026, índice 1982-84=100. Nivel P para los niveles (copia fiel de la serie oficial); los cambios son cálculo propio sobre esos niveles.
+
+| Mes | Índice | Cambio mensual (cálculo propio) |
+|---|---|---|
+| Ago-2026 | 337,765 | +0,290 % |
+| Sep-2026 | 338,896 | +0,335 % |
+| **Oct-2026** | **339,900** | **+0,296 %** |
+
+- **Confirma el dato de octubre:** 339,900 y +0,296 % coinciden con lo leído en FRED y con el +0,3 % del BLS. Queda cerrado ese [VERIFICAR].
+- **Septiembre ya era +0,335 %**, redondeado a +0,3 %: dos meses seguidos por encima de 0,29 %. Junio fue −0,017 % y marzo-abril +0,196 % y +0,376 %: la serie es irregular.
+- **Sin interanual:** el archivo empieza en enero de 2026 y no trae octubre-2025 (el BLS no recogió precios por el cierre del Gobierno), así que no se puede calcular el +X % a 12 meses. Lo que sí sale (cálculo propio, no cifra oficial): enero→octubre +2,14 % (≈ +2,9 % anualizado en 9 meses) y últimos 3 meses ≈ +3,7 % anualizado [ESPECULACIÓN si se lee como tendencia: tres meses son pocos datos y los meses sueltos oscilan].
+- **Lectura prudente:** la subyacente mensual lleva un ritmo algo superior al del arranque de año; un solo mes no cambia la conclusión sobre la Fed. Caso alcista para activos de riesgo: el +0,3 % encaja con el escenario de inflación contenida. Caso bajista: dos meses seguidos por encima de 0,29 % refuerzan a quienes esperan tipos altos más tiempo. Sin recomendación de operar.
