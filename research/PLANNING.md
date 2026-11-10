@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-10 22:17 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-10 22:56 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -128,15 +128,15 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
+- [alta] 2026-11-10 (0 d) · Waller apoya subir tipos en diciembre y no descarta un movimiento mayor.
+- [alta] 2026-11-10 (0 d) · El bono a 10 años de EE. UU. supera el 5 %.
+- [alta] 2026-11-10 (0 d) · El petróleo cae por debajo de 90 $ por la distensión EE. UU.-Irán.
 - [media] 2026-10-22 (19 d) · hutiES a Arabia Saudi
 - [media] 2026-10-22 (19 d) · hutiES a Arabia Saudi
 - [media] 2026-10-23 (18 d) · El futuro continuo del Brent cierra en $111,97
 - [media] 2026-10-23 (18 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
 - [media] 2026-10-23 (18 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
-- [media] 2026-10-25 (16 d) · Chainlink CCIP en producción en SWIFT
-- [media] 2026-10-25 (16 d) · Precio y cierre de cada adquisición de Ripple
-- [media] 2026-10-25 (16 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
-- … y 63 más en el Seguimiento
+- … y 70 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Voces: Voces sin confirmar (25) → W06 · 5 llevan más de 14 días
