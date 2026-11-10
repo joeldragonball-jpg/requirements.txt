@@ -1,0 +1,1909 @@
+{
+ "id": "espana-contratacion",
+ "generado": "2026-11-10",
+ "mes": "202610",
+ "fuente": {
+  "nombre": "Plataforma de Contratación del Sector Público (Hacienda), datos abiertos",
+  "url": "https://contrataciondelestado.es/wps/portal/DatosAbiertos",
+  "licitaciones_zip": "https://contrataciondelestado.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3_202610.zip",
+  "menores_zip": "https://contrataciondelestado.es/sindicacion/sindicacion_1143/contratosMenoresPerfilesContratantes_202610.zip",
+  "nivel": "P (ficheros oficiales leídos)"
+ },
+ "unidad": "EUR",
+ "escala": 1,
+ "nota_unidad": "importe = euros sin IVA (escala 1). M€ = importe/1e6; mil M€ = importe/1e9.",
+ "licitaciones": {
+  "etiqueta": "Licitaciones (excluye menores)",
+  "expedientes_unicos": 40000,
+  "adjudicaciones_con_importe": {
+   "n": 32962,
+   "importe": 17636833848.14
+  },
+  "expedientes_sin_resultado_en_feed": 16975,
+  "expedientes_con_acuerdo_marco_multiple": 234,
+  "nota_acuerdo_marco": "Si >=3 adjudicatarios de un expediente comparten importe idéntico (acuerdos marco), el importe se cuenta una sola vez en totales y por órgano, y no se suma a cada adjudicatario (es un techo común, no dinero repartido).",
+  "por_estado": {
+   "RES": 17262,
+   "PUB": 8707,
+   "EV": 8084,
+   "ADJ": 5762,
+   "PRE": 139,
+   "ANUL": 46
+  },
+  "por_procedimiento": [
+   {
+    "procedimiento": "Abierto",
+    "n": 18510,
+    "pct_expedientes": 46.3,
+    "presupuesto": 38785599271.09,
+    "adjudicado": 15378877033.31
+   },
+   {
+    "procedimiento": "Abierto simplificado",
+    "n": 15296,
+    "pct_expedientes": 38.2,
+    "presupuesto": 1781445822.43,
+    "adjudicado": 660455679.15
+   },
+   {
+    "procedimiento": "Negociado con publicidad",
+    "n": 2256,
+    "pct_expedientes": 5.6,
+    "presupuesto": 1563458835.77,
+    "adjudicado": 1332875198.22
+   },
+   {
+    "procedimiento": "Restringido",
+    "n": 1733,
+    "pct_expedientes": 4.3,
+    "presupuesto": 4979023563.47,
+    "adjudicado": 366829874.64
+   },
+   {
+    "procedimiento": "Normas internas",
+    "n": 1299,
+    "pct_expedientes": 3.2,
+    "presupuesto": 728749399.82,
+    "adjudicado": 258513423.2
+   },
+   {
+    "procedimiento": "Derivado de acuerdo marco",
+    "n": 551,
+    "pct_expedientes": 1.4,
+    "presupuesto": 151684344.24,
+    "adjudicado": 136111536.74
+   },
+   {
+    "procedimiento": "Negociado sin publicidad",
+    "n": 134,
+    "pct_expedientes": 0.3,
+    "presupuesto": 523030240.53,
+    "adjudicado": 92575466.29
+   },
+   {
+    "procedimiento": "código 13",
+    "n": 108,
+    "pct_expedientes": 0.3,
+    "presupuesto": 1216502808.46,
+    "adjudicado": 190336595.45
+   },
+   {
+    "procedimiento": "Otros",
+    "n": 69,
+    "pct_expedientes": 0.2,
+    "presupuesto": 55881500.43,
+    "adjudicado": 22911991.11
+   },
+   {
+    "procedimiento": "Concurso de proyectos",
+    "n": 38,
+    "pct_expedientes": 0.1,
+    "presupuesto": 24295752.78,
+    "adjudicado": 1545445.58
+   },
+   {
+    "procedimiento": "Diálogo competitivo",
+    "n": 4,
+    "pct_expedientes": 0.0,
+    "presupuesto": 31112100.0,
+    "adjudicado": 0.0
+   },
+   {
+    "procedimiento": "Asociación para la innovación",
+    "n": 2,
+    "pct_expedientes": 0.0,
+    "presupuesto": 7654000.0,
+    "adjudicado": 915000.0
+   }
+  ],
+  "por_urgencia": {
+   "Ordinaria": {
+    "n": 38941,
+    "pct": 97.35
+   },
+   "Urgente": {
+    "n": 857,
+    "pct": 2.14
+   },
+   "Emergencia": {
+    "n": 202,
+    "pct": 0.51
+   }
+  },
+  "pct_emergencia": 0.51,
+  "pct_menores": 0.0,
+  "pct_negociado_sin_publicidad": 0.34,
+  "por_nivel_administrativo": [
+   {
+    "nivel": "ENTIDADES LOCALES",
+    "n": 17137,
+    "adjudicado": 6289917325.69
+   },
+   {
+    "nivel": "OTRAS ENTIDADES DEL SECTOR PÚBLICO",
+    "n": 12000,
+    "adjudicado": 5812806119.86
+   },
+   {
+    "nivel": "ADMINISTRACIÓN GENERAL DEL ESTADO",
+    "n": 6576,
+    "adjudicado": 4169515961.01
+   },
+   {
+    "nivel": "COMUNIDADES Y CIUDADES AUTÓNOMAS",
+    "n": 4287,
+    "adjudicado": 2169707837.13
+   }
+  ],
+  "por_organo_top": [
+   {
+    "organo": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid",
+    "nivel": "ENTIDADES LOCALES",
+    "n": 71,
+    "presupuesto": 3118337460.36,
+    "adjudicado": 2654750108.61,
+    "n_emergencia": 5,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
+    "nivel": "ADMINISTRACIÓN GENERAL DEL ESTADO",
+    "n": 663,
+    "presupuesto": 852254334.73,
+    "adjudicado": 1479353852.08,
+    "n_emergencia": 0,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Aena. Consejo de Administración",
+    "nivel": "OTRAS ENTIDADES DEL SECTOR PÚBLICO",
+    "n": 34,
+    "presupuesto": 1378824705.68,
+    "adjudicado": 1087537517.88,
+    "n_emergencia": 0,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 1
+   },
+   {
+    "organo": "ADIF -Consejo de Administración",
+    "nivel": "OTRAS ENTIDADES DEL SECTOR PÚBLICO",
+    "n": 75,
+    "presupuesto": 1407569192.75,
+    "adjudicado": 705974393.36,
+    "n_emergencia": 0,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "ADIF Alta Velocidad - Consejo de Administración",
+    "nivel": "OTRAS ENTIDADES DEL SECTOR PÚBLICO",
+    "n": 18,
+    "presupuesto": 575558013.22,
+    "adjudicado": 639635665.01,
+    "n_emergencia": 0,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Consejo de Gobierno Insular del Cabildo Insular de Tenerife",
+    "nivel": "ENTIDADES LOCALES",
+    "n": 37,
+    "presupuesto": 618549403.81,
+    "adjudicado": 457669234.66,
+    "n_emergencia": 0,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Dirección General de Carreteras",
+    "nivel": "ADMINISTRACIÓN GENERAL DEL ESTADO",
+    "n": 61,
+    "presupuesto": 484131522.26,
+    "adjudicado": 337429354.45,
+    "n_emergencia": 0,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Secretaría de Estado de Función Pública",
+    "nivel": "ADMINISTRACIÓN GENERAL DEL ESTADO",
+    "n": 1,
+    "presupuesto": 315655465.83,
+    "adjudicado": 288157576.16,
+    "n_emergencia": 0,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Empresa Municipal de Transportes de Madrid, S.A.",
+    "nivel": "OTRAS ENTIDADES DEL SECTOR PÚBLICO",
+    "n": 96,
+    "presupuesto": 416837237.0,
+    "adjudicado": 279009051.74,
+    "n_emergencia": 1,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Gerencia de Gestión de Servicios para la Salud y Seguridad en Canarias, S.A.",
+    "nivel": "OTRAS ENTIDADES DEL SECTOR PÚBLICO",
+    "n": 18,
+    "presupuesto": 665634517.03,
+    "adjudicado": 250518379.14,
+    "n_emergencia": 3,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Dirección de Gestión Económica de la Jefatura de Apoyo Logístico de la Armada",
+    "nivel": "ADMINISTRACIÓN GENERAL DEL ESTADO",
+    "n": 112,
+    "presupuesto": 377153075.07,
+    "adjudicado": 249871693.23,
+    "n_emergencia": 0,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 1
+   },
+   {
+    "organo": "Área de Gobierno de Políticas Sociales, Familia e Igualdad del Ayuntamiento de Madrid",
+    "nivel": "ENTIDADES LOCALES",
+    "n": 46,
+    "presupuesto": 229404602.87,
+    "adjudicado": 202374745.4,
+    "n_emergencia": 0,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Consejería de Obras Públicas, Vivienda y Movilidad del Gobierno de Canarias",
+    "nivel": "COMUNIDADES Y CIUDADES AUTÓNOMAS",
+    "n": 4,
+    "presupuesto": 213782542.06,
+    "adjudicado": 199332099.71,
+    "n_emergencia": 0,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Secretaría General de la Consejería de Hacienda, Administraciones Públicas y Transformación Digital de la Junta de Comunidades de Castilla-La Mancha",
+    "nivel": "COMUNIDADES Y CIUDADES AUTÓNOMAS",
+    "n": 32,
+    "presupuesto": 147730730.89,
+    "adjudicado": 193054932.84,
+    "n_emergencia": 0,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Dirección General de Biodiversidad, Bosques y Desertificación",
+    "nivel": "ADMINISTRACIÓN GENERAL DEL ESTADO",
+    "n": 34,
+    "presupuesto": 174188823.66,
+    "adjudicado": 164352050.48,
+    "n_emergencia": 29,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 2
+   },
+   {
+    "organo": "Junta de la Mancomunidad de Municipios de la Comarca del Campo de Gibraltar",
+    "nivel": "ENTIDADES LOCALES",
+    "n": 1,
+    "presupuesto": 160404751.01,
+    "adjudicado": 160404751.01,
+    "n_emergencia": 0,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Organismo Autónomo Informática del Ayuntamiento de Madrid",
+    "nivel": "ENTIDADES LOCALES",
+    "n": 18,
+    "presupuesto": 218966802.53,
+    "adjudicado": 157669156.23,
+    "n_emergencia": 0,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Consejo de Administración de Sociedad Mercantil Estatal Aguas de las Cuencas de España, S.A. (ACUAES)",
+    "nivel": "OTRAS ENTIDADES DEL SECTOR PÚBLICO",
+    "n": 39,
+    "presupuesto": 213561161.95,
+    "adjudicado": 144357516.24,
+    "n_emergencia": 0,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Servicio de Salud de las Illes Balears",
+    "nivel": "COMUNIDADES Y CIUDADES AUTÓNOMAS",
+    "n": 236,
+    "presupuesto": 211226391.09,
+    "adjudicado": 139262263.15,
+    "n_emergencia": 1,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "ADIF - Presidencia",
+    "nivel": "OTRAS ENTIDADES DEL SECTOR PÚBLICO",
+    "n": 232,
+    "presupuesto": 287906854.25,
+    "adjudicado": 138295351.63,
+    "n_emergencia": 13,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0
+   }
+  ],
+  "adjudicatarios_top": [
+   {
+    "nif": "A83052407",
+    "adjudicatario": "SOCIEDAD ESTATAL CORREOS Y TELEGRAFOS S.A. S.M.E.",
+    "n_adjudicaciones": 70,
+    "importe": 514266096.72,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 47,
+    "organo_principal": "Delegación Provincial de la Consejería de Agricultura, Ganadería y Desarrollo Rural en Cuenca"
+   },
+   {
+    "nif": "A79524054",
+    "adjudicatario": "URBASER, S.A.",
+    "n_adjudicaciones": 6,
+    "importe": 503448484.48,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 5,
+    "organo_principal": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid"
+   },
+   {
+    "nif": "A28541639",
+    "adjudicatario": "FCC MEDIO AMBIENTE SA",
+    "n_adjudicaciones": 31,
+    "importe": 472280934.12,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 9,
+    "n_organos_distintos": 17,
+    "organo_principal": "Departamento de Hacienda y Administración Pública"
+   },
+   {
+    "nif": "A00000000",
+    "adjudicatario": "UTE CESPA-URBASER",
+    "n_adjudicaciones": 7,
+    "importe": 439792790.76,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 6,
+    "organo_principal": "Junta de Gobierno del Ayuntamiento de Palma de Mallorca"
+   },
+   {
+    "nif": "A82741067",
+    "adjudicatario": "PREZERO ESPAÑA, S.A.U.",
+    "n_adjudicaciones": 1,
+    "importe": 278189345.14,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 1,
+    "organo_principal": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid"
+   },
+   {
+    "nif": "267472",
+    "adjudicatario": "ALFONSO BENITEZ, S.A./ACCIONA SERVICIOS URBANOS, S.R.L",
+    "n_adjudicaciones": 1,
+    "importe": 272892065.6,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 1,
+    "organo_principal": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid"
+   },
+   {
+    "nif": "267514",
+    "adjudicatario": "VALORIZA SERVICIOS MEDIOAMBIENTALES, S.A.-OHL SERVICIOS INGESAN, S.A.",
+    "n_adjudicaciones": 1,
+    "importe": 249095833.07,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 1,
+    "organo_principal": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid"
+   },
+   {
+    "nif": "303197",
+    "adjudicatario": "DRAGADOS, S.A. Y ACCIONA CONSTRUCCIÓN, S.A., UNIÓN TEMPORAL DE EMPRESAS, abreviadamente UTE SOTERRAMIENTO A-5 LOTE 2",
+    "n_adjudicaciones": 2,
+    "importe": 248005228.02,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 1,
+    "organo_principal": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid"
+   },
+   {
+    "nif": "303283",
+    "adjudicatario": "FERROVIAL CONSTRUCCIÓN, S.A. y FCC CONSTRUCCION, S.A.",
+    "n_adjudicaciones": 2,
+    "importe": 247723821.92,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 1,
+    "organo_principal": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid"
+   },
+   {
+    "nif": "A26019992",
+    "adjudicatario": "FCC Aqualia, S.A.",
+    "n_adjudicaciones": 23,
+    "importe": 226046097.92,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 18,
+    "organo_principal": "Junta de Gobierno del Ayuntamiento de Talavera de la Reina"
+   },
+   {
+    "nif": "338574",
+    "adjudicatario": "UTE Ohl-sando-altuna Y Uria-chm",
+    "n_adjudicaciones": 1,
+    "importe": 199734168.0,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 1,
+    "organo_principal": "ADIF Alta Velocidad - Consejo de Administración"
+   },
+   {
+    "nif": "U88966312",
+    "adjudicatario": "UTE Ave Manzanos-puebla De Arganzon",
+    "n_adjudicaciones": 1,
+    "importe": 199734168.0,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 1,
+    "organo_principal": "ADIF Alta Velocidad - Consejo de Administración"
+   },
+   {
+    "nif": "331411",
+    "adjudicatario": "SACYR CONSTRUCCIÓN, SA-CAVOSA OBRAS Y PROYECTOS, SA-AMC CNES. Y CONTRATAS 2014, SL-LOPESAN ASFALTOS Y CNES., SAU",
+    "n_adjudicaciones": 1,
+    "importe": 181012088.65,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 1,
+    "organo_principal": "Consejería de Obras Públicas, Vivienda y Movilidad del Gobierno de Canarias"
+   },
+   {
+    "nif": "A28385458",
+    "adjudicatario": "ESTACIONAMIENTOS Y SERVICIOS, S.A.U.",
+    "n_adjudicaciones": 6,
+    "importe": 163451274.32,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 2,
+    "n_organos_distintos": 4,
+    "organo_principal": "ENUSA Industrias Avanzadas S.A., S.M.E."
+   },
+   {
+    "nif": "U93925832",
+    "adjudicatario": "UTE EYSA - SETEX",
+    "n_adjudicaciones": 2,
+    "importe": 163101274.32,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 1,
+    "organo_principal": "Aena. Consejo de Administración"
+   },
+   {
+    "nif": "A28854727",
+    "adjudicatario": "FCC CONSTRUCCION, S.A.",
+    "n_adjudicaciones": 8,
+    "importe": 154693421.6,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 5,
+    "organo_principal": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid"
+   },
+   {
+    "nif": "A78053147",
+    "adjudicatario": "Telefonica Soluciones De Informatica Y Comunicaciones De España S.A.U.",
+    "n_adjudicaciones": 81,
+    "importe": 148901806.7,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 18,
+    "n_organos_distintos": 40,
+    "organo_principal": "Consejo de Gobierno Insular del Cabildo Insular de Tenerife"
+   },
+   {
+    "nif": "266872",
+    "adjudicatario": "SAN JOSÉ EL EJIDILLO MADRID L4",
+    "n_adjudicaciones": 2,
+    "importe": 137860744.08,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 1,
+    "organo_principal": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid"
+   },
+   {
+    "nif": "A82018474",
+    "adjudicatario": "TELEFONICA DE ESPAÑA SAU",
+    "n_adjudicaciones": 20,
+    "importe": 137619682.3,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 14,
+    "organo_principal": "Subdirección General de Contratación de Tecnologías de la Información y de las Comunicaciones (TIC)"
+   },
+   {
+    "nif": "A28760692",
+    "adjudicatario": "VALORIZA SERVICIOS MEDIOAMBIENTALES, S.A.",
+    "n_adjudicaciones": 10,
+    "importe": 136018007.7,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 9,
+    "organo_principal": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid"
+   },
+   {
+    "nif": "B86692811",
+    "adjudicatario": "BEYOND SOLUCIONES Y SERVICIOS S.L.",
+    "n_adjudicaciones": 12,
+    "importe": 131947656.76,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 7,
+    "organo_principal": "Junta de Contratación del Ministerio de Defensa"
+   },
+   {
+    "nif": "A82009812",
+    "adjudicatario": "ORANGE SPAIN, S.A.U.",
+    "n_adjudicaciones": 44,
+    "importe": 130142500.88,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 1,
+    "n_organos_distintos": 41,
+    "organo_principal": "Junta de Gobierno del Ayuntamiento de Santa Cruz de Tenerife"
+   },
+   {
+    "nif": "A84076397",
+    "adjudicatario": "NAVANTIA, SA",
+    "n_adjudicaciones": 12,
+    "importe": 124259750.28,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 5,
+    "organo_principal": "Dirección de Gestión Económica de la Jefatura de Apoyo Logístico de la Armada"
+   },
+   {
+    "nif": "A28855260",
+    "adjudicatario": "INETUM ESPAÑA, S.A",
+    "n_adjudicaciones": 73,
+    "importe": 122870579.47,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 16,
+    "n_organos_distintos": 27,
+    "organo_principal": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada"
+   },
+   {
+    "nif": "B88018098",
+    "adjudicatario": "Indra Soluciones Tecnologías de la Información, S.L.U.",
+    "n_adjudicaciones": 42,
+    "importe": 121260755.91,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 1,
+    "n_organos_distintos": 27,
+    "organo_principal": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada"
+   }
+  ],
+  "concentracion": {
+   "top10_adjudicatarios_pct_importe_juridicas": 19.6,
+   "adjudicatarios_juridicos_distintos": 13287,
+   "personas_fisicas": {
+    "n": 364,
+    "importe": 17052728.49
+   },
+   "nota": "Concentración y repetición NO implican irregularidad: UTE, grandes concesionarias y encargos marco son habituales."
+  },
+  "mayores_adjudicaciones": [
+   {
+    "expediente": "2023/01",
+    "organo": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
+    "adjudicatario": "GROUPM PUBLICIDAD WORLWIDE, S.A. (+ otros adjudicatarios del mismo acuerdo marco)",
+    "nif": "A81922791",
+    "importe": 396000000.0,
+    "acuerdo_marco_multiple": true,
+    "fecha_adjudicacion": "2023-11-02",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "23",
+    "objeto": "Acuerdo Marco para la prestación de los servicios de compra de espacios en medios de comunicación y demás soportes publicitarios para la dif",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=sWnIsFjfPO4uf4aBO%2BvQlQ%3D%3D"
+   },
+   {
+    "expediente": "LA0001752-LA0001750-2018-61",
+    "organo": "Consejo de Gobierno Insular del Cabildo Insular de Tenerife",
+    "adjudicatario": "UTE URBASER-FCC MEDIO AMBIENTE",
+    "nif": "A00000000",
+    "importe": 371472017.7,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2021-03-23",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "3",
+    "objeto": "Concesión del Servicio para la Gestión de Residuos de la Isla de Tenerife.",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=H6fxRVuAR5pvYnTkQN0%2FZA%3D%3D"
+   },
+   {
+    "expediente": "2026/40",
+    "organo": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
+    "adjudicatario": "SOCIEDAD ESTATAL CORREOS Y TELÉGRAFOS, S.A., S.M.E.",
+    "nif": "A83052407",
+    "importe": 308001143.52,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-10-19",
+    "procedimiento": "Negociado con publicidad",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Servicios postales de notificaciones administrativas y judiciales",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=HKqK6EdkkHTjHF5qKI4aaw%3D%3D"
+   },
+   {
+    "expediente": "300/2020/00547",
+    "organo": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid",
+    "adjudicatario": "PREZERO ESPAÑA, S.A.U.",
+    "nif": "A82741067",
+    "importe": 278189345.14,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2021-08-10",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "5",
+    "objeto": "Servicio de limpieza de los espacios públicos de Madrid (6 lotes)",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=LYIN0XlHNAvnSoTX3z%2F7wA%3D%3D"
+   },
+   {
+    "expediente": "300/2020/00547",
+    "organo": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid",
+    "adjudicatario": "ALFONSO BENITEZ, S.A./ACCIONA SERVICIOS URBANOS, S.R.L",
+    "nif": "267472",
+    "importe": 272892065.6,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2021-08-12",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "5",
+    "objeto": "Servicio de limpieza de los espacios públicos de Madrid (6 lotes)",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=LYIN0XlHNAvnSoTX3z%2F7wA%3D%3D"
+   },
+   {
+    "expediente": "300/2020/00547",
+    "organo": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid",
+    "adjudicatario": "VALORIZA SERVICIOS MEDIOAMBIENTALES, S.A.-OHL SERVICIOS INGESAN, S.A.",
+    "nif": "267514",
+    "importe": 249095833.07,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2021-08-12",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "4",
+    "objeto": "Servicio de limpieza de los espacios públicos de Madrid (6 lotes)",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=LYIN0XlHNAvnSoTX3z%2F7wA%3D%3D"
+   },
+   {
+    "expediente": "300/2020/00547",
+    "organo": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid",
+    "adjudicatario": "URBASER, S.A.",
+    "nif": "A79524054",
+    "importe": 245327201.82,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2021-08-06",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "5",
+    "objeto": "Servicio de limpieza de los espacios públicos de Madrid (6 lotes)",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=LYIN0XlHNAvnSoTX3z%2F7wA%3D%3D"
+   },
+   {
+    "expediente": "300/2020/00547",
+    "organo": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid",
+    "adjudicatario": "FCC MEDIO AMBIENTE, S.A.U.",
+    "nif": "A28541639",
+    "importe": 229821662.38,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2021-08-12",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "4",
+    "objeto": "Servicio de limpieza de los espacios públicos de Madrid (6 lotes)",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=LYIN0XlHNAvnSoTX3z%2F7wA%3D%3D"
+   },
+   {
+    "expediente": "300/2020/00547",
+    "organo": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid",
+    "adjudicatario": "URBASER, S.A.",
+    "nif": "A79524054",
+    "importe": 212328245.46,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2021-08-06",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "4",
+    "objeto": "Servicio de limpieza de los espacios públicos de Madrid (6 lotes)",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=LYIN0XlHNAvnSoTX3z%2F7wA%3D%3D"
+   },
+   {
+    "expediente": "3.25/20830.0277",
+    "organo": "ADIF Alta Velocidad - Consejo de Administración",
+    "adjudicatario": "UTE Ohl-sando-altuna Y Uria-chm",
+    "nif": "338574",
+    "importe": 199734168.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-09-24",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "12",
+    "objeto": "Obras de ejecución del proyecto de construcción de plataforma de la línea de alta velocidad de la conexión Madrid - País Vasco - frontera fr",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=ciMYNqX7JnicTfjQf3USOg%3D%3D"
+   },
+   {
+    "expediente": "3.25/20830.0277",
+    "organo": "ADIF Alta Velocidad - Consejo de Administración",
+    "adjudicatario": "UTE Ave Manzanos-puebla De Arganzon",
+    "nif": "U88966312",
+    "importe": 199734168.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-09-24",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "12",
+    "objeto": "Obras de ejecución del proyecto de construcción de plataforma de la línea de alta velocidad de la conexión Madrid - País Vasco - frontera fr",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=ciMYNqX7JnicTfjQf3USOg%3D%3D"
+   },
+   {
+    "expediente": "OBR/2025/0000145132",
+    "organo": "Consejería de Obras Públicas, Vivienda y Movilidad del Gobierno de Canarias",
+    "adjudicatario": "SACYR CONSTRUCCIÓN, SA-CAVOSA OBRAS Y PROYECTOS, SA-AMC CNES. Y CONTRATAS 2014, SL-LOPESAN ASFALTOS Y CNES., SAU",
+    "nif": "331411",
+    "importe": 181012088.65,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-08-13",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "6",
+    "objeto": "Obra Carretera Puerto Rosario - Morro Jable. Tramo Aeropuerto - Cruce de Pozo Negro. Isla de Fuerteventura",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=X3lKoe31D2Ql5NjlNci%2BtA%3D%3D"
+   },
+   {
+    "expediente": "272/2025",
+    "organo": "Junta de la Mancomunidad de Municipios de la Comarca del Campo de Gibraltar",
+    "adjudicatario": "FCC Aqualia S.A.",
+    "nif": "A26019992",
+    "importe": 160404751.01,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-09-28",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "3",
+    "objeto": "Contrato de concesión del servicio público de abastecimiento de agua potable del municipio de La Línea de la Concepción (Cádiz)",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=FmNn6llnbqskJPJS%2BPS9vg%3D%3D"
+   },
+   {
+    "expediente": "300/2023/00719",
+    "organo": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid",
+    "adjudicatario": "UTE DRAGADOS SA- ACCIONA CONSTRUCCION SA SOTERRAMIENTO A-5",
+    "nif": "303197",
+    "importe": 124002614.01,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2024-08-23",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "8",
+    "objeto": "Ejecución del Paseo Verde del Suroeste (soterramiento de la A-5 – Paseo de Extremadura)",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=9xSYX%2BvyXz7LIx6q1oPaMg%3D%3D"
+   },
+   {
+    "expediente": "300/2023/00719",
+    "organo": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid",
+    "adjudicatario": "DRAGADOS, S.A. Y ACCIONA CONSTRUCCIÓN, S.A., UNIÓN TEMPORAL DE EMPRESAS, abreviadamente UTE SOTERRAMIENTO A-5 LOTE 2",
+    "nif": "303197",
+    "importe": 124002614.01,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2024-08-23",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "8",
+    "objeto": "Ejecución del Paseo Verde del Suroeste (soterramiento de la A-5 – Paseo de Extremadura)",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=9xSYX%2BvyXz7LIx6q1oPaMg%3D%3D"
+   },
+   {
+    "expediente": "300/2023/00719",
+    "organo": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid",
+    "adjudicatario": "FCC CONSTRUCCION S.A. Y FERROVIAL CONSTRUCCION S.A., UNIÓN TEMPORAL DE EMPRESAS, abreviadamente UTE PASEO VERDE DEL SUROESTE LOTE 1",
+    "nif": "303283",
+    "importe": 123861910.96,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2024-08-22",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "8",
+    "objeto": "Ejecución del Paseo Verde del Suroeste (soterramiento de la A-5 – Paseo de Extremadura)",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=9xSYX%2BvyXz7LIx6q1oPaMg%3D%3D"
+   },
+   {
+    "expediente": "300/2023/00719",
+    "organo": "Área de Gobierno de Urbanismo, Medio Ambiente y Movilidad del Ayuntamiento de Madrid",
+    "adjudicatario": "FERROVIAL CONSTRUCCIÓN, S.A. y FCC CONSTRUCCION, S.A.",
+    "nif": "303283",
+    "importe": 123861910.96,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2024-08-22",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "8",
+    "objeto": "Ejecución del Paseo Verde del Suroeste (soterramiento de la A-5 – Paseo de Extremadura)",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=9xSYX%2BvyXz7LIx6q1oPaMg%3D%3D"
+   },
+   {
+    "expediente": "26/057/1",
+    "organo": "Empresa Municipal de Transportes de Madrid, S.A.",
+    "adjudicatario": "UTE CENTRO OPERACIONES LA ELIPA",
+    "nif": "339564",
+    "importe": 112119303.91,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-09-30",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "10",
+    "objeto": "Redacción del Proyecto Constructivo visado y ejecución de las obras para la construcción del Centro de Operaciones de la Elipa de la EMT Mad",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=Ur6AGavvBpkUqXM96WStVA%3D%3D"
+   },
+   {
+    "expediente": "2025/JCMDEF/00000062E",
+    "organo": "Junta de Contratación del Ministerio de Defensa",
+    "adjudicatario": "BEYOND SOLUCIONES Y SERVICIOS S.L.",
+    "nif": "B86692811",
+    "importe": 93580000.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-03-02",
+    "procedimiento": "Restringido",
+    "urgencia": "Ordinaria",
+    "ofertas": "4",
+    "objeto": "Acuerdo Marco para los servicios de Operador Logístico en el Ámbito del Ministerio de Defensa.",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=2371DAtcbMIeC9GJQOEBkQ%3D%3D"
+   },
+   {
+    "expediente": "2024/29",
+    "organo": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
+    "adjudicatario": "FIAT CHRYSLER AUTOMOBILES SPAIN S.A. (+ otros adjudicatarios del mismo acuerdo marco)",
+    "nif": "A28012342",
+    "importe": 91200000.0,
+    "acuerdo_marco_multiple": true,
+    "fecha_adjudicacion": "2024-12-02",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "7",
+    "objeto": "Acuerdo Marco de suministro de vehículos comerciales ligeros (AM 18/2024)",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=ha2%2BnCk2RmScCF8sV%2BqtYA%3D%3D"
+   },
+   {
+    "expediente": "2024PA004635",
+    "organo": "Secretaría de Estado de Función Pública",
+    "adjudicatario": "UTE TdE - TSOL",
+    "nif": "A82018474",
+    "importe": 90246590.78,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2025-07-24",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "2",
+    "objeto": "Servicios consolidados de telecomunicaciones de la Administración General del Estado y otras entidades públicas Fase III 4635",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=ejkYZ2FNuoUQyBAnWzHfCg%3D%3D"
+   },
+   {
+    "expediente": "654220942900",
+    "organo": "Dirección General de Carreteras",
+    "adjudicatario": "FCC CONSTRUCCION, S.A.-CONSTRUCCIONES Y OBRAS LLORENTE, S.A.U.",
+    "nif": "A28854727",
+    "importe": 89442000.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2023-06-01",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "13",
+    "objeto": "12-BU-4290; 54.752/22  Proyecto de Construcción Autovía A-73, Burgos-Aguilar De Campoo. Tramo Quintanaortuño-Montorio”. Provincia de Burgos.",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=nxRIPlb1JF9vYnTkQN0%2FZA%3D%3D"
+   },
+   {
+    "expediente": "654220942900",
+    "organo": "Dirección General de Carreteras",
+    "adjudicatario": "FCC CONSTRUCCION-CONSTRUCCIONES Y OBRAS LLORENTE",
+    "nif": "U13686902",
+    "importe": 89442000.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2023-06-01",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "13",
+    "objeto": "12-BU-4290; 54.752/22  Proyecto de Construcción Autovía A-73, Burgos-Aguilar De Campoo. Tramo Quintanaortuño-Montorio”. Provincia de Burgos.",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=nxRIPlb1JF9vYnTkQN0%2FZA%3D%3D"
+   },
+   {
+    "expediente": "EC/10/24",
+    "organo": "Pleno del Ayuntamiento de Boadilla del Monte",
+    "adjudicatario": "FCC MEDIO AMBIENTE, S.A.U.",
+    "nif": "A28541639",
+    "importe": 88137014.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-10-23",
+    "procedimiento": "Abierto",
+    "urgencia": "Ordinaria",
+    "ofertas": "6",
+    "objeto": "Servicio público de limpieza viaria y recogida de residuos del municipio de Boadilla del Monte",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=zTQau7My8XJrSd8H4b2soA%3D%3D"
+   },
+   {
+    "expediente": "2026-02755",
+    "organo": "Dirección General de Renfe Viajeros Sociedad Mercantil Estatal, S.A.",
+    "adjudicatario": "Irvia Mantenimiento Ferroviario, S.A.",
+    "nif": "A85290799",
+    "importe": 86790571.46,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-07-29",
+    "procedimiento": "Abierto",
+    "urgencia": "Urgente",
+    "ofertas": "1",
+    "objeto": "Servicio de mantenimiento de trenes de la serie 100 y 100F de Servicios Comerciales de RENFE",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=i7smHebwxFTE6P%2FuLemXRw%3D%3D"
+   }
+  ],
+  "organismos_vigilados": {
+   "Adif": {
+    "n_expedientes": 404,
+    "presupuesto": 2372532667.62,
+    "adjudicado": 1569274196.62,
+    "n_emergencia": 16,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0,
+    "criterio": "coincidencia por texto en nombre/cadena del órgano: adif. Puede incluir otros órganos con ese texto (p. ej. 'salud' autonómica) [VERIFICAR]."
+   },
+   "Ministerio de Transportes": {
+    "n_expedientes": 3050,
+    "presupuesto": 7107537435.91,
+    "adjudicado": 4328145979.52,
+    "n_emergencia": 38,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 3,
+    "criterio": "coincidencia por texto en nombre/cadena del órgano: transportes. Puede incluir otros órganos con ese texto (p. ej. 'salud' autonómica) [VERIFICAR]."
+   },
+   "Defensa": {
+    "n_expedientes": 2817,
+    "presupuesto": 3165288531.23,
+    "adjudicado": 893463809.85,
+    "n_emergencia": 2,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 81,
+    "criterio": "coincidencia por texto en nombre/cadena del órgano: defensa. Puede incluir otros órganos con ese texto (p. ej. 'salud' autonómica) [VERIFICAR]."
+   },
+   "Sanidad": {
+    "n_expedientes": 2459,
+    "presupuesto": 5828702203.76,
+    "adjudicado": 1337916981.9,
+    "n_emergencia": 7,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 0,
+    "criterio": "coincidencia por texto en nombre/cadena del órgano: sanidad, salud, insalud, ingesa. Puede incluir otros órganos con ese texto (p. ej. 'salud' autonómica) [VERIFICAR]."
+   },
+   "Interior": {
+    "n_expedientes": 528,
+    "presupuesto": 535579801.82,
+    "adjudicado": 249362076.53,
+    "n_emergencia": 9,
+    "n_menores": 0,
+    "n_negociado_sin_publicidad": 1,
+    "criterio": "coincidencia por texto en nombre/cadena del órgano: interior, guardia civil, policía. Puede incluir otros órganos con ese texto (p. ej. 'salud' autonómica) [VERIFICAR]."
+   }
+  }
+ },
+ "menores": {
+  "etiqueta": "Contratos menores",
+  "expedientes_unicos": 43614,
+  "adjudicaciones_con_importe": {
+   "n": 43754,
+   "importe": 217686776.5
+  },
+  "expedientes_sin_resultado_en_feed": 0,
+  "expedientes_con_acuerdo_marco_multiple": 17,
+  "nota_acuerdo_marco": "Si >=3 adjudicatarios de un expediente comparten importe idéntico (acuerdos marco), el importe se cuenta una sola vez en totales y por órgano, y no se suma a cada adjudicatario (es un techo común, no dinero repartido).",
+  "por_estado": {
+   "RES": 43609,
+   "ADJ": 5
+  },
+  "por_procedimiento": [
+   {
+    "procedimiento": "Contrato menor",
+    "n": 43614,
+    "pct_expedientes": 100.0,
+    "presupuesto": 230631336.11,
+    "adjudicado": 217697051.28
+   }
+  ],
+  "por_urgencia": {
+   "Ordinaria": {
+    "n": 41359,
+    "pct": 94.83
+   },
+   "sin dato": {
+    "n": 2123,
+    "pct": 4.87
+   },
+   "Emergencia": {
+    "n": 106,
+    "pct": 0.24
+   },
+   "Urgente": {
+    "n": 26,
+    "pct": 0.06
+   }
+  },
+  "pct_emergencia": 0.24,
+  "pct_menores": 100.0,
+  "pct_negociado_sin_publicidad": 0.0,
+  "por_nivel_administrativo": [
+   {
+    "nivel": "ENTIDADES LOCALES",
+    "n": 25094,
+    "adjudicado": 114608020.54
+   },
+   {
+    "nivel": "ADMINISTRACIÓN GENERAL DEL ESTADO",
+    "n": 5852,
+    "adjudicado": 42831433.15
+   },
+   {
+    "nivel": "COMUNIDADES Y CIUDADES AUTÓNOMAS",
+    "n": 5496,
+    "adjudicado": 32396047.93
+   },
+   {
+    "nivel": "OTRAS ENTIDADES DEL SECTOR PÚBLICO",
+    "n": 7172,
+    "adjudicado": 27861549.66
+   }
+  ],
+  "por_organo_top": [
+   {
+    "organo": "Gerencias de los Institutos de la Agencia Estatal Consejo Superior de Investigaciones Científicas",
+    "nivel": "ADMINISTRACIÓN GENERAL DEL ESTADO",
+    "n": 773,
+    "presupuesto": 4909948.16,
+    "adjudicado": 4868233.2,
+    "n_emergencia": 0,
+    "n_menores": 773,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Junta de Gobierno del Ayuntamiento de Murcia",
+    "nivel": "ENTIDADES LOCALES",
+    "n": 596,
+    "presupuesto": 2570360.11,
+    "adjudicado": 2541647.84,
+    "n_emergencia": 1,
+    "n_menores": 596,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Rectorado de la Universidad de Cádiz",
+    "nivel": "OTRAS ENTIDADES DEL SECTOR PÚBLICO",
+    "n": 224,
+    "presupuesto": 2245283.08,
+    "adjudicado": 2245283.08,
+    "n_emergencia": 0,
+    "n_menores": 224,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Jefatura de Intendencia de Asuntos Económicos Sur",
+    "nivel": "ADMINISTRACIÓN GENERAL DEL ESTADO",
+    "n": 181,
+    "presupuesto": 2433781.61,
+    "adjudicado": 2019890.9,
+    "n_emergencia": 0,
+    "n_menores": 181,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Consejería de la Presidencia de la Junta de Castilla y León",
+    "nivel": "COMUNIDADES Y CIUDADES AUTÓNOMAS",
+    "n": 669,
+    "presupuesto": 1530644.81,
+    "adjudicado": 1506775.07,
+    "n_emergencia": 0,
+    "n_menores": 669,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Rectorado de la Universidad de La Laguna",
+    "nivel": "OTRAS ENTIDADES DEL SECTOR PÚBLICO",
+    "n": 87,
+    "presupuesto": 1406748.34,
+    "adjudicado": 1406748.34,
+    "n_emergencia": 0,
+    "n_menores": 87,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Consejería Delegada de Gestión y Planeamiento Territorial y Medioambiental, S.A.",
+    "nivel": "OTRAS ENTIDADES DEL SECTOR PÚBLICO",
+    "n": 123,
+    "presupuesto": 1338652.38,
+    "adjudicado": 1351245.38,
+    "n_emergencia": 1,
+    "n_menores": 123,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Rectorado de la Universidad de Murcia",
+    "nivel": "OTRAS ENTIDADES DEL SECTOR PÚBLICO",
+    "n": 1710,
+    "presupuesto": 1312622.96,
+    "adjudicado": 1312622.96,
+    "n_emergencia": 0,
+    "n_menores": 1710,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Secretaría General del INTA",
+    "nivel": "ADMINISTRACIÓN GENERAL DEL ESTADO",
+    "n": 97,
+    "presupuesto": 1514040.63,
+    "adjudicado": 1277499.31,
+    "n_emergencia": 0,
+    "n_menores": 97,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Presidencia de la Agencia Estatal Consejo Superior de Investigaciones Científicas, M.P.",
+    "nivel": "ADMINISTRACIÓN GENERAL DEL ESTADO",
+    "n": 156,
+    "presupuesto": 1191276.16,
+    "adjudicado": 1192514.33,
+    "n_emergencia": 1,
+    "n_menores": 156,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Servicio de Salud de las Illes Balears",
+    "nivel": "COMUNIDADES Y CIUDADES AUTÓNOMAS",
+    "n": 97,
+    "presupuesto": 1186620.93,
+    "adjudicado": 1186620.89,
+    "n_emergencia": 0,
+    "n_menores": 97,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Diputación Provincial de Cádiz",
+    "nivel": "ENTIDADES LOCALES",
+    "n": 123,
+    "presupuesto": 1174592.94,
+    "adjudicado": 1104978.92,
+    "n_emergencia": 0,
+    "n_menores": 123,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Conselleria de Servicios Sociales, Familia e Infancia",
+    "nivel": "COMUNIDADES Y CIUDADES AUTÓNOMAS",
+    "n": 86,
+    "presupuesto": 1098122.02,
+    "adjudicado": 1098122.02,
+    "n_emergencia": 0,
+    "n_menores": 86,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Xunta de Goberno da cidade de Santiago de Compostela (CONTRATOS MENORES)",
+    "nivel": "ENTIDADES LOCALES",
+    "n": 191,
+    "presupuesto": 1063448.74,
+    "adjudicado": 1043421.82,
+    "n_emergencia": 0,
+    "n_menores": 191,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Junta de Gobierno del Ayuntamiento de Lugo",
+    "nivel": "ENTIDADES LOCALES",
+    "n": 233,
+    "presupuesto": 1074830.72,
+    "adjudicado": 996052.79,
+    "n_emergencia": 0,
+    "n_menores": 233,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Jefatura de la Sección Económico Administrativa 22 - Base Aérea de Torrejón (Agrupación de Base)",
+    "nivel": "ADMINISTRACIÓN GENERAL DEL ESTADO",
+    "n": 122,
+    "presupuesto": 1001483.47,
+    "adjudicado": 989847.11,
+    "n_emergencia": 0,
+    "n_menores": 122,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Jefatura de la Sección Económico-Administrativa 26 - Base Aérea de Zaragoza (Agrupación BASE)",
+    "nivel": "ADMINISTRACIÓN GENERAL DEL ESTADO",
+    "n": 98,
+    "presupuesto": 976833.69,
+    "adjudicado": 972798.26,
+    "n_emergencia": 0,
+    "n_menores": 98,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Alcaldía del Ayuntamiento de Huétor Tájar",
+    "nivel": "ENTIDADES LOCALES",
+    "n": 72,
+    "presupuesto": 960125.7,
+    "adjudicado": 916603.95,
+    "n_emergencia": 0,
+    "n_menores": 72,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "División Económica y Técnica (Cuerpo Nacional de Policía)",
+    "nivel": "ADMINISTRACIÓN GENERAL DEL ESTADO",
+    "n": 62,
+    "presupuesto": 900015.69,
+    "adjudicado": 877343.36,
+    "n_emergencia": 0,
+    "n_menores": 62,
+    "n_negociado_sin_publicidad": 0
+   },
+   {
+    "organo": "Presidencia de la Confederación Hidrográfica del Ebro",
+    "nivel": "ADMINISTRACIÓN GENERAL DEL ESTADO",
+    "n": 42,
+    "presupuesto": 894003.54,
+    "adjudicado": 875272.91,
+    "n_emergencia": 0,
+    "n_menores": 42,
+    "n_negociado_sin_publicidad": 0
+   }
+  ],
+  "adjudicatarios_top": [
+   {
+    "nif": "A79486833",
+    "adjudicatario": "ELECNOR SERVICIOS Y PROYECTOS S.A.U",
+    "n_adjudicaciones": 52,
+    "importe": 526236.84,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 39,
+    "organo_principal": "Rectorado de la Universitat de València"
+   },
+   {
+    "nif": "A80241789",
+    "adjudicatario": "SERVEO SERVICIOS, S.A.",
+    "n_adjudicaciones": 50,
+    "importe": 389775.62,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 26,
+    "organo_principal": "Director Gerente de FREMAP"
+   },
+   {
+    "nif": "A58710740",
+    "adjudicatario": "PALEX MEDICAL, S.A.U.",
+    "n_adjudicaciones": 39,
+    "importe": 380697.37,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 23,
+    "organo_principal": "Gerencias de los Institutos de la Agencia Estatal Consejo Superior de Investigaciones Científicas"
+   },
+   {
+    "nif": "FR31417626587",
+    "adjudicatario": "FISHER AND PAYKEL HEALTHCARE SAS Y OTROS SEGUN RELACION ADJUNTA",
+    "n_adjudicaciones": 1,
+    "importe": 358503.32,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 1,
+    "organo_principal": "Gerencia Sector Sanitario de Huesca"
+   },
+   {
+    "nif": "B09544495",
+    "adjudicatario": "AGENCIA DE NOTICIAS ICAL, S.L.",
+    "n_adjudicaciones": 3,
+    "importe": 309605.61,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 3,
+    "organo_principal": "Consejería de Agricultura, Ganadería, Medio Rural y Política Ambiental de la Junta de Castilla y León"
+   },
+   {
+    "nif": "A41606534",
+    "adjudicatario": "AGENCIA EUROPA PRESS SA",
+    "n_adjudicaciones": 12,
+    "importe": 303082.82,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 12,
+    "organo_principal": "Alcaldía del Ayuntamiento de Villanueva del Pardillo"
+   },
+   {
+    "nif": "A50878842",
+    "adjudicatario": "ESPUBLICO SERVICIOS PARA LA ADMINISTRACION, S.A.",
+    "n_adjudicaciones": 24,
+    "importe": 302055.27,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 22,
+    "organo_principal": "Presidencia de la Diputación Provincial de Palencia"
+   },
+   {
+    "nif": "A58417346",
+    "adjudicatario": "Aranzadi La Ley S.A.U",
+    "n_adjudicaciones": 27,
+    "importe": 296624.38,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 24,
+    "organo_principal": "Junta de Gobierno Local del Ayuntamiento de Cartagena"
+   },
+   {
+    "nif": "B75582932",
+    "adjudicatario": "Jamiaati, S.L.",
+    "n_adjudicaciones": 15,
+    "importe": 278820.0,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 5,
+    "organo_principal": "Jefatura de Intendencia de Asuntos Económicos Sur"
+   },
+   {
+    "nif": "B59987529",
+    "adjudicatario": "BENITO URBAN S.L.",
+    "n_adjudicaciones": 35,
+    "importe": 276905.41,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 31,
+    "organo_principal": "Junta de Gobierno del Ayuntamiento de Murcia"
+   },
+   {
+    "nif": "A26019992",
+    "adjudicatario": "FCC AQUALIA S.A.",
+    "n_adjudicaciones": 19,
+    "importe": 269187.84,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 14,
+    "organo_principal": "Alcaldía del Ayuntamiento de Jamilena"
+   },
+   {
+    "nif": "F20025318",
+    "adjudicatario": "ORONA, S. COOP",
+    "n_adjudicaciones": 35,
+    "importe": 268324.27,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 30,
+    "organo_principal": "Junta Vecinal de la Entidad Local Menor de Valdivia"
+   },
+   {
+    "nif": "A61895371",
+    "adjudicatario": "ISS Facility Services",
+    "n_adjudicaciones": 6,
+    "importe": 261516.82,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 5,
+    "organo_principal": "Rectorado de la Universidad Nacional de Educación a Distancia"
+   },
+   {
+    "nif": "B28016970",
+    "adjudicatario": "Sociedad Española de Radiodifusión, S.L.",
+    "n_adjudicaciones": 35,
+    "importe": 258636.2,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 27,
+    "organo_principal": "Junta de Gobierno del Ayuntamiento de Lugo"
+   },
+   {
+    "nif": "A79216651",
+    "adjudicatario": "LEFEBVRE EL DERECHO S.A.",
+    "n_adjudicaciones": 25,
+    "importe": 237071.35,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 23,
+    "organo_principal": "Secretaría General Técnica del Ministerio de Hacienda"
+   },
+   {
+    "nif": "A18036509",
+    "adjudicatario": "Hormigones Asfalticos Andaluces S.A. (Hormacesa)",
+    "n_adjudicaciones": 7,
+    "importe": 216455.74,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 3,
+    "organo_principal": "Alcaldía del Ayuntamiento de Torreperogil"
+   },
+   {
+    "nif": "B84498955",
+    "adjudicatario": "Fisher Scientific SL",
+    "n_adjudicaciones": 125,
+    "importe": 215952.05,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 11,
+    "organo_principal": "Rectorado de la Universidad de Murcia"
+   },
+   {
+    "nif": "A28011153",
+    "adjudicatario": "OTIS Mobility, S.A",
+    "n_adjudicaciones": 35,
+    "importe": 215535.52,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 24,
+    "organo_principal": "Gerencia de la Empresa Municipal de la Vivienda de Jerez, S.A."
+   },
+   {
+    "nif": "S4111001F",
+    "adjudicatario": "TESORERIA GENERAL DE LA JUNTA DE ANDALUCIA - TGJA -",
+    "n_adjudicaciones": 85,
+    "importe": 191687.79,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 2,
+    "organo_principal": "Dirección del Centro Penitenciario de Málaga"
+   },
+   {
+    "nif": "A28010478",
+    "adjudicatario": "IMESAPI, S.A.",
+    "n_adjudicaciones": 16,
+    "importe": 188874.25,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 11,
+    "organo_principal": "Concejalía Delegada de Hacienda del Ayuntamiento de la Pobla de Vallbona"
+   },
+   {
+    "nif": "A28281368",
+    "adjudicatario": "RADIO POPULAR DE BURGOS S.A. C.O.P.E.",
+    "n_adjudicaciones": 34,
+    "importe": 185684.62,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 1,
+    "n_organos_distintos": 27,
+    "organo_principal": "Presidencia de la Diputación Provincial de León"
+   },
+   {
+    "nif": "NL005033019B01",
+    "adjudicatario": "ELSEVIER BV",
+    "n_adjudicaciones": 16,
+    "importe": 185279.0,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 6,
+    "organo_principal": "Rectorado de la Universidad de Cádiz"
+   },
+   {
+    "nif": "B45259868",
+    "adjudicatario": "ANTONIO MIGUEL ALONSO E HIJOS SL",
+    "n_adjudicaciones": 5,
+    "importe": 184905.81,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 3,
+    "organo_principal": "Alcaldia del Ayuntamiento de Cobisa"
+   },
+   {
+    "nif": "B56415045",
+    "adjudicatario": "INSCONCRELOC, SLU",
+    "n_adjudicaciones": 5,
+    "importe": 183421.34,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 1,
+    "organo_principal": "Alcaldía del Ayuntamiento de Requena"
+   },
+   {
+    "nif": "B13455175",
+    "adjudicatario": "OBRAS Y VIALES GUADIANA, S.L.",
+    "n_adjudicaciones": 10,
+    "importe": 179351.38,
+    "n_adjudicaciones_en_acuerdo_marco_sin_importe_propio": 0,
+    "n_organos_distintos": 6,
+    "organo_principal": "Alcaldía del Ayuntamiento de Alcoba"
+   }
+  ],
+  "concentracion": {
+   "top10_adjudicatarios_pct_importe_juridicas": 1.7,
+   "adjudicatarios_juridicos_distintos": 21863,
+   "personas_fisicas": {
+    "n": 4850,
+    "importe": 17227525.42
+   },
+   "nota": "Concentración y repetición NO implican irregularidad: UTE, grandes concesionarias y encargos marco son habituales."
+  },
+  "mayores_adjudicaciones": [
+   {
+    "expediente": "Relación Contratos menores 3er trimestre 2026",
+    "organo": "Gerencia Sector Sanitario de Huesca",
+    "adjudicatario": "FISHER AND PAYKEL HEALTHCARE SAS Y OTROS SEGUN RELACION ADJUNTA",
+    "nif": "FR31417626587",
+    "importe": 358503.32,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-09-30",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "32",
+    "objeto": "Relación de contratos menores del 3er trimestre de 2026",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=0DQd6QF3qzPN3k3tjedSGw%3D%3D"
+   },
+   {
+    "expediente": "202603000005",
+    "organo": "Subdelegación del Gobierno en Alicante",
+    "adjudicatario": "ISS Facility Services, S.A.U",
+    "nif": "A61895371",
+    "importe": 218890.51,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-09-14",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Prórroga Contrato de Limpieza Subdelegación del Gobierno en Alicante. 01 01 2027 a 31 12 2027",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=iKah8FlXj2LIGlsa0Wad%2Bw%3D%3D"
+   },
+   {
+    "expediente": "A2027/000277",
+    "organo": "Consejería de la Presidencia de la Junta de Castilla y León",
+    "adjudicatario": "AGENCIA DE NOTICIAS ICAL, S.L.",
+    "nif": "B09544495",
+    "importe": 175740.44,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-10-27",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Suscripción anual a la base de datos de la Agencia de Comunicación/Noticias ICAL 2027",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=PKPhoSMLhE2LAncw3qdZkA%3D%3D"
+   },
+   {
+    "expediente": "CG-26-00700",
+    "organo": "Dirección del Instituto de Astrofísica de Canarias",
+    "adjudicatario": "Univerity of California, Berkeley",
+    "nif": "CA 94720-7450",
+    "importe": 172339.51,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-08-27",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Servicio de acceso a la base de datos del Dark Energy Spectroscopic Instrument",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=ds0k9RHE3D2OUi78BmzhOQ%3D%3D"
+   },
+   {
+    "expediente": "RELACION MENORES 3 TRIMESTRE 2026",
+    "organo": "Gerencia Sector Sanitario de Zaragoza 2",
+    "adjudicatario": "VER RELACION",
+    "nif": "Q5000442C",
+    "importe": 171216.9,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-09-30",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "14",
+    "objeto": "Relación contratos menores 3 trimestre 2026",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=lPFbz1NwS%2FQtm4eBPtV6eQ%3D%3D"
+   },
+   {
+    "expediente": "A2027/000276",
+    "organo": "Consejería de la Presidencia de la Junta de Castilla y León",
+    "adjudicatario": "AGENCIA EUROPA PRESS, S.A.",
+    "nif": "A41606534",
+    "importe": 154062.91,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-10-27",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Suscripción anual a la base de datos de la Agencia de Comunicación/Noticias Europa Press 2027",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=6HeTuwU83LE%2B1TMyIiZmzw%3D%3D"
+   },
+   {
+    "expediente": "1301-137-3-2026-02783(GAS 120/2026)",
+    "organo": "Gerencia de Asistencia Sanitaria de Ávila",
+    "adjudicatario": "FUJIFILM healthcare España, s.l.",
+    "nif": "B82097940",
+    "importe": 140000.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-10-06",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Suministro de un equipo de sala de radiología convencional para el Centro de Salud de Arévalo, dependiente de la GAS de Ávila, contrato basa",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=XuNtVbklNkdq1DdmE7eaXg%3D%3D"
+   },
+   {
+    "expediente": "2934/2026",
+    "organo": "Consorcio de Compensación de Seguros",
+    "adjudicatario": "GARTNER ESPAÑA, S.L.",
+    "nif": "B84184217",
+    "importe": 130900.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-10-21",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "El objeto del contrato consiste en la suscripción de licencias de acceso a la Base de Datos documental de la firma Gartner, para distintos r",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=YUgi5VkNEL6Izo3LHNPGcQ%3D%3D"
+   },
+   {
+    "expediente": "A2027/000287",
+    "organo": "Consejería de Medio Ambiente y Energía de la Junta de Castilla y León",
+    "adjudicatario": "AGENCIA DE NOTICIAS ICAL, S.L.",
+    "nif": "B09544495",
+    "importe": 128906.49,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-10-23",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Considerando las necesidades de acceso integral a las bases de datos de las agencias de noticias, se hace preciso suscribir un contrato de s",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=z1LAQqX%2FsG2LAncw3qdZkA%3D%3D"
+   },
+   {
+    "expediente": "AC-AD-03/2026",
+    "organo": "Dirección General de Transporte por Carretera y Ferrocarril",
+    "adjudicatario": "LA HISPANO DE FUENTE EN SEGURES S.A.",
+    "nif": "A12000071",
+    "importe": 101019.24,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-09-22",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "2",
+    "objeto": "Adjudicación directa del contrato de concesión de servicio público de transporte regular de viajeros de uso general por carretera entre Cuen",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=LrmLYWSvfMYmMOlAXxDEjw%3D%3D"
+   },
+   {
+    "expediente": "CM03-2026-Suministros",
+    "organo": "Instituto Tecnológico de Aragón (ITA)",
+    "adjudicatario": "Instituto Tecnológico de Aragón",
+    "nif": "Q5095008H",
+    "importe": 87314.82,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-10-21",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "7",
+    "objeto": "Relación de contratos menores de suministros adjudicados por el Instituto Tecnológico de Aragón durante el tercer trimestre de 2026 (artícul",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=fK3Sq5dM0nc4NavIWzMcHA%3D%3D"
+   },
+   {
+    "expediente": "P9100004B-2026/000020-PeU",
+    "organo": "Presidencia del Organismo Provincial de Asistencia Económica y Fiscal (OPAEF)",
+    "adjudicatario": "INFORMA D&B S.A.U. (S.M.E.)",
+    "nif": "A80192727",
+    "importe": 75600.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-10-26",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Base de Datos \"Informa\" para el Opaef.",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=ZMGlWjmMRSYeIBJRHQiPkQ%3D%3D"
+   },
+   {
+    "expediente": "2026-01110",
+    "organo": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+    "adjudicatario": "Openwebinars, S.L.",
+    "nif": "B90167594",
+    "importe": 75180.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-07-30",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "licencia cisco ise virtual machine essential 5 years",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=5yFLEmuoXKXL1rX3q%2FMAPA%3D%3D"
+   },
+   {
+    "expediente": "202600000059",
+    "organo": "Secretaría General del Tesoro y Financiación Internacional",
+    "adjudicatario": "FACTIVA LIMITED",
+    "nif": "GB000214640634",
+    "importe": 71172.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-09-15",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "2",
+    "objeto": "Contrato de suscripción a base de datos especializada en materia de prevención de blanqueo de capitales y financiación de terrorismo. Sancio",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=VeQ8VoszI4AwYTJJ03sHog%3D%3D"
+   },
+   {
+    "expediente": "6464/2026",
+    "organo": "Alcaldía del Ayuntamiento de Tarancón",
+    "adjudicatario": "OFIMATICA TARANET SL",
+    "nif": "B16264350",
+    "importe": 70886.4,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-04-09",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Mobiliario para turismo",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=3QlwtKnyUzhxseVhcqrkhw%3D%3D"
+   },
+   {
+    "expediente": "5879/2026",
+    "organo": "Alcaldía del Ayuntamiento de O Barco de Valdeorras",
+    "adjudicatario": "ANGEL RODRIGUEZ IGLESIAS",
+    "nif": "***0880**",
+    "importe": 70000.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-10-21",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Asistencia técnica de aparellador para obra no Castro.",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=aarsqAo3wwp4zIRvjBVCSw%3D%3D"
+   },
+   {
+    "expediente": "2601411",
+    "organo": "Dirección General de Redalsa, S.A., S.M.E.",
+    "adjudicatario": "PLASSER IBERICA, S.A.U.",
+    "nif": "A28375582",
+    "importe": 67561.8,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-07-31",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Realización de IM en el vehículo ferroviario EM-SAT Nº 101 (Máquina + Rodadura Ancho 1.435mm)",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=W4yrYPQfcZYmMOlAXxDEjw%3D%3D"
+   },
+   {
+    "expediente": "2026/SP02002001/00002112E",
+    "organo": "Jefatura de Asuntos Económicos del Estado Mayor de la Defensa",
+    "adjudicatario": "ONDATA INTERNATIONAL S.L.",
+    "nif": "B83290551",
+    "importe": 66665.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-10-21",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Acceso a Base de Datos de Inteligencia para el MCCE.",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=KeP1r7iuGOHi0Kd8%2Brcp6w%3D%3D"
+   },
+   {
+    "expediente": "2025_48_ISE",
+    "organo": "Dirección General de la Sociedad Española para la Transformación Tecnológica, E.P.E.",
+    "adjudicatario": "Integrated Systems Events, LLC",
+    "nif": "20-0280413",
+    "importe": 65000.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-01-29",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Patrocinio en el evento Integrated Systems Europe 2026",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=%2BaNH%2B9xbHNPpxJFXpLZ%2B2A%3D%3D"
+   },
+   {
+    "expediente": "2026/035756",
+    "organo": "Dirección Gerencia del Servicio de Salud de Castilla-La Mancha",
+    "adjudicatario": "EBSCO Information Services S.L.U.",
+    "nif": "B85765766",
+    "importe": 54022.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-07-01",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Contrato de licencia de acceso a revistas científicas para la Biblioteca Virtual de Ciencias de la Salud de Castilla-La Mancha y sus centros",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=Lq%2BCddjpgM6P%2Bo96UAV7cQ%3D%3D"
+   },
+   {
+    "expediente": "13247/2026",
+    "organo": "Puertos de las Illes Balears",
+    "adjudicatario": "ESPUBLICO SERVICIOS PARA LA ADMINISTRACIÓN, S.A.",
+    "nif": "A50878842",
+    "importe": 52671.72,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-10-07",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "2ª Prórroga del servicio de Plataforma de Administración Electrónica para Ports de les Illes Balears (Exp. 7515/2023)",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=532C5gE8Mp0wYTJJ03sHog%3D%3D"
+   },
+   {
+    "expediente": "1887140D",
+    "organo": "Gerencia de la Fundación Universidad de Valladolid",
+    "adjudicatario": "NUBECAO SISTEMAS SL",
+    "nif": "B47735204",
+    "importe": 49999.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-08-27",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "3",
+    "objeto": "Servicios de administración, operación y soporte de la infraestructura de nube privada (Paas) del Ayuntamiento de Valladolid alojada en el C",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=WOBlN5bBXtOFlFRHfEzEaw%3D%3D"
+   },
+   {
+    "expediente": "110102_26_03P026",
+    "organo": "Gerencias de los Institutos de la Agencia Estatal Consejo Superior de Investigaciones Científicas",
+    "adjudicatario": "Biogen Científica",
+    "nif": "B79539441",
+    "importe": 49990.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-03-12",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Fermentador / Biorreactor",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=55pm9%2Ba12uH9pbnDwlaUlg%3D%3D"
+   },
+   {
+    "expediente": "M00094/2026/30",
+    "organo": "Rectorado de la Universidad de Cádiz",
+    "adjudicatario": "ASOCIACION DE INVESTIGACION Y COOPERACION INDUSTRIAL DE ANDALUCIA",
+    "nif": "G41099946",
+    "importe": 49990.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-04-09",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "Servicio de diseño instruccional, guionización, producción y postproducción de recursos formativos multimedia, incluyendo coordinación, grab",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=A%2BbZCF6raE43vLk2DU2Ddg%3D%3D"
+   },
+   {
+    "expediente": "RFA-2026-35222",
+    "organo": "Rectorado de la Universidad de Murcia",
+    "adjudicatario": "BECKMAN COULTER, S.L.U.",
+    "nif": "B86459369",
+    "importe": 49990.0,
+    "acuerdo_marco_multiple": false,
+    "fecha_adjudicacion": "2026-10-09",
+    "procedimiento": "Contrato menor",
+    "urgencia": "Ordinaria",
+    "ofertas": "1",
+    "objeto": "cytoflex s base instrument (b-r-v-y)",
+    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=RDDi6dSZ7nUaF6cS8TCh%2FA%3D%3D"
+   }
+  ],
+  "organismos_vigilados": {
+   "Adif": {
+    "n_expedientes": 40,
+    "presupuesto": 650751.31,
+    "adjudicado": 619414.79,
+    "n_emergencia": 0,
+    "n_menores": 40,
+    "n_negociado_sin_publicidad": 0,
+    "criterio": "coincidencia por texto en nombre/cadena del órgano: adif. Puede incluir otros órganos con ese texto (p. ej. 'salud' autonómica) [VERIFICAR]."
+   },
+   "Ministerio de Transportes": {
+    "n_expedientes": 1262,
+    "presupuesto": 4865832.32,
+    "adjudicado": 4589596.89,
+    "n_emergencia": 0,
+    "n_menores": 1262,
+    "n_negociado_sin_publicidad": 0,
+    "criterio": "coincidencia por texto en nombre/cadena del órgano: transportes. Puede incluir otros órganos con ese texto (p. ej. 'salud' autonómica) [VERIFICAR]."
+   },
+   "Defensa": {
+    "n_expedientes": 1837,
+    "presupuesto": 17855939.42,
+    "adjudicado": 15857601.12,
+    "n_emergencia": 0,
+    "n_menores": 1837,
+    "n_negociado_sin_publicidad": 0,
+    "criterio": "coincidencia por texto en nombre/cadena del órgano: defensa. Puede incluir otros órganos con ese texto (p. ej. 'salud' autonómica) [VERIFICAR]."
+   },
+   "Sanidad": {
+    "n_expedientes": 1323,
+    "presupuesto": 8812041.78,
+    "adjudicado": 8551230.64,
+    "n_emergencia": 0,
+    "n_menores": 1323,
+    "n_negociado_sin_publicidad": 0,
+    "criterio": "coincidencia por texto en nombre/cadena del órgano: sanidad, salud, insalud, ingesa. Puede incluir otros órganos con ese texto (p. ej. 'salud' autonómica) [VERIFICAR]."
+   },
+   "Interior": {
+    "n_expedientes": 720,
+    "presupuesto": 6613053.49,
+    "adjudicado": 6011371.08,
+    "n_emergencia": 79,
+    "n_menores": 720,
+    "n_negociado_sin_publicidad": 0,
+    "criterio": "coincidencia por texto en nombre/cadena del órgano: interior, guardia civil, policía. Puede incluir otros órganos con ese texto (p. ej. 'salud' autonómica) [VERIFICAR]."
+   }
+  }
+ },
+ "limites": [
+  "Solo entidades con perfil en la plataforma estatal; CCAA/EELL con plataforma propia pueden estar incompletas [VERIFICAR].",
+  "Feed mensual: se conserva la última versión de cada expediente movida en el mes; no es 'todo lo adjudicado en el mes'.",
+  "Importes de licitación/adjudicación sin IVA; no son ejecución ni pago.",
+  "Emergencia, encargos a medios propios y menores no publicados pueden faltar [VERIFICAR].",
+  "Adjudicatario repetido o concentrado NO implica irregularidad.",
+  "Personas físicas (DNI/NIE) agregadas en un cajón y no listadas. Los identificadores no españoles sí se listan.",
+  "Algunos órganos publican una 'relación trimestral' de menores como una sola entrada: infravalora el número de contratos."
+ ]
+}

@@ -1,0 +1,595 @@
+{
+ "id": "espana-subvenciones",
+ "generado": "2026-11-10",
+ "fuente": {
+  "nombre": "BDNS - Base de Datos Nacional de Subvenciones (IGAE/Hacienda)",
+  "url": "https://www.infosubvenciones.es/bdnstrans/",
+  "api": "https://www.infosubvenciones.es/bdnstrans/api/",
+  "nivel": "P (API oficial leída)",
+  "ventana": {
+   "desde": "2026-09-11",
+   "hasta": "2026-11-09",
+   "criterio": "fechaConcesion"
+  }
+ },
+ "unidad": "EUR",
+ "escala": 1,
+ "nota_unidad": "importe = euros (escala 1, sin dividir). Para mostrar: M€ = importe/1e6; mil M€ = importe/1e9.",
+ "totales": {
+  "concesiones": 1643342,
+  "importe": 4519627436.04,
+  "concesiones_importe_negativo": 0,
+  "personas_fisicas_enmascaradas": {
+   "n": 1549345,
+   "importe": 1423266875.84
+  },
+  "personas_juridicas": {
+   "beneficiarios_distintos": 60674,
+   "importe": 3096360560.2
+  }
+ },
+ "por_nivel": [
+  {
+   "nivel": "AUTONOMICA",
+   "n": 474467,
+   "importe": 2993355380.09
+  },
+  {
+   "nivel": "ESTADO",
+   "n": 1118286,
+   "importe": 1114320967.43
+  },
+  {
+   "nivel": "LOCAL",
+   "n": 48386,
+   "importe": 405644573.48
+  },
+  {
+   "nivel": "OTROS",
+   "n": 2203,
+   "importe": 6306515.04
+  }
+ ],
+ "por_organo": [
+  {
+   "organo": "AUTONOMICA | CASTILLA Y LEÓN | DIRECCIÓN GENERAL DE POLÍTICA AGRARIA COMUNITARIA",
+   "n": 100636,
+   "importe": 527039484.78
+  },
+  {
+   "organo": "AUTONOMICA | CASTILLA-LA MANCHA | DIRECCIÓN GENERAL AGRICULTURA Y GANADERÍA",
+   "n": 81921,
+   "importe": 435576890.17
+  },
+  {
+   "organo": "AUTONOMICA | EXTREMADURA | DIRECCIÓN GENERAL DE POLÍTICA AGRARIA COMUNITARIA",
+   "n": 75996,
+   "importe": 231352900.65
+  },
+  {
+   "organo": "ESTADO | MINISTERIO DE TRANSPORTES Y MOVILIDAD SOSTENIBLE | DIRECCIÓN GENERAL DE AVIACIÓN CIVIL",
+   "n": 1110057,
+   "importe": 185788189.26
+  },
+  {
+   "organo": "ESTADO | MINISTERIO PARA LA TRANSFORMACIÓN DIGITAL Y DE LA FUNCIÓN PÚBLICA | ENTIDAD PÚBLICA EMPRESARIAL RED.ES",
+   "n": 367,
+   "importe": 171957018.26
+  },
+  {
+   "organo": "ESTADO | MINISTERIO DE CIENCIA, INNOVACIÓN Y UNIVERSIDADES | AGENCIA ESTATAL DE INVESTIGACIÓN",
+   "n": 909,
+   "importe": 169659285.73
+  },
+  {
+   "organo": "AUTONOMICA | ANDALUCÍA | CONSEJERÍA DE EMPLEO, EMPRESA Y TRABAJO AUTÓNOMO",
+   "n": 7838,
+   "importe": 124679417.0
+  },
+  {
+   "organo": "AUTONOMICA | CANARIAS | CONSEJERÍA DE OBRAS PÚBLICAS, VIVIENDA Y MOVILIDAD",
+   "n": 7,
+   "importe": 120000000.0
+  },
+  {
+   "organo": "ESTADO | MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES | CONSEJO SUPERIOR DE DEPORTES",
+   "n": 63,
+   "importe": 93977084.55
+  },
+  {
+   "organo": "ESTADO | MINISTERIO PARA LA TRANSICIÓN ECOLÓGICA Y EL RETO DEMOGRÁFICO | INSTITUTO PARA LA DIVERSIFICACIÓN Y AHORRO DE LA ENERGÍA (IDAE)",
+   "n": 176,
+   "importe": 86816522.43
+  },
+  {
+   "organo": "ESTADO | MINISTERIO DE POLÍTICA TERRITORIAL Y MEMORIA DEMOCRÁTICA | DIRECCIÓN GENERAL DE COOPERACIÓN AUTONÓMICA Y LOCAL",
+   "n": 22,
+   "importe": 77065732.53
+  },
+  {
+   "organo": "AUTONOMICA | COMUNITAT VALENCIANA | SECRETARÍA AUTONÓMICA DE EDUCACIÓN",
+   "n": 1572,
+   "importe": 64031235.72
+  },
+  {
+   "organo": "LOCAL | DIPUTACIÓN PROV. DE ALICANTE | DIPUTACIÓN PROVINCIAL DE ALACANT/ALICANTE",
+   "n": 274,
+   "importe": 59669134.79
+  },
+  {
+   "organo": "AUTONOMICA | GALICIA | FONDO GALLEGO DE GARANTÍA AGRARIA (FOGGA)",
+   "n": 32479,
+   "importe": 47905530.89
+  },
+  {
+   "organo": "AUTONOMICA | CATALUÑA | DEPARTAMENT D'AGRICULTURA, RAMADERIA, PESCA I ALIMENTACIÓ",
+   "n": 1586,
+   "importe": 46970732.96
+  },
+  {
+   "organo": "AUTONOMICA | CATALUÑA | DEPARTAMENT DE DRETS SOCIALS I INCLUSIÓ",
+   "n": 1187,
+   "importe": 46457058.29
+  },
+  {
+   "organo": "LOCAL | DIPUTACIÓN PROV. DE BARCELONA | DIPUTACIÓN PROVINCIAL DE BARCELONA",
+   "n": 534,
+   "importe": 44023467.67
+  },
+  {
+   "organo": "AUTONOMICA | GALICIA | CONSELLERÍA DE EMPLEO, COMERCIO Y EMIGRACIÓN",
+   "n": 2525,
+   "importe": 40089135.71
+  },
+  {
+   "organo": "LOCAL | DIPUTACIÓN PROV. DE VALENCIA | DIPUTACIÓN PROVINCIAL DE VALENCIA",
+   "n": 1555,
+   "importe": 37921895.24
+  },
+  {
+   "organo": "ESTADO | MINISTERIO DE DERECHOS SOCIALES, CONSUMO Y AGENDA 2030 | DIRECCIÓN GENERAL DE DIVERSIDAD FAMILIAR Y SERVICIOS SOCIALES",
+   "n": 11,
+   "importe": 37085010.0
+  },
+  {
+   "organo": "AUTONOMICA | COMUNIDAD DE MADRID | CONSEJERÍA ECONOMÍA, HACIENDA Y EMPLEO",
+   "n": 14277,
+   "importe": 36151771.79
+  },
+  {
+   "organo": "AUTONOMICA | CASTILLA Y LEÓN | DIRECCIÓN GENERAL DE DESARROLLO RURAL",
+   "n": 626,
+   "importe": 34721415.42
+  },
+  {
+   "organo": "AUTONOMICA | PRINCIPADO DE ASTURIAS | AGENCIA DE CIENCIA, COMPETITIVIDAD EMPRESARIAL E INNOVACIÓN",
+   "n": 27,
+   "importe": 33959219.77
+  },
+  {
+   "organo": "AUTONOMICA | COMUNITAT VALENCIANA | SECRETARIA AUTONÓMICA DE INDUSTRIA, COMERCIO Y CONSUMO",
+   "n": 312,
+   "importe": 33364926.02
+  },
+  {
+   "organo": "AUTONOMICA | LA RIOJA | CONSEJERÍA DE AGRICULTURA, GANADERÍA, MUNDO RURAL Y MEDIO AMBIENTE",
+   "n": 16163,
+   "importe": 33181408.18
+  }
+ ],
+ "por_instrumento": [
+  {
+   "instrumento": "SUBVENCIÓN y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN",
+   "n": 1642670,
+   "importe": 4326409214.72
+  },
+  {
+   "instrumento": "PRÉSTAMO",
+   "n": 455,
+   "importe": 182599323.55
+  },
+  {
+   "instrumento": "GARANTÍA",
+   "n": 189,
+   "importe": 8703717.8
+  },
+  {
+   "instrumento": "OTROS INSTRUMENTOS DE AYUDA",
+   "n": 28,
+   "importe": 1915179.97
+  }
+ ],
+ "mayores_beneficiarios": [
+  {
+   "beneficiario": "P3800001D CABILDO INSULAR TENERIFE",
+   "n": 2,
+   "importe": 60687884.97
+  },
+  {
+   "beneficiario": "P3500001G CABILDO INSULAR GRAN CANARIA",
+   "n": 3,
+   "importe": 56876287.99
+  },
+  {
+   "beneficiario": "A33061045 SOCIEDAD MIXTA DE GESTION Y PROMOCION",
+   "n": 3,
+   "importe": 33203750.53
+  },
+  {
+   "beneficiario": "S3511001D COMUNIDAD AUTONOMA DE CANARIAS",
+   "n": 1,
+   "importe": 30000000.0
+  },
+  {
+   "beneficiario": "P2306900H AYUNTAMIENTO DE PORCUNA",
+   "n": 6,
+   "importe": 28354804.78
+  },
+  {
+   "beneficiario": "Q2818002D AGENCIA ESTATAL CONSEJO SUPERIOR DE INVESTIGACIONES CIENTIFICAS (CSIC)",
+   "n": 153,
+   "importe": 27222566.98
+  },
+  {
+   "beneficiario": "A07152515 EMPRESA MUNICIPAL DE TRANSPORTS URBE PAL",
+   "n": 1,
+   "importe": 21385000.0
+  },
+  {
+   "beneficiario": "Q1173007D CAMARA OFICIAL DE COMERCIO INDUSTRIA Y NAVEGACION",
+   "n": 2,
+   "importe": 20000000.0
+  },
+  {
+   "beneficiario": "S7900010E CIUDAD AUTÓNOMA DE MELILLA",
+   "n": 3,
+   "importe": 19197061.6
+  },
+  {
+   "beneficiario": "Q2801528G MANCOMUNIDAD DEL ESTE",
+   "n": 1,
+   "importe": 14891776.0
+  },
+  {
+   "beneficiario": "P2901200B AYUNTAMIENTO DE ÁLORA",
+   "n": 1,
+   "importe": 13140781.04
+  },
+  {
+   "beneficiario": "B19349703 WENEA HUBS STATIONS I, S.L.U.",
+   "n": 1,
+   "importe": 12651485.01
+  },
+  {
+   "beneficiario": "P2608900C AYUNT.LOGROÑO",
+   "n": 12,
+   "importe": 11318541.26
+  },
+  {
+   "beneficiario": "B75577205 NEXTFLOAT PLUS S.L.",
+   "n": 1,
+   "importe": 10500000.0
+  },
+  {
+   "beneficiario": "Q5018001G UNIVERSIDAD DE ZARAGOZA",
+   "n": 26,
+   "importe": 10490067.28
+  },
+  {
+   "beneficiario": "Q2866001G CRUZ ROJA ESPAÑOLA",
+   "n": 79,
+   "importe": 10386001.08
+  },
+  {
+   "beneficiario": "Q4618002B UNIVERSIDAD POLITECNICA DE VALENCIA",
+   "n": 28,
+   "importe": 10166464.83
+  },
+  {
+   "beneficiario": "Q1818002F UNIVERSIDAD DE GRANADA",
+   "n": 43,
+   "importe": 10163888.09
+  },
+  {
+   "beneficiario": "Q1518001A UNIVERSIDADE DE SANTIAGO DE COMPOSTELA",
+   "n": 29,
+   "importe": 9945951.04
+  },
+  {
+   "beneficiario": "Q4118001I UNIVERSIDAD DE SEVILLA",
+   "n": 34,
+   "importe": 9780091.64
+  },
+  {
+   "beneficiario": "P1110100C AYUNTAMIENTO DE CEUTA",
+   "n": 3,
+   "importe": 9175224.0
+  },
+  {
+   "beneficiario": "P2300900D AYUNTAMIENTO DE BAEZA",
+   "n": 9,
+   "importe": 9131958.92
+  },
+  {
+   "beneficiario": "G65760431 BARCELONA MOBILE WORLD CAPITAL FOUNDATION",
+   "n": 1,
+   "importe": 8000000.0
+  },
+  {
+   "beneficiario": "Q2918001E UNIVERSIDAD DE MALAGA",
+   "n": 27,
+   "importe": 7759576.93
+  },
+  {
+   "beneficiario": "P1407500F AYUNTAMIENTO DE ZUHEROS",
+   "n": 4,
+   "importe": 7635355.57
+  }
+ ],
+ "concentracion": {
+  "top10_beneficiarios_pct_importe_juridicas": 10.1,
+  "nota": "Concentración != irregularidad: muchos son entes públicos, universidades, entidades de gestión de ayudas europeas."
+ },
+ "mayores_concesiones": [
+  {
+   "codConcesion": "SB159346201",
+   "fecha": "2026-11-04",
+   "beneficiario": "P3800001D CABILDO INSULAR TENERIFE",
+   "importe": 56872596.39,
+   "organo": "AUTONOMICA | CANARIAS | CONSEJERÍA DE OBRAS PÚBLICAS, VIVIENDA Y MOVILIDAD",
+   "convocatoria": "Aportación dineraria Tenerife para gratuidad transporte terrestre público colectivo 2026",
+   "numeroConvocatoria": "940259"
+  },
+  {
+   "codConcesion": "SB159346206",
+   "fecha": "2026-11-04",
+   "beneficiario": "P3500001G CABILDO INSULAR GRAN CANARIA",
+   "importe": 55003003.49,
+   "organo": "AUTONOMICA | CANARIAS | CONSEJERÍA DE OBRAS PÚBLICAS, VIVIENDA Y MOVILIDAD",
+   "convocatoria": "Aportac dineraria Gran Canaria para la gratuidad transporte terrestre público colectivo 2026",
+   "numeroConvocatoria": "940255"
+  },
+  {
+   "codConcesion": "SB157402376",
+   "fecha": "2026-09-16",
+   "beneficiario": "S3511001D COMUNIDAD AUTONOMA DE CANARIAS",
+   "importe": 30000000,
+   "organo": "ESTADO | MINISTERIO DE DERECHOS SOCIALES, CONSUMO Y AGENDA 2030 | DIRECCIÓN GENERAL DE DIVERSIDAD FAMILIAR Y SERVICIOS SOCIALES",
+   "convocatoria": "Subvención directa a Canarias para programas sociales 2026",
+   "numeroConvocatoria": "928489"
+  },
+  {
+   "codConcesion": "SB157611568",
+   "fecha": "2026-09-30",
+   "beneficiario": "A33061045 SOCIEDAD MIXTA DE GESTION Y PROMOCION",
+   "importe": 29412513.09,
+   "organo": "AUTONOMICA | PRINCIPADO DE ASTURIAS | AGENCIA DE CIENCIA, COMPETITIVIDAD EMPRESARIAL E INNOVACIÓN",
+   "convocatoria": "Resolución de 30/09/2026 por la que se concede a SOGEPSA subvención directa complementaria para equilibrar ingresos y costes derivados de la ejecución del proye",
+   "numeroConvocatoria": "932974"
+  },
+  {
+   "codConcesion": "SB158469295",
+   "fecha": "2026-10-13",
+   "beneficiario": "P2306900H AYUNTAMIENTO DE PORCUNA",
+   "importe": 27984347.7,
+   "organo": "ESTADO | MINISTERIO DE POLÍTICA TERRITORIAL Y MEMORIA DEMOCRÁTICA | DIRECCIÓN GENERAL DE COOPERACIÓN AUTONÓMICA Y LOCAL",
+   "convocatoria": "Extracto de la Resolución de 31 de marzo de 2026 de la Secretaría de Estado de Política Territorial que regula el régimen de ayudas a entidades locales prevista",
+   "numeroConvocatoria": "896524"
+  },
+  {
+   "codConcesion": "SB157094207",
+   "fecha": "2026-09-11",
+   "beneficiario": "A07152515 EMPRESA MUNICIPAL DE TRANSPORTS URBE PAL",
+   "importe": 21385000,
+   "organo": "AUTONOMICA | ILLES BALEARS | DIRECCIÓN GENERAL DE ARQUITECTURA Y VIVIENDA",
+   "convocatoria": "GRATUIDAD TRANSPORTE TERRESTRE 2026",
+   "numeroConvocatoria": "929657"
+  },
+  {
+   "codConcesion": "SB158112751",
+   "fecha": "2026-10-19",
+   "beneficiario": "Q2801528G MANCOMUNIDAD DEL ESTE",
+   "importe": 14891776,
+   "organo": "AUTONOMICA | COMUNIDAD DE MADRID | CONSEJERÍA DE MEDIO AMBIENTE, AGRICULTURA E INTERIOR",
+   "convocatoria": "CONVENIO MANCOMUNIDAD ESTE CONST. COMPLEJO RECICLAJE LOECHES 2026-2029",
+   "numeroConvocatoria": "937173"
+  },
+  {
+   "codConcesion": "SB158469294",
+   "fecha": "2026-10-13",
+   "beneficiario": "P2901200B AYUNTAMIENTO DE ÁLORA",
+   "importe": 13140781.04,
+   "organo": "ESTADO | MINISTERIO DE POLÍTICA TERRITORIAL Y MEMORIA DEMOCRÁTICA | DIRECCIÓN GENERAL DE COOPERACIÓN AUTONÓMICA Y LOCAL",
+   "convocatoria": "Extracto de la Resolución de 31 de marzo de 2026 de la Secretaría de Estado de Política Territorial que regula el régimen de ayudas a entidades locales prevista",
+   "numeroConvocatoria": "896524"
+  },
+  {
+   "codConcesion": "SB132907736",
+   "fecha": "2026-10-29",
+   "beneficiario": "B19349703 WENEA HUBS STATIONS I, S.L.U.",
+   "importe": 12651485.01,
+   "organo": "ESTADO | MINISTERIO PARA LA TRANSICIÓN ECOLÓGICA Y EL RETO DEMOGRÁFICO | INSTITUTO PARA LA DIVERSIFICACIÓN Y AHORRO DE LA ENERGÍA (IDAE)",
+   "convocatoria": "Segunda convocatoria del programa de incentivos a Proyectos singulares en movilidad eléctrica (Programa MOVES Proyectos Singulares II). Plan de Recuperación, Tr",
+   "numeroConvocatoria": "650039"
+  },
+  {
+   "codConcesion": "SB159246184",
+   "fecha": "2026-11-04",
+   "beneficiario": "B75577205 NEXTFLOAT PLUS S.L.",
+   "importe": 10500000,
+   "organo": "ESTADO | MINISTERIO PARA LA TRANSICIÓN ECOLÓGICA Y EL RETO DEMOGRÁFICO | INSTITUTO PARA LA DIVERSIFICACIÓN Y AHORRO DE LA ENERGÍA (IDAE)",
+   "convocatoria": "Primera convocatoria “Subprogramas 2, 3 y 4”, incluidos en Primera convocatoria para ayudas a inversión en proyectos piloto y plataformas de ensayos e infraestr",
+   "numeroConvocatoria": "666214"
+  },
+  {
+   "codConcesion": "SB157694975",
+   "fecha": "2026-10-06",
+   "beneficiario": "S7900010E CIUDAD AUTÓNOMA DE MELILLA",
+   "importe": 10250000,
+   "organo": "ESTADO | MINISTERIO DE HACIENDA | SECRETARÍA GENERAL DE FINANCIACIÓN AUTONÓMICA Y LOCAL",
+   "convocatoria": "Concesión directa de subvenciones para realizar actuaciones de interés general en la ciudad de Melilla. RD 708/2026, de 2 de septiembre.",
+   "numeroConvocatoria": "929907"
+  },
+  {
+   "codConcesion": "SB159338676",
+   "fecha": "2026-10-21",
+   "beneficiario": "Q1173007D CAMARA OFICIAL DE COMERCIO INDUSTRIA Y NAVEGACION",
+   "importe": 10000000,
+   "organo": "ESTADO | MINISTERIO DE ECONOMÍA, COMERCIO Y EMPRESA | DIRECCIÓN GENERAL DE POLÍTICA COMERCIAL",
+   "convocatoria": "Subvención directa a la Cámara Oficial de Comercio, Industria, Servicios y Navegación de Ceuta para la dinamización del comercio de Ceuta. Real Decreto-ley 22/2",
+   "numeroConvocatoria": "937496"
+  },
+  {
+   "codConcesion": "SB158131504",
+   "fecha": "2026-10-21",
+   "beneficiario": "Q1173007D CAMARA OFICIAL DE COMERCIO INDUSTRIA Y NAVEGACION",
+   "importe": 10000000,
+   "organo": "ESTADO | MINISTERIO DE ECONOMÍA, COMERCIO Y EMPRESA | DIRECCIÓN GENERAL DE POLÍTICA COMERCIAL",
+   "convocatoria": "Subvención directa a la Cámara Oficial de Comercio, Industria, Servicios y Navegación de Ceuta para la dinamización del comercio de Ceuta. Real Decreto-ley 22/2",
+   "numeroConvocatoria": "937496"
+  },
+  {
+   "codConcesion": "SB158469106",
+   "fecha": "2026-10-13",
+   "beneficiario": "P2300900D AYUNTAMIENTO DE BAEZA",
+   "importe": 8865087.44,
+   "organo": "ESTADO | MINISTERIO DE POLÍTICA TERRITORIAL Y MEMORIA DEMOCRÁTICA | DIRECCIÓN GENERAL DE COOPERACIÓN AUTONÓMICA Y LOCAL",
+   "convocatoria": "Extracto de la Resolución de 31 de marzo de 2026 de la Secretaría de Estado de Política Territorial que regula el régimen de ayudas a entidades locales prevista",
+   "numeroConvocatoria": "896524"
+  },
+  {
+   "codConcesion": "SB157450724",
+   "fecha": "2026-09-16",
+   "beneficiario": "G65760431 BARCELONA MOBILE WORLD CAPITAL FOUNDATION",
+   "importe": 8000000,
+   "organo": "ESTADO | MINISTERIO PARA LA TRANSFORMACIÓN DIGITAL Y DE LA FUNCIÓN PÚBLICA | SECRETARÍA DE ESTADO DE DIGITALIZACIÓN E INTELIGENCIA ARTIFICIAL",
+   "convocatoria": "Concesión directa a la Fundación Barcelona Mobile World Capital Foundation para la organización del Mobile World Congress (MWC) en la ciudad de Barcelona durant",
+   "numeroConvocatoria": "931475"
+  },
+  {
+   "codConcesion": "SB158469296",
+   "fecha": "2026-10-13",
+   "beneficiario": "P1407500F AYUNTAMIENTO DE ZUHEROS",
+   "importe": 7623811.57,
+   "organo": "ESTADO | MINISTERIO DE POLÍTICA TERRITORIAL Y MEMORIA DEMOCRÁTICA | DIRECCIÓN GENERAL DE COOPERACIÓN AUTONÓMICA Y LOCAL",
+   "convocatoria": "Extracto de la Resolución de 31 de marzo de 2026 de la Secretaría de Estado de Política Territorial que regula el régimen de ayudas a entidades locales prevista",
+   "numeroConvocatoria": "896524"
+  },
+  {
+   "codConcesion": "SB157614937",
+   "fecha": "2026-10-02",
+   "beneficiario": "Q5018001G UNIVERSIDAD DE ZARAGOZA",
+   "importe": 6794347.67,
+   "organo": "AUTONOMICA | ARAGÓN | DIRECCIÓN GENERAL DE CIENCIA E INVESTIGACIÓN",
+   "convocatoria": "Orden de 13 de abril de 2026, por la que se aprueban las bases reguladoras y la convocatoria para la concesión de subvenciones para fomentar la actividad invest",
+   "numeroConvocatoria": "862690"
+  },
+  {
+   "codConcesion": "SB157991166",
+   "fecha": "2026-09-29",
+   "beneficiario": "Q2878003I REAL FEDERACION ESPAÑOLA DE ATLETISMO",
+   "importe": 6384953.48,
+   "organo": "ESTADO | MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES | CONSEJO SUPERIOR DE DEPORTES",
+   "convocatoria": "Real Decreto 637/2026, de 29 de julio, por el que se regula la concesión directa de subvenciones a las federaciones deportivas españolas, al Comité Olímpico Esp",
+   "numeroConvocatoria": "928250"
+  },
+  {
+   "codConcesion": "PR133014459",
+   "fecha": "2026-10-28",
+   "beneficiario": "P4100400C AYUNTAMIENTO DE ALCALA DE GUADAIRA",
+   "importe": 6374407,
+   "organo": "ESTADO | MINISTERIO PARA LA TRANSICIÓN ECOLÓGICA Y EL RETO DEMOGRÁFICO | INSTITUTO PARA LA DIVERSIFICACIÓN Y AHORRO DE LA ENERGÍA (IDAE)",
+   "convocatoria": "Segunda convocatoria del programa de ayudas para proyectos singulares de renovación de las instalaciones de alumbrado exterior municipal (Proyectos Singulares A",
+   "numeroConvocatoria": "804686"
+  },
+  {
+   "codConcesion": "SB158469143",
+   "fecha": "2026-10-13",
+   "beneficiario": "P1400300H AYUNTAMIENTO DE ALCARACEJOS",
+   "importe": 6183262.49,
+   "organo": "ESTADO | MINISTERIO DE POLÍTICA TERRITORIAL Y MEMORIA DEMOCRÁTICA | DIRECCIÓN GENERAL DE COOPERACIÓN AUTONÓMICA Y LOCAL",
+   "convocatoria": "Extracto de la Resolución de 31 de marzo de 2026 de la Secretaría de Estado de Política Territorial que regula el régimen de ayudas a entidades locales prevista",
+   "numeroConvocatoria": "896524"
+  },
+  {
+   "codConcesion": "SB157991171",
+   "fecha": "2026-09-29",
+   "beneficiario": "Q2878029D FED. ESP. DE NATACION",
+   "importe": 6023028.23,
+   "organo": "ESTADO | MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES | CONSEJO SUPERIOR DE DEPORTES",
+   "convocatoria": "Real Decreto 637/2026, de 29 de julio, por el que se regula la concesión directa de subvenciones a las federaciones deportivas españolas, al Comité Olímpico Esp",
+   "numeroConvocatoria": "928250"
+  },
+  {
+   "codConcesion": "SB157904001",
+   "fecha": "2026-09-28",
+   "beneficiario": "B41377698 HERMANOS RUIZ DORANTES SL",
+   "importe": 5922622.47,
+   "organo": "AUTONOMICA | ANDALUCÍA | AGENCIA EMPRESARIAL PARA LA TRANSFORMACIÓN Y EL DESARROLLO ECONÓMICO",
+   "convocatoria": "Resolución de 1 de julio de 2024,concesión de subvenciones en régimen de concurrencia no competitiva para el Crecimiento y Mejora de la Competitividad de las PY",
+   "numeroConvocatoria": "772133"
+  },
+  {
+   "codConcesion": "SB157991212",
+   "fecha": "2026-09-29",
+   "beneficiario": "Q2878033F FED. ESP. DE PIRAGUISMO",
+   "importe": 5679649.13,
+   "organo": "ESTADO | MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES | CONSEJO SUPERIOR DE DEPORTES",
+   "convocatoria": "Real Decreto 637/2026, de 29 de julio, por el que se regula la concesión directa de subvenciones a las federaciones deportivas españolas, al Comité Olímpico Esp",
+   "numeroConvocatoria": "928250"
+  },
+  {
+   "codConcesion": "GR159461648",
+   "fecha": "2026-11-06",
+   "beneficiario": "B26891598 FERROCARRIL PROYECTO 21 SL",
+   "importe": 5624640,
+   "organo": "AUTONOMICA | COMUNIDAD DE MADRID | CONSEJERÍA ECONOMÍA, HACIENDA Y EMPLEO",
+   "convocatoria": "CONVENIO REAFIANZAMIENTO FINANCIACIÓN COMPRA SUELO CONSTRUCCIÓN VPP",
+   "numeroConvocatoria": "849366"
+  },
+  {
+   "codConcesion": "SB157806478",
+   "fecha": "2026-09-22",
+   "beneficiario": "A28637304 AGRUP.ESP.E.ASEG.SEG.AGR.C.,SA.",
+   "importe": 5434057.48,
+   "organo": "AUTONOMICA | CATALUÑA | DEPARTAMENT D'AGRICULTURA, RAMADERIA, PESCA I ALIMENTACIÓ",
+   "convocatoria": "Ayudas a las líneas del Plan de seguros agrarios 2025 (Agroseguro)",
+   "numeroConvocatoria": "922490"
+  }
+ ],
+ "sanciones": {
+  "total_registros_bdns": 4,
+  "muestra_leida": 4,
+  "por_nivel1": {
+   "AUTONOMICA": 4
+  },
+  "importe_multa_muestra": 30004,
+  "nota": "Muestra de la primera página de la API (orden por defecto), NO el histórico completo ni 'las últimas'. Sancionados no se listan (pueden ser personas físicas)."
+ },
+ "partidos_politicos": {
+  "total_registros_bdns": 6638,
+  "muestra_leida": 2000,
+  "importe_muestra": 161225620.69,
+  "ejemplos_organo": [
+   "AJUNTAMENT DE SABADELL",
+   "ASAMBLEA DE LA COMUNIDAD DE MADRID",
+   "AYUNTAMIENTO DE ADEJE",
+   "AYUNTAMIENTO DE ALCAUDETE",
+   "AYUNTAMIENTO DE ALCOY/ALCOI"
+  ],
+  "nota": "Endpoint partidospoliticos = concesiones a grupos/partidos (incl. grupos municipales). Solo muestra de una página; agregado completo [VERIFICAR]."
+ },
+ "grandes_beneficiarios": {
+  "total_registros_bdns": 154391,
+  "muestra_leida": 2000,
+  "nota": "Endpoint de grandes beneficiarios por ejercicio; solo primera página, sin ordenar por importe (la ordenación por importe da timeout). No se usa para rankings."
+ },
+ "limites": [
+  "BDNS publica concesiones, no pagos ni ejecución.",
+  "Filtros de la API por nivel e importe no funcionan; todo se agrega en local por fechaConcesion.",
+  "Personas físicas enmascaradas por la propia BDNS; no se listan.",
+  "Retraso de publicación por entidad y completitud de subvenciones nominativas/directas: [VERIFICAR].",
+  "La API avisa de que los datos pueden corregirse después de su extracción (dinámicos).",
+  "Beneficiario repetido o concentración de importe NO implica irregularidad."
+ ]
+}

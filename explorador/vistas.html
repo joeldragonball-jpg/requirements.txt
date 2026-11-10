@@ -1802,11 +1802,71 @@ function pEspana(){
           return fl.concat([{_emp:{emp:emT||null,comp:true,coste:emKn?emKc/emKn*1000:null,nota:'Total: suma de empleados de las secciones con dato. Coste medio global solo con las secciones comparables (sin Presidencia/Justicia ni Inclusión). Fuente: EPSAP enero 2026.'},seccion:'TOTAL',altos_cargos:{obligaciones:sm(r=>r.altos_cargos.obligaciones)},eventuales:{obligaciones:sm(r=>r.eventuales.obligaciones)},capitulos:{'1':tp},pct_personal:tt?tp/tt*100:null}])})()),
         el('h3',null,'Número de cargos y retribuciones oficiales'),dat([CM.altos_cargos_numero,...CM.retribuciones])),false));
     }
+    const PO=D.espana_politica;
+    if(PO){
+      /* C242: Congreso, iniciativas, votaciones e intereses; solo datos oficiales y neutrales, recuentos sin nombres */
+      const co=PO.composicion,ini=PO.iniciativas,vo=PO.votaciones,it=PO.intereses,kv=o=>Object.entries(o||{}).map(([k,v])=>({k,v}));
+      add(bloque('España · Congreso: composición y votaciones (datos abiertos)',PO.aviso,{nivel:'P',t:'Congreso de los Diputados · '+(PO.generado||'')+' · unidades'},conL(co.nota,
+        tabla([{t:'Grupo parlamentario',f:r=>r.k},{t:'Diputados en alta (personas)',n:1,f:r=>n0(r.v)}],kv(co.por_grupo)),
+        el('h3',null,'Última sesión plenaria con votaciones: n.º '+(vo.sesion||'—')+', '+(vo.fecha||'—')),el('p','nota-v',vo.nota),
+        tabla([{t:'Asunto',f:r=>r.texto},{t:'Expediente',f:r=>r.expediente},{t:'Sí (votos)',n:1,f:r=>n0(r.si)},{t:'No (votos)',n:1,f:r=>n0(r.no)},{t:'Abstenciones (votos)',n:1,f:r=>n0(r.abst)}],vo.resultados)),false));
+      const pr=ini.proyectos_ley_gobierno,pp=ini.proposiciones_ley;
+      add(bloque('España · Iniciativas legislativas de la XV legislatura y su estado',ini.nota,{nivel:'P',t:'Congreso · '+ini.fecha_dato+' · número de iniciativas'},conL(null,
+        tabla([{t:'Proyectos de ley del Gobierno ('+n0(pr.total)+')',f:r=>r.k},{t:'Iniciativas (número)',n:1,f:r=>n0(r.v)}],kv(pr.por_resultado)),
+        tabla([{t:'Proposiciones de ley ('+n0(pp.total)+')',f:r=>r.k},{t:'Iniciativas (número)',n:1,f:r=>n0(r.v)}],kv(pp.por_resultado)),
+        el('h3',null,'Normas aprobadas y publicadas por año'),tabla([{t:'Año · tipo',f:r=>r.k},{t:'Normas (número)',n:1,f:r=>n0(r.v)}],kv(ini.normas_aprobadas_por_anio).sort((a,b)=>b.k.localeCompare(a.k))),
+        el('h3',null,'Leyes de 2026'),tabla([{t:'Ley',f:r=>{const a=el('a',null,r.titulo);a.href=r.pdf;a.target='_blank';a.rel='noopener';return a}},{t:'Fecha',f:r=>r.fecha}],ini.leyes_2026)),false));
+      add(bloque('España · Intereses declarados por los diputados (recuento)',it.nota,{nivel:'P',t:'Registro de Intereses del Congreso · '+it.fecha_dato+' · registros'},conL(null,
+        tabla([{t:'Tipo de registro',f:r=>r.k},{t:'Registros (número)',n:1,f:r=>n0(r.v)}],kv(it.por_tipo)),
+        tabla([{t:'Diputados con algún registro (personas)',f:r=>'Total'},{t:'Personas',n:1,f:r=>n0(it.diputados_con_registro)}],[{}])),false));
+      const FN=PO.financiacion,AC=PO.altos_cargos;
+      if(FN){
+        const fo=o=>({nombre:o.nombre,valor:o.valor,unidad:o.unidad,anio:'',nivel:FN.nivel,nota:o.nota});
+        const enl=(t,u)=>{const p=el('p','nota-v',t+' ');const a=el('a',null,'Informe');a.href=u;a.target='_blank';a.rel='noopener';p.appendChild(a);return p};
+        add(bloque('España · Financiación de partidos y fundaciones vinculadas (Tribunal de Cuentas)',FN.aviso,{nivel:FN.nivel,t:'Tribunal de Cuentas · informes 1.573 y 1.642 · '+FN.unidad},conL(null,
+          el('h3',null,'Cuentas de los partidos, ejercicio 2020'),enl(FN.partidos_2020.informe+'.',FN.partidos_2020.fuente),dat(FN.partidos_2020.filas.map(fo)),
+          el('h3',null,'Fundaciones y entidades vinculadas, ejercicios 2021 y 2022'),enl(FN.fundaciones_2021_2022.informe+'.',FN.fundaciones_2021_2022.fuente),dat(FN.fundaciones_2021_2022.filas.map(fo)),
+          el('p','nota-v',FN.resolucion_cortes.texto+' ('+FN.resolucion_cortes.fecha+', '+FN.resolucion_cortes.nivel+')')),false));
+      }
+      if(AC)add(bloque('España · Altos cargos: informe semestral de la Oficina de Conflictos de Intereses',AC.nota,{nivel:AC.nivel,t:'Oficina de Conflictos de Intereses · leído '+AC.fecha_dato},conL(AC.texto,lnk(AC.fuente)),false));
+      add(bloque('España · Política: lo que NO se ha leído todavía','Financiación de partidos, bienes de altos cargos y Senado: pendientes con su motivo. No se rellena nada sin fuente.',{t:'Tribunal de Cuentas · Portal de Transparencia · Senado'},
+        tabla([{t:'Tema',f:r=>r.tema},{t:'Estado',f:r=>r.estado},{t:'Detalle',f:r=>r.detalle},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Fuente',f:r=>lnk(r.fuente)}],PO.pendiente)));
+    }
+    const CT=D.espana_contratacion,SBV=D.espana_subvenciones;
+    if(CT&&CT.licitaciones){
+      const me=v=>v==null?'—':fx(v/1e6,v/1e6<10?2:1)+' M€',LI=CT.licitaciones,MN=CT.menores||{};
+      const avC='Dónde va el dinero · contratos públicos de '+CT.mes+' (PLACSP). Importes en M€ = millones de euros, sin IVA, de licitación/adjudicación (no de pago). '+CT.limites.slice(0,3).join(' ');
+      add(bloque('Dónde va el dinero: contratos públicos (PLACSP, mes '+CT.mes+')',avC,{nivel:'P',t:'PLACSP · ficheros mensuales · generado '+(CT.generado||'')},conL(null,
+        tabla([{t:'Procedimiento',f:r=>r.procedimiento},{t:'Expedientes (número)',n:1,f:r=>n0(r.n)},{t:'% de expedientes',n:1,f:r=>fx(r.pct_expedientes,1)+' %'},{t:'Presupuesto de licitación',n:1,f:r=>me(r.presupuesto)},{t:'Adjudicado',n:1,f:r=>me(r.adjudicado)}],LI.por_procedimiento),
+        tabla([{t:'Órgano con más adjudicado en el mes',f:r=>r.organo},{t:'Expedientes',n:1,f:r=>n0(r.n)},{t:'Adjudicado',n:1,f:r=>me(r.adjudicado)},{t:'Emergencia (nº)',n:1,f:r=>n0(r.n_emergencia)},{t:'Neg. sin publicidad (nº)',n:1,f:r=>n0(r.n_negociado_sin_publicidad)}],LI.por_organo_top.slice(0,12)),
+        tabla([{t:'Mayores adjudicatarios (personas jurídicas)',f:r=>r.adjudicatario+' ('+r.nif+')'},{t:'Adjudicaciones',n:1,f:r=>n0(r.n_adjudicaciones)},{t:'Importe',n:1,f:r=>me(r.importe)},{t:'Órganos distintos',n:1,f:r=>n0(r.n_organos_distintos)}],LI.adjudicatarios_top.slice(0,10)),
+        tabla([{t:'Mayores adjudicaciones individuales',f:r=>lnk(r.enlace||'https://contrataciondelestado.es',r.expediente+' · '+(r.objeto||'').slice(0,70))},{t:'Órgano',f:r=>r.organo},{t:'Adjudicatario',f:r=>r.adjudicatario},{t:'Importe',n:1,f:r=>me(r.importe)},{t:'Procedimiento',f:r=>r.procedimiento}],LI.mayores_adjudicaciones.slice(0,10)),
+        el('p','nota-v','Emergencia: '+fx(LI.pct_emergencia,2)+' % de expedientes de licitaciones; contratos menores: '+fx(MN.expedientes_unicos||0,0).replace(/^/,'')+' expedientes distintos en su fichero. Los 10 mayores adjudicatarios suman el '+fx(LI.concentracion.top10_adjudicatarios_pct_importe_juridicas,1)+' % del importe adjudicado a personas jurídicas. Concentración o repetición NO implican irregularidad.')),false));
+    }
+    if(SBV&&SBV.totales){
+      const me=v=>v==null?'—':fx(v/1e6,v/1e6<10?2:1)+' M€';
+      add(bloque('Dónde va el dinero: subvenciones concedidas (BDNS, '+SBV.fuente.ventana.desde+' a '+SBV.fuente.ventana.hasta+')',SBV.limites.join(' '),{nivel:'P',t:'BDNS · API oficial · importes en M€ (millones de euros) · generado '+(SBV.generado||'')},conL(null,
+        tabla([{t:'Nivel concedente',f:r=>r.nivel},{t:'Concesiones (número)',n:1,f:r=>n0(r.n)},{t:'Importe concedido',n:1,f:r=>me(r.importe)}],SBV.por_nivel),
+        tabla([{t:'Órgano concedente (nivel | territorio | órgano)',f:r=>r.organo},{t:'Concesiones',n:1,f:r=>n0(r.n)},{t:'Importe concedido',n:1,f:r=>me(r.importe)}],SBV.por_organo.slice(0,15)),
+        tabla([{t:'Mayores beneficiarios (personas jurídicas)',f:r=>r.beneficiario},{t:'Concesiones',n:1,f:r=>n0(r.n)},{t:'Importe concedido',n:1,f:r=>me(r.importe)}],SBV.mayores_beneficiarios.slice(0,15)),
+        el('p','nota-v','Los 10 mayores beneficiarios jurídicos concentran el '+fx(SBV.concentracion.top10_beneficiarios_pct_importe_juridicas,1)+' % del importe concedido a personas jurídicas. BDNS publica concesiones, no pagos; las personas físicas vienen enmascaradas y no se listan.')),false));
+    }
     const LE=D.espana_leyes;
     if(LE&&(LE.leyes||[]).length){
       const nl=r=>{const a=el('a',null,r.nombre);a.href=r.fuente;a.target='_blank';a.rel='noopener';return a};
       add(bloque('España: leyes y normas recientes del BOE',LE.aviso,{nivel:'P',t:'BOE · generado '+(LE.generado||'')},
         tabla([{t:'Norma',f:nl},{t:'Publicación',f:r=>r.publicacion},{t:'En vigor desde',f:r=>r.entrada_vigor},{t:'Estado',f:r=>r.estado},{t:'Qué cambia',f:r=>r.que_cambia},{t:'Nivel',f:r=>nivelBadge(r.nivel)}],LE.leyes.slice().sort((a,b)=>(b.publicacion||'').localeCompare(a.publicacion||''))),false));
+    }
+    const EM=D.espana_empresas;
+    if(EM&&(EM.empresas||[]).length){
+      const mm=v=>v==null?'—':fx(v,v%1?1:0)+' M€';
+      add(bloque('Empresas públicas: SEPI, Aena, Adif, Renfe, Correos, Enaire, Ineco',EM.aviso,{nivel:'P',t:'Web de cada entidad · 2025 · M€ · generado '+(EM.generado||'')},
+        tabla([{t:'Entidad',f:r=>{const a=el('a',null,r.nombre);a.href=r.fuente;a.target='_blank';a.rel='noopener';return a}},{t:'Ejercicio',f:r=>r.ejercicio||'—'},{t:'Cifra de negocio / ingresos',n:1,f:r=>mm(r.cifra_negocio)},{t:'Resultado neto',n:1,f:r=>mm(r.resultado_neto)},{t:'Deuda',f:r=>r.deuda==null?'no leída':r.deuda},{t:'Aportaciones del Estado',f:r=>r.aportaciones_estado==null?'no leídas':r.aportaciones_estado},{t:'Nota',f:r=>r.nota},{t:'Nivel',f:r=>nivelBadge(r.nivel)}],EM.empresas),false));
+    }
+    const CC=EM&&EM.comparador_ccaa;
+    if(CC&&(CC.filas||[]).length){
+      add(bloque('Comparador de comunidades: paro, población y deuda',CC.aviso,{nivel:'P',t:'INE (EPA 2T 2026; población 1-ene-2025) · Banco de España (deuda PDE '+((CC.deuda||{}).periodo||'')+')'},
+        tabla([{t:'Comunidad',f:r=>r.ccaa},{t:'Paro EPA, %',n:1,f:r=>r.paro_pct==null?'—':fx(r.paro_pct,2)+' %'},{t:'Población (personas)',n:1,f:r=>r.poblacion==null?'—':fx(r.poblacion,0)},{t:'Deuda PDE, M€',n:1,f:r=>r.deuda_pde_meur==null?'—':fx(r.deuda_pde_meur,1)+' M€'},{t:'Deuda por habitante, €',n:1,f:r=>r.deuda_per_capita_eur==null?'—':fx(r.deuda_per_capita_eur,0)+' €'}],CC.filas.slice().sort((a,b)=>(b.deuda_per_capita_eur||0)-(a.deuda_per_capita_eur||0))),false));
     }
     add(bloque('Programas concretos: igualdad, IMV, becas, inmigración, cooperación, dependencia…','Partida exacta con su código. Las aportaciones a la Seguridad Social son la parte que paga el Estado.',pieE,conL(B.lecturas.igualdad,
       tabla([{t:'Bloque',f:r=>r.grupo},{t:'Programa',f:r=>r.nombre},{t:'Código',f:r=>r.codigo},...ejec,{t:'Nota',f:r=>[r.nota,r.nota_2024].filter(Boolean).join(' · ')}],B.programas)),false));
