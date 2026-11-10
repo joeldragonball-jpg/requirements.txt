@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-11-07
+actualizado: 2026-11-10
 ---
 # Índice de la investigación
 
@@ -12,54 +12,54 @@ Mapa de los informes más recientes por tema. Lo genera `scripts/indice_investig
 Por tema, los 3 informes más recientes (fecha · título · ruta · una frase de su resumen).
 
 ## Auditorías y verificaciones
-- 2026-11-07 · C150 · Auditoría de valoración: contenido y estética (7-nov-2026) (`informes/research/2026-11-07-C150-auditoria-valoracion.md`): La app móvil está bien en lo visual: sin desbordes a 375 px, sin texto < 11,5 px y contraste ≥ 4,5:1 en oscuro (comprobado por script en las…
-- 2026-11-06 · C145 · Auditoría de Justicia, mandatos y accesos manuales (6-nov-2026) (`informes/research/2026-11-06-C145-auditoria.md`): Justicia: 32 hechos, todos con fecha ISO, nivel P y dominio oficial (poderjudicial.es, boe.es, europarl.europa.eu); ningún P apunta a prensa.
-- 2026-11-05 · W05B · Lote corto con Chrome · 5-nov-2026 (noche) (`informes/research/2026-11-05-W05B-lote-chrome.md`): Objetivo: cerrar las 4 verificaciones abiertas de W05 con Chrome. Resultado: 1 cerrada (parcial → P), 1 bloqueada, 2 sin resolver.
+- 2026-11-10 · W05 · Verificación por lotes (10-nov-2026) (`informes/research/2026-11-10-W05-verificacion-lote.md`): Alcance: pendientes de prioridad alta de PLANNING.md salvo Brent/Ormuz (los lleva W10). Etiquetas: [P] primaria leída, [S] prensa, [VERIFICAR].
+- 2026-11-10 · Verificaciones bis (10-nov-2026) (`informes/research/2026-11-10-verificaciones-bis.md`): Segunda pasada sobre «Verificaciones pendientes» de PLANNING (noticias de prensa sin contrastar del 7 8 nov) y lo que C173/C176 dejaron a medias.…
+- 2026-11-10 · C173 + C176 · Verificación de prensa 4-6 nov (10-nov-2026) (`informes/research/2026-11-10-C173-C176-verificacion.md`): Parcial: la cuota se agotaba. Brent/Ormuz, MEXC, Canadá e IPC: ver W05/W10 del mismo día.
 
 ## Voces y predicciones
+- 2026-11-10 · W06 · Voces y predicciones (10-nov-2026) (`informes/research/2026-11-10-W06-voces.md`): v008 Claver → compatible (E) Frase del post de X del 1 ene 2026; $100 en 2025 falló (XRP ~1,87 $). [TipRanks](https://www.tipranks.com/news/jake…
 - 2026-11-07 · W07 · Research de fuentes (sábado 7-nov-2026) (`informes/research/2026-11-07-W07-fuentes.md`): 231 enlaces probados: ninguno roto; 37 con 403 de los mismos dominios.
 - 2026-11-06 · W06 · Voces y predicciones (viernes 6-nov-2026) (`informes/research/2026-11-06-W06-voces-predicciones.md`): Segunda pasada de la semana (la primera fue el 2 nov). Sesión corta con búsqueda web; no se abrieron fuentes primarias (bis.org, bankofengland.co.uk,…
-- 2026-11-06 · C79 · Fuentes de España probadas con Chrome (6-nov-2026) (`informes/research/2026-11-06-C79-fuentes-espana.md`): Solo lectura; sin descargas. Chrome accedió sin captcha ni anti bot en todas.
 
 ## Fiscal
+- 2026-11-10 · C232 — Fiscalidad cripto en España y MiCA/CASP (10-nov-2026) (`informes/research/2026-11-10-C232-fiscalidad-cripto-mica.md`): Alcance: informativo, sin recomendaciones. Sesión corta: 4 búsquedas web; no se pudo abrir BOE, AEAT ni el registro CNMV/ESMA directamente. Todo lo…
 - 2026-10-23 · T24 — Fiscalidad internacional de cripto: CARF, DAC8 y formulario 1099-DA (`informes/research/2026-10-23-T24-fiscalidad-internacional-cripto.md`): CARF (OECD): marco de intercambio automático de información fiscal sobre cripto entre países (equivalente al CRS para cuentas bancarias). Los…
 - 2026-10-17 · Fiscalidad cripto internacional: comparativa informativa (2026-10-17, R35 profundo) (`informes/research/2026-10-17-R35-fiscalidad-cripto-internacional-profundo.md`): Solo 5 de 10 filas tienen fuente primaria leída: EE. UU. (IRS, 2 sep 2026), Reino Unido (gov.uk, 5 oct 2026), Alemania (§23 EStG, ley), Singapur…
-- 2026-10-14 · India: RBI, e₹, UPI, fiscalidad y regulación cripto (2026-10-14, R02) (`informes/research/2026-10-14-R02-india.md`): India mantiene dos carriles opuestos: infraestructura pública de pagos muy exitosa (UPI, ~24.000 M de operaciones/mes) y un e₹ piloto aún pequeño;…
 
 ## Energía y Ormuz
+- 2026-11-10 · W10 · Energía y geopolítica (martes 10-nov-2026) (`informes/research/2026-11-10-W10-energia.md`): El STEO de noviembre aún no estaba publicado al leer; vigente el de octubre (105 $ en 4T 26; 84 $ en 2027). [VERIFICAR] hoy.
+- 2026-11-10 · C233 — España: energía, OMIE/REE, combustibles (borrador parcial, 10-nov-2026) (`informes/research/2026-11-10-C233-espana-energia.md`): HECHOS (OMIE vía prensa; [VERIFICAR] contra omie.es)
 - 2026-11-07 · W10 · Energía y geopolítica (sábado 7-nov-2026) (`informes/research/2026-11-07-W10-energia.md`): Spot de la EIA al 3 nov: Brent 107,03 $ y WTI 99,64 $; futuro del 6 nov: 97,8 $ y 90,4 $.
-- 2026-11-02 · W10 · Energía y geopolítica (2-nov-2026) (`informes/research/2026-11-02-W10-energia.md`): Continúa 2026 10 30 W10 energia.md . Sin recomendaciones ni predicciones de precio. Etiquetas: [P] · [S] · [VERIFICAR] · [ESPECULACIÓN].
-- 2026-10-30 · W10 · Energía y geopolítica: cierre de semana y víspera de OPEP+ (30-oct-2026) (`informes/research/2026-10-30-W10-energia.md`): Continúa 2026 10 25 W10 energia.md y 2026 10 30 C29 energia guerra noticias.md . Sin recomendaciones ni predicciones de precio. Etiquetas: [P]…
 
 ## Deuda y bonos
+- 2026-11-10 · W02 · Deuda, subastas y calificaciones (10-nov-2026) (`informes/research/2026-11-10-W02-deuda.md`): Decisión pendiente: anuncio trimestral de refinanciación del Tesoro de EE. UU. (4 nov) — LEÍDO, cerrado
+- 2026-11-10 · C230 — Vivienda y deuda autonómica en España (10-nov-2026) (`informes/research/2026-11-10-C230-vivienda-deuda-ccaa.md`): Alcance: precio, alquiler y esfuerzo por CCAA; deuda de las CCAA en dos conceptos (PDE y deuda con el Estado/FLA).
 - 2026-11-03 · C77 · España: gasto y deuda, inmigración y catástrofes (síntesis, 3-nov-2026) (`informes/research/2026-11-03-C77-espana-gasto-inmigracion-dana.md`): Síntesis de tres informes crudos de agentes: research/fuentes nuevas/F gasto contratos deuda.md , G inmigracion.md y H catastrofes dana.md (léelos…
-- 2026-11-02 · W02 · Deuda, subastas y calificaciones (2-nov-2026) (`informes/research/2026-11-02-W02-deuda.md`): 3 nov EE. UU. Se anuncian bills de 4, 8 y 17 semanas (liquidación 10 nov); importes aún sin publicar [P] TreasuryDirect API ( /securities/upcoming )
-- 2026-11-02 · D06 (a2) · Cortes recientes del Pillar 3 Data Hub de la EBA (2-nov-2026) (`informes/research/2026-11-02-D06-bancos-eba.md`): No se ha podido confirmar ningún corte más reciente que el del 30 jun 2025. El panel «Deuda por banco» ( explorador/bancos eba.json , 116 bancos)…
 
 ## Macro y tipos
-- 2026-11-02 · W01 · Tipos de interés (lunes 2-nov-2026) (`informes/research/2026-11-02-W01-tipos.md`): Reuniones de bancos centrales, próximos 10 días
-- 2026-10-29 · W01B · Tipos de interés, segunda pasada (29-oct-2026) (`informes/research/2026-10-29-W01B-tipos.md`): Hecha el 29 oct por la tarde, tras las decisiones de la Fed (28 oct), Canadá (28 oct) y el BCE (29 oct). Banco de Japón: aún sin decisión (se anuncia…
-- 2026-10-26 · W01 · Tipos de interés (lunes) (`informes/research/2026-10-26-W01-tipos-de-interes.md`): Qué cambió en el radar ( explorador/regulacion.json , celdas politica )
+- 2026-11-10 · W01 · Tipos de interés — previa del IPC de EE. UU. de octubre (10-nov-2026) (`informes/research/2026-11-10-W01-tipos-ipc-octubre.md`): Escrito a las ~01:40 (hora local) del 10 nov, ANTES de la publicación (8:30 ET = 14:30 Madrid). Informativo, sin recomendación de compra/venta. [P] =…
+- 2026-11-10 · C229 · España macro (10-nov-2026) (`informes/research/2026-11-10-C229-espana-macro.md`): Alcance: pasada rápida (5 búsquedas). Casi todo viene de prensa/analistas que citan al INE o la Seguridad Social; NO se abrió la nota oficial del…
+- 2026-11-08 · W01 · Datos macro y tipos — foco IPC de EE. UU. del martes 10-nov (2026-11-08) (`informes/research/2026-11-08-W01-tipos.md`): IPC de octubre — martes 10 nov, 8:30 ET (13:30 UTC, 14:30 Madrid)
 
 ## Cripto y ETF
+- 2026-11-08 · EDGAR W04: filings XRP/XLM/Ripple, 9-oct a 8-nov-2026 (`informes/research/2026-11-08-edgar-w04.md`): Los 5 más relevantes (todo [P], leído en sec.gov)
+- 2026-11-07 · C149 · Lector del ledger XRPL (7-nov-2026) (`informes/research/2026-11-07-C149-xrpl.md`): Script: scripts/leer xrpl.py (POST JSON RPC, sin IA ni claves). Etiqueta [P] = leído del ledger validado.
 - 2026-11-03 · Despeja La X — «🚨 Hoy es clave para XRP y el mercado Cripto. Has de saber esto!» (`informes/videos/2026-11-03-despeja-la-x-elecciones-clarity-ripple.md`): El vídeo es una previa electoral : los demócratas son favoritos para ganar la Cámara (y puede que el Senado), el canal teme una reacción de «mercado…
-- 2026-10-30 · EV · Swell 2026 (Ripple, 27-29 oct) y Meridian 2026 (Stellar, 28-29 oct) · 30-oct-2026 (`informes/research/2026-10-30-EV-swell-meridian.md`): HECHOS [P] (comunicado de Ripple, 28 oct 2026):
-- 2026-10-29 · W04 · ETF de XRP/XLM, flujos y 13F (29-oct-2026) (`informes/research/2026-10-29-W04-etf.md`): Sin recomendaciones ni predicciones de precio. [P] = fuente primaria leída; [S] = agregador o prensa; [VERIFICAR] = sin comprobar.
 
 ## Regulación por país
+- 2026-11-10 · W03 · Huecos del radar regulatorio (10-nov-2026) (`informes/research/2026-11-10-W03-huecos-radar.md`): Brasil (ley marco, custodia, política). El Voto 108/2026 BCB (22 sep 2026, PDF de normativos.bcb.gov.br, leído [P]) propone aplazar al 6 nov 2026 el…
 - 2026-11-02 · W03 · Huecos del radar regulatorio (2-nov-2026) (`informes/research/2026-11-02-W03-huecos-paises.md`): Brasil (Res. BCB 520, texto consolidado en la API del BCB; modificada por la 589)
 - 2026-11-02 · C30 · Actualización 2-nov-2026: mitad de mandato EE. UU. (3-nov) y Brasil (2.ª vuelta 25-oct) (`informes/research/2026-11-02-C30-elecciones-eeuu-brasil.md`): Límite: Chrome no estaba conectado, así que no se pudo abrir resultados.tse.jus.br ; todo es [S] y no se leyó ninguna página, solo extractos de…
-- 2026-10-29 · W03E · Irán, Egipto y Etiopía, pasada 3 · 2026-10-29 (`informes/research/2026-10-29-W03E-pasada3.md`): Tercera pasada con fuentes oficiales abiertas hoy (Chrome y curl). Edita solo explorador/regulacion.json . Sin recomendaciones: el radar describe…
 
 ## Sesiones diarias (apertura y cierre)
-- 2026-11-06 · W09 · Resumen semanal del viernes (2-6 nov-2026) y plan del 9-13 nov (`informes/research/2026-11-06-W09-resumen-semanal.md`): Es la actualización de viernes del W09 del jueves 5 nov ( 2026 11 05 W09 resumen semanal.md ): no repite lo ya escrito allí, solo añade el viernes.…
-- 2026-11-06 · Informe de CIERRE — 2026-11-06 (vie) (`informes/2026-11-06-cierre.md`): Rebote moderado en EE. UU. (S&P +0,3 %, Nasdaq +1,1 %, VIX 25,6) tras el −4,4 % del jueves.
-- 2026-11-06 · Informe de APERTURA — 2026-11-06 (vie) (`informes/2026-11-06-apertura.md`): Asia: Nikkei −6,0 %, Kospi −6,0 % (−11 % en dos días); Hang Seng −1,3 %, Shanghái −1,1 %.
+- 2026-11-10 · W09 · Resumen semanal (martes 10-nov-2026) y plan del 11-22 nov (`informes/research/2026-11-10-W09-resumen-semanal.md`): Semana de petróleo a la baja (−16 %), rebote bursátil del 9 nov y cripto débil (XRP 1,09 $).
+- 2026-11-10 · Informe de APERTURA — 2026-11-10 (mar) (`informes/2026-11-10-apertura.md`): Cripto casi plana: BTC 74,5 k, XRP 1,085 (mínimo de la serie), XLM 0,148.
+- 2026-11-09 · Informe de CIERRE — 2026-11-09 (lun) (`informes/2026-11-09-cierre.md`): S&P +2,35 %, Nasdaq +2,7 %, VIX 20; chips +7,5 %.
 
 ## Otros
-- 2026-11-06 · C69 · España 2024 vs 2025, segunda pasada (6-nov-2026) (`informes/research/2026-11-06-C69-espana-2024-2025.md`): Continúa informes/research/2026 11 02 C69 espana 2024 2025.md y 2026 11 04 C69 espana 2024 2025 parte2.md (no se reescriben).
-- 2026-11-06 · C68B · Sueldos de SE, subsecretarios y directores generales: caso concreto (6-nov-2026) (`informes/research/2026-11-06-C68B-sueldos-segundo-nivel.md`): Continúa 2026 10 31 C68 sueldos politicos.md (sección 2 y bloque C68B) y 2026 11 02 C68B cuadre sueldos senado.md . Nivel: [P] leído en original ·…
-- 2026-11-06 · C146-B · Justicia España: comprobación de «pendiente» (4 casos) (`informes/research/2026-11-06-C146-justicia-B.md`): Vías probadas en todos: buscador CGPJ ( /Buscadores?text=… , con espera de JS), lectura de cada nota completa en Chrome, y búsqueda restringida a…
+- 2026-11-10 · C69 · Estado a 10-nov-2026 (sin datos nuevos) (`informes/research/2026-11-10-C69-estado-y-pendientes.md`): C69 ya se hizo en tres partes (2 nov, 4 nov, 6 nov): ministerios, capítulos, programas (349 en 2024), centros (227), € por habitante y variación…
+- 2026-11-10 · C68B · Cuadre Ley vs Portal, 2.º nivel (10-nov-2026) (`informes/research/2026-11-10-C68B-sueldos-segundo-nivel.md`): Continúa la sección «C68B (31 oct)» de 2026 10 31 C68 sueldos politicos.md . Sin cambios en el JSON ni en COLA/PLANNING.
+- 2026-11-10 · C61 · Servicios públicos y estabilidad (INICIO, 10-nov-2026) — cobertura muy baja (`informes/research/2026-11-10-C61-estabilidad.md`): Cifras halladas (todas [S], sin abrir la primaria)
 
 ## Fuentes y datos nuevos (sin fecha en el nombre)
 - A. Tipos de interés de los bancos centrales: fuentes y calendario de actualización (`research/fuentes-nuevas/A-tipos-bancos-centrales.md`): La tabla tipos vivos cubre 5 bancos con fuente primaria directa (Fed, BCE, BoE, BCB Brasil, Banco de Canadá) y tipos bis otros 10 vía BIS (RU, ZA,…
