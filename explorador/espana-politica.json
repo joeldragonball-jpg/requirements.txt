@@ -25,7 +25,8 @@
    "fecha": "06/10/2026",
    "diputados": 213
   },
-  "nota": "El fichero «DiputadosActivos» del Congreso lista 137 diputados el 10/11/2026; hay 275 bajas, 213 con fecha 06/10/2026, coincidiendo con la disolución de las Cortes. El fichero no explica por qué unos constan activos y otros de baja: [VERIFICAR] en el Congreso. No es el reparto de escaños de las elecciones de 2023."
+  "nota": "El fichero «DiputadosActivos» del Congreso lista 137 diputados el 10/11/2026; hay 275 bajas, 213 con fecha 06/10/2026, coincidiendo con la disolución de las Cortes. El fichero no explica por qué unos constan activos y otros de baja: [VERIFICAR] en el Congreso. No es el reparto de escaños de las elecciones de 2023.",
+  "leyenda_grupos": "Cada diputado pertenece a un grupo parlamentario (en general, su partido o coalición); «Mixto» reúne a los diputados sin grupo propio."
  },
  "iniciativas": {
   "fecha_dato": "2026-11-10",
@@ -136,7 +137,26 @@
     "pdf": "https://www.congreso.es/constitucion/ficheros/leyes_espa/lo_001_2026_corr.pdf"
    }
   ],
-  "nota": "«Caducado» y «decaído» son efecto de la disolución o del vencimiento de plazos, no una votación. Solo iniciativas legislativas; las no legislativas (mociones, preguntas) no se leyeron: [VERIFICAR]. «Normas aprobadas» incluye Reales Decretos-leyes y Reales Decretos legislativos publicados por el Congreso."
+  "nota": "«Caducado» y «decaído» son efecto de la disolución o del vencimiento de plazos, no una votación. Solo iniciativas legislativas; las no legislativas (mociones, preguntas) no se leyeron: [VERIFICAR]. «Normas aprobadas» incluye Reales Decretos-leyes y Reales Decretos legislativos publicados por el Congreso.",
+  "leyenda_resultados": {
+   "Aprobado con modificaciones": "El Congreso lo aprobó tras cambiar el texto. «Aprobado» aquí es un paso del Congreso: no equivale a ley publicada ni en vigor (falta el Senado y el BOE).",
+   "Aprobado sin modificaciones": "El Congreso lo aprobó tal como llegó. Igual que arriba: no equivale a ley en vigor.",
+   "Caducado": "No terminó su tramitación antes de acabar la legislatura (disolución de las Cortes); se anula sin votarse. No es un rechazo.",
+   "Caducado sin calificación previa": "Caducó (fin de legislatura) antes de que la Mesa decidiera si la admitía. No es un rechazo.",
+   "Rechazado": "El Pleno votó en contra (de la totalidad o del texto final). Es el único resultado negativo que sale de una votación.",
+   "Retirado": "Lo retiró quien lo presentó; no se votó.",
+   "Decaído": "Terminó sin votarse porque perdió su objeto (por ejemplo, no se defendió en el Pleno). No es un rechazo.",
+   "Subsumido en otra iniciativa": "Su contenido se integró en otra iniciativa parecida y se tramitó con ella.",
+   "Inadmitido a trámite en términos absolutos": "La Mesa del Congreso decidió no admitirla a debate.",
+   "Inadmitido a trámite con requerimiento de aclaración": "La Mesa no la admitió, o la paró, pidiendo antes una aclaración a quien la presentó [VERIFICAR el matiz exacto].",
+   "Trasladado al próximo Congreso": "Queda pendiente para la siguiente legislatura; no está ni aprobado ni rechazado.",
+   "sin resultado": "El fichero del Congreso no recoge resultado (puede estar aún en trámite o faltar el dato): [VERIFICAR]."
+  },
+  "leyenda_normas": {
+   "Leyes": "Leyes ordinarias aprobadas por las Cortes. El fichero cuenta también las correcciones de errores como fila aparte.",
+   "Leyes organicas": "Leyes orgánicas: las que regulan derechos fundamentales, el régimen electoral o los estatutos (la Constitución exige mayoría absoluta del Congreso en la votación final).",
+   "Reales decretos": "Reales Decretos-leyes y Reales Decretos legislativos: los aprueba el Gobierno; el Congreso debe convalidar los primeros en 30 días. No son leyes votadas artículo a artículo."
+  }
  },
  "votaciones": {
   "nivel": "P",
@@ -183,7 +203,29 @@
    "2025": 137,
    "2026": 20
   },
-  "nota": "Registros de actividades, donaciones y fundaciones declaradas por diputados (fichero «docacteco» del Congreso). Se cuentan registros; no se publican nombres ni se valora ninguna declaración. Bienes y rentas completos: Registro de Intereses del Congreso (PDF por diputado), no leído: [VERIFICAR]."
+  "nota": "Registros de actividades, donaciones y fundaciones declaradas por diputados (fichero «docacteco» del Congreso). Se cuentan registros; no se publican nombres ni se valora ninguna declaración. Bienes y rentas completos: Registro de Intereses del Congreso (PDF por diputado), no leído: [VERIFICAR].",
+  "leyenda_tipos": {
+   "ACTIVIDAD": {
+    "nombre": "Actividad: empleo, cargo o negocio",
+    "texto": "Trabajo, cargo o actividad que el diputado declara (con empleador, sector público/privado, periodo y descripción). Ej. del fichero: «funcionaria, letrada-asesora»."
+   },
+   "DONACION": {
+    "nombre": "Donaciones o regalos recibidos",
+    "texto": "Regalos o donaciones que el diputado declara haber recibido. Muchos son del tipo «regalos de poca entidad en el ámbito familiar y social». No indica importes."
+   },
+   "FUNDACIONES": {
+    "nombre": "Aportaciones a fundaciones u otras entidades",
+    "texto": "Aportaciones del diputado a una fundación o entidad (el fichero señala el destinatario, p. ej. una ONG). Definición formal no leída: [VERIFICAR]."
+   },
+   "OBSERVACIONES": {
+    "nombre": "Observaciones (texto libre)",
+    "texto": "Anotación libre del diputado; muchas dicen que no hay nada distinto de lo ya consignado en su declaración de bienes."
+   }
+  },
+  "leyenda_declaracion": {
+   "Declaración inicial": "La que se hace al empezar el mandato.",
+   "Modificación de la declaración de intereses económicos": "Un cambio posterior a la declaración inicial."
+  }
  },
  "financiacion": {
   "nivel": "P",
@@ -323,7 +365,7 @@
   "fecha_dato": "2026-11-10",
   "fuente": "https://digital.gob.es/funcion-publica/incompatibilidad-y-conflicto-intereses/informe-cumplimiento-altos-cargos",
   "texto": "La Oficina de Conflictos de Intereses eleva cada seis meses al Congreso un informe (art. 22 Ley 3/2015). El del primer semestre de 2026 (firmado el 2-jul-2026, 64 páginas) lista nominalmente los altos cargos en activo a 30-jun-2026 y declara «NINGUNO» en procedimientos sancionadores incoados y resueltos (Ley 3/2015 y Ley 19/2013). No se cuentan aquí los altos cargos ni se reproducen nombres.",
-  "nota": "El contenido de las declaraciones de bienes y derechos de cada alto cargo no se leyó (Portal de Transparencia / Registro de Bienes y Derechos Patrimoniales): [VERIFICAR]. Sueldos: ver C68/C68B."
+  "nota": "El contenido de las declaraciones de bienes y derechos de cada alto cargo no se leyó (Portal de Transparencia / Registro de Bienes y Derechos Patrimoniales): [VERIFICAR]. Sueldos: ver el bloque «Número de cargos y retribuciones oficiales»."
  },
  "pendiente": [
   {
@@ -347,5 +389,13 @@
    "fuente": "https://www.senado.es/",
    "nivel": "V"
   }
- ]
+ ],
+ "explicacion": {
+  "composicion": "Qué es: cuántos diputados figuran «en alta» en el fichero oficial del Congreso, por grupo parlamentario, y cómo votaron en la última sesión del Pleno. Unidades: personas (diputados) y votos (un voto = un diputado). Ojo: con las Cortes disueltas el 6-oct-2026 solo constan 137 en alta (de 350 escaños; 213 causaron baja ese día), así que esta tabla NO es el reparto de escaños de 2023 ni una encuesta. Un Real Decreto-ley se vota para convalidarlo; el recuento de «sí» y «no» no basta para saber su efecto: consúltalo en el BOE [VERIFICAR].",
+  "iniciativas": "Qué es: cuántas leyes se han propuesto en la XV legislatura y en qué estado quedaron. Las filas son estados de tramitación y cada número es un número de iniciativas (no euros ni votos). Proyecto de ley = lo presenta el Gobierno; proposición de ley = la presentan grupos, diputados, el Senado o parlamentos autonómicos. Qué NO dice: «Aprobado» es un paso del Congreso y no significa ley en vigor; «Caducado», «Decaído» o «Retirado» no son rechazos (la mayoría, simplemente, no llegó a votarse antes de la disolución). Cada fila trae a la derecha su significado.",
+  "intereses": "Qué es: las declaraciones de intereses que los diputados presentan en el Registro de Intereses del Congreso. «Recuento» = número de registros (líneas del fichero), NO euros ni millones: aquí no hay importes. Un diputado puede tener varios registros, y los 403 diputados con algún registro son más que los 137 en alta porque el fichero incluye a quienes ya causaron baja [VERIFICAR]. Qué NO dice: tener un registro no es una irregularidad ni una acusación; declarar es una obligación de todos. Los datos son recuentos, sin nombres. Los patrimonios y rentas completos están en otro registro (PDF por diputado) que no se ha leído.",
+  "financiacion": "Qué es: cifras de dos informes del Tribunal de Cuentas (organismo público que revisa las cuentas de los partidos y de sus fundaciones). Cada fila lleva su unidad: «M€» son millones de euros; «euros» son euros enteros; «partidos»/«entidades»/«donantes» son recuentos de unidades, no dinero. Fecha: el ejercicio que cubre cada informe (2020 y 2021-2022); hay un desfase de varios años. Qué NO dice: una «salvedad» o una observación del Tribunal es un reparo contable, no una sentencia ni una sanción firme; no se comparan partidos entre sí.",
+  "altos_cargos": "Qué es: el informe que la Oficina de Conflictos de Intereses envía al Congreso cada seis meses sobre los altos cargos del Gobierno (comprueba que no incumplen las incompatibilidades legales). Aquí solo se resume qué dice el informe de primer semestre de 2026; no se reproducen nombres ni se cuentan altos cargos. Qué NO dice: no incluye los bienes ni las rentas de cada alto cargo (otro registro, no leído) ni juzga a nadie. «Ninguno» es lo que declara el propio informe sobre sanciones.",
+  "pendiente": "Qué es: la lista de lo que todavía no se ha leído de la política española y por qué. «Nivel V» = sin verificar; no se rellena nada sin fuente."
+ }
 }

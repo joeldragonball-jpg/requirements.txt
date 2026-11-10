@@ -23,6 +23,8 @@ import argparse, collections, json, shutil, sys, tempfile, urllib.request, zipfi
 import datetime as dt
 import xml.etree.ElementTree as ET
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from leyendas_contratacion import LEYENDA_CONTRATACION
 
 RAIZ = Path(__file__).resolve().parent.parent
 SALIDA = RAIZ / "explorador" / "espana-contratacion.json"
@@ -30,10 +32,11 @@ URL_LIC = "https://contrataciondelestado.es/sindicacion/sindicacion_643/licitaci
 URL_MEN = "https://contrataciondelestado.es/sindicacion/sindicacion_1143/contratosMenoresPerfilesContratantes_{mes}.zip"
 UA = {"User-Agent": "cartera-github/leer_contratacion (investigacion personal; sin IA)"}
 
-PROC = {"1": "Abierto", "2": "Restringido", "3": "Negociado con publicidad", "4": "Negociado sin publicidad",
+PROC = {"1": "Abierto", "2": "Restringido", "3": "Negociado sin publicidad", "4": "Negociado con publicidad",
         "5": "Diálogo competitivo", "6": "Contrato menor", "7": "Derivado de acuerdo marco",
         "8": "Concurso de proyectos", "9": "Abierto simplificado", "10": "Asociación para la innovación",
-        "100": "Normas internas", "999": "Otros"}
+        "11": "Derivado de asociación para la innovación", "12": "Basado en sistema dinámico de adquisición",
+        "13": "Licitación con negociación", "100": "Normas internas", "999": "Otros"}
 URG = {"1": "Ordinaria", "2": "Urgente", "3": "Emergencia"}
 import re
 RE_FISICA = re.compile(r"^(\d{8}[A-Z]|[XYZ]\d{7}[A-Z]|[KLM]\d{7}[A-Z0-9])$")  # DNI/NIE/K-L-M: persona física
@@ -182,7 +185,7 @@ def agregar(datos, etiqueta):
             o["emerg"] += 1
         if r["proc"] == "6":
             o["menores"] += 1
-        if r["proc"] == "4":
+        if r["proc"] == "3":
             o["negsinpub"] += 1
         if not r["adj"]:
             sin_importe += 1
@@ -279,7 +282,7 @@ def vigilados(datos):
             adj += s
             em += r["urg"] == "3"
             men += r["proc"] == "6"
-            nsp += r["proc"] == "4"
+            nsp += r["proc"] == "3"
         out[etq] = {"n_expedientes": n, "presupuesto": round(pres, 2), "adjudicado": round(adj, 2),
                     "n_emergencia": em, "n_menores": men, "n_negociado_sin_publicidad": nsp,
                     "criterio": "coincidencia por texto en nombre/cadena del órgano: " + ", ".join(claves)
@@ -326,6 +329,7 @@ def main():
         "unidad": "EUR", "escala": 1,
         "nota_unidad": "importe = euros sin IVA (escala 1). M€ = importe/1e6; mil M€ = importe/1e9.",
         "licitaciones": A, "menores": B,
+        "leyenda": LEYENDA_CONTRATACION,
         "limites": [
             "Solo entidades con perfil en la plataforma estatal; CCAA/EELL con plataforma propia pueden estar incompletas [VERIFICAR].",
             "Feed mensual: se conserva la última versión de cada expediente movida en el mes; no es 'todo lo adjudicado en el mes'.",

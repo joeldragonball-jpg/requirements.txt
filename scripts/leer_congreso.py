@@ -123,7 +123,7 @@ out = dict(
     altos_cargos=dict(
         nivel='P', fecha_dato='2026-11-10', fuente='https://digital.gob.es/funcion-publica/incompatibilidad-y-conflicto-intereses/informe-cumplimiento-altos-cargos',
         texto='La Oficina de Conflictos de Intereses eleva cada seis meses al Congreso un informe (art. 22 Ley 3/2015). El del primer semestre de 2026 (firmado el 2-jul-2026, 64 páginas) lista nominalmente los altos cargos en activo a 30-jun-2026 y declara «NINGUNO» en procedimientos sancionadores incoados y resueltos (Ley 3/2015 y Ley 19/2013). No se cuentan aquí los altos cargos ni se reproducen nombres.',
-        nota='El contenido de las declaraciones de bienes y derechos de cada alto cargo no se leyó (Portal de Transparencia / Registro de Bienes y Derechos Patrimoniales): [VERIFICAR]. Sueldos: ver C68/C68B.'),
+        nota='El contenido de las declaraciones de bienes y derechos de cada alto cargo no se leyó (Portal de Transparencia / Registro de Bienes y Derechos Patrimoniales): [VERIFICAR]. Sueldos: ver el bloque «Número de cargos y retribuciones oficiales».'),
     pendiente=[
         dict(tema='Cuentas de los partidos: ejercicios 2021 en adelante', estado='no publicado/no leído',
              detalle='El último informe del Tribunal de Cuentas sobre las cuentas de los propios partidos que se leyó es el del ejercicio 2020 (Pleno 27-jun-2024). Si existe uno posterior: [VERIFICAR] en tcu.es. El endpoint BDNS «partidospoliticos» (6.638 concesiones) devuelve entidades de todo tipo (probado: una asociación de Castilla-La Mancha), por lo que no se usa como financiación de partidos.',
@@ -134,5 +134,7 @@ out = dict(
         dict(tema='Senado', estado='no leído', detalle='Iniciativas y votaciones del Senado no consultadas: [VERIFICAR] en senado.es.',
              fuente='https://www.senado.es/', nivel='V')],
 )
+from leyendas_politica import con_leyendas  # C248: explicaciones en lenguaje llano
+out = con_leyendas(out)
 json.dump(out, io.open('explorador/espana-politica.json', 'w', encoding='utf8'), ensure_ascii=False, indent=1)
 print('ok', len(act), len(baj), len(vots), len(dec))

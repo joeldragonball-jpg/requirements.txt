@@ -18,6 +18,8 @@ LÍMITES HONESTOS (también van dentro del JSON):
 """
 import argparse, collections, datetime as dt, json, re, sys, time, urllib.request, urllib.parse
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from leyendas_contratacion import LEYENDA_SUBVENCIONES
 
 BASE = "https://www.infosubvenciones.es/bdnstrans/api/"
 RAIZ = Path(__file__).resolve().parent.parent
@@ -162,6 +164,7 @@ def main():
                           "nota": "Concentración != irregularidad: muchos son entes públicos, universidades, entidades de gestión de ayudas europeas."},
         "mayores_concesiones": top[:25],
         "sanciones": sanc_res,
+        "leyenda": LEYENDA_SUBVENCIONES,
         "partidos_politicos": part_res,
         "grandes_beneficiarios": gb_res,
         "limites": [
