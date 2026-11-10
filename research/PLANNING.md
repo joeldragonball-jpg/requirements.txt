@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-10 11:35 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-10 15:23 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -143,7 +143,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [media] 2026-10-22 (19 d) · hutiES a Arabia Saudi
 - [media] 2026-10-22 (19 d) · hutiES a Arabia Saudi
 - [media] 2026-10-23 (18 d) · El futuro continuo del Brent cierra en $111,97
-- … y 75 más en el Seguimiento
+- … y 74 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (3) → W03 · BR/politica; AE/politica; BRICS/ley_marco
@@ -151,7 +151,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 🟡 Voces: Voces sin confirmar (4) → W06 · 3 llevan más de 14 días
 
 ## Bots con problema
-- Verificación mensual
+- Votos de noticias, Verificación mensual, Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-01 · OPEP+ (7 países): reunión mensual (medio) → ✓ cubierto por W10 del 2026-11-10
