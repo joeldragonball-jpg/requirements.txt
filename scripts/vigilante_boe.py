@@ -2,7 +2,7 @@
 
 Fuente: API de datos abiertos del BOE (primaria, [P]). Memoria en alertas/estado_boe.json.
 Sin TELEGRAM_TOKEN y TELEGRAM_CHAT_ID solo imprime. La primera vez solo apunta lo existente (salvo --inicial N días).
-NO está activado en workflows.
+Activado en .github/workflows/boe.yml (10-nov-2026): memoria en la caché de GitHub, sin commits ni IA.
 """
 import argparse, html, json, os, re, urllib.request
 from datetime import date, timedelta

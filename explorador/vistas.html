@@ -1802,6 +1802,12 @@ function pEspana(){
           return fl.concat([{_emp:{emp:emT||null,comp:true,coste:emKn?emKc/emKn*1000:null,nota:'Total: suma de empleados de las secciones con dato. Coste medio global solo con las secciones comparables (sin Presidencia/Justicia ni Inclusión). Fuente: EPSAP enero 2026.'},seccion:'TOTAL',altos_cargos:{obligaciones:sm(r=>r.altos_cargos.obligaciones)},eventuales:{obligaciones:sm(r=>r.eventuales.obligaciones)},capitulos:{'1':tp},pct_personal:tt?tp/tt*100:null}])})()),
         el('h3',null,'Número de cargos y retribuciones oficiales'),dat([CM.altos_cargos_numero,...CM.retribuciones])),false));
     }
+    const LE=D.espana_leyes;
+    if(LE&&(LE.leyes||[]).length){
+      const nl=r=>{const a=el('a',null,r.nombre);a.href=r.fuente;a.target='_blank';a.rel='noopener';return a};
+      add(bloque('España: leyes y normas recientes del BOE',LE.aviso,{nivel:'P',t:'BOE · generado '+(LE.generado||'')},
+        tabla([{t:'Norma',f:nl},{t:'Publicación',f:r=>r.publicacion},{t:'En vigor desde',f:r=>r.entrada_vigor},{t:'Estado',f:r=>r.estado},{t:'Qué cambia',f:r=>r.que_cambia},{t:'Nivel',f:r=>nivelBadge(r.nivel)}],LE.leyes.slice().sort((a,b)=>(b.publicacion||'').localeCompare(a.publicacion||''))),false));
+    }
     add(bloque('Programas concretos: igualdad, IMV, becas, inmigración, cooperación, dependencia…','Partida exacta con su código. Las aportaciones a la Seguridad Social son la parte que paga el Estado.',pieE,conL(B.lecturas.igualdad,
       tabla([{t:'Bloque',f:r=>r.grupo},{t:'Programa',f:r=>r.nombre},{t:'Código',f:r=>r.codigo},...ejec,{t:'Nota',f:r=>[r.nota,r.nota_2024].filter(Boolean).join(' · ')}],B.programas)),false));
     add(bloque('Lo que no se puede aislar','Sin partida propia o sin cifra publicada: no se estima.',{t:'Enfermedades raras, CIBERER, CATE, violencia de género total'},
