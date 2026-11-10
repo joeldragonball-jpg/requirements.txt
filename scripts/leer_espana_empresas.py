@@ -76,9 +76,9 @@ EMPRESAS = [
     },
     {
         "id": "adif", "nombre": "Adif y Adif Alta Velocidad", "ejercicio": None,
-        "nota": "adif.es devuelve 403 a scripts y en Chrome las rutas probadas dan 404; cuentas no leídas. Por prensa [S]: Adif AV acumula una deuda superior a 21.300 M€ y pérdidas de 193,4 M€ frente a 100,9 M€ (The Objective; el ejercicio exacto de esa pieza, fechada jul-2025, queda [VERIFICAR]). La CNMC dice que Adif y Adif AV invirtieron 5.230 M€ en 2025 (+16 %) [S: solo extracto]. Aportaciones del Estado: no leídas.",
-        "aportaciones_estado": "Previsto 2026: 1.384,2 M€ de la AGE (1.011,7 M€ del MRR + 372,5 M€ otras), adenda al convenio Adif 2021-2025 [S: extracto de búsqueda de BOE/Hacienda, no leído entero]",
-        "fuente": "https://theobjective.com/economia/transporte/2025-07-05/adif-dispara-deuda-caos-ferroviario/", "nivel": "S",
+        "nota": "adif.es devuelve 403 a scripts y en Chrome las rutas probadas dan 404; cuentas no leídas. Por prensa [S]: Adif AV acumula una deuda superior a 21.300 M€ y pérdidas de 193,4 M€ frente a 100,9 M€ (The Objective; el ejercicio exacto de esa pieza, fechada jul-2025, queda [VERIFICAR]). La CNMC dice que Adif y Adif AV invirtieron 5.230 M€ en 2025 (+16 %) [S: solo extracto]. Aportaciones: ver columna.",
+        "aportaciones_estado": "Prórroga 2026 del convenio 2021-2025 (solo la parte del Mecanismo de Recuperación): Adif 219,8 M€ y Adif Alta Velocidad 1.011,7 M€ de compromiso máximo de gasto de la AGE [P: nota de Hacienda leída entera, 9-dic-2025]. Aportaciones no-MRR y lo ejecutado: no leídos [VERIFICAR]",
+        "fuente": "https://www.hacienda.gob.es/es-ES/Prensa/Noticias/Paginas/2025/20251209-NP-CM-CONVENIO-ADIF.aspx", "nivel": "P",
     },
     {
         "id": "enaire", "nombre": "Enaire", "ejercicio": 2025,
