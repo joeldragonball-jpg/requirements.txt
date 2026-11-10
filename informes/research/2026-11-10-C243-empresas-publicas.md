@@ -40,3 +40,10 @@ Adif y Adif AV (adif.es da 403 a scripts), Renfe, Correos (cifra propia), Enaire
 - **Intentado y no posible**: PDF de Enaire (Deuda 2025, cuentas, informe de gestión): Chrome abre el visor de PDF y `get_page_text` no devuelve texto (ya anotado en ACCESOS-CHROME); las herramientas de lectura tampoco decodifican el PDF. Cuentas de Adif y Renfe, memorias de los PGE e IGAE: PDF o webs sin ruta localizada; no se leyeron.
 - Sigue sin leerse la **deuda** de cada empresa. Hace falta descargar los PDF con OK de Joel y leerlos con una librería (`pypdf`) o con OCR.
 - Lección: Chrome sí lee las notas HTML de Hacienda/Consejo de Ministros; no sirve para PDF.
+
+## Pasada con PDF (10-nov, tarde): ENAIRE y Adif leídos [P]
+Con el OK explícito de Joel («sí, descarga los PDF de C243») se bajaron a una carpeta temporal fuera del repo, se extrajo el texto con `pdftotext` y se borraron.
+- **ENAIRE (cuentas individuales 2025, miles de €; 2025 frente a 2024):** total activo 5.561.763 (5.088.320); deudas a largo plazo 1.565.149 (1.941.672); deudas a corto plazo con entidades de crédito 708.678 (10.430); resultado 887.521 (606.890). De ese resultado, 737.020 son dividendos de Aena y 150.501 la operativa de ENAIRE: el beneficio individual es sobre todo el dividendo de la participada (sesgo a tener en cuenta al compararlo con otras empresas).
+- **Grupo ENAIRE (informe de gestión, M€):** cifra de negocio 7.135,0 (+7,4 %) y EBITDA 4.132,7 (+9,4 %).
+- **Adif y Adif Alta Velocidad (BOE 6-feb-2026, BOE-A-2026-2807 y -2808):** compromisos del Estado para 2026 por convenio: Adif 219,77 M€ (aportación patrimonial para amortizar deuda a largo plazo); Adif AV 1.011,69 M€ del Mecanismo de Recuperación y Resiliencia, 1.384,18 M€ en total de la AGE. Son importes comprometidos, no ejecutados.
+- **Sin leer:** deuda y aportaciones ejecutadas de Renfe, Correos y Navantia; cuentas anuales 2025 de Adif. La búsqueda no devolvió sus PDF oficiales de 2025 (Renfe: solo prensa y el informe del Tribunal de Cuentas sobre ayudas de transporte). Siguen [VERIFICAR].
