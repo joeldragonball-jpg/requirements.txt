@@ -29,3 +29,8 @@ Adif y Adif AV (adif.es da 403 a scripts), Renfe, Correos (cifra propia), Enaire
 - **Enaire**: PDF oficiales 2025 localizados (cuentas, informe de gestión, deuda) pero ilegibles para las herramientas; solo coste medio de deuda 2,21 % y vida media 6,09 años (extracto). **Paradores** (error de certificado) e **Indra** (conexión rechazada): sin cifras.
 - Deuda y aportaciones del Estado: siguen sin leerse en ninguna empresa (necesitan los PDF de cuentas con capa de texto o el OK de Joel para descargarlos e instalar `pypdf`, o IGAE/SEPI).
 - Lección añadida: las cuentas de Enaire/Ineco están en PDF; sin lector de PDF local la vía oficial queda cerrada.
+
+## Tercera pasada: aportaciones del Estado (solo extractos, nivel S/[VERIFICAR])
+- **Adif**: la adenda al convenio 2021-2025 prevé 1.384,2 M€ de la AGE en 2026 (1.011,7 M€ MRR + 372,5 M€ otras). Visto solo como extracto de búsqueda de nota de Hacienda/BOE: no leído entero.
+- **Renfe**: PGE prorrogados con 1.009 M€ de compensación por obligaciones de servicio público (previsto, no ejecutado); crédito extraordinario autorizado de hasta 671 M€ en 2026; Transportes pagó 307,8 M€ de ayudas al servicio de Renfe en 2025. El Tribunal de Cuentas fiscalizó estas ayudas (2022-2023; BOE 9-jun-2026): sin leer.
+- **Correos, Enaire, Navantia**: no se localizó ninguna cifra de aportaciones; Correos solo con la cifra de CCOO/prensa (>400 M€/año del servicio postal universal) = [S/opinión]. La deuda por empresa sigue sin leer; falta IGAE (sector público empresarial) y las memorias de los PGE (PDF).

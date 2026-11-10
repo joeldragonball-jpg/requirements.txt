@@ -69,13 +69,15 @@ EMPRESAS = [
         "id": "renfe", "nombre": "Renfe-Operadora (grupo)", "ejercicio": 2025,
         "cifra_negocio": None, "resultado_neto": 60.2, "ebitda": 528.6, "plantilla": None,
         "deuda": None, "aportaciones_estado": None,
+        "aportaciones_estado": "Presupuesto (no ejecutado): 1.009 M€ de compensación por obligaciones de servicio público a Renfe Viajeros en los PGE prorrogados; autorización de crédito extraordinario de hasta 671 M€ en 2026; Transportes pagó 307,8 M€ de ayudas al servicio ferroviario de Renfe en 2025 [S: extractos de búsqueda, no leídos en la fuente oficial]",
         "fuente": "https://www.democrata.es/economia/renfe-logra-60-millones-de-beneficio-en-2025-impulsada-por-un-19-mas-de-ingresos-en-billetes/",
         "fecha_fuente": None, "nivel": "S",
-        "nota": "Prensa (Demócrata, Cronista), no las cuentas oficiales. Beneficio 60,2 M€ (la cifra provisional era ≈50 M€), EBITDA 528,6 M€, ingresos por billetes ≈2.000 M€ (+19 %), 531,4 millones de viajeros; primer beneficio tras cinco años de pérdidas. Las fuentes discrepan en el resultado de Renfe Viajeros (+70 M€ frente a -2,3 M€). Compensación de servicio público, deuda y plantilla: no leídas [VERIFICAR].",
+        "nota": "Prensa (Demócrata, Cronista), no las cuentas oficiales. Beneficio 60,2 M€ (la cifra provisional era ≈50 M€), EBITDA 528,6 M€, ingresos por billetes ≈2.000 M€ (+19 %), 531,4 millones de viajeros; primer beneficio tras cinco años de pérdidas. Las fuentes discrepan en el resultado de Renfe Viajeros (+70 M€ frente a -2,3 M€). Importes ejecutados de compensación, deuda y plantilla: no leídos [VERIFICAR]. El Tribunal de Cuentas fiscalizó las ayudas a Renfe Viajeros 2022-2023 (BOE 9-jun-2026): informe no leído.",
     },
     {
         "id": "adif", "nombre": "Adif y Adif Alta Velocidad", "ejercicio": None,
         "nota": "adif.es devuelve 403 a scripts y en Chrome las rutas probadas dan 404; cuentas no leídas. Por prensa [S]: Adif AV acumula una deuda superior a 21.300 M€ y pérdidas de 193,4 M€ frente a 100,9 M€ (The Objective; el ejercicio exacto de esa pieza, fechada jul-2025, queda [VERIFICAR]). La CNMC dice que Adif y Adif AV invirtieron 5.230 M€ en 2025 (+16 %) [S: solo extracto]. Aportaciones del Estado: no leídas.",
+        "aportaciones_estado": "Previsto 2026: 1.384,2 M€ de la AGE (1.011,7 M€ del MRR + 372,5 M€ otras), adenda al convenio Adif 2021-2025 [S: extracto de búsqueda de BOE/Hacienda, no leído entero]",
         "fuente": "https://theobjective.com/economia/transporte/2025-07-05/adif-dispara-deuda-caos-ferroviario/", "nivel": "S",
     },
     {

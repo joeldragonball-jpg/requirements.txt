@@ -4,7 +4,7 @@
 
 ## Qué se leyó (y su alcance)
 - **PLACSP, mes oct-2026**: ZIP de licitaciones (194 MB, 124 ficheros ATOM, 61.762 entradas = **40.000 expedientes únicos** tras quedarse con la última versión) y ZIP de contratos menores (25 MB, **43.614** contratos). Fuente: contrataciondelestado.es/sindicacion (fichero mensual; leído 10-nov-2026) [P].
-- **BDNS, 11-sep a 9-nov-2026 (60 días, por fecha de concesión)**: **1.643.342 concesiones** leídas por la API infosubvenciones.es [P]. El plan pedía «último año»: no se hizo porque la API tarda ~2 min por semana (≈ 7 M de concesiones/año); el script admite `--dias 365` y queda pendiente (ver «Sin leer»).
+- **BDNS, 11-sep a 9-nov-2026 (60 días, por fecha de concesión)**: **1.643.342 concesiones** leídas por la API infosubvenciones.es [P]. El plan pedía «último año»: no se hizo porque la API tarda ~2 min por semana (≈ 7 M de concesiones/año); segundo intento con `--dias 365` (10-nov, tarde): **abortado**. La semana 1-7 dic-2025 tiene por sí sola **2.654.144 concesiones** (carga masiva con fecha de concesión concentrada; páginas profundas de 5.000 filas tardan 18-22 s), así que el año entero son decenas de millones de filas y no es viable por esta API sin filtros por órgano (que ignora). Queda en 60 días [P].
 
 ## HECHOS (10 con cifra; fuente y fecha)
 1. **PLACSP oct-2026**: 32.962 adjudicaciones con importe suman **17.637 M€** (sin IVA; los acuerdos marco con ≥3 adjudicatarios de igual importe se cuentan una sola vez). Por nivel: entidades locales 6.290 M€ (17.137 expedientes), otras entidades del sector público 5.813 M€, Administración General del Estado 4.170 M€, CCAA 2.170 M€ [P, PLACSP oct-2026].
@@ -26,8 +26,8 @@ Extra: PAC en Castilla y León, DG de Política Agraria Comunitaria: 100.636 con
 
 ## Sin leer / límites
 - Solo oct-2026 de PLACSP; otros meses y el ATOM diario sin leer. Plataformas autonómicas/locales agregadas: no probadas [VERIFICAR].
-- BDNS: ventana de 60 días, no 365; filtros por nivel e importe de la API se ignoran; pagos no existen en la fuente; partidos y grandes beneficiarios solo muestra.
-- Encargos a medios propios (Tragsa, Tragsatec…), modificaciones de contrato (importe modificado) y vinculación con las investigaciones de C239: sin hacer (ver `falta` en C241).
+- BDNS: ventana de 60 días, no 365 (año completo inviable con la API pública: ver arriba; haría falta el volcado masivo de datos abiertos de la BDNS, no localizado [VERIFICAR]); filtros por nivel e importe de la API se ignoran; pagos no existen en la fuente; partidos y grandes beneficiarios solo muestra.
+- Encargos a medios propios (Tragsa, Tragsatec…) y modificaciones de contrato (importe modificado): sin hacer. Vinculación con C239: **no vinculable** — las fichas de C239 (10-nov) no traen ningún nº de expediente PLACSP (solo cifras de prensa [S]), así que no se vincula nada.
 - El criterio «Interior» incluye cualquier órgano con «policía» (p. ej. policías locales); «Sanidad», con «salud» (servicios autonómicos): vigilados por texto, [VERIFICAR].
 
 ## Lecciones (5 líneas)
