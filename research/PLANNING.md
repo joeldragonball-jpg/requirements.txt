@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-10 16:38 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-10 17:26 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -136,14 +136,14 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [media] 2026-10-25 (16 d) · Chainlink CCIP en producción en SWIFT
 - [media] 2026-10-25 (16 d) · Precio y cierre de cada adquisición de Ripple
 - [media] 2026-10-25 (16 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
-- … y 66 más en el Seguimiento
+- … y 63 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🟡 Radar regulatorio: Celdas sin dato (29) → W03 · Más huecos: EG 5, ES 5, ET 4, IN 2, BRICS 2
 - 🟡 Voces: Voces sin confirmar (4) → W06 · 3 llevan más de 14 días
 
 ## Bots con problema
-- Votos de noticias, Verificación mensual, Paneles de datos
+- Verificación mensual, Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-01 · OPEP+ (7 países): reunión mensual (medio) → ✓ cubierto por W10 del 2026-11-10

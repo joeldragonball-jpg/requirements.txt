@@ -1,5 +1,5 @@
 {
- "como": "Registro de eventos contrastados (o dudosos). El TIPO de fuente (primaria o prensa) y la VERIFICACIÓN son cosas distintas: una noticia de prensa puede ser cierta. Un evento con fuente primaria [P] cuenta como confirmado solo; los demás quedan «sin contrastar» hasta que se anota aquí con quién se contrastó. Lo rellena W05 o la sesión que verifique. Campos: fecha (la del evento), contiene (texto del título; las tildes dan igual), estado (confirmado | dudoso | desmentido), con (con qué o quién se contrastó), url, verificado (fecha de la comprobación).",
+ "como": "Registro de eventos contrastados (o dudosos). El TIPO de fuente (primaria o prensa) y la VERIFICACIÓN son cosas distintas: una noticia de prensa puede ser cierta. Un evento con fuente primaria [P] cuenta como confirmado solo; los demás quedan «sin contrastar» hasta que se anota aquí con quién se contrastó. Lo rellena W05 o la sesión que verifique. Campos: fecha (la del evento), contiene (texto del título; las tildes dan igual), estado (confirmado | matizado | dudoso | desmentido), con (con qué o quién se contrastó), url, verificado (fecha de la comprobación). Estados: confirmado = hecho y cifra contrastados; matizado = el hecho es cierto pero la cifra, la hora o el contrato difieren entre fuentes (sale como «confirmado con matiz» y deja de estar pendiente); dudoso = no se ha podido contrastar y SE QUEDA ABIERTO sin caducar hasta que otra fuente lo confirme, lo matice o lo desmienta (cada pasada de W05 vuelve a mirarlo); desmentido = otra fuente fiable lo contradice.",
  "eventos": [
   {
    "fecha": "2026-10-26",
@@ -548,7 +548,7 @@
   {
    "fecha": "2026-11-09",
    "contiene": "El Brent cae casi un 5 % hasta 93,72 $",
-   "estado": "dudoso",
+   "estado": "matizado",
    "con": "MATIZADA. El 93,72 $ y el «casi 5 %» son un nivel INTRADÍA del lunes (otra fuente anotada da 92,97 $, −5,4 %); el cierre de futuros fue 92,57 $ (−5,8 % vs 98,32 del 6-nov, Yahoo BZ=F [S]). La caída es real; la cifra concreta depende de la hora y del contrato. No usar 93,72 como cierre. Sin crónica de agencia fechada el 9-nov localizada por búsqueda web.",
    "url": "https://finance.yahoo.com/quote/BZ=F/history/",
    "verificado": "2026-11-10"
@@ -588,7 +588,7 @@
   {
    "fecha": "2026-11-04",
    "contiene": "Proyección de mayoría demócrata en la Cámara",
-   "estado": "dudoso",
+   "estado": "matizado",
    "con": "MATIZADA [S]: varias cadenas (AP, NBC) dan a los demócratas el Congreso entero tras el 3-nov; las crónicas de la noche aún dejaban la Cámara sin llamar. Sin certificación; recuento y recursos pendientes (demanda de la Administración Trump contra certificar el Senado si Sullivan pierde en Alaska). Cifra del 38 % de aprobación no re-verificada. Fuente oficial de escrutinio no leída.",
    "url": "https://news.wttw.com/node/55366",
    "verificado": "2026-11-10"
@@ -604,7 +604,7 @@
   {
    "fecha": "2026-11-04",
    "contiene": "Según AP vía medios, los demócratas ganan la Cámara y el Senado",
-   "estado": "dudoso",
+   "estado": "matizado",
    "con": "MATIZADA [S]: Senado 54–44 con dos escaños sin declarar (Alaska, Mississippi) según el seguimiento de NBC; Cámara llamada por AP en las versiones posteriores («capturan ambas cámaras»). Hora exacta de la llamada de la Cámara sin confirmar. Proyección, no resultado certificado. Resultado final de Alaska/Mississippi [VERIFICAR].",
    "url": "https://www.boston25news.com/news/trending/election-2026-democrats-capture-both-houses-congress/5ILOWTVABVDPZFYP7VBBCX4EWE/",
    "verificado": "2026-11-10"

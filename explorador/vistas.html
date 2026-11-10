@@ -1132,7 +1132,7 @@ function panelesGrupo(gid){
   return L}
 
 /* ---------- 3 · Línea de tiempo ---------- */
-let capasOff=new Set(),rango='365',buscaTL='',soloRx=false,focoTL='';
+let capasOff=new Set(),rango='30',buscaTL='',soloRx=false,focoTL='';
 /* C224 · foco por potencia o conflicto con color propio; los conflictos salen primero en «Lo más reciente» */
 const POT_TL=[['EE. UU.','#5aa9e6',['EE. UU.']],['China','#ff6b6b',['China','Hong Kong','Taiwán']],['Rusia','#b8a1ff',['Rusia']],['UE','#2fe08f',['Unión Europea','Zona euro','Alemania','Francia','Italia']],['India','#ff9f43',['India']],['Japón','#ffd166',['Japón']],['Reino Unido','#9fe7ff',['Reino Unido']],['España','#ff8fb1',['España']]];
 const CONF_TL=['Irán','Rusia','Ucrania','Israel','Palestina','Siria','Yemen','Taiwán'];
@@ -1143,7 +1143,7 @@ function pTiempo(){
   const s=$('v-tiempo');s.textContent='';
   const c=el('div','caja');
   const ctl=el('div','barra');ctl.style.cssText='margin:-12px -12px 10px;border-radius:10px 10px 0 0';
-  const sr=el('select');for(const [v,t] of [['todo','Todo el periodo'],['365','Último año'],['90','Últimos 90 días']]){const o=el('option',null,t);o.value=v;if(v===rango)o.selected=true;sr.append(o)}
+  const sr=el('select');for(const [v,t] of [['7','Últimos 7 días'],['14','Últimos 14 días'],['30','Últimos 30 días'],['90','Últimos 90 días'],['365','Último año'],['todo','Todo el periodo']]){const o=el('option',null,t);o.value=v;if(v===rango)o.selected=true;sr.append(o)}
   sr.onchange=()=>{rango=sr.value;pTiempo()};
   const q=el('input');q.type='text';q.placeholder='Buscar (Pontes, OCC, DTCC…)';q.value=buscaTL;q.oninput=()=>{buscaTL=q.value;clearTimeout(q.t);q.t=setTimeout(pTiempo,250)};
   ctl.append(el('span',null,'Rango'),sr,q);
@@ -1428,8 +1428,9 @@ function verifNoticia(m){
   const reg=(D.verificados||[]).find(v=>(!v.fecha||v.fecha===m.fecha)&&v.contiene&&normT(m.texto).includes(normT(v.contiene)));
   if(reg){const con=reg.con?' · '+reg.con:'';
     if(reg.estado==='confirmado')return {cl:'ok',t:'✔ Confirmado'+con};
+    if(reg.estado==='matizado')return {cl:'ok',t:'✔ Confirmado con matiz'+con};   /* el hecho es cierto; la cifra, la hora o el contrato difieren entre fuentes */
     if(reg.estado==='desmentido')return {cl:'mal',t:'✖ Desmentido'+con};
-    return {cl:'mal',t:'✖ Dudoso'+con}}
+    return {cl:'mal',t:'✖ Dudoso (abierto hasta que otra fuente lo confirme o lo desmienta)'+con}}
   if(m.nivel==='P')return {cl:'ok',t:'✔ Confirmado (fuente primaria)'};
   const imp=m.origen!=='noticia'||(m.nota_bot||0)>=7;
   if(imp&&dias(m.fecha)>7)return {cl:'alerta',t:'◐ Sin contrastar (más de 7 días)'};

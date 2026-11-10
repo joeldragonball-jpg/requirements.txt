@@ -399,8 +399,9 @@ function vAgenda(){
 }
 function etqNoticia(n){   // C153: contraste conocido (eventos/verificados.json) y opinión frente a hecho
   const pl = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''), t = pl(n.titulo), v = (D.verificados || []).find(x => t.includes(pl(x.c))), op = /^(daly|se espera|\w+ \([a-z]+\):)|probabl|podria|preve|pronostic/.test(t);
-  const col = {confirmado: 'var(--sube)', dudoso: 'var(--ambar)', desmentido: 'var(--baja)'};
-  return (v ? `<span class="etq" style="color:${col[v.estado] || 'var(--sub)'}" title="${esc(v.con)}">${v.estado === 'desmentido' ? '⚠ desmentida' : esc(v.estado)}</span>` : '') + (op ? '<span class="etq" title="Una persona o una previsión, no un hecho consumado">opinión/previsión</span>' : '');
+  const col = {confirmado: 'var(--sube)', matizado: 'var(--sube)', dudoso: 'var(--ambar)', desmentido: 'var(--baja)'};
+  const txt = {desmentido: '⚠ desmentida', matizado: 'confirmado con matiz', dudoso: 'dudoso (abierto)'};
+  return (v ? `<span class="etq" style="color:${col[v.estado] || 'var(--sub)'}" title="${esc(v.con)}">${txt[v.estado] || esc(v.estado)}</span>` : '') + (op ? '<span class="etq" title="Una persona o una previsión, no un hecho consumado">opinión/previsión</span>' : '');
 }
 function notaHTML(n, i){
   return `<div class="nota card" style="--i:${i};padding:14px" data-abre><div class="pt" style="--n:${nn(n.nota)}"><span>${nn(n.nota)}</span></div><div style="flex:1"><h4>${esc(n.titulo)}</h4><div class="meta"><span class="etq">${esc(n.tema)}</span>${etqNoticia(n)}${esc(n.fecha.replace('T', ' '))}</div><div class="mas">${esc(n.resumen)}<br><br><b>Por qué importa:</b> ${n.por_que ? esc(n.por_que) : '<span style="color:var(--sub)">sin análisis todavía: titular de prensa [S], no contrastado</span>'}<div class="meta2">${esc(n.fuente)}</div><a class="enlace" target="_blank" rel="noopener" href="${eu(n.url)}">Leer la noticia ›</a></div></div></div>`;
