@@ -178,3 +178,29 @@ regulacion 145, espana 85, tipos 78, macro 69, xrp 58, deuda 38, energia 27, geo
 - 2026-09-30 · informe dice «ETP cripto europeos: 14,6 mil M$ de AUM; XRP ~913,7 M$ y Stellar ~103,7 M$; ETF de XRP en EE. UU. 2.178 M$ (fuente: emis» (2026-10-17-R27-etf-cripto-fuera-de-eeuu-profundo.md) · Órbita dice «ETF de XRP en EE. UU. ≈ $1.430 M a 22-oct [S]; ETP europeos de XRP ≈ $914 M y de Stellar ≈ $104 M.»
 - 2026-10-08 · informe dice «Trump dijo que no atacará Irán antes de las elecciones de mitad de mandato; el Brent bajó a ~103,9 $. Solo agregador de » (2026-10-09-intradia.md) · Órbita dice «Trump dice que no atacará Irán antes de las elecciones del 3-nov (titular del bot; fuente primaria sin abrir). Brent 103»
 - 2026-08 · informe dice «PCE de EE. UU. 3,4 % en agosto de 2026.» (2026-10-05-inicial.md) · Órbita dice «El M2 de EE. UU. sube un 5,66 % interanual en agosto ($23.342,8 mil M).»
+
+## 3.ª pasada de C237 (10-nov-2026): xrp, xlm y España
+
+Método: `python scripts/cobertura_hechos.py` (hechos P frente a todos los JSON de `explorador/`) → 47 xrp, 12 xlm y 32 España con puntuación < 0,6. El script no entiende separadores de miles (49.801.559 frente a 49801559): al normalizarlos, ~25 de esos hechos ya estaban en la Órbita. De los demás, se revisaron a mano y con fuente primaria leída el 10-nov (GitHub XRPLF/rippled, nodo xrplcluster.com, blog de la SDF, BOE).
+
+**A la Línea de tiempo (+9 movimientos, `explorador/datos.json`, 138 en total):** rippled 3.1.1 desactiva Batch (23-feb) · plan cuántico de Stellar (9-jun) · USDT0 en Stellar (2-sep) · piloto USBDC de U.S. Bank (9-sep) · BVNK integra Stellar (22-sep) · rippled 3.4.1 de emergencia (26-sep) · RDL 29/2026 de vivienda (6-oct) · protocolo 30 «Bell» (20-oct) · aprobación final de la OCC a Ripple National Trust Bank (26-oct).
+
+**Al calendario (+4, `eventos/calendario.toml`):** voto de mainnet de Stellar P30 (23-nov, 17:00 UTC) · efectos del RDL 29/2026 (1-dic) · Verifactu 1-ene-2027 (sujetos del IS) y 1-jul-2027 (resto).
+
+**Contradicciones resueltas**
+- **rippled 3.4.1: 25-sep, 26-sep o 10-oct.** Las notas oficiales dicen: paquetes binarios de emergencia el 26-sep, código fuente el 10-oct 00:04 UTC, informe de vulnerabilidades el 9-oct. Vale 26-sep (el «25-sep» de T22 era aproximado). La enmienda `fixBatchV1_2` se activó el 9-oct.
+- **fixCleanup3_4_0 (≈ 15 hechos, 9-oct a 7-nov: «mayoría», «aún no activa», «activación el 23-oct / 4-nov»).** No son contradicciones, son fotos sucesivas de una espera ya resuelta: se activó el 4-nov (ya recogido en `datos.json`). A ninguna parte.
+- **OCC y Ripple National Trust Bank: 26 o 28-oct.** La aprobación es del 26-oct; el 28-oct es un comunicado posterior que la cita. Sigue sin leerse occ.gov [VERIFICAR].
+- **U.S. Bank USBDC: «anuncia» frente a «completó» un piloto.** El título oficial dice «launches» y el piloto es interno: se queda «lanza».
+- **Plan cuántico de Stellar: «2027» o «finales de 2027».** Compatibles.
+- **Verifactu:** el BOE (RDL 15/2025) fija 1-ene-2027 (IS) y 1-jul-2027 (resto). El aplazamiento a oct-2028 sigue sin estar en el BOE: [VERIFICAR], no se anota como hecho.
+- **RLUSD en XRPL (1.140 M el 9-oct, 1.034 M el 13-oct, 977,6 M el 29-oct) y RLUSD total (2.382,8 M el 22-oct frente a 2.600 M el 28-oct):** series y fechas distintas, sin conflicto; quedan en los informes.
+
+**A ninguna parte (con motivo)**
+- Fotos de estado de la red XRPL (ledger 108179407, supply, 97/107 enmiendas, escrow 31.100 M XRP, nodos «full»): cambian cada día; la rutina del XRPL las vuelve a leer. Ya existe el vencimiento mensual del escrow en el calendario.
+- `LendingProtocol` y `SingleAssetVault` siguen en `enabled=false, supported=true` (nodo xrplcluster.com, leído 10-nov): sin fecha de voto, no hay evento que fechar.
+- Datos ya cubiertos con otro formato: población INE, IMV, EPA 3T (10,18 %), cuotas RETA, MEI, retribuciones, Defensa/IGAE, Eurostat, pensión máxima, CME, Evernorth S-4/A, caso SEC–Ripple, Ripple Payments Europe (CASP), Standard Chartered, CSD BR/BTG, Meritz, causas judiciales de `espana-judicial.json`.
+- Parámetros fiscales personales (arts. 49, 52, 66/76 LIRPF; art. 97 RIRPF; FIFO del manual de Renta 2025; ITP joven de Cataluña; campaña de renta pasada): son guía de fiscalidad (`informes/dossiers/…fiscalidad-espana-xrp-xlm.md`), no hechos fechables de la Línea de tiempo.
+- Pendiente de elegir: la encuesta de préstamos bancarios del Banco de España (27-oct; próxima 2-feb-2027) no está en el calendario; si Joel lo quiere, se añade en una pasada de España.
+
+**Límites:** BVNK y USDT0 se tomaron de la lista de comunicados de stellar.org/press vía informe de cierre (BVNK se vio hoy en la lista, sin leer el texto); occ.gov y la convalidación del RDL 29/2026 no se leyeron.

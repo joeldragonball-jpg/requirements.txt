@@ -753,8 +753,8 @@ def leer_inflacion():
         return f
 
     fuentes = [
-        ("us", "EE. UU.", "IPC (BLS, NSA)", "https://www.bls.gov/cpi/", eeuu),
-        ("us_pce", "EE. UU.", "PCE (BEA vía FRED)", "https://fred.stlouisfed.org/series/PCEPI", eeuu_pce),
+        ("us", "EE. UU.", "IPC (BLS, sin desestacionalizar)", "https://www.bls.gov/cpi/", eeuu),
+        ("us_pce", "EE. UU.", "PCE (BEA vía FRED, desestacionalizado)", "https://fred.stlouisfed.org/series/PCEPI", eeuu_pce),
         ("ea", "Zona euro", "IPCA (Eurostat, ECOICOP 2)", "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr", bce("U2")),
         ("es", "España", "IPCA (Eurostat, ECOICOP 2; el IPC del INE puede diferir)", "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr", bce("ES")),
         ("uk", "Reino Unido", "IPC (ONS)", "https://www.ons.gov.uk/economy/inflationandpriceindices", reino_unido),

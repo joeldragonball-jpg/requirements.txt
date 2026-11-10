@@ -242,9 +242,9 @@ fuente = "https://www.cnbc.com/2026/10/08/iran-war-trump-midterm-election.html"
 fecha = "2026-11-04"
 id = "ev-2026-11-04-tesoro-ee-uu-anuncio-trimestral"
 titulo = "Tesoro de EE. UU.: anuncio trimestral de refinanciación"
-detalle = "Plan de emisión de deuda; afecta a los tipos largos (10 años en 5,2 % el 8-oct). Fecha por confirmar."
+detalle = "Hecho: el Tesoro mantiene los importes de cupón «durante los próximos trimestres» ($125 mil M: 3 años $58, 10 años $42, 30 años $25 mil M); el 7 años pasa a emisión trimestral desde marzo de 2027. Próximo anuncio: 3-feb-2027. [P, comunicado del Tesoro de EE. UU. del 4-nov-2026]"
 impacto = "medio"
-aproximado = true
+aproximado = false
 fuente = "https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding"
 
 [[eventos]]
@@ -962,3 +962,107 @@ titulo = "Reino Unido: IPC de octubre (ONS)"
 detalle = "07:00 hora de Londres. Fecha de la página oficial de la ONS (release consumerpriceinflationukoctober2026) [P]; pendiente de publicar."
 impacto = "medio"
 fuente = "https://www.ons.gov.uk/releases/consumerpriceinflationukoctober2026"
+
+[[eventos]]
+fecha = "2026-11-10"
+id = "ev-2026-11-10-ee-uu-subasta-nota-10-anos"
+titulo = "EE. UU.: subasta de nota a 10 años ($42 mil M)"
+detalle = "13:00 ET; liquidación 16-nov. [P, comunicado del Tesoro 4-nov y TreasuryDirect]"
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.treasurydirect.gov/auctions/upcoming/"
+
+[[eventos]]
+fecha = "2026-11-12"
+id = "ev-2026-11-12-ee-uu-subasta-bono-30-anos"
+titulo = "EE. UU.: subasta de bono a 30 años ($25 mil M)"
+detalle = "13:00 ET; liquidación 16-nov. [P, comunicado del Tesoro 4-nov]"
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.treasurydirect.gov/auctions/upcoming/"
+
+[[eventos]]
+fecha = "2026-11-12"
+id = "ev-2026-11-12-japon-subasta-bonos-5-anos"
+titulo = "Japón: subasta de bonos a 5 años"
+detalle = "Ministerio de Finanzas de Japón. [P, calendario leído el 10-nov]"
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/2611e.htm"
+
+[[eventos]]
+fecha = "2026-11-18"
+id = "ev-2026-11-18-japon-subasta-bonos-20-anos"
+titulo = "Japón: subasta de bonos a 20 años"
+detalle = "Ministerio de Finanzas de Japón. [P, calendario leído el 10-nov]"
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/2611e.htm"
+
+[[eventos]]
+fecha = "2026-11-19"
+id = "ev-2026-11-19-espana-subasta-bonos-obligaciones-estado-nov"
+titulo = "España: subasta de Bonos y Obligaciones del Estado"
+detalle = "Última de noviembre; objetivo 4.750-6.250 M€ [S: prensa; calendario del Tesoro leído en D08]. Siguientes: 10 y 17-dic."
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.tesoro.es/deuda-publica/subastas/calendario"
+
+[[eventos]]
+fecha = "2026-11-18"
+id = "ev-2026-11-18-ee-uu-subasta-bono-20-anos"
+titulo = "EE. UU.: subasta de bono a 20 años ($16 mil M)"
+detalle = "Importe del cuadro del comunicado del Tesoro del 4-nov [P]; fecha de la API de TreasuryDirect."
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.treasurydirect.gov/auctions/upcoming/"
+
+[[eventos]]
+fecha = "2026-11-27"
+id = "ev-2026-11-27-italia-subasta-btp-medio-largo"
+titulo = "Italia: segunda subasta de BTP a medio-largo plazo de noviembre"
+detalle = "Fecha de calendarios de prensa [S]; el calendario oficial del MEF sigue sin localizar [VERIFICAR]. La primera, el 12-nov."
+impacto = "bajo"
+aproximado = false
+fuente = "https://www.rivaluta.it/investimenti/calendario-aste-btp.asp"
+
+[[eventos]]
+fecha = "2027-02-03"
+id = "ev-2027-02-03-ee-uu-refinanciacion-tesoro-febrero"
+titulo = "EE. UU.: próximo anuncio trimestral de refinanciación del Tesoro"
+detalle = "Fecha dada en el comunicado del 4-nov-2026. [P]"
+impacto = "medio"
+aproximado = false
+fuente = "https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding"
+
+[[eventos]]
+fecha = "2026-11-23"
+id = "ev-2026-11-23-stellar-protocolo-30-bell-voto-mainnet"
+titulo = "Stellar: voto de la red principal del protocolo 30 «Bell» (17:00 UTC)"
+detalle = "Fecha y hora publicadas por la SDF en su blog del 20-oct [P empresa, leído 10-nov]. El voto de testnet fue el 3-nov (resultado no leído [VERIFICAR]). Incluye CAP-84 (direcciones W de contratos), CAP-87 (firmas poscuánticas ML-DSA en contratos) y ledger en milisegundos."
+impacto = "medio"
+fuente = "https://stellar.org/blog/developers/introducing-bell-protocol-30-on-stellar"
+
+[[eventos]]
+fecha = "2026-12-01"
+id = "ev-2026-12-01-espana-rdl-29-2026-alquiler-efectos-fiscales"
+titulo = "España: efectos fiscales del RDL 29/2026 (deducción por alquiler e IVA de alojamiento)"
+detalle = "Deducción del 10 % por alquiler de vivienda habitual para base imponible < 33.007,20 € y cambios de IVA con efectos desde esta fecha (BOE-A-2026-20823 [P]). Convalidación del real decreto-ley en el Congreso: no consta [VERIFICAR]."
+impacto = "bajo"
+fuente = "https://www.boe.es/buscar/doc.php?id=BOE-A-2026-20823"
+
+[[eventos]]
+fecha = "2027-01-01"
+id = "ev-2027-01-01-verifactu-obligados-impuesto-sociedades"
+titulo = "España: Verifactu obligatorio para sujetos del Impuesto sobre Sociedades"
+detalle = "Sistemas de facturación adaptados antes del 1-ene-2027 (obligados del art. 3.1.a del RD 1007/2023, nueva redacción por el RDL 15/2025, BOE-A-2025-24446 [P]). Un aplazamiento a 2028 circula en prensa pero no está publicado en el BOE [VERIFICAR]."
+impacto = "bajo"
+fuente = "https://www.boe.es/buscar/doc.php?id=BOE-A-2025-24446"
+
+[[eventos]]
+fecha = "2027-07-01"
+id = "ev-2027-07-01-verifactu-resto-de-obligados"
+titulo = "España: Verifactu obligatorio para el resto de obligados (autónomos y demás)"
+detalle = "Sistemas operativos antes del 1-jul-2027 para los demás obligados del art. 3.1 (RDL 15/2025, BOE-A-2025-24446 [P]). Aplazamiento a 2028 no publicado en el BOE [VERIFICAR]."
+impacto = "bajo"
+fuente = "https://www.boe.es/buscar/doc.php?id=BOE-A-2025-24446"
