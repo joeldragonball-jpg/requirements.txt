@@ -88,3 +88,16 @@ Lectura del PDF del BIS cuando responda bis.org; verificar en TreasuryDirect las
 
 | Tanda V01 (4-nov): Intel/oro 30-oct | https://thriveinmarkets.com/market-insights/evening-review-2026-10-30/ | Caída de Intel y oro citada por Alba Puerro | [S] (un solo medio) |
 | JPMorgan, colateral BTC/ETH (The Block, Bloomberg) | https://www.theblock.co/post/376038/jpmorgan-to-let-institutional-clients-pledge-btc-eth-loan-collateral | «JPMorgan ya adopta Bitcoin» | [S]; comunicado del banco sin localizar [VERIFICAR] |
+
+| Tanda V01 (10-nov): Bloomberg Law, Gallego «screwed up» y mejor oferta | https://news.bloomberglaw.com/banking-law/democrats-aim-for-major-changes-to-clarity-act-with-election-win | Declaración original de Gallego; peticiones demócratas | [S] (solo extracto; lectura completa pendiente) |
+| Decrypt, plan de la Cámara demócrata (Terrett) | https://decrypt.co/382602/democrats-to-push-broader-crypto-market-structure-bill-after-sweeping-us-midterms-report | Ley ampliada con más SEC | [S] (fuentes de la industria) |
+| Waters, enmienda n.º 31 a H.R. 3633 (congress.gov) | (no abierto; ver Bitcoin Magazine) | Texto original de la «Bill of Rights» y bloqueo 4-8 | [VERIFICAR] |
+| CBS, Face the Nation 8-nov (Warren, French Hill) | https://www.cbsnews.com/news/full-transcript-face-the-nation-with-margaret-brennan-11-08-2026/ | Warren sobre corrupción e Irán; derrota republicana | [P] |
+| Senado, nota de Blumenthal (cartas del 5-nov) | https://www.blumenthal.senate.gov/newsroom/press/release/blumenthal-sends-warning-to-targets-of-investigations-into-crypto-corruption-immigration-abuses-big-tech-and-more | Plazo del 4-ene-2027 y destinatarios | **403 en navegador integrado y en Chrome**; Joel puede abrirla y guardarla en research/fuentes/ [VERIFICAR] |
+| Cryptotimes, plazo de Blumenthal | https://www.cryptotimes.io/2026/11/09/binance-tether-trump-crypto-firms-face-blumenthals-jan-4-records-deadline/ | Calendario de las cartas | [S] |
+| BOE, Ley 58/2003 General Tributaria (arts. 27 y 66) | https://www.boe.es/buscar/act.php?id=BOE-A-2003-23186 | Recargo del 15 % tras 12 meses y prescripción de 4 años | [P] (texto consolidado leído 10-nov) |
+| BOE, Ley 35/2006 IRPF (arts. 33 y 66) | https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764 | Escala del ahorro y regla de recompra (valores) | [P] |
+| AEAT, Modelo 721 | https://sede.agenciatributaria.gob.es/Sede/procedimientoini/GI55.shtml | Umbral de 50.000 € y plazo | [P vía buscador; FAQ no abierta] |
+| Hacienda, proyecto de orden de DAC8 (9-mar-2026) | https://www.hacienda.gob.es/sgt/normativadoctrina/proyectos/09032026-main-proyecto-om-dac8.pdf | Modelos 175/172/721; calendario de transposición | [VERIFICAR] (no abierto) |
+| DGT (petete.tributos.hacienda.gob.es): consultas sobre cripto-cripto, recompra con pérdidas y LLC | (no localizadas) | Doctrina citada por el invitado fiscal | [VERIFICAR] |
+| Vídeo del 10-nov (DRd9XP2qXyY) | https://youtu.be/DRd9XP2qXyY | Sin subtítulos aún; reintentar | [VERIFICAR] |

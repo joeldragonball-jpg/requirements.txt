@@ -137,3 +137,8 @@ actualizado: 2026-10-07
 - 2026-11-04: RBA sube a 4,85 % (6-3, comunicado oficial) y el JGB a 10 años está en 2,82 %: tipos altos fuera de EE. UU. refuerzan el contexto de energía cara y tipos altos, sin efecto atribuible en cripto [ESPECULACIÓN]. CLARITY: con Cámara demócrata desde enero, la ventana es el lame-duck (el Senado vuelve el 11-nov).
 - 4-nov-2026: la entrevista a Alba Puerro (Despeja La X) no aporta catalizadores de XRP/XLM: solo los nombra como activos a analizar en otro vídeo; su única previsión es de Bitcoin (>250.000 $ en 5 años, [ESPECULACIÓN]).
 - 2026-11-08: IPC de EE. UU. de octubre el mar 10-nov 8:30 ET; previo sep +3,7 % interanual, subyacente +2,6 % (BLS). Empleo oct +165.000, paro 4,1 %. Tipos largos 4,8-4,9 % y 2 años 4,46 % por encima del techo de la Fed (4,00 %): contexto exigente para XRP/XLM (1,15 $ / 0,150 $ el 8-nov), sin efecto atribuible aún.
+- 2026-11-10: Blumenthal pide a Binance, Tether, WLFI y Fight Fight Fight documentos antes del 4-ene-2027 (voluntario; podrá citar como presidente del PSI desde enero) [S].
+- Los demócratas ganaron la Cámara (3-nov) y, según informes provisionales, el Senado; planean una ley ampliada con más SEC y sin texto aún; republicanos la llaman «ley de mensaje» [S].
+- Warren (CBS, 8-nov): corrupción e Irán; no habló de la Clarity ni del filibuster [P].
+- A vigilar: (1) texto de la ley demócrata o cierre de debate en el periodo de transición, antes del 3-ene-2027; (2) respuestas de Binance/Tether/WLFI y citaciones desde enero.
+- Fiscalidad España (vídeo 6-nov): sin efecto sobre XRP/XLM; solo contexto (721 con 50.000 €, recargo 15 %).

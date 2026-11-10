@@ -164,3 +164,8 @@ actualizado: 2026-10-07
 - 5-nov-2026 (W05): una cifra de titular que mezcla un movimiento real con un número inventado («bono a 10 años −19 p. b.» cuando el Tesoro da −5; «Dow +1.500» con el S&P +1,58 %): comprobar siempre la cifra contra la serie primaria. Y un titular de la SEC sobre un token concreto (Canton Coin) sin carta ni comunicado localizable = sin verificar hasta leer sec.gov.
 - 6-nov-2026 (W06): una atribución de un robo («Corea del Norte lo hizo») que viene de una empresa de analítica forense (TRM, Chainalysis) con interés comercial se repite en cadena en prensa; hasta leer el informe original o una confirmación de la víctima, queda en [S].
 - 2026-11-08: el titular «EE. UU. crea 165.000 empleos» era cierto (BLS, 6-nov) pero «muy por encima de lo esperado» depende del consenso (FactSet +65.000): citar siempre la mediana y su fuente; los agregadores de calendario de prensa muestran consenso vacío o desfasado antes del dato.
+- 2026-11-10 (V01, Despeja La X): un vídeo recién publicado no tiene subtítulos aún; resumir solo su descripción y marcarlo [VERIFICAR] en vez de inventar el contenido.
+- Las «entrevistas del domingo en CBS» pueden mezclar años: la de Trump con 60 Minutes sobre CZ es del 2-nov-2025, no de este año; comprobar el año antes de citarla.
+- Cifras del propio canal que no cuadran entre sí (rebote «6,5 %» entre 1,2495 y 1,32 $ = +5,6 %) son señal de datos de memoria, no leídos.
+- Anuncios dentro del vídeo (Múltiplo: rentabilidades +25 %/+18 %) se mezclan con el análisis; separar y no tratarlos como dato de mercado.
+- «Colegas» o «fuentes» sin nombre que contrastan una noticia (5-nov) no cuentan como contraste: [VERIFICAR].

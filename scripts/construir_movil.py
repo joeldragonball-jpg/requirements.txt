@@ -233,7 +233,8 @@ def voces(n=40, max_entidad=3):
     v = cargar("explorador/voces.json")
     lista = v["voces"] if isinstance(v, dict) else v
     cuenta, salida = {}, []
-    for x in lista:
+    # Las más recientes primero (si no, las voces nuevas, al final del archivo, no llegan nunca al límite de n)
+    for x in sorted(lista, key=lambda y: y.get("cuando", ""), reverse=True):
         k = _entidad(x["quien"])
         cuenta[k] = cuenta.get(k, 0) + 1
         if cuenta[k] > max_entidad:

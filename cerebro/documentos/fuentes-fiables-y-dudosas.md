@@ -184,3 +184,8 @@ actualizado: 2026-10-07
 - 6-nov-2026 (W06): las voces escépticas útiles son BIS (stablecoins) y las asociaciones bancarias (depósitos), pero ambas tienen interés propio; sus afirmaciones se citan como posición, no como dato, y se busca el texto original en bis.org o en la carta de la ABA.
 - 7-nov-2026 (W07): una cifra de titular de banco central («sube tipos») se cierra en minutos con la serie oficial en CSV (Banco de Inglaterra IADB `IUDBEDR`, BCE, Valet de Canadá) sin navegador; y una API que responde 200 puede tener datos congelados (OCDE: IPC de España solo hasta dic-2025): mirar siempre la última fecha de la serie.
 - 2026-11-08: bls.gov (empsit, cpi) y bankofengland.co.uk responden con el navegador integrado (curl a BLS devuelve vacío); federalreserve.gov sí responde a curl. FRED (fredgraph.csv) sirve para DGS10/DGS2 con 1 día de retraso.
+- 2026-11-10: BOE consolidado (Ley 58/2003 art. 27 y 66; LIRPF art. 33 y 66) y la transcripción oficial de CBS sí abren en el navegador integrado; el truco es leer el texto con JavaScript, no con capturas.
+- senate.gov (blumenthal.senate.gov) da 403 (Akamai) en el navegador integrado y en Chrome: no saltar; usar prensa [S] y pedir a Joel que guarde la nota en research/fuentes/.
+- Un despacho que se anuncia en un vídeo (CL Cripto/Écija) es fuente interesada: su «recargo del 20 %» está mal (el BOE dice 15 % + intereses).
+- Decrypt, Cointelegraph y Crypto.news dan el plan demócrata como informe de fuentes de la industria (Terrett), sin texto de ley: nivel [S].
+- yt-dlp con el cliente «android» da subtítulos automáticos (es-orig) cuando el cliente web pide PO token.
