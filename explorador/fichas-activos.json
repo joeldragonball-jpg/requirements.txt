@@ -1,0 +1,534 @@
+{
+ "version": 1,
+ "actualizado": "2026-11-10",
+ "nota": "Información general sobre cinco activos; no es recomendación de compra ni venta. Cada dato lleva fecha y nivel (P = fuente primaria leída; S = agregador o prensa). Los precios son de agregadores (CoinGecko, Yahoo) del 9 o 10-nov-2026; los datos de ETF son de fechas anteriores. Sin predicciones: lo que sea opinión o previsión va como [ESPECULACIÓN] y lo no contrastado como [VERIFICAR].",
+ "unidades": "Cada hecho lleva su unidad y fecha. Capitalización y AUM en millones de USD; precios en la moneda indicada.",
+ "fichas": [
+  {
+   "id": "xrp",
+   "nombre": "XRP",
+   "tipo": "Criptoactivo (token nativo del XRP Ledger)",
+   "resumen": "Criptoactivo con ETF al contado en EE. UU. desde nov-2025 y litigio con la SEC cerrado; cae con el mercado cripto.",
+   "hechos": [
+    {
+     "dato": "Precio",
+     "valor": "1,10",
+     "unidad": "USD",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "CoinGecko (API simple/price; agregador)"
+    },
+    {
+     "dato": "Capitalización",
+     "valor": "69.891",
+     "unidad": "millones USD",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "CoinGecko (API simple/price; agregador)"
+    },
+    {
+     "dato": "Variación desde el 6-oct-2025 (2,99 USD)",
+     "valor": "-63,1",
+     "unidad": "%",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "Yahoo Finance (chart API, cierres diarios; agregador)"
+    },
+    {
+     "dato": "Mínimo en la serie (6-oct-2025 a 10-nov-2026)",
+     "valor": "0,992 (16-ago-2026)",
+     "unidad": "USD",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "Yahoo Finance (chart API, cierres diarios; agregador)"
+    },
+    {
+     "dato": "ETF de XRP al contado en EE. UU.: activos netos (5 fondos)",
+     "valor": "1.510",
+     "unidad": "millones USD",
+     "fecha": "2026-10-28",
+     "nivel": "S",
+     "fuente": "SoSoValue (agregador), informe W04"
+    },
+    {
+     "dato": "Entradas netas acumuladas de esos ETF",
+     "valor": "1.800",
+     "unidad": "millones USD",
+     "fecha": "2026-10-28",
+     "nivel": "S",
+     "fuente": "SoSoValue, informe W04"
+    },
+    {
+     "dato": "ETP físicos de XRP en Europa",
+     "valor": "≈ 914",
+     "unidad": "millones USD",
+     "fecha": "2026-09-30",
+     "nivel": "S",
+     "fuente": "Informe de 21Shares (a la vez emisor), regulacion.json"
+    },
+    {
+     "dato": "Litigio SEC-Ripple: multa 125 M USD e injunction vigentes; apelaciones retiradas",
+     "valor": "ago-2025",
+     "unidad": "",
+     "fecha": "2025-08",
+     "nivel": "S",
+     "fuente": "Apuntes del repo; sin leer el expediente judicial [VERIFICAR]"
+    },
+    {
+     "dato": "Primer ETF al contado de XRP (Canary XRPC)",
+     "valor": "13-nov-2025",
+     "unidad": "",
+     "fecha": "2025-11-13",
+     "nivel": "P",
+     "fuente": "SEC, estándares genéricos de cotización (nota 2025-121), regulacion.json"
+    },
+    {
+     "dato": "OCC: aprobación condicional a un fideicomiso de Ripple",
+     "valor": "12-dic-2025",
+     "unidad": "",
+     "fecha": "2025-12-12",
+     "nivel": "P",
+     "fuente": "OCC, según regulacion.json (custodia EE. UU.); la final sigue pendiente"
+    }
+   ],
+   "alcista": [
+    "Existen cinco ETF al contado en EE. UU. con ≈ 1.510 M USD y entradas netas acumuladas ≈ 1.800 M USD (S).",
+    "El litigio con la SEC está cerrado (multa e injunction vigentes, apelaciones retiradas en ago-2025).",
+    "Aprobaciones condicionales de la OCC a fideicomisos cripto, incluido uno de Ripple (la final sigue pendiente).",
+    "Evernorth (XRPN, cotizada desde el 12-oct-2026) acumula XRP en tesorería: 388,9 M XRP aportados en especie según su 8-K [P]."
+   ],
+   "bajista": [
+    "Cae -63 % desde el 6-oct-2025 y -21 % en los últimos 30 días (S).",
+    "Los flujos recientes de los ETF son casi planos (0 M USD el 28-oct) y las entradas acumuladas superan los activos: pérdida latente media de ≈ 290 M USD (cálculo propio con cifras S).",
+    "Concentración: tres fondos reúnen la mayor parte de los activos.",
+    "Evernorth tiene una línea de capital con Cantor (hasta 5,2 M de acciones nuevas): dilución potencial [P, 8-K del 23-oct].",
+    "La ley de estructura de mercado de EE. UU. (CLARITY) está bloqueada en el Senado desde el 15-sep-2026."
+   ],
+   "sesgos": [
+    "SoSoValue y The Block (agregadores) discrepan en el AUM de Grayscale (GXRP): 87,3 frente a 28,3 M USD [VERIFICAR en el 10-Q].",
+    "Quien emite un ETP informa de su propio AUM (21Shares).",
+    "La empresa Evernorth informa su propio total de XRP sin auditar (≈ 473 M XRP frente a 388,9 M del 8-K): [VERIFICAR].",
+    "Titulares de «13 semanas seguidas de entradas»: no confirmados."
+   ],
+   "verificar": [
+    "Cifra oficial de acciones y XRP en custodia de cada ETF (10-Q en EDGAR).",
+    "Origen de la cifra de 2.178 M USD de R27: sin localizar.",
+    "13F del 3T-2026 (plazo 14-nov-2026)."
+   ],
+   "especulacion": [
+    "Cualquier previsión de precio o de flujos futuros de los ETF es [ESPECULACIÓN] y no se da aquí."
+   ],
+   "fuentes": [
+    "https://www.sec.gov/newsroom/press-releases/2025-121-sec-approves-generic-listing-standards-commodity-based-trust-shares",
+    "informes/research/2026-10-29-W04-etf.md",
+    "informes/research/2026-10-23-T19-etf-xrp-xlm-eeuu.md"
+   ]
+  },
+  {
+   "id": "xlm",
+   "nombre": "XLM (Stellar Lumens)",
+   "tipo": "Criptoactivo (token nativo de la red Stellar)",
+   "resumen": "Red enfocada en pagos y tokenización; sin ETF al contado en EE. UU., solo un fideicomiso de Grayscale y ETP en Europa.",
+   "hechos": [
+    {
+     "dato": "Precio",
+     "valor": "0,1487",
+     "unidad": "USD",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "CoinGecko (API simple/price; agregador)"
+    },
+    {
+     "dato": "Capitalización",
+     "valor": "5.260",
+     "unidad": "millones USD",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "CoinGecko (API simple/price; agregador)"
+    },
+    {
+     "dato": "Variación desde el 6-oct-2025 (0,409 USD)",
+     "valor": "-63,5",
+     "unidad": "%",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "Yahoo Finance (chart API, cierres diarios; agregador)"
+    },
+    {
+     "dato": "Mínimo en la serie",
+     "valor": "0,1434 (22-may-2026)",
+     "unidad": "USD",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "Yahoo Finance (chart API, cierres diarios; agregador)"
+    },
+    {
+     "dato": "Grayscale Stellar Lumens Trust: XLM en custodia",
+     "valor": "≈ 117",
+     "unidad": "millones XLM",
+     "fecha": "2026-06-30",
+     "nivel": "P",
+     "fuente": "10-Q ante la SEC (vía buscador, informe T19); colocación privada: fideicomiso, no ETF"
+    },
+    {
+     "dato": "Grayscale Stellar Lumens Trust: valor",
+     "valor": "21,8",
+     "unidad": "millones USD",
+     "fecha": "2026-06-30",
+     "nivel": "P",
+     "fuente": "10-Q (vía buscador, informe T19)"
+    },
+    {
+     "dato": "ETP físicos de XLM en Europa",
+     "valor": "≈ 104",
+     "unidad": "millones USD",
+     "fecha": "2026-09-30",
+     "nivel": "S",
+     "fuente": "Informe de 21Shares (emisor), regulacion.json"
+    },
+    {
+     "dato": "Valor de RWA tokenizados en Stellar",
+     "valor": "3.996",
+     "unidad": "millones USD",
+     "fecha": "2026-08-29",
+     "nivel": "S",
+     "fuente": "Dune/SDF vía Cointelegraph; rwa.xyz da 3.550 M USD a 7-oct (otra métrica)"
+    },
+    {
+     "dato": "DTCC y SDF: plan de tokenizar activos custodiados por DTC en Stellar",
+     "valor": "1S-2027",
+     "unidad": "",
+     "fecha": "2026-10",
+     "nivel": "S",
+     "fuente": "Informes del repo (dossier 9-oct); sin comunicado oficial leído [VERIFICAR]"
+    }
+   ],
+   "alcista": [
+    "El valor tokenizado en Stellar creció con fuerza en 2026 (868,8 M USD a fin de 2025 frente a 3.996 M USD el 29-ago-2026, S).",
+    "Plan DTCC-SDF de tokenización para el 1S-2027 (S), con casos como índices, ETF y bonos del Tesoro.",
+    "ETP físicos en Europa (≈ 104 M USD) y el camino de cotización genérico de la SEC podrían abrir un ETF en EE. UU. [ESPECULACIÓN]."
+   ],
+   "bajista": [
+    "El valor RWA procede sobre todo de fondos regulados de terceros (Spiko, Ondo, BENJI), no es demanda de XLM; XLM cae -63 % mientras el valor tokenizado sube (S).",
+    "No hay ETF al contado de XLM en EE. UU.; el fideicomiso de Grayscale es pequeño (21,8 M USD).",
+    "Calendario del DTCC lejano (1S-2027) y sujeto a ejecución."
+   ],
+   "sesgos": [
+    "La cifra de RWA depende de la métrica (Dune/SDF 3.996 frente a rwa.xyz 3.550 M USD) y la publica en parte la propia fundación.",
+    "Las noticias de alianzas suelen ser intenciones, no contratos; los titulares sin nombre ni enlace no se verifican.",
+    "Las subidas puntuales de XLM sin catalizador verificado (p. ej. 30-oct) quedan [VERIFICAR]."
+   ],
+   "verificar": [
+    "Existencia de un ETF de XLM en EE. UU. (revisar EDGAR).",
+    "Calendario DTCC-SDF en comunicado oficial.",
+    "Cifras actuales del trust de Grayscale (10-Q del 3T)."
+   ],
+   "especulacion": [
+    "Que la tokenización eleve la demanda de XLM es [ESPECULACIÓN]; no hay mecanismo medido."
+   ],
+   "fuentes": [
+    "informes/research/2026-10-23-T19-etf-xrp-xlm-eeuu.md",
+    "informes/research/2026-10-15-R13-casos-bajistas.md",
+    "informes/dossiers/2026-10-09-stellar-rwa-y-dtcc.md"
+   ]
+  },
+  {
+   "id": "btc",
+   "nombre": "Bitcoin (BTC)",
+   "tipo": "Criptoactivo",
+   "resumen": "El mayor criptoactivo por capitalización, con ETF al contado en EE. UU.; -40 % desde el 6-oct-2025.",
+   "hechos": [
+    {
+     "dato": "Precio",
+     "valor": "74.558",
+     "unidad": "USD",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "CoinGecko (API simple/price; agregador)"
+    },
+    {
+     "dato": "Capitalización",
+     "valor": "1.499.114",
+     "unidad": "millones USD",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "CoinGecko (API simple/price; agregador)"
+    },
+    {
+     "dato": "Variación desde el 6-oct-2025 (124.753 USD)",
+     "valor": "-40,1",
+     "unidad": "%",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "Yahoo Finance (chart API, cierres diarios; agregador)"
+    },
+    {
+     "dato": "Mínimo en la serie",
+     "valor": "58.559 (30-jun-2026)",
+     "unidad": "USD",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "Yahoo Finance (chart API, cierres diarios; agregador)"
+    },
+    {
+     "dato": "Variación en 30 días",
+     "valor": "-9,9",
+     "unidad": "%",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "Yahoo Finance (chart API, cierres diarios; agregador)"
+    },
+    {
+     "dato": "Activos netos de los ETF de BTC al contado en EE. UU.",
+     "valor": "110.770",
+     "unidad": "millones USD",
+     "fecha": "2026-10-05",
+     "nivel": "S",
+     "fuente": "SoSoValue vía Cointelegraph (informe del 6-oct)"
+    },
+    {
+     "dato": "Flujo del 30-oct en ETF de BTC (provisional, incompleto)",
+     "valor": "-208,5",
+     "unidad": "millones USD",
+     "fecha": "2026-10-30",
+     "nivel": "S",
+     "fuente": "Farside, tabla provisional (cierre del 30-oct)"
+    }
+   ],
+   "alcista": [
+    "Liquidez y adopción institucional: ETF al contado con ≈ 110.770 M USD de activos (S, 5-oct).",
+    "Es el criptoactivo de mayor capitalización (≈ 1,5 billones USD).",
+    "Rebote de +27 % desde el mínimo de 58.559 USD (30-jun-2026) (cálculo propio, S)."
+   ],
+   "bajista": [
+    "Cae -40 % desde el 6-oct-2025 y -10 % en 30 días (S).",
+    "Los flujos de los ETF son volátiles y pueden ser negativos (-208,5 M USD el 30-oct, provisional).",
+    "No genera flujos de caja; su valor depende de la demanda."
+   ],
+   "sesgos": [
+    "Farside, SoSoValue y CoinGecko son agregadores [S]; los emisores de ETF publican cifras propias.",
+    "La serie de Yahoo arranca el 6-oct-2025 y su valor inicial no es necesariamente el máximo absoluto (el informe del 6-oct citaba 126.080 USD como máximo de oct-2025)."
+   ],
+   "verificar": [
+    "Activos netos actuales de los ETF en las webs de los emisores (la cifra es del 5-oct).",
+    "Máximo histórico exacto y fecha en una fuente primaria."
+   ],
+   "especulacion": [
+    "Ciclos, «halving» y previsiones de precio: [ESPECULACIÓN]; no se desarrollan aquí."
+   ],
+   "fuentes": [
+    "informes/2026-10-06-cierre.md",
+    "informes/2026-10-30-cierre.md",
+    "explorador/precios_historico.json"
+   ]
+  },
+  {
+   "id": "oro",
+   "nombre": "Oro",
+   "tipo": "Materia prima / refugio",
+   "resumen": "Cotiza ~22 % bajo el máximo de ene-2026 pero con los bancos centrales comprando fuerte en 2026.",
+   "hechos": [
+    {
+     "dato": "Precio (futuro continuo GC=F)",
+     "valor": "4.129,3",
+     "unidad": "USD/onza",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "Yahoo Finance (chart API, cierres diarios; agregador); puede haber saltos por cambio de contrato"
+    },
+    {
+     "dato": "Máximo en la serie de futuros",
+     "valor": "5.318,4 (29-ene-2026)",
+     "unidad": "USD/onza",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "Yahoo Finance (chart API, cierres diarios; agregador)"
+    },
+    {
+     "dato": "Distancia al máximo",
+     "valor": "-22,4",
+     "unidad": "%",
+     "fecha": "2026-11-10",
+     "nivel": "S",
+     "fuente": "Yahoo Finance (chart API, cierres diarios; agregador)"
+    },
+    {
+     "dato": "Máximo histórico según World Gold Council",
+     "valor": "5.405 (29-ene-2026)",
+     "unidad": "USD/onza",
+     "fecha": "2026-01-29",
+     "nivel": "P",
+     "fuente": "WGC (nota del 22-oct, informe de vídeos)"
+    },
+    {
+     "dato": "Compras netas de bancos centrales, 3T-2026",
+     "valor": "321 (+42 % interanual)",
+     "unidad": "toneladas",
+     "fecha": "2026-09-30",
+     "nivel": "P",
+     "fuente": "World Gold Council, Gold Demand Trends Q3 2026 (informe C237)"
+    },
+    {
+     "dato": "Compras netas de bancos centrales, 2T-2026",
+     "valor": "289",
+     "unidad": "toneladas",
+     "fecha": "2026-06-30",
+     "nivel": "P",
+     "fuente": "World Gold Council, Gold Demand Trends Q2 2026"
+    },
+    {
+     "dato": "Compras netas de bancos centrales, 1T-2026 (revisado desde 244)",
+     "valor": "57",
+     "unidad": "toneladas",
+     "fecha": "2026-03-31",
+     "nivel": "P",
+     "fuente": "World Gold Council, Q2 2026 (reclasificación a OTC)"
+    },
+    {
+     "dato": "GLD (ETF de oro físico): variación en el año",
+     "valor": "-4,23",
+     "unidad": "%",
+     "fecha": "2026-11-09",
+     "nivel": "S",
+     "fuente": "Yahoo Finance (chart API, cierres diarios; agregador)"
+    }
+   ],
+   "alcista": [
+    "Compras de bancos centrales: 289 t (2T) y 321 t (3T) según WGC [P].",
+    "Diversificador frente a la renta variable y las divisas; el oro físico no depende del crédito de un emisor.",
+    "Precio de 4.129 USD/onza, +3,8 % frente al 6-oct-2025 (cálculo propio, S)."
+   ],
+   "bajista": [
+    "Cae -22 % desde el máximo de ene-2026 (S).",
+    "No paga intereses ni dividendos; compite con los tipos reales y la fortaleza del dólar [razonamiento, no medido aquí].",
+    "El dato de bancos centrales se revisa (1T: 244 t → 57 t) y parte puede ser reclasificación OTC."
+   ],
+   "sesgos": [
+    "Datos iniciales frente a revisados del WGC: usar el revisado.",
+    "El futuro continuo de Yahoo cambia de contrato y el máximo difiere del de WGC (5.405 frente a 5.318).",
+    "Los vídeos y la prensa de «oro refugio» tienen sesgo de promoción de compra de oro."
+   ],
+   "verificar": [
+    "Demanda por ETF y joyería del 3T en WGC (no leída en esta ficha).",
+    "Diferencia entre el máximo de futuros y el de WGC."
+   ],
+   "especulacion": [
+    "Que las compras de bancos centrales sostengan el precio es [ESPECULACIÓN]."
+   ],
+   "fuentes": [
+    "informes/research/2026-11-09-C237-contradicciones.md",
+    "explorador/reservas.json",
+    "explorador/precios_historico.json"
+   ]
+  },
+  {
+   "id": "etf_mundial",
+   "nombre": "ETF de renta variable mundial (MSCI World / FTSE All-World)",
+   "tipo": "ETF indexado de renta variable global",
+   "resumen": "Productos como IWDA (MSCI World) o VWCE (FTSE All-World): diversificación global con peso alto de EE. UU. y de las grandes tecnológicas.",
+   "hechos": [
+    {
+     "dato": "IWDA (iShares Core MSCI World UCITS, Acc): precio",
+     "valor": "128,52",
+     "unidad": "EUR",
+     "fecha": "2026-11-09",
+     "nivel": "S",
+     "fuente": "Yahoo Finance (chart API, cierres diarios; agregador)"
+    },
+    {
+     "dato": "IWDA: rentabilidad en el año",
+     "valor": "15,23",
+     "unidad": "%",
+     "fecha": "2026-11-09",
+     "nivel": "S",
+     "fuente": "Yahoo Finance (chart API, cierres diarios; agregador)"
+    },
+    {
+     "dato": "VWCE (Vanguard FTSE All-World UCITS, Acc): precio",
+     "valor": "167,42",
+     "unidad": "EUR",
+     "fecha": "2026-11-09",
+     "nivel": "S",
+     "fuente": "Yahoo Finance (chart API, cierres diarios; agregador)"
+    },
+    {
+     "dato": "VWCE: rentabilidad en el año",
+     "valor": "15,13",
+     "unidad": "%",
+     "fecha": "2026-11-09",
+     "nivel": "S",
+     "fuente": "Yahoo Finance (chart API, cierres diarios; agregador)"
+    },
+    {
+     "dato": "MSCI World: valores y países",
+     "valor": "1.249 valores, 23 países desarrollados",
+     "unidad": "",
+     "fecha": "2026-09-30",
+     "nivel": "P",
+     "fuente": "MSCI, ficha oficial (dossier G5)"
+    },
+    {
+     "dato": "MSCI World: rentabilidad bruta a 1 año",
+     "valor": "15,68",
+     "unidad": "% (USD)",
+     "fecha": "2026-09-30",
+     "nivel": "P",
+     "fuente": "MSCI, ficha oficial"
+    },
+    {
+     "dato": "MSCI World: rentabilidad a 5 / 10 años",
+     "valor": "12,39 / 13,37",
+     "unidad": "% anual (USD, bruta)",
+     "fecha": "2026-09-30",
+     "nivel": "P",
+     "fuente": "MSCI, ficha oficial"
+    },
+    {
+     "dato": "MSCI World: caída máxima (oct-2007 a mar-2009)",
+     "valor": "-57,46",
+     "unidad": "%",
+     "fecha": "2026-09-30",
+     "nivel": "P",
+     "fuente": "MSCI, ficha oficial"
+    },
+    {
+     "dato": "MSCI World: PER y rentabilidad por dividendo",
+     "valor": "22,69 / 1,52",
+     "unidad": "veces / %",
+     "fecha": "2026-09-30",
+     "nivel": "P",
+     "fuente": "MSCI, ficha oficial"
+    }
+   ],
+   "alcista": [
+    "Diversificación en más de 1.200 valores y 23 países con comisión baja (TER por verificar en el KID) [razonamiento].",
+    "Rentabilidad histórica del índice: 13,37 % anual a 10 años y 9,02 % anual desde 1987 (bruta, USD, P).",
+    "Sin riesgo de un solo emisor, a diferencia de un ETN."
+   ],
+   "bajista": [
+    "PER de 22,69: valoración alta; no predice caídas ni su fecha [ESPECULACIÓN si se usa como señal].",
+    "Caída máxima histórica de -57,46 %: la bolsa puede perder la mitad.",
+    "Peso muy alto de EE. UU. y de pocas empresas grandes: menos diversificación geográfica de la que sugiere el nombre [VERIFICAR el peso exacto].",
+    "Riesgo de divisa: un ETF en EUR sobre activos en USD asume tipo de cambio; lo pasado no garantiza lo futuro.",
+    "No se puede traspasar sin tributar: se tributa al vender (dossier G5, BOE)."
+   ],
+   "sesgos": [
+    "Las rentabilidades de MSCI son brutas (sin costes ni impuestos) y en USD; las del ETF difieren por TER, dividendos y divisa.",
+    "Emisores y brókeres promocionan sus propios productos.",
+    "Yahoo es agregador [S]; el YTD de dos ETF no es comparable sin el mismo corte horario."
+   ],
+   "verificar": [
+    "Peso de EE. UU. y del top 10 en la ficha de MSCI/FTSE a fecha actual.",
+    "TER y tracking difference de cada ETF en su KID.",
+    "Calificación fiscal concreta de cada producto."
+   ],
+   "especulacion": [
+    "Rentabilidades futuras: [ESPECULACIÓN]; no se estiman."
+   ],
+   "fuentes": [
+    "informes/dossiers/2026-10-13-G5-acciones-etfs-fondos.md",
+    "explorador/paneles.json (watchlist)"
+   ]
+  }
+ ]
+}

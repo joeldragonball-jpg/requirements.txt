@@ -265,6 +265,7 @@ small.per{color:var(--tx2);font-size:var(--fs-xs);font-weight:400}
 <section class="vista" id="v-paises"></section>
 <section class="vista" id="v-espana"></section>
 <section class="vista" id="v-paneles"></section>
+<section class="vista" id="v-activos"></section>
 </main>
 <div class="pie-leyenda" id="pie-comun"></div>
 <button id="subir" aria-label="Volver arriba" title="Volver arriba">↑</button>
@@ -281,7 +282,7 @@ const num=(x,d=1)=>x==null||isNaN(x)?'—':Number(x).toLocaleString('es-ES',{max
 const usd=x=>x==null?'—':'$'+(Math.abs(x)>=1e12?num(x/1e12,2)+' billones':Math.abs(x)>=1e9?num(x/1e9,1)+' mil M':Math.abs(x)>=1e6?num(x/1e6,0)+' M':num(x,0));
 /* C164 · separador de miles también en números de 4 cifras (es-ES no agrupa 1234) */
 const miles=t=>typeof t!=='string'?t:t.replace(/(?<![\d.,])\d{4,}(?=,\d|[^\d.,]|$)/g,m=>m.replace(/\B(?=(\d{3})+(?!\d))/g,'.'));
-const TABS=[['resumen','Resumen'],['capas','Capas'],['tiempo','Línea de tiempo'],['calendario','Calendario'],['matriz','Matriz país × tema'],['noticias','Noticias'],['voces','Voces'],['paises','Países'],['espana','España'],['paneles','Paneles de datos']];
+const TABS=[['resumen','Resumen'],['capas','Capas'],['tiempo','Línea de tiempo'],['calendario','Calendario'],['matriz','Matriz país × tema'],['noticias','Noticias'],['voces','Voces'],['paises','Países'],['espana','España'],['paneles','Paneles de datos'],['activos','Fichas por activo']];
 let R,D,V,P,CAL,FMI,VAL,BAN,RES,X,modo='sem',selMov=null,selCapa=null,selCelda=null,tab='resumen',listo=false;
 
 /* ---------- utilidades de pintado ---------- */
@@ -419,7 +420,7 @@ function contar(sec){
 function marcarScroll(e){const t=e&&e.target&&e.target.nodeType===1?[e.target]:document.querySelectorAll('table:not(.mat),.mis .cols2>div,details.bl,.grp,.mcol>.grp');
   t.forEach(x=>{if(!x.classList)return;const m=x.scrollWidth-x.clientWidth;x.classList.toggle('sc-d',m>4&&x.scrollLeft<m-4);x.classList.toggle('sc-i',m>4&&x.scrollLeft>4)})}
 document.addEventListener('scroll',marcarScroll,true);addEventListener('resize',()=>setTimeout(marcarScroll,50));
-function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles})[tab]();if(['paneles','noticias','calendario','matriz','espana','paises'].includes(tab))anclas($('v-'+tab),tab);
+function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles,activos:pActivos})[tab]();if(['paneles','noticias','calendario','matriz','espana','paises'].includes(tab))anclas($('v-'+tab),tab);
   if(tab==='espana')[...$('v-espana').querySelectorAll('details')].filter(d=>!d.parentElement.closest('details')).forEach(d=>{let cer={};try{cer=JSON.parse(localStorage.getItem('orbita-esp-cerrados')||'{}')}catch(e){}const k=((d.querySelector('summary')||{}).textContent||'').trim().slice(0,60);d.open=!cer[k];d.addEventListener('toggle',()=>{try{const c2=JSON.parse(localStorage.getItem('orbita-esp-cerrados')||'{}');if(d.open)delete c2[k];else c2[k]=1;localStorage.setItem('orbita-esp-cerrados',JSON.stringify(c2))}catch(e){}})});setTimeout(marcarScroll,60)}
 
 /* ---------- bloques de datos reutilizables (Capas y Paneles) ---------- */
@@ -1683,6 +1684,23 @@ function pVoces(){
 }
 
 /* ---------- 8 · Paneles de datos ---------- */
+/* C203 · Fichas por activo: XRP, XLM, BTC, oro y ETF mundial (explorador/fichas-activos.json). Información general, sin recomendaciones */
+function pActivos(){
+  const S0=$('v-activos');S0.textContent='';const A=D.fichas_activos||{},F=A.fichas||[];
+  if(!F.length){S0.appendChild(el('p','','Sin fichas (explorador/fichas-activos.json).'));return}
+  S0.appendChild(el('p','nota-v',(A.nota||'')+' '+(A.unidades||'')+' Actualizado: '+(A.actualizado||'')+'.'));
+  const lista=(t,a,c)=>{if(!(a||[]).length)return null;const d=el('div','');d.style.margin='6px 0';const h=el('b','',t);if(c)h.style.color=c;d.appendChild(h);const u=el('ul','');u.style.margin='2px 0 2px 18px';a.forEach(x=>u.appendChild(el('li','',x)));d.appendChild(u);return d};
+  F.forEach((f,i)=>{
+    const dt=document.createElement('details');dt.style.margin='10px 0';if(i===0)dt.open=true;
+    dt.appendChild(el('summary','',f.nombre+' · '+(f.tipo||'')));
+    dt.appendChild(el('p','nota-v',f.resumen||''));
+    const tb=document.createElement('table');tb.className='tabla';tb.style.width='100%';
+    const th=document.createElement('tr');['Dato','Valor','Unidad','Fecha','Nivel','Fuente'].forEach(x=>th.appendChild(el('th','',x)));tb.appendChild(th);
+    (f.hechos||[]).forEach(h=>{const tr=document.createElement('tr');tr.appendChild(el('td','',h.dato));tr.appendChild(el('td','',h.valor));tr.appendChild(el('td','',h.unidad||''));tr.appendChild(el('td','',h.fecha||''));const tn=document.createElement('td');tn.appendChild(nivelBadge(h.nivel));tr.appendChild(tn);tr.appendChild(el('td','',h.fuente||''));tb.appendChild(tr)});
+    const env=el('div');env.style.overflowX='auto';env.appendChild(tb);dt.appendChild(env);
+    [lista('Caso alcista',f.alcista,'var(--ok,#4caf7a)'),lista('Caso bajista',f.bajista,'var(--mal,#e0605a)'),lista('Sesgos de las fuentes',f.sesgos),lista('[VERIFICAR]',f.verificar),lista('[ESPECULACIÓN]',f.especulacion),lista('Fuentes',f.fuentes)].forEach(x=>{if(x)dt.appendChild(x)});
+    S0.appendChild(dt)});
+}
 function pPaneles(){
   const s=$('v-paneles');s.textContent='';
   const c=el('div','caja');c.append(el('h2',null,'Paneles de datos: cada bloque dice qué mide, en qué unidad, de dónde sale y cuándo se leyó'));
