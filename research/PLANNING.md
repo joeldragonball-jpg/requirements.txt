@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-10 03:16 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-10 03:31 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -6,7 +6,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hoy (máx. 3):** R00 Apertura del día · Gemini Evento: Inflación EE. UU. (IPC de octubre)
 **Periódicas (próxima):** W02 11-10 · W03 11-11 · W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W01 11-16 · W08 11-25 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
-**Parciales (34):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
+**Parciales (35):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
 **Hechas en 7 días (41):** C147, C150, C151, C152, C153, C159, C160, C145, C129, C131, C133, C134, C136, C141, C32
 
 ## Hoy (mar 2026-11-10): solo lo casi obligatorio
@@ -86,6 +86,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C241 · Órbita · España: «a dónde va el dinero» (contratación pública PLACSP y subvencio · Fable L · ~~6 % · `research/LANZAR-FABLE-ESPANA.md`
 - C242 · Órbita · España: Congreso, partidos y altos cargos (votaciones, iniciativas, fin · Fable L · ~~5 % · `research/LANZAR-FABLE-ESPANA.md`
 - C243 · Órbita · España: empresas públicas (SEPI, Adif, Renfe, Correos…) y comparador de · Fable L · ~~5 % · `research/LANZAR-FABLE-ESPANA.md`
+- C245 ◐ en parte · Órbita · España: empleados de órganos constitucionales (Cortes, T. Cuentas, CGPJ · Sonnet S · ~~2 % · `Buscar la plantilla (nº de empleados) de Cortes Generales, Tribunal de Cuentas, CGPJ, Tribunal Constitucional, Consejo de Estado y Casa de Su Majestad el Rey en sus portales de transparencia/memorias/RPT y en el anexo de personal de los PGE; completar explorador/espana-empleados.json con fuente, fecha y nivel (P solo si se lee la fuente oficial; puestos presupuestados ≠ personas: [VERIFICAR]). Las 9 partidas de gasto sin plantilla (Deuda, Clases Pasivas, UE, entes territoriales, etc.) quedan null.`
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`

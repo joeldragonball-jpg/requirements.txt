@@ -8,7 +8,7 @@
   "organismo": "Ministerio para la Transformación Digital y de la Función Pública / Registro Central de Personal"
  },
  "como_leerlo": "«empleados» = efectivos a enero 2026 (funcionarios de carrera + laborales + otro personal, incluidos eventuales). En Defensa e Interior se suman las Fuerzas Armadas y los cuerpos policiales que paga el capítulo 1 de su sección. El boletín NO incluye personal judicial ni fiscal. «eventuales_personas» es el nº de personal eventual (art. 11); el boletín no da el nº de altos cargos.",
- "limites": "Plantilla ≠ ejecución presupuestaria: el capítulo 1 de 2025 se divide entre efectivos de enero 2026 (desfase de un año). Coste medio = cap. 1 (obligaciones 2025) / empleados; incluye cotizaciones sociales del empleador y altos cargos. Dos secciones marcadas no comparables.",
+ "limites": "Plantilla ≠ ejecución presupuestaria: el capítulo 1 de 2025 se divide entre efectivos de enero 2026 (desfase de un año). Coste medio = cap. 1 (obligaciones 2025) / empleados; incluye cotizaciones sociales del empleador y altos cargos. Dos secciones marcadas no comparables. C245 (10-nov-2026): intento de completar 6 órganos constitucionales sin resultado oficial; siguen null.",
  "total_ministerios": 98224,
  "secciones": [
   {
@@ -364,8 +364,9 @@
   {
    "seccion": "CORTES GENERALES",
    "empleados": null,
-   "nota": "Sin dato en el boletín por esta sección (no es ministerio, o es partida de gasto sin plantilla propia) [VERIFICAR]",
-   "nivel": "S"
+   "nota": "C245 (10-nov-2026): sin dato de personas efectivas. congreso.es publica plantillas orgánicas (puestos, no personas; p. ej. la de Intervención, 2021) y enlaza una «composición numérica de Cuerpos» que no se pudo abrir; no hay total de efectivos. Se deja null [VERIFICAR].",
+   "nivel": "S",
+   "intento_C245": "sin dato"
   },
   {
    "seccion": "OTRAS RELAC. FINANC. CON ENTES TERRIT.",
@@ -376,32 +377,37 @@
   {
    "seccion": "TRIBUNAL DE CUENTAS",
    "empleados": null,
-   "nota": "Sin dato en el boletín por esta sección (no es ministerio, o es partida de gasto sin plantilla propia) [VERIFICAR]",
-   "nivel": "S"
+   "nota": "C245 (10-nov-2026): sin dato. Solo hallados BOE de provisión de puestos y oferta de empleo 2025; ningún total de plantilla ni de efectivos en su portal. Se deja null [VERIFICAR].",
+   "nivel": "S",
+   "intento_C245": "sin dato"
   },
   {
    "seccion": "CONSEJO GENERAL DEL PODER JUDICIAL",
    "empleados": null,
-   "nota": "Sin dato en el boletín por esta sección (no es ministerio, o es partida de gasto sin plantilla propia) [VERIFICAR]",
-   "nivel": "S"
+   "nota": "C245 (10-nov-2026): sin dato. Portal de transparencia describe cuerpos y órganos técnicos pero no da total de personas; la memoria anual no se pudo leer. Se deja null [VERIFICAR].",
+   "nivel": "S",
+   "intento_C245": "sin dato"
   },
   {
    "seccion": "TRIBUNAL CONSTITUCIONAL",
    "empleados": null,
-   "nota": "Sin dato en el boletín por esta sección (no es ministerio, o es partida de gasto sin plantilla propia) [VERIFICAR]",
-   "nivel": "S"
+   "nota": "C245 (10-nov-2026): sin dato. Solo consta por ley el tope de 16 letrados de plantilla (no es el total de personal) y la plantilla se fija en la Ley de PGE. Memoria no localizada. Se deja null [VERIFICAR].",
+   "nivel": "S",
+   "intento_C245": "sin dato"
   },
   {
    "seccion": "CONSEJO DE ESTADO",
    "empleados": null,
-   "nota": "Sin dato en el boletín por esta sección (no es ministerio, o es partida de gasto sin plantilla propia) [VERIFICAR]",
-   "nivel": "S"
+   "nota": "C245 (10-nov-2026): sin dato. El Reglamento Orgánico remite a plantillas orgánicas (puestos) sin total publicado localizado. Se deja null [VERIFICAR].",
+   "nivel": "S",
+   "intento_C245": "sin dato"
   },
   {
    "seccion": "CASA DE SU MAJESTAD EL REY",
    "empleados": null,
-   "nota": "Sin dato en el boletín por esta sección (no es ministerio, o es partida de gasto sin plantilla propia) [VERIFICAR]",
-   "nivel": "S"
+   "nota": "C245 (10-nov-2026): sin dato. El informe de Intervención 2024 (casareal.es) detalla gasto de personal y categorías, pero no nº de empleados; la lista de eventuales solo salió por solicitudes de transparencia. Se deja null [VERIFICAR].",
+   "nivel": "S",
+   "intento_C245": "sin dato"
   },
   {
    "seccion": "FONDO DE CONTINGENCIA",
