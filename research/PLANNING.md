@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-10 01:02 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-10 01:07 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -6,7 +6,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hoy (máx. 3):** R00 Apertura del día · Gemini Evento: Inflación EE. UU. (IPC de octubre)
 **Periódicas (próxima):** W02 11-10 · W03 11-11 · W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W01 11-16 · W08 11-25 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
-**Parciales (25):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
+**Parciales (34):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
 **Hechas en 7 días (41):** C147, C150, C151, C152, C153, C159, C160, C145, C129, C131, C133, C134, C136, C141, C32
 
 ## Hoy (mar 2026-11-10): solo lo casi obligatorio
@@ -71,18 +71,18 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C222 · Órbita: pestaña Mercado con divisas por tipo, hora real por dato y segunda fuent · Sonnet M · ~~2 % · ``
 - C223 · Órbita: rendimiento con muchos datos (carga por pestaña, listas virtualizadas) · Opus L · ~~3 % · ``
 - C225 ◐ en parte · Research de noticias más fuerte: grandes potencias y España, conflictos y guerra · Sonnet L · ~~5 % · ``
-- C229 · Órbita · España: pack macro (IPC desglosado, EPA, afiliación, salarios/SMI y Eur · Sonnet L · ~~4 % · ``
-- C230 · Órbita · España: vivienda (precio, alquiler, esfuerzo por CCAA), deuda autonómic · Sonnet L · ~~4 % · ``
-- C231 · Órbita · España: pensiones (gasto, déficit contributivo, fondo) y demografía (na · Sonnet M · ~~3 % · ``
-- C232 · Órbita · España: fiscalidad cripto (modelos 172/173/721), MiCA y CASP autorizado · Opus M · ~~3 % · ``
-- C233 · Órbita · España: energía (precio eléctrico OMIE/REE, combustibles vs UE, gas y d · Sonnet M · ~~3 % · ``
+- C229 ◐ en parte · Órbita · España: pack macro (IPC desglosado, EPA, afiliación, salarios/SMI y Eur · Sonnet L · ~~4 % · ``
+- C230 ◐ en parte · Órbita · España: vivienda (precio, alquiler, esfuerzo por CCAA), deuda autonómic · Sonnet L · ~~4 % · ``
+- C231 ◐ en parte · Órbita · España: pensiones (gasto, déficit contributivo, fondo) y demografía (na · Sonnet M · ~~3 % · ``
+- C232 ◐ en parte · Órbita · España: fiscalidad cripto (modelos 172/173/721), MiCA y CASP autorizado · Opus M · ~~3 % · ``
+- C233 ◐ en parte · Órbita · España: energía (precio eléctrico OMIE/REE, combustibles vs UE, gas y d · Sonnet M · ~~3 % · ``
 - C235 · Voces de otros ámbitos (bancos centrales, energía, política, economía) fichadas  · Opus M · ~~3 % · ``
-- C236 · IPC de EE. UU.: etiquetar «desestacionalizado / sin desestacionalizar» en móvil  · Sonnet S · ~~0,5 % · ``
+- C236 ◐ en parte · IPC de EE. UU.: etiquetar «desestacionalizado / sin desestacionalizar» en móvil  · Sonnet S · ~~0,5 % · ``
 - C237 ◐ en parte · Revisar research/CRUCE-HECHOS.md: decidir qué hechos P van a la Línea de tiempo, · Opus M · ~~3 % · ``
-- C238 · Órbita · España: leyes nuevas y modificaciones (BOE, Congreso): estado, vigor y  · Sonnet L · ~~5 % · `research/prompts/C238-espana-leyes-boe.md`
-- C239 · Órbita · España: investigaciones y fondos públicos (Adif, Ministerio de Transpor · Sonnet L · ~~5 % · `research/prompts/C239-espana-investigaciones-fondos.md`
+- C238 ◐ en parte · Órbita · España: leyes nuevas y modificaciones (BOE, Congreso): estado, vigor y  · Sonnet L · ~~5 % · `research/prompts/C238-espana-leyes-boe.md`
+- C239 ◐ en parte · Órbita · España: investigaciones y fondos públicos (Adif, Ministerio de Transpor · Sonnet L · ~~5 % · `research/prompts/C239-espana-investigaciones-fondos.md`
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
-- C240 · Formato de cifras: unidad y escala explícitas (M€, mil M€), punto de miles y com · Sonnet M · ~~2 % · `research/prompts/C240-formato-cifras-unidades.md`
+- C240 ◐ en parte · Formato de cifras: unidad y escala explícitas (M€, mil M€), punto de miles y com · Sonnet M · ~~2 % · `research/prompts/C240-formato-cifras-unidades.md`
 - C241 · Órbita · España: «a dónde va el dinero» (contratación pública PLACSP y subvencio · Fable L · ~~6 % · `research/LANZAR-FABLE-ESPANA.md`
 - C242 · Órbita · España: Congreso, partidos y altos cargos (votaciones, iniciativas, fin · Fable L · ~~5 % · `research/LANZAR-FABLE-ESPANA.md`
 - C243 · Órbita · España: empresas públicas (SEPI, Adif, Renfe, Correos…) y comparador de · Fable L · ~~5 % · `research/LANZAR-FABLE-ESPANA.md`

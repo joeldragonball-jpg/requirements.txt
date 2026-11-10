@@ -370,6 +370,13 @@ def datos_panel():
         sal["pagos"] = {"nivel": pg.get("nivel"), "leido": pg.get("leido"), "nota": pg.get("nota"),
                         "dias": [{"f": x["fecha"], "t": x["total"], "n": x.get("por_nivel", {})} for x in pg["bdns"].get("dias", [])[-7:]],
                         "placsp": (pg.get("placsp") or {}).get("entradas_feed")}
+    try:
+        ley = cargar("explorador/espana-leyes.json")
+    except Exception:
+        ley = None
+    if ley and ley.get("leyes"):
+        sal["leyes"] = {"gen": ley.get("generado"), "fuente": ley.get("fuente"), "aviso": ley.get("aviso"),
+                        "l": [{k: x.get(k) for k in ("nombre", "ref", "publicacion", "entrada_vigor", "estado", "que_cambia", "nivel")} for x in ley["leyes"]]}
     if mo and mo.get("semanas"):
         sal["muertes"] = {"nivel": mo.get("nivel"), "leido": mo.get("leido"), "nota": mo.get("nota"), "res": mo.get("resumen_anio_en_curso"),
                           "sem": [{k: x.get(k) for k in ("anio", "semana", "defunciones", "exceso_vs_2015_2019", "tipo_dato")} for x in mo["semanas"][-8:]]}
