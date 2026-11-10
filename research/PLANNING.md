@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-10 01:07 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-10 01:33 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -138,15 +138,15 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [alta] 2026-11-08 (2 d) · Irak pacta con EE. UU. poder exportar crudo por Ormuz.
 - [alta] 2026-11-09 (1 d) · El Brent cae más de un 3 % y baja de 95 $.
 - [alta] 2026-11-09 (1 d) · El Brent cae casi un 5 % hasta 93,72 $.
+- [media] 2026-10-12 (29 d) · Mayor lote de listados de sanciones contra Rusia hasta la fecha (~1.569 personas y entidades); el 20.º paquete
+- [media] 2026-10-13 (28 d) · Inflación de septiembre: 1,9 % mensual (agosto 1,7 %), 23,6 % acumulada en 2026 y 33,4 % interanual. El FMI (2
 - [media] 2026-10-22 (19 d) · hutiES a Arabia Saudi
 - [media] 2026-10-22 (19 d) · hutiES a Arabia Saudi
-- [media] 2026-10-23 (18 d) · El futuro continuo del Brent cierra en $111,97
-- [media] 2026-10-23 (18 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
-- … y 60 más en el Seguimiento
+- … y 76 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (3) → W03 · BR/politica; AE/politica; BRICS/ley_marco
-- 🟡 Radar regulatorio: Celdas sin dato (24) → W03 · Más huecos: EG 5, ET 4, IN 2, BRICS 2, ZA 2
+- 🟡 Radar regulatorio: Celdas sin dato (29) → W03 · Más huecos: EG 5, ES 5, ET 4, IN 2, BRICS 2
 - 🟡 Voces: Voces sin confirmar (4) → W06 · 3 llevan más de 14 días
 
 ## Bots con problema
@@ -166,15 +166,16 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 ## Calendario: próximos 14 días de impacto y qué los cubre
 - 2026-11-10 · Inflación EE. UU. (IPC de octubre) (alto) → cubre W01 (Datos macro y tipos)
 - 2026-11-10 · EIA: perspectivas de energía a corto plazo (STEO) (medio) → cubre W10 (Energía y geopolítica)
+- 2026-11-10→11-11 · Abu Dabi: conversaciones trilaterales EE. UU.–Ucrania–Rusia (medio) → sin rutina: valorar research EV
 - 2026-11-11 · SEC: plazo sobre opciones de ETFs cripto (SR-ISE-2026-42) (medio) → cubre W04 (ETF y flujos)
 - 2026-11-11 · Corea: fin de comentarios de la FSC sobre tokenización de va (medio) → sin rutina: valorar research EV
 - 2026-11-11 · OPEP: informe mensual del mercado petrolero (noviembre) (medio) → cubre W10 (Energía y geopolítica)
 - 2026-11-13 · AIE: informe mensual del mercado petrolero (noviembre) (medio) → cubre W10 (Energía y geopolítica)
+- 2026-11-13 · España: IPC definitivo de octubre (INE) (medio) → cubre W01 (Datos macro y tipos)
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → cubre W04 (ETF y flujos)
 - 2026-11-18→11-19 · APEC en Shenzhen: cumbre de líderes (medio) → cubre W03 (Regulación por países)
 - 2026-11-18 · Reino Unido: IPC de octubre (ONS) (medio) → cubre W01 (Datos macro y tipos)
-- 2026-11-23 · Stellar: voto de mainnet de Protocol 30 (Bell) (medio) → sin rutina: valorar research EV
-- 2026-11-23 · Stellar: voto de la red principal del protocolo 30 «Bell» (1 (medio) → sin rutina: valorar research EV
+- 2026-11-18 · Zona euro: IPCA definitivo de octubre (Eurostat) (medio) → cubre W01 (Datos macro y tipos)
 
 ## Predicciones que vencen en 14 días
 - ninguna
@@ -182,8 +183,8 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 ## Próximas fechas clave
 - 2026-11-10 · Inflación EE. UU. (IPC de octubre)
 - 2026-11-10 · EIA: perspectivas de energía a corto plazo (STEO)
+- 2026-11-10 · Abu Dabi: conversaciones trilaterales EE. UU.–Ucrania–Rusia
 - 2026-11-11 · Corea: fin de comentarios de la FSC sobre tokenización de valores
 - 2026-11-13 · AIE: informe mensual del mercado petrolero (noviembre)
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM)
 - 2026-11-18 · APEC en Shenzhen: cumbre de líderes
-- 2026-11-18 · Reino Unido: IPC de octubre (ONS)

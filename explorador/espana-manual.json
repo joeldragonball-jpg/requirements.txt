@@ -156,6 +156,33 @@
    "fuente": "https://www.sepe.es/HomeSepe/que-es-el-sepe/estadisticas/estadisticas-prestaciones/informe-prestaciones.html",
    "nivel": "VERIFICAR",
    "nota": "6-nov-2026: la página oficial del SEPE lista los informes de prestaciones de 2024 (Informe-202401 a 202412, xlsx) y de 2025 (202501 a 202512), pero las cifras solo están dentro de los xlsx; no se descargaron (solo lectura). Las URL de paro registrado y de notas de prensa probadas dieron 404. Sin valores de 2024 leídos [VERIFICAR]. Aviso del SEPE: los informes desde nov-2024 traen datos provisionales de subsidios."
+  },
+  {
+   "nombre": "Afiliados medios a la Seguridad Social",
+   "valor": 22624165,
+   "unidad": "personas",
+   "anio": "oct-2026",
+   "fuente": "https://revista.seg-social.es/-/afiliacion-octubre-2026",
+   "nivel": "S",
+   "nota": "+186.612 respecto a septiembre; extranjeros por encima de 3,7 millones. Parte del salto se atribuye a la regularización extraordinaria (efecto de una sola vez). No es comparable con los ocupados de la EPA (concepto distinto). [VERIFICAR] contra la nota original."
+  },
+  {
+   "nombre": "Paro registrado (SEPE)",
+   "valor": 2422633,
+   "unidad": "personas",
+   "anio": "oct-2026",
+   "fuente": "https://revista.seg-social.es/-/el-paro-registrado-aumenta-en-43.128-personas-en-octubre-y-se-situa-en-2.422.633-la-cifra-mas-baja-en-este-mes-desde-2007",
+   "nivel": "S",
+   "nota": "+43.128 en el mes, −21.133 en un año; la cifra más baja en un octubre desde 2007. Sexto mes seguido de subida; la regularización inscribe a recién autorizados (BBVA Research, CaixaBank Research)."
+  },
+  {
+   "nombre": "Salario mínimo interprofesional (SMI)",
+   "valor": 1221,
+   "unidad": "€ brutos/mes (14 pagas)",
+   "anio": "2026",
+   "fuente": "https://www.garrigues.com/es_ES/noticia/publica-salario-minimo-interprofesional-smi-espana-2026",
+   "nivel": "S",
+   "nota": "17.094 €/año (+3,1 %, +37 €/mes), RD 126/2026 del 18-feb, retroactivo al 1-ene. Con el IPC en el 4,9 % supone pérdida de poder adquisitivo en rentas mínimas (lectura propia). [VERIFICAR en BOE]."
   }
  ],
  "exterior": [
@@ -723,6 +750,78 @@
    "fuente": "https://www.vozpopuli.com/economia/inmobiliario/el-esfuerzo-para-comprar-vivienda-supera-el-umbral-de-riesgo-del-banco-de-espana.html (cita al BdE, 13-abr-2026)",
    "nivel": "S",
    "nota": "Máx. de la serie 9,46 (3T 2007). Esfuerzo teórico anual 35,5 % frente a umbral de 35 % (misma fuente). Informe Anual 2025 del BdE (jun-2026): 4,3 años de renta neta en el conjunto de hogares, 6,8 en no propietarios, 7,1 en jóvenes. Sin leer en bde.es [VERIFICAR]."
+  },
+  {
+   "nombre": "IPV por comunidades: mayor subida anual (Ceuta)",
+   "valor": 15.2,
+   "unidad": "% interanual",
+   "periodo": "2T 2026",
+   "fuente": "https://www.ine.es/prensa/anexo_tablas/es/IPV2T26.xlsx",
+   "nivel": "P",
+   "nota": "Índice general. Ranking de las 19 (anexo xlsx leído): Asturias 15,0; Castilla y León 14,8; Aragón 14,6; Murcia y La Rioja 14,4; Melilla 13,8; Baleares 13,7; Cantabria 13,5; C. Valenciana 13,0; Galicia y Madrid 12,9; Extremadura 12,8; Andalucía 11,9; Castilla-La Mancha 11,7; Canarias 11,0; Cataluña 10,1; País Vasco 10,0; Navarra 9,5. España 12,2. Mide variación, no nivel: las más caras suben menos (efecto de base)."
+  },
+  {
+   "nombre": "IPV por comunidades: menor subida anual (Navarra)",
+   "valor": 9.5,
+   "unidad": "% interanual",
+   "periodo": "2T 2026",
+   "fuente": "https://www.ine.es/prensa/anexo_tablas/es/IPV2T26.xlsx",
+   "nivel": "P",
+   "nota": "Nueva +4,1 %, segunda mano +11,9 %. Ranking completo en la fila anterior."
+  },
+  {
+   "nombre": "Compraventas de vivienda (INE, total del año)",
+   "valor": 714237,
+   "unidad": "n.º",
+   "periodo": "2025",
+   "fuente": "https://www.ine.es/dyngs/Prensa/H0826.pdf",
+   "nivel": "S",
+   "nota": "+11,5 %, máximo desde 2007. Cifra citada en el informe C230; la nota anual del INE no se abrió [VERIFICAR]. La URL es la de la nota de hipotecas, no la de compraventas."
+  },
+  {
+   "nombre": "Compraventas de vivienda según notarios",
+   "valor": 65395,
+   "unidad": "n.º",
+   "periodo": "jul 2026",
+   "fuente": "Brains (fuente secundaria que cita al Notariado), vía informe C230 de 10-nov-2026",
+   "nivel": "S",
+   "nota": "−11,1 % interanual a 2.112 €/m² (+7,7 %). La ERI de Registradores cita −7,6 % en mayo (61.140 operaciones) [VERIFICAR]."
+  },
+  {
+   "nombre": "Alquiler: precio de anuncio, Idealista",
+   "valor": 15.1,
+   "unidad": "€/m² al mes",
+   "periodo": "oct 2026",
+   "fuente": "https://www.esdiario.com/economia/261103/201953/precio-alquiler-sigue-imparable-sube-5-6-interanual-octubre.html",
+   "nivel": "S",
+   "nota": "+5,6 % interanual. Precio ANUNCIADO, no contratos firmados; Idealista tiene interés comercial. Cambio metodológico en julio de 2026 (excluye temporada) [VERIFICAR]: la serie previa no es comparable. Oficiales: IPVA del INE e IRAI de Registradores, sin leer."
+  },
+  {
+   "nombre": "Segunda mano: precio de oferta, Fotocasa",
+   "valor": 17.2,
+   "unidad": "% interanual",
+   "periodo": "2T 2026",
+   "fuente": "Fotocasa, vía informe C230 de 10-nov-2026 (sin enlace directo)",
+   "nivel": "S",
+   "nota": "Máximo en 21 años. Es precio de oferta; no comparable con el IPV (precios de escritura) [VERIFICAR fuente directa]."
+  },
+  {
+   "nombre": "Esfuerzo de acceso: años de salario bruto para comprar",
+   "valor": 8.4,
+   "unidad": "años",
+   "periodo": "jun 2026",
+   "fuente": "Fotocasa/InfoJobs, vía Euronews (10-jun-2026), informe C230",
+   "nivel": "S",
+   "nota": "Baleares 15,1; Madrid ≈15; Castilla-La Mancha y Extremadura ≈4. CONTRADICE al estudio de UCI (feb-2026): País Vasco 7,12 años y Extremadura 10,07, con otra metodología. Sin ranking firme hasta leer el Banco de España [VERIFICAR]."
+  },
+  {
+   "nombre": "Registradores ERI 2T 2026: €/m² por comunidad",
+   "valor": null,
+   "unidad": "€/m²",
+   "periodo": "2T 2026",
+   "fuente": "https://www.registradores.org/documents/d/guest/eri_2t_2026",
+   "nivel": "VERIFICAR",
+   "nota": "PDF de 8,85 MB sin extraer. Prensa cita precio +8,9 % anual y +3,2 % trimestral [VERIFICAR el trimestre]."
   }
  ],
  "vivienda_hipotecas_ejemplo": {
@@ -1479,6 +1578,275 @@
    "fuente": "https://www.tesoro.es/documents/d/tesoro/estadisticas_es-pdf",
    "nivel": "P",
    "nota": "Boletín «Estadísticas de la Deuda del Estado», 31-oct-2026, leído el 6-nov-2026 del PDF. Prevista para todo 2026: 56,008 miles de M€ (80 % ejecutado). Bonos y obligaciones 40,697 de 56,262; letras 5,451 de 5,000 (ya superada); resto y divisas −1,517 de −5,254."
+  }
+ ],
+ "pensiones_seguridad_social": [
+  {
+   "nombre": "Pensiones contributivas abonadas",
+   "valor": 10565782,
+   "unidad": "pensiones",
+   "anio": "oct-2026",
+   "fuente": "https://revista.seg-social.es/-/la-pension-media-del-sistema-de-la-seguridad-social-alcanza-los-1.376-1-euros-en-octubre-un-4-6-mas-alta-que-hace-un-ano",
+   "nivel": "S",
+   "nota": "+1,6 % interanual. Casi 6,8 millones son de jubilación. Leído vía resultados de búsqueda (C231, 10-nov-2026): [VERIFICAR] contra la nota original."
+  },
+  {
+   "nombre": "Pensión media del sistema",
+   "valor": 1376.14,
+   "unidad": "€/mes",
+   "anio": "oct-2026",
+   "fuente": "https://revista.seg-social.es/-/la-pension-media-del-sistema-de-la-seguridad-social-alcanza-los-1.376-1-euros-en-octubre-un-4-6-mas-alta-que-hace-un-ano",
+   "nivel": "S",
+   "nota": "+4,6 % interanual. [VERIFICAR] contra la nota original."
+  },
+  {
+   "nombre": "Pensión media de jubilación",
+   "valor": 1577.6,
+   "unidad": "€/mes",
+   "anio": "oct-2026",
+   "fuente": "https://revista.seg-social.es/-/la-pension-media-del-sistema-de-la-seguridad-social-alcanza-los-1.376-1-euros-en-octubre-un-4-6-mas-alta-que-hace-un-ano",
+   "nivel": "S",
+   "nota": "+4,5 % interanual; en oct-2025 era 1.510 €/mes (Moncloa, 28-oct-2025). [VERIFICAR] contra la nota original."
+  },
+  {
+   "nombre": "Nómina mensual de pensiones contributivas",
+   "valor": 14539.9,
+   "unidad": "M€ al mes",
+   "anio": "oct-2026",
+   "fuente": "https://www.articulo14.es/economia/record-gasto-pensiones-14540-millones-20261027.html",
+   "nivel": "S",
+   "nota": "+6,3 % interanual (≈14,5 mil M€). Fuente secundaria; el «récord» es en parte efecto normal de más pensionistas e inflación."
+  },
+  {
+   "nombre": "Saldo de la Seguridad Social (contable)",
+   "valor": -7387,
+   "unidad": "M€",
+   "anio": "2025",
+   "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx",
+   "nivel": "S",
+   "nota": "−0,4 % del PIB, mínimo desde 2011. Ingresos 232.782 M€ (+7,8 %), gastos 240.169 M€. Nota de Moncloa (31-mar-2026) citada vía Forbes; el Ministerio tiene interés en destacar la cifra menor. [VERIFICAR] contra la nota original."
+  },
+  {
+   "nombre": "Déficit contributivo de las pensiones",
+   "valor": 56946,
+   "unidad": "M€",
+   "anio": "2025",
+   "fuente": "https://institutosantalucia.es/sala-de-prensa/el-sistema-publico-de-pensiones-necesito-56-946-millones-de-euros-del-estado-para-cubrir-su-componente-contributivo-en-2025/",
+   "nivel": "S",
+   "nota": "3,4 % del PIB (61.881 M€ = 3,7 % si se excluyen los ingresos del MEI). Cálculo propio del Instituto Santa Lucía (crítico con el sistema); definición más amplia que el saldo contable, no contradictoria. Fedea da un «déficit básico» ≈69.800 M€ [VERIFICAR]."
+  },
+  {
+   "nombre": "Fondo de Reserva de la Seguridad Social",
+   "valor": 15267,
+   "unidad": "M€",
+   "anio": "31-mar-2026",
+   "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/130426-fondo-reserva-seguridad-social-abril.aspx",
+   "nivel": "S",
+   "nota": "Máximo en diez años. Cierre de 2025: 14.100 M€ (El Independiente) frente a 14.283 M€ (Vozpópuli) [VERIFICAR serie oficial]. Equivale a cerca de 1 mes de nómina (cálculo propio con 14.539,9 M€)."
+  },
+  {
+   "nombre": "Gasto en pensiones / PIB: proyección AIReF a 2050",
+   "valor": 16.1,
+   "unidad": "% del PIB",
+   "anio": "2050 (proyección)",
+   "fuente": "https://www.elespanol.com/invertia/economia/empleo/20260529/airef-aprueba-prevision-gasto-pensiones-gobierno-alerta-deuda-publica-subira-pib/1003744265208_0.html",
+   "nivel": "S",
+   "nota": "[ESPECULACIÓN] depende de empleo, productividad y migración. AIReF: 12,9 % en 2023 y 14,7 % en 2070. Fedea proyecta 17,1 % en 2050; Comisión Europea (Ageing Report 2024): media UE 12,1 %; OCDE: 13,7 % en 2025 [VERIFICAR, cita de prensa]."
+  }
+ ],
+ "demografia_ine": [
+  {
+   "nombre": "Nacimientos",
+   "valor": 318005,
+   "unidad": "nacimientos",
+   "anio": "2024",
+   "fuente": "https://www.ine.es/dyngs/Prensa/MNP2024.htm",
+   "nivel": "S",
+   "nota": "−0,8 %, dato definitivo INE (leído vía búsqueda). Madres de 40 años o más: 10,4 % en 2024 (7,2 % en 2014). [VERIFICAR] contra la nota original."
+  },
+  {
+   "nombre": "Nacimientos (provisional)",
+   "valor": 321164,
+   "unidad": "nacimientos",
+   "anio": "2025",
+   "fuente": "https://www.ine.es/dyngs/Prensa/EDES_EMN2025.htm",
+   "nivel": "S",
+   "nota": "+1,0 %: primera subida tras una década de caídas. Provisional [VERIFICAR con definitivos]."
+  },
+  {
+   "nombre": "Defunciones",
+   "valor": 436118,
+   "unidad": "defunciones",
+   "anio": "2024",
+   "fuente": "https://www.ine.es/dyngs/Prensa/MNP2024.htm",
+   "nivel": "S",
+   "nota": "En 2025, +2,5 % (provisional) [VERIFICAR]."
+  },
+  {
+   "nombre": "Saldo vegetativo (provisional)",
+   "valor": -122167,
+   "unidad": "personas",
+   "anio": "2025",
+   "fuente": "https://www.ine.es/dyngs/Prensa/EDES_EMN2025.htm",
+   "nivel": "S",
+   "nota": "Nacimientos menos defunciones, provisional. La población crece por inmigración, no por saldo natural."
+  },
+  {
+   "nombre": "Esperanza de vida al nacer",
+   "valor": 84.01,
+   "unidad": "años",
+   "anio": "2024",
+   "fuente": "https://www.ine.es/dyngs/Prensa/MNP2024.htm",
+   "nivel": "S",
+   "nota": "INE definitivo: 21,87 años a los 65; mortalidad infantil 3,04 ‰. El tema Estabilidad usa 83,9 años (otra fuente o definición) [VERIFICAR conciliación]."
+  },
+  {
+   "nombre": "Crecimiento de la población en un año",
+   "valor": 444205,
+   "unidad": "personas",
+   "anio": "1-jul-2025 a 1-jul-2026",
+   "fuente": "https://www.ine.es/dyngs/Prensa/ECP2T26.htm",
+   "nivel": "S",
+   "nota": "+0,9 %; +104.178 en el trimestre (2.T 2026). La población nacida en España sigue bajando. Hogares: 19.874.860. La población total ya está en «Población residente»."
+  },
+  {
+   "nombre": "Tasa de dependencia máxima proyectada por el INE",
+   "valor": 73.2,
+   "unidad": "%",
+   "anio": "2076 (proyección)",
+   "fuente": "https://ine.es/dyngs/Prensa/PROP20262076.htm",
+   "nivel": "S",
+   "nota": "Proyecciones 2026-2076 publicadas el 17-jun-2026; detalle sin leer. [ESPECULACIÓN]: depende de fecundidad y migración. [VERIFICAR] en INEbase."
+  },
+  {
+   "nombre": "Fecundidad (hijos por mujer) y saldo migratorio exterior de 2025",
+   "valor": null,
+   "unidad": "",
+   "anio": "2025",
+   "fuente": "https://www.ine.es/dyngs/Prensa/EDES_EMN2025.htm",
+   "nivel": "VERIFICAR",
+   "nota": "No hallados en la pasada C231; buscar en Indicadores Demográficos Básicos y en la Estadística de Migraciones."
+  }
+ ],
+ "energia_espana": [
+  {
+   "nombre": "Precio mayorista de la electricidad, media anual",
+   "valor": 167.53,
+   "unidad": "€/MWh",
+   "anio": "2022",
+   "fuente": "https://cnmc.es/sites/default/files/editor_contenidos/Notas%20de%20prensa/2025/20250515_NP_Bolet%C3%ADn_Mercados_El%C3%A9ctricos_Plazo.pdf",
+   "nivel": "S",
+   "nota": "Mercado diario, zona España (CNMC, vía búsqueda). 2023: 87,10; 2024: 63,04 (otro documento CNMC da 57,74 con otro concepto) [VERIFICAR]."
+  },
+  {
+   "nombre": "Precio mayorista de la electricidad, media anual",
+   "valor": 65.28,
+   "unidad": "€/MWh",
+   "anio": "2025",
+   "fuente": "https://cnmc.es/sites/default/files/editor_contenidos/Notas%20de%20prensa/2025/20250515_NP_Bolet%C3%ADn_Mercados_El%C3%A9ctricos_Plazo.pdf",
+   "nivel": "S",
+   "nota": "≈65 (+4 %), tercero más bajo de Europa; fuente única [VERIFICAR contra OMIE]. El panel de Energía ya trae el OMIE diario en vivo."
+  },
+  {
+   "nombre": "Precio mayorista de la electricidad, media de septiembre",
+   "valor": 143.72,
+   "unidad": "€/MWh",
+   "anio": "sep-2026",
+   "fuente": "https://www.articulo14.es/economia/la-luz-arranca-octubre-en-152-euros-cae-respecto-al-miercoles-pero-cuesta-un-74-mas-que-hace-un-ano-20261001.html",
+   "nivel": "S",
+   "nota": "Máximo anual hasta entonces. Prensa que cita OMIE [VERIFICAR en omie.es]."
+  },
+  {
+   "nombre": "Precio mayorista de la electricidad, máximo diario de octubre",
+   "valor": 231.01,
+   "unidad": "€/MWh",
+   "anio": "29-oct-2026",
+   "fuente": "https://roams.es/actualidad/energia/precio-luz-mayorista-marca-maximo-2026-231-18-horas-jueves-superan-200/",
+   "nivel": "S",
+   "nota": "Máximo del año hasta esa fecha. Media mensual de octubre: no hallada en fuente oficial (cálculo propio con 23 días ≈156 €/MWh, NO oficial) [VERIFICAR]. La prensa liga el repunte al gas, más del doble que hace un año [VERIFICAR con MIBGAS/TTF]. Sesgo: los máximos diarios llaman más la atención que la media."
+  },
+  {
+   "nombre": "Demanda eléctrica nacional",
+   "valor": 256,
+   "unidad": "TWh",
+   "anio": "2025",
+   "fuente": "https://www.ree.es/sites/default/files/2026-03/1103_NP_ISE_2025.pdf",
+   "nivel": "S",
+   "nota": "+2,8 %; con autoconsumo 269.753 GWh (+3,7 %). Informe del Sistema Eléctrico de REE (nota 11-mar-2026), leído vía búsqueda."
+  },
+  {
+   "nombre": "Generación renovable",
+   "valor": 150988,
+   "unidad": "GWh",
+   "anio": "2025",
+   "fuente": "https://www.ree.es/sites/default/files/2026-03/1103_NP_ISE_2025.pdf",
+   "nivel": "S",
+   "nota": "+1,3 %, máximo histórico. Potencia instalada 142.558 MW (+7,3 %), renovables 67,1 %. Fotovoltaica ≈50,2 TWh (18,4 % del mix). % renovable sobre la generación total: no hallado [VERIFICAR]."
+  },
+  {
+   "nombre": "Importaciones de gas natural",
+   "valor": 371727,
+   "unidad": "GWh",
+   "anio": "2025",
+   "fuente": "https://www.cores.es/sites/default/files/archivos/icores/i-cores-imp-export-gn-dic25.pdf",
+   "nivel": "S",
+   "nota": "+9,6 %; 66,7 % en GNL. Proveedores: Argelia 34,6 %, EE. UU. 30,0 %, Rusia 11,5 % (−44 % según Enagás). 1.T 2026: EE. UU. 36,6 %, Argelia 29,6 %, Rusia 18,1 % [VERIFICAR; la prensa lo liga a la crisis de Irán]."
+  },
+  {
+   "nombre": "Gasolina 95 en España (con impuestos)",
+   "valor": 1.79,
+   "unidad": "€/l",
+   "anio": "12-oct-2026",
+   "fuente": "https://www.bolsamania.com/noticias_amp/empresas/economia--los-carburantes-suman-siete-semanas-de-subidas-y-se-encarecen-hasta-un-126-a-rebufo-del-conflicto-en-iran--21939342.html",
+   "nivel": "S",
+   "nota": "Gasóleo 1,889 €/l. Boletín Petrolero UE vía prensa. Hay una rebaja de 20 cént./l en el impuesto de carburantes vigente en oct-nov 2026 (Selectra); su retirada subiría el precio en esa cuantía. Media UE de oct/nov-2026 no hallada: no se puede decir si España está por encima o por debajo [VERIFICAR]."
+  },
+  {
+   "nombre": "Dependencia energética de España",
+   "valor": 68.4,
+   "unidad": "%",
+   "anio": "2024",
+   "fuente": "https://www.endesa.com/es/la-cara-e/sector-energetico/espana-dependencia-exterior-cubrir-demanda-electricidad",
+   "nivel": "S",
+   "nota": "MITECO vía Endesa (fuente de una empresa eléctrica). 74,4 % en 2022. Media UE 2024 ≈57 % (fuente italiana secundaria) [VERIFICAR en Eurostat nrg_ind_id]."
+  }
+ ],
+ "deuda_ccaa": [
+  {
+   "nombre": "Deuda de las comunidades (PDE)",
+   "valor": 355,
+   "unidad": "mil M€",
+   "anio": "2T 2026",
+   "fuente": "https://www.bde.es/wbe/es/noticias-eventos/actualidad-banco-espana/deuda-aapp-2026t2.html",
+   "nivel": "S",
+   "nota": "20,4 % del PIB, +3,6 % interanual (nota del Banco de España del 30-sep-2026, leída vía resumen). Agosto: 349 mil M€ (19,9 %). Total AAPP: 1.763 mil M€ = 101,4 %. Próxima: 3T el 15-dic-2026. La deuda con el Estado (FLA) ya está dentro de la PDE: no se suma."
+  },
+  {
+   "nombre": "Condonación de deuda autonómica (proyecto de Hacienda)",
+   "valor": 83252,
+   "unidad": "M€",
+   "anio": "proyecto 9-dic-2025",
+   "fuente": "https://www.hacienda.gob.es/es-ES/Prensa/Noticias/Paginas/2025/20251209-NP-CM-CONDONACION-DEUDA-CCAA.aspx",
+   "nivel": "S",
+   "nota": "Hasta el 50 % de la deuda a 31-dic-2023 de cada comunidad de régimen común (≈19 % de su deuda); voluntaria; ley orgánica. La AIReF estima −5,1 puntos de PIB de deuda conjunta, y algunas comunidades seguirían incumpliendo. Tramitación en el Congreso sin localizar en BOE [VERIFICAR]."
+  },
+  {
+   "nombre": "Pasivo FLA que asumiría el Estado: Andalucía",
+   "valor": 18791,
+   "unidad": "M€",
+   "anio": "jul-2026",
+   "fuente": "Ara (prensa), vía informe C230 de 10-nov-2026",
+   "nivel": "S",
+   "nota": "Cataluña: 17.104 M€. Valencia, Murcia y Castilla-La Mancha: no hallado [VERIFICAR]. Cerca del 75 % del total correspondería a comunidades del PP (prensa), que rechazan el anteproyecto: sesgo político."
+  },
+  {
+   "nombre": "Deuda PDE por comunidad (% del PIB regional)",
+   "valor": null,
+   "unidad": "% del PIB",
+   "anio": "2T 2026",
+   "fuente": "https://app.bde.es/bie_www?SERIE=DTNPDE2010_P00000_PS_ACS",
+   "nivel": "VERIFICAR",
+   "nota": "Prensa cita C. Valenciana 40 %, Murcia 30,8 %, Cataluña 28,1 %, Madrid 12,3 %, Navarra 8,4 %, pero sale de un resumen, no del texto: leer la serie BIE en M€."
   }
  ]
 }

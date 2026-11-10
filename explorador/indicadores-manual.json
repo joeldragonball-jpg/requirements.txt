@@ -1,5 +1,5 @@
 {
-  "_actualizado": "2026-11-09",
+  "_actualizado": "2026-11-10",
   "_nota": "Datos sin API abierta: salario mínimo de las potencias. Nivel V = recordado, sin leer la norma oficial; [VERIFICAR] antes de citar. No se ordenan países.",
   "US": {
     "salario_minimo": {
@@ -33,12 +33,12 @@
       "valor": 4.1,
       "unidad": "% población activa",
       "fecha": "2026-10",
-      "fuente": "https://fred.stlouisfed.org/series/UNRATE",
-      "nivel": "S",
-      "definicion": "Tasa de paro de EE. UU. (BLS), desestacionalizada, vía FRED.",
+      "fuente": "https://api.bls.gov/publicAPI/v1/timeseries/data/LNS14000000",
+      "nivel": "P",
+      "definicion": "Tasa de paro de EE. UU. (BLS, serie LNS14000000), desestacionalizada; leída en la API del BLS el 10-nov-2026. Nóminas no agrícolas de octubre: +165.000; septiembre revisado a +60.000 (antes +29.000).",
       "periodicidad": "mensual",
-      "anterior": 4.1,
-      "anterior_fecha": "2026-08"
+      "anterior": 4.2,
+      "anterior_fecha": "2026-09"
     },
     "pib": {
       "valor": 3.4,
@@ -86,10 +86,21 @@
       "fecha": "2026-09",
       "fuente": "https://www.ons.gov.uk/economy/inflationandpriceindices",
       "nivel": "P",
-      "definicion": "IPC (CPI) del Reino Unido, serie D7G7 del ONS, leída por API el 29-oct-2026.",
+      "definicion": "IPC (CPI) del Reino Unido, serie D7G7 del ONS, leída por API el 29-oct-2026. Contraste (10-nov-2026): la OCDE, con datos del ONS, da 3,6 % en sep-2026 (anterior 3,3 %); diferencia sin resolver, [VERIFICAR] en ons.gov.uk.",
       "periodicidad": "mensual",
       "anterior": 3.1,
       "anterior_fecha": "2026-08"
+    },
+    "paro": {
+      "valor": 4.7,
+      "unidad": "% población activa",
+      "fecha": "2026-07",
+      "fuente": "https://data-explorer.oecd.org/",
+      "nivel": "P",
+      "definicion": "Tasa de paro del Reino Unido (datos del ONS vía OCDE, leída en la API SDMX de la OCDE el 10-nov-2026); es el dato más reciente que devuelve la OCDE. [VERIFICAR] en ons.gov.uk.",
+      "periodicidad": "mensual",
+      "anterior": 4.9,
+      "anterior_fecha": "2026-06"
     }
   },
   "RU": {
@@ -142,6 +153,17 @@
       "definicion": "IPC subyacente de Japón (sin alimentos frescos) y general, ambos 2,1 %, publicado hacia el 23-oct-2026 (Oficina de Estadística de Japón; leído solo vía prensa) [VERIFICAR]. Sin alimentos frescos ni energía: 2,4 %.",
       "periodicidad": "mensual",
       "anterior": 1.7,
+      "anterior_fecha": "2026-08"
+    },
+    "paro": {
+      "valor": 2.4,
+      "unidad": "% población activa",
+      "fecha": "2026-09",
+      "fuente": "https://data-explorer.oecd.org/",
+      "nivel": "P",
+      "definicion": "Tasa de paro de Japón (datos de la Oficina de Estadística vía OCDE, leída en la API SDMX de la OCDE el 10-nov-2026); más reciente que el dato anual del Banco Mundial (2,5 % en 2025).",
+      "periodicidad": "mensual",
+      "anterior": 2.5,
       "anterior_fecha": "2026-08"
     }
   },
@@ -212,7 +234,7 @@
       "fecha": "2026-09",
       "fuente": "https://www.mospi.gov.in/uploads/latestreleasesfiles/1791801549227-Press%20Release%20for%20the%20month%20of%20September,%202026.pdf",
       "nivel": "S",
-      "definicion": "IPC combinado nacional, provisional (MoSPI, publicado el 12-oct-2026; cifra vía prensa, PDF no abierto) [VERIFICAR]. Nueva serie con base 2024: no encadena con las anteriores. Alimentos 7,74 %. Octubre: 12-nov-2026.",
+      "definicion": "IPC combinado nacional, provisional (MoSPI, publicado el 12-oct-2026; cifra vía prensa, PDF no abierto) [VERIFICAR]. Nueva serie con base 2024: no encadena con las anteriores. Alimentos 7,74 %. Octubre: 12-nov-2026. La OCDE (datos MoSPI, leída el 10-nov-2026) da 5,57 % con anterior 4,96 %: se mantiene la cifra de prensa hasta abrir el PDF de MoSPI.",
       "periodicidad": "mensual",
       "anterior": 4.83,
       "anterior_fecha": "2026-08"
@@ -227,6 +249,39 @@
       "nivel": "V",
       "definicion": "Italia no tiene salario mínimo legal; los convenios colectivos fijan los mínimos [VERIFICAR]",
       "periodicidad": "—"
+    }
+  },
+  "AR": {
+    "ipc": {
+      "valor": 33.4,
+      "unidad": "% interanual",
+      "fecha": "2026-09",
+      "fuente": "https://chequeado.com/nota/la-inflacion-de-septiembre-fue-del-19-y-acumula-236-en-lo-que-va-del-ano/",
+      "nivel": "S",
+      "definicion": "IPC nacional del INDEC de septiembre de 2026 (1,9 % mensual; 23,6 % acumulado en 2026), publicado hacia el 13-oct-2026; cifra vía prensa (Chequeado, Finanzas Digital), comunicado del INDEC sin leer [VERIFICAR]. Sustituye a la media anual del Banco Mundial (2024).",
+      "periodicidad": "mensual"
+    }
+  },
+  "VE": {
+    "ipc": {
+      "valor": 467.9,
+      "unidad": "% (media anual 2026, estimación del FMI)",
+      "fecha": "2026",
+      "fuente": "https://www.bloomberglinea.com/",
+      "nivel": "S",
+      "definicion": "Inflación media de 2026 estimada por el FMI (actualización de octubre de 2026), vía Bloomberg Línea; WEO sin leer [VERIFICAR]. Rango de estimaciones muy amplio y el BCV tiene historial de retrasos (el FMI daba 387,4 % en abril). No es un dato interanual mensual.",
+      "periodicidad": "irregular"
+    }
+  },
+  "CU": {
+    "pib": {
+      "valor": -3.8,
+      "unidad": "% anual",
+      "fecha": "2025",
+      "fuente": "https://www.cepal.org/",
+      "nivel": "S",
+      "definicion": "Variación del PIB de Cuba en 2025 según la CEPAL (abril de 2026), citada por Cubanet, Diario de Cuba y La Nación/EFE (medios críticos con el Gobierno: posible sesgo). Otras estimaciones: CEEC ≈ −5 %; Pedro Monreal entre −9,1 % y −12,5 %. Falta la cifra primaria de la ONEI [VERIFICAR].",
+      "periodicidad": "anual"
     }
   }
 }

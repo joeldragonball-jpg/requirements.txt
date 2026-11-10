@@ -148,6 +148,11 @@
       "id": "au",
       "nombre": "Australia",
       "pais_id": "AU"
+    },
+    {
+      "id": "es",
+      "nombre": "España",
+      "pais_id": "ES"
     }
   ],
   "celdas": [
@@ -5370,6 +5375,189 @@
       "revisar": false,
       "caduca": "2027-01-27",
       "url": "https://consult.treasury.gov.au/c2026-813391"
+    },
+    {
+      "jur": "es",
+      "tema": "fiscal",
+      "etapa": 4,
+      "estado": "Siguen vigentes los modelos informativos 172 (saldos en monedas virtuales custodiadas) y 173 (operaciones), aprobados por la Orden HFP/887/2023 de 26-jul-2023 (plazo: enero del año siguiente) [P, BOE-A-2023-17430 leído], y el 721 (monedas virtuales en el extranjero), que aprueba la Orden HFP/886/2023 de 26-jul [P por la derogatoria del proyecto de Hacienda; la orden 886 no se ha abierto, así que el umbral de 50.000 € y el plazo del 31-mar vienen de prensa, [VERIFICAR]]. Un proyecto de orden de Hacienda (MAIN del 3-mar-2026, audiencia pública del 10-mar-2026, leído [P]) crearía el modelo 042 (censal de operadores), un nuevo 172 y un nuevo 721 de «criptoactivos» y el 175 (declaración de los CASP, por DAC8), derogaría desde el ejercicio 2026 las órdenes 886 y 887/2023 y dejaría sin uso el 173; se aplicaría a las declaraciones del ejercicio 2026 presentadas desde 2027. Es solo un proyecto: no consta publicada la orden ni la ley o el real decreto que transponen DAC8 (el MAIN deja «Ley XX/XX» en blanco) y las fuentes secundarias se contradicen [VERIFICAR]. IRPF: las ganancias por venta o permuta van a la base del ahorro; la escala estatal del art. 66 LIRPF llega al 15 % por encima de 300.000 € desde el 1-ene-2025 (Ley 7/2024, página de la AEAT leída [P]); el tipo combinado 19/21/23/27/30 % es una inferencia, no una cifra textual para residentes [VERIFICAR].",
+      "fecha": "2026-03-03",
+      "fuente": "P",
+      "revisado": "2026-11-10",
+      "proxima": {
+        "fecha": "2027-01-01",
+        "que": "Si se publica la orden, primeras declaraciones con los modelos 172/721 nuevos y el 175 de los CASP (ejercicio 2026, presentación desde 2027) [VERIFICAR]."
+      },
+      "falta": "Publicación en el BOE de la ley o el real decreto de DAC8 y de la orden 042/172/175/721; texto de la Orden HFP/886/2023 (umbral, plazo, sanciones del 721 tras la sentencia C-788/19); texto literal de los arts. 49, 66 y 76 LIRPF y tipo autonómico; criterios de la DGT sobre staking, lending y airdrops [VERIFICAR].",
+      "hitos": [
+        {
+          "fecha": "2023-07-26",
+          "que": "Órdenes HFP/886/2023 (modelo 721) y HFP/887/2023 (modelos 172 y 173)."
+        },
+        {
+          "fecha": "2025-01-01",
+          "que": "Escala del ahorro con el 15 % estatal sobre 300.000 € (Ley 7/2024)."
+        },
+        {
+          "fecha": "2026-03-03",
+          "que": "Hacienda publica el MAIN del proyecto de orden de los modelos 042, 172, 175 y 721."
+        },
+        {
+          "fecha": "2026-03-10",
+          "que": "Audiencia pública del proyecto."
+        }
+      ],
+      "informes": [
+        "C232"
+      ],
+      "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2023-17430",
+      "pais_id": "ES",
+      "nivel": "P",
+      "revisar": false,
+      "caduca": "2027-02-08"
+    },
+    {
+      "jur": "es",
+      "tema": "ley_marco",
+      "etapa": 5,
+      "estado": "MiCA se aplica a los proveedores (CASP) desde el 30-dic-2024 y, desde el 1-jul-2026, en España solo operan proveedores autorizados [P, página MiCA de la CNMV leída]. El volcado del registro interino de ESMA (fecha de actualización no indicada) lista 16 CASP con origen en España, todos con la CNMV como autoridad (BBVA, Openbank, Cecabank, Bit2Me, Renta 4, Kutxabank, CaixaBank, Criptan, Cryptopocket, entre otros) [P]; la lista de la CNMV tiene unas 197 entidades (recuento manual; mezcla autorización nacional y pasaporte), de modo que la cifra de 134 de Finect (1-jul-2026) queda superada [VERIFICAR]. Con pasaporte figuran Coinbase y Bitstamp (LU), Kraken (IE), Bitpanda y Bybit (AT), Crypto.com y OKX (MT); Binance y Bitget no aparecen en lo leído, pendiente de confirmar en el registro vivo [VERIFICAR].",
+      "fecha": "2026-07-01",
+      "fuente": "P",
+      "revisado": "2026-11-10",
+      "proxima": null,
+      "falta": "Registro vivo de ESMA y de la CNMV (Binance, Bitget, ABANCA y la fecha del volcado); reparto exacto de supervisión entre CNMV y Banco de España [VERIFICAR].",
+      "hitos": [
+        {
+          "fecha": "2024-12-30",
+          "que": "MiCA aplicable a los CASP."
+        },
+        {
+          "fecha": "2026-07-01",
+          "que": "Termina el periodo transitorio en España."
+        }
+      ],
+      "informes": [
+        "C232"
+      ],
+      "url": "https://www.cnmv.es/portal/Consultas/Proveedores-Servicios-Criptoactivos.aspx",
+      "pais_id": "ES",
+      "nivel": "P",
+      "revisar": false,
+      "caduca": "2027-02-08"
+    },
+    {
+      "jur": "es",
+      "tema": "stablecoins",
+      "etapa": null,
+      "estado": "Sin celda propia de España: rige el marco de la UE (MiCA, ver celda de la Unión Europea). No he leído ninguna norma española específica sobre stablecoins.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Normativa nacional complementaria, si existe (BOE/CNMV).",
+      "hitos": [],
+      "informes": [
+        "C232"
+      ],
+      "revisado": "2026-11-10",
+      "pais_id": "ES",
+      "nivel": "V",
+      "revisar": true,
+      "caduca": "2027-02-08"
+    },
+    {
+      "jur": "es",
+      "tema": "etf",
+      "etapa": null,
+      "estado": "Sin dato verificado sobre ETF de cripto en España; no se ha buscado fuente primaria.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Circulares y registros de la CNMV sobre productos cotizados ligados a criptoactivos.",
+      "hitos": [],
+      "informes": [
+        "C232"
+      ],
+      "revisado": "2026-11-10",
+      "pais_id": "ES",
+      "nivel": "V",
+      "revisar": true,
+      "caduca": "2027-02-08"
+    },
+    {
+      "jur": "es",
+      "tema": "tokenizacion",
+      "etapa": null,
+      "estado": "Sin dato verificado sobre tokenización de valores en España; no se ha buscado fuente primaria.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "CNMV y Banco de España: entorno de pruebas y normas sobre registro de valores en DLT.",
+      "hitos": [],
+      "informes": [
+        "C232"
+      ],
+      "revisado": "2026-11-10",
+      "pais_id": "ES",
+      "nivel": "V",
+      "revisar": true,
+      "caduca": "2027-02-08"
+    },
+    {
+      "jur": "es",
+      "tema": "custodia",
+      "etapa": null,
+      "estado": "Sin celda propia de España: rige el art. 75 de MiCA (ver celdas de la UE y de marco). No he leído ninguna norma española específica de custodia.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Normativa nacional complementaria y criterios de la CNMV.",
+      "hitos": [],
+      "informes": [
+        "C232"
+      ],
+      "revisado": "2026-11-10",
+      "pais_id": "ES",
+      "nivel": "V",
+      "revisar": true,
+      "caduca": "2027-02-08"
+    },
+    {
+      "jur": "es",
+      "tema": "cbdc",
+      "etapa": null,
+      "estado": "Sin dato propio de España: el euro digital se decide a escala de la UE y el BCE (ver celda de la UE).",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Estado del reglamento del euro digital (celda de la UE).",
+      "hitos": [],
+      "informes": [
+        "C232"
+      ],
+      "revisado": "2026-11-10",
+      "pais_id": "ES",
+      "nivel": "V",
+      "revisar": true,
+      "caduca": "2027-02-08"
+    },
+    {
+      "jur": "es",
+      "tema": "politica",
+      "etapa": null,
+      "estado": "La política monetaria de España es la del BCE (zona euro); no se rellena aparte.",
+      "fecha": null,
+      "fuente": "VERIFICAR",
+      "proxima": null,
+      "falta": "Ninguno: se sigue desde el panel del BCE.",
+      "hitos": [],
+      "informes": [
+        "C232"
+      ],
+      "revisado": "2026-11-10",
+      "pais_id": "ES",
+      "nivel": "V",
+      "revisar": true,
+      "caduca": "2027-02-08"
     }
   ],
   "huecos": [
