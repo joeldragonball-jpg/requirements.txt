@@ -606,7 +606,7 @@ def control(p, datos):
 
     grupo("Metales", [futuro("GC=F", "Oro", "$ por onza troy"), futuro("SI=F", "Plata", "$ por onza troy"), futuro("HG=F", "Cobre", "$ por tonelada", LB_T, 0)])
 
-    filas = []
+    filas = []   # C193: tres grupos (Divisas, Tipos oficiales, Bonos) en lugar de uno
     dv = p.get("divisas", {})
     for x in dv.get("divisas", []):
         filas.append(fila(f"1 € en {x['nombre'].lower()}", x["valor"], x["codigo"], x["fecha"], "P", "BCE (tipo de referencia)", x["url"], c=x.get("cambio_1d"), d=2 if x["valor"] > 10 else 4))
@@ -615,12 +615,14 @@ def control(p, datos):
     if dv.get("dxy"):
         x = dv["dxy"]
         filas.append(fila(x["nombre"], x["valor"], "índice frente a 6 monedas", x["fecha"], "S", *YH, c=x.get("cambio_1d")))
+    f_div, filas = filas, []
     tv = {t["jur"]: t for t in p.get("tipos_vivos", {}).get("paises", [])}
     tb = {t["id"]: t for t in p.get("tipos_bis", {}).get("paises", [])}
     for t, e in ((tv.get("eeuu"), "Tipo oficial · Reserva Federal"), (tv.get("ue"), "Tipo oficial · BCE (depósito)"), (tb.get("JP"), "Tipo oficial · Banco de Japón")):
         if t:
             filas.append(fila(e, t["num"], "", t.get("dato_de"), "P", t.get("fuente") or "BIS (tipos oficiales)", "https://data.bis.org/topics/CBPOL" if t is tb.get("JP") else None,
                               t=t["valor"], fr="diario", x=[f"Último cambio: {t['ultimo_cambio']}"] if t.get("ultimo_cambio") else []))
+    f_tipos, filas = filas, []
     bonos = {q["id"]: q for q in p.get("bonos", {}).get("paises", [])}
     for k, e in (("USA", "Bono a 10 años · EE. UU."), ("ESP", "Bono a 10 años · España"), ("EUR", "Bono a 10 años · zona euro AAA (curva BCE)")):
         q = bonos.get(k)
@@ -633,7 +635,9 @@ def control(p, datos):
         filas.append(fila("Euríbor a 12 meses (media del mes)", eur12["valor"], "%", eur12["fecha"], "P", "BCE", "https://data.ecb.europa.eu/data/datasets/FM/FM.M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA",
                           d=3, pp=round(eur12["valor"] - eur12["anterior"], 3) if eur12.get("anterior") is not None else None, per="1 mes", fr="mensual",
                           x=[f"Hace 12 meses: {fm_es(eur12['hace_12m'], 3)} %"] if eur12.get("hace_12m") is not None else []))
-    grupo("Divisas y tipos", filas, "Divisas: cuánto vale 1 euro. Tipos y bonos: la variación va en puntos, no en %.")
+    grupo("Divisas", f_div, "Cuánto vale 1 euro en cada moneda (tipos de referencia del BCE). El índice del dólar (DXY) es de Yahoo [S].")
+    grupo("Tipos oficiales", f_tipos, "Tipos de los bancos centrales: la variación va en puntos porcentuales, no en %. Solo cambian en las reuniones.")
+    grupo("Bonos y euríbor", filas, "Rentabilidad del bono a 10 años y euríbor: la variación va en puntos porcentuales, no en %.")
     return {"generado": datos["generado"], "leido": p.get("leido"), "grupos": grupos}
 
 
