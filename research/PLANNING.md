@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-10 00:42 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-10 01:02 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -21,9 +21,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 - Aviso de límite (2026-10-31): Joel propone probar 2 Deep Research al dia (lleva ~7 % semanal con Pro alto). Se prueba unos dias; si Gemini avisa de limite, vuelta a 1. Anotar en sesiones cada lanzamiento y si hubo aviso.
 
 ## Rutinas W: lo que falta este periodo (sin día fijo; se hacen cuando haya hueco, de más atrasada a menos)
-- W06 · Voces y predicciones · ~3 % · cada viernes · último 2026-11-06 · `research/prompts/W06-*.md`
-- W09 · Resumen semanal · ~1,5 % · cada viernes · último 2026-11-06 · `research/prompts/W09-*.md`
-Hechas en este periodo: W01, W02, W03, W04, W05, W07, W08, W10
+Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**
@@ -144,12 +142,12 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W07, W08, W10
 - [media] 2026-10-22 (19 d) · hutiES a Arabia Saudi
 - [media] 2026-10-23 (18 d) · El futuro continuo del Brent cierra en $111,97
 - [media] 2026-10-23 (18 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
-- … y 59 más en el Seguimiento
+- … y 60 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (3) → W03 · BR/politica; AE/politica; BRICS/ley_marco
-- 🔴 Voces: Voces sin confirmar (7) → W06 · 5 llevan más de 14 días
 - 🟡 Radar regulatorio: Celdas sin dato (24) → W03 · Más huecos: EG 5, ET 4, IN 2, BRICS 2, ZA 2
+- 🟡 Voces: Voces sin confirmar (4) → W06 · 3 llevan más de 14 días
 
 ## Bots con problema
 - Verificación mensual

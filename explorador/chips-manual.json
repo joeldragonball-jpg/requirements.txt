@@ -1,0 +1,103 @@
+{
+ "leido": "2026-11-10",
+ "nivel": "S",
+ "nota": "Ficha manual C117 (RAM/DRAM, NAND y centros de datos). Todo [S]: resúmenes de búsqueda web de una pasada; no se leyeron las notas de prensa originales (TrendForce, Micron, IEA, EIA, SK hynix, Samsung) → comprobar a mano antes de usar. Los fabricantes y TrendForce son partes interesadas (venden o cobran por la tesis de escasez). Los ciclos y proyecciones son [ESPECULACIÓN]. Sin recomendaciones. No sobrescribir: añadir entradas.",
+ "precios_memoria": [
+  {
+   "concepto": "Precio contrato DRAM convencional, 4T26 (previsión)",
+   "valor": "+10 % a +15 % trimestral",
+   "fecha": "2026-09-30",
+   "fuente": "TrendForce, nota de prensa 4Q26",
+   "url": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
+   "nivel": "S",
+   "nota": "Otra fuente secundaria (hwbusters) da +8 % a +13 %; prevalece TrendForce. Oferta prioriza servidores de alto rendimiento. [VERIFICAR] original."
+  },
+  {
+   "concepto": "Precio contrato NAND Flash, 4T26 (previsión)",
+   "valor": "+15 % a +20 % trimestral",
+   "fecha": "2026-09-30",
+   "fuente": "TrendForce, nota de prensa 4Q26",
+   "url": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
+   "nivel": "S",
+   "nota": "SSD empresariales QLC +23 % a +28 % por pedidos de hiperescaladores (caché KV de IA); consumo apenas sube. [VERIFICAR]."
+  },
+  {
+   "concepto": "DRAM PC, contrato octubre 2026",
+   "valor": "sigue subiendo en 4T, con subidas que se moderan",
+   "fecha": "2026-10-30",
+   "fuente": "TrendForce (informe «DRAM Contract Price Oct. 2026», solo titular)",
+   "url": "https://trendforce.com/research/download/RP261030WD",
+   "nivel": "S",
+   "nota": "Cifras de pago; solo titular visible. Sin precio spot ni contrato en dólares por gigabit leído. Decisión pendiente de Joel sobre pagar TrendForce."
+  }
+ ],
+ "empresas": [
+  {
+   "empresa": "Micron (MU)",
+   "dato": "4T fiscal 2026 (cierre 3-sep-2026): ingresos 54.230 M$ (41.460 M$ trimestre previo; 11.320 M$ un año antes); BPA no GAAP 33,42 $; año fiscal 2026: 133.190 M$ (37.380 M$ en 2025). Guía 1T fiscal 2027: 61.500 M$ ±1.500 M$, margen bruto ≈86 %, BPA ≈38,15 $. Capex 1.er semestre FY27 ≈25.000 M$. Dice que la escasez de oferta seguirá en FY27 y FY28.",
+   "fecha": "2026-09-30",
+   "fuente": "Resúmenes de Storage Newsletter, Pulse2 y MarketBeat; resultado oficial = Micron",
+   "url": "https://www.storagenewsletter.com/2026/10/02/micron-technology-fiscal-4q26-and-fy26-financial-results/",
+   "nivel": "S",
+   "nota": "Cifras muy superiores a las de dic-2025 (1T FY26: 13.600 M$, margen 56,8 %). Salto de ×4 en un año: comprobar en el 8-K de Micron antes de citar [VERIFICAR]."
+  },
+  {
+   "empresa": "SK hynix",
+   "dato": "3T 2026: ingresos 104,6 billones de wones (primer trimestre > 100 billones); beneficio operativo 83,3 billones (margen 80 %). Dice tener DRAM y HBM vendidos para los próximos tres años.",
+   "fecha": "2026-10-28",
+   "fuente": "Resúmenes de prensa (iphonewired, Blocks & Files); original = SK hynix",
+   "url": "https://iphonewired.com/industry/1200227/",
+   "nivel": "S",
+   "nota": "Blocks & Files da 39,8 billones, que parece el beneficio neto, no el operativo: discrepancia [VERIFICAR]."
+  },
+  {
+   "empresa": "Samsung Electronics",
+   "dato": "3T 2026: beneficio operativo récord 107,4 billones de wones; división de chips (DS) ventas 147,1 billones y beneficio operativo 106,5 billones (margen 72,4 %); ventas de HBM4 ×3 trimestral.",
+   "fecha": "2026-10-29",
+   "fuente": "TrendForce (citando Reuters y la presentación de Samsung)",
+   "url": "https://trendforce.com/news/2026/10/29/news-samsung-says-hbm-share-matches-dram-standing-as-hbm4-sales-triple-ds-margin-hits-72-10-lta-clients-signed",
+   "nivel": "S",
+   "nota": "Cifra del grupo y de la división casi coinciden (107,4 vs 106,5): comprobar [VERIFICAR]."
+  }
+ ],
+ "centros_de_datos_electricidad": [
+  {
+   "concepto": "Consumo eléctrico mundial de centros de datos",
+   "dato": "2024: ≈415 TWh (≈1,5 % de la electricidad mundial). Proyección IEA (Energy and AI, abril 2025): ≈945 TWh en 2030 (casi el doble; ≈ consumo actual de Japón). Demanda de centros optimizados para IA: más de ×4 a 2030.",
+   "fecha": "2025-04-10",
+   "fuente": "IEA, «Energy and AI» (vía comunicado y prensa)",
+   "url": "https://www.iea.org/news/ai-is-set-to-drive-surging-electricity-demand-from-data-centres-while-offering-the-potential-to-transform-how-the-energy-sector-works",
+   "nivel": "S",
+   "nota": "Proyección = [ESPECULACIÓN] de escenario. Base 2024 revisada: informe de 2026 habla de 485 TWh de partida."
+  },
+  {
+   "concepto": "Actualización IEA «Key questions on Energy and AI»",
+   "dato": "Demanda eléctrica de centros de datos +≈17 % en 2025 (casi 20 % según otra lámina) frente a ≈3 % de la demanda eléctrica total; previsión: duplicarse a 2030 (≈485 → ≈950 TWh según un medio); EE. UU. y China ≈80 % del crecimiento; en el caso base, los centros de IA serían ≈3 % del consumo mundial en 2030. Cuellos de botella: turbinas de gas, transformadores, chips, conexión a red y permisos.",
+   "fecha": "2026-04-16",
+   "fuente": "IEA (vía prensa: Investment Monitor, Rigzone)",
+   "url": "https://www.investmentmonitor.ai/newsletters/iea-warns-ai-could-double-data-centre-power-use-by-2030",
+   "nivel": "S",
+   "nota": "Cifras difieren según medio; contrastar con el PDF de la IEA [VERIFICAR]."
+  },
+  {
+   "concepto": "EE. UU.: demanda eléctrica y sector comercial (incluye centros de datos)",
+   "dato": "STEO de julio de 2026: consumo total 4.195.000 millones de kWh (2025) → 4.269.000 M kWh (2026) → 4.399.000 M kWh (2027); el sector comercial superará al residencial en 2026 por primera vez. STEO de septiembre: ventas comerciales +3,3 % en 2026 y +2,7 % en 2027. Texas pausó nuevas conexiones de centros de datos para una auditoría regulatoria.",
+   "fecha": "2026-09",
+   "fuente": "EIA, Short-Term Energy Outlook (vía Reuters/Mining Weekly, Utility Dive)",
+   "url": "https://www.eia.gov/outlooks/steo/report/elec_coal_renew.php",
+   "nivel": "S",
+   "nota": "El sector comercial no es solo centros de datos. Datos EIA por API exigen clave: aquí solo lectura manual de prensa [VERIFICAR] contra el STEO de octubre/noviembre."
+  }
+ ],
+ "ciclos": {
+  "caso_alcista": "Capacidad vendida a años vista (SK hynix, Micron, HBM contratado), precios de contrato al alza en 4T26 y demanda eléctrica de centros de datos creciendo ~17 % anual.",
+  "caso_bajista": "Márgenes del 70-86 % son extremos históricos en un sector cíclico: más oferta (capex récord de Micron y Samsung), digestión de pedidos de hiperescaladores o límites de red eléctrica pueden revertirlos; consumo de PC/móvil con subidas mínimas. Cifras de fuentes secundarias.",
+  "etiqueta": "[ESPECULACIÓN] cualquier fecha de pico o suelo del ciclo; ningún dato aquí lo fija."
+ },
+ "pendientes": [
+  "Leer notas de prensa originales de Micron (8-K), SK hynix, Samsung y TrendForce.",
+  "Precio spot DRAM (DDR4/DDR5 por gigabit) fiable: requiere TrendForce/DRAMeXchange de pago (decisión de Joel).",
+  "STEO de noviembre y datos EIA con clave API (guardada fuera del repo).",
+  "Proxy MU/SOXX/TSM/ASML llega por C113 (paneles.json › chips); aquí no se duplica."
+ ]
+}
