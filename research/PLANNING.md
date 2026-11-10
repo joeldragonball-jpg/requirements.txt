@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-10 15:23 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-10 16:38 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -6,7 +6,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hoy (máx. 3):** Gemini Evento: Inflación EE. UU. (IPC de octubre)
 **Periódicas (próxima):** W02 11-10 · W03 11-11 · W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W01 11-16 · W08 11-25 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
-**Parciales (35):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
+**Parciales (39):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
 **Hechas en 7 días (41):** C147, C150, C151, C152, C153, C159, C160, C145, C129, C131, C133, C134, C136, C141, C32
 
 ## Hoy (mar 2026-11-10): solo lo casi obligatorio
@@ -43,18 +43,11 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C140 ◐ en parte · Países · Leer en fuente oficial las fechas de mandato [S] (9 países) y las de Az · Sonnet S · ~~2 % · ``
 - C144 ◐ en parte · Centro · Research a fondo: APIs y datos gratis (GitHub, Reddit, documentación of · Sonnet L · ~~6 % · `research/prompts/C144-apis-gratis-automatizar.md`
 - C162 ◐ en parte · Órbita · Niveles y fallos legibles: etiquetar los 8 k vacíos de capas[].xrp, exp · Sonnet M · ~~2 % · `Etiqueta los k vacíos de capas[].xrp en datos.json (con la fuente que lo sostiene, no a ojo), explica en una línea los fallos de paneles.json y unifica la leyenda de niveles en un pie común`
-- C172 · Órbita y móvil · Pendientes de la auditoría visual: móvil con tema oscuro por de · Sonnet S · ~~2 % · `Lee informes/research/2026-11-07-auditoria-visual-tablet-pc.md (sección Pendientes). Fuerza el tema oscuro por defecto en docs/movil/index.html (líneas con prefers-color-scheme) salvo elección manual del usuario; matriz país×tema como lista a 375 px; sombra o indicador de scroll horizontal en tablas anchas; oculta el filtro País en «Mis activos»; verifica rutas del service worker en GitHub Pages`
 - C173 ◐ en parte · Centro · Verificar noticias pendientes de prioridad alta y de más de 14 días (7- · Sonnet S · ~~3 % · ``
 - C176 ◐ en parte · Centro · Verificar prensa 4-6 nov (7 noticias) · Sonnet S · ~~1 % · ``
 - C179 ◐ en parte · Países · W11 refresco de 6 fichas políticas (China, Brasil, Sudáfrica, Indonesia · Sonnet S · ~~2 % · ``
 - C181 · Móvil · Mercado: separar divisas por tipo (pares con euro, dólar, refugio, emerg · Opus M · ~~3 % · ``
 - C186 · Research con Gemini (manual): qué muestran los mejores paneles de inversor parti · Sonnet S · ~~2 % · ``
-- C189 · Quitar duplicados en Verificaciones pendientes y poner «hace N d» junto a cada c · Sonnet S · ~<0,3 % · ``
-- C190 · Corregir «1 días de racha» y mover racha y % de plan a Más · Sonnet S · ~<0,2 % · ``
-- C191 · Mostrar XRP/XLM una sola vez en Hoy · Sonnet S · ~<0,2 % · ``
-- C193 · Separar «Divisas y tipos» del Mercado en Divisas, Tipos oficiales y Bonos · Sonnet S · ~<0,3 % · ``
-- C194 · Mover «Frescura de los datos» bajo los precios en Mercado y dejar resumen · Sonnet S · ~<0,2 % · ``
-- C195 · Etiqueta común de fecha del dato en Energía y Alimentos · Sonnet S · ~<0,2 % · ``
 - C196 · Aviso ámbar a 7 días en RWA manual; anotar que congress.gov sí cargó con Chrome  · Sonnet S · ~<0,2 % · ``
 - C203 · Fichas por activo (XRP, XLM, BTC, oro, ETF mundial) con fuente, nivel, hechos y  · Sonnet M · ~~2 % · ``
 - C205 · Vista de tesis privada en privado/ con evidencia a favor, en contra y sin dato · Opus L · ~~5 % · ``
@@ -83,10 +76,11 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C239 ◐ en parte · Órbita · España: investigaciones y fondos públicos (Adif, Ministerio de Transpor · Sonnet L · ~~5 % · `research/prompts/C239-espana-investigaciones-fondos.md`
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C240 ◐ en parte · Formato de cifras: unidad y escala explícitas (M€, mil M€), punto de miles y com · Sonnet M · ~~2 % · `research/prompts/C240-formato-cifras-unidades.md`
-- C241 · Órbita · España: «a dónde va el dinero» (contratación pública PLACSP y subvencio · Fable L · ~~6 % · `research/LANZAR-FABLE-ESPANA.md`
-- C242 · Órbita · España: Congreso, partidos y altos cargos (votaciones, iniciativas, fin · Fable L · ~~5 % · `research/LANZAR-FABLE-ESPANA.md`
-- C243 · Órbita · España: empresas públicas (SEPI, Adif, Renfe, Correos…) y comparador de · Fable L · ~~5 % · `research/LANZAR-FABLE-ESPANA.md`
+- C241 ◐ en parte · Órbita · España: «a dónde va el dinero» (contratación pública PLACSP y subvencio · Sonnet L · ~~6 % · `research/LANZAR-FABLE-ESPANA.md`
+- C242 ◐ en parte · Órbita · España: Congreso, partidos y altos cargos (votaciones, iniciativas, fin · Fable L · ~~5 % · `research/LANZAR-FABLE-ESPANA.md`
+- C243 ◐ en parte · Órbita · España: empresas públicas (SEPI, Adif, Renfe, Correos…) y comparador de · Fable L · ~~5 % · `research/LANZAR-FABLE-ESPANA.md`
 - C245 ◐ en parte · Órbita · España: empleados de órganos constitucionales (Cortes, T. Cuentas, CGPJ · Sonnet S · ~~2 % · `Buscar la plantilla (nº de empleados) de Cortes Generales, Tribunal de Cuentas, CGPJ, Tribunal Constitucional, Consejo de Estado y Casa de Su Majestad el Rey en sus portales de transparencia/memorias/RPT y en el anexo de personal de los PGE; completar explorador/espana-empleados.json con fuente, fecha y nivel (P solo si se lee la fuente oficial; puestos presupuestados ≠ personas: [VERIFICAR]). Las 9 partidas de gasto sin plantilla (Deuda, Clases Pasivas, UE, entes territoriales, etc.) quedan null.`
+- C247 ◐ en parte · Centro · Verificar prensa pendiente (3.ª tanda 10-nov: Irak/Ormuz, Brent, UE, IP · Sonnet S · ~~3 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
@@ -104,7 +98,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C87 · Centro · Separar público/privado: auditoría del repo público y plan de repo priv · Opus M · ~~3 % · ``
 - C88 · Centro · Endurecer el Worker de Cloudflare y los bots de pago: token fine-graine · Sonnet S · ~~1 % · ``
 - C89 · Centro · Endurecer candado() de app.py: cerrado por defecto, cookie/sesión en ve · Sonnet S · ~~2 % · ``
-- C90 · Centro · Revisión XSS: texto externo inyectado como HTML en docs/movil/index.htm · Sonnet S · ~~2 % · ``
 - C92 ◐ en parte · Centro · Medición: normalizar predicciones (fecha límite, fuente_id), script de  · Sonnet M · ~~3 % · ``
 - C95 · Centro · Plan de salida a producción para la familia: auth, hosting, copias, avi · Opus M · ~~3 % · ``
 - C96 · Centro · Consulta regulatoria de monetización [VERIFICAR con asesor/CNMV]: pregu · Sonnet S · ~~1 % · ``
@@ -135,18 +128,17 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [alta] 2026-11-08 (2 d) · Irak pacta con EE. UU. poder exportar crudo por Ormuz.
-- [alta] 2026-11-09 (1 d) · El Brent cae más de un 3 % y baja de 95 $.
-- [alta] 2026-11-09 (1 d) · El Brent cae casi un 5 % hasta 93,72 $.
-- [media] 2026-10-12 (29 d) · Mayor lote de listados de sanciones contra Rusia hasta la fecha (~1.569 personas y entidades); el 20.º paquete
-- [media] 2026-10-13 (28 d) · Inflación de septiembre: 1,9 % mensual (agosto 1,7 %), 23,6 % acumulada en 2026 y 33,4 % interanual. El FMI (2
 - [media] 2026-10-22 (19 d) · hutiES a Arabia Saudi
 - [media] 2026-10-22 (19 d) · hutiES a Arabia Saudi
 - [media] 2026-10-23 (18 d) · El futuro continuo del Brent cierra en $111,97
-- … y 74 más en el Seguimiento
+- [media] 2026-10-23 (18 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
+- [media] 2026-10-23 (18 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
+- [media] 2026-10-25 (16 d) · Chainlink CCIP en producción en SWIFT
+- [media] 2026-10-25 (16 d) · Precio y cierre de cada adquisición de Ripple
+- [media] 2026-10-25 (16 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
+- … y 66 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
-- 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (3) → W03 · BR/politica; AE/politica; BRICS/ley_marco
 - 🟡 Radar regulatorio: Celdas sin dato (29) → W03 · Más huecos: EG 5, ES 5, ET 4, IN 2, BRICS 2
 - 🟡 Voces: Voces sin confirmar (4) → W06 · 3 llevan más de 14 días
 
