@@ -1728,6 +1728,8 @@ function pPaneles(){
 function pEspana(){
   const s=$('v-espana');s.textContent='';
   const E=D.espana,B=D.espana_presupuesto,M=E&&E.manual||{};
+  /* C244: empleados por sección (EPSAP ene-2026, nivel P); la fila TOTAL lleva r._emp ya calculado */
+  const EM=(D.espana_empleados&&D.espana_empleados.secciones)||[],EMP=r=>{if(r._emp)return r._emp;const q=EM.find(z=>z.seccion===r.seccion);return q&&q.empleados!=null?{emp:q.empleados,comp:q.comparable!==false,nota:q.nota||''}:{emp:null}};
   if(!E&&!B){s.append(el('p','nota-v','Sin datos de España: faltan explorador/espana.json y espana-presupuesto.json.'));return}
   const c=el('div','caja');c.append(el('h2',null,'España: cuánto entra, a dónde va cada euro y quién lo recibe'));
   const fx=(v,d)=>v==null?'—':v.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d,useGrouping:'always'}),n1=v=>fx(v,1),n0=v=>fx(v,0);
@@ -1790,10 +1792,14 @@ function pEspana(){
       const resto=B.secciones.filter(z=>!CM.secciones.some(c=>c.seccion===z.nombre&&c.total));
       if(resto.length)dentro.append(el('h3',null,'Partidas sin obligaciones reconocidas en 2025'),tabla([{t:'Partida',f:r=>r.nombre},...ejec],resto));
       add(bloque('Presupuesto del Estado por ministerio y partida: ejecución, capítulos, programas, centros y destino','Abre cada una. Ordenadas por obligaciones de 2025; incluye los ministerios y las partidas fuera de ellos (deuda, pensiones de funcionarios, UE, entes territoriales, órganos constitucionales).',pie7,dentro));
-      add(bloque('Altos cargos y personal eventual por ministerio','Coste presupuestado y ejecutado en 2025 de los artículos 10 y 11 de cada sección. Solo presupuesto del Estado.',pie7,conL(null,
-        tabla([{t:'Sección',f:r=>r.seccion},{t:'Altos cargos, M€',n:1,f:r=>fx(r.altos_cargos.obligaciones,2)+' M€'},{t:'Eventuales, M€',n:1,f:r=>fx(r.eventuales.obligaciones,2)+' M€'},{t:'Personal total, M€',n:1,f:r=>n1(r.capitulos['1'])+' M€'},{t:'% de personal en la sección',n:1,f:r=>n1(r.pct_personal)+' %'}],(()=>{const fl=CM.secciones.filter(r=>r.altos_cargos.obligaciones||r.eventuales.obligaciones).sort((a,b)=>b.altos_cargos.obligaciones-a.altos_cargos.obligaciones),sm=g=>fl.reduce((s,r)=>s+(g(r)||0),0),tp=sm(r=>r.capitulos['1']),tt=sm(r=>r.total);
+      add(bloque('Altos cargos y personal eventual por ministerio','Coste presupuestado y ejecutado en 2025 de los artículos 10 y 11 de cada sección. Solo presupuesto del Estado. Empleados: Registro Central de Personal, enero 2026 [P]; el «Personal total (cap. 1)» ya incluye altos cargos y eventuales (no se suman). Coste medio = cap. 1 de 2025 / efectivos de enero 2026; en Defensa e Interior se suman militares y policías; «n/c» = no comparable (pasa el cursor).',pie7,conL(null,
+        tabla([{t:'Sección',f:r=>r.seccion},{t:'Altos cargos, M€',n:1,f:r=>fx(r.altos_cargos.obligaciones,2)+' M€'},{t:'Eventuales, M€',n:1,f:r=>fx(r.eventuales.obligaciones,2)+' M€'},{t:'Personal total, M€',n:1,f:r=>n1(r.capitulos['1'])+' M€'},{t:'% de personal en la sección',n:1,f:r=>n1(r.pct_personal)+' %'},
+          {t:'Empleados (personas)',n:1,f:r=>{const q=EMP(r);return q.emp==null?'—':fx(q.emp,0)+' personas'}},
+          {t:'Coste medio por persona',n:1,f:r=>{const q=EMP(r);if(q.emp==null)return '—';if(!q.comp){const e=el('span','igual','n/c');e.title=q.nota;return e}const v=q.coste!=null?q.coste:r.capitulos['1']/q.emp*1000;const e=el('span',null,fx(v,1)+' mil €');if(q.nota)e.title=q.nota;return e}},
+          {t:'Altos cargos + eventuales sobre personal (M€)',n:1,f:r=>{const c1=r.capitulos['1'];if(!c1)return '—';return fx((r.altos_cargos.obligaciones+r.eventuales.obligaciones)/c1*100,1)+' %'}}],(()=>{const fl=CM.secciones.filter(r=>r.altos_cargos.obligaciones||r.eventuales.obligaciones).sort((a,b)=>b.altos_cargos.obligaciones-a.altos_cargos.obligaciones),sm=g=>fl.reduce((s,r)=>s+(g(r)||0),0),tp=sm(r=>r.capitulos['1']),tt=sm(r=>r.total);
           /* fila final con el total de cada columna; el % es personal total / gasto total de las secciones listadas */
-          return fl.concat([{seccion:'TOTAL',altos_cargos:{obligaciones:sm(r=>r.altos_cargos.obligaciones)},eventuales:{obligaciones:sm(r=>r.eventuales.obligaciones)},capitulos:{'1':tp},pct_personal:tt?tp/tt*100:null}])})()),
+          const emC=fl.filter(r=>EMP(r).emp!=null),emT=emC.reduce((a,r)=>a+EMP(r).emp,0),emK=emC.filter(r=>EMP(r).comp),emKn=emK.reduce((a,r)=>a+EMP(r).emp,0),emKc=emK.reduce((a,r)=>a+(r.capitulos['1']||0),0);
+          return fl.concat([{_emp:{emp:emT||null,comp:true,coste:emKn?emKc/emKn*1000:null,nota:'Total: suma de empleados de las secciones con dato. Coste medio global solo con las secciones comparables (sin Presidencia/Justicia ni Inclusión). Fuente: EPSAP enero 2026.'},seccion:'TOTAL',altos_cargos:{obligaciones:sm(r=>r.altos_cargos.obligaciones)},eventuales:{obligaciones:sm(r=>r.eventuales.obligaciones)},capitulos:{'1':tp},pct_personal:tt?tp/tt*100:null}])})()),
         el('h3',null,'Número de cargos y retribuciones oficiales'),dat([CM.altos_cargos_numero,...CM.retribuciones])),false));
     }
     add(bloque('Programas concretos: igualdad, IMV, becas, inmigración, cooperación, dependencia…','Partida exacta con su código. Las aportaciones a la Seguridad Social son la parte que paga el Estado.',pieE,conL(B.lecturas.igualdad,

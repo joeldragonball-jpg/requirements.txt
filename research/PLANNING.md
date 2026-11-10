@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-10 03:11 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-10 03:16 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -86,7 +86,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C241 · Órbita · España: «a dónde va el dinero» (contratación pública PLACSP y subvencio · Fable L · ~~6 % · `research/LANZAR-FABLE-ESPANA.md`
 - C242 · Órbita · España: Congreso, partidos y altos cargos (votaciones, iniciativas, fin · Fable L · ~~5 % · `research/LANZAR-FABLE-ESPANA.md`
 - C243 · Órbita · España: empresas públicas (SEPI, Adif, Renfe, Correos…) y comparador de · Fable L · ~~5 % · `research/LANZAR-FABLE-ESPANA.md`
-- C244 · Órbita · España: número de empleados por ministerio y coste medio por persona (j · Sonnet M · ~~2 % · `Buscar el número de empleados públicos por ministerio/sección (Boletín Estadístico del Personal al Servicio de las AAPP, Registro Central de Personal, enero 2026 o último) y añadirlo a la tabla «Altos cargos y personal eventual por ministerio» de la Órbita: columnas empleados, coste medio por persona (M€ de cap. 1 / empleados) y % de altos cargos+eventuales sobre personal. Nivel P solo si se lee el boletín oficial; si no, [VERIFICAR]. Ver explorador/vistas.html (bloque con CM.secciones).`
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
