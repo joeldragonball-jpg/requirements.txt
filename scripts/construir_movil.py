@@ -228,19 +228,22 @@ def _entidad(q):
     return re.split(r"\s*[(,]", b)[0].strip()
 
 
-def voces(n=40, max_entidad=3):
+def voces(n=60, max_entidad=3):
     """Voces del móvil: máximo 3 por entidad (C157) para que una sola fuente no domine; el resto sigue en explorador/voces.json."""
     v = cargar("explorador/voces.json")
     lista = v["voces"] if isinstance(v, dict) else v
     cuenta, salida = {}, []
     # Las más recientes primero (si no, las voces nuevas, al final del archivo, no llegan nunca al límite de n)
     for x in sorted(lista, key=lambda y: y.get("cuando", ""), reverse=True):
-        k = _entidad(x["quien"])
-        cuenta[k] = cuenta.get(k, 0) + 1
-        if cuenta[k] > max_entidad:
-            continue
+        # el tope por entidad solo cuenta declaraciones; las tesis, datos y señales a vigilar de un vídeo comparten autor a propósito
+        if x.get("tipo", "declaracion") == "declaracion":
+            k = _entidad(x["quien"])
+            cuenta[k] = cuenta.get(k, 0) + 1
+            if cuenta[k] > max_entidad:
+                continue
         salida.append({"quien": x["quien"], "texto": x["texto"], "nivel": x["nivel"], "conf": x["conf"], "cuando": x.get("cuando", ""),
                        "fuente": x.get("fuente"), "video": x.get("video"), "plazo": x.get("plazo"), "nota": x.get("nota", ""),
+                       "tipo": x.get("tipo", "declaracion"), "vigilar": x.get("vigilar"), "revisar_en": x.get("revisar_en"),
                        "contra": "Contrapeso" in x.get("nota", "")})
     contra = [x for x in salida if x["contra"]]
     return (salida[:n - len(contra)] + contra) if len(salida) > n else salida
@@ -664,7 +667,7 @@ def main():
         "defensa": p.get("defensa", {}).get("paises", []), "liquidez": p.get("liquidez", {}), "inflacion": p.get("inflacion", {}).get("paises", []), "ormuz": p.get("ormuz", {}), "hitos_petroleo": cargar("explorador/hitos_petroleo.json"), "elecciones": cargar("explorador/elecciones.json"), "paises": paises(), "regulacion": regulacion(), "datos": datos_panel(),
         "valoracion": valoracion(),
         "bonos": [{"id": k, "valor": bonos[k]["plazos"].get("10A"), "fecha": bonos[k]["fecha"]} for k in ("USA", "JPN", "EUR", "ESP", "FRA", "GBR") if k in bonos],
-        "eventos": eventos(), "voces": voces(), "frescura_json": frescura_json(), "activos": activos(previo), "niveles": cargar("explorador/voces.json").get("niveles", {}), "verificados": verificados(),
+        "eventos": eventos(), "voces": voces(), "frescura_json": frescura_json(), "activos": activos(previo), "niveles": cargar("explorador/voces.json").get("niveles", {}), "tipos_voz": cargar("explorador/voces.json").get("tipos", {}), "verificados": verificados(),
         "informes": lista_md("informes", 6), "investigacion": lista_md("informes/research", 8), "videos": lista_md("informes/videos", 6), "centro": centro(),
     }
     fallos = []

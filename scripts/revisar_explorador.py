@@ -205,6 +205,10 @@ if RUTA_VOC.exists():
         if v.get("id") in vistos:
             aviso(dv, "id repetido")
         vistos.add(v.get("id")); ids_voz.add(v.get("id"))
+        if v.get("tipo", "declaracion") not in vz.get("tipos", {"declaracion": 0}):
+            aviso(dv, f"tipo desconocido: {v.get('tipo')}")
+        if v.get("tipo") == "vigilar" and not (v.get("vigilar") and v.get("revisar_en")):
+            aviso(dv, "una voz «a vigilar» necesita vigilar{confirma, refuta} y revisar_en")
         if v.get("nivel") not in niveles:
             aviso(dv, f"nivel desconocido: {v.get('nivel')}")
         if v.get("conf") not in confs:
@@ -242,6 +246,8 @@ if RUTA_VOC.exists():
     # misma persona o institución con la misma cifra en dos declaraciones distintas: aviso de posible duplicado
     por_texto = {}
     for v in vz["voces"]:
+        if v.get("tipo", "declaracion") != "declaracion":
+            continue  # tesis, datos y vigilar de un mismo vídeo comparten quien y fecha a propósito
         clave = (v["quien"].split(" (")[0], v["cuando"], tuple(sorted(v.get("capas", []))))
         por_texto.setdefault(clave, []).append(v["id"])
     for clave, lst in por_texto.items():
