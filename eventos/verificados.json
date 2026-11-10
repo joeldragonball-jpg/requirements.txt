@@ -332,10 +332,11 @@
   {
    "fecha": "2026-10-23",
    "contiene": "El futuro continuo del Brent cierra en $111,97",
-   "estado": "dudoso",
-   "con": "Sin cambio respecto a la verificación previa del repo (CNBC y Rio Times: Brent cerró el 23-oct a 116,72 $, +3,1 %; Investing.com da 111,70 con otra serie/contrato; el máximo >116 es coherente). No he podido leer el cierre oficial de ICE (propietario); la serie EIA es SPOT (Dated Brent, 128,30 el 23-oct según lo anotado) y no es comparable con el futuro. El 111,97 coincide con otra serie, no con el futuro de referencia: dato [S], no se debe usar como cierre. Además el BoE (fuente oficial) da un promedio del front-month de 108 $ en los 15 días hábiles hasta el 27-oct.",
+   "estado": "desmentido",
+   "con": "Sin cambio respecto a la verificación previa del repo (CNBC y Rio Times: Brent cerró el 23-oct a 116,72 $, +3,1 %; Investing.com da 111,70 con otra serie/contrato; el máximo >116 es coherente). No he podido leer el cierre oficial de ICE (propietario); la serie EIA es SPOT (Dated Brent, 128,30 el 23-oct según lo anotado) y no es comparable con el futuro. El 111,97 coincide con otra serie, no con el futuro de referencia: dato [S], no se debe usar como cierre. Además el BoE (fuente oficial) da un promedio del front-month de 108 $ en los 15 días hábiles hasta el 27-oct. || ACTUALIZADO 2026-11-10: cierre del futuro continuo Brent 23-oct = 116,72 $ (Yahoo BZ=F en explorador/precios_historico.json [S]; coincide con CNBC); 22-oct 113,17; 26-oct 115,81. Por tanto 111,97 NO fue el cierre (probable nivel intradía/otro contrato); el máximo >116 sí es coherente con el cierre.",
    "url": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/november-2026",
-   "verificado": "2026-11-07"
+   "verificado": "2026-11-07",
+   "actualizado": "2026-11-10"
   },
   {
    "fecha": "2026-11-04",
@@ -514,16 +515,194 @@
    "fecha": "2026-10-25",
    "contiene": "Chainlink CCIP en producción en SWIFT",
    "estado": "dudoso",
-   "con": "Segunda búsqueda: Genfinity/BlockEden (jul 2026/ene 2026) dicen producción desde nov-2025 y 17 bancos; Forkast (sep) dice que no hay calendario ni lista de bancos; Chainlink Q3 (21-oct) habla de CCIP 2.0 sin confirmar lanzamiento SWIFT pleno. Lectura prudente: pilotos/producción temprana en algunos bancos; «11.000 bancos» exagerado. Falta nota primaria de SWIFT/Chainlink.",
+   "con": "Segunda búsqueda: Genfinity/BlockEden (jul 2026/ene 2026) dicen producción desde nov-2025 y 17 bancos; Forkast (sep) dice que no hay calendario ni lista de bancos; Chainlink Q3 (21-oct) habla de CCIP 2.0 sin confirmar lanzamiento SWIFT pleno. Lectura prudente: pilotos/producción temprana en algunos bancos; «11.000 bancos» exagerado. Falta nota primaria de SWIFT/Chainlink. || ACTUALIZADO 2026-11-10 (3.ª búsqueda): sigue sin nota primaria. Genfinity (9-jul-2026): ledger blockchain de Swift «live» con 17 bancos en piloto y CCIP como capa de interoperabilidad (~70 redes); Chainlink recap de Sibos 2026: «conecta bancos al ledger de Swift» sin decir «producción plena»; un blog fecha el lanzamiento en corredores concretos para 2027 y otros dicen «producción» desde nov-2025 (promocionales). Lectura: piloto ampliado, no producción general; «11.000 bancos» sin respaldo. [VERIFICAR] en swift.com/chain.link.",
    "url": "https://blockworks.com/news/swift-tests-chainlink-ccip",
-   "verificado": "2026-11-10"
+   "verificado": "2026-11-10",
+   "actualizado": "2026-11-10"
   },
   {
    "fecha": "2026-10-25",
    "contiene": "Precio y cierre de cada adquisición de Ripple",
    "estado": "dudoso",
-   "con": "Standard Custody: cierre el 11-jun-2026 (Ripple, Cointelegraph); anunciada feb-2024; precio no publicado. Palisade (3-nov-2025): términos no divulgados (The Block). Solvexia: nada hallado en esta búsqueda. Sigue sin cifra de precio.",
+   "con": "Standard Custody: cierre el 11-jun-2026 (Ripple, Cointelegraph); anunciada feb-2024; precio no publicado. Palisade (3-nov-2025): términos no divulgados (The Block). Solvexia: nada hallado en esta búsqueda. Sigue sin cifra de precio. || ACTUALIZADO 2026-11-10: Solvexia (GTreasury, ene-2026) y Palisade: términos no divulgados en varias fuentes (CoinMarketCap, IDTechWire, Solvexia/GTreasury, PYMNTS); Standard Custody sin términos hallados. Cifras publicadas de otras compras (prensa, [S]): GTreasury ≈1.000 M$ (oct-2025), Hidden Road 1.250 M$, Rail 200 M$. Nada nuevo sobre precio de las tres [VERIFICAR] consultadas.",
    "url": "https://ripple.com/insights/paving-a-compliant-path-forward-ripple-closes-standard-custody-acquisition-and-appoints-jack-mcdonald-as-senior-vice-president-of-stablecoins/",
+   "verificado": "2026-11-10",
+   "actualizado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-08",
+   "contiene": "Irak pacta con EE. UU. poder exportar crudo por Ormuz",
+   "estado": "dudoso",
+   "con": "MATIZADA. Hecho: el ministro de Exteriores iraquí, Fuad Hussein, dijo a Al Jazeera (8-nov, vía Reuters) que Bagdad tiene «entendimientos» con EE. UU. para exportar crudo por Ormuz por un carril cercano a Omán. Es una declaración de una parte, NO un pacto firmado ni un texto publicado; no hallado comunicado de Washington. Ya en abril el Ministerio de Petróleo iraquí habló de «entendimientos» parecidos con EE. UU. e Irán. La entrevista citó además una petición del Tesoro de EE. UU. de cerrar casi todos los pasos fronterizos con Irán. Nivel [S] (Reuters reproducido por agencias); falta fuente primaria (Gobierno iraquí/Departamento de Estado).",
+   "url": "https://gcaptain.com/iraq-has-reached-understandings-with-us-to-allow-oil-exports-through-hormuz/",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-09",
+   "contiene": "El Brent cae más de un 3 % y baja de 95 $",
+   "estado": "confirmado",
+   "con": "CONFIRMADA en dirección y magnitud [S]: cierre de futuros Brent (Yahoo BZ=F, en explorador/precios_historico.json) 6-nov 98,32 $ → 9-nov 92,57 $ (−5,8 %), 10-nov 90,96 $. Por tanto «baja de 95 $» y «más de 3 %» se cumplen en cierre. Los cierres de 2-nov (104,77) y 3-nov (103,60) coinciden con lo publicado por la prensa. Ojo: son futuros (agregador, [S]), no el spot Dated Brent de la EIA (próxima publicación 12-nov); la web no halla una crónica fechada el 9-nov.",
+   "url": "https://finance.yahoo.com/quote/BZ=F/history/",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-09",
+   "contiene": "El Brent cae casi un 5 % hasta 93,72 $",
+   "estado": "dudoso",
+   "con": "MATIZADA. El 93,72 $ y el «casi 5 %» son un nivel INTRADÍA del lunes (otra fuente anotada da 92,97 $, −5,4 %); el cierre de futuros fue 92,57 $ (−5,8 % vs 98,32 del 6-nov, Yahoo BZ=F [S]). La caída es real; la cifra concreta depende de la hora y del contrato. No usar 93,72 como cierre. Sin crónica de agencia fechada el 9-nov localizada por búsqueda web.",
+   "url": "https://finance.yahoo.com/quote/BZ=F/history/",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-10-12",
+   "contiene": "Mayor lote de listados de sanciones contra Rusia hasta la fecha",
+   "estado": "confirmado",
+   "con": "CONFIRMADA [P]: el Consejo/SEAE de la UE adoptó el 12-oct-2026 la mayor tanda de listados hasta la fecha: 1.569 (826 empresas y 743 directivos del sector militar-industrial; total del régimen ≈4.600), Decisión PESC 2026/2279 y Reglamento de ejecución (UE) 2026/2281. Más de la mitad ligada a la cadena de misiles balísticos (Kallas). No es el 20.º paquete (ése, 23-abr-2026, según el texto del repo; no re-verificado aquí). Aparte, 15-oct: 3 personas y 9 entidades por elusión. Texto oficial leído solo por resumen de búsqueda del SEAE.",
+   "url": "https://www.eeas.europa.eu/delegations/ukraine/russias-war-aggression-against-ukraine-eu-agrees-largest-ever-package-listings-targeting-almost-1600_en",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-10-13",
+   "contiene": "Inflación de septiembre: 1,9 % mensual (agosto 1,7 %)",
+   "estado": "confirmado",
+   "con": "CONFIRMADA [S] (cifras del INDEC recogidas por Chequeado, Canal 26, El Economista, dolarhoy): IPC septiembre 2026 +1,9 % m/m (agosto 1,7 %), 23,6 % acumulada, 33,4 % interanual (agosto 33,5 %); núcleo 1,7 %; REM esperaba 1,9 %. Mayorista +3,2 % m/m y 29,2 % i.a. (otro índice). INDEC no leído directamente. La cita del FMI (29-oct) del mismo texto no se ha re-verificado.",
+   "url": "https://chequeado.com/el-explicador/la-inflacion-de-septiembre-fue-del-19-y-acumula-236-en-lo-que-va-del-ano/",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-10-23",
+   "contiene": "Mantiene la calificación de Francia en Aa3",
+   "estado": "confirmado",
+   "con": "CONFIRMADA [S]: Moody's mantiene Francia en Aa3 con perspectiva negativa en revisión periódica (prensa fecha 23-oct o viernes 24-oct; la perspectiva negativa viene de oct-2025, no es cambio nuevo). Motivo: fragmentación política que dificulta el trabajo legislativo; supuesto de presupuesto 2027 que reduzca el déficit. Fitch y S&P en A+ estable (S&P próxima revisión 27-nov-2026). Nota de Moody's no leída (sin primaria).",
+   "url": "https://www.democrata.es/en/economy/moody-s-confirms-france-s-aa3-rating-and-maintains-the-negative-outlook/",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-10-30",
+   "contiene": "IPC adelantado de España en octubre: 4,9 %",
+   "estado": "confirmado",
+   "con": "CONFIRMADA [P]: indicador adelantado del INE (30-oct-2026): IPC 4,9 % anual (igual que septiembre), subyacente 3,1 %, +0,6 % mensual; definitivo el 13-nov. El IPCA 4,9 % no se re-leyó. Leído por resumen de búsqueda del PDF del INE; pendiente el definitivo.",
+   "url": "https://www.ine.es/dyngs/Prensa/adIPC1026.pdf",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-04",
+   "contiene": "Proyección de mayoría demócrata en la Cámara",
+   "estado": "dudoso",
+   "con": "MATIZADA [S]: varias cadenas (AP, NBC) dan a los demócratas el Congreso entero tras el 3-nov; las crónicas de la noche aún dejaban la Cámara sin llamar. Sin certificación; recuento y recursos pendientes (demanda de la Administración Trump contra certificar el Senado si Sullivan pierde en Alaska). Cifra del 38 % de aprobación no re-verificada. Fuente oficial de escrutinio no leída.",
+   "url": "https://news.wttw.com/node/55366",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-04",
+   "contiene": "IPCA adelantado de la zona euro en octubre",
+   "estado": "confirmado",
+   "con": "CONFIRMADA [S] (prensa que cita el flash de Eurostat; nota oficial de Eurostat no leída directamente): IPCA octubre 4,0 % (septiembre 3,8 %), energía 20,8 %, subyacente 2,5 %; Francia 3,8 %, Italia 5,6 %, Alemania 2,8 %. Preliminar: Eurostat publica el definitivo el 18-nov. «BCE en 2,50 %» no re-verificado aquí.",
+   "url": "https://investinglive.com/news/eurozone-inflation-hits-4-for-first-time-since-2023-piling-pressure-on-ecb/",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-04",
+   "contiene": "Según AP vía medios, los demócratas ganan la Cámara y el Senado",
+   "estado": "dudoso",
+   "con": "MATIZADA [S]: Senado 54–44 con dos escaños sin declarar (Alaska, Mississippi) según el seguimiento de NBC; Cámara llamada por AP en las versiones posteriores («capturan ambas cámaras»). Hora exacta de la llamada de la Cámara sin confirmar. Proyección, no resultado certificado. Resultado final de Alaska/Mississippi [VERIFICAR].",
+   "url": "https://www.boston25news.com/news/trending/election-2026-democrats-capture-both-houses-congress/5ILOWTVABVDPZFYP7VBBCX4EWE/",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-04",
+   "contiene": "Paro registrado de octubre: 2.422.633",
+   "estado": "confirmado",
+   "con": "CONFIRMADA [P/S]: Seguridad Social/SEPE: paro registrado +43.128 en octubre hasta 2.422.633 (mínimo en un octubre desde 2007; −21.133 i.a., −0,86 %). Afiliados medios 22.624.165 (+186.612, récord); aumento simultáneo de afiliación y paro atribuido en buena parte a la regularización extraordinaria de extranjeros (≈500.000 afiliados vinculados).",
+   "url": "https://revista.seg-social.es/-/el-paro-registrado-aumenta-en-43.128-personas-en-octubre-y-se-situa-en-2.422.633-la-cifra-mas-baja-en-este-mes-desde-2007",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-05",
+   "contiene": "Subasta de Obligaciones a ~4 años y 9 meses",
+   "estado": "dudoso",
+   "con": "PARCIAL [S]: Finect y Alicante Plaza recogen que el Tesoro adjudicó 5.892 M€ el 5-nov (obligación de vida residual 4a 9m: 1.343,9 M€ al 3,345 %, frente a 2,949 % antes; 10 años 3,807 % vs 4,181 %; 15 años 4,101 %). Total y tipos coherentes entre dos medios, pero no leído el resultado oficial del Banco de España/Tesoro. Pendiente primaria.",
+   "url": "https://alicanteplaza.es/alicanteplaza/mercados/se-mantiene-el-apetito-comprador-por-la-deuda-espanola-el-tesoro-coloca-otros-5892-millones",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-06",
+   "contiene": "Cierre de candidaturas a la presidencia del BCE con solo dos",
+   "estado": "dudoso",
+   "con": "PARCIAL [S]: Euronews/Forbes/Milano Finanza (7-nov): plazo hasta el 6-nov y examen en el Eurogrupo del 9-nov; Hernández de Cos y Knot descritos como únicos candidatos. Resultado del 9-nov no localizado (ya existe entrada «El Eurogrupo examina a Hernández de Cos y Knot…» confirmada). Sin comunicado oficial del Eurogrupo leído.",
+   "url": "https://es.euronews.com/2026/11/03/la-eurozona-inicia-la-carrera-para-suceder-a-lagarde-al-frente-del-bce",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-08",
+   "contiene": "El ministro de Exteriores, Fuad Hussein, dice a Al Jazeera",
+   "estado": "dudoso",
+   "con": "MATIZADA, misma verificación que «Irak pacta con EE. UU.»: Reuters 8-nov recoge la entrevista; «entendimientos» (no acuerdo formal), carril cercano a Omán; sin confirmación de EE. UU. Nivel [S].",
+   "url": "https://gcaptain.com/iraq-has-reached-understandings-with-us-to-allow-oil-exports-through-hormuz/",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-08",
+   "contiene": "Cerrará cuentas en Francia, España, Italia y Polonia el 31-dic-2026",
+   "estado": "confirmado",
+   "con": "CONFIRMADA [S]: un portavoz de Binance lo confirmó a CoinDesk (7-nov; otra fuente dice 8-nov): cuentas afectadas cerradas con efecto 31-dic-2026 en Francia, España, Italia y Polonia; desde el 29-nov cuota mensual de 0,025 % o 10 USDC (lo que sea mayor); depósitos bloqueados, retiradas abiertas. Contexto: falta de licencia MiCA. Aviso original de Binance/CoinDesk no leído (Cointelegraph y crypto.news lo recogen).",
+   "url": "https://cointelegraph.com/news/binance-france-emails-announce-closure-of-its-users-accounts-on-dec-31",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-09",
+   "contiene": "Brent ≈ 92,97 $ (−5,4 %) y WTI ≈ 87,15 $ (−4,1 %) intradía",
+   "estado": "confirmado",
+   "con": "CONFIRMADA en lo esencial [S]: cierres de futuros 9-nov (Yahoo): Brent 92,57 $ (−5,8 % vs 98,32 del viernes 6-nov, que coincide) y WTI 86,85 $ (−4,4 % vs 90,83). Los 92,97/87,15 son niveles intradía, coherentes. «−16 % en la semana al 6-nov / mayor caída desde 2020» no re-verificado (prensa: −11 % a −15 % según el momento) [VERIFICAR] hasta el spot de la EIA (12-nov).",
+   "url": "https://finance.yahoo.com/quote/BZ=F/history/",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-09",
+   "contiene": "Petroleros incendiados cerca de Ormuz (7-9 nov)",
+   "estado": "dudoso",
+   "con": "SIN VERIFICAR para 7-9 nov: la búsqueda web solo halla incidentes de UKMTO cerca de Khasab hasta el 29-oct (dos artefactos explosivos en el casco, fuego extinguido, tripulación a salvo) y otros previos; nada fechado en noviembre fuera de lo ya registrado por W10. Causa «mina» = versión del IRGC [S]. Se mantiene [VERIFICAR] hasta leer los avisos de UKMTO.",
+   "url": "https://gulfnews.com/world/mena/tanker-struck-by-mystery-projectile-in-strait-of-hormuz-fire-out-crew-safe-as-attacks-continue-1.500653614",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-09",
+   "contiene": "Tregua comercial prorrogada hasta el 10-ene-2027",
+   "estado": "confirmado",
+   "con": "CONFIRMADA con matiz de fecha [S]: la prórroga de la tregua de Busan hasta el 10-ene-2027 (2 meses; vencía el 10-nov) la anunció Bessent el 23-24-sep-2026 tras reunirse con He Lifeng; China mantiene suspendidos los controles de tierras raras y compras de soja. La noticia del 9-nov es una repetición, no un acuerdo nuevo. El detalle «arancel chino del 10 % / 24 % adicional» no se halló: [VERIFICAR] contra USTR/MOFCOM.",
+   "url": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/09/23/bessent-announces-two-month-extension-of-us-china-trade-truce",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-10",
+   "contiene": "Conversaciones trilaterales en Abu Dabi (10-11 nov)",
+   "estado": "dudoso",
+   "con": "SIN VERIFICAR: la búsqueda web solo halla la primera ronda de Abu Dabi (23-24-ene-2026); nada fechado en nov-2026 que confirme las conversaciones del 10-11 nov ni el envío de equipos de la UE/E3. Se queda [VERIFICAR] hasta que haya nota oficial (UAE MOFA, Kremlin/Zelenski) o de agencia.",
+   "url": "https://www.khaleejtimes.com/uae/trilateral-talks-ukraine-war-russia-us-abu-dhabi",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-10-25",
+   "contiene": "Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)",
+   "estado": "confirmado",
+   "con": "CONFIRMADA [P] (nota de research/ACCESOS-CHROME.md, lectura en Chrome el 31-oct del texto consolidado del BOE, Ley 35/2006 art. 66): tramos de la escala ESTATAL del ahorro 9,5 % hasta 6.000 € · 10,5 % hasta 50.000 € · 11,5 % hasta 200.000 € · 13,5 % hasta 300.000 € · 15 % en adelante; con la parte autonómica da la escala combinada 19-30 % que usa el repo. Texto actualizado a 07/10/2026 según el BOE. Aquí no se re-leyó; se recoge lo ya verificado.",
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-10-25",
+   "contiene": "Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE",
+   "estado": "dudoso",
+   "con": "SIN CONFIRMAR publicación: la búsqueda web solo halla PROYECTOS (Hacienda: proyecto de orden ministerial DAC8 de mar-2026 con modelos 042, 172, 175, 721 y 289; proyecto de real decreto de diligencia debida, audiencia pública). Ningún resultado muestra aprobación ni publicación en el BOE. Contradicción: un despacho dice que el 172 se deroga por el 175 y el borrador aún lo mantiene; mirar texto final. El 175 sustituye al 173 desde 2026 según el borrador de la AEAT. Antes (31-oct) búsqueda en el BOE sin RD/Orden con «criptoactivos». [VERIFICAR] en BOE.",
+   "url": "https://www.hacienda.gob.es/sgt/normativadoctrina/proyectos/09032026-main-proyecto-om-dac8.pdf",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-10-25",
+   "contiene": "Consulta DGT V0648-24 leída en petete",
+   "estado": "dudoso",
+   "con": "PARCIAL [S]: la consulta existe, fecha 11-abr-2024 (AEAT vía Primera Lectura; análisis de Cuatrecasas 5-mar-2025: DeFi, no se pronunció sobre comisiones de bridges por falta de datos). Doctrina posterior (V0612-26, V1543-25) la cita para: criptomonedas = bienes inmateriales, FIFO en ventas parciales, rendimientos por activos bloqueados (staking). Texto literal no leído (petete devolvía 502): atribuciones a «staking/airdrop/LP de AMM» siguen [VERIFICAR] hasta leerla.",
+   "url": "https://www.cuatrecasas.com/es/spain/fiscalidad/art/defi-dgt-analiza-diversas-cuestiones",
    "verificado": "2026-11-10"
   }
  ],
