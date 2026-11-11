@@ -323,7 +323,7 @@ def tab_apuntes(docs):
             st.markdown(md(resumen))
     st.markdown("#### 📖 Explicación")
     for i, (titulo, cuerpo) in enumerate(subsecciones(seccion(d, "explicaci"))):
-        with st.expander(titulo, expanded=(i == 0)):
+        with st.expander(titulo, expanded=True):
             st.markdown(md(cuerpo))
     puntos = seccion(d, "puntos clave")
     if puntos:
@@ -413,7 +413,7 @@ def tab_dossiers():
         pdfs = []
     if pdfs:
         base = "https://github.com/joeldragonball-jpg/requirements.txt/raw/main/informes/pdf/"
-        with st.expander("📄 PDFs para imprimir", expanded=False):
+        with st.expander("📄 PDFs para imprimir", expanded=True):
             st.markdown("\n".join(f"- [{p.stem.replace('-', ' ')}]({base}{p.name})" for p in pdfs))
             st.caption("Se abren en el visor del navegador; desde ahí puedes guardarlos o imprimirlos.")
 
@@ -443,7 +443,7 @@ def tab_dossiers():
     st.markdown(_md_con_codigo(re.sub(r"(?m)^# .*\n?", "", inicio)))
     for i, sec in enumerate(secciones):
         cab, _, cuerpo = sec.partition("\n")
-        with st.expander(cab.replace("## ", "", 1).strip(), expanded=(i == 0)):
+        with st.expander(cab.replace("## ", "", 1).strip(), expanded=True):
             st.markdown(_md_con_codigo(cuerpo))
 
 
@@ -470,7 +470,7 @@ def tab_datos(docs):
             if not lineas:
                 continue
             cuerpo = "\n".join(lineas)
-        with st.expander(f"{titulo} ({len([l for l in cuerpo.splitlines() if l.strip()])})", expanded=bool(filtro)):
+        with st.expander(f"{titulo} ({len([l for l in cuerpo.splitlines() if l.strip()])})", expanded=True):
             st.markdown(md(cuerpo))
 
 
@@ -484,7 +484,7 @@ def tab_cartera(docs):
             st.markdown(md(cuerpo))
     st.markdown("### 🏛️ Fiscalidad en España")
     for titulo, cuerpo in grupos_negrita(seccion(d, "fiscalidad")):
-        with st.expander(titulo, expanded=(titulo == "Cripto")):
+        with st.expander(titulo, expanded=True):
             st.markdown(md(cuerpo))
 
 
@@ -503,7 +503,7 @@ def tab_opiniones(docs, verif):
                "y abajo las contradicciones y datos pendientes de comprobar.")
     st.markdown("### 💭 Opiniones y predicciones")
     for titulo, cuerpo in grupos_negrita(seccion(d, "opiniones")):
-        with st.expander(titulo):
+        with st.expander(titulo, expanded=True):
             st.markdown(md(cuerpo))
 
     st.markdown("### 🔍 Verificación automática")
@@ -520,7 +520,7 @@ def tab_opiniones(docs, verif):
             items = [v for v in verif.values() if v.get("estado") == estado]
             if not items:
                 continue
-            with st.expander(f"{icono} {nombre} ({len(items)})", expanded=(estado == "corregido")):
+            with st.expander(f"{icono} {nombre} ({len(items)})", expanded=True):
                 for v in items:
                     st.markdown(md(f"**{v['texto']}**"))
                     st.markdown(f":{color}[{icono} {md(v.get('explicacion', ''))}]")
@@ -534,7 +534,7 @@ def tab_opiniones(docs, verif):
 
     st.markdown("### ⚠️ Dudas y datos a verificar (tal como están en tus apuntes)")
     for titulo, cuerpo in grupos_negrita(seccion(d, "dudas")):
-        with st.expander(titulo):
+        with st.expander(titulo, expanded=True):
             st.markdown(md(cuerpo))
 
 
@@ -570,7 +570,7 @@ def tab_actualidad(docs):
     if not semanas:
         st.caption("El primero se creará el próximo domingo con las noticias de la semana.")
     for d in semanas:
-        with st.expander(d["titulo"]):
+        with st.expander(d["titulo"], expanded=True):
             st.markdown(md(seccion(d, "resumen")))
             st.caption("El documento completo está en la pestaña 📚 Apuntes.")
 

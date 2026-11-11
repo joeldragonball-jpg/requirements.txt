@@ -2136,5 +2136,8 @@ function pEspana(){
   c.append(nav,panel);s.append(c);
 }
 let nc0=ncols(),tRz;addEventListener('resize',()=>{clearTimeout(tRz);tRz=setTimeout(()=>{if(listo&&ncols()!==nc0){nc0=ncols();pintarTodo()}},200)});
+/* desplegables con datos: siempre abiertos al pintar; los de explicación («Cómo se lee», «En qué se basa») siguen plegados */
+(function(){const ab=n=>{if(n.nodeType!==1)return;if(n.matches('details:not(.mas)')&&!n.dataset.auto){n.open=true;n.dataset.auto='1'}n.querySelectorAll('details:not(.mas):not([data-auto])').forEach(d=>{d.open=true;d.dataset.auto='1'})};
+new MutationObserver(m=>m.forEach(x=>x.addedNodes.forEach(ab))).observe(document.body,{childList:true,subtree:true});ab(document.body)})();
 cargar();
 </script></body></html>

@@ -1165,7 +1165,7 @@ if not tx.empty:
     prices = {tok: s for tok, (s, _) in hist.items()}
     daily, per = build_daily(tx, prices, current)
 if avisos:
-    with st.expander(f"⚠️ {len(avisos)} aviso(s) sobre tus datos", expanded=False):
+    with st.expander(f"⚠️ {len(avisos)} aviso(s) sobre tus datos", expanded=True):
         for a in avisos:
             st.markdown(f"- {a}")
 
@@ -1879,7 +1879,7 @@ if 8 in _SEL:
             n4.metric("Sin valorar", int((nt["valoracion"] == 0).sum()),
                       help="Valóralas en Telegram con los botones: así la IA aprende qué te interesa.")
 
-            with st.expander("📊 Qué fuentes y temas te sirven (según tus 👍/👎)"):
+            with st.expander("📊 Qué fuentes y temas te sirven (según tus 👍/👎)", expanded=True):
                 def utilidad(col):
                     g = nt.groupby(col)["valoracion"].agg(Enviadas="count", **{"👍": lambda v: int((v == 1).sum()),
                                                                               "👎": lambda v: int((v == -1).sum())}).reset_index()
@@ -1924,7 +1924,7 @@ if 8 in _SEL:
             def grupo_noticias(nombre, g):
                 utiles = int((g["valoracion"] == 1).sum())
                 titulo = f"{nombre} · {len(g)}" + (f" · 👍 {utiles}" if utiles else "")
-                with st.expander(titulo, expanded=False):
+                with st.expander(titulo, expanded=True):
                     for r in g.head(30).itertuples():
                         tarjeta_noticia(r)
 

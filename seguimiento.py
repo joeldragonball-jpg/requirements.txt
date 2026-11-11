@@ -107,7 +107,7 @@ def mostrar():
         if p["abiertas"]:
             st.dataframe(pd.DataFrame([{"#": x["n"], "Quién": x["quien"][:40], "Predicción": x["que"], "Límite": x["limite"] or "sin fecha", "Cuándo": _cuando(x["dias"])}
                                        for x in p["abiertas"][:15]]), hide_index=True, use_container_width=True)
-            with st.expander(f"Ver las {len(p['abiertas'])} sin resolver y las {len(p['resueltas'])} resueltas"):
+            with st.expander(f"Ver las {len(p['abiertas'])} sin resolver y las {len(p['resueltas'])} resueltas", expanded=True):
                 st.dataframe(pd.DataFrame([{"#": x["n"], "Quién": x["quien"], "Predicción": x["que"], "Límite": x["limite"] or "—", "Resultado": x["resultado"]}
                                            for x in p["abiertas"] + p["resueltas"]]), hide_index=True, use_container_width=True)
         a = d["auditorias"]
@@ -156,7 +156,7 @@ def mostrar():
         if cand:
             f = max(cand, key=lambda x: x.name)
             st.caption(f"Archivo: {f.name}")
-            with st.expander("Leer", expanded=False):
+            with st.expander("Leer", expanded=True):
                 st.markdown(f.read_text(encoding="utf-8"))
         else:
             st.info("No hay informes diarios en informes/.")
