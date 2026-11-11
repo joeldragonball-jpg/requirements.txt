@@ -331,8 +331,12 @@ def _html(conceptos, publico=False):
 def mostrar(conceptos=None):
     # El mapa ocupa todo el ancho de la página (sin los márgenes de Streamlit)
     # Fondo de toda la página igual que el del mapa (el mapa es transparente), para que se vea como una sola pantalla
-    st.markdown("<style>.block-container{max-width:100% !important;padding-left:1.2rem !important;padding-right:1.2rem !important;"
-                "padding-top:0 !important;padding-bottom:.5rem !important}"
+    st.markdown("<style>.block-container{max-width:100% !important;padding-left:0 !important;padding-right:0 !important;"
+                "padding-top:0 !important;padding-bottom:0 !important}"
+                # el marco del mapa llena toda la altura de la ventana (sin franja inferior)
+                "iframe[title*='components.v1.html']{height:calc(100vh - 2px) !important;display:block}"
+                # en el Explorador no hay barra inferior: Seguimiento y Privado se abren desde el menú «Apartados»
+                ".stApp:has(.modo-barra) .st-key-seccion{display:none !important}"
                 "html,body,.stApp,[data-testid='stAppViewContainer'],[data-testid='stMain']{background:"
                 "radial-gradient(ellipse 55% 38% at 14% 12%,rgba(99,102,241,.22),transparent 70%),"
                 "radial-gradient(ellipse 45% 34% at 92% 30%,rgba(190,70,130,.15),transparent 70%),"
@@ -346,8 +350,9 @@ def mostrar(conceptos=None):
                 "[data-testid='stPopoverBody'] .st-key-grupo_menu_cerebro label[data-testid='stRadioOption']{min-height:0 !important;height:auto !important;padding:4px 10px !important;flex-direction:row !important;text-align:left !important}"
                 "[data-testid='stPopoverBody'] .st-key-grupo_menu_cerebro label p{font-size:.9rem !important}"
                 "[data-testid='stPopoverBody'] .st-key-grupo_menu_cerebro label p::first-line{font-size:.9rem !important}"
-                "*::-webkit-scrollbar{width:4px;height:4px}*::-webkit-scrollbar-track{background:rgba(148,163,184,.08)}"
-                "*::-webkit-scrollbar-thumb{background:rgba(226,232,240,.45);border-radius:2px}*::-webkit-scrollbar-thumb:hover{background:rgba(241,213,138,.85)}</style>", unsafe_allow_html=True)
+                "*{scrollbar-width:thin;scrollbar-color:rgba(226,232,240,.22) transparent}"
+                "*::-webkit-scrollbar{width:3px;height:3px}*::-webkit-scrollbar-track{background:transparent}"
+                "*::-webkit-scrollbar-thumb{background:rgba(226,232,240,.22);border-radius:2px}*::-webkit-scrollbar-thumb:hover{background:rgba(241,213,138,.7)}</style>", unsafe_allow_html=True)
     try:
         html = _html(conceptos)
     except Exception as e:

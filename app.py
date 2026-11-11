@@ -518,8 +518,9 @@ try:
     _HAY_HOJA = bool(st.secrets.get("SHEET_ID"))
 except Exception:
     _HAY_HOJA = False
+st.session_state["_hay_privado"] = bool(_LOCAL)      # lo lee cerebro.py para ofrecer «Privado» en el menú Apartados
 _SECCIONES = []
-if _HAY_HOJA or not _LOCAL:          # en tu PC sin la hoja de la cartera (sin el secreto SHEET_ID) no hay cartera que mostrar
+if _HAY_HOJA or not _LOCAL:         # en tu PC sin la hoja de la cartera (sin el secreto SHEET_ID) no hay cartera que mostrar
     _SECCIONES.append("📊 Cartera")
 if _LOCAL or _CEREBRO_PUBLICO:
     _SECCIONES += ["🧠 Cerebro", "📌 Seguimiento"]

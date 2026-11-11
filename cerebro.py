@@ -271,6 +271,13 @@ def mostrar():
         with st.popover("☰ Apartados"):
             elegido = st.radio("Apartado", range(len(apartados)), label_visibility="collapsed",
                                key="grupo_menu_cerebro", format_func=lambda k: apartados[k][0])
+            st.divider()   # Seguimiento y Privado ya no van en la barra de abajo: se abren desde aquí
+            if st.button("📌 Seguimiento", key="ir_seguimiento", use_container_width=True):
+                st.session_state["seccion"] = "📌 Seguimiento"
+                st.rerun()
+            if st.session_state.get("_hay_privado") and st.button("🔒 Privado", key="ir_privado", use_container_width=True):
+                st.session_state["seccion"] = "🔒 Privado"
+                st.rerun()
     else:
         elegido = st.radio("Apartado", range(len(apartados)), horizontal=True, label_visibility="collapsed",
                            key="grupo_menu_cerebro", format_func=lambda k: apartados[k][0].replace(" ", "  \n", 1))
