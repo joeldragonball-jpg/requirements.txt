@@ -334,7 +334,10 @@ def mostrar(conceptos=None):
     st.markdown("<style>.block-container{max-width:100% !important;padding-left:0 !important;padding-right:0 !important;"
                 "padding-top:0 !important;padding-bottom:0 !important}"
                 # el marco del mapa llena toda la altura de la ventana (sin franja inferior)
-                "iframe[title*='components.v1.html']{height:calc(100vh - 2px) !important;display:block}"
+                "[data-testid='stElementContainer'][height='860px']{position:fixed !important;inset:0 !important;height:auto !important;"
+                "min-height:0 !important;width:100% !important}"
+                "[data-testid='stElementContainer'][height='860px'] iframe{height:100% !important;display:block}"
+                "[data-testid='stMainBlockContainer'] [data-testid='stVerticalBlock']{gap:0 !important}"
                 # en el Explorador no hay barra inferior: Seguimiento y Privado se abren desde el menú «Apartados»
                 ".stApp:has(.modo-barra) .st-key-seccion{display:none !important}"
                 "html,body,.stApp,[data-testid='stAppViewContainer'],[data-testid='stMain']{background:"
