@@ -1,6 +1,6 @@
 {
  "version": 1,
- "actualizado": "2026-11-10",
+ "actualizado": "2026-11-11",
  "nota": "Información general sobre cinco activos; no es recomendación de compra ni venta. Cada dato lleva fecha y nivel (P = fuente primaria leída; S = agregador o prensa). Los precios son de agregadores (CoinGecko, Yahoo) del 9 o 10-nov-2026; los datos de ETF son de fechas anteriores. Sin predicciones: lo que sea opinión o previsión va como [ESPECULACIÓN] y lo no contrastado como [VERIFICAR].",
  "unidades": "Cada hecho lleva su unidad y fecha. Capitalización y AUM en millones de USD; precios en la moneda indicada.",
  "fichas": [
@@ -89,6 +89,38 @@
      "fecha": "2025-12-12",
      "nivel": "P",
      "fuente": "OCC, según regulacion.json (custodia EE. UU.); la final sigue pendiente"
+    },
+    {
+     "dato": "Staking de protocolo",
+     "valor": "No existe",
+     "unidad": "",
+     "fecha": "2026-11-11",
+     "nivel": "S",
+     "fuente": "Informe C42 (11-nov-2026): consistente con la documentación de la red, sin documento que lo diga expresamente [VERIFICAR]; todo «rendimiento» sobre XRP viene de prestar, dar liquidez o productos de terceros"
+    },
+    {
+     "dato": "AMM nativo (XLS-30): activo desde",
+     "valor": "22-mar-2024",
+     "unidad": "",
+     "fecha": "2026-11-11",
+     "nivel": "P",
+     "fuente": "xrpl.org, documentación de AMM (leída 11-nov-2026); comisión fijada por votación de LP entre 0 % y 1 %; «riesgo de divisa» (pérdida impermanente); sin APY oficial"
+    },
+    {
+     "dato": "Lending nativo (XLS-66) y vaults (XLS-65): apoyo de validadores",
+     "valor": "37,14 % / 45,71 % (hacen falta 80 % durante 14 días)",
+     "unidad": "",
+     "fecha": "2026-09-16",
+     "nivel": "P",
+     "fuente": "xrpl.org/resources/known-amendments, captura del 16-sep-2026; estado actual sin comprobar [VERIFICAR]"
+    },
+    {
+     "dato": "TVL de DeFi en el XRPL",
+     "valor": "≈ 32,9",
+     "unidad": "millones USD",
+     "fecha": "2026-11-11",
+     "nivel": "P",
+     "fuente": "DefiLlama (api.llama.fi/v2/chains); para comparar, Ethereum ≈ 41.359 M y Solana ≈ 5.130 M"
     }
    ],
    "alcista": [
@@ -112,6 +144,7 @@
    ],
    "verificar": [
     "Cifra oficial de acciones y XRP en custodia de cada ETF (10-Q en EDGAR).",
+    "Estado actual de XLS-66/XLS-65 en xrpl.org (la captura es del 16-sep-2026).",
     "Origen de la cifra de 2.178 M USD de R27: sin localizar.",
     "13F del 3T-2026 (plazo 14-nov-2026)."
    ],
@@ -201,6 +234,30 @@
      "fecha": "2026-10",
      "nivel": "S",
      "fuente": "Informes del repo (dossier 9-oct); sin comunicado oficial leído [VERIFICAR]"
+    },
+    {
+     "dato": "Staking de protocolo",
+     "valor": "No existe",
+     "unidad": "",
+     "fecha": "2026-11-11",
+     "nivel": "S",
+     "fuente": "Informe C42 (11-nov-2026): consenso FBA sin bloqueo de tokens; sin documento primario que lo diga expresamente [VERIFICAR]"
+    },
+    {
+     "dato": "TVL de DeFi en Stellar",
+     "valor": "≈ 212,6",
+     "unidad": "millones USD",
+     "fecha": "2026-11-11",
+     "nivel": "P",
+     "fuente": "DefiLlama (api.llama.fi/v2/chains), leída 11-nov-2026; la cifra de 270 M (22-ago) frente a 98 M (27-ago) de prensa es incoherente con la serie: no usar"
+    },
+    {
+     "dato": "Blend Pools V2 (préstamos en Stellar): TVL",
+     "valor": "≈ 117,2",
+     "unidad": "millones USD",
+     "fecha": "2026-11-11",
+     "nivel": "P",
+     "fuente": "DefiLlama (api.llama.fi/protocol/blend-pools-v2); el TVL cuenta lo depositado, no lo prestado; baja ≈ 20 % en 30 días (web de DefiLlama, 8-nov) [S]; incidentes en Stellar DeFi (Comet ≈ 0,72 M USD; 10,97 M USD el 22-feb-2026) sin reconciliar [VERIFICAR]"
     }
    ],
    "alcista": [

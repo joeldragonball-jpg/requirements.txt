@@ -1,5 +1,5 @@
 {
-  "_actualizado": "2026-11-10",
+  "_actualizado": "2026-11-11",
   "_nota": "Datos sin API abierta: salario mínimo de las potencias. Nivel V = recordado, sin leer la norma oficial; [VERIFICAR] antes de citar. No se ordenan países.",
   "US": {
     "salario_minimo": {
@@ -178,13 +178,15 @@
       "periodicidad": "irregular"
     },
     "ipc": {
-      "valor": 0.9,
+      "valor": 0.7,
       "unidad": "% interanual",
-      "fecha": "2026-09",
-      "fuente": "https://www.stats.gov.cn/english/PressRelease/202610/t20261015_1965500.html",
-      "nivel": "P",
-      "definicion": "IPC nacional (NBS, nota de prensa del 15-oct-2026, leída); +0,2 % intermensual. Sustituye a la media anual del Banco Mundial. Octubre: mediados de nov-2026 [VERIFICAR fecha].",
-      "periodicidad": "mensual"
+      "fecha": "2026-10",
+      "fuente": "https://www.stats.gov.cn/english/",
+      "nivel": "S",
+      "definicion": "IPC nacional de octubre 2026 (NBS, publicado el 9-nov-2026; mensual 0,0 %, subyacente 0,8 %, IPP +5,7 %). Cifras vía CGTN/InvestingLive: la nota del NBS figura en su web pero no se leyó la cifra, nivel S [VERIFICAR en NBS]. Septiembre (0,9 %) sí se leyó en la nota oficial del 15-oct (nivel P). Leído el 11-nov-2026. Próximo IPC (nov) ≈ 9-dic [VERIFICAR].",
+      "periodicidad": "mensual",
+      "anterior": 0.9,
+      "anterior_fecha": "2026-09"
     },
     "pib": {
       "valor": 4.5,
@@ -260,6 +262,37 @@
       "nivel": "S",
       "definicion": "IPC nacional del INDEC de septiembre de 2026 (1,9 % mensual; 23,6 % acumulado en 2026), publicado hacia el 13-oct-2026; cifra vía prensa (Chequeado, Finanzas Digital), comunicado del INDEC sin leer [VERIFICAR]. Sustituye a la media anual del Banco Mundial (2024).",
       "periodicidad": "mensual"
+    }
+  },
+  "BR": {
+    "ipc": {
+      "valor": 4.62,
+      "unidad": "% a 12 meses (IPCA-15)",
+      "fecha": "2026-10",
+      "fuente": "https://www.ibge.gov.br/",
+      "nivel": "S",
+      "definicion": "IPCA-15 de octubre 2026 (IBGE, ≈23-oct): 4,62 % a 12 meses, mensual +0,32 %; cifra vía prensa. El IPCA completo de octubre sale el 12-nov [S]; no es aún «octubre» definitivo. Leído el 11-nov-2026.",
+      "periodicidad": "mensual",
+      "anterior": 4.47,
+      "anterior_fecha": "2026-09"
+    },
+    "paro": {
+      "valor": 5.4,
+      "unidad": "% desocupación (PNAD continua)",
+      "fecha": "2026-Q2",
+      "fuente": "https://www.ibge.gov.br/",
+      "nivel": "S",
+      "definicion": "Trimestre móvil a junio 2026 (IBGE vía prensa): 5,4 %, mínimo de la serie desde 2012. Dato posterior (trimestre a septiembre) no localizado [VERIFICAR]. Paro juvenil no obtenido. Leído el 11-nov-2026.",
+      "periodicidad": "mensual (trimestre móvil)"
+    },
+    "pib": {
+      "valor": 0.5,
+      "unidad": "% trimestral (volumen)",
+      "fecha": "2026-Q2",
+      "fuente": "https://www.ibge.gov.br/",
+      "nivel": "S",
+      "definicion": "PIB de Brasil T2-2026, +0,5 % trimestral (IBGE, publicado el 1-sep-2026, vía prensa). Próximo (T3): 2-dic-2026. Leído el 11-nov-2026.",
+      "periodicidad": "trimestral"
     }
   },
   "VE": {
