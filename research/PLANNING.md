@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-11 18:51 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-11 18:56 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -136,7 +136,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [media] 2026-10-23 (19 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí
 - [media] 2026-10-23 (19 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
 - [media] 2026-10-23 (19 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
-- … y 73 más en el Seguimiento
+- … y 72 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Voces: Voces sin confirmar (30) → W06 · 10 llevan más de 14 días

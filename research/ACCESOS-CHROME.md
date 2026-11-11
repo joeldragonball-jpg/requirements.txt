@@ -57,3 +57,5 @@ Resuelto por navegador: D04 China (ChinaBond, navegador integrado, 29-oct).
 - **IGAE: FUNCIONA** (`igae.pap.hacienda.gob.es/sitios/igae/es-ES/Paginas/inicio.aspx`); las rutas inventadas dan error. Planes de control = PDF (no legibles aqui): menu Control > Control financiero permanente/CFPyAP.
 - **BDNS (infosubvenciones.es): FUNCIONA, con matiz.** La pagina es SPA sin texto, pero `fetch('/bdnstrans/api/concesiones/busqueda?vpd=GE&page=0&pageSize=5&beneficiario=<ID>')` desde la pestaña responde JSON (solo lectura). Falta saber el formato del parametro `beneficiario` (no vale NIF ni nombre; probablemente id interno): hacerlo por la interfaz de busqueda o ver Network.
 - **Transportes y Adif: abren sin bloqueo** (sin captcha). `adif.es/sobre-adif/transparencia/economica` redirige a la home; rutas de presupuestos inventadas = 404. Capitulo 6 no localizado: probable origen es el tomo de Presupuestos en sepg.pap.hacienda.gob.es (PDF).
+
+- cnmv.es (11-nov-2026): funciona en Chrome. Buscador de entidades: /portal/Consultas/BusquedaPorEntidad; advertencias: /portal/BusquedaAdvertencias. La lista «Otras entidades» es PDF y Chrome no la lee. Las URL inventadas dan error.
