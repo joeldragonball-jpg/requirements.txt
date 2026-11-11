@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-11-10
+actualizado: 2026-11-11
 ---
 # Índice de la investigación
 
@@ -47,14 +47,14 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-08 · EDGAR W04: filings XRP/XLM/Ripple, 9-oct a 8-nov-2026 (`informes/research/2026-11-08-edgar-w04.md`): Los 5 más relevantes (todo [P], leído en sec.gov)
 
 ## Regulación por país
+- 2026-11-11 · W03 · Japón y Singapur: comprobación de huecos (11-nov-2026) (`informes/research/2026-11-11-W03-japon-singapur.md`): Japón · ETF (celda sigue en [S]). Las «Prioridades estratégicas de la FSA, jul 2026 a jun 2027» (15 sep 2026; PDF en fsa.go.jp, leído [P]) solo…
 - 2026-11-10 · W03b · Radar regulatorio: 3 fechas pasadas (10-nov-2026) (`informes/research/2026-11-10-W03b-radar.md`): Brasil · política monetaria. El Copom mantuvo la Selic en 13,75 % el 4 nov 2026 (282.ª reunión, unánime) y cortó la racha de cinco recortes. El…
 - 2026-11-10 · W03 · Huecos del radar regulatorio (10-nov-2026) (`informes/research/2026-11-10-W03-huecos-radar.md`): Brasil (ley marco, custodia, política). El Voto 108/2026 BCB (22 sep 2026, PDF de normativos.bcb.gov.br, leído [P]) propone aplazar al 6 nov 2026 el…
-- 2026-11-02 · W03 · Huecos del radar regulatorio (2-nov-2026) (`informes/research/2026-11-02-W03-huecos-paises.md`): Brasil (Res. BCB 520, texto consolidado en la API del BCB; modificada por la 589)
 
 ## Sesiones diarias (apertura y cierre)
+- 2026-11-11 · Informe de APERTURA — 2026-11-11 (mié) (`informes/2026-11-11-apertura.md`): Futuros S&P +0,8 %, VIX 18,7: apetito por riesgo al alza.
 - 2026-11-10 · W09 · Resumen semanal (martes 10-nov-2026) y plan del 11-22 nov (`informes/research/2026-11-10-W09-resumen-semanal.md`): Semana de petróleo a la baja (−16 %), rebote bursátil del 9 nov y cripto débil (XRP 1,09 $).
 - 2026-11-10 · Informe de CIERRE — 2026-11-10 (mar) (`informes/2026-11-10-cierre.md`): 10 años a 4,98 % (+12 pb); oro −2,7 %; Brent 91,9 $.
-- 2026-11-10 · Informe de APERTURA — 2026-11-10 (mar) (`informes/2026-11-10-apertura.md`): Cripto casi plana: BTC 74,5 k, XRP 1,085 (mínimo de la serie), XLM 0,148.
 
 ## Otros
 - 2026-11-10 · W16 — Capas lentas (10-nov-2026) (`informes/research/2026-11-10-W16-capas-lentas.md`): Capas revisadas: CBDC, Stablecoins, Tokenización (RWA), Depósitos tokenizados, Liquidación y custodia. Solo búsqueda ligera; sin recomendaciones.
