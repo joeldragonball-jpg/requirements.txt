@@ -24,11 +24,15 @@ echo  Actualizando desde GitHub (los bots anaden cosas)...
 git pull --ff-only >nul 2>nul && echo  Actualizado. || echo  No se pudo actualizar (sin internet o cambios locales): sigo con lo que hay.
 echo.
 
+rem Abrir como ventana de app (sin pestanas ni barra de direcciones) si esta Brave; si no, el navegador normal
+set "ABRIR=start http://localhost:8791"
+if exist "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe" set "ABRIR=start C:\PROGRA~1\BraveSoftware\Brave-Browser\Application\brave.exe --app=http://localhost:8791"
+
 rem Si ya esta abierta en el puerto 8791, solo abre el navegador
 netstat -ano | findstr /R /C:":8791 .*LISTENING" >nul
 if not errorlevel 1 (
   echo  La app ya esta en marcha. Abriendo el navegador...
-  start "" http://localhost:8791
+  %ABRIR%
   ping -n 4 127.0.0.1 >nul
   exit /b 0
 )
@@ -36,7 +40,7 @@ if not errorlevel 1 (
 echo  Arrancando (la primera vez tarda un poco)... No cierres esta ventana mientras la uses.
 echo  Para parar la app: cierra esta ventana o pulsa Ctrl+C.
 echo.
-start "" /b cmd /c "ping -n 9 127.0.0.1 >nul & start http://localhost:8791"
+start "" /b cmd /c "ping -n 9 127.0.0.1 >nul & %ABRIR%"
 uv run --with-requirements requirements.txt --with tzdata streamlit run app.py --server.port 8791 --server.headless true --browser.gatherUsageStats false
 
 echo.
