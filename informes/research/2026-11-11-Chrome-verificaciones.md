@@ -1,0 +1,24 @@
+# Verificaciones con Chrome, 11-nov-2026 (solo lectura)
+
+Método: pestaña nueva, sin cookies, sin formularios, sin descargas. P = leído en la fuente oficial. HECHOS salvo donde se indica.
+
+| Dato | Antes | Después (lo leído) | Fuente (fecha) | Nivel |
+|---|---|---|---|---|
+| 1. CNMV: «Múltiplo» en registro/advertencias | [VERIFICAR] | NO LEÍDO. El buscador (`cnmv.es/portal/Consultas/BusquedaPorEntidad`) exige escribir en un formulario; la URL con `?nombre=` no lo ejecuta y la de entidades no autorizadas da error «CVFE». Por instrucción no se rellenó el formulario | cnmv.es, 11-nov-2026 | [VERIFICAR] |
+| 2. Art. 66.1 LIRPF, escala estatal del ahorro | 9,5/10,5/11,5/13,5/15 % (31-oct) | Confirmado: 0-6.000 € 9,5 %; 6.000-50.000 € 10,5 % (cuota íntegra a 6.000: 570); 50.000-200.000 € 11,5 % (a 50.000: 5.190); 200.000-300.000 € 13,5 % (a 200.000: 22.440); desde 300.000 € 15 % (a 300.000: 35.940). Texto consolidado de la Ley 35/2006 con «última actualización 11/11/2026» y vigente a 1-ene-2026 | BOE-A-2006-20764, boe.es (11-nov-2026) | P |
+| 3a. BOE-A-2026-5843: DAC8 y modelos | 172/175/721 sin confirmar | Resolución de 11-mar-2026 (AEAT, Plan de Control 2026), BOE núm. 63 de 12-mar-2026, con corrección de errores del BOE núm. 100 (24-abr-2026). Dice que en 2026 «deberán definirse» las declaraciones derivadas de la «futura transposición de la DAC8»: se incluyen dinero electrónico y monedas digitales de bancos centrales en el intercambio automático de cuentas financieras; hace falta orden ministerial para incluirlos en los modelos 172 (saldos en criptoactivos) y 721 (criptoactivos en el extranjero); y se aprobará un nuevo modelo 175 «proveedores de servicios de criptoactivos obligados a comunicar información», en sustitución del 173, con operaciones según DAC8. El preámbulo cita 172, 173 y 721 | BOE-A-2026-5843, boe.es (11-nov-2026) | P |
+| 3b. Matiz | — | Es una directriz de planificación, no la orden ministerial: no fija plazos de presentación ni confirma que la DAC8 esté ya traspuesta («futura transposición»). Por la misma resolución, en 2025 se recibió información de 172, 173 y 721 de todo el ejercicio | Idem | P |
+| 4. SWIFT y Chainlink CCIP en producción | [VERIFICAR] | NO confirmado. En la lista de notas de prensa de swift.com (página 1, hasta 8-oct-2026) no aparece Chainlink ni CCIP. Sí aparece (9-jul-2026) el libro mayor blockchain de Swift «listo para uso» con 17 bancos en pagos transfronterizos tokenizados, y (29-sep-2025) el anuncio del libro mayor con más de 30 instituciones. Solo se revisó la 1.ª página; no hay comunicado de CCIP en producción en lo leído | swift.com/about-us/media-centre/press-releases (11-nov-2026) | P para «no aparece en esa lista»; [VERIFICAR] el resto |
+| 5a. Euro digital, Consejo | Trílogos en curso | La página del Consejo dice que el 19-dic-2025 adoptó su posición y que puede negociar con el Parlamento; el BCE indicó que podría estar operativo en 2029. Sin calendario de trílogos | consilium.europa.eu/en/policies/digital-euro (11-nov-2026) | P |
+| 5b. Euro digital, Parlamento | — | Observatorio Legislativo 2023/0212(COD): votación en comisión y mandato de negociación 23-jun-2026; informe A10-0185/2026 presentado 26-jun; el pleno confirmó el mandato el 9-jul-2026. No aparece acuerdo provisional entre instituciones en la ficha. La Legislative Train dio «página no encontrada» | oeil.europarl.europa.eu (11-nov-2026) | P |
+| 5c. Cipollone, nov-2026 | — | Texto leído: «Cash and the digital euro: two sides of the same coin», declaración introductoria ante la comisión ECON, 10-nov-2026. Habla de «trílogo en curso», de que una conclusión rápida permitiría adoptar el paquete «a finales de año» según la hoja de ruta «One Europe, One Market», y de que la primera emisión solo puede fijarse tras adoptar el Reglamento; un retraso podría posponer el euro digital. Piloto desde 2S-2027. Hay otro discurso, «Shaping the future of money» (5-nov-2026), no leído | ecb.europa.eu, ecb.sp261110 (11-nov-2026) | P |
+
+## Opiniones y cautelas
+- «Adopción a finales de año» es objetivo del BCE/hoja de ruta, no hecho: [ESPECULACIÓN] hasta que haya acuerdo provisional publicado.
+- Cipollone defiende el proyecto (parte interesada): sesgo de fuente.
+- Sin recomendaciones de inversión.
+
+## Resumen
+1. Confirmados en fuente oficial (P): escala del ahorro (art. 66), BOE-A-2026-5843 (DAC8; 172/721 ampliados y 175 nuevo, aún por orden ministerial) y estado del euro digital (mandato del Parlamento 9-jul; trílogos en curso el 10-nov; discurso de Cipollone del 10-nov).
+2. No confirmados: «Múltiplo» en CNMV (el buscador exige formulario, no rellenado) y SWIFT con Chainlink CCIP (no aparece en la lista de notas de prensa revisada); ambos quedan [VERIFICAR].
+3. Ningún sitio pidió login ni captcha; las pestañas quedaron cerradas y no se descargó nada.
