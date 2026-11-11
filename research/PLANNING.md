@@ -1,9 +1,9 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-11 11:21 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-11 11:23 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** W03 Países (huecos del radar) · Gemini Cripto y regulación
+**Hoy (máx. 3):** Gemini Cripto y regulación
 **Periódicas (próxima):** W03 11-11 · W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W01 11-16 · W02 11-17 · W08 11-25 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (40):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
@@ -153,7 +153,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 2026-11-04 · Zona euro: IPCA adelantado de octubre (Eurostat) (medio) → ✓ cubierto por W01 del 2026-11-10
 - 2026-11-05 · Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,75 % → 4,00 (alto) → ✓ cubierto por W01 del 2026-11-10
 - 2026-11-06 · Empleo EE. UU. (informe de octubre) (alto) → ✓ cubierto por W01 del 2026-11-10
-- 2026-11-06 · Brasil: bancos y entidades de pago no podrán operar con proveedores cr (medio) → ✓ cubierto por W03 del 2026-11-10
+- 2026-11-06 · Brasil: bancos y entidades de pago no podrán operar con proveedores cr (medio) → ✓ cubierto por W03 del 2026-11-11
 - 2026-11-10 · Inflación EE. UU. (IPC de octubre) (alto) → ✓ cubierto por W01 del 2026-11-10
 - 2026-11-10 · EIA: perspectivas de energía a corto plazo (STEO) (medio) → ✓ cubierto por W10 del 2026-11-10
 Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.
