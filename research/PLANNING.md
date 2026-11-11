@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-11 01:34 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-11 07:06 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -126,12 +126,12 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [alta] 2026-11-10 (1 d) · Waller apoya subir tipos en diciembre y no descarta un movimiento mayor.
 - [alta] 2026-11-10 (1 d) · El bono a 10 años de EE. UU. supera el 5 %.
 - [alta] 2026-11-10 (1 d) · El petróleo cae por debajo de 90 $ por la distensión EE. UU.-Irán.
+- [alta] 2026-11-11 (0 d) · BCE y Fed apuntan a subir tipos en diciembre.
 - [media] 2026-10-22 (20 d) · hutiES a Arabia Saudi
 - [media] 2026-10-22 (20 d) · hutiES a Arabia Saudi
 - [media] 2026-10-23 (19 d) · El futuro continuo del Brent cierra en $111,97
 - [media] 2026-10-23 (19 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
-- [media] 2026-10-23 (19 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
-- … y 70 más en el Seguimiento
+- … y 71 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Voces: Voces sin confirmar (25) → W06 · 5 llevan más de 14 días
