@@ -1,0 +1,43 @@
+---
+titulo: C42b Regulación de staking/lending/custodia/stablecoins por país
+fecha: 2026-11-11
+etiquetas: [regulacion, staking, lending, stablecoins, fca, mas, sfc, hkma, fsa, fsc, vara, adgm, esma]
+---
+# C42b · Regulación de rendimientos cripto por país (11-nov-2026)
+
+Continúa C42 (sección 6, pendientes). Solo WebSearch/WebFetch (sin Chrome). Nivel P = leí la página oficial del regulador (comunicado/página de política, no siempre el PDF completo); S = solo despachos de abogados o prensa; todo S queda [VERIFICAR]. Informativo, no recomendación. Fuentes S de despachos y de prensa cripto pueden tener sesgo comercial (captan clientes con «novedad regulatoria»).
+
+## Tabla (país · regulador · estado · fecha · fuente · nivel)
+| País | Regulador | Estado (staking / lending / custodia / stablecoins) | Fecha | Fuente | Nivel |
+|---|---|---|---|---|---|
+| UE | ESMA (propone) / Comisión | **Propuesta, no norma.** ESMA pide a la Comisión requisitos «proporcionados» para staking, lending y borrowing (divulgación de recompensas, colateral, riesgos y pérdidas). Según resúmenes: staking como función inherente de PoS, no lending automático; reglas de conducta específicas en préstamos a minoristas o con apalancamiento. Q&A de ESMA (18-jun-2026): MiCA no regula el lending como actividad específica, pero aplican obligaciones generales a los CASP [S] | 30-sep-2026 (doc.); consulta CE 20-may a 31-ago-2026 | «Response to the EC consultation on the review of MiCA regulation», ESMA75-113276571-1721 (esma.europa.eu, nota de prensa leída) | P (nota de prensa) / S (detalle y Q&A) |
+| Reino Unido | FCA | **Reglas finales publicadas, régimen aún no vigente.** PS26/11 (actividades reguladas, incluye custodia, staking, lending/borrowing): refuerza protecciones a minoristas (divulgación, consentimiento, test de idoneidad, sobrecolateralización, protección frente a saldo negativo); permite auto-staking con consentimiento y aviso anual; aclara liquid staking. PS26/10 stablecoins (emisión). Régimen completo desde **25-oct-2027**; ventana de solicitud 30-sep-2026 a 28-feb-2027 | 30-jun-2026 (PS); 25-oct-2027 (inicio) | fca.org.uk/publications/policy-statements/cryptoasset-regime | P |
+| Reino Unido (perímetro) | FCA | Guía de perímetro: lending/borrowing no son actividad regulada autónoma, caen en dealing/arranging/safeguarding. Referencia «PS26/18, 16-sep-2026» solo en un despacho; la página oficial la enlaza de forma inconsistente (CP26/13) | 16-sep-2026 (según despacho) | conventuslaw / DLA Piper | S [VERIFICAR] |
+| Singapur | MAS | **Vigente.** Los proveedores de DPT no pueden facilitar lending ni staking de tokens de clientes minoristas («generalmente no adecuado»); sí a institucionales y acreditados. Comunicado oficial confirma la restricción; fecha de aplicación (4-oct-2024) solo en prensa. Segregación y custodia en fideicomiso (comunicado) | 3-jul-2023 (comunicado) | mas.gov.sg, media release 2023 (leído) | P (restricción) / S (4-oct-2024) |
+| Hong Kong (staking) | SFC / HKMA | **Permitido con condiciones.** Circular de la SFC sobre staking en plataformas licenciadas (invierte la postura de 2023) y circular paralela de la HKMA para bancos con custodia | 7-abr-2025 | Resúmenes de despachos (Stephenson Harwood); no abrí sfc.hk | S [VERIFICAR] |
+| Hong Kong (stablecoins) | HKMA / SFC | Primeras 2 licencias de emisor de stablecoin concedidas; circular de la SFC sobre servicio de «Relevant Stablecoin» en plataformas (relaja requisitos); aviso previo a la SFC para admitir/retirar stablecoins | 10-abr-2026 (licencias); ~26/27-may-2026 (circular) | Stephenson Harwood, Davis Polk, Charltons | S [VERIFICAR] |
+| Japón | FSA | **Ley aprobada, desarrollo pendiente.** Reforma que traslada los cripto de la Ley de Servicios de Pago a la FIEA (abuso de mercado, sanciones, reservas del operador); vigencia prevista año fiscal 2027; ETF y tasa fija 20,315 % (reforma fiscal, desde 1-ene-2028) citados por prensa. Sin dato sobre lending/staking: [VERIFICAR] en la reglamentación secundaria de la FSA | 15-jul-2026 (aprobación final, Dieta) | The Block, Adnkronos (prensa); no abrí fsa.go.jp | S |
+| Corea del Sur | FSC | **Ley marco aún sin aprobar.** Digital Asset Basic Act en «fase final de consultas» (oct-2026); disputa FSC/Banco de Corea por quién emite stablecoins; posible vía separada. Derecho vigente (Chambers 2026): staking no prohibido pero el proveedor debe mantener la posesión de los activos (Ley de Protección de Usuarios de Activos Virtuales); lending no restringido (no se ve como «dinero» bajo la Ley de Prestamistas). Tributación de transmisión/préstamo cripto prevista desde 1-ene-2027 (20 % + 2 %) con propuesta de eliminarla | 22-oct-2026 (último informe) | The Block 22-oct-2026; Chambers Fintech 2026 | S |
+| Emiratos (Abu Dabi) | FSRA (ADGM) | **Marco de staking finalizado.** Define qué Authorised Persons pueden hacer staking con VAs de clientes; ampliado a modelos no-PoS similares; recompensas limitadas a Accepted VAs y Accepted Fiat-Referenced Tokens; reglas en el Rulebook («29 April – FSRA Rules (Staking)»). Entrada en vigor: la página no la indica | 29-abr-2026 | adgm.com, anuncio FSRA (leído) | P |
+| Emiratos (Dubái) | VARA | Custodia puede incluir staking solo si la licencia lo autoriza explícitamente; «Lending and Borrowing Services» es actividad con licencia y rulebook propio. Sin actualización fechada 2026 localizada | s/f | Chambers Fintech 2026 (secundaria); no abrí rulebooks.vara.ae | S [VERIFICAR] |
+
+## Lectura (HECHOS vs. matices)
+- **HECHOS [P]**: FCA publicó reglas finales de staking/lending el 30-jun-2026 con inicio el 25-oct-2027; MAS prohíbe a proveedores el lending/staking minorista (restricción anunciada 3-jul-2023); ADGM finalizó el marco de staking el 29-abr-2026; ESMA publicó su respuesta el 30-sep-2026.
+- **Patrón general**: dos modelos. Permisivo con reglas de conducta (RU, ADGM, HK, en la UE propuesto) frente a restrictivo para minoristas (Singapur). Corea y Japón: marco aún en construcción.
+- **Para un minorista español**: lo que le aplica es MiCA/CNMV (ver C42); estas jurisdicciones importan si usa un proveedor extranjero (puede no estar autorizado en la UE desde 01-07-2026). Cambia la conclusión solo ahí.
+- **Caso alcista/bajista**: no cambia la conclusión; la tendencia es hacia reglas de conducta, no hacia prohibición, salvo Singapur. [ESPECULACIÓN] que la UE adopte las propuestas de ESMA: es solo respuesta a una consulta, sin calendario legislativo.
+- **No verificado**: SFC, FSA, FSC y VARA no abiertos en fuente oficial; fechas de prensa a contrastar.
+
+## Filas JSON propuestas (NO crear panel sin OK)
+```json
+[
+{"modalidad":"Staking/lending regulado","activo":"Cripto","jurisdiccion":"Reino Unido","estado":"Reglas finales; régimen desde 25-10-2027","norma":"FCA PS26/11","fecha":"2026-06-30","fuente":"fca.org.uk policy statements","url":"https://www.fca.org.uk/publications/policy-statements/cryptoasset-regime","nivel":"P","revisar":"trimestral"},
+{"modalidad":"Staking/lending minorista","activo":"DPT","jurisdiccion":"Singapur","estado":"Restringido a minoristas; permitido a institucionales/acreditados","norma":"MAS medidas de protección DPT","fecha":"2023-07-03","fuente":"mas.gov.sg","url":"https://www.mas.gov.sg/news/media-releases/2023/mas-publishes-investor-protection-measures-for-digital-payment-token-services","nivel":"P","revisar":"semestral"},
+{"modalidad":"Staking custodial","activo":"VA","jurisdiccion":"Abu Dabi (ADGM)","estado":"Marco finalizado","norma":"FSRA Rules (Staking)","fecha":"2026-04-29","fuente":"adgm.com","url":"https://www.adgm.com/media/announcements/adgm-fsra-finalises-regulatory-framework-for-the-staking-of-virtual-assets","nivel":"P","revisar":"semestral"},
+{"modalidad":"Staking/lending (propuesta)","activo":"Cripto","jurisdiccion":"UE","estado":"Propuesta de ESMA a la Comisión, no norma","norma":"ESMA75-113276571-1721","fecha":"2026-09-30","fuente":"esma.europa.eu","url":"https://esma.europa.eu/press-news/esma-news/esma-calls-changes-make-mica-clearer-safer-and-ready-emerging-services","nivel":"P","revisar":"trimestral"}
+]
+```
+
+Resumen: (1) Leí fuente oficial de FCA (PS26/11, 30-jun-2026; régimen 25-oct-2027), MAS (restricción minorista, 3-jul-2023), ADGM (staking, 29-abr-2026) y ESMA (respuesta MiCA, 30-sep-2026: propuesta, no norma).
+(2) Hong Kong, Japón, Corea y VARA quedan en S [VERIFICAR] (despachos/prensa): HK permite staking desde abr-2025; Japón aprobó la ley FIEA el 15-jul-2026; Corea sigue sin ley marco.
+(3) Modelo dominante: reglas de conducta, no prohibición (salvo Singapur minorista); para un residente en España manda MiCA/CNMV; filas JSON propuestas, sin panel.
