@@ -18,6 +18,11 @@ actualizado: 2026-11-11
 - **No he localizado el informe de noviembre de 2026.** Las búsquedas devuelven el de noviembre de 2025 (demanda 2026: +1,38 mb/d hasta 106,52 mb/d) y titulares de octubre de 2026 («OPEP ve un rebote de la demanda en 2027», «OPEP+ mantiene los objetivos de noviembre») cuyo texto no he podido leer [S, parcial].
 - Fuente primaria a abrir: la página del informe mensual en opec.org [VERIFICAR].
 
+## Actualización 11-nov (tarde)
+- Abu Dabi: segunda búsqueda; solo salen resultados de las rondas de enero (sin acuerdo) y un titular de SCMP «conversaciones mediadas por EE. UU. terminan sin acuerdo» sin fecha confirmada; no puedo atribuirlo a la ronda del 10-11 de nov [VERIFICAR].
+- OPEP: opec.org devuelve HTTP 402 a las consultas automáticas, no se puede leer el informe de noviembre. Lo último que consta en prensa [S]: informe de agosto 2026 con demanda 2026 recortada (por Asia) y 2027 subida a ~+2,2 mb/d (antes 1,9); en junio, 2026 a +0,97 mb/d y 2027 a +1,73 mb/d ([Argus](https://www.argusmedia.com/en/news-and-insights/latest-market-news/2838218-opec-trims-2026-oil-demand-growth-again), [Business Today](https://www.businesstoday.com.my/2026/08/13/opec-lowers-global-oil-demand-forecast-for-2026/)). Las cifras de noviembre: pegar a mano desde el PDF si Joel lo guarda en `research/fuentes/` [VERIFICAR].
+- Chrome (11-nov, tarde) [P]: opec.org abre con Chrome. La página oficial lista ya «MOMR November 2026» (calendario: miércoles 11-nov; el siguiente, lunes 14-dic) y su apéndice en Excel. El PDF solo se obtiene descargando el archivo, y no lo he descargado sin tu permiso, así que **las cifras de demanda/oferta de noviembre siguen sin leer** [VERIFICAR]. Notas de prensa de la OPEP en la portada: 1-nov, siete países de OPEP+ (Arabia Saudí, Rusia, Irak, Kuwait, Kazajistán, Argelia y Omán) «reafirman su compromiso con la estabilidad del mercado»; 4-nov, diálogo con la AIE y el IEF sobre flujos marítimos de energía (solo títulos leídos).
+
 ## Razonamiento [RAZONADO]
 - Un acuerdo de paz en Ucrania afectaría sobre todo al gas, el diésel y la presión sobre sanciones; contra: con las posiciones tan alejadas, el escenario base es de estancamiento. Confirmaría: comunicado conjunto de las tres partes. Tumbaría: nueva suspensión del proceso. Efecto en Brent indirecto, no comprobable aquí.
 
