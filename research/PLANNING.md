@@ -1,9 +1,9 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-12 07:09 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-12 08:10 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** W05 Verificación por lotes · W04 ETF y flujos · Gemini ETF y flujos
+**Hoy (máx. 3):** W05 Verificación por lotes · Gemini ETF y flujos
 **Periódicas (próxima):** W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W01 11-16 · W02 11-17 · W03 11-18 · W08 11-25 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (40):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
@@ -21,8 +21,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 - Aviso de límite (2026-10-31): Joel propone probar 2 Deep Research al dia (lleva ~7 % semanal con Pro alto). Se prueba unos dias; si Gemini avisa de limite, vuelta a 1. Anotar en sesiones cada lanzamiento y si hubo aviso.
 
 ## Rutinas W: lo que falta este periodo (sin día fijo; se hacen cuando haya hueco, de más atrasada a menos)
-- W04 · ETF y flujos · ~3 % · cada 2 jueves · último 2026-10-29 · `research/prompts/W04-*.md`
-Hechas en este periodo: W01, W02, W03, W05, W06, W07, W08, W09, W10
+Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**
