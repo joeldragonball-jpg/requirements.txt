@@ -138,3 +138,5 @@
 - Si Alpenglow está activo o retrasado (la señal de los votos es una inferencia mía).
 - Datos oficiales de Hedera, Algorand y Tron (solo agregadores y prensa); estado actual de Arc y Tempo.
 - Mis medidas de rendimiento son una muestra de ~1 min; hay que repetirlas varios días.
+
+> Nota C257 (12-nov-2026): [VERIFICAR] la cifra «Stellar 941 M$» de stablecoins del 9-oct. DefiLlama da hoy 392,4 M$ para ese día y 392,4 M$ el 12-nov (máximo 481,5 M$ el 20-oct); en el ledger, USDC en Stellar = 344,0 M [P, Horizon, 12-nov]. No hay tal caída del 56 %. Texto original sin borrar.

@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-12 11:49 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-12 12:11 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -7,7 +7,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Periódicas (próxima):** W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W01 11-16 · W02 11-17 · W03 11-18 · W08 11-25 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (41):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
-**Hechas en 7 días (18):** C252, C253, C256, C255, C147, C150, C151, C152, C153, C159, C160, C145, C129, C131, C133
+**Hechas en 7 días (19):** C252, C253, C256, C257, C255, C147, C150, C151, C152, C153, C159, C160, C145, C129, C131
 
 ## Hoy (jue 2026-11-12): solo lo casi obligatorio
 - R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 5 días
@@ -82,7 +82,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C245 ◐ en parte · Órbita · España: empleados de órganos constitucionales (Cortes, T. Cuentas, CGPJ · Sonnet S · ~~2 % · `Buscar la plantilla (nº de empleados) de Cortes Generales, Tribunal de Cuentas, CGPJ, Tribunal Constitucional, Consejo de Estado y Casa de Su Majestad el Rey en sus portales de transparencia/memorias/RPT y en el anexo de personal de los PGE; completar explorador/espana-empleados.json con fuente, fecha y nivel (P solo si se lee la fuente oficial; puestos presupuestados ≠ personas: [VERIFICAR]). Las 9 partidas de gasto sin plantilla (Deuda, Clases Pasivas, UE, entes territoriales, etc.) quedan null.`
 - C247 ◐ en parte · Centro · Verificar prensa pendiente (3.ª tanda 10-nov: Irak/Ormuz, Brent, UE, IP · Sonnet S · ~~3 % · ``
 - C254 ◐ en parte · Centro · Verificar con fuente las dudas abiertas por C252 (STEO de noviembre, st · Fable M · ~~3 % · ``
-- C257 · Centro · Aplicar en el repo las correcciones que salen de C254 (Banco de España, · Sonnet S · ~~2 % · `Lee informes/research/2026-11-12-C254-verificaciones-repaso.md (sección «Qué hay que corregir en el repo»). Sin fuente nueva, con las cifras y enlaces de ese informe: (1) en informes/hechos/lote-NN.jsonl corrige el hecho del Banco de España (déficit 2026 del 2,6 %, publicado el 9-oct-2026) y el del Bank Rate (3,75 % desde el 18-dic-2025), dejando constancia del cambio; (2) marca [VERIFICAR] el «Stellar 941 M$ a 9-oct» en el hecho y en el dossier, añadiendo una línea y sin borrar texto; (3) en explorador/datos.json y voces.json pon RLUSD en XRPL 885,2 M a 12-nov-2026 [P] y cierra la voz v061 con el STEO de noviembre (Brent ~100 $/b el resto de 2026; 77 $/b en 4T-2027); (4) en el panel de Ormuz añade un aviso visible: el recuento de barcos de PortWatch no equivale a barriles, con la cifra de la AIE (10,9 mb/d en septiembre) al lado y la nota de que no miden lo mismo. Comprueba antes con git status que ninguna otra sesión tenga esos archivos a medias. Regenera móvil, seguimiento y órbita.`
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`

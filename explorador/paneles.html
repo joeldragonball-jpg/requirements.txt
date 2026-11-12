@@ -396,6 +396,7 @@ function panelEnergia(){
   const u=O.ultimo||{};
   const hit=(HP.hitos||[]).slice().reverse().map(h=>`<tr><td class="n">${esc(h.fecha)}</td><td>${esc(h.hecho)}<div class="mini">${esc(h.lectura||'')}</div></td><td class="n">${h.brent?fm(h.brent[0])+' → '+fm(h.brent[1]):'—'}</td><td class="tag"><span class="nivel ${h.nivel}">${h.nivel}</span></td></tr>`).join('');
   return `<p class="que">Tráfico por el estrecho de Ormuz (IMF PortWatch [P]) y los hitos que movieron el petróleo. Febrero de 2026, antes del cierre: ~78 barcos al día.</p>
+  <div class="mini" style="border:1px solid #e8913a;border-radius:8px;padding:8px 10px;margin:8px 0">⚠ Los barcos de PortWatch (señal AIS) NO equivalen a barriles. La AIE da <b>10,9 mb/d</b> por el estrecho en septiembre [P, OMR del 14-oct], pero PortWatch cuenta solo ~1,1 petroleros al día: no miden lo mismo (la AIE estima volúmenes; PortWatch cuenta barcos que se ven). Método de la AIE: [VERIFICAR].</div>
   <div class="kpis"><div class="kpi"><div class="v">${fm(O.media_7d)}</div><div class="e">barcos/día, media 7 días a ${esc(u.fecha||'')}</div></div><div class="kpi"><div class="v">${esc(u.total==null?'—':u.total)}</div><div class="e">barcos el ${esc(u.fecha||'')} (${esc(u.petroleros==null?'—':u.petroleros)} petroleros)</div></div></div>
   <h3>Media diaria por mes</h3>${barras}
   <h3>Hitos del petróleo (Brent, $)</h3><div style="overflow-x:auto"><table><thead><tr><th>Fecha</th><th>Qué pasó</th><th>Brent</th><th>Nivel</th></tr></thead><tbody>${hit}</tbody></table></div><p class="mini">${esc(HP.nota||'')}</p>`;

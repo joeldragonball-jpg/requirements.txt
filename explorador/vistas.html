@@ -670,6 +670,7 @@ function ajustarFiltros(id){const f=FILTROS[id]||'';
 function nOrmuz(){
   const o=P.ormuz;const w=el('div');
   const av=avisoViejo(o.ultimo.fecha);if(av)w.append(el('p','nota-v',av+': el último dato leído es del '+o.ultimo.fecha+'. La fuente del FMI (PortWatch) dejó de responder el 4-nov y el panel conserva ese dato; no es la situación de hoy.'));
+  w.append(el('p','nota-v','⚠ Los buques de PortWatch (señal AIS) NO equivalen a barriles: la AIE da 10,9 mb/d por el estrecho en septiembre [P, OMR 14-oct], pero PortWatch cuenta ~1,1 petroleros al día. No miden lo mismo; método de la AIE [VERIFICAR].'));
   w.append(kpis([[o.ultimo.total+' buques',o.ultimo.fecha+': último día ('+o.ultimo.petroleros+' petroleros)'],[num(o.media_7d,1)+' buques/día','Media de los últimos 7 días']]));
   const mx=Math.max(...o.mensual.map(x=>x.total));const b=el('div','bars');b.style.margin='6px 0 22px';
   for(const x of o.mensual){const d=el('div');d.style.height=Math.max(3,x.total/mx*100)+'%';d.title=x.mes+': '+num(x.total,1)+' buques/día de media ('+num(x.petroleros,1)+' petroleros)';d.append(el('small',null,x.mes.slice(5)));b.append(d)}
