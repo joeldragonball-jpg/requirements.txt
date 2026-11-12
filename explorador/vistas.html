@@ -200,7 +200,7 @@ ul.mand{list-style:none;padding:0;margin:6px 0;display:grid;gap:6px}ul.mand li{b
 ul.mand .hito{color:#f1d58a;font-size:var(--fs-xs);margin-top:3px}ul.mand .aviso-c{color:var(--tx2);font-size:var(--fs-xs);font-style:italic;margin-top:2px}
 /* C134 · Presupuesto: 3 cifras arriba en cada ministerio abierto */
 .kpis.min3{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));margin:8px 0}
-#v-voces .item small{font-size:var(--fs-xs)}.plazo-v{font-size:var(--fs-s);color:var(--tx2);margin:3px 0}
+#v-voces .item small{font-size:var(--fs-s);color:var(--tx2);display:block;margin-top:3px}.plazo-v{font-size:var(--fs-s);color:var(--tx2);margin:3px 0}
 small.per{color:var(--tx2);font-size:var(--fs-xs);font-weight:400}
 .cc-g small.per{display:block}
 .sem{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:5px;vertical-align:middle;border:1px solid rgba(255,255,255,.35)}
@@ -1198,6 +1198,15 @@ function pTiempo(){
   else ficha(lado,selMov);
   g.append(izq,lado);c.append(g);s.append(c);
 }
+/* C213 · enlaces entre datos: de un hecho, evento o voz se salta a la ficha de país, a la línea de tiempo (por capa o país) o a Voces */
+const saltar=id=>{try{if(window.parent&&window.parent.irVista&&window.parent!==window)return window.parent.irVista(id)}catch(e){}ir(id)};
+const GRUPOS_ENL={UE:f=>f.bloque==='UE',Potencias:f=>f.bloque==='Potencias',BRICS:f=>['BR','RU','IN','CN','ZA','ID','EG','ET','IR','AE'].includes(f.id),'Latinoamérica':f=>['SV','AR','VE','CU','BR'].includes(f.id)};
+const fichaDePais=n=>{const q=String(n||'').toLowerCase(),F=(D.paises_fichas||{}).paises||[];return F.find(f=>{const p=String(f.pais).toLowerCase();return p===q||p.includes(q)||q.includes(p)})};
+function irPais(n){const f=fichaDePais(n);if(!f)return false;const g=Object.keys(GRUPOS_ENL).find(k=>GRUPOS_ENL[k](f));if(g)grupoPa=g;paisSel=f.id;saltar('paises');return true}
+function irTiempoCapa(capa){capasOff=new Set(D.capas.filter(c=>c.id!==capa).map(c=>c.id));rango='todo';buscaTL='';selMov=null;saltar('tiempo')}
+function irTiempoPais(n){const q=String(n||'').toLowerCase(),j=R.jurisdicciones.find(x=>{const a=x.nombre.toLowerCase();return a===q||a.includes(q)||q.includes(a)});if(!j)return false;$('fpais').value=j.id;capasOff=new Set();rango='todo';selMov=null;saltar('tiempo');pintarTodo();return true}
+function irVoces(q){vBusca=q||'';vNivel='';vTipo='';vConf='';vCapa='';vHilo='';saltar('voces')}
+const enlace=(txt,f,tit)=>{const b=el('button','chip',txt);b.style.cssText='cursor:pointer;padding:2px 10px;margin:2px 4px 2px 0;font:inherit;font-size:.85em';if(tit)b.title=tit;b.onclick=f;return b};
 function ficha(lado,mv){
   lado.append(el('b',null,mv.fecha+' · '+mv.actor),el('p',null,mv.texto));
   const d=el('dl');
@@ -1209,6 +1218,11 @@ function ficha(lado,mv){
   if(mv.url){const a=el('a',null,'Abrir la noticia');a.href=mv.url;a.target='_blank';add('Enlace',a)}
   const mot=reacMotivo(mv),br=el('div');br.append(botonReac(mv));if(mot&&!reac.includes(mv))br.append(el('div','nota-v',mot));
   lado.append(br,d);
+  const en=el('div');en.style.cssText='margin-top:8px';en.append(el('div','nota-v','Ir a…'));
+  for(const pn of (mv.pais||[]))if(fichaDePais(pn))en.append(enlace('Ficha de '+pn,()=>irPais(pn),'Abre la ficha del país'));
+  en.append(enlace('Voces sobre '+mv.actor,()=>irVoces(mv.actor),'Busca el actor en Voces'));
+  en.append(enlace('Solo capa '+capaNom(mv.capa),()=>irTiempoCapa(mv.capa),'Línea de tiempo con solo esa capa'));
+  lado.append(en);
 }
 
 /* ---------- 3b · «Ver reacción»: precio de varios activos alrededor de 1-3 eventos (explorador/precios_historico.json) ---------- */
@@ -1345,7 +1359,8 @@ function evCard(e){
   const d=el('div','ev '+(e.impacto||'bajo'));d.style.setProperty('--c',t.color);
   const h=el('div');h.append(el('span','imp '+(e.impacto||'bajo'),e.impacto==='alto'?'★ ALTO':e.impacto==='medio'?'MEDIO':'BAJO'),el('b',null,(e.ini===e.fin?e.ini:e.ini+' → '+e.fin)+' · '+e.titulo+(e.aprox?' (fecha aproximada)':'')));
   const m=el('div','nota-v');m.append(el('span','tema',t.nombre),document.createTextNode(' · '+capaNom(e.capa)+' · fuente: '+e.fuente));
-  d.append(h,el('div',null,e.detalle),m);return d}
+  d.append(h,el('div',null,e.detalle),m);
+  d.append(enlace('Ver capa '+capaNom(e.capa)+' en la línea de tiempo',()=>irTiempoCapa(e.capa),'Hechos ya registrados de esa capa'));return d}
 function pCalendario(){
   const s=$('v-calendario');s.textContent='';
   const c=el('div','caja');c.append(el('h2',null,'Calendario de los próximos meses'));
@@ -1637,6 +1652,7 @@ function pPaises(){
   lista.forEach(f=>{const b=el('button','chip',f.pais);b.style.cssText='cursor:pointer;padding:5px 12px';if(f.id===paisSel){b.style.background='var(--oro,#d4a84b)';b.style.color='#1a1405'}b.onclick=()=>{paisSel=f.id;pPaises()};chs.appendChild(b)});
   const fp=lista.find(f=>f.id===paisSel),ind=((IN.find(i=>i.id===paisSel)||{}).indicadores)||{},es1=ES.find(x=>x.id===paisSel)||{},pe=fp.proxima_eleccion||{};
   const caja=el('div','caja');caja.appendChild(el('h2','',fp.pais));
+  {const en=el('div');if(R.jurisdicciones.some(x=>{const a=x.nombre.toLowerCase(),q=fp.pais.toLowerCase();return a===q||a.includes(q)||q.includes(a)}))en.append(enlace('Hechos de '+fp.pais+' en la línea de tiempo',()=>irTiempoPais(fp.pais)));en.append(enlace('Voces sobre '+fp.pais,()=>irVoces(fp.pais)));caja.appendChild(en)}
   caja.appendChild(el('div','nota-v',[fp.jefe_gobierno,fp.familia,pe.fecha?'Próxima elección: '+pe.fecha+(pe.tipo?' · '+pe.tipo.slice(0,60):''):''].filter(Boolean).join(' · ')));
   const kk=['ipc','paro','pib','deuda'].filter(k=>ind[k]).map(k=>{const x=ind[k],t=tendGen(NOMI[k],x.valor,x.anterior,x.anterior_fecha,k);let a=null;if(t){a=el('div','',t.f+' antes '+cortaUnid(x.anterior,x.unidad));a.style.cssText='font-size:.85rem;color:'+t.c}/* C135 · mini-serie de los últimos 5 años bajo la cifra grande (explorador/indicadores-historia.json) */
     let mini=null;const hs=((((D.indicadores_historia||{}).paises||{})[paisSel]||{})[k]);if(hs&&hs.v&&hs.v.length>2){const n=hs.frec==='M'?60:hs.frec==='T'?20:6,vv=hs.v.slice(-n);mini=el('div','');mini.style.marginTop='4px';mini.append(spark(vv,150,28),el('div','nota-v','últimos '+vv.length+(hs.frec==='M'?' meses':hs.frec==='T'?' trimestres':' años')+' · '+hs.p[hs.p.length-vv.length]+' a '+hs.p[hs.p.length-1]))}
@@ -1688,6 +1704,7 @@ function pVoces(){
     if(v.vigilar){const vg=el('div','plazo-v');vg.append(el('span','badge V','VIGILAR'),document.createTextNode('Lo confirmaría: '+(v.vigilar.confirma||'—')+' · Lo refutaría: '+(v.vigilar.refuta||'—')+(v.revisar_en?' · Revisar: '+v.revisar_en:'')));it.append(vg)}
     else if(v.revisar_en){it.append(el('div','plazo-v','Revisar: '+v.revisar_en))}
     it.append(m);
+    {const en=el('div');for(const cid of (v.capas||[]).slice(0,3))if(D.capas.some(c=>c.id===cid))en.append(enlace('Capa '+capaNom(cid)+' en la línea de tiempo',()=>irTiempoCapa(cid)));if(en.children.length)it.append(en)}
     if(v.fuente&&v.fuente.url){const a=el('a',null,' · '+(v.fuente.n||'fuente'));a.href=v.fuente.url;a.target='_blank';it.append(a)}
     ls.append(it)}
   c.append(ls);s.append(c);
