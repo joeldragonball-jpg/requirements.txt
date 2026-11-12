@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-12 13:05 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-12 13:11 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -54,7 +54,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C208 · Capa «Mi cartera» sin importes con el importador CSV · Opus L · ~~4 % · ``
 - C209 · Modo familia: vista reducida sin racha ni IA · Opus L · ~~2 % · ``
 - C210 · Capas nuevas: flujos de ETF de XRP/XLM, stablecoins, vivienda y combustibles UE · Opus L · ~~4 % · ``
-- C213 · Órbita: enlaces entre datos (Calendario, Línea de tiempo, Matriz, Voces y ficha  · Sonnet M · ~~1,5 % · ``
 - C217 · Órbita: comparador de países como vista (2-4 países, mismo periodo) · Opus L · ~~3 % · ``
 - C218 · Órbita: comparador de capas lado a lado · Sonnet M · ~~2 % · ``
 - C219 · Órbita: modo foco en Resumen (solo lo que cambió y lo que caduca) · Sonnet M · ~~0,8 % · ``
@@ -110,9 +109,14 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 
 ## Auditorías abiertas
-- T4 (Baja): Omisiones de fuentes: BdE en Bonos, BoE en Deuda, cifras manuales en Liquidez e Indicadores
-- T7 (Baja): Hueco jun-2026 en la API del BCE, causa sin explicar [VERIFICAR]
-- T8 (Baja): «+3» de la Cámara se mide desde 2024 (215 D), no desde hoy [VERIFICAR]
+- A1 (Media): Abierto: voces.json lo está editando otra sesión (W06); propuesta: v002→cumplido con la nota del 28-oct; v062→
+- A2 (Media): Abierto: propuesta, mostrar «P + novedades S» o añadir url a HK ETF
+- A3 (Media): Parcial: antes faltaban 23. Abierto: 9 celdas
+- A4 (Baja): Abierto
+- A5 (Media): Abierto: propuesta, 2-3 canales o analistas críticos o neutrales en el próximo lote de vídeos
+- A7 (Media): Abierto
+- A8 (Baja): Abierto solo v062
+- A9 (Baja): Cerrado (W07)
 - Auditoría mensual W08: última semana del mes (miércoles)
 
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
@@ -130,7 +134,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [media] 2026-10-22 (21 d) · hutiES a Arabia Saudi
 - [media] 2026-10-23 (20 d) · El futuro continuo del Brent cierra en $111,97
 - [media] 2026-10-23 (20 d) · El futuro continuo del Brent cierra en $111,97
-- … y 81 más en el Seguimiento
+- … y 82 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (1) → W03 · KR/tokenizacion
