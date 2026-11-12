@@ -152,3 +152,10 @@ Adquisiciones de Ripple con precio (1.250 + 1.000 + 250 + 200 = 2.700 M$) · XRP
 
 ## Seguridad
 Sin claves ni secretos. Sin red, sin workflows y sin API de Anthropic. Sin commit ni push. No se tocó `privado/`, `cerebro/` ni ningún JSON de `explorador/`. Único archivo regenerado por script: `research/COBERTURA.md`.
+
+## Corrección posterior (C254, 12-nov-2026)
+- **§3.2 y punto 8 del resumen, stablecoins en Stellar: la caída del 56 % no existe.** La serie histórica de DefiLlama da 392,4 M$ tanto el 9-oct como el 12-nov [S], y Horizon da 344,0 M de USDC [P]. Los 941 M$ de partida no cuadran con ninguna serie.
+- §2.7, Banco de Inglaterra: el Bank Rate está en 3,75 % desde el 18-dic-2025 [P, IUDBEDR].
+- §2.8, RLUSD: la bajada sí es real, 885,2 M en el ledger el 12-nov [P].
+- §2.9, Banco de España: PIB 2,6 % y 2,2 % confirmados; déficit de 2026 del 2,6 % [P].
+- Detalle y fuentes: `informes/research/2026-11-12-C254-verificaciones-repaso.md`.

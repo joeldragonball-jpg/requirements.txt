@@ -1,13 +1,13 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-12 11:09 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-12 11:49 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
 **Hoy (máx. 3):** W05 Verificación por lotes · Gemini ETF y flujos
 **Periódicas (próxima):** W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W01 11-16 · W02 11-17 · W03 11-18 · W08 11-25 · W07 12-05
-**Bloqueadas (7):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue) · …
+**Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (41):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
-**Hechas en 7 días (15):** C252, C147, C150, C151, C152, C153, C159, C160, C145, C129, C131, C133, C134, C136, C141
+**Hechas en 7 días (18):** C252, C253, C256, C255, C147, C150, C151, C152, C153, C159, C160, C145, C129, C131, C133
 
 ## Hoy (jue 2026-11-12): solo lo casi obligatorio
 - R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 5 días
@@ -73,7 +73,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C236 ◐ en parte · IPC de EE. UU.: etiquetar «desestacionalizado / sin desestacionalizar» en móvil  · Sonnet S · ~~0,5 % · ``
 - C237 ◐ en parte · Revisar research/CRUCE-HECHOS.md: decidir qué hechos P van a la Línea de tiempo, · Opus M · ~~3 % · ``
 - C238 ◐ en parte · Órbita · España: leyes nuevas y modificaciones (BOE, Congreso): estado, vigor y  · Sonnet L · ~~5 % · `research/prompts/C238-espana-leyes-boe.md`
-- C239 ◐ en parte · Órbita · España: investigaciones y fondos públicos (Adif, Ministerio de Transpor · Sonnet L · ~~5 % · `research/prompts/C239-espana-investigaciones-fondos.md`
+- C239 ◐ en parte · Órbita · España: investigaciones y fondos públicos (Adif, Ministerio de Transpor · Fable L · ~~5 % · `research/prompts/C239-espana-investigaciones-fondos.md`
 - C24 · Centro · Fiscal y legal: confirmar que el vigilante del Federal Register manda u · Joel S · ~0 % · ``
 - C240 ◐ en parte · Formato de cifras: unidad y escala explícitas (M€, mil M€), punto de miles y com · Sonnet M · ~~2 % · `research/prompts/C240-formato-cifras-unidades.md`
 - C241 ◐ en parte · Órbita · España: «a dónde va el dinero» (contratación pública PLACSP y subvencio · Sonnet L · ~~6 % · `research/LANZAR-FABLE-ESPANA.md`
@@ -81,10 +81,8 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C243 ◐ en parte · Órbita · España: empresas públicas (SEPI, Adif, Renfe, Correos…) y comparador de · Fable L · ~~5 % · `research/LANZAR-FABLE-ESPANA.md`
 - C245 ◐ en parte · Órbita · España: empleados de órganos constitucionales (Cortes, T. Cuentas, CGPJ · Sonnet S · ~~2 % · `Buscar la plantilla (nº de empleados) de Cortes Generales, Tribunal de Cuentas, CGPJ, Tribunal Constitucional, Consejo de Estado y Casa de Su Majestad el Rey en sus portales de transparencia/memorias/RPT y en el anexo de personal de los PGE; completar explorador/espana-empleados.json con fuente, fecha y nivel (P solo si se lee la fuente oficial; puestos presupuestados ≠ personas: [VERIFICAR]). Las 9 partidas de gasto sin plantilla (Deuda, Clases Pasivas, UE, entes territoriales, etc.) quedan null.`
 - C247 ◐ en parte · Centro · Verificar prensa pendiente (3.ª tanda 10-nov: Irak/Ormuz, Brent, UE, IP · Sonnet S · ~~3 % · ``
-- C253 · Centro · Correcciones del repaso C252 que no necesitan fuente nueva (diarios, Lí · Sonnet S · ~~2 % · `Lee informes/research/2026-11-12-C252-repaso-analitico-incoherencias.md (secciones 2 y 7, puntos 1 a 4). Sin red ni fuente nueva: (1) en los diarios del 10 al 12-nov añade una nota que enlace W01b/W01c para el IPC de octubre, sin borrar texto; (2) en explorador/datos.json refecha la entrada «54–44» del 4-nov a la fecha de su fuente; (3) en informes/hechos/lote-NN.jsonl corrige PCE subyacente (C31), «reducir» ETF del BoJ (W03-C), «ETF XRPN» (W05), «+14 $ vs. septiembre», Brent 111,97 $ como P/EIA y el nivel de los 2.178 M$, dejando constancia de cada cambio; (4) etiqueta contrato (mes) o «spot EIA» en las cifras de Brent y amplía explorador/hitos_petroleo.json hasta el 6-nov. Regenera móvil, seguimiento y órbita.`
-- C254 · Centro · Verificar con fuente las dudas abiertas por C252 (STEO de noviembre, st · Sonnet M · ~~3 % · `Lee informes/research/2026-11-12-C252-repaso-analitico-incoherencias.md (sección 7, punto 5). Verifica en fuente primaria, usando Chrome si un sitio bloquea: (a) STEO de noviembre en eia.gov y si el «+14 $» era frente a la edición anterior; (b) stablecoins en Stellar (Horizon o Circle) frente a los 415 M$ de DefiLlama; (c) RLUSD en el XRP Ledger hoy; (d) fecha en que el Bank Rate pasó a 3,75 % (serie IUDBEDR); (e) nota 2026-94 del Banco de España (PIB y déficit); (f) flujo por Ormuz: AIE 10,9 mb/d frente a PortWatch 3-4 barcos al día. Lo no leído queda [VERIFICAR]. Informe en informes/research/ y fila aquí.`
-- C255 · Deuda · Primas de riesgo frente a Alemania (Francia, Italia y España): nota cort · Sonnet S · ~~1 % · `Con explorador/paneles.json › bonos › mensual10 (BCE) y explorador/bonos-manual.json, escribe una nota dentro de la próxima W02: prima frente a Alemania de sep a oct-2026 (Francia 97 → 147 pb, Italia 89 → 126, España 45 → 65; cálculo propio a rehacer), contraste con la serie diaria de cada Tesoro, y caso alcista y bajista. Refresca bonos-manual.json (leído el 22-oct). Sin recomendaciones.`
-- C256 ◐ en parte · Centro · Herramientas: cobertura_hechos.py sin argumento, «cubierto» del plannin · Sonnet S · ~~2 % · `(1) scripts/cobertura_hechos.py: ruta de salida por defecto para que no falle sin argumento. (2) scripts/construir_seguimiento.py: en «Calendario: ya pasaron», distinguir «rutina ejecutada ese día» de «dato leído» (ejemplo: STEO del 10-nov marcado cubierto sin haberse leído). Sin API de Anthropic.`
+- C254 ◐ en parte · Centro · Verificar con fuente las dudas abiertas por C252 (STEO de noviembre, st · Fable M · ~~3 % · ``
+- C257 · Centro · Aplicar en el repo las correcciones que salen de C254 (Banco de España, · Sonnet S · ~~2 % · `Lee informes/research/2026-11-12-C254-verificaciones-repaso.md (sección «Qué hay que corregir en el repo»). Sin fuente nueva, con las cifras y enlaces de ese informe: (1) en informes/hechos/lote-NN.jsonl corrige el hecho del Banco de España (déficit 2026 del 2,6 %, publicado el 9-oct-2026) y el del Bank Rate (3,75 % desde el 18-dic-2025), dejando constancia del cambio; (2) marca [VERIFICAR] el «Stellar 941 M$ a 9-oct» en el hecho y en el dossier, añadiendo una línea y sin borrar texto; (3) en explorador/datos.json y voces.json pon RLUSD en XRPL 885,2 M a 12-nov-2026 [P] y cierra la voz v061 con el STEO de noviembre (Brent ~100 $/b el resto de 2026; 77 $/b en 4T-2027); (4) en el panel de Ormuz añade un aviso visible: el recuento de barcos de PortWatch no equivale a barriles, con la cifra de la AIE (10,9 mb/d en septiembre) al lado y la nota de que no miden lo mismo. Comprueba antes con git status que ninguna otra sesión tenga esos archivos a medias. Regenera móvil, seguimiento y órbita.`
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
@@ -140,7 +138,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [media] 2026-10-23 (20 d) · El futuro continuo del Brent cierra en $111,97
 - [media] 2026-10-23 (20 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí
 - [media] 2026-10-23 (20 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
-- … y 74 más en el Seguimiento
+- … y 73 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (1) → W03 · KR/tokenizacion
@@ -153,15 +151,16 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-03 · EE. UU.: elecciones de mitad de mandato (alto) → ✓ revisado (hecho)
 - 2026-11-03 · Australia: decisión del RBA sobre el tipo de efectivo (medio) → ✓ revisado (hecho)
-- 2026-11-04 · Tesoro de EE. UU.: anuncio trimestral de refinanciación (medio) → ✓ cubierto por W02 del 2026-11-10
-- 2026-11-04 · Zona euro: IPCA adelantado de octubre (Eurostat) (medio) → ✓ cubierto por W01 del 2026-11-10
-- 2026-11-05 · Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,75 % → 4,00 (alto) → ✓ cubierto por W01 del 2026-11-10
-- 2026-11-06 · Empleo EE. UU. (informe de octubre) (alto) → ✓ cubierto por W01 del 2026-11-10
-- 2026-11-06 · Brasil: bancos y entidades de pago no podrán operar con proveedores cr (medio) → ✓ cubierto por W03 del 2026-11-11
-- 2026-11-10 · Inflación EE. UU. (IPC de octubre) (alto) → ✓ cubierto por W01 del 2026-11-10
-- 2026-11-10 · EIA: perspectivas de energía a corto plazo (STEO) (medio) → ✓ cubierto por W10 del 2026-11-10
+- 2026-11-04 · Tesoro de EE. UU.: anuncio trimestral de refinanciación (medio) → ◐ rutina ejecutada (W02 del 2026-11-10); dato sin marcar como leído
+- 2026-11-04 · Zona euro: IPCA adelantado de octubre (Eurostat) (medio) → ◐ rutina ejecutada (W01 del 2026-11-10); dato sin marcar como leído
+- 2026-11-05 · Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,75 % → 4,00 (alto) → ◐ rutina ejecutada (W01 del 2026-11-10); dato sin marcar como leído
+- 2026-11-06 · Empleo EE. UU. (informe de octubre) (alto) → ◐ rutina ejecutada (W01 del 2026-11-10); dato sin marcar como leído
+- 2026-11-06 · Brasil: bancos y entidades de pago no podrán operar con proveedores cr (medio) → ◐ rutina ejecutada (W03 del 2026-11-11); dato sin marcar como leído
+- 2026-11-10 · Inflación EE. UU. (IPC de octubre) (alto) → ◐ rutina ejecutada (W01 del 2026-11-10); dato sin marcar como leído
+- 2026-11-10 · EIA: perspectivas de energía a corto plazo (STEO) (medio) → ◐ rutina ejecutada (W10 del 2026-11-10); dato sin marcar como leído
 - 2026-11-11 · SEC: plazo sobre opciones de ETFs cripto (SR-ISE-2026-42) (medio) → ✓ revisado (hecho)
 - 2026-11-11 · OPEP: informe mensual del mercado petrolero (noviembre) (medio) → ✓ revisado (hecho)
+«✓ cubierto» exige que el informe de la rutina tenga una línea `Eventos leídos: <fecha o título>`; sin ella solo consta que la rutina se ejecutó (C256).
 Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.
 
 ## Calendario: próximos 14 días de impacto y qué los cubre

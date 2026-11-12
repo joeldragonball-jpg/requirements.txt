@@ -32,5 +32,13 @@ Reprobado el 7-nov (W07, 231 URLs de voces, regulación y calendario, 8 en paral
 | Banco de Inglaterra IADB (serie `IUDBEDR`) | Bank Rate diario [P] | CSV; 7-nov: 3,75 % hasta el 4-nov y **4,00 % el 5-nov** (confirma la decisión del 5-nov) | ✅ |
 | `api.bcb.gov.br` (SELIC, SGS 432) | Tipo de Brasil | 502 el 7-nov (¿caída temporal?); reintentar | ⚠️ |
 | `eservices.mas.gov.sg` | MAS (Singapur) | Devuelve página de mantenimiento el 7-nov; reintentar | ⚠️ |
+| `eppo.europa.eu/media/news/...` (Fiscalía Europea) | Comunicados de investigaciones con fondos UE [P] | HTML; abre por URL directa y en buscador; 12-nov: sin novedades tras el 6-nov | ✅ |
+| `transportes.gob.es/organos-colegiados/ciaf/investigaciones-en-curso/<suceso>` (CIAF) | Expediente y lista de documentos de cada accidente [P] | 403 al script; **abre en el navegador integrado** (12-nov); los PDF dan 403 al script y se leen en el navegador (texto extraído en la propia página, sin guardar archivo) | 🌐 |
+| `poderjudicial.es` (notas del CGPJ y de los TSJ) | Órgano instructor, medidas y cifras oficiales de víctimas [P] | HTML; abre en el navegador integrado; se localiza con buscador limitado al dominio | 🌐 |
+| `anti-fraud.ec.europa.eu` (OLAF) | Notas de prensa [P] | HTML; 12-nov: nada sobre Adif (no anuncia investigaciones en curso) | ✅ |
+| XRP Ledger JSON-RPC (`xrplcluster.com`, método `gateway_balances` del emisor) | RLUSD en circulación en el XRPL [P] | JSON; 12-nov: 885,2 M (ledger 108.281.104) | ✅ |
+| Horizon de Stellar (`horizon.stellar.org/assets?asset_code=USDC&asset_issuer=…`) | USDC y EURC emitidos en Stellar [P] | JSON; 12-nov: USDC 344,0 M | ✅ |
+| `stablecoins.llama.fi/stablecoincharts/<cadena>` (DefiLlama) | Serie histórica de stablecoins por cadena [S] | JSON; sirve para comprobar una cifra antigua antes de compararla | ✅ |
+| `eia.gov/outlooks/steo/` | STEO vigente [P] | HTML legible con script; solo guarda la edición actual (archivar el texto el día que sale) | ✅ |
 
 Regla: nunca saltar anti-bots; si no hay API ni navegador, la cifra queda [VERIFICAR].
