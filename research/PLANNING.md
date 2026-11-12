@@ -1,27 +1,28 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-11 21:35 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-12 07:09 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** Gemini Cripto y regulación
-**Periódicas (próxima):** W03 11-11 · W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W01 11-16 · W02 11-17 · W08 11-25 · W07 12-05
+**Hoy (máx. 3):** W05 Verificación por lotes · W04 ETF y flujos · Gemini ETF y flujos
+**Periódicas (próxima):** W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W01 11-16 · W02 11-17 · W03 11-18 · W08 11-25 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (40):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
-**Hechas en 7 días (37):** C147, C150, C151, C152, C153, C159, C160, C145, C129, C131, C133, C134, C136, C141, C32
+**Hechas en 7 días (14):** C147, C150, C151, C152, C153, C159, C160, C145, C129, C131, C133, C134, C136, C141
 
-## Hoy (mié 2026-11-11): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ✓ · racha 4 días
+## Hoy (jue 2026-11-12): solo lo casi obligatorio
+- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 5 días
 - Sin rutina fija hoy: elige por prioridad en las secciones de abajo.
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
-- Gemini del día: toca **Cripto y regulación** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
+- Gemini del día: toca **ETF y flujos** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
 - Norma: 1 consulta ligera al día (unas 15 fuentes), sin repetirla. Rutina G (C20): una rotación por día; si Gemini avisa de límite o llegas al 80 %, se para por hoy y se anota en «parada». La cuota se comparte con NotebookLM.
 - Aviso de límite (antes del 2026-10-27): Una consulta de ~47 fuentes lanzada 2-3 veces agotó el límite; la cuota ya estaba gastada en NotebookLM.
 - Aviso de límite (2026-10-27): Tras W03 Sudáfrica+Indonesia, Deep Research queda desactivado hasta las 04:00 (hora de Madrid) del 27-oct, con el uso general en ~4 %. Hizo 200+ búsquedas web aunque el prompt pedía máx. 15 fuentes: el tope del prompt no se respeta. Límite oficial de Deep Research sin confirmar; de momento, 1 Deep Research por ventana (reinicio 04:00).
 - Aviso de límite (2026-10-31): Joel propone probar 2 Deep Research al dia (lleva ~7 % semanal con Pro alto). Se prueba unos dias; si Gemini avisa de limite, vuelta a 1. Anotar en sesiones cada lanzamiento y si hubo aviso.
 
 ## Rutinas W: lo que falta este periodo (sin día fijo; se hacen cuando haya hueco, de más atrasada a menos)
-Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
+- W04 · ETF y flujos · ~3 % · cada 2 jueves · último 2026-10-29 · `research/prompts/W04-*.md`
+Hechas en este periodo: W01, W02, W03, W05, W06, W07, W08, W09, W10
 
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**
@@ -111,9 +112,14 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 
 ## Auditorías abiertas
-- T4 (Baja): Omisiones de fuentes: BdE en Bonos, BoE en Deuda, cifras manuales en Liquidez e Indicadores
-- T7 (Baja): Hueco jun-2026 en la API del BCE, causa sin explicar [VERIFICAR]
-- T8 (Baja): «+3» de la Cámara se mide desde 2024 (215 D), no desde hoy [VERIFICAR]
+- A1 (Media): Abierto: voces.json lo está editando otra sesión (W06); propuesta: v002→cumplido con la nota del 28-oct; v062→
+- A2 (Media): Abierto: propuesta, mostrar «P + novedades S» o añadir url a HK ETF
+- A3 (Media): Parcial: antes faltaban 23. Abierto: 9 celdas
+- A4 (Baja): Abierto
+- A5 (Media): Abierto: propuesta, 2-3 canales o analistas críticos o neutrales en el próximo lote de vídeos
+- A7 (Media): Abierto
+- A8 (Baja): Abierto solo v062
+- A9 (Baja): Cerrado (W07)
 - Auditoría mensual W08: última semana del mes (miércoles)
 
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
@@ -123,25 +129,25 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [alta] 2026-11-11 (0 d) · La Fed está dividida sobre el ritmo de las subidas de tipos.
-- [media] 2026-10-22 (20 d) · hutiES a Arabia Saudi
-- [media] 2026-10-22 (20 d) · hutiES a Arabia Saudi
-- [media] 2026-10-22 (20 d) · hutiES a Arabia Saudi
-- [media] 2026-10-23 (19 d) · El futuro continuo del Brent cierra en $111,97
-- [media] 2026-10-23 (19 d) · El futuro continuo del Brent cierra en $111,97
-- [media] 2026-10-23 (19 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí
-- [media] 2026-10-23 (19 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
+- [alta] 2026-11-11 (1 d) · La Fed está dividida sobre el ritmo de las subidas de tipos.
+- [media] 2026-10-22 (21 d) · hutiES a Arabia Saudi
+- [media] 2026-10-22 (21 d) · hutiES a Arabia Saudi
+- [media] 2026-10-22 (21 d) · hutiES a Arabia Saudi
+- [media] 2026-10-23 (20 d) · El futuro continuo del Brent cierra en $111,97
+- [media] 2026-10-23 (20 d) · El futuro continuo del Brent cierra en $111,97
+- [media] 2026-10-23 (20 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí
+- [media] 2026-10-23 (20 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
 - … y 74 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
-- 🔴 Voces: Voces sin confirmar (30) → W06 · 10 llevan más de 14 días
+- 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (1) → W03 · KR/tokenizacion
+- 🔴 Voces: Voces sin confirmar (30) → W06 · 13 llevan más de 14 días
 - 🟡 Radar regulatorio: Celdas sin dato (29) → W03 · Más huecos: EG 5, ES 5, ET 4, IN 2, BRICS 2
 
 ## Bots con problema
 - Verificación mensual, Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
-- 2026-11-01 · OPEP+ (7 países): reunión mensual (medio) → ✓ cubierto por W10 del 2026-11-10
 - 2026-11-03 · EE. UU.: elecciones de mitad de mandato (alto) → ✓ revisado (hecho)
 - 2026-11-03 · Australia: decisión del RBA sobre el tipo de efectivo (medio) → ✓ revisado (hecho)
 - 2026-11-04 · Tesoro de EE. UU.: anuncio trimestral de refinanciación (medio) → ✓ cubierto por W02 del 2026-11-10
@@ -151,13 +157,11 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 2026-11-06 · Brasil: bancos y entidades de pago no podrán operar con proveedores cr (medio) → ✓ cubierto por W03 del 2026-11-11
 - 2026-11-10 · Inflación EE. UU. (IPC de octubre) (alto) → ✓ cubierto por W01 del 2026-11-10
 - 2026-11-10 · EIA: perspectivas de energía a corto plazo (STEO) (medio) → ✓ cubierto por W10 del 2026-11-10
+- 2026-11-11 · SEC: plazo sobre opciones de ETFs cripto (SR-ISE-2026-42) (medio) → ✓ revisado (hecho)
+- 2026-11-11 · OPEP: informe mensual del mercado petrolero (noviembre) (medio) → ✓ revisado (hecho)
 Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.
 
 ## Calendario: próximos 14 días de impacto y qué los cubre
-- 2026-11-10→11-11 · Abu Dabi: conversaciones trilaterales EE. UU.–Ucrania–Rusia (medio) · EN CURSO → sin rutina: valorar research EV
-- 2026-11-11 · SEC: plazo sobre opciones de ETFs cripto (SR-ISE-2026-42) (medio) → cubre W04 (ETF y flujos)
-- 2026-11-11 · Corea: fin de comentarios de la FSC sobre tokenización de va (medio) → sin rutina: valorar research EV
-- 2026-11-11 · OPEP: informe mensual del mercado petrolero (noviembre) (medio) → cubre W10 (Energía y geopolítica)
 - 2026-11-13 · AIE: informe mensual del mercado petrolero (noviembre) (medio) → cubre W10 (Energía y geopolítica)
 - 2026-11-13 · España: IPC definitivo de octubre (INE) (medio) → cubre W01 (Datos macro y tipos)
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → cubre W04 (ETF y flujos)
@@ -166,15 +170,17 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 - 2026-11-18 · Zona euro: IPCA definitivo de octubre (Eurostat) (medio) → cubre W01 (Datos macro y tipos)
 - 2026-11-23 · Stellar: voto de mainnet de Protocol 30 (Bell) (medio) → sin rutina: valorar research EV
 - 2026-11-23 · Stellar: voto de la red principal del protocolo 30 «Bell» (1 (medio) → sin rutina: valorar research EV
+- 2026-11-25 · PCE de octubre y PIB de EE. UU. (2.ª estimación) (medio) → cubre W01 (Datos macro y tipos)
+- 2026-11-26 · Corea: próxima reunión del Banco de Corea sobre el tipo base (medio) → cubre W01 (Tipos de interés)
 
 ## Predicciones que vencen en 14 días
 - ninguna
 
 ## Próximas fechas clave
-- 2026-11-11 · Corea: fin de comentarios de la FSC sobre tokenización de valores
 - 2026-11-13 · AIE: informe mensual del mercado petrolero (noviembre)
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM)
 - 2026-11-18 · APEC en Shenzhen: cumbre de líderes
 - 2026-11-18 · Reino Unido: IPC de octubre (ONS)
 - 2026-11-23 · Stellar: voto de mainnet de Protocol 30 (Bell)
 - 2026-11-23 · Stellar: voto de la red principal del protocolo 30 «Bell» (17:00 UTC)
+- 2026-11-25 · PCE de octubre y PIB de EE. UU. (2.ª estimación)
