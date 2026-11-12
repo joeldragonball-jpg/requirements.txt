@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-12 12:11 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-12 12:35 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -6,7 +6,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hoy (máx. 3):** W05 Verificación por lotes · Gemini ETF y flujos
 **Periódicas (próxima):** W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W01 11-16 · W02 11-17 · W03 11-18 · W08 11-25 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
-**Parciales (41):** C30 falta: Fechas oficiales de EE. UU., Francia, Italia, Arge · C58 falta: Recuento oficial de las midterms; escaños por grup · C59 falta: pendiente (servicios públicos van en C61; función  · C61 falta: pendiente (pedido de Joel 30-oct; datos en explora · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · C69 falta: Cierre definitivo 2024, AEAT 2024 en la fuente y C · …
+**Parciales (42):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: T15 BRICS, W03E (Irán/Egipto/Etiopía), D08/D09, Ge · C58 falta: Italia y NL ya leídos [P]; faltan: midterms certif · C59 falta: Faltan salario mínimo IT/CN/JP/IN (IT e IN: n/a),  · C61 falta: Vivienda vacía en CN/JP/IN/GB/RU; LPI y paro total · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
 **Hechas en 7 días (19):** C252, C253, C256, C257, C255, C147, C150, C151, C152, C153, C159, C160, C145, C129, C131
 
 ## Hoy (jue 2026-11-12): solo lo casi obligatorio
@@ -48,7 +48,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C179 ◐ en parte · Países · W11 refresco de 6 fichas políticas (China, Brasil, Sudáfrica, Indonesia · Sonnet S · ~~2 % · ``
 - C181 · Móvil · Mercado: separar divisas por tipo (pares con euro, dólar, refugio, emerg · Opus M · ~~3 % · ``
 - C186 · Research con Gemini (manual): qué muestran los mejores paneles de inversor parti · Sonnet S · ~~2 % · ``
-- C196 · Aviso ámbar a 7 días en RWA manual; anotar que congress.gov sí cargó con Chrome  · Sonnet S · ~<0,2 % · ``
 - C203 ◐ en parte · Fichas por activo (XRP, XLM, BTC, oro, ETF mundial) con fuente, nivel, hechos y  · Sonnet M · ~~2 % · ``
 - C205 · Vista de tesis privada en privado/ con evidencia a favor, en contra y sin dato · Opus L · ~~5 % · ``
 - C206 · Alertas por umbral y por evento (Telegram) para datos en rojo, tipos y noticias  · Opus L · ~~3 % · ``
@@ -83,9 +82,8 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C247 ◐ en parte · Centro · Verificar prensa pendiente (3.ª tanda 10-nov: Irak/Ormuz, Brent, UE, IP · Sonnet S · ~~3 % · ``
 - C254 ◐ en parte · Centro · Verificar con fuente las dudas abiertas por C252 (STEO de noviembre, st · Fable M · ~~3 % · ``
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
-- C31 · Centro · Inflación (IPC) por país · Sonnet M · ~3 % · `research/prompts/C31-inflacion.md`
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
-- C39 · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
+- C39 ◐ en parte · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
 - C42 · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
 - C58 ◐ en parte · Centro · Fichas políticas de 12 países (UE: España, Alemania, Francia, Italia, P · Sonnet M · ~3 % · `research/prompts/C58-fichas-politicas-paises.md`
 - C59 ◐ en parte · Centro · Indicadores económicos por país (IPC, paro total y juvenil, PIB, deuda, · Sonnet M · ~3 % · `research/prompts/C59-indicadores-sociales-economicos.md`
@@ -137,7 +135,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [media] 2026-10-23 (20 d) · El futuro continuo del Brent cierra en $111,97
 - [media] 2026-10-23 (20 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí
 - [media] 2026-10-23 (20 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
-- … y 73 más en el Seguimiento
+- … y 76 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (1) → W03 · KR/tokenizacion
@@ -145,7 +143,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 🟡 Radar regulatorio: Celdas sin dato (29) → W03 · Más huecos: EG 5, ES 5, ET 4, IN 2, BRICS 2
 
 ## Bots con problema
-- Votos de noticias, Despertador de la app, Verificación mensual, Paneles de datos
+- Despertador de la app, Verificación mensual, Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-03 · EE. UU.: elecciones de mitad de mandato (alto) → ✓ revisado (hecho)

@@ -520,6 +520,7 @@ function nRwa(){
   if(r.por_cadena){w.append(el('h3',null,'Por blockchain (DefiLlama [S], automático: las 10 mayores de '+r.por_cadena.n_cadenas+', más XRPL y Stellar)'));
     w.append(tabla([{t:'#',n:1,f:c=>c.puesto},{t:'Cadena',f:c=>c.cadena},{t:'Valor bloqueado',n:1,f:c=>usd(c.usd)},{t:'% del total',n:1,f:c=>num(c.pct,1)+' %'},{t:'Protocolos',n:1,f:c=>c.n_protocolos}],r.por_cadena.top))}
   if(window.RWAM){const m=window.RWAM;w.append(el('h3',null,'Valor tokenizado por cadena (RWA.xyz [S], manual, leído '+m.leido+')'));
+    {const dias=Math.floor((Date.now()-new Date(m.leido+'T00:00:00Z').getTime())/86400000);if(dias>=7)w.append(el('div','aviso-s','⚠ Dato manual leído hace '+dias+' días ('+m.leido+'): puede estar desfasado. Releer en RWA.xyz antes de fiarse de las cifras.'))}
     w.append(tabla([{t:'Cadena',f:c=>c.cadena},{t:'Distribuido',n:1,f:c=>usd(c.distribuido)},{t:'Representado',n:1,f:c=>usd(c.representado)},{t:'Emisores con cifra',f:c=>c.emisores}],m.cadenas));
     w.append(el('div','nota-v',m.nota+' '+m.pendiente))}
   w.append(el('div','nota-v',r.nota));return w}
