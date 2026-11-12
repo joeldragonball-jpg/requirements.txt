@@ -12,3 +12,11 @@ Contexto: hay ≈ 1.655 menciones de [VERIFICAR] en 155 archivos (sobre todo los
 Haz: 1) con `python scripts/buscar_informes.py "VERIFICAR" -n 30` elige 15-20 de los más RELEVANTES (cripto, regulación, ETF, macro, fiscalidad cripto de España; deja inmobiliaria y startups para el final); 2) para cada uno busca la fuente primaria, lee el dato y decide: confirmado [P] / corregido / sigue sin verificar (explica por qué); 3) anótalos en `informes/research/verificaciones-consolidado.md` (tabla: ID, afirmación, archivo de origen, resultado, fuente y fecha) añadiendo siempre al final, nunca borrando; 4) si un resultado cambia un dato de `explorador/*.json` o `cerebro/documentos/`, corrígelo añadiendo, no reescribiendo (regla del cerebro: solo líneas nuevas).
 Salida: el consolidado y un conteo «cerrados / quedan» para el Seguimiento.
 ```
+
+## Regla de umbrales y verbos de movimiento (12-nov-2026, decisión de Joel)
+Un titular con «supera», «cae por debajo de», «toca», «sube a» o «alcanza» un nivel NO dice que el nivel se mantenga al cierre: basta con que ocurriera en algún momento del día. Antes de poner «desmentido»:
+1. Compara el mismo DÍA que la noticia (nunca el día anterior) y, si se puede, la HORA de publicación.
+2. Mira el máximo o mínimo intradía además del cierre; si solo supera/cae intradía, el estado es «matizado» (cierto en ese momento, no al cierre), no «desmentido».
+3. Distingue instrumento: futuro (contrato y mes) frente a spot, Brent frente a WTI, rendimiento ^TNX frente a la curva oficial del Tesoro (cierre).
+4. «Desmentido» solo si ningún dato del día y de la hora, en ninguna serie razonable, respalda el titular. Si el intradía no se puede leer: «dudoso» + [VERIFICAR].
+
