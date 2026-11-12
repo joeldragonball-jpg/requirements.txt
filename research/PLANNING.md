@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-12 12:39 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-12 13:05 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -110,14 +110,9 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 
 ## Auditorías abiertas
-- A1 (Media): Abierto: voces.json lo está editando otra sesión (W06); propuesta: v002→cumplido con la nota del 28-oct; v062→
-- A2 (Media): Abierto: propuesta, mostrar «P + novedades S» o añadir url a HK ETF
-- A3 (Media): Parcial: antes faltaban 23. Abierto: 9 celdas
-- A4 (Baja): Abierto
-- A5 (Media): Abierto: propuesta, 2-3 canales o analistas críticos o neutrales en el próximo lote de vídeos
-- A7 (Media): Abierto
-- A8 (Baja): Abierto solo v062
-- A9 (Baja): Cerrado (W07)
+- T4 (Baja): Omisiones de fuentes: BdE en Bonos, BoE en Deuda, cifras manuales en Liquidez e Indicadores
+- T7 (Baja): Hueco jun-2026 en la API del BCE, causa sin explicar [VERIFICAR]
+- T8 (Baja): «+3» de la Cámara se mide desde 2024 (215 D), no desde hoy [VERIFICAR]
 - Auditoría mensual W08: última semana del mes (miércoles)
 
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
@@ -128,14 +123,14 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
 - [alta] 2026-11-11 (1 d) · La Fed está dividida sobre el ritmo de las subidas de tipos.
+- [alta] 2026-11-12 (0 d) · Explosiones de petroleros en el Estrecho de Ormuz.
+- [alta] 2026-11-12 (0 d) · La oferta de stablecoins cae 14.200 M$ en 30 días, el mayor descenso desde junio de 2022.
 - [media] 2026-10-22 (21 d) · hutiES a Arabia Saudi
 - [media] 2026-10-22 (21 d) · hutiES a Arabia Saudi
 - [media] 2026-10-22 (21 d) · hutiES a Arabia Saudi
 - [media] 2026-10-23 (20 d) · El futuro continuo del Brent cierra en $111,97
 - [media] 2026-10-23 (20 d) · El futuro continuo del Brent cierra en $111,97
-- [media] 2026-10-23 (20 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí
-- [media] 2026-10-23 (20 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
-- … y 76 más en el Seguimiento
+- … y 81 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (1) → W03 · KR/tokenizacion
