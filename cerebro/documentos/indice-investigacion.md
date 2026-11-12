@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-11-11
+actualizado: 2026-11-12
 ---
 # Índice de la investigación
 
@@ -42,9 +42,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-10 · W01c · IPC de EE. UU. de octubre-2026: contraste con FRED y reacción del mercado (10-nov-2026) (`informes/research/2026-11-10-W01c-ipc-fred-mercado.md`): Cierra los [VERIFICAR] de 2026 11 10 W01b ipc dato.md . Informativo; no es una recomendación de compra/venta. [P] = fuente oficial leída; [S] =…
 
 ## Cripto y ETF
+- 2026-11-12 · W04 · ETF de XRP/XLM, flujos y 13F · 12-nov-2026 (pasada corta, solo búsqueda web) (`informes/research/2026-11-12-W04-etf.md`): Alcance: sin leer EDGAR ni emisores (no hubo Chrome en esta rutina desatendida): todo [S] o [VERIFICAR].
 - 2026-11-11 · Ripple y XRPL: novedades oct-nov 2026 (EV) (`informes/research/2026-11-11-EV-ripple-xrpl-novedades-noviembre.md`): Nivel: [P] primaria leída hoy · [S] secundaria · [VERIFICAR] sin confirmar. Solo lo nuevo o corregido; lo anterior está en R09P, R13, R23 y R25.
 - 2026-11-11 · EV · XRP en mínimo (~1,06 $) y flujos de ETF (`informes/research/2026-11-11-EV-xrp-xlm-minimo-y-flujos-etf.md`): 9 nov: XRP cayó a ~1,08 $, mínimo desde agosto; −6,7 % en 24 h, capitalización ~70.000 M$; desde ~1,55 $ de inicios de octubre y ~70 % bajo el máximo…
-- 2026-11-11 · EV · Stellar: Protocolo 30 «Bell» (`informes/research/2026-11-11-EV-stellar-protocolo-30-bell.md`): Votación de mainnet: 23 nov 2026, 17:00 UTC ; las fuentes coinciden. Un titular de Coinotag dice «24 de noviembre» pero su cuerpo y el resto dicen 23…
 
 ## Regulación por país
 - 2026-11-11 · W03 · Japón y Singapur: comprobación de huecos (11-nov-2026) (`informes/research/2026-11-11-W03-japon-singapur.md`): Japón · ETF (celda sigue en [S]). Las «Prioridades estratégicas de la FSA, jul 2026 a jun 2027» (15 sep 2026; PDF en fsa.go.jp, leído [P]) solo…
@@ -52,9 +52,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-11 · EV · Corea: la FSC cierra comentarios sobre valores tokenizados (`informes/research/2026-11-11-EV-corea-fsc-tokenizacion.md`): La Comisión de Servicios Financieros (FSC) de Corea abrió consulta sobre las normas de desarrollo de los valores tokenizados (acciones, bonos, fondos…
 
 ## Sesiones diarias (apertura y cierre)
+- 2026-11-12 · Informe de APERTURA — 2026-11-12 (jue) (`informes/2026-11-12-apertura.md`): Futuros S&P −0,5 % tras máximo; VIX 17,5.
 - 2026-11-11 · Informe de CIERRE — 2026-11-11 (mié) (`informes/2026-11-11-cierre.md`): S&P +1,3 % (máximo de la serie), Nasdaq +1,6 %, VIX 17,6; chips +6,0 %.
 - 2026-11-11 · Informe de APERTURA — 2026-11-11 (mié) (`informes/2026-11-11-apertura.md`): Futuros S&P +0,8 %, VIX 18,7: apetito por riesgo al alza.
-- 2026-11-10 · W09 · Resumen semanal (martes 10-nov-2026) y plan del 11-22 nov (`informes/research/2026-11-10-W09-resumen-semanal.md`): Semana de petróleo a la baja (−16 %), rebote bursátil del 9 nov y cripto débil (XRP 1,09 $).
 
 ## Otros
 - 2026-11-11 · SEC · SR-ISE-2026-42: decisión conocida (aprobada el 10-nov-2026) (`informes/research/2026-11-11-SEC-ISE-42.md`): La SEC aprobó SR ISE 2026 42 el 10 nov 2026 (orden 34 106863, aprobación acelerada, autoridad delegada, sobre la Enmienda 2) [P].

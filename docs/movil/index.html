@@ -737,6 +737,9 @@ function cargarHoja(j){   // El Seguimiento vive en una Google Sheet publicada c
       const cuando = /^\d{5}$/.test(o.cuando) ? new Date(Date.UTC(1899, 11, 30) + (+o.cuando) * 86400000).toISOString().slice(0, 10) : o.cuando;
       return {id: o.id, tema: o.tema.slice(0, 120), estado: est, origen: o.origen, detalle: o.detalle.slice(0, 200), est: o.est, real: o.real, prompt: o.prompt, cuando, falta: o.falta, bloqueo: o.bloqueo}; });
     if (todo.length < 20) return;   // hoja vacía o rota: no pisar el respaldo
+    // C256: la hoja puede ir por detrás de research/tareas.csv. Lo que solo está en seguimiento.json se conserva (en ids comunes manda la hoja).
+    const enHoja = new Set(todo.map(t => t.id)), soloRepo = (j.todo || []).filter(t => t.id && !enHoja.has(t.id));
+    todo.push(...soloRepo); j.soloRepo = soloRepo.length;
     const cont = todo.filter(t => ['hecha', 'pendiente', 'parcial'].includes(t.estado)), ab = t => t.estado === 'pendiente' || t.estado === 'parcial';
     const por = {}; ['R', 'T', 'D'].forEach(o => por[o] = {hechas: cont.filter(t => t.origen === o && t.estado === 'hecha').length, pendientes: cont.filter(t => t.origen === o && ab(t)).length});
     const abiertas = new Set(todo.filter(ab).map(t => t.id));
