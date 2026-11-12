@@ -1,13 +1,143 @@
 {
   "titulo": "Petróleo y guerra: últimos hitos",
   "informe": "informes/research/2026-10-30-C29-energia-guerra-noticias.md",
-  "nota": "Brent y WTI: futuros continuos (Yahoo BZ=F / CL=F), último valor horario del día en UTC; antes = día anterior, después = día del hito. Contrato y cierre pueden diferir de otras fuentes; el spot de la EIA/FRED no es comparable. Coincidencia en el tiempo no prueba causa. Sin recomendaciones. Spot de la EIA (RBRTED y RWTCD, leídos con Chrome el 11-nov-2026) [P]: Brent 125,39 (22-oct) y 128,30 (23-oct), WTI 104,27 y 109,72; Brent 107,03 (3-nov), 91,84 (4-nov), 97,96 (5-nov), 97,83 (6-nov), 91,03 (9-nov) y 90,16 (10-nov); WTI 90,40 (9-nov) y 89,62 (10-nov). Diferencial Brent-WTI 0,54 USD el 10-nov (≈19 USD el 23-oct). No comparable con los futuros de los hitos; [VERIFICAR] si el spot EIA/Refinitiv difiere del futuro ICE.",
+  "nota": "Brent y WTI: futuros continuos (Yahoo BZ=F / CL=F), último valor horario del día en UTC; antes = día anterior, después = día del hito. Contrato y cierre pueden diferir de otras fuentes; el spot de la EIA/FRED no es comparable. Coincidencia en el tiempo no prueba causa. Sin recomendaciones. Spot de la EIA (RBRTED y RWTCD, leídos con Chrome el 11-nov-2026) [P]: Brent 125,39 (22-oct) y 128,30 (23-oct), WTI 104,27 y 109,72; Brent 107,03 (3-nov), 91,84 (4-nov), 97,96 (5-nov), 97,83 (6-nov), 91,03 (9-nov) y 90,16 (10-nov); WTI 90,40 (9-nov) y 89,62 (10-nov). Diferencial Brent-WTI 0,54 USD el 10-nov (≈19 USD el 23-oct). No comparable con los futuros de los hitos; [VERIFICAR] si el spot EIA/Refinitiv difiere del futuro ICE. Contrato: cada cifra de futuro es el contrato de enero salvo que se indique; el de diciembre expiró el 30-oct en 117,64 $ (corregido 12-nov, C253).",
   "hitos": [
-    {"fecha": "2026-10-09", "hecho": "Trump dice que no atacará Irán antes de las elecciones del 3-nov (titular del bot; fuente primaria sin abrir)", "nivel": "S", "brent": [103.82, 104.72], "wti": [91.17, 91.85], "lectura": "Al cierre sube un 0,9 %; solo el tramo intradía bajó un 0,6 %: sin efecto claro"},
-    {"fecha": "2026-10-16", "hecho": "Salto de Brent y WTI sin causa documentada en el repo", "nivel": "VERIFICAR", "brent": [105.62, 109.86], "wti": [96.15, 99.02], "lectura": "Mayor subida diaria del mes en futuros; causa por verificar"},
-    {"fecha": "2026-10-21", "hecho": "El bot recoge «el Brent supera 110 $ al fallar las conversaciones con Irán» (15:20 UTC)", "nivel": "S", "brent": [109.34, 110.04], "wti": [98.42, 97.99], "lectura": "El pico de 110,5 $ fue intradía; el cierre apenas sube"},
-    {"fecha": "2026-10-22", "hecho": "Ataques hutíes a Arabia Saudí (dron en Shaybah de Aramco); Irán dice que alcanzó 7 petroleros, CENTCOM lo desmiente", "nivel": "S", "brent": [110.04, 113.08], "wti": [97.99, 99.29], "lectura": "Máximo de cierre desde el 4-may; la cifra de barcos sigue disputada"},
-    {"fecha": "2026-10-23", "hecho": "Titulares de «114 $» y «117 $» por ataques a infraestructura saudí", "nivel": "S", "brent": [113.08, 111.70], "wti": [99.29, 103.27], "lectura": "Máximo intradía 114,4 $; cierra un 1,2 % por debajo: no citar el máximo como cierre"},
-    {"fecha": "2026-10-26", "hecho": "Mediadores de Catar llegan a Teherán; FT: Irán recibe enviados saudíes, paquistaníes y turcos; Trump: sin ataque el domingo, opción abierta", "nivel": "S", "brent": [111.70, 110.37], "wti": [103.27, 101.49], "lectura": "Del máximo del viernes (114,4) al mínimo del lunes (109,4): −4,4 %. Cierre a cierre, solo −1,2 %. El spot de la EIA cae un 4,1 % del 23 al 27-oct"}
+    {
+      "fecha": "2026-10-09",
+      "hecho": "Trump dice que no atacará Irán antes de las elecciones del 3-nov (titular del bot; fuente primaria sin abrir)",
+      "nivel": "S",
+      "brent": [
+        103.82,
+        104.72
+      ],
+      "wti": [
+        91.17,
+        91.85
+      ],
+      "lectura": "Al cierre sube un 0,9 %; solo el tramo intradía bajó un 0,6 %: sin efecto claro"
+    },
+    {
+      "fecha": "2026-10-16",
+      "hecho": "Salto de Brent y WTI sin causa documentada en el repo",
+      "nivel": "VERIFICAR",
+      "brent": [
+        105.62,
+        109.86
+      ],
+      "wti": [
+        96.15,
+        99.02
+      ],
+      "lectura": "Mayor subida diaria del mes en futuros; causa por verificar"
+    },
+    {
+      "fecha": "2026-10-21",
+      "hecho": "El bot recoge «el Brent supera 110 $ al fallar las conversaciones con Irán» (15:20 UTC)",
+      "nivel": "S",
+      "brent": [
+        109.34,
+        110.04
+      ],
+      "wti": [
+        98.42,
+        97.99
+      ],
+      "lectura": "El pico de 110,5 $ fue intradía; el cierre apenas sube"
+    },
+    {
+      "fecha": "2026-10-22",
+      "hecho": "Ataques hutíes a Arabia Saudí (dron en Shaybah de Aramco); Irán dice que alcanzó 7 petroleros, CENTCOM lo desmiente",
+      "nivel": "S",
+      "brent": [
+        110.04,
+        113.08
+      ],
+      "wti": [
+        97.99,
+        99.29
+      ],
+      "lectura": "Máximo de cierre desde el 4-may; la cifra de barcos sigue disputada"
+    },
+    {
+      "fecha": "2026-10-23",
+      "hecho": "Titulares de «114 $» y «117 $» por ataques a infraestructura saudí",
+      "nivel": "S",
+      "brent": [
+        113.08,
+        111.7
+      ],
+      "wti": [
+        99.29,
+        103.27
+      ],
+      "lectura": "Máximo intradía 114,4 $; cierra un 1,2 % por debajo: no citar el máximo como cierre"
+    },
+    {
+      "fecha": "2026-10-26",
+      "hecho": "Mediadores de Catar llegan a Teherán; FT: Irán recibe enviados saudíes, paquistaníes y turcos; Trump: sin ataque el domingo, opción abierta",
+      "nivel": "S",
+      "brent": [
+        111.7,
+        110.37
+      ],
+      "wti": [
+        103.27,
+        101.49
+      ],
+      "lectura": "Del máximo del viernes (114,4) al mínimo del lunes (109,4): −4,4 %. Cierre a cierre, solo −1,2 %. El spot de la EIA cae un 4,1 % del 23 al 27-oct"
+    },
+    {
+      "fecha": "2026-11-02",
+      "hecho": "El Brent cae ≈7 % por «señales diplomáticas con Irán»; UKMTO sigue registrando incidentes en Ormuz (R00 2-nov, CNBC)",
+      "nivel": "S",
+      "brent": [
+        113.43,
+        104.77
+      ],
+      "lectura": "Contrato de enero (CNBC): el de diciembre expiró el 30-oct en 117,64 $; comparar con 113,43 $ (mismo contrato) da −7,6 %, no −10 %. Causa no leída en fuente primaria"
+    },
+    {
+      "fecha": "2026-11-04",
+      "hecho": "Brent −8,4 % y WTI −8,0 % sin causa verificada (cierres de Yahoo, contrato de enero)",
+      "nivel": "S",
+      "brent": [
+        103.6,
+        94.93
+      ],
+      "wti": [
+        96.09,
+        88.36
+      ],
+      "lectura": "Mínimo de la serie reciente. Frente al mismo contrato del 30-oct (113,43 $) es −16,3 %; frente a 117,64 $ (diciembre) parecía −19 %: contratos distintos"
+    },
+    {
+      "fecha": "2026-11-05",
+      "hecho": "Rebote del Brent (+4,0 %) tras la caída del 4-nov; causa no verificada",
+      "nivel": "S",
+      "brent": [
+        94.62,
+        98.45
+      ],
+      "wti": [
+        88.12,
+        90.65
+      ],
+      "lectura": "Cierres de Yahoo, contrato de enero; la serie diaria difiere unas décimas del cierre del informe del día anterior"
+    },
+    {
+      "fecha": "2026-11-06",
+      "hecho": "«Ataque a barcos en el Estrecho de Ormuz» (titular del 6-nov) sin fuente primaria; el Brent apenas se mueve",
+      "nivel": "VERIFICAR",
+      "brent": [
+        98.45,
+        97.83
+      ],
+      "wti": [
+        90.65,
+        90.41
+      ],
+      "lectura": "−0,6 %: ningún salto visible. De 113,43 $ (30-oct, enero) a 97,83 $ el 6-nov: −13,8 % (cálculo propio, mismo contrato)."
+    }
   ]
 }

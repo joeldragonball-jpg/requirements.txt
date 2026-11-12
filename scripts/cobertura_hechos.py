@@ -1,5 +1,5 @@
 """C237 (9-nov-2026): cobertura de los hechos P de informes/hechos/lote-NN.jsonl frente a TODOS los JSON de explorador/
-(no solo la Línea de tiempo). Local, sin IA ni red. Uso: python scripts/cobertura_hechos.py salida.json
+(no solo la Línea de tiempo). Local, sin IA ni red. Uso: python scripts/cobertura_hechos.py [salida.json] (sin argumento: carpeta temporal del sistema)
 Puntuación: cifras del hecho encontradas (70 %) + palabras largas (30 %). >=0,6 «está», 0,4-0,6 «dudoso», <0,4 «falta».
 Es heurística: revisar a mano con Grep antes de volcar."""
 import json,re,glob,collections,sys
@@ -30,7 +30,10 @@ for h in P:
         s=(nc/len(cf) if cf else 0)*0.7+ (nt/max(1,len(tk)))*0.3 if cf else (nt/max(1,len(tk)))*0.6
         if s>best[0]: best=(s,f)
     h["_s"]=round(best[0],2); h["_f"]=best[1]; out.append(h)
-json.dump(out,open(sys.argv[1],"w",encoding="utf-8"),ensure_ascii=False)
+import tempfile
+SALIDA=sys.argv[1] if len(sys.argv)>1 else str(pathlib.Path(tempfile.gettempdir())/"cobertura_hechos.json")  # C256: ruta por defecto
+json.dump(out,open(SALIDA,"w",encoding="utf-8"),ensure_ascii=False)
+print("salida:",SALIDA)
 c=collections.Counter()
 for h in out: c[(h.get("ambito"), "esta" if h["_s"]>=0.6 else ("dudoso" if h["_s"]>=0.4 else "falta"))]+=1
 for a in sorted({k[0] for k in c},key=lambda a:-sum(v for k,v in c.items() if k[0]==a)):

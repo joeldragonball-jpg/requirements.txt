@@ -271,6 +271,25 @@ def ultimo_w(ident):
     return max(fechas) if fechas else None
 
 
+def evento_leido(ident, desde, titulo, fecha):
+    """C256: True solo si un informe de la rutina (fecha >= desde) lleva una línea «Eventos leídos: ...» que nombra el evento
+    (por su fecha ISO o por el comienzo del título). Ejecutar la rutina no basta: el dato debe haberse leído."""
+    patrones = [f"*-{ident}-*.md"] + EQUIV.get(ident, [])
+    clave = titulo.lower()[:25]
+    for pat in patrones:
+        for f in (RAIZ / "informes" / "research").glob(pat):
+            if not re.match(r"\d{4}-\d{2}-\d{2}", f.name) or f.name[:10] < desde:
+                continue
+            try:
+                for ln in f.read_text(encoding="utf-8").splitlines():
+                    m = re.match(r"\W*eventos? le[íi]dos?\s*:(.*)", ln, re.I)
+                    if m and (fecha in m.group(1) or clave in m.group(1).lower()):
+                        return True
+            except Exception:
+                continue
+    return False
+
+
 def rutinas():
     hoy = date.today()
     out = []
@@ -687,13 +706,15 @@ def eventos_calendario():
         if hoy - timedelta(days=10) <= fin < hoy and (imp == "alto" or (imp == "medio" and r)):
             clave = f"{e['fecha']}|{e['titulo'][:30]}"
             por_id = next((v for v in revisados.values() if e.get("id") and v.get("id") == e["id"]), None)
+            leido = False
             if por_id or clave in revisados:
                 estado, detalle = "revisado", (por_id or revisados[clave]).get("estado", "hecho")
             elif r and (ultimo_w(r["rutina"]) or "") >= fin.isoformat():
                 estado, detalle = "cubierto", f"{r['rutina']} del {ultimo_w(r['rutina'])}"
+                leido = evento_leido(r["rutina"], fin.isoformat(), e["titulo"], e["fecha"])
             else:
                 estado, detalle = "por_revisar", ""
-            pasados.append({**base, "estado": estado, "detalle": detalle})
+            pasados.append({**base, "estado": estado, "detalle": detalle, "leido": estado == "cubierto" and leido})
         elif fin >= hoy and ini <= hoy + timedelta(days=14) and (imp in ("alto", "medio")):
             proximos.append({**base, "en_curso": ini < hoy})
     return {"pasados": pasados, "proximos": proximos}
@@ -813,10 +834,11 @@ def planning_md(d):
     ev = d.get("eventos") or {"pasados": [], "proximos": []}
     L += ["", "## Calendario: ya pasaron (10 días) y qué falta decidir"]
     for e in ev["pasados"]:
-        marca = {"cubierto": f"✓ cubierto por {e['detalle']}", "revisado": f"✓ revisado ({e['detalle']})", "por_revisar": "⏳ SIN research: decidir (EV)"}[e["estado"]]
+        marca = {"cubierto": (f"✓ cubierto por {e['detalle']} (dato leído)" if e.get("leido") else f"◐ rutina ejecutada ({e['detalle']}); dato sin marcar como leído"), "revisado": f"✓ revisado ({e['detalle']})", "por_revisar": "⏳ SIN research: decidir (EV)"}[e["estado"]]
         L.append(f"- {e['fecha']} · {e['titulo'][:70]} ({e['impacto']}) → {marca}")
     if not ev["pasados"]:
         L.append("- ninguno")
+    L.append("«✓ cubierto» exige que el informe de la rutina tenga una línea `Eventos leídos: <fecha o título>`; sin ella solo consta que la rutina se ejecutó (C256).")
     L.append("Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.")
     L += ["", "## Calendario: próximos 14 días de impacto y qué los cubre"]
     for e in ev["proximos"][:12]:
