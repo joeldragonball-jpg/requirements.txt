@@ -117,6 +117,10 @@ a{color:var(--ac)}
 .jus-hecho{border-left:3px solid var(--ac);padding:2px 0 2px 10px;margin:8px 0}.jus-hecho b{color:var(--ac);font-size:var(--fs-s)}.jus-hecho p{font-size:var(--fs);color:var(--tx);margin:2px 0;line-height:1.45}
 .jus-pend,.jus-prensa{background:var(--nul);border-radius:8px;padding:6px 10px;margin-top:8px;font-size:var(--fs-s);color:var(--tx)}.jus-pend b{color:#e8b64a}.jus-prensa b{color:var(--tx2)}.jus-pend ul,.jus-prensa ul{margin:4px 0}
 .jus-sin{opacity:.92}
+.rej.jus-grid{display:block;columns:360px;column-gap:var(--gap)}.jus-card{break-inside:avoid;margin-bottom:var(--gap)}
+.jus-card.jus-ancha{column-span:all}.jus-ancha .jus-hechos{column-width:360px;column-gap:22px}.jus-ancha .jus-hecho{break-inside:avoid}
+.jus-mas{margin-top:4px}.jus-mas summary{cursor:pointer;color:var(--ac);font-size:var(--fs-s);padding:4px 0}
+.jus-quien{font-size:var(--fs-s);color:var(--tx2);margin:2px 0 6px}.jus-quien b{color:var(--tx)}
 .nota-v{color:var(--tx2);font-size:14px;margin:4px 0}
 .que{color:var(--tx2);font-size:14.5px;margin:2px 0 6px}
 details.bl{margin-bottom:clamp(4px,.5vw,10px)}details.bl>summary{cursor:pointer;font-weight:600;padding:4px 0}.ms{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(88px,.9fr) minmax(110px,1.2fr) minmax(86px,.8fr);gap:10px;align-items:center;padding:7px 10px;margin:2px 0;border:1px solid var(--lin);border-radius:8px;background:var(--panel);list-style:none}details.bl>summary.ms::-webkit-details-marker{display:none}.ms:hover{background:#1b2640;border-color:var(--ac)}details[open]>summary.ms{background:#1b2640;border-color:var(--ac)}.ms .nm{font-weight:700;color:var(--tx);letter-spacing:.01em}.ms .nm::before{content:'▸  ';color:var(--ac)}details[open]>summary.ms .nm::before{content:'▾  '}.ms .im{font-weight:700;color:#f1d58a;text-align:right;white-space:nowrap}.ms .im small{color:var(--tx2);font-weight:400;font-size:max(13px,.8em)}.ms .pc{position:relative;height:20px;background:var(--nul);border-radius:5px;overflow:hidden}.ms .pc i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#27578f,var(--ac))}.ms .pc b{position:relative;display:block;padding-left:7px;font-size:max(13px,.85em);color:#fff;line-height:20px;white-space:nowrap;text-shadow:0 1px 2px #000}.ms .hb{color:var(--tx2);font-size:max(13px,.86em);text-align:right;white-space:nowrap}.ms .hb em{font-style:normal;color:var(--tx);font-weight:600}.pb{display:inline-block;position:relative;min-width:110px;height:18px;background:var(--nul);border-radius:4px;overflow:hidden;vertical-align:middle}.pb i{position:absolute;top:0;bottom:0;left:0;background:#27578f}.pb b{position:relative;padding-left:6px;font-size:max(13px,.88em);line-height:18px}@media(max-width:700px){.ms{grid-template-columns:1fr 1fr}.ms .nm{grid-column:1/-1}}
@@ -2167,11 +2171,16 @@ function pEspana(){
       const hs=(cs.hechos_judiciales||[]).slice().sort((x,y)=>(y.fecha||'').localeCompare(x.fecha||''));
       const t=el('div','tarj jus-card'+(hs.length?'':' jus-sin'));
       t.append(el('h4',null,cs.nombre));
-      const ch=el('div','jus-chips');ch.append(el('span','jus-chip '+(hs.length?'ok':'no'),hs.length?'Con hechos oficiales':'Sin comprobar'));ch.append(el('span','jus-chip',cs.tribunal));t.append(ch);
+      const ch=el('div','jus-chips');ch.append(el('span','jus-chip '+(hs.length?'ok':'no'),hs.length?'Con hechos oficiales':'Sin comprobar'));ch.append(el('span','jus-chip',cs.tribunal));if(cs.tipo)ch.append(el('span','jus-chip',cs.tipo));t.append(ch);
       t.append(el('p','jus-fase','Fase: '+cs.fase));
+      if(cs.gobierno_epoca||cs.responsables){const q=el('p','jus-quien');if(cs.responsables){q.append(el('b',null,'Cargo implicado: '));q.append(document.createTextNode(cs.responsables+'. '))}if(cs.gobierno_epoca){q.append(el('b',null,'Gobierno en ese momento: '));q.append(document.createTextNode(cs.gobierno_epoca))}t.append(q)}
       if(!hs.length)t.append(el('p','jus-tx','Todavía no hay ningún hecho de fuente oficial leído para este caso [VERIFICAR].'));
-      for(const h of hs){const q=el('div','jus-hecho');q.append(el('b',null,fch(h.fecha)));q.append(el('p',null,h.texto+' '));
-        if(/^https?:/.test(h.fuente||'')){const a=el('a',null,'Ver nota oficial');a.href=h.fuente;a.target='_blank';a.rel='noopener';q.lastChild.append(a)}t.append(q)}
+      const hecho=h=>{const q=el('div','jus-hecho');q.append(el('b',null,fch(h.fecha)));q.append(el('p',null,h.texto+' '));
+        if(/^https?:/.test(h.fuente||'')){const a=el('a',null,'Ver nota oficial');a.href=h.fuente;a.target='_blank';a.rel='noopener';q.lastChild.append(a)}return q};
+      const cont=el('div','jus-hechos');
+      if(hs.length>6){t.classList.add('jus-ancha');for(const h of hs)cont.append(hecho(h));t.append(cont)}
+      else{for(const h of hs.slice(0,3))cont.append(hecho(h));t.append(cont);
+        if(hs.length>3){const dt=el('details','jus-mas');dt.append(el('summary',null,'Ver '+(hs.length-3)+' hechos más'));for(const h of hs.slice(3))dt.append(hecho(h));t.append(dt)}}
       if((cs.filtraciones_prensa||[]).length){const q=el('div','jus-prensa');q.append(el('b',null,'Prensa (no oficial)'));const u=el('ul');for(const x of cs.filtraciones_prensa)u.append(el('li',null,typeof x==='string'?x:(x.texto||JSON.stringify(x))));q.append(u);t.append(q)}
       if((cs.opinion||[]).length){const q=el('div','jus-prensa');q.append(el('b',null,'Opinión'));const u=el('ul');for(const x of cs.opinion)u.append(el('li',null,typeof x==='string'?x:(x.texto||JSON.stringify(x))));q.append(u);t.append(q)}
       if((cs.pendiente||[]).length){const q=el('div','jus-pend');q.append(el('b',null,'Falta por comprobar'));const u=el('ul');for(const x of cs.pendiente)u.append(el('li',null,x));q.append(u);t.append(q)}
