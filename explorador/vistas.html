@@ -2163,9 +2163,9 @@ function pEspana(){
     const MES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
     const fch=f=>{const m=/^(\d{4})-(\d\d)-(\d\d)$/.exec(f||'');return m?(+m[3])+' '+MES[+m[2]-1]+' '+m[1]:(f||'')};
     const intro=el('div','jus-intro');
-    intro.append(el('p',null,'Aquí van solo los hechos que el Poder Judicial publica en sus notas de prensa, cada uno con su fecha y su enlace. Una investigación no es una condena: hasta que hay sentencia firme rige la presunción de inocencia.'));
+    intro.append(el('p',null,'Aquí van solo hechos de fuente oficial leída (notas del Poder Judicial, Tribunal de Cuentas, Fiscalía Europea, Comisión Europea, CNMC, Guardia Civil), cada uno con su fecha y su enlace. Una investigación o una auditoría no es una condena: hasta que hay sentencia firme rige la presunción de inocencia. «Gobierno en ese momento» solo sitúa el caso en el tiempo; no atribuye responsabilidad a ese gobierno.'));
     intro.append(el('p',null,'Cada tarjeta es un caso. Arriba, en qué fase está; debajo, lo que ha pasado en orden de fechas; al final, lo que todavía no se ha comprobado. Si pone «Sin comprobar», no hay ningún hecho oficial leído y no se debe dar nada por cierto.'));
-    intro.append(el('p',null,'Cómo leerlo: no hay cifras ni sumas aquí, solo casos (n.º) y fechas. La lista no es exhaustiva ni indica gravedad o importancia, y que un caso no aparezca no significa nada. Siglas: TSJCV = Tribunal Superior de Justicia de la Comunidad Valenciana; EPPO = Fiscalía Europea; CIAF = Comisión de Investigación de Accidentes Ferroviarios; suplicatorio = petición al Parlamento para poder procesar a quien tiene inmunidad; ejecutoria = fase en que se hace cumplir una sentencia; aforamiento = derecho a ser juzgado por un tribunal superior. Los importes en € son los que cita la nota oficial.'));
+    intro.append(el('p',null,'Cómo leerlo: aquí no se suma nada, solo hay casos (n.º) y fechas. La lista no es exhaustiva ni indica gravedad o importancia, y que un caso no aparezca no significa nada. La etiqueta de cada tarjeta dice de qué tipo es: UCO o Guardia Civil (investigación policial), UE (Fiscalía Europea o Comisión), Presupuesto (fiscalización del Tribunal de Cuentas, que es una auditoría y no un proceso penal), Accidente, o Histórico (causas antiguas con sentencia o juicio). Siglas: PRTR = plan de recuperación con fondos europeos; FROB = fondo público que rescató a la banca; TSJCV = Tribunal Superior de Justicia de la Comunidad Valenciana; EPPO = Fiscalía Europea; CIAF = Comisión de Investigación de Accidentes Ferroviarios; suplicatorio = petición al Parlamento para poder procesar a quien tiene inmunidad; ejecutoria = fase en que se hace cumplir una sentencia; aforamiento = derecho a ser juzgado por un tribunal superior. Los importes en € son los que cita la nota oficial.'));
     const g=el('div','rej jus-grid');
     for(const cs of JU.casos.slice().sort((x,y)=>((x.hechos_judiciales||[]).length>6)-((y.hechos_judiciales||[]).length>6))){
       const hs=(cs.hechos_judiciales||[]).slice().sort((x,y)=>(y.fecha||'').localeCompare(x.fecha||''));
@@ -2187,7 +2187,7 @@ function pEspana(){
       if((cs.pendiente||[]).length){const q=el('div','jus-pend');q.append(el('b',null,'Falta por comprobar'));const u=el('ul');for(const x of cs.pendiente)u.append(el('li',null,x));q.append(u);t.append(q)}
       g.append(t)}
     const wj=el('div');wj.append(intro,g);
-    add(bloque('Justicia · casos en curso',null,{nivel:'P',t:'Poder Judicial (notas de prensa) · presunción de inocencia: una investigación no es una condena'},wj,true));
+    add(bloque('Justicia · casos, auditorías y accidentes',null,{nivel:'P',t:'Fuentes oficiales (Poder Judicial, Tribunal de Cuentas, Fiscalía Europea, Comisión Europea, CNMC) · presunción de inocencia: una investigación o una auditoría no es una condena'},wj,true));
   }
   const nav=el('div');nav.style.cssText='margin:10px 0;display:flex;gap:8px;flex-wrap:wrap';
   let panel=null;

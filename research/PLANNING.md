@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-13 13:56 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-13 16:38 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -7,7 +7,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Periódicas (próxima):** W06 11-13 · W09 11-13 · W10 11-14 · W01 11-16 · W02 11-17 · W03 11-18 · W05 11-19 · W08 11-25 · W04 11-26 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (40):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: T15 BRICS, W03E (Irán/Egipto/Etiopía), D08/D09, Ge · C58 falta: Italia y NL ya leídos [P]; faltan: midterms certif · C59 falta: Faltan salario mínimo IT/CN/JP/IN (IT e IN: n/a),  · C61 falta: Vivienda vacía en CN/JP/IN/GB/RU; LPI y paro total · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
-**Hechas en 7 días (13):** C252, C253, C256, C257, C255, C147, C150, C151, C152, C153, C159, C160, C145
+**Hechas en 7 días (14):** C259, C252, C253, C256, C257, C255, C147, C150, C151, C152, C153, C159, C160, C145
 
 ## Hoy (vie 2026-11-13): solo lo casi obligatorio
 - R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 6 días
@@ -79,7 +79,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C247 ◐ en parte · Centro · Verificar prensa pendiente (3.ª tanda 10-nov: Irak/Ormuz, Brent, UE, IP · Sonnet S · ~~3 % · ``
 - C254 ◐ en parte · Centro · Verificar con fuente las dudas abiertas por C252 (STEO de noviembre, st · Fable M · ~~3 % · ``
 - C258 · Órbita · España: actualizar la ejecución del Estado a septiembre de 2026 por sec · Sonnet M · ~~3 % · `Lee research/tareas.csv (C258) y el informe informes/research/2026-11-13-S6-C69-cierre-definitivo-igae.md. La IGAE publicó el 4 y 6-nov-2026 «BOE 09-26» y «MENSUAL 09-26» (su web corta los scripts: leer el PDF en el navegador integrado con pdf.js, o pedir a Joel que lo guarde en research/fuentes/). Sustituye en explorador/espana-presupuesto.json los campos *_2026_ago por septiembre en secciones, políticas y programas, valida cada tabla contra su total y regenera con espana_fiscal.py, construir_movil.py, construir_seguimiento.py y construir_orbita.py.`
-- C259 · Órbita · España · Justicia y responsabilidad pública: ampliar «casos en curso» a · Fable L · ~~6 % · `Amplía explorador/espana-judicial.json (casos[]) más allá de los 11 casos actuales. Incluye, con fuente oficial leída ([P]: notas del CGPJ, Fiscalía, EPPO/OLAF, Tribunal de Cuentas, Tribunal de Cuentas Europeo, BOE, informes de la IGAE o de la CIAF) y [S] solo marcado: (1) investigaciones de la UCO/UDEF o judiciales sobre otros ministerios, organismos y empresas públicas; (2) denuncias, auditorías o expedientes de la UE (EPPO, OLAF, Comisión, Tribunal de Cuentas Europeo) sobre fondos europeos en España; (3) presupuestos mal invertidos o sobrecostes (Tribunal de Cuentas, IGAE, AIReF); (4) fallos o accidentes de gestión pública con cargos implicados. Nuevos campos por caso, ya soportados por vistas.html: tipo (p. ej. «Investigación UCO», «Fondos UE», «Sobrecoste», «Accidente»), responsables (cargo, sin nombre si no hay imputación formal), gobierno_epoca (qué partido gobernaba cuando ocurrieron los hechos: Estado, comunidad o ayuntamiento) para poder comparar gobierno y oposición el mismo año. Presunción de inocencia: una investigación no es una condena; no uses filtraciones como hechos; cada hecho con fecha y enlace. Regenera construir_movil.py, construir_seguimiento.py y construir_orbita.py y revisa la vista Justicia.`
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
 - C39 ◐ en parte · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
@@ -142,7 +141,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 🟡 Radar regulatorio: Celdas sin dato (29) → W03 · Más huecos: EG 5, ES 5, ET 4, IN 2, BRICS 2
 
 ## Bots con problema
-- Votos de noticias, Verificación mensual, Paneles de datos
+- Verificación mensual, Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-03 · EE. UU.: elecciones de mitad de mandato (alto) → ✓ revisado (hecho)
