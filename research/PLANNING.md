@@ -1,20 +1,20 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-12 14:56 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-13 02:15 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** W05 Verificación por lotes · Gemini ETF y flujos
-**Periódicas (próxima):** W04 11-12 · W05 11-12 · W06 11-13 · W09 11-13 · W10 11-14 · W01 11-16 · W02 11-17 · W03 11-18 · W08 11-25 · W07 12-05
+**Hoy (máx. 3):** R00 Apertura del día · W06 Voces y predicciones · W09 Resumen semanal
+**Periódicas (próxima):** W06 11-13 · W09 11-13 · W10 11-14 · W01 11-16 · W02 11-17 · W03 11-18 · W05 11-19 · W08 11-25 · W04 11-26 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (42):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: T15 BRICS, W03E (Irán/Egipto/Etiopía), D08/D09, Ge · C58 falta: Italia y NL ya leídos [P]; faltan: midterms certif · C59 falta: Faltan salario mínimo IT/CN/JP/IN (IT e IN: n/a),  · C61 falta: Vivienda vacía en CN/JP/IN/GB/RU; LPI y paro total · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
-**Hechas en 7 días (19):** C252, C253, C256, C257, C255, C147, C150, C151, C152, C153, C159, C160, C145, C129, C131
+**Hechas en 7 días (13):** C252, C253, C256, C257, C255, C147, C150, C151, C152, C153, C159, C160, C145
 
-## Hoy (jue 2026-11-12): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 5 días
-- Sin rutina fija hoy: elige por prioridad en las secciones de abajo.
+## Hoy (vie 2026-11-13): solo lo casi obligatorio
+- R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 5 días
+- Fija de hoy (viernes: resumen semanal): **W09 Resumen semanal** (~1,5 %) · último 2026-11-10 · `research/prompts/W09-*.md`
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
-- Gemini del día: toca **ETF y flujos** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
+- Gemini del día: toca **Bulos y desmentidos de la semana** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
 - Norma: 1 consulta ligera al día (unas 15 fuentes), sin repetirla. Rutina G (C20): una rotación por día; si Gemini avisa de límite o llegas al 80 %, se para por hoy y se anota en «parada». La cuota se comparte con NotebookLM.
 - Aviso de límite (antes del 2026-10-27): Una consulta de ~47 fuentes lanzada 2-3 veces agotó el límite; la cuota ya estaba gastada en NotebookLM.
 - Aviso de límite (2026-10-27): Tras W03 Sudáfrica+Indonesia, Deep Research queda desactivado hasta las 04:00 (hora de Madrid) del 27-oct, con el uso general en ~4 %. Hizo 200+ búsquedas web aunque el prompt pedía máx. 15 fuentes: el tope del prompt no se respeta. Límite oficial de Deep Research sin confirmar; de momento, 1 Deep Research por ventana (reinicio 04:00).
@@ -109,14 +109,9 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 
 ## Auditorías abiertas
-- A1 (Media): Abierto: voces.json lo está editando otra sesión (W06); propuesta: v002→cumplido con la nota del 28-oct; v062→
-- A2 (Media): Abierto: propuesta, mostrar «P + novedades S» o añadir url a HK ETF
-- A3 (Media): Parcial: antes faltaban 23. Abierto: 9 celdas
-- A4 (Baja): Abierto
-- A5 (Media): Abierto: propuesta, 2-3 canales o analistas críticos o neutrales en el próximo lote de vídeos
-- A7 (Media): Abierto
-- A8 (Baja): Abierto solo v062
-- A9 (Baja): Cerrado (W07)
+- T4 (Baja): Omisiones de fuentes: BdE en Bonos, BoE en Deuda, cifras manuales en Liquidez e Indicadores
+- T7 (Baja): Hueco jun-2026 en la API del BCE, causa sin explicar [VERIFICAR]
+- T8 (Baja): «+3» de la Cámara se mide desde 2024 (215 D), no desde hoy [VERIFICAR]
 - Auditoría mensual W08: última semana del mes (miércoles)
 
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
@@ -126,23 +121,23 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [alta] 2026-11-11 (1 d) · La Fed está dividida sobre el ritmo de las subidas de tipos.
-- [alta] 2026-11-12 (0 d) · Explosiones de petroleros en el Estrecho de Ormuz.
-- [alta] 2026-11-12 (0 d) · La oferta de stablecoins cae 14.200 M$ en 30 días, el mayor descenso desde junio de 2022.
-- [media] 2026-10-22 (21 d) · hutiES a Arabia Saudi
-- [media] 2026-10-22 (21 d) · hutiES a Arabia Saudi
-- [media] 2026-10-22 (21 d) · hutiES a Arabia Saudi
-- [media] 2026-10-23 (20 d) · El futuro continuo del Brent cierra en $111,97
-- [media] 2026-10-23 (20 d) · El futuro continuo del Brent cierra en $111,97
+- [alta] 2026-11-11 (2 d) · La Fed está dividida sobre el ritmo de las subidas de tipos.
+- [alta] 2026-11-12 (1 d) · Explosiones de petroleros en el Estrecho de Ormuz.
+- [alta] 2026-11-12 (1 d) · La oferta de stablecoins cae 14.200 M$ en 30 días, el mayor descenso desde junio de 2022.
+- [media] 2026-10-22 (22 d) · hutiES a Arabia Saudi
+- [media] 2026-10-22 (22 d) · hutiES a Arabia Saudi
+- [media] 2026-10-22 (22 d) · hutiES a Arabia Saudi
+- [media] 2026-10-23 (21 d) · El futuro continuo del Brent cierra en $111,97
+- [media] 2026-10-23 (21 d) · El futuro continuo del Brent cierra en $111,97
 - … y 81 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (1) → W03 · KR/tokenizacion
-- 🔴 Voces: Voces sin confirmar (30) → W06 · 13 llevan más de 14 días
+- 🔴 Voces: Voces sin confirmar (30) → W06 · 16 llevan más de 14 días
 - 🟡 Radar regulatorio: Celdas sin dato (29) → W03 · Más huecos: EG 5, ES 5, ET 4, IN 2, BRICS 2
 
 ## Bots con problema
-- Verificación mensual
+- Verificación mensual, Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-03 · EE. UU.: elecciones de mitad de mandato (alto) → ✓ revisado (hecho)
@@ -170,6 +165,7 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 - 2026-11-23 · Stellar: voto de la red principal del protocolo 30 «Bell» (1 (medio) → sin rutina: valorar research EV
 - 2026-11-25 · PCE de octubre y PIB de EE. UU. (2.ª estimación) (medio) → cubre W01 (Datos macro y tipos)
 - 2026-11-26 · Corea: próxima reunión del Banco de Corea sobre el tipo base (medio) → cubre W01 (Tipos de interés)
+- 2026-11-27 · Francia: revisión programada de la calificación de S&P (hoy  (medio) → cubre W02 (Deuda y subastas)
 
 ## Predicciones que vencen en 14 días
 - ninguna
