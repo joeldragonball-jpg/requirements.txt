@@ -110,15 +110,15 @@ td.c .ch{display:flex;align-items:center;justify-content:center;gap:7px;font-siz
 ul{margin:4px 0;padding-left:18px}li{margin:2px 0}
 dl{margin:4px 0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px}dt{color:var(--tx2)}dd{margin:0}
 a{color:var(--ac)}
-.jus-intro p{font-size:var(--fs);color:var(--tx);margin:4px 0 8px;max-width:78ch}
+.jus-intro{columns:3 400px;column-gap:28px;margin-bottom:var(--gap)}.jus-intro p{font-size:var(--fs);color:var(--tx);margin:0 0 8px;break-inside:avoid}
 .jus-card h4{font-size:clamp(17px,.5vw + 10px,20px);margin:0 0 6px}
 .jus-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}.jus-chip{font-size:var(--fs-xs);border:1px solid var(--lin);border-radius:99px;padding:2px 9px;color:var(--tx2)}.jus-chip.ok{color:var(--sube);border-color:var(--sube)}.jus-chip.no{color:#e8b64a;border-color:#e8b64a}
 .jus-fase,.jus-tx{font-size:var(--fs);color:var(--tx);margin:4px 0 8px}
 .jus-hecho{border-left:3px solid var(--ac);padding:2px 0 2px 10px;margin:8px 0}.jus-hecho b{color:var(--ac);font-size:var(--fs-s)}.jus-hecho p{font-size:var(--fs);color:var(--tx);margin:2px 0;line-height:1.45}
 .jus-pend,.jus-prensa{background:var(--nul);border-radius:8px;padding:6px 10px;margin-top:8px;font-size:var(--fs-s);color:var(--tx)}.jus-pend b{color:#e8b64a}.jus-prensa b{color:var(--tx2)}.jus-pend ul,.jus-prensa ul{margin:4px 0}
 .jus-sin{opacity:.92}
-.rej.jus-grid{display:block;columns:360px;column-gap:var(--gap)}.jus-card{break-inside:avoid;margin-bottom:var(--gap)}
-.jus-card.jus-ancha{column-span:all}.jus-ancha .jus-hechos{column-width:360px;column-gap:22px}.jus-ancha .jus-hecho{break-inside:avoid}
+.rej.jus-grid{display:block;columns:310px;column-gap:var(--gap)}.jus-card{break-inside:avoid;margin-bottom:var(--gap)}
+.jus-card.jus-ancha{column-span:all}.jus-ancha .jus-hechos,.jus-ancha .jus-mas .jus-hechos{column-width:300px;column-gap:22px}.jus-ancha .jus-hecho{break-inside:avoid}
 .jus-mas{margin-top:4px}.jus-mas summary{cursor:pointer;color:var(--ac);font-size:var(--fs-s);padding:4px 0}
 .jus-quien{font-size:var(--fs-s);color:var(--tx2);margin:2px 0 6px}.jus-quien b{color:var(--tx)}
 .nota-v{color:var(--tx2);font-size:14px;margin:4px 0}
@@ -2167,7 +2167,7 @@ function pEspana(){
     intro.append(el('p',null,'Cada tarjeta es un caso. Arriba, en qué fase está; debajo, lo que ha pasado en orden de fechas; al final, lo que todavía no se ha comprobado. Si pone «Sin comprobar», no hay ningún hecho oficial leído y no se debe dar nada por cierto.'));
     intro.append(el('p',null,'Cómo leerlo: no hay cifras ni sumas aquí, solo casos (n.º) y fechas. La lista no es exhaustiva ni indica gravedad o importancia, y que un caso no aparezca no significa nada. Siglas: TSJCV = Tribunal Superior de Justicia de la Comunidad Valenciana; EPPO = Fiscalía Europea; CIAF = Comisión de Investigación de Accidentes Ferroviarios; suplicatorio = petición al Parlamento para poder procesar a quien tiene inmunidad; ejecutoria = fase en que se hace cumplir una sentencia; aforamiento = derecho a ser juzgado por un tribunal superior. Los importes en € son los que cita la nota oficial.'));
     const g=el('div','rej jus-grid');
-    for(const cs of JU.casos){
+    for(const cs of JU.casos.slice().sort((x,y)=>((x.hechos_judiciales||[]).length>6)-((y.hechos_judiciales||[]).length>6))){
       const hs=(cs.hechos_judiciales||[]).slice().sort((x,y)=>(y.fecha||'').localeCompare(x.fecha||''));
       const t=el('div','tarj jus-card'+(hs.length?'':' jus-sin'));
       t.append(el('h4',null,cs.nombre));
@@ -2178,9 +2178,10 @@ function pEspana(){
       const hecho=h=>{const q=el('div','jus-hecho');q.append(el('b',null,fch(h.fecha)));q.append(el('p',null,h.texto+' '));
         if(/^https?:/.test(h.fuente||'')){const a=el('a',null,'Ver nota oficial');a.href=h.fuente;a.target='_blank';a.rel='noopener';q.lastChild.append(a)}return q};
       const cont=el('div','jus-hechos');
-      if(hs.length>6){t.classList.add('jus-ancha');for(const h of hs)cont.append(hecho(h));t.append(cont)}
+      if(hs.length>6){t.classList.add('jus-ancha');for(const h of hs.slice(0,8))cont.append(hecho(h));t.append(cont);
+        if(hs.length>8){const dt=el('details','jus-mas');dt.dataset.auto='1';dt.append(el('summary',null,'Ver '+(hs.length-8)+' hechos más (más antiguos)'));const c2=el('div','jus-hechos');for(const h of hs.slice(8))c2.append(hecho(h));dt.append(c2);t.append(dt)}}
       else{for(const h of hs.slice(0,3))cont.append(hecho(h));t.append(cont);
-        if(hs.length>3){const dt=el('details','jus-mas');dt.append(el('summary',null,'Ver '+(hs.length-3)+' hechos más'));for(const h of hs.slice(3))dt.append(hecho(h));t.append(dt)}}
+        if(hs.length>3){const dt=el('details','jus-mas');dt.dataset.auto='1';dt.append(el('summary',null,'Ver '+(hs.length-3)+' hechos más'));for(const h of hs.slice(3))dt.append(hecho(h));t.append(dt)}}
       if((cs.filtraciones_prensa||[]).length){const q=el('div','jus-prensa');q.append(el('b',null,'Prensa (no oficial)'));const u=el('ul');for(const x of cs.filtraciones_prensa)u.append(el('li',null,typeof x==='string'?x:(x.texto||JSON.stringify(x))));q.append(u);t.append(q)}
       if((cs.opinion||[]).length){const q=el('div','jus-prensa');q.append(el('b',null,'Opinión'));const u=el('ul');for(const x of cs.opinion)u.append(el('li',null,typeof x==='string'?x:(x.texto||JSON.stringify(x))));q.append(u);t.append(q)}
       if((cs.pendiente||[]).length){const q=el('div','jus-pend');q.append(el('b',null,'Falta por comprobar'));const u=el('ul');for(const x of cs.pendiente)u.append(el('li',null,x));q.append(u);t.append(q)}
