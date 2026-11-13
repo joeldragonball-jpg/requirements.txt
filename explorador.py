@@ -323,7 +323,7 @@ def _html(conceptos, publico=False):
     datos["calendario"] = {"hoy": hoy, "temas": TEMAS, "eventos": _calendario(hoy, _version())}
     datos["novedades"] = _novedades(hoy)
     # Dentro de <script type="application/json"> hay que evitar que el texto cierre la etiqueta
-    texto = json.dumps(datos, ensure_ascii=False).replace("</", "<\\/").replace("<!--", "<\\!--")
+    texto = json.dumps(datos, ensure_ascii=False, allow_nan=False).replace("</", "<\\/").replace("<!--", "<\\!--")
     vistas = json.dumps((CARPETA / "vistas.html").read_text(encoding="utf-8"), ensure_ascii=False).replace("</", "<\\/").replace("<!--", "<\\!--")
     return plantilla.replace("__VISTAS__", vistas).replace("__DATOS__", texto)
 

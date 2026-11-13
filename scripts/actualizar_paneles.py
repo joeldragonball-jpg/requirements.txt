@@ -328,6 +328,8 @@ def leer_tipos_bis():
         try:
             cod = f["REF_AREA"]
             valor = float(f["OBS_VALUE"])
+            if valor != valor or valor in (float("inf"), float("-inf")):    # el BIS manda «NaN» cuando no hay dato: rompería el JSON de la Órbita
+                raise ValueError("sin dato (NaN)")
             filas.append({"id": cod, "pais": PAISES_BIS.get(cod, cod), "banco": f.get("SOURCE_REF", ""), "num": valor,
                           "valor": f"{valor:.2f}".replace(".", ",") + " %", "dato_de": f["TIME_PERIOD"]})
         except Exception as e:
