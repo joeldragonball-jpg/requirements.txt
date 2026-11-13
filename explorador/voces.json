@@ -4630,6 +4630,250 @@
         "url": "https://cryptobriefing.com/fsb-warns-untested-stablecoin-crisis-risks/"
       },
       "nota": "[W06 13-nov] Regulador global crítico; distinto de v072 (informe de 2024 sobre tokenización). Informe original en fsb.org sin abrir [VERIFICAR]; la fecha del 12-oct sale del resumen de búsqueda."
+    },
+    {
+      "id": "v169",
+      "tipo": "declaracion",
+      "quien": "Oriol Blanch (Country Manager de Bitvavo), en Despeja La X",
+      "cuando": "2026-11-12",
+      "texto": "«Como XRP no ofrece rendimiento por bloquearlo, la única forma es a través de préstamos; el riesgo está en la solvencia del tercero.» Su lending paga menos porque «solo trabajamos con los mejores». Además, Bitvavo «está valorando» integrar protocolos descentralizados como Morpho y Aave; ya lanzó una wallet oficial.",
+      "nivel": "D",
+      "conf": "compatible",
+      "capas": [
+        "custodia"
+      ],
+      "redes": [
+        "XRPL"
+      ],
+      "tokens": [
+        "XRP"
+      ],
+      "usos": [
+        "lending"
+      ],
+      "fuente": {
+        "n": "Despeja La X, 12-nov-2026 (entrevista); coherente con xrpl.org y C42",
+        "url": "https://youtu.be/ix6sw85wAgI"
+      },
+      "nota": "[V01 13-nov] Sin rendimiento nativo: confirmado (xrpl.org). Omite el AMM del XRPL. Interés comercial: directivo del exchange. Lo de Morpho/Aave es intención sin fecha ni producto; wallet [VERIFICAR].",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-12",
+        "url": "https://youtu.be/ix6sw85wAgI",
+        "min": "20:28"
+      }
+    },
+    {
+      "id": "v171",
+      "tipo": "tesis",
+      "quien": "Análisis V01 (informe del 2026-11-13)",
+      "cuando": "2026-11-12",
+      "texto": "El riesgo del rendimiento sobre XRP en un exchange regulado es de contraparte y plazos, no de red: la licencia MiCA protege la custodia pero no garantiza ni el rendimiento ni el rescate de fondos prestados o bloqueados.",
+      "nivel": "R",
+      "conf": "sin_confirmar",
+      "capas": [
+        "custodia",
+        "reg"
+      ],
+      "redes": [
+        "XRPL"
+      ],
+      "tokens": [
+        "XRP"
+      ],
+      "usos": [
+        "lending",
+        "staking"
+      ],
+      "fuente": {
+        "n": "Informe V01 + C42 + ESMA (citada en C42)",
+        "url": ""
+      },
+      "nota": "Contraargumento: la segregación y la obligación de custodia sí reducen el riesgo de uso indebido (Celsius/FTX); una reseña sitúa Earn fuera de MiCA y falta la primaria.",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-12",
+        "url": "https://youtu.be/ix6sw85wAgI",
+        "min": "13:45"
+      }
+    },
+    {
+      "id": "v172",
+      "tipo": "tesis",
+      "quien": "Despeja La X / Oriol Blanch",
+      "cuando": "2026-11-12",
+      "texto": "«A diferencia de un banco, no habría problema si todos retiran a la vez, porque el dinero te pertenece.»",
+      "nivel": "R",
+      "conf": "sin_confirmar",
+      "capas": [
+        "custodia",
+        "reg"
+      ],
+      "redes": [],
+      "tokens": [],
+      "usos": [],
+      "fuente": {
+        "n": "Despeja La X, 12-nov-2026",
+        "url": "https://youtu.be/ix6sw85wAgI"
+      },
+      "nota": "[V01 13-nov] Cierto para activos custodiados; no para lo bloqueado en staking/lending (lo admite 14:20) ni ante hackeo o insolvencia. El «11 %» bancario no se verificó (el BCE exige 1 % de reservas mínimas, [VERIFICAR]).",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-12",
+        "url": "https://youtu.be/ix6sw85wAgI",
+        "min": "13:45"
+      }
+    },
+    {
+      "id": "v173",
+      "tipo": "dato",
+      "quien": "Bitvavo (tabla de tasas de Earn, ago-2025)",
+      "cuando": "2026-11-12",
+      "texto": "ETH staking ≈ 2,50 %, SOL ≈ 6,00 %, XRP en lending ≈ 0,03 % (anual, variable).",
+      "nivel": "S",
+      "conf": "compatible",
+      "capas": [
+        "custodia"
+      ],
+      "redes": [
+        "XRPL"
+      ],
+      "tokens": [
+        "XRP"
+      ],
+      "usos": [
+        "lending",
+        "staking"
+      ],
+      "fuente": {
+        "n": "Bitvavo, «Updated Staking and Lending rates» (4-ago-2025)",
+        "url": "https://bitvavo.com/en/news/flex-fixed-staking-lending-earn-rates-aug-2025"
+      },
+      "nota": "[V01 13-nov] El 2,5 % de ETH coincide con lo dicho en el vídeo. Dato de hace 15 meses; no se halló tabla de 2026.",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-12",
+        "url": "https://youtu.be/ix6sw85wAgI",
+        "min": "19:31"
+      },
+      "revisar_en": "Mirar la página de Earn de Bitvavo en la próxima sesión de rendimientos (C42)"
+    },
+    {
+      "id": "v174",
+      "tipo": "dato",
+      "quien": "Bitvavo (empresa)",
+      "cuando": "2026-11-12",
+      "texto": "«El 95 % de los fondos de clientes está en billeteras frías», multifirma y custodios especializados.",
+      "nivel": "C",
+      "conf": "sin_confirmar",
+      "capas": [
+        "custodia"
+      ],
+      "redes": [],
+      "tokens": [],
+      "usos": [],
+      "fuente": {
+        "n": "Despeja La X (entrevista); Bitvavo dice «la mayoría» en su blog",
+        "url": "https://bitvavo.com/en/blog/how-bitvavo-keeps-your-crypto-safe"
+      },
+      "nota": "[V01 13-nov] Cifra autodeclarada, sin auditoría independiente leída.",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-12",
+        "url": "https://youtu.be/ix6sw85wAgI",
+        "min": "8:56"
+      },
+      "revisar_en": "Si Bitvavo publica prueba de reservas o informe de auditoría"
+    },
+    {
+      "id": "v175",
+      "tipo": "dato",
+      "quien": "Binance (según prensa), citado en Despeja La X",
+      "cuando": "2026-11-12",
+      "texto": "Binance reabrió retiradas por fases desde el 1-nov y dice haber cubierto ~95 % de lo robado (~6.300 M$).",
+      "nivel": "S",
+      "conf": "confirmada",
+      "capas": [
+        "custodia"
+      ],
+      "redes": [],
+      "tokens": [],
+      "usos": [],
+      "fuente": {
+        "n": "Al Jazeera, 1-nov-2026",
+        "url": "https://www.aljazeera.com/news/2026/11/1/binance-restarts-withdrawals-after-6-3bn-heist"
+      },
+      "nota": "[V01 13-nov] Un agregador menor habla de ~315 M$ sin cubrir (no confirmado); causa raíz sin cerrar.",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-12",
+        "url": "https://youtu.be/ix6sw85wAgI",
+        "min": "11:51"
+      },
+      "revisar_en": "Informe posterior del hackeo o nota oficial de Binance"
+    },
+    {
+      "id": "v176",
+      "tipo": "vigilar",
+      "quien": "XRPL (enmiendas XLS-66 lending y XLS-65 vaults)",
+      "cuando": "2026-11-12",
+      "texto": "Seguir si el lending y los vaults nativos del XRPL llegan al 80 % de apoyo y se activan.",
+      "nivel": "R",
+      "conf": "sin_confirmar",
+      "capas": [
+        "custodia"
+      ],
+      "redes": [
+        "XRPL"
+      ],
+      "tokens": [
+        "XRP"
+      ],
+      "usos": [
+        "lending"
+      ],
+      "fuente": {
+        "n": "xrpl.org known-amendments (sep-2026, vía C42)",
+        "url": "https://xrpl.org/resources/known-amendments"
+      },
+      "nota": "[V01 13-nov] El vídeo insinúa que el XRPL «avanza» hacia algo similar; estado de hoy [VERIFICAR].",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-12",
+        "url": "https://youtu.be/ix6sw85wAgI",
+        "min": "22:47"
+      },
+      "vigilar": {
+        "confirma": "Activación de LendingProtocol/SingleAssetVault en el XRPL o producto de lending on-chain con volumen.",
+        "refuta": "Siguen sin alcanzar el 80 % o se retiran las enmiendas."
+      },
+      "revisar_en": "Mensual, en xrpl.org"
+    },
+    {
+      "id": "v177",
+      "tipo": "evolucion",
+      "quien": "Despeja La X (David Martínez)",
+      "cuando": "2026-11-12",
+      "texto": "Pasa de recomendar Bitvavo frente a Binance (30-oct) a entrevistar a su Country Manager (12-nov): mismo exchange, formato comercial más claro y sin contrapunto.",
+      "nivel": "C",
+      "conf": "compatible",
+      "capas": [
+        "custodia"
+      ],
+      "redes": [],
+      "tokens": [],
+      "usos": [],
+      "fuente": {
+        "n": "Informes del 30-oct y 13-nov de Despeja La X",
+        "url": "https://youtu.be/ix6sw85wAgI"
+      },
+      "nota": "[V01 13-nov] Conflicto de interés ya declarado en el registro del canal (promociona un exchange); sin acusar.",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-12",
+        "url": "https://youtu.be/ix6sw85wAgI",
+        "min": ""
+      }
     }
   ],
   "canales": [

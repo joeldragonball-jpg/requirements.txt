@@ -101,3 +101,7 @@ Lectura del PDF del BIS cuando responda bis.org; verificar en TreasuryDirect las
 | Hacienda, proyecto de orden de DAC8 (9-mar-2026) | https://www.hacienda.gob.es/sgt/normativadoctrina/proyectos/09032026-main-proyecto-om-dac8.pdf | Modelos 175/172/721; calendario de transposición | [VERIFICAR] (no abierto) |
 | DGT (petete.tributos.hacienda.gob.es): consultas sobre cripto-cripto, recompra con pérdidas y LLC | (no localizadas) | Doctrina citada por el invitado fiscal | [VERIFICAR] |
 | Vídeo del 10-nov (DRd9XP2qXyY) | https://youtu.be/DRd9XP2qXyY | Sin subtítulos aún; reintentar | [VERIFICAR] |
+| Bitvavo, tabla de tasas Earn (ago-2025) | https://bitvavo.com/en/news/flex-fixed-staking-lending-earn-rates-aug-2025 | ETH 2,50 %, SOL 6,00 %, XRP lending 0,03 % | [S] (de la empresa; 15 meses) |
+| Bitvavo, blog de custodia | https://bitvavo.com/en/blog/how-bitvavo-keeps-your-crypto-safe | «Mayoría» en frío; el 95 % es declaración oral | [S] |
+| xrpl.org, UNL / consenso | https://xrpl.org/docs/concepts/consensus-protocol/unl | XRPL sin recompensas por validar; no es PoA | [P] |
+| Al Jazeera, Binance reabre retiradas (1-nov) | https://www.aljazeera.com/news/2026/11/1/binance-restarts-withdrawals-after-6-3bn-heist | ~95 % cubierto | [S] |
