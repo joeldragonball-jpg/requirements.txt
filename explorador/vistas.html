@@ -550,7 +550,8 @@ function edadDias(f){const t=new Date(String(f).slice(0,10)+'T00:00:00Z');return
 function avisoViejo(f,umbral=3){const n=edadDias(f);return n!=null&&n>umbral?'⚠ hace '+n+' días':''}
 /* C161 · semáforo de frescura al pie de cada bloque de Paneles. Mismo criterio que el móvil (C154): verde ≤ 7 días, ámbar ≤ 14, rojo > 14.
    La fecha es la de lectura del bloque; en Liquidez y Comparar países se toma la más antigua entre esa y la fecha de comprobación de su JSON manual (datos.json → manuales). */
-function semaforo(f){const n=edadDias(f);return n==null?{c:'g',n:null}:{c:n<=7?'v':n<=14?'a':'r',n}}
+/* datos que salen una vez al mes (los «manuales»: M2, indicadores): verde ≤ 35 días, ámbar ≤ 50; el resto sigue en 7/14 */
+function semaforo(f,mes){const n=edadDias(f),u=mes?[35,50]:[7,14];return n==null?{c:'g',n:null}:{c:n<=u[0]?'v':n<=u[1]?'a':'r',n}}
 function semBloque(b){
   const pie=[...b.children].filter(x=>x.classList&&x.classList.contains('nota-v')).pop();
   const tit=(b.firstChild&&b.firstChild.textContent)||'',M=D.manuales||{};
@@ -560,8 +561,9 @@ function semBloque(b){
   else if(/^Comparar pa/.test(tit)&&M.indicadores){lista.push(M.indicadores);man='indicadores-manual.json: comprobado '+M.indicadores}
   const d=el('div','pie-sem');
   if(!lista.length){d.append(el('i','sem g'),document.createTextNode('Frescura: este bloque no indica fecha de lectura.'));b.append(d);return d}
-  const f=lista.slice().sort()[0],r=semaforo(f);
-  const i=el('i','sem '+r.c);i.title='Verde ≤ 7 días · ámbar ≤ 14 · rojo > 14';
+  const ORD={v:0,a:1,r:2,g:0},ev=lista.map((x,k)=>({f:x,mes:!!man&&k===lista.length-1&&lista.length>1})).map(x=>({...x,r:semaforo(x.f,x.mes)})).sort((a,b)=>ORD[b.r.c]-ORD[a.r.c]||(b.r.n||0)-(a.r.n||0));
+  const f=ev[0].f,r=ev[0].r;
+  const i=el('i','sem '+r.c);i.title='Verde ≤ 7 días · ámbar ≤ 14 · rojo > 14 (datos manuales mensuales: 35 y 50)';
   d.append(i,document.createTextNode('Frescura: '+(r.n===0?'de hoy':'hace '+r.n+' d')+' (dato del '+f+')'+(man?' · '+man:'')));b.append(d);return d}
 /* C212 · resumen de los filtros activos con botón para quitarlos */
 function filtrosActivos(){const a=[];if($('fpais').value)a.push('país: '+$('fpais').selectedOptions[0].text);if($('ftema').value)a.push('tema: '+$('ftema').selectedOptions[0].text);if($('fcert').value)a.push('certeza: '+$('fcert').selectedOptions[0].text);if($('fcambio').checked)a.push('solo cambios');
@@ -569,10 +571,10 @@ function filtrosActivos(){const a=[];if($('fpais').value)a.push('país: '+$('fpa
   const b=el('button',null,'Quitar');b.onclick=()=>{$('fpais').value='';$('ftema').value='';$('fcert').value='';$('fcambio').checked=false;$('fpais').dispatchEvent(new Event('change'))};e.append(b)}
 /* C215 · cabecera: en vez de cuatro fechas, la más vieja con su semáforo y un botón para ver todas */
 function frescuraCabecera(){const M=D.manuales||{},e=$('estado');
-  const L=[['Radar de regulación',R.revisado],['Órbita (último movimiento)',D.movimientos.map(m=>m.fecha).filter(f=>f<=HOYS).sort().pop()||D.version],['Paneles de datos',P&&P.leido],['Indicadores (manual)',M.indicadores],['Liquidez (manual)',M.liquidez]]
-    .filter(x=>x[1]).map(x=>({n:x[0],f:String(x[1]).slice(0,10)})).map(x=>({...x,d:edadDias(x.f)})).filter(x=>x.d!=null);
-  if(!L.length)return;const o=L.slice().sort((a,b)=>b.d-a.d)[0],r=semaforo(o.f);
-  e.textContent='';const i=el('i','sem '+r.c);i.title='Verde ≤ 7 días · ámbar ≤ 14 · rojo > 14';
+  const L=[['Radar de regulación',R.revisado],['Órbita (último movimiento)',D.movimientos.map(m=>m.fecha).filter(f=>f<=HOYS).sort().pop()||D.version],['Paneles de datos',P&&P.leido],['Indicadores (manual)',M.indicadores,1],['Liquidez (manual)',M.liquidez,1]]
+    .filter(x=>x[1]).map(x=>({n:x[0],f:String(x[1]).slice(0,10),mes:x[2]})).map(x=>({...x,d:edadDias(x.f)})).filter(x=>x.d!=null);
+  if(!L.length)return;const ORD={v:0,a:1,r:2,g:0},o=L.slice().sort((a,b)=>ORD[semaforo(b.f,b.mes).c]-ORD[semaforo(a.f,a.mes).c]||b.d-a.d)[0],r=semaforo(o.f,o.mes);
+  e.textContent='';const i=el('i','sem '+r.c);i.title='Verde ≤ 7 días · ámbar ≤ 14 · rojo > 14 (manuales mensuales: 35 y 50)';
   e.append(i,document.createTextNode('Lo más viejo: '+o.n+' ('+(o.d===0?'de hoy':'hace '+o.d+' d')+'). '));
   const det=el('span',null,L.map(x=>x.n+': '+x.f+' (hace '+x.d+' d)').join(' · '));det.hidden=true;
   const b=el('button',null,'Ver las fechas');b.onclick=()=>{det.hidden=!det.hidden};e.append(b,det)}

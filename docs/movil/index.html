@@ -624,11 +624,11 @@ function montarControl(){   // C132: bloque «Control» arriba de Mercado. Todo 
   res.append(caja); raiz.append(res);
   const FJ = D.frescura_json || [];   // C154: semáforo común verde ≤7 d, ámbar ≤14, rojo >14
   if (FJ.length) {
-    const ed = f => Math.max(0, Math.floor((ahora - new Date(f + 'T12:00:00')) / 864e5)), niv3 = d => d <= 7 ? 'ok' : d <= 14 ? 'ya' : 'mal';
-    const L = FJ.map(x => ({...x, d: ed(x.f)})).sort((a, b) => b.d - a.d), nv = L.filter(x => niv3(x.d) === 'ok').length;
+    const ed = f => Math.max(0, Math.floor((ahora - new Date(f + 'T12:00:00')) / 864e5)), niv3 = (d, a) => { const u = /manual/.test(a || '') ? [35, 50] : [7, 14]; return d <= u[0] ? 'ok' : d <= u[1] ? 'ya' : 'mal'; };
+    const L = FJ.map(x => ({...x, d: ed(x.f)})).sort((a, b) => b.d - a.d), nv = L.filter(x => niv3(x.d, x.a) === 'ok').length;
     const cf = el('div', 'card ctl-card'); cf.style.setProperty('--i', 1); const tf = el('div', 'titulo-sec ctl-tit'); tf.append(el('span', null, 'Frescura de los datos')); cf.append(tf);
-    L.filter(x => niv3(x.d) !== 'ok').forEach(x => { const fl = el('div', 'fr-fila'); fl.append(el('span', 'semaf ' + niv3(x.d)), el('span', null, x.n), el('small', null, 'hace ' + x.d + ' d · ' + fecha(x.f))); cf.append(fl); });
-    cf.append(el('div', 'ctl-nota', nv + ' de ' + L.length + ' en verde (hasta 7 días): ' + L.filter(x => niv3(x.d) === 'ok').map(x => x.n).join(', ') + '. Ámbar hasta 14 días; rojo, más.'));
+    L.filter(x => niv3(x.d, x.a) !== 'ok').forEach(x => { const fl = el('div', 'fr-fila'); fl.append(el('span', 'semaf ' + niv3(x.d, x.a)), el('span', null, x.n), el('small', null, 'hace ' + x.d + ' d · ' + fecha(x.f))); cf.append(fl); });
+    cf.append(el('div', 'ctl-nota', nv + ' de ' + L.length + ' en verde (hasta 7 días): ' + L.filter(x => niv3(x.d, x.a) === 'ok').map(x => x.n).join(', ') + '. Ámbar hasta 14 días; rojo, más (datos manuales mensuales: 35 y 50).'));
     window.__cfr = cf;   // C194: se coloca debajo de los precios
   }
   if (grupos.length > 2) { const ch = el('div', 'chips'); ch.style.marginBottom = '10px'; grupos.forEach((g, i) => { const c = el('div', 'chip', g.t); c.addEventListener('click', () => irAncla('cg' + i)); ch.append(c); }); raiz.append(ch); }
