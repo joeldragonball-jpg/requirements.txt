@@ -1,6 +1,6 @@
 {
-  "generado": "2026-11-12",
-  "aviso": "Empresas públicas: cifras de la propia web de cada entidad, solo las que se pudieron leer; el resto queda [VERIFICAR]. Importes en millones de euros (M€). Una cifra grande o una pérdida NO implica mala gestión ni irregularidad: el perímetro y la función de cada empresa difieren. Actualizado 10-nov-2026 (tarde): ENAIRE (cuentas individuales y grupo) y Adif/Adif AV (adendas del BOE) leídos en PDF [P]; deuda y aportaciones ejecutadas de Renfe, Correos y Navantia siguen sin leerse.",
+  "generado": "2026-11-13",
+  "aviso": "Empresas públicas: cifras de las cuentas anuales o de la web de cada entidad, solo las que se pudieron leer; el resto queda [VERIFICAR]. Importes en millones de euros (M€); los originales suelen venir en miles de euros. Una cifra grande o una pérdida NO implica mala gestión ni irregularidad: el perímetro y la función de cada empresa difieren. Actualizado 13-nov-2026: cuentas anuales 2025 de Adif y Adif Alta Velocidad (ahora en dos filas), Paradores, nota de resultados de Indra, deuda de Correos y origen de la pérdida de Navantia.",
   "unidad": "M€",
   "escala": "millones de euros",
   "empresas": [
@@ -52,15 +52,16 @@
       "id": "navantia",
       "nombre": "Navantia (grupo, 100 % SEPI)",
       "ejercicio": 2025,
-      "cifra_negocio": 1978,
-      "resultado_neto": -149,
+      "cifra_negocio": 1978.7,
+      "resultado_neto": -148.9,
       "plantilla": "6.761 personas (grupo)",
       "deuda": null,
       "aportaciones_estado": null,
       "fuente": "https://www.sepi.es/es/sala-de-prensa/noticias/navantia-cuadruplica-contratacion-en-2025-y-situa-su-cartera-de-pedidos-en",
       "fecha_fuente": "2026-07-03",
       "nivel": "P",
-      "nota": "Nota de Navantia publicada en la web de SEPI. Cifra de negocio consolidada 1.978 M€ (+30 %); sociedad individual: 1.728,5 M€ y resultado -119 M€; cartera de pedidos 12.826 M€. Pérdidas consolidadas -149 M€ (según la nota; el motivo no se ha leído [VERIFICAR]). Deuda y aportaciones del Estado: no leídas."
+      "nota": "Nota de Navantia publicada en la web de SEPI. Cifra de negocio consolidada 1.978 M€ (+30 %); sociedad individual: 1.728,5 M€ y resultado -119 M€; cartera de pedidos 12.826 M€. Pérdidas consolidadas −148,9 M€ (−121,0 M€ en 2024, cifra reexpresada; antes del ajuste eran −195,8 M€). Cuentas consolidadas 2025 leídas el 13-nov-2026 (Registro de cuentas anuales del sector público, IGAE; miles de euros): cifra de negocios 1.978,7 M€ (1.521,8 M€ en 2024); resultado atribuido a la sociedad dominante −150,4 M€ (−121,8 M€). Por sociedades: la matriz mejora (de −131,9 a −119,2 M€) y Navantia UK pasa de −1,8 a −59,5 M€; Navantia UK compró los activos de Harland & Wolff el 27-ene-2025. Que el empeoramiento del grupo venga de Reino Unido es lectura nuestra de esa tabla: no se ha encontrado una frase de las cuentas que explique la pérdida [VERIFICAR el informe de gestión]. Deuda y aportaciones del Estado: no leídas.",
+      "revisado": "2026-11-13"
     },
     {
       "id": "correos",
@@ -69,14 +70,14 @@
       "cifra_negocio": 2076.5,
       "resultado_neto": 11.2,
       "plantilla": "46.094 empleados (equivalentes a tiempo completo)",
-      "deuda": "El grupo dice haber reducido su endeudamiento neto en 175,6 M€ en 2025; saldo de deuda no extraído (la tabla del balance sale desalineada en el PDF) [VERIFICAR]",
+      "deuda": "Deudas con entidades de crédito: 953,4 M€ a 31-dic-2025 (706,3 M€ a largo plazo y 247,1 M€ a corto), frente a 953,7 M€ a 31-dic-2024 (714,2 y 239,5). Sin bonos emitidos. Patrimonio neto 467,2 M€ (261,6 M€ en 2024). Fuente: fichero XBRL de las cuentas consolidadas 2025 en el Registro de cuentas anuales del sector público (IGAE); la unidad es miles de euros, comprobado porque su cifra de negocios (2.076.516) coincide con la del informe anual [P]. El grupo dice haber reducido su endeudamiento neto en 175,6 M€: no es contradictorio, porque el neto descuenta la tesorería (no leída aquí).",
       "aportaciones_estado": "Compensación por el servicio postal universal: 334,5 M€ en 2025 (200,6 M€ en 2024). Compensación por servicios de interés económico general: 55,9 M€ (nueva en 2025). Aportación de socios en el balance a 31-dic-2025: 200,0 M€ (0 a 31-dic-2024) [P]",
       "fuente": "https://cswetwebcorsta01.blob.core.windows.net/uploads/2026/07/Informe_Anual_Integrado_2025_GRUPO-CORREOS.pdf",
       "fecha_fuente": "2026-07",
       "nivel": "P",
-      "nota": "Cuentas consolidadas incluidas en el Informe Anual Integrado 2025 del Grupo Correos (PDF enlazado desde correos.com, 370 páginas, leído con pdftotext el 12-nov-2026). Cifra de negocio 2.076,5 M€ (2.107,1 M€ en 2024); resultado de explotación 31,4 M€ (−581,0 M€ en 2024); resultado consolidado 11,2 M€ (−458,5 M€ en 2024), del que 10,0 M€ corresponden a la sociedad dominante; gastos de personal 1.588,0 M€. La nota provisional de marzo hablaba de 14,4 M€ de beneficio y de 1.658 M€ de cifra de negocio sin ingresos electorales [S]: son magnitudes distintas de las consolidadas. Sin la compensación del servicio universal (334,5 M€) el resultado de explotación habría sido negativo: es una resta nuestra, no una frase del informe. El ejercicio 2024 incluye una pérdida extraordinaria cuyo origen no se ha leído [VERIFICAR].",
+      "nota": "Cuentas consolidadas incluidas en el Informe Anual Integrado 2025 del Grupo Correos (PDF enlazado desde correos.com, 370 páginas, leído con pdftotext el 12-nov-2026). Cifra de negocio 2.076,5 M€ (2.107,1 M€ en 2024); resultado de explotación 31,4 M€ (−581,0 M€ en 2024); resultado consolidado 11,2 M€ (−458,5 M€ en 2024), del que 10,0 M€ corresponden a la sociedad dominante; gastos de personal 1.588,0 M€. La nota provisional de marzo hablaba de 14,4 M€ de beneficio y de 1.658 M€ de cifra de negocio sin ingresos electorales [S]: son magnitudes distintas de las consolidadas. Sin la compensación del servicio universal (334,5 M€) el resultado de explotación habría sido negativo: es una resta nuestra, no una frase del informe. El ejercicio 2024 incluye una pérdida extraordinaria cuyo origen no se ha leído [VERIFICAR]. 13-nov-2026: saldo de deuda leído en el Registro de cuentas anuales del sector público (https://www.pap.hacienda.gob.es/Recuenta/Views/Inicio.aspx; BOE-A-2026-16720); la memoria en PDF de ese registro es una imagen sin texto.",
       "inversiones": 122.6,
-      "revisado": "2026-11-12"
+      "revisado": "2026-11-13"
     },
     {
       "id": "renfe",
@@ -96,13 +97,33 @@
     },
     {
       "id": "adif",
-      "nombre": "Adif y Adif Alta Velocidad",
-      "ejercicio": null,
-      "nota": "adif.es devuelve 403 a scripts y en Chrome las rutas probadas dan 404; cuentas no leídas. Por prensa [S]: Adif AV acumula una deuda superior a 21.300 M€ y pérdidas de 193,4 M€ frente a 100,9 M€ (The Objective; el ejercicio exacto de esa pieza, fechada jul-2025, queda [VERIFICAR]). La CNMC dice que Adif y Adif AV invirtieron 5.230 M€ en 2025 (+16 %) [S: solo extracto]. Aportaciones: ver columna. 12-nov-2026: las «Cuentas Anuales 2025 con informe de auditoría» de Adif (PDF, 3,8 MB) y el informe del art. 129 de la Ley General Presupuestaria están publicados en adif.es/sobre-adif/transparencia/economica [P que existen]; no se han leído porque la web rechaza las lecturas automáticas y el navegador solo ofrece guardarlos. En el BOE de 2026 (1-ene a 12-nov) no consta la publicación de las cuentas anuales de Adif ni de Renfe.",
-      "aportaciones_estado": "Adendas de prórroga 2026 del convenio 2021-2025, publicadas en el BOE de 6-feb-2026 (BOE-A-2026-2807 y -2808) [P, leídas enteras]: Adif, aportación patrimonial para amortización de deuda a largo plazo 219,77 M€ (219.773,60 miles de €); Adif Alta Velocidad, 1.011,69 M€ del Mecanismo de Recuperación y Resiliencia y total de aportaciones de la AGE de 1.384,18 M€ en 2026. Son importes comprometidos por convenio, no ejecutados. Deuda y cuentas anuales 2025 de Adif: no leídas [VERIFICAR]",
-      "fuente": "https://www.boe.es/boe/dias/2026/02/06/pdfs/BOE-A-2026-2807.pdf",
+      "nombre": "Adif (red convencional)",
+      "ejercicio": 2025,
+      "cifra_negocio": 632.8,
+      "resultado_neto": -83.3,
+      "plantilla": "13.314 empleados de media (12.860 en 2024)",
+      "deuda": "Deudas con entidades de crédito: 115,0 M€ a 31-dic-2025 (97,8 M€ a largo plazo y 17,1 M€ a corto), frente a 130,9 M€ a 31-dic-2024. No tiene bonos emitidos. Otros pasivos financieros: 572,6 M€ a largo y 515,0 M€ a corto plazo. Patrimonio neto 16.166,1 M€ [P]",
+      "aportaciones_estado": "Subvenciones de explotación en 2025: 259,3 M€ (259,3 M€ en 2024): de la Administración General del Estado por administración de la red 244,0 M€ y por compensación de cánones 15,3 M€ (nota 15). Cobros del año por subvenciones de capital: 2.365,8 M€ (1.674,4 M€ en 2024), de ellos 1.133,6 M€ de la UE y 1.189,0 M€ del Estado; aportación patrimonial cobrada 15,7 M€ [P]. Para 2026, la adenda de prórroga del convenio (BOE-A-2026-2807) compromete 219,77 M€ de aportación patrimonial para amortizar deuda: comprometido, no ejecutado [P]",
+      "fuente": "https://www.adif.es/documents/20124/4217138/ADIF+-+Cuentas+Anuales+2025+con+informe+de+auditor%C3%ADa.pdf/d56575f8-83be-1474-9fbd-be1f7b3e0431",
+      "fecha_fuente": "2026-05-12",
       "nivel": "P",
-      "revisado": "2026-11-12"
+      "nota": "Cuentas anuales individuales 2025 de Adif con informe de auditoría de la Intervención General del Estado (opinión favorable, firmado el 12-may-2026). PDF de adif.es, 146 páginas, leído el 13-nov-2026 en el navegador; importes originales en miles de euros. Importe neto de la cifra de negocios 632,8 M€ (620,9 M€ en 2024); otros ingresos de explotación 1.098,1 M€ (1.052,3 M€), que incluyen 397,6 M€ de «servicios de administración de infraestructura» y 259,3 M€ de subvenciones de explotación; gastos de personal 787,1 M€ (752,4 M€); resultado de explotación −124,9 M€ (+381,1 M€ en 2024); resultado del ejercicio −83,3 M€ (+384,0 M€ en 2024). El beneficio de 2024 venía de enajenaciones de inmovilizado por 434,0 M€ (10,6 M€ en 2025): la comparación entre los dos años es lectura nuestra de la cuenta, no una frase del documento. Total activo 22.908,7 M€. Pagos por inversiones 2.026,5 M€ (1.488,9 M€ en 2024), según el estado de flujos de efectivo. El grupo consolidado da 676,3 M€ de cifra de negocios y −77,0 M€ de resultado (Registro de cuentas del sector público, IGAE). Una pérdida no implica mala gestión: Adif cobra cánones regulados y recibe subvenciones por administrar la red.",
+      "revisado": "2026-11-13"
+    },
+    {
+      "id": "adif_av",
+      "nombre": "Adif Alta Velocidad",
+      "ejercicio": 2025,
+      "cifra_negocio": 788.9,
+      "resultado_neto": -193.4,
+      "plantilla": "252 empleados de media (258 en 2024); la red la administra personal de Adif por encomienda",
+      "deuda": "Bonos y obligaciones: 8.207,4 M€ (7.482,1 M€ a largo plazo y 725,4 M€ a corto). Deudas con entidades de crédito: 12.202,7 M€ (11.591,7 M€ a largo y 611,0 M€ a corto). Suma de ambas: 20.410,2 M€ a 31-dic-2025, frente a 19.211,2 M€ a 31-dic-2024 (sumas nuestras). Total de «deudas» del balance, con otros pasivos financieros: 21.314,7 M€. Gastos financieros del año: 488,8 M€ (450,8 M€ en 2024). Patrimonio neto 27.446,0 M€ [P]",
+      "aportaciones_estado": "Aportación patrimonial cobrada en 2025: 311,6 M€ (311,6 M€ en 2024). Subvenciones cobradas: 87,7 M€, todas de la UE (542,6 M€ en 2024) [P, estado de flujos de efectivo]. Para 2026, la adenda de prórroga del convenio (BOE-A-2026-2808) fija 1.011,69 M€ del Mecanismo de Recuperación y Resiliencia y 1.384,18 M€ de aportaciones totales del Estado: comprometido, no ejecutado [P]",
+      "fuente": "https://www.adifaltavelocidad.es/documents/34745/4217225/ADIF+AV+-+Cuentas+Anuales+2025_F_MEMORIA+con+Inf+de+auditor%C3%ADa.pdf/b216be38-8e39-20ed-77e4-5b4bf15f26d6",
+      "fecha_fuente": "2026-03-24",
+      "nivel": "P",
+      "nota": "Cuentas anuales individuales 2025 de Adif Alta Velocidad con informe de auditoría de la Intervención General del Estado (opinión favorable, firmado el 24-mar-2026). PDF de adifaltavelocidad.es, 152 páginas, leído el 13-nov-2026 en el navegador; importes originales en miles de euros. Importe neto de la cifra de negocios 788,9 M€ (783,0 M€ en 2024); otros ingresos de explotación 798,9 M€ (708,5 M€); gastos de personal 19,3 M€; resultado del ejercicio −193,4 M€ (−100,9 M€ en 2024). Total activo 55.005,3 M€. Pagos por inversiones 1.900,9 M€ (1.820,7 M€ en 2024). Queda confirmado lo que antes solo constaba por prensa [S]: pérdidas de 193,4 M€ frente a 100,9 M€ y deuda de más de 21.300 M€ corresponden al ejercicio 2025. Los gastos financieros (488,8 M€) equivalen al 62 % de la cifra de negocios: cálculo nuestro. A favor: la deuda financia activos de larga vida y el patrimonio neto es de 27.446 M€. En contra: el resultado empeora dos años seguidos y la deuda con coste sube 1.199 M€ en un año (cálculo nuestro).",
+      "revisado": "2026-11-13"
     },
     {
       "id": "enaire",
@@ -121,18 +142,33 @@
     {
       "id": "paradores",
       "nombre": "Paradores de Turismo",
-      "ejercicio": null,
-      "nota": "paradores.es dio error de certificado a la herramienta; sin cifras leídas. [VERIFICAR]",
-      "fuente": "https://www.sepi.es",
-      "nivel": "V"
+      "ejercicio": 2025,
+      "cifra_negocio": 329.3,
+      "resultado_neto": 23.5,
+      "plantilla": "4.381 empleados de media (4.527 en 2024); 5.261 a 31-dic-2025",
+      "deuda": "Sin deudas con entidades de crédito a corto plazo en el balance; el saldo a largo plazo no se ha leído [VERIFICAR]. Patrimonio neto 455,9 M€ (431,5 M€ en 2024) [P]",
+      "aportaciones_estado": null,
+      "fuente": "https://paradores.es/sites/default/files/2026-06/ccaa_einf_informes_ptesmesa_2025.pdf",
+      "fecha_fuente": "2026-06",
+      "nivel": "P",
+      "nota": "Cuentas anuales e informe de gestión 2025 de Paradores de Turismo de España, S.M.E., S.A., con informe de auditoría de Moore Ibérica (PDF de paradores.es, 178 páginas). Es un PDF escaneado: leído por reconocimiento de texto el 13-nov-2026; importes originales en euros. Importe neto de la cifra de negocios 329,3 M€ (338,5 M€ en 2024; el informe de gestión habla de una caída de 9,2 M€, el 3 %); resultado de explotación 21,7 M€ (32,2 M€); resultado del ejercicio 23,5 M€ (39,8 M€ en 2024). El informe de gestión atribuye la caída al plan de inversiones, que afectó a 49 paradores y cerró 13 por obras parte o todo el año; es la explicación de la propia empresa. Financió con recursos propios unos 47 M€ de inversión. Aportaciones del Estado: no leídas.",
+      "revisado": "2026-11-13"
     },
     {
       "id": "indra",
       "nombre": "Indra (participada por SEPI)",
-      "ejercicio": null,
-      "nota": "indra.es rechazó la conexión; SEPI la cita como «participación minoritaria» sin porcentaje en la nota leída. [VERIFICAR] % de SEPI y cifras.",
-      "fuente": "https://www.sepi.es",
-      "nivel": "V"
+      "ejercicio": 2025,
+      "cifra_negocio": 5457,
+      "resultado_neto": 436,
+      "ebitda": 636,
+      "plantilla": null,
+      "deuda": null,
+      "aportaciones_estado": null,
+      "fuente": "https://www.indragroup.com/cms-content/2026/02/260225-NP-Indra-Group-Resultados-2025-1.pdf",
+      "fecha_fuente": "2026-02-25",
+      "nivel": "P",
+      "nota": "Nota de resultados de la propia compañía (25-feb-2026, PDF de indragroup.com), no el informe financiero registrado en la CNMV, que no se ha leído. Consolidado, en M€: ingresos 5.457 (4.843 en 2024; +12,7 %), EBITDA 636 (545), EBIT 517 (438; margen 9,5 %), resultado neto 436 (278; +57 %) y cartera de pedidos 16.083 (7.245). Indra cotiza en bolsa y SEPI es su primer accionista, no su dueño: el porcentaje a 31-dic-2025 no se ha leído en fuente oficial; la prensa habla de un 28 % [S] [VERIFICAR]. Plantilla y deuda: no leídas. Sesgo de la fuente: una nota de resultados destaca lo favorable.",
+      "revisado": "2026-11-13"
     }
   ],
   "comparador_ccaa": {

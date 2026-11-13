@@ -424,7 +424,7 @@ def espana():
     cargos = {"num": [dato(x) for x in cp["numero"]], "ret": [dato(x) for x in cp["retribuciones"]], "par": [dato(x) for x in cp["partidos"]], "suma": cp["suma_publicada"]} if cp else None
     return {"detalle": detalle, "fuera": fuera, "personal": personal, "cargos": cargos, "leido": b.get("leido"), "vigencia": b["vigencia"]["texto"], "lecturas": b.get("lecturas", {}), "como": b.get("como_leerlo", []),
             "total": b.get("totales"), "no_aislable": [{"t": x["tema"], "x": x["texto"], "niv": x["nivel"]} for x in b.get("no_aislable", [])],
-            "minist": [{"n": x["nombre"], "i": x["inicial_2025"], "o": x["obligaciones_2025"], "o26": x["obligaciones_2026_ago"]} for x in sorted((s for s in b["secciones"] if s["tipo"] == "ministerio"), key=lambda s: -s["obligaciones_2025"])],
+            "minist": [{"n": x["nombre"], "i": x["inicial_2025"], "o": x["obligaciones_2025"], "o26": x["obligaciones_2026_sep"]} for x in sorted((s for s in b["secciones"] if s["tipo"] == "ministerio"), key=lambda s: -s["obligaciones_2025"])],
             "prog": [{"g": x["grupo"], "n": x["nombre"], "i": x["inicial_2025"], "o": x["obligaciones_2025"], "nota": x.get("nota")} for x in b["programas"]],
             "pob": [dato(x) for x in m.get("poblacion_referencia", [])], "benef": [dato(x) for x in m.get("beneficiarios", [])],
             "req": [{"n": x["nombre"], "x": x["nota"]} for x in m.get("requisitos_acceso", [])], "vg": [dato(x) for x in m.get("violencia_genero", [])],
