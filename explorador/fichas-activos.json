@@ -1,6 +1,6 @@
 {
  "version": 1,
- "actualizado": "2026-11-11",
+ "actualizado": "2026-11-12",
  "nota": "Información general sobre cinco activos; no es recomendación de compra ni venta. Cada dato lleva fecha y nivel (P = fuente primaria leída; S = agregador o prensa). Los precios son de agregadores (CoinGecko, Yahoo) del 9 o 10-nov-2026; los datos de ETF son de fechas anteriores. Sin predicciones: lo que sea opinión o previsión va como [ESPECULACIÓN] y lo no contrastado como [VERIFICAR].",
  "unidades": "Cada hecho lleva su unidad y fecha. Capitalización y AUM en millones de USD; precios en la moneda indicada.",
  "fichas": [
@@ -67,12 +67,12 @@
      "fuente": "Informe de 21Shares (a la vez emisor), regulacion.json"
     },
     {
-     "dato": "Litigio SEC-Ripple: multa 125 M USD e injunction vigentes; apelaciones retiradas",
-     "valor": "ago-2025",
+     "dato": "Litigio SEC-Ripple cerrado: multa de 125.035.150 USD y orden judicial vigentes; ambas apelaciones desistidas",
+     "valor": "7-ago-2025",
      "unidad": "",
-     "fecha": "2025-08",
-     "nivel": "S",
-     "fuente": "Apuntes del repo; sin leer el expediente judicial [VERIFICAR]"
+     "fecha": "2025-08-07",
+     "nivel": "P",
+     "fuente": "SEC, Litigation Release LR-26369 (leído en los informes R34 y «Ripple, la empresa», oct-2026)"
     },
     {
      "dato": "Primer ETF al contado de XRP (Canary XRPC)",
@@ -121,6 +121,62 @@
      "fecha": "2026-11-11",
      "nivel": "P",
      "fuente": "DefiLlama (api.llama.fi/v2/chains); para comparar, Ethereum ≈ 41.359 M y Solana ≈ 5.130 M"
+    },
+    {
+     "dato": "XRP en poder de Ripple (de ellos, en escrow)",
+     "valor": "37.656 (32.600 en escrow)",
+     "unidad": "millones de XRP",
+     "fecha": "2026-06-30",
+     "nivel": "P",
+     "fuente": "ripple.com/xrp (dato declarado por la propia empresa; informe «Ripple, la empresa», 9-oct-2026)"
+    },
+    {
+     "dato": "XRP distribuidos (fuera de Ripple)",
+     "valor": "62.329",
+     "unidad": "millones de XRP",
+     "fecha": "2026-06-30",
+     "nivel": "P",
+     "fuente": "ripple.com/xrp (declarado por Ripple)"
+    },
+    {
+     "dato": "Evernorth (tesorería en XRP): comprados en mercado",
+     "valor": "84,37 M XRP por 214 M USD (media 2,5366 USD)",
+     "unidad": "",
+     "fecha": "2026-08-12",
+     "nivel": "P",
+     "fuente": "SEC, formulario S-4/A n.º 6 de Evernorth (EDGAR); XRP contabilizados al coste menos deterioro"
+    },
+    {
+     "dato": "Evernorth: XRP aportados en especie por Ripple y partes relacionadas",
+     "valor": "≈ 388,1",
+     "unidad": "millones de XRP",
+     "fecha": "2026-08-12",
+     "nivel": "P",
+     "fuente": "SEC, S-4/A n.º 6 de Evernorth (EDGAR). Otro informe del repo cita 388,9 M: diferencia de redondeo o de fecha [VERIFICAR]"
+    },
+    {
+     "dato": "RLUSD (stablecoin de Ripple) emitido en el XRP Ledger",
+     "valor": "977,6",
+     "unidad": "millones USD",
+     "fecha": "2026-10-29",
+     "nivel": "P",
+     "fuente": "Ledger XRPL, método gateway_balances (informe C49). El 9-oct-2026 el mismo método daba 1.140,1 M: la cifra se mueve"
+    },
+    {
+     "dato": "RLUSD en todas las cadenas / reservas declaradas",
+     "valor": "2.382,8 / 2.528,0",
+     "unidad": "millones USD",
+     "fecha": "2026-10-22",
+     "nivel": "P",
+     "fuente": "Ripple, informe de transparencia de RLUSD (declarado por el emisor, a la vez parte interesada)"
+    },
+    {
+     "dato": "XRPL: préstamos (LendingProtocol) y bóvedas (SingleAssetVault)",
+     "valor": "No activados",
+     "unidad": "",
+     "fecha": "2026-11-03",
+     "nivel": "P",
+     "fuente": "Nodo público s1.ripple.com, método feature: enabled=false, supported=true"
     }
    ],
    "alcista": [

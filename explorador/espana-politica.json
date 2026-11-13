@@ -1,11 +1,11 @@
 {
- "generado": "2026-11-10",
+ "generado": "2026-11-12",
  "titulo": "España · Congreso: composición, iniciativas y votaciones (datos abiertos del Congreso)",
  "aviso": "Solo datos oficiales del Congreso de los Diputados (datos abiertos), sin calificaciones ni opinión. Una iniciativa «caducada» o «rechazada» describe su estado procesal, no su valor. Cortes disueltas por el RD 806/2026 (BOE-A-2026-20742, 6-oct-2026) [P]; elecciones generales el 29-nov-2026.",
  "unidad": "número de diputados / iniciativas / votos (unidades)",
  "escala": "1 (sin escala)",
  "composicion": {
-  "fecha_dato": "2026-11-10",
+  "fecha_dato": "2026-11-12",
   "nivel": "P",
   "fuente": "https://www.congreso.es/es/opendata/diputados",
   "activos_total": 137,
@@ -25,11 +25,11 @@
    "fecha": "06/10/2026",
    "diputados": 213
   },
-  "nota": "El fichero «DiputadosActivos» del Congreso lista 137 diputados el 10/11/2026; hay 275 bajas, 213 con fecha 06/10/2026, coincidiendo con la disolución de las Cortes. El fichero no explica por qué unos constan activos y otros de baja: [VERIFICAR] en el Congreso. No es el reparto de escaños de las elecciones de 2023.",
+  "nota": "El fichero «DiputadosActivos» del Congreso lista 137 diputados el 12/11/2026; hay 275 bajas, 213 con fecha 06/10/2026, coincidiendo con la disolución de las Cortes. El fichero no explica por qué unos constan activos y otros de baja: [VERIFICAR] en el Congreso. No es el reparto de escaños de las elecciones de 2023.",
   "leyenda_grupos": "Cada diputado pertenece a un grupo parlamentario (en general, su partido o coalición); «Mixto» reúne a los diputados sin grupo propio."
  },
  "iniciativas": {
-  "fecha_dato": "2026-11-10",
+  "fecha_dato": "2026-11-12",
   "nivel": "P",
   "fuente": "https://www.congreso.es/es/opendata/iniciativas",
   "legislatura": "XV (2023-2026)",
@@ -179,12 +179,12 @@
     "abst": 0
    }
   ],
-  "nota": "Solo la última sesión plenaria que muestra la página. El histórico por sesión y el voto por grupo («Detalle» y ZIP) no se leyeron: el selector de fecha no admite consulta directa. [VERIFICAR] / pendiente."
+  "nota": "Aquí solo la última sesión plenaria que muestra la página. El histórico de toda la legislatura (por sesión, año y grupo) está en el bloque siguiente, leído de los ZIP oficiales por scripts/leer_votaciones_congreso.py."
  },
  "intereses": {
   "nivel": "P",
   "fuente": "https://www.congreso.es/es/opendata/diputados",
-  "fecha_dato": "2026-11-10",
+  "fecha_dato": "2026-11-12",
   "declaraciones": 2787,
   "diputados_con_registro": 403,
   "por_tipo": {
@@ -353,6 +353,60 @@
     }
    ]
   },
+  "fundaciones_2023": {
+   "informe": "Informe n.º 1.697, fundaciones y entidades vinculadas a partidos, ejercicio 2023; Pleno 22-sep-2026 (resumen oficial leído el 12-nov-2026)",
+   "fuente": "https://www.tcu.es/export/sites/portal/repositorio2/resumen/NR_I1697.pdf",
+   "filas": [
+    {
+     "nombre": "Fundaciones y entidades fiscalizadas",
+     "valor": 37,
+     "unidad": "entidades",
+     "nota": "Ámbito del informe"
+    },
+    {
+     "nombre": "Aportaciones y donaciones privadas 2023",
+     "valor": 4720920.87,
+     "unidad": "euros",
+     "nota": "Conclusión 7 (4,12 M€ en 2022)"
+    },
+    {
+     "nombre": "Subvenciones públicas recibidas 2023",
+     "valor": 2125330.16,
+     "unidad": "euros",
+     "nota": "Conclusión 8; sobre todo de Cultura y Deporte y de Asuntos Exteriores; en la muestra, gastos correctamente justificados con carácter general"
+    },
+    {
+     "nombre": "Cuentas remitidas en plazo",
+     "valor": 15,
+     "unidad": "de 37 entidades",
+     "nota": "18 fuera de plazo y 4 sin remitir (conclusiones 1 y 2)"
+    },
+    {
+     "nombre": "Entidades inscritas en el Registro de Partidos",
+     "valor": 22,
+     "unidad": "entidades (19 fundaciones + 3 entidades)",
+     "nota": "15 sin inscribir (gráfico de la conclusión 4)"
+    },
+    {
+     "nombre": "Fundaciones y asociaciones sin actividad en 2023",
+     "valor": 10,
+     "unidad": "entidades",
+     "nota": "Conclusión 5"
+    },
+    {
+     "nombre": "Fundaciones con patrimonio neto negativo",
+     "valor": 5,
+     "unidad": "fundaciones",
+     "nota": "Conclusión 6; es un dato contable, no una irregularidad"
+    },
+    {
+     "nombre": "Entidades que no publicaron sus cuentas de 2023 en la web",
+     "valor": 14,
+     "unidad": "entidades",
+     "nota": "Conclusión 9"
+    }
+   ]
+  },
   "resolucion_cortes": {
    "texto": "La Comisión Mixta con el Tribunal de Cuentas aprobó el 21-may-2026 una resolución sobre el informe de fundaciones 2021-2022 que insta al Gobierno a exigir auditoría externa anual y reequilibrio patrimonial como requisito para recibir ayudas, y al Ministerio del Interior a exigir la inscripción en el Registro de Partidos.",
    "fuente": "https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-15347",
@@ -365,29 +419,139 @@
   "fecha_dato": "2026-11-10",
   "fuente": "https://digital.gob.es/funcion-publica/incompatibilidad-y-conflicto-intereses/informe-cumplimiento-altos-cargos",
   "texto": "La Oficina de Conflictos de Intereses eleva cada seis meses al Congreso un informe (art. 22 Ley 3/2015). El del primer semestre de 2026 (firmado el 2-jul-2026, 64 páginas) lista nominalmente los altos cargos en activo a 30-jun-2026 y declara «NINGUNO» en procedimientos sancionadores incoados y resueltos (Ley 3/2015 y Ley 19/2013). No se cuentan aquí los altos cargos ni se reproducen nombres.",
-  "nota": "El contenido de las declaraciones de bienes y derechos de cada alto cargo no se leyó (Portal de Transparencia / Registro de Bienes y Derechos Patrimoniales): [VERIFICAR]. Sueldos: ver el bloque «Número de cargos y retribuciones oficiales»."
+  "nota": "Las declaraciones de bienes de quienes tomaron posesión o cesaron en 2025 se publicaron en el BOE del 31-mar-2026 (BOE-A-2026-7339): aquí solo el agregado, sin nombres. Sueldos: ver el bloque «Número de cargos y retribuciones oficiales».",
+  "boe": {
+   "semestres": [
+    {
+     "periodo": "desde 1 de julio de 2025-31 de diciembre de 2025",
+     "boe": "BOE-A-2026-3366",
+     "fuente": "https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-3366",
+     "altos_cargos_en_activo": 819,
+     "declaraciones_bienes_toma": 91,
+     "declaraciones_bienes_cese": 88,
+     "declaraciones_actividades_toma": 91,
+     "declaraciones_actividades_cese": 79,
+     "comunicaciones_cambio_actividad": 20,
+     "declaraciones_anuales": 157,
+     "sancionadores_incoados_ley_3_2015": "Ninguno",
+     "sancionadores_incoados_ley_19_2013": "5",
+     "sancionadores_resueltos_ley_3_2015": "Ninguno",
+     "sancionadores_resueltos_ley_19_2013": "Ninguno"
+    },
+    {
+     "periodo": "desde 1 de enero de 2026 al 30 de junio de 2026",
+     "boe": "BOE-A-2026-16747",
+     "fuente": "https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-16747",
+     "altos_cargos_en_activo": 823,
+     "declaraciones_bienes_toma": 66,
+     "declaraciones_bienes_cese": 65,
+     "declaraciones_actividades_toma": 66,
+     "declaraciones_actividades_cese": 56,
+     "comunicaciones_cambio_actividad": 21,
+     "declaraciones_anuales": 415,
+     "sancionadores_incoados_ley_3_2015": "Ninguno",
+     "sancionadores_incoados_ley_19_2013": "Ninguno",
+     "sancionadores_resueltos_ley_3_2015": "Ninguno",
+     "sancionadores_resueltos_ley_19_2013": "Ninguno"
+    }
+   ],
+   "bienes": {
+    "boe": "BOE-A-2026-7339",
+    "fuente": "https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-7339",
+    "fecha_boe": "2026-03-31",
+    "ejercicio": "tomas de posesión y ceses de 2025",
+    "declaraciones": 332,
+    "por_cese": 156,
+    "por_toma_posesion": 176,
+    "filas": [
+     {
+      "concepto": "Bienes inmuebles",
+      "suma_meur": 78.81,
+      "mediana_eur": 170274,
+      "con_importe": 312
+     },
+     {
+      "concepto": "Depósitos y cuentas",
+      "suma_meur": 33.76,
+      "mediana_eur": 55831,
+      "con_importe": 332
+     },
+     {
+      "concepto": "Acciones cotizadas, deuda pública y bonos",
+      "suma_meur": 46.45,
+      "mediana_eur": 0,
+      "con_importe": 158
+     },
+     {
+      "concepto": "Participaciones no cotizadas",
+      "suma_meur": 14.16,
+      "mediana_eur": 0,
+      "con_importe": 54
+     },
+     {
+      "concepto": "Seguros de vida y planes de pensiones",
+      "suma_meur": 23.12,
+      "mediana_eur": 19960,
+      "con_importe": 225
+     },
+     {
+      "concepto": "Otros bienes y derechos",
+      "suma_meur": 5.38,
+      "mediana_eur": 0,
+      "con_importe": 165
+     },
+     {
+      "concepto": "Pasivo (deudas)",
+      "suma_meur": 33.44,
+      "mediana_eur": 14456,
+      "con_importe": 181
+     }
+    ],
+    "activo": {
+     "suma_meur": 201.68,
+     "mediana_eur": 407775,
+     "cuartil_1_eur": 233465,
+     "cuartil_3_eur": 713987
+    },
+    "neto": {
+     "suma_meur": 168.23,
+     "mediana_eur": 320286,
+     "cuartil_1_eur": 130876,
+     "cuartil_3_eur": 572222,
+     "con_neto_negativo": 35
+    },
+    "nota": "Agregado propio de las declaraciones publicadas en el BOE (art. 21.5 de la Ley 3/2015): una por persona que tomó posesión o cesó en 2025, de ahí que no cubra a todos los altos cargos en activo. Importes tal como los declara cada persona y los publica el BOE; el criterio de valoración de los inmuebles no se indica en la resolución [VERIFICAR]. «Neto» = suma de los seis conceptos de activo menos el pasivo (cálculo nuestro). No se publican aquí nombres ni cargos concretos."
+   }
+  }
  },
  "pendiente": [
   {
    "tema": "Cuentas de los partidos: ejercicios 2021 en adelante",
-   "estado": "no publicado/no leído",
-   "detalle": "El último informe del Tribunal de Cuentas sobre las cuentas de los propios partidos que se leyó es el del ejercicio 2020 (Pleno 27-jun-2024). Si existe uno posterior: [VERIFICAR] en tcu.es. El endpoint BDNS «partidospoliticos» (6.638 concesiones) devuelve entidades de todo tipo (probado: una asociación de Castilla-La Mancha), por lo que no se usa como financiación de partidos.",
-   "fuente": "https://www.tcu.es/",
-   "nivel": "V"
+   "estado": "no publicado",
+   "detalle": "En la lista de informes de partidos del Tribunal de Cuentas (leída el 12-nov-2026) el último informe sobre las cuentas anuales de los propios partidos sigue siendo el n.º 1.573, del ejercicio 2020 (Pleno 27-jun-2024). Sí hay informe nuevo de fundaciones: n.º 1.697, ejercicio 2023 (22-sep-2026), ya volcado.",
+   "fuente": "https://www.tcu.es/es/partidos-politicos/Informes/",
+   "nivel": "P"
   },
   {
-   "tema": "Altos cargos: contenido de las declaraciones de bienes",
+   "tema": "Altos cargos: declaraciones de bienes de quienes siguen en el cargo",
    "estado": "no leído",
-   "detalle": "Registro de Bienes y Derechos Patrimoniales (Oficina de Conflictos de Intereses) y Portal de Transparencia: qué se publica de cada declaración no se comprobó. [VERIFICAR].",
+   "detalle": "El BOE solo publica cada año las declaraciones de quienes tomaron posesión o cesaron el año anterior (332 en 2025). El patrimonio de quienes siguen en activo sin cambio de cargo no se publica de nuevo: [VERIFICAR] en el Portal de Transparencia.",
    "fuente": "https://transparencia.gob.es/",
    "nivel": "V"
   },
   {
-   "tema": "Senado",
-   "estado": "no leído",
-   "detalle": "Iniciativas y votaciones del Senado no consultadas: [VERIFICAR] en senado.es.",
-   "fuente": "https://www.senado.es/",
-   "nivel": "V"
+   "tema": "Congreso: sentido del voto por iniciativa",
+   "estado": "parcial",
+   "detalle": "El histórico agrega por sesión, año y grupo. No se guarda el resultado de cada votación con su título (son 2.175) ni qué mayoría exigía cada una; el ZIP oficial de cada sesión está enlazado en los datos.",
+   "fuente": "https://www.congreso.es/es/opendata/votaciones",
+   "nivel": "P"
+  },
+  {
+   "tema": "Senado: listado oficial de sesiones incompleto",
+   "estado": "parcial",
+   "detalle": "El fichero de sesiones plenarias del catálogo solo enumera hasta la sesión 60; los ficheros de votación existen hasta la 83 (29-sep-2026) y faltan los de 7 sesiones. Motivo no explicado en la web: [VERIFICAR].",
+   "fuente": "https://www.senado.es/web/relacionesciudadanos/datosabiertos/catalogodatos/index.html",
+   "nivel": "P"
   }
  ],
  "explicacion": {

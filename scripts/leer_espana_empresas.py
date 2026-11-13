@@ -138,11 +138,19 @@ def main():
         filas.append(fila)
     filas.sort(key=lambda f: f["ccaa"])
     pers = next(iter(paro.values()), (None, None, None))
+    # Las fichas revisadas a mano en el JSON (campo "revisado") mandan sobre la lista EMPRESAS de este script:
+    # así una ejecución posterior no pisa lo leído después en las cuentas oficiales (12-nov-2026).
+    empresas = list(EMPRESAS)
+    try:
+        previas = {e["id"]: e for e in json.loads(SALIDA.read_text(encoding="utf-8")).get("empresas", []) if e.get("revisado")}
+        empresas = [previas.get(e["id"], e) for e in EMPRESAS] + [e for i, e in previas.items() if i not in {x["id"] for x in EMPRESAS}]
+    except Exception:
+        pass
     res = {
         "generado": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "aviso": "Empresas públicas: cifras de la propia web de cada entidad, solo las que se pudieron leer; el resto queda [VERIFICAR]. Importes en millones de euros (M€). Una cifra grande o una pérdida NO implica mala gestión ni irregularidad: el perímetro y la función de cada empresa difieren.",
         "unidad": "M€", "escala": "millones de euros",
-        "empresas": EMPRESAS,
+        "empresas": empresas,
         "comparador_ccaa": {
             "aviso": "Solo tres magnitudes leídas en fuente oficial. Renta por hogar y precio de vivienda por CCAA: no incluidos en este bloque (pendiente; la vivienda nacional ya está en el panel). La deuda PDE es la total del Banco de España, no distingue la parte con el Estado (FLA).",
             "paro": {"fuente": "INE, EPA, tabla 65334 (tasa de paro, ambos sexos)", "periodo": "último trimestre de la API", "anio_periodo": "2T 2026 (fecha 30-jun-2026 en la API)", "nivel": "P"},
@@ -151,7 +159,7 @@ def main():
             "filas": filas,
         },
     }
-    SALIDA.write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
+    SALIDA.write_text(json.dumps(res, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
     print("ok", SALIDA, len(filas), "ccaa; paro", len(paro), "pob", len(pob))
 
 
