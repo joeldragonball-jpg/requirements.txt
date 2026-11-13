@@ -1,6 +1,6 @@
 {
  "version": 1,
- "actualizado": "2026-11-12",
+ "actualizado": "2026-11-13",
  "nota": "Información general sobre cinco activos; no es recomendación de compra ni venta. Cada dato lleva fecha y nivel (P = fuente primaria leída; S = agregador o prensa). Los precios son de agregadores (CoinGecko, Yahoo) del 9 o 10-nov-2026; los datos de ETF son de fechas anteriores. Sin predicciones: lo que sea opinión o previsión va como [ESPECULACIÓN] y lo no contrastado como [VERIFICAR].",
  "unidades": "Cada hecho lleva su unidad y fecha. Capitalización y AUM en millones de USD; precios en la moneda indicada.",
  "fichas": [
@@ -83,12 +83,12 @@
      "fuente": "SEC, estándares genéricos de cotización (nota 2025-121), regulacion.json"
     },
     {
-     "dato": "OCC: aprobación condicional a un fideicomiso de Ripple",
+     "dato": "OCC y banco fiduciario de Ripple (Ripple National Trust Bank): aprobación condicional",
      "valor": "12-dic-2025",
      "unidad": "",
      "fecha": "2025-12-12",
      "nivel": "P",
-     "fuente": "OCC, según regulacion.json (custodia EE. UU.); la final sigue pendiente"
+     "fuente": "OCC, Conditional Approval n.º 1359 y nota NR-OCC-2025-125 (constan en occ.gov, buscador leído el 13-nov-2026). Aprobación FINAL: Ripple la comunicó el 26-oct-2026 (nivel P de empresa, parte interesada); en el buscador de occ.gov no aparece ningún documento de aprobación final a 13-nov-2026 [VERIFICAR en el registro de solicitudes de la OCC]."
     },
     {
      "dato": "Staking de protocolo",
@@ -148,11 +148,11 @@
     },
     {
      "dato": "Evernorth: XRP aportados en especie por Ripple y partes relacionadas",
-     "valor": "≈ 388,1",
+     "valor": "388,91",
      "unidad": "millones de XRP",
-     "fecha": "2026-08-12",
+     "fecha": "2026-11-09",
      "nivel": "P",
-     "fuente": "SEC, S-4/A n.º 6 de Evernorth (EDGAR). Otro informe del repo cita 388,9 M: diferencia de redondeo o de fecha [VERIFICAR]"
+     "fuente": "SEC, 424B3 de Evernorth presentado el 9-nov-2026 (EDGAR, leído el 13-nov-2026): «approximately 388,910,554 XRP in kind». Desglose leído: 211.319.096 del patrocinador (serie C) + 126.791.458 de Ripple + 50.000.000 de una entidad vinculada + 800.000 de inversores privados. La cifra anterior de ≈ 388,1 M (S-4/A n.º 6, 12-ago-2026) son las tres primeras partidas sin esos 800.000: no era una contradicción. La misma cifra exacta consta en 6 documentos de la SEC del 14-oct al 9-nov-2026."
     },
     {
      "dato": "RLUSD (stablecoin de Ripple) emitido en el XRP Ledger",
@@ -177,12 +177,60 @@
      "fecha": "2026-11-03",
      "nivel": "P",
      "fuente": "Nodo público s1.ripple.com, método feature: enabled=false, supported=true"
+    },
+    {
+     "dato": "Evernorth: XRP totales tras el cierre (en especie + comprados)",
+     "valor": "≈ 473,28",
+     "unidad": "millones de XRP",
+     "fecha": "2026-11-09",
+     "nivel": "P",
+     "fuente": "Suma nuestra de dos cifras del 424B3 del 9-nov-2026: 388.910.554 en especie + 84.365.876 comprados con 214,05 M USD de efectivo. Cuadra con los «más de 473 millones» del Form 425 de marzo. Los comprados están contabilizados al coste menos deterioro; precio de referencia del cierre: 1,43069 USD por XRP."
+    },
+    {
+     "dato": "Evernorth: efectivo bruto recibido en el cierre (9-oct-2026)",
+     "valor": "272,6",
+     "unidad": "millones USD",
+     "fecha": "2026-11-09",
+     "nivel": "P",
+     "fuente": "SEC, 424B3 del 9-nov-2026: 224,6 M de la colocación privada + 48,0 M de la cuenta fiduciaria tras los reembolsos, antes de gastos. Además, notas convertibles por 30 M USD al 4 % (interés pagado en más deuda, vencimiento 2031; conversión inicial ≈ 10,20 USD por acción)."
+    },
+    {
+     "dato": "Evernorth: línea de capital comprometido con Cantor",
+     "valor": "hasta 5.218.935 acciones nuevas",
+     "unidad": "",
+     "fecha": "2026-10-23",
+     "nivel": "P",
+     "fuente": "SEC, 424B3 del 9-nov-2026 (acuerdo del 23-oct-2026): Evernorth puede vender a Cantor al 97 % del precio medio ponderado, durante unos 14 meses y sin obligación de hacerlo. Es dilución potencial para el accionista de XRPN, no compra de XRP. Voto tras el cierre: SBI ≈ 39,9 %, patrocinador 19,9 %, grupo aportante 9,9 %."
+    },
+    {
+     "dato": "Suministro total de XRP (leído en el ledger)",
+     "valor": "99.985.553.928",
+     "unidad": "XRP",
+     "fecha": "2026-11-13",
+     "nivel": "P",
+     "fuente": "Nodo público xrplcluster.com, método ledger (ledger 108302027, 13-nov-2026 11:00 UTC). Quemados en comisiones desde el origen: 14.446.072 XRP (0,014 % de los 100.000 M iniciales); el 17-oct-2026 eran 14.409.958, es decir, unos 1.340 XRP al día (cálculo nuestro). La quema es real pero irrelevante frente al suministro."
+    },
+    {
+     "dato": "Escrow de Ripple leído en el ledger (8 cuentas vigiladas)",
+     "valor": "31.100 en 99 escrows",
+     "unidad": "millones de XRP",
+     "fecha": "2026-11-07",
+     "nivel": "P",
+     "fuente": "Ledger XRPL (xrplcluster.com), lectura del 7-nov-2026 del lote de hechos 02; no releída hoy. Vencen 1.000 M por mes de dic-2026 a jun-2029; ninguno vencido sin ejecutar. Frente a los 32.600 M declarados por Ripple a 30-jun-2026: la diferencia son los meses transcurridos y lo que se vuelve a bloquear, no una contradicción."
+    },
+    {
+     "dato": "Compras de Ripple en custodia: Standard Custody & Trust (cerrada) y Palisade (anunciada)",
+     "valor": "11-jun-2024 / 3-nov-2025",
+     "unidad": "",
+     "fecha": "2025-11-03",
+     "nivel": "P",
+     "fuente": "Notas de Ripple (ripple.com, parte interesada), lote de hechos 04; sin precio publicado en ninguna de las dos. RLUSD lo sigue emitiendo Standard Custody & Trust."
     }
    ],
    "alcista": [
     "Existen cinco ETF al contado en EE. UU. con ≈ 1.510 M USD y entradas netas acumuladas ≈ 1.800 M USD (S).",
     "El litigio con la SEC está cerrado (multa e injunction vigentes, apelaciones retiradas en ago-2025).",
-    "Aprobaciones condicionales de la OCC a fideicomisos cripto, incluido uno de Ripple (la final sigue pendiente).",
+    "Aprobaciones condicionales de la OCC a fideicomisos cripto, incluido uno de Ripple (la final la comunicó Ripple el 26-oct-2026; sin documento en occ.gov a 13-nov-2026 [VERIFICAR]).",
     "Evernorth (XRPN, cotizada desde el 12-oct-2026) acumula XRP en tesorería: 388,9 M XRP aportados en especie según su 8-K [P]."
    ],
    "bajista": [
@@ -265,7 +313,7 @@
      "unidad": "millones USD",
      "fecha": "2026-06-30",
      "nivel": "P",
-     "fuente": "10-Q (vía buscador, informe T19)"
+     "fuente": "10-Q (vía buscador, informe T19); valor liquidativo de 15,38 USD por participación; no hay ETF de XLM al contado cotizando"
     },
     {
      "dato": "ETP físicos de XLM en Europa",
@@ -314,6 +362,22 @@
      "fecha": "2026-11-11",
      "nivel": "P",
      "fuente": "DefiLlama (api.llama.fi/protocol/blend-pools-v2); el TVL cuenta lo depositado, no lo prestado; baja ≈ 20 % en 30 días (web de DefiLlama, 8-nov) [S]; incidentes en Stellar DeFi (Comet ≈ 0,72 M USD; 10,97 M USD el 22-feb-2026) sin reconciliar [VERIFICAR]"
+    },
+    {
+     "dato": "USDC en Stellar (leído en la red)",
+     "valor": "351,2",
+     "unidad": "millones USD",
+     "fecha": "2026-11-13",
+     "nivel": "P",
+     "fuente": "API pública Horizon (horizon.stellar.org/assets, emisor de Circle), 13-nov-2026 11:02 UTC: 235,8 M en cuentas + 112,0 M en contratos Soroban + 2,4 M en fondos de liquidez; 2.545.008 cuentas con línea de confianza. El 29-oct-2026 el mismo método daba 342,6 M. Para comparar: USDC en el XRPL ≈ 4,5 M (29-oct-2026)."
+    },
+    {
+     "dato": "Red Stellar: versión de protocolo en vigor",
+     "valor": "29",
+     "unidad": "",
+     "fecha": "2026-11-13",
+     "nivel": "P",
+     "fuente": "Horizon, ledger 65456342 (13-nov-2026): protocol_version 29, en vigor desde el 1-oct-2026. El voto del Protocolo 30 en la red principal está anunciado para el 23-nov-2026 (blog de la SDF, 20-oct-2026)."
     }
    ],
    "alcista": [

@@ -17,7 +17,9 @@
   "El total del Estado (423.336 M€ de obligaciones en 2025) no es el gasto público: incluye 121.514 M€ de amortización de deuda y 71.889 M€ de transferencias internas.",
   "Deuda pública: 156.336 M€ de obligaciones, de los que solo 34.822 M€ son intereses; el resto es devolver vencimientos, que se refinancian.",
   "«Transferencias y libramientos internos» es dinero que el ministerio pasa a sus organismos o a la Seguridad Social: Inclusión transfiere 53.207 M€.",
-  "Inicial bajo y definitivo alto no indica desvío por sí solo: con presupuesto prorrogado desde 2023, los créditos se amplían durante el año."
+  "Inicial bajo y definitivo alto no indica desvío por sí solo: con presupuesto prorrogado desde 2023, los créditos se amplían durante el año.",
+  "Cierre definitivo (Cuenta del Estado que la IGAE publica cada agosto): obligaciones de 371.289 M€ en 2023, 408.564 M€ en 2024 (+10,0 %) y 423.336 M€ en 2025 (+3,6 %). Coincide con las cifras mensuales usadas aquí en todas las secciones. Saldo sin operaciones financieras: −40.800 M€ (2023), −35.513 M€ (2024) y −35.179 M€ (2025).",
+  "Dato más reciente (solo el total): hasta el 30-sep-2026 el Estado había reconocido 296.527 M€ de obligaciones sobre 462.582 M€ de crédito definitivo (64,1 %); el desglose de esta página sigue a agosto."
  ],
  "lecturas": {
   "ministerios": "[OPINIÓN] Lo que más pesa no son los ministerios, sino deuda, pensiones y transferencias a CCAA y ayuntamientos. A favor del sistema actual: las ampliaciones cubren compromisos reales, como pensiones e IMV. En contra: con créditos de 2023 las Cortes no votan cambios de esta escala (Defensa +6.304 M€, Inclusión +9.486 M€ en 2025).",
@@ -31,7 +33,11 @@
   "agosto_2026": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/BOE%2008-26.pdf",
   "agosto_2026_detalle": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2008-26.pdf",
   "cierre_2024": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/BOE%2012-24.pdf",
-  "cierre_2024_detalle": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-24.pdf"
+  "cierre_2024_detalle": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-24.pdf",
+  "cuenta_age_2023": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/rcasp/Documents/RESUMEN%20CAGE%202023.pdf",
+  "cuenta_age_2024": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/rcasp/Documents/RESUMEN%20CAGE%202024.pdf",
+  "cuenta_age_2025": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/rcasp/Documents/RESUMEN%20CAGE%202025.pdf",
+  "septiembre_2026": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/BOE%2009-26.pdf"
  },
  "totales": {
   "inicial_2025": 380822.5,
@@ -46,7 +52,13 @@
   "eur_hab_2025": 8617.0,
   "eur_hab_var_real_pct": -0.5,
   "eur_hab_var_real_ipc_pct": -0.2,
-  "nota_deflactor": "eur_hab_var_real_pct usa el deflactor implícito del PIB (+3,05 %, Eurostat); eur_hab_var_real_ipc_pct usa el IPC medio anual 2025 = 2,7 % (INE, nota de prensa de diciembre 2025 y serie IPC251852 base 2021: media 2025/media 2024 = +2,67 %) [P]. Población a 1-ene (INE, Estadística Continua de Población, serie ECP320): 48.619.695 (2024) y 49.128.297 (2025) [P]. Cálculo propio, 6-nov-2026."
+  "nota_deflactor": "eur_hab_var_real_pct usa el deflactor implícito del PIB (+3,05 %, Eurostat); eur_hab_var_real_ipc_pct usa el IPC medio anual 2025 = 2,7 % (INE, nota de prensa de diciembre 2025 y serie IPC251852 base 2021: media 2025/media 2024 = +2,67 %) [P]. Población a 1-ene (INE, Estadística Continua de Población, serie ECP320): 48.619.695 (2024) y 49.128.297 (2025) [P]. Cálculo propio, 6-nov-2026.",
+  "inicial_2024": 380822.4,
+  "definitivo_2024": 433163.4,
+  "definitivo_2026_sep": 462582.4,
+  "obligaciones_2026_sep": 296527.3,
+  "pagos_2026_sep": 290936.3,
+  "nota_2026_sep": "Solo el total: IGAE, «BOE 09-26» (ejecución hasta el 30-sep-2026, publicado el 6-nov-2026), leído el 13-nov-2026. El desglose por sección, política y programa de esta página sigue a agosto de 2026."
  },
  "secciones": [
   {
@@ -1553,13 +1565,13 @@
    "nivel": "P",
    "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf",
    "fuente_2026": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2008-26.pdf",
-   "nota": "Préstamos, no subvención: se obligaron 3.300 M€ pero no se pagaron en 2025.",
+   "nota": "Préstamos, no subvención: en 2025 se reconocieron 3.300 M€ de obligaciones pero no se pagaron ese año; en 2024 solo se comprometieron 2.200 M€.",
    "inicial_2024": 0.0,
    "definitivo_2024": 2200.0,
-   "obligaciones_2024": 2200.0,
-   "var_abs": 1100.0,
-   "var_pct": 50.0,
-   "nota_2024": "2024 en IGAE MENSUAL 12-24 (programa 26BG): crédito inicial 0 y definitivo 2.200 M€ confirmados en la tabla resumen (2.200.000 miles) y en el bloque por servicio (2.200.000.000 €). Obligaciones: la tabla resumen da 2.200 M€, pero el bloque por servicio muestra «-» en la tercera columna; obligaciones 2024 siguen [VERIFICAR]."
+   "obligaciones_2024": 0.0,
+   "var_abs": 3300.0,
+   "var_pct": null,
+   "nota_2024": "CORREGIDO el 13-nov-2026: en 2024 el crédito definitivo fue de 2.200 M€ y quedó comprometido, pero NO se reconoció ninguna obligación (IGAE MENSUAL 12-24, programa 26BG: columnas de obligaciones y pagos en blanco; la cifra de 2.200 M€ que figuraba aquí era la columna de gastos comprometidos). Lo confirma el cierre definitivo: la sección de Vivienda reconoció 1.367,2 M€ en total y dejó 2.625,5 M€ de remanentes comprometidos. Las obligaciones llegan en 2025 (3.300 M€, sin pagos ese año). Coincide con el desglose por ministerio, que ya daba 0 en 2024."
   },
   {
    "id": "cultura_prom",
@@ -13589,6 +13601,48 @@
    "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Documents/MENSUAL%2012-25.pdf"
   }
  },
- "nota_2024": "Inicial y definitivo 2024 de áreas y políticas leídos de IGAE «BOE 12-24» (provisional, publicado 7-abr-2025); descargado el 4-nov-2026 con Chrome (research/fuentes/igae-BOE_12-24.pdf).",
- "nota_2024_programas": "Inicial, definitivo y obligaciones 2024 de programas y partidas sumados de IGAE «MENSUAL 12-24» (provisional, publicado 3-abr-2025; bloques PGE de todos los servicios), descargado el 4-nov-2026 con Chrome."
+ "nota_2024": "Inicial y definitivo 2024 de áreas y políticas leídos de IGAE «BOE 12-24» (provisional, publicado 7-abr-2025); descargado el 4-nov-2026 con Chrome (research/fuentes/igae-BOE_12-24.pdf). 13-nov-2026: contrastado con el cierre definitivo (Resumen de la Cuenta de la Administración General del Estado de 2024, publicado el 4-ago-2025): crédito inicial, definitivo y obligaciones coinciden en las 37 secciones y las 26 políticas; total de obligaciones 408.563,6 M€ (408.563.648.460,82 €).",
+ "nota_2024_programas": "Inicial, definitivo y obligaciones 2024 de programas y partidas sumados de IGAE «MENSUAL 12-24» (provisional, publicado 3-abr-2025; bloques PGE de todos los servicios), descargado el 4-nov-2026 con Chrome.",
+ "cierre_definitivo": {
+  "titulo": "Cierre definitivo del presupuesto del Estado (Cuenta de la Administración General del Estado)",
+  "unidad": "M€",
+  "escala": "millones de euros",
+  "nivel": "P",
+  "leido": "2026-11-13",
+  "nota": "Resumen de la Cuenta de la Administración General del Estado que publica la IGAE cada agosto (2023: 2-ago-2024; 2024: 4-ago-2025; 2025: 4-ago-2026). Es la cuenta rendida, no el avance mensual. Comparado el 13-nov-2026: las 37 secciones, las 26 políticas y los 9 capítulos de 2024 y las 37 secciones y los capítulos de 2025 coinciden con las cifras provisionales de los PDF mensuales de diciembre (diferencia máxima 0,1 M€, por redondeo). El resultado presupuestario total incluye la deuda emitida y amortizada: para comparar años se usa el saldo no financiero.",
+  "anios": [
+   {
+    "anio": 2023,
+    "credito_inicial": 386088.1,
+    "credito_definitivo": 407082.8,
+    "obligaciones": 371288.9,
+    "derechos_netos": 369756.3,
+    "saldo_no_financiero": -40799.6,
+    "resultado_presupuestario": -1532.5,
+    "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/rcasp/Documents/RESUMEN%20CAGE%202023.pdf"
+   },
+   {
+    "anio": 2024,
+    "credito_inicial": 380822.4,
+    "credito_definitivo": 433163.4,
+    "obligaciones": 408563.6,
+    "derechos_netos": 390374.2,
+    "saldo_no_financiero": -35513.2,
+    "resultado_presupuestario": -18189.5,
+    "remanentes_comprometidos": 5903.3,
+    "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/rcasp/Documents/RESUMEN%20CAGE%202024.pdf"
+   },
+   {
+    "anio": 2025,
+    "credito_inicial": 380822.4,
+    "credito_definitivo": 457766.3,
+    "obligaciones": 423336.3,
+    "derechos_netos": 433284.3,
+    "saldo_no_financiero": -35178.5,
+    "resultado_presupuestario": 9948.0,
+    "remanentes_comprometidos": 3675.1,
+    "fuente": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/rcasp/Documents/RESUMEN%20CAGE%202025.pdf"
+   }
+  ]
+ }
 }
