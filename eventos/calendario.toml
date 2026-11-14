@@ -1117,7 +1117,7 @@ fuente = "https://www.opec.org/"
 fecha = "2026-11-25"
 id = "ev-2026-11-25-xrpl-reinicio-testnet-devnet"
 titulo = "XRPL: reinicio de Testnet y Devnet"
-detalle = "Anunciado en el blog de xrpl.org [P]; afecta a las redes de pruebas, no a la red principal. Pestaña Cadenas (C264)."
+detalle = "Anunciado en el blog de xrpl.org el 9-nov-2026 (miércoles 25-nov) para mejorar la estabilidad de los servidores de historial completo [P]; afecta a las redes de pruebas, no a la red principal. Releído 14-nov (C276)."
 impacto = "bajo"
 fuente = "https://xrpl.org/blog"
 
@@ -1125,7 +1125,26 @@ fuente = "https://xrpl.org/blog"
 fecha = "2026-12-31"
 id = "ev-2026-12-31-ethereum-glamsterdam-mainnet-previsto"
 titulo = "Ethereum: bifurcación Glamsterdam en la red principal (prevista en el 4T-2026, sin fecha)"
-detalle = "Fecha sin fijar: la prensa la sitúa en el 4T-2026 tras dos retrasos en Sepolia [S]; el 31-dic marca el trimestre, no una fecha anunciada. Pestaña Cadenas (C264)."
+detalle = "Sin fecha en mainnet: activa en Sepolia desde el 6-oct-2026; la activación en Hoodi (26-oct) se aplazó el 22-oct sin nueva fecha por el reprecio de gas EIP-8037/8038; el 4T-2026 era el objetivo anterior y ya no está confirmado (Everstake, actualizado 4-nov) [S]. El 31-dic marca el trimestre, no una fecha anunciada: [ESPECULACIÓN] que se retrase más. Releído 14-nov (C276)."
 impacto = "bajo"
 aproximado = true
 fuente = "https://everstake.one/resources/blog/ethereum-glamsterdam-upgrade-explained"
+
+# --- Añadidos el 2026-11-14 (C276, cruce con hitos futuros de Cadenas) ---
+[[eventos]]
+fecha = "2027-12-31"
+id = "ev-2027-12-31-dtcc-activos-tokenizados-dtc-solana"
+titulo = "DTCC: activos tokenizados de DTC en Solana (previsto en el 2S-2027)"
+detalle = "Nota de DTCC del 12-nov-2026: integración con Solana prevista en el segundo semestre de 2027 [P]; el 31-dic marca el semestre, no una fecha anunciada."
+impacto = "medio"
+aproximado = true
+fuente = "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana"
+
+[[eventos]]
+fecha = "2027-06-30"
+id = "ev-2027-06-30-quant-red-clearing-house-instituciones"
+titulo = "Quant: red de The Clearing House disponible para instituciones financieras (previsto en el 1S-2027)"
+detalle = "Plazo según Quant («primer semestre de 2027, con más detalles por venir») [P, nota de Quant, releída el 14-nov-2026]; el 30-jun marca el semestre, no una fecha anunciada."
+impacto = "bajo"
+aproximado = true
+fuente = "https://quant.network/news/quant-powers-the-clearing-houses-on-chain-money-initiative-in-the-us/"

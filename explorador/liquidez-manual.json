@@ -1,6 +1,6 @@
 {
-  "_actualizado": "2026-11-07",
-  "aviso": "Valores a mano porque no hay API abierta fiable sin navegador. Actualizar con W01 o una tarea de liquidez cuando salgan datos nuevos.",
+  "_actualizado": "2026-11-14",
+  "aviso": "jp y cn siguen a mano (sin API abierta fiable; cada uno con su fecha). fed y eurosistema los lee scripts/leer_liquidez.py (FRED y BCE) [P].",
   "jp": {
     "serie": "M2 Japón",
     "fecha": "2026-09",
@@ -14,5 +14,31 @@
     "interanual": 7.2,
     "fuente": "PBoC según prensa (Xinhua/China Daily, 15-oct-2026); no se ha leído la web del banco",
     "nivel": "S"
-  }
+  },
+  "fed": {
+    "serie": "Liquidez neta Fed = balance (WALCL) − repo inverso (RRPONTSYD) − TGA (WTREGEN)",
+    "fecha": "2026-11-11",
+    "unidad": "mil M$",
+    "balance": 6758.9,
+    "repo_inverso": 0.152,
+    "repo_inverso_fecha": "2026-11-10",
+    "tga": 914.4,
+    "liquidez_neta": 5844.3,
+    "liquidez_neta_hace_4_sem": 5872.1,
+    "fecha_hace_4_sem": "2026-10-14",
+    "fuente": "FRED (Reserva Federal H.4.1 y Tesoro de EE. UU.): fredgraph.csv?id=WALCL, RRPONTSYD, WTREGEN; WALCL y WTREGEN en M$ y RRP en mil M$, convertidos",
+    "nivel": "P"
+  },
+  "eurosistema": {
+    "serie": "Activo total del Eurosistema (balance consolidado, ILM)",
+    "fecha": "2026-W45",
+    "semana_empieza": "2026-11-02",
+    "unidad": "mil M€",
+    "valor": 5913.2,
+    "hace_4_sem": 5943.9,
+    "fecha_hace_4_sem": "2026-W41",
+    "fuente": "BCE Data Portal, ILM/W.U2.C.T000000.Z5.Z01 (millones de euros, convertidos)",
+    "nivel": "P"
+  },
+  "fallos": []
 }

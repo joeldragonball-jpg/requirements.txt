@@ -1683,7 +1683,8 @@
      "t": "Activos tokenizados de DTC en Solana (previsto para el 2S-2027)",
      "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana",
      "n": "P",
-     "futuro": true
+     "futuro": true,
+     "cal": true
     }
    ],
    "sesgos": [
@@ -2645,6 +2646,13 @@
       "u": "https://www.canton.network/blog/onchain-collateral-repo-tokenization",
       "d": "2026-09-08",
       "n": "P"
+     },
+     "otros": {
+      "t": "REPRESENTADO, no emitido en la cadena: el Servicio de Tokenización de DTCC (DTS, en marcha desde el 28-oct-2026) crea «gemelos digitales» de valores custodiados en DTC, convertibles entre forma tradicional y tokenizada y entregables a monederos; conservan los derechos y protecciones del original. DTC custodia más de 114 billones de $ y 20 participantes han firmado el acceso (entre ellos Citi, J.P. Morgan, Fidelity, UBS). La nota no da importe tokenizado en circulación [VERIFICAR]. Dato de la web de Canton: Société Générale declara haber movido 10 M$ de bonos del Tesoro tokenizados como colateral (cita de un directivo, parte interesada)",
+      "f": "DTCC, nota de prensa DTS (parte interesada); canton.network, página DTS (testimonios)",
+      "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+      "d": "2026-10-28",
+      "n": "P"
      }
     }
    }
@@ -2841,6 +2849,13 @@
       "u": "https://chain.link/blog/cre-dvp-kinexys-jp-morgan-ondo-finance",
       "d": "2025-06-12",
       "n": "P"
+     },
+     "otros": {
+      "t": "No emite ni custodia: SmartData publica onchain datos de reservas (Proof of Reserve), valor liquidativo (NAVLink) y activos bajo gestión (SmartAUM) de activos tokenizados. Chainlink avisa de que muchas de estas señales dependen de una sola fuente (emisor, administrador, custodio o auditor) y de que algunas reservas son autodeclaradas por el emisor. Es dato SOBRE activos de otros, no activos propios. Sin importe cubierto en la página. Además, DTCC anunció el 12-may-2026 que su Collateral AppChain usará Chainlink CRE y su estándar de datos (intención, no volumen)",
+      "f": "docs.chain.link, SmartData (parte interesada); DTCC, nota de prensa 12-may-2026 (parte interesada)",
+      "u": "https://docs.chain.link/data-feeds/smartdata",
+      "d": "2026-11-14",
+      "n": "P"
      }
     }
    }
@@ -3015,6 +3030,13 @@
       "f": "ondo.finance/usdy (leída; parte interesada)",
       "u": "https://ondo.finance/usdy",
       "d": "2026-11-11",
+      "n": "P"
+     },
+     "acciones": {
+      "t": "Ondo Stocks (antes Global Markets): tokens que dan exposición de precio a acciones y ETF de EE. UU. (REPRESENTADOS: respaldados por acciones, ETF y efectivo en broker-dealers de EE. UU., con agente de verificación independiente que revisa el respaldo a diario y agente de garantía); no para clientes de EE. UU.; más de 470 acciones y ETF tokenizados en Ethereum, BNB Chain y Solana; mint y reembolso 24/5. Sin importe en circulación en la página [VERIFICAR]",
+      "f": "ondo.finance/ondo-stocks (leída; parte interesada)",
+      "u": "https://ondo.finance/ondo-stocks",
+      "d": "2026-11-14",
       "n": "P"
      }
     }
@@ -3216,6 +3238,13 @@
       "u": "https://algorand-rwa-dashboard.vercel.app/",
       "d": "2026-11-14",
       "n": "P"
+     },
+     "otros": {
+      "t": "Quantoz (regulado, token de dinero electrónico y emisión) lista entre sus soluciones «liquidación de activos tokenizados» y financiación del comercio; la portada no nombra activos, importes ni cadena concreta [VERIFICAR vínculo con Algorand]. Folks Finance (préstamos entre cadenas) declara no estar diseñado para valores tokenizados («security tokens»), así que su volumen no cuenta como RWA de valores",
+      "f": "quantoz.com (portada y menú); folks.finance (aviso legal; parte interesada)",
+      "u": "https://www.quantoz.com/",
+      "d": "2026-11-14",
+      "n": "P"
      }
     }
    }
@@ -3407,11 +3436,11 @@
       "n": "S"
      },
      "credito": {
-      "t": "TradeFinex tokeniza facturas, cuentas por cobrar y cartas de crédito; la guía de XDC dice '100 M$+ tokenizados', cifra del propio ecosistema sin informe ni fecha",
-      "f": "docs.xdc.network, RWA Tokenization (parte interesada)",
-      "u": "https://docs.xdc.network/enterprise/rwa-tokenization/",
+      "t": "TradeFinex se describe como protocolo no custodial de financiación del comercio, conforme a ISO 20022 según su web, que tokeniza recibos de almacén, materias primas y facturas sobre XDC y forma parte de Contour (cartas de crédito digitales con MUFG, ICBC, Bank of China, DBS según la web). La web no da importes; la cifra «100 M$+» de la guía de XDC sigue sin informe ni fecha [VERIFICAR]. Son activos REPRESENTADOS (documentos o mercancía fuera de cadena)",
+      "f": "TradeFinex, tradefinex.org (parte interesada); docs.xdc.network, RWA Tokenization",
+      "u": "https://www.tradefinex.org/",
       "d": "2026-11-14",
-      "n": "S"
+      "n": "P"
      }
     }
    }
@@ -3550,7 +3579,8 @@
      "u": "https://quant.network/news/quant-powers-the-clearing-houses-on-chain-money-initiative-in-the-us/",
      "n": "P",
      "futuro": true,
-     "aprox": true
+     "aprox": true,
+     "cal": true
     }
    ],
    "sesgos": [
@@ -3739,8 +3769,8 @@
     "liquidacion": null,
     "cualitativo": {
      "otros": {
-      "t": "Documentos de comercio e identidad digital (TWIN, ADAPT) con la Secretaría del AfCFTA en Kenia, Marruecos y Nigeria: registros verificables, no activos tokenizados con importe. La web de tokenización cita Impierce, Orobo, ObjectID y Turing Space como casos de identidad y pasaportes digitales",
-      "f": "Blog de IOTA (ADAPT, 19-may-2026) e iota.org (parte interesada)",
+      "t": "Documentos de comercio e identidad digital (TWIN, ADAPT) con la Secretaría del AfCFTA en Kenia, Marruecos y Nigeria: registros verificables, no activos tokenizados con importe. La web de tokenización cita Impierce, Orobo, ObjectID y Turing Space como casos de identidad y pasaportes digitales · Hierarchies: IOTA Hierarchies es una capa de confianza (delegación de roles y acreditaciones verificables, con ejemplos de cadena de suministro, educación o gobierno), no un activo ni un mercado de valores tokenizados; sin importes. Se apoya en IOTA Identity. Los casos que cita son de identidad y pasaportes digitales de producto",
+      "f": "Blog de IOTA (ADAPT, 19-may-2026) e iota.org (parte interesada); iota.org, Hierarchies",
       "u": "https://blog.iota.org/first-adapt-implementations",
       "d": "2026-11-14",
       "n": "P"
