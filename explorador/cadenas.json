@@ -690,7 +690,13 @@
      "n": "V",
      "u": "https://docs.hedera.com/hedera/core-concepts/staking/staking"
     },
-    "interop": null,
+    "interop": {
+     "t": "La documentación oficial incluye guías de integración con Chainlink CCIP, LayerZero y USDT0 (índice leído; no prueba volumen de uso)",
+     "f": "docs.hedera.com, integraciones entre cadenas (índice leído; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.hedera.com/hedera/evm/integrations/cross-chain/index"
+    },
     "regulacion": {
      "t": "Hay ETF spot de HBAR en EE. UU.",
      "f": "Dossier ETF (SoSoValue)",
@@ -1081,7 +1087,13 @@
      "d": "2026-11-14",
      "n": "P"
     },
-    "interop": null,
+    "interop": {
+     "t": "Guía oficial (borrador, 4-jun-2025) del puente de BNB Chain: agregación de puentes y widget «Canonical Bridge» para integradores",
+     "f": "docs.bnbchain.org, guía de puente (leída; borrador; parte interesada)",
+     "d": "2026-11-14",
+     "n": "S",
+     "u": "https://docs.bnbchain.org/bnb-smart-chain/cross-chain-bridge/"
+    },
     "regulacion": {
      "t": "Hay ETF spot de BNB en EE. UU.",
      "f": "Dossier ETF",
@@ -1178,7 +1190,13 @@
      "d": "2026-11-14",
      "n": "S"
     },
-    "cumplimiento": null,
+    "cumplimiento": {
+     "t": "Cada L1 puede exigir requisitos a sus validadores (p. ej. ubicación, KYC/AML o licencia) y mantener datos privados",
+     "f": "build.avax.network, documentación de L1 (leída; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://build.avax.network/docs/avalanche-l1s"
+    },
     "pagos": {
      "t": "Cadena del piloto de liquidación con stablecoins de Visa (abr-2026)",
      "f": "Dossier panorama",
@@ -1186,8 +1204,20 @@
      "d": "2026-04",
      "n": "V"
     },
-    "rendimiento": null,
-    "interop": null,
+    "rendimiento": {
+     "t": "Staking en la red principal: mínimo 2.000 AVAX para validar y 25 AVAX para delegar; tarifa mínima de delegación 2 %; plazos de 48 h (validar, desde Helicon) o 2 semanas (delegar) hasta 1 año",
+     "f": "build.avax.network, cómo hacer stake (leída; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://build.avax.network/docs/primary-network/validate/how-to-stake"
+    },
+    "interop": {
+     "t": "Mensajería entre L1 (ICM sobre Avalanche Warp Messaging, activa desde Durango, mar-2024) y transferencia de tokens entre L1 (ICTT)",
+     "f": "build.avax.network, documentación de ICM (leída; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://build.avax.network/docs/cross-chain"
+    },
     "regulacion": {
      "t": "Hay ETF spot de AVAX en EE. UU.",
      "f": "Dossier ETF",
@@ -1304,7 +1334,13 @@
      "d": "2026-11-14",
      "n": "P"
     },
-    "interop": null,
+    "interop": {
+     "t": "Agglayer: protocolo de interoperabilidad entre cadenas con «pruebas pesimistas» que limitan el daño de una cadena comprometida a sus propios depósitos; incluido en Polygon CDK",
+     "f": "docs.agglayer.dev (leída; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.agglayer.dev/"
+    },
     "regulacion": null
    },
    "capas": {
@@ -1529,7 +1565,13 @@
    ],
    "matriz": {
     "liquidez": null,
-    "seguridad": null,
+    "seguridad": {
+     "t": "CCIP: red de verificadores por defecto con 16 operadores de nodo independientes en cada ruta, más verificadores opcionales; se apoya en la red descentralizada de oráculos (DON)",
+     "f": "docs.chain.link, arquitectura de CCIP (leída; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.chain.link/ccip/concepts/architecture/overview"
+    },
     "activos": null,
     "cumplimiento": {
      "t": "DTCC usará Chainlink (CRE y su estándar de datos) en su Collateral AppChain; Chainlink trabaja para conectar instituciones al libro mayor de Swift (anuncio propio, sin cita de Swift)",
@@ -1765,11 +1807,11 @@
      "n": "S"
     },
     "seguridad": {
-     "t": "Prueba de participación pura con recompensas de staking desde ene-2025 (consenso 4.0); la Fundación aporta 10 ALGO por bloque durante 24 meses",
-     "f": "dev.algorand.co, staking rewards (resumen de buscador, no leído)",
-     "d": "2025-01-23",
-     "n": "V",
-     "u": "https://dev.algorand.co/concepts/protocol/staking-rewards"
+     "t": "Prueba de participación pura: comités elegidos al azar (VRF) con peso según el ALGO en línea; recompensas de staking al proponente de bloque",
+     "f": "dev.algorand.co, consenso y staking rewards (leídas; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://dev.algorand.co/concepts/protocol/staking-rewards/"
     },
     "activos": {
      "t": "39,4 M$ distribuidos (1 activo)",
@@ -1785,13 +1827,19 @@
      "n": "P",
      "u": "https://dev.algorand.co/concepts/assets/overview/"
     },
-    "pagos": null,
+    "pagos": {
+     "t": "Comisión mínima fija de 0,001 ALGO por transacción si la red no está congestionada (0,003 con firma Falcon)",
+     "f": "dev.algorand.co, comisiones (leída; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://dev.algorand.co/concepts/transactions/fees/"
+    },
     "rendimiento": {
-     "t": "Los validadores reciben el 50 % de las comisiones más el bono de la Fundación; la Fundación dice que los incentivos aún son insuficientes",
-     "f": "Nansen, informe del 1S-2025 (no leído)",
-     "d": "2025-07-01",
-     "n": "V",
-     "u": "https://research.nansen.ai/articles/nansen-s-algorand-half-year-report-h1-2025"
+     "t": "El proponente cobra el 50 % de las comisiones del bloque más un bono decreciente (que la Fundación dota, «insostenible» con comisiones); requiere inscribirse y un saldo en rango, y hay suspensión por ausencia",
+     "f": "dev.algorand.co, staking rewards (leída; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://dev.algorand.co/concepts/protocol/staking-rewards/"
     },
     "interop": null,
     "regulacion": null
@@ -1865,11 +1913,11 @@
    "matriz": {
     "liquidez": null,
     "seguridad": {
-     "t": "Consenso XDPoS 2.0: 108 masternodes activos con 10 M de XDC de stake cada uno; bloques de ~2 s",
-     "f": "docs.xdc.network y arXiv 2408.02318 (resumen de buscador)",
-     "d": null,
-     "n": "V",
-     "u": "https://docs.xdc.network/learn/xdc-architecture/"
+     "t": "Los masternodes (validadores) deben pasar KYC y hacer stake de 10.000.000 XDC; hay validadores y nodos en espera. La documentación no da aquí el número de nodos activos",
+     "f": "docs.xdc.network, guía de masternodes (leída; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.xdc.network/xdcchain/developers/node_operators/masternode/"
     },
     "activos": {
      "t": "No aparece entre las 37 redes con valor en RWA.xyz",
@@ -1886,7 +1934,13 @@
      "u": "https://e27.co/xdc-ventures-acquires-contour-to-bridge-tradfi-and-web3-in-global-trade-20251023/"
     },
     "pagos": null,
-    "rendimiento": null,
+    "rendimiento": {
+     "t": "Rewards de masternodes y de quienes delegan XDC en ellos, repartidos por épocas (documento marcado «WIP»); la tasa concreta no se ha extraído",
+     "f": "docs.xdc.network, mecanismo de recompensas (leído; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.xdc.network/xdcchain/rewards/"
+    },
     "interop": null,
     "regulacion": null
    },
@@ -1935,7 +1989,7 @@
    ],
    "sin_dato": [
     "Bancos que la usen en producción.",
-    "docs.xdc.network (portada) y xdc.org no dan nº de masternodes ni stake, ni mencionan Swift; la cifra de 108 masternodes sigue [V] hasta leer xinfin.org/setup-masternode o la whitepaper."
+    "Número de masternodes activos (108 según un resumen) y velocidad de bloque: no figuran en las páginas leídas el 14-nov-2026; Swift solo autodeclarado."
    ]
   },
   {
@@ -2010,7 +2064,8 @@
    "sin_dato": [
     "Clientes en producción.",
     "Documento primario del modelo de token.",
-    "Leída la portada de quant.network con Chrome (14-nov-2026): habla de dinero programable (Quant Flow, PayScript) y no menciona QNT ni licencias; /qnt da 404; docs.quant.network no resuelve."
+    "Leída la portada de quant.network con Chrome (14-nov-2026): habla de dinero programable (Quant Flow, PayScript) y no menciona QNT ni licencias; /qnt da 404; docs.quant.network no resuelve.",
+    "4.ª pasada (14-nov-2026): quant.network/overledger da «página no encontrada» también en Chrome; docs.quant.network y developer.quant.network no resuelven. Siguen sin documento primario."
    ]
   },
   {
@@ -2072,7 +2127,13 @@
      "n": "S",
      "u": "https://blog.iota.org/update-q2-2026/"
     },
-    "pagos": null,
+    "pagos": {
+     "t": "IOTA es la unidad en la que se pagan las comisiones (gas) para ejecutar transacciones y guardar datos; el documento no da cifras de comisión",
+     "f": "docs.iota.org, token IOTA (leída; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.iota.org/about-iota/tokenomics/iota-token"
+    },
     "rendimiento": {
      "t": "La web de la Fundación IOTA dice que el staking flexible asegura la red y da recompensas; sin cifra de rentabilidad en esa página",
      "f": "IOTA Foundation (web leída)",
@@ -2170,7 +2231,13 @@
      "n": "P",
      "u": "https://docs.ondo.finance/addresses"
     },
-    "cumplimiento": null,
+    "cumplimiento": {
+     "t": "Plume declara vigilancia de sanciones (OFAC) y AML/monitorización de transacciones con proveedores de análisis (p. ej. Forta, Predicate); no es KYC de usuarios ni licencia de la red",
+     "f": "docs.plume.org, cumplimiento (leída; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.plume.org/plume-security/compliance-at-plume"
+    },
     "pagos": {
      "t": "El gas se paga en PLUME, no en ETH",
      "f": "Documentación de Plume (leída)",

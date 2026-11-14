@@ -202,7 +202,14 @@ def seccion_marco(m, voces_id, celdas):
         filas += f"<tr><th class='fila'>{e(j.upper())}</th>{fila}</tr>"
     h.append(f'<h3>Madurez regulatoria por país</h3><p class="fu">{e(rp.get("nota"))} Fuente: {e(rp.get("f"))}.</p>'
              f'<div class="tabla"><table><tr><th>Jurisdicción</th>{cab}</tr>{filas}</table></div>')
-    h.append('<h3>Huecos [VERIFICAR] por cerrar</h3><ol>' + "".join(f"<li>{e(x)}</li>" for x in m.get("huecos", [])) + "</ol></section>")
+    hc = m.get("huecos_c263") or {}
+    if hc:
+        li = ""
+        for x in hc.get("resultados", []):
+            fu = " · ".join(enlace(s.get("u"), s.get("f") or "fuente") + f' <span class="fu">{e(s.get("d") or "")} [{e(s.get("n") or "?")}]</span>' for s in x.get("e", []))
+            li += f"<li><b>{e(x.get('hueco'))}</b> — <i>{e(x.get('estado'))}</i>. {e(x.get('detalle'))} {fu}</li>"
+        h.append(f'<h3>Cierre de huecos (C263, {e(hc.get("fecha"))})</h3><p class="fu">{e(hc.get("nota"))}</p><ol>{li}</ol>')
+    h.append('<h3>Huecos [VERIFICAR] pendientes</h3><ol>' + "".join(f"<li>{e(x)}</li>" for x in m.get("huecos", [])) + "</ol></section>")
     return "".join(h)
 
 

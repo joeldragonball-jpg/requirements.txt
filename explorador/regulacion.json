@@ -2089,7 +2089,7 @@
       "jur": "in",
       "tema": "custodia",
       "etapa": null,
-      "estado": "Sin norma específica de custodia que haya podido leer. Lo que sí consta [S]: los proveedores de servicios de activos virtuales (VASP) son entidades obligadas bajo la ley antiblanqueo PMLA desde marzo de 2023 y deben registrarse en FIU-IND (identificación de clientes y reporte de operaciones sospechosas); la prensa cifra los registrados en unos 45-50, sin lista oficial verificada. El registro en FIU-IND no es una licencia de custodia.",
+      "estado": "Sin norma específica de custodia que haya podido leer. Lo que sí consta [S]: los proveedores de servicios de activos virtuales (VASP) son entidades obligadas bajo la ley antiblanqueo PMLA desde marzo de 2023 y deben registrarse en FIU-IND (identificación de clientes y reporte de operaciones sospechosas); la prensa cifra los registrados en unos 45-50, sin lista oficial verificada. El registro en FIU-IND no es una licencia de custodia. [14-nov] La web oficial de FIU-India (fiuindia.gov.in, Descargas, leída) lista «AML & CFT Guidelines for Reporting Entities Providing Services Related to Virtual Digital Assets» actualizadas el 8-ene-2026 y la 3.ª revisión de la circular de registro de proveedores VDA del 15-sep-2025 [P: títulos y fechas]; los PDF son imágenes sin texto y no se han podido leer, así que el contenido sigue sin verificar y no se asigna etapa.",
       "fecha": null,
       "fuente": "VERIFICAR",
       "proxima": null,
@@ -3607,19 +3607,28 @@
     {
       "jur": "brics",
       "tema": "fiscal",
-      "etapa": null,
-      "estado": "Solo consta que 76 jurisdicciones se han comprometido con el CARF de la OCDE (secundaria).",
-      "fecha": null,
-      "fuente": "VERIFICAR",
+      "etapa": 1,
+      "estado": "Lista de la OCDE/Global Forum «Jurisdictions committed to implement the CARF» (actualizada 14-sep-2026, leída en el PDF oficial [P]): entre los miembros de los BRICS, Brasil, Indonesia y Sudáfrica comprometen primeros intercambios en 2027 y Emiratos en 2028; India figura como aún no comprometida («en proceso de hacer el compromiso político»); China, Rusia, Egipto, Etiopía, Irán y Arabia Saudí no aparecen en la lista. En total 77 jurisdicciones comprometidas (46 en 2027, 27 en 2028, 4 en 2029). Es un compromiso político de intercambio de datos, no una norma fiscal nacional.",
+      "fecha": "2026-09-14",
+      "fuente": "P",
       "proxima": null,
-      "falta": "Research específico sobre este tema y país.",
-      "hitos": [],
+      "falta": "Normas nacionales de transposición del CARF en Brasil, Indonesia y Sudáfrica; posición de China, Rusia e India.",
+      "hitos": [
+        {
+          "fecha": "2026-09-14",
+          "que": "Última actualización de la lista de compromisos CARF (OCDE)."
+        }
+      ],
       "informes": [
-        "R35"
+        "R35",
+        "voces-radar-2 (14-nov)"
       ],
       "pais_id": "INT",
-      "nivel": "V",
-      "revisar": true
+      "nivel": "P",
+      "revisar": false,
+      "revisado": "2026-11-14",
+      "url": "https://www.oecd.org/content/dam/oecd/en/networks/global-forum-tax-transparency/commitments-carf.pdf",
+      "caduca": "2027-02-14"
     },
     {
       "jur": "brics",
@@ -4026,21 +4035,23 @@
     {
       "jur": "eg",
       "tema": "stablecoins",
-      "etapa": null,
-      "estado": "No hay research sobre este tema en esta jurisdicción.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
-      "revisado": "2026-10-20",
+      "etapa": 0,
+      "estado": "El Banco Central de Egipto ha advertido repetidamente contra «todos los tipos de criptomonedas» (4.ª advertencia, 8-mar-2023, leída en cbe.org.eg [P]): no se ha concedido nunca licencia para operar con ellas y el marco es la Ley 194/2020 del banco central. La advertencia no nombra las stablecoins; se aplica por inclusión («todos los tipos») y no hay marco para emitirlas ni usarlas. No he leído ningún texto posterior que lo cambie.",
+      "fecha": "2023-03-08",
+      "fuente": "P",
+      "revisado": "2026-11-14",
       "proxima": null,
-      "falta": "Pasada del 10-nov sin dato: cbe.org.eg bloquea el acceso automatizado y la FRA no publica nada cripto [VERIFICAR con Chrome].",
+      "falta": "Texto de la ley (arts. 206 y 225) ya leído en otra pasada; falta cualquier aviso de 2026 sobre stablecoins [VERIFICAR].",
       "hitos": [],
       "informes": [
-        "Radar v5 research (21-oct)"
+        "Radar v5 research (21-oct)",
+        "voces-radar-2 (14-nov)"
       ],
       "pais_id": "EG",
-      "nivel": "V",
-      "revisar": true,
-      "caduca": "2027-01-18"
+      "nivel": "P",
+      "revisar": false,
+      "caduca": "2027-02-14",
+      "url": "https://www.cbe.org.eg/en/news-publications/news/2023/03/08/warning-statement"
     },
     {
       "jur": "eg",
@@ -4111,21 +4122,23 @@
     {
       "jur": "eg",
       "tema": "custodia",
-      "etapa": null,
-      "estado": "No hay research sobre este tema en esta jurisdicción.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
-      "revisado": "2026-10-20",
+      "etapa": 0,
+      "estado": "El Banco Central de Egipto dice (8-mar-2023, leído en cbe.org.eg [P]) que no se ha concedido nunca licencia para operar con criptomonedas «a través de personas, empresas, aplicaciones o plataformas»; por tanto no hay régimen de custodia cripto autorizado. No hay norma específica de custodia leída.",
+      "fecha": "2023-03-08",
+      "fuente": "P",
+      "revisado": "2026-11-14",
       "proxima": null,
-      "falta": "Pasada del 10-nov sin dato: cbe.org.eg bloquea el acceso automatizado y la FRA no publica nada cripto [VERIFICAR con Chrome].",
+      "falta": "Cualquier norma o licencia posterior a 2023 [VERIFICAR]; FRA no publica nada cripto salvo avisos.",
       "hitos": [],
       "informes": [
-        "Radar v5 research (21-oct)"
+        "Radar v5 research (21-oct)",
+        "voces-radar-2 (14-nov)"
       ],
       "pais_id": "EG",
-      "nivel": "V",
-      "revisar": true,
-      "caduca": "2027-01-18"
+      "nivel": "P",
+      "revisar": false,
+      "caduca": "2027-02-14",
+      "url": "https://www.cbe.org.eg/en/news-publications/news/2023/03/08/warning-statement"
     },
     {
       "jur": "eg",
@@ -5519,21 +5532,28 @@
     {
       "jur": "es",
       "tema": "stablecoins",
-      "etapa": null,
-      "estado": "Sin celda propia de España: rige el marco de la UE (MiCA, ver celda de la Unión Europea). No he leído ninguna norma española específica sobre stablecoins. Autoridades: la CNMV y el Banco de España comparten la supervisión de MiCA (la CNMV autoriza a los proveedores) [S]; sin norma española específica sobre stablecoins que conste.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
+      "etapa": 4,
+      "estado": "MiCA se aplica en España desde el 30-dic-2024. La CNMV es la autoridad competente para supervisar su cumplimiento y el Banco de España supervisa, inspecciona y sanciona a los emisores de tokens de dinero electrónico (EMT, las stablecoins reguladas) y de tokens referenciados a activos (ART) [P, cnmv.es, página «MiCA: Nueva regulación de criptoactivos», leída 14-nov-2026; nota del Banco de España enlazada desde ella]. No he leído ninguna norma española complementaria específica sobre stablecoins.",
+      "fecha": "2026-11-14",
+      "fuente": "P",
       "proxima": null,
-      "falta": "Normativa nacional complementaria, si existe (BOE/CNMV).",
-      "hitos": [],
-      "informes": [
-        "C232"
+      "falta": "Lista de emisores de EMT/ART autorizados por el Banco de España (no leída) y norma nacional complementaria, si existe.",
+      "hitos": [
+        {
+          "fecha": "2024-12-30",
+          "que": "MiCA entra en aplicación (cnmv.es)."
+        }
       ],
-      "revisado": "2026-11-10",
+      "informes": [
+        "C232",
+        "voces-radar-2 (14-nov)"
+      ],
+      "revisado": "2026-11-14",
       "pais_id": "ES",
-      "nivel": "V",
-      "revisar": true,
-      "caduca": "2027-02-08"
+      "nivel": "P",
+      "revisar": false,
+      "caduca": "2027-02-14",
+      "url": "https://www.cnmv.es/portal/mica/regulacion-criptoactivos"
     },
     {
       "jur": "es",
@@ -5582,21 +5602,28 @@
     {
       "jur": "es",
       "tema": "custodia",
-      "etapa": null,
-      "estado": "Rige el art. 75 de MiCA. En España la CNMV autoriza a los proveedores de servicios de criptoactivos (la custodia es uno de ellos) y publica una relación con la fecha desde la que cada uno puede prestar servicios MiCA. El periodo transitorio nacional terminó el 1-jul-2026 (un comunicado lo sitúa el 30-jun): desde entonces solo operan proveedores autorizados por la CNMV u otra autoridad de la UE, y los no autorizados se incluyen en la lista de «chiringuitos» [S: resultado de búsqueda sobre cnmv.es; los PDF de la CNMV no se pueden abrir con el lector, VERIFICAR]. ESMA advirtió el 23-jun-2026 de que algunos proveedores significativos podrían no estar autorizados a tiempo [S].",
-      "fecha": null,
-      "fuente": "VERIFICAR",
+      "etapa": 5,
+      "estado": "La CNMV publica la relación oficial de proveedores de servicios de criptoactivos autorizados o notificados bajo MiCA (leída 14-nov-2026; listado de más de 150 nombres de toda la UE que pueden operar en España). Entre ellos constan entidades españolas con custodia o servicios cripto: BBVA, CaixaBank, Cecabank, Kutxabank, Renta 4 Banco, Abanca, Open Bank y Prosegur Custodia de Activos Digitales; y custodios europeos como Zodia Custody (Europe), BitGo Europe, Clearstream y CACEIS [P, cnmv.es/portal/consultas/proveedores-servicios-criptoactivos]. La lista no indica qué servicio presta cada uno ni desde cuándo (eso está en el PDF, no leído). Autorización por la CNMV o por otra autoridad de la UE obligatoria; la CNMV publica una declaración sobre el fin de los periodos transitorios.",
+      "fecha": "2026-11-14",
+      "fuente": "P",
       "proxima": null,
-      "falta": "Relación vigente de proveedores autorizados (Listado_ProveedoresCriptoactivos.pdf) y criterios de custodia de la CNMV; qué entidades relevantes quedaron fuera [VERIFICAR].",
-      "hitos": [],
-      "informes": [
-        "C232"
+      "falta": "Servicios por entidad y fecha de inicio (PDF Listado_ProveedoresCriptoactivos.pdf, no leído); texto de la declaración de fin de periodos transitorios.",
+      "hitos": [
+        {
+          "fecha": "2026-07-01",
+          "que": "Fin del periodo transitorio nacional de MiCA (fecha de prensa y comunicado; no leída en la CNMV) [S]."
+        }
       ],
-      "revisado": "2026-11-10",
+      "informes": [
+        "C232",
+        "voces-radar-2 (14-nov)"
+      ],
+      "revisado": "2026-11-14",
       "pais_id": "ES",
-      "nivel": "V",
-      "revisar": true,
-      "caduca": "2027-02-08"
+      "nivel": "P",
+      "revisar": false,
+      "caduca": "2027-02-14",
+      "url": "https://www.cnmv.es/portal/consultas/proveedores-servicios-criptoactivos"
     },
     {
       "jur": "es",
@@ -5701,5 +5728,5 @@
     "baja": "Baja tipos",
     "n/d": "Sin dirección conocida"
   },
-  "revisado": "2026-11-11"
+  "revisado": "2026-11-14"
 }
