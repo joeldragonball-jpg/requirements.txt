@@ -1866,7 +1866,7 @@ function pCadenas(){
     if(mv.length){const u=el('ul','cad-lst cad-nov');mv.slice(0,5).forEach(m=>{const li=el('li');li.append(nivelBadge(nivM(m)),el('b',null,' '+m.fecha+' · '));if(m.origen==='noticia')li.append(el('span','cad-nt','noticia'));li.append(document.createTextNode((m.actor||'')+': '+corta(String(m.texto||''),260)+' '));if(m.url)li.append(lk(m.url,'fuente ↗'));
         if(m.umbral){const w=el('span','cad-umb','umbral');w.title='Titular con «supera», «cae por debajo de», «toca» o similar: puede ser un movimiento de dentro del día y no el cierre. Compara el mismo día, el máximo y el mínimo y el instrumento exacto antes de darlo por cierto o por desmentido.';li.append(w)}u.append(li)});dt.append(u);
       dt.append(el('p','nota-v','Etiquetado por reglas (nombres de la red, su token o su entidad en el actor, las entidades, los activos o el titular), sin IA. '+mv.length+' en total: el resto está en la Línea de tiempo.'))}
-    else dt.append(el('p','nota-v','Sin noticias ni hechos etiquetados con esta red todavía.'));
+    else dt.append(el('p','nota-v','Sin hechos etiquetados con esta red en la línea de tiempo (pendiente de añadir con fuente, C278).'));
     const rc=REL.filter(r=>(r.cadenas||[]).includes(c.id));
     if(rc.length){dt.append(el('h3',null,'Relaciones con otras redes'));const rr=el('div','cad-ir');rc.forEach(r=>{const b=el('button','cad-bt',r.titulo+' →');b.onclick=()=>irRel(r.id);rr.append(b)});dt.append(rr)}
     const ir=el('div','cad-ir'),nt=enTL(c);

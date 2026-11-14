@@ -1,33 +1,34 @@
 {
- "leido": "2026-10-29",
+ "leido": "2026-11-14",
  "fuente": "https://app.rwa.xyz/networks",
  "nivel": "S",
- "nota": "RWA.xyz, página de redes (28-oct-2026), leída con WebFetch: el resumen lo hizo un modelo, así que las cifras son [S] hasta comprobarlas a mano en pantalla. «Distribuido» = activo emitido y transferible en la cadena. «Representado» = activo registrado en la cadena pero no transferible ni liquidado en ella. DefiLlama solo cuenta el valor bloqueado en protocolos DeFi: por eso difiere mucho.",
+ "nota": "RWA.xyz, página de redes (28-oct-2026), releída el 14-nov-2026 en Chrome (texto de la tabla); nivel [S] porque es agregador y la cifra cambia cada hora. Distribuido y representado NO se suman. Otras fuentes (cadenas.json, otro momento de lectura) pueden diferir ±1 %. «Distribuido» = activo emitido y transferible en la cadena. «Representado» = activo registrado en la cadena pero no transferible ni liquidado en ella. DefiLlama solo cuenta el valor bloqueado en protocolos DeFi: por eso difiere mucho.",
  "cadenas": [
   {
    "cadena": "Ethereum",
-   "distribuido": 15947000000.0,
-   "representado": 107000000.0,
+   "distribuido": 15153528024.0,
+   "representado": 99766341.0,
    "emisores": "BUIDL (BlackRock/Securitize): ≈ $2.930 M en total a 14-jul-2026 con Ethereum > $1.000 M [S, prensa; fuentes discrepan en el reparto]; Ondo USDY en Ethereum ≈ $1.100 M (ago-2026) [S]; BENJI sin cifra por cadena"
   },
   {
    "cadena": "Solana",
-   "distribuido": 4890000000.0,
-   "representado": 126000000.0,
+   "distribuido": 5144552783.0,
+   "representado": 125856305.0,
    "emisores": "Ondo, BENJI: sin cifra por cadena [VERIFICAR]"
   },
   {
    "cadena": "Stellar",
-   "distribuido": 3768000000.0,
-   "representado": 78000000.0,
+   "distribuido": 4662840415.0,
+   "representado": 77416698.0,
    "emisores": "BENJI (Franklin Templeton): activos netos totales del fondo $667,96 M a 30-sep-2026 [P, franklintempleton.com; es el total en todas las cadenas, la mayoría en Stellar según The Block/RWA.xyz, ago-2026, $726 M, [S]]; Ondo USDY en Stellar ≈ $534 M (ago-2026, reseña de coinpaprika con datos de Ondo [S]); WisdomTree WTGXX y YLDS: sin cifra [VERIFICAR]"
   },
   {
    "cadena": "XRPL",
-   "distribuido": 642000000.0,
-   "representado": 4798000000.0,
+   "distribuido": 642830593.0,
+   "representado": 5206987866.0,
    "emisores": "Ondo OUSG: «>$670 M TVL» según Ripple, fecha por confirmar y en toda la oferta [VERIFICAR]; OpenEden TBILL, Archax (compromiso de $1.000 M, sin confirmar), Guggenheim DCP: sin cifra [VERIFICAR]"
   }
  ],
- "pendiente": "Contrastar el desglose por cadena con paneles oficiales de emisores (Ondo, Securitize/BUIDL, stellar.org, ripple.com): sus cifras por cadena están en paneles dinámicos que no se leen sin sesión de Chrome con captura. Primaria obtenida el 29-oct: total de BENJI en franklintempleton.com. Actualización prevista: mensual, a mano."
+ "pendiente": "Contrastar el desglose por cadena con paneles oficiales de emisores (Ondo, Securitize/BUIDL, stellar.org, ripple.com): sus cifras por cadena están en paneles dinámicos que no se leen sin sesión de Chrome con captura. Primaria obtenida el 29-oct: total de BENJI en franklintempleton.com. Actualización prevista: mensual, a mano.",
+ "metrica": "Columnas «RWA Value (Distributed)» y «RWA Value (Represented)» de la tabla Networks, filas Ethereum (agrega L2 según RWA.xyz [VERIFICAR]), Solana, Stellar y XRP Ledger, «as of 11/14/2026», Include Stablecoins desactivado; leídas del DOM en Chrome el 14-nov-2026. Anterior: 28-oct-2026 vía WebFetch."
 }

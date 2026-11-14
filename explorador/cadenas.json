@@ -438,9 +438,9 @@
      ]
     },
     {
-     "t": "RWA.xyz atribuye a «Franklin Templeton Benji» un activo de 192,7 M$ en el XRP Ledger. No coincide con la lista de contratos de la web del emisor, que no incluye esa red: queda por comprobar cuál de las dos está al día [VERIFICAR].",
-     "f": "RWA.xyz, ficha XRP Ledger (leída el 14-nov-2026 en la pasada anterior; no releída en esta)",
-     "u": "https://app.rwa.xyz/networks/xrp-ledger",
+     "t": "El activo de 192,7 M$ que RWA.xyz atribuye a «Franklin Templeton Benji» en el XRP Ledger es sgBENJI (token del fondo de Franklin de dominio singapurense, regulado por la MAS según RWA.xyz; 2 tenedores en la ficha). La web de Benji (9 redes) no lista el XRPL porque sgBENJI es otro token que el BENJI de esa lista. El comunicado de DBS (18-sep-2025) anunciaba que Franklin tokenizaría sgBENJI en el XRP Ledger; la prensa fecha la emisión de ~150 M$ el 22-oct-2026 (no leída en primaria).",
+     "f": "RWA.xyz, ficha XRP Ledger (leída en el navegador el 14-nov-2026); DBS, nota de prensa 18-sep-2025 (leída)",
+     "u": "https://www.dbs.com/newsroom/DBS_and_Franklin_Templeton_to_launch_trading_and_lending_solutions_powered_by_tokenised_money_market_funds_and_Ripples_RLUSD_stablecoin",
      "d": "2026-11-14",
      "n": "S",
      "cadenas": [
@@ -456,7 +456,7 @@
    ],
    "sin_dato": [
     "Reparto del saldo de BENJI y de USDY por red según el propio emisor (las páginas leídas no lo dan; las cifras por red de esta página son de RWA.xyz).",
-    "Si Benji está o no en el XRP Ledger según Franklin Templeton."
+    "Emisión de sgBENJI en el XRPL según una fuente primaria de Franklin (solo consta el comunicado de DBS sobre el plan y la ficha de RWA.xyz)."
    ]
   },
   {
@@ -469,8 +469,8 @@
    "que": "Una noticia de Ripple no es siempre una noticia del token XRP: hay que mirar con qué activo dice la fuente que se liquida.",
    "hechos": [
     {
-     "t": "La página del producto de pagos transfronterizos de Ripple describe cobrar, pagar y liquidar «en RLUSD y otras stablecoins, o en moneda fiat», en más de 60 mercados. En el texto descriptivo de esa página no aparece XRP (solo en enlaces del menú y del pie).",
-     "f": "Ripple, página de producto (leída en el navegador el 14-nov-2026); parte interesada",
+     "t": "La página del producto de pagos transfronterizos de Ripple describe cobrar, pagar y liquidar «en RLUSD y otras stablecoins, o en moneda fiat», en más de 60 mercados. El texto visible descriptivo de la página no menciona XRP; en cambio, las preguntas frecuentes de la misma página (marcado estructurado FAQ) explican que en los pagos sobre blockchain, como el XRP Ledger, «el fiat se convierte en un activo digital como XRP», se liquida en cadena en segundos y se reconvierte a moneda local. La página no dice cuál es el activo que Ripple usa en cada pago real.",
+     "f": "Ripple, página de producto (releída en Chrome el 14-nov-2026; texto visible y FAQ); parte interesada",
      "u": "https://ripple.com/products/cross-border-payments/",
      "d": "2026-11-14",
      "n": "P",
@@ -605,16 +605,16 @@
      "n": "S"
     },
     {
-     "t": "No consta integración del XRPL con el libro mayor de Swift (red Besu propia)",
-     "f": "Swift, nota 9-jul-2026",
+     "t": "La nota de Swift del 9-jul-2026 (17 bancos, libro mayor listo para uso inicial) no menciona XRP, Ripple ni el XRPL (relectura en Chrome); que Swift use una arquitectura EVM basada en Besu consta en otra nota de Swift (30-mar-2026), no en esta",
+     "f": "Swift, nota 9-jul-2026 (releída en Chrome el 14-nov-2026)",
      "u": "https://www.swift.com/news-events/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure",
-     "d": "2026-07-09",
+     "d": "2026-11-14",
      "n": "P"
     },
     {
-     "t": "El comunicado del RBA sobre Acacia (18-may-2026) no nombra plataformas; que el XRPL participara con RLUSD viene de la prensa",
-     "f": "RBA, comunicado 2026-13",
-     "d": "2026-05-18",
+     "t": "El comunicado del RBA sobre Acacia (18-may-2026, 20 casos de uso mayoristas tokenizados) no nombra plataformas ni redes concretas (ni XRP, Ripple, RLUSD, Canton, Ethereum, Stellar, Solana o Hedera en el texto); que el XRPL participara con RLUSD viene de la prensa [VERIFICAR]",
+     "f": "RBA, comunicado 2026-13 (releído en Chrome el 14-nov-2026)",
+     "d": "2026-11-14",
      "n": "P",
      "u": "https://www.rba.gov.au/media-releases/2026/mr-26-13.html"
     }
@@ -800,7 +800,7 @@
      }
     },
     "emisores": {
-     "t": "Franklin Templeton Benji 1 activo 192,7 M$; Ondo 1 activo 185,8 M$; VERT Capital 4 activos 116,1 M$; Archax 3 activos 55,4 M$; Zeconomy 1 activo 40,4 M$ (Ripple 764,1 M$ es RLUSD, stablecoin)",
+     "t": "Franklin Templeton Benji 1 activo 192,7 M$ (es sgBENJI, no el BENJI de las 9 redes de la web del emisor); Ondo 1 activo 185,8 M$; VERT Capital 4 activos 116,1 M$; Archax 3 activos 55,4 M$; Zeconomy 1 activo 40,4 M$ (Ripple 764,1 M$ es RLUSD, stablecoin)",
      "f": "RWA.xyz, Platforms, XRP Ledger",
      "u": "https://app.rwa.xyz/networks/xrp-ledger",
      "d": "2026-11-14",
@@ -1184,8 +1184,8 @@
     },
     "custodia": {
      "token": "sin dato",
-     "quien": "Taurus (custodia y staking de HBAR para bancos, según prensa)",
-     "ev": "Taurus dice integrar «el stack completo de Hedera» (custodia y staking de HBAR, emisión por HTS) para 40+ instituciones (5-ago-2026, FF News); no hay dato primario de que la custodia dependa de HBAR más allá de pagar comisiones.",
+     "quien": "Taurus (custodia y staking de HBAR para bancos, según prensa); BitGo (lista de protocolos)",
+     "ev": "Taurus dice integrar «el stack completo de Hedera» (custodia y staking de HBAR, emisión por HTS) para 40+ instituciones (5-ago-2026, FF News); no hay dato primario de que la custodia dependa de HBAR más allá de pagar comisiones. BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye Hedera.",
      "u": "https://ffnews.com/news/taurus-unlocks-full-hedera-stack-for-40-global-banks-to-scale-digital-asset-tokenization",
      "d": "2026-08-05",
      "n": "S"
@@ -1655,10 +1655,11 @@
    "hitos": [
     {
      "fecha": "2025-10-28",
-     "t": "Primer ETF de SOL con staking en EE. UU. (Bitwise BSOL)",
+     "t": "Bitwise anuncia el debut de su ETF de SOL con staking (BSOL) en NYSE el martes 28-oct-2025, primero con exposición directa a SOL según la gestora; la fuente es previa al debut",
      "u": "https://www.theblock.co/post/376428/solana-etfs-in-the-spotlight-bitwises-bsol-to-debut-on-nyse-on-tuesday",
-     "n": "V",
-     "futuro": false
+     "n": "S",
+     "futuro": false,
+     "f": "The Block, 27-oct-2025 (leído el 14-nov-2026)"
     },
     {
      "fecha": "2026-10-21",
@@ -1808,7 +1809,7 @@
      "u": "https://docs.bnbchain.org/bnb-smart-chain/"
     },
     "activos": {
-     "t": "6.270 M$ distribuidos (2.ª red). La tabla de plataformas incluye stablecoins (USDT y USDC vía Binance Bridge, USD1); entre los RWA destacan iBENJI de Franklin (~1.530 M$), USYC de Circle, BUIDL, USDY de Ondo y acciones tokenizadas bStocks",
+     "t": "6.270 M$ distribuidos (2.ª red). La tabla de plataformas incluye stablecoins (USDT y USDC vía Binance Bridge, USD1); entre los RWA destacan iBENJI de Franklin (1.531 M$ en la ficha de RWA.xyz, clase de Tesoro EE. UU., jurisdicción Islas Vírgenes Británicas, 4 tenedores; la cifra de ~760 M$ no se reproduce en esta lectura), USYC de Circle, BUIDL, USDY de Ondo y acciones tokenizadas bStocks",
      "f": "RWA.xyz, ficha BNB Chain (leída en el navegador)",
      "d": "2026-11-14",
      "n": "S",
@@ -1874,7 +1875,12 @@
     },
     "custodia": {
      "token": "sin dato",
-     "ev": "Sin dato."
+     "ev": "BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye BNB (nativo).",
+     "quien": "BitGo (custodia soportada en su lista de protocolos)",
+     "f": "BitGo Assets, Protocols (leída en el navegador; parte interesada)",
+     "u": "https://assets.bitgo.com/protocols",
+     "d": "2026-11-14",
+     "n": "P"
     }
    },
    "captura": {
@@ -1905,7 +1911,8 @@
    ],
    "sin_dato": [
     "Qué activos componen los 6.266 M$.",
-    "Integración institucional fuera de Binance."
+    "Integración institucional fuera de Binance.",
+    "Qué parte de los 1.531 M$ de iBENJI es colateral institucional fuera de bolsa (Franklin y Binance lo anunciaron en feb-2026 con custodia de Ceffu); RWA.xyz no lo desglosa."
    ],
    "tipos_activo": {
     "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las 10 mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top 10 visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
@@ -2083,7 +2090,12 @@
     },
     "custodia": {
      "token": "sin dato",
-     "ev": "Sin dato."
+     "ev": "BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye Avalanche (C-Chain y P-Chain).",
+     "quien": "BitGo (custodia soportada en su lista de protocolos)",
+     "f": "BitGo Assets, Protocols (leída en el navegador; parte interesada)",
+     "u": "https://assets.bitgo.com/protocols",
+     "d": "2026-11-14",
+     "n": "P"
     }
    },
    "captura": {
@@ -2100,8 +2112,9 @@
      "fecha": "2026-03-11",
      "t": "Grayscale lanza un ETF de AVAX con staking (GAVA)",
      "u": "https://www.theblock.co/news/business/2026-03-12-grayscale-debuts-avalanche-staking-etf-on-nasdaq-under-ticker-gava-393378",
-     "n": "V",
-     "futuro": false
+     "n": "S",
+     "futuro": false,
+     "f": "The Block, 12-mar-2026 (empezó a cotizar «el miércoles», 11-mar; leído 14-nov-2026)"
     },
     {
      "fecha": "2026-09-22",
@@ -2189,7 +2202,7 @@
      "n": "P"
     },
     "liquidacion": {
-     "t": "La documentación de consenso Snowman dice «finalidad inmediata, de menos de un segundo» y «~1 segundo de latencia de aceptación»; una decisión aceptada no se revierte (a diferencia de Nakamoto)",
+     "t": "La documentación de consenso Snowman habla de finalidad «sub-second, immutable» y de «~1 second acceptance latency» (traducción libre: finalidad inferior a un segundo y ~1 s de latencia de aceptación); una decisión aceptada no se revierte (a diferencia de Nakamoto)",
      "f": "build.avax.network, Avalanche Consensus (leída por curl; parte interesada)",
      "u": "https://build.avax.network/docs/quick-start/avalanche-consensus",
      "d": "2026-11-14",
@@ -2252,7 +2265,7 @@
      "n": "P"
     },
     "rendimiento": {
-     "t": "La doc de recompensas asigna el 12 % de los 10.000 M de POL a recompensas de staking como bolsa fija repartida en 5 años (de ~313 M POL el 1.er año a ~149 M el 5.º, suma ≈ 1.200 M); da tasas esperadas según el % en staking (p. ej. 12 % el 2.º año con un 30 % en staking), no una rentabilidad en vivo",
+     "t": "La doc de recompensas asigna el 12 % de los 10.000 M de POL a recompensas de staking como bolsa fija repartida en 5 años (de ~313 M POL el 1.er año a ~149 M el 5.º, suma ≈ 1.200 M); da tasas esperadas según el % en staking (p. ej. 12 % el 2.º año con un 30 % en staking), no una rentabilidad en vivo. Otra página de la misma doc (POL, «Emission», leída 14-nov-2026) dice que la emisión es del 2 % anual desde jun-2025 (1 % a validadores y 1 % a tesorería tras PIP-26, con 1,5 % en el año 5). Son dos descripciones de la doc que no se concilian aquí: 12 % del suministro como bolsa de staking frente a 2 % de emisión anual [VERIFICAR]",
      "f": "Documentación de Polygon (leída)",
      "u": "https://docs.polygon.technology/pos/reference/rewards.md",
      "d": "2026-11-14",
@@ -2304,7 +2317,12 @@
     },
     "custodia": {
      "token": "sin dato",
-     "ev": "Sin dato."
+     "ev": "BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye Polygon (POL).",
+     "quien": "BitGo (custodia soportada en su lista de protocolos)",
+     "f": "BitGo Assets, Protocols (leída en el navegador; parte interesada)",
+     "u": "https://assets.bitgo.com/protocols",
+     "d": "2026-11-14",
+     "n": "P"
     }
    },
    "captura": {
@@ -2337,7 +2355,8 @@
    ],
    "sin_dato": [
     "Rentabilidad de staking en vivo (la doc solo da el calendario de emisión).",
-    "Número real de validadores activos (la doc fija un máximo de 105)."
+    "Número real de validadores activos (la doc fija un máximo de 105).",
+    "Cuál de las dos cifras de la doc (12 % de bolsa de staking o 2 % de emisión anual, PIP-26) rige hoy el reparto a validadores; ambas son autodeclaradas."
    ],
    "tipos_activo": {
     "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
@@ -3121,8 +3140,9 @@
      "fecha": "2025-01-23",
      "t": "Recompensas de staking en la red principal (consenso 4.0)",
      "u": "https://algorand.co/blog/algorands-staking-rewards-are-live",
-     "n": "V",
-     "futuro": false
+     "n": "P",
+     "futuro": false,
+     "f": "Algorand Foundation, blog (leído el 14-nov-2026; parte interesada)"
     },
     {
      "fecha": "2025-07-01",
@@ -3306,8 +3326,8 @@
     },
     "custodia": {
      "token": "sin dato",
-     "quien": "Utila (custodia MPC no custodial); xdc.org muestra logos de Fireblocks, Anchorage y Archax sin texto que lo explique",
-     "ev": "Nota de prensa de XDC del 27-may-2025: bancos e instituciones pueden custodiar activos XDC en Utila (monederos MPC, controles por roles, RPC EVM propio). No consta que el token XDC cumpla función en la custodia.",
+     "quien": "Utila (custodia MPC no custodial); xdc.org muestra logos de Fireblocks, Anchorage y Archax sin texto que lo explique; BitGo (lista de protocolos)",
+     "ev": "Nota de prensa de XDC del 27-may-2025: bancos e instituciones pueden custodiar activos XDC en Utila (monederos MPC, controles por roles, RPC EVM propio). No consta que el token XDC cumpla función en la custodia. BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye XDC.",
      "u": "https://chainwire.org/2025/05/27/xdc-network-concludes-integration-with-utila-enabling-institutional-access-to-custody-assets/",
      "d": "2025-05-27",
      "n": "S"
@@ -3332,15 +3352,17 @@
      "fecha": "2025-05-27",
      "t": "XDC anuncia la integración con Utila para custodia institucional (MPC)",
      "u": "https://chainwire.org/2025/05/27/xdc-network-concludes-integration-with-utila-enabling-institutional-access-to-custody-assets/",
-     "n": "S",
-     "futuro": false
+     "n": "P",
+     "futuro": false,
+     "f": "Chainwire, nota de prensa de XDC (leída en Chrome el 14-nov-2026; parte interesada)"
     },
     {
      "fecha": "2024-09-30",
      "t": "XDC 2.0 (consenso XDPoS 2.0) en producción en el bloque 80370000",
      "u": "https://xdc.org/articles/xdc-2.0-an-overview-of-the-major-consensus-upgrade",
-     "n": "V",
-     "futuro": false
+     "n": "P",
+     "futuro": false,
+     "f": "XDC Foundation, artículo del 30-sep-2024 (leído el 14-nov-2026; parte interesada)"
     }
    ],
    "sesgos": [
@@ -3355,14 +3377,15 @@
     "tipos": {},
     "emisores": null,
     "estandar": {
-     "t": "XRC-20 (fungibles), XRC-721 (únicos, p. ej. escrituras de inmuebles) y XRC-1155 (múltiples en un contrato), de estilo EVM/ERC; la guía de RWA de XDC usa contratos OpenZeppelin ERC20/ERC721 de ejemplo y cita subredes privadas y capa de identidad/KYC como opción. ERC-3643 solo aparece como propuesta en un foro de la comunidad (resultado de búsqueda no leído [V]), no como estándar oficial",
-     "f": "docs.xdc.network, RWA Tokenization, y xdc.org, Tech Spec (leídas; parte interesada)",
+     "t": "La página técnica de xdc.org lista tres estándares de token en la red: XRC20 (fungibles), XRC721 (únicos) y XRC1155 (varios tokens en un contrato). La guía de RWA de docs.xdc.network cita XRC20 y XRC721, con ejemplos de contratos OpenZeppelin ERC20/ERC721, subredes privadas y capa de identidad KYC. ERC-3643 no aparece en ninguna de las dos páginas leídas [VERIFICAR si hay propuesta]",
+     "f": "xdc.org, Tech Spec, y docs.xdc.network, RWA Tokenization (releídas en Chrome el 14-nov-2026; parte interesada)",
      "u": "https://docs.xdc.network/enterprise/rwa-tokenization/",
      "d": "2026-11-14",
-     "n": "P"
+     "n": "P",
+     "u2": "https://xdc.org/network/tech-specs"
     },
     "liquidacion": {
-     "t": "Autodeclarada: 'finalidad de 2 segundos' en la guía de RWA; xdc.org/network/tech-specs dice que las transacciones quedan finalizadas 6 s tras entrar en un bloque. Sin dato de liquidación contra dinero ni entrega contra pago en esas páginas",
+     "t": "Autodeclarada: 'finalidad de 2 segundos' en la guía de RWA; xdc.org/network/tech-specs dice que las transacciones quedan finalizadas 6 s tras entrar en un bloque. Sin dato de liquidación contra dinero ni entrega contra pago en esas páginas. Tercera cifra: la página de arquitectura de la doc (docs.xdc.network/learn/xdc-architecture, leída 14-nov-2026) da bloque de ~2 s y «finalidad casi instantánea» BFT sin número; la doc antigua en docs.xdc.org no cargó. Siguen sin conciliarse 2 s, 2-4 s y 6 s [VERIFICAR]",
      "f": "docs.xdc.network, RWA Tokenization; xdc.org, Tech Spec (parte interesada)",
      "u": "https://xdc.org/network/tech-specs",
      "d": "2026-11-14",
@@ -3602,8 +3625,8 @@
     },
     "custodia": {
      "token": "sin dato",
-     "quien": "El usuario con sus claves; custodios de terceros posibles",
-     "ev": "La doc dice que los usuarios mantienen sus claves y que servicios de custodia de terceros pueden gestionar activos por ellos; no nombra custodios institucionales.",
+     "quien": "El usuario con sus claves; custodios de terceros posibles; BitGo (lista de protocolos)",
+     "ev": "La doc dice que los usuarios mantienen sus claves y que servicios de custodia de terceros pueden gestionar activos por ellos; no nombra custodios institucionales. BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye IOTA.",
      "u": "https://docs.iota.org/llms-full-about.txt",
      "d": "2026-11-14",
      "n": "S"
@@ -3766,8 +3789,8 @@
     },
     "custodia": {
      "token": "sin dato",
-     "quien": "Safe (multifirma), Den (custodia onchain); en SkyLink Plume conserva custodia y cumplimiento del activo",
-     "ev": "La doc lista Safe y Den como opciones de custodia/multifirma; la nota de SkyLink dice que Plume retiene la custodia de los activos y el cumplimiento.",
+     "quien": "Safe (multifirma), Den (custodia onchain); en SkyLink Plume conserva custodia y cumplimiento del activo; BitGo (lista de protocolos)",
+     "ev": "La doc lista Safe y Den como opciones de custodia/multifirma; la nota de SkyLink dice que Plume retiene la custodia de los activos y el cumplimiento. BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye Plume (PLUME).",
      "u": "https://docs.plume.org/plume/developers/tools-and-services/custodians-and-multisigs.md",
      "d": "2026-11-14",
      "n": "S"
@@ -3852,11 +3875,12 @@
    },
    "hitos": [
     {
-     "fecha": "2025-10",
-     "t": "Registro como agente de transferencia ante la SEC (según prensa)",
+     "fecha": "2025-10-06",
+     "t": "Plume anuncia su registro como agente de transferencia ante la SEC (fecha de publicación de la noticia; el día exacto del registro no consta)",
      "u": "https://cointelegraph.com/news/plume-network-sec-transfer-agent",
-     "n": "V",
-     "futuro": false
+     "n": "S",
+     "futuro": false,
+     "f": "Cointelegraph, 6-oct-2025 (leído el 14-nov-2026)"
     },
     {
      "fecha": "2024-11-22",
