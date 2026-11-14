@@ -1,5 +1,5 @@
 {
-  "_actualizado": "2026-11-13",
+  "_actualizado": "2026-11-14",
   "_nota": "Datos sin API abierta: salario mínimo de las potencias. Nivel V = recordado, sin leer la norma oficial; [VERIFICAR] antes de citar. No se ordenan países.",
   "US": {
     "salario_minimo": {
@@ -123,6 +123,15 @@
       "periodicidad": "mensual",
       "anterior": 6.33,
       "anterior_fecha": "2026-08"
+    },
+    "paro": {
+      "valor": 2.2,
+      "unidad": "% población activa",
+      "fecha": "2026-09",
+      "fuente": "https://www.fxstreet.com/news/russia-unemployment-rate-in-line-with-forecasts-22-in-september-202610281600",
+      "nivel": "S",
+      "definicion": "Paro de Rosstat, septiembre de 2026; igual que en agosto. Cifra vía FXStreet [VERIFICAR]. Leído el 14-nov-2026.",
+      "periodicidad": "mensual"
     }
   },
   "JP": {
@@ -231,15 +240,15 @@
       "periodicidad": "irregular"
     },
     "ipc": {
-      "valor": 5.54,
+      "valor": 6.09,
       "unidad": "% interanual",
-      "fecha": "2026-09",
-      "fuente": "https://www.mospi.gov.in/uploads/latestreleasesfiles/1791801549227-Press%20Release%20for%20the%20month%20of%20September,%202026.pdf",
+      "fecha": "2026-10",
+      "fuente": "https://www.mospi.gov.in/uploads/latestReleases/latest_release_1794478693814_7c90e80f-9e64-4aa4-b44a-1dc727b0fed9_Press_Release_of_CPI_for_October_2026_.pdf",
       "nivel": "S",
-      "definicion": "IPC combinado nacional, provisional (MoSPI, publicado el 12-oct-2026; cifra vía prensa, PDF no abierto) [VERIFICAR]. Nueva serie con base 2024: no encadena con las anteriores. Alimentos 7,74 %. Octubre: 12-nov-2026. La OCDE (datos MoSPI, leída el 10-nov-2026) da 5,57 % con anterior 4,96 %: se mantiene la cifra de prensa hasta abrir el PDF de MoSPI.",
+      "definicion": "IPC combinado del MoSPI, octubre de 2026 (provisional, publicado el 12-nov); rural 6,63 %, urbano 5,41 %; por encima del tope del RBI (6 %). El PDF del MoSPI existe pero no se pudo extraer el texto: cifra vía prensa [VERIFICAR]. Leído el 14-nov-2026.",
       "periodicidad": "mensual",
-      "anterior": 4.83,
-      "anterior_fecha": "2026-08"
+      "anterior": 5.54,
+      "anterior_fecha": "2026-09"
     }
   },
   "IT": {
@@ -268,13 +277,13 @@
     "paro": {
       "valor": 7.9,
       "unidad": "% población activa",
-      "fecha": "2026-T2",
+      "fecha": "2026-Q2",
       "fuente": "https://chequeado.com/nota/la-desocupacion-aumento-al-79-en-el-segundo-trimestre-de-2026-y-alcanzo-el-valor-mas-alto-de-la-gestion-de-milei",
       "nivel": "S",
       "definicion": "Desocupación del INDEC (EPH, 31 aglomerados urbanos), segundo trimestre de 2026 (1,2 millones de personas), vía Chequeado; comunicado del INDEC sin leer [VERIFICAR]. Frente al mismo trimestre de 2025 (7,6 %) sube 0,3 puntos y es la tasa más alta de la gestión actual según esa fuente. No es la estimación modelo OIT del Banco Mundial. El 3.er trimestre de 2026 sale hacia mediados de diciembre.",
       "periodicidad": "trimestral",
       "anterior": 7.6,
-      "anterior_fecha": "2025-T2"
+      "anterior_fecha": "2025-Q2"
     },
     "pobreza": {
       "valor": 32.3,
@@ -288,24 +297,26 @@
   },
   "BR": {
     "ipc": {
-      "valor": 4.62,
-      "unidad": "% a 12 meses (IPCA-15)",
+      "valor": 4.63,
+      "unidad": "% interanual",
       "fecha": "2026-10",
-      "fuente": "https://www.ibge.gov.br/",
+      "fuente": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/inflacao-perde-forca-e-fica-em-014-em-outubro-conta-de-luz-cai",
       "nivel": "S",
-      "definicion": "IPCA-15 de octubre 2026 (IBGE, ≈23-oct): 4,62 % a 12 meses, mensual +0,32 %; cifra vía prensa. El IPCA completo de octubre sale el 12-nov [S]; no es aún «octubre» definitivo. Leído el 11-nov-2026.",
+      "definicion": "IPCA del IBGE, octubre de 2026 (0,14 % mensual; publicado el 12-nov); por encima del techo de la meta (4,5 %). Vía prensa; comunicado oficial sin leer [VERIFICAR]. Leído el 14-nov-2026.",
       "periodicidad": "mensual",
-      "anterior": 4.47,
+      "anterior": 4.58,
       "anterior_fecha": "2026-09"
     },
     "paro": {
-      "valor": 5.4,
-      "unidad": "% desocupación (PNAD continua)",
-      "fecha": "2026-Q2",
-      "fuente": "https://www.ibge.gov.br/",
+      "valor": 5.2,
+      "unidad": "% población activa",
+      "fecha": "2026-Q3",
+      "fuente": "https://agenciagov.ebc.com.br/noticias/202610/taxa-de-desemprego-tem-queda-e-alcanca-menor-resultado-para-setembro-em-14-anos",
       "nivel": "S",
-      "definicion": "Trimestre móvil a junio 2026 (IBGE vía prensa): 5,4 %, mínimo de la serie desde 2012. Dato posterior (trimestre a septiembre) no localizado [VERIFICAR]. Paro juvenil no obtenido. Leído el 11-nov-2026.",
-      "periodicidad": "mensual (trimestre móvil)"
+      "definicion": "Desocupación PNAD Contínua del IBGE, trimestre julio-septiembre de 2026 (media móvil trimestral; publicada el 30-oct); 5,4 % en el 2T. Vía prensa; comunicado oficial sin leer [VERIFICAR]. Leído el 14-nov-2026.",
+      "periodicidad": "trimestral",
+      "anterior": 5.4,
+      "anterior_fecha": "2026-Q2"
     },
     "pib": {
       "valor": 0.5,
@@ -337,6 +348,89 @@
       "nivel": "S",
       "definicion": "Variación del PIB de Cuba en 2025 según la CEPAL (abril de 2026), citada por Cubanet, Diario de Cuba y La Nación/EFE (medios críticos con el Gobierno: posible sesgo). Otras estimaciones: CEEC ≈ −5 %; Pedro Monreal entre −9,1 % y −12,5 %. Falta la cifra primaria de la ONEI [VERIFICAR].",
       "periodicidad": "anual"
+    },
+    "ipc": {
+      "valor": 28.44,
+      "unidad": "% interanual",
+      "fecha": "2026-09",
+      "fuente": "https://www.directoriocubano.info/?p=151702",
+      "nivel": "S",
+      "definicion": "IPC de la ONEI, septiembre de 2026 (acumulado ene-sep 24,85 %), según prensa independiente que cita a la ONEI; solo mercado formal; fuente crítica con el Gobierno y el informe de la ONEI sin leer [VERIFICAR]. Leído el 14-nov-2026.",
+      "periodicidad": "mensual",
+      "anterior": 25.19,
+      "anterior_fecha": "2026-08"
+    }
+  },
+  "ZA": {
+    "ipc": {
+      "valor": 4.5,
+      "unidad": "% interanual",
+      "fecha": "2026-09",
+      "fuente": "https://www.sanews.gov.za/node/85109",
+      "nivel": "P",
+      "definicion": "IPC de Stats SA, septiembre de 2026, según la nota de SAnews (agencia del Gobierno sudafricano) del 21-oct-2026; el de octubre sale el 18-nov. Comunicado de Stats SA sin leer. Leído el 14-nov-2026.",
+      "periodicidad": "mensual",
+      "anterior": 4.4,
+      "anterior_fecha": "2026-08"
+    },
+    "paro": {
+      "valor": 33.7,
+      "unidad": "% población activa",
+      "fecha": "2026-Q3",
+      "fuente": "https://www.ewn.co.za/2026/11/10/stats-sa-unemployment-rate-ticks-up-by-01-in-q3",
+      "nivel": "S",
+      "definicion": "Desempleo oficial (QLFS, Stats SA), 3.er trimestre de 2026, publicado el 10-nov; unos 8,6 millones de personas; paro juvenil 47,3 % según esa fuente. Vía prensa; comunicado oficial sin leer [VERIFICAR]. Leído el 14-nov-2026.",
+      "periodicidad": "trimestral",
+      "anterior": 33.6,
+      "anterior_fecha": "2026-Q2"
+    }
+  },
+  "ID": {
+    "ipc": {
+      "valor": 3.23,
+      "unidad": "% interanual",
+      "fecha": "2026-10",
+      "fuente": "https://databoks.katadata.co.id/en/economics-macro/statistics/6ae8214fbddec/indonesias-annual-inflation-reached-323-in-october-2026",
+      "nivel": "S",
+      "definicion": "IPC del BPS, octubre de 2026 (0,22 % mensual; subyacente 2,56 %). Vía prensa; comunicado oficial sin leer [VERIFICAR]. Leído el 14-nov-2026.",
+      "periodicidad": "mensual",
+      "anterior": 3.28,
+      "anterior_fecha": "2026-09"
+    },
+    "paro": {
+      "valor": 4.75,
+      "unidad": "% población activa",
+      "fecha": "2026-08",
+      "fuente": "https://infopublik.id/kategori/nasional-ekonomi-bisnis/996078/bps-tingkat-pengangguran-terbuka-agustus-2026-turun-menjadi-475-persen",
+      "nivel": "S",
+      "definicion": "Tasa de desempleo abierto del BPS, agosto de 2026 (publicada el 5-nov); 7,38 millones de personas; el subempleo sube a 8,68 %. Vía prensa; comunicado oficial sin leer [VERIFICAR]. Leído el 14-nov-2026.",
+      "periodicidad": "semestral"
+    }
+  },
+  "EG": {
+    "ipc": {
+      "valor": 12.7,
+      "unidad": "% interanual (urbana)",
+      "fecha": "2026-10",
+      "fuente": "https://www.arabnews.com/business/egypts-annual-urban-inflation-eases-to-127-in-october-3010895",
+      "nivel": "S",
+      "definicion": "Inflación URBANA de CAPMAS, octubre de 2026 (nacional: 12,0 % según Arab Finance; no mezclar). Vía prensa; comunicado oficial sin leer [VERIFICAR]. Leído el 14-nov-2026.",
+      "periodicidad": "mensual",
+      "anterior": 13.9,
+      "anterior_fecha": "2026-09"
+    }
+  },
+  "SV": {
+    "ipc": {
+      "valor": 3.91,
+      "unidad": "% interanual",
+      "fecha": "2026-10",
+      "fuente": "https://diario.elmundo.sv/economia/la-inflacion-repunta-a-3-91-en-octubre-impulsada-por-alimentos-y-transporte",
+      "nivel": "S",
+      "definicion": "IPC del BCR, octubre de 2026 (alimentos 5,06 %, transporte 10,63 %). Vía prensa; comunicado oficial sin leer [VERIFICAR]. Leído el 14-nov-2026.",
+      "periodicidad": "mensual",
+      "anterior": 3.6,
+      "anterior_fecha": "2026-09"
     }
   }
 }

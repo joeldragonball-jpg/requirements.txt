@@ -10,3 +10,9 @@
 - Las medias anuales y el dic/dic no se mezclan: cada serie lleva su unidad y la otra va en la nota.
 - Los scripts con muchas peticiones lentas necesitan tope total, no solo timeout por petición.
 - Una cancelación manual no es un fallo del bot; una cancelación por tiempo sí.
+
+## Añadido el 14-nov (research en paralelo con 3 subagentes; los JSON los edita el coordinador)
+- **Voces (W06)**: v159 (OCC NR 2026-92, vigor 18-ene-2027) y v161 (CFTC 9307-26, ANPRM) pasan a «confirmada» solo en su hecho de partida, tras leer yo las notas oficiales. v160 (SEC) queda sin confirmar: la web de la SEC rechazó mi lectura (límite de peticiones). Sin tocar: v138, v163, v059, v162, v137, v135, v131 (matices en el informe del subagente: Swift sin cifra, Binance solo TRM, Goldman sin 125 $).
+- **Radar (W03)**: Corea/tokenización: la consulta cerró el 11-nov, `proxima` vaciada (la URL del JSON, 87653, difiere de la que leyó el subagente, 87834: comprobar). España/tokenización: etapa 4 [S] por la autorización de la CNMV a Bit2Me STX (28-oct; solo se leyó título y fecha). Egipto, Etiopía e India: sin etapa nueva (solo fuentes secundarias). Quedan 30 celdas sin dato.
+- **Países (C260)**: 11 indicadores nuevos como [S]; Sudáfrica IPC [P] vía SAnews (agencia oficial). Los de Venezuela, Rusia (IPC), Irán y Emiratos no se vuelcan: fuentes contradictorias.
+- Lecciones: los subagentes leen con un modelo pequeño (resúmenes), así que las páginas oficiales se cotejan antes de escribir; la web de la SEC limita las peticiones automáticas.
