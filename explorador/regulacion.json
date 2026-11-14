@@ -2332,7 +2332,7 @@
       "jur": "br",
       "tema": "etf",
       "etapa": null,
-      "estado": "No hay dato sobre ETF cripto en Brasil.",
+      "estado": "No hay dato sobre ETF cripto en Brasil. Reintento 14-nov-2026: la lista de resoluciones de la CVM no muestra ninguna norma sobre ETF de criptoactivos (Res. 175 es de fondos en general, no leída entera); sigue sin dato.",
       "fecha": null,
       "fuente": "VERIFICAR",
       "proxima": null,
@@ -2343,7 +2343,8 @@
       ],
       "pais_id": "BR",
       "nivel": "V",
-      "revisar": true
+      "revisar": true,
+      "revisado": "2026-11-14"
     },
     {
       "jur": "br",
@@ -3706,7 +3707,7 @@
       "jur": "za",
       "tema": "etf",
       "etapa": null,
-      "estado": "Sin norma ni fuente primaria encontrada en esta pasada (10-nov); el SARB solo alude a probar casos en el sandbox del IFWG [P, comunicación 28-may-2026].",
+      "estado": "Sin norma ni fuente primaria encontrada en esta pasada (10-nov); el SARB solo alude a probar casos en el sandbox del IFWG [P, comunicación 28-may-2026]. Reintento 14-nov-2026: fsca.co.za e ifwg.co.za en mantenimiento y jse.co.za rechaza la conexión; sigue sin dato.",
       "fecha": null,
       "fuente": "VERIFICAR",
       "proxima": null,
@@ -3719,13 +3720,13 @@
       "pais_id": "ZA",
       "nivel": "V",
       "revisar": true,
-      "revisado": "2026-11-10"
+      "revisado": "2026-11-14"
     },
     {
       "jur": "za",
       "tema": "tokenizacion",
       "etapa": null,
-      "estado": "Sin norma ni fuente primaria encontrada en esta pasada (10-nov); el SARB solo alude a probar casos en el sandbox del IFWG [P, comunicación 28-may-2026].",
+      "estado": "Sin norma ni fuente primaria encontrada en esta pasada (10-nov); el SARB solo alude a probar casos en el sandbox del IFWG [P, comunicación 28-may-2026]. Reintento 14-nov-2026: fsca.co.za e ifwg.co.za en mantenimiento; sigue sin dato.",
       "fecha": null,
       "fuente": "VERIFICAR",
       "proxima": null,
@@ -3738,7 +3739,7 @@
       "pais_id": "ZA",
       "nivel": "V",
       "revisar": true,
-      "revisado": "2026-11-10"
+      "revisado": "2026-11-14"
     },
     {
       "jur": "za",
@@ -3897,7 +3898,7 @@
       "jur": "id",
       "tema": "etf",
       "etapa": null,
-      "estado": "Sin fuente verificable en esta pasada (10-nov): ojk.go.id no cargó y la prensa leída no cubre ETF ni custodia cripto.",
+      "estado": "Sin fuente verificable en esta pasada (10-nov): ojk.go.id no cargó y la prensa leída no cubre ETF ni custodia cripto. Reintento 14-nov-2026: ojk.go.id da 403; sigue sin dato.",
       "fecha": null,
       "fuente": "VERIFICAR",
       "proxima": null,
@@ -3910,7 +3911,7 @@
       "pais_id": "ID",
       "nivel": "V",
       "revisar": true,
-      "revisado": "2026-11-10"
+      "revisado": "2026-11-14"
     },
     {
       "jur": "id",
@@ -3935,7 +3936,7 @@
       "jur": "id",
       "tema": "custodia",
       "etapa": null,
-      "estado": "Sin fuente verificable en esta pasada (10-nov): ojk.go.id no cargó y la prensa leída no cubre ETF ni custodia cripto.",
+      "estado": "Sin fuente verificable en esta pasada (10-nov): ojk.go.id no cargó y la prensa leída no cubre ETF ni custodia cripto. Reintento 14-nov-2026: ojk.go.id da 403; sigue sin dato.",
       "fecha": null,
       "fuente": "VERIFICAR",
       "proxima": null,
@@ -3948,7 +3949,7 @@
       "pais_id": "ID",
       "nivel": "V",
       "revisar": true,
-      "revisado": "2026-11-10"
+      "revisado": "2026-11-14"
     },
     {
       "jur": "id",
@@ -5010,22 +5011,23 @@
     {
       "jur": "ch",
       "tema": "tokenizacion",
-      "etapa": null,
-      "estado": "Sin dato verificado: C40 (Gemini, 29-oct) no aportó fuente primaria para este tema; pendiente de research específico.",
-      "fecha": null,
-      "fuente": "VERIFICAR",
-      "revisado": "2026-10-29",
+      "etapa": 4,
+      "estado": "FINMA tiene licencia y supervisión de «sistemas de negociación DLT» (DLT trading facility): su página de supervisión dice que las instituciones con esa licencia están sujetas a supervisión de la FINMA, con base en la ley de infraestructuras del mercado financiero (FinMIA/LIMF) y sus ordenanzas [P, página leída el 14-nov-2026, sin fecha de publicación]. No consta cuántas licencias hay ni la fecha de entrada en vigor de la DLT Act (no aparece en las páginas leídas).",
+      "fecha": "2026-11-14",
+      "fuente": "P",
+      "revisado": "2026-11-14",
       "proxima": null,
-      "falta": "Gemini: licencias de DLT Trading Facility con auditoría de contratos inteligentes [S, sin leer].",
+      "falta": "Número de licencias DLT concedidas, fecha de entrada en vigor de la DLT Act y valores registrados (Registerwertrechte) en fuente oficial [VERIFICAR].",
       "hitos": [],
       "informes": [
         "C40",
         "W03A"
       ],
       "pais_id": "CH",
-      "nivel": "V",
-      "revisar": true,
-      "caduca": "2027-01-27"
+      "nivel": "P",
+      "revisar": false,
+      "caduca": "2027-01-27",
+      "url": "https://www.finma.ch/en/supervision/fintech/aufsicht-ueber-dlt-handelssysteme/"
     },
     {
       "jur": "ch",
@@ -5149,10 +5151,10 @@
       "jur": "ca",
       "tema": "ley_marco",
       "etapa": null,
-      "estado": "Sin dato verificado: C40 (Gemini, 29-oct) no aportó fuente primaria para este tema; pendiente de research específico.",
+      "estado": "Sin dato verificado: C40 (Gemini, 29-oct) no aportó fuente primaria para este tema; pendiente de research específico. Reintento 14-nov-2026: securities-administrators.ca da 404 y osc.ca 403; sigue sin dato.",
       "fecha": null,
       "fuente": "VERIFICAR",
-      "revisado": "2026-10-29",
+      "revisado": "2026-11-14",
       "proxima": null,
       "falta": "Gemini: plataformas bajo Pre-Registration Undertakings de la CSA [S]; la web de la CSA redirige y no se pudo leer [VERIFICAR].",
       "hitos": [],
@@ -5169,10 +5171,10 @@
       "jur": "ca",
       "tema": "tokenizacion",
       "etapa": null,
-      "estado": "Sin dato verificado: C40 (Gemini, 29-oct) no aportó fuente primaria para este tema; pendiente de research específico.",
+      "estado": "Sin dato verificado: C40 (Gemini, 29-oct) no aportó fuente primaria para este tema; pendiente de research específico. Reintento 14-nov-2026: securities-administrators.ca da 404 y osc.ca 403; sigue sin dato.",
       "fecha": null,
       "fuente": "VERIFICAR",
-      "revisado": "2026-10-29",
+      "revisado": "2026-11-14",
       "proxima": null,
       "falta": "Gemini: CSA Project Tokenization (otoño 2025) [S, sin leer].",
       "hitos": [],

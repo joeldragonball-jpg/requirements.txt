@@ -1053,7 +1053,7 @@
      "n": "S"
     },
     "seguridad": {
-     "t": "Proof-of-Staked-Authority (PoSA): validadores elegidos por BNB en staking; la doc no da número de validadores ni finalidad",
+     "t": "Proof-of-Staked-Authority (PoSA): validadores elegidos por BNB en staking; la doc no da número de validadores ni finalidad; bloques de 0,45 s y finalidad rápida de ≈1,125 s si votan ⅔ de los validadores",
      "f": "docs.bnbchain.org",
      "d": "2024-09-25",
      "n": "P",
@@ -1067,8 +1067,20 @@
      "u": "https://app.rwa.xyz/networks/bnb-chain"
     },
     "cumplimiento": null,
-    "pagos": null,
-    "rendimiento": null,
+    "pagos": {
+     "t": "BNB es el token nativo y se usa para pagar las comisiones de transacción; la guía leída no da una comisión típica",
+     "f": "Documentación de BNB Chain (leída; pie 12-jun-2026)",
+     "u": "https://docs.bnbchain.org/bnb-smart-chain/developers/quick-guide/",
+     "d": "2026-11-14",
+     "n": "P"
+    },
+    "rendimiento": {
+     "t": "La recompensa de staking sale de las comisiones de las transacciones; la documentación no publica APR/APY",
+     "f": "Documentación de BNB Chain (leída; pie 2-jul-2024)",
+     "u": "https://docs.bnbchain.org/bnb-smart-chain/staking/overview/",
+     "d": "2026-11-14",
+     "n": "P"
+    },
     "interop": null,
     "regulacion": {
      "t": "Hay ETF spot de BNB en EE. UU.",
@@ -1258,7 +1270,7 @@
      "n": "S"
     },
     "seguridad": {
-     "t": "Cadena de prueba de participación compatible con EVM (capas Heimdall y Bor); la doc leída no da número de validadores ni finalidad",
+     "t": "Cadena de prueba de participación compatible con EVM (capas Heimdall y Bor); la doc leída no da número de validadores ni finalidad; finalidad determinista en 2-5 s mediante «milestones» (Heimdall v2)",
      "f": "docs.polygon.technology",
      "d": null,
      "n": "P",
@@ -1278,8 +1290,20 @@
      "d": "2026-06-03",
      "n": "S"
     },
-    "pagos": null,
-    "rendimiento": null,
+    "pagos": {
+     "t": "POL es el token de gas y de staking de Polygon PoS; coste medio por transacción «$0.002» según la propia documentación (autodeclarado)",
+     "f": "Documentación de Polygon (leída)",
+     "u": "https://docs.polygon.technology/pos/overview.md",
+     "d": "2026-11-14",
+     "n": "P"
+    },
+    "rendimiento": {
+     "t": "Polygon destina el 12 % de los 10.000 M de POL a recompensas de staking; la documentación solo da tasas esperadas según el calendario de emisión y el % en staking, no una rentabilidad en vivo",
+     "f": "Documentación de Polygon (leída)",
+     "u": "https://docs.polygon.technology/pos/reference/rewards.md",
+     "d": "2026-11-14",
+     "n": "P"
+    },
     "interop": null,
     "regulacion": null
    },
@@ -1318,7 +1342,8 @@
     "Cifras de agregador."
    ],
    "sin_dato": [
-    "Modelo de comisiones y staking verificado."
+    "Número de validadores activos.",
+    "Rentabilidad de staking en vivo (la doc solo da el calendario de emisión)."
    ]
   },
   {
@@ -1909,7 +1934,8 @@
     "Material casi todo de la propia XDC y de webs promocionales."
    ],
    "sin_dato": [
-    "Bancos que la usen en producción."
+    "Bancos que la usen en producción.",
+    "docs.xdc.network (portada) y xdc.org no dan nº de masternodes ni stake, ni mencionan Swift; la cifra de 108 masternodes sigue [V] hasta leer xinfin.org/setup-masternode o la whitepaper."
    ]
   },
   {
@@ -1983,7 +2009,8 @@
    ],
    "sin_dato": [
     "Clientes en producción.",
-    "Documento primario del modelo de token."
+    "Documento primario del modelo de token.",
+    "Leída la portada de quant.network con Chrome (14-nov-2026): habla de dinero programable (Quant Flow, PayScript) y no menciona QNT ni licencias; /qnt da 404; docs.quant.network no resuelve."
    ]
   },
   {
@@ -2020,8 +2047,8 @@
    ],
    "sin_dato": [
     "Integración con ISO 20022 o con bancos.",
-    "Confirmación de los socios (WEF, TBI, AfCFTA) en sus propias webs.",
-    "EBSI de la UE: sin resultado."
+    "EBSI de la UE: sin resultado.",
+    "Si el token IOTA paga el gas (no está en las páginas leídas)."
    ],
    "ficha": null,
    "busca": [
@@ -2039,14 +2066,20 @@
     },
     "activos": null,
     "cumplimiento": {
-     "t": "Programa ADAPT con la Secretaría del AfCFTA, el Tony Blair Institute y el WEF: Kenia, Nigeria y Marruecos son los primeros países (identidad digital, datos de comercio y pagos)",
+     "t": "Programa ADAPT con la Secretaría del AfCFTA, el Tony Blair Institute y el WEF: Kenia, Nigeria y Marruecos son los primeros países (identidad digital, datos de comercio y pagos). Socios (AfCFTA lidera; IOTA, Tony Blair Institute y WEF) confirmados en el blog de IOTA del 17-nov-2025, no en las webs de AfCFTA, TBI ni WEF",
      "f": "Blog de IOTA (fuente propia; los socios no se leyeron)",
      "d": "2026-05-19",
      "n": "S",
      "u": "https://blog.iota.org/update-q2-2026/"
     },
     "pagos": null,
-    "rendimiento": null,
+    "rendimiento": {
+     "t": "La web de la Fundación IOTA dice que el staking flexible asegura la red y da recompensas; sin cifra de rentabilidad en esa página",
+     "f": "IOTA Foundation (web leída)",
+     "u": "https://www.iota.org/",
+     "d": "2026-11-14",
+     "n": "P"
+    },
     "interop": null,
     "regulacion": null
    },
@@ -2107,7 +2140,6 @@
     "Cifras de agregadores muy distintas según la métrica; registro ante la SEC sin leer en sec.gov."
    ],
    "sin_dato": [
-    "Papel de PLUME (gas o staking).",
     "Instituciones que la usen con fuente.",
     "Integración con ISO 20022."
    ],
@@ -2125,7 +2157,7 @@
      "u": "https://coinpaprika.com/ja/education/plume-network/"
     },
     "seguridad": {
-     "t": "Blockchain pública compatible con EVM dedicada a activos reales; la página no describe el papel del token PLUME",
+     "t": "Blockchain pública compatible con EVM dedicada a activos reales; la página no describe el papel del token PLUME; PLUME sirve de gas, gobernanza y staking según la documentación",
      "f": "docs.plume.org",
      "d": "2026-11-14",
      "n": "P",
@@ -2139,8 +2171,20 @@
      "u": "https://docs.ondo.finance/addresses"
     },
     "cumplimiento": null,
-    "pagos": null,
-    "rendimiento": null,
+    "pagos": {
+     "t": "El gas se paga en PLUME, no en ETH",
+     "f": "Documentación de Plume (leída)",
+     "u": "https://docs.plume.org/plume/developers/gas-and-fees.md",
+     "d": "2026-11-14",
+     "n": "P"
+    },
+    "rendimiento": {
+     "t": "PLUME permite hacer staking «contribuyendo a la seguridad de la red y ganando recompensas»; la documentación no publica rentabilidad anual",
+     "f": "Documentación de Plume (leída)",
+     "u": "https://docs.plume.org/plume/tokens/plume-usdplume.md",
+     "d": "2026-11-14",
+     "n": "P"
+    },
     "interop": null,
     "regulacion": {
      "t": "Registrada ante la SEC como agente de transferencia (oct-2025)",

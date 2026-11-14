@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-14 12:20 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-14 13:11 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -6,7 +6,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hoy (máx. 3):** Gemini Energía y geopolítica
 **Periódicas (próxima):** W10 11-14 · W01 11-16 · W02 11-17 · W03 11-18 · W05 11-19 · W06 11-20 · W09 11-20 · W08 11-25 · W04 11-26 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
-**Parciales (39):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: T15 BRICS, W03E (Irán/Egipto/Etiopía), D08/D09, Ge · C58 falta: Italia y NL ya leídos [P]; faltan: midterms certif · C59 falta: Faltan salario mínimo IT/CN/JP/IN (IT e IN: n/a),  · C61 falta: Vivienda vacía en CN/JP/IN/GB/RU; LPI y paro total · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
+**Parciales (40):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: T15 BRICS, W03E (Irán/Egipto/Etiopía), D08/D09, Ge · C58 falta: Italia y NL ya leídos [P]; faltan: midterms certif · C59 falta: Faltan salario mínimo IT/CN/JP/IN (IT e IN: n/a),  · C61 falta: Vivienda vacía en CN/JP/IN/GB/RU; LPI y paro total · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
 **Hechas en 7 días (19):** C205, C206, C262, C264, C265, C258, C259, C252, C253, C256, C257, C255, C147, C150, C151
 
 ## Hoy (sáb 2026-11-14): solo lo casi obligatorio
@@ -79,7 +79,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C261 · Alertas de datos (C206): ajustar los umbrales de tipos y comprobar el primer avi · Sonnet S · ~~1 % · `Joel: pon tus umbrales en la sección [datos.umbrales_tipos] de alertas/config.toml (ahora son ejemplos: Fed 3,50/4,50 % y BCE 2,00/3,00 %). Tras el «sube», el workflow diario «Aviso de eventos» ejecuta alertas/datos.py: la 1.ª vez solo memoriza. Cuando llegue el primer aviso real, comprueba que los enlaces abren, que no pasa de 8 líneas y que no repite avisos; si sobra ruido, apaga partes en [datos] (rojos, tipos, noticias_p) o baja noticias_dias. Sin IA y sin lanzar workflows salvo que Joel lo pida.`
 - C263 · Cerrar huecos [VERIFICAR] del marco por cadenas: volumen de ODL, PDF del 3T-2026 · Sonnet M · ~~3 % · `Lee la lista «huecos» de privado/marco-iso20022.json (solo en el PC) y busca fuente primaria para cada uno: Ripple (volumen de ODL en XRP), PDF del informe del 3T-2026 de la SDF (stellar.org/quarterly-reports; la descarga abre un diálogo: pide a Joel que lo guarde en research/fuentes/), PDF del informe final de Project Acacia en rba.gov.au, docs de Ondo Chain, docs.canton.network (dominios privados y tráfico), documento primario de Quant, Swift sobre XDC, docs.hedera.com y Avalanche. Escribe los resultados SOLO en privado/marco-iso20022.json (con fuente, fecha y nivel) y regenera con python scripts/construir_tesis_privada.py; después python scripts/huellas_privado.py y python scripts/revisar_explorador.py. Nada de la tesis en el repo público.`
 - C266 · Órbita › Cadenas ↔ Noticias: relaciones entre redes, emisores y noticias (sesión · Fable L · ~~6 % · `Sigue CLAUDE.md y research/NORMAS-DETALLE.md. Repo PÚBLICO: solo hechos con fuente; nada de privado/ ni comparación con la tesis; sin «ganador». Empieza con git pull y lee SOLO research/PLANNING.md y la fila C264 de research/tareas.csv (lista de 6 relaciones). Datos: explorador/cadenas.json (ids de redes, campo «busca») y explorador/datos.json (movimientos, incluidas las noticias del bot con origen «noticia»). Tareas: (1) añade a cada movimiento un campo opcional «cadenas» con ids de cadenas.json (por reglas: actor, entidades y activos; nada de IA en el bot) y valídalo en scripts/revisar_explorador.py; (2) en la pestaña Cadenas de explorador/vistas.html, muestra en cada ficha las últimas 5 noticias y hechos de esa red con su nivel P/S/V (Edit puntual; clases con prefijo cad-; desplegables con dt.dataset.auto='1'); (3) añade en cadenas.json un bloque «relaciones» con hechos [P]/[S] que unan redes: DTCC multi-red (Canton, Besu, Stellar 1S-2027), Chainlink como capa intermedia en Swift y DTCC, emisores en varias redes (Ondo OUSG/USDY, Franklin Benji), RLUSD frente a XRP en Ripple Payments, actualizaciones de red (Alpenglow, Glamsterdam, enmiendas del XRPL) frente a incidentes; (4) aplica la regla W05 a titulares con umbral. Prueba en el navegador (puerto 8797, configuración «orbita» de .claude/launch.json) en escritorio y móvil, sin NaN ni «undefined». Cierre: revisar_explorador.py (0 avisos), construir_movil.py, construir_seguimiento.py, construir_orbita.py, informe en informes/research/ y esta fila a «hecha». No lances workflows ni la API de Anthropic; commit y push solo con «sube».`
-- C267 · Órbita › Cadenas: tercera pasada de huecos públicos (Quant, XDC, IOTA, Plume, Po · Sonnet M · ~~3 % · `Sigue CLAUDE.md. Repo PÚBLICO: solo hechos con fuente. Lee la columna «falta» de la fila C264 en research/tareas.csv y las celdas null o con n=V de explorador/cadenas.json. Busca fuente PRIMARIA y léela en el navegador (Chrome si la web bloquea lectores: quant.network da 403; dtcc.com/news da 404 a lectores): licencias de Overledger en QNT, masternodes y Swift en XDC, socios de ADAPT/TWIN de IOTA en sus webs, papel de PLUME y registro en la SEC (EDGAR), finalidad, staking y comisiones de Polygon y BNB Chain, interoperabilidad de Hedera, si Stellar es la 1.ª o 2.ª red pública de DTC. Edita SOLO explorador/cadenas.json (celdas {t,f,u,d,n}; sin dato = null, nunca relleno) y, si cambia algo de la tesis privada, avisa para C263 sin escribir en privado/. Cierre: python scripts/revisar_explorador.py (0 avisos), construir_orbita.py, construir_movil.py, construir_seguimiento.py y esta fila a «hecha» con el recuento de celdas cerradas. Sin workflows ni API de Anthropic; commit y push solo con «sube».`
+- C267 ◐ en parte · Órbita › Cadenas: tercera pasada de huecos públicos (Quant, XDC, IOTA, Plume, Po · Sonnet M · ~~3 % · `Sigue CLAUDE.md. Repo PÚBLICO: solo hechos con fuente. Lee la columna «falta» de la fila C264 en research/tareas.csv y las celdas null o con n=V de explorador/cadenas.json. Busca fuente PRIMARIA y léela en el navegador (Chrome si la web bloquea lectores: quant.network da 403; dtcc.com/news da 404 a lectores): licencias de Overledger en QNT, masternodes y Swift en XDC, socios de ADAPT/TWIN de IOTA en sus webs, papel de PLUME y registro en la SEC (EDGAR), finalidad, staking y comisiones de Polygon y BNB Chain, interoperabilidad de Hedera, si Stellar es la 1.ª o 2.ª red pública de DTC. Edita SOLO explorador/cadenas.json (celdas {t,f,u,d,n}; sin dato = null, nunca relleno) y, si cambia algo de la tesis privada, avisa para C263 sin escribir en privado/. Cierre: python scripts/revisar_explorador.py (0 avisos), construir_orbita.py, construir_movil.py, construir_seguimiento.py y esta fila a «hecha» con el recuento de celdas cerradas. Sin workflows ni API de Anthropic; commit y push solo con «sube».`
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
 - C39 ◐ en parte · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
@@ -126,19 +126,19 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [alta] 2026-11-13 (1 d) · La AIE dice que la oferta mundial de petróleo vuelve al superávit por primera vez desde que empezó la guerra.
-- [alta] 2026-11-13 (1 d) · Trump propone al sucesor de Hester Peirce y a otros tres cargos de la SEC y la CFTC.
-- [alta] 2026-11-13 (1 d) · Los precios mayoristas de EE. UU. suben un 0,3 % en octubre y la tasa anual llega al 6,5 %.
-- [alta] 2026-11-14 (0 d) · Buque cisterna en llamas tras golpear una mina en el Estrecho de Ormuz.
 - [media] 2026-10-22 (23 d) · hutiES a Arabia Saudi
 - [media] 2026-10-22 (23 d) · hutiES a Arabia Saudi
 - [media] 2026-10-22 (23 d) · hutiES a Arabia Saudi
 - [media] 2026-10-23 (22 d) · El futuro continuo del Brent cierra en $111,97
-- … y 84 más en el Seguimiento
+- [media] 2026-10-23 (22 d) · El futuro continuo del Brent cierra en $111,97
+- [media] 2026-10-23 (22 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí
+- [media] 2026-10-23 (22 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
+- [media] 2026-10-23 (22 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
+- … y 81 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Voces: Voces sin confirmar (27) → W06 · 13 llevan más de 14 días
-- 🟡 Radar regulatorio: Celdas sin dato (28) → W03 · Más huecos: EG 5, ET 4, ES 4, IN 2, BRICS 2
+- 🟡 Radar regulatorio: Celdas sin dato (27) → W03 · Más huecos: EG 5, ET 4, ES 4, IN 2, BRICS 2
 
 ## Bots con problema
 - ninguno
