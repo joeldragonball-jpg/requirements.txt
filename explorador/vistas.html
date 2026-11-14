@@ -1822,7 +1822,7 @@ function pCadenas(){
   // ¿Qué se tokeniza en cada red? (C268)
   (function(){const TA=L.filter(c=>c.tipos_activo);if(!TA.length)return;
     const TIPOS=[['deuda','Deuda y letras'],['fondos','Fondos y estrategias'],['acciones','Acciones'],['materias','Materias primas'],['credito','Crédito privado'],['inmuebles','Inmuebles'],['otros','Otros']];
-    const fm=v=>v>=1000?num(v/1000,2).replace(/,00$/,'')+' mil M$':num(v,v<10?1:0)+' M$';
+    const fm=v=>v<0.1?'<0,1 M$':v>=1000?num(v/1000,2).replace(/,00$/,'')+' mil M$':num(v,v<10?1:0)+' M$';
     const bx=el('div','caja');bx.append(el('h2',null,'¿Qué se tokeniza en cada red?'));
     bx.append(el('p','nota-v','Valor tokenizado por tipo de activo (M$ = millones de dólares), sin stablecoins. Fuente: RWA.xyz [S], leída el 14-nov-2026. La barra es el peso del tipo dentro de la propia red. «sin dato» = no entra en las 10 mayores clases visibles; no significa cero. El estándar de contrato y el plazo de liquidación van debajo de la tabla (liquidación: sin dato, no se leyó en fuente). Solo hechos: no hay «ganador».'));
     const tb=el('table','cad-mat cad-ta');const h=el('tr');h.append(el('th','cad-red','Red'));TIPOS.forEach(([k,n])=>h.append(el('th',null,n)));tb.append(h);
