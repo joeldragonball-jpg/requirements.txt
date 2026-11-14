@@ -525,11 +525,11 @@
      "u": "https://stellar.org/blog/foundation-news/q2-2026-what-stellar-was-built-for-has-arrived"
     },
     "rendimiento": {
-     "t": "Sin staking nativo; préstamos con Blend (~88-90 M$ de TVL) y fondos con rendimiento (BENJI) en la red",
-     "f": "Informe institucional de Stellar y Nansen (resumen de buscador, no leídos)",
-     "d": null,
-     "n": "V",
-     "u": "https://stellar.org/resources/institutional-infrastructure-report"
+     "t": "La inflación de la red (1 % anual sobre lumens, ~5.443,9 M XLM generados) se terminó por voto de validadores el 28-oct-2019: no hay recompensa por inflación ni documento de staking nativo en la documentación leída. Préstamos con Blend (~88-90 M$ de TVL) y fondos con rendimiento (BENJI) vienen de un resumen de buscador del informe institucional, NO leído [VERIFICAR]",
+     "f": "Documentación de Stellar, Lumens (parte primaria); resto secundaria sin leer",
+     "u": "https://developers.stellar.org/docs/learn/fundamentals/lumens.md",
+     "d": "2026-11-14",
+     "n": "P"
     },
     "interop": {
      "t": "CCTP de Circle (USDC sin puente custodio) en vivo desde el 19-may-2026; USDT0 (2-sep-2026) y Chainlink (14-oct-2026) también en vivo",
@@ -671,10 +671,11 @@
      "n": "S"
     },
     "cumplimiento": {
-     "t": "Consejo de Gobierno de grandes empresas (31-34 miembros según fuentes, sin cifra primaria)",
-     "f": "Secundarias",
+     "t": "Gobernanza por el Hedera Council: organizaciones globales (grandes empresas y universidades) con igual derecho de voto y límites de mandato; los miembros ejecutan nodos de red permisionados y aprueban actualizaciones. El número exacto de miembros no se fija en esta celda (sin cifra primaria leída)",
+     "f": "Hedera, página Council (hedera.com/council); proyecto hablando de sí mismo",
+     "u": "https://www.hedera.com/council",
      "d": "2026-11-14",
-     "n": "V"
+     "n": "P"
     },
     "pagos": {
      "t": "Comisión fijada en USD y pagada en HBAR: transferencia 0,0001 $, transferencia de token HTS 0,001 $, mensaje HCS 0,0008 $, crear un token 1 $",
@@ -1075,7 +1076,13 @@
      "n": "S",
      "u": "https://app.rwa.xyz/networks/bnb-chain"
     },
-    "cumplimiento": null,
+    "cumplimiento": {
+     "t": "La documentación de BNB Chain presenta una pila de «privacidad programable» para instituciones: Intelligent Privacy Pool (Brevis y 0xbow, prueba ZK de que los fondos no vienen de direcciones sancionadas), ZKredit (identidad/crédito con pruebas) y cifrado totalmente homomórfico con Zama y «claves de visualización» para reguladores. Es el posicionamiento y hoja de ruta del propio proyecto; no consta cuántas instituciones lo usan",
+     "f": "Documentación de BNB Chain, Developer Kit: Privacy at Scale; proyecto hablando de sí mismo",
+     "u": "https://docs.bnbchain.org/developer-kit/privacy-at-scale/",
+     "d": "2026-11-14",
+     "n": "P"
+    },
     "pagos": {
      "t": "BNB es el token nativo y se usa para pagar las comisiones de transacción; la guía leída no da una comisión típica",
      "f": "Documentación de BNB Chain (leída; pie 12-jun-2026)",
@@ -1201,11 +1208,11 @@
      "u": "https://build.avax.network/docs/avalanche-l1s"
     },
     "pagos": {
-     "t": "Cadena del piloto de liquidación con stablecoins de Visa (abr-2026)",
-     "f": "Dossier panorama",
-     "i": "informes/dossiers/2026-10-09-panorama-competitivo.md",
-     "d": "2026-04",
-     "n": "V"
+     "t": "Avalanche figura entre las cadenas de las que Visa ya daba soporte en su programa piloto de liquidación con stablecoins (con Ethereum, Solana y Stellar), al que el 29-abr-2026 añadió Arc, Base, Canton, Polygon y Tempo (9 cadenas; ritmo anualizado de 7.000 M$). Es un piloto de Visa, no volumen de la cadena",
+     "f": "Visa, comunicado de inversores «Visa Accelerates Stablecoin Momentum: Adding Five Blockchains for Settlement» (abr-2026)",
+     "u": "https://investor.visa.com/news/news-details/2026/Visa-Accelerates-Stablecoin-Momentum-Adding-Five-Blockchains-for-Settlement/default.aspx",
+     "d": "2026-04-29",
+     "n": "P"
     },
     "rendimiento": {
      "t": "Staking en la red principal: mínimo 2.000 AVAX para validar y 25 AVAX para delegar; tarifa mínima de delegación 2 %; plazos de 48 h (validar, desde Helicon) o 2 semanas (delegar) hasta 1 año",
@@ -1344,7 +1351,13 @@
      "n": "P",
      "u": "https://docs.agglayer.dev/"
     },
-    "regulacion": null
+    "regulacion": {
+     "t": "Sin estatus regulatorio de la red leído en su documentación. Su producto de pagos Open Money Stack (Polygon Labs) incorpora KYC/KYB, cribado de sanciones (OFAC, PEP), monitorización AML y reporte SAR/CTR, con opción de traer la verificación propia; no consta licencia concreta en la página leída",
+     "f": "Documentación de Polygon, Open Money Stack: Compliance; empresa hablando de su propio producto",
+     "u": "https://docs.polygon.technology/payments/compliance.md",
+     "d": "2026-11-14",
+     "n": "P"
+    }
    },
    "capas": {
     "liquidacion": {
@@ -1863,7 +1876,13 @@
      "n": "P",
      "u": "https://dev.algorand.co/concepts/protocol/staking-rewards/"
     },
-    "interop": null,
+    "interop": {
+     "t": "State Proofs: pruebas criptográficas firmadas por los propios participantes del consenso que permiten clientes ligeros «sin confianza» para productos entre cadenas; el estándar ARC-89 prevé que un activo (ASA) declare soporte de Native Token Transfers de Wormhole",
+     "f": "Documentación del desarrollador de Algorand Foundation (repositorio algorandfoundation/devportal: concepts/protocol/state-proofs.mdx y arc-standards); proyecto hablando de sí mismo",
+     "u": "https://github.com/algorandfoundation/devportal/blob/main/src/content/docs/concepts/protocol/state-proofs.mdx",
+     "d": "2026-11-14",
+     "n": "P"
+    },
     "regulacion": null
    },
    "capas": {
@@ -1963,7 +1982,13 @@
      "n": "P",
      "u": "https://docs.xdc.network/xdcchain/rewards/"
     },
-    "interop": null,
+    "interop": {
+     "t": "XDC Zero: marco de comunicación entre una subred XDC y la red principal (oráculo de cabeceras, relayer y endpoint); la arquitectura lo lista como capa de puente para transferencias de activos. USDC por CCTP de Circle solo consta en la guía de pruebas (testnet)",
+     "f": "Documentación de XDC (repositorio XinFinOrg/Docs: subnet/components/xdc_zero.md, learn/xdc-architecture.md); proyecto hablando de sí mismo",
+     "u": "https://github.com/XinFinOrg/Docs/blob/main/docs/subnet/components/xdc_zero.md",
+     "d": "2026-11-14",
+     "n": "P"
+    },
     "regulacion": null
    },
    "capas": {
@@ -2036,9 +2061,27 @@
    "matriz": {
     "liquidez": null,
     "seguridad": null,
-    "activos": null,
-    "cumplimiento": null,
-    "pagos": null,
+    "activos": {
+     "t": "Ofrece liquidación contra pago (DvP) programable de depósitos tokenizados, acciones o bonos en una sola transacción sincronizada; sus clientes objetivo son bancos, instituciones financieras y mercados de capitales. Descripción comercial propia; no se citan emisiones concretas",
+     "f": "Quant Network, web corporativa (quant.network)",
+     "u": "https://quant.network/",
+     "d": "2026-11-14",
+     "n": "P"
+    },
+    "cumplimiento": {
+     "t": "Quant Fusion (rollup multi-ledger, anunciado en mainnet el 2-jun-2026) dice combinar contratos inteligentes con privacidad, nodos con KYC verificado y controles por jurisdicción para operar en un entorno conforme con acceso a liquidez de redes abiertas. Es afirmación propia; no hay auditoría ni cliente nombrado",
+     "f": "Quant Network, Quant Fusion (quant.network/quant-fusion/)",
+     "u": "https://quant.network/quant-fusion/",
+     "d": "2026-11-14",
+     "n": "P"
+    },
+    "pagos": {
+     "t": "Se presenta como infraestructura de «dinero programable»: pagos transfronterizos programables entre divisas y jurisdicciones, tesorería programable y el lenguaje de reglas PayScript, tanto sobre cuentas bancarias como sobre stablecoins. Descripción comercial propia; no consta volumen",
+     "f": "Quant Network, web corporativa (quant.network)",
+     "u": "https://quant.network/",
+     "d": "2026-11-14",
+     "n": "P"
+    },
     "rendimiento": null,
     "interop": {
      "t": "Licencias de Overledger cobradas en dinero fiduciario y convertidas en QNT bloqueado (12 meses según algunas fuentes)",
@@ -2047,7 +2090,13 @@
      "d": "2021-06",
      "n": "S"
     },
-    "regulacion": null
+    "regulacion": {
+     "t": "No consta en su web licencia ni registro regulatorio. Sí consta que es miembro fundador de INATBA (su CEO está en el Comité de Estándares) y miembro asociado de UK Finance; pertenecer a asociaciones no es estatus regulatorio",
+     "f": "Quant Network, página Associations (quant.network/associations/)",
+     "u": "https://quant.network/associations/",
+     "d": "2026-11-14",
+     "n": "P"
+    }
    },
    "capas": {
     "liquidacion": {
@@ -2163,7 +2212,13 @@
      "d": "2026-11-14",
      "n": "P"
     },
-    "interop": null,
+    "interop": {
+     "t": "Cross-chain por LayerZero OFT V2 entre IOTA EVM e IOTA L1 (MoveVM) y otras cadenas EVM; además un puente propio (IOTA EVM Bridge) entre IOTA EVM y L1",
+     "f": "Documentación de IOTA (docs.iota.org, guía LayerZero OFT y IOTA EVM Bridge); proyecto hablando de sí mismo",
+     "u": "https://docs.iota.org/llms-full.txt",
+     "d": "2026-11-14",
+     "n": "P"
+    },
     "regulacion": null
    },
    "captura": {
@@ -2282,11 +2337,11 @@
      "u": "https://docs.plume.org/plume/developers/tools-and-services/bridges.md"
     },
     "regulacion": {
-     "t": "Registrada ante la SEC como agente de transferencia (oct-2025)",
-     "f": "Cointelegraph (resumen; registro de la SEC no leído)",
-     "d": "2025-10",
-     "n": "V",
-     "u": "https://cointelegraph.com/news/plume-network-sec-transfer-agent"
+     "t": "La documentación de Plume dice que admite tokens permissionless fuera de la definición de valor y también valores sujetos a ley (ofertas privadas bajo Reg. D 506(b)/(c)), y que monitoriza sanciones (OFAC) y AML con Forta, Predicate, TRM, Chainalysis y Elliptic. El registro como agente de transferencia ante la SEC (prensa, oct-2025) NO se ha leído en fuente primaria: [VERIFICAR]",
+     "f": "Documentación de Plume (Compliance at Plume; Primary Offering & Secondary Trading); proyecto hablando de sí mismo",
+     "u": "https://docs.plume.org/plume/plume-security/compliance-at-plume.md",
+     "d": "2026-11-14",
+     "n": "P"
     }
    },
    "captura": {

@@ -667,10 +667,10 @@
   {
    "fecha": "2026-10-25",
    "contiene": "Consulta DGT V0648-24 leída en petete",
-   "estado": "dudoso",
-   "con": "PARCIAL [S]: la consulta existe, fecha 11-abr-2024 (AEAT vía Primera Lectura; análisis de Cuatrecasas 5-mar-2025: DeFi, no se pronunció sobre comisiones de bridges por falta de datos). Doctrina posterior (V0612-26, V1543-25) la cita para: criptomonedas = bienes inmateriales, FIFO en ventas parciales, rendimientos por activos bloqueados (staking). Texto literal no leído (petete devolvía 502): atribuciones a «staking/airdrop/LP de AMM» siguen [VERIFICAR] hasta leerla.",
-   "url": "https://www.cuatrecasas.com/es/spain/fiscalidad/art/defi-dgt-analiza-diversas-cuestiones",
-   "verificado": "2026-11-10"
+   "estado": "confirmado",
+   "con": "LEÍDA [P] el 14-nov en petete.tributos.hacienda.gob.es (ya responde; antes daba 502): V0648-24, SG de Tributación de las Operaciones Financieras, salida 11-abr-2024, vinculante. Contenido: compraventa/permuta = ganancia o pérdida patrimonial por tipo de cripto, FIFO, base del ahorro; gas y comisiones de plataforma computan en valor de adquisición/transmisión; DeFi/liquidity pools y staking (V1766-22) = capital mobiliario art. 25.2 (en especie para el staking, a mercado en euros), base del ahorro; airdrops = ganancia patrimonial art. 37.1.l en la base general; préstamos = capital mobiliario; comisión de acuñación del staking no deducible pero suma al valor de adquisición; bridges: no se pronuncia por falta de datos; retiradas: solo cuentan si van ligadas a una venta/permuta. Atribuciones del repo (colateral, staking, airdrop) correctas; LP tokens: ver entrada propia.",
+   "url": "https://petete.tributos.hacienda.gob.es/consultas/",
+   "verificado": "2026-11-14"
   },
   {
    "fecha": "2026-11-10",
@@ -795,10 +795,10 @@
   {
    "fecha": "2024-04-11",
    "contiene": "V0648-24",
-   "estado": "matizado",
-   "con": "DGT [S vía Cuatrecasas]: IRPF de DeFi (préstamo de cripto = capital mobiliario); no resuelve bridges ni LP tokens. Texto oficial en petete sin leer: no es [P]",
-   "url": "informes/research/2026-11-12-C173-C176-C247-verificacion-lote.md",
-   "verificado": "2026-11-12"
+   "estado": "confirmado",
+   "con": "Texto oficial leído el 14-nov en petete [P]: criterios de capital mobiliario (DeFi, staking, préstamos), ganancia patrimonial (permutas, airdrops) y FIFO tal como los cita la doctrina posterior; no resuelve bridges ni el tratamiento del LP token en sí (excluido expresamente de la consulta).",
+   "url": "https://petete.tributos.hacienda.gob.es/consultas/",
+   "verificado": "2026-11-14"
   },
   {
    "fecha": "2026-06-04",
@@ -927,6 +927,110 @@
    "con": "Sesión del 30-oct (el 31-oct fue sábado). Cierres: Nasdaq Composite 26.184,72 → 25.437,00 = −2,86 % (FRED/Yahoo); Nasdaq-100 −3,46 % al cierre; mínimos intradía −3,85 % (Composite) y −4,45 % (Nasdaq-100) sobre el cierre previo. −3,6 % no coincide con el cierre de ninguno (−2,9 % / −3,5 %); solo cuadra como lectura intradía o redondeo del Nasdaq-100. El cierre del Composite ya figura en R00 (−2,9 %).",
    "url": "https://fred.stlouisfed.org/series/NASDAQCOM",
    "verificado": "2026-11-14"
+  },
+  {
+   "fecha": "2026-10-26",
+   "contiene": "primera negociación secundaria de fondos monetarios tokenizados de ChinaAMC",
+   "estado": "confirmado",
+   "con": "CONFIRMADA [P]: nota de la SFC «SFC approves first-ever secondary trading of tokenised public funds» (26-oct-2026, 26PR174): aprueba la primera negociación secundaria de dos fondos monetarios tokenizados ya autorizados (ChinaAMC HKD y USD Digital Money Market Fund) en una plataforma de activos virtuales con licencia de la SFC, disponible 24 h desde ese día; marco de abril-2026 (circular 20-abr). SCMP (26-oct) lo recoge igual. La plataforma concreta (PantherTrade, de Futu) solo figura en prensa [S]; la nota de la SFC no la nombra. Una fuente secundaria habla de trading desde el 15-oct: sin contrastar.",
+   "url": "https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR174",
+   "verificado": "2026-11-14"
+  },
+  {
+   "fecha": "2026-11-09",
+   "contiene": "Petroleros incendiados cerca de Ormuz (7-9 nov)",
+   "estado": "matizado",
+   "con": "UKMTO [P] (ukmto.org/recent-incidents, leído 14-nov): #199 (8-nov) petrolero en llamas a 8 NM al noroeste de Khasab, tripulación evacuada, reclasificado a ATTACK; #200 (8-nov) petrolero alcanzado por «proyectil desconocido» al salir de Ormuz; tripulaciones a salvo. Confirma al menos dos petroleros golpeados el 8-nov, uno el de Khasab. UKMTO NO habla de minas ni atribuye autor (la «mina» es la versión de la Guardia Revolucionaria); el «tres» de Irán no cuadra con los dos del UKMTO. Después: #201/#203 (10-nov) y #202/#204 (11-nov), más ataques.",
+   "url": "https://www.ukmto.org/recent-incidents",
+   "verificado": "2026-11-14"
+  },
+  {
+   "fecha": "2026-11-10",
+   "contiene": "los demócratas ganan la Cámara y el Senado (54–44",
+   "estado": "matizado",
+   "con": "Igual que la entrada del 4-nov (lectura del 10-nov, no repetida hoy): Senado 54–44 con dos escaños sin declarar (Alaska, Mississippi) según NBC; Cámara llamada por AP en versiones posteriores. Proyección de prensa, no resultado certificado; resultado final de Alaska/Mississippi [VERIFICAR].",
+   "url": "https://www.boston25news.com/news/trending/election-2026-democrats-capture-both-houses-congress/5ILOWTVABVDPZFYP7VBBCX4EWE/",
+   "verificado": "2026-11-10"
+  },
+  {
+   "fecha": "2026-11-10",
+   "contiene": "SEC y CFTC apuntan a una regulación cripto rápida",
+   "estado": "matizado",
+   "con": "Listas oficiales de la SEC (comunicados 2026-110 a 2026-114) y de la CFTC (9316-26 a 9326-26) leídas el 14-nov: no traen ninguna norma ni comunicado conjunto «rápido» tras el fallo de CLARITY. Lo real: ANPRM de la CFTC del 5-oct, propuesta de custodia de la SEC (1-oct) y carta de no acción de Canton (3-nov). «Apuntan a una regulación rápida» es lectura de prensa; calendario = [ESPECULACIÓN].",
+   "url": "https://www.cftc.gov/PressRoom/PressReleases/9307-26",
+   "verificado": "2026-11-14"
+  },
+  {
+   "fecha": "2026-11-10",
+   "contiene": "Binance cerrará las cuentas en España el 31 de diciembre",
+   "estado": "confirmado",
+   "con": "CONFIRMADA [S]: Cinco Días (10-nov, leído entero) cita el correo de Binance a usuarios de España, Francia, Italia, Polonia y Suecia: cuentas abiertas tratadas como inactivas desde el 31-dic-2026; cuota mensual 0,025 % o 10 USDC (la mayor) con saldos medidos el 29-nov y el 24-dic. Causa: sin licencia MiCA (retiró la solicitud en Grecia a mediados de junio). Aviso original de Binance no leído; CoinDesk y Cointelegraph lo recogen (7-8 nov). Matiz: «cerrar» = tratar la cuenta como inactiva, con posibles conversiones o transferencias de activos según los términos de uso.",
+   "url": "https://cincodias.elpais.com/criptoactivos/2026-11-10/binance-fija-para-el-31-de-diciembre-el-cierre-de-las-cuentas-de-sus-usuarios-en-espana.html",
+   "verificado": "2026-11-14"
+  },
+  {
+   "fecha": "2026-11-12",
+   "contiene": "Nvidia se hunde por el posible cese de su CEO",
+   "estado": "matizado",
+   "con": "El hecho se sostiene [S]: WSJ/Reuters (11-nov, vía Stock Analysis) dicen que el consejo se prepara para destituir a Jensen Huang; la acción cayó ~8 % tras el cierre del 11-nov. Cifras (Stock Analysis, datos S&P): el 12-nov NVDA abrió en 151,01 (hueco −13 % sobre 173,73), mínimo 148,80 (−14,3 %) y CERRÓ en 166,19 (−4,3 %): «se hunde» vale para el mínimo intradía, no para el cierre. Ibex 35 (Yahoo): máximo intradía 20.087,6 pero cierre del 12-nov en 19.965,5 (−0,3 %); «defiende los 20.000» cuadra con el intradía, no con el cierre (20.027,9 el 11-nov y 20.020,1 el 13-nov).",
+   "url": "https://stockanalysis.com/stocks/nvda/history/",
+   "verificado": "2026-11-14"
+  },
+  {
+   "fecha": "2026-11-12",
+   "contiene": "Hammack (Fed): hacen falta tipos más restrictivos",
+   "estado": "matizado",
+   "con": "La postura es real y repetida: Hammack (votante 2026, lista oficial de la Fed) defendió el 12-oct en la NABE endurecer más la política y el 5-nov dio el discurso «Reserve Currencies and Stablecoins» (Cleveland Fed). Pero la lista de discursos de la Cleveland Fed (leída 14-nov) no recoge ninguno el 12-nov y no se halló una intervención de esa fecha: el titular puede ser reciclado de octubre. Fuentes secundarias (roic.ai, Bloomberg Law). Fecha del 12-nov sin contrastar. En 2027 Cleveland deja de votar (rotación oficial: NY, Chicago, Richmond, Atlanta, San Francisco).",
+   "url": "https://www.clevelandfed.org/collections/speeches",
+   "verificado": "2026-11-14"
+  },
+  {
+   "fecha": "2026-11-12",
+   "contiene": "La Fed cambia el calendario: en octubre de 2027 no habrá votación de tipos",
+   "estado": "matizado",
+   "con": "Calendario oficial de la Fed [P] (federalreserve.gov/monetarypolicy/fomccalendars.htm, actualizado 12-nov-2026): la reunión del 26-27-oct-2027 figura como «Monetary Policy Strategy Meeting» y las demás (27-28 ene… 16-17 nov) como reuniones normales; la página no dice con palabras «sin votación de tipos». Prensa [S] (Fox/WJLA) cita a Warsh: una reunión de 2027 se dedicará solo a estrategia, sin votación ni comunicado de tipos. Cuadra; la frase exacta «no habrá votación de tipos» es inferencia de la prensa, no texto de la Fed.",
+   "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+   "verificado": "2026-11-14"
+  },
+  {
+   "fecha": "2026-11-12",
+   "contiene": "El sistema de préstamos bancarios de Ripple se acerca a su lanzamiento en XRPL",
+   "estado": "matizado",
+   "con": "[S] Búsqueda 14-nov: el protocolo de préstamos nativo de XRPL (XLS-66, enmienda LendingProtocol) NO está activo en mainnet: el 10-nov llevaba 22 de 35 validadores de confianza (SingleAssetVault 23); hace falta >80 % (28/35) mantenido dos semanas. Auditoría de Halborn sin fallos críticos/altos. No es «de bancos»: son préstamos a plazo fijo sin colateral con fondos en bóveda; el juicio de crédito va fuera de la cadena (Clearpool/Cicada como socios). «Se acerca» = en votación, sin fecha de activación. No leí el tracker de enmiendas ni a Ripple: [VERIFICAR] el recuento.",
+   "url": "https://opensource.ripple.com/docs/xls-66-lending-protocol",
+   "verificado": "2026-11-14"
+  },
+  {
+   "fecha": "2026-11-13",
+   "contiene": "Irán ataca un sistema de radar de EE. UU. en Baréin",
+   "estado": "dudoso",
+   "con": "No hallado ningún informe de ese día en 14-nov (CENTCOM no se pudo leer: redirige a otro dominio). Lo que hay son episodios anteriores: jun-2026 (CENTCOM: 7 misiles hacia Kuwait y Baréin, 6 interceptados; EE. UU. golpeó radares costeros iraníes en Goruk y Qeshm; Irán dijo haber dañado radares de la 5.ª Flota, CENTCOM lo calificó de falso) y jul-2026. Un solo medio habla de un radar AR-327 golpeado, sin fecha. Sigue abierto hasta ver CENTCOM/Baréin.",
+   "url": "https://www.centcom.mil/MEDIA/PRESS-RELEASES/",
+   "verificado": "2026-11-14"
+  },
+  {
+   "fecha": "2026-11-13",
+   "contiene": "Bitcoin toca mínimos de 12 semanas",
+   "estado": "matizado",
+   "con": "Precio contrastado con datos de Yahoo Finance (BTC-USD, velas diarias UTC): el 13-nov mínimo 67.653 y cierre 68.249 (−4,3 % sobre 71.343 del 12-nov); el último suelo inferior fue del 19-20-ago (~64.000), es decir, unas 12 semanas: «mínimos de 12 semanas» cuadra. Las liquidaciones de «más de 1.600 M$» NO se pudieron contrastar: CoinDesk bloquea la lectura (comprobación anti-bot, no se salta) y la búsqueda solo halló episodios de junio-2026. Un 14-nov parcial ya marca 66.840.",
+   "url": "https://query1.finance.yahoo.com/v8/finance/chart/BTC-USD?range=3mo&interval=1d",
+   "verificado": "2026-11-14"
+  },
+  {
+   "fecha": "2026-11-13",
+   "contiene": "El Tesoro de EE. UU. advierte contra subir tipos",
+   "estado": "dudoso",
+   "con": "No hallado el titular del 13-nov. La postura es la habitual de Bessent: ante un shock de oferta energético no se sube salvo efectos de segunda ronda (28-oct, tras la Fed; roic.ai y CNBC [S]); lo dice el secretario del Tesoro, no una nota del Tesoro. Fecha y contexto del 13-nov sin contrastar; la lista de comunicados de home.treasury.gov no devolvió contenido útil.",
+   "url": "https://home.treasury.gov/news/press-releases",
+   "verificado": "2026-11-14"
+  },
+  {
+   "fecha": "2026-10-25",
+   "contiene": "fiscalidad de tokens LP de AMM",
+   "estado": "matizado",
+   "con": "DGT V0648-24 [P] leída entera en petete (14-nov): los rendimientos de los «liquidity pools» de AMM por depositar/bloquear criptoactivos son capital mobiliario por cesión de capitales propios (art. 25.2 LIRPF), valorados a mercado en euros al percibirlos (art. 43.1) y a la base del ahorro (arts. 46 y 49). PERO la consulta deja expresamente al margen «la obtención y reembolso de los LP tokens» («excede de la consulta»): la fiscalidad de entregar/recibir/canjear el LP token NO está resuelta ahí. Tampoco resuelve los bridges.",
+   "url": "https://petete.tributos.hacienda.gob.es/consultas/",
+   "verificado": "2026-11-14"
   }
  ],
  "resueltos_resumen": [
@@ -934,6 +1038,10 @@
   "Treasury al 5,34",
   "MEI 2026 leído en el propio BOE",
   "Texto literal de la **sección 404** de CLARITY",
-  "Cloture CLARITY 49-50 en fuente oficial"
+  "Cloture CLARITY 49-50 en fuente oficial",
+  "Consulta DGT V0648-24 leída en petete",
+  "Vigencia 2026 de la escala del ahorro",
+  "Precio y cierre de cada adquisición de Ripple",
+  "Integración de Chainlink CCIP en producción en SWIFT"
  ]
 }

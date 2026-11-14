@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-14 13:41 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-14 16:51 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -120,21 +120,18 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - Auditoría mensual W08: última semana del mes (miércoles)
 
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
-- [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, Solvexia) y cierre de BC Payments Australi
-- [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF) y texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE. → W05
-- [VERIFICAR] Consulta DGT V0648-24 leída en petete; fiscalidad de tokens LP de AMM.
-- [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
+- ninguna anotada
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
 - [media] 2026-10-25 (20 d) · Chainlink CCIP en producción en SWIFT
 - [media] 2026-10-25 (20 d) · Precio y cierre de cada adquisición de Ripple
 - [media] 2026-10-25 (20 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
-- [media] 2026-10-25 (20 d) · Consulta DGT V0648-24 leída en petete
 - [media] 2026-10-25 (20 d) · Chainlink CCIP en producción en SWIFT
 - [media] 2026-10-25 (20 d) · Chainlink CCIP en produccion en SWIFT
 - [media] 2026-10-25 (20 d) · Precio y cierre de cada adquisicion de Ripple
 - [media] 2026-10-25 (20 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
-- … y 51 más en el Seguimiento
+- [media] 2026-10-25 (20 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
+- … y 36 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Voces: Voces sin confirmar (27) → W06 · 13 llevan más de 14 días

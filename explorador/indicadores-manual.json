@@ -403,7 +403,7 @@
       "fecha": "2026-10",
       "fuente": "https://databoks.katadata.co.id/en/economics-macro/statistics/6ae8214fbddec/indonesias-annual-inflation-reached-323-in-october-2026",
       "nivel": "S",
-      "definicion": "IPC del BPS, octubre de 2026 (0,22 % mensual; subyacente 2,56 %). Vía prensa; comunicado oficial sin leer [VERIFICAR]. Leído el 14-nov-2026.",
+      "definicion": "IPC del BPS, octubre de 2026 (0,22 % mensual; subyacente 2,56 %). Vía prensa; comunicado oficial sin leer [VERIFICAR]. Leído el 14-nov-2026. Segundo intento (14-nov): bps.go.id muestra «verificación de seguridad» anti-bots también en Chrome; no se saltó, sigue [S].",
       "periodicidad": "mensual",
       "anterior": 3.28,
       "anterior_fecha": "2026-09"
@@ -451,10 +451,21 @@
       "fecha": "2026-10",
       "fuente": "https://www.cbi.ir/Inflation/Inflation_FA.aspx",
       "nivel": "P",
-      "definicion": "Banco Central de Irán, página oficial «نرخ تورم» (tasa de inflación): 71,4 % en Mehr 1405 (23-sep a 22-oct-2026), frente a 68,4 % en Shahrivar, 65,1 % en Mordad y 50,6 % en Farvardin. Leída en cbi.ir el 14-nov-2026. La página no aclara si es punto a punto o media de 12 meses [VERIFICAR] la definición; el BCI da 48,3 % para el año 1404 (media anual). Cifras oficiales en un contexto de guerra y sanciones.",
+      "definicion": "Banco Central de Irán, página oficial «نرخ تورم» (tasa de inflación): 71,4 % en Mehr 1405 (23-sep a 22-oct-2026), frente a 68,4 % en Shahrivar, 65,1 % en Mordad y 50,6 % en Farvardin. Leída en cbi.ir el 14-nov-2026 y releída con Claude in Chrome (segunda lectura; serie mensual coincide, también Tir 61,4, Khordad 57,7 y Ordibehesht 53,9). La tabla se titula «tasa de inflación hasta el mes» (منتهی به ماه) y no aclara si es punto a punto o media de 12 meses; el ritmo gradual desde el 48,3 % anual de 1404 sugiere media móvil de 12 meses [VERIFICAR] la definición; el BCI da 48,3 % para el año 1404 (media anual). Cifras oficiales en un contexto de guerra y sanciones.",
       "periodicidad": "mensual",
       "anterior": 68.4,
       "anterior_fecha": "2026-09"
+    }
+  },
+  "AE": {
+    "pib": {
+      "valor": 0.4,
+      "unidad": "% interanual (PIB real, 1S-2026)",
+      "fecha": "2026-H1",
+      "fuente": "https://fcsc.gov.ae/",
+      "nivel": "P",
+      "definicion": "Centro Federal de Competitividad y Estadística (FCSC), noticia oficial del 9-oct-2026 leída en fcsc.gov.ae el 14-nov-2026 con Claude in Chrome: PIB real de 961,9 mil M AED a precios constantes en el primer semestre de 2026, +0,4 % interanual; PIB no petrolero +1,8 %. El FCSC publicó el 22-oct-2026 una revisión integral del PIB (con el FMI) que puede cambiar series [VERIFICAR] si se rebasa. Portada FCSC: inflación 2025 1,25 %, paro 2025 1,7 %, crecimiento real 2025 6,2 % (año completo, antes de la revisión). IPC mensual no localizado en la web: el visor UAE.Stat (.Stat Suite) no devolvió datos sin explorarlo a mano.",
+      "periodicidad": "semestral"
     }
   }
 }
