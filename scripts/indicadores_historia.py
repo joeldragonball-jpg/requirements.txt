@@ -8,11 +8,14 @@ esas series quedan «sin serie»). Uso: python scripts/indicadores_historia.py
 """
 import json
 import sys
+import time
+from concurrent.futures import ThreadPoolExecutor
 import urllib.parse
 from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import indicadores as _ind_mod
 from indicadores import PAISES, URL_EUROSTAT, _get  # mismas fuentes y países que el panel de indicadores
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -90,7 +93,13 @@ def main():
     hoy = date.today()
     fmi = json.loads(FMI_MANUAL.read_text(encoding="utf-8")) if FMI_MANUAL.exists() else {}
     salida, fallos = {}, []
-    for pid, _nombre, geo, iso in PAISES:
+    try:   # lo ya publicado: si una serie no llega a tiempo se conserva en vez de desaparecer
+        previo_h = json.loads(SALIDA.read_text(encoding="utf-8")).get("paises", {})
+    except Exception:
+        previo_h = {}
+
+    def _uno(pid, _nombre, geo, iso):
+        fallos = []
         series = {}
         if geo:
             for clave, (ds, fil, unidad) in EUROSTAT.items():
@@ -125,7 +134,19 @@ def main():
                     if d:
                         series[clave] = {**_compacta(d), "unidad": "% del PIB", "fuente": "https://www.imf.org/external/datamapper/" + ("GGXWDG_NGDP" if clave == "deuda" else "GGXCNL_NGDP"),
                                          "nivel": "S" if iso in ("CHN", "RUS") else "P", "actualizado": fmi.get("_leido", ""), "nota": "FMI, WEO " + fmi.get("_edicion", "") + "; el último año puede ser estimación."}
-        salida[pid] = series
+        for clave_p, ser_p in (previo_h.get(pid) or {}).items():
+            if clave_p not in series:
+                series[clave_p] = ser_p
+                fallos.append(f"{pid}/{clave_p}: no llegó a tiempo; se conserva la serie anterior")
+        return pid, series, fallos
+
+    # Antes se pedía todo en serie y, con las APIs lentas, el paso se colgaba 15 min: ahora 6 hilos y tope total de 6 min
+    _ind_mod._FIN[0] = time.monotonic() + 360
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        for pid_r, series_r, fallos_r in ex.map(lambda a: _uno(*a), PAISES):
+            salida[pid_r] = series_r
+            fallos += fallos_r
+    _ind_mod._FIN[0] = None
     manual_h = RAIZ_H / "explorador" / "indicadores-historia-manual.json"   # series oficiales leídas a mano que sustituyen a las automáticas
     if manual_h.exists():
         for pid_m, ser_m in json.loads(manual_h.read_text(encoding="utf-8")).items():

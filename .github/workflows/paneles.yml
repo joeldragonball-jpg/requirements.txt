@@ -46,6 +46,7 @@ jobs:
       # Las series de deuda/déficit del FMI se leen a mano tras cada WEO (explorador/indicadores-historia-fmi.json).
       - name: Actualizar la historia de indicadores
         id: historia
+        timeout-minutes: 10   # tope propio: si una API se cuelga se corta aquí y el resto del trabajo sigue
         continue-on-error: true
         run: python scripts/indicadores_historia.py
 
