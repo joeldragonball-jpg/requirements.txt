@@ -128,6 +128,8 @@ a{color:var(--ac)}
 .cad-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .cad-bt{font:inherit;font-size:var(--fs-xs);background:var(--bg);color:var(--tx2);border:1px solid var(--lin);border-radius:14px;padding:4px 12px;cursor:pointer}.cad-bt:hover,.cad-bt.on{color:var(--tx);border-color:var(--ac)}
 .cad-env{overflow-x:auto;max-width:100%}
+.cad-ta .cad-v{font-weight:700;white-space:nowrap}.cad-ta .cad-bar{height:6px;background:var(--acc,#5aa9ff);border-radius:3px;margin:3px auto}.cad-ta .cad-k{font-size:11px;opacity:.75}.cad-ta td.cad-ts{font-size:12px;text-align:left}table.cad-mat.cad-ta{min-width:780px;table-layout:auto}@media (max-width:1180px){table.cad-mat.cad-ta{min-width:0;table-layout:auto}.cad-ta th{font-size:12px;padding:2px 3px;overflow-wrap:anywhere}.cad-ta td{padding:4px 3px}.cad-ta td.cad-ts{min-width:0;font-size:11px;overflow-wrap:anywhere}table.cad-mat.cad-ta{width:100%}.cad-ta .cad-v{white-space:normal}}
+
 table.cad-mat{border-collapse:separate;border-spacing:3px;width:100%;table-layout:fixed;min-width:1080px}
 .cad-mat th{font-size:var(--fs-xs);color:var(--tx2);text-align:left;font-weight:600;vertical-align:bottom;padding:2px 4px}
 .cad-mat th.cad-red{position:sticky;left:0;z-index:1;background:var(--panel);width:150px;vertical-align:middle}.cad-mat tr:first-child th:first-child{width:150px}
@@ -147,7 +149,10 @@ details.cad-ficha[open] .cad-hs{columns:340px;column-gap:22px}.cad-hs .cad-h{bre
 .cad-lst{margin:2px 0 6px 18px;padding:0;font-size:var(--fs-s)}.cad-lst li{margin:2px 0}
 .cad-ir{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
 details.cad-mas summary{cursor:pointer;color:var(--ac);font-size:var(--fs-s);padding:3px 0}
-@media (max-width:700px){table.cad-mat{min-width:1150px}table.cad-mat.cad-sm{min-width:620px}.cad-mat th.cad-red,.cad-mat tr:first-child th:first-child{width:112px}}
+@media (max-width:1180px){table.cad-mat.cad-sm{min-width:0;table-layout:auto;border-spacing:2px}.cad-mat.cad-sm th{font-size:12px;padding:2px 3px;line-height:1.2;overflow-wrap:anywhere;hyphens:auto}.cad-mat.cad-sm th.cad-red,.cad-mat.cad-sm tr:first-child th:first-child{width:auto;min-width:96px}.cad-mat.cad-sm tr:first-child th:nth-last-child(2),.cad-mat.cad-sm tr:first-child th:last-child{width:auto}.cad-mat.cad-sm td.cad-c{font-size:13px;padding:6px 3px}td.cad-tk{white-space:normal}.cad-mat.cad-sm td.cad-tk{min-width:96px}.cad-mat td.cad-cap,.cad-mat th.cad-capth{font-size:12px}}
+.cad-mat th.cad-vh{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;height:112px;text-align:left;vertical-align:middle;overflow-wrap:normal;hyphens:none;padding:3px 2px}
+.cad-ley{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:var(--fs-s);margin:4px 0 6px}.cad-ley dt{white-space:nowrap}.cad-ley dd{margin:0;color:var(--tx2)}
+@media (max-width:700px){table.cad-mat:not(.cad-ta){min-width:1150px}table.cad-mat.cad-ta{min-width:0}table.cad-mat.cad-sm{min-width:620px}.cad-mat th.cad-red,.cad-mat tr:first-child th:first-child{width:112px}}
 .que{color:var(--tx2);font-size:14.5px;margin:2px 0 6px}
 details.bl{margin-bottom:clamp(4px,.5vw,10px)}details.bl>summary{cursor:pointer;font-weight:600;padding:4px 0}.ms{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(88px,.9fr) minmax(110px,1.2fr) minmax(86px,.8fr);gap:10px;align-items:center;padding:7px 10px;margin:2px 0;border:1px solid var(--lin);border-radius:8px;background:var(--panel);list-style:none}details.bl>summary.ms::-webkit-details-marker{display:none}.ms:hover{background:#1b2640;border-color:var(--ac)}details[open]>summary.ms{background:#1b2640;border-color:var(--ac)}.ms .nm{font-weight:700;color:var(--tx);letter-spacing:.01em}.ms .nm::before{content:'▸  ';color:var(--ac)}details[open]>summary.ms .nm::before{content:'▾  '}.ms .im{font-weight:700;color:#f1d58a;text-align:right;white-space:nowrap}.ms .im small{color:var(--tx2);font-weight:400;font-size:max(13px,.8em)}.ms .pc{position:relative;height:20px;background:var(--nul);border-radius:5px;overflow:hidden}.ms .pc i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#27578f,var(--ac))}.ms .pc b{position:relative;display:block;padding-left:7px;font-size:max(13px,.85em);color:#fff;line-height:20px;white-space:nowrap;text-shadow:0 1px 2px #000}.ms .hb{color:var(--tx2);font-size:max(13px,.86em);text-align:right;white-space:nowrap}.ms .hb em{font-style:normal;color:var(--tx);font-weight:600}.pb{display:inline-block;position:relative;min-width:110px;height:18px;background:var(--nul);border-radius:4px;overflow:hidden;vertical-align:middle}.pb i{position:absolute;top:0;bottom:0;left:0;background:#27578f}.pb b{position:relative;padding-left:6px;font-size:max(13px,.88em);line-height:18px}@media(max-width:700px){.ms{grid-template-columns:1fr 1fr}.ms .nm{grid-column:1/-1}}
 .barrita{display:inline-block;height:9px;background:var(--ac);border-radius:2px;vertical-align:middle}
@@ -1763,7 +1768,7 @@ function pActivos(){
 }
 /* C264 · Cadenas: matriz capacidad × cadena con semáforo de evidencia, capas («¿necesita el token?») y enlaces a la Línea de tiempo y el Calendario
    (explorador/cadenas.json). Solo hechos públicos con fuente; la captura de valor es [RAZONADO] con supuestos; sin «ganador» */
-let cadSem=matchMedia('(max-width:700px)').matches,cadSel='';   // en móvil arranca en semáforo; el botón pasa a texto
+let cadSem=matchMedia('(max-width:1180px)').matches,cadSel='';   // en móvil y tablet arranca en semáforo; el botón pasa a texto
 function pCadenas(){
   const S=$('v-cadenas');S.textContent='';const C=D.cadenas;
   if(!C||!(C.cadenas||[]).length){S.append(el('p','nota-v','Sin datos de cadenas (explorador/cadenas.json).'));return}
@@ -1797,13 +1802,15 @@ function pCadenas(){
   const bl=el('div','caja');bl.append(el('h3',null,'Cómo se lee'));
   const ul=el('ul','cad-lst');CR.forEach(x=>{const li=el('li');li.append(el('b',null,x.n.slice(0,2)+' · '+x.n+': '),document.createTextNode(x.que));ul.append(li)});bl.append(ul);
   const ley=el('p','nota-v');ley.append(document.createTextNode('¿Necesita el token? '));[['sí','el uso lo consume o lo exige'],['parcial','a veces o con alternativa'],['mínimo','solo comisiones pequeñas'],['no','no lo necesita'],['sin dato','sin evidencia']].forEach(([k,t])=>{const s=el('span','tk '+tkc(k),k);s.title=t;ley.append(s,document.createTextNode(t+' · '))});bl.append(ley);
-  bl.append(el('p','nota-v','«Captura de valor» resume esas capas como [RAZONADO] (alta, media, baja o incierta) con sus supuestos: separa «la red gana uso» de «el token se demanda». No es una previsión de precio. La madurez regulatoria por país está en el Radar regulatorio ('+((C.regulacion||{}).jur||[]).length+' jurisdicciones; aplica a actividades, no a cadenas).'));
+  bl.append(el('p','nota-v','«Captura» (última columna) responde a una sola pregunta: si la red se usa mucho, ¿ese uso obliga a comprar o bloquear el token de la red? No mide qué tipos de activos se tokenizan ni qué red es mejor para cada uno. Es un juicio [RAZONADO] sin fórmula numérica: se apoya en la columna «Capas: ¿token?» y en las comisiones, el staking y el colateral que citan las fuentes de cada ficha.'));
+  const dl=el('dl','cad-ley');[['alta','el uso de la red consume o inmoviliza el token de forma clara (sin alternativa)'],['media','lo consume en parte (comisiones y staking) pero el valor tokenizado o pagado usa otros activos'],['baja','el uso se hace sobre todo con stablecoins o fondos y el token solo paga comisiones pequeñas o no se necesita'],['incierta','no hay dato público suficiente (volúmenes, papel del token) para decidir']].forEach(([k,t])=>{dl.append(el('dt','cad-cap '+k,k),el('dd',null,t))});bl.append(dl);
+  bl.append(el('p','nota-v','Es una pregunta distinta de la tokenización: las redes se reparten por tipo de activo (deuda, acciones, fondos o ETF, materias primas, inmuebles), por tipo de contrato y por plazos, y eso no lo resume esta columna (pendiente de añadir con datos de fuente). No es una previsión de precio. La madurez regulatoria por país está en el Radar regulatorio ('+((C.regulacion||{}).jur||[]).length+' jurisdicciones; aplica a actividades, no a cadenas).'));
   top.append(bi,br,bl);S.append(top);
   // matriz
   const cm=el('div','caja');const hd=el('div','cad-hd');hd.append(el('h2',null,'Matriz capacidad × red'));
   const bt=el('button','cad-bt'+(cadSem?' on':''),cadSem?'Ver el texto de cada celda':'Ver solo el semáforo');bt.onclick=()=>{cadSem=!cadSem;pCadenas()};hd.append(bt);cm.append(hd);
   cm.append(el('p','nota-v','Color del borde = nivel de la evidencia (verde P, ámbar S, rojo V = [VERIFICAR], gris = sin dato). Pasa el ratón por una celda para leerla entera con su fuente; pulsa el nombre de la red para abrir su ficha. «Capas» dice si cada capa necesita el token.'));
-  const t=el('table','cad-mat'+(cadSem?' cad-sm':''));const h=el('tr');h.append(el('th',null,'Red · token'));CAPS.forEach(k=>{const th=el('th',null,k.n);th.title=k.que||'';h.append(th)});h.append(el('th',null,'Capas: ¿token?'),el('th',null,'Captura'));t.append(h);
+  const t=el('table','cad-mat'+(cadSem?' cad-sm':''));const h=el('tr');h.append(el('th',null,'Red · token'));CAPS.forEach(k=>{const th=el('th',cadSem?'cad-vh':null,cadSem&&k.n.length>14?k.n.split(' ')[0]:k.n);th.title=k.n+(k.que?' — '+k.que:'');h.append(th)});const thT=el('th',null,'Capas: ¿token?');thT.title='Si cada capa (liquidación, emisión, seguridad, mensajería, custodia) necesita el token de la red';const thC=el('th','cad-capth','Captura del token ⓘ');thC.title='¿El uso de la red obliga a comprar o bloquear su token? alta · media · baja · incierta. Juicio [RAZONADO], no una previsión de precio.';h.append(thT,thC);t.append(h);
   for(const c of L){const r=el('tr');const th=el('th','cad-red');const b=el('button',null,c.nombre.replace(/ \(.*\)$/,'')+' · '+c.token);b.onclick=()=>{cadSel=c.id;pCadenas();const f=$('cad-'+c.id);if(f)f.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})};th.append(b);r.append(th);
     for(const k of CAPS){const v=c.matriz[k.id];const td=el('td','cad-c '+(v?'n'+(v.n||'V'):'nd'));
       if(v){td.title=v.t+'\n— '+(v.f||'')+' · '+(v.d||'sin fecha')+' ['+(v.n||'V')+']';td.textContent=cadSem?(v.n||'V'):corta(v.t,75)}
@@ -1812,6 +1819,18 @@ function pCadenas(){
     const tc=el('td','cad-tk');CR.forEach(cp=>{const x=(c.capas||{})[cp.id]||{};const tk=x.token||'sin dato';const s=el('span','tk '+tkc(tk),cp.n.slice(0,2));s.title=cp.n+': '+tk+(x.ev?' — '+x.ev:'');tc.append(s)});r.append(tc);
     const ca=c.captura||{};r.append(el('td','cad-cap '+(ca.nivel||''),ca.nivel||'—'));t.append(r)}
   const env=el('div','cad-env');env.append(t);cm.append(env);S.append(cm);
+  // ¿Qué se tokeniza en cada red? (C268)
+  (function(){const TA=L.filter(c=>c.tipos_activo);if(!TA.length)return;
+    const TIPOS=[['deuda','Deuda y letras'],['fondos','Fondos y estrategias'],['acciones','Acciones'],['materias','Materias primas'],['credito','Crédito privado'],['inmuebles','Inmuebles'],['otros','Otros']];
+    const fm=v=>v>=1000?num(v/1000,2).replace(/,00$/,'')+' mil M$':num(v,v<10?1:0)+' M$';
+    const bx=el('div','caja');bx.append(el('h2',null,'¿Qué se tokeniza en cada red?'));
+    bx.append(el('p','nota-v','Valor tokenizado por tipo de activo (M$ = millones de dólares), sin stablecoins. Fuente: RWA.xyz [S], leída el 14-nov-2026. La barra es el peso del tipo dentro de la propia red. «sin dato» = no entra en las 10 mayores clases visibles; no significa cero. El estándar de contrato y el plazo de liquidación van debajo de la tabla (liquidación: sin dato, no se leyó en fuente). Solo hechos: no hay «ganador».'));
+    const tb=el('table','cad-mat cad-ta');const h=el('tr');h.append(el('th','cad-red','Red'));TIPOS.forEach(([k,n])=>h.append(el('th',null,n)));tb.append(h);
+    TA.forEach(c=>{const ta=c.tipos_activo,tp=ta.tipos||{};const tot=Object.values(tp).reduce((a,x)=>a+(x.v||0),0)||1;const r=el('tr');r.append(el('th','cad-red',c.nombre.replace(/ \(.*\)$/,'')));
+      TIPOS.forEach(([k])=>{const x=tp[k];const td=el('td','cad-c '+(x?'nS':'nd'));if(x){td.title=x.t+'\n— '+x.f+' · '+x.d+' ['+x.n+']';const b=el('div','cad-bar');b.style.width=Math.max(4,Math.round(x.v/tot*100))+'%';td.append(el('div','cad-v',fm(x.v)),b,el('div','cad-k',x.k+' act.'))}else td.textContent='sin dato';r.append(td)});
+      tb.append(r)});
+    const ev=el('div','cad-env');ev.append(tb);bx.append(ev);
+    const ul=el('ul','cad-lst');TA.forEach(c=>{const e=c.tipos_activo.emisores;if(!e)return;const li=el('li');const es=c.tipos_activo.estandar,lq=c.tipos_activo.liquidacion;li.append(el('b',null,c.nombre.replace(/ \(.*\)$/,'')+': '),document.createTextNode(e.t+' ['+e.n+']. Estándar de contrato: '+(es?es.t+' ['+es.n+', '+es.f+', '+es.d+']':'sin dato')+'. Plazo de liquidación: '+(lq?lq.t+' ['+lq.n+']':'sin dato (no leído en fuente)')+'.'));ul.append(li)});bx.append(el('h3',null,'Emisores, estándar de contrato y plazo de liquidación'),ul);S.append(bx)})();
   // fichas
   const cf=el('div','caja');cf.append(el('h2',null,'Ficha por red: capas, ISO 20022, hechos, hitos y enlaces'));
   const g=el('div','cad-fichas');L.forEach(c=>g.append(ficha(c)));cf.append(g);S.append(cf);

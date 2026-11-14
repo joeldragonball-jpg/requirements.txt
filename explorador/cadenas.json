@@ -451,7 +451,72 @@
    "sin_dato": [
     "Volumen liquidado en XRP vía ODL.",
     "Composición exacta de los 5.207 M$ representados."
-   ]
+   ],
+   "tipos_activo": {
+    "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las 10 mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top 10 visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
+    "tipos": {
+     "deuda": {
+      "t": "441,2 M$ en 6 activos (clases RWA.xyz: US Treasury Debt, non-US Government Debt)",
+      "v": 441.2,
+      "k": 6,
+      "f": "RWA.xyz, Asset Classes, XRP Ledger",
+      "u": "https://app.rwa.xyz/networks/xrp-ledger",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "credito": {
+      "t": "116,1 M$ en 4 activos (clases RWA.xyz: Corporate Credit)",
+      "v": 116.1,
+      "k": 4,
+      "f": "RWA.xyz, Asset Classes, XRP Ledger",
+      "u": "https://app.rwa.xyz/networks/xrp-ledger",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "otros": {
+      "t": "58,7 M$ en 2 activos (clases RWA.xyz: Private Equity)",
+      "v": 58.7,
+      "k": 2,
+      "f": "RWA.xyz, Asset Classes, XRP Ledger",
+      "u": "https://app.rwa.xyz/networks/xrp-ledger",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "fondos": {
+      "t": "21,4 M$ en 2 activos (clases RWA.xyz: Active Strategies)",
+      "v": 21.4,
+      "k": 2,
+      "f": "RWA.xyz, Asset Classes, XRP Ledger",
+      "u": "https://app.rwa.xyz/networks/xrp-ledger",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "inmuebles": {
+      "t": "5,7 M$ en 10 activos (clases RWA.xyz: Real Estate)",
+      "v": 5.7,
+      "k": 10,
+      "f": "RWA.xyz, Asset Classes, XRP Ledger",
+      "u": "https://app.rwa.xyz/networks/xrp-ledger",
+      "d": "2026-11-14",
+      "n": "S"
+     }
+    },
+    "emisores": {
+     "t": "Franklin Templeton Benji 1 activo 192,7 M$; Ondo 1 activo 185,8 M$; VERT Capital 4 activos 116,1 M$; Archax 3 activos 55,4 M$; Zeconomy 1 activo 40,4 M$ (Ripple 764,1 M$ es RLUSD, stablecoin)",
+     "f": "RWA.xyz, Platforms, XRP Ledger",
+     "u": "https://app.rwa.xyz/networks/xrp-ledger",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "estandar": {
+     "t": "Multi-Purpose Tokens (MPT, enmienda MPTokensV1): token fungible nativo con funciones de emisión incluidas; las funciones de cumplimiento (credenciales, dominios y DEX con permisos) constan activadas en la matriz de esta ficha",
+     "f": "xrpl.org, documentación MPT (leída)",
+     "u": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/multi-purpose-tokens",
+     "d": "2026-11-14",
+     "n": "P"
+    },
+    "liquidacion": null
+   }
   },
   {
    "id": "stellar",
@@ -619,7 +684,81 @@
     "Volumen de pagos liquidado en XLM (no en stablecoins).",
     "Conectores ISO 20022 de los anclajes.",
     "Si Stellar es la primera o la segunda red pública del servicio de DTC (Ledger Insights dice «segunda»)."
-   ]
+   ],
+   "tipos_activo": {
+    "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las 10 mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top 10 visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
+    "tipos": {
+     "deuda": {
+      "t": "2.246,7 M$ en 23 activos (clases RWA.xyz: US Treasury Debt, non-US Government Debt)",
+      "v": 2246.7,
+      "k": 23,
+      "f": "RWA.xyz, Asset Classes, Stellar",
+      "u": "https://app.rwa.xyz/networks/stellar",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "fondos": {
+      "t": "1.800,0 M$ en 6 activos (clases RWA.xyz: Active Strategies)",
+      "v": 1800,
+      "k": 6,
+      "f": "RWA.xyz, Asset Classes, Stellar",
+      "u": "https://app.rwa.xyz/networks/stellar",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "credito": {
+      "t": "551,9 M$ en 10 activos (clases RWA.xyz: Corporate Credit, Asset-Backed Credit, Specialty Finance)",
+      "v": 551.9,
+      "k": 10,
+      "f": "RWA.xyz, Asset Classes, Stellar",
+      "u": "https://app.rwa.xyz/networks/stellar",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "acciones": {
+      "t": "27,3 M$ en 6 activos (clases RWA.xyz: Stocks)",
+      "v": 27.3,
+      "k": 6,
+      "f": "RWA.xyz, Asset Classes, Stellar",
+      "u": "https://app.rwa.xyz/networks/stellar",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "otros": {
+      "t": "26,9 M$ en 12 activos (clases RWA.xyz: Private Equity)",
+      "v": 26.9,
+      "k": 12,
+      "f": "RWA.xyz, Asset Classes, Stellar",
+      "u": "https://app.rwa.xyz/networks/stellar",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "materias": {
+      "t": "7,1 M$ en 2 activos (clases RWA.xyz: Commodities)",
+      "v": 7.1,
+      "k": 2,
+      "f": "RWA.xyz, Asset Classes, Stellar",
+      "u": "https://app.rwa.xyz/networks/stellar",
+      "d": "2026-11-14",
+      "n": "S"
+     }
+    },
+    "emisores": {
+     "t": "Spiko 9 activos 2.100 M$; Franklin Templeton Benji 3 activos 1.300 M$; Ondo 1 activo 539,1 M$; Realiz 1 activo 500 M$ (Circle 378 M$ es stablecoin)",
+     "f": "RWA.xyz, Platforms, Stellar",
+     "u": "https://app.rwa.xyz/networks/stellar",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "estandar": {
+     "t": "SEP-57 T-REX: propuesta en estado Draft (v0.4.0, actualizada 2026-09-08) de tokens de valores permisionados en Stellar, basada en ERC-3643; la interfaz de token de contratos es SEP-41. No es estándar final",
+     "f": "stellar-protocol, SEP-0057 (leída)",
+     "u": "https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0057.md",
+     "d": "2026-11-14",
+     "n": "P"
+    },
+    "liquidacion": null
+   }
   },
   {
    "id": "hedera",
@@ -905,7 +1044,72 @@
     "Reparto de BUIDL por cadena con fuente del emisor.",
     "Qué parte de la comisión de las L2 llega a Ethereum.",
     "JPMD de J.P. Morgan en Base: sin fuente primaria leída."
-   ]
+   ],
+   "tipos_activo": {
+    "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las 10 mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top 10 visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
+    "tipos": {
+     "materias": {
+      "t": "4.800,0 M$ en 54 activos (clases RWA.xyz: Commodities)",
+      "v": 4800,
+      "k": 54,
+      "f": "RWA.xyz, Asset Classes, Ethereum (y sus L2)",
+      "u": "https://app.rwa.xyz/networks/ethereum",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "deuda": {
+      "t": "4.459,8 M$ en 87 activos (clases RWA.xyz: US Treasury Debt, non-US Government Debt)",
+      "v": 4459.8,
+      "k": 87,
+      "f": "RWA.xyz, Asset Classes, Ethereum (y sus L2)",
+      "u": "https://app.rwa.xyz/networks/ethereum",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "fondos": {
+      "t": "1.800,0 M$ en 36 activos (clases RWA.xyz: Active Strategies)",
+      "v": 1800,
+      "k": 36,
+      "f": "RWA.xyz, Asset Classes, Ethereum (y sus L2)",
+      "u": "https://app.rwa.xyz/networks/ethereum",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "credito": {
+      "t": "3.249,2 M$ en 102 activos (clases RWA.xyz: Asset-Backed Credit, Specialty Finance, Diversified Credit, Corporate Credit)",
+      "v": 3249.2,
+      "k": 102,
+      "f": "RWA.xyz, Asset Classes, Ethereum (y sus L2)",
+      "u": "https://app.rwa.xyz/networks/ethereum",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "acciones": {
+      "t": "742,6 M$ en 2876 activos (clases RWA.xyz: Stocks)",
+      "v": 742.6,
+      "k": 2876,
+      "f": "RWA.xyz, Asset Classes, Ethereum (y sus L2)",
+      "u": "https://app.rwa.xyz/networks/ethereum",
+      "d": "2026-11-14",
+      "n": "S"
+     }
+    },
+    "emisores": {
+     "t": "Ondo 486 activos 2.100 M$; Ripple (RLUSD, stablecoin) 1.900 M$; Maple Finance 3 activos 1.200 M$ (la tabla incluye stablecoins: Tether, Circle, Sky, Ethena, MakerDAO, Paxos)",
+     "f": "RWA.xyz, Platforms, Ethereum (y sus L2)",
+     "u": "https://app.rwa.xyz/networks/ethereum",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "estandar": {
+     "t": "ERC-3643 (T-REX): estándar final de token de valores con registro de identidad y reglas de cumplimiento en cadena antes de cada transferencia (creado 2021-07-09)",
+     "f": "EIP-3643, eips.ethereum.org (leída)",
+     "u": "https://eips.ethereum.org/EIPS/eip-3643",
+     "d": "2026-11-14",
+     "n": "P"
+    },
+    "liquidacion": null
+   }
   },
   {
    "id": "solana",
@@ -1033,7 +1237,75 @@
    "sin_dato": [
     "Integración ISO 20022.",
     "Volumen institucional real por emisor."
-   ]
+   ],
+   "tipos_activo": {
+    "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las 10 mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top 10 visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
+    "tipos": {
+     "deuda": {
+      "t": "1.900,0 M$ en 43 activos (clases RWA.xyz: US Treasury Debt)",
+      "v": 1900,
+      "k": 43,
+      "f": "RWA.xyz, Asset Classes, Solana",
+      "u": "https://app.rwa.xyz/networks/solana",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "otros": {
+      "t": "1.100,0 M$ en 6 activos (clases RWA.xyz: Private Equity)",
+      "v": 1100,
+      "k": 6,
+      "f": "RWA.xyz, Asset Classes, Solana",
+      "u": "https://app.rwa.xyz/networks/solana",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "credito": {
+      "t": "1.453,0 M$ en 54 activos (clases RWA.xyz: Asset-Backed Credit, Specialty Finance, Corporate Credit, Diversified Credit)",
+      "v": 1453.0,
+      "k": 54,
+      "f": "RWA.xyz, Asset Classes, Solana",
+      "u": "https://app.rwa.xyz/networks/solana",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "acciones": {
+      "t": "572,9 M$ en 1971 activos (clases RWA.xyz: Stocks)",
+      "v": 572.9,
+      "k": 1971,
+      "f": "RWA.xyz, Asset Classes, Solana",
+      "u": "https://app.rwa.xyz/networks/solana",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "materias": {
+      "t": "43,8 M$ en 28 activos (clases RWA.xyz: Commodities)",
+      "v": 43.8,
+      "k": 28,
+      "f": "RWA.xyz, Asset Classes, Solana",
+      "u": "https://app.rwa.xyz/networks/solana",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "fondos": {
+      "t": "34,2 M$ en 12 activos (clases RWA.xyz: Active Strategies)",
+      "v": 34.2,
+      "k": 12,
+      "f": "RWA.xyz, Asset Classes, Solana",
+      "u": "https://app.rwa.xyz/networks/solana",
+      "d": "2026-11-14",
+      "n": "S"
+     }
+    },
+    "emisores": {
+     "t": "Securitize 32 activos 705 M$; Ctrl Alt 3 activos 683 M$; xStocks 1.521 activos 517 M$; Republic 3 activos 474 M$; Kinexys (J.P. Morgan) 2 activos 741,7 M$ (la tabla incluye stablecoins: Circle, Tether, Paxos, BitGo, Anchorage)",
+     "f": "RWA.xyz, Platforms, Solana",
+     "u": "https://app.rwa.xyz/networks/solana",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "estandar": null,
+    "liquidacion": null
+   }
   },
   {
    "id": "bnb",
@@ -1157,7 +1429,66 @@
    "sin_dato": [
     "Qué activos componen los 6.266 M$.",
     "Integración institucional fuera de Binance."
-   ]
+   ],
+   "tipos_activo": {
+    "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las 10 mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top 10 visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
+    "tipos": {
+     "deuda": {
+      "t": "4.300,0 M$ en 37 activos (clases RWA.xyz: US Treasury Debt)",
+      "v": 4300,
+      "k": 37,
+      "f": "RWA.xyz, Asset Classes, BNB Chain",
+      "u": "https://app.rwa.xyz/networks/bnb-chain",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "acciones": {
+      "t": "1.700,0 M$ en 2912 activos (clases RWA.xyz: Stocks)",
+      "v": 1700,
+      "k": 2912,
+      "f": "RWA.xyz, Asset Classes, BNB Chain",
+      "u": "https://app.rwa.xyz/networks/bnb-chain",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "otros": {
+      "t": "102,5 M$ en 26 activos (clases RWA.xyz: Private Equity, Cryptocurrencies, Venture Capital)",
+      "v": 102.5,
+      "k": 26,
+      "f": "RWA.xyz, Asset Classes, BNB Chain",
+      "u": "https://app.rwa.xyz/networks/bnb-chain",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "materias": {
+      "t": "85,2 M$ en 39 activos (clases RWA.xyz: Commodities)",
+      "v": 85.2,
+      "k": 39,
+      "f": "RWA.xyz, Asset Classes, BNB Chain",
+      "u": "https://app.rwa.xyz/networks/bnb-chain",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "credito": {
+      "t": "39,0 M$ en 47 activos (clases RWA.xyz: Asset-Backed Credit, Corporate Credit, Diversified Credit)",
+      "v": 39.0,
+      "k": 47,
+      "f": "RWA.xyz, Asset Classes, BNB Chain",
+      "u": "https://app.rwa.xyz/networks/bnb-chain",
+      "d": "2026-11-14",
+      "n": "S"
+     }
+    },
+    "emisores": {
+     "t": "Franklin Templeton Benji 1 activo 1.500 M$; bStocks 105 activos 1.400 M$; Ondo 485 activos 621,3 M$; Securitize 2 activos 299,3 M$; OpenEden 3 activos 253,6 M$ (la tabla incluye stablecoins: Binance Bridge, Circle, BitGo)",
+     "f": "RWA.xyz, Platforms, BNB Chain",
+     "u": "https://app.rwa.xyz/networks/bnb-chain",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "estandar": null,
+    "liquidacion": null
+   }
   },
   {
    "id": "avalanche",
@@ -1281,7 +1612,66 @@
    "sin_dato": [
     "Modelo de comisiones de las L1 institucionales.",
     "Emisores del valor representado."
-   ]
+   ],
+   "tipos_activo": {
+    "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las 10 mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top 10 visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
+    "tipos": {
+     "deuda": {
+      "t": "378,0 M$ en 32 activos (clases RWA.xyz: US Treasury Debt, non-US Government Debt)",
+      "v": 378.0,
+      "k": 32,
+      "f": "RWA.xyz, Asset Classes, Avalanche",
+      "u": "https://app.rwa.xyz/networks/avalanche",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "credito": {
+      "t": "690,6 M$ en 40 activos (clases RWA.xyz: Specialty Finance, Corporate Credit, Diversified Credit, Asset-Backed Credit)",
+      "v": 690.6,
+      "k": 40,
+      "f": "RWA.xyz, Asset Classes, Avalanche",
+      "u": "https://app.rwa.xyz/networks/avalanche",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "acciones": {
+      "t": "216,2 M$ en 744 activos (clases RWA.xyz: Stocks)",
+      "v": 216.2,
+      "k": 744,
+      "f": "RWA.xyz, Asset Classes, Avalanche",
+      "u": "https://app.rwa.xyz/networks/avalanche",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "fondos": {
+      "t": "98,1 M$ en 10 activos (clases RWA.xyz: Active Strategies)",
+      "v": 98.1,
+      "k": 10,
+      "f": "RWA.xyz, Asset Classes, Avalanche",
+      "u": "https://app.rwa.xyz/networks/avalanche",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "otros": {
+      "t": "9,2 M$ en 3 activos (clases RWA.xyz: Private Equity)",
+      "v": 9.2,
+      "k": 3,
+      "f": "RWA.xyz, Asset Classes, Avalanche",
+      "u": "https://app.rwa.xyz/networks/avalanche",
+      "d": "2026-11-14",
+      "n": "S"
+     }
+    },
+    "emisores": {
+     "t": "Securitize 8 activos 611,4 M$; Bridgetower 1 activo 335,1 M$; Centrifuge 5 activos 264,1 M$; OpenTrade 24 activos 142,3 M$ (la tabla incluye stablecoins: Tether, Circle)",
+     "f": "RWA.xyz, Platforms, Avalanche",
+     "u": "https://app.rwa.xyz/networks/avalanche",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "estandar": null,
+    "liquidacion": null
+   }
   },
   {
    "id": "polygon",
