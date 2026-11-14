@@ -149,6 +149,9 @@ details.cad-ficha[open] .cad-hs{columns:340px;column-gap:22px}.cad-hs .cad-h{bre
 .cad-lst{margin:2px 0 6px 18px;padding:0;font-size:var(--fs-s)}.cad-lst li{margin:2px 0}
 .cad-ir{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
 details.cad-mas summary{cursor:pointer;color:var(--ac);font-size:var(--fs-s);padding:3px 0}
+/* C266 · noticias por red y relaciones entre redes */
+.cad-umb{display:inline-block;font-size:11.5px;font-weight:700;border:1px dashed #e8b64a;color:#e8b64a;border-radius:4px;padding:0 5px;margin-left:4px;cursor:help}.cad-nt{display:inline-block;font-size:11.5px;border:1px solid var(--lin);color:var(--tx2);border-radius:4px;padding:0 5px;margin-right:4px}
+details.cad-rel{border-top:1px solid var(--lin);padding:5px 0}details.cad-rel>summary{cursor:pointer;font-size:var(--fs-s);padding:3px 0}details.cad-rel[open] .cad-rh{columns:380px;column-gap:22px}.cad-rh .cad-h{break-inside:avoid}.cad-rc{color:var(--tx2);font-size:var(--fs-xs);margin-left:6px}
 @media (max-width:1180px){table.cad-mat.cad-sm{min-width:0;table-layout:auto;border-spacing:2px}.cad-mat.cad-sm th{font-size:12px;padding:2px 3px;line-height:1.2;overflow-wrap:anywhere;hyphens:auto}.cad-mat.cad-sm th.cad-red,.cad-mat.cad-sm tr:first-child th:first-child{width:auto;min-width:96px}.cad-mat.cad-sm tr:first-child th:nth-last-child(2),.cad-mat.cad-sm tr:first-child th:last-child{width:auto}.cad-mat.cad-sm td.cad-c{font-size:13px;padding:6px 3px}td.cad-tk{white-space:normal}.cad-mat.cad-sm td.cad-tk{min-width:96px}.cad-mat td.cad-cap,.cad-mat th.cad-capth{font-size:12px}}
 .cad-mat th.cad-vh{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;height:112px;text-align:left;vertical-align:middle;overflow-wrap:normal;hyphens:none;padding:3px 2px}
 .cad-ley{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:var(--fs-s);margin:4px 0 6px}.cad-ley dt{white-space:nowrap}.cad-ley dd{margin:0;color:var(--tx2)}
@@ -1831,6 +1834,15 @@ function pCadenas(){
       tb.append(r)});
     const ev=el('div','cad-env');ev.append(tb);bx.append(ev);
     const ul=el('ul','cad-lst');TA.forEach(c=>{const e=c.tipos_activo.emisores,cu=c.tipos_activo.cualitativo||{};if(!e&&!c.tipos_activo.estandar&&!c.tipos_activo.liquidacion&&!Object.keys(cu).length)return;const li=el('li');const es=c.tipos_activo.estandar,lq=c.tipos_activo.liquidacion;li.append(el('b',null,c.nombre.replace(/ \(.*\)$/,'')+': '),document.createTextNode((e?e.t+' ['+e.n+']. ':'Sin cifra de emisores. ')+Object.entries(cu).map(([k,x])=>'Tipo «'+k+'» (sin importe comparable): '+x.t+' ['+x.n+', '+x.f+', '+x.d+']. ').join('')+'Estándar de contrato: '+(es?es.t+' ['+es.n+', '+es.f+', '+es.d+']':'sin dato')+'. Plazo de liquidación: '+(lq?lq.t+' ['+lq.n+']':'sin dato (no leído en fuente)')+'.'));ul.append(li)});bx.append(el('h3',null,'Emisores, estándar de contrato y plazo de liquidación'),ul);S.append(bx)})();
+  // C266 · relaciones entre redes: hechos que tocan a varias fichas a la vez
+  const REL=C.relaciones||[],nomC=id=>((L.find(x=>x.id===id)||{}).nombre||id).replace(/ \(.*\)$/,'');
+  const nivM=m=>m.nivel||(/\[P/.test(m.fuente||'')?'P':/\[S/.test(m.fuente||'')?'S':'V');
+  const irRel=id=>{const d=$('cad-rel-'+id);if(d){d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'})}};
+  if(REL.length){const cr=el('div','caja');cr.id='cad-relaciones';cr.append(el('h2',null,'Relaciones entre redes: qué noticias tocan a varias fichas'),el('p','nota-v','Hechos con fuente que unen varias redes (un depositario que conecta con varias, una capa intermedia, un emisor desplegado en muchas). Sirven para leer una noticia: a qué fichas afecta y si habla de algo en producción o de un plan. No comparan redes entre sí.'));
+    REL.forEach(r=>{const dt=el('details','cad-rel');dt.dataset.auto='1';dt.id='cad-rel-'+r.id;const sm=el('summary');sm.append(el('b',null,r.titulo),el('span','cad-rc',(r.cadenas||[]).map(nomC).join(' · ')));dt.append(sm);
+      if(r.que)dt.append(el('p','que',r.que));const rh=el('div','cad-rh');(r.hechos||[]).forEach(x=>rh.append(hecho(x)));dt.append(rh);
+      if((r.sin_dato||[]).length){dt.append(el('h3',null,'Sin dato todavía'));const u=el('ul','cad-lst');r.sin_dato.forEach(x=>u.append(el('li',null,x)));dt.append(u)}
+      cr.append(dt)});S.append(cr)}
   // fichas
   const cf=el('div','caja');cf.append(el('h2',null,'Ficha por red: capas, ISO 20022, hechos, hitos y enlaces'));
   const g=el('div','cad-fichas');L.forEach(c=>g.append(ficha(c)));cf.append(g);S.append(cf);
@@ -1849,6 +1861,14 @@ function pCadenas(){
     dt.append(el('h3',null,'Hitos con fecha'));
     if((c.hitos||[]).length){const u=el('ul','cad-lst');c.hitos.forEach(x=>{const li=el('li');li.append(el('b',null,x.fecha+(x.aprox?' (aprox.)':'')+' · '),document.createTextNode((x.futuro?'🗓 previsto: ':'')+x.t+' '),nivelBadge(x.n||'V'),lk(x.u,'fuente ↗'));if(x.tl)li.append(el('span','nota-v',' · en la Línea de tiempo'));if(x.cal)li.append(el('span','nota-v',' · en el Calendario'));u.append(li)});dt.append(u)}
     else dt.append(el('p','nota-v','Sin hitos con fecha.'));
+    dt.append(el('h3',null,'Últimas noticias y hechos de esta red'));
+    const mv=D.movimientos.filter(m=>(m.cadenas||[]).includes(c.id)&&String(m.fecha)<=HOYS).sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));
+    if(mv.length){const u=el('ul','cad-lst cad-nov');mv.slice(0,5).forEach(m=>{const li=el('li');li.append(nivelBadge(nivM(m)),el('b',null,' '+m.fecha+' · '));if(m.origen==='noticia')li.append(el('span','cad-nt','noticia'));li.append(document.createTextNode((m.actor||'')+': '+corta(String(m.texto||''),260)+' '));if(m.url)li.append(lk(m.url,'fuente ↗'));
+        if(m.umbral){const w=el('span','cad-umb','umbral');w.title='Titular con «supera», «cae por debajo de», «toca» o similar: puede ser un movimiento de dentro del día y no el cierre. Compara el mismo día, el máximo y el mínimo y el instrumento exacto antes de darlo por cierto o por desmentido.';li.append(w)}u.append(li)});dt.append(u);
+      dt.append(el('p','nota-v','Etiquetado por reglas (nombres de la red, su token o su entidad en el actor, las entidades, los activos o el titular), sin IA. '+mv.length+' en total: el resto está en la Línea de tiempo.'))}
+    else dt.append(el('p','nota-v','Sin noticias ni hechos etiquetados con esta red todavía.'));
+    const rc=REL.filter(r=>(r.cadenas||[]).includes(c.id));
+    if(rc.length){dt.append(el('h3',null,'Relaciones con otras redes'));const rr=el('div','cad-ir');rc.forEach(r=>{const b=el('button','cad-bt',r.titulo+' →');b.onclick=()=>irRel(r.id);rr.append(b)});dt.append(rr)}
     const ir=el('div','cad-ir'),nt=enTL(c);
     const b1=el('button','cad-bt','Línea de tiempo: '+nt+' hecho'+(nt===1?'':'s')+' con «'+c.busca[0]+'» →');b1.onclick=()=>irTL(c.busca[0]);ir.append(b1);
     const ev=deCal(c);const b2=el('button','cad-bt','Calendario: '+ev.length+' fecha'+(ev.length===1?'':'s')+' próxima'+(ev.length===1?'':'s')+' →');b2.onclick=()=>saltar('calendario');ir.append(b2);

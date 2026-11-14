@@ -433,6 +433,35 @@ if RUTA_CAD.exists():
                 aviso(f"cadena {cid} hito {h.get('fecha')}", "marcado en la Línea de tiempo pero no está en datos.json")
         if c.get("ficha") and c["ficha"] not in {f.get("id") for f in json.loads((RUTA.parent / "fichas-activos.json").read_text(encoding="utf-8")).get("fichas", [])}:
             aviso(f"cadena {cid}", f"ficha de activo inexistente: {c['ficha']}")
+    # C266: bloque «relaciones» (hechos que unen redes) y campos «cadenas» y «umbral» de los movimientos
+    ids_rel = set()
+    for r in cad.get("relaciones", []):
+        rid = r.get("id")
+        if not rid or rid in ids_rel:
+            aviso("cadenas relaciones", f"relación sin id o con id repetido: {rid!r}")
+        ids_rel.add(rid)
+        if not str(r.get("titulo") or "").strip() or not r.get("hechos"):
+            aviso(f"relación {rid}", "falta «titulo» o no tiene hechos")
+        if not r.get("cadenas") or any(x not in ids_c for x in r.get("cadenas", [])):
+            aviso(f"relación {rid}", f"«cadenas» vacío o con ids que no existen: {r.get('cadenas')}")
+        for h in r.get("hechos", []):
+            celda_cadena(f"relación {rid}", h, ("P", "S", "V", "R"))
+            if any(x not in r.get("cadenas", []) for x in h.get("cadenas", [])):
+                aviso(f"relación {rid}", f"un hecho cita redes que no están en la relación: {h.get('cadenas')}")
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import etiquetar_cadenas as _et
+    _regs = _et.reglas(cad)
+    for m in d["movimientos"]:
+        dn = f"movimiento {m['fecha']} {m['actor'][:20]}"
+        cs = m.get("cadenas")
+        if cs is not None and (not isinstance(cs, list) or not cs or len(set(cs)) != len(cs) or any(x not in ids_c for x in cs)):
+            aviso(dn, f"«cadenas» debe ser una lista sin repetidos de ids de cadenas.json: {cs!r}")
+        elif (cs or []) != _et.cadenas_de(m, _regs):
+            aviso(dn, f"«cadenas» no coincide con las reglas ({cs} frente a {_et.cadenas_de(m, _regs)}): ejecuta python scripts/etiquetar_cadenas.py")
+        if "umbral" in m and m["umbral"] is not True:
+            aviso(dn, "«umbral» solo puede ser true (o no estar)")
+        elif bool(m.get("umbral")) != _et.es_umbral(m):
+            aviso(dn, "«umbral» no coincide con la regla W05: ejecuta python scripts/etiquetar_cadenas.py")
 else:
     aviso("cadenas", "no existe explorador/cadenas.json")
 

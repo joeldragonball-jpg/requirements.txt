@@ -140,6 +140,14 @@ def main():
             arch["archivadas"].append({**m, "estado_vida": "archivada", "archivada_el": hoy.isoformat(), "motivo": motivo})
 
     d["movimientos"] = manuales + sorted(vigentes, key=lambda m: m["fecha"])
+    try:        # C266: redes que nombra cada movimiento y marca de titular con umbral (reglas, sin IA)
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import etiquetar_cadenas
+        regs = etiquetar_cadenas.cargar_reglas()
+        for m in d["movimientos"]:
+            etiquetar_cadenas.etiquetar(m, regs)
+    except Exception as e:
+        print(f"  aviso: no se pudieron etiquetar las cadenas ({e})")
     print(f"Candidatas nuevas: {len(nuevas)} · vigentes: {len(vigentes)} · archivadas ahora: {len(retiradas)} · "
           f"sin capa (para C30): {len(sin_capa)}")
     for tema, t in sin_capa[:5]:

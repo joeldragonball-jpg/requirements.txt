@@ -277,6 +277,304 @@
    "etf"
   ]
  },
+ "relaciones": [
+  {
+   "id": "dtcc-multired",
+   "titulo": "DTCC: un servicio de tokenización, varias redes",
+   "cadenas": [
+    "canton",
+    "stellar",
+    "solana"
+   ],
+   "que": "Una noticia de DTCC puede aparecer en varias fichas. Conviene separar lo que ya está en producción de lo que es un plan con fecha.",
+   "hechos": [
+    {
+     "t": "DTC lanzó el DTCC Tokenization Service el 28-oct-2026. La nota dice que hoy está integrado con Canton Network y con la red privada Besu de DTCC, y que en 2027 se añadirán más redes. 20 participantes de DTC han firmado. La carta de no acción de la SEC cubre componentes del Russell 1000, ETF de grandes índices y deuda del Tesoro de EE. UU.",
+     "f": "DTCC, nota de prensa (leída en el navegador el 14-nov-2026)",
+     "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+     "d": "2026-10-28",
+     "n": "P",
+     "cadenas": [
+      "canton"
+     ]
+    },
+    {
+     "t": "DTCC y la Stellar Development Foundation anunciaron el 27-may-2026 planes para tokenizar en Stellar activos custodiados en DTC; esperan que estén disponibles en el primer semestre de 2027. Es un plan, no producción. En los pasajes leídos de la nota no aparece el token XLM.",
+     "f": "DTCC, nota de prensa (leída en el navegador el 14-nov-2026)",
+     "u": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy",
+     "d": "2026-05-27",
+     "n": "P",
+     "cadenas": [
+      "stellar"
+     ]
+    },
+    {
+     "t": "DTCC anunció el 12-nov-2026 planes para tokenizar en Solana activos elegibles custodiados en DTC; la integración está prevista para el segundo semestre de 2027. Es un plan, no producción. En los pasajes leídos de la nota no aparece el token SOL.",
+     "f": "DTCC, nota de prensa (leída en el navegador el 14-nov-2026)",
+     "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana",
+     "d": "2026-11-12",
+     "n": "P",
+     "cadenas": [
+      "solana"
+     ]
+    },
+    {
+     "t": "Lectura: a 14-nov-2026 solo Canton y la red privada Besu de DTCC están en producción; Stellar (1S-2027) y Solana (2S-2027) son intenciones con fecha. La red Besu de DTCC es privada: usa tecnología de Ethereum, pero no es la red pública de Ethereum.",
+     "f": "Deducción a partir de las tres notas de DTCC citadas arriba",
+     "d": "2026-11-14",
+     "n": "R"
+    }
+   ],
+   "sin_dato": [
+    "Importe tokenizado por red: las notas de DTCC leídas no lo publican.",
+    "Qué otras redes se añadirán en 2027 además de Stellar y Solana."
+   ]
+  },
+  {
+   "id": "chainlink-capa-intermedia",
+   "titulo": "Chainlink como capa intermedia en DTCC y Swift",
+   "cadenas": [
+    "chainlink",
+    "ethereum",
+    "solana",
+    "bnb",
+    "avalanche"
+   ],
+   "que": "Chainlink no es una cadena: conecta sistemas y redes. Una noticia de Swift o de DTCC solo toca a Chainlink si la fuente lo nombra.",
+   "hechos": [
+    {
+     "t": "DTCC anunció el 12-may-2026 que su Collateral AppChain usará el Chainlink Runtime Environment (CRE) y el estándar de datos de Chainlink; espera ponerla en marcha en el 4T-2026. En la nota no se encontró mención a CCIP, Swift ni ISO 20022.",
+     "f": "DTCC, nota de prensa (leída en el navegador el 14-nov-2026)",
+     "u": "https://www.dtcc.com/news/2026/may/12/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management",
+     "d": "2026-05-12",
+     "n": "P",
+     "cadenas": [
+      "chainlink"
+     ]
+    },
+    {
+     "t": "Chainlink anunció el 28-sep-2026 que trabaja para que las entidades conecten sus sistemas y su infraestructura de firma al libro mayor de Swift mediante CRE (modelo de «autofirma»). Es un anuncio propio (parte interesada); en el texto no se encontró mención a CCIP ni a ISO 20022. La nota añade que los ingresos por uso empresarial se convierten a LINK y se guardan en una «Chainlink Reserve» (afirmación de la empresa, sin cifra).",
+     "f": "Chainlink, nota de prensa (leída en el navegador el 14-nov-2026)",
+     "u": "https://chain.link/press-releases/chainlink-is-enabling-financial-institutions-to-connect-to-swifts-blockchain-ledger",
+     "d": "2026-09-28",
+     "n": "P",
+     "cadenas": [
+      "chainlink"
+     ]
+    },
+    {
+     "t": "Swift dice que el MVP de su libro mayor usa una arquitectura compatible con EVM basada en Hyperledger Besu. En esa página de Swift no se encontró mención a Chainlink.",
+     "f": "Swift, noticia del 30-mar-2026 (leída en el navegador el 14-nov-2026)",
+     "u": "https://www.swift.com/insights/news/swifts-blockchain-based-shared-ledger-progresses-mvp-implementation",
+     "d": "2026-03-30",
+     "n": "P"
+    },
+    {
+     "t": "El directorio de CCIP en la red principal lista 78 redes; LINK figura en 65 y USDC en 22. Entre las redes visibles en la portada del directorio están Ethereum, Solana, BNB Chain y Avalanche.",
+     "f": "Chainlink, directorio CCIP (leída en el navegador el 14-nov-2026)",
+     "u": "https://docs.chain.link/ccip/directory/mainnet",
+     "d": "2026-11-14",
+     "n": "P",
+     "cadenas": [
+      "chainlink",
+      "ethereum",
+      "solana",
+      "bnb",
+      "avalanche"
+     ]
+    }
+   ],
+   "sin_dato": [
+    "Cuáles de las demás redes de esta página están en CCIP: la lista completa de las 78 no se pudo leer entera en esta sesión.",
+    "Volumen o número de entidades conectadas al libro mayor de Swift a través de Chainlink: no hay cifra ni confirmación de Swift."
+   ]
+  },
+  {
+   "id": "emisores-multired",
+   "titulo": "Emisores en varias redes: Ondo y Franklin Templeton (Benji)",
+   "cadenas": [
+    "ondo",
+    "ethereum",
+    "polygon",
+    "solana",
+    "xrpl",
+    "bnb",
+    "stellar",
+    "plume",
+    "avalanche"
+   ],
+   "que": "El mismo fondo tokenizado vive en varias redes a la vez: una noticia del emisor (rendimiento, límites, regulación) afecta a todas las fichas donde está desplegado.",
+   "hechos": [
+    {
+     "t": "La lista oficial de contratos de Ondo muestra OUSG en 4 redes (Ethereum, Polygon, Solana y XRP Ledger) y USDY en 12 (Ethereum, BNB Chain, Mantle, Solana, Sui, Aptos, Noble, Arbitrum, Stellar, Plume, Sei y Tempo).",
+     "f": "Ondo, documentación de direcciones (leída en el navegador el 14-nov-2026); parte interesada",
+     "u": "https://docs.ondo.finance/addresses",
+     "d": "2026-11-14",
+     "n": "P",
+     "cadenas": [
+      "ondo",
+      "ethereum",
+      "polygon",
+      "solana",
+      "xrpl",
+      "bnb",
+      "stellar",
+      "plume"
+     ]
+    },
+    {
+     "t": "La web de Benji (Franklin Templeton) lista contratos desplegados en 9 redes: Stellar (minorista e institucional) y, solo institucional, Polygon, Arbitrum, Avalanche, Aptos, Ethereum, Base, Solana y BNB Smart Chain. El XRP Ledger no figura en esa lista.",
+     "f": "Franklin Templeton, web de Benji (leída en el navegador el 14-nov-2026); parte interesada",
+     "u": "https://digitalassets.franklintempleton.com/benji/",
+     "d": "2026-11-14",
+     "n": "P",
+     "cadenas": [
+      "stellar",
+      "polygon",
+      "avalanche",
+      "ethereum",
+      "solana",
+      "bnb"
+     ]
+    },
+    {
+     "t": "RWA.xyz atribuye a «Franklin Templeton Benji» un activo de 192,7 M$ en el XRP Ledger. No coincide con la lista de contratos de la web del emisor, que no incluye esa red: queda por comprobar cuál de las dos está al día [VERIFICAR].",
+     "f": "RWA.xyz, ficha XRP Ledger (leída el 14-nov-2026 en la pasada anterior; no releída en esta)",
+     "u": "https://app.rwa.xyz/networks/xrp-ledger",
+     "d": "2026-11-14",
+     "n": "S",
+     "cadenas": [
+      "xrpl"
+     ]
+    },
+    {
+     "t": "Lectura: la etiqueta automática de noticias solo marca la ficha «Ondo» cuando el titular nombra a Ondo, OUSG o USDY; las redes donde está desplegado se ven en esta relación. Franklin Templeton no tiene ficha propia en esta página.",
+     "f": "Regla de scripts/etiquetar_cadenas.py",
+     "d": "2026-11-14",
+     "n": "R"
+    }
+   ],
+   "sin_dato": [
+    "Reparto del saldo de BENJI y de USDY por red según el propio emisor (las páginas leídas no lo dan; las cifras por red de esta página son de RWA.xyz).",
+    "Si Benji está o no en el XRP Ledger según Franklin Templeton."
+   ]
+  },
+  {
+   "id": "rlusd-xrp-pagos",
+   "titulo": "RLUSD y XRP en Ripple Payments",
+   "cadenas": [
+    "xrpl",
+    "ethereum"
+   ],
+   "que": "Una noticia de Ripple no es siempre una noticia del token XRP: hay que mirar con qué activo dice la fuente que se liquida.",
+   "hechos": [
+    {
+     "t": "La página del producto de pagos transfronterizos de Ripple describe cobrar, pagar y liquidar «en RLUSD y otras stablecoins, o en moneda fiat», en más de 60 mercados. En el texto descriptivo de esa página no aparece XRP (solo en enlaces del menú y del pie).",
+     "f": "Ripple, página de producto (leída en el navegador el 14-nov-2026); parte interesada",
+     "u": "https://ripple.com/products/cross-border-payments/",
+     "d": "2026-11-14",
+     "n": "P",
+     "cadenas": [
+      "xrpl"
+     ]
+    },
+    {
+     "t": "La página de RLUSD dice que se puede integrar «en el XRPL, Ethereum y otras redes compatibles»: la stablecoin de Ripple no vive solo en el XRP Ledger.",
+     "f": "Ripple, página de RLUSD (leída en el navegador el 14-nov-2026); parte interesada",
+     "u": "https://ripple.com/products/stablecoin/",
+     "d": "2026-11-14",
+     "n": "P",
+     "cadenas": [
+      "xrpl",
+      "ethereum"
+     ]
+    },
+    {
+     "t": "RWA.xyz sitúa 764,1 M$ de RLUSD en el XRP Ledger y unos 1.900 M$ en Ethereum (cifras del agregador, no del emisor).",
+     "f": "RWA.xyz, fichas XRP Ledger y Ethereum (leídas el 14-nov-2026 en la pasada anterior; no releídas en esta)",
+     "u": "https://app.rwa.xyz/networks/xrp-ledger",
+     "d": "2026-11-14",
+     "n": "S",
+     "cadenas": [
+      "xrpl",
+      "ethereum"
+     ]
+    },
+    {
+     "t": "El diseño de ODL usa XRP como activo puente, pero Ripple no publica qué parte del volumen de Ripple Payments se liquida con XRP, con RLUSD o con fiat.",
+     "f": "Ficha XRP Ledger de esta página (capa de liquidación)",
+     "d": "2026-11-14",
+     "n": "R"
+    }
+   ],
+   "sin_dato": [
+    "Volumen de ODL en XRP y reparto del volumen de Ripple Payments por activo de liquidación: Ripple no lo publica."
+   ]
+  },
+  {
+   "id": "mejoras-incidentes",
+   "titulo": "Mejoras de red, incidentes y titulares de precio",
+   "cadenas": [
+    "solana",
+    "ethereum",
+    "xrpl"
+   ],
+   "que": "Son tres tipos de noticia distintos. Una mejora activada se fecha en la fuente del proyecto; un incidente, en su informe; y un titular de precio con «supera», «cae por debajo de» o «toca» una cifra puede ser un movimiento de dentro del día.",
+   "hechos": [
+    {
+     "t": "Solana: Alpenglow está activo en la red principal desde la época 1064 (21-oct-2026, hacia las 13:36 UTC), con Agave 4.3. La parte «Rotor» queda para una versión posterior, sin fecha. Aparte, el tiempo de slot bajó de 400 a 200 ms en cuatro fases terminadas en octubre de 2026.",
+     "f": "Solana Foundation, página de Alpenglow (leída en el navegador el 14-nov-2026); parte interesada",
+     "u": "https://solana.com/upgrades/alpenglow",
+     "d": "2026-10-21",
+     "n": "P",
+     "cadenas": [
+      "solana"
+     ]
+    },
+    {
+     "t": "Ethereum: Glamsterdam (ePBS, EIP-7732, y listas de acceso por bloque, EIP-7928) se activó en la primera red de pruebas pública el 13-ago-2026 y en Sepolia el 6-oct-2026. La de Hoodi, prevista para el 26-oct, se aplazó en la reunión ACDE 248 para analizar un aviso de seguridad. En lo leído de la página no consta fecha para la red principal.",
+     "f": "Forkcast (seguimiento de mejoras de Ethereum) (leída en el navegador el 14-nov-2026)",
+     "u": "https://forkcast.org/upgrade/glamsterdam/",
+     "d": "2026-11-14",
+     "n": "S",
+     "cadenas": [
+      "ethereum"
+     ]
+    },
+    {
+     "t": "XRP Ledger: el informe del 9-oct-2026 describe dos fallos corregidos en xrpld 3.4.1: un error de validación en las transacciones internas de Batch y un desbordamiento de XRP en el motor de pagos. Se comunicaron el 18-sep-2026 y afectaban a las versiones 3.3.0 y 3.4.0; la enmienda BatchV1_1 no estaba activada en la red principal cuando se encontraron. El informe recuerda que la primera enmienda Batch se retiró antes por otra vulnerabilidad.",
+     "f": "xrpl.org, informe de vulnerabilidades (leída en el navegador el 14-nov-2026)",
+     "u": "https://xrpl.org/blog/2026/vulnerabilitydisclosurereport-bug-20261009",
+     "d": "2026-10-09",
+     "n": "P",
+     "cadenas": [
+      "xrpl"
+     ]
+    },
+    {
+     "t": "XRP Ledger: la tabla de enmiendas conocidas indica la versión en que entró cada una (LendingProtocol y SingleAssetVault, 3.1.0; BatchV1_1, 3.3.0; LendingProtocolV1_1, 3.4.0; fixBatchV1_2, 3.4.1; XChainBridge, 2.0.0). Que una enmienda esté en el software no significa que esté activada: el estado de cada una está en la ficha del XRP Ledger.",
+     "f": "xrpl.org, Known Amendments (leída en el navegador el 14-nov-2026)",
+     "u": "https://xrpl.org/resources/known-amendments",
+     "d": "2026-11-14",
+     "n": "P",
+     "cadenas": [
+      "xrpl"
+     ]
+    },
+    {
+     "t": "Regla de lectura (W05): un titular con «supera», «cae por debajo de», «toca», «sube a» o «alcanza» una cifra no dice que el nivel se mantenga al cierre. Antes de darlo por cierto o por desmentido se compara el mismo día (y la hora), el máximo y el mínimo de la sesión y el instrumento exacto. Las noticias con ese patrón llevan la marca «umbral» en las fichas.",
+     "f": "research/prompts/W05-verificacion.md (regla del 12-nov-2026)",
+     "i": "research/prompts/W05-verificacion.md",
+     "d": "2026-11-12",
+     "n": "R"
+    }
+   ],
+   "sin_dato": [
+    "Paradas o incidentes de Solana y de Ethereum en 2026: no se leyó ninguna página de estado en esta sesión.",
+    "Fecha de Glamsterdam en la red principal."
+   ]
+  }
+ ],
  "cadenas": [
   {
    "id": "xrpl",
@@ -1369,6 +1667,22 @@
      "n": "P",
      "futuro": false,
      "tl": true
+    },
+    {
+     "fecha": "2026-11-12",
+     "t": "DTCC anuncia planes para tokenizar activos de DTC en Solana (previsto para el 2S-2027)",
+     "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana",
+     "n": "P",
+     "futuro": false,
+     "tl": true
+    },
+    {
+     "fecha": "2027-12-31",
+     "aprox": true,
+     "t": "Activos tokenizados de DTC en Solana (previsto para el 2S-2027)",
+     "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana",
+     "n": "P",
+     "futuro": true
     }
    ],
    "sesgos": [
