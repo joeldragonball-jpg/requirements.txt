@@ -63,3 +63,21 @@ niveles = [19000, 20000]
 simbolo = "DX-Y.NYB"
 moneda = "pts"
 niveles = [100, 105]
+
+# --- Alertas de los datos del tablero (C206; alertas/datos.py, una vez al día con eventos.yml) ---
+# Avisa solo de lo NUEVO: datos que pasan a rojo, decisiones de tipos de los bancos centrales, cruces de tus umbrales
+# de tipos y movimientos nuevos con fuente primaria [P]. Pon false para apagar cada parte.
+[datos]
+activo = true
+rojos = true            # elementos de «Qué se está quedando viejo» que pasan a rojo
+tipos = true            # decisiones nuevas de tipos y cruces de los umbrales de abajo
+noticias_p = true       # movimientos nuevos con fuente [P] del Explorador
+noticias_dias = 7       # solo se miran movimientos de los últimos N días
+max_lineas = 8          # tope de líneas por mensaje (el resto: «… y N más»)
+margen_tipos_pb = 5     # margen en puntos básicos para no avisar dos veces si un tipo «baila» en el umbral
+
+# Umbrales de tipos oficiales en % (te avisa cuando el tipo CRUCE uno). Ejemplos: cámbialos a los tuyos.
+# Códigos: eeuu, ue, uk, br, ca, au, se (los de explorador/paneles.json → tipos_vivos)
+[datos.umbrales_tipos]
+eeuu = [3.50, 4.50]
+ue = [2.00, 3.00]

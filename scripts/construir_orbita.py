@@ -50,6 +50,11 @@ def main():
     html = explorador._html(None, publico=True)
     if "privado" in html.lower() and "contraste-tesis" in html.lower():
         sys.exit("La página pública menciona archivos de privado/: no se escribe.")
+    # C205: además, ninguna conclusión de la tesis privada (huellas de privado/) puede acabar en la página pública
+    sys.path.insert(0, str(RAIZ / "scripts"))
+    import huellas_privado
+    if huellas_privado.buscar(html):
+        sys.exit("La página pública contiene texto de la tesis privada (privado/): no se escribe.")
     html = html.replace("<head>", "<head>" + CABECERA, 1)
     SALIDA.mkdir(parents=True, exist_ok=True)
     (SALIDA / "index.html").write_text(html, encoding="utf-8")

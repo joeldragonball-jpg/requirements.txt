@@ -7,6 +7,7 @@ from datetime import date
 from pathlib import Path
 
 RUTA = Path(__file__).resolve().parent.parent / "explorador" / "datos.json"
+RAIZ_PRIV = RUTA.parent.parent          # raíz del repo (para las comprobaciones de privado/ del final)
 d = json.loads(RUTA.read_text(encoding="utf-8"))
 avisos = []
 
@@ -309,6 +310,22 @@ if RUTA_REG.exists():
         comprobar_comun(f"regulacion jurisdicción {j['id']}", j)
     for cel in r.get("celdas", []):
         comprobar_comun(f"regulacion {cel.get('jur')}.{cel.get('tema')}", cel)
+
+# C205: la tesis de Joel es privada. privado/ no puede estar en git ni su contenido en las páginas públicas (docs/)
+try:
+    import subprocess
+    en_git = subprocess.run(["git", "ls-files", "privado"], cwd=RAIZ_PRIV, capture_output=True, text=True, timeout=20).stdout.split()
+    if en_git:
+        aviso("privado/", f"{len(en_git)} archivo(s) de privado/ están en git (deben quedar fuera del repo público)")
+    ignorado = subprocess.run(["git", "check-ignore", "-q", "privado/tesis-vista.html"], cwd=RAIZ_PRIV, timeout=20).returncode == 0
+    if not ignorado:
+        aviso("privado/", ".gitignore no excluye privado/")
+except (OSError, subprocess.SubprocessError) as e:
+    aviso("privado/", f"no se pudo comprobar con git ({type(e).__name__})")
+sys.path.insert(0, str(RAIZ_PRIV / "scripts"))
+import huellas_privado  # noqa: E402
+for archivo, n in huellas_privado.revisar_docs():
+    aviso(archivo, f"contiene {n} huella(s) de la tesis privada (privado/): no se puede publicar")
 
 print("\n".join(avisos) if avisos else "Sin avisos.")
 print(f"\n{len(avisos)} aviso(s) en {len(d['capas'])} capas y {len(d['movimientos'])} movimientos.")

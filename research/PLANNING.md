@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-14 11:40 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-14 11:54 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -7,7 +7,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Periódicas (próxima):** W10 11-14 · W01 11-16 · W02 11-17 · W03 11-18 · W05 11-19 · W06 11-20 · W09 11-20 · W08 11-25 · W04 11-26 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (39):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: T15 BRICS, W03E (Irán/Egipto/Etiopía), D08/D09, Ge · C58 falta: Italia y NL ya leídos [P]; faltan: midterms certif · C59 falta: Faltan salario mínimo IT/CN/JP/IN (IT e IN: n/a),  · C61 falta: Vivienda vacía en CN/JP/IN/GB/RU; LPI y paro total · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
-**Hechas en 7 días (14):** C258, C259, C252, C253, C256, C257, C255, C147, C150, C151, C152, C153, C159, C160
+**Hechas en 7 días (17):** C205, C206, C262, C258, C259, C252, C253, C256, C257, C255, C147, C150, C151, C152, C153
 
 ## Hoy (sáb 2026-11-14): solo lo casi obligatorio
 - R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 7 días
@@ -49,8 +49,6 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C181 · Móvil · Mercado: separar divisas por tipo (pares con euro, dólar, refugio, emerg · Opus M · ~~3 % · ``
 - C186 · Research con Gemini (manual): qué muestran los mejores paneles de inversor parti · Sonnet S · ~~2 % · ``
 - C203 ◐ en parte · Fichas por activo (XRP, XLM, BTC, oro, ETF mundial) con fuente, nivel, hechos y  · Sonnet M · ~~2 % · ``
-- C205 · Vista de tesis privada en privado/ con evidencia a favor, en contra y sin dato · Opus L · ~~5 % · ``
-- C206 · Alertas por umbral y por evento (Telegram) para datos en rojo, tipos y noticias  · Opus L · ~~3 % · ``
 - C208 · Capa «Mi cartera» sin importes con el importador CSV · Opus L · ~~4 % · ``
 - C209 · Modo familia: vista reducida sin racha ni IA · Opus L · ~~2 % · ``
 - C210 · Capas nuevas: flujos de ETF de XRP/XLM, stablecoins, vivienda y combustibles UE · Opus L · ~~4 % · ``
@@ -78,6 +76,8 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C247 ◐ en parte · Centro · Verificar prensa pendiente (3.ª tanda 10-nov: Irak/Ormuz, Brent, UE, IP · Sonnet S · ~~3 % · ``
 - C254 ◐ en parte · Centro · Verificar con fuente las dudas abiertas por C252 (STEO de noviembre, st · Fable M · ~~3 % · ``
 - C260 · Países · Indicadores con la fecha más reciente (no solo media anual del Banco Mu · Sonnet L · ~~5 % · ``
+- C261 · Alertas de datos (C206): ajustar los umbrales de tipos y comprobar el primer avi · Sonnet S · ~~1 % · `Joel: pon tus umbrales en la sección [datos.umbrales_tipos] de alertas/config.toml (ahora son ejemplos: Fed 3,50/4,50 % y BCE 2,00/3,00 %). Tras el «sube», el workflow diario «Aviso de eventos» ejecuta alertas/datos.py: la 1.ª vez solo memoriza. Cuando llegue el primer aviso real, comprueba que los enlaces abren, que no pasa de 8 líneas y que no repite avisos; si sobra ruido, apaga partes en [datos] (rojos, tipos, noticias_p) o baja noticias_dias. Sin IA y sin lanzar workflows salvo que Joel lo pida.`
+- C263 · Cerrar huecos [VERIFICAR] del marco por cadenas: volumen de ODL, PDF del 3T-2026 · Sonnet M · ~~3 % · `Lee la lista «huecos» de privado/marco-iso20022.json (solo en el PC) y busca fuente primaria para cada uno: Ripple (volumen de ODL en XRP), PDF del informe del 3T-2026 de la SDF (stellar.org/quarterly-reports; la descarga abre un diálogo: pide a Joel que lo guarde en research/fuentes/), PDF del informe final de Project Acacia en rba.gov.au, docs de Ondo Chain, docs.canton.network (dominios privados y tráfico), documento primario de Quant, Swift sobre XDC, docs.hedera.com y Avalanche. Escribe los resultados SOLO en privado/marco-iso20022.json (con fuente, fecha y nivel) y regenera con python scripts/construir_tesis_privada.py; después python scripts/huellas_privado.py y python scripts/revisar_explorador.py. Nada de la tesis en el repo público.`
 - C30 ◐ en parte · Centro · Política y elecciones por país · Sonnet M · ~3 % · `research/prompts/C30-politica-elecciones.md`
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
 - C39 ◐ en parte · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
@@ -107,9 +107,14 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 
 ## Auditorías abiertas
-- T4 (Baja): Omisiones de fuentes: BdE en Bonos, BoE en Deuda, cifras manuales en Liquidez e Indicadores
-- T7 (Baja): Hueco jun-2026 en la API del BCE, causa sin explicar [VERIFICAR]
-- T8 (Baja): «+3» de la Cámara se mide desde 2024 (215 D), no desde hoy [VERIFICAR]
+- A1 (Media): Abierto: voces.json lo está editando otra sesión (W06); propuesta: v002→cumplido con la nota del 28-oct; v062→
+- A2 (Media): Abierto: propuesta, mostrar «P + novedades S» o añadir url a HK ETF
+- A3 (Media): Parcial: antes faltaban 23. Abierto: 9 celdas
+- A4 (Baja): Abierto
+- A5 (Media): Abierto: propuesta, 2-3 canales o analistas críticos o neutrales en el próximo lote de vídeos
+- A7 (Media): Abierto
+- A8 (Baja): Abierto solo v062
+- A9 (Baja): Cerrado (W07)
 - Auditoría mensual W08: última semana del mes (miércoles)
 
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
