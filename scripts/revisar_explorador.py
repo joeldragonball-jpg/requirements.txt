@@ -410,6 +410,15 @@ if RUTA_CAD.exists():
                 aviso(f"cadena {cid} capa {k}", f"«token» debe ser uno de {TOKEN_OK}: {cp.get('token')!r}")
         for x in c.get("iso", []):
             celda_cadena(f"cadena {cid} iso", x)
+        ta = c.get("tipos_activo")
+        if ta:
+            for k, x in (ta.get("tipos") or {}).items():
+                celda_cadena(f"cadena {cid} tipos_activo.{k}", x)
+                if not isinstance(x.get("v"), (int, float)) or not isinstance(x.get("k"), int):
+                    aviso(f"cadena {cid} tipos_activo.{k}", "«v» (M$) y «k» (nº de activos) deben ser números")
+            for k in ("emisores", "estandar", "liquidacion"):
+                if ta.get(k) is not None:
+                    celda_cadena(f"cadena {cid} tipos_activo.{k}", ta[k])
         cap = c.get("captura") or {}
         if cap.get("nivel") not in CAPTURA_OK:
             aviso(f"cadena {cid}", f"captura.nivel debe ser uno de {CAPTURA_OK}")
