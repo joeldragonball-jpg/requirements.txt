@@ -633,8 +633,12 @@
      "ev": "SCP no usa staking: XLM no asegura la red."
     },
     "mensajeria": {
-     "token": "sin dato",
-     "ev": "Sin dato primario de conectores ISO 20022."
+     "token": "no",
+     "quien": "Circle CCTP (dominio 27, Standard Transfer solo origen sin Fast Transfer)",
+     "ev": "Circle CCTP lista Stellar como bloque compatible (USDC); en Stellar la precisión de USDC y la codificación de direcciones difieren y se usa CctpForwarder para transferencias entrantes. Las comisiones de CCTP son en USDC. No se leyó fuente sobre Allbridge ni Axelar [VERIFICAR].",
+     "u": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+     "d": "2026-11-14",
+     "n": "P"
     },
     "custodia": {
      "token": "no",
@@ -873,8 +877,12 @@
      "ev": "El peso de consenso usa HBAR en stake, pero los nodos los operan miembros del Consejo: la red que usan no depende de un mercado abierto de validadores."
     },
     "mensajeria": {
-     "token": "sin dato",
-     "ev": "HCS sirve para registrar mensajes; sin dato primario de uso con ISO 20022."
+     "token": "parcial",
+     "quien": "Chainlink CCIP (carriles a Arbitrum, Avalanche, Base, Ethereum, OP, Polygon y Solana)",
+     "ev": "Directorio CCIP de Hedera (leído 14-nov-2026): tokens de comisión LINK, WHBAR y HBAR (gas nativo); 7 carriles salientes. La tarifa de CCIP se paga en LINK o en tokens alternativos, incluidos el gas nativo y su versión envuelta (docs Chainlink, Fees & Billing); no es obligatorio pagar en LINK. Datos de Chainlink, parte interesada.",
+     "u": "https://docs.chain.link/ccip/directory/mainnet/chain/hedera-mainnet",
+     "d": "2026-11-14",
+     "n": "P"
     },
     "custodia": {
      "token": "sin dato",
@@ -1326,8 +1334,12 @@
      "ev": "El SOL en staking asegura la red pública."
     },
     "mensajeria": {
-     "token": "sin dato",
-     "ev": "Sin dato."
+     "token": "parcial",
+     "quien": "Chainlink CCIP (30 carriles, 53 tokens); Circle CCTP (dominio 5)",
+     "ev": "Directorio CCIP de Solana: comisión en LINK, WSOL o SOL (gas nativo). La tarifa de CCIP se paga en LINK o en tokens alternativos, incluidos el gas nativo y su versión envuelta (docs Chainlink, Fees & Billing); no es obligatorio pagar en LINK. CCTP incluye Solana con Fast Transfer; su comisión se descuenta en USDC. Datos de los propios proyectos.",
+     "u": "https://docs.chain.link/ccip/directory/mainnet/chain/solana-mainnet",
+     "d": "2026-11-14",
+     "n": "P"
     },
     "custodia": {
      "token": "no",
@@ -1539,8 +1551,12 @@
      "ev": "Validadores con BNB en staking [VERIFICAR número]."
     },
     "mensajeria": {
-     "token": "sin dato",
-     "ev": "Sin dato."
+     "token": "parcial",
+     "quien": "Chainlink CCIP (42 carriles); Circle CCTP solo para USYC",
+     "ev": "Directorio CCIP de BNB Chain: comisión en LINK, WBNB o BNB (gas nativo); 98 tokens. La tarifa de CCIP se paga en LINK o en tokens alternativos, incluidos el gas nativo y su versión envuelta (docs Chainlink, Fees & Billing); no es obligatorio pagar en LINK. Circle CCTP lista BNB Smart Chain solo para USYC (USDC no soportado ahí). Datos de los propios proyectos.",
+     "u": "https://docs.chain.link/ccip/directory/mainnet/chain/bsc-mainnet",
+     "d": "2026-11-14",
+     "n": "P"
     },
     "custodia": {
      "token": "sin dato",
@@ -1744,8 +1760,12 @@
      "ev": "La red principal se asegura con AVAX en staking (2.000 AVAX mínimo). Las L1 propias pagan una tarifa continua en AVAX por validador (≈1,33 AVAX/mes en el mínimo) sin stake de AVAX; el ACP-77 no dice si se quema [P]."
     },
     "mensajeria": {
-     "token": "sin dato",
-     "ev": "Sin dato."
+     "token": "parcial",
+     "quien": "Chainlink CCIP (34 carriles, 44 tokens); Circle CCTP",
+     "ev": "Directorio CCIP de Avalanche: comisión en GHO, LINK, WAVAX o AVAX (gas nativo). La tarifa de CCIP se paga en LINK o en tokens alternativos, incluidos el gas nativo y su versión envuelta (docs Chainlink, Fees & Billing); no es obligatorio pagar en LINK. Circle CCTP incluye Avalanche (dominio 1) como origen y destino; la comisión de CCTP (solo en Fast Transfer) se descuenta en USDC, no en AVAX. Datos de los propios proyectos.",
+     "u": "https://docs.chain.link/ccip/directory/mainnet/chain/avalanche-mainnet",
+     "d": "2026-11-14",
+     "n": "P"
     },
     "custodia": {
      "token": "sin dato",
@@ -1961,8 +1981,12 @@
      "n": "P"
     },
     "mensajeria": {
-     "token": "sin dato",
-     "ev": "Sin dato."
+     "token": "no",
+     "quien": "Circle CCTP (Polygon PoS, dominio 7); Chainlink CCIP lista Polygon como destino desde Hedera y Plume",
+     "ev": "Circle CCTP admite Polygon PoS como origen y destino (Standard Transfer; sin Fast Transfer). Las comisiones de CCTP se cobran en USDC (solo Fast Transfer), no en POL. Los directorios de Hedera y Plume muestran carriles a Polygon; no se leyó la página propia de Polygon en CCIP ni la de AggLayer [VERIFICAR].",
+     "u": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+     "d": "2026-11-14",
+     "n": "P"
     },
     "custodia": {
      "token": "sin dato",
@@ -2253,7 +2277,13 @@
     "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top visible (sin dato). [S]: tercero comercial sin auditoría.",
     "tipos": {},
     "emisores": null,
-    "estandar": null,
+    "estandar": {
+     "t": "Token Standard CIP-0056 (estado «Final», aprobado el 31-mar-2025), definido sobre Daml mediante interfaces: seis APIs (metadatos de token, posiciones, instrucción de transferencia, asignación, petición de asignación e instrucción de asignación) con transferencias directas (FOP) y DvP atómico. Se declara inspirado en ERC-20 pero sin «allowances» abiertos; los importes usan el tipo Decimal de Daml (10 decimales). Canton Coin (Amulet) implementa todas las APIs, con una limitación: solo admite 10 min entre preparar y enviar la transacción (el estándar apunta a 24 h)",
+     "f": "Canton Foundation, CIP-0056 (GitHub; parte interesada)",
+     "u": "https://github.com/canton-foundation/cips/blob/main/cip-0056/cip-0056.md",
+     "d": "2026-11-14",
+     "n": "P"
+    },
     "liquidacion": {
      "t": "En las pruebas de julio de 2026, compraventas DvP de Tesoro, acciones y ETF contra efectivo onchain liquidaron «inmediatamente» en ambas patas; repo intradía de ~15-20 minutos; margen entregado en la misma jornada. DTCC habla de «mover colateral en minutos» (el servicio no fija un ciclo)",
      "f": "Canton Network, blog (parte interesada)",
@@ -2321,7 +2351,13 @@
     }
    ],
    "matriz": {
-    "liquidez": null,
+    "liquidez": {
+     "t": "DefiLlama muestra 30,76 mil M$ de «valor total asegurado» (TVS: lo que se perdería si fallara el oráculo), 1,777 mil M$ de TVL, 1,211 mil M$ de volumen de puente a 30 días y 400,7 M$ de LINK en staking. El TVS no es liquidez de mercado: mide exposición de protocolos que usan sus servicios",
+     "f": "DefiLlama, página Chainlink (agregador)",
+     "u": "https://defillama.com/protocol/chainlink",
+     "d": "2026-11-14",
+     "n": "S"
+    },
     "seguridad": {
      "t": "CCIP: 16 operadores independientes por ruta (verificadores por defecto). Aparte, el staking v0.2 de LINK (Ethereum) respalda servicios de oráculo con slashing solo para operadores de nodo, y solo para los servicios asegurados por staking",
      "f": "docs.chain.link (CCIP) y chain.link/economics/staking (leídas; parte interesada)",
@@ -2451,7 +2487,13 @@
     "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top visible (sin dato). [S]: tercero comercial sin auditoría.",
     "tipos": {},
     "emisores": null,
-    "estandar": null,
+    "estandar": {
+     "t": "Cross-Chain Token (CCT): estándar de CCIP para transferir tokens entre cadenas. En EVM, cualquier token compatible con ERC-20 (con owner() o DEFAULT_ADMIN_ROLE o getCCIPAdmin; decimals, balanceOf, transfer/transferFrom, y mint más burn donde se queme/acuñe) se registra en un Token Admin Registry y se enlaza con un «token pool» por cadena (quemar/acuñar, bloquear/acuñar o bloquear/liberar). Con CCIP 2.0 el pool admite límites de flujo, comisión, lista de remitentes (AdvancedPoolHooks) y verificadores adicionales. Chainlink advierte que no mantiene ni transfiere activos",
+     "f": "docs.chain.link, CCT Overview (parte interesada)",
+     "u": "https://docs.chain.link/ccip/concepts/cross-chain-token/overview",
+     "d": "2026-11-14",
+     "n": "P"
+    },
     "liquidacion": {
      "t": "No liquida ni emite: orquesta. Describe DvP en cuatro variantes (una cadena con pago onchain u offchain; varias cadenas por mensajes o por transferencia de tokens) y, con Fulcrum, repo en que la entrega de efectivo en una red depende de la verificación del colateral en otra (DvD)",
      "f": "Chainlink, blogs CRE-DvP y Fulcrum (leídos; parte interesada)",
@@ -2602,7 +2644,8 @@
     }
    ],
    "sesgos": [
-    "Webs de aprendizaje de exchanges y espejos SEO repiten «utility token» sin fuente."
+    "Webs de aprendizaje de exchanges y espejos SEO repiten «utility token» sin fuente.",
+    "Plazos de otros fondos tokenizados (leídos en sus docs oficiales; parte interesada): Superstate USTB (Invesco) tiene precio continuo; compras en USDC se entregan en el acto, incluso en festivos, y por transferencia en USD el mismo día si llega antes de las 17:00 ET (la página general de suscripción cita las 13:00 ET: inconsistencia entre páginas); rescates en USDC inmediatos «sujetos a liquidez» y en USD el mismo día antes de las 13:00 ET; redes Ethereum, Solana y Plume; mínimo 100.000 $ (docs.superstate.com, 14-nov-2026). Bitwise USCC en cambio fija precio una vez al día: fondos antes de las 17:00 ET a T+1, después a T+2 (mismo sitio). WisdomTree Connect ofrece liquidación onchain 24/7 de WTGXX mediante un bróker-dealer que actúa como principal, contra USDC de su inventario y fuera del fondo; tokens en Arbitrum, Avalanche, Base, Ethereum, Optimism, Plume, Solana y Stellar (wisdomtreeconnect.com, 14-nov-2026)."
    ],
    "sin_dato": [
     "Si Ondo Chain está en producción y qué papel tendría ONDO.",
@@ -2612,9 +2655,15 @@
     "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top visible (sin dato). [S]: tercero comercial sin auditoría.",
     "tipos": {},
     "emisores": null,
-    "estandar": null,
+    "estandar": {
+     "t": "La doc de direcciones de Ondo no nombra ERC-20/Token-2022: lo que muestra es que el token OUSG en Ethereum usa el contrato CashKYCSenderReceiver (código en GitHub) y un registro de direcciones autorizadas (OndoIDRegistry) que define quién puede tenerlo; USDY usa en cambio una lista de bloqueo (Blocklist). Hay OUSG en Ethereum, Polygon, Solana y XRP Ledger (allí como token emitido, con código de moneda hexadecimal y cuenta emisora, es decir línea de confianza), y USDY en 12 redes con dirección publicada: p. ej. Tempo como TIP-20, Noble como «ausdy», Stellar como activo clásico más contrato Soroban. El puente propio usa LayerZero OFT. No se ha comprobado si el token de Solana usa Token-2022 [VERIFICAR]",
+     "f": "docs.ondo.finance, Smart Contract Addresses y OUSG Technical (parte interesada)",
+     "u": "https://docs.ondo.finance/addresses.md",
+     "d": "2026-11-14",
+     "n": "P"
+    },
     "liquidacion": {
-     "t": "OUSG: mint y reembolso instantáneos 24/7 contra USDC (mínimo 5.000 $), diario contra USD; USDY: suscripción y reembolso diarios, 24/7 según la web. Sin ciclo T+n citado",
+     "t": "OUSG: mint y reembolso instantáneos 24/7 contra USDC (mínimo 5.000 $), diario contra USD; USDY: se acuña con USDC tras el alta; el rescate en USD es por transferencia a un banco no estadounidense (Ondo USDY LLC) o a USDC vía Ondo Global Markets (BVI) Limited, y en Sui, Aptos, Stellar, XRP y Noble hay que pedirlo a soporte (mínimo 5.000 $), según docs.ondo.finance. Sin ciclo T+n citado",
      "f": "ondo.finance/ousg y /usdy; docs.ondo.finance (parte interesada)",
      "u": "https://ondo.finance/ousg",
      "d": "2026-11-14",
@@ -2706,7 +2755,13 @@
      "d": "2026-11-14",
      "n": "P"
     },
-    "regulacion": null
+    "regulacion": {
+     "t": "Los ASA admiten transferencias restringidas, congelación y recuperación (clawback); en la UE, Quantoz emite EURQ/USDQ (y EURD) como tokens de dinero electrónico bajo licencia EMI de De Nederlandsche Bank, con reservas al 102 % en una fundación aparte (Stichting Quantoz) y supervisión prudencial de DNB; los presenta como conformes con MiCA. Dato del emisor (parte interesada), no de DNB",
+     "f": "Quantoz, nota del 3-abr-2025, y algorand.co, Tokenization (leídas)",
+     "u": "https://www.quantoz.com/articles/quantoz-brings-european-regulated-stablecoins-eurq-and-usdq-to-algorand/",
+     "d": "2025-04-03",
+     "n": "P"
+    }
    },
    "capas": {
     "liquidacion": {
@@ -2732,8 +2787,12 @@
      "ev": "Sin dato."
     },
     "custodia": {
-     "token": "sin dato",
-     "ev": "Sin dato."
+     "token": "parcial",
+     "quien": "Hex Trust (custodio regulado de la Fundación Algorand)",
+     "ev": "En jul-2025 la Fundación amplió su acuerdo con Hex Trust, que guarda activos de la Fundación y da a clientes institucionales acceso a los pools de staking de Algorand (el ALGO interviene en el staking). Copper anunció custodia de ALGO y ASA en 2021 (resumen de buscador, no leído). Sin lista oficial de custodios.",
+     "u": "https://algorand.co/blog/staking-custody-and-trust-algorand-advances-institutional-staking-with-hex-trust",
+     "d": "2026-11-14",
+     "n": "P"
     }
    },
    "captura": {
@@ -2750,10 +2809,25 @@
      "u": "https://algorand.co/blog/algorands-staking-rewards-are-live",
      "n": "V",
      "futuro": false
+    },
+    {
+     "fecha": "2025-07-01",
+     "t": "La Fundación Algorand amplía su acuerdo con Hex Trust (custodia regulada y acceso a pools de staking para instituciones); la página dice julio de 2025, sin día",
+     "u": "https://algorand.co/blog/staking-custody-and-trust-algorand-advances-institutional-staking-with-hex-trust",
+     "n": "P",
+     "futuro": false
+    },
+    {
+     "fecha": "2025-04-03",
+     "t": "Quantoz lleva EURQ y USDQ (tokens de dinero electrónico conformes con MiCA según el emisor) a Algorand, con pares en Folks Finance",
+     "u": "https://www.quantoz.com/articles/quantoz-brings-european-regulated-stablecoins-eurq-and-usdq-to-algorand/",
+     "n": "P",
+     "futuro": false
     }
    ],
    "sesgos": [
-    "Aparece en listas de «ISO 20022» de comunidad sin fuente."
+    "Aparece en listas de «ISO 20022» de comunidad sin fuente.",
+    "Las cifras de activos tokenizados difieren según la fuente: RWA.xyz suma 39,4 M$ (solo acciones, 1 activo), el panel de la propia Fundación da unos 100 M$ en inmuebles y otros 100 M$ en materias primas, y un medio cita 294 M$ sin fuente primaria [V]. Definiciones distintas; no se suman."
    ],
    "sin_dato": [
     "Pilotos con bancos o con ISO 20022."
@@ -2769,6 +2843,15 @@
       "u": "https://app.rwa.xyz/networks/algorand",
       "d": "2026-11-14",
       "n": "S"
+     },
+     "inmuebles": {
+      "t": "100,6 M$ de capitalización y 250 propiedades tokenizadas (panel de la Fundación; Lofty citado como caso)",
+      "v": 100.6,
+      "k": 250,
+      "f": "Algorand RWA Dashboard (Algorand Foundation BI Team; datos de DefiLlama, Nodely y Yahoo Finance)",
+      "u": "https://algorand-rwa-dashboard.vercel.app/",
+      "d": "2026-11-14",
+      "n": "P"
      }
     },
     "emisores": {
@@ -2785,7 +2868,22 @@
      "d": "2026-11-14",
      "n": "S"
     },
-    "liquidacion": null
+    "liquidacion": {
+     "t": "Autodeclarada por la Fundación: 'finalidad instantánea', más de 10.000 TPS y comisión fija de 0,001 ALGO; intercambios atómicos para liquidación con contraparte segura (p. ej. stablecoin contra token de RWA). Sin segundos medidos ni liquidación en dinero de banco central",
+     "f": "algorand.co, Tokenization (leída en Chrome; parte interesada)",
+     "u": "https://algorand.co/solutions/tokenization",
+     "d": "2026-11-14",
+     "n": "P"
+    },
+    "cualitativo": {
+     "materias": {
+      "t": "101,5 M$ de capitalización (oro y plata) y unos 1,5 mil titulares (panel de la Fundación)",
+      "f": "Algorand RWA Dashboard (Algorand Foundation BI Team)",
+      "u": "https://algorand-rwa-dashboard.vercel.app/",
+      "d": "2026-11-14",
+      "n": "P"
+     }
+    }
    }
   },
   {
@@ -2816,11 +2914,11 @@
      "n": "S"
     },
     "seguridad": {
-     "t": "Los masternodes (validadores) deben pasar KYC y hacer stake de 10.000.000 XDC; hay validadores y nodos en espera. La documentación no da aquí el número de nodos activos",
-     "f": "docs.xdc.network, guía de masternodes (leída; parte interesada)",
+     "t": "108 masternodes activos de 369 nodos en total (4 penalizados y 257 en espera), con 3.713.772.544 XDC en stake y 10.000.000 XDC de capacidad por masternode; lectura del panel oficial en la fecha indicada, no una serie histórica",
+     "f": "master.xinfin.network (panel de gobernanza de XDC, parte interesada)",
+     "u": "https://master.xinfin.network/",
      "d": "2026-11-14",
-     "n": "P",
-     "u": "https://docs.xdc.network/xdcchain/developers/node_operators/masternode/"
+     "n": "P"
     },
     "activos": {
      "t": "No aparece entre las 37 redes con valor en RWA.xyz",
@@ -2836,7 +2934,13 @@
      "n": "V",
      "u": "https://e27.co/xdc-ventures-acquires-contour-to-bridge-tradfi-and-web3-in-global-trade-20251023/"
     },
-    "pagos": null,
+    "pagos": {
+     "t": "Gas de referencia 0,25 Gwei: transferencia simple de 21.000 gas = 0,00000525 XDC (unos 0,00004 US$ según la propia doc); transferencia de XRC20 unos 0,00012 US$. Cifras de la documentación del proyecto, no medidas",
+     "f": "docs.xdc.network, Gas & Fees (leída; parte interesada)",
+     "u": "https://docs.xdc.network/learn/gas-fees/",
+     "d": "2026-11-14",
+     "n": "P"
+    },
     "rendimiento": {
      "t": "Rewards de masternodes y de quienes delegan XDC en ellos, repartidos por épocas (documento marcado «WIP»); la tasa concreta no se ha extraído",
      "f": "docs.xdc.network, mecanismo de recompensas (leído; parte interesada)",
@@ -2871,9 +2975,12 @@
      "n": "S"
     },
     "seguridad": {
-     "quien": "Masternodes",
      "token": "sí",
-     "ev": "Cada masternode bloquea 10 M de XDC [V: resumen de la doc]."
+     "quien": "Masternodes",
+     "ev": "Cada masternode bloquea 10.000.000 XDC y el panel oficial muestra 108 activos de 369 (3.713.772.544 XDC en stake en total, incluidos nodos en espera), con 4 penalizados.",
+     "u": "https://master.xinfin.network/",
+     "d": "2026-11-14",
+     "n": "P"
     },
     "mensajeria": {
      "token": "sin dato",
@@ -2927,20 +3034,46 @@
    ],
    "sin_dato": [
     "Bancos que la usen en producción.",
-    "Número de masternodes activos (108 según un resumen) y velocidad de bloque: no figuran en las páginas leídas el 14-nov-2026; Swift solo autodeclarado."
+    "Velocidad de bloque y finalidad de XDC con cifras que no coinciden entre páginas propias (2 s, 2-4 s, 6 s); Swift solo autodeclarado."
    ],
    "tipos_activo": {
     "nota": "Sin cifras de activos tokenizados en XDC en fuente leída (no aparece en RWA.xyz). Lo documentado son planes y un producto: Contour (cartas de crédito digitales, comprado por XDC Ventures en oct-2025) que usaría XDC como base de liquidación y tokenización; bancos como DBS y Bangkok Bank siguen en Contour pero no consta que usen XDC. [S]",
     "tipos": {},
     "emisores": null,
-    "estandar": null,
-    "liquidacion": null,
+    "estandar": {
+     "t": "XRC-20 (fungibles), XRC-721 (únicos, p. ej. escrituras de inmuebles) y XRC-1155 (múltiples en un contrato), de estilo EVM/ERC; la guía de RWA de XDC usa contratos OpenZeppelin ERC20/ERC721 de ejemplo y cita subredes privadas y capa de identidad/KYC como opción. ERC-3643 solo aparece como propuesta en un foro de la comunidad (resultado de búsqueda no leído [V]), no como estándar oficial",
+     "f": "docs.xdc.network, RWA Tokenization, y xdc.org, Tech Spec (leídas; parte interesada)",
+     "u": "https://docs.xdc.network/enterprise/rwa-tokenization/",
+     "d": "2026-11-14",
+     "n": "P"
+    },
+    "liquidacion": {
+     "t": "Autodeclarada: 'finalidad de 2 segundos' en la guía de RWA; xdc.org/network/tech-specs dice que las transacciones quedan finalizadas 6 s tras entrar en un bloque. Sin dato de liquidación contra dinero ni entrega contra pago en esas páginas",
+     "f": "docs.xdc.network, RWA Tokenization; xdc.org, Tech Spec (parte interesada)",
+     "u": "https://xdc.org/network/tech-specs",
+     "d": "2026-11-14",
+     "n": "P"
+    },
     "cualitativo": {
      "otros": {
       "t": "Cartas de crédito digitales (financiación del comercio) en Contour; sin importe ni activos en XDC verificados",
       "f": "GTR, XDC Ventures to re-energise Contour",
       "u": "https://www.gtreview.com/news/digital-trade/xdc-ventures-to-re-energise-contour-after-xalts-sale/",
       "d": "2025-10-29",
+      "n": "S"
+     },
+     "materias": {
+      "t": "Comtech Gold (CGO): oro físico en bóvedas de Dubái, 1 token = 1 gramo de oro 999,9, según la guía de XDC; sin importe en circulación en la página",
+      "f": "docs.xdc.network, RWA Tokenization (parte interesada)",
+      "u": "https://docs.xdc.network/enterprise/rwa-tokenization/",
+      "d": "2026-11-14",
+      "n": "S"
+     },
+     "credito": {
+      "t": "TradeFinex tokeniza facturas, cuentas por cobrar y cartas de crédito; la guía de XDC dice '100 M$+ tokenizados', cifra del propio ecosistema sin informe ni fecha",
+      "f": "docs.xdc.network, RWA Tokenization (parte interesada)",
+      "u": "https://docs.xdc.network/enterprise/rwa-tokenization/",
+      "d": "2026-11-14",
       "n": "S"
      }
     }
@@ -3096,7 +3229,13 @@
     "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top visible (sin dato). [S]: tercero comercial sin auditoría.",
     "tipos": {},
     "emisores": null,
-    "estandar": null,
+    "estandar": {
+     "t": "Overledger no tokeniza por sí mismo. En el Fusion Rollup (OP Stack, EVM; lanzado en mainnet el 2-jun-2026 según Quant), los activos entran con depositERC20 desde las cadenas conectadas y se asignan a un ERC-20 unificado del rollup mediante un contrato TokenWhitelist (ej.: uUSDC); los retiros usan la ventana de disputa de un rollup optimista. Los nombres uUSDC/uBUIDL de la noticia son ilustrativos",
+     "f": "Quant, docs.overledger.dev (Fusion Rollup) y noticia 2-jun-2026 (parte interesada)",
+     "u": "https://docs.overledger.dev/docs/fusion-rollup.md",
+     "d": "2026-11-14",
+     "n": "P"
+    },
     "liquidacion": {
      "t": "Quant describe DvP programable («ambas patas liquidan juntas o ninguna») y liquidación entre divisas «en segundos»; el Fusion Rollup unifica el mismo token de varias cadenas en un activo (ejemplo ilustrativo uUSDC/uBUIDL). Descripciones comerciales; sin volumen ni ciclo medido",
      "f": "Quant Network, portada y noticia del 2-jun-2026 (leídas; parte interesada)",
@@ -3183,7 +3322,13 @@
      "n": "P",
      "u": "https://blog.iota.org/update-q2-2026/"
     },
-    "activos": null,
+    "activos": {
+     "t": "No aparece entre las 37 redes con valor en RWA.xyz (lista leída entera; las últimas filas son Gnosis, Injective, Rootstock y X Layer)",
+     "f": "RWA.xyz, Networks",
+     "u": "https://app.rwa.xyz/networks",
+     "d": "2026-11-14",
+     "n": "S"
+    },
     "cumplimiento": {
      "t": "Programa ADAPT con la Secretaría del AfCFTA, el Tony Blair Institute y el WEF: Kenia, Nigeria y Marruecos son los primeros países (identidad digital, datos de comercio y pagos). Socios (AfCFTA lidera; IOTA, Tony Blair Institute y WEF) confirmados en el blog de IOTA del 17-nov-2025, no en las webs de AfCFTA, TBI ni WEF",
      "f": "Blog de IOTA (fuente propia; los socios no se leyeron)",
@@ -3212,7 +3357,13 @@
      "d": "2026-11-14",
      "n": "P"
     },
-    "regulacion": null
+    "regulacion": {
+     "t": "En ADAPT, Kenia, Marruecos y Nigeria empezarán a probar marcos regulatorios para monedas digitales, incluidas stablecoins; es un plan del programa, sin norma aprobada citada. La web de la fundación IOTA indica domicilio registrado en Berlín (Alemania)",
+     "f": "Blog de IOTA, 'Kenya, Morocco, and Nigeria Lead First ADAPT Implementations' (parte interesada) y iota.org",
+     "u": "https://blog.iota.org/first-adapt-implementations",
+     "d": "2026-05-19",
+     "n": "P"
+    }
    },
    "captura": {
     "nivel": "incierta",
@@ -3231,12 +3382,34 @@
     },
     {
      "fecha": "2026-05-19",
-     "t": "ADAPT (comercio digital en África con AfCFTA y Tony Blair Institute): implementación en marcha según el informe del 2T-2026 de IOTA; los países y la fecha de lanzamiento no constan en esa página [VERIFICAR]",
-     "u": "https://blog.iota.org/update-q2-2026/",
-     "n": "S",
+     "t": "Kenia, Marruecos y Nigeria son los primeros países en implementar ADAPT (iniciativa liderada por la Secretaría del AfCFTA con el Tony Blair Institute y el WEF, lanzada en nov-2025); implementación en marcha según el blog de IOTA (parte interesada); los socios no se leyeron en las webs de AfCFTA, TBI ni WEF",
+     "u": "https://blog.iota.org/first-adapt-implementations",
+     "n": "P",
      "futuro": false
     }
-   ]
+   ],
+   "tipos_activo": {
+    "nota": "IOTA Foundation (iota.org/products/tokenization, leída en Chrome el 14-nov-2026) describe un marco de tokenización: monedas fraccionables, objetos únicos (NFT por defecto, sin ERC-721), 'Closed-Loop Token' para controles de cumplimiento y 'Regulated Coin' con lista de denegación. Son capacidades técnicas anunciadas por el propio proyecto; no hay cifras de valor tokenizado y RWA.xyz no lista IOTA. El programa ADAPT/TWIN digitaliza documentos de comercio, identidad y pagos, no activos financieros tokenizados. [S]",
+    "tipos": {},
+    "emisores": null,
+    "estandar": {
+     "t": "Coin Standard de IOTA (Move) con 'Regulated Coin' (lista de denegación), Closed-Loop Token para controles de cumplimiento y objetos como NFT nativos; no usa ERC-20/721 en L1 (la cadena EVM de IOTA es aparte)",
+     "f": "iota.org, IOTA Tokenization (parte interesada)",
+     "u": "https://www.iota.org/products/tokenization",
+     "d": "2026-11-14",
+     "n": "P"
+    },
+    "liquidacion": null,
+    "cualitativo": {
+     "otros": {
+      "t": "Documentos de comercio e identidad digital (TWIN, ADAPT) con la Secretaría del AfCFTA en Kenia, Marruecos y Nigeria: registros verificables, no activos tokenizados con importe. La web de tokenización cita Impierce, Orobo, ObjectID y Turing Space como casos de identidad y pasaportes digitales",
+      "f": "Blog de IOTA (ADAPT, 19-may-2026) e iota.org (parte interesada)",
+      "u": "https://blog.iota.org/first-adapt-implementations",
+      "d": "2026-11-14",
+      "n": "P"
+     }
+    }
+   }
   },
   {
    "id": "plume",
@@ -3270,12 +3443,12 @@
      "n": "S"
     },
     "mensajeria": {
-     "token": "sin dato",
-     "quien": "LayerZero (SyncPools) para SkyLink; Stargate/LayerZero para puentes",
-     "ev": "SkyLink (anunciado 27-ene-2025) distribuye RWA a 16 redes con tokens espejo; el valor queda bloqueado en Plume. No es mensajería financiera tipo ISO 20022.",
-     "u": "https://thedefiant.io/news/press-releases/plume-network-strengthens-multi-chain-rwa-ecosystem-with-skylink-interoperability",
-     "d": "2025-01-27",
-     "n": "S"
+     "token": "parcial",
+     "quien": "Chainlink CCIP (7 carriles); Circle CCTP (dominio 22); LayerZero para SkyLink",
+     "ev": "Directorio CCIP de Plume: comisión en LINK, WPLUME o PLUME (gas nativo); 4 tokens (LINK, sUSD1+, USD1, YBTC.B). La tarifa de CCIP se paga en LINK o en tokens alternativos, incluidos el gas nativo y su versión envuelta (docs Chainlink, Fees & Billing); no es obligatorio pagar en LINK. Circle CCTP lista Plume con Fast Transfer. Datos de los propios proyectos.",
+     "u": "https://docs.chain.link/ccip/directory/mainnet/chain/plume-mainnet",
+     "d": "2026-11-14",
+     "n": "P"
     },
     "custodia": {
      "token": "sin dato",
