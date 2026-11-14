@@ -684,11 +684,11 @@
      "u": "https://docs.hedera.com/hedera/networks/mainnet/fees"
     },
     "rendimiento": {
-     "t": "Staking nativo de HBAR con recompensa máxima del 2,5 % anual votada por el Consejo (antes 6,5 %)",
-     "f": "docs.hedera.com, staking (resumen de buscador, no leído)",
-     "d": null,
-     "n": "V",
-     "u": "https://docs.hedera.com/hedera/core-concepts/staking/staking"
+     "t": "Staking nativo de HBAR sin bloqueo ni «slashing»; el Consejo de Hedera vota la recompensa máxima, que no es fija. La tasa vigente se consulta en HashScan (no leída aquí)",
+     "f": "docs.hedera.com, Stake HBAR y Staking Program (leídas; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.hedera.com/learn/core-concepts/staking/stake-hbar.md"
     },
     "interop": {
      "t": "La documentación oficial incluye guías de integración con Chainlink CCIP, LayerZero y USDT0 (índice leído; no prueba volumen de uso)",
@@ -812,10 +812,11 @@
      "n": "S"
     },
     "cumplimiento": {
-     "t": "Estándares de token con permisos (ERC-3643); JPMD de J.P. Morgan en Base (L2) desde nov-2025",
-     "f": "Dossier panorama; voz v041 (sin enlace guardado: [VERIFICAR])",
-     "n": "V",
-     "d": null
+     "t": "Estándar ERC-3643 (T-REX) para tokens de valores: registro de identidad y reglas de cumplimiento validadas en cadena antes de cada transferencia. El uso de JPMD de J.P. Morgan en Base no se ha verificado con fuente primaria",
+     "f": "EIP-3643, eips.ethereum.org (leída)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://eips.ethereum.org/EIPS/eip-3643"
     },
     "pagos": {
      "t": "Bloques de ~12 s en L1; L2 más rápidos; comisión variable en ETH",
@@ -901,7 +902,8 @@
    ],
    "sin_dato": [
     "Reparto de BUIDL por cadena con fuente del emisor.",
-    "Qué parte de la comisión de las L2 llega a Ethereum."
+    "Qué parte de la comisión de las L2 llega a Ethereum.",
+    "JPMD de J.P. Morgan en Base: sin fuente primaria leída."
    ]
   },
   {
@@ -960,10 +962,11 @@
      "n": "P"
     },
     "rendimiento": {
-     "t": "Staking de SOL nativo",
-     "f": "Conocimiento general; sin cifra leída hoy",
+     "t": "Staking de SOL con recompensa a validadores por participar; el documento de diseño de Agave (Anza) fija la tasa anual en función del % de la oferta en stake. No se ha leído la tasa vigente",
+     "f": "docs.anza.xyz, Staking Rewards (leída; documento de diseño, parte interesada)",
      "d": "2026-11-14",
-     "n": "V"
+     "n": "P",
+     "u": "https://docs.anza.xyz/implemented-proposals/staking-rewards"
     },
     "interop": null,
     "regulacion": {
@@ -1572,7 +1575,13 @@
      "n": "P",
      "u": "https://docs.chain.link/ccip/concepts/architecture/overview"
     },
-    "activos": null,
+    "activos": {
+     "t": "SmartData: feeds de prueba de reservas, NAV y activos bajo gestión para RWA tokenizados; la propia doc avisa de que muchos dependen de una única fuente (emisor, administrador, custodio o auditor). Sin cifra de activos asegurados",
+     "f": "docs.chain.link, SmartData (leída; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.chain.link/data-feeds/smartdata.md"
+    },
     "cumplimiento": {
      "t": "DTCC usará Chainlink (CRE y su estándar de datos) en su Collateral AppChain; Chainlink trabaja para conectar instituciones al libro mayor de Swift (anuncio propio, sin cita de Swift)",
      "f": "DTCC (12-may-2026) y nota de Chainlink (28-sep-2026)",
@@ -1695,7 +1704,13 @@
     }
    ],
    "matriz": {
-    "liquidez": null,
+    "liquidez": {
+     "t": "Suscripción y reembolso instantáneos de OUSG solo en Ethereum, con mínimo de 5.000 $, tope global de 50 M$ cada 24 h y tope individual de 25 M$; por encima hay que pedirlo al emisor. No se ha leído liquidez en mercado secundario",
+     "f": "docs.ondo.finance, Instant Minting and Redemption Limits (leída; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.ondo.finance/qualified-access-products/ousg/instant-limits.md"
+    },
     "seguridad": {
      "t": "Aragon señala que los productos principales se controlan con multifirmas del equipo, que también tienen roles de administración y emisión del token ONDO",
      "f": "Aragon OTF (resumen de buscador)",
@@ -1711,10 +1726,11 @@
      "n": "S"
     },
     "cumplimiento": {
-     "t": "OUSG exige 100.000 $ y ser inversor acreditado; USDY desde 1 $",
-     "f": "Apuntes del cerebro (verificado 7-oct) (sin enlace guardado: [VERIFICAR])",
-     "d": "2026-10-07",
-     "n": "V"
+     "t": "Productos con acceso restringido: OUSG solo para inversores de los «Qualified-Access Funds» (criterios más comunes: patrimonio > 5 M$ de personas o > 25 M$ de entidades); USDY prohíbe suscribir a personas de EE. UU., Canadá y otras jurisdicciones listadas. Las cifras antiguas de 100.000 $ y «acreditado» no figuran en estas páginas",
+     "f": "docs.ondo.finance, elegibilidad de OUSG y USDY (leídas; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.ondo.finance/qualified-access-products/ousg/eligibility-and-onboarding.md"
     },
     "pagos": null,
     "rendimiento": {
@@ -1731,7 +1747,13 @@
      "n": "P",
      "u": "https://docs.ondo.finance/addresses"
     },
-    "regulacion": null
+    "regulacion": {
+     "t": "OUSG se ofrece al amparo de la Regla 506(c) de la Regulación D (Ley de Valores de 1933); el emisor se exime de la Ley de Sociedades de Inversión de 1940 (sección 3(c)(7)) al vender solo a «compradores cualificados»",
+     "f": "docs.ondo.finance, Regulatory Compliance de OUSG (leída; autodeclaración del emisor)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.ondo.finance/qualified-access-products/ousg/regulatory-compliance.md"
+    }
    },
    "capas": {
     "liquidacion": {
@@ -2252,7 +2274,13 @@
      "d": "2026-11-14",
      "n": "P"
     },
-    "interop": null,
+    "interop": {
+     "t": "Puentes oficiales listados: puente nativo de Arbitrum (PLUME y WETH con Ethereum), puente de pUSD (USDC.e y pUSD) y Stargate/LayerZero (USDC.e y USDT con más de 100 cadenas); sin cifras de uso",
+     "f": "docs.plume.org, Bridges (leída; parte interesada)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.plume.org/plume/developers/tools-and-services/bridges.md"
+    },
     "regulacion": {
      "t": "Registrada ante la SEC como agente de transferencia (oct-2025)",
      "f": "Cointelegraph (resumen; registro de la SEC no leído)",

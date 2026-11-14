@@ -293,6 +293,15 @@
       "nivel": "P",
       "definicion": "Pobreza del INDEC (EPH, 31 aglomerados urbanos), primer semestre de 2026, informe técnico del 24-sep-2026 leído en indec.gob.ar el 14-nov-2026: 32,3 % de las personas (24,4 % de los hogares) bajo la línea de pobreza; indigencia 7,5 % de personas (5,6 % de hogares). Sube 4,1 puntos en personas frente al 2.º semestre de 2025. La pobreza infantil (44,5 %) viene de prensa. Distinta de la línea nacional del Banco Mundial.",
       "periodicidad": "semestral"
+    },
+    "paro_juvenil": {
+      "valor": null,
+      "unidad": "% población activa del grupo (14-29 años)",
+      "fecha": "2026-Q2",
+      "fuente": "https://www.indec.gob.ar/uploads/informesdeprensa/mercado_trabajo_eph_2trim26433FCBC5A8.pdf",
+      "nivel": "P",
+      "definicion": "El informe técnico del INDEC (EPH, 31 aglomerados urbanos, 2T-2026, leído el 14-nov-2026) publica la desocupación de 14 a 29 años solo por sexo, no el total: mujeres 17,1 % (2T-2025: 16,9 %); varones 14,1 % (2T-2025: 12,7 %). Total 14-29 sin cifra oficial leída (no se promedia: hace falta ponderar por población activa); queda null. No comparable con el paro de 15-24 años de la OIT.",
+      "periodicidad": "trimestral"
     }
   },
   "BR": {
@@ -330,13 +339,15 @@
   },
   "VE": {
     "ipc": {
-      "valor": 467.9,
-      "unidad": "% (media anual 2026, estimación del FMI)",
-      "fecha": "2026",
-      "fuente": "https://www.bloomberglinea.com/",
-      "nivel": "S",
-      "definicion": "Inflación media de 2026 estimada por el FMI (actualización de octubre de 2026), vía Bloomberg Línea; WEO sin leer [VERIFICAR]. Rango de estimaciones muy amplio y el BCV tiene historial de retrasos (el FMI daba 387,4 % en abril). No es un dato interanual mensual.",
-      "periodicidad": "irregular"
+      "valor": 376.9,
+      "unidad": "% interanual",
+      "fecha": "2026-10",
+      "fuente": "https://www.bcv.org.ve/estadisticas/consumidor",
+      "nivel": "P",
+      "definicion": "INPC del Banco Central de Venezuela (Excel oficial «INPC desde 2008», base dic-2007=100, leído el 14-nov-2026): índice de oct-2026 / índice de oct-2025 (calculado aquí con los índices publicados). Mensual oct-2026 6,2 % (sep 8,4 %); acumulado ene-oct 245,5 % frente a dic-2025 (calculado). El BCV marca 2025-2026 con (*) (cifras provisionales). Interanual, no media anual: sustituye a la media del FMI (467,9 %) como dato de referencia. Historial de retrasos y revisiones del BCV [VERIFICAR] si se revisa la serie.",
+      "periodicidad": "mensual",
+      "anterior": 465.6,
+      "anterior_fecha": "2026-09"
     }
   },
   "CU": {
