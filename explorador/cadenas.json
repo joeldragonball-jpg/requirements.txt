@@ -351,7 +351,7 @@
      "u": "https://xrpl.org/resources/known-amendments"
     },
     "pagos": {
-     "t": "Cierre de ledger ~3-4 s; cada transacción destruye una pequeña cantidad de XRP",
+     "t": "Cierre de ledger: 4-6 s por ronda de consenso según xrpl.org (medición propia del dossier ~3-4 s, no oficial); cada transacción destruye una pequeña cantidad de XRP",
      "f": "xrpl.org (comisión) y medición del dossier",
      "u": "https://xrpl.org/docs/concepts/transactions/transaction-cost",
      "d": "2026-11-14",
@@ -516,7 +516,7 @@
      "n": "P"
     },
     "liquidacion": {
-     "t": "Red: el consenso de un ledger «tarda 4-6 segundos» y el ledger validado es final. Contractual: OUSG de Ondo anuncia canje instantáneo 24/7 por USDC y diario por USD (la fuente es el emisor)",
+     "t": "Red: el consenso de un ledger «tarda 4-6 segundos»; la página consultada no define «finalidad». Contractual: OUSG de Ondo anuncia canje instantáneo 24/7 por USDC y diario por USD (la fuente es el emisor)",
      "f": "xrpl.org (What is the XRP Ledger, leída) y ondo.finance/ousg (leída; parte interesada)",
      "u": "https://xrpl.org/docs/introduction/what-is-the-xrp-ledger",
      "d": "2026-11-14",
@@ -918,15 +918,15 @@
     },
     {
      "fecha": "2026-08-05",
-     "t": "Taurus abre el stack completo de Hedera (HTS, contratos, custodia y staking de HBAR) a 40+ bancos y emisores",
+     "t": "Taurus abre la pila completa de Hedera (tokens nativos, contratos EVM, nodos y staking de HBAR) a 40+ instituciones reguladas, entre ellas CACEIS y State Street (nota de prensa recogida por FF News)",
      "u": "https://ffnews.com/news/taurus-unlocks-full-hedera-stack-for-40-global-banks-to-scale-digital-asset-tokenization",
      "n": "S",
      "futuro": false
     },
     {
      "fecha": "2026-09-24",
-     "t": "Hedera cede CLPR (protocolo entre libros mayores desarrollado por Hashgraph) a los laboratorios de Linux Foundation Decentralized Trust",
-     "u": "https://hedera.com/blog/hedera-contributes-hashgraph-developed-clpr-to-linux-foundation-decentralized-trust-labs/",
+     "t": "Hedera cede CLPR (protocolo entre libros mayores «sin puentes», aún en desarrollo por Hashgraph) a los laboratorios de Linux Foundation Decentralized Trust; programa Early Adopter en testnet",
+     "u": "https://hedera.com/blog/hedera-contributes-hashgraph-developed-clpr-to-lfdt/",
      "n": "S",
      "futuro": false
     },
@@ -1002,7 +1002,7 @@
      "n": "S"
     },
     "estandar": {
-     "t": "Tokens nativos HTS (sin contrato inteligente) con claves de cumplimiento opcionales: KYC (solo cuentas aprobadas), congelar, pausar y «wipe» (retirar saldo de una cuenta), más claves de admin y suministro; una vez fijadas al crear el token no se pueden quitar. Para valores regulados, Asset Tokenization Studio (ERC-1400, listas de permitidos/bloqueados y roles) con soporte parcial de ERC-3643 por defecto y opción de conectar un Compliance ID y un Identity Registry ERC-3643 existentes",
+     "t": "Tokens nativos HTS (sin contrato inteligente) con claves de cumplimiento opcionales: KYC (solo cuentas aprobadas), congelar, pausar y «wipe» (retirar saldo de una cuenta), más claves de admin y suministro. Para valores regulados, Asset Tokenization Studio (ERC-1400, listas de permitidos/bloqueados y roles) con soporte parcial de ERC-3643 por defecto y opción de conectar un Compliance ID y un Identity Registry ERC-3643 existentes. Las referencias a Asset Tokenization Studio (ERC-1400/ERC-3643) no se releyeron en fuente [VERIFICAR].",
      "f": "docs.hedera.com, HTS Native Tokenization y ATS FAQ (leídas por mí vía curl; proyecto hablando de sí mismo)",
      "u": "https://docs.hedera.com/learn/core-concepts/tokens/hts-overview.md",
      "d": "2026-11-14",
@@ -1145,7 +1145,7 @@
     },
     {
      "fecha": "2026-12-31",
-     "t": "Glamsterdam en la red principal: previsto en el 4T-2026, sin fecha fijada",
+     "t": "Glamsterdam (ePBS EIP-7732 y listas de acceso por bloque EIP-7928): activa en Sepolia desde el 6-oct-2026; aplazada en Hoodi el 22-oct; el 4T-2026 era el objetivo anterior y ahora no está confirmado; sin fecha en mainnet [ESPECULACIÓN]",
      "u": "https://everstake.one/resources/blog/ethereum-glamsterdam-upgrade-explained",
      "n": "S",
      "futuro": true,
@@ -1439,7 +1439,7 @@
      "n": "P"
     },
     "liquidacion": {
-     "t": "Red: con TowerBFT la finalidad tardaba unos 12,8 s; Alpenglow apunta a ~150 ms y los slots bajaron de 400 a 200 ms (completado en oct-2026). Contractual: OUSG 24/7 vía USDC en Solana (Ondo, parte interesada)",
+     "t": "Red: con TowerBFT la finalidad tardaba unos 12,8 s; con Alpenglow la Fundación Solana apunta a ~150 ms (expectativa medida en pruebas, no una constante) y los slots bajaron de 400 a 200 ms (completado en oct-2026). Contractual: OUSG 24/7 vía USDC en Solana (Ondo, parte interesada)",
      "f": "solana.com/upgrades/alpenglow (leída; parte interesada) y ondo.finance/ousg (leída)",
      "u": "https://solana.com/upgrades/alpenglow",
      "d": "2026-11-14",
@@ -1771,7 +1771,7 @@
     },
     {
      "fecha": "2026-09-22",
-     "t": "Activación en mainnet de Helicon (ejecución continua y staking de renovación automática; plazo de validación de 48 h)",
+     "t": "22-sep-2026 (11:00 ET): activación programada en mainnet de Helicon (release v1.15.0): C-Chain con ejecución asíncrona, staking de renovación automática y duración mínima de staking de 48 h; la release no confirma la activación efectiva",
      "u": "https://github.com/ava-labs/avalanchego/releases/tag/v1.15.0",
      "n": "P",
      "futuro": false
@@ -1918,7 +1918,7 @@
      "n": "P"
     },
     "rendimiento": {
-     "t": "Polygon destina el 12 % de los 10.000 M de POL a recompensas de staking; la documentación solo da tasas esperadas según el calendario de emisión y el % en staking, no una rentabilidad en vivo",
+     "t": "La doc de recompensas asigna el 12 % de los 10.000 M de POL a recompensas de staking como bolsa fija repartida en 5 años (de ~313 M POL el 1.er año a ~149 M el 5.º, suma ≈ 1.200 M); da tasas esperadas según el % en staking (p. ej. 12 % el 2.º año con un 30 % en staking), no una rentabilidad en vivo",
      "f": "Documentación de Polygon (leída)",
      "u": "https://docs.polygon.technology/pos/reference/rewards.md",
      "d": "2026-11-14",
@@ -1975,13 +1975,13 @@
     "supuestos": [
      "Comisiones bajas",
      "Competencia de las L2 de Ethereum",
-     "POL es el token de gas y de staking; el baseFee (EIP-1559) se quema y los validadores cobran staking más propinas. Dos documentos de Polygon no coinciden en la emisión: la página del token da un 2 % anual de emisión (1 % a validadores tras 2025 más el tesoro), y la de recompensas habla de un 12 % del suministro como bolsa fija; el foro de gobernanza tiene una propuesta de revisar la tokenomics (eliminar el 2 %) [VERIFICAR estado]."
+     "POL es el token de gas y de staking; el baseFee (EIP-1559) se quema y los validadores cobran staking más propinas. Dos documentos de Polygon no cuadran: la página del token da una emisión del 2 % anual tras junio de 2025 (PIP-26) y la de recompensas una bolsa fija del 12 % en 5 años; el calendario de recompensas parece anterior a PIP-26 [VERIFICAR]"
     ]
    },
    "hitos": [
     {
      "fecha": "2026-03-18",
-     "t": "T-REX Network, Apex/Tokeny y Polygon Labs anuncian T-REX Ledger, cadena de cumplimiento (Polygon CDK + Agglayer) para valores tokenizados ERC-3643",
+     "t": "T-REX Network, Tokeny/Apex y Polygon Labs anuncian T-REX Ledger, cadena de cumplimiento (Polygon CDK + Agglayer) para valores ERC-3643; Apex apunta a 100 mil M$ tokenizados para jun-2027 (objetivo del emisor)",
      "u": "https://polygon.technology/blog/apex-group-commits-100b-in-tokenized-assets-to-t-rex-ledger-new-rwa-compliance-chain-built-with-polygon-cdk",
      "n": "P",
      "futuro": false
@@ -2228,7 +2228,7 @@
     },
     {
      "fecha": "2026-10-28",
-     "t": "Servicio de tokenización de DTC en producción (Canton y Besu)",
+     "t": "DTC (DTCC) lanza el DTCC Tokenization Service, integrado hoy con Canton Network y con la red privada Besu de DTCC; más redes en 2027",
      "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
      "n": "P",
      "futuro": false
@@ -2534,7 +2534,7 @@
      "n": "P"
     },
     "interop": {
-     "t": "Lista oficial de contratos: OUSG en 4 redes (Ethereum, Polygon, Solana, XRP Ledger) y USDY en 12 (entre ellas Ethereum, BNB Chain, Solana, Stellar, Arbitrum y Plume)",
+     "t": "Lista oficial de contratos (docs.ondo.finance/addresses): OUSG en 4 redes (Ethereum, Polygon, Solana, XRP Ledger) y USDY en 12 (Ethereum, BNB Chain, Mantle, Solana, Sui, Aptos, Noble, Arbitrum, Stellar, Plume, Sei y Tempo); la web comercial de USDY enumera solo 9",
      "f": "docs.ondo.finance, direcciones (leída por el subagente)",
      "d": "2026-11-14",
      "n": "P",
@@ -2800,11 +2800,11 @@
    ],
    "iso": [
     {
-     "t": "Su documentación dice que es compatible con ISO 20022 (pacs.008, pain.001…); Impel, su derivada, ofrece una API ISO 20022",
+     "t": "Su documentación dice estar diseñada con compatibilidad ISO 20022 y mapea mensajes pacs.008, pacs.009, camt.053, pain.001 y head.001 (con código de ejemplo); es un mapeo de formato propio, sin conexión a Swift descrita. La mención a Impel y su API ISO 20022 no figura en esa página [VERIFICAR]",
      "f": "docs.xdc.network (parte interesada, resumen de buscador)",
      "u": "https://docs.xdc.network/enterprise/iso-20022/",
      "d": "2026-11-14",
-     "n": "S"
+     "n": "P"
     }
    ],
    "matriz": {
@@ -3069,7 +3069,7 @@
     },
     {
      "fecha": "2026-09-24",
-     "t": "The Clearing House elige a Quant para su On-Chain Money Initiative (liquidación de depósitos tokenizados, conectada a RTP y CHIPS) y como plataforma de depósitos tokenizados como servicio",
+     "t": "The Clearing House elige a Quant (según Quant) para su On-Chain Money Initiative: red de compensación y liquidación de depósitos tokenizados conectada a RTP y CHIPS; disponible para instituciones en el 1S-2027",
      "u": "https://quant.network/news/quant-powers-the-clearing-houses-on-chain-money-initiative-in-the-us/",
      "n": "P",
      "futuro": false
@@ -3231,7 +3231,7 @@
     },
     {
      "fecha": "2026-05-19",
-     "t": "ADAPT: Kenia, Nigeria y Marruecos, primeros países",
+     "t": "ADAPT (comercio digital en África con AfCFTA y Tony Blair Institute): implementación en marcha según el informe del 2T-2026 de IOTA; los países y la fecha de lanzamiento no constan en esa página [VERIFICAR]",
      "u": "https://blog.iota.org/update-q2-2026/",
      "n": "S",
      "futuro": false
@@ -3373,7 +3373,7 @@
     },
     {
      "fecha": "2024-11-22",
-     "t": "Plume anuncia que integrará el estándar ERC-3643 en su L1",
+     "t": "Plume se une a la ERC-3643 Association y anuncia que integrará el estándar en su L1 (no consta que ya esté operativo)",
      "u": "https://prnewswire.com/news-releases/compliance-meets-scalability-plume-integrates-erc-3643-for-rwa-solutions-302313655.html",
      "n": "S",
      "futuro": false
@@ -3437,7 +3437,7 @@
     },
     "emisores": null,
     "estandar": {
-     "t": "ERC-3643 (token de valores con cumplimiento, anunciado en nov-2024) y Arc, motor sin código para fijar metadatos, restricciones de transferencia y reglas; SkyLink para distribuirlos a otras redes. No consta qué estándar usa cada activo concreto",
+     "t": "ERC-3643 (token de valores con cumplimiento, Plume anunció en nov-2024 que lo integrará, sin constar que ya esté operativo) y Arc, motor sin código para fijar metadatos, restricciones de transferencia y reglas; SkyLink para distribuirlos a otras redes. No consta qué estándar usa cada activo concreto. Arc figuraba «en desarrollo» en su documentación y SkyLink no se leyó en fuente primaria [VERIFICAR].",
      "f": "Plume (nota de prensa 22-nov-2024; docs Arc) y resumen de buscador",
      "u": "https://prnewswire.com/news-releases/compliance-meets-scalability-plume-integrates-erc-3643-for-rwa-solutions-302313655.html",
      "d": "2024-11-22",
