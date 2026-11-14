@@ -16,3 +16,14 @@
 - **Radar (W03)**: Corea/tokenización: la consulta cerró el 11-nov, `proxima` vaciada (la URL del JSON, 87653, difiere de la que leyó el subagente, 87834: comprobar). España/tokenización: etapa 4 [S] por la autorización de la CNMV a Bit2Me STX (28-oct; solo se leyó título y fecha). Egipto, Etiopía e India: sin etapa nueva (solo fuentes secundarias). Quedan 30 celdas sin dato.
 - **Países (C260)**: 11 indicadores nuevos como [S]; Sudáfrica IPC [P] vía SAnews (agencia oficial). Los de Venezuela, Rusia (IPC), Irán y Emiratos no se vuelcan: fuentes contradictorias.
 - Lecciones: los subagentes leen con un modelo pequeño (resúmenes), así que las páginas oficiales se cotejan antes de escribir; la web de la SEC limita las peticiones automáticas.
+
+### Cierre del 14-nov (sesión de seguimiento, Chrome)
+- **v160 (SEC) → confirmada**: leída la nota 2026-100 (1-oct-2026) y el Federal Register: propuesta publicada el 6-oct-2026 (2026-20466), comentarios hasta el 7-dic-2026. **v161 (CFTC)**: Federal Register 13-oct-2026 (2026-20888), comentarios hasta el 14-dic-2026.
+- **Corea/tokenización**: la URL correcta del 1-oct es `…/pr010101/87834` (consulta 2-oct a 11-nov); la 87653 era la hoja de ruta del 4-sep. Corregida en el JSON.
+- **España/tokenización → P**: leída la nota de la CNMV (PDF, 28-oct-2026): autoriza Bit2Me STX (negociación y liquidación DLT, acciones y bonos); la emisión de dic-2026 sigue siendo prensa [S].
+- **W03 (8 celdas pendientes)**: sin fuente oficial leída (finma.ch bloqueó la lectura en Chrome; el resto sin intentar por tiempo); siguen sin dato.
+
+## C260 · lectura oficial con Chrome (14-nov-2026, sesión aparte)
+- Subidos de [S] a [P] sin cambiar ningún valor: Argentina paro 2T-2026 7,9 % y pobreza 1S-2026 32,3 % (indec.gob.ar, informes del 17 y 24-sep); Brasil IPCA oct 4,63 % (12 meses) y PNAD jul-sep 5,2 % (API SIDRA del IBGE, tablas 1737 y 6381); Sudáfrica QLFS 3T 33,7 % e IPC sep 4,5 % (portada de statssa.gov.za); India IPC oct 6,09 % (portada de mospi.gov.in).
+- Sin leer: BPS Indonesia (verificación anti-bots, no se salta; paro ago-2026 sigue [S]); PDF del INDEC (paro juvenil de Argentina sigue solo por sexo) y PDF de MoSPI (rural/urbano de India quedan de prensa).
+- Lección: las APIs abiertas (SIDRA del IBGE) se leen con fetch desde la pestaña; los PDF no se leen en el visor de Chrome.
