@@ -1,9 +1,9 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-14 07:11 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-14 09:11 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** W10 Energía y geopolítica · Gemini Energía y geopolítica
+**Hoy (máx. 3):** Gemini Energía y geopolítica
 **Periódicas (próxima):** W10 11-14 · W01 11-16 · W02 11-17 · W03 11-18 · W05 11-19 · W06 11-20 · W09 11-20 · W08 11-25 · W04 11-26 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (39):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: T15 BRICS, W03E (Irán/Egipto/Etiopía), D08/D09, Ge · C58 falta: Italia y NL ya leídos [P]; faltan: midterms certif · C59 falta: Faltan salario mínimo IT/CN/JP/IN (IT e IN: n/a),  · C61 falta: Vivienda vacía en CN/JP/IN/GB/RU; LPI y paro total · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
@@ -124,15 +124,15 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [alta] 2026-11-11 (3 d) · La Fed está dividida sobre el ritmo de las subidas de tipos.
-- [alta] 2026-11-12 (2 d) · Explosiones de petroleros en el Estrecho de Ormuz.
-- [alta] 2026-11-12 (2 d) · La oferta de stablecoins cae 14.200 M$ en 30 días, el mayor descenso desde junio de 2022.
 - [media] 2026-10-22 (23 d) · hutiES a Arabia Saudi
 - [media] 2026-10-22 (23 d) · hutiES a Arabia Saudi
 - [media] 2026-10-22 (23 d) · hutiES a Arabia Saudi
 - [media] 2026-10-23 (22 d) · El futuro continuo del Brent cierra en $111,97
 - [media] 2026-10-23 (22 d) · El futuro continuo del Brent cierra en $111,97
-- … y 81 más en el Seguimiento
+- [media] 2026-10-23 (22 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí
+- [media] 2026-10-23 (22 d) · El futuro continuo del Brent cierra en $111,97, con máximo del día sobre $116.
+- [media] 2026-10-23 (22 d) · Titulares de «114 $» y «117 $» por ataques a infraestructura saudí. Brent 113,08 → 111,7 $ (-1.2 %), WTI 99,29
+- … y 78 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (1) → W03 · KR/tokenizacion
@@ -140,7 +140,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 🟡 Radar regulatorio: Celdas sin dato (29) → W03 · Más huecos: EG 5, ES 5, ET 4, IN 2, BRICS 2
 
 ## Bots con problema
-- Verificación mensual, Paneles de datos
+- Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-04 · Tesoro de EE. UU.: anuncio trimestral de refinanciación (medio) → ◐ rutina ejecutada (W02 del 2026-11-10); dato sin marcar como leído
@@ -149,10 +149,10 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 2026-11-06 · Empleo EE. UU. (informe de octubre) (alto) → ◐ rutina ejecutada (W01 del 2026-11-10); dato sin marcar como leído
 - 2026-11-06 · Brasil: bancos y entidades de pago no podrán operar con proveedores cr (medio) → ◐ rutina ejecutada (W03 del 2026-11-11); dato sin marcar como leído
 - 2026-11-10 · Inflación EE. UU. (IPC de octubre) (alto) → ◐ rutina ejecutada (W01 del 2026-11-10); dato sin marcar como leído
-- 2026-11-10 · EIA: perspectivas de energía a corto plazo (STEO) (medio) → ◐ rutina ejecutada (W10 del 2026-11-10); dato sin marcar como leído
+- 2026-11-10 · EIA: perspectivas de energía a corto plazo (STEO) (medio) → ◐ rutina ejecutada (W10 del 2026-11-14); dato sin marcar como leído
 - 2026-11-11 · SEC: plazo sobre opciones de ETFs cripto (SR-ISE-2026-42) (medio) → ✓ revisado (hecho)
 - 2026-11-11 · OPEP: informe mensual del mercado petrolero (noviembre) (medio) → ✓ revisado (hecho)
-- 2026-11-13 · AIE: informe mensual del mercado petrolero (noviembre) (medio) → ⏳ SIN research: decidir (EV)
+- 2026-11-13 · AIE: informe mensual del mercado petrolero (noviembre) (medio) → ✓ revisado (hecho)
 - 2026-11-13 · España: IPC definitivo de octubre (INE) (medio) → ⏳ SIN research: decidir (EV)
 «✓ cubierto» exige que el informe de la rutina tenga una línea `Eventos leídos: <fecha o título>`; sin ella solo consta que la rutina se ejecutó (C256).
 Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.
