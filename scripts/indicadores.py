@@ -5,8 +5,11 @@ Si una fuente falla, el indicador anterior se conserva y se avisa en «fallos».
 """
 import json
 import sys
+import threading
+import time
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -28,13 +31,29 @@ URL_BM = "https://api.worldbank.org/v2/country/{c}/indicator/{i}?format=json&mrv
 URL_FMI = "https://www.imf.org/external/datamapper/api/v1/{i}/{c}"
 
 
+_FIN = [None]      # instante límite (time.monotonic) para todo el bloque: pasado ese punto, las peticiones fallan en seco y se conserva el dato anterior
+
+
 def _get(url, t=40):
+    if _FIN[0] is not None and time.monotonic() > _FIN[0]:
+        raise TimeoutError("tiempo total agotado (se conserva el dato anterior)")
     r = urllib.request.Request(url, headers={"User-Agent": "cartera-joel/1.0 (uso personal)"})
     with urllib.request.urlopen(r, timeout=t) as f:
         return json.loads(f.read().decode("utf-8", "replace"))
 
 
-_ANT = [None]      # valor del periodo anterior del último indicador leído: (valor, periodo); lo recoge poner()
+class _Ant(threading.local):
+    """Valor del periodo anterior del último indicador leído: (valor, periodo); lo recoge poner(). Uno por hilo."""
+    v = None
+
+    def __getitem__(self, i):
+        return self.v
+
+    def __setitem__(self, i, x):
+        self.v = x
+
+
+_ANT = _Ant()
 
 
 def _eurostat(dataset, **filtros):
@@ -55,7 +74,7 @@ def _bm(pais, indicador, dec=1, escala=1):
     try:
         j = _get(URL_BM.format(c=pais, i=indicador))
     except TimeoutError:                       # el Banco Mundial da timeouts sueltos: un reintento
-        j = _get(URL_BM.format(c=pais, i=indicador), 60)
+        j = _get(URL_BM.format(c=pais, i=indicador), 30)
     if len(j) < 2 or not j[1]:
         raise ValueError("sin datos")
     con = [x for x in j[1] if x.get("value") is not None]
@@ -89,7 +108,8 @@ def leer_indicadores(previo=None):
     previo_p = {p["id"]: p.get("indicadores", {}) for p in (previo or {}).get("paises", [])}
     manual = json.loads(MANUAL.read_text(encoding="utf-8")) if MANUAL.exists() else {}
     fallos, salida = [], []
-    for pid, nombre, geo, iso in PAISES:
+    def _uno(pid, nombre, geo, iso):
+        fallos = []
         ind = {}
 
         def poner(clave, fn):
@@ -137,7 +157,14 @@ def leer_indicadores(previo=None):
         for clave, dato in m.items():
             ind[clave] = dato
             fallos[:] = [x for x in fallos if not x.startswith(f"{pid}/{clave}:")]
-        salida.append({"id": pid, "pais": nombre, "indicadores": ind})
+        return {"id": pid, "pais": nombre, "indicadores": ind}, fallos
+
+    _FIN[0] = time.monotonic() + 150       # tope de 2,5 min en total: antes, con el Banco Mundial lento, el paso entero se colgaba 15 min
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        res = list(ex.map(lambda a: _uno(*a), PAISES))
+    _FIN[0] = None
+    salida = [r[0] for r in res]
+    fallos = [x for r in res for x in r[1]]
     return {"paises": salida, "fallos": fallos}
 
 

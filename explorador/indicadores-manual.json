@@ -1,5 +1,5 @@
 {
-  "_actualizado": "2026-11-11",
+  "_actualizado": "2026-11-13",
   "_nota": "Datos sin API abierta: salario mínimo de las potencias. Nivel V = recordado, sin leer la norma oficial; [VERIFICAR] antes de citar. No se ordenan países.",
   "US": {
     "salario_minimo": {
@@ -255,13 +255,35 @@
   },
   "AR": {
     "ipc": {
-      "valor": 33.4,
+      "valor": 33.1,
       "unidad": "% interanual",
-      "fecha": "2026-09",
-      "fuente": "https://chequeado.com/nota/la-inflacion-de-septiembre-fue-del-19-y-acumula-236-en-lo-que-va-del-ano/",
+      "fecha": "2026-10",
+      "fuente": "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-5-31",
+      "nivel": "P",
+      "definicion": "IPC nacional del INDEC, octubre de 2026 (2,2 % mensual; 26,3 % acumulado ene-oct, calculado con los índices de la serie oficial leída el 13-nov-2026). Interanual, no media anual: sustituye a la media anual del Banco Mundial.",
+      "periodicidad": "mensual",
+      "anterior": 33.4,
+      "anterior_fecha": "2026-09"
+    },
+    "paro": {
+      "valor": 7.9,
+      "unidad": "% población activa",
+      "fecha": "2026-T2",
+      "fuente": "https://chequeado.com/nota/la-desocupacion-aumento-al-79-en-el-segundo-trimestre-de-2026-y-alcanzo-el-valor-mas-alto-de-la-gestion-de-milei",
       "nivel": "S",
-      "definicion": "IPC nacional del INDEC de septiembre de 2026 (1,9 % mensual; 23,6 % acumulado en 2026), publicado hacia el 13-oct-2026; cifra vía prensa (Chequeado, Finanzas Digital), comunicado del INDEC sin leer [VERIFICAR]. Sustituye a la media anual del Banco Mundial (2024).",
-      "periodicidad": "mensual"
+      "definicion": "Desocupación del INDEC (EPH, 31 aglomerados urbanos), segundo trimestre de 2026 (1,2 millones de personas), vía Chequeado; comunicado del INDEC sin leer [VERIFICAR]. Frente al mismo trimestre de 2025 (7,6 %) sube 0,3 puntos y es la tasa más alta de la gestión actual según esa fuente. No es la estimación modelo OIT del Banco Mundial. El 3.er trimestre de 2026 sale hacia mediados de diciembre.",
+      "periodicidad": "trimestral",
+      "anterior": 7.6,
+      "anterior_fecha": "2025-T2"
+    },
+    "pobreza": {
+      "valor": 32.3,
+      "unidad": "% de personas",
+      "fecha": "2026-S1",
+      "fuente": "https://www.indec.gob.ar/uploads/informesdeprensa/eph_pobreza_09_2670733F4C4D.pdf",
+      "nivel": "S",
+      "definicion": "Pobreza del INDEC (EPH, 31 aglomerados urbanos), primer semestre de 2026, publicada el 24-sep-2026 (indigencia 7,5 %; pobreza infantil 0-14 años 44,5 %), vía Chequeado, Mercado y Forbes Argentina; PDF del INDEC sin leer [VERIFICAR]. Un titular da 32,9 %, que no coincide con las demás fuentes: se usa 32,3 %. Sube 4,1 puntos frente al semestre anterior. Distinta de la línea nacional del Banco Mundial.",
+      "periodicidad": "semestral"
     }
   },
   "BR": {

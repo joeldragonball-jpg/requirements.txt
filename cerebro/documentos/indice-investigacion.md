@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-11-13
+actualizado: 2026-11-14
 ---
 # Índice de la investigación
 
@@ -13,8 +13,8 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 
 ## Auditorías y verificaciones
 - 2026-11-13 · Coherencia entre informes y explorador: qué se contradecía y cómo queda (`informes/research/2026-11-13-coherencia-informes-explorador.md`): Local, sin IA, 13 nov 2026. Método: buscar la misma cifra o el mismo hecho en todos los explorador/ .json y comparar con el informe más reciente;…
+- 2026-11-13 · 2026-11-13 · Bot de paneles, verificaciones de alta prioridad y Argentina (C260 parcial) (`informes/research/2026-11-13-bots-verificaciones-argentina.md`): Paneles de datos : el paso «Descargar los datos» se colgaba 15 min porque scripts/indicadores.py pedía al Banco Mundial ~300 datos uno a uno (cada…
 - 2026-11-12 · C254 · Verificación en fuente de las seis dudas abiertas por C252 (12-nov-2026) (`informes/research/2026-11-12-C254-verificaciones-repaso.md`): Cómo se leyó: API pública del Banco de Inglaterra, nodo público del XRP Ledger (xrplcluster.com), Horizon de Stellar y página del STEO con un script…
-- 2026-11-12 · C252 · Repaso analítico: incoherencias entre informes y explorador, conexiones y cifras cruzadas (12-nov-2026) (`informes/research/2026-11-12-C252-repaso-analitico-incoherencias.md`): IPC de EE. UU. de octubre: el dato está en el repo desde el 10 nov y cuatro informes diarios posteriores lo dan por «no leído». Es la incoherencia…
 
 ## Voces y predicciones
 - 2026-11-13 · W06 · Voces y predicciones (viernes 13-nov-2026) (`informes/research/2026-11-13-W06-voces-predicciones.md`): Trump en 60 Minutes (8 nov) queda como cita confirmada: «antes estuvo el petróleo».
@@ -27,9 +27,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-10 · C232 — Fiscalidad cripto en España y MiCA/CASP (10-nov-2026) (`informes/research/2026-11-10-C232-fiscalidad-cripto-mica.md`): Alcance: informativo, sin recomendaciones. Sesión corta: 4 búsquedas web; no se pudo abrir BOE, AEAT ni el registro CNMV/ESMA directamente. Todo lo…
 
 ## Energía y Ormuz
+- 2026-11-14 · W10 · Energía y geopolítica (sábado 14-nov-2026) (`informes/research/2026-11-14-W10-energia.md`): Futuros: Brent $95,84 y WTI $88,56 el viernes 13 nov; −2,5 % en la semana, segunda caída semanal seguida [S].
 - 2026-11-12 · C176 · C247 — Irán/Ormuz/petróleo y cripto, 5-12 nov (12-nov-2026) (`informes/research/2026-11-12-C176-C247-iran-ormuz-cripto-semana.md`): Método: 2 subagentes solo web. Todo [S] o [VERIFICAR]; no se volcó nada en JSON (sin primarias). Regla de umbrales aplicada.
 - 2026-11-11 · Petróleo y gas a 11-nov-2026 (`informes/research/2026-11-11-EV-energia-ormuz-brent.md`): Brent cayó ~4,7 % el lun 9 nov a 93,75 $ tras decir Trump (dom 8 nov) que más ataques a Irán son «muy improbables» mientras haya negociación. Siguió…
-- 2026-11-11 · EV · OPEP y Abu Dabi (`informes/research/2026-11-11-EV-opep-y-abu-dabi.md`): Abu Dabi: conversaciones EE. UU.–Ucrania–Rusia (10 11 nov)
 
 ## Deuda y bonos
 - 2026-11-12 · C230 · Vivienda y deuda autonómica (12-nov-2026) (`informes/research/2026-11-12-C230-vivienda-deuda-ccaa.md`): Completa el informe del 10 nov (INE IPV, hipotecas, condonación siguen vigentes ahí). Nivel: P = fuente oficial leída · S = prensa · [VERIFICAR]. Sin…
@@ -52,9 +52,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-11 · EV · Corea: la FSC cierra comentarios sobre valores tokenizados (`informes/research/2026-11-11-EV-corea-fsc-tokenizacion.md`): La Comisión de Servicios Financieros (FSC) de Corea abrió consulta sobre las normas de desarrollo de los valores tokenizados (acciones, bonos, fondos…
 
 ## Sesiones diarias (apertura y cierre)
+- 2026-11-14 · Informe de APERTURA — 2026-11-14 (sáb) (`informes/2026-11-14-apertura.md`): Cierre 13 nov: S&P −0,4 % (7.561,67), Nasdaq −0,9 %, Dow +0,1 %; chips −3,7 % (SOXX); la semana acaba en ~+2,5 % [S, AP].
 - 2026-11-13 · W09 · Resumen semanal (viernes 13-nov-2026) y plan del 14 al 22-nov (`informes/research/2026-11-13-W09-resumen-semanal.md`): Tipos largos de EE. UU. por encima del 5 % y Brent a 96,5 $: sube el coste del dinero y de la energía a la vez.
 - 2026-11-13 · S6 · C69: el cierre definitivo de la IGAE confirma las cifras y corrige un programa (`informes/research/2026-11-13-S6-C69-cierre-definitivo-igae.md`): Lecturas del 13 nov 2026. M€ = millones de euros. Datos en explorador/espana presupuesto.json (clave nueva cierre definitivo , dos líneas nuevas en…
-- 2026-11-13 · Informe de APERTURA — 2026-11-13 (vie) (`informes/2026-11-13-apertura.md`): Cierre 12 nov: S&P −0,4 % (7.592,4) tras absorber la dimisión del consejero delegado de Nvidia y la subida del petróleo por Irán [S, AP].
 
 ## Otros
 - 2026-11-13 · S6 · C69 + C77: se cierra la recaudación por impuesto; el resto necesita descargas (`informes/research/2026-11-13-S6-C69-C77-recaudacion-y-pendientes.md`): Lecturas del 12 nov 2026. M€ = millones de euros. Datos en explorador/espana manual.json (bloque recaudacion aeat ) y, regenerado,…

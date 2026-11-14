@@ -21,6 +21,7 @@ WORKFLOWS = [("alertas.yml", "Alertas de precio", 2.5), ("noticias.yml", "Notici
              ("onchain.yml", "Vigilancia on-chain", 2.5), ("escrow.yml", "Escrow de Ripple", 30), ("eventos.yml", "Aviso de eventos", 30),
              ("despertador.yml", "Despertador de la app", 12), ("revision.yml", "Revisión semanal del cerebro", 24 * 8),
              ("verificar.yml", "Verificación mensual", 24 * 35), ("paneles.yml", "Paneles de datos", 72)]
+IGNORA_CANCELADA_MANUAL = {"verificar.yml"}
 # Palabras del calendario que enlazan una tarea pendiente con su próximo plazo
 CLAVES = {"T06": ["Japón", "FIEA", "BoJ"], "T07": ["Corea"], "T08": ["Singapur", "MAS"], "T09": ["Hong Kong", "HKMA"], "T10": ["India", "RBI"],
           "T11": ["Brasil", "Copom"], "T12": ["Rusia"], "T13": ["Emiratos", "VARA"], "T14": ["China", "LPR"], "T15": ["BRICS"],
@@ -239,7 +240,12 @@ def bots():
     for archivo, nombre, tol in WORKFLOWS:
         try:
             r = json.load(urllib.request.urlopen(urllib.request.Request(
-                f"https://api.github.com/repos/{REPO}/actions/workflows/{archivo}/runs?per_page=1", headers=cab), timeout=20))["workflow_runs"][0]
+                f"https://api.github.com/repos/{REPO}/actions/workflows/{archivo}/runs?per_page=5", headers=cab), timeout=20))["workflow_runs"]
+            # Verificación mensual gasta API: una cancelación manual (botón «Run workflow» cortado) no cuenta como fallo del bot
+            if archivo in IGNORA_CANCELADA_MANUAL:
+                r = next((x for x in r if not (x["conclusion"] == "cancelled" and x["event"] == "workflow_dispatch")), r[0])
+            else:
+                r = r[0]
             horas = (ahora - datetime.fromisoformat(r["created_at"].replace("Z", "+00:00"))).total_seconds() / 3600
             ok = r["conclusion"] == "success" and horas <= tol
             out.append({"nombre": nombre, "ok": ok, "conclusion": r["conclusion"] or r["status"], "horas": round(horas, 1), "tolerancia": tol})

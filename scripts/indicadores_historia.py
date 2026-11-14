@@ -83,6 +83,9 @@ def _compacta(d):
     return {"frec": _frec(ks), "desde": ks[0], "hasta": ks[-1], "p": ks, "v": [d[k] for k in ks]}
 
 
+RAIZ_H = Path(__file__).resolve().parent.parent
+
+
 def main():
     hoy = date.today()
     fmi = json.loads(FMI_MANUAL.read_text(encoding="utf-8")) if FMI_MANUAL.exists() else {}
@@ -123,6 +126,11 @@ def main():
                         series[clave] = {**_compacta(d), "unidad": "% del PIB", "fuente": "https://www.imf.org/external/datamapper/" + ("GGXWDG_NGDP" if clave == "deuda" else "GGXCNL_NGDP"),
                                          "nivel": "S" if iso in ("CHN", "RUS") else "P", "actualizado": fmi.get("_leido", ""), "nota": "FMI, WEO " + fmi.get("_edicion", "") + "; el último año puede ser estimación."}
         salida[pid] = series
+    manual_h = RAIZ_H / "explorador" / "indicadores-historia-manual.json"   # series oficiales leídas a mano que sustituyen a las automáticas
+    if manual_h.exists():
+        for pid_m, ser_m in json.loads(manual_h.read_text(encoding="utf-8")).items():
+            if not pid_m.startswith("_"):
+                salida.setdefault(pid_m, {}).update(ser_m)
     out = {"generado": hoy.isoformat(), "desde": DESDE,
            "nota": "Series desde " + str(DESDE) + " (España desde 1996, inicio del mandato de Aznar; el IPC de Eurostat empieza en 1997-01). UE: Eurostat; resto: Banco Mundial (anual) y FMI (deuda y déficit). Solo cifras publicadas; sin serie = no se muestra.",
            "dudosas": DUDOSAS, "paises": salida, "fallos": fallos}

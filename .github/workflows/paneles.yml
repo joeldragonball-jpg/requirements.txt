@@ -33,6 +33,7 @@ jobs:
       - name: Descargar los datos
         id: datos
         continue-on-error: true
+        timeout-minutes: 8   # si una fuente se cuelga, se corta aquí y se guarda lo que haya (antes se perdían los 15 min del trabajo entero)
         run: python scripts/actualizar_paneles.py
 
       # Histórico de precios diarios para «Ver reacción» de la línea de tiempo. Solo stdlib, sin IA ni claves; si un símbolo falla conserva la serie anterior.
