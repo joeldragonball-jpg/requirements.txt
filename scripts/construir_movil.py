@@ -254,7 +254,7 @@ FRESCURA_JSON = (("paneles.json", "Paneles de mercado", ("leido",)), ("precios_v
                  ("indicadores-historia.json", "Historia de indicadores", ("generado",)), ("valoracion.json", "Valoración sectorial", ("generado",)),
                  ("calificaciones.json", "Calificaciones", ("leido",)), ("reservas.json", "Reservas", ("leido",)), ("deuda-fmi.json", "Deuda (FMI)", ("leido",)),
                  ("estabilidad.json", "Estabilidad", ("leido",)), ("paises.json", "Países", ("leido",)), ("elecciones.json", "Elecciones", ("leido",)),
-                 ("espana.json", "España", ("leido",)), ("espana-presupuesto.json", "Presupuesto de España", ("leido",)),
+                 ("espana.json", "España", ("leido",)), ("espana-presupuesto.json", "Presupuesto de España", ("leido",)), ("espana-recaudacion.json", "Recaudación de España", ("leido",)),
                  ("cbdc-blockchains.json", "CBDC y blockchains", ("leido",)), ("rwa-por-cadena-manual.json", "RWA por cadena", ("leido",)),
                  ("mandatos.json", "Mandatos", ("leido",)))
 

@@ -122,6 +122,32 @@ a{color:var(--ac)}
 .jus-mas{margin-top:4px}.jus-mas summary{cursor:pointer;color:var(--ac);font-size:var(--fs-s);padding:4px 0}
 .jus-quien{font-size:var(--fs-s);color:var(--tx2);margin:2px 0 6px}.jus-quien b{color:var(--tx)}
 .nota-v{color:var(--tx2);font-size:14px;margin:4px 0}
+/* C264 · pestaña Cadenas */
+.cad-top{display:flex;flex-wrap:wrap;gap:0 var(--gap)}.cad-top>.caja{flex:1 1 320px;min-width:0;margin-bottom:var(--gap)}
+.cad-h{font-size:var(--fs-s);margin:3px 0 6px;line-height:1.4}.cad-f{display:block;color:var(--tx2);font-size:var(--fs-xs)}.cad-f a{color:var(--ac)}
+.cad-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.cad-bt{font:inherit;font-size:var(--fs-xs);background:var(--bg);color:var(--tx2);border:1px solid var(--lin);border-radius:14px;padding:4px 12px;cursor:pointer}.cad-bt:hover,.cad-bt.on{color:var(--tx);border-color:var(--ac)}
+.cad-env{overflow-x:auto;max-width:100%}
+table.cad-mat{border-collapse:separate;border-spacing:3px;width:100%;table-layout:fixed;min-width:1080px}
+.cad-mat th{font-size:var(--fs-xs);color:var(--tx2);text-align:left;font-weight:600;vertical-align:bottom;padding:2px 4px}
+.cad-mat th.cad-red{position:sticky;left:0;z-index:1;background:var(--panel);width:150px;vertical-align:middle}.cad-mat tr:first-child th:first-child{width:150px}
+.cad-red button{font:inherit;font-size:var(--fs-xs);font-weight:700;color:var(--tx);background:none;border:0;padding:0;cursor:pointer;text-align:left}.cad-red button:hover{color:var(--ac)}
+td.cad-c{font-size:12.5px;line-height:1.3;vertical-align:top;padding:4px 5px;border-radius:5px;border-left:3px solid;color:var(--tx);cursor:help;overflow-wrap:anywhere;hyphens:auto}
+td.cad-c.nP{border-color:#2fe08f;background:rgba(47,224,143,.09)}td.cad-c.nS{border-color:#e8b64a;background:rgba(232,182,74,.09)}td.cad-c.nV{border-color:#ff6b6b;background:rgba(255,107,107,.08)}
+td.cad-c.nd{border-color:var(--lin);background:var(--nul);color:var(--tx2);font-style:italic;cursor:default}
+.cad-mat.cad-sm td.cad-c{text-align:center;font-weight:700;font-style:normal}table.cad-mat.cad-sm{min-width:760px}
+td.cad-tk{vertical-align:middle;white-space:nowrap}.cad-mat tr:first-child th:nth-last-child(2){width:150px}.cad-mat tr:first-child th:last-child{width:86px}
+.tk{display:inline-block;font-size:11.5px;font-weight:700;border-radius:4px;padding:1px 5px;margin:1px 2px 1px 0;border:1px solid var(--lin);color:var(--tx2);cursor:help}
+.tk.si{background:rgba(47,224,143,.2);border-color:#2fe08f;color:#2fe08f}.tk.pa{background:rgba(232,182,74,.18);border-color:#e8b64a;color:#e8b64a}.tk.mi{background:rgba(90,169,230,.16);border-color:#5aa9e6;color:#8cc4f0}.tk.no{background:rgba(138,151,176,.16);border-color:#8a97b0;color:#c3cbe0}.tk.nd{border-style:dashed}
+.cad-cap{font-size:12.5px;font-weight:700;text-align:center;border-radius:5px;padding:1px 6px}.cad-cap.alta{color:#2fe08f}.cad-cap.media{color:#e8b64a}.cad-cap.baja{color:#8cc4f0}.cad-cap.incierta{color:var(--tx2)}
+.cad-fichas{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,430px),1fr));gap:var(--gap);align-items:start}
+details.cad-ficha{background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:6px 10px}details.cad-ficha[open]{grid-column:1/-1}
+details.cad-ficha>summary{cursor:pointer;padding:4px 0;font-size:var(--fs-s)}details.cad-ficha>summary .cad-cap{margin-left:6px;border:1px solid var(--lin)}
+details.cad-ficha[open] .cad-hs{columns:340px;column-gap:22px}.cad-hs .cad-h{break-inside:avoid}
+.cad-lst{margin:2px 0 6px 18px;padding:0;font-size:var(--fs-s)}.cad-lst li{margin:2px 0}
+.cad-ir{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+details.cad-mas summary{cursor:pointer;color:var(--ac);font-size:var(--fs-s);padding:3px 0}
+@media (max-width:700px){table.cad-mat{min-width:1150px}table.cad-mat.cad-sm{min-width:620px}.cad-mat th.cad-red,.cad-mat tr:first-child th:first-child{width:112px}}
 .que{color:var(--tx2);font-size:14.5px;margin:2px 0 6px}
 details.bl{margin-bottom:clamp(4px,.5vw,10px)}details.bl>summary{cursor:pointer;font-weight:600;padding:4px 0}.ms{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(88px,.9fr) minmax(110px,1.2fr) minmax(86px,.8fr);gap:10px;align-items:center;padding:7px 10px;margin:2px 0;border:1px solid var(--lin);border-radius:8px;background:var(--panel);list-style:none}details.bl>summary.ms::-webkit-details-marker{display:none}.ms:hover{background:#1b2640;border-color:var(--ac)}details[open]>summary.ms{background:#1b2640;border-color:var(--ac)}.ms .nm{font-weight:700;color:var(--tx);letter-spacing:.01em}.ms .nm::before{content:'▸  ';color:var(--ac)}details[open]>summary.ms .nm::before{content:'▾  '}.ms .im{font-weight:700;color:#f1d58a;text-align:right;white-space:nowrap}.ms .im small{color:var(--tx2);font-weight:400;font-size:max(13px,.8em)}.ms .pc{position:relative;height:20px;background:var(--nul);border-radius:5px;overflow:hidden}.ms .pc i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#27578f,var(--ac))}.ms .pc b{position:relative;display:block;padding-left:7px;font-size:max(13px,.85em);color:#fff;line-height:20px;white-space:nowrap;text-shadow:0 1px 2px #000}.ms .hb{color:var(--tx2);font-size:max(13px,.86em);text-align:right;white-space:nowrap}.ms .hb em{font-style:normal;color:var(--tx);font-weight:600}.pb{display:inline-block;position:relative;min-width:110px;height:18px;background:var(--nul);border-radius:4px;overflow:hidden;vertical-align:middle}.pb i{position:absolute;top:0;bottom:0;left:0;background:#27578f}.pb b{position:relative;padding-left:6px;font-size:max(13px,.88em);line-height:18px}@media(max-width:700px){.ms{grid-template-columns:1fr 1fr}.ms .nm{grid-column:1/-1}}
 .barrita{display:inline-block;height:9px;background:var(--ac);border-radius:2px;vertical-align:middle}
@@ -271,6 +297,7 @@ small.per{color:var(--tx2);font-size:var(--fs-xs);font-weight:400}
 <section class="vista" id="v-espana"></section>
 <section class="vista" id="v-paneles"></section>
 <section class="vista" id="v-activos"></section>
+<section class="vista" id="v-cadenas"></section>
 </main>
 <div class="pie-leyenda" id="pie-comun"></div>
 <button id="subir" aria-label="Volver arriba" title="Volver arriba">↑</button>
@@ -287,7 +314,7 @@ const num=(x,d=1)=>x==null||isNaN(x)?'—':Number(x).toLocaleString('es-ES',{max
 const usd=x=>x==null?'—':'$'+(Math.abs(x)>=1e12?num(x/1e12,2)+' billones':Math.abs(x)>=1e9?num(x/1e9,1)+' mil M':Math.abs(x)>=1e6?num(x/1e6,0)+' M':num(x,0));
 /* C164 · separador de miles también en números de 4 cifras (es-ES no agrupa 1234) */
 const miles=t=>typeof t!=='string'?t:t.replace(/(?<![\d.,])\d{4,}(?=,\d|[^\d.,]|$)/g,m=>m.replace(/\B(?=(\d{3})+(?!\d))/g,'.'));
-const TABS=[['resumen','Resumen'],['capas','Capas'],['tiempo','Línea de tiempo'],['calendario','Calendario'],['matriz','Matriz país × tema'],['noticias','Noticias'],['voces','Voces'],['paises','Países'],['espana','España'],['paneles','Paneles de datos'],['activos','Fichas por activo']];
+const TABS=[['resumen','Resumen'],['capas','Capas'],['tiempo','Línea de tiempo'],['calendario','Calendario'],['matriz','Matriz país × tema'],['noticias','Noticias'],['voces','Voces'],['paises','Países'],['espana','España'],['paneles','Paneles de datos'],['activos','Fichas por activo'],['cadenas','Cadenas']];
 let R,D,V,P,CAL,FMI,VAL,BAN,RES,X,modo='sem',selMov=null,selCapa=null,selCelda=null,tab='resumen',listo=false;
 
 /* ---------- utilidades de pintado ---------- */
@@ -428,7 +455,7 @@ function contar(sec){
 function marcarScroll(e){const t=e&&e.target&&e.target.nodeType===1?[e.target]:document.querySelectorAll('table:not(.mat),.mis .cols2>div,details.bl,.grp,.mcol>.grp');
   t.forEach(x=>{if(!x.classList)return;const m=x.scrollWidth-x.clientWidth;x.classList.toggle('sc-d',m>4&&x.scrollLeft<m-4);x.classList.toggle('sc-i',m>4&&x.scrollLeft>4)})}
 document.addEventListener('scroll',marcarScroll,true);addEventListener('resize',()=>setTimeout(marcarScroll,50));
-function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles,activos:pActivos})[tab]();if(['paneles','noticias','calendario','matriz','espana','paises'].includes(tab))anclas($('v-'+tab),tab);
+function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles,activos:pActivos,cadenas:pCadenas})[tab]();if(['paneles','noticias','calendario','matriz','espana','paises'].includes(tab))anclas($('v-'+tab),tab);
   if(tab==='espana')[...$('v-espana').querySelectorAll('details')].filter(d=>!d.parentElement.closest('details')).forEach(d=>{let cer={};try{cer=JSON.parse(localStorage.getItem('orbita-esp-cerrados')||'{}')}catch(e){}const k=((d.querySelector('summary')||{}).textContent||'').trim().slice(0,60);d.open=!cer[k];d.addEventListener('toggle',()=>{try{const c2=JSON.parse(localStorage.getItem('orbita-esp-cerrados')||'{}');if(d.open)delete c2[k];else c2[k]=1;localStorage.setItem('orbita-esp-cerrados',JSON.stringify(c2))}catch(e){}})});setTimeout(marcarScroll,60)}
 
 /* ---------- bloques de datos reutilizables (Capas y Paneles) ---------- */
@@ -1734,6 +1761,85 @@ function pActivos(){
     [lista('Caso alcista',f.alcista,'var(--ok,#4caf7a)'),lista('Caso bajista',f.bajista,'var(--mal,#e0605a)'),lista('Sesgos de las fuentes',f.sesgos),lista('[VERIFICAR]',f.verificar),lista('[ESPECULACIÓN]',f.especulacion),lista('Fuentes',f.fuentes)].forEach(x=>{if(x)dt.appendChild(x)});
     S0.appendChild(dt)});
 }
+/* C264 · Cadenas: matriz capacidad × cadena con semáforo de evidencia, capas («¿necesita el token?») y enlaces a la Línea de tiempo y el Calendario
+   (explorador/cadenas.json). Solo hechos públicos con fuente; la captura de valor es [RAZONADO] con supuestos; sin «ganador» */
+let cadSem=matchMedia('(max-width:700px)').matches,cadSel='';   // en móvil arranca en semáforo; el botón pasa a texto
+function pCadenas(){
+  const S=$('v-cadenas');S.textContent='';const C=D.cadenas;
+  if(!C||!(C.cadenas||[]).length){S.append(el('p','nota-v','Sin datos de cadenas (explorador/cadenas.json).'));return}
+  const CAPS=C.capacidades||[],CR=C.capas_red||[],L=C.cadenas;
+  const nrm=t=>String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const lk=(u,t)=>{const a=el('a',null,t);a.href=u;a.target='_blank';a.rel='noopener';return a};
+  const tkc=t=>({'sí':'si','parcial':'pa','mínimo':'mi','no':'no'})[t]||'nd';
+  const badge=n=>n==='R'?el('span','badge','RAZONADO'):nivelBadge(n||'V');
+  const fuente=v=>{const s=el('span','cad-f');s.append(document.createTextNode((v.f||'')+' · '+(v.d||'sin fecha')+' '));if(v.u)s.append(lk(v.u,'abrir ↗'));else if(v.i)s.append(el('code',null,v.i));return s};
+  const hecho=v=>{const d=el('div','cad-h');d.append(badge(v.n),document.createTextNode(v.t+' '),fuente(v));return d};
+  const corta=(t,n)=>t.length>n+5?t.slice(0,t.lastIndexOf(' ',n)>n*.55?t.lastIndexOf(' ',n):n)+'…':t;
+  const irTL=q=>{buscaTL=q;rango='todo';capasOff=new Set();focoTL='';selMov=null;saltar('tiempo')};
+  const deCal=c=>(X&&X.calendario?X.calendario.eventos:[]).filter(e=>e.fin>=HOYS&&c.busca.some(b=>new RegExp('\\b'+b.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b',b===b.toUpperCase()?'':'i').test(e.titulo+' '+e.detalle)));
+  const enTL=c=>D.movimientos.filter(m=>(m.actor+' '+m.texto+' '+(m.act||[]).join(' ')+' '+(m.ent||[]).join(' ')).toLowerCase().includes(c.busca[0].toLowerCase())).length;
+  // cabecera y cifras
+  const cab=el('div','caja');cab.append(el('h2',null,'Cadenas: qué aporta cada red, en qué capa y si ese uso necesita su token'));
+  cab.append(el('p','nota-v',C.aviso||''),el('p','nota-v',(C.leyenda||'')+' Actualizado: '+(C._actualizado||'—')+'.'));
+  const celdas=L.flatMap(c=>CAPS.map(k=>c.matriz[k.id])),con=celdas.filter(Boolean);
+  cab.append(kpis([[String(L.length),'redes y capas de interoperabilidad'],[con.length+' de '+celdas.length,'celdas con dato (el resto, «sin dato»)'],[String(con.filter(v=>v.n==='P').length),'celdas con fuente primaria [P]'],[String(L.reduce((s,c)=>s+(c.hitos||[]).length,0)),'hitos con fecha']]));
+  S.append(cab);
+  // tres columnas: ISO 20022, tokenización y cómo se lee
+  const top=el('div','cad-top');
+  const bi=el('div','caja');bi.append(el('h3',null,'ISO 20022: lo que sí es un hecho'));const ci=C.contexto_iso||[];
+  ci.slice(0,3).forEach(x=>bi.append(hecho(x)));
+  if(ci.length>3){const dt=el('details','cad-mas');dt.dataset.auto='1';dt.append(el('summary',null,'Ver '+(ci.length-3)+' hechos más'));ci.slice(3).forEach(x=>dt.append(hecho(x)));bi.append(dt)}
+  const R0=C.rwa||{},br=el('div','caja');br.append(el('h3',null,'¿Cuánto se tokeniza en cada red? (RWA.xyz)'));
+  const mm=v=>v==null?'—':miles(num(v,v<10?1:0))+' M$';
+  if(R0.stellar)br.append(el('p','nota-v',R0.stellar));
+  const w=el('div','cad-env');w.append(tabla([{t:'Red',f:r=>r.cadena},{t:'Distribuido',n:1,f:r=>mm(r.dist)},{t:'Representado',n:1,f:r=>mm(r.rep)},{t:'Stablecoins',n:1,f:r=>mm(r.stable)}],(R0.filas||[]).slice().sort((a,b)=>(b.dist||0)-(a.dist||0))));br.append(w);
+  const dn=el('details','cad-mas');dn.dataset.auto='1';dn.append(el('summary',null,'Qué mide y de dónde sale'));const pn=el('p','nota-v',(R0.nota||'')+' '+(R0.totales||'')+' ');pn.append(nivelBadge(R0.n),document.createTextNode(' '+(R0.d||'')+' '));if(R0.u)pn.append(lk(R0.u,'abrir ↗'));dn.append(pn);br.append(dn);
+  const bl=el('div','caja');bl.append(el('h3',null,'Cómo se lee'));
+  const ul=el('ul','cad-lst');CR.forEach(x=>{const li=el('li');li.append(el('b',null,x.n.slice(0,2)+' · '+x.n+': '),document.createTextNode(x.que));ul.append(li)});bl.append(ul);
+  const ley=el('p','nota-v');ley.append(document.createTextNode('¿Necesita el token? '));[['sí','el uso lo consume o lo exige'],['parcial','a veces o con alternativa'],['mínimo','solo comisiones pequeñas'],['no','no lo necesita'],['sin dato','sin evidencia']].forEach(([k,t])=>{const s=el('span','tk '+tkc(k),k);s.title=t;ley.append(s,document.createTextNode(t+' · '))});bl.append(ley);
+  bl.append(el('p','nota-v','«Captura de valor» resume esas capas como [RAZONADO] (alta, media, baja o incierta) con sus supuestos: separa «la red gana uso» de «el token se demanda». No es una previsión de precio. La madurez regulatoria por país está en el Radar regulatorio ('+((C.regulacion||{}).jur||[]).length+' jurisdicciones; aplica a actividades, no a cadenas).'));
+  top.append(bi,br,bl);S.append(top);
+  // matriz
+  const cm=el('div','caja');const hd=el('div','cad-hd');hd.append(el('h2',null,'Matriz capacidad × red'));
+  const bt=el('button','cad-bt'+(cadSem?' on':''),cadSem?'Ver el texto de cada celda':'Ver solo el semáforo');bt.onclick=()=>{cadSem=!cadSem;pCadenas()};hd.append(bt);cm.append(hd);
+  cm.append(el('p','nota-v','Color del borde = nivel de la evidencia (verde P, ámbar S, rojo V = [VERIFICAR], gris = sin dato). Pasa el ratón por una celda para leerla entera con su fuente; pulsa el nombre de la red para abrir su ficha. «Capas» dice si cada capa necesita el token.'));
+  const t=el('table','cad-mat'+(cadSem?' cad-sm':''));const h=el('tr');h.append(el('th',null,'Red · token'));CAPS.forEach(k=>{const th=el('th',null,k.n);th.title=k.que||'';h.append(th)});h.append(el('th',null,'Capas: ¿token?'),el('th',null,'Captura'));t.append(h);
+  for(const c of L){const r=el('tr');const th=el('th','cad-red');const b=el('button',null,c.nombre.replace(/ \(.*\)$/,'')+' · '+c.token);b.onclick=()=>{cadSel=c.id;pCadenas();const f=$('cad-'+c.id);if(f)f.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})};th.append(b);r.append(th);
+    for(const k of CAPS){const v=c.matriz[k.id];const td=el('td','cad-c '+(v?'n'+(v.n||'V'):'nd'));
+      if(v){td.title=v.t+'\n— '+(v.f||'')+' · '+(v.d||'sin fecha')+' ['+(v.n||'V')+']';td.textContent=cadSem?(v.n||'V'):corta(v.t,75)}
+      else td.textContent=cadSem?'·':'sin dato';
+      r.append(td)}
+    const tc=el('td','cad-tk');CR.forEach(cp=>{const x=(c.capas||{})[cp.id]||{};const tk=x.token||'sin dato';const s=el('span','tk '+tkc(tk),cp.n.slice(0,2));s.title=cp.n+': '+tk+(x.ev?' — '+x.ev:'');tc.append(s)});r.append(tc);
+    const ca=c.captura||{};r.append(el('td','cad-cap '+(ca.nivel||''),ca.nivel||'—'));t.append(r)}
+  const env=el('div','cad-env');env.append(t);cm.append(env);S.append(cm);
+  // fichas
+  const cf=el('div','caja');cf.append(el('h2',null,'Ficha por red: capas, ISO 20022, hechos, hitos y enlaces'));
+  const g=el('div','cad-fichas');L.forEach(c=>g.append(ficha(c)));cf.append(g);S.append(cf);
+  function ficha(c){
+    const dt=el('details','cad-ficha');dt.dataset.auto='1';dt.id='cad-'+c.id;if(cadSel===c.id)dt.open=true;
+    dt.addEventListener('toggle',()=>{if(dt.open)cadSel=c.id;else if(cadSel===c.id)cadSel=''});
+    const ca=c.captura||{},sm=el('summary');sm.append(el('b',null,c.nombre),document.createTextNode(' · '+c.token),el('span','cad-cap '+(ca.nivel||''),'captura '+(ca.nivel||'—')));dt.append(sm);
+    dt.append(el('p','que',(c.tipo||'')+'. '+(c.aporta||'')));
+    dt.append(el('h3',null,'Capas: quién la usa y si necesita el token'));
+    const cw=el('div','cad-env');cw.append(tabla([{t:'Capa',f:x=>x.n},{t:'Quién la usa',f:x=>((c.capas||{})[x.id]||{}).quien||'sin dato'},{t:'¿Token?',f:x=>{const tk=((c.capas||{})[x.id]||{}).token||'sin dato';return el('span','tk '+tkc(tk),tk)}},{t:'Evidencia',f:x=>((c.capas||{})[x.id]||{}).ev||'sin dato'}],CR));dt.append(cw);
+    const pc=el('p','nota-v');pc.append(el('b',null,'Captura de valor del token: '+(ca.nivel||'—')+'. '),document.createTextNode((ca.mecanismo||'')+((ca.supuestos||[]).length?' Supuestos: '+ca.supuestos.join('; ')+'.':'')));dt.append(pc);
+    dt.append(el('h3',null,'ISO 20022 y Swift'));
+    if((c.iso||[]).length)c.iso.forEach(x=>dt.append(hecho(x)));else dt.append(el('p','nota-v','Sin dato de integración real con ISO 20022.'));
+    dt.append(el('h3',null,'Hechos por capacidad'));
+    const hs=el('div','cad-hs');CAPS.forEach(k=>{const v=c.matriz[k.id];const d=el('div','cad-h');d.append(el('b',null,k.n+': '));if(v){d.append(badge(v.n),document.createTextNode(v.t+' '),fuente(v))}else d.append(el('span','nota-v','sin dato'));hs.append(d)});dt.append(hs);
+    dt.append(el('h3',null,'Hitos con fecha'));
+    if((c.hitos||[]).length){const u=el('ul','cad-lst');c.hitos.forEach(x=>{const li=el('li');li.append(el('b',null,x.fecha+(x.aprox?' (aprox.)':'')+' · '),document.createTextNode((x.futuro?'🗓 previsto: ':'')+x.t+' '),nivelBadge(x.n||'V'),lk(x.u,'fuente ↗'));if(x.tl)li.append(el('span','nota-v',' · en la Línea de tiempo'));if(x.cal)li.append(el('span','nota-v',' · en el Calendario'));u.append(li)});dt.append(u)}
+    else dt.append(el('p','nota-v','Sin hitos con fecha.'));
+    const ir=el('div','cad-ir'),nt=enTL(c);
+    const b1=el('button','cad-bt','Línea de tiempo: '+nt+' hecho'+(nt===1?'':'s')+' con «'+c.busca[0]+'» →');b1.onclick=()=>irTL(c.busca[0]);ir.append(b1);
+    const ev=deCal(c);const b2=el('button','cad-bt','Calendario: '+ev.length+' fecha'+(ev.length===1?'':'s')+' próxima'+(ev.length===1?'':'s')+' →');b2.onclick=()=>saltar('calendario');ir.append(b2);
+    if(c.ficha){const b3=el('button','cad-bt','Ficha del activo ('+c.token+') →');b3.onclick=()=>saltar('activos');ir.append(b3)}
+    dt.append(ir);
+    if(ev.length){const u=el('ul','cad-lst');ev.slice(0,5).forEach(e=>u.append(el('li',null,(e.ini===e.fin?e.ini:e.ini+' → '+e.fin)+' · '+e.titulo)));dt.append(u)}
+    const lst=(tt,a)=>{if(!(a||[]).length)return;dt.append(el('h3',null,tt));const u=el('ul','cad-lst');a.forEach(x=>u.append(el('li',null,x)));dt.append(u)};
+    lst('Sesgos de las fuentes',c.sesgos);lst('Sin dato todavía',c.sin_dato);
+    return dt}
+}
 function pPaneles(){
   const s=$('v-paneles');s.textContent='';
   const c=el('div','caja');c.append(el('h2',null,'Paneles de datos: cada bloque dice qué mide, en qué unidad, de dónde sale y cuándo se leyó'));
@@ -1789,12 +1895,12 @@ function pEspana(){
   const conL=(tx,...ns)=>{const d=el('div');if(tx)d.append(corto(tx,'nota-v',150));d.append(...ns);return d};
   /* C247: explicación llana siempre visible (sin plegar) de 3-4 frases por tabla */
   const claro=tx=>el('p','nota-v',tx);
-  const BL=[],TEMAS=[['eco','Economía y deuda'],['pre','Presupuesto y gasto'],['din','Dónde va el dinero'],['pol','Política y leyes'],['soc','Servicios y sociedad'],['seg','Seguridad y salud'],['jus','Justicia']];
+  const BL=[],TEMAS=[['eco','Economía y deuda'],['pre','Presupuesto y gasto'],['rec','Recaudación'],['din','Dónde va el dinero'],['pol','Política y leyes'],['soc','Servicios y sociedad'],['seg','Seguridad y salud'],['jus','Justicia']];
   /* C247: criterio de reparto. eco = cuánto produce, cuesta y debe el país (macro, precios, empleo, ingresos, deuda, intereses, previsiones);
      pre = en qué se gasta el presupuesto y quién lo gasta (ministerios, programas, personal, sueldos, empresas públicas, comparador de CCAA);
      din = a qué empresas y entidades llega el dinero (contratos y subvenciones); pol = Congreso, partidos, altos cargos y leyes;
      soc / seg / jus = resultados para las personas. Lo que no encaja cae en eco. El orden va de lo general a lo técnico. */
-  const REG=[['jus',/^Justicia ·/],['din',/^Dónde va el dinero|Subvenciones y contratación pública|Hasta dónde llegan/i],['pol',/^España ·|^España: leyes|Congreso|Iniciativas legislativas|partidos/i],
+  const REG=[['rec',/^Recaudación:/],['jus',/^Justicia ·/],['din',/^Dónde va el dinero|Subvenciones y contratación pública|Hasta dónde llegan/i],['pol',/^España ·|^España: leyes|Congreso|Iniciativas legislativas|partidos/i],
     ['seg',/Defunciones semanales|Muertos en carretera|Delitos|Incendios forestales|Siniestralidad vial|Accidentes de trabajo|Criminalidad registrada/i],['seg',/DANA/],
     ['eco',/^Economía de España|^Intereses de la deuda|^Deuda /],
     ['pre',/^Pensiones y Seguridad|presupuesto|ministerio|Altos cargos|Programas concretos|aislar|Personal público|Cargos políticos|Ejecución por políticas|Quién gasta|Empresas públicas|Comparador de comunidades|Gasto en paro/i],
@@ -1802,6 +1908,7 @@ function pEspana(){
   const temaDe=t=>{const r=REG.find(x=>x[1].test(t));return r?r[0]:'eco'};
   const ORD={eco:[/^Economía de España/,/zona euro/,/^Ingresos y gasto/,/Agencia Tributaria/,/^Recaudación récord/,/AIReF/,/Deuda del Estado/,/^Deuda de las comunidades/,/^Intereses de la deuda y aportación/,/^Intereses de la deuda e infra/,/Dinero al exterior/,/Rescate bancario/],
     pre:[/^Cómo leer el presupuesto/,/^Quién gasta/,/^Presupuesto consolidado/,/^Ejecución por políticas/,/^Presupuesto del Estado por ministerio/,/^Programas concretos/,/aislar/,/^Fuera de los ministerios: Seguridad/,/^Pensiones y Seguridad/,/^Fuera de los ministerios/,/Gasto en paro/,/^Altos cargos y personal eventual/,/^Personal público: cuántos/,/^Personal público: cuánto/,/^Personal público: comp/,/^Cargos políticos/,/^Empresas públicas/,/^Comparador/],
+    rec:[/^Recaudación: cuánto entra/,/^Recaudación: 2026/,/^Recaudación: de dónde/,/^Recaudación: Impuestos Especiales/,/^Recaudación: medidas/,/^Recaudación: frente al PIB/,/^Recaudación: lecturas/],
     din:[/registros por día/,/contratos públicos/,/subvenciones concedidas/,/Hasta dónde llegan/],
     pol:[/Congreso: composición/,/Iniciativas legislativas/,/leyes y normas/,/Intereses declarados/,/Financiación de partidos/,/Altos cargos: informe/,/NO se ha leído/]};
   const orden=(k,b)=>{const t=(b.querySelector('summary')||{}).textContent||'',i=(ORD[k]||[]).findIndex(r=>r.test(t));return i<0?999:i};
@@ -2141,7 +2248,7 @@ function pEspana(){
       if(M[k])add(bloque(t,null,{t:'[P] oficial leída · [S] secundaria · [VERIFICAR] no leído'},CLX[k]?conL(null,claro(CLX[k]),dat(M[k])):dat(M[k]),false));
   }
   /* resumen de 3-4 cifras con flecha al principio de cada tema, y debajo el detalle en bloques */
-  const RES={eco:[],pre:[],din:[],pol:[],soc:[],seg:[],jus:[]},cp=r=>r.anterior==null?null:cambio(r.valor-r.anterior,'p.p.',2);
+  const RES={eco:[],pre:[],rec:[],din:[],pol:[],soc:[],seg:[],jus:[]},cp=r=>r.anterior==null?null:cambio(r.valor-r.anterior,'p.p.',2);
   const fi=re=>INE&&INE.filas&&INE.filas.find(r=>re.test(r.nombre));
   for(const [re,et] of [[/IPC general/i,'Inflación anual (IPC)'],[/PIB, volumen, variaci[oó]n anual/i,'Crecimiento anual (PIB)'],[/Tasa de paro/i,'Paro (EPA)']]){const r=fi(re);if(r)RES.eco.push([fx(r.valor,r.valor%1?1:0)+' %',et+' · '+r.periodo,/paro/i.test(et)?inv(cp(r)):cp(r)])}
   if(DE&&DE.aapp)RES.eco.push([fx(DE.aapp.pct_pib,1)+' %','Deuda de todas las administraciones, % del PIB · '+DE.aapp.periodo,inv(cambio((DE.aapp.deuda/DE.aapp.hace_un_anio-1)*100,'% en un año',1))]);
@@ -2190,6 +2297,62 @@ function pEspana(){
       g.append(t)}
     const wj=el('div');wj.append(intro,g);
     add(bloque('Justicia · casos, auditorías y accidentes',null,{nivel:'P',t:'Fuentes oficiales (Poder Judicial, Tribunal de Cuentas, Fiscalía Europea, Comisión Europea, CNMC) · presunción de inocencia: una investigación o una auditoría no es una condena'},wj,true));
+  }
+  /* C265 · Recaudación: cuánto entra por impuestos (AEAT, caja, M€ corrientes) por año y figura; Eurostat solo para el contexto en % del PIB */
+  const RC=D.espana_recaudacion;
+  if(RC&&RC.anual&&RC.anual.length){
+    const FG=[['irpf','IRPF','#5aa9e6'],['iva','IVA','#2fe08f'],['is','Sociedades','#d4a84b'],['iiee','Especiales','#c58bf2'],['resto','Resto','#8a97b3']];
+    const cm=(v,u=' M€')=>{const q=el('span',v===0?'igual':v>0?'sube':'baja');q.textContent=(v>0?'▲ +':v<0?'▼ −':'= ')+n0(Math.abs(v))+u;return q},cp=v=>{if(v==null)return el('span','igual','—');const q=el('span',v===0?'igual':v>0?'sube':'baja');q.textContent=(v>0?'▲ +':v<0?'▼ −':'= ')+n1(Math.abs(v))+' %';return q};
+    const pieR=t=>({nivel:RC.nivel,t:t+' · M€ corrientes · leído '+RC.leido});
+    const FU=RC.fuentes.informes_mensuales,AC=RC.acumulado_2026,AF=AC.filas.find(r=>r.figura==='total');
+    const A=RC.anual,u25=A[A.length-1];
+    RES.rec.push([n0(AF.v2026)+' M€','Ingresos tributarios netos, enero-septiembre de 2026 (AEAT)',cambio(AF.var_pct,'% frente a 2025',1)],
+      [n0(u25.total)+' M€','Año 2025 completo (AEAT, neto de devoluciones)',cambio(u25.var_total_pct,'% frente a 2024',1)],
+      [fx(u25.pct_pib,1)+' %','Recaudación de la AEAT en % del PIB, 2025 (cálculo propio)',null]);
+    const CE=RC.contexto.serie[RC.contexto.serie.length-1];
+    RES.rec.push([fx(CE.presion_fiscal_pct_pib,1)+' %','Presión fiscal 2025 (impuestos + cotizaciones, % del PIB, Eurostat)',null]);
+    /* gráfico de barras apiladas: figuras por año y, aparte, enero-septiembre de 2025 y 2026 */
+    const cols=A.map(r=>({et:String(r.anio),v:r,tot:r.total}));
+    cols.push({et:'ene-sep 2025',v:Object.fromEntries(AC.filas.map(r=>[r.figura,r.v2025])),tot:AF.v2025},{et:'ene-sep 2026',v:Object.fromEntries(AC.filas.map(r=>[r.figura,r.v2026])),tot:AF.v2026});
+    const ns='http://www.w3.org/2000/svg',mk=(t,at,tx)=>{const e=document.createElementNS(ns,t);for(const k in at)e.setAttribute(k,at[k]);if(tx!=null)e.textContent=tx;return e};
+    const W=820,H=320,ml=78,mr=10,mt=24,mb=40,mx=Math.max(...cols.map(c=>c.tot))*1.05,anc=(W-ml-mr)/cols.length;
+    const g=mk('svg',{viewBox:'0 0 '+W+' '+H,role:'img','aria-label':'Ingresos tributarios netos por año y por figura, en millones de euros'});g.style.cssText='width:100%;height:auto;display:block;max-width:980px';
+    const Y=v=>mt+(H-mt-mb)*(1-v/mx);
+    for(const t of [0,100000,200000,300000]){g.append(mk('line',{x1:ml,x2:W-mr,y1:Y(t),y2:Y(t),stroke:'#2a3550','stroke-width':1}),mk('text',{x:ml-6,y:Y(t)+4,'text-anchor':'end',fill:'#9fb0cf','font-size':12},n0(t)+' M€'))}
+    cols.forEach((c,i)=>{let acc=0;const x=ml+i*anc+anc*0.14,w=anc*0.72;
+      for(const [k,nom,col] of FG){const v=c.v[k]||0,y0=Y(acc+v),h=Y(acc)-y0;acc+=v;const r=mk('rect',{x,y:y0,width:w,height:Math.max(0,h),fill:col});r.append(mk('title',{},c.et+' · '+nom+': '+n0(v)+' M€'));g.append(r)}
+      g.append(mk('text',{x:x+w/2,y:Y(c.tot)-5,'text-anchor':'middle',fill:'#e6ebf5','font-size':11.5,'font-weight':600},n0(c.tot)),mk('text',{x:x+w/2,y:H-mb+16,'text-anchor':'middle',fill:'#9fb0cf','font-size':12},c.et));
+      if(i>=A.length)g.append(mk('text',{x:x+w/2,y:H-mb+30,'text-anchor':'middle',fill:'#9fb0cf','font-size':10.5},'(9 meses)'))});
+    const leg=el('div','nota-v');leg.style.cssText='display:flex;gap:12px;flex-wrap:wrap;margin:4px 0';
+    for(const [k,nom,col] of FG){const s=el('span');const q=el('i');q.style.cssText='display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px;background:'+col;s.append(q,document.createTextNode(nom));leg.append(s)}
+    const rowsA=A.slice().reverse();
+    const tA=tabla([{t:'Año',f:r=>String(r.anio)},{t:'IRPF (M€)',n:1,f:r=>n0(r.irpf)},{t:'IVA (M€)',n:1,f:r=>n0(r.iva)},{t:'Sociedades (M€)',n:1,f:r=>n0(r.is)},{t:'Especiales (M€)',n:1,f:r=>n0(r.iiee)},{t:'Resto (M€)',n:1,f:r=>n0(r.resto)},
+      {t:'Total neto (M€)',n:1,f:r=>n0(r.total)},{t:'Variación (M€)',n:1,f:r=>r.var_total_m==null?'—':cm(r.var_total_m)},{t:'Variación (%)',n:1,f:r=>r.var_total_pct==null?'—':cp(r.var_total_pct)},{t:'% del PIB',n:1,f:r=>fx(r.pct_pib,1)+' %'},{t:'Fuente',f:r=>lnk(r.fuente,'PDF '+r.anio)}],rowsA);
+    add(bloque('Recaudación: cuánto entra por impuestos, año a año (AEAT)','Lo que Hacienda ingresa por impuestos cada año, por figura, en M€ (millones de euros). '+RC.nota+' Barras: ingresos tributarios netos por figura; las dos últimas son nueve meses (enero-septiembre), no el año entero: no se comparan con las barras anuales.',pieR('AEAT, informes mensuales de recaudación tributaria (cuadro 1.2)'),conL(null,g,leg,tA,el('p','nota-v','Variaciones y % del PIB: cálculo propio con las cifras de la AEAT y el PIB corriente de Eurostat. «Resto» = no residentes, tasas, medioambientales, tráfico exterior, primas de seguro y otros. 2019-2023: cada año sale del informe de diciembre de ese año; la AEAT puede revisar cifras después.')),true));
+    /* 2026 frente a 2025 hasta el último mes */
+    const tB=tabla([{t:'Figura',f:r=>r.figura==='total'?el('b',null,'TOTAL ingresos tributarios netos'):r.nombre},{t:'Ene-sep 2026 (M€)',n:1,f:r=>n0(r.v2026)},{t:'Ene-sep 2025 (M€)',n:1,f:r=>n0(r.v2025)},{t:'Variación (M€)',n:1,f:r=>cm(r.var_m)},{t:'Variación (%)',n:1,f:r=>cp(r.var_pct)},
+      {t:'Variación homogénea (%)',n:1,f:r=>cp(r.homogeneo_var_pct)},{t:'Devoluciones 2026 (M€)',n:1,f:r=>n0(r.devoluciones_a)},{t:'Devoluciones 2025 (M€)',n:1,f:r=>n0(r.devoluciones_b)}],AC.filas);
+    add(bloque('Recaudación: 2026 hasta septiembre frente al mismo periodo de 2025',AC.nota,pieR('AEAT, informe mensual de septiembre de 2026 (cuadros 1.2, 2.1 y 3.1)'),conL(null,tB,el('p','nota-v','Fuente: '),lnk(FU['26'],'IMR septiembre 2026 (PDF de la AEAT)')),true));
+    /* de dónde sale cada euro: capítulos y Estado frente a AA.TT. */
+    const PR=RC.reparto.periodos;
+    const tC=tabla([{t:'Periodo',f:r=>r.periodo},{t:'Impuestos directos (M€)',n:1,f:r=>n0(r.directos.total)},{t:'Impuestos indirectos (M€)',n:1,f:r=>n0(r.indirectos.total)},{t:'Tasas y otros (M€)',n:1,f:r=>n0(r.tasas.total)},
+      {t:'Estado (M€)',n:1,f:r=>n0(r.total.estado)},{t:'AA.TT.: comunidades y entes locales (M€)',n:1,f:r=>n0(r.total.aatt)},{t:'Total (M€)',n:1,f:r=>n0(r.total.total)},{t:'% que va al Estado',n:1,f:r=>fx(r.total.estado/r.total.total*100,1)+' %'}],PR);
+    add(bloque('Recaudación: de dónde sale cada euro (directos, indirectos, Estado frente a comunidades y entes locales)',RC.reparto.nota,pieR('AEAT, cuadro 1.1 de los informes de diciembre de 2025 y septiembre de 2026'),conL(null,tC),true));
+    const tD=tabla([{t:'Producto',f:r=>r.producto},{t:'2025 (M€)',n:1,f:r=>n0(r['2025'])},{t:'2024 (M€)',n:1,f:r=>n0(r['2024'])},{t:'Variación 2025 (%)',n:1,f:r=>cp(r.var_2025_pct)},{t:'Ene-sep 2026 (M€)',n:1,f:r=>n0(r.ene_sep_2026)},{t:'Ene-sep 2025 (M€)',n:1,f:r=>n0(r.ene_sep_2025)},{t:'Variación ene-sep (%)',n:1,f:r=>cp(r.var_ene_sep_pct)}],RC.impuestos_especiales.filas);
+    add(bloque('Recaudación: Impuestos Especiales por producto','Hidrocarburos y tabaco son la mayor parte. En 2026 baja la electricidad y los hidrocarburos por las rebajas de tipos aprobadas por el conflicto de Oriente Medio (explicación de la AEAT); «Otros» y «Carbón» son importes pequeños. Las variaciones se calculan con importes redondeados a M€, así que pueden diferir 0,1-0,2 puntos de las tasas que publica la AEAT (que usa miles de euros). Una variación enorme en una fila diminuta no es una señal.',pieR('AEAT, cuadro 1.1 (diciembre de 2025 y septiembre de 2026)'),conL(null,tD),true));
+    /* medidas y devoluciones */
+    const tE=tabla([{t:'Periodo',f:r=>r.periodo},...RC.medidas.columnas.map((c,i)=>({t:c+' (M€)',n:1,f:r=>cm(r.valores[i],'')}))],RC.medidas.filas);
+    const tF=tabla([{t:'Año',f:r=>String(r.anio)},{t:'Ingresos brutos (M€)',n:1,f:r=>n0(r.bruto)},{t:'Devoluciones (M€)',n:1,f:r=>n0(r.devoluciones)},{t:'Netos (M€)',n:1,f:r=>n0(r.total)},{t:'Devoluciones sobre brutos (%)',n:1,f:r=>fx(r.devoluciones/r.bruto*100,1)+' %'}],rowsA);
+    add(bloque('Recaudación: medidas, devoluciones y recaudación bruta',RC.devoluciones.nota+' '+RC.medidas.nota,pieR('AEAT, cuadros 0 y 2.1 de los informes mensuales'),conL(null,el('h3',null,'Efecto de las medidas normativas y de gestión'),tE,el('h3',null,'Brutos, devoluciones y netos por año'),tF),true));
+    /* contexto: frente al PIB, dos fuentes y cotizaciones */
+    const CS=RC.contexto.serie.slice().reverse();
+    const tG=tabla([{t:'Año',f:r=>String(r.anio)},{t:'AEAT, caja (M€)',n:1,f:r=>n0(r.aeat_pct_pib==null?null:A.find(x=>x.anio===r.anio).total)},{t:'AEAT, % del PIB',n:1,f:r=>fx(r.aeat_pct_pib,1)+' %'},{t:'Eurostat: impuestos (M€)',n:1,f:r=>n0(r.impuestos_sin_cotizaciones)},{t:'Eurostat: impuestos, % del PIB',n:1,f:r=>fx(r.impuestos_sin_cotizaciones_pct_pib,1)+' %'},
+      {t:'Cotizaciones sociales (M€)',n:1,f:r=>n0(r.cotizaciones)},{t:'Presión fiscal total, % del PIB',n:1,f:r=>fx(r.presion_fiscal_pct_pib,1)+' %'}],CS);
+    add(bloque('Recaudación: frente al PIB, dos fuentes y cotizaciones sociales',RC.contexto.nota,pieR('AEAT y Eurostat (gov_10a_taxag; PIB de explorador/espana.json)'),conL(null,tG,el('p','nota-v',RC.comparacion_fuentes.texto),el('p','nota-v',RC.cotizaciones_sociales.nota)),true));
+    /* lecturas y lo que falta */
+    const lu=el('ul','nota-v');for(const l of RC.lecturas){const li=el('li');li.append(el('b',null,'['+l.t+'] '),document.createTextNode(l.texto));lu.append(li)}
+    const pu=el('ul','nota-v');for(const t of RC.pendiente)pu.append(el('li',null,t));
+    add(bloque('Recaudación: lecturas y lo que falta',null,pieR('Lectura propia sobre cifras de la AEAT; lo etiquetado [OPINIÓN] no es un hecho'),conL(null,lu,el('h3',null,'Pendiente [VERIFICAR]'),pu),false));
   }
   const nav=el('div');nav.style.cssText='margin:10px 0;display:flex;gap:8px;flex-wrap:wrap';
   let panel=null;

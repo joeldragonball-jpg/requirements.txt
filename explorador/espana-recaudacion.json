@@ -1,0 +1,691 @@
+{
+ "titulo": "España: cuánto se recauda (impuestos por año y por figura)",
+ "leido": "2026-11-14",
+ "unidad": "M€ corrientes (millones de euros, sin quitar la inflación)",
+ "nivel": "P",
+ "nota": "Ingresos tributarios NETOS de devoluciones, criterio de CAJA, de la Agencia Tributaria (AEAT), leídos en las tablas de sus informes mensuales de recaudación (no en prensa). Es lo que entra por impuestos al conjunto de las administraciones (Estado, comunidades autónomas y entes locales por la parte cedida). No incluye cotizaciones a la Seguridad Social ni los tributos propios de comunidades y ayuntamientos (IBI, por ejemplo): por eso no coincide con Eurostat. Último dato: septiembre de 2026 (acumulado de enero a septiembre).",
+ "fuentes": {
+  "informes_mensuales": {
+   "20": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2020/IMR_20_12_es_es.pdf",
+   "21": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2021/IMR_21_12_es_es.pdf",
+   "22": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2022/IMR_22_12_es_es.pdf",
+   "23": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2023/IMR_23_12_es_es.pdf",
+   "24": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2024/IMR_24_12_es_es.pdf",
+   "25": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2025/IMR_25_12_es_es.pdf",
+   "26": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2026/IMR_26_09_es_es.pdf"
+  },
+  "informe_anual_2025": "https://sede.agenciatributaria.gob.es/Sede/eu_es/estadisticas/recaudacion-tributaria/informe-anual/ejercicio-2025/resumen.html",
+  "eurostat": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_taxag",
+  "pib": "explorador/espana.json (contexto.pib, Eurostat)"
+ },
+ "definiciones": {
+  "aeat_caja": "Lo realmente ingresado en el periodo, neto de devoluciones. Se publica cada mes; el informe de septiembre sale hacia finales de octubre.",
+  "eurostat_devengo": "Cuentas nacionales (SEC 2010): se registra cuando nace el impuesto, incluye los tributos propios de comunidades y ayuntamientos y las cotizaciones sociales. Sale con 1-9 meses de retraso y por eso no es comparable euro a euro con la AEAT.",
+  "homogeneos": "Ingresos de la AEAT sin medidas normativas ni efectos de calendario o devoluciones extraordinarias: mide el crecimiento «de fondo»."
+ },
+ "anual": [
+  {
+   "anio": 2019,
+   "total": 212808,
+   "bruto": 266452,
+   "devoluciones": 53644,
+   "var_total_m": null,
+   "var_total_pct": null,
+   "pct_pib": 17.0,
+   "fuente": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2020/IMR_20_12_es_es.pdf",
+   "nivel": "P",
+   "irpf": 86892,
+   "irpf_var_pct": null,
+   "irpf_devol": 13245,
+   "is": 23733,
+   "is_var_pct": null,
+   "is_devol": 9879,
+   "iva": 71538,
+   "iva_var_pct": null,
+   "iva_devol": 28103,
+   "iiee": 21380,
+   "iiee_var_pct": null,
+   "iiee_devol": 584,
+   "resto": 9265,
+   "resto_var_pct": null,
+   "resto_devol": 1832
+  },
+  {
+   "anio": 2020,
+   "total": 194051,
+   "bruto": 247929,
+   "devoluciones": 53878,
+   "var_total_m": -18757,
+   "var_total_pct": -8.8,
+   "pct_pib": 17.2,
+   "fuente": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2021/IMR_21_12_es_es.pdf",
+   "nivel": "P",
+   "irpf": 87972,
+   "irpf_var_pct": 1.2,
+   "irpf_devol": 12527,
+   "is": 15858,
+   "is_var_pct": -33.2,
+   "is_devol": 12209,
+   "iva": 63337,
+   "iva_var_pct": -11.5,
+   "iva_devol": 26948,
+   "iiee": 18790,
+   "iiee_var_pct": -12.1,
+   "iiee_devol": 619,
+   "resto": 8095,
+   "resto_var_pct": -12.6,
+   "resto_devol": 1576
+  },
+  {
+   "anio": 2021,
+   "total": 223385,
+   "bruto": 275583,
+   "devoluciones": 52198,
+   "var_total_m": 29334,
+   "var_total_pct": 15.1,
+   "pct_pib": 18.1,
+   "fuente": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2021/IMR_21_12_es_es.pdf",
+   "nivel": "P",
+   "irpf": 94546,
+   "irpf_var_pct": 7.5,
+   "irpf_devol": 12105,
+   "is": 26627,
+   "is_var_pct": 67.9,
+   "is_devol": 9211,
+   "iva": 72498,
+   "iva_var_pct": 14.5,
+   "iva_devol": 28568,
+   "iiee": 19729,
+   "iiee_var_pct": 5.0,
+   "iiee_devol": 683,
+   "resto": 9985,
+   "resto_var_pct": 23.3,
+   "resto_devol": 1631
+  },
+  {
+   "anio": 2022,
+   "total": 255463,
+   "bruto": 320425,
+   "devoluciones": 64962,
+   "var_total_m": 32078,
+   "var_total_pct": 14.4,
+   "pct_pib": 18.6,
+   "fuente": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2023/IMR_23_12_es_es.pdf",
+   "nivel": "P",
+   "irpf": 109485,
+   "irpf_var_pct": 15.8,
+   "irpf_devol": 11897,
+   "is": 32176,
+   "is_var_pct": 20.8,
+   "is_devol": 11424,
+   "iva": 82595,
+   "iva_var_pct": 13.9,
+   "iva_devol": 39045,
+   "iiee": 20224,
+   "iiee_var_pct": 2.5,
+   "iiee_devol": 818,
+   "resto": 10983,
+   "resto_var_pct": 10.0,
+   "resto_devol": 1778
+  },
+  {
+   "anio": 2023,
+   "total": 271935,
+   "bruto": 339697,
+   "devoluciones": 67762,
+   "var_total_m": 16472,
+   "var_total_pct": 6.4,
+   "pct_pib": 18.2,
+   "fuente": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2024/IMR_24_12_es_es.pdf",
+   "nivel": "P",
+   "irpf": 120280,
+   "irpf_var_pct": 9.9,
+   "irpf_devol": 13657,
+   "is": 35060,
+   "is_var_pct": 9.0,
+   "is_devol": 13805,
+   "iva": 83909,
+   "iva_var_pct": 1.6,
+   "iva_devol": 37568,
+   "iiee": 20757,
+   "iiee_var_pct": 2.6,
+   "iiee_devol": 803,
+   "resto": 11929,
+   "resto_var_pct": 8.6,
+   "resto_devol": 1928
+  },
+  {
+   "anio": 2024,
+   "total": 294734,
+   "bruto": 365494,
+   "devoluciones": 70760,
+   "var_total_m": 22799,
+   "var_total_pct": 8.4,
+   "pct_pib": 18.4,
+   "fuente": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2025/IMR_25_12_es_es.pdf",
+   "nivel": "P",
+   "irpf": 129408,
+   "irpf_var_pct": 7.6,
+   "irpf_devol": 15880,
+   "is": 39096,
+   "is_var_pct": 11.5,
+   "is_devol": 14973,
+   "iva": 90541,
+   "iva_var_pct": 7.9,
+   "iva_devol": 37262,
+   "iiee": 22128,
+   "iiee_var_pct": 6.6,
+   "iiee_devol": 863,
+   "resto": 13560,
+   "resto_var_pct": 13.7,
+   "resto_devol": 1782
+  },
+  {
+   "anio": 2025,
+   "total": 325356,
+   "bruto": 402212,
+   "devoluciones": 76856,
+   "var_total_m": 30622,
+   "var_total_pct": 10.4,
+   "pct_pib": 19.3,
+   "fuente": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2025/IMR_25_12_es_es.pdf",
+   "nivel": "P",
+   "irpf": 142466,
+   "irpf_var_pct": 10.1,
+   "irpf_devol": 18178,
+   "is": 42266,
+   "is_var_pct": 8.1,
+   "is_devol": 16651,
+   "iva": 99532,
+   "iva_var_pct": 9.9,
+   "iva_devol": 39209,
+   "iiee": 23083,
+   "iiee_var_pct": 4.3,
+   "iiee_devol": 1034,
+   "resto": 18009,
+   "resto_var_pct": 32.8,
+   "resto_devol": 1782
+  }
+ ],
+ "acumulado_2026": {
+  "periodo": "enero-septiembre",
+  "ultimo_mes": "2026-09",
+  "fuente": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2026/IMR_26_09_es_es.pdf",
+  "filas": [
+   {
+    "figura": "irpf",
+    "nombre": "IRPF (renta de las personas físicas)",
+    "v2026": 118068,
+    "v2025": 104957,
+    "var_m": 13111,
+    "var_pct": 12.5,
+    "devoluciones_a": 14056,
+    "devoluciones_b": 14688,
+    "homogeneo_a": 118634,
+    "homogeneo_b": 106144,
+    "homogeneo_var_pct": 11.8
+   },
+   {
+    "figura": "is",
+    "nombre": "Impuesto sobre Sociedades",
+    "v2026": 18877,
+    "v2025": 15004,
+    "var_m": 3873,
+    "var_pct": 25.8,
+    "devoluciones_a": 10263,
+    "devoluciones_b": 12291,
+    "homogeneo_a": 25035,
+    "homogeneo_b": 23400,
+    "homogeneo_var_pct": 7.0
+   },
+   {
+    "figura": "iva",
+    "nombre": "IVA",
+    "v2026": 81181,
+    "v2025": 75090,
+    "var_m": 6091,
+    "var_pct": 8.1,
+    "devoluciones_a": 29641,
+    "devoluciones_b": 28478,
+    "homogeneo_a": 81337,
+    "homogeneo_b": 75767,
+    "homogeneo_var_pct": 7.4
+   },
+   {
+    "figura": "iiee",
+    "nombre": "Impuestos Especiales",
+    "v2026": 15718,
+    "v2025": 17172,
+    "var_m": -1454,
+    "var_pct": -8.5,
+    "devoluciones_a": 701,
+    "devoluciones_b": 649,
+    "homogeneo_a": 16093,
+    "homogeneo_b": 17547,
+    "homogeneo_var_pct": -8.3
+   },
+   {
+    "figura": "resto",
+    "nombre": "Resto (no residentes, tasas, otros)",
+    "v2026": 14483,
+    "v2025": 13525,
+    "var_m": 958,
+    "var_pct": 7.1,
+    "devoluciones_a": 1616,
+    "devoluciones_b": 1239,
+    "homogeneo_a": 14358,
+    "homogeneo_b": 13630,
+    "homogeneo_var_pct": 5.3
+   },
+   {
+    "figura": "total",
+    "nombre": "TOTAL ingresos tributarios netos",
+    "v2026": 248326,
+    "v2025": 225747,
+    "var_m": 22579,
+    "var_pct": 10.0,
+    "devoluciones_a": 56276,
+    "devoluciones_b": 57346,
+    "homogeneo_a": 255458,
+    "homogeneo_b": 236487,
+    "homogeneo_var_pct": 8.0
+   }
+  ],
+  "nota": "Variación en M€ y % frente al mismo periodo de 2025. «Homogéneo» = sin medidas ni extraordinarios (AEAT, cuadro 3.1). Hasta septiembre de 2025 hubo devoluciones extraordinarias (mutualistas y sentencia del RDL 3/2016) que inflan ahora la tasa (+1.122 M€ de impacto según la AEAT), y en 2026 las medidas por el conflicto de Oriente Medio restan 3.983 M€."
+ },
+ "medidas": {
+  "unidad": "M€",
+  "columnas": [
+   "IRPF",
+   "Sociedades",
+   "IVA",
+   "Especiales",
+   "Otros",
+   "Total"
+  ],
+  "filas": [
+   {
+    "periodo": "2025 (año)",
+    "valores": [
+     -1155,
+     3641,
+     2223,
+     831,
+     2280,
+     7820
+    ]
+   },
+   {
+    "periodo": "2026 (ene-sep)",
+    "valores": [
+     578,
+     -1982,
+     -468,
+     -1637,
+     -474,
+     -3983
+    ]
+   }
+  ],
+  "fuente": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2025/IMR_25_12_es_es.pdf y https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2026/IMR_26_09_es_es.pdf",
+  "nivel": "P",
+  "nota": "Estimación de la propia AEAT del efecto de cambios normativos y de gestión (cuadro 0). Positivo = sube la recaudación. En 2025 incluye −2.978 M€ por ingresos y devoluciones extraordinarios."
+ },
+ "reparto": {
+  "nota": "Estado frente a «AA.TT.» (comunidades autónomas y entes locales: su parte cedida del IRPF, IVA y Especiales). Directos = capítulo I, indirectos = capítulo II, tasas = capítulo III.",
+  "fuente": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2025/IMR_25_12_es_es.pdf y https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2026/IMR_26_09_es_es.pdf",
+  "periodos": [
+   {
+    "periodo": "2025",
+    "directos": {
+     "estado": 117846,
+     "aatt": 76085,
+     "total": 193931
+    },
+    "indirectos": {
+     "estado": 66672,
+     "aatt": 62596,
+     "total": 129268
+    },
+    "tasas": {
+     "estado": 2156,
+     "aatt": 0,
+     "total": 2156
+    },
+    "total": {
+     "estado": 186674,
+     "aatt": 138682,
+     "total": 325356
+    }
+   },
+   {
+    "periodo": "2024",
+    "directos": {
+     "estado": 102515,
+     "aatt": 71558,
+     "total": 174073
+    },
+    "indirectos": {
+     "estado": 56045,
+     "aatt": 62601,
+     "total": 118646
+    },
+    "tasas": {
+     "estado": 2015,
+     "aatt": 0,
+     "total": 2015
+    },
+    "total": {
+     "estado": 160575,
+     "aatt": 134159,
+     "total": 294734
+    }
+   },
+   {
+    "periodo": "ene-sep 2026",
+    "directos": {
+     "estado": 81041,
+     "aatt": 62953,
+     "total": 143994
+    },
+    "indirectos": {
+     "estado": 50221,
+     "aatt": 52276,
+     "total": 102497
+    },
+    "tasas": {
+     "estado": 1835,
+     "aatt": 0,
+     "total": 1835
+    },
+    "total": {
+     "estado": 133097,
+     "aatt": 115230,
+     "total": 248326
+    }
+   },
+   {
+    "periodo": "ene-sep 2025",
+    "directos": {
+     "estado": 68718,
+     "aatt": 58139,
+     "total": 126857
+    },
+    "indirectos": {
+     "estado": 50776,
+     "aatt": 46463,
+     "total": 97240
+    },
+    "tasas": {
+     "estado": 1650,
+     "aatt": 0,
+     "total": 1650
+    },
+    "total": {
+     "estado": 121145,
+     "aatt": 104602,
+     "total": 225747
+    }
+   }
+  ]
+ },
+ "impuestos_especiales": {
+  "unidad": "M€",
+  "fuente": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2025/IMR_25_12_es_es.pdf y https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2026/IMR_26_09_es_es.pdf",
+  "filas": [
+   {
+    "producto": "Hidrocarburos",
+    "2025": 12366,
+    "2024": 12305,
+    "var_2025_pct": 0.5,
+    "ene_sep_2026": 8137,
+    "ene_sep_2025": 9380,
+    "var_ene_sep_pct": -13.3
+   },
+   {
+    "producto": "Labores del tabaco",
+    "2025": 7340,
+    "2024": 6927,
+    "var_2025_pct": 6.0,
+    "ene_sep_2026": 5298,
+    "ene_sep_2025": 5273,
+    "var_ene_sep_pct": 0.5
+   },
+   {
+    "producto": "Electricidad",
+    "2025": 1587,
+    "2024": 1112,
+    "var_2025_pct": 42.7,
+    "ene_sep_2026": 994,
+    "ene_sep_2025": 1194,
+    "var_ene_sep_pct": -16.8
+   },
+   {
+    "producto": "Alcohol y bebidas derivadas",
+    "2025": 793,
+    "2024": 824,
+    "var_2025_pct": -3.8,
+    "ene_sep_2026": 566,
+    "ene_sep_2025": 581,
+    "var_ene_sep_pct": -2.6
+   },
+   {
+    "producto": "Envases de plástico no reutilizables",
+    "2025": 599,
+    "2024": 571,
+    "var_2025_pct": 4.9,
+    "ene_sep_2026": 447,
+    "ene_sep_2025": 463,
+    "var_ene_sep_pct": -3.5
+   },
+   {
+    "producto": "Cerveza",
+    "2025": 336,
+    "2024": 346,
+    "var_2025_pct": -2.9,
+    "ene_sep_2026": 232,
+    "ene_sep_2025": 236,
+    "var_ene_sep_pct": -1.7
+   },
+   {
+    "producto": "Líquidos de cigarrillos electrónicos",
+    "2025": 30,
+    "2024": 0,
+    "var_2025_pct": null,
+    "ene_sep_2026": 34,
+    "ene_sep_2025": 19,
+    "var_ene_sep_pct": 78.9
+   },
+   {
+    "producto": "Carbón",
+    "2025": 9,
+    "2024": 20,
+    "var_2025_pct": -55.0,
+    "ene_sep_2026": -9,
+    "ene_sep_2025": 8,
+    "var_ene_sep_pct": -212.5
+   },
+   {
+    "producto": "Otros",
+    "2025": 23,
+    "2024": 23,
+    "var_2025_pct": 0.0,
+    "ene_sep_2026": 18,
+    "ene_sep_2025": 18,
+    "var_ene_sep_pct": 0.0
+   }
+  ]
+ },
+ "devoluciones": {
+  "unidad": "M€",
+  "nota": "Devoluciones tributarias pagadas (restan de los ingresos brutos). Ingresos brutos = netos + devoluciones (cálculo propio con las dos cifras de la AEAT).",
+  "fuente": "https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_mensuales_recaudacion_tributaria/2025/IMR_25_12_es_es.pdf",
+  "acumulado_2026": 56276,
+  "acumulado_2025": 57346
+ },
+ "cotizaciones_sociales": {
+  "nota": "Bloque separado: las cotizaciones a la Seguridad Social NO son ingresos tributarios de la AEAT. Dato anual de Eurostat (devengo, efectivas e imputadas). Serie mensual de la Seguridad Social/IGAE: pendiente [VERIFICAR] (otra fuente y otro criterio).",
+  "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_taxag",
+  "nivel": "P",
+  "serie": [
+   {
+    "anio": 2019,
+    "valor": 160656.0
+   },
+   {
+    "anio": 2020,
+    "valor": 162174.0
+   },
+   {
+    "anio": 2021,
+    "valor": 171687.0
+   },
+   {
+    "anio": 2022,
+    "valor": 180086.0
+   },
+   {
+    "anio": 2023,
+    "valor": 197003.0
+   },
+   {
+    "anio": 2024,
+    "valor": 210294.0
+   },
+   {
+    "anio": 2025,
+    "valor": 223230.0
+   }
+  ],
+  "unidad": "M€"
+ },
+ "contexto": {
+  "unidad": "% del PIB",
+  "fuente": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_taxag",
+  "nivel": "P",
+  "nota": "«Presión fiscal» = impuestos sobre producción e importación + sobre renta y patrimonio + cotizaciones (Eurostat), dividido por el PIB; excluye impuestos sobre el capital (cálculo propio con tres filas oficiales). La AEAT en % del PIB es cálculo propio (recaudación ÷ PIB corriente de Eurostat). En euros corrientes todo sube con la inflación: el % del PIB es la medida que corrige el tamaño de la economía.",
+  "serie": [
+   {
+    "anio": 2019,
+    "impuestos_produccion_importacion": 143058.0,
+    "impuestos_renta_patrimonio": 129117.0,
+    "cotizaciones": 160656.0,
+    "impuestos_sin_cotizaciones": 272175.0,
+    "impuestos_con_cotizaciones": 432831.0,
+    "presion_fiscal_pct_pib": 34.5,
+    "impuestos_sin_cotizaciones_pct_pib": 21.7,
+    "aeat_pct_pib": 17.0,
+    "pib": 1253710.0,
+    "ingresos_totales_aapp": 488347.0
+   },
+   {
+    "anio": 2020,
+    "impuestos_produccion_importacion": 126756.0,
+    "impuestos_renta_patrimonio": 125348.0,
+    "cotizaciones": 162174.0,
+    "impuestos_sin_cotizaciones": 252104.0,
+    "impuestos_con_cotizaciones": 414278.0,
+    "presion_fiscal_pct_pib": 36.7,
+    "impuestos_sin_cotizaciones_pct_pib": 22.3,
+    "aeat_pct_pib": 17.2,
+    "pib": 1129214.0,
+    "ingresos_totales_aapp": 468267.0
+   },
+   {
+    "anio": 2021,
+    "impuestos_produccion_importacion": 146953.0,
+    "impuestos_renta_patrimonio": 143485.0,
+    "cotizaciones": 171687.0,
+    "impuestos_sin_cotizaciones": 290438.0,
+    "impuestos_con_cotizaciones": 462125.0,
+    "presion_fiscal_pct_pib": 37.4,
+    "impuestos_sin_cotizaciones_pct_pib": 23.5,
+    "aeat_pct_pib": 18.1,
+    "pib": 1235474.0,
+    "ingresos_totales_aapp": 528950.0
+   },
+   {
+    "anio": 2022,
+    "impuestos_produccion_importacion": 160429.0,
+    "impuestos_renta_patrimonio": 164770.0,
+    "cotizaciones": 180086.0,
+    "impuestos_sin_cotizaciones": 325199.0,
+    "impuestos_con_cotizaciones": 505285.0,
+    "presion_fiscal_pct_pib": 36.7,
+    "impuestos_sin_cotizaciones_pct_pib": 23.6,
+    "aeat_pct_pib": 18.6,
+    "pib": 1375863.0,
+    "ingresos_totales_aapp": 574012.0
+   },
+   {
+    "anio": 2023,
+    "impuestos_produccion_importacion": 165865.0,
+    "impuestos_renta_patrimonio": 183119.0,
+    "cotizaciones": 197003.0,
+    "impuestos_sin_cotizaciones": 348984.0,
+    "impuestos_con_cotizaciones": 545987.0,
+    "presion_fiscal_pct_pib": 36.5,
+    "impuestos_sin_cotizaciones_pct_pib": 23.3,
+    "aeat_pct_pib": 18.2,
+    "pib": 1496277.0,
+    "ingresos_totales_aapp": 630198.0
+   },
+   {
+    "anio": 2024,
+    "impuestos_produccion_importacion": 177234.0,
+    "impuestos_renta_patrimonio": 198697.0,
+    "cotizaciones": 210294.0,
+    "impuestos_sin_cotizaciones": 375931.0,
+    "impuestos_con_cotizaciones": 586225.0,
+    "presion_fiscal_pct_pib": 36.7,
+    "impuestos_sin_cotizaciones_pct_pib": 23.5,
+    "aeat_pct_pib": 18.4,
+    "pib": 1598588.0,
+    "ingresos_totales_aapp": 674315.0
+   },
+   {
+    "anio": 2025,
+    "impuestos_produccion_importacion": 191558.0,
+    "impuestos_renta_patrimonio": 220653.0,
+    "cotizaciones": 223230.0,
+    "impuestos_sin_cotizaciones": 412211.0,
+    "impuestos_con_cotizaciones": 635441.0,
+    "presion_fiscal_pct_pib": 37.6,
+    "impuestos_sin_cotizaciones_pct_pib": 24.4,
+    "aeat_pct_pib": 19.3,
+    "pib": 1690012.0,
+    "ingresos_totales_aapp": 725655.0
+   }
+  ]
+ },
+ "comparacion_fuentes": {
+  "texto": "AEAT (caja) y Eurostat (devengo) miden cosas distintas, así que no se restan. En 2025: AEAT = 325.356 M€; Eurostat, impuestos sobre producción e importación + sobre renta y patrimonio = 412.211 M€ (sin cotizaciones). La diferencia incluye tributos propios de comunidades y ayuntamientos, impuestos que no gestiona la AEAT y el criterio de devengo; su tamaño exacto por partida queda [VERIFICAR].",
+  "aeat_2025": 325356,
+  "eurostat_impuestos_2025": 412211.0,
+  "nivel": "P"
+ },
+ "pendiente": [
+  "Grandes empresas: el informe mensual no la desglosa; hay que buscar la estadística específica de la AEAT [VERIFICAR].",
+  "Comunidades autónomas frente a entes locales por separado: el informe mensual agrupa AA.TT.; el cuadro 1.3 sí los separa por mes (no volcado).",
+  "Cotizaciones sociales mensuales de la Seguridad Social: fuente y criterio distintos; no volcado.",
+  "Serie 2019-2023: cada año sale de su propio informe de diciembre; la AEAT puede reponer cifras con revisiones posteriores (comparar al actualizar)."
+ ],
+ "lecturas": [
+  {
+   "t": "HECHO",
+   "texto": "La recaudación neta de la AEAT creció cada año de 2021 a 2025 y en 2025 fue la mayor de la serie 2019-2025 en euros corrientes (325.356 M€, +10,4 %)."
+  },
+  {
+   "t": "HECHO",
+   "texto": "En 2025 las medidas y cambios de gestión sumaron +7.820 M€ (2,7 puntos de la subida); sin ellos el crecimiento habría sido menor. En 2026 (ene-sep) restan 3.983 M€."
+  },
+  {
+   "t": "HECHO",
+   "texto": "Hasta septiembre de 2026 la AEAT ingresó 248.326 M€ (+10,0 %); en términos homogéneos +8,0 % (AEAT). Parte de la subida frente a 2025 viene de menores devoluciones extraordinarias."
+  },
+  {
+   "t": "OPINIÓN",
+   "texto": "Que la recaudación esté «en máximos» no dice por sí solo si sube la presión fiscal: ver el % del PIB y la nota en «Recaudación récord» de Presupuesto. Atribuir la subida a decisiones políticas concretas es opinión."
+  }
+ ]
+}

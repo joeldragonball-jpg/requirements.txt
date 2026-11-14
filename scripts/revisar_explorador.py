@@ -311,6 +311,122 @@ if RUTA_REG.exists():
     for cel in r.get("celdas", []):
         comprobar_comun(f"regulacion {cel.get('jur')}.{cel.get('tema')}", cel)
 
+# C265: España › Recaudación (explorador/espana-recaudacion.json, generado por scripts/espana_recaudacion.py): sumas, huecos y coherencia con el manual
+RUTA_REC = RUTA.parent / "espana-recaudacion.json"
+if RUTA_REC.exists():
+    rc = json.loads(RUTA_REC.read_text(encoding="utf-8"))
+    if not fecha_ok(rc.get("leido")):
+        aviso("recaudación", "falta la fecha «leido» o no es válida")
+    figs = ("irpf", "is", "iva", "iiee", "resto")
+    for f in rc.get("anual", []):
+        dn = f"recaudación {f.get('anio')}"
+        if any(not isinstance(f.get(k), (int, float)) for k in figs + ("total", "devoluciones", "bruto")):
+            aviso(dn, "falta alguna cifra (figura, total, devoluciones o bruto)")
+            continue
+        if abs(sum(f[k] for k in figs) - f["total"]) > 2:
+            aviso(dn, f"las figuras suman {sum(f[k] for k in figs)} y el total dice {f['total']} (M€)")
+        if abs(f["total"] + f["devoluciones"] - f["bruto"]) > 1:
+            aviso(dn, "bruto ≠ neto + devoluciones")
+        if not str(f.get("fuente", "")).startswith("https://") or f.get("nivel") != "P":
+            aviso(dn, "falta la fuente (https) o el nivel P")
+    ac = rc.get("acumulado_2026", {}).get("filas", [])
+    tot = [x for x in ac if x.get("figura") == "total"]
+    if len(ac) != 6 or not tot:
+        aviso("recaudación acumulado", "debe tener 5 figuras y el total")
+    elif abs(sum(x["v2026"] for x in ac if x["figura"] != "total") - tot[0]["v2026"]) > 2:
+        aviso("recaudación acumulado", "las figuras de 2026 no suman el total")
+    man = RUTA.parent / "espana-manual.json"
+    if man.exists():            # el total de 2025 y el acumulado a septiembre deben coincidir con lo ya volcado en el manual
+        m = json.loads(man.read_text(encoding="utf-8"))
+        cifras = {(x.get("nombre"), str(x.get("anio"))): x.get("valor") for x in m.get("recaudacion_aeat", []) + m.get("recaudacion", [])}
+        a25 = next((f for f in rc.get("anual", []) if f.get("anio") == 2025), None)
+        if a25 and cifras.get(("Ingresos tributarios totales", "2025")) not in (None, a25["total"]):
+            aviso("recaudación 2025", f"el total {a25['total']} no coincide con el manual {cifras[('Ingresos tributarios totales', '2025')]}")
+        if tot and cifras.get(("Ingresos tributarios netos, enero-septiembre", "ene-sep 2026")) not in (None, tot[0]["v2026"]):
+            aviso("recaudación ene-sep 2026", "no coincide con el manual")
+else:
+    aviso("recaudación", "no existe explorador/espana-recaudacion.json (python scripts/espana_recaudacion.py)")
+
+# ---- C264: pestaña Cadenas (explorador/cadenas.json): fuentes, fechas, niveles y sin NaN
+RUTA_CAD = RUTA.parent / "cadenas.json"
+TOKEN_OK = ("sí", "parcial", "mínimo", "no", "sin dato")
+CAPTURA_OK = ("alta", "media", "baja", "incierta")
+
+
+def celda_cadena(donde, v, niveles=("P", "S", "V")):
+    """Una celda con dato necesita texto, fuente, nivel P/S/V, fecha válida (o null) y enlace http o informe existente.
+    En el contexto ISO también vale «R» ([RAZONADO], deducción con sus fuentes citadas en «f»)."""
+    if not isinstance(v, dict):
+        aviso(donde, "la celda debe ser un objeto o null")
+        return
+    if not str(v.get("t") or "").strip():
+        aviso(donde, "celda sin texto («t»)")
+    if not str(v.get("f") or "").strip():
+        aviso(donde, "celda sin fuente («f»)")
+    if v.get("n") not in niveles:
+        aviso(donde, f"«n» debe ser uno de {niveles}: {v.get('n')!r}")
+    if v.get("d") is not None and not fecha_ok(v["d"]):
+        aviso(donde, f"fecha no válida: {v['d']!r}")
+    u, i = v.get("u"), v.get("i")
+    if u and not str(u).startswith(("https://", "http://")):
+        aviso(donde, f"«u» debe empezar por http:// o https://: {u!r}")
+    if i and not (RAIZ / i).is_file():
+        aviso(donde, f"«i» apunta a un archivo que no existe: {i}")
+    if not u and not i and v.get("n") in ("P", "S"):
+        aviso(donde, "nivel P/S sin enlace ni informe: debe ser V")
+
+
+if RUTA_CAD.exists():
+    crudo_cad = RUTA_CAD.read_text(encoding="utf-8")
+    if re.search(r"\bNaN\b|\bInfinity\b|\bundefined\b", crudo_cad):
+        aviso("cadenas.json", "contiene NaN, Infinity o «undefined»")
+    cad = json.loads(crudo_cad)
+    if not fecha_ok(cad.get("_actualizado")):
+        aviso("cadenas.json", "falta «_actualizado» con fecha válida")
+    caps_c = [x["id"] for x in cad.get("capacidades", [])]
+    capas_c = [x["id"] for x in cad.get("capas_red", [])]
+    capas_mapa = {c["id"] for c in d["capas"]}
+    for x in cad.get("capas_red", []):
+        if x.get("capa_mapa") and x["capa_mapa"] not in capas_mapa:
+            aviso("cadenas capas_red", f"capa del mapa inexistente: {x['capa_mapa']}")
+    for x in cad.get("contexto_iso", []):
+        celda_cadena("cadenas contexto_iso", x, ("P", "S", "V", "R"))
+    ids_c = set()
+    for c in cad.get("cadenas", []):
+        cid = c.get("id")
+        if cid in ids_c:
+            aviso("cadenas.json", f"id repetido: {cid}")
+        ids_c.add(cid)
+        for k in caps_c:
+            if k not in c.get("matriz", {}):
+                aviso(f"cadena {cid}", f"falta la capacidad «{k}» (usa null si no hay dato)")
+            elif c["matriz"][k] is not None:
+                celda_cadena(f"cadena {cid}.{k}", c["matriz"][k])
+        for k in capas_c:
+            cp = (c.get("capas") or {}).get(k)
+            if not isinstance(cp, dict):
+                aviso(f"cadena {cid}", f"falta la capa «{k}»")
+            elif cp.get("token") not in TOKEN_OK:
+                aviso(f"cadena {cid} capa {k}", f"«token» debe ser uno de {TOKEN_OK}: {cp.get('token')!r}")
+        for x in c.get("iso", []):
+            celda_cadena(f"cadena {cid} iso", x)
+        cap = c.get("captura") or {}
+        if cap.get("nivel") not in CAPTURA_OK:
+            aviso(f"cadena {cid}", f"captura.nivel debe ser uno de {CAPTURA_OK}")
+        if not str(cap.get("mecanismo", "")).startswith("[RAZONADO]"):
+            aviso(f"cadena {cid}", "captura.mecanismo debe empezar por [RAZONADO]")
+        if not cap.get("supuestos"):
+            aviso(f"cadena {cid}", "captura sin supuestos")
+        for h in c.get("hitos", []):
+            if not fecha_ok(h.get("fecha")) or not str(h.get("u", "")).startswith("https://") or h.get("n") not in ("P", "S", "V"):
+                aviso(f"cadena {cid} hito {h.get('fecha')}", "hito sin fecha válida, enlace https o nivel P/S/V")
+            if h.get("tl") and not any(m.get("url") == h.get("u") for m in d["movimientos"]):
+                aviso(f"cadena {cid} hito {h.get('fecha')}", "marcado en la Línea de tiempo pero no está en datos.json")
+        if c.get("ficha") and c["ficha"] not in {f.get("id") for f in json.loads((RUTA.parent / "fichas-activos.json").read_text(encoding="utf-8")).get("fichas", [])}:
+            aviso(f"cadena {cid}", f"ficha de activo inexistente: {c['ficha']}")
+else:
+    aviso("cadenas", "no existe explorador/cadenas.json")
+
 # C205: la tesis de Joel es privada. privado/ no puede estar en git ni su contenido en las páginas públicas (docs/)
 try:
     import subprocess

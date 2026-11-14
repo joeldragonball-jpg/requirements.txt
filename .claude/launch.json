@@ -53,6 +53,18 @@
         "explorador"
       ],
       "port": 8796
+    },
+    {
+      "name": "orbita",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8797",
+        "--directory",
+        "docs/orbita"
+      ],
+      "port": 8797
     }
   ]
 }

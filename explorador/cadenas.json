@@ -1,0 +1,2171 @@
+{
+ "_actualizado": "2026-11-14",
+ "version": "C264 · 2026-11-14",
+ "aviso": "Hechos públicos sobre cadenas de bloques y redes de interoperabilidad: qué hace cada una, quién la usa, en qué capa y si ese uso necesita el token nativo. Cada celda lleva fuente, fecha y nivel. «Captura de valor» es [RAZONADO] con sus supuestos, no una previsión. Informativo: no es recomendación de compra ni venta y no hay «ganador»: cada red aporta cosas distintas.",
+ "leyenda": "P = fuente primaria leída (si habla de sí misma, «parte interesada») · S = secundaria o agregador leído · V = [VERIFICAR] no leído o sin enlace · R = [RAZONADO], deducción a partir de las fuentes citadas · vacío = sin dato, nunca relleno.",
+ "capacidades": [
+  {
+   "id": "liquidez",
+   "n": "Liquidez",
+   "que": "Stablecoins y valor en la red, volumen"
+  },
+  {
+   "id": "seguridad",
+   "n": "Seguridad",
+   "que": "Consenso, validadores e incidentes"
+  },
+  {
+   "id": "activos",
+   "n": "Activos tokenizables",
+   "que": "Qué se tokeniza y cuánto"
+  },
+  {
+   "id": "cumplimiento",
+   "n": "Cumplimiento y acceso institucional",
+   "que": "Permisos, KYC y acceso de instituciones"
+  },
+  {
+   "id": "pagos",
+   "n": "Pagos y liquidación",
+   "que": "Velocidad, coste y uso en pagos"
+  },
+  {
+   "id": "rendimiento",
+   "n": "Rendimientos y colateral",
+   "que": "Staking, préstamos y colateral"
+  },
+  {
+   "id": "interop",
+   "n": "Interoperabilidad",
+   "que": "Puentes y conexión con otras redes"
+  },
+  {
+   "id": "regulacion",
+   "n": "Madurez regulatoria",
+   "que": "ETF, clasificación y marco legal"
+  }
+ ],
+ "capas_red": [
+  {
+   "id": "liquidacion",
+   "n": "Liquidación y liquidez",
+   "que": "Cruces de pagos, activo puente, market makers",
+   "capa_mapa": "puente"
+  },
+  {
+   "id": "emision",
+   "n": "Emisión y tokenización",
+   "que": "Emitir bonos, fondos, acciones o stablecoins",
+   "capa_mapa": "token"
+  },
+  {
+   "id": "seguridad",
+   "n": "Seguridad y consenso",
+   "que": "Quién valida y si hace falta el token en staking",
+   "capa_mapa": null
+  },
+  {
+   "id": "mensajeria",
+   "n": "Mensajería e interoperabilidad",
+   "que": "Puentes, oráculos, conectores con Swift o ISO 20022",
+   "capa_mapa": "puente"
+  },
+  {
+   "id": "custodia",
+   "n": "Custodia, identidad y cumplimiento",
+   "que": "KYC, permisos, congelar o recuperar activos",
+   "capa_mapa": "custodia"
+  }
+ ],
+ "contexto_iso": [
+  {
+   "t": "Swift terminó la coexistencia MT/ISO 20022 de los pagos transfronterizos (CBPR+) el 22-nov-2025; desde entonces ISO 20022 es obligatorio para todas las instrucciones de pago. El 24-nov el 97 % de las instrucciones ya iban en ISO 20022 y un servicio convierte el resto de forma temporal.",
+   "f": "Swift, nota de prensa 25-nov-2025 (leída)",
+   "u": "https://www.swift.com/about-us/media-centre/press-releases/global-financial-community-completes-switch-iso-20022-paving-way-new-levels-cross-border-payment-speed-and-innovation-around-world",
+   "d": "2025-11-25",
+   "n": "P"
+  },
+  {
+   "t": "La migración no ha terminado del todo: los mensajes de extractos e informes tienen su propio calendario (fin de coexistencia previsto para SR 2028) y Swift redefinirá por diciembre de 2026 los plazos de direcciones estructuradas.",
+   "f": "Swift, hoja de ruta CBPR+ (resumen de buscador, PDF no leído)",
+   "u": "https://www.swift.com/swift-resource/252463/download",
+   "d": "2026-09",
+   "n": "S"
+  },
+  {
+   "t": "Swift anunció en Sibos (29-sep-2025) un libro mayor con blockchain, con un prototipo conceptual con Consensys y más de 30 bancos de 16 países; dice que combinará el libro mayor con su mensajería, sus API e ISO 20022.",
+   "f": "Swift, noticia 29-sep-2025 (leída)",
+   "u": "https://www.swift.com/news-events/news/swift-add-blockchain-based-ledger",
+   "d": "2025-09-29",
+   "n": "P"
+  },
+  {
+   "t": "El MVP del libro mayor de Swift usa una arquitectura compatible con EVM basada en Hyperledger Besu (red permisionada propia, no una cadena pública), con depósitos tokenizados de los bancos como valor; Swift habla de explorar «otros activos de liquidación on-chain» más adelante.",
+   "f": "Swift, noticia 30-mar-2026 (leída)",
+   "u": "https://www.swift.com/insights/news/swifts-blockchain-based-shared-ledger-progresses-mvp-implementation",
+   "d": "2026-03-30",
+   "n": "P"
+  },
+  {
+   "t": "El 9-jul-2026 Swift declaró el libro mayor listo para uso inicial: 17 bancos (ANZ, BNP Paribas, BNY, Citi, DBS, HSBC, UBS, Wells Fargo…) preparan pilotos con depósitos tokenizados; la liquidación final sigue en los sistemas existentes.",
+   "f": "Swift, nota de prensa 9-jul-2026 (leída)",
+   "u": "https://www.swift.com/news-events/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure",
+   "d": "2026-07-09",
+   "n": "P"
+  },
+  {
+   "t": "Ripple es miembro del Registration Management Group (RMG) de ISO 20022 desde 2020 y se presenta como el primer miembro centrado en DLT. Es participación en el órgano que mantiene el estándar, no una certificación de XRP.",
+   "f": "Ripple, blog 11-jun-2020 (leído; parte interesada)",
+   "u": "https://ripple.com/insights/iso-20022-shaping-the-future-of-cross-border-payments/",
+   "d": "2020-06-11",
+   "n": "P"
+  },
+  {
+   "t": "Chainlink y UBS probaron que mensajes ISO 20022 de Swift disparen suscripciones y reembolsos de un fondo tokenizado (UBS Tokenize) a través del Chainlink Runtime Environment; el efectivo se liquida fuera de la cadena por Swift.",
+   "f": "The Block y otras secundarias (nota de Chainlink no leída)",
+   "u": "https://www.theblock.co/post/372876/chainlink-swift-tokenized-fund-workflows-ubs-pilot",
+   "d": "2025-09-30",
+   "n": "S"
+  },
+  {
+   "t": "La documentación de XDC dice que la red está diseñada para ser compatible con ISO 20022 (pacs.008, pacs.009, camt.053, pain.001). Es una autodeclaración; no hay confirmación de Swift.",
+   "f": "docs.xdc.network (resumen de buscador; parte interesada)",
+   "u": "https://docs.xdc.network/enterprise/iso-20022/",
+   "d": "2026-11-14",
+   "n": "S"
+  },
+  {
+   "t": "No existe una certificación oficial de «tokens ISO 20022»: ISO 20022 define mensajes financieros. Las listas de «cripto ISO 20022» que circulan son de comunidad o promocionales. Lo verificable es quién integra o prueba con Swift, DTCC o bancos, y con qué capa (mensajería, orquestación, red).",
+   "f": "Deducción a partir de las fuentes de Swift y Ripple anteriores; no he encontrado lista oficial",
+   "d": "2026-11-14",
+   "n": "R"
+  },
+  {
+   "t": "Patrón: la conexión con ISO 20022 la hacen capas intermedias (orquestación de Swift, Chainlink CRE/CCIP, software de Ripple, conectores de cada red), que pueden apuntar a varias cadenas. Que un banco use ISO 20022 no obliga a usar el token de ninguna cadena.",
+   "f": "Deducción de los hechos de Swift (Besu permisionado, depósitos tokenizados) y Chainlink/UBS",
+   "d": "2026-11-14",
+   "n": "R"
+  }
+ ],
+ "rwa": {
+  "nota": "Métrica usada: RWA.xyz, página de redes, leída en el navegador el 14-nov-2026 (dato «as of 11/14/2026»). «Distribuido» = activo emitido y transferible en la cadena; «representado» = registrado en la cadena pero no transferible ni liquidado en ella. Excluye stablecoins. RWA.xyz es un tercero comercial sin auditoría: [S]. El panel «rwa» del Explorador (DefiLlama) mide otra cosa (valor bloqueado en DeFi) y por eso da Stellar ~7 M$ y XRPL 0.",
+  "f": "RWA.xyz, Networks",
+  "u": "https://app.rwa.xyz/networks",
+  "d": "2026-11-14",
+  "n": "S",
+  "filas": [
+   {
+    "cadena": "Ethereum",
+    "dist": 15153.5,
+    "rep": 99.8,
+    "stable": 135765.0,
+    "holders": 293208
+   },
+   {
+    "cadena": "BNB Chain",
+    "dist": 6266.3,
+    "rep": 0,
+    "stable": 12582.9,
+    "holders": 2167063
+   },
+   {
+    "cadena": "Solana",
+    "dist": 5144.6,
+    "rep": 125.9,
+    "stable": 13874.2,
+    "holders": 1026459
+   },
+   {
+    "cadena": "Stellar",
+    "dist": 4662.8,
+    "rep": 77.4,
+    "stable": 445.2,
+    "holders": 25757
+   },
+   {
+    "cadena": "Avalanche",
+    "dist": 1413.9,
+    "rep": 11403.5,
+    "stable": 717.1,
+    "holders": 10114
+   },
+   {
+    "cadena": "Arbitrum",
+    "dist": 1070.1,
+    "rep": 0,
+    "stable": 3887.2,
+    "holders": 13953
+   },
+   {
+    "cadena": "Base",
+    "dist": 731.6,
+    "rep": 24.2,
+    "stable": 4584.9,
+    "holders": 192076
+   },
+   {
+    "cadena": "XRP Ledger",
+    "dist": 642.8,
+    "rep": 5207.0,
+    "stable": 807.5,
+    "holders": 2948
+   },
+   {
+    "cadena": "Polygon",
+    "dist": 447.6,
+    "rep": 713.0,
+    "stable": 2771.3,
+    "holders": 22815
+   },
+   {
+    "cadena": "Hedera",
+    "dist": 88.3,
+    "rep": 70.3,
+    "stable": 22.4,
+    "holders": 347
+   },
+   {
+    "cadena": "Algorand",
+    "dist": 39.4,
+    "rep": 0,
+    "stable": null,
+    "holders": null
+   },
+   {
+    "cadena": "Provenance",
+    "dist": 60.2,
+    "rep": 26624.3,
+    "stable": 433.8,
+    "holders": 210
+   },
+   {
+    "cadena": "Canton",
+    "dist": 0,
+    "rep": 374118.2,
+    "stable": null,
+    "holders": null
+   },
+   {
+    "cadena": "TRON",
+    "dist": 0.03,
+    "rep": 0,
+    "stable": 91470.7,
+    "holders": 1
+   }
+  ],
+  "totales": "Total de RWA.xyz a 14-nov-2026: 39.680 M$ distribuidos y 421.850 M$ representados en 40 redes; stablecoins 277.520 M$.",
+  "stellar": "Comprobación (14-nov-2026): con la métrica «valor distribuido sin stablecoins» de RWA.xyz, Stellar es la 4.ª red (4.662,8 M$) tras Ethereum, BNB Chain y Solana; con «representado» (77 M$) queda muy lejos de Canton, Provenance, Avalanche o el XRPL. No es 2.ª ni 3.ª con ninguna de las dos métricas."
+ },
+ "regulacion": {
+  "nota": "Madurez por jurisdicción (escala 0-5 del Radar regulatorio: 0 sin marco, 3 aprobada sin vigor, 4 en vigor, 5 en vigor con licencias). Aplica a actividades (stablecoins, tokenización, custodia, ETF), no a cadenas concretas.",
+  "jur": [
+   "eeuu",
+   "ue",
+   "uk",
+   "ch",
+   "sg",
+   "hk",
+   "jp",
+   "ae",
+   "br",
+   "au"
+  ],
+  "temas": [
+   "stablecoins",
+   "tokenizacion",
+   "custodia",
+   "etf"
+  ]
+ },
+ "cadenas": [
+  {
+   "id": "xrpl",
+   "nombre": "XRP Ledger",
+   "token": "XRP",
+   "tipo": "Pública; consenso por lista de validadores (UNL)",
+   "aporta": "Pagos con DEX nativo y activo puente (ODL), stablecoin RLUSD, herramientas de cumplimiento nativas (credenciales, dominios y DEX con permisos) y registro de activos «representados» (CSD BR).",
+   "ficha": "xrp",
+   "busca": [
+    "XRP",
+    "XRPL",
+    "Ripple",
+    "RLUSD"
+   ],
+   "iso": [
+    {
+     "t": "Ripple es miembro del RMG de ISO 20022 desde 2020 (no certifica XRP)",
+     "f": "Ripple",
+     "u": "https://ripple.com/insights/iso-20022-shaping-the-future-of-cross-border-payments/",
+     "d": "2020-06-11",
+     "n": "P"
+    },
+    {
+     "t": "Piloto de CBDC mayorista australiana (Acacia) emitida también en el XRPL público",
+     "f": "Comunicado 2026-13 del RBA y DFCRC (resumen de buscador; PDF no leído)",
+     "u": "https://dfcrc.com.au/wp-content/uploads/2026/05/RBA-and-DFCRC-Release-Findings-From-Project-Acacia-_-Media-Releases-_-RBA.pdf",
+     "d": "2026-05-18",
+     "n": "S"
+    },
+    {
+     "t": "No consta integración del XRPL con el libro mayor de Swift (red Besu propia)",
+     "f": "Swift, nota 9-jul-2026",
+     "u": "https://www.swift.com/news-events/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure",
+     "d": "2026-07-09",
+     "n": "P"
+    },
+    {
+     "t": "El comunicado del RBA sobre Acacia (18-may-2026) no nombra plataformas; que el XRPL participara con RLUSD viene de la prensa",
+     "f": "RBA, comunicado 2026-13",
+     "d": "2026-05-18",
+     "n": "P",
+     "u": "https://www.rba.gov.au/media-releases/2026/mr-26-13.html"
+    }
+   ],
+   "matriz": {
+    "liquidez": {
+     "t": "Stablecoins en el XRPL 807,5 M$ (RLUSD 764,1 M$); transferencias de stablecoins en 30 días 10.140 M$",
+     "f": "RWA.xyz, ficha XRP Ledger (leída en el navegador)",
+     "d": "2026-11-14",
+     "n": "S",
+     "u": "https://app.rwa.xyz/networks/xrp-ledger"
+    },
+    "seguridad": {
+     "t": "UNL de 35 validadores publicada por Ripple (vl.ripple.com)",
+     "f": "Dossier panorama competitivo",
+     "i": "informes/dossiers/2026-10-09-panorama-competitivo.md",
+     "d": "2026-10-09",
+     "n": "P"
+    },
+    "activos": {
+     "t": "642,8 M$ distribuidos (puesto 10) y 5.210 M$ representados; el mayor «representado» es un token de materias primas (JMWH, Justoken) de 2.229 M$, ≈ 43 % de ese total; muchos créditos brasileños (CRX, VERT)",
+     "f": "RWA.xyz, ficha XRP Ledger (leída en el navegador)",
+     "d": "2026-11-14",
+     "n": "S",
+     "u": "https://app.rwa.xyz/networks/xrp-ledger"
+    },
+    "cumplimiento": {
+     "t": "Activadas en la red principal: Credentials, PermissionedDomains, PermissionedDEX, MPTokensV1, DeepFreeze y TokenEscrow",
+     "f": "Consulta «feature» al nodo público xrplcluster.com (leída hoy)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://xrpl.org/resources/known-amendments"
+    },
+    "pagos": {
+     "t": "Cierre de ledger ~3-4 s; cada transacción destruye una pequeña cantidad de XRP",
+     "f": "xrpl.org (comisión) y medición del dossier",
+     "u": "https://xrpl.org/docs/concepts/transactions/transaction-cost",
+     "d": "2026-11-14",
+     "n": "P"
+    },
+    "rendimiento": {
+     "t": "LendingProtocol y SingleAssetVault siguen SIN activar en la red principal, aunque rippled 3.1.0 (28-ene-2026) ya los incluye; sin staking nativo",
+     "f": "Consulta «feature» al nodo público xrplcluster.com (leída hoy) y xrpl.org/blog",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://xrpl.org/blog"
+    },
+    "interop": {
+     "t": "XRPL EVM Sidechain en mainnet con Axelar como primer puente de XRP (30-jun-2025); el puente nativo XChainBridge del XRPL sigue sin activar (nodo, 14-nov-2026)",
+     "f": "Ripple Insights (parte interesada) y consulta al nodo",
+     "d": "2025-06-30",
+     "n": "P",
+     "u": "https://ripple.com/insights/xrpl-evm-sidechain-mainnet-is-live/"
+    },
+    "regulacion": {
+     "t": "XRP nombrado como «digital commodity» en la interpretación SEC-CFTC; hay 5 ETF spot de XRP en EE. UU.",
+     "f": "Dossier ETF (SEC-CFTC 17-mar-2026 [P]; recuento de ETF [S])",
+     "i": "informes/dossiers/2026-10-09-etfs-cripto.md",
+     "d": "2026-10-09",
+     "n": "P"
+    }
+   },
+   "capas": {
+    "liquidacion": {
+     "quien": "Clientes de Ripple Payments (sin lista primaria de quién usa ODL)",
+     "token": "parcial",
+     "ev": "ODL usa XRP como puente por diseño, pero Ripple Payments también liquida con RLUSD. Ripple no publica el volumen de ODL en XRP: las cifras de prensa (p. ej. ~15.000 M$ en 2024) son [VERIFICAR] y a veces suman todo Ripple Payments. En Acacia (RBA) la prensa atribuye al XRPL una liquidación con RLUSD, no con XRP; el comunicado del RBA no nombra plataformas."
+    },
+    "emision": {
+     "quien": "CSD BR/BTG Pactual (espejo de fondos, 29-sep-2026), Ondo OUSG, OpenEden",
+     "token": "mínimo",
+     "ev": "La emisión paga comisiones mínimas (XRP destruido) y reservas de cuenta; no exige comprar XRP en volumen."
+    },
+    "seguridad": {
+     "token": "no",
+     "ev": "El consenso depende de la UNL de validadores, no del XRP en staking: el token no asegura la red."
+    },
+    "mensajeria": {
+     "quien": "Ripple (RMG ISO 20022)",
+     "token": "no",
+     "ev": "La adaptación a ISO 20022 la hace el software de Ripple, no el token."
+    },
+    "custodia": {
+     "quien": "BTG/CSD BR usa permisos y KYC",
+     "token": "no",
+     "ev": "Credenciales y dominios con permisos son funciones del protocolo; no capturan valor en XRP más allá de las comisiones."
+    }
+   },
+   "captura": {
+    "nivel": "incierta",
+    "mecanismo": "[RAZONADO] Cada operación destruye una comisión mínima en XRP y las cuentas inmovilizan una reserva. El uso que podría pedir XRP en volumen es el de activo puente en pagos, cuyo volumen no se publica y convive con RLUSD.",
+    "supuestos": [
+     "Que el puente de pagos siga usando XRP",
+     "Que se publique el volumen liquidado en XRP"
+    ]
+   },
+   "hitos": [
+    {
+     "fecha": "2025-06-30",
+     "t": "XRPL EVM Sidechain en mainnet, con puente Axelar",
+     "u": "https://ripple.com/insights/xrpl-evm-sidechain-mainnet-is-live/",
+     "n": "P",
+     "futuro": false,
+     "tl": true
+    },
+    {
+     "fecha": "2026-01-28",
+     "t": "rippled 3.1.0 incluye Single Asset Vault y Lending Protocol (sin activar a 14-nov)",
+     "u": "https://xrpl.org/blog",
+     "n": "P",
+     "futuro": false
+    },
+    {
+     "fecha": "2026-09-25",
+     "t": "rippled 3.4.1: versión de emergencia con correcciones de seguridad",
+     "u": "https://xrpl.org/blog",
+     "n": "P",
+     "futuro": false
+    },
+    {
+     "fecha": "2026-11-25",
+     "t": "Reinicio de Testnet y Devnet del XRPL",
+     "u": "https://xrpl.org/blog",
+     "n": "P",
+     "futuro": true,
+     "cal": true
+    }
+   ],
+   "sesgos": [
+    "Ripple es parte interesada; muchas cifras de ODL vienen de cuentas de comunidad y de Binance Square."
+   ],
+   "sin_dato": [
+    "Volumen liquidado en XRP vía ODL.",
+    "Composición exacta de los 5.207 M$ representados."
+   ]
+  },
+  {
+   "id": "stellar",
+   "nombre": "Stellar",
+   "token": "XLM",
+   "tipo": "Pública; consenso SCP (cuórums federados), sin staking",
+   "aporta": "Emisión barata de fondos y stablecoins con anclajes (on/off-ramp) y control del emisor (autorización, congelación y recuperación de activos); DTCC anunció que conectará su servicio de tokenización con Stellar (1S-2027).",
+   "ficha": "xlm",
+   "busca": [
+    "Stellar",
+    "XLM",
+    "BENJI",
+    "MoneyGram"
+   ],
+   "iso": [
+    {
+     "t": "DTCC conectará su servicio de tokenización con Stellar en el 1S-2027; la nota no menciona XLM",
+     "f": "DTCC, nota de prensa",
+     "n": "P",
+     "d": "2026-05-27",
+     "u": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy"
+    },
+    {
+     "t": "Sin integración primaria encontrada con mensajería ISO 20022 o con el libro mayor de Swift",
+     "f": "Búsqueda 14-nov-2026",
+     "d": "2026-11-14",
+     "n": "V"
+    },
+    {
+     "t": "El informe del 2T-2026 de la SDF no cita integraciones con ISO 20022 ni con Swift",
+     "f": "SDF, informe del 2T-2026 (leído)",
+     "d": "2026-08-03",
+     "n": "P",
+     "u": "https://stellar.org/blog/foundation-news/q2-2026-what-stellar-was-built-for-has-arrived"
+    }
+   ],
+   "matriz": {
+    "liquidez": {
+     "t": "Stablecoins 445,4 M$ de capitalización y 23.710 M$ transferidos en 30 días (+108 %): mucha rotación sobre poca oferta",
+     "f": "RWA.xyz, ficha Stellar (leída en el navegador)",
+     "d": "2026-11-14",
+     "n": "S",
+     "u": "https://app.rwa.xyz/networks/stellar"
+    },
+    "seguridad": {
+     "t": "Consenso SCP con validadores de nivel 1; congelar y recuperar activos por línea de confianza",
+     "f": "Dossier panorama competitivo",
+     "i": "informes/dossiers/2026-10-09-panorama-competitivo.md",
+     "d": "2026-10-09",
+     "n": "P"
+    },
+    "activos": {
+     "t": "4.662,8 M$ distribuidos, 4.ª red tras Ethereum, BNB Chain y Solana (+31,6 % en 30 días). Plataformas: Spiko 2.100 M$, Franklin Benji 1.300 M$, Ondo 539 M$, Realiz 500 M$, Circle 378 M$ (la tabla de plataformas no suma igual que el total)",
+     "f": "RWA.xyz, ficha Stellar (leída en el navegador)",
+     "d": "2026-11-14",
+     "n": "S",
+     "u": "https://app.rwa.xyz/networks/stellar"
+    },
+    "cumplimiento": {
+     "t": "DTC conectará su servicio de tokenización con Stellar en el 1S-2027 (si es la 1.ª o 2.ª red pública: fuentes discrepan [VERIFICAR]); el emisor puede autorizar, congelar y recuperar activos",
+     "f": "DTCC, nota de prensa",
+     "n": "P",
+     "d": "2026-05-27",
+     "u": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy"
+    },
+    "pagos": {
+     "t": "Transferencias de stablecoins: 11.400 M$ en el 2T-2026 (+72 % trimestral); cierre ~5 s y comisión base de 100 stroops",
+     "f": "SDF, informe del 2T-2026 (leído; parte interesada)",
+     "d": "2026-08-03",
+     "n": "P",
+     "u": "https://stellar.org/blog/foundation-news/q2-2026-what-stellar-was-built-for-has-arrived"
+    },
+    "rendimiento": {
+     "t": "Sin staking nativo; préstamos con Blend (~88-90 M$ de TVL) y fondos con rendimiento (BENJI) en la red",
+     "f": "Informe institucional de Stellar y Nansen (resumen de buscador, no leídos)",
+     "d": null,
+     "n": "V",
+     "u": "https://stellar.org/resources/institutional-infrastructure-report"
+    },
+    "interop": {
+     "t": "CCTP de Circle (USDC sin puente custodio) en vivo desde el 19-may-2026; USDT0 (2-sep-2026) y Chainlink (14-oct-2026) también en vivo",
+     "f": "Blog de la SDF (parte interesada)",
+     "d": "2026-05-19",
+     "n": "P",
+     "u": "https://stellar.org/blog/foundation-news/circle-cctp-is-live-on-stellar"
+    },
+    "regulacion": {
+     "t": "XLM nombrado como «digital commodity» (SEC-CFTC); sin ETF spot en EE. UU.: GXLM en OTCQX (~21,8 M$)",
+     "f": "Dossier ETF",
+     "i": "informes/dossiers/2026-10-09-etfs-cripto.md",
+     "d": "2026-10-09",
+     "n": "P"
+    }
+   },
+   "capas": {
+    "liquidacion": {
+     "quien": "MoneyGram (stablecoin MGUSD) y Circle (USDC nativo y CCTP)",
+     "token": "parcial",
+     "ev": "Los pagos se hacen en stablecoins; XLM cubre comisiones (100 stroops de base) y puede hacer de puente en el DEX, sin cifra de cuánto. Fuente: informe del 2T-2026 de la SDF [P]."
+    },
+    "emision": {
+     "quien": "Spiko, Franklin Templeton (BENJI), Ondo (USDY), Realiz, Circle, WisdomTree; DTCC prevé llevar activos de DTC a Stellar en el 1S-2027",
+     "token": "mínimo",
+     "ev": "El emisor paga comisiones mínimas y reservas en XLM; no necesita comprar XLM en volumen."
+    },
+    "seguridad": {
+     "token": "no",
+     "ev": "SCP no usa staking: XLM no asegura la red."
+    },
+    "mensajeria": {
+     "token": "sin dato",
+     "ev": "Sin dato primario de conectores ISO 20022."
+    },
+    "custodia": {
+     "token": "no",
+     "ev": "Autorización, congelación y recuperación son funciones del protocolo, sin captura en el token."
+    }
+   },
+   "captura": {
+    "nivel": "baja",
+    "mecanismo": "[RAZONADO] Comisiones y reservas en XLM muy pequeñas; pagos y emisión se hacen en stablecoins y fondos, sin staking ni quema.",
+    "supuestos": [
+     "Comisiones y reservas mínimas",
+     "Sin mecanismo nuevo de staking o quema"
+    ]
+   },
+   "hitos": [
+    {
+     "fecha": "2026-05-19",
+     "t": "CCTP de Circle en vivo en Stellar",
+     "u": "https://stellar.org/blog/foundation-news/circle-cctp-is-live-on-stellar",
+     "n": "P",
+     "futuro": false,
+     "tl": true
+    },
+    {
+     "fecha": "2026-09-02",
+     "t": "USDT0 en vivo en Stellar",
+     "u": "https://stellar.org/blog/foundation-news/usdt0-is-now-live-on-stellar",
+     "n": "P",
+     "futuro": false
+    },
+    {
+     "fecha": "2026-10-14",
+     "t": "Chainlink en vivo en Stellar",
+     "u": "https://stellar.org/blog/foundation-news/chainlink-is-now-live-on-stellar-unleashing-a-new-wave-of-defi-innovation",
+     "n": "P",
+     "futuro": false
+    },
+    {
+     "fecha": "2027-06-30",
+     "t": "DTCC prevé activos tokenizados de DTC en Stellar (1S-2027)",
+     "u": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy",
+     "n": "P",
+     "futuro": true,
+     "aprox": true,
+     "cal": true
+    }
+   ],
+   "sesgos": [
+    "La SDF es parte interesada y gestiona sus propias métricas; las cifras de volumen vienen de secundarias que citan a la SDF."
+   ],
+   "sin_dato": [
+    "Desglose por emisor de los 4.663 M$.",
+    "Volumen de pagos liquidado en XLM (no en stablecoins).",
+    "Conectores ISO 20022 de los anclajes.",
+    "Si Stellar es la primera o la segunda red pública del servicio de DTC (Ledger Insights dice «segunda»)."
+   ]
+  },
+  {
+   "id": "hedera",
+   "nombre": "Hedera",
+   "token": "HBAR",
+   "tipo": "Pública con nodos de consenso permisionados (Consejo de Gobierno)",
+   "aporta": "Comisiones estables fijadas en dólares, servicio de tokens (HTS) y de consenso (HCS); consejo de grandes empresas; pilotos de CBDC mayorista.",
+   "ficha": null,
+   "busca": [
+    "Hedera",
+    "HBAR",
+    "Acacia"
+   ],
+   "iso": [
+    {
+     "t": "Piloto de CBDC mayorista australiana (Acacia) emitida en Hedera pública y privada",
+     "f": "Comunicado 2026-13 del RBA y DFCRC (resumen de buscador; PDF no leído)",
+     "u": "https://dfcrc.com.au/wp-content/uploads/2026/05/RBA-and-DFCRC-Release-Findings-From-Project-Acacia-_-Media-Releases-_-RBA.pdf",
+     "d": "2026-05-18",
+     "n": "S"
+    },
+    {
+     "t": "Sin integración primaria encontrada con Swift ni mensajería ISO 20022; las listas de «cripto ISO 20022» que la incluyen son de comunidad",
+     "f": "Búsqueda 14-nov-2026",
+     "d": "2026-11-14",
+     "n": "V"
+    }
+   ],
+   "matriz": {
+    "liquidez": {
+     "t": "Stablecoins en la cadena 22,4 M$; USDC 48 M$ (DefiLlama, 9-oct)",
+     "f": "RWA.xyz; dossier panorama",
+     "u": "https://app.rwa.xyz/networks",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "seguridad": {
+     "t": "Nodos de consenso operados por miembros del Consejo; nodos comunitarios y sin permisos anunciados sin fecha",
+     "f": "hedera.com (resumen de buscador)",
+     "u": "https://hedera.com/blog/decentralization-of-the-hedera-mainnet-consensus-node-hosting-and-stake-distribution",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "activos": {
+     "t": "88,3 M$ distribuidos y 70,3 M$ representados",
+     "f": "RWA.xyz",
+     "u": "https://app.rwa.xyz/networks",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "cumplimiento": {
+     "t": "Consejo de Gobierno de grandes empresas (31-34 miembros según fuentes, sin cifra primaria)",
+     "f": "Secundarias",
+     "d": "2026-11-14",
+     "n": "V"
+    },
+    "pagos": {
+     "t": "Comisión fijada en USD y pagada en HBAR: transferencia 0,0001 $, transferencia de token HTS 0,001 $, mensaje HCS 0,0008 $, crear un token 1 $",
+     "f": "docs.hedera.com, tabla de comisiones (leída por el subagente)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.hedera.com/hedera/networks/mainnet/fees"
+    },
+    "rendimiento": {
+     "t": "Staking nativo de HBAR con recompensa máxima del 2,5 % anual votada por el Consejo (antes 6,5 %)",
+     "f": "docs.hedera.com, staking (resumen de buscador, no leído)",
+     "d": null,
+     "n": "V",
+     "u": "https://docs.hedera.com/hedera/core-concepts/staking/staking"
+    },
+    "interop": null,
+    "regulacion": {
+     "t": "Hay ETF spot de HBAR en EE. UU.",
+     "f": "Dossier ETF (SoSoValue)",
+     "i": "informes/dossiers/2026-10-09-etfs-cripto.md",
+     "d": "2026-10-09",
+     "n": "S"
+    }
+   },
+   "capas": {
+    "liquidacion": {
+     "quien": "RBA/DFCRC (piloto, 4,4 M AUD en total entre todas las redes)",
+     "token": "no",
+     "ev": "En Acacia lo liquidado fue CBDC mayorista en prueba; el comunicado del RBA (18-may-2026) no nombra plataformas: el vínculo con Hedera (HashSphere, red privada) viene de un caso de estudio del proveedor [S]. HBAR solo paga comisiones."
+    },
+    "emision": {
+     "quien": "Emisores de HTS (pocos: 88 M$ distribuidos)",
+     "token": "mínimo",
+     "ev": "Comisiones fijas en USD pagadas en HBAR: la demanda crece con el número de operaciones, no con el valor emitido."
+    },
+    "seguridad": {
+     "token": "parcial",
+     "ev": "El peso de consenso usa HBAR en stake, pero los nodos los operan miembros del Consejo: la red que usan no depende de un mercado abierto de validadores."
+    },
+    "mensajeria": {
+     "token": "sin dato",
+     "ev": "HCS sirve para registrar mensajes; sin dato primario de uso con ISO 20022."
+    },
+    "custodia": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    }
+   },
+   "captura": {
+    "nivel": "baja",
+    "mecanismo": "[RAZONADO] Comisiones fijadas en dólares y pagadas en HBAR: crecen con el número de operaciones, no con el valor movido; staking opcional con tope de recompensa.",
+    "supuestos": [
+     "Comisiones fijadas en USD",
+     "Apertura de nodos sin stake obligatorio relevante"
+    ]
+   },
+   "hitos": [
+    {
+     "fecha": "2025-10-28",
+     "t": "ETF spot de HBAR de Canary (HBR) empieza a cotizar",
+     "u": "https://business.mammothtimes.com/mammothtimes/article/bizwire-2025-10-28-canary-capital-launches-spot-hbar-etf-opening-access-to-the-next-generation-of-digital-assets",
+     "n": "V",
+     "futuro": false
+    },
+    {
+     "fecha": "2026-05-18",
+     "t": "RBA y DFCRC publican los resultados de Acacia (20 casos mayoristas)",
+     "u": "https://www.rba.gov.au/media-releases/2026/mr-26-13.html",
+     "n": "P",
+     "futuro": false
+    }
+   ],
+   "sesgos": [
+    "Mucha cobertura de Hedera viene de webs promocionales (Genfinity y similares) y de listas «ISO 20022» de comunidad."
+   ],
+   "sin_dato": [
+    "Integración real con Swift o ISO 20022.",
+    "Número exacto de miembros del Consejo y fecha de nodos sin permisos."
+   ]
+  },
+  {
+   "id": "ethereum",
+   "nombre": "Ethereum (y sus L2)",
+   "token": "ETH",
+   "tipo": "Pública; prueba de participación (staking)",
+   "aporta": "La mayor liquidez de stablecoins y de RWA distribuidos, DeFi para colateral y préstamos, y el estándar EVM que también usan redes privadas (Besu de Swift y DTCC).",
+   "ficha": null,
+   "busca": [
+    "Ethereum",
+    "ETH",
+    "BUIDL"
+   ],
+   "iso": [
+    {
+     "t": "El libro mayor de Swift usa EVM/Besu en red permisionada, no Ethereum público: tecnología EVM no equivale a demanda de ETH",
+     "f": "Swift, 30-mar-2026",
+     "u": "https://www.swift.com/insights/news/swifts-blockchain-based-shared-ledger-progresses-mvp-implementation",
+     "d": "2026-03-30",
+     "n": "P"
+    },
+    {
+     "t": "Piloto de CBDC mayorista australiana (Acacia) emitida también en Ethereum público",
+     "f": "Comunicado del RBA y DFCRC (resumen de buscador)",
+     "u": "https://dfcrc.com.au/wp-content/uploads/2026/05/RBA-and-DFCRC-Release-Findings-From-Project-Acacia-_-Media-Releases-_-RBA.pdf",
+     "d": "2026-05-18",
+     "n": "S"
+    }
+   ],
+   "matriz": {
+    "liquidez": {
+     "t": "Stablecoins en la cadena 135.765 M$ (la mayor)",
+     "f": "RWA.xyz",
+     "u": "https://app.rwa.xyz/networks",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "seguridad": {
+     "t": "Miles de validadores con staking de ETH",
+     "f": "Dossier panorama competitivo",
+     "i": "informes/dossiers/2026-10-09-panorama-competitivo.md",
+     "d": "2026-10-09",
+     "n": "S"
+    },
+    "activos": {
+     "t": "15.153,5 M$ distribuidos (1.ª red): BUIDL, Ondo, fondos monetarios y deuda",
+     "f": "RWA.xyz",
+     "u": "https://app.rwa.xyz/networks",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "cumplimiento": {
+     "t": "Estándares de token con permisos (ERC-3643); JPMD de J.P. Morgan en Base (L2) desde nov-2025",
+     "f": "Dossier panorama; voz v041 (sin enlace guardado: [VERIFICAR])",
+     "n": "V",
+     "d": null
+    },
+    "pagos": {
+     "t": "Bloques de ~12 s en L1; L2 más rápidos; comisión variable en ETH",
+     "f": "Dossier panorama competitivo",
+     "i": "informes/dossiers/2026-10-09-panorama-competitivo.md",
+     "d": "2026-10-09",
+     "n": "S"
+    },
+    "rendimiento": {
+     "t": "44,19 M de ETH en staking (35 % del suministro) con un APR del 2,5 %; el mayor mercado DeFi de préstamos y colateral",
+     "f": "ethereum.org/staking (leída por el subagente; la página no fecha la cifra)",
+     "d": "2026-11-12",
+     "n": "P",
+     "u": "https://ethereum.org/en/staking/"
+    },
+    "interop": {
+     "t": "EVM es el estándar de facto (lo usan Besu, Avalanche, Polygon y las L2)",
+     "f": "Swift, 30-mar-2026",
+     "u": "https://www.swift.com/insights/news/swifts-blockchain-based-shared-ledger-progresses-mvp-implementation",
+     "d": "2026-03-30",
+     "n": "P"
+    },
+    "regulacion": {
+     "t": "11 ETF spot de ETH en EE. UU.",
+     "f": "Dossier ETF",
+     "i": "informes/dossiers/2026-10-09-etfs-cripto.md",
+     "d": "2026-10-09",
+     "n": "S"
+    }
+   },
+   "capas": {
+    "liquidacion": {
+     "quien": "Emisores de stablecoins (USDC, USDT), Visa y Mastercard en pilotos",
+     "token": "sí",
+     "ev": "Cada operación en L1 paga gas en ETH; en las L2 la comisión se paga mayoritariamente en ETH [VERIFICAR por L2]."
+    },
+    "emision": {
+     "quien": "BlackRock (BUIDL vía Securitize), Ondo, Franklin",
+     "token": "sí",
+     "ev": "Emitir y mover en L1 consume ETH; en las redes EVM privadas (Swift, DTCC) no se usa ETH."
+    },
+    "seguridad": {
+     "token": "sí",
+     "ev": "El ETH en staking asegura la red pública que usan los emisores."
+    },
+    "mensajeria": {
+     "token": "parcial",
+     "ev": "CCIP y otros puentes cobran en LINK o en ETH."
+    },
+    "custodia": {
+     "token": "no",
+     "ev": "Las listas blancas y el KYC están en los contratos del emisor, sin captura propia en ETH."
+    }
+   },
+   "captura": {
+    "nivel": "media",
+    "mecanismo": "[RAZONADO] Toda operación en la red pública paga gas en ETH (la comisión base se quema) y el ETH en staking asegura la red; las redes EVM privadas (Swift, DTCC) no usan ETH.",
+    "supuestos": [
+     "Emisores en la red pública o en L2 que liquidan en ella",
+     "Que las redes EVM privadas no absorban el flujo bancario"
+    ]
+   },
+   "hitos": [
+    {
+     "fecha": "2025-12-03",
+     "t": "Bifurcación Fusaka en la red principal",
+     "u": "https://blockworks.co/news/fusaka-rollout-glamsterdam",
+     "n": "S",
+     "futuro": false
+    },
+    {
+     "fecha": "2026-12-31",
+     "t": "Glamsterdam en la red principal: previsto en el 4T-2026, sin fecha fijada",
+     "u": "https://everstake.one/resources/blog/ethereum-glamsterdam-upgrade-explained",
+     "n": "S",
+     "futuro": true,
+     "aprox": true,
+     "cal": true
+    }
+   ],
+   "sesgos": [
+    "Cifras de agregadores (RWA.xyz, DefiLlama) con metodologías distintas."
+   ],
+   "sin_dato": [
+    "Reparto de BUIDL por cadena con fuente del emisor.",
+    "Qué parte de la comisión de las L2 llega a Ethereum."
+   ]
+  },
+  {
+   "id": "solana",
+   "nombre": "Solana",
+   "token": "SOL",
+   "tipo": "Pública; prueba de participación",
+   "aporta": "Alto rendimiento y comisiones bajas para pagos con stablecoins y valores tokenizados; muchos titulares minoristas.",
+   "ficha": null,
+   "busca": [
+    "Solana",
+    "SOL"
+   ],
+   "iso": [
+    {
+     "t": "Sin integración primaria encontrada con Swift ni ISO 20022",
+     "f": "Búsqueda 14-nov-2026",
+     "d": "2026-11-14",
+     "n": "V"
+    }
+   ],
+   "matriz": {
+    "liquidez": {
+     "t": "Stablecoins en la cadena 13.874 M$",
+     "f": "RWA.xyz",
+     "u": "https://app.rwa.xyz/networks",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "seguridad": {
+     "t": "Alpenglow activo en la red principal desde la época 1064 (21-oct-2026): fase 1 «Votor» sustituye a TowerBFT; la fase «Rotor» sigue sin fecha",
+     "f": "solana.com/upgrades/alpenglow (leída en el navegador; parte interesada)",
+     "d": "2026-10-21",
+     "n": "P",
+     "u": "https://solana.com/upgrades/alpenglow"
+    },
+    "activos": {
+     "t": "5.144,6 M$ distribuidos (3.ª red); 1,03 M de titulares de RWA",
+     "f": "RWA.xyz",
+     "u": "https://app.rwa.xyz/networks",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "cumplimiento": {
+     "t": "Mastercard liquida stablecoins en Solana (anuncio 3-jun-2026, sin volúmenes)",
+     "f": "Dossier panorama",
+     "i": "informes/dossiers/2026-10-09-panorama-competitivo.md",
+     "d": "2026-06-03",
+     "n": "S"
+    },
+    "pagos": {
+     "t": "~1.868 tx/s sin votos (medido 9-oct-2026); comisiones de fracciones de céntimo [VERIFICAR]",
+     "f": "Dossier panorama",
+     "i": "informes/dossiers/2026-10-09-panorama-competitivo.md",
+     "d": "2026-10-09",
+     "n": "P"
+    },
+    "rendimiento": {
+     "t": "Staking de SOL nativo",
+     "f": "Conocimiento general; sin cifra leída hoy",
+     "d": "2026-11-14",
+     "n": "V"
+    },
+    "interop": null,
+    "regulacion": {
+     "t": "SOL nombrado como «digital commodity» (SEC-CFTC); 9 ETF spot en EE. UU.",
+     "f": "Dossier ETF",
+     "i": "informes/dossiers/2026-10-09-etfs-cripto.md",
+     "d": "2026-10-09",
+     "n": "P"
+    }
+   },
+   "capas": {
+    "liquidacion": {
+     "quien": "Emisores de stablecoins, Visa y Mastercard (pilotos)",
+     "token": "sí",
+     "ev": "Cada operación paga comisión en SOL, aunque baja."
+    },
+    "emision": {
+     "quien": "Ondo, BlackRock (BUIDL), Franklin",
+     "token": "mínimo",
+     "ev": "Emisión barata: poco SOL por operación."
+    },
+    "seguridad": {
+     "token": "sí",
+     "ev": "El SOL en staking asegura la red pública."
+    },
+    "mensajeria": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "custodia": {
+     "token": "no",
+     "ev": "Las extensiones de token con permisos no capturan valor en SOL [VERIFICAR]."
+    }
+   },
+   "captura": {
+    "nivel": "media",
+    "mecanismo": "[RAZONADO] Comisiones en SOL (bajas) y SOL en staking que asegura la red pública que usan los emisores.",
+    "supuestos": [
+     "Uso institucional en la red pública",
+     "Estabilidad tras Alpenglow"
+    ]
+   },
+   "hitos": [
+    {
+     "fecha": "2025-10-28",
+     "t": "Primer ETF de SOL con staking en EE. UU. (Bitwise BSOL)",
+     "u": "https://www.theblock.co/post/376428/solana-etfs-in-the-spotlight-bitwises-bsol-to-debut-on-nyse-on-tuesday",
+     "n": "V",
+     "futuro": false
+    },
+    {
+     "fecha": "2026-10-21",
+     "t": "Alpenglow (fase Votor) activo en la red principal, época 1064",
+     "u": "https://solana.com/upgrades/alpenglow",
+     "n": "P",
+     "futuro": false,
+     "tl": true
+    }
+   ],
+   "sesgos": [
+    "Promoción del ecosistema; cifras de agregadores."
+   ],
+   "sin_dato": [
+    "Integración ISO 20022.",
+    "Volumen institucional real por emisor."
+   ]
+  },
+  {
+   "id": "bnb",
+   "nombre": "BNB Chain",
+   "token": "BNB",
+   "tipo": "Pública; validadores limitados (sin cifra primaria)",
+   "aporta": "Mucha liquidez minorista y la 2.ª red en RWA distribuidos, muy ligada a Binance.",
+   "ficha": null,
+   "busca": [
+    "BNB",
+    "Binance"
+   ],
+   "iso": [
+    {
+     "t": "Sin integración primaria encontrada con Swift ni ISO 20022",
+     "f": "Búsqueda 14-nov-2026",
+     "d": "2026-11-14",
+     "n": "V"
+    }
+   ],
+   "matriz": {
+    "liquidez": {
+     "t": "Stablecoins en la cadena 12.583 M$; 96 M de titulares de stablecoins",
+     "f": "RWA.xyz",
+     "u": "https://app.rwa.xyz/networks",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "seguridad": {
+     "t": "Proof-of-Staked-Authority (PoSA): validadores elegidos por BNB en staking; la doc no da número de validadores ni finalidad",
+     "f": "docs.bnbchain.org",
+     "d": "2024-09-25",
+     "n": "P",
+     "u": "https://docs.bnbchain.org/bnb-smart-chain/"
+    },
+    "activos": {
+     "t": "6.270 M$ distribuidos (2.ª red). La tabla de plataformas incluye stablecoins (USDT y USDC vía Binance Bridge, USD1); entre los RWA destacan iBENJI de Franklin (~1.530 M$), USYC de Circle, BUIDL, USDY de Ondo y acciones tokenizadas bStocks",
+     "f": "RWA.xyz, ficha BNB Chain (leída en el navegador)",
+     "d": "2026-11-14",
+     "n": "S",
+     "u": "https://app.rwa.xyz/networks/bnb-chain"
+    },
+    "cumplimiento": null,
+    "pagos": null,
+    "rendimiento": null,
+    "interop": null,
+    "regulacion": {
+     "t": "Hay ETF spot de BNB en EE. UU.",
+     "f": "Dossier ETF",
+     "i": "informes/dossiers/2026-10-09-etfs-cripto.md",
+     "d": "2026-10-09",
+     "n": "S"
+    }
+   },
+   "capas": {
+    "liquidacion": {
+     "token": "sí",
+     "ev": "Las comisiones se pagan en BNB."
+    },
+    "emision": {
+     "quien": "Sin desglose primario de emisores",
+     "token": "mínimo",
+     "ev": "Sin dato de qué activos forman los 6.266 M$."
+    },
+    "seguridad": {
+     "token": "sí",
+     "ev": "Validadores con BNB en staking [VERIFICAR número]."
+    },
+    "mensajeria": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "custodia": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    }
+   },
+   "captura": {
+    "nivel": "incierta",
+    "mecanismo": "[RAZONADO] Comisiones y staking en BNB; el valor tokenizado depende de pocos emisores y del entorno de Binance.",
+    "supuestos": [
+     "Que la actividad de RWA no sea casi toda del entorno de Binance"
+    ]
+   },
+   "hitos": [
+    {
+     "fecha": "2025-09",
+     "t": "Franklin Templeton lleva Benji a BNB Chain",
+     "u": "https://decrypt.co/341095/franklin-templeton-taps-bnb-chain-for-benji-expansion-after-binance-team-up",
+     "n": "S",
+     "futuro": false
+    }
+   ],
+   "sesgos": [
+    "Binance es parte interesada; poca información primaria por emisor."
+   ],
+   "sin_dato": [
+    "Qué activos componen los 6.266 M$.",
+    "Integración institucional fuera de Binance."
+   ]
+  },
+  {
+   "id": "avalanche",
+   "nombre": "Avalanche",
+   "token": "AVAX",
+   "tipo": "Pública con subredes y L1 propias (algunas permisionadas)",
+   "aporta": "Redes a medida (L1) para instituciones y mucho valor «representado».",
+   "ficha": null,
+   "busca": [
+    "Avalanche",
+    "AVAX"
+   ],
+   "iso": [
+    {
+     "t": "Sin integración primaria encontrada con Swift ni ISO 20022",
+     "f": "Búsqueda 14-nov-2026",
+     "d": "2026-11-14",
+     "n": "V"
+    }
+   ],
+   "matriz": {
+    "liquidez": {
+     "t": "Stablecoins en la cadena 717 M$",
+     "f": "RWA.xyz",
+     "u": "https://app.rwa.xyz/networks",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "seguridad": {
+     "t": "Red principal: 2.000 AVAX de stake mínimo por validador. Las L1 propias (ACP-77) no hacen stake de AVAX pero pagan una tarifa continua en AVAX: mínimo 512 nAVAX/s ≈ 1,33 AVAX al mes por validador",
+     "f": "ACP-77 en el repositorio de la Avalanche Foundation (leído por el subagente)",
+     "d": null,
+     "n": "P",
+     "u": "https://raw.githubusercontent.com/avalanche-foundation/ACPs/main/ACPs/77-reinventing-subnets/README.md"
+    },
+    "activos": {
+     "t": "1.413,9 M$ distribuidos y 11.403,5 M$ representados; BUIDL ~900 M$ según un medio [S]",
+     "f": "RWA.xyz; C50",
+     "u": "https://app.rwa.xyz/networks",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "cumplimiento": null,
+    "pagos": {
+     "t": "Cadena del piloto de liquidación con stablecoins de Visa (abr-2026)",
+     "f": "Dossier panorama",
+     "i": "informes/dossiers/2026-10-09-panorama-competitivo.md",
+     "d": "2026-04",
+     "n": "V"
+    },
+    "rendimiento": null,
+    "interop": null,
+    "regulacion": {
+     "t": "Hay ETF spot de AVAX en EE. UU.",
+     "f": "Dossier ETF",
+     "i": "informes/dossiers/2026-10-09-etfs-cripto.md",
+     "d": "2026-10-09",
+     "n": "S"
+    }
+   },
+   "capas": {
+    "liquidacion": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "emision": {
+     "token": "mínimo",
+     "ev": "Las L1 institucionales pueden usar su propio token de gas; a la red principal solo pagan la tarifa continua por validador en AVAX [P, ACP-77]."
+    },
+    "seguridad": {
+     "token": "parcial",
+     "ev": "La red principal se asegura con AVAX en staking (2.000 AVAX mínimo). Las L1 propias pagan una tarifa continua en AVAX por validador (≈1,33 AVAX/mes en el mínimo) sin stake de AVAX; el ACP-77 no dice si se quema [P]."
+    },
+    "mensajeria": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "custodia": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    }
+   },
+   "captura": {
+    "nivel": "incierta",
+    "mecanismo": "[RAZONADO] La red principal pide AVAX en staking; las L1 propias pagan una tarifa continua pequeña en AVAX por validador y pueden usar su propio token de gas.",
+    "supuestos": [
+     "Número de validadores de L1 (la tarifa sube si pasan de 10.000)",
+     "Destino de la tarifa (quema o no)"
+    ]
+   },
+   "hitos": [
+    {
+     "fecha": "2026-03-11",
+     "t": "Grayscale lanza un ETF de AVAX con staking (GAVA)",
+     "u": "https://www.theblock.co/news/business/2026-03-12-grayscale-debuts-avalanche-staking-etf-on-nasdaq-under-ticker-gava-393378",
+     "n": "V",
+     "futuro": false
+    }
+   ],
+   "sesgos": [
+    "Cifras de agregador."
+   ],
+   "sin_dato": [
+    "Modelo de comisiones de las L1 institucionales.",
+    "Emisores del valor representado."
+   ]
+  },
+  {
+   "id": "polygon",
+   "nombre": "Polygon",
+   "token": "POL",
+   "tipo": "Pública; prueba de participación (EVM)",
+   "aporta": "Red EVM barata con fondos tokenizados y pagos de tarjetas.",
+   "ficha": null,
+   "busca": [
+    "Polygon"
+   ],
+   "iso": [
+    {
+     "t": "Sin integración primaria encontrada con Swift ni ISO 20022",
+     "f": "Búsqueda 14-nov-2026",
+     "d": "2026-11-14",
+     "n": "V"
+    }
+   ],
+   "matriz": {
+    "liquidez": {
+     "t": "Stablecoins en la cadena 2.771 M$",
+     "f": "RWA.xyz",
+     "u": "https://app.rwa.xyz/networks",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "seguridad": {
+     "t": "Cadena de prueba de participación compatible con EVM (capas Heimdall y Bor); la doc leída no da número de validadores ni finalidad",
+     "f": "docs.polygon.technology",
+     "d": null,
+     "n": "P",
+     "u": "https://docs.polygon.technology/pos/"
+    },
+    "activos": {
+     "t": "447,6 M$ distribuidos y 713 M$ representados",
+     "f": "RWA.xyz",
+     "u": "https://app.rwa.xyz/networks",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "cumplimiento": {
+     "t": "Mastercard liquida stablecoins en Polygon (3-jun-2026)",
+     "f": "Dossier panorama",
+     "i": "informes/dossiers/2026-10-09-panorama-competitivo.md",
+     "d": "2026-06-03",
+     "n": "S"
+    },
+    "pagos": null,
+    "rendimiento": null,
+    "interop": null,
+    "regulacion": null
+   },
+   "capas": {
+    "liquidacion": {
+     "token": "sí",
+     "ev": "Gas en POL [VERIFICAR]."
+    },
+    "emision": {
+     "token": "mínimo",
+     "ev": "Comisiones bajas."
+    },
+    "seguridad": {
+     "token": "sí",
+     "ev": "Staking de POL [VERIFICAR]."
+    },
+    "mensajeria": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "custodia": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    }
+   },
+   "captura": {
+    "nivel": "baja",
+    "mecanismo": "[RAZONADO] Gas y staking en POL con comisiones muy bajas.",
+    "supuestos": [
+     "Comisiones bajas",
+     "Competencia de las L2 de Ethereum"
+    ]
+   },
+   "hitos": [],
+   "sesgos": [
+    "Cifras de agregador."
+   ],
+   "sin_dato": [
+    "Modelo de comisiones y staking verificado."
+   ]
+  },
+  {
+   "id": "canton",
+   "nombre": "Canton Network",
+   "token": "Canton Coin (CC)",
+   "tipo": "Red con privacidad y permisos sobre un sincronizador global",
+   "aporta": "Infraestructura post-negociación de Wall Street: DTCC en producción, repo tokenizado y JPMD; privacidad entre participantes.",
+   "ficha": null,
+   "busca": [
+    "Canton",
+    "DTCC",
+    "JPMD"
+   ],
+   "iso": [
+    {
+     "t": "DTC lanzó en producción su servicio de activos tokenizados en Canton y Besu (28-oct-2026)",
+     "f": "DTCC, nota de prensa",
+     "n": "P",
+     "d": "2026-10-28",
+     "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live"
+    },
+    {
+     "t": "J.P. Morgan anunció emitir JPMD de forma nativa en Canton, por fases en 2026",
+     "f": "The Block (sin enlace guardado: [VERIFICAR])",
+     "n": "V",
+     "d": null
+    }
+   ],
+   "matriz": {
+    "liquidez": {
+     "t": "Repos de Broadridge DLR: media diaria de 351.000 M$ en ago-2026; el artículo no aclara qué parte se registra en Canton",
+     "f": "Genfinity (secundaria entusiasta) citando la página de DLR",
+     "d": "2026-09-11",
+     "n": "S",
+     "u": "https://genfinity.io/2026/09/11/broadridge-dlx-tokenization-platform-dtcc-canton/"
+    },
+    "seguridad": {
+     "t": "Super Validators con stake de CC participan en la gobernanza",
+     "f": "docs.canton.network (leído)",
+     "u": "https://docs.canton.network/overview/understand/canton-coin",
+     "d": "2026-11-14",
+     "n": "P"
+    },
+    "activos": {
+     "t": "374.118 M$ representados y 0 distribuidos (la mayor cifra «representada» de RWA.xyz)",
+     "f": "RWA.xyz",
+     "u": "https://app.rwa.xyz/networks",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "cumplimiento": {
+     "t": "Servicio de tokenización de DTC en producción desde el 28-oct-2026, integrado con Canton y con una red privada Besu",
+     "f": "DTCC, nota de prensa",
+     "d": "2026-10-28",
+     "n": "P",
+     "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live"
+    },
+    "pagos": {
+     "t": "En el sincronizador global el tráfico que pasa de una franja gratuita se paga en Canton Coin: precio fijado en USD por MB (60 $/MB en la configuración de ejemplo) y la compra quema todo el CC; los Super Validators no pagan. La página no trata los sincronizadores privados",
+     "f": "docs.canton.network, «Synchronizer Traffic» (leída en el navegador)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.canton.network/global-synchronizer/deployment/synchronizer-traffic.md"
+    },
+    "rendimiento": {
+     "t": "Margen y colateral tokenizados en las pruebas de DTCC",
+     "f": "DTCC, jornada de pruebas del 15-jul-2026 (informe T20)",
+     "n": "P",
+     "d": "2026-07-15",
+     "i": "informes/research/2026-10-23-T20-dtcc-tokenizacion.md"
+    },
+    "interop": {
+     "t": "Broadridge DLX (9-sep-2026) se conecta desde el primer día al servicio de tokenización de DTCC vía Canton",
+     "f": "Genfinity (secundaria)",
+     "d": "2026-09-11",
+     "n": "S",
+     "u": "https://genfinity.io/2026/09/11/broadridge-dlx-tokenization-platform-dtcc-canton/"
+    },
+    "regulacion": {
+     "t": "La SEC dio una carta de no acción a DTC (11-dic-2025) para un servicio de tokenización de 3 años",
+     "f": "Mayer Brown (despacho) y prensa",
+     "d": "2025-12-11",
+     "n": "S",
+     "u": "https://www.mayerbrown.com/-/media/files/perspectives-events/publications/2025/12/sec-staff-no-action-relief-for-dtc-pilot-provides-a-pathway-for-tokenized-securities.pdf"
+    }
+   },
+   "capas": {
+    "liquidacion": {
+     "quien": "J.P. Morgan (JPMD, por fases)",
+     "token": "parcial",
+     "ev": "En el sincronizador global el tráfico de pago se compra quemando Canton Coin a precio fijado en USD [P, docs]. No consta si los dominios o sincronizadores privados de cada institución necesitan CC [VERIFICAR]."
+    },
+    "emision": {
+     "quien": "DTC (DTCC): servicio de tokenización en producción desde el 28-oct-2026 (Canton y una red Besu privada)",
+     "token": "parcial",
+     "ev": "La validadora compra el tráfico en CC; el precio está en USD, así que la institución puede no tener CC si lo gestiona su validadora [P, docs de tráfico]."
+    },
+    "seguridad": {
+     "token": "parcial",
+     "ev": "Los Super Validators hacen stake de CC para gobernar; la red es permisionada."
+    },
+    "mensajeria": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "custodia": {
+     "token": "no",
+     "ev": "La privacidad y los permisos son del protocolo."
+    }
+   },
+   "captura": {
+    "nivel": "media",
+    "mecanismo": "[RAZONADO] En el sincronizador global el tráfico pagado se compra quemando Canton Coin a precio fijado en USD; no consta si los dominios privados de cada institución lo necesitan.",
+    "supuestos": [
+     "Que el tráfico institucional pase por el sincronizador global"
+    ]
+   },
+   "hitos": [
+    {
+     "fecha": "2025-12-11",
+     "t": "Carta de no acción de la SEC a DTC para tokenizar",
+     "u": "https://www.mayerbrown.com/-/media/files/perspectives-events/publications/2025/12/sec-staff-no-action-relief-for-dtc-pilot-provides-a-pathway-for-tokenized-securities.pdf",
+     "n": "S",
+     "futuro": false
+    },
+    {
+     "fecha": "2026-09-09",
+     "t": "Broadridge lanza DLX con conexión a DTCC vía Canton",
+     "u": "https://genfinity.io/2026/09/11/broadridge-dlx-tokenization-platform-dtcc-canton/",
+     "n": "S",
+     "futuro": false
+    },
+    {
+     "fecha": "2026-10-28",
+     "t": "Servicio de tokenización de DTC en producción (Canton y Besu)",
+     "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+     "n": "P",
+     "futuro": false
+    }
+   ],
+   "sesgos": [
+    "Digital Asset es parte interesada; cobertura entusiasta en webs como Genfinity."
+   ],
+   "sin_dato": [
+    "Volumen de transacciones de DTC en Canton.",
+    "Si los dominios privados pagan tráfico en CC."
+   ]
+  },
+  {
+   "id": "chainlink",
+   "nombre": "Chainlink (capa de interoperabilidad, no cadena)",
+   "token": "LINK",
+   "tipo": "Red de oráculos y mensajería entre cadenas",
+   "aporta": "El puente técnico entre mensajes ISO 20022 de Swift y contratos en cualquier cadena (CRE), datos y mensajería entre cadenas (CCIP).",
+   "ficha": null,
+   "busca": [
+    "Chainlink",
+    "Swift"
+   ],
+   "iso": [
+    {
+     "t": "Mensajes ISO 20022 de Swift dispararon suscripciones y reembolsos de un fondo tokenizado de UBS vía Chainlink CRE",
+     "f": "The Block",
+     "u": "https://www.theblock.co/post/372876/chainlink-swift-tokenized-fund-workflows-ubs-pilot",
+     "d": "2025-09-30",
+     "n": "S"
+    },
+    {
+     "t": "DTCC colabora con Chainlink en la Collateral AppChain (Besu con Chainlink Runtime Environment), prevista en el 4T-2026",
+     "f": "DTCC, nota de prensa",
+     "n": "P",
+     "d": "2026-05-12",
+     "u": "https://www.dtcc.com/news/2026/may/12/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management"
+    },
+    {
+     "t": "Ni la nota de DTCC (12-may-2026) ni la de Chainlink sobre Swift (28-sep-2026) mencionan ISO 20022",
+     "f": "DTCC y Chainlink (leídas)",
+     "d": "2026-09-28",
+     "n": "P",
+     "u": "https://chain.link/press-releases/chainlink-is-enabling-financial-institutions-to-connect-to-swifts-blockchain-ledger"
+    }
+   ],
+   "matriz": {
+    "liquidez": null,
+    "seguridad": null,
+    "activos": null,
+    "cumplimiento": {
+     "t": "DTCC usará Chainlink (CRE y su estándar de datos) en su Collateral AppChain; Chainlink trabaja para conectar instituciones al libro mayor de Swift (anuncio propio, sin cita de Swift)",
+     "f": "DTCC (12-may-2026) y nota de Chainlink (28-sep-2026)",
+     "d": "2026-05-12",
+     "n": "P",
+     "u": "https://www.dtcc.com/news/2026/may/12/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management"
+    },
+    "pagos": {
+     "t": "Chainlink dice que «trabaja para» que las instituciones conecten sus sistemas y claves al libro mayor de Swift mediante CRE; no es un servicio en producción ni nombra bancos",
+     "f": "Chainlink, nota de prensa (parte interesada)",
+     "d": "2026-09-28",
+     "n": "P",
+     "u": "https://chain.link/press-releases/chainlink-is-enabling-financial-institutions-to-connect-to-swifts-blockchain-ledger"
+    },
+    "rendimiento": {
+     "t": "Colateral: la Collateral AppChain de DTCC (gestión 24/7 de garantías) se apoya en Chainlink; producción prevista en el 4T-2026",
+     "f": "DTCC, nota de prensa",
+     "d": "2026-05-12",
+     "n": "P",
+     "u": "https://www.dtcc.com/news/2026/may/12/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management"
+    },
+    "interop": {
+     "t": "CCIP cobra en LINK o en otros activos (token nativo de cada cadena); en LINK es algo más barato (p. ej. 0,45 $ frente a 0,50 $)",
+     "f": "docs.chain.link (leído)",
+     "u": "https://docs.chain.link/ccip/concepts/fees-and-billing",
+     "d": "2026-11-14",
+     "n": "P"
+    },
+    "regulacion": {
+     "t": "Hay ETF spot de LINK en EE. UU.",
+     "f": "Dossier ETF",
+     "i": "informes/dossiers/2026-10-09-etfs-cripto.md",
+     "d": "2026-10-09",
+     "n": "S"
+    }
+   },
+   "capas": {
+    "liquidacion": {
+     "token": "no",
+     "ev": "No liquida valor."
+    },
+    "emision": {
+     "token": "no",
+     "ev": "No emite activos."
+    },
+    "seguridad": {
+     "token": "sin dato",
+     "ev": "Staking de LINK para nodos [VERIFICAR alcance]."
+    },
+    "mensajeria": {
+     "quien": "Swift/UBS (piloto), DTCC (AppChain)",
+     "token": "parcial",
+     "ev": "CCIP admite pagar en LINK o en otros activos (token nativo de cada cadena o su versión envuelta); en LINK es algo más barato [P, docs]. Las notas de DTCC y de Chainlink sobre Swift no dan papel técnico a LINK."
+    },
+    "custodia": {
+     "token": "no",
+     "ev": "No aplica."
+    }
+   },
+   "captura": {
+    "nivel": "baja",
+    "mecanismo": "[RAZONADO] CCIP admite pagar en LINK o en otros activos con un pequeño recargo; los anuncios con DTCC y Swift no asignan papel técnico a LINK.",
+    "supuestos": [
+     "Que se mantenga el pago en otros activos",
+     "Alcance real del staking de LINK"
+    ]
+   },
+   "hitos": [
+    {
+     "fecha": "2026-05-12",
+     "t": "DTCC anuncia que su Collateral AppChain usará Chainlink",
+     "u": "https://www.dtcc.com/news/2026/may/12/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management",
+     "n": "P",
+     "futuro": false,
+     "tl": true
+    },
+    {
+     "fecha": "2026-09-28",
+     "t": "Chainlink anuncia trabajo para conectar instituciones al libro mayor de Swift",
+     "u": "https://chain.link/press-releases/chainlink-is-enabling-financial-institutions-to-connect-to-swifts-blockchain-ledger",
+     "n": "P",
+     "futuro": false,
+     "tl": true
+    },
+    {
+     "fecha": "2026-12-31",
+     "t": "Collateral AppChain de DTCC en producción (previsto en el 4T-2026)",
+     "u": "https://www.dtcc.com/news/2026/may/12/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management",
+     "n": "P",
+     "futuro": true,
+     "aprox": true,
+     "cal": true
+    }
+   ],
+   "sesgos": [
+    "Mucha información viene de Chainlink y de webs entusiastas."
+   ],
+   "sin_dato": [
+    "Si CRE y CCIP pasan a producción con bancos fuera de pilotos."
+   ]
+  },
+  {
+   "id": "ondo",
+   "nombre": "Ondo (emisor y protocolo, no cadena)",
+   "token": "ONDO",
+   "tipo": "Emisor de valores tokenizados en varias cadenas; L1 propia anunciada",
+   "aporta": "Productos de deuda pública tokenizada (OUSG, USDY) y acciones tokenizadas en Ethereum, Solana, Stellar, XRPL y otras.",
+   "ficha": null,
+   "busca": [
+    "USDY",
+    "Ondo",
+    "OUSG"
+   ],
+   "iso": [
+    {
+     "t": "Sin integración primaria encontrada con Swift ni ISO 20022",
+     "f": "Búsqueda 14-nov-2026",
+     "d": "2026-11-14",
+     "n": "V"
+    }
+   ],
+   "matriz": {
+    "liquidez": null,
+    "seguridad": {
+     "t": "Aragon señala que los productos principales se controlan con multifirmas del equipo, que también tienen roles de administración y emisión del token ONDO",
+     "f": "Aragon OTF (resumen de buscador)",
+     "u": "https://otf.aragon.org/tokens/ondo",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "activos": {
+     "t": "USDY 2.150 M$ y OUSG 366,9 M$ (21-ago-2026)",
+     "f": "C50 (coinpaprika con datos de Ondo)",
+     "i": "informes/research/2026-10-29-C50-rwa-por-cadena.md",
+     "d": "2026-08-21",
+     "n": "S"
+    },
+    "cumplimiento": {
+     "t": "OUSG exige 100.000 $ y ser inversor acreditado; USDY desde 1 $",
+     "f": "Apuntes del cerebro (verificado 7-oct) (sin enlace guardado: [VERIFICAR])",
+     "d": "2026-10-07",
+     "n": "V"
+    },
+    "pagos": null,
+    "rendimiento": {
+     "t": "Los productos pagan el rendimiento de la deuda subyacente",
+     "f": "C50",
+     "i": "informes/research/2026-10-29-C50-rwa-por-cadena.md",
+     "d": "2026-10-29",
+     "n": "S"
+    },
+    "interop": {
+     "t": "Lista oficial de contratos: OUSG en 4 redes (Ethereum, Polygon, Solana, XRP Ledger) y USDY en 12 (entre ellas Ethereum, BNB Chain, Solana, Stellar, Arbitrum y Plume)",
+     "f": "docs.ondo.finance, direcciones (leída por el subagente)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.ondo.finance/addresses"
+    },
+    "regulacion": null
+   },
+   "capas": {
+    "liquidacion": {
+     "token": "no",
+     "ev": "El inversor compra OUSG/USDY, no ONDO."
+    },
+    "emision": {
+     "quien": "Ondo Finance",
+     "token": "no",
+     "ev": "ONDO es el token de gobernanza de la Ondo DAO (parámetros de Flux Finance, tesorería, emisiones) [S]; los productos no lo requieren."
+    },
+    "seguridad": {
+     "token": "no",
+     "ev": "Ondo Network (27-jul-2026) ejecuta en enclaves seguros y liquida en Ethereum; según la prensa, ONDO sigue siendo de gobernanza [S]. El anuncio de Ondo Chain (6-feb-2025) hablaba de validadores con RWA en staking, no de ONDO."
+    },
+    "mensajeria": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "custodia": {
+     "token": "no",
+     "ev": "KYC y custodia los hacen Ondo y sus custodios."
+    }
+   },
+   "captura": {
+    "nivel": "baja",
+    "mecanismo": "[RAZONADO] Los productos (OUSG, USDY) no requieren ONDO y la documentación leída no le da papel en la emisión.",
+    "supuestos": [
+     "Que ONDO siga siendo de gobernanza"
+    ]
+   },
+   "hitos": [
+    {
+     "fecha": "2026-07-27",
+     "t": "Ondo presenta Ondo Network como evolución de Ondo Chain",
+     "u": "https://www.theblock.co/news/web3/2026-07-27-ondo-launches-new-execution-network-calling-it-evolution-of-ondo-chain-409792",
+     "n": "S",
+     "futuro": false
+    }
+   ],
+   "sesgos": [
+    "Webs de aprendizaje de exchanges y espejos SEO repiten «utility token» sin fuente."
+   ],
+   "sin_dato": [
+    "Si Ondo Chain está en producción y qué papel tendría ONDO.",
+    "Reparto de comisiones a titulares de ONDO."
+   ]
+  },
+  {
+   "id": "algorand",
+   "nombre": "Algorand",
+   "token": "ALGO",
+   "tipo": "Pública; prueba de participación pura",
+   "aporta": "Red pública pequeña en RWA y stablecoins.",
+   "ficha": null,
+   "busca": [
+    "Algorand"
+   ],
+   "iso": [
+    {
+     "t": "Sin integración primaria encontrada",
+     "f": "Búsqueda 14-nov-2026",
+     "d": "2026-11-14",
+     "n": "V"
+    }
+   ],
+   "matriz": {
+    "liquidez": {
+     "t": "USDC 62 M$ (DefiLlama, 9-oct)",
+     "f": "Dossier panorama",
+     "i": "informes/dossiers/2026-10-09-panorama-competitivo.md",
+     "d": "2026-10-09",
+     "n": "S"
+    },
+    "seguridad": {
+     "t": "Prueba de participación pura con recompensas de staking desde ene-2025 (consenso 4.0); la Fundación aporta 10 ALGO por bloque durante 24 meses",
+     "f": "dev.algorand.co, staking rewards (resumen de buscador, no leído)",
+     "d": "2025-01-23",
+     "n": "V",
+     "u": "https://dev.algorand.co/concepts/protocol/staking-rewards"
+    },
+    "activos": {
+     "t": "39,4 M$ distribuidos (1 activo)",
+     "f": "RWA.xyz",
+     "u": "https://app.rwa.xyz/networks",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "cumplimiento": {
+     "t": "Los activos ASA pueden tener cuenta de congelación (incluido congelado por defecto para KYC) y de recuperación (clawback); cada activo suma 0,1 ALGO al saldo mínimo",
+     "f": "Documentación para desarrolladores de Algorand (leída por el subagente)",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://dev.algorand.co/concepts/assets/overview/"
+    },
+    "pagos": null,
+    "rendimiento": {
+     "t": "Los validadores reciben el 50 % de las comisiones más el bono de la Fundación; la Fundación dice que los incentivos aún son insuficientes",
+     "f": "Nansen, informe del 1S-2025 (no leído)",
+     "d": "2025-07-01",
+     "n": "V",
+     "u": "https://research.nansen.ai/articles/nansen-s-algorand-half-year-report-h1-2025"
+    },
+    "interop": null,
+    "regulacion": null
+   },
+   "capas": {
+    "liquidacion": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "emision": {
+     "quien": "Midas (letra del Tesoro tokenizada) [V]",
+     "token": "mínimo",
+     "ev": "La emisión usa ASA: comisión mínima y 0,1 ALGO de saldo mínimo por activo [P, docs]."
+    },
+    "seguridad": {
+     "quien": "Validadores con ALGO en staking",
+     "token": "sí",
+     "ev": "Prueba de participación pura con recompensas desde ene-2025 [V: resumen de la doc]."
+    },
+    "mensajeria": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "custodia": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    }
+   },
+   "captura": {
+    "nivel": "incierta",
+    "mecanismo": "[RAZONADO] ALGO en staking asegura la red y paga comisiones mínimas; los casos institucionales son pequeños.",
+    "supuestos": [
+     "Que crezca el uso institucional"
+    ]
+   },
+   "hitos": [
+    {
+     "fecha": "2025-01-23",
+     "t": "Recompensas de staking en la red principal (consenso 4.0)",
+     "u": "https://algorand.co/blog/algorands-staking-rewards-are-live",
+     "n": "V",
+     "futuro": false
+    }
+   ],
+   "sesgos": [
+    "Aparece en listas de «ISO 20022» de comunidad sin fuente."
+   ],
+   "sin_dato": [
+    "Pilotos con bancos o con ISO 20022."
+   ]
+  },
+  {
+   "id": "xdc",
+   "nombre": "XDC Network",
+   "token": "XDC",
+   "tipo": "Pública híbrida orientada a financiación comercial",
+   "aporta": "Financiación del comercio y mensajes ISO 20022 según su propia documentación.",
+   "ficha": null,
+   "busca": [
+    "XDC"
+   ],
+   "iso": [
+    {
+     "t": "Su documentación dice que es compatible con ISO 20022 (pacs.008, pain.001…); Impel, su derivada, ofrece una API ISO 20022",
+     "f": "docs.xdc.network (parte interesada, resumen de buscador)",
+     "u": "https://docs.xdc.network/enterprise/iso-20022/",
+     "d": "2026-11-14",
+     "n": "S"
+    }
+   ],
+   "matriz": {
+    "liquidez": null,
+    "seguridad": {
+     "t": "Consenso XDPoS 2.0: 108 masternodes activos con 10 M de XDC de stake cada uno; bloques de ~2 s",
+     "f": "docs.xdc.network y arXiv 2408.02318 (resumen de buscador)",
+     "d": null,
+     "n": "V",
+     "u": "https://docs.xdc.network/learn/xdc-architecture/"
+    },
+    "activos": {
+     "t": "No aparece entre las 37 redes con valor en RWA.xyz",
+     "f": "RWA.xyz",
+     "u": "https://app.rwa.xyz/networks",
+     "d": "2026-11-14",
+     "n": "S"
+    },
+    "cumplimiento": {
+     "t": "XDC Ventures (brazo de la propia red) compró Contour, red de cartas de crédito digitales de un consorcio bancario; no implica que esos bancos usen XDC",
+     "f": "e27 citando la nota de XDC Ventures (resumen)",
+     "d": "2025-10-23",
+     "n": "V",
+     "u": "https://e27.co/xdc-ventures-acquires-contour-to-bridge-tradfi-and-web3-in-global-trade-20251023/"
+    },
+    "pagos": null,
+    "rendimiento": null,
+    "interop": null,
+    "regulacion": null
+   },
+   "capas": {
+    "liquidacion": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "emision": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "seguridad": {
+     "quien": "Masternodes",
+     "token": "sí",
+     "ev": "Cada masternode bloquea 10 M de XDC [V: resumen de la doc]."
+    },
+    "mensajeria": {
+     "quien": "Impel (empresa del ecosistema)",
+     "token": "sin dato",
+     "ev": "La doc de XDC declara soporte de mensajes pacs.008, pacs.009, camt.053 y pain.001, sin nombrar bancos ni pilotos y sin confirmación de Swift [P, autodeclaración]."
+    },
+    "custodia": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    }
+   },
+   "captura": {
+    "nivel": "incierta",
+    "mecanismo": "[RAZONADO] Los masternodes bloquean XDC [VERIFICAR]; la compatibilidad con ISO 20022 es autodeclarada.",
+    "supuestos": [
+     "Bancos usando la red en producción"
+    ]
+   },
+   "hitos": [
+    {
+     "fecha": "2025-10-23",
+     "t": "XDC Ventures anuncia la compra de Contour",
+     "u": "https://e27.co/xdc-ventures-acquires-contour-to-bridge-tradfi-and-web3-in-global-trade-20251023/",
+     "n": "V",
+     "futuro": false
+    }
+   ],
+   "sesgos": [
+    "Material casi todo de la propia XDC y de webs promocionales."
+   ],
+   "sin_dato": [
+    "Bancos que la usen en producción."
+   ]
+  },
+  {
+   "id": "quant",
+   "nombre": "Quant (Overledger; capa de interoperabilidad, no cadena)",
+   "token": "QNT",
+   "tipo": "Software de interoperabilidad para empresas",
+   "aporta": "Conectar sistemas de bancos con varias cadenas; su token se usaría para licencias.",
+   "ficha": null,
+   "busca": [
+    "Overledger",
+    "Quant"
+   ],
+   "iso": [
+    {
+     "t": "Sin integración primaria con Swift ni ISO 20022 leída",
+     "f": "Búsqueda 14-nov-2026",
+     "d": "2026-11-14",
+     "n": "V"
+    }
+   ],
+   "matriz": {
+    "liquidez": null,
+    "seguridad": null,
+    "activos": null,
+    "cumplimiento": null,
+    "pagos": null,
+    "rendimiento": null,
+    "interop": {
+     "t": "Licencias de Overledger cobradas en dinero fiduciario y convertidas en QNT bloqueado (12 meses según algunas fuentes)",
+     "f": "Solo secundarias (ByteTree y webs de exchanges)",
+     "u": "https://bytetree.com/research/2021/06/quant-analysis",
+     "d": "2021-06",
+     "n": "S"
+    },
+    "regulacion": null
+   },
+   "capas": {
+    "liquidacion": {
+     "token": "no",
+     "ev": "No liquida valor."
+    },
+    "emision": {
+     "token": "no",
+     "ev": "No emite."
+    },
+    "seguridad": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "mensajeria": {
+     "token": "parcial",
+     "ev": "Una ficha autodeclarada (Blockworks Token Transparency, jul-2026) dice que las licencias de Overledger se pagan en QNT; quant.network no se pudo leer (403) y no hay documento primario [V]."
+    },
+    "custodia": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    }
+   },
+   "captura": {
+    "nivel": "incierta",
+    "mecanismo": "[RAZONADO] Según una ficha autodeclarada las licencias de Overledger se pagan en QNT; sin documento primario leído.",
+    "supuestos": [
+     "Modelo de licencias vigente",
+     "Clientes bancarios en producción"
+    ]
+   },
+   "hitos": [],
+   "sesgos": [
+    "Webs de exchanges y espejos SEO."
+   ],
+   "sin_dato": [
+    "Clientes en producción.",
+    "Documento primario del modelo de token."
+   ]
+  },
+  {
+   "id": "iota",
+   "nombre": "IOTA",
+   "token": "IOTA",
+   "tipo": "Pública; consenso Starfish (desde abr-2026)",
+   "aporta": "Registro de documentos de comercio e identidad digital en programas con África (ADAPT, TWIN); sin integración bancaria verificada.",
+   "capas": {
+    "liquidacion": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "emision": {
+     "quien": "TWIN (exportación de flores en Kenia, según agregadores) [V]",
+     "token": "mínimo",
+     "ev": "Registro de documentos; consumo de IOTA no demostrado."
+    },
+    "seguridad": {
+     "token": "sin dato",
+     "ev": "Sin dato del papel del token en Starfish."
+    },
+    "mensajeria": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "custodia": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    }
+   },
+   "sesgos": [
+    "Casi todo viene del blog de IOTA y de agregadores; objetivos como «1.500 M de personas en 2035» son promocionales."
+   ],
+   "sin_dato": [
+    "Integración con ISO 20022 o con bancos.",
+    "Confirmación de los socios (WEF, TBI, AfCFTA) en sus propias webs.",
+    "EBSI de la UE: sin resultado."
+   ],
+   "ficha": null,
+   "busca": [
+    "IOTA"
+   ],
+   "iso": [],
+   "matriz": {
+    "liquidez": null,
+    "seguridad": {
+     "t": "Consenso Starfish en la red principal desde el 23-abr-2026",
+     "f": "Blog de IOTA, actualización del 2T-2026 (parte interesada)",
+     "d": "2026-04-23",
+     "n": "P",
+     "u": "https://blog.iota.org/update-q2-2026/"
+    },
+    "activos": null,
+    "cumplimiento": {
+     "t": "Programa ADAPT con la Secretaría del AfCFTA, el Tony Blair Institute y el WEF: Kenia, Nigeria y Marruecos son los primeros países (identidad digital, datos de comercio y pagos)",
+     "f": "Blog de IOTA (fuente propia; los socios no se leyeron)",
+     "d": "2026-05-19",
+     "n": "S",
+     "u": "https://blog.iota.org/update-q2-2026/"
+    },
+    "pagos": null,
+    "rendimiento": null,
+    "interop": null,
+    "regulacion": null
+   },
+   "captura": {
+    "nivel": "incierta",
+    "mecanismo": "[RAZONADO] Sin dato de consumo del token en los programas institucionales.",
+    "supuestos": [
+     "Que los pilotos pasen a producción"
+    ]
+   },
+   "hitos": [
+    {
+     "fecha": "2026-04-23",
+     "t": "Consenso Starfish en la red principal",
+     "u": "https://blog.iota.org/update-q2-2026/",
+     "n": "P",
+     "futuro": false
+    },
+    {
+     "fecha": "2026-05-19",
+     "t": "ADAPT: Kenia, Nigeria y Marruecos, primeros países",
+     "u": "https://blog.iota.org/update-q2-2026/",
+     "n": "S",
+     "futuro": false
+    }
+   ]
+  },
+  {
+   "id": "plume",
+   "nombre": "Plume",
+   "token": "PLUME",
+   "tipo": "Pública compatible con EVM, dedicada a activos reales",
+   "aporta": "Red para emitir y usar activos reales tokenizados en DeFi; registrada como agente de transferencia ante la SEC según la prensa.",
+   "capas": {
+    "liquidacion": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "emision": {
+     "quien": "Ondo (USDY) entre otros",
+     "token": "sin dato",
+     "ev": "La doc leída no dice si el gas se paga en PLUME."
+    },
+    "seguridad": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "mensajeria": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    },
+    "custodia": {
+     "token": "sin dato",
+     "ev": "Sin dato."
+    }
+   },
+   "sesgos": [
+    "Cifras de agregadores muy distintas según la métrica; registro ante la SEC sin leer en sec.gov."
+   ],
+   "sin_dato": [
+    "Papel de PLUME (gas o staking).",
+    "Instituciones que la usen con fuente.",
+    "Integración con ISO 20022."
+   ],
+   "ficha": null,
+   "busca": [
+    "Plume"
+   ],
+   "iso": [],
+   "matriz": {
+    "liquidez": {
+     "t": "~177 M$ en activos tokenizados sin stablecoins y 6,5 M$ de TVL DeFi; otra página da 577 M$ (métricas distintas)",
+     "f": "CoinPaprika (resumen de buscador)",
+     "d": "2026-08",
+     "n": "V",
+     "u": "https://coinpaprika.com/ja/education/plume-network/"
+    },
+    "seguridad": {
+     "t": "Blockchain pública compatible con EVM dedicada a activos reales; la página no describe el papel del token PLUME",
+     "f": "docs.plume.org",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.plume.org"
+    },
+    "activos": {
+     "t": "USDY de Ondo figura entre los activos desplegados en Plume",
+     "f": "docs.ondo.finance, direcciones",
+     "d": "2026-11-14",
+     "n": "P",
+     "u": "https://docs.ondo.finance/addresses"
+    },
+    "cumplimiento": null,
+    "pagos": null,
+    "rendimiento": null,
+    "interop": null,
+    "regulacion": {
+     "t": "Registrada ante la SEC como agente de transferencia (oct-2025)",
+     "f": "Cointelegraph (resumen; registro de la SEC no leído)",
+     "d": "2025-10",
+     "n": "V",
+     "u": "https://cointelegraph.com/news/plume-network-sec-transfer-agent"
+    }
+   },
+   "captura": {
+    "nivel": "incierta",
+    "mecanismo": "[RAZONADO] El papel de PLUME (gas o staking) no está confirmado en la documentación leída.",
+    "supuestos": [
+     "Modelo de comisiones de la red"
+    ]
+   },
+   "hitos": [
+    {
+     "fecha": "2025-10",
+     "t": "Registro como agente de transferencia ante la SEC (según prensa)",
+     "u": "https://cointelegraph.com/news/plume-network-sec-transfer-agent",
+     "n": "V",
+     "futuro": false
+    }
+   ]
+  }
+ ]
+}
