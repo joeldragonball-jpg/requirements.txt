@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-14 13:38 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-14 13:41 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -138,7 +138,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Voces: Voces sin confirmar (27) → W06 · 13 llevan más de 14 días
-- 🟡 Radar regulatorio: Celdas sin dato (22) → W03 · Más huecos: ET 4, EG 3, IN 2, ZA 2, ID 2
+- 🟡 Radar regulatorio: Celdas sin dato (21) → W03 · Más huecos: ET 4, EG 3, IN 2, ZA 2, ID 2
 
 ## Bots con problema
 - ninguno
