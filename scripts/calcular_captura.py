@@ -94,7 +94,7 @@ def main():
         for c in cad["cadenas"]:
             r = res[c["id"]]
             t = (tok.get("redes") or {}).get(c["id"])
-            c.setdefault("captura", {})["liquidez"] = ({k: t.get(k) for k in ("cap_musd", "vol24_musd", "rotacion_pct", "fees30_musd", "fees_anual_pct_cap", "circulante", "total", "d", "n")} if t else None)
+            c.setdefault("captura", {})["liquidez"] = ({k: t.get(k) for k in ("cap_musd", "vol24_musd", "rotacion_pct", "fees30_musd", "fees_anual_pct_cap", "dex30_musd", "circulante", "total", "d", "n")} if t else None)
             c["captura"]["regla"] = {k: r[k] for k in ("nivel", "necesidad", "consumo", "fees_pct", "rotacion_pct", "peso", "peso_pct", "valor_tokenizado_musd", "discrepa", "atipico")}
         s = json.dumps(cad, ensure_ascii=False, indent=1)
         RC.write_text(s.replace("\n", nl) + (nl if raw.endswith("\n") else ""), encoding="utf-8", newline="")

@@ -75,6 +75,12 @@
    "n": "Custodia, identidad y cumplimiento",
    "que": "KYC, permisos, congelar o recuperar activos",
    "capa_mapa": "custodia"
+  },
+  {
+   "id": "mercado",
+   "n": "Mercado y market makers",
+   "que": "Quién pone precio y liquidez: libro o AMM nativo, market makers, profundidad. Aquí «token» = si el mercado de la red usa el token como activo puente o base.",
+   "capa_mapa": null
   }
  ],
  "contexto_iso": [
@@ -701,6 +707,10 @@
      "quien": "BTG/CSD BR usa permisos y KYC",
      "token": "no",
      "ev": "Credenciales y dominios con permisos son funciones del protocolo; no capturan valor en XRP más allá de las comisiones."
+    },
+    "mercado": {
+     "token": "parcial",
+     "ev": "Libro de órdenes y AMM dentro del protocolo; XRP puede hacer de puente entre dos divisas [S: documentación de XRPL, no releída hoy: VERIFICAR]. Libro XRP/RLUSD el 15-nov: spread 0.1106 %, ofertas a ±1 % por ≈57 mil $ (compra) y ≈71 mil $ (venta) [P: nodos públicos; instantánea, solo libro, sin AMM]. Volumen de intercambios (DEX) en la cadena en 30 días: 174 M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato."
     }
    },
    "captura": {
@@ -715,7 +725,7 @@
      "necesidad": "sustituible",
      "consumo": "bajo",
      "fees_pct": 0.03,
-     "rotacion_pct": 5.57,
+     "rotacion_pct": 4.85,
      "peso": "bajo",
      "peso_pct": 1.1,
      "valor_tokenizado_musd": 643.1,
@@ -723,11 +733,12 @@
      "atipico": false
     },
     "liquidez": {
-     "cap_musd": 60526.2,
-     "vol24_musd": 3373.0,
-     "rotacion_pct": 5.57,
+     "cap_musd": 61112.2,
+     "vol24_musd": 2963.5,
+     "rotacion_pct": 4.85,
      "fees30_musd": 1.45,
      "fees_anual_pct_cap": 0.03,
+     "dex30_musd": 174.5,
      "circulante": 63516606953.0,
      "total": 99985583260.0,
      "d": "2026-11-15",
@@ -1095,6 +1106,10 @@
     "custodia": {
      "token": "no",
      "ev": "Autorización, congelación y recuperación son funciones del protocolo, sin captura en el token."
+    },
+    "mercado": {
+     "token": "parcial",
+     "ev": "Libro de órdenes (SDEX) y pools de liquidez dentro del protocolo; los pagos con conversión pueden pasar por XLM, pero también por stablecoins. Libro XLM/USDC el 15-nov: spread 0.1688 %, ofertas a ±1 % por ≈9.6 mil $ (compra) y ≈129 mil $ (venta) [P: Horizon; instantánea, solo libro]. Volumen de intercambios (DEX) en la cadena en 30 días: 44 M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato."
     }
    },
    "captura": {
@@ -1108,21 +1123,22 @@
      "nivel": "baja",
      "necesidad": "sustituible",
      "consumo": "alto",
-     "fees_pct": 1.8,
-     "rotacion_pct": 5.34,
+     "fees_pct": 1.78,
+     "rotacion_pct": 4.85,
      "peso": "alto",
-     "peso_pct": 95.2,
+     "peso_pct": 94.0,
      "valor_tokenizado_musd": 4659.9,
      "discrepa": false,
      "atipico": false
     },
     "liquidez": {
-     "cap_musd": 4896.6,
-     "vol24_musd": 261.3,
-     "rotacion_pct": 5.34,
+     "cap_musd": 4959.2,
+     "vol24_musd": 240.6,
+     "rotacion_pct": 4.85,
      "fees30_musd": 7.36,
-     "fees_anual_pct_cap": 1.8,
-     "circulante": 35407557158.13359,
+     "fees_anual_pct_cap": 1.78,
+     "dex30_musd": 44.3,
+     "circulante": 35407556837.30934,
      "total": 50001786837.39707,
      "d": "2026-11-15",
      "n": "S"
@@ -1529,6 +1545,10 @@
      "u": "https://ffnews.com/news/taurus-unlocks-full-hedera-stack-for-40-global-banks-to-scale-digital-asset-tokenization",
      "d": "2026-08-05",
      "n": "S"
+    },
+    "mercado": {
+     "token": "sin dato",
+     "ev": "No leído: quién pone la liquidez y si el token es el activo base de sus mercados. Volumen de intercambios (DEX) en la cadena en 30 días: 52 M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato."
     }
    },
    "captura": {
@@ -1543,8 +1563,8 @@
      "nivel": "baja",
      "necesidad": "parcial",
      "consumo": "bajo",
-     "fees_pct": 0.07,
-     "rotacion_pct": 3.16,
+     "fees_pct": 0.06,
+     "rotacion_pct": 3.2,
      "peso": "bajo",
      "peso_pct": 3.4,
      "valor_tokenizado_musd": 88.3,
@@ -1552,12 +1572,13 @@
      "atipico": false
     },
     "liquidez": {
-     "cap_musd": 2581.0,
-     "vol24_musd": 81.6,
-     "rotacion_pct": 3.16,
+     "cap_musd": 2615.2,
+     "vol24_musd": 83.6,
+     "rotacion_pct": 3.2,
      "fees30_musd": 0.14,
-     "fees_anual_pct_cap": 0.07,
-     "circulante": 44327623452.073204,
+     "fees_anual_pct_cap": 0.06,
+     "dex30_musd": 51.5,
+     "circulante": 44327623452.19798,
      "total": 50000000000.0,
      "d": "2026-11-15",
      "n": "S"
@@ -1891,6 +1912,10 @@
     "custodia": {
      "token": "no",
      "ev": "Las listas blancas y el KYC están en los contratos del emisor, sin captura propia en ETH."
+    },
+    "mercado": {
+     "token": "sin dato",
+     "ev": "No leído: quién pone la liquidez y si el token es el activo base de sus mercados. Volumen de intercambios (DEX) en la cadena en 30 días: 52.4 mil M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato."
     }
    },
    "captura": {
@@ -1904,8 +1929,8 @@
      "nivel": "alta",
      "necesidad": "obligatorio",
      "consumo": "alto",
-     "fees_pct": 2.2,
-     "rotacion_pct": 8.68,
+     "fees_pct": 2.19,
+     "rotacion_pct": 7.97,
      "peso": "medio",
      "peso_pct": 6.8,
      "valor_tokenizado_musd": 15051.6,
@@ -1913,11 +1938,12 @@
      "atipico": false
     },
     "liquidez": {
-     "cap_musd": 221912.9,
-     "vol24_musd": 19260.0,
-     "rotacion_pct": 8.68,
-     "fees30_musd": 406.74,
-     "fees_anual_pct_cap": 2.2,
+     "cap_musd": 222611.1,
+     "vol24_musd": 17740.0,
+     "rotacion_pct": 7.97,
+     "fees30_musd": 406.76,
+     "fees_anual_pct_cap": 2.19,
+     "dex30_musd": 52375.2,
      "circulante": 122221530.60130492,
      "total": 122221530.60130492,
      "d": "2026-11-15",
@@ -2406,6 +2432,10 @@
     "custodia": {
      "token": "no",
      "ev": "Las extensiones de token con permisos no capturan valor en SOL [VERIFICAR]."
+    },
+    "mercado": {
+     "token": "sin dato",
+     "ev": "No leído: quién pone la liquidez y si el token es el activo base de sus mercados. Volumen de intercambios (DEX) en la cadena en 30 días: 51.2 mil M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato."
     }
    },
    "captura": {
@@ -2419,22 +2449,23 @@
      "nivel": "alta",
      "necesidad": "obligatorio",
      "consumo": "alto",
-     "fees_pct": 9.09,
-     "rotacion_pct": 11.87,
+     "fees_pct": 9.0,
+     "rotacion_pct": 11.24,
      "peso": "medio",
-     "peso_pct": 12.1,
+     "peso_pct": 12.0,
      "valor_tokenizado_musd": 5103.9,
      "discrepa": true,
      "atipico": false
     },
     "liquidez": {
-     "cap_musd": 42127.1,
-     "vol24_musd": 5002.4,
-     "rotacion_pct": 11.87,
+     "cap_musd": 42538.2,
+     "vol24_musd": 4780.7,
+     "rotacion_pct": 11.24,
      "fees30_musd": 318.94,
-     "fees_anual_pct_cap": 9.09,
-     "circulante": 591629035.9115095,
-     "total": 637615801.1145205,
+     "fees_anual_pct_cap": 9.0,
+     "dex30_musd": 51163.0,
+     "circulante": 591629004.4169544,
+     "total": 637615775.5512761,
      "d": "2026-11-15",
      "n": "S"
     }
@@ -2922,6 +2953,10 @@
      "u": "https://assets.bitgo.com/protocols",
      "d": "2026-11-14",
      "n": "P"
+    },
+    "mercado": {
+     "token": "sin dato",
+     "ev": "No leído: quién pone la liquidez y si el token es el activo base de sus mercados. Volumen de intercambios (DEX) en la cadena en 30 días: 29.2 mil M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato."
     }
    },
    "captura": {
@@ -2935,7 +2970,7 @@
      "necesidad": "obligatorio",
      "consumo": "medio",
      "fees_pct": 0.89,
-     "rotacion_pct": 1.27,
+     "rotacion_pct": 1.18,
      "peso": "medio",
      "peso_pct": 8.0,
      "valor_tokenizado_musd": 6226.7,
@@ -2943,13 +2978,14 @@
      "atipico": false
     },
     "liquidez": {
-     "cap_musd": 77742.4,
-     "vol24_musd": 987.8,
-     "rotacion_pct": 1.27,
+     "cap_musd": 78234.6,
+     "vol24_musd": 922.6,
+     "rotacion_pct": 1.18,
      "fees30_musd": 57.98,
      "fees_anual_pct_cap": 0.89,
-     "circulante": 131510544.23,
-     "total": 131510544.23,
+     "dex30_musd": 29157.2,
+     "circulante": 131510542.06,
+     "total": 131510542.06,
      "d": "2026-11-15",
      "n": "S"
     }
@@ -3330,6 +3366,10 @@
      "u": "https://assets.bitgo.com/protocols",
      "d": "2026-11-14",
      "n": "P"
+    },
+    "mercado": {
+     "token": "sin dato",
+     "ev": "No leído: quién pone la liquidez y si el token es el activo base de sus mercados. Volumen de intercambios (DEX) en la cadena en 30 días: 2.5 mil M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato."
     }
    },
    "captura": {
@@ -3344,22 +3384,23 @@
      "nivel": "media",
      "necesidad": "parcial",
      "consumo": "alto",
-     "fees_pct": 3.05,
-     "rotacion_pct": 10.11,
+     "fees_pct": 3.0,
+     "rotacion_pct": 9.27,
      "peso": "alto",
-     "peso_pct": 43.4,
+     "peso_pct": 42.8,
      "valor_tokenizado_musd": 1392.1,
      "discrepa": true,
      "atipico": false
     },
     "liquidez": {
-     "cap_musd": 3210.1,
-     "vol24_musd": 324.4,
-     "rotacion_pct": 10.11,
+     "cap_musd": 3254.8,
+     "vol24_musd": 301.8,
+     "rotacion_pct": 9.27,
      "fees30_musd": 8.15,
-     "fees_anual_pct_cap": 3.05,
-     "circulante": 446444737.060371,
-     "total": 471446133.6413155,
+     "fees_anual_pct_cap": 3.0,
+     "dex30_musd": 2473.0,
+     "circulante": 446458028.82452375,
+     "total": 471446760.9648085,
      "d": "2026-11-15",
      "n": "S"
     }
@@ -3730,6 +3771,10 @@
      "u": "https://assets.bitgo.com/protocols",
      "d": "2026-11-14",
      "n": "P"
+    },
+    "mercado": {
+     "token": "sin dato",
+     "ev": "No leído: quién pone la liquidez y si el token es el activo base de sus mercados. Volumen de intercambios (DEX) en la cadena en 30 días: 5.3 mil M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato."
     }
    },
    "captura": {
@@ -3744,20 +3789,21 @@
      "nivel": "alta",
      "necesidad": "obligatorio",
      "consumo": "alto",
-     "fees_pct": 56.98,
-     "rotacion_pct": 5.86,
+     "fees_pct": 56.46,
+     "rotacion_pct": 5.45,
      "peso": "alto",
-     "peso_pct": 52.3,
+     "peso_pct": 51.8,
      "valor_tokenizado_musd": 447.6,
      "discrepa": true,
      "atipico": true
     },
     "liquidez": {
-     "cap_musd": 855.5,
-     "vol24_musd": 50.2,
-     "rotacion_pct": 5.86,
+     "cap_musd": 863.4,
+     "vol24_musd": 47.1,
+     "rotacion_pct": 5.45,
      "fees30_musd": 40.62,
-     "fees_anual_pct_cap": 56.98,
+     "fees_anual_pct_cap": 56.46,
+     "dex30_musd": 5346.0,
      "circulante": 10650203932.475483,
      "total": 10650203932.475483,
      "d": "2026-11-15",
@@ -4194,6 +4240,10 @@
     "custodia": {
      "token": "no",
      "ev": "La privacidad y los permisos son del protocolo."
+    },
+    "mercado": {
+     "token": "sin dato",
+     "ev": "No leído: quién pone la liquidez y si el token es el activo base de sus mercados. Sin dato de volumen de intercambios en la cadena. Market makers con nombre: sin dato."
     }
    },
    "captura": {
@@ -4207,7 +4257,7 @@
      "necesidad": "parcial",
      "consumo": "sin_dato",
      "fees_pct": null,
-     "rotacion_pct": 0.64,
+     "rotacion_pct": 0.63,
      "peso": "sin_dato",
      "peso_pct": null,
      "valor_tokenizado_musd": null,
@@ -4215,13 +4265,14 @@
      "atipico": false
     },
     "liquidez": {
-     "cap_musd": 3353.0,
-     "vol24_musd": 21.4,
-     "rotacion_pct": 0.64,
+     "cap_musd": 3348.3,
+     "vol24_musd": 21.0,
+     "rotacion_pct": 0.63,
      "fees30_musd": null,
      "fees_anual_pct_cap": null,
-     "circulante": 40058671402.85052,
-     "total": 40058671402.85052,
+     "dex30_musd": null,
+     "circulante": 40059282064.024,
+     "total": 40059282064.024,
      "d": "2026-11-15",
      "n": "S"
     }
@@ -4440,6 +4491,10 @@
     "custodia": {
      "token": "no",
      "ev": "No aplica."
+    },
+    "mercado": {
+     "token": "sin dato",
+     "ev": "No leído: quién pone la liquidez y si el token es el activo base de sus mercados. Sin dato de volumen de intercambios en la cadena. Market makers con nombre: sin dato."
     }
    },
    "captura": {
@@ -4454,7 +4509,7 @@
      "necesidad": "parcial",
      "consumo": "sin_dato",
      "fees_pct": null,
-     "rotacion_pct": 5.19,
+     "rotacion_pct": 4.59,
      "peso": "sin_dato",
      "peso_pct": null,
      "valor_tokenizado_musd": null,
@@ -4462,11 +4517,12 @@
      "atipico": false
     },
     "liquidez": {
-     "cap_musd": 7059.0,
-     "vol24_musd": 366.5,
-     "rotacion_pct": 5.19,
+     "cap_musd": 7095.7,
+     "vol24_musd": 325.7,
+     "rotacion_pct": 4.59,
      "fees30_musd": null,
      "fees_anual_pct_cap": null,
+     "dex30_musd": null,
      "circulante": 766849970.424884,
      "total": 1000000000.0,
      "d": "2026-11-15",
@@ -4649,6 +4705,10 @@
     "custodia": {
      "token": "no",
      "ev": "KYC y custodia los hacen Ondo y sus custodios."
+    },
+    "mercado": {
+     "token": "sin dato",
+     "ev": "No leído: quién pone la liquidez y si el token es el activo base de sus mercados. Sin dato de volumen de intercambios en la cadena. Market makers con nombre: sin dato."
     }
    },
    "captura": {
@@ -4662,7 +4722,7 @@
      "necesidad": "sustituible",
      "consumo": "sin_dato",
      "fees_pct": null,
-     "rotacion_pct": 8.39,
+     "rotacion_pct": 7.46,
      "peso": "sin_dato",
      "peso_pct": null,
      "valor_tokenizado_musd": null,
@@ -4670,11 +4730,12 @@
      "atipico": false
     },
     "liquidez": {
-     "cap_musd": 1487.2,
-     "vol24_musd": 124.8,
-     "rotacion_pct": 8.39,
+     "cap_musd": 1510.9,
+     "vol24_musd": 112.7,
+     "rotacion_pct": 7.46,
      "fees30_musd": null,
      "fees_anual_pct_cap": null,
+     "dex30_musd": null,
      "circulante": 4869330647.0,
      "total": 10000000000.0,
      "d": "2026-11-15",
@@ -4870,6 +4931,10 @@
      "u": "https://algorand.co/blog/staking-custody-and-trust-algorand-advances-institutional-staking-with-hex-trust",
      "d": "2026-11-14",
      "n": "P"
+    },
+    "mercado": {
+     "token": "sin dato",
+     "ev": "No leído: quién pone la liquidez y si el token es el activo base de sus mercados. Volumen de intercambios (DEX) en la cadena en 30 días: 11 M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato."
     }
    },
    "captura": {
@@ -4883,21 +4948,22 @@
      "necesidad": "parcial",
      "consumo": "medio",
      "fees_pct": 0.28,
-     "rotacion_pct": 6.3,
+     "rotacion_pct": 5.65,
      "peso": "medio",
-     "peso_pct": 19.5,
+     "peso_pct": 19.3,
      "valor_tokenizado_musd": 140.0,
      "discrepa": true,
      "atipico": false
     },
     "liquidez": {
-     "cap_musd": 719.3,
-     "vol24_musd": 45.3,
-     "rotacion_pct": 6.3,
+     "cap_musd": 726.3,
+     "vol24_musd": 41.0,
+     "rotacion_pct": 5.65,
      "fees30_musd": 0.17,
      "fees_anual_pct_cap": 0.28,
+     "dex30_musd": 10.9,
      "circulante": 9079992799.523245,
-     "total": 9080065613.816385,
+     "total": 9080079341.908245,
      "d": "2026-11-15",
      "n": "S"
     }
@@ -5120,6 +5186,10 @@
      "u": "https://chainwire.org/2025/05/27/xdc-network-concludes-integration-with-utila-enabling-institutional-access-to-custody-assets/",
      "d": "2025-05-27",
      "n": "P"
+    },
+    "mercado": {
+     "token": "sin dato",
+     "ev": "No leído: quién pone la liquidez y si el token es el activo base de sus mercados. Volumen de intercambios (DEX) en la cadena en 30 días: 12 M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato."
     }
    },
    "captura": {
@@ -5133,7 +5203,7 @@
      "necesidad": "sin_dato",
      "consumo": "medio",
      "fees_pct": 0.25,
-     "rotacion_pct": 1.7,
+     "rotacion_pct": 1.55,
      "peso": "sin_dato",
      "peso_pct": null,
      "valor_tokenizado_musd": null,
@@ -5141,11 +5211,12 @@
      "atipico": false
     },
     "liquidez": {
-     "cap_musd": 570.2,
-     "vol24_musd": 9.7,
-     "rotacion_pct": 1.7,
+     "cap_musd": 570.9,
+     "vol24_musd": 8.8,
+     "rotacion_pct": 1.55,
      "fees30_musd": 0.12,
      "fees_anual_pct_cap": 0.25,
+     "dex30_musd": 11.8,
      "circulante": 19946688440.0,
      "total": 38065686425.1,
      "d": "2026-11-15",
@@ -5341,6 +5412,10 @@
      "u": "https://blockworks.com/token-transparency/filing/quant",
      "d": "2026-11-14",
      "n": "S"
+    },
+    "mercado": {
+     "token": "sin dato",
+     "ev": "No leído: quién pone la liquidez y si el token es el activo base de sus mercados. Sin dato de volumen de intercambios en la cadena. Market makers con nombre: sin dato."
     }
    },
    "captura": {
@@ -5355,7 +5430,7 @@
      "necesidad": "parcial",
      "consumo": "sin_dato",
      "fees_pct": null,
-     "rotacion_pct": 4.29,
+     "rotacion_pct": 3.76,
      "peso": "sin_dato",
      "peso_pct": null,
      "valor_tokenizado_musd": null,
@@ -5363,11 +5438,12 @@
      "atipico": false
     },
     "liquidez": {
-     "cap_musd": 2234.7,
-     "vol24_musd": 95.9,
-     "rotacion_pct": 4.29,
+     "cap_musd": 2255.6,
+     "vol24_musd": 84.9,
+     "rotacion_pct": 3.76,
      "fees30_musd": null,
      "fees_anual_pct_cap": null,
+     "dex30_musd": null,
      "circulante": 14556178.164081175,
      "total": 14612493.0,
      "d": "2026-11-15",
@@ -5478,6 +5554,10 @@
      "u": "https://docs.iota.org/llms-full-about.txt",
      "d": "2026-11-14",
      "n": "S"
+    },
+    "mercado": {
+     "token": "sin dato",
+     "ev": "No leído: quién pone la liquidez y si el token es el activo base de sus mercados. Sin dato de volumen de intercambios en la cadena. Market makers con nombre: sin dato."
     }
    },
    "sesgos": [
@@ -5561,7 +5641,7 @@
      "necesidad": "parcial",
      "consumo": "bajo",
      "fees_pct": 0.0,
-     "rotacion_pct": 3.78,
+     "rotacion_pct": 3.39,
      "peso": "sin_dato",
      "peso_pct": null,
      "valor_tokenizado_musd": null,
@@ -5569,11 +5649,12 @@
      "atipico": false
     },
     "liquidez": {
-     "cap_musd": 147.6,
-     "vol24_musd": 5.6,
-     "rotacion_pct": 3.78,
+     "cap_musd": 149.8,
+     "vol24_musd": 5.1,
+     "rotacion_pct": 3.39,
      "fees30_musd": 0.0,
      "fees_anual_pct_cap": 0.0,
+     "dex30_musd": null,
      "circulante": 4744119459.0,
      "total": 5028638912.0,
      "d": "2026-11-15",
@@ -5674,6 +5755,10 @@
      "u": "https://docs.plume.org/plume/developers/tools-and-services/custodians-and-multisigs.md",
      "d": "2026-11-14",
      "n": "S"
+    },
+    "mercado": {
+     "token": "sin dato",
+     "ev": "No leído: quién pone la liquidez y si el token es el activo base de sus mercados. Volumen de intercambios (DEX) en la cadena en 30 días: 0 M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato."
     }
    },
    "sesgos": [
@@ -5756,20 +5841,21 @@
      "nivel": "media",
      "necesidad": "parcial",
      "consumo": "alto",
-     "fees_pct": 5.3,
-     "rotacion_pct": 10.54,
+     "fees_pct": 5.28,
+     "rotacion_pct": 9.96,
      "peso": "alto",
-     "peso_pct": 162.4,
+     "peso_pct": 162.0,
      "valor_tokenizado_musd": 136.1,
      "discrepa": true,
      "atipico": false
     },
     "liquidez": {
-     "cap_musd": 83.8,
-     "vol24_musd": 8.8,
-     "rotacion_pct": 10.54,
+     "cap_musd": 84.0,
+     "vol24_musd": 8.4,
+     "rotacion_pct": 9.96,
      "fees30_musd": 0.37,
-     "fees_anual_pct_cap": 5.3,
+     "fees_anual_pct_cap": 5.28,
+     "dex30_musd": 0.2,
      "circulante": 6818258282.0,
      "total": 10000000000.0,
      "d": "2026-11-15",
@@ -5974,5 +6060,106 @@
     "detalle_nota": "Detalle de los mayores activos por tipo y red (RWA.xyz, lista de activos filtrada por clase, leída en Chrome el 15-nov-2026) [S]: agregador no auditado. «Emisor» es la columna «Platform» de RWA.xyz (emisor o estructurador) y no confirma custodia. Solo PAXG está confirmado por el emisor [P]. Las filas «representado» están registradas pero no son transferibles en la cadena. Importes en M$ (millones de dólares), redondeados; son listas parciales (los mayores activos visibles) y no suman el total del tipo."
    }
   }
- ]
+ ],
+ "dex_nativos": {
+  "intro": "Qué mercados vienen dentro del propio protocolo de XRPL y Stellar (no en contratos de terceros) y en qué se diferencian. Solo hechos leídos en la documentación oficial el 15-nov-2026; lo que no se leyó queda como «sin dato». Las demás redes de la lista no tienen aquí una ficha equivalente porque el repo aún no ha leído ese dato (hueco, no ausencia).",
+  "tarjetas": [
+   {
+    "red": "XRPL",
+    "nombre": "Libro de órdenes abierto (DEX)",
+    "que": "Libro de ofertas dentro del protocolo, abierto a cualquier cuenta; desde el lanzamiento de la red.",
+    "hechos": [
+     {
+      "t": "«El XRP Ledger tiene un único DEX abierto desde su lanzamiento; cualquiera con una cuenta XRPL puede operar en él.»",
+      "f": "xrpl.org, documentación del DEX",
+      "u": "https://xrpl.org/docs/concepts/tokens/decentralized-exchange/permissioned-dexes",
+      "d": "2026-11-15",
+      "n": "P"
+     },
+     {
+      "t": "Auto-bridging: una oferta entre dos tokens puede usar XRP de intermediario cuando sale más barato que el cruce directo (el XRP hace de puente).",
+      "f": "xrpl.org, Auto-Bridging",
+      "u": "https://xrpl.org/docs/concepts/tokens/decentralized-exchange/autobridging",
+      "d": "2026-11-15",
+      "n": "P"
+     },
+     {
+      "t": "Libro XRP/RLUSD el 15-nov: spread 0,11 %; ofertas a ±1 % por ≈57 mil $ (compra) y ≈71 mil $ (venta). Instantánea, solo libro, sin AMM.",
+      "f": "nodos públicos de XRPL (book_offers)",
+      "u": "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers",
+      "d": "2026-11-15",
+      "n": "P"
+     }
+    ],
+    "falta": "Quién pone la liquidez (market makers con nombre): sin dato."
+   },
+   {
+    "red": "XRPL",
+    "nombre": "AMM de protocolo (XLS-30)",
+    "que": "Fondos de liquidez dentro del protocolo, junto al libro de órdenes.",
+    "hechos": [
+     {
+      "t": "Enmienda AMM activada el 22-mar-2024; la comisión la fijan los proveedores de liquidez por votación (0 % a 1 %); el riesgo de divisa (pérdida impermanente) consta en la propia documentación; sin APY oficial.",
+      "f": "xrpl.org, documentación de AMM (leída 11-nov-2026)",
+      "u": "https://xrpl.org/docs/concepts/tokens/decentralized-exchange/automated-market-makers",
+      "d": "2026-11-11",
+      "n": "P"
+     }
+    ],
+    "falta": "Profundidad de los pools: no medida (la instantánea de profundidad excluye los AMM)."
+   },
+   {
+    "red": "XRPL",
+    "nombre": "DEX con permisos (dominios permisionados)",
+    "que": "Mercado restringido: un «dominio permisionado» actúa de lista de acceso y solo entran cuentas con las credenciales que él pide.",
+    "hechos": [
+     {
+      "t": "Cada DEX con permisos está unido a un dominio; las operaciones solo se cruzan con otras del mismo DEX; puede haber varios; requiere la enmienda PermissionedDEX. Pensado para que empresas reguladas operen con contrapartes verificadas.",
+      "f": "xrpl.org, Permissioned DEXes",
+      "u": "https://xrpl.org/docs/concepts/tokens/decentralized-exchange/permissioned-dexes",
+      "d": "2026-11-15",
+      "n": "P"
+     },
+     {
+      "t": "La única regla configurable de un dominio es el conjunto de credenciales aceptadas; quien define el dominio es su propietario.",
+      "f": "xrpl.org, Permissioned Domains",
+      "u": "https://xrpl.org/docs/concepts/tokens/decentralized-exchange/permissioned-domains",
+      "d": "2026-11-15",
+      "n": "P"
+     }
+    ],
+    "falta": "[VERIFICAR] si la enmienda PermissionedDEX está activada en la red principal (la página leída no lo muestra) y si hay volumen real: sin dato."
+   },
+   {
+    "red": "Stellar",
+    "nombre": "Libro de órdenes (SDEX) y AMM de protocolo",
+    "que": "Libro de ofertas y fondos de liquidez dentro del protocolo; ambos operan sobre el mismo libro mayor.",
+    "hechos": [
+     {
+      "t": "El libro mayor de Stellar guarda saldos y órdenes de compra y venta; el DEX funciona con libros de órdenes por cada par de activos.",
+      "f": "developers.stellar.org, Liquidity on Stellar",
+      "u": "https://developers.stellar.org/docs/learn/fundamentals/liquidity-on-stellar-sdex-liquidity-pools",
+      "d": "2026-11-15",
+      "n": "P"
+     },
+     {
+      "t": "Los fondos de liquidez son AMM de producto constante con comisión fija de 30 puntos básicos (0,30 %); cualquier participante elegible puede depositar y recibe participaciones.",
+      "f": "developers.stellar.org, Liquidity on Stellar",
+      "u": "https://developers.stellar.org/docs/learn/fundamentals/liquidity-on-stellar-sdex-liquidity-pools",
+      "d": "2026-11-15",
+      "n": "P"
+     },
+     {
+      "t": "Libro XLM/USDC el 15-nov: spread 0,17 %; ofertas a ±1 % por ≈9,6 mil $ (compra) y ≈129 mil $ (venta). Instantánea, solo libro.",
+      "f": "Horizon /order_book",
+      "u": "https://developers.stellar.org/docs/data/apis/horizon/api-reference/retrieve-an-order-book",
+      "d": "2026-11-15",
+      "n": "P"
+     }
+    ],
+    "falta": "Equivalente a un DEX con permisos o dominios: sin dato (no aparece en la página leída; no prueba que no exista). Market makers con nombre: sin dato."
+   }
+  ],
+  "contraste": "La diferencia clave: XRPL ofrece libro abierto, AMM y (según su documentación) mercados con acceso por credenciales; Stellar ofrece libro y AMM con comisión fija. En las redes con contratos (Ethereum, Solana, BNB…) los intercambios están en contratos de terceros y el repo no ha leído un mercado a nivel de protocolo: sin dato."
+ }
 }

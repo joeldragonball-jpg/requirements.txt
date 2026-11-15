@@ -64,7 +64,76 @@
     "que_es": "Banco de los bancos centrales; sus proyectos (Agorá, Nexus, Mandala) prueban cómo conectar sistemas de pago de bancos centrales.",
     "ref_archivo": "explorador/interconexion.json"
    }
-  ]
+  ],
+  "puente_neutral": {
+   "titulo": "Escenario: un país en Ethereum y otro en Stellar (o en cualquier otra pareja de redes). ¿Qué hace de puente?",
+   "aviso": "Escenario especulativo con hechos sueltos. No hay en el repo ningún documento primario que describa un pago real entre dos bancos centrales o bancos en cadenas distintas usando XRP o XLM como puente. Cada paso dice si es hecho con fuente o [ESPECULACIÓN] con la razón.",
+   "pasos": [
+    {
+     "t": "Origen: el valor está tokenizado o es una stablecoin en la cadena A. Ethereum concentra el mayor valor tokenizado de la lista: unos 15 mil M$ (sin stablecoins).",
+     "hecho": {
+      "fuente": "RWA.xyz (agregador), leído 14-nov-2026",
+      "url": "https://app.rwa.xyz/",
+      "nivel": "S",
+      "fecha": "2026-11-14"
+     }
+    },
+    {
+     "t": "Opción 1, la más documentada: una stablecoin multi-cadena como puente. Circle mueve USDC entre cadenas destruyéndolo en el origen y creándolo en el destino (CCTP); el USDC nativo de Stellar entra por ahí sin puente custodio.",
+     "hecho": {
+      "fuente": "Circle, CCTP: cadenas y dominios soportados",
+      "url": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+      "nivel": "P",
+      "fecha": "2026-11-15"
+     }
+    },
+    {
+     "t": "Opción 2: un mensaje entre cadenas. CCIP (Chainlink) figura en producción en Ethereum, con 79 cadenas en su directorio oficial; la API no da la fecha de entrada en producción.",
+     "hecho": {
+      "fuente": "Chainlink, directorio de CCIP",
+      "url": "https://docs.chain.link/api/ccip/v1/chains?environment=mainnet",
+      "nivel": "P",
+      "fecha": "2026-11-15"
+     }
+    },
+    {
+     "t": "Opción 3: el depositario hace de nexo. DTCC anuncia que su servicio de tokenización se conectará a Stellar (27-may-2026) y a Solana (12-nov-2026) dentro de una estrategia «multi-chain». Es un anuncio, no un servicio en marcha en esas redes.",
+     "hecho": {
+      "fuente": "DTCC, comunicados",
+      "url": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy",
+      "nivel": "P",
+      "fecha": "2026-05-27"
+     }
+    },
+    {
+     "t": "Opción 4, XRP o XLM como activo puente entre dos cadenas distintas (cadena A → XRP/XLM → cadena B): no hay fuente primaria que lo describa entre redes diferentes. Lo único documentado es el auto-bridging dentro de XRPL (XRP como intermediario entre dos tokens del mismo libro) y el pago por rutas dentro de Stellar.",
+     "esp": "Razón: el repo no encuentra enlace con fuente entre XRPL y Stellar ni entre ellas y Ethereum o Solana, salvo CCTP para el USDC de Stellar. Que un token «neutral» exista para unir redes es una hipótesis, no un hecho. [ESPECULACIÓN]"
+    },
+    {
+     "t": "Destino: en la cadena B se baja a la divisa que se quiera (XLM, USD, EUR) por el DEX nativo, un anclaje o un emisor. Cuánto de ese tramo pasaría por el token de la red y cuánto iría directo en stablecoins, no está medido.",
+     "esp": "Razón: sin datos de rutas reales de pago. [ESPECULACIÓN]"
+    },
+    {
+     "t": "Marco legal en EE. UU. (lo que condiciona al nexo estadounidense): GENIUS (stablecoins) está firmada y entra en vigor el 18-ene-2027; CLARITY (mercado de criptoactivos) sigue sin ley: el 15-sep-2026 el Senado rechazó el cierre del debate 49-50 y quedan por confirmar una segunda votación y el calendario. Según prensa, el 119.º Congreso termina el 3-ene-2027 y los demócratas ganaron ambas cámaras el 3-nov [VERIFICAR].",
+     "hecho": {
+      "fuente": "ley-eeuu.json (prensa y fuentes del repo, leído 15-nov-2026)",
+      "url": "",
+      "nivel": "S",
+      "fecha": "2026-11-15"
+     }
+    },
+    {
+     "t": "Marco legal en la UE: MiCA ya está en vigor; el registro provisional de ESMA lista 407 proveedores (CASP) y 26 emisores de stablecoins de dinero electrónico.",
+     "hecho": {
+      "fuente": "ESMA, registro provisional de MiCA",
+      "url": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+      "nivel": "P",
+      "fecha": "2026-11-14"
+     }
+    }
+   ],
+   "incertidumbre": "Lo que decidirá cuál es el puente es regulatorio y de infraestructura, no del token: quién obtiene licencia, qué stablecoins aceptan los supervisores y a qué cadenas se conecta el depositario. Hoy el único puente con fuente primaria entre cadenas distintas es el USDC por CCTP y los mensajes por CCIP; un token neutral propio de XRP o XLM es [ESPECULACIÓN]."
+  }
  },
  "redes": {
   "xrpl": {

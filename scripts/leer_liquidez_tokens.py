@@ -35,6 +35,18 @@ def comisiones(nombre):
         return None
 
 
+def dex30(nombre):
+    """Volumen de intercambios descentralizados en la cadena, últimos 30 días (M$), DefiLlama [S]; None si no responde."""
+    try:
+        q = urllib.request.Request("https://api.llama.fi/overview/dexs/" + nombre + "?excludeTotalDataChart=true&excludeTotalDataChartBreakdown=true",
+                                   headers={"User-Agent": "cartera-cliente/1.0"})
+        with urllib.request.urlopen(q, timeout=30) as r:
+            j = json.load(r)
+        return round(j["total30d"] / 1e6, 1) if j.get("total30d") is not None else None
+    except Exception:
+        return None
+
+
 def main():
     req = urllib.request.Request(URL, headers={"User-Agent": "cartera-cliente/1.0", "Accept": "application/json"})
     with urllib.request.urlopen(req, timeout=30) as r:
@@ -56,6 +68,7 @@ def main():
                              "max": x.get("max_supply"), "d": hoy, "n": "S"}
         if red in LLAMA:
             f = comisiones(LLAMA[red])
+            out["redes"][red]["dex30_musd"] = dex30(LLAMA[red])
             if f:
                 out["redes"][red].update(f)
                 out["redes"][red]["fees_anual_pct_cap"] = round(f["fees30_musd"] * 12 / mc * 100, 2) if mc else None

@@ -595,6 +595,28 @@ try:
 except (OSError, ValueError, KeyError, ImportError) as _e:
     aviso("Captura", f"no se pudo validar ({type(_e).__name__})")
 
+# C332: las tarjetas de DEX nativos llevan hechos con texto, fuente, nivel, fecha y enlace
+try:
+    for _t in json.loads((RAIZ / "explorador" / "cadenas.json").read_text(encoding="utf-8")).get("dex_nativos", {}).get("tarjetas", []):
+        for _h in _t.get("hechos", []):
+            celda_cadena(f"dex_nativos {_t.get('red')} {_t.get('nombre', '')[:30]}", _h)
+except (OSError, ValueError) as _e:
+    aviso("dex_nativos", f"no se pudo validar ({type(_e).__name__})")
+
+# C331: cada paso del escenario del activo puente es hecho con fuente y nivel, o [ESPECULACIÓN] con su razón
+try:
+    for _i, _p in enumerate(json.loads((RAIZ / "explorador" / "escenarios-redes.json").read_text(encoding="utf-8")).get("marco", {}).get("puente_neutral", {}).get("pasos", []), 1):
+        _hh = _p.get("hecho")
+        if _hh:
+            if not (_hh.get("fuente") and _hh.get("nivel") in ("P", "S", "V")):
+                aviso("puente_neutral", f"paso {_i}: hecho sin fuente o nivel válido")
+            if _hh.get("url") and not str(_hh["url"]).startswith("https://"):
+                aviso("puente_neutral", f"paso {_i}: url debe empezar por https://")
+        elif not _p.get("esp"):
+            aviso("puente_neutral", f"paso {_i}: sin hecho con fuente ni razón [ESPECULACIÓN]")
+except (OSError, ValueError) as _e:
+    aviso("puente_neutral", f"no se pudo validar ({type(_e).__name__})")
+
 print("\n".join(avisos) if avisos else "Sin avisos.")
 print(f"\n{len(avisos)} aviso(s) en {len(d['capas'])} capas y {len(d['movimientos'])} movimientos.")
 if RUTA_REG.exists():
