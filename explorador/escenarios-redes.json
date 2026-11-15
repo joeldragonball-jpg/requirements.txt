@@ -186,7 +186,7 @@
       }
      },
      {
-      "t": "China: se atribuye a un aviso del PBoC de 6-feb-2026 (Yinfa [2026] n.º 42) la prohibición de emitir stablecoins ligadas al RMB sin aprobación. El texto oficial no se pudo leer (la web del PBoC carga las listas dinámicamente): solo hay prensa financiera. Número de organismos firmantes discrepa entre medios.",
+      "t": "China: se atribuye a un aviso del PBoC de 6-feb-2026 (Yinfa [2026] n.º 42) la prohibición de emitir stablecoins ligadas al RMB sin aprobación. El texto oficial sigue sin localizarse (reintentado 16-nov-2026: las listas de pbc.gov.cn cargan dinámicamente y su buscador devuelve 404): solo hay prensa financiera. Número de organismos firmantes discrepa entre medios.",
       "hecho": {
        "fuente": "Prensa (PYMNTS, Unlock Blockchain); pbc.gov.cn no legible [VERIFICAR]",
        "url": "https://www.pbc.gov.cn/en/3688110/3688172/index.html",
@@ -480,21 +480,21 @@
     "aviso": "Los emisores informan de sus propias reservas. Las estimaciones de efecto en rendimientos son de unos pocos puntos básicos y cambian entre versiones.",
     "pasos": [
      {
-      "t": "BIS, Informe Anual 2025, cap. III (jun-2025): las stablecoins fallan en tres pruebas del dinero (singleness, elasticity e integrity): cada tenedor reclama a un emisor distinto, están prefinanciadas al 100 % y circulan al portador. La alternativa que defiende es un libro unificado con reservas de banco central tokenizadas, depósitos tokenizados y activos (Agorá). La página no se pudo abrir en Chrome; resumen de un subagente.",
+      "t": "BIS, Informe Anual 2025, cap. III (jun-2025): las stablecoins fallan en tres pruebas del dinero (singleness, elasticity e integrity): cada tenedor reclama a un emisor distinto, están prefinanciadas al 100 % y circulan al portador. La alternativa que defiende es un «libro unificado» (unified ledger) con reservas de banco central tokenizadas, dinero de bancos comerciales y activos en la misma plataforma. Leído el capítulo completo en el navegador integrado de la app el 16-nov-2026 (Chrome no abre bis.org): los tres criterios y el carácter al portador figuran tal cual; la frase «prefinanciadas al 100 %» no es una afirmación del BIS, que solo la usa como escenario hipotético de regulación (stablecoins «fully backed»), y el capítulo no menciona Agorá por su nombre.",
       "hecho": {
-       "fuente": "BIS, ar2025e3 (resumen de subagente; conexión bloqueada en Chrome) [VERIFICAR]",
-       "url": "https://www.bis.org/publ/arpdf/ar2025e3.htm",
-       "nivel": "S",
-       "fecha": "2025-06-24"
+       "fuente": "BIS, Informe Económico Anual 2025, cap. III, leído completo el 16-nov-2026",
+       "url": "https://www.bis.org/publications/aer-2025/next-generation-monetary-financial-system",
+       "nivel": "P",
+       "fecha": "2025-06-29"
       }
      },
      {
-      "t": "BIS, documento de trabajo 1270 (Ahmed y Aldasoro): las entradas en stablecoins bajan el rendimiento de las letras a 3 meses unos 2,5-3,5 puntos básicos y las salidas lo suben 2-3 veces más (asimetría). El término «fire sale» es de la prensa. Cifras no recotejadas con el PDF.",
+      "t": "BIS, documento de trabajo 1270 (Ahmed y Aldasoro): CORREGIDO tras leer la página oficial (16-nov-2026; publicado 28-may-2025, con datos hasta mar-2026): una entrada de 3.500 M USD (2 desviaciones típicas) en stablecoins baja el rendimiento de las letras del Tesoro a 3 meses 0,71 pb en el momento y hasta unos 4 pb en 10 días (suelo ≈5 pb a los 13 días), sin efecto en plazos largos; el efecto es mayor con estrés en el mercado del Tesoro y con el tamaño del sector. Las stablecoins en dólares superaban 270.000 M USD en dic-2025 y compraron casi 35.000 M en letras en 2025. La cifra anterior (2,5-3,5 pb y asimetría entradas/salidas) no figura en la página: no usarla. Resumen de la web, no del PDF de 54 páginas.",
       "hecho": {
-       "fuente": "BIS WP 1270 (resumen) [VERIFICAR]",
-       "url": "https://www.bis.org/publ/work1270.htm",
-       "nivel": "S",
-       "fecha": "2026-11-15"
+       "fuente": "BIS Working Paper 1270 (Ahmed y Aldasoro), página oficial",
+       "url": "https://www.bis.org/publications/working-paper-1270-stablecoins-and-safe-asset-prices",
+       "nivel": "P",
+       "fecha": "2025-05-28"
       }
      },
      {
@@ -507,12 +507,12 @@
       }
      },
      {
-      "t": "Reservas de Tether (USDT): ≈132.400 M USD en deuda del Tesoro (directa e indirecta) en 3T-2026 y exceso de reservas ≈7.950 M, según prensa cripto sobre una atestación de BDO. La página de Tether que localicé daba 404: no leída. Una atestación no es una auditoría completa.",
+      "t": "Reservas de Tether (USDT): ≈132.400 M USD en deuda del Tesoro (directa e indirecta) en 3T-2026 y exceso de reservas ≈7.950 M, confirmado en el comunicado de Tether (30-oct-2026, leído el 16-nov): atestación de BDO a 30-sep-2026; activos totales 191.451 M USD (191,5 MM), pasivos 183.496 M (de ellos 183.470 M en tokens emitidos), exceso 7.955 M, letras del Tesoro directas e indirectas 132,4 MM, emisión de USD₮ ≈184 MM. Es una atestación declarada por la dirección de la empresa, no una auditoría completa; la web /transparency de Tether devuelve 404. Circle (circle.com/transparency, 12-nov-2026): USDC en circulación 67,9 MM y reservas 68,1 MM, con aseguramiento mensual de una Big Four; el desglose de Tesoro está en un gráfico no legible, por lo que no se cita.",
       "hecho": {
-       "fuente": "Cointelegraph (prensa); tether.io no legible [VERIFICAR]",
-       "url": "https://cointelegraph.com/news/tethers-excess-reserves-nearly-double-to-8b-as-q3-profit-hits-15b",
-       "nivel": "V",
-       "fecha": "2026-10"
+       "fuente": "Tether (comunicado de la atestación del 3T-2026, BDO) y Circle (transparencia)",
+       "url": "https://tether.io/news/tether-generates-1-5-billion-in-q3-net-operating-profit-as-reserve-buffer-doubles-to-almost-8-billion/",
+       "nivel": "P",
+       "fecha": "2026-10-30"
       }
      },
      {
@@ -525,20 +525,20 @@
       }
      },
      {
-      "t": "Cuota del dólar en reservas oficiales (FMI COFER): ~56,7 % en 2026T2 según un resumen de prensa del Data Brief (57,2 % en 2026T1), euro ~20,6 %. La web del FMI denegó el acceso: [VERIFICAR] en data.imf.org. Parte de la caída es efecto de valoración. En pagos Swift, el USD ronda el 50 % (S, no leído el informe de sep-2026).",
+      "t": "Cuota del dólar en reservas oficiales (FMI COFER): 56,70 % en 2026T2 (57,18 % en 2026T1); euro 20,60 % (20,04 %); yen 4,96 %; renminbi 2,11 %. Reservas totales 13,22 billones USD. Leído el Data Brief del FMI (30-sep-2026) el 16-nov-2026; el FMI indica que los tipos de cambio se movieron ±2 %, así que el cambio de cuota refleja sobre todo compras y precios, no valoración. Desde 2025T3 el FMI elimina la partida «no asignado» (cuotas sobre el 100 %, con parte imputada). En pagos Swift, el USD ronda el 50 % (S, no leído el informe de sep-2026).",
       "hecho": {
-       "fuente": "FMI COFER (resumen de prensa); imf.org denegó acceso [VERIFICAR]",
-       "url": "https://data.imf.org/en/Data-Explorer?datasetUrn=IMF.STA:COFER",
-       "nivel": "V",
+       "fuente": "FMI, COFER Data Brief 2026T2 (data.imf.org)",
+       "url": "https://data.imf.org/en/datasets/IMF.STA:COFER",
+       "nivel": "P",
        "fecha": "2026-09"
       }
      },
      {
-      "t": "Afirmación de Joel: el comercio mundial quiere dejar de depender del dólar, con papel del BIS, Japón y deuda en stablecoins. [J] Con las cifras de COFER pendientes de lectura oficial, no hay base primaria para fecharlo en un sentido u otro: la cuota del USD en reservas sigue por encima del 50 % según el resumen de prensa.",
+      "t": "Afirmación de Joel: el comercio mundial quiere dejar de depender del dólar, con papel del BIS, Japón y deuda en stablecoins. [J] COFER (FMI, 2026T2, leído) sitúa la cuota del USD en el 56,70 %, por encima del 50 %, y bajando desde el 57,18 % del trimestre anterior; un trimestre no fija tendencia.",
       "esp": "Razón: es una opinión macro que depende de variables que este repo no mide (balanza de pagos, política de Japón y del BIS); el único dato comprobable, la cuota del dólar en reservas, apunta a descenso lento, con efecto de valoración mezclado. [J] [ESPECULACIÓN]"
      }
     ],
-    "incertidumbre": "Pendiente: leer COFER en data.imf.org, la nota de Swift sobre cuota del RMB (Global Currency Tracker, sep-2026) y las atestaciones directamente en las webs de Tether."
+    "incertidumbre": "Pendiente: el texto oficial del aviso del PBoC (Yinfa 42, no localizado), la nota de Swift sobre cuota del RMB (Global Currency Tracker, sep-2026) y el desglose de reservas de Circle (gráfico no legible)."
    },
    {
     "id": "opiniones",

@@ -284,6 +284,13 @@
           "fuente": "Prensa (eco.com, Crowdfund Insider sep-2026)",
           "url": "https://www.crowdfundinsider.com/2026/09/311056-partior-lseg-digital-settlement-house-partner-to-keep-liquidity-moving-around-the-clock/",
           "nivel": "S"
+        },
+        {
+          "fecha": "2026-11-16",
+          "hecho": "Su FAQ oficial responde que no opera en una cadena pública sino en un libro mayor global privado y con permisos, que puede funcionar sin Swift y que es compatible con ISO 20022. La portada cita una prueba de concepto de remesas con Suhyup Bank (declarada «no es un servicio de producción») y un memorando exploratorio con National Bank of Bahrain; no nombra la tecnología del libro ni conexiones con otras redes.",
+          "fuente": "partior.com (parte interesada)",
+          "url": "https://partior.com/faqs",
+          "nivel": "P"
         }
       ],
       "cubre_partes": [
@@ -305,6 +312,13 @@
           "fuente": "Business Wire, comunicado de Nexus Global Payments",
           "url": "https://www.businesswire.com/news/home/20260209818123/en/Nexus-Global-Payments-Appoints-Technical-Operator",
           "nivel": "S"
+        },
+        {
+          "fecha": "2026-02-09",
+          "hecho": "Comunicado de Nexus Global Payments: la empresa conjunta PayNet–NETS es el operador técnico (construir, operar y mantener la infraestructura y coordinar la incorporación de operadores de sistemas de pago inmediato), con AWS y Endava en el diseño y desarrollo. La web oficial (16-nov-2026) cita a India, Malasia, Filipinas, Singapur y Tailandia como fundadores en 2025 e Indonesia como sexto miembro en 2026; no figura la fecha de 2027.",
+          "fuente": "nexusglobalpayments.org (parte interesada)",
+          "url": "https://nexusglobalpayments.org/nexus-global-payments-appoints-technical-operator/",
+          "nivel": "P"
         }
       ],
       "cubre_partes": [
@@ -776,7 +790,8 @@
     "El PDF de Agorá (BIS, 27-may-2026, 97 págs.) se descargó y se buscó por texto (15-nov-2026): Swift figura como participante privado; no aparecen XRPL, Hedera, Partior, Fnality, DTCC ni Chainlink, y habla de Hyperledger Besu permisionado. El diseño de acceso de supervisores sigue sin leerse.",
     "Sin enlace primario (15-nov-2026): XRPL con CCIP, LayerZero, DTCC o Swift (CCIP, CCTP y LayerZero no la listan); Algorand con cualquier conector (no figura en CCIP, CCTP ni LayerZero); IOTA con CCIP, CCTP o Wormhole; Hedera con CCTP o Wormhole; Stellar con CCIP (solo una intención sin fecha) o Wormhole; Canton con Chainlink fuera de CCIP; Swift con cadenas públicas.",
     "Quant: la única fuente primaria leída es de abr-2023; quant.network da 403 y docs.quant.network no resuelve. Swift, DTCC, Hedera y Banco de España con Quant: sin fuente.",
-    "Partior y Nexus: sus webs no citan a Swift, Fnality, DTCC, CCIP ni cadenas públicas. Partior sí cita bancos (DBS, J.P. Morgan, Standard Chartered, Deutsche Bank, Emirates NBD). Ondo Chain figura en LayerZero sin endpoint desplegado; un agregador (S, sin leer) dice que fue sustituido por «Ondo Network» en jul-2026 [VERIFICAR].",
+    "Partior (partior.com, portada y FAQ, 16-nov-2026, P parte interesada): se define como «red blockchain en vivo» y declara operar sobre un libro mayor global privado y con permisos (no una cadena pública); puede operar sin Swift y es compatible con ISO 20022; no nombra la tecnología subyacente ni declara conexión con Swift, Fnality, DTCC, CCIP ni cadenas públicas. Sus novedades de portada son una prueba de concepto de remesas en divisa con Suhyup Bank (la propia nota dice que no es un servicio de producción) y un memorando con National Bank of Bahrain para explorar liquidar dinares bahreiníes (solo exploratorio). Nexus (nexusglobalpayments.org, 16-nov-2026, P parte interesada): conecta sistemas de pago inmediato nacionales, no es una DLT; fundada en 2025 por los bancos centrales de India, Malasia, Filipinas, Singapur y Tailandia, con Indonesia como sexto miembro en 2026; operador técnico PayNet–NETS con AWS y Endava (comunicado del 9-feb-2026); la fecha de salida en vivo de 2027 no figura en las páginas leídas, solo en Business Wire (S). Ondo: docs.ondo.finance (índice y lista de dominios oficiales, 16-nov-2026) no contiene ninguna página sobre Ondo Network ni Ondo Chain; el paso de Ondo Chain a «Ondo Network» (jul-2026) sigue solo en prensa [VERIFICAR].",
+    "Wormhole y CCTP (16-nov-2026): la página oficial de redes de Wormhole advierte que figurar en la documentación no implica que la cadena esté conectada y remite a paneles; el repositorio oficial reserva ID para Algorand (8), XRPL EVM (57), Stellar (61) y XRPL (66) y no incluye Hedera. La API de Wormholescan (explorador oficial, P) muestra operaciones recientes con origen en Algorand (la última el 15-nov-2026) y ninguna, ni como origen ni como destino, con Stellar, XRPL o XRPL EVM. Circle CCTP (developers.circle.com, tabla de dominios, P): lista Stellar (dominio 27), XDC (18), Plume (22), Polygon PoS (7) y Avalanche (1), entre otras; Algorand, Hedera y XRPL no figuran; BNB Smart Chain solo para USYC.",
     "Falta cotejar en navegador: LayerZero con Hedera (docs.hedera.com), CCIP con Stellar (intención sin fecha) y el anuncio original de DTCC con Chainlink.",
     "Axelar (puente de XRP como gas en la sidechain XRPL EVM, Ripple 30-jun-2025) no tiene nodo en el mapa.",
     "Auditoría Opus (15-nov-2026): 23 URL figuran con distinto nivel (P/S/V/R) según el archivo (p. ej. notas de la RBA y la MAS, blog de Hedera) y revisar_explorador.py no lo detecta; unificar y añadir esa comprobación."
@@ -787,7 +802,7 @@
     "Si algún supervisor tiene ya un nodo de observación en una red institucional (Canton u otra) y con qué alcance.",
     "Si Agorá pasará a producción y cuándo (el BIS no da calendario).",
     "Qué protocolo de interconexión (si alguno) acabará siendo dominante; hoy coexisten varios con modelos de seguridad distintos.",
-    "Algorand: sin CCIP (no está en la configuración de CCIP), sin LayerZero (no está en su lista de endpoints) y sin dominio CCTP directo (tabla de Circle); su única vía citada es Wormhole (Portal y NTT, página de Algorand, parte interesada). La propia página dice que no hay puente nativo a nivel de protocolo. XRPL: sin CCIP ni LayerZero; solo el puente Axelar de la sidechain XRPL EVM (docs.xrplevm.org), que no es XRPL nativo. Partior: su web declara «red blockchain en vivo» con DBS, J.P. Morgan, Standard Chartered, Deutsche Bank y Emirates NBD, sin nombrar la cadena subyacente ni enlaces con otras redes (partior.com, parte interesada). Nexus: operador técnico PayNet+NETS (9-feb-2026) y salida a producción prevista en 2027, solo en nota de prensa (S); conecta pagos rápidos nacionales, no cadenas.",
+    "Algorand: sin CCIP (no está en la configuración de CCIP), sin LayerZero (no está en su lista de endpoints) y sin dominio CCTP directo (tabla de Circle); su única vía citada es Wormhole (Portal y NTT, página de Algorand, parte interesada). La propia página dice que no hay puente nativo a nivel de protocolo. XRPL: sin CCIP ni LayerZero; solo el puente Axelar de la sidechain XRPL EVM (docs.xrplevm.org), que no es XRPL nativo. Partior y Nexus: ver la entrada anterior (webs oficiales leídas el 16-nov-2026).",
     "CLARITY (H.R. 3633): congress.gov y senate.gov bloquean el acceso automático; última acción oficial sin leer [VERIFICAR a mano]. Prensa (S, The Defiant, American Banker, 15-sep-2026): el Senado rechazó el cierre de debate sobre la moción de proceder por 49-50 (necesitaba 60); es un voto procedimental, el proyecto sigue en el calendario del Senado (n.º 423) y no se encontró ninguna acción posterior hasta el 15-nov-2026. S. 3755 (Agricultura) reportada el 2-feb-2026 (GovInfo, calendario n.º 312). Que se retome antes de 2027 es opinión de prensa [ESPECULACIÓN]."
   ],
   "nodos_y_enlaces": {
@@ -1313,7 +1328,7 @@
       {
         "de": "wormhole",
         "a": "xrpl",
-        "tipo": "integración anunciada con XRPL y con la sidechain XRPL EVM («is integrating»; fuente: Ripple, parte interesada); no consta que esté activa [VERIFICAR]",
+        "tipo": "integración anunciada con XRPL y con la sidechain XRPL EVM («is integrating»; fuente: Ripple, parte interesada); la API de Wormholescan (16-nov-2026) no registra ninguna operación con XRPL (ID 66) ni con XRPL EVM (ID 57) como origen ni destino: sin actividad visible",
         "estado": "anunciado",
         "fecha": "2025-06-26",
         "fuente": "https://ripple.com/insights/ripple-expands-multichain-interoperability-infrastructure-with-wormhole/",
@@ -1592,74 +1607,74 @@
       {
         "de": "wormhole",
         "a": "sui",
-        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
+        "tipo": "actividad verificada: Wormholescan (explorador oficial de Wormhole, 16-nov-2026) muestra operaciones con origen en la cadena (ID 21), la última el 15-nov-2026; es tráfico del protocolo, no mide volumen ni uso institucional",
         "estado": "produccion",
-        "fecha": "2026-11-15",
-        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
-        "nivel": "V"
+        "fecha": "2026-11-16",
+        "fuente": "https://api.wormholescan.io/api/v1/operations",
+        "nivel": "P"
       },
       {
         "de": "wormhole",
         "a": "aptos",
-        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
+        "tipo": "actividad verificada: Wormholescan (explorador oficial de Wormhole, 16-nov-2026) muestra operaciones con origen en la cadena (ID 22), la última el 15-nov-2026; es tráfico del protocolo, no mide volumen ni uso institucional",
         "estado": "produccion",
-        "fecha": "2026-11-15",
-        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
-        "nivel": "V"
+        "fecha": "2026-11-16",
+        "fuente": "https://api.wormholescan.io/api/v1/operations",
+        "nivel": "P"
       },
       {
         "de": "wormhole",
         "a": "injective",
-        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
+        "tipo": "cadena en el Governor de Wormhole; Wormholescan (16-nov-2026) no muestra operaciones con origen en Injective (ID 19) y la última con destino en ella es del 11-nov-2026: actividad escasa",
         "estado": "produccion",
-        "fecha": "2026-11-15",
-        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
-        "nivel": "V"
+        "fecha": "2026-11-16",
+        "fuente": "https://api.wormholescan.io/api/v1/operations",
+        "nivel": "P"
       },
       {
         "de": "wormhole",
         "a": "sei",
-        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
-        "estado": "produccion",
-        "fecha": "2026-11-15",
-        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
+        "tipo": "cadena en el Governor de Wormhole; Wormholescan (16-nov-2026) no muestra ninguna operación con Sei (ID 32) como origen ni destino [VERIFICAR]",
+        "estado": "anunciado",
+        "fecha": "2026-11-16",
+        "fuente": "https://api.wormholescan.io/api/v1/operations",
         "nivel": "V"
       },
       {
         "de": "wormhole",
         "a": "mantle",
-        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
-        "estado": "produccion",
-        "fecha": "2026-11-15",
-        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
+        "tipo": "cadena en el Governor de Wormhole; Wormholescan (16-nov-2026) no muestra ninguna operación con Mantle (ID 35) como origen ni destino [VERIFICAR]",
+        "estado": "anunciado",
+        "fecha": "2026-11-16",
+        "fuente": "https://api.wormholescan.io/api/v1/operations",
         "nivel": "V"
       },
       {
         "de": "wormhole",
         "a": "polygon",
-        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
+        "tipo": "actividad verificada: Wormholescan (explorador oficial de Wormhole, 16-nov-2026) muestra operaciones con origen en la cadena (ID 5), la última el 15-nov-2026; es tráfico del protocolo, no mide volumen ni uso institucional",
         "estado": "produccion",
-        "fecha": "2026-11-15",
-        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
-        "nivel": "V"
+        "fecha": "2026-11-16",
+        "fuente": "https://api.wormholescan.io/api/v1/operations",
+        "nivel": "P"
       },
       {
         "de": "wormhole",
         "a": "avalanche",
-        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
+        "tipo": "actividad verificada: Wormholescan (explorador oficial de Wormhole, 16-nov-2026) muestra operaciones con origen en la cadena (ID 6), la última el 15-nov-2026; es tráfico del protocolo, no mide volumen ni uso institucional",
         "estado": "produccion",
-        "fecha": "2026-11-15",
-        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
-        "nivel": "V"
+        "fecha": "2026-11-16",
+        "fuente": "https://api.wormholescan.io/api/v1/operations",
+        "nivel": "P"
       },
       {
         "de": "wormhole",
         "a": "bnb",
-        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
+        "tipo": "actividad verificada: Wormholescan (explorador oficial de Wormhole, 16-nov-2026) muestra operaciones con origen en la cadena (ID 4), la última el 15-nov-2026; es tráfico del protocolo, no mide volumen ni uso institucional",
         "estado": "produccion",
-        "fecha": "2026-11-15",
-        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
-        "nivel": "V"
+        "fecha": "2026-11-16",
+        "fuente": "https://api.wormholescan.io/api/v1/operations",
+        "nivel": "P"
       },
       {
         "de": "ondo",
@@ -1781,7 +1796,7 @@
       {
         "de": "wormhole",
         "a": "algorand",
-        "tipo": "Portal Bridge (ALGO y ASA) y Native Token Transfers, listados en la página de interoperabilidad de Algorand (parte interesada; sin fecha en la página; NTT anunciado el 1-jul-2025 por nota de prensa, S)",
+        "tipo": "Portal Bridge (ALGO y ASA) y Native Token Transfers, listados en la página de interoperabilidad de Algorand (parte interesada; sin fecha en la página; NTT anunciado el 1-jul-2025 por nota de prensa, S); Wormholescan (16-nov-2026, P) muestra operaciones con origen en Algorand, la última el 15-nov-2026",
         "estado": "produccion",
         "fecha": "2026-11-15",
         "fuente": "https://algorand.co/interoperability-on-algorand-cross-chain-multichain-bridges",
