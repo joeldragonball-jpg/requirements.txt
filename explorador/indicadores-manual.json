@@ -95,12 +95,34 @@
       "valor": 4.7,
       "unidad": "% población activa",
       "fecha": "2026-07",
-      "fuente": "https://data-explorer.oecd.org/",
+      "fuente": "https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/timeseries/mgsx/lms",
       "nivel": "P",
-      "definicion": "Tasa de paro del Reino Unido (datos del ONS vía OCDE, leída en la API SDMX de la OCDE el 10-nov-2026); es el dato más reciente que devuelve la OCDE. [VERIFICAR] en ons.gov.uk.",
+      "definicion": "Tasa de paro del Reino Unido, mayores de 16, desestacionalizada (serie MGSX del ONS, API de datos del ONS leída el 16-nov-2026; publicación del 20-oct-2026): 4,7 % en el último periodo que devuelve la serie (etiqueta «2026 JUL»; abril, mayo y junio 4,9 %). Coincide con la cifra de la OCDE leída el 10-nov.",
       "periodicidad": "mensual",
       "anterior": 4.9,
       "anterior_fecha": "2026-06"
+    },
+    "paro_juvenil": {
+      "valor": 15.6,
+      "unidad": "% población activa 16-24 (desestacionalizada)",
+      "fecha": "2026-07",
+      "fuente": "https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/timeseries/mgwy/lms",
+      "nivel": "P",
+      "definicion": "Tasa de paro de 16 a 24 años del Reino Unido (serie MGWY del ONS, encuesta LFS, API de datos del ONS leída el 16-nov-2026; publicación del 20-oct-2026): 15,6 % en el último periodo de la serie (etiqueta «2026 JUL»); junio 16,4 %, mayo 16,2 %.",
+      "periodicidad": "mensual",
+      "anterior": 16.4,
+      "anterior_fecha": "2026-06"
+    },
+    "pib": {
+      "valor": 0.7,
+      "unidad": "% trimestral (volumen, desestacionalizado)",
+      "fecha": "2026-Q3",
+      "fuente": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/ihyq/pn2",
+      "nivel": "P",
+      "definicion": "PIB del Reino Unido, crecimiento trimestral encadenado y desestacionalizado (serie IHYQ del ONS, API del ONS leída el 16-nov-2026; publicación del 12-nov-2026): T3-2026 +0,7 %, T2 +0,5 %, T1 +0,6 %, T4-2025 0,0 %.",
+      "periodicidad": "trimestral",
+      "anterior": 0.5,
+      "anterior_fecha": "2026-Q2"
     }
   },
   "RU": {
@@ -210,9 +232,9 @@
       "valor": 5.2,
       "unidad": "% población activa urbana",
       "fecha": "2026-09",
-      "fuente": "https://www.stats.gov.cn/english/",
-      "nivel": "S",
-      "definicion": "Tasa de paro urbano encuestada, todas las ciudades (NBS vía prensa/agregador; el boletín de NBS no se ha abierto) [VERIFICAR]. Agosto 5,3 %. Definición propia de China, no comparable al dato OIT de Eurostat.",
+      "fuente": "https://www.stats.gov.cn/english/PressRelease/202610/t20261019_1965619.html",
+      "nivel": "P",
+      "definicion": "Tasa de paro urbano encuestada de China, septiembre de 2026: 5,2 % (0,1 puntos menos que agosto); media de los tres primeros trimestres 5,2 %; población con hukou local 5,2 %, sin hukou local 5,1 %; 31 grandes ciudades 5,2 %. Nota de la Oficina Nacional de Estadística del 19-oct-2026, leída en su web el 16-nov-2026. Definición propia de China, no comparable al dato OIT de Eurostat. El paro juvenil sale en otra nota que no estaba en la lista de publicaciones leída.",
       "periodicidad": "mensual",
       "anterior": 5.3,
       "anterior_fecha": "2026-08"
