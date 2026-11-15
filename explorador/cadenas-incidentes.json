@@ -1,0 +1,1078 @@
+{
+  "generado_utc": "2026-11-15 12:08 UTC",
+  "nivel": "S",
+  "ventana": "2025-11-15 a 2026-11-15",
+  "fuente": "https://api.llama.fi/hacks",
+  "total_incidentes_en_fuente": 1355,
+  "incidentes_sin_red_mapeada": 141,
+  "metodo": "Descarga única del listado de DefiLlama, filtro por fecha (365 días), agrupación por red con diccionario de alias y separación por el campo bridgeHack.",
+  "avisos": [
+    "Atribución doble: un hack de puente suele figurar en las dos redes que conecta; no sumar importes entre redes.",
+    "Los nombres de red se duplican en la fuente (XRPL/Ripple, BSC/Binance/BNB); aquí se unifican por diccionario, [VERIFICAR] omisiones.",
+    "Importes y fechas son los que declara DefiLlama (agregador); 0 incidentes no prueba seguridad, solo que no constan.",
+    "Muchos incidentes son de aplicaciones sobre la red (DeFi), no fallos de la capa base."
+  ],
+  "redes": {
+    "xrpl": {
+      "base": {
+        "n": 1,
+        "importe_usd": 387000000,
+        "ultimo": "2026-09-24",
+        "casos": [
+          {
+            "fecha": "2026-09-24",
+            "nombre": "Bitget",
+            "importe_usd": 387000000,
+            "tecnica": "Hot Wallet Key Compromised",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Tron",
+              "Zcash",
+              "xrpl"
+            ]
+          }
+        ]
+      },
+      "puentes": {
+        "n": 1,
+        "importe_usd": 200000,
+        "ultimo": "2026-08-09",
+        "casos": [
+          {
+            "fecha": "2026-08-09",
+            "nombre": "Coreum Bridge",
+            "importe_usd": 200000,
+            "tecnica": "Bridge Logic Flaw",
+            "recuperado_usd": null,
+            "otras_redes": []
+          }
+        ]
+      }
+    },
+    "stellar": {
+      "base": {
+        "n": 3,
+        "importe_usd": 51687000,
+        "ultimo": "2026-11-02",
+        "casos": [
+          {
+            "fecha": "2026-11-02",
+            "nombre": "Mercado Bitcoin",
+            "importe_usd": 40000000,
+            "tecnica": "Unknown",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "TRON",
+              "Arbitrum",
+              "bnb",
+              "ethereum",
+              "polygon",
+              "solana",
+              "stellar",
+              "xdc"
+            ]
+          },
+          {
+            "fecha": "2026-08-25",
+            "nombre": "CometDEX",
+            "importe_usd": 717000,
+            "tecnica": "Incorrect Share Accounting",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-02-22",
+            "nombre": "Blend Pools V2",
+            "importe_usd": 10970000,
+            "tecnica": "Spot Price Manipulation",
+            "recuperado_usd": null,
+            "otras_redes": []
+          }
+        ]
+      },
+      "puentes": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
+      }
+    },
+    "hedera": {
+      "base": {
+        "n": 1,
+        "importe_usd": 9050000,
+        "ultimo": "2026-07-11",
+        "casos": [
+          {
+            "fecha": "2026-07-11",
+            "nombre": "Bonzo Lend",
+            "importe_usd": 9050000,
+            "tecnica": "Spot Price Manipulation",
+            "recuperado_usd": null,
+            "otras_redes": []
+          }
+        ]
+      },
+      "puentes": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
+      }
+    },
+    "ethereum": {
+      "base": {
+        "n": 105,
+        "importe_usd": 7066789620.17,
+        "ultimo": "2026-11-13",
+        "casos": [
+          {
+            "fecha": "2026-11-13",
+            "nombre": "Pennysia",
+            "importe_usd": 5131,
+            "tecnica": "Arbitrary External Call",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-11-12",
+            "nombre": "Edel",
+            "importe_usd": 300000,
+            "tecnica": "Unknown",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-11-02",
+            "nombre": "Mercado Bitcoin",
+            "importe_usd": 40000000,
+            "tecnica": "Unknown",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "TRON",
+              "Arbitrum",
+              "bnb",
+              "ethereum",
+              "polygon",
+              "solana",
+              "stellar",
+              "xdc"
+            ]
+          },
+          {
+            "fecha": "2026-10-29",
+            "nombre": "Binance CEX",
+            "importe_usd": 6360000000,
+            "tecnica": "Key Leaked via Infrastructure",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "TRON",
+              "Optimism",
+              "Arbitrum",
+              "Base",
+              "ethereum"
+            ]
+          },
+          {
+            "fecha": "2026-10-28",
+            "nombre": "Hifi Finance",
+            "importe_usd": null,
+            "tecnica": "Malicious Proposal",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-10-25",
+            "nombre": "Yapeswap",
+            "importe_usd": 21900,
+            "tecnica": "Malicious Proposal",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-10-24",
+            "nombre": "X100",
+            "importe_usd": 4750000,
+            "tecnica": "Flashloan Governance Attack",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-10-21",
+            "nombre": "Swell",
+            "importe_usd": null,
+            "tecnica": "Hot Wallet Key Compromised",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-10-14",
+            "nombre": "UNCX Network V2",
+            "importe_usd": 86000,
+            "tecnica": "Incorrect Share Accounting",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Base",
+              "Robinhood Chain",
+              "ethereum"
+            ]
+          },
+          {
+            "fecha": "2026-10-13",
+            "nombre": "Gamdom",
+            "importe_usd": 4208000,
+            "tecnica": "Key Leaked via Infrastructure",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Arbitrum",
+              "Optimism",
+              "TRON",
+              "Bitcoin",
+              "ethereum",
+              "polygon",
+              "solana"
+            ]
+          }
+        ]
+      },
+      "puentes": {
+        "n": 25,
+        "importe_usd": 335682262.378132,
+        "ultimo": "2026-11-09",
+        "casos": [
+          {
+            "fecha": "2026-11-09",
+            "nombre": "Ankr Bridge",
+            "importe_usd": 304500,
+            "tecnica": "Cross-Chain Message Spoofing",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-10-28",
+            "nombre": "zkLink Nova",
+            "importe_usd": 783100,
+            "tecnica": "Cross-Chain Message Spoofing",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-10-22",
+            "nombre": "WAX Multi-Chain Bridge",
+            "importe_usd": 90500,
+            "tecnica": "Missing Input Validation",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "WAX",
+              "solana"
+            ]
+          },
+          {
+            "fecha": "2026-10-19",
+            "nombre": "Vara Bridge",
+            "importe_usd": 12776,
+            "tecnica": "Proof Verifier Bug",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-09-27",
+            "nombre": "Fake GIWA Bridge",
+            "importe_usd": 2080000,
+            "tecnica": "Impersonation Scam",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-09-25",
+            "nombre": "Demex Perp",
+            "importe_usd": 191929,
+            "tecnica": "Cross-Chain Message Spoofing",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Demex",
+              "ethereum"
+            ]
+          },
+          {
+            "fecha": "2026-09-24",
+            "nombre": "Payy Network",
+            "importe_usd": 1828589.378132,
+            "tecnica": "Bridge Logic Flaw",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-09-19",
+            "nombre": "Fetch.ai",
+            "importe_usd": 1530000,
+            "tecnica": "Private Key Compromised",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-09-10",
+            "nombre": "Symbiosis",
+            "importe_usd": 336000,
+            "tecnica": "Unbacked Cross-Chain Mint",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "ethereum"
+            ]
+          },
+          {
+            "fecha": "2026-08-23",
+            "nombre": "warp.green",
+            "importe_usd": 93000,
+            "tecnica": "Bridge Logic Flaw",
+            "recuperado_usd": null,
+            "otras_redes": []
+          }
+        ]
+      }
+    },
+    "solana": {
+      "base": {
+        "n": 20,
+        "importe_usd": 451433588.7,
+        "ultimo": "2026-11-05",
+        "casos": [
+          {
+            "fecha": "2026-11-05",
+            "nombre": "Loopscale Lending",
+            "importe_usd": null,
+            "tecnica": "Unknown",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-11-02",
+            "nombre": "Mercado Bitcoin",
+            "importe_usd": 40000000,
+            "tecnica": "Unknown",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "TRON",
+              "Arbitrum",
+              "bnb",
+              "ethereum",
+              "polygon",
+              "solana",
+              "stellar",
+              "xdc"
+            ]
+          },
+          {
+            "fecha": "2026-10-26",
+            "nombre": "Bloom Trading Bot",
+            "importe_usd": 953000,
+            "tecnica": "Supply Chain Attack",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-10-18",
+            "nombre": "Coffer",
+            "importe_usd": 0.7,
+            "tecnica": "Rounding Error",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-10-13",
+            "nombre": "Gamdom",
+            "importe_usd": 4208000,
+            "tecnica": "Key Leaked via Infrastructure",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Arbitrum",
+              "Optimism",
+              "TRON",
+              "Bitcoin",
+              "ethereum",
+              "polygon",
+              "solana"
+            ]
+          },
+          {
+            "fecha": "2026-09-10",
+            "nombre": "Dominion",
+            "importe_usd": null,
+            "tecnica": "Private Key Compromised",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-08-31",
+            "nombre": "Aquifer",
+            "importe_usd": 2469729,
+            "tecnica": "Arbitrary External Call",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-08-28",
+            "nombre": "Avici",
+            "importe_usd": 500859,
+            "tecnica": "Withdrawal Logic Flaw",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-08-06",
+            "nombre": "Hyperliquid Malaysia",
+            "importe_usd": null,
+            "tecnica": "Private Key Compromised",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-07-21",
+            "nombre": "FlashTrade",
+            "importe_usd": 98000,
+            "tecnica": "Missing Input Validation",
+            "recuperado_usd": null,
+            "otras_redes": []
+          }
+        ]
+      },
+      "puentes": {
+        "n": 3,
+        "importe_usd": 6240500,
+        "ultimo": "2026-10-22",
+        "casos": [
+          {
+            "fecha": "2026-10-22",
+            "nombre": "WAX Multi-Chain Bridge",
+            "importe_usd": 90500,
+            "tecnica": "Missing Input Validation",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "WAX",
+              "solana"
+            ]
+          },
+          {
+            "fecha": "2026-07-19",
+            "nombre": "Allbridge Core",
+            "importe_usd": 1650000,
+            "tecnica": "Withdrawal Logic Flaw",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-07-17",
+            "nombre": "Across",
+            "importe_usd": 4500000,
+            "tecnica": "Spoofed Event Log",
+            "recuperado_usd": null,
+            "otras_redes": []
+          }
+        ]
+      }
+    },
+    "bnb": {
+      "base": {
+        "n": 61,
+        "importe_usd": 134322641.24,
+        "ultimo": "2026-11-08",
+        "casos": [
+          {
+            "fecha": "2026-11-08",
+            "nombre": "ACryptoS",
+            "importe_usd": 665429,
+            "tecnica": "Missing Input Validation",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Arbitrum",
+              "Base",
+              "Optimism",
+              "polygon"
+            ]
+          },
+          {
+            "fecha": "2026-11-05",
+            "nombre": "TENDRIL",
+            "importe_usd": 550000,
+            "tecnica": "Swap Logic Flaw",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-11-02",
+            "nombre": "Mercado Bitcoin",
+            "importe_usd": 40000000,
+            "tecnica": "Unknown",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "TRON",
+              "Arbitrum",
+              "bnb",
+              "ethereum",
+              "polygon",
+              "solana",
+              "stellar",
+              "xdc"
+            ]
+          },
+          {
+            "fecha": "2026-10-27",
+            "nombre": "Predict Fun",
+            "importe_usd": 400000,
+            "tecnica": "Frontend Compromise",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-10-26",
+            "nombre": "Myriad Markets",
+            "importe_usd": 0,
+            "tecnica": "Key Leaked via Infrastructure",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-10-19",
+            "nombre": "AlpsCon AI Trade Hub",
+            "importe_usd": 152809.36,
+            "tecnica": "Incorrect Share Accounting",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-10-14",
+            "nombre": "UNCX Network V2",
+            "importe_usd": 86000,
+            "tecnica": "Incorrect Share Accounting",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Base",
+              "Robinhood Chain",
+              "ethereum"
+            ]
+          },
+          {
+            "fecha": "2026-10-13",
+            "nombre": "Gamdom",
+            "importe_usd": 4208000,
+            "tecnica": "Key Leaked via Infrastructure",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Arbitrum",
+              "Optimism",
+              "TRON",
+              "Bitcoin",
+              "ethereum",
+              "polygon",
+              "solana"
+            ]
+          },
+          {
+            "fecha": "2026-09-30",
+            "nombre": "SKYDAO",
+            "importe_usd": 183482.88,
+            "tecnica": "Swap Logic Flaw",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-09-24",
+            "nombre": "Duelbits",
+            "importe_usd": 7000000,
+            "tecnica": "Hot Wallet Key Compromised",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "Tron",
+              "ethereum"
+            ]
+          }
+        ]
+      },
+      "puentes": {
+        "n": 12,
+        "importe_usd": 20312797,
+        "ultimo": "2026-10-01",
+        "casos": [
+          {
+            "fecha": "2026-10-01",
+            "nombre": "NEAR Intents",
+            "importe_usd": 3800000,
+            "tecnica": "Bridge Logic Flaw",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-09-25",
+            "nombre": "Demex Perp",
+            "importe_usd": 191929,
+            "tecnica": "Cross-Chain Message Spoofing",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Demex",
+              "ethereum"
+            ]
+          },
+          {
+            "fecha": "2026-09-10",
+            "nombre": "Symbiosis",
+            "importe_usd": 336000,
+            "tecnica": "Unbacked Cross-Chain Mint",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "ethereum"
+            ]
+          },
+          {
+            "fecha": "2026-08-22",
+            "nombre": "The Sandbox",
+            "importe_usd": 675000,
+            "tecnica": "Improper Access Control",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Base",
+              "ethereum"
+            ]
+          },
+          {
+            "fecha": "2026-07-26",
+            "nombre": "Garden",
+            "importe_usd": 450000,
+            "tecnica": "Database Breach",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Base",
+              "Arbitrum",
+              "ethereum"
+            ]
+          },
+          {
+            "fecha": "2026-07-26",
+            "nombre": "ChainConnect",
+            "importe_usd": 650000,
+            "tecnica": "Improper Access Control",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "bnb",
+              "ethereum",
+              "polygon"
+            ]
+          },
+          {
+            "fecha": "2026-05-20",
+            "nombre": "MAP Protocol",
+            "importe_usd": 110000,
+            "tecnica": "Infinite Mint",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "ethereum"
+            ]
+          },
+          {
+            "fecha": "2026-05-15",
+            "nombre": "THORChain DEX",
+            "importe_usd": 10700000,
+            "tecnica": "Bridge Logic Flaw",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "Base",
+              "ethereum"
+            ]
+          },
+          {
+            "fecha": "2026-04-27",
+            "nombre": "ZetaChain",
+            "importe_usd": 333868,
+            "tecnica": "Token Approval Abuse",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Base",
+              "Arbitrum",
+              "bnb",
+              "ethereum",
+              "polygon"
+            ]
+          },
+          {
+            "fecha": "2026-04-12",
+            "nombre": "Hyperbridge",
+            "importe_usd": 2500000,
+            "tecnica": "Forged Proof",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Base",
+              "Arbitrum",
+              "ethereum"
+            ]
+          }
+        ]
+      }
+    },
+    "avalanche": {
+      "base": {
+        "n": 5,
+        "importe_usd": 6401591000,
+        "ultimo": "2026-11-02",
+        "casos": [
+          {
+            "fecha": "2026-11-02",
+            "nombre": "Mercado Bitcoin",
+            "importe_usd": 40000000,
+            "tecnica": "Unknown",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "TRON",
+              "Arbitrum",
+              "bnb",
+              "ethereum",
+              "polygon",
+              "solana",
+              "stellar",
+              "xdc"
+            ]
+          },
+          {
+            "fecha": "2026-10-29",
+            "nombre": "Binance CEX",
+            "importe_usd": 6360000000,
+            "tecnica": "Key Leaked via Infrastructure",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "TRON",
+              "Optimism",
+              "Arbitrum",
+              "Base",
+              "ethereum"
+            ]
+          },
+          {
+            "fecha": "2026-10-27",
+            "nombre": "Fence Finance",
+            "importe_usd": 1010000,
+            "tecnica": "Incorrect Share Accounting",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-04-19",
+            "nombre": "Custom sAVAX Rebalancer",
+            "importe_usd": 64000,
+            "tecnica": "Arbitrary External Call",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-04-07",
+            "nombre": "SquidMulticall",
+            "importe_usd": 517000,
+            "tecnica": "Improper Access Control",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Arbitrum",
+              "Optimism",
+              "Base",
+              "bnb"
+            ]
+          }
+        ]
+      },
+      "puentes": {
+        "n": 2,
+        "importe_usd": 983868,
+        "ultimo": "2026-07-26",
+        "casos": [
+          {
+            "fecha": "2026-07-26",
+            "nombre": "ChainConnect",
+            "importe_usd": 650000,
+            "tecnica": "Improper Access Control",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "bnb",
+              "ethereum",
+              "polygon"
+            ]
+          },
+          {
+            "fecha": "2026-04-27",
+            "nombre": "ZetaChain",
+            "importe_usd": 333868,
+            "tecnica": "Token Approval Abuse",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Base",
+              "Arbitrum",
+              "bnb",
+              "ethereum",
+              "polygon"
+            ]
+          }
+        ]
+      }
+    },
+    "polygon": {
+      "base": {
+        "n": 18,
+        "importe_usd": 54148614.47,
+        "ultimo": "2026-11-08",
+        "casos": [
+          {
+            "fecha": "2026-11-08",
+            "nombre": "ACryptoS",
+            "importe_usd": 665429,
+            "tecnica": "Missing Input Validation",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Arbitrum",
+              "Base",
+              "Optimism",
+              "polygon"
+            ]
+          },
+          {
+            "fecha": "2026-11-02",
+            "nombre": "Mercado Bitcoin",
+            "importe_usd": 40000000,
+            "tecnica": "Unknown",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "TRON",
+              "Arbitrum",
+              "bnb",
+              "ethereum",
+              "polygon",
+              "solana",
+              "stellar",
+              "xdc"
+            ]
+          },
+          {
+            "fecha": "2026-10-29",
+            "nombre": "Polymarket International",
+            "importe_usd": 2700000,
+            "tecnica": "Supply Chain Attack",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-10-13",
+            "nombre": "Gamdom",
+            "importe_usd": 4208000,
+            "tecnica": "Key Leaked via Infrastructure",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Arbitrum",
+              "Optimism",
+              "TRON",
+              "Bitcoin",
+              "ethereum",
+              "polygon",
+              "solana"
+            ]
+          },
+          {
+            "fecha": "2026-10-08",
+            "nombre": "BitBay",
+            "importe_usd": 14838.47,
+            "tecnica": "Withdrawal Logic Flaw",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-09-24",
+            "nombre": "Limit Break Payment Processor",
+            "importe_usd": 1800000,
+            "tecnica": "Token Approval Abuse",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "ApeChain",
+              "Base",
+              "polygon"
+            ]
+          },
+          {
+            "fecha": "2026-09-21",
+            "nombre": "DoinGud",
+            "importe_usd": 35486,
+            "tecnica": "Swap Logic Flaw",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-09-16",
+            "nombre": "Nimiq",
+            "importe_usd": 50400,
+            "tecnica": "Signature Verification Flaw",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-06-25",
+            "nombre": "Ocean Protocol",
+            "importe_usd": 127861,
+            "tecnica": "Deposit Logic Flaw",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-06-25",
+            "nombre": "Polymarket International",
+            "importe_usd": 3000000,
+            "tecnica": "Frontend Compromise",
+            "recuperado_usd": null,
+            "otras_redes": []
+          }
+        ]
+      },
+      "puentes": {
+        "n": 2,
+        "importe_usd": 983868,
+        "ultimo": "2026-07-26",
+        "casos": [
+          {
+            "fecha": "2026-07-26",
+            "nombre": "ChainConnect",
+            "importe_usd": 650000,
+            "tecnica": "Improper Access Control",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "bnb",
+              "ethereum",
+              "polygon"
+            ]
+          },
+          {
+            "fecha": "2026-04-27",
+            "nombre": "ZetaChain",
+            "importe_usd": 333868,
+            "tecnica": "Token Approval Abuse",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Base",
+              "Arbitrum",
+              "bnb",
+              "ethereum",
+              "polygon"
+            ]
+          }
+        ]
+      }
+    },
+    "algorand": {
+      "base": {
+        "n": 1,
+        "importe_usd": 30000,
+        "ultimo": "2026-05-19",
+        "casos": [
+          {
+            "fecha": "2026-05-19",
+            "nombre": "HermesVault",
+            "importe_usd": 30000,
+            "tecnica": "Withdrawal Logic Flaw",
+            "recuperado_usd": 26000,
+            "otras_redes": []
+          }
+        ]
+      },
+      "puentes": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
+      }
+    },
+    "xdc": {
+      "base": {
+        "n": 1,
+        "importe_usd": 40000000,
+        "ultimo": "2026-11-02",
+        "casos": [
+          {
+            "fecha": "2026-11-02",
+            "nombre": "Mercado Bitcoin",
+            "importe_usd": 40000000,
+            "tecnica": "Unknown",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "TRON",
+              "Arbitrum",
+              "bnb",
+              "ethereum",
+              "polygon",
+              "solana",
+              "stellar",
+              "xdc"
+            ]
+          }
+        ]
+      },
+      "puentes": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
+      }
+    },
+    "iota": {
+      "base": {
+        "n": 1,
+        "importe_usd": 894500,
+        "ultimo": "2026-08-28",
+        "casos": [
+          {
+            "fecha": "2026-08-28",
+            "nombre": "Virtue",
+            "importe_usd": 894500,
+            "tecnica": "Oracle Misconfiguration",
+            "recuperado_usd": null,
+            "otras_redes": []
+          }
+        ]
+      },
+      "puentes": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
+      }
+    },
+    "plume": {
+      "base": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
+      },
+      "puentes": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
+      }
+    },
+    "canton": {
+      "base": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
+      },
+      "puentes": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
+      }
+    }
+  }
+}

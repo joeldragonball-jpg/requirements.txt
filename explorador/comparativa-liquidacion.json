@@ -1,0 +1,645 @@
+{
+ "_actualizado": "2026-11-15T12:11:25Z",
+ "nivel": "P",
+ "aviso": "Medidas puntuales de nodos públicos (una instantánea, no un promedio histórico): la comisión y el TPS varían con la carga. No es recomendación.",
+ "precios_usd": {
+  "xrp": 0.964646403,
+  "xlm": 0.139334482,
+  "eth": 1825.4116531,
+  "sol": 72.389660861,
+  "hbar": 0.05897726765,
+  "algo": 0.07985
+ },
+ "precios_fuente": "coins.llama.fi (DefiLlama, precio de referencia en el momento de la medida)",
+ "redes": {
+  "xrpl": {
+   "tiempo_bloque_medio_s": 3.737,
+   "tiempo_bloque_mediano_s": 1,
+   "muestra_bloques": 20,
+   "ventana_s": 71,
+   "tps_medio": 35.7,
+   "finalidad_medida_s": 3.737,
+   "finalidad_nota": "un ledger validado es final (consenso sin bifurcaciones); el tiempo medido es el intervalo de cierre",
+   "comision_nativa": "0.00500000 XRP (mediana, 5000 gotas; comisión mínima de referencia 10 gotas)",
+   "comision_minima_usd": 9.65e-06,
+   "comision_usd": 0.00482323,
+   "ledger": 108345413,
+   "fuente": "s1.ripple.com:51234 (rippled; métodos ledger y fee)",
+   "medido_utc": "2026-11-15T12:11:25Z",
+   "nombre": "XRPL"
+  },
+  "stellar": {
+   "tiempo_bloque_medio_s": 5.0,
+   "tiempo_bloque_mediano_s": 5.0,
+   "muestra_bloques": 20,
+   "ventana_s": 95.0,
+   "tps_medio": 107.16,
+   "finalidad_medida_s": 5.0,
+   "finalidad_nota": "un ledger cerrado por el protocolo de consenso federado (SCP) es final; el tiempo medido es el intervalo de cierre",
+   "comision_nativa": "0.0000100 XLM (mediana cobrada, 100 stroops)",
+   "comision_usd": 1.39e-06,
+   "ledger": 65491731,
+   "fuente": "horizon.stellar.org (ledgers y fee_stats)",
+   "medido_utc": "2026-11-15T12:11:25Z",
+   "nombre": "Stellar"
+  },
+  "ethereum": {
+   "tiempo_bloque_medio_s": 12.0,
+   "tiempo_bloque_mediano_s": 12,
+   "muestra_bloques": 20,
+   "ventana_s": 228,
+   "tps_medio": 21.08,
+   "finalidad_medida_s": 1056,
+   "finalidad_nota": "retraso medido entre el último bloque y el bloque «finalized» (Casper FFG); el bloque «safe» va 672 s detrás",
+   "bloques_hasta_finalizado": 88,
+   "comision_nativa": "0.00000599 ETH (transferencia simple de 21000 gas; base 0.205 gwei + propina mediana 0.081 gwei)",
+   "comision_usd": 0.010939,
+   "ledger": 26420321,
+   "fuente": "ethereum-rpc.publicnode.com (eth_getBlockByNumber latest/safe/finalized, eth_feeHistory)",
+   "medido_utc": "2026-11-15T12:11:25Z",
+   "nombre": "Ethereum"
+  },
+  "solana": {
+   "tiempo_bloque_medio_s": 0.215,
+   "tiempo_bloque_mediano_s": null,
+   "muestra_bloques": 8361,
+   "ventana_s": 1800,
+   "tps_medio": 1225.3,
+   "tps_sin_votos": 1225.3,
+   "tps_nota": "numTransactions del nodo público; en Solana las transacciones de voto de los validadores suelen contarse aparte o dentro: si tps_sin_votos coincide con tps_medio, no se puede separar con esta fuente [VERIFICAR]",
+   "finalidad_medida_s": null,
+   "finalidad_nota": "no medible con el RPC público (getSlot confirmed/finalized difiere en 1 slots, no es un retraso de finalidad real); la ficha de Solana indica slot de 200 ms tras Alpenglow (21-oct-2026) [VERIFICAR finalidad]",
+   "comision_nativa": "5000 lamports (base 5000 por firma + prioridad mediana 0 µlamports/CU × ~450 CU)",
+   "comision_usd": 0.00036195,
+   "ledger": 469724894,
+   "fuente": "api.mainnet-beta.solana.com (getRecentPerformanceSamples, getSlot, getRecentPrioritizationFees)",
+   "medido_utc": "2026-11-15T12:11:25Z",
+   "nombre": "Solana"
+  },
+  "hedera": {
+   "tiempo_bloque_medio_s": 2.169,
+   "tiempo_bloque_mediano_s": 2.115427017211914,
+   "muestra_bloques": 20,
+   "ventana_s": 41.2,
+   "tps_medio": 3.59,
+   "finalidad_medida_s": 2.169,
+   "finalidad_nota": "el mirror node publica registros por intervalos de pocos segundos; la finalidad aBFT es del orden de segundos según la documentación [VERIFICAR medida directa]",
+   "comision_nativa": "tarifa documentada en USD (transferencia cripto ≈ 0,0001 USD) [VERIFICAR, no medida]",
+   "comision_usd": 0.0001,
+   "comision_es_medida": false,
+   "ledger": 102364730,
+   "fuente": "mainnet-public.mirrornode.hedera.com (blocks); tarifa: documentación de Hedera",
+   "medido_utc": "2026-11-15T12:11:25Z",
+   "nombre": "Hedera"
+  },
+  "algorand": {
+   "tiempo_bloque_medio_s": 2.737,
+   "tiempo_bloque_mediano_s": 3,
+   "muestra_bloques": 20,
+   "ventana_s": 52,
+   "tps_medio": 10.04,
+   "finalidad_medida_s": 2.737,
+   "finalidad_nota": "un bloque certificado es final (sin bifurcaciones); el tiempo medido es el intervalo entre bloques",
+   "comision_nativa": "0.001000 ALGO (tarifa mínima, 1000 microALGO)",
+   "comision_usd": 7.985e-05,
+   "ledger": 66977942,
+   "fuente": "mainnet-api.algonode.cloud (nodo público; status, blocks, transactions/params)",
+   "medido_utc": "2026-11-15T12:11:25Z",
+   "nombre": "Algorand"
+  }
+ },
+ "activos_liquidacion": {
+  "xrpl": {
+   "stablecoins_usd_defillama": 839299610.2102151,
+   "fecha_dato": "2026-11-15T12:07Z",
+   "stablecoins_top": [
+    {
+     "simbolo": "RLUSD",
+     "emitido": 762732328,
+     "unidad": "USD",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "USDV",
+     "emitido": 72771000,
+     "unidad": "USD",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "EURCV",
+     "emitido": 10987431,
+     "unidad": "EUR",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "USDC",
+     "emitido": 3704179,
+     "unidad": "USD",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "EUROP",
+     "emitido": 399407,
+     "unidad": "EUR",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "AUDD",
+     "emitido": 209947,
+     "unidad": "AUD",
+     "mecanismo": "fiat-backed"
+    }
+   ],
+   "n_stablecoins": 8
+  },
+  "stellar": {
+   "stablecoins_usd_defillama": 397557607.4683487,
+   "fecha_dato": "2026-11-15T12:07Z",
+   "stablecoins_top": [
+    {
+     "simbolo": "USDC",
+     "emitido": 344883813,
+     "unidad": "USD",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "MGUSD",
+     "emitido": 25319900,
+     "unidad": "USD",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "YLDS",
+     "emitido": 25319163,
+     "unidad": "USD",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "EURCV",
+     "emitido": 16514768,
+     "unidad": "EUR",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "EURC",
+     "emitido": 7325386,
+     "unidad": "EUR",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "AUDD",
+     "emitido": 1567307,
+     "unidad": "AUD",
+     "mecanismo": "fiat-backed"
+    }
+   ],
+   "n_stablecoins": 16
+  },
+  "hedera": {
+   "stablecoins_usd_defillama": 25573708.482574277,
+   "fecha_dato": "2026-11-15T12:07Z"
+  },
+  "ethereum": {
+   "stablecoins_usd_defillama": 131391606801.933,
+   "fecha_dato": "2026-11-15T12:07Z",
+   "stablecoins_top": [
+    {
+     "simbolo": "USDT",
+     "emitido": 66782695077,
+     "unidad": "USD",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "USDC",
+     "emitido": 41685828335,
+     "unidad": "USD",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "USDS",
+     "emitido": 5358523896,
+     "unidad": "USD",
+     "mecanismo": "crypto-backed"
+    },
+    {
+     "simbolo": "DAI",
+     "emitido": 4118967802,
+     "unidad": "USD",
+     "mecanismo": "crypto-backed"
+    },
+    {
+     "simbolo": "USDe",
+     "emitido": 2836654427,
+     "unidad": "USD",
+     "mecanismo": "crypto-backed"
+    },
+    {
+     "simbolo": "RLUSD",
+     "emitido": 2019656953,
+     "unidad": "USD",
+     "mecanismo": "fiat-backed"
+    }
+   ],
+   "n_stablecoins": 230
+  },
+  "solana": {
+   "stablecoins_usd_defillama": 13912847795.077347,
+   "fecha_dato": "2026-11-15T12:07Z",
+   "stablecoins_top": [
+    {
+     "simbolo": "USDC",
+     "emitido": 7396698648,
+     "unidad": "USD",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "USDT",
+     "emitido": 2003544666,
+     "unidad": "USD",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "USDGO",
+     "emitido": 1064038641,
+     "unidad": "USD",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "USD1",
+     "emitido": 1030645797,
+     "unidad": "USD",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "PYUSD",
+     "emitido": 802596728,
+     "unidad": "USD",
+     "mecanismo": "fiat-backed"
+    },
+    {
+     "simbolo": "USDG",
+     "emitido": 441679749,
+     "unidad": "USD",
+     "mecanismo": "fiat-backed"
+    }
+   ],
+   "n_stablecoins": 78
+  },
+  "bnb": {
+   "stablecoins_usd_defillama": 12463512318.120384,
+   "fecha_dato": "2026-11-15T12:07Z"
+  },
+  "avalanche": {
+   "stablecoins_usd_defillama": 772843194.6768179,
+   "fecha_dato": "2026-11-15T12:07Z"
+  },
+  "polygon": {
+   "stablecoins_usd_defillama": 2797966557.8854737,
+   "fecha_dato": "2026-11-15T12:07Z"
+  },
+  "canton": {
+   "stablecoins_usd_defillama": null,
+   "fecha_dato": "2026-11-15T12:07Z"
+  },
+  "chainlink": {
+   "stablecoins_usd_defillama": null,
+   "fecha_dato": "2026-11-15T12:07Z"
+  },
+  "ondo": {
+   "stablecoins_usd_defillama": null,
+   "fecha_dato": "2026-11-15T12:07Z"
+  },
+  "algorand": {
+   "stablecoins_usd_defillama": 120746531.31821774,
+   "fecha_dato": "2026-11-15T12:07Z"
+  },
+  "xdc": {
+   "stablecoins_usd_defillama": 103205319.4930197,
+   "fecha_dato": "2026-11-15T12:07Z"
+  },
+  "quant": {
+   "stablecoins_usd_defillama": null,
+   "fecha_dato": "2026-11-15T12:07Z"
+  },
+  "iota": {
+   "stablecoins_usd_defillama": 421888.015616626,
+   "fecha_dato": "2026-11-15T12:07Z"
+  },
+  "plume": {
+   "stablecoins_usd_defillama": 10844342.103459606,
+   "fecha_dato": "2026-11-15T12:07Z"
+  },
+  "_fecha_profundidad": "2026-11-15T10:37Z"
+ },
+ "fallos": [],
+ "liquidacion_t0_vs_tn": {
+  "nivel": "S",
+  "lectura": "«T+0» aquí significa que la transferencia del token queda final en segundos o minutos, no que el dinero fiat del banco se mueva igual de rápido. La pata en dinero bancario (emisión y redención del token, horarios de bancos) depende del emisor y no la hace la red.",
+  "redes": {
+   "xrpl": {
+    "nativo": "Ledger final en ~4 s (medido); libro de órdenes y AMM en el protocolo; pagos entre monedas por rutas; líneas de confianza para activos emitidos.",
+    "no_nativo": "Entrega contra pago con dinero de banco central o cuenta bancaria; la redención de cada stablecoin la hace su emisor.",
+    "fuente": "Medida P (s1.ripple.com); funciones: documentación oficial del proyecto (no releída en esta ejecución) [VERIFICAR]"
+   },
+   "stellar": {
+    "nativo": "Ledger final en ~5 s (medido); libro de órdenes (SDEX) y pagos por rutas con conversión entre activos en el protocolo.",
+    "no_nativo": "La conversión de dinero bancario a token la hacen entidades emisoras o «anclas» externas.",
+    "fuente": "Medida P (horizon.stellar.org); funciones: documentación oficial del proyecto (no releída en esta ejecución) [VERIFICAR]"
+   },
+   "ethereum": {
+    "nativo": "Inclusión en bloque cada 12 s; finalidad económica por Casper FFG tras ~15 min (medido).",
+    "no_nativo": "Libro de órdenes, intercambio y entrega contra pago no son del protocolo: dependen de contratos inteligentes de terceros. Las redes de capa 2 no se miden aquí.",
+    "fuente": "Medida P (ethereum-rpc.publicnode.com); funciones: documentación oficial del proyecto (no releída en esta ejecución) [VERIFICAR]"
+   },
+   "solana": {
+    "nativo": "Slot de ~0,2 s (medido); confirmaciones rápidas.",
+    "no_nativo": "Libro de órdenes e intercambio son programas de terceros; finalidad real no medible con el RPC público (ver «lo que no sabemos»).",
+    "fuente": "Medida P (api.mainnet-beta.solana.com); funciones: documentación oficial del proyecto (no releída en esta ejecución) [VERIFICAR]"
+   },
+   "hedera": {
+    "nativo": "Registros cada ~2 s (medido en mirror node); servicio de tokens en el protocolo.",
+    "no_nativo": "Libro de órdenes: de terceros.",
+    "fuente": "Medida S (mirror node público); funciones: documentación oficial del proyecto (no releída en esta ejecución) [VERIFICAR]"
+   },
+   "algorand": {
+    "nativo": "Bloque cada ~2,8 s (medido), final al certificarse; activos estándar en el protocolo.",
+    "no_nativo": "Libro de órdenes: de terceros.",
+    "fuente": "Medida P (algonode); funciones: documentación oficial del proyecto (no releída en esta ejecución) [VERIFICAR]"
+   }
+  }
+ },
+ "hechos_liquidacion_diversificacion": {
+  "origen": "explorador/pruebas-bancos.json no existía al ejecutar; se toma de cadenas.json (relaciones) y cbdc-blockchains.json, solo lectura.",
+  "filas": [
+   {
+    "hecho": "Pontes (BCE) enlaza plataformas DLT de mercado con TARGET/T2; producción inicial desde el 21-sep-2026; volúmenes no publicados.",
+    "fuente": "Página del BCE sobre Pontes, leída 29-oct-2026 (cbdc-blockchains.json)",
+    "fecha": "2026-09-21",
+    "nivel": "P"
+   },
+   {
+    "hecho": "El DTCC Tokenization Service se lanzó el 28-oct-2026; hoy está integrado con Canton Network y con la red privada Besu de DTCC. No incluye Ethereum público, XRPL, Stellar ni Solana en producción.",
+    "fuente": "DTCC, nota de prensa (dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live)",
+    "fecha": "2026-10-28",
+    "nivel": "P"
+   },
+   {
+    "hecho": "DTCC y la Stellar Development Foundation anunciaron planes para tokenizar activos custodiados en DTC en Stellar, esperados para el primer semestre de 2027. Es plan, no producción.",
+    "fuente": "DTCC, nota de prensa 27-may-2026",
+    "fecha": "2026-05-27",
+    "nivel": "P"
+   },
+   {
+    "hecho": "DTCC anunció planes para Solana con integración prevista en el segundo semestre de 2027. Es plan, no producción.",
+    "fuente": "DTCC, nota de prensa 12-nov-2026",
+    "fecha": "2026-11-12",
+    "nivel": "P"
+   },
+   {
+    "hecho": "El MVP del libro mayor de Swift usa una arquitectura compatible con EVM basada en Hyperledger Besu; la página no menciona otras redes públicas.",
+    "fuente": "Swift, noticia del 30-mar-2026",
+    "fecha": "2026-03-30",
+    "nivel": "P"
+   },
+   {
+    "hecho": "Ripple describe liquidar «en RLUSD y otras stablecoins, o en moneda fiat»; no publica qué parte del volumen se liquida con XRP, RLUSD o fiat.",
+    "fuente": "Ripple, página de pagos transfronterizos (leída 14-nov-2026); parte interesada",
+    "fecha": "2026-11-14",
+    "nivel": "P"
+   },
+   {
+    "hecho": "RLUSD figura en XRPL (~764 M$) y Ethereum (~1.900 M$) según un agregador; la propia página de RLUSD dice que se integra en XRPL, Ethereum y otras redes.",
+    "fuente": "RWA.xyz (agregador, 14-nov-2026) y Ripple (página de RLUSD)",
+    "fecha": "2026-11-14",
+    "nivel": "S"
+   },
+   {
+    "hecho": "Un mismo fondo tokenizado vive en varias redes: OUSG de Ondo en 4 (Ethereum, Polygon, Solana, XRPL); USDY en 12 (incluye Ethereum, Solana y Stellar).",
+    "fuente": "Ondo, documentación de direcciones (14-nov-2026); parte interesada",
+    "fecha": "2026-11-14",
+    "nivel": "P"
+   },
+   {
+    "hecho": "Benji (Franklin Templeton) lista contratos en 9 redes: Stellar (minorista e institucional) y, solo institucional, Ethereum, Solana y otras; el XRPL no figura en esa lista.",
+    "fuente": "Franklin Templeton, web de Benji (14-nov-2026); parte interesada",
+    "fecha": "2026-11-14",
+    "nivel": "P"
+   },
+   {
+    "hecho": "Solana: Alpenglow activo en la red principal desde el 21-oct-2026; el tiempo de slot bajó de 400 a 200 ms.",
+    "fuente": "Solana Foundation, página de Alpenglow",
+    "fecha": "2026-10-21",
+    "nivel": "P"
+   },
+   {
+    "hecho": "mBridge (consorcio de bancos centrales): ~55.500 M$ acumulados y >4.000 operaciones, ~95 % e-CNY. Cadena permisionada propia, no una red pública.",
+    "fuente": "Atlantic Council vía prensa, ene-2026 (cbdc-blockchains.json)",
+    "fecha": "2026-01",
+    "nivel": "S"
+   },
+   {
+    "hecho": "Hong Kong (Ensemble): piloto de valor real desde el 13-nov-2025; Singapur: liquidación en vivo de un préstamo interbancario con wCBDC en nov-2025; Suiza (Helvetia): piloto en producción ampliado hasta mediados de 2027.",
+    "fuente": "HKMA 13-nov-2025; MAS; SNB (cbdc-blockchains.json)",
+    "fecha": "2025-11",
+    "nivel": "P"
+   },
+   {
+    "hecho": "Ucrania: piloto de e-hryvnia sobre Stellar (dic-2021, informe ene-2023); Palau: token respaldado 1:1 en dólares sobre XRPL en 2023. Pilotos antiguos; estado actual sin verificar.",
+    "fuente": "Stellar.org y NBU; Business Wire/Forkast jul-2023 (cbdc-blockchains.json)",
+    "fecha": "2023",
+    "nivel": "S"
+   }
+  ]
+ },
+ "puntos_fuertes_y_flacos": {
+  "nota": "Cada punto es un hecho con su fuente; sin juicio de valor ni recomendación. «Fuerte» y «flaco» describen la medida frente a las otras redes de esta tabla.",
+  "xrpl": {
+   "fuertes": [
+    {
+     "hecho": "Cierre de ledger medio de 3.737 s con ledger validado final.",
+     "fuente": "s1.ripple.com, 2026-11-15T12:11:25Z",
+     "nivel": "P"
+    },
+    {
+     "hecho": "Comisión mínima ≈ 0.000010 USD por transacción (10 gotas).",
+     "fuente": "s1.ripple.com método fee; precio DefiLlama",
+     "nivel": "P"
+    },
+    {
+     "hecho": "Stablecoins en la red: 839 M$ (8 stablecoins, incluye RLUSD, EURCV y AUDD).",
+     "fuente": "DefiLlama y profundidad-multidivisa.json, 15-nov-2026",
+     "nivel": "S"
+    }
+   ],
+   "flacos": [
+    {
+     "hecho": "Stablecoins 839 M$ frente a 131.392 M$ en Ethereum y 13.913 M$ en Solana.",
+     "fuente": "DefiLlama, 15-nov-2026",
+     "nivel": "S"
+    },
+    {
+     "hecho": "En la muestra la comisión mediana fue 10 gotas el mínimo y 0.0048 USD la mediana del último ledger: sube con la carga o con transacciones con comisión alta.",
+     "fuente": "s1.ripple.com método fee, 2026-11-15T12:11:25Z",
+     "nivel": "P"
+    },
+    {
+     "hecho": "Dos fallos corregidos en xrpld 3.4.1 (informe del 9-oct-2026); la enmienda afectada no estaba activada en la red principal.",
+     "fuente": "xrpl.org, informe de vulnerabilidades 9-oct-2026",
+     "nivel": "P"
+    }
+   ]
+  },
+  "stellar": {
+   "fuertes": [
+    {
+     "hecho": "Ledger cada 5.0 s, final al cerrarse.",
+     "fuente": "horizon.stellar.org, 2026-11-15T12:11:25Z",
+     "nivel": "P"
+    },
+    {
+     "hecho": "Comisión mediana cobrada: 0.0000100 XLM (mediana cobrada, 100 stroops) ≈ 0.0000014 USD.",
+     "fuente": "Horizon fee_stats; precio DefiLlama",
+     "nivel": "P"
+    },
+    {
+     "hecho": "USDC en Stellar ≈ 345 M$ y 16 stablecoins; Benji (Franklin Templeton) lo lista con acceso minorista e institucional.",
+     "fuente": "profundidad-multidivisa.json 15-nov-2026; web de Benji 14-nov-2026",
+     "nivel": "S"
+    }
+   ],
+   "flacos": [
+    {
+     "hecho": "Stablecoins 398 M$, por debajo de Ethereum y Solana.",
+     "fuente": "DefiLlama, 15-nov-2026",
+     "nivel": "S"
+    },
+    {
+     "hecho": "La integración de DTCC con Stellar es un plan para 1S-2027, no producción.",
+     "fuente": "DTCC, nota de prensa 27-may-2026",
+     "nivel": "P"
+    },
+    {
+     "hecho": "Capacidad observada 107.16 tx/s en la muestra (no es el máximo del protocolo).",
+     "fuente": "horizon.stellar.org, 2026-11-15T12:11:25Z",
+     "nivel": "P"
+    }
+   ]
+  },
+  "ethereum": {
+   "fuertes": [
+    {
+     "hecho": "Mayor volumen de stablecoins de la tabla: 131.392 M$ y 230 stablecoins.",
+     "fuente": "DefiLlama y profundidad-multidivisa.json, 15-nov-2026",
+     "nivel": "S"
+    },
+    {
+     "hecho": "Presente en la lista de redes de OUSG, USDY y Benji, y en la de RLUSD.",
+     "fuente": "Ondo, Franklin Templeton, Ripple (14-nov-2026); partes interesadas",
+     "nivel": "P"
+    },
+    {
+     "hecho": "Bloque cada 12 s con estado «finalized» verificable por RPC.",
+     "fuente": "ethereum-rpc.publicnode.com, 2026-11-15T12:11:25Z",
+     "nivel": "P"
+    }
+   ],
+   "flacos": [
+    {
+     "hecho": "Finalidad «finalized» a ~1056 s (~18 min) del último bloque.",
+     "fuente": "ethereum-rpc.publicnode.com, 2026-11-15T12:11:25Z",
+     "nivel": "P"
+    },
+    {
+     "hecho": "Comisión de una transferencia simple ≈ 0.0109 USD en la capa 1, la más alta de la tabla en ese momento.",
+     "fuente": "eth_feeHistory; precio DefiLlama",
+     "nivel": "P"
+    },
+    {
+     "hecho": "Capacidad observada 21.08 tx/s en la capa 1 (las capas 2 no se cuentan).",
+     "fuente": "ethereum-rpc.publicnode.com, 2026-11-15T12:11:25Z",
+     "nivel": "P"
+    }
+   ]
+  },
+  "solana": {
+   "fuertes": [
+    {
+     "hecho": "Slot medio de 0.215 s.",
+     "fuente": "getRecentPerformanceSamples, 2026-11-15T12:11:25Z",
+     "nivel": "P"
+    },
+    {
+     "hecho": "1225.3 tx/s observadas en la última media hora, la cifra más alta de la tabla.",
+     "fuente": "api.mainnet-beta.solana.com, 2026-11-15T12:11:25Z",
+     "nivel": "P"
+    },
+    {
+     "hecho": "Stablecoins 13.913 M$ (78 stablecoins) y comisión ≈ 0.00036 USD.",
+     "fuente": "DefiLlama; getRecentPrioritizationFees",
+     "nivel": "S"
+    }
+   ],
+   "flacos": [
+    {
+     "hecho": "La integración de DTCC con Solana es un plan para 2S-2027, no producción.",
+     "fuente": "DTCC, nota de prensa 12-nov-2026",
+     "nivel": "P"
+    },
+    {
+     "hecho": "El RPC público no permite medir la finalidad real; no hay cifra medida aquí.",
+     "fuente": "api.mainnet-beta.solana.com, 2026-11-15T12:11:25Z",
+     "nivel": "P"
+    },
+    {
+     "hecho": "El recuento de tx/s no separa los votos de los validadores en esta fuente.",
+     "fuente": "getRecentPerformanceSamples",
+     "nivel": "P"
+    }
+   ]
+  },
+  "hedera": {
+   "fuertes": [
+    {
+     "hecho": "Registros cada 2.169 s (mirror node).",
+     "fuente": "mirror node público, 2026-11-15T12:11:25Z",
+     "nivel": "S"
+    }
+   ],
+   "flacos": [
+    {
+     "hecho": "La comisión (0,0001 USD) es la tarifa documentada, no una medida; stablecoins solo en cadenas-onchain.json (26 M$).",
+     "fuente": "documentación de Hedera [VERIFICAR]; DefiLlama",
+     "nivel": "S"
+    }
+   ]
+  },
+  "algorand": {
+   "fuertes": [
+    {
+     "hecho": "Bloque cada 2.737 s, tarifa mínima ≈ 0.00008 USD.",
+     "fuente": "algonode, 2026-11-15T12:11:25Z",
+     "nivel": "P"
+    }
+   ],
+   "flacos": [
+    {
+     "hecho": "Stablecoins 121 M$; no aparece en la lista de redes de DTCC, Ondo ni Benji leídas.",
+     "fuente": "DefiLlama; notas de DTCC, Ondo y Benji (14-nov-2026)",
+     "nivel": "S"
+    }
+   ]
+  }
+ },
+ "lo_que_no_sabemos": [
+  "Finalidad real de Solana con el RPC público: la cifra no es medible aquí y la que da el proyecto no se ha contrastado [VERIFICAR].",
+  "Si las medidas de una sola instantánea (20 bloques, 30 min en Solana) son representativas: la comisión y los tx/s cambian con la carga.",
+  "Qué parte de los tx/s son pagos de liquidación y cuál es actividad especulativa, de bots o de votos.",
+  "Volumen real de liquidación de stablecoins por red (se conoce la emitida, no la movida) ni cuánto se usa para pagos entre bancos.",
+  "Capas 2 de Ethereum y otras redes secundarias: no se han medido; la comparación es solo capa 1.",
+  "Qué parte del volumen de Ripple Payments se liquida con XRP, RLUSD o fiat: Ripple no lo publica.",
+  "Volúmenes de Pontes (BCE) y de los pilotos de bancos centrales: no publicados o sin verificar.",
+  "Si los pilotos antiguos (Palau, Ucrania) siguen activos en 2026.",
+  "Coste y riesgo de redención fiat de cada stablecoin, y horarios bancarios de la pata en dinero.",
+  "Los tx/s de Hedera y Algorand vienen de nodos de terceros (mirror node y algonode); el nodo público puede estar limitado."
+ ]
+}

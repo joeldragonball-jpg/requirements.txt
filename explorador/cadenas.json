@@ -1,5 +1,5 @@
 {
- "_actualizado": "2026-11-14",
+ "_actualizado": "2026-11-15",
  "version": "C264 · 2026-11-14",
  "aviso": "Hechos públicos sobre cadenas de bloques y redes de interoperabilidad: qué hace cada una, quién la usa, en qué capa y si ese uso necesita el token nativo. Cada celda lleva fuente, fecha y nivel. «Captura de valor» es [RAZONADO] con sus supuestos, no una previsión. Informativo: no es recomendación de compra ni venta y no hay «ganador»: cada red aporta cosas distintas.",
  "leyenda": "P = fuente primaria leída (si habla de sí misma, «parte interesada») · S = secundaria o agregador leído · V = [VERIFICAR] no leído o sin enlace · R = [RAZONADO], deducción a partir de las fuentes citadas · vacío = sin dato, nunca relleno.",
@@ -663,11 +663,11 @@
      "u": "https://xrpl.org/blog"
     },
     "interop": {
-     "t": "XRPL EVM Sidechain en mainnet con Axelar como primer puente de XRP (30-jun-2025); el puente nativo XChainBridge del XRPL sigue sin activar (nodo, 14-nov-2026)",
-     "f": "Ripple Insights (parte interesada) y consulta al nodo",
-     "d": "2025-06-30",
-     "n": "P",
-     "u": "https://ripple.com/insights/xrpl-evm-sidechain-mainnet-is-live/"
+     "t": "XRPL EVM Sidechain en red principal con Axelar como primer puente de XRP (30-jun-2025). El puente nativo XChainBridge del XRPL sigue sin activar: en votación con 14,29 % de apoyo, según la tabla de enmiendas de xrpl.org (instantánea que la página fecha el 16-sep-2026)",
+     "f": "Ripple Insights (parte interesada) y xrpl.org, «Known Amendments» (leída el 15-nov-2026)",
+     "u": "https://xrpl.org/resources/known-amendments",
+     "d": "2026-11-15",
+     "n": "P"
     },
     "regulacion": {
      "t": "XRP nombrado como «digital commodity» en la interpretación SEC-CFTC; hay 5 ETF spot de XRP en EE. UU.",
@@ -1537,6 +1537,15 @@
      "u": "https://hedera.com/blog/apex-group-joins-hedera-council-to-advance-institutional-digital-assets/",
      "n": "S",
      "futuro": false
+    },
+    {
+     "fecha": "2026-11-18",
+     "t": "Actualización de la red principal de Hedera a la versión v0.79, el miércoles 18-nov a las 18:00 UTC (ventana de 18:00 a 18:40 UTC)",
+     "u": "https://status.hedera.com/",
+     "n": "P",
+     "futuro": true,
+     "cal": true,
+     "f": "Página de estado de Hedera, mantenimiento programado (leída el 15-nov-2026)"
     }
    ],
    "sesgos": [
@@ -2719,11 +2728,11 @@
      "n": "S"
     },
     "seguridad": {
-     "t": "Proof-of-Staked-Authority (PoSA): validadores elegidos por BNB en staking; la doc no da número de validadores ni finalidad; bloques de 0,45 s y finalidad rápida de ≈1,125 s si votan ⅔ de los validadores",
-     "f": "docs.bnbchain.org",
-     "d": "2024-09-25",
-     "n": "P",
-     "u": "https://docs.bnbchain.org/bnb-smart-chain/"
+     "t": "Proof-of-Staked-Authority (PoSA): elección diaria (tras las 00:00 UTC) de los 45 validadores activos con más BNB en stake; los 21 mayores son «Cabinets» y en cada época producen bloques 18 Cabinets y 3 «Candidates» (21 en total). Hay recompensas por votar la finalidad rápida (BEP-126) y penalización por votos maliciosos. La página no da tiempo de bloque ni de finalidad",
+     "f": "docs.bnbchain.org, «Validator overview» (BNB Chain, parte interesada; página fechada el 17-jul-2025, leída el 15-nov-2026)",
+     "u": "https://docs.bnbchain.org/bnb-smart-chain/validator/overview/",
+     "d": "2026-11-15",
+     "n": "P"
     },
     "activos": {
      "t": "6.270 M$ distribuidos (2.ª red). La tabla de plataformas incluye stablecoins (USDT y USDC vía Binance Bridge, USD1); entre los RWA destacan iBENJI de Franklin (1.531 M$ en la ficha de RWA.xyz, clase de Tesoro EE. UU., jurisdicción Islas Vírgenes Británicas, 4 tenedores; la cifra de ~760 M$ no se reproduce en esta lectura), USYC de Circle, BUIDL, USDY de Ondo y acciones tokenizadas bStocks",
@@ -2821,6 +2830,15 @@
      "u": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
      "n": "P",
      "futuro": false
+    },
+    {
+     "fecha": "2026-12-08",
+     "t": "Bifurcación Jenner en la red principal de BNB Smart Chain a las 02:30 UTC: BEP-702 (estándar de activos con cumplimiento CAS20; crear tokens exige activación por un administrador nombrado por gobernanza), BEP-703 (carril de pagos: reserva por defecto el 5 % del gas del bloque para transferencias de BNB y contratos de pago listados) y BEP-706 (marca de tiempo en milisegundos)",
+     "u": "https://github.com/bnb-chain/bsc/releases/tag/v1.8.2",
+     "n": "P",
+     "futuro": true,
+     "cal": true,
+     "f": "Notas de la versión v1.8.2 de bsc (GitHub de BNB Chain, 3-nov-2026; leídas el 15-nov-2026)"
     }
    ],
    "sesgos": [
@@ -3207,6 +3225,15 @@
      "u": "https://github.com/ava-labs/avalanchego/releases",
      "n": "S",
      "futuro": false
+    },
+    {
+     "fecha": "2026-12-21",
+     "aprox": true,
+     "t": "Termina la rampa de 90 días de ACP-285 (cambio de la economía del staking de Helicon, lineal desde la activación del 22-sep-2026 a las 15:00 UTC); el día es cálculo propio [RAZONADO]. AvalancheGo v1.15.2 añadió en código una actualización «Igloo» sin fecha de activación",
+     "u": "https://docs.avax.network/docs/primary-network/helicon-upgrade",
+     "n": "P",
+     "futuro": true,
+     "f": "Documentación de Avalanche, «Helicon Upgrade», y releases de avalanchego (leídas el 15-nov-2026)"
     }
    ],
    "sesgos": [
@@ -3567,6 +3594,15 @@
      "u": "https://investor.visa.com/news/news-details/2026/Visa-Accelerates-Stablecoin-Momentum-Adding-Five-Blockchains-for-Settlement/default.aspx",
      "n": "P",
      "futuro": false
+    },
+    {
+     "fecha": "2027-06-30",
+     "aprox": true,
+     "t": "Objetivo de Apex Group: 100.000 M$ en activos tokenizados en T-REX Ledger (cadena con Polygon CDK) para junio de 2027 [ESPECULACIÓN: objetivo del emisor, no un hecho]",
+     "u": "https://polygon.technology/blog/apex-group-commits-100b-in-tokenized-assets-to-t-rex-ledger-new-rwa-compliance-chain-built-with-polygon-cdk",
+     "n": "P",
+     "futuro": true,
+     "f": "Blog de Polygon, 18-mar-2026 (releído el 15-nov-2026; parte interesada)"
     }
    ],
    "sesgos": [
@@ -3941,11 +3977,11 @@
      "u": "https://genfinity.io/2026/09/11/broadridge-dlx-tokenization-platform-dtcc-canton/"
     },
     "regulacion": {
-     "t": "La SEC dio una carta de no acción a DTC (11-dic-2025) para un servicio de tokenización de 3 años",
-     "f": "Mayer Brown (despacho) y prensa",
-     "d": "2025-12-11",
-     "n": "S",
-     "u": "https://www.mayerbrown.com/-/media/files/perspectives-events/publications/2025/12/sec-staff-no-action-relief-for-dtc-pilot-provides-a-pathway-for-tokenized-securities.pdf"
+     "t": "EE. UU.: la carta de no acción de la SEC a DTC (11-dic-2025) permite durante 3 años un servicio de tokenización en cadenas preaprobadas para un conjunto de activos líquidos (Russell 1000, ETF de índices principales y deuda del Tesoro); DTCC lo lanzó el 28-oct-2026 integrado con Canton y con su red Besu privada. UE: la Canton Foundation notificó el libro blanco MiCA de Canton Coin al Banco Central de Irlanda (registro provisional de ESMA, alta 1-nov-2025); estar en el registro no es una aprobación",
+     "f": "DTCC, notas del 11-dic-2025 y del 28-oct-2026, y ESMA, registro provisional MiCA (OTHER.csv), leídos el 15-nov-2026",
+     "u": "https://www.dtcc.com/press-releases/2025/paving-the-way-to-tokenized-dtc-custodied-assets",
+     "d": "2026-11-15",
+     "n": "P"
     }
    },
    "capas": {
@@ -4012,6 +4048,15 @@
      "n": "P",
      "futuro": false,
      "aprox": true
+    },
+    {
+     "fecha": "2028-12-11",
+     "aprox": true,
+     "t": "Vence la carta de no acción de la SEC a DTC (3 años desde el 11-dic-2025) que ampara el servicio de tokenización integrado con Canton; el día es cálculo propio [RAZONADO] y puede prorrogarse o sustituirse por norma. DTCC prevé añadir más redes en 2027",
+     "u": "https://www.dtcc.com/press-releases/2025/paving-the-way-to-tokenized-dtc-custodied-assets",
+     "n": "P",
+     "futuro": true,
+     "f": "DTCC, notas del 11-dic-2025 y del 28-oct-2026 (leídas el 15-nov-2026)"
     }
    ],
    "sesgos": [
@@ -4404,6 +4449,15 @@
      "u": "https://chain.link/blog/cre-dvp-kinexys-jp-morgan-ondo-finance",
      "n": "P",
      "futuro": false
+    },
+    {
+     "fecha": "2026-12-31",
+     "aprox": true,
+     "t": "Ondo y Kakaopay Securities prevén crear «más adelante este año» un grupo de trabajo conjunto (MOU del 28-sep-2026 sobre distribución internacional y tokenización de acciones coreanas); si se comercializa y cuándo depende de la regulación de Corea y de otros mercados",
+     "u": "https://ondo.finance/blog/ondo-and-kakaopay-securities-partner",
+     "n": "P",
+     "futuro": true,
+     "f": "Blog de Ondo, 29-sep-2026 (leído el 15-nov-2026; parte interesada)"
     }
    ],
    "sesgos": [
@@ -4526,10 +4580,10 @@
      "n": "P"
     },
     "regulacion": {
-     "t": "Los ASA admiten transferencias restringidas, congelación y recuperación (clawback); en la UE, Quantoz emite EURQ/USDQ (y EURD) como tokens de dinero electrónico bajo licencia EMI de De Nederlandsche Bank, con reservas al 102 % en una fundación aparte (Stichting Quantoz) y supervisión prudencial de DNB; los presenta como conformes con MiCA. Dato del emisor (parte interesada), no de DNB",
-     "f": "Quantoz, nota del 3-abr-2025, y algorand.co, Tokenization (leídas)",
+     "t": "UE (MiCA): en el registro provisional de ESMA figura un libro blanco de ALGO redactado por un tercero (Crypto Risk Metrics GmbH, notificado vía BaFin, alta 7-abr-2026), no por la Fundación Algorand. Los ASA admiten transferencias restringidas, congelación y recuperación (clawback); en la UE, Quantoz emite EURQ/USDQ (y EURD) como tokens de dinero electrónico bajo licencia EMI de De Nederlandsche Bank, con reservas al 102 % en una fundación aparte (Stichting Quantoz) y supervisión prudencial de DNB; los presenta como conformes con MiCA. Dato del emisor (parte interesada), no de DNB",
+     "f": "ESMA, registro provisional MiCA (OTHER.csv, leído el 15-nov-2026); Quantoz, nota del 3-abr-2025, y algorand.co, Tokenization (leídas)",
      "u": "https://www.quantoz.com/articles/quantoz-brings-european-regulated-stablecoins-eurq-and-usdq-to-algorand/",
-     "d": "2025-04-03",
+     "d": "2026-11-15",
      "n": "P"
     }
    },
@@ -4594,6 +4648,15 @@
      "u": "https://www.quantoz.com/articles/quantoz-brings-european-regulated-stablecoins-eurq-and-usdq-to-algorand/",
      "n": "P",
      "futuro": false
+    },
+    {
+     "fecha": "2027-12-31",
+     "aprox": true,
+     "t": "Objetivo de la Fundación Algorand: «resiliencia cuántica amplia» a finales de 2027 (cuentas poscuánticas nativas desde el 3T-2026; multifirma, tesorería y staking poscuánticos después en 2026; consenso y VRF más adelante, sin fechas) [ESPECULACIÓN: hoja de ruta, no un hecho]",
+     "u": "https://algorand.co/blog/algorand-foundation-announces-post-quantum-security-roadmap-targets-broad-quantum-resilience-by-2027",
+     "n": "P",
+     "futuro": true,
+     "f": "Algorand Foundation, 18-jun-2026 (leído el 15-nov-2026; parte interesada)"
     }
    ],
    "sesgos": [
@@ -4733,7 +4796,13 @@
      "d": "2026-11-15",
      "n": "P"
     },
-    "regulacion": null
+    "regulacion": {
+     "t": "UE (MiCA): XDC no figura en el registro provisional de ESMA de libros blancos de otros criptoactivos (OTHER.csv, 1.077 filas, leído el 15-nov-2026). xinfin.org aloja un «XDC MiCA White Paper» preparado por la MiCA Crypto Alliance (PDF de ago-2025, contenido no leído: [VERIFICAR] si llegó a notificarse). Por el art. 143.2 de MiCA, las plataformas deben asegurar a más tardar el 31-dic-2027 un libro blanco notificado y publicado para los criptoactivos admitidos a negociación antes del 30-dic-2024. Fuera de la UE no se encontró licencia o registro de XDC en VARA, ADGM, MAS ni SFC (búsqueda web, no consulta de los registros): [VERIFICAR]",
+     "f": "ESMA, registro provisional MiCA y art. 143 de MiCA en el rulebook de ESMA (leídos el 15-nov-2026); xinfin.org (PDF no leído)",
+     "u": "https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-143-transitional-measures",
+     "d": "2026-11-15",
+     "n": "P"
+    }
    },
    "capas": {
     "liquidacion": {
@@ -4808,6 +4877,15 @@
      "n": "P",
      "futuro": false,
      "f": "XDC Foundation, artículo del 30-sep-2024 (leído el 14-nov-2026; parte interesada)"
+    },
+    {
+     "fecha": "2027-12-31",
+     "t": "MiCA (art. 143.2): fecha límite para que las plataformas de negociación aseguren un libro blanco notificado y publicado de los criptoactivos admitidos antes del 30-dic-2024; XDC no figura en el registro provisional de ESMA a 15-nov-2026",
+     "u": "https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-143-transitional-measures",
+     "n": "P",
+     "futuro": true,
+     "cal": true,
+     "f": "ESMA, rulebook de MiCA, art. 143, y registro provisional (leídos el 15-nov-2026)"
     }
    ],
    "sesgos": [
@@ -4918,11 +4996,11 @@
      "n": "S"
     },
     "interop": {
-     "t": "Licencias de Overledger cobradas en dinero fiduciario y convertidas en QNT bloqueado (12 meses según algunas fuentes)",
-     "f": "Solo secundarias (ByteTree y webs de exchanges)",
-     "u": "https://bytetree.com/research/2021/06/quant-analysis",
-     "d": "2021-06",
-     "n": "S"
+     "t": "Overledger es la capa de conexión y el Fusion Rollup (red principal desde el 2-jun-2026) un entorno de ejecución multi-cadena que, según Quant, arrancó conectado a 74 redes (más, a demanda, con su Trusted Node Program): un mismo token presente en varias cadenas se representa como un único activo canónico que puede retirarse a su cadena de origen, con cortafuegos de Overledger y Fusion que limitan quién accede a qué red. Cifras y patentes según Quant (parte interesada); sin auditoría independiente leída",
+     "f": "Quant, nota del 2-jun-2026 (leída en Chrome el 15-nov-2026; parte interesada)",
+     "u": "https://quant.network/news/a-new-category-of-infrastructure-the-fusion-rollup-is-live-on-mainnet/",
+     "d": "2026-11-15",
+     "n": "P"
     },
     "regulacion": {
      "t": "No consta en su web licencia ni registro regulatorio. Sí consta que es miembro fundador de INATBA (su CEO está en el Comité de Estándares) y miembro asociado de UK Finance; pertenecer a asociaciones no es estatus regulatorio",
@@ -5006,7 +5084,9 @@
     "Clientes en producción.",
     "Documento primario del modelo de token.",
     "Leída la portada de quant.network con Chrome (14-nov-2026): habla de dinero programable (Quant Flow, PayScript) y no menciona QNT ni licencias; /qnt da 404; docs.quant.network no resuelve.",
-    "4.ª pasada (14-nov-2026): quant.network/overledger da «página no encontrada» también en Chrome; docs.quant.network y developer.quant.network no resuelven. Siguen sin documento primario."
+    "4.ª pasada (14-nov-2026): quant.network/overledger da «página no encontrada» también en Chrome; docs.quant.network y developer.quant.network no resuelven. Siguen sin documento primario.",
+    "Liquidez (matriz, 15-nov-2026): sin dato. Quant no es una red con stablecoins ni activos propios que medir; la nota del Fusion Rollup (2-jun-2026) habla de «liquidez unificada» sin cifras, y RWA.xyz no tiene ficha de red para Quant.",
+    "Modelo de licencias en QNT (licencias de Overledger cobradas en dinero fiduciario y convertidas en QNT bloqueado): solo fuentes secundarias (ByteTree, jun-2021); se retiró de la celda de interoperabilidad el 15-nov-2026 al no haber documento primario."
    ],
    "tipos_activo": {
     "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top visible (sin dato). [S]: tercero comercial sin auditoría.",
@@ -5169,6 +5249,15 @@
      "u": "https://blog.iota.org/first-adapt-implementations",
      "n": "P",
      "futuro": false
+    },
+    {
+     "fecha": "2026-12-31",
+     "aprox": true,
+     "t": "IOTA prevé empezar en el 4T-2026 las pruebas de estrés en redes públicas de P-COOL (flujo de transacciones sin certificados), foco del equipo para ese trimestre; sin fecha",
+     "u": "https://blog.iota.org/update-q3-2026/",
+     "n": "P",
+     "futuro": true,
+     "f": "Blog de IOTA, informe del 3T-2026 del 13-oct-2026 (leído el 15-nov-2026; parte interesada)"
     }
    ],
    "tipos_activo": {
@@ -5341,6 +5430,15 @@
      "u": "https://thedefiant.io/news/press-releases/plume-network-strengthens-multi-chain-rwa-ecosystem-with-skylink-interoperability",
      "n": "S",
      "futuro": false
+    },
+    {
+     "fecha": "2027-02-04",
+     "t": "Corea: entra en vigor el marco de valores tokenizados (día según la FSC; Plume solo dice «febrero de 2027»); Plume presenta su MOU con Shinhan Asset Management (prueba de concepto de un fondo tokenizado en wones) como un primer paso hacia ese marco",
+     "u": "https://plume.org/blog/q3report",
+     "n": "P",
+     "futuro": true,
+     "cal": true,
+     "f": "Plume, informe del 3T-2026 (11-nov-2026, leído el 15-nov-2026; parte interesada); fecha del día en el Calendario (FSC)"
     }
    ],
    "tipos_activo": {

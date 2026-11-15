@@ -1,0 +1,4802 @@
+{
+ "_actualizado": "2026-11-15",
+ "tarea": "C313",
+ "titulo": "Qué aporta cada red que las otras no aportan",
+ "nivel": "mixto por celda: P (fuente primaria), S (secundaria o agregador), V (sin verificar), R (razonado a partir de datos del repo)",
+ "nota_nivel": "Cada hecho lleva fuente, nivel y fecha. «aporta» y «para_que_sirve_mejor» son lecturas razonadas a partir de esos hechos, no hechos nuevos ni un ranking.",
+ "metodo": "Lectura de cadenas.json, comparativa-liquidacion.json, pruebas-bancos.json, empresas-redes.json, cadenas-onchain.json, cadenas-validadores.json, cadenas-incidentes.json, cadenas-gobernanza.json, profundidad-multidivisa.json y rwa-por-cadena-manual.json (15-nov-2026). Verificación nueva en fuente: blog de Algorand v5.0.0 (16-ago-2026, leído) y búsqueda sobre el registro de Plume ante la SEC (sec.gov devolvió 503: queda [VERIFICAR]). La matriz se genera celda a celda; «única» = exactamente una red con SÍ.",
+ "fuentes": [
+  "explorador/cadenas.json",
+  "explorador/comparativa-liquidacion.json",
+  "explorador/pruebas-bancos.json",
+  "explorador/empresas-redes.json",
+  "explorador/cadenas-onchain.json",
+  "explorador/cadenas-validadores.json",
+  "explorador/cadenas-incidentes.json",
+  "explorador/cadenas-gobernanza.json",
+  "explorador/profundidad-multidivisa.json",
+  "explorador/rwa-por-cadena-manual.json"
+ ],
+ "aviso": "Información para entender cada red, no recomendación de compra o venta. No concluye qué red «gana»: cada una cubre cosas distintas y muchas cifras son instantáneas de un día. Chainlink, Ondo y Quant no son cadenas.",
+ "leyenda": {
+  "SÍ": "capacidad presente con fuente",
+  "PARCIAL": "presente con límites, en plan o solo por contrato/afirmación propia",
+  "NO": "ausente según la fuente citada",
+  "sin dato": "no consta en el repo; no significa NO",
+  "grado": "hecho (P/S) · intención (plan anunciado) · razonado (R) · [ESPECULACIÓN]"
+ },
+ "ventana_mejora_reciente": "2025-11-15 a 2026-11-15",
+ "redes": {
+  "xrpl": {
+   "nombre": "XRP Ledger",
+   "aporta": "Reúne en el propio protocolo un DEX con libro de órdenes, un activo puente para pagos (XRP en ODL) y herramientas de cumplimiento ya activadas en la red principal (credenciales, dominios y DEX con permisos, congelación profunda). De las 16, es la única con DEX nativo Y DEX con permisos activados a la vez; Stellar tiene DEX nativo pero no DEX con permisos en los datos del repo.",
+   "puntos_fuertes": [
+    {
+     "hecho": "Cierre de ledger medio medido de 3,737 s; un ledger validado es final (sin bifurcaciones)",
+     "fuente": "s1.ripple.com (métodos ledger y fee), en comparativa-liquidacion.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Comisión mínima de 10 gotas ≈ 0,00001 USD por transacción",
+     "fuente": "s1.ripple.com método fee; precio DefiLlama, en comparativa-liquidacion.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Activadas en la red principal: Credentials, PermissionedDomains, PermissionedDEX, MPTokensV1, DeepFreeze y TokenEscrow",
+     "fuente": "Consulta «feature» a un nodo público (cadenas.json)",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://xrpl.org/resources/known-amendments"
+    },
+    {
+     "hecho": "Stablecoins 839 M$ en 8 emisiones, con monedas no USD (EURCV, EUROP en euros; AUDD en dólar australiano); RLUSD 762,7 M$",
+     "fuente": "DefiLlama, en comparativa-liquidacion.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "hecho": "5.210 M$ en activos «representados» (3.ª cifra tras Canton y Avalanche) y 642,8 M$ distribuidos",
+     "fuente": "RWA.xyz, ficha XRP Ledger",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks/xrp-ledger"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "Stablecoins 839 M$ frente a 131.392 M$ en Ethereum y 13.913 M$ en Solana",
+     "fuente": "DefiLlama, en comparativa-liquidacion.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "hecho": "TVL DeFi 30,0 M$",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://api.llama.fi/v2/chains"
+    },
+    {
+     "hecho": "LendingProtocol y SingleAssetVault siguen sin activar aunque rippled 3.1.0 (28-ene-2026) los incluye; sin staking nativo",
+     "fuente": "Consulta «feature» al nodo y xrpl.org/blog (cadenas.json)",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://xrpl.org/blog"
+    },
+    {
+     "hecho": "La lista de validadores por defecto (UNL) la publica Ripple: 35 validadores",
+     "fuente": "vl.ripple.com, en cadenas-validadores.json",
+     "nivel": "P",
+     "fecha": "2026-11-15",
+     "url": "https://vl.ripple.com"
+    },
+    {
+     "hecho": "Dos fallos corregidos en xrpld 3.4.1 (informe del 9-oct-2026); la enmienda afectada no estaba activada en la red principal",
+     "fuente": "xrpl.org, informe de vulnerabilidades, en comparativa-liquidacion.json",
+     "nivel": "P",
+     "fecha": "2026-10-09"
+    },
+    {
+     "hecho": "El 24-sep-2026 el robo a Bitget (387 M$, clave de cartera caliente) figura con XRPL entre las redes afectadas: fallo del exchange, no del protocolo",
+     "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
+     "nivel": "S",
+     "fecha": "2026-09-24",
+     "url": "https://api.llama.fi/hacks"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2026-01-28",
+     "hito": "rippled 3.1.0 incluye Single Asset Vault y Lending Protocol (pendientes de voto, sin activar a 14-nov)",
+     "fuente": "xrpl.org/blog",
+     "nivel": "P",
+     "url": "https://xrpl.org/blog"
+    },
+    {
+     "fecha": "2026-02-18",
+     "hito": "Lanzamiento de EURCV (SG-FORGE) en XRPL según prensa [VERIFICAR en comunicado de SG-FORGE]",
+     "fuente": "Yahoo Finance y Ledger Insights (en pruebas-bancos.json)",
+     "nivel": "S",
+     "url": "https://sgforge.com/?p=3131"
+    },
+    {
+     "fecha": "2026-03-25",
+     "hito": "Ripple entra en BLOOM de la MAS para probar liquidación programable de comercio con RLUSD en XRPL",
+     "fuente": "The Block y CoinDesk (página de MAS no abierta)",
+     "nivel": "S",
+     "url": "https://www.theblock.co/news/business/2026-03-25-ripple-joins-singapore-pilot-rlusd-395029"
+    },
+    {
+     "fecha": "2026-05-06",
+     "hito": "Reembolso transfronterizo de OUSG: pata del activo en XRPL en menos de 5 s y pago en USD por Kinexys y Mastercard MTN",
+     "fuente": "Ondo Finance, blog (una de las partes)",
+     "nivel": "P",
+     "url": "https://ondo.finance/blog/ondo-jpmorgan-mastercard-ripple-tokenization"
+    },
+    {
+     "fecha": "2026-09-25",
+     "hito": "rippled 3.4.1: versión de emergencia con correcciones de seguridad",
+     "fuente": "xrpl.org/blog",
+     "nivel": "P",
+     "url": "https://xrpl.org/blog"
+    },
+    {
+     "fecha": "2026-09-29",
+     "hito": "CSD BR/BTG Pactual registra en XRPL espejos de fondos con permisos y KYC",
+     "fuente": "cadenas.json (capas.emision); comunicado no releído aquí",
+     "nivel": "S"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Emisores de stablecoins",
+     "ejemplos": "Ripple (RLUSD); SG-FORGE (EURCV, lanzamiento solo en prensa)",
+     "estado": "producción (RLUSD); EURCV [VERIFICAR]",
+     "fuente": "DefiLlama y pruebas-bancos.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "tipo": "Gestoras",
+     "ejemplos": "Franklin Templeton (sgBENJI, MoU con DBS); Ondo (OUSG en XRPL)",
+     "estado": "plan (MoU) / producción",
+     "fuente": "DBS, comunicado; docs.ondo.finance/addresses",
+     "nivel": "P",
+     "fecha": "2025-09-18",
+     "url": "https://docs.ondo.finance/addresses"
+    },
+    {
+     "tipo": "Bancos",
+     "ejemplos": "DBS (MoU, no operativo); J.P. Morgan Kinexys (piloto de reembolso OUSG, fuente de Ondo)",
+     "estado": "plan / piloto",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "P",
+     "fecha": "2026-05-06",
+     "url": "https://ondo.finance/blog/ondo-jpmorgan-mastercard-ripple-tokenization"
+    },
+    {
+     "tipo": "Bancos centrales",
+     "ejemplos": "MAS (BLOOM, piloto); acuerdos antiguos con Bután, Montenegro, Georgia y Colombia sobre la plataforma CBDC privada de Ripple (no el XRPL público)",
+     "estado": "piloto / exploratorio",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "S",
+     "fecha": "2026-03-25"
+    },
+    {
+     "tipo": "Infraestructuras de mercado",
+     "ejemplos": "CSD BR / BTG Pactual (espejos de fondos)",
+     "estado": "producción según cadenas.json",
+     "fuente": "cadenas.json",
+     "nivel": "S",
+     "fecha": "2026-09-29"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Liquidación y pagos multi-divisa",
+     "evidencia": "DEX nativo con pares XRP/RLUSD, XRP/USD, XRP/EUR, XRP/USDC y XRP/EUROP medidos en profundidad-multidivisa.json [P]; finalidad 3,7 s y comisión mínima [P]. El volumen real de ODL en XRP no lo publica Ripple [sin dato].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Emisión con controles de cumplimiento en protocolo",
+     "evidencia": "Credentials, PermissionedDomains, PermissionedDEX y DeepFreeze activadas [P].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Tokenización de fondos monetarios y deuda",
+     "evidencia": "sgBENJI 193 M$ y OUSG 186 M$ distribuidos en XRPL (RWA.xyz, 15-nov-2026) [S].",
+     "nivel": "S",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "Contratos inteligentes EVM solo en la XRPL EVM Sidechain (mainnet 30-jun-2025), no en el libro principal; puente nativo XChainBridge sin activar",
+     "fuente": "Ripple Insights y consulta al nodo (cadenas.json)",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://ripple.com/insights/xrpl-evm-sidechain-mainnet-is-live/"
+    },
+    {
+     "hecho": "Préstamos y bóvedas nativas sin activar (dependen del voto de validadores)",
+     "fuente": "nodo, método feature (cadenas-gobernanza.json)",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Ripple no separa el volumen de ODL en XRP del total de Ripple Payments",
+     "fuente": "ripple.com (cadenas.json, capas.liquidacion)",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "La comisión mediana del último ledger fue 0,0048 USD: sube con la carga",
+     "fuente": "s1.ripple.com, en comparativa-liquidacion.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    }
+   ]
+  },
+  "stellar": {
+   "nombre": "Stellar",
+   "aporta": "Emisión muy barata de stablecoins y fondos con «anclajes» que entran y salen de dinero fiduciario, y control del emisor en el protocolo (autorizar, congelar y recuperar). Tiene el DEX nativo con más pares en monedas distintas del USD de las redes medidas (XLM/EURC, USDC/EURC) y es la primera red pública en el calendario del servicio de tokenización de DTC (1S-2027, plan).",
+   "puntos_fuertes": [
+    {
+     "hecho": "Comisión mediana cobrada 100 stroops ≈ 0,0000014 USD, la más baja medida en la comparativa",
+     "fuente": "Horizon fee_stats; precio DefiLlama, en comparativa-liquidacion.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Ledger cada 5,0 s, final al cerrarse (SCP)",
+     "fuente": "horizon.stellar.org, en comparativa-liquidacion.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "4.662,8 M$ en RWA distribuidos, 4.ª red tras Ethereum, BNB Chain y Solana (+31,6 % en 30 días)",
+     "fuente": "RWA.xyz, ficha Stellar",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks/stellar"
+    },
+    {
+     "hecho": "BENJI (Franklin Templeton), primer fondo monetario registrado en EE. UU. tokenizado, en Stellar desde 2021; más de 650 M$ del token en Stellar a abr-2026",
+     "fuente": "SDF y Franklin, comunicado conjunto (en pruebas-bancos.json)",
+     "nivel": "P",
+     "fecha": "2026-04",
+     "url": "https://stellar.org/press/franklin-templeton-stellar-development-foundation-mark-five-years-of-benji-the-first-u-s-registered-tokenized-money-market-fund"
+    },
+    {
+     "hecho": "USDC nativo con CCTP de Circle desde el 19-may-2026 (sin puente custodio)",
+     "fuente": "Blog de la SDF (parte interesada)",
+     "nivel": "P",
+     "fecha": "2026-05-19",
+     "url": "https://stellar.org/blog/foundation-news/circle-cctp-is-live-on-stellar"
+    },
+    {
+     "hecho": "16 stablecoins, con EURC, EURCV (euro) y AUDD (dólar australiano)",
+     "fuente": "DefiLlama, en comparativa-liquidacion.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "Stablecoins 398 M$, muy por debajo de Ethereum y Solana",
+     "fuente": "DefiLlama, en comparativa-liquidacion.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "hecho": "La conexión con DTC es un plan para el 1S-2027, no producción",
+     "fuente": "DTCC, nota de 27-may-2026",
+     "nivel": "P",
+     "fecha": "2026-05-27",
+     "url": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy"
+    },
+    {
+     "hecho": "Sin ETF spot en EE. UU. (solo el fideicomiso GXLM en OTCQX)",
+     "fuente": "Dossier ETF del repo",
+     "nivel": "P",
+     "fecha": "2026-10-09"
+    },
+    {
+     "hecho": "Blend Pools V2 sufrió una manipulación de precio de 10,97 M$ el 22-feb-2026",
+     "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
+     "nivel": "S",
+     "fecha": "2026-02-22",
+     "url": "https://api.llama.fi/hacks"
+    },
+    {
+     "hecho": "Volumen del DEX -53,4 % en 30 días (44,3 M$ en 30 días)",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://api.llama.fi/v2/chains"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2026-05-19",
+     "hito": "CCTP de Circle en vivo (USDC sin puente custodio)",
+     "fuente": "Blog de la SDF",
+     "nivel": "P",
+     "url": "https://stellar.org/blog/foundation-news/circle-cctp-is-live-on-stellar"
+    },
+    {
+     "fecha": "2026-05-27",
+     "hito": "DTCC anuncia que conectará su servicio de tokenización con Stellar (activos previstos en el 1S-2027)",
+     "fuente": "DTCC, nota de prensa",
+     "nivel": "P",
+     "url": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy"
+    },
+    {
+     "fecha": "2026-09-02",
+     "hito": "USDT0 en vivo en Stellar",
+     "fuente": "Blog de la SDF",
+     "nivel": "P",
+     "url": "https://stellar.org/blog/foundation-news/usdt0-is-now-live-on-stellar"
+    },
+    {
+     "fecha": "2026-10-05",
+     "hito": "stellar-core v29.0.0 (y v30.0.0 el 16-oct-2026)",
+     "fuente": "GitHub stellar/stellar-core, en cadenas-gobernanza.json",
+     "nivel": "P",
+     "url": "https://github.com/stellar/stellar-core/releases/tag/v30.0.0"
+    },
+    {
+     "fecha": "2026-10-14",
+     "hito": "Chainlink en vivo en Stellar",
+     "fuente": "Blog de la SDF",
+     "nivel": "P",
+     "url": "https://stellar.org/blog/foundation-news/chainlink-is-now-live-on-stellar-unleashing-a-new-wave-of-defi-innovation"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Gestoras",
+     "ejemplos": "Franklin Templeton (BENJI); Spiko, Ondo (USDY), WisdomTree, Realiz",
+     "estado": "producción",
+     "fuente": "SDF/Franklin (P) y RWA.xyz (S)",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks/stellar"
+    },
+    {
+     "tipo": "Emisores de stablecoins y remesadoras",
+     "ejemplos": "Circle (USDC, EURC); MoneyGram (MGUSD)",
+     "estado": "producción",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "tipo": "Infraestructuras de mercado",
+     "ejemplos": "DTCC (depositaria DTC)",
+     "estado": "plan (1S-2027)",
+     "fuente": "DTCC, comunicado",
+     "nivel": "P",
+     "fecha": "2026-05-27",
+     "url": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy"
+    },
+    {
+     "tipo": "Bancos",
+     "ejemplos": "SG-FORGE (EURCV, integración anunciada 20-feb-2025, estado [VERIFICAR]); VersaBank (piloto de recibos de depósito)",
+     "estado": "anunciado / piloto",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "S",
+     "fecha": "2025-08-26"
+    },
+    {
+     "tipo": "Redes de pago",
+     "ejemplos": "Visa (red incluida en su piloto de liquidación con stablecoins)",
+     "estado": "piloto",
+     "fuente": "Visa, nota para inversores",
+     "nivel": "P",
+     "fecha": "2026-04-29",
+     "url": "https://investor.visa.com/news/news-details/2026/Visa-Accelerates-Stablecoin-Momentum-Adding-Five-Blockchains-for-Settlement/default.aspx"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Pagos con stablecoins de bajo importe y entrada/salida a fiat",
+     "evidencia": "Comisión ≈ 0,0000014 USD [P]; 23.710 M$ transferidos en stablecoins en 30 días con 445 M$ de oferta (RWA.xyz) [S]; MoneyGram MGUSD [S].",
+     "nivel": "S",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Tokenización de fondos monetarios y deuda",
+     "evidencia": "Deuda 2.246,7 M$ en 23 activos y fondos 1.800 M$ (RWA.xyz) [S]; BENJI desde 2021 [P].",
+     "nivel": "S",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Liquidación multi-divisa",
+     "evidencia": "DEX nativo con XLM/USDC, XLM/EURC y USDC/EURC medidos en profundidad-multidivisa.json [P]; EURCV y AUDD emitidos [S].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "Sin staking ni inflación desde el voto del 28-oct-2019: el token no da rendimiento nativo",
+     "fuente": "developers.stellar.org, Lumens",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://developers.stellar.org/docs/learn/fundamentals/lumens.md"
+    },
+    {
+     "hecho": "Capacidad observada 107 tx/s en la muestra (no es el máximo del protocolo); uso del ledger 0,62",
+     "fuente": "horizon.stellar.org, en comparativa-liquidacion.json y cadenas-onchain.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Volumen de pagos liquidado en XLM (no en stablecoins) y conectores ISO 20022 de los anclajes: sin dato",
+     "fuente": "cadenas.json (sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    }
+   ]
+  },
+  "hedera": {
+   "nombre": "Hedera",
+   "aporta": "Es la única de las 16 con comisión por operación fijada en dólares (pagada en HBAR) y un servicio de consenso (HCS) para sellar mensajes y eventos con coste previsible. La gobierna un consejo de empresas que operan los nodos (permisionados); el staking de HBAR no tiene bloqueo ni penalización.",
+   "puntos_fuertes": [
+    {
+     "hecho": "Comisión fijada en USD: transferencia 0,0001 $, transferencia de token HTS 0,001 $, mensaje HCS 0,0008 $, crear token 1 $",
+     "fuente": "docs.hedera.com, tabla de comisiones",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.hedera.com/hedera/networks/mainnet/fees"
+    },
+    {
+     "hecho": "Registros cada 2,169 s en el mirror node; finalidad aBFT de segundos según la documentación [VERIFICAR medida directa]",
+     "fuente": "mirror node público, en comparativa-liquidacion.json",
+     "nivel": "S",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "30 nodos; coeficiente de Nakamoto (1/3) = 10",
+     "fuente": "mirror node, en cadenas-validadores.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Staking nativo de HBAR sin bloqueo ni «slashing»",
+     "fuente": "docs.hedera.com, Stake HBAR (parte interesada)",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.hedera.com/learn/core-concepts/staking/stake-hbar.md"
+    },
+    {
+     "hecho": "Participó en el desafío DLT del Banco de Inglaterra y el BIS Innovation Hub de Londres (sin resultados publicados)",
+     "fuente": "Hedera, blog (en pruebas-bancos.json)",
+     "nivel": "P",
+     "fecha": "2025-10-28",
+     "url": "https://hedera.com/blog/hedera-participates-in-the-bank-of-england-and-bis-innovation-hubs-dlt-innovation-challenge"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "Stablecoins 25,6 M$ (casi todo USDC)",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "hecho": "88,3 M$ en RWA distribuidos y 70,3 M$ representados",
+     "fuente": "RWA.xyz",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks"
+    },
+    {
+     "hecho": "Nodos de consenso operados por miembros del Consejo; los nodos comunitarios y sin permisos están anunciados sin fecha",
+     "fuente": "hedera.com (resumen de buscador)",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://hedera.com/blog/decentralization-of-the-hedera-mainnet-consensus-node-hosting-and-stake-distribution"
+    },
+    {
+     "hecho": "El comunicado del RBA sobre Acacia no nombra Hedera (la atribución viene de un blog de LF Decentralized Trust)",
+     "fuente": "RBA, nota 2026-13 (en pruebas-bancos.json)",
+     "nivel": "P",
+     "fecha": "2026-05-18",
+     "url": "https://www.rba.gov.au/media-releases/2026/mr-26-13.html"
+    },
+    {
+     "hecho": "Bonzo Lend sufrió una manipulación de precio de 9,05 M$ el 11-jul-2026",
+     "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
+     "nivel": "S",
+     "fecha": "2026-07-11",
+     "url": "https://api.llama.fi/hacks"
+    },
+    {
+     "hecho": "Comisiones cobradas -45,6 % y volumen DEX -55,9 % en 30 días",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://api.llama.fi/v2/chains"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2026-05-18",
+     "hito": "RBA y DFCRC publican los resultados de Acacia (20 casos mayoristas; el comunicado no nombra redes)",
+     "fuente": "RBA, nota 2026-13",
+     "nivel": "P",
+     "url": "https://www.rba.gov.au/media-releases/2026/mr-26-13.html"
+    },
+    {
+     "fecha": "2026-06-11",
+     "hito": "Archax anuncia pagos de intereses en tiempo real (en USDC) para valores tokenizados en Hedera",
+     "fuente": "Blog de Hedera",
+     "nivel": "S",
+     "url": "https://hedera.com/blog/archax-and-hedera-advance-tokenized-securities-with-real-time-streaming-cash-flows/"
+    },
+    {
+     "fecha": "2026-08-05",
+     "hito": "Taurus abre la pila de Hedera (tokens, contratos, nodos y staking) a 40+ instituciones, entre ellas CACEIS y State Street",
+     "fuente": "Nota recogida por FF News",
+     "nivel": "S",
+     "url": "https://ffnews.com/news/taurus-unlocks-full-hedera-stack-for-40-global-banks-to-scale-digital-asset-tokenization"
+    },
+    {
+     "fecha": "2026-09-24",
+     "hito": "Hedera cede CLPR (protocolo entre libros mayores sin puentes) a LF Decentralized Trust; testnet",
+     "fuente": "Blog de Hedera",
+     "nivel": "S",
+     "url": "https://hedera.com/blog/hedera-contributes-hashgraph-developed-clpr-to-lfdt/"
+    },
+    {
+     "fecha": "2026-11-11",
+     "hito": "Apex Group entra en el Consejo de Hedera (tokenización basada en ERC-3643; «explorará» Hedera)",
+     "fuente": "Blog de Hedera",
+     "nivel": "S",
+     "url": "https://hedera.com/blog/apex-group-joins-hedera-council-to-advance-institutional-digital-assets/"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Empresas del Consejo (gobierno y nodos)",
+     "ejemplos": "Apex Group (desde 11-nov-2026); resto sin cifra primaria leída",
+     "estado": "gobierno de la red",
+     "fuente": "hedera.com/council y blog",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://www.hedera.com/council"
+    },
+    {
+     "tipo": "Custodios",
+     "ejemplos": "Taurus (custodia y staking de HBAR para bancos, según prensa); BitGo",
+     "estado": "producción según prensa",
+     "fuente": "FF News",
+     "nivel": "S",
+     "fecha": "2026-08-05"
+    },
+    {
+     "tipo": "Emisores de valores tokenizados",
+     "ejemplos": "Archax",
+     "estado": "anunciado",
+     "fuente": "Blog de Hedera",
+     "nivel": "S",
+     "fecha": "2026-06-11"
+    },
+    {
+     "tipo": "Bancos centrales (pruebas)",
+     "ejemplos": "Banco de Inglaterra/BIS (desafío); RBA Acacia (cadena atribuida por terceros)",
+     "estado": "prueba / piloto cerrado",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "S",
+     "fecha": "2026-05-18"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Registro y sellado de eventos con coste previsible",
+     "evidencia": "Mensaje HCS a 0,0008 $ fijado en USD [P].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Tokenización con comisiones estables para empresas",
+     "evidencia": "Crear token 1 $ y transferir 0,001 $ fijados en USD [P]; volumen actual pequeño (88 M$) [S].",
+     "nivel": "S",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Rendimiento y colateral",
+     "evidencia": "Staking sin bloqueo ni penalización [P]; tasa vigente no leída [sin dato].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "La comisión de 0,0001 $ es la tarifa documentada, no una medida",
+     "fuente": "comparativa-liquidacion.json",
+     "nivel": "S",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Número exacto de miembros del Consejo y fecha de nodos sin permisos: sin cifra primaria",
+     "fuente": "cadenas.json (sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    },
+    {
+     "hecho": "Integración real con Swift o ISO 20022: sin dato",
+     "fuente": "cadenas.json (sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    }
+   ]
+  },
+  "ethereum": {
+   "nombre": "Ethereum (y sus L2)",
+   "aporta": "La mayor liquidez de stablecoins (131.392 M$) y de RWA distribuidos (15.153,5 M$) de las 16, el mayor mercado DeFi de colateral y préstamos (TVL 37.971 M$) y el estándar técnico (EVM, ERC-3643) que reutilizan Polygon, Avalanche, Plume y las redes privadas Besu de Swift y DTCC.",
+   "puntos_fuertes": [
+    {
+     "hecho": "Stablecoins 131.392 M$ en 230 emisiones (USDT 66.783 M$, USDC 41.686 M$, RLUSD 2.020 M$)",
+     "fuente": "DefiLlama, en comparativa-liquidacion.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "hecho": "15.153,5 M$ en RWA distribuidos (1.ª red), con 2.876 acciones tokenizadas y 87 activos de deuda pública",
+     "fuente": "RWA.xyz",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks"
+    },
+    {
+     "hecho": "TVL DeFi 37.971 M$ y volumen DEX de 52.375 M$ en 30 días",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://api.llama.fi/v2/chains"
+    },
+    {
+     "hecho": "44,19 M de ETH en staking (35 % del suministro), APR del 2,5 % (página sin fecha)",
+     "fuente": "ethereum.org/staking",
+     "nivel": "P",
+     "fecha": "2026-11-12",
+     "url": "https://ethereum.org/en/staking/"
+    },
+    {
+     "hecho": "El BEI emitió en 2021 un bono digital de 100 M€ en la Ethereum pública, con el pago representado en CBDC del Banque de France",
+     "fuente": "BEI, comunicado 2021-141",
+     "nivel": "P",
+     "fecha": "2021-04-27",
+     "url": "https://www.eib.org/en/press/all/2021-141-european-investment-bank-eib-issues-its-first-ever-digital-bond-on-a-public-blockchain"
+    },
+    {
+     "hecho": "Estándar ERC-3643: identidad y reglas de cumplimiento comprobadas en cadena antes de cada transferencia",
+     "fuente": "EIP-3643",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://eips.ethereum.org/EIPS/eip-3643"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "Finalidad «finalized» a ~1.056 s (~18 min) del último bloque en la capa 1",
+     "fuente": "ethereum-rpc.publicnode.com, en comparativa-liquidacion.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Transferencia simple ≈ 0,0109 USD en la capa 1, la comisión más alta de la comparativa en ese momento",
+     "fuente": "eth_feeHistory; precio DefiLlama",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Capacidad observada 21 tx/s en la capa 1 (las capas 2 no se miden)",
+     "fuente": "ethereum-rpc.publicnode.com, en comparativa-liquidacion.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "105 incidentes en 12 meses en DefiLlama (incluye el de Binance de 6.360 M$ atribuido a varias redes; no sumar entre redes)",
+     "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://api.llama.fi/hacks"
+    },
+    {
+     "hecho": "Glamsterdam sin fecha en mainnet (aplazada en Hoodi el 22-oct-2026)",
+     "fuente": "Everstake (secundaria)",
+     "nivel": "S",
+     "fecha": "2026-10-22",
+     "url": "https://everstake.one/resources/blog/ethereum-glamsterdam-upgrade-explained"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2025-12-03",
+     "hito": "Bifurcación Fusaka en la red principal",
+     "fuente": "Blockworks",
+     "nivel": "S",
+     "url": "https://blockworks.co/news/fusaka-rollout-glamsterdam"
+    },
+    {
+     "fecha": "2026-04-29",
+     "hito": "Ethereum sigue en el piloto de liquidación con stablecoins de Visa (9 redes, 7.000 M$ anualizados en conjunto)",
+     "fuente": "Visa, nota para inversores",
+     "nivel": "P",
+     "url": "https://investor.visa.com/news/news-details/2026/Visa-Accelerates-Stablecoin-Momentum-Adding-Five-Blockchains-for-Settlement/default.aspx"
+    },
+    {
+     "fecha": "2026-05-11",
+     "hito": "JPM Coin (depósito tokenizado de J.P. Morgan) emitido en Base, capa 2 de Ethereum",
+     "fuente": "J.P. Morgan Kinexys, página",
+     "nivel": "P",
+     "url": "https://www.jpmorgan.com/kinexys/content-hub/kinexys-powers-finance-public-private-chains"
+    },
+    {
+     "fecha": "2026-10-06",
+     "hito": "Glamsterdam activa en la red de pruebas Sepolia",
+     "fuente": "Everstake (secundaria)",
+     "nivel": "S",
+     "url": "https://everstake.one/resources/blog/ethereum-glamsterdam-upgrade-explained"
+    },
+    {
+     "fecha": "2026-10-23",
+     "hito": "go-ethereum v1.17.10",
+     "fuente": "GitHub ethereum/go-ethereum, en cadenas-gobernanza.json",
+     "nivel": "P",
+     "url": "https://github.com/ethereum/go-ethereum/releases/tag/v1.17.10"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Emisores de stablecoins",
+     "ejemplos": "Tether (USDT), Circle (USDC), Sky (USDS), Ripple (RLUSD)",
+     "estado": "producción",
+     "fuente": "DefiLlama",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "tipo": "Gestoras",
+     "ejemplos": "BlackRock (BUIDL desde mar-2024, con Securitize y BNY); Franklin (iBENJI) [VERIFICAR]; BNP Paribas AM [VERIFICAR]",
+     "estado": "producción",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "P",
+     "fecha": "2025-11-14",
+     "url": "https://www.prnewswire.com/news-releases/blackrocks-buidl-tokenized-by-securitize-now-accepted-as-collateral-for-trading-on-binance-and-launches-on-bnb-chain-302613374.html"
+    },
+    {
+     "tipo": "Bancos",
+     "ejemplos": "J.P. Morgan (JPM Coin en Base); SG-FORGE (EURCV); DBS (notas estructuradas) [S]; VersaBank (piloto) [S]",
+     "estado": "producción / piloto",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "P",
+     "fecha": "2026-05-11"
+    },
+    {
+     "tipo": "Banco central y supranacional",
+     "ejemplos": "Banque de France y BEI (bono digital de 2021, vencido en 2023)",
+     "estado": "experimento completado",
+     "fuente": "BEI, comunicado 2021-141",
+     "nivel": "P",
+     "fecha": "2021-04-27"
+    },
+    {
+     "tipo": "Redes de pago",
+     "ejemplos": "Visa (piloto de liquidación con stablecoins)",
+     "estado": "piloto",
+     "fuente": "Visa",
+     "nivel": "P",
+     "fecha": "2026-04-29",
+     "url": "https://investor.visa.com/news/news-details/2026/Visa-Accelerates-Stablecoin-Momentum-Adding-Five-Blockchains-for-Settlement/default.aspx"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Colateral y préstamos",
+     "evidencia": "TVL 37.971 M$ y mayor mercado DeFi de préstamos [S]; staking del 35 % del suministro [P].",
+     "nivel": "S",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Tokenización de RWA y valores con reglas de cumplimiento",
+     "evidencia": "1.ª red en RWA distribuidos [S]; ERC-3643 [P]; BUIDL [P].",
+     "nivel": "S",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Contratos inteligentes y NFT",
+     "evidencia": "Estándar EVM de referencia que reutilizan otras redes y Besu [P, Swift 30-mar-2026].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Liquidación en stablecoins USD de gran volumen",
+     "evidencia": "131.392 M$ en stablecoins [S]; liquidaciones bancarias realizadas con fuente primaria: 3 (pruebas-bancos.json) [P].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "Comisión variable en ETH y finalidad lenta en la capa 1; la velocidad depende de capas 2 que aquí no se miden",
+     "fuente": "comparativa-liquidacion.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Reparto de BUIDL por cadena y parte de las comisiones de las L2 que llega a Ethereum: sin dato del emisor",
+     "fuente": "cadenas.json (sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    }
+   ]
+  },
+  "solana": {
+   "nombre": "Solana",
+   "aporta": "El mayor rendimiento observado de las 16 (1.225 tx/s, slot de 0,215 s) con comisión ≈ 0,00036 USD, la 2.ª liquidez de stablecoins (13.913 M$) y la base minorista más amplia de RWA (1,03 M de titulares). Tiene una emisión bancaria completada con fuente primaria: el papel comercial de Galaxy tokenizado por J.P. Morgan con liquidación en USDC.",
+   "puntos_fuertes": [
+    {
+     "hecho": "1.225,3 tx/s observadas en media hora y slot medio de 0,215 s",
+     "fuente": "api.mainnet-beta.solana.com, en comparativa-liquidacion.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Stablecoins 13.913 M$ en 78 emisiones (USDC 7.397 M$, PYUSD 803 M$); comisión ≈ 0,00036 USD",
+     "fuente": "DefiLlama; getRecentPrioritizationFees",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "hecho": "5.144,6 M$ en RWA distribuidos (3.ª red) y 1,03 M de titulares de RWA",
+     "fuente": "RWA.xyz",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks"
+    },
+    {
+     "hecho": "J.P. Morgan creó el token y gestionó la entrega contra pago del papel comercial de Galaxy en Solana, con liquidación en USDC",
+     "fuente": "J.P. Morgan, comunicado",
+     "nivel": "P",
+     "fecha": "2025-12-11",
+     "url": "https://www.jpmorgan.com/about-us/corporate-news/2025/jpmorgan-commercial-paper-issuance-solana-blockchain"
+    },
+    {
+     "hecho": "661 validadores activos; coeficiente de Nakamoto (1/3) = 18",
+     "fuente": "RPC público, en cadenas-validadores.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "La finalidad real no es medible con el RPC público; no hay cifra medida",
+     "fuente": "api.mainnet-beta.solana.com, en comparativa-liquidacion.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "El recuento de tx/s no separa los votos de los validadores en esta fuente",
+     "fuente": "getRecentPerformanceSamples",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "La conexión con DTC es un plan para el 2S-2027, no producción",
+     "fuente": "DTCC, nota de 12-nov-2026",
+     "nivel": "P",
+     "fecha": "2026-11-12",
+     "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana"
+    },
+    {
+     "hecho": "20 incidentes en 12 meses con 451 M$ en DefiLlama (atribución doble posible)",
+     "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://api.llama.fi/hacks"
+    },
+    {
+     "hecho": "39 validadores morosos (delinquent) en la lectura",
+     "fuente": "RPC público, en cadenas-validadores.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2025-12-11",
+     "hito": "Papel comercial de Galaxy tokenizado por J.P. Morgan en Solana con liquidación en USDC",
+     "fuente": "J.P. Morgan, comunicado",
+     "nivel": "P",
+     "url": "https://www.jpmorgan.com/about-us/corporate-news/2025/jpmorgan-commercial-paper-issuance-solana-blockchain"
+    },
+    {
+     "fecha": "2026-05",
+     "hito": "Western Union lanza USDPT (emisor Anchorage Digital Bank) en Solana para liquidación con agentes [VERIFICAR]",
+     "fuente": "Prensa vía buscador",
+     "nivel": "S",
+     "url": "https://content.stablecon.com/p/western-union-launches-usdpt-on-solana-mc-5-7"
+    },
+    {
+     "fecha": "2026-06-03",
+     "hito": "Mastercard anuncia liquidación de stablecoins en Solana (sin volúmenes)",
+     "fuente": "Dossier panorama del repo",
+     "nivel": "S"
+    },
+    {
+     "fecha": "2026-10-21",
+     "hito": "Alpenglow (fase Votor) activo en la red principal, época 1064",
+     "fuente": "solana.com/upgrades/alpenglow",
+     "nivel": "P",
+     "url": "https://solana.com/upgrades/alpenglow"
+    },
+    {
+     "fecha": "2026-11-12",
+     "hito": "DTCC anuncia que conectará su servicio de tokenización con Solana (2S-2027)",
+     "fuente": "DTCC, nota de prensa",
+     "nivel": "P",
+     "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Emisores de stablecoins",
+     "ejemplos": "Circle (USDC), Tether, PayPal (PYUSD), World Liberty (USD1)",
+     "estado": "producción",
+     "fuente": "DefiLlama",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "tipo": "Bancos",
+     "ejemplos": "J.P. Morgan (papel comercial de Galaxy); SG-FORGE (EURCV)",
+     "estado": "emisión completada / producción",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "P",
+     "fecha": "2025-12-11"
+    },
+    {
+     "tipo": "Gestoras",
+     "ejemplos": "BlackRock (clase de BUIDL); Franklin Templeton (compradora del papel comercial)",
+     "estado": "producción",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "P",
+     "fecha": "2025-11-14",
+     "url": "https://www.prnewswire.com/news-releases/blackrocks-buidl-tokenized-by-securitize-now-accepted-as-collateral-for-trading-on-binance-and-launches-on-bnb-chain-302613374.html"
+    },
+    {
+     "tipo": "Remesadoras y redes de pago",
+     "ejemplos": "Western Union (USDPT) [S]; Visa (piloto) [P]; Mastercard [S]",
+     "estado": "piloto / producción inicial",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "S",
+     "fecha": "2026-05"
+    },
+    {
+     "tipo": "Infraestructuras de mercado",
+     "ejemplos": "DTCC (depositaria DTC)",
+     "estado": "plan (2S-2027)",
+     "fuente": "DTCC",
+     "nivel": "P",
+     "fecha": "2026-11-12",
+     "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Pagos con stablecoins de alto volumen y bajo coste",
+     "evidencia": "1.225 tx/s y 0,00036 USD por transacción [P/S]; 13.913 M$ en stablecoins [S].",
+     "nivel": "S",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Emisión y entrega contra pago de valores",
+     "evidencia": "Papel comercial de JPM liquidado en USDC [P]; 2 liquidaciones bancarias realizadas con fuente primaria (pruebas-bancos.json) [P].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Acciones tokenizadas para minoristas",
+     "evidencia": "572,9 M$ en 1.971 acciones tokenizadas y 1,03 M de titulares de RWA (RWA.xyz) [S].",
+     "nivel": "S",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "Fase «Rotor» de Alpenglow sin fecha",
+     "fuente": "solana.com/upgrades/alpenglow",
+     "nivel": "P",
+     "fecha": "2026-10-21",
+     "url": "https://solana.com/upgrades/alpenglow"
+    },
+    {
+     "hecho": "Integración con ISO 20022 y volumen institucional por emisor: sin dato",
+     "fuente": "cadenas.json (sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    }
+   ]
+  },
+  "bnb": {
+   "nombre": "BNB Chain",
+   "aporta": "La 2.ª red en RWA distribuidos (6.270 M$) y una gran liquidez minorista (12.464 M$ en stablecoins; 96 M de titulares), con un vínculo directo con el mayor exchange: BUIDL de BlackRock se acepta como colateral en Binance. Bloques de 0,45 s.",
+   "puntos_fuertes": [
+    {
+     "hecho": "6.270 M$ en RWA distribuidos (2.ª red); 1.700 M$ en 2.912 acciones tokenizadas",
+     "fuente": "RWA.xyz, ficha BNB Chain",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks/bnb-chain"
+    },
+    {
+     "hecho": "Stablecoins 12.464 M$ (USDT 9.180 M$); 96 M de titulares de stablecoins",
+     "fuente": "DefiLlama y RWA.xyz",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "hecho": "BUIDL (BlackRock/Securitize) lanzado en BNB Chain y aceptado como colateral fuera de bolsa en Binance",
+     "fuente": "BlackRock/Securitize, comunicado",
+     "nivel": "P",
+     "fecha": "2025-11-14",
+     "url": "https://www.prnewswire.com/news-releases/blackrocks-buidl-tokenized-by-securitize-now-accepted-as-collateral-for-trading-on-binance-and-launches-on-bnb-chain-302613374.html"
+    },
+    {
+     "hecho": "Bloques de 0,45 s y finalidad rápida ≈ 1,125 s si votan 2/3 de los validadores",
+     "fuente": "docs.bnbchain.org",
+     "nivel": "P",
+     "fecha": "2024-09-25",
+     "url": "https://docs.bnbchain.org/bnb-smart-chain/"
+    },
+    {
+     "hecho": "Volumen DEX de 29.157 M$ en 30 días",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://api.llama.fi/v2/chains"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "La documentación no da el número de validadores (PoSA, validadores elegidos por BNB en staking)",
+     "fuente": "docs.bnbchain.org",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.bnbchain.org/bnb-smart-chain/"
+    },
+    {
+     "hecho": "iBENJI de Franklin: 1.531 M$ con 4 tenedores (concentración)",
+     "fuente": "RWA.xyz, ficha BNB Chain",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks/bnb-chain"
+    },
+    {
+     "hecho": "61 incidentes en 12 meses con 134 M$ en DefiLlama",
+     "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://api.llama.fi/hacks"
+    },
+    {
+     "hecho": "CCTP de Circle solo para USYC, no para USDC",
+     "fuente": "Circle Docs, cadenas soportadas",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+    },
+    {
+     "hecho": "La recompensa de staking sale de las comisiones; no se publica APR",
+     "fuente": "docs.bnbchain.org, staking",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.bnbchain.org/bnb-smart-chain/staking/overview/"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2025-11-14",
+     "hito": "BUIDL en BNB Chain y colateral en Binance (justo en el límite de la ventana de 12 meses)",
+     "fuente": "BlackRock/Securitize",
+     "nivel": "P",
+     "url": "https://www.prnewswire.com/news-releases/blackrocks-buidl-tokenized-by-securitize-now-accepted-as-collateral-for-trading-on-binance-and-launches-on-bnb-chain-302613374.html"
+    },
+    {
+     "fecha": "2026-02",
+     "hito": "Franklin y Binance anuncian iBENJI como colateral institucional fuera de bolsa con custodia de Ceffu",
+     "fuente": "cadenas.json (sin_dato; prensa)",
+     "nivel": "S"
+    },
+    {
+     "fecha": "2026-10-19",
+     "hito": "bsc v1.8.1 (y v1.8.2 el 3-nov-2026)",
+     "fuente": "GitHub bnb-chain/bsc, en cadenas-gobernanza.json",
+     "nivel": "P",
+     "url": "https://github.com/bnb-chain/bsc/releases/tag/v1.8.2"
+    },
+    {
+     "fecha": "2026-11-14",
+     "hito": "La documentación presenta una pila de «privacidad programable» (Intelligent Privacy Pool, ZKredit, cifrado homomórfico con Zama): hoja de ruta propia, sin usuarios contados",
+     "fuente": "docs.bnbchain.org, Privacy at Scale (fecha de lectura)",
+     "nivel": "P",
+     "url": "https://docs.bnbchain.org/developer-kit/privacy-at-scale/"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Exchange",
+     "ejemplos": "Binance (colateral con BUIDL e iBENJI)",
+     "estado": "producción",
+     "fuente": "BlackRock/Securitize",
+     "nivel": "P",
+     "fecha": "2025-11-14",
+     "url": "https://www.prnewswire.com/news-releases/blackrocks-buidl-tokenized-by-securitize-now-accepted-as-collateral-for-trading-on-binance-and-launches-on-bnb-chain-302613374.html"
+    },
+    {
+     "tipo": "Gestoras",
+     "ejemplos": "BlackRock (BUIDL); Franklin (iBENJI); Circle (USYC); Ondo (USDY)",
+     "estado": "producción",
+     "fuente": "RWA.xyz y pruebas-bancos.json",
+     "nivel": "S",
+     "fecha": "2026-11-14"
+    },
+    {
+     "tipo": "Emisores de stablecoins",
+     "ejemplos": "Tether (USDT), World Liberty (USD1), United Stables (U)",
+     "estado": "producción",
+     "fuente": "DefiLlama",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "tipo": "Bancos centrales",
+     "ejemplos": "Banco Nacional de Kazajistán (pruebas del tenge digital en 2022)",
+     "estado": "sin evidencia de producción",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "S",
+     "fecha": "2022-10-27"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Colateral tokenizado en exchange",
+     "evidencia": "BUIDL e iBENJI como colateral en Binance [P/S].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Acciones tokenizadas y stablecoins minoristas",
+     "evidencia": "1.700 M$ en acciones tokenizadas [S]; 96 M de titulares de stablecoins [S].",
+     "nivel": "S",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "Información primaria escasa por emisor; integración institucional fuera de Binance sin dato",
+     "fuente": "cadenas.json (sesgos y sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    },
+    {
+     "hecho": "La guía leída no da una comisión típica",
+     "fuente": "docs.bnbchain.org, quick guide",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.bnbchain.org/bnb-smart-chain/developers/quick-guide/"
+    }
+   ]
+  },
+  "avalanche": {
+   "nombre": "Avalanche",
+   "aporta": "Permite lanzar redes L1 propias que fijan requisitos a sus validadores (ubicación, KYC/AML, licencia) y guardan datos privados, conectadas entre sí por mensajería nativa (ICM sobre Avalanche Warp Messaging). Tiene la 2.ª mayor cifra de valor «representado» (11.403,5 M$) tras Canton y el mayor coeficiente de Nakamoto de las redes medidas (24).",
+   "puntos_fuertes": [
+    {
+     "hecho": "Cada L1 puede exigir requisitos a sus validadores (ubicación, KYC/AML o licencia) y mantener datos privados",
+     "fuente": "build.avax.network, L1 (parte interesada)",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://build.avax.network/docs/avalanche-l1s"
+    },
+    {
+     "hecho": "Mensajería entre L1 (ICM sobre Warp Messaging, desde Durango, mar-2024) y transferencia de tokens (ICTT)",
+     "fuente": "build.avax.network, cross-chain",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://build.avax.network/docs/cross-chain"
+    },
+    {
+     "hecho": "604 validadores en la red primaria; coeficiente de Nakamoto (1/3) = 24, el más alto de las redes medidas",
+     "fuente": "API pública P-Chain, en cadenas-validadores.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "1.413,9 M$ distribuidos y 11.403,5 M$ representados; crédito tokenizado 690,6 M$",
+     "fuente": "RWA.xyz",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks"
+    },
+    {
+     "hecho": "Clase de BUIDL en Avalanche con BNY como administrador y custodio",
+     "fuente": "BlackRock, comunicado",
+     "nivel": "P",
+     "fecha": "2024-11-13",
+     "url": "https://www.prnewswire.com/news-releases/blackrock-launches-new-buidl-share-classes-across-multiple-blockchains-to-expand-access-and-potential-of-buidl-ecosystem-302304035.html"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "Stablecoins 773 M$",
+     "fuente": "DefiLlama, en comparativa-liquidacion.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "hecho": "Modelo de comisiones de las L1 institucionales y emisores del valor representado: sin dato",
+     "fuente": "cadenas.json (sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    },
+    {
+     "hecho": "Las pruebas con Citi y J.P. Morgan (Onyx) no tienen fecha ni fuente primaria leída",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "S",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Volumen DEX -40,7 % en 30 días (2.473 M$)",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://api.llama.fi/v2/chains"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2026-03-11",
+     "hito": "Grayscale lanza un ETF de AVAX con staking (GAVA)",
+     "fuente": "The Block",
+     "nivel": "S",
+     "url": "https://www.theblock.co/news/business/2026-03-12-grayscale-debuts-avalanche-staking-etf-on-nasdaq-under-ticker-gava-393378"
+    },
+    {
+     "fecha": "2026-04-29",
+     "hito": "Avalanche sigue en el piloto de liquidación con stablecoins de Visa",
+     "fuente": "Visa",
+     "nivel": "P",
+     "url": "https://investor.visa.com/news/news-details/2026/Visa-Accelerates-Stablecoin-Momentum-Adding-Five-Blockchains-for-Settlement/default.aspx"
+    },
+    {
+     "fecha": "2026-07-28",
+     "hito": "Helicon en vigor en la red de pruebas Fuji",
+     "fuente": "GitHub ava-labs/avalanchego",
+     "nivel": "S",
+     "url": "https://github.com/ava-labs/avalanchego/releases"
+    },
+    {
+     "fecha": "2026-09-22",
+     "hito": "Activación programada de Helicon en mainnet: ejecución asíncrona en la C-Chain, staking con renovación automática y duración mínima de 48 h (la release no confirma la activación efectiva)",
+     "fuente": "GitHub, release v1.15.0",
+     "nivel": "P",
+     "url": "https://github.com/ava-labs/avalanchego/releases/tag/v1.15.0"
+    },
+    {
+     "fecha": "2026-11-05",
+     "hito": "avalanchego v1.15.3",
+     "fuente": "GitHub, en cadenas-gobernanza.json",
+     "nivel": "P",
+     "url": "https://github.com/ava-labs/avalanchego/releases/tag/v1.15.3"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Gestoras",
+     "ejemplos": "BlackRock (BUIDL); Franklin (BENJI) [VERIFICAR]",
+     "estado": "producción",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "P",
+     "fecha": "2024-11-13",
+     "url": "https://www.prnewswire.com/news-releases/blackrock-launches-new-buidl-share-classes-across-multiple-blockchains-to-expand-access-and-potential-of-buidl-ecosystem-302304035.html"
+    },
+    {
+     "tipo": "Bancos (pruebas)",
+     "ejemplos": "Citi (cambio de divisas simulado en subredes Evergreen, Guardian); J.P. Morgan Onyx (carteras multicadena)",
+     "estado": "prueba",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "S",
+     "fecha": "2026-11-15"
+    },
+    {
+     "tipo": "Redes de pago",
+     "ejemplos": "Visa",
+     "estado": "piloto",
+     "fuente": "Visa",
+     "nivel": "P",
+     "fecha": "2026-04-29",
+     "url": "https://investor.visa.com/news/news-details/2026/Visa-Accelerates-Stablecoin-Momentum-Adding-Five-Blockchains-for-Settlement/default.aspx"
+    },
+    {
+     "tipo": "Emisores de stablecoins",
+     "ejemplos": "Tether, Circle, Ethena",
+     "estado": "producción",
+     "fuente": "DefiLlama",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Redes institucionales a medida con requisitos de cumplimiento",
+     "evidencia": "L1 con requisitos a validadores y datos privados [P]; ICM [P].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Crédito tokenizado",
+     "evidencia": "690,6 M$ en 40 activos de crédito (RWA.xyz) [S].",
+     "nivel": "S",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Rendimiento",
+     "evidencia": "Staking con mínimo 2.000 AVAX para validar y 25 para delegar [P].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "Las L1 propias no hacen stake de AVAX pero pagan una tarifa continua (mínimo ≈ 1,33 AVAX al mes por validador)",
+     "fuente": "ACP-77 (repositorio de la Avalanche Foundation)",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://raw.githubusercontent.com/avalanche-foundation/ACPs/main/ACPs/77-reinventing-subnets/README.md"
+    },
+    {
+     "hecho": "El peso de los validadores de la API puede incluir delegaciones [VERIFICAR]",
+     "fuente": "cadenas-validadores.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    }
+   ]
+  },
+  "polygon": {
+   "nombre": "Polygon",
+   "aporta": "Red EVM barata (0,002 $ por transacción, autodeclarado) con kit para lanzar cadenas propias (CDK) unidas por Agglayer, cuyas «pruebas pesimistas» limitan el daño de una cadena comprometida a sus propios depósitos. Sobre esa base se anunció T-REX Ledger, una cadena de cumplimiento para valores ERC-3643.",
+   "puntos_fuertes": [
+    {
+     "hecho": "Stablecoins 2.798 M$ (USDC 1.610 M$; pUSD de Polymarket 499 M$)",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "hecho": "Finalidad determinista en 2-5 s por milestones",
+     "fuente": "docs.polygon.technology (parte interesada)",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.polygon.technology/pos/overview.md"
+    },
+    {
+     "hecho": "Agglayer: interoperabilidad con «pruebas pesimistas»",
+     "fuente": "docs.agglayer.dev",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.agglayer.dev/"
+    },
+    {
+     "hecho": "T-REX Ledger (Polygon CDK + Agglayer) para valores ERC-3643; Apex se compromete a 100 mil M$ tokenizados hasta jun-2027 (compromiso, no volumen)",
+     "fuente": "polygon.technology/blog",
+     "nivel": "P",
+     "fecha": "2026-03-18",
+     "url": "https://polygon.technology/blog/apex-group-commits-100b-in-tokenized-assets-to-t-rex-ledger-new-rwa-compliance-chain-built-with-polygon-cdk"
+    },
+    {
+     "hecho": "USDC nativo por CCTP (dominio 7); clase de BUIDL en Polygon PoS",
+     "fuente": "Circle Docs; BlackRock",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "447,6 M$ en RWA distribuidos",
+     "fuente": "RWA.xyz",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks"
+    },
+    {
+     "hecho": "Máximo de 105 validadores activos; el número real no lo da la documentación",
+     "fuente": "docs.polygon.technology",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.polygon.technology/pos/overview.md"
+    },
+    {
+     "hecho": "18 incidentes en 12 meses con 54 M$ en DefiLlama (Polymarket International 2,7 M$ por ataque a la cadena de suministro)",
+     "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://api.llama.fi/hacks"
+    },
+    {
+     "hecho": "Emisión de POL del 2 % anual desde jul-2025; si propuestas posteriores la cambian sigue [VERIFICAR]",
+     "fuente": "docs.polygon.technology, rewards",
+     "nivel": "P",
+     "fecha": "2026-11-15",
+     "url": "https://docs.polygon.technology/pos/reference/rewards.md"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2026-03-18",
+     "hito": "Anuncio de T-REX Ledger con Tokeny/Apex",
+     "fuente": "polygon.technology/blog",
+     "nivel": "P",
+     "url": "https://polygon.technology/blog/apex-group-commits-100b-in-tokenized-assets-to-t-rex-ledger-new-rwa-compliance-chain-built-with-polygon-cdk"
+    },
+    {
+     "fecha": "2026-04-29",
+     "hito": "Visa añade Polygon a su piloto de liquidación con stablecoins",
+     "fuente": "Visa",
+     "nivel": "P",
+     "url": "https://investor.visa.com/news/news-details/2026/Visa-Accelerates-Stablecoin-Momentum-Adding-Five-Blockchains-for-Settlement/default.aspx"
+    },
+    {
+     "fecha": "2026-11-05",
+     "hito": "bor v2.11.0 (y v2.11.1 el 13-nov-2026)",
+     "fuente": "GitHub 0xPolygon/bor, en cadenas-gobernanza.json",
+     "nivel": "P",
+     "url": "https://github.com/0xPolygon/bor/releases/tag/v2.11.1"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Gestoras y emisores",
+     "ejemplos": "BlackRock (BUIDL); Ondo (OUSG en Polygon)",
+     "estado": "producción",
+     "fuente": "BlackRock; docs.ondo.finance/addresses",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.ondo.finance/addresses"
+    },
+    {
+     "tipo": "Redes de pago",
+     "ejemplos": "Visa",
+     "estado": "piloto (alta anunciada)",
+     "fuente": "Visa",
+     "nivel": "P",
+     "fecha": "2026-04-29",
+     "url": "https://investor.visa.com/news/news-details/2026/Visa-Accelerates-Stablecoin-Momentum-Adding-Five-Blockchains-for-Settlement/default.aspx"
+    },
+    {
+     "tipo": "Mercados de predicción",
+     "ejemplos": "Polymarket (pUSD 499 M$)",
+     "estado": "producción",
+     "fuente": "DefiLlama",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "tipo": "Tokenización regulada",
+     "ejemplos": "Apex Group / Tokeny (T-REX Ledger)",
+     "estado": "compromiso",
+     "fuente": "polygon.technology/blog",
+     "nivel": "P",
+     "fecha": "2026-03-18"
+    },
+    {
+     "tipo": "Bancos (pilotos antiguos)",
+     "ejemplos": "DBS, J.P. Morgan (Onyx) y SBI Digital Asset en el Proyecto Guardian de MAS (2022; cadena según The Block)",
+     "estado": "piloto",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "S",
+     "fecha": "2022-11-02"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Pagos baratos compatibles con EVM",
+     "evidencia": "0,002 $ autodeclarado [P]; Visa [P]; 2.798 M$ en stablecoins [S].",
+     "nivel": "S",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Cadenas propias de cumplimiento conectadas",
+     "evidencia": "CDK + Agglayer [P]; T-REX Ledger [P].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Inmuebles tokenizados",
+     "evidencia": "79,5 M$ en 58 inmuebles (RWA.xyz) [S].",
+     "nivel": "S",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "Rentabilidad de staking en vivo no publicada (solo calendario de emisión)",
+     "fuente": "cadenas.json (sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    },
+    {
+     "hecho": "Sin estatus regulatorio de la red en su documentación; el producto de pagos Open Money Stack tiene KYC/AML pero sin licencia citada",
+     "fuente": "docs.polygon.technology, compliance",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.polygon.technology/payments/compliance.md"
+    }
+   ]
+  },
+  "canton": {
+   "nombre": "Canton Network",
+   "aporta": "Privacidad entre participantes con permisos sobre un sincronizador global: cada parte solo ve sus operaciones. Es la única de las 16 donde el servicio de tokenización de DTC está en producción (desde el 28-oct-2026) y donde DTCC y más de 30 participantes hicieron operaciones de producción de colateral, repo y préstamo de valores.",
+   "puntos_fuertes": [
+    {
+     "hecho": "Servicio de tokenización de DTC en producción desde el 28-oct-2026, integrado con Canton y con una red privada Besu; 20 participantes de DTC (Barclays, BofA, BNP Paribas, Citi, J.P. Morgan, State Street, UBS…) han firmado acceso",
+     "fuente": "DTCC, nota de prensa",
+     "nivel": "P",
+     "fecha": "2026-10-28",
+     "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live"
+    },
+    {
+     "hecho": "Jul-2026: DTCC y más de 30 participantes completan operaciones de producción con Tesoro, acciones y ETF tokenizados (colateral, margen, repo y préstamo de valores)",
+     "fuente": "Canton, blog de 8-sep-2026",
+     "nivel": "P",
+     "fecha": "2026-07-15",
+     "url": "https://www.canton.network/blog/onchain-collateral-repo-tokenization"
+    },
+    {
+     "hecho": "BNP Paribas prestó valores intradía con Tesoro tokenizado por DTCC desde un nodo propio en Canton",
+     "fuente": "Canton, blog",
+     "nivel": "P",
+     "fecha": "2026-07",
+     "url": "https://www.canton.network/blog/onchain-collateral-repo-tokenization"
+    },
+    {
+     "hecho": "374.118 M$ en valor «representado», la mayor cifra de RWA.xyz",
+     "fuente": "RWA.xyz",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks"
+    },
+    {
+     "hecho": "Sin incidentes registrados en DefiLlama en 12 meses",
+     "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://api.llama.fi/hacks"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "0 $ en RWA distribuidos: todo es «representado» (registro de activos que existen fuera de la cadena)",
+     "fuente": "RWA.xyz",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks"
+    },
+    {
+     "hecho": "Sin cifra de stablecoins en DefiLlama; TVL 11,3 M$",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://api.llama.fi/v2/chains"
+    },
+    {
+     "hecho": "La media diaria de repos de Broadridge (351.000 M$) viene de una web entusiasta y no aclara qué parte va por Canton",
+     "fuente": "Genfinity (secundaria)",
+     "nivel": "S",
+     "fecha": "2026-09-11",
+     "url": "https://genfinity.io/2026/09/11/broadridge-dlx-tokenization-platform-dtcc-canton/"
+    },
+    {
+     "hecho": "El tráfico por encima de la franja gratuita se paga en Canton Coin (60 $/MB en la configuración de ejemplo); los Super Validators no pagan",
+     "fuente": "docs.canton.network, Synchronizer Traffic",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.canton.network/global-synchronizer/deployment/synchronizer-traffic.md"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2025-12-11",
+     "hito": "Carta de no acción de la SEC a DTC para un servicio de tokenización de 3 años",
+     "fuente": "Mayer Brown y prensa",
+     "nivel": "S",
+     "url": "https://www.mayerbrown.com/-/media/files/perspectives-events/publications/2025/12/sec-staff-no-action-relief-for-dtc-pilot-provides-a-pathway-for-tokenized-securities.pdf"
+    },
+    {
+     "fecha": "2026-04-29",
+     "hito": "Visa añade Canton a su piloto de liquidación con stablecoins",
+     "fuente": "Visa",
+     "nivel": "P",
+     "url": "https://investor.visa.com/news/news-details/2026/Visa-Accelerates-Stablecoin-Momentum-Adding-Five-Blockchains-for-Settlement/default.aspx"
+    },
+    {
+     "fecha": "2026-05-11",
+     "hito": "J.P. Morgan dice que JPM Coin se extenderá a Canton (plan)",
+     "fuente": "J.P. Morgan Kinexys, página",
+     "nivel": "P",
+     "url": "https://www.jpmorgan.com/kinexys/content-hub/kinexys-powers-finance-public-private-chains"
+    },
+    {
+     "fecha": "2026-07-15",
+     "hito": "Operaciones de producción de DTCC con más de 30 participantes",
+     "fuente": "Canton, blog",
+     "nivel": "P",
+     "url": "https://www.canton.network/blog/onchain-collateral-repo-tokenization"
+    },
+    {
+     "fecha": "2026-09-09",
+     "hito": "Broadridge DLX se conecta a DTCC vía Canton",
+     "fuente": "Genfinity (secundaria)",
+     "nivel": "S",
+     "url": "https://genfinity.io/2026/09/11/broadridge-dlx-tokenization-platform-dtcc-canton/"
+    },
+    {
+     "fecha": "2026-10-28",
+     "hito": "DTCC Tokenization Service en producción con Canton",
+     "fuente": "DTCC, nota de prensa",
+     "nivel": "P",
+     "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Infraestructuras de mercado",
+     "ejemplos": "DTCC (DTC); Broadridge (DLX) [S]",
+     "estado": "producción",
+     "fuente": "DTCC",
+     "nivel": "P",
+     "fecha": "2026-10-28",
+     "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live"
+    },
+    {
+     "tipo": "Bancos y custodios",
+     "ejemplos": "BNP Paribas (nodo propio); 20 participantes de DTC con acuerdo de acceso; J.P. Morgan (plan JPM Coin)",
+     "estado": "producción / acuerdo / plan",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "P",
+     "fecha": "2026-10-28",
+     "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live"
+    },
+    {
+     "tipo": "Redes de pago",
+     "ejemplos": "Visa",
+     "estado": "piloto (alta anunciada)",
+     "fuente": "Visa",
+     "nivel": "P",
+     "fecha": "2026-04-29",
+     "url": "https://investor.visa.com/news/news-details/2026/Visa-Accelerates-Stablecoin-Momentum-Adding-Five-Blockchains-for-Settlement/default.aspx"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Colateral, margen, repo y préstamo de valores entre instituciones",
+     "evidencia": "Operaciones de producción con DTCC [P]; 2 liquidaciones bancarias realizadas con fuente primaria (pruebas-bancos.json) [P].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Registro de valores existentes con privacidad",
+     "evidencia": "374.118 M$ representados [S]; privacidad entre participantes [P, docs.canton.network].",
+     "nivel": "S",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "No es una red abierta: los participantes necesitan permisos",
+     "fuente": "cadenas.json (tipo)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    },
+    {
+     "hecho": "Volumen de transacciones de DTC en Canton y si los dominios privados pagan tráfico en CC: sin dato",
+     "fuente": "cadenas.json (sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    },
+    {
+     "hecho": "Digital Asset, su desarrollador, es parte interesada",
+     "fuente": "cadenas.json (sesgos)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    }
+   ]
+  },
+  "chainlink": {
+   "nombre": "Chainlink (capa de interoperabilidad, no cadena)",
+   "aporta": "No es una cadena. Aporta lo que ninguna de las otras ofrece a terceros a esa escala: oráculos (precios, prueba de reservas, NAV) y mensajería entre cadenas (CCIP en 78 redes), más un motor de orquestación (CRE) que conecta sistemas bancarios (Swift, DTCC, Kinexys) con varias cadenas a la vez. Quant dice ofrecer algo parecido con su propio software.",
+   "puntos_fuertes": [
+    {
+     "hecho": "Directorio CCIP en mainnet: 78 redes y 281 tokens",
+     "fuente": "docs.chain.link, CCIP Directory (parte interesada)",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.chain.link/ccip/directory/mainnet"
+    },
+    {
+     "hecho": "CCIP: 16 operadores independientes por ruta",
+     "fuente": "docs.chain.link",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://chain.link/economics/staking"
+    },
+    {
+     "hecho": "La Collateral AppChain de DTCC (colateral 24/7) usará Chainlink; producción prevista en el 4T-2026",
+     "fuente": "DTCC, nota de 12-may-2026",
+     "nivel": "P",
+     "fecha": "2026-05-12",
+     "url": "https://www.dtcc.com/news/2026/may/12/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management"
+    },
+    {
+     "hecho": "Prueba de entrega contra pago multicadena con pago en Kinexys (J.P. Morgan) y OUSG en la testnet de Ondo Chain",
+     "fuente": "Chainlink, blog CRE-DvP",
+     "nivel": "P",
+     "fecha": "2025-06-12",
+     "url": "https://chain.link/blog/cre-dvp-kinexys-jp-morgan-ondo-finance"
+    },
+    {
+     "hecho": "30,76 mil M$ de «valor total asegurado» (exposición de protocolos que usan sus oráculos; no es liquidez)",
+     "fuente": "DefiLlama, página Chainlink",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://defillama.com/protocol/chainlink"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "Muchos feeds SmartData dependen de una única fuente (emisor, administrador, custodio o auditor)",
+     "fuente": "docs.chain.link, SmartData",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.chain.link/data-feeds/smartdata.md"
+    },
+    {
+     "hecho": "La conexión con el libro mayor de Swift es un anuncio de Chainlink, sin cita de Swift",
+     "fuente": "Chainlink, nota de 28-sep-2026",
+     "nivel": "P",
+     "fecha": "2026-09-28",
+     "url": "https://chain.link/press-releases/chainlink-is-enabling-financial-institutions-to-connect-to-swifts-blockchain-ledger"
+    },
+    {
+     "hecho": "Algorand, IOTA y Ondo no figuran en el directorio CCIP; uso real de los carriles (volumen) sin dato",
+     "fuente": "docs.chain.link, CCIP Directory (leído en Chrome)",
+     "nivel": "P",
+     "fecha": "2026-11-15",
+     "url": "https://docs.chain.link/ccip/directory/mainnet"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2026-05-12",
+     "hito": "DTCC anuncia que su Collateral AppChain usará Chainlink",
+     "fuente": "DTCC",
+     "nivel": "P",
+     "url": "https://www.dtcc.com/news/2026/may/12/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management"
+    },
+    {
+     "fecha": "2026-09-28",
+     "hito": "Chainlink anuncia trabajo para conectar instituciones al libro mayor de Swift",
+     "fuente": "Chainlink",
+     "nivel": "P",
+     "url": "https://chain.link/press-releases/chainlink-is-enabling-financial-institutions-to-connect-to-swifts-blockchain-ledger"
+    },
+    {
+     "fecha": "2026-09-30",
+     "hito": "Fulcrum: flujo de repo y colateral entre cadenas (CRE + CCIP + Data Streams); demostración con DTCC en Sibos 2026",
+     "fuente": "Chainlink, blog",
+     "nivel": "P",
+     "url": "https://chain.link/blog/introducing-chainlink-fulcrum"
+    },
+    {
+     "fecha": "2026-10-14",
+     "hito": "Chainlink en vivo en Stellar",
+     "fuente": "Blog de la SDF",
+     "nivel": "P",
+     "url": "https://stellar.org/blog/foundation-news/chainlink-is-now-live-on-stellar-unleashing-a-new-wave-of-defi-innovation"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Infraestructuras de mercado",
+     "ejemplos": "DTCC (Collateral AppChain)",
+     "estado": "plan (4T-2026)",
+     "fuente": "DTCC",
+     "nivel": "P",
+     "fecha": "2026-05-12"
+    },
+    {
+     "tipo": "Bancos",
+     "ejemplos": "J.P. Morgan Kinexys (prueba DvP); Swift/UBS (piloto, según cadenas.json)",
+     "estado": "prueba / piloto",
+     "fuente": "Chainlink, blog",
+     "nivel": "P",
+     "fecha": "2025-06-12"
+    },
+    {
+     "tipo": "Redes que integran CCIP",
+     "ejemplos": "Ethereum, Solana, BNB Chain, Avalanche, Polygon, Hedera, XDC, Plume, entre 78",
+     "estado": "producción (sin volumen por carril)",
+     "fuente": "CCIP Directory",
+     "nivel": "P",
+     "fecha": "2026-11-15",
+     "url": "https://docs.chain.link/ccip/directory/mainnet"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Interoperabilidad y mensajería entre cadenas",
+     "evidencia": "78 redes en CCIP [P].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Datos de precio, reservas y NAV para RWA",
+     "evidencia": "SmartData [P], con dependencia de fuente única [P].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Orquestación de colateral y entrega contra pago entre sistemas",
+     "evidencia": "DTCC AppChain [P]; Fulcrum [P]; DvP con Kinexys [P].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "Si CRE y CCIP pasan a producción con bancos fuera de pilotos: sin dato",
+     "fuente": "cadenas.json (sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    },
+    {
+     "hecho": "El slashing del staking de LINK solo afecta a operadores de nodo y a los servicios asegurados por staking",
+     "fuente": "chain.link/economics/staking",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://chain.link/economics/staking"
+    }
+   ]
+  },
+  "ondo": {
+   "nombre": "Ondo (emisor y protocolo, no cadena)",
+   "aporta": "No es una cadena sino un emisor: aporta deuda pública tokenizada (USDY 1.970 M$ en circulación; OUSG 312,85 M$) desplegada a la vez en varias redes (OUSG en 4, USDY en 12), lo que la convierte en un caso que conecta redes distintas. Su red propia (Ondo Network) está anunciada.",
+   "puntos_fuertes": [
+    {
+     "hecho": "USDY: 1.970 M$ en circulación con colateralización del 156,90 % (11-nov-2026); OUSG 312,85 M$ (13-nov-2026)",
+     "fuente": "ondo.finance/usdy y /ousg (parte interesada)",
+     "nivel": "P",
+     "fecha": "2026-11-13",
+     "url": "https://ondo.finance/ousg"
+    },
+    {
+     "hecho": "Contratos oficiales: OUSG en Ethereum, Polygon, Solana y XRP Ledger; USDY en 12 redes (incluye Stellar, BNB Chain y Plume)",
+     "fuente": "docs.ondo.finance/addresses",
+     "nivel": "P",
+     "fecha": "2026-11-15",
+     "url": "https://docs.ondo.finance/addresses"
+    },
+    {
+     "hecho": "Suscripción y reembolso instantáneos de OUSG en Ethereum (mínimo 5.000 $; tope global 50 M$ cada 24 h)",
+     "fuente": "docs.ondo.finance, límites",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.ondo.finance/qualified-access-products/ousg/instant-limits.md"
+    },
+    {
+     "hecho": "Reembolso transfronterizo de OUSG con Kinexys, Mastercard y Ripple (activo en XRPL, pago en USD)",
+     "fuente": "Ondo, blog",
+     "nivel": "P",
+     "fecha": "2026-05-06",
+     "url": "https://ondo.finance/blog/ondo-jpmorgan-mastercard-ripple-tokenization"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "Acceso restringido: OUSG solo para compradores cualificados; USDY prohíbe personas de EE. UU., Canadá y otras jurisdicciones",
+     "fuente": "docs.ondo.finance, elegibilidad",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.ondo.finance/qualified-access-products/ousg/eligibility-and-onboarding.md"
+    },
+    {
+     "hecho": "Los productos principales se controlan con multifirmas del equipo",
+     "fuente": "Aragon OTF (resumen de buscador)",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://otf.aragon.org/tokens/ondo"
+    },
+    {
+     "hecho": "Ondo Chain/Network no figura en el directorio CCIP ni en la tabla CCTP",
+     "fuente": "Chainlink y Circle (leídos en Chrome)",
+     "nivel": "P",
+     "fecha": "2026-11-15",
+     "url": "https://docs.chain.link/ccip/directory/mainnet"
+    },
+    {
+     "hecho": "Reembolso instantáneo solo en Ethereum; por encima de los topes hay que pedirlo al emisor",
+     "fuente": "docs.ondo.finance",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.ondo.finance/qualified-access-products/ousg/instant-limits.md"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2026-05-06",
+     "hito": "Reembolso transfronterizo de OUSG con Kinexys, Mastercard y Ripple",
+     "fuente": "Ondo, blog",
+     "nivel": "P",
+     "url": "https://ondo.finance/blog/ondo-jpmorgan-mastercard-ripple-tokenization"
+    },
+    {
+     "fecha": "2026-07-27",
+     "hito": "Ondo presenta Ondo Network como evolución de Ondo Chain",
+     "fuente": "The Block",
+     "nivel": "S",
+     "url": "https://www.theblock.co/news/web3/2026-07-27-ondo-launches-new-execution-network-calling-it-evolution-of-ondo-chain-409792"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Inversores cualificados e institucionales",
+     "ejemplos": "Compradores de OUSG (criterio de patrimonio > 5 M$ personas o > 25 M$ entidades)",
+     "estado": "producción",
+     "fuente": "docs.ondo.finance",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    },
+    {
+     "tipo": "Bancos y redes de pago (piloto)",
+     "ejemplos": "J.P. Morgan Kinexys; Mastercard (MTN)",
+     "estado": "piloto",
+     "fuente": "Ondo, blog",
+     "nivel": "P",
+     "fecha": "2026-05-06",
+     "url": "https://ondo.finance/blog/ondo-jpmorgan-mastercard-ripple-tokenization"
+    },
+    {
+     "tipo": "Comercio",
+     "ejemplos": "Liquidaciones a comercios de Shopify convertidas a USDY (descripción comercial, sin volumen)",
+     "estado": "anunciado",
+     "fuente": "ondo.finance/usdy",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://ondo.finance/usdy"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Tesorería y colateral en deuda pública tokenizada en varias redes",
+     "evidencia": "USDY en 12 redes y OUSG en 4 [P]; OUSG invierte en BUIDL, BENJI y otros fondos [P].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "Si Ondo Chain/Network está en producción y qué papel tendría ONDO: sin dato",
+     "fuente": "cadenas.json (sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    },
+    {
+     "hecho": "Los rendimientos (OUSG 3,70 % y USDY 3,75 % APY) son anunciados por el emisor; no es recomendación",
+     "fuente": "ondo.finance (parte interesada)",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://ondo.finance/usdy"
+    }
+   ]
+  },
+  "algorand": {
+   "nombre": "Algorand",
+   "aporta": "Prueba de participación pura con finalidad por bloque (~2,7 s medida) y control del emisor en cada activo (congelar, recuperar y congelado por defecto para KYC). Es la única de las 16 con cuentas resistentes a la computación cuántica (Falcon) integradas en el protocolo desde la v5.0.0 (aprobada el 15-ago-2026), y aloja dinero electrónico europeo (Quantoz EURQ/USDQ, licencia EMI de DNB según el emisor).",
+   "puntos_fuertes": [
+    {
+     "hecho": "Bloque cada 2,737 s, final al certificarse; tarifa mínima 0,001 ALGO ≈ 0,00008 USD",
+     "fuente": "algonode, en comparativa-liquidacion.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Activos ASA con cuenta de congelación (incluido congelado por defecto) y de recuperación (clawback)",
+     "fuente": "dev.algorand.co, assets",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://dev.algorand.co/concepts/assets/overview/"
+    },
+    {
+     "hecho": "v5.0.0 aprobada (90 % de apoyo el 15-ago-2026): cuentas Falcon-1024 resistentes a computación cuántica en el protocolo y comisiones según uso de recursos (los pagos simples no cambian)",
+     "fuente": "Algorand, blog del 16-ago-2026 (leído 15-nov-2026; parte interesada)",
+     "nivel": "P",
+     "fecha": "2026-08-16",
+     "url": "https://algorand.co/blog/algorand-v5.0.0-is-here.-heres-what-it-means-for-you"
+    },
+    {
+     "hecho": "State Proofs: pruebas firmadas por el consenso para clientes ligeros entre cadenas",
+     "fuente": "Repositorio algorandfoundation/devportal",
+     "nivel": "P",
+     "fecha": "2026-11-15",
+     "url": "https://github.com/algorandfoundation/devportal/blob/main/src/content/docs/concepts/protocol/state-proofs.mdx"
+    },
+    {
+     "hecho": "Un solo incidente en 12 meses (HermesVault, 30.000 $, 26.000 $ recuperados)",
+     "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
+     "nivel": "S",
+     "fecha": "2026-05-19",
+     "url": "https://api.llama.fi/hacks"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "Stablecoins 121 M$ (casi todo USDC); USDQ de Quantoz figura con 1 $ en DefiLlama",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "hecho": "39,4 M$ en RWA distribuidos (1 activo) en RWA.xyz; otras fuentes dan cifras distintas",
+     "fuente": "RWA.xyz y cadenas.json (sesgos)",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks"
+    },
+    {
+     "hecho": "No figura en el directorio CCIP ni en la tabla CCTP, ni en las listas de DTCC, Ondo y BENJI leídas",
+     "fuente": "Chainlink, Circle y comparativa-liquidacion.json",
+     "nivel": "P",
+     "fecha": "2026-11-15",
+     "url": "https://docs.chain.link/ccip/directory/mainnet"
+    },
+    {
+     "hecho": "El bono al proponente lo dota la Fundación y su documentación lo llama «insostenible» solo con comisiones",
+     "fuente": "dev.algorand.co, staking rewards",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://dev.algorand.co/concepts/protocol/staking-rewards/"
+    },
+    {
+     "hecho": "Único hecho bancario: piloto de VersaBank (fuente secundaria)",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "S",
+     "fecha": "2025-08-26"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2026-01",
+     "hito": "La Algorand Foundation pasa su sede a Delaware (EE. UU.); antes Singapur",
+     "fuente": "empresas-redes.json",
+     "nivel": "S"
+    },
+    {
+     "fecha": "2026-06",
+     "hito": "La Fundación presenta una hoja de ruta para ser resistente a la computación cuántica a finales de 2027",
+     "fuente": "Decrypt y CoinDesk (vía buscador; blog de Algorand con el titular de CoinDesk)",
+     "nivel": "S",
+     "url": "https://algorand.co/blog/coindesk-algorand-unveils-roadmap-to-achieve-quantum-resistance-by-2027"
+    },
+    {
+     "fecha": "2026-08-15",
+     "hito": "v5.0.0 aprobada por el 90 % (activa tras ~7 días de enfriamiento; día exacto en mainnet no leído)",
+     "fuente": "Algorand, blog del 16-ago-2026",
+     "nivel": "P",
+     "url": "https://algorand.co/blog/algorand-v5.0.0-is-here.-heres-what-it-means-for-you"
+    },
+    {
+     "fecha": "2026-10-28",
+     "hito": "go-algorand 5.0.5",
+     "fuente": "GitHub algorand/go-algorand, en cadenas-gobernanza.json",
+     "nivel": "P",
+     "url": "https://github.com/algorand/go-algorand/releases/tag/v5.0.5-stable"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Emisores de dinero electrónico",
+     "ejemplos": "Quantoz (EURQ, USDQ, EURD; licencia EMI de DNB según el emisor)",
+     "estado": "producción según el emisor",
+     "fuente": "Quantoz, nota de 3-abr-2025",
+     "nivel": "P",
+     "fecha": "2025-04-03",
+     "url": "https://www.quantoz.com/articles/quantoz-brings-european-regulated-stablecoins-eurq-and-usdq-to-algorand/"
+    },
+    {
+     "tipo": "Custodios",
+     "ejemplos": "Hex Trust (custodia regulada y staking institucional)",
+     "estado": "producción",
+     "fuente": "algorand.co, blog jul-2025",
+     "nivel": "P",
+     "fecha": "2025-07",
+     "url": "https://algorand.co/blog/staking-custody-and-trust-algorand-advances-institutional-staking-with-hex-trust"
+    },
+    {
+     "tipo": "Bancos",
+     "ejemplos": "VersaBank (piloto de recibos de depósito)",
+     "estado": "piloto",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "S",
+     "fecha": "2025-08-26"
+    },
+    {
+     "tipo": "Inmuebles tokenizados",
+     "ejemplos": "Lofty (250 propiedades, 100,6 M$ según el panel de la Fundación)",
+     "estado": "producción según la Fundación",
+     "fuente": "cadenas.json (tipos_activo)",
+     "nivel": "S",
+     "fecha": "2026-11-14"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Activos con control del emisor y pagos baratos con finalidad inmediata",
+     "evidencia": "ASA con congelación/recuperación [P]; 2,7 s y 0,00008 USD [P].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    },
+    {
+     "caso": "Identidad y seguridad de cuentas a largo plazo",
+     "evidencia": "Cuentas Falcon-1024 en el protocolo [P].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "No hay API pública simple del número de proponentes/validadores",
+     "fuente": "cadenas-validadores.json",
+     "nivel": "S",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Pilotos con bancos o con ISO 20022: sin dato",
+     "fuente": "cadenas.json (sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    }
+   ]
+  },
+  "xdc": {
+   "nombre": "XDC Network",
+   "aporta": "Red EVM orientada a la financiación del comercio: XDC Ventures anunció la compra de Contour (cartas de crédito digitales de un consorcio bancario) y ofrece subredes conectadas con XDC Zero. Comisión documentada de unos 0,00004 $ por transferencia y presencia en CCIP y CCTP.",
+   "puntos_fuertes": [
+    {
+     "hecho": "Transferencia simple ≈ 0,00004 US$ según la documentación (no medida)",
+     "fuente": "docs.xdc.network, Gas & Fees",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.xdc.network/learn/gas-fees/"
+    },
+    {
+     "hecho": "108 masternodes activos, 257 en espera y 4 penalizados",
+     "fuente": "RPC público, en cadenas-validadores.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "En el directorio CCIP (2 carriles salientes) y en CCTP de Circle (dominio 18)",
+     "fuente": "Chainlink y Circle (leídos en Chrome)",
+     "nivel": "P",
+     "fecha": "2026-11-15",
+     "url": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+    },
+    {
+     "hecho": "Stablecoins 103,2 M$ (USDC 52,8 M$, USDf 49,8 M$)",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "No aparece entre las 37 redes con valor en RWA.xyz",
+     "fuente": "RWA.xyz",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks"
+    },
+    {
+     "hecho": "No se halló banco ni banco central con fuente primaria (la vinculación de Standard Chartered no está confirmada)",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "TVL DeFi 1,9 M$",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://api.llama.fi/v2/chains"
+    },
+    {
+     "hecho": "Última versión oficial del cliente v2.7.1 (4-jun-2026); la v3.0.0 sigue en testnet",
+     "fuente": "GitHub XinFinOrg/XDPoSChain, en cadenas-gobernanza.json",
+     "nivel": "P",
+     "fecha": "2026-06-04",
+     "url": "https://github.com/XinFinOrg/XDPoSChain/releases/tag/v2.7.1"
+    },
+    {
+     "hecho": "La compra de Contour es un anuncio de parte interesada sin precio ni cierre confirmado",
+     "fuente": "EZ Newswire (XDC Ventures)",
+     "nivel": "P",
+     "fecha": "2025-10-22",
+     "url": "https://www.eznewswire.com/newsroom/xdc-ventures-acquires-contour-network-launches-stablecoin-lab-trade-finance"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2026-06-04",
+     "hito": "XDPoSChain v2.7.1",
+     "fuente": "GitHub, en cadenas-gobernanza.json",
+     "nivel": "P",
+     "url": "https://github.com/XinFinOrg/XDPoSChain/releases/tag/v2.7.1"
+    },
+    {
+     "fecha": "2026-11-15",
+     "hito": "Confirmada su presencia en CCIP y en CCTP de mainnet (fecha de lectura; fecha de alta sin dato)",
+     "fuente": "Chainlink y Circle",
+     "nivel": "P",
+     "url": "https://docs.chain.link/ccip/directory/mainnet/chain/xdc-mainnet"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Financiación del comercio",
+     "ejemplos": "Contour (cartas de crédito digitales; propiedad anunciada de XDC Ventures)",
+     "estado": "anunciado",
+     "fuente": "EZ Newswire",
+     "nivel": "P",
+     "fecha": "2025-10-22"
+    },
+    {
+     "tipo": "Emisores de stablecoins",
+     "ejemplos": "Circle (USDC); Falcon (USDf)",
+     "estado": "producción",
+     "fuente": "DefiLlama",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "tipo": "Custodios",
+     "ejemplos": "Utila (MPC); BitGo",
+     "estado": "producción",
+     "fuente": "Chainwire (XDC)",
+     "nivel": "P",
+     "fecha": "2025-05-27",
+     "url": "https://chainwire.org/2025/05/27/xdc-network-concludes-integration-with-utila-enabling-institutional-access-to-custody-assets/"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Financiación del comercio y documentos comerciales",
+     "evidencia": "Contour [P, anuncio propio]; sin bancos con fuente primaria [P].",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "Swift e ISO 20022 solo autodeclarados; finalidad de 6 s en un artículo y 2 s o 2-4 s en otras páginas",
+     "fuente": "cadenas.json (sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    },
+    {
+     "hecho": "Material casi todo de la propia XDC y de webs promocionales",
+     "fuente": "cadenas.json (sesgos)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    }
+   ]
+  },
+  "quant": {
+   "nombre": "Quant (Overledger; capa de interoperabilidad, no cadena)",
+   "aporta": "No es una cadena: software para conectar sistemas bancarios con varias cadenas (Overledger, Fusion). Según Quant, The Clearing House la eligió para una red de depósitos tokenizados conectada a RTP y CHIPS, disponible en el 1S-2027; sería la única de las 16 ligada a los sistemas de pago interbancario privados de EE. UU.",
+   "puntos_fuertes": [
+    {
+     "hecho": "The Clearing House elige a Quant para su On-Chain Money Initiative (red de depósitos tokenizados conectada a RTP y CHIPS; 1S-2027)",
+     "fuente": "Quant, nota (sin confirmación de TCH leída)",
+     "nivel": "P",
+     "fecha": "2026-09-24",
+     "url": "https://quant.network/news/quant-powers-the-clearing-houses-on-chain-money-initiative-in-the-us/"
+    },
+    {
+     "hecho": "Fusion Rollup en mainnet; dice conectar 74 redes",
+     "fuente": "Quant, nota",
+     "nivel": "P",
+     "fecha": "2026-06-02",
+     "url": "https://quant.network/news/a-new-category-of-infrastructure-the-fusion-rollup-is-live-on-mainnet/"
+    },
+    {
+     "hecho": "Miembro fundador de INATBA y asociado de UK Finance (no es estatus regulatorio)",
+     "fuente": "quant.network/associations",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://quant.network/associations/"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "Sin clientes en producción con fuente primaria",
+     "fuente": "cadenas.json (sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    },
+    {
+     "hecho": "Sin documento primario del modelo de token: quant.network/overledger da «no encontrada» y docs.quant.network no resuelve",
+     "fuente": "Lectura en Chrome (cadenas.json)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    },
+    {
+     "hecho": "No consta licencia ni registro regulatorio en su web",
+     "fuente": "quant.network/associations",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://quant.network/associations/"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2026-06-02",
+     "hito": "Fusion Rollup en mainnet",
+     "fuente": "Quant",
+     "nivel": "P",
+     "url": "https://quant.network/news/a-new-category-of-infrastructure-the-fusion-rollup-is-live-on-mainnet/"
+    },
+    {
+     "fecha": "2026-09-24",
+     "hito": "Anuncio con The Clearing House",
+     "fuente": "Quant",
+     "nivel": "P",
+     "url": "https://quant.network/news/quant-powers-the-clearing-houses-on-chain-money-initiative-in-the-us/"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Bancos (infraestructura interbancaria)",
+     "ejemplos": "The Clearing House (según Quant)",
+     "estado": "plan (1S-2027)",
+     "fuente": "Quant",
+     "nivel": "P",
+     "fecha": "2026-09-24"
+    },
+    {
+     "tipo": "Operadores de nodo",
+     "ejemplos": "Operadores de confianza con stake de QNT",
+     "estado": "producción según Blockworks",
+     "fuente": "Blockworks, Token Transparency",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://blockworks.com/token-transparency/filing/quant"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Conectar sistemas bancarios y depósitos tokenizados con varias cadenas",
+     "evidencia": "TCH (según Quant) [P]; Fusion [P]; descripción comercial sin volumen.",
+     "nivel": "P",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "Afirmaciones propias sin auditoría ni cliente nombrado en Fusion",
+     "fuente": "quant.network/quant-fusion",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://quant.network/quant-fusion/"
+    }
+   ]
+  },
+  "iota": {
+   "nombre": "IOTA",
+   "aporta": "Registro de documentos de comercio e identidad digital en programas públicos: ADAPT, con la Secretaría del AfCFTA, el Tony Blair Institute y el WEF (Kenia, Nigeria y Marruecos), según el blog de IOTA. Es la única de las 16 centrada en comercio e identidad en África; no tiene integración bancaria verificada.",
+   "puntos_fuertes": [
+    {
+     "hecho": "Consenso Starfish en la red principal desde el 23-abr-2026",
+     "fuente": "Blog de IOTA (parte interesada)",
+     "nivel": "P",
+     "fecha": "2026-04-23",
+     "url": "https://blog.iota.org/update-q2-2026/"
+    },
+    {
+     "hecho": "Kenia, Marruecos y Nigeria primeros países de ADAPT (identidad digital, datos de comercio y pagos)",
+     "fuente": "Blog de IOTA; socios no leídos en sus webs",
+     "nivel": "S",
+     "fecha": "2026-05-19",
+     "url": "https://blog.iota.org/first-adapt-implementations"
+    },
+    {
+     "hecho": "60 validadores activos; coeficiente de Nakamoto (1/3) = 7",
+     "fuente": "RPC público, en cadenas-validadores.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Versiones de mainnet frecuentes (v1.34.1 el 21-oct y v1.35.2 el 4-nov-2026)",
+     "fuente": "GitHub iotaledger/iota, en cadenas-gobernanza.json",
+     "nivel": "P",
+     "fecha": "2026-11-04",
+     "url": "https://github.com/iotaledger/iota/releases/tag/v1.35.2"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "Stablecoins 0,42 M$ y TVL 1,1 M$ (solo IOTA EVM)",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "hecho": "No aparece en RWA.xyz",
+     "fuente": "RWA.xyz",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks"
+    },
+    {
+     "hecho": "No figura en CCIP ni en CCTP",
+     "fuente": "Chainlink y Circle (leídos en Chrome)",
+     "nivel": "P",
+     "fecha": "2026-11-15",
+     "url": "https://docs.chain.link/ccip/directory/mainnet"
+    },
+    {
+     "hecho": "No se halló banco ni banco central",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "P",
+     "fecha": "2026-11-15"
+    },
+    {
+     "hecho": "Virtue: 894.500 $ por configuración errónea de oráculo (28-ago-2026)",
+     "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
+     "nivel": "S",
+     "fecha": "2026-08-28",
+     "url": "https://api.llama.fi/hacks"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2026-04-23",
+     "hito": "Consenso Starfish en mainnet",
+     "fuente": "Blog de IOTA",
+     "nivel": "P",
+     "url": "https://blog.iota.org/update-q2-2026/"
+    },
+    {
+     "fecha": "2026-05-19",
+     "hito": "Primeras implementaciones de ADAPT (Kenia, Marruecos, Nigeria)",
+     "fuente": "Blog de IOTA",
+     "nivel": "P",
+     "url": "https://blog.iota.org/first-adapt-implementations"
+    },
+    {
+     "fecha": "2026-11-04",
+     "hito": "IOTA mainnet v1.35.2",
+     "fuente": "GitHub, en cadenas-gobernanza.json",
+     "nivel": "P",
+     "url": "https://github.com/iotaledger/iota/releases/tag/v1.35.2"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Organismos públicos y de comercio",
+     "ejemplos": "Secretaría del AfCFTA, Tony Blair Institute, WEF (según IOTA)",
+     "estado": "implementación en marcha",
+     "fuente": "Blog de IOTA",
+     "nivel": "S",
+     "fecha": "2026-05-19"
+    },
+    {
+     "tipo": "Exportadores",
+     "ejemplos": "TWIN (flores de Kenia, según agregadores)",
+     "estado": "sin verificar",
+     "fuente": "cadenas.json",
+     "nivel": "V",
+     "fecha": "2026-11-14"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Identidad digital y trazabilidad de documentos de comercio",
+     "evidencia": "ADAPT [S]; TWIN [V].",
+     "nivel": "S",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "Integración con ISO 20022, con bancos o con EBSI de la UE: sin resultado",
+     "fuente": "cadenas.json (sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    },
+    {
+     "hecho": "Objetivos como «1.500 M de personas en 2035» son promocionales",
+     "fuente": "cadenas.json (sesgos)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    }
+   ]
+  },
+  "plume": {
+   "nombre": "Plume",
+   "aporta": "Red EVM dedicada solo a activos reales, con monitorización de sanciones y AML en la red y distribución de RWA a otras cadenas (SkyLink). Una empresa de su grupo (Kimber Transfer Agency) figura como agente de transferencia registrado ante la SEC según la prensa; sería la única de las 16 con esa figura propia [VERIFICAR en sec.gov].",
+   "puntos_fuertes": [
+    {
+     "hecho": "114,1 M$ en crédito tokenizado en 29 activos",
+     "fuente": "RWA.xyz",
+     "nivel": "S",
+     "fecha": "2026-11-14",
+     "url": "https://app.rwa.xyz/networks"
+    },
+    {
+     "hecho": "Monitoriza sanciones (OFAC) y AML con Forta, Predicate, TRM, Chainalysis y Elliptic; admite valores bajo Reg. D 506(b)/(c)",
+     "fuente": "docs.plume.org, Compliance (parte interesada)",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.plume.org/plume/plume-security/compliance-at-plume.md"
+    },
+    {
+     "hecho": "Kimber Transfer Agency (100 % de Plume Network Inc.) con registro de agente de transferencia efectivo el 26-sep-2025, según prensa que cita un documento de la SEC",
+     "fuente": "Cointelegraph y otros (vía buscador, 15-nov-2026); sec.gov no accesible (503)",
+     "nivel": "S",
+     "fecha": "2025-10-06",
+     "url": "https://cointelegraph.com/news/plume-network-sec-transfer-agent"
+    },
+    {
+     "hecho": "USDY de Ondo desplegado en Plume; Plume en CCIP (7 carriles) y CCTP (dominio 22)",
+     "fuente": "docs.ondo.finance/addresses; cadenas.json (capas)",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.ondo.finance/addresses"
+    },
+    {
+     "hecho": "Sin incidentes registrados en DefiLlama en 12 meses",
+     "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://api.llama.fi/hacks"
+    }
+   ],
+   "puntos_flacos": [
+    {
+     "hecho": "Stablecoins 10,8 M$ y TVL 1,1 M$",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://stablecoins.llama.fi/stablecoinchains"
+    },
+    {
+     "hecho": "Las cifras de activos varían mucho según el agregador (177 M$ o 577 M$)",
+     "fuente": "CoinPaprika (resumen de buscador)",
+     "nivel": "V",
+     "fecha": "2026-08",
+     "url": "https://coinpaprika.com/ja/education/plume-network/"
+    },
+    {
+     "hecho": "Volumen DEX -94 % en 30 días",
+     "fuente": "DefiLlama, en cadenas-onchain.json",
+     "nivel": "S",
+     "fecha": "2026-11-15",
+     "url": "https://api.llama.fi/v2/chains"
+    },
+    {
+     "hecho": "Instituciones que la usan solo con fuente secundaria (UBS AM vía DigiFT, WisdomTree vía OpenTrade)",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "S",
+     "fecha": "2026-11-15"
+    }
+   ],
+   "mejora_reciente": [
+    {
+     "fecha": "2026-11-15",
+     "hito": "Sin hito con fuente primaria en los últimos 12 meses en el repo; el registro de agente de transferencia (26-sep-2025) y SkyLink (27-ene-2025) quedan fuera de la ventana",
+     "fuente": "cadenas.json (hitos) y búsqueda del 15-nov-2026",
+     "nivel": "P"
+    }
+   ],
+   "quien_la_usa": [
+    {
+     "tipo": "Gestoras (vía intermediarios)",
+     "ejemplos": "UBS Asset Management (uMINT vía DigiFT); WisdomTree (vía OpenTrade)",
+     "estado": "producción [VERIFICAR]",
+     "fuente": "pruebas-bancos.json",
+     "nivel": "S",
+     "fecha": "2025"
+    },
+    {
+     "tipo": "Emisores",
+     "ejemplos": "Ondo (USDY); emisores de crédito tokenizado",
+     "estado": "producción",
+     "fuente": "docs.ondo.finance; RWA.xyz",
+     "nivel": "P",
+     "fecha": "2026-11-14",
+     "url": "https://docs.ondo.finance/addresses"
+    }
+   ],
+   "para_que_sirve_mejor": [
+    {
+     "caso": "Crédito y RWA en DeFi con filtros de sanciones",
+     "evidencia": "114,1 M$ de crédito [S]; compliance documentado [P].",
+     "nivel": "S",
+     "grado": "razonado (deducido de los hechos citados; no es un ranking)"
+    }
+   ],
+   "limites_conocidos": [
+    {
+     "hecho": "El estándar ERC-3643 está anunciado (nov-2024), sin constancia de que esté operativo",
+     "fuente": "PR Newswire",
+     "nivel": "S",
+     "fecha": "2024-11-22",
+     "url": "https://prnewswire.com/news-releases/compliance-meets-scalability-plume-integrates-erc-3643-for-rwa-solutions-302313655.html"
+    },
+    {
+     "hecho": "Integración con ISO 20022 e instituciones con fuente primaria: sin dato",
+     "fuente": "cadenas.json (sin_dato)",
+     "nivel": "P",
+     "fecha": "2026-11-14"
+    }
+   ]
+  }
+ },
+ "lectura_cruzada": {
+  "nota": "Matriz capacidad × red. Las cifras de liquidez y RWA son instantáneas (14-15 nov-2026). Una celda «sin dato» no es NO.",
+  "capacidades": [
+   {
+    "id": "dex_nativo",
+    "n": "DEX en el protocolo",
+    "que": "Libro de órdenes/cambio de divisas como función de la propia red, no como contrato de terceros",
+    "celdas": {
+     "xrpl": {
+      "v": "SÍ",
+      "t": "DEX nativo con XRP/RLUSD, XRP/EUR, XRP/USDC…",
+      "f": "profundidad-multidivisa.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "stellar": {
+      "v": "SÍ",
+      "t": "DEX nativo con XLM/USDC, XLM/EURC y USDC/EURC",
+      "f": "profundidad-multidivisa.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "hedera": {
+      "v": "NO",
+      "t": "DEX como aplicaciones de terceros (DefiLlama mide su volumen)",
+      "f": "cadenas-onchain.json",
+      "n": "R",
+      "d": "2026-11-15"
+     },
+     "ethereum": {
+      "v": "NO",
+      "t": "DEX como aplicaciones de terceros (DefiLlama mide su volumen)",
+      "f": "cadenas-onchain.json",
+      "n": "R",
+      "d": "2026-11-15"
+     },
+     "solana": {
+      "v": "NO",
+      "t": "DEX como aplicaciones de terceros (DefiLlama mide su volumen)",
+      "f": "cadenas-onchain.json",
+      "n": "R",
+      "d": "2026-11-15"
+     },
+     "bnb": {
+      "v": "NO",
+      "t": "DEX como aplicaciones de terceros (DefiLlama mide su volumen)",
+      "f": "cadenas-onchain.json",
+      "n": "R",
+      "d": "2026-11-15"
+     },
+     "avalanche": {
+      "v": "NO",
+      "t": "DEX como aplicaciones de terceros (DefiLlama mide su volumen)",
+      "f": "cadenas-onchain.json",
+      "n": "R",
+      "d": "2026-11-15"
+     },
+     "polygon": {
+      "v": "NO",
+      "t": "DEX como aplicaciones de terceros (DefiLlama mide su volumen)",
+      "f": "cadenas-onchain.json",
+      "n": "R",
+      "d": "2026-11-15"
+     },
+     "canton": {
+      "v": "sin dato"
+     },
+     "chainlink": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "algorand": {
+      "v": "NO",
+      "t": "DEX como aplicaciones de terceros (DefiLlama mide su volumen)",
+      "f": "cadenas-onchain.json",
+      "n": "R",
+      "d": "2026-11-15"
+     },
+     "xdc": {
+      "v": "NO",
+      "t": "DEX como aplicaciones de terceros (DefiLlama mide su volumen)",
+      "f": "cadenas-onchain.json",
+      "n": "R",
+      "d": "2026-11-15"
+     },
+     "quant": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "iota": {
+      "v": "NO",
+      "t": "DEX como aplicaciones de terceros (DefiLlama mide su volumen)",
+      "f": "cadenas-onchain.json",
+      "n": "R",
+      "d": "2026-11-15"
+     },
+     "plume": {
+      "v": "NO",
+      "t": "DEX como aplicaciones de terceros (DefiLlama mide su volumen)",
+      "f": "cadenas-onchain.json",
+      "n": "R",
+      "d": "2026-11-15"
+     }
+    }
+   },
+   {
+    "id": "dex_con_permisos",
+    "n": "DEX con permisos activado",
+    "que": "Mercado nativo restringido a cuentas con credenciales",
+    "celdas": {
+     "xrpl": {
+      "v": "SÍ",
+      "t": "PermissionedDEX y PermissionedDomains activadas",
+      "f": "nodo público, método feature",
+      "n": "P",
+      "d": "2026-11-14",
+      "u": "https://xrpl.org/resources/known-amendments"
+     },
+     "stellar": {
+      "v": "NO",
+      "t": "Sin DEX con permisos en los datos del repo (sí autorización por emisor)",
+      "f": "cadenas.json",
+      "n": "R",
+      "d": "2026-11-14"
+     },
+     "hedera": {
+      "v": "sin dato"
+     },
+     "ethereum": {
+      "v": "sin dato"
+     },
+     "solana": {
+      "v": "sin dato"
+     },
+     "bnb": {
+      "v": "sin dato"
+     },
+     "avalanche": {
+      "v": "sin dato"
+     },
+     "polygon": {
+      "v": "sin dato"
+     },
+     "canton": {
+      "v": "sin dato"
+     },
+     "chainlink": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "algorand": {
+      "v": "sin dato"
+     },
+     "xdc": {
+      "v": "sin dato"
+     },
+     "quant": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "iota": {
+      "v": "sin dato"
+     },
+     "plume": {
+      "v": "sin dato"
+     }
+    }
+   },
+   {
+    "id": "control_emisor",
+    "n": "Control del emisor en el protocolo",
+    "que": "Congelar, recuperar o autorizar tenedores sin contrato propio",
+    "celdas": {
+     "xrpl": {
+      "v": "SÍ",
+      "t": "DeepFreeze, Credentials, MPTokens activadas",
+      "f": "nodo público",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "stellar": {
+      "v": "SÍ",
+      "t": "Autorizar, congelar y recuperar por línea de confianza",
+      "f": "DTCC y dossier panorama",
+      "n": "P",
+      "d": "2026-05-27",
+      "u": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy"
+     },
+     "hedera": {
+      "v": "sin dato"
+     },
+     "ethereum": {
+      "v": "PARCIAL",
+      "t": "Por contrato (ERC-3643), no en el protocolo",
+      "f": "EIP-3643",
+      "n": "P",
+      "d": "2026-11-14",
+      "u": "https://eips.ethereum.org/EIPS/eip-3643"
+     },
+     "solana": {
+      "v": "sin dato"
+     },
+     "bnb": {
+      "v": "sin dato"
+     },
+     "avalanche": {
+      "v": "sin dato"
+     },
+     "polygon": {
+      "v": "PARCIAL",
+      "t": "Por contrato ERC-3643 y cadena T-REX Ledger",
+      "f": "polygon.technology/blog",
+      "n": "P",
+      "d": "2026-03-18"
+     },
+     "canton": {
+      "v": "sin dato"
+     },
+     "chainlink": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "algorand": {
+      "v": "SÍ",
+      "t": "Congelación (también por defecto) y clawback en ASA",
+      "f": "dev.algorand.co",
+      "n": "P",
+      "d": "2026-11-14",
+      "u": "https://dev.algorand.co/concepts/assets/overview/"
+     },
+     "xdc": {
+      "v": "sin dato"
+     },
+     "quant": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "iota": {
+      "v": "sin dato"
+     },
+     "plume": {
+      "v": "PARCIAL",
+      "t": "ERC-3643 anunciado; vigilancia OFAC/AML",
+      "f": "docs.plume.org",
+      "n": "P",
+      "d": "2026-11-14"
+     }
+    }
+   },
+   {
+    "id": "comision_fija_usd",
+    "n": "Comisión fijada en dólares",
+    "que": "Precio de la operación fijado en USD (aunque se pague en el token)",
+    "celdas": {
+     "xrpl": {
+      "v": "NO",
+      "t": "Comisión en el token nativo, variable o fija en unidades del token",
+      "f": "comparativa-liquidacion.json / cadenas.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "stellar": {
+      "v": "NO",
+      "t": "Comisión en el token nativo, variable o fija en unidades del token",
+      "f": "comparativa-liquidacion.json / cadenas.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "hedera": {
+      "v": "SÍ",
+      "t": "Transferencia 0,0001 $, HCS 0,0008 $, token 1 $",
+      "f": "docs.hedera.com",
+      "n": "P",
+      "d": "2026-11-14",
+      "u": "https://docs.hedera.com/hedera/networks/mainnet/fees"
+     },
+     "ethereum": {
+      "v": "NO",
+      "t": "Comisión en el token nativo, variable o fija en unidades del token",
+      "f": "comparativa-liquidacion.json / cadenas.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "solana": {
+      "v": "NO",
+      "t": "Comisión en el token nativo, variable o fija en unidades del token",
+      "f": "comparativa-liquidacion.json / cadenas.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "bnb": {
+      "v": "NO",
+      "t": "Comisión en el token nativo, variable o fija en unidades del token",
+      "f": "comparativa-liquidacion.json / cadenas.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "avalanche": {
+      "v": "NO",
+      "t": "Comisión en el token nativo, variable o fija en unidades del token",
+      "f": "comparativa-liquidacion.json / cadenas.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "polygon": {
+      "v": "NO",
+      "t": "Comisión en el token nativo, variable o fija en unidades del token",
+      "f": "comparativa-liquidacion.json / cadenas.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "canton": {
+      "v": "PARCIAL",
+      "t": "Tráfico del sincronizador global a precio en USD por MB, pagado en CC",
+      "f": "docs.canton.network",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "chainlink": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "algorand": {
+      "v": "NO",
+      "t": "Comisión en el token nativo, variable o fija en unidades del token",
+      "f": "comparativa-liquidacion.json / cadenas.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "xdc": {
+      "v": "NO",
+      "t": "Comisión en el token nativo, variable o fija en unidades del token",
+      "f": "comparativa-liquidacion.json / cadenas.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "quant": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "iota": {
+      "v": "NO",
+      "t": "Comisión en el token nativo, variable o fija en unidades del token",
+      "f": "comparativa-liquidacion.json / cadenas.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "plume": {
+      "v": "NO",
+      "t": "Comisión en el token nativo, variable o fija en unidades del token",
+      "f": "comparativa-liquidacion.json / cadenas.json",
+      "n": "P",
+      "d": "2026-11-15"
+     }
+    }
+   },
+   {
+    "id": "staking_nativo",
+    "n": "Staking nativo del token",
+    "que": "El token se bloquea o delega para asegurar la red y cobra recompensa",
+    "celdas": {
+     "xrpl": {
+      "v": "NO",
+      "t": "Sin staking nativo; consenso por UNL",
+      "f": "cadenas.json",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "stellar": {
+      "v": "NO",
+      "t": "Inflación terminada en 2019; sin staking",
+      "f": "developers.stellar.org",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "hedera": {
+      "v": "SÍ",
+      "t": "Sin bloqueo ni slashing",
+      "f": "docs.hedera.com",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "ethereum": {
+      "v": "SÍ",
+      "t": "35 % del suministro en staking",
+      "f": "ethereum.org",
+      "n": "P",
+      "d": "2026-11-12"
+     },
+     "solana": {
+      "v": "SÍ",
+      "t": "Tasa según % en stake",
+      "f": "docs.anza.xyz",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "bnb": {
+      "v": "SÍ",
+      "t": "PoSA; recompensa de comisiones",
+      "f": "docs.bnbchain.org",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "avalanche": {
+      "v": "SÍ",
+      "t": "Mínimo 2.000 AVAX validar / 25 delegar",
+      "f": "build.avax.network",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "polygon": {
+      "v": "SÍ",
+      "t": "POL; emisión 1 % a validadores",
+      "f": "docs.polygon.technology",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "canton": {
+      "v": "PARCIAL",
+      "t": "Super Validators con stake de CC en la gobernanza",
+      "f": "docs.canton.network",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "chainlink": {
+      "v": "PARCIAL",
+      "t": "Staking de LINK respalda oráculos (no es una cadena)",
+      "f": "chain.link/economics/staking",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "Emisor, no cadena",
+      "f": "cadenas.json",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "algorand": {
+      "v": "SÍ",
+      "t": "Recompensa al proponente desde ene-2025",
+      "f": "dev.algorand.co",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "xdc": {
+      "v": "SÍ",
+      "t": "Masternodes y delegación",
+      "f": "docs.xdc.network",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "quant": {
+      "v": "PARCIAL",
+      "t": "Operadores de nodo con stake de QNT",
+      "f": "Blockworks",
+      "n": "S",
+      "d": "2026-11-14"
+     },
+     "iota": {
+      "v": "SÍ",
+      "t": "Staking flexible (DPoS)",
+      "f": "iota.org",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "plume": {
+      "v": "SÍ",
+      "t": "Staking de PLUME sin APR publicado",
+      "f": "docs.plume.org",
+      "n": "P",
+      "d": "2026-11-14"
+     }
+    }
+   },
+   {
+    "id": "cumplimiento_permisos",
+    "n": "Permisos y cumplimiento en la red",
+    "que": "Controles de identidad/acceso integrados en la red (no solo en una app)",
+    "celdas": {
+     "xrpl": {
+      "v": "SÍ",
+      "t": "Credentials, PermissionedDomains, PermissionedDEX",
+      "f": "nodo público",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "stellar": {
+      "v": "PARCIAL",
+      "t": "Autorización por emisor",
+      "f": "cadenas.json",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "hedera": {
+      "v": "PARCIAL",
+      "t": "Nodos permisionados del Consejo (no KYC de usuarios)",
+      "f": "hedera.com/council",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "ethereum": {
+      "v": "PARCIAL",
+      "t": "ERC-3643 por contrato",
+      "f": "EIP-3643",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "solana": {
+      "v": "sin dato",
+      "t": "No consta en el repo",
+      "f": "cadenas.json",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "bnb": {
+      "v": "PARCIAL",
+      "t": "Pila de privacidad/cumplimiento como hoja de ruta propia",
+      "f": "docs.bnbchain.org",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "avalanche": {
+      "v": "SÍ",
+      "t": "Cada L1 exige requisitos a validadores (KYC, licencia)",
+      "f": "build.avax.network",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "polygon": {
+      "v": "PARCIAL",
+      "t": "T-REX Ledger (cadena aparte con CDK)",
+      "f": "polygon.technology/blog",
+      "n": "P",
+      "d": "2026-03-18"
+     },
+     "canton": {
+      "v": "SÍ",
+      "t": "Red con permisos y privacidad entre participantes",
+      "f": "cadenas.json (tipo) y DTCC",
+      "n": "P",
+      "d": "2026-10-28"
+     },
+     "chainlink": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "algorand": {
+      "v": "PARCIAL",
+      "t": "Congelado por defecto para KYC por activo",
+      "f": "dev.algorand.co",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "xdc": {
+      "v": "sin dato"
+     },
+     "quant": {
+      "v": "PARCIAL",
+      "t": "Nodos con KYC verificado (afirmación propia)",
+      "f": "quant.network",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "iota": {
+      "v": "sin dato"
+     },
+     "plume": {
+      "v": "PARCIAL",
+      "t": "Vigilancia OFAC/AML; no KYC de usuarios",
+      "f": "docs.plume.org",
+      "n": "P",
+      "d": "2026-11-14"
+     }
+    }
+   },
+   {
+    "id": "privacidad_participantes",
+    "n": "Privacidad entre participantes",
+    "que": "Cada parte ve solo sus operaciones",
+    "celdas": {
+     "xrpl": {
+      "v": "NO",
+      "t": "ConfidentialTransfer en votación, sin activar",
+      "f": "nodo público (cadenas-gobernanza.json)",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "stellar": {
+      "v": "sin dato"
+     },
+     "hedera": {
+      "v": "sin dato"
+     },
+     "ethereum": {
+      "v": "sin dato"
+     },
+     "solana": {
+      "v": "sin dato"
+     },
+     "bnb": {
+      "v": "PARCIAL",
+      "t": "Cifrado homomórfico con Zama (hoja de ruta)",
+      "f": "docs.bnbchain.org",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "avalanche": {
+      "v": "PARCIAL",
+      "t": "Una L1 puede mantener datos privados",
+      "f": "build.avax.network",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "polygon": {
+      "v": "sin dato"
+     },
+     "canton": {
+      "v": "SÍ",
+      "t": "Privacidad entre participantes sobre sincronizador",
+      "f": "cadenas.json y docs.canton.network",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "chainlink": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "algorand": {
+      "v": "sin dato"
+     },
+     "xdc": {
+      "v": "sin dato"
+     },
+     "quant": {
+      "v": "PARCIAL",
+      "t": "Fusion con privacidad (afirmación propia)",
+      "f": "quant.network/quant-fusion",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "iota": {
+      "v": "sin dato"
+     },
+     "plume": {
+      "v": "sin dato"
+     }
+    }
+   },
+   {
+    "id": "redes_a_medida",
+    "n": "Redes propias a medida",
+    "que": "Lanzar cadenas propias conectadas a la principal",
+    "celdas": {
+     "xrpl": {
+      "v": "PARCIAL",
+      "t": "XRPL EVM Sidechain",
+      "f": "Ripple Insights",
+      "n": "P",
+      "d": "2025-06-30"
+     },
+     "stellar": {
+      "v": "sin dato"
+     },
+     "hedera": {
+      "v": "sin dato"
+     },
+     "ethereum": {
+      "v": "PARCIAL",
+      "t": "Capas 2 (p. ej. Base) que publican en Ethereum",
+      "f": "J.P. Morgan Kinexys (JPM Coin en Base)",
+      "n": "P",
+      "d": "2026-05-11"
+     },
+     "solana": {
+      "v": "sin dato"
+     },
+     "bnb": {
+      "v": "sin dato"
+     },
+     "avalanche": {
+      "v": "SÍ",
+      "t": "L1 propias (ACP-77) con ICM",
+      "f": "build.avax.network",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "polygon": {
+      "v": "SÍ",
+      "t": "Polygon CDK + Agglayer",
+      "f": "docs.agglayer.dev",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "canton": {
+      "v": "PARCIAL",
+      "t": "Sincronizadores privados además del global",
+      "f": "docs.canton.network",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "chainlink": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "algorand": {
+      "v": "sin dato"
+     },
+     "xdc": {
+      "v": "PARCIAL",
+      "t": "Subredes con XDC Zero",
+      "f": "Docs de XDC",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "quant": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "iota": {
+      "v": "sin dato"
+     },
+     "plume": {
+      "v": "sin dato"
+     }
+    }
+   },
+   {
+    "id": "ccip",
+    "n": "En el directorio CCIP de Chainlink",
+    "que": "Mensajería entre cadenas de Chainlink en mainnet",
+    "celdas": {
+     "xrpl": {
+      "v": "sin dato"
+     },
+     "stellar": {
+      "v": "PARCIAL",
+      "t": "Chainlink en vivo en Stellar (14-oct-2026); no consta como carril CCIP en el repo",
+      "f": "Blog de la SDF",
+      "n": "P",
+      "d": "2026-10-14"
+     },
+     "hedera": {
+      "v": "SÍ",
+      "t": "Figura en el directorio",
+      "f": "docs.chain.link, CCIP Directory",
+      "n": "P",
+      "d": "2026-11-15",
+      "u": "https://docs.chain.link/ccip/directory/mainnet"
+     },
+     "ethereum": {
+      "v": "SÍ",
+      "t": "Figura en el directorio",
+      "f": "docs.chain.link, CCIP Directory",
+      "n": "P",
+      "d": "2026-11-15",
+      "u": "https://docs.chain.link/ccip/directory/mainnet"
+     },
+     "solana": {
+      "v": "SÍ",
+      "t": "Figura en el directorio",
+      "f": "docs.chain.link, CCIP Directory",
+      "n": "P",
+      "d": "2026-11-15",
+      "u": "https://docs.chain.link/ccip/directory/mainnet"
+     },
+     "bnb": {
+      "v": "SÍ",
+      "t": "Figura en el directorio",
+      "f": "docs.chain.link, CCIP Directory",
+      "n": "P",
+      "d": "2026-11-15",
+      "u": "https://docs.chain.link/ccip/directory/mainnet"
+     },
+     "avalanche": {
+      "v": "SÍ",
+      "t": "Figura en el directorio",
+      "f": "docs.chain.link, CCIP Directory",
+      "n": "P",
+      "d": "2026-11-15",
+      "u": "https://docs.chain.link/ccip/directory/mainnet"
+     },
+     "polygon": {
+      "v": "SÍ",
+      "t": "Figura en el directorio",
+      "f": "docs.chain.link, CCIP Directory",
+      "n": "P",
+      "d": "2026-11-15",
+      "u": "https://docs.chain.link/ccip/directory/mainnet"
+     },
+     "canton": {
+      "v": "sin dato"
+     },
+     "chainlink": {
+      "v": "SÍ",
+      "t": "Es el proveedor",
+      "f": "docs.chain.link",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "No figura entre las 78 redes (no prueba que no haya otra vía)",
+      "f": "docs.chain.link, CCIP Directory",
+      "n": "P",
+      "d": "2026-11-15",
+      "u": "https://docs.chain.link/ccip/directory/mainnet"
+     },
+     "algorand": {
+      "v": "NO",
+      "t": "No figura entre las 78 redes (no prueba que no haya otra vía)",
+      "f": "docs.chain.link, CCIP Directory",
+      "n": "P",
+      "d": "2026-11-15",
+      "u": "https://docs.chain.link/ccip/directory/mainnet"
+     },
+     "xdc": {
+      "v": "SÍ",
+      "t": "Figura en el directorio",
+      "f": "docs.chain.link, CCIP Directory",
+      "n": "P",
+      "d": "2026-11-15",
+      "u": "https://docs.chain.link/ccip/directory/mainnet"
+     },
+     "quant": {
+      "v": "sin dato"
+     },
+     "iota": {
+      "v": "NO",
+      "t": "No figura entre las 78 redes (no prueba que no haya otra vía)",
+      "f": "docs.chain.link, CCIP Directory",
+      "n": "P",
+      "d": "2026-11-15",
+      "u": "https://docs.chain.link/ccip/directory/mainnet"
+     },
+     "plume": {
+      "v": "SÍ",
+      "t": "Figura en el directorio",
+      "f": "docs.chain.link, CCIP Directory",
+      "n": "P",
+      "d": "2026-11-15",
+      "u": "https://docs.chain.link/ccip/directory/mainnet"
+     }
+    }
+   },
+   {
+    "id": "cctp",
+    "n": "USDC nativo por CCTP de Circle",
+    "que": "USDC entre cadenas sin puente custodio",
+    "celdas": {
+     "xrpl": {
+      "v": "sin dato"
+     },
+     "stellar": {
+      "v": "SÍ",
+      "t": "Figura en la tabla de CCTP",
+      "f": "Circle Docs",
+      "n": "P",
+      "d": "2026-11-14",
+      "u": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+     },
+     "hedera": {
+      "v": "sin dato"
+     },
+     "ethereum": {
+      "v": "SÍ",
+      "t": "Figura en la tabla de CCTP",
+      "f": "Circle Docs",
+      "n": "R",
+      "d": "2026-11-14",
+      "u": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+     },
+     "solana": {
+      "v": "SÍ",
+      "t": "Figura en la tabla de CCTP",
+      "f": "Circle Docs",
+      "n": "P",
+      "d": "2026-11-14",
+      "u": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+     },
+     "bnb": {
+      "v": "PARCIAL",
+      "t": "Solo USYC, no USDC",
+      "f": "Circle Docs",
+      "n": "P",
+      "d": "2026-11-14",
+      "u": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+     },
+     "avalanche": {
+      "v": "SÍ",
+      "t": "Figura en la tabla de CCTP",
+      "f": "Circle Docs",
+      "n": "P",
+      "d": "2026-11-14",
+      "u": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+     },
+     "polygon": {
+      "v": "SÍ",
+      "t": "Figura en la tabla de CCTP",
+      "f": "Circle Docs",
+      "n": "P",
+      "d": "2026-11-14",
+      "u": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+     },
+     "canton": {
+      "v": "sin dato"
+     },
+     "chainlink": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "No figura en la tabla",
+      "f": "Circle Docs (leída en Chrome)",
+      "n": "P",
+      "d": "2026-11-15",
+      "u": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+     },
+     "algorand": {
+      "v": "NO",
+      "t": "No figura en la tabla",
+      "f": "Circle Docs (leída en Chrome)",
+      "n": "P",
+      "d": "2026-11-15",
+      "u": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+     },
+     "xdc": {
+      "v": "SÍ",
+      "t": "Figura en la tabla de CCTP",
+      "f": "Circle Docs",
+      "n": "P",
+      "d": "2026-11-14",
+      "u": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+     },
+     "quant": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "iota": {
+      "v": "NO",
+      "t": "No figura en la tabla",
+      "f": "Circle Docs (leída en Chrome)",
+      "n": "P",
+      "d": "2026-11-15",
+      "u": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+     },
+     "plume": {
+      "v": "SÍ",
+      "t": "Figura en la tabla de CCTP",
+      "f": "Circle Docs",
+      "n": "P",
+      "d": "2026-11-14",
+      "u": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+     }
+    }
+   },
+   {
+    "id": "liquidez_stablecoins",
+    "n": "Liquidez de stablecoins en la red",
+    "que": "SÍ ≥ 1.000 M$, PARCIAL 100-1.000 M$, NO < 100 M$ (DefiLlama)",
+    "celdas": {
+     "xrpl": {
+      "v": "PARCIAL",
+      "t": "839,3 M$",
+      "f": "DefiLlama (comparativa-liquidacion.json)",
+      "n": "S",
+      "d": "2026-11-15",
+      "u": "https://stablecoins.llama.fi/stablecoinchains"
+     },
+     "stellar": {
+      "v": "PARCIAL",
+      "t": "397,6 M$",
+      "f": "DefiLlama (comparativa-liquidacion.json)",
+      "n": "S",
+      "d": "2026-11-15",
+      "u": "https://stablecoins.llama.fi/stablecoinchains"
+     },
+     "hedera": {
+      "v": "NO",
+      "t": "25,6 M$",
+      "f": "DefiLlama (comparativa-liquidacion.json)",
+      "n": "S",
+      "d": "2026-11-15",
+      "u": "https://stablecoins.llama.fi/stablecoinchains"
+     },
+     "ethereum": {
+      "v": "SÍ",
+      "t": "131.391,6 M$",
+      "f": "DefiLlama (comparativa-liquidacion.json)",
+      "n": "S",
+      "d": "2026-11-15",
+      "u": "https://stablecoins.llama.fi/stablecoinchains"
+     },
+     "solana": {
+      "v": "SÍ",
+      "t": "13.912,8 M$",
+      "f": "DefiLlama (comparativa-liquidacion.json)",
+      "n": "S",
+      "d": "2026-11-15",
+      "u": "https://stablecoins.llama.fi/stablecoinchains"
+     },
+     "bnb": {
+      "v": "SÍ",
+      "t": "12.463,5 M$",
+      "f": "DefiLlama (comparativa-liquidacion.json)",
+      "n": "S",
+      "d": "2026-11-15",
+      "u": "https://stablecoins.llama.fi/stablecoinchains"
+     },
+     "avalanche": {
+      "v": "PARCIAL",
+      "t": "772,8 M$",
+      "f": "DefiLlama (comparativa-liquidacion.json)",
+      "n": "S",
+      "d": "2026-11-15",
+      "u": "https://stablecoins.llama.fi/stablecoinchains"
+     },
+     "polygon": {
+      "v": "SÍ",
+      "t": "2.798,0 M$",
+      "f": "DefiLlama (comparativa-liquidacion.json)",
+      "n": "S",
+      "d": "2026-11-15",
+      "u": "https://stablecoins.llama.fi/stablecoinchains"
+     },
+     "canton": {
+      "v": "sin dato"
+     },
+     "chainlink": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "algorand": {
+      "v": "PARCIAL",
+      "t": "120,7 M$",
+      "f": "DefiLlama (comparativa-liquidacion.json)",
+      "n": "S",
+      "d": "2026-11-15",
+      "u": "https://stablecoins.llama.fi/stablecoinchains"
+     },
+     "xdc": {
+      "v": "PARCIAL",
+      "t": "103,2 M$",
+      "f": "DefiLlama (comparativa-liquidacion.json)",
+      "n": "S",
+      "d": "2026-11-15",
+      "u": "https://stablecoins.llama.fi/stablecoinchains"
+     },
+     "quant": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "iota": {
+      "v": "NO",
+      "t": "0,4 M$",
+      "f": "DefiLlama (comparativa-liquidacion.json)",
+      "n": "S",
+      "d": "2026-11-15",
+      "u": "https://stablecoins.llama.fi/stablecoinchains"
+     },
+     "plume": {
+      "v": "NO",
+      "t": "10,8 M$",
+      "f": "DefiLlama (comparativa-liquidacion.json)",
+      "n": "S",
+      "d": "2026-11-15",
+      "u": "https://stablecoins.llama.fi/stablecoinchains"
+     }
+    }
+   },
+   {
+    "id": "rwa_distribuidos",
+    "n": "RWA distribuidos (transferibles en la red)",
+    "que": "SÍ ≥ 1.000 M$, PARCIAL 100-1.000 M$, NO < 100 M$ (RWA.xyz)",
+    "celdas": {
+     "xrpl": {
+      "v": "PARCIAL",
+      "t": "642,8 M$",
+      "f": "RWA.xyz",
+      "n": "S",
+      "d": "2026-11-14",
+      "u": "https://app.rwa.xyz/networks"
+     },
+     "stellar": {
+      "v": "SÍ",
+      "t": "4.662,8 M$",
+      "f": "RWA.xyz",
+      "n": "S",
+      "d": "2026-11-14",
+      "u": "https://app.rwa.xyz/networks"
+     },
+     "hedera": {
+      "v": "NO",
+      "t": "88,3 M$",
+      "f": "RWA.xyz",
+      "n": "S",
+      "d": "2026-11-14",
+      "u": "https://app.rwa.xyz/networks"
+     },
+     "ethereum": {
+      "v": "SÍ",
+      "t": "15.153,5 M$",
+      "f": "RWA.xyz",
+      "n": "S",
+      "d": "2026-11-14",
+      "u": "https://app.rwa.xyz/networks"
+     },
+     "solana": {
+      "v": "SÍ",
+      "t": "5.144,6 M$",
+      "f": "RWA.xyz",
+      "n": "S",
+      "d": "2026-11-14",
+      "u": "https://app.rwa.xyz/networks"
+     },
+     "bnb": {
+      "v": "SÍ",
+      "t": "6.270,0 M$",
+      "f": "RWA.xyz",
+      "n": "S",
+      "d": "2026-11-14",
+      "u": "https://app.rwa.xyz/networks"
+     },
+     "avalanche": {
+      "v": "SÍ",
+      "t": "1.413,9 M$",
+      "f": "RWA.xyz",
+      "n": "S",
+      "d": "2026-11-14",
+      "u": "https://app.rwa.xyz/networks"
+     },
+     "polygon": {
+      "v": "PARCIAL",
+      "t": "447,6 M$",
+      "f": "RWA.xyz",
+      "n": "S",
+      "d": "2026-11-14",
+      "u": "https://app.rwa.xyz/networks"
+     },
+     "canton": {
+      "v": "NO",
+      "t": "0 $ distribuidos (374.118 M$ representados)",
+      "f": "RWA.xyz",
+      "n": "S",
+      "d": "2026-11-14",
+      "u": "https://app.rwa.xyz/networks"
+     },
+     "chainlink": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "algorand": {
+      "v": "NO",
+      "t": "39,4 M$",
+      "f": "RWA.xyz",
+      "n": "S",
+      "d": "2026-11-14",
+      "u": "https://app.rwa.xyz/networks"
+     },
+     "xdc": {
+      "v": "NO",
+      "t": "No aparece en RWA.xyz",
+      "f": "RWA.xyz",
+      "n": "S",
+      "d": "2026-11-14",
+      "u": "https://app.rwa.xyz/networks"
+     },
+     "quant": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "iota": {
+      "v": "NO",
+      "t": "No aparece en RWA.xyz",
+      "f": "RWA.xyz",
+      "n": "S",
+      "d": "2026-11-14",
+      "u": "https://app.rwa.xyz/networks"
+     },
+     "plume": {
+      "v": "PARCIAL",
+      "t": "Crédito 114,1 M$ más otras clases (RWA.xyz); total por red no leído",
+      "f": "RWA.xyz (tipos_activo)",
+      "n": "S",
+      "d": "2026-11-14",
+      "u": "https://app.rwa.xyz/networks"
+     }
+    }
+   },
+   {
+    "id": "dtc_postnegociacion",
+    "n": "Servicio de tokenización de DTC",
+    "que": "Conexión con la depositaria central de valores de EE. UU.",
+    "celdas": {
+     "xrpl": {
+      "v": "sin dato"
+     },
+     "stellar": {
+      "v": "PARCIAL",
+      "t": "Plan para el 1S-2027",
+      "f": "DTCC",
+      "n": "P",
+      "d": "2026-05-27",
+      "u": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy"
+     },
+     "hedera": {
+      "v": "sin dato"
+     },
+     "ethereum": {
+      "v": "sin dato"
+     },
+     "solana": {
+      "v": "PARCIAL",
+      "t": "Plan para el 2S-2027",
+      "f": "DTCC",
+      "n": "P",
+      "d": "2026-11-12",
+      "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana"
+     },
+     "bnb": {
+      "v": "sin dato"
+     },
+     "avalanche": {
+      "v": "sin dato"
+     },
+     "polygon": {
+      "v": "sin dato"
+     },
+     "canton": {
+      "v": "SÍ",
+      "t": "En producción desde el 28-oct-2026",
+      "f": "DTCC",
+      "n": "P",
+      "d": "2026-10-28",
+      "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live"
+     },
+     "chainlink": {
+      "v": "PARCIAL",
+      "t": "Collateral AppChain de DTCC (otro servicio), prevista 4T-2026",
+      "f": "DTCC",
+      "n": "P",
+      "d": "2026-05-12"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "algorand": {
+      "v": "sin dato"
+     },
+     "xdc": {
+      "v": "sin dato"
+     },
+     "quant": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "iota": {
+      "v": "sin dato"
+     },
+     "plume": {
+      "v": "sin dato"
+     }
+    }
+   },
+   {
+    "id": "liquidacion_banco_realizada",
+    "n": "Liquidación bancaria realizada con fuente primaria",
+    "que": "Según el recuento de pruebas-bancos.json (no mide volumen)",
+    "celdas": {
+     "xrpl": {
+      "v": "PARCIAL",
+      "t": "1 piloto de liquidación con fuente primaria de una de las partes, no completado como producción",
+      "f": "pruebas-bancos.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "stellar": {
+      "v": "NO",
+      "t": "0 liquidaciones con fuente primaria en el recuento",
+      "f": "pruebas-bancos.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "hedera": {
+      "v": "PARCIAL",
+      "t": "1 prueba (desafío BoE/BIS) sin resultados publicados",
+      "f": "pruebas-bancos.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "ethereum": {
+      "v": "SÍ",
+      "t": "3 liquidaciones realizadas con fuente primaria",
+      "f": "pruebas-bancos.json (conteo)",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "solana": {
+      "v": "SÍ",
+      "t": "2 liquidaciones realizadas con fuente primaria",
+      "f": "pruebas-bancos.json (conteo)",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "bnb": {
+      "v": "NO",
+      "t": "0 liquidaciones con fuente primaria en el recuento",
+      "f": "pruebas-bancos.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "avalanche": {
+      "v": "NO",
+      "t": "0 liquidaciones con fuente primaria en el recuento",
+      "f": "pruebas-bancos.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "polygon": {
+      "v": "NO",
+      "t": "0 liquidaciones con fuente primaria en el recuento",
+      "f": "pruebas-bancos.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "canton": {
+      "v": "SÍ",
+      "t": "2 liquidaciones realizadas con fuente primaria",
+      "f": "pruebas-bancos.json (conteo)",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "chainlink": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "algorand": {
+      "v": "NO",
+      "t": "0 liquidaciones con fuente primaria en el recuento",
+      "f": "pruebas-bancos.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "xdc": {
+      "v": "NO",
+      "t": "0 liquidaciones con fuente primaria en el recuento",
+      "f": "pruebas-bancos.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "quant": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "iota": {
+      "v": "NO",
+      "t": "0 liquidaciones con fuente primaria en el recuento",
+      "f": "pruebas-bancos.json",
+      "n": "P",
+      "d": "2026-11-15"
+     },
+     "plume": {
+      "v": "NO",
+      "t": "0 liquidaciones con fuente primaria en el recuento",
+      "f": "pruebas-bancos.json",
+      "n": "P",
+      "d": "2026-11-15"
+     }
+    }
+   },
+   {
+    "id": "etf_spot_eeuu",
+    "n": "ETF spot del token en EE. UU.",
+    "que": "Producto cotizado de contado sobre el token",
+    "celdas": {
+     "xrpl": {
+      "v": "SÍ",
+      "t": "Hay ETF spot",
+      "f": "Dossier ETF del repo",
+      "n": "S",
+      "d": "2026-10-09"
+     },
+     "stellar": {
+      "v": "NO",
+      "t": "Solo el fideicomiso GXLM en OTCQX",
+      "f": "Dossier ETF del repo",
+      "n": "P",
+      "d": "2026-10-09"
+     },
+     "hedera": {
+      "v": "SÍ",
+      "t": "Hay ETF spot",
+      "f": "Dossier ETF del repo",
+      "n": "S",
+      "d": "2026-10-09"
+     },
+     "ethereum": {
+      "v": "SÍ",
+      "t": "Hay ETF spot",
+      "f": "Dossier ETF del repo",
+      "n": "S",
+      "d": "2026-10-09"
+     },
+     "solana": {
+      "v": "SÍ",
+      "t": "Hay ETF spot",
+      "f": "Dossier ETF del repo",
+      "n": "S",
+      "d": "2026-10-09"
+     },
+     "bnb": {
+      "v": "SÍ",
+      "t": "Hay ETF spot",
+      "f": "Dossier ETF del repo",
+      "n": "S",
+      "d": "2026-10-09"
+     },
+     "avalanche": {
+      "v": "SÍ",
+      "t": "Hay ETF spot",
+      "f": "Dossier ETF del repo",
+      "n": "S",
+      "d": "2026-10-09"
+     },
+     "polygon": {
+      "v": "sin dato"
+     },
+     "canton": {
+      "v": "sin dato"
+     },
+     "chainlink": {
+      "v": "SÍ",
+      "t": "Hay ETF spot",
+      "f": "Dossier ETF del repo",
+      "n": "S",
+      "d": "2026-10-09"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "algorand": {
+      "v": "sin dato"
+     },
+     "xdc": {
+      "v": "sin dato"
+     },
+     "quant": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "iota": {
+      "v": "sin dato"
+     },
+     "plume": {
+      "v": "sin dato"
+     }
+    }
+   },
+   {
+    "id": "oraculos_mensajeria_servicio",
+    "n": "Oráculos y mensajería como servicio a otras redes",
+    "que": "Proveer datos y mensajes a muchas cadenas",
+    "celdas": {
+     "xrpl": {
+      "v": "sin dato"
+     },
+     "stellar": {
+      "v": "sin dato"
+     },
+     "hedera": {
+      "v": "sin dato"
+     },
+     "ethereum": {
+      "v": "sin dato"
+     },
+     "solana": {
+      "v": "sin dato"
+     },
+     "bnb": {
+      "v": "sin dato"
+     },
+     "avalanche": {
+      "v": "PARCIAL",
+      "t": "ICM solo entre L1 de Avalanche",
+      "f": "build.avax.network",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "polygon": {
+      "v": "PARCIAL",
+      "t": "Agglayer solo entre cadenas de su ecosistema",
+      "f": "docs.agglayer.dev",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "canton": {
+      "v": "sin dato"
+     },
+     "chainlink": {
+      "v": "SÍ",
+      "t": "CCIP en 78 redes; SmartData",
+      "f": "docs.chain.link",
+      "n": "P",
+      "d": "2026-11-14",
+      "u": "https://docs.chain.link/ccip/directory/mainnet"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "algorand": {
+      "v": "sin dato"
+     },
+     "xdc": {
+      "v": "sin dato"
+     },
+     "quant": {
+      "v": "PARCIAL",
+      "t": "Dice conectar 74 redes (afirmación propia)",
+      "f": "Quant",
+      "n": "P",
+      "d": "2026-06-02"
+     },
+     "iota": {
+      "v": "sin dato"
+     },
+     "plume": {
+      "v": "sin dato"
+     }
+    }
+   },
+   {
+    "id": "comercio_identidad",
+    "n": "Registro de documentos de comercio e identidad",
+    "que": "Uso declarado para comercio exterior o identidad digital",
+    "celdas": {
+     "xrpl": {
+      "v": "PARCIAL",
+      "t": "Credentials (credenciales verificables) activadas",
+      "f": "nodo público",
+      "n": "P",
+      "d": "2026-11-14"
+     },
+     "stellar": {
+      "v": "sin dato"
+     },
+     "hedera": {
+      "v": "sin dato"
+     },
+     "ethereum": {
+      "v": "sin dato"
+     },
+     "solana": {
+      "v": "sin dato"
+     },
+     "bnb": {
+      "v": "sin dato"
+     },
+     "avalanche": {
+      "v": "sin dato"
+     },
+     "polygon": {
+      "v": "sin dato"
+     },
+     "canton": {
+      "v": "sin dato"
+     },
+     "chainlink": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "algorand": {
+      "v": "sin dato"
+     },
+     "xdc": {
+      "v": "PARCIAL",
+      "t": "Cartas de crédito (Contour), anuncio propio",
+      "f": "EZ Newswire",
+      "n": "P",
+      "d": "2025-10-22"
+     },
+     "quant": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "iota": {
+      "v": "SÍ",
+      "t": "ADAPT (AfCFTA, TBI, WEF) según IOTA",
+      "f": "Blog de IOTA",
+      "n": "S",
+      "d": "2026-05-19"
+     },
+     "plume": {
+      "v": "sin dato"
+     }
+    }
+   },
+   {
+    "id": "cuentas_poscuanticas",
+    "n": "Cuentas resistentes a computación cuántica en el protocolo",
+    "que": "Firmas poscuánticas nativas",
+    "celdas": {
+     "xrpl": {
+      "v": "sin dato"
+     },
+     "stellar": {
+      "v": "sin dato"
+     },
+     "hedera": {
+      "v": "sin dato"
+     },
+     "ethereum": {
+      "v": "sin dato"
+     },
+     "solana": {
+      "v": "sin dato"
+     },
+     "bnb": {
+      "v": "sin dato"
+     },
+     "avalanche": {
+      "v": "sin dato"
+     },
+     "polygon": {
+      "v": "sin dato"
+     },
+     "canton": {
+      "v": "sin dato"
+     },
+     "chainlink": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "ondo": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "algorand": {
+      "v": "SÍ",
+      "t": "Cuentas Falcon-1024 desde la v5.0.0 (aprobada 15-ago-2026)",
+      "f": "Algorand, blog",
+      "n": "P",
+      "d": "2026-08-16",
+      "u": "https://algorand.co/blog/algorand-v5.0.0-is-here.-heres-what-it-means-for-you"
+     },
+     "xdc": {
+      "v": "sin dato"
+     },
+     "quant": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "iota": {
+      "v": "sin dato"
+     },
+     "plume": {
+      "v": "sin dato"
+     }
+    }
+   },
+   {
+    "id": "emisor_multired",
+    "n": "Emisor de un mismo producto en varias redes",
+    "que": "El actor emite su producto en varias cadenas",
+    "celdas": {
+     "xrpl": {
+      "v": "sin dato"
+     },
+     "stellar": {
+      "v": "sin dato"
+     },
+     "hedera": {
+      "v": "sin dato"
+     },
+     "ethereum": {
+      "v": "sin dato"
+     },
+     "solana": {
+      "v": "sin dato"
+     },
+     "bnb": {
+      "v": "sin dato"
+     },
+     "avalanche": {
+      "v": "sin dato"
+     },
+     "polygon": {
+      "v": "sin dato"
+     },
+     "canton": {
+      "v": "sin dato"
+     },
+     "chainlink": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "ondo": {
+      "v": "SÍ",
+      "t": "USDY en 12 redes y OUSG en 4",
+      "f": "docs.ondo.finance/addresses",
+      "n": "P",
+      "d": "2026-11-15",
+      "u": "https://docs.ondo.finance/addresses"
+     },
+     "algorand": {
+      "v": "sin dato"
+     },
+     "xdc": {
+      "v": "sin dato"
+     },
+     "quant": {
+      "v": "NO",
+      "t": "no es una cadena",
+      "f": "cadenas.json (tipo)",
+      "n": "P"
+     },
+     "iota": {
+      "v": "sin dato"
+     },
+     "plume": {
+      "v": "PARCIAL",
+      "t": "SkyLink distribuye rendimiento de RWA a 16 redes (ene-2025)",
+      "f": "The Defiant",
+      "n": "S",
+      "d": "2025-01-27"
+     }
+    }
+   }
+  ],
+  "unicas": [
+   {
+    "capacidad": "dex_con_permisos",
+    "n": "DEX con permisos activado",
+    "red": "xrpl",
+    "parciales": [],
+    "sin_dato": 11,
+    "aviso": "Única con SÍ entre los datos del repo; las celdas «sin dato» pueden esconder otra red con la misma capacidad."
+   },
+   {
+    "capacidad": "comision_fija_usd",
+    "n": "Comisión fijada en dólares",
+    "red": "hedera",
+    "parciales": [
+     "canton"
+    ],
+    "sin_dato": 0,
+    "aviso": "Única con SÍ entre los datos del repo; las celdas «sin dato» pueden esconder otra red con la misma capacidad."
+   },
+   {
+    "capacidad": "privacidad_participantes",
+    "n": "Privacidad entre participantes",
+    "red": "canton",
+    "parciales": [
+     "bnb",
+     "avalanche",
+     "quant"
+    ],
+    "sin_dato": 9,
+    "aviso": "Única con SÍ entre los datos del repo; las celdas «sin dato» pueden esconder otra red con la misma capacidad."
+   },
+   {
+    "capacidad": "dtc_postnegociacion",
+    "n": "Servicio de tokenización de DTC",
+    "red": "canton",
+    "parciales": [
+     "stellar",
+     "solana",
+     "chainlink"
+    ],
+    "sin_dato": 10,
+    "aviso": "Única con SÍ entre los datos del repo; las celdas «sin dato» pueden esconder otra red con la misma capacidad."
+   },
+   {
+    "capacidad": "oraculos_mensajeria_servicio",
+    "n": "Oráculos y mensajería como servicio a otras redes",
+    "red": "chainlink",
+    "parciales": [
+     "avalanche",
+     "polygon",
+     "quant"
+    ],
+    "sin_dato": 11,
+    "aviso": "Única con SÍ entre los datos del repo; las celdas «sin dato» pueden esconder otra red con la misma capacidad."
+   },
+   {
+    "capacidad": "comercio_identidad",
+    "n": "Registro de documentos de comercio e identidad",
+    "red": "iota",
+    "parciales": [
+     "xrpl",
+     "xdc"
+    ],
+    "sin_dato": 10,
+    "aviso": "Única con SÍ entre los datos del repo; las celdas «sin dato» pueden esconder otra red con la misma capacidad."
+   },
+   {
+    "capacidad": "cuentas_poscuanticas",
+    "n": "Cuentas resistentes a computación cuántica en el protocolo",
+    "red": "algorand",
+    "parciales": [],
+    "sin_dato": 12,
+    "aviso": "Única con SÍ entre los datos del repo; las celdas «sin dato» pueden esconder otra red con la misma capacidad."
+   },
+   {
+    "capacidad": "emisor_multired",
+    "n": "Emisor de un mismo producto en varias redes",
+    "red": "ondo",
+    "parciales": [
+     "plume"
+    ],
+    "sin_dato": 12,
+    "aviso": "Única con SÍ entre los datos del repo; las celdas «sin dato» pueden esconder otra red con la misma capacidad."
+   }
+  ],
+  "solapes": [
+   {
+    "capacidad": "control_emisor",
+    "n": "Control del emisor en el protocolo",
+    "redes_si": [
+     "xrpl",
+     "stellar",
+     "algorand"
+    ],
+    "parciales": [
+     "ethereum",
+     "polygon",
+     "plume"
+    ]
+   },
+   {
+    "capacidad": "staking_nativo",
+    "n": "Staking nativo del token",
+    "redes_si": [
+     "hedera",
+     "ethereum",
+     "solana",
+     "bnb",
+     "avalanche",
+     "polygon",
+     "algorand",
+     "xdc",
+     "iota",
+     "plume"
+    ],
+    "parciales": [
+     "canton",
+     "chainlink",
+     "quant"
+    ]
+   },
+   {
+    "capacidad": "cumplimiento_permisos",
+    "n": "Permisos y cumplimiento en la red",
+    "redes_si": [
+     "xrpl",
+     "avalanche",
+     "canton"
+    ],
+    "parciales": [
+     "stellar",
+     "hedera",
+     "ethereum",
+     "bnb",
+     "polygon",
+     "algorand",
+     "quant",
+     "plume"
+    ]
+   },
+   {
+    "capacidad": "ccip",
+    "n": "En el directorio CCIP de Chainlink",
+    "redes_si": [
+     "hedera",
+     "ethereum",
+     "solana",
+     "bnb",
+     "avalanche",
+     "polygon",
+     "chainlink",
+     "xdc",
+     "plume"
+    ],
+    "parciales": [
+     "stellar"
+    ]
+   },
+   {
+    "capacidad": "cctp",
+    "n": "USDC nativo por CCTP de Circle",
+    "redes_si": [
+     "stellar",
+     "ethereum",
+     "solana",
+     "avalanche",
+     "polygon",
+     "xdc",
+     "plume"
+    ],
+    "parciales": [
+     "bnb"
+    ]
+   },
+   {
+    "capacidad": "liquidez_stablecoins",
+    "n": "Liquidez de stablecoins en la red",
+    "redes_si": [
+     "ethereum",
+     "solana",
+     "bnb",
+     "polygon"
+    ],
+    "parciales": [
+     "xrpl",
+     "stellar",
+     "avalanche",
+     "algorand",
+     "xdc"
+    ]
+   },
+   {
+    "capacidad": "rwa_distribuidos",
+    "n": "RWA distribuidos (transferibles en la red)",
+    "redes_si": [
+     "stellar",
+     "ethereum",
+     "solana",
+     "bnb",
+     "avalanche"
+    ],
+    "parciales": [
+     "xrpl",
+     "polygon",
+     "plume"
+    ]
+   },
+   {
+    "capacidad": "liquidacion_banco_realizada",
+    "n": "Liquidación bancaria realizada con fuente primaria",
+    "redes_si": [
+     "ethereum",
+     "solana",
+     "canton"
+    ],
+    "parciales": [
+     "xrpl",
+     "hedera"
+    ]
+   },
+   {
+    "capacidad": "etf_spot_eeuu",
+    "n": "ETF spot del token en EE. UU.",
+    "redes_si": [
+     "xrpl",
+     "hedera",
+     "ethereum",
+     "solana",
+     "bnb",
+     "avalanche",
+     "chainlink"
+    ],
+    "parciales": []
+   }
+  ],
+  "lectura": [
+   "HECHO: solo XRPL y Stellar tienen DEX en el protocolo; solo XRPL tiene además DEX con permisos activado.",
+   "HECHO: más de 1.000 M$ en stablecoins solo en Ethereum, Solana, BNB Chain y Polygon; más de 1.000 M$ en RWA distribuidos en Ethereum, BNB Chain, Solana, Stellar y Avalanche; la mayor cifra «representada» está en Canton.",
+   "HECHO: Canton es la única con el servicio de DTC en producción; Stellar y Solana tienen planes para 2027.",
+   "HECHO: el staking nativo es la capacidad más repetida (10 redes con SÍ); no lo tienen XRPL ni Stellar.",
+   "RAZONADO: las capacidades únicas no son excluyentes: una institución puede emitir en una red, mover dinero en otra y conectar ambas con CCIP o CCTP. [ESPECULACIÓN] si eso favorece a alguna red concreta."
+  ]
+ },
+ "lo_que_no_sabemos": [
+  "Volumen real de liquidación por red (se conoce lo emitido, no lo movido), y cuánto es pago entre bancos.",
+  "Volumen de ODL en XRP: Ripple no lo separa del total de Ripple Payments.",
+  "Volumen de las operaciones de DTC en Canton y uso real de los carriles CCIP y CCTP.",
+  "Finalidad real de Solana (no medible con el RPC público) y de Hedera (medida indirecta).",
+  "Capas 2 de Ethereum: no medidas; la comparación es de capa 1.",
+  "Registro de agente de transferencia de Plume/Kimber en sec.gov (servidor no accesible el 15-nov-2026) [VERIFICAR].",
+  "Día exacto de activación en mainnet de Algorand v5.0.0 y de Helicon en Avalanche.",
+  "Número de miembros del Consejo de Hedera, validadores reales de Polygon y BNB Chain, y proponentes de Algorand.",
+  "Si los pilotos antiguos (Palau, Ucrania, Kazajistán, bancos centrales con Ripple) siguen activos.",
+  "Clientes en producción de Quant y estado de Ondo Network.",
+  "Celdas «sin dato» de la matriz: Solana, Hedera y otras pueden tener capacidades (p. ej. control del emisor por extensiones de token) que el repo aún no recoge con fuente."
+ ]
+}

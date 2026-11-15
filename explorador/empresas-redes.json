@@ -1,0 +1,308 @@
+{
+ "_actualizado": "2026-11-15",
+ "tarea": "C317",
+ "nivel_general": "S",
+ "nota_nivel": "P = fuente primaria leída (SEC, regulador, comunicado oficial abierto); S = secundaria (prensa especializada, agregadores, resultados de buscador); V = por verificar [VERIFICAR]. Neutral: no es recomendación de compra/venta. Solo datos de empresas; sin tesis personal.",
+ "metodo": "Búsquedas web y lectura directa de sec.gov (LR-26369) y ripple.com (4-dic-2025) el 15-nov-2026. Muchas licencias y clientes vienen de prensa: se marcan S o V. Las cifras de adquisiciones son las publicadas por las partes o la prensa; las no reveladas van como null.",
+ "aviso": "Los listados de licencias no son exhaustivos: Ripple dice tener más de 75 licencias (dato de la empresa, sin desglose público verificado). Comprobar en los registros oficiales (NMLS, MAS FID, FCA FS Register, DFSA, CSSF, OCC) antes de citar.",
+ "caso_ripple_sec": {
+  "pregunta": "¿Bloquearon el uso de XRP en EE. UU. y Ripple se fue a Singapur?",
+  "veredicto": "Matizar. HECHOS: (1) la SEC demandó a Ripple el 22-dic-2020; (2) varios exchanges de EE. UU. suspendieron XRP por decisión propia (Coinbase desde ene-2021) y lo volvieron a listar el 13-jul-2023 tras la sentencia de la jueza Torres; no hubo orden judicial ni ley que prohibiera tener o usar XRP en EE. UU.; (3) Ripple NO trasladó su sede: sigue en San Francisco; en oct-2020 amenazó con mudarse (Japón, Singapur, Reino Unido, Suiza, EAU) y en ago-2021 dijo que se quedaba; (4) sí creció fuera: Singapur es su sede regional Asia-Pacífico desde 2017, con licencia MPI de la MAS desde oct-2023 (ampliada dic-2025), y según prensa de jul-2025 Singapur gestiona ~50 % de sus flujos de pagos con activos digitales [S]. Desde 2025 la actividad vuelve a crecer en EE. UU. (fin del pleito, compras de empresas estadounidenses, ETF de XRP, banco fiduciario nacional OCC).",
+  "nivel": "S",
+  "cronologia": [
+   {"fecha": "2017-09", "hito": "Ripple abre oficina en Singapur (después sede regional APAC)", "fuente": "https://www.financemagnates.com/cryptocurrency/news/ripple-continues-asian-expansion-new-office-singapore/", "nivel": "S"},
+   {"fecha": "2020-10", "hito": "Garlinghouse y Larsen dicen que estudian mudar la sede fuera de EE. UU. (Japón, Singapur, Reino Unido, Suiza, EAU) por falta de claridad regulatoria", "fuente": "https://www.theblock.co/linked/81998/", "nivel": "S"},
+   {"fecha": "2020-12-22", "hito": "La SEC demanda a Ripple Labs, Garlinghouse y Larsen en el SDNY (1:20-cv-10832) por oferta no registrada de XRP", "fuente": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26369", "nivel": "P"},
+   {"fecha": "2021-01", "hito": "Coinbase y otros exchanges de EE. UU. suspenden la negociación de XRP (decisión voluntaria; fecha exacta de Coinbase 19-ene-2021 [VERIFICAR])", "fuente": "https://blockworks.co/news/coinbase-will-relist-xrp-following-ripple-summary-judgement", "nivel": "V"},
+   {"fecha": "2021-03", "hito": "Ripple nombra a Brooks Entwistle director para el Sudeste Asiático, basado en la sede regional de Singapur", "fuente": "https://ripple.com/ripple-press/ripple-appoints-brooks-entwistle-to-lead-operations-in-fast-growing-southeast-asia-region/", "nivel": "S"},
+   {"fecha": "2021-08", "hito": "Ripple reitera que mantiene la sede en San Francisco; crece contratando fuera", "fuente": "https://www.fxstreet.com/cryptocurrencies/news/ripple-to-keep-headquarters-in-us-despite-lack-of-clarity-around-sec-crypto-regulations-202108050409", "nivel": "S"},
+   {"fecha": "2023-06", "hito": "Aprobación en principio de la MAS para licencia MPI (Ripple Markets APAC Pte Ltd)", "fuente": "https://sg.finance.yahoo.com/news/ripple-obtains-principle-approval-major-020844415.html", "nivel": "S"},
+   {"fecha": "2023-07-13", "hito": "Sentencia sumaria (jueza Torres): las ventas «programáticas» de XRP en exchanges no fueron oferta de valores; las ventas institucionales sí. Ese día Coinbase, Kraken y Bitstamp vuelven a listar XRP (Coinbase excluye Nueva York al principio)", "fuente": "https://fortune.com/crypto/2023/07/13/coinbase-kraken-bitstamp-gemini-xrp-relisting-ripple-decision/", "nivel": "S"},
+   {"fecha": "2023-10-03", "hito": "La MAS concede la licencia MPI completa (tokens de pago digitales) a Ripple Markets APAC", "fuente": "https://ripple.com/ripple-press/ripple-secures-major-payments-institution-license-from-the-monetary-authority-of-singapore/", "nivel": "S"},
+   {"fecha": "2024-08-07", "hito": "Sentencia final: multa civil de 125.035.150 $ y prohibición permanente de violar las normas de registro de la Securities Act de 1933", "fuente": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26369", "nivel": "P"},
+   {"fecha": "2024-10", "hito": "La SEC recurre (2.º Circuito, 24-2648) y Ripple presenta recurso cruzado (24-2705)", "fuente": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26369", "nivel": "P"},
+   {"fecha": "2025-06", "hito": "Torres rechaza el acuerdo para reducir la multa a 50 M$ y levantar la prohibición", "fuente": "https://news.bloomberglaw.com/litigation/ripple-sec-drop-appeal-after-settlement-path-blocked-by-judge", "nivel": "S"},
+   {"fecha": "2025-08-07", "hito": "SEC y Ripple desisten de ambos recursos; la sentencia final (125 M$ y prohibición) sigue en vigor; fin del caso", "fuente": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26369", "nivel": "P"},
+   {"fecha": "2025-08-22", "hito": "El 2.º Circuito aprueba el desistimiento", "fuente": "https://cryptobriefing.com/ripple-sec-settlement-xrp-enforcement", "nivel": "S"},
+   {"fecha": "2025-11-13", "hito": "Primer ETF al contado de XRP en EE. UU. (Canary XRPC, Nasdaq): ~58 M$ de volumen el primer día", "fuente": "https://www.theblock.co/post/378804/canarys-spot-xrp-etf-generates-58-million-in-day-one-trading-volume-surpassing-bitwises-sol-etf-launch-total", "nivel": "S"},
+   {"fecha": "2025-12", "hito": "La MAS amplía la licencia MPI de Ripple Markets APAC (más actividades de pago, XRP y RLUSD, rampas fiat)", "fuente": "https://fintech.global/2025/12/01/ripple-launches-expanded-payments-services-with-mas-approval/", "nivel": "S"},
+   {"fecha": "2025-12-12", "hito": "La OCC concede aprobación condicional a Ripple National Trust Bank (junto a Circle, BitGo, Fidelity Digital Assets y Paxos)", "fuente": "https://www.theblock.co/amp/post/382379/ripple-bitgo-and-paxos-secure-conditional-approval-for-us-banking-charters", "nivel": "S"},
+   {"fecha": "2026-10-26", "hito": "Aprobación final de la OCC a Ripple National Trust Bank (sin depósitos ni préstamos; RLUSD sigue emitido por Standard Custody & Trust, NYDFS)", "fuente": "https://theblock.co/news/regulation/2026-10-26-ripple-gains-final-occ-approval-rlusd-431810", "nivel": "S"}
+  ]
+ },
+ "entidades": [
+  {
+   "id": "ripple",
+   "nombre": "Ripple Labs Inc.",
+   "red": "XRPL",
+   "sede": "San Francisco (EE. UU.)",
+   "sede_nivel": "S",
+   "jurisdicciones": ["EE. UU.", "Singapur (sede APAC)", "EAU (DIFC)", "Reino Unido", "Luxemburgo/UE", "Irlanda [VERIFICAR]", "Suiza (Metaco)"],
+   "licencias": [
+    {"regulador": "MAS (Singapur)", "tipo": "Major Payment Institution (DPT), Ripple Markets APAC Pte Ltd; ampliada dic-2025", "fecha": "2023-10-03", "estado": "vigente", "fuente": "https://ripple.com/ripple-press/ripple-secures-major-payments-institution-license-from-the-monetary-authority-of-singapore/", "nivel": "S"},
+    {"regulador": "DFSA (Dubái, DIFC)", "tipo": "Licencia para pagos con criptoactivos; primera de Ripple en Oriente Medio", "fecha": "2025-03-13", "estado": "vigente", "fuente": "https://mediaoffice.ae/en/news/2025/march/13-03/ripple-secures-dfsa-licence", "nivel": "S"},
+    {"regulador": "NYDFS (Nueva York)", "tipo": "Trust company de propósito limitado vía Standard Custody & Trust (emisor de RLUSD)", "fecha": "2024-06-11", "estado": "vigente", "fuente": "https://cointelegraph.com/news/ripple-labs-closes-standard-custody-acquisition-deal", "nivel": "S"},
+    {"regulador": "OCC (EE. UU.)", "tipo": "Banco fiduciario nacional (Ripple National Trust Bank): condicional 12-dic-2025, final 26-oct-2026", "fecha": "2026-10-26", "estado": "aprobada", "fuente": "https://theblock.co/news/regulation/2026-10-26-ripple-gains-final-occ-approval-rlusd-431810", "nivel": "S"},
+    {"regulador": "FCA (Reino Unido)", "tipo": "Licencia EMI y registro de criptoactivos", "fecha": "2026-01", "estado": "vigente", "fuente": "https://finance.yahoo.com/news/ripple-wins-preliminary-luxembourg-license-113911204.html", "nivel": "S"},
+    {"regulador": "CSSF (Luxemburgo)", "tipo": "EMI de la UE: preliminar 14-ene-2026, completa 2-feb-2026; CASP MiCA en principio [VERIFICAR]", "fecha": "2026-02-02", "estado": "vigente", "fuente": "https://ripple.com/ripple-press/ripple-receives-full-eu-electronic-money-institution-license-in-luxembourg/", "nivel": "S"},
+    {"regulador": "Estados de EE. UU. (NMLS #2314015)", "tipo": "Licencias de transmisor de dinero; Ripple dice tener más de 75 licencias en el mundo", "fecha": "2026", "estado": "vigente", "fuente": "https://ripple.com/insights/building-the-one-stop-shop-for-digital-asset-infrastructure/", "nivel": "S"}
+   ],
+   "adquisiciones": [
+    {"empresa": "Metaco (Suiza, custodia)", "fecha": "2023-05-14", "importe_usd": 250000000, "fuente": "https://blockworks.co/news/ripple-acquires-metaco", "nivel": "S"},
+    {"empresa": "Standard Custody & Trust Company (NY)", "fecha": "2024-06-11", "importe_usd": null, "nota": "anunciada 13-feb-2024; importe no revelado", "fuente": "https://cointelegraph.com/news/ripple-labs-closes-standard-custody-acquisition-deal", "nivel": "S"},
+    {"empresa": "Hidden Road (prime broker) → Ripple Prime", "fecha": "2025-04", "importe_usd": 1250000000, "nota": "cierre oct-2025", "fuente": "https://www.privsource.com/acquisitions/deal/ripple-acquires-hidden-road-for-1-25b-to-build-a-global-digital-asset-prime-brokerage-2VSYWr", "nivel": "S"},
+    {"empresa": "Rail (pagos con stablecoins)", "fecha": "2025-08", "importe_usd": 200000000, "fuente": "https://ripple.com/insights/building-the-one-stop-shop-for-digital-asset-infrastructure/", "nivel": "P"},
+    {"empresa": "GTreasury (gestión de tesorería)", "fecha": "2025-10-16", "importe_usd": 1000000000, "fuente": "https://ripple.com/insights/building-the-one-stop-shop-for-digital-asset-infrastructure/", "nivel": "P"},
+    {"empresa": "Palisade (wallets MPC)", "fecha": "2025", "importe_usd": null, "fuente": "https://ripple.com/insights/building-the-one-stop-shop-for-digital-asset-infrastructure/", "nivel": "P"}
+   ],
+   "clientes_institucionales": [
+    {"quien": "BNY (custodia de reservas de RLUSD)", "fecha": "2025-2026", "fuente": "https://www.ledgerinsights.com/ripple-gets-final-occ-trust-bank-charter-expands-rlusd-partnerships-with-bny-robinhood/", "nivel": "S"},
+    {"quien": "Bancos centrales en pilotos CBDC (Bután, Palau, Montenegro, Colombia, Georgia)", "fecha": "2021-2023", "fuente": null, "nivel": "V", "nota": "[VERIFICAR] de memoria; pilotos, no producción"}
+   ],
+   "oficinas": ["San Francisco (sede)", "Nueva York", "Singapur (APAC)", "Dubái", "Londres", "Toronto [VERIFICAR]"],
+   "otros": [
+    {"hito": "Ronda de 500 M$ a 40.000 M$ de valoración (Fortress, Citadel Securities)", "fecha": "2025-11-05", "fuente": "https://siliconangle.com/2025/11/05/crypto-giant-ripple-lands-500m-40b-valuation/", "nivel": "S"}
+   ]
+  },
+  {
+   "id": "sdf",
+   "nombre": "Stellar Development Foundation (sin ánimo de lucro)",
+   "red": "Stellar",
+   "sede": "EE. UU. [VERIFICAR ciudad]",
+   "sede_nivel": "V",
+   "jurisdicciones": ["EE. UU."],
+   "licencias": [],
+   "licencias_nota": "La fundación no es entidad regulada; las licencias las tienen los emisores (Circle, Franklin Templeton, MoneyGram…).",
+   "adquisiciones": [
+    {"empresa": "MoneyGram (participación minoritaria + puesto en el consejo)", "fecha": "2023-08", "importe_usd": null, "fuente": "https://www.theblock.co/amp/post/245395/stellar-invests-in-moneygram-gets-seat-on-board", "nivel": "S"},
+    {"empresa": "Cashlink (Fráncfort; registrador y custodio de criptovalores) – participación estratégica", "fecha": "2026-04", "importe_usd": null, "fuente": "https://cashlink.de/wp-content/uploads/2026/04/EN-PM_-Stellar-acquires-strategic-stake-in-Cashlink-to-advance-the-European-token-based-capital-market-infrastructure-.pdf", "nivel": "S"},
+    {"empresa": "Archax (Reino Unido) – inversión", "fecha": "[VERIFICAR]", "importe_usd": null, "fuente": "https://fintech.global/?p=211620", "nivel": "S"}
+   ],
+   "clientes_institucionales": [
+    {"quien": "MoneyGram (socio desde 2019, acuerdo comercial 2021)", "fecha": "2019-2021", "fuente": "https://www.fxstreet.com/cryptocurrencies/news/stellar-dips-into-treasury-to-buy-minority-stake-in-moneygram-202308160849", "nivel": "S"},
+    {"quien": "Tradable (acuerdo de ~1.000 M$ en activos tokenizados; naturaleza exacta [VERIFICAR])", "fecha": "2026-07-16", "fuente": "https://cointelegraph.com/news/tradables-1b-stellar-deal-adds-to-institutional-tokenization-boom", "nivel": "S"}
+   ],
+   "oficinas": []
+  },
+  {
+   "id": "hedera",
+   "nombre": "Hedera Council (gobierno) y Hashgraph (desarrollador)",
+   "red": "Hedera",
+   "sede": "Hashgraph: Dallas (dato de 2019, posible desfase [VERIFICAR])",
+   "sede_nivel": "V",
+   "jurisdicciones": ["EE. UU.", "Suiza (Hashgraph Association) [VERIFICAR]"],
+   "licencias": [],
+   "adquisiciones": [],
+   "clientes_institucionales": [
+    {"quien": "Consejo de hasta 39 miembros; 34 en mar-2026; incorporaciones 2025-26: Repsol, FedEx, Accenture, McLaren Racing", "fecha": "2026-03", "fuente": "https://hedera.com/blog/hedera-council-welcomes-4-new-partners/", "nivel": "S"}
+   ],
+   "hitos": [
+    {"fecha": "2025-07-01", "hito": "Mance Harmon (cofundador, presidente de Hashgraph) elegido presidente del Hedera Council por 2 años", "fuente": "https://hedera.com/blog/a-new-era-for-hedera", "nivel": "S"},
+    {"fecha": "2026-02-18", "hito": "Acta del Consejo: elegidos Frank Wang (BitGo) y Deborah Barta para 2026-2027", "fuente": "https://hederacouncil.org/2026-02-18%20Council%20Meeting%20Minutes%20v.1.pdf", "nivel": "S"}
+   ],
+   "oficinas": []
+  },
+  {
+   "id": "ava-labs",
+   "nombre": "Ava Labs",
+   "red": "Avalanche",
+   "sede": "Nueva York (según CB Insights)",
+   "sede_nivel": "S",
+   "jurisdicciones": ["EE. UU.", "Japón (alianzas)", "Hong Kong [VERIFICAR]"],
+   "licencias": [],
+   "adquisiciones": [
+    {"empresa": "EtraPay", "fecha": "2025-02-24", "importe_usd": null, "fuente": "https://cbinsights.com/company/ava-labs", "nivel": "V"}
+   ],
+   "clientes_institucionales": [
+    {"quien": "SMBC, Fireblocks y TIS (Japón): stablecoins y activos reales", "fecha": "2025-04", "fuente": "https://www.thetie.io/insights/recap-quarterly-state-of-avalanche-recap-q2-2025", "nivel": "S"},
+    {"quien": "Animoca Brands: inversión y alianza para Asia y Oriente Medio", "fecha": "2026-03", "fuente": "https://animocabrands.com/announcement/animoca-brands-and-ava-labs-partner-to-support-avalanche-ecosystem-growth-and-adoption", "nivel": "S"}
+   ],
+   "oficinas": []
+  },
+  {
+   "id": "polygon-labs",
+   "nombre": "Polygon Labs",
+   "red": "Polygon",
+   "sede": "[VERIFICAR] (equipo distribuido)",
+   "sede_nivel": "V",
+   "jurisdicciones": ["EE. UU. (vía Coinme)", "Canadá (Sequence, Toronto)"],
+   "licencias": [
+    {"regulador": "Estados de EE. UU. + FinCEN", "tipo": "37 licencias de transmisor de dinero y 11 exenciones; registro MSB en FinCEN (tras cerrar Coinme)", "fecha": "2026-10-15", "estado": "vigente", "fuente": "https://cointelegraph.com/news/polygon-gains-us-payments-licenses-after-closing-coinme-deal", "nivel": "S"}
+   ],
+   "adquisiciones": [
+    {"empresa": "Coinme y Sequence (conjunto)", "fecha": "2026-01-13", "importe_usd": 250000000, "nota": "anunciado; Sequence cierre ene-2026, Coinme cerrado antes del 15-oct-2026", "fuente": "https://polygon.technology/blog/polygon-labs-to-acquire-coinme-and-sequence-to-offer-regulated-stablecoin-payments-in-the-u-s", "nivel": "S"}
+   ],
+   "clientes_institucionales": [],
+   "oficinas": []
+  },
+  {
+   "id": "binance",
+   "nombre": "Binance (BNB Chain)",
+   "red": "BNB Chain",
+   "sede": "Sin sede formal histórica; plataforma global autorizada en ADGM (Abu Dabi) desde dic-2025",
+   "sede_nivel": "S",
+   "jurisdicciones": ["EAU (ADGM)", "varias de la UE y otras [VERIFICAR registro por país]"],
+   "licencias": [
+    {"regulador": "FSRA (ADGM, Abu Dabi)", "tipo": "Tres entidades: exchange, compensación y custodia, broker-dealer para Binance.com", "fecha": "2025-12-08", "estado": "autorizada; inicio previsto 5-ene-2026 [VERIFICAR]", "fuente": "https://cointelegraph.com/news/binance-abu-dhabi-fsra-licenses-exchange-clearing-broker-dealer", "nivel": "S"}
+   ],
+   "adquisiciones": [],
+   "hitos": [
+    {"fecha": "2023-11", "hito": "Acuerdo con el DOJ de EE. UU.: 4.300 M$ y monitor de cumplimiento 3 años", "fuente": "https://www.semafor.com/article/12/08/2025/crypto-giant-binance-to-transfer-operations-to-abu-dhabi", "nivel": "S"},
+    {"fecha": "2025-03", "hito": "MGX (Abu Dabi) invierte 2.000 M$ (en USD1); fecha mar/may según fuente", "fuente": "https://www.semafor.com/article/12/08/2025/crypto-giant-binance-to-transfer-operations-to-abu-dhabi", "nivel": "S"},
+    {"fecha": "2025-10", "hito": "Indulto presidencial a Changpeng Zhao", "fuente": "https://www.capitalbrief.com/briefing/trump-pardons-binance-founder-zhao-after-2024-money-laundering-conviction-fab10c39-640e-497e-a951-6c3bba8b2eff/", "nivel": "S"}
+   ],
+   "clientes_institucionales": [],
+   "oficinas": ["Abu Dabi (ADGM)"]
+  },
+  {
+   "id": "algorand",
+   "nombre": "Algorand Foundation",
+   "red": "Algorand",
+   "sede": "Delaware (EE. UU.), desde ene-2026; antes Singapur",
+   "sede_nivel": "S",
+   "jurisdicciones": ["EE. UU.", "Singapur (hasta 2025)"],
+   "licencias": [],
+   "adquisiciones": [],
+   "hitos": [
+    {"fecha": "2026-01-14", "hito": "Traslada la sede de Singapur a Delaware; nuevo consejo (Bill Barhydt presidente, Alex Holmes, Michael Mosier); Staci Warden sigue de CEO", "fuente": "https://en.cryptonomist.ch/2026/01/14/algorand-foundation-delaware-move/", "nivel": "S"}
+   ],
+   "clientes_institucionales": [],
+   "oficinas": []
+  },
+  {
+   "id": "xdc",
+   "nombre": "XDC Network / XDC Ventures",
+   "red": "XDC",
+   "sede": "Singapur [VERIFICAR entidad]",
+   "sede_nivel": "V",
+   "jurisdicciones": ["Singapur", "India [VERIFICAR]"],
+   "licencias": [],
+   "adquisiciones": [
+    {"empresa": "Contour Network (cartas de crédito digitales; antes respaldada por HSBC y Citi, cerrada a finales de 2023)", "fecha": "2025-10", "importe_usd": null, "fuente": "https://www.gtreview.com/news/digital-trade/xdc-ventures-to-re-energise-contour-after-xalts-sale/", "nivel": "S"}
+   ],
+   "clientes_institucionales": [],
+   "oficinas": []
+  },
+  {
+   "id": "iota",
+   "nombre": "IOTA Foundation e IOTA Ecosystem DLT Foundation",
+   "red": "IOTA",
+   "sede": "IOTA Foundation: Berlín [VERIFICAR]; IOTA Ecosystem DLT Foundation: ADGM (Abu Dabi)",
+   "sede_nivel": "S",
+   "jurisdicciones": ["Alemania", "EAU (ADGM)", "Kenia y otros países africanos (TWIN)"],
+   "licencias": [
+    {"regulador": "ADGM (Abu Dabi)", "tipo": "Primera fundación DLT registrada en ADGM (dotada con >100 M$ en IOTA a 4 años)", "fecha": "2023-11", "estado": "registrada", "fuente": "https://www.adgm.com/media/announcements/iota-becomes-the-first-dlt-foundation-registered-with-adgm-in-abu-dhabi", "nivel": "S"}
+   ],
+   "adquisiciones": [],
+   "clientes_institucionales": [
+    {"quien": "TWIN Foundation (TradeMark Africa, WEF, Tony Blair Institute, GATF, Chartered Institute of Export): lanzada 8-may-2025 en Lusaka; primer despliegue en Kenia (ventanilla única de comercio)", "fecha": "2025-05-08", "fuente": "https://blog.iota.org/twin-foundation-launched/", "nivel": "S"}
+   ],
+   "oficinas": ["Abu Dabi"]
+  },
+  {
+   "id": "digital-asset",
+   "nombre": "Digital Asset Holdings (Canton Network)",
+   "red": "Canton",
+   "sede": "Nueva York [VERIFICAR]",
+   "sede_nivel": "V",
+   "jurisdicciones": ["EE. UU."],
+   "licencias": [],
+   "adquisiciones": [],
+   "clientes_institucionales": [
+    {"quien": "DTCC/DTC: piloto de tokenización de Treasuries custodiados en DTC sobre Canton (carta de no acción de la SEC a DTC del 11-dic-2025; anuncio 17-dic-2025; MVP previsto 1.er semestre de 2026)", "fecha": "2025-12-17", "fuente": "https://cointelegraph.com/news/dtcc-tokenize-us-treasurys-canton-blockchain", "nivel": "S"}
+   ],
+   "hitos": [
+    {"fecha": "2025-06-24", "hito": "Ronda de 135 M$ (DRW y Tradeweb; con Goldman Sachs, BNP Paribas, DTCC…)", "fuente": "https://www.theblock.co/news/deals/2025-06-24-canton-network-digital-asset-raises-135-million-359382", "nivel": "S"},
+    {"fecha": "2026", "hito": "Ronda de 355 M$ liderada por a16z crypto (HSBC, Apollo, CME…); valoración >2.000 M$; fecha exacta [VERIFICAR]", "fuente": "https://thedefiant.io/news/blockchains/digital-asset-canton-network-355m-funding-a16z", "nivel": "S"}
+   ],
+   "oficinas": []
+  },
+  {
+   "id": "plume",
+   "nombre": "Plume Network",
+   "red": "Plume",
+   "sede": "[VERIFICAR]",
+   "sede_nivel": "V",
+   "jurisdicciones": ["EE. UU."],
+   "licencias": [
+    {"regulador": "SEC (EE. UU.)", "tipo": "Registro como agente de transferencias (transfer agent)", "fecha": "2025-10-06", "estado": "registrado", "fuente": "https://cointelegraph.com/news/plume-network-sec-transfer-agent", "nivel": "S"}
+   ],
+   "adquisiciones": [
+    {"empresa": "Dinero (staking líquido, ipxETH)", "fecha": "2025-10-08", "importe_usd": null, "nota": "acuerdo definitivo firmado; cierre [VERIFICAR]", "fuente": "https://blockworks.com/news/plume-dinero", "nivel": "S"}
+   ],
+   "clientes_institucionales": [],
+   "oficinas": []
+  },
+  {
+   "id": "chainlink-labs",
+   "nombre": "Chainlink Labs",
+   "red": "Chainlink (oráculos, multi-cadena)",
+   "sede": "[VERIFICAR]",
+   "sede_nivel": "V",
+   "jurisdicciones": [],
+   "licencias": [],
+   "adquisiciones": [
+    {"empresa": "Atlas (producto de FastLane; subastas de flujo de órdenes)", "fecha": "2026-01", "importe_usd": null, "fuente": "https://www.pulse.bot/crypto/deals/chainlink-acquires-fastlanes-atlas-to-boost-secure-value-recapture-413e738f-aee7-47db-b9a0-b397d6d2caba", "nivel": "S"}
+   ],
+   "clientes_institucionales": [
+    {"quien": "Swift y UBS Tokenize: suscripción/reembolso de fondos tokenizados con mensajes ISO 20022", "fecha": "2025", "fuente": "https://chain.link/blog/chainlink-banking-capital-markets-announcements", "nivel": "S"},
+    {"quien": "Euroclear, Swift y 24 instituciones: datos de eventos corporativos (Sibos 2025)", "fecha": "2025-10", "fuente": "https://www.theblock.co/post/372820/chainlinks-ai-powered-communications-tool-shows-promise-at-streamlining-corporate-actions-data-sharing-globally", "nivel": "S"},
+    {"quien": "Pilotos con bancos centrales (Drex de Brasil, e-HKD de Hong Kong)", "fecha": "[VERIFICAR]", "fuente": null, "nivel": "V"}
+   ],
+   "oficinas": []
+  },
+  {
+   "id": "circle",
+   "nombre": "Circle Internet Group (USDC, EURC)",
+   "red": "Multi-cadena (Ethereum, Solana, Stellar, XRPL, Arc…)",
+   "sede": "Nueva York [VERIFICAR]",
+   "sede_nivel": "V",
+   "jurisdicciones": ["EE. UU.", "Francia/UE", "Singapur", "Reino Unido", "EAU"],
+   "licencias": [
+    {"regulador": "OCC (EE. UU.)", "tipo": "Banco fiduciario nacional: condicional 12-dic-2025; final jul-2026 según una sola fuente", "fecha": "2025-12-12", "estado": "condicional/final [VERIFICAR]", "fuente": "https://www.theblock.co/amp/post/382379/ripple-bitgo-and-paxos-secure-conditional-approval-for-us-banking-charters", "nivel": "S"},
+    {"regulador": "ACPR/AMF (Francia)", "tipo": "EMI para USDC/EURC bajo MiCA (2024) y servicios CASP (titular de 4-may-2026)", "fecha": "2026-05-04", "estado": "[VERIFICAR]", "fuente": "https://www.circle.com/blog/circle-signs-agreement-to-acquire-interop-labs-team-intellectual-property", "nivel": "V"},
+    {"regulador": "NYDFS, MAS y otros", "tipo": "BitLicense (NY), MPI (Singapur)…", "fecha": "[VERIFICAR]", "estado": "[VERIFICAR]", "fuente": null, "nivel": "V"}
+   ],
+   "adquisiciones": [
+    {"empresa": "Hashnote (USYC, fondo monetario tokenizado)", "fecha": "2025-01", "importe_usd": null, "fuente": null, "nivel": "V", "nota": "visto en resumen de buscador; falta enlace primario [VERIFICAR]"},
+    {"empresa": "Interop Labs (equipo y PI; no la red Axelar ni el token AXL)", "fecha": "2025-12-15", "importe_usd": null, "nota": "cierre previsto a principios de 2026 [VERIFICAR]", "fuente": "https://www.circle.com/blog/circle-signs-agreement-to-acquire-interop-labs-team-intellectual-property", "nivel": "S"}
+   ],
+   "clientes_institucionales": [],
+   "oficinas": []
+  },
+  {
+   "id": "ondo",
+   "nombre": "Ondo Finance",
+   "red": "Multi-cadena (Ethereum, Solana, XRPL, Stellar…) y Ondo Chain",
+   "sede": "Nueva York [VERIFICAR]",
+   "sede_nivel": "V",
+   "jurisdicciones": ["EE. UU.", "UE (Liechtenstein) [VERIFICAR]"],
+   "licencias": [
+    {"regulador": "SEC/FINRA (vía Oasis Pro)", "tipo": "Broker-dealer, ATS y agente de transferencias registrados en la SEC", "fecha": "2025-10", "estado": "vigente", "fuente": "https://www.theblock.co/news/deals/2025-10-06-ondo-completes-acquisition-of-us-regulated-broker-oasis-pro-373547", "nivel": "S"}
+   ],
+   "adquisiciones": [
+    {"empresa": "Oasis Pro Markets", "fecha": "2025-10", "importe_usd": null, "nota": "anunciada jul-2025; importe no revelado", "fuente": "https://www.theblock.co/news/deals/2025-10-06-ondo-completes-acquisition-of-us-regulated-broker-oasis-pro-373547", "nivel": "S"}
+   ],
+   "clientes_institucionales": [],
+   "hitos": [
+    {"fecha": "[VERIFICAR]", "hito": "Cierre de la investigación de la SEC sobre Ondo (no encontrado en esta búsqueda)", "fuente": null, "nivel": "V"}
+   ],
+   "oficinas": []
+  },
+  {
+   "id": "quant",
+   "nombre": "Quant Network (Overledger)",
+   "red": "Interoperabilidad multi-cadena (QNT en Ethereum)",
+   "sede": "Londres [VERIFICAR]",
+   "sede_nivel": "V",
+   "jurisdicciones": ["Reino Unido"],
+   "licencias": [],
+   "adquisiciones": [],
+   "clientes_institucionales": [
+    {"quien": "Banco de Inglaterra – Synchronisation Lab: Quant como operador de sincronización (liquidez de empresas no financieras); lanzamiento primavera 2026, ~6 meses", "fecha": "2026", "fuente": "https://www.bankofengland.co.uk/payments/rtgs-future-roadmap/synchro-lab", "nivel": "S"},
+    {"quien": "UK Finance: transacciones interbancarias con depósitos tokenizados sobre Overledger (con EY y Linklaters)", "fecha": "2026 [VERIFICAR]", "fuente": "https://forkast.news/the-uk-just-ran-the-worlds-first-interbank-tokenized-deposit-transactions-the-same-platform-is-headed-to-25-us-banks/", "nivel": "S"}
+   ],
+   "oficinas": []
+  }
+ ]
+}
