@@ -263,41 +263,47 @@
      "hecho": "Comisión mediana cobrada 100 stroops ≈ 0,0000014 USD, la más baja medida en la comparativa",
      "fuente": "Horizon fee_stats; precio DefiLlama, en comparativa-liquidacion.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "Cada transacción cuesta casi nada: unas 7 veces menos que los 0,00001 USD de XRPL. Sirve para micropagos y para emitir o mover muchos tokens sin que la comisión pese. Es una comisión mediana medida hoy; puede subir si hay congestión."
     },
     {
      "hecho": "Ledger cada 5,0 s, final al cerrarse (SCP)",
      "fuente": "horizon.stellar.org, en comparativa-liquidacion.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "SCP es el protocolo de consenso de Stellar (cada validador elige en quién confía y se ponen de acuerdo por grupos). Que sea «final al cerrarse» significa que, cuando el ledger se cierra, el pago ya no se deshace; quien cobra puede actuar a los 5 s sin esperar confirmaciones adicionales."
     },
     {
      "hecho": "4.662,8 M$ en RWA distribuidos, 4.ª red tras Ethereum, BNB Chain y Solana (+31,6 % en 30 días)",
      "fuente": "RWA.xyz, ficha Stellar",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://app.rwa.xyz/networks/stellar"
+     "url": "https://app.rwa.xyz/networks/stellar",
+     "por_que": "RWA son activos del mundo real (bonos, fondos, acciones) representados como token. «Distribuidos» quiere decir que el token está en manos de titulares y se mueve en cadena. Estar 4.ª tras Ethereum, BNB Chain y Solana indica que ya se usa, pero Ethereum tiene unas 3,2 veces más (15.153,5 frente a 4.662,8 M$)."
     },
     {
      "hecho": "BENJI (Franklin Templeton), primer fondo monetario registrado en EE. UU. tokenizado, en Stellar desde 2021; más de 650 M$ del token en Stellar a abr-2026",
      "fuente": "SDF y Franklin, comunicado conjunto (en pruebas-bancos.json)",
      "nivel": "P",
      "fecha": "2026-04",
-     "url": "https://stellar.org/press/franklin-templeton-stellar-development-foundation-mark-five-years-of-benji-the-first-u-s-registered-tokenized-money-market-fund"
+     "url": "https://stellar.org/press/franklin-templeton-stellar-development-foundation-mark-five-years-of-benji-the-first-u-s-registered-tokenized-money-market-fund",
+     "por_que": "BENJI es el fondo monetario tokenizado de Franklin Templeton, una gestora grande y regulada. Que lleve desde 2021 en Stellar es un historial de años con un producto regulado real, más convincente que un anuncio. Es un solo emisor: no prueba que otros vayan a seguirlo."
     },
     {
      "hecho": "USDC nativo con CCTP de Circle desde el 19-may-2026 (sin puente custodio)",
      "fuente": "Blog de la SDF (parte interesada)",
      "nivel": "P",
      "fecha": "2026-05-19",
-     "url": "https://stellar.org/blog/foundation-news/circle-cctp-is-live-on-stellar"
+     "url": "https://stellar.org/blog/foundation-news/circle-cctp-is-live-on-stellar",
+     "por_que": "CCTP es el sistema de Circle para «quemar» USDC en una cadena y crearlo en otra. Un puente custodio, en cambio, guarda los fondos en un depósito de un tercero, que es donde suelen producirse los robos. Sin ese puente, el USDC de Stellar es el emitido directamente por Circle [RAZONADO]."
     },
     {
      "hecho": "16 stablecoins, con EURC, EURCV (euro) y AUDD (dólar australiano)",
      "fuente": "DefiLlama, en comparativa-liquidacion.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://stablecoins.llama.fi/stablecoinchains"
+     "url": "https://stablecoins.llama.fi/stablecoinchains",
+     "por_que": "Una stablecoin es un token que sigue el valor de una moneda. Tener variantes en euro (EURC, EURCV) y en dólar australiano permite cobrar y pagar en monedas locales sin pasar por el dólar, lo que importa en pagos internacionales. 16 es el número de emisiones, no su volumen."
     }
    ],
    "puntos_flacos": [
@@ -306,34 +312,39 @@
      "fuente": "DefiLlama, en comparativa-liquidacion.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://stablecoins.llama.fi/stablecoinchains"
+     "url": "https://stablecoins.llama.fi/stablecoinchains",
+     "por_que": "Las stablecoins son la liquidez de pagos y préstamos: con 398 M$, Stellar tiene unas 330 veces menos que Ethereum (131.392 M$). Con poca liquidez, una operación grande mueve el precio y hay menos donde cambiar o prestar."
     },
     {
      "hecho": "La conexión con DTC es un plan para el 1S-2027, no producción",
      "fuente": "DTCC, nota de 27-may-2026",
      "nivel": "P",
      "fecha": "2026-05-27",
-     "url": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy"
+     "url": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy",
+     "por_que": "DTC es el depositario central de valores de EE. UU., por donde pasa buena parte de la liquidación de acciones y bonos. Una conexión planificada para el primer semestre de 2027 es una intención: hasta que funcione, no hay liquidación de valores reales por esa vía."
     },
     {
      "hecho": "Sin ETF spot en EE. UU. (solo el fideicomiso GXLM en OTCQX)",
      "fuente": "Dossier ETF del repo",
      "nivel": "P",
-     "fecha": "2026-10-09"
+     "fecha": "2026-10-09",
+     "por_que": "Un ETF spot es un fondo cotizado que posee la moneda y permite comprarla desde una cuenta de valores normal. Sin él, el acceso institucional es más difícil. El fideicomiso GXLM cotiza en OTCQX, un mercado secundario con menos liquidez y visibilidad."
     },
     {
      "hecho": "Blend Pools V2 sufrió una manipulación de precio de 10,97 M$ el 22-feb-2026",
      "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
      "nivel": "S",
      "fecha": "2026-02-22",
-     "url": "https://api.llama.fi/hacks"
+     "url": "https://api.llama.fi/hacks",
+     "por_que": "Una manipulación de precio engaña a un protocolo de préstamos para que valore mal un colateral y permita sacar dinero que no debería. Que ocurriera en un protocolo de Stellar (10,97 M$) muestra que el riesgo está también en las aplicaciones y en el oráculo de precios, no solo en la red base."
     },
     {
      "hecho": "Volumen del DEX -53,4 % en 30 días (44,3 M$ en 30 días)",
      "fuente": "DefiLlama, en cadenas-onchain.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://api.llama.fi/v2/chains"
+     "url": "https://api.llama.fi/v2/chains",
+     "por_que": "El volumen del DEX (mercado descentralizado de la red) cayó a menos de la mitad en 30 días. Un DEX con menos volumen suele dar precios menos ajustados al operar. Es un dato de un solo mes y puede ser temporal [RAZONADO]."
     }
    ],
    "mejora_reciente": [
@@ -470,33 +481,38 @@
      "fuente": "docs.hedera.com, tabla de comisiones",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.hedera.com/hedera/networks/mainnet/fees"
+     "url": "https://docs.hedera.com/hedera/networks/mainnet/fees",
+     "por_que": "La comisión se fija en dólares y se paga en HBAR, así que el coste no depende de la cotización del HBAR. Una empresa puede presupuestar: una transferencia 0,0001 $, sellar un mensaje 0,0008 $. En otras redes la comisión varía con la congestión y con el precio del token."
     },
     {
      "hecho": "Registros cada 2,169 s en el mirror node; finalidad aBFT de segundos según la documentación [VERIFICAR medida directa]",
      "fuente": "mirror node público, en comparativa-liquidacion.json",
      "nivel": "S",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "aBFT es una forma de consenso que llega a un acuerdo definitivo aunque haya nodos que fallen o mientan y las comunicaciones se retrasen. El mirror node es un servidor que copia los registros para consultarlos. La cifra de 2,169 s es de registros, no de finalidad: la finalidad no está medida directamente."
     },
     {
      "hecho": "30 nodos; coeficiente de Nakamoto (1/3) = 10",
      "fuente": "mirror node, en cadenas-validadores.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "El coeficiente de Nakamoto cuenta cuántos operadores tendrían que ponerse de acuerdo para controlar un tercio y parar la red. Un 10 con 30 nodos es una cifra concreta; Solana, con muchos más validadores (661), tiene 18, así que más nodos no implica mucho más reparto."
     },
     {
      "hecho": "Staking nativo de HBAR sin bloqueo ni «slashing»",
      "fuente": "docs.hedera.com, Stake HBAR (parte interesada)",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.hedera.com/learn/core-concepts/staking/stake-hbar.md"
+     "url": "https://docs.hedera.com/learn/core-concepts/staking/stake-hbar.md",
+     "por_que": "En staking se bloquea dinero para ayudar a asegurar la red. En muchas redes ese dinero queda bloqueado un tiempo, y el slashing es la pérdida de parte del stake como castigo por errores. Sin bloqueo ni slashing, quien hace staking puede retirar cuando quiera y no arriesga perder por fallos ajenos [RAZONADO]."
     },
     {
      "hecho": "Participó en el desafío DLT del Banco de Inglaterra y el BIS Innovation Hub de Londres (sin resultados publicados)",
      "fuente": "Hedera, blog (en pruebas-bancos.json)",
      "nivel": "P",
      "fecha": "2025-10-28",
-     "url": "https://hedera.com/blog/hedera-participates-in-the-bank-of-england-and-bis-innovation-hubs-dlt-innovation-challenge"
+     "url": "https://hedera.com/blog/hedera-participates-in-the-bank-of-england-and-bis-innovation-hubs-dlt-innovation-challenge",
+     "por_que": "El Banco de Inglaterra y el BIS Innovation Hub probaron cómo liquidar con registros distribuidos. Participar da visibilidad ante bancos centrales, pero sin resultados publicados no se sabe qué demostró ni si habrá uso real."
     }
    ],
    "puntos_flacos": [
@@ -505,42 +521,48 @@
      "fuente": "DefiLlama, en cadenas-onchain.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://stablecoins.llama.fi/stablecoinchains"
+     "url": "https://stablecoins.llama.fi/stablecoinchains",
+     "por_que": "25,6 M$ de stablecoins, casi todo USDC, es unas 15 veces menos que Stellar (398 M$) y miles de veces menos que Ethereum. Con tan poca liquidez no se pueden mover cantidades grandes sin afectar al precio."
     },
     {
      "hecho": "88,3 M$ en RWA distribuidos y 70,3 M$ representados",
      "fuente": "RWA.xyz",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://app.rwa.xyz/networks"
+     "url": "https://app.rwa.xyz/networks",
+     "por_que": "«Distribuidos» son tokens que circulan entre titulares en cadena; «representados» son activos cuya propiedad consta en cadena pero que no circulan libremente (distinción del proveedor de datos). Que haya poco de lo primero limita su uso como colateral o en DeFi [RAZONADO]. Cifras pequeñas frente a Ethereum (15.153,5 M$)."
     },
     {
      "hecho": "Nodos de consenso operados por miembros del Consejo; los nodos comunitarios y sin permisos están anunciados sin fecha",
      "fuente": "hedera.com (resumen de buscador)",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://hedera.com/blog/decentralization-of-the-hedera-mainnet-consensus-node-hosting-and-stake-distribution"
+     "url": "https://hedera.com/blog/decentralization-of-the-hedera-mainnet-consensus-node-hosting-and-stake-distribution",
+     "por_que": "Un nodo de consenso es el que valida los bloques. Si solo lo operan miembros del Consejo (grandes empresas), la red es más estable y fácil de rastrear, pero menos abierta: el consejo pesa mucho. Los nodos comunitarios están anunciados sin fecha."
     },
     {
      "hecho": "El comunicado del RBA sobre Acacia no nombra Hedera (la atribución viene de un blog de LF Decentralized Trust)",
      "fuente": "RBA, nota 2026-13 (en pruebas-bancos.json)",
      "nivel": "P",
      "fecha": "2026-05-18",
-     "url": "https://www.rba.gov.au/media-releases/2026/mr-26-13.html"
+     "url": "https://www.rba.gov.au/media-releases/2026/mr-26-13.html",
+     "por_que": "Es una cuestión de fuente. Se dice que un banco central usó Hedera, pero el comunicado oficial del banco no la nombra; la atribución viene de un blog. Hasta que lo confirme el banco, no es hecho comprobado."
     },
     {
      "hecho": "Bonzo Lend sufrió una manipulación de precio de 9,05 M$ el 11-jul-2026",
      "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
      "nivel": "S",
      "fecha": "2026-07-11",
-     "url": "https://api.llama.fi/hacks"
+     "url": "https://api.llama.fi/hacks",
+     "por_que": "Un oráculo da a un protocolo de préstamos el precio de los activos. Si lo manipulan, el protocolo valora mal el colateral y se pueden sacar fondos (9,05 M$ en Bonzo Lend). Muestra que el riesgo de las aplicaciones no desaparece con una buena red base."
     },
     {
      "hecho": "Comisiones cobradas -45,6 % y volumen DEX -55,9 % en 30 días",
      "fuente": "DefiLlama, en cadenas-onchain.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://api.llama.fi/v2/chains"
+     "url": "https://api.llama.fi/v2/chains",
+     "por_que": "Las comisiones cobradas y el volumen del DEX bajaron más de un 45 % en un mes: menos actividad económica. Es un dato de 30 días y puede ser transitorio, pero indica que ahora el uso no crece [RAZONADO]."
     }
    ],
    "mejora_reciente": [
@@ -665,42 +687,48 @@
      "fuente": "DefiLlama, en comparativa-liquidacion.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://stablecoins.llama.fi/stablecoinchains"
+     "url": "https://stablecoins.llama.fi/stablecoinchains",
+     "por_que": "230 emisiones significa que casi cualquier emisor de stablecoins la tiene disponible. 131.392 M$ es la mayor liquidez: quien presta, cambia o paga en cadena encuentra más contrapartes y menos impacto en el precio. USDT y USDC son los dos grandes emisores."
     },
     {
      "hecho": "15.153,5 M$ en RWA distribuidos (1.ª red), con 2.876 acciones tokenizadas y 87 activos de deuda pública",
      "fuente": "RWA.xyz",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://app.rwa.xyz/networks"
+     "url": "https://app.rwa.xyz/networks",
+     "por_que": "RWA son activos reales tokenizados. Ethereum concentra más que cualquiera de las demás redes: unas 3,2 veces lo de Stellar. Más emisores y tokens crean más herramientas y más colateral utilizable [RAZONADO]."
     },
     {
      "hecho": "TVL DeFi 37.971 M$ y volumen DEX de 52.375 M$ en 30 días",
      "fuente": "DefiLlama, en cadenas-onchain.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://api.llama.fi/v2/chains"
+     "url": "https://api.llama.fi/v2/chains",
+     "por_que": "TVL es el valor total depositado en protocolos DeFi (préstamos, intercambios). Un TVL alto indica más dinero y más usos disponibles. El volumen de 52.375 M$ en 30 días mide cuánto se negocia en sus mercados descentralizados."
     },
     {
      "hecho": "44,19 M de ETH en staking (35 % del suministro), APR del 2,5 % (página sin fecha)",
      "fuente": "ethereum.org/staking",
      "nivel": "P",
      "fecha": "2026-11-12",
-     "url": "https://ethereum.org/en/staking/"
+     "url": "https://ethereum.org/en/staking/",
+     "por_que": "En el staking de Ethereum se bloquean ETH para validar bloques. Que el 35 % del suministro esté bloqueado hace caro atacar la red, porque hay mucho valor en juego [RAZONADO]. El 2,5 % es la rentabilidad anual del staking; la fuente no lleva fecha."
     },
     {
      "hecho": "El BEI emitió en 2021 un bono digital de 100 M€ en la Ethereum pública, con el pago representado en CBDC del Banque de France",
      "fuente": "BEI, comunicado 2021-141",
      "nivel": "P",
      "fecha": "2021-04-27",
-     "url": "https://www.eib.org/en/press/all/2021-141-european-investment-bank-eib-issues-its-first-ever-digital-bond-on-a-public-blockchain"
+     "url": "https://www.eib.org/en/press/all/2021-141-european-investment-bank-eib-issues-its-first-ever-digital-bond-on-a-public-blockchain",
+     "por_que": "Un bono digital es un bono emitido directamente como token. El BEI lo emitió en 2021 en una red pública (no privada) y lo liquidó con dinero de banco central tokenizado: una prueba real de que una institución pública europea puede usarla."
     },
     {
      "hecho": "Estándar ERC-3643: identidad y reglas de cumplimiento comprobadas en cadena antes de cada transferencia",
      "fuente": "EIP-3643",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://eips.ethereum.org/EIPS/eip-3643"
+     "url": "https://eips.ethereum.org/EIPS/eip-3643",
+     "por_que": "ERC-3643 es un estándar para tokens de valores: antes de cada transferencia se comprueba en cadena que ambas partes están identificadas y que la operación cumple las reglas. Permite emitir valores regulados sobre una red pública sin que acaben en manos no autorizadas."
     }
    ],
    "puntos_flacos": [
@@ -708,33 +736,38 @@
      "hecho": "Finalidad «finalized» a ~1.056 s (~18 min) del último bloque en la capa 1",
      "fuente": "ethereum-rpc.publicnode.com, en comparativa-liquidacion.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "Finalidad es el momento en que una transacción ya no puede deshacerse. En la capa 1 de Ethereum tarda unos 18 minutos; en XRPL son 3,7 s. Esa espera no sirve para pagos al instante ni para liquidaciones rápidas."
     },
     {
      "hecho": "Transferencia simple ≈ 0,0109 USD en la capa 1, la comisión más alta de la comparativa en ese momento",
      "fuente": "eth_feeHistory; precio DefiLlama",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "Mover algo cuesta 0,0109 USD en la capa 1, unas 1.000 veces más que los 0,00001 USD de XRPL. Para valores grandes es irrelevante; para micropagos, no. Es una medida de un momento: varía con la demanda."
     },
     {
      "hecho": "Capacidad observada 21 tx/s en la capa 1 (las capas 2 no se miden)",
      "fuente": "ethereum-rpc.publicnode.com, en comparativa-liquidacion.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "21 transacciones por segundo en la capa 1 frente a 1.225 en Solana, unas 58 veces menos. Las capas 2 son redes que se apoyan en Ethereum y agrupan transacciones para dar más capacidad, pero no entran en esta medida."
     },
     {
      "hecho": "105 incidentes en 12 meses en DefiLlama (incluye el de Binance de 6.360 M$ atribuido a varias redes; no sumar entre redes)",
      "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://api.llama.fi/hacks"
+     "url": "https://api.llama.fi/hacks",
+     "por_que": "105 incidentes en 12 meses (hackeos, fallos de protocolos) es una cifra alta, pero Ethereum alberga mucho más: más aplicaciones, más superficie de ataque [RAZONADO]. Incluye un caso de 6.360 M$ atribuido a varias redes, por lo que no se puede sumar entre redes."
     },
     {
      "hecho": "Glamsterdam sin fecha en mainnet (aplazada en Hoodi el 22-oct-2026)",
      "fuente": "Everstake (secundaria)",
      "nivel": "S",
      "fecha": "2026-10-22",
-     "url": "https://everstake.one/resources/blog/ethereum-glamsterdam-upgrade-explained"
+     "url": "https://everstake.one/resources/blog/ethereum-glamsterdam-upgrade-explained",
+     "por_que": "Glamsterdam es una actualización grande planificada. Aplazarse en la red de pruebas Hoodi (22-oct-2026) y no tener fecha en la principal significa que las mejoras anunciadas no llegarán aún. Es un retraso, no un fallo [RAZONADO]."
     }
    ],
    "mejora_reciente": [
@@ -868,34 +901,39 @@
      "hecho": "1.225,3 tx/s observadas en media hora y slot medio de 0,215 s",
      "fuente": "api.mainnet-beta.solana.com, en comparativa-liquidacion.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "1.225 tx/s medidas y un slot (el intervalo entre bloques) de 0,215 s significan que la red procesa mucho y casi sin esperar: unas 58 veces más transacciones que la capa 1 de Ethereum (21 tx/s). Importa para aplicaciones con muchas operaciones muy rápidas."
     },
     {
      "hecho": "Stablecoins 13.913 M$ en 78 emisiones (USDC 7.397 M$, PYUSD 803 M$); comisión ≈ 0,00036 USD",
      "fuente": "DefiLlama; getRecentPrioritizationFees",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://stablecoins.llama.fi/stablecoinchains"
+     "url": "https://stablecoins.llama.fi/stablecoinchains",
+     "por_que": "13.913 M$ en stablecoins son la 2.ª mayor liquidez: unas 10 veces menos que Ethereum pero 35 veces más que Stellar. La comisión de unos 0,00036 USD es baja, aunque mayor que la de XRPL o Stellar."
     },
     {
      "hecho": "5.144,6 M$ en RWA distribuidos (3.ª red) y 1,03 M de titulares de RWA",
      "fuente": "RWA.xyz",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://app.rwa.xyz/networks"
+     "url": "https://app.rwa.xyz/networks",
+     "por_que": "1,03 M de titulares de RWA indica que muchos usuarios minoristas tienen estos tokens, no solo instituciones. 5.144,6 M$ la sitúa 3.ª, por delante de Stellar (4.662,8 M$)."
     },
     {
      "hecho": "J.P. Morgan creó el token y gestionó la entrega contra pago del papel comercial de Galaxy en Solana, con liquidación en USDC",
      "fuente": "J.P. Morgan, comunicado",
      "nivel": "P",
      "fecha": "2025-12-11",
-     "url": "https://www.jpmorgan.com/about-us/corporate-news/2025/jpmorgan-commercial-paper-issuance-solana-blockchain"
+     "url": "https://www.jpmorgan.com/about-us/corporate-news/2025/jpmorgan-commercial-paper-issuance-solana-blockchain",
+     "por_que": "Entrega contra pago (DvP) significa que el papel y el dinero cambian de manos a la vez, de modo que ninguna parte queda expuesta. Que un banco como J.P. Morgan lo hiciera en Solana con USDC es una prueba real; es un caso concreto, no un uso generalizado."
     },
     {
      "hecho": "661 validadores activos; coeficiente de Nakamoto (1/3) = 18",
      "fuente": "RPC público, en cadenas-validadores.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "Un validador procesa y verifica bloques. 661 es un número alto, pero el coeficiente de Nakamoto 18 quiere decir que 18 operadores juntos controlan un tercio y podrían parar la red: el reparto es menos amplio de lo que sugiere el recuento."
     }
    ],
    "puntos_flacos": [
@@ -903,33 +941,38 @@
      "hecho": "La finalidad real no es medible con el RPC público; no hay cifra medida",
      "fuente": "api.mainnet-beta.solana.com, en comparativa-liquidacion.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "Finalidad es el instante en que una transacción ya no puede revertirse. En Solana no se puede medir con el RPC público (la consulta abierta que usamos), así que no hay cifra y no se puede comparar con los 3,7 s de XRPL."
     },
     {
      "hecho": "El recuento de tx/s no separa los votos de los validadores en esta fuente",
      "fuente": "getRecentPerformanceSamples",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "En Solana los validadores votan con transacciones, y la fuente las cuenta junto con las de los usuarios. Los 1.225 tx/s incluyen por tanto votos, y las transacciones de usuarios reales son menos; sin separarlos, el dato impresiona más de lo que dice."
     },
     {
      "hecho": "La conexión con DTC es un plan para el 2S-2027, no producción",
      "fuente": "DTCC, nota de 12-nov-2026",
      "nivel": "P",
      "fecha": "2026-11-12",
-     "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana"
+     "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana",
+     "por_que": "DTC es el depositario de valores de EE. UU. Conectarlo es un plan para el segundo semestre de 2027: hasta entonces, el uso con valores regulados de EE. UU. depende de otras vías."
     },
     {
      "hecho": "20 incidentes en 12 meses con 451 M$ en DefiLlama (atribución doble posible)",
      "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://api.llama.fi/hacks"
+     "url": "https://api.llama.fi/hacks",
+     "por_que": "20 incidentes en 12 meses con 451 M$ en DefiLlama. Un incidente es un hackeo o fallo de un protocolo, no necesariamente de la red base; la atribución doble significa que algún caso podría contarse también en otra red."
     },
     {
      "hecho": "39 validadores morosos (delinquent) en la lectura",
      "fuente": "RPC público, en cadenas-validadores.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "Un validador moroso (delinquent) es el que no vota al día. 39 de 661 son pocos, pero si fallaran muchos la red avanzaría peor y la seguridad se apoyaría en menos nodos activos [RAZONADO]."
     }
    ],
    "mejora_reciente": [
@@ -1058,35 +1101,40 @@
      "fuente": "RWA.xyz, ficha BNB Chain",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://app.rwa.xyz/networks/bnb-chain"
+     "url": "https://app.rwa.xyz/networks/bnb-chain",
+     "por_que": "6.270 M$ de RWA distribuidos la sitúan 2.ª, por detrás de Ethereum (15.153,5 M$) y por delante de Solana (5.144,6 M$). Acciones tokenizadas son acciones representadas por un token: 2.912 son muchas referencias, aunque solo 1.700 M$ de valor."
     },
     {
      "hecho": "Stablecoins 12.464 M$ (USDT 9.180 M$); 96 M de titulares de stablecoins",
      "fuente": "DefiLlama y RWA.xyz",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://stablecoins.llama.fi/stablecoinchains"
+     "url": "https://stablecoins.llama.fi/stablecoinchains",
+     "por_que": "12.464 M$ de stablecoins es una liquidez similar a la de Solana (13.913 M$) y unas 10 veces menor que la de Ethereum. 96 M de titulares indican una base de usuarios muy amplia, sobre todo ligada al ecosistema de Binance [RAZONADO]."
     },
     {
      "hecho": "BUIDL (BlackRock/Securitize) lanzado en BNB Chain y aceptado como colateral fuera de bolsa en Binance",
      "fuente": "BlackRock/Securitize, comunicado",
      "nivel": "P",
      "fecha": "2025-11-14",
-     "url": "https://www.prnewswire.com/news-releases/blackrocks-buidl-tokenized-by-securitize-now-accepted-as-collateral-for-trading-on-binance-and-launches-on-bnb-chain-302613374.html"
+     "url": "https://www.prnewswire.com/news-releases/blackrocks-buidl-tokenized-by-securitize-now-accepted-as-collateral-for-trading-on-binance-and-launches-on-bnb-chain-302613374.html",
+     "por_que": "BUIDL es el fondo de BlackRock en dólares tokenizado por Securitize. Que Binance lo acepte como colateral fuera de bolsa permite a un operador usarlo como garantía sin venderlo. Es una aceptación concreta en un solo actor, muy grande."
     },
     {
      "hecho": "Bloques de 0,45 s y finalidad rápida ≈ 1,125 s si votan 2/3 de los validadores",
      "fuente": "docs.bnbchain.org",
      "nivel": "P",
      "fecha": "2024-09-25",
-     "url": "https://docs.bnbchain.org/bnb-smart-chain/"
+     "url": "https://docs.bnbchain.org/bnb-smart-chain/",
+     "por_que": "Un bloque cada 0,45 s y finalidad en unos 1,1 s es mucho más rápido que Ethereum (unos 18 min). La finalidad llega cuando votan dos tercios de los validadores, así que depende de que haya suficientes activos."
     },
     {
      "hecho": "Volumen DEX de 29.157 M$ en 30 días",
      "fuente": "DefiLlama, en cadenas-onchain.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://api.llama.fi/v2/chains"
+     "url": "https://api.llama.fi/v2/chains",
+     "por_que": "29.157 M$ negociados en el DEX en 30 días es algo más de la mitad del volumen de Ethereum (52.375 M$). Indica mucha actividad de intercambio, que atrae liquidez y más aplicaciones."
     }
    ],
    "puntos_flacos": [
@@ -1095,35 +1143,40 @@
      "fuente": "docs.bnbchain.org",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.bnbchain.org/bnb-smart-chain/"
+     "url": "https://docs.bnbchain.org/bnb-smart-chain/",
+     "por_que": "PoSA es un sistema donde los validadores se eligen por staking y por decisión de BNB. Si no se publica cuántos hay, no se puede medir cuánto reparto de control tiene la red, al contrario que en Hedera (30 nodos) o Avalanche (604)."
     },
     {
      "hecho": "iBENJI de Franklin: 1.531 M$ con 4 tenedores (concentración)",
      "fuente": "RWA.xyz, ficha BNB Chain",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://app.rwa.xyz/networks/bnb-chain"
+     "url": "https://app.rwa.xyz/networks/bnb-chain",
+     "por_que": "iBENJI es una versión del fondo de Franklin en BNB Chain. 1.531 M$ en solo 4 tenedores es concentración: pocos titulares mueven casi todo, por lo que la cifra impresiona más de lo que dice sobre uso amplio."
     },
     {
      "hecho": "61 incidentes en 12 meses con 134 M$ en DefiLlama",
      "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://api.llama.fi/hacks"
+     "url": "https://api.llama.fi/hacks",
+     "por_que": "61 incidentes en 12 meses con 134 M$ en DefiLlama son más de los que mide Solana (20), con menor importe unitario. Un incidente es un hackeo o fallo de protocolo, y la cifra depende de cuántas aplicaciones alberga la red [RAZONADO]."
     },
     {
      "hecho": "CCTP de Circle solo para USYC, no para USDC",
      "fuente": "Circle Docs, cadenas soportadas",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+     "url": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+     "por_que": "CCTP es el sistema de Circle para mover USDC entre cadenas sin puente custodio. En BNB Chain solo sirve para USYC, no para USDC: el USDC debe usar otras vías, con más riesgo de intermediario [RAZONADO]."
     },
     {
      "hecho": "La recompensa de staking sale de las comisiones; no se publica APR",
      "fuente": "docs.bnbchain.org, staking",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.bnbchain.org/bnb-smart-chain/staking/overview/"
+     "url": "https://docs.bnbchain.org/bnb-smart-chain/staking/overview/",
+     "por_que": "Los validadores cobran con las comisiones de la red, no con una tasa fija. Sin un APR publicado, quien hace staking no puede calcular su rentabilidad esperada con una fuente oficial."
     }
    ],
    "mejora_reciente": [
@@ -1230,34 +1283,39 @@
      "fuente": "build.avax.network, L1 (parte interesada)",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://build.avax.network/docs/avalanche-l1s"
+     "url": "https://build.avax.network/docs/avalanche-l1s",
+     "por_que": "Una L1 es una cadena propia dentro de Avalanche. Cada una puede exigir a sus validadores estar en cierto país, haber pasado controles KYC/AML o tener licencia, y mantener los datos privados. Permite que un banco use una cadena a medida sin renunciar a una red común."
     },
     {
      "hecho": "Mensajería entre L1 (ICM sobre Warp Messaging, desde Durango, mar-2024) y transferencia de tokens (ICTT)",
      "fuente": "build.avax.network, cross-chain",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://build.avax.network/docs/cross-chain"
+     "url": "https://build.avax.network/docs/cross-chain",
+     "por_que": "ICM es la mensajería entre L1 (sobre Warp Messaging, activa desde marzo de 2024) e ICTT permite transferir tokens entre ellas. Sirve para que varias cadenas de instituciones se hablen sin puentes de terceros [RAZONADO]."
     },
     {
      "hecho": "604 validadores en la red primaria; coeficiente de Nakamoto (1/3) = 24, el más alto de las redes medidas",
      "fuente": "API pública P-Chain, en cadenas-validadores.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "El coeficiente de Nakamoto 24 significa que harían falta 24 operadores de acuerdo para controlar un tercio de la red: el mejor de las medidas (Solana 18, Hedera 10). Con 604 validadores, el control está más repartido."
     },
     {
      "hecho": "1.413,9 M$ distribuidos y 11.403,5 M$ representados; crédito tokenizado 690,6 M$",
      "fuente": "RWA.xyz",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://app.rwa.xyz/networks"
+     "url": "https://app.rwa.xyz/networks",
+     "por_que": "«Distribuidos» (1.413,9 M$) circulan en cadena; «representados» (11.403,5 M$) constan en el registro pero no se mueven libremente. La mayor parte es de este segundo tipo. El crédito tokenizado (690,6 M$) son préstamos convertidos en token."
     },
     {
      "hecho": "Clase de BUIDL en Avalanche con BNY como administrador y custodio",
      "fuente": "BlackRock, comunicado",
      "nivel": "P",
      "fecha": "2024-11-13",
-     "url": "https://www.prnewswire.com/news-releases/blackrock-launches-new-buidl-share-classes-across-multiple-blockchains-to-expand-access-and-potential-of-buidl-ecosystem-302304035.html"
+     "url": "https://www.prnewswire.com/news-releases/blackrock-launches-new-buidl-share-classes-across-multiple-blockchains-to-expand-access-and-potential-of-buidl-ecosystem-302304035.html",
+     "por_que": "BNY es un banco custodio grande. Que administre y custodie una clase de BUIDL en Avalanche da a los inversores un custodio bancario conocido, algo que las instituciones suelen exigir."
     }
    ],
    "puntos_flacos": [
@@ -1266,26 +1324,30 @@
      "fuente": "DefiLlama, en comparativa-liquidacion.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://stablecoins.llama.fi/stablecoinchains"
+     "url": "https://stablecoins.llama.fi/stablecoinchains",
+     "por_que": "773 M$ de stablecoins son el doble que Stellar (398 M$), pero muy poco frente a Ethereum (131.392 M$). Con liquidez limitada, las operaciones grandes mueven el precio."
     },
     {
      "hecho": "Modelo de comisiones de las L1 institucionales y emisores del valor representado: sin dato",
      "fuente": "cadenas.json (sin_dato)",
      "nivel": "P",
-     "fecha": "2026-11-14"
+     "fecha": "2026-11-14",
+     "por_que": "Sin dato sobre qué comisiones cobran las L1 institucionales ni quién emite el valor representado, no se puede evaluar el coste real ni de quién es el riesgo detrás de 11.403,5 M$. Un hueco de información, no una cifra mala."
     },
     {
      "hecho": "Las pruebas con Citi y J.P. Morgan (Onyx) no tienen fecha ni fuente primaria leída",
      "fuente": "pruebas-bancos.json",
      "nivel": "S",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "Citi y J.P. Morgan (Onyx) aparecen en pruebas con Avalanche, pero sin fecha ni documento oficial leído. Hasta confirmarlo con la fuente del banco, es un anuncio sin comprobar, no un uso demostrado."
     },
     {
      "hecho": "Volumen DEX -40,7 % en 30 días (2.473 M$)",
      "fuente": "DefiLlama, en cadenas-onchain.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://api.llama.fi/v2/chains"
+     "url": "https://api.llama.fi/v2/chains",
+     "por_que": "El volumen del DEX bajó un 40,7 % en 30 días (2.473 M$ en total). Menos negociación suele implicar menos liquidez. Es un dato de un mes y puede ser transitorio [RAZONADO]."
     }
    ],
    "mejora_reciente": [
@@ -1407,35 +1469,40 @@
      "fuente": "DefiLlama, en cadenas-onchain.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://stablecoins.llama.fi/stablecoinchains"
+     "url": "https://stablecoins.llama.fi/stablecoinchains",
+     "por_que": "2.798 M$ de stablecoins: unas 7 veces más que Stellar (398 M$) y la quinta parte de Solana. Incluye pUSD de Polymarket (499 M$), un mercado de predicciones: parte de la liquidez viene de un solo uso."
     },
     {
      "hecho": "Finalidad determinista en 2-5 s por milestones",
      "fuente": "docs.polygon.technology (parte interesada)",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.polygon.technology/pos/overview.md"
+     "url": "https://docs.polygon.technology/pos/overview.md",
+     "por_que": "Finalidad determinista significa que, pasado un milestone (punto de control, cada pocos segundos), el bloque ya no se deshace. 2-5 s es mucho menos que los 18 minutos de Ethereum y comparable a XRPL (3,7 s)."
     },
     {
      "hecho": "Agglayer: interoperabilidad con «pruebas pesimistas»",
      "fuente": "docs.agglayer.dev",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.agglayer.dev/"
+     "url": "https://docs.agglayer.dev/",
+     "por_que": "Agglayer conecta cadenas de Polygon y otras. Las «pruebas pesimistas» comprueban matemáticamente que una cadena no gasta más de lo que tiene antes de dejarla sacar fondos, lo que limita el daño si una cadena falla [RAZONADO]."
     },
     {
      "hecho": "T-REX Ledger (Polygon CDK + Agglayer) para valores ERC-3643; Apex se compromete a 100 mil M$ tokenizados hasta jun-2027 (compromiso, no volumen)",
      "fuente": "polygon.technology/blog",
      "nivel": "P",
      "fecha": "2026-03-18",
-     "url": "https://polygon.technology/blog/apex-group-commits-100b-in-tokenized-assets-to-t-rex-ledger-new-rwa-compliance-chain-built-with-polygon-cdk"
+     "url": "https://polygon.technology/blog/apex-group-commits-100b-in-tokenized-assets-to-t-rex-ledger-new-rwa-compliance-chain-built-with-polygon-cdk",
+     "por_que": "T-REX Ledger se apoya en ERC-3643 (valores con identidad y reglas comprobadas en cadena). Los 100 mil M$ de Apex son un compromiso hasta junio de 2027, no un volumen ya tokenizado."
     },
     {
      "hecho": "USDC nativo por CCTP (dominio 7); clase de BUIDL en Polygon PoS",
      "fuente": "Circle Docs; BlackRock",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+     "url": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+     "por_que": "CCTP es el sistema de Circle para crear USDC nuevo en esta red y quemar el de otra, sin puente custodio. El USDC nativo es el emitido directamente por Circle; una clase de BUIDL en Polygon PoS indica presencia de un fondo de BlackRock."
     }
    ],
    "puntos_flacos": [
@@ -1444,28 +1511,32 @@
      "fuente": "RWA.xyz",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://app.rwa.xyz/networks"
+     "url": "https://app.rwa.xyz/networks",
+     "por_que": "447,6 M$ de RWA distribuidos es poco frente a Ethereum (15.153,5 M$) o BNB Chain (6.270 M$). Hay menos tokens reales con que operar y menos colateral disponible."
     },
     {
      "hecho": "Máximo de 105 validadores activos; el número real no lo da la documentación",
      "fuente": "docs.polygon.technology",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.polygon.technology/pos/overview.md"
+     "url": "https://docs.polygon.technology/pos/overview.md",
+     "por_que": "Un máximo de 105 es un tope, no el número real. Sin saber cuántos validadores hay activos, no se puede medir cómo de repartido está el control de la red."
     },
     {
      "hecho": "18 incidentes en 12 meses con 54 M$ en DefiLlama (Polymarket International 2,7 M$ por ataque a la cadena de suministro)",
      "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://api.llama.fi/hacks"
+     "url": "https://api.llama.fi/hacks",
+     "por_que": "18 incidentes con 54 M$ en 12 meses. Un incidente es un hackeo o fallo de un protocolo. En este caso incluye un ataque a la cadena de suministro (a un proveedor de software, no a la red) a Polymarket International: 2,7 M$."
     },
     {
      "hecho": "Emisión de POL del 2 % anual desde jul-2025; si propuestas posteriores la cambian sigue [VERIFICAR]",
      "fuente": "docs.polygon.technology, rewards",
      "nivel": "P",
      "fecha": "2026-11-15",
-     "url": "https://docs.polygon.technology/pos/reference/rewards.md"
+     "url": "https://docs.polygon.technology/pos/reference/rewards.md",
+     "por_que": "POL es el token de Polygon. Una emisión del 2 % anual crea más tokens cada año, lo que diluye a quien no hace staking si no sube la demanda [RAZONADO]. Una propuesta posterior podría cambiarla: queda [VERIFICAR]."
     }
    ],
    "mejora_reciente": [
@@ -1581,35 +1652,40 @@
      "fuente": "DTCC, nota de prensa",
      "nivel": "P",
      "fecha": "2026-10-28",
-     "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live"
+     "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+     "por_que": "DTC es el depositario central de valores de EE. UU. Que su servicio de tokenización esté en producción desde el 28-oct-2026 con Canton y con 20 participantes (bancos como J.P. Morgan, Citi o UBS) que ya han firmado el acceso es uso institucional real, no solo pruebas."
     },
     {
      "hecho": "Jul-2026: DTCC y más de 30 participantes completan operaciones de producción con Tesoro, acciones y ETF tokenizados (colateral, margen, repo y préstamo de valores)",
      "fuente": "Canton, blog de 8-sep-2026",
      "nivel": "P",
      "fecha": "2026-07-15",
-     "url": "https://www.canton.network/blog/onchain-collateral-repo-tokenization"
+     "url": "https://www.canton.network/blog/onchain-collateral-repo-tokenization",
+     "por_que": "Colateral, margen, repo y préstamo de valores son operaciones diarias de los bancos. Que más de 30 participantes las hayan hecho en producción con Tesoro, acciones y ETF tokenizados indica que el sistema soporta flujos reales, no solo pilotos."
     },
     {
      "hecho": "BNP Paribas prestó valores intradía con Tesoro tokenizado por DTCC desde un nodo propio en Canton",
      "fuente": "Canton, blog",
      "nivel": "P",
      "fecha": "2026-07",
-     "url": "https://www.canton.network/blog/onchain-collateral-repo-tokenization"
+     "url": "https://www.canton.network/blog/onchain-collateral-repo-tokenization",
+     "por_que": "Un repo es un préstamo de efectivo contra un valor. Que BNP Paribas prestara valores intradía con Tesoro tokenizado desde su propio nodo muestra que un banco puede operar en la red sin intermediarios [RAZONADO]. Es un caso concreto."
     },
     {
      "hecho": "374.118 M$ en valor «representado», la mayor cifra de RWA.xyz",
      "fuente": "RWA.xyz",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://app.rwa.xyz/networks"
+     "url": "https://app.rwa.xyz/networks",
+     "por_que": "«Representado» significa que el activo existe en un registro y consta en la red, pero no circula libremente como un token abierto. 374.118 M$ es la mayor cifra de RWA.xyz, aunque no es comparable con los «distribuidos» de Ethereum (15.153,5 M$)."
     },
     {
      "hecho": "Sin incidentes registrados en DefiLlama en 12 meses",
      "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://api.llama.fi/hacks"
+     "url": "https://api.llama.fi/hacks",
+     "por_que": "Sin incidentes en DefiLlama en 12 meses. Ayuda, pero Canton tiene muy poca DeFi pública (TVL 11,3 M$), así que hay poco que atacar; ausencia de registros no es prueba de seguridad [RAZONADO]."
     }
    ],
    "puntos_flacos": [
@@ -1618,28 +1694,32 @@
      "fuente": "RWA.xyz",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://app.rwa.xyz/networks"
+     "url": "https://app.rwa.xyz/networks",
+     "por_que": "0 $ distribuidos significa que ningún activo circula libremente en la red: todo es registro de activos que existen fuera de la cadena. Sirve para operaciones entre instituciones, pero no hay mercado abierto de tokens ni uso minorista."
     },
     {
      "hecho": "Sin cifra de stablecoins en DefiLlama; TVL 11,3 M$",
      "fuente": "DefiLlama, en cadenas-onchain.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://api.llama.fi/v2/chains"
+     "url": "https://api.llama.fi/v2/chains",
+     "por_que": "Sin cifra de stablecoins y con un TVL de 11,3 M$ (valor depositado en DeFi), Canton no es una red para comerciar tokens públicamente. Su actividad ocurre entre instituciones y no se ve en estos indicadores."
     },
     {
      "hecho": "La media diaria de repos de Broadridge (351.000 M$) viene de una web entusiasta y no aclara qué parte va por Canton",
      "fuente": "Genfinity (secundaria)",
      "nivel": "S",
      "fecha": "2026-09-11",
-     "url": "https://genfinity.io/2026/09/11/broadridge-dlx-tokenization-platform-dtcc-canton/"
+     "url": "https://genfinity.io/2026/09/11/broadridge-dlx-tokenization-platform-dtcc-canton/",
+     "por_que": "351.000 M$ diarios de repos de Broadridge es una cifra de una web entusiasta, y no aclara qué parte pasa por Canton. Puede inducir a error si se interpreta como volumen de Canton [VERIFICAR]."
     },
     {
      "hecho": "El tráfico por encima de la franja gratuita se paga en Canton Coin (60 $/MB en la configuración de ejemplo); los Super Validators no pagan",
      "fuente": "docs.canton.network, Synchronizer Traffic",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.canton.network/global-synchronizer/deployment/synchronizer-traffic.md"
+     "url": "https://docs.canton.network/global-synchronizer/deployment/synchronizer-traffic.md",
+     "por_que": "Usar la red por encima de la franja gratuita se paga en Canton Coin (en la configuración de ejemplo, 60 $ por MB), mientras que los Super Validators no pagan. Es un coste y un reparto desigual entre quienes gobiernan y quienes usan."
     }
    ],
    "mejora_reciente": [
@@ -1759,35 +1839,40 @@
      "fuente": "docs.chain.link, CCIP Directory (parte interesada)",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.chain.link/ccip/directory/mainnet"
+     "url": "https://docs.chain.link/ccip/directory/mainnet",
+     "por_que": "CCIP es el sistema de Chainlink para enviar mensajes y tokens entre cadenas. 78 redes y 281 tokens indican que muchos proyectos lo han conectado, lo que da más rutas a quien quiera mover tokens de una red a otra."
     },
     {
      "hecho": "CCIP: 16 operadores independientes por ruta",
      "fuente": "docs.chain.link",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://chain.link/economics/staking"
+     "url": "https://chain.link/economics/staking",
+     "por_que": "En CCIP, cada ruta la validan 16 operadores independientes. Más operadores independientes hace más difícil que uno solo falsifique un mensaje; es el punto débil típico de los puentes tradicionales [RAZONADO]."
     },
     {
      "hecho": "La Collateral AppChain de DTCC (colateral 24/7) usará Chainlink; producción prevista en el 4T-2026",
      "fuente": "DTCC, nota de 12-may-2026",
      "nivel": "P",
      "fecha": "2026-05-12",
-     "url": "https://www.dtcc.com/news/2026/may/12/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management"
+     "url": "https://www.dtcc.com/news/2026/may/12/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management",
+     "por_que": "DTCC es la matriz del depositario DTC. Su Collateral AppChain permitiría mover colateral las 24 horas con datos de Chainlink. La producción está prevista para el 4T-2026 (aún es un plan)."
     },
     {
      "hecho": "Prueba de entrega contra pago multicadena con pago en Kinexys (J.P. Morgan) y OUSG en la testnet de Ondo Chain",
      "fuente": "Chainlink, blog CRE-DvP",
      "nivel": "P",
      "fecha": "2025-06-12",
-     "url": "https://chain.link/blog/cre-dvp-kinexys-jp-morgan-ondo-finance"
+     "url": "https://chain.link/blog/cre-dvp-kinexys-jp-morgan-ondo-finance",
+     "por_que": "Entrega contra pago multicadena es que el pago y el token cambien de manos a la vez aunque estén en cadenas distintas. Se probó con pago en Kinexys (J.P. Morgan) y OUSG en la testnet de Ondo: es una prueba, no producción."
     },
     {
      "hecho": "30,76 mil M$ de «valor total asegurado» (exposición de protocolos que usan sus oráculos; no es liquidez)",
      "fuente": "DefiLlama, página Chainlink",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://defillama.com/protocol/chainlink"
+     "url": "https://defillama.com/protocol/chainlink",
+     "por_que": "El valor total asegurado (30,76 mil M$) es el dinero de los protocolos que usan sus oráculos (que dan precios a la cadena). Mide dependencia, no liquidez propia: no es dinero que Chainlink tenga ni que se pueda usar."
     }
    ],
    "puntos_flacos": [
@@ -1796,21 +1881,24 @@
      "fuente": "docs.chain.link, SmartData",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.chain.link/data-feeds/smartdata.md"
+     "url": "https://docs.chain.link/data-feeds/smartdata.md",
+     "por_que": "Un feed SmartData lleva a la cadena datos como reservas o valor de un fondo. Si dependen de una sola fuente (emisor, administrador, custodio o auditor), el oráculo repite lo que esa fuente dice: si miente o se equivoca, el dato falla igual."
     },
     {
      "hecho": "La conexión con el libro mayor de Swift es un anuncio de Chainlink, sin cita de Swift",
      "fuente": "Chainlink, nota de 28-sep-2026",
      "nivel": "P",
      "fecha": "2026-09-28",
-     "url": "https://chain.link/press-releases/chainlink-is-enabling-financial-institutions-to-connect-to-swifts-blockchain-ledger"
+     "url": "https://chain.link/press-releases/chainlink-is-enabling-financial-institutions-to-connect-to-swifts-blockchain-ledger",
+     "por_que": "El anuncio de la conexión con el libro mayor de Swift viene de Chainlink y no de Swift. Hasta que Swift lo confirme, es una afirmación de una parte interesada, no un hecho comprobado."
     },
     {
      "hecho": "Algorand, IOTA y Ondo no figuran en el directorio CCIP; uso real de los carriles (volumen) sin dato",
      "fuente": "docs.chain.link, CCIP Directory (leído en Chrome)",
      "nivel": "P",
      "fecha": "2026-11-15",
-     "url": "https://docs.chain.link/ccip/directory/mainnet"
+     "url": "https://docs.chain.link/ccip/directory/mainnet",
+     "por_que": "Algorand, IOTA y Ondo no están en el directorio CCIP. Además no hay dato de cuánto se usan los carriles: haber conectado 78 redes no dice cuánto dinero pasa por ellas."
     }
    ],
    "mejora_reciente": [
@@ -1915,28 +2003,32 @@
      "fuente": "ondo.finance/usdy y /ousg (parte interesada)",
      "nivel": "P",
      "fecha": "2026-11-13",
-     "url": "https://ondo.finance/ousg"
+     "url": "https://ondo.finance/ousg",
+     "por_que": "USDY es un token que representa bonos del Tesoro y depósitos bancarios; 1.970 M$ en circulación con colateralización del 156,90 % significa que por cada 100 $ emitidos hay unos 157 $ de respaldo. OUSG representa bonos de EE. UU. a corto plazo."
     },
     {
      "hecho": "Contratos oficiales: OUSG en Ethereum, Polygon, Solana y XRP Ledger; USDY en 12 redes (incluye Stellar, BNB Chain y Plume)",
      "fuente": "docs.ondo.finance/addresses",
      "nivel": "P",
      "fecha": "2026-11-15",
-     "url": "https://docs.ondo.finance/addresses"
+     "url": "https://docs.ondo.finance/addresses",
+     "por_que": "Estar en distintas redes (OUSG en Ethereum, Polygon, Solana y XRPL; USDY en 12 redes) permite que un mismo producto lo usen participantes de ecosistemas distintos. Ondo no depende de una sola red [RAZONADO]."
     },
     {
      "hecho": "Suscripción y reembolso instantáneos de OUSG en Ethereum (mínimo 5.000 $; tope global 50 M$ cada 24 h)",
      "fuente": "docs.ondo.finance, límites",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.ondo.finance/qualified-access-products/ousg/instant-limits.md"
+     "url": "https://docs.ondo.finance/qualified-access-products/ousg/instant-limits.md",
+     "por_que": "Instantáneos significa que se compra o se rescata sin esperar un día hábil, como en un fondo tradicional. El mínimo de 5.000 $ limita a inversores serios, y el tope global de 50 M$ cada 24 h acota cuánto puede salir de golpe."
     },
     {
      "hecho": "Reembolso transfronterizo de OUSG con Kinexys, Mastercard y Ripple (activo en XRPL, pago en USD)",
      "fuente": "Ondo, blog",
      "nivel": "P",
      "fecha": "2026-05-06",
-     "url": "https://ondo.finance/blog/ondo-jpmorgan-mastercard-ripple-tokenization"
+     "url": "https://ondo.finance/blog/ondo-jpmorgan-mastercard-ripple-tokenization",
+     "por_que": "Un reembolso transfronterizo es sacar el dinero en otro país y moneda. Con Kinexys, Mastercard y Ripple, OUSG se activó en XRPL y el pago es en USD. Es un caso piloto y concreto, no una oferta general."
     }
    ],
    "puntos_flacos": [
@@ -1945,28 +2037,32 @@
      "fuente": "docs.ondo.finance, elegibilidad",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.ondo.finance/qualified-access-products/ousg/eligibility-and-onboarding.md"
+     "url": "https://docs.ondo.finance/qualified-access-products/ousg/eligibility-and-onboarding.md",
+     "por_que": "OUSG solo para compradores cualificados (grandes inversores) y USDY no puede comprarse desde EE. UU., Canadá ni otras jurisdicciones. Un particular de España puede quedarse fuera según el producto; hay que leer las condiciones oficiales."
     },
     {
      "hecho": "Los productos principales se controlan con multifirmas del equipo",
      "fuente": "Aragon OTF (resumen de buscador)",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://otf.aragon.org/tokens/ondo"
+     "url": "https://otf.aragon.org/tokens/ondo",
+     "por_que": "Una multifirma es una cartera que exige varias firmas para mover algo. Si las firmas son del equipo, quien controla esos productos es el propio equipo: la seguridad depende de su gestión, no de reglas automáticas [RAZONADO]."
     },
     {
      "hecho": "Ondo Chain/Network no figura en el directorio CCIP ni en la tabla CCTP",
      "fuente": "Chainlink y Circle (leídos en Chrome)",
      "nivel": "P",
      "fecha": "2026-11-15",
-     "url": "https://docs.chain.link/ccip/directory/mainnet"
+     "url": "https://docs.chain.link/ccip/directory/mainnet",
+     "por_que": "CCIP y CCTP son los sistemas de Chainlink y Circle para mover tokens entre redes. Si Ondo Chain no está en ninguno, sus tokens tienen menos rutas oficiales y dependen de puentes de terceros [RAZONADO]."
     },
     {
      "hecho": "Reembolso instantáneo solo en Ethereum; por encima de los topes hay que pedirlo al emisor",
      "fuente": "docs.ondo.finance",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.ondo.finance/qualified-access-products/ousg/instant-limits.md"
+     "url": "https://docs.ondo.finance/qualified-access-products/ousg/instant-limits.md",
+     "por_que": "El reembolso instantáneo funciona solo en Ethereum. Por encima de los topes hay que pedirlo al propio emisor, que tarda más y depende de su aprobación: se pierde la rapidez que ofrece un token."
     }
    ],
    "mejora_reciente": [
@@ -2045,35 +2141,40 @@
      "hecho": "Bloque cada 2,737 s, final al certificarse; tarifa mínima 0,001 ALGO ≈ 0,00008 USD",
      "fuente": "algonode, en comparativa-liquidacion.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "Un bloque cada 2,7 s, final al certificarse, significa que el pago no se deshace al cerrar el bloque: quien cobra puede actuar enseguida. La tarifa mínima de 0,00008 USD es unas 8 veces la de XRPL (0,00001 USD), pero sigue siendo despreciable para un pago."
     },
     {
      "hecho": "Activos ASA con cuenta de congelación (incluido congelado por defecto) y de recuperación (clawback)",
      "fuente": "dev.algorand.co, assets",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://dev.algorand.co/concepts/assets/overview/"
+     "url": "https://dev.algorand.co/concepts/assets/overview/",
+     "por_que": "ASA son los tokens propios de Algorand. Congelar una cuenta impide que mueva el token, y el clawback permite al emisor recuperarlo (por orden judicial o error). Quienes emiten valores regulados suelen necesitar esos controles; tenerlos en el protocolo evita programarlos."
     },
     {
      "hecho": "v5.0.0 aprobada (90 % de apoyo el 15-ago-2026): cuentas Falcon-1024 resistentes a computación cuántica en el protocolo y comisiones según uso de recursos (los pagos simples no cambian)",
      "fuente": "Algorand, blog del 16-ago-2026 (leído 15-nov-2026; parte interesada)",
      "nivel": "P",
      "fecha": "2026-08-16",
-     "url": "https://algorand.co/blog/algorand-v5.0.0-is-here.-heres-what-it-means-for-you"
+     "url": "https://algorand.co/blog/algorand-v5.0.0-is-here.-heres-what-it-means-for-you",
+     "por_que": "Falcon-1024 es un tipo de firma pensado para resistir ordenadores cuánticos, que en el futuro podrían romper las firmas actuales. Tener esas cuentas en el protocolo prepara la red con antelación. La mejora se aprobó con un 90 % de apoyo; no dice cuándo llegará ese riesgo [RAZONADO]."
     },
     {
      "hecho": "State Proofs: pruebas firmadas por el consenso para clientes ligeros entre cadenas",
      "fuente": "Repositorio algorandfoundation/devportal",
      "nivel": "P",
      "fecha": "2026-11-15",
-     "url": "https://github.com/algorandfoundation/devportal/blob/main/src/content/docs/concepts/protocol/state-proofs.mdx"
+     "url": "https://github.com/algorandfoundation/devportal/blob/main/src/content/docs/concepts/protocol/state-proofs.mdx",
+     "por_que": "Un cliente ligero es un programa que verifica una cadena sin descargarla entera. Las State Proofs son pruebas firmadas por el consenso que permiten a otra cadena comprobar qué ocurre en Algorand sin fiarse de un intermediario [RAZONADO]."
     },
     {
      "hecho": "Un solo incidente en 12 meses (HermesVault, 30.000 $, 26.000 $ recuperados)",
      "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
      "nivel": "S",
      "fecha": "2026-05-19",
-     "url": "https://api.llama.fi/hacks"
+     "url": "https://api.llama.fi/hacks",
+     "por_que": "Un solo incidente en 12 meses (30.000 $, con 26.000 $ recuperados) es un historial limpio frente a los 105 de Ethereum o los 61 de BNB Chain. Esas redes albergan mucho más, así que no son comparables directamente [RAZONADO]."
     }
    ],
    "puntos_flacos": [
@@ -2082,34 +2183,39 @@
      "fuente": "DefiLlama, en cadenas-onchain.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://stablecoins.llama.fi/stablecoinchains"
+     "url": "https://stablecoins.llama.fi/stablecoinchains",
+     "por_que": "121 M$ de stablecoins, casi todo USDC, es cerca de un tercio de Stellar (398 M$) y muy poco frente a Ethereum (131.392 M$). Con liquidez baja, las operaciones grandes mueven el precio. USDQ aparece a 1 $ en DefiLlama, un dato casi simbólico."
     },
     {
      "hecho": "39,4 M$ en RWA distribuidos (1 activo) en RWA.xyz; otras fuentes dan cifras distintas",
      "fuente": "RWA.xyz y cadenas.json (sesgos)",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://app.rwa.xyz/networks"
+     "url": "https://app.rwa.xyz/networks",
+     "por_que": "39,4 M$ en un único activo es muy poco frente a Ethereum (15.153,5 M$) y depende de un emisor. Otras fuentes dan cifras distintas, así que la cifra es poco fiable."
     },
     {
      "hecho": "No figura en el directorio CCIP ni en la tabla CCTP, ni en las listas de DTCC, Ondo y BENJI leídas",
      "fuente": "Chainlink, Circle y comparativa-liquidacion.json",
      "nivel": "P",
      "fecha": "2026-11-15",
-     "url": "https://docs.chain.link/ccip/directory/mainnet"
+     "url": "https://docs.chain.link/ccip/directory/mainnet",
+     "por_que": "CCIP (Chainlink) y CCTP (Circle) son los carriles oficiales para mover tokens entre redes; DTCC, Ondo y BENJI son emisores y depositarios grandes. Que Algorand no aparezca en ninguno limita sus conexiones con grandes actores [RAZONADO]."
     },
     {
      "hecho": "El bono al proponente lo dota la Fundación y su documentación lo llama «insostenible» solo con comisiones",
      "fuente": "dev.algorand.co, staking rewards",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://dev.algorand.co/concepts/protocol/staking-rewards/"
+     "url": "https://dev.algorand.co/concepts/protocol/staking-rewards/",
+     "por_que": "El bono al proponente es el pago extra al validador que propone un bloque. Lo paga la Fundación Algorand porque las comisiones solas no lo cubren; su propia documentación lo llama «insostenible». Sin ese subsidio, los validadores podrían no cobrar lo suficiente."
     },
     {
      "hecho": "Único hecho bancario: piloto de VersaBank (fuente secundaria)",
      "fuente": "pruebas-bancos.json",
      "nivel": "S",
-     "fecha": "2025-08-26"
+     "fecha": "2025-08-26",
+     "por_que": "El único hecho bancario es un piloto de VersaBank, de fuente secundaria (no oficial). Hay muy poca evidencia de uso bancario: una sola referencia y no confirmada."
     }
    ],
    "mejora_reciente": [
@@ -2215,27 +2321,31 @@
      "fuente": "docs.xdc.network, Gas & Fees",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.xdc.network/learn/gas-fees/"
+     "url": "https://docs.xdc.network/learn/gas-fees/",
+     "por_que": "0,00004 USD por transferencia es del mismo orden que otras redes baratas. Es un dato de la documentación, no medido, así que hay que tomarlo como una promesa del proyecto y no como un hecho comprobado."
     },
     {
      "hecho": "108 masternodes activos, 257 en espera y 4 penalizados",
      "fuente": "RPC público, en cadenas-validadores.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "Un masternode es un nodo que valida y paga por ello un depósito. 108 activos son los que hoy validan; los 257 en espera sustituyen a otros si fallan, y 4 están penalizados por mal comportamiento. Un grupo de reserva grande facilita sustituir fallos [RAZONADO]."
     },
     {
      "hecho": "En el directorio CCIP (2 carriles salientes) y en CCTP de Circle (dominio 18)",
      "fuente": "Chainlink y Circle (leídos en Chrome)",
      "nivel": "P",
      "fecha": "2026-11-15",
-     "url": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains"
+     "url": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+     "por_que": "CCIP y CCTP son los carriles oficiales de Chainlink y Circle para mover tokens entre redes. Estar en ambos (2 carriles salientes en CCIP y CCTP con el dominio 18) da a XDC más rutas oficiales que Algorand, IOTA u Ondo."
     },
     {
      "hecho": "Stablecoins 103,2 M$ (USDC 52,8 M$, USDf 49,8 M$)",
      "fuente": "DefiLlama, en cadenas-onchain.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://stablecoins.llama.fi/stablecoinchains"
+     "url": "https://stablecoins.llama.fi/stablecoinchains",
+     "por_que": "103,2 M$ de stablecoins (USDC 52,8 M$ y USDf 49,8 M$) es poca liquidez, similar a Algorand (121 M$) y muy lejos de Ethereum (131.392 M$). Casi la mitad es una única stablecoin propia (USDf) [RAZONADO]."
     }
    ],
    "puntos_flacos": [
@@ -2244,34 +2354,39 @@
      "fuente": "RWA.xyz",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://app.rwa.xyz/networks"
+     "url": "https://app.rwa.xyz/networks",
+     "por_que": "RWA.xyz recoge 37 redes con valor en activos reales tokenizados y XDC no figura. Es decir, ese agregador no ve actividad medible en XDC en este campo, a pesar de que el proyecto se presenta como orientado al comercio."
     },
     {
      "hecho": "No se halló banco ni banco central con fuente primaria (la vinculación de Standard Chartered no está confirmada)",
      "fuente": "pruebas-bancos.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "No se halló ningún banco ni banco central con fuente primaria. La vinculación de Standard Chartered no está confirmada: hay menciones, pero no documento oficial."
     },
     {
      "hecho": "TVL DeFi 1,9 M$",
      "fuente": "DefiLlama, en cadenas-onchain.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://api.llama.fi/v2/chains"
+     "url": "https://api.llama.fi/v2/chains",
+     "por_que": "TVL es el valor depositado en aplicaciones DeFi: 1,9 M$ es casi nada frente a los 37.971 M$ de Ethereum. Prestar o intercambiar en XDC tiene poca contrapartida."
     },
     {
      "hecho": "Última versión oficial del cliente v2.7.1 (4-jun-2026); la v3.0.0 sigue en testnet",
      "fuente": "GitHub XinFinOrg/XDPoSChain, en cadenas-gobernanza.json",
      "nivel": "P",
      "fecha": "2026-06-04",
-     "url": "https://github.com/XinFinOrg/XDPoSChain/releases/tag/v2.7.1"
+     "url": "https://github.com/XinFinOrg/XDPoSChain/releases/tag/v2.7.1",
+     "por_que": "La última versión oficial del cliente es la v2.7.1 (4-jun-2026) y la v3.0.0 sigue en testnet. Las mejoras anunciadas aún no están en la red principal."
     },
     {
      "hecho": "La compra de Contour es un anuncio de parte interesada sin precio ni cierre confirmado",
      "fuente": "EZ Newswire (XDC Ventures)",
      "nivel": "P",
      "fecha": "2025-10-22",
-     "url": "https://www.eznewswire.com/newsroom/xdc-ventures-acquires-contour-network-launches-stablecoin-lab-trade-finance"
+     "url": "https://www.eznewswire.com/newsroom/xdc-ventures-acquires-contour-network-launches-stablecoin-lab-trade-finance",
+     "por_que": "Una compra anunciada por la parte interesada, sin precio ni cierre confirmado, no es un hecho: puede cambiar o no cerrarse. Hasta que lo confirme la otra parte o un documento oficial, es un anuncio."
     }
    ],
    "mejora_reciente": [
@@ -2350,21 +2465,24 @@
      "fuente": "Quant, nota (sin confirmación de TCH leída)",
      "nivel": "P",
      "fecha": "2026-09-24",
-     "url": "https://quant.network/news/quant-powers-the-clearing-houses-on-chain-money-initiative-in-the-us/"
+     "url": "https://quant.network/news/quant-powers-the-clearing-houses-on-chain-money-initiative-in-the-us/",
+     "por_que": "The Clearing House es el consorcio de bancos de EE. UU. que opera los sistemas de pago RTP y CHIPS. Que elija a Quant para su iniciativa de depósitos tokenizados (primer semestre de 2027) es un reconocimiento de un actor importante, pero todavía es un plan."
     },
     {
      "hecho": "Fusion Rollup en mainnet; dice conectar 74 redes",
      "fuente": "Quant, nota",
      "nivel": "P",
      "fecha": "2026-06-02",
-     "url": "https://quant.network/news/a-new-category-of-infrastructure-the-fusion-rollup-is-live-on-mainnet/"
+     "url": "https://quant.network/news/a-new-category-of-infrastructure-the-fusion-rollup-is-live-on-mainnet/",
+     "por_que": "Un rollup agrupa transacciones y las lleva a otra cadena. Fusion Rollup está en mainnet y dice conectar 74 redes; es una afirmación del proyecto, no una cifra auditada por un tercero."
     },
     {
      "hecho": "Miembro fundador de INATBA y asociado de UK Finance (no es estatus regulatorio)",
      "fuente": "quant.network/associations",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://quant.network/associations/"
+     "url": "https://quant.network/associations/",
+     "por_que": "INATBA es una asociación sobre blockchain con instituciones europeas y UK Finance es la patronal bancaria británica. Ser miembro o asociado es una relación de pertenencia: no significa que lo apruebe el regulador."
     }
    ],
    "puntos_flacos": [
@@ -2372,20 +2490,23 @@
      "hecho": "Sin clientes en producción con fuente primaria",
      "fuente": "cadenas.json (sin_dato)",
      "nivel": "P",
-     "fecha": "2026-11-14"
+     "fecha": "2026-11-14",
+     "por_que": "Sin clientes en producción con fuente primaria, no se sabe si el producto se usa de verdad. Nombres asociados no equivalen a uso demostrado."
     },
     {
      "hecho": "Sin documento primario del modelo de token: quant.network/overledger da «no encontrada» y docs.quant.network no resuelve",
      "fuente": "Lectura en Chrome (cadenas.json)",
      "nivel": "P",
-     "fecha": "2026-11-14"
+     "fecha": "2026-11-14",
+     "por_que": "Sin el documento oficial que explique cómo funciona su token, no se puede comprobar su oferta ni qué derechos da. Las páginas de documentación no resuelven o dan «no encontrada»: un hueco de fuente, no una cifra mala."
     },
     {
      "hecho": "No consta licencia ni registro regulatorio en su web",
      "fuente": "quant.network/associations",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://quant.network/associations/"
+     "url": "https://quant.network/associations/",
+     "por_que": "Una licencia o registro regulatorio indica que una autoridad supervisa a la empresa. En su web no consta ninguna: no es que no la tenga, sino que no se puede comprobar en una fuente oficial [RAZONADO]."
     }
    ],
    "mejora_reciente": [
@@ -2450,27 +2571,31 @@
      "fuente": "Blog de IOTA (parte interesada)",
      "nivel": "P",
      "fecha": "2026-04-23",
-     "url": "https://blog.iota.org/update-q2-2026/"
+     "url": "https://blog.iota.org/update-q2-2026/",
+     "por_que": "Starfish es el protocolo de consenso de IOTA: la forma en que los validadores acuerdan el orden de las transacciones. Está en la red principal desde abril de 2026; según el repo, trae confirmación más rápida de bloques y nodos que sincronizan antes. [VERIFICAR el detalle técnico]"
     },
     {
      "hecho": "Kenia, Marruecos y Nigeria primeros países de ADAPT (identidad digital, datos de comercio y pagos)",
      "fuente": "Blog de IOTA; socios no leídos en sus webs",
      "nivel": "S",
      "fecha": "2026-05-19",
-     "url": "https://blog.iota.org/first-adapt-implementations"
+     "url": "https://blog.iota.org/first-adapt-implementations",
+     "por_que": "ADAPT es un programa para identidad digital, datos de comercio y pagos. Kenia, Marruecos y Nigeria son los primeros países. Es una iniciativa de uso público en países en desarrollo, pero aún en fase inicial."
     },
     {
      "hecho": "60 validadores activos; coeficiente de Nakamoto (1/3) = 7",
      "fuente": "RPC público, en cadenas-validadores.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "60 validadores es un reparto moderado; el coeficiente de Nakamoto 7 es el más bajo de las redes con ese dato: bastan 7 operadores para controlar un tercio. Pocos operadores mandan, aunque haya más de 60 [RAZONADO]."
     },
     {
      "hecho": "Versiones de mainnet frecuentes (v1.34.1 el 21-oct y v1.35.2 el 4-nov-2026)",
      "fuente": "GitHub iotaledger/iota, en cadenas-gobernanza.json",
      "nivel": "P",
      "fecha": "2026-11-04",
-     "url": "https://github.com/iotaledger/iota/releases/tag/v1.35.2"
+     "url": "https://github.com/iotaledger/iota/releases/tag/v1.35.2",
+     "por_que": "Publicar versiones de la red principal con frecuencia (v1.34.1 el 21-oct y v1.35.2 el 4-nov-2026) indica un equipo que mantiene y corrige activamente. Es una señal de mantenimiento, no de adopción."
     }
    ],
    "puntos_flacos": [
@@ -2479,34 +2604,39 @@
      "fuente": "DefiLlama, en cadenas-onchain.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://stablecoins.llama.fi/stablecoinchains"
+     "url": "https://stablecoins.llama.fi/stablecoinchains",
+     "por_que": "0,42 M$ de stablecoins es una fracción mínima frente a Ethereum (131.392 M$). Con TVL 1,1 M$ (solo IOTA EVM), casi no hay liquidez para prestar o intercambiar."
     },
     {
      "hecho": "No aparece en RWA.xyz",
      "fuente": "RWA.xyz",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://app.rwa.xyz/networks"
+     "url": "https://app.rwa.xyz/networks",
+     "por_que": "RWA.xyz es el agregador de activos del mundo real tokenizados y IOTA no aparece: no hay actividad medible. Puede que exista fuera de ese agregador, pero no está comprobada."
     },
     {
      "hecho": "No figura en CCIP ni en CCTP",
      "fuente": "Chainlink y Circle (leídos en Chrome)",
      "nivel": "P",
      "fecha": "2026-11-15",
-     "url": "https://docs.chain.link/ccip/directory/mainnet"
+     "url": "https://docs.chain.link/ccip/directory/mainnet",
+     "por_que": "CCIP y CCTP son los carriles oficiales de Chainlink y Circle para mover tokens entre redes. Sin ellos, IOTA tiene menos rutas fiables hacia otras cadenas y depende de otros puentes [RAZONADO]."
     },
     {
      "hecho": "No se halló banco ni banco central",
      "fuente": "pruebas-bancos.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "No se halló ningún banco ni banco central usándola. Sin clientes institucionales visibles, es difícil decir que atienda a finanzas reguladas."
     },
     {
      "hecho": "Virtue: 894.500 $ por configuración errónea de oráculo (28-ago-2026)",
      "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
      "nivel": "S",
      "fecha": "2026-08-28",
-     "url": "https://api.llama.fi/hacks"
+     "url": "https://api.llama.fi/hacks",
+     "por_que": "Un oráculo da a un protocolo el precio de los activos. Una configuración errónea provocó una pérdida de 894.500 $ en Virtue (28-ago-2026). Muestra que el riesgo está también en la configuración de las aplicaciones."
     }
    ],
    "mejora_reciente": [
@@ -2582,35 +2712,40 @@
      "fuente": "RWA.xyz",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://app.rwa.xyz/networks"
+     "url": "https://app.rwa.xyz/networks",
+     "por_que": "Crédito tokenizado es dinero prestado (préstamos o facturas) convertido en token. 114,1 M$ en 29 activos muestra una oferta variada de productos de renta fija, aunque es una cifra pequeña frente a Ethereum (15.153,5 M$ en RWA)."
     },
     {
      "hecho": "Monitoriza sanciones (OFAC) y AML con Forta, Predicate, TRM, Chainalysis y Elliptic; admite valores bajo Reg. D 506(b)/(c)",
      "fuente": "docs.plume.org, Compliance (parte interesada)",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.plume.org/plume/plume-security/compliance-at-plume.md"
+     "url": "https://docs.plume.org/plume/plume-security/compliance-at-plume.md",
+     "por_que": "OFAC es la lista de sanciones de EE. UU. y AML son las reglas contra el blanqueo de dinero. Forta, Predicate, TRM, Chainalysis y Elliptic son empresas que vigilan transacciones. Reg. D 506(b)/(c) es una exención de EE. UU. para ofertas privadas a inversores cualificados. Todo ello permite emitir valores sin pasar por la bolsa [RAZONADO]."
     },
     {
      "hecho": "Kimber Transfer Agency (100 % de Plume Network Inc.) con registro de agente de transferencia efectivo el 26-sep-2025, según prensa que cita un documento de la SEC",
      "fuente": "Cointelegraph y otros (vía buscador, 15-nov-2026); sec.gov no accesible (503)",
      "nivel": "S",
      "fecha": "2025-10-06",
-     "url": "https://cointelegraph.com/news/plume-network-sec-transfer-agent"
+     "url": "https://cointelegraph.com/news/plume-network-sec-transfer-agent",
+     "por_que": "Un agente de transferencia lleva el registro de quién posee los valores de una empresa. Tener uno propio, registrado ante la SEC desde septiembre de 2025 (según prensa que cita un documento de la SEC), permite emitir valores con el registro dentro de la misma empresa. La fuente es secundaria."
     },
     {
      "hecho": "USDY de Ondo desplegado en Plume; Plume en CCIP (7 carriles) y CCTP (dominio 22)",
      "fuente": "docs.ondo.finance/addresses; cadenas.json (capas)",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://docs.ondo.finance/addresses"
+     "url": "https://docs.ondo.finance/addresses",
+     "por_que": "USDY es el token de Ondo que representa bonos del Tesoro. Estar en CCIP (7 carriles) y CCTP (dominio 22) da a Plume rutas oficiales de Chainlink y Circle para mover tokens a otras redes."
     },
     {
      "hecho": "Sin incidentes registrados en DefiLlama en 12 meses",
      "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://api.llama.fi/hacks"
+     "url": "https://api.llama.fi/hacks",
+     "por_que": "Sin incidentes en DefiLlama en 12 meses es una buena señal, pero la red es nueva y pequeña (TVL 1,1 M$), así que hay poco que atacar [RAZONADO]."
     }
    ],
    "puntos_flacos": [
@@ -2619,27 +2754,31 @@
      "fuente": "DefiLlama, en cadenas-onchain.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://stablecoins.llama.fi/stablecoinchains"
+     "url": "https://stablecoins.llama.fi/stablecoinchains",
+     "por_que": "10,8 M$ de stablecoins y TVL 1,1 M$ son cifras muy pequeñas: casi no hay liquidez para prestar o intercambiar en la red, y los pagos grandes no son viables."
     },
     {
      "hecho": "Las cifras de activos varían mucho según el agregador (177 M$ o 577 M$)",
      "fuente": "CoinPaprika (resumen de buscador)",
      "nivel": "V",
      "fecha": "2026-08",
-     "url": "https://coinpaprika.com/ja/education/plume-network/"
+     "url": "https://coinpaprika.com/ja/education/plume-network/",
+     "por_que": "Un agregador es una web que reúne datos de varias fuentes. Si uno da 177 M$ y otro 577 M$, la medición es poco fiable: no se puede saber qué cifra es correcta sin la fuente del emisor."
     },
     {
      "hecho": "Volumen DEX -94 % en 30 días",
      "fuente": "DefiLlama, en cadenas-onchain.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://api.llama.fi/v2/chains"
+     "url": "https://api.llama.fi/v2/chains",
+     "por_que": "Un descenso del 94 % del volumen del DEX en 30 días significa que casi se ha dejado de negociar. Es un dato de un mes y la red es pequeña, así que puede ser volátil [RAZONADO]."
     },
     {
      "hecho": "Instituciones que la usan solo con fuente secundaria (UBS AM vía DigiFT, WisdomTree vía OpenTrade)",
      "fuente": "pruebas-bancos.json",
      "nivel": "S",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "UBS AM (vía DigiFT) y WisdomTree (vía OpenTrade) solo aparecen en fuentes secundarias, no en la propia institución. Hasta que lo confirme la fuente primaria, no se puede dar su uso como hecho."
     }
    ],
    "mejora_reciente": [
