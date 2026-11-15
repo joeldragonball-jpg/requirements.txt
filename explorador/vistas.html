@@ -2602,6 +2602,7 @@ function escItem(x,MK){const li=el('li','ap-li'),r=x.ref?escRef(x.ref):null;li.a
   if(x.ley){const m=(MK||[]).find(k=>k.id===x.ley);li.append(el('span','chip',' marco: '+(m?m.nombre:x.ley)))}
   const p=el('div','nota-v');
   if(r){p.append(cxNiv(r.nivel),document.createTextNode(' hecho: '+(r.hecho||r.hito||r.ejemplos||'vacío')+' · fuente: '+(r.fuente||'vacío')+' '),cxLk(r.url,'abrir ↗'))}
+  else if(x.hecho){p.append(cxNiv(x.nivel),document.createTextNode(' hecho: '+x.hecho+' · fuente: '+(x.fuente||'vacío')+' '),cxLk(x.fuente,'abrir ↗'))}
   else{p.append(cxEsp(),document.createTextNode(' Razón: '+(x.esp||'sin razón escrita')))}
   if(x.ref&&!r)p.append(document.createTextNode(' [VERIFICAR: referencia '+x.ref+' no encontrada]'));li.append(p);return li}
 function escBloque(){
