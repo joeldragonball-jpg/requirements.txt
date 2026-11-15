@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "revisado": "2026-11-15",
+  "tarea": "C305",
+  "metodo": "Manual: lectura de BIS (nota de prensa Agorá), Reuters/The Block/Cryptovalley Journal sobre datos del Atlantic Council (mBridge), buscadores para Nexus, CIPS, Partior y Ripple. El Atlantic Council y Reuters directos dieron 404/no se abrieron: las cifras de mBridge son [S] vía prensa que cita ambas. Sin IA en el cálculo del índice.",
+  "aviso": "Análisis neutral de infraestructura de pagos; sin recomendación. Cifras no confirmadas en fuente primaria = [VERIFICAR].",
+  "indice_formula": "HHI = suma(cuota_i^2) con cuota_i en % (escala 0-10.000). Con una sola cifra citada (cuota c de la moneda dominante) y el resto sin desglose: cota inferior = c^2 (resto aporta >= 0); cota superior = c^2 + (100-c)^2 (todo el resto en una sola moneda). Cuota dominante = c.",
+  "corredores": [
+    {
+      "id": "mbridge",
+      "nombre": "mBridge",
+      "tipo": "CBDC mayorista multi-divisa (plataforma sobre DLT, mBridge Ledger)",
+      "participantes": ["PBoC (China)", "HKMA (Hong Kong)", "Banco de Tailandia", "Banco Central de los EAU", "SAMA (Arabia Saudí)"],
+      "pais_id": ["CN", "HK", "TH", "AE", "SA"],
+      "activos_liquidacion": ["CBDC mayoristas de cada banco central (e-CNY, e-HKD, baht, dírham, riyal)"],
+      "monedas_peso": [
+        {"moneda": "CNY (e-CNY)", "cuota_pct": 95, "base": "volumen acumulado", "nivel": "S"},
+        {"moneda": "HKD, THB, AED, SAR (conjunto)", "cuota_pct": 5, "base": "residuo = 100 - 95; sin desglose por moneda en las fuentes leídas", "nivel": "S"}
+      ],
+      "volumen": {"valor_musd": 55500, "operaciones": 4000, "corte": "nov-2025 (operaciones, según Cryptovalley Journal)", "nota": "Más de 4.000 operaciones; cifra acumulada ~55.500 M$."},
+      "estado": "Operativo (producción mayorista); el BIS salió del proyecto en oct-2024 y lo traspasó a los bancos centrales [S]",
+      "fecha": "2026-01-16",
+      "indice": {
+        "cuota_dominante_pct": 95,
+        "hhi_min": 9025,
+        "hhi_max": 9050,
+        "calculo": "min = 95^2 = 9025; max = 95^2 + 5^2 = 9025 + 25 = 9050",
+        "nota": "El HHI casi no depende del desglose del 5 % restante; la concentración en yuan es la conclusión robusta. Hecho: ~95 % e-CNY según Atlantic Council vía Reuters. Interpretación (causas: participación de bancos chinos, comercio con China) = [ESPECULACIÓN]."
+      },
+      "fuentes": [
+        {"titulo": "The Block (cita Reuters y Atlantic Council), 17-ene-2026, act. 20-oct-2026", "url": "https://www.theblock.co/news/ecosystems/2026-01-17-china-led-cross-border-cbdc-platform-mbridge-surges-past-55-billion-in-transaction-volume-reuters-386057", "nivel": "S"},
+        {"titulo": "Cryptovalley Journal, 19-ene-2026", "url": "https://cryptovalleyjournal.com/blockchain/china-led-cbdc-platform-mbridge-surpasses-55-billion-in-volume/", "nivel": "S"}
+      ],
+      "verificar": ["Desglose por moneda (HKD, THB, AED, SAR) no hallado", "Tabla original del Atlantic Council no leída (404 en la URL probada)", "Un resumen de buscador mencionó 470.000 M yuan (~69.000 M$) en otra fecha [VERIFICAR]"]
+    },
+    {
+      "id": "agora",
+      "nombre": "Project Agorá",
+      "tipo": "Prototipo BIS/IIF de plataforma programable con reservas tokenizadas de banco central y depósitos tokenizados",
+      "participantes": ["Banco de Inglaterra", "Fed de Nueva York", "Banco de Francia (por el Eurosistema)", "Banco de Japón", "Banco de Corea", "Banco de México", "Banco Nacional Suizo", "Banco de Canadá (se unió después)", "más de 40 entidades privadas"],
+      "pais_id": ["GB", "US", "FR", "JP", "KR", "MX", "CH", "CA"],
+      "activos_liquidacion": ["Reservas de banco central tokenizadas", "Depósitos comerciales tokenizados"],
+      "monedas_peso": null,
+      "monedas_peso_motivo": "La nota del BIS no nombra las monedas ni da importes; es un prototipo experimental.",
+      "volumen": null,
+      "estado": "Piloto/prototipo; informe 27-may-2026; siguiente fase con pruebas de valor real en algunas monedas [P]",
+      "fecha": "2026-05-27",
+      "indice": {"cuota_dominante_pct": null, "hhi_min": null, "hhi_max": null, "calculo": null, "nota": "null: no hay volumen ni cuotas."},
+      "fuentes": [{"titulo": "BIS, nota de prensa 27-may-2026 (leída)", "url": "https://www.bis.org/press/p260527.htm", "nivel": "P"}],
+      "verificar": ["Número exacto de entidades privadas (la nota dice «más de 40»)", "Fecha de ingreso de Canadá"]
+    },
+    {
+      "id": "nexus",
+      "nombre": "Nexus Global Payments (Proyecto Nexus)",
+      "tipo": "Red que enlaza sistemas de pago rápidos nacionales (ISO 20022); sin CBDC ni token",
+      "participantes": ["Banco de la Reserva de la India", "Bank Negara Malaysia", "Bangko Sentral ng Pilipinas", "MAS (Singapur)", "Banco de Tailandia", "Bank Indonesia (fundador en 2025; la página del BIS ya no lo cita en la fase en vivo) [VERIFICAR]"],
+      "pais_id": ["IN", "MY", "PH", "SG", "TH"],
+      "activos_liquidacion": ["Dinero de los sistemas de pago rápidos nacionales (monedas locales; sin activo nuevo)"],
+      "monedas_peso": null,
+      "monedas_peso_motivo": "Aún no opera; no hay volumen.",
+      "volumen": null,
+      "estado": "En construcción; operador técnico (PayNet-NETS) nombrado en feb-2026; salida en vivo prevista 2027 [S]",
+      "fecha": "2026-02-09",
+      "indice": {"cuota_dominante_pct": null, "hhi_min": null, "hhi_max": null, "calculo": null, "nota": "null: sin operaciones."},
+      "fuentes": [
+        {"titulo": "BIS, página del proyecto Nexus", "url": "https://www.bis.org/project/nexus", "nivel": "P (no leída; citada por buscador)"},
+        {"titulo": "Nasdaq / nota de prensa NGP, 9-feb-2026", "url": "https://www.nasdaq.com/press-release/nexus-global-payments-appoints-technical-operator-2026-02-09", "nivel": "S"}
+      ],
+      "verificar": ["Lista de miembros en vivo (India, Malasia, Filipinas, Singapur, Tailandia; Indonesia dudosa)", "Fecha 2027"]
+    },
+    {
+      "id": "ripple-payments",
+      "nombre": "Ripple Payments (incl. ODL)",
+      "tipo": "Red privada de pagos con liquidez bajo demanda (XRP) y stablecoin (RLUSD); no es sistema de bancos centrales",
+      "participantes": ["Empresas y bancos clientes de Ripple (p. ej. SBI Remit en Japón-Filipinas, Convera vía RLUSD, según prensa)"],
+      "pais_id": [],
+      "activos_liquidacion": ["XRP (ODL)", "RLUSD (stablecoin)", "Monedas fiat en los extremos"],
+      "monedas_peso": null,
+      "monedas_peso_motivo": "Ripple no publica el desglose por moneda de los corredores; solo cifras agregadas.",
+      "volumen": {"valor_musd": 100000, "nota": "Volumen acumulado de Ripple Payments (todo, no solo ODL): >95.000 M$ a ene-2026 y >100.000 M$ a mar-2026 según prensa [S]; ODL 15.000 M$ en 2024, ~56 % Asia-Pacífico [S, 247WallSt]. No hay cuota de ODL ni de RLUSD sobre el total [VERIFICAR]."},
+      "estado": "Producción comercial (privada)",
+      "fecha": "2026-03",
+      "indice": {"cuota_dominante_pct": null, "hhi_min": null, "hhi_max": null, "calculo": null, "nota": "null: no hay cuotas por moneda. Dato aparte: Asia-Pacífico ~56 % del volumen ODL (concentración regional, no de moneda) [S]."},
+      "fuentes": [
+        {"titulo": "247WallSt, 8-ene-2026", "url": "https://247wallst.com/investing/2026/01/08/xrps-15-billion-payment-layer-vs-1-3b-etfs-which-story-actually-matters-for-price/", "nivel": "S"},
+        {"titulo": "The Block, 28-oct-2026 (ingresos de Ripple)", "url": "https://theblock.co/news/business/2026-10-28-ripple-900-million-revenue-run-rate-rlusd-431920", "nivel": "S"}
+      ],
+      "verificar": ["Cifras de ripple.com no leídas en esta pasada", "Sesgo: cifras de la propia empresa o de prensa cripto con interés comercial"]
+    },
+    {
+      "id": "cips",
+      "nombre": "CIPS (Cross-border Interbank Payment System, China)",
+      "tipo": "Sistema de compensación y liquidación de pagos transfronterizos en yuanes (no es CBDC)",
+      "participantes": ["194 participantes directos y 1.597 indirectos (FXC Intelligence, may-2026) [S]; 193 y 1.573 a fin de 2025 [S]"],
+      "pais_id": ["CN"],
+      "activos_liquidacion": ["Yuan en cuentas de liquidación (renminbi bancario)"],
+      "monedas_peso": [{"moneda": "CNY", "cuota_pct": 100, "base": "por diseño (solo yuan)", "nivel": "S"}],
+      "volumen": {"valor_cny_billones": 180.2, "ano": 2025, "nota": "≈180,2 billones de yuanes en 2025 frente a 175 en 2024 (+3 %); a oct-2026 acumulaba 182,8 billones según cálculo de Bloomberg citado por prensa [S, VERIFICAR]."},
+      "estado": "Producción",
+      "fecha": "2026-05",
+      "indice": {"cuota_dominante_pct": 100, "hhi_min": 10000, "hhi_max": 10000, "calculo": "100^2 = 10000 (una sola moneda por diseño)", "nota": "Trivial: concentración por construcción, no informa de uso. Sigue enviando mensajes por Swift en parte [S]."},
+      "fuentes": [
+        {"titulo": "FXC Intelligence, CIPS volumes May 2026", "url": "https://www.fxcintel.com/research/analysis/cips-volumes-may-2026", "nivel": "S"},
+        {"titulo": "FXC Intelligence, CIPS growth May 2025", "url": "https://www.fxcintel.com/research/analysis/cips-growth-may-2025", "nivel": "S"}
+      ],
+      "verificar": ["Cifras del propio CIPS (cips.com.cn) no leídas", "Otra fuente da 210 directos y 1.619 indirectos"]
+    },
+    {
+      "id": "swift-gpi",
+      "nombre": "Swift GPI",
+      "tipo": "Capa de mensajería y seguimiento sobre la red bancaria corresponsal; no liquida por sí misma",
+      "participantes": ["Miles de bancos (red Swift)"],
+      "pais_id": [],
+      "activos_liquidacion": ["Depósitos bancarios en cuentas corresponsales (monedas fiat)"],
+      "monedas_peso": null,
+      "monedas_peso_motivo": "No se leyó el Swift RMB/Currency Tracker; las búsquedas no dieron una cuota actual verificada.",
+      "volumen": null,
+      "estado": "Producción",
+      "fecha": null,
+      "indice": {"cuota_dominante_pct": null, "hhi_min": null, "hhi_max": null, "calculo": null, "nota": "null: falta la cuota por moneda del Swift Tracker (swift.com) [VERIFICAR]."},
+      "fuentes": [{"titulo": "FXC Intelligence, Swift Global Currency Tracker ene-26 (no leída)", "url": "https://www.fxcintel.com/research/analysis/swift-global-currency-tracker-jan-26", "nivel": "S"}],
+      "verificar": ["Cuota por moneda en pagos", "Cuota de GPI en pagos transfronterizos"]
+    },
+    {
+      "id": "partior",
+      "nombre": "Partior",
+      "tipo": "Red interbancaria de depósitos tokenizados (empresa conjunta)",
+      "participantes": ["DBS", "JPMorgan", "Standard Chartered", "Temasek (inversor)", "Deutsche Bank (inversión anunciada may-2026, según buscador)"],
+      "pais_id": ["SG"],
+      "activos_liquidacion": ["Depósitos bancarios tokenizados (no stablecoin)"],
+      "monedas_peso": null,
+      "monedas_peso_motivo": "Monedas citadas por fuentes secundarias (USD, EUR, SGD; GBP discutida) sin volúmenes.",
+      "volumen": null,
+      "estado": "Producción (multi-banco); una prueba de jul-2026 usó depósitos tokenizados como activo principal [S]",
+      "fecha": "2026-07",
+      "indice": {"cuota_dominante_pct": null, "hhi_min": null, "hhi_max": null, "calculo": null, "nota": "null: Partior no publica volumen por moneda en lo hallado."},
+      "fuentes": [{"titulo": "TechTimes, 30-jul-2026", "url": "https://www.techtimes.com/articles/322245/20260730/partior-poc-proves-bank-deposits-beat-stablecoins-atomic-settlement.htm", "nivel": "S"}],
+      "verificar": ["Monedas y volumen en partior.com", "Entrada de Deutsche Bank"]
+    }
+  ],
+  "huecos": ["Desglose no-yuan de mBridge", "Cuotas por moneda de Swift", "Volúmenes de Partior, Nexus y Agorá", "Lectura directa de fuentes primarias PBoC/Atlantic Council/cips.com.cn"],
+  "caduca": "2027-02-15"
+}

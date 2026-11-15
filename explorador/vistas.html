@@ -146,8 +146,19 @@ td.cad-tk{vertical-align:middle;white-space:nowrap}.cad-mat tr:first-child th:nt
 details.cad-ficha{background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:6px 10px}details.cad-ficha[open]{grid-column:1/-1}
 details.cad-ficha>summary{cursor:pointer;padding:4px 0;font-size:var(--fs-s)}details.cad-ficha>summary .cad-cap{margin-left:6px;border:1px solid var(--lin)}
 details.cad-ficha[open] .cad-hs{columns:340px;column-gap:22px}.cad-hs .cad-h{break-inside:avoid}
-.cad-lst{margin:2px 0 6px 18px;padding:0;font-size:var(--fs-s)}.cad-lst li{margin:2px 0}
+.cad-lst{margin:2px 0 6px 18px;padding:0;font-size:var(--fs-s)}.cad-det{margin-top:10px}.cad-dr{margin:4px 0;border:1px solid var(--bd,#3334);border-radius:6px;padding:2px 8px}.cad-dr>summary{cursor:pointer;font-weight:700;padding:8px 0;min-height:28px}.cad-dt{margin:2px 0 2px 8px}.cad-dt>summary{cursor:pointer;padding:8px 0;min-height:28px}.cad-det .nota-d{order:-1}.cad-lst li{margin:2px 0}
 .cad-ir{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+/* C310 */
+.cx-vac{color:var(--tx2);font-style:italic}.cx-esp{display:inline-block;font-size:12px;font-weight:700;border:1px dashed #e8b64a;color:#e8b64a;border-radius:4px;padding:0 6px;margin-left:6px;white-space:nowrap}
+.cx-ina{display:inline-block;font-size:12px;font-weight:700;border:1px solid #ff6b6b;color:#ff6b6b;border-radius:4px;padding:0 6px}
+.cx-aviso{border-left:3px solid #e8b64a;padding:4px 10px;margin:6px 0;font-size:var(--fs-s);background:rgba(232,182,74,.07)}
+.cx-form{border-left:3px solid var(--ac);padding:4px 10px;margin:6px 0;font-size:var(--fs-s);background:rgba(90,169,255,.06)}
+.cx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:var(--gap);margin:8px 0}
+.cx-card{background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:8px 10px;margin:8px 0;min-width:0}.cx-grid>.cx-card{margin:0}
+.cx-in{display:flex;flex-direction:column;gap:2px;font-size:var(--fs-s);margin:8px 0}.cx-in input{font:inherit;min-height:44px;background:var(--panel);color:var(--tx);border:1px solid var(--lin);border-radius:6px;padding:6px 10px;width:100%;box-sizing:border-box}
+.cx-res{margin-top:8px;font-weight:700}.cx-par{margin:8px 0}.cx-par.fav{border-left:3px solid #2fe08f;padding-left:8px}.cx-par.con{border-left:3px solid #ff6b6b;padding-left:8px}
+.cx-hip{margin-top:12px}
+
 details.cad-mas summary{cursor:pointer;color:var(--ac);font-size:var(--fs-s);padding:3px 0}
 /* C266 · noticias por red y relaciones entre redes */
 .cad-umb{display:inline-block;font-size:11.5px;font-weight:700;border:1px dashed #e8b64a;color:#e8b64a;border-radius:4px;padding:0 5px;margin-left:4px;cursor:help}.cad-nt{display:inline-block;font-size:11.5px;border:1px solid var(--lin);color:var(--tx2);border-radius:4px;padding:0 5px;margin-right:4px}
@@ -1424,6 +1435,7 @@ function pCalendario(){
     gm.append(evCard(e))}
   s.append(c);
   const co=calOficial();if(co)s.append(co);
+  const le=bLeyEEUU(true);if(le)s.append(le);
 }
 
 /* ---------- 5 · Matriz ---------- */
@@ -1486,6 +1498,8 @@ function pMatriz(){
   if(R.huecos&&R.huecos.length){c.append(el('h3',null,'Huecos conocidos (zonas sin cubrir)'));c.append(tabla([{t:'Zona',f:h=>h.zona},{t:'Nota',f:h=>h.nota}],R.huecos))}
   s.append(c);
   if(!fp||fp==='ue'||fp==='es'){const bm=bMica();if(bm)s.append(bm)}
+  {const pc=bPaisCorr(fp);if(pc)s.append(pc)}
+  if(!fp||fp==='eeuu'){const le=bLeyEEUU(false);if(le)s.append(le)}
 }
 /* Tablet/móvil: el toque emula mousemove pero nunca mouseleave, así que el tooltip se quedaba flotando al cambiar de pestaña. */
 let tocando=false;
@@ -1944,6 +1958,18 @@ function pCadenas(){
       TIPOS.forEach(([k])=>{const x=tp[k];const td=el('td','cad-c '+(x?'nS':'nd'));if(x){td.title=x.t+'\n— '+x.f+' · '+x.d+' ['+x.n+']';const b=el('div','cad-bar');b.style.width=Math.max(4,Math.round(x.v/tot*100))+'%';td.append(el('div','cad-v',fm(x.v)),b,el('div','cad-k',x.k+' act.'))}else td.textContent='sin dato';r.append(td)});
       tb.append(r)});
     const ev=el('div','cad-env');ev.append(tb);bx.append(ev);
+    // C311 · detalle por red y tipo (producto, emisor, subtipo, importe, nivel, fecha)
+    const dh=el('div','cad-det');dh.append(el('h3',null,'Detalle por red y tipo: qué producto y quién lo emite'));
+    dh.append(el('p','nota-v','Pulsa (o toca) una red y luego un tipo. Importes en M$ (millones de dólares). «Emisor» es la plataforma que da RWA.xyz [S] y no prueba custodia; lo único confirmado por el propio emisor es PAXG [P]. Son los mayores activos visibles, no el total. «R» = representado (registrado en la cadena, no transferible en ella); «D» = distribuido.'));
+    const nomT=Object.fromEntries(TIPOS);
+    const fila=(x,t)=>{const li=el('li');const b=el('b',null,x.producto);const mo=x.modo==='representado'?' · R':' · D';li.append(b,document.createTextNode(' — '+fm(x.importe_musd)+mo+' · emisor: '+x.emisor+' · '+x.subtipo+' ['+x.n+', '+x.d+']'));li.title=x.f;return li};
+    TA.forEach(c=>{const ta=c.tipos_activo,tp=ta.tipos||{};const ks=TIPOS.filter(([k])=>tp[k]&&tp[k].detalle&&tp[k].detalle.length);const ap=ta.aparte||[];if(!ks.length&&!ap.length)return;
+      const dt=el('details','cad-dr');const sm=el('summary',null,tit(c)+' · '+(ks.length?ks.map(([k,n])=>n).join(', '):'solo representado'));dt.append(sm);
+      ks.forEach(([k,n])=>{const d2=el('details','cad-dt');const tt=tp[k];d2.append(el('summary',null,n+' · '+fm(tt.v)+' en '+tt.k+' activos (primeros '+tt.detalle.length+')'));const u=el('ul','cad-lst');tt.detalle.forEach(x=>u.append(fila(x)));d2.append(u);dt.append(d2)});
+      if(ap.length){const d2=el('details','cad-dt');d2.append(el('summary',null,'Representado, fuera del total anterior (materias primas y otros)'));const u=el('ul','cad-lst');ap.forEach(x=>u.append(fila(x)));d2.append(u);dt.append(d2)}
+      if(ta.detalle_nota&&!dh.querySelector('.nota-d'))dh.append(el('p','nota-v nota-d',ta.detalle_nota));
+      dh.append(dt)});
+    bx.append(dh);
     const ul=el('ul','cad-lst');TA.forEach(c=>{const e=c.tipos_activo.emisores,cu=c.tipos_activo.cualitativo||{};if(!e&&!c.tipos_activo.estandar&&!c.tipos_activo.liquidacion&&!Object.keys(cu).length)return;const li=el('li');const es=c.tipos_activo.estandar,lq=c.tipos_activo.liquidacion;li.append(el('b',null,tit(c)+': '),document.createTextNode((e?e.t+' ['+e.n+']. ':'Sin cifra de emisores. ')+Object.entries(cu).map(([k,x])=>'Tipo «'+k+'» (sin importe comparable): '+x.t+' ['+x.n+', '+x.f+', '+x.d+']. ').join('')+'Estándar de contrato: '+(es?es.t+' ['+es.n+', '+es.f+', '+es.d+']':'sin dato')+'. Plazo de liquidación: '+(lq?lq.t+' ['+lq.n+']':'sin dato (no leído en fuente)')+'.'));ul.append(li)});bx.append(el('h3',null,'Emisores, estándar de contrato y plazo de liquidación'),ul);S.append(bx)})();
   // C266 · relaciones entre redes: hechos que tocan a varias fichas a la vez
   const REL=C.relaciones||[],nomC=id=>{const q=L.find(x=>x.id===id);return q?tit(q):id};
@@ -1954,6 +1980,7 @@ function pCadenas(){
       if(r.que)dt.append(el('p','que',r.que));const rh=el('div','cad-rh');(r.hechos||[]).forEach(x=>rh.append(hecho(x)));dt.append(rh);
       if((r.sin_dato||[]).length){dt.append(el('h3',null,'Sin dato todavía'));const u=el('ul','cad-lst');r.sin_dato.forEach(x=>u.append(el('li',null,x)));dt.append(u)}
       cr.append(dt)});S.append(cr)}
+  cadExtras(S);
   // fichas
   const cf=el('div','caja');cf.append(el('h2',null,'Ficha por red: capas, ISO 20022, hechos, hitos y enlaces'));
   const g=el('div','cad-fichas');L.forEach(c=>g.append(ficha(c)));cf.append(g);S.append(cf);
@@ -1991,6 +2018,177 @@ function pCadenas(){
     lst('Sesgos de las fuentes',c.sesgos);lst('Sin dato todavía',c.sin_dato);
     return dt}
 }
+/* ---------- C310 · bloques nuevos de Cadenas, Matriz y Calendario (corredores, país, ley de EE. UU., profundidad, SWIFT y calculadora). Datos: explorador/*.json; null se pinta «vacío». Nada depende del ratón: todo el texto es visible o va en desplegables que se tocan. ---------- */
+const cxVac=()=>el('span','cx-vac','vacío');
+const cxTx=x=>x==null||x===''?cxVac():(x instanceof Node?x:document.createTextNode(String(x)));
+const cxNiv=n=>{const s=n==null?'':String(n).trim();return nivelBadge(s[0]==='P'?'P':s[0]==='S'?'S':'V')};
+const cxHora=t=>t?String(t).replace('T',' ').replace(/Z$/,' UTC'):'vacío';
+const cxLk=(u,t)=>{if(!u||!/^https?:\/\//.test(u))return document.createTextNode('');const a=el('a',null,t||'abrir ↗');a.href=u;a.target='_blank';a.rel='noopener';return a};
+const cxEsp=t=>el('span','cx-esp',t||'[ESPECULACIÓN]');
+const cxCaja=(tit,id)=>{const c=el('div','caja');if(id)c.id=id;c.append(el('h2',null,tit));return c};
+const cxFuenteN=(n,u,txt)=>{const s=el('span','cad-f');s.append(cxNiv(n),document.createTextNode(' '+(txt?txt+' ':'')),cxLk(u,'fuente ↗'));return s};
+const cxLista=a=>{const u=el('ul','cad-lst');(a||[]).forEach(x=>u.append(el('li',null,x)));return u};
+const cxDet=(t,cont)=>{const d=el('details','mas');d.append(el('summary',null,t));d.append(cont);return d};
+
+/* 1 · Corredores de pago y dependencia de moneda (explorador/corredores-liquidez.json) */
+function cxCorredores(){
+  const J=D.corredores_liquidez;if(!J||!(J.corredores||[]).length)return null;
+  const c=cxCaja('Corredores de pago y dependencia de moneda','cad-corredores');
+  c.append(el('p','nota-v',J.aviso||''),el('p','nota-v','Revisado: '+(J.revisado||'vacío')+' · caduca: '+(J.caduca||'vacío')+'. '+(J.metodo||'')));
+  const f=el('div','cx-form');f.append(el('b',null,'Índice de concentración (HHI): '),document.createTextNode(J.indice_formula||''));c.append(f);
+  c.append(el('p','nota-v','Lectura: 10.000 = una sola moneda; cuanto más bajo, más repartido. Un HHI alto describe cuántas monedas intervienen, no dice si es bueno o malo. Si falta la cuota por moneda, el índice queda «vacío» y no se estima.'));
+  const filas=J.corredores;
+  const tb=tabla([
+    {t:'Corredor',f:r=>{const s=el('span');s.append(el('b',null,r.nombre),el('div','nota-v',r.tipo||''));return s}},
+    {t:'Estado y fecha',f:r=>(r.estado||'vacío')+' · '+(r.fecha||'sin fecha')},
+    {t:'Moneda con más peso',f:r=>{const m=(r.monedas_peso||[])[0];if(!m)return el('span','nota-v','vacío — '+(r.monedas_peso_motivo||''));const s=el('span');s.append(document.createTextNode(m.moneda+': '+num(m.cuota_pct,0)+' % ('+m.base+') '),cxNiv(m.nivel));return s}},
+    {t:'Índice (HHI)',n:1,f:r=>{const i=r.indice||{};if(i.hhi_min==null)return el('span','nota-v','vacío — '+(i.nota||''));const s=el('span');s.append(el('b',null,miles(String(i.hhi_min))+(i.hhi_max!==i.hhi_min?'–'+miles(String(i.hhi_max)):'')+' de 10.000'),el('div','nota-v','Cálculo: '+(i.calculo||'vacío')),el('div','nota-v',i.nota||''));return s}},
+    {t:'Volumen',f:r=>{const v=r.volumen;if(!v)return cxVac();const s=el('span');const p=[];if(v.valor_musd!=null)p.push(miles(num(v.valor_musd,0))+' M$');if(v.valor_cny_billones!=null)p.push(num(v.valor_cny_billones,1)+' billones CNY'+(v.ano?' ('+v.ano+')':''));if(v.operaciones!=null)p.push(miles(num(v.operaciones,0))+' operaciones');s.append(document.createTextNode(p.join(' · ')||'vacío'),el('div','nota-v',v.nota||''));return s}},
+    {t:'Fuentes y nivel',f:r=>{const s=el('span');(r.fuentes||[]).forEach(x=>{const d=el('div','cad-f');d.append(cxNiv(x.nivel),document.createTextNode(' '+(x.titulo||'')+' '),cxLk(x.url,'abrir ↗'));s.append(d)});if(!(r.fuentes||[]).length)s.append(cxVac());return s}}
+  ],filas);
+  c.append(scrollX(tb));
+  const dv=el('div');filas.forEach(r=>{const x=el('div');x.append(el('b',null,r.nombre+': '),document.createTextNode('participantes: '+((r.participantes||[]).join(', ')||'vacío')+'. Activo de liquidación: '+((r.activos_liquidacion||[]).join(', ')||'vacío')+'.'));if((r.verificar||[]).length){x.append(el('div','nota-v','[VERIFICAR]'),cxLista(r.verificar))}dv.append(x)});
+  c.append(cxDet('Participantes, activo de liquidación y qué falta verificar ('+filas.length+' corredores)',dv));
+  if((J.huecos||[]).length){c.append(el('h3',null,'Huecos conocidos'),cxLista(J.huecos))}
+  return c}
+
+/* 2 · Profundidad y velocidad de XRPL y Stellar (explorador/profundidad-multidivisa.json) */
+function cxProfundidad(){
+  const J=D.profundidad_multidivisa;if(!J)return null;
+  const c=cxCaja('Profundidad y velocidad: XRPL y Stellar','cad-profundidad');
+  const av=el('p','cx-aviso');av.append(el('b',null,'Instantánea, no tendencia. '),document.createTextNode((J.aviso||'').replace(/^INSTANTANEA, NO TENDENCIA:\s*/i,'')));c.append(av);
+  c.append(el('p','nota-v','Lectura: '+cxHora(J._actualizado)+' · nivel '+(J.nivel||'vacío')+'. '+(J.metodo||'')));
+  const filasD=o=>Object.entries(o||{}).map(([nom,b])=>({nom,b}));
+  const colsLib=[
+    {t:'Libro',f:r=>{const s=el('span'),b=r.b,ina=(b.spread_pct!=null&&b.spread_pct>3);s.append(el('b',null,r.nom+' '));if(ina)s.append(el('span','cx-ina','inactivo'));s.append(el('div','nota-v','Leído '+cxHora(b.leido_utc)+(b.ledger!=null?' · ledger '+b.ledger:'')+' '),cxNiv(b.nivel));return s}},
+    {t:'Spread',n:1,f:r=>r.b.spread_pct==null?cxVac():num(r.b.spread_pct,2)+' %'},
+    {t:'Ofertas compra / venta',n:1,f:r=>(r.b.ofertas_compra==null?'vacío':r.b.ofertas_compra)+' / '+(r.b.ofertas_venta==null?'vacío':r.b.ofertas_venta)},
+    {t:'Profundidad ±1 % compra / venta',n:1,f:r=>{const b=r.b;if(b.profundidad_1pct_compra==null)return cxVac();const s=el('span');s.append(document.createTextNode(miles(num(b.profundidad_1pct_compra,0))+' / '+miles(num(b.profundidad_1pct_venta,0))),el('div','nota-v',b.unidad_profundidad||''));return s}},
+    {t:'Profundidad ±2 % compra / venta',n:1,f:r=>{const b=r.b;if(b.profundidad_2pct_compra==null)return cxVac();return miles(num(b.profundidad_2pct_compra,0))+' / '+miles(num(b.profundidad_2pct_venta,0))}},
+    {t:'Lectura del libro',f:r=>r.b.lectura||'vacío'}
+  ];
+  const xd=filasD(J.xrpl_dex),sd=filasD(J.stellar_dex);
+  c.append(el('h3',null,'XRPL: libros de órdenes'),scrollX(tabla(colsLib,xd)));
+  const nIna=xd.concat(sd).filter(r=>r.b.spread_pct!=null&&r.b.spread_pct>3);
+  const pq=el('div','cx-card');pq.append(el('b',null,'Por qué los libros fiat de pasarelas salen «inactivo»'));
+  pq.append(el('p','nota-v','Un libro cuenta como inactivo si su spread (distancia entre la mejor compra y la mejor venta) supera el 3 %: sus ofertas quedan lejos del precio de mercado y el precio medio cae en un hueco, de modo que dentro del ±1 % y del ±2 % no hay ninguna y la profundidad sale 0. En esta lectura: '+(nIna.length?nIna.map(r=>r.nom+' ('+num(r.b.spread_pct,1)+' %)').join('; '):'ninguno')+'.'));
+  pq.append(el('p','nota-v','Un 0 aquí no mide cuánto se usa la pasarela: la lectura incluye solo el libro de órdenes (CLOB) y excluye los pools AMM y cualquier pago que no pase por el libro. Un libro delgado, por sí solo, no implica nada. '+((xd[0]||{b:{}}).b.aviso_cobertura||'')));c.append(pq);
+  c.append(el('h3',null,'Stellar: libros de órdenes'),scrollX(tabla(colsLib,sd)));
+  const V=J.xrpl_velocidad_reposo||{};
+  const pp=V.pagos_por_dia_estimados||{},es=V.saldo_en_escrow||{},ri=V.pct_supply_inactivo_mas_1_ano||{};
+  c.append(el('h3',null,'XRPL: velocidad y reposo'));
+  c.append(kpis([[pp.valor==null?'vacío':'~'+miles(num(pp.valor,0)),'pagos por día (estimación, orden de magnitud)'],[es.pct_del_supply==null?'vacío':num(es.pct_del_supply,2)+' %','del suministro bloqueado en escrow (no es «saldo inactivo»)'],[ri.valor==null?'vacío':num(ri.valor,1)+' %','del suministro sin moverse más de 1 año']]));
+  const lv=el('ul','cad-lst');
+  const l1=el('li');l1.append(el('b',null,'Pagos por día: '),document.createTextNode((pp.metodo||'vacío')+' '),cxFuenteN(pp.nivel,pp.fuente,'Leído '+cxHora(pp.leido_utc)+'.'));lv.append(l1);
+  const l2=el('li');l2.append(el('b',null,'Escrow: '),document.createTextNode((es.metodo||'vacío')+' '),cxFuenteN(es.nivel,es.fuente,'Leído '+cxHora(es.leido_utc)+'.'));lv.append(l2);
+  const l3=el('li');l3.append(el('b',null,'Reposo real (% sin mover más de 1 año): '),cxVac(),document.createTextNode(' — '+(ri.motivo||'')));lv.append(l3);c.append(lv);
+  const SR=J.stablecoins_por_red;
+  if(SR&&SR.datos){const tr=Object.entries(SR.datos).map(([red,x])=>({red,x}));
+    c.append(el('h3',null,'Stablecoins emitidas por red (contexto)'),scrollX(tabla([{t:'Red',f:r=>r.red},{t:'Nº de stablecoins',n:1,f:r=>r.x.n_stablecoins==null?cxVac():r.x.n_stablecoins},{t:'Mayores (importe emitido, en su unidad)',f:r=>(r.x.top||[]).map(s=>s.simbolo+' '+miles(num(s.emitido/1e6,0))+' M '+s.unidad).join(' · ')||'vacío'}],tr)));
+    const fs=el('p','nota-v');fs.append(cxNiv(SR.nivel),document.createTextNode(' '+(SR.metodo||'')+' Leído '+cxHora(SR.leido_utc)+'. '),cxLk(SR.fuente,'DefiLlama ↗'));c.append(fs)}
+  c.append(el('p','nota-v',(J.fallos||[]).length?'Pares no leídos: '+J.fallos.map(x=>typeof x==='string'?x:JSON.stringify(x)).join('; '):'Pares que fallaron en la lectura: ninguno.'));
+  return c}
+
+/* 3 · SWIFT: mensajería y liquidación (explorador/swift-liquidacion.json) */
+function cxSwift(){
+  const J=D.swift_liquidacion;if(!J)return null;
+  const c=cxCaja('SWIFT: mensajería y liquidación','cad-swift');
+  c.append(el('p','nota-v',J.aviso||''),el('p','nota-v','Leído: '+(J.leido||'vacío')+' · nivel general '+(J.nivel_general||'vacío')+'.'));
+  const q=J.que_es||{};
+  const bq=el('div','cx-card');bq.append(el('b',null,'Qué hace y qué no hace '),cxNiv(q.nivel),cxLk(q.fuente,' fuente ↗'));
+  [['Mensajería',q.mensajeria],['Liquidación',q.liquidacion],['Velocidad',q.velocidad]].forEach(([k,v])=>{const p=el('p','nota-v');p.append(el('b',null,k+': '),cxTx(v));bq.append(p)});c.append(bq);
+  const L=J.libro_compartido||{};
+  const bl=el('div','cx-card');bl.append(el('b',null,'Libro compartido de Swift (basado en blockchain) '),cxNiv(L.nivel));
+  const pe=el('p','nota-v');pe.append(cxTx(L.estado));bl.append(pe);
+  if(L.que_hace)bl.append(el('p','nota-v','Qué hace: '+L.que_hace));
+  if((L.bancos||[]).length)bl.append(cxDet('Bancos participantes ('+L.bancos.length+')',el('p','nota-v',L.bancos.join(', '))));
+  if((L.hitos||[]).length){const u=el('ul','cad-lst');L.hitos.forEach(h=>{const li=el('li');li.append(el('b',null,h.fecha+' · '),document.createTextNode(h.hito+' '),cxNiv(h.nivel),cxLk(h.fuente,' fuente ↗'));u.append(li)});bl.append(el('h3',null,'Hitos con fecha'),u)}
+  if(L.linea_consensys){const x=L.linea_consensys,p=el('p','nota-v');p.append(el('b',null,'Linea / Consensys '),cxNiv(x.nivel),document.createTextNode(' '+(x.dato||'')+' '),cxLk(x.fuente,'fuente ↗'));bl.append(p)}
+  if(L.participacion_no_confirmada)bl.append(el('p','nota-v','[VERIFICAR] '+L.participacion_no_confirmada));
+  c.append(bl);
+  if((J.pilotos_tokenizacion_cbdc||[]).length){const u=el('ul','cad-lst');J.pilotos_tokenizacion_cbdc.forEach(p=>{const li=el('li');li.append(el('b',null,p.nombre+': '),document.createTextNode((p.estado||'vacío')+' '),cxNiv(p.nivel),cxLk(p.fuente,' fuente ↗'));if(p.nota)li.append(el('span','nota-v',' '+p.nota));u.append(li)});c.append(el('h3',null,'Pilotos de tokenización y CBDC en el entorno de Swift'),u)}
+  const I=J.iso20022||{};
+  if((I.hechos||[]).length){const w=el('div');const p=el('p','nota-v');p.append(cxNiv(I.nivel),cxLk(I.fuente,' fuente ↗'));w.append(p,cxLista(I.hechos));c.append(cxDet('ISO 20022 en Swift ('+I.hechos.length+' hechos)',w))}
+  const CM=J.cuota_monedas||{};
+  if((CM.series||[]).length){c.append(el('h3',null,'Cuota de monedas en pagos de Swift (yuan)'),el('p','nota-v',CM.nota||''),scrollX(tabla([{t:'Mes',f:r=>r.mes},{t:'Cuota del RMB',n:1,f:r=>r.rmb_cuota_pct==null?cxVac():num(r.rmb_cuota_pct,2)+' %'},{t:'Puesto',n:1,f:r=>r.rango==null?cxVac():'n.º '+r.rango},{t:'Detalle',f:r=>r.detalle||'vacío'},{t:'Nivel y fuente',f:r=>{const s=el('span');s.append(cxNiv(r.nivel),cxLk(r.fuente,' fuente ↗'));return s}}],CM.series)),el('p','cx-aviso',CM.aviso_consistencia||''))}
+  const H=J.hipotesis;
+  if(H){const hb=el('div','cx-hip');hb.append(el('h3',null,'Hipótesis de trabajo: hechos a favor y en contra'),cxEsp());
+    hb.append(el('p','cx-aviso',(H.aviso||'')+' Esta sección no concluye cuál de las dos ideas es cierta.'));
+    const g=el('div','cx-grid');
+    const par=(tit,arr,cls)=>{const w=el('div','cx-par '+cls);w.append(el('b',null,tit+' ('+(arr||[]).length+')'));if(!(arr||[]).length)w.append(document.createTextNode(' '),cxVac());(arr||[]).forEach(h=>{const p=el('div','cad-h');p.append(cxNiv(h.nivel),document.createTextNode(' '+(h.hecho||'vacío')+' '),cxLk(h.fuente,'fuente ↗'));w.append(p)});return w};
+    const idea=(k,x)=>{const d=el('div','cx-card');const t=el('p');t.append(el('b',null,'Idea '+k.toUpperCase()+': '),document.createTextNode(x.idea||'vacío'),cxEsp());d.append(t,par('A favor de la idea',x.a_favor,'fav'),par('En contra de la idea',x.en_contra,'con'));return d};
+    g.append(idea('a',H.a||{}),idea('b',H.b||{}));hb.append(g);c.append(hb)}
+  if((J.pendiente||[]).length)c.append(el('h3',null,'Pendiente de leer'),cxLista(J.pendiente));
+  return c}
+
+/* 4 · Calculadora de escenarios, neutra y editable */
+function cxCalc(){
+  const c=cxCaja('Calculadora de escenarios: saldo necesario ≈ volumen diario × tiempo medio de reposo','cad-calculadora');
+  c.querySelector('h2').append(cxEsp());
+  c.append(el('p','nota-v','Es una estimación de ejemplo, no un dato, ni una previsión ni una recomendación. Un saldo que hay que tener parado para poder pagar es dinero inmovilizado: cuanto más volumen y más tiempo quieto, más saldo. «Alcista» y «bajista» son solo los nombres de dos escenarios (más saldo necesario / menos saldo necesario); los valores de partida son inventados para enseñar el cálculo y se pueden cambiar.'));
+  const f=el('div','cx-form');f.append(el('b',null,'Fórmula: '),document.createTextNode('saldo total (M$) = volumen diario (M$ por día) × reposo (horas) ÷ 24. Saldo por divisa o corredor = saldo total ÷ nº de divisas o corredores con saldo separado (reparto uniforme supuesto).'));c.append(f);
+  const g=el('div','cx-grid');
+  const esc=(nom,etq,def)=>{
+    const d=el('div','cx-card');d.append(el('b',null,nom+' '),cxEsp(),el('div','nota-v',etq));
+    const mk=(lab,val,uni,mode)=>{const l=el('label','cx-in');l.append(el('span',null,lab+' ('+uni+')'));const i=document.createElement('input');i.type='text';i.inputMode=mode||'decimal';i.value=String(val);i.setAttribute('aria-label',nom+': '+lab);l.append(i);d.append(l);return i};
+    const iv=mk('Volumen diario',def.v,'M$ por día'),ir=mk('Tiempo medio de reposo',def.t,'horas'),inn=mk('Divisas o corredores con saldo separado',def.n,'número','numeric');
+    const out=el('div','cx-res');out.setAttribute('aria-live','polite');d.append(out);
+    const rd=i=>{const s=String(i.value).trim().replace(/\./g,'').replace(',','.');if(s==='')return null;const x=Number(s);return isFinite(x)&&x>=0?x:null};
+    const calc=()=>{const v=rd(iv),t=rd(ir),n=rd(inn);out.textContent='';
+      if(v==null||t==null){out.append(el('div',null,'Saldo total: vacío (falta el volumen o el reposo, o no es un número ≥ 0)'));return}
+      const tot=v*t/24;out.append(el('div',null,'Saldo total ≈ '+miles(num(tot,1))+' M$'));
+      out.append(el('div','nota-v',n==null||n<1?'Por divisa o corredor: vacío (pon un número ≥ 1)':'Por divisa o corredor ≈ '+miles(num(tot/Math.floor(n),1))+' M$ (con '+Math.floor(n)+' saldos separados)'))};
+    [iv,ir,inn].forEach(i=>i.addEventListener('input',calc));calc();return d};
+  g.append(esc('Caso alcista','Ejemplo con mucho volumen y reposo largo: haría falta mucho saldo parado.',{v:1000,t:72,n:5}),esc('Caso bajista','Ejemplo con poco volumen y reposo corto: haría falta poco saldo parado.',{v:100,t:4,n:5}));c.append(g);
+  const J=D.corredores_liquidez,ref=el('p','nota-v');
+  const mb=J&&(J.corredores||[]).find(x=>x.id==='mbridge'),cp=J&&(J.corredores||[]).find(x=>x.id==='cips');
+  ref.append(el('b',null,'Qué datos reales existen para rellenar los parámetros: '),document.createTextNode('el tiempo medio de reposo real no está medido (vacío; ver «Profundidad y velocidad»). '+(mb&&mb.volumen&&mb.volumen.valor_musd!=null?'mBridge: '+miles(num(mb.volumen.valor_musd,0))+' M$ acumulados, no diarios [S]. ':'')+(cp&&cp.volumen&&cp.volumen.valor_cny_billones!=null?'CIPS: '+num(cp.volumen.valor_cny_billones,1)+' billones de CNY en '+(cp.volumen.ano||'vacío')+' [S]. ':'')+'Ninguno es un volumen diario por divisa, así que los valores de partida son solo ilustrativos.'));c.append(ref);
+  return c}
+
+function cadExtras(S){[cxCorredores(),cxProfundidad(),cxSwift(),cxCalc()].forEach(b=>{if(b)S.append(b)})}
+
+/* 5 · Matriz: estado por país (CBDC, stablecoins privadas, corredores y redes con proyecto oficial; explorador/pais-corredores.json) */
+function bPaisCorr(fp){
+  const J=D.pais_corredores;if(!J||!(J.paises||[]).length)return null;
+  const c=cxCaja('Estado por país: CBDC, stablecoins privadas, corredores de pago y redes con proyecto oficial','mx-pais-corr');
+  c.append(el('p','nota-v',(J.aviso||'')+' Revisado: '+(J.revisado||'vacío')+' · caduca: '+(J.caduca||'vacío')+'. '+(J.metodo||'')));
+  const SC={limitadas:'limitadas',permitidas_reguladas:'permitidas y reguladas',permitidas_marco_aprobado_sin_vigor:'marco aprobado, sin vigor',en_tramite_o_consulta:'en trámite o consulta',vetadas:'vetadas',sin_marco:'sin marco'};
+  const celda=(p,tema)=>p.jur&&R.celdas.find(x=>x.jur===p.jur&&x.tema===tema);
+  const etapaCel=(blk,tema,p,etq)=>{if(!blk||blk.etapa==null)return cxVac();const w=el('div');const cl=celda(p,tema);const ch=el('span','chip');ch.style.borderLeft='4px solid '+COL[blk.etapa];ch.append(document.createTextNode('Etapa '+blk.etapa+(R.escala[blk.etapa]?' · '+R.escala[blk.etapa]:'')+(etq?' · '+etq:'')));w.append(ch);if(cl)w.append(cxNiv(cl.fuente));if(cl&&cl.revisado)w.append(el('span','nota-v',' revisado '+cl.revisado));if(blk.resumen)w.append(cxDet('Ver resumen',el('p','nota-v',blk.resumen)));return w};
+  const filas=J.paises.filter(p=>!fp||p.jur===fp);
+  if(!filas.length){c.append(el('p','nota-v','Sin fila para este país en este bloque: vacío.'));return c}
+  c.append(scrollX(tabla([
+    {t:'País',f:p=>p.nombre},
+    {t:'CBDC',f:p=>etapaCel(p.cbdc,'cbdc',p)},
+    {t:'Stablecoins privadas',f:p=>etapaCel(p.stablecoins_privadas,'stablecoins',p,p.stablecoins_privadas&&SC[p.stablecoins_privadas.clase])},
+    {t:'Corredores de pago',f:p=>{if(!(p.corredores||[]).length)return cxVac();const w=el('div');p.corredores.forEach(x=>{const d=el('div','cad-h');d.append(el('b',null,x.nombre+': '),document.createTextNode(x.estado||'vacío'));w.append(d)});return w}},
+    {t:'Redes con proyecto oficial',f:p=>{if(!(p.redes_cripto_oficiales||[]).length)return cxVac();const w=el('div');p.redes_cripto_oficiales.forEach(x=>{const d=el('div','cad-h');d.append(cxNiv(/VERIFICAR/.test(x)?'V':'S'),document.createTextNode(' '+x));w.append(d)});return w}}
+  ],filas)));
+  const nf=J.paises.filter(p=>p.fuera_de_regulacion_json).length;
+  c.append(el('p','nota-v','Niveles: en CBDC y stablecoins, el de la celda de la Matriz (P fuente primaria, S prensa o agregador, V por verificar). Corredores: de corredores-liquidez.json. Redes con proyecto oficial: de cbdc-blockchains.json (leído el 29-oct-2026; S, o V si lleva [VERIFICAR]). «vacío» = sin dato. '+nf+' países de esta lista no tienen fila en la Matriz.'));
+  return c}
+
+/* 6 · Ley de EE. UU.: CLARITY y GENIUS (explorador/ley-eeuu.json); Matriz (completo) y Calendario (solo lo próximo) */
+function bLeyEEUU(prox){
+  const J=D.ley_eeuu;if(!J)return null;
+  const quita=t=>String(t==null?'':t).replace(/ de Joel/g,' de un comentario');
+  const c=cxCaja(prox?'CLARITY y GENIUS: próximos plazos (EE. UU.)':'Ley de EE. UU.: estado de CLARITY y GENIUS',prox?'cal-ley-eeuu':'mx-ley-eeuu');
+  const p0=el('p','nota-v');p0.append(el('b',null,'Nivel general: '),cxNiv(J.nivel_general),document.createTextNode(' '+(J.nivel_general||'vacío')+' · leído '+(J.leido||'vacío')+'. '+quita(J.aviso)));c.append(p0);
+  const hit=h=>{const li=el('li');li.append(el('b',null,h.fecha+' · '),el('span','chip',h.estado||'vacío'),document.createTextNode(' '+h.hito+' '),cxNiv(h.nivel),cxLk(h.fuente,' fuente ↗'));if(h.nota)li.append(el('div','nota-v',h.nota));return li};
+  const H=J.hitos||[];
+  if(!prox){
+    c.append(el('h3',null,'Resumen del estado'),cxLista((J.resumen||[]).map(quita)));
+    const g=el('div','cx-grid');
+    [['CLARITY','CLARITY Act (H.R. 3633)'],['GENIUS','GENIUS Act (S. 1582)'],['Reguladores','Reguladores (SEC, CFTC)']].forEach(([k,n])=>{const hs=H.filter(h=>h.tema===k);if(!hs.length)return;const d=el('div','cx-card');d.append(el('b',null,n),el('div','nota-v',hs.length+' hitos'));const u=el('ul','cad-lst');hs.forEach(h=>u.append(hit(h)));d.append(u);g.append(d)});
+    c.append(g);
+    if(J.plazos_norma_occ){const o=J.plazos_norma_occ,p=el('p','nota-v');p.append(el('b',null,'Plazos de la norma de la OCC '),cxNiv(o.nivel),document.createTextNode(' '+(o.texto||'vacío')+' '),cxLk(o.fuente,'fuente ↗'));c.append(p)}
+    if(J.mercado_de_apuestas)c.append(el('p','nota-v',J.mercado_de_apuestas));
+    if((J.pendiente||[]).length)c.append(el('h3',null,'Sin comprobar todavía'),cxLista(J.pendiente.map(quita)));
+  }else{
+    const pr=H.filter(h=>h.estado==='próximo'||h.fecha>=HOYS).sort((a,b)=>String(a.fecha).localeCompare(String(b.fecha)));
+    if(!pr.length)c.append(el('p','nota-v','Sin plazos próximos: vacío.'));else{const u=el('ul','cad-lst');pr.forEach(h=>u.append(hit(h)));c.append(u)}
+    const b=el('button','cad-bt','Ver el estado completo en la Matriz →');b.onclick=()=>{saltar('matriz')};c.append(b)}
+  return c}
 function pPaneles(){
   const s=$('v-paneles');s.textContent='';
   const c=el('div','caja');c.append(el('h2',null,'Paneles de datos: cada bloque dice qué mide, en qué unidad, de dónde sale y cuándo se leyó'));
