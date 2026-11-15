@@ -41,7 +41,8 @@
    "nivel": "P",
    "liquidacion": false,
    "divisa_no_usd": false,
-   "cuenta": true
+   "cuenta": false,
+   "nota": "Mismo memorando que el de DBS (18-sep-2025): se cuenta una sola vez, en la fila de DBS."
   },
   {
    "red": "xrpl",
@@ -581,11 +582,11 @@
    "estado": "prueba/desafío",
    "fuente": "Hedera, blog (leído 15-nov-2026)",
    "url": "https://hedera.com/blog/hedera-participates-in-the-bank-of-england-and-bis-innovation-hubs-dlt-innovation-challenge",
-   "nivel": "P",
+   "nivel": "S",
    "liquidacion": true,
    "divisa_no_usd": true,
    "cuenta": true,
-   "nota": "Hedera no detalla qué probó ni resultados."
+   "nota": "Hedera no detalla qué probó ni resultados. La única fuente es el blog de Hedera (parte interesada, no del Banco de Inglaterra ni del BIS): se trata como S."
   },
   {
    "red": "hedera",
@@ -886,15 +887,14 @@
   "xrpl": {
    "nombre": "XRPL",
    "hechos_total": 7,
-   "hechos_con_cuenta": 5,
-   "hechos_P": 3,
+   "hechos_con_cuenta": 4,
+   "hechos_P": 2,
    "hechos_S": 2,
    "entidades_P": [
     "DBS Bank",
-    "Franklin Templeton",
-    "J.P. Morgan"
+    "J.P. Morgan (Kinexys)"
    ],
-   "n_entidades_P": 3,
+   "n_entidades_P": 2,
    "liquidacion_P": 1,
    "liquidacion_S": 1,
    "liquidacion_P_realizada": 0,
@@ -963,18 +963,17 @@
    "nombre": "Hedera",
    "hechos_total": 3,
    "hechos_con_cuenta": 3,
-   "hechos_P": 2,
-   "hechos_S": 1,
+   "hechos_P": 1,
+   "hechos_S": 2,
    "entidades_P": [
-    "Apex Group",
-    "Banco de Inglaterra"
+    "Apex Group"
    ],
-   "n_entidades_P": 2,
-   "liquidacion_P": 1,
-   "liquidacion_S": 1,
+   "n_entidades_P": 1,
+   "liquidacion_P": 0,
+   "liquidacion_S": 2,
    "liquidacion_P_realizada": 0,
-   "divisa_no_usd_P": 1,
-   "bancos_centrales_P": 1
+   "divisa_no_usd_P": 0,
+   "bancos_centrales_P": 0
   },
   "avalanche": {
    "nombre": "Avalanche",

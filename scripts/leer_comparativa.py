@@ -66,7 +66,7 @@ def estadisticas(tiempos, ntx):
     dur = tiempos[-1] - tiempos[0]
     return {
         "tiempo_bloque_medio_s": round(dur / (len(tiempos) - 1), 3) if dur > 0 else None,
-        "tiempo_bloque_mediano_s": mediana(ints),  # en XRPL el reloj tiene resolución de 1 s: mejor usar la media
+        "tiempo_bloque_mediano_s": mediana(ints),  # en XRPL close_time se redondea a 10 s o más (y rippled suma 1 s si colisiona): la mediana no es dato, usar la media
         "muestra_bloques": len(tiempos),
         "ventana_s": round(dur, 1),
         "tps_medio": round(sum(ntx) / dur, 2) if dur > 0 else None,
@@ -83,13 +83,18 @@ def xrpl(p):
         ts.append(int(L["close_time"]) + 946684800)
         ntx.append(len(L.get("transactions", [])))
     f = rpc(u, "fee")
-    drops = float(f["drops"]["median_fee"])
+    # Comisión que se paga hoy = open_ledger_fee (nivel de referencia de 10 gotas, mismo que base_fee) con la red sin congestión.
+    # median_fee (5000 gotas) es el nivel por defecto de la cola (500 x referencia), NO la comisión pagada; se guarda aparte.
+    # Comprobado contra el método `fee` de s1.ripple.com el 15-nov-2026: open_ledger_fee=10, base_fee=10, median_fee=5000.
+    drops = float(f["drops"].get("open_ledger_fee", f["drops"]["base_fee"]))
+    med = float(f["drops"]["median_fee"])
     xrp = drops / 1e6
     e = estadisticas(ts, ntx[1:])
     e.update({
         "finalidad_medida_s": e["tiempo_bloque_medio_s"],
         "finalidad_nota": "un ledger validado es final (consenso sin bifurcaciones); el tiempo medido es el intervalo de cierre",
-        "comision_nativa": f"{xrp:.8f} XRP (mediana, {drops:g} gotas; comisión mínima de referencia {float(f['drops']['minimum_fee']):g} gotas)",
+        "comision_nativa": f"{xrp:.8f} XRP ({drops:g} gotas: comisión de ledger abierto, igual a la base; la «mediana» de la cola, {med:g} gotas, es solo el nivel por defecto con congestión)",
+        "comision_mediana_cola_usd": round(med / 1e6 * p["xrp"], 8) if "xrp" in p else None,
         "comision_minima_usd": round(float(f["drops"]["minimum_fee"]) / 1e6 * p["xrp"], 8) if "xrp" in p else None,
         "comision_usd": round(xrp * p["xrp"], 8) if "xrp" in p else None,
         "ledger": idx,

@@ -20,9 +20,10 @@
    "tps_medio": 35.7,
    "finalidad_medida_s": 3.737,
    "finalidad_nota": "un ledger validado es final (consenso sin bifurcaciones); el tiempo medido es el intervalo de cierre",
-   "comision_nativa": "0.00500000 XRP (mediana, 5000 gotas; comisión mínima de referencia 10 gotas)",
+   "comision_nativa": "0.00001000 XRP (10 gotas: comisión de ledger abierto, igual a la base; la «mediana» de la cola, 5000 gotas, es solo el nivel por defecto con congestión)",
+   "comision_mediana_cola_usd": 0.00482323,
    "comision_minima_usd": 9.65e-06,
-   "comision_usd": 0.00482323,
+   "comision_usd": 9.65e-06,
    "ledger": 108345413,
    "fuente": "s1.ripple.com:51234 (rippled; métodos ledger y fee)",
    "medido_utc": "2026-11-15T12:11:25Z",
@@ -369,7 +370,7 @@
   }
  },
  "hechos_liquidacion_diversificacion": {
-  "origen": "explorador/pruebas-bancos.json no existía al ejecutar; se toma de cadenas.json (relaciones) y cbdc-blockchains.json, solo lectura.",
+  "origen": "Hechos tomados de cadenas.json (relaciones) y cbdc-blockchains.json; las pruebas con bancos por red están en explorador/pruebas-bancos.json (existe; esta tabla no las duplica).",
   "filas": [
    {
     "hecho": "Pontes (BCE) enlaza plataformas DLT de mercado con TARGET/T2; producción inicial desde el 21-sep-2026; volúmenes no publicados.",
@@ -478,7 +479,7 @@
      "nivel": "S"
     },
     {
-     "hecho": "En la muestra la comisión mediana fue 10 gotas el mínimo y 0.0048 USD la mediana del último ledger: sube con la carga o con transacciones con comisión alta.",
+     "hecho": "La comisión pagada en la muestra fue la base de 10 gotas (open_ledger_fee); el campo median_fee (5000 gotas, ≈0.0048 USD) es el nivel por defecto de la cola, no lo pagado. Sube si el ledger se congestiona.",
      "fuente": "s1.ripple.com método fee, 2026-11-15T12:11:25Z",
      "nivel": "P"
     },

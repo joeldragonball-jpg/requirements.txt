@@ -510,6 +510,9 @@ function lugar(j,t){const nj=R.jurisdicciones.find(x=>x.id===j),nt=R.temas.find(
 function cargar(){
   const G=window.parent&&window.parent.DATOS;
   if(!G||!G.radar){$('estado').textContent='Sin datos: esta plantilla se abre desde la Órbita.';return}
+  /* Texto visible neutro: los datos pueden traer el nombre del lector; se sustituye al leer (sin tocar la lógica ni los ficheros) */
+  (function neutro(o){const f=t=>t.replace(/para Joel \(España\)/g,'para España').replace(/ de Joel/g,' de un comentario').replace(/ por Joel/g,' por el lector').replace(/Joel puede/g,'Se puede').replace(/Joel/g,'el lector');
+    const w=x=>{if(Array.isArray(x)){for(let i=0;i<x.length;i++){const v=x[i];if(typeof v==='string'){if(v.indexOf('Joel')>=0)x[i]=f(v)}else if(v&&typeof v==='object')w(v)}}else if(x&&typeof x==='object'){for(const k in x){const v=x[k];if(typeof v==='string'){if(v.indexOf('Joel')>=0)x[k]=f(v)}else if(v&&typeof v==='object')w(v)}}};try{w(o)}catch(e){}})(G);
   D=G;R=G.radar;V=G.voces;P=G.paneles;CAL=G.calificaciones;FMI=G.deuda_fmi;VAL=G.valoracion;window.ENL=G.enlaces;BAN=G.bancos;RES=G.reservas;window.RWAM=G.rwa_cadena_manual;window.CBDCB=G.cbdc_blockchains;
   X=G.calendario?{calendario:G.calendario,docs:Object.fromEntries(G.capas.map(c=>[c.id,c.docs]))}:null;
   $('estado').textContent='Datos reales: radar '+R.revisado+' · Órbita '+(D.movimientos.map(m=>m.fecha).filter(f=>f<=HOYS).sort().pop()||D.version)+(P?' · paneles '+P.leido:'');
@@ -522,7 +525,7 @@ function cargar(){
   filtrosActivos();frescuraCabecera();busquedaGlobal();
   $('dsem').onclick=()=>{modo='sem';$('dsem').className='on';$('ddat').className='';pintarTodo()};
   $('ddat').onclick=()=>{modo='dat';$('ddat').className='on';$('dsem').className='';pintarTodo()};
-  /* C129 · Letra: si Chrome está alejado (p. ej. 80 %), arranca compensando; lo que elija Joel se recuerda */
+  /* C129 · Letra: si Chrome está alejado (p. ej. 80 %), arranca compensando; lo que elija el lector se recuerda */
   const LZ=[.9,1,1.1,1.2,1.25,1.3,1.4,1.5];let zl=1;
   try{const g=parseFloat(localStorage.getItem('orbita-letra'));if(g>=.8&&g<=1.6)zl=g;else if(devicePixelRatio<.95)zl=Math.min(1.3,Math.round(20/devicePixelRatio)/20)}catch(e){if(devicePixelRatio<.95)zl=Math.min(1.3,Math.round(20/devicePixelRatio)/20)}
   const ponLetra=(z,guarda)=>{zl=z;document.documentElement.style.zoom=z===1?'':z;$('lval').textContent=Math.round(z*100)+' %';if(guarda)try{localStorage.setItem('orbita-letra',z)}catch(e){};if(listo){nc0=ncols();pintarTodo()}};
@@ -2194,7 +2197,7 @@ function usInc(c){
   const x=(J.redes||{})[c.id];if(!x)return usVacia(T,USSERV.includes(c.id)?'No es una cadena: sin incidentes atribuibles (vacío).':'vacío: red no mapeada en este lector.',J.avisos);
   const bl=b=>{if(!b)return cxVac();const w=el('div');w.append(el('b',null,b.n===0?'0 incidentes':b.n+' incidente'+(b.n===1?'':'s')),document.createTextNode(b.n?' · '+usd(b.importe_usd)+' · último '+(b.ultimo||'vacío'):' en la ventana (no prueba seguridad, solo que no constan)'));
     if((b.casos||[]).length){const u=el('ul','cad-lst');b.casos.forEach(k=>{const li=el('li');li.append(el('b',null,(k.fecha||'vacío')+' · '+(k.nombre||'vacío')),document.createTextNode(' · '+(k.importe_usd==null?'importe vacío':usd(k.importe_usd))+' · '+(k.tecnica||'técnica vacía')+' · recuperado: '+(k.recuperado_usd==null?'vacío':usd(k.recuperado_usd))+((k.otras_redes||[]).length?' · también atribuido a: '+k.otras_redes.join(', '):'')));u.append(li)});w.append(cxDet('Ver los '+b.casos.length+' caso'+(b.casos.length===1?'':'s'),u))}return w};
-  return usCard(T,J.nivel,(J.generado_utc||'').slice(0,10)+' (ventana '+(J.ventana||'vacío')+')','DefiLlama /hacks',J.fuente,[['En la capa base',bl(x.base)],['En puentes',bl(x.puentes)]],J.avisos)}
+  return usCard(T,J.nivel,(J.generado_utc||'').slice(0,10)+' (ventana '+(J.ventana||'vacío')+')','DefiLlama /hacks',J.fuente,[['En la capa base',bl(x.base)],['En puentes',bl(x.puentes)]].concat(Object.keys(x).filter(k=>k!=='base'&&k!=='puentes'&&x[k]&&typeof x[k]==='object'&&!Array.isArray(x[k])&&typeof x[k].n==='number').map(k=>[({cex:'Exchanges centralizados (no son fallo de la red)',cex_con_activos_en_la_red:'Exchanges centralizados con activos en la red (no son fallo de la red)'})[k]||('Otros · '+k.replace(/_/g,' ')),bl(x[k])])),J.avisos)}
 function usGob(c){
   const J=D.cadenas_gobernanza,T='Gobernanza, enmiendas y versiones';if(!J)return usVacia(T,'vacío (falta explorador/cadenas-gobernanza.json)');
   const x=(J.redes||{})[c.id];if(!x)return usVacia(T,USSERV.includes(c.id)?'No es una cadena: sin gobernanza de protocolo propia aquí (vacío).':'vacío: sin lectura de enmiendas ni de versiones para esta red.',J.avisos);
@@ -2209,13 +2212,14 @@ function usGob(c){
     f.push(['Última versión · '+r.repo,w])});
   const url=en&&/^https?:\/\//.test(en.fuente||'')?en.fuente.split(' ')[0]:null;
   return usCard(T,en?en.nivel:'S',(J.generado_utc||'').slice(0,10),en?'nodo público (enmiendas) y GitHub (versiones, S)':'releases.atom de GitHub (S)',url,f,J.avisos)}
+function usdFino(x){x=Number(x);if(!isFinite(x))return 'vacío';if(x===0)return '0 USD';const a=Math.abs(x);if(a>=0.01)return num(x,4)+' USD';const e=Math.floor(Math.log10(a)),m=x/Math.pow(10,e),sup=String(e).replace('-','⁻').replace(/\d/g,d=>'⁰¹²³⁴⁵⁶⁷⁸⁹'[d]);return '≈ '+num(m,2).replace(/,00$/,'')+' × 10'+sup+' USD ('+x.toLocaleString('es-ES',{maximumSignificantDigits:3,maximumFractionDigits:9})+')'}
 function usComp(c){
   const J=D.comparativa_liquidacion,T='Medido en la red: bloque, finalidad, comisión y TPS';if(!J)return usVacia(T,'vacío (falta explorador/comparativa-liquidacion.json)');
   const r=(J.redes||{})[c.id];if(!r)return usVacia(T,USSERV.includes(c.id)?'No es una cadena: no se mide.':'vacío: red no incluida en la comparativa medida (solo XRPL, Stellar, Ethereum, Solana, Hedera y Algorand).',[J.aviso]);
   const t0=((J.liquidacion_t0_vs_tn||{}).redes||{})[c.id],pf=(J.puntos_fuertes_y_flacos||{})[c.id];
   const f=[['Tiempo de bloque (medio · mediano)',(r.tiempo_bloque_medio_s==null?'vacío':num(r.tiempo_bloque_medio_s,1)+' s')+' · '+(r.tiempo_bloque_mediano_s==null?'vacío':num(r.tiempo_bloque_mediano_s,1)+' s')+(r.muestra_bloques?' (muestra de '+r.muestra_bloques+' bloques en '+num(r.ventana_s,0)+' s)':'')],
     ['Finalidad medida',(()=>{const w=el('div');w.append(usSeg(r.finalidad_medida_s));if(r.finalidad_nota)w.append(el('div','nota-v',r.finalidad_nota));return w})()],
-    ['Comisión',(r.comision_usd==null?'vacío':'≈ '+num(r.comision_usd,4)+' USD')+(r.comision_nativa?' · '+r.comision_nativa:'')],
+    ['Comisión',(r.comision_usd==null||isNaN(r.comision_usd)?'vacío':usdFino(r.comision_usd))+(r.comision_minima_usd!=null&&!isNaN(r.comision_minima_usd)?' · mínima '+usdFino(r.comision_minima_usd):'')+(r.comision_nativa?' · '+r.comision_nativa:'')],
     ['Transacciones por segundo (medio)',r.tps_medio==null?null:num(r.tps_medio,1)],['Bloque o ledger leído',r.ledger==null?null:num(r.ledger,0)]];
   if(t0){const w=el('div');w.append(el('div',null,'Nativo en el protocolo: '+(t0.nativo||'vacío')),el('div','nota-v','Fuera del protocolo: '+(t0.no_nativo||'vacío')));f.push(['Liquidación T+0 frente a T+n',w])}
   if(pf){const w=el('div');[['Fuertes (frente a las otras redes de la tabla)',pf.fuertes],['Flacos',pf.flacos]].forEach(([t,a])=>{if((a||[]).length){const u=el('ul','cad-lst');a.forEach(h=>{const li=el('li');li.append(cxNiv(h.nivel),document.createTextNode(' '+h.hecho+' ('+(h.fuente||'vacío')+')'));u.append(li)});w.append(cxDet(t+' ('+a.length+')',u))}});f.push(['Puntos fuertes y flacos (sin juicio de valor)',w])}

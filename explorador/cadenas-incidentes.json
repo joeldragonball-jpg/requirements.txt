@@ -1,20 +1,44 @@
 {
-  "generado_utc": "2026-11-15 12:08 UTC",
+  "generado_utc": "2026-11-15 12:42 UTC",
   "nivel": "S",
   "ventana": "2025-11-15 a 2026-11-15",
   "fuente": "https://api.llama.fi/hacks",
   "total_incidentes_en_fuente": 1355,
   "incidentes_sin_red_mapeada": 141,
-  "metodo": "Descarga única del listado de DefiLlama, filtro por fecha (365 días), agrupación por red con diccionario de alias y separación por el campo bridgeHack.",
+  "metodo": "Descarga única del listado de DefiLlama, filtro por fecha (365 días), agrupación por red con diccionario de alias y separación por bridgeHack (puentes) y por targetType=CEX (robos a exchanges centralizados, categoría aparte «cex»: no cuentan como incidente de red ni de protocolo).",
   "avisos": [
     "Atribución doble: un hack de puente suele figurar en las dos redes que conecta; no sumar importes entre redes.",
     "Los nombres de red se duplican en la fuente (XRPL/Ripple, BSC/Binance/BNB); aquí se unifican por diccionario, [VERIFICAR] omisiones.",
     "Importes y fechas son los que declara DefiLlama (agregador); 0 incidentes no prueba seguridad, solo que no constan.",
-    "Muchos incidentes son de aplicaciones sobre la red (DeFi), no fallos de la capa base."
+    "Muchos incidentes son de aplicaciones sobre la red (DeFi), no fallos de la capa base.",
+    "Los robos a exchanges centralizados (CEX: p. ej. Bitget, Binance, Mercado Bitcoin) van en «cex», separados de «base» y «puentes»: son fallos de custodia de una empresa, no de la red donde figuran sus activos."
   ],
   "redes": {
     "xrpl": {
       "base": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
+      },
+      "puentes": {
+        "n": 1,
+        "importe_usd": 200000,
+        "ultimo": "2026-08-09",
+        "casos": [
+          {
+            "fecha": "2026-08-09",
+            "nombre": "Coreum Bridge",
+            "importe_usd": 200000,
+            "tecnica": "Bridge Logic Flaw",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Coreum"
+            ]
+          }
+        ]
+      },
+      "cex": {
         "n": 1,
         "importe_usd": 387000000,
         "ultimo": "2026-09-24",
@@ -28,51 +52,18 @@
             "otras_redes": [
               "Tron",
               "Zcash",
-              "xrpl"
+              "ethereum"
             ]
-          }
-        ]
-      },
-      "puentes": {
-        "n": 1,
-        "importe_usd": 200000,
-        "ultimo": "2026-08-09",
-        "casos": [
-          {
-            "fecha": "2026-08-09",
-            "nombre": "Coreum Bridge",
-            "importe_usd": 200000,
-            "tecnica": "Bridge Logic Flaw",
-            "recuperado_usd": null,
-            "otras_redes": []
           }
         ]
       }
     },
     "stellar": {
       "base": {
-        "n": 3,
-        "importe_usd": 51687000,
-        "ultimo": "2026-11-02",
+        "n": 2,
+        "importe_usd": 11687000,
+        "ultimo": "2026-08-25",
         "casos": [
-          {
-            "fecha": "2026-11-02",
-            "nombre": "Mercado Bitcoin",
-            "importe_usd": 40000000,
-            "tecnica": "Unknown",
-            "recuperado_usd": null,
-            "otras_redes": [
-              "Bitcoin",
-              "TRON",
-              "Arbitrum",
-              "bnb",
-              "ethereum",
-              "polygon",
-              "solana",
-              "stellar",
-              "xdc"
-            ]
-          },
           {
             "fecha": "2026-08-25",
             "nombre": "CometDEX",
@@ -96,6 +87,31 @@
         "importe_usd": 0,
         "ultimo": null,
         "casos": []
+      },
+      "cex": {
+        "n": 1,
+        "importe_usd": 40000000,
+        "ultimo": "2026-11-02",
+        "casos": [
+          {
+            "fecha": "2026-11-02",
+            "nombre": "Mercado Bitcoin",
+            "importe_usd": 40000000,
+            "tecnica": "Unknown",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "TRON",
+              "Arbitrum",
+              "avalanche",
+              "bnb",
+              "ethereum",
+              "polygon",
+              "solana",
+              "xdc"
+            ]
+          }
+        ]
       }
     },
     "hedera": {
@@ -119,12 +135,18 @@
         "importe_usd": 0,
         "ultimo": null,
         "casos": []
+      },
+      "cex": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
       }
     },
     "ethereum": {
       "base": {
-        "n": 105,
-        "importe_usd": 7066789620.17,
+        "n": 101,
+        "importe_usd": 266049620.17000002,
         "ultimo": "2026-11-13",
         "casos": [
           {
@@ -142,39 +164,6 @@
             "tecnica": "Unknown",
             "recuperado_usd": null,
             "otras_redes": []
-          },
-          {
-            "fecha": "2026-11-02",
-            "nombre": "Mercado Bitcoin",
-            "importe_usd": 40000000,
-            "tecnica": "Unknown",
-            "recuperado_usd": null,
-            "otras_redes": [
-              "Bitcoin",
-              "TRON",
-              "Arbitrum",
-              "bnb",
-              "ethereum",
-              "polygon",
-              "solana",
-              "stellar",
-              "xdc"
-            ]
-          },
-          {
-            "fecha": "2026-10-29",
-            "nombre": "Binance CEX",
-            "importe_usd": 6360000000,
-            "tecnica": "Key Leaked via Infrastructure",
-            "recuperado_usd": null,
-            "otras_redes": [
-              "Bitcoin",
-              "TRON",
-              "Optimism",
-              "Arbitrum",
-              "Base",
-              "ethereum"
-            ]
           },
           {
             "fecha": "2026-10-28",
@@ -206,7 +195,11 @@
             "importe_usd": null,
             "tecnica": "Hot Wallet Key Compromised",
             "recuperado_usd": null,
-            "otras_redes": []
+            "otras_redes": [
+              "Arbitrum",
+              "Base",
+              "Hyperliquid L1"
+            ]
           },
           {
             "fecha": "2026-10-14",
@@ -217,7 +210,7 @@
             "otras_redes": [
               "Base",
               "Robinhood Chain",
-              "ethereum"
+              "bnb"
             ]
           },
           {
@@ -231,10 +224,26 @@
               "Optimism",
               "TRON",
               "Bitcoin",
-              "ethereum",
+              "bnb",
               "polygon",
               "solana"
             ]
+          },
+          {
+            "fecha": "2026-10-08",
+            "nombre": "Ethervista",
+            "importe_usd": 18600,
+            "tecnica": "Arithmetic Error",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
+          {
+            "fecha": "2026-10-06",
+            "nombre": "Set Protocol",
+            "importe_usd": 21872.67,
+            "tecnica": "Rounding Error",
+            "recuperado_usd": null,
+            "otras_redes": []
           }
         ]
       },
@@ -294,7 +303,7 @@
             "recuperado_usd": null,
             "otras_redes": [
               "Demex",
-              "ethereum"
+              "bnb"
             ]
           },
           {
@@ -320,7 +329,7 @@
             "tecnica": "Unbacked Cross-Chain Mint",
             "recuperado_usd": null,
             "otras_redes": [
-              "ethereum"
+              "bnb"
             ]
           },
           {
@@ -329,25 +338,17 @@
             "importe_usd": 93000,
             "tecnica": "Bridge Logic Flaw",
             "recuperado_usd": null,
-            "otras_redes": []
+            "otras_redes": [
+              "Chia"
+            ]
           }
         ]
-      }
-    },
-    "solana": {
-      "base": {
-        "n": 20,
-        "importe_usd": 451433588.7,
-        "ultimo": "2026-11-05",
+      },
+      "cex": {
+        "n": 4,
+        "importe_usd": 6800740000,
+        "ultimo": "2026-11-02",
         "casos": [
-          {
-            "fecha": "2026-11-05",
-            "nombre": "Loopscale Lending",
-            "importe_usd": null,
-            "tecnica": "Unknown",
-            "recuperado_usd": null,
-            "otras_redes": []
-          },
           {
             "fecha": "2026-11-02",
             "nombre": "Mercado Bitcoin",
@@ -358,13 +359,67 @@
               "Bitcoin",
               "TRON",
               "Arbitrum",
+              "avalanche",
               "bnb",
-              "ethereum",
               "polygon",
               "solana",
               "stellar",
               "xdc"
             ]
+          },
+          {
+            "fecha": "2026-10-29",
+            "nombre": "Binance CEX",
+            "importe_usd": 6360000000,
+            "tecnica": "Key Leaked via Infrastructure",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "TRON",
+              "Optimism",
+              "Arbitrum",
+              "Base",
+              "avalanche"
+            ]
+          },
+          {
+            "fecha": "2026-09-24",
+            "nombre": "Bitget",
+            "importe_usd": 387000000,
+            "tecnica": "Hot Wallet Key Compromised",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Tron",
+              "Zcash",
+              "xrpl"
+            ]
+          },
+          {
+            "fecha": "2026-04-16",
+            "nombre": "Grinex",
+            "importe_usd": 13740000,
+            "tecnica": "Hot Wallet Key Compromised",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Tron"
+            ]
+          }
+        ]
+      }
+    },
+    "solana": {
+      "base": {
+        "n": 18,
+        "importe_usd": 375433588.7,
+        "ultimo": "2026-11-05",
+        "casos": [
+          {
+            "fecha": "2026-11-05",
+            "nombre": "Loopscale Lending",
+            "importe_usd": null,
+            "tecnica": "Unknown",
+            "recuperado_usd": null,
+            "otras_redes": []
           },
           {
             "fecha": "2026-10-26",
@@ -393,9 +448,9 @@
               "Optimism",
               "TRON",
               "Bitcoin",
+              "bnb",
               "ethereum",
-              "polygon",
-              "solana"
+              "polygon"
             ]
           },
           {
@@ -437,6 +492,14 @@
             "tecnica": "Missing Input Validation",
             "recuperado_usd": null,
             "otras_redes": []
+          },
+          {
+            "fecha": "2026-07-16",
+            "nombre": "DefiTuna Lending",
+            "importe_usd": 580000,
+            "tecnica": "Swap Logic Flaw",
+            "recuperado_usd": null,
+            "otras_redes": []
           }
         ]
       },
@@ -453,7 +516,7 @@
             "recuperado_usd": null,
             "otras_redes": [
               "WAX",
-              "solana"
+              "ethereum"
             ]
           },
           {
@@ -473,12 +536,45 @@
             "otras_redes": []
           }
         ]
+      },
+      "cex": {
+        "n": 2,
+        "importe_usd": 76000000,
+        "ultimo": "2026-11-02",
+        "casos": [
+          {
+            "fecha": "2026-11-02",
+            "nombre": "Mercado Bitcoin",
+            "importe_usd": 40000000,
+            "tecnica": "Unknown",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "TRON",
+              "Arbitrum",
+              "avalanche",
+              "bnb",
+              "ethereum",
+              "polygon",
+              "stellar",
+              "xdc"
+            ]
+          },
+          {
+            "fecha": "2025-11-26",
+            "nombre": "Upbit",
+            "importe_usd": 36000000,
+            "tecnica": "Malware",
+            "recuperado_usd": null,
+            "otras_redes": []
+          }
+        ]
       }
     },
     "bnb": {
       "base": {
-        "n": 61,
-        "importe_usd": 134322641.24,
+        "n": 60,
+        "importe_usd": 94322641.24,
         "ultimo": "2026-11-08",
         "casos": [
           {
@@ -501,24 +597,6 @@
             "tecnica": "Swap Logic Flaw",
             "recuperado_usd": null,
             "otras_redes": []
-          },
-          {
-            "fecha": "2026-11-02",
-            "nombre": "Mercado Bitcoin",
-            "importe_usd": 40000000,
-            "tecnica": "Unknown",
-            "recuperado_usd": null,
-            "otras_redes": [
-              "Bitcoin",
-              "TRON",
-              "Arbitrum",
-              "bnb",
-              "ethereum",
-              "polygon",
-              "solana",
-              "stellar",
-              "xdc"
-            ]
           },
           {
             "fecha": "2026-10-27",
@@ -591,6 +669,17 @@
               "Tron",
               "ethereum"
             ]
+          },
+          {
+            "fecha": "2026-09-23",
+            "nombre": "Meter",
+            "importe_usd": null,
+            "tecnica": "Unknown",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Meter",
+              "ethereum"
+            ]
           }
         ]
       },
@@ -658,7 +747,7 @@
             "tecnica": "Improper Access Control",
             "recuperado_usd": null,
             "otras_redes": [
-              "bnb",
+              "avalanche",
               "ethereum",
               "polygon"
             ]
@@ -694,7 +783,7 @@
             "otras_redes": [
               "Base",
               "Arbitrum",
-              "bnb",
+              "avalanche",
               "ethereum",
               "polygon"
             ]
@@ -712,12 +801,10 @@
             ]
           }
         ]
-      }
-    },
-    "avalanche": {
-      "base": {
-        "n": 5,
-        "importe_usd": 6401591000,
+      },
+      "cex": {
+        "n": 1,
+        "importe_usd": 40000000,
         "ultimo": "2026-11-02",
         "casos": [
           {
@@ -730,29 +817,23 @@
               "Bitcoin",
               "TRON",
               "Arbitrum",
-              "bnb",
+              "avalanche",
               "ethereum",
               "polygon",
               "solana",
               "stellar",
               "xdc"
             ]
-          },
-          {
-            "fecha": "2026-10-29",
-            "nombre": "Binance CEX",
-            "importe_usd": 6360000000,
-            "tecnica": "Key Leaked via Infrastructure",
-            "recuperado_usd": null,
-            "otras_redes": [
-              "Bitcoin",
-              "TRON",
-              "Optimism",
-              "Arbitrum",
-              "Base",
-              "ethereum"
-            ]
-          },
+          }
+        ]
+      }
+    },
+    "avalanche": {
+      "base": {
+        "n": 3,
+        "importe_usd": 1591000,
+        "ultimo": "2026-10-27",
+        "casos": [
           {
             "fecha": "2026-10-27",
             "nombre": "Fence Finance",
@@ -816,27 +897,12 @@
             ]
           }
         ]
-      }
-    },
-    "polygon": {
-      "base": {
-        "n": 18,
-        "importe_usd": 54148614.47,
-        "ultimo": "2026-11-08",
+      },
+      "cex": {
+        "n": 2,
+        "importe_usd": 6400000000,
+        "ultimo": "2026-11-02",
         "casos": [
-          {
-            "fecha": "2026-11-08",
-            "nombre": "ACryptoS",
-            "importe_usd": 665429,
-            "tecnica": "Missing Input Validation",
-            "recuperado_usd": null,
-            "otras_redes": [
-              "Arbitrum",
-              "Base",
-              "Optimism",
-              "polygon"
-            ]
-          },
           {
             "fecha": "2026-11-02",
             "nombre": "Mercado Bitcoin",
@@ -853,6 +919,43 @@
               "solana",
               "stellar",
               "xdc"
+            ]
+          },
+          {
+            "fecha": "2026-10-29",
+            "nombre": "Binance CEX",
+            "importe_usd": 6360000000,
+            "tecnica": "Key Leaked via Infrastructure",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "TRON",
+              "Optimism",
+              "Arbitrum",
+              "Base",
+              "ethereum"
+            ]
+          }
+        ]
+      }
+    },
+    "polygon": {
+      "base": {
+        "n": 17,
+        "importe_usd": 14148614.469999999,
+        "ultimo": "2026-11-08",
+        "casos": [
+          {
+            "fecha": "2026-11-08",
+            "nombre": "ACryptoS",
+            "importe_usd": 665429,
+            "tecnica": "Missing Input Validation",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Arbitrum",
+              "Base",
+              "Optimism",
+              "bnb"
             ]
           },
           {
@@ -874,8 +977,8 @@
               "Optimism",
               "TRON",
               "Bitcoin",
+              "bnb",
               "ethereum",
-              "polygon",
               "solana"
             ]
           },
@@ -896,7 +999,7 @@
             "otras_redes": [
               "ApeChain",
               "Base",
-              "polygon"
+              "ethereum"
             ]
           },
           {
@@ -930,6 +1033,14 @@
             "tecnica": "Frontend Compromise",
             "recuperado_usd": null,
             "otras_redes": []
+          },
+          {
+            "fecha": "2026-06-23",
+            "nombre": "Royal.io",
+            "importe_usd": 263000,
+            "tecnica": "Incorrect Share Accounting",
+            "recuperado_usd": null,
+            "otras_redes": []
           }
         ]
       },
@@ -945,9 +1056,9 @@
             "tecnica": "Improper Access Control",
             "recuperado_usd": null,
             "otras_redes": [
+              "avalanche",
               "bnb",
-              "ethereum",
-              "polygon"
+              "ethereum"
             ]
           },
           {
@@ -959,9 +1070,34 @@
             "otras_redes": [
               "Base",
               "Arbitrum",
+              "avalanche",
+              "bnb",
+              "ethereum"
+            ]
+          }
+        ]
+      },
+      "cex": {
+        "n": 1,
+        "importe_usd": 40000000,
+        "ultimo": "2026-11-02",
+        "casos": [
+          {
+            "fecha": "2026-11-02",
+            "nombre": "Mercado Bitcoin",
+            "importe_usd": 40000000,
+            "tecnica": "Unknown",
+            "recuperado_usd": null,
+            "otras_redes": [
+              "Bitcoin",
+              "TRON",
+              "Arbitrum",
+              "avalanche",
               "bnb",
               "ethereum",
-              "polygon"
+              "solana",
+              "stellar",
+              "xdc"
             ]
           }
         ]
@@ -988,10 +1124,28 @@
         "importe_usd": 0,
         "ultimo": null,
         "casos": []
+      },
+      "cex": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
       }
     },
     "xdc": {
       "base": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
+      },
+      "puentes": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
+      },
+      "cex": {
         "n": 1,
         "importe_usd": 40000000,
         "ultimo": "2026-11-02",
@@ -1006,21 +1160,15 @@
               "Bitcoin",
               "TRON",
               "Arbitrum",
+              "avalanche",
               "bnb",
               "ethereum",
               "polygon",
               "solana",
-              "stellar",
-              "xdc"
+              "stellar"
             ]
           }
         ]
-      },
-      "puentes": {
-        "n": 0,
-        "importe_usd": 0,
-        "ultimo": null,
-        "casos": []
       }
     },
     "iota": {
@@ -1044,6 +1192,12 @@
         "importe_usd": 0,
         "ultimo": null,
         "casos": []
+      },
+      "cex": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
       }
     },
     "plume": {
@@ -1058,6 +1212,12 @@
         "importe_usd": 0,
         "ultimo": null,
         "casos": []
+      },
+      "cex": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
       }
     },
     "canton": {
@@ -1068,6 +1228,12 @@
         "casos": []
       },
       "puentes": {
+        "n": 0,
+        "importe_usd": 0,
+        "ultimo": null,
+        "casos": []
+      },
+      "cex": {
         "n": 0,
         "importe_usd": 0,
         "ultimo": null,

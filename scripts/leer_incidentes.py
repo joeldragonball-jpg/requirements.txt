@@ -43,7 +43,7 @@ def main():
         print(f"Fallo de descarga, no se sobrescribe: {e}", file=sys.stderr)
         return 1
     corte = (ahora - timedelta(days=365)).timestamp()
-    redes = {k: {"base": [], "puentes": []} for k in ALIAS}
+    redes = {k: {"base": [], "puentes": [], "cex": []} for k in ALIAS}
     sin_mapear = 0
     for h in datos:
         if not h.get("date") or h["date"] < corte:
@@ -55,15 +55,19 @@ def main():
         if not ids:
             sin_mapear += 1
             continue
-        item = {"fecha": datetime.fromtimestamp(h["date"], timezone.utc).strftime("%Y-%m-%d"), "nombre": h.get("name"),
-                "importe_usd": h.get("amount"), "tecnica": h.get("technique") or h.get("classification"),
-                "recuperado_usd": h.get("returnedFunds"), "otras_redes": [c for c in cadenas if c.lower() not in INVERSO] + [i for i in ids[1:]] if len(ids) > 1 else []}
+        cex = str(h.get("targetType") or "").upper() == "CEX"
         for i in ids:  # un incidente multi-red cuenta en cada red afectada: no sumar entre redes
-            redes[i]["puentes" if h.get("bridgeHack") else "base"].append(item)
+            sin_mapa = [c for c in cadenas if isinstance(c, str) and c.lower() not in INVERSO]
+            item = {"fecha": datetime.fromtimestamp(h["date"], timezone.utc).strftime("%Y-%m-%d"), "nombre": h.get("name"),
+                    "importe_usd": h.get("amount"), "tecnica": h.get("technique") or h.get("classification"),
+                    "recuperado_usd": h.get("returnedFunds"),
+                    "otras_redes": sin_mapa + [j for j in ids if j != i]}  # redes afectadas distintas de la actual
+            # CEX = robo a un exchange centralizado (carteras calientes/custodia): no es un fallo de la red ni del protocolo
+            redes[i]["cex" if cex else ("puentes" if h.get("bridgeHack") else "base")].append(item)
     res = {}
     for k, v in redes.items():
         r = {}
-        for tipo in ("base", "puentes"):
+        for tipo in ("base", "puentes", "cex"):
             L = sorted(v[tipo], key=lambda x: x["fecha"], reverse=True)
             r[tipo] = {"n": len(L), "importe_usd": sum(x["importe_usd"] or 0 for x in L), "ultimo": L[0]["fecha"] if L else None,
                        "casos": L[:10]}
@@ -71,11 +75,12 @@ def main():
     out = {"generado_utc": ahora.strftime("%Y-%m-%d %H:%M UTC"), "nivel": "S",
            "ventana": f"{(ahora - timedelta(days=365)).strftime('%Y-%m-%d')} a {ahora.strftime('%Y-%m-%d')}",
            "fuente": URL, "total_incidentes_en_fuente": len(datos), "incidentes_sin_red_mapeada": sin_mapear,
-           "metodo": "Descarga única del listado de DefiLlama, filtro por fecha (365 días), agrupación por red con diccionario de alias y separación por el campo bridgeHack.",
+           "metodo": "Descarga única del listado de DefiLlama, filtro por fecha (365 días), agrupación por red con diccionario de alias y separación por bridgeHack (puentes) y por targetType=CEX (robos a exchanges centralizados, categoría aparte «cex»: no cuentan como incidente de red ni de protocolo).",
            "avisos": ["Atribución doble: un hack de puente suele figurar en las dos redes que conecta; no sumar importes entre redes.",
                       "Los nombres de red se duplican en la fuente (XRPL/Ripple, BSC/Binance/BNB); aquí se unifican por diccionario, [VERIFICAR] omisiones.",
                       "Importes y fechas son los que declara DefiLlama (agregador); 0 incidentes no prueba seguridad, solo que no constan.",
-                      "Muchos incidentes son de aplicaciones sobre la red (DeFi), no fallos de la capa base."],
+                      "Muchos incidentes son de aplicaciones sobre la red (DeFi), no fallos de la capa base.",
+                      "Los robos a exchanges centralizados (CEX: p. ej. Bitget, Binance, Mercado Bitcoin) van en «cex», separados de «base» y «puentes»: son fallos de custodia de una empresa, no de la red donde figuran sus activos."],
            "redes": res}
     SALIDA.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("OK:", {k: (v["base"]["n"], v["puentes"]["n"]) for k, v in res.items()})
