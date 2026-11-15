@@ -18,12 +18,28 @@ def main():
     ap.add_argument("--nav", type=float, required=True)
     ap.add_argument("--tenencia", type=float)
     ap.add_argument("--fuente", required=True)
+    # C280 (15-nov): datos leidos a mano en la web del emisor con Chrome; opcionales para fondos nuevos o derivados
+    ap.add_argument("--aum", type=float)
+    ap.add_argument("--nota")
+    ap.add_argument("--nivel", default="P (emisor, parte interesada)")
+    ap.add_argument("--nombre")
+    ap.add_argument("--activo")
+    ap.add_argument("--emisor")
+    ap.add_argument("--web")
     a = ap.parse_args()
     d = json.loads(RUTA.read_text(encoding="utf-8"))
-    etf = next(e for e in d["etfs"] if e["ticker"] == a.ticker)
+    etf = next((e for e in d["etfs"] if e["ticker"] == a.ticker), None)
+    if etf is None:  # fondo nuevo (p. ej. BTC): se crea con los datos opcionales
+        etf = {"ticker": a.ticker, "nombre": a.nombre, "activo": a.activo, "emisor": a.emisor, "web": a.web, "historial": [], "flujo_usd": None}
+        d["etfs"].append(etf)
     hist = etf.setdefault("historial", [])
     hist[:] = [h for h in hist if h["fecha"] != a.fecha]
-    hist.append({"fecha": a.fecha, "acciones": a.acciones, "nav": a.nav, "tenencia_monedas": a.tenencia, "fuente": a.fuente, "nivel": "P (emisor, parte interesada)"})
+    reg = {"fecha": a.fecha, "acciones": a.acciones, "nav": a.nav, "tenencia_monedas": a.tenencia, "fuente": a.fuente, "nivel": a.nivel}
+    if a.aum is not None:
+        reg["aum_usd"] = a.aum
+    if a.nota:
+        reg["nota"] = a.nota
+    hist.append(reg)
     hist.sort(key=lambda h: h["fecha"])
     for i in range(1, len(hist)):
         hist[i]["flujo_usd"] = round((hist[i]["acciones"] - hist[i - 1]["acciones"]) * hist[i]["nav"])

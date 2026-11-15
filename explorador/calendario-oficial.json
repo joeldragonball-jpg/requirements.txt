@@ -1,16 +1,16 @@
 {
- "generado": "2026-11-14T22:22:45+00:00",
+ "generado": "2026-11-15T09:27:12+00:00",
  "periodo": {
-  "desde": "2026-11-14",
-  "hasta": "2027-02-12"
+  "desde": "2026-11-15",
+  "hasta": "2027-02-13"
  },
  "aviso": "Fechas y horas de calendarios oficiales de cada organismo (nivel P). Horas en la zona indicada; null = el calendario no la da. Sin IA.",
  "fuentes": {
   "BLS": {
    "ok": true,
    "via": "copia leida con Chrome (calendario-oficial-bls.ics): curl recibe 403",
-   "en_periodo": 17,
-   "leidos": 23
+   "en_periodo": 16,
+   "leidos": 22
   },
   "BEA": {
    "ok": true,
@@ -958,17 +958,6 @@
   },
   {
    "fecha": "2026-12-18",
-   "hora": "10:00",
-   "zona_horaria": "America/New_York",
-   "organismo": "BLS (EE. UU.)",
-   "evento": "State Employment and Unemployment (Monthly)",
-   "url": "https://www.bls.gov/schedule/news_release/",
-   "nivel": "P",
-   "aproximado": false,
-   "clave": false
-  },
-  {
-   "fecha": "2026-12-18",
    "hora": null,
    "zona_horaria": "Europe/Luxembourg",
    "organismo": "Eurostat (UE)",
@@ -1489,88 +1478,9 @@
   }
  ],
  "comparacion": {
-  "eventos_en_data_json": 59,
-  "coinciden": 4,
-  "faltantes": [
-   {
-    "tema": "FOMC",
-    "organismo": "Fed (EE. UU.)",
-    "fecha_oficial": "2027-01-27",
-    "evento_oficial": "Reunion FOMC (26-27 January): decision de tipos"
-   },
-   {
-    "tema": "IPCA zona euro (flash)",
-    "organismo": "Eurostat (UE)",
-    "fecha_oficial": "2026-12-01",
-    "evento_oficial": "Flash estimate inflation euro area"
-   },
-   {
-    "tema": "IPCA zona euro (flash)",
-    "organismo": "Eurostat (UE)",
-    "fecha_oficial": "2026-12-17",
-    "evento_oficial": "Inflation (HICP)"
-   },
-   {
-    "tema": "IPCA zona euro (flash)",
-    "organismo": "Eurostat (UE)",
-    "fecha_oficial": "2027-01-06",
-    "evento_oficial": "Flash estimate inflation euro area"
-   },
-   {
-    "tema": "IPCA zona euro (flash)",
-    "organismo": "Eurostat (UE)",
-    "fecha_oficial": "2027-01-19",
-    "evento_oficial": "Inflation (HICP)"
-   },
-   {
-    "tema": "IPCA zona euro (flash)",
-    "organismo": "Eurostat (UE)",
-    "fecha_oficial": "2027-02-02",
-    "evento_oficial": "Flash estimate inflation euro area"
-   },
-   {
-    "tema": "INE IPC",
-    "organismo": "INE (España)",
-    "fecha_oficial": "2026-11-27",
-    "evento_oficial": "Índice de Precios de Consumo (Avance. Noviembre 2026)"
-   },
-   {
-    "tema": "INE IPC",
-    "organismo": "INE (España)",
-    "fecha_oficial": "2026-11-27",
-    "evento_oficial": "Índices de Precios de Consumo Armonizado (Avance. Noviembre 2026)"
-   },
-   {
-    "tema": "INE IPC",
-    "organismo": "INE (España)",
-    "fecha_oficial": "2026-12-15",
-    "evento_oficial": "Índice de Precios de Consumo (Noviembre 2026)"
-   },
-   {
-    "tema": "INE IPC",
-    "organismo": "INE (España)",
-    "fecha_oficial": "2026-12-15",
-    "evento_oficial": "Índices de Precios de Consumo Armonizado (Noviembre 2026)"
-   },
-   {
-    "tema": "INE IPC",
-    "organismo": "INE (España)",
-    "fecha_oficial": "2026-12-30",
-    "evento_oficial": "Índice de Precios de Consumo (Avance. Diciembre 2026)"
-   },
-   {
-    "tema": "INE IPC",
-    "organismo": "INE (España)",
-    "fecha_oficial": "2026-12-30",
-    "evento_oficial": "Índices de Precios de Consumo Armonizado (Avance. Diciembre 2026)"
-   },
-   {
-    "tema": "INE PIB trimestral",
-    "organismo": "INE (España)",
-    "fecha_oficial": "2026-12-23",
-    "evento_oficial": "Contabilidad Nacional Trimestral de España (Trimestre 3/2026)"
-   }
-  ],
+  "eventos_en_data_json": 69,
+  "coinciden": 17,
+  "faltantes": [],
   "fechas_distintas": [],
   "nota": "Heuristica por tema/palabras (±12 dias); revisar a mano antes de tocar eventos/calendario.toml"
  }

@@ -1,6 +1,6 @@
 {
- "generado": "2026-11-14",
- "metodo": "flujo diario = (acciones_t - acciones_t-1) x NAV_t; requiere >=2 instantáneas. Las webs de emisores solo muestran la última, así que el historial se acumula con scripts/leer_etf_flujos.py (una instantánea por día hábil). Hoy hay 1 por fondo: flujo = null.",
+ "generado": "2026-11-15",
+ "metodo": "flujo diario = (acciones_t - acciones_t-1) x NAV_t; requiere >=2 instantáneas. Las webs de emisores solo muestran la última, así que el historial se acumula con scripts/leer_etf_flujos.py (una instantánea por día hábil). Al 15-nov hay 1 por fondo: flujo = null.",
  "nota_nivel": "P = leído en la web del emisor (parte interesada, no auditado). Agregadores (Farside, SoSoValue) solo como contraste [S]; no consultados hoy.",
  "etfs": [
   {
@@ -55,7 +55,7 @@
    "web": null,
    "historial": [],
    "flujo_usd": null,
-   "flujo_motivo": "no se localizó la URL de la ficha (franklintempleton.com/xrpz da 404; la ficha usa ID de producto en la URL); AUM ~401 M$ al 22-oct solo por [S: The Block] (T19)"
+   "flujo_motivo": "[VERIFICAR] 15-nov: franklintempleton.com/xrpz da 404 y el listado de ETF de Franklin (Chrome) no incluye XRPZ (si EZBC, EZPZ, EZET); sin URL de ficha no hay patrimonio/acciones. AUM ~401 M$ al 22-oct solo [S: The Block] (T19)"
   },
   {
    "ticker": "XRPC",
@@ -65,7 +65,7 @@
    "web": "https://canaryfunds.com",
    "historial": [],
    "flujo_usd": null,
-   "flujo_motivo": "canaryfunds.com devolvió ERR_SSL_PROTOCOL_ERROR en Chrome (14-nov); no se evitó el error. AUM ~316 M$ al 22-oct solo [S: The Block]"
+   "flujo_motivo": "[VERIFICAR] 15-nov: canaryfunds.com y www.canaryfunds.com siguen con ERR_SSL_PROTOCOL_ERROR en Chrome (2 intentos). AUM ~316 M$ al 22-oct solo [S: The Block]"
   },
   {
    "ticker": "GXLM",
@@ -75,11 +75,90 @@
    "web": null,
    "historial": [],
    "flujo_usd": null,
-   "flujo_motivo": "no es ETF spot: fideicomiso en OTCQX (T19/edgar.json: 8-K del 15-oct-2026); no se leyó su web hoy. No se localizó ningún ETF spot de XLM vivo en EE. UU. en este repo"
+   "flujo_motivo": "[VERIFICAR] 15-nov: etfs.grayscale.com/gxlm da 'Page not found' y la home de ETF/ETP de Grayscale no lista ningun producto XLM (si GXRP, GSOL...); GXLM sigue siendo fideicomiso OTCQX (8-K 15-oct-2026), sin datos de emisor leidos"
+  },
+  {
+   "ticker": "IBIT",
+   "nombre": "iShares Bitcoin Trust ETF",
+   "activo": "BTC",
+   "emisor": "BlackRock",
+   "web": "https://www.ishares.com/us/products/333011/ishares-bitcoin-trust-etf",
+   "historial": [
+    {
+     "fecha": "2026-11-13",
+     "acciones": 1387960000.0,
+     "nav": 39.003,
+     "tenencia_monedas": null,
+     "fuente": "https://www.ishares.com/us/products/333011/ishares-bitcoin-trust-etf",
+     "nivel": "P (emisor, parte interesada)",
+     "aum_usd": 54133940679.0,
+     "nota": "Patrimonio neto 54.133.940.679 USD y acciones 1.387.960.000 (13-nov, web iShares); NAV = patrimonio/acciones (derivado, cierre 38,94; prima/descuento -0,16%); tenencia BTC no leida"
+    }
+   ],
+   "flujo_usd": null
+  },
+  {
+   "ticker": "FBTC",
+   "nombre": "Fidelity Wise Origin Bitcoin Fund",
+   "activo": "BTC",
+   "emisor": "Fidelity",
+   "web": "https://digital.fidelity.com/prgw/digital/research/quote/dashboard/summary?symbol=FBTC",
+   "historial": [
+    {
+     "fecha": "2026-11-13",
+     "acciones": 199128000.0,
+     "nav": 59.884562,
+     "tenencia_monedas": 173157.01,
+     "fuente": "https://digital.fidelity.com/prgw/digital/research/quote/dashboard/summary?symbol=FBTC",
+     "nivel": "P (emisor); acciones = derivado",
+     "nota": "NAV 59,884562 y BTC en fondo 173.157,01 (13-nov, web Fidelity); patrimonio 13,47 B USD es del 31-oct; acciones NO publicadas (la web dice no disponible): derivadas = BTC x 1.149,988 acciones/BTC [calculo propio]"
+    }
+   ],
+   "flujo_usd": null
+  },
+  {
+   "ticker": "EZBC",
+   "nombre": "Franklin Bitcoin ETF",
+   "activo": "BTC",
+   "emisor": "Franklin Templeton",
+   "web": "https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/39639/SINGLCLASS/franklin-bitcoin-etf/EZBC",
+   "historial": [
+    {
+     "fecha": "2026-11-13",
+     "acciones": 9200000.0,
+     "nav": 39.8,
+     "tenencia_monedas": null,
+     "fuente": "https://www.franklintempleton.com/investments/options/exchange-traded-funds/products/39639/SINGLCLASS/franklin-bitcoin-etf/EZBC",
+     "nivel": "P (emisor, parte interesada)",
+     "aum_usd": 366140000.0,
+     "nota": "NAV 39,80 y acciones 9.200.000 al 13-nov; patrimonio total 366,14 M USD con fecha 15-nov (web Franklin)"
+    }
+   ],
+   "flujo_usd": null
+  },
+  {
+   "ticker": "GXRP",
+   "nombre": "Grayscale XRP Trust ETF",
+   "activo": "XRP",
+   "emisor": "Grayscale",
+   "web": "https://etfs.grayscale.com/gxrp",
+   "historial": [
+    {
+     "fecha": "2026-11-13",
+     "acciones": 3000100.0,
+     "nav": 19.78,
+     "tenencia_monedas": 58060446.312,
+     "fuente": "https://etfs.grayscale.com/gxrp",
+     "nivel": "P (emisor, parte interesada)",
+     "aum_usd": 59343931.0,
+     "nota": "AUM 59.343.931 USD (no GAAP), acciones 3.000.100, XRP en fondo 58.060.446,312 (13-nov, web Grayscale); NAV = AUM/acciones (derivado); 19,35283701 XRP por accion"
+    }
+   ],
+   "flujo_usd": null
   }
  ],
  "bloques_no_hechos": {
-  "btc": "no se leyeron fondos de BTC (alcance del lote: XRP/XLM; ficha EZBC de Franklin abrió pero no se extrajo).",
+  "btc": "C280 (15-nov): leidos IBIT (iShares), FBTC (Fidelity) y EZBC (Franklin) con nivel P. Pendiente: tenencia de BTC de IBIT y acciones reales de FBTC (la web dice 'no disponible'; derivadas por BTC x acciones/BTC).",
   "13f_3T": "plazo 16-nov-2026; la búsqueda de texto completo de EDGAR (leer_edgar.py) no indexa las tablas de posiciones del 13F, hay que leer el infotable XML por declarante (método de R21/R21b). Pendiente de tras el plazo."
  }
 }
