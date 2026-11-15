@@ -210,7 +210,7 @@ table.cad-cm{min-width:1240px;border-spacing:3px}table.cad-cm.cad-sm{min-width:1
 .cad-chip.nP{border-left-color:#2fe08f}.cad-chip.nS{border-left-color:#e8b64a}.cad-chip.nV{border-left-color:#ff6b6b}.cad-chip.nd{color:var(--tx2);border-style:dashed}.cad-chip b{font-size:13px}
 .cad-mp{margin-top:8px;border-top:1px solid var(--lin);padding-top:6px}.cad-mp[hidden]{display:none}.cad-mtk{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}.cad-mtk .tk{font-size:13px}.cad-mrot{margin:14px 0 8px;font-size:var(--fs-s);color:var(--tx2)}
 @media (max-width:699px){.cad-nomov{display:none!important}.cad-ml{display:block}}
-.cad-us{margin:12px 0}.cad-usg{column-width:380px;column-gap:12px;margin:8px 0}
+.cad-us{margin:12px 0}.cad-usg{column-width:380px;column-gap:12px;margin:8px 0}.cad-usg.mas{display:flex;gap:12px;align-items:flex-start;columns:auto}.cad-col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:12px}.cad-usg.mas .cad-usc{display:block;margin:0;width:100%}.ap-por{margin:3px 0 2px;padding:4px 8px;border-left:3px solid var(--ac);background:rgba(90,169,230,.08);font-size:var(--fs-s);color:var(--tx)}
 .cad-usc{background:var(--bg);border:1px solid var(--lin);border-radius:10px;padding:10px 13px;min-width:0;break-inside:avoid;-webkit-column-break-inside:avoid;display:inline-block;width:100%;box-sizing:border-box;margin:0 0 12px}.cad-usc.nd{border-style:dashed}
 .cad-usc>h4{margin:0 0 6px;font-size:var(--fs);color:var(--tx);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}.cad-usc>h5{margin:12px 0 4px;font-size:var(--fs-s);color:var(--ac)}
 .cad-usm{font-size:var(--fs-xs);color:var(--tx2);margin-bottom:6px;overflow-wrap:anywhere}
@@ -2158,10 +2158,14 @@ function pCadenas(){
   // fichas: selector de red + una sola ficha dividida en pestañas (no una página interminable)
   const cf=el('div','caja');cf.id='cad-fichas';cf.append(el('h2',null,'Ficha por red: qué es, qué hace y qué se sabe de cada una'),el('p','nota-v','Elige una red y una pestaña: capas, ISO 20022, hechos, hitos, noticias y enlaces están separados para no tener que recorrer una página larguísima.'));
   const selB=el('div','cad-sel'),host=el('div');
-  const show=id=>{cadSel=id;host.textContent='';host.append(ficha(L.find(x=>x.id===id)));selB.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.id===id))};
+  const show=id=>{cadSel=id;host.textContent='';host.append(ficha(L.find(x=>x.id===id)));requestAnimationFrame(()=>mas(host));selB.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.id===id))};
   L.forEach(c=>{const b=el('button','cad-bt',tit(c)+' · '+c.token);b.type='button';b.dataset.id=c.id;b.addEventListener('click',()=>show(c.id));selB.append(b)});
   cf.append(selB,host);cm.after(cf);show(L.some(x=>x.id===cadSel)?cadSel:L[0].id);
   cadNav(S,cab);
+  // «mampostería»: las tarjetas se reparten en tantas columnas como caben (sin hueco a la derecha) y cada una ocupa solo su altura
+  const mas=root=>{root.querySelectorAll('.cad-usg').forEach(g=>{const W=g.clientWidth;if(!W)return;const N=Math.max(1,Math.floor((W+12)/452));if(!g._k)g._k=[...g.children];if(g._n===N)return;g._n=N;g.classList.add('mas');g.textContent='';const cols=[];for(let i=0;i<N;i++){const c=el('div','cad-col');g.append(c);cols.push(c)}
+      g._k.forEach(k=>{let b=cols[0];for(const c of cols)if(c.offsetHeight<b.offsetHeight)b=c;b.append(k)})})};
+  let masT=0;addEventListener('resize',()=>{clearTimeout(masT);masT=setTimeout(()=>{const h=$('cad-fichas');if(h)mas(h)},150)});
   function ficha(c){
     const dt=el('div','cad-fi');dt.id='cad-'+c.id;
     const ca=c.captura||{};const hd=el('div','cad-fih');hd.append(el('h3',null,(c.id==='ethereum'?'Ethereum y L2':c.nombre)+' · '+c.token),el('span','cad-cap '+(ca.nivel||''),'captura '+(ca.nivel||'—')));dt.append(hd);
@@ -2205,7 +2209,7 @@ function pCadenas(){
       lst('Sesgos de las fuentes',c.sesgos);lst('Sin dato todavía',c.sin_dato);
       g.append(a,b);PN.enl.append(g)}
     const bar=el('div','cad-tabs');bar.setAttribute('role','tablist');
-    const act=k=>{cadTab=k;TB.forEach(([q])=>{PN[q].hidden=q!==k});bar.querySelectorAll('button').forEach(x=>{const on=x.dataset.k===k;x.classList.toggle('on',on);x.setAttribute('aria-selected',on)})};
+    const act=k=>{cadTab=k;TB.forEach(([q])=>{PN[q].hidden=q!==k});requestAnimationFrame(()=>mas(PN[k]));bar.querySelectorAll('button').forEach(x=>{const on=x.dataset.k===k;x.classList.toggle('on',on);x.setAttribute('aria-selected',on)})};
     TB.forEach(([k,n])=>{const b=el('button','cad-tab',n);b.type='button';b.dataset.k=k;b.setAttribute('role','tab');b.addEventListener('click',()=>act(k));bar.append(b)});
     dt.append(bar);TB.forEach(([k])=>dt.append(PN[k]));act(TB.some(x=>x[0]===cadTab)?cadTab:'res');
     return dt}
@@ -2484,7 +2488,7 @@ function cadExtras(S){[cxCorredores(),cxProfundidad(),cxSwift(),icBloque(),cxCal
 const apTx=x=>x==null||x===''?cxVac():cxTx(x);
 const apLinkOrTx=s=>{if(s==null||s==='')return cxVac();if(/^https?:\/\/\S+$/.test(String(s))){const a=el('a',null,String(s).replace(/^https?:\/\//,'').slice(0,60));a.href=s;a.target='_blank';a.rel='noopener';return a}return document.createTextNode(String(s))};
 const apPie=(x,fk)=>{const s=el('span','ap-pie');s.append(cxNiv(x.nivel),document.createTextNode(' '+(x.fecha?x.fecha+' · ':'')+'fuente: '+(x[fk||'fuente']||'vacío')+' '),cxLk(x.url,'abrir ↗'));return s};
-function apLi(tit,txt,x,fk){const li=el('li','ap-li');if(tit)li.append(el('b',null,tit+' '));li.append(document.createTextNode(txt==null||txt===''?'vacío':String(txt)));const p=el('div','nota-v');p.append(apPie(x,fk));li.append(p);return li}
+function apLi(tit,txt,x,fk){const li=el('li','ap-li');if(tit)li.append(el('b',null,tit+' '));li.append(document.createTextNode(txt==null||txt===''?'vacío':String(txt)));if(x&&x.por_que)li.append(el('div','ap-por','Por qué importa: '+x.por_que));const p=el('div','nota-v');p.append(apPie(x,fk));li.append(p);return li}
 function apCard(tit,items,nota){const k=el('section','cad-usc');const h=el('h4');h.append(document.createTextNode(tit+' ('+items.length+')'));k.append(h);
   if(!items.length){k.append(cxVac())}else{const u=el('ul','cad-lst ap-ul');items.forEach(i=>u.append(i));k.append(u)}if(nota)k.append(el('div','nota-v',nota));return k}
 function apFicha(c){

@@ -35,34 +35,39 @@
      "hecho": "Cierre de ledger medio medido de 3,737 s; un ledger validado es final (sin bifurcaciones)",
      "fuente": "s1.ripple.com (métodos ledger y fee), en comparativa-liquidacion.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "Un ledger «validado» ya no se puede deshacer, así que quien cobra sabe que el pago es definitivo en segundos. Ejemplo: una pasarela que recibe un pago en XRP puede entregar la mercancía o convertirlo sin esperar a «más confirmaciones», como ocurre en cadenas donde un bloque puede reorganizarse. 3,7 s es el tiempo medio de cierre medido hoy en el nodo público."
     },
     {
      "hecho": "Comisión mínima de 10 gotas ≈ 0,00001 USD por transacción",
      "fuente": "s1.ripple.com método fee; precio DefiLlama, en comparativa-liquidacion.json",
      "nivel": "P",
-     "fecha": "2026-11-15"
+     "fecha": "2026-11-15",
+     "por_que": "Si cada transacción cuesta 0,00001 USD, mover un pago de 1 $ o de 1 millón cuesta lo mismo: apenas nada. Sirve para micropagos y para enviar mucho volumen sin que la comisión se coma el margen. Ojo: es una comisión mínima fija; sube si la red se congestiona."
     },
     {
      "hecho": "Activadas en la red principal: Credentials, PermissionedDomains, PermissionedDEX, MPTokensV1, DeepFreeze y TokenEscrow",
      "fuente": "Consulta «feature» a un nodo público (cadenas.json)",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://xrpl.org/resources/known-amendments"
+     "url": "https://xrpl.org/resources/known-amendments",
+     "por_que": "Son herramientas que ya traen el control y los permisos que piden bancos y reguladores (credenciales verificables, mercados solo para cuentas autorizadas, congelar cuentas, bloquear tokens hasta una fecha). Que estén activadas en la red principal significa que una institución puede usarlas hoy sin esperar a una actualización. No dice cuánto se usan."
     },
     {
      "hecho": "Stablecoins 839 M$ en 8 emisiones, con monedas no USD (EURCV, EUROP en euros; AUDD en dólar australiano); RLUSD 762,7 M$",
      "fuente": "DefiLlama, en comparativa-liquidacion.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://stablecoins.llama.fi/stablecoinchains"
+     "url": "https://stablecoins.llama.fi/stablecoinchains",
+     "por_que": "Una red de pagos necesita dinero estable que mover. 839 M$ en stablecoins es la liquidez ya disponible, y que haya euros (EURCV, EUROP) y dólares australianos (AUDD) permite pagos entre divisas sin pasar por el dólar. RLUSD (la stablecoin de Ripple) es la mayor, con 762,7 M$."
     },
     {
      "hecho": "5.210 M$ en activos «representados» (3.ª cifra tras Canton y Avalanche) y 642,8 M$ distribuidos",
      "fuente": "RWA.xyz, ficha XRP Ledger",
      "nivel": "S",
      "fecha": "2026-11-14",
-     "url": "https://app.rwa.xyz/networks/xrp-ledger"
+     "url": "https://app.rwa.xyz/networks/xrp-ledger",
+     "por_que": "«Representado» es un activo del mundo real (bonos, oro, fondos) registrado en la red pero que no circula libremente dentro de ella. 5.210 M$ colocan a XRPL entre las tres redes con más valor registrado. Es una señal de interés de emisores institucionales, pero distinto de los 642,8 M$ que sí se pueden transferir en la propia red."
     }
    ],
    "puntos_flacos": [
@@ -71,41 +76,47 @@
      "fuente": "DefiLlama, en comparativa-liquidacion.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://stablecoins.llama.fi/stablecoinchains"
+     "url": "https://stablecoins.llama.fi/stablecoinchains",
+     "por_que": "La liquidez de stablecoins es la «gasolina» para pagos y préstamos: Ethereum tiene unas 150 veces más (131.392 frente a 839 M$). Con poca liquidez, las operaciones grandes mueven el precio y hay menos opciones para quien quiere cambiar o prestar."
     },
     {
      "hecho": "TVL DeFi 30,0 M$",
      "fuente": "DefiLlama, en cadenas-onchain.json",
      "nivel": "S",
      "fecha": "2026-11-15",
-     "url": "https://api.llama.fi/v2/chains"
+     "url": "https://api.llama.fi/v2/chains",
+     "por_que": "TVL es el dinero depositado en aplicaciones DeFi (préstamos, mercados). 30 M$ es muy poco al lado de redes con miles de millones: indica poca actividad DeFi sobre la red, aunque XRPL se use más para pagos que para DeFi."
     },
     {
      "hecho": "LendingProtocol y SingleAssetVault siguen sin activar aunque rippled 3.1.0 (28-ene-2026) los incluye; sin staking nativo",
      "fuente": "Consulta «feature» al nodo y xrpl.org/blog (cadenas.json)",
      "nivel": "P",
      "fecha": "2026-11-14",
-     "url": "https://xrpl.org/blog"
+     "url": "https://xrpl.org/blog",
+     "por_que": "Estas dos funciones (préstamos y bóvedas) permitirían crédito nativo en la red, pero siguen sin activarse porque los validadores deben votarlas. Sin staking nativo, quien tiene XRP no puede bloquearlo para cobrar recompensas como en Ethereum o Solana."
     },
     {
      "hecho": "La lista de validadores por defecto (UNL) la publica Ripple: 35 validadores",
      "fuente": "vl.ripple.com, en cadenas-validadores.json",
      "nivel": "P",
      "fecha": "2026-11-15",
-     "url": "https://vl.ripple.com"
+     "url": "https://vl.ripple.com",
+     "por_que": "UNL es la lista de validadores en los que confía cada nodo. Si la publica Ripple, la red depende en la práctica de una lista que mantiene una empresa: es un punto de centralización, aunque cada operador puede elegir su propia lista."
     },
     {
      "hecho": "Dos fallos corregidos en xrpld 3.4.1 (informe del 9-oct-2026); la enmienda afectada no estaba activada en la red principal",
      "fuente": "xrpl.org, informe de vulnerabilidades, en comparativa-liquidacion.json",
      "nivel": "P",
-     "fecha": "2026-10-09"
+     "fecha": "2026-10-09",
+     "por_que": "Un fallo corregido significa que el equipo detecta y arregla errores, lo cual es normal. Se anota como punto flaco porque muestra que el software sigue teniendo fallos; que la enmienda afectada no estuviera activada limita el riesgo real."
     },
     {
      "hecho": "El 24-sep-2026 el robo a Bitget (387 M$, clave de cartera caliente) figura con XRPL entre las redes afectadas: fallo del exchange, no del protocolo",
      "fuente": "DefiLlama hacks, en cadenas-incidentes.json",
      "nivel": "S",
      "fecha": "2026-09-24",
-     "url": "https://api.llama.fi/hacks"
+     "url": "https://api.llama.fi/hacks",
+     "por_que": "Se anota para no confundir: el robo fue por una clave de la cartera caliente de un exchange, no un fallo de XRPL. Aun así, los incidentes de exchanges asocian el nombre de la red a una noticia negativa."
     }
    ],
    "mejora_reciente": [
