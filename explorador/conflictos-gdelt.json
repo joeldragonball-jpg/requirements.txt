@@ -5,8 +5,31 @@
  "fuente": "GDELT Project, DOC 2.0 API, modo timelinevol, ventana 90 días (https://api.gdeltproject.org/api/v2/doc/doc)",
  "aviso": "Nivel S: mide volumen de cobertura (% de artículos monitorizados que casan con la consulta), no hechos, víctimas ni gravedad. GDELT está sesgado hacia medios en inglés (y traducción automática), por lo que infrarrepresenta prensa local; un pico puede ser una noticia mediática y no una escalada. Consultas con palabras clave en inglés: país + (war OR conflict OR attack OR military OR sanctions); 'United States', 'China' o 'Russia' salen altos por aparecer como actores en muchas noticias. Interpretar solo el cambio 30d frente a 90d, no comparar niveles entre países.",
  "acled": "falta: sin cuenta/clave de ACLED",
- "metodo": "ratio_30_90 = media de los últimos 30 días / media de 90 días (>1 = más cobertura reciente)",
+ "metodo": "ratio_30_90 = media de los 30 días naturales finales / media de la ventana (días con dato, ver dias y nota_media; <90 si GDELT devuelve menos) (>1 = más cobertura reciente)",
  "temas": {
+  "ucrania": {
+   "media_30d": 1.9743,
+   "media_90d": 1.9749,
+   "ratio_30_90": 1.0,
+   "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
+   "picos": [
+    {
+     "fecha": "2026-10-10",
+     "valor": 3.3769
+    },
+    {
+     "fecha": "2026-09-06",
+     "valor": 3.2054
+    },
+    {
+     "fecha": "2026-10-17",
+     "valor": 3.0974
+    }
+   ],
+   "consulta": "Ukraine war"
+  },
   "ormuz": {
    "media_30d": 0.4313,
    "media_90d": 0.6099,
@@ -26,13 +49,16 @@
      "valor": 0.973
     }
    ],
-   "consulta": "\"Strait of Hormuz\""
+   "consulta": "\"Strait of Hormuz\"",
+   "conservado_sin_actualizar": "2026-11-15"
   },
   "taiwan": {
-   "media_30d": 0.255,
-   "media_90d": 0.2483,
-   "ratio_30_90": 1.03,
+   "media_30d": 0.2244,
+   "media_90d": 0.2461,
+   "ratio_30_90": 0.91,
    "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
    "picos": [
     {
      "fecha": "2026-09-25",
@@ -68,39 +94,17 @@
      "valor": 1.8749
     }
    ],
-   "consulta": "sanctions (Russia OR Iran OR China)"
-  },
-  "ucrania": {
-   "media_30d": 2.0374,
-   "media_90d": 1.9927,
-   "ratio_30_90": 1.02,
-   "dias": 68,
-   "picos": [
-    {
-     "fecha": "2026-11-14",
-     "valor": 4.3198
-    },
-    {
-     "fecha": "2026-10-10",
-     "valor": 3.3769
-    },
-    {
-     "fecha": "2026-09-06",
-     "valor": 3.2054
-    }
-   ],
-   "consulta": "Ukraine war"
+   "consulta": "sanctions (Russia OR Iran OR China)",
+   "conservado_sin_actualizar": "2026-11-15"
   },
   "conflicto_global": {
-   "media_30d": 12.0203,
-   "media_90d": 11.8613,
+   "media_30d": 11.8492,
+   "media_90d": 11.748,
    "ratio_30_90": 1.01,
    "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
    "picos": [
-    {
-     "fecha": "2026-11-14",
-     "valor": 19.6127
-    },
     {
      "fecha": "2026-09-27",
      "valor": 14.1746
@@ -108,6 +112,10 @@
     {
      "fecha": "2026-11-08",
      "valor": 13.8058
+    },
+    {
+     "fecha": "2026-09-06",
+     "valor": 13.7564
     }
    ],
    "consulta": "(war OR armed conflict)"
@@ -115,10 +123,12 @@
  },
  "paises": {
   "ES": {
-   "media_30d": 0.4991,
-   "media_90d": 0.5131,
-   "ratio_30_90": 0.97,
+   "media_30d": 0.5347,
+   "media_90d": 0.5124,
+   "ratio_30_90": 1.04,
    "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
    "picos": [
     {
      "fecha": "2026-10-27",
@@ -156,7 +166,8 @@
     }
    ],
    "consulta": "Germany (war OR conflict OR attack OR military OR sanctions)",
-   "pais": "Alemania"
+   "pais": "Alemania",
+   "conservado_sin_actualizar": "2026-11-15"
   },
   "FR": {
    "media_30d": 1.2844,
@@ -178,17 +189,20 @@
     }
    ],
    "consulta": "France (war OR conflict OR attack OR military OR sanctions)",
-   "pais": "Francia"
+   "pais": "Francia",
+   "conservado_sin_actualizar": "2026-11-15"
   },
   "IT": {
-   "media_30d": 0.7375,
-   "media_90d": 0.6486,
-   "ratio_30_90": 1.14,
+   "media_30d": 0.7457,
+   "media_90d": 0.6406,
+   "ratio_30_90": 1.16,
    "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
    "picos": [
     {
      "fecha": "2026-11-14",
-     "valor": 2.1351
+     "valor": 1.213
     },
     {
      "fecha": "2026-10-24",
@@ -203,10 +217,12 @@
    "pais": "Italia"
   },
   "NL": {
-   "media_30d": 0.2114,
-   "media_90d": 0.2089,
-   "ratio_30_90": 1.01,
+   "media_30d": 0.1949,
+   "media_90d": 0.2076,
+   "ratio_30_90": 0.94,
    "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
    "picos": [
     {
      "fecha": "2026-10-10",
@@ -225,37 +241,37 @@
    "pais": "Países Bajos"
   },
   "PL": {
-   "media_30d": 0.5974,
-   "media_90d": 0.4916,
-   "ratio_30_90": 1.22,
+   "media_30d": 0.6085,
+   "media_90d": 0.4878,
+   "ratio_30_90": 1.25,
    "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
    "picos": [
     {
      "fecha": "2026-11-08",
      "valor": 2.1474
     },
     {
-     "fecha": "2026-11-14",
-     "valor": 2.1351
-    },
-    {
      "fecha": "2026-11-07",
      "valor": 1.4266
+    },
+    {
+     "fecha": "2026-11-14",
+     "valor": 1.213
     }
    ],
    "consulta": "Poland (war OR conflict OR attack OR military OR sanctions)",
    "pais": "Polonia"
   },
   "US": {
-   "media_30d": 2.9004,
-   "media_90d": 2.9116,
+   "media_30d": 2.8709,
+   "media_90d": 2.8761,
    "ratio_30_90": 1.0,
    "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
    "picos": [
-    {
-     "fecha": "2026-11-14",
-     "valor": 4.4191
-    },
     {
      "fecha": "2026-10-10",
      "valor": 3.976
@@ -263,10 +279,38 @@
     {
      "fecha": "2026-09-25",
      "valor": 3.751
+    },
+    {
+     "fecha": "2026-11-04",
+     "valor": 3.7387
     }
    ],
    "consulta": "\"United States\" (war OR conflict OR attack OR military OR sanctions)",
    "pais": "EE. UU."
+  },
+  "CN": {
+   "media_30d": 1.5365,
+   "media_90d": 1.589,
+   "ratio_30_90": 0.97,
+   "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
+   "picos": [
+    {
+     "fecha": "2026-09-25",
+     "valor": 2.7291
+    },
+    {
+     "fecha": "2026-10-27",
+     "valor": 2.6601
+    },
+    {
+     "fecha": "2026-10-10",
+     "valor": 2.6144
+    }
+   ],
+   "consulta": "China (war OR conflict OR attack OR military OR sanctions)",
+   "pais": "China"
   },
   "JP": {
    "media_30d": 0.6937,
@@ -288,18 +332,40 @@
     }
    ],
    "consulta": "Japan (war OR conflict OR attack OR military OR sanctions)",
-   "pais": "Japón"
+   "pais": "Japón",
+   "conservado_sin_actualizar": "2026-11-15"
   },
-  "GB": {
-   "media_30d": 1.3261,
-   "media_90d": 1.3503,
-   "ratio_30_90": 0.98,
+  "IN": {
+   "media_30d": 0.6463,
+   "media_90d": 0.6899,
+   "ratio_30_90": 0.94,
    "dias": 68,
    "picos": [
     {
-     "fecha": "2026-11-14",
-     "valor": 2.7309
+     "fecha": "2026-09-12",
+     "valor": 1.9667
     },
+    {
+     "fecha": "2026-09-13",
+     "valor": 1.8902
+    },
+    {
+     "fecha": "2026-08-31",
+     "valor": 1.1003
+    }
+   ],
+   "consulta": "India (war OR conflict OR attack OR military OR sanctions)",
+   "pais": "India",
+   "conservado_sin_actualizar": "2026-11-15"
+  },
+  "GB": {
+   "media_30d": 1.2749,
+   "media_90d": 1.3351,
+   "ratio_30_90": 0.95,
+   "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
+   "picos": [
     {
      "fecha": "2026-11-08",
      "valor": 2.6081
@@ -307,148 +373,46 @@
     {
      "fecha": "2026-09-27",
      "valor": 2.5998
+    },
+    {
+     "fecha": "2026-09-13",
+     "valor": 1.8868
     }
    ],
    "consulta": "\"United Kingdom\" (war OR conflict OR attack OR military OR sanctions)",
    "pais": "Reino Unido"
   },
-  "ID": {
-   "media_30d": 0.1494,
-   "media_90d": 0.1588,
-   "ratio_30_90": 0.94,
-   "dias": 68,
-   "picos": [
-    {
-     "fecha": "2026-08-17",
-     "valor": 0.4638
-    },
-    {
-     "fecha": "2026-09-12",
-     "valor": 0.4187
-    },
-    {
-     "fecha": "2026-09-13",
-     "valor": 0.3972
-    }
-   ],
-   "consulta": "Indonesia (war OR conflict OR attack OR military OR sanctions)",
-   "pais": "Indonesia"
-  },
-  "EG": {
-   "media_30d": 0.2898,
-   "media_90d": 0.2916,
-   "ratio_30_90": 0.99,
-   "dias": 68,
-   "picos": [
-    {
-     "fecha": "2026-09-12",
-     "valor": 0.781
-    },
-    {
-     "fecha": "2026-08-17",
-     "valor": 0.7065
-    },
-    {
-     "fecha": "2026-09-13",
-     "valor": 0.678
-    }
-   ],
-   "consulta": "Egypt (war OR conflict OR attack OR military OR sanctions)",
-   "pais": "Egipto"
-  },
-  "AE": {
-   "media_30d": 0.1136,
-   "media_90d": 0.1371,
-   "ratio_30_90": 0.83,
-   "dias": 68,
-   "picos": [
-    {
-     "fecha": "2026-09-30",
-     "valor": 0.4499
-    },
-    {
-     "fecha": "2026-08-31",
-     "valor": 0.386
-    },
-    {
-     "fecha": "2026-09-02",
-     "valor": 0.3447
-    }
-   ],
-   "consulta": "\"United Arab Emirates\" (war OR conflict OR attack OR military OR sanctions)",
-   "pais": "Emiratos Árabes Unidos"
-  },
-  "VE": {
-   "media_30d": 0.2793,
-   "media_90d": 0.2816,
-   "ratio_30_90": 0.99,
-   "dias": 68,
-   "picos": [
-    {
-     "fecha": "2026-11-11",
-     "valor": 1.2849
-    },
-    {
-     "fecha": "2026-08-29",
-     "valor": 1.1294
-    },
-    {
-     "fecha": "2026-11-10",
-     "valor": 0.8877
-    }
-   ],
-   "consulta": "Venezuela (war OR conflict OR attack OR military OR sanctions)",
-   "pais": "Venezuela"
-  },
-  "CU": {
-   "media_30d": 0.1175,
-   "media_90d": 0.1226,
+  "RU": {
+   "media_30d": 2.8225,
+   "media_90d": 2.9446,
    "ratio_30_90": 0.96,
    "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
    "picos": [
-    {
-     "fecha": "2026-10-24",
-     "valor": 0.3311
-    },
-    {
-     "fecha": "2026-09-22",
-     "valor": 0.3016
-    },
-    {
-     "fecha": "2026-09-23",
-     "valor": 0.283
-    }
-   ],
-   "consulta": "Cuba (war OR conflict OR attack OR military OR sanctions)",
-   "pais": "Cuba"
-  },
-  "CN": {
-   "media_30d": 1.5421,
-   "media_90d": 1.6025,
-   "ratio_30_90": 0.96,
-   "dias": 68,
-   "picos": [
-    {
-     "fecha": "2026-09-25",
-     "valor": 2.7291
-    },
-    {
-     "fecha": "2026-10-27",
-     "valor": 2.6601
-    },
     {
      "fecha": "2026-10-10",
-     "valor": 2.6144
+     "valor": 4.902
+    },
+    {
+     "fecha": "2026-09-06",
+     "valor": 4.1188
+    },
+    {
+     "fecha": "2026-10-17",
+     "valor": 4.0916
     }
    ],
-   "consulta": "China (war OR conflict OR attack OR military OR sanctions)",
-   "pais": "China"
+   "consulta": "Russia (war OR conflict OR attack OR military OR sanctions)",
+   "pais": "Rusia"
   },
   "BR": {
-   "media_30d": 0.3763,
-   "media_90d": 0.3446,
-   "ratio_30_90": 1.09,
+   "media_30d": 0.3928,
+   "media_90d": 0.3388,
+   "ratio_30_90": 1.16,
    "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
    "picos": [
     {
      "fecha": "2026-10-26",
@@ -459,18 +423,20 @@
      "valor": 0.944
     },
     {
-     "fecha": "2026-11-14",
-     "valor": 0.8441
+     "fecha": "2026-09-13",
+     "valor": 0.839
     }
    ],
    "consulta": "Brazil (war OR conflict OR attack OR military OR sanctions)",
    "pais": "Brasil"
   },
   "ZA": {
-   "media_30d": 0.1008,
-   "media_90d": 0.1219,
-   "ratio_30_90": 0.83,
+   "media_30d": 0.0834,
+   "media_90d": 0.1191,
+   "ratio_30_90": 0.7,
    "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
    "picos": [
     {
      "fecha": "2026-09-12",
@@ -488,11 +454,61 @@
    "consulta": "\"South Africa\" (war OR conflict OR attack OR military OR sanctions)",
    "pais": "Sudáfrica"
   },
-  "ET": {
-   "media_30d": 0.053,
-   "media_90d": 0.0583,
-   "ratio_30_90": 0.91,
+  "ID": {
+   "media_30d": 0.1527,
+   "media_90d": 0.1538,
+   "ratio_30_90": 0.99,
    "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
+   "picos": [
+    {
+     "fecha": "2026-09-12",
+     "valor": 0.4187
+    },
+    {
+     "fecha": "2026-09-13",
+     "valor": 0.3972
+    },
+    {
+     "fecha": "2026-11-03",
+     "valor": 0.3173
+    }
+   ],
+   "consulta": "Indonesia (war OR conflict OR attack OR military OR sanctions)",
+   "pais": "Indonesia"
+  },
+  "EG": {
+   "media_30d": 0.2868,
+   "media_90d": 0.2829,
+   "ratio_30_90": 1.01,
+   "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
+   "picos": [
+    {
+     "fecha": "2026-09-12",
+     "valor": 0.781
+    },
+    {
+     "fecha": "2026-09-13",
+     "valor": 0.678
+    },
+    {
+     "fecha": "2026-10-27",
+     "valor": 0.6312
+    }
+   ],
+   "consulta": "Egypt (war OR conflict OR attack OR military OR sanctions)",
+   "pais": "Egipto"
+  },
+  "ET": {
+   "media_30d": 0.0355,
+   "media_90d": 0.0576,
+   "ratio_30_90": 0.62,
+   "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
    "picos": [
     {
      "fecha": "2026-09-12",
@@ -530,51 +546,55 @@
     }
    ],
    "consulta": "Iran (war OR conflict OR attack OR military OR sanctions)",
-   "pais": "Irán"
+   "pais": "Irán",
+   "conservado_sin_actualizar": "2026-11-15"
+  },
+  "AE": {
+   "media_30d": 0.1136,
+   "media_90d": 0.1371,
+   "ratio_30_90": 0.83,
+   "dias": 68,
+   "picos": [
+    {
+     "fecha": "2026-09-30",
+     "valor": 0.4499
+    },
+    {
+     "fecha": "2026-08-31",
+     "valor": 0.386
+    },
+    {
+     "fecha": "2026-09-02",
+     "valor": 0.3447
+    }
+   ],
+   "consulta": "\"United Arab Emirates\" (war OR conflict OR attack OR military OR sanctions)",
+   "pais": "Emiratos Árabes Unidos",
+   "conservado_sin_actualizar": "2026-11-15"
   },
   "SV": {
-   "media_30d": 0.0404,
-   "media_90d": 0.0275,
-   "ratio_30_90": 1.47,
+   "media_30d": 0.0513,
+   "media_90d": 0.0285,
+   "ratio_30_90": 1.8,
    "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
    "picos": [
     {
      "fecha": "2026-10-27",
      "valor": 0.2254
     },
     {
-     "fecha": "2026-10-22",
-     "valor": 0.088
+     "fecha": "2026-11-15",
+     "valor": 0.11
     },
     {
-     "fecha": "2026-11-11",
-     "valor": 0.0844
+     "fecha": "2026-10-22",
+     "valor": 0.088
     }
    ],
    "consulta": "\"El Salvador\" (war OR conflict OR attack OR military OR sanctions)",
    "pais": "El Salvador"
-  },
-  "IN": {
-   "media_30d": 0.6463,
-   "media_90d": 0.6899,
-   "ratio_30_90": 0.94,
-   "dias": 68,
-   "picos": [
-    {
-     "fecha": "2026-09-12",
-     "valor": 1.9667
-    },
-    {
-     "fecha": "2026-09-13",
-     "valor": 1.8902
-    },
-    {
-     "fecha": "2026-08-31",
-     "valor": 1.1003
-    }
-   ],
-   "consulta": "India (war OR conflict OR attack OR military OR sanctions)",
-   "pais": "India"
   },
   "AR": {
    "media_30d": 0.2923,
@@ -596,31 +616,67 @@
     }
    ],
    "consulta": "Argentina (war OR conflict OR attack OR military OR sanctions)",
-   "pais": "Argentina"
+   "pais": "Argentina",
+   "conservado_sin_actualizar": "2026-11-15"
   },
-  "RU": {
-   "media_30d": 2.9705,
-   "media_90d": 2.975,
+  "VE": {
+   "media_30d": 0.2813,
+   "media_90d": 0.2801,
    "ratio_30_90": 1.0,
-   "dias": 67,
+   "dias": 68,
+   "dias_en_media_30d": 24,
+   "nota_media": "media_90d = media de los 68 dias con dato (GDELT no devuelve 90 completos); media_30d = 24 dias con dato en los 30 naturales finales",
    "picos": [
     {
-     "fecha": "2026-11-14",
-     "valor": 5.4121
+     "fecha": "2026-11-11",
+     "valor": 1.2849
     },
     {
-     "fecha": "2026-10-10",
-     "valor": 4.902
+     "fecha": "2026-08-29",
+     "valor": 1.1294
     },
     {
-     "fecha": "2026-09-06",
-     "valor": 4.1188
+     "fecha": "2026-11-10",
+     "valor": 0.8877
     }
    ],
-   "consulta": "Russia (war OR conflict OR attack OR military OR sanctions)",
-   "pais": "Rusia"
+   "consulta": "Venezuela (war OR conflict OR attack OR military OR sanctions)",
+   "pais": "Venezuela"
+  },
+  "CU": {
+   "media_30d": 0.1175,
+   "media_90d": 0.1226,
+   "ratio_30_90": 0.96,
+   "dias": 68,
+   "picos": [
+    {
+     "fecha": "2026-10-24",
+     "valor": 0.3311
+    },
+    {
+     "fecha": "2026-09-22",
+     "valor": 0.3016
+    },
+    {
+     "fecha": "2026-09-23",
+     "valor": 0.283
+    }
+   ],
+   "consulta": "Cuba (war OR conflict OR attack OR military OR sanctions)",
+   "pais": "Cuba",
+   "conservado_sin_actualizar": "2026-11-15"
   }
  },
- "fallos": [],
- "aviso_media": "media_90d = media de los 'dias' realmente disponibles (unos 68, no 90) y media_30d = ultimos 30 puntos; el script ya calcula por fecha natural (leer_gdelt.py corregido 15-nov), pendiente de relectura completa (GDELT limita ~1 consulta/2 min por IP)"
+ "fallos": [
+  "ormuz: HTTP Error 429: Too Many Requests",
+  "sanciones: HTTP Error 429: Too Many Requests",
+  "DE: HTTP Error 429: Too Many Requests",
+  "FR: HTTP Error 429: Too Many Requests",
+  "JP: HTTP Error 429: Too Many Requests",
+  "IN: HTTP Error 429: Too Many Requests",
+  "IR: HTTP Error 429: Too Many Requests",
+  "AE: HTTP Error 429: Too Many Requests",
+  "AR: HTTP Error 429: Too Many Requests",
+  "CU: HTTP Error 429: Too Many Requests"
+ ]
 }

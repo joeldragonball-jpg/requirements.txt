@@ -368,7 +368,7 @@ small.per{color:var(--tx2);font-size:var(--fs-xs);font-weight:400}
 .ap-leg{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 0;font-size:var(--fs-xs);color:var(--tx2)}.ap-lg{display:inline-flex;align-items:center;gap:6px;min-width:0;max-width:100%}
 .ap-ojo{font-weight:700;border:1px dashed #e8b64a;color:#e8b64a;border-radius:6px;padding:6px 10px;margin:8px 0;font-size:var(--fs-s)}
 .ap-fil{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.ap-fb{background:var(--bg);color:var(--tx);border:1px solid var(--lin);border-radius:999px;padding:6px 14px;min-height:36px;font-size:var(--fs-xs);cursor:pointer}.ap-fb.on{border-color:var(--ac);color:var(--ac);background:rgba(90,169,230,.12)}
-.ap-tw{width:100%;max-width:100%;box-sizing:border-box}
+.ap-tw{width:100%;max-width:100%;box-sizing:border-box}.ap-m tr.ap-sel>*{background:rgba(90,169,230,.25);border-top:2px solid var(--ac);border-bottom:2px solid var(--ac)}.ap-m tr.ap-sel .ap-capb{font-weight:700;color:#fff}
 .ap-m{border-collapse:collapse;table-layout:fixed;width:100%}.ap-m th,.ap-m td{padding:2px;border:1px solid var(--lin);text-align:center;vertical-align:middle}
 .ap-m .ap-corner{width:25%;text-align:left;font-size:13px;color:var(--tx2);padding:4px 6px}
 .ap-m .ap-cap{text-align:left;font-weight:400;padding:3px 6px;font-size:13.5px;line-height:1.25;overflow-wrap:anywhere}
@@ -2436,7 +2436,7 @@ function cxCalc(){
 
 /* Enlaces rápidos arriba a cada bloque de Cadenas (todos los .caja con título h2, tengan o no id) */
 function cadNav(S,cab){
-  const bl=[...S.querySelectorAll(':scope > .caja, :scope > .cad-top > .caja')].filter(b=>b!==cab&&b.querySelector(':scope > h2, :scope > .cad-hd > h2'));
+  const bl=[...S.querySelectorAll(':scope > .caja, :scope > .cad-top > .caja')].filter(b=>b!==cab&&b.id!=='ap-cruzado'&&b.querySelector(':scope > h2, :scope > .cad-hd > h2'));
   if(bl.length<2)return;
   const nv=el('nav','idx');nv.append(el('b',null,'Ir a:'));
   bl.forEach((b,i)=>{if(!b.id)b.id='cad-sec-'+i;b.style.scrollMarginTop='54px';const h=b.querySelector('h2');
@@ -2514,7 +2514,8 @@ function apCruzado(){
     const dl=el('dl','cad-usf');const f=(l,n)=>{dl.append(el('dt',null,l));const dd=el('dd');dd.append(n);dl.append(dd)};
     f('Qué dice',apTx(x.t));f('Fuente',apLinkOrTx(x.f));f('Nivel',x.n?cxNiv(x.n):cxVac());f('Fecha',apTx(x.d));
     if(x.v==='sin dato')f('Ojo',document.createTextNode('El repo no recoge este dato con fuente; no significa NO.'));panel.append(dl)};
-  const showCap=cp=>{panel.textContent='';panel.append(el('h4',null,cp.n),el('p',null,cp.que||'vacío'));const x=APX[cp.id]||{},u=uni[cp.id],s=sol[cp.id];
+  const trs={};let selRow=null;
+  const showCap=cp=>{if(selRow)selRow.classList.remove('ap-sel');selRow=trs[cp.id]||null;if(selRow)selRow.classList.add('ap-sel');panel.textContent='';const vb=el('button','cad-bt','↑ Ver su fila en la tabla');vb.type='button';vb.addEventListener('click',()=>{if(selRow)selRow.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'})});panel.append(vb,el('h4',null,cp.n),el('p',null,cp.que||'vacío'));const x=APX[cp.id]||{},u=uni[cp.id],s=sol[cp.id];
     [['Qué es y cómo funciona',x.q],['Ejemplo',x.ej],['Por qué importa',x.por]].forEach(([t,v])=>{if(v)panel.append(el('h5',null,t),el('p',null,v))});
     const dd=apDatosCap(cp.id,ids,nr);if(dd.length){const ul=el('ul','cad-lst ap-ul');dd.forEach(t=>ul.append(el('li','ap-li',t)));panel.append(el('h5',null,'Datos medidos en el repo'),ul)}
     const filas=ids.map(i=>({i,x:cp.celdas[i]||{v:'sin dato'}}));const con=filas.filter(r=>r.x.v==='SÍ'||r.x.v==='PARCIAL'),sin=filas.filter(r=>!(r.x.v==='SÍ'||r.x.v==='PARCIAL'));
@@ -2528,7 +2529,7 @@ function apCruzado(){
     panel.scrollIntoView({behavior:RM?'auto':'smooth',block:'nearest'})};
   const hr=el('tr');hr.append(el('th','ap-corner','Capacidad'));ids.forEach(i=>{const th=el('th','ap-rot');th.append(el('span',null,nr(i)));hr.append(th)});t.append(hr);
   const filas=[];
-  caps.forEach(cp=>{const tr=el('tr');const th=el('th','ap-cap');const b=el('button','ap-capb',cp.n);b.type='button';b.addEventListener('click',()=>showCap(cp));th.append(b);
+  caps.forEach(cp=>{const tr=el('tr');trs[cp.id]=tr;const th=el('th','ap-cap');const b=el('button','ap-capb',cp.n);b.type='button';b.addEventListener('click',()=>showCap(cp));th.append(b);
     const u=uni[cp.id],s=sol[cp.id];const tag=u?'Solo '+nr(u.red):s?'Compartida ×'+(s.redes_si||[]).length:'';if(tag)th.append(el('div','ap-tag'+(u?' u':''),tag));tr.append(th);
     ids.forEach(i=>{const x=cp.celdas[i]||{v:'sin dato'};const v=APV[x.v]||APV['sin dato'];const td=el('td');const bt=el('button','ap-ce '+v[0],v[1]);bt.type='button';bt.setAttribute('aria-label',cp.n+', '+nr(i)+': '+(x.v||'sin dato'));bt.addEventListener('click',()=>showCell(cp,i));td.append(bt);tr.append(td)});
     t.append(tr);filas.push([tr,u?'una':s?'comp':'otra'])});
