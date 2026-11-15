@@ -2580,13 +2580,13 @@ function icBloque(){
   const faltan=N.filter(n=>!pos[n.id]);faltan.forEach((n,i)=>{pos[n.id]={x:3*(W+GAP),y:TOP+(9+i)*SH}});
   const Hh=TOP+(9+faltan.length)*SH-(SH-NH);
   const svg=sv('svg',{viewBox:'0 0 '+(4*W+3*GAP)+' '+Hh,class:'ic-svg',role:'group','aria-label':'Mapa de interconexión entre redes: '+N.length+' nodos y '+E.length+' enlaces'});
-  Object.entries(IEST).forEach(([k,v])=>{const m=sv('marker',{id:'icm-'+k,viewBox:'0 0 10 10',refX:'9',refY:'5',markerWidth:'7',markerHeight:'7',orient:'auto'});m.append(sv('path',{d:'M0 0L10 5L0 10z',fill:v[1]}));svg.append(m)});
+  Object.entries(IEST).forEach(([k,v])=>{const m=sv('marker',{id:'icm-'+k,viewBox:'0 0 10 10',refX:'9',refY:'5',markerUnits:'userSpaceOnUse',markerWidth:'12',markerHeight:'12',orient:'auto'});m.append(sv('path',{d:'M0 0L10 5L0 10z',fill:v[1]}));svg.append(m)});
   ICOL.forEach(([tit],ci)=>{const x=ci*(W+GAP);icWrap(tit,26).forEach((l,i)=>{const t=sv('text',{x:x+W/2,y:16+i*18,'text-anchor':'middle',class:'ic-ch'});t.textContent=l;svg.append(t)})});
   const gE=sv('g',{}),gN=sv('g',{});svg.append(gE,gN);
   const panel=el('div','ap-panel ic-panel');panel.setAttribute('aria-live','polite');const intro=()=>el('p','nota-v','Toca un nodo o un enlace (también en la lista de debajo) para ver su ficha con fuente y nivel. Para quitar la selección y ver todo otra vez: botón «Ver todo», Escape o toca el fondo del mapa.');panel.append(intro());
   const els={n:{},e:[]};
   const sl={};E.forEach((e,j)=>{const A=pos[e.de],B=pos[e.a];if(!A||!B||A.x===B.x)return;const r=B.x>A.x;(sl[e.de+'|'+(r?'R':'L')]=sl[e.de+'|'+(r?'R':'L')]||[]).push([j,B.y]);(sl[e.a+'|'+(r?'L':'R')]=sl[e.a+'|'+(r?'L':'R')]||[]).push([j,A.y])});
-  const slot={};Object.entries(sl).forEach(([k,a])=>{a.sort((p,q)=>p[1]-q[1]);a.forEach(([j],i)=>{slot[k+'|'+j]=(i+1)/(a.length+1)})});
+  const slot={};Object.entries(sl).forEach(([k,a])=>{a.sort((p,q)=>p[1]-q[1]);a.forEach(([j],i)=>{slot[k+'|'+j]=a.length===1?.5:.14+.72*i/(a.length-1)})});
   const reset=()=>{svg.classList.remove('has-sel');Object.values(els.n).forEach(g=>g.classList.remove('sel'));els.e.forEach(g=>g&&g.classList.remove('sel','rel'));panel.textContent='';panel.append(intro())};
   svg.addEventListener('click',ev=>{if(ev.target===svg||ev.target.tagName==='text'&&ev.target.classList.contains('ic-ch'))reset()});
   mp.addEventListener('keydown',ev=>{if(ev.key==='Escape')reset()});
