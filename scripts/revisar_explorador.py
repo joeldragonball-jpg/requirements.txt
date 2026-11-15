@@ -553,6 +553,32 @@ try:
 except (OSError, ValueError, KeyError) as _e:
     aviso("escenarios-redes.json", f"no se pudo validar ({type(_e).__name__})")
 
+# C327: una misma URL no puede llevar niveles distintos (P/S/V/R) en los JSON de Cadenas
+try:
+    _niv = {}
+
+    def _recorre_niv(_o, _f):
+        if isinstance(_o, dict):
+            _u = _o.get("u") or _o.get("url")
+            _n = _o.get("n") if "n" in _o else _o.get("nivel")
+            if isinstance(_u, str) and _u.startswith("http") and _n in ("P", "S", "V", "R"):
+                _niv.setdefault(_u, {}).setdefault(_n, set()).add(_f)
+            for _v in _o.values():
+                _recorre_niv(_v, _f)
+        elif isinstance(_o, list):
+            for _v in _o:
+                _recorre_niv(_v, _f)
+
+    for _f in ("cadenas", "aporta-redes", "interconexion", "pruebas-bancos", "escenarios-redes"):
+        _rf = RAIZ / "explorador" / f"{_f}.json"
+        if _rf.exists():
+            _recorre_niv(json.loads(_rf.read_text(encoding="utf-8")), f"{_f}.json")
+    for _u, _ns in _niv.items():
+        if len(_ns) > 1:
+            aviso("Cadenas niveles", f"la URL {_u[:90]} tiene niveles distintos: " + ", ".join(f"{k} en {'/'.join(sorted(v))}" for k, v in sorted(_ns.items())))
+except (OSError, ValueError) as _e:
+    aviso("Cadenas niveles", f"no se pudo validar ({type(_e).__name__})")
+
 print("\n".join(avisos) if avisos else "Sin avisos.")
 print(f"\n{len(avisos)} aviso(s) en {len(d['capas'])} capas y {len(d['movimientos'])} movimientos.")
 if RUTA_REG.exists():

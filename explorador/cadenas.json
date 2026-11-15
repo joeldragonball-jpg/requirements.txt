@@ -132,7 +132,7 @@
    "f": "docs.xdc.network (resumen de buscador; parte interesada)",
    "u": "https://docs.xdc.network/enterprise/iso-20022/",
    "d": "2026-11-14",
-   "n": "S"
+   "n": "P"
   },
   {
    "t": "No existe una certificación oficial de «tokens ISO 20022»: ISO 20022 define mensajes financieros. Las listas de «cripto ISO 20022» que circulan son de comunidad o promocionales. Lo verificable es quién integra o prueba con Swift, DTCC o bancos, y con qué capa (mensajería, orquestación, red).",
@@ -442,7 +442,7 @@
      "f": "RWA.xyz, ficha XRP Ledger (leída en el navegador el 14-nov-2026); DBS, nota de prensa 18-sep-2025 (leída)",
      "u": "https://www.dbs.com/newsroom/DBS_and_Franklin_Templeton_to_launch_trading_and_lending_solutions_powered_by_tokenised_money_market_funds_and_Ripples_RLUSD_stablecoin",
      "d": "2026-11-14",
-     "n": "S",
+     "n": "P",
      "cadenas": [
       "xrpl"
      ]
@@ -1535,7 +1535,7 @@
      "fecha": "2026-11-11",
      "t": "Apex Group (3.500 mil M$ en servicio) entra en el Consejo de Hedera; dice basar su tokenización en ERC-3643 y que explorará Hedera",
      "u": "https://hedera.com/blog/apex-group-joins-hedera-council-to-advance-institutional-digital-assets/",
-     "n": "S",
+     "n": "P",
      "futuro": false
     },
     {
@@ -3166,7 +3166,7 @@
      "ev": "Según la doc de L1, el gas de la C-Chain se paga en AVAX y parte se quema; cada L1 puede tener su propio token de gas [lector automático]. Finalidad ~1 s [P].",
      "u": "https://build.avax.network/docs/avalanche-l1s",
      "d": "2026-11-14",
-     "n": "S"
+     "n": "P"
     },
     "emision": {
      "token": "mínimo",
@@ -4700,7 +4700,7 @@
      "f": "dev.algorand.co, Assets overview",
      "u": "https://dev.algorand.co/concepts/assets/overview/",
      "d": "2026-11-14",
-     "n": "S"
+     "n": "P"
     },
     "liquidacion": {
      "t": "Autodeclarada por la Fundación: 'finalidad instantánea', más de 10.000 TPS y comisión fija de 0,001 ALGO; intercambios atómicos para liquidación con contraparte segura (p. ej. stablecoin contra token de RWA). Sin segundos medidos ni liquidación en dinero de banco central",
@@ -4715,7 +4715,7 @@
       "f": "Algorand RWA Dashboard (Algorand Foundation BI Team)",
       "u": "https://algorand-rwa-dashboard.vercel.app/",
       "d": "2026-11-14",
-      "n": "P"
+      "n": "S"
      },
      "otros": {
       "t": "Quantoz (regulado, token de dinero electrónico y emisión) lista entre sus soluciones «liquidación de activos tokenizados» y financiación del comercio; la portada no nombra activos, importes ni cadena concreta [VERIFICAR vínculo con Algorand]. Folks Finance (préstamos entre cadenas) declara no estar diseñado para valores tokenizados («security tokens»), así que su volumen no cuenta como RWA de valores",
@@ -4811,7 +4811,7 @@
      "ev": "La doc dice «2-second finality vs T+2» (página ISO 20022); el artículo de XDC 2.0 (xdc.org, 30-sep-2024, leído 15-nov-2026) dice que hay un bloque cada 2 s, que se exigen tres bloques de finalidad y que la «máxima seguridad» llega 6 s después de generarse el bloque; tech-specs también da 6 s. Lectura [RAZONADO]: 2 s es el tiempo de bloque y 6 s la finalidad; las cifras de 2-4 s de otras páginas no definen el término. Papel del token XDC en la liquidación no leído.",
      "u": "https://xdc.org/network/tech-specs",
      "d": "2026-11-14",
-     "n": "S"
+     "n": "P"
     },
     "emision": {
      "token": "sin dato",
@@ -4835,7 +4835,7 @@
      "ev": "La doc de XDC dice estar «designed with ISO 20022 compatibility» y mapea pacs.008, pacs.009, camt.053, pain.001 y head.001; enlaza la página de Swift sobre ISO 20022 pero no describe ninguna conexión XDC-Swift.",
      "u": "https://docs.xdc.network/enterprise/iso-20022/",
      "d": "2026-11-14",
-     "n": "S"
+     "n": "P"
     },
     "custodia": {
      "token": "sin dato",
@@ -4843,7 +4843,7 @@
      "ev": "Nota de prensa de XDC del 27-may-2025: bancos e instituciones pueden custodiar activos XDC en Utila (monederos MPC, controles por roles, RPC EVM propio). No consta que el token XDC cumpla función en la custodia. BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye XDC.",
      "u": "https://chainwire.org/2025/05/27/xdc-network-concludes-integration-with-utila-enabling-institutional-access-to-custody-assets/",
      "d": "2025-05-27",
-     "n": "S"
+     "n": "P"
     }
    },
    "captura": {
@@ -4927,7 +4927,7 @@
       "f": "docs.xdc.network, RWA Tokenization (parte interesada)",
       "u": "https://docs.xdc.network/enterprise/rwa-tokenization/",
       "d": "2026-11-14",
-      "n": "S"
+      "n": "P"
      },
      "credito": {
       "t": "TradeFinex se describe como protocolo no custodial de financiación del comercio, conforme a ISO 20022 según su web, que tokeniza recibos de almacén, materias primas y facturas sobre XDC y forma parte de Contour (cartas de crédito digitales con MUFG, ICBC, Bank of China, DBS según la web de TradeFinex, parte interesada, sin confirmar por otra fuente [VERIFICAR]). La web no da importes; la cifra «100 M$+» de la guía de XDC sigue sin informe ni fecha [VERIFICAR]. Son activos REPRESENTADOS (documentos o mercancía fuera de cadena)",
@@ -5196,7 +5196,7 @@
      "t": "Programa ADAPT con la Secretaría del AfCFTA, el Tony Blair Institute y el WEF: Kenia, Nigeria y Marruecos son los primeros países (identidad digital, datos de comercio y pagos). Socios (AfCFTA lidera; IOTA, Tony Blair Institute y WEF) confirmados en el blog de IOTA del 17-nov-2025, no en las webs de AfCFTA, TBI ni WEF",
      "f": "Blog de IOTA (fuente propia; los socios no se leyeron)",
      "d": "2026-05-19",
-     "n": "S",
+     "n": "P",
      "u": "https://blog.iota.org/update-q2-2026/"
     },
     "pagos": {
