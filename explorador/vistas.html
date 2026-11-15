@@ -368,7 +368,14 @@ small.per{color:var(--tx2);font-size:var(--fs-xs);font-weight:400}
 .ap-leg{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 0;font-size:var(--fs-xs);color:var(--tx2)}.ap-lg{display:inline-flex;align-items:center;gap:6px;min-width:0;max-width:100%}
 .ap-ojo{font-weight:700;border:1px dashed #e8b64a;color:#e8b64a;border-radius:6px;padding:6px 10px;margin:8px 0;font-size:var(--fs-s)}
 .ap-fil{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.ap-fb{background:var(--bg);color:var(--tx);border:1px solid var(--lin);border-radius:999px;padding:6px 14px;min-height:36px;font-size:var(--fs-xs);cursor:pointer}.ap-fb.on{border-color:var(--ac);color:var(--ac);background:rgba(90,169,230,.12)}
-.ap-tw{width:100%;max-width:100%;box-sizing:border-box}.ap-m tr.ap-sel>*{background:rgba(90,169,230,.25);border-top:2px solid var(--ac);border-bottom:2px solid var(--ac)}.ap-m tr.ap-sel .ap-capb{font-weight:700;color:#fff}
+.ap-tw{width:100%;max-width:100%;box-sizing:border-box}.ap-m tr.ap-sel>*{background:rgba(90,169,230,.25);border-top:2px solid var(--ac);border-bottom:2px solid var(--ac)}.ap-m tr.ap-sel .ap-capb{font-weight:700;color:#fff}.ap-m tr.ap-sel>:first-child{border-left:2px solid var(--ac)}.ap-m tr.ap-sel>:last-child{border-right:2px solid var(--ac)}
+td.cad-go{cursor:pointer}td.cad-go:hover,td.cad-go:focus-visible{outline:2px solid var(--ac);outline-offset:-2px}
+.flash{animation:cadflash 1.8s ease-out}@keyframes cadflash{0%,55%{background:rgba(90,169,230,.40)}100%{background:transparent}}
+table.cad-emt{border-collapse:collapse;width:100%;min-width:980px;table-layout:auto}.cad-emt th{font-size:var(--fs-xs);color:var(--ac);text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:6px 10px;border-bottom:2px solid var(--lin);white-space:nowrap}
+.cad-emt td{vertical-align:top;font-size:var(--fs-s);line-height:1.45;padding:8px 10px;border-top:1px solid var(--lin);overflow-wrap:anywhere}.cad-emt td:first-child,.cad-emt th:first-child{position:sticky;left:0;z-index:1;background:var(--panel);font-weight:700;white-space:nowrap}.cad-emt .cad-f{margin-top:3px}.cad-emt .cad-f .badge{margin-right:6px}.cad-emt tr:nth-child(even) td{background:rgba(255,255,255,.025)}.cad-emt tr:nth-child(even) td:first-child{background:var(--panel)}
+.ic-how{background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:8px 14px;margin:8px 0;font-size:var(--fs-s)}.ic-how p{margin:5px 0}
+.ic-gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:10px;margin:10px 0}.ic-gl>div{background:var(--bg);border:1px solid var(--lin);border-left-width:5px;border-radius:8px;padding:7px 11px;font-size:var(--fs-s);min-width:0}.ic-gl b{display:block;margin-bottom:2px}.ic-gl .nota-v{margin:3px 0 0}
+
 .ap-m{border-collapse:collapse;table-layout:fixed;width:100%}.ap-m th,.ap-m td{padding:2px;border:1px solid var(--lin);text-align:center;vertical-align:middle}
 .ap-m .ap-corner{width:25%;text-align:left;font-size:13px;color:var(--tx2);padding:4px 6px}
 .ap-m .ap-cap{text-align:left;font-weight:400;padding:3px 6px;font-size:13.5px;line-height:1.25;overflow-wrap:anywhere}
@@ -2090,10 +2097,11 @@ function pCadenas(){
     const TIPOS=[['deuda','Deuda y letras'],['fondos','Fondos y estrategias'],['acciones','Acciones'],['materias','Materias primas'],['credito','Crédito privado'],['inmuebles','Inmuebles'],['otros','Otros']];
     const fm=v=>v<0.1?'<0,1 M$':v>=1000?num(v/1000,2).replace(/,00$/,'')+' mil M$':num(v,v<10?1:0)+' M$';
     const bx=el('div','caja');bx.append(el('h2',null,'¿Qué se tokeniza en cada red?'));
-    bx.append(el('p','nota-v','Valor tokenizado por tipo de activo (M$ = millones de dólares), sin stablecoins. Fuente: RWA.xyz [S], leída el 14-nov-2026. La barra es el peso del tipo dentro de la propia red. «sin dato» = no entra en las 10 mayores clases visibles; no significa cero. Debajo de la tabla van los emisores, el estándar de contrato y el plazo de liquidación (donde la fuente lo da; «sin dato» si no se leyó) y, para las redes sin cifra comparable, lo que sí consta en texto. Solo hechos: no hay «ganador».'));
+    bx.append(el('p','nota-v','Valor tokenizado por tipo de activo (M$ = millones de dólares), sin stablecoins. Fuente: RWA.xyz [S], leída el 14-nov-2026. La barra es el peso del tipo dentro de la propia red. «sin dato» = no entra en las 10 mayores clases visibles; no significa cero. Debajo de la tabla van los emisores, el estándar de contrato y el plazo de liquidación (donde la fuente lo da; «sin dato» si no se leyó) y, para las redes sin cifra comparable, lo que sí consta en texto. Solo hechos: no hay «ganador». Pulsa una cifra (o el nombre de la red) para ir al detalle de esa red y ese tipo.'));
+    const irTk=(rid,k)=>{const d=$('cad-tk-'+rid);if(!d)return;d.open=true;const t=k&&$('cad-tk-'+rid+'-'+k),dest=t||d;dest.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});const fl=t||d.querySelector('summary');fl.classList.remove('flash');void fl.offsetWidth;fl.classList.add('flash');setTimeout(()=>fl.classList.remove('flash'),2000)};
     const tb=el('table','cad-mat cad-ta');const h=el('tr');h.append(el('th','cad-red','Red'));TIPOS.forEach(([k,n])=>h.append(el('th',null,n)));tb.append(h);
-    TA.forEach(c=>{const ta=c.tipos_activo,tp=ta.tipos||{};const tot=Object.values(tp).reduce((a,x)=>a+(x.v||0),0)||1;const r=el('tr');r.append(el('th','cad-red',tit(c)));
-      TIPOS.forEach(([k])=>{const x=tp[k];const td=el('td','cad-c '+(x?'nS':'nd'));if(x){td.title=x.t+'\n— '+x.f+' · '+x.d+' ['+x.n+']';const b=el('div','cad-bar');b.style.width=Math.max(4,Math.round(x.v/tot*100))+'%';td.append(el('div','cad-v',fm(x.v)),b,el('div','cad-k',x.k+' act.'))}else td.textContent='sin dato';r.append(td)});
+    TA.forEach(c=>{const ta=c.tipos_activo,tp=ta.tipos||{};const tot=Object.values(tp).reduce((a,x)=>a+(x.v||0),0)||1;const r=el('tr');{const th=el('th','cad-red');const b=el('button',null,tit(c));b.type='button';b.addEventListener('click',()=>irTk(c.id));th.append(b);r.append(th)}
+      TIPOS.forEach(([k])=>{const x=tp[k];const td=el('td','cad-c '+(x?'nS':'nd'));if(x){td.title=x.t+'\n— '+x.f+' · '+x.d+' ['+x.n+']';const b=el('div','cad-bar');b.style.width=Math.max(4,Math.round(x.v/tot*100))+'%';td.append(el('div','cad-v',fm(x.v)),b,el('div','cad-k',x.k+' act.'));if((x.detalle||[]).length){td.classList.add('cad-go');td.tabIndex=0;td.setAttribute('role','button');td.setAttribute('aria-label',tit(c)+', '+k+': ver el detalle');const go=()=>irTk(c.id,k);td.addEventListener('click',go);td.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();go()}})}}else td.textContent='sin dato';r.append(td)});
       tb.append(r)});
     const ev=el('div','cad-env');ev.append(tb);bx.append(ev);
     // C311 · detalle por red y tipo (producto, emisor, subtipo, importe, nivel, fecha)
@@ -2107,32 +2115,36 @@ function pCadenas(){
         r.append(el('span','p',x.producto||'vacío'),el('span','e',x.emisor||'vacío'),el('span','s',x.subtipo||'vacío'),el('span','i',x.importe_musd==null?'vacío':fm(x.importe_musd)),m,nv,el('span','f',x.d||'sin fecha'));g.append(r)});return g};
     let prim=true;
     TA.forEach(c=>{const ta=c.tipos_activo,tp=ta.tipos||{};const ks=TIPOS.filter(([k])=>tp[k]&&tp[k].detalle&&tp[k].detalle.length);const ap=ta.aparte||[];if(!ks.length&&!ap.length)return;
-      const dt=el('details','cad-dr cerrado-por-defecto');dt.dataset.auto='1';if(prim){dt.open=true;prim=false}
+      const dt=el('details','cad-dr cerrado-por-defecto');dt.id='cad-tk-'+c.id;dt.dataset.auto='1';if(prim){dt.open=true;prim=false}
       const totR=Object.values(tp).reduce((a,x)=>a+(x.v||0),0),nTi=Object.values(tp).filter(x=>(x.v||0)>0).length,nPr=ks.reduce((a,[k])=>a+tp[k].detalle.length,0)+ap.length;
       const sm=el('summary');sm.append(el('b',null,tit(c)),el('span','cad-drm',ks.length?fm(totR)+' en '+nTi+' tipo'+(nTi===1?'':'s'):'solo representado'),el('span','nota-v',nPr+' producto'+(nPr===1?'':'s')+' en detalle'),el('span','cad-drk',ks.length?ks.map(([k,n])=>n).join(' · '):'Representado, fuera del total'));dt.append(sm);
-      ks.forEach(([k,n])=>{const tt=tp[k];const sc=el('div','cad-tsec');const h4=el('h4',null,n);h4.append(el('span',null,fm(tt.v)+' en '+tt.k+' activos (primeros '+tt.detalle.length+')'));sc.append(h4,rejilla(tt.detalle));dt.append(sc)});
+      ks.forEach(([k,n])=>{const tt=tp[k];const sc=el('div','cad-tsec');sc.id='cad-tk-'+c.id+'-'+k;const h4=el('h4',null,n);h4.append(el('span',null,fm(tt.v)+' en '+tt.k+' activos (primeros '+tt.detalle.length+')'));sc.append(h4,rejilla(tt.detalle));dt.append(sc)});
       if(ap.length){const sc=el('div','cad-tsec');sc.append(el('h4',null,'Representado, fuera del total anterior (materias primas y otros)'),rejilla(ap));dt.append(sc)}
       if(ta.detalle_nota&&!dh.querySelector('.nota-d'))dh.append(el('p','nota-v nota-d',ta.detalle_nota));
       dh.append(dt)});
     bx.append(dh);
-    // C312: emisores, estándar y plazo en una tarjeta por red (tres filas etiquetadas con nivel, fuente y fecha)
-    const eg=el('div','cad-emg');
+    // Emisores, estándar de contrato y plazo de liquidación: una fila por red, una columna por tema
     const pie=x=>{const s=el('div','cad-f');s.append(nivelBadge(x.n||'V'),document.createTextNode((x.f?x.f+' · ':'')+(x.d||'sin fecha')+' '));if(x.u)s.append(lk(x.u,'abrir ↗'));return s};
+    const celdaE=(x,sin)=>{const td=el('td');if(x){td.append(document.createTextNode(x.t||'vacío'),pie(x))}else td.append(el('span','cx-vac',sin));return td};
+    const et=el('table','cad-emt');const eh=el('tr');['Red','Emisores','Estándar de contrato','Plazo de liquidación','Otros tipos (sin importe comparable)'].forEach(t=>eh.append(el('th',null,t)));et.append(eh);
     TA.forEach(c=>{const ta=c.tipos_activo,e=ta.emisores,cu=ta.cualitativo||{},es=ta.estandar,lq=ta.liquidacion;if(!e&&!es&&!lq&&!Object.keys(cu).length)return;
-      const cd=el('div','cad-emc');cd.append(el('h4',null,tit(c)));const dl=el('dl','cad-emf');
-      const fila=(lab,x,sin)=>{dl.append(el('dt',null,lab));const dd=el('dd');if(x){dd.append(document.createTextNode(x.t||'vacío'),pie(x))}else dd.append(el('span','cx-vac',sin));dl.append(dd)};
-      fila('Emisores',e,'Sin cifra de emisores.');Object.entries(cu).forEach(([k,x])=>fila('Tipo «'+k+'» (sin importe comparable)',x,'sin dato'));fila('Estándar de contrato',es,'sin dato');fila('Plazo de liquidación',lq,'sin dato (no leído en fuente)');
-      cd.append(dl);eg.append(cd)});
-    bx.append(el('h3',null,'Emisores, estándar de contrato y plazo de liquidación'),eg);S.append(bx)})();
+      const r=el('tr');r.append(el('td',null,tit(c)),celdaE(e,'sin cifra'),celdaE(es,'sin dato'),celdaE(lq,'sin dato (no leído en fuente)'));
+      const o=el('td');const ks=Object.entries(cu);if(!ks.length)o.append(el('span','cx-vac','—'));ks.forEach(([k,x])=>{const w=el('div');w.style.marginBottom='6px';w.append(el('b',null,k+': '),document.createTextNode(x.t||'vacío'),pie(x));o.append(w)});r.append(o);et.append(r)});
+    const eg=el('div','cad-env');eg.append(et);
+    bx.append(el('h3',null,'Emisores, estándar de contrato y plazo de liquidación'),el('p','nota-v','Una fila por red. Emisor = quien crea el activo tokenizado; estándar = reglas del contrato del token (quién puede tenerlo y moverlo); plazo = cuánto tarda en completarse el cambio de manos. Cada celda lleva su nivel, fuente y fecha; «sin dato» = no se ha leído en fuente.'),eg);S.append(bx)})();
   // C266 · relaciones entre redes: hechos que tocan a varias fichas a la vez
   const REL=C.relaciones||[],nomC=id=>{const q=L.find(x=>x.id===id);return q?tit(q):id};
   const nivM=m=>m.nivel||(/\[P/.test(m.fuente||'')?'P':/\[S/.test(m.fuente||'')?'S':'V');
-  const irRel=id=>{const d=$('cad-rel-'+id);if(d){d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'})}};
-  if(REL.length){const cr=el('div','caja');cr.id='cad-relaciones';cr.append(el('h2',null,'Relaciones entre redes: qué noticias tocan a varias fichas'),el('p','nota-v','Hechos con fuente que unen varias redes (un depositario que conecta con varias, una capa intermedia, un emisor desplegado en muchas). Sirven para leer una noticia: a qué fichas afecta y si habla de algo en producción o de un plan. No comparan redes entre sí.'));
-    REL.forEach(r=>{const dt=el('details','cad-rel');dt.dataset.auto='1';dt.id='cad-rel-'+r.id;const sm=el('summary');sm.append(el('b',null,r.titulo),el('span','cad-rc',(r.cadenas||[]).map(nomC).join(' · ')));dt.append(sm);
-      if(r.que)dt.append(el('p','que',r.que));const rh=el('div','cad-rh');(r.hechos||[]).forEach(x=>rh.append(hecho(x)));dt.append(rh);
-      if((r.sin_dato||[]).length){dt.append(el('h3',null,'Sin dato todavía'));const u=el('ul','cad-lst');r.sin_dato.forEach(x=>u.append(el('li',null,x)));dt.append(u)}
-      cr.append(dt)});S.append(cr)}
+  const irRel=id=>{const d=$('cad-rel-'+id);if(d){const dd=d.querySelector('details');if(dd)dd.open=true;d.scrollIntoView({behavior:'smooth',block:'start'})}};
+  if(REL.length){const cr=el('div','caja');cr.id='cad-relaciones';cr.append(el('h2',null,'Relaciones entre redes: hechos que afectan a varias a la vez'),el('p','nota-v','Para qué sirve: cuando una noticia dice, por ejemplo, «DTCC conecta con Stellar», aquí ves qué otras redes toca y si es algo en producción o un plan. Cada tarjeta es un hecho o un actor que une varias redes; los botones abren la ficha de cada red afectada. No compara redes ni dice cuál es mejor.'));
+    const gr=el('div','cx-grid');
+    REL.forEach(r=>{const dt=el('div','cx-card');dt.id='cad-rel-'+r.id;dt.append(el('h4',null,r.titulo));
+      const ch=el('div','cad-ir');(r.cadenas||[]).forEach(id=>{const b=el('button','cad-bt',nomC(id));b.type='button';b.title='Abrir la ficha de '+nomC(id);b.addEventListener('click',()=>abrirRed({id}));ch.append(b)});dt.append(ch);
+      if(r.que)dt.append(el('p','que',r.que));
+      const dd=el('details','cad-rel');dd.append(el('summary',null,'Hechos con fuente ('+(r.hechos||[]).length+')'));const rh=el('div','cad-rh');(r.hechos||[]).forEach(x=>rh.append(hecho(x)));dd.append(rh);
+      if((r.sin_dato||[]).length){dd.append(el('h3',null,'Sin dato todavía'));const u=el('ul','cad-lst');r.sin_dato.forEach(x=>u.append(el('li',null,x)));dd.append(u)}
+      dt.append(dd);gr.append(dt)});
+    cr.append(gr);cm.after(cr)}
   cadExtras(S);
   // fichas
   const cf=el('div','caja');cf.append(el('h2',null,'Ficha por red: capas, ISO 20022, hechos, hitos y enlaces'));
@@ -2509,13 +2521,14 @@ function apCruzado(){
   let filtro='todas';const fb=el('div','ap-fil');const panel=el('div','ap-panel');panel.setAttribute('aria-live','polite');
   panel.append(el('p','nota-v','Toca una celda para ver el dato, su fuente, nivel y fecha; toca el nombre de una capacidad para ver qué significa.'));
   const tw=el('div','ap-tw');const t=el('table','ap-m');
-  const showCell=(cp,id)=>{const x=cp.celdas[id]||{v:'sin dato'};panel.textContent='';panel.append(el('h4',null,cp.n+' · '+nr(id)));
+  const showCell=(cp,id)=>{clearSel();const x=cp.celdas[id]||{v:'sin dato'};panel.textContent='';panel.append(el('h4',null,cp.n+' · '+nr(id)));
     const v=APV[x.v]||APV['sin dato'];const p=el('p');p.append(el('i','ap-ce '+v[0],v[1]),document.createTextNode(' '+(x.v||'vacío')));panel.append(p);
     const dl=el('dl','cad-usf');const f=(l,n)=>{dl.append(el('dt',null,l));const dd=el('dd');dd.append(n);dl.append(dd)};
     f('Qué dice',apTx(x.t));f('Fuente',apLinkOrTx(x.f));f('Nivel',x.n?cxNiv(x.n):cxVac());f('Fecha',apTx(x.d));
     if(x.v==='sin dato')f('Ojo',document.createTextNode('El repo no recoge este dato con fuente; no significa NO.'));panel.append(dl)};
-  const trs={};let selRow=null;
-  const showCap=cp=>{if(selRow)selRow.classList.remove('ap-sel');selRow=trs[cp.id]||null;if(selRow)selRow.classList.add('ap-sel');panel.textContent='';const vb=el('button','cad-bt','↑ Ver su fila en la tabla');vb.type='button';vb.addEventListener('click',()=>{if(selRow)selRow.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'})});panel.append(vb,el('h4',null,cp.n),el('p',null,cp.que||'vacío'));const x=APX[cp.id]||{},u=uni[cp.id],s=sol[cp.id];
+  const trs={};let selRow=null;const hint0=panel.innerHTML;
+  const clearSel=()=>{if(selRow)selRow.classList.remove('ap-sel');selRow=null};
+  const showCap=cp=>{if(selRow&&selRow===trs[cp.id]){clearSel();panel.innerHTML=hint0;return}clearSel();selRow=trs[cp.id]||null;if(selRow)selRow.classList.add('ap-sel');panel.textContent='';const vb=el('button','cad-bt','↑ Ver su fila en la tabla');vb.type='button';vb.addEventListener('click',()=>{if(selRow)selRow.scrollIntoView({behavior:RM?'auto':'smooth',block:'center'})});const xb=el('button','cad-bt','✕ Quitar selección');xb.type='button';xb.style.marginLeft='8px';xb.addEventListener('click',()=>{clearSel();panel.innerHTML=hint0});panel.append(vb,xb,el('h4',null,cp.n),el('p',null,cp.que||'vacío'));const x=APX[cp.id]||{},u=uni[cp.id],s=sol[cp.id];
     [['Qué es y cómo funciona',x.q],['Ejemplo',x.ej],['Por qué importa',x.por]].forEach(([t,v])=>{if(v)panel.append(el('h5',null,t),el('p',null,v))});
     const dd=apDatosCap(cp.id,ids,nr);if(dd.length){const ul=el('ul','cad-lst ap-ul');dd.forEach(t=>ul.append(el('li','ap-li',t)));panel.append(el('h5',null,'Datos medidos en el repo'),ul)}
     const filas=ids.map(i=>({i,x:cp.celdas[i]||{v:'sin dato'}}));const con=filas.filter(r=>r.x.v==='SÍ'||r.x.v==='PARCIAL'),sin=filas.filter(r=>!(r.x.v==='SÍ'||r.x.v==='PARCIAL'));
@@ -2556,7 +2569,10 @@ function icBloque(){
   const q=J.pregunta||{};const pq=el('div','ic-preg');pq.append(el('b',null,'Hipótesis de un lector (no se da por cierta): '),document.createTextNode(q.texto||'vacío'),el('div','nota-v','Estado: '+(q.estado||'vacío')));c.append(pq);
   const pa=el('div','ic-partes');(q.partes||[]).forEach(p=>{const s=el('div','ic-parte');s.append(el('b',null,p.id),document.createTextNode(' '+(p.parte||'vacío')));pa.append(s)});c.append(pa);
   const H=J.hipotesis||{},INI=J.iniciativas||[],iniDe=id=>INI.find(x=>x.id===id),NN=J.nodos_y_enlaces||{},N=NN.nodos||[],E=NN.enlaces||[],nom=id=>{const n=N.find(x=>x.id===id);return n?n.etiqueta:id};
-  const mp=el('section','ic-mapa');mp.append(el('h3',null,'Mapa de enlaces anunciados o en producción'),el('p','nota-v',NN.leyenda||''));
+  const mp=el('section','ic-mapa');mp.append(el('h3',null,'Mapa de enlaces anunciados o en producción'));
+  {const hw=el('div','ic-how');hw.append(el('b',null,'Cómo leer este mapa'));
+    [['Qué es cada caja','un actor, un estándar o una red (supervisores, bancos, infraestructuras, cadenas públicas). Debajo del mapa hay un glosario con lo que es cada una. El color indica el tipo y las columnas agrupan por tipo.'],['Qué es una flecha','«A se conecta, se integra, supervisa o prueba con B». La flecha sale de A (quien promueve o usa) y llega a B. Pulsa una flecha para ver su tipo, fecha y fuente.'],['Tipo de línea','continua = en producción · discontinua = piloto · punteada = anunciado · fina = concepto.'],['Qué NO dice','el mapa solo dibuja enlaces anunciados o en producción que tienen fuente en el repo. Una red sin flechas no está «aislada»: significa que el repo aún no tiene fuente de un enlace [VERIFICAR]. Dos redes sin flecha entre sí pueden estar conectadas por otra vía.'],['Para qué sirve','para contrastar la hipótesis de abajo («¿existe una capa común que una las redes y a la que un supervisor pueda mirar?») con hechos, no para decir qué red es mejor.']].forEach(([t,d])=>{const p=el('p');p.append(el('b',null,t+': '),document.createTextNode(d));hw.append(p)});mp.append(hw)}
+  mp.append(el('p','nota-v',NN.leyenda||''));
   const lg=el('div','ap-leg');Object.entries(ITIPO).forEach(([k,v])=>{const s=el('span','ap-lg');const i=el('i','ic-sw');i.style.background=v[1];i.style.borderColor=v[2];s.append(i,document.createTextNode(' '+v[0]));lg.append(s)});
   Object.entries(IEST).forEach(([k,v])=>{const s=el('span','ap-lg');const i=el('i','ic-ln');i.style.borderTopStyle=k==='produccion'?'solid':k==='piloto'?'dashed':'dotted';i.style.borderTopColor=v[1];i.style.borderTopWidth=k==='concepto'?'2px':'3px';s.append(i,document.createTextNode(' enlace '+v[0]));lg.append(s)});mp.append(lg);
   const NS='http://www.w3.org/2000/svg',sv=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
@@ -2569,12 +2585,14 @@ function icBloque(){
   const gE=sv('g',{}),gN=sv('g',{});svg.append(gE,gN);
   const panel=el('div','ap-panel ic-panel');panel.setAttribute('aria-live','polite');const intro=()=>el('p','nota-v','Toca un nodo o un enlace (también en la lista de debajo) para ver su ficha con fuente y nivel. Para quitar la selección y ver todo otra vez: botón «Ver todo», Escape o toca el fondo del mapa.');panel.append(intro());
   const els={n:{},e:[]};
+  const sl={};E.forEach((e,j)=>{const A=pos[e.de],B=pos[e.a];if(!A||!B||A.x===B.x)return;const r=B.x>A.x;(sl[e.de+'|'+(r?'R':'L')]=sl[e.de+'|'+(r?'R':'L')]||[]).push([j,B.y]);(sl[e.a+'|'+(r?'L':'R')]=sl[e.a+'|'+(r?'L':'R')]||[]).push([j,A.y])});
+  const slot={};Object.entries(sl).forEach(([k,a])=>{a.sort((p,q)=>p[1]-q[1]);a.forEach(([j],i)=>{slot[k+'|'+j]=(i+1)/(a.length+1)})});
   const reset=()=>{svg.classList.remove('has-sel');Object.values(els.n).forEach(g=>g.classList.remove('sel'));els.e.forEach(g=>g&&g.classList.remove('sel','rel'));panel.textContent='';panel.append(intro())};
   svg.addEventListener('click',ev=>{if(ev.target===svg||ev.target.tagName==='text'&&ev.target.classList.contains('ic-ch'))reset()});
   mp.addEventListener('keydown',ev=>{if(ev.key==='Escape')reset()});
-  const edgePath=(a,b)=>{const A=pos[a],B=pos[b];if(!A||!B)return null;
+  const edgePath=(a,b,j)=>{const A=pos[a],B=pos[b];if(!A||!B)return null;
     if(A.x===B.x){const down=B.y>A.y,x=A.x+W/2;return 'M'+x+' '+(down?A.y+NH:A.y)+' L'+x+' '+(down?B.y:B.y+NH)}
-    const r=B.x>A.x,x1=r?A.x+W:A.x,x2=r?B.x:B.x+W,y1=A.y+NH/2,y2=B.y+NH/2,xm=(x1+x2)/2;return 'M'+x1+' '+y1+' C'+xm+' '+y1+' '+xm+' '+y2+' '+x2+' '+y2};
+    const r=B.x>A.x,x1=r?A.x+W:A.x,x2=r?B.x:B.x+W,y1=A.y+NH*(slot[a+'|'+(r?'R':'L')+'|'+j]||.5),y2=B.y+NH*(slot[b+'|'+(r?'L':'R')+'|'+j]||.5),xm=(x1+x2)/2;return 'M'+x1+' '+y1+' C'+xm+' '+y1+' '+xm+' '+y2+' '+x2+' '+y2};
   const ficha=i=>{const w=el('div');w.append(el('p',null,i.que_es||'vacío'));const dl=el('dl','cad-usf');const f=(l,n)=>{dl.append(el('dt',null,l));const dd=el('dd');dd.append(n);dl.append(dd)};
     f('Tipo',apTx(i.tipo));f('Estado',apTx(i.estado));f('Qué no es',apTx(i.que_no_es));f('Partes de la hipótesis que cubre',apTx((i.cubre_partes||[]).join(', ')||'ninguna'));f('Visibilidad para el supervisor',apTx(i.visibilidad_supervisor));w.append(dl);
     const u=el('ul','cad-lst ap-ul');(i.hechos||[]).forEach(h=>{const li=el('li','ap-li');li.append(el('b',null,(h.fecha||'sin fecha')+' '),document.createTextNode(h.hecho||'vacío'));const p=el('div','nota-v');p.append(cxNiv(h.nivel),document.createTextNode(' fuente: '+(h.fuente||'vacío')+' '),cxLk(h.url,'abrir ↗'));li.append(p);u.append(li)});w.append(u);return w};
@@ -2590,16 +2608,24 @@ function icBloque(){
       const dl=el('dl','cad-usf');const f=(l,n)=>{dl.append(el('dt',null,l));const dd=el('dd');dd.append(n);dl.append(dd)};
       f('Tipo',apTx(e.tipo));f('Estado',apTx(est(e)));f('Fecha',apTx(e.fecha));f('Nivel',e.nivel?cxNiv(e.nivel):cxVac());f('Fuente',apLinkOrTx(e.fuente));panel.append(dl)}};
   const sel=(k,id,idx)=>{sel0(k,id,idx);const b=el('button','cad-bt ic-rb','↺ Ver todo (quitar selección)');b.type='button';b.addEventListener('click',reset);panel.insertBefore(b,panel.firstChild);panel.scrollIntoView({behavior:RM?'auto':'smooth',block:'nearest'})};
-  E.forEach((e,idx)=>{const d=edgePath(e.de,e.a);if(!d)return;const st=IEST[e.estado]||IEST.anunciado;const g=sv('g',{class:'ic-e',tabindex:'0',role:'button','aria-label':'Enlace '+nom(e.de)+' a '+nom(e.a)+', '+st[0]});
+  E.forEach((e,idx)=>{const d=edgePath(e.de,e.a,idx);if(!d)return;const st=IEST[e.estado]||IEST.anunciado;const g=sv('g',{class:'ic-e',tabindex:'0',role:'button','aria-label':'Enlace '+nom(e.de)+' a '+nom(e.a)+', '+st[0]});
     const vis=sv('path',{d,fill:'none',stroke:st[1],'stroke-width':e.estado==='concepto'?2:3,'marker-end':'url(#icm-'+(IEST[e.estado]?e.estado:'anunciado')+')'});if(st[2])vis.setAttribute('stroke-dasharray',st[2]);
-    g.append(vis,sv('path',{d,fill:'none',stroke:'transparent','stroke-width':18}));g.addEventListener('click',()=>sel('e','',idx));g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();sel('e','',idx)}});gE.append(g);els.e[idx]=g});
+    const ti=sv('title',{});ti.textContent=nom(e.de)+' → '+nom(e.a)+': '+(e.tipo||'')+' ('+st[0]+')';g.append(ti,vis,sv('path',{d,fill:'none',stroke:'transparent','stroke-width':18}));g.addEventListener('click',()=>sel('e','',idx));g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();sel('e','',idx)}});gE.append(g);els.e[idx]=g});
   N.forEach(n=>{const p=pos[n.id],tp=ITIPO[n.tipo]||['','#222','#888'];const g=sv('g',{class:'ic-n',tabindex:'0',role:'button','aria-label':n.etiqueta+', '+tp[0]});
     g.append(sv('rect',{x:p.x,y:p.y,width:W,height:NH,rx:9,fill:tp[1],stroke:tp[2],'stroke-width':2}));
     const ls=icWrap(n.etiqueta,25).slice(0,4),y0=p.y+NH/2-(ls.length-1)*8+5;ls.forEach((l,i)=>{const t=sv('text',{x:p.x+W/2,y:y0+i*17,'text-anchor':'middle',class:'ic-nt'});t.textContent=l;g.append(t)});
     g.addEventListener('click',()=>sel('n',n.id));g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();sel('n',n.id)}});gN.append(g);els.n[n.id]=g});
-  const sw=el('div','ic-sw-w');const rb=el('button','cad-bt ic-rb','↺ Ver todo (quitar selección)');rb.type='button';rb.addEventListener('click',reset);sw.append(rb,svg);const wr=el('div','ic-wrap');wr.append(sw,panel);mp.append(wr);
+  const GL={ethereum:'Cadena pública con contratos inteligentes. Las «capas 2» (Arbitrum, Base, Optimism…) son redes que corren encima y liquidan en Ethereum.',solana:'Cadena pública de alto rendimiento con contratos inteligentes; muchas stablecoins y activos tokenizados circulan en ella.',stellar:'Cadena pública pensada para pagos y emisión de activos, con un mercado de cambio (DEX) integrado en el protocolo.',avalanche:'Cadena pública que permite lanzar subredes propias, también permisionadas (solo entidades autorizadas).',polygon:'Cadena pública compatible con Ethereum, usada en pilotos de bancos.',cosmos:'Conjunto de cadenas soberanas que se comunican entre sí con el estándar IBC.','otras-publicas':'Otras cadenas públicas con enlaces con fuente en el repo (Sui, Aptos, Injective, Arc…); se agrupan para no saturar el mapa.','besu-dtcc':'Red privada que DTCC monta con el software Hyperledger Besu para su servicio de tokenización; solo participan entidades autorizadas.',sec:'Securities and Exchange Commission: el supervisor de valores de EE. UU. Aquí aparece porque emitió una carta de no acción a DTC para su servicio de tokenización (el personal de la SEC dice que no recomendará sanciones por esa actividad en las condiciones descritas).',esma:'ESMA es la autoridad europea de valores y mercados; ANC son las autoridades nacionales competentes (en España, la CNMV). MiCA es el reglamento de la UE sobre criptoactivos; exige el identificador DTI en los libros blancos.',mas:'MAS es la Autoridad Monetaria de Singapur (banco central y supervisor). Guardian y BLOOM son sus programas de pruebas: Guardian, tokenización de activos con bancos y gestoras; BLOOM, liquidación multidivisa con depósitos tokenizados y stablecoins reguladas.'};
+  const ALIAS={mas:'guardian-bloom','besu-dtcc':'hyperledger'};
+  {const gl=el('div','ic-gl');N.forEach(n=>{const tp=ITIPO[n.tipo]||['','#222','#888'];const f=iniDe(ALIAS[n.id]||n.id);const d=el('div');d.style.borderLeftColor=tp[2];d.append(el('b',null,n.etiqueta),el('span','nota-v',tp[0]));
+      const t=GL[n.id]||(f&&f.que_es)||'sin descripción todavía';d.append(el('p',null,t));if(f&&f.que_no_es&&!GL[n.id])d.append(el('p','nota-v','Qué no es: '+f.que_no_es));gl.append(d)});
+    var GLOS=gl}
+  const sw=el('div','ic-sw-w');const rb=el('button','cad-bt ic-rb','↺ Ver todo (quitar selección)');rb.type='button';rb.addEventListener('click',reset);sw.append(rb,svg);const wr=el('div','ic-wrap');wr.append(sw,panel);mp.append(wr);mp.append(el('h3',null,'Qué es cada caja (glosario)'),GLOS);
   const dl=el('details','mas');dl.append(el('summary',null,'Lista de los '+E.length+' enlaces (para tocar con precisión)'));const ul=el('ul','cad-lst ap-ul');
   E.forEach((e,idx)=>{const li=el('li','ap-li');const b=el('button','ap-capb',nom(e.de)+' → '+nom(e.a)+' · '+est(e));b.type='button';b.addEventListener('click',()=>sel('e','',idx));li.append(b,document.createTextNode(' '),cxNiv(e.nivel),document.createTextNode(' '+(e.fecha||'sin fecha')));ul.append(li)});dl.append(ul);mp.append(dl);
+  {const CC=(D.cadenas||{}).cadenas||[],en=new Set(N.map(n=>n.id_cadena).filter(Boolean)),fuera=CC.filter(x=>!en.has(x.id)).map(x=>x.nombre.replace(/ \(.*\)$/,'')),inv=INI.filter(i=>!N.some(n=>n.id===i.id)&&!Object.values(ALIAS).includes(i.id)).map(i=>i.nombre);
+    const w=el('div','ic-how');w.append(el('b',null,'Qué falta en el mapa (para ampliarlo con más research)'));
+    w.append(el('p',null,'Redes de las fichas que no salen porque el repo aún no tiene un enlace con fuente: '+(fuera.join(', ')||'ninguna')+'.'),el('p',null,'Iniciativas inventariadas que no se dibujan porque no conectan redes entre sí: '+(inv.join(', ')||'ninguna')+' (están en la lista «Las '+INI.length+' iniciativas inventariadas», más abajo).'));mp.append(w)}
   mp.append(el('p','nota-v','Nodos sin enlaces (islas): '+(N.filter(n=>!E.some(e=>e.de===n.id||e.a===n.id)).map(n=>n.etiqueta).join(' · ')||'vacío')+'. No se encontró conexión anunciada con otras redes del mapa.'));c.append(mp);
   const cb=el('section','ic-cob');cb.append(el('h3',null,'Cobertura por iniciativa de las 4 partes (A–D)'));
   const tw=el('div','ap-tw');const t=el('table','ic-t');const hr=el('tr');['Iniciativa','A','B','C','D'].forEach(h=>hr.append(el('th',null,h)));t.append(hr);
