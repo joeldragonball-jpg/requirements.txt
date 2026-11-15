@@ -1,32 +1,164 @@
 {
- "leido": "2026-11-15",
+ "leido": "2026-11-16",
  "tarea": "C307",
  "nivel_general": "S",
- "aviso": "congress.gov (Cloudflare) y senate.gov / banking.senate.gov (bloqueo a automatismos, también desde Chrome) no se pudieron leer: el estado legislativo viene de prensa y bufetes [S]. Solo la nota de la OCC (NR 2026-92) se leyó en directo [P]. Niveles: P = fuente oficial leída; S = secundaria; V = por verificar.",
+ "aviso": "GovInfo (BILLSTATUS, XML oficial de la Oficina de Imprenta del Gobierno) se leyó en Chrome el 16-nov-2026 [P]: H.R. 3633 actualizado el 17-sep-2026, S. 1582 el 29-jul-2026. congress.gov (Cloudflare) y senate.gov/banking.senate.gov (senate.gov devuelve «Unauthorized» al navegador automatizado, 16-nov) siguen sin poder leerse y no se saltó la protección: lo posterior al 17-sep-2026 y el calendario de sesiones vienen de prensa [S] o quedan [VERIFICAR]. Niveles: P = fuente oficial leída; S = secundaria; V = por verificar.",
  "resumen": [
-  "CLARITY Act (H.R. 3633): aprobada por la Cámara 294-134 (17-jul-2025) y por el Comité Bancario del Senado 15-9 (14-may-2026). El 15-sep-2026 el Senado rechazó la moción de cierre sobre la moción de proceder: 49-50, hacían falta 60 [S].",
-  "Tillis votó en contra para poder presentar una moción de reconsideración: es la vía formal para repetir la votación [S]. Ninguna fuente consultada recoge una segunda votación ni fecha fijada a 15-nov-2026 [V].",
+  "CLARITY Act (H.R. 3633): aprobada por la Cámara 294-134 (17-jul-2025); el Comité Bancario del Senado la ordenó informar el 14-may-2026 (15-9 según prensa) y pasó al Calendario del Senado n.º 423 el 1-jun. El 15-sep-2026 el cierre sobre la moción de proceder fracasó 49-50 (60 necesarios) [P, GovInfo].",
+  "Tillis presentó el 15-sep una moción de reconsideración [P]: es la vía formal para repetir la votación. El expediente oficial (actualizado el 17-sep) no registra más acciones; ninguna fuente consultada recoge segunda votación ni fecha fijada a 16-nov-2026 [V].",
   "El 119.º Congreso termina el 3-ene-2027; tras las elecciones del 3-nov-2026 los demócratas ganan ambas cámaras según prensa (crypto.news, 5-nov) [S]. Quedan unos 49 días naturales hasta el 3-ene; los «~20 días de calendario legislativo» de un comentario externo no se pueden confirmar: ningún calendario oficial leído da días de sesión [V].",
-  "GENIUS Act (S. 1582): firmada el 18-jul-2025; entra en vigor el 18-ene-2027 (o 120 días tras las normas finales, lo que llegue antes). Norma final de la OCC el 21-oct-2026 [P]; Fed, FDIC, NCUA, Tesoro, FinCEN y OFAC siguen en gran parte en propuesta [S]."
+  "GENIUS Act (S. 1582): Ley Pública 119-27, firmada el 18-jul-2025 [P, GovInfo]; entra en vigor el 18-ene-2027 (o 120 días tras las normas finales, lo que llegue antes). Norma final de la OCC el 21-oct-2026 [P]; Fed, FDIC, NCUA, Tesoro, FinCEN y OFAC siguen en gran parte en propuesta [S]."
  ],
  "hitos": [
-  {"fecha": "2025-05-29", "tema": "CLARITY", "hito": "French Hill presenta la CLARITY Act en la Cámara", "estado": "hecho", "fuente": "https://www.lw.com/en/us-crypto-policy-tracker/legislative-developments", "nivel": "S"},
-  {"fecha": "2025-07-17", "tema": "CLARITY", "hito": "La Cámara aprueba H.R. 3633 por 294-134", "estado": "hecho", "fuente": "https://www.lw.com/en/us-crypto-policy-tracker/legislative-developments", "nivel": "S"},
-  {"fecha": "2025-07-18", "tema": "GENIUS", "hito": "Trump firma la GENIUS Act", "estado": "hecho", "fuente": "https://www.lw.com/en/us-crypto-policy-tracker/legislative-developments", "nivel": "S"},
-  {"fecha": "2026-01-29", "tema": "CLARITY", "hito": "Comité de Agricultura del Senado aprueba su texto 12-11 (línea de partido)", "estado": "hecho", "fuente": "https://www.lw.com/en/us-crypto-policy-tracker/legislative-developments", "nivel": "S"},
-  {"fecha": "2026-05-14", "tema": "CLARITY", "hito": "Comité Bancario del Senado aprueba la CLARITY 15-9 (13 republicanos y 2 demócratas, que condicionaron su voto en el pleno a una cláusula de ética)", "estado": "hecho", "fuente": "https://www.lw.com/en/us-crypto-policy-tracker/legislative-developments", "nivel": "S"},
-  {"fecha": "2026-06-01", "tema": "CLARITY", "hito": "Nueva versión; pasa al Calendario Legislativo del Senado (n.º 423)", "estado": "hecho", "fuente": "https://www.lw.com/en/us-crypto-policy-tracker/legislative-developments", "nivel": "S"},
-  {"fecha": "2026-07-18", "tema": "GENIUS", "hito": "Plazo legal de un año para las normas finales: varias agencias lo incumplieron", "estado": "hecho", "fuente": "https://www.theblock.co/post/408843/us-regulators-miss-genius-act-deadline", "nivel": "S"},
-  {"fecha": "2026-08-07", "tema": "CLARITY", "hito": "Thune confirma que no habrá votación antes del receso de agosto; presenta la moción de cierre el 8-ago para votarla el 15-sep", "estado": "hecho", "fuente": "https://cointelegraph.com/news/clarity-act-senate-delay-window-become-law-midterm-elections", "nivel": "V", "nota": "Fechas de búsquedas de prensa, no leídas en el artículo."},
-  {"fecha": "2026-08-18", "tema": "Reguladores", "hito": "La SEC propone «Regulation Crypto Assets»; comentarios hasta el 20-oct-2026", "estado": "hecho", "fuente": "https://www.orrick.com/Insights/2026/10/The-CLARITY-Act-Stalls-in-the-Senate-Whats-Next-for-Digital-Asset-Regulation", "nivel": "S"},
-  {"fecha": "2026-09-15", "tema": "CLARITY", "hito": "Cierre sobre la moción de proceder a H.R. 3633: 49-50 (60 necesarios); los 49 síes son republicanos; Tillis cambia a no y presenta moción de reconsideración", "estado": "hecho", "fuente": "https://www.orrick.com/Insights/2026/10/The-CLARITY-Act-Stalls-in-the-Senate-Whats-Next-for-Digital-Asset-Regulation", "nivel": "S"},
-  {"fecha": "2026-09-17", "tema": "Reguladores", "hito": "La CFTC envía a la OIRA su norma sobre mercados cripto (RIN 3038-AF80); el texto aún no es público", "estado": "hecho", "fuente": "https://www.orrick.com/Insights/2026/10/The-CLARITY-Act-Stalls-in-the-Senate-Whats-Next-for-Digital-Asset-Regulation", "nivel": "S"},
-  {"fecha": "2026-09-30", "tema": "GENIUS", "hito": "Tesoro publica norma provisional del Comité de Revisión de Certificación de Stablecoins (Federal Register 2026-19966)", "estado": "hecho", "fuente": "https://forkast.news/?p=131089", "nivel": "V", "nota": "Dato de un buscador que cita Forkast; no leído en el Federal Register."},
-  {"fecha": "2026-10-21", "tema": "GENIUS", "hito": "La OCC publica su norma final (NR 2026-92): emisores de stablecoins de pago con licencia y extranjeros bajo la OCC, y custodia; nuevo 12 CFR parte 15; excluye BSA/AML y OFAC, que irán aparte con el Tesoro", "estado": "hecho", "fuente": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html", "nivel": "P"},
-  {"fecha": "2026-11-30", "tema": "GENIUS", "hito": "Fin de comentarios a las propuestas de la Fed sobre stablecoins (ya en calendario.toml)", "estado": "próximo", "fuente": "https://www.federalregister.gov/", "nivel": "S"},
-  {"fecha": "2026-12-11", "tema": "Calendario", "hito": "Vence el parche de financiación (posible cierre de gobierno); el Senado compite por tiempo entre fondos, defensa (NDAA) y agricultura", "estado": "próximo", "fuente": "https://www.kptv.com/2026/11/07/congress-enters-lame-duck-session-following-midterm-elections/", "nivel": "S", "nota": "No añadido a calendario.toml: fecha solo en prensa."},
-  {"fecha": "2027-01-03", "tema": "CLARITY", "hito": "Empieza el 120.º Congreso con mayoría demócrata (según prensa): lo no aprobado caduca", "estado": "próximo", "fuente": "https://crypto.news/can-the-clarity-act-still-pass-before-democrats-take-control/", "nivel": "S", "nota": "Ya existe en calendario.toml."},
-  {"fecha": "2027-01-18", "tema": "GENIUS", "hito": "Fecha efectiva de la GENIUS Act y de la norma de la OCC (antes si hay normas finales y pasan 120 días); emisores existentes necesitan solicitud casi completa y petición de exención; exenciones hasta 12 meses", "estado": "próximo", "fuente": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html", "nivel": "P", "nota": "Ya existe en calendario.toml. Los plazos detallados de la norma vienen de Mayer Brown [S]."}
+  {
+   "fecha": "2025-05-29",
+   "tema": "CLARITY",
+   "hito": "French Hill presenta la CLARITY Act en la Cámara",
+   "estado": "hecho",
+   "fuente": "https://www.lw.com/en/us-crypto-policy-tracker/legislative-developments",
+   "nivel": "S"
+  },
+  {
+   "fecha": "2025-07-17",
+   "tema": "CLARITY",
+   "hito": "La Cámara aprueba H.R. 3633 por 294-134 (votación nominal n.º 199)",
+   "estado": "hecho",
+   "fuente": "https://www.govinfo.gov/bulkdata/BILLSTATUS/119/hr/BILLSTATUS-119hr3633.xml",
+   "nivel": "P"
+  },
+  {
+   "fecha": "2025-07-18",
+   "tema": "GENIUS",
+   "hito": "Trump firma la GENIUS Act: Ley Pública 119-27 (Senado 68-30 el 17-jun-2025; Cámara 308-122 el 17-jul-2025)",
+   "estado": "hecho",
+   "fuente": "https://www.govinfo.gov/bulkdata/BILLSTATUS/119/s/BILLSTATUS-119s1582.xml",
+   "nivel": "P"
+  },
+  {
+   "fecha": "2026-01-29",
+   "tema": "CLARITY",
+   "hito": "Comité de Agricultura del Senado aprueba su texto 12-11 (línea de partido)",
+   "estado": "hecho",
+   "fuente": "https://www.lw.com/en/us-crypto-policy-tracker/legislative-developments",
+   "nivel": "S"
+  },
+  {
+   "fecha": "2026-05-14",
+   "tema": "CLARITY",
+   "hito": "Comité Bancario del Senado ordena informar el proyecto con enmienda sustitutiva (el 15-9 sale de prensa [S]; GovInfo no da el recuento)",
+   "estado": "hecho",
+   "fuente": "https://www.govinfo.gov/bulkdata/BILLSTATUS/119/hr/BILLSTATUS-119hr3633.xml",
+   "nivel": "P"
+  },
+  {
+   "fecha": "2026-06-01",
+   "tema": "CLARITY",
+   "hito": "Informado por el senador Scott; pasa al Calendario Legislativo del Senado, n.º 423",
+   "estado": "hecho",
+   "fuente": "https://www.govinfo.gov/bulkdata/BILLSTATUS/119/hr/BILLSTATUS-119hr3633.xml",
+   "nivel": "P"
+  },
+  {
+   "fecha": "2026-07-18",
+   "tema": "GENIUS",
+   "hito": "Plazo legal de un año para las normas finales: varias agencias lo incumplieron",
+   "estado": "hecho",
+   "fuente": "https://www.theblock.co/post/408843/us-regulators-miss-genius-act-deadline",
+   "nivel": "S"
+  },
+  {
+   "fecha": "2026-08-07",
+   "tema": "CLARITY",
+   "hito": "Thune presenta el 8-ago la moción de proceder y la moción de cierre (GovInfo, CR S4557) [P]; que no habría votación antes del receso y que se votaría el 15-sep sale de prensa [S]",
+   "estado": "hecho",
+   "fuente": "https://www.govinfo.gov/bulkdata/BILLSTATUS/119/hr/BILLSTATUS-119hr3633.xml",
+   "nivel": "P"
+  },
+  {
+   "fecha": "2026-08-18",
+   "tema": "Reguladores",
+   "hito": "La SEC propone «Regulation Crypto Assets»; comentarios hasta el 20-oct-2026",
+   "estado": "hecho",
+   "fuente": "https://www.orrick.com/Insights/2026/10/The-CLARITY-Act-Stalls-in-the-Senate-Whats-Next-for-Digital-Asset-Regulation",
+   "nivel": "S"
+  },
+  {
+   "fecha": "2026-09-15",
+   "tema": "CLARITY",
+   "hito": "Cierre sobre la moción de proceder a H.R. 3633 no invocado: 49-50 (votación n.º 234, CR S4706; 60 necesarios). El senador Tillis presenta moción de reconsideración el mismo día. Que los 49 síes sean republicanos es de prensa [S]",
+   "estado": "hecho",
+   "fuente": "https://www.govinfo.gov/bulkdata/BILLSTATUS/119/hr/BILLSTATUS-119hr3633.xml",
+   "nivel": "P"
+  },
+  {
+   "fecha": "2026-09-17",
+   "tema": "Reguladores",
+   "hito": "La CFTC envía a la OIRA su norma sobre mercados cripto (RIN 3038-AF80); el texto aún no es público",
+   "estado": "hecho",
+   "fuente": "https://www.orrick.com/Insights/2026/10/The-CLARITY-Act-Stalls-in-the-Senate-Whats-Next-for-Digital-Asset-Regulation",
+   "nivel": "S"
+  },
+  {
+   "fecha": "2026-09-17",
+   "tema": "CLARITY",
+   "hito": "Última actualización del expediente en GovInfo: la última acción registrada es la moción de reconsideración del 15-sep; ninguna votación posterior hasta esa fecha",
+   "estado": "hecho",
+   "fuente": "https://www.govinfo.gov/bulkdata/BILLSTATUS/119/hr/BILLSTATUS-119hr3633.xml",
+   "nivel": "P",
+   "nota": "Lo posterior al 17-sep no está en la fuente oficial leída [VERIFICAR]."
+  },
+  {
+   "fecha": "2026-09-30",
+   "tema": "GENIUS",
+   "hito": "Tesoro publica norma provisional del Comité de Revisión de Certificación de Stablecoins (Federal Register 2026-19966)",
+   "estado": "hecho",
+   "fuente": "https://forkast.news/?p=131089",
+   "nivel": "V",
+   "nota": "Dato de un buscador que cita Forkast; no leído en el Federal Register."
+  },
+  {
+   "fecha": "2026-10-21",
+   "tema": "GENIUS",
+   "hito": "La OCC publica su norma final (NR 2026-92): emisores de stablecoins de pago con licencia y extranjeros bajo la OCC, y custodia; nuevo 12 CFR parte 15; excluye BSA/AML y OFAC, que irán aparte con el Tesoro",
+   "estado": "hecho",
+   "fuente": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+   "nivel": "P"
+  },
+  {
+   "fecha": "2026-11-30",
+   "tema": "GENIUS",
+   "hito": "Fin de comentarios a las propuestas de la Fed sobre stablecoins (ya en calendario.toml)",
+   "estado": "próximo",
+   "fuente": "https://www.federalregister.gov/",
+   "nivel": "S"
+  },
+  {
+   "fecha": "2026-12-11",
+   "tema": "Calendario",
+   "hito": "Vence el parche de financiación (posible cierre de gobierno); el Senado compite por tiempo entre fondos, defensa (NDAA) y agricultura",
+   "estado": "próximo",
+   "fuente": "https://www.kptv.com/2026/11/07/congress-enters-lame-duck-session-following-midterm-elections/",
+   "nivel": "S",
+   "nota": "No añadido a calendario.toml: fecha solo en prensa."
+  },
+  {
+   "fecha": "2027-01-03",
+   "tema": "CLARITY",
+   "hito": "Empieza el 120.º Congreso con mayoría demócrata (según prensa): lo no aprobado caduca",
+   "estado": "próximo",
+   "fuente": "https://crypto.news/can-the-clarity-act-still-pass-before-democrats-take-control/",
+   "nivel": "S",
+   "nota": "Ya existe en calendario.toml."
+  },
+  {
+   "fecha": "2027-01-18",
+   "tema": "GENIUS",
+   "hito": "Fecha efectiva de la GENIUS Act y de la norma de la OCC (antes si hay normas finales y pasan 120 días); emisores existentes necesitan solicitud casi completa y petición de exención; exenciones hasta 12 meses",
+   "estado": "próximo",
+   "fuente": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+   "nivel": "P",
+   "nota": "Ya existe en calendario.toml. Los plazos detallados de la norma vienen de Mayer Brown [S]."
+  }
  ],
  "plazos_norma_occ": {
   "nivel": "S",
@@ -34,7 +166,7 @@
   "texto": "30 días para decidir si la solicitud está casi completa; 120 días para decidir una solicitud completa (si no, se da por aprobada); 180 días para la primera certificación AML/sanciones tras la aprobación; 360 días para que un emisor estatal no bancario de más de 10.000 M$ pase a la OCC o deje de emitir; reembolso «oportuno» en 2 días hábiles; liquidación si el déficit de reservas dura 15 días hábiles consecutivos."
  },
  "pendiente": [
-  "Comprobar en congress.gov (H.R. 3633, S. 1582) y en el registro de votos del Senado si hay una segunda votación; no se pudo abrir.",
+  "Comprobar en congress.gov y en el registro de votos del Senado si hay acción posterior al 17-sep-2026 (GovInfo no la recoge): ambos bloquean la lectura automatizada; sin saltar la protección [VERIFICAR].",
   "Calendario de sesiones del Senado y la Cámara en nov-dic 2026: no se pudo leer senate.gov; la cifra de ~20 días de un comentario externo sigue sin verificar.",
   "Estado real de las normas finales de Fed, FDIC, NCUA, Tesoro y FinCEN (solo hay resumen de Mayer Brown, 11/2026)."
  ],

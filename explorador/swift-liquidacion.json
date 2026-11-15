@@ -1,5 +1,5 @@
 {
- "leido": "2026-11-15",
+ "leido": "2026-11-16",
  "tarea": "C309",
  "nivel_general": "S",
  "aviso": "Swift (swift.com) se leyó en directo desde Chrome [P] salvo los PDF del Global Currency Tracker (ilegibles): las cifras de cuota del RMB vienen de prensa especializada [S]. Niveles: P = fuente oficial leída; S = secundaria; V = por verificar.",
@@ -13,13 +13,51 @@
  "libro_compartido": {
   "nivel": "P",
   "estado": "El 9-jul-2026 Swift anuncia que su libro mayor basado en blockchain está «listo para uso inicial»; 17 bancos de seis continentes se preparan para pilotar transacciones en vivo con depósitos tokenizados 24/7. Swift (22-oct-2026, Sibos Miami) afirma que está listo y que los 17 bancos pilotan transacciones transfronterizas en vivo [P].",
-  "bancos": ["ANZ", "BNP Paribas", "BNY", "Citi", "DBS", "First Abu Dhabi Bank", "FirstRand", "HSBC", "Itaú Unibanco", "Lloyds", "Mashreq", "MUFG", "OCBC", "Standard Chartered", "UBS", "UOB", "Wells Fargo"],
+  "bancos": [
+   "ANZ",
+   "BNP Paribas",
+   "BNY",
+   "Citi",
+   "DBS",
+   "First Abu Dhabi Bank",
+   "FirstRand",
+   "HSBC",
+   "Itaú Unibanco",
+   "Lloyds",
+   "Mashreq",
+   "MUFG",
+   "OCBC",
+   "Standard Chartered",
+   "UBS",
+   "UOB",
+   "Wells Fargo"
+  ],
   "que_hace": "Capa de «orquestación» para depósitos tokenizados emitidos por cada banco en sus propios libros; mueve fondos (también noches y fines de semana) «antes de completar la liquidación final a través de los sistemas existentes» [P]. Es decir: no sustituye la liquidación final.",
   "hitos": [
-   {"fecha": "2025-09-29", "hito": "Anuncio en Sibos Frankfurt: libro compartido basado en un prototipo conceptual con Consensys; más de 30 instituciones dan feedback (entre ellas Santander, Bank of America, BNP Paribas, HSBC)", "fuente": "https://www.theblock.co/post/372706/swift-blockchain-ledger-consensys", "nivel": "S"},
-   {"fecha": "2026-03", "hito": "Fase de diseño completada; desarrollo del MVP en marcha", "fuente": "https://www.swift.com/insights/news/collaborative-innovation-bringing-swifts-shared-blockchain-based-ledger-life", "nivel": "P"},
-   {"fecha": "2026-07-09", "hito": "Listo para uso inicial; 17 bancos; fase de «go-live controlado»", "fuente": "https://www.swift.com/about-us/media-centre/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure", "nivel": "P"},
-   {"fecha": "2026-10-22", "hito": "Sibos 2026 (Miami): Swift dice que los 17 bancos pilotan operaciones en vivo; esquema de pagos con más de 100 bancos adheridos", "fuente": "https://www.swift.com/insights/news/four-reflections-swift-sibos-2026", "nivel": "P"}
+   {
+    "fecha": "2025-09-29",
+    "hito": "Anuncio en Sibos Frankfurt: libro compartido basado en un prototipo conceptual con Consensys; más de 30 instituciones dan feedback (entre ellas Santander, Bank of America, BNP Paribas, HSBC)",
+    "fuente": "https://www.theblock.co/post/372706/swift-blockchain-ledger-consensys",
+    "nivel": "S"
+   },
+   {
+    "fecha": "2026-03",
+    "hito": "Fase de diseño completada; desarrollo del MVP en marcha",
+    "fuente": "https://www.swift.com/insights/news/collaborative-innovation-bringing-swifts-shared-blockchain-based-ledger-life",
+    "nivel": "P"
+   },
+   {
+    "fecha": "2026-07-09",
+    "hito": "Listo para uso inicial; 17 bancos; fase de «go-live controlado»",
+    "fuente": "https://www.swift.com/about-us/media-centre/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure",
+    "nivel": "P"
+   },
+   {
+    "fecha": "2026-10-22",
+    "hito": "Sibos 2026 (Miami): Swift dice que los 17 bancos pilotan operaciones en vivo; esquema de pagos con más de 100 bancos adheridos",
+    "fuente": "https://www.swift.com/insights/news/four-reflections-swift-sibos-2026",
+    "nivel": "P"
+   }
   ],
   "linea_consensys": {
    "nivel": "V",
@@ -29,10 +67,31 @@
   "participacion_no_confirmada": "Búsquedas indican que JPMorgan y Deutsche Bank estuvieron en la fase de diseño de ~30 bancos pero no figuran en los 17 pilotos (S, genfinity.io/ BeInCrypto, jul-2026) [V]."
  },
  "pilotos_tokenizacion_cbdc": [
-  {"nombre": "Pontes (BCE)", "estado": "Producción inicial desde sep-2026 según explorador/cbdc-blockchains.json (lectura del 29-oct)", "fuente": "https://www.ecb.europa.eu/", "nivel": "S", "nota": "Ver explorador/cbdc-blockchains.json; no releído hoy."},
-  {"nombre": "mBridge", "estado": "BIS salió en oct-2024 y cedió el proyecto a los bancos centrales; núcleo: China, Hong Kong, Tailandia, EAU; Macao activa el sistema el 2-jun-2026; Arabia Saudí habría salido tras una prueba de concepto de 13-may-2025 (FT, sep-2026) pero la página del BIS aún la lista y marca el proyecto «concluido»", "fuente": "https://fortune.com/2026/09/21/china-dedollarization-mbridge-saudi-central-bank-sama-us-dollar-dominance-petrodollar/", "nivel": "S"},
-  {"nombre": "Depósitos tokenizados bancarios en el libro de Swift", "estado": "17 bancos (ver arriba)", "fuente": "https://www.swift.com/payments/payment-innovation/blockchain-based-ledger", "nivel": "P"},
-  {"nombre": "Project Agorá (BIS)", "estado": "Sin resultados leídos en 2026", "fuente": "", "nivel": "V"}
+  {
+   "nombre": "Pontes (BCE)",
+   "estado": "Producción inicial desde sep-2026 según explorador/cbdc-blockchains.json (lectura del 29-oct)",
+   "fuente": "https://www.ecb.europa.eu/",
+   "nivel": "S",
+   "nota": "Ver explorador/cbdc-blockchains.json; no releído hoy."
+  },
+  {
+   "nombre": "mBridge",
+   "estado": "BIS salió en oct-2024 y cedió el proyecto a los bancos centrales; núcleo: China, Hong Kong, Tailandia, EAU; Macao activa el sistema el 2-jun-2026; Arabia Saudí habría salido tras una prueba de concepto de 13-may-2025 (FT, sep-2026) pero la página del BIS aún la lista y marca el proyecto «concluido»",
+   "fuente": "https://fortune.com/2026/09/21/china-dedollarization-mbridge-saudi-central-bank-sama-us-dollar-dominance-petrodollar/",
+   "nivel": "S"
+  },
+  {
+   "nombre": "Depósitos tokenizados bancarios en el libro de Swift",
+   "estado": "17 bancos (ver arriba)",
+   "fuente": "https://www.swift.com/payments/payment-innovation/blockchain-based-ledger",
+   "nivel": "P"
+  },
+  {
+   "nombre": "Project Agorá (BIS)",
+   "estado": "Sin resultados leídos en 2026",
+   "fuente": "",
+   "nivel": "V"
+  }
  ],
  "iso20022": {
   "nivel": "P",
@@ -45,11 +104,32 @@
   ]
  },
  "cuota_monedas": {
-  "nota": "El RMB Tracker se llama Global Currency Tracker desde feb-2026 (Swift) [P]. Última edición publicada: 22-oct-2026 (datos de septiembre); los PDF no se pudieron leer, por lo que la cifra de septiembre no está verificada.",
+  "nota": "El RMB Tracker se llama Global Currency Tracker desde feb-2026 (Swift) [P]. Última edición publicada: 22-oct-2026 (datos de septiembre); los PDF no se pudieron leer, por lo que la cifra de septiembre no está verificada. Lectura del 16-nov-2026 en el centro de documentos de Swift [P]: la edición de oct-2026 (22-oct) es la última; solo se ofrecen como «diapositivas» PDF con botón de descarga (no se descargó: abre diálogo de archivo). Aviso oficial de Swift en la misma página: un problema técnico de datos afectó a las cifras de SGD de la edición de sep-2026 y se corregirá en la de oct-2026, que sustituye a los resultados de septiembre para el dólar de Singapur.",
   "series": [
-   {"mes": "2025-10", "rmb_cuota_pct": 2.47, "rango": 6, "detalle": "Valor de pagos globales, edición de oct-2025 (resultado de búsqueda sobre Swift)", "fuente": "https://www.swift.com/products/global-currency-tracker/document-centre?tl=en", "nivel": "V"},
-   {"mes": "2026-01", "rmb_cuota_pct": 3.13, "rango": 5, "detalle": "Resultado de búsqueda; no cuadra con la serie de junio (2,18 %): posible otra base (valor total vs. sin zona euro) [V]", "fuente": "https://www.swift.com/products/global-currency-tracker/document-centre?tl=en", "nivel": "V"},
-   {"mes": "2026-06", "rmb_cuota_pct": 2.18, "rango": 6, "detalle": "Valor de pagos globales. Mismo mes: USD 59,10 %, EUR 13,92 %, GBP 5,08 %, JPY 4,94 %. En financiación del comercio: USD 82,50 %, EUR 7,00 %, RMB 5,51 %", "fuente": "https://tradetreasurypayments.com/articles/usd-dominates-the-global-currency-and-trade-finance-market-swifts-global-currency-tracker-june-2026", "nivel": "S"}
+   {
+    "mes": "2025-10",
+    "rmb_cuota_pct": 2.47,
+    "rango": 6,
+    "detalle": "Valor de pagos globales, edición de oct-2025 (resultado de búsqueda sobre Swift)",
+    "fuente": "https://www.swift.com/products/global-currency-tracker/document-centre?tl=en",
+    "nivel": "V"
+   },
+   {
+    "mes": "2026-01",
+    "rmb_cuota_pct": 3.13,
+    "rango": 5,
+    "detalle": "Resultado de búsqueda; no cuadra con la serie de junio (2,18 %): posible otra base (valor total vs. sin zona euro) [V]",
+    "fuente": "https://www.swift.com/products/global-currency-tracker/document-centre?tl=en",
+    "nivel": "V"
+   },
+   {
+    "mes": "2026-06",
+    "rmb_cuota_pct": 2.18,
+    "rango": 6,
+    "detalle": "Valor de pagos globales. Mismo mes: USD 59,10 %, EUR 13,92 %, GBP 5,08 %, JPY 4,94 %. En financiación del comercio: USD 82,50 %, EUR 7,00 %, RMB 5,51 %",
+    "fuente": "https://tradetreasurypayments.com/articles/usd-dominates-the-global-currency-and-trade-finance-market-swifts-global-currency-tracker-june-2026",
+    "nivel": "S"
+   }
   ],
   "aviso_consistencia": "Las cifras de 2025-10, 2026-01 y 2026-06 no son una serie homogénea comprobada; no usar como tendencia sin leer los PDF de Swift."
  },
@@ -58,29 +138,85 @@
   "a": {
    "idea": "Los BRICS esperan a que EE. UU. integre el sistema actual en cadenas (antes de mover ficha).",
    "a_favor": [
-    {"hecho": "El dólar sigue siendo la moneda dominante en Swift: 59,10 % de los pagos por valor y 82,50 % de la financiación del comercio (jun-2026).", "fuente": "https://tradetreasurypayments.com/articles/usd-dominates-the-global-currency-and-trade-finance-market-swifts-global-currency-tracker-june-2026", "nivel": "S"},
-    {"hecho": "La cumbre BRICS de Nueva Delhi (12-13-sep-2026) solo animó al grupo de trabajo de pagos a seguir con la Iniciativa de Pagos Transfronterizos; no respaldó vincular las CBDC; un funcionario indio dijo que no se busca sustituir el dólar.", "fuente": "https://polity.org.za/article/brics-nations-discuss-linking-payment-systems-and-cbdcs-rbi-chief-says-2026-08-11", "nivel": "S"},
-    {"hecho": "Arabia Saudí habría salido de mBridge (FT, sep-2026); el BIS salió en oct-2024.", "fuente": "https://cointelegraph.com/news/saudi-arabia-exits-china-backed-mbridge-cbdc-project-ft", "nivel": "S"},
-    {"hecho": "La GENIUS Act entra en vigor el 18-ene-2027 y la OCC ya publicó su norma final (21-oct-2026): hay marco federal para stablecoins de pago en dólares.", "fuente": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html", "nivel": "P"}
+    {
+     "hecho": "El dólar sigue siendo la moneda dominante en Swift: 59,10 % de los pagos por valor y 82,50 % de la financiación del comercio (jun-2026).",
+     "fuente": "https://tradetreasurypayments.com/articles/usd-dominates-the-global-currency-and-trade-finance-market-swifts-global-currency-tracker-june-2026",
+     "nivel": "S"
+    },
+    {
+     "hecho": "La cumbre BRICS de Nueva Delhi (12-13-sep-2026) solo animó al grupo de trabajo de pagos a seguir con la Iniciativa de Pagos Transfronterizos; no respaldó vincular las CBDC; un funcionario indio dijo que no se busca sustituir el dólar.",
+     "fuente": "https://polity.org.za/article/brics-nations-discuss-linking-payment-systems-and-cbdcs-rbi-chief-says-2026-08-11",
+     "nivel": "S"
+    },
+    {
+     "hecho": "Arabia Saudí habría salido de mBridge (FT, sep-2026); el BIS salió en oct-2024.",
+     "fuente": "https://cointelegraph.com/news/saudi-arabia-exits-china-backed-mbridge-cbdc-project-ft",
+     "nivel": "S"
+    },
+    {
+     "hecho": "La GENIUS Act entra en vigor el 18-ene-2027 y la OCC ya publicó su norma final (21-oct-2026): hay marco federal para stablecoins de pago en dólares.",
+     "fuente": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+     "nivel": "P"
+    }
    ],
    "en_contra": [
-    {"hecho": "mBridge sigue ampliándose: Macao activa el sistema el 2-jun-2026 y se informa de Mongolia (jun-2026).", "fuente": "https://themonexus.com/articles/2026-04-18-ndb-mbridge-longread", "nivel": "V"},
-    {"hecho": "BRICS Pay (RDIF, JSC BRICS Pay y BRICS Pay India) acordó el 11-sep-2026 desarrollar el proyecto en India; es una vía privada paralela a la oficial.", "fuente": "https://interfax.com/newsroom/top-stories/119094/", "nivel": "V"},
-    {"hecho": "El libro de Swift opera con depósitos bancarios tokenizados, no con stablecoins en dólares; la GENIUS aún no está en vigor y varias normas finales siguen pendientes.", "fuente": "https://www.mayerbrown.com/en/insights/publications/2026/11/occ-finalizes-genius-act-rulemaking", "nivel": "S"},
-    {"hecho": "La CLARITY Act (estructura de mercado) fracasó 49-50 el 15-sep-2026: la integración de cripto en EE. UU. por ley sigue incompleta.", "fuente": "https://www.orrick.com/Insights/2026/10/The-CLARITY-Act-Stalls-in-the-Senate-Whats-Next-for-Digital-Asset-Regulation", "nivel": "S"}
+    {
+     "hecho": "mBridge sigue ampliándose: Macao activa el sistema el 2-jun-2026 y se informa de Mongolia (jun-2026).",
+     "fuente": "https://themonexus.com/articles/2026-04-18-ndb-mbridge-longread",
+     "nivel": "V"
+    },
+    {
+     "hecho": "BRICS Pay (RDIF, JSC BRICS Pay y BRICS Pay India) acordó el 11-sep-2026 desarrollar el proyecto en India; es una vía privada paralela a la oficial.",
+     "fuente": "https://interfax.com/newsroom/top-stories/119094/",
+     "nivel": "V"
+    },
+    {
+     "hecho": "El libro de Swift opera con depósitos bancarios tokenizados, no con stablecoins en dólares; la GENIUS aún no está en vigor y varias normas finales siguen pendientes.",
+     "fuente": "https://www.mayerbrown.com/en/insights/publications/2026/11/occ-finalizes-genius-act-rulemaking",
+     "nivel": "S"
+    },
+    {
+     "hecho": "La CLARITY Act (estructura de mercado) fracasó 49-50 el 15-sep-2026: la integración de cripto en EE. UU. por ley sigue incompleta.",
+     "fuente": "https://www.orrick.com/Insights/2026/10/The-CLARITY-Act-Stalls-in-the-Senate-Whats-Next-for-Digital-Asset-Regulation",
+     "nivel": "S"
+    }
    ]
   },
   "b": {
    "idea": "Swift queda como capa de mensajería (la liquidación se mueve a otras capas).",
    "a_favor": [
-    {"hecho": "Swift define su libro como capa de «orquestación» y la liquidación final sigue en los sistemas existentes; Swift no mantiene fondos.", "fuente": "https://www.swift.com/about-us/media-centre/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure", "nivel": "P"},
-    {"hecho": "El Banco de Inglaterra (Sibos 2026) habla de «un año de movimiento en interoperabilidad» entre industria y sector público: el valor se mueve en redes separadas que Swift quiere conectar.", "fuente": "https://www.swift.com/insights/news/four-reflections-swift-sibos-2026", "nivel": "P"},
-    {"hecho": "Pontes (BCE) enlaza plataformas DLT con TARGET sin pasar por Swift (según explorador/cbdc-blockchains.json, lectura del 29-oct).", "fuente": "https://www.ecb.europa.eu/", "nivel": "S"}
+    {
+     "hecho": "Swift define su libro como capa de «orquestación» y la liquidación final sigue en los sistemas existentes; Swift no mantiene fondos.",
+     "fuente": "https://www.swift.com/about-us/media-centre/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure",
+     "nivel": "P"
+    },
+    {
+     "hecho": "El Banco de Inglaterra (Sibos 2026) habla de «un año de movimiento en interoperabilidad» entre industria y sector público: el valor se mueve en redes separadas que Swift quiere conectar.",
+     "fuente": "https://www.swift.com/insights/news/four-reflections-swift-sibos-2026",
+     "nivel": "P"
+    },
+    {
+     "hecho": "Pontes (BCE) enlaza plataformas DLT con TARGET sin pasar por Swift (según explorador/cbdc-blockchains.json, lectura del 29-oct).",
+     "fuente": "https://www.ecb.europa.eu/",
+     "nivel": "S"
+    }
    ],
    "en_contra": [
-    {"hecho": "El libro está dentro de Swift (producto de Swift con 17 bancos): Swift está añadiendo una capa de libro mayor, es decir, algo más que mensajería.", "fuente": "https://www.swift.com/payments/payment-innovation/blockchain-based-ledger", "nivel": "P"},
-    {"hecho": "Swift menciona valor «programable» y «comercio agéntico» como usos futuros del libro.", "fuente": "https://www.swift.com/insights/news/collaborative-innovation-bringing-swifts-shared-blockchain-based-ledger-life", "nivel": "P"},
-    {"hecho": "El esquema de pagos Swift tiene más de 100 bancos adheridos y el 75 % de los pagos llega en 10 minutos: la mensajería sigue siendo el núcleo con volumen real.", "fuente": "https://www.swift.com/insights/news/four-reflections-swift-sibos-2026", "nivel": "P"}
+    {
+     "hecho": "El libro está dentro de Swift (producto de Swift con 17 bancos): Swift está añadiendo una capa de libro mayor, es decir, algo más que mensajería.",
+     "fuente": "https://www.swift.com/payments/payment-innovation/blockchain-based-ledger",
+     "nivel": "P"
+    },
+    {
+     "hecho": "Swift menciona valor «programable» y «comercio agéntico» como usos futuros del libro.",
+     "fuente": "https://www.swift.com/insights/news/collaborative-innovation-bringing-swifts-shared-blockchain-based-ledger-life",
+     "nivel": "P"
+    },
+    {
+     "hecho": "El esquema de pagos Swift tiene más de 100 bancos adheridos y el 75 % de los pagos llega en 10 minutos: la mensajería sigue siendo el núcleo con volumen real.",
+     "fuente": "https://www.swift.com/insights/news/four-reflections-swift-sibos-2026",
+     "nivel": "P"
+    }
    ]
   }
  },
