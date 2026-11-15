@@ -386,6 +386,15 @@ table.cad-emt{border-collapse:collapse;width:100%;min-width:980px;table-layout:a
 .ic-how{background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:8px 14px;margin:8px 0;font-size:var(--fs-s)}.ic-how p{margin:5px 0}
 .ic-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:8px;margin:8px 0 12px}.ic-col{background:var(--bg);border:1px solid var(--lin);border-left:4px solid #2fe08f;border-radius:8px;padding:6px 10px;font-size:var(--fs-s);min-width:0}.ic-col b{display:block}.ic-col p{margin:4px 0 0}.ic-t th>.nota-v{font-weight:400;text-transform:none;letter-spacing:0;max-width:260px}.ic-t td .nota-v{margin:1px 0}
 .ic-tabla .ap-tw{overflow-x:auto;-webkit-overflow-scrolling:touch}.ic-tabla .ic-t{table-layout:auto;min-width:1250px}.ic-tabla .ic-t tr>:first-child{width:230px;min-width:200px}.ic-tabla .ic-t td{min-width:130px}
+/* C328 · tabla red × conexión: caja con scroll propio, cabecera y columna de red fijas, descripción corta */
+.ic-tabla .ap-tw{max-height:78vh;overflow:auto;border:1px solid var(--lin);border-radius:8px}
+.ic-tabla .ic-t{border-collapse:separate;border-spacing:0;min-width:1100px}
+.ic-tabla .ic-t tr:first-child>*{position:sticky;top:0;z-index:3;background:var(--panel);box-shadow:0 2px 0 var(--ac);font-size:var(--fs-s)}
+.ic-tabla .ic-t tr>:first-child{position:sticky;left:0;z-index:2;background:var(--panel);width:150px;min-width:140px;max-width:170px}
+.ic-tabla .ic-t tr:first-child>:first-child{z-index:4}
+.ic-tabla .ic-t td{min-width:118px}
+.ic-tabla .ic-t tbody th .nota-v{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:11.5px;line-height:1.3}
+.ic-tabla .ic-t td .nota-v{font-size:12px;line-height:1.3}
 .ic-gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:10px;margin:10px 0}.ic-gl>div{background:var(--bg);border:1px solid var(--lin);border-left-width:5px;border-radius:8px;padding:7px 11px;font-size:var(--fs-s);min-width:0}.ic-gl b{display:block;margin-bottom:2px}.ic-gl .nota-v{margin:3px 0 0}
 
 .ap-m{border-collapse:collapse;table-layout:fixed;width:100%}.ap-m th,.ap-m td{padding:2px;border:1px solid var(--lin);text-align:center;vertical-align:middle}
@@ -2699,7 +2708,7 @@ function icBloque(){
     const dsc=id=>{const f=iniDe(ALIAS[id]||id),t=GL[id]||(f&&f.que_es)||'';return t.split(/(?<=\.)\s/)[0]};
     const t2=el('table','ic-t'),h2=el('tr');h2.append(el('th',null,'Red'));cols.forEach(id=>{const th=el('th',null,nom(id));th.title=(COLS.find(x=>x[0]===id)||[])[2]||'';h2.append(th)});h2.append(el('th',null,'Otras conexiones con fuente'));t2.append(h2);
     const mini=(x,cb)=>{const st=IEST[x.estado]||IEST.anunciado,d=el('div','nota-v'),b=el('b',null,st[0]);b.style.color=st[1];d.append(b,document.createTextNode(' '+(x.incidente?'incidente del ':'')+(x.fecha||'')+' '),cxNiv(x.nivel),document.createTextNode(' '),cxLk(x.fuente,'fuente ↗'));if(x.incidente)d.append(el('div','nota-v','⚠ Incidente: '+x.incidente));if(x.tipo){const tt=String(x.tipo),sp=el('div','nota-v',(cb?cb+': ':'')+(tt.length>80?tt.slice(0,78)+'…':tt));sp.title=tt;d.append(sp)}return d};
-    rows.forEach(r=>{const tr=el('tr'),th=el('th');th.append(el('b',null,r.etiqueta),el('div','nota-v',dsc(r.id)||'sin descripción todavía'));tr.append(th);
+    rows.forEach(r=>{const tr=el('tr'),th=el('th');th.append(el('b',null,r.etiqueta),el('div','nota-v',dsc(r.id)||'sin descripción todavía'));th.title=dsc(r.id)||'';tr.append(th);
       cols.forEach(id=>{const td=el('td'),e=E.filter(x=>(x.de===id&&x.a===r.id)||(x.a===id&&x.de===r.id));if(!e.length)td.append(document.createTextNode('—'));e.forEach(x=>td.append(mini(x)));tr.append(td)});
       const oc=E.filter(x=>(x.de===r.id||x.a===r.id)&&!cols.includes(x.de)&&!cols.includes(x.a)),td=el('td');if(!oc.length)td.append(document.createTextNode('—'));oc.forEach(x=>td.append(mini(x,nom(x.de)+' → '+nom(x.a))));tr.append(td);t2.append(tr)});
     const w=el('div','ap-tw');w.append(t2);tb.append(w);
