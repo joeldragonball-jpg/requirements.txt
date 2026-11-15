@@ -786,7 +786,9 @@
     "Qué redes concretas añadirá DTCC en 2027 aparte de Stellar y Solana.",
     "Si algún supervisor tiene ya un nodo de observación en una red institucional (Canton u otra) y con qué alcance.",
     "Si Agorá pasará a producción y cuándo (el BIS no da calendario).",
-    "Qué protocolo de interconexión (si alguno) acabará siendo dominante; hoy coexisten varios con modelos de seguridad distintos."
+    "Qué protocolo de interconexión (si alguno) acabará siendo dominante; hoy coexisten varios con modelos de seguridad distintos.",
+    "Algorand: no aparece en la lista de endpoints de LayerZero (15-nov-2026); Wormhole/CCTP solo con indicio secundario (Circle partners, blog de terceros), sin tabla por cadena abierta [VERIFICAR]. XRPL: sin CCIP ni LayerZero; solo el puente Axelar de la sidechain XRPL EVM (docs.xrplevm.org), que no es XRPL nativo.",
+    "CLARITY (H.R. 3633): congress.gov bloquea el acceso automático (Cloudflare); última acción oficial sin leer. CRS (15-sep-2026): cierre fallido 49-50 en el Senado, voto procedimental. [VERIFICAR] a mano."
   ],
   "nodos_y_enlaces": {
     "leyenda": "tipo de nodo: cadena_publica, red_institucional, plataforma_bc (banco central), protocolo_interop, infraestructura, estandar, supervisor. Nodos sin enlaces (agora, partior, fnality, nexus) = islas: no se encontró conexión anunciada con otras redes del mapa. Estado del enlace: produccion, piloto, anunciado, concepto. id_cadena enlaza con explorador/cadenas.json cuando existe.",
@@ -1048,11 +1050,11 @@
       {
         "de": "dtcc",
         "a": "ccip",
-        "tipo": "orquestación y datos (CRE) para la Collateral AppChain",
+        "tipo": "orquestación y datos (CRE) para la Collateral AppChain (comunicado de DTCC, parte interesada; no menciona CCIP ni cadenas; puesta en marcha prevista T4-2026)",
         "estado": "anunciado",
         "fecha": "2026-05-12",
         "fuente": "https://www.dtcc.com/press-releases/2026/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management",
-        "nivel": "S"
+        "nivel": "P"
       },
       {
         "de": "sec",
@@ -1509,7 +1511,7 @@
       {
         "de": "layerzero",
         "a": "hedera",
-        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso); reconfirmado en docs.layerzero.network (Deployed Contracts) el 15-nov-2026, y docs de Hedera con contratos OFT/HTS Connector de ejemplo",
         "estado": "produccion",
         "fecha": "2026-11-15",
         "fuente": "https://metadata.layerzero-api.com/v1/metadata",
@@ -1765,6 +1767,15 @@
         "estado": "anunciado",
         "fecha": "2026-09-28",
         "fuente": "https://chain.link/press-releases/chainlink-is-enabling-financial-institutions-to-connect-to-swifts-blockchain-ledger",
+        "nivel": "P"
+      },
+      {
+        "de": "ccip",
+        "a": "stellar",
+        "tipo": "intención de adoptar CCIP (anuncio de Stellar en futuro; no confirmado en el directorio de CCIP, que no se pudo leer entero el 15-nov)",
+        "estado": "anunciado",
+        "fecha": "2025-11",
+        "fuente": "https://stellar.org/blog/foundation-news/stellar-to-join-chainlink-scale-and-adopt-data-feeds-data-streams-and-ccip-to-power-next-gen-defi-applications",
         "nivel": "P"
       }
     ]

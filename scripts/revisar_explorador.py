@@ -579,6 +579,39 @@ try:
 except (OSError, ValueError) as _e:
     aviso("Cadenas niveles", f"no se pudo validar ({type(_e).__name__})")
 
+# C327: recuento de «[VERIFICAR fecha]», fuentes sin URL y nivel R en los JSON de Cadenas (informativo: no cuenta como aviso)
+_pend327 = {}
+
+
+def _pend(cat, donde, msg):
+    _pend327.setdefault(cat, []).append(f"{donde}: {msg}")
+
+
+try:
+    def _recorre_c327(_o, _f, _ruta=""):
+        if isinstance(_o, dict):
+            _n = _o.get("n") if "n" in _o else _o.get("nivel")
+            _u = _o.get("u") if "u" in _o else _o.get("fuente")
+            _tiene_f = bool(_o.get("f") or _o.get("fuente"))
+            if _n == "R":
+                _pend("nivel R", _f, f"{_ruta}: celda con nivel R (sin fuente verificable)")
+            if _n in ("P", "S", "V") and _tiene_f and not (isinstance(_u, str) and _u.startswith("http")):
+                _pend("fuente sin URL", _f, f"{_ruta}: nivel {_n} sin URL ({str(_o.get('f') or _u)[:60]})")
+            for _k, _v in _o.items():
+                _recorre_c327(_v, _f, f"{_ruta}/{_k}")
+        elif isinstance(_o, list):
+            for _i, _v in enumerate(_o):
+                _recorre_c327(_v, _f, f"{_ruta}[{_i}]")
+        elif isinstance(_o, str) and "[VERIFICAR fecha" in _o:
+            _pend("[VERIFICAR fecha]", _f, f"{_ruta}: {_o[:70]}")
+
+    for _f in ("cadenas", "aporta-redes", "interconexion", "pruebas-bancos", "escenarios-redes"):
+        _rf = RAIZ / "explorador" / f"{_f}.json"
+        if _rf.exists():
+            _recorre_c327(json.loads(_rf.read_text(encoding="utf-8")), f"{_f}.json")
+except (OSError, ValueError) as _e:
+    aviso("Cadenas C327", f"no se pudo validar ({type(_e).__name__})")
+
 # C329: la regla de captura guardada en cadenas.json debe coincidir con lo que calcula scripts/calcular_captura.py
 try:
     import importlib.util as _iu
@@ -618,6 +651,13 @@ except (OSError, ValueError) as _e:
     aviso("puente_neutral", f"no se pudo validar ({type(_e).__name__})")
 
 print("\n".join(avisos) if avisos else "Sin avisos.")
+if _pend327:
+    print("\nPendientes de Cadenas (C327, no cuentan como aviso; detalle con --pendientes):")
+    for _c, _l in sorted(_pend327.items()):
+        print(f"  {_c}: {len(_l)}")
+        if "--pendientes" in sys.argv:
+            for _x in _l:
+                print("    " + _x[:200])
 print(f"\n{len(avisos)} aviso(s) en {len(d['capas'])} capas y {len(d['movimientos'])} movimientos.")
 if RUTA_REG.exists():
     print(f"Radar regulatorio: {len(r.get('celdas', []))} celdas, {sin_dato} sin dato (etapa null, no cuentan como aviso).")

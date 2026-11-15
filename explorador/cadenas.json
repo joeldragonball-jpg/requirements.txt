@@ -718,7 +718,8 @@
     "mecanismo": "[RAZONADO] Cada operación destruye una comisión mínima en XRP y las cuentas inmovilizan una reserva. El uso que podría pedir XRP en volumen es el de activo puente en pagos, cuyo volumen no se publica y convive con RLUSD.",
     "supuestos": [
      "Que el puente de pagos siga usando XRP",
-     "Que se publique el volumen liquidado en XRP"
+     "Que se publique el volumen liquidado en XRP",
+     "Veredicto C329: la regla da «baja» (comisiones 0,03 %/año, necesidad sustituible); el «incierta» manual refleja un supuesto de futuro [ESPECULACIÓN]."
     ],
     "regla": {
      "nivel": "baja",
@@ -1923,7 +1924,8 @@
     "mecanismo": "[RAZONADO] Toda operación en la red pública paga gas en ETH (la comisión base se quema) y el ETH en staking asegura la red; las redes EVM privadas (Swift, DTCC) no usan ETH.",
     "supuestos": [
      "Emisores en la red pública o en L2 que liquidan en ella",
-     "Que las redes EVM privadas no absorban el flujo bancario"
+     "Que las redes EVM privadas no absorban el flujo bancario",
+     "Veredicto C329: la regla da «alta» (comisiones 2,19 %/año) y el juicio manual «media»; defendible «media-alta» por la competencia de L2 y redes privadas. Staking 33-36 % del suministro según cobertura secundaria de Bitwise (T3-2026): [VERIFICAR] en beaconcha.in."
     ],
     "regla": {
      "nivel": "alta",
@@ -2443,7 +2445,8 @@
     "mecanismo": "[RAZONADO] Comisiones en SOL (bajas) y SOL en staking que asegura la red pública que usan los emisores.",
     "supuestos": [
      "Uso institucional en la red pública",
-     "Estabilidad tras Alpenglow"
+     "Estabilidad tras Alpenglow",
+     "Veredicto C329: «media-alta», sin decidir: comisiones 9,0 %/año, ~68-69 % del SOL en staking (secundarias), pero emisión «mínimo» y sin ancla institucional probada. [VERIFICAR] si las comisiones incluyen propinas MEV y tarifas de prioridad."
     ],
     "regla": {
      "nivel": "alta",
@@ -2963,7 +2966,8 @@
     "nivel": "incierta",
     "mecanismo": "[RAZONADO] Comisiones y staking en BNB; el valor tokenizado depende de pocos emisores y del entorno de Binance.",
     "supuestos": [
-     "Que la actividad de RWA no sea casi toda del entorno de Binance"
+     "Que la actividad de RWA no sea casi toda del entorno de Binance",
+     "Veredicto C329: mantener «incierta»: consumo medio (0,89 %), emisión «mínimo» y custodia sin dato; no se ha contrastado que el RWA no dependa del entorno de Binance."
     ],
     "regla": {
      "nivel": "alta",
@@ -3378,7 +3382,8 @@
     "supuestos": [
      "Número de validadores de L1 (la tarifa sube si pasan de 10.000)",
      "Destino de la tarifa (quema o no)",
-     "Según la doc de L1, el gas de la C-Chain se paga en AVAX y se quema parte [lector automático]; las L1 pueden elegir su propio token de gas. Helicon (activo desde 22-sep-2026) cambia el staking: renovación automática y plazo de validación de 48 h; tras Helicon queda pendiente leer la nueva curva de recompensas y la cifra de quema."
+     "Según la doc de L1, el gas de la C-Chain se paga en AVAX y se quema parte [lector automático]; las L1 pueden elegir su propio token de gas. Helicon (activo desde 22-sep-2026) cambia el staking: renovación automática y plazo de validación de 48 h; tras Helicon queda pendiente leer la nueva curva de recompensas y la cifra de quema.",
+     "Veredicto C329: mantener «incierta» hasta aclarar quién paga el gas (las L1 propias pueden usar otro token); [VERIFICAR] en docs.avax.network."
     ],
     "regla": {
      "nivel": "media",
@@ -3783,7 +3788,8 @@
     "supuestos": [
      "Comisiones bajas",
      "Competencia de las L2 de Ethereum",
-     "POL es el token de gas y de staking; el baseFee (EIP-1559) se quema y los validadores cobran staking más propinas. Dos documentos de Polygon no cuadran: la página del token da una emisión del 2 % anual tras junio de 2025 (PIP-26) y la de recompensas una bolsa fija del 12 % en 5 años; el calendario de recompensas parece anterior a PIP-26 [VERIFICAR]"
+     "POL es el token de gas y de staking; el baseFee (EIP-1559) se quema y los validadores cobran staking más propinas. Dos documentos de Polygon no cuadran: la página del token da una emisión del 2 % anual tras junio de 2025 (PIP-26) y la de recompensas una bolsa fija del 12 % en 5 años; el calendario de recompensas parece anterior a PIP-26 [VERIFICAR]",
+     "[VERIFICAR] Veredicto C329: mantener «baja». El 56,46 % de comisiones sobre capitalización es atípico: el 88 % de las comisiones a 30 días (35,69 de 40,62 M$) viene de Polymarket International, que cobra en USDC y no en POL (DefiLlama, 15-nov-2026, S). Sin él quedaría ≈6,8 % anual, que aún incluye comisiones de protocolos; el gas puro no se aisló."
     ],
     "regla": {
      "nivel": "alta",
@@ -4250,7 +4256,8 @@
     "nivel": "media",
     "mecanismo": "[RAZONADO] En el sincronizador global el tráfico pagado se compra quemando Canton Coin a precio fijado en USD; no consta si los dominios privados de cada institución lo necesitan.",
     "supuestos": [
-     "Que el tráfico institucional pase por el sincronizador global"
+     "Que el tráfico institucional pase por el sincronizador global",
+     "Veredicto C329: consumo sin dato verificable. El tráfico se compra quemando Canton Coin con tarifa fijada en USD (docs.canton.network) pero las cifras de quema de agregadores son dispares; [VERIFICAR] en el explorador oficial."
     ],
     "regla": {
      "nivel": "incierta",
@@ -4502,7 +4509,8 @@
     "mecanismo": "[RAZONADO] CCIP admite pagar en LINK o en otros activos con un pequeño recargo; los anuncios con DTCC y Swift no asignan papel técnico a LINK.",
     "supuestos": [
      "Que se mantenga el pago en otros activos",
-     "Alcance real del staking de LINK"
+     "Alcance real del staking de LINK",
+     "Veredicto C329: mantener «baja» con matiz «incierta»: la reserva de LINK crece (~6,05 M LINK, prensa sep-2026) pero no hay cifra de consumo en USD verificada; [VERIFICAR] en el panel oficial."
     ],
     "regla": {
      "nivel": "incierta",
@@ -4941,7 +4949,8 @@
     "nivel": "incierta",
     "mecanismo": "[RAZONADO] ALGO en staking asegura la red y paga comisiones mínimas; los casos institucionales son pequeños.",
     "supuestos": [
-     "Que crezca el uso institucional"
+     "Que crezca el uso institucional",
+     "Veredicto C329: mantener «incierta»; [VERIFICAR] el % de ALGO en participación de consenso (fuentes oficiales de Algorand)."
     ],
     "regla": {
      "nivel": "media",
@@ -5634,7 +5643,8 @@
     "nivel": "incierta",
     "mecanismo": "[RAZONADO] Sin dato de consumo del token en los programas institucionales.",
     "supuestos": [
-     "Que los pilotos pasen a producción"
+     "Que los pilotos pasen a producción",
+     "Veredicto C329: mantener «incierta»: comisiones ≈0 y 2 capas sin dato; sin fuente de tokenomics leída."
     ],
     "regla": {
      "nivel": "baja",
@@ -5835,7 +5845,8 @@
     "nivel": "incierta",
     "mecanismo": "[RAZONADO] El papel de PLUME (gas o staking) no está confirmado en la documentación leída.",
     "supuestos": [
-     "Modelo de comisiones de la red"
+     "Modelo de comisiones de la red",
+     "Veredicto C329: mantener «incierta»; el consumo «alto» (5,28 %) es probablemente un efecto de la capitalización pequeña (84 M$). [VERIFICAR] en docs.plume.org."
     ],
     "regla": {
      "nivel": "media",
@@ -6089,9 +6100,16 @@
       "u": "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers",
       "d": "2026-11-15",
       "n": "P"
+     },
+     {
+      "t": "Concentración: según el informe de Evernode (2.º trim. 2026, vía prensa), el libro pasó del 54 % al 81 % del volumen DEX, los operadores diarios del libro bajaron de 1.864 a 1.111 y el volumen medio por cuenta casi se triplicó; el informe no identifica a los operadores.",
+      "f": "crypto.news y digitaltoday.co.kr citando a Evernode (prensa, no leído el informe)",
+      "u": "https://crypto.news/xrp-ledger-order-book-volume-jumps-79-as-traders-fall/",
+      "d": "2026-11-15",
+      "n": "S"
      }
     ],
-    "falta": "Quién pone la liquidez (market makers con nombre): sin dato."
+    "falta": "Market makers con nombre y su cuota: sin fuente pública (búsqueda negativa el 15-nov)."
    },
    {
     "red": "XRPL",
@@ -6126,9 +6144,16 @@
       "u": "https://xrpl.org/docs/concepts/tokens/decentralized-exchange/permissioned-domains",
       "d": "2026-11-15",
       "n": "P"
+     },
+     {
+      "t": "PermissionedDEX: estado «Enabled» el 18-feb-2026 en rippled 2.5.0 (transacción de activación enlazada en el listado). Volumen real en dominios con permisos: sin dato.",
+      "f": "xrpl.org, Known Amendments (leído en Chrome)",
+      "u": "https://xrpl.org/resources/known-amendments",
+      "d": "2026-11-15",
+      "n": "P"
      }
     ],
-    "falta": "[VERIFICAR] si la enmienda PermissionedDEX está activada en la red principal (la página leída no lo muestra) y si hay volumen real: sin dato."
+    "falta": "Volumen real en dominios con permisos y quién los usa: sin dato (la activación en la red principal sí consta)."
    },
    {
     "red": "Stellar",
@@ -6153,6 +6178,13 @@
       "t": "Libro XLM/USDC el 15-nov: spread 0,17 %; ofertas a ±1 % por ≈9,6 mil $ (compra) y ≈129 mil $ (venta). Instantánea, solo libro.",
       "f": "Horizon /order_book",
       "u": "https://developers.stellar.org/docs/data/apis/horizon/api-reference/retrieve-an-order-book",
+      "d": "2026-11-15",
+      "n": "P"
+     },
+     {
+      "t": "SDF publicó Kelp, un bot de código abierto para hacer de market maker en el SDEX, y el Protocolo 18 añadió AMM nativos junto al libro; sin programa público actual con market makers nombrados.",
+      "f": "blog de Stellar (Kelp y AMM)",
+      "u": "https://stellar.org/blog/introducing-automated-market-makers-on-stellar",
       "d": "2026-11-15",
       "n": "P"
      }
