@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-15 07:48 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-15 08:05 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -166,10 +166,10 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 - 2026-11-18 · Reino Unido: IPC de octubre (ONS) (medio) → cubre W01 (Datos macro y tipos)
 - 2026-11-18 · Zona euro: IPCA definitivo de octubre (Eurostat) (medio) → cubre W01 (Datos macro y tipos)
 - 2026-11-23 · Stellar: voto de mainnet de Protocol 30 (Bell) (medio) → sin rutina: valorar research EV
-- 2026-11-23 · Stellar: voto de la red principal del protocolo 30 «Bell» (1 (medio) → sin rutina: valorar research EV
 - 2026-11-25 · PCE de octubre y PIB de EE. UU. (2.ª estimación) (medio) → cubre W01 (Datos macro y tipos)
 - 2026-11-26 · Corea: próxima reunión del Banco de Corea sobre el tipo base (medio) → cubre W01 (Tipos de interés)
 - 2026-11-27 · Francia: revisión programada de la calificación de S&P (hoy  (medio) → cubre W02 (Deuda y subastas)
+- 2026-11-27 · España: IPC adelantado de noviembre (INE) (medio) → cubre W01 (Datos macro y tipos)
 - 2026-11-29 · España: elecciones generales anticipadas (alto) → cubre W11 (Política y elecciones)
 - 2026-11-29 · OPEP+: reunión mensual (fecha según prensa) (medio) → cubre W10 (Energía y geopolítica)
 
@@ -181,6 +181,6 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 - 2026-11-18 · APEC en Shenzhen: cumbre de líderes
 - 2026-11-18 · Reino Unido: IPC de octubre (ONS)
 - 2026-11-23 · Stellar: voto de mainnet de Protocol 30 (Bell)
-- 2026-11-23 · Stellar: voto de la red principal del protocolo 30 «Bell» (17:00 UTC)
 - 2026-11-25 · PCE de octubre y PIB de EE. UU. (2.ª estimación)
 - 2026-11-26 · Corea: próxima reunión del Banco de Corea sobre el tipo base (hoy 3,00 %)
+- 2026-11-27 · Francia: revisión programada de la calificación de S&P (hoy A+, estable)

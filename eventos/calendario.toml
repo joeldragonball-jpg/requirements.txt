@@ -910,7 +910,7 @@ fuente = "https://stellar.org/blog/developers/introducing-bell-protocol-30-on-st
 fecha = "2026-11-23"
 id = "ev-2026-11-23-stellar-voto-mainnet-protocol-30"
 titulo = "Stellar: voto de mainnet de Protocol 30 (Bell)"
-detalle = "Voto a las 17:00 UTC si el de testnet del 3-nov sale bien; añade direcciones multiplexadas, firmas poscuánticas ML-DSA para contratos y reloj de milisegundos [P]."
+detalle = "Voto a las 17:00 UTC si el de testnet del 3-nov sale bien; fecha y hora publicadas por la SDF en su blog del 20-oct [P empresa, leído 10-nov]. Testnet votó el 3-nov (resultado no leído [VERIFICAR]). Incluye CAP-84 (direcciones W de contratos), CAP-87 (firmas poscuánticas ML-DSA en contratos), direcciones multiplexadas y ledger/reloj en milisegundos [P]."
 impacto = "medio"
 fuente = "https://stellar.org/blog/developers/introducing-bell-protocol-30-on-stellar"
 
@@ -1036,14 +1036,6 @@ aproximado = false
 fuente = "https://home.treasury.gov/policy-issues/financing-the-government/quarterly-refunding"
 
 [[eventos]]
-fecha = "2026-11-23"
-id = "ev-2026-11-23-stellar-protocolo-30-bell-voto-mainnet"
-titulo = "Stellar: voto de la red principal del protocolo 30 «Bell» (17:00 UTC)"
-detalle = "Fecha y hora publicadas por la SDF en su blog del 20-oct [P empresa, leído 10-nov]. El voto de testnet fue el 3-nov (resultado no leído [VERIFICAR]). Incluye CAP-84 (direcciones W de contratos), CAP-87 (firmas poscuánticas ML-DSA en contratos) y ledger en milisegundos."
-impacto = "medio"
-fuente = "https://stellar.org/blog/developers/introducing-bell-protocol-30-on-stellar"
-
-[[eventos]]
 fecha = "2026-12-01"
 id = "ev-2026-12-01-espana-rdl-29-2026-alquiler-efectos-fiscales"
 titulo = "España: efectos fiscales del RDL 29/2026 (deducción por alquiler e IVA de alojamiento)"
@@ -1148,3 +1140,102 @@ detalle = "Plazo según Quant («primer semestre de 2027, con más detalles por 
 impacto = "bajo"
 aproximado = true
 fuente = "https://quant.network/news/quant-powers-the-clearing-houses-on-chain-money-initiative-in-the-us/"
+
+[[eventos]]
+fecha = "2026-11-27"
+id = "ev-2026-11-27-espana-ipc-adelantado-noviembre-ine"
+titulo = "España: IPC adelantado de noviembre (INE)"
+detalle = "Fecha del calendario oficial del INE para 2026 [P]; el IPCA adelantado sale el mismo día. Hora no indicada en el calendario."
+impacto = "medio"
+aproximado = false
+fuente = "https://www.ine.es/dynt3/Calendario/calenHTML.htm"
+
+[[eventos]]
+fecha = "2026-12-01"
+id = "ev-2026-12-01-zona-euro-ipca-adelantado-noviembre-eurostat"
+titulo = "Zona euro: IPCA adelantado de noviembre (Eurostat)"
+detalle = "Fecha del calendario oficial de Eurostat (Euro indicators) [P]; el calendario no da hora."
+impacto = "medio"
+aproximado = false
+fuente = "https://ec.europa.eu/eurostat/web/main/news/release-calendar"
+
+[[eventos]]
+fecha = "2026-12-15"
+id = "ev-2026-12-15-espana-ipc-definitivo-noviembre-ine"
+titulo = "España: IPC definitivo de noviembre (INE)"
+detalle = "Fecha del calendario oficial del INE [P]; incluye el IPCA definitivo. Hora no indicada."
+impacto = "medio"
+aproximado = false
+fuente = "https://www.ine.es/dynt3/Calendario/calenHTML.htm"
+
+[[eventos]]
+fecha = "2026-12-17"
+id = "ev-2026-12-17-zona-euro-ipca-definitivo-noviembre-eurostat"
+titulo = "Zona euro: IPCA definitivo de noviembre (Eurostat)"
+detalle = "Fecha del calendario oficial de Eurostat [P]; el mismo día que la reunión del BCE. Sin hora en el calendario."
+impacto = "medio"
+aproximado = false
+fuente = "https://ec.europa.eu/eurostat/web/main/news/release-calendar"
+
+[[eventos]]
+fecha = "2026-12-23"
+id = "ev-2026-12-23-espana-pib-3t-contabilidad-nacional-ine"
+titulo = "España: PIB del 3T (Contabilidad Nacional Trimestral, INE)"
+detalle = "Fecha del calendario oficial del INE [P]. Hora no indicada."
+impacto = "medio"
+aproximado = false
+fuente = "https://www.ine.es/dynt3/Calendario/calenHTML.htm"
+
+[[eventos]]
+fecha = "2026-12-30"
+id = "ev-2026-12-30-espana-ipc-adelantado-diciembre-ine"
+titulo = "España: IPC adelantado de diciembre (INE)"
+detalle = "Fecha del calendario oficial del INE [P]; incluye el IPCA adelantado. Hora no indicada."
+impacto = "medio"
+aproximado = false
+fuente = "https://www.ine.es/dynt3/Calendario/calenHTML.htm"
+
+[[eventos]]
+fecha = "2027-01-06"
+id = "ev-2027-01-06-zona-euro-ipca-adelantado-diciembre-eurostat"
+titulo = "Zona euro: IPCA adelantado de diciembre (Eurostat)"
+detalle = "Fecha del calendario oficial de Eurostat [P]; sin hora en el calendario."
+impacto = "medio"
+aproximado = false
+fuente = "https://ec.europa.eu/eurostat/web/main/news/release-calendar"
+
+[[eventos]]
+fecha = "2027-01-19"
+id = "ev-2027-01-19-zona-euro-ipca-definitivo-diciembre-eurostat"
+titulo = "Zona euro: IPCA definitivo de diciembre (Eurostat)"
+detalle = "Fecha del calendario oficial de Eurostat [P]; sin hora en el calendario."
+impacto = "bajo"
+aproximado = false
+fuente = "https://ec.europa.eu/eurostat/web/main/news/release-calendar"
+
+[[eventos]]
+fecha = "2027-01-27"
+id = "ev-2027-01-27-reunion-fed-fomc-enero-2027"
+titulo = "Reunión de la Fed (FOMC) de enero de 2027"
+detalle = "Reunión del 26-27 de enero; decisión el 27 (14:00 ET, hora habitual). Fecha aproximada: la tabla de la Fed para 2027 es provisional [P, federalreserve.gov, leído 14-nov-2026]."
+impacto = "alto"
+aproximado = true
+fuente = "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+
+[[eventos]]
+fecha = "2027-01-29"
+id = "ev-2027-01-29-zona-euro-pib-4t-estimacion-preliminar-eurostat"
+titulo = "Zona euro y UE: PIB del 4T, estimación preliminar (Eurostat)"
+detalle = "Fecha del calendario oficial de Eurostat [P]; sin hora en el calendario."
+impacto = "medio"
+aproximado = false
+fuente = "https://ec.europa.eu/eurostat/web/main/news/release-calendar"
+
+[[eventos]]
+fecha = "2027-02-02"
+id = "ev-2027-02-02-zona-euro-ipca-adelantado-enero-eurostat"
+titulo = "Zona euro: IPCA adelantado de enero (Eurostat)"
+detalle = "Fecha del calendario oficial de Eurostat [P]; sin hora en el calendario."
+impacto = "medio"
+aproximado = false
+fuente = "https://ec.europa.eu/eurostat/web/main/news/release-calendar"

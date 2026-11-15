@@ -1456,7 +1456,7 @@ function pMatriz(){
         const ch=el('div','ch');ch.append(el('span','ctag '+bcl(x.fuente),bcl(x.fuente)),el('b',null,pol?DIRSIM[x.dir]+(modo==='dat'?' '+String(x.valor||'').slice(0,12):''):(modo==='dat'?String(x.etapa):'')));
         if(modo==='dat'&&x.fecha)ch.append(el('small',null,x.fecha.slice(5)));
         if(rec)ch.append(el('i','punto'));td.append(ch);
-        td.style.cursor='pointer';td.onclick=()=>{selCelda=[x,j,t];pMatriz()};
+        td.style.cursor='pointer';td.onclick=()=>{ocultaTips();selCelda=[x,j,t];pMatriz()};
         td.onmousemove=ev=>tip(ev,x,j,t);td.onmouseleave=()=>$('tip').style.display='none';
         if(selCelda&&selCelda[0]===x)td.style.outline='2px solid #fff';
       }
@@ -1487,7 +1487,14 @@ function pMatriz(){
   s.append(c);
   if(!fp||fp==='ue'||fp==='es'){const bm=bMica();if(bm)s.append(bm)}
 }
+/* Tablet/móvil: el toque emula mousemove pero nunca mouseleave, así que el tooltip se quedaba flotando al cambiar de pestaña. */
+let tocando=false;
+const ocultaTips=()=>{const t=$('tip');if(t)t.style.display='none';document.querySelectorAll('.reac-tip').forEach(q=>q.style.display='none')};
+document.addEventListener('pointerdown',e=>{tocando=e.pointerType!=='mouse';ocultaTips()},true);
+['scroll','blur','pagehide'].forEach(k=>window.addEventListener(k,ocultaTips,true));
+document.addEventListener('visibilitychange',ocultaTips);
 function tip(ev,x,j,t){
+  if(tocando)return;
   const e=$('tip');e.textContent='';e.append(el('b',null,j.nombre+' · '+t.nombre));
   for(const [k,v] of [[x.etapa==null&&x.dir?'Dirección':'Etapa',x.etapa==null?(x.dir?(R.escala_politica||{})[x.dir]+(x.valor?' · '+x.valor:''):'sin dato'):x.etapa+' · '+R.escala[x.etapa]],['Hecho',(x.estado||'').length>240?x.estado.slice(0,240)+'…':x.estado],['Fecha',(x.fecha||'—')+' · nivel '+x.fuente]]){
     const d=el('div');d.append(el('b',null,k+': '),document.createTextNode(v));e.append(d)}
