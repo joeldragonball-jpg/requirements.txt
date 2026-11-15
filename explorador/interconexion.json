@@ -9,10 +9,22 @@
     "texto": "¿Existe o se está construyendo una red/capa pública común que interconecte las blockchains (cada una con su token, stablecoin o CBDC) y sirva de libro de cuentas auditable por un supervisor (DTCC, bancos centrales, reguladores) de los contratos y transacciones de las demás?",
     "estado": "hipótesis de un lector; NO se da por cierta",
     "partes": [
-      {"id": "A", "parte": "Interconecta muchas blockchains distintas"},
-      {"id": "B", "parte": "Es una capa común/pública (no un club cerrado de un operador)"},
-      {"id": "C", "parte": "Funciona como libro de cuentas compartido de lo que pasa en las demás"},
-      {"id": "D", "parte": "Un supervisor (DTCC, banco central, regulador) puede auditarlo"}
+      {
+        "id": "A",
+        "parte": "Interconecta muchas blockchains distintas"
+      },
+      {
+        "id": "B",
+        "parte": "Es una capa común/pública (no un club cerrado de un operador)"
+      },
+      {
+        "id": "C",
+        "parte": "Funciona como libro de cuentas compartido de lo que pasa en las demás"
+      },
+      {
+        "id": "D",
+        "parte": "Un supervisor (DTCC, banco central, regulador) puede auditarlo"
+      }
     ]
   },
   "iniciativas": [
@@ -24,12 +36,38 @@
       "que_es": "Protocolo de Chainlink que transporta mensajes y tokens entre cadenas públicas (y algunas privadas) con redes de oráculos que firman y verifican.",
       "que_no_es": "No es un libro mayor común: cada cadena conserva su registro; CCIP pasa mensajes. No lo opera ni supervisa ningún banco central.",
       "hechos": [
-        {"fecha": "2026-07-24", "hecho": "Volumen CCIP en el T2-2026: 4.900 M$ (+353 % interanual); más de 7.000 M$ en valor de tokens migrados a CCIP en el trimestre; Valor Total Asegurado de Chainlink (todos los servicios) 110.000 M$. La revisión no da un número total de cadenas.", "fuente": "Chainlink, Quarterly Review Q2 2026", "url": "https://chain.link/blog/quarterly-review-q2-2026", "nivel": "P"},
-        {"fecha": "2026-07-24", "hecho": "Altas recientes en mainnet: Robinhood, Tempo, Creditcoin, NeoX, ADI, Edge y Pharos. Usos con activos tokenizados citados: State Street/Galaxy (fondo de liquidez SWEEP), Bridgetower, iniciativa de la Autoridad Monetaria de Bermudas.", "fuente": "Chainlink, Quarterly Review Q2 2026", "url": "https://chain.link/blog/quarterly-review-q2-2026", "nivel": "P"},
-        {"fecha": "2026-07-10", "hecho": "Prensa: unos 21.000 M$ de volumen acumulado transferido y más de 62.000 M$ en tokens soportados; recuento de cadenas entre 25+ y 60+ según la fuente y lo que se cuente.", "fuente": "Crypto Briefing (cita a Chainlink)", "url": "https://cryptobriefing.com/chainlink-ccip-21b-transferred-volume/", "nivel": "S"},
-        {"fecha": "2026-05-12", "hecho": "DTCC integra el Chainlink Runtime Environment (CRE) y el estándar de datos de Chainlink en su Collateral AppChain; salida a producción prevista en el T4-2026. El comunicado de DTCC no dice que esa integración use CCIP.", "fuente": "DTCC, comunicado 12-may-2026", "url": "https://www.dtcc.com/press-releases/2026/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management", "nivel": "P"}
+        {
+          "fecha": "2026-07-24",
+          "hecho": "Volumen CCIP en el T2-2026: 4.900 M$ (+353 % interanual); más de 7.000 M$ en valor de tokens migrados a CCIP en el trimestre; Valor Total Asegurado de Chainlink (todos los servicios) 110.000 M$. La revisión no da un número total de cadenas.",
+          "fuente": "Chainlink, Quarterly Review Q2 2026",
+          "url": "https://chain.link/blog/quarterly-review-q2-2026",
+          "nivel": "P"
+        },
+        {
+          "fecha": "2026-07-24",
+          "hecho": "Altas recientes en mainnet: Robinhood, Tempo, Creditcoin, NeoX, ADI, Edge y Pharos. Usos con activos tokenizados citados: State Street/Galaxy (fondo de liquidez SWEEP), Bridgetower, iniciativa de la Autoridad Monetaria de Bermudas.",
+          "fuente": "Chainlink, Quarterly Review Q2 2026",
+          "url": "https://chain.link/blog/quarterly-review-q2-2026",
+          "nivel": "P"
+        },
+        {
+          "fecha": "2026-07-10",
+          "hecho": "Prensa: unos 21.000 M$ de volumen acumulado transferido y más de 62.000 M$ en tokens soportados; recuento de cadenas entre 25+ y 60+ según la fuente y lo que se cuente.",
+          "fuente": "Crypto Briefing (cita a Chainlink)",
+          "url": "https://cryptobriefing.com/chainlink-ccip-21b-transferred-volume/",
+          "nivel": "S"
+        },
+        {
+          "fecha": "2026-05-12",
+          "hecho": "DTCC integra el Chainlink Runtime Environment (CRE) y el estándar de datos de Chainlink en su Collateral AppChain; salida a producción prevista en el T4-2026. El comunicado de DTCC no dice que esa integración use CCIP.",
+          "fuente": "DTCC, comunicado 12-may-2026",
+          "url": "https://www.dtcc.com/press-releases/2026/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management",
+          "nivel": "P"
+        }
       ],
-      "cubre_partes": ["A"],
+      "cubre_partes": [
+        "A"
+      ],
       "visibilidad_supervisor": "Ninguna específica: las transacciones son visibles en cada cadena pública de origen y destino, como cualquier dato on-chain."
     },
     {
@@ -40,11 +78,31 @@
       "que_es": "Mueve USDC (y desde sep-2026 otros tokens registrados, como EURC) quemando en la cadena de origen y emitiendo en la de destino; lo controla el emisor (Circle).",
       "que_no_es": "No interconecta cualquier activo de forma neutral ni es un libro común: es la vía del emisor para su propio dinero; el registro sigue en cada cadena.",
       "hechos": [
-        {"fecha": "2026", "hecho": "Altas en 2026: EDGE y Morph (mar), Pharos (abr), Injective y Stellar (may), Cronos (jun), X Layer (ago, dominio 37), Aptos en V2 (ago, dominio 9), Plasma (ago, dominio 33), Arc (sep), Sui (oct, dominio 8).", "fuente": "Circle, notas de versión CCTP 2026", "url": "https://developers.circle.com/release-notes/cctp-2026", "nivel": "P"},
-        {"fecha": "2026-09-16", "hecho": "Lanzamiento de CCTP para activos distintos de USDC: emisores e integradores pueden registrar sus propios tokens.", "fuente": "Circle, notas de versión CCTP 2026", "url": "https://developers.circle.com/release-notes/cctp-2026", "nivel": "P"},
-        {"fecha": "2026-11-05", "hecho": "Prensa: más de 300.000 M$ de volumen histórico acumulado (Circle daba 110.000 M$ a 14-nov-2025).", "fuente": "Crypto Briefing", "url": "https://cryptobriefing.com/circle-cctp-surpasses-300-billion-volume/", "nivel": "S"}
+        {
+          "fecha": "2026",
+          "hecho": "Altas en 2026: EDGE y Morph (mar), Pharos (abr), Injective y Stellar (may), Cronos (jun), X Layer (ago, dominio 37), Aptos en V2 (ago, dominio 9), Plasma (ago, dominio 33), Arc (sep), Sui (oct, dominio 8).",
+          "fuente": "Circle, notas de versión CCTP 2026",
+          "url": "https://developers.circle.com/release-notes/cctp-2026",
+          "nivel": "P"
+        },
+        {
+          "fecha": "2026-09-16",
+          "hecho": "Lanzamiento de CCTP para activos distintos de USDC: emisores e integradores pueden registrar sus propios tokens.",
+          "fuente": "Circle, notas de versión CCTP 2026",
+          "url": "https://developers.circle.com/release-notes/cctp-2026",
+          "nivel": "P"
+        },
+        {
+          "fecha": "2026-11-05",
+          "hecho": "Prensa: más de 300.000 M$ de volumen histórico acumulado (Circle daba 110.000 M$ a 14-nov-2025).",
+          "fuente": "Crypto Briefing",
+          "url": "https://cryptobriefing.com/circle-cctp-surpasses-300-billion-volume/",
+          "nivel": "S"
+        }
       ],
-      "cubre_partes": ["A"],
+      "cubre_partes": [
+        "A"
+      ],
       "visibilidad_supervisor": "El emisor regulado (Circle) ve emisiones y quemas; el supervisor del emisor de la stablecoin la ve a través de él, no por una capa común."
     },
     {
@@ -55,12 +113,39 @@
       "que_es": "Red de aplicaciones Daml que se sincronizan mediante el Global Synchronizer, operado por Super Validators (más de 45 según prensa, entre ellos Visa desde mar-2026). Cada participante solo ve las partes de la transacción que le afectan.",
       "que_no_es": "No es una capa que lea o registre las transacciones de Ethereum, Solana u otras cadenas públicas. Tampoco es transparente para terceros: los Super Validators ordenan sin ver el contenido; la visibilidad de un supervisor depende de que se le dé un nodo o vista.",
       "hechos": [
-        {"fecha": "2026-10-28", "hecho": "El Servicio de Tokenización de DTCC (DTS) arranca integrado con Canton y con la red privada Besu de DTCC; 20 participantes de DTC han firmado acceso.", "fuente": "DTCC, comunicado 28-oct-2026", "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live", "nivel": "P"},
-        {"fecha": "2026-07", "hecho": "Operaciones en producción limitada en Canton con Tesoro, acciones y ETF tokenizados por DTCC (colateral, repo intradía, préstamo de valores); BNP Paribas con nodo propio como prestamista.", "fuente": "Canton, blog 8-sep-2026 (recogido en pruebas-bancos.json)", "url": "https://www.canton.network/blog/onchain-collateral-repo-tokenization", "nivel": "P"},
-        {"fecha": "2026-04-04", "hecho": "Más de 45 Super Validators (mezcla de entidades financieras tradicionales y nativas cripto); participación filtrada por la fundación.", "fuente": "Resumen de comunidad (communityone.io)", "url": "https://communityone.io/servers/1379531004116471878/canton-network/news/canton-super-validators-45-plus-2026-04-04/", "nivel": "S"},
-        {"fecha": "2026", "hecho": "Análisis independiente: si la actividad queda en dominios privados, terceros (incluso miembros) tienen poca capacidad de verificar el uso real más allá del sincronizador.", "fuente": "Flashbots Collective, «Deep Dive on Permissioned Blockchains - The Canton Network»", "url": "https://collective.flashbots.net/t/deep-dive-on-permissioned-blockchains-the-canton-network/5517", "nivel": "S"}
+        {
+          "fecha": "2026-10-28",
+          "hecho": "El Servicio de Tokenización de DTCC (DTS) arranca integrado con Canton y con la red privada Besu de DTCC; 20 participantes de DTC han firmado acceso.",
+          "fuente": "DTCC, comunicado 28-oct-2026",
+          "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+          "nivel": "P"
+        },
+        {
+          "fecha": "2026-07",
+          "hecho": "Operaciones en producción limitada en Canton con Tesoro, acciones y ETF tokenizados por DTCC (colateral, repo intradía, préstamo de valores); BNP Paribas con nodo propio como prestamista.",
+          "fuente": "Canton, blog 8-sep-2026 (recogido en pruebas-bancos.json)",
+          "url": "https://www.canton.network/blog/onchain-collateral-repo-tokenization",
+          "nivel": "P"
+        },
+        {
+          "fecha": "2026-04-04",
+          "hecho": "Más de 45 Super Validators (mezcla de entidades financieras tradicionales y nativas cripto); participación filtrada por la fundación.",
+          "fuente": "Resumen de comunidad (communityone.io)",
+          "url": "https://communityone.io/servers/1379531004116471878/canton-network/news/canton-super-validators-45-plus-2026-04-04/",
+          "nivel": "S"
+        },
+        {
+          "fecha": "2026",
+          "hecho": "Análisis independiente: si la actividad queda en dominios privados, terceros (incluso miembros) tienen poca capacidad de verificar el uso real más allá del sincronizador.",
+          "fuente": "Flashbots Collective, «Deep Dive on Permissioned Blockchains - The Canton Network»",
+          "url": "https://collective.flashbots.net/t/deep-dive-on-permissioned-blockchains-the-canton-network/5517",
+          "nivel": "S"
+        }
       ],
-      "cubre_partes": ["C", "D"],
+      "cubre_partes": [
+        "C",
+        "D"
+      ],
       "visibilidad_supervisor": "Diseñada para dar vistas selectivas (p. ej. a un regulador) sin exponer todo; no se encontró documentación técnica pública de un nodo supervisor concreto [VERIFICAR]."
     },
     {
@@ -71,13 +156,46 @@
       "que_es": "DTC tokeniza valores que custodia (miembros del Russell 1000, ETF de índices principales, Tesoro de EE. UU.) y los envía a la cartera que elija el usuario en las redes conectadas; mantiene el registro oficial de propiedad.",
       "que_no_es": "No es una capa que interconecte las cadenas entre sí: DTC conecta su servicio a cada red por separado. Ve sus propios activos tokenizados, no los contratos ajenos de esas cadenas.",
       "hechos": [
-        {"fecha": "2025-12", "hecho": "La SEC emite una carta de no acción a DTC que permite tokenizar miembros del Russell 1000, ETF que siguen índices principales y Tesoro de EE. UU. (en empresas-redes.json figura el 11-dic-2025).", "fuente": "DTCC, comunicado 28-oct-2026", "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live", "nivel": "P"},
-        {"fecha": "2026-10-28", "hecho": "DTS en marcha con Canton y Besu privada; «redes adicionales» en 2027 (el comunicado no las nombra).", "fuente": "DTCC, comunicado 28-oct-2026", "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live", "nivel": "P"},
-        {"fecha": "2026-05-27", "hecho": "Plan de conectar DTS con Stellar; activos tokenizados previstos para el 1S-2027.", "fuente": "DTCC, comunicado (recogido en pruebas-bancos.json)", "url": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy", "nivel": "P"},
-        {"fecha": "2026-11-12", "hecho": "Plan de conectar DTS con Solana; activos tokenizados previstos para el 2S-2027.", "fuente": "DTCC, comunicado (recogido en pruebas-bancos.json)", "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana", "nivel": "P"},
-        {"fecha": "2026-05-12", "hecho": "Collateral AppChain con CRE de Chainlink; producción prevista T4-2026. No se encontró confirmación de que ya esté en producción.", "fuente": "DTCC, comunicado 12-may-2026 (vía buscador y prensa)", "url": "https://www.dtcc.com/press-releases/2026/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management", "nivel": "S"}
+        {
+          "fecha": "2025-12",
+          "hecho": "La SEC emite una carta de no acción a DTC que permite tokenizar miembros del Russell 1000, ETF que siguen índices principales y Tesoro de EE. UU. (en empresas-redes.json figura el 11-dic-2025).",
+          "fuente": "DTCC, comunicado 28-oct-2026",
+          "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+          "nivel": "P"
+        },
+        {
+          "fecha": "2026-10-28",
+          "hecho": "DTS en marcha con Canton y Besu privada; «redes adicionales» en 2027 (el comunicado no las nombra).",
+          "fuente": "DTCC, comunicado 28-oct-2026",
+          "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+          "nivel": "P"
+        },
+        {
+          "fecha": "2026-05-27",
+          "hecho": "Plan de conectar DTS con Stellar; activos tokenizados previstos para el 1S-2027.",
+          "fuente": "DTCC, comunicado (recogido en pruebas-bancos.json)",
+          "url": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy",
+          "nivel": "P"
+        },
+        {
+          "fecha": "2026-11-12",
+          "hecho": "Plan de conectar DTS con Solana; activos tokenizados previstos para el 2S-2027.",
+          "fuente": "DTCC, comunicado (recogido en pruebas-bancos.json)",
+          "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana",
+          "nivel": "P"
+        },
+        {
+          "fecha": "2026-05-12",
+          "hecho": "Collateral AppChain con CRE de Chainlink; producción prevista T4-2026. No se encontró confirmación de que ya esté en producción.",
+          "fuente": "DTCC, comunicado 12-may-2026 (vía buscador y prensa)",
+          "url": "https://www.dtcc.com/press-releases/2026/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management",
+          "nivel": "S"
+        }
       ],
-      "cubre_partes": ["A", "D"],
+      "cubre_partes": [
+        "A",
+        "D"
+      ],
       "visibilidad_supervisor": "DTC es una entidad supervisada por la SEC; ve los movimientos de SUS valores tokenizados en las redes conectadas. No hay fuente que diga que audite otros contratos de esas cadenas."
     },
     {
@@ -88,9 +206,17 @@
       "que_es": "Capa de orquestación para depósitos tokenizados que cada banco emite en sus libros; mueve fondos 24/7 antes de la liquidación final por los sistemas existentes.",
       "que_no_es": "No sustituye la liquidación final ni es una cadena pública; Swift no tiene fondos ni cuentas de clientes.",
       "hechos": [
-        {"fecha": "2026-10-22", "hecho": "Swift dice en Sibos que el libro está listo y que 17 bancos (ANZ, BNP Paribas, BNY, Citi, DBS, HSBC, UBS, Wells Fargo, entre otros) pilotan transacciones transfronterizas en vivo. Detalle en swift-liquidacion.json.", "fuente": "Swift, «Four reflections from Sibos 2026» (22-oct-2026; la nota del 9-jul-2026 solo decía que los bancos «preparan» pilotos)", "url": "https://www.swift.com/insights/news/four-reflections-swift-sibos-2026", "nivel": "P"}
+        {
+          "fecha": "2026-10-22",
+          "hecho": "Swift dice en Sibos que el libro está listo y que 17 bancos (ANZ, BNP Paribas, BNY, Citi, DBS, HSBC, UBS, Wells Fargo, entre otros) pilotan transacciones transfronterizas en vivo. Detalle en swift-liquidacion.json.",
+          "fuente": "Swift, «Four reflections from Sibos 2026» (22-oct-2026; la nota del 9-jul-2026 solo decía que los bancos «preparan» pilotos)",
+          "url": "https://www.swift.com/insights/news/four-reflections-swift-sibos-2026",
+          "nivel": "P"
+        }
       ],
-      "cubre_partes": ["C"],
+      "cubre_partes": [
+        "C"
+      ],
       "visibilidad_supervisor": "No documentada en las fuentes leídas [VERIFICAR]."
     },
     {
@@ -101,10 +227,25 @@
       "que_es": "Plataforma compartida donde conviven reservas tokenizadas de bancos centrales y depósitos tokenizados de bancos comerciales, con liquidación atómica multidivisa.",
       "que_no_es": "No es una red pública abierta ni conecta cadenas públicas existentes; es permisionada y la gobiernan bancos centrales.",
       "hechos": [
-        {"fecha": "2026-05-27", "hecho": "Informe del prototipo: siete bancos centrales y más de 40 entidades reguladas; reservas y depósitos tokenizados en una plataforma compartida con liquidación atómica multidivisa; los contratos inteligentes pueden integrar requisitos de cumplimiento.", "fuente": "BIS, «Project Agorá: a shared programmable platform for wholesale cross-border payments»", "url": "https://www.bis.org/publications/project-agora-shared-programmable-platform-wholesale-cross-border-payments", "nivel": "P"},
-        {"fecha": "2026-07", "hecho": "Pruebas con valor real: 28 participantes liquidan unos 800.000 CHF en 17 escenarios y 30 transacciones (CHF, EUR, GBP, JPY, KRW, USD); SIX como facilitador operativo. La tabla de la página lista 22 entidades financieras y 5 bancos centrales (27), no los 28 del texto: la lista puede no ser completa.", "fuente": "BIS, página de pruebas con valor real de Agorá (leída 15-nov-2026)", "url": "https://www.bis.org/about/bisih/topics/fmis/agora/rvt.htm", "nivel": "P"}
+        {
+          "fecha": "2026-05-27",
+          "hecho": "Informe del prototipo: siete bancos centrales y más de 40 entidades reguladas; reservas y depósitos tokenizados en una plataforma compartida con liquidación atómica multidivisa; los contratos inteligentes pueden integrar requisitos de cumplimiento.",
+          "fuente": "BIS, «Project Agorá: a shared programmable platform for wholesale cross-border payments»",
+          "url": "https://www.bis.org/publications/project-agora-shared-programmable-platform-wholesale-cross-border-payments",
+          "nivel": "P"
+        },
+        {
+          "fecha": "2026-07",
+          "hecho": "Pruebas con valor real: 28 participantes liquidan unos 800.000 CHF en 17 escenarios y 30 transacciones (CHF, EUR, GBP, JPY, KRW, USD); SIX como facilitador operativo. La tabla de la página lista 22 entidades financieras y 5 bancos centrales (27), no los 28 del texto: la lista puede no ser completa.",
+          "fuente": "BIS, página de pruebas con valor real de Agorá (leída 15-nov-2026)",
+          "url": "https://www.bis.org/about/bisih/topics/fmis/agora/rvt.htm",
+          "nivel": "P"
+        }
       ],
-      "cubre_partes": ["C", "D"],
+      "cubre_partes": [
+        "C",
+        "D"
+      ],
       "visibilidad_supervisor": "Los bancos centrales participan en la propia plataforma (visibilidad directa de lo que ocurre en ella, no de cadenas externas)."
     },
     {
@@ -115,9 +256,18 @@
       "que_es": "Propuesta de una infraestructura que combine dinero de banco central, depósitos tokenizados y activos tokenizados en una plataforma programable.",
       "que_no_es": "El propio BIS dice que no significa «un libro para gobernarlos a todos» y que puede haber varios libros por caso de uso o una «red de redes» unida por API.",
       "hechos": [
-        {"fecha": "2023-06-20", "hecho": "Capítulo III del Informe Económico Anual 2023: el libro unificado puede ser amplio o estrecho; los primeros casos serían de aplicación concreta; no es un libro único para toda la economía.", "fuente": "BIS, Annual Economic Report 2023, cap. III", "url": "https://www.bis.org/publ/arpdf/ar2023e3.htm", "nivel": "P"}
+        {
+          "fecha": "2023-06-20",
+          "hecho": "Capítulo III del Informe Económico Anual 2023: el libro unificado puede ser amplio o estrecho; los primeros casos serían de aplicación concreta; no es un libro único para toda la economía.",
+          "fuente": "BIS, Annual Economic Report 2023, cap. III",
+          "url": "https://www.bis.org/publ/arpdf/ar2023e3.htm",
+          "nivel": "P"
+        }
       ],
-      "cubre_partes": ["C", "D"],
+      "cubre_partes": [
+        "C",
+        "D"
+      ],
       "visibilidad_supervisor": "Diseño pensado con el banco central en el centro; no conectado a cadenas públicas."
     },
     {
@@ -128,9 +278,17 @@
       "que_es": "Red de liquidación compartida operada por Partior Pte Ltd con bancos de liquidación por divisa.",
       "que_no_es": "No es pública ni interconecta cadenas públicas.",
       "hechos": [
-        {"fecha": "2026-09", "hecho": "La web lista USD, SGD y EUR en vivo; otras divisas (AED, AUD, GBP, JPY…) previstas. Acuerdo con LSEG Digital Settlement House en pruebas, salida prevista T1-2027.", "fuente": "Prensa (eco.com, Crowdfund Insider sep-2026)", "url": "https://www.crowdfundinsider.com/2026/09/311056-partior-lseg-digital-settlement-house-partner-to-keep-liquidity-moving-around-the-clock/", "nivel": "S"}
+        {
+          "fecha": "2026-09",
+          "hecho": "La web lista USD, SGD y EUR en vivo; otras divisas (AED, AUD, GBP, JPY…) previstas. Acuerdo con LSEG Digital Settlement House en pruebas, salida prevista T1-2027.",
+          "fuente": "Prensa (eco.com, Crowdfund Insider sep-2026)",
+          "url": "https://www.crowdfundinsider.com/2026/09/311056-partior-lseg-digital-settlement-house-partner-to-keep-liquidity-moving-around-the-clock/",
+          "nivel": "S"
+        }
       ],
-      "cubre_partes": ["C"],
+      "cubre_partes": [
+        "C"
+      ],
       "visibilidad_supervisor": "La de los supervisores de los bancos participantes y de MAS como regulador del operador [VERIFICAR]."
     },
     {
@@ -141,9 +299,17 @@
       "que_es": "Une sistemas de pago inmediato (India, Malasia, Filipinas, Singapur, Tailandia) mediante un hub; operador técnico: empresa conjunta PayNet-NETS.",
       "que_no_es": "No usa blockchain ni tokens; es interconexión de sistemas de pago tradicionales.",
       "hechos": [
-        {"fecha": "2026-02-09", "hecho": "Nexus Global Payments nombra operador técnico a la empresa conjunta PayNet (Malasia) - NETS (Singapur); salida en vivo prevista en 2027.", "fuente": "Business Wire, comunicado de Nexus Global Payments", "url": "https://www.businesswire.com/news/home/20260209818123/en/Nexus-Global-Payments-Appoints-Technical-Operator", "nivel": "S"}
+        {
+          "fecha": "2026-02-09",
+          "hecho": "Nexus Global Payments nombra operador técnico a la empresa conjunta PayNet (Malasia) - NETS (Singapur); salida en vivo prevista en 2027.",
+          "fuente": "Business Wire, comunicado de Nexus Global Payments",
+          "url": "https://www.businesswire.com/news/home/20260209818123/en/Nexus-Global-Payments-Appoints-Technical-Operator",
+          "nivel": "S"
+        }
       ],
-      "cubre_partes": ["A"],
+      "cubre_partes": [
+        "A"
+      ],
       "visibilidad_supervisor": "Bancos centrales fundadores en el gobierno de la sociedad."
     },
     {
@@ -154,10 +320,24 @@
       "que_es": "Motor que codifica requisitos (controles de capital, AML, límites) y genera pruebas de cumplimiento que viajan con la transacción.",
       "que_no_es": "No es un libro común ni compromete a los bancos centrales a adoptarlo.",
       "hechos": [
-        {"fecha": "2024-10-28", "hecho": "Informe de fase 1 con casos Singapur-Malasia (préstamo) y Corea-Australia (inversión); el BIS dice que no implica compromiso de adopción y que el ahorro de costes requiere más análisis.", "fuente": "BIS, «Project Mandala: streamlining cross-border transaction compliance»", "url": "https://www.bis.org/publications/project-mandala-streamlining-cross-border-transaction-compliance", "nivel": "S"},
-        {"fecha": "2025-11-30", "hecho": "Página del proyecto: «en curso»; el BIS pasa Mandala a una siguiente fase sobre cumplimiento programable para activos digitales.", "fuente": "BIS, página de Mandala (vía buscador)", "url": "https://www.bis.org/project/mandala", "nivel": "S"}
+        {
+          "fecha": "2024-10-28",
+          "hecho": "Informe de fase 1 con casos Singapur-Malasia (préstamo) y Corea-Australia (inversión); el BIS dice que no implica compromiso de adopción y que el ahorro de costes requiere más análisis.",
+          "fuente": "BIS, «Project Mandala: streamlining cross-border transaction compliance»",
+          "url": "https://www.bis.org/publications/project-mandala-streamlining-cross-border-transaction-compliance",
+          "nivel": "S"
+        },
+        {
+          "fecha": "2025-11-30",
+          "hecho": "Página del proyecto: «en curso»; el BIS pasa Mandala a una siguiente fase sobre cumplimiento programable para activos digitales.",
+          "fuente": "BIS, página de Mandala (vía buscador)",
+          "url": "https://www.bis.org/project/mandala",
+          "nivel": "S"
+        }
       ],
-      "cubre_partes": ["D"],
+      "cubre_partes": [
+        "D"
+      ],
       "visibilidad_supervisor": "Pruebas de cumplimiento verificables; no un registro de todas las operaciones."
     },
     {
@@ -168,10 +348,24 @@
       "que_es": "Guardian: pruebas de tokenización de activos con bancos y gestoras en varias redes (Polygon, Avalanche, etc.). BLOOM (16-oct-2025): liquidación multidivisa con depósitos tokenizados y stablecoins reguladas.",
       "que_no_es": "No crea una red común; cada piloto usa su propia red (públicas o permisionadas).",
       "hechos": [
-        {"fecha": "2025-10-16", "hecho": "MAS lanza BLOOM e invita a bancos, entidades financieras y operadores de redes de compensación y liquidación a hacer pruebas.", "fuente": "MAS, nota de prensa", "url": "https://www.mas.gov.sg/news/media-releases/2025/mas-launches-bloom-initiative-to-extend-settlement-capabilities", "nivel": "S"},
-        {"fecha": "2022-11-02", "hecho": "Primer piloto de Guardian en vivo (DBS, J.P. Morgan, SBI): depósitos tokenizados JPY/SGD y bonos simulados; detalle en pruebas-bancos.json.", "fuente": "MAS, nota 2-nov-2022", "url": "https://www.mas.gov.sg/news/media-releases/2022/first-industry-pilot-for-digital-asset-and-decentralised-finance-goes-live", "nivel": "P"}
+        {
+          "fecha": "2025-10-16",
+          "hecho": "MAS lanza BLOOM e invita a bancos, entidades financieras y operadores de redes de compensación y liquidación a hacer pruebas.",
+          "fuente": "MAS, nota de prensa",
+          "url": "https://www.mas.gov.sg/news/media-releases/2025/mas-launches-bloom-initiative-to-extend-settlement-capabilities",
+          "nivel": "S"
+        },
+        {
+          "fecha": "2022-11-02",
+          "hecho": "Primer piloto de Guardian en vivo (DBS, J.P. Morgan, SBI): depósitos tokenizados JPY/SGD y bonos simulados; detalle en pruebas-bancos.json.",
+          "fuente": "MAS, nota 2-nov-2022",
+          "url": "https://www.mas.gov.sg/news/media-releases/2022/first-industry-pilot-for-digital-asset-and-decentralised-finance-goes-live",
+          "nivel": "P"
+        }
       ],
-      "cubre_partes": ["D"],
+      "cubre_partes": [
+        "D"
+      ],
       "visibilidad_supervisor": "MAS ve lo que ocurre en los pilotos que patrocina; no hay capa común."
     },
     {
@@ -182,9 +376,18 @@
       "que_es": "Dinero tokenizado respaldado 1:1 por saldos en una cuenta ómnibus de Fnality en el RTGS del Banco de Inglaterra.",
       "que_no_es": "No es una red pública ni interconecta cadenas públicas.",
       "hechos": [
-        {"fecha": "2023-12", "hecho": "Inicio de pagos en vivo controlados en el £FnPS (Lloyds, Santander, UBS) mediante una cuenta ómnibus en el RTGS del Banco de Inglaterra; designación de firmeza de liquidación el 16-dic-2024 (según prensa).", "fuente": "Fnality, nota de prensa / Finextra", "url": "https://fnality.com/news/fnality-commences-initial-phase-of-sterling-payment-operations-in-a-world-first", "nivel": "S"}
+        {
+          "fecha": "2023-12",
+          "hecho": "Inicio de pagos en vivo controlados en el £FnPS (Lloyds, Santander, UBS) mediante una cuenta ómnibus en el RTGS del Banco de Inglaterra; designación de firmeza de liquidación el 16-dic-2024 (según prensa).",
+          "fuente": "Fnality, nota de prensa / Finextra",
+          "url": "https://fnality.com/news/fnality-commences-initial-phase-of-sterling-payment-operations-in-a-world-first",
+          "nivel": "S"
+        }
       ],
-      "cubre_partes": ["C", "D"],
+      "cubre_partes": [
+        "C",
+        "D"
+      ],
       "visibilidad_supervisor": "Sistema reconocido como sistémico por el Tesoro británico y supervisado por el Banco de Inglaterra [VERIFICAR alcance]."
     },
     {
@@ -195,7 +398,13 @@
       "que_es": "Herramientas con las que se montan redes privadas; DTCC usa una red privada Besu para su servicio de tokenización.",
       "que_no_es": "No es una red: es software. Cada despliegue es una red separada.",
       "hechos": [
-        {"fecha": "2026-10-28", "hecho": "DTS integrado con «la red privada Besu de DTCC».", "fuente": "DTCC, comunicado 28-oct-2026", "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live", "nivel": "P"}
+        {
+          "fecha": "2026-10-28",
+          "hecho": "DTS integrado con «la red privada Besu de DTCC».",
+          "fuente": "DTCC, comunicado 28-oct-2026",
+          "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+          "nivel": "P"
+        }
       ],
       "cubre_partes": [],
       "visibilidad_supervisor": "Depende de cada operador."
@@ -208,10 +417,25 @@
       "que_es": "Estándar abierto para que cadenas soberanas se envíen mensajes y tokens verificando el estado de la otra con clientes ligeros; Eureka (IBC v2, abr-2025) añade Ethereum.",
       "que_no_es": "No es un libro común ni tiene un supervisor: cada cadena mantiene su estado.",
       "hechos": [
-        {"fecha": "2025-04-10", "hecho": "Interchain Labs lanza IBC Eureka para conectar Ethereum con cadenas Cosmos (Babylon, dYdX, MANTRA, Lombard).", "fuente": "The Block", "url": "https://www.theblock.co/post/350316/interchain-labs-launches-ibc-eureka-to-connect-ethereum-to-the-cosmos-ecosystem", "nivel": "S"},
-        {"fecha": "2026-04", "hecho": "Más de 115 cadenas conectadas por IBC y unos 3.000 M$ al mes en transferencias (explicativo de un validador; sin cifra oficial leída).", "fuente": "Everstake, blog", "url": "https://everstake.one/blog/cosmos-ibc-breaking-down-the-walls-between-blockchains", "nivel": "V"}
+        {
+          "fecha": "2025-04-10",
+          "hecho": "Interchain Labs lanza IBC Eureka para conectar Ethereum con cadenas Cosmos (Babylon, dYdX, MANTRA, Lombard).",
+          "fuente": "The Block",
+          "url": "https://www.theblock.co/post/350316/interchain-labs-launches-ibc-eureka-to-connect-ethereum-to-the-cosmos-ecosystem",
+          "nivel": "S"
+        },
+        {
+          "fecha": "2026-04",
+          "hecho": "Más de 115 cadenas conectadas por IBC y unos 3.000 M$ al mes en transferencias (explicativo de un validador; sin cifra oficial leída).",
+          "fuente": "Everstake, blog",
+          "url": "https://everstake.one/blog/cosmos-ibc-breaking-down-the-walls-between-blockchains",
+          "nivel": "V"
+        }
       ],
-      "cubre_partes": ["A", "B"],
+      "cubre_partes": [
+        "A",
+        "B"
+      ],
       "visibilidad_supervisor": "Ninguna específica (datos públicos on-chain)."
     },
     {
@@ -222,9 +446,18 @@
       "que_es": "Una cadena central (relé) valida las cadenas conectadas (parachains), que se comunican con el formato XCM.",
       "que_no_es": "Solo cubre las cadenas de su ecosistema (y puentes a otras); no es un libro común de redes externas ni tiene supervisor.",
       "hechos": [
-        {"fecha": "[VERIFICAR fecha]", "hecho": "Arquitectura documentada por Polkadot: seguridad compartida de la cadena relé y mensajería XCM entre parachains. No se leyó una cifra 2026 de parachains activas.", "fuente": "Polkadot, documentación (wiki)", "url": "https://wiki.polkadot.network/", "nivel": "V"}
+        {
+          "fecha": "[VERIFICAR fecha]",
+          "hecho": "Arquitectura documentada por Polkadot: seguridad compartida de la cadena relé y mensajería XCM entre parachains. No se leyó una cifra 2026 de parachains activas.",
+          "fuente": "Polkadot, documentación (wiki)",
+          "url": "https://wiki.polkadot.network/",
+          "nivel": "V"
+        }
       ],
-      "cubre_partes": ["A", "B"],
+      "cubre_partes": [
+        "A",
+        "B"
+      ],
       "visibilidad_supervisor": "Ninguna específica."
     },
     {
@@ -235,9 +468,17 @@
       "que_es": "Protocolo de mensajería entre cadenas validado por un conjunto de «guardianes».",
       "que_no_es": "No es un libro común ni supervisado.",
       "hechos": [
-        {"fecha": "2022-02-02", "hecho": "Ataque al puente en el lado Solana: 120.000 wETH (unos 320-326 M$) emitidos sin respaldo por un fallo de verificación de firmas; Jump Crypto repuso los 120.000 ETH.", "fuente": "The Block, 3-feb-2022", "url": "https://www.theblock.co/post/132909/wormhole-replenishes-its-blockchain-bridge-after-325-million-exploit", "nivel": "S"}
+        {
+          "fecha": "2022-02-02",
+          "hecho": "Ataque al puente en el lado Solana: 120.000 wETH (unos 320-326 M$) emitidos sin respaldo por un fallo de verificación de firmas; Jump Crypto repuso los 120.000 ETH.",
+          "fuente": "The Block, 3-feb-2022",
+          "url": "https://www.theblock.co/post/132909/wormhole-replenishes-its-blockchain-bridge-after-325-million-exploit",
+          "nivel": "S"
+        }
       ],
-      "cubre_partes": ["A"],
+      "cubre_partes": [
+        "A"
+      ],
       "visibilidad_supervisor": "Ninguna específica."
     },
     {
@@ -248,9 +489,17 @@
       "que_es": "Cada aplicación elige qué verificadores (DVN) confirman sus mensajes entre cadenas.",
       "que_no_es": "No es un libro común; la seguridad depende de la configuración de cada aplicación.",
       "hechos": [
-        {"fecha": "2026-04-18", "hecho": "Explotación del puente rsETH de Kelp DAO construido con LayerZero: 116.500 rsETH (unos 292 M$). El informe de LayerZero (20-may-2026, según prensa) dice que Kelp había pasado de 2-de-2 a 1-de-1 DVN y atribuye el ataque a actores vinculados a Corea del Norte; Kelp discute ese relato.", "fuente": "The Block, 20-abr-2026", "url": "https://www.theblock.co/news/ecosystems/2026-04-20-layerzero-kelp-dao-lazarus-398028", "nivel": "S"}
+        {
+          "fecha": "2026-04-18",
+          "hecho": "Explotación del puente rsETH de Kelp DAO construido con LayerZero: 116.500 rsETH (unos 292 M$). El informe de LayerZero (20-may-2026, según prensa) dice que Kelp había pasado de 2-de-2 a 1-de-1 DVN y atribuye el ataque a actores vinculados a Corea del Norte; Kelp discute ese relato.",
+          "fuente": "The Block, 20-abr-2026",
+          "url": "https://www.theblock.co/news/ecosystems/2026-04-20-layerzero-kelp-dao-lazarus-398028",
+          "nivel": "S"
+        }
       ],
-      "cubre_partes": ["A"],
+      "cubre_partes": [
+        "A"
+      ],
       "visibilidad_supervisor": "Ninguna específica."
     },
     {
@@ -261,44 +510,198 @@
       "que_es": "ISO 20022 es el formato de mensajes financieros (Swift, sistemas de pago). ISO 24165 asigna un identificador único (DTI) a cada token; su autoridad de registro es la DTI Foundation (DTIF).",
       "que_no_es": "No son redes ni libros: permiten que distintos sistemas y supervisores nombren y lean lo mismo.",
       "hechos": [
-        {"fecha": "2025-03-24", "hecho": "Reglamento Delegado (UE) 2025/421 (MiCA, libros blancos): cuando exista DTI ISO 24165, el libro blanco debe identificarse con él; si no, con un identificador aprobado por ESMA.", "fuente": "EUR-Lex, Reglamento Delegado (UE) 2025/421", "url": "https://eur-lex.europa.eu/eli/reg_del/2025/421/oj/eng", "nivel": "S"},
-        {"fecha": "2025-11-28", "hecho": "ESMA: las plataformas de negociación CASP deben tomar el DTI del registro de la DTIF y pedir su creación si no existe.", "fuente": "ESMA, declaración ESMA75-1303207761-6284", "url": "https://www.esma.europa.eu/sites/default/files/2025-11/ESMA75-1303207761-6284_Statement_to_support_the_smooth_implementation_of_MiCA_standards_and_format.pdf", "nivel": "S"}
+        {
+          "fecha": "2025-03-24",
+          "hecho": "Reglamento Delegado (UE) 2025/421 (MiCA, libros blancos): cuando exista DTI ISO 24165, el libro blanco debe identificarse con él; si no, con un identificador aprobado por ESMA.",
+          "fuente": "EUR-Lex, Reglamento Delegado (UE) 2025/421",
+          "url": "https://eur-lex.europa.eu/eli/reg_del/2025/421/oj/eng",
+          "nivel": "S"
+        },
+        {
+          "fecha": "2025-11-28",
+          "hecho": "ESMA: las plataformas de negociación CASP deben tomar el DTI del registro de la DTIF y pedir su creación si no existe.",
+          "fuente": "ESMA, declaración ESMA75-1303207761-6284",
+          "url": "https://www.esma.europa.eu/sites/default/files/2025-11/ESMA75-1303207761-6284_Statement_to_support_the_smooth_implementation_of_MiCA_standards_and_format.pdf",
+          "nivel": "S"
+        }
       ],
-      "cubre_partes": ["D"],
+      "cubre_partes": [
+        "D"
+      ],
       "visibilidad_supervisor": "Facilita que supervisores agreguen datos por token entre cadenas, pero solo de lo que les reportan las entidades."
     }
   ],
   "hipotesis": {
     "a_favor": [
-      {"hecho": "Existen protocolos que ya conectan decenas de cadenas en producción (CCIP, CCTP, IBC, Wormhole, LayerZero).", "fuente": "Ver iniciativas ccip, cctp, ibc", "nivel": "P/S", "parte": "A"},
-      {"hecho": "La mayor depositaria de EE. UU. (DTC) tiene una estrategia declarada multicadena: Canton y Besu en producción; Stellar (1S-2027) y Solana (2S-2027) anunciadas; más redes en 2027.", "fuente": "DTCC, comunicados 27-may, 28-oct y 12-nov-2026", "nivel": "P", "parte": "A, D"},
-      {"hecho": "Bancos centrales prueban una plataforma compartida con reservas y depósitos tokenizados en la que ellos mismos participan (Agorá, pruebas con valor real jul-2026).", "fuente": "BIS, página de pruebas con valor real de Agorá (jul-2026)", "url": "https://www.bis.org/about/bisih/topics/fmis/agora/rvt.htm", "nivel": "P", "parte": "C, D"},
-      {"hecho": "Swift tiene en piloto vivo un libro compartido para depósitos tokenizados de 17 bancos.", "fuente": "Swift, 22-oct-2026 (swift-liquidacion.json)", "nivel": "P", "parte": "C"},
-      {"hecho": "Los estándares comunes avanzan: MiCA exige DTI (ISO 24165) en libros blancos y ESMA pide a las plataformas usarlo.", "fuente": "Reglamento Delegado (UE) 2025/421; ESMA 28-nov-2025", "nivel": "S", "parte": "D"}
+      {
+        "hecho": "Existen protocolos que ya conectan decenas de cadenas en producción (CCIP, CCTP, IBC, Wormhole, LayerZero).",
+        "fuente": "Ver iniciativas ccip, cctp, ibc",
+        "nivel": "P/S",
+        "parte": "A"
+      },
+      {
+        "hecho": "La mayor depositaria de EE. UU. (DTC) tiene una estrategia declarada multicadena: Canton y Besu en producción; Stellar (1S-2027) y Solana (2S-2027) anunciadas; más redes en 2027.",
+        "fuente": "DTCC, comunicados 27-may, 28-oct y 12-nov-2026",
+        "nivel": "P",
+        "parte": "A, D"
+      },
+      {
+        "hecho": "Bancos centrales prueban una plataforma compartida con reservas y depósitos tokenizados en la que ellos mismos participan (Agorá, pruebas con valor real jul-2026).",
+        "fuente": "BIS, página de pruebas con valor real de Agorá (jul-2026)",
+        "url": "https://www.bis.org/about/bisih/topics/fmis/agora/rvt.htm",
+        "nivel": "P",
+        "parte": "C, D"
+      },
+      {
+        "hecho": "Swift tiene en piloto vivo un libro compartido para depósitos tokenizados de 17 bancos.",
+        "fuente": "Swift, 22-oct-2026 (swift-liquidacion.json)",
+        "nivel": "P",
+        "parte": "C"
+      },
+      {
+        "hecho": "Los estándares comunes avanzan: MiCA exige DTI (ISO 24165) en libros blancos y ESMA pide a las plataformas usarlo.",
+        "fuente": "Reglamento Delegado (UE) 2025/421; ESMA 28-nov-2025",
+        "nivel": "S",
+        "parte": "D"
+      }
     ],
     "en_contra": [
-      {"hecho": "El BIS dice expresamente que su libro unificado no es «un libro para gobernarlos a todos» y contempla varios libros o una «red de redes».", "fuente": "BIS, Informe Económico Anual 2023, cap. III", "nivel": "P", "parte": "B, C"},
-      {"hecho": "Las iniciativas con supervisor dentro (Agorá, Fnality, Partior, Canton/DTCC, Swift) son permisionadas o privadas, no capas públicas abiertas.", "fuente": "Ver iniciativas", "nivel": "P/S", "parte": "B"},
-      {"hecho": "Los protocolos que sí interconectan cadenas públicas (CCIP, CCTP, IBC, LayerZero, Wormhole) pasan mensajes: no consolidan un libro mayor común de las demás ni tienen un supervisor con acceso especial.", "fuente": "Documentación y notas de cada protocolo", "nivel": "S", "parte": "C, D"},
-      {"hecho": "Hay varias redes rivales de interconexión, no una: CCIP, CCTP, LayerZero, Wormhole, IBC, Polkadot XCM, más las privadas.", "fuente": "Ver nodos_y_enlaces", "nivel": "S", "parte": "B"},
-      {"hecho": "Los puentes entre cadenas han sufrido grandes pérdidas (Wormhole 2022, unos 320 M$; Kelp/LayerZero abr-2026, unos 292 M$), un obstáculo para usarlos como capa de registro de referencia.", "fuente": "The Block, 2022 y 2026", "nivel": "S", "parte": "A"},
-      {"hecho": "DTCC conecta su servicio a cada red por separado y solo para sus propios valores tokenizados.", "fuente": "DTCC, 28-oct-2026", "nivel": "P", "parte": "C"}
+      {
+        "hecho": "El BIS dice expresamente que su libro unificado no es «un libro para gobernarlos a todos» y contempla varios libros o una «red de redes».",
+        "fuente": "BIS, Informe Económico Anual 2023, cap. III",
+        "nivel": "P",
+        "parte": "B, C"
+      },
+      {
+        "hecho": "Las iniciativas con supervisor dentro (Agorá, Fnality, Partior, Canton/DTCC, Swift) son permisionadas o privadas, no capas públicas abiertas.",
+        "fuente": "Ver iniciativas",
+        "nivel": "P/S",
+        "parte": "B"
+      },
+      {
+        "hecho": "Los protocolos que sí interconectan cadenas públicas (CCIP, CCTP, IBC, LayerZero, Wormhole) pasan mensajes: no consolidan un libro mayor común de las demás ni tienen un supervisor con acceso especial.",
+        "fuente": "Documentación y notas de cada protocolo",
+        "nivel": "S",
+        "parte": "C, D"
+      },
+      {
+        "hecho": "Hay varias redes rivales de interconexión, no una: CCIP, CCTP, LayerZero, Wormhole, IBC, Polkadot XCM, más las privadas.",
+        "fuente": "Ver nodos_y_enlaces",
+        "nivel": "S",
+        "parte": "B"
+      },
+      {
+        "hecho": "Los puentes entre cadenas han sufrido grandes pérdidas (Wormhole 2022, unos 320 M$; Kelp/LayerZero abr-2026, unos 292 M$), un obstáculo para usarlos como capa de registro de referencia.",
+        "fuente": "The Block, 2022 y 2026",
+        "nivel": "S",
+        "parte": "A"
+      },
+      {
+        "hecho": "DTCC conecta su servicio a cada red por separado y solo para sus propios valores tokenizados.",
+        "fuente": "DTCC, 28-oct-2026",
+        "nivel": "P",
+        "parte": "C"
+      }
     ],
     "cobertura_por_iniciativa": [
-      {"iniciativa": "ccip", "A": true, "B": "parcial (protocolo de una empresa)", "C": false, "D": false},
-      {"iniciativa": "cctp", "A": true, "B": false, "C": false, "D": "solo vía el emisor"},
-      {"iniciativa": "canton", "A": false, "B": "parcial (red de acceso filtrado)", "C": true, "D": "posible (vistas selectivas) [VERIFICAR]"},
-      {"iniciativa": "dtcc", "A": true, "B": false, "C": "solo sus activos", "D": "SEC sobre DTC"},
-      {"iniciativa": "swift-ledger", "A": false, "B": false, "C": true, "D": "[VERIFICAR]"},
-      {"iniciativa": "agora", "A": false, "B": false, "C": true, "D": true},
-      {"iniciativa": "partior", "A": false, "B": false, "C": true, "D": "[VERIFICAR]"},
-      {"iniciativa": "fnality", "A": false, "B": false, "C": true, "D": true},
-      {"iniciativa": "ibc", "A": true, "B": true, "C": false, "D": false},
-      {"iniciativa": "polkadot", "A": "dentro de su ecosistema", "B": true, "C": false, "D": false},
-      {"iniciativa": "wormhole", "A": true, "B": "parcial", "C": false, "D": false},
-      {"iniciativa": "layerzero", "A": true, "B": "parcial", "C": false, "D": false},
-      {"iniciativa": "mandala", "A": false, "B": false, "C": false, "D": "pruebas de cumplimiento"},
-      {"iniciativa": "iso", "A": false, "B": true, "C": false, "D": "ayuda a agregar datos"}
+      {
+        "iniciativa": "ccip",
+        "A": true,
+        "B": "parcial (protocolo de una empresa)",
+        "C": false,
+        "D": false
+      },
+      {
+        "iniciativa": "cctp",
+        "A": true,
+        "B": false,
+        "C": false,
+        "D": "solo vía el emisor"
+      },
+      {
+        "iniciativa": "canton",
+        "A": false,
+        "B": "parcial (red de acceso filtrado)",
+        "C": true,
+        "D": "posible (vistas selectivas) [VERIFICAR]"
+      },
+      {
+        "iniciativa": "dtcc",
+        "A": true,
+        "B": false,
+        "C": "solo sus activos",
+        "D": "SEC sobre DTC"
+      },
+      {
+        "iniciativa": "swift-ledger",
+        "A": false,
+        "B": false,
+        "C": true,
+        "D": "[VERIFICAR]"
+      },
+      {
+        "iniciativa": "agora",
+        "A": false,
+        "B": false,
+        "C": true,
+        "D": true
+      },
+      {
+        "iniciativa": "partior",
+        "A": false,
+        "B": false,
+        "C": true,
+        "D": "[VERIFICAR]"
+      },
+      {
+        "iniciativa": "fnality",
+        "A": false,
+        "B": false,
+        "C": true,
+        "D": true
+      },
+      {
+        "iniciativa": "ibc",
+        "A": true,
+        "B": true,
+        "C": false,
+        "D": false
+      },
+      {
+        "iniciativa": "polkadot",
+        "A": "dentro de su ecosistema",
+        "B": true,
+        "C": false,
+        "D": false
+      },
+      {
+        "iniciativa": "wormhole",
+        "A": true,
+        "B": "parcial",
+        "C": false,
+        "D": false
+      },
+      {
+        "iniciativa": "layerzero",
+        "A": true,
+        "B": "parcial",
+        "C": false,
+        "D": false
+      },
+      {
+        "iniciativa": "mandala",
+        "A": false,
+        "B": false,
+        "C": false,
+        "D": "pruebas de cumplimiento"
+      },
+      {
+        "iniciativa": "iso",
+        "A": false,
+        "B": true,
+        "C": false,
+        "D": "ayuda a agregar datos"
+      }
     ],
     "lectura": "HECHO: ninguna iniciativa encontrada cubre a la vez las cuatro partes (A interconexión de muchas cadenas, B capa común/pública, C libro de cuentas de las demás, D auditable por supervisor). Las que cubren C y D son permisionadas y no leen cadenas públicas; las que cubren A no tienen supervisor ni libro común.",
     "opiniones": [
@@ -307,13 +710,62 @@
     ]
   },
   "quien_podria_supervisar": [
-    {"supervisor": "SEC (EE. UU.)", "sobre": "DTC/DTCC", "que_ve_hoy": "Lo que DTC registra y reporta de sus valores tokenizados (carta de no acción dic-2025).", "que_no_ve": "No hay fuente de que tenga un nodo o vista directa en Canton u otras redes.", "fuente": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live", "nivel": "P"},
-    {"supervisor": "DTCC (como infraestructura, no supervisor público)", "sobre": "Canton y Besu privada", "que_ve_hoy": "Sus activos tokenizados y las operaciones de sus participantes en DTS.", "que_no_ve": "Contratos y transacciones ajenos de esas redes (privacidad por subtransacción en Canton).", "fuente": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live", "nivel": "P"},
-    {"supervisor": "Bancos centrales de Agorá (7: según prensa, Banco de Francia, Banco de Inglaterra, Banco de Japón, Banco de Corea, Banco de México, BNS y Fed de Nueva York)", "sobre": "Plataforma Agorá", "que_ve_hoy": "Las operaciones de la propia plataforma piloto.", "que_no_ve": "Cadenas públicas externas.", "fuente": "https://www.bis.org/publications/project-agora-shared-programmable-platform-wholesale-cross-border-payments", "nivel": "S"},
-    {"supervisor": "Banco de Inglaterra", "sobre": "Fnality £FnPS", "que_ve_hoy": "La cuenta ómnibus en su RTGS que respalda el sistema.", "que_no_ve": "Otras redes.", "fuente": "https://fnality.com/news/fnality-commences-initial-phase-of-sterling-payment-operations-in-a-world-first", "nivel": "S"},
-    {"supervisor": "MAS (Singapur)", "sobre": "Pilotos de Guardian y BLOOM", "que_ve_hoy": "Los pilotos que patrocina.", "que_no_ve": "Una capa común: no existe en esos programas.", "fuente": "https://www.mas.gov.sg/news/media-releases/2025/mas-launches-bloom-initiative-to-extend-settlement-capabilities", "nivel": "S"},
-    {"supervisor": "ESMA y autoridades nacionales bajo MiCA (en España, CNMV para CASP y Banco de España para EMT de entidades de crédito/dinero electrónico [VERIFICAR reparto])", "sobre": "Proveedores de servicios (CASP) y emisores autorizados en la UE", "que_ve_hoy": "Lo que reportan las entidades autorizadas (libros blancos con DTI, datos de negociación, regla de viaje del Reglamento (UE) 2023/1113).", "que_no_ve": "No supervisan cadenas ni protocolos como tales; leen datos on-chain públicos como cualquiera.", "fuente": "https://www.esma.europa.eu/sites/default/files/2025-11/ESMA75-1303207761-6284_Statement_to_support_the_smooth_implementation_of_MiCA_standards_and_format.pdf", "nivel": "S"},
-    {"supervisor": "Supervisores del emisor de stablecoins (p. ej. de Circle)", "sobre": "USDC/EURC y CCTP", "que_ve_hoy": "Emisión, reservas y quemas a través del emisor.", "que_no_ve": "Contratos de terceros en las cadenas por las que circula.", "fuente": "https://developers.circle.com/release-notes/cctp-2026", "nivel": "S"}
+    {
+      "supervisor": "SEC (EE. UU.)",
+      "sobre": "DTC/DTCC",
+      "que_ve_hoy": "Lo que DTC registra y reporta de sus valores tokenizados (carta de no acción dic-2025).",
+      "que_no_ve": "No hay fuente de que tenga un nodo o vista directa en Canton u otras redes.",
+      "fuente": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+      "nivel": "P"
+    },
+    {
+      "supervisor": "DTCC (como infraestructura, no supervisor público)",
+      "sobre": "Canton y Besu privada",
+      "que_ve_hoy": "Sus activos tokenizados y las operaciones de sus participantes en DTS.",
+      "que_no_ve": "Contratos y transacciones ajenos de esas redes (privacidad por subtransacción en Canton).",
+      "fuente": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+      "nivel": "P"
+    },
+    {
+      "supervisor": "Bancos centrales de Agorá (7: según prensa, Banco de Francia, Banco de Inglaterra, Banco de Japón, Banco de Corea, Banco de México, BNS y Fed de Nueva York)",
+      "sobre": "Plataforma Agorá",
+      "que_ve_hoy": "Las operaciones de la propia plataforma piloto.",
+      "que_no_ve": "Cadenas públicas externas.",
+      "fuente": "https://www.bis.org/publications/project-agora-shared-programmable-platform-wholesale-cross-border-payments",
+      "nivel": "S"
+    },
+    {
+      "supervisor": "Banco de Inglaterra",
+      "sobre": "Fnality £FnPS",
+      "que_ve_hoy": "La cuenta ómnibus en su RTGS que respalda el sistema.",
+      "que_no_ve": "Otras redes.",
+      "fuente": "https://fnality.com/news/fnality-commences-initial-phase-of-sterling-payment-operations-in-a-world-first",
+      "nivel": "S"
+    },
+    {
+      "supervisor": "MAS (Singapur)",
+      "sobre": "Pilotos de Guardian y BLOOM",
+      "que_ve_hoy": "Los pilotos que patrocina.",
+      "que_no_ve": "Una capa común: no existe en esos programas.",
+      "fuente": "https://www.mas.gov.sg/news/media-releases/2025/mas-launches-bloom-initiative-to-extend-settlement-capabilities",
+      "nivel": "S"
+    },
+    {
+      "supervisor": "ESMA y autoridades nacionales bajo MiCA (en España, CNMV para CASP y Banco de España para EMT de entidades de crédito/dinero electrónico [VERIFICAR reparto])",
+      "sobre": "Proveedores de servicios (CASP) y emisores autorizados en la UE",
+      "que_ve_hoy": "Lo que reportan las entidades autorizadas (libros blancos con DTI, datos de negociación, regla de viaje del Reglamento (UE) 2023/1113).",
+      "que_no_ve": "No supervisan cadenas ni protocolos como tales; leen datos on-chain públicos como cualquiera.",
+      "fuente": "https://www.esma.europa.eu/sites/default/files/2025-11/ESMA75-1303207761-6284_Statement_to_support_the_smooth_implementation_of_MiCA_standards_and_format.pdf",
+      "nivel": "S"
+    },
+    {
+      "supervisor": "Supervisores del emisor de stablecoins (p. ej. de Circle)",
+      "sobre": "USDC/EURC y CCTP",
+      "que_ve_hoy": "Emisión, reservas y quemas a través del emisor.",
+      "que_no_ve": "Contratos de terceros en las cadenas por las que circula.",
+      "fuente": "https://developers.circle.com/release-notes/cctp-2026",
+      "nivel": "S"
+    }
   ],
   "huecos": [
     "No se encontró una iniciativa anunciada que conecte entre sí los libros permisionados (Agorá, Swift, Canton/DTCC, Partior, Fnality).",
@@ -321,7 +773,8 @@
     "Las cifras de CCIP y CCTP vienen de las propias empresas o prensa; no hay auditoría independiente leída.",
     "Recuento oficial de cadenas de CCIP, Wormhole e IBC en 2026 no leído en fuente primaria.",
     "Estado de Fnality en USD/EUR y de la Collateral AppChain de DTCC (T4-2026) sin confirmación primaria.",
-    "No se abrió el PDF completo de Agorá (97 páginas) para ver el diseño de acceso de supervisores."
+    "No se abrió el PDF completo de Agorá (97 páginas) para ver el diseño de acceso de supervisores.",
+    "Sin enlace primario (leído el 15-nov-2026): Algorand e IOTA con CCIP o CCTP; XRPL con CCIP o CCTP (las páginas del directorio de Chainlink devolvieron 404); Canton con Chainlink; Swift con las cadenas; Partior con Fnality. La página de BIS Agorá (27-may-2026) no nombra a XRPL, Hedera, BNB, Partior, Fnality, Swift ni Nexus (solo se leyó la web, no el PDF de 97 páginas)."
   ],
   "lo_que_no_sabemos": [
     "Si DTCC, Swift o los bancos centrales de Agorá conectarán sus plataformas entre sí o a cadenas públicas con un protocolo común.",
@@ -333,55 +786,464 @@
   "nodos_y_enlaces": {
     "leyenda": "tipo de nodo: cadena_publica, red_institucional, plataforma_bc (banco central), protocolo_interop, infraestructura, estandar, supervisor. Nodos sin enlaces (agora, partior, fnality, nexus) = islas: no se encontró conexión anunciada con otras redes del mapa. Estado del enlace: produccion, piloto, anunciado, concepto. id_cadena enlaza con explorador/cadenas.json cuando existe.",
     "nodos": [
-      {"id": "ethereum", "etiqueta": "Ethereum (y capas 2)", "tipo": "cadena_publica", "id_cadena": "ethereum"},
-      {"id": "solana", "etiqueta": "Solana", "tipo": "cadena_publica", "id_cadena": "solana"},
-      {"id": "stellar", "etiqueta": "Stellar", "tipo": "cadena_publica", "id_cadena": "stellar"},
-      {"id": "avalanche", "etiqueta": "Avalanche", "tipo": "cadena_publica", "id_cadena": "avalanche"},
-      {"id": "polygon", "etiqueta": "Polygon", "tipo": "cadena_publica", "id_cadena": "polygon"},
-      {"id": "cosmos", "etiqueta": "Cadenas Cosmos", "tipo": "cadena_publica"},
-      {"id": "otras-publicas", "etiqueta": "Otras cadenas públicas (Sui, Aptos, Injective, Arc…)", "tipo": "cadena_publica"},
-      {"id": "canton", "etiqueta": "Canton Network", "tipo": "red_institucional", "id_cadena": "canton"},
-      {"id": "besu-dtcc", "etiqueta": "Red privada Besu de DTCC", "tipo": "red_institucional"},
-      {"id": "dtcc", "etiqueta": "DTCC / DTC (Servicio de Tokenización)", "tipo": "infraestructura"},
-      {"id": "swift-ledger", "etiqueta": "Libro compartido de Swift", "tipo": "infraestructura"},
-      {"id": "partior", "etiqueta": "Partior", "tipo": "red_institucional"},
-      {"id": "fnality", "etiqueta": "Fnality £FnPS", "tipo": "red_institucional"},
-      {"id": "agora", "etiqueta": "Agorá (BIS + 7 bancos centrales)", "tipo": "plataforma_bc"},
-      {"id": "nexus", "etiqueta": "Nexus (pagos inmediatos)", "tipo": "plataforma_bc"},
-      {"id": "ccip", "etiqueta": "Chainlink CCIP / CRE", "tipo": "protocolo_interop", "id_cadena": "chainlink"},
-      {"id": "cctp", "etiqueta": "Circle CCTP", "tipo": "protocolo_interop"},
-      {"id": "ibc", "etiqueta": "IBC / Eureka", "tipo": "protocolo_interop"},
-      {"id": "layerzero", "etiqueta": "LayerZero", "tipo": "protocolo_interop"},
-      {"id": "wormhole", "etiqueta": "Wormhole", "tipo": "protocolo_interop"},
-      {"id": "iso", "etiqueta": "ISO 20022 / ISO 24165 (DTI)", "tipo": "estandar"},
-      {"id": "sec", "etiqueta": "SEC", "tipo": "supervisor"},
-      {"id": "esma", "etiqueta": "ESMA / ANC (MiCA)", "tipo": "supervisor"},
-      {"id": "mas", "etiqueta": "MAS (Guardian / BLOOM)", "tipo": "supervisor"}
+      {
+        "id": "ethereum",
+        "etiqueta": "Ethereum (y capas 2)",
+        "tipo": "cadena_publica",
+        "id_cadena": "ethereum"
+      },
+      {
+        "id": "solana",
+        "etiqueta": "Solana",
+        "tipo": "cadena_publica",
+        "id_cadena": "solana"
+      },
+      {
+        "id": "stellar",
+        "etiqueta": "Stellar",
+        "tipo": "cadena_publica",
+        "id_cadena": "stellar"
+      },
+      {
+        "id": "avalanche",
+        "etiqueta": "Avalanche",
+        "tipo": "cadena_publica",
+        "id_cadena": "avalanche"
+      },
+      {
+        "id": "polygon",
+        "etiqueta": "Polygon",
+        "tipo": "cadena_publica",
+        "id_cadena": "polygon"
+      },
+      {
+        "id": "cosmos",
+        "etiqueta": "Cadenas Cosmos",
+        "tipo": "cadena_publica"
+      },
+      {
+        "id": "otras-publicas",
+        "etiqueta": "Otras cadenas públicas (Sui, Aptos, Injective, Arc…)",
+        "tipo": "cadena_publica"
+      },
+      {
+        "id": "canton",
+        "etiqueta": "Canton Network",
+        "tipo": "red_institucional",
+        "id_cadena": "canton"
+      },
+      {
+        "id": "besu-dtcc",
+        "etiqueta": "Red privada Besu de DTCC",
+        "tipo": "red_institucional"
+      },
+      {
+        "id": "dtcc",
+        "etiqueta": "DTCC / DTC (Servicio de Tokenización)",
+        "tipo": "infraestructura"
+      },
+      {
+        "id": "swift-ledger",
+        "etiqueta": "Libro compartido de Swift",
+        "tipo": "infraestructura"
+      },
+      {
+        "id": "partior",
+        "etiqueta": "Partior",
+        "tipo": "red_institucional"
+      },
+      {
+        "id": "fnality",
+        "etiqueta": "Fnality £FnPS",
+        "tipo": "red_institucional"
+      },
+      {
+        "id": "agora",
+        "etiqueta": "Agorá (BIS + 7 bancos centrales)",
+        "tipo": "plataforma_bc"
+      },
+      {
+        "id": "nexus",
+        "etiqueta": "Nexus (pagos inmediatos)",
+        "tipo": "plataforma_bc"
+      },
+      {
+        "id": "ccip",
+        "etiqueta": "Chainlink CCIP / CRE",
+        "tipo": "protocolo_interop",
+        "id_cadena": "chainlink"
+      },
+      {
+        "id": "cctp",
+        "etiqueta": "Circle CCTP",
+        "tipo": "protocolo_interop"
+      },
+      {
+        "id": "ibc",
+        "etiqueta": "IBC / Eureka",
+        "tipo": "protocolo_interop"
+      },
+      {
+        "id": "layerzero",
+        "etiqueta": "LayerZero",
+        "tipo": "protocolo_interop"
+      },
+      {
+        "id": "wormhole",
+        "etiqueta": "Wormhole",
+        "tipo": "protocolo_interop"
+      },
+      {
+        "id": "iso",
+        "etiqueta": "ISO 20022 / ISO 24165 (DTI)",
+        "tipo": "estandar"
+      },
+      {
+        "id": "sec",
+        "etiqueta": "SEC",
+        "tipo": "supervisor"
+      },
+      {
+        "id": "esma",
+        "etiqueta": "ESMA / ANC (MiCA)",
+        "tipo": "supervisor"
+      },
+      {
+        "id": "mas",
+        "etiqueta": "MAS (Guardian / BLOOM)",
+        "tipo": "supervisor"
+      },
+      {
+        "id": "xrpl",
+        "etiqueta": "XRP Ledger (XRPL)",
+        "tipo": "cadena_publica",
+        "id_cadena": "xrpl"
+      },
+      {
+        "id": "hedera",
+        "etiqueta": "Hedera",
+        "tipo": "cadena_publica",
+        "id_cadena": "hedera"
+      },
+      {
+        "id": "bnb",
+        "etiqueta": "BNB Chain",
+        "tipo": "cadena_publica",
+        "id_cadena": "bnb"
+      },
+      {
+        "id": "xdc",
+        "etiqueta": "XDC Network",
+        "tipo": "cadena_publica",
+        "id_cadena": "xdc"
+      },
+      {
+        "id": "plume",
+        "etiqueta": "Plume",
+        "tipo": "cadena_publica",
+        "id_cadena": "plume"
+      }
     ],
     "enlaces": [
-      {"de": "dtcc", "a": "canton", "tipo": "servicio de tokenización integrado", "estado": "produccion", "fecha": "2026-10-28", "fuente": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live", "nivel": "P"},
-      {"de": "dtcc", "a": "besu-dtcc", "tipo": "servicio de tokenización integrado", "estado": "produccion", "fecha": "2026-10-28", "fuente": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live", "nivel": "P"},
-      {"de": "dtcc", "a": "stellar", "tipo": "conexión del servicio de tokenización", "estado": "anunciado", "fecha": "2026-05-27", "fuente": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy", "nivel": "P"},
-      {"de": "dtcc", "a": "solana", "tipo": "conexión del servicio de tokenización", "estado": "anunciado", "fecha": "2026-11-12", "fuente": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana", "nivel": "P"},
-      {"de": "dtcc", "a": "ccip", "tipo": "orquestación y datos (CRE) para la Collateral AppChain", "estado": "anunciado", "fecha": "2026-05-12", "fuente": "https://www.dtcc.com/press-releases/2026/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management", "nivel": "S"},
-      {"de": "sec", "a": "dtcc", "tipo": "supervisión y carta de no acción", "estado": "produccion", "fecha": "2025-12", "fuente": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live", "nivel": "P"},
-      {"de": "ccip", "a": "ethereum", "tipo": "mensajería y tokens", "estado": "produccion", "fecha": "2026-07-24", "fuente": "https://chain.link/blog/quarterly-review-q2-2026", "nivel": "S"},
-      {"de": "ccip", "a": "solana", "tipo": "mensajería y tokens", "estado": "produccion", "fecha": "2025", "fuente": "https://blog.chain.link/ccip-v1-6-is-now-live/", "nivel": "S"},
-      {"de": "ccip", "a": "avalanche", "tipo": "mensajería y tokens", "estado": "produccion", "fecha": "[VERIFICAR fecha]", "fuente": "https://chain.link/blog/quarterly-review-q2-2026", "nivel": "V"},
-      {"de": "ccip", "a": "otras-publicas", "tipo": "mensajería y tokens", "estado": "produccion", "fecha": "2026-07-24", "fuente": "https://chain.link/blog/quarterly-review-q2-2026", "nivel": "P"},
-      {"de": "cctp", "a": "ethereum", "tipo": "quema y emisión de USDC", "estado": "produccion", "fecha": "2026", "fuente": "https://developers.circle.com/release-notes/cctp-2026", "nivel": "S"},
-      {"de": "cctp", "a": "solana", "tipo": "quema y emisión de USDC", "estado": "produccion", "fecha": "2026", "fuente": "https://developers.circle.com/release-notes/cctp-2026", "nivel": "S"},
-      {"de": "cctp", "a": "stellar", "tipo": "quema y emisión de USDC", "estado": "produccion", "fecha": "2026-05-18", "fuente": "https://developers.circle.com/release-notes/cctp-2026", "nivel": "P"},
-      {"de": "cctp", "a": "otras-publicas", "tipo": "quema y emisión de USDC", "estado": "produccion", "fecha": "2026-10-08", "fuente": "https://developers.circle.com/release-notes/cctp-2026", "nivel": "P"},
-      {"de": "ibc", "a": "cosmos", "tipo": "clientes ligeros entre cadenas", "estado": "produccion", "fecha": "2025-04-10", "fuente": "https://www.theblock.co/post/350316/interchain-labs-launches-ibc-eureka-to-connect-ethereum-to-the-cosmos-ecosystem", "nivel": "S"},
-      {"de": "ibc", "a": "ethereum", "tipo": "IBC Eureka", "estado": "produccion", "fecha": "2025-04-10", "fuente": "https://www.theblock.co/post/350316/interchain-labs-launches-ibc-eureka-to-connect-ethereum-to-the-cosmos-ecosystem", "nivel": "S"},
-      {"de": "layerzero", "a": "ethereum", "tipo": "mensajería con DVN", "estado": "produccion", "fecha": "2026-04-18", "fuente": "https://www.theblock.co/news/ecosystems/2026-04-20-layerzero-kelp-dao-lazarus-398028", "nivel": "S", "incidente": "Kelp rsETH, unos 292 M$"},
-      {"de": "wormhole", "a": "solana", "tipo": "puente con guardianes", "estado": "produccion", "fecha": "2022-02-02", "fuente": "https://www.theblock.co/post/132909/wormhole-replenishes-its-blockchain-bridge-after-325-million-exploit", "nivel": "S", "incidente": "120.000 wETH, unos 320 M$"},
-      {"de": "wormhole", "a": "ethereum", "tipo": "puente con guardianes", "estado": "produccion", "fecha": "2022-02-02", "fuente": "https://www.theblock.co/post/132909/wormhole-replenishes-its-blockchain-bridge-after-325-million-exploit", "nivel": "S"},
-      {"de": "swift-ledger", "a": "iso", "tipo": "mensajería ISO 20022", "estado": "piloto", "fecha": "2026-10-22", "fuente": "https://www.swift.com/about-us/media-centre/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure", "nivel": "S"},
-      {"de": "esma", "a": "iso", "tipo": "DTI obligatorio en libros blancos MiCA", "estado": "produccion", "fecha": "2025-03-24", "fuente": "https://eur-lex.europa.eu/eli/reg_del/2025/421/oj/eng", "nivel": "S"},
-      {"de": "mas", "a": "polygon", "tipo": "piloto Guardian (DBS, J.P. Morgan, SBI)", "estado": "piloto", "fecha": "2022-11-02", "fuente": "https://www.mas.gov.sg/news/media-releases/2022/first-industry-pilot-for-digital-asset-and-decentralised-finance-goes-live", "nivel": "S"},
-      {"de": "mas", "a": "avalanche", "tipo": "piloto Guardian (Citi, FX simulado en subred permisionada)", "estado": "piloto", "fecha": "[VERIFICAR fecha]", "fuente": "https://avax.network/blog/citi-fx-solution-avalanche", "nivel": "S"}
+      {
+        "de": "dtcc",
+        "a": "canton",
+        "tipo": "servicio de tokenización integrado",
+        "estado": "produccion",
+        "fecha": "2026-10-28",
+        "fuente": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+        "nivel": "P"
+      },
+      {
+        "de": "dtcc",
+        "a": "besu-dtcc",
+        "tipo": "servicio de tokenización integrado",
+        "estado": "produccion",
+        "fecha": "2026-10-28",
+        "fuente": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+        "nivel": "P"
+      },
+      {
+        "de": "dtcc",
+        "a": "stellar",
+        "tipo": "conexión del servicio de tokenización",
+        "estado": "anunciado",
+        "fecha": "2026-05-27",
+        "fuente": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy",
+        "nivel": "P"
+      },
+      {
+        "de": "dtcc",
+        "a": "solana",
+        "tipo": "conexión del servicio de tokenización",
+        "estado": "anunciado",
+        "fecha": "2026-11-12",
+        "fuente": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana",
+        "nivel": "P"
+      },
+      {
+        "de": "dtcc",
+        "a": "ccip",
+        "tipo": "orquestación y datos (CRE) para la Collateral AppChain",
+        "estado": "anunciado",
+        "fecha": "2026-05-12",
+        "fuente": "https://www.dtcc.com/press-releases/2026/dtcc-collaborates-with-chainlink-to-advance-24-7-collateral-management",
+        "nivel": "S"
+      },
+      {
+        "de": "sec",
+        "a": "dtcc",
+        "tipo": "supervisión y carta de no acción",
+        "estado": "produccion",
+        "fecha": "2025-12",
+        "fuente": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+        "nivel": "P"
+      },
+      {
+        "de": "ccip",
+        "a": "ethereum",
+        "tipo": "mensajería y tokens",
+        "estado": "produccion",
+        "fecha": "2026-07-24",
+        "fuente": "https://chain.link/blog/quarterly-review-q2-2026",
+        "nivel": "S"
+      },
+      {
+        "de": "ccip",
+        "a": "solana",
+        "tipo": "mensajería y tokens",
+        "estado": "produccion",
+        "fecha": "2025",
+        "fuente": "https://blog.chain.link/ccip-v1-6-is-now-live/",
+        "nivel": "S"
+      },
+      {
+        "de": "ccip",
+        "a": "avalanche",
+        "tipo": "mensajería y tokens",
+        "estado": "produccion",
+        "fecha": "[VERIFICAR fecha]",
+        "fuente": "https://chain.link/blog/quarterly-review-q2-2026",
+        "nivel": "V"
+      },
+      {
+        "de": "ccip",
+        "a": "otras-publicas",
+        "tipo": "mensajería y tokens",
+        "estado": "produccion",
+        "fecha": "2026-07-24",
+        "fuente": "https://chain.link/blog/quarterly-review-q2-2026",
+        "nivel": "P"
+      },
+      {
+        "de": "cctp",
+        "a": "ethereum",
+        "tipo": "quema y emisión de USDC",
+        "estado": "produccion",
+        "fecha": "2026",
+        "fuente": "https://developers.circle.com/release-notes/cctp-2026",
+        "nivel": "S"
+      },
+      {
+        "de": "cctp",
+        "a": "solana",
+        "tipo": "quema y emisión de USDC",
+        "estado": "produccion",
+        "fecha": "2026",
+        "fuente": "https://developers.circle.com/release-notes/cctp-2026",
+        "nivel": "S"
+      },
+      {
+        "de": "cctp",
+        "a": "stellar",
+        "tipo": "quema y emisión de USDC",
+        "estado": "produccion",
+        "fecha": "2026-05-18",
+        "fuente": "https://developers.circle.com/release-notes/cctp-2026",
+        "nivel": "P"
+      },
+      {
+        "de": "cctp",
+        "a": "otras-publicas",
+        "tipo": "quema y emisión de USDC",
+        "estado": "produccion",
+        "fecha": "2026-10-08",
+        "fuente": "https://developers.circle.com/release-notes/cctp-2026",
+        "nivel": "P"
+      },
+      {
+        "de": "ibc",
+        "a": "cosmos",
+        "tipo": "clientes ligeros entre cadenas",
+        "estado": "produccion",
+        "fecha": "2025-04-10",
+        "fuente": "https://www.theblock.co/post/350316/interchain-labs-launches-ibc-eureka-to-connect-ethereum-to-the-cosmos-ecosystem",
+        "nivel": "S"
+      },
+      {
+        "de": "ibc",
+        "a": "ethereum",
+        "tipo": "IBC Eureka",
+        "estado": "produccion",
+        "fecha": "2025-04-10",
+        "fuente": "https://www.theblock.co/post/350316/interchain-labs-launches-ibc-eureka-to-connect-ethereum-to-the-cosmos-ecosystem",
+        "nivel": "S"
+      },
+      {
+        "de": "layerzero",
+        "a": "ethereum",
+        "tipo": "mensajería con DVN",
+        "estado": "produccion",
+        "fecha": "2026-04-18",
+        "fuente": "https://www.theblock.co/news/ecosystems/2026-04-20-layerzero-kelp-dao-lazarus-398028",
+        "nivel": "S",
+        "incidente": "Kelp rsETH, unos 292 M$"
+      },
+      {
+        "de": "wormhole",
+        "a": "solana",
+        "tipo": "puente con guardianes",
+        "estado": "produccion",
+        "fecha": "2022-02-02",
+        "fuente": "https://www.theblock.co/post/132909/wormhole-replenishes-its-blockchain-bridge-after-325-million-exploit",
+        "nivel": "S",
+        "incidente": "120.000 wETH, unos 320 M$"
+      },
+      {
+        "de": "wormhole",
+        "a": "ethereum",
+        "tipo": "puente con guardianes",
+        "estado": "produccion",
+        "fecha": "2022-02-02",
+        "fuente": "https://www.theblock.co/post/132909/wormhole-replenishes-its-blockchain-bridge-after-325-million-exploit",
+        "nivel": "S"
+      },
+      {
+        "de": "swift-ledger",
+        "a": "iso",
+        "tipo": "mensajería ISO 20022",
+        "estado": "piloto",
+        "fecha": "2026-10-22",
+        "fuente": "https://www.swift.com/about-us/media-centre/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure",
+        "nivel": "S"
+      },
+      {
+        "de": "esma",
+        "a": "iso",
+        "tipo": "DTI obligatorio en libros blancos MiCA",
+        "estado": "produccion",
+        "fecha": "2025-03-24",
+        "fuente": "https://eur-lex.europa.eu/eli/reg_del/2025/421/oj/eng",
+        "nivel": "S"
+      },
+      {
+        "de": "mas",
+        "a": "polygon",
+        "tipo": "piloto Guardian (DBS, J.P. Morgan, SBI)",
+        "estado": "piloto",
+        "fecha": "2022-11-02",
+        "fuente": "https://www.mas.gov.sg/news/media-releases/2022/first-industry-pilot-for-digital-asset-and-decentralised-finance-goes-live",
+        "nivel": "S"
+      },
+      {
+        "de": "mas",
+        "a": "avalanche",
+        "tipo": "piloto Guardian (Citi, FX simulado en subred permisionada)",
+        "estado": "piloto",
+        "fecha": "[VERIFICAR fecha]",
+        "fuente": "https://avax.network/blog/citi-fx-solution-avalanche",
+        "nivel": "S"
+      },
+      {
+        "de": "ccip",
+        "a": "bnb",
+        "tipo": "soporte de red (CCIP en mainnet)",
+        "estado": "produccion",
+        "fecha": "2023-09-28",
+        "fuente": "https://www.bnbchain.org/en/blog/ccip-is-now-live-on-bnb-chain-unlocking-secure-cross-chain-development/",
+        "nivel": "P"
+      },
+      {
+        "de": "ccip",
+        "a": "hedera",
+        "tipo": "soporte de red (CCIP en mainnet)",
+        "estado": "produccion",
+        "fecha": "2025-04-08",
+        "fuente": "https://hedera.com/blog/hedera-adopts-chainlink-standard-for-cross-chain-interoperability-to-accelerate-ecosystem-adoption",
+        "nivel": "S"
+      },
+      {
+        "de": "ccip",
+        "a": "xdc",
+        "tipo": "soporte de red (CCIP en mainnet)",
+        "estado": "produccion",
+        "fecha": "2025-10-17",
+        "fuente": "https://dev.chain.link/changelog/ccip-on-xdc",
+        "nivel": "S"
+      },
+      {
+        "de": "ccip",
+        "a": "plume",
+        "tipo": "soporte de red (CCIP, 7 carriles)",
+        "estado": "produccion",
+        "fecha": "2026-11-14",
+        "fuente": "explorador/aporta-redes.json (plume.puntos_fuertes.3)",
+        "nivel": "S"
+      },
+      {
+        "de": "cctp",
+        "a": "plume",
+        "tipo": "USDC nativo (dominio 22)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+        "nivel": "P"
+      },
+      {
+        "de": "cctp",
+        "a": "xdc",
+        "tipo": "transferencia estándar (dominio 18)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+        "nivel": "P"
+      },
+      {
+        "de": "cctp",
+        "a": "bnb",
+        "tipo": "solo USYC, no USDC",
+        "estado": "produccion",
+        "fecha": "2026-11-14",
+        "fuente": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+        "nivel": "P"
+      },
+      {
+        "de": "swift-ledger",
+        "a": "ccip",
+        "tipo": "experimento de 2023 con CCIP (Chainlink, parte interesada)",
+        "estado": "piloto",
+        "fecha": "2023-09-15",
+        "fuente": "https://chain.link/blog/dtcc-chainlink-collaboration-capital-markets",
+        "nivel": "P"
+      },
+      {
+        "de": "dtcc",
+        "a": "ccip",
+        "tipo": "experimento de 2023: BondTokens compatibles con CCIP (Chainlink, parte interesada)",
+        "estado": "piloto",
+        "fecha": "2023-09-15",
+        "fuente": "https://chain.link/blog/dtcc-chainlink-collaboration-capital-markets",
+        "nivel": "P"
+      },
+      {
+        "de": "fnality",
+        "a": "dtcc",
+        "tipo": "posible integración con el DTCC Digital Launchpad (la página de Fnality devolvió 403: no leída por mí)",
+        "estado": "concepto",
+        "fecha": "2025-06-17",
+        "fuente": "https://fnality.com/news/fnality-integrates-its-cutting-edge-payment-rail-with-dtcc-digital-launchpad",
+        "nivel": "S"
+      }
     ]
   },
   "fuentes": [

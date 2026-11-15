@@ -377,6 +377,12 @@ td.cad-go{cursor:pointer}td.cad-go:hover,td.cad-go:focus-visible{outline:2px sol
 .flash{animation:cadflash 1.8s ease-out}@keyframes cadflash{0%,55%{background:rgba(90,169,230,.40)}100%{background:transparent}}
 table.cad-emt{border-collapse:collapse;width:100%;min-width:980px;table-layout:auto}.cad-emt th{font-size:var(--fs-xs);color:var(--ac);text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:6px 10px;border-bottom:2px solid var(--lin);white-space:nowrap}
 .cad-emt td{vertical-align:top;font-size:var(--fs-s);line-height:1.45;padding:8px 10px;border-top:1px solid var(--lin);overflow-wrap:anywhere}.cad-emt td:first-child,.cad-emt th:first-child{position:sticky;left:0;z-index:1;background:var(--panel);font-weight:700;white-space:nowrap}.cad-emt .cad-f{margin-top:3px}.cad-emt .cad-f .badge{margin-right:6px}.cad-emt tr:nth-child(even) td{background:rgba(255,255,255,.025)}.cad-emt tr:nth-child(even) td:first-child{background:var(--panel)}
+.esc-sel{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.esc-sel button.on{background:var(--acc,#2fe08f);color:#06130d}
+.esc-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin:8px 0}
+.esc-flujo{margin:8px 0;padding:8px 12px;border:1px solid var(--lin);border-radius:8px;background:var(--bg)}
+.esc-pasos{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:6px 0;padding:0;list-style:none}
+.esc-paso{flex:1 1 210px;max-width:330px;border:1px solid var(--lin);border-left:4px solid #2fe08f;border-radius:8px;padding:6px 10px;font-size:var(--fs-s)}.esc-paso.esp{border-left-color:#c08cff}
+.esc-paso .n{font-weight:700;margin-right:4px}.esc-paso .nota-v{margin-top:4px}
 .ic-how{background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:8px 14px;margin:8px 0;font-size:var(--fs-s)}.ic-how p{margin:5px 0}
 .ic-gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:10px;margin:10px 0}.ic-gl>div{background:var(--bg);border:1px solid var(--lin);border-left-width:5px;border-radius:8px;padding:7px 11px;font-size:var(--fs-s);min-width:0}.ic-gl b{display:block;margin-bottom:2px}.ic-gl .nota-v{margin:3px 0 0}
 
@@ -2483,7 +2489,7 @@ function cadNav(S,cab){
     let t=h.textContent.replace(/\s*\(.*$/,'').replace(/:.*$/,'').trim();if(t.length>40)t=t.slice(0,t.lastIndexOf(' ',40)>14?t.lastIndexOf(' ',40):40)+'…';
     const a=el('a',null,t);a.href='#'+b.id;a.title=h.textContent;a.onclick=e=>{e.preventDefault();b.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})};nv.append(a)});
   S.insertBefore(nv,S.firstChild)}
-function cadExtras(S){[cxCorredores(),cxProfundidad(),cxSwift(),icBloque(),cxCalc()].forEach(b=>{if(b)S.append(b)})}
+function cadExtras(S){[cxCorredores(),cxProfundidad(),cxSwift(),icBloque(),escBloque(),cxCalc()].forEach(b=>{if(b)S.append(b)})}
 /* ---------- C319 · «Qué aporta cada red» (explorador/aporta-redes.json) e «Interconexión entre redes» (explorador/interconexion.json). Todo el texto es visible o se abre al tocar; null se pinta «vacío». No concluye qué red gana ni si la hipótesis es cierta. ---------- */
 const apTx=x=>x==null||x===''?cxVac():cxTx(x);
 const apLinkOrTx=s=>{if(s==null||s==='')return cxVac();if(/^https?:\/\/\S+$/.test(String(s))){const a=el('a',null,String(s).replace(/^https?:\/\//,'').slice(0,60));a.href=s;a.target='_blank';a.rel='noopener';return a}return document.createTextNode(String(s))};
@@ -2590,6 +2596,36 @@ const ICOL=[['Supervisores y estándares',['mas','sec','','esma','iso']],['Permi
 const ITIPO={cadena_publica:['Cadena pública','#15324d','#5aa9e6'],red_institucional:['Red institucional (permisionada)','#2b2147','#a78bfa'],infraestructura:['Infraestructura de mercado','#3a2447','#e089f0'],plataforma_bc:['Plataforma de banco central','#12363b','#36c5d6'],protocolo_interop:['Protocolo de mensajería entre cadenas','#1b3a27','#2fe08f'],estandar:['Estándar','#3d3318','#e8b64a'],supervisor:['Supervisor','#40261c','#ff9f6b']};
 const IEST={produccion:['producción','#2fe08f',''],piloto:['piloto','#e8b64a','7 5'],anunciado:['anunciado','#9fb0cf','2 5'],concepto:['concepto','#c08cff','1 6']};
 function icWrap(s,n){const w=String(s).split(' ');const l=[];let c='';w.forEach(x=>{if((c+' '+x).trim().length>n&&c){l.push(c);c=x}else c=(c+' '+x).trim()});if(c)l.push(c);return l}
+/* C321 · Escenarios por red (explorador/escenarios-redes.json). Cada paso con «ref» carga hecho, fuente y nivel de aporta-redes.json; sin «ref» es [ESPECULACIÓN] con su razón. */
+function escRef(ref){const q=String(ref||'').split('.'),R=((D.aporta_redes||{}).redes||{})[q[0]];const x=R&&(R[q[1]]||[])[+q[2]];return x||null}
+function escItem(x,MK){const li=el('li','ap-li'),r=x.ref?escRef(x.ref):null;li.append(document.createTextNode(x.t||'vacío'));
+  if(x.ley){const m=(MK||[]).find(k=>k.id===x.ley);li.append(el('span','chip',' marco: '+(m?m.nombre:x.ley)))}
+  const p=el('div','nota-v');
+  if(r){p.append(cxNiv(r.nivel),document.createTextNode(' hecho: '+(r.hecho||r.hito||r.ejemplos||'vacío')+' · fuente: '+(r.fuente||'vacío')+' '),cxLk(r.url,'abrir ↗'))}
+  else{p.append(cxEsp(),document.createTextNode(' Razón: '+(x.esp||'sin razón escrita')))}
+  if(x.ref&&!r)p.append(document.createTextNode(' [VERIFICAR: referencia '+x.ref+' no encontrada]'));li.append(p);return li}
+function escBloque(){
+  const J=D.escenarios_redes;if(!J)return null;
+  const c=cxCaja('Escenarios por red: dónde encaja, qué reglas aplicarían, cómo sería un pago y una tokenización','cad-escenarios');
+  c.append(el('p','nota-v','Nivel: '+(J.nivel||'vacío')+' · Fecha '+(J._actualizado||'vacío')),el('p','nota-v',J.aviso||''));
+  const M=J.marco||{};
+  {const w=el('div','esc-cols');
+   const col=(tit,a)=>{const k=el('section','cad-usc');k.append(el('h4',null,tit));const u=el('ul','cad-lst ap-ul');(a||[]).forEach(x=>{const li=el('li','ap-li');li.append(el('b',null,x.nombre+': '),document.createTextNode(x.que_es||'vacío'));const r=x.ref?escRef(x.ref):null,p=el('div','nota-v');
+      if(r){p.append(cxNiv(r.nivel),document.createTextNode(' '+(r.hecho||r.hito||'')+' · fuente: '+(r.fuente||'vacío')+' '),cxLk(r.url,'abrir ↗'))}
+      else if(x.hecho){p.append(cxNiv(x.nivel),document.createTextNode(' '+x.hecho+' · fuente: '+(x.fuente||'vacío')+' '),cxLk(x.fuente,'abrir ↗'))}
+      else if(x.esp){p.append(cxEsp(),document.createTextNode(' '+x.esp))}
+      li.append(p);u.append(li)});k.append(u);return k};
+   w.append(col('Leyes y supervisores que podrían aplicar',M.leyes),col('Mensajería y estándares',M.mensajeria));c.append(w)}
+  const ids=Object.keys(J.redes||{}),sel=el('div','esc-sel');const cuerpo=el('div','esc-cuerpo');
+  const pinta=id=>{cuerpo.textContent='';[...sel.children].forEach(b=>b.classList.toggle('on',b.dataset.id===id));const r=J.redes[id];cuerpo.append(el('h3',null,r.nombre));
+    const g=el('div','esc-cols');
+    [['Dónde encaja mejor',r.encaja_mejor],['Cómo se pagan recompensas y comisiones',r.recompensas],['Leyes que le aplicarían',r.leyes],['Mensajería',r.mensajeria],['Seguridad',r.seguridad],['Quién podría salir beneficiado',r.beneficiados]].forEach(([t,a])=>{if(!(a||[]).length)return;const k=el('section','cad-usc');k.append(el('h4',null,t));const u=el('ul','cad-lst ap-ul');a.forEach(x=>u.append(escItem(x,M.leyes)));k.append(u);g.append(k)});cuerpo.append(g);
+    Object.values(r.flujos||{}).forEach(f=>{const w=el('div','esc-flujo');w.append(el('h4',null,f.titulo));const ol=el('ol','esc-pasos');(f.pasos||[]).forEach((x,i)=>{const rr=x.ref?escRef(x.ref):null,li=el('li','esc-paso'+(rr?'':' esp'));li.append(el('span','n',(i+1)+'.'),document.createTextNode(x.t||'vacío'));const p=el('div','nota-v');if(rr)p.append(cxNiv(rr.nivel),document.createTextNode(' fuente: '+(rr.fuente||'vacío')+' '),cxLk(rr.url,'abrir ↗'));else p.append(cxEsp(),document.createTextNode(' '+(x.esp||'')));li.append(p);ol.append(li)});w.append(ol);cuerpo.append(w)})};
+  ids.forEach(id=>{const b=el('button','cad-bt',J.redes[id].nombre);b.type='button';b.dataset.id=id;b.addEventListener('click',()=>pinta(id));sel.append(b)});
+  c.append(el('h3',null,'Elige una red'),sel,cuerpo);if(ids.length)pinta(ids[0]);
+  const hu=el('section','cad-usc');hu.append(el('h4',null,'Huecos ('+(J.huecos||[]).length+')'));const hv=el('ul','cad-lst ap-ul');(J.huecos||[]).forEach(x=>hv.append(el('li','ap-li',x)));hu.append(hv);c.append(hu);
+  return c}
+
 function icBloque(){
   const J=D.interconexion;if(!J)return null;
   const c=cxCaja('Interconexión entre redes: ¿existe una capa común?','cad-interconexion');

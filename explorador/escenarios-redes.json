@@ -1,0 +1,303 @@
+{
+ "_actualizado": "2026-11-15",
+ "tarea": "C321",
+ "titulo": "Escenarios por red: dónde encaja, qué reglas le aplicarían, cómo sería un pago y una tokenización",
+ "nivel": "mixto por paso: P/S si el paso cita un hecho del repo (ref); [ESPECULACIÓN] si lleva razón en vez de fuente",
+ "aviso": "Mapa de ESCENARIOS, no de hechos: cada paso es o bien un hecho ya leído en aporta-redes.json (con su fuente y nivel, que se cargan de ahí) o bien una hipótesis marcada [ESPECULACIÓN] con la razón. No dice qué red gana ni recomienda nada. Un escenario que encaja en el papel no es una adopción real. Cubre 6 de las 16 redes; el resto, en la tarea C324.",
+ "marco": {
+  "leyes": [
+   {"id": "mica", "nombre": "MiCA (UE)", "que_es": "Reglamento europeo de criptoactivos: autoriza a los proveedores de servicios (CASP) y regula las stablecoins de dinero electrónico (EMT).", "hecho": "El registro provisional de ESMA lista 407 CASP y 26 emisores de EMT (leído el 14-nov-2026).", "nivel": "P", "fuente": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica"},
+   {"id": "genius-clarity", "nombre": "GENIUS y CLARITY (EE. UU.)", "que_es": "GENIUS regula stablecoins de pago; CLARITY divide la supervisión de criptoactivos entre SEC y CFTC. El estado exacto está en ley-eeuu.json.", "hecho": "CLARITY: el Senado rechazó la moción de cierre 49-50 el 15-sep-2026 (hacían falta 60); estado según prensa y bufetes.", "nivel": "S", "fuente": "explorador/ley-eeuu.json"},
+   {"id": "sec", "nombre": "SEC (valores)", "que_es": "Supervisor de valores de EE. UU.: si un token es un valor, aplica su regulación.", "ref": "canton.mejora_reciente.0"},
+   {"id": "cftc", "nombre": "CFTC (derivados y materias primas)", "que_es": "Supervisor de derivados y materias primas de EE. UU.; en el reparto que plantea CLARITY, vigilaría los criptoactivos que no son valores.", "esp": "El repo no tiene un hecho con fuente sobre qué hace la CFTC con estas redes: se deja como hipótesis y como hueco de research."}
+  ],
+  "mensajeria": [
+   {"id": "iso20022", "nombre": "ISO 20022", "que_es": "Formato común de los mensajes de pago entre bancos; Swift y los grandes sistemas de pago lo adoptan.", "ref_archivo": "explorador/swift-liquidacion.json"},
+   {"id": "swift", "nombre": "Swift", "que_es": "Cooperativa de mensajería: comunica bancos, pero no mantiene fondos ni liquida (la liquidación ocurre en los bancos corresponsales). Su libro mayor de blockchain está anunciado.", "hecho": "Swift se define como proveedor de mensajería y «no mantiene fondos ni gestiona cuentas de clientes» (9-jul-2026).", "nivel": "P", "fuente": "https://www.swift.com/about-us/media-centre/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure"},
+   {"id": "dtcc", "nombre": "DTCC / DTC", "que_es": "Depositaria de valores de EE. UU.: custodia y liquida acciones y bonos. Su servicio de tokenización ya está en producción con Canton.", "ref": "canton.puntos_fuertes.0"},
+   {"id": "bis", "nombre": "BIS (Banco de Pagos Internacionales)", "que_es": "Banco de los bancos centrales; sus proyectos (Agorá, Nexus, Mandala) prueban cómo conectar sistemas de pago de bancos centrales.", "ref_archivo": "explorador/interconexion.json"}
+  ]
+ },
+ "redes": {
+  "xrpl": {
+   "nombre": "XRP Ledger (XRPL)",
+   "encaja_mejor": [
+    {"t": "Pagos y liquidación rápidos y baratos entre monedas distintas.", "ref": "xrpl.puntos_fuertes.0"},
+    {"t": "Comisión mínima fija, que permite micropagos y mucho volumen.", "ref": "xrpl.puntos_fuertes.1"},
+    {"t": "Emisión de valores con permisos: credenciales, dominios permisionados y DEX con permisos ya activos.", "ref": "xrpl.puntos_fuertes.2"},
+    {"t": "Los tokens de fondos y bonos podrían encajar mejor en la parte «con permisos» que en la abierta, porque ahí está el control que pide un supervisor.", "esp": "Se deduce de las herramientas de permisos activadas (puntos fuertes 2) y de que los emisores citados (Franklin, Ondo) piden KYC; no hay fuente que diga que esa sea la vía elegida."}
+   ],
+   "recompensas": [
+    {"t": "En XRPL no hay recompensa por validar: los validadores no cobran del protocolo y quien paga la comisión la destruye, no se la lleva nadie.", "esp": "Mecanismo conocido del diseño de XRPL, pero no está en el repo con fuente leída; verificar en xrpl.org antes de darlo por hecho."}
+   ],
+   "leyes": [
+    {"t": "MiCA aplicaría a los emisores de stablecoins en euros (EURCV, EUROP) y a los CASP que las ofrezcan en la UE.", "ley": "mica", "esp": "Las stablecoins en euros están en XRPL (puntos fuertes 3); la aplicación de MiCA a cada una es una deducción, no un dictamen."},
+    {"t": "En EE. UU., RLUSD (stablecoin de Ripple) entraría en el marco de GENIUS cuando esté en vigor, y los tokens de fondos de valores, bajo la SEC.", "ley": "genius-clarity", "esp": "Depende de que GENIUS esté plenamente vigente y de cómo clasifique cada token el supervisor; no hay fuente de esa clasificación."}
+   ],
+   "mensajeria": [
+    {"t": "Un banco que use XRPL seguiría hablando ISO 20022 con sus clientes y usaría la red solo para la liquidación.", "esp": "Las fichas de la red no recogen conectores ISO 20022 de XRPL (sin dato); es el patrón que Swift describe para sí, aplicado por analogía."}
+   ],
+   "seguridad": [
+    {"t": "Versión de emergencia con correcciones de seguridad (rippled 3.4.1).", "ref": "xrpl.mejora_reciente.4"},
+    {"t": "Préstamos y bóvedas nativas aún sin activar: dependen del voto de los validadores.", "ref": "xrpl.limites_conocidos.1"}
+   ],
+   "flujos": {
+    "pago": {
+     "titulo": "Pago transfronterizo: un banco de la UE paga a un proveedor fuera de la zona euro",
+     "pasos": [
+      {"t": "El banco emite o recibe una stablecoin en euros (p. ej. EURCV, de SG-FORGE).", "ref": "xrpl.puntos_fuertes.3"},
+      {"t": "El pago se convierte a la moneda del destino con el DEX de la red o con el reembolso de un activo.", "ref": "xrpl.mejora_reciente.3"},
+      {"t": "La parte en cadena se cierra en segundos y el ledger validado ya no se deshace.", "ref": "xrpl.puntos_fuertes.0"},
+      {"t": "El banco receptor sacaría el dinero a su moneda local por su cuenta en un banco corresponsal.", "esp": "El último tramo (sacar a dinero bancario) no está en las fuentes de XRPL; es lo que hace falta para que un pago real termine, y depende del banco receptor."}
+     ]
+    },
+    "tokenizacion": {
+     "titulo": "Tokenización: un fondo o bono emitido por una gestora",
+     "pasos": [
+      {"t": "La gestora pasa el KYC de los inversores (credenciales) y define quién puede comprar.", "ref": "xrpl.puntos_fuertes.2"},
+      {"t": "Emite un token con reglas (congelar, recuperar) para ese fondo.", "esp": "Las herramientas existen (puntos fuertes 2); que una gestora las use así solo consta en prensa (CSD BR/BTG Pactual, nivel S)."},
+      {"t": "Registra espejos de fondos en XRPL con permisos y KYC.", "ref": "xrpl.mejora_reciente.5"},
+      {"t": "Los tokens circulan entre cuentas autorizadas y se rescatan con el emisor.", "ref": "xrpl.mejora_reciente.3"}
+     ]
+    }
+   },
+   "beneficiados": [
+    {"t": "Las empresas que ya mueven pagos transfronterizos y que hoy pagan comisiones y esperan días podrían ahorrar tiempo y costes, si el último tramo funciona.", "esp": "Se deduce de la rapidez y el bajo coste (puntos fuertes 0-1); no hay estudio de ahorro con fuente en el repo."},
+    {"t": "Quienes controlan la liquidez en las dos monedas (creadores de mercado y emisores de stablecoins) cobrarían la diferencia entre ambas.", "esp": "Razonamiento de mercado; no hay fuente de cuánto se queda cada actor."}
+   ]
+  },
+  "stellar": {
+   "nombre": "Stellar",
+   "encaja_mejor": [
+    {"t": "Pagos baratos con anclajes (entrada y salida de dinero fiduciario) y emisión de stablecoins.", "ref": "stellar.puntos_fuertes.0"},
+    {"t": "Fondos tokenizados de gestoras reguladas con historial de años.", "ref": "stellar.puntos_fuertes.3"},
+    {"t": "Pagos en varias monedas: variantes en euro y en dólar australiano.", "ref": "stellar.puntos_fuertes.5"}
+   ],
+   "recompensas": [
+    {"t": "Sin staking ni inflación desde 2019: el token no da rendimiento nativo; los validadores no cobran del protocolo.", "ref": "stellar.limites_conocidos.0"}
+   ],
+   "leyes": [
+    {"t": "MiCA aplicaría a las stablecoins en euros emitidas desde la UE (EURC, EURCV) y a quien las ofrezca.", "ley": "mica", "esp": "EURC y EURCV están en Stellar (puntos fuertes 5); la aplicación exacta es una deducción."},
+    {"t": "BENJI es un fondo registrado ante la SEC: su token cae bajo regulación de valores de EE. UU.", "ley": "sec", "esp": "BENJI es «primer fondo monetario registrado» (puntos fuertes 3); que el token herede ese régimen es lo normal, pero es una deducción."}
+   ],
+   "mensajeria": [
+    {"t": "DTCC anuncia que conectará su servicio de tokenización con Stellar (activos previstos en el 1S-2027).", "ref": "stellar.mejora_reciente.1"},
+    {"t": "Los conectores ISO 20022 de los anclajes no tienen dato en el repo.", "ref": "stellar.limites_conocidos.2"}
+   ],
+   "seguridad": [
+    {"t": "Manipulación de precio de 10,97 M$ en Blend Pools V2 (22-feb-2026).", "ref": "stellar.puntos_flacos.3"},
+    {"t": "stellar-core v29.0.0 y v30.0.0 (16-oct-2026): mantenimiento activo.", "ref": "stellar.mejora_reciente.3"}
+   ],
+   "flujos": {
+    "pago": {
+     "titulo": "Pago transfronterizo: USDC → XLM → euro por el DEX nativo",
+     "pasos": [
+      {"t": "El pagador entrega USDC desde una cuenta de Circle; el USDC nativo de Stellar entra sin puente custodio por CCTP.", "ref": "stellar.puntos_fuertes.4"},
+      {"t": "El DEX de la red cambia USDC por XLM y XLM por EURC en la misma operación (pago por rutas).", "esp": "Stellar tiene DEX nativo (aporta-redes) y variantes en euro (puntos fuertes 5), pero no hay medida de cuánto de ese tramo pasa por XLM frente a ir directo USDC→EURC."},
+      {"t": "Cierre del ledger cada 5 s, final al cerrarse.", "ref": "stellar.puntos_fuertes.1"},
+      {"t": "El receptor retira los euros por un anclaje a su banco.", "esp": "Los anclajes existen, pero el repo no tiene datos de ninguno para un pago concreto."}
+     ]
+    },
+    "tokenizacion": {
+     "titulo": "Tokenización: un fondo de una gestora regulada",
+     "pasos": [
+      {"t": "La gestora registra el fondo ante el supervisor y lo emite como token en Stellar.", "ref": "stellar.puntos_fuertes.3"},
+      {"t": "El emisor controla quién lo tiene: autoriza, congela y recupera a nivel de protocolo.", "esp": "El control del emisor aparece en la ficha de la red (aporta); la aplicación concreta a cada fondo no está documentada aquí."},
+      {"t": "La depositaria DTCC conectaría sus activos con Stellar (1S-2027).", "ref": "stellar.mejora_reciente.1"},
+      {"t": "Los inversores compran y rescatan con el emisor.", "esp": "Mecanismo habitual; no hay fuente de rescates en Stellar."}
+     ]
+    }
+   },
+   "beneficiados": [
+    {"t": "Las gestoras con productos de bajo importe unitario (cambio de monedas y micropagos) y las remesas se verían favorecidas por el coste mínimo.", "esp": "Se deduce de la comisión (puntos fuertes 0); sin datos de volumen de remesas en el repo."}
+   ]
+  },
+  "ethereum": {
+   "nombre": "Ethereum",
+   "encaja_mejor": [
+    {"t": "Liquidez: mayor oferta de stablecoins y de activos tokenizados.", "ref": "ethereum.puntos_fuertes.0"},
+    {"t": "Valores con identidad y reglas comprobadas en cadena (ERC-3643).", "ref": "ethereum.puntos_fuertes.5"},
+    {"t": "DeFi: préstamos y colateral con el mayor mercado.", "ref": "ethereum.puntos_fuertes.2"}
+   ],
+   "recompensas": [
+    {"t": "Los validadores cobran por validar bloques mediante staking de ETH; se rinde un 2,5 % anual (fuente sin fecha).", "ref": "ethereum.puntos_fuertes.3"}
+   ],
+   "leyes": [
+    {"t": "Los emisores de stablecoins de dólar (USDT, USDC) y los de euro quedan bajo GENIUS y MiCA según dónde operen.", "ley": "genius-clarity", "esp": "Ethereum concentra la mayoría de stablecoins; que cada una caiga bajo un régimen es una deducción de su emisor y mercado."},
+    {"t": "Los tokens de valores (acciones tokenizadas, deuda) caerían bajo la regulación de valores de cada jurisdicción.", "ley": "sec", "esp": "Hay 2.876 acciones tokenizadas (puntos fuertes 1); su régimen depende de dónde se ofrezcan."}
+   ],
+   "mensajeria": [
+    {"t": "El BEI emitió un bono digital en 2021 con el pago representado en CBDC del Banque de France.", "ref": "ethereum.puntos_fuertes.4"}
+   ],
+   "seguridad": [
+    {"t": "105 incidentes en 12 meses en DefiLlama (incluye uno atribuido a varias redes).", "ref": "ethereum.puntos_flacos.3"},
+    {"t": "Capacidad observada 21 tx/s en capa 1; las capas 2 no se miden.", "ref": "ethereum.puntos_flacos.2"}
+   ],
+   "flujos": {
+    "pago": {
+     "titulo": "Pago transfronterizo con stablecoins",
+     "pasos": [
+      {"t": "El pagador compra USDC o USDT (230 emisiones disponibles).", "ref": "ethereum.puntos_fuertes.0"},
+      {"t": "Envía la stablecoin en la capa 1 o en una capa 2 más barata.", "esp": "Las capas 2 existen, pero el repo no mide sus costes; la capa 1 cuesta unos 0,0109 USD y es la más alta de la comparativa."},
+      {"t": "Finalidad en unos 18 minutos en la capa 1.", "ref": "ethereum.puntos_flacos.0"},
+      {"t": "El receptor cambia a moneda local en un exchange o con una pasarela regulada.", "esp": "Último tramo fuera de la cadena; depende de la pasarela y de la regulación local."}
+     ]
+    },
+    "tokenizacion": {
+     "titulo": "Tokenización de un valor regulado (ERC-3643)",
+     "pasos": [
+      {"t": "El emisor registra a los inversores con identidad verificada.", "ref": "ethereum.puntos_fuertes.5"},
+      {"t": "Cada transferencia comprueba en cadena identidad y reglas antes de ejecutarse.", "ref": "ethereum.puntos_fuertes.5"},
+      {"t": "El token se usa como colateral en DeFi sin salir de la red.", "ref": "ethereum.puntos_fuertes.2"},
+      {"t": "El supervisor ve el registro, pero no hay fuente de un acceso directo de supervisores a Ethereum.", "esp": "La visibilidad de un supervisor sobre una red pública es una hipótesis; ver «Quién podría supervisar» en interconexion.json."}
+     ]
+    }
+   },
+   "beneficiados": [
+    {"t": "Los emisores de stablecoins y las plataformas con más liquidez ganan por la propia liquidez: más volumen atrae más volumen.", "esp": "Razonamiento de mercado basado en la concentración de liquidez (puntos fuertes 0-2); no es una predicción."}
+   ]
+  },
+  "solana": {
+   "nombre": "Solana",
+   "encaja_mejor": [
+    {"t": "Muchas operaciones muy rápidas (rendimiento observado más alto de las 16).", "ref": "solana.puntos_fuertes.0"},
+    {"t": "Base minorista amplia de tokenizados.", "ref": "solana.puntos_fuertes.2"},
+    {"t": "Papel comercial con entrega contra pago.", "ref": "solana.puntos_fuertes.3"}
+   ],
+   "recompensas": [
+    {"t": "Los validadores cobran por validar con las comisiones de la red; no hay recompensa fija sin fuente en el repo.", "esp": "Mecanismo habitual de las redes de prueba de participación; no consta en las fichas con fuente leída."}
+   ],
+   "leyes": [
+    {"t": "PYUSD (PayPal) y USDC en Solana caerían bajo GENIUS en EE. UU. cuando esté en vigor.", "ley": "genius-clarity", "esp": "Ambas stablecoins están en Solana (puntos fuertes 1); la aplicación de GENIUS es una deducción."},
+    {"t": "El papel comercial tokenizado sería un valor bajo la SEC.", "ley": "sec", "esp": "Un papel comercial es un instrumento de deuda; su tratamiento exacto depende de la emisión."}
+   ],
+   "mensajeria": [
+    {"t": "La conexión con DTC es un plan para el 2S-2027, no producción.", "ref": "solana.puntos_flacos.2"}
+   ],
+   "seguridad": [
+    {"t": "20 incidentes en 12 meses con 451 M$ (atribución doble posible).", "ref": "solana.puntos_flacos.3"},
+    {"t": "Coeficiente de Nakamoto 18 con 661 validadores.", "ref": "solana.puntos_fuertes.4"}
+   ],
+   "flujos": {
+    "pago": {
+     "titulo": "Pago comercial con stablecoin",
+     "pasos": [
+      {"t": "El comercio recibe USDC o PYUSD en Solana.", "ref": "solana.puntos_fuertes.1"},
+      {"t": "La red procesa el pago con un slot de 0,215 s.", "ref": "solana.puntos_fuertes.0"},
+      {"t": "La finalidad real no se puede medir con el RPC público.", "ref": "solana.puntos_flacos.0"},
+      {"t": "El comercio convierte a moneda local en un procesador de pagos.", "esp": "Visa incluye Solana en pilotos de liquidación con stablecoins según prensa; no hay fuente leída aquí."}
+     ]
+    },
+    "tokenizacion": {
+     "titulo": "Tokenización: papel comercial con entrega contra pago",
+     "pasos": [
+      {"t": "J.P. Morgan crea el token y gestiona la entrega contra pago del papel comercial de Galaxy.", "ref": "solana.puntos_fuertes.3"},
+      {"t": "La liquidación se hace en USDC.", "ref": "solana.puntos_fuertes.3"},
+      {"t": "Los tokens circulan entre titulares con base minorista.", "ref": "solana.puntos_fuertes.2"},
+      {"t": "El supervisor tendría que seguir la emisión por los registros públicos.", "esp": "Hipótesis; no hay fuente de un supervisor siguiendo estas emisiones en Solana."}
+     ]
+    }
+   },
+   "beneficiados": [
+    {"t": "Los comercios y plataformas con volúmenes de micropagos y las aplicaciones minoristas ganarían por la velocidad y el bajo coste.", "esp": "Se deduce del rendimiento (puntos fuertes 0); sin datos de uso comercial en el repo."}
+   ]
+  },
+  "hedera": {
+   "nombre": "Hedera",
+   "encaja_mejor": [
+    {"t": "Empresas que necesitan costes fijos en dólares.", "ref": "hedera.puntos_fuertes.0"},
+    {"t": "Sellar eventos y mensajes con coste previsible (HCS).", "ref": "hedera.puntos_fuertes.0"},
+    {"t": "Staking sin bloqueo ni slashing.", "ref": "hedera.puntos_fuertes.3"}
+   ],
+   "recompensas": [
+    {"t": "El staking de HBAR da recompensas sin bloqueo y sin penalización.", "ref": "hedera.puntos_fuertes.3"}
+   ],
+   "leyes": [
+    {"t": "Los tokens de valores en Hedera dependerían del regulador de cada emisor (SEC o ESMA).", "ley": "sec", "esp": "Hedera tiene pocos RWA (hedera.puntos_flacos.1); la aplicación depende del emisor."},
+    {"t": "Su Consejo (empresas) podría ser la vía de cumplimiento normativo.", "esp": "Los nodos de consenso los operan miembros del Consejo (puntos flacos 2); que eso sirva de cumplimiento no consta en fuente."}
+   ],
+   "mensajeria": [
+    {"t": "Participó en el desafío DLT del Banco de Inglaterra y el BIS Innovation Hub, sin resultados publicados.", "ref": "hedera.puntos_fuertes.4"},
+    {"t": "El comunicado del RBA sobre Acacia no nombra Hedera: la atribución viene de un blog.", "ref": "hedera.puntos_flacos.3"}
+   ],
+   "seguridad": [
+    {"t": "Manipulación de precio de 9,05 M$ en Bonzo Lend (11-jul-2026).", "ref": "hedera.puntos_flacos.4"},
+    {"t": "30 nodos con coeficiente de Nakamoto 10.", "ref": "hedera.puntos_fuertes.2"}
+   ],
+   "flujos": {
+    "pago": {
+     "titulo": "Pago con coste previsible",
+     "pasos": [
+      {"t": "La empresa paga una transferencia con una comisión fija en dólares.", "ref": "hedera.puntos_fuertes.0"},
+      {"t": "El registro se confirma en unos segundos (aBFT).", "ref": "hedera.puntos_fuertes.1"},
+      {"t": "Las stablecoins disponibles son pocas (casi todo USDC).", "ref": "hedera.puntos_flacos.0"},
+      {"t": "El receptor cambia a moneda local fuera de la red.", "esp": "Con tan poca liquidez en la red, un pago de volumen necesitaría una vía externa; sin fuente de cómo se haría."}
+     ]
+    },
+    "tokenizacion": {
+     "titulo": "Tokenización con servicio de tokens (HTS)",
+     "pasos": [
+      {"t": "Crear un token cuesta 1 $ y una transferencia 0,001 $.", "ref": "hedera.puntos_fuertes.0"},
+      {"t": "Los activos distribuidos son pocos: 88,3 M$ en RWA distribuidos.", "ref": "hedera.puntos_flacos.1"},
+      {"t": "Los nodos de consenso los operan miembros del Consejo.", "ref": "hedera.puntos_flacos.2"},
+      {"t": "Un emisor regulado podría preferir un consejo identificable.", "esp": "Hipótesis: la gobernanza por consejo puede atraer a emisores que quieren responsables conocidos; sin fuente."}
+     ]
+    }
+   },
+   "beneficiados": [
+    {"t": "Las empresas que necesitan presupuestar el coste de sus transacciones y los participantes del Consejo (que gobiernan la red).", "esp": "Se deduce de la comisión fija y de la gobernanza (puntos fuertes 0, flacos 2); sin datos de uso real."}
+   ]
+  },
+  "canton": {
+   "nombre": "Canton Network",
+   "encaja_mejor": [
+    {"t": "Tokenización de valores entre instituciones con permisos.", "ref": "canton.puntos_fuertes.0"},
+    {"t": "Colateral, margen, repo y préstamo de valores.", "ref": "canton.puntos_fuertes.1"},
+    {"t": "Un banco opera desde su propio nodo.", "ref": "canton.puntos_fuertes.2"}
+   ],
+   "recompensas": [
+    {"t": "El tráfico por encima de la franja gratuita se paga en Canton Coin; los Super Validators no pagan.", "ref": "canton.puntos_flacos.3"}
+   ],
+   "leyes": [
+    {"t": "Carta de no acción de la SEC a DTC para un servicio de tokenización de 3 años.", "ley": "sec", "ref": "canton.mejora_reciente.0"},
+    {"t": "En la UE, las entidades participantes caerían bajo la regulación de depositarias (CSDR) más MiCA solo si hay criptoactivos.", "ley": "mica", "esp": "Los bancos de la UE en Canton (BNP Paribas) están ahí con valores tokenizados, no criptoactivos; que MiCA no aplique es una deducción."}
+   ],
+   "mensajeria": [
+    {"t": "DTCC integra su servicio con Canton (producción desde el 28-oct-2026).", "ref": "canton.mejora_reciente.5"},
+    {"t": "Visa añade Canton a su piloto de liquidación con stablecoins.", "ref": "canton.mejora_reciente.1"}
+   ],
+   "seguridad": [
+    {"t": "No es una red abierta: los participantes necesitan permisos.", "ref": "canton.limites_conocidos.0"},
+    {"t": "Sin incidentes en DefiLlama en 12 meses.", "ref": "canton.puntos_fuertes.4"}
+   ],
+   "flujos": {
+    "pago": {
+     "titulo": "Liquidación entre instituciones",
+     "pasos": [
+      {"t": "J.P. Morgan dice que JPM Coin se extenderá a Canton (plan).", "ref": "canton.mejora_reciente.2"},
+      {"t": "Visa añade Canton a su piloto de liquidación con stablecoins.", "ref": "canton.mejora_reciente.1"},
+      {"t": "La parte con cadena pública quedaría fuera: Canton es privada y permisionada.", "ref": "canton.limites_conocidos.0"},
+      {"t": "Un pago final con un banco ajeno al grupo necesitaría que éste se uniera como participante.", "esp": "Deducción de que hacen falta permisos; sin fuente de cuántos bancos han firmado más allá de los 20 de DTC."}
+     ]
+    },
+    "tokenizacion": {
+     "titulo": "Tokenización de Tesoro, acciones y ETF con DTCC",
+     "pasos": [
+      {"t": "Un participante de DTC firma el acceso al servicio de tokenización.", "ref": "canton.puntos_fuertes.0"},
+      {"t": "DTCC tokeniza el valor sobre Canton y una red privada Besu.", "ref": "canton.puntos_fuertes.0"},
+      {"t": "Los participantes usan el token como colateral, margen o en préstamo de valores.", "ref": "canton.puntos_fuertes.1"},
+      {"t": "Los valores representados no salen a un mercado abierto.", "esp": "0 $ en RWA distribuidos y todo «representado» (puntos flacos 0); se deduce que el uso es entre instituciones."}
+     ]
+    }
+   },
+   "beneficiados": [
+    {"t": "Los bancos y la depositaria, que mejoran su colateral y su liquidación sin abrirse a una red pública.", "esp": "Se deduce de que los casos de uso son colateral, margen y repo entre participantes; sin dato de ahorro."}
+   ]
+  }
+ },
+ "huecos": [
+  "La CFTC no tiene hechos con fuente en el repo: pendiente de research.",
+  "Las recompensas de validadores en XRPL y Solana no están con fuente leída en las fichas.",
+  "Quedan 10 redes sin escenario (BNB Chain, Avalanche, Polygon, Chainlink, Ondo, Algorand, XDC, Quant, IOTA, Plume): tarea C324."
+ ]
+}

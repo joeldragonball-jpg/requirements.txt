@@ -487,7 +487,7 @@ for _n in ("cadenas-onchain", "mica-registro", "eeuu-fiscal", "ocde-bis", "etf-f
            # C300: uso y seguridad por red
            "cadenas-validadores", "cadenas-incidentes", "cadenas-gobernanza", "comparativa-liquidacion", "pruebas-bancos",
            # C314: interconexión entre cadenas
-           "interconexion",
+           "interconexion", "escenarios-redes",
            # C313: qué aporta cada red
            "aporta-redes"):
     _ruta = RAIZ / "explorador" / f"{_n}.json"
@@ -524,6 +524,34 @@ sys.path.insert(0, str(RAIZ_PRIV / "scripts"))
 import huellas_privado  # noqa: E402
 for archivo, n in huellas_privado.revisar_docs():
     aviso(archivo, f"contiene {n} huella(s) de la tesis privada (privado/): no se puede publicar")
+
+# C321: cada «ref» de escenarios-redes.json debe existir en aporta-redes.json; cada paso sin ref debe llevar razón
+try:
+    _esc = json.loads((RAIZ / "explorador" / "escenarios-redes.json").read_text(encoding="utf-8"))
+    _apo = json.loads((RAIZ / "explorador" / "aporta-redes.json").read_text(encoding="utf-8"))["redes"]
+
+    def _pasos(_e):
+        for _r, _v in _e["redes"].items():
+            for _s in ("encaja_mejor", "recompensas", "leyes", "mensajeria", "seguridad", "beneficiados"):
+                for _x in _v.get(_s, []):
+                    yield _r, _x
+            for _f in _v.get("flujos", {}).values():
+                for _x in _f["pasos"]:
+                    yield _r, _x
+        for _x in _e["marco"]["leyes"] + _e["marco"]["mensajeria"]:
+            yield "marco", _x
+
+    for _r, _x in _pasos(_esc):
+        if "ref" in _x:
+            try:
+                _q = _x["ref"].split(".")
+                _apo[_q[0]][_q[1]][int(_q[2])]
+            except (KeyError, IndexError, ValueError):
+                aviso("escenarios-redes.json", f"{_r}: ref {_x['ref']} no existe en aporta-redes.json")
+        elif not (_x.get("esp") or _x.get("hecho") or _x.get("ref_archivo")):
+            aviso("escenarios-redes.json", f"{_r}: paso sin ref ni razón [ESPECULACIÓN]: {str(_x.get('t') or _x.get('nombre'))[:50]}")
+except (OSError, ValueError, KeyError) as _e:
+    aviso("escenarios-redes.json", f"no se pudo validar ({type(_e).__name__})")
 
 print("\n".join(avisos) if avisos else "Sin avisos.")
 print(f"\n{len(avisos)} aviso(s) en {len(d['capas'])} capas y {len(d['movimientos'])} movimientos.")
