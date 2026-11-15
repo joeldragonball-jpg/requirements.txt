@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-15 12:43 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-15 13:01 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -144,7 +144,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 🟡 Radar regulatorio: Celdas sin dato (8) → W03 · Más huecos: IR 2, AE 1, BRICS 1, ID 1, EG 1
 
 ## Bots con problema
-- ninguno
+- Alertas de precio, Noticias con IA
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-05 · Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,75 % → 4,00 (alto) → ◐ rutina ejecutada (W01 del 2026-11-10); dato sin marcar como leído
