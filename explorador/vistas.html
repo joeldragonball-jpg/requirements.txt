@@ -381,17 +381,15 @@ i.ap-ce{width:24px;height:22px;cursor:default;flex:none}
 .ap-panel{background:var(--bg);border:1px solid var(--ac);border-radius:10px;padding:10px 14px;margin:10px 0;min-width:0;overflow-wrap:anywhere}.ap-panel h4{margin:0 0 6px;font-size:var(--fs);color:var(--tx)}.ap-panel h5{margin:10px 0 4px;color:var(--ac);font-size:var(--fs-s)}
 .ap-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:12px;margin:12px 0;align-items:start;grid-auto-flow:dense}.ap-cols>.cad-usc{margin:0;background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:8px 12px;min-width:0}.ap-cols>.cad-usc h4{margin:0 0 4px}
 /* Cadenas: enlaces rápidos, leyenda de colores, mapa que cabe en pantalla y cobertura a dos columnas */
-.cad-nav{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px;align-items:center}.cad-nav b{font-size:var(--fs-xs);color:var(--tx2);margin-right:4px}
 .cad-lgc{display:inline-block;padding:2px 8px;border-left:3px solid var(--lin);border-radius:4px;margin:2px 6px 2px 0;font-size:var(--fs-xs);color:var(--tx);background:var(--bg)}.cad-lgc.nP{border-color:#2fe08f;background:rgba(47,224,143,.12)}.cad-lgc.nS{border-color:#e8b64a;background:rgba(232,182,74,.12)}.cad-lgc.nV{border-color:#ff6b6b;background:rgba(255,107,107,.12)}.cad-lgc.nd{border-style:dashed;color:var(--tx2)}.cad-lgc.viej{border-left-style:dashed;outline:1px dashed var(--tx2);outline-offset:-2px}
-.ic-wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,1fr);gap:14px;align-items:start}.ic-wrap .ic-svg{max-height:82vh;margin:0 auto}.ic-wrap .ic-panel{position:sticky;top:8px;max-height:82vh;overflow:auto;margin:0}.ic-rb{margin:4px 0}
-@media (max-width:1000px){.ic-wrap{grid-template-columns:1fr}.ic-wrap .ic-panel{position:static;max-height:none}}
+.ic-wrap .ic-svg{max-height:calc(100vh - 96px);margin:0 auto}.ic-rb{margin:4px 0}.ic-panel .ic-rb{float:right}
 .ic-cobg{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,1fr);gap:14px;align-items:start}.ic-lec{background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:8px 12px;font-size:var(--fs-s)}.ic-lec h4{margin:0 0 4px}.ic-lec p{margin:4px 0}@media (max-width:1000px){.ic-cobg{grid-template-columns:1fr}}
 .ap-dex{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:12px;margin:10px 0}.ap-dex>div{background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:8px 12px;font-size:var(--fs-s)}.ap-dex h4{margin:0 0 4px;color:var(--tx)}.ap-dex p{margin:4px 0}
 .ic-preg{border-left:4px solid var(--ac);padding:4px 12px;margin:8px 0;background:var(--bg);border-radius:6px}
 .ic-partes{column-width:240px;column-gap:10px;margin:8px 0}.ic-parte{display:inline-block;width:100%;box-sizing:border-box;break-inside:avoid;border:1px solid var(--lin);border-radius:8px;padding:6px 10px;margin:0 0 8px;font-size:var(--fs-s)}.ic-parte b{color:var(--ac);font-size:var(--fs)}
 .ic-sw{display:inline-block;width:18px;height:14px;border:2px solid;border-radius:4px;flex:none}.ic-ln{display:inline-block;width:30px;border-top:3px solid;flex:none}
 .ic-sw-w{width:100%;max-width:100%;overflow:hidden}.ic-svg{display:block;width:100%;height:auto;font-family:inherit}
-.ic-ch{fill:var(--tx2);font-size:14px;font-weight:700}.ic-nt{fill:var(--tx);font-size:14px;pointer-events:none}
+.ic-ch{fill:var(--tx2);font-size:16px;font-weight:700}.ic-nt{fill:var(--tx);font-size:15px;pointer-events:none}
 .ic-n,.ic-e{cursor:pointer;outline:none}.ic-n:focus-visible rect{stroke:#fff;stroke-width:3}.ic-e:focus-visible path:first-child{stroke-width:5}
 .ic-svg.has-sel .ic-n,.ic-svg.has-sel .ic-e{opacity:.35}.ic-svg.has-sel .ic-n.sel,.ic-svg.has-sel .ic-e.sel,.ic-svg.has-sel .ic-e.rel{opacity:1}.ic-n.sel rect{stroke:#fff;stroke-width:3.5}.ic-e.sel path:first-child{stroke-width:5}
 .ic-t{border-collapse:collapse;table-layout:fixed;width:100%;font-size:var(--fs-s)}.ic-t th,.ic-t td{border:1px solid var(--lin);padding:5px 6px;text-align:left;vertical-align:top;overflow-wrap:anywhere;font-size:var(--fs-xs)}.ic-t tr>:first-child{width:28%}.ic-t th{color:var(--tx)}
@@ -2347,6 +2345,16 @@ function cxProfundidad(){
     {t:'Lectura del libro',f:r=>r.b.lectura||'vacío'}
   ];
   const xd=filasD(J.xrpl_dex),sd=filasD(J.stellar_dex);
+  {const ej=xd.find(r=>r.b.spread_pct!=null&&r.b.spread_pct<=3&&r.b.profundidad_1pct_compra!=null);
+    const g=el('div','cx-card');g.append(el('b',null,'Cómo leer estas tablas (en llano)'));
+    const li=(t,d)=>{const p=el('p','nota-v');p.append(el('b',null,t+': '),document.createTextNode(d));g.append(p)};
+    li('Libro de órdenes','la lista de ofertas de un par de monedas (p. ej. XRP/RLUSD): cuánto está dispuesto a pagar cada comprador y a qué precio vende cada vendedor.');
+    li('Mejor compra y mejor venta','el precio más alto que alguien ofrece pagar y el más bajo al que alguien vende. Para cambiar al instante, se compra a la venta y se vende a la compra.');
+    li('Spread','la distancia entre ambos precios, en %. Es lo que cuesta, como mínimo, entrar y salir: cuanto más bajo, mejor.'+(ej?' Ejemplo con el dato de hoy: en '+ej.nom+' la mejor compra es '+num(ej.b.mejor_compra,4)+' y la mejor venta '+num(ej.b.mejor_venta,4)+'; el spread es '+num(ej.b.spread_pct,2)+' %.':''));
+    li('Profundidad ±1 % / ±2 %','cuánto dinero (en dólares) hay ofrecido a menos de un 1 % (o un 2 %) del precio medio, por el lado de compra y por el de venta.'+(ej?' Ejemplo: '+miles(num(ej.b.profundidad_1pct_compra,0))+' $ de compra y '+miles(num(ej.b.profundidad_1pct_venta,0))+' $ de venta en '+ej.nom+': se podría vender del orden de '+miles(num(ej.b.profundidad_1pct_compra,0))+' $ sin mover el precio más de un 1 %; una orden mayor se come varios niveles y el precio empeora.':''));
+    li('Ofertas de compra / venta','cuántas órdenes hay en cada lado: muchas ofertas pequeñas dan un mercado más estable que una sola grande.');
+    li('«Inactivo»','un libro con spread de más del 3 %: sus ofertas están lejos del precio de mercado y no sirve para cambiar. Un libro inactivo no significa que la pasarela no se use: los pagos que no pasan por el libro no se miden aquí.');
+    c.append(g)}
   c.append(el('h3',null,'XRPL: libros de órdenes'),scrollX(tabla(colsLib,xd)));
   const nIna=xd.concat(sd).filter(r=>r.b.spread_pct!=null&&r.b.spread_pct>3);
   const pq=el('div','cx-card');pq.append(el('b',null,'Por qué los libros fiat de pasarelas salen «inactivo»'));
@@ -2356,6 +2364,8 @@ function cxProfundidad(){
   const V=J.xrpl_velocidad_reposo||{};
   const pp=V.pagos_por_dia_estimados||{},es=V.saldo_en_escrow||{},ri=V.pct_supply_inactivo_mas_1_ano||{};
   c.append(el('h3',null,'XRPL: velocidad y reposo'));
+  {const g=el('div','cx-card');g.append(el('b',null,'Cómo leerlo (en llano)'));
+    [['Pagos por día','cuántas transacciones de pago se hacen al día, extrapoladas de una muestra de 11 ledgers: es un orden de magnitud, no una cifra exacta, e incluye bots y spam.'],['Escrow','XRP bloqueado por un calendario (sobre todo de Ripple) que se libera por tramos. Es dinero que no se puede mover hoy, pero no es «saldo que alguien deja quieto por decisión».'],['Reposo (sin mover más de 1 año)','mide cuánta parte del suministro está parada. Sirve para ver si un token se usa para pagar (rota) o para guardar (se queda quieto). Hoy está en vacío porque no hay fuente pública gratuita.']].forEach(([t,d])=>{const p=el('p','nota-v');p.append(el('b',null,t+': '),document.createTextNode(d));g.append(p)});c.append(g)}
   c.append(kpis([[pp.valor==null?'vacío':'~'+miles(num(pp.valor,0)),'pagos por día (estimación, orden de magnitud)'],[es.pct_del_supply==null?'vacío':num(es.pct_del_supply,2)+' %','del suministro bloqueado en escrow (no es «saldo inactivo»)'],[ri.valor==null?'vacío':num(ri.valor,1)+' %','del suministro sin moverse más de 1 año']]));
   const lv=el('ul','cad-lst');
   const l1=el('li');l1.append(el('b',null,'Pagos por día: '),document.createTextNode((pp.metodo||'vacío')+' '),cxFuenteN(pp.nivel,pp.fuente,'Leído '+cxHora(pp.leido_utc)+'.'));lv.append(l1);
@@ -2426,13 +2436,13 @@ function cxCalc(){
 
 /* Enlaces rápidos arriba a cada bloque de Cadenas (todos los .caja con título h2, tengan o no id) */
 function cadNav(S,cab){
-  const bl=[...S.querySelectorAll(':scope > .caja, :scope > .cad-top > .caja')].filter(b=>b.querySelector(':scope > h2, :scope > .cad-hd > h2'));
-  if(bl.length<2||!cab)return;
-  const nv=el('nav','cad-nav');nv.setAttribute('aria-label','Ir a un bloque de Cadenas');nv.append(el('b',null,'Ir a:'));
-  bl.forEach((b,i)=>{if(!b.id)b.id='cad-sec-'+i;const h=b.querySelector('h2');
-    let t=h.textContent.replace(/\s*\(.*$/,'').replace(/:.*$/,'').trim();if(t.length>34)t=t.slice(0,t.lastIndexOf(' ',34)>14?t.lastIndexOf(' ',34):34)+'…';
-    const a=el('button','cad-bt',t);a.type='button';a.title=h.textContent;a.addEventListener('click',()=>b.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'}));nv.append(a)});
-  cab.append(nv)}
+  const bl=[...S.querySelectorAll(':scope > .caja, :scope > .cad-top > .caja')].filter(b=>b!==cab&&b.querySelector(':scope > h2, :scope > .cad-hd > h2'));
+  if(bl.length<2)return;
+  const nv=el('nav','idx');nv.append(el('b',null,'Ir a:'));
+  bl.forEach((b,i)=>{if(!b.id)b.id='cad-sec-'+i;b.style.scrollMarginTop='54px';const h=b.querySelector('h2');
+    let t=h.textContent.replace(/\s*\(.*$/,'').replace(/:.*$/,'').trim();if(t.length>40)t=t.slice(0,t.lastIndexOf(' ',40)>14?t.lastIndexOf(' ',40):40)+'…';
+    const a=el('a',null,t);a.href='#'+b.id;a.title=h.textContent;a.onclick=e=>{e.preventDefault();b.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})};nv.append(a)});
+  S.insertBefore(nv,S.firstChild)}
 function cadExtras(S){[cxCorredores(),cxProfundidad(),cxSwift(),icBloque(),cxCalc()].forEach(b=>{if(b)S.append(b)})}
 /* ---------- C319 · «Qué aporta cada red» (explorador/aporta-redes.json) e «Interconexión entre redes» (explorador/interconexion.json). Todo el texto es visible o se abre al tocar; null se pinta «vacío». No concluye qué red gana ni si la hipótesis es cierta. ---------- */
 const apTx=x=>x==null||x===''?cxVac():cxTx(x);
@@ -2458,6 +2468,35 @@ function apFicha(c){
   w.append(g);return w}
 const APV={'SÍ':['ap-si','✓','SÍ'],'PARCIAL':['ap-pa','◐','PARCIAL'],'NO':['ap-no','✕','NO'],'sin dato':['ap-sd','?','sin dato']};
 const apCorto=n=>String(n||'').replace(/\s*\(.*\)/,'').replace(/\s+(Network|Chain)$/,'');
+const APX={
+dex_nativo:{q:'Un DEX es un mercado donde se cambia un activo por otro sin intermediario central. «En el protocolo» significa que el libro de órdenes (las ofertas de compra y de venta, cada una con su precio y su cantidad) forma parte de las reglas de la propia red: no hay que desplegar ni usar un contrato de terceros. En XRPL las ofertas se publican con transacciones OfferCreate; en Stellar, con ofertas de compra y de venta. Cuando dos ofertas coinciden, la red las cruza y las liquida en el mismo ledger. Ambas redes pueden además encadenar varios libros en un solo pago (pagos por rutas).',ej:'Un pagador envía EURC y el receptor quiere USDC: la red puede buscar la ruta EURC → XLM → USDC (en XRPL, con XRP en medio) y entregar el resultado en una sola operación, sin que el pagador cambie antes. En Ethereum, Solana o BNB ese cambio se haría en un contrato de terceros (Uniswap, Raydium, PancakeSwap…), que escribe y mantiene otro equipo.',por:'Que el mercado esté en el protocolo no garantiza liquidez: un libro con pocas ofertas o con un spread alto da malos precios. Abajo, en «Profundidad y velocidad», se miden el spread y la profundidad de cada libro.'},
+dex_con_permisos:{q:'Versión restringida del DEX: el libro se crea dentro de un «dominio» con una lista de credenciales aceptadas (emitidas por emisores de confianza, por ejemplo una verificación de identidad). Solo las cuentas que cumplen pueden poner ofertas en ese libro y cruzarse entre sí. En XRPL son las enmiendas PermissionedDomains y PermissionedDEX.',ej:'Una gestora abre un mercado de bonos tokenizados donde solo operan cuentas verificadas: las demás cuentas de la red no pueden cruzarse con esas ofertas.',por:'Cambia quién puede operar, no cómo funciona el cruce. Permite que entidades reguladas usen un mercado sobre una red pública. Que la función esté activada en el nodo no dice cuánto se usa: el repo no tiene dato de volumen [VERIFICAR].'},
+control_emisor:{q:'Herramientas del protocolo para que el emisor de un token controle a los tenedores sin escribir un contrato: exigir autorización previa para tener el token, congelar una cuenta o recuperar tokens (clawback). XRPL ofrece autorización de líneas de confianza, Freeze, Deep Freeze y Clawback; Stellar, banderas de autorización (requerida y revocable) y clawback.',ej:'El emisor de un bono tokenizado congela los fondos de una cuenta sancionada o recupera tokens enviados por error, siempre que el activo se emitiera con esas opciones activadas.',por:'Suele ser un requisito de muchos activos regulados [RAZONADO], pero también significa poder centralizado sobre el tenedor: quien tiene el token depende del emisor.'},
+comision_fija_usd:{q:'En casi todas las redes la comisión se paga en el token nativo, y su valor en dólares sube o baja con el precio del token y con la congestión. «Fijada en dólares» significa que el precio de la operación se define en USD (p. ej. 0,0001 $ por transferencia) y la red lo convierte al token al tipo de cambio del momento.',ej:'En Hedera una transferencia cuesta 0,0001 $ aunque el HBAR duplique su precio: simplemente se pagan menos HBAR. En XRPL la comisión base son 0,00001 XRP (10 gotas) y en Stellar 100 stroops (0,00001 XLM): están fijadas en unidades del token, así que su coste en dólares depende del precio del token.',por:'Un coste previsible en dólares es útil para quien factura en dólares o euros. La otra cara [RAZONADO]: si la comisión no depende del precio del token, el uso de la red no empuja la demanda del token por esa vía.'},
+staking_nativo:{q:'El token se bloquea (o se delega en un validador) para asegurar la red, y quien lo bloquea cobra recompensas (emisión nueva y/o comisiones). Si el validador se porta mal puede perder parte (slashing). No todas las redes funcionan así: XRPL y Stellar usan consenso con listas de validadores de confianza y no pagan por bloquear el token.',ej:'En Ethereum el 35 % del suministro está en staking (ethereum.org, 12-nov-2026): esas monedas no circulan libremente. En Avalanche hacen falta 2.000 AVAX para validar o 25 AVAX para delegar (build.avax.network, 14-nov-2026).',por:'El staking reduce la oferta circulante y da rendimiento, pero es una cuestión distinta de si el uso de la red obliga a comprar el token (columna «Captura»). Rendimiento no es ausencia de riesgo: el token puede caer y el bloqueo puede tener plazo.'},
+cumplimiento_permisos:{q:'Controles de identidad y de acceso integrados en la propia red (credenciales, dominios o participantes con permiso), no solo en una aplicación que corre encima.',por:'Es lo que suelen exigir bancos y gestoras para operar con activos regulados [RAZONADO].'},
+privacidad_participantes:{q:'Cada parte ve solo las operaciones en las que participa, no todo el libro. En las cadenas públicas, en cambio, todas las transacciones son visibles para cualquiera.',por:'Los bancos no quieren que sus competidores vean sus posiciones; por eso las redes institucionales priorizan esta función [RAZONADO].'},
+redes_a_medida:{q:'Poder lanzar cadenas propias (L2, subnets, L1 personalizadas) conectadas a la principal, con sus propias reglas, comisiones y validadores.',por:'Permite que una institución tenga su red con reglas a medida sin salir del ecosistema.'},
+ccip:{q:'CCIP es el protocolo de mensajería entre cadenas de Chainlink: permite que un contrato de una red envíe mensajes o tokens a otra, con una red de oráculos como verificador.',por:'Sirve para mover activos tokenizados entre redes; añade una dependencia: la seguridad del puente es la de CCIP.'},
+cctp:{q:'El protocolo de Circle para mover USDC entre cadenas quemándolo en origen y emitiéndolo en destino, sin un puente que custodie el dinero.',por:'Reduce el riesgo de puente, pero solo vale para USDC.'},
+liquidez_stablecoins:{q:'Cuántas stablecoins hay emitidas en la red. Umbrales del repo: SÍ si ≥ 1.000 M$, PARCIAL entre 100 y 1.000 M$, NO por debajo de 100 M$ (DefiLlama [S]).',por:'Una red con pocas stablecoins tiene poco dinero «de pago» disponible, aunque la tecnología sea buena.'},
+rwa_distribuidos:{q:'Valor de activos del mundo real tokenizados (deuda, fondos, materias primas…) que se pueden transferir dentro de la propia red (RWA.xyz [S]). Umbrales: SÍ ≥ 1.000 M$, PARCIAL 100-1.000 M$, NO < 100 M$.',por:'Distinguir «distribuido» (circula en la red) de «representado» (solo registrado) evita contar dos veces el mismo activo.'},
+dtc_postnegociacion:{q:'Conexión con DTC, la depositaria central de valores de EE. UU., para tokenizar valores que ya existen en su sistema.',por:'Es una vía regulada para llevar valores tradicionales a una red pública.'},
+liquidacion_banco_realizada:{q:'Hay al menos una prueba con fuente primaria de que un banco liquidó en la red. No mide volumen ni uso recurrente.',por:'Una prueba no es un uso continuado: mira la fecha y el tamaño de cada caso.'},
+etf_spot_eeuu:{q:'Existe un ETF de contado sobre el token negociado en EE. UU.',por:'Da acceso a inversores que no compran tokens directamente. El emisor del ETF es parte interesada: sus cifras son [S].'},
+oraculos_mensajeria_servicio:{q:'La red presta datos o mensajes a otras cadenas (oráculos y mensajería) y esa es una parte central de lo que ofrece.',por:'Su uso depende de lo que hagan las demás redes.'},
+comercio_identidad:{q:'Uso declarado para registrar documentos de comercio exterior o identidad digital.',por:'Son proyectos y declaraciones: comprueba si hay volumen real antes de darlo por uso.'},
+cuentas_poscuanticas:{q:'Firmas resistentes a ordenadores cuánticos disponibles ya en el protocolo para las cuentas.',por:'Hoy no hay ordenadores cuánticos capaces de romper las firmas actuales; es una cobertura a futuro [ESPECULACIÓN].'},
+emisor_multired:{q:'El actor (emisor) lanza su mismo producto en varias cadenas.',por:'Reparte el uso entre redes: que un producto esté en una red no significa que esa red lo use mucho.'}
+};
+function apDatosCap(id,ids,nr){
+  const OC=D.cadenas_onchain,PM=D.profundidad_multidivisa,out=[];const M=v=>miles(num(v/1e6,1))+' M$';
+  if(id==='dex_nativo'){
+    if(PM){[['XRPL',PM.xrpl_dex],['Stellar',PM.stellar_dex]].forEach(([n,o])=>Object.entries(o||{}).forEach(([par,b])=>{if(b.spread_pct==null)return;out.push(n+' '+par+': spread '+num(b.spread_pct,2)+' %'+(b.ofertas_compra!=null?' · '+b.ofertas_compra+' ofertas de compra y '+b.ofertas_venta+' de venta':'')+(b.profundidad_1pct_compra!=null?' · profundidad ±1 %: '+miles(num(b.profundidad_1pct_compra,0))+' $ compra / '+miles(num(b.profundidad_1pct_venta,0))+' $ venta':'')+(b.spread_pct>3?' → libro inactivo':'')+' (nodo público, leído '+(b.leido_utc||PM._actualizado||'')+')')}))}
+    if(OC){const v=['xrpl','stellar','ethereum','solana','bnb'].map(i=>{const o=(OC.redes||{})[i];return o&&o.dex_volumen&&o.dex_volumen.usd_24h!=null?nr(i)+' '+M(o.dex_volumen.usd_24h):null}).filter(Boolean);if(v.length)out.push('Volumen en DEX en 24 h según DefiLlama [S]: '+v.join(' · ')+'. Es un agregador: qué libros nativos incluye no está verificado [VERIFICAR].')}}
+  if(id==='comision_fija_usd'&&OC){[['xrpl','XRPL'],['stellar','Stellar']].forEach(([i,n])=>{const o=((OC.redes||{})[i]||{}).nativo;if(!o)return;if(o.comision_base_xrp!=null)out.push(n+': comisión base '+o.comision_base_xrp+' XRP (nodo público).');if(o.comision_stroops_mediana!=null)out.push(n+': comisión mediana '+o.comision_stroops_mediana+' stroops y percentil 95 de '+o.comision_stroops_p95+' stroops (1 XLM = 10 millones de stroops): en picos de demanda la comisión sube (Horizon).')})}
+  if(id==='liquidez_stablecoins'&&OC){const v=ids.map(i=>[i,((OC.redes||{})[i]||{}).stablecoins_usd]).filter(x=>x[1]!=null).sort((a,b)=>b[1]-a[1]).slice(0,8).map(x=>nr(x[0])+' '+M(x[1]));if(v.length)out.push('Stablecoins emitidas (DefiLlama [S]): '+v.join(' · '))}
+  return out}
 function apCruzado(){
   const J=D.aporta_redes;if(!J||!J.lectura_cruzada)return null;
   const L=J.lectura_cruzada,caps=L.capacidades||[],ids=Object.keys(J.redes||{}),R=J.redes||{};
@@ -2466,17 +2505,6 @@ function apCruzado(){
   c.append(el('p','nota-v',(J.titulo||'')+' · Nivel '+(J.nivel||'vacío')+' · Fecha '+(J._actualizado||'vacío')+' · Fuente: cada celda cita la suya (ver panel).'),el('p','nota-v',J.aviso||''),el('p','nota-v',L.nota||''));
   const lg=el('div','ap-leg');Object.entries(APV).forEach(([k,v])=>{const s=el('span','ap-lg');s.append(el('i','ap-ce '+v[0],v[1]),document.createTextNode(' '+k+' — '+((J.leyenda||{})[k]||'vacío')));lg.append(s)});c.append(lg);
   c.append(el('p','ap-ojo','«sin dato» no equivale a NO: significa que el repo aún no lo recoge con fuente, y puede esconder la misma capacidad en esa red.'));
-  {const dx=el('div','ap-dex');
-    const a=el('div');a.append(el('h4',null,'Qué es el «DEX en el protocolo»'),
-      el('p',null,'Un DEX es un mercado donde se cambia un activo por otro sin intermediario central. «En el protocolo» significa que ese mercado (un libro de órdenes de compra y venta) viene incluido en las reglas de la propia red: no hay que desplegar un contrato de terceros. XRPL y Stellar lo tienen así; en Ethereum, Solana o Avalanche los mercados (Uniswap, Raydium, etc.) son contratos que escriben otros equipos.'),
-      el('p',null,'Cómo funciona, en simple: quien quiere cambiar, p. ej., euros tokenizados por dólares tokenizados publica una oferta (precio y cantidad) en el libro; cuando otra oferta coincide, la red las cruza y liquida en el mismo ledger. Stellar y XRPL además pueden encadenar varios libros en un solo pago (euro → XLM o XRP → dólar), de modo que el receptor cobra en otra divisa sin que el emisor tenga que conseguirla.'),
-      el('p','nota-v','Fuente: documentación oficial de cada red (xrpl.org, developers.stellar.org). Explicación general; no releída hoy [VERIFICAR] antes de citarla.'));
-    const b=el('div');b.append(el('h4',null,'Qué cambia (y qué no) por tenerlo en el protocolo'),
-      el('p',null,'Hecho: la oferta y el cruce están sujetos a las reglas y comisiones de la red, y cualquier cuenta puede leer el libro. Hecho: tener un libro no implica que haya liquidez; un libro vacío o con spread amplio no sirve (ver «Profundidad y velocidad» más abajo, que lo mide).'),
-      el('p',null,'Qué podría extrapolarse (no son hechos):'),
-      el('ul','cad-lst ap-ul'),el('p','nota-v','«DEX con permisos» (solo XRPL) es la versión restringida a cuentas con credenciales: cambia el «quién puede operar», no el «cómo funciona».'));
-    [['Pagos con cambio de divisa en una sola operación entre dos monedas tokenizadas distintas, sin contrato intermedio.'],['Mercados cerrados entre entidades autorizadas, si el DEX con permisos se usa para activos tokenizados regulados.'],['Que el emisor de una moneda o activo tokenizado cotice en la propia red sin depender de un mercado de terceros.']].forEach(([t])=>{const li=el('li','ap-li',t);li.append(cxEsp());b.querySelector('ul').append(li)});
-    dx.append(a,b);c.append(dx)}
   const uni={},sol={};(L.unicas||[]).forEach(u=>uni[u.capacidad]=u);(L.solapes||[]).forEach(s=>sol[s.capacidad]=s);
   let filtro='todas';const fb=el('div','ap-fil');const panel=el('div','ap-panel');panel.setAttribute('aria-live','polite');
   panel.append(el('p','nota-v','Toca una celda para ver el dato, su fuente, nivel y fecha; toca el nombre de una capacidad para ver qué significa.'));
@@ -2486,9 +2514,18 @@ function apCruzado(){
     const dl=el('dl','cad-usf');const f=(l,n)=>{dl.append(el('dt',null,l));const dd=el('dd');dd.append(n);dl.append(dd)};
     f('Qué dice',apTx(x.t));f('Fuente',apLinkOrTx(x.f));f('Nivel',x.n?cxNiv(x.n):cxVac());f('Fecha',apTx(x.d));
     if(x.v==='sin dato')f('Ojo',document.createTextNode('El repo no recoge este dato con fuente; no significa NO.'));panel.append(dl)};
-  const showCap=cp=>{panel.textContent='';panel.append(el('h4',null,cp.n),el('p',null,cp.que||'vacío'));const u=uni[cp.id],s=sol[cp.id];
+  const showCap=cp=>{panel.textContent='';panel.append(el('h4',null,cp.n),el('p',null,cp.que||'vacío'));const x=APX[cp.id]||{},u=uni[cp.id],s=sol[cp.id];
+    [['Qué es y cómo funciona',x.q],['Ejemplo',x.ej],['Por qué importa',x.por]].forEach(([t,v])=>{if(v)panel.append(el('h5',null,t),el('p',null,v))});
+    const dd=apDatosCap(cp.id,ids,nr);if(dd.length){const ul=el('ul','cad-lst ap-ul');dd.forEach(t=>ul.append(el('li','ap-li',t)));panel.append(el('h5',null,'Datos medidos en el repo'),ul)}
+    const filas=ids.map(i=>({i,x:cp.celdas[i]||{v:'sin dato'}}));const con=filas.filter(r=>r.x.v==='SÍ'||r.x.v==='PARCIAL'),sin=filas.filter(r=>!(r.x.v==='SÍ'||r.x.v==='PARCIAL'));
+    const fila=r=>{const v=APV[r.x.v]||APV['sin dato'];return{red:nr(r.i),v:r.x.v||'sin dato',t:r.x.t,f:r.x.f,d:r.x.d,n:r.x.n,cl:v}};
+    const mk=arr=>scrollX(tabla([{t:'Red',f:r=>r.red},{t:'Valor',f:r=>{const w=el('span');w.append(el('i','ap-ce '+r.cl[0],r.cl[1]),document.createTextNode(' '+r.v));return w}},{t:'Qué dice',f:r=>apTx(r.t)},{t:'Fuente',f:r=>apLinkOrTx(r.f)},{t:'Nivel',f:r=>r.n?cxNiv(r.n):cxVac()},{t:'Fecha',f:r=>apTx(r.d)}],arr.map(fila)));
+    if(con.length)panel.append(el('h5',null,'Qué dice cada red que la tiene o la tiene en parte ('+con.length+')'),mk(con));
+    if(sin.length){const dt=el('details','mas');dt.append(el('summary',null,'Redes que no la tienen o sin dato ('+sin.length+')'),mk(sin));panel.append(dt)}
     if(u)panel.append(el('p','nota-v','Solo '+nr(u.red)+' tiene SÍ entre los datos del repo'+((u.parciales||[]).length?'; PARCIAL: '+u.parciales.map(nr).join(', '):'')+' · sin dato en '+(u.sin_dato==null?'vacío':u.sin_dato)+' redes. '+(u.aviso||'')));
-    if(s)panel.append(el('p','nota-v','Compartida por '+(s.redes_si||[]).length+' redes con SÍ: '+(s.redes_si||[]).map(nr).join(', ')+((s.parciales||[]).length?'; PARCIAL: '+s.parciales.map(nr).join(', '):'')+'.'))};
+    if(s)panel.append(el('p','nota-v','Compartida por '+(s.redes_si||[]).length+' redes con SÍ: '+(s.redes_si||[]).map(nr).join(', ')+((s.parciales||[]).length?'; PARCIAL: '+s.parciales.map(nr).join(', '):'')+'.'));
+    panel.append(el('p','nota-v','La explicación general sale de la documentación oficial de cada red y no se ha releído hoy [VERIFICAR] antes de citarla; los datos de la tabla llevan su propia fuente, nivel y fecha.'));
+    panel.scrollIntoView({behavior:RM?'auto':'smooth',block:'nearest'})};
   const hr=el('tr');hr.append(el('th','ap-corner','Capacidad'));ids.forEach(i=>{const th=el('th','ap-rot');th.append(el('span',null,nr(i)));hr.append(th)});t.append(hr);
   const filas=[];
   caps.forEach(cp=>{const tr=el('tr');const th=el('th','ap-cap');const b=el('button','ap-capb',cp.n);b.type='button';b.addEventListener('click',()=>showCap(cp));th.append(b);
@@ -2522,12 +2559,12 @@ function icBloque(){
   const lg=el('div','ap-leg');Object.entries(ITIPO).forEach(([k,v])=>{const s=el('span','ap-lg');const i=el('i','ic-sw');i.style.background=v[1];i.style.borderColor=v[2];s.append(i,document.createTextNode(' '+v[0]));lg.append(s)});
   Object.entries(IEST).forEach(([k,v])=>{const s=el('span','ap-lg');const i=el('i','ic-ln');i.style.borderTopStyle=k==='produccion'?'solid':k==='piloto'?'dashed':'dotted';i.style.borderTopColor=v[1];i.style.borderTopWidth=k==='concepto'?'2px':'3px';s.append(i,document.createTextNode(' enlace '+v[0]));lg.append(s)});mp.append(lg);
   const NS='http://www.w3.org/2000/svg',sv=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
-  const W=176,GAP=32,SH=68,NH=60,TOP=46,pos={};ICOL.forEach(([tit,ids],ci)=>ids.forEach((id,si)=>{if(id)pos[id]={x:ci*(W+GAP),y:TOP+si*SH}}));
+  const W=190,GAP=130,SH=70,NH=62,TOP=50,pos={};ICOL.forEach(([tit,ids],ci)=>ids.forEach((id,si)=>{if(id)pos[id]={x:ci*(W+GAP),y:TOP+si*SH}}));
   const faltan=N.filter(n=>!pos[n.id]);faltan.forEach((n,i)=>{pos[n.id]={x:3*(W+GAP),y:TOP+(9+i)*SH}});
   const Hh=TOP+(9+faltan.length)*SH-(SH-NH);
   const svg=sv('svg',{viewBox:'0 0 '+(4*W+3*GAP)+' '+Hh,class:'ic-svg',role:'group','aria-label':'Mapa de interconexión entre redes: '+N.length+' nodos y '+E.length+' enlaces'});
   Object.entries(IEST).forEach(([k,v])=>{const m=sv('marker',{id:'icm-'+k,viewBox:'0 0 10 10',refX:'9',refY:'5',markerWidth:'7',markerHeight:'7',orient:'auto'});m.append(sv('path',{d:'M0 0L10 5L0 10z',fill:v[1]}));svg.append(m)});
-  ICOL.forEach(([tit],ci)=>{const x=ci*(W+GAP);icWrap(tit,24).forEach((l,i)=>{const t=sv('text',{x:x+W/2,y:16+i*17,'text-anchor':'middle',class:'ic-ch'});t.textContent=l;svg.append(t)})});
+  ICOL.forEach(([tit],ci)=>{const x=ci*(W+GAP);icWrap(tit,26).forEach((l,i)=>{const t=sv('text',{x:x+W/2,y:16+i*18,'text-anchor':'middle',class:'ic-ch'});t.textContent=l;svg.append(t)})});
   const gE=sv('g',{}),gN=sv('g',{});svg.append(gE,gN);
   const panel=el('div','ap-panel ic-panel');panel.setAttribute('aria-live','polite');const intro=()=>el('p','nota-v','Toca un nodo o un enlace (también en la lista de debajo) para ver su ficha con fuente y nivel. Para quitar la selección y ver todo otra vez: botón «Ver todo», Escape o toca el fondo del mapa.');panel.append(intro());
   const els={n:{},e:[]};
@@ -2541,7 +2578,7 @@ function icBloque(){
     f('Tipo',apTx(i.tipo));f('Estado',apTx(i.estado));f('Qué no es',apTx(i.que_no_es));f('Partes de la hipótesis que cubre',apTx((i.cubre_partes||[]).join(', ')||'ninguna'));f('Visibilidad para el supervisor',apTx(i.visibilidad_supervisor));w.append(dl);
     const u=el('ul','cad-lst ap-ul');(i.hechos||[]).forEach(h=>{const li=el('li','ap-li');li.append(el('b',null,(h.fecha||'sin fecha')+' '),document.createTextNode(h.hecho||'vacío'));const p=el('div','nota-v');p.append(cxNiv(h.nivel),document.createTextNode(' fuente: '+(h.fuente||'vacío')+' '),cxLk(h.url,'abrir ↗'));li.append(p);u.append(li)});w.append(u);return w};
   const est=e=>(IEST[e.estado]||[e.estado||'vacío'])[0];
-  const sel=(k,id,idx)=>{svg.classList.add('has-sel');Object.values(els.n).forEach(g=>g.classList.remove('sel'));els.e.forEach(g=>g.classList.remove('sel','rel'));panel.textContent='';
+  const sel0=(k,id,idx)=>{svg.classList.add('has-sel');Object.values(els.n).forEach(g=>g.classList.remove('sel'));els.e.forEach(g=>g.classList.remove('sel','rel'));panel.textContent='';
     if(k==='n'){const n=N.find(x=>x.id===id),tp=ITIPO[n.tipo]||[n.tipo||'vacío'];els.n[id].classList.add('sel');panel.append(el('h4',null,n.etiqueta),el('p','nota-v','Tipo: '+tp[0]+(n.id_cadena?' · ficha de la red: '+n.id_cadena:'')));
       const rel=E.map((e,j)=>[e,j]).filter(([e])=>e.de===id||e.a===id);rel.forEach(([e,j])=>els.e[j]&&els.e[j].classList.add('rel'));
       const ini=iniDe(id);if(ini){panel.append(el('h5',null,'Iniciativa: '+ini.nombre),ficha(ini))}else panel.append(el('p','nota-v','Sin ficha de iniciativa propia: solo consta por los enlaces siguientes.'));
@@ -2551,12 +2588,13 @@ function icBloque(){
     else{const e=E[idx];els.e[idx]&&els.e[idx].classList.add('sel');panel.append(el('h4',null,nom(e.de)+' → '+nom(e.a)));
       const dl=el('dl','cad-usf');const f=(l,n)=>{dl.append(el('dt',null,l));const dd=el('dd');dd.append(n);dl.append(dd)};
       f('Tipo',apTx(e.tipo));f('Estado',apTx(est(e)));f('Fecha',apTx(e.fecha));f('Nivel',e.nivel?cxNiv(e.nivel):cxVac());f('Fuente',apLinkOrTx(e.fuente));panel.append(dl)}};
+  const sel=(k,id,idx)=>{sel0(k,id,idx);const b=el('button','cad-bt ic-rb','↺ Ver todo (quitar selección)');b.type='button';b.addEventListener('click',reset);panel.insertBefore(b,panel.firstChild);panel.scrollIntoView({behavior:RM?'auto':'smooth',block:'nearest'})};
   E.forEach((e,idx)=>{const d=edgePath(e.de,e.a);if(!d)return;const st=IEST[e.estado]||IEST.anunciado;const g=sv('g',{class:'ic-e',tabindex:'0',role:'button','aria-label':'Enlace '+nom(e.de)+' a '+nom(e.a)+', '+st[0]});
     const vis=sv('path',{d,fill:'none',stroke:st[1],'stroke-width':e.estado==='concepto'?2:3,'marker-end':'url(#icm-'+(IEST[e.estado]?e.estado:'anunciado')+')'});if(st[2])vis.setAttribute('stroke-dasharray',st[2]);
     g.append(vis,sv('path',{d,fill:'none',stroke:'transparent','stroke-width':18}));g.addEventListener('click',()=>sel('e','',idx));g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();sel('e','',idx)}});gE.append(g);els.e[idx]=g});
   N.forEach(n=>{const p=pos[n.id],tp=ITIPO[n.tipo]||['','#222','#888'];const g=sv('g',{class:'ic-n',tabindex:'0',role:'button','aria-label':n.etiqueta+', '+tp[0]});
     g.append(sv('rect',{x:p.x,y:p.y,width:W,height:NH,rx:9,fill:tp[1],stroke:tp[2],'stroke-width':2}));
-    const ls=icWrap(n.etiqueta,23).slice(0,4),y0=p.y+NH/2-(ls.length-1)*8+5;ls.forEach((l,i)=>{const t=sv('text',{x:p.x+W/2,y:y0+i*16,'text-anchor':'middle',class:'ic-nt'});t.textContent=l;g.append(t)});
+    const ls=icWrap(n.etiqueta,25).slice(0,4),y0=p.y+NH/2-(ls.length-1)*8+5;ls.forEach((l,i)=>{const t=sv('text',{x:p.x+W/2,y:y0+i*17,'text-anchor':'middle',class:'ic-nt'});t.textContent=l;g.append(t)});
     g.addEventListener('click',()=>sel('n',n.id));g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();sel('n',n.id)}});gN.append(g);els.n[n.id]=g});
   const sw=el('div','ic-sw-w');const rb=el('button','cad-bt ic-rb','↺ Ver todo (quitar selección)');rb.type='button';rb.addEventListener('click',reset);sw.append(rb,svg);const wr=el('div','ic-wrap');wr.append(sw,panel);mp.append(wr);
   const dl=el('details','mas');dl.append(el('summary',null,'Lista de los '+E.length+' enlaces (para tocar con precisión)'));const ul=el('ul','cad-lst ap-ul');
