@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-15 18:13 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-15 18:42 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -89,6 +89,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C320 ◐ en parte · Correcciones auditoría Opus 2 (datos y scripts) · Sonnet M · ~ · ``
 - C321 ◐ en parte · Cadenas: mapa especulativo de escenarios (leyes MiCA/SEC/CFTC, mensajería SWIFT/ · Opus L · ~~6 % · `Sigue CLAUDE.md. Repo PÚBLICO: solo hechos con fuente en cada nodo y todo lo demás marcado [ESPECULACIÓN]; sin recomendaciones ni comparar con la tesis. Diseña (como el mapa de interconexión) un mapa de escenarios: por red, dónde encaja mejor (cantidad tokenizada, cómo se pagan los rewards y las comisiones), qué leyes le aplicarían (MiCA, SEC, CFTC), qué estándar de mensajería usaría (SWIFT, DTCC, BIS, ISO 20022), qué capa de seguridad, y cómo sería un pago transfronterizo (p. ej. USDC → XLM → euro por el DEX nativo) y una tokenización (banco → congelar o emitir contrato → permisos → sacar tokens). Cada flecha: hecho con fuente (P/S) o hipótesis [ESPECULACIÓN] con la razón. Incluye quién saldría beneficiado en el mercado financiero según lo que aporta cada red. Empieza por el diseño visual y deja la investigación de enlaces para sesiones aparte.`
 - C322 ◐ en parte · Cadenas: ampliar el mapa de interconexión con enlaces con fuente de XRPL, Hedera · Sonnet M · ~~4 % · `Sigue CLAUDE.md. Repo PÚBLICO. Hoy el mapa (explorador/interconexion.json) no dibuja esas redes porque no hay enlace con fuente. Busca fuente PRIMARIA (docs, comunicados, SEC/EDGAR, BIS) de integraciones con CCIP, CCTP, DTCC, Swift, Canton, Partior, Fnality, Agorá o Nexus, y añade nodos y enlaces con estado (producción/piloto/anunciado/concepto), fecha y nivel. Revisa también por qué Canton se llama «red» y no «cadena». Cierre: revisar_explorador.py (0 avisos), construir_orbita/movil/seguimiento. Sin API de Anthropic; commit y push solo con «sube».`
+- C327 · Cadenas: unificar el nivel (P/S/V/R) de las 23 URL que lo tienen distinto según  · Sonnet S · ~~2 % · `Sigue CLAUDE.md. Repo PÚBLICO. Lista con python las URL de explorador/*.json que aparecen con más de un nivel, decide cada una leyendo la fuente (parte interesada = P con aviso, no S) y edita solo los JSON de Cadenas. Añade esas comprobaciones a scripts/revisar_explorador.py (0 avisos al cerrar), regenera construir_orbita/movil/seguimiento y anota el informe. Sin API de Anthropic; commit y push solo con «sube».`
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
 - C39 ◐ en parte · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
 - C42 · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
@@ -147,7 +148,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 🟡 Radar regulatorio: Celdas sin dato (8) → W03 · Más huecos: IR 2, AE 1, BRICS 1, ID 1, EG 1
 
 ## Bots con problema
-- ninguno
+- Votos de noticias
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-05 · Reino Unido: decisión del Banco de Inglaterra (Bank Rate 3,75 % → 4,00 (alto) → ◐ rutina ejecutada (W01 del 2026-11-10); dato sin marcar como leído

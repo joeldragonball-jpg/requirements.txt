@@ -3,7 +3,7 @@
   "tarea": "C314",
   "nivel_general": "P/S",
   "nota_nivel": "P = fuente primaria leída (BIS, DTCC, Circle, Chainlink, MAS, EUR-Lex/ESMA); S = secundaria (prensa especializada, agregadores, resultados de buscador sin abrir la página oficial); V = por verificar [VERIFICAR]. Neutral: no es recomendación de compra/venta ni ranking de redes.",
-  "metodo": "Búsquedas web y lectura directa (15-nov-2026) de dtcc.com (28-oct-2026), bis.org (Agorá 27-may-2026; Informe Económico Anual 2023, cap. III), chain.link (revisión T2-2026), developers.circle.com (notas CCTP 2026). Se reutilizan, sin copiarlos enteros, hechos ya documentados en swift-liquidacion.json (C309), pruebas-bancos.json (C316), corredores-liquidez.json (C305/C315) y empresas-redes.json (C317). Sin IA en el cálculo; no se usó Chrome (ninguna fuente clave dio 403).",
+  "metodo": "Búsquedas web y lectura directa (15-nov-2026) de dtcc.com (28-oct-2026), bis.org (Agorá 27-may-2026; Informe Económico Anual 2023, cap. III), chain.link (revisión T2-2026), developers.circle.com (notas CCTP 2026). Se reutilizan, sin copiarlos enteros, hechos ya documentados en swift-liquidacion.json (C309), pruebas-bancos.json (C316), corredores-liquidez.json (C305/C315) y empresas-redes.json (C317). Sin IA en el cálculo; no se usó Chrome (ninguna fuente clave dio 403). Ampliación 15-nov-2026 (2.ª sesión): Swift releído en Chrome; Circle, Ripple, IOTA y xrpl.org leídos en Chrome; CCIP, LayerZero y Wormhole contrastados con sus API oficiales (JSON); notas de Quant 2.2.9, PDF de Agorá y docs de Ondo descargados y buscados por texto. Algunas búsquedas las hicieron subagentes y sus citas se cotejaron antes de volcar.",
   "aviso": "La pregunta de trabajo es una hipótesis de un lector, no un hecho. Este archivo inventaría lo que existe y su estado; no concluye si la hipótesis es cierta. Las cifras de volumen de protocolos (CCIP, CCTP, IBC) son de las propias empresas o de prensa y miden cosas distintas: no comparables entre sí.",
   "pregunta": {
     "texto": "¿Existe o se está construyendo una red/capa pública común que interconecte las blockchains (cada una con su token, stablecoin o CBDC) y sirva de libro de cuentas auditable por un supervisor (DTCC, bancos centrales, reguladores) de los contratos y transacciones de las demás?",
@@ -771,10 +771,15 @@
     "No se encontró una iniciativa anunciada que conecte entre sí los libros permisionados (Agorá, Swift, Canton/DTCC, Partior, Fnality).",
     "No hay documentación técnica pública leída de cómo un regulador obtiene una vista en Canton (rol, nodo, alcance).",
     "Las cifras de CCIP y CCTP vienen de las propias empresas o prensa; no hay auditoría independiente leída.",
-    "Recuento oficial de cadenas de CCIP, Wormhole e IBC en 2026 no leído en fuente primaria.",
     "Estado de Fnality en USD/EUR y de la Collateral AppChain de DTCC (T4-2026) sin confirmación primaria.",
-    "No se abrió el PDF completo de Agorá (97 páginas) para ver el diseño de acceso de supervisores.",
-    "Sin enlace primario (leído el 15-nov-2026): Algorand e IOTA con CCIP o CCTP; XRPL con CCIP o CCTP (las páginas del directorio de Chainlink devolvieron 404); Canton con Chainlink; Swift con las cadenas; Partior con Fnality. La página de BIS Agorá (27-may-2026) no nombra a XRPL, Hedera, BNB, Partior, Fnality, Swift ni Nexus (solo se leyó la web, no el PDF de 97 páginas)."
+    "Recuento oficial de Wormhole e IBC sin leer en fuente primaria. CCIP (79 cadenas, API oficial de Chainlink), LayerZero (API de metadatos) y CCTP (tabla de Circle) leídos el 15-nov-2026. Para Wormhole se usó la lista del Governor, que no es un listado de redes soportadas.",
+    "El PDF de Agorá (BIS, 27-may-2026, 97 págs.) se descargó y se buscó por texto (15-nov-2026): Swift figura como participante privado; no aparecen XRPL, Hedera, Partior, Fnality, DTCC ni Chainlink, y habla de Hyperledger Besu permisionado. El diseño de acceso de supervisores sigue sin leerse.",
+    "Sin enlace primario (15-nov-2026): XRPL con CCIP, LayerZero, DTCC o Swift (CCIP, CCTP y LayerZero no la listan); Algorand con cualquier conector (no figura en CCIP, CCTP ni LayerZero); IOTA con CCIP, CCTP o Wormhole; Hedera con CCTP o Wormhole; Stellar con CCIP (solo una intención sin fecha) o Wormhole; Canton con Chainlink fuera de CCIP; Swift con cadenas públicas.",
+    "Quant: la única fuente primaria leída es de abr-2023; quant.network da 403 y docs.quant.network no resuelve. Swift, DTCC, Hedera y Banco de España con Quant: sin fuente.",
+    "Partior y Nexus: sus webs no citan a Swift, Fnality, DTCC, CCIP ni cadenas públicas. Partior sí cita bancos (DBS, J.P. Morgan, Standard Chartered, Deutsche Bank, Emirates NBD). Ondo Chain figura en LayerZero sin endpoint desplegado; un agregador (S, sin leer) dice que fue sustituido por «Ondo Network» en jul-2026 [VERIFICAR].",
+    "Falta cotejar en navegador: LayerZero con Hedera (docs.hedera.com), CCIP con Stellar (intención sin fecha) y el anuncio original de DTCC con Chainlink.",
+    "Axelar (puente de XRP como gas en la sidechain XRPL EVM, Ripple 30-jun-2025) no tiene nodo en el mapa.",
+    "Auditoría Opus (15-nov-2026): 23 URL figuran con distinto nivel (P/S/V/R) según el archivo (p. ej. notas de la RBA y la MAS, blog de Hedera) y revisar_explorador.py no lo detecta; unificar y añadir esa comprobación."
   ],
   "lo_que_no_sabemos": [
     "Si DTCC, Swift o los bancos centrales de Agorá conectarán sus plataformas entre sí o a cadenas públicas con un protocolo común.",
@@ -819,11 +824,6 @@
       {
         "id": "cosmos",
         "etiqueta": "Cadenas Cosmos",
-        "tipo": "cadena_publica"
-      },
-      {
-        "id": "otras-publicas",
-        "etiqueta": "Otras cadenas públicas (Sui, Aptos, Injective, Arc…)",
         "tipo": "cadena_publica"
       },
       {
@@ -920,6 +920,35 @@
         "id_cadena": "xrpl"
       },
       {
+        "id": "algorand",
+        "etiqueta": "Algorand",
+        "tipo": "cadena_publica",
+        "id_cadena": "algorand"
+      },
+      {
+        "id": "iota",
+        "etiqueta": "IOTA",
+        "tipo": "cadena_publica",
+        "id_cadena": "iota"
+      },
+      {
+        "id": "ondo",
+        "etiqueta": "Ondo (emisor de activos tokenizados)",
+        "tipo": "emisor",
+        "id_cadena": "ondo"
+      },
+      {
+        "id": "quant",
+        "etiqueta": "Quant (Overledger)",
+        "tipo": "software",
+        "id_cadena": "quant"
+      },
+      {
+        "id": "circle-usdc",
+        "etiqueta": "Circle (USDC emitido de forma nativa)",
+        "tipo": "emisor"
+      },
+      {
         "id": "hedera",
         "etiqueta": "Hedera",
         "tipo": "cadena_publica",
@@ -942,6 +971,41 @@
         "etiqueta": "Plume",
         "tipo": "cadena_publica",
         "id_cadena": "plume"
+      },
+      {
+        "id": "sui",
+        "etiqueta": "Sui",
+        "tipo": "cadena_publica"
+      },
+      {
+        "id": "aptos",
+        "etiqueta": "Aptos",
+        "tipo": "cadena_publica"
+      },
+      {
+        "id": "injective",
+        "etiqueta": "Injective",
+        "tipo": "cadena_publica"
+      },
+      {
+        "id": "arc",
+        "etiqueta": "Arc (red de Circle)",
+        "tipo": "cadena_publica"
+      },
+      {
+        "id": "sei",
+        "etiqueta": "Sei",
+        "tipo": "cadena_publica"
+      },
+      {
+        "id": "mantle",
+        "etiqueta": "Mantle",
+        "tipo": "cadena_publica"
+      },
+      {
+        "id": "tempo",
+        "etiqueta": "Tempo",
+        "tipo": "cadena_publica"
       }
     ],
     "enlaces": [
@@ -1002,37 +1066,28 @@
       {
         "de": "ccip",
         "a": "ethereum",
-        "tipo": "mensajería y tokens",
+        "tipo": "soporte de red (CCIP en mainnet; directorio oficial de Chainlink, 79 cadenas; la API no da la fecha de entrada en producción)",
         "estado": "produccion",
-        "fecha": "2026-07-24",
-        "fuente": "https://chain.link/blog/quarterly-review-q2-2026",
-        "nivel": "S"
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.chain.link/api/ccip/v1/chains?environment=mainnet",
+        "nivel": "P"
       },
       {
         "de": "ccip",
         "a": "solana",
-        "tipo": "mensajería y tokens",
+        "tipo": "soporte de red (CCIP en mainnet; directorio oficial de Chainlink, 79 cadenas; la API no da la fecha de entrada en producción)",
         "estado": "produccion",
-        "fecha": "2025",
-        "fuente": "https://blog.chain.link/ccip-v1-6-is-now-live/",
-        "nivel": "S"
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.chain.link/api/ccip/v1/chains?environment=mainnet",
+        "nivel": "P"
       },
       {
         "de": "ccip",
         "a": "avalanche",
-        "tipo": "mensajería y tokens",
+        "tipo": "soporte de red (CCIP en mainnet; directorio oficial de Chainlink, 79 cadenas; la API no da la fecha de entrada en producción)",
         "estado": "produccion",
-        "fecha": "[VERIFICAR fecha]",
-        "fuente": "https://chain.link/blog/quarterly-review-q2-2026",
-        "nivel": "V"
-      },
-      {
-        "de": "ccip",
-        "a": "otras-publicas",
-        "tipo": "mensajería y tokens",
-        "estado": "produccion",
-        "fecha": "2026-07-24",
-        "fuente": "https://chain.link/blog/quarterly-review-q2-2026",
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.chain.link/api/ccip/v1/chains?environment=mainnet",
         "nivel": "P"
       },
       {
@@ -1059,15 +1114,6 @@
         "tipo": "quema y emisión de USDC",
         "estado": "produccion",
         "fecha": "2026-05-18",
-        "fuente": "https://developers.circle.com/release-notes/cctp-2026",
-        "nivel": "P"
-      },
-      {
-        "de": "cctp",
-        "a": "otras-publicas",
-        "tipo": "quema y emisión de USDC",
-        "estado": "produccion",
-        "fecha": "2026-10-08",
         "fuente": "https://developers.circle.com/release-notes/cctp-2026",
         "nivel": "P"
       },
@@ -1130,7 +1176,7 @@
       {
         "de": "esma",
         "a": "iso",
-        "tipo": "DTI obligatorio en libros blancos MiCA",
+        "tipo": "DTI exigido en los libros blancos de MiCA cuando existe un DTI para el activo (Reglamento Delegado 2025/421)",
         "estado": "produccion",
         "fecha": "2025-03-24",
         "fuente": "https://eur-lex.europa.eu/eli/reg_del/2025/421/oj/eng",
@@ -1139,11 +1185,11 @@
       {
         "de": "mas",
         "a": "polygon",
-        "tipo": "piloto Guardian (DBS, J.P. Morgan, SBI)",
+        "tipo": "piloto Guardian (DBS, J.P. Morgan, SBI) [VERIFICAR: la nota de la MAS citada no nombra Polygon; lo nombran fuentes de prensa]",
         "estado": "piloto",
         "fecha": "2022-11-02",
         "fuente": "https://www.mas.gov.sg/news/media-releases/2022/first-industry-pilot-for-digital-asset-and-decentralised-finance-goes-live",
-        "nivel": "S"
+        "nivel": "V"
       },
       {
         "de": "mas",
@@ -1175,11 +1221,11 @@
       {
         "de": "ccip",
         "a": "xdc",
-        "tipo": "soporte de red (CCIP en mainnet)",
+        "tipo": "soporte de red (CCIP en mainnet; directorio oficial de Chainlink, 79 cadenas; la API no da la fecha de entrada en producción)",
         "estado": "produccion",
-        "fecha": "2025-10-17",
-        "fuente": "https://dev.chain.link/changelog/ccip-on-xdc",
-        "nivel": "S"
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.chain.link/api/ccip/v1/chains?environment=mainnet",
+        "nivel": "P"
       },
       {
         "de": "ccip",
@@ -1243,6 +1289,483 @@
         "fecha": "2025-06-17",
         "fuente": "https://fnality.com/news/fnality-integrates-its-cutting-edge-payment-rail-with-dtcc-digital-launchpad",
         "nivel": "P"
+      },
+      {
+        "de": "ondo",
+        "a": "xrpl",
+        "tipo": "OUSG (bonos del Tesoro de EE. UU. tokenizados) «now live» en XRPL; acceso permisionado (fuente: Ripple, parte interesada)",
+        "estado": "produccion",
+        "fecha": "2025-06-11",
+        "fuente": "https://ripple.com/insights/tokenized-treasuries-go-live-on-the-xrpl/",
+        "nivel": "P"
+      },
+      {
+        "de": "circle-usdc",
+        "a": "xrpl",
+        "tipo": "USDC «available natively», «no bridging required»: emisión nativa de Circle, sin CCTP (leído en Chrome)",
+        "estado": "produccion",
+        "fecha": "2025-06-12",
+        "fuente": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+        "nivel": "P"
+      },
+      {
+        "de": "wormhole",
+        "a": "xrpl",
+        "tipo": "integración anunciada con XRPL y con la sidechain XRPL EVM («is integrating»; fuente: Ripple, parte interesada); no consta que esté activa [VERIFICAR]",
+        "estado": "anunciado",
+        "fecha": "2025-06-26",
+        "fuente": "https://ripple.com/insights/ripple-expands-multichain-interoperability-infrastructure-with-wormhole/",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "iota",
+        "tipo": "LayerZero y Stargate integrados en IOTA Mainnet (mensajería y puente de activos; la stablecoin nativa seguía en auditoría; fuente: IOTA Foundation, parte interesada)",
+        "estado": "produccion",
+        "fecha": "2025-12-03",
+        "fuente": "https://blog.iota.org/iota-mainnet-integrates-layerzero-and-stargate/",
+        "nivel": "P"
+      },
+      {
+        "de": "ccip",
+        "a": "aptos",
+        "tipo": "soporte de red (CCIP en mainnet; directorio oficial de Chainlink, 79 cadenas)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.chain.link/api/ccip/v1/chains?environment=mainnet",
+        "nivel": "P"
+      },
+      {
+        "de": "ccip",
+        "a": "arc",
+        "tipo": "soporte de red (CCIP en mainnet; directorio oficial de Chainlink, 79 cadenas)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.chain.link/api/ccip/v1/chains?environment=mainnet",
+        "nivel": "P"
+      },
+      {
+        "de": "ccip",
+        "a": "sei",
+        "tipo": "soporte de red (CCIP en mainnet; directorio oficial de Chainlink, 79 cadenas)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.chain.link/api/ccip/v1/chains?environment=mainnet",
+        "nivel": "P"
+      },
+      {
+        "de": "ccip",
+        "a": "mantle",
+        "tipo": "soporte de red (CCIP en mainnet; directorio oficial de Chainlink, 79 cadenas)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.chain.link/api/ccip/v1/chains?environment=mainnet",
+        "nivel": "P"
+      },
+      {
+        "de": "ccip",
+        "a": "tempo",
+        "tipo": "soporte de red (CCIP en mainnet; directorio oficial de Chainlink, 79 cadenas)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.chain.link/api/ccip/v1/chains?environment=mainnet",
+        "nivel": "P"
+      },
+      {
+        "de": "ccip",
+        "a": "canton",
+        "tipo": "soporte de red (CCIP en mainnet; directorio oficial de Chainlink, 79 cadenas)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.chain.link/api/ccip/v1/chains?environment=mainnet",
+        "nivel": "P"
+      },
+      {
+        "de": "ccip",
+        "a": "polygon",
+        "tipo": "soporte de red (CCIP en mainnet; directorio oficial de Chainlink, 79 cadenas)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.chain.link/api/ccip/v1/chains?environment=mainnet",
+        "nivel": "P"
+      },
+      {
+        "de": "cctp",
+        "a": "sui",
+        "tipo": "USDC nativo (dominio 8; tabla oficial de Circle)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+        "nivel": "P"
+      },
+      {
+        "de": "cctp",
+        "a": "aptos",
+        "tipo": "USDC nativo (dominio 9; tabla oficial de Circle)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+        "nivel": "P"
+      },
+      {
+        "de": "cctp",
+        "a": "injective",
+        "tipo": "USDC nativo (dominio 29; tabla oficial de Circle)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+        "nivel": "P"
+      },
+      {
+        "de": "cctp",
+        "a": "arc",
+        "tipo": "USDC nativo (dominio 26; tabla oficial de Circle)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+        "nivel": "P"
+      },
+      {
+        "de": "cctp",
+        "a": "sei",
+        "tipo": "USDC nativo (dominio 16; tabla oficial de Circle)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+        "nivel": "P"
+      },
+      {
+        "de": "cctp",
+        "a": "polygon",
+        "tipo": "USDC nativo (dominio 7; tabla oficial de Circle)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+        "nivel": "P"
+      },
+      {
+        "de": "cctp",
+        "a": "avalanche",
+        "tipo": "USDC nativo (dominio 1; tabla oficial de Circle)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://developers.circle.com/cctp/concepts/supported-chains-and-domains",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "sui",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://metadata.layerzero-api.com/v1/metadata",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "aptos",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://metadata.layerzero-api.com/v1/metadata",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "arc",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://metadata.layerzero-api.com/v1/metadata",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "stellar",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://metadata.layerzero-api.com/v1/metadata",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "plume",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://metadata.layerzero-api.com/v1/metadata",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "xdc",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://metadata.layerzero-api.com/v1/metadata",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "hedera",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://metadata.layerzero-api.com/v1/metadata",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "canton",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://metadata.layerzero-api.com/v1/metadata",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "sei",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://metadata.layerzero-api.com/v1/metadata",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "mantle",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://metadata.layerzero-api.com/v1/metadata",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "tempo",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://metadata.layerzero-api.com/v1/metadata",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "solana",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://metadata.layerzero-api.com/v1/metadata",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "polygon",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://metadata.layerzero-api.com/v1/metadata",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "avalanche",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://metadata.layerzero-api.com/v1/metadata",
+        "nivel": "P"
+      },
+      {
+        "de": "layerzero",
+        "a": "bnb",
+        "tipo": "endpoint v2 desplegado en mainnet (API de metadatos de LayerZero; desplegado no implica uso)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://metadata.layerzero-api.com/v1/metadata",
+        "nivel": "P"
+      },
+      {
+        "de": "wormhole",
+        "a": "sui",
+        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
+        "nivel": "V"
+      },
+      {
+        "de": "wormhole",
+        "a": "aptos",
+        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
+        "nivel": "V"
+      },
+      {
+        "de": "wormhole",
+        "a": "injective",
+        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
+        "nivel": "V"
+      },
+      {
+        "de": "wormhole",
+        "a": "sei",
+        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
+        "nivel": "V"
+      },
+      {
+        "de": "wormhole",
+        "a": "mantle",
+        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
+        "nivel": "V"
+      },
+      {
+        "de": "wormhole",
+        "a": "polygon",
+        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
+        "nivel": "V"
+      },
+      {
+        "de": "wormhole",
+        "a": "avalanche",
+        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
+        "nivel": "V"
+      },
+      {
+        "de": "wormhole",
+        "a": "bnb",
+        "tipo": "cadena en la lista del Governor de Wormhole (es la lista de cadenas vigiladas por los guardianes, no un listado de «redes soportadas») [VERIFICAR]",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://api.wormholescan.io/api/v1/governor/config",
+        "nivel": "V"
+      },
+      {
+        "de": "ondo",
+        "a": "layerzero",
+        "tipo": "Ondo Bridge: «We have partnered with LayerZero» para mover USDY y Ondo Stocks entre cadenas",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.ondo.finance/tools/ondo-bridge",
+        "nivel": "P"
+      },
+      {
+        "de": "ondo",
+        "a": "ethereum",
+        "tipo": "USDY transferible entre cadenas con Ondo Bridge (docs de Ondo: «We currently support USDY transfers between…»)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.ondo.finance/tools/ondo-bridge",
+        "nivel": "P"
+      },
+      {
+        "de": "ondo",
+        "a": "solana",
+        "tipo": "USDY transferible entre cadenas con Ondo Bridge (docs de Ondo: «We currently support USDY transfers between…»)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.ondo.finance/tools/ondo-bridge",
+        "nivel": "P"
+      },
+      {
+        "de": "ondo",
+        "a": "stellar",
+        "tipo": "USDY transferible entre cadenas con Ondo Bridge (docs de Ondo: «We currently support USDY transfers between…»)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.ondo.finance/tools/ondo-bridge",
+        "nivel": "P"
+      },
+      {
+        "de": "ondo",
+        "a": "bnb",
+        "tipo": "USDY transferible entre cadenas con Ondo Bridge (docs de Ondo: «We currently support USDY transfers between…»)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.ondo.finance/tools/ondo-bridge",
+        "nivel": "P"
+      },
+      {
+        "de": "ondo",
+        "a": "mantle",
+        "tipo": "USDY transferible entre cadenas con Ondo Bridge (docs de Ondo: «We currently support USDY transfers between…»)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.ondo.finance/tools/ondo-bridge",
+        "nivel": "P"
+      },
+      {
+        "de": "ondo",
+        "a": "sei",
+        "tipo": "USDY transferible entre cadenas con Ondo Bridge (docs de Ondo: «We currently support USDY transfers between…»)",
+        "estado": "produccion",
+        "fecha": "2026-11-15",
+        "fuente": "https://docs.ondo.finance/tools/ondo-bridge",
+        "nivel": "P"
+      },
+      {
+        "de": "ondo",
+        "a": "ccip",
+        "tipo": "alianza con Chainlink anunciada el 30-oct-2025: CCIP como «preferred solution» para iniciativas entre cadenas de instituciones (anuncio reproducido por Chainlink; no es un despliegue de carriles)",
+        "estado": "anunciado",
+        "fecha": "2025-10-30",
+        "fuente": "https://chain.link/blog/chainlink-institutional-tokenization-announcements",
+        "nivel": "P"
+      },
+      {
+        "de": "quant",
+        "a": "ethereum",
+        "tipo": "Overledger Tokenise (beta): despliegue de tokens QRC20 (compatibles con ERC20) en la mainnet, según las notas de la versión 2.2.9 (abr-2023); no hay fuente más reciente leída",
+        "estado": "produccion",
+        "fecha": "2023-04",
+        "fuente": "https://quant.network/assets/uploads/2023/04/Quant_ReleaseNotes_OVL_V2.2.9.pdf",
+        "nivel": "P"
+      },
+      {
+        "de": "quant",
+        "a": "polygon",
+        "tipo": "Overledger Tokenise (beta): despliegue de tokens QRC20 (compatibles con ERC20) en la mainnet, según las notas de la versión 2.2.9 (abr-2023); no hay fuente más reciente leída",
+        "estado": "produccion",
+        "fecha": "2023-04",
+        "fuente": "https://quant.network/assets/uploads/2023/04/Quant_ReleaseNotes_OVL_V2.2.9.pdf",
+        "nivel": "P"
+      },
+      {
+        "de": "quant",
+        "a": "xdc",
+        "tipo": "Overledger Tokenise (beta): despliegue de tokens QRC20 (compatibles con ERC20) en la mainnet, según las notas de la versión 2.2.9 (abr-2023); no hay fuente más reciente leída",
+        "estado": "produccion",
+        "fecha": "2023-04",
+        "fuente": "https://quant.network/assets/uploads/2023/04/Quant_ReleaseNotes_OVL_V2.2.9.pdf",
+        "nivel": "P"
+      },
+      {
+        "de": "swift-ledger",
+        "a": "ccip",
+        "tipo": "Chainlink «is working to enable» que bancos conecten sus sistemas y su infraestructura de firma al libro de Swift a través de su plataforma (CRE; no menciona CCIP) (nota de Chainlink, parte interesada)",
+        "estado": "anunciado",
+        "fecha": "2026-09-28",
+        "fuente": "https://chain.link/press-releases/chainlink-is-enabling-financial-institutions-to-connect-to-swifts-blockchain-ledger",
+        "nivel": "P"
       }
     ]
   },
@@ -1252,7 +1775,11 @@
     "https://www.bis.org/publ/arpdf/ar2023e3.htm",
     "https://chain.link/blog/quarterly-review-q2-2026",
     "https://developers.circle.com/release-notes/cctp-2026",
-    "https://eur-lex.europa.eu/eli/reg_del/2025/421/oj/eng"
+    "https://eur-lex.europa.eu/eli/reg_del/2025/421/oj/eng",
+    "https://docs.chain.link/api/ccip/v1/chains?environment=mainnet",
+    "https://metadata.layerzero-api.com/v1/metadata",
+    "https://api.wormholescan.io/api/v1/governor/config",
+    "https://docs.ondo.finance/tools/ondo-bridge"
   ],
   "informe": "informes/research/2026-11-15-C314-interconexion.md"
 }
