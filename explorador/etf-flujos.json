@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-15",
+ "generado": "2026-11-16",
  "metodo": "flujo diario = (acciones_t - acciones_t-1) x NAV_t; requiere >=2 instantáneas. Las webs de emisores solo muestran la última, así que el historial se acumula con scripts/leer_etf_flujos.py (una instantánea por día hábil). Al 15-nov (domingo) las webs repiten el ultimo dia habil (12/13-nov): 1 instantanea diaria por fondo, flujo diario = null. XRPZ, XRPC y GXLM solo tienen datos trimestrales/portada de la SEC (10-Q del 13-nov y 10-nov-2026).",
  "nota_nivel": "P = leido en la web del emisor o en EDGAR (10-Q; parte interesada, no auditado). Agregadores (Farside, SoSoValue) solo como contraste [S]; no consultados.",
  "etfs": [
@@ -203,5 +203,39 @@
  "bloques_no_hechos": {
   "btc": "C280 (15-nov): leidos IBIT (iShares), FBTC (Fidelity) y EZBC (Franklin) con nivel P. Pendiente: tenencia de BTC de IBIT y acciones reales de FBTC (la web dice 'no disponible'; derivadas por BTC x acciones/BTC).",
   "13f_3T": "plazo 16-nov-2026; la búsqueda de texto completo de EDGAR (leer_edgar.py) no indexa las tablas de posiciones del 13F, hay que leer el infotable XML por declarante (método de R21/R21b). Pendiente de tras el plazo."
+ },
+ "trackers_contraste": {
+  "nivel": "S (agregador; no auditado)",
+  "leido": "2026-11-16",
+  "fuente": "https://farside.co.uk/btc/ (Farside Investors, leído en Chrome)",
+  "unidad": "millones de dólares, flujo neto diario de todos los ETF spot de BTC de EE. UU.",
+  "serie_btc": [
+   {
+    "fecha": "2026-11-09",
+    "total": -201.0
+   },
+   {
+    "fecha": "2026-11-10",
+    "total": -95.0
+   },
+   {
+    "fecha": "2026-11-11",
+    "total": -299.8
+   },
+   {
+    "fecha": "2026-11-12",
+    "total": -284.1
+   },
+   {
+    "fecha": "2026-11-13",
+    "total": -185.4
+   }
+  ],
+  "ibit_fbtc_13nov": {
+   "IBIT": -143.5,
+   "FBTC": -41.9,
+   "nota": "columnas del cuadro de Farside; contraste, no sustituye al cálculo con acciones x NAV del emisor"
+  },
+  "xrp_xlm": "Farside no tiene página de XRP (404 el 16-nov); SoSoValue bloquea con verificación de bots (Cloudflare, no se salta): flujos diarios agregados de XRP [VERIFICAR]"
  }
 }
