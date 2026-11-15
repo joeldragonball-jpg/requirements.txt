@@ -1,6 +1,6 @@
 {
  "titulo": "OCDE y BIS por país (C282)",
- "generado": "2026-11-14",
+ "generado": "2026-11-15",
  "nota": "Último dato publicado por SDMX de la OCDE y del BIS. Nivel P = leído en la fuente oficial. País sin serie = no la publica ese flujo.",
  "paises": {
   "ES": {
@@ -24,11 +24,12 @@
     },
     "ipc_yy": {
      "serie": "IPC, variación interanual (%)",
-     "valor": 2.92,
-     "fecha": "2025-12",
-     "unidad": "%",
-     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
-     "nivel": "P"
+     "valor": 4.9,
+     "fecha": "2026-10",
+     "unidad": "% interanual",
+     "fuente": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr (y prc_hicp_manr hasta su cierre)",
+     "nivel": "P",
+     "nota": "dato mas reciente de indicadores-historia.json (la OCDE traia 2.92 a 2025-12); IPCA/Eurostat o serie propia: puede diferir del IPC de la OCDE"
     },
     "tipo_oficial": {
      "serie": "Tipo oficial del banco central (%, fin de mes)",
@@ -126,11 +127,12 @@
     },
     "ipc_yy": {
      "serie": "IPC, variación interanual (%)",
-     "valor": 0.79,
-     "fecha": "2025-12",
-     "unidad": "%",
-     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
-     "nivel": "P"
+     "valor": 3.8,
+     "fecha": "2026-10",
+     "unidad": "% interanual",
+     "fuente": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr (y prc_hicp_manr hasta su cierre)",
+     "nivel": "P",
+     "nota": "dato mas reciente de indicadores-historia.json (la OCDE traia 0.79 a 2025-12); IPCA/Eurostat o serie propia: puede diferir del IPC de la OCDE"
     },
     "tipo_oficial": {
      "serie": "Tipo oficial del banco central (%, fin de mes)",
@@ -177,11 +179,12 @@
     },
     "ipc_yy": {
      "serie": "IPC, variación interanual (%)",
-     "valor": 1.16,
-     "fecha": "2025-12",
-     "unidad": "%",
-     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
-     "nivel": "P"
+     "valor": 5.6,
+     "fecha": "2026-10",
+     "unidad": "% interanual",
+     "fuente": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr (y prc_hicp_manr hasta su cierre)",
+     "nivel": "P",
+     "nota": "dato mas reciente de indicadores-historia.json (la OCDE traia 1.16 a 2025-12); IPCA/Eurostat o serie propia: puede diferir del IPC de la OCDE"
     },
     "tipo_oficial": {
      "serie": "Tipo oficial del banco central (%, fin de mes)",
@@ -220,11 +223,12 @@
     },
     "ipc_yy": {
      "serie": "IPC, variación interanual (%)",
-     "valor": 2.77,
-     "fecha": "2025-12",
-     "unidad": "%",
-     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
-     "nivel": "P"
+     "valor": 3.3,
+     "fecha": "2026-10",
+     "unidad": "% interanual",
+     "fuente": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr (y prc_hicp_manr hasta su cierre)",
+     "nivel": "P",
+     "nota": "dato mas reciente de indicadores-historia.json (la OCDE traia 2.77 a 2025-12); IPCA/Eurostat o serie propia: puede diferir del IPC de la OCDE"
     },
     "tipo_oficial": {
      "serie": "Tipo oficial del banco central (%, fin de mes)",
@@ -263,11 +267,12 @@
     },
     "ipc_yy": {
      "serie": "IPC, variación interanual (%)",
-     "valor": 2.4,
-     "fecha": "2025-12",
-     "unidad": "%",
-     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
-     "nivel": "P"
+     "valor": 4.0,
+     "fecha": "2026-09",
+     "unidad": "% interanual",
+     "fuente": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr (y prc_hicp_manr hasta su cierre)",
+     "nivel": "P",
+     "nota": "dato mas reciente de indicadores-historia.json (la OCDE traia 2.4 a 2025-12); IPCA/Eurostat o serie propia: puede diferir del IPC de la OCDE"
     },
     "tipo_oficial": {
      "serie": "Tipo oficial del banco central (%, fin de mes)",
@@ -366,7 +371,8 @@
      "valor": 3.0,
      "fecha": "2026-10",
      "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
-     "nivel": "P"
+     "nivel": "P",
+     "nota": "LPR a 1 año (referencia del BIS), no el repo a 7 días del PBoC"
     },
     "brecha_credito": {
      "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
@@ -405,11 +411,12 @@
     },
     "ipc_yy": {
      "serie": "IPC, variación interanual (%)",
-     "valor": -0.5,
-     "fecha": "2021-06",
-     "unidad": "%",
-     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
-     "nivel": "P"
+     "valor": 3.2,
+     "fecha": "2025",
+     "unidad": "% interanual (media anual)",
+     "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+     "nivel": "P",
+     "nota": "dato mas reciente de indicadores-historia.json (la OCDE traia -0.5 a 2021-06); media anual"
     },
     "tipo_oficial": {
      "serie": "Tipo oficial del banco central (%, fin de mes)",
@@ -531,11 +538,12 @@
    "indicadores": {
     "ipc_yy": {
      "serie": "IPC, variación interanual (%)",
-     "valor": 16.7,
-     "fecha": "2022-03",
-     "unidad": "%",
-     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
-     "nivel": "P"
+     "valor": 8.7,
+     "fecha": "2025",
+     "unidad": "% interanual (media anual)",
+     "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+     "nivel": "S",
+     "nota": "dato mas reciente de indicadores-historia.json (la OCDE traia 16.7 a 2022-03); media anual"
     },
     "tipo_oficial": {
      "serie": "Tipo oficial del banco central (%, fin de mes)",
@@ -615,11 +623,12 @@
     },
     "ipc_yy": {
      "serie": "IPC, variación interanual (%)",
-     "valor": 3.08,
-     "fecha": "2025-01",
-     "unidad": "%",
-     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
-     "nivel": "P"
+     "valor": 3.2,
+     "fecha": "2025",
+     "unidad": "% interanual (media anual)",
+     "fuente": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+     "nivel": "P",
+     "nota": "dato mas reciente de indicadores-historia.json (la OCDE traia 3.08 a 2025-01); media anual"
     },
     "tipo_oficial": {
      "serie": "Tipo oficial del banco central (%, fin de mes)",
@@ -754,7 +763,7 @@
    "pais": "ES",
    "indicador": "ipc",
    "antes_hasta": "2026-10",
-   "ahora_hasta": "2025-12",
+   "ahora_hasta": "2026-10",
    "mas_fresco": false
   },
   {
@@ -782,7 +791,7 @@
    "pais": "FR",
    "indicador": "ipc",
    "antes_hasta": "2026-10",
-   "ahora_hasta": "2025-12",
+   "ahora_hasta": "2026-10",
    "mas_fresco": false
   },
   {
@@ -796,7 +805,7 @@
    "pais": "IT",
    "indicador": "ipc",
    "antes_hasta": "2026-10",
-   "ahora_hasta": "2025-12",
+   "ahora_hasta": "2026-10",
    "mas_fresco": false
   },
   {
@@ -810,7 +819,7 @@
    "pais": "NL",
    "indicador": "ipc",
    "antes_hasta": "2026-10",
-   "ahora_hasta": "2025-12",
+   "ahora_hasta": "2026-10",
    "mas_fresco": false
   },
   {
@@ -824,7 +833,7 @@
    "pais": "PL",
    "indicador": "ipc",
    "antes_hasta": "2026-09",
-   "ahora_hasta": "2025-12",
+   "ahora_hasta": "2026-09",
    "mas_fresco": false
   },
   {
@@ -859,7 +868,7 @@
    "pais": "JP",
    "indicador": "ipc",
    "antes_hasta": "2025",
-   "ahora_hasta": "2021-06",
+   "ahora_hasta": "2025",
    "mas_fresco": false
   },
   {
@@ -887,7 +896,7 @@
    "pais": "RU",
    "indicador": "ipc",
    "antes_hasta": "2025",
-   "ahora_hasta": "2022-03",
+   "ahora_hasta": "2025",
    "mas_fresco": false
   },
   {
@@ -901,7 +910,7 @@
    "pais": "ZA",
    "indicador": "ipc",
    "antes_hasta": "2025",
-   "ahora_hasta": "2025-01",
+   "ahora_hasta": "2025",
    "mas_fresco": false
   },
   {

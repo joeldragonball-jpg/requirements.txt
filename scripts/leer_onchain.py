@@ -5,12 +5,14 @@ import json, sys, urllib.request, datetime, pathlib
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 SALIDA = RAIZ / "explorador" / "cadenas-onchain.json"
 UA = {"User-Agent": "cartera-lector/1.0", "Content-Type": "application/json"}
-# id de cadenas.json -> nombre en DefiLlama (None = no es cadena: sin dato)
-MAPA = {"xrpl": "XRPL", "stellar": "Stellar", "hedera": "Hedera", "ethereum": "Ethereum",
-        "solana": "Solana", "bnb": "BSC", "avalanche": "Avalanche", "polygon": "Polygon",
-        "canton": "Canton", "chainlink": None, "ondo": None, "algorand": "Algorand",
-        "xdc": "XDC", "quant": None, "iota": "IOTA", "plume": "Plume"}
-ALIAS_STABLE = {"BSC": ["BSC", "Binance"], "XRPL": ["XRPL", "Ripple"]}
+# Diccionario unico: id de cadenas.json -> {"tvl": nombre en /v2/chains, "stable": nombres en stablecoinchains (en orden de preferencia)}
+# None = no es cadena (sin dato). Comprobado contra api.llama.fi el 15-nov-2026: "Plume" (TVL 0) es un nombre antiguo, la red viva es
+# "Plume Mainnet"; en IOTA el TVL esta en "IOTA" y las stablecoins en "IOTA EVM"; "Binance" figura con TVL 0 (la red viva es BSC).
+DL = {"xrpl": ("XRPL", ["XRPL", "Ripple"]), "stellar": ("Stellar", ["Stellar"]), "hedera": ("Hedera", ["Hedera"]),
+      "ethereum": ("Ethereum", ["Ethereum"]), "solana": ("Solana", ["Solana"]), "bnb": ("BSC", ["BSC", "Binance"]),
+      "avalanche": ("Avalanche", ["Avalanche"]), "polygon": ("Polygon", ["Polygon"]), "canton": ("Canton", ["Canton"]),
+      "chainlink": None, "ondo": None, "algorand": ("Algorand", ["Algorand"]), "xdc": ("XDC", ["XDC"]), "quant": None,
+      "iota": ("IOTA", ["IOTA", "IOTA EVM"]), "plume": ("Plume Mainnet", ["Plume Mainnet"])}
 
 def get(url, cuerpo=None):
     rq = urllib.request.Request(url, data=cuerpo, headers=UA)
@@ -54,21 +56,42 @@ def stellar():
 def main():
     cad = json.load(open(RAIZ / "explorador" / "cadenas.json", encoding="utf-8"))["cadenas"]
     ids = [c["id"] for c in cad]
+    previo = {}
+    if SALIDA.exists():
+        try:
+            previo = json.loads(SALIDA.read_text(encoding="utf-8")).get("redes", {})
+        except Exception:
+            previo = {}
+    fallos = []
     chains = seguro(get, "https://api.llama.fi/v2/chains") or []
-    tvl = {c["name"]: c.get("tvl") for c in chains}
     st = seguro(get, "https://stablecoins.llama.fi/stablecoinchains") or []
+    if not chains:
+        fallos.append("DefiLlama /v2/chains sin datos: TVL conservado del dato previo")
+    if not st:
+        fallos.append("DefiLlama stablecoinchains sin datos: stablecoins conservadas del dato previo")
+    tvl = {c["name"]: c.get("tvl") for c in chains}
     stab = {c["name"]: (c.get("totalCirculatingUSD") or {}).get("peggedUSD") for c in st}
     nativo = {"xrpl": seguro(xrpl), "stellar": seguro(stellar)}
+    for k, v in nativo.items():
+        if v is None:
+            fallos.append(f"nativo {k} no leido: conservado el previo")
     res = {}
     for i in ids:
-        n = MAPA.get(i)
-        s = None
-        if n:
-            for a in ALIAS_STABLE.get(n, [n]):
+        ent = DL.get(i)
+        n = ent[0] if ent else None
+        t = s_ = None
+        if ent:
+            t = tvl.get(n)
+            for a in ent[1]:
                 if stab.get(a) is not None:
-                    s = stab[a]; break
-        res[i] = {"nombre_defillama": n, "tvl_usd": tvl.get(n) if n else None,
-                  "stablecoins_usd": s, "nativo": nativo.get(i)}
+                    s_ = stab[a]; break
+        r0 = previo.get(i, {})
+        res[i] = {"nombre_defillama": n, "tvl_usd": t if chains else r0.get("tvl_usd"),
+                  "stablecoins_usd": s_ if st else r0.get("stablecoins_usd"),
+                  "nativo": nativo.get(i) if nativo.get(i) is not None else r0.get("nativo")}
+    if not chains and not st and not any(nativo.values()):
+        print("ERROR: no se pudo leer nada; no se sobrescribe", SALIDA, file=sys.stderr)
+        return
     out = {"_actualizado": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%MZ"),
            "nivel": "S",
            "aviso": "TVL y stablecoins vienen de DefiLlama, un agregador (nivel S): cambia de metodologia, "
@@ -76,7 +99,7 @@ def main():
                     "vienen de nodos publicos. null = no leido o no aplica (Chainlink, Ondo y Quant no son cadenas).",
            "fuentes": ["https://api.llama.fi/v2/chains", "https://stablecoins.llama.fi/stablecoinchains",
                        "https://horizon.stellar.org", "https://s1.ripple.com:51234"],
-           "redes": res}
+           "fallos": fallos, "redes": res}
     SALIDA.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print("OK", SALIDA, sum(1 for v in res.values() if v["tvl_usd"] is not None), "con TVL")
 

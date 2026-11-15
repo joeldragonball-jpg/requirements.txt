@@ -1,7 +1,7 @@
 {
  "titulo": "España: energía eléctrica y vivienda",
  "nivel": "P",
- "leido": "2026-11-14 22:21 UTC",
+ "leido": "2026-11-15 09:54 UTC",
  "fuentes": {
   "ree": "https://apidatos.ree.es (REData, Red Eléctrica)",
   "ine": "https://servicios.ine.es/wstempus (INE Tempus)"
@@ -9,12 +9,6 @@
  "precios_electricidad": {
   "serie": {
    "PVPC": [
-    {
-     "fecha": "2026-10-31",
-     "media_eur_mwh": 195.22,
-     "min_eur_mwh": 21.48,
-     "max_eur_mwh": 325.94
-    },
     {
      "fecha": "2026-11-01",
      "media_eur_mwh": 181.85,
@@ -92,15 +86,15 @@
      "media_eur_mwh": 224.23,
      "min_eur_mwh": 130.51,
      "max_eur_mwh": 404.56
+    },
+    {
+     "fecha": "2026-11-14",
+     "media_eur_mwh": 182.76,
+     "min_eur_mwh": 54.08,
+     "max_eur_mwh": 247.65
     }
    ],
    "Precio mercado spot": [
-    {
-     "fecha": "2026-10-31",
-     "media_eur_mwh": 208.98,
-     "min_eur_mwh": 57.62,
-     "max_eur_mwh": 303.15
-    },
     {
      "fecha": "2026-11-01",
      "media_eur_mwh": 163.19,
@@ -178,10 +172,16 @@
      "media_eur_mwh": 186.04,
      "min_eur_mwh": 119.33,
      "max_eur_mwh": 300
+    },
+    {
+     "fecha": "2026-11-14",
+     "media_eur_mwh": 169.48,
+     "min_eur_mwh": 60.01,
+     "max_eur_mwh": 219.77
     }
    ]
   },
-  "actualizado_ree": "2026-11-12T20:46:45.000+01:00",
+  "actualizado_ree": "2026-11-13T20:46:57.000+01:00",
   "unidad": "€/MWh (media/mín/máx del día, mercado peninsular)"
  },
  "demanda_electrica": {
@@ -258,7 +258,7 @@
    },
    {
     "mes": "2026-11",
-    "demanda_gwh": 8760.9,
+    "demanda_gwh": 9320.2,
     "parcial": true
    }
   ],
@@ -597,25 +597,25 @@
    {
     "mes": "2026-11",
     "parcial": true,
-    "total_gwh": 9803.8,
-    "renovable_gwh": 4858.1,
-    "renovable_pct": 49.6,
+    "total_gwh": 10507.8,
+    "renovable_gwh": 5266.4,
+    "renovable_pct": 50.1,
     "tecnologias_gwh": {
-     "Hidráulica": 793.4,
-     "Nuclear": 1837.9,
-     "Carbón": 29.5,
-     "Motores diésel": 97.2,
-     "Turbina de gas": 28.2,
-     "Turbina de vapor": 122.5,
-     "Ciclo combinado": 2298.0,
-     "Eólica": 2331.9,
-     "Solar fotovoltaica": 1489.9,
-     "Solar térmica": 62.9,
-     "Otras renovables": 154.6,
-     "Cogeneración": 494.7,
-     "Residuos no renovables": 37.7,
-     "Residuos renovables": 25.4,
-     "Generación total": 9804.0
+     "Hidráulica": 867.9,
+     "Nuclear": 1983.3,
+     "Carbón": 29.9,
+     "Motores diésel": 102.8,
+     "Turbina de gas": 29.0,
+     "Turbina de vapor": 128.5,
+     "Ciclo combinado": 2398.5,
+     "Eólica": 2555.7,
+     "Solar fotovoltaica": 1585.0,
+     "Solar térmica": 63.8,
+     "Otras renovables": 166.1,
+     "Cogeneración": 528.7,
+     "Residuos no renovables": 40.7,
+     "Residuos renovables": 27.9,
+     "Generación total": 10507.6
     }
    }
   ],
@@ -625,187 +625,208 @@
  "ipv_precios_vivienda": {
   "serie": [
    {
-    "codigo": "IPV769",
+    "codigo": "IPV1209",
+    "codigo_variacion_anual": "IPV1376",
     "territorio": "Nacional",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 186.75,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 165.433,
-    "variacion_anual_pct": 12.9
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 111.095,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 12.2
    },
    {
-    "codigo": "IPV766",
+    "codigo": "IPV1623",
+    "codigo_variacion_anual": "IPV1625",
     "territorio": "Andalucía",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 185.917,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 165.457,
-    "variacion_anual_pct": 12.4
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 110.903,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 11.9
    },
    {
-    "codigo": "IPV763",
+    "codigo": "IPV1638",
+    "codigo_variacion_anual": "IPV1640",
     "territorio": "Aragón",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 179.035,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 156.497,
-    "variacion_anual_pct": 14.4
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 113.472,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 14.6
    },
    {
-    "codigo": "IPV760",
+    "codigo": "IPV1653",
+    "codigo_variacion_anual": "IPV1655",
     "territorio": "Asturias",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 167.186,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 146.765,
-    "variacion_anual_pct": 13.9
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 114.014,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 15.0
    },
    {
-    "codigo": "IPV757",
+    "codigo": "IPV1668",
+    "codigo_variacion_anual": "IPV1670",
     "territorio": "Illes Balears",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 203.457,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 179.469,
-    "variacion_anual_pct": 13.4
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 112.048,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 13.7
    },
    {
-    "codigo": "IPV754",
+    "codigo": "IPV1534",
+    "codigo_variacion_anual": "IPV1536",
     "territorio": "Canarias",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 178.512,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 160.865,
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 110.44,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
     "variacion_anual_pct": 11.0
    },
    {
-    "codigo": "IPV751",
+    "codigo": "IPV1549",
+    "codigo_variacion_anual": "IPV1551",
     "territorio": "Cantabria",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 183.432,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 161.488,
-    "variacion_anual_pct": 13.6
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 111.313,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 13.5
    },
    {
-    "codigo": "IPV748",
+    "codigo": "IPV1564",
+    "codigo_variacion_anual": "IPV1566",
     "territorio": "Castilla y León",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 166.611,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 144.488,
-    "variacion_anual_pct": 15.3
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 113.551,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 14.8
    },
    {
-    "codigo": "IPV745",
+    "codigo": "IPV1579",
+    "codigo_variacion_anual": "IPV1581",
     "territorio": "Castilla-La Mancha",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 148.275,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 131.455,
-    "variacion_anual_pct": 12.8
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 110.864,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 11.7
    },
    {
-    "codigo": "IPV742",
+    "codigo": "IPV1594",
+    "codigo_variacion_anual": "IPV1379",
     "territorio": "Cataluña",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 193.427,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 174.491,
-    "variacion_anual_pct": 10.9
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 109.046,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 10.1
    },
    {
-    "codigo": "IPV739",
+    "codigo": "IPV1392",
+    "codigo_variacion_anual": "IPV1394",
     "territorio": "Comunitat Valenciana",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 174.969,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 154.122,
-    "variacion_anual_pct": 13.5
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 111.696,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 13.0
    },
    {
-    "codigo": "IPV736",
+    "codigo": "IPV1407",
+    "codigo_variacion_anual": "IPV1409",
     "territorio": "Extremadura",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 145.386,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 128.07,
-    "variacion_anual_pct": 13.5
-   },
-   {
-    "codigo": "IPV733",
-    "territorio": "Galicia",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 167.197,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 146.552,
-    "variacion_anual_pct": 14.1
-   },
-   {
-    "codigo": "IPV730",
-    "territorio": "Comunidad de Madrid",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 207.668,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 181.836,
-    "variacion_anual_pct": 14.2
-   },
-   {
-    "codigo": "IPV727",
-    "territorio": "Región de Murcia",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 171.78,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 150.18,
-    "variacion_anual_pct": 14.4
-   },
-   {
-    "codigo": "IPV724",
-    "territorio": "Navarra",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 167.127,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 150.034,
-    "variacion_anual_pct": 11.4
-   },
-   {
-    "codigo": "IPV721",
-    "territorio": "País Vasco",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 170.638,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 151.915,
-    "variacion_anual_pct": 12.3
-   },
-   {
-    "codigo": "IPV718",
-    "territorio": "La Rioja",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 173.261,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 151.397,
-    "variacion_anual_pct": 14.4
-   },
-   {
-    "codigo": "IPV715",
-    "territorio": "Ceuta",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 209.084,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 184.569,
-    "variacion_anual_pct": 13.3
-   },
-   {
-    "codigo": "IPV712",
-    "territorio": "Melilla",
-    "ultimo_periodo": "2025T4",
-    "indice_base_2015": 201.063,
-    "mismo_trimestre_anio_anterior": "2024T4",
-    "indice_anio_anterior": 178.326,
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 111.963,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
     "variacion_anual_pct": 12.8
+   },
+   {
+    "codigo": "IPV1422",
+    "codigo_variacion_anual": "IPV1424",
+    "territorio": "Galicia",
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 111.825,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 12.9
+   },
+   {
+    "codigo": "IPV1437",
+    "codigo_variacion_anual": "IPV1439",
+    "territorio": "Comunidad de Madrid",
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 111.85,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 12.9
+   },
+   {
+    "codigo": "IPV1452",
+    "codigo_variacion_anual": "IPV1454",
+    "territorio": "Región de Murcia",
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 113.192,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 14.4
+   },
+   {
+    "codigo": "IPV1467",
+    "codigo_variacion_anual": "IPV1469",
+    "territorio": "Navarra",
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 109.174,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 9.5
+   },
+   {
+    "codigo": "IPV1482",
+    "codigo_variacion_anual": "IPV1484",
+    "territorio": "País Vasco",
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 109.329,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 10.0
+   },
+   {
+    "codigo": "IPV1497",
+    "codigo_variacion_anual": "IPV1499",
+    "territorio": "La Rioja",
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 113.309,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 14.4
+   },
+   {
+    "codigo": "IPV1512",
+    "codigo_variacion_anual": "IPV1514",
+    "territorio": "Ceuta",
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 114.124,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 15.2
+   },
+   {
+    "codigo": "IPV1517",
+    "codigo_variacion_anual": "IPV1519",
+    "territorio": "Melilla",
+    "ultimo_periodo": "2026T2",
+    "indice_base_2015": 113.245,
+    "base": "2025=100",
+    "periodo_variacion": "2026T2",
+    "variacion_anual_pct": 13.8
    }
   ],
-  "unidad": "índice (base 2015=100) y % de variación anual calculada sobre el índice; IPV nacional/CCAA general, trimestral"
+  "base": "2025=100",
+  "unidad": "índice (base 2025=100, tabla INE 79563) y variación anual oficial (%); IPV general, trimestral. La base 2015 (IPV769...) se descontinuó tras 2025T4"
  },
  "ipva_alquiler": {
   "serie": [
@@ -864,6 +885,8 @@
     "variacion_pct": -0.2
    }
   ],
+  "aviso": "serie hasta 2020: el INE no publica IPVA posterior; no usar como dato actual",
+  "ultimo_anio": 2020,
   "unidad": "índice (base 2015=100), anual, total viviendas"
  }
 }

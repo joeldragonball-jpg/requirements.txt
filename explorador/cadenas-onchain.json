@@ -1,5 +1,5 @@
 {
- "_actualizado": "2026-11-14T22:19Z",
+ "_actualizado": "2026-11-15T09:54Z",
  "nivel": "S",
  "aviso": "TVL y stablecoins vienen de DefiLlama, un agregador (nivel S): cambia de metodologia, TVL no es uso real y Ethereum no incluye sus L2. Las metricas nativas de XRPL y Stellar vienen de nodos publicos. null = no leido o no aplica (Chainlink, Ondo y Quant no son cadenas).",
  "fuentes": [
@@ -8,76 +8,77 @@
   "https://horizon.stellar.org",
   "https://s1.ripple.com:51234"
  ],
+ "fallos": [],
  "redes": {
   "xrpl": {
    "nombre_defillama": "XRPL",
-   "tvl_usd": 28853899.44420665,
-   "stablecoins_usd": 839203488.5973234,
+   "tvl_usd": 29741057.833341785,
+   "stablecoins_usd": 839257467.0770671,
    "nativo": {
-    "ledger": 108333226,
+    "ledger": 108343349,
     "comision_base_xrp": 1e-05,
     "reserva_base_xrp": 1.0,
     "reserva_incr_xrp": 0.2,
-    "hora_servidor": "2026-Nov-14 22:19:52.741432 UTC",
+    "hora_servidor": "2026-Nov-15 09:54:46.158765 UTC",
     "fuente": "s1.ripple.com (rippled/Clio publico)",
-    "tx_en_ultimo_ledger": 506,
-    "cierre_ledger": "2026-Nov-14 22:19:41.000000000 UTC"
+    "tx_en_ultimo_ledger": 76,
+    "cierre_ledger": "2026-Nov-15 09:54:41.000000000 UTC"
    }
   },
   "stellar": {
    "nombre_defillama": "Stellar",
-   "tvl_usd": 193078558.75264436,
-   "stablecoins_usd": 399975713.73856777,
+   "tvl_usd": 197376250.25107303,
+   "stablecoins_usd": 398446579.18504375,
    "nativo": {
-    "ledger": 65481750,
-    "cierre_ledger": "2026-11-14T22:19:52Z",
-    "tx_correctas_ultimo_ledger": 265,
-    "operaciones_ultimo_ledger": 617,
-    "uso_capacidad_ledger": "0.64",
+    "ledger": 65490088,
+    "cierre_ledger": "2026-11-15T09:54:42Z",
+    "tx_correctas_ultimo_ledger": 116,
+    "operaciones_ultimo_ledger": 258,
+    "uso_capacidad_ledger": "0.46",
     "comision_stroops_mediana": "100",
-    "comision_stroops_p95": "21379",
+    "comision_stroops_p95": "8604",
     "fuente": "horizon.stellar.org"
    }
   },
   "hedera": {
    "nombre_defillama": "Hedera",
-   "tvl_usd": 20462021.573745813,
-   "stablecoins_usd": 25584520.18916605,
+   "tvl_usd": 20314151.480958547,
+   "stablecoins_usd": 25572558.603301708,
    "nativo": null
   },
   "ethereum": {
    "nombre_defillama": "Ethereum",
-   "tvl_usd": 37953350503.35948,
-   "stablecoins_usd": 131522943119.89769,
+   "tvl_usd": 37400482641.28862,
+   "stablecoins_usd": 131469408537.60004,
    "nativo": null
   },
   "solana": {
    "nombre_defillama": "Solana",
-   "tvl_usd": 4722192313.596489,
-   "stablecoins_usd": 13802337344.63867,
+   "tvl_usd": 4635170401.640578,
+   "stablecoins_usd": 13922382240.962479,
    "nativo": null
   },
   "bnb": {
    "nombre_defillama": "BSC",
-   "tvl_usd": 4523098589.955941,
-   "stablecoins_usd": 12460429719.735954,
+   "tvl_usd": 4517549250.8235035,
+   "stablecoins_usd": 12461820675.541742,
    "nativo": null
   },
   "avalanche": {
    "nombre_defillama": "Avalanche",
-   "tvl_usd": 553348544.1588658,
-   "stablecoins_usd": 773179867.369691,
+   "tvl_usd": 546462240.0411885,
+   "stablecoins_usd": 773158044.8462932,
    "nativo": null
   },
   "polygon": {
    "nombre_defillama": "Polygon",
-   "tvl_usd": 626394245.9599622,
-   "stablecoins_usd": 2787698101.539406,
+   "tvl_usd": 600673212.17112,
+   "stablecoins_usd": 2796440099.9669204,
    "nativo": null
   },
   "canton": {
    "nombre_defillama": "Canton",
-   "tvl_usd": 11247578.163212027,
+   "tvl_usd": 11292879.99938147,
    "stablecoins_usd": null,
    "nativo": null
   },
@@ -95,14 +96,14 @@
   },
   "algorand": {
    "nombre_defillama": "Algorand",
-   "tvl_usd": 24942309.564648848,
-   "stablecoins_usd": 120731007.21197388,
+   "tvl_usd": 25037060.479648907,
+   "stablecoins_usd": 120741130.77396376,
    "nativo": null
   },
   "xdc": {
    "nombre_defillama": "XDC",
-   "tvl_usd": 1843390.8664095013,
-   "stablecoins_usd": 103171267.67999786,
+   "tvl_usd": 1841969.9729340584,
+   "stablecoins_usd": 103196469.67201754,
    "nativo": null
   },
   "quant": {
@@ -113,14 +114,14 @@
   },
   "iota": {
    "nombre_defillama": "IOTA",
-   "tvl_usd": 1053777.5274777813,
-   "stablecoins_usd": null,
+   "tvl_usd": 1094236.8559707776,
+   "stablecoins_usd": 415604.32414833957,
    "nativo": null
   },
   "plume": {
-   "nombre_defillama": "Plume",
-   "tvl_usd": 0,
-   "stablecoins_usd": null,
+   "nombre_defillama": "Plume Mainnet",
+   "tvl_usd": 1136767.990446356,
+   "stablecoins_usd": 10844745.555842971,
    "nativo": null
   }
  }

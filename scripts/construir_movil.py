@@ -27,6 +27,19 @@ URL_BCE = "https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?last
 PETROLEO = (("brent", "BZ=F", "Brent"), ("wti", "CL=F", "WTI (crudo de EE. UU.)"))
 
 
+def liquidez_con_manual(liq):
+    """El bloque manual de liquidez se lee SIEMPRE de explorador/liquidez-manual.json (fuente viva, la actualiza leer_liquidez.py);
+    la copia que lleva paneles.json dentro puede estar desfasada (auditoria 15-nov, H5)."""
+    liq = dict(liq or {})
+    try:
+        m = cargar("explorador/liquidez-manual.json")
+        if m:
+            liq["manual"] = m
+    except Exception:
+        pass
+    return liq
+
+
 def descargar(url):
     peticion = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(peticion, timeout=40) as r:
@@ -664,7 +677,7 @@ def main():
         "mercado": p.get("mercado", {}).get("activos", []), "indices": p.get("indices", {}).get("indices", []),
         "tipos": p.get("tipos_vivos", {}).get("paises", []), "tipos_bis": p.get("tipos_bis", {}).get("paises", []),
         "watchlist": p.get("watchlist", {}).get("valores", []),
-        "defensa": p.get("defensa", {}).get("paises", []), "liquidez": p.get("liquidez", {}), "inflacion": p.get("inflacion", {}).get("paises", []), "ormuz": p.get("ormuz", {}), "hitos_petroleo": cargar("explorador/hitos_petroleo.json"), "elecciones": cargar("explorador/elecciones.json"), "paises": paises(), "regulacion": regulacion(), "datos": datos_panel(),
+        "defensa": p.get("defensa", {}).get("paises", []), "liquidez": liquidez_con_manual(p.get("liquidez", {})), "inflacion": p.get("inflacion", {}).get("paises", []), "ormuz": p.get("ormuz", {}), "hitos_petroleo": cargar("explorador/hitos_petroleo.json"), "elecciones": cargar("explorador/elecciones.json"), "paises": paises(), "regulacion": regulacion(), "datos": datos_panel(),
         "valoracion": valoracion(),
         "bonos": [{"id": k, "valor": bonos[k]["plazos"].get("10A"), "fecha": bonos[k]["fecha"]} for k in ("USA", "JPN", "EUR", "ESP", "FRA", "GBR") if k in bonos],
         "eventos": eventos(), "voces": voces(), "frescura_json": frescura_json(), "activos": activos(previo), "niveles": cargar("explorador/voces.json").get("niveles", {}), "tipos_voz": cargar("explorador/voces.json").get("tipos", {}), "verificados": verificados(),

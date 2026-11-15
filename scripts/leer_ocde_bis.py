@@ -57,6 +57,29 @@ def ultimos(texto, campo_pais):
     return out
 
 
+MAX_ANT_MESES = 18   # observaciones mas antiguas se marcan como caducadas (no comparables)
+
+
+def meses_desde(t, hoy=None):
+    """Meses entre hoy y un periodo 'AAAA', 'AAAA-MM' o 'AAAA-Qn'/'AAAA-Sn' (anual = fin de ese año)."""
+    hoy = hoy or date.today()
+    a = int(t[:4])
+    if len(t) == 4:
+        m = 12
+    elif "Q" in t:
+        m = 3 * int(t[-1])
+    elif "S" in t:
+        m = 6 * int(t[-1])
+    else:
+        m = int(t[5:7])
+    return (hoy.year - a) * 12 + hoy.month - m
+
+
+def fin_periodo(t):
+    """Clave ordenable AAAA-MM de un periodo."""
+    return f"{t[:4]}-{12 if len(t) == 4 else (3 * int(t[-1]) if 'Q' in t else (6 * int(t[-1]) if 'S' in t else int(t[5:7]))):02d}"
+
+
 def main(seco=False):
     previo = json.loads(SALIDA.read_text(encoding="utf-8")) if SALIDA.exists() else {}
     ant = (previo.get("paises") or {})
@@ -100,6 +123,34 @@ def main(seco=False):
         for k, v in (ant.get(i, {}).get("indicadores") or {}).items():
             if k not in res[i] and any(k in f for f in fallos):
                 res[i][k] = {**v, "conservado": True}
+    # 1) si indicadores-historia.json trae un dato mas reciente (ES, FR, IT... IPC mensual de Eurostat), usar el mas reciente
+    for i in paises:
+        for k, mapa in (("paro_m", "paro"), ("ipc_yy", "ipc")):
+            h = (hist.get(i) or {}).get(mapa)
+            n = res[i].get(k)
+            if not h or not h.get("v") or n is None:
+                continue
+            hf = h["hasta"]
+            if fin_periodo(hf) > fin_periodo(n["fecha"]) and (meses_desde(n["fecha"]) > MAX_ANT_MESES or len(hf) == 7):
+                res[i][k] = {"serie": n["serie"], "valor": round(h["v"][-1], 2), "fecha": hf,
+                             "unidad": h.get("unidad"), "fuente": h.get("fuente"), "nivel": h.get("nivel", "P"),
+                             "nota": "dato mas reciente de indicadores-historia.json" + f" (la OCDE traia {n['valor']} a {n['fecha']})"
+                                     + ("; media anual" if h.get("frec") == "A" else "; IPCA/Eurostat o serie propia: puede diferir del IPC de la OCDE")}
+    # 2) marcar como caducadas las observaciones de mas de 18 meses
+    for i in paises:
+        for k, d in res[i].items():
+            try:
+                ant = meses_desde(d["fecha"])
+            except Exception:
+                continue
+            if ant > MAX_ANT_MESES:
+                d["caducada"] = True
+                d["antiguedad_meses"] = ant
+                d["nota"] = (d.get("nota", "") + "; " if d.get("nota") else "") + f"CADUCADA: dato de {d['fecha']} (>{MAX_ANT_MESES} meses); no comparable con las demas columnas"
+    # 3) etiqueta China: el BIS publica ahi la LPR a 1 año
+    if "CN" in res and "tipo_oficial" in res["CN"]:
+        d = res["CN"]["tipo_oficial"]
+        d["nota"] = (d.get("nota", "") + "; " if d.get("nota") else "") + "LPR a 1 año (referencia del BIS), no el repo a 7 días del PBoC"
     comp = []
     for i, nombre in paises.items():
         for k, mapa in (("paro_m", "paro"), ("ipc_yy", "ipc")):

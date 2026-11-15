@@ -5,9 +5,34 @@ Uso: python scripts/leer_etf_flujos.py --ticker XRP --fecha 2026-11-12 --accione
 """
 import argparse
 import json
+from datetime import date, timedelta
 from pathlib import Path
 
 RUTA = Path(__file__).resolve().parent.parent / "explorador" / "etf-flujos.json"
+
+
+def dia_habil_siguiente(f):
+    d = f + timedelta(days=1)
+    while d.weekday() >= 5:
+        d += timedelta(days=1)
+    return d
+
+
+def es_trimestral(h):
+    t = f"{h.get('nivel', '')} {h.get('fuente', '')} {h.get('nota', '')}".lower()
+    return "10-q" in t or "trimestral" in t
+
+
+def flujo_valido(a, b):
+    """Flujo diario solo entre dos instantaneas de dias habiles consecutivos y no trimestrales/derivadas; si no, (False, motivo)."""
+    if es_trimestral(a) or es_trimestral(b):
+        return False, "alguna instantanea es trimestral (10-Q): la diferencia no es un flujo diario"
+    if "derivad" in f"{a.get('nivel', '')} {b.get('nivel', '')}".lower():
+        return False, "acciones derivadas (no leidas del emisor): flujo no fiable"
+    fa, fb = date.fromisoformat(a["fecha"]), date.fromisoformat(b["fecha"])
+    if dia_habil_siguiente(fa) != fb:
+        return False, f"las instantaneas ({a['fecha']} y {b['fecha']}) no son de dias habiles consecutivos"
+    return True, None
 
 
 def main():
@@ -41,8 +66,16 @@ def main():
         reg["nota"] = a.nota
     hist.append(reg)
     hist.sort(key=lambda h: h["fecha"])
+    for i in range(len(hist)):
+        hist[i].pop("flujo_usd", None)
+        hist[i].pop("flujo_motivo", None)
     for i in range(1, len(hist)):
-        hist[i]["flujo_usd"] = round((hist[i]["acciones"] - hist[i - 1]["acciones"]) * hist[i]["nav"])
+        ok, motivo = flujo_valido(hist[i - 1], hist[i])
+        if ok:
+            hist[i]["flujo_usd"] = round((hist[i]["acciones"] - hist[i - 1]["acciones"]) * hist[i]["nav"])
+        else:
+            hist[i]["flujo_usd"] = None
+            hist[i]["flujo_motivo"] = motivo
     RUTA.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
     print("ok", a.ticker, len(hist), "instantáneas")
 

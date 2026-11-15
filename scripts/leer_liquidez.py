@@ -97,7 +97,7 @@ def bloque_jp():
 
 
 def bloque_cn():
-    base = "http://www.pbc.gov.cn"
+    base = "https://www.pbc.gov.cn"   # https con verificación de certificado (auditoría 15-nov: antes http plano)
     h = bajar(base + "/en/3688247/3688978/3709137/index.html")
     m = re.search(r'href="(/en/3688247/3688978/3709137/\d+/index\.html)"[^>]*>\s*(Financial Statistics Report \(([^)]+)\))', h)
     if not m:

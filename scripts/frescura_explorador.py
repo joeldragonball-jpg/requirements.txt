@@ -5,25 +5,52 @@ import json, re, sys, datetime as dt
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
-META = {"leido", "actualizado", "as_of", "generado", "fecha_dato", "fecha_lectura", "updated", "ultima_actualizacion"}
-EVENTO = {"d", "fecha", "date"}
-RE = re.compile(r"^(\d{4}-\d{2}-\d{2})")
+# fecha de LECTURA/actualizacion del archivo (no prueba que el dato sea reciente)
+META = {"leido", "actualizado", "_actualizado", "as_of", "generado", "fecha_lectura", "updated", "ultima_actualizacion"}
+# fecha/periodo del DATO: se usa la mas reciente no futura; si el archivo no trae ninguna, se cae a la de lectura
+DATO = {"fecha_dato", "fecha", "d", "date", "ultimo_periodo", "periodo", "hasta", "mes", "anio", "ultimo_dato", "dato_de"}
+EVENTO = DATO
+RE = re.compile(r"^(\d{4})(?:-(\d{2})(?:-(\d{2}))?|-?[QqTt](\d)|T(\d))?")
 HOY = dt.date.today()
+
+
+def parsea(v):
+    """AAAA-MM-DD, AAAA-MM (fin de mes), AAAA-Qn / AAAAT n (fin de trimestre) o AAAA (31-dic) -> date; None si no es fecha."""
+    if isinstance(v, int) and 1990 <= v <= 2100:
+        v = str(v)
+    if not isinstance(v, str):
+        return None
+    m = re.match(r"^(\d{4})(?:-(\d{2})(?:-(\d{2}))?|-?[QqTt](\d))?$", v.strip()[:10]) or re.match(r"^(\d{4})-(\d{2})-(\d{2})", v.strip())
+    if not m:
+        return None
+    a, mes, dia, q = m.group(1), m.group(2), m.group(3), (m.group(4) if m.re.groups >= 4 else None)
+    try:
+        a = int(a)
+        if dia:
+            return dt.date(a, int(mes), int(dia))
+        if mes:
+            mes = int(mes)
+        elif q:
+            mes = 3 * int(q)
+        else:
+            mes = 12
+        if not 1 <= mes <= 12:
+            return None
+        fin = dt.date(a + (mes == 12), mes % 12 + 1, 1) - dt.timedelta(days=1)
+        return fin
+    except ValueError:
+        return None
 
 
 def recorre(o, acc):
     if isinstance(o, dict):
         for k, v in o.items():
-            if isinstance(v, str) and (k in META or k in EVENTO):
-                m = RE.match(v)
-                if m:
-                    try:
-                        f = dt.date.fromisoformat(m.group(1))
-                    except ValueError:
-                        continue
-                    if f <= HOY:  # ignora fechas futuras (calendarios, vencimientos)
-                        acc["meta" if k in META else "ev"].append(f)
-            else:
+            if k in META or k in DATO:
+                f = parsea(v)
+                if f is not None:
+                    acc["meta" if k in META else "ev"].append(min(f, HOY) if k in DATO and f > HOY and f.month == HOY.month and f.year == HOY.year else f)
+                    continue
+            if isinstance(v, (dict, list)):
                 recorre(v, acc)
     elif isinstance(o, list):
         for v in o:
@@ -46,11 +73,13 @@ def main():
             recorre(json.loads(p.read_text(encoding="utf-8")), acc)
         except Exception as e:
             filas.append((p.name, None, "error", None)); continue
-        fechas = acc["meta"] or acc["ev"]
+        meta = [x for x in acc["meta"] if x <= HOY]
+        ev = [x for x in acc["ev"] if x <= HOY]   # ignora fechas futuras (calendarios, vencimientos)
+        fechas = ev or meta                       # primero la fecha del DATO; la de lectura solo si no hay otra
         f = max(fechas) if fechas else None
         dias = (HOY - f).days if f else None
         fa = dt.date.fromtimestamp(p.stat().st_mtime)
-        filas.append((p.name, f, semaforo(dias), dias, "meta" if acc["meta"] else "evento" if acc["ev"] else "-", fa))
+        filas.append((p.name, f, semaforo(dias), dias, "dato" if ev else "lectura" if meta else "-", fa, max(meta) if meta else None))
     return filas
 
 
@@ -62,9 +91,9 @@ def escribir_json(filas=None):
         if len(f) < 6:
             items.append({"archivo": f[0], "fecha_dato": None, "dias": None, "semaforo": "error", "origen": None})
         else:
-            items.append({"archivo": f[0], "fecha_dato": f[1].isoformat() if f[1] else None, "dias": f[3], "semaforo": f[2], "origen": f[4]})
+            items.append({"archivo": f[0], "fecha_dato": f[1].isoformat() if f[1] else None, "dias": f[3], "semaforo": f[2], "origen": f[4], "fecha_lectura": f[6].isoformat() if f[6] else None})
     cuenta = {k: sum(1 for i in items if i["semaforo"] == k) for k in ("verde", "amarillo", "rojo", "gris", "error")}
-    out = {"nivel": "P", "generado": HOY.isoformat(), "fuente": "scripts/frescura_explorador.py (fecha del dato de cada explorador/*.json; sin IA)",
+    out = {"nivel": "P", "generado": HOY.isoformat(), "fuente": "scripts/frescura_explorador.py (fecha del DATO de cada explorador/*.json: periodo/fecha más reciente no futura; si no hay, la de lectura; sin IA)",
            "umbrales_dias": {"verde": 7, "amarillo": 30}, "resumen": cuenta, "items": items}
     (RAIZ / "explorador" / "frescura.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + chr(10), encoding="utf-8")
     return out
@@ -101,15 +130,15 @@ if __name__ == "__main__":
     for f in filas:
         cuenta[f[2]] = cuenta.get(f[2], 0) + 1
     L = [f"# C287 · Frescura de explorador/ ({HOY.isoformat()})", "",
-         "Fecha del DATO (campos leido/actualizado/generado/as_of/fecha_dato; si no hay, la máxima d/fecha no futura), no la del archivo. "
+         "Fecha del DATO (la más reciente no futura entre fecha/ultimo_periodo/periodo/hasta/mes/d...); solo si el archivo no trae ninguna se usa la de lectura (leido/_actualizado/generado). "
          "Verde ≤7 d, amarillo ≤30 d, rojo >30 d, gris = sin fecha de dato legible.", "",
          "Resumen: " + ", ".join(f"{k} {v}" for k, v in sorted(cuenta.items())), "",
-         "| Archivo | Fecha dato | Días | Semáforo | Origen | Modif. archivo |", "|---|---|---|---|---|---|"]
+         "| Archivo | Fecha dato | Días | Semáforo | Origen | Modif. archivo | Lectura |", "|---|---|---|---|---|---|---|"]
     orden = {"rojo": 0, "gris": 1, "amarillo": 2, "verde": 3, "error": 4}
     for f in sorted(filas, key=lambda x: (orden[x[2]], -(x[3] or 0))):
         if len(f) < 6:
             L.append(f"| {f[0]} | error al leer | | error | | |"); continue
-        L.append(f"| {f[0]} | {f[1] or '-'} | {f[3] if f[3] is not None else '-'} | {f[2]} | {f[4]} | {f[5]} |")
+        L.append(f"| {f[0]} | {f[1] or '-'} | {f[3] if f[3] is not None else '-'} | {f[2]} | {f[4]} | {f[5]} | {f[6] or '-'} |")
     L += ["", "## Archivos rojos y grises: propuesta de sesión que los refresca", ""]
     for f in filas:
         if f[2] in ("rojo", "gris"):

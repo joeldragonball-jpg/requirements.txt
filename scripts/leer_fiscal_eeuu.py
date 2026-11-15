@@ -89,17 +89,39 @@ def cot(ds, cod, inf):
 def main():
     sal = {"nivel": "P", "generado": datetime.now(timezone.utc).strftime("%Y-%m-%d"), "fallos": [],
            "aviso": "El COT muestra posiciones por tipo de operador a fecha de martes, publicadas el viernes. La posición neta NO es una previsión de precio. Datos fiscales: cifras oficiales sin ajuste."}
+    previo = {}
+    if RUTA.exists():
+        try:
+            previo = json.loads(RUTA.read_text(encoding="utf-8"))
+        except Exception:
+            previo = {}
+
+    def conservar(k, nuevo, anterior):
+        """Si la lectura falla, conserva el bloque bueno anterior y lo marca."""
+        if isinstance(anterior, dict):
+            anterior = dict(anterior)
+            anterior["conservado_sin_actualizar"] = previo.get("generado")
+            sal[k] = anterior
+        return nuevo
+
     for k, fn in (("deuda", deuda), ("tipo_medio_deuda", tipos), ("mts_mensual", mts)):
         try:
             sal[k] = fn()
         except Exception as e:
             sal["fallos"].append(f"{k}: {type(e).__name__}")
+            conservar(k, None, previo.get(k))
     sal["cot"] = {}
     for k, n, ds, cod, inf in COT:
         try:
             sal["cot"][k] = {"nombre": n, **cot(ds, cod, inf)}
         except Exception as e:
             sal["fallos"].append(f"cot {k}: {type(e).__name__}")
+            conservar(None, None, None)
+            if isinstance((previo.get("cot") or {}).get(k), dict):
+                sal["cot"][k] = dict(previo["cot"][k], conservado_sin_actualizar=previo.get("generado"))
+    if not any(sal.get(k) for k in ("deuda", "tipo_medio_deuda", "mts_mensual")) and not sal["cot"]:
+        print("ERROR: todas las lecturas fallaron; no se sobrescribe", RUTA.name, sal["fallos"])
+        return
     txt = json.dumps(sal, ensure_ascii=False, indent=1)
     if "--seco" in sys.argv:
         print(txt[:1500])

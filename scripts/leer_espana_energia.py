@@ -9,6 +9,7 @@ calculada aquí (trimestre contra el mismo de un año antes); IPVA (Índice de P
 Uso:  python scripts/leer_espana_energia.py
 """
 import json
+import re
 import sys
 import time
 import urllib.parse
@@ -21,11 +22,15 @@ UA = {"User-Agent": "cartera-joel/1.0 (uso personal)"}
 REE = "https://apidatos.ree.es/es/datos/"
 TEMPUS = "https://servicios.ine.es/wstempus/js/ES/"
 
-IPV_CCAA = {"IPV769": "Nacional", "IPV766": "Andalucía", "IPV763": "Aragón", "IPV760": "Asturias", "IPV757": "Illes Balears",
-            "IPV754": "Canarias", "IPV751": "Cantabria", "IPV748": "Castilla y León", "IPV745": "Castilla-La Mancha",
-            "IPV742": "Cataluña", "IPV739": "Comunitat Valenciana", "IPV736": "Extremadura", "IPV733": "Galicia",
-            "IPV730": "Comunidad de Madrid", "IPV727": "Región de Murcia", "IPV724": "Navarra", "IPV721": "País Vasco",
-            "IPV718": "La Rioja", "IPV715": "Ceuta", "IPV712": "Melilla"}
+# IPV base 2025=100 (INE, tabla 79563, desde sep-2026; la serie vieja IPV769... base 2015 acaba en 2025T4).
+# Se buscan por nombre en SERIES_TABLA: «<territorio>. General. Índice.» y «... Variación anual.»; nombre INE -> nombre corto.
+TABLA_IPV = "79563"
+NOMBRES_INE = {"Nacional": "Nacional", "Andalucía": "Andalucía", "Aragón": "Aragón", "Asturias, Principado de": "Asturias",
+               "Balears, Illes": "Illes Balears", "Canarias": "Canarias", "Cantabria": "Cantabria", "Castilla y León": "Castilla y León",
+               "Castilla - La Mancha": "Castilla-La Mancha", "Cataluña": "Cataluña", "Comunitat Valenciana": "Comunitat Valenciana",
+               "Extremadura": "Extremadura", "Galicia": "Galicia", "Madrid, Comunidad de": "Comunidad de Madrid",
+               "Murcia, Región de": "Región de Murcia", "Navarra, Comunidad Foral de": "Navarra", "País Vasco": "País Vasco",
+               "Rioja, La": "La Rioja", "Ceuta": "Ceuta", "Melilla": "Melilla"}
 # IPVA anual (total viviendas, índice, total): códigos hallados en SERIES_OPERACION/432
 IPVA = {"IPVA5": "Nacional", "IPVA119": "Andalucía", "IPVA71": "Cataluña", "IPVA65": "Comunitat Valenciana",
         "IPVA47": "Comunidad de Madrid", "IPVA101": "Illes Balears"}
@@ -101,17 +106,27 @@ def tempus(cod, n):
 
 
 def ipv():
+    lista = get(f"{TEMPUS}SERIES_TABLA/{TABLA_IPV}?det=0")
+    idx, var = {}, {}
+    for x in lista:
+        m = re.match(r"^(.*)\. General\. (Índice|Variación anual)\.\s*$", x.get("Nombre", ""))
+        if m and m.group(1) in NOMBRES_INE:
+            (idx if m.group(2) == "Índice" else var)[m.group(1)] = x["COD"]
     out = []
-    for cod, nombre in IPV_CCAA.items():
-        data, _ = tempus(cod, 9)
-        pts = [(f"{x['Anyo']}T{x['Periodo']['Valor']}", x["Valor"]) for x in data if x.get("Valor") is not None]
-        if len(pts) < 5:
+    for ine, nombre in NOMBRES_INE.items():
+        if ine not in idx or ine not in var:
             continue
-        ult, prev = pts[-1], pts[-5]
-        out.append({"codigo": cod, "territorio": nombre, "ultimo_periodo": ult[0], "indice_base_2015": ult[1],
-                    "mismo_trimestre_anio_anterior": prev[0], "indice_anio_anterior": prev[1],
-                    "variacion_anual_pct": round(100 * (ult[1] / prev[1] - 1), 1)})
-    return {"serie": out, "unidad": "índice (base 2015=100) y % de variación anual calculada sobre el índice; IPV nacional/CCAA general, trimestral"}
+        di, _ = tempus(idx[ine], 3)
+        dv, _ = tempus(var[ine], 3)
+        pi = [(f"{x['Anyo']}T{x['Periodo']['Valor']}", x["Valor"]) for x in di if x.get("Valor") is not None]
+        pv = [(f"{x['Anyo']}T{x['Periodo']['Valor']}", x["Valor"]) for x in dv if x.get("Valor") is not None]
+        if not pi or not pv:
+            continue
+        out.append({"codigo": idx[ine], "codigo_variacion_anual": var[ine], "territorio": nombre, "ultimo_periodo": pi[-1][0],
+                    "indice_base_2015": pi[-1][1],  # nombre antiguo conservado por compatibilidad con la vista; la base real es 2025=100
+                    "base": "2025=100", "periodo_variacion": pv[-1][0], "variacion_anual_pct": pv[-1][1]})
+    return {"serie": out, "base": "2025=100",
+            "unidad": "índice (base 2025=100, tabla INE 79563) y variación anual oficial (%); IPV general, trimestral. La base 2015 (IPV769...) se descontinuó tras 2025T4"}
 
 
 def ipva():
@@ -122,7 +137,8 @@ def ipva():
         if len(pts) >= 2:
             out.append({"codigo": cod, "territorio": nombre, "anio": pts[-1][0], "indice": pts[-1][1], "anio_previo": pts[-2][0],
                         "indice_previo": pts[-2][1], "variacion_pct": round(100 * (pts[-1][1] / pts[-2][1] - 1), 1)})
-    return {"serie": out, "unidad": "índice (base 2015=100), anual, total viviendas"}
+    return {"serie": out, "aviso": "serie hasta 2020: el INE no publica IPVA posterior; no usar como dato actual", "ultimo_anio": max((r["anio"] for r in out), default=None),
+            "unidad": "índice (base 2015=100), anual, total viviendas"}
 
 
 def main():

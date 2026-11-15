@@ -1,0 +1,14 @@
+# Correcciones de la auditoría Opus (scripts y JSON de datos) · 15-nov-2026
+
+Aplicadas las correcciones 1, 3-6, 8, 11-15 del informe `2026-11-15-auditoria-opus-lote.md` que tocan scripts y JSON de datos (las de cadenas.json, vistas.html y regulacion.json son de otro agente).
+
+- `leer_espana_energia.py`: IPV pasa a la tabla INE 79563 (base 2025=100; los códigos se buscan por nombre en SERIES_TABLA) con la variación anual oficial (IPV1376 y equivalentes por CCAA). Nacional 2026T2 = índice 111,095, +12,2 % (comprobado contra la API del INE). IPVA lleva el campo `aviso`: «serie hasta 2020». Se conserva el nombre de campo `indice_base_2015` por compatibilidad con la vista, pero trae base 2025 (campo `base`): la vista debe retitularse (pendiente de vistas.html).
+- `leer_onchain.py`: diccionario único `DL` (TVL y stablecoins por id). Plume -> «Plume Mainnet» (TVL 1,14 M$, stablecoins 10,8 M$); IOTA stablecoins desde «IOTA EVM» (0,42 M$). Si DefiLlama o los nodos fallan, se conserva el dato previo y se anota en `fallos`; si falla todo no se escribe.
+- `leer_gdelt.py`, `leer_fiscal_eeuu.py`: no sobrescriben si todo falla; por bloque conservan el anterior con `conservado_sin_actualizar`. GDELT: media de la ventana = días realmente disponibles (campo `dias`, `nota_media`), media 30 d = días con dato en los 30 naturales finales.
+- `leer_ocde_bis.py`: observaciones de más de 18 meses marcadas `caducada` (con antigüedad); si `indicadores-historia.json` trae un dato más reciente del mismo indicador (IPC de ES, FR, IT, NL, PL; también JP, RU, ZA con media anual) se usa ese y se anota. China tipo oficial: nota «LPR a 1 año».
+- `frescura_explorador.py`: mide la fecha del DATO (fecha, ultimo_periodo, periodo, hasta, mes... , la más reciente no futura); la de lectura (`leido`, `_actualizado`, `generado`) solo si no hay otra y se guarda aparte como `fecha_lectura`. Ahora salen en rojo los archivos con dato anual o antiguo (p. ej. espana.json con dato a 2025, seguridad-eurostat 2024, mandatos jul-2026): es la lectura honesta, no un error.
+- `leer_etf_flujos.py`: flujo diario solo entre dos días hábiles consecutivos y sin 10-Q trimestral ni acciones derivadas; si no, `flujo_usd: null` con `flujo_motivo`. GXLM: campo `tipo` = «fideicomiso OTC (no ETF en bolsa)».
+- `leer_liquidez.py`: PBoC por https (funciona con verificación de certificado).
+- `construir_movil.py`: el bloque `liquidez.manual` se lee siempre de `explorador/liquidez-manual.json`.
+
+No aplicado: títulos de la vista (IPV base 2015, «ETF de XRP y XLM») y XDC en cadenas.json (otro agente); FBTC con acciones derivadas y Bitwise con NAV/acciones de días distintos siguen como están (ahora su flujo se anula por la regla de derivados); `leer_esma_mica.py` sin validar columnas y calendario BLS manual (no pedidos en este encargo).

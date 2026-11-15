@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-15 09:39 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-15 10:05 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -140,8 +140,8 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Voces: Voces sin confirmar (27) → W06 · 13 llevan más de 14 días
+- 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (28) → rutina de cada tema (ver explorador/frescura.json) · verdes 30, amarillos 12, rojos 11, grises 5. Rojos: bancos-eba, espana-manual, e
 - 🟡 Radar regulatorio: Celdas sin dato (8) → W03 · Más huecos: IR 2, AE 1, BRICS 1, ID 1, EG 1
-- 🟡 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (21) → rutina de cada tema (ver explorador/frescura.json) · verdes 37, amarillos 11, rojos 0, grises 10. Amarillos: bonos-manual, calificaci
 
 ## Bots con problema
 - ninguno
