@@ -569,7 +569,7 @@ try:
             for _v in _o:
                 _recorre_niv(_v, _f)
 
-    for _f in ("cadenas", "aporta-redes", "interconexion", "pruebas-bancos", "escenarios-redes"):
+    for _f in ("cadenas", "aporta-redes", "interconexion", "pruebas-bancos", "escenarios-redes", "regulacion", "datos"):
         _rf = RAIZ / "explorador" / f"{_f}.json"
         if _rf.exists():
             _recorre_niv(json.loads(_rf.read_text(encoding="utf-8")), f"{_f}.json")

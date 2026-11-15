@@ -1925,7 +1925,8 @@
     "supuestos": [
      "Emisores en la red pública o en L2 que liquidan en ella",
      "Que las redes EVM privadas no absorban el flujo bancario",
-     "Veredicto C329: la regla da «alta» (comisiones 2,19 %/año) y el juicio manual «media»; defendible «media-alta» por la competencia de L2 y redes privadas. Staking 33-36 % del suministro según cobertura secundaria de Bitwise (T3-2026): [VERIFICAR] en beaconcha.in."
+     "Veredicto C329: la regla da «alta» (comisiones 2,19 %/año) y el juicio manual «media»; defendible «media-alta» por la competencia de L2 y redes privadas. Staking 33-36 % del suministro según cobertura secundaria de Bitwise (T3-2026): [VERIFICAR] en beaconcha.in.",
+     "Staking (15-nov-2026): 44,6 M ETH, 36,5 % del suministro (validatorqueue.com, S; beaconcha.in exige pago y no se leyó) [VERIFICAR]."
     ],
     "regla": {
      "nivel": "alta",
@@ -2446,7 +2447,8 @@
     "supuestos": [
      "Uso institucional en la red pública",
      "Estabilidad tras Alpenglow",
-     "Veredicto C329: «media-alta», sin decidir: comisiones 9,0 %/año, ~68-69 % del SOL en staking (secundarias), pero emisión «mínimo» y sin ancla institucional probada. [VERIFICAR] si las comisiones incluyen propinas MEV y tarifas de prioridad."
+     "Veredicto C329: «media-alta», sin decidir: comisiones 9,0 %/año, ~68-69 % del SOL en staking (secundarias), pero emisión «mínimo» y sin ancla institucional probada. [VERIFICAR] si las comisiones incluyen propinas MEV y tarifas de prioridad.",
+     "Staking (15-nov-2026): 429,3 M SOL activos de 637,6 M de suministro total = 67,3 % (explorer.solana.com, P; el porcentaje es cálculo propio; 72,6 % sobre circulante)."
     ],
     "regla": {
      "nivel": "alta",
@@ -3789,7 +3791,7 @@
      "Comisiones bajas",
      "Competencia de las L2 de Ethereum",
      "POL es el token de gas y de staking; el baseFee (EIP-1559) se quema y los validadores cobran staking más propinas. Dos documentos de Polygon no cuadran: la página del token da una emisión del 2 % anual tras junio de 2025 (PIP-26) y la de recompensas una bolsa fija del 12 % en 5 años; el calendario de recompensas parece anterior a PIP-26 [VERIFICAR]",
-     "[VERIFICAR] Veredicto C329: mantener «baja». El 56,46 % de comisiones sobre capitalización es atípico: el 88 % de las comisiones a 30 días (35,69 de 40,62 M$) viene de Polymarket International, que cobra en USDC y no en POL (DefiLlama, 15-nov-2026, S). Sin él quedaría ≈6,8 % anual, que aún incluye comisiones de protocolos; el gas puro no se aisló."
+     "[VERIFICAR] Veredicto C329: mantener «baja». El 56,46 % de comisiones sobre capitalización es atípico: el 88 % de las comisiones a 30 días (35,69 de 40,62 M$) viene de Polymarket International, que cobra en USDC y no en POL (DefiLlama, 15-nov-2026, S). Las comisiones de la propia red (base fee + prioridad, DefiLlama api.llama.fi/summary/fees/polygon, 15-nov-2026, S) son 1,74 M$ a 30 días y 30,8 M$ en un año, ≈3,6 % anual de la capitalización de 863 M$ (cálculo propio; unidad USD por [VERIFICAR]). Esa cifra sigue en «alto» (≥1 %) y la discrepancia con «baja» pasa a depender de la necesidad del token y de la competencia de las L2, no del consumo. POL en staking: orden de 30-38 % (CoinGecko Research 2025 y agregadores, S; sin cifra oficial leída)."
     ],
     "regla": {
      "nivel": "alta",
@@ -4257,7 +4259,8 @@
     "mecanismo": "[RAZONADO] En el sincronizador global el tráfico pagado se compra quemando Canton Coin a precio fijado en USD; no consta si los dominios privados de cada institución lo necesitan.",
     "supuestos": [
      "Que el tráfico institucional pase por el sincronizador global",
-     "Veredicto C329: consumo sin dato verificable. El tráfico se compra quemando Canton Coin con tarifa fijada en USD (docs.canton.network) pero las cifras de quema de agregadores son dispares; [VERIFICAR] en el explorador oficial."
+     "Veredicto C329: consumo sin dato verificable. El tráfico se compra quemando Canton Coin con tarifa fijada en USD (docs.canton.network) pero las cifras de quema de agregadores son dispares; [VERIFICAR] en el explorador oficial.",
+     "Consumo (15-nov-2026): los docs oficiales confirman que el tráfico del sincronizador se paga quemando Canton Coin con precio en USD por MB (parámetro de gobernanza), pero no publican la quema total ni la emisión anual; remiten a AmuletRules vía Scan (no leído). Terceros: ≈1,33 B CC quemados frente a ≈2,0 B emitidos en 90 días hasta ago-2026 (blog, S) y precio del MB de 17 a 60 $ según la fuente: se contradicen. Tasas en USD (no tokens): ≈193 M$ en T1-2026 (Messari) y >155 M$ en T3 (CertiK), S. [VERIFICAR] en Scan."
     ],
     "regla": {
      "nivel": "incierta",
@@ -4510,7 +4513,8 @@
     "supuestos": [
      "Que se mantenga el pago en otros activos",
      "Alcance real del staking de LINK",
-     "Veredicto C329: mantener «baja» con matiz «incierta»: la reserva de LINK crece (~6,05 M LINK, prensa sep-2026) pero no hay cifra de consumo en USD verificada; [VERIFICAR] en el panel oficial."
+     "Veredicto C329: mantener «baja» con matiz «incierta»: la reserva de LINK crece (~6,05 M LINK, prensa sep-2026) pero no hay cifra de consumo en USD verificada; [VERIFICAR] en el panel oficial.",
+     "Consumo (15-nov-2026): la reserva de LINK acumula 6,68 M LINK (61,6 M$) y recibe entre 74.703 y 106.253 LINK por semana (media de las últimas 10, ≈90,5 mil; metrics.chain.link/reserve, P). Es entrada a una reserva, no quema, y la página no desglosa el origen («ingresos de varias fuentes on y offchain»). Anualizado ≈4,7 M LINK ≈43 M$ [ESPECULACIÓN] si el ritmo se mantiene (cálculo propio)."
     ],
     "regla": {
      "nivel": "incierta",
@@ -4723,7 +4727,8 @@
     "nivel": "baja",
     "mecanismo": "[RAZONADO] Los productos (OUSG, USDY) no requieren ONDO y la documentación leída no le da papel en la emisión.",
     "supuestos": [
-     "Que ONDO siga siendo de gobernanza"
+     "Que ONDO siga siendo de gobernanza",
+     "Consumo: sin cifra. ONDO sigue siendo token de gobernanza y ecosistema; en jul-2026 Ondo presentó la «Ondo Network», que su CEO llama evolución de Ondo Chain y no correrá en paralelo (capa de ejecución fuera de cadena, liquidación en Ethereum; The Block y Cointelegraph, 27-28-jul-2026, S). Sin comunicado primario leído ni dato de quién paga comisiones [VERIFICAR]."
     ],
     "regla": {
      "nivel": "baja",
@@ -5432,7 +5437,8 @@
     "mecanismo": "[RAZONADO] Según una ficha autodeclarada las licencias de Overledger se pagan en QNT; sin documento primario leído.",
     "supuestos": [
      "Modelo de licencias vigente",
-     "Clientes bancarios en producción"
+     "Clientes bancarios en producción",
+     "Consumo: sin cifra. Suministro fijo de 14.612.493 QNT tras una única quema el 14-sep-2018; las licencias de Overledger pueden pagarse en QNT (o fiat) y la empresa las cobra como ingreso comercial, sin derecho de los poseedores a ingresos (ficha de Blockworks, S, divulgación del emisor). Sin quema recurrente conocida; docs de Quant sin leer [VERIFICAR]."
     ],
     "regla": {
      "nivel": "incierta",
