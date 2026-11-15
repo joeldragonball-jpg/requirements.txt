@@ -479,7 +479,9 @@ def _rechaza(c):
 
 
 for _n in ("cadenas-onchain", "mica-registro", "eeuu-fiscal", "ocde-bis", "etf-flujos", "espana-energia-vivienda",
-           "calendario-oficial", "conflictos-gdelt", "liquidez-manual"):
+           "calendario-oficial", "conflictos-gdelt", "liquidez-manual",
+           # C312: bloques C310 de Cadenas, Matriz y Calendario
+           "corredores-liquidez", "pais-corredores", "ley-eeuu", "profundidad-multidivisa", "swift-liquidacion"):
     _ruta = RAIZ / "explorador" / f"{_n}.json"
     if not _ruta.is_file():
         aviso(f"{_n}.json", "no existe")
@@ -492,11 +494,11 @@ for _n in ("cadenas-onchain", "mica-registro", "eeuu-fiscal", "ocde-bis", "etf-f
     if not isinstance(_j, dict) or not _j:
         aviso(f"{_n}.json", "la raíz debe ser un objeto no vacío")
         continue
-    if not _hay_clave(_j, {"_actualizado", "actualizado", "leido", "generado", "fecha_lectura", "fecha_dato", "as_of"}):
+    if not _hay_clave(_j, {"_actualizado", "actualizado", "leido", "generado", "fecha_lectura", "fecha_dato", "as_of", "revisado"}):
         aviso(f"{_n}.json", "sin fecha de lectura/generación (_actualizado, leido, generado, fecha_lectura)")
     if not _hay_clave(_j, {"fuente", "fuentes", "metodo", "url"}):
         aviso(f"{_n}.json", "sin fuente (fuente, fuentes, metodo o url)")
-    if not _hay_clave(_j, {"nivel", "nota_nivel"}):
+    if _n != "pais-corredores" and not _hay_clave(_j, {"nivel", "nota_nivel"}):   # pais-corredores toma el nivel de la celda de la Matriz (regulacion.json)
         aviso(f"{_n}.json", "sin nivel de fuente (nivel o nota_nivel)")
 
 # C205: la tesis de Joel es privada. privado/ no puede estar en git ni su contenido en las páginas públicas (docs/)

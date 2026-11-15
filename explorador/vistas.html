@@ -149,8 +149,8 @@ details.cad-ficha[open] .cad-hs{columns:340px;column-gap:22px}.cad-hs .cad-h{bre
 .cad-lst{margin:2px 0 6px 18px;padding:0;font-size:var(--fs-s)}.cad-det{margin-top:10px}.cad-dr{margin:4px 0;border:1px solid var(--bd,#3334);border-radius:6px;padding:2px 8px}.cad-dr>summary{cursor:pointer;font-weight:700;padding:8px 0;min-height:28px}.cad-dt{margin:2px 0 2px 8px}.cad-dt>summary{cursor:pointer;padding:8px 0;min-height:28px}.cad-det .nota-d{order:-1}.cad-lst li{margin:2px 0}
 .cad-ir{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
 /* C310 */
-.cx-vac{color:var(--tx2);font-style:italic}.cx-esp{display:inline-block;font-size:12px;font-weight:700;border:1px dashed #e8b64a;color:#e8b64a;border-radius:4px;padding:0 6px;margin-left:6px;white-space:nowrap}
-.cx-ina{display:inline-block;font-size:12px;font-weight:700;border:1px solid #ff6b6b;color:#ff6b6b;border-radius:4px;padding:0 6px}
+.cx-vac{color:var(--tx2);font-style:italic}.cx-esp{display:inline-block;font-size:13px;font-weight:700;border:1px dashed #e8b64a;color:#e8b64a;border-radius:4px;padding:0 6px;margin-left:6px;white-space:nowrap}
+.cx-ina{display:inline-block;font-size:13px;font-weight:700;border:1px solid #ff6b6b;color:#ff6b6b;border-radius:4px;padding:0 6px}
 .cx-aviso{border-left:3px solid #e8b64a;padding:4px 10px;margin:6px 0;font-size:var(--fs-s);background:rgba(232,182,74,.07)}
 .cx-form{border-left:3px solid var(--ac);padding:4px 10px;margin:6px 0;font-size:var(--fs-s);background:rgba(90,169,255,.06)}
 .cx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:var(--gap);margin:8px 0}
@@ -163,10 +163,60 @@ details.cad-mas summary{cursor:pointer;color:var(--ac);font-size:var(--fs-s);pad
 /* C266 · noticias por red y relaciones entre redes */
 .cad-umb{display:inline-block;font-size:11.5px;font-weight:700;border:1px dashed #e8b64a;color:#e8b64a;border-radius:4px;padding:0 5px;margin-left:4px;cursor:help}.cad-nt{display:inline-block;font-size:11.5px;border:1px solid var(--lin);color:var(--tx2);border-radius:4px;padding:0 5px;margin-right:4px}
 details.cad-rel{border-top:1px solid var(--lin);padding:5px 0}details.cad-rel>summary{cursor:pointer;font-size:var(--fs-s);padding:3px 0}details.cad-rel[open] .cad-rh{columns:380px;column-gap:22px}.cad-rh .cad-h{break-inside:avoid}.cad-rc{color:var(--tx2);font-size:var(--fs-xs);margin-left:6px}
-@media (max-width:1180px){table.cad-mat.cad-sm{min-width:0;table-layout:auto;border-spacing:2px}.cad-mat.cad-sm th{font-size:12px;padding:2px 3px;line-height:1.2;overflow-wrap:anywhere;hyphens:auto}.cad-mat.cad-sm th.cad-red,.cad-mat.cad-sm tr:first-child th:first-child{width:auto;min-width:96px}.cad-mat.cad-sm tr:first-child th:nth-last-child(2),.cad-mat.cad-sm tr:first-child th:last-child{width:auto}.cad-mat.cad-sm td.cad-c{font-size:13px;padding:6px 3px}td.cad-tk{white-space:normal}.cad-mat.cad-sm td.cad-tk{min-width:96px}.cad-mat td.cad-cap,.cad-mat th.cad-capth{font-size:12px}}
-.cad-mat th.cad-vh{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;height:112px;text-align:left;vertical-align:middle;overflow-wrap:normal;hyphens:none;padding:3px 2px}
 .cad-ley{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:var(--fs-s);margin:4px 0 6px}.cad-ley dt{white-space:nowrap}.cad-ley dd{margin:0;color:var(--tx2)}
-@media (max-width:700px){table.cad-mat:not(.cad-ta){min-width:1150px}table.cad-mat.cad-ta{min-width:0}table.cad-mat.cad-sm{min-width:620px}.cad-mat th.cad-red,.cad-mat tr:first-child th:first-child{width:112px}}
+@media (max-width:700px){table.cad-mat.cad-ta{min-width:0}}
+/* C312 · Matriz capacidad × red: etiquetas completas con ajuste de línea; primera columna fija y el resto desplaza dentro de su caja */
+.cad-env>table.cad-mat{display:table}
+table.cad-cm{min-width:1240px;border-spacing:3px}table.cad-cm.cad-sm{min-width:1060px}
+.cad-cm th{font-size:13px;line-height:1.25;color:var(--tx2);font-weight:600;padding:4px 5px;white-space:normal;overflow-wrap:normal;word-break:normal;hyphens:manual;vertical-align:bottom}
+.cad-cm tr:first-child th:first-child,.cad-cm th.cad-red{position:sticky;left:0;z-index:2;background:var(--panel);width:150px;box-shadow:3px 0 0 var(--panel)}
+.cad-cm th.cad-red{vertical-align:middle}.cad-cm .cad-red button{font-size:13.5px;line-height:1.3;min-height:0;padding:2px 0}
+.cad-cm td.cad-c{font-size:13.5px;line-height:1.45;padding:6px 6px}
+.cad-cm.cad-sm td.cad-c{font-size:14px;line-height:1.5;padding:8px 4px;vertical-align:middle}
+.cad-cm tr:first-child th:nth-last-child(2){width:168px}.cad-cm tr:first-child th:last-child{width:92px}
+.cad-cm td.cad-tk{white-space:normal;vertical-align:middle}.cad-cm td.cad-tk .tk{display:block;font-size:13px;line-height:1.35;margin:2px 0;padding:1px 6px;white-space:nowrap}
+.cad-cm td.cad-cap,.cad-cm th.cad-capth{font-size:13px}
+@media (max-width:1100px){#v-cadenas .caja{padding:9px 8px;border-radius:8px}#v-cadenas .cad-top{gap:0 6px}main:has(#v-cadenas.on){padding-left:4px;padding-right:4px}}
+/* C312 · Corredores de pago: una tarjeta por corredor */
+.cxc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,430px),1fr));gap:12px;margin:12px 0;align-items:start}
+.cxc{background:var(--bg);border:1px solid var(--lin);border-left:4px solid var(--lin);border-radius:10px;padding:12px 14px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.cxc.nP{border-left-color:#2fe08f}.cxc.nS{border-left-color:#e8b64a}.cxc.nV{border-left-color:#ff6b6b}
+.cxc-t{font-size:clamp(16px,.4vw + 11px,18.5px);font-weight:700;margin:0;line-height:1.25;color:var(--tx);text-transform:none;letter-spacing:0}
+.cxc-tipo{color:var(--tx2);font-size:var(--fs-xs);line-height:1.4;margin-top:3px}
+.cxc-chips{display:flex;flex-wrap:wrap;gap:6px}
+.cxc-chip{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--lin);border-radius:999px;padding:2px 10px;font-size:13.5px;line-height:1.45;color:var(--tx);background:var(--panel)}
+.cxc-chip.nP{border-color:#2fe08f;background:rgba(47,224,143,.10)}.cxc-chip.nS{border-color:#e8b64a;background:rgba(232,182,74,.10)}.cxc-chip.nV{border-color:#ff6b6b;background:rgba(255,107,107,.10)}
+.cxc-chip b{font-weight:700}.cxc-chip.nP b{color:#2fe08f}.cxc-chip.nS b{color:#e8b64a}.cxc-chip.nV b{color:#ff6b6b}
+.cxc-f{display:grid;grid-template-columns:minmax(96px,max-content) minmax(0,1fr);gap:10px 14px;margin:0;font-size:var(--fs-s);border-top:1px solid var(--lin);padding-top:10px}
+.cxc-f>dt{color:var(--tx2);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding-top:3px;line-height:1.3}
+.cxc-f>dd{margin:0;min-width:0;overflow-wrap:anywhere;line-height:1.45}
+.cxc-f .nota-v{font-size:var(--fs-xs);color:var(--tx2);margin-top:3px}
+.cxc-hhi{font-size:clamp(18px,.6vw + 12px,22px);font-weight:700;color:var(--tx)}.cxc-hhi small{font-size:13.5px;font-weight:400;color:var(--tx2);margin-left:4px}
+.cxc-met{position:relative;height:8px;background:var(--nul);border:1px solid var(--lin);border-radius:5px;margin:6px 0;overflow:hidden;max-width:360px}.cxc-met i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#5aa9e6,#e8b64a)}
+.cxc-calc{display:block;font-family:ui-monospace,Consolas,Menlo,monospace;font-size:13px;line-height:1.5;background:var(--panel);border:1px solid var(--lin);border-radius:6px;padding:5px 9px;margin:5px 0;overflow-wrap:anywhere}
+.cxc-mon{display:flex;align-items:center;gap:6px 8px;flex-wrap:wrap;margin:3px 0}.cxc-mon b{font-weight:700}
+.cxc-fu{display:flex;gap:6px;align-items:baseline;flex-wrap:wrap;margin:3px 0;font-size:var(--fs-xs);line-height:1.4}.cxc-fu a{color:var(--ac)}
+.cxc details.mas>summary{cursor:pointer;color:var(--ac);font-size:var(--fs-xs);padding:4px 0}.cxc details.mas{border-top:1px solid var(--lin);padding-top:4px}
+@media (max-width:600px){.cxc-f{grid-template-columns:minmax(0,1fr);gap:2px}.cxc-f>dd{margin-bottom:8px}.cxc{padding:10px 11px}}
+/* C312 · ¿Qué se tokeniza? Detalle: acordeón por red y rejilla de productos */
+details.cad-dr{background:var(--bg);border:1px solid var(--lin);border-radius:8px;margin:8px 0;padding:0 12px}
+details.cad-dr>summary{cursor:pointer;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:10px 0;list-style:none}details.cad-dr>summary::-webkit-details-marker{display:none}
+details.cad-dr>summary::before{content:'▸';color:var(--ac);font-weight:700;width:12px}details.cad-dr[open]>summary::before{content:'▾'}
+details.cad-dr>summary b{font-size:var(--fs);color:var(--tx)}
+.cad-drm{color:#f1d58a;font-weight:700;font-size:var(--fs-s)}.cad-drk{color:var(--tx2);font-size:var(--fs-xs);flex-basis:100%;padding-left:24px}
+.cad-tsec{margin:4px 0 14px}.cad-tsec>h4{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin:6px 0 6px;font-size:var(--fs-s);color:var(--ac)}.cad-tsec>h4 span{color:var(--tx2);font-weight:400;font-size:var(--fs-xs)}
+.cad-pg{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1.3fr) minmax(0,1.6fr) 7.2em 3.2em 3.6em 6.6em;font-size:var(--fs-xs);border:1px solid var(--lin);border-radius:8px;overflow:hidden;background:var(--panel)}
+.cad-pr{display:contents}.cad-pr>span{padding:7px 8px;border-top:1px solid var(--lin);min-width:0;overflow-wrap:anywhere;line-height:1.4}
+.cad-pr.cab>span{border-top:0;background:#121a2a;color:var(--tx2);font-weight:600}
+.cad-pr>span.i{text-align:right;white-space:nowrap;font-weight:700;color:#f1d58a}.cad-pr.cab>span.i{color:var(--tx2)}.cad-pr>span.p{font-weight:600;color:var(--tx)}.cad-pr>span.m,.cad-pr>span.nv{text-align:center}.cad-pr>span.f{white-space:nowrap;color:var(--tx2)}
+.cad-pr .dr{display:inline-block;min-width:1.8em;text-align:center;border:1px solid var(--lin);border-radius:4px;font-weight:700;font-size:13px}.cad-pr .dr.R{border-style:dashed;color:var(--tx2)}
+@media (max-width:900px){.cad-pg{display:block}.cad-pr{display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;grid-template-areas:'p p p i' 'e e e e' 's s s s' 'x m nv f';gap:3px 8px;padding:9px 10px;border-top:1px solid var(--lin)}.cad-pr:nth-child(2){border-top:0}.cad-pr.cab{display:none}.cad-pr>span{padding:0;border:0}.cad-pr .p{grid-area:p}.cad-pr .i{grid-area:i}.cad-pr .e{grid-area:e}.cad-pr .s{grid-area:s;color:var(--tx2)}.cad-pr .m{grid-area:m}.cad-pr .nv{grid-area:nv}.cad-pr .f{grid-area:f}.cad-pr .e::before{content:'Emisor: ';color:var(--tx2)}.cad-pr .s::before{content:'Subtipo: '}}
+/* C312 · Emisores, estándar de contrato y plazo de liquidación: una tarjeta por red */
+.cad-emg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:12px;margin:8px 0;align-items:start}
+.cad-emc{background:var(--bg);border:1px solid var(--lin);border-radius:10px;padding:10px 13px;min-width:0}
+.cad-emc>h4{margin:0 0 8px;font-size:var(--fs);color:var(--tx)}
+.cad-emf{margin:0;display:flex;flex-direction:column;gap:2px}.cad-emf>dt{font-size:13px;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:.04em;margin-top:8px}.cad-emf>dt:first-child{margin-top:0}
+.cad-emf>dd{margin:0;font-size:var(--fs-s);line-height:1.45;overflow-wrap:anywhere}.cad-emf .cad-f{margin-top:3px}.cad-emf .cad-f .badge{margin-right:6px}
 .que{color:var(--tx2);font-size:14.5px;margin:2px 0 6px}
 details.bl{margin-bottom:clamp(4px,.5vw,10px)}details.bl>summary{cursor:pointer;font-weight:600;padding:4px 0}.ms{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(88px,.9fr) minmax(110px,1.2fr) minmax(86px,.8fr);gap:10px;align-items:center;padding:7px 10px;margin:2px 0;border:1px solid var(--lin);border-radius:8px;background:var(--panel);list-style:none}details.bl>summary.ms::-webkit-details-marker{display:none}.ms:hover{background:#1b2640;border-color:var(--ac)}details[open]>summary.ms{background:#1b2640;border-color:var(--ac)}.ms .nm{font-weight:700;color:var(--tx);letter-spacing:.01em}.ms .nm::before{content:'▸  ';color:var(--ac)}details[open]>summary.ms .nm::before{content:'▾  '}.ms .im{font-weight:700;color:#f1d58a;text-align:right;white-space:nowrap}.ms .im small{color:var(--tx2);font-weight:400;font-size:max(13px,.8em)}.ms .pc{position:relative;height:20px;background:var(--nul);border-radius:5px;overflow:hidden}.ms .pc i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#27578f,var(--ac))}.ms .pc b{position:relative;display:block;padding-left:7px;font-size:max(13px,.85em);color:#fff;line-height:20px;white-space:nowrap;text-shadow:0 1px 2px #000}.ms .hb{color:var(--tx2);font-size:max(13px,.86em);text-align:right;white-space:nowrap}.ms .hb em{font-style:normal;color:var(--tx);font-weight:600}.pb{display:inline-block;position:relative;min-width:110px;height:18px;background:var(--nul);border-radius:4px;overflow:hidden;vertical-align:middle}.pb i{position:absolute;top:0;bottom:0;left:0;background:#27578f}.pb b{position:relative;padding-left:6px;font-size:max(13px,.88em);line-height:18px}@media(max-width:700px){.ms{grid-template-columns:1fr 1fr}.ms .nm{grid-column:1/-1}}
 .barrita{display:inline-block;height:9px;background:var(--ac);border-radius:2px;vertical-align:middle}
@@ -1803,7 +1853,8 @@ function pActivos(){
 }
 /* C264 · Cadenas: matriz capacidad × cadena con semáforo de evidencia, capas («¿necesita el token?») y enlaces a la Línea de tiempo y el Calendario
    (explorador/cadenas.json). Solo hechos públicos con fuente; la captura de valor es [RAZONADO] con supuestos; sin «ganador» */
-let cadSem=matchMedia('(max-width:1180px)').matches,cadSel='';   // en móvil y tablet arranca en semáforo; el botón pasa a texto
+let cadSem=matchMedia('(max-width:1180px)').matches,cadSel='';
+const cadPart=t=>String(t||'').replace(/\b(Inter)(opera)(bilidad)\b/g,'$1­$2­$3').replace(/\b(tokeniza)(bles)\b/g,'$1­$2').replace(/\b(Cumpli)(miento)\b/g,'$1­$2').replace(/\b(institu)(cional)\b/g,'$1­$2').replace(/\b(Rendi)(mientos)\b/g,'$1­$2').replace(/\b(regula)(toria)\b/g,'$1­$2');   // C312: guiones blandos para que las cabeceras largas se partan sin recortarse   // en móvil y tablet arranca en semáforo; el botón pasa a texto
 /* ---------- C289 · datos de los lectores por script: cadenas-onchain, registro MiCA, EE. UU. fiscal, OCDE/BIS, ETF, España (energía y vivienda),
    calendario oficial, GDELT y liquidez de la Fed y del Eurosistema. Siempre fuente, fecha y nivel P/S/V; un dato null se muestra como «vacío». ---------- */
 const vc=v=>v==null||v===''?'vacío':v;
@@ -1928,7 +1979,7 @@ function pCadenas(){
   br.append(el('p','nota-v','Distribuido ≠ representado: en Canton y Avalanche casi todo el valor figura como «representado» (registrado en la cadena, no transferible en ella); no equivale al «distribuido» de Ethereum o Stellar.'));
   const dn=el('details','cad-mas');dn.dataset.auto='1';dn.append(el('summary',null,'Qué mide y de dónde sale'));const pn=el('p','nota-v',(R0.nota||'')+' '+(R0.totales||'')+' ');pn.append(nivelBadge(R0.n),document.createTextNode(' '+(R0.d||'')+' '));if(R0.u)pn.append(lk(R0.u,'abrir ↗'));dn.append(pn);br.append(dn);
   const bl=el('div','caja');bl.append(el('h3',null,'Cómo se lee'));
-  const ul=el('ul','cad-lst');CR.forEach(x=>{const li=el('li');li.append(el('b',null,x.n.slice(0,2)+' · '+x.n+': '),document.createTextNode(x.que));ul.append(li)});bl.append(ul);
+  const ul=el('ul','cad-lst');CR.forEach(x=>{const li=el('li');li.append(el('b',null,x.n+': '),document.createTextNode(x.que));ul.append(li)});bl.append(ul);
   const ley=el('p','nota-v');ley.append(document.createTextNode('¿Necesita el token? '));[['sí','el uso lo consume o lo exige'],['parcial','a veces o con alternativa'],['mínimo','solo comisiones pequeñas'],['no','no lo necesita'],['sin dato','sin evidencia']].forEach(([k,t])=>{const s=el('span','tk '+tkc(k),k);s.title=t;ley.append(s,document.createTextNode(t+' · '))});bl.append(ley);
   bl.append(el('p','nota-v','«Captura» (última columna) responde a una sola pregunta: si la red se usa mucho, ¿ese uso obliga a comprar o bloquear el token de la red? No mide qué tipos de activos se tokenizan ni qué red es mejor para cada uno. Es un juicio [RAZONADO] sin fórmula numérica: se apoya en la columna «Capas: ¿token?» y en las comisiones, el staking y el colateral que citan las fuentes de cada ficha.'));
   const dl=el('dl','cad-ley');[['alta','el uso de la red consume o inmoviliza el token de forma clara (sin alternativa)'],['media','lo consume en parte (comisiones y staking) pero el valor tokenizado o pagado usa otros activos'],['baja','el uso se hace sobre todo con stablecoins o fondos y el token solo paga comisiones pequeñas o no se necesita'],['incierta','no hay dato público suficiente (volúmenes, papel del token) para decidir']].forEach(([k,t])=>{dl.append(el('dt','cad-cap '+k,k),el('dd',null,t))});bl.append(dl);
@@ -1938,13 +1989,13 @@ function pCadenas(){
   const cm=el('div','caja');const hd=el('div','cad-hd');hd.append(el('h2',null,'Matriz capacidad × red'));
   const bt=el('button','cad-bt'+(cadSem?' on':''),cadSem?'Ver el texto de cada celda':'Ver solo el semáforo');bt.onclick=()=>{cadSem=!cadSem;pCadenas()};hd.append(bt);cm.append(hd);
   cm.append(el('p','nota-v','Color del borde = nivel de la evidencia (verde P, ámbar S, rojo V = [VERIFICAR], gris = sin dato). Pasa el ratón por una celda para leerla entera con su fuente; pulsa el nombre de la red para abrir su ficha. «Capas» dice si cada capa necesita el token.'));
-  const t=el('table','cad-mat'+(cadSem?' cad-sm':''));const h=el('tr');h.append(el('th',null,'Red · token'));CAPS.forEach(k=>{const th=el('th',cadSem?'cad-vh':null,cadSem&&k.n.length>14?k.n.split(' ')[0]:k.n);th.title=k.n+(k.que?' — '+k.que:'');h.append(th)});const thT=el('th',null,'Capas: ¿token?');thT.title='Si cada capa (liquidación, emisión, seguridad, mensajería, custodia) necesita el token de la red';const thC=el('th','cad-capth','Captura del token ⓘ');thC.title='¿El uso de la red obliga a comprar o bloquear su token? alta · media · baja · incierta. Juicio [RAZONADO], no una previsión de precio.';h.append(thT,thC);t.append(h);
+  const t=el('table','cad-mat cad-cm'+(cadSem?' cad-sm':''));const h=el('tr');h.append(el('th',null,'Red · token'));CAPS.forEach(k=>{const th=el('th',null,cadPart(k.n));th.title=k.n+(k.que?' — '+k.que:'');h.append(th)});const thT=el('th',null,'Capas: ¿token?');thT.title='Si cada capa (liquidación, emisión, seguridad, mensajería, custodia) necesita el token de la red';const thC=el('th','cad-capth','Captura del token ⓘ');thC.title='¿El uso de la red obliga a comprar o bloquear su token? alta · media · baja · incierta. Juicio [RAZONADO], no una previsión de precio.';h.append(thT,thC);t.append(h);
   for(const c of L){const r=el('tr');const th=el('th','cad-red');const b=el('button',null,tit(c)+' · '+c.token);b.onclick=()=>{cadSel=c.id;pCadenas();const f=$('cad-'+c.id);if(f)f.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})};th.append(b);r.append(th);
     for(const k of CAPS){const v=c.matriz[k.id];const td=el('td','cad-c '+(v?'n'+(v.n||'V'):'nd'));
       if(v){td.title=v.t+'\n— '+(v.f||'')+' · '+(v.d||'sin fecha')+' ['+(v.n||'V')+']';td.textContent=cadSem?(v.n||'V'):corta(v.t,75)}
       else td.textContent=cadSem?'·':'sin dato';
       r.append(td)}
-    const tc=el('td','cad-tk');CR.forEach(cp=>{const x=(c.capas||{})[cp.id]||{};const tk=x.token||'sin dato';const s=el('span','tk '+tkc(tk),cp.n.slice(0,2));s.title=cp.n+': '+tk+(x.ev?' — '+x.ev:'');tc.append(s)});r.append(tc);
+    const tc=el('td','cad-tk');CR.forEach(cp=>{const x=(c.capas||{})[cp.id]||{};const tk=x.token||'sin dato';const s=el('span','tk '+tkc(tk),cp.n.split(/[ ,]/)[0]+': '+tk);s.title=cp.n+': '+tk+(x.ev?' — '+x.ev:'');tc.append(s)});r.append(tc);
     const ca=c.captura||{};r.append(el('td','cad-cap '+(ca.nivel||''),ca.nivel||'—'));t.append(r)}
   const env=el('div','cad-env');env.append(t);cm.append(env);S.append(cm);
   // ¿Qué se tokeniza en cada red? (C268)
@@ -1962,15 +2013,30 @@ function pCadenas(){
     const dh=el('div','cad-det');dh.append(el('h3',null,'Detalle por red y tipo: qué producto y quién lo emite'));
     dh.append(el('p','nota-v','Pulsa (o toca) una red y luego un tipo. Importes en M$ (millones de dólares). «Emisor» es la plataforma que da RWA.xyz [S] y no prueba custodia; lo único confirmado por el propio emisor es PAXG [P]. Son los mayores activos visibles, no el total. «R» = representado (registrado en la cadena, no transferible en ella); «D» = distribuido.'));
     const nomT=Object.fromEntries(TIPOS);
-    const fila=(x,t)=>{const li=el('li');const b=el('b',null,x.producto);const mo=x.modo==='representado'?' · R':' · D';li.append(b,document.createTextNode(' — '+fm(x.importe_musd)+mo+' · emisor: '+x.emisor+' · '+x.subtipo+' ['+x.n+', '+x.d+']'));li.title=x.f;return li};
+    // C312: rejilla producto · emisor · subtipo · importe · D/R · nivel · fecha (en <900 px cada producto es una tarjeta)
+    const rejilla=arr=>{const g=el('div','cad-pg');const cab=el('div','cad-pr cab');['Producto','Emisor','Subtipo','Importe','D/R','Nivel','Fecha'].forEach((t,i)=>cab.append(el('span',['p','e','s','i','m','nv','f'][i],t)));g.append(cab);
+      arr.forEach(x=>{const r=el('div','cad-pr');r.title=x.f||'';const R=x.modo==='representado';const dr=el('span','dr '+(R?'R':'D'),R?'R':'D');dr.title=R?'representado (registrado en la cadena, no transferible en ella)':'distribuido';
+        const m=el('span','m');m.append(dr);const nv=el('span','nv');nv.append(nivelBadge(x.n||'V'));
+        r.append(el('span','p',x.producto||'vacío'),el('span','e',x.emisor||'vacío'),el('span','s',x.subtipo||'vacío'),el('span','i',x.importe_musd==null?'vacío':fm(x.importe_musd)),m,nv,el('span','f',x.d||'sin fecha'));g.append(r)});return g};
+    let prim=true;
     TA.forEach(c=>{const ta=c.tipos_activo,tp=ta.tipos||{};const ks=TIPOS.filter(([k])=>tp[k]&&tp[k].detalle&&tp[k].detalle.length);const ap=ta.aparte||[];if(!ks.length&&!ap.length)return;
-      const dt=el('details','cad-dr');const sm=el('summary',null,tit(c)+' · '+(ks.length?ks.map(([k,n])=>n).join(', '):'solo representado'));dt.append(sm);
-      ks.forEach(([k,n])=>{const d2=el('details','cad-dt');const tt=tp[k];d2.append(el('summary',null,n+' · '+fm(tt.v)+' en '+tt.k+' activos (primeros '+tt.detalle.length+')'));const u=el('ul','cad-lst');tt.detalle.forEach(x=>u.append(fila(x)));d2.append(u);dt.append(d2)});
-      if(ap.length){const d2=el('details','cad-dt');d2.append(el('summary',null,'Representado, fuera del total anterior (materias primas y otros)'));const u=el('ul','cad-lst');ap.forEach(x=>u.append(fila(x)));d2.append(u);dt.append(d2)}
+      const dt=el('details','cad-dr cerrado-por-defecto');dt.dataset.auto='1';if(prim){dt.open=true;prim=false}
+      const totR=Object.values(tp).reduce((a,x)=>a+(x.v||0),0),nTi=Object.values(tp).filter(x=>(x.v||0)>0).length,nPr=ks.reduce((a,[k])=>a+tp[k].detalle.length,0)+ap.length;
+      const sm=el('summary');sm.append(el('b',null,tit(c)),el('span','cad-drm',ks.length?fm(totR)+' en '+nTi+' tipo'+(nTi===1?'':'s'):'solo representado'),el('span','nota-v',nPr+' producto'+(nPr===1?'':'s')+' en detalle'),el('span','cad-drk',ks.length?ks.map(([k,n])=>n).join(' · '):'Representado, fuera del total'));dt.append(sm);
+      ks.forEach(([k,n])=>{const tt=tp[k];const sc=el('div','cad-tsec');const h4=el('h4',null,n);h4.append(el('span',null,fm(tt.v)+' en '+tt.k+' activos (primeros '+tt.detalle.length+')'));sc.append(h4,rejilla(tt.detalle));dt.append(sc)});
+      if(ap.length){const sc=el('div','cad-tsec');sc.append(el('h4',null,'Representado, fuera del total anterior (materias primas y otros)'),rejilla(ap));dt.append(sc)}
       if(ta.detalle_nota&&!dh.querySelector('.nota-d'))dh.append(el('p','nota-v nota-d',ta.detalle_nota));
       dh.append(dt)});
     bx.append(dh);
-    const ul=el('ul','cad-lst');TA.forEach(c=>{const e=c.tipos_activo.emisores,cu=c.tipos_activo.cualitativo||{};if(!e&&!c.tipos_activo.estandar&&!c.tipos_activo.liquidacion&&!Object.keys(cu).length)return;const li=el('li');const es=c.tipos_activo.estandar,lq=c.tipos_activo.liquidacion;li.append(el('b',null,tit(c)+': '),document.createTextNode((e?e.t+' ['+e.n+']. ':'Sin cifra de emisores. ')+Object.entries(cu).map(([k,x])=>'Tipo «'+k+'» (sin importe comparable): '+x.t+' ['+x.n+', '+x.f+', '+x.d+']. ').join('')+'Estándar de contrato: '+(es?es.t+' ['+es.n+', '+es.f+', '+es.d+']':'sin dato')+'. Plazo de liquidación: '+(lq?lq.t+' ['+lq.n+']':'sin dato (no leído en fuente)')+'.'));ul.append(li)});bx.append(el('h3',null,'Emisores, estándar de contrato y plazo de liquidación'),ul);S.append(bx)})();
+    // C312: emisores, estándar y plazo en una tarjeta por red (tres filas etiquetadas con nivel, fuente y fecha)
+    const eg=el('div','cad-emg');
+    const pie=x=>{const s=el('div','cad-f');s.append(nivelBadge(x.n||'V'),document.createTextNode((x.f?x.f+' · ':'')+(x.d||'sin fecha')+' '));if(x.u)s.append(lk(x.u,'abrir ↗'));return s};
+    TA.forEach(c=>{const ta=c.tipos_activo,e=ta.emisores,cu=ta.cualitativo||{},es=ta.estandar,lq=ta.liquidacion;if(!e&&!es&&!lq&&!Object.keys(cu).length)return;
+      const cd=el('div','cad-emc');cd.append(el('h4',null,tit(c)));const dl=el('dl','cad-emf');
+      const fila=(lab,x,sin)=>{dl.append(el('dt',null,lab));const dd=el('dd');if(x){dd.append(document.createTextNode(x.t||'vacío'),pie(x))}else dd.append(el('span','cx-vac',sin));dl.append(dd)};
+      fila('Emisores',e,'Sin cifra de emisores.');Object.entries(cu).forEach(([k,x])=>fila('Tipo «'+k+'» (sin importe comparable)',x,'sin dato'));fila('Estándar de contrato',es,'sin dato');fila('Plazo de liquidación',lq,'sin dato (no leído en fuente)');
+      cd.append(dl);eg.append(cd)});
+    bx.append(el('h3',null,'Emisores, estándar de contrato y plazo de liquidación'),eg);S.append(bx)})();
   // C266 · relaciones entre redes: hechos que tocan a varias fichas a la vez
   const REL=C.relaciones||[],nomC=id=>{const q=L.find(x=>x.id===id);return q?tit(q):id};
   const nivM=m=>m.nivel||(/\[P/.test(m.fuente||'')?'P':/\[S/.test(m.fuente||'')?'S':'V');
@@ -2038,17 +2104,33 @@ function cxCorredores(){
   const f=el('div','cx-form');f.append(el('b',null,'Índice de concentración (HHI): '),document.createTextNode(J.indice_formula||''));c.append(f);
   c.append(el('p','nota-v','Lectura: 10.000 = una sola moneda; cuanto más bajo, más repartido. Un HHI alto describe cuántas monedas intervienen, no dice si es bueno o malo. Si falta la cuota por moneda, el índice queda «vacío» y no se estima.'));
   const filas=J.corredores;
-  const tb=tabla([
-    {t:'Corredor',f:r=>{const s=el('span');s.append(el('b',null,r.nombre),el('div','nota-v',r.tipo||''));return s}},
-    {t:'Estado y fecha',f:r=>(r.estado||'vacío')+' · '+(r.fecha||'sin fecha')},
-    {t:'Moneda con más peso',f:r=>{const m=(r.monedas_peso||[])[0];if(!m)return el('span','nota-v','vacío — '+(r.monedas_peso_motivo||''));const s=el('span');s.append(document.createTextNode(m.moneda+': '+num(m.cuota_pct,0)+' % ('+m.base+') '),cxNiv(m.nivel));return s}},
-    {t:'Índice (HHI)',n:1,f:r=>{const i=r.indice||{};if(i.hhi_min==null)return el('span','nota-v','vacío — '+(i.nota||''));const s=el('span');s.append(el('b',null,miles(String(i.hhi_min))+(i.hhi_max!==i.hhi_min?'–'+miles(String(i.hhi_max)):'')+' de 10.000'),el('div','nota-v','Cálculo: '+(i.calculo||'vacío')),el('div','nota-v',i.nota||''));return s}},
-    {t:'Volumen',f:r=>{const v=r.volumen;if(!v)return cxVac();const s=el('span');const p=[];if(v.valor_musd!=null)p.push(miles(num(v.valor_musd,0))+' M$');if(v.valor_cny_billones!=null)p.push(num(v.valor_cny_billones,1)+' billones CNY'+(v.ano?' ('+v.ano+')':''));if(v.operaciones!=null)p.push(miles(num(v.operaciones,0))+' operaciones');s.append(document.createTextNode(p.join(' · ')||'vacío'),el('div','nota-v',v.nota||''));return s}},
-    {t:'Fuentes y nivel',f:r=>{const s=el('span');(r.fuentes||[]).forEach(x=>{const d=el('div','cad-f');d.append(cxNiv(x.nivel),document.createTextNode(' '+(x.titulo||'')+' '),cxLk(x.url,'abrir ↗'));s.append(d)});if(!(r.fuentes||[]).length)s.append(cxVac());return s}}
-  ],filas);
-  c.append(scrollX(tb));
-  const dv=el('div');filas.forEach(r=>{const x=el('div');x.append(el('b',null,r.nombre+': '),document.createTextNode('participantes: '+((r.participantes||[]).join(', ')||'vacío')+'. Activo de liquidación: '+((r.activos_liquidacion||[]).join(', ')||'vacío')+'.'));if((r.verificar||[]).length){x.append(el('div','nota-v','[VERIFICAR]'),cxLista(r.verificar))}dv.append(x)});
-  c.append(cxDet('Participantes, activo de liquidación y qué falta verificar ('+filas.length+' corredores)',dv));
+  // C312: una tarjeta por corredor (título, chips de estado/fecha/nivel y filas etiquetadas); sin tabla ancha, sin scroll horizontal
+  const nivDe=r=>{const m=String(r.estado||'').match(/\[(P|S|V)[^\]]*\]\s*$/);if(m)return m[1];const f=(r.fuentes||[]).map(x=>String(x.nivel||'').trim()[0]);return f.includes('P')?'P':f.includes('S')?'S':'V'};
+  const chip=(cls,lab,txt)=>{const s=el('span','cxc-chip'+(cls?' '+cls:''));if(lab)s.append(el('b',null,lab));if(txt!==undefined&&txt!=='')s.append(cxTx(txt));return s};
+  const g=el('div','cxc-grid');
+  filas.forEach(r=>{const nv=nivDe(r);const k=el('article','cxc n'+nv);k.id='cxc-'+(r.id||'');
+    const hd=el('div');hd.append(el('h3','cxc-t',r.nombre||'vacío'));if(r.tipo)hd.append(el('div','cxc-tipo',r.tipo));k.append(hd);
+    const ch=el('div','cxc-chips');ch.append(chip('n'+nv,'Nivel '+nv,''),chip(null,'Fecha ',r.fecha||'sin fecha'));if((r.pais_id||[]).length)ch.append(chip(null,'Países ',r.pais_id.join(' · ')));k.append(ch);
+    const dl=el('dl','cxc-f');const fila=(lab,nodo)=>{dl.append(el('dt',null,lab));const dd=el('dd');dd.append(nodo);dl.append(dd)};
+    fila('Estado',cxTx(r.estado||null));
+    const mp=r.monedas_peso||[];const wm=el('div');
+    if(!mp.length){wm.append(cxVac(),el('div','nota-v',r.monedas_peso_motivo||''))}
+    else mp.forEach(m=>{const d=el('div','cxc-mon');d.append(el('b',null,(m.moneda||'vacío')+': '+(m.cuota_pct==null?'vacío':num(m.cuota_pct,0)+' %')),cxNiv(m.nivel),el('span','nota-v','('+(m.base||'sin base')+')'));wm.append(d)});
+    fila('Monedas y peso',wm);
+    const i=r.indice||{};const wi=el('div');
+    if(i.hhi_min==null){wi.append(cxVac(),el('div','nota-v',i.nota||''))}
+    else{const b=el('div','cxc-hhi',miles(String(i.hhi_min))+(i.hhi_max!==i.hhi_min?' – '+miles(String(i.hhi_max)):''));b.append(el('small',null,'de 10.000'));const me=el('div','cxc-met');const bar=el('i');bar.style.width=Math.min(100,Math.max(1,(i.hhi_max==null?i.hhi_min:i.hhi_max)/100))+'%';me.append(bar);me.title='0 = repartido entre muchas monedas · 10.000 = una sola moneda';
+      wi.append(b,me,el('code','cxc-calc','Cálculo: '+(i.calculo||'vacío')),el('div','nota-v',i.nota||''))}
+    fila('Concentración (HHI)',wi);
+    const v=r.volumen,wv=el('div');
+    if(!v)wv.append(cxVac());else{const p=[];if(v.valor_musd!=null)p.push(miles(num(v.valor_musd,0))+' M$');if(v.valor_cny_billones!=null)p.push(num(v.valor_cny_billones,1)+' billones CNY'+(v.ano?' ('+v.ano+')':''));if(v.operaciones!=null)p.push(miles(num(v.operaciones,0))+' operaciones');wv.append(el('b',null,p.join(' · ')||'vacío'));if(v.nota)wv.append(el('div','nota-v',v.nota))}
+    fila('Volumen',wv);
+    const wf=el('div');(r.fuentes||[]).forEach(x=>{const d=el('div','cxc-fu');const nt=String(x.nivel||'').trim();d.append(cxNiv(nt),document.createTextNode((x.titulo||'vacío')+(nt.length>1?' · '+nt.slice(1).trim():'')+' '),cxLk(x.url,'abrir ↗'));wf.append(d)});if(!(r.fuentes||[]).length)wf.append(cxVac());
+    fila('Fuentes',wf);k.append(dl);
+    const dv=el('div');dv.append(el('p','nota-v','Participantes: '+((r.participantes||[]).join(', ')||'vacío')+'.'),el('p','nota-v','Activo de liquidación: '+((r.activos_liquidacion||[]).join(', ')||'vacío')+'.'));if((r.verificar||[]).length){dv.append(el('div','nota-v','[VERIFICAR]'),cxLista(r.verificar))}
+    k.append(cxDet('Participantes, activo de liquidación'+((r.verificar||[]).length?' y qué falta verificar ('+r.verificar.length+')':''),dv));
+    g.append(k)});
+  c.append(g);
   if((J.huecos||[]).length){c.append(el('h3',null,'Huecos conocidos'),cxLista(J.huecos))}
   return c}
 
@@ -2721,7 +2803,7 @@ function pEspana(){
 }
 let nc0=ncols(),tRz;addEventListener('resize',()=>{clearTimeout(tRz);tRz=setTimeout(()=>{if(listo&&ncols()!==nc0){nc0=ncols();pintarTodo()}},200)});
 /* desplegables con datos: siempre abiertos al pintar; los de explicación («Cómo se lee», «En qué se basa») siguen plegados */
-(function(){const ab=n=>{if(n.nodeType!==1)return;if(n.matches('details:not(.mas)')&&!n.dataset.auto){n.open=true;n.dataset.auto='1'}n.querySelectorAll('details:not(.mas):not([data-auto])').forEach(d=>{d.open=true;d.dataset.auto='1'})};
+(function(){const ab=n=>{if(n.nodeType!==1)return;if(n.matches('details:not(.mas):not(.cerrado-por-defecto)')&&!n.dataset.auto){n.open=true;n.dataset.auto='1'}n.querySelectorAll('details:not(.mas):not(.cerrado-por-defecto):not([data-auto])').forEach(d=>{d.open=true;d.dataset.auto='1'})};
 new MutationObserver(m=>m.forEach(x=>x.addedNodes.forEach(ab))).observe(document.body,{childList:true,subtree:true});ab(document.body)})();
 cargar();
 </script></body></html>
