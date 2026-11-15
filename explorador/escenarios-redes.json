@@ -1,6 +1,6 @@
 {
  "_actualizado": "2026-11-15",
- "tarea": "C321",
+ "tarea": "C321, C333",
  "titulo": "Escenarios por red: dónde encaja, qué reglas le aplicarían, cómo sería un pago y una tokenización",
  "nivel": "mixto por paso: P/S si el paso cita un hecho del repo (ref); [ESPECULACIÓN] si lleva razón en vez de fuente",
  "aviso": "Mapa de ESCENARIOS, no de hechos: cada paso es o bien un hecho ya leído en aporta-redes.json (con su fuente y nivel, que se cargan de ahí) o bien una hipótesis marcada [ESPECULACIÓN] con la razón. No dice qué red gana ni recomienda nada. Un escenario que encaja en el papel no es una adopción real. Cubre 16 redes (las 6 primeras con más detalle).",
@@ -133,7 +133,504 @@
     }
    ],
    "incertidumbre": "Lo que decidirá cuál es el puente es regulatorio y de infraestructura, no del token: quién obtiene licencia, qué stablecoins aceptan los supervisores y a qué cadenas se conecta el depositario. Hoy el único puente con fuente primaria entre cadenas distintas es el USDC por CCTP y los mensajes por CCIP; un token neutral propio de XRP o XLM es [ESPECULACIÓN]."
-  }
+  },
+  "escenarios_ampliados": [
+   {
+    "id": "sin-stablecoin",
+    "titulo": "Sin stablecoin por defecto: cinco formas de mover valor entre países",
+    "aviso": "Una stablecoin es una opción más, no el supuesto de partida: muchos países no la emiten ni la aceptan. Cada paso es un hecho con fuente y nivel o una [ESPECULACIÓN] con su razón. Que una ruta exista en el papel no es adopción.",
+    "pasos": [
+     {
+      "t": "Ruta 1, fiat con banco corresponsal (nostro/vostro): es la base actual. Cada banco mantiene cuentas en la divisa de destino en otro banco; la mensajería (Swift) comunica pero no liquida. Según el FSB, los avances de política «no se han traducido aún en mejoras tangibles» para el usuario final y es improbable alcanzar los objetivos de 2027 al ritmo actual.",
+      "hecho": {
+       "fuente": "FSB, informe consolidado G20 sobre pagos transfronterizos (9-oct-2025), página leída en Chrome",
+       "url": "https://www.fsb.org/2025/10/g20-roadmap-for-cross-border-payments-consolidated-progress-report-for-2025/",
+       "nivel": "P",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "Ruta 2, depósitos tokenizados: Swift anunció el 9-jul-2026 que su libro mayor de blockchain está listo para uso inicial y que 17 bancos de seis continentes se preparan para pilotar pagos reales con depósitos tokenizados 24/7. Es una capa de orquestación sobre depósitos de cada banco en su propio libro; la liquidación final se completa por los sistemas existentes. No usa activo puente.",
+      "hecho": {
+       "fuente": "Swift, nota de prensa 9-jul-2026, leída en Chrome",
+       "url": "https://www.swift.com/news-events/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure",
+       "nivel": "P",
+       "fecha": "2026-07-09"
+      }
+     },
+     {
+      "t": "Ruta 3, CBDC: el seguimiento del Atlantic Council (actualizado en mayo de 2026) cuenta 146 países y uniones monetarias que exploran una CBDC, 77 en fase avanzada (desarrollo, piloto o lanzamiento), 41 pilotos y 3 lanzamientos completos (Bahamas, Jamaica y Nigeria, con adopción lenta). El foco se desplaza a las CBDC mayoristas (Pontes del BCE, CBDC mayorista ya emitida en Singapur, piloto de crédito tokenizado Drex en Brasil). El e-CNY superó los 3.400 millones de transacciones minoristas a dic-2025.",
+      "hecho": {
+       "fuente": "Atlantic Council, CBDC Tracker, leído en Chrome",
+       "url": "https://www.atlanticcouncil.org/cbdctracker/",
+       "nivel": "P",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "Ruta 4, activo puente (token) con mercado propio: en XRPL, el auto-bridging usa XRP como intermediario en un libro de órdenes sintético cuando es más barato que el cruce directo. Está dentro de la misma red; no une redes distintas.",
+      "hecho": {
+       "fuente": "xrpl.org, Auto-Bridging, leído en Chrome",
+       "url": "https://xrpl.org/docs/concepts/tokens/decentralized-exchange/autobridging",
+       "nivel": "P",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "Ruta 5, stablecoin regulada como una opción más. En EE. UU., la ley GENIUS (Pub. L. 119-27, firmada el 18-jul-2025) exige reservas 1:1 en dinero, depósitos a la vista, letras o bonos del Tesoro con vencimiento de 93 días o menos, repos a un día y repos inversos a un día con colateral del Tesoro. Entra en vigor lo primero que ocurra entre 18 meses tras la firma (18-ene-2027) y 120 días tras las normas finales. Corrección de un borrador: los repos son a un día, no a siete.",
+      "hecho": {
+       "fuente": "Texto de la ley en govinfo.gov (secs. 4 y 20), leído en Chrome",
+       "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+       "nivel": "P",
+       "fecha": "2025-07-18"
+      }
+     },
+     {
+      "t": "China: se atribuye a un aviso del PBoC de 6-feb-2026 (Yinfa [2026] n.º 42) la prohibición de emitir stablecoins ligadas al RMB sin aprobación. El texto oficial no se pudo leer (la web del PBoC carga las listas dinámicamente): solo hay prensa financiera. Número de organismos firmantes discrepa entre medios.",
+      "hecho": {
+       "fuente": "Prensa (PYMNTS, Unlock Blockchain); pbc.gov.cn no legible [VERIFICAR]",
+       "url": "https://www.pbc.gov.cn/en/3688110/3688172/index.html",
+       "nivel": "V",
+       "fecha": "2026-02-06"
+      }
+     },
+     {
+      "t": "Para un país sin stablecoin propia ni acceso a dólares, lo más probable a corto plazo no es una cadena sino la ruta 1 con retoques (más Swift gpi/ISO 20022), porque las rutas 2-3 dependen de acuerdos entre bancos y de bancos centrales que hoy están en piloto.",
+      "esp": "Razón: el FSB mide que lo existente mejora despacio y las alternativas citadas están en pilotos sin calendario de producción confirmado [ESPECULACIÓN]"
+     }
+    ],
+    "incertidumbre": "Las rutas no son excluyentes: un mismo pago puede combinar fiat en origen, depósito tokenizado en el medio y fiat en destino. Cuál predomine dependerá de regulación y acuerdos bancarios, no de la tecnología."
+   },
+   {
+    "id": "nostro-vostro",
+    "titulo": "Coste de la liquidez nostro/vostro y qué liberaría un activo puente",
+    "aviso": "Cifras de «capital inmovilizado» sin base oficial homogénea: casi todas vienen de proveedores o de informes de la industria cripto. Solo se citan con su nivel.",
+    "pasos": [
+     {
+      "t": "El mecanismo: el banco que paga necesita fondos prefinanciados en la divisa de destino en una cuenta en el extranjero (vostro/nostro), además de los de origen. Por eso el capital queda inmovilizado en dos sitios. La parte oficial: el FSB/CPMI cuenta el coste de liquidez por prefinanciación como componente del coste, junto a comisiones de transacción y de cuenta (FSB, abr-2020).",
+      "hecho": {
+       "fuente": "FSB, «Enhancing Cross-border Payments», abr-2020 (visto en buscador, no abierto en Chrome)",
+       "url": "https://www.fsb.org/uploads/P090420-2.pdf",
+       "nivel": "S",
+       "fecha": "2020-04-09"
+      }
+     },
+     {
+      "t": "Cifra de capital inmovilizado: no hay cifra primaria de BIS, CPMI o FSB. Circulan ~10 billones de USD atribuidos a McKinsey sin fuente original localizada, y rangos de 5 a 27 billones según quién cuente (el mayor, de un informe de la industria stablecoin con sesgo de promoción). Úsese solo como orden de magnitud no verificado.",
+      "hecho": {
+       "fuente": "Prensa y agregadores de pagos (electronicpaymentsinternational.com), sin base primaria [VERIFICAR]",
+       "url": "https://www.electronicpaymentsinternational.com/",
+       "nivel": "V",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "Velocidad hoy: el informe del FSB de oct-2025 recoge que el 54,6 % de los pagos mayoristas (≥100.000 USD) se acredita en 1 hora y el 93,2 % en 1 día hábil; en minoristas, solo el 67,3 % de servicios liquida en 1 día y el 35,4 % en 1 hora. Cifras leídas del PDF por un subagente, pendientes de recotejo; «servicios» no es «% de pagos».",
+      "hecho": {
+       "fuente": "FSB, P091025-1 (PDF), cifras no recotejadas por mí",
+       "url": "https://www.fsb.org/uploads/P091025-1.pdf",
+       "nivel": "S",
+       "fecha": "2025-10-09"
+      }
+     },
+     {
+      "t": "Coste de remesas: 6,5 % de media al enviar 200 USD y 4,3 % al enviar 500 (FSB 2025, estable respecto a 2024); el Banco Mundial (RPW, 1T-2025) da 6,49 %, y 8,78 % para África subsahariana (no abierto: web bloqueada). Objetivo ODS: 3 % en 2030.",
+      "hecho": {
+       "fuente": "FSB P091025-1 y Banco Mundial RPW (resumen de buscador) [VERIFICAR]",
+       "url": "https://remittanceprices.worldbank.org/",
+       "nivel": "S",
+       "fecha": "2025-03"
+      }
+     },
+     {
+      "t": "Lo que ofrece ODL (Ripple): liquidación en segundos con XRP como puente sin prefinanciar la divisa de destino. Cifras públicas de volumen (p. ej. «15.000 M USD en 2024» o «más de 100.000 M USD acumulados en Ripple Payments») proceden de la empresa o de medios sin dato primario fechado; no se ha localizado cuánto se liquida realmente en XRP.",
+      "hecho": {
+       "fuente": "Ripple (ripple.com/solutions/cross-border-payments, sin fecha) y medios [VERIFICAR]",
+       "url": "https://ripple.com/solutions/cross-border-payments/",
+       "nivel": "S",
+       "fecha": "2026"
+      }
+     },
+     {
+      "t": "Alternativas que reducen la prefinanciación sin activo puente: el CPMI propone puentes de liquidez de banco central y fondos reservados en cuentas de banco central; Swift apuesta por depósitos tokenizados; Ripple ya ofrece también RLUSD, con lo que el propio proveedor del puente tiene una vía sin XRP.",
+      "hecho": {
+       "fuente": "BIS CPMI d194/d216 (buscador); Swift 9-jul-2026 (P, leído)",
+       "url": "https://www.bis.org/cpmi/publ/d194.pdf",
+       "nivel": "S",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "Un activo puente liberaría capital solo si los bancos aceptan mantener un inventario mínimo del token y su volatilidad: la exposición se reduce a segundos pero no desaparece, y exige libros con liquidez suficiente en ambos extremos. No eliminaría el riesgo regulatorio ni la exigencia de cuentas y licencias en cada país.",
+      "esp": "Razón: ODL compra y vende el token en segundos, pero escalar volumen sube el impacto en precio y ningún dato primario muestra cuánto aguantaría el libro [ESPECULACIÓN]"
+     },
+     {
+      "t": "Tampoco liberaría nada si los bancos no lo adoptan: solo ~40 % de los bancos de RippleNet usarían ODL según una fuente de baja calidad [VERIFICAR], y el depósito tokenizado de Swift cubre la misma necesidad sin token ajeno al balance.",
+      "esp": "Razón: las cifras de adopción vienen de fuentes promocionales; el único hecho con fuente es que Swift orquesta depósitos y no un activo puente [ESPECULACIÓN]"
+     }
+    ],
+    "incertidumbre": "La medición de «capital atrapado» no existe de forma oficial y homogénea: cualquier titular con billones debe tratarse como [VERIFICAR]. Ojo además a los tipos de interés: con tipos altos, el saldo prefinanciado rinde, y con tipos bajos cuesta más mantenerlo."
+   },
+   {
+    "id": "corredores",
+    "titulo": "Corredores de monedas poco líquidas (Kenia, Somalia, países pequeños)",
+    "aviso": "El repo no tiene aún datos oficiales por corredor (Kenia, Somalia): lo que sigue es el marco general y lo que falta por buscar. No se inventan cifras por país.",
+    "pasos": [
+     {
+      "t": "Marco medible: los costes de remesas más altos están en África subsahariana (8,78 % al enviar 200 USD según el Banco Mundial 1T-2025, frente a 4,80 % en el sur de Asia); los bancos son el canal más caro (14,55 %). Cifras de resumen de buscador; la web del Banco Mundial bloqueó la lectura.",
+      "hecho": {
+       "fuente": "Banco Mundial, Remittance Prices Worldwide, 1T-2025 [VERIFICAR]",
+       "url": "https://remittanceprices.worldbank.org/sites/default/files/rpw_main_report_and_annex_q125_1_0.pdf",
+       "nivel": "S",
+       "fecha": "2025-03"
+      }
+     },
+     {
+      "t": "Mecanismo en divisas poco líquidas: no hay mercado de cambio directo, así que el pago pasa por una divisa fuerte (normalmente USD) y por dos conversiones, y los corresponsales reducen riesgo: el FSB cita una caída de ~20 % en relaciones de corresponsalía entre 2011 y 2018 (de resumen, no recotejado).",
+      "hecho": {
+       "fuente": "FSB (buscador) [VERIFICAR]",
+       "url": "https://www.fsb.org/uploads/P090420-2.pdf",
+       "nivel": "S",
+       "fecha": "2020-04-09"
+      }
+     },
+     {
+      "t": "MoneyGram y la SDF anunciaron el 22-abr-2026 una extensión multianual: saldo en stablecoin (USDC) sobre Stellar activo en Colombia y El Salvador. Modelo de anclas y stablecoin con rampas locales, no un puente XLM entre bancos; sin cifras de volumen.",
+      "hecho": {
+       "fuente": "Stellar.org, nota de prensa (visto en buscador)",
+       "url": "https://stellar.org/press/moneygram-and-stellar-extend-partnership-to-scale-real-world-stablecoin-utility-globally",
+       "nivel": "S",
+       "fecha": "2026-04-22"
+      }
+     },
+     {
+      "t": "Para Kenia o Somalia, lo que cambiaría el coste no es la cadena sino quién mantiene liquidez en la divisa local (anclas, operadores de dinero móvil) y la regulación de entrada de dólares; un activo puente solo ayudaría si hay libros con liquidez real en la divisa local, algo que no está demostrado con fuente.",
+      "esp": "Razón: sin mercado de cambio profundo, cualquier ruta (token, stablecoin o fiat) acaba dependiendo de un proveedor local de liquidez [ESPECULACIÓN]"
+     }
+    ],
+    "incertidumbre": "Pendiente de investigar con fuente: corredores concretos con datos del Banco Mundial/FMI (Kenia, Somalia) y de los operadores de dinero móvil; sin ellos, esta sección es marco, no medición."
+   },
+   {
+    "id": "bloques-bis",
+    "titulo": "Bloques de países y proyectos del BIS con calendario hacia 2027",
+    "aviso": "Estado distinto por proyecto: concepto, prototipo, piloto o producción. La mayoría de datos de calendario salen de prensa; las páginas oficiales del BIS no se pudieron abrir (la conexión se restablecía), salvo lo indicado.",
+    "pasos": [
+     {
+      "t": "BRICS (web oficial de la presidencia india 2026): miembros plenos, Brasil, China, Egipto, Etiopía, India, Indonesia, Irán, Rusia, Arabia Saudí, Sudáfrica y EAU (11); socios desde 2025: Bielorrusia, Bolivia, Cuba, Kazajistán, Malasia, Nigeria, Tailandia, Uganda, Uzbekistán y Vietnam. Singapur no figura ni como miembro ni como socio. La web oficial lista a Arabia Saudí como miembro; hay medios que dudan de su condición.",
+      "hecho": {
+       "fuente": "BRICS India 2026, página «About us», leída en Chrome",
+       "url": "https://www.brics2026.gov.in/about-us/",
+       "nivel": "P",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "Cumbre BRICS de Nueva Delhi (sep-2026): según prensa, la declaración «alienta» al grupo de trabajo de pagos a seguir con soluciones prácticas (iniciativa de pagos transfronterizos); la propuesta india de enlazar CBDC no figura según Business Standard (13-sep-2026); se descartó la moneda común. Al Jazeera (16-sep-2026): BRICS Pay no es aún plenamente operativo. Texto oficial de la declaración no localizado en la web.",
+      "hecho": {
+       "fuente": "Business Standard y Al Jazeera (prensa) [VERIFICAR texto oficial]",
+       "url": "https://www.aljazeera.com/news/2026/9/16/what-is-brics-pay-and-can-it-rival-the-wests-swift-payments-system",
+       "nivel": "S",
+       "fecha": "2026-09-16"
+      }
+     },
+     {
+      "t": "mBridge: el BIS salió del proyecto en oct-2024 al alcanzar el producto mínimo viable y lo cedió a los bancos centrales participantes (China, Hong Kong, Tailandia, EAU y Arabia Saudí). Cointelegraph (21-sep-2026), citando al FT, dice que Arabia Saudí se retira: una sola fuente. Volumen de «más de 55.000 M USD» según prensa: no se sabe qué mide ni qué parte es e-CNY.",
+      "hecho": {
+       "fuente": "Prensa (cointelegraph, cryptoslate) [VERIFICAR]",
+       "url": "https://www.bis.org/about/bisih/topics/fmis/mbridge.htm",
+       "nivel": "V",
+       "fecha": "2026-09-21"
+      }
+     },
+     {
+      "t": "Agorá: proyecto del BIS con siete bancos centrales (Francia/Eurosistema, Japón, Corea, México, Suiza, Reino Unido y NY Fed) y unos 40 bancos privados; sigue en prototipo y pruebas. El BIS lo presenta como alternativa a las stablecoins: libro mayor unificado con reservas de banco central tokenizadas y depósitos tokenizados. Sin fecha de producción confirmada.",
+      "hecho": {
+       "fuente": "BIS (informe anual 2025, cap. III, no abierto en Chrome) y prensa [VERIFICAR]",
+       "url": "https://www.bis.org/publ/othp110.pdf",
+       "nivel": "V",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "Nexus: entidad Nexus Global Payments (India, Malasia, Filipinas, Singapur y Tailandia; Indonesia según fuente observador). El 9-feb-2026 se eligió como operador técnico a PayNet+NETS; salida a producción objetivo en 2027. Enlaza sistemas de pagos rápidos (UPI, DuitNow, InstaPay, PayNow, PromptPay): no es CBDC ni usa token. Singapur sí participa aquí, a diferencia de BRICS.",
+      "hecho": {
+       "fuente": "Prensa especializada (The Asian Banker, IBS Intelligence) [VERIFICAR]",
+       "url": "https://www.bis.org/innovation_hub/projects/nexus.htm",
+       "nivel": "S",
+       "fecha": "2026-02-09"
+      }
+     },
+     {
+      "t": "Pine (concluido, página BIS act. 14-may-2025): política monetaria con contratos inteligentes. Rialto (en curso; informe técnico 10-dic-2025): pruebas de FX y liquidación con dinero de banco central tokenizado. Mandala (en curso; act. 30-nov-2025): cumplimiento programable transfronterizo. Leído en buscador, no en Chrome.",
+      "hecho": {
+       "fuente": "BIS Innovation Hub (páginas de proyecto, vistas en buscador)",
+       "url": "https://www.bis.org/project/rialto",
+       "nivel": "S",
+       "fecha": "2025-12-10"
+      }
+     },
+     {
+      "t": "Mínimos técnicos y legales que piden estos proyectos: no extraídos de fuente primaria (los informes del BIS no se pudieron abrir). Idea general de prensa: base legal para emitir y acceso a dinero de banco central.",
+      "hecho": {
+       "fuente": "Sin fuente primaria leída",
+       "url": "https://www.bis.org/publ/othp110.pdf",
+       "nivel": "V",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "Un calendario hacia 2027 de proyectos del BIS no equivale a producción: el FSB ya dice que es improbable cumplir los objetivos del G20 para ese año, y varias piezas (Agorá, Nexus, mBridge) siguen en prototipo, construcción o con salidas de participantes.",
+      "esp": "Razón: dependen de acuerdos jurídicos entre jurisdicciones, que son lo más lento [ESPECULACIÓN]"
+     }
+    ],
+    "incertidumbre": "No se contrastó ni el texto de la declaración de los BRICS ni los informes técnicos del BIS. Cualquier lectura de «desdolarización» es [ESPECULACIÓN]: el hecho comprobable es que el grupo habla de soluciones de pago y que BRICS Pay no opera plenamente."
+   },
+   {
+    "id": "stellar-xrpl",
+    "titulo": "Stellar frente a XRPL: hechos comparables",
+    "aviso": "Comparación de hechos, sin decir cuál es mejor. Datos de producción de fondos tokenizados vienen de páginas promocionales o de agregadores con cifras que se contradicen.",
+    "pasos": [
+     {
+      "t": "Origen de XRPL: en 2011 David Schwartz, Jed McCaleb y Arthur Britto empezaron a desarrollarlo; el ledger arrancó en junio de 2012 y Chris Larsen se unió en septiembre de 2012 (NewCoin, luego OpenCoin y hoy Ripple). Los fundadores donaron 80.000 millones de XRP a la empresa.",
+      "hecho": {
+       "fuente": "xrpl.org, historia de XRPL, leída en Chrome",
+       "url": "https://xrpl.org/about/history",
+       "nivel": "P",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "Origen de Stellar: la página oficial de la SDF solo describe su misión sin ánimo de lucro (acceso equitativo al sistema financiero) y no trata el origen. Que Stellar naciera en 2014 con McCaleb como cofundador y a partir de ideas de Ripple es de conocimiento general, pero no se contrastó con fuente oficial.",
+      "hecho": {
+       "fuente": "stellar.org/foundation, leída en Chrome; origen [VERIFICAR]",
+       "url": "https://stellar.org/foundation",
+       "nivel": "P",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "Relación actual: organizaciones y redes independientes, sin relación corporativa; compiten en pagos y activos tokenizados. Inferencia propia, sin cita oficial.",
+      "hecho": {
+       "fuente": "Inferencia propia [VERIFICAR]",
+       "url": "https://ripple.com/",
+       "nivel": "V",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "Comisión mínima: XRPL, 10 drops (0,00001 XRP) por transacción estándar; Stellar, 100 stroops por operación (0,00001 XLM); ambas suben con carga. El tiempo de cierre exacto no figura en las páginas leídas, así que el «3-5 s» habitual queda [VERIFICAR] contra su documentación.",
+      "hecho": {
+       "fuente": "xrpl.org (coste de transacción) y developers.stellar.org (comisiones), leídas por subagente 15-nov-2026",
+       "url": "https://xrpl.org/docs/concepts/transactions/transaction-cost",
+       "nivel": "P",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "DEX nativo: XRPL tiene libro de ofertas y auto-bridging con XRP (leído en Chrome). Stellar tiene libro de órdenes (SDEX) más pools de liquidez AMM de producto constante, con comisión del 0,30 % según un subagente, y pagos por ruta (path payments) que convierten por el libro y los pools. En Stellar las rutas pueden pasar por cualquier activo; que XLM sea puente no figura en la documentación leída.",
+      "hecho": {
+       "fuente": "xrpl.org, autobridging (P, Chrome) y developers.stellar.org (pools; existencia leída, comisión no recotejada)",
+       "url": "https://developers.stellar.org/docs/learn/fundamentals/liquidity-on-stellar-sdex-liquidity-pools",
+       "nivel": "P",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "Activos tokenizados en Stellar: fondo del Tesoro de EE. UU. de Franklin Templeton (BENJI/FOBXX), lanzado en abril de 2021; unos 605-654 M USD en Stellar según RWA.xyz (6-oct-2026, dos cifras en la misma página); WisdomTree habla de 13 fondos digitales en Stellar (recuento no verificado, otro medio da 7 en ago-2025).",
+      "hecho": {
+       "fuente": "Stellar.org (casos de estudio, promocional) y RWA.xyz [VERIFICAR]",
+       "url": "https://stellar.org/case-studies/franklin-templeton",
+       "nivel": "S",
+       "fecha": "2026-10-06"
+      }
+     },
+     {
+      "t": "Activos tokenizados en XRPL: OUSG de Ondo (bonos del Tesoro tokenizados) en directo desde el 11-jun-2025, con mint y redención 24/7 en RLUSD para inversores cualificados; la nota es de Ripple (parte interesada). Cifras de «4.180 M USD de RWA en XRPL en jun-2026» son de un análisis de Evernorth: [VERIFICAR] en RWA.xyz.",
+      "hecho": {
+       "fuente": "Ripple, «Tokenized Treasuries go live on the XRPL»",
+       "url": "https://ripple.com/insights/tokenized-treasuries-go-live-on-the-xrpl/",
+       "nivel": "S",
+       "fecha": "2025-06-11"
+      }
+     },
+     {
+      "t": "Uso como colateral o medio de pago transfronterizo: estos fondos son productos para inversores cualificados o con KYC (OUSG solo «Qualified Purchasers»); no hay fuente que acredite su uso real como colateral o pago entre países. Es intención de marketing hasta que se pruebe.",
+      "hecho": {
+       "fuente": "Páginas de producto de Ondo y Franklin Templeton (visto en subagente) [VERIFICAR]",
+       "url": "https://ondo.finance/",
+       "nivel": "V",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "CBDC y pilotos de banco central: XRPL, Bután (2021), Palau (2021), Montenegro (2023) y Colombia (2023) con el Private Ledger de Ripple, que no es la red pública XRPL; Stellar, el piloto de e-hryvnia de Tascombank en Ucrania (finales de 2021). Todo de prensa antigua; estado 2026 no hallado.",
+      "hecho": {
+       "fuente": "Prensa 2021-2023 (CoinDesk, ForkLog) [VERIFICAR estado actual]",
+       "url": "https://www.coindesk.com/",
+       "nivel": "V",
+       "fecha": "2021-12-14"
+      }
+     }
+    ],
+    "incertidumbre": "No se puede decir cuál de las dos «gana»: sus cifras de uso real vienen de partes interesadas. Lo comprobable: ambas son redes de pagos con DEX nativo, y las dos están ampliando su oferta con stablecoins (RLUSD en XRPL; USDC y PYUSD en Stellar)."
+   },
+   {
+    "id": "riesgos-stablecoin",
+    "titulo": "Riesgos de las stablecoins y cuota del dólar",
+    "aviso": "Los emisores informan de sus propias reservas. Las estimaciones de efecto en rendimientos son de unos pocos puntos básicos y cambian entre versiones.",
+    "pasos": [
+     {
+      "t": "BIS, Informe Anual 2025, cap. III (jun-2025): las stablecoins fallan en tres pruebas del dinero (singleness, elasticity e integrity): cada tenedor reclama a un emisor distinto, están prefinanciadas al 100 % y circulan al portador. La alternativa que defiende es un libro unificado con reservas de banco central tokenizadas, depósitos tokenizados y activos (Agorá). La página no se pudo abrir en Chrome; resumen de un subagente.",
+      "hecho": {
+       "fuente": "BIS, ar2025e3 (resumen de subagente; conexión bloqueada en Chrome) [VERIFICAR]",
+       "url": "https://www.bis.org/publ/arpdf/ar2025e3.htm",
+       "nivel": "S",
+       "fecha": "2025-06-24"
+      }
+     },
+     {
+      "t": "BIS, documento de trabajo 1270 (Ahmed y Aldasoro): las entradas en stablecoins bajan el rendimiento de las letras a 3 meses unos 2,5-3,5 puntos básicos y las salidas lo suben 2-3 veces más (asimetría). El término «fire sale» es de la prensa. Cifras no recotejadas con el PDF.",
+      "hecho": {
+       "fuente": "BIS WP 1270 (resumen) [VERIFICAR]",
+       "url": "https://www.bis.org/publ/work1270.htm",
+       "nivel": "S",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "Reservas de Circle (USDC): el 12-nov-2026, 67.900 M USD en circulación frente a 68.100 M USD de reservas, con 51.300 M emitidos y 55.200 M amortizados en 30 días (circulación −3.900 M).",
+      "hecho": {
+       "fuente": "Circle, página de transparencia, leída en Chrome",
+       "url": "https://www.circle.com/transparency",
+       "nivel": "P",
+       "fecha": "2026-11-12"
+      }
+     },
+     {
+      "t": "Reservas de Tether (USDT): ≈132.400 M USD en deuda del Tesoro (directa e indirecta) en 3T-2026 y exceso de reservas ≈7.950 M, según prensa cripto sobre una atestación de BDO. La página de Tether que localicé daba 404: no leída. Una atestación no es una auditoría completa.",
+      "hecho": {
+       "fuente": "Cointelegraph (prensa); tether.io no legible [VERIFICAR]",
+       "url": "https://cointelegraph.com/news/tethers-excess-reserves-nearly-double-to-8b-as-q3-profit-hits-15b",
+       "nivel": "V",
+       "fecha": "2026-10"
+      }
+     },
+     {
+      "t": "Concentración: el FSB (jul-2026, vía prensa) la cifra en unos 300.000 M USD de mercado y el 99 % referenciado al dólar. Que las stablecoins pesen <0,2 % en pagos transfronterizos de 2025 es una estimación de algunos análisis, no medición oficial.",
+      "hecho": {
+       "fuente": "Cointelegraph (resumen FSB) [VERIFICAR]",
+       "url": "https://cointelegraph.com/news/fsb-dollar-stablecoins-risk-emerging-markets",
+       "nivel": "S",
+       "fecha": "2026-07"
+      }
+     },
+     {
+      "t": "Cuota del dólar en reservas oficiales (FMI COFER): ~56,7 % en 2026T2 según un resumen de prensa del Data Brief (57,2 % en 2026T1), euro ~20,6 %. La web del FMI denegó el acceso: [VERIFICAR] en data.imf.org. Parte de la caída es efecto de valoración. En pagos Swift, el USD ronda el 50 % (S, no leído el informe de sep-2026).",
+      "hecho": {
+       "fuente": "FMI COFER (resumen de prensa); imf.org denegó acceso [VERIFICAR]",
+       "url": "https://data.imf.org/en/Data-Explorer?datasetUrn=IMF.STA:COFER",
+       "nivel": "V",
+       "fecha": "2026-09"
+      }
+     },
+     {
+      "t": "Afirmación de Joel: el comercio mundial quiere dejar de depender del dólar, con papel del BIS, Japón y deuda en stablecoins. [J] Con las cifras de COFER pendientes de lectura oficial, no hay base primaria para fecharlo en un sentido u otro: la cuota del USD en reservas sigue por encima del 50 % según el resumen de prensa.",
+      "esp": "Razón: es una opinión macro que depende de variables que este repo no mide (balanza de pagos, política de Japón y del BIS); el único dato comprobable, la cuota del dólar en reservas, apunta a descenso lento, con efecto de valoración mezclado. [J] [ESPECULACIÓN]"
+     }
+    ],
+    "incertidumbre": "Pendiente: leer COFER en data.imf.org, la nota de Swift sobre cuota del RMB (Global Currency Tracker, sep-2026) y las atestaciones directamente en las webs de Tether."
+   },
+   {
+    "id": "opiniones",
+    "titulo": "Opiniones públicas a favor y en contra, con su sesgo",
+    "aviso": "Cada opinión tiene un interés posible: se anota. No hay un texto de banco central o economista que critique específicamente al activo puente XRP/XLM; la crítica institucional apunta a las criptomonedas y stablecoins en general.",
+    "pasos": [
+     {
+      "t": "A favor (parte interesada): Ripple presenta XRP como activo puente neutral con liquidez inmediata sin prefinanciar. David Schwartz (CTO) argumenta que los bancos deciden por utilidad y coste. Sesgo: Ripple es dueña de gran parte del XRP. Fuente de baja calidad, sin fecha clara.",
+      "hecho": {
+       "fuente": "pulse.bot (prensa de baja calidad) [VERIFICAR]",
+       "url": "https://www.pulse.bot/cto-pulse/news/ripple-cto-dismisses-bank-adoption-concern-cites-business-logic-8770bd24-e5a3-4148-be6f-2c639d5463aa/",
+       "nivel": "V",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "A favor (parte interesada): Denelle Dixon (SDF) pide a los bancos usar cadenas públicas e interoperables y avisa del bloqueo de redes propietarias; su énfasis es stablecoins y activos tokenizados, no XLM como puente neutral. Sesgo: la SDF vive del ecosistema Stellar.",
+      "hecho": {
+       "fuente": "Bankless Times, 28-feb-2026 [VERIFICAR]",
+       "url": "https://www.banklesstimes.com/articles/2026/02/28/stellar-ceo-banks-betting-on-private-chains-risk-lock-in/",
+       "nivel": "S",
+       "fecha": "2026-02-28"
+      }
+     },
+     {
+      "t": "En contra (competidor): Tom Zschach (CIO de Swift), según prensa: XRP «no es un depósito, no es dinero regulado y no está en balance»; duda de externalizar la firmeza de liquidación a un token. Sesgo: Swift compite con esta alternativa. Fecha exacta sin verificar.",
+      "hecho": {
+       "fuente": "CryptoSlate/DailyCoin [VERIFICAR]",
+       "url": "https://cryptoslate.com/?p=496843",
+       "nivel": "S",
+       "fecha": "2026-11-15"
+      }
+     },
+     {
+      "t": "En contra (crítica institucional general): Carstens y Shin (FMI, Finanzas y Desarrollo, sep-2022): las criptomonedas carecen de un ancla nominal sólida y de la firmeza final que solo da el banco central. No se refiere a XRP o XLM en concreto.",
+      "hecho": {
+       "fuente": "FMI, «A Foundation of Trust»",
+       "url": "https://www.imf.org/en/publications/fandd/issues/2022/09/a-foundation-of-trust-carsten-frost-shin",
+       "nivel": "S",
+       "fecha": "2022-09"
+      }
+     },
+     {
+      "t": "En contra (observación de mercado): los bancos pueden usar la tecnología de Ripple sin el token y RLUSD podría sustituir a XRP como puente. Fuente: opinión en Motley Fool, ene-2026. Sesgo: medio de inversión minorista.",
+      "hecho": {
+       "fuente": "Motley Fool, 16-ene-2026 [VERIFICAR]",
+       "url": "https://www.fool.com/investing/2026/01/16/1-thing-every-xrp-investor-needs-to-know",
+       "nivel": "S",
+       "fecha": "2026-01-16"
+      }
+     },
+     {
+      "t": "Visión institucional sobre el futuro: el BIS (Jackson Hole, 28-ago-2026) apuesta por depósitos tokenizados con reservas de banco central tokenizadas y reconoce que aún no existe un sistema interoperable multibanco. El FSB/CPMI ve improbable cumplir en 2027 la mayoría de objetivos del G20 (leído en Chrome, FSB).",
+      "hecho": {
+       "fuente": "FSB (P, leído) y discurso BIS sp260828 (resumen)",
+       "url": "https://www.fsb.org/2025/10/g20-roadmap-for-cross-border-payments-consolidated-progress-report-for-2025/",
+       "nivel": "P",
+       "fecha": "2025-10-09"
+      }
+     }
+    ],
+    "incertidumbre": "Sin cita verificable de Garlinghouse en esta tanda. Falta una crítica académica específica al activo puente: buscar antes de atribuirla a nadie."
+   },
+   {
+    "id": "especulacion",
+    "titulo": "[ESPECULACIÓN] Escenarios razonados 2027-2030, más críticos que optimistas",
+    "aviso": "Solo razonamientos míos, ninguno es hecho. No recomiendan comprar ni vender nada y no dicen quién gana.",
+    "pasos": [
+     {
+      "t": "Escenario A, «poco cambia hasta 2030»: el fiat con corresponsales sigue siendo la ruta dominante, con mejoras de ISO 20022 y pagos rápidos. Probabilidad razonable porque el FSB mide mejoras pequeñas desde 2023 y los pilotos citados tienen calendarios de 2027 con muchas condiciones.",
+      "esp": "Razón: inercia bancaria, coste de cumplimiento y base instalada; los avances recientes de velocidad mayorista vienen de Swift y no de cadenas [ESPECULACIÓN]"
+     },
+     {
+      "t": "Escenario B, «depósitos tokenizados entre bancos de confianza»: Swift y los pilotos del BIS (Agorá) mueven dinero comercial en libros mayores compartidos para grandes bancos; no necesitan activo puente ni stablecoin.",
+      "esp": "Razón: son los únicos con respaldo explícito del banco central y de la mensajería existente, y evitan el problema de «singleness» que el BIS atribuye a las stablecoins [ESPECULACIÓN]"
+     },
+     {
+      "t": "Escenario C, «stablecoins reguladas como nicho»: con GENIUS (vigente como pronto el 18-ene-2027) y MiCA, las stablecoins crecen en remesas y B2B en corredores concretos, sobre todo en dólares; el riesgo de salida de liquidez y el 99 % referenciado al dólar frenan su aceptación por bancos centrales de países pequeños.",
+      "esp": "Razón: ley y reservas dan confianza, pero la concentración en un solo activo de reserva (deuda del Tesoro EE. UU.) es lo que critican BIS, FSB y BCE [ESPECULACIÓN]"
+     },
+     {
+      "t": "Escenario D, «activo puente neutral entre bancos»: sería relevante solo si bancos centrales o grandes bancos aceptan mantener un token volátil con licencia en cada país. Con la información actual lo veo menos probable que A, B o C: no hay fuente de banco central que lo respalde y el proveedor principal ya ofrece su propia stablecoin.",
+      "esp": "Razón: ningún supervisor leído lo menciona, un directivo de Swift lo cuestiona (con interés competitivo) y el riesgo de precio frente a un depósito tokenizado es difícil de justificar ante un regulador [ESPECULACIÓN]"
+     },
+     {
+      "t": "Escenario E, «bloques paralelos» (BRICS, Nexus, mBridge): sistemas regionales interconectados, no un reemplazo del dólar. La declaración de Nueva Delhi no respaldó, según prensa, la propuesta india de enlazar CBDC, lo que apunta a avances lentos incluso dentro del bloque.",
+      "esp": "Razón: los miembros tienen intereses distintos (India con UPI, China con e-CNY/CIPS) y no hay un instrumento común acordado [ESPECULACIÓN]"
+     }
+    ],
+    "incertidumbre": "Todo lo anterior cambia con tres cosas que hoy no se saben: el calendario real de Agorá/Nexus, la aprobación de CLARITY y las normas finales de GENIUS, y si algún banco central grande acepta una ruta con token neutral."
+   }
+  ]
  },
  "redes": {
   "xrpl": {

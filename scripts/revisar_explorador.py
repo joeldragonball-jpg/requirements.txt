@@ -638,7 +638,12 @@ except (OSError, ValueError) as _e:
 
 # C331: cada paso del escenario del activo puente es hecho con fuente y nivel, o [ESPECULACIÓN] con su razón
 try:
-    for _i, _p in enumerate(json.loads((RAIZ / "explorador" / "escenarios-redes.json").read_text(encoding="utf-8")).get("marco", {}).get("puente_neutral", {}).get("pasos", []), 1):
+    _mk = json.loads((RAIZ / "explorador" / "escenarios-redes.json").read_text(encoding="utf-8")).get("marco", {})
+    # C333: las secciones ampliadas siguen la misma regla que el escenario del puente neutral
+    _pp = list(_mk.get("puente_neutral", {}).get("pasos", []))
+    for _sx in _mk.get("escenarios_ampliados", []):
+        _pp += _sx.get("pasos", [])
+    for _i, _p in enumerate(_pp, 1):
         _hh = _p.get("hecho")
         if _hh:
             if not (_hh.get("fuente") and _hh.get("nivel") in ("P", "S", "V")):
