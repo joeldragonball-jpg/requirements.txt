@@ -1,0 +1,85 @@
+{
+ "generado": "2026-11-14",
+ "metodo": "flujo diario = (acciones_t - acciones_t-1) x NAV_t; requiere >=2 instantáneas. Las webs de emisores solo muestran la última, así que el historial se acumula con scripts/leer_etf_flujos.py (una instantánea por día hábil). Hoy hay 1 por fondo: flujo = null.",
+ "nota_nivel": "P = leído en la web del emisor (parte interesada, no auditado). Agregadores (Farside, SoSoValue) solo como contraste [S]; no consultados hoy.",
+ "etfs": [
+  {
+   "ticker": "XRP",
+   "nombre": "Bitwise XRP ETF",
+   "activo": "XRP",
+   "emisor": "Bitwise Investment Advisers",
+   "web": "https://bitxrpetf.com/",
+   "historial": [
+    {
+     "fecha": "2026-11-12",
+     "acciones": 36440000,
+     "nav": 11.53,
+     "tenencia_monedas": 406770577.61,
+     "aum_usd": 416890393,
+     "valor_mercado_tenencia_usd": 416960180.58,
+     "xrp_por_accion": 11.162749,
+     "fuente": "https://bitxrpetf.com/",
+     "nivel": "P (emisor, parte interesada)",
+     "nota": "NAV 11,53 $ es del 11-nov; acciones, tenencia y AUM del 12-nov (según la propia web)"
+    }
+   ],
+   "flujo_usd": null,
+   "flujo_motivo": "solo una instantánea de acciones (36.440.000 al 12-nov); falta la del día anterior"
+  },
+  {
+   "ticker": "TOXR",
+   "nombre": "21shares XRP ETF",
+   "activo": "XRP",
+   "emisor": "21Shares",
+   "web": "https://www.21shares.com/en-us/products-us/toxr",
+   "historial": [
+    {
+     "fecha": "2026-11-13",
+     "acciones": null,
+     "acciones_derivadas": 11000000,
+     "nav": 9.98,
+     "aum_usd": 109770671.56,
+     "nota": "la web no publica acciones en circulación; derivadas = AUM/NAV (~11,0 M) [cálculo propio, no cifra del emisor]",
+     "fuente": "https://www.21shares.com/en-us/products-us/toxr",
+     "nivel": "P (emisor); acciones = derivado"
+    }
+   ],
+   "flujo_usd": null,
+   "flujo_motivo": "sin acciones publicadas ni segunda instantánea"
+  },
+  {
+   "ticker": "XRPZ",
+   "nombre": "Franklin XRP ETF",
+   "activo": "XRP",
+   "emisor": "Franklin Templeton",
+   "web": null,
+   "historial": [],
+   "flujo_usd": null,
+   "flujo_motivo": "no se localizó la URL de la ficha (franklintempleton.com/xrpz da 404; la ficha usa ID de producto en la URL); AUM ~401 M$ al 22-oct solo por [S: The Block] (T19)"
+  },
+  {
+   "ticker": "XRPC",
+   "nombre": "Canary XRP ETF",
+   "activo": "XRP",
+   "emisor": "Canary Capital",
+   "web": "https://canaryfunds.com",
+   "historial": [],
+   "flujo_usd": null,
+   "flujo_motivo": "canaryfunds.com devolvió ERR_SSL_PROTOCOL_ERROR en Chrome (14-nov); no se evitó el error. AUM ~316 M$ al 22-oct solo [S: The Block]"
+  },
+  {
+   "ticker": "GXLM",
+   "nombre": "Grayscale Stellar Lumens Trust",
+   "activo": "XLM",
+   "emisor": "Grayscale",
+   "web": null,
+   "historial": [],
+   "flujo_usd": null,
+   "flujo_motivo": "no es ETF spot: fideicomiso en OTCQX (T19/edgar.json: 8-K del 15-oct-2026); no se leyó su web hoy. No se localizó ningún ETF spot de XLM vivo en EE. UU. en este repo"
+  }
+ ],
+ "bloques_no_hechos": {
+  "btc": "no se leyeron fondos de BTC (alcance del lote: XRP/XLM; ficha EZBC de Franklin abrió pero no se extrajo).",
+  "13f_3T": "plazo 16-nov-2026; la búsqueda de texto completo de EDGAR (leer_edgar.py) no indexa las tablas de posiciones del 13F, hay que leer el infotable XML por declarante (método de R21/R21b). Pendiente de tras el plazo."
+ }
+}

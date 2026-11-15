@@ -1,0 +1,127 @@
+{
+ "_actualizado": "2026-11-14T22:19Z",
+ "nivel": "S",
+ "aviso": "TVL y stablecoins vienen de DefiLlama, un agregador (nivel S): cambia de metodologia, TVL no es uso real y Ethereum no incluye sus L2. Las metricas nativas de XRPL y Stellar vienen de nodos publicos. null = no leido o no aplica (Chainlink, Ondo y Quant no son cadenas).",
+ "fuentes": [
+  "https://api.llama.fi/v2/chains",
+  "https://stablecoins.llama.fi/stablecoinchains",
+  "https://horizon.stellar.org",
+  "https://s1.ripple.com:51234"
+ ],
+ "redes": {
+  "xrpl": {
+   "nombre_defillama": "XRPL",
+   "tvl_usd": 28853899.44420665,
+   "stablecoins_usd": 839203488.5973234,
+   "nativo": {
+    "ledger": 108333226,
+    "comision_base_xrp": 1e-05,
+    "reserva_base_xrp": 1.0,
+    "reserva_incr_xrp": 0.2,
+    "hora_servidor": "2026-Nov-14 22:19:52.741432 UTC",
+    "fuente": "s1.ripple.com (rippled/Clio publico)",
+    "tx_en_ultimo_ledger": 506,
+    "cierre_ledger": "2026-Nov-14 22:19:41.000000000 UTC"
+   }
+  },
+  "stellar": {
+   "nombre_defillama": "Stellar",
+   "tvl_usd": 193078558.75264436,
+   "stablecoins_usd": 399975713.73856777,
+   "nativo": {
+    "ledger": 65481750,
+    "cierre_ledger": "2026-11-14T22:19:52Z",
+    "tx_correctas_ultimo_ledger": 265,
+    "operaciones_ultimo_ledger": 617,
+    "uso_capacidad_ledger": "0.64",
+    "comision_stroops_mediana": "100",
+    "comision_stroops_p95": "21379",
+    "fuente": "horizon.stellar.org"
+   }
+  },
+  "hedera": {
+   "nombre_defillama": "Hedera",
+   "tvl_usd": 20462021.573745813,
+   "stablecoins_usd": 25584520.18916605,
+   "nativo": null
+  },
+  "ethereum": {
+   "nombre_defillama": "Ethereum",
+   "tvl_usd": 37953350503.35948,
+   "stablecoins_usd": 131522943119.89769,
+   "nativo": null
+  },
+  "solana": {
+   "nombre_defillama": "Solana",
+   "tvl_usd": 4722192313.596489,
+   "stablecoins_usd": 13802337344.63867,
+   "nativo": null
+  },
+  "bnb": {
+   "nombre_defillama": "BSC",
+   "tvl_usd": 4523098589.955941,
+   "stablecoins_usd": 12460429719.735954,
+   "nativo": null
+  },
+  "avalanche": {
+   "nombre_defillama": "Avalanche",
+   "tvl_usd": 553348544.1588658,
+   "stablecoins_usd": 773179867.369691,
+   "nativo": null
+  },
+  "polygon": {
+   "nombre_defillama": "Polygon",
+   "tvl_usd": 626394245.9599622,
+   "stablecoins_usd": 2787698101.539406,
+   "nativo": null
+  },
+  "canton": {
+   "nombre_defillama": "Canton",
+   "tvl_usd": 11247578.163212027,
+   "stablecoins_usd": null,
+   "nativo": null
+  },
+  "chainlink": {
+   "nombre_defillama": null,
+   "tvl_usd": null,
+   "stablecoins_usd": null,
+   "nativo": null
+  },
+  "ondo": {
+   "nombre_defillama": null,
+   "tvl_usd": null,
+   "stablecoins_usd": null,
+   "nativo": null
+  },
+  "algorand": {
+   "nombre_defillama": "Algorand",
+   "tvl_usd": 24942309.564648848,
+   "stablecoins_usd": 120731007.21197388,
+   "nativo": null
+  },
+  "xdc": {
+   "nombre_defillama": "XDC",
+   "tvl_usd": 1843390.8664095013,
+   "stablecoins_usd": 103171267.67999786,
+   "nativo": null
+  },
+  "quant": {
+   "nombre_defillama": null,
+   "tvl_usd": null,
+   "stablecoins_usd": null,
+   "nativo": null
+  },
+  "iota": {
+   "nombre_defillama": "IOTA",
+   "tvl_usd": 1053777.5274777813,
+   "stablecoins_usd": null,
+   "nativo": null
+  },
+  "plume": {
+   "nombre_defillama": "Plume",
+   "tvl_usd": 0,
+   "stablecoins_usd": null,
+   "nativo": null
+  }
+ }
+}

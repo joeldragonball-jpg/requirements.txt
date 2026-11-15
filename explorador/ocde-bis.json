@@ -1,0 +1,923 @@
+{
+ "titulo": "OCDE y BIS por país (C282)",
+ "generado": "2026-11-14",
+ "nota": "Último dato publicado por SDMX de la OCDE y del BIS. Nivel P = leído en la fuente oficial. País sin serie = no la publica ese flujo.",
+ "paises": {
+  "ES": {
+   "pais": "España",
+   "indicadores": {
+    "cli": {
+     "serie": "Indicador adelantado compuesto (CLI, 100 = tendencia)",
+     "valor": 99.35,
+     "fecha": "2026-10",
+     "unidad": "CLI, 100 = tendencia",
+     "fuente": "OCDE SDMX DF_CLI: sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.1",
+     "nivel": "P"
+    },
+    "paro_m": {
+     "serie": "Paro mensual desestacionalizado, 15+ (% pob. activa)",
+     "valor": 10.3,
+     "fecha": "2026-09",
+     "unidad": "% pob. activa",
+     "fuente": "OCDE SDMX DF_IALFS_UNE_M: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_LFS@DF_IALFS_UNE_M,1.0",
+     "nivel": "P"
+    },
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": 2.92,
+     "fecha": "2025-12",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 2.5,
+     "fecha": "2026-10",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P",
+     "nota": "tipo del BCE (depósito), común a la zona euro; BIS publica la serie nacional solo hasta 1998"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": -24.29,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    },
+    "vivienda_real": {
+     "serie": "Precio real de la vivienda (índice, base según país)",
+     "valor": 107.06,
+     "fecha": "2026-Q2",
+     "fuente": "BIS stats.bis.org/api/v2 WS_SPP",
+     "nivel": "P"
+    }
+   }
+  },
+  "DE": {
+   "pais": "Alemania",
+   "indicadores": {
+    "cli": {
+     "serie": "Indicador adelantado compuesto (CLI, 100 = tendencia)",
+     "valor": 101.16,
+     "fecha": "2026-10",
+     "unidad": "CLI, 100 = tendencia",
+     "fuente": "OCDE SDMX DF_CLI: sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.1",
+     "nivel": "P"
+    },
+    "paro_m": {
+     "serie": "Paro mensual desestacionalizado, 15+ (% pob. activa)",
+     "valor": 4.1,
+     "fecha": "2026-09",
+     "unidad": "% pob. activa",
+     "fuente": "OCDE SDMX DF_IALFS_UNE_M: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_LFS@DF_IALFS_UNE_M,1.0",
+     "nivel": "P"
+    },
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": 2.76,
+     "fecha": "2026-10",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 2.5,
+     "fecha": "2026-10",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P",
+     "nota": "tipo del BCE (depósito), común a la zona euro; BIS publica la serie nacional solo hasta 1998"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": -4.18,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    },
+    "vivienda_real": {
+     "serie": "Precio real de la vivienda (índice, base según país)",
+     "valor": 127.08,
+     "fecha": "2026-Q2",
+     "fuente": "BIS stats.bis.org/api/v2 WS_SPP",
+     "nivel": "P"
+    }
+   }
+  },
+  "FR": {
+   "pais": "Francia",
+   "indicadores": {
+    "cli": {
+     "serie": "Indicador adelantado compuesto (CLI, 100 = tendencia)",
+     "valor": 100.73,
+     "fecha": "2026-10",
+     "unidad": "CLI, 100 = tendencia",
+     "fuente": "OCDE SDMX DF_CLI: sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.1",
+     "nivel": "P"
+    },
+    "paro_m": {
+     "serie": "Paro mensual desestacionalizado, 15+ (% pob. activa)",
+     "valor": 8.5,
+     "fecha": "2026-09",
+     "unidad": "% pob. activa",
+     "fuente": "OCDE SDMX DF_IALFS_UNE_M: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_LFS@DF_IALFS_UNE_M,1.0",
+     "nivel": "P"
+    },
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": 0.79,
+     "fecha": "2025-12",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 2.5,
+     "fecha": "2026-10",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P",
+     "nota": "tipo del BCE (depósito), común a la zona euro; BIS publica la serie nacional solo hasta 1998"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": -15.74,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    },
+    "vivienda_real": {
+     "serie": "Precio real de la vivienda (índice, base según país)",
+     "valor": 96.34,
+     "fecha": "2026-Q2",
+     "fuente": "BIS stats.bis.org/api/v2 WS_SPP",
+     "nivel": "P"
+    }
+   }
+  },
+  "IT": {
+   "pais": "Italia",
+   "indicadores": {
+    "cli": {
+     "serie": "Indicador adelantado compuesto (CLI, 100 = tendencia)",
+     "valor": 100.04,
+     "fecha": "2026-10",
+     "unidad": "CLI, 100 = tendencia",
+     "fuente": "OCDE SDMX DF_CLI: sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.1",
+     "nivel": "P"
+    },
+    "paro_m": {
+     "serie": "Paro mensual desestacionalizado, 15+ (% pob. activa)",
+     "valor": 6.3,
+     "fecha": "2026-09",
+     "unidad": "% pob. activa",
+     "fuente": "OCDE SDMX DF_IALFS_UNE_M: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_LFS@DF_IALFS_UNE_M,1.0",
+     "nivel": "P"
+    },
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": 1.16,
+     "fecha": "2025-12",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 2.5,
+     "fecha": "2026-10",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P",
+     "nota": "tipo del BCE (depósito), común a la zona euro; BIS publica la serie nacional solo hasta 1998"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": -13.56,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    },
+    "vivienda_real": {
+     "serie": "Precio real de la vivienda (índice, base según país)",
+     "valor": 75.48,
+     "fecha": "2026-Q2",
+     "fuente": "BIS stats.bis.org/api/v2 WS_SPP",
+     "nivel": "P"
+    }
+   }
+  },
+  "NL": {
+   "pais": "Países Bajos",
+   "indicadores": {
+    "paro_m": {
+     "serie": "Paro mensual desestacionalizado, 15+ (% pob. activa)",
+     "valor": 4.0,
+     "fecha": "2026-09",
+     "unidad": "% pob. activa",
+     "fuente": "OCDE SDMX DF_IALFS_UNE_M: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_LFS@DF_IALFS_UNE_M,1.0",
+     "nivel": "P"
+    },
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": 2.77,
+     "fecha": "2025-12",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 2.5,
+     "fecha": "2026-10",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P",
+     "nota": "tipo del BCE (depósito), común a la zona euro; BIS publica la serie nacional solo hasta 1998"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": -47.24,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    },
+    "vivienda_real": {
+     "serie": "Precio real de la vivienda (índice, base según país)",
+     "valor": 132.28,
+     "fecha": "2026-Q2",
+     "fuente": "BIS stats.bis.org/api/v2 WS_SPP",
+     "nivel": "P"
+    }
+   }
+  },
+  "PL": {
+   "pais": "Polonia",
+   "indicadores": {
+    "paro_m": {
+     "serie": "Paro mensual desestacionalizado, 15+ (% pob. activa)",
+     "valor": 3.4,
+     "fecha": "2026-09",
+     "unidad": "% pob. activa",
+     "fuente": "OCDE SDMX DF_IALFS_UNE_M: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_LFS@DF_IALFS_UNE_M,1.0",
+     "nivel": "P"
+    },
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": 2.4,
+     "fecha": "2025-12",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 3.75,
+     "fecha": "2026-10",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": -15.62,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    },
+    "vivienda_real": {
+     "serie": "Precio real de la vivienda (índice, base según país)",
+     "valor": 123.45,
+     "fecha": "2026-Q2",
+     "fuente": "BIS stats.bis.org/api/v2 WS_SPP",
+     "nivel": "P"
+    }
+   }
+  },
+  "US": {
+   "pais": "EE. UU.",
+   "indicadores": {
+    "cli": {
+     "serie": "Indicador adelantado compuesto (CLI, 100 = tendencia)",
+     "valor": 100.96,
+     "fecha": "2026-10",
+     "unidad": "CLI, 100 = tendencia",
+     "fuente": "OCDE SDMX DF_CLI: sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.1",
+     "nivel": "P"
+    },
+    "paro_m": {
+     "serie": "Paro mensual desestacionalizado, 15+ (% pob. activa)",
+     "valor": 4.1,
+     "fecha": "2026-10",
+     "unidad": "% pob. activa",
+     "fuente": "OCDE SDMX DF_IALFS_UNE_M: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_LFS@DF_IALFS_UNE_M,1.0",
+     "nivel": "P"
+    },
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": 3.74,
+     "fecha": "2026-09",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 3.88,
+     "fecha": "2026-10",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": -11.32,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    },
+    "vivienda_real": {
+     "serie": "Precio real de la vivienda (índice, base según país)",
+     "valor": 154.21,
+     "fecha": "2026-Q2",
+     "fuente": "BIS stats.bis.org/api/v2 WS_SPP",
+     "nivel": "P"
+    }
+   }
+  },
+  "CN": {
+   "pais": "China",
+   "indicadores": {
+    "cli": {
+     "serie": "Indicador adelantado compuesto (CLI, 100 = tendencia)",
+     "valor": 97.13,
+     "fecha": "2026-10",
+     "unidad": "CLI, 100 = tendencia",
+     "fuente": "OCDE SDMX DF_CLI: sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.1",
+     "nivel": "P"
+    },
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": 0.7,
+     "fecha": "2026-10",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 3.0,
+     "fecha": "2026-10",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": -5.14,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    },
+    "vivienda_real": {
+     "serie": "Precio real de la vivienda (índice, base según país)",
+     "valor": 84.37,
+     "fecha": "2026-Q2",
+     "fuente": "BIS stats.bis.org/api/v2 WS_SPP",
+     "nivel": "P"
+    }
+   }
+  },
+  "JP": {
+   "pais": "Japón",
+   "indicadores": {
+    "cli": {
+     "serie": "Indicador adelantado compuesto (CLI, 100 = tendencia)",
+     "valor": 100.21,
+     "fecha": "2026-10",
+     "unidad": "CLI, 100 = tendencia",
+     "fuente": "OCDE SDMX DF_CLI: sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.1",
+     "nivel": "P"
+    },
+    "paro_m": {
+     "serie": "Paro mensual desestacionalizado, 15+ (% pob. activa)",
+     "valor": 2.4,
+     "fecha": "2026-09",
+     "unidad": "% pob. activa",
+     "fuente": "OCDE SDMX DF_IALFS_UNE_M: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_LFS@DF_IALFS_UNE_M,1.0",
+     "nivel": "P"
+    },
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": -0.5,
+     "fecha": "2021-06",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 1.25,
+     "fecha": "2026-10",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": 5.67,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    },
+    "vivienda_real": {
+     "serie": "Precio real de la vivienda (índice, base según país)",
+     "valor": 121.47,
+     "fecha": "2025-Q4",
+     "fuente": "BIS stats.bis.org/api/v2 WS_SPP",
+     "nivel": "P"
+    }
+   }
+  },
+  "IN": {
+   "pais": "India",
+   "indicadores": {
+    "cli": {
+     "serie": "Indicador adelantado compuesto (CLI, 100 = tendencia)",
+     "valor": 101.45,
+     "fecha": "2026-10",
+     "unidad": "CLI, 100 = tendencia",
+     "fuente": "OCDE SDMX DF_CLI: sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.1",
+     "nivel": "P"
+    },
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": 5.57,
+     "fecha": "2026-09",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 5.25,
+     "fecha": "2026-09",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": 4.32,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    },
+    "vivienda_real": {
+     "serie": "Precio real de la vivienda (índice, base según país)",
+     "valor": 162.07,
+     "fecha": "2026-Q2",
+     "fuente": "BIS stats.bis.org/api/v2 WS_SPP",
+     "nivel": "P"
+    }
+   }
+  },
+  "GB": {
+   "pais": "Reino Unido",
+   "indicadores": {
+    "cli": {
+     "serie": "Indicador adelantado compuesto (CLI, 100 = tendencia)",
+     "valor": 101.43,
+     "fecha": "2026-10",
+     "unidad": "CLI, 100 = tendencia",
+     "fuente": "OCDE SDMX DF_CLI: sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.1",
+     "nivel": "P"
+    },
+    "paro_m": {
+     "serie": "Paro mensual desestacionalizado, 15+ (% pob. activa)",
+     "valor": 4.7,
+     "fecha": "2026-07",
+     "unidad": "% pob. activa",
+     "fuente": "OCDE SDMX DF_IALFS_UNE_M: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_LFS@DF_IALFS_UNE_M,1.0",
+     "nivel": "P"
+    },
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": 3.6,
+     "fecha": "2026-09",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 3.75,
+     "fecha": "2026-10",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": -20.12,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    },
+    "vivienda_real": {
+     "serie": "Precio real de la vivienda (índice, base según país)",
+     "valor": 108.54,
+     "fecha": "2026-Q2",
+     "fuente": "BIS stats.bis.org/api/v2 WS_SPP",
+     "nivel": "P"
+    }
+   }
+  },
+  "RU": {
+   "pais": "Rusia",
+   "indicadores": {
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": 16.7,
+     "fecha": "2022-03",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 14.0,
+     "fecha": "2026-10",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": -7.9,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    },
+    "vivienda_real": {
+     "serie": "Precio real de la vivienda (índice, base según país)",
+     "valor": 82.67,
+     "fecha": "2026-Q2",
+     "fuente": "BIS stats.bis.org/api/v2 WS_SPP",
+     "nivel": "P"
+    }
+   }
+  },
+  "BR": {
+   "pais": "Brasil",
+   "indicadores": {
+    "cli": {
+     "serie": "Indicador adelantado compuesto (CLI, 100 = tendencia)",
+     "valor": 102.43,
+     "fecha": "2026-10",
+     "unidad": "CLI, 100 = tendencia",
+     "fuente": "OCDE SDMX DF_CLI: sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.1",
+     "nivel": "P"
+    },
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": 4.58,
+     "fecha": "2026-09",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 13.75,
+     "fecha": "2026-10",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": 0.72,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    },
+    "vivienda_real": {
+     "serie": "Precio real de la vivienda (índice, base según país)",
+     "valor": 91.68,
+     "fecha": "2026-Q2",
+     "fuente": "BIS stats.bis.org/api/v2 WS_SPP",
+     "nivel": "P"
+    }
+   }
+  },
+  "ZA": {
+   "pais": "Sudáfrica",
+   "indicadores": {
+    "cli": {
+     "serie": "Indicador adelantado compuesto (CLI, 100 = tendencia)",
+     "valor": 100.09,
+     "fecha": "2026-10",
+     "unidad": "CLI, 100 = tendencia",
+     "fuente": "OCDE SDMX DF_CLI: sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.1",
+     "nivel": "P"
+    },
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": 3.08,
+     "fecha": "2025-01",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 7.25,
+     "fecha": "2026-10",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": -4.25,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    },
+    "vivienda_real": {
+     "serie": "Precio real de la vivienda (índice, base según país)",
+     "valor": 89.17,
+     "fecha": "2026-Q2",
+     "fuente": "BIS stats.bis.org/api/v2 WS_SPP",
+     "nivel": "P"
+    }
+   }
+  },
+  "ID": {
+   "pais": "Indonesia",
+   "indicadores": {
+    "cli": {
+     "serie": "Indicador adelantado compuesto (CLI, 100 = tendencia)",
+     "valor": 98.49,
+     "fecha": "2026-10",
+     "unidad": "CLI, 100 = tendencia",
+     "fuente": "OCDE SDMX DF_CLI: sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.1",
+     "nivel": "P"
+    },
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": 3.23,
+     "fecha": "2026-10",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 5.75,
+     "fecha": "2026-10",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": -1.33,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    },
+    "vivienda_real": {
+     "serie": "Precio real de la vivienda (índice, base según país)",
+     "valor": 92.88,
+     "fecha": "2026-Q2",
+     "fuente": "BIS stats.bis.org/api/v2 WS_SPP",
+     "nivel": "P"
+    }
+   }
+  },
+  "EG": {
+   "pais": "Egipto",
+   "indicadores": {}
+  },
+  "ET": {
+   "pais": "Etiopía",
+   "indicadores": {}
+  },
+  "IR": {
+   "pais": "Irán",
+   "indicadores": {}
+  },
+  "AE": {
+   "pais": "Emiratos Árabes Unidos",
+   "indicadores": {}
+  },
+  "SV": {
+   "pais": "El Salvador",
+   "indicadores": {}
+  },
+  "AR": {
+   "pais": "Argentina",
+   "indicadores": {
+    "ipc_yy": {
+     "serie": "IPC, variación interanual (%)",
+     "valor": 33.35,
+     "fecha": "2026-09",
+     "unidad": "%",
+     "fuente": "OCDE SDMX DF_PRICES_ALL: sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0",
+     "nivel": "P"
+    },
+    "tipo_oficial": {
+     "serie": "Tipo oficial del banco central (%, fin de mes)",
+     "valor": 29.0,
+     "fecha": "2025-06",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CBPOL",
+     "nivel": "P"
+    },
+    "brecha_credito": {
+     "serie": "Brecha crédito/PIB (puntos de PIB; sector privado no financiero)",
+     "valor": 2.69,
+     "fecha": "2026-Q1",
+     "fuente": "BIS stats.bis.org/api/v2 WS_CREDIT_GAP",
+     "nivel": "P"
+    }
+   }
+  },
+  "VE": {
+   "pais": "Venezuela",
+   "indicadores": {}
+  },
+  "CU": {
+   "pais": "Cuba",
+   "indicadores": {}
+  }
+ },
+ "comparacion_frescura": [
+  {
+   "pais": "ES",
+   "indicador": "paro",
+   "antes_hasta": "2026-09",
+   "ahora_hasta": "2026-09",
+   "mas_fresco": false
+  },
+  {
+   "pais": "ES",
+   "indicador": "ipc",
+   "antes_hasta": "2026-10",
+   "ahora_hasta": "2025-12",
+   "mas_fresco": false
+  },
+  {
+   "pais": "DE",
+   "indicador": "paro",
+   "antes_hasta": "2026-09",
+   "ahora_hasta": "2026-09",
+   "mas_fresco": false
+  },
+  {
+   "pais": "DE",
+   "indicador": "ipc",
+   "antes_hasta": "2026-10",
+   "ahora_hasta": "2026-10",
+   "mas_fresco": false
+  },
+  {
+   "pais": "FR",
+   "indicador": "paro",
+   "antes_hasta": "2026-09",
+   "ahora_hasta": "2026-09",
+   "mas_fresco": false
+  },
+  {
+   "pais": "FR",
+   "indicador": "ipc",
+   "antes_hasta": "2026-10",
+   "ahora_hasta": "2025-12",
+   "mas_fresco": false
+  },
+  {
+   "pais": "IT",
+   "indicador": "paro",
+   "antes_hasta": "2026-09",
+   "ahora_hasta": "2026-09",
+   "mas_fresco": false
+  },
+  {
+   "pais": "IT",
+   "indicador": "ipc",
+   "antes_hasta": "2026-10",
+   "ahora_hasta": "2025-12",
+   "mas_fresco": false
+  },
+  {
+   "pais": "NL",
+   "indicador": "paro",
+   "antes_hasta": "2026-09",
+   "ahora_hasta": "2026-09",
+   "mas_fresco": false
+  },
+  {
+   "pais": "NL",
+   "indicador": "ipc",
+   "antes_hasta": "2026-10",
+   "ahora_hasta": "2025-12",
+   "mas_fresco": false
+  },
+  {
+   "pais": "PL",
+   "indicador": "paro",
+   "antes_hasta": "2026-09",
+   "ahora_hasta": "2026-09",
+   "mas_fresco": false
+  },
+  {
+   "pais": "PL",
+   "indicador": "ipc",
+   "antes_hasta": "2026-09",
+   "ahora_hasta": "2025-12",
+   "mas_fresco": false
+  },
+  {
+   "pais": "US",
+   "indicador": "paro",
+   "antes_hasta": "2025",
+   "ahora_hasta": "2026-10",
+   "mas_fresco": true
+  },
+  {
+   "pais": "US",
+   "indicador": "ipc",
+   "antes_hasta": "2024",
+   "ahora_hasta": "2026-09",
+   "mas_fresco": true
+  },
+  {
+   "pais": "CN",
+   "indicador": "ipc",
+   "antes_hasta": "2025",
+   "ahora_hasta": "2026-10",
+   "mas_fresco": true
+  },
+  {
+   "pais": "JP",
+   "indicador": "paro",
+   "antes_hasta": "2025",
+   "ahora_hasta": "2026-09",
+   "mas_fresco": true
+  },
+  {
+   "pais": "JP",
+   "indicador": "ipc",
+   "antes_hasta": "2025",
+   "ahora_hasta": "2021-06",
+   "mas_fresco": false
+  },
+  {
+   "pais": "IN",
+   "indicador": "ipc",
+   "antes_hasta": "2025",
+   "ahora_hasta": "2026-09",
+   "mas_fresco": true
+  },
+  {
+   "pais": "GB",
+   "indicador": "paro",
+   "antes_hasta": "2025",
+   "ahora_hasta": "2026-07",
+   "mas_fresco": true
+  },
+  {
+   "pais": "GB",
+   "indicador": "ipc",
+   "antes_hasta": "2025",
+   "ahora_hasta": "2026-09",
+   "mas_fresco": true
+  },
+  {
+   "pais": "RU",
+   "indicador": "ipc",
+   "antes_hasta": "2025",
+   "ahora_hasta": "2022-03",
+   "mas_fresco": false
+  },
+  {
+   "pais": "BR",
+   "indicador": "ipc",
+   "antes_hasta": "2025",
+   "ahora_hasta": "2026-09",
+   "mas_fresco": true
+  },
+  {
+   "pais": "ZA",
+   "indicador": "ipc",
+   "antes_hasta": "2025",
+   "ahora_hasta": "2025-01",
+   "mas_fresco": false
+  },
+  {
+   "pais": "ID",
+   "indicador": "ipc",
+   "antes_hasta": "2025",
+   "ahora_hasta": "2026-10",
+   "mas_fresco": true
+  },
+  {
+   "pais": "AR",
+   "indicador": "ipc",
+   "antes_hasta": "2025",
+   "ahora_hasta": "2026-09",
+   "mas_fresco": true
+  }
+ ],
+ "fallos": []
+}

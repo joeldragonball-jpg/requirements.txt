@@ -1,0 +1,869 @@
+{
+ "titulo": "España: energía eléctrica y vivienda",
+ "nivel": "P",
+ "leido": "2026-11-14 22:21 UTC",
+ "fuentes": {
+  "ree": "https://apidatos.ree.es (REData, Red Eléctrica)",
+  "ine": "https://servicios.ine.es/wstempus (INE Tempus)"
+ },
+ "precios_electricidad": {
+  "serie": {
+   "PVPC": [
+    {
+     "fecha": "2026-10-31",
+     "media_eur_mwh": 195.22,
+     "min_eur_mwh": 21.48,
+     "max_eur_mwh": 325.94
+    },
+    {
+     "fecha": "2026-11-01",
+     "media_eur_mwh": 181.85,
+     "min_eur_mwh": -8.1,
+     "max_eur_mwh": 297.88
+    },
+    {
+     "fecha": "2026-11-02",
+     "media_eur_mwh": 226.56,
+     "min_eur_mwh": 10.93,
+     "max_eur_mwh": 420.17
+    },
+    {
+     "fecha": "2026-11-03",
+     "media_eur_mwh": 228.08,
+     "min_eur_mwh": 45.96,
+     "max_eur_mwh": 427.62
+    },
+    {
+     "fecha": "2026-11-04",
+     "media_eur_mwh": 253.37,
+     "min_eur_mwh": 161.74,
+     "max_eur_mwh": 386.42
+    },
+    {
+     "fecha": "2026-11-05",
+     "media_eur_mwh": 249.36,
+     "min_eur_mwh": 167.57,
+     "max_eur_mwh": 401.79
+    },
+    {
+     "fecha": "2026-11-06",
+     "media_eur_mwh": 246.78,
+     "min_eur_mwh": 178.66,
+     "max_eur_mwh": 371.27
+    },
+    {
+     "fecha": "2026-11-07",
+     "media_eur_mwh": 205.64,
+     "min_eur_mwh": 128.89,
+     "max_eur_mwh": 277.4
+    },
+    {
+     "fecha": "2026-11-08",
+     "media_eur_mwh": 195.11,
+     "min_eur_mwh": 124.1,
+     "max_eur_mwh": 234.21
+    },
+    {
+     "fecha": "2026-11-09",
+     "media_eur_mwh": 221.68,
+     "min_eur_mwh": 86.97,
+     "max_eur_mwh": 394.88
+    },
+    {
+     "fecha": "2026-11-10",
+     "media_eur_mwh": 218.03,
+     "min_eur_mwh": 146.65,
+     "max_eur_mwh": 327.27
+    },
+    {
+     "fecha": "2026-11-11",
+     "media_eur_mwh": 230.07,
+     "min_eur_mwh": 149.54,
+     "max_eur_mwh": 300.03
+    },
+    {
+     "fecha": "2026-11-12",
+     "media_eur_mwh": 194.16,
+     "min_eur_mwh": 41.09,
+     "max_eur_mwh": 349.93
+    },
+    {
+     "fecha": "2026-11-13",
+     "media_eur_mwh": 224.23,
+     "min_eur_mwh": 130.51,
+     "max_eur_mwh": 404.56
+    }
+   ],
+   "Precio mercado spot": [
+    {
+     "fecha": "2026-10-31",
+     "media_eur_mwh": 208.98,
+     "min_eur_mwh": 57.62,
+     "max_eur_mwh": 303.15
+    },
+    {
+     "fecha": "2026-11-01",
+     "media_eur_mwh": 163.19,
+     "min_eur_mwh": -0.5,
+     "max_eur_mwh": 272.04
+    },
+    {
+     "fecha": "2026-11-02",
+     "media_eur_mwh": 177.06,
+     "min_eur_mwh": 0.84,
+     "max_eur_mwh": 309.1
+    },
+    {
+     "fecha": "2026-11-03",
+     "media_eur_mwh": 186.49,
+     "min_eur_mwh": 2.2,
+     "max_eur_mwh": 312.58
+    },
+    {
+     "fecha": "2026-11-04",
+     "media_eur_mwh": 246.01,
+     "min_eur_mwh": 180.81,
+     "max_eur_mwh": 316.15
+    },
+    {
+     "fecha": "2026-11-05",
+     "media_eur_mwh": 238.69,
+     "min_eur_mwh": 182.81,
+     "max_eur_mwh": 326.49
+    },
+    {
+     "fecha": "2026-11-06",
+     "media_eur_mwh": 245.63,
+     "min_eur_mwh": 193.49,
+     "max_eur_mwh": 310.44
+    },
+    {
+     "fecha": "2026-11-07",
+     "media_eur_mwh": 232.58,
+     "min_eur_mwh": 170,
+     "max_eur_mwh": 300
+    },
+    {
+     "fecha": "2026-11-08",
+     "media_eur_mwh": 200.07,
+     "min_eur_mwh": 139.96,
+     "max_eur_mwh": 251.92
+    },
+    {
+     "fecha": "2026-11-09",
+     "media_eur_mwh": 179.67,
+     "min_eur_mwh": 69.3,
+     "max_eur_mwh": 308.9
+    },
+    {
+     "fecha": "2026-11-10",
+     "media_eur_mwh": 171.38,
+     "min_eur_mwh": 90.01,
+     "max_eur_mwh": 222.98
+    },
+    {
+     "fecha": "2026-11-11",
+     "media_eur_mwh": 210.94,
+     "min_eur_mwh": 158.5,
+     "max_eur_mwh": 255.4
+    },
+    {
+     "fecha": "2026-11-12",
+     "media_eur_mwh": 116.16,
+     "min_eur_mwh": 1.09,
+     "max_eur_mwh": 198.38
+    },
+    {
+     "fecha": "2026-11-13",
+     "media_eur_mwh": 186.04,
+     "min_eur_mwh": 119.33,
+     "max_eur_mwh": 300
+    }
+   ]
+  },
+  "actualizado_ree": "2026-11-12T20:46:45.000+01:00",
+  "unidad": "€/MWh (media/mín/máx del día, mercado peninsular)"
+ },
+ "demanda_electrica": {
+  "serie": [
+   {
+    "mes": "2025-09",
+    "demanda_gwh": 19423.5,
+    "parcial": false
+   },
+   {
+    "mes": "2025-10",
+    "demanda_gwh": 19163.2,
+    "parcial": false
+   },
+   {
+    "mes": "2025-11",
+    "demanda_gwh": 19925.2,
+    "parcial": false
+   },
+   {
+    "mes": "2025-12",
+    "demanda_gwh": 21472.8,
+    "parcial": false
+   },
+   {
+    "mes": "2026-01",
+    "demanda_gwh": 22832.0,
+    "parcial": false
+   },
+   {
+    "mes": "2026-02",
+    "demanda_gwh": 19500.1,
+    "parcial": false
+   },
+   {
+    "mes": "2026-03",
+    "demanda_gwh": 20237.1,
+    "parcial": false
+   },
+   {
+    "mes": "2026-04",
+    "demanda_gwh": 17801.5,
+    "parcial": false
+   },
+   {
+    "mes": "2026-05",
+    "demanda_gwh": 18847.7,
+    "parcial": false
+   },
+   {
+    "mes": "2026-06",
+    "demanda_gwh": 20920.6,
+    "parcial": false
+   },
+   {
+    "mes": "2026-07",
+    "demanda_gwh": 23570.9,
+    "parcial": false
+   },
+   {
+    "mes": "2026-08",
+    "demanda_gwh": 21606.5,
+    "parcial": false
+   },
+   {
+    "mes": "2026-09",
+    "demanda_gwh": 20617.2,
+    "parcial": false
+   },
+   {
+    "mes": "2026-10",
+    "demanda_gwh": 19240.9,
+    "parcial": false
+   },
+   {
+    "mes": "2026-11",
+    "demanda_gwh": 8760.9,
+    "parcial": true
+   }
+  ],
+  "actualizado_ree": "2026-11-11T13:13:33.000+01:00",
+  "unidad": "GWh (demanda eléctrica peninsular, mensual)"
+ },
+ "generacion_electrica": {
+  "serie": [
+   {
+    "mes": "2025-10",
+    "parcial": false,
+    "total_gwh": 22026.2,
+    "renovable_gwh": 11018.6,
+    "renovable_pct": 50.0,
+    "tecnologias_gwh": {
+     "Hidráulica": 1760.7,
+     "Nuclear": 3695.8,
+     "Carbón": 21.0,
+     "Motores diésel": 217.2,
+     "Turbina de gas": 72.7,
+     "Turbina de vapor": 334.2,
+     "Ciclo combinado": 5196.0,
+     "Hidroeólica": 1.2,
+     "Eólica": 4583.3,
+     "Solar fotovoltaica": 4051.9,
+     "Solar térmica": 237.4,
+     "Otras renovables": 325.9,
+     "Cogeneración": 1378.1,
+     "Residuos no renovables": 92.6,
+     "Residuos renovables": 58.2,
+     "Generación total": 22026.1
+    }
+   },
+   {
+    "mes": "2025-11",
+    "parcial": false,
+    "total_gwh": 22593.3,
+    "renovable_gwh": 12828.3,
+    "renovable_pct": 56.8,
+    "tecnologias_gwh": {
+     "Hidráulica": 2030.9,
+     "Nuclear": 3682.7,
+     "Carbón": 5.4,
+     "Motores diésel": 194.6,
+     "Turbina de gas": 53.8,
+     "Turbina de vapor": 326.8,
+     "Ciclo combinado": 4166.9,
+     "Hidroeólica": 1.0,
+     "Eólica": 7180.2,
+     "Solar fotovoltaica": 3123.9,
+     "Solar térmica": 110.1,
+     "Otras renovables": 318.2,
+     "Cogeneración": 1236.5,
+     "Residuos no renovables": 98.3,
+     "Residuos renovables": 64.0,
+     "Generación total": 22593.3
+    }
+   },
+   {
+    "mes": "2025-12",
+    "parcial": false,
+    "total_gwh": 23308.9,
+    "renovable_gwh": 11394.8,
+    "renovable_pct": 48.9,
+    "tecnologias_gwh": {
+     "Hidráulica": 3248.8,
+     "Nuclear": 4820.2,
+     "Carbón": 46.8,
+     "Motores diésel": 206.1,
+     "Turbina de gas": 50.9,
+     "Turbina de vapor": 361.4,
+     "Ciclo combinado": 4911.8,
+     "Hidroeólica": 1.4,
+     "Eólica": 5426.5,
+     "Solar fotovoltaica": 2255.3,
+     "Solar térmica": 48.4,
+     "Otras renovables": 344.3,
+     "Cogeneración": 1413.6,
+     "Residuos no renovables": 103.3,
+     "Residuos renovables": 70.1,
+     "Generación total": 23308.7
+    }
+   },
+   {
+    "mes": "2026-01",
+    "parcial": false,
+    "total_gwh": 25527.2,
+    "renovable_gwh": 14230.2,
+    "renovable_pct": 55.7,
+    "tecnologias_gwh": {
+     "Hidráulica": 3210.6,
+     "Nuclear": 5238.9,
+     "Carbón": 20.2,
+     "Motores diésel": 211.0,
+     "Turbina de gas": 57.0,
+     "Turbina de vapor": 304.2,
+     "Ciclo combinado": 4115.6,
+     "Hidroeólica": 1.2,
+     "Eólica": 8295.2,
+     "Solar fotovoltaica": 2299.3,
+     "Solar térmica": 35.2,
+     "Otras renovables": 320.7,
+     "Cogeneración": 1259.4,
+     "Residuos no renovables": 90.7,
+     "Residuos renovables": 68.0,
+     "Generación total": 25527.3
+    }
+   },
+   {
+    "mes": "2026-02",
+    "parcial": false,
+    "total_gwh": 21772.0,
+    "renovable_gwh": 13787.0,
+    "renovable_pct": 63.3,
+    "tecnologias_gwh": {
+     "Hidráulica": 4434.5,
+     "Nuclear": 4031.6,
+     "Carbón": 0.0,
+     "Motores diésel": 180.4,
+     "Turbina de gas": 47.3,
+     "Turbina de vapor": 302.1,
+     "Ciclo combinado": 2760.6,
+     "Hidroeólica": 1.3,
+     "Eólica": 6370.0,
+     "Solar fotovoltaica": 2584.9,
+     "Solar térmica": 132.9,
+     "Otras renovables": 221.3,
+     "Cogeneración": 604.1,
+     "Residuos no renovables": 58.9,
+     "Residuos renovables": 42.1,
+     "Generación total": 21772.0
+    }
+   },
+   {
+    "mes": "2026-03",
+    "parcial": false,
+    "total_gwh": 23101.8,
+    "renovable_gwh": 14606.6,
+    "renovable_pct": 63.2,
+    "tecnologias_gwh": {
+     "Hidráulica": 4323.7,
+     "Nuclear": 3921.1,
+     "Carbón": 13.3,
+     "Motores diésel": 190.7,
+     "Turbina de gas": 53.9,
+     "Turbina de vapor": 291.2,
+     "Ciclo combinado": 3330.7,
+     "Hidroeólica": 2.0,
+     "Eólica": 5278.6,
+     "Solar fotovoltaica": 4305.7,
+     "Solar térmica": 322.0,
+     "Otras renovables": 325.4,
+     "Cogeneración": 625.6,
+     "Residuos no renovables": 68.7,
+     "Residuos renovables": 49.2,
+     "Generación total": 23101.8
+    }
+   },
+   {
+    "mes": "2026-04",
+    "parcial": false,
+    "total_gwh": 20382.0,
+    "renovable_gwh": 12106.3,
+    "renovable_pct": 59.4,
+    "tecnologias_gwh": {
+     "Hidráulica": 2464.7,
+     "Nuclear": 3891.8,
+     "Carbón": 0.0,
+     "Motores diésel": 192.3,
+     "Turbina de gas": 57.3,
+     "Turbina de vapor": 312.8,
+     "Ciclo combinado": 2820.9,
+     "Hidroeólica": 1.5,
+     "Eólica": 3874.3,
+     "Solar fotovoltaica": 5055.2,
+     "Solar térmica": 367.1,
+     "Otras renovables": 286.5,
+     "Cogeneración": 919.3,
+     "Residuos no renovables": 81.3,
+     "Residuos renovables": 57.0,
+     "Generación total": 20382.0
+    }
+   },
+   {
+    "mes": "2026-05",
+    "parcial": false,
+    "total_gwh": 21881.6,
+    "renovable_gwh": 13125.9,
+    "renovable_pct": 60.0,
+    "tecnologias_gwh": {
+     "Hidráulica": 2629.4,
+     "Nuclear": 3758.6,
+     "Carbón": 81.3,
+     "Motores diésel": 193.5,
+     "Turbina de gas": 57.9,
+     "Turbina de vapor": 369.0,
+     "Ciclo combinado": 3100.6,
+     "Hidroeólica": 1.7,
+     "Eólica": 3385.0,
+     "Solar fotovoltaica": 6229.4,
+     "Solar térmica": 515.0,
+     "Otras renovables": 316.3,
+     "Cogeneración": 1121.5,
+     "Residuos no renovables": 73.3,
+     "Residuos renovables": 49.1,
+     "Generación total": 21881.4
+    }
+   },
+   {
+    "mes": "2026-06",
+    "parcial": false,
+    "total_gwh": 24231.8,
+    "renovable_gwh": 14170.3,
+    "renovable_pct": 58.5,
+    "tecnologias_gwh": {
+     "Hidráulica": 2110.0,
+     "Nuclear": 4457.6,
+     "Carbón": 13.1,
+     "Motores diésel": 205.7,
+     "Turbina de gas": 66.4,
+     "Turbina de vapor": 299.7,
+     "Ciclo combinado": 3797.8,
+     "Hidroeólica": 2.8,
+     "Eólica": 3888.9,
+     "Solar fotovoltaica": 7143.2,
+     "Solar térmica": 622.2,
+     "Otras renovables": 338.3,
+     "Cogeneración": 1134.9,
+     "Residuos no renovables": 86.3,
+     "Residuos renovables": 64.9,
+     "Generación total": 24231.8
+    }
+   },
+   {
+    "mes": "2026-07",
+    "parcial": false,
+    "total_gwh": 27145.8,
+    "renovable_gwh": 14706.0,
+    "renovable_pct": 54.2,
+    "tecnologias_gwh": {
+     "Hidráulica": 2012.4,
+     "Nuclear": 4966.7,
+     "Carbón": 44.5,
+     "Fuel + Gas": 0.0,
+     "Motores diésel": 256.9,
+     "Turbina de gas": 111.2,
+     "Turbina de vapor": 340.6,
+     "Ciclo combinado": 5480.8,
+     "Hidroeólica": 2.5,
+     "Eólica": 3958.3,
+     "Solar fotovoltaica": 7730.0,
+     "Solar térmica": 601.1,
+     "Otras renovables": 348.9,
+     "Cogeneración": 1162.3,
+     "Residuos no renovables": 76.8,
+     "Residuos renovables": 52.8,
+     "Generación total": 27145.7
+    }
+   },
+   {
+    "mes": "2026-08",
+    "parcial": false,
+    "total_gwh": 25356.2,
+    "renovable_gwh": 13402.6,
+    "renovable_pct": 52.9,
+    "tecnologias_gwh": {
+     "Hidráulica": 1535.9,
+     "Nuclear": 4772.1,
+     "Carbón": 14.6,
+     "Motores diésel": 280.0,
+     "Turbina de gas": 105.9,
+     "Turbina de vapor": 359.3,
+     "Ciclo combinado": 5356.2,
+     "Hidroeólica": 3.2,
+     "Eólica": 3513.3,
+     "Solar fotovoltaica": 7363.4,
+     "Solar térmica": 585.7,
+     "Otras renovables": 347.0,
+     "Cogeneración": 990.7,
+     "Residuos no renovables": 74.8,
+     "Residuos renovables": 54.1,
+     "Generación total": 25356.4
+    }
+   },
+   {
+    "mes": "2026-09",
+    "parcial": false,
+    "total_gwh": 24052.8,
+    "renovable_gwh": 12220.9,
+    "renovable_pct": 50.8,
+    "tecnologias_gwh": {
+     "Hidráulica": 1617.3,
+     "Nuclear": 4904.9,
+     "Carbón": 60.2,
+     "Fuel + Gas": 0.0,
+     "Motores diésel": 253.3,
+     "Turbina de gas": 102.0,
+     "Turbina de vapor": 373.8,
+     "Ciclo combinado": 5016.8,
+     "Hidroeólica": 1.9,
+     "Eólica": 3464.5,
+     "Solar fotovoltaica": 6291.9,
+     "Solar térmica": 466.8,
+     "Otras renovables": 329.3,
+     "Cogeneración": 1047.9,
+     "Residuos no renovables": 73.0,
+     "Residuos renovables": 49.2,
+     "Generación total": 24052.8
+    }
+   },
+   {
+    "mes": "2026-10",
+    "parcial": false,
+    "total_gwh": 22694.5,
+    "renovable_gwh": 11006.9,
+    "renovable_pct": 48.5,
+    "tecnologias_gwh": {
+     "Hidráulica": 1613.7,
+     "Nuclear": 4933.5,
+     "Carbón": 81.5,
+     "Motores diésel": 228.1,
+     "Turbina de gas": 77.8,
+     "Turbina de vapor": 349.8,
+     "Ciclo combinado": 4845.4,
+     "Hidroeólica": 1.2,
+     "Eólica": 3981.1,
+     "Solar fotovoltaica": 4759.5,
+     "Solar térmica": 262.4,
+     "Otras renovables": 339.5,
+     "Cogeneración": 1088.8,
+     "Residuos no renovables": 82.7,
+     "Residuos renovables": 49.5,
+     "Generación total": 22694.3
+    }
+   },
+   {
+    "mes": "2026-11",
+    "parcial": true,
+    "total_gwh": 9803.8,
+    "renovable_gwh": 4858.1,
+    "renovable_pct": 49.6,
+    "tecnologias_gwh": {
+     "Hidráulica": 793.4,
+     "Nuclear": 1837.9,
+     "Carbón": 29.5,
+     "Motores diésel": 97.2,
+     "Turbina de gas": 28.2,
+     "Turbina de vapor": 122.5,
+     "Ciclo combinado": 2298.0,
+     "Eólica": 2331.9,
+     "Solar fotovoltaica": 1489.9,
+     "Solar térmica": 62.9,
+     "Otras renovables": 154.6,
+     "Cogeneración": 494.7,
+     "Residuos no renovables": 37.7,
+     "Residuos renovables": 25.4,
+     "Generación total": 9804.0
+    }
+   }
+  ],
+  "actualizado_ree": "2026-11-11T13:12:13.000+01:00",
+  "unidad": "GWh (generación nacional por tecnología) y % renovable sobre el total; el último mes puede estar incompleto"
+ },
+ "ipv_precios_vivienda": {
+  "serie": [
+   {
+    "codigo": "IPV769",
+    "territorio": "Nacional",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 186.75,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 165.433,
+    "variacion_anual_pct": 12.9
+   },
+   {
+    "codigo": "IPV766",
+    "territorio": "Andalucía",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 185.917,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 165.457,
+    "variacion_anual_pct": 12.4
+   },
+   {
+    "codigo": "IPV763",
+    "territorio": "Aragón",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 179.035,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 156.497,
+    "variacion_anual_pct": 14.4
+   },
+   {
+    "codigo": "IPV760",
+    "territorio": "Asturias",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 167.186,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 146.765,
+    "variacion_anual_pct": 13.9
+   },
+   {
+    "codigo": "IPV757",
+    "territorio": "Illes Balears",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 203.457,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 179.469,
+    "variacion_anual_pct": 13.4
+   },
+   {
+    "codigo": "IPV754",
+    "territorio": "Canarias",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 178.512,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 160.865,
+    "variacion_anual_pct": 11.0
+   },
+   {
+    "codigo": "IPV751",
+    "territorio": "Cantabria",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 183.432,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 161.488,
+    "variacion_anual_pct": 13.6
+   },
+   {
+    "codigo": "IPV748",
+    "territorio": "Castilla y León",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 166.611,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 144.488,
+    "variacion_anual_pct": 15.3
+   },
+   {
+    "codigo": "IPV745",
+    "territorio": "Castilla-La Mancha",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 148.275,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 131.455,
+    "variacion_anual_pct": 12.8
+   },
+   {
+    "codigo": "IPV742",
+    "territorio": "Cataluña",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 193.427,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 174.491,
+    "variacion_anual_pct": 10.9
+   },
+   {
+    "codigo": "IPV739",
+    "territorio": "Comunitat Valenciana",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 174.969,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 154.122,
+    "variacion_anual_pct": 13.5
+   },
+   {
+    "codigo": "IPV736",
+    "territorio": "Extremadura",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 145.386,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 128.07,
+    "variacion_anual_pct": 13.5
+   },
+   {
+    "codigo": "IPV733",
+    "territorio": "Galicia",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 167.197,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 146.552,
+    "variacion_anual_pct": 14.1
+   },
+   {
+    "codigo": "IPV730",
+    "territorio": "Comunidad de Madrid",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 207.668,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 181.836,
+    "variacion_anual_pct": 14.2
+   },
+   {
+    "codigo": "IPV727",
+    "territorio": "Región de Murcia",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 171.78,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 150.18,
+    "variacion_anual_pct": 14.4
+   },
+   {
+    "codigo": "IPV724",
+    "territorio": "Navarra",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 167.127,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 150.034,
+    "variacion_anual_pct": 11.4
+   },
+   {
+    "codigo": "IPV721",
+    "territorio": "País Vasco",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 170.638,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 151.915,
+    "variacion_anual_pct": 12.3
+   },
+   {
+    "codigo": "IPV718",
+    "territorio": "La Rioja",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 173.261,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 151.397,
+    "variacion_anual_pct": 14.4
+   },
+   {
+    "codigo": "IPV715",
+    "territorio": "Ceuta",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 209.084,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 184.569,
+    "variacion_anual_pct": 13.3
+   },
+   {
+    "codigo": "IPV712",
+    "territorio": "Melilla",
+    "ultimo_periodo": "2025T4",
+    "indice_base_2015": 201.063,
+    "mismo_trimestre_anio_anterior": "2024T4",
+    "indice_anio_anterior": 178.326,
+    "variacion_anual_pct": 12.8
+   }
+  ],
+  "unidad": "índice (base 2015=100) y % de variación anual calculada sobre el índice; IPV nacional/CCAA general, trimestral"
+ },
+ "ipva_alquiler": {
+  "serie": [
+   {
+    "codigo": "IPVA5",
+    "territorio": "Nacional",
+    "anio": 2020,
+    "indice": 110.942,
+    "anio_previo": 2019,
+    "indice_previo": 109.999,
+    "variacion_pct": 0.9
+   },
+   {
+    "codigo": "IPVA119",
+    "territorio": "Andalucía",
+    "anio": 2020,
+    "indice": 110.374,
+    "anio_previo": 2019,
+    "indice_previo": 109.594,
+    "variacion_pct": 0.7
+   },
+   {
+    "codigo": "IPVA71",
+    "territorio": "Cataluña",
+    "anio": 2020,
+    "indice": 112.364,
+    "anio_previo": 2019,
+    "indice_previo": 111.172,
+    "variacion_pct": 1.1
+   },
+   {
+    "codigo": "IPVA65",
+    "territorio": "Comunitat Valenciana",
+    "anio": 2020,
+    "indice": 111.732,
+    "anio_previo": 2019,
+    "indice_previo": 110.086,
+    "variacion_pct": 1.5
+   },
+   {
+    "codigo": "IPVA47",
+    "territorio": "Comunidad de Madrid",
+    "anio": 2020,
+    "indice": 111.433,
+    "anio_previo": 2019,
+    "indice_previo": 110.717,
+    "variacion_pct": 0.6
+   },
+   {
+    "codigo": "IPVA101",
+    "territorio": "Illes Balears",
+    "anio": 2020,
+    "indice": 113.259,
+    "anio_previo": 2019,
+    "indice_previo": 113.469,
+    "variacion_pct": -0.2
+   }
+  ],
+  "unidad": "índice (base 2015=100), anual, total viviendas"
+ }
+}
