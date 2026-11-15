@@ -178,7 +178,7 @@ table.cad-cm{min-width:1240px;border-spacing:3px}table.cad-cm.cad-sm{min-width:1
 .cad-cm td.cad-cap,.cad-cm th.cad-capth{font-size:13px}
 @media (max-width:1100px){#v-cadenas .caja{padding:9px 8px;border-radius:8px}#v-cadenas .cad-top{gap:0 6px}main:has(#v-cadenas.on){padding-left:4px;padding-right:4px}}
 /* C312 · Corredores de pago: una tarjeta por corredor */
-.cxc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,430px),1fr));gap:12px;margin:12px 0;align-items:start}
+.cxc-grid{column-width:430px;column-gap:12px;margin:12px 0}.cxc-grid>*{break-inside:avoid;-webkit-column-break-inside:avoid;display:inline-block;width:100%;box-sizing:border-box;margin:0 0 12px}
 .cxc{background:var(--bg);border:1px solid var(--lin);border-left:4px solid var(--lin);border-radius:10px;padding:12px 14px;min-width:0;display:flex;flex-direction:column;gap:10px}
 .cxc.nP{border-left-color:#2fe08f}.cxc.nS{border-left-color:#e8b64a}.cxc.nV{border-left-color:#ff6b6b}
 .cxc-t{font-size:clamp(16px,.4vw + 11px,18.5px);font-weight:700;margin:0;line-height:1.25;color:var(--tx);text-transform:none;letter-spacing:0}
@@ -212,8 +212,8 @@ details.cad-dr>summary b{font-size:var(--fs);color:var(--tx)}
 .cad-pr .dr{display:inline-block;min-width:1.8em;text-align:center;border:1px solid var(--lin);border-radius:4px;font-weight:700;font-size:13px}.cad-pr .dr.R{border-style:dashed;color:var(--tx2)}
 @media (max-width:900px){.cad-pg{display:block}.cad-pr{display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;grid-template-areas:'p p p i' 'e e e e' 's s s s' 'x m nv f';gap:3px 8px;padding:9px 10px;border-top:1px solid var(--lin)}.cad-pr:nth-child(2){border-top:0}.cad-pr.cab{display:none}.cad-pr>span{padding:0;border:0}.cad-pr .p{grid-area:p}.cad-pr .i{grid-area:i}.cad-pr .e{grid-area:e}.cad-pr .s{grid-area:s;color:var(--tx2)}.cad-pr .m{grid-area:m}.cad-pr .nv{grid-area:nv}.cad-pr .f{grid-area:f}.cad-pr .e::before{content:'Emisor: ';color:var(--tx2)}.cad-pr .s::before{content:'Subtipo: '}}
 /* C312 · Emisores, estándar de contrato y plazo de liquidación: una tarjeta por red */
-.cad-emg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:12px;margin:8px 0;align-items:start}
-.cad-emc{background:var(--bg);border:1px solid var(--lin);border-radius:10px;padding:10px 13px;min-width:0}
+.cad-emg{column-width:380px;column-gap:12px;margin:8px 0}
+.cad-emc{background:var(--bg);border:1px solid var(--lin);border-radius:10px;padding:10px 13px;min-width:0;break-inside:avoid;-webkit-column-break-inside:avoid;margin:0 0 12px;display:inline-block;width:100%;box-sizing:border-box}
 .cad-emc>h4{margin:0 0 8px;font-size:var(--fs);color:var(--tx)}
 .cad-emf{margin:0;display:flex;flex-direction:column;gap:2px}.cad-emf>dt{font-size:13px;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:.04em;margin-top:8px}.cad-emf>dt:first-child{margin-top:0}
 .cad-emf>dd{margin:0;font-size:var(--fs-s);line-height:1.45;overflow-wrap:anywhere}.cad-emf .cad-f{margin-top:3px}.cad-emf .cad-f .badge{margin-right:6px}
