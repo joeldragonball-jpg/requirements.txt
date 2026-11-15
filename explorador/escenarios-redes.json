@@ -1,5 +1,5 @@
 {
- "_actualizado": "2026-11-15",
+ "_actualizado": "2026-11-16",
  "tarea": "C321, C333",
  "titulo": "Escenarios por red: dónde encaja, qué reglas le aplicarían, cómo sería un pago y una tokenización",
  "nivel": "mixto por paso: P/S si el paso cita un hecho del repo (ref); [ESPECULACIÓN] si lleva razón en vez de fuente",
@@ -629,6 +629,127 @@
      }
     ],
     "incertidumbre": "Todo lo anterior cambia con tres cosas que hoy no se saben: el calendario real de Agorá/Nexus, la aprobación de CLARITY y las normas finales de GENIUS, y si algún banco central grande acepta una ruta con token neutral."
+   },
+   {
+    "id": "mapa-leyes",
+    "titulo": "Mapa de leyes y hitos regulatorios por red y escenario (MiCA, GENIUS, CLARITY, SEC, CFTC)",
+    "aviso": "Cada ley o hito va primero como hecho con su fecha leída en la fuente oficial (EUR-Lex, GovInfo, OCC, SEC, CFTC) y después, como [ESPECULACIÓN] con su razón, lo que habilitaría o bloquearía en cada red o escenario. Un marco legal no es adopción ni dice qué red gana. congress.gov y senate.gov no se pueden leer (protección anti-bots, no se saltó): lo posterior al 17-sep-2026 en el Senado sigue sin verificar.",
+    "pasos": [
+     {
+      "t": "MiCA (Reglamento UE 2023/1114), art. 149: entró en vigor a los 20 días de su publicación en el DOUE (9-jun-2023, es decir, 29-jun-2023); los títulos III y IV (fichas referenciadas a activos y de dinero electrónico) se aplican desde el 30-jun-2024 y el resto desde el 30-dic-2024.",
+      "hecho": {
+       "fuente": "EUR-Lex, Reglamento (UE) 2023/1114, art. 149, texto leído en Chrome",
+       "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=CELEX:32023R1114",
+       "nivel": "P",
+       "fecha": "2026-11-16"
+      }
+     },
+     {
+      "t": "MiCA, art. 143: los proveedores de servicios de criptoactivos que operaban legalmente antes del 30-dic-2024 pudieron seguir hasta el 1-jul-2026 como máximo (o hasta que se les concediese o denegase la autorización, si era antes); cada Estado podía acortarlo. El régimen transitorio general ya ha vencido.",
+      "hecho": {
+       "fuente": "EUR-Lex, Reglamento (UE) 2023/1114, art. 143, texto leído en Chrome",
+       "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=CELEX:32023R1114",
+       "nivel": "P",
+       "fecha": "2026-11-16"
+      }
+     },
+     {
+      "t": "MiCA, art. 2.2: queda fuera de su ámbito el BCE y los bancos centrales nacionales cuando actúan como autoridad monetaria; un euro digital o una CBDC emitidos por el banco central no son un criptoactivo bajo MiCA.",
+      "hecho": {
+       "fuente": "EUR-Lex, Reglamento (UE) 2023/1114, art. 2, apartado 2 letra c), texto leído en Chrome",
+       "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=CELEX:32023R1114",
+       "nivel": "P",
+       "fecha": "2026-11-16"
+      }
+     },
+     {
+      "t": "Qué habilita MiCA en Stellar y Ethereum: las stablecoins en euros emitidas desde la UE (EURC y EURCV figuran en Stellar según aporta-redes.json) son fichas de dinero electrónico con emisor autorizado y pueden ofrecerse a clientes de la UE con licencia CASP. Qué bloquea: una stablecoin de emisor no autorizado en la UE (p. ej. el USDC del pago USDC → XLM → euro) no podría ofrecerse libremente a clientes de la UE",
+      "esp": "Razón: MiCA exige autorización del emisor de fichas de dinero electrónico (títulos III y IV, aplicables desde el 30-jun-2024); la aplicación a cada token es deducción propia, no la lectura de un caso concreto [ESPECULACIÓN]"
+     },
+     {
+      "t": "Escenario sin stablecoin (CBDC o depósitos tokenizados): MiCA ni habilita ni bloquea nada en la red, porque las CBDC quedan fuera (art. 2.2) y los depósitos tokenizados dependen de la normativa bancaria. El factor limitante pasa a ser el diseño de cada banco central",
+      "esp": "Razón: el art. 2.2 excluye al banco central como autoridad monetaria; que los depósitos tokenizados queden en el régimen bancario es la lectura habitual, no verificada aquí artículo por artículo [ESPECULACIÓN]"
+     },
+     {
+      "t": "GENIUS Act (S. 1582): Ley Pública 119-27, firmada el 18-jul-2025. Entra en vigor el 18-ene-2027 o 120 días después de las normas finales de las agencias, lo que llegue antes. La OCC publicó su norma final el 21-oct-2026 (efectiva el 18-ene-2027); Tesoro, Fed y FDIC siguen en propuesta según prensa [S].",
+      "hecho": {
+       "fuente": "GovInfo BILLSTATUS S. 1582 y nota OCC NR 2026-92, leídas en Chrome (resumen en ley-eeuu.json)",
+       "url": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+       "nivel": "P",
+       "fecha": "2026-10-21"
+      }
+     },
+     {
+      "t": "Qué habilita GENIUS: un camino legal en EE. UU. para emisores de stablecoins de pago con licencia (y extranjeros bajo supervisión), lo que favorecería a las redes donde ya circulan stablecoins de pago frente a las que no tienen ninguna relevante. Qué bloquea: ofrecer stablecoins de pago de emisores no autorizados a clientes de EE. UU. desde el 18-ene-2027, y pagar rentabilidad solo por tener la moneda (según prensa [S] la OCC mantiene esa prohibición)",
+      "esp": "Razón: la norma de la OCC fija requisitos de reservas, reembolso y auditoría; el efecto por red depende de qué emisores se autoricen, algo aún no leído en fuente oficial [ESPECULACIÓN]"
+     },
+     {
+      "t": "CLARITY Act (H.R. 3633): la Cámara la aprobó 294-134 el 17-jul-2025; en el Senado el cierre de debate sobre la moción de proceder fracasó 49-50 el 15-sep-2026 (60 necesarios) y el senador Tillis presentó una moción de reconsideración. El expediente oficial (GovInfo, actualizado el 17-sep-2026) no registra más acciones; no es ley ni tiene fecha de entrada en vigor.",
+      "hecho": {
+       "fuente": "GovInfo BILLSTATUS H.R. 3633, leído en Chrome",
+       "url": "https://www.govinfo.gov/bulkdata/BILLSTATUS/119/hr/BILLSTATUS-119hr3633.xml",
+       "nivel": "P",
+       "fecha": "2026-11-16"
+      }
+     },
+     {
+      "t": "Qué bloquea la ausencia de CLARITY: sin reparto legal entre SEC y CFTC, el estatus de cada token (valor o materia prima) sigue sin fijarse por ley. Es una incertidumbre que afecta por igual a XRP, XLM y a los tokens nativos de las demás redes, sin favorecer a ninguna",
+      "esp": "Razón: el proyecto no es ley y el Congreso actual termina el 3-ene-2027 (según ley-eeuu.json); ninguna fuente oficial leída anuncia nueva votación [ESPECULACIÓN]"
+     },
+     {
+      "t": "SEC, 17-sep-2026 (nota 2026-90): «Innovation Exemption», exención temporal y condicional para que los Tokenized Securities Venues operen acciones NMS tokenizadas con AMM y pools de liquidez permisionados. Condiciones: contratos inteligentes auditables, públicos y desplegados en un libro mayor público y sin permisos; mismos derechos que la acción tradicional; límites de símbolos y volumen; parar al parar la acción subyacente. Caduca a los cinco años de su publicación.",
+      "hecho": {
+       "fuente": "SEC.gov, nota de prensa 2026-90, leída en Chrome",
+       "url": "https://www.sec.gov/newsroom/press-releases/2026-90-sec-issues-innovation-exemption-facilitate-trading-tokenized-nms-stock-request-comment",
+       "nivel": "P",
+       "fecha": "2026-09-17"
+      }
+     },
+     {
+      "t": "Qué habilita la exención de la SEC en cada red: solo cumplirían la condición del libro mayor público y sin permisos las redes abiertas (Ethereum, Solana, XRPL, Stellar, Avalanche u otras); una capa privada o permisionada (como la privada de Canton) no la cumpliría en esa parte. La nota no nombra ninguna red",
+      "esp": "Razón: la condición textual es un libro mayor distribuido público y sin permisos; qué red lo cumple en cada despliegue no se ha comprobado [ESPECULACIÓN]"
+     },
+     {
+      "t": "SEC, 1-oct-2026 (nota 2026-100): propuesta de normas de custodia de criptoactivos para asesores de inversión y fondos regulados. Permitiría la autocustodia en ciertos casos y custodios fiduciarios estatales (state trust companies). Comentarios: 60 días tras publicarse en el Federal Register. Es una propuesta, no una norma.",
+      "hecho": {
+       "fuente": "SEC.gov, nota de prensa 2026-100, leída en Chrome",
+       "url": "https://www.sec.gov/newsroom/press-releases/2026-100-sec-proposal-would-address-how-investment-advisers-funds-can-custody-crypto-assets-under-federal",
+       "nivel": "P",
+       "fecha": "2026-10-01"
+      }
+     },
+     {
+      "t": "Qué habilitaría la propuesta de custodia: fondos y asesores registrados podrían tener criptoactivos de cualquier red sin custodio bancario tradicional, y la demanda institucional por red solo cambiaría si se aprueba tal cual. Sin norma final no habilita ni bloquea nada todavía",
+      "esp": "Razón: es una propuesta en periodo de comentarios, el texto final puede cambiar y la nota no nombra redes [ESPECULACIÓN]"
+     },
+     {
+      "t": "CFTC, 5-oct-2026 (comunicado 9307-26): aviso previo de norma (ANPRM) para un marco de transacciones minoristas de criptoactivos (CTX) y una subcategoría de mercado designado «crypto asset market». Comentarios: 60 días tras publicarse en el Federal Register. Es una consulta, no una norma.",
+      "hecho": {
+       "fuente": "CFTC, comunicado 9307-26, leído en Chrome",
+       "url": "https://www.cftc.gov/PressRoom/PressReleases/9307-26",
+       "nivel": "P",
+       "fecha": "2026-10-05"
+      }
+     },
+     {
+      "t": "CFTC, 8-dic-2025 (comunicado 9146-25): programa piloto de colateral digital en derivados; los 3 primeros meses solo bitcoin, ether y USDC. No nombra ninguna red concreta.",
+      "hecho": {
+       "fuente": "CFTC, comunicado 9146-25, leído en Chrome",
+       "url": "https://www.cftc.gov/PressRoom/PressReleases/9146-25",
+       "nivel": "P",
+       "fecha": "2025-12-08"
+      }
+     },
+     {
+      "t": "Qué habilita la CFTC en cada red: como los tres activos del piloto son BTC, ETH y USDC, el efecto sería indirecto sobre las redes donde circulan (Ethereum sobre todo); XRP, XLM y otros no figuran en ese piloto. Si el reparto SEC-CFTC acabara en ley (CLARITY), los tokens que no sean valores pasarían a la CFTC",
+      "esp": "Razón: el comunicado lista tres activos para un piloto de tres meses; no hay lectura oficial de qué ocurrió después [ESPECULACIÓN]"
+     },
+     {
+      "t": "Mensajería: ninguna de estas leyes obliga a usar Swift, ISO 20022 o DTCC. MiCA, GENIUS y la SEC fijan quién puede emitir y operar; el formato del mensaje lo fijan los sistemas de pago y las infraestructuras. El enlace de DTCC con Canton y Stellar (según aporta-redes.json) sería un puente institucional, pero no sustituye la autorización de un emisor",
+      "esp": "Razón: separar «quién puede» (ley) de «cómo se envía» (mensajería) es lectura propia a partir de los textos leídos; ningún documento oficial leído relaciona ambas [ESPECULACIÓN]"
+     }
+    ],
+    "incertidumbre": "Las deducciones por red usan solo datos ya leídos en aporta-redes.json y ley-eeuu.json; ninguna fuente oficial analiza el encaje de cada red con cada ley. Pendiente [VERIFICAR]: texto de la norma de la SEC «Regulation Crypto Assets» (propuesta del 18-ago-2026 según prensa), normas finales de Tesoro, Fed y FDIC, y estado real de CLARITY tras el 17-sep-2026."
    }
   ]
  },
