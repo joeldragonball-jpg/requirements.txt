@@ -39,6 +39,8 @@ def semaforo(dias):
 def main():
     filas = []
     for p in sorted((RAIZ / "explorador").glob("*.json")):
+        if p.name == "frescura.json":   # es la salida de este script
+            continue
         acc = {"meta": [], "ev": []}
         try:
             recorre(json.loads(p.read_text(encoding="utf-8")), acc)
@@ -50,6 +52,22 @@ def main():
         fa = dt.date.fromtimestamp(p.stat().st_mtime)
         filas.append((p.name, f, semaforo(dias), dias, "meta" if acc["meta"] else "evento" if acc["ev"] else "-", fa))
     return filas
+
+
+def escribir_json(filas=None):
+    """Escribe explorador/frescura.json (lo lee construir_seguimiento.py). Solo fechas de dato y semáforo; sin IA."""
+    filas = filas if filas is not None else main()
+    items = []
+    for f in sorted(filas, key=lambda x: x[0]):
+        if len(f) < 6:
+            items.append({"archivo": f[0], "fecha_dato": None, "dias": None, "semaforo": "error", "origen": None})
+        else:
+            items.append({"archivo": f[0], "fecha_dato": f[1].isoformat() if f[1] else None, "dias": f[3], "semaforo": f[2], "origen": f[4]})
+    cuenta = {k: sum(1 for i in items if i["semaforo"] == k) for k in ("verde", "amarillo", "rojo", "gris", "error")}
+    out = {"nivel": "P", "generado": HOY.isoformat(), "fuente": "scripts/frescura_explorador.py (fecha del dato de cada explorador/*.json; sin IA)",
+           "umbrales_dias": {"verde": 7, "amarillo": 30}, "resumen": cuenta, "items": items}
+    (RAIZ / "explorador" / "frescura.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + chr(10), encoding="utf-8")
+    return out
 
 
 SESION = [  # prefijo -> sesion que lo refresca
@@ -78,6 +96,7 @@ def propuesta(n):
 
 if __name__ == "__main__":
     filas = main()
+    escribir_json(filas)
     cuenta = {}
     for f in filas:
         cuenta[f[2]] = cuenta.get(f[2], 0) + 1

@@ -465,6 +465,40 @@ if RUTA_CAD.exists():
 else:
     aviso("cadenas", "no existe explorador/cadenas.json")
 
+# C287/Tarea 3: comprobaciones mínimas de los 9 JSON nuevos (JSON válido, sin NaN/Infinity, fecha, fuente y nivel presentes)
+def _hay_clave(o, claves):
+    if isinstance(o, dict):
+        return any(k in claves and v not in (None, "", [], {}) for k, v in o.items()) or any(_hay_clave(v, claves) for v in o.values())
+    if isinstance(o, list):
+        return any(_hay_clave(v, claves) for v in o)
+    return False
+
+
+def _rechaza(c):
+    raise ValueError(f"valor {c} no válido en JSON")
+
+
+for _n in ("cadenas-onchain", "mica-registro", "eeuu-fiscal", "ocde-bis", "etf-flujos", "espana-energia-vivienda",
+           "calendario-oficial", "conflictos-gdelt", "liquidez-manual"):
+    _ruta = RAIZ / "explorador" / f"{_n}.json"
+    if not _ruta.is_file():
+        aviso(f"{_n}.json", "no existe")
+        continue
+    try:
+        _j = json.loads(_ruta.read_text(encoding="utf-8"), parse_constant=_rechaza)
+    except (ValueError, OSError) as _e:
+        aviso(f"{_n}.json", f"JSON no válido o con NaN/Infinity: {_e}")
+        continue
+    if not isinstance(_j, dict) or not _j:
+        aviso(f"{_n}.json", "la raíz debe ser un objeto no vacío")
+        continue
+    if not _hay_clave(_j, {"_actualizado", "actualizado", "leido", "generado", "fecha_lectura", "fecha_dato", "as_of"}):
+        aviso(f"{_n}.json", "sin fecha de lectura/generación (_actualizado, leido, generado, fecha_lectura)")
+    if not _hay_clave(_j, {"fuente", "fuentes", "metodo", "url"}):
+        aviso(f"{_n}.json", "sin fuente (fuente, fuentes, metodo o url)")
+    if not _hay_clave(_j, {"nivel", "nota_nivel"}):
+        aviso(f"{_n}.json", "sin nivel de fuente (nivel o nota_nivel)")
+
 # C205: la tesis de Joel es privada. privado/ no puede estar en git ni su contenido en las páginas públicas (docs/)
 try:
     import subprocess

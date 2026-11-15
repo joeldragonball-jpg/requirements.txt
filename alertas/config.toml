@@ -78,6 +78,8 @@ margen_tipos_pb = 5     # margen en puntos básicos para no avisar dos veces si 
 
 # Umbrales de tipos oficiales en % (te avisa cuando el tipo CRUCE uno). Ejemplos: cámbialos a los tuyos.
 # Códigos: eeuu, ue, uk, br, ca, au, se (los de explorador/paneles.json → tipos_vivos)
+# Ojo: en eeuu se compara con el LÍMITE SUPERIOR del rango objetivo (hoy 4,00); con el margen de 5 pb no avisa dos veces si el tipo «baila».
+# Si pones umbrales de otro país, usa múltiplos de 0,25 distintos de su tipo actual (si no, avisará en la siguiente decisión).
 [datos.umbrales_tipos]
 eeuu = [3.50, 4.50]
 ue = [2.00, 3.00]

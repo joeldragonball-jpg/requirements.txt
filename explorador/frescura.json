@@ -1,0 +1,424 @@
+{
+ "nivel": "P",
+ "generado": "2026-11-15",
+ "fuente": "scripts/frescura_explorador.py (fecha del dato de cada explorador/*.json; sin IA)",
+ "umbrales_dias": {
+  "verde": 7,
+  "amarillo": 30
+ },
+ "resumen": {
+  "verde": 37,
+  "amarillo": 11,
+  "rojo": 0,
+  "gris": 10,
+  "error": 0
+ },
+ "items": [
+  {
+   "archivo": "bancos-eba.json",
+   "fecha_dato": null,
+   "dias": null,
+   "semaforo": "gris",
+   "origen": "-"
+  },
+  {
+   "archivo": "bonos-manual.json",
+   "fecha_dato": "2026-10-29",
+   "dias": 17,
+   "semaforo": "amarillo",
+   "origen": "meta"
+  },
+  {
+   "archivo": "cadenas-onchain.json",
+   "fecha_dato": null,
+   "dias": null,
+   "semaforo": "gris",
+   "origen": "-"
+  },
+  {
+   "archivo": "cadenas.json",
+   "fecha_dato": "2026-11-15",
+   "dias": 0,
+   "semaforo": "verde",
+   "origen": "evento"
+  },
+  {
+   "archivo": "calendario-oficial.json",
+   "fecha_dato": "2026-11-15",
+   "dias": 0,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "calificaciones.json",
+   "fecha_dato": "2026-10-22",
+   "dias": 24,
+   "semaforo": "amarillo",
+   "origen": "meta"
+  },
+  {
+   "archivo": "cbdc-blockchains.json",
+   "fecha_dato": "2026-10-29",
+   "dias": 17,
+   "semaforo": "amarillo",
+   "origen": "meta"
+  },
+  {
+   "archivo": "centro.json",
+   "fecha_dato": null,
+   "dias": null,
+   "semaforo": "gris",
+   "origen": "-"
+  },
+  {
+   "archivo": "chips-manual.json",
+   "fecha_dato": "2026-11-10",
+   "dias": 5,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "conflictos-gdelt.json",
+   "fecha_dato": "2026-11-15",
+   "dias": 0,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "datos.json",
+   "fecha_dato": "2026-11-15",
+   "dias": 0,
+   "semaforo": "verde",
+   "origen": "evento"
+  },
+  {
+   "archivo": "deuda-fmi.json",
+   "fecha_dato": "2026-10-21",
+   "dias": 25,
+   "semaforo": "amarillo",
+   "origen": "meta"
+  },
+  {
+   "archivo": "edgar.json",
+   "fecha_dato": "2026-11-08",
+   "dias": 7,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "eeuu-fiscal.json",
+   "fecha_dato": "2026-11-14",
+   "dias": 1,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "elecciones.json",
+   "fecha_dato": "2026-11-11",
+   "dias": 4,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "enlaces.json",
+   "fecha_dato": null,
+   "dias": null,
+   "semaforo": "gris",
+   "origen": "-"
+  },
+  {
+   "archivo": "espana-contratacion.json",
+   "fecha_dato": "2026-11-10",
+   "dias": 5,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "espana-empleados.json",
+   "fecha_dato": null,
+   "dias": null,
+   "semaforo": "gris",
+   "origen": "-"
+  },
+  {
+   "archivo": "espana-empresas.json",
+   "fecha_dato": "2026-11-13",
+   "dias": 2,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "espana-energia-vivienda.json",
+   "fecha_dato": "2026-11-14",
+   "dias": 1,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "espana-judicial.json",
+   "fecha_dato": "2026-11-13",
+   "dias": 2,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "espana-leyes.json",
+   "fecha_dato": "2026-11-10",
+   "dias": 5,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "espana-manual.json",
+   "fecha_dato": null,
+   "dias": null,
+   "semaforo": "gris",
+   "origen": "-"
+  },
+  {
+   "archivo": "espana-mortalidad.json",
+   "fecha_dato": "2026-11-04",
+   "dias": 11,
+   "semaforo": "amarillo",
+   "origen": "meta"
+  },
+  {
+   "archivo": "espana-pagos.json",
+   "fecha_dato": "2026-11-04",
+   "dias": 11,
+   "semaforo": "amarillo",
+   "origen": "meta"
+  },
+  {
+   "archivo": "espana-politica.json",
+   "fecha_dato": "2026-11-12",
+   "dias": 3,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "espana-presupuesto.json",
+   "fecha_dato": "2026-11-13",
+   "dias": 2,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "espana-recaudacion.json",
+   "fecha_dato": "2026-11-14",
+   "dias": 1,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "espana-subvenciones.json",
+   "fecha_dato": "2026-11-10",
+   "dias": 5,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "espana-votaciones.json",
+   "fecha_dato": "2026-11-12",
+   "dias": 3,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "espana.json",
+   "fecha_dato": "2026-11-13",
+   "dias": 2,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "estabilidad-manual.json",
+   "fecha_dato": "2026-11-11",
+   "dias": 4,
+   "semaforo": "verde",
+   "origen": "evento"
+  },
+  {
+   "archivo": "estabilidad.json",
+   "fecha_dato": "2026-10-30",
+   "dias": 16,
+   "semaforo": "amarillo",
+   "origen": "meta"
+  },
+  {
+   "archivo": "etf-flujos.json",
+   "fecha_dato": "2026-11-15",
+   "dias": 0,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "fichas-activos.json",
+   "fecha_dato": "2026-11-13",
+   "dias": 2,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "hitos_petroleo.json",
+   "fecha_dato": "2026-11-06",
+   "dias": 9,
+   "semaforo": "amarillo",
+   "origen": "evento"
+  },
+  {
+   "archivo": "indicadores-historia-fmi.json",
+   "fecha_dato": null,
+   "dias": null,
+   "semaforo": "gris",
+   "origen": "-"
+  },
+  {
+   "archivo": "indicadores-historia-manual.json",
+   "fecha_dato": "2026-11-13",
+   "dias": 2,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "indicadores-historia.json",
+   "fecha_dato": "2026-11-14",
+   "dias": 1,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "indicadores-manual.json",
+   "fecha_dato": null,
+   "dias": null,
+   "semaforo": "gris",
+   "origen": "-"
+  },
+  {
+   "archivo": "liquidez-manual.json",
+   "fecha_dato": "2026-11-11",
+   "dias": 4,
+   "semaforo": "verde",
+   "origen": "evento"
+  },
+  {
+   "archivo": "mandatos.json",
+   "fecha_dato": "2026-11-05",
+   "dias": 10,
+   "semaforo": "amarillo",
+   "origen": "meta"
+  },
+  {
+   "archivo": "mica-registro.json",
+   "fecha_dato": "2026-11-14",
+   "dias": 1,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "noticias-archivo.json",
+   "fecha_dato": "2026-11-12",
+   "dias": 3,
+   "semaforo": "verde",
+   "origen": "evento"
+  },
+  {
+   "archivo": "ocde-bis.json",
+   "fecha_dato": "2026-11-14",
+   "dias": 1,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "paises.json",
+   "fecha_dato": "2026-11-10",
+   "dias": 5,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "paneles.json",
+   "fecha_dato": "2026-11-14",
+   "dias": 1,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "precios_historico.json",
+   "fecha_dato": "2026-11-14",
+   "dias": 1,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "precios_r00.json",
+   "fecha_dato": "2026-11-15",
+   "dias": 0,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "precios_vivos.json",
+   "fecha_dato": "2026-11-15",
+   "dias": 0,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "prueba-datos.json",
+   "fecha_dato": null,
+   "dias": null,
+   "semaforo": "gris",
+   "origen": "-"
+  },
+  {
+   "archivo": "regulacion.json",
+   "fecha_dato": "2026-11-14",
+   "dias": 1,
+   "semaforo": "verde",
+   "origen": "evento"
+  },
+  {
+   "archivo": "reservas.json",
+   "fecha_dato": "2026-10-22",
+   "dias": 24,
+   "semaforo": "amarillo",
+   "origen": "meta"
+  },
+  {
+   "archivo": "rwa-por-cadena-manual.json",
+   "fecha_dato": "2026-11-14",
+   "dias": 1,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "seguridad-eurostat.json",
+   "fecha_dato": "2026-11-04",
+   "dias": 11,
+   "semaforo": "amarillo",
+   "origen": "meta"
+  },
+  {
+   "archivo": "tipos-manual.json",
+   "fecha_dato": null,
+   "dias": null,
+   "semaforo": "gris",
+   "origen": "-"
+  },
+  {
+   "archivo": "valoracion.json",
+   "fecha_dato": "2026-11-14",
+   "dias": 1,
+   "semaforo": "verde",
+   "origen": "meta"
+  },
+  {
+   "archivo": "voces.json",
+   "fecha_dato": "2026-11-12",
+   "dias": 3,
+   "semaforo": "verde",
+   "origen": "evento"
+  }
+ ]
+}

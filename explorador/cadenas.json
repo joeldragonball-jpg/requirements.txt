@@ -681,7 +681,7 @@
     "liquidacion": {
      "quien": "Clientes de Ripple Payments (sin lista primaria de quién usa ODL)",
      "token": "parcial",
-     "ev": "ODL usa XRP como puente por diseño, pero Ripple Payments también liquida con RLUSD. Ripple no publica el volumen de ODL en XRP: las cifras de prensa (p. ej. ~15.000 M$ en 2024) son [VERIFICAR] y a veces suman todo Ripple Payments. En Acacia (RBA) la prensa atribuye al XRPL una liquidación con RLUSD, no con XRP; el comunicado del RBA no nombra plataformas."
+     "ev": "ODL usa XRP como puente por diseño, pero Ripple Payments también liquida con RLUSD. Ripple no publica el volumen de ODL en XRP (su web, 15-nov-2026, da solo «más de 100.000 M$ en pagos» y 60+ mercados para toda la plataforma, sin separar ODL ni XRP): las cifras de prensa (p. ej. ~15.000 M$ en 2024) son [VERIFICAR] y a veces suman todo Ripple Payments. En Acacia (RBA) la prensa atribuye al XRPL una liquidación con RLUSD, no con XRP; el comunicado del RBA no nombra plataformas."
     },
     "emision": {
      "quien": "CSD BR/BTG Pactual (espejo de fondos, 29-sep-2026), Ondo OUSG, OpenEden",
@@ -1684,7 +1684,7 @@
      "t": "Activos tokenizados de DTC en Solana (previsto para el 2S-2027)",
      "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana",
      "n": "P",
-     "futuro": true,
+     "futuro": true,
      "cal": true
     }
    ],
@@ -2267,10 +2267,10 @@
      "n": "P"
     },
     "rendimiento": {
-     "t": "La doc de recompensas asigna el 12 % de los 10.000 M de POL a recompensas de staking como bolsa fija repartida en 5 años (de ~313 M POL el 1.er año a ~149 M el 5.º, suma ≈ 1.200 M); da tasas esperadas según el % en staking (p. ej. 12 % el 2.º año con un 30 % en staking), no una rentabilidad en vivo. Otra página de la misma doc (POL, «Emission», leída 14-nov-2026) dice que la emisión es del 2 % anual desde jun-2025 (1 % a validadores y 1 % a tesorería tras PIP-26, con 1,5 % en el año 5). Son dos descripciones de la doc que no se concilian aquí: 12 % del suministro como bolsa de staking frente a 2 % de emisión anual [VERIFICAR]",
+     "t": "La doc de recompensas asigna el 12 % de los 10.000 M de POL a recompensas de staking como bolsa fija repartida en 5 años (de ~313 M POL el 1.er año a ~149 M el 5.º, suma ≈ 1.200 M); da tasas esperadas según el % en staking (p. ej. 12 % el 2.º año con un 30 % en staking), no una rentabilidad en vivo. Otra página de la misma doc (POL, «Emission», leída 14-nov-2026) dice que la emisión es del 2 % anual desde jun-2025 (1 % a validadores y 1 % a tesorería tras PIP-26, con 1,5 % en el año 5). Conciliación (leída 15-nov-2026): el foro de gobernanza (PIP-26, 12-oct-2023) dice que se mantiene el calendario original de recompensas de MATIC hasta jun-2025 y después pasa al de Polygon 2.0; la bolsa del 12 % es ese calendario original y la emisión de POL del 2 % anual (1 % validadores, 1 % tesorería) rige desde jul-2025. Si una propuesta posterior la cambia (se citan PIP-78 y una propuesta de foro para eliminar la inflación del 2 %), su estado sigue [VERIFICAR]",
      "f": "Documentación de Polygon (leída)",
      "u": "https://docs.polygon.technology/pos/reference/rewards.md",
-     "d": "2026-11-14",
+     "d": "2026-11-15",
      "n": "P"
     },
     "interop": {
@@ -2358,7 +2358,7 @@
    "sin_dato": [
     "Rentabilidad de staking en vivo (la doc solo da el calendario de emisión).",
     "Número real de validadores activos (la doc fija un máximo de 105).",
-    "Cuál de las dos cifras de la doc (12 % de bolsa de staking o 2 % de emisión anual, PIP-26) rige hoy el reparto a validadores; ambas son autodeclaradas."
+    "Si alguna propuesta posterior a PIP-26 (PIP-78, propuesta de foro para eliminar la emisión del 2 %) está aprobada: sin comprobar."
    ],
    "tipos_activo": {
     "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
@@ -2823,7 +2823,8 @@
     "Mucha información viene de Chainlink y de webs entusiastas."
    ],
    "sin_dato": [
-    "Si CRE y CCIP pasan a producción con bancos fuera de pilotos."
+    "Si CRE y CCIP pasan a producción con bancos fuera de pilotos.",
+    "Lista completa del directorio CCIP (78 redes) leída el 15-nov-2026: están Hedera, Plume, XDC, BNB Chain, Avalanche y Polygon (Katana); no están Algorand, IOTA ni Ondo. Uso real de los carriles (volumen) sin dato."
    ],
    "tipos_activo": {
     "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top visible (sin dato). [S]: tercero comercial sin auditoría.",
@@ -2925,9 +2926,9 @@
      "n": "P"
     },
     "interop": {
-     "t": "Lista oficial de contratos (docs.ondo.finance/addresses): OUSG en 4 redes (Ethereum, Polygon, Solana, XRP Ledger) y USDY en 12 (Ethereum, BNB Chain, Mantle, Solana, Sui, Aptos, Noble, Arbitrum, Stellar, Plume, Sei y Tempo); la web comercial de USDY enumera solo 9",
-     "f": "docs.ondo.finance, direcciones (leída por el subagente)",
-     "d": "2026-11-14",
+     "t": "Lista oficial de contratos (docs.ondo.finance/addresses): OUSG en 4 redes (Ethereum, Polygon, Solana, XRP Ledger) y USDY en 12 (Ethereum, BNB Chain, Mantle, Solana, Sui, Aptos, Noble, Arbitrum, Stellar, Plume, Sei y Tempo); la web comercial de USDY enumera solo 9. Mensajería de terceros (leída 15-nov-2026): Ondo Chain/Network no figura entre las 78 redes del directorio CCIP de Chainlink ni en la tabla de cadenas de CCTP de Circle; no prueba que no exista otra vía (puentes propios o de terceros)",
+     "f": "docs.ondo.finance, direcciones (leída por el subagente); directorio CCIP y lista CCTP leídos en Chrome el 15-nov-2026 (Chainlink y Circle)",
+     "d": "2026-11-15",
      "n": "P",
      "u": "https://docs.ondo.finance/addresses"
     },
@@ -3105,10 +3106,10 @@
      "u": "https://dev.algorand.co/concepts/protocol/staking-rewards/"
     },
     "interop": {
-     "t": "State Proofs: pruebas criptográficas firmadas por los propios participantes del consenso que permiten clientes ligeros «sin confianza» para productos entre cadenas; el estándar ARC-89 prevé que un activo (ASA) declare soporte de Native Token Transfers de Wormhole",
-     "f": "Documentación del desarrollador de Algorand Foundation (repositorio algorandfoundation/devportal: concepts/protocol/state-proofs.mdx y arc-standards); proyecto hablando de sí mismo",
+     "t": "State Proofs: pruebas criptográficas firmadas por los propios participantes del consenso que permiten clientes ligeros «sin confianza» para productos entre cadenas; el estándar ARC-89 prevé que un activo (ASA) declare soporte de Native Token Transfers de Wormhole. Mensajería de terceros (leída 15-nov-2026): Algorand no figura entre las 78 redes del directorio CCIP de Chainlink ni en la tabla de cadenas de CCTP de Circle; no prueba que no exista otra vía (puentes propios o de terceros)",
+     "f": "Documentación del desarrollador de Algorand Foundation (repositorio algorandfoundation/devportal: concepts/protocol/state-proofs.mdx y arc-standards); proyecto hablando de sí mismo; directorio CCIP y lista CCTP leídos en Chrome el 15-nov-2026 (Chainlink y Circle)",
      "u": "https://github.com/algorandfoundation/devportal/blob/main/src/content/docs/concepts/protocol/state-proofs.mdx",
-     "d": "2026-11-14",
+     "d": "2026-11-15",
      "n": "P"
     },
     "regulacion": {
@@ -3313,10 +3314,10 @@
      "u": "https://docs.xdc.network/xdcchain/rewards/"
     },
     "interop": {
-     "t": "XDC Zero: marco de comunicación entre una subred XDC y la red principal (oráculo de cabeceras, relayer y endpoint); la arquitectura lo lista como capa de puente para transferencias de activos. USDC por CCTP de Circle solo consta en la guía de pruebas (testnet)",
-     "f": "Documentación de XDC (repositorio XinFinOrg/Docs: subnet/components/xdc_zero.md, learn/xdc-architecture.md); proyecto hablando de sí mismo",
+     "t": "XDC Zero: marco de comunicación entre una subred XDC y la red principal (oráculo de cabeceras, relayer y endpoint). Mensajería de terceros en mainnet (leída 15-nov-2026): XDC figura en el directorio CCIP de Chainlink (2 carriles salientes, a Base y a Ethereum; 3 tokens: LINK, USDf y WBTC; comisión en LINK, WXDC o XDC) y en CCTP de Circle (dominio 18, Standard Transfer con forwarding y comisiones previas); la guía de XDC solo mencionaba CCTP en testnet",
+     "f": "Documentación de XDC (repositorio XinFinOrg/Docs: subnet/components/xdc_zero.md, learn/xdc-architecture.md); proyecto hablando de sí mismo; directorio CCIP (https://docs.chain.link/ccip/directory/mainnet/chain/xdc-mainnet) y tabla de cadenas de CCTP (https://developers.circle.com/cctp/concepts/supported-chains-and-domains), leídos en Chrome el 15-nov-2026; Chainlink y Circle",
      "u": "https://github.com/XinFinOrg/Docs/blob/main/docs/subnet/components/xdc_zero.md",
-     "d": "2026-11-14",
+     "d": "2026-11-15",
      "n": "P"
     },
     "regulacion": null
@@ -3325,7 +3326,7 @@
     "liquidacion": {
      "token": "sin dato",
      "quien": "Red XDC (consenso XDPoS 2.0, HotStuff encadenado)",
-     "ev": "La doc dice «2-second finality vs T+2» (página ISO 20022); xdc.org/network/tech-specs dice que las transacciones quedan finalizadas 6 s después de entrar en un bloque; una búsqueda cita 2-4 s en otras páginas de la doc. Las cifras no coinciden y no se define «finalidad». Papel del token XDC en la liquidación no leído.",
+     "ev": "La doc dice «2-second finality vs T+2» (página ISO 20022); el artículo de XDC 2.0 (xdc.org, 30-sep-2024, leído 15-nov-2026) dice que hay un bloque cada 2 s, que se exigen tres bloques de finalidad y que la «máxima seguridad» llega 6 s después de generarse el bloque; tech-specs también da 6 s. Lectura [RAZONADO]: 2 s es el tiempo de bloque y 6 s la finalidad; las cifras de 2-4 s de otras páginas no definen el término. Papel del token XDC en la liquidación no leído.",
      "u": "https://xdc.org/network/tech-specs",
      "d": "2026-11-14",
      "n": "S"
@@ -3372,12 +3373,12 @@
    },
    "hitos": [
     {
-     "fecha": "2025-10-23",
-     "t": "XDC Ventures anuncia la compra de Contour",
-     "u": "https://e27.co/xdc-ventures-acquires-contour-to-bridge-tradfi-and-web3-in-global-trade-20251023/",
-     "n": "V",
+     "fecha": "2025-10-22",
+     "t": "XDC Ventures anuncia la compra de Contour Network (cartas de crédito digitales) y un «Stable-Coin Lab»; sin precio ni condiciones",
+     "u": "https://www.eznewswire.com/newsroom/xdc-ventures-acquires-contour-network-launches-stablecoin-lab-trade-finance",
+     "n": "P",
      "futuro": false,
-     "f": "e27 sigue sin abrirse (Cloudflare, 15-nov-2026); xdc.org/blog y /news dan 404. La web de Contour (contour.network, leída 15-nov-2026, parte interesada) cita un «Stable-Coin Lab» «by XDC Ventures» y liquidación en USDC sobre XDC, pero no menciona la compra [VERIFICAR]"
+     "f": "Nota de prensa de XDC Ventures distribuida por EZ Newswire el 22-oct-2025 (leída 15-nov-2026; parte interesada; el 23-oct de otras webs es la fecha de reproducción). CoinDesk la cita el 22-oct-2025 (resultado de búsqueda, no abierta). No dice que los bancos del consorcio usen XDC"
     },
     {
      "fecha": "2025-05-27",
@@ -3401,7 +3402,7 @@
    ],
    "sin_dato": [
     "Bancos que la usen en producción.",
-    "Velocidad de bloque y finalidad de XDC con cifras que no coinciden entre páginas propias (2 s, 2-4 s, 6 s); Swift solo autodeclarado."
+    "Swift solo autodeclarado. Finalidad: 6 s (tres bloques de 2 s) en el artículo de XDC 2.0; algunas páginas de la doc dicen 2 s o 2-4 s sin definir el término."
    ],
    "tipos_activo": {
     "nota": "Sin cifras de activos tokenizados en XDC en fuente leída (no aparece en RWA.xyz). Lo documentado son planes y un producto: Contour (cartas de crédito digitales, comprado por XDC Ventures en oct-2025) que usaría XDC como base de liquidación y tokenización; bancos como DBS y Bangkok Bank siguen en Contour pero no consta que usen XDC. [S]",
@@ -3581,7 +3582,7 @@
      "u": "https://quant.network/news/quant-powers-the-clearing-houses-on-chain-money-initiative-in-the-us/",
      "n": "P",
      "futuro": true,
-     "aprox": true,
+     "aprox": true,
      "cal": true
     }
    ],
@@ -3720,10 +3721,10 @@
      "n": "P"
     },
     "interop": {
-     "t": "Cross-chain por LayerZero OFT V2 entre IOTA EVM e IOTA L1 (MoveVM) y otras cadenas EVM; además un puente propio (IOTA EVM Bridge) entre IOTA EVM y L1",
-     "f": "Documentación de IOTA (docs.iota.org, guía LayerZero OFT y IOTA EVM Bridge); proyecto hablando de sí mismo",
+     "t": "Cross-chain por LayerZero OFT V2 entre IOTA EVM e IOTA L1 (MoveVM) y otras cadenas EVM; además un puente propio (IOTA EVM Bridge) entre IOTA EVM y L1. Mensajería de terceros (leída 15-nov-2026): IOTA no figura entre las 78 redes del directorio CCIP de Chainlink ni en la tabla de cadenas de CCTP de Circle; no prueba que no exista otra vía (puentes propios o de terceros)",
+     "f": "Documentación de IOTA (docs.iota.org, guía LayerZero OFT y IOTA EVM Bridge); proyecto hablando de sí mismo; directorio CCIP y lista CCTP leídos en Chrome el 15-nov-2026 (Chainlink y Circle)",
      "u": "https://docs.iota.org/llms-full.txt",
-     "d": "2026-11-14",
+     "d": "2026-11-15",
      "n": "P"
     },
     "regulacion": {

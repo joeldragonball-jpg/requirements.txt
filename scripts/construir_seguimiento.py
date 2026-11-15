@@ -431,6 +431,21 @@ def frescura():
     if revs:
         dias = (hoy - date.fromisoformat(revs[-1].name[:10])).days
         anadir("Cerebro", "Última revisión semanal del cerebro", dias, revs[-1].name, "revision.yml", "ok" if dias <= 10 else "alerta")
+    try:   # C287: frescura de cada JSON de explorador/ por la fecha del dato (verdes/amarillos/rojos/grises)
+        import frescura_explorador
+        fx = frescura_explorador.escribir_json()
+        r = fx["resumen"]
+        mal = [i for i in fx["items"] if i["semaforo"] in ("rojo", "error")]
+        grises = [i["archivo"][:-5] for i in fx["items"] if i["semaforo"] == "gris"]
+        amar = [i["archivo"][:-5] for i in fx["items"] if i["semaforo"] == "amarillo"]
+        det = (f"verdes {r['verde']}, amarillos {r['amarillo']}, rojos {r['rojo']}, grises {r['gris']}. "
+               + (f"Rojos: {', '.join(i['archivo'][:-5] for i in mal[:6])}. " if mal else "")
+               + (f"Amarillos: {', '.join(amar[:6])}{'…' if len(amar) > 6 else ''}. " if amar else "")
+               + (f"Sin fecha: {', '.join(grises[:6])}{'…' if len(grises) > 6 else ''}." if grises else ""))
+        anadir("Explorador", "JSON con dato viejo o sin fecha (más de 7 días)", r["amarillo"] + r["rojo"] + r["gris"] + r["error"], det.strip(), "rutina de cada tema (ver explorador/frescura.json)",
+               "alerta" if mal else "aviso" if (r["amarillo"] or r["gris"]) else "ok")
+    except Exception as e:
+        print(f"Frescura del explorador no disponible: {type(e).__name__}", file=sys.stderr)
     orden = {"alerta": 0, "aviso": 1, "ok": 2}
     items.sort(key=lambda x: orden[x["nivel"]])
     return {"items": items, "resumen": {k: sum(1 for x in items if x["nivel"] == k) for k in ("alerta", "aviso", "ok")}}

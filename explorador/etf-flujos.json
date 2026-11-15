@@ -1,7 +1,7 @@
 {
  "generado": "2026-11-15",
- "metodo": "flujo diario = (acciones_t - acciones_t-1) x NAV_t; requiere >=2 instantáneas. Las webs de emisores solo muestran la última, así que el historial se acumula con scripts/leer_etf_flujos.py (una instantánea por día hábil). Al 15-nov hay 1 por fondo: flujo = null.",
- "nota_nivel": "P = leído en la web del emisor (parte interesada, no auditado). Agregadores (Farside, SoSoValue) solo como contraste [S]; no consultados hoy.",
+ "metodo": "flujo diario = (acciones_t - acciones_t-1) x NAV_t; requiere >=2 instantáneas. Las webs de emisores solo muestran la última, así que el historial se acumula con scripts/leer_etf_flujos.py (una instantánea por día hábil). Al 15-nov (domingo) las webs repiten el ultimo dia habil (12/13-nov): 1 instantanea diaria por fondo, flujo diario = null. XRPZ, XRPC y GXLM solo tienen datos trimestrales/portada de la SEC (10-Q del 13-nov y 10-nov-2026).",
+ "nota_nivel": "P = leido en la web del emisor o en EDGAR (10-Q; parte interesada, no auditado). Agregadores (Farside, SoSoValue) solo como contraste [S]; no consultados.",
  "etfs": [
   {
    "ticker": "XRP",
@@ -35,47 +35,89 @@
    "historial": [
     {
      "fecha": "2026-11-13",
-     "acciones": null,
-     "acciones_derivadas": 11000000,
+     "acciones": 11000000,
      "nav": 9.98,
      "aum_usd": 109770671.56,
-     "nota": "la web no publica acciones en circulación; derivadas = AUM/NAV (~11,0 M) [cálculo propio, no cifra del emisor]",
+     "nota": "15-nov (domingo): la web de 21shares ya publica 'Securities outstanding' 11.000.000 con valores del 13-nov (NAV 9,98, AUM 109.770.671,56); coincide con AUM/NAV; titulo de reserva 107.073.960,56 XRP",
      "fuente": "https://www.21shares.com/en-us/products-us/toxr",
-     "nivel": "P (emisor); acciones = derivado"
+     "nivel": "P (emisor)",
+     "tenencia_monedas": 107073960.56
     }
    ],
    "flujo_usd": null,
-   "flujo_motivo": "sin acciones publicadas ni segunda instantánea"
+   "flujo_motivo": "solo una instantanea (13-nov); 15-nov es domingo y la web no tiene dato nuevo; falta la del dia habil siguiente"
   },
   {
    "ticker": "XRPZ",
    "nombre": "Franklin XRP ETF",
    "activo": "XRP",
    "emisor": "Franklin Templeton",
-   "web": null,
-   "historial": [],
+   "web": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002059438&type=10-Q",
+   "historial": [
+    {
+     "fecha": "2026-09-30",
+     "acciones": 27000000,
+     "nav": 16.28,
+     "tenencia_monedas": null,
+     "aum_usd": 439606153,
+     "fuente": "https://www.sec.gov/Archives/edgar/data/2059438/000114036126043720/ef20083832_10q.htm",
+     "nivel": "P (SEC, 10-Q trimestral no auditado, Franklin XRP Trust CIK 2059438; cotiza como XRPZ)",
+     "nota": "Cierre 30-sep-2026: 27.000.000 acciones, NAV 16,28, activos netos 439.606.153 USD, inversion en XRP a valor razonable 439.668.398 USD (10-Q presentado el 13-nov-2026). Cierre 31-mar-2026: 14.700.000 acciones, NAV 14,63, 215,06 M USD. Operaciones desde 24-nov-2025. Es dato trimestral, no diario."
+    }
+   ],
    "flujo_usd": null,
-   "flujo_motivo": "[VERIFICAR] 15-nov: franklintempleton.com/xrpz da 404 y el listado de ETF de Franklin (Chrome) no incluye XRPZ (si EZBC, EZPZ, EZET); sin URL de ficha no hay patrimonio/acciones. AUM ~401 M$ al 22-oct solo [S: The Block] (T19)"
+   "flujo_motivo": "solo dato trimestral (30-sep): sin acciones diarias no hay flujo diario. Entre 31-mar y 30-sep las acciones pasaron de 14,70 M a 27,00 M (+12,30 M; variacion mezclada con precio, no es flujo diario). La web franklintempleton.com/xrpz sigue en 404 (15-nov)"
   },
   {
    "ticker": "XRPC",
    "nombre": "Canary XRP ETF",
    "activo": "XRP",
    "emisor": "Canary Capital",
-   "web": "https://canaryfunds.com",
-   "historial": [],
+   "web": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002039505&type=10-Q",
+   "historial": [
+    {
+     "fecha": "2026-09-30",
+     "acciones": 23350000,
+     "nav": 15.79,
+     "tenencia_monedas": null,
+     "aum_usd": 368656616,
+     "fuente": "https://www.sec.gov/Archives/edgar/data/2039505/000199937126025352/xrpc-10q_093026.htm",
+     "nivel": "P (SEC, 10-Q trimestral no auditado, Canary XRP ETF CIK 2039505)",
+     "nota": "Cierre 30-sep-2026: 23.350.000 acciones, NAV 15,79, activos netos 368.656.616 USD; inversion en XRP 368.802.432 USD. 31-mar-2026: 16.490.000 acciones, NAV 19,58, 322,82 M USD."
+    },
+    {
+     "fecha": "2026-11-09",
+     "acciones": 22920000,
+     "nav": null,
+     "tenencia_monedas": null,
+     "fuente": "https://www.sec.gov/Archives/edgar/data/2039505/000199937126025352/xrpc-10q_093026.htm",
+     "nivel": "P (SEC, portada del 10-Q)",
+     "nota": "Acciones en circulacion al 9-nov-2026 segun la portada del 10-Q (22.920.000); sin NAV de esa fecha"
+    }
+   ],
    "flujo_usd": null,
-   "flujo_motivo": "[VERIFICAR] 15-nov: canaryfunds.com y www.canaryfunds.com siguen con ERR_SSL_PROTOCOL_ERROR en Chrome (2 intentos). AUM ~316 M$ al 22-oct solo [S: The Block]"
+   "flujo_motivo": "acciones 23,35 M (30-sep) -> 22,92 M (9-nov): -0,43 M acciones (-1,8 %), salida neta en acciones; sin NAV del 9-nov no se valora en USD [calculo propio]. canaryfunds.com sigue con ERR_SSL; datos por EDGAR"
   },
   {
    "ticker": "GXLM",
-   "nombre": "Grayscale Stellar Lumens Trust",
+   "nombre": "Grayscale Stellar Lumens Trust (XLM)",
    "activo": "XLM",
    "emisor": "Grayscale",
-   "web": null,
-   "historial": [],
+   "web": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001761325&type=10-Q",
+   "historial": [
+    {
+     "fecha": "2026-09-30",
+     "acciones": 1440900,
+     "nav": 18.63,
+     "tenencia_monedas": 118504621.5,
+     "aum_usd": 26848000,
+     "fuente": "https://www.sec.gov/Archives/edgar/data/1761325/000176132526000010/gxlm-20260930.htm",
+     "nivel": "P (SEC, 10-Q trimestral no auditado, CIK 1761325)",
+     "nota": "Cierre 30-sep-2026: activos netos 26,848 M USD (cifra del 10-Q en miles), 1.440.900 acciones, NAV de mercado principal 18,63, 118.504.621,5 XLM. 31-dic-2025: 1.389.200 acciones, NAV 16,69, 23,19 M USD. Cotiza en OTC (OTCQX), no es ETF en bolsa."
+    }
+   ],
    "flujo_usd": null,
-   "flujo_motivo": "[VERIFICAR] 15-nov: etfs.grayscale.com/gxlm da 'Page not found' y la home de ETF/ETP de Grayscale no lista ningun producto XLM (si GXRP, GSOL...); GXLM sigue siendo fideicomiso OTCQX (8-K 15-oct-2026), sin datos de emisor leidos"
+   "flujo_motivo": "existe en EDGAR (CIK 1761325, ticker GXLM, OTC) con 10-Q del 10-nov-2026; solo dato trimestral (+51.700 acciones desde 31-dic-2025, ~+3,7 %). Sin dato diario no hay flujo. La web de ETF de Grayscale no lo lista porque no es ETF"
   },
   {
    "ticker": "IBIT",
