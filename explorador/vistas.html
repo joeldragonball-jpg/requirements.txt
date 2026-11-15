@@ -210,7 +210,7 @@ table.cad-cm{min-width:1240px;border-spacing:3px}table.cad-cm.cad-sm{min-width:1
 .cad-chip.nP{border-left-color:#2fe08f}.cad-chip.nS{border-left-color:#e8b64a}.cad-chip.nV{border-left-color:#ff6b6b}.cad-chip.nd{color:var(--tx2);border-style:dashed}.cad-chip b{font-size:13px}
 .cad-mp{margin-top:8px;border-top:1px solid var(--lin);padding-top:6px}.cad-mp[hidden]{display:none}.cad-mtk{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}.cad-mtk .tk{font-size:13px}.cad-mrot{margin:14px 0 8px;font-size:var(--fs-s);color:var(--tx2)}
 @media (max-width:699px){.cad-nomov{display:none!important}.cad-ml{display:block}}
-.cad-us{margin:12px 0}.cad-usg{column-width:360px;column-gap:12px;margin:8px 0}
+.cad-us{margin:12px 0}.cad-usg{column-width:380px;column-gap:12px;margin:8px 0}
 .cad-usc{background:var(--bg);border:1px solid var(--lin);border-radius:10px;padding:10px 13px;min-width:0;break-inside:avoid;-webkit-column-break-inside:avoid;display:inline-block;width:100%;box-sizing:border-box;margin:0 0 12px}.cad-usc.nd{border-style:dashed}
 .cad-usc>h4{margin:0 0 6px;font-size:var(--fs);color:var(--tx);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}.cad-usc>h5{margin:12px 0 4px;font-size:var(--fs-s);color:var(--ac)}
 .cad-usm{font-size:var(--fs-xs);color:var(--tx2);margin-bottom:6px;overflow-wrap:anywhere}
@@ -370,6 +370,10 @@ small.per{color:var(--tx2);font-size:var(--fs-xs);font-weight:400}
 .ap-fil{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.ap-fb{background:var(--bg);color:var(--tx);border:1px solid var(--lin);border-radius:999px;padding:6px 14px;min-height:36px;font-size:var(--fs-xs);cursor:pointer}.ap-fb.on{border-color:var(--ac);color:var(--ac);background:rgba(90,169,230,.12)}
 .ap-tw{width:100%;max-width:100%;box-sizing:border-box}.ap-m tr.ap-sel>*{background:rgba(90,169,230,.25);border-top:2px solid var(--ac);border-bottom:2px solid var(--ac)}.ap-m tr.ap-sel .ap-capb{font-weight:700;color:#fff}.ap-m tr.ap-sel>:first-child{border-left:2px solid var(--ac)}.ap-m tr.ap-sel>:last-child{border-right:2px solid var(--ac)}
 td.cad-go{cursor:pointer}td.cad-go:hover,td.cad-go:focus-visible{outline:2px solid var(--ac);outline-offset:-2px}
+.cad-sel{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}.cad-sel .cad-bt{padding:7px 14px;min-height:38px}
+.cad-fi{background:var(--bg);border:1px solid var(--lin);border-radius:10px;padding:10px 14px}.cad-fih{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}.cad-fih h3{margin:0}.cad-fih .cad-cap{border:1px solid var(--lin)}
+.cad-tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--lin);margin:10px 0 12px}.cad-tab{font:inherit;font-size:var(--fs-s);background:none;color:var(--tx2);border:1px solid transparent;border-bottom:0;border-radius:8px 8px 0 0;padding:8px 14px;min-height:40px;cursor:pointer}.cad-tab:hover{color:var(--tx)}.cad-tab.on{color:var(--tx);background:var(--panel);border-color:var(--lin);font-weight:700;box-shadow:inset 0 3px 0 var(--ac)}
+.cad-pn[hidden]{display:none}.cad-2c{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:14px;align-items:start}.cad-2c>div{min-width:0}.cad-2c h3{margin-top:0}.cad-hs{column-width:340px;column-gap:22px}
 .flash{animation:cadflash 1.8s ease-out}@keyframes cadflash{0%,55%{background:rgba(90,169,230,.40)}100%{background:transparent}}
 table.cad-emt{border-collapse:collapse;width:100%;min-width:980px;table-layout:auto}.cad-emt th{font-size:var(--fs-xs);color:var(--ac);text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:6px 10px;border-bottom:2px solid var(--lin);white-space:nowrap}
 .cad-emt td{vertical-align:top;font-size:var(--fs-s);line-height:1.45;padding:8px 10px;border-top:1px solid var(--lin);overflow-wrap:anywhere}.cad-emt td:first-child,.cad-emt th:first-child{position:sticky;left:0;z-index:1;background:var(--panel);font-weight:700;white-space:nowrap}.cad-emt .cad-f{margin-top:3px}.cad-emt .cad-f .badge{margin-right:6px}.cad-emt tr:nth-child(even) td{background:rgba(255,255,255,.025)}.cad-emt tr:nth-child(even) td:first-child{background:var(--panel)}
@@ -1916,7 +1920,7 @@ function pActivos(){
 }
 /* C264 · Cadenas: matriz capacidad × cadena con semáforo de evidencia, capas («¿necesita el token?») y enlaces a la Línea de tiempo y el Calendario
    (explorador/cadenas.json). Solo hechos públicos con fuente; la captura de valor es [RAZONADO] con supuestos; sin «ganador» */
-let cadSem=matchMedia('(pointer:coarse)').matches,cadSel='';
+let cadSem=matchMedia('(pointer:coarse)').matches,cadSel='',cadTab='res';
 const cadPart=t=>String(t||'').replace(/\b(Inter)(opera)(bilidad)\b/g,'$1­$2­$3').replace(/\b(tokeniza)(bles)\b/g,'$1­$2').replace(/\b(Cumpli)(miento)\b/g,'$1­$2').replace(/\b(institu)(cional)\b/g,'$1­$2').replace(/\b(Rendi)(mientos)\b/g,'$1­$2').replace(/\b(regula)(toria)\b/g,'$1­$2');   // C312: guiones blandos para que las cabeceras largas se partan sin recortarse   // en móvil y tablet arranca en semáforo; el botón pasa a texto
 /* ---------- C289 · datos de los lectores por script: cadenas-onchain, registro MiCA, EE. UU. fiscal, OCDE/BIS, ETF, España (energía y vivienda),
    calendario oficial, GDELT y liquidez de la Fed y del Eurosistema. Siempre fuente, fecha y nivel P/S/V; un dato null se muestra como «vacío». ---------- */
@@ -2062,7 +2066,7 @@ function pCadenas(){
     lg.append(el('br'),el('b',null,'Capas: ¿token? '));[['si','sí: el uso lo consume o lo exige'],['pa','parcial: a veces o con alternativa'],['mi','mínimo: solo comisiones pequeñas'],['no','no lo necesita'],['nd','sin dato']].forEach(([k,t])=>{const s=el('span','tk '+k,t);lg.append(s)});
     lg.append(el('br'),el('b',null,'Captura del token: '),el('span','cad-cap alta','alta (verde)'),el('span','cad-cap media','media (ámbar)'),el('span','cad-cap baja','baja (azul)'),el('span','cad-cap incierta','incierta (gris)'),document.createTextNode(' — las cuatro reglas están en el recuadro «Captura» de arriba. Verde y ámbar de la matriz miden la FUENTE; verde y ámbar de capas y captura miden el TOKEN: son escalas distintas.'));cm.append(lg)}
   const REDES=L.filter(c=>!SERV.has(c.id)),SERVS=L.filter(c=>SERV.has(c.id));
-  const abrirRed=c=>{cadSel=c.id;pCadenas();const f=$('cad-'+c.id);if(f)f.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})};
+  const abrirRed=c=>{cadSel=c.id;pCadenas();const f=$('cad-fichas');if(f)f.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})};
   // panel de una celda: texto completo, fuente, fecha, antigüedad (se usa en la tabla y en la lista de móvil)
   const panelCelda=(c,k,v,cerrar)=>{const p=el('div','cad-pan-in');const h=el('div','cad-pan-h');h.append(el('b',null,tit(c)+' · '+k.n));const x=el('button','cad-bt','Cerrar');x.type='button';x.onclick=cerrar;h.append(x);p.append(h);
     if(k.que)p.append(el('p','nota-v',k.que));
@@ -2151,44 +2155,59 @@ function pCadenas(){
       dt.append(dd);gr.append(dt)});
     cr.append(gr);cm.after(cr)}
   cadExtras(S);
-  // fichas
-  const cf=el('div','caja');cf.append(el('h2',null,'Ficha por red: capas, ISO 20022, hechos, hitos y enlaces'));
-  const g=el('div','cad-fichas');L.forEach(c=>g.append(ficha(c)));cf.append(g);S.append(cf);
+  // fichas: selector de red + una sola ficha dividida en pestañas (no una página interminable)
+  const cf=el('div','caja');cf.id='cad-fichas';cf.append(el('h2',null,'Ficha por red: qué es, qué hace y qué se sabe de cada una'),el('p','nota-v','Elige una red y una pestaña: capas, ISO 20022, hechos, hitos, noticias y enlaces están separados para no tener que recorrer una página larguísima.'));
+  const selB=el('div','cad-sel'),host=el('div');
+  const show=id=>{cadSel=id;host.textContent='';host.append(ficha(L.find(x=>x.id===id)));selB.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.id===id))};
+  L.forEach(c=>{const b=el('button','cad-bt',tit(c)+' · '+c.token);b.type='button';b.dataset.id=c.id;b.addEventListener('click',()=>show(c.id));selB.append(b)});
+  cf.append(selB,host);cm.after(cf);show(L.some(x=>x.id===cadSel)?cadSel:L[0].id);
   cadNav(S,cab);
   function ficha(c){
-    const dt=el('details','cad-ficha');dt.dataset.auto='1';dt.id='cad-'+c.id;if(cadSel===c.id)dt.open=true;
-    dt.addEventListener('toggle',()=>{if(dt.open)cadSel=c.id;else if(cadSel===c.id)cadSel=''});
-    const ca=c.captura||{},sm=el('summary');sm.append(el('b',null,c.id==='ethereum'?'Ethereum y L2':c.nombre),document.createTextNode(' · '+c.token),el('span','cad-cap '+(ca.nivel||''),'captura '+(ca.nivel||'—')));dt.append(sm);
+    const dt=el('div','cad-fi');dt.id='cad-'+c.id;
+    const ca=c.captura||{};const hd=el('div','cad-fih');hd.append(el('h3',null,(c.id==='ethereum'?'Ethereum y L2':c.nombre)+' · '+c.token),el('span','cad-cap '+(ca.nivel||''),'captura '+(ca.nivel||'—')));dt.append(hd);
     dt.append(el('p','que',(c.tipo||'')+'. '+(c.aporta||'')));
-    dt.append(ocBloque(c));
-    dt.append(usoSeg(c));
-    dt.append(apFicha(c));
-    dt.append(el('h3',null,'Capas: quién la usa y si necesita el token'));
-    const cw=el('div','cad-env');cw.append(tabla([{t:'Capa',f:x=>x.n},{t:'Quién la usa',f:x=>((c.capas||{})[x.id]||{}).quien||'sin dato'},{t:'¿Token?',f:x=>{const tk=((c.capas||{})[x.id]||{}).token||'sin dato';return el('span','tk '+tkc(tk),tk)}},{t:'Evidencia',f:x=>((c.capas||{})[x.id]||{}).ev||'sin dato'}],CR));dt.append(cw);
-    const pc=el('p','nota-v');pc.append(el('b',null,'Captura de valor del token: '+(ca.nivel||'—')+'. '),document.createTextNode((ca.mecanismo||'')+((ca.supuestos||[]).length?' Supuestos: '+ca.supuestos.join('; ')+'.':'')));dt.append(pc);
-    dt.append(el('h3',null,'ISO 20022 y Swift'));
-    if((c.iso||[]).length)c.iso.forEach(x=>dt.append(hecho(x)));else dt.append(el('p','nota-v','Sin dato de integración real con ISO 20022.'));
-    dt.append(el('h3',null,'Hechos por capacidad'));
-    const hs=el('div','cad-hs');CAPS.forEach(k=>{const v=c.matriz[k.id];const d=el('div','cad-h');d.append(el('b',null,k.n+': '));if(v){d.append(badge(v.n),document.createTextNode(v.t+' '),fuente(v))}else d.append(el('span','nota-v','sin dato'));hs.append(d)});dt.append(hs);
-    dt.append(el('h3',null,'Hitos con fecha'));
-    if((c.hitos||[]).length){const u=el('ul','cad-lst');c.hitos.forEach(x=>{const li=el('li');li.append(el('b',null,x.fecha+(x.aprox?' (aprox.)':'')+' · '),document.createTextNode((x.futuro?'🗓 previsto: ':'')+x.t+' '),nivelBadge(x.n||'V'),lk(x.u,'fuente ↗'));if(x.tl)li.append(el('span','nota-v',' · en la Línea de tiempo'));if(x.cal)li.append(el('span','nota-v',' · en el Calendario'));u.append(li)});dt.append(u)}
-    else dt.append(el('p','nota-v','Sin hitos con fecha.'));
-    dt.append(el('h3',null,'Últimas noticias y hechos de esta red'));
-    const mv=D.movimientos.filter(m=>(m.cadenas||[]).includes(c.id)&&String(m.fecha)<=HOYS).sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));
-    if(mv.length){const u=el('ul','cad-lst cad-nov');mv.slice(0,5).forEach(m=>{const li=el('li');li.append(nivelBadge(nivM(m)),el('b',null,' '+m.fecha+' · '));if(m.origen==='noticia')li.append(el('span','cad-nt','noticia'));li.append(document.createTextNode((m.actor||'')+': '+corta(String(m.texto||''),260)+' '));if(m.url)li.append(lk(m.url,'fuente ↗'));
-        if(m.umbral){const w=el('span','cad-umb','umbral');w.title='Titular con «supera», «cae por debajo de», «toca» o similar: puede ser un movimiento de dentro del día y no el cierre. Compara el mismo día, el máximo y el mínimo y el instrumento exacto antes de darlo por cierto o por desmentido.';li.append(w)}u.append(li)});dt.append(u);
-      dt.append(el('p','nota-v','Etiquetado por reglas (nombres de la red, su token o su entidad en el actor, las entidades, los activos o el titular), sin IA. '+mv.length+' en total: el resto está en la Línea de tiempo.'))}
-    else dt.append(el('p','nota-v','Sin hechos etiquetados con esta red en la línea de tiempo (pendiente de añadir con fuente, C278).'));
-    const rc=REL.filter(r=>(r.cadenas||[]).includes(c.id));
-    if(rc.length){dt.append(el('h3',null,'Relaciones con otras redes'));const rr=el('div','cad-ir');rc.forEach(r=>{const b=el('button','cad-bt',r.titulo+' →');b.onclick=()=>irRel(r.id);rr.append(b)});dt.append(rr)}
-    const ir=el('div','cad-ir'),nt=enTL(c);
-    const b1=el('button','cad-bt','Línea de tiempo: '+nt+' hecho'+(nt===1?'':'s')+' con «'+c.busca[0]+'» →');b1.onclick=()=>irTL(c.busca[0]);ir.append(b1);
-    const ev=deCal(c);const b2=el('button','cad-bt','Calendario: '+ev.length+' fecha'+(ev.length===1?'':'s')+' próxima'+(ev.length===1?'':'s')+' →');b2.onclick=()=>saltar('calendario');ir.append(b2);
-    if(c.ficha){const b3=el('button','cad-bt','Ficha del activo ('+c.token+') →');b3.onclick=()=>saltar('activos');ir.append(b3)}
-    dt.append(ir);
-    if(ev.length){const u=el('ul','cad-lst');ev.slice(0,5).forEach(e=>u.append(el('li',null,(e.ini===e.fin?e.ini:e.ini+' → '+e.fin)+' · '+e.titulo)));dt.append(u)}
-    const lst=(tt,a)=>{if(!(a||[]).length)return;dt.append(el('h3',null,tt));const u=el('ul','cad-lst');a.forEach(x=>u.append(el('li',null,x)));dt.append(u)};
-    lst('Sesgos de las fuentes',c.sesgos);lst('Sin dato todavía',c.sin_dato);
+    const TB=[['res','Resumen'],['uso','Uso y seguridad'],['apo','Qué aporta'],['capas','Capas e ISO 20022'],['hechos','Hechos por capacidad'],['hitos','Hitos y noticias'],['enl','Enlaces y sesgos']];
+    const PN={};TB.forEach(([k])=>PN[k]=el('div','cad-pn'));
+    // Resumen
+    PN.res.append(ocBloque(c));
+    {const pc=el('p','nota-v');pc.append(el('b',null,'Captura de valor del token: '+(ca.nivel||'—')+'. '),document.createTextNode((ca.mecanismo||'')+((ca.supuestos||[]).length?' Supuestos: '+ca.supuestos.join('; ')+'.':'')));PN.res.append(pc)}
+    PN.uso.append(usoSeg(c));PN.apo.append(apFicha(c));
+    // Capas e ISO 20022
+    {const g=el('div','cad-2c'),a=el('div'),b=el('div');a.append(el('h3',null,'Capas: quién la usa y si necesita el token'));
+      const cw=el('div','cad-env');cw.append(tabla([{t:'Capa',f:x=>x.n},{t:'Quién la usa',f:x=>((c.capas||{})[x.id]||{}).quien||'sin dato'},{t:'¿Token?',f:x=>{const tk=((c.capas||{})[x.id]||{}).token||'sin dato';return el('span','tk '+tkc(tk),tk)}},{t:'Evidencia',f:x=>((c.capas||{})[x.id]||{}).ev||'sin dato'}],CR));a.append(cw);
+      b.append(el('h3',null,'ISO 20022 y Swift'));if((c.iso||[]).length)c.iso.forEach(x=>b.append(hecho(x)));else b.append(el('p','nota-v','Sin dato de integración real con ISO 20022.'));
+      g.append(a,b);PN.capas.append(g)}
+    // Hechos por capacidad
+    {const hs=el('div','cad-hs');CAPS.forEach(k=>{const v=c.matriz[k.id];const d=el('div','cad-h');d.append(el('b',null,k.n+': '));if(v){d.append(badge(v.n),document.createTextNode(v.t+' '),fuente(v))}else d.append(el('span','nota-v','sin dato'));hs.append(d)});PN.hechos.append(hs)}
+    // Hitos y noticias
+    {const g=el('div','cad-2c'),a=el('div'),b=el('div');a.append(el('h3',null,'Hitos con fecha'));
+      if((c.hitos||[]).length){const u=el('ul','cad-lst');c.hitos.forEach(x=>{const li=el('li');li.append(el('b',null,x.fecha+(x.aprox?' (aprox.)':'')+' · '),document.createTextNode((x.futuro?'🗓 previsto: ':'')+x.t+' '),nivelBadge(x.n||'V'),lk(x.u,'fuente ↗'));if(x.tl)li.append(el('span','nota-v',' · en la Línea de tiempo'));if(x.cal)li.append(el('span','nota-v',' · en el Calendario'));u.append(li)});a.append(u)}
+      else a.append(el('p','nota-v','Sin hitos con fecha.'));
+      b.append(el('h3',null,'Últimas noticias y hechos de esta red'));
+      const mv=D.movimientos.filter(m=>(m.cadenas||[]).includes(c.id)&&String(m.fecha)<=HOYS).sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)));
+      if(mv.length){const u=el('ul','cad-lst cad-nov');mv.slice(0,5).forEach(m=>{const li=el('li');li.append(nivelBadge(nivM(m)),el('b',null,' '+m.fecha+' · '));if(m.origen==='noticia')li.append(el('span','cad-nt','noticia'));li.append(document.createTextNode((m.actor||'')+': '+corta(String(m.texto||''),260)+' '));if(m.url)li.append(lk(m.url,'fuente ↗'));
+          if(m.umbral){const w=el('span','cad-umb','umbral');w.title='Titular con «supera», «cae por debajo de», «toca» o similar: puede ser un movimiento de dentro del día y no el cierre. Compara el mismo día, el máximo y el mínimo y el instrumento exacto antes de darlo por cierto o por desmentido.';li.append(w)}u.append(li)});b.append(u);
+        b.append(el('p','nota-v','Etiquetado por reglas (nombres de la red, su token o su entidad en el actor, las entidades, los activos o el titular), sin IA. '+mv.length+' en total: el resto está en la Línea de tiempo.'))}
+      else b.append(el('p','nota-v','Sin hechos etiquetados con esta red en la línea de tiempo (pendiente de añadir con fuente, C278).'));
+      g.append(a,b);PN.hitos.append(g)}
+    // Enlaces y sesgos
+    {const g=el('div','cad-2c'),a=el('div'),b=el('div');
+      const rc=REL.filter(r=>(r.cadenas||[]).includes(c.id));
+      if(rc.length){a.append(el('h3',null,'Relaciones con otras redes'));const rr=el('div','cad-ir');rc.forEach(r=>{const bt=el('button','cad-bt',r.titulo+' →');bt.onclick=()=>irRel(r.id);rr.append(bt)});a.append(rr)}
+      a.append(el('h3',null,'Ir a otras secciones'));
+      const ir=el('div','cad-ir'),nt=enTL(c);
+      const b1=el('button','cad-bt','Línea de tiempo: '+nt+' hecho'+(nt===1?'':'s')+' con «'+c.busca[0]+'» →');b1.onclick=()=>irTL(c.busca[0]);ir.append(b1);
+      const ev=deCal(c);const b2=el('button','cad-bt','Calendario: '+ev.length+' fecha'+(ev.length===1?'':'s')+' próxima'+(ev.length===1?'':'s')+' →');b2.onclick=()=>saltar('calendario');ir.append(b2);
+      if(c.ficha){const b3=el('button','cad-bt','Ficha del activo ('+c.token+') →');b3.onclick=()=>saltar('activos');ir.append(b3)}
+      a.append(ir);
+      if(ev.length){const u=el('ul','cad-lst');ev.slice(0,5).forEach(e=>u.append(el('li',null,(e.ini===e.fin?e.ini:e.ini+' → '+e.fin)+' · '+e.titulo)));a.append(u)}
+      const lst=(tt,arr)=>{if(!(arr||[]).length)return;b.append(el('h3',null,tt));const u=el('ul','cad-lst');arr.forEach(x=>u.append(el('li',null,x)));b.append(u)};
+      lst('Sesgos de las fuentes',c.sesgos);lst('Sin dato todavía',c.sin_dato);
+      g.append(a,b);PN.enl.append(g)}
+    const bar=el('div','cad-tabs');bar.setAttribute('role','tablist');
+    const act=k=>{cadTab=k;TB.forEach(([q])=>{PN[q].hidden=q!==k});bar.querySelectorAll('button').forEach(x=>{const on=x.dataset.k===k;x.classList.toggle('on',on);x.setAttribute('aria-selected',on)})};
+    TB.forEach(([k,n])=>{const b=el('button','cad-tab',n);b.type='button';b.dataset.k=k;b.setAttribute('role','tab');b.addEventListener('click',()=>act(k));bar.append(b)});
+    dt.append(bar);TB.forEach(([k])=>dt.append(PN[k]));act(TB.some(x=>x[0]===cadTab)?cadTab:'res');
     return dt}
 }
 /* ---------- C300 · «Uso y seguridad» en la ficha de cada red: comisiones y volumen DEX, validadores, incidentes, gobernanza, comparativa medida, pruebas de bancos y empresa detrás. Datos: explorador/*.json (lectores por script). null se pinta «vacío»; todo el texto está visible o en desplegables que se tocan. ---------- */
