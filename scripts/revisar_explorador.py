@@ -579,6 +579,22 @@ try:
 except (OSError, ValueError) as _e:
     aviso("Cadenas niveles", f"no se pudo validar ({type(_e).__name__})")
 
+# C329: la regla de captura guardada en cadenas.json debe coincidir con lo que calcula scripts/calcular_captura.py
+try:
+    import importlib.util as _iu
+    _sp = _iu.spec_from_file_location("calcular_captura", RAIZ / "scripts" / "calcular_captura.py")
+    _cc = _iu.module_from_spec(_sp)
+    _sp.loader.exec_module(_cc)
+    _cad2, _res = _cc.calcular()
+    for _c in _cad2.get("cadenas", []):
+        _rg = (_c.get("captura") or {}).get("regla")
+        if not _rg:
+            aviso(f"cadena {_c['id']}", "falta captura.regla (ejecuta python scripts/calcular_captura.py --escribir)")
+        elif _rg.get("nivel") != _res[_c["id"]]["nivel"] or _rg.get("consumo") != _res[_c["id"]]["consumo"]:
+            aviso(f"cadena {_c['id']}", f"captura.regla desactualizada: guardado {_rg.get('nivel')}/{_rg.get('consumo')}, calculado {_res[_c['id']]['nivel']}/{_res[_c['id']]['consumo']}")
+except (OSError, ValueError, KeyError, ImportError) as _e:
+    aviso("Captura", f"no se pudo validar ({type(_e).__name__})")
+
 print("\n".join(avisos) if avisos else "Sin avisos.")
 print(f"\n{len(avisos)} aviso(s) en {len(d['capas'])} capas y {len(d['movimientos'])} movimientos.")
 if RUTA_REG.exists():
