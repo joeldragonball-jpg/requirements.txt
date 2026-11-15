@@ -1580,7 +1580,7 @@ function pMatriz(){
         const ch=el('div','ch');ch.append(el('span','ctag '+bcl(x.fuente),bcl(x.fuente)),el('b',null,pol?DIRSIM[x.dir]+(modo==='dat'?' '+String(x.valor||'').slice(0,12):''):(modo==='dat'?String(x.etapa):'')));
         if(modo==='dat'&&x.fecha)ch.append(el('small',null,x.fecha.slice(5)));
         if(rec)ch.append(el('i','punto'));td.append(ch);
-        td.style.cursor='pointer';td.onclick=()=>{ocultaTips();selCelda=[x,j,t];pMatriz()};
+        td.style.cursor='pointer';td.onclick=()=>{if(!tocando)ocultaTips();selCelda=[x,j,t];pMatriz()};
         td.onmousemove=ev=>tip(ev,x,j,t);td.onmouseleave=()=>$('tip').style.display='none';
         if(selCelda&&selCelda[0]===x)td.style.outline='2px solid #fff';
       }
@@ -1617,10 +1617,11 @@ function pMatriz(){
 let tocando=false;
 const ocultaTips=()=>{const t=$('tip');if(t)t.style.display='none';document.querySelectorAll('.reac-tip').forEach(q=>q.style.display='none')};
 document.addEventListener('pointerdown',e=>{tocando=e.pointerType!=='mouse';ocultaTips()},true);
-['scroll','blur','pagehide'].forEach(k=>window.addEventListener(k,ocultaTips,true));
+['blur','pagehide'].forEach(k=>window.addEventListener(k,ocultaTips,true));
+let tipT=0;window.addEventListener('scroll',()=>{if(Date.now()-tipT>800)ocultaTips()},true);
 document.addEventListener('visibilitychange',ocultaTips);
 function tip(ev,x,j,t){
-  if(tocando)return;
+  tipT=Date.now();
   const e=$('tip');e.textContent='';e.append(el('b',null,j.nombre+' · '+t.nombre));
   for(const [k,v] of [[x.etapa==null&&x.dir?'Dirección':'Etapa',x.etapa==null?(x.dir?(R.escala_politica||{})[x.dir]+(x.valor?' · '+x.valor:''):'sin dato'):x.etapa+' · '+R.escala[x.etapa]],['Hecho',(x.estado||'').length>240?x.estado.slice(0,240)+'…':x.estado],['Fecha',(x.fecha||'—')+' · nivel '+x.fuente]]){
     const d=el('div');d.append(el('b',null,k+': '),document.createTextNode(v));e.append(d)}
@@ -2097,11 +2098,15 @@ function pCadenas(){
     const TIPOS=[['deuda','Deuda y letras'],['fondos','Fondos y estrategias'],['acciones','Acciones'],['materias','Materias primas'],['credito','Crédito privado'],['inmuebles','Inmuebles'],['otros','Otros']];
     const fm=v=>v<0.1?'<0,1 M$':v>=1000?num(v/1000,2).replace(/,00$/,'')+' mil M$':num(v,v<10?1:0)+' M$';
     const bx=el('div','caja');bx.append(el('h2',null,'¿Qué se tokeniza en cada red?'));
-    bx.append(el('p','nota-v','Valor tokenizado por tipo de activo (M$ = millones de dólares), sin stablecoins. Fuente: RWA.xyz [S], leída el 14-nov-2026. La barra es el peso del tipo dentro de la propia red. «sin dato» = no entra en las 10 mayores clases visibles; no significa cero. Debajo de la tabla van los emisores, el estándar de contrato y el plazo de liquidación (donde la fuente lo da; «sin dato» si no se leyó) y, para las redes sin cifra comparable, lo que sí consta en texto. Solo hechos: no hay «ganador». Pulsa una cifra (o el nombre de la red) para ir al detalle de esa red y ese tipo.'));
-    const irTk=(rid,k)=>{const d=$('cad-tk-'+rid);if(!d)return;d.open=true;const t=k&&$('cad-tk-'+rid+'-'+k),dest=t||d;dest.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});const fl=t||d.querySelector('summary');fl.classList.remove('flash');void fl.offsetWidth;fl.classList.add('flash');setTimeout(()=>fl.classList.remove('flash'),2000)};
+    bx.append(el('p','nota-v','Valor tokenizado por tipo de activo (M$ = millones de dólares), sin stablecoins. Fuente: RWA.xyz [S], leída el 14-nov-2026. La barra es el peso del tipo dentro de la propia red. «sin dato» = no entra en las 10 mayores clases visibles; no significa cero. Debajo de la tabla van los emisores, el estándar de contrato y el plazo de liquidación (donde la fuente lo da; «sin dato» si no se leyó) y, para las redes sin cifra comparable, lo que sí consta en texto. Solo hechos: no hay «ganador». Pasa el ratón o toca una cifra para ver el tipo de activo y los productos principales; el detalle completo está más abajo, en desplegables cerrados.'));
+    const tipTk=(ev,c,k,x)=>{tipT=Date.now();const e=$('tip');e.textContent='';const nT=(TIPOS.find(t=>t[0]===k)||[k,k])[1];e.append(el('b',null,tit(c)+' · '+nT));
+      const d1=el('div');d1.append(el('b',null,'Valor: '),document.createTextNode(fm(x.v)+' en '+x.k+' activos'));e.append(d1);
+      const dt=(x.detalle||[]).slice(0,5);if(dt.length){e.append(el('div',null,'Mayores productos:'));dt.forEach(r=>e.append(el('div',null,'· '+(r.producto||'vacío')+(r.emisor?' ('+r.emisor+')':'')+(r.importe_musd!=null?' — '+fm(r.importe_musd):''))))}
+      e.append(el('div',null,'Fuente: '+(x.f||'RWA.xyz')+' · '+(x.d||'sin fecha')+' · nivel '+(x.n||'S')));
+      const zm=zoomAct();e.style.display='block';e.style.left=Math.max(4,Math.min((ev.clientX+14)/zm,innerWidth/zm-400))+'px';e.style.top=Math.max(4,Math.min((ev.clientY+14)/zm,innerHeight/zm-260))+'px'};
     const tb=el('table','cad-mat cad-ta');const h=el('tr');h.append(el('th','cad-red','Red'));TIPOS.forEach(([k,n])=>h.append(el('th',null,n)));tb.append(h);
-    TA.forEach(c=>{const ta=c.tipos_activo,tp=ta.tipos||{};const tot=Object.values(tp).reduce((a,x)=>a+(x.v||0),0)||1;const r=el('tr');{const th=el('th','cad-red');const b=el('button',null,tit(c));b.type='button';b.addEventListener('click',()=>irTk(c.id));th.append(b);r.append(th)}
-      TIPOS.forEach(([k])=>{const x=tp[k];const td=el('td','cad-c '+(x?'nS':'nd'));if(x){td.title=x.t+'\n— '+x.f+' · '+x.d+' ['+x.n+']';const b=el('div','cad-bar');b.style.width=Math.max(4,Math.round(x.v/tot*100))+'%';td.append(el('div','cad-v',fm(x.v)),b,el('div','cad-k',x.k+' act.'));if((x.detalle||[]).length){td.classList.add('cad-go');td.tabIndex=0;td.setAttribute('role','button');td.setAttribute('aria-label',tit(c)+', '+k+': ver el detalle');const go=()=>irTk(c.id,k);td.addEventListener('click',go);td.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();go()}})}}else td.textContent='sin dato';r.append(td)});
+    TA.forEach(c=>{const ta=c.tipos_activo,tp=ta.tipos||{};const tot=Object.values(tp).reduce((a,x)=>a+(x.v||0),0)||1;const r=el('tr');r.append(el('th','cad-red',tit(c)))
+      TIPOS.forEach(([k])=>{const x=tp[k];const td=el('td','cad-c '+(x?'nS':'nd'));if(x){td.title=x.t+'\n— '+x.f+' · '+x.d+' ['+x.n+']';const b=el('div','cad-bar');b.style.width=Math.max(4,Math.round(x.v/tot*100))+'%';td.append(el('div','cad-v',fm(x.v)),b,el('div','cad-k',x.k+' act.'));td.style.cursor='pointer';td.onmousemove=ev=>tipTk(ev,c,k,x);td.onmouseleave=()=>$('tip').style.display='none';td.onclick=ev=>tipTk(ev,c,k,x)}else td.textContent='sin dato';r.append(td)});
       tb.append(r)});
     const ev=el('div','cad-env');ev.append(tb);bx.append(ev);
     // C311 · detalle por red y tipo (producto, emisor, subtipo, importe, nivel, fecha)
@@ -2115,7 +2120,7 @@ function pCadenas(){
         r.append(el('span','p',x.producto||'vacío'),el('span','e',x.emisor||'vacío'),el('span','s',x.subtipo||'vacío'),el('span','i',x.importe_musd==null?'vacío':fm(x.importe_musd)),m,nv,el('span','f',x.d||'sin fecha'));g.append(r)});return g};
     let prim=true;
     TA.forEach(c=>{const ta=c.tipos_activo,tp=ta.tipos||{};const ks=TIPOS.filter(([k])=>tp[k]&&tp[k].detalle&&tp[k].detalle.length);const ap=ta.aparte||[];if(!ks.length&&!ap.length)return;
-      const dt=el('details','cad-dr cerrado-por-defecto');dt.id='cad-tk-'+c.id;dt.dataset.auto='1';if(prim){dt.open=true;prim=false}
+      const dt=el('details','cad-dr cerrado-por-defecto');dt.id='cad-tk-'+c.id;dt.dataset.auto='1'
       const totR=Object.values(tp).reduce((a,x)=>a+(x.v||0),0),nTi=Object.values(tp).filter(x=>(x.v||0)>0).length,nPr=ks.reduce((a,[k])=>a+tp[k].detalle.length,0)+ap.length;
       const sm=el('summary');sm.append(el('b',null,tit(c)),el('span','cad-drm',ks.length?fm(totR)+' en '+nTi+' tipo'+(nTi===1?'':'s'):'solo representado'),el('span','nota-v',nPr+' producto'+(nPr===1?'':'s')+' en detalle'),el('span','cad-drk',ks.length?ks.map(([k,n])=>n).join(' · '):'Representado, fuera del total'));dt.append(sm);
       ks.forEach(([k,n])=>{const tt=tp[k];const sc=el('div','cad-tsec');sc.id='cad-tk-'+c.id+'-'+k;const h4=el('h4',null,n);h4.append(el('span',null,fm(tt.v)+' en '+tt.k+' activos (primeros '+tt.detalle.length+')'));sc.append(h4,rejilla(tt.detalle));dt.append(sc)});
