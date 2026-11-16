@@ -42,6 +42,9 @@ def filas_jgb(minimo=22):
 URL_BCE = "https://data-api.ecb.europa.eu/service/data/YC/B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y?lastNObservations=3&format=jsondata"
 URL_BOE = "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom={d1}&Dateto={d2}&SeriesCodes=IUDMNZC&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N"
 URL_BCE_YC = "https://data-api.ecb.europa.eu/service/data/YC/B.U2.EUR.4F.G_N_A.SV_C_YM.SR_{p}?lastNObservations={n}&format=jsondata"
+# Bundesbank (API abierta, sin clave): curva Svensson de bonos federales cotizados, por plazo residual. Hay que pedir CSV con la cabecera Accept (con ?format= da 406).
+URL_BUNDESBANK = "https://api.statistiken.bundesbank.de/rest/data/BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.{p}.R.A.A._Z._Z.A?startPeriod={desde}"
+BUNDESBANK_PLAZOS = {"2A": "R02XX", "5A": "R05XX", "10A": "R10XX", "20A": "R20XX", "30A": "R30XX"}
 URL_BCE_IRS = "https://data-api.ecb.europa.eu/service/data/IRS/M.{c}.L.L40.CI.0000.EUR.N.Z?lastNObservations=3&format=jsondata"
 URL_BDE = "https://app.bde.es/bierest/resources/srdatosapp/listaSeries?idioma=es&series={s}&rango=3M"
 BDE_SERIES = {"D_DTES00B7": "3M", "D_DTES00U7": "1A", "D_G0B1F0ZN": "3A", "D_G0B1F0ZO": "5A", "D_G0B1F0ZP": "10A", "D_G0B1F0ZQ": "15A"}
@@ -68,8 +71,11 @@ NOMBRES_TIC = {
 }
 
 
-def descargar(url):
-    peticion = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+def descargar(url, accept=None):
+    cab = {"User-Agent": "Mozilla/5.0"}
+    if accept:
+        cab["Accept"] = accept
+    peticion = urllib.request.Request(url, headers=cab)
     with urllib.request.urlopen(peticion, timeout=40) as r:
         datos = r.read()
     if datos[:2] == b"\x1f\x8b":            # el Banco de España responde comprimido aunque no se le pida
@@ -1215,6 +1221,24 @@ def leer_bonos():
                 ", ".join("%s %s" % (k, sub["plazos"][k]["fecha"]) for k in ("3A", "5A", "30A")), sub["fuente"])
         anade("FRA", m["nombre"], m["nivel"], fuente, plazos, {"10A": serie[-2][1]}, serie[-1][0], serie, m["url"])
 
+    def alemania():    # D02: Bundesbank, curva Svensson (estimada, no un bono concreto); días sin dato vienen como "."
+        desde = (datetime.now(timezone.utc) - timedelta(days=45)).strftime("%Y-%m-%d")
+        v1, v0, hist, fecha = {}, {}, [], None
+        for k, cod in BUNDESBANK_PLAZOS.items():
+            filas = []
+            for linea in descargar(URL_BUNDESBANK.format(p=cod, desde=desde), "text/csv").splitlines():
+                c = linea.split(";")
+                if len(c) > 17 and c[16][:2] == "20":
+                    try:
+                        filas.append((c[16], float(c[17])))
+                    except ValueError:
+                        pass
+            filas.sort()
+            v1[k], v0[k] = filas[-1][1], filas[-2][1]
+            if k == "10A":
+                fecha, hist = filas[-1][0], [[f, v] for f, v in filas[-22:]]
+        anade("DEU", "Alemania", "P", "Bundesbank, curva de rendimientos (método Svensson) de bonos federales cotizados, plazo residual; es una curva estimada, no el rendimiento de un bono concreto", v1, v0, fecha, hist, "https://www.bundesbank.de/en/statistics/money-and-capital-markets/interest-rates-and-yields/term-structure-of-interest-rates")
+
     def china():       # ChinaBond no tiene API abierta: la curva se lee en el navegador y se pega en bonos-manual.json
         m = json.loads(BONOS_MANUAL.read_text(encoding="utf-8"))["china"]
         anade("CHN", m["nombre"], m["nivel"], m["fuente"], m["plazos"], {}, m["fecha"], [], m["url"])
@@ -1223,7 +1247,7 @@ def leer_bonos():
         m = json.loads(BONOS_MANUAL.read_text(encoding="utf-8"))["italia_30a"]
         anade("ITA", "Italia", "P", "MEF (Tesoro). 30A = " + m["fuente"], {"30A": m["rendimiento"]}, {}, m["fecha"], [], m["url"])
 
-    for nombre, f in (("EE. UU.", eeuu), ("Japón", japon), ("Zona euro", zona_euro), ("España", espana), ("Reino Unido", reino_unido), ("Francia", francia), ("China", china), ("Italia", italia)):
+    for nombre, f in (("EE. UU.", eeuu), ("Japón", japon), ("Zona euro", zona_euro), ("España", espana), ("Reino Unido", reino_unido), ("Francia", francia), ("Alemania", alemania), ("China", china), ("Italia", italia)):
         probar(nombre, f)
     mensual = {}
     for c, n in (("DE", "Alemania"), ("ES", "España"), ("FR", "Francia"), ("IT", "Italia")):

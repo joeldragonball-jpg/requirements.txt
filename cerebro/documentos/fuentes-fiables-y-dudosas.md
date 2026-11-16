@@ -189,3 +189,4 @@ actualizado: 2026-10-07
 - Un despacho que se anuncia en un vídeo (CL Cripto/Écija) es fuente interesada: su «recargo del 20 %» está mal (el BOE dice 15 % + intereses).
 - Decrypt, Cointelegraph y Crypto.news dan el plan demócrata como informe de fuentes de la industria (Terrett), sin texto de ley: nivel [S].
 - yt-dlp con el cliente «android» da subtítulos automáticos (es-orig) cuando el cliente web pide PO token.
+- API del Bundesbank (api.statistiken.bundesbank.de): pedir CSV con la cabecera Accept: text/csv; con ?format=csvdata devuelve 406. Curva Svensson de bonos federales [P], estimada, no un bono concreto (W02, 16-nov).
