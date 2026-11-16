@@ -1,9 +1,9 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-16 07:09 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-16 08:05 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** W01 Tipos de interés · Gemini Noticias XRP / XLM de las últimas 24 h
+**Hoy (máx. 3):** Gemini Noticias XRP / XLM de las últimas 24 h
 **Periódicas (próxima):** W01 11-16 · W02 11-17 · W03 11-18 · W05 11-19 · W06 11-20 · W09 11-20 · W10 11-21 · W08 11-25 · W04 11-26 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (55):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: T15 BRICS, W03E (Irán/Egipto/Etiopía), D08/D09, Ge · C42 falta: Japón, Corea, Emiratos, UK y EE. UU. (lending); te · C58 falta: Italia y NL ya leídos [P]; faltan: midterms certif · C59 falta: Faltan salario mínimo IT/CN/JP/IN (IT e IN: n/a),  · C61 falta: Vivienda vacía en CN/JP/IN/GB/RU; LPI y paro total · …
@@ -11,7 +11,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 
 ## Hoy (lun 2026-11-16): solo lo casi obligatorio
 - R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 9 días
-- Fija de hoy (lunes: semana de bancos centrales): **W01 Tipos de interés** (~2 %) · último 2026-11-10 · `research/prompts/W01-*.md`
+- Fija de hoy (lunes: semana de bancos centrales): **W01 Tipos de interés** (~2 %) · último 2026-11-16 · `research/prompts/W01-*.md`
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
 - Gemini del día: toca **Noticias XRP / XLM de las últimas 24 h** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
@@ -21,14 +21,13 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 - Aviso de límite (2026-10-31): Joel propone probar 2 Deep Research al dia (lleva ~7 % semanal con Pro alto). Se prueba unos dias; si Gemini avisa de limite, vuelta a 1. Anotar en sesiones cada lanzamiento y si hubo aviso.
 
 ## Rutinas W: lo que falta este periodo (sin día fijo; se hacen cuando haya hueco, de más atrasada a menos)
-- W01 · Tipos de interés · ~2 % · cada lunes · último 2026-11-10 · `research/prompts/W01-*.md`
 - W02 · Deuda y subastas · ~2 % · cada martes · último 2026-11-10 · `research/prompts/W02-*.md`
 - W05 · Verificación por lotes · ~3 % · cada jueves · último 2026-11-10 · `research/prompts/W05-*.md`
 - W06 · Voces y predicciones · ~3 % · cada viernes · último 2026-11-13 · `research/prompts/W06-*.md`
 - W09 · Resumen semanal · ~1,5 % · cada viernes · último 2026-11-13 · `research/prompts/W09-*.md`
 - W03 · Países (huecos del radar) · ~4 % · cada miércoles · último 2026-11-14 · `research/prompts/W03-*.md`
 - W10 · Energía y geopolítica · ~2 % · fin de semana · último 2026-11-14 · `research/prompts/W10-*.md`
-Hechas en este periodo: W04, W07, W08
+Hechas en este periodo: W01, W04, W07, W08
 
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**
@@ -161,9 +160,9 @@ Hechas en este periodo: W04, W07, W08
 - Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
-- 2026-11-06 · Empleo EE. UU. (informe de octubre) (alto) → ◐ rutina ejecutada (W01 del 2026-11-10); dato sin marcar como leído
+- 2026-11-06 · Empleo EE. UU. (informe de octubre) (alto) → ◐ rutina ejecutada (W01 del 2026-11-16); dato sin marcar como leído
 - 2026-11-06 · Brasil: bancos y entidades de pago no podrán operar con proveedores cr (medio) → ◐ rutina ejecutada (W03 del 2026-11-14); dato sin marcar como leído
-- 2026-11-10 · Inflación EE. UU. (IPC de octubre) (alto) → ◐ rutina ejecutada (W01 del 2026-11-10); dato sin marcar como leído
+- 2026-11-10 · Inflación EE. UU. (IPC de octubre) (alto) → ◐ rutina ejecutada (W01 del 2026-11-16); dato sin marcar como leído
 - 2026-11-10 · EIA: perspectivas de energía a corto plazo (STEO) (medio) → ◐ rutina ejecutada (W10 del 2026-11-14); dato sin marcar como leído
 - 2026-11-11 · SEC: plazo sobre opciones de ETFs cripto (SR-ISE-2026-42) (medio) → ✓ revisado (hecho)
 - 2026-11-11 · OPEP: informe mensual del mercado petrolero (noviembre) (medio) → ✓ revisado (hecho)
