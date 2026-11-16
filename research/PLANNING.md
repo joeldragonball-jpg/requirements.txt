@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-16 08:05 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-16 21:11 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -10,7 +10,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hechas en 7 días (13):** C205, C206, C262, C264, C265, C266, C258, C259, C252, C253, C256, C257, C255
 
 ## Hoy (lun 2026-11-16): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 9 días
+- R00 apertura ✓ · cierre ✓ · racha 9 días
 - Fija de hoy (lunes: semana de bancos centrales): **W01 Tipos de interés** (~2 %) · último 2026-11-16 · `research/prompts/W01-*.md`
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
@@ -21,13 +21,12 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 - Aviso de límite (2026-10-31): Joel propone probar 2 Deep Research al dia (lleva ~7 % semanal con Pro alto). Se prueba unos dias; si Gemini avisa de limite, vuelta a 1. Anotar en sesiones cada lanzamiento y si hubo aviso.
 
 ## Rutinas W: lo que falta este periodo (sin día fijo; se hacen cuando haya hueco, de más atrasada a menos)
-- W02 · Deuda y subastas · ~2 % · cada martes · último 2026-11-10 · `research/prompts/W02-*.md`
 - W05 · Verificación por lotes · ~3 % · cada jueves · último 2026-11-10 · `research/prompts/W05-*.md`
 - W06 · Voces y predicciones · ~3 % · cada viernes · último 2026-11-13 · `research/prompts/W06-*.md`
 - W09 · Resumen semanal · ~1,5 % · cada viernes · último 2026-11-13 · `research/prompts/W09-*.md`
 - W03 · Países (huecos del radar) · ~4 % · cada miércoles · último 2026-11-14 · `research/prompts/W03-*.md`
 - W10 · Energía y geopolítica · ~2 % · fin de semana · último 2026-11-14 · `research/prompts/W10-*.md`
-Hechas en este periodo: W01, W04, W07, W08
+Hechas en este periodo: W01, W02, W04, W07, W08
 
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**
@@ -148,7 +147,7 @@ Hechas en este periodo: W01, W04, W07, W08
 - [media] 2026-10-25 (22 d) · [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov)
 - [media] 2026-10-25 (22 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov
 - [media] 2026-10-25 (22 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
-- … y 31 más en el Seguimiento
+- … y 33 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Voces: Voces sin confirmar (27) → W06 · 13 llevan más de 14 días

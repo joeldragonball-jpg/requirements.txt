@@ -98,3 +98,19 @@ Los informes originales no se reescriben: aquí se cierra cada punto. Etiquetas:
 
 **Conteo W05G:** 7 puntos · 0 cerrados [P] · 5 parciales/corregidos (Fed, BoE, XRPL, Binance, SEC) · 2 sin cerrar (CFTC 30 días, Brent). Acumulado desde 27-oct ≈ 41 tratados. Nada sube a [P] porque no se leyó ninguna fuente primaria nueva.
 **Implicación:** no citar «voto por 4,25 %» (BoE) ni «30 días CFTC» ni relacionar el fallo de XRPL con XLS-66.
+
+## W05H · 16-nov-2026 (lote ligero tras W02)
+Etiquetas: [P] primaria leída hoy · [S] prensa · [VERIFICAR]. Los puntos del 14-nov (escala del ahorro, V0648-24, CCIP/Swift, BNY, Standard Custody, Nasdaq −3,6 %) ya estaban cerrados o matizados en `eventos/verificados.json`; no se repiten.
+
+| ID | Afirmación | Origen | Resultado | Fuente y fecha |
+|---|---|---|---|---|
+| W05H-01 | Subasta de la nota a 10 años de EE. UU. del 10-nov y bono a 30 años del 12-nov | W02 10-nov | **Confirmado [P]**: 10 a 5,020 % (cobertura 2,46, $42 mil M); 30 a 5,441 % (2,36, $25 mil M) | API TreasuryDirect, 16-nov |
+| W05H-02 | Letras de España: ¿10 o 17-nov? | W02 10-nov | **Corregido [P]**: 10-nov (emisión 13-nov). Resultado 2,665 % a 3 meses y 2,946 % a 9 meses [S]. Próxima 9-dic | Banco de España (convocatoria), 16-nov; Raisin [S] |
+| W05H-03 | Obligaciones de España 5-nov: 3,345 % a ~4 años y 9 meses, 5.892 M€ | W02 10-nov | **Parcial [S]**: la prensa coincide; sin PDF oficial leído | Finect, Alicante Plaza [S], 16-nov |
+| W05H-04 | Moody's mantuvo Francia en Aa3 negativa el 23-oct | W02 10-nov | **Parcial [S]**: varios medios coinciden (Aa3, perspectiva negativa, condicionada al presupuesto 2027); fecha exacta sin leer en moodys.com | Il Sole 24 Ore, Börsen-Zeitung [S], 16-nov |
+| W05H-05 | S&P Italia el 13-nov | W02 10-nov | **Sin cerrar**: no hay resultado localizable; última acción conocida 15-may (BBB+, positiva) [S] | búsqueda web, 16-nov [VERIFICAR] |
+| W05H-06 | DBRS España el 30-oct | W02 10-nov | **Sin cerrar**: no consta comunicado en oct-2026; último localizado, mayo-2026 [S] | búsqueda web, 16-nov [VERIFICAR] |
+| W05H-07 | Bund por la API del Bundesbank (D02) | COLA D02 | **Cerrado [P]**: la API responde con `Accept: text/csv`; curva Svensson, 10 a 3,43 % el 13-nov | api.statistiken.bundesbank.de, 16-nov |
+
+**Conteo W05H:** 7 puntos · 3 cerrados [P] (W05H-01, 02, 07) · 2 parciales [S] (03, 04) · 2 sin cerrar (05, 06). Acumulado ≈ 48 tratados desde el 27-oct.
+**Implicación:** no citar S&P Italia 13-nov ni DBRS España 30-oct como hechos; el del Tesoro de EE. UU. y la fecha de las letras de España ya se pueden dar como [P].
