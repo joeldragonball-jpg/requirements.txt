@@ -609,5 +609,492 @@
   },
   "no_dice": "Un beneficiario grande o repetido NO es una irregularidad: muchos son cabildos, ayuntamientos, universidades o entes que reparten ayudas europeas. Las personas físicas vienen enmascaradas por la BDNS y no se listan. Tampoco es todo el gasto en ayudas de España: depende de lo publicado en la ventana y de que cada entidad lo comunique.",
   "ventana": "Solo concesiones de los últimos 60 días (ventana indicada arriba); no es un año completo."
+ },
+ "ventanas_adicionales": {
+  "2026-11-10_a_11-16": {
+   "generado": "2026-11-17",
+   "fuente": {
+    "nombre": "BDNS - Base de Datos Nacional de Subvenciones (IGAE/Hacienda)",
+    "url": "https://www.infosubvenciones.es/bdnstrans/",
+    "api": "https://www.infosubvenciones.es/bdnstrans/api/",
+    "nivel": "P (API oficial leída)",
+    "ventana": {
+     "desde": "2026-11-10",
+     "hasta": "2026-11-16",
+     "criterio": "fechaConcesion"
+    }
+   },
+   "totales": {
+    "concesiones": 11488,
+    "importe": 181459877.38,
+    "concesiones_importe_negativo": 0,
+    "personas_fisicas_enmascaradas": {
+     "n": 8552,
+     "importe": 47477701.83
+    },
+    "personas_juridicas": {
+     "beneficiarios_distintos": 2600,
+     "importe": 133982175.55
+    }
+   },
+   "por_nivel": [
+    {
+     "nivel": "AUTONOMICA",
+     "n": 9479,
+     "importe": 140507888.41
+    },
+    {
+     "nivel": "ESTADO",
+     "n": 329,
+     "importe": 21475237.25
+    },
+    {
+     "nivel": "LOCAL",
+     "n": 1674,
+     "importe": 19469551.72
+    },
+    {
+     "nivel": "OTROS",
+     "n": 6,
+     "importe": 7200.0
+    }
+   ],
+   "por_organo": [
+    {
+     "organo": "AUTONOMICA | CATALUÑA | SERVICIO PÚBLICO DE EMPLEO DE CATALUÑA",
+     "n": 166,
+     "importe": 52791849.51
+    },
+    {
+     "organo": "AUTONOMICA | CASTILLA-LA MANCHA | DIRECCIÓN GENERAL DESARROLLO RURAL",
+     "n": 2316,
+     "importe": 24801000.0
+    },
+    {
+     "organo": "ESTADO | MINISTERIO DE CIENCIA, INNOVACIÓN Y UNIVERSIDADES | AGENCIA ESTATAL DE INVESTIGACIÓN",
+     "n": 50,
+     "importe": 11900000.0
+    },
+    {
+     "organo": "AUTONOMICA | COMUNIDAD DE MADRID | CONSEJERÍA DE FAMILIA, JUVENTUD Y ASUNTOS SOCIALES",
+     "n": 824,
+     "importe": 10981000.0
+    },
+    {
+     "organo": "AUTONOMICA | COMUNIDAD DE MADRID | CONSEJERÍA DE CULTURA, TURISMO Y DEPORTE",
+     "n": 99,
+     "importe": 5907000.0
+    },
+    {
+     "organo": "AUTONOMICA | COMUNIDAD DE MADRID | CONSEJERÍA ECONOMÍA, HACIENDA Y EMPLEO",
+     "n": 2093,
+     "importe": 5794803.65
+    },
+    {
+     "organo": "LOCAL | DIPUTACIÓN PROV. DE BARCELONA | DIPUTACIÓN PROVINCIAL DE BARCELONA",
+     "n": 33,
+     "importe": 3588118.12
+    },
+    {
+     "organo": "ESTADO | MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES | CONSEJO SUPERIOR DE DEPORTES",
+     "n": 160,
+     "importe": 2980032.69
+    },
+    {
+     "organo": "LOCAL | VALENCIA | AYUNTAMIENTO DE VALENCIA",
+     "n": 522,
+     "importe": 2831000.0
+    },
+    {
+     "organo": "AUTONOMICA | ILLES BALEARS | DIRECCIÓN GENERAL DE ECONOMÍA CIRCULAR, TRANSICIÓN ENERGÉTICA Y CAMBIO CLIMÁTICO",
+     "n": 912,
+     "importe": 2736592.79
+    },
+    {
+     "organo": "AUTONOMICA | COMUNIDAD FORAL DE NAVARRA | DEPARTAMENTO DE DESARROLLO RURAL Y MEDIO AMBIENTE",
+     "n": 42,
+     "importe": 2448906.17
+    },
+    {
+     "organo": "AUTONOMICA | CANARIAS | PRESIDENCIA DEL GOBIERNO",
+     "n": 32,
+     "importe": 2333000.0
+    },
+    {
+     "organo": "ESTADO | MINISTERIO DE ECONOMÍA, COMERCIO Y EMPRESA | INSTITUTO DE CRÉDITO OFICIAL",
+     "n": 3,
+     "importe": 2300000.0
+    },
+    {
+     "organo": "ESTADO | MINISTERIO DE CULTURA | INSTITUTO DE LA CINEMATOGRAFÍA Y DE LAS ARTES AUDIOVISUALES",
+     "n": 54,
+     "importe": 2200000.0
+    },
+    {
+     "organo": "AUTONOMICA | COMUNIDAD DE MADRID | CONSEJERÍA DE PRESIDENCIA, JUSTICIA Y ADMINISTRACIÓN LOCAL",
+     "n": 17,
+     "importe": 2135441.46
+    },
+    {
+     "organo": "LOCAL | CABILDO INSULAR DE LANZAROTE | CABILDO INSULAR DE LANZAROTE",
+     "n": 10,
+     "importe": 2080271.06
+    },
+    {
+     "organo": "AUTONOMICA | GALICIA | CONSELLERÍA DE EDUCACIÓN, CIENCIA, UNIVERSIDADES E FORMACIÓN PROFESIONAL",
+     "n": 1,
+     "importe": 1861687.2
+    },
+    {
+     "organo": "AUTONOMICA | CATALUÑA | DEPARTAMENT D'AGRICULTURA, RAMADERIA, PESCA I ALIMENTACIÓ",
+     "n": 45,
+     "importe": 1781583.4
+    },
+    {
+     "organo": "AUTONOMICA | CASTILLA Y LEÓN | CONSEJERÍA DE EDUCACIÓN",
+     "n": 4,
+     "importe": 1627779.0
+    },
+    {
+     "organo": "LOCAL | DIPUTACIÓN PROV. DE MÁLAGA | DIPUTACIÓN PROVINCIAL DE MÁLAGA",
+     "n": 32,
+     "importe": 1620726.8
+    },
+    {
+     "organo": "AUTONOMICA | ARAGÓN | DIRECCIÓN GENERAL DE TRANSPORTES",
+     "n": 1,
+     "importe": 1500000.0
+    },
+    {
+     "organo": "ESTADO | MINISTERIO DE INCLUSIÓN, SEGURIDAD SOCIAL Y MIGRACIONES | SECRETARÍA GENERAL DE INCLUSIÓN",
+     "n": 4,
+     "importe": 1360000.0
+    },
+    {
+     "organo": "AUTONOMICA | REGIÓN DE MURCIA | CONSEJERÍA DE EMPRESA, EMPLEO Y ECONOMÍA SOCIAL",
+     "n": 44,
+     "importe": 1217944.0
+    },
+    {
+     "organo": "AUTONOMICA | CASTILLA-LA MANCHA | DIRECCIÓN GENERAL FORMACIÓN PROFESIONAL EN EL ÁMBITO LABORAL",
+     "n": 566,
+     "importe": 1119751.0
+    },
+    {
+     "organo": "AUTONOMICA | ARAGÓN | DIRECCIÓN GENERAL DE VIVIENDA",
+     "n": 1,
+     "importe": 1000000.0
+    }
+   ],
+   "por_instrumento": [
+    {
+     "instrumento": "SUBVENCIÓN y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN",
+     "n": 11475,
+     "importe": 178858848.38
+    },
+    {
+     "instrumento": "PRÉSTAMO",
+     "n": 4,
+     "importe": 2396000.0
+    },
+    {
+     "instrumento": "OTROS INSTRUMENTOS DE AYUDA",
+     "n": 9,
+     "importe": 205029.0
+    }
+   ],
+   "mayores_beneficiarios": [
+    {
+     "beneficiario": "P0824500C AJUNTAMENT STA. COLOMA GRAMENET",
+     "n": 1,
+     "importe": 3964273.98
+    },
+    {
+     "beneficiario": "P0819900B AJUNTAMENT SANT BOI DE LLOBREGAT",
+     "n": 2,
+     "importe": 2754353.0
+    },
+    {
+     "beneficiario": "A59093229 FOMENT DE TERRASSA,S.A.",
+     "n": 2,
+     "importe": 2750672.04
+    },
+    {
+     "beneficiario": "G10799450 LIGA PROFESIONAL DE FUTBOL FEMENINO",
+     "n": 1,
+     "importe": 2608976.62
+    },
+    {
+     "beneficiario": "P0818600I AJUNTAMENT DE SABADELL",
+     "n": 2,
+     "importe": 2358304.54
+    },
+    {
+     "beneficiario": "A31864572 INSTITUTO NAVARRO DE TECNOLOGIAS E INFRAESTRU CTURAS AGROALIMENTARIAS SA",
+     "n": 1,
+     "importe": 2232300.0
+    },
+    {
+     "beneficiario": "Q6550005J UNIVERSIDADE DA CORUÑA",
+     "n": 2,
+     "importe": 2061654.2
+    },
+    {
+     "beneficiario": "P7590004C INS.MUN.TREBALL SALVADOR SEGUI",
+     "n": 2,
+     "importe": 2047302.65
+    },
+    {
+     "beneficiario": "P4315000B AJUNTAMENT DE TARRAGONA",
+     "n": 2,
+     "importe": 2026849.76
+    },
+    {
+     "beneficiario": "P3500025F CONSORCIO DE SEG.EMERG.SALV.PREV.EXTIN.",
+     "n": 2,
+     "importe": 1829000.0
+    },
+    {
+     "beneficiario": "P5025400B AYUNTAMIENTO DE TARAZONA",
+     "n": 1,
+     "importe": 1500000.0
+    },
+    {
+     "beneficiario": "P4315700G AJUNTAMENT DE TORTOSA",
+     "n": 2,
+     "importe": 1287223.79
+    },
+    {
+     "beneficiario": "P1708500B AJUNTAMENT DE GIRONA",
+     "n": 2,
+     "importe": 1265818.7
+    },
+    {
+     "beneficiario": "P0801500J AJUNTAMENT DE BADALONA",
+     "n": 2,
+     "importe": 1251982.79
+    },
+    {
+     "beneficiario": "B47683438 MACROLIBROS SL",
+     "n": 2,
+     "importe": 1200000.0
+    },
+    {
+     "beneficiario": "P0812000H AJUNTAMENT DE MATARO",
+     "n": 2,
+     "importe": 1159005.34
+    },
+    {
+     "beneficiario": "P0830200B AJUNTAMENT DE VILADECANS",
+     "n": 2,
+     "importe": 1102028.98
+    },
+    {
+     "beneficiario": "B70328307 VIMBIO CORP SL",
+     "n": 1,
+     "importe": 1100000.0
+    },
+    {
+     "beneficiario": "P5800010J CONSELL COMARCAL VALLÈS ORIENTAL",
+     "n": 1,
+     "importe": 1094644.02
+    },
+    {
+     "beneficiario": "P4422900C AYUNTAMIENTO DE TERUEL",
+     "n": 1,
+     "importe": 1000000.0
+    },
+    {
+     "beneficiario": "G33016791 FUNDACION SAN MARTIN",
+     "n": 1,
+     "importe": 970000.0
+    },
+    {
+     "beneficiario": "Q2818002D AGENCIA ESTATAL CONSEJO SUPERIOR DE INVESTIGACIONES CIENTIFICAS (CSIC)",
+     "n": 3,
+     "importe": 965982.0
+    },
+    {
+     "beneficiario": "G78293669 UNION CIUDADES CAPITALES IBEROAMERI CANAS .",
+     "n": 1,
+     "importe": 959000.0
+    },
+    {
+     "beneficiario": "Q3500398G INSTITUCION FERIAL DE CANARIAS",
+     "n": 1,
+     "importe": 850000.0
+    },
+    {
+     "beneficiario": "P0829900J AJUNTAMENT DE VIC",
+     "n": 2,
+     "importe": 842449.76
+    }
+   ],
+   "concentracion": {
+    "top10_beneficiarios_pct_importe_juridicas": 18.4,
+    "nota": "Concentración != irregularidad: muchos son entes públicos, universidades, entidades de gestión de ayudas europeas."
+   },
+   "mayores_concesiones": [
+    {
+     "codConcesion": "SB159802905",
+     "fecha": "2026-11-10",
+     "beneficiario": "P0824500C AJUNTAMENT STA. COLOMA GRAMENET",
+     "importe": 3964273.98,
+     "organo": "AUTONOMICA | CATALUÑA | SERVICIO PÚBLICO DE EMPLEO DE CATALUÑA",
+     "convocatoria": "Resolución EMT/2761/2025, de 8 de julio, por la que se abre la convocatoria para el año 2025 para la concesión de subvenciones destinadas al Programa de apoyo a",
+     "numeroConvocatoria": "920196"
+    },
+    {
+     "codConcesion": "SB159754243",
+     "fecha": "2026-11-13",
+     "beneficiario": "G10799450 LIGA PROFESIONAL DE FUTBOL FEMENINO",
+     "importe": 2608976.62,
+     "organo": "ESTADO | MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES | CONSEJO SUPERIOR DE DEPORTES",
+     "convocatoria": "Concesión directa de subvenciones a la Liga Profesional de Fútbol Femenino para la distribución de la recaudación de las quinielas y el quinigol en virtud de la",
+     "numeroConvocatoria": "936634"
+    },
+    {
+     "codConcesion": "SB159802849",
+     "fecha": "2026-11-10",
+     "beneficiario": "P0819900B AJUNTAMENT SANT BOI DE LLOBREGAT",
+     "importe": 2397849.32,
+     "organo": "AUTONOMICA | CATALUÑA | SERVICIO PÚBLICO DE EMPLEO DE CATALUÑA",
+     "convocatoria": "Resolución EMT/2761/2025, de 8 de julio, por la que se abre la convocatoria para el año 2025 para la concesión de subvenciones destinadas al Programa de apoyo a",
+     "numeroConvocatoria": "920196"
+    },
+    {
+     "codConcesion": "SB159750319",
+     "fecha": "2026-11-10",
+     "beneficiario": "A31864572 INSTITUTO NAVARRO DE TECNOLOGIAS E INFRAESTRU CTURAS AGROALIMENTARIAS SA",
+     "importe": 2232300,
+     "organo": "AUTONOMICA | COMUNIDAD FORAL DE NAVARRA | DEPARTAMENTO DE DESARROLLO RURAL Y MEDIO AMBIENTE",
+     "convocatoria": "Concesión directa a INTIA SA, para el fomento de las producciones de calidad agroalimentaria diferenciada de Navarra, en el año 2026",
+     "numeroConvocatoria": "941749"
+    },
+    {
+     "codConcesion": "SB159802888",
+     "fecha": "2026-11-10",
+     "beneficiario": "A59093229 FOMENT DE TERRASSA,S.A.",
+     "importe": 1894121.83,
+     "organo": "AUTONOMICA | CATALUÑA | SERVICIO PÚBLICO DE EMPLEO DE CATALUÑA",
+     "convocatoria": "Resolución EMT/2761/2025, de 8 de julio, por la que se abre la convocatoria para el año 2025 para la concesión de subvenciones destinadas al Programa de apoyo a",
+     "numeroConvocatoria": "920196"
+    },
+    {
+     "codConcesion": "SB159753606",
+     "fecha": "2026-11-13",
+     "beneficiario": "Q6550005J UNIVERSIDADE DA CORUÑA",
+     "importe": 1861687.2,
+     "organo": "AUTONOMICA | GALICIA | CONSELLERÍA DE EDUCACIÓN, CIENCIA, UNIVERSIDADES E FORMACIÓN PROFESIONAL",
+     "convocatoria": "Convenio de colaboración entre la Consellería de Educación, Ciencia, Universidades y Formación Profesional y la UDC para la dotación de equipamiento  en innovac",
+     "numeroConvocatoria": "942011"
+    },
+    {
+     "codConcesion": "SB159802872",
+     "fecha": "2026-11-10",
+     "beneficiario": "P0818600I AJUNTAMENT DE SABADELL",
+     "importe": 1765761.29,
+     "organo": "AUTONOMICA | CATALUÑA | SERVICIO PÚBLICO DE EMPLEO DE CATALUÑA",
+     "convocatoria": "Resolución EMT/2761/2025, de 8 de julio, por la que se abre la convocatoria para el año 2025 para la concesión de subvenciones destinadas al Programa de apoyo a",
+     "numeroConvocatoria": "920196"
+    },
+    {
+     "codConcesion": "SB159802891",
+     "fecha": "2026-11-10",
+     "beneficiario": "P7590004C INS.MUN.TREBALL SALVADOR SEGUI",
+     "importe": 1691362.01,
+     "organo": "AUTONOMICA | CATALUÑA | SERVICIO PÚBLICO DE EMPLEO DE CATALUÑA",
+     "convocatoria": "Resolución EMT/2761/2025, de 8 de julio, por la que se abre la convocatoria para el año 2025 para la concesión de subvenciones destinadas al Programa de apoyo a",
+     "numeroConvocatoria": "920196"
+    },
+    {
+     "codConcesion": "SB159802850",
+     "fecha": "2026-11-10",
+     "beneficiario": "P4315000B AJUNTAMENT DE TARRAGONA",
+     "importe": 1610928.8,
+     "organo": "AUTONOMICA | CATALUÑA | SERVICIO PÚBLICO DE EMPLEO DE CATALUÑA",
+     "convocatoria": "Resolución EMT/2761/2025, de 8 de julio, por la que se abre la convocatoria para el año 2025 para la concesión de subvenciones destinadas al Programa de apoyo a",
+     "numeroConvocatoria": "920196"
+    },
+    {
+     "codConcesion": "SB159696322",
+     "fecha": "2026-11-10",
+     "beneficiario": "P5025400B AYUNTAMIENTO DE TARAZONA",
+     "importe": 1500000,
+     "organo": "AUTONOMICA | ARAGÓN | DIRECCIÓN GENERAL DE TRANSPORTES",
+     "convocatoria": "SUBVENCIÓN DIRECTA POR RAZONES DE INTERÉS PÚBLICO Y SOCIAL AL AYUNTAMIENTO DE TARAZONA PARA LA CONSTRUCCIÓN DE UNA ESTACIÓN DE AUTOBUSES EN LA LOCALIDAD",
+     "numeroConvocatoria": "918095"
+    },
+    {
+     "codConcesion": "SB159722165",
+     "fecha": "2026-11-10",
+     "beneficiario": "P3500025F CONSORCIO DE SEG.EMERG.SALV.PREV.EXTIN.",
+     "importe": 1479000,
+     "organo": "LOCAL | CABILDO INSULAR DE LANZAROTE | CABILDO INSULAR DE LANZAROTE",
+     "convocatoria": "Decreto nº 2026-8511 de 10/11/2026 del Cabildo de Lanzarote y La Graciosa de concesión subv. al Consorcio de Seg. y Emergencias para la ejecución de proyectos v",
+     "numeroConvocatoria": "941500"
+    },
+    {
+     "codConcesion": "SB159802880",
+     "fecha": "2026-11-10",
+     "beneficiario": "P4315700G AJUNTAMENT DE TORTOSA",
+     "importe": 1138984.19,
+     "organo": "AUTONOMICA | CATALUÑA | SERVICIO PÚBLICO DE EMPLEO DE CATALUÑA",
+     "convocatoria": "Resolución EMT/2761/2025, de 8 de julio, por la que se abre la convocatoria para el año 2025 para la concesión de subvenciones destinadas al Programa de apoyo a",
+     "numeroConvocatoria": "920196"
+    },
+    {
+     "codConcesion": "PR159753692",
+     "fecha": "2026-11-12",
+     "beneficiario": "B70328307 VIMBIO CORP SL",
+     "importe": 1100000,
+     "organo": "ESTADO | MINISTERIO DE ECONOMÍA, COMERCIO Y EMPRESA | INSTITUTO DE CRÉDITO OFICIAL",
+     "convocatoria": "LÍNEA DE FINANCIACIÓN “ICO CRECIMIENTO” - MINIMIS GENERAL",
+     "numeroConvocatoria": "883316"
+    },
+    {
+     "codConcesion": "SB159802783",
+     "fecha": "2026-11-12",
+     "beneficiario": "P5800010J CONSELL COMARCAL VALLÈS ORIENTAL",
+     "importe": 1094644.02,
+     "organo": "AUTONOMICA | CATALUÑA | SERVICIO PÚBLICO DE EMPLEO DE CATALUÑA",
+     "convocatoria": "Resolución EMT/ /2026, de de, por la que se abre la convocatoria de subvenciones para el año 2026 en relación con las actuaciones del programa Trabajo y Formaci",
+     "numeroConvocatoria": "916539"
+    },
+    {
+     "codConcesion": "SB159730932",
+     "fecha": "2026-11-11",
+     "beneficiario": "P4422900C AYUNTAMIENTO DE TERUEL",
+     "importe": 1000000,
+     "organo": "AUTONOMICA | ARAGÓN | DIRECCIÓN GENERAL DE VIVIENDA",
+     "convocatoria": "ORDEN FOM, CONCESION SUBVENCIÓN DIRECTA AL AYUNTAMIENTO DE TERUEL PARA EL PROYECTO “H.6. MEJORA DE ACCESIBILIDAD DEL ENTORNO EN CONSERVATORIO Y CENTRO SOCIOCULT",
+     "numeroConvocatoria": "874811"
+    }
+   ]
+  }
+ },
+ "c241_segunda_2026-11-17": {
+  "fuente": "API BDNS leída 17-nov-2026 (P). Sin volcado masivo oficial: /bdnstrans/GE/es/descargas solo enlaza utilidades de terceros (BDNS-Fetch, Subsidia Oneris); la vía oficial es la API REST.",
+  "recuento_semanal_concesiones_por_fecha_concesion": {
+   "2026-09-11": 499533,
+   "2026-09-18": 595256,
+   "2026-09-25": 373819,
+   "2026-10-02": 24230,
+   "2026-10-09": 79790,
+   "2026-10-16": 47590,
+   "2026-10-23": 82521,
+   "2026-10-30": 9954,
+   "2026-11-06": 19094,
+   "2026-11-13": 3497
+  },
+  "ventana_2026-09-11_a_11-09_recontada": {
+   "antes_10nov": 1643342,
+   "ahora_17nov": 1723685,
+   "diferencia": 80343
+  },
+  "minimis_registros_total": 4400855,
+  "planes_estrategicos_registros_total": 2093,
+  "lectura": "Las concesiones se publican con retraso: la misma ventana creció un 4,9 % en una semana. Las últimas semanas están infracontadas. Casi todo el volumen de septiembre es masivo (≈1,47 M de 1,72 M); el importe, no el nº, es la cifra útil [VERIFICAR el programa que lo origina].",
+  "nota": "ventanas_adicionales contiene la semana 10-16 nov (11.488 concesiones, 181,5 M€, provisional por retraso)."
  }
 }

@@ -17,31 +17,208 @@
   "tipo_dato": "NSA (sin desestacionalizar): variación anual del índice original; el bloque «impuestos_constantes» mantiene los tipos impositivos fijos",
   "tabla_ine": "76135 (grupos ECOICOP v.2), 76134 (general), 76133 (impuestos constantes)",
   "general": [
-   {"nombre": "IPC general, variación anual", "valor": 4.9, "unidad": "%", "periodo": "oct-2026", "anterior": {"periodo": "sep-2026", "valor": 4.9}, "serie_ine": "IPC290750", "nivel": "P"},
-   {"nombre": "IPC general, variación mensual", "valor": 0.6, "unidad": "%", "periodo": "oct-2026", "anterior": {"periodo": "sep-2026", "valor": 0.3}, "serie_ine": "IPC290752", "nivel": "P"},
-   {"nombre": "IPC general, variación acumulada en el año", "valor": 4.3, "unidad": "%", "periodo": "oct-2026", "serie_ine": "IPC290753", "nivel": "P"}
+   {
+    "nombre": "IPC general, variación anual",
+    "valor": 4.9,
+    "unidad": "%",
+    "periodo": "oct-2026",
+    "anterior": {
+     "periodo": "sep-2026",
+     "valor": 4.9
+    },
+    "serie_ine": "IPC290750",
+    "nivel": "P"
+   },
+   {
+    "nombre": "IPC general, variación mensual",
+    "valor": 0.6,
+    "unidad": "%",
+    "periodo": "oct-2026",
+    "anterior": {
+     "periodo": "sep-2026",
+     "valor": 0.3
+    },
+    "serie_ine": "IPC290752",
+    "nivel": "P"
+   },
+   {
+    "nombre": "IPC general, variación acumulada en el año",
+    "valor": 4.3,
+    "unidad": "%",
+    "periodo": "oct-2026",
+    "serie_ine": "IPC290753",
+    "nivel": "P"
+   }
   ],
   "impuestos_constantes": [
-   {"nombre": "IPC general a impuestos constantes, variación anual", "valor": 5.6, "unidad": "%", "periodo": "oct-2026", "anterior": {"periodo": "sep-2026", "valor": 5.4}, "serie_ine": "IPC292578", "nivel": "P", "nota": "Quita el efecto de cambios de impuestos: la diferencia con el 4,9 % publicado es 0,7 pp."},
-   {"nombre": "Subyacente (sin alimentos no elaborados ni energía), a impuestos constantes", "valor": 3.1, "unidad": "%", "periodo": "oct-2026", "anterior": {"periodo": "sep-2026", "valor": 3.1}, "serie_ine": "IPC293490", "nivel": "P", "nota": "No se halló la subyacente a impuestos corrientes en las tablas leídas: [VERIFICAR] en la nota del INE del 13-nov."},
-   {"nombre": "Productos energéticos, variación anual (impuestos constantes)", "valor": 29.0, "unidad": "%", "periodo": "oct-2026", "anterior": {"periodo": "sep-2026", "valor": 27.1}, "serie_ine": "IPC293438", "nivel": "P"},
-   {"nombre": "Servicios, variación anual (impuestos constantes)", "valor": 4.1, "unidad": "%", "periodo": "oct-2026", "anterior": {"periodo": "sep-2026", "valor": 3.9}, "serie_ine": "IPC293474", "nivel": "P"},
-   {"nombre": "Bienes industriales sin productos energéticos, variación anual (impuestos constantes)", "valor": 2.1, "unidad": "%", "periodo": "oct-2026", "anterior": {"periodo": "sep-2026", "valor": 2.0}, "serie_ine": "IPC293518", "nivel": "P"}
+   {
+    "nombre": "IPC general a impuestos constantes, variación anual",
+    "valor": 5.6,
+    "unidad": "%",
+    "periodo": "oct-2026",
+    "anterior": {
+     "periodo": "sep-2026",
+     "valor": 5.4
+    },
+    "serie_ine": "IPC292578",
+    "nivel": "P",
+    "nota": "Quita el efecto de cambios de impuestos: la diferencia con el 4,9 % publicado es 0,7 pp."
+   },
+   {
+    "nombre": "Subyacente (sin alimentos no elaborados ni energía), a impuestos constantes",
+    "valor": 3.1,
+    "unidad": "%",
+    "periodo": "oct-2026",
+    "anterior": {
+     "periodo": "sep-2026",
+     "valor": 3.1
+    },
+    "serie_ine": "IPC293490",
+    "nivel": "P",
+    "nota": "No se halló la subyacente a impuestos corrientes en las tablas leídas: [VERIFICAR] en la nota del INE del 13-nov."
+   },
+   {
+    "nombre": "Productos energéticos, variación anual (impuestos constantes)",
+    "valor": 29.0,
+    "unidad": "%",
+    "periodo": "oct-2026",
+    "anterior": {
+     "periodo": "sep-2026",
+     "valor": 27.1
+    },
+    "serie_ine": "IPC293438",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Servicios, variación anual (impuestos constantes)",
+    "valor": 4.1,
+    "unidad": "%",
+    "periodo": "oct-2026",
+    "anterior": {
+     "periodo": "sep-2026",
+     "valor": 3.9
+    },
+    "serie_ine": "IPC293474",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Bienes industriales sin productos energéticos, variación anual (impuestos constantes)",
+    "valor": 2.1,
+    "unidad": "%",
+    "periodo": "oct-2026",
+    "anterior": {
+     "periodo": "sep-2026",
+     "valor": 2.0
+    },
+    "serie_ine": "IPC293518",
+    "nivel": "P"
+   }
   ],
   "grupos": [
-   {"nombre": "Alimentos y bebidas no alcohólicas", "valor": 2.4, "unidad": "%", "anterior_sep": 2.7, "serie_ine": "IPC290754", "nivel": "P"},
-   {"nombre": "Bebidas alcohólicas y tabaco", "valor": 2.8, "unidad": "%", "anterior_sep": 2.8, "serie_ine": "IPC290778", "nivel": "P"},
-   {"nombre": "Vestido y calzado", "valor": 1.8, "unidad": "%", "anterior_sep": 2.1, "serie_ine": "IPC290758", "nivel": "P"},
-   {"nombre": "Vivienda, agua, electricidad, gas y otros combustibles", "valor": 7.6, "unidad": "%", "anterior_sep": 7.2, "serie_ine": "IPC290762", "nivel": "P"},
-   {"nombre": "Muebles y artículos del hogar", "valor": 1.5, "unidad": "%", "anterior_sep": 1.5, "serie_ine": "IPC290766", "nivel": "P"},
-   {"nombre": "Sanidad", "valor": 2.0, "unidad": "%", "anterior_sep": 2.0, "serie_ine": "IPC290770", "nivel": "P"},
-   {"nombre": "Transporte", "valor": 10.3, "unidad": "%", "anterior_sep": 10.5, "serie_ine": "IPC290774", "nivel": "P"},
-   {"nombre": "Información y comunicaciones", "valor": 4.2, "unidad": "%", "anterior_sep": 3.2, "serie_ine": "IPC290782", "nivel": "P"},
-   {"nombre": "Actividades recreativas, deporte y cultura", "valor": 4.1, "unidad": "%", "anterior_sep": 3.6, "serie_ine": "IPC290786", "nivel": "P"},
-   {"nombre": "Enseñanza", "valor": 2.3, "unidad": "%", "anterior_sep": 2.0, "serie_ine": "IPC290790", "nivel": "P"},
-   {"nombre": "Restaurantes y servicios de alojamiento", "valor": 4.8, "unidad": "%", "anterior_sep": 4.9, "serie_ine": "IPC290794", "nivel": "P"},
-   {"nombre": "Seguros y servicios financieros", "valor": 3.5, "unidad": "%", "anterior_sep": 3.4, "serie_ine": "IPC290798", "nivel": "P"},
-   {"nombre": "Cuidado personal, protección social y bienes y servicios diversos", "valor": 3.1, "unidad": "%", "anterior_sep": 3.1, "serie_ine": "IPC290802", "nivel": "P"}
+   {
+    "nombre": "Alimentos y bebidas no alcohólicas",
+    "valor": 2.4,
+    "unidad": "%",
+    "anterior_sep": 2.7,
+    "serie_ine": "IPC290754",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Bebidas alcohólicas y tabaco",
+    "valor": 2.8,
+    "unidad": "%",
+    "anterior_sep": 2.8,
+    "serie_ine": "IPC290778",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Vestido y calzado",
+    "valor": 1.8,
+    "unidad": "%",
+    "anterior_sep": 2.1,
+    "serie_ine": "IPC290758",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Vivienda, agua, electricidad, gas y otros combustibles",
+    "valor": 7.6,
+    "unidad": "%",
+    "anterior_sep": 7.2,
+    "serie_ine": "IPC290762",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Muebles y artículos del hogar",
+    "valor": 1.5,
+    "unidad": "%",
+    "anterior_sep": 1.5,
+    "serie_ine": "IPC290766",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Sanidad",
+    "valor": 2.0,
+    "unidad": "%",
+    "anterior_sep": 2.0,
+    "serie_ine": "IPC290770",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Transporte",
+    "valor": 10.3,
+    "unidad": "%",
+    "anterior_sep": 10.5,
+    "serie_ine": "IPC290774",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Información y comunicaciones",
+    "valor": 4.2,
+    "unidad": "%",
+    "anterior_sep": 3.2,
+    "serie_ine": "IPC290782",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Actividades recreativas, deporte y cultura",
+    "valor": 4.1,
+    "unidad": "%",
+    "anterior_sep": 3.6,
+    "serie_ine": "IPC290786",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Enseñanza",
+    "valor": 2.3,
+    "unidad": "%",
+    "anterior_sep": 2.0,
+    "serie_ine": "IPC290790",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Restaurantes y servicios de alojamiento",
+    "valor": 4.8,
+    "unidad": "%",
+    "anterior_sep": 4.9,
+    "serie_ine": "IPC290794",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Seguros y servicios financieros",
+    "valor": 3.5,
+    "unidad": "%",
+    "anterior_sep": 3.4,
+    "serie_ine": "IPC290798",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Cuidado personal, protección social y bienes y servicios diversos",
+    "valor": 3.1,
+    "unidad": "%",
+    "anterior_sep": 3.1,
+    "serie_ine": "IPC290802",
+    "nivel": "P"
+   }
   ]
  },
  "epa": {
@@ -50,31 +227,174 @@
   "tipo_dato": "NSA (EPA original, sin desestacionalizar; la comparación con el trimestre anterior mezcla estacionalidad)",
   "tabla_ine": "14506 (tasas), 65109 (ocupados), 65218 (parados)",
   "nacional": [
-   {"nombre": "Tasa de paro, total", "valor": 10.18, "unidad": "%", "anterior": {"periodo": "2T-2026", "valor": 9.87}, "hace_un_anio": {"periodo": "3T-2025", "valor": 10.45}, "serie_ine": "EPA452434", "nivel": "P"},
-   {"nombre": "Tasa de paro, menores de 25 años", "valor": 23.33, "unidad": "%", "anterior": {"periodo": "2T-2026", "valor": 23.77}, "hace_un_anio": {"periodo": "3T-2025", "valor": 25.42}, "serie_ine": "EPA452436", "nivel": "P"},
-   {"nombre": "Ocupados", "valor": 22852.6, "unidad": "miles de personas", "anterior": {"periodo": "2T-2026", "valor": 22779.0}, "serie_ine": "EPA387796", "nivel": "P"},
-   {"nombre": "Parados", "valor": 2591.2, "unidad": "miles de personas", "anterior": {"periodo": "2T-2026", "valor": 2495.3}, "serie_ine": "EPA387800", "nivel": "P"}
+   {
+    "nombre": "Tasa de paro, total",
+    "valor": 10.18,
+    "unidad": "%",
+    "anterior": {
+     "periodo": "2T-2026",
+     "valor": 9.87
+    },
+    "hace_un_anio": {
+     "periodo": "3T-2025",
+     "valor": 10.45
+    },
+    "serie_ine": "EPA452434",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Tasa de paro, menores de 25 años",
+    "valor": 23.33,
+    "unidad": "%",
+    "anterior": {
+     "periodo": "2T-2026",
+     "valor": 23.77
+    },
+    "hace_un_anio": {
+     "periodo": "3T-2025",
+     "valor": 25.42
+    },
+    "serie_ine": "EPA452436",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Ocupados",
+    "valor": 22852.6,
+    "unidad": "miles de personas",
+    "anterior": {
+     "periodo": "2T-2026",
+     "valor": 22779.0
+    },
+    "serie_ine": "EPA387796",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Parados",
+    "valor": 2591.2,
+    "unidad": "miles de personas",
+    "anterior": {
+     "periodo": "2T-2026",
+     "valor": 2495.3
+    },
+    "serie_ine": "EPA387800",
+    "nivel": "P"
+   }
   ],
   "tasa_paro_por_ccaa": [
-   {"ccaa": "Andalucía", "valor": 14.91, "unidad": "%", "serie_ine": "EPA452440"},
-   {"ccaa": "Aragón", "valor": 9.23, "unidad": "%", "serie_ine": "EPA452448"},
-   {"ccaa": "Asturias", "valor": 10.04, "unidad": "%", "serie_ine": "EPA452456"},
-   {"ccaa": "Illes Balears", "valor": 4.63, "unidad": "%", "serie_ine": "EPA452464"},
-   {"ccaa": "Canarias", "valor": 10.92, "unidad": "%", "serie_ine": "EPA452472"},
-   {"ccaa": "Cantabria", "valor": 7.56, "unidad": "%", "serie_ine": "EPA452480"},
-   {"ccaa": "Castilla y León", "valor": 7.75, "unidad": "%", "serie_ine": "EPA452488"},
-   {"ccaa": "Castilla-La Mancha", "valor": 11.36, "unidad": "%", "serie_ine": "EPA452496"},
-   {"ccaa": "Cataluña", "valor": 8.3, "unidad": "%", "serie_ine": "EPA452504"},
-   {"ccaa": "Comunitat Valenciana", "valor": 11.82, "unidad": "%", "serie_ine": "EPA452512"},
-   {"ccaa": "Extremadura", "valor": 13.01, "unidad": "%", "serie_ine": "EPA452520"},
-   {"ccaa": "Galicia", "valor": 9.17, "unidad": "%", "serie_ine": "EPA452528"},
-   {"ccaa": "Comunidad de Madrid", "valor": 8.18, "unidad": "%", "serie_ine": "EPA452536"},
-   {"ccaa": "Región de Murcia", "valor": 10.8, "unidad": "%", "serie_ine": "EPA452544"},
-   {"ccaa": "Navarra", "valor": 9.16, "unidad": "%", "serie_ine": "EPA452552"},
-   {"ccaa": "País Vasco", "valor": 7.17, "unidad": "%", "serie_ine": "EPA452560"},
-   {"ccaa": "La Rioja", "valor": 8.63, "unidad": "%", "serie_ine": "EPA452568"},
-   {"ccaa": "Ceuta", "valor": 18.5, "unidad": "%", "serie_ine": "EPA452576"},
-   {"ccaa": "Melilla", "valor": 18.87, "unidad": "%", "serie_ine": "EPA452584"}
+   {
+    "ccaa": "Andalucía",
+    "valor": 14.91,
+    "unidad": "%",
+    "serie_ine": "EPA452440"
+   },
+   {
+    "ccaa": "Aragón",
+    "valor": 9.23,
+    "unidad": "%",
+    "serie_ine": "EPA452448"
+   },
+   {
+    "ccaa": "Asturias",
+    "valor": 10.04,
+    "unidad": "%",
+    "serie_ine": "EPA452456"
+   },
+   {
+    "ccaa": "Illes Balears",
+    "valor": 4.63,
+    "unidad": "%",
+    "serie_ine": "EPA452464"
+   },
+   {
+    "ccaa": "Canarias",
+    "valor": 10.92,
+    "unidad": "%",
+    "serie_ine": "EPA452472"
+   },
+   {
+    "ccaa": "Cantabria",
+    "valor": 7.56,
+    "unidad": "%",
+    "serie_ine": "EPA452480"
+   },
+   {
+    "ccaa": "Castilla y León",
+    "valor": 7.75,
+    "unidad": "%",
+    "serie_ine": "EPA452488"
+   },
+   {
+    "ccaa": "Castilla-La Mancha",
+    "valor": 11.36,
+    "unidad": "%",
+    "serie_ine": "EPA452496"
+   },
+   {
+    "ccaa": "Cataluña",
+    "valor": 8.3,
+    "unidad": "%",
+    "serie_ine": "EPA452504"
+   },
+   {
+    "ccaa": "Comunitat Valenciana",
+    "valor": 11.82,
+    "unidad": "%",
+    "serie_ine": "EPA452512"
+   },
+   {
+    "ccaa": "Extremadura",
+    "valor": 13.01,
+    "unidad": "%",
+    "serie_ine": "EPA452520"
+   },
+   {
+    "ccaa": "Galicia",
+    "valor": 9.17,
+    "unidad": "%",
+    "serie_ine": "EPA452528"
+   },
+   {
+    "ccaa": "Comunidad de Madrid",
+    "valor": 8.18,
+    "unidad": "%",
+    "serie_ine": "EPA452536"
+   },
+   {
+    "ccaa": "Región de Murcia",
+    "valor": 10.8,
+    "unidad": "%",
+    "serie_ine": "EPA452544"
+   },
+   {
+    "ccaa": "Navarra",
+    "valor": 9.16,
+    "unidad": "%",
+    "serie_ine": "EPA452552"
+   },
+   {
+    "ccaa": "País Vasco",
+    "valor": 7.17,
+    "unidad": "%",
+    "serie_ine": "EPA452560"
+   },
+   {
+    "ccaa": "La Rioja",
+    "valor": 8.63,
+    "unidad": "%",
+    "serie_ine": "EPA452568"
+   },
+   {
+    "ccaa": "Ceuta",
+    "valor": 18.5,
+    "unidad": "%",
+    "serie_ine": "EPA452576"
+   },
+   {
+    "ccaa": "Melilla",
+    "valor": 18.87,
+    "unidad": "%",
+    "serie_ine": "EPA452584"
+   }
   ],
   "nota": "Tasas de paro de ambos sexos, total de cada CCAA, 3T-2026. La EPA (encuesta a hogares, ocupados en miles) y la afiliación (registro administrativo) miden cosas distintas: no se restan entre sí."
  },
@@ -84,28 +404,181 @@
   "fuente": "https://revista.seg-social.es/-/afiliacion-octubre-2026",
   "nivel": "P",
   "valores": [
-   {"nombre": "Afiliados medios, serie original", "valor": 22624165, "unidad": "personas", "nota": "+186.612 frente a septiembre (mayor aumento en un octubre de la serie)."},
-   {"nombre": "Variación anual de afiliados", "valor": 784573, "unidad": "personas", "nota": "Frente a oct-2025."},
-   {"nombre": "Tasa de crecimiento interanual de afiliados", "valor": 3.6, "unidad": "%"},
-   {"nombre": "Afiliados medios, desestacionalizado y sin efecto calendario", "valor": 22571105, "unidad": "personas", "nota": "+90.309 en el mes; 69 meses seguidos de aumentos (según la Seguridad Social)."}
+   {
+    "nombre": "Afiliados medios, serie original",
+    "valor": 22624165,
+    "unidad": "personas",
+    "nota": "+186.612 frente a septiembre (mayor aumento en un octubre de la serie)."
+   },
+   {
+    "nombre": "Variación anual de afiliados",
+    "valor": 784573,
+    "unidad": "personas",
+    "nota": "Frente a oct-2025."
+   },
+   {
+    "nombre": "Tasa de crecimiento interanual de afiliados",
+    "valor": 3.6,
+    "unidad": "%"
+   },
+   {
+    "nombre": "Afiliados medios, desestacionalizado y sin efecto calendario",
+    "valor": 22571105,
+    "unidad": "personas",
+    "nota": "+90.309 en el mes; 69 meses seguidos de aumentos (según la Seguridad Social)."
+   }
   ],
   "nota": "[VERIFICAR] La atribución de parte del salto a la regularización extraordinaria viene de analistas, no de esta nota oficial; no se repite aquí como hecho."
  },
  "salarios_smi": {
   "smi": [
-   {"nombre": "SMI 2026, por día", "valor": 40.7, "unidad": "€/día", "fuente": "https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-3815", "nivel": "P", "nota": "RD 126/2026, de 18-feb, art. 1."},
-   {"nombre": "SMI 2026, por mes", "valor": 1221, "unidad": "€/mes (salario fijado por meses)", "fuente": "https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-3815", "nivel": "P", "nota": "El art. 1 fija 1.221 €/mes. Que sean 14 pagas queda [VERIFICAR]: no se localizó esa expresión en el texto leído."},
-   {"nombre": "Cuantía anual mínima de referencia", "valor": 17094, "unidad": "€/año", "fuente": "https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-3815", "nivel": "P", "nota": "El texto dice que no puede considerarse una cuantía anual inferior a 17.094 €. Subida del 3,1 % (preámbulo). Con IPC al 4,9 % en oct-2026, la subida queda 1,8 pp por debajo (cálculo propio)."}
+   {
+    "nombre": "SMI 2026, por día",
+    "valor": 40.7,
+    "unidad": "€/día",
+    "fuente": "https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-3815",
+    "nivel": "P",
+    "nota": "RD 126/2026, de 18-feb, art. 1."
+   },
+   {
+    "nombre": "SMI 2026, por mes",
+    "valor": 1221,
+    "unidad": "€/mes (salario fijado por meses)",
+    "fuente": "https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-3815",
+    "nivel": "P",
+    "nota": "El art. 1 fija 1.221 €/mes. Que sean 14 pagas queda [VERIFICAR]: no se localizó esa expresión en el texto leído."
+   },
+   {
+    "nombre": "Cuantía anual mínima de referencia",
+    "valor": 17094,
+    "unidad": "€/año",
+    "fuente": "https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-3815",
+    "nivel": "P",
+    "nota": "El texto dice que no puede considerarse una cuantía anual inferior a 17.094 €. Subida del 3,1 % (preámbulo). Con IPC al 4,9 % en oct-2026, la subida queda 1,8 pp por debajo (cálculo propio)."
+   }
   ],
   "coste_laboral_etcl": [
-   {"nombre": "Coste laboral total por trabajador y mes", "valor": 3388.15, "unidad": "€/mes", "periodo": "2T-2026", "anterior": {"periodo": "1T-2026", "valor": 3278.01}, "serie_ine": "ETCL68", "nivel": "P", "nota": "Coste para la empresa (incluye cotizaciones), no sueldo del trabajador."},
-   {"nombre": "Coste salarial total por trabajador y mes", "valor": 2512.68, "unidad": "€/mes", "periodo": "2T-2026", "anterior": {"periodo": "1T-2026", "valor": 2403.8}, "serie_ine": "ETCL67", "nivel": "P", "nota": "Industria, construcción y servicios. La variación anual (+4,0 %) no se recalculó aquí: [VERIFICAR] contra la nota del INE del 17-sep."}
+   {
+    "nombre": "Coste laboral total por trabajador y mes",
+    "valor": 3388.15,
+    "unidad": "€/mes",
+    "periodo": "2T-2026",
+    "anterior": {
+     "periodo": "1T-2026",
+     "valor": 3278.01
+    },
+    "serie_ine": "ETCL68",
+    "nivel": "P",
+    "nota": "Coste para la empresa (incluye cotizaciones), no sueldo del trabajador."
+   },
+   {
+    "nombre": "Coste salarial total por trabajador y mes",
+    "valor": 2512.68,
+    "unidad": "€/mes",
+    "periodo": "2T-2026",
+    "anterior": {
+     "periodo": "1T-2026",
+     "valor": 2403.8
+    },
+    "serie_ine": "ETCL67",
+    "nivel": "P",
+    "nota": "Industria, construcción y servicios. La variación anual (+4,0 %) no se recalculó aquí: [VERIFICAR] contra la nota del INE del 17-sep."
+   }
   ],
-  "salario_medio_aeat": {"valor": null, "unidad": "€/año", "nivel": "VERIFICAR", "nota": "Salario medio de la AEAT y salario mediano de la EAES no leídos en fuente oficial."}
+  "salario_medio_aeat": {
+   "valor": 29540.26,
+   "unidad": "€/año (bruto, dato base)",
+   "nivel": "P",
+   "nota": "Es el de la EAES del INE (tabla 28191, total nacional, ambos sexos), no el de la AEAT, que sigue sin leer [VERIFICAR]. Rezago de casi 2 años. Variación 2023-24: +5,3 % (cálculo propio).",
+   "nombre": "Salario medio anual (INE, Encuesta Anual de Estructura Salarial), 2024",
+   "periodo": "2024",
+   "anterior": {
+    "periodo": "2023",
+    "valor": 28049.94
+   },
+   "serie_ine": "EAES741",
+   "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/28191?nult=2"
+  },
+  "salario_mediano_eaes": {
+   "nombre": "Salario mediano anual, 2024 (EAES, INE)",
+   "valor": 24497.17,
+   "unidad": "€/año (bruto)",
+   "periodo": "2024",
+   "anterior": {
+    "periodo": "2023",
+    "valor": 23349.0
+   },
+   "serie_ine": "EAES738",
+   "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/28191?nult=2",
+   "nivel": "P",
+   "nota": "Percentil 10: 12.018,46; cuartil inferior: 17.457,47; percentil 90: 52.515,27 €/año (EAES740/739/736). La cuantía anual de referencia del SMI (17.094 €, 2026) queda 363 € por debajo del cuartil inferior de 2024 (cálculo propio; años y jornadas distintos, comparación orientativa)."
+  }
  },
  "tipos": {
-  "euribor_12m": {"nombre": "Euríbor a 12 meses, media de octubre", "valor": 3.239, "unidad": "%", "periodo": "oct-2026", "fuente": "https://www.bde.es", "nivel": "P", "nota": "Leído en Chrome el 12-nov (BdE) según la anotación de C229; no releído hoy. Dato diario más reciente: null [VERIFICAR]."},
-  "tipo_medio_hipotecas": {"valor": null, "unidad": "%", "nivel": "VERIFICAR", "nota": "Tipo medio de las nuevas hipotecas (BdE/INE) sin leer."}
+  "euribor_12m": {
+   "nombre": "Euríbor a 12 meses, media de octubre",
+   "valor": 3.239,
+   "unidad": "%",
+   "periodo": "oct-2026",
+   "fuente": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be1901.csv",
+   "nivel": "P",
+   "nota": "Releído el 17-nov en el CSV del Banco de España (tabla BE_19, serie BE_19_1.5, origen EMMI; publicado 4-nov-2026). Media mensual. El dato diario no está en ese CSV: null [VERIFICAR].",
+   "anterior": {
+    "periodo": "sep-2026",
+    "valor": 3.247
+   }
+  },
+  "tipo_medio_hipotecas": {
+   "valor": null,
+   "unidad": "%",
+   "nivel": "VERIFICAR",
+   "nota": "Tipo medio de las nuevas hipotecas (BdE/INE) sin leer."
+  },
+  "euribor_otros_plazos_oct2026": [
+   {
+    "nombre": "Euríbor a 3 meses, media",
+    "valor": 2.635,
+    "unidad": "%",
+    "periodo": "oct-2026",
+    "anterior": {
+     "periodo": "sep-2026",
+     "valor": 2.635
+    },
+    "fuente": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be1901.csv",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Euríbor a 6 meses, media",
+    "valor": 2.975,
+    "unidad": "%",
+    "periodo": "oct-2026",
+    "anterior": {
+     "periodo": "sep-2026",
+     "valor": 2.922
+    },
+    "fuente": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be1901.csv",
+    "nivel": "P"
+   },
+   {
+    "nombre": "¤STR (tipo a un día del BCE), media",
+    "valor": 2.441,
+    "unidad": "%",
+    "periodo": "oct-2026",
+    "anterior": {
+     "periodo": "sep-2026",
+     "valor": 2.44
+    },
+    "fuente": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be1901.csv",
+    "nivel": "P",
+    "nota": "Serie BE_19_1.6."
+   }
+  ],
+  "euribor_12m_diario": {
+   "valor": null,
+   "unidad": "%",
+   "nivel": "VERIFICAR",
+   "nota": "Valor diario no leído (el CSV BE_19 es mensual; la fuente primaria es EMMI)."
+  }
  },
  "pib": {
   "periodo": "3T-2026",
@@ -113,17 +586,45 @@
   "tabla_ine": "67824 (CNTR, volumen encadenado)",
   "nivel": "P",
   "valores": [
-   {"nombre": "PIB, variación trimestral (corregido de estacionalidad y calendario)", "valor": 0.63, "unidad": "%", "anterior": {"periodo": "2T-2026", "valor": 0.66}, "serie_ine": "CNTR6653"},
-   {"nombre": "PIB, variación anual (corregido de estacionalidad y calendario)", "valor": 2.66, "unidad": "%", "anterior": {"periodo": "2T-2026", "valor": 2.59}, "serie_ine": "CNTR6654"},
-   {"nombre": "PIB, variación anual (serie original, sin corregir)", "valor": 2.62, "unidad": "%", "anterior": {"periodo": "2T-2026", "valor": 2.72}, "serie_ine": "CNTR6723"}
+   {
+    "nombre": "PIB, variación trimestral (corregido de estacionalidad y calendario)",
+    "valor": 0.63,
+    "unidad": "%",
+    "anterior": {
+     "periodo": "2T-2026",
+     "valor": 0.66
+    },
+    "serie_ine": "CNTR6653"
+   },
+   {
+    "nombre": "PIB, variación anual (corregido de estacionalidad y calendario)",
+    "valor": 2.66,
+    "unidad": "%",
+    "anterior": {
+     "periodo": "2T-2026",
+     "valor": 2.59
+    },
+    "serie_ine": "CNTR6654"
+   },
+   {
+    "nombre": "PIB, variación anual (serie original, sin corregir)",
+    "valor": 2.62,
+    "unidad": "%",
+    "anterior": {
+     "periodo": "2T-2026",
+     "valor": 2.72
+    },
+    "serie_ine": "CNTR6723"
+   }
   ],
   "nota": "Contabilidad Nacional Trimestral del INE leída en la API; las revisiones posteriores quedan [VERIFICAR]."
  },
  "pendiente": [
   "Balanza de pagos (Banco de España): sin leer.",
-  "Euríbor diario y nota del BdE: sin releer.",
-  "Salario medio AEAT/mediano EAES: sin leer.",
-  "Subyacente a impuestos corrientes (nota INE 13-nov): sin cifra.",
-  "Que scripts/indicadores.py lea estos bloques solo (patrón C201): no hecho."
+  "Euríbor diario: sin leer (mensual releído 17-nov en BdE).",
+  "Salario medio de la AEAT: sin leer (se añadió el de la EAES del INE).",
+  "Subyacente a impuestos corrientes (nota INE 13-nov): no hallada en las tablas 76133-76135.",
+  "14 pagas del SMI: sin confirmar en el texto del BOE.",
+  "Que scripts/indicadores.py lea estos bloques (patrón C201): no hecho."
  ]
 }

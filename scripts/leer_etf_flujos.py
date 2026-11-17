@@ -35,14 +35,70 @@ def flujo_valido(a, b):
     return True, None
 
 
+UA = "cartera-lector/1.0 (lectura publica de EDGAR; contacto generico)"
+CUSIP = {"09174F107": "XRP", "355233107": "XRPZ", "13723M100": "XRPC", "38965L106": "GXRP", "90137T103": "TOXR",
+         "92864M780": "XRPI", "26923N231": "XRPR", "38963R105": "GXLM", "46438F101": "IBIT", "315948109": "FBTC"}
+
+
+def _get(u):
+    import urllib.request, time
+    for i in range(3):
+        try:
+            return urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": UA}), timeout=40).read()
+        except Exception:
+            if i == 2:
+                raise
+            time.sleep(2)
+
+
+def leer_13f(ciks, periodo="2026-09-30"):
+    """Última 13F-HR del periodo por CIK; suma por CUSIP de interés. Certificados TLS verificados."""
+    import re
+    import xml.etree.ElementTree as ET
+    from datetime import date
+    d = json.loads(RUTA.read_text(encoding="utf-8"))
+    bloque = d.setdefault("13f_3T", {}).setdefault("lecturas_edgar", {})
+    for cik in ciks:
+        cik = cik.zfill(10)
+        j = json.loads(_get("https://data.sec.gov/submissions/CIK%s.json" % cik))
+        r = j["filings"]["recent"]
+        cand = [i for i, f in enumerate(r["form"]) if f.startswith("13F-HR") and r["reportDate"][i] == periodo]
+        if not cand:
+            print(cik, "sin 13F-HR del", periodo); bloque[cik] = {"nombre": j.get("name"), "estado": "no presentado/indexado a " + date.today().isoformat()}; continue
+        i = max(cand, key=lambda k: r["filingDate"][k])
+        acc = r["accessionNumber"][i]
+        base = "https://www.sec.gov/Archives/edgar/data/%d/%s/" % (int(cik), acc.replace("-", ""))
+        idx = _get(base + "index.json").decode("utf-8")
+        xmls = [x["name"] for x in json.loads(idx)["directory"]["item"] if x["name"].lower().endswith(".xml") and x["name"] != "primary_doc.xml"]
+        filas = {}
+        for nombre in xmls:
+            txt = _get(base + nombre).decode("utf-8")
+            txt = re.sub(r'\sxmlns(:\w+)?="[^"]+"', "", txt)
+            txt = re.sub(r"<(/?)\w+:", r"<\g<1>", txt)       # quita prefijos de etiqueta (ns1:infoTable)
+            txt = re.sub(r"\s\w+:(\w+=)", r" \g<1>", txt)    # y de atributo (xsi:schemaLocation)
+            for t in ET.fromstring(txt).iter("infoTable"):
+                c = (t.findtext("cusip") or "").strip()
+                if c in CUSIP:
+                    acc_n = int(t.findtext("shrsOrPrnAmt/sshPrnamt") or 0)
+                    val = int(t.findtext("value") or 0)
+                    f = filas.setdefault(CUSIP[c], {"acciones": 0, "valor_usd": 0, "filas": 0})
+                    f["acciones"] += acc_n; f["valor_usd"] += val; f["filas"] += 1
+        bloque[cik] = {"nombre": j.get("name"), "acceso": acc, "presentado": r["filingDate"][i], "url": base,
+                       "posiciones": filas, "nivel": "P (EDGAR, infotable XML; posicion a %s, no indica motivo ni fecha de compra)" % periodo,
+                       "leido": date.today().isoformat()}
+        print(cik, j.get("name"), acc, {k: v["acciones"] for k, v in filas.items()})
+    RUTA.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--ticker", required=True)
-    ap.add_argument("--fecha", required=True)
-    ap.add_argument("--acciones", type=float, required=True)
-    ap.add_argument("--nav", type=float, required=True)
+    ap.add_argument("--13f", dest="f13", nargs="+", metavar="CIK", help="lee el 13F-HR del 3T de estos CIK en EDGAR (infotable XML) y lo añade a 13f_3T.lecturas_edgar")
+    ap.add_argument("--ticker")
+    ap.add_argument("--fecha")
+    ap.add_argument("--acciones", type=float)
+    ap.add_argument("--nav", type=float)
     ap.add_argument("--tenencia", type=float)
-    ap.add_argument("--fuente", required=True)
+    ap.add_argument("--fuente")
     # C280 (15-nov): datos leidos a mano en la web del emisor con Chrome; opcionales para fondos nuevos o derivados
     ap.add_argument("--aum", type=float)
     ap.add_argument("--nota")
@@ -52,6 +108,10 @@ def main():
     ap.add_argument("--emisor")
     ap.add_argument("--web")
     a = ap.parse_args()
+    if a.f13:
+        return leer_13f(a.f13)
+    if not (a.ticker and a.fecha and a.acciones is not None and a.nav is not None and a.fuente):
+        ap.error("faltan --ticker --fecha --acciones --nav --fuente")
     d = json.loads(RUTA.read_text(encoding="utf-8"))
     etf = next((e for e in d["etfs"] if e["ticker"] == a.ticker), None)
     if etf is None:  # fondo nuevo (p. ej. BTC): se crea con los datos opcionales

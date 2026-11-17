@@ -89,6 +89,38 @@
    "nota": "El sector comercial no es solo centros de datos. Datos EIA por API exigen clave: aquí solo lectura manual de prensa [VERIFICAR] contra el STEO de octubre/noviembre."
   }
  ],
+ "actualizacion_17nov": {
+  "nota": "Añadido en sesión C117 del 17-nov-2026. Claves nuevas, sin tocar lo anterior. Fuentes leídas de forma secundaria salvo donde se indica.",
+  "revision_precios_4t26": {
+   "dato": "TrendForce News (20-oct-2026, leída entera): precio de contrato DRAM 4T26 ≈ +20 % trimestral, citando un informe vía Commercial Times; desaceleración frente a ≈+80 % en 2T y +40 % en 3T (motivos: base alta, poder de compra débil en mercados finales, topes de precio de los acuerdos a largo plazo). Sin desglose por tipo de DRAM. Contradice el +10-15 % de la nota de 30-sep (otra fuente/fecha): rango real = +10 % a +20 %.",
+   "fecha": "2026-10-20",
+   "url": "https://www.trendforce.com/news/2026/10/20/news-dram-prices-seen-rising-20-qoq-in-4q26-despite-slower-gains-ai-demand-tight-supply-support-outlook/",
+   "nivel": "S",
+   "nota": "Cifra de segunda mano (Commercial Times); [VERIFICAR] antes de citar como previsión oficial de TrendForce. Hecho: la nota 30-sep dice 10-15 %; la de 20-oct habla de ≈20 %."
+  },
+  "micron_precios_y_oferta": {
+   "dato": "Micron (resultados 4T fiscal 2026, resúmenes de aiweekly/247WallSt/The Register): precios DRAM +\"high-teens\" % secuencial en el trimestre frente a ≈+60 % en el previo; la dirección espera que las subidas se moderen en FY27; la oferta se describe como «mucho más ajustada» en 2027 y 2028; gran parte del HBM 2027 ya comprometido a precios claramente superiores. Guía 1T FY27: ingresos 61.500 M$ ±1.500 M$, margen bruto ≈86,25 %.",
+   "fecha": "2026-09-30",
+   "url": "https://aiweekly.co/alerts/micron-dram-supply-tighter-through-2028-prices-rising",
+   "nivel": "S",
+   "nota": "Micron vende lo que describe (parte interesada). Original = nota de prensa/8-K de Micron, no leído [VERIFICAR]. Coherente con la ficha de Micron ya existente."
+  },
+  "samsung_hbm_capacidad": {
+   "dato": "Cobertura citada: Samsung dice que HBM podría usar ≈30 % de la capacidad de obleas DRAM de la industria el año próximo (≈20 % ahora).",
+   "fecha": "2026-10",
+   "url": "https://www.trendforce.com/news/2026/10/29/news-samsung-says-hbm-share-matches-dram-standing-as-hbm4-sales-triple-ds-margin-hits-72-10-lta-clients-signed",
+   "nivel": "S",
+   "nota": "Dato de empresa; implica menos oblea para DRAM convencional (mecanismo de escasez) pero también más oferta HBM futura. [VERIFICAR]."
+  },
+  "iea_base_2024": {
+   "dato": "IEA «Energy and AI» (10-abr-2025): 415 TWh en 2024 → ≈945 TWh en 2030; centros optimizados para IA más de ×4; EE. UU. casi la mitad del crecimiento; los centros de datos serían ≈10 % del crecimiento de la demanda eléctrica mundial a 2030 (menos que motores industriales, aire acondicionado o vehículos eléctricos). Incertidumbre alta (ritmo de adopción de IA, macro).",
+   "fecha": "2025-04-10",
+   "url": "https://www.iea.org/news/ai-is-set-to-drive-surging-electricity-demand-from-data-centres-while-offering-the-potential-to-transform-how-the-energy-sector-works",
+   "nivel": "S",
+   "nota": "Leído vía prensa (DCD, APPA, RCR). Proyección = [ESPECULACIÓN] de escenario. Matiz de contexto: el 10 % del crecimiento relativiza el titular de «consumo disparado»."
+  },
+  "informe": "informes/research/2026-11-17-C117-dram.md"
+ },
  "ciclos": {
   "caso_alcista": "Capacidad vendida a años vista (SK hynix, Micron, HBM contratado), precios de contrato al alza en 4T26 y demanda eléctrica de centros de datos creciendo ~17 % anual.",
   "caso_bajista": "Márgenes del 70-86 % son extremos históricos en un sector cíclico: más oferta (capex récord de Micron y Samsung), digestión de pedidos de hiperescaladores o límites de red eléctrica pueden revertirlos; consumo de PC/móvil con subidas mínimas. Cifras de fuentes secundarias.",

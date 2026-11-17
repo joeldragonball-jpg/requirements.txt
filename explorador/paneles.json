@@ -1,5 +1,5 @@
 {
- "leido": "2026-11-17 08:11 UTC",
+ "leido": "2026-11-17 22:24 UTC",
  "tic": {
   "fuente": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt",
   "nivel": "P",
@@ -10686,5 +10686,26 @@
   "fallos": [],
   "umbral_aviso": 0.5,
   "leido": "2026-11-08 21:01 UTC"
+ },
+ "historia": {
+  "generado": "2026-11-17",
+  "n_paises": 23,
+  "n_series": 160,
+  "n_fallos": 26,
+  "fmi_edicion": "World Economic Outlook, octubre de 2026 (actualizado por el FMI el 8-oct-2026)",
+  "fmi_leido": "2026-11-05",
+  "fallos": [
+   "US/pobreza: ValueError: sin datos",
+   "JP/pobreza: ValueError: sin datos",
+   "BR/pobreza: ValueError: sin datos",
+   "IR/pobreza: ValueError: sin datos",
+   "AE/pobreza: ValueError: sin datos",
+   "AE/gini: TimeoutError: The read operation timed out",
+   "AE/gini: no llegó a tiempo; se conserva la serie anterior",
+   "SV/pib: TimeoutError: tiempo total agotado (se conserva el dato anterior)",
+   "SV/pobreza: TimeoutError: tiempo total agotado (se conserva el dato anterior)",
+   "SV/gini: TimeoutError: tiempo total agotado (se conserva el dato anterior)"
+  ],
+  "leido": "2026-11-17 22:24 UTC"
  }
 }

@@ -63,6 +63,7 @@ def main():
     ap.add_argument("--dias", type=int, default=365)
     ap.add_argument("--desde")
     ap.add_argument("--hasta")
+    ap.add_argument("--anexo", help="etiqueta: en vez de sustituir el JSON, anade esta ventana en 'ventanas_adicionales'")
     a = ap.parse_args()
     hoy = dt.date.today()
     hasta = dt.datetime.strptime(a.hasta, "%d/%m/%Y").date() if a.hasta else hoy - dt.timedelta(days=1)
@@ -176,6 +177,12 @@ def main():
             "Beneficiario repetido o concentración de importe NO implica irregularidad.",
         ],
     }
+    if a.anexo:  # modo aditivo: conserva todo lo previo
+        previo = json.loads(SALIDA.read_text(encoding="utf-8"))
+        extra = {k: out[k] for k in ("generado", "fuente", "totales", "por_nivel", "por_organo", "por_instrumento",
+                                     "mayores_beneficiarios", "concentracion", "mayores_concesiones")}
+        previo.setdefault("ventanas_adicionales", {})[a.anexo] = extra
+        out = previo
     SALIDA.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"OK {SALIDA} · {total[0]:,} concesiones · {total[1]/1e6:,.0f} M€", file=sys.stderr)
 

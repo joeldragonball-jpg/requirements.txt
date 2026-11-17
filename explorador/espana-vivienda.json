@@ -1,0 +1,324 @@
+{
+ "id": "espana-vivienda",
+ "titulo": "España: vivienda (precios, alquiler, hipotecas, esfuerzo) y deuda autonómica",
+ "leido": "2026-11-17",
+ "nivel": "P",
+ "unidad": "M€ = millones de euros; % = porcentaje; €/m² = euros por metro cuadrado. Cifras como número puro.",
+ "nota": "Leído el 17-nov-2026: CSV oficial BdE be1309 (deuda PDE CCAA; miles de € convertidos a M€), API INE Tempus (IPV, IPVA tabla 59056, IRAV 72975, HPT 13896/24457, EH 76197, CRE 82284) y PDF del Informe Anual 2025 del BdE (cuadros 2.5 y 2.6). Lo no leído = null/[VERIFICAR]. Es información, no recomendación.",
+ "fuentes": {
+  "bde_deuda": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be1309.csv",
+  "bde_informe_anual_2025": "https://www.bde.es/f/webbe/SES/Secciones/Publicaciones/PublicacionesAnuales/InformesAnuales/25/InfAnual_2025.pdf",
+  "ine_tempus": "https://servicios.ine.es/wstempus",
+  "registradores_eri_2t26": "https://www.registradores.org/documents/d/guest/eri_2t_2026"
+ },
+ "bloques": {
+  "deuda_ccaa": {
+   "periodo": "jun-2026",
+   "fuente": "BdE be1309",
+   "total_meur": 355241,
+   "total_jun25_meur": 342799,
+   "total_var_pct": 3.6,
+   "proxima_publicacion": "2026-12-15 (3T26)",
+   "nota": "deuda_sobre_pib2025_pct_calculado = deuda jun-26 / PIB corriente 2025 (INE CRE 82284): aproximación propia; difiere de la ratio oficial del BdE (PIB de 4 trimestres), p. ej. Cataluña 29,0 calculado vs 28,1 BdE. Para las 8 CCAA sin ratio en la nota, solo orden de magnitud [VERIFICAR].",
+   "nivel": "P",
+   "regiones": [
+    {
+     "ccaa": "Cataluña",
+     "deuda_pde_jun26_meur": 92770,
+     "deuda_pde_jun25_meur": 90700,
+     "var_interanual_pct": 2.3,
+     "pib_2025_meur": 319985,
+     "deuda_sobre_pib2025_pct_calculado": 29.0,
+     "deuda_sobre_pib_pct_bde_nota": 28.1,
+     "ipv_2t26_var_anual_pct": 10.1,
+     "ipva_alquiler_2024_var_pct": 3.1,
+     "ipva_nota": null
+    },
+    {
+     "ccaa": "Comunidad Valenciana",
+     "deuda_pde_jun26_meur": 64593,
+     "deuda_pde_jun25_meur": 60696,
+     "var_interanual_pct": 6.4,
+     "pib_2025_meur": 157055,
+     "deuda_sobre_pib2025_pct_calculado": 41.1,
+     "deuda_sobre_pib_pct_bde_nota": 40.0,
+     "ipv_2t26_var_anual_pct": 13.0,
+     "ipva_alquiler_2024_var_pct": 5.0,
+     "ipva_nota": null
+    },
+    {
+     "ccaa": "Comunidad de Madrid",
+     "deuda_pde_jun26_meur": 42296,
+     "deuda_pde_jun25_meur": 39450,
+     "var_interanual_pct": 7.2,
+     "pib_2025_meur": 337216,
+     "deuda_sobre_pib2025_pct_calculado": 12.5,
+     "deuda_sobre_pib_pct_bde_nota": 12.3,
+     "ipv_2t26_var_anual_pct": 12.9,
+     "ipva_alquiler_2024_var_pct": 3.4,
+     "ipva_nota": null
+    },
+    {
+     "ccaa": "Andalucía",
+     "deuda_pde_jun26_meur": 42070,
+     "deuda_pde_jun25_meur": 41442,
+     "var_interanual_pct": 1.5,
+     "pib_2025_meur": 227356,
+     "deuda_sobre_pib2025_pct_calculado": 18.5,
+     "deuda_sobre_pib_pct_bde_nota": null,
+     "ipv_2t26_var_anual_pct": 11.9,
+     "ipva_alquiler_2024_var_pct": 3.8,
+     "ipva_nota": null
+    },
+    {
+     "ccaa": "Castilla-La Mancha",
+     "deuda_pde_jun26_meur": 17029,
+     "deuda_pde_jun25_meur": 16751,
+     "var_interanual_pct": 1.7,
+     "pib_2025_meur": 58460,
+     "deuda_sobre_pib2025_pct_calculado": 29.1,
+     "deuda_sobre_pib_pct_bde_nota": 28.1,
+     "ipv_2t26_var_anual_pct": 11.7,
+     "ipva_alquiler_2024_var_pct": 3.6,
+     "ipva_nota": null
+    },
+    {
+     "ccaa": "Castilla y León",
+     "deuda_pde_jun26_meur": 14778,
+     "deuda_pde_jun25_meur": 14558,
+     "var_interanual_pct": 1.5,
+     "pib_2025_meur": 77757,
+     "deuda_sobre_pib2025_pct_calculado": 19.0,
+     "deuda_sobre_pib_pct_bde_nota": null,
+     "ipv_2t26_var_anual_pct": 14.8,
+     "ipva_alquiler_2024_var_pct": 3.0,
+     "ipva_nota": null
+    },
+    {
+     "ccaa": "Región de Murcia",
+     "deuda_pde_jun26_meur": 14254,
+     "deuda_pde_jun25_meur": 13317,
+     "var_interanual_pct": 7.0,
+     "pib_2025_meur": 44840,
+     "deuda_sobre_pib2025_pct_calculado": 31.8,
+     "deuda_sobre_pib_pct_bde_nota": 30.8,
+     "ipv_2t26_var_anual_pct": 14.4,
+     "ipva_alquiler_2024_var_pct": 3.4,
+     "ipva_nota": null
+    },
+    {
+     "ccaa": "Galicia",
+     "deuda_pde_jun26_meur": 13357,
+     "deuda_pde_jun25_meur": 12876,
+     "var_interanual_pct": 3.7,
+     "pib_2025_meur": 86588,
+     "deuda_sobre_pib2025_pct_calculado": 15.4,
+     "deuda_sobre_pib_pct_bde_nota": null,
+     "ipv_2t26_var_anual_pct": 12.9,
+     "ipva_alquiler_2024_var_pct": 3.4,
+     "ipva_nota": null
+    },
+    {
+     "ccaa": "País Vasco",
+     "deuda_pde_jun26_meur": 11679,
+     "deuda_pde_jun25_meur": 10736,
+     "var_interanual_pct": 8.8,
+     "pib_2025_meur": 95508,
+     "deuda_sobre_pib2025_pct_calculado": 12.2,
+     "deuda_sobre_pib_pct_bde_nota": 11.7,
+     "ipv_2t26_var_anual_pct": 10.0,
+     "ipva_alquiler_2024_var_pct": null,
+     "ipva_nota": "el INE no publica IPVA para Navarra ni País Vasco (fuente foral) [VERIFICAR]"
+    },
+    {
+     "ccaa": "Aragón",
+     "deuda_pde_jun26_meur": 9407,
+     "deuda_pde_jun25_meur": 9422,
+     "var_interanual_pct": -0.2,
+     "pib_2025_meur": 52237,
+     "deuda_sobre_pib2025_pct_calculado": 18.0,
+     "deuda_sobre_pib_pct_bde_nota": null,
+     "ipv_2t26_var_anual_pct": 14.6,
+     "ipva_alquiler_2024_var_pct": 3.2,
+     "ipva_nota": null
+    },
+    {
+     "ccaa": "Illes Balears",
+     "deuda_pde_jun26_meur": 8691,
+     "deuda_pde_jun25_meur": 8540,
+     "var_interanual_pct": 1.8,
+     "pib_2025_meur": 48334,
+     "deuda_sobre_pib2025_pct_calculado": 18.0,
+     "deuda_sobre_pib_pct_bde_nota": null,
+     "ipv_2t26_var_anual_pct": 13.7,
+     "ipva_alquiler_2024_var_pct": 4.0,
+     "ipva_nota": null
+    },
+    {
+     "ccaa": "Canarias",
+     "deuda_pde_jun26_meur": 6897,
+     "deuda_pde_jun25_meur": 6764,
+     "var_interanual_pct": 2.0,
+     "pib_2025_meur": 61656,
+     "deuda_sobre_pib2025_pct_calculado": 11.2,
+     "deuda_sobre_pib_pct_bde_nota": 10.9,
+     "ipv_2t26_var_anual_pct": 11.0,
+     "ipva_alquiler_2024_var_pct": 3.7,
+     "ipva_nota": null
+    },
+    {
+     "ccaa": "Extremadura",
+     "deuda_pde_jun26_meur": 5570,
+     "deuda_pde_jun25_meur": 5445,
+     "var_interanual_pct": 2.3,
+     "pib_2025_meur": 28193,
+     "deuda_sobre_pib2025_pct_calculado": 19.8,
+     "deuda_sobre_pib_pct_bde_nota": null,
+     "ipv_2t26_var_anual_pct": 12.8,
+     "ipva_alquiler_2024_var_pct": 3.3,
+     "ipva_nota": null
+    },
+    {
+     "ccaa": "Principado de Asturias",
+     "deuda_pde_jun26_meur": 4095,
+     "deuda_pde_jun25_meur": 4159,
+     "var_interanual_pct": -1.5,
+     "pib_2025_meur": 31247,
+     "deuda_sobre_pib2025_pct_calculado": 13.1,
+     "deuda_sobre_pib_pct_bde_nota": 12.5,
+     "ipv_2t26_var_anual_pct": 15.0,
+     "ipva_alquiler_2024_var_pct": 2.7,
+     "ipva_nota": null
+    },
+    {
+     "ccaa": "Cantabria",
+     "deuda_pde_jun26_meur": 3325,
+     "deuda_pde_jun25_meur": 3334,
+     "var_interanual_pct": -0.3,
+     "pib_2025_meur": 18615,
+     "deuda_sobre_pib2025_pct_calculado": 17.9,
+     "deuda_sobre_pib_pct_bde_nota": null,
+     "ipv_2t26_var_anual_pct": 13.5,
+     "ipva_alquiler_2024_var_pct": 3.3,
+     "ipva_nota": null
+    },
+    {
+     "ccaa": "Comunidad Foral de Navarra",
+     "deuda_pde_jun26_meur": 2446,
+     "deuda_pde_jun25_meur": 2736,
+     "var_interanual_pct": -10.6,
+     "pib_2025_meur": 27767,
+     "deuda_sobre_pib2025_pct_calculado": 8.8,
+     "deuda_sobre_pib_pct_bde_nota": 8.4,
+     "ipv_2t26_var_anual_pct": 9.5,
+     "ipva_alquiler_2024_var_pct": null,
+     "ipva_nota": "el INE no publica IPVA para Navarra ni País Vasco (fuente foral) [VERIFICAR]"
+    },
+    {
+     "ccaa": "La Rioja",
+     "deuda_pde_jun26_meur": 1986,
+     "deuda_pde_jun25_meur": 1872,
+     "var_interanual_pct": 6.1,
+     "pib_2025_meur": 11679,
+     "deuda_sobre_pib2025_pct_calculado": 17.0,
+     "deuda_sobre_pib_pct_bde_nota": null,
+     "ipv_2t26_var_anual_pct": 14.4,
+     "ipva_alquiler_2024_var_pct": 3.1,
+     "ipva_nota": null
+    }
+   ]
+  },
+  "precio_vivienda_ine_ipv": {
+   "periodo": "2T-2026",
+   "nacional_var_anual_pct": 12.2,
+   "fuente": "INE IPV (leído por scripts/leer_espana_energia_vivienda.py el 15-nov; no releído hoy)",
+   "nivel": "P",
+   "nota": "El archivo de origen mezcla 'indice_base_2015' con 'base 2025=100': contradicción; uso solo la variación anual [VERIFICAR]."
+  },
+  "precio_m2_registradores": {
+   "periodo": "2T-2026",
+   "espana_eur_m2": 2487,
+   "nueva_eur_m2": 2636,
+   "usada_eur_m2": 2448,
+   "var_interanual_12m_pct": 9.2,
+   "nivel": "S",
+   "nota": "Trasladado del informe del 12-nov (PDF Registradores leído entonces); no releído hoy. Precio declarado en escritura, no es el IPV."
+  },
+  "alquiler": {
+   "irav": {
+    "nombre": "Índice de Referencia de Arrendamientos de Vivienda, variación anual, total nacional",
+    "oct_2026_pct": 2.57,
+    "sep_2026_pct": 2.54,
+    "ago_2026_pct": 2.47,
+    "serie_ine": "IRAV1",
+    "nivel": "P",
+    "nota": "Referencia para actualizar contratos; no es el precio de contratos nuevos."
+   },
+   "ipva_2024": {
+    "nacional_pct": 3.5,
+    "ultimo_ano_publicado": 2024,
+    "nivel": "P",
+    "nota": "La tabla INE 59056 no trae 2025: IPVA 2025 no publicada en Tempus a 17-nov [VERIFICAR]."
+   }
+  },
+  "hipotecas": {
+   "n_hipotecas_total_fincas_ago26": 42991,
+   "n_total_fincas_jul26": 56595,
+   "tipo_interes_medio_viviendas_ago26_pct": 3.08,
+   "tipo_fijo_viviendas_pct": 3.16,
+   "tipo_variable_viviendas_pct": 2.95,
+   "fuente": "INE HPT tablas 13896 y 24457",
+   "nivel": "P",
+   "nota": "El número es de total fincas (no solo viviendas)."
+  },
+  "ejecuciones_hipotecarias": {
+   "anio": 2025,
+   "total_fincas": 22770,
+   "viviendas": 14983,
+   "total_fincas_2024": 20358,
+   "viviendas_2024": 12717,
+   "fuente": "INE EH 76197",
+   "nivel": "P",
+   "nota": "Inscritas en registros; incluye viviendas no habituales."
+  },
+  "esfuerzo_alquiler_bde_2024": {
+   "fuente": "BdE Informe Anual 2025, cuadros 2.5 y 2.6 (Panel de Hogares AEAT/INE/IEF)",
+   "esfuerzo_medio_renta_neta_pct": {
+    "total_espana": 26.7,
+    "jovenes_hasta_35": 27.4,
+    "extranjeros": 27.9
+   },
+   "esfuerzo_medio_grandes_ciudades_pct": {
+    "zaragoza": 24.1,
+    "malaga": 34.5,
+    "otras_cuatro_sin_asignar": [
+     31.6,
+     32.4,
+     30.2,
+     31.3
+    ],
+    "nota": "La extracción del PDF desordena columnas: Zaragoza y Málaga seguras por coherencia con cuadro 2.6; Madrid, Barcelona, València y Sevilla [VERIFICAR]."
+   },
+   "hogares_en_sobresfuerzo_mas_30pct_renta_neta_pct": {
+    "total_no_propietarios": 32.5,
+    "jovenes": 34.2,
+    "extranjeros": 34.4,
+    "madrid": 41.3,
+    "barcelona": 43.5,
+    "valencia": 39.6,
+    "sevilla": 46.8,
+    "zaragoza": 23.8,
+    "malaga": 46.7
+   },
+   "eurostat_2025_sobresfuerzo_renta_bruta_pct": {
+    "espana": 26.8,
+    "francia": 18.7,
+    "italia": 22.3,
+    "alemania": 13.2
+   },
+   "esfuerzo_por_ccaa": null,
+   "nota": "El Informe Anual 2025 no da esfuerzo por CCAA en el texto; está en un anejo interactivo no leído → null [VERIFICAR].",
+   "nivel": "P"
+  }
+ }
+}

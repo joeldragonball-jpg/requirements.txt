@@ -177,13 +177,13 @@
  ],
  "gas": [
   {
-   "nombre": "Reservas de gas y precio MIBGAS/TTF",
-   "valor": null,
-   "unidad": "% / €/MWh",
-   "anio": "nov-2026",
-   "fuente": "https://agsi.gie.eu",
-   "nivel": "VERIFICAR",
-   "nota": "AGSI+ exige clave de API; MIBGAS no leído. Sin cifra: no usar valores de memoria."
+   "nombre": "Reservas de gas en almacenamientos de España (AGSI+, GIE)",
+   "valor": 80.04,
+   "unidad": "% de la capacidad útil",
+   "anio": "16-nov-2026",
+   "fuente": "https://agsi.gie.eu/api?country=ES&from=2026-11-10&to=2026-11-16",
+   "nivel": "P",
+   "nota": "Leído el 17-nov en la API pública de AGSI+ (sin clave con curl). 28,68 TWh almacenados de 35,83 TWh de capacidad. 10-nov: 80,48 %; baja ≈0,06-0,12 pp/día. Precio MIBGAS/TTF: sin leer [VERIFICAR]."
   },
   {
    "nombre": "Importaciones de gas natural 2025",
@@ -193,6 +193,24 @@
    "fuente": "https://www.cores.es/sites/default/files/archivos/icores/i-cores-imp-export-gn-dic25.pdf",
    "nivel": "S",
    "nota": "Vía búsqueda (informe previo 10-nov); no releído en esta pasada [VERIFICAR]."
+  },
+  {
+   "nombre": "Gas almacenado, España",
+   "valor": 28.68,
+   "unidad": "TWh",
+   "anio": "16-nov-2026",
+   "fuente": "https://agsi.gie.eu/api?country=ES&from=2026-11-10&to=2026-11-16",
+   "nivel": "P",
+   "nota": "Capacidad útil 35,83 TWh (workingGasVolume 35,8318)."
+  },
+  {
+   "nombre": "Precio MIBGAS/TTF",
+   "valor": null,
+   "unidad": "€/MWh",
+   "anio": "nov-2026",
+   "fuente": "https://www.mibgas.es",
+   "nivel": "VERIFICAR",
+   "nota": "No leído; sin cifra de memoria."
   }
  ]
 }

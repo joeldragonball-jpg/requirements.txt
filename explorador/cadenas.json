@@ -1,5 +1,5 @@
 {
- "_actualizado": "2026-11-16",
+ "_actualizado": "2026-11-17",
  "version": "C264 · 2026-11-14",
  "aviso": "Hechos públicos sobre cadenas de bloques y redes de interoperabilidad: qué hace cada una, quién la usa, en qué capa y si ese uso necesita el token nativo. Cada celda lleva fuente, fecha y nivel. «Captura de valor» es [RAZONADO] con sus supuestos, no una previsión. Informativo: no es recomendación de compra ni venta y no hay «ganador»: cada red aporta cosas distintas.",
  "leyenda": "P = fuente primaria leída (si habla de sí misma, «parte interesada») · S = secundaria o agregador leído · V = [VERIFICAR] no leído o sin enlace · R = [RAZONADO], deducción a partir de las fuentes citadas · vacío = sin dato, nunca relleno.",
@@ -696,7 +696,7 @@
     },
     "seguridad": {
      "token": "no",
-     "ev": "El consenso depende de la UNL de validadores, no del XRP en staking: el token no asegura la red."
+     "ev": "El consenso depende de la UNL de validadores, no del XRP en staking: el token no asegura la red. Revisión 17-nov: «no» real según el diseño (consenso por UNL, sin staking), no falta de dato."
     },
     "mensajeria": {
      "quien": "Ripple (RMG ISO 20022)",
@@ -706,11 +706,14 @@
     "custodia": {
      "quien": "BTG/CSD BR usa permisos y KYC",
      "token": "no",
-     "ev": "Credenciales y dominios con permisos son funciones del protocolo; no capturan valor en XRP más allá de las comisiones."
+     "ev": "Credenciales y dominios con permisos son funciones del protocolo; no capturan valor en XRP más allá de las comisiones. Revisión 17-nov: «no» = el token no es necesario para esas funciones; no significa que la función no exista."
     },
     "mercado": {
      "token": "parcial",
-     "ev": "Libro de órdenes y AMM dentro del protocolo; XRP puede hacer de puente entre dos divisas [S: documentación de XRPL, no releída hoy: VERIFICAR]. Libro XRP/RLUSD el 15-nov: spread 0.1106 %, ofertas a ±1 % por ≈57 mil $ (compra) y ≈71 mil $ (venta) [P: nodos públicos; instantánea, solo libro, sin AMM]. Volumen de intercambios (DEX) en la cadena en 30 días: 174 M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato."
+     "ev": "Libro de órdenes y AMM dentro del protocolo; XRP puede hacer de puente entre dos divisas [S: documentación de XRPL, no releída hoy: VERIFICAR]. Libro XRP/RLUSD el 15-nov: spread 0.1106 %, ofertas a ±1 % por ≈57 mil $ (compra) y ≈71 mil $ (venta) [P: nodos públicos; instantánea, solo libro, sin AMM]. Volumen de intercambios (DEX) en la cadena en 30 días: 174 M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato. AMM XRP/RLUSD el 17-nov: ≈1,94 M XRP + ≈1,88 M RLUSD, comisión 0,315 % [P: amm_info]. Market makers con nombre: búsqueda negativa repetida el 17-nov (ni Wintermute ni Cumberland constan en XRPL; la prensa habla de 'arbitraje y market making' sin nombres).",
+     "u": "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info",
+     "d": "2026-11-17",
+     "n": "P"
     }
    },
    "captura": {
@@ -719,7 +722,8 @@
     "supuestos": [
      "Que el puente de pagos siga usando XRP",
      "Que se publique el volumen liquidado en XRP",
-     "Veredicto C329: la regla da «baja» (comisiones 0,03 %/año, necesidad sustituible); el «incierta» manual refleja un supuesto de futuro [ESPECULACIÓN]."
+     "Veredicto C329: la regla da «baja» (comisiones 0,03 %/año, necesidad sustituible); el «incierta» manual refleja un supuesto de futuro [ESPECULACIÓN].",
+     "Capa «Mercado» (17-nov): informativa, no entra en la regla de captura numérica: un mercado nativo (XRPL, Stellar) o en contratos (resto) puede usar el token como puente o base, pero no lo exige; sin cuota de market makers con nombre publicada, la capa no mueve el nivel [RAZONADO]."
     ],
     "regla": {
      "nivel": "baja",
@@ -1094,7 +1098,7 @@
     },
     "seguridad": {
      "token": "no",
-     "ev": "SCP no usa staking: XLM no asegura la red."
+     "ev": "SCP no usa staking: XLM no asegura la red. Revisión 17-nov: «no» real según el diseño (SCP sin staking)."
     },
     "mensajeria": {
      "token": "no",
@@ -1106,11 +1110,14 @@
     },
     "custodia": {
      "token": "no",
-     "ev": "Autorización, congelación y recuperación son funciones del protocolo, sin captura en el token."
+     "ev": "Autorización, congelación y recuperación son funciones del protocolo, sin captura en el token. Revisión 17-nov: el control (AUTH_REQUIRED, clawback) existe a nivel de emisor; «no» = no exige comprar XLM."
     },
     "mercado": {
      "token": "parcial",
-     "ev": "Libro de órdenes (SDEX) y pools de liquidez dentro del protocolo; los pagos con conversión pueden pasar por XLM, pero también por stablecoins. Libro XLM/USDC el 15-nov: spread 0.1688 %, ofertas a ±1 % por ≈9.6 mil $ (compra) y ≈129 mil $ (venta) [P: Horizon; instantánea, solo libro]. Volumen de intercambios (DEX) en la cadena en 30 días: 44 M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato."
+     "ev": "Libro de órdenes (SDEX) y pools de liquidez dentro del protocolo; los pagos con conversión pueden pasar por XLM, pero también por stablecoins. Libro XLM/USDC el 15-nov: spread 0.1688 %, ofertas a ±1 % por ≈9.6 mil $ (compra) y ≈129 mil $ (venta) [P: Horizon; instantánea, solo libro]. Volumen de intercambios (DEX) en la cadena en 30 días: 44 M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato. Pool XLM/USDC el 17-nov: ≈11,65 M XLM + ≈1,62 M USDC, comisión 0,30 % [P: Horizon]. Control de acceso: flags del emisor, no dominios [P: docs Stellar]. Market makers con nombre: búsqueda negativa 17-nov.",
+     "u": "https://developers.stellar.org/docs/tokens/control-asset-access",
+     "d": "2026-11-17",
+     "n": "P"
     }
    },
    "captura": {
@@ -1118,7 +1125,8 @@
     "mecanismo": "[RAZONADO] Comisiones y reservas en XLM muy pequeñas; pagos y emisión se hacen en stablecoins y fondos, sin staking ni quema.",
     "supuestos": [
      "Comisiones y reservas mínimas",
-     "Sin mecanismo nuevo de staking o quema"
+     "Sin mecanismo nuevo de staking o quema",
+     "Capa «Mercado» (17-nov): informativa, no entra en la regla de captura numérica: un mercado nativo (XRPL, Stellar) o en contratos (resto) puede usar el token como puente o base, pero no lo exige; sin cuota de market makers con nombre publicada, la capa no mueve el nivel [RAZONADO]."
     ],
     "regla": {
      "nivel": "baja",
@@ -1185,7 +1193,7 @@
     "Desglose por emisor de los 4.663 M$.",
     "Volumen de pagos liquidado en XLM (no en stablecoins).",
     "Conectores ISO 20022 de los anclajes.",
-    "Si Stellar es la primera o la segunda red pública del servicio de DTC (Ledger Insights dice «segunda»)."
+    "Cerrado el 17-nov-2026 (DTCC, notas oficiales de 27-may y 28-oct-2026): Stellar NO es la primera red pública del servicio de DTC. El servicio ya funciona en Canton (descrita por DTCC como pública) y en Besu (privada); Stellar se prevé para el 1.er semestre de 2027 (previsión, no hecho) y Solana para el 2.º. Hecho, no prometido: Canton."
    ],
    "tipos_activo": {
     "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las 10 mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top 10 visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
@@ -1558,7 +1566,8 @@
     "supuestos": [
      "Comisiones fijadas en USD",
      "Apertura de nodos sin stake obligatorio relevante",
-     "Las comisiones se definen en USD y se convierten a HBAR; la tabla oficial (modelo base+extras, HIP-1261) sigue con CryptoTransfer 0,0001 $ y HCS 0,0008 $ (leído 14-nov). Según la doc, el nodo cobra una parte y las comisiones de red y servicio van al Tesoro (cuenta 0.0.98) [artículo de 2022]; la doc de comisiones leída no menciona quema de HBAR. La tasa de recompensa de staking la fija el Consejo (tope variable)."
+     "Las comisiones se definen en USD y se convierten a HBAR; la tabla oficial (modelo base+extras, HIP-1261) sigue con CryptoTransfer 0,0001 $ y HCS 0,0008 $ (leído 14-nov). Según la doc, el nodo cobra una parte y las comisiones de red y servicio van al Tesoro (cuenta 0.0.98) [artículo de 2022]; la doc de comisiones leída no menciona quema de HBAR. La tasa de recompensa de staking la fija el Consejo (tope variable).",
+     "Capa «Mercado» (17-nov): informativa, no entra en la regla de captura numérica: un mercado nativo (XRPL, Stellar) o en contratos (resto) puede usar el token como puente o base, pero no lo exige; sin cuota de market makers con nombre publicada, la capa no mueve el nivel [RAZONADO]."
     ],
     "regla": {
      "nivel": "baja",
@@ -1916,7 +1925,7 @@
     },
     "mercado": {
      "token": "sin dato",
-     "ev": "Activo base: las páginas de Uniswap v4 leídas el 16-nov-2026 (PoolManager y guía de swaps, developers.uniswap.org, P parte interesada) describen pools de cualquier par de tokens y no dicen si ETH o WETH es el activo base [VERIFICAR en la documentación de v3 y en los datos de pools]. Quién pone la liquidez: sin dato. Volumen de intercambios (DEX) en la cadena en 30 días: 52.4 mil M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato."
+     "ev": "Activo base: las páginas de Uniswap v4 leídas el 16-nov-2026 (PoolManager y guía de swaps, developers.uniswap.org, P parte interesada) describen pools de cualquier par de tokens y no dicen si ETH o WETH es el activo base [VERIFICAR en la documentación de v3 y en los datos de pools]. Quién pone la liquidez: sin dato. Volumen de intercambios (DEX) en la cadena en 30 días: 52.4 mil M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato. Docs de Uniswap v3 (17-nov): los ejemplos de swaps usan pares con WETH9 (DAI/WETH9, DAI/USDC/WETH9) y periferia con pago en ETH envuelto; es un ejemplo de código, no prueba de que ETH sea el activo base del mercado [VERIFICAR con datos de pools]."
     }
    },
    "captura": {
@@ -1926,7 +1935,8 @@
      "Emisores en la red pública o en L2 que liquidan en ella",
      "Que las redes EVM privadas no absorban el flujo bancario",
      "Veredicto C329: la regla da «alta» (comisiones 2,19 %/año) y el juicio manual «media»; defendible «media-alta» por la competencia de L2 y redes privadas. Staking: beaconcha.in está tras un control de Cloudflare y no se leyó (no se salta, 16-nov-2026) [VERIFICAR]; ultrasound.money (16-nov-2026, S, lee la cadena de balizas) da ≈44 M ETH en staking sobre 122,22 M ETH de suministro (≈36 %).",
-     "Staking: 44,6 M ETH, 36,5 % del suministro (validatorqueue.com, 15-nov-2026, S) y ≈44 M ETH sobre 122,22 M (ultrasound.money, 16-nov-2026, S): coinciden en ≈36 %. Emisión de ≈1.089 mil ETH/año frente a ≈18 mil ETH/año quemados: suministro +0,88 %/año (ultrasound.money, S, calculado sobre 7 días). Sin fuente primaria leída (beaconcha.in bloqueado por Cloudflare)."
+     "Staking: 44,6 M ETH, 36,5 % del suministro (validatorqueue.com, 15-nov-2026, S) y ≈44 M ETH sobre 122,22 M (ultrasound.money, 16-nov-2026, S): coinciden en ≈36 %. Emisión de ≈1.089 mil ETH/año frente a ≈18 mil ETH/año quemados: suministro +0,88 %/año (ultrasound.money, S, calculado sobre 7 días). Sin fuente primaria leída (beaconcha.in bloqueado por Cloudflare).",
+     "Capa «Mercado» (17-nov): informativa, no entra en la regla de captura numérica: un mercado nativo (XRPL, Stellar) o en contratos (resto) puede usar el token como puente o base, pero no lo exige; sin cuota de market makers con nombre publicada, la capa no mueve el nivel [RAZONADO]."
     ],
     "regla": {
      "nivel": "alta",
@@ -2438,7 +2448,10 @@
     },
     "mercado": {
      "token": "sin dato",
-     "ev": "No leído: quién pone la liquidez y si el token es el activo base de sus mercados. Volumen de intercambios (DEX) en la cadena en 30 días: 51.2 mil M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato."
+     "ev": "Quién pone la liquidez: según Syndica (blog propio, parte interesada) los AMM propietarios (prop AMM, de market makers) movieron el 71 % del volumen DEX de Solana en feb-2026 y el 55 % en mar-2026 [S: la cifra de feb viene de Solana Floor citando a Syndica; Blockworks da 62 % para el 1T-2026; las metodologías difieren]. Si SOL es el activo base de esos mercados: sin dato. Volumen de intercambios (DEX) en la cadena en 30 días: 51.2 mil M$ [S: DefiLlama, 2026-11-15]. Market makers con nombre: sin dato.",
+     "u": "https://blog.syndica.io/deep-dive-solana-defi-march-2026/",
+     "d": "2026-11-17",
+     "n": "S"
     }
    },
    "captura": {
@@ -2448,7 +2461,8 @@
      "Uso institucional en la red pública",
      "Estabilidad tras Alpenglow",
      "Veredicto C329: «media-alta», sin decidir: comisiones 9,0 %/año, ~68-69 % del SOL en staking (secundarias), pero emisión «mínimo» y sin ancla institucional probada. [VERIFICAR] si las comisiones incluyen propinas MEV y tarifas de prioridad.",
-     "Staking (15-nov-2026): 429,3 M SOL activos de 637,6 M de suministro total = 67,3 % (explorer.solana.com, P; el porcentaje es cálculo propio; 72,6 % sobre circulante)."
+     "Staking (15-nov-2026): 429,3 M SOL activos de 637,6 M de suministro total = 67,3 % (explorer.solana.com, P; el porcentaje es cálculo propio; 72,6 % sobre circulante).",
+     "Capa «Mercado» (17-nov): informativa, no entra en la regla de captura numérica: un mercado nativo (XRPL, Stellar) o en contratos (resto) puede usar el token como puente o base, pero no lo exige; sin cuota de market makers con nombre publicada, la capa no mueve el nivel [RAZONADO]."
     ],
     "regla": {
      "nivel": "alta",
@@ -3849,7 +3863,7 @@
    "sin_dato": [
     "Rentabilidad de staking en vivo (la doc solo da el calendario de emisión).",
     "Número real de validadores activos (la doc fija un máximo de 105).",
-    "Si alguna propuesta posterior a PIP-26 (PIP-78, propuesta de foro para eliminar la emisión del 2 %) está aprobada: sin comprobar."
+    "PIP-78 comprobado el 17-nov-2026 (repositorio oficial de PIPs, estado Final, 1-feb-2026): NO elimina la emisión; recorta un 6,5 % el CHECKPOINT_REWARD del StakeManager porque se emitía ~7 % más de lo previsto en PIP-26 (303.000 frente a 283.644 POL/día; objetivo del año 6: 103,53 M POL, 1 %). Propuestas posteriores (p. ej. PIP-93, consejo de seguridad): sin relación con la emisión, sin leer más."
    ],
    "tipos_activo": {
     "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
@@ -5801,11 +5815,11 @@
    "iso": [],
    "matriz": {
     "liquidez": {
-     "t": "~177 M$ en activos tokenizados sin stablecoins y 6,5 M$ de TVL DeFi; otra página da 577 M$ (métricas distintas)",
-     "f": "CoinPaprika (resumen de buscador)",
-     "d": "2026-08",
-     "n": "V",
-     "u": "https://coinpaprika.com/ja/education/plume-network/"
+     "t": "Activos reales distribuidos 142,58 M$ y representados 25,94 M$; 257.175 titulares de RWA; 986 activos; transferencias de RWA en 30 días 29,0 M$. Stablecoins: capitalización 14,06 M$ y transferencias en 30 días 232,5 M$ (RWA.xyz, ficha de Plume, 17-nov-2026). La cifra anterior de CoinPaprika (~177 M$ y 577 M$ en otra página, ago-2026) no coincide: métricas distintas",
+     "f": "RWA.xyz, ficha de red Plume (leída en Chrome; agregador)",
+     "d": "2026-11-17",
+     "n": "S",
+     "u": "https://app.rwa.xyz/networks/plume"
     },
     "seguridad": {
      "t": "Blockchain pública compatible con EVM dedicada a activos reales; la página no describe el papel del token PLUME; PLUME sirve de gas, gobernanza y staking según la documentación",
@@ -5850,10 +5864,10 @@
      "u": "https://docs.plume.org/plume/developers/tools-and-services/bridges.md"
     },
     "regulacion": {
-     "t": "La documentación de Plume dice que admite tokens permissionless fuera de la definición de valor y también valores sujetos a ley (ofertas privadas bajo Reg. D 506(b)/(c)), y que monitoriza sanciones (OFAC) y AML con Forta, Predicate, TRM, Chainalysis y Elliptic. El registro como agente de transferencia ante la SEC (prensa, oct-2025) NO se ha leído en fuente primaria: [VERIFICAR]. Búsqueda en EDGAR por nombre «plume» (16-nov-2026) sin resultados; no es concluyente (los agentes de transferencia pueden figurar con otro nombre o solo en el listado de la SEC)",
+     "t": "La documentación de Plume dice que admite tokens permissionless fuera de la definición de valor y también valores sujetos a ley (ofertas privadas bajo Reg. D 506(b)/(c)), y que monitoriza sanciones (OFAC) y AML con Forta, Predicate, TRM, Chainalysis y Elliptic. El registro como agente de transferencia ante la SEC (prensa, oct-2025) NO se ha leído en fuente primaria: [VERIFICAR]. Búsqueda en EDGAR por nombre «plume» (16-nov-2026) sin resultados; no es concluyente (los agentes de transferencia pueden figurar con otro nombre o solo en el listado de la SEC) Segunda comprobación (17-nov-2026, EDGAR): existe «Plume Network, Inc.» (CIK 0002010369, Delaware, San Francisco) y solo tiene avisos de oferta exenta (Form D: 1-feb, 24-may y 23-dic-2024); ningún TA-1 bajo ese CIK. Sigue sin leerse el registro como agente de transferencia (puede constar bajo otra entidad o solo en el listado de la SEC): [VERIFICAR]",
      "f": "Documentación de Plume (Compliance at Plume; Primary Offering & Secondary Trading); proyecto hablando de sí mismo",
      "u": "https://docs.plume.org/plume/plume-security/compliance-at-plume.md",
-     "d": "2026-11-14",
+     "d": "2026-11-17",
      "n": "P"
     }
    },
@@ -6138,9 +6152,16 @@
       "u": "https://xrpl.org/docs/concepts/tokens/decentralized-exchange/automated-market-makers",
       "d": "2026-11-11",
       "n": "P"
+     },
+     {
+      "t": "Pool XRP/RLUSD el 17-nov (amm_info, ledger validado 108.397.590): ≈1,94 M XRP y ≈1,88 M RLUSD (≈3,8 M$ si se valora RLUSD a 1 $); comisión de negociación vigente 0,315 % (votada por los proveedores; votos de 0 % a 1 %). Un solo par; instantánea, no volumen.",
+      "f": "nodo público xrplcluster.com, método amm_info",
+      "u": "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info",
+      "d": "2026-11-17",
+      "n": "P"
      }
     ],
-    "falta": "Profundidad de los pools: no medida (la instantánea de profundidad excluye los AMM)."
+    "falta": "Profundidad del resto de pools y su volumen real: no medidos (solo el par XRP/RLUSD, el 17-nov). Un pool de ≈3,8 M$ es pequeño frente al libro del mismo par (≈57-71 mil $ a ±1 %) solo si se compara con cuidado: no son magnitudes equivalentes (stock vs. oferta a ±1 %)."
    },
    {
     "red": "XRPL",
@@ -6169,7 +6190,7 @@
       "n": "P"
      }
     ],
-    "falta": "Volumen real en dominios con permisos y quién los usa: sin dato (la activación en la red principal sí consta)."
+    "falta": "Volumen real en dominios con permisos y quién los usa: sin dato (sin fuente pública; la activación en la red principal sí consta el 18-feb-2026). No se localizó el volumen ni operadores el 17-nov."
    },
    {
     "red": "Stellar",
@@ -6203,11 +6224,25 @@
       "u": "https://stellar.org/blog/introducing-automated-market-makers-on-stellar",
       "d": "2026-11-15",
       "n": "P"
+     },
+     {
+      "t": "Pool XLM/USDC (USDC de Circle) el 17-nov en Horizon: ≈11,65 M XLM y ≈1,62 M USDC (≈3,2 M$ contando solo el lado USDC ×2), comisión fija 0,30 %. Entre los pools con XLM hay cientos de pares de tokens de cola larga con reservas mínimas.",
+      "f": "Horizon /liquidity_pools",
+      "u": "https://developers.stellar.org/docs/data/apis/horizon/api-reference/list-liquidity-pools",
+      "d": "2026-11-17",
+      "n": "P"
+     },
+     {
+      "t": "Control de acceso a nivel de EMISOR (no de mercado): flags AUTH_REQUIRED (el emisor aprueba quién puede tener el activo), AUTH_REVOCABLE y CLAWBACK_ENABLED; para entrar en un pool hay que tener trustlines autorizadas de ambos activos. No es un DEX con credenciales como el de XRPL: restringe quién tiene el activo, no con quién se cruza.",
+      "f": "developers.stellar.org, Control Asset Access y Liquidity on Stellar",
+      "u": "https://developers.stellar.org/docs/tokens/control-asset-access",
+      "d": "2026-11-17",
+      "n": "P"
      }
     ],
-    "falta": "Equivalente a un DEX con permisos o dominios: sin dato (no aparece en la página leída; no prueba que no exista). Market makers con nombre: sin dato."
+    "falta": "Un mercado con dominios o credenciales al estilo XLS-81: sin dato (lo leído son flags del emisor; no prueba que no exista otro mecanismo). Market makers con nombre: búsqueda negativa el 17-nov."
    }
   ],
-  "contraste": "La diferencia clave: XRPL ofrece libro abierto, AMM y (según su documentación) mercados con acceso por credenciales; Stellar ofrece libro y AMM con comisión fija. En las redes con contratos (Ethereum, Solana, BNB…) los intercambios están en contratos de terceros y el repo no ha leído un mercado a nivel de protocolo: sin dato."
+  "contraste": "La diferencia clave: XRPL ofrece libro abierto, AMM y (según su documentación) mercados con acceso por credenciales; Stellar ofrece libro y AMM con comisión fija, y el control de acceso lo ejerce el emisor del activo (AUTH_REQUIRED, clawback), no un mercado con dominios. Ambos AMM medidos (XRP/RLUSD y XLM/USDC) rondan los 3-4 M$ de reservas. En las redes con contratos los intercambios están en contratos de terceros: en Solana, según Syndica, los AMM propietarios movieron el 71 % (feb-2026) y el 55 % (mar-2026) del volumen DEX [S, cifras de una parte interesada que difieren de otras fuentes: Blockworks da 62 % en el 1T-2026]; en Hedera, SaucerSwap ofrece AMM v1, liquidez concentrada v2 y libro v3 (docs propias). Que un mercado esté en el protocolo o en contratos no dice cuál tiene más profundidad."
  }
 }

@@ -8,7 +8,7 @@
   "organismo": "Ministerio para la Transformación Digital y de la Función Pública / Registro Central de Personal"
  },
  "como_leerlo": "«empleados» = efectivos a enero 2026 (funcionarios de carrera + laborales + otro personal, incluidos eventuales). En Defensa e Interior se suman las Fuerzas Armadas y los cuerpos policiales que paga el capítulo 1 de su sección. El boletín NO incluye personal judicial ni fiscal. «eventuales_personas» es el nº de personal eventual (art. 11); el boletín no da el nº de altos cargos.",
- "limites": "Plantilla ≠ ejecución presupuestaria: el capítulo 1 de 2025 se divide entre efectivos de enero 2026 (desfase de un año). Coste medio = cap. 1 (obligaciones 2025) / empleados; incluye cotizaciones sociales del empleador y altos cargos. Dos secciones marcadas no comparables. C245 (10-nov-2026): intento de completar 6 órganos constitucionales sin resultado oficial; siguen null.",
+ "limites": "Plantilla ≠ ejecución presupuestaria: el capítulo 1 de 2025 se divide entre efectivos de enero 2026 (desfase de un año). Coste medio = cap. 1 (obligaciones 2025) / empleados; incluye cotizaciones sociales del empleador y altos cargos. Dos secciones marcadas no comparables. C245 (10-nov-2026): intento de completar 6 órganos constitucionales sin resultado oficial; siguen null. C245 (17-nov-2026): completados Cortes Generales (853 funcionarios+laborales, P) y puestos RPT del CGPJ (465, S); TC, Consejo de Estado, Tribunal de Cuentas y Casa Real siguen null.",
  "total_ministerios": 98224,
  "secciones": [
   {
@@ -363,10 +363,32 @@
   },
   {
    "seccion": "CORTES GENERALES",
-   "empleados": null,
-   "nota": "C245 (10-nov-2026): sin dato de personas efectivas. congreso.es publica plantillas orgánicas (puestos, no personas; p. ej. la de Intervención, 2021) y enlaza una «composición numérica de Cuerpos» que no se pudo abrir; no hay total de efectivos. Se deja null [VERIFICAR].",
-   "nivel": "S",
-   "intento_C245": "sin dato"
+   "empleados": 853,
+   "nota": "C245 (17-nov-2026): leído en la web del Congreso («Composición numérica de Cuerpos…», actualizada 17-nov-2026, vista en Chrome) y en senado.es «Personal del Senado». 853 = 671 funcionarios + 182 laborales. 1.620 ≈ además adscritos (Congreso 243 + Senado 110) y eventuales (Congreso 310 + Senado 104), suma propia con cifras de Senado de su web (262/92) [S]. Discrepancia de 2 entre ambas webs en funcionarios (260 vs 262) y laborales (94 vs 92): [VERIFICAR]. Es plantilla efectiva, no coste. Las Cortes están disueltas desde el 6-oct-2026 (elecciones 29-nov): los eventuales cesan con su titular y la cifra puede cambiar.",
+   "nivel": "P",
+   "intento_C245": "dato leído 17-nov-2026",
+   "tipo": "personas: funcionarios de las Cortes (671) + laborales de ambas Cámaras (182); excluye adscritos y eventuales",
+   "desglose": {
+    "funcionarios_total": 671,
+    "funcionarios_congreso": 393,
+    "funcionarios_senado": 260,
+    "funcionarios_servicios_comunes_y_JEC": 18,
+    "laborales_total": 182,
+    "laborales_congreso": 88,
+    "laborales_senado": 94,
+    "adscritos_AGE_congreso": 243,
+    "eventuales_congreso": 310,
+    "personal_senado_segun_web_senado": {
+     "funcionarios": 262,
+     "laborales": 92,
+     "adscritos": 110,
+     "eventuales": 104
+    }
+   },
+   "empleados_con_adscritos_y_eventuales": 1620,
+   "fuente": "https://www.congreso.es/es/cem/acceso_empleo",
+   "fuente2": "https://www.senado.es/web/composicionorganizacion/administracionparlamentaria/secretariageneralestado/personalsenado/index.html",
+   "fecha": "17-nov-2026"
   },
   {
    "seccion": "SENADO (Cortes Generales)",
@@ -385,35 +407,39 @@
   {
    "seccion": "TRIBUNAL DE CUENTAS",
    "empleados": null,
-   "nota": "C245 (10-nov-2026): sin dato. Solo hallados BOE de provisión de puestos y oferta de empleo 2025; ningún total de plantilla ni de efectivos en su portal. Se deja null [VERIFICAR].",
+   "nota": "C245 (10-nov-2026): sin dato. Solo hallados BOE de provisión de puestos y oferta de empleo 2025; ningún total de plantilla ni de efectivos en su portal. Se deja null [VERIFICAR]. Reintento 11-nov-2026: Memoria 2025 (25-mar-2026) leída entera: no publica nº de personal [P, ausencia de dato].",
    "nivel": "S",
    "intento_C245": "sin dato"
   },
   {
    "seccion": "CONSEJO GENERAL DEL PODER JUDICIAL",
    "empleados": null,
-   "nota": "C245 (10-nov-2026): sin dato. Portal de transparencia describe cuerpos y órganos técnicos pero no da total de personas; la memoria anual no se pudo leer. Se deja null [VERIFICAR].",
+   "nota": "C245 (17-nov-2026): RPT oficial del CGPJ (ene-2025, última modificación Pleno 18-jul-2024) leída con pdftotext: suma de los totales por unidad = 465 puestos, 451 con dotación presupuestaria (Apoyo Presidencia 8; Oficina Comunicación 36; Apoyo Vocales 20; Promotor Acción Disciplinaria 25; Apoyo Sec. General 29/21; Servicio Central 18; Gerencia 69/63; Relaciones Internacionales 12; Personal Judicial 36; Inspección 66; Gabinete Técnico 29; Escuela Judicial 69; CENDOJ 43; Intervención 5). Suma propia [S]; puestos ≠ personas; Escuela Judicial comparte puestos con Relaciones Internacionales (posible doble cómputo); no incluye jueces ni letrados de otros ámbitos [VERIFICAR]. Por eso 'empleados' sigue null.",
    "nivel": "S",
-   "intento_C245": "sin dato"
+   "intento_C245": "puestos RPT sumados; personas null",
+   "puestos_rpt": 465,
+   "puestos_con_dotacion_rpt": 451,
+   "fuente": "https://www.poderjudicial.es/stfls/CGPJ/TRANSPARENCIA/FICHEROS/20250313%20RPT%20OFICIAL%20ENERO%202025.pdf",
+   "fecha": "13-mar-2025"
   },
   {
    "seccion": "TRIBUNAL CONSTITUCIONAL",
    "empleados": null,
-   "nota": "C245 (10-nov-2026): sin dato. Solo consta por ley el tope de 16 letrados de plantilla (no es el total de personal) y la plantilla se fija en la Ley de PGE. Memoria no localizada. Se deja null [VERIFICAR].",
+   "nota": "C245 (10-nov-2026): sin dato. Solo consta por ley el tope de 16 letrados de plantilla (no es el total de personal) y la plantilla se fija en la Ley de PGE. Memoria no localizada. Se deja null [VERIFICAR]. Reintento 17-nov-2026: la sección «Información institucional y organizativa» del portal de transparencia (act. 1-dic-2025) solo enlaza organización/composición/normativa; sin total de personal localizado. Memorias en /es/memorias no leídas [VERIFICAR].",
    "nivel": "S",
    "intento_C245": "sin dato"
   },
   {
    "seccion": "CONSEJO DE ESTADO",
    "empleados": null,
-   "nota": "C245 (10-nov-2026): sin dato. El Reglamento Orgánico remite a plantillas orgánicas (puestos) sin total publicado localizado. Se deja null [VERIFICAR].",
+   "nota": "C245 (10-nov-2026): sin dato. El Reglamento Orgánico remite a plantillas orgánicas (puestos) sin total publicado localizado. Se deja null [VERIFICAR]. Reintento 17-nov-2026: consejo-estado.es devuelve desafío anti-bot (Cloudflare) también en Chrome; sin dato. Única cifra: 24 letrados en activo (memoria 2013, vía Público) [S][VERIFICAR].",
    "nivel": "S",
    "intento_C245": "sin dato"
   },
   {
    "seccion": "CASA DE SU MAJESTAD EL REY",
    "empleados": null,
-   "nota": "C245 (10-nov-2026): sin dato. El informe de Intervención 2024 (casareal.es) detalla gasto de personal y categorías, pero no nº de empleados; la lista de eventuales solo salió por solicitudes de transparencia. Se deja null [VERIFICAR].",
+   "nota": "C245 (10-nov-2026): sin dato. El informe de Intervención 2024 (casareal.es) detalla gasto de personal y categorías, pero no nº de empleados; la lista de eventuales solo salió por solicitudes de transparencia. Se deja null [VERIFICAR]. Dato parcial: Informe del Interventor 2024, capítulo 1 = 4.763.437 euros (crédito, no plantilla) [P].",
    "nivel": "S",
    "intento_C245": "sin dato"
   },

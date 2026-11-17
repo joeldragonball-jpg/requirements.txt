@@ -1506,6 +1506,20 @@ def leer_depeg():
     return salida
 
 
+def leer_historia():
+    """Historia de indicadores por país (C135): lanza scripts/indicadores_historia.py (Eurostat + Banco Mundial + FMI guardado) y deja
+    en paneles.json solo un resumen; las series van a explorador/indicadores-historia.json. Solo se ejecuta si se pide por nombre
+    (el workflow ya lo lanza aparte y tarda hasta 6 min): python scripts/actualizar_paneles.py historia"""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import indicadores_historia as ih
+    ih.main()
+    d = json.loads(ih.SALIDA.read_text(encoding="utf-8"))
+    fmi = json.loads(ih.FMI_MANUAL.read_text(encoding="utf-8")) if ih.FMI_MANUAL.exists() else {}
+    return {"generado": d.get("generado"), "n_paises": len(d["paises"]), "n_series": sum(len(v) for v in d["paises"].values()),
+            "n_fallos": len(d.get("fallos", [])), "fmi_edicion": fmi.get("_edicion", ""), "fmi_leido": fmi.get("_leido", ""),
+            "fallos": d.get("fallos", [])[:10]}
+
+
 FRED_CAIDO = False  # FRED no responde desde los runners de GitHub: tras el primer fallo se omite el resto
 LIMITE_S = 200  # tope total de descarga: el workflow corta a los 5 min y perdería todo
 
@@ -1523,8 +1537,8 @@ def main():
     salida = {"leido": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
     fallos = []
     limite = time.monotonic() + LIMITE_S
-    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("espana_ine", leer_espana_ine), ("espana_deuda", leer_espana_deuda), ("espana_hipotecas", leer_espana_hipotecas), ("vivienda_eurostat", leer_vivienda_eurostat), ("brasil", leer_brasil), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias), ("divisas", leer_divisas), ("energia_precios", leer_electricidad), ("alimentos", leer_alimentos), ("chips", leer_chips), ("spreads", leer_spreads), ("estres", leer_estres), ("bis_deuda", leer_bis_deuda), ("banca", leer_banca), ("depeg", leer_depeg)):
-        if SOLO and clave not in SOLO:
+    for clave, funcion in (("tic", leer_tic), ("stablecoins", leer_stablecoins), ("rwa", leer_rwa), ("mercado", leer_mercado), ("deuda", leer_deuda), ("bonos", leer_bonos), ("indices", leer_indices), ("watchlist", leer_watchlist), ("tipos_vivos", leer_tipos), ("tipos_bis", leer_tipos_bis), ("defensa", leer_defensa), ("liquidez", leer_liquidez), ("inflacion", leer_inflacion), ("espana_ine", leer_espana_ine), ("espana_deuda", leer_espana_deuda), ("espana_hipotecas", leer_espana_hipotecas), ("vivienda_eurostat", leer_vivienda_eurostat), ("brasil", leer_brasil), ("indicadores", leer_indicadores), ("ormuz", leer_ormuz), ("credito", leer_credito), ("materias", leer_materias), ("divisas", leer_divisas), ("energia_precios", leer_electricidad), ("alimentos", leer_alimentos), ("chips", leer_chips), ("spreads", leer_spreads), ("estres", leer_estres), ("bis_deuda", leer_bis_deuda), ("banca", leer_banca), ("depeg", leer_depeg), ("historia", leer_historia)):
+        if (SOLO and clave not in SOLO) or (not SOLO and clave == "historia"):
             if clave in previo:
                 salida[clave] = previo[clave]
             continue

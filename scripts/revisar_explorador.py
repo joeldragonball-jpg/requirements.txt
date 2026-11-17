@@ -489,7 +489,9 @@ for _n in ("cadenas-onchain", "mica-registro", "eeuu-fiscal", "ocde-bis", "etf-f
            # C314: interconexión entre cadenas
            "interconexion", "escenarios-redes",
            # C313: qué aporta cada red
-           "aporta-redes"):
+           "aporta-redes",
+           # 17-nov: España macro, energía, vivienda, pensiones e investigaciones (pestañas nuevas de España)
+           "espana-macro", "espana-energia", "espana-vivienda", "espana-pensiones", "espana-investigaciones"):
     _ruta = RAIZ / "explorador" / f"{_n}.json"
     if not _ruta.is_file():
         aviso(f"{_n}.json", "no existe")

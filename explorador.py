@@ -322,6 +322,13 @@ def _html(conceptos, publico=False):
     if isinstance(_mi, dict):
         _mi["casp_es"] = [e for e in _mi.pop("casp_entidades", []) if e.get("pais") == "ES"]
         _mi.pop("no_conformes_entidades", None)
+    try:                          # 17-nov: macro, energía, vivienda, pensiones e investigaciones de España (solo lectura, forma común)
+        import sys as _sys
+        _sys.path.insert(0, str(RAIZ / "scripts"))
+        import espana_cifras
+        datos["espana_cifras"] = espana_cifras.construir(CARPETA)
+    except Exception:
+        datos["espana_cifras"] = None
     datos["biblioteca"] = rel.get("_totales", {})
     hoy = date.today().isoformat()
     datos["calendario"] = {"hoy": hoy, "temas": TEMAS, "eventos": _calendario(hoy, _version())}

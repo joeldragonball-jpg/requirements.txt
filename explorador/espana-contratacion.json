@@ -2278,5 +2278,51 @@
    "Un medio propio con muchos encargos NO implica irregularidad.",
    "Importe = presupuesto del encargo, no pago efectivo."
   ]
+ },
+ "historico_meses": {
+  "202610": {
+   "generado": "2026-11-10",
+   "licitaciones": {
+    "expedientes_unicos": 40000,
+    "adjudicaciones_con_importe": {
+     "n": 32962,
+     "importe": 17636833848.14
+    },
+    "pct_emergencia": 0.51,
+    "pct_negociado_sin_publicidad": 5.64,
+    "concentracion": {
+     "top10_adjudicatarios_pct_importe_juridicas": 19.6,
+     "adjudicatarios_juridicos_distintos": 13287,
+     "personas_fisicas": {
+      "n": 364,
+      "importe": 17052728.49
+     },
+     "nota": "Concentración y repetición NO implican irregularidad: UTE, grandes concesionarias y encargos marco son habituales."
+    }
+   },
+   "menores": {
+    "expedientes_unicos": 43614,
+    "adjudicaciones_con_importe": {
+     "n": 43754,
+     "importe": 217686776.5
+    },
+    "pct_emergencia": 0.24,
+    "pct_negociado_sin_publicidad": 0.0,
+    "concentracion": {
+     "top10_adjudicatarios_pct_importe_juridicas": 1.7,
+     "adjudicatarios_juridicos_distintos": 21863,
+     "personas_fisicas": {
+      "n": 4850,
+      "importe": 17227525.42
+     },
+     "nota": "Concentración y repetición NO implican irregularidad: UTE, grandes concesionarias y encargos marco son habituales."
+    }
+   }
+  }
+ },
+ "c241_segunda_2026-11-17": {
+  "tamanos_zip": "El servidor PLACSP no envía Content-Length (transferencia por bloques); HEAD corta la conexión y Range se ignora. Tamaño solo medible descargando entero: oct-2026 ≈194 MB (medido 10-nov); anual 2025 no medido. Last-Modified: ZIP 202609 = 1-oct-2026 04:00 GMT; 202610 = 1-nov-2026 05:00 GMT; anual 2025 = 1-ene-2026.",
+  "enganche": "leer_contratacion.py ya no pisa claves ajenas (encargos_medios_propios) y guarda historico_meses; --con-encargos relanza leer_encargos.py.",
+  "aviso": "licitaciones.expedientes_unicos = 40.000 exactos en 202610: posible tope del feed o coincidencia [VERIFICAR] antes de leerlo como total."
  }
 }

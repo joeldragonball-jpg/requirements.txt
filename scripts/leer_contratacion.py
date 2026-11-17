@@ -290,12 +290,27 @@ def vigilados(datos):
     return out
 
 
+def resumen_mes(d):
+    """Resumen corto de un mes (sin listas largas) para el historico mensual."""
+    r = {"generado": d.get("generado")}
+    for k in ("licitaciones", "menores"):
+        x = d.get(k) or {}
+        r[k] = {"expedientes_unicos": x.get("expedientes_unicos"),
+                "adjudicaciones_con_importe": x.get("adjudicaciones_con_importe"),
+                "pct_emergencia": x.get("pct_emergencia"),
+                "pct_negociado_sin_publicidad": x.get("pct_negociado_sin_publicidad"),
+                "concentracion": x.get("concentracion")}
+    return r
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--mes", default=(dt.date.today().replace(day=1) - dt.timedelta(days=1)).strftime("%Y%m"))
     ap.add_argument("--zip-lic")
     ap.add_argument("--zip-men")
     ap.add_argument("--tmp")
+    ap.add_argument("--con-encargos", action="store_true",
+                    help="al final, relee tambien el ZIP anual de encargos a medios propios (leer_encargos.py)")
     a = ap.parse_args()
     tmp = Path(a.tmp) if a.tmp else Path(tempfile.mkdtemp(prefix="placsp_"))
     tmp.mkdir(parents=True, exist_ok=True)
@@ -340,8 +355,23 @@ def main():
             "Algunos órganos publican una 'relación trimestral' de menores como una sola entrada: infravalora el número de contratos.",
         ],
     }
+    # --- Conservar lo ya existente (C241, 17-nov): no pisar claves de otros scripts ni el mes anterior ---
+    try:
+        previo = json.loads(SALIDA.read_text(encoding="utf-8")) if SALIDA.exists() else {}
+    except Exception:
+        previo = {}
+    hist = dict(previo.get("historico_meses") or {})
+    if previo.get("mes") and previo.get("mes") != a.mes and previo.get("licitaciones"):
+        hist[previo["mes"]] = resumen_mes(previo)  # guarda un resumen del mes que se va a sustituir
+    hist[a.mes] = resumen_mes(out)
+    out["historico_meses"] = dict(sorted(hist.items()))
+    for k, v in previo.items():  # claves que este script no genera (p. ej. encargos_medios_propios)
+        out.setdefault(k, v)
     SALIDA.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"OK {SALIDA}", file=sys.stderr)
+    if a.con_encargos:
+        import subprocess
+        subprocess.run([sys.executable, "-X", "utf8", str(Path(__file__).with_name("leer_encargos.py"))], check=False)
     if not a.tmp and not a.zip_lic:
         shutil.rmtree(tmp, ignore_errors=True)
 

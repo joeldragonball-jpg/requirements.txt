@@ -1,0 +1,512 @@
+{
+ "id": "espana-pensiones",
+ "titulo": "España: pensiones (gasto, déficit contributivo, Fondo de Reserva) y demografía (natalidad, migración, envejecimiento)",
+ "leido": "2026-11-17",
+ "nivel": "P",
+ "unidad": "Cada registro lleva su unidad: M€ = millones de euros, mil M€ = miles de millones, € = euros, % = porcentaje, % PIB = porcentaje del PIB, personas, años. Cifras como número puro. null = sin dato leído en fuente oficial.",
+ "nota": "Leído el 17-nov-2026 en: nota de la Seguridad Social del 27-oct-2026 y notas de Moncloa/Inclusión (31-mar y 13-abr-2026); notas de prensa del INE (ECP 3T 2026, Proyecciones 2026-2076, EMN 2025); API INE Tempus (tablas 59238, 1407, 3197, 48882, 69758); API Eurostat (gov_10a_exp, demo_pjanind, demo_find). Los cálculos propios van marcados «cálculo propio». Los datos de AIReF, OCDE, Fedea y Santa Lucía vienen de prensa (nivel S) y no se leyeron en el original. Es información, no recomendación.",
+ "fuentes": {
+  "seg_social": "https://revista.seg-social.es/-/la-pension-media-del-sistema-de-la-seguridad-social-alcanza-los-1.376-1-euros-en-octubre-un-4-6-mas-alta-que-hace-un-ano",
+  "moncloa_saldo": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx",
+  "moncloa_fondo": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/130426-fondo-reserva-seguridad-social-abril.aspx",
+  "ine_ecp_3t26": "https://www.ine.es/dyngs/Prensa/ECP3T26.htm",
+  "ine_proyecciones": "https://ine.es/dyngs/Prensa/PROP20262076.htm",
+  "ine_emn_2025": "https://www.ine.es/dyngs/Prensa/EDES_EMN2025.htm",
+  "ine_tempus": "https://servicios.ine.es/wstempus",
+  "eurostat": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/"
+ },
+ "pensiones": {
+  "periodo": "oct-2026",
+  "publicado": "2026-10-27",
+  "valores": [
+   {
+    "nombre": "Pensiones contributivas abonadas",
+    "valor": 10565782,
+    "unidad": "pensiones",
+    "periodo": "oct-2026",
+    "fuente": "https://revista.seg-social.es/-/la-pension-media-del-sistema-de-la-seguridad-social-alcanza-los-1.376-1-euros-en-octubre-un-4-6-mas-alta-que-hace-un-ano",
+    "nivel": "P",
+    "nota": "A cerca de 9,6 millones de personas. Jubilación casi 6,8 M; viudedad más de 2,3 M; incapacidad permanente cerca de 1,1 M; orfandad 333.841; a favor de familiares 47.038."
+   },
+   {
+    "nombre": "Personas pensionistas (aprox.)",
+    "valor": 9600000,
+    "unidad": "personas",
+    "periodo": "oct-2026",
+    "fuente": "https://revista.seg-social.es/-/la-pension-media-del-sistema-de-la-seguridad-social-alcanza-los-1.376-1-euros-en-octubre-un-4-6-mas-alta-que-hace-un-ano",
+    "nivel": "P",
+    "nota": "«Cerca de 9,6 millones»: cifra redondeada por la fuente."
+   },
+   {
+    "nombre": "Nómina mensual de pensiones contributivas",
+    "valor": 14540,
+    "unidad": "M€",
+    "periodo": "oct-2026",
+    "fuente": "https://revista.seg-social.es/-/la-pension-media-del-sistema-de-la-seguridad-social-alcanza-los-1.376-1-euros-en-octubre-un-4-6-mas-alta-que-hace-un-ano",
+    "nivel": "P",
+    "nota": "14,5 mil M€. Jubilación 10.692,9 M€ (73,5 %); viudedad 2.289,8; incapacidad permanente 1.333,8; orfandad 184,6; familiares 38,8 (M€)."
+   },
+   {
+    "nombre": "Pensión media del sistema",
+    "valor": 1376.14,
+    "unidad": "€/mes",
+    "periodo": "oct-2026",
+    "fuente": "https://revista.seg-social.es/-/la-pension-media-del-sistema-de-la-seguridad-social-alcanza-los-1.376-1-euros-en-octubre-un-4-6-mas-alta-que-hace-un-ano",
+    "nivel": "P",
+    "nota": "+4,6 % interanual."
+   },
+   {
+    "nombre": "Pensión media de jubilación",
+    "valor": 1577.6,
+    "unidad": "€/mes",
+    "periodo": "oct-2026",
+    "fuente": "https://revista.seg-social.es/-/la-pension-media-del-sistema-de-la-seguridad-social-alcanza-los-1.376-1-euros-en-octubre-un-4-6-mas-alta-que-hace-un-ano",
+    "nivel": "P",
+    "nota": "+4,5 % interanual. Régimen General 1.735,9 €; autónomos (RETA) 1.063,5 €."
+   },
+   {
+    "nombre": "Cuantía media de las nuevas altas de jubilación",
+    "valor": 1758,
+    "unidad": "€/mes",
+    "periodo": "sep-2026",
+    "fuente": "https://revista.seg-social.es/-/la-pension-media-del-sistema-de-la-seguridad-social-alcanza-los-1.376-1-euros-en-octubre-un-4-6-mas-alta-que-hace-un-ano",
+    "nivel": "P",
+    "nota": "Último dato disponible a la fecha de la nota."
+   },
+   {
+    "nombre": "Edad media de acceso a la jubilación",
+    "valor": 65.4,
+    "unidad": "años",
+    "periodo": "ene-sep 2026",
+    "fuente": "https://revista.seg-social.es/-/la-pension-media-del-sistema-de-la-seguridad-social-alcanza-los-1.376-1-euros-en-octubre-un-4-6-mas-alta-que-hace-un-ano",
+    "nivel": "P",
+    "nota": "En 2019 era 64,4. 282.221 altas de jubilación hasta septiembre; 11,5 % demoradas voluntarias; 68,9 % con edad ordinaria."
+   },
+   {
+    "nombre": "Pensiones compatibles con trabajo",
+    "valor": 81082,
+    "unidad": "pensiones",
+    "periodo": "oct-2026",
+    "fuente": "https://revista.seg-social.es/-/la-pension-media-del-sistema-de-la-seguridad-social-alcanza-los-1.376-1-euros-en-octubre-un-4-6-mas-alta-que-hace-un-ano",
+    "nivel": "P",
+    "nota": "+8,8 % interanual; cuantía media 1.053,7 €/mes."
+   },
+   {
+    "nombre": "Afiliados medios (serie original)",
+    "valor": 22624165,
+    "unidad": "personas",
+    "periodo": "oct-2026",
+    "fuente": "https://revista.seg-social.es/-/afiliacion-octubre-2026",
+    "nivel": "P",
+    "nota": "Del pack espana-macro (nota del 4-nov-2026)."
+   },
+   {
+    "nombre": "Afiliados medios por pensión abonada",
+    "valor": 2.14,
+    "unidad": "afiliados por pensión",
+    "periodo": "oct-2026",
+    "fuente": "https://revista.seg-social.es/-/la-pension-media-del-sistema-de-la-seguridad-social-alcanza-los-1.376-1-euros-en-octubre-un-4-6-mas-alta-que-hace-un-ano",
+    "nivel": "P",
+    "nota": "Cálculo propio: 22.624.165 / 10.565.782. Por persona pensionista (~9,6 M) sale ≈ 2,36. Mezcla media mensual con nómina: orden de magnitud."
+   }
+  ]
+ },
+ "saldo_ss": {
+  "periodo": "2025",
+  "publicado": "2026-03-31",
+  "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx",
+  "valores": [
+   {
+    "nombre": "Saldo de la Seguridad Social (criterio presupuestario)",
+    "valor": -7387,
+    "unidad": "M€",
+    "periodo": "2025",
+    "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx",
+    "nivel": "P",
+    "nota": "−0,4 % del PIB; mínimo desde 2011. 2024: −9.834 M€. Máximo déficit en 2016: 1,7 % del PIB."
+   },
+   {
+    "nombre": "Derechos reconocidos no financieros",
+    "valor": 232782,
+    "unidad": "M€",
+    "periodo": "2025",
+    "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx",
+    "nivel": "P",
+    "nota": "+7,8 %."
+   },
+   {
+    "nombre": "Obligaciones reconocidas",
+    "valor": 240169,
+    "unidad": "M€",
+    "periodo": "2025",
+    "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx",
+    "nivel": "P",
+    "nota": "+6,5 %."
+   },
+   {
+    "nombre": "Cotizaciones sociales",
+    "valor": 176918,
+    "unidad": "M€",
+    "periodo": "2025",
+    "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx",
+    "nivel": "P",
+    "nota": "+6,9 %; 10,5 % del PIB. Cotizaciones de ocupados 167.042 M€."
+   },
+   {
+    "nombre": "Transferencias recibidas por la Seguridad Social",
+    "valor": 52990,
+    "unidad": "M€",
+    "periodo": "2025",
+    "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx",
+    "nivel": "P",
+    "nota": "+10,1 %; del Estado y organismos autónomos 47.815 M€."
+   },
+   {
+    "nombre": "Ingresos del Mecanismo de Equidad Intergeneracional (MEI)",
+    "valor": 4935,
+    "unidad": "M€",
+    "periodo": "2025",
+    "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx",
+    "nivel": "P",
+    "nota": "+33 %; nutren el Fondo de Reserva."
+   },
+   {
+    "nombre": "Saldo de los Fondos de la SS (contabilidad nacional)",
+    "valor": -5580,
+    "unidad": "M€",
+    "periodo": "2025",
+    "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/310326-seguridad-social-deficit-pib.aspx",
+    "nivel": "P",
+    "nota": "−0,3 % del PIB (incluye SEPE y FOGASA)."
+   },
+   {
+    "nombre": "Déficit contributivo (cálculo del Instituto Santa Lucía)",
+    "valor": 56946,
+    "unidad": "M€",
+    "periodo": "2025",
+    "fuente": "https://institutosantalucia.es/sala-de-prensa/el-sistema-publico-de-pensiones-necesito-56-946-millones-de-euros-del-estado-para-cubrir-su-componente-contributivo-en-2025/",
+    "nivel": "S",
+    "nota": "3,4 % del PIB; 61.881 M€ (3,7 %) sin MEI. Cálculo de una entidad privada, no oficial [VERIFICAR metodología]. No contradice el −0,4 % oficial: miden cosas distintas (con y sin transferencias del Estado)."
+   }
+  ]
+ },
+ "fondo_reserva": {
+  "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/130426-fondo-reserva-seguridad-social-abril.aspx",
+  "valores": [
+   {
+    "nombre": "Fondo de Reserva de la Seguridad Social",
+    "valor": 15267,
+    "unidad": "M€",
+    "periodo": "31-mar-2026",
+    "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/130426-fondo-reserva-seguridad-social-abril.aspx",
+    "nivel": "P",
+    "nota": "Máximo en diez años; +13.114 M€ desde 2019. Aportaciones MEI en el primer trimestre de 2026: 1.162,23 M€."
+   },
+   {
+    "nombre": "Fondo de Reserva, cierre de 2025",
+    "valor": null,
+    "unidad": "M€",
+    "periodo": "31-dic-2025",
+    "fuente": null,
+    "nivel": "VERIFICAR",
+    "nota": "Prensa da 14.100 y 14.283 M€ (discrepancia); un titular de Moncloa dice «por encima de los 14.000 M€». No leída la nota original de cierre."
+   },
+   {
+    "nombre": "Fondo de Reserva, dato posterior a marzo de 2026",
+    "valor": null,
+    "unidad": "M€",
+    "periodo": null,
+    "fuente": null,
+    "nivel": "VERIFICAR",
+    "nota": "No se halló nota posterior a la de abril en esta pasada."
+   },
+   {
+    "nombre": "Fondo de Reserva en meses de nómina",
+    "valor": 1.05,
+    "unidad": "meses",
+    "periodo": "31-mar-2026 / oct-2026",
+    "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/130426-fondo-reserva-seguridad-social-abril.aspx",
+    "nivel": "S",
+    "nota": "Cálculo propio: 15.267 M€ / 14.540 M€ de nómina mensual (mezcla de fechas). Orden de magnitud, no dato oficial."
+   }
+  ]
+ },
+ "gasto_pensiones_pib": {
+  "valores": [
+   {
+    "nombre": "Gasto en vejez (COFOG 10.2), Administraciones Públicas, España",
+    "valor": 10.4,
+    "unidad": "% PIB",
+    "periodo": "2024",
+    "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp",
+    "nivel": "P",
+    "nota": "Eurostat (GF1002, S13). 2023: 10,2; 2019: 9,5; 2020: 10,9. UE-27: 10,6.",
+    "ue": 10.6
+   },
+   {
+    "nombre": "Gasto en supervivencia/viudedad (COFOG 10.3), España",
+    "valor": 2.2,
+    "unidad": "% PIB",
+    "periodo": "2024",
+    "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp",
+    "nivel": "P",
+    "nota": "UE-27: 1,4.",
+    "ue": 1.4
+   },
+   {
+    "nombre": "Vejez + supervivencia, España",
+    "valor": 12.6,
+    "unidad": "% PIB",
+    "periodo": "2024",
+    "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp",
+    "nivel": "P",
+    "nota": "Cálculo propio: 10,4 + 2,2. UE-27: 12,0. No incluye incapacidad (COFOG 10.1): no es comparable con AIReF/OCDE.",
+    "ue": 12.0
+   },
+   {
+    "nombre": "Gasto en pensiones según AIReF",
+    "valor": 12.9,
+    "unidad": "% PIB",
+    "periodo": "2023",
+    "fuente": "https://www.elespanol.com/invertia/economia/empleo/20260529/airef-aprueba-prevision-gasto-pensiones-gobierno-alerta-deuda-publica-subira-pib/1003744265208_0.html",
+    "nivel": "S",
+    "nota": "Vía prensa. Proyección AIReF: 16,1 % en 2050 y 14,7 % en 2070; Fedea 17,1 % en 2050 [ESPECULACIÓN: proyecciones]."
+   },
+   {
+    "nombre": "Gasto público en pensiones según la OCDE",
+    "valor": 13.7,
+    "unidad": "% PIB",
+    "periodo": "2025",
+    "fuente": null,
+    "nivel": "VERIFICAR",
+    "nota": "Cifra de prensa de Pensions at a Glance 2025, no leída en el original; definición más amplia que COFOG 10.2."
+   }
+  ],
+  "lectura": "Hay tres medidas distintas del «gasto en pensiones/PIB»: COFOG vejez (10,4 %), vejez+supervivencia (12,6 %) y las de AIReF/OCDE (13-14 %). Según Eurostat, España está cerca de la media UE en vejez y por encima en viudedad (+0,8 pp)."
+ },
+ "demografia": {
+  "poblacion": [
+   {
+    "nombre": "Población residente",
+    "valor": 49935642,
+    "unidad": "personas",
+    "periodo": "1-oct-2026",
+    "fuente": "https://www.ine.es/dyngs/Prensa/ECP3T26.htm",
+    "nivel": "P",
+    "nota": "Provisional; máximo histórico. +130.223 en el trimestre; +435.551 en un año. Nota INE del 12-nov-2026."
+   },
+   {
+    "nombre": "Población de 65 años o más (cálculo propio)",
+    "valor": 10632438,
+    "unidad": "personas",
+    "periodo": "1-oct-2026",
+    "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59238",
+    "nivel": "P",
+    "nota": "Edades simples 65-99 más 100 y más (residuo al total); 21,3 % del total."
+   },
+   {
+    "nombre": "Porcentaje de población de 65 años o más",
+    "valor": 21.3,
+    "unidad": "%",
+    "periodo": "1-oct-2026",
+    "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59238",
+    "nivel": "P",
+    "nota": "Cálculo propio. El INE (proyecciones, jun-2026) cita 21,1 % «actualmente»; máximo 30,9 % en 2076."
+   },
+   {
+    "nombre": "Índice de envejecimiento (65+ por cada 100 menores de 16)",
+    "valor": 159.2,
+    "unidad": "personas",
+    "periodo": "1-oct-2026",
+    "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59238",
+    "nivel": "P",
+    "nota": "Cálculo propio: 10.632.438 / 6.679.430. No es la cifra publicada por el INE (IDB)."
+   },
+   {
+    "nombre": "Tasa de dependencia (0-15 y 65+ sobre 16-64)",
+    "valor": 53.1,
+    "unidad": "%",
+    "periodo": "1-oct-2026",
+    "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59238",
+    "nivel": "P",
+    "nota": "Cálculo propio; población 16-64 = 32.623.774. Solo mayores: 32,6 %."
+   },
+   {
+    "nombre": "Dependencia de mayores, Eurostat (65+ sobre 15-64)",
+    "valor": 31.2,
+    "unidad": "%",
+    "periodo": "1-ene-2025",
+    "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_pjanind",
+    "nivel": "P",
+    "nota": "UE-27: 34,4 %. 2024: España 30,8; UE 33,9.",
+    "ue": 34.4
+   },
+   {
+    "nombre": "Edad media de la población",
+    "valor": 44.55,
+    "unidad": "años",
+    "periodo": "1-ene-2025",
+    "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/3197",
+    "nivel": "P",
+    "nota": "Hombres 43,23; mujeres 45,82. 2024: 44,37."
+   }
+  ],
+  "natalidad": [
+   {
+    "nombre": "Nacimientos 2025 (provisional)",
+    "valor": 321164,
+    "unidad": "nacimientos",
+    "periodo": "2025",
+    "fuente": "https://www.ine.es/dyngs/Prensa/EDES_EMN2025.htm",
+    "nivel": "P",
+    "nota": "+1,0 % (+3.159); primera subida tras una década de caídas, pendiente de definitivos. 2024: 318.005; 2015: 420.290. Nota INE del 18-feb-2026."
+   },
+   {
+    "nombre": "Madres de 40 años o más",
+    "valor": 10.4,
+    "unidad": "% de los nacimientos",
+    "periodo": "2025",
+    "fuente": "https://www.ine.es/dyngs/Prensa/EDES_EMN2025.htm",
+    "nivel": "P",
+    "nota": "2015: 7,8 %."
+   },
+   {
+    "nombre": "Defunciones 2025 (provisional)",
+    "valor": 446982,
+    "unidad": "defunciones",
+    "periodo": "2025",
+    "fuente": "https://www.ine.es/dyngs/Prensa/EDES_EMN2025.htm",
+    "nivel": "P",
+    "nota": "+2,5 %. Saldo vegetativo −122.167 personas."
+   },
+   {
+    "nombre": "Indicador coyuntural de fecundidad",
+    "valor": 1.1,
+    "unidad": "hijos por mujer",
+    "periodo": "2024",
+    "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/1407",
+    "nivel": "P",
+    "nota": "2023: 1,12; 2022: 1,16. Españolas 1,07; extranjeras 1,27. UE-27: null (sin dato en la consulta de Eurostat). 2025: aún no publicado en INEbase [VERIFICAR]."
+   },
+   {
+    "nombre": "Fecundidad que supone el INE para 2040",
+    "valor": 1.16,
+    "unidad": "hijos por mujer",
+    "periodo": "2040",
+    "fuente": "https://ine.es/dyngs/Prensa/PROP20262076.htm",
+    "nivel": "P",
+    "nota": "Hipótesis del INE, no predicción [ESPECULACIÓN]."
+   },
+   {
+    "nombre": "Esperanza de vida al nacer",
+    "valor": 84.01,
+    "unidad": "años",
+    "periodo": "2024",
+    "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/48882",
+    "nivel": "P",
+    "nota": "Hombres 81,38; mujeres 86,53."
+   }
+  ],
+  "migracion": [
+   {
+    "nombre": "Saldo migratorio exterior",
+    "valor": 626268,
+    "unidad": "personas",
+    "periodo": "2024",
+    "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/69758",
+    "nivel": "P",
+    "nota": "2023: 642.296. Españoles +6.616; el resto, extranjeros."
+   },
+   {
+    "nombre": "Saldo migratorio exterior 2025",
+    "valor": null,
+    "unidad": "personas",
+    "periodo": "2025",
+    "fuente": null,
+    "nivel": "VERIFICAR",
+    "nota": "No publicado a 17-nov-2026 (la Estadística de Migraciones suele salir en diciembre)."
+   },
+   {
+    "nombre": "Crecimiento anual de la población",
+    "valor": 435551,
+    "unidad": "personas",
+    "periodo": "oct-2025 a oct-2026",
+    "fuente": "https://www.ine.es/dyngs/Prensa/ECP3T26.htm",
+    "nivel": "P",
+    "nota": "Con saldo vegetativo negativo, el aumento se debe a la migración exterior."
+   }
+  ],
+  "proyecciones": [
+   {
+    "nombre": "Población proyectada 2041",
+    "valor": 53.8,
+    "unidad": "millones de personas",
+    "periodo": "2041",
+    "fuente": "https://ine.es/dyngs/Prensa/PROP20262076.htm",
+    "nivel": "P",
+    "nota": "+4.251.150 (+8,6 %) en 15 años [ESPECULACIÓN: el INE dice que no es una predicción]."
+   },
+   {
+    "nombre": "Población proyectada 2076",
+    "valor": 53.0,
+    "unidad": "millones de personas",
+    "periodo": "2076",
+    "fuente": "https://ine.es/dyngs/Prensa/PROP20262076.htm",
+    "nivel": "P",
+    "nota": "[ESPECULACIÓN]. Nacidos en España: 79,8 % hoy → 59,6 % en 50 años."
+   },
+   {
+    "nombre": "Máximo de población de 65 años o más",
+    "valor": 30.9,
+    "unidad": "% del total",
+    "periodo": "2076",
+    "fuente": "https://ine.es/dyngs/Prensa/PROP20262076.htm",
+    "nivel": "P",
+    "nota": "[ESPECULACIÓN]. Actual: 21,1 % (INE, jun-2026)."
+   },
+   {
+    "nombre": "Tasa de dependencia máxima proyectada",
+    "valor": 73.2,
+    "unidad": "%",
+    "periodo": "2076",
+    "fuente": "https://ine.es/dyngs/Prensa/PROP20262076.htm",
+    "nivel": "S",
+    "nota": "Cifra de la nota previa (informe del 10-nov); no localizada en el texto de la nota en esta lectura [VERIFICAR]."
+   },
+   {
+    "nombre": "Esperanza de vida proyectada 2075, hombres",
+    "valor": 87.0,
+    "unidad": "años",
+    "periodo": "2075",
+    "fuente": "https://ine.es/dyngs/Prensa/PROP20262076.htm",
+    "nivel": "P",
+    "nota": "Mujeres 90,0 [ESPECULACIÓN]."
+   }
+  ]
+ },
+ "caso_alcista_vs_bajista": {
+  "alcista": [
+   "Déficit presupuestario de la SS en mínimo desde 2011 (−0,4 % PIB, Moncloa 31-mar-2026) [P].",
+   "Fondo de Reserva en máximo de diez años (15.267 M€, 31-mar-2026) [P].",
+   "Afiliación 22,6 millones, +3,6 % anual (SS, 4-nov-2026) [P].",
+   "Natalidad 2025 +1,0 % tras una década de bajadas (provisional) [P].",
+   "Edad media de jubilación 65,4 años vs 64,4 en 2019 [P]."
+  ],
+  "bajista": [
+   "Fecundidad 1,10 hijos/mujer (2024), muy por debajo del reemplazo (≈2,1) [P].",
+   "Población de 65 años o más ya 21,3 %; el INE proyecta 30,9 % en 2076 [ESPECULACIÓN].",
+   "Nómina +6,3 % interanual frente a afiliados +3,6 % [P; comparación propia].",
+   "Transferencias del Estado a la SS 52.990 M€ en 2025; déficit contributivo ~57 mil M€ según Santa Lucía [S].",
+   "El crecimiento de población depende de la migración (saldo vegetativo −122.167) [P]."
+  ],
+  "sesgos": "Inclusión destaca la definición contable (déficit pequeño); Santa Lucía y Fedea usan definiciones más amplias y son críticos con el sistema; los medios amplifican «récord de nómina» aunque sea efecto normal de inflación y más pensionistas."
+ },
+ "pendiente": [
+  "Fondo de Reserva: nota de cierre 2025 y datos de abril a octubre 2026 (discrepancia 14.100 vs 14.283 M€) [VERIFICAR].",
+  "AIReF, OCDE y Fedea: leer los informes originales (aquí solo vía prensa).",
+  "Índice de envejecimiento, dependencia y fecundidad 2025 publicados por el INE (IDB 2025): aún no están en INEbase; contrastar con el cálculo propio.",
+  "Saldo migratorio 2025 (Estadística de Migraciones, diciembre 2026).",
+  "Ageing Report de la Comisión Europea (próxima edición) y gasto AIReF 2024-2025.",
+  "Ratio oficial cotizantes/pensionista de la Seguridad Social (aquí solo cálculo propio)."
+ ]
+}

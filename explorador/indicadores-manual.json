@@ -1,5 +1,5 @@
 {
-  "_actualizado": "2026-11-16",
+  "_actualizado": "2026-11-17",
   "_nota": "Datos sin API abierta: salario mínimo de las potencias. Nivel V = recordado, sin leer la norma oficial; [VERIFICAR] antes de citar. No se ordenan países.",
   "US": {
     "salario_minimo": {
@@ -139,9 +139,9 @@
       "valor": 6.35,
       "unidad": "% interanual",
       "fecha": "2026-09",
-      "fuente": "https://rosstat.gov.ru/",
-      "nivel": "S",
-      "definicion": "Inflación anual de septiembre 2026 (Rosstat, ~9-oct-2026; vía Interfax/TASS, no abierto en Rosstat) [VERIFICAR]; +0,35 % mensual. El 7,17 % de otras noticias es una cifra semanal del Ministerio de Economía: no comparable.",
+      "fuente": "https://www.cbr.ru/eng/hd_base/infl/",
+      "nivel": "P",
+      "definicion": "Inflación anual de septiembre 2026 del Banco de Rusia (tabla «Key rate and inflation», 6,35 % interanual; agosto 6,33; julio 5,98; objetivo 4 %; leída el 17-nov-2026; el Banco de Rusia calcula sobre datos de Rosstat). El de octubre aún no está en la tabla. El 7,17 % de otras noticias es una cifra semanal del Ministerio de Economía: no comparable. Tipo de interés clave 14,00 % (fin de septiembre).",
       "periodicidad": "mensual",
       "anterior": 6.33,
       "anterior_fecha": "2026-08"
@@ -167,22 +167,22 @@
       "periodicidad": "trimestral"
     },
     "salario_minimo": {
-      "valor": null,
-      "unidad": "¥ por hora",
-      "fecha": null,
-      "fuente": "Ministerio de Sanidad, Trabajo y Bienestar",
-      "nivel": "V",
-      "definicion": "No hay mínimo nacional único: se fija por prefectura; media ponderada nacional [VERIFICAR]",
-      "periodicidad": "anual (octubre)"
+      "valor": 1177,
+      "unidad": "¥ por hora (media nacional ponderada de los mínimos por prefectura)",
+      "fecha": "2026-09",
+      "fuente": "https://www.mhlw.go.jp/stf/newpage_75950.html",
+      "nivel": "P",
+      "definicion": "Ministerio de Sanidad, Trabajo y Bienestar (MHLW), nota «全ての都道府県で地域別最低賃金の改定額が答申されました» (año fiscal 2026, leída el 17-nov-2026): media nacional ponderada de las 47 prefecturas 1.177 ¥/h (+56 ¥ frente a 1.121 en el año fiscal 2025; segunda mayor subida desde 1978); máximo Tokio 1.280 ¥ y mínimo 1.085 ¥ (relación 84,8 %). Son cifras de respuesta de los consejos regionales; entran en vigor entre el 1-oct y el 2-dic-2026 según prefectura y no existe un mínimo nacional único.",
+      "periodicidad": "anual (julio-septiembre)"
     },
     "pobreza": {
-      "valor": null,
+      "valor": 15.0,
       "unidad": "% de la población",
-      "fecha": null,
-      "fuente": "Ministerio de Sanidad, Trabajo y Bienestar (encuesta de condiciones de vida)",
-      "nivel": "V",
-      "definicion": "Pobreza relativa nacional (50 % de la mediana de renta disponible equivalente); cifra no leída [VERIFICAR]",
-      "periodicidad": "trienal"
+      "fecha": "2024",
+      "fuente": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa25/index.html",
+      "nivel": "S",
+      "definicion": "Pobreza relativa de Japón (50 % de la mediana de renta disponible equivalente; línea de pobreza 1,38 M¥ con renta de 2024) en la Encuesta de Condiciones de Vida 2025 del MHLW (publicada en julio de 2026): 15,0 % frente a 15,4 % de la encuesta anterior (renta de 2021). Pobreza infantil 11,0 % (11,5 % antes) y hogares monoparentales 44,7 % (44,5 %). El PDF oficial (dl/14.pdf) no se pudo leer en texto (fuentes japonesas sin mapa de caracteres), así que las cifras vienen de lecturas secundarias que citan la nota del MHLW [S]; definición distinta de AROPE (UE: 60 % de la mediana) y de la tasa oficial de EE. UU.",
+      "periodicidad": "trienal (encuesta grande; la próxima con renta de 2027)"
     },
     "ipc": {
       "valor": 2.1,
@@ -209,13 +209,13 @@
   },
   "CN": {
     "salario_minimo": {
-      "valor": null,
-      "unidad": "yuanes al mes",
-      "fecha": null,
-      "fuente": "Gobiernos provinciales",
-      "nivel": "V",
-      "definicion": "No hay mínimo nacional único: lo fija cada provincia y ciudad [VERIFICAR]",
-      "periodicidad": "irregular"
+      "valor": 2740,
+      "unidad": "¥ (yuanes) al mes, el más alto del país (Shanghái, referencia)",
+      "fecha": "2025-07",
+      "fuente": "https://rsj.sh.gov.cn/ (aviso 沪人社规〔2025〕10号, no accesible: 404 en el enlace del PDF)",
+      "nivel": "S",
+      "definicion": "China no tiene mínimo nacional único: lo fija cada provincia/ciudad. Shanghái (la cifra provincial más alta según el recuento del Ministerio de RR. HH. a 1-oct-2025, citado por prensa) pasó de 2.690 a 2.740 yuanes/mes (24→25 por hora) el 1-jul-2025. Otros: Pekín 2.540, Tianjin 2.510, Guangdong 2.500 [S, prensa]. Aviso oficial de la oficina de Shanghái no leído (el PDF dio 404 el 17-nov-2026). No es un mínimo nacional ni comparable con el de Japón o el Reino Unido.",
+      "periodicidad": "irregular (cada 2-3 años por provincia)"
     },
     "ipc": {
       "valor": 0.7,
@@ -262,12 +262,12 @@
   },
   "IN": {
     "salario_minimo": {
-      "valor": null,
-      "unidad": "rupias al día",
-      "fecha": null,
-      "fuente": "Gobiernos estatales y Ministerio de Trabajo",
-      "nivel": "V",
-      "definicion": "Salario mínimo por estado y sector; existe un «piso» nacional no vinculante [VERIFICAR]",
+      "valor": 178,
+      "unidad": "₹ (rupias) al día, «suelo nacional» no vinculante",
+      "fecha": "2019",
+      "fuente": "https://www.taxmann.com/post/blog/analysis-the-code-on-wages/",
+      "nivel": "S",
+      "definicion": "India fija mínimos por estado y sector (cientos de cifras). El suelo salarial nacional de la Ley de Salarios (Code on Wages) sigue en 178 ₹/día según varias guías jurídicas de 2026 [S]; las Reglas Centrales de 2026 se notificaron el 8-may-2026, pero no encontré notificación oficial de un suelo nuevo (el comité de expertos de 2019 recomendó 375 ₹ [S]). El mínimo de 300 ₹/día de la nueva ley de empleo rural (VB-G RAM G) es otra cosa. Sin leer la gaceta oficial [VERIFICAR].",
       "periodicidad": "irregular"
     },
     "ipc": {
@@ -289,7 +289,7 @@
       "fecha": null,
       "fuente": "Eurostat (sin dato)",
       "nivel": "V",
-      "definicion": "Italia no tiene salario mínimo legal; los convenios colectivos fijan los mínimos [VERIFICAR]",
+      "definicion": "Italia no tiene salario mínimo legal: los mínimos los fijan los convenios colectivos (CCNL). La Directiva (UE) 2022/2041 sobre salarios mínimos adecuados no obliga a crear uno. Dato n/a por diseño, no por falta de fuente [VERIFICAR el estado de la propuesta de ley de 2026 si se quiere citar].",
       "periodicidad": "—"
     }
   },
@@ -333,6 +333,26 @@
       "nivel": "P",
       "definicion": "El informe técnico del INDEC (EPH, 31 aglomerados urbanos, 2T-2026, leído el 14-nov-2026) publica la desocupación de 14 a 29 años solo por sexo, no el total: mujeres 17,1 % (2T-2025: 16,9 %); varones 14,1 % (2T-2025: 12,7 %). Total 14-29 sin cifra oficial leída (no se promedia: hace falta ponderar por población activa); queda null. No comparable con el paro de 15-24 años de la OIT.",
       "periodicidad": "trimestral"
+    },
+    "pib": {
+      "valor": 2.0,
+      "unidad": "% interanual (volumen, sin desestacionalizar)",
+      "fecha": "2026-Q2",
+      "fuente": "https://apis.datos.gob.ar/series/api/series/?ids=4.2_OGP_2004_T_17&limit=8&sort=desc&format=json",
+      "nivel": "P",
+      "definicion": "PIB de Argentina 2T-2026 a precios de 2004, serie INDEC en la API de datos.gob.ar: 792.800 vs 777.483 millones de pesos del 2T-2025 = +1,97 % interanual (calculado por mí; serie original, no desestacionalizada). Leída el 17-nov-2026. El 3T sale en diciembre.",
+      "periodicidad": "trimestral"
+    },
+    "actividad": {
+      "valor": -1.7,
+      "unidad": "% interanual (EMAE, sin desestacionalizar)",
+      "fecha": "2026-08",
+      "fuente": "https://apis.datos.gob.ar/series/api/series/?ids=143.3_NO_PR_2004_A_21&limit=14&sort=desc&format=json",
+      "nivel": "P",
+      "definicion": "EMAE (Estimador Mensual de Actividad Económica, INDEC) agosto 2026: índice 147,75 vs 150,38 de agosto 2025 = -1,74 % interanual (calculado; serie original). Julio 151,51 vs 153,77 = -1,5 %. Leído en la API de datos.gob.ar el 17-nov-2026. Aviso: si la interfaz no reconoce la clave «actividad», no se mostrará.",
+      "periodicidad": "mensual",
+      "anterior": -1.5,
+      "anterior_fecha": "2026-07"
     }
   },
   "BR": {

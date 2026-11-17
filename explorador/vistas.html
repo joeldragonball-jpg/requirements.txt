@@ -34,6 +34,8 @@ section.vista{display:none}section.vista.on{display:block}
 .kpi b{display:block;font-size:clamp(18px,.9vw + 8px,24px)}.kpi span{font-size:var(--fs-xs);color:var(--tx2)}
 .cc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px;margin:6px 0}
 .cc-b{background:var(--bg);border:1px solid var(--lin);border-top:3px solid var(--ac);border-radius:10px;padding:10px 12px}
+.cc-grid>.cc-b:last-child:nth-child(4n+1){grid-column:1/-1}.cc-grid>.cc-b:last-child:nth-child(4n+1) .cc-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px 16px}
+@media(max-width:1100px){.cc-grid>.cc-b:last-child:nth-child(4n+1){grid-column:auto}.cc-grid>.cc-b:last-child:nth-child(2n+1){grid-column:1/-1}}
 .cc-b h3{margin:0 0 6px;font-size:max(13px,.82rem);letter-spacing:.06em;text-transform:uppercase;color:var(--tx2)}
 .cc-g{margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--lin)}.cc-e{font-size:.85rem;color:var(--tx2)}
 .cc-g b{display:block;font-size:clamp(26px,1.6vw + 12px,36px);line-height:1.15}.cc-g .sube,.cc-g .baja,.cc-g .igual{font-size:.85rem}.cc-g .badge,.cc-l .badge{margin-left:6px;vertical-align:middle}
@@ -117,7 +119,7 @@ a{color:var(--ac)}
 .jus-hecho{border-left:3px solid var(--ac);padding:2px 0 2px 10px;margin:8px 0}.jus-hecho b{color:var(--ac);font-size:var(--fs-s)}.jus-hecho p{font-size:var(--fs);color:var(--tx);margin:2px 0;line-height:1.45}
 .jus-pend,.jus-prensa{background:var(--nul);border-radius:8px;padding:6px 10px;margin-top:8px;font-size:var(--fs-s);color:var(--tx)}.jus-pend b{color:#e8b64a}.jus-prensa b{color:var(--tx2)}.jus-pend ul,.jus-prensa ul{margin:4px 0}
 .jus-sin{opacity:.92}
-.rej.jus-grid{display:block;columns:310px;column-gap:var(--gap)}.jus-card{break-inside:avoid;margin-bottom:var(--gap)}
+.rej.jus-grid{display:block;columns:310px;column-gap:var(--gap)}.jus-card{break-inside:avoid;margin-bottom:var(--gap)}.rej.jus-grid:not(:has(>.jus-card:nth-child(4))){display:grid;columns:auto;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));align-items:start}.rej.jus-grid:not(:has(>.jus-card:nth-child(4)))>.jus-card{margin-bottom:0}
 .jus-card.jus-ancha{column-span:all}.jus-ancha .jus-hechos,.jus-ancha .jus-mas .jus-hechos{column-width:300px;column-gap:22px}.jus-ancha .jus-hecho{break-inside:avoid}
 .jus-mas{margin-top:4px}.jus-mas summary{cursor:pointer;color:var(--ac);font-size:var(--fs-s);padding:4px 0}
 .jus-quien{font-size:var(--fs-s);color:var(--tx2);margin:2px 0 6px}.jus-quien b{color:var(--tx)}
@@ -126,7 +128,7 @@ a{color:var(--ac)}
 .cad-top{display:flex;flex-wrap:wrap;gap:0 var(--gap)}.cad-top>.caja{flex:1 1 320px;min-width:0;margin-bottom:var(--gap)}
 .cad-h{font-size:var(--fs-s);margin:3px 0 6px;line-height:1.4}.cad-f{display:block;color:var(--tx2);font-size:var(--fs-xs)}.cad-f a{color:var(--ac)}
 .cad-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.cad-bt{font:inherit;font-size:var(--fs-xs);background:var(--bg);color:var(--tx2);border:1px solid var(--lin);border-radius:14px;padding:4px 12px;cursor:pointer}.cad-bt:hover,.cad-bt.on{color:var(--tx);border-color:var(--ac)}
+.cad-bt{font:inherit;font-size:var(--fs-xs);background:var(--bg);color:var(--tx2);border:1px solid var(--lin);border-radius:14px;padding:4px 12px;cursor:pointer}.cad-bt:hover,.cad-bt.on{color:var(--tx);border-color:var(--ac)}.cad-bt.on{color:#04111f;font-weight:600}
 .cad-env{overflow-x:auto;max-width:100%}
 .cad-ta th{hyphens:none;word-break:normal;overflow-wrap:normal}.cad-ta .cad-v{font-weight:700;white-space:nowrap}.cad-ta .cad-bar{height:6px;background:var(--acc,#5aa9ff);border-radius:3px;margin:3px auto}.cad-ta .cad-k{font-size:11px;opacity:.75}.cad-ta td.cad-ts{font-size:12px;text-align:left}table.cad-mat.cad-ta{min-width:780px;table-layout:auto}@media (max-width:1180px){table.cad-mat.cad-ta{min-width:0;table-layout:auto}.cad-ta th{font-size:12px;padding:2px 3px;overflow-wrap:anywhere}.cad-ta td{padding:4px 3px}.cad-ta td.cad-ts{min-width:0;font-size:11px;overflow-wrap:anywhere}table.cad-mat.cad-ta{width:100%}.cad-ta .cad-v{white-space:normal}}
 
@@ -328,7 +330,7 @@ small.per{color:var(--tx2);font-size:var(--fs-xs);font-weight:400}
 .pie-sem{color:var(--tx2);font-size:var(--fs-xs);margin:2px 0 4px}
 .idx{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;margin:4px 0 10px;padding:6px 10px;border:1px solid var(--lin);border-radius:8px;background:var(--panel);font-size:var(--fs-s)}.idx b{color:var(--tx2)}.idx a{color:var(--ac);cursor:pointer;text-decoration:none;border-bottom:1px dotted var(--ac)}
 .hoy ul{margin:4px 0;padding-left:20px}.hoy li{margin:2px 0}
-.mis .cols2{grid-template-columns:repeat(auto-fit,minmax(min(100%,600px),1fr))}.mis .cols2>div{min-width:0;overflow-x:auto}.mis td.n{white-space:normal;overflow-wrap:anywhere;min-width:7ch}.mis td,.mis th{overflow-wrap:anywhere}
+.mis .cols2{grid-template-columns:repeat(auto-fit,minmax(min(100%,600px),1fr))}.mis .cols2>div{min-width:0;overflow-x:auto}.mis td.n{white-space:normal;overflow-wrap:anywhere;min-width:7ch}.mis td,.mis th{overflow-wrap:anywhere}.mis td:first-child,.mis th:first-child{overflow-wrap:normal;word-break:normal;min-width:12ch}.mis td:nth-child(2){min-width:9ch}
 .mis .kpi b{font-size:clamp(18px,.9vw + 8px,24px)}.pie-leyenda{margin:14px 0 6px;padding:8px 12px;border:1px dashed var(--lin);border-radius:8px;color:var(--tx2);font-size:var(--fs-xs)}
 /* C211 · buscador global */
 .barra .gb{position:relative;flex:1 1 220px;min-width:170px;max-width:420px}
@@ -2854,7 +2856,7 @@ function pEspana(){
   const conL=(tx,...ns)=>{const d=el('div');if(tx)d.append(corto(tx,'nota-v',150));d.append(...ns);return d};
   /* C247: explicación llana siempre visible (sin plegar) de 3-4 frases por tabla */
   const claro=tx=>el('p','nota-v',tx);
-  const BL=[],TEMAS=[['eco','Economía y deuda'],['pre','Presupuesto y gasto'],['rec','Recaudación'],['din','Dónde va el dinero'],['pol','Política y leyes'],['soc','Servicios y sociedad'],['seg','Seguridad y salud'],['jus','Justicia']];
+  const BL=[],TEMAS=[['eco','Economía y deuda'],['pre','Presupuesto y gasto'],['rec','Recaudación'],['din','Dónde va el dinero'],['pol','Política y leyes'],['soc','Servicios y sociedad'],['seg','Seguridad y salud'],['jus','Justicia'],['mac','Macro 17-nov'],['ene','Energía'],['viv','Vivienda'],['pen','Pensiones y demografía'],['inv','Investigaciones']];
   /* C247: criterio de reparto. eco = cuánto produce, cuesta y debe el país (macro, precios, empleo, ingresos, deuda, intereses, previsiones);
      pre = en qué se gasta el presupuesto y quién lo gasta (ministerios, programas, personal, sueldos, empresas públicas, comparador de CCAA);
      din = a qué empresas y entidades llega el dinero (contratos y subvenciones); pol = Congreso, partidos, altos cargos y leyes;
@@ -3208,10 +3210,55 @@ function pEspana(){
       if(M[k])add(bloque(t,null,{t:'[P] oficial leída · [S] secundaria · [VERIFICAR] no leído'},CLX[k]?conL(null,claro(CLX[k]),dat(M[k])):dat(M[k]),false));
   }
   /* resumen de 3-4 cifras con flecha al principio de cada tema, y debajo el detalle en bloques */
-  const RES={eco:[],pre:[],rec:[],din:[],pol:[],soc:[],seg:[],jus:[]},cp=r=>r.anterior==null?null:cambio(r.valor-r.anterior,'p.p.',2);
+  const RES={eco:[],pre:[],rec:[],din:[],pol:[],soc:[],seg:[],jus:[],mac:[],ene:[],viv:[],pen:[],inv:[]},cp=r=>r.anterior==null?null:cambio(r.valor-r.anterior,'p.p.',2);
   const fi=re=>INE&&INE.filas&&INE.filas.find(r=>re.test(r.nombre));
   for(const [re,et] of [[/IPC general/i,'Inflación anual (IPC)'],[/PIB, volumen, variaci[oó]n anual/i,'Crecimiento anual (PIB)'],[/Tasa de paro/i,'Paro (EPA)']]){const r=fi(re);if(r)RES.eco.push([fx(r.valor,r.valor%1?1:0)+' %',et+' · '+r.periodo,/paro/i.test(et)?inv(cp(r)):cp(r)])}
   if(DE&&DE.aapp)RES.eco.push([fx(DE.aapp.pct_pib,1)+' %','Deuda de todas las administraciones, % del PIB · '+DE.aapp.periodo,inv(cambio((DE.aapp.deuda/DE.aapp.hace_un_anio-1)*100,'% en un año',1))]);
+  /* 17-nov · macro, energía, vivienda, pensiones e investigaciones de España (explorador/espana-*.json aplanados por scripts/espana_cifras.py).
+     Cada cifra con valor, unidad, fecha, nivel y fuente. La luz diaria de REE (espana-energia-vivienda.json) ya existe: se mueve a la pestaña Energía, no se duplica. */
+  const CF=D.espana_cifras;
+  if(CF){
+    const fv=v=>v==null?'[VERIFICAR]':v.toLocaleString('es-ES',{maximumFractionDigits:2,useGrouping:'always'});
+    const colsF=[{t:'Dato',f:r=>r.nombre},{t:'Valor',n:1,f:r=>fv(r.valor)},{t:'Unidad',f:r=>r.unidad},{t:'Fecha',f:r=>r.fecha},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Nota',f:r=>r.nota},{t:'Fuente',f:r=>/^https?:/.test(r.fuente||'')?lnk(r.fuente):(r.fuente||'—')}];
+    const SEC=[['macro','mac'],['energia','ene'],['vivienda','viv'],['pensiones','pen'],['investigaciones','inv']];
+    const addT=(k,b)=>{add(b);b._t=k};
+    const kf=(sec,re,et)=>{const s=CF[sec];if(!s||!s.grupos)return null;for(const g of s.grupos){const r=g.filas.find(x=>re.test(x.nombre)&&x.valor!=null);if(r)return[fv(r.valor)+(r.unidad?' '+r.unidad:''),(et||r.nombre)+' · '+r.fecha,null]}return null};
+    for(const [sec,k] of SEC){
+      const S=CF[sec];if(!S)continue;
+      const pend=(S.pendiente||[]).filter(x=>typeof x==='string');
+      const intro=el('div');if(S.nota)intro.append(corto(S.nota,'nota-v',170));
+      if(sec==='vivienda')intro.append(el('p','nota-v','Los precios de vivienda y alquiler mes a mes (INE) están en el bloque «Electricidad de España (REE) y precios de vivienda (INE)» de la pestaña Energía: aquí no se repiten.'));
+      if(sec==='energia')intro.append(el('p','nota-v','Además de estas cifras sueltas, esta pestaña incluye el bloque de REE con la serie diaria (precio de la luz, demanda y generación) y la vivienda del INE.'));
+      if(pend.length){const dt=el('details','mas');dt.append(el('summary',null,'Pendiente de leer ('+pend.length+')'));const u=el('ul');for(const x of pend)u.append(el('li',null,x));dt.append(u);intro.append(dt)}
+      addT(k,bloque('Cómo leer esta pestaña y qué falta',null,{nivel:S.nivel,t:'Leído '+f10(S.leido)},intro,false));
+      if(sec==='investigaciones'){
+        const MES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'],fch=f=>{const m=/^(\d{4})-(\d\d)-(\d\d)$/.exec(f||'');return m?(+m[3])+' '+MES[+m[2]-1]+' '+m[1]:(f||'')};
+        const w=el('div'),g=el('div','rej jus-grid');
+        w.append(el('p','nota-v','Hechos de fuente oficial con fecha y enlace. Investigar, registrar o pedir documentación no es ser culpable: rige la presunción de inocencia. Complementa a «Justicia · casos, auditorías y accidentes» (pestaña Justicia), sin repetirlo.'));
+        for(const cs of S.casos){
+          const t=el('div','tarj jus-card'),ch=el('div','jus-chips');t.append(el('h4',null,cs.nombre));
+          ch.append(el('span','jus-chip ok',cs.hechos.length+' hechos oficiales'));if(cs.tipo)ch.append(el('span','jus-chip',cs.tipo));t.append(ch);
+          if(cs.tribunal)t.append(el('p','jus-quien',cs.tribunal));
+          if(cs.fase)t.append(corto('Fase: '+cs.fase,'jus-fase',180));
+          const hecho=h=>{const q=el('div','jus-hecho');q.append(el('b',null,fch(h.fecha)+' · nivel '+h.nivel));const p=el('p',null,h.texto+' ');if(/^https?:/.test(h.fuente)){const a=el('a',null,'Ver fuente');a.href=h.fuente;a.target='_blank';a.rel='noopener';p.append(a)}q.append(p);return q};
+          const cont=el('div','jus-hechos');for(const h of cs.hechos.slice(0,3))cont.append(hecho(h));t.append(cont);
+          if(cs.hechos.length>3){const dt=el('details','jus-mas');dt.append(el('summary',null,'Ver '+(cs.hechos.length-3)+' hechos más'));for(const h of cs.hechos.slice(3))dt.append(hecho(h));t.append(dt)}
+          for(const [et,ls,cl] of [['Prensa (no oficial)',cs.prensa,'jus-prensa'],['Opinión',cs.opinion,'jus-prensa'],['Falta por comprobar',cs.pendiente,'jus-pend']])if((ls||[]).length){const q=el('div',cl);q.append(el('b',null,et));const u=el('ul');for(const x of ls)u.append(el('li',null,x));q.append(u);t.append(q)}
+          g.append(t)}
+        w.append(g);addT(k,bloque('Investigaciones y fondos públicos ('+S.casos.length+' casos)',null,{nivel:S.nivel||'P',t:'Fuentes oficiales; prensa y opinión separadas · leído '+f10(S.leido)},w,true));
+        continue}
+      for(const g of S.grupos)addT(k,bloque(g.grupo,null,{nivel:S.nivel,t:'Leído '+f10(S.leido)+' · cada fila lleva su fecha, nivel y fuente'},tabla(colsF,g.filas),g.filas.length<=8));
+      if(sec==='vivienda'&&(S.ccaa||[]).length){
+        const cc=[{t:'Comunidad',f:r=>r.ccaa},{t:'Deuda jun-26 (M€)',n:1,f:r=>fv(r.deuda)},{t:'Deuda jun-25 (M€)',n:1,f:r=>fv(r.deuda_1a)},{t:'Var. anual (%)',n:1,f:r=>fv(r.var)},{t:'Deuda/PIB 2025 (%, cálculo propio)',n:1,f:r=>fv(r.pct_pib)},{t:'Vivienda 2T-26, var. anual (%)',n:1,f:r=>fv(r.ipv)},{t:'Alquiler 2024, var. (%)',n:1,f:r=>fv(r.ipva)}];
+        addT(k,bloque('Comunidades: deuda y precio de la vivienda',null,{nivel:'P',t:'BdE be1309 (deuda PDE) e INE (IPV, IPVA) · deuda/PIB es aproximación propia; la ratio oficial del BdE puede diferir'},tabla(cc,S.ccaa),false))}
+    }
+    BL.forEach(b=>{const tt=(b.querySelector('summary')||{}).textContent||'';if(/^Electricidad de España \(REE\)/.test(tt))b._t='ene'});
+    for(const [k,sec,re,et] of [['mac','macro',/IPC general, variación anual/,'Inflación anual (IPC)'],['mac','macro',/^Tasa de paro/,'Paro (EPA)'],['mac','macro',/PIB, variación anual \(corregido/,'Crecimiento anual (PIB)'],['mac','macro',/Tasa de crecimiento interanual de afiliados/,'Afiliados, crecimiento anual'],
+      ['ene','energia',/Precio mayorista/,'Luz mayorista (OMIE)'],['ene','energia',/Gasolina 95/,'Gasolina 95'],['ene','energia',/Dependencia energética/,'Dependencia energética'],['ene','energia',/Reserva hídrica/,'Embalses'],
+      ['viv','vivienda',/Precio de la vivienda, variación anual/,'Precio de la vivienda (IPV)'],['viv','vivienda',/Precio escriturado/,'Precio escriturado'],['viv','vivienda',/Tipo de interés medio/,'Tipo hipotecario medio'],['viv','vivienda',/Deuda total de las CCAA/,'Deuda de las CCAA'],
+      ['pen','pensiones',/Pensiones contributivas abonadas/,'Pensiones abonadas'],['pen','pensiones',/Fondo de Reserva de la Seguridad/,'Fondo de Reserva'],['pen','pensiones',/Saldo de la Seguridad Social/,'Saldo de la Seguridad Social'],['pen','pensiones',/Vejez \+ supervivencia/,'Gasto en vejez y viudedad']]){const q=kf(sec,re,et);if(q)RES[k].push(q)}
+    const ci=CF.investigaciones;if(ci){const hs=ci.casos.flatMap(c=>c.hechos.map(h=>h.fecha)).sort();RES.inv=[[String(ci.casos.length),'Casos recogidos (no es lista completa)',null],[String(hs.length),'Hechos oficiales con fecha',null],hs.length?[hs[hs.length-1],'Último hecho recogido',null]:null]}
+  }
   const CM0=B&&B.capitulos_por_ministerio;
   if(CM0)for(const x of CM0.secciones.filter(z=>z.total).slice(0,4))RES.pre.push([n0(x.total)+' M€',x.seccion.charAt(0)+x.seccion.slice(1).toLowerCase()+' · '+fx(x.pct_total_estado,1)+' % del gasto del Estado (2025)',null]);
   const hn=P&&P.espana_hipotecas&&P.espana_hipotecas.numero,ipv=(M.vivienda_hipotecas||[]).find(r=>/Índice de Precios de Vivienda/i.test(r.nombre)),lq=(M.resultados_servicios||[])[0];
