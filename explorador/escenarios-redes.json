@@ -1,5 +1,5 @@
 {
- "_actualizado": "2026-11-16",
+ "_actualizado": "2026-11-17",
  "tarea": "C321, C333",
  "titulo": "Escenarios por red: dónde encaja, qué reglas le aplicarían, cómo sería un pago y una tokenización",
  "nivel": "mixto por paso: P/S si el paso cita un hecho del repo (ref); [ESPECULACIÓN] si lleva razón en vez de fuente",
@@ -274,7 +274,7 @@
    {
     "id": "corredores",
     "titulo": "Corredores de monedas poco líquidas (Kenia, Somalia, países pequeños)",
-    "aviso": "El repo no tiene aún datos oficiales por corredor (Kenia, Somalia): lo que sigue es el marco general y lo que falta por buscar. No se inventan cifras por país.",
+    "aviso": "Kenia tiene ya una cifra oficial de entradas (Banco Central de Kenia, leída el 17-nov-2026); Somalia no: no se obtuvo cifra primaria de remesas. Los costes por corredor del Banco Mundial siguen sin leerse (403). No se inventan cifras por país.",
     "pasos": [
      {
       "t": "Marco medible: los costes de remesas más altos están en África subsahariana (8,78 % al enviar 200 USD según el Banco Mundial 1T-2025, frente a 4,80 % en el sur de Asia); los bancos son el canal más caro (14,55 %). Cifras de resumen de buscador; la web del Banco Mundial bloqueó la lectura.",
@@ -306,9 +306,88 @@
      {
       "t": "Para Kenia o Somalia, lo que cambiaría el coste no es la cadena sino quién mantiene liquidez en la divisa local (anclas, operadores de dinero móvil) y la regulación de entrada de dólares; un activo puente solo ayudaría si hay libros con liquidez real en la divisa local, algo que no está demostrado con fuente.",
       "esp": "Razón: sin mercado de cambio profundo, cualquier ruta (token, stablecoin o fiat) acaba dependiendo de un proveedor local de liquidez [ESPECULACIÓN]"
+     },
+     {
+      "t": "Kenia, entradas formales de remesas (encuesta mensual del Banco Central de Kenia a bancos y proveedores autorizados): octubre de 2026 = 430,5 M USD; suma de los 12 meses nov-2025 a oct-2026 ≈ 5.023 M USD (suma hecha por el repo sobre la tabla; la página no publica ese total). Son canales formales: no incluye lo que circula por vías informales.",
+      "hecho": {
+       "fuente": "Banco Central de Kenia, Diaspora Remittances (tabla mensual, leída por el repo)",
+       "url": "https://www.centralbank.go.ke/diaspora-remittances/",
+       "nivel": "P",
+       "fecha": "2026-11-17"
+      }
+     },
+     {
+      "t": "Somalia: la página país del Banco Mundial no da cifra de remesas; sí dice que el Sistema Nacional de Pagos procesó 2.400 M USD en 2025 (es un dato de pagos, no de remesas) y que el proyecto «Supporting Remittance Flows» (P158235) apoya al Banco Central de Somalia en la supervisión del mercado de remesas. Volumen de remesas, dinero móvil y cierre de cuentas de remesadoras: no leídos.",
+      "hecho": {
+       "fuente": "Banco Mundial, Somalia (página país) y brief KNOMAD (28-sep-2026)",
+       "url": "https://www.worldbank.org/en/country/somalia",
+       "nivel": "P",
+       "fecha": "2026-11-17"
+      }
+     },
+     {
+      "t": "Cifra global de contexto: las remesas sumaron unos 656.000 M USD en 2023 y en más de 60 países pesan el 3 % del PIB o más (brief KNOMAD del Banco Mundial). Dato de escala, no de corredor.",
+      "hecho": {
+       "fuente": "Banco Mundial, KNOMAD remittances brief (contenido fechado 28-sep-2026)",
+       "url": "https://www.worldbank.org/en/topic/migration/brief/remittances-knomad",
+       "nivel": "P",
+       "fecha": "2026-11-17"
+      }
      }
     ],
-    "incertidumbre": "Pendiente de investigar con fuente: corredores concretos con datos del Banco Mundial/FMI (Kenia, Somalia) y de los operadores de dinero móvil; sin ellos, esta sección es marco, no medición."
+    "incertidumbre": "Falta: coste por corredor (remittanceprices.worldbank.org da 403), remesas de Somalia (% del PIB, indicador BX.TRF.PWKR.DT.GD.ZS: tabla no leída), dinero móvil (EVC Plus, ZAAD) y de-risking de remesadoras somalíes con fuente oficial, y 'Remittances by Source' del Banco Central de Kenia (xlsx no leído). Hasta entonces esta sección mezcla un dato real (Kenia) con marco."
+   },
+   {
+    "id": "matriz-pais-dinero",
+    "titulo": "Matriz país × tipo de dinero: qué se puede contar hoy con fuente",
+    "aviso": "Solo CBDC tiene recuento oficial leído. Stablecoin, depósito tokenizado y fiat con corresponsal no tienen un recuento por país comparable en una fuente primaria: sus celdas quedan sin dato, no rellenas. Que un país «explore» no es que lo use.",
+    "pasos": [
+     {
+      "t": "CBDC (Atlantic Council, actualizado mayo-2026): 146 países y uniones monetarias exploran (más del 98 % del PIB mundial; eran 87 en mayo-2022); 77 en fase avanzada (desarrollo, piloto o lanzamiento); 41 pilotos; 3 lanzadas (Bahamas, Jamaica, Nigeria). El desglose exacto por estado (I+D, cancelada/inactiva) está en un mapa interactivo que no se pudo leer.",
+      "hecho": {
+       "fuente": "Atlantic Council, CBDC Tracker",
+       "url": "https://www.atlanticcouncil.org/cbdctracker/",
+       "nivel": "P",
+       "fecha": "2026-11-17"
+      }
+     },
+     {
+      "t": "Bloques: en el G20 todos salvo EE. UU. exploran una CBDC (18 en fase avanzada, 14 en piloto); los 11 miembros del BRICS exploran; 13 proyectos mayoristas transfronterizos (mBridge incluido). Canadá, Australia y Noruega han bajado la prioridad de la CBDC minorista.",
+      "hecho": {
+       "fuente": "Atlantic Council, CBDC Tracker",
+       "url": "https://www.atlanticcouncil.org/cbdctracker/",
+       "nivel": "P",
+       "fecha": "2026-11-17"
+      }
+     },
+     {
+      "t": "Bancos centrales (BIS Paper 159, encuesta 2024, publicado 22-ago-2025): de 93 encuestados, el 91 % (85) exploraba una CBDC minorista, mayorista o ambas; la exploración mayorista va más avanzada que la minorista; más de uno de cada tres países aceleró su trabajo por las stablecoins y otros criptoactivos. Los porcentajes separados minorista/mayorista están en el PDF, no leídos.",
+      "hecho": {
+       "fuente": "BIS Paper 159, Advancing in tandem (Illes, Kosse, Wierts)",
+       "url": "https://www.bis.org/publ/bppdf/bispap159.htm",
+       "nivel": "P",
+       "fecha": "2026-11-17"
+      }
+     },
+     {
+      "t": "Las stablecoins en dólares explican parte del interés por la CBDC minorista en Ruanda, Kazajistán y Bolivia según el Atlantic Council: la stablecoin extranjera es en esos casos un motivo para la CBDC, no un sustituto.",
+      "hecho": {
+       "fuente": "Atlantic Council, CBDC Tracker",
+       "url": "https://www.atlanticcouncil.org/cbdctracker/",
+       "nivel": "P",
+       "fecha": "2026-11-17"
+      }
+     },
+     {
+      "t": "Stablecoin, depósito tokenizado y fiat con corresponsal: no hay en el repo un recuento de países por estado con fuente primaria comparable (la página del Atlantic Council tampoco da una lista de prohibiciones). Las celdas quedan en blanco.",
+      "esp": "Razón: contar países por tipo de dinero exigiría leer leyes nacionales una a una; hasta hacerlo, cualquier cifra sería relleno [VERIFICAR]"
+     },
+     {
+      "t": "Lectura crítica: las tres CBDC lanzadas son de economías pequeñas o con problemas de acceso; el grueso del número (146) es «explorar», que es la fase más barata. Contar 146 como adopción sería un error de lectura [ESPECULACIÓN] con la razón de que 77 en fase avanzada incluye pilotos que pueden no llegar a producción.",
+      "esp": "Razón: el propio tracker separa explorar (146), avanzada (77), piloto (41) y lanzada (3); la caída de cada escalón indica filtro, no avance"
+     }
+    ],
+    "incertidumbre": "Pendiente: recuento por país de stablecoin permitida/restringida/prohibida (leyes nacionales), depósitos tokenizados en producción y desglose minorista/mayorista del PDF del BIS."
    },
    {
     "id": "bloques-bis",

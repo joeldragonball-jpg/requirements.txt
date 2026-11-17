@@ -1,0 +1,198 @@
+{
+ "titulo": "España: energía (precio eléctrico, combustibles, dependencia, mix, embalses)",
+ "nivel": "P",
+ "leido": "2026-11-17",
+ "_nota": "C233. Nivel P = fuente oficial leída; S = prensa; VERIFICAR = sin cifra leída. Combustibles del Boletín Petrolero: € por litro = (€/1000 l)/1000, con impuestos. No sustituye a espana-energia-vivienda.json (REData diario).",
+ "electricidad": [
+  {
+   "nombre": "Precio mayorista (mercado diario OMIE), media de octubre",
+   "valor": 168.93,
+   "unidad": "€/MWh",
+   "anio": "oct-2026",
+   "fuente": "https://www.omie.es/es/file-download?parents%5B0%5D=marginalpdbc (ficheros marginalpdbc_AAAAMMDD)",
+   "nivel": "P",
+   "nota": "Cálculo propio: media simple de las medias diarias de los ficheros oficiales de OMIE (precio marginal, zona España); no es la cifra mensual publicada por OMIE. Máx. diario 249,27 €/MWh; máx. de un periodo 359,07 €/MWh."
+  },
+  {
+   "nombre": "Precio mayorista (mercado diario OMIE), media de octubre",
+   "valor": 76.02,
+   "unidad": "€/MWh",
+   "anio": "oct-2025",
+   "fuente": "https://www.omie.es/es/file-download?parents%5B0%5D=marginalpdbc (ficheros marginalpdbc_AAAAMMDD)",
+   "nivel": "P",
+   "nota": "Cálculo propio: media simple de las medias diarias de los ficheros oficiales de OMIE (precio marginal, zona España); no es la cifra mensual publicada por OMIE. Octubre 2026 es ≈ 2,2 veces octubre 2025 (+122 %)."
+  },
+  {
+   "nombre": "Precio mayorista (mercado diario OMIE), media de septiembre",
+   "valor": 143.9,
+   "unidad": "€/MWh",
+   "anio": "sep-2026",
+   "fuente": "https://www.omie.es/es/file-download?parents%5B0%5D=marginalpdbc (ficheros marginalpdbc_AAAAMMDD)",
+   "nivel": "P",
+   "nota": "Cálculo propio: media simple de las medias diarias de los ficheros oficiales de OMIE (precio marginal, zona España); no es la cifra mensual publicada por OMIE. La prensa citaba 143,72 (diferencia de método)."
+  },
+  {
+   "nombre": "Precio mayorista (mercado diario OMIE), 1 a 16 de noviembre",
+   "valor": 186.08,
+   "unidad": "€/MWh",
+   "anio": "1-16 nov-2026",
+   "fuente": "https://www.omie.es/es/file-download?parents%5B0%5D=marginalpdbc (ficheros marginalpdbc_AAAAMMDD)",
+   "nivel": "P",
+   "nota": "Cálculo propio: media simple de las medias diarias de los ficheros oficiales de OMIE (precio marginal, zona España); no es la cifra mensual publicada por OMIE. Mes incompleto (16 días); máx. diario 257,55 €/MWh."
+  }
+ ],
+ "mix_generacion": [
+  {
+   "nombre": "Ciclo combinado, cuota de la generación nacional",
+   "valor": 21.4,
+   "unidad": "%",
+   "anio": "oct-2026",
+   "fuente": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion",
+   "nivel": "P",
+   "nota": "4.845 GWh de 22.694 GWh totales (REE REData, estructura de generación). Septiembre: 20,9 %."
+  },
+  {
+   "nombre": "Eólica, cuota de la generación nacional",
+   "valor": 17.5,
+   "unidad": "%",
+   "anio": "oct-2026",
+   "fuente": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion",
+   "nivel": "P",
+   "nota": "3.981 GWh. Septiembre: 14,4 %."
+  },
+  {
+   "nombre": "Solar fotovoltaica, cuota de la generación nacional",
+   "valor": 21.0,
+   "unidad": "%",
+   "anio": "oct-2026",
+   "fuente": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion",
+   "nivel": "P",
+   "nota": "4.759 GWh. Septiembre: 26,2 %."
+  },
+  {
+   "nombre": "Nuclear, cuota de la generación nacional",
+   "valor": 21.7,
+   "unidad": "%",
+   "anio": "oct-2026",
+   "fuente": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion",
+   "nivel": "P",
+   "nota": "4.933 GWh. Hidráulica 7,1 %."
+  },
+  {
+   "nombre": "Generación nacional total",
+   "valor": 22.69,
+   "unidad": "TWh",
+   "anio": "oct-2026",
+   "fuente": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion",
+   "nivel": "P",
+   "nota": "22.694 GWh (septiembre 24.053 GWh). Dato provisional de REData."
+  }
+ ],
+ "combustibles": [
+  {
+   "nombre": "Gasolina 95 en España (con impuestos)",
+   "valor": 1.73,
+   "unidad": "€/l",
+   "anio": "9-nov-2026",
+   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History)",
+   "nivel": "P",
+   "nota": "Boletín Petrolero UE, hoja «Prices with taxes», semana del 9-nov-2026."
+  },
+  {
+   "nombre": "Gasolina 95, media UE-27 (con impuestos)",
+   "valor": 1.877,
+   "unidad": "€/l",
+   "anio": "9-nov-2026",
+   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History)",
+   "nivel": "P",
+   "nota": "España queda ≈ 0,147 €/l por debajo. Francia 2,088; Alemania 2,067; Italia 1,995; Portugal 1,922."
+  },
+  {
+   "nombre": "Gasóleo en España (con impuestos)",
+   "valor": 1.898,
+   "unidad": "€/l",
+   "anio": "9-nov-2026",
+   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History)",
+   "nivel": "P",
+   "nota": "Boletín Petrolero UE."
+  },
+  {
+   "nombre": "Gasóleo, media UE-27 (con impuestos)",
+   "valor": 2.097,
+   "unidad": "€/l",
+   "anio": "9-nov-2026",
+   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History)",
+   "nivel": "P",
+   "nota": "España queda ≈ 0,199 €/l por debajo. Francia 2,178; Alemania 2,253; Italia 2,218; Portugal 2,135."
+  },
+  {
+   "nombre": "Gasolina 95 en España, un año antes",
+   "valor": 1.477,
+   "unidad": "€/l",
+   "anio": "10-nov-2025",
+   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History)",
+   "nivel": "P",
+   "nota": "Variación interanual ≈ +17 %. UE-27: 1,625 €/l."
+  },
+  {
+   "nombre": "Gasóleo en España, un año antes",
+   "valor": 1.425,
+   "unidad": "€/l",
+   "anio": "10-nov-2025",
+   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History)",
+   "nivel": "P",
+   "nota": "Variación interanual ≈ +33 %. UE-27: 1,571 €/l. La rebaja temporal de 20 cént./l del impuesto (Selectra, nivel S) no se ha verificado en fuente oficial [VERIFICAR]."
+  }
+ ],
+ "dependencia_energetica": [
+  {
+   "nombre": "Dependencia energética de España",
+   "valor": 68.9,
+   "unidad": "%",
+   "anio": "2024",
+   "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ind_id?geo=ES&siec=TOTAL&unit=PC",
+   "nivel": "P",
+   "nota": "Eurostat nrg_ind_id, actualizado 16-jul-2026. 2022: 74,2 %; 2023: 68,3 %. Difiere de 68,4 % (MITECO vía Endesa, nivel S)."
+  },
+  {
+   "nombre": "Dependencia energética de la UE-27",
+   "valor": 57.3,
+   "unidad": "%",
+   "anio": "2024",
+   "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ind_id?geo=EU27_2020&siec=TOTAL&unit=PC",
+   "nivel": "P",
+   "nota": "2022: 62,5 %; 2023: 58,3 %. España ≈ 11,6 puntos por encima."
+  }
+ ],
+ "embalses": [
+  {
+   "nombre": "Reserva hídrica española",
+   "valor": 56.8,
+   "unidad": "% de la capacidad",
+   "anio": "27-oct-2026",
+   "fuente": "https://www.miteco.gob.es/es/prensa/ultimas-noticias/2026/octubre/la-reserva-hidrica-espanola-se-encuentra-al-56-8---de-su-capacid.html",
+   "nivel": "P",
+   "nota": "31.809 hm³ almacenados; −253 hm³ en la semana. 20-oct: 57,2 %; 22-sep: 61,8 %. Notas del 3 y 10-nov no publicadas en el feed de MITECO [VERIFICAR]."
+  }
+ ],
+ "gas": [
+  {
+   "nombre": "Reservas de gas y precio MIBGAS/TTF",
+   "valor": null,
+   "unidad": "% / €/MWh",
+   "anio": "nov-2026",
+   "fuente": "https://agsi.gie.eu",
+   "nivel": "VERIFICAR",
+   "nota": "AGSI+ exige clave de API; MIBGAS no leído. Sin cifra: no usar valores de memoria."
+  },
+  {
+   "nombre": "Importaciones de gas natural 2025",
+   "valor": 371727,
+   "unidad": "GWh",
+   "anio": "2025",
+   "fuente": "https://www.cores.es/sites/default/files/archivos/icores/i-cores-imp-export-gn-dic25.pdf",
+   "nivel": "S",
+   "nota": "Vía búsqueda (informe previo 10-nov); no releído en esta pasada [VERIFICAR]."
+  }
+ ]
+}

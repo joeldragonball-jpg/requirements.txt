@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-16",
+ "generado": "2026-11-17",
  "metodo": "flujo diario = (acciones_t - acciones_t-1) x NAV_t; requiere >=2 instantáneas. Las webs de emisores solo muestran la última, así que el historial se acumula con scripts/leer_etf_flujos.py (una instantánea por día hábil). Al 15-nov (domingo) las webs repiten el ultimo dia habil (12/13-nov): 1 instantanea diaria por fondo, flujo diario = null. XRPZ, XRPC y GXLM solo tienen datos trimestrales/portada de la SEC (10-Q del 13-nov y 10-nov-2026).",
  "nota_nivel": "P = leido en la web del emisor o en EDGAR (10-Q; parte interesada, no auditado). Agregadores (Farside, SoSoValue) solo como contraste [S]; no consultados.",
  "etfs": [
@@ -21,10 +21,21 @@
      "fuente": "https://bitxrpetf.com/",
      "nivel": "P (emisor, parte interesada)",
      "nota": "NAV 11,53 $ es del 11-nov; acciones, tenencia y AUM del 12-nov (según la propia web)"
+    },
+    {
+     "fecha": "2026-11-13",
+     "acciones": 36440000.0,
+     "nav": 11.44,
+     "tenencia_monedas": 406770577.61,
+     "fuente": "https://www.bitwiseetfs.com/single-asset/xrp",
+     "nivel": "P (emisor, parte interesada)",
+     "aum_usd": 416890393.0,
+     "nota": "17-nov, Chrome: bloque Product Details con fecha 13-nov: 36.440.000 acciones, NAV 11,44, AUM 416,89 M (igual que el 12-nov); Holdings fechado 16-nov con las mismas 406.770.577,61 XRP. Flujo 13-nov = 0 (sin variacion de acciones)",
+     "flujo_usd": 0
     }
    ],
-   "flujo_usd": null,
-   "flujo_motivo": "solo una instantánea de acciones (36.440.000 al 12-nov); falta la del día anterior"
+   "flujo_usd": 0,
+   "flujo_fecha": "2026-11-13"
   },
   {
    "ticker": "TOXR",
@@ -42,10 +53,21 @@
      "fuente": "https://www.21shares.com/en-us/products-us/toxr",
      "nivel": "P (emisor)",
      "tenencia_monedas": 107073960.56
+    },
+    {
+     "fecha": "2026-11-16",
+     "acciones": 11000000.0,
+     "nav": 9.32,
+     "tenencia_monedas": 107073960.56,
+     "fuente": "https://www.21shares.com/en-us/products-us/toxr",
+     "nivel": "P (emisor, parte interesada)",
+     "aum_usd": 102477649.44,
+     "nota": "17-nov, Chrome: 'As of Nov 16, 2026': 11.000.000 acciones, NAV 9,32, AUM 102.477.649,44; 'reference price $0.96' de la web es incoherente con NAV (9,32 = AUM/acciones) [VERIFICAR]. Flujo 0 (acciones sin cambio)",
+     "flujo_usd": 0
     }
    ],
-   "flujo_usd": null,
-   "flujo_motivo": "solo una instantanea (13-nov); 15-nov es domingo y la web no tiene dato nuevo; falta la del dia habil siguiente"
+   "flujo_usd": 0,
+   "flujo_fecha": "2026-11-16"
   },
   {
    "ticker": "XRPZ",
@@ -195,14 +217,29 @@
      "nivel": "P (emisor, parte interesada)",
      "aum_usd": 59343931.0,
      "nota": "AUM 59.343.931 USD (no GAAP), acciones 3.000.100, XRP en fondo 58.060.446,312 (13-nov, web Grayscale); NAV = AUM/acciones (derivado); 19,35283701 XRP por accion"
+    },
+    {
+     "fecha": "2026-11-16",
+     "acciones": 2720100.0,
+     "nav": 18.4803,
+     "tenencia_monedas": 52640033.6927,
+     "fuente": "https://etfs.grayscale.com/gxrp",
+     "nivel": "P (emisor, parte interesada)",
+     "aum_usd": 50271127.0,
+     "nota": "17-nov, Chrome: 'As of 11/16/2026': AUM no GAAP 50.271.127 USD, 2.720.100 acciones, 52.640.033,6927 XRP; NAV = AUM/acciones (derivado, 18,4803). Acciones -280.000 (-9,3 %) y XRP en fondo -5,42 M vs 13-nov",
+     "flujo_usd": -5174484
     }
    ],
-   "flujo_usd": null
+   "flujo_usd": -5174484,
+   "flujo_fecha": "2026-11-16"
   }
  ],
  "bloques_no_hechos": {
   "btc": "C280 (15-nov): leidos IBIT (iShares), FBTC (Fidelity) y EZBC (Franklin) con nivel P. Pendiente: tenencia de BTC de IBIT y acciones reales de FBTC (la web dice 'no disponible'; derivadas por BTC x acciones/BTC).",
-  "13f_3T": "plazo 16-nov-2026; la búsqueda de texto completo de EDGAR (leer_edgar.py) no indexa las tablas de posiciones del 13F, hay que leer el infotable XML por declarante (método de R21/R21b). Pendiente de tras el plazo."
+  "13f_3T": "HECHO el 17-nov (ver 13f_3T); completitud parcial; falta leer en EDGAR el XML de los demas declarantes grandes (solo Goldman contrastado).",
+  "xrpz_xrpc": "sin web diaria legible (Franklin 404, Canary ERR_SSL): solo 10-Q; flujo diario = null [VERIFICAR]",
+  "xlm": "no hay ETF spot de XLM cotizado en bolsa en EE. UU. con datos: solo el fideicomiso OTC GXLM (10-Q 30-sep); sin acciones diarias. 13F: 0 filas.",
+  "btc_17nov": "2.a instantanea de IBIT/FBTC/EZBC no leida el 17-nov: flujo diario BTC = null [VERIFICAR]"
  },
  "trackers_contraste": {
   "nivel": "S (agregador; no auditado)",
@@ -237,5 +274,655 @@
    "nota": "columnas del cuadro de Farside; contraste, no sustituye al cálculo con acciones x NAV del emisor"
   },
   "xrp_xlm": "Farside no tiene página de XRP (404 el 16-nov); SoSoValue bloquea con verificación de bots (Cloudflare, no se salta): flujos diarios agregados de XRP [VERIFICAR]"
+ },
+ "13f_3T": {
+  "periodo": "2026-09-30",
+  "leido": "2026-11-17",
+  "nivel": "S (13f.info, agregador) contrastado con P solo en Goldman Sachs Group (13F-HR 0000886982-26-000647, EDGAR, infotable XML leido en Chrome: coincide al dolar en los 5 ETF de XRP leidos y en IBIT/FBTC)",
+  "completitud": "PARCIAL [VERIFICAR]: el plazo vencio el 16-nov; 13f.info ya indexa los 13F-HR presentados pero pueden faltar los de ultima hora o con retraso; repetir en unos dias. 13f.info no lista filas para GXLM (CUSIP 38963R105): 0 declarantes (fideicomiso OTC).",
+  "union_xrp": {
+   "declarantes_3T": 190,
+   "declarantes_2T": 163,
+   "nuevos_vs_2T": 47,
+   "ya_no_aparecen_vs_2T": 20,
+   "nota": "union de los 7 CUSIP de XRP (XRP, XRPZ, XRPC, GXRP, TOXR, XRPI, XRPR); 2T tambien de 13f.info, recuento mio. Los 'ya no aparecen' pueden ser 13F aun no presentados"
+  },
+  "fondos": {
+   "XRP": {
+    "nombre": "Bitwise XRP ETF",
+    "cusip": "09174F107",
+    "declarantes": 99,
+    "valor_declarado_usd_miles": 139730,
+    "acciones_declaradas": 8414700,
+    "declarantes_2T": 70,
+    "valor_2T_usd_miles": 71679,
+    "acciones_2T": 6149732,
+    "top10": [
+     {
+      "declarante": "GOLDMAN SACHS GROUP INC",
+      "cik": "0000886982",
+      "valor_usd_miles": 38375,
+      "acciones": 2307591
+     },
+     {
+      "declarante": "SUSQUEHANNA INTERNATIONAL GROUP, LLP",
+      "cik": "0001446194",
+      "valor_usd_miles": 14614,
+      "acciones": 878786
+     },
+     {
+      "declarante": "JANE STREET GROUP, LLC",
+      "cik": "0001595888",
+      "valor_usd_miles": 12197,
+      "acciones": 733472
+     },
+     {
+      "declarante": "Marex Group Ltd",
+      "cik": "0001997464",
+      "valor_usd_miles": 10713,
+      "acciones": 644239
+     },
+     {
+      "declarante": "Schonfeld Strategic Advisors LLC",
+      "cik": "0001665241",
+      "valor_usd_miles": 9978,
+      "acciones": 600000
+     },
+     {
+      "declarante": "IronBridge Private Wealth, LLC",
+      "cik": "0001850996",
+      "valor_usd_miles": 8702,
+      "acciones": 523291
+     },
+     {
+      "declarante": "MILLENNIUM MANAGEMENT LLC",
+      "cik": "0001273087",
+      "valor_usd_miles": 8246,
+      "acciones": 495856
+     },
+     {
+      "declarante": "Intesa Sanpaolo S.p.A.",
+      "cik": "0001374384",
+      "valor_usd_miles": 6697,
+      "acciones": 402750
+     },
+     {
+      "declarante": "INTEGRITY ALLIANCE, LLC.",
+      "cik": "0001352260",
+      "valor_usd_miles": 3650,
+      "acciones": 219495
+     },
+     {
+      "declarante": "KALEIDOSCOPE CAPITAL LP",
+      "cik": "0001702912",
+      "valor_usd_miles": 3511,
+      "acciones": 211158
+     }
+    ]
+   },
+   "XRPZ": {
+    "nombre": "Franklin XRP Trust",
+    "cusip": "355233107",
+    "declarantes": 60,
+    "valor_declarado_usd_miles": 80664,
+    "acciones_declaradas": 4995570,
+    "declarantes_2T": 47,
+    "valor_2T_usd_miles": 35166,
+    "acciones_2T": 3095803,
+    "top10": [
+     {
+      "declarante": "GOLDMAN SACHS GROUP INC",
+      "cik": "0000886982",
+      "valor_usd_miles": 47783,
+      "acciones": 2953228
+     },
+     {
+      "declarante": "SUSQUEHANNA INTERNATIONAL GROUP, LLP",
+      "cik": "0001446194",
+      "valor_usd_miles": 6823,
+      "acciones": 421700
+     },
+     {
+      "declarante": "JANE STREET GROUP, LLC",
+      "cik": "0001595888",
+      "valor_usd_miles": 5003,
+      "acciones": 309254
+     },
+     {
+      "declarante": "Kovack Advisors, Inc.",
+      "cik": "0001728321",
+      "valor_usd_miles": 3520,
+      "acciones": 216222
+     },
+     {
+      "declarante": "Inscription Capital, LLC",
+      "cik": "0001767868",
+      "valor_usd_miles": 1832,
+      "acciones": 113258
+     },
+     {
+      "declarante": "Beacon Pointe Advisors, LLC",
+      "cik": "0001744317",
+      "valor_usd_miles": 1718,
+      "acciones": 106208
+     },
+     {
+      "declarante": "KALEIDOSCOPE CAPITAL LP",
+      "cik": "0001702912",
+      "valor_usd_miles": 1596,
+      "acciones": 98666
+     },
+     {
+      "declarante": "MILLENNIUM MANAGEMENT LLC",
+      "cik": "0001273087",
+      "valor_usd_miles": 1434,
+      "acciones": 88661
+     },
+     {
+      "declarante": "RPO LLC",
+      "cik": "0001885066",
+      "valor_usd_miles": 1279,
+      "acciones": 79050
+     },
+     {
+      "declarante": "Larson Financial Group LLC",
+      "cik": "0001731061",
+      "valor_usd_miles": 1207,
+      "acciones": 74639
+     }
+    ]
+   },
+   "XRPC": {
+    "nombre": "Canary XRP ETF",
+    "cusip": "13723M100",
+    "declarantes": 45,
+    "valor_declarado_usd_miles": 66625,
+    "acciones_declaradas": 4229369,
+    "declarantes_2T": 42,
+    "valor_2T_usd_miles": 38953,
+    "acciones_2T": 3515497,
+    "top10": [
+     {
+      "declarante": "GOLDMAN SACHS GROUP INC",
+      "cik": "0000886982",
+      "valor_usd_miles": 33258,
+      "acciones": 2108998
+     },
+     {
+      "declarante": "MILLENNIUM MANAGEMENT LLC",
+      "cik": "0001273087",
+      "valor_usd_miles": 12175,
+      "acciones": 772054
+     },
+     {
+      "declarante": "SUSQUEHANNA INTERNATIONAL GROUP, LLP",
+      "cik": "0001446194",
+      "valor_usd_miles": 4743,
+      "acciones": 300821
+     },
+     {
+      "declarante": "Marex Group Ltd",
+      "cik": "0001997464",
+      "valor_usd_miles": 4005,
+      "acciones": 253991
+     },
+     {
+      "declarante": "JANE STREET GROUP, LLC",
+      "cik": "0001595888",
+      "valor_usd_miles": 3126,
+      "acciones": 198266
+     },
+     {
+      "declarante": "CreativeOne Wealth, LLC",
+      "cik": "0001739728",
+      "valor_usd_miles": 2891,
+      "acciones": 183345
+     },
+     {
+      "declarante": "FLOW TRADERS U.S. LLC",
+      "cik": "0001466697",
+      "valor_usd_miles": 1091,
+      "acciones": 69212
+     },
+     {
+      "declarante": "Gallacher Capital Management LLC",
+      "cik": "0001960749",
+      "valor_usd_miles": 976,
+      "acciones": 61929
+     },
+     {
+      "declarante": "RPO LLC",
+      "cik": "0001885066",
+      "valor_usd_miles": 741,
+      "acciones": 47000
+     },
+     {
+      "declarante": "CITADEL ADVISORS LLC",
+      "cik": "0001423053",
+      "valor_usd_miles": 692,
+      "acciones": 43902
+     }
+    ]
+   },
+   "GXRP": {
+    "nombre": "Grayscale XRP Trust ETF",
+    "cusip": "38965L106",
+    "declarantes": 21,
+    "valor_declarado_usd_miles": 45459,
+    "acciones_declaradas": 1578728,
+    "declarantes_2T": 19,
+    "valor_2T_usd_miles": 24176,
+    "acciones_2T": 1194152,
+    "top10": [
+     {
+      "declarante": "Intesa Sanpaolo S.p.A.",
+      "cik": "0001374384",
+      "valor_usd_miles": 20515,
+      "acciones": 712319
+     },
+     {
+      "declarante": "GOLDMAN SACHS GROUP INC",
+      "cik": "0000886982",
+      "valor_usd_miles": 14501,
+      "acciones": 503523
+     },
+     {
+      "declarante": "SUSQUEHANNA INTERNATIONAL GROUP, LLP",
+      "cik": "0001446194",
+      "valor_usd_miles": 5741,
+      "acciones": 199374
+     },
+     {
+      "declarante": "MILLENNIUM MANAGEMENT LLC",
+      "cik": "0001273087",
+      "valor_usd_miles": 1226,
+      "acciones": 42575
+     },
+     {
+      "declarante": "Windle Wealth, LLC",
+      "cik": "0001963452",
+      "valor_usd_miles": 1005,
+      "acciones": 34897
+     },
+     {
+      "declarante": "FLOW TRADERS U.S. LLC",
+      "cik": "0001466697",
+      "valor_usd_miles": 799,
+      "acciones": 27743
+     },
+     {
+      "declarante": "RPO LLC",
+      "cik": "0001885066",
+      "valor_usd_miles": 673,
+      "acciones": 23400
+     },
+     {
+      "declarante": "DRW Securities, LLC",
+      "cik": "0001481986",
+      "valor_usd_miles": 315,
+      "acciones": 10964
+     },
+     {
+      "declarante": "L & S Advisors Inc",
+      "cik": "0001392364",
+      "valor_usd_miles": 308,
+      "acciones": 10696
+     },
+     {
+      "declarante": "INSPIRION WEALTH ADVISORS, LLC",
+      "cik": "0001633448",
+      "valor_usd_miles": 271,
+      "acciones": 9428
+     }
+    ]
+   },
+   "TOXR": {
+    "nombre": "21Shares XRP ETF",
+    "cusip": "90137T103",
+    "declarantes": 6,
+    "valor_declarado_usd_miles": 10941,
+    "acciones_declaradas": 755262,
+    "declarantes_2T": 5,
+    "valor_2T_usd_miles": 9424,
+    "acciones_2T": 925943,
+    "top10": [
+     {
+      "declarante": "GOLDMAN SACHS GROUP INC",
+      "cik": "0000886982",
+      "valor_usd_miles": 10081,
+      "acciones": 695767
+     },
+     {
+      "declarante": "Teucrium Investment Advisors, LLC",
+      "cik": "0002055352",
+      "valor_usd_miles": 218,
+      "acciones": 15112
+     },
+     {
+      "declarante": "FLOW TRADERS U.S. LLC",
+      "cik": "0001466697",
+      "valor_usd_miles": 193,
+      "acciones": 13311
+     },
+     {
+      "declarante": "SUSQUEHANNA INTERNATIONAL GROUP, LLP",
+      "cik": "0001446194",
+      "valor_usd_miles": 182,
+      "acciones": 12572
+     },
+     {
+      "declarante": "RPO LLC",
+      "cik": "0001885066",
+      "valor_usd_miles": 150,
+      "acciones": 10400
+     },
+     {
+      "declarante": "Blue Trust, Inc.",
+      "cik": "0001856022",
+      "valor_usd_miles": 117,
+      "acciones": 8100
+     }
+    ]
+   },
+   "XRPI": {
+    "nombre": "Volatility Shares XRP ETF",
+    "cusip": "92864M780",
+    "declarantes": 42,
+    "valor_declarado_usd_miles": 13617,
+    "acciones_declaradas": 1696663,
+    "declarantes_2T": 39,
+    "valor_2T_usd_miles": 11362,
+    "acciones_2T": 1982526,
+    "top10": [
+     {
+      "declarante": "IronBridge Private Wealth, LLC",
+      "cik": "0001850996",
+      "valor_usd_miles": 5475,
+      "acciones": 681086
+     },
+     {
+      "declarante": "JANE STREET GROUP, LLC",
+      "cik": "0001595888",
+      "valor_usd_miles": 1846,
+      "acciones": 229710
+     },
+     {
+      "declarante": "Tactive Advisors, LLC",
+      "cik": "0002002409",
+      "valor_usd_miles": 1728,
+      "acciones": 214953
+     },
+     {
+      "declarante": "UBS Group AG",
+      "cik": "0001610520",
+      "valor_usd_miles": 1589,
+      "acciones": 197676
+     },
+     {
+      "declarante": "FLOW TRADERS U.S. LLC",
+      "cik": "0001466697",
+      "valor_usd_miles": 567,
+      "acciones": 70490
+     },
+     {
+      "declarante": "CITADEL ADVISORS LLC",
+      "cik": "0001423053",
+      "valor_usd_miles": 443,
+      "acciones": 55144
+     },
+     {
+      "declarante": "Blue Trust, Inc.",
+      "cik": "0001856022",
+      "valor_usd_miles": 361,
+      "acciones": 44980
+     },
+     {
+      "declarante": "HARBOUR INVESTMENTS, INC.",
+      "cik": "0000810121",
+      "valor_usd_miles": 312,
+      "acciones": 38904
+     },
+     {
+      "declarante": "EP Wealth Advisors, LLC",
+      "cik": "0001540569",
+      "valor_usd_miles": 147,
+      "acciones": 18400
+     },
+     {
+      "declarante": "IMC-Chicago, LLC",
+      "cik": "0001452861",
+      "valor_usd_miles": 144,
+      "acciones": 17981
+     }
+    ]
+   },
+   "XRPR": {
+    "nombre": "REX-Osprey XRP ETF",
+    "cusip": "26923N231",
+    "declarantes": 25,
+    "valor_declarado_usd_miles": 8550,
+    "acciones_declaradas": 704809,
+    "declarantes_2T": 27,
+    "valor_2T_usd_miles": 5095,
+    "acciones_2T": 592620,
+    "top10": [
+     {
+      "declarante": "CITADEL ADVISORS LLC",
+      "cik": "0001423053",
+      "valor_usd_miles": 2715,
+      "acciones": 223490
+     },
+     {
+      "declarante": "GOLDMAN SACHS GROUP INC",
+      "cik": "0000886982",
+      "valor_usd_miles": 1336,
+      "acciones": 110000
+     },
+     {
+      "declarante": "Realta Investment Advisors",
+      "cik": "0001776792",
+      "valor_usd_miles": 1037,
+      "acciones": 85419
+     },
+     {
+      "declarante": "MUSTICO FINANCIAL GROUP, INC.",
+      "cik": "0002034361",
+      "valor_usd_miles": 1016,
+      "acciones": 83688
+     },
+     {
+      "declarante": "IMC-Chicago, LLC",
+      "cik": "0001452861",
+      "valor_usd_miles": 585,
+      "acciones": 48225
+     },
+     {
+      "declarante": "JANE STREET GROUP, LLC",
+      "cik": "0001595888",
+      "valor_usd_miles": 528,
+      "acciones": 43466
+     },
+     {
+      "declarante": "Inscription Capital, LLC",
+      "cik": "0001767868",
+      "valor_usd_miles": 478,
+      "acciones": 39409
+     },
+     {
+      "declarante": "Visionary Wealth Advisors",
+      "cik": "0001802984",
+      "valor_usd_miles": 230,
+      "acciones": 19005
+     },
+     {
+      "declarante": "Foundations Investment Advisors, LLC",
+      "cik": "0001743404",
+      "valor_usd_miles": 151,
+      "acciones": 12439
+     },
+     {
+      "declarante": "Walser Wealth Management Company, A Ltd Liability Co",
+      "cik": "0002112280",
+      "valor_usd_miles": 151,
+      "acciones": 12439
+     }
+    ]
+   },
+   "GXLM": {
+    "nombre": "Grayscale Stellar Lumens Trust (OTC)",
+    "cusip": "38963R105",
+    "declarantes": 0,
+    "valor_declarado_usd_miles": 0,
+    "acciones_declaradas": 0,
+    "declarantes_2T": null,
+    "valor_2T_usd_miles": null,
+    "acciones_2T": null,
+    "top10": []
+   },
+   "IBIT": {
+    "nombre": "iShares Bitcoin Trust ETF",
+    "cusip": "46438F101",
+    "declarantes": 1654,
+    "valor_declarado_usd_miles": 19419158,
+    "acciones_declaradas": 410552710,
+    "declarantes_2T": 1501,
+    "valor_2T_usd_miles": 11576640,
+    "acciones_2T": 346804108,
+    "top10": [
+     {
+      "declarante": "WELLS FARGO & COMPANY/MN",
+      "cik": "0000072971",
+      "valor_usd_miles": 2346979,
+      "acciones": 49577094
+     },
+     {
+      "declarante": "Brevan Howard Capital Management LP",
+      "cik": "0001512857",
+      "valor_usd_miles": 1060676,
+      "acciones": 22405494
+     },
+     {
+      "declarante": "MILLENNIUM MANAGEMENT LLC",
+      "cik": "0001273087",
+      "valor_usd_miles": 985507,
+      "acciones": 20817656
+     },
+     {
+      "declarante": "JANE STREET GROUP, LLC",
+      "cik": "0001595888",
+      "valor_usd_miles": 957268,
+      "acciones": 20221140
+     },
+     {
+      "declarante": "MORGAN STANLEY",
+      "cik": "0000895421",
+      "valor_usd_miles": 923927,
+      "acciones": 19516853
+     },
+     {
+      "declarante": "BlackRock, Inc.",
+      "cik": "0002012383",
+      "valor_usd_miles": 798733,
+      "acciones": 16872282
+     },
+     {
+      "declarante": "GOLDMAN SACHS GROUP INC",
+      "cik": "0000886982",
+      "valor_usd_miles": 778297,
+      "acciones": 16440599
+     },
+     {
+      "declarante": "Mubadala Investment Co PJSC",
+      "cik": "0001704268",
+      "valor_usd_miles": 696935,
+      "acciones": 14721917
+     },
+     {
+      "declarante": "BANK OF AMERICA CORP /DE/",
+      "cik": "0000070858",
+      "valor_usd_miles": 685448,
+      "acciones": 14479277
+     },
+     {
+      "declarante": "JPMORGAN CHASE & CO",
+      "cik": "0000019617",
+      "valor_usd_miles": 539984,
+      "acciones": 11408930
+     }
+    ]
+   },
+   "FBTC": {
+    "nombre": "Fidelity Wise Origin Bitcoin",
+    "cusip": "315948109",
+    "declarantes": 667,
+    "valor_declarado_usd_miles": 3527996,
+    "acciones_declaradas": 47617130,
+    "declarantes_2T": 634,
+    "valor_2T_usd_miles": 1719042,
+    "acciones_2T": 33589310,
+    "top10": [
+     {
+      "declarante": "JANE STREET GROUP, LLC",
+      "cik": "0001595888",
+      "valor_usd_miles": 509206,
+      "acciones": 7010008
+     },
+     {
+      "declarante": "GOLDMAN SACHS GROUP INC",
+      "cik": "0000886982",
+      "valor_usd_miles": 397891,
+      "acciones": 5477583
+     },
+     {
+      "declarante": "Schonfeld Strategic Advisors LLC",
+      "cik": "0001665241",
+      "valor_usd_miles": 163740,
+      "acciones": 2254134
+     },
+     {
+      "declarante": "MILLENNIUM MANAGEMENT LLC",
+      "cik": "0001273087",
+      "valor_usd_miles": 142266,
+      "acciones": 1958508
+     },
+     {
+      "declarante": "CITIGROUP INC",
+      "cik": "0000831001",
+      "valor_usd_miles": 118867,
+      "acciones": 1636387
+     },
+     {
+      "declarante": "CANTOR FITZGERALD, L. P.",
+      "cik": "0001024896",
+      "valor_usd_miles": 93272,
+      "acciones": 1284034
+     },
+     {
+      "declarante": "Patient Capital Management, LLC",
+      "cik": "0001854794",
+      "valor_usd_miles": 88833,
+      "acciones": 1222925
+     },
+     {
+      "declarante": "VESTOR CAPITAL, LLC",
+      "cik": "0001132699",
+      "valor_usd_miles": 84925,
+      "acciones": 249237
+     },
+     {
+      "declarante": "Almitas Capital LLC",
+      "cik": "0001596468",
+      "valor_usd_miles": 78681,
+      "acciones": 1083174
+     },
+     {
+      "declarante": "ParaFi Capital LP",
+      "cik": "0001919332",
+      "valor_usd_miles": 76272,
+      "acciones": 1050000
+     }
+    ]
+   }
+  }
  }
 }
