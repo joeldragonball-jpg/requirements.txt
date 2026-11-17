@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-11-16
+actualizado: 2026-11-17
 ---
 # Índice de la investigación
 
@@ -52,9 +52,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-14 · Radar regulatorio, 3.ª pasada (14-nov-2026) (`informes/research/2026-11-14-radar-3.md`): Celdas sin dato: 23 → 10 (176 en total). Cerradas 13; revisar explorador.py: 0 avisos. Sin commit ni push.
 
 ## Sesiones diarias (apertura y cierre)
+- 2026-11-17 · Informe de APERTURA — 2026-11-17 (mar) (`informes/2026-11-17-apertura.md`): Bloque que cubre: cierres de Asia y apertura de Europa y futuros de EE. UU., más lo ocurrido tras el cierre de EE. UU. de ayer. Precios leídos a las…
 - 2026-11-16 · W09 · Resumen semanal (lunes 16-nov-2026) y plan del 17 al 23-nov (`informes/research/2026-11-16-W09-resumen-semanal.md`): Tipos y deuda: bono de EE. UU. a 10 años en 5,15 % (13 nov) [P, Tesoro], +29 pb en la semana; subastas largas al 5,020 % (10 a) y 5,441 % (30 a) [P,…
 - 2026-11-16 · Revisión semanal del cerebro · 16/11/2026 (`informes/2026-11-16-revision.md`): Informe automático. No modifica nada del cerebro : tú decides qué corregir. Cada hallazgo lleva citas literales comprobadas contra los archivos.
-- 2026-11-16 · Informe de CIERRE — 2026-11-16 (lun) (`informes/2026-11-16-cierre.md`): Bloque que cubre: cierre de América (Wall Street, Tesoro, cripto del día). Precios leídos a las 21:10 UTC (22:10 Madrid) con scripts/precios vivos.py…
 
 ## Otros
 - 2026-11-16 · Países: cifras oficiales leídas el 16-nov-2026 (C260, C59, C83, C84) (`informes/research/2026-11-16-C260-C59-C83-C84-paises.md`): Hechos con fuente primaria; sin recomendaciones.
