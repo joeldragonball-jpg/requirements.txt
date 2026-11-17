@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-17 12:34 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-17 21:11 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -10,7 +10,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hechas en 7 días (13):** C205, C206, C262, C264, C265, C266, C258, C259, C252, C253, C256, C257, C255
 
 ## Hoy (mar 2026-11-17): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 10 días
+- R00 apertura ✓ · cierre ✓ · racha 10 días
 - Sin rutina fija hoy: elige por prioridad en las secciones de abajo.
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
@@ -154,7 +154,7 @@ Hechas en este periodo: W01, W02, W04, W06, W07, W08, W09
 - 🟡 Radar regulatorio: Celdas sin dato (8) → W03 · Más huecos: IR 2, AE 1, BRICS 1, ID 1, EG 1
 
 ## Bots con problema
-- Despertador de la app, Paneles de datos
+- Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-10 · Inflación EE. UU. (IPC de octubre) (alto) → ◐ rutina ejecutada (W01 del 2026-11-16); dato sin marcar como leído
