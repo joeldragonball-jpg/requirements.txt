@@ -1,7 +1,7 @@
 {
  "id": "espana-pensiones",
  "titulo": "España: pensiones (gasto, déficit contributivo, Fondo de Reserva) y demografía (natalidad, migración, envejecimiento)",
- "leido": "2026-11-17",
+ "leido": "2026-11-18",
  "nivel": "P",
  "unidad": "Cada registro lleva su unidad: M€ = millones de euros, mil M€ = miles de millones, € = euros, % = porcentaje, % PIB = porcentaje del PIB, personas, años. Cifras como número puro. null = sin dato leído en fuente oficial.",
  "nota": "Leído el 17-nov-2026 en: nota de la Seguridad Social del 27-oct-2026 y notas de Moncloa/Inclusión (31-mar y 13-abr-2026); notas de prensa del INE (ECP 3T 2026, Proyecciones 2026-2076, EMN 2025); API INE Tempus (tablas 59238, 1407, 3197, 48882, 69758); API Eurostat (gov_10a_exp, demo_pjanind, demo_find). Los cálculos propios van marcados «cálculo propio». Los datos de AIReF, OCDE, Fedea y Santa Lucía vienen de prensa (nivel S) y no se leyeron en el original. Es información, no recomendación.",
@@ -349,6 +349,42 @@
     "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/3197",
     "nivel": "P",
     "nota": "Hombres 43,23; mujeres 45,82. 2024: 44,37."
+   },
+   {
+    "nombre": "Índice de envejecimiento oficial INE (65+ por cada 100 menores de 16)",
+    "valor": 148.05,
+    "unidad": "personas",
+    "periodo": "1-ene-2025",
+    "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/1418",
+    "nivel": "P",
+    "nota": "INE, Indicadores Demográficos Básicos, tabla 1418. 2024: 142,35; 2023: 137,33. Mi cálculo del 1-oct-2026 (159,2) es posterior y casa con la tendencia (+5,7 al año)."
+   },
+   {
+    "nombre": "Tasa de dependencia oficial INE (0-15 y 65+ sobre 16-64)",
+    "valor": 53.17,
+    "unidad": "%",
+    "periodo": "1-ene-2025",
+    "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/1419",
+    "nivel": "P",
+    "nota": "INE, tabla 1419. 2024: 53,29; 2023: 53,42. Baja por menos menores pese a más mayores."
+   },
+   {
+    "nombre": "Tasa de dependencia de mayores de 64 años (INE)",
+    "valor": 31.73,
+    "unidad": "%",
+    "periodo": "1-ene-2025",
+    "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/1421",
+    "nivel": "P",
+    "nota": "INE, tabla 1421 (65+ sobre 16-64). 2024: 31,30; 2023: 30,91. No comparable con el 31,2 % de Eurostat (65+ sobre 15-64)."
+   },
+   {
+    "nombre": "Proporción de población de 65 años o más (INE)",
+    "valor": 20.72,
+    "unidad": "%",
+    "periodo": "1-ene-2025",
+    "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/1417",
+    "nivel": "P",
+    "nota": "INE, tabla 1417. 2024: 20,42; 2023: 20,15. 80+: 6,17 %."
    }
   ],
   "natalidad": [
@@ -482,7 +518,187 @@
     "nivel": "P",
     "nota": "Mujeres 90,0 [ESPECULACIÓN]."
    }
-  ]
+  ],
+  "envejecimiento_ccaa": {
+   "periodo": "1-ene-2025",
+   "fuente": "INE IDB, tablas 1452, 1453 y 1455 (Tempus)",
+   "unidad": "índice = 65+ por cada 100 menores de 16; dependencia total = (0-15 + 65+) sobre 16-64, en %; dependencia de mayores = 65+ sobre 16-64, en %",
+   "nivel": "P",
+   "nota": "Datos oficiales INE a 1-ene-2025, no a 2026. Mayor envejecimiento: Asturias, Galicia, Castilla y León; menor: Murcia, Baleares, Madrid.",
+   "regiones": [
+    {
+     "ccaa": "Total nacional",
+     "indice_envejecimiento": 148.05,
+     "dependencia_total_pct": 53.17,
+     "dependencia_mayores_pct": 31.73
+    },
+    {
+     "ccaa": "Andalucía",
+     "indice_envejecimiento": 128.62,
+     "dependencia_total_pct": 51.51,
+     "dependencia_mayores_pct": 28.98
+    },
+    {
+     "ccaa": "Aragón",
+     "indice_envejecimiento": 163.47,
+     "dependencia_total_pct": 57.3,
+     "dependencia_mayores_pct": 35.55
+    },
+    {
+     "ccaa": "Asturias",
+     "indice_envejecimiento": 265.29,
+     "dependencia_total_pct": 64.07,
+     "dependencia_mayores_pct": 46.53
+    },
+    {
+     "ccaa": "Baleares",
+     "indice_envejecimiento": 117.37,
+     "dependencia_total_pct": 45.33,
+     "dependencia_mayores_pct": 24.48
+    },
+    {
+     "ccaa": "Canarias",
+     "indice_envejecimiento": 149.47,
+     "dependencia_total_pct": 43.59,
+     "dependencia_mayores_pct": 26.11
+    },
+    {
+     "ccaa": "Cantabria",
+     "indice_envejecimiento": 197.58,
+     "dependencia_total_pct": 58.55,
+     "dependencia_mayores_pct": 38.87
+    },
+    {
+     "ccaa": "Castilla y León",
+     "indice_envejecimiento": 230.7,
+     "dependencia_total_pct": 64.12,
+     "dependencia_mayores_pct": 44.73
+    },
+    {
+     "ccaa": "Castilla-La Mancha",
+     "indice_envejecimiento": 136.02,
+     "dependencia_total_pct": 53.46,
+     "dependencia_mayores_pct": 30.81
+    },
+    {
+     "ccaa": "Cataluña",
+     "indice_envejecimiento": 136.89,
+     "dependencia_total_pct": 51.8,
+     "dependencia_mayores_pct": 29.93
+    },
+    {
+     "ccaa": "Comunidad Valenciana",
+     "indice_envejecimiento": 142.92,
+     "dependencia_total_pct": 53.05,
+     "dependencia_mayores_pct": 31.21
+    },
+    {
+     "ccaa": "Extremadura",
+     "indice_envejecimiento": 172.64,
+     "dependencia_total_pct": 56.81,
+     "dependencia_mayores_pct": 35.97
+    },
+    {
+     "ccaa": "Galicia",
+     "indice_envejecimiento": 231.61,
+     "dependencia_total_pct": 62.58,
+     "dependencia_mayores_pct": 43.71
+    },
+    {
+     "ccaa": "Madrid",
+     "indice_envejecimiento": 131.42,
+     "dependencia_total_pct": 49.78,
+     "dependencia_mayores_pct": 28.27
+    },
+    {
+     "ccaa": "Murcia",
+     "indice_envejecimiento": 102.73,
+     "dependencia_total_pct": 50.64,
+     "dependencia_mayores_pct": 25.66
+    },
+    {
+     "ccaa": "Navarra",
+     "indice_envejecimiento": 139.26,
+     "dependencia_total_pct": 56.4,
+     "dependencia_mayores_pct": 32.83
+    },
+    {
+     "ccaa": "País Vasco",
+     "indice_envejecimiento": 183.84,
+     "dependencia_total_pct": 59.58,
+     "dependencia_mayores_pct": 38.59
+    },
+    {
+     "ccaa": "La Rioja",
+     "indice_envejecimiento": 159.25,
+     "dependencia_total_pct": 57.77,
+     "dependencia_mayores_pct": 35.48
+    },
+    {
+     "ccaa": "Ceuta",
+     "indice_envejecimiento": 74.48,
+     "dependencia_total_pct": 47.2,
+     "dependencia_mayores_pct": 20.15
+    },
+    {
+     "ccaa": "Melilla",
+     "indice_envejecimiento": 60.4,
+     "dependencia_total_pct": 50.76,
+     "dependencia_mayores_pct": 19.11
+    }
+   ]
+  },
+  "afiliados_por_tramos_edad": {
+   "valor": {
+    "16-24": 1616579,
+    "25-39": 6840268,
+    "40-54": 9087663,
+    "55-64": 4549829,
+    "65+": 503837
+   },
+   "total": 22598276,
+   "unidad": "afiliados en alta laboral, último día del mes (personas)",
+   "fecha": "2026-10",
+   "interanual": {
+    "fecha": "2025-10",
+    "total": 21661859,
+    "16-24": 1470131,
+    "25-39": 6441660,
+    "40-54": 8954374,
+    "55-64": 4342552,
+    "65+": 453056
+   },
+   "pct_del_total": {
+    "16-24": 7.2,
+    "25-39": 30.3,
+    "40-54": 40.2,
+    "55-64": 20.1,
+    "65+": 2.2
+   },
+   "pct_del_total_2025-10": {
+    "16-24": 6.8,
+    "25-39": 29.7,
+    "40-54": 41.3,
+    "55-64": 20.0,
+    "65+": 2.1
+   },
+   "variacion_interanual_pct": {
+    "total": 4.3,
+    "16-24": 10.0,
+    "25-39": 6.2,
+    "40-54": 1.5,
+    "55-64": 4.8,
+    "65+": 11.2
+   },
+   "nivel": "P",
+   "fuente": "https://w6.seg-social.es/PXWeb/pxweb/es/Afiliados%20en%20alta%20laboral/ (tabla 01f «Por sexo, edad y régimen (Último día)», todos los regímenes, ambos sexos)",
+   "nota": "18-nov-2026, leído en Chrome en la base PX-Web de la Seguridad Social (octubre 2026 y octubre 2025). Los tramos son suma propia de los quinquenales oficiales (16-19+20-24; 25-29+30-34+35-39; 40-44+45-49+50-54; 55-59+60-64; más de 64) y suman 100 personas menos que el total en 2026 (86 en 2025): edad no consignada. El peso del 40-54 baja (41,3 % a 40,2 %) y el de 25-39, 16-24 y 55-64 sube un poco. Hecho, no opinión: el +11,2 % de 65+ parte de una base pequeña (504.000). Discrepancia: el total de último día sube +4,3 % interanual (22,60 M frente a 21,66 M), mientras otra línea de este archivo cita +3,6 % (SS, 4-nov): son medidas distintas (último día vs media mensual) [VERIFICAR]. Falta el ratio cotizantes/pensionista por edad (pensionistas por tramos son otra tabla).",
+   "anterior_null": {
+    "valor": null,
+    "nivel": "VERIFICAR",
+    "nota": "18-nov: la Seguridad Social publica afiliados por edad en ficheros de su portal de estadísticas (no accesibles por script en esta pasada: la página solo sirve enlaces dinámicos) → null. Sin tramos no se calcula el ratio cotizantes/pensionista por edad."
+   }
+  }
  },
  "caso_alcista_vs_bajista": {
   "alcista": [
@@ -504,9 +720,10 @@
  "pendiente": [
   "Fondo de Reserva: nota de cierre 2025 y datos de abril a octubre 2026 (discrepancia 14.100 vs 14.283 M€) [VERIFICAR].",
   "AIReF, OCDE y Fedea: leer los informes originales (aquí solo vía prensa).",
-  "Índice de envejecimiento, dependencia y fecundidad 2025 publicados por el INE (IDB 2025): aún no están en INEbase; contrastar con el cálculo propio.",
   "Saldo migratorio 2025 (Estadística de Migraciones, diciembre 2026).",
   "Ageing Report de la Comisión Europea (próxima edición) y gasto AIReF 2024-2025.",
-  "Ratio oficial cotizantes/pensionista de la Seguridad Social (aquí solo cálculo propio)."
+  "Ratio oficial cotizantes/pensionista de la Seguridad Social (aquí solo cálculo propio).",
+  "Afiliados por tramos de edad (Seguridad Social, estadísticas de afiliación): abrir en navegador y volcar 16-24, 25-39, 40-54, 55-64, 65+ [VERIFICAR].",
+  "Contrastar el IDB 2026 del INE cuando se publique (hoy el oficial es 1-ene-2025: envejecimiento 148,05; dependencia 53,17 %)."
  ]
 }

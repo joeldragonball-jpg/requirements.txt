@@ -1,5 +1,5 @@
 {
-  "_actualizado": "2026-11-17",
+  "_actualizado": "2026-11-18",
   "_nota": "Datos sin API abierta: salario mínimo de las potencias. Nivel V = recordado, sin leer la norma oficial; [VERIFICAR] antes de citar. No se ordenan países.",
   "US": {
     "salario_minimo": {
@@ -280,6 +280,33 @@
       "periodicidad": "mensual",
       "anterior": 5.54,
       "anterior_fecha": "2026-09"
+    },
+    "paro": {
+      "valor": 4.9,
+      "unidad": "% (tasa de desempleo PLFS, octubre de 2026)",
+      "fecha": "2026-10",
+      "fuente": "https://www.mospi.gov.in/",
+      "nivel": "P",
+      "definicion": "Tasa de desempleo de la Encuesta Periódica de Fuerza Laboral (PLFS), boletín mensual de octubre de 2026: 4,9 %, según la portada de mospi.gov.in (leída en Chrome el 18-nov-2026; está en hindi). La portada no precisa grupo de edad (la PLFS mensual usa 15+, actividad semanal habitual) [VERIFICAR]; el boletín PDF no se abrió. También publicado el boletín trimestral jul-sep 2026.",
+      "periodicidad": "mensual"
+    },
+    "pib": {
+      "valor": 7.8,
+      "unidad": "% crecimiento real, 1T del ejercicio 2026-27 (abril-junio 2026)",
+      "fecha": "2026-Q2 (1T FY2026-27)",
+      "fuente": "https://www.mospi.gov.in/",
+      "nivel": "P",
+      "definicion": "Crecimiento real del PIB, primer trimestre del año fiscal 2026-27: 7,8 % (portada de mospi.gov.in, leída en Chrome el 18-nov-2026). La portada no dice si es interanual (lo habitual en India) ni la base; comunicado sin abrir [VERIFICAR].",
+      "periodicidad": "trimestral"
+    },
+    "actividad": {
+      "valor": 6.7,
+      "unidad": "% crecimiento del Índice de Producción Industrial (IIP), septiembre de 2026",
+      "fecha": "2026-09",
+      "fuente": "https://www.mospi.gov.in/",
+      "nivel": "P",
+      "definicion": "IIP de septiembre de 2026: +6,7 % (portada de mospi.gov.in, leída el 18-nov-2026). Base interanual no confirmada en la portada [VERIFICAR].",
+      "periodicidad": "mensual"
     }
   },
   "IT": {
@@ -427,15 +454,15 @@
   },
   "ZA": {
     "ipc": {
-      "valor": 4.5,
+      "valor": 5.2,
       "unidad": "% interanual",
-      "fecha": "2026-09",
-      "fuente": "https://www.sanews.gov.za/node/85109",
+      "fecha": "2026-10",
+      "fuente": "https://www.statssa.gov.za/",
       "nivel": "P",
-      "definicion": "IPC de Stats SA, septiembre de 2026: 4,5 % interanual (portada de statssa.gov.za, leída el 14-nov-2026, y nota de SAnews del 21-oct-2026); el de octubre sale el 18-nov.",
+      "definicion": "IPC de Stats SA, octubre de 2026: 5,2 % interanual, frente a 4,5 % en septiembre (portada de statssa.gov.za y nota «Consumer inflation rises to 5,2% in October 2026», leídas en Chrome el 18-nov-2026, día de publicación). IPP de septiembre +6,2 % interanual (portada).",
       "periodicidad": "mensual",
-      "anterior": 4.4,
-      "anterior_fecha": "2026-08"
+      "anterior": 4.5,
+      "anterior_fecha": "2026-09"
     },
     "paro": {
       "valor": 33.7,
@@ -447,6 +474,15 @@
       "periodicidad": "trimestral",
       "anterior": 33.6,
       "anterior_fecha": "2026-Q2"
+    },
+    "pib": {
+      "valor": -0.2,
+      "unidad": "% trimestral (q/q), 2T-2026",
+      "fecha": "2026-Q2",
+      "fuente": "https://www.statssa.gov.za/",
+      "nivel": "P",
+      "definicion": "PIB de Sudáfrica 2T-2026: -0,2 % trimestral (portada de statssa.gov.za, Key Statistics, leída en Chrome el 18-nov-2026). La portada no indica si es desestacionalizado ni da la tasa interanual: el comunicado (página de publicaciones dinámica, sin texto) no se pudo leer [VERIFICAR]. Paro del 3T ya recogido (33,7 %).",
+      "periodicidad": "trimestral"
     }
   },
   "ID": {
@@ -495,6 +531,15 @@
       "periodicidad": "mensual",
       "anterior": 3.6,
       "anterior_fecha": "2026-09"
+    },
+    "pib": {
+      "valor": 5.1,
+      "unidad": "% crecimiento real, 2T-2026 (titular)",
+      "fecha": "2026-Q2",
+      "fuente": "https://www.bcr.gob.sv/",
+      "nivel": "P",
+      "definicion": "Titular de la portada del Banco Central de Reserva (noticia del 30-sep-2026): «La economía salvadoreña creció 5.1% en el segundo trimestre de 2026». Leído en bcr.gob.sv con Chrome el 18-nov-2026. El texto de la noticia está tras un CAPTCHA («¿Qué código aparece en la imagen?»): no se completó. Por eso la base de comparación (interanual) no está leída [VERIFICAR]. Otro titular del 31-ago: IVAE +5,2 % en junio.",
+      "periodicidad": "trimestral"
     }
   },
   "IR": {

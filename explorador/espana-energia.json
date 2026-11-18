@@ -2,7 +2,7 @@
  "titulo": "España: energía (precio eléctrico, combustibles, dependencia, mix, embalses)",
  "nivel": "P",
  "leido": "2026-11-17",
- "_nota": "C233. Nivel P = fuente oficial leída; S = prensa; VERIFICAR = sin cifra leída. Combustibles del Boletín Petrolero: € por litro = (€/1000 l)/1000, con impuestos. No sustituye a espana-energia-vivienda.json (REData diario).",
+ "_nota": "C233. Nivel P = fuente oficial leída; S = prensa; VERIFICAR = sin cifra leída. Combustibles del Boletín Petrolero: € por litro = (€/1000 l)/1000, con impuestos. No sustituye a espana-energia-vivienda.json (REData diario). C233 (18-nov): MITECO embalses 10 y 17-nov, MIBGAS PVB, REData 1-16 nov y comprobación del Boletín Petrolero añadidos.",
  "electricidad": [
   {
    "nombre": "Precio mayorista (mercado diario OMIE), media de octubre",
@@ -39,6 +39,15 @@
    "fuente": "https://www.omie.es/es/file-download?parents%5B0%5D=marginalpdbc (ficheros marginalpdbc_AAAAMMDD)",
    "nivel": "P",
    "nota": "Cálculo propio: media simple de las medias diarias de los ficheros oficiales de OMIE (precio marginal, zona España); no es la cifra mensual publicada por OMIE. Mes incompleto (16 días); máx. diario 257,55 €/MWh."
+  },
+  {
+   "nombre": "Eólica, cuota de la generación nacional, 1 a 16 de noviembre (mix completo en la nota)",
+   "valor": 26.5,
+   "unidad": "% de la generación nacional",
+   "anio": "1-16 nov-2026",
+   "fuente": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion",
+   "nivel": "P",
+   "nota": "Cálculo propio sumando los 16 días de REData (leído 18-nov-2026): total 11.985 GWh; eólica 26,5 % (3.172 GWh), ciclo combinado 21,4 % (2.570), nuclear 19,0 % (2.274), solar fotovoltaica 14,6 % (1.756), hidráulica 8,1 % (972). Dato provisional."
   }
  ],
  "mix_generacion": [
@@ -142,6 +151,15 @@
    "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History)",
    "nivel": "P",
    "nota": "Variación interanual ≈ +33 %. UE-27: 1,571 €/l. La rebaja temporal de 20 cént./l del impuesto (Selectra, nivel S) no se ha verificado en fuente oficial [VERIFICAR]."
+  },
+  {
+   "nombre": "Boletín Petrolero UE: comprobación de semana más reciente",
+   "valor": null,
+   "unidad": "€/l",
+   "anio": "semana del 16-nov-2026",
+   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en",
+   "nivel": "VERIFICAR",
+   "nota": "18-nov-2026: la Comisión sigue mostrando como última publicación la del 12-nov (precios del 9-nov, ya cargados). La del 16-nov se espera en torno al 19-nov; sin cifra (null). Histórico de 4,5 MB leído en carpeta temporal y borrado."
   }
  ],
  "dependencia_energetica": [
@@ -173,6 +191,24 @@
    "fuente": "https://www.miteco.gob.es/es/prensa/ultimas-noticias/2026/octubre/la-reserva-hidrica-espanola-se-encuentra-al-56-8---de-su-capacid.html",
    "nivel": "P",
    "nota": "31.809 hm³ almacenados; −253 hm³ en la semana. 20-oct: 57,2 %; 22-sep: 61,8 %. Notas del 3 y 10-nov no publicadas en el feed de MITECO [VERIFICAR]."
+  },
+  {
+   "nombre": "Reserva hídrica española",
+   "valor": 57.0,
+   "unidad": "% de la capacidad",
+   "anio": "17-nov-2026",
+   "fuente": "https://www.miteco.gob.es/es/prensa/ultimas-noticias/2026/noviembre/la-reserva-hidrica-espanola-se-encuentra-al-57---de-su-capacidad.html",
+   "nivel": "P",
+   "nota": "Nota de prensa de MITECO del 17-nov-2026: 31.950 hm³ almacenados, +905 hm³ en la semana (+1,7 % de la capacidad)."
+  },
+  {
+   "nombre": "Reserva hídrica española",
+   "valor": 55.3,
+   "unidad": "% de la capacidad",
+   "anio": "10-nov-2026",
+   "fuente": "https://www.miteco.gob.es/es/prensa/ultimas-noticias/2026/noviembre/la-reserva-hidrica-espanola-se-encuentra-al-55-3---de-su-capacid.html",
+   "nivel": "P",
+   "nota": "Nota de MITECO del 10-nov-2026: 31.000 hm³, −402 hm³ en la semana (−0,7 % de la capacidad). De 27-oct (56,8 %) a 10-nov bajó 1,5 puntos; la semana siguiente subió 1,7. Nota del 3-nov no localizada [VERIFICAR]. Las cifras de 10 y 17-nov no encajan al hm³ (31.000 + 905 ≠ 31.950): redondeo de las notas."
   }
  ],
  "gas": [
@@ -211,6 +247,24 @@
    "fuente": "https://www.mibgas.es",
    "nivel": "VERIFICAR",
    "nota": "No leído; sin cifra de memoria."
+  },
+  {
+   "nombre": "Precio MIBGAS PVB, producto Day Ahead (entrega 18-nov-2026)",
+   "valor": 83.96,
+   "unidad": "€/MWh",
+   "anio": "17-nov-2026 (sesión)",
+   "fuente": "https://www.mibgas.es/en",
+   "nivel": "P",
+   "nota": "Último precio del producto diario del PVB (punto virtual de balance español) con entrega el siguiente día hábil, leído en la portada de MIBGAS el 18-nov-2026 (se actualiza a las 18:00). Cambio frente al precio anterior: 1,11 €/MWh (1,3 %), signo no legible en el texto de la página [VERIFICAR]. Month Ahead (diciembre) 83,68 €/MWh; Day Ahead del VTP portugués 83,68 €/MWh."
+  },
+  {
+   "nombre": "Precio TTF (ICE Endex)",
+   "valor": null,
+   "unidad": "€/MWh",
+   "anio": "nov-2026",
+   "fuente": "https://www.ice.com",
+   "nivel": "VERIFICAR",
+   "nota": "18-nov-2026: ICE/Endex no ofrece cifra pública sin registro; el precio MIBGAS PVB sirve de referencia ibérica. Sin cifra de memoria."
   }
  ]
 }

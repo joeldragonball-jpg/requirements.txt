@@ -1,116 +1,267 @@
 {
-  "_nota": "C239 · España: investigaciones y fondos públicos. COMPLEMENTA a explorador/espana-judicial.json (no lo duplica): allí está el caso «adif-transportes-fondos-ue» (Fiscalía Europea 20-mar y 6-nov-2026, Tribunal de Cuentas PRTR-Adif, CIAF Adamuz/Urda, pieza de obra pública de la Audiencia Nacional); aquí solo lo que faltaba o ha cambiado. Solo hechos de fuente primaria con fecha. Presunción de inocencia: investigar, registrar o pedir documentación no es ser culpable. Importes en euros con unidad explícita (M€ = millones de euros); campo null = no consta en fuente primaria. Nivel P = fuente primaria leída entera; S = prensa; V = sin verificar.",
-  "actualizado": "2026-11-17",
-  "unidad": "EUR",
-  "vinculo_pagina": "España › judicial/fondos (misma página que espana-judicial.json; no crear capa nueva)",
-  "remite_a": [
+ "_nota": "C239 · España: investigaciones y fondos públicos. COMPLEMENTA a explorador/espana-judicial.json (no lo duplica): allí está el caso «adif-transportes-fondos-ue» (Fiscalía Europea 20-mar y 6-nov-2026, Tribunal de Cuentas PRTR-Adif, CIAF Adamuz/Urda, pieza de obra pública de la Audiencia Nacional); aquí solo lo que faltaba o ha cambiado. Solo hechos de fuente primaria con fecha. Presunción de inocencia: investigar, registrar o pedir documentación no es ser culpable. Importes en euros con unidad explícita (M€ = millones de euros); campo null = no consta en fuente primaria. Nivel P = fuente primaria leída entera; S = prensa; V = sin verificar.",
+ "actualizado": "2026-11-18",
+ "unidad": "EUR",
+ "vinculo_pagina": "España › judicial/fondos (misma página que espana-judicial.json; no crear capa nueva)",
+ "remite_a": [
+  {
+   "archivo": "explorador/espana-judicial.json",
+   "caso_id": "adif-transportes-fondos-ue",
+   "estado_17_nov": "Sin novedades oficiales localizadas tras el 6-nov-2026 (comunicados de la Fiscalía Europea sobre España leídos hasta el 12-nov; el listado general de la web no pudo filtrarse por país, así que 'sin novedades' se apoya en búsquedas, no en un listado completo) [VERIFICAR]"
+  }
+ ],
+ "casos": [
+  {
+   "id": "pulseras-fiscalia-europea-igualdad",
+   "nombre": "Pulseras telemáticas de violencia de género: Fiscalía Europea en el Ministerio de Igualdad y el Tribunal de Cuentas",
+   "tribunal": "Fiscalía Europea (EPPO, Madrid), con apoyo de la UCO · Tribunal de Cuentas (fiscalización, no penal) · Ministerio de Igualdad (órgano contratante)",
+   "tipo": "UE · Contratación",
+   "fase": "Investigación abierta por la Fiscalía Europea «el pasado año» (2025, según su comunicado) sobre posible fraude con fondos de la UE destinados a comprar pulseras telemáticas; el 12-nov-2026 practica «medidas de investigación» en la sede del Ministerio de Igualdad y en la del Tribunal de Cuentas. No facilita más detalles. Sin imputados, importe ni contrato concreto en el comunicado. Paralelamente, el Tribunal de Cuentas aprobó el 22-sep-2026 una fiscalización de los contratos de 2018, 2021 y 2023 (informe n.º 1695) que no es una investigación penal. Investigar no es ser culpable.",
+   "hechos_judiciales": [
     {
-      "archivo": "explorador/espana-judicial.json",
-      "caso_id": "adif-transportes-fondos-ue",
-      "estado_17_nov": "Sin novedades oficiales localizadas tras el 6-nov-2026 (comunicados de la Fiscalía Europea sobre España leídos hasta el 12-nov; el listado general de la web no pudo filtrarse por país, así que 'sin novedades' se apoya en búsquedas, no en un listado completo) [VERIFICAR]"
-    }
-  ],
-  "casos": [
-    {
-      "id": "pulseras-fiscalia-europea-igualdad",
-      "nombre": "Pulseras telemáticas de violencia de género: Fiscalía Europea en el Ministerio de Igualdad y el Tribunal de Cuentas",
-      "tribunal": "Fiscalía Europea (EPPO, Madrid), con apoyo de la UCO · Tribunal de Cuentas (fiscalización, no penal) · Ministerio de Igualdad (órgano contratante)",
-      "tipo": "UE · Contratación",
-      "fase": "Investigación abierta por la Fiscalía Europea «el pasado año» (2025, según su comunicado) sobre posible fraude con fondos de la UE destinados a comprar pulseras telemáticas; el 12-nov-2026 practica «medidas de investigación» en la sede del Ministerio de Igualdad y en la del Tribunal de Cuentas. No facilita más detalles. Sin imputados, importe ni contrato concreto en el comunicado. Paralelamente, el Tribunal de Cuentas aprobó el 22-sep-2026 una fiscalización de los contratos de 2018, 2021 y 2023 (informe n.º 1695) que no es una investigación penal. Investigar no es ser culpable.",
-      "hechos_judiciales": [
-        {
-          "fecha": "2026-11-12",
-          "nivel": "P",
-          "texto": "La Fiscalía Europea (Madrid) informa de que ese día realiza «medidas de investigación» en el Ministerio de Igualdad y en el Tribunal de Cuentas, tras abrir una investigación por posible fraude que afecta a fondos europeos destinados a adquirir pulseras telemáticas para asegurar el cumplimiento de medidas cautelares y de alejamiento en delitos de violencia de género. Apoya la UCO (Guardia Civil); la investigación «se inició el pasado año» y «no se facilitarán más detalles sobre el estado». El comunicado no nombra contrato, empresa, personas ni importe (M€: sin dato) y no dice qué tipo de diligencia es (registro, requerimiento de documentos u otra).",
-          "fuente": "https://www.eppo.europa.eu/media/news/spain-investigative-actions-ministry-equality-and-court-auditors-probe-fraud-involving-monitoring-2026-11-12_en"
-        },
-        {
-          "fecha": "2026-09-22",
-          "nivel": "P",
-          "texto": "El Pleno del Tribunal de Cuentas aprueba el informe n.º 1695 (nota de prensa del 23-sep-2026): fiscalización de la contratación y el control del servicio integral de seguimiento telemático de las medidas de alejamiento en violencia de género y sexual. Analiza los contratos de 2018, 2021 y 2023 del Ministerio de Igualdad: importe total 102,6 M€, de los que 42,6 M€ corresponden al de 2023 (vigente hasta mayo de 2026), financiado en parte con el PRTR; más un contrato menor de 12.706,21 €. Conclusiones: en 2018 y 2021 no se previó un plan de transición y el de 2023 lo recibió por modificación contractual (julio de 2023); el cambio de adjudicatario y esa ausencia causaron problemas de acceso al histórico que impidieron responder a 123 requerimientos judiciales pendientes hasta octubre de 2024 (cuando, coincidiendo con un requerimiento de la Fiscalía, el Ministerio actuó). «Graves deficiencias» en la ejecución del contrato de 2023 durante casi toda su vigencia, ya resueltas según el informe: fiabilidad de dispositivos, interrupciones, errores de geolocalización que permitieron el acercamiento de agresores a víctimas, baterías, retrasos en reparaciones. En noviembre de 2025 el Ministerio encargó una auditoría tecnológica externa que corroboró vulnerabilidades críticas. Ocho recomendaciones al Ministerio. Es una auditoría de gestión: no atribuye delito a nadie.",
-          "fuente": "https://www.tcu.es/es/Comunicacion-y-Espacio-Divulgativo/El-Tribunal-de-Cuentas-detecta-deficiencias-en-la-contratacion-y-seguimiento-del-sistema-telematico-de-medidas-de-alejamiento-para-proteger-a-las-victimas-de-violencia-de-genero/ · informe: https://www.tcu.es/export/sites/portal/repositorio2/INFORME/2026/I1695.pdf (PDF no leído entero: [VERIFICAR] las cifras por contrato)"
-        },
-        {
-          "fecha": "2023-11-21",
-          "nivel": "P",
-          "texto": "BOE-B-2023-34723 (anuncio de formalización, enviado el 16-nov-2023): servicio integral de seguimiento por medios telemáticos de las medidas cautelares y penas de prohibición de aproximación (expediente 202303PA0001), Secretaría de Estado de Igualdad y Contra la Violencia de Género. Procedimiento abierto acelerado (urgencia). Adjudicación el 10-oct-2023 a Vodafone España, S.A.U.; 2 ofertas recibidas (0 de pymes); valor de la oferta seleccionada 35.226.395,43 € (35,2 M€; el anuncio no dice si incluye IVA). Marcado como financiado con fondos de la UE, programa C22.I04.P03. Criterios: propuesta económica 40 %, oferta técnica 30 %, SLA 10 %, funcionalidades de los dispositivos 10 %, plan de transición de salida 10 %. Que este sea el contrato objeto de la investigación NO consta en el comunicado de la Fiscalía Europea: el vínculo es una inferencia por el objeto y la financiación UE [VERIFICAR]. Nota de unidades: 35,226 M€ × 1,21 = 42,6 M€, coincidente con la cifra de 42,6 M€ del Tribunal de Cuentas para el contrato de 2023, lo que sugiere que esta incluye IVA (inferencia propia [VERIFICAR]).",
-          "fuente": "https://www.boe.es/diario_boe/xml.php?id=BOE-B-2023-34723"
-        }
-      ],
-      "filtraciones_prensa": [
-        {
-          "fecha": "2026-11-12",
-          "nivel": "S/VERIFICAR",
-          "texto": "Prensa (Euronews, Artículo 14, ARA, ESdiario; solo titulares y extractos vistos, no leídos enteros) sitúa el foco en el contrato de 2023 con Vodafone. El Ministerio de Igualdad sostiene, según esas crónicas, que la UCO fue a pedir documentación y no a practicar un registro, que los fondos se han destinado «correctamente» y que los problemas se resolvieron en 2024. Cifras de prensa contradictorias que NO se deben atribuir a la investigación: 6,4 M€ del PRTR (Artículo 14), 45 M€ (OKDiario) y 100 M€ (ESdiario). Artículo 14 dice que el adjudicatario fue una UTE Vodafone-Securitas, cosa que el BOE no recoge (solo Vodafone España, S.A.U.).",
-          "fuente": "https://es.euronews.com/2026/11/12/la-fiscalia-europea-investiga-un-posible-fraude-en-la-compra-de-pulseras-telematicas · https://www.articulo14.es/economia/la-fiscalia-europea-investiga-un-presunto-fraude-en-las-pulseras-antimaltrato-y-actua-en-igualdad-y-el-tribunal-de-cuentas-20261112.html"
-        },
-        {
-          "fecha": "2026-05-13",
-          "nivel": "S/VERIFICAR",
-          "texto": "El Debate (13-may-2026, extracto) dice que la Mesa de Contratación mantuvo a Vodafone, de forma provisional, para un contrato posterior por 43.901.276,71 € (43,9 M€). Es otro contrato distinto al de 2023; no confundir importes.",
-          "fuente": "https://www.eldebate.com/sociedad/20260513/gobierno-adjudica-pulseras-antimaltrato-misma-empresa-fallaron-menos-dinero-previsto_417113.html"
-        }
-      ],
-      "opinion": [
-        {
-          "fecha": "2026-11-12",
-          "texto": "Reacciones políticas (PP exige explicaciones, el Gobierno defiende el gasto) recogidas por prensa: opinión de partes interesadas, no hechos.",
-          "nivel": "S",
-          "fuente": "ESdiario, 12-nov-2026 (extracto)"
-        }
-      ],
-      "pendiente": [
-        "Leer el PDF completo del informe 1695 del Tribunal de Cuentas (importes por contrato, si hay penalidades, qué se dice de la financiación PRTR) [VERIFICAR]",
-        "Ver si Igualdad publica nota oficial sobre la actuación del 12-nov (no localizada) y si el Congreso o el Senado programan comparecencia [VERIFICAR]",
-        "Contrato posterior a 2023 (adjudicación 2026) en la Plataforma de Contratación del Sector Público: localizar expediente y importe oficial [VERIFICAR]",
-        "Confirmar en el perfil del contratante de Igualdad (PLACSP) si hay modificaciones del contrato 202303PA0001 y su importe [VERIFICAR]",
-        "OLAF: sin dato; no suele anunciar sus investigaciones [VERIFICAR]"
-      ],
-      "palabras_clave": ["pulseras", "cometa", "igualdad", "violencia de genero", "fiscalia europea", "eppo", "vodafone"],
-      "responsables": "Ministerio de Igualdad (órgano contratante). Sin personas ni empresas investigadas en ninguna fuente oficial leída.",
-      "gobierno_epoca": "Contrato de 2023 adjudicado por el Gobierno de Pedro Sánchez (PSOE-Sumar); contratos de 2018 y 2021 en gobiernos del mismo presidente (con Unidas Podemos en 2021) [periodo exacto de cada ministra: VERIFICAR]"
+     "fecha": "2026-11-12",
+     "nivel": "P",
+     "texto": "La Fiscalía Europea (Madrid) informa de que ese día realiza «medidas de investigación» en el Ministerio de Igualdad y en el Tribunal de Cuentas, tras abrir una investigación por posible fraude que afecta a fondos europeos destinados a adquirir pulseras telemáticas para asegurar el cumplimiento de medidas cautelares y de alejamiento en delitos de violencia de género. Apoya la UCO (Guardia Civil); la investigación «se inició el pasado año» y «no se facilitarán más detalles sobre el estado». El comunicado no nombra contrato, empresa, personas ni importe (M€: sin dato) y no dice qué tipo de diligencia es (registro, requerimiento de documentos u otra).",
+     "fuente": "https://www.eppo.europa.eu/media/news/spain-investigative-actions-ministry-equality-and-court-auditors-probe-fraud-involving-monitoring-2026-11-12_en"
     },
     {
-      "id": "eppo-espana-resto-2026",
-      "nombre": "Fiscalía Europea en España: otros casos de 2026 con sentencia o detenciones (contexto, no son fondos de Adif ni de ministerios)",
-      "tribunal": "Fiscalía Europea (EPPO, Madrid) · Audiencia Nacional (Sala de lo Penal)",
-      "tipo": "UE · Subvenciones",
-      "fase": "Tres comunicados oficiales de 2026 leídos: una condena firme (cooperativa de desempleados, Murcia), una condena firme (proyecto Horizonte 2020, Navarra) y una operación con dos detenidos (subvenciones FSE/Feader en Zamora y Salamanca). Sirven de contexto de cómo actúa la Fiscalía Europea en España; no tienen relación con las investigaciones de Adif ni de Igualdad.",
-      "hechos_judiciales": [
-        {
-          "fecha": "2026-09-28",
-          "nivel": "P",
-          "texto": "La Sección Segunda de la Sala de lo Penal de la Audiencia Nacional condena a un acusado (nombre no facilitado) a 6 meses de prisión y 2 años sin poder recibir subvenciones, y a indemnizar con 95.000 € (0,095 M€) a la Región de Murcia por apropiarse de ayudas de la UE concedidas a una cooperativa de personas desempleadas (47.000 € en feb-2019 y 48.000 € en mar-2020). Se declaró culpable; la sentencia es firme. Comunicado de la Fiscalía Europea del 7-oct-2026.",
-          "fuente": "https://www.eppo.europa.eu/media/news/spain-individual-convicted-misappropriating-eu-subsidies-intended-support-unemployed-people-2026-10-07_en"
-        },
-        {
-          "fecha": "2026-10-05",
-          "nivel": "P",
-          "texto": "La Audiencia Nacional (Juzgado Central de lo Penal) condena a una empresa y a su administrador por imputar a un proyecto Horizonte 2020 salarios ya cubiertos por ayudas del Gobierno de Navarra: daño total 26.000 € (0,026 M€), de ellos 10.200 € a la UE. Administrador: 23 días de prisión sustituidos por multa de 276 €; empresa: multa de 6.500 € y 9 meses sin subvenciones. Admitieron los hechos y devolvieron el importe; sentencia firme. Comunicado del 9-oct-2026.",
-          "fuente": "https://www.eppo.europa.eu/media/news/spain-company-and-director-found-guilty-claiming-salary-costs-twice-national-and-eu-funds-2026-10-09_en"
-        },
-        {
-          "fecha": "2026-04-15",
-          "nivel": "P",
-          "texto": "A petición de la Fiscalía Europea se detiene a dos sospechosos, entre ellos un funcionario público, por un presunto fraude de 3,3 M€ en fondos UE (FSE y Feader, más de 20 subvenciones entre 2010 y 2025) para fomentar el empleo en Zamora y Salamanca, con presunto blanqueo. Registros, más de 12 cuentas embargadas con más de 550.000 € (0,55 M€) y más de 40 inmuebles. Comunicado del 17-abr-2026: todas las personas implicadas se presumen inocentes. Última fase conocida: detención; no se ha leído sentencia ni procesamiento.",
-          "fuente": "https://www.eppo.europa.eu/media/news/spain-two-arrested-over-eur33-million-eu-subsidy-fraud-promote-employment-2026-04-16_en"
-        }
-      ],
-      "filtraciones_prensa": [],
-      "opinion": [],
-      "pendiente": [
-        "Otras investigaciones de la Fiscalía Europea citadas por prensa y sin comunicado propio leído: ordenador cuántico del BSC (mayo de 2025) y fondos de Next Generation; contratos de mascarillas asumidos por la Fiscalía Europea (2024). Comprobar si existe nota oficial en la web de la Fiscalía Europea [VERIFICAR]",
-        "Cifra agregada de investigaciones de la Fiscalía Europea en España (prensa cita 47 y 321 M€ en el informe anual de 2023): leer el informe anual oficial más reciente [VERIFICAR]"
-      ],
-      "palabras_clave": ["fiscalia europea", "eppo", "subvenciones", "fondos ue"],
-      "responsables": "Particulares y empresas privadas; no son cargos públicos salvo un funcionario detenido en la operación de abril (sin nombre en el comunicado)",
-      "gobierno_epoca": "No aplica (fraudes de particulares a subvenciones, 2010-2025)"
+     "fecha": "2026-09-22",
+     "nivel": "P",
+     "texto": "El Pleno del Tribunal de Cuentas aprueba el informe n.º 1695 (nota de prensa del 23-sep-2026): fiscalización de la contratación y el control del servicio integral de seguimiento telemático de las medidas de alejamiento en violencia de género y sexual. Analiza los contratos de 2018, 2021 y 2023 del Ministerio de Igualdad: importe total 102,6 M€, de los que 42,6 M€ corresponden al de 2023 (vigente hasta mayo de 2026), financiado en parte con el PRTR; más un contrato menor de 12.706,21 €. Conclusiones: en 2018 y 2021 no se previó un plan de transición y el de 2023 lo recibió por modificación contractual (julio de 2023); el cambio de adjudicatario y esa ausencia causaron problemas de acceso al histórico que impidieron responder a 123 requerimientos judiciales pendientes hasta octubre de 2024 (cuando, coincidiendo con un requerimiento de la Fiscalía, el Ministerio actuó). «Graves deficiencias» en la ejecución del contrato de 2023 durante casi toda su vigencia, ya resueltas según el informe: fiabilidad de dispositivos, interrupciones, errores de geolocalización que permitieron el acercamiento de agresores a víctimas, baterías, retrasos en reparaciones. En noviembre de 2025 el Ministerio encargó una auditoría tecnológica externa que corroboró vulnerabilidades críticas. Ocho recomendaciones al Ministerio. Es una auditoría de gestión: no atribuye delito a nadie.",
+     "fuente": "https://www.tcu.es/es/Comunicacion-y-Espacio-Divulgativo/El-Tribunal-de-Cuentas-detecta-deficiencias-en-la-contratacion-y-seguimiento-del-sistema-telematico-de-medidas-de-alejamiento-para-proteger-a-las-victimas-de-violencia-de-genero/ · informe: https://www.tcu.es/export/sites/portal/repositorio2/INFORME/2026/I1695.pdf (PDF no leído entero: [VERIFICAR] las cifras por contrato)"
+    },
+    {
+     "fecha": "2023-11-21",
+     "nivel": "P",
+     "texto": "BOE-B-2023-34723 (anuncio de formalización, enviado el 16-nov-2023): servicio integral de seguimiento por medios telemáticos de las medidas cautelares y penas de prohibición de aproximación (expediente 202303PA0001), Secretaría de Estado de Igualdad y Contra la Violencia de Género. Procedimiento abierto acelerado (urgencia). Adjudicación el 10-oct-2023 a Vodafone España, S.A.U.; 2 ofertas recibidas (0 de pymes); valor de la oferta seleccionada 35.226.395,43 € (35,2 M€; el anuncio no dice si incluye IVA). Marcado como financiado con fondos de la UE, programa C22.I04.P03. Criterios: propuesta económica 40 %, oferta técnica 30 %, SLA 10 %, funcionalidades de los dispositivos 10 %, plan de transición de salida 10 %. Que este sea el contrato objeto de la investigación NO consta en el comunicado de la Fiscalía Europea: el vínculo es una inferencia por el objeto y la financiación UE [VERIFICAR]. Nota de unidades: 35,226 M€ × 1,21 = 42,6 M€, coincidente con la cifra de 42,6 M€ del Tribunal de Cuentas para el contrato de 2023, lo que sugiere que esta incluye IVA (inferencia propia [VERIFICAR]).",
+     "fuente": "https://www.boe.es/diario_boe/xml.php?id=BOE-B-2023-34723"
     }
-  ],
-  "por_abrir": 0,
-  "_fuentes_feed": {
-    "eppo_comunicados": "https://www.eppo.europa.eu/en/media/news (el listado con filtro por país dio error 404; se abren los comunicados por URL directa o desde el buscador) [Chrome/navegador integrado: OK por URL directa]",
-    "tcu_resultados": "https://www.tcu.es/es/fiscalizacion/actividad-fiscalizadora/resultados-de-las-fiscalizaciones/ (HTML; enlaces a informe, resumen, infografía y nota de prensa se leen con JavaScript) [API/Chrome: Chrome OK]",
-    "boe_xml": "https://www.boe.es/diario_boe/xml.php?id=BOE-B-AAAA-NNNNN (anuncios de contratación en XML; abre sin bloqueo)"
+   ],
+   "filtraciones_prensa": [
+    {
+     "fecha": "2026-11-12",
+     "nivel": "S/VERIFICAR",
+     "texto": "Prensa (Euronews, Artículo 14, ARA, ESdiario; solo titulares y extractos vistos, no leídos enteros) sitúa el foco en el contrato de 2023 con Vodafone. El Ministerio de Igualdad sostiene, según esas crónicas, que la UCO fue a pedir documentación y no a practicar un registro, que los fondos se han destinado «correctamente» y que los problemas se resolvieron en 2024. Cifras de prensa contradictorias que NO se deben atribuir a la investigación: 6,4 M€ del PRTR (Artículo 14), 45 M€ (OKDiario) y 100 M€ (ESdiario). Artículo 14 dice que el adjudicatario fue una UTE Vodafone-Securitas, cosa que el BOE no recoge (solo Vodafone España, S.A.U.).",
+     "fuente": "https://es.euronews.com/2026/11/12/la-fiscalia-europea-investiga-un-posible-fraude-en-la-compra-de-pulseras-telematicas · https://www.articulo14.es/economia/la-fiscalia-europea-investiga-un-presunto-fraude-en-las-pulseras-antimaltrato-y-actua-en-igualdad-y-el-tribunal-de-cuentas-20261112.html"
+    },
+    {
+     "fecha": "2026-05-13",
+     "nivel": "S/VERIFICAR",
+     "texto": "El Debate (13-may-2026, extracto) dice que la Mesa de Contratación mantuvo a Vodafone, de forma provisional, para un contrato posterior por 43.901.276,71 € (43,9 M€). Es otro contrato distinto al de 2023; no confundir importes.",
+     "fuente": "https://www.eldebate.com/sociedad/20260513/gobierno-adjudica-pulseras-antimaltrato-misma-empresa-fallaron-menos-dinero-previsto_417113.html"
+    }
+   ],
+   "opinion": [
+    {
+     "fecha": "2026-11-12",
+     "texto": "Reacciones políticas (PP exige explicaciones, el Gobierno defiende el gasto) recogidas por prensa: opinión de partes interesadas, no hechos.",
+     "nivel": "S",
+     "fuente": "ESdiario, 12-nov-2026 (extracto)"
+    }
+   ],
+   "pendiente": [
+    "Leer el PDF completo del informe 1695 del Tribunal de Cuentas (importes por contrato, si hay penalidades, qué se dice de la financiación PRTR) [VERIFICAR]",
+    "Ver si Igualdad publica nota oficial sobre la actuación del 12-nov (no localizada) y si el Congreso o el Senado programan comparecencia [VERIFICAR]",
+    "Contrato posterior a 2023 (adjudicación 2026) en la Plataforma de Contratación del Sector Público: localizar expediente y importe oficial [VERIFICAR]",
+    "Confirmar en el perfil del contratante de Igualdad (PLACSP) si hay modificaciones del contrato 202303PA0001 y su importe [VERIFICAR]",
+    "OLAF: sin dato; no suele anunciar sus investigaciones [VERIFICAR]"
+   ],
+   "palabras_clave": [
+    "pulseras",
+    "cometa",
+    "igualdad",
+    "violencia de genero",
+    "fiscalia europea",
+    "eppo",
+    "vodafone"
+   ],
+   "responsables": "Ministerio de Igualdad (órgano contratante). Sin personas ni empresas investigadas en ninguna fuente oficial leída.",
+   "gobierno_epoca": "Contrato de 2023 adjudicado por el Gobierno de Pedro Sánchez (PSOE-Sumar); contratos de 2018 y 2021 en gobiernos del mismo presidente (con Unidas Podemos en 2021) [periodo exacto de cada ministra: VERIFICAR]"
+  },
+  {
+   "id": "eppo-espana-resto-2026",
+   "nombre": "Fiscalía Europea en España: otros casos de 2026 con sentencia o detenciones (contexto, no son fondos de Adif ni de ministerios)",
+   "tribunal": "Fiscalía Europea (EPPO, Madrid) · Audiencia Nacional (Sala de lo Penal)",
+   "tipo": "UE · Subvenciones",
+   "fase": "Tres comunicados oficiales de 2026 leídos: una condena firme (cooperativa de desempleados, Murcia), una condena firme (proyecto Horizonte 2020, Navarra) y una operación con dos detenidos (subvenciones FSE/Feader en Zamora y Salamanca). Sirven de contexto de cómo actúa la Fiscalía Europea en España; no tienen relación con las investigaciones de Adif ni de Igualdad.",
+   "hechos_judiciales": [
+    {
+     "fecha": "2026-09-28",
+     "nivel": "P",
+     "texto": "La Sección Segunda de la Sala de lo Penal de la Audiencia Nacional condena a un acusado (nombre no facilitado) a 6 meses de prisión y 2 años sin poder recibir subvenciones, y a indemnizar con 95.000 € (0,095 M€) a la Región de Murcia por apropiarse de ayudas de la UE concedidas a una cooperativa de personas desempleadas (47.000 € en feb-2019 y 48.000 € en mar-2020). Se declaró culpable; la sentencia es firme. Comunicado de la Fiscalía Europea del 7-oct-2026.",
+     "fuente": "https://www.eppo.europa.eu/media/news/spain-individual-convicted-misappropriating-eu-subsidies-intended-support-unemployed-people-2026-10-07_en"
+    },
+    {
+     "fecha": "2026-10-05",
+     "nivel": "P",
+     "texto": "La Audiencia Nacional (Juzgado Central de lo Penal) condena a una empresa y a su administrador por imputar a un proyecto Horizonte 2020 salarios ya cubiertos por ayudas del Gobierno de Navarra: daño total 26.000 € (0,026 M€), de ellos 10.200 € a la UE. Administrador: 23 días de prisión sustituidos por multa de 276 €; empresa: multa de 6.500 € y 9 meses sin subvenciones. Admitieron los hechos y devolvieron el importe; sentencia firme. Comunicado del 9-oct-2026.",
+     "fuente": "https://www.eppo.europa.eu/media/news/spain-company-and-director-found-guilty-claiming-salary-costs-twice-national-and-eu-funds-2026-10-09_en"
+    },
+    {
+     "fecha": "2026-04-15",
+     "nivel": "P",
+     "texto": "A petición de la Fiscalía Europea se detiene a dos sospechosos, entre ellos un funcionario público, por un presunto fraude de 3,3 M€ en fondos UE (FSE y Feader, más de 20 subvenciones entre 2010 y 2025) para fomentar el empleo en Zamora y Salamanca, con presunto blanqueo. Registros, más de 12 cuentas embargadas con más de 550.000 € (0,55 M€) y más de 40 inmuebles. Comunicado del 17-abr-2026: todas las personas implicadas se presumen inocentes. Última fase conocida: detención; no se ha leído sentencia ni procesamiento.",
+     "fuente": "https://www.eppo.europa.eu/media/news/spain-two-arrested-over-eur33-million-eu-subsidy-fraud-promote-employment-2026-04-16_en"
+    }
+   ],
+   "filtraciones_prensa": [],
+   "opinion": [],
+   "pendiente": [
+    "Otras investigaciones de la Fiscalía Europea citadas por prensa y sin comunicado propio leído: ordenador cuántico del BSC (mayo de 2025) y fondos de Next Generation; contratos de mascarillas asumidos por la Fiscalía Europea (2024). Comprobar si existe nota oficial en la web de la Fiscalía Europea [VERIFICAR]",
+    "Cifra agregada de investigaciones de la Fiscalía Europea en España (prensa cita 47 y 321 M€ en el informe anual de 2023): leer el informe anual oficial más reciente [VERIFICAR]"
+   ],
+   "palabras_clave": [
+    "fiscalia europea",
+    "eppo",
+    "subvenciones",
+    "fondos ue"
+   ],
+   "responsables": "Particulares y empresas privadas; no son cargos públicos salvo un funcionario detenido en la operación de abril (sin nombre en el comunicado)",
+   "gobierno_epoca": "No aplica (fraudes de particulares a subvenciones, 2010-2025)"
+  },
+  {
+   "id": "tcu-1685-csd-team-espana-prtr",
+   "nombre": "Tribunal de Cuentas: Consejo Superior de Deportes, programa Team España y fondos PRTR (2021-2024)",
+   "tribunal": "Tribunal de Cuentas (Pleno, fiscalización; no es un procedimiento penal)",
+   "tipo": "Tribunal de Cuentas · Fiscalización",
+   "fase": "Informe n.º 1.685 aprobado por el Pleno el 27-jul-2026. Resumen oficial leído (no el informe completo). Es una auditoría de gestión: señala deficiencias y recomendaciones; no atribuye delitos ni cita a personas. Presunción de inocencia.",
+   "hechos_judiciales": [
+    {
+     "fecha": "2026-07-27",
+     "nivel": "P",
+     "texto": "Conclusión del Tribunal de Cuentas: planificación estratégica deficiente del CSD, sin plan de actuación (art. 85 Ley 40/2015), y el sistema de gestión de subvenciones SIGEPRE con deficiencias de control interno, trazabilidad, integridad y seguridad; sin expediente electrónico único.",
+     "fuente": "https://www.tcu.es/export/sites/portal/repositorio2/resumen/NR_I1685.pdf"
+    },
+    {
+     "fecha": "2026-07-27",
+     "nivel": "P",
+     "texto": "Fondos PRTR: en una subvención de 12 M€ concedida de forma directa no se justifica suficientemente por qué no hubo concurrencia competitiva; de diez subvenciones no consta la resolución publicada en la BDNS; DACIS (declaraciones de ausencia de conflicto de intereses) inexistentes o insuficientes en parte importante de los expedientes examinados.",
+     "fuente": "https://www.tcu.es/export/sites/portal/repositorio2/resumen/NR_I1685.pdf"
+    },
+    {
+     "fecha": "2026-07-27",
+     "nivel": "P",
+     "texto": "Contratación PRTR (27 expedientes examinados): 13 (48 %) por procedimiento de urgencia; 19 (70 %) con umbrales mínimos en criterios de juicio de valor sin comité de expertos; 19 (70 %) con criterios genéricos e imprecisos; 13 (48 %) con subcriterios no recogidos en los pliegos. En un lote se otorgó un punto más del máximo del pliego, determinante para la adjudicación.",
+     "fuente": "https://www.tcu.es/export/sites/portal/repositorio2/resumen/NR_I1685.pdf"
+    },
+    {
+     "fecha": "2026-07-27",
+     "nivel": "P",
+     "texto": "Programa Team España (ayudas a deportistas y federaciones): deficiencias de justificación por 344.043 € (0,344 M€) en la muestra; 487 justificantes por 596.052 € (0,596 M€) fuera de plazo y 206 pagos fuera de plazo con demora media de 52 días; fecha de pago anterior a la de facturación en numerosas anotaciones.",
+     "fuente": "https://www.tcu.es/export/sites/portal/repositorio2/resumen/NR_I1685.pdf"
+    },
+    {
+     "fecha": "2026-07-27",
+     "nivel": "P",
+     "texto": "Seguimiento de recomendaciones previas: las dos recomendaciones de informes de 2016 y 2021 consideradas parcialmente cumplidas no han tenido ningún avance.",
+     "fuente": "https://www.tcu.es/export/sites/portal/repositorio2/resumen/NR_I1685.pdf"
+    }
+   ],
+   "filtraciones_prensa": [],
+   "opinion": [],
+   "pendiente": [
+    "Leer el informe completo (PDF) para importes totales por línea y alegaciones del CSD: el gráfico del resumen no se interpretó para evitar error de unidades [VERIFICAR]",
+    "Comprobar si el informe se traslada a la Comisión Mixta o a la Fiscalía [VERIFICAR]"
+   ],
+   "palabras_clave": [
+    "tribunal de cuentas",
+    "csd",
+    "team españa",
+    "prtr"
+   ],
+   "responsables": "Consejo Superior de Deportes (organismo); no se nombra a personas",
+   "gobierno_epoca": "No aplica: informe de fiscalización de gestión, sin imputación de personas"
+  },
+  {
+   "id": "tcu-1686-instituciones-penitenciarias-contratacion",
+   "nombre": "Tribunal de Cuentas: contratación del programa 133A «Centros e instituciones penitenciarias» (2023-2024)",
+   "tribunal": "Tribunal de Cuentas (Pleno, fiscalización; no es un procedimiento penal)",
+   "tipo": "Tribunal de Cuentas · Fiscalización",
+   "fase": "Informe n.º 1.686 aprobado por el Pleno el 27-jul-2026. Resumen oficial leído. Auditoría de cumplimiento con muestra: no se imputa a personas ni se cita fraude.",
+   "hechos_judiciales": [
+    {
+     "fecha": "2026-07-27",
+     "nivel": "P",
+     "texto": "Alcance: 2.185 contratos en 2023-2024 por 276,3 M€; 1.189 (54,42 %) menores, por 14 M€. Muestra de 168 expedientes por 123,8 M€ (45 % del total); 95 son contratos menores por 3 M€.",
+     "fuente": "https://www.tcu.es/export/sites/portal/repositorio2/resumen/NR_I1686.pdf"
+    },
+    {
+     "fecha": "2026-07-27",
+     "nivel": "P",
+     "texto": "La Secretaría General de Instituciones Penitenciarias no elaboró la programación anual de contratación (art. 28.5 LCSP); el Tribunal indica que esto causa en la mayoría de los casos un mayor coste. El 26 % de los extractos de contratos llegó al Tribunal fuera de plazo; en el 46 % faltaron documentos.",
+     "fuente": "https://www.tcu.es/export/sites/portal/repositorio2/resumen/NR_I1686.pdf"
+    },
+    {
+     "fecha": "2026-07-27",
+     "nivel": "P",
+     "texto": "Contratos menores de la muestra: 25,3 % con memoria justificativa posterior a las ofertas; 35,8 % con valor muy próximo al límite legal; 27,4 % usados para necesidades recurrentes o previsibles; solo en el 11,58 % constan invitaciones a empresas; 23,2 % con ofertas que superaban el límite del contrato menor. El Tribunal lo califica de indicio de que la contratación se hizo al margen del procedimiento; no habla de delito.",
+     "fuente": "https://www.tcu.es/export/sites/portal/repositorio2/resumen/NR_I1686.pdf"
+    },
+    {
+     "fecha": "2026-07-27",
+     "nivel": "P",
+     "texto": "Recomendaciones del informe 1.544: una parcialmente cumplida (revisión de precios) y una incumplida (seguimiento del pago de facturas, con demoras más allá de lo legal).",
+     "fuente": "https://www.tcu.es/export/sites/portal/repositorio2/resumen/NR_I1686.pdf"
+    }
+   ],
+   "filtraciones_prensa": [],
+   "opinion": [],
+   "pendiente": [
+    "Leer el informe completo para contratos individuales y alegaciones del Ministerio del Interior [VERIFICAR]"
+   ],
+   "palabras_clave": [
+    "tribunal de cuentas",
+    "instituciones penitenciarias",
+    "contratos menores",
+    "interior"
+   ],
+   "responsables": "Secretaría General de Instituciones Penitenciarias (Ministerio del Interior); no se nombra a personas",
+   "gobierno_epoca": "No aplica: informe de fiscalización de gestión, sin imputación de personas"
+  },
+  {
+   "id": "tcu-1687-consorcio-casa-del-mediterraneo",
+   "nombre": "Tribunal de Cuentas: Consorcio Casa del Mediterráneo (2024-2025), caso menor por importe",
+   "tribunal": "Tribunal de Cuentas (Pleno, fiscalización; no es un procedimiento penal)",
+   "tipo": "Tribunal de Cuentas · Fiscalización",
+   "fase": "Informe n.º 1.687 aprobado por el Pleno el 27-jul-2026. Resumen oficial leído. Importes pequeños frente a los otros casos: gastos de gestión ordinaria de 1,5 M€ al año.",
+   "hechos_judiciales": [
+    {
+     "fecha": "2026-07-27",
+     "nivel": "P",
+     "texto": "Resultados negativos desde 2017: -0,27 M€ en 2024 y -0,37 M€ en 2025; usa el remanente de tesorería como financiación recurrente (el Tribunal estima unos cinco años si sigue la tendencia y se hacen las obras previstas). Plantilla de 11 trabajadores a fin de 2025.",
+     "fuente": "https://www.tcu.es/export/sites/portal/repositorio2/resumen/NR_I1687.pdf"
+    },
+    {
+     "fecha": "2026-07-27",
+     "nivel": "P",
+     "texto": "Sin sistema de control interno definido en los estatutos ni manuales de procedimiento; el Ministerio de Asuntos Exteriores no ha ejercido dirección y supervisión como instrumento de diplomacia pública; se incumple el modelo de financiación de los estatutos; la masa salarial informada para 2024 era inferior a las retribuciones reconocidas; el 93 % de las actividades en España, la mayor parte en Alicante.",
+     "fuente": "https://www.tcu.es/export/sites/portal/repositorio2/resumen/NR_I1687.pdf"
+    },
+    {
+     "fecha": "2026-07-27",
+     "nivel": "P",
+     "texto": "Dos recomendaciones del informe anterior siguen sin cumplirse, aunque se corrigen algunas debilidades.",
+     "fuente": "https://www.tcu.es/export/sites/portal/repositorio2/resumen/NR_I1687.pdf"
+    }
+   ],
+   "filtraciones_prensa": [],
+   "opinion": [],
+   "pendiente": [
+    "Leer informe completo y alegaciones [VERIFICAR]"
+   ],
+   "palabras_clave": [
+    "tribunal de cuentas",
+    "casa del mediterráneo",
+    "consorcio"
+   ],
+   "responsables": "Consorcio interadministrativo (AGE, Generalitat Valenciana, Diputación de Alicante y ayuntamientos); sin personas nombradas",
+   "gobierno_epoca": "No aplica: informe de fiscalización de gestión, sin imputación de personas"
   }
+ ],
+ "por_abrir": 0,
+ "_fuentes_feed": {
+  "eppo_comunicados": "https://www.eppo.europa.eu/en/media/news (el listado con filtro por país dio error 404; se abren los comunicados por URL directa o desde el buscador) [Chrome/navegador integrado: OK por URL directa]",
+  "tcu_resultados": "https://www.tcu.es/es/fiscalizacion/actividad-fiscalizadora/resultados-de-las-fiscalizaciones/ (HTML; enlaces a informe, resumen, infografía y nota de prensa se leen con JavaScript) [API/Chrome: Chrome OK]",
+  "boe_xml": "https://www.boe.es/diario_boe/xml.php?id=BOE-B-AAAA-NNNNN (anuncios de contratación en XML; abre sin bloqueo)"
+ }
 }

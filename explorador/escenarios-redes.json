@@ -1,5 +1,5 @@
 {
- "_actualizado": "2026-11-17",
+ "_actualizado": "2026-11-18",
  "tarea": "C321, C333",
  "titulo": "Escenarios por red: dónde encaja, qué reglas le aplicarían, cómo sería un pago y una tokenización",
  "nivel": "mixto por paso: P/S si el paso cita un hecho del repo (ref); [ESPECULACIÓN] si lleva razón en vez de fuente",
@@ -129,6 +129,24 @@
       "url": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
       "nivel": "P",
       "fecha": "2026-11-14"
+     }
+    },
+    {
+     "t": "Ruta de salida a la cadena B (cierre del escenario): lo que hoy tiene fuente primaria es USDC por CCTP (quema en A y emisión en B) y mensajes por CCIP; no hay fuente primaria de una ruta real de pago cuyo puente sea XRP o XLM entre dos redes que no sean la suya. [ESPECULACIÓN] Si existiera, exigiría tres cosas a la vez: licencia o aceptación del token en cada país, profundidad de mercado en ambos extremos y un banco dispuesto a mantener riesgo de precio unos segundos; razón: el puente en stablecoin evita esa exposición, así que un puente volátil tiene que compensar con menor coste de liquidez, y eso no está demostrado con cifras públicas.",
+     "hecho": {
+      "fuente": "Síntesis del repo; sin fuente primaria de ruta real con XRP/XLM como puente",
+      "url": "",
+      "nivel": "S",
+      "fecha": "2026-11-18"
+     }
+    },
+    {
+     "t": "Estado de CLARITY al 18-nov-2026: sin cambios verificables. Último dato leído: cierre fallido 49-50 en el Senado el 15-sep-2026 (prensa y CRS). Hoy congress.gov devolvió 403 por script y el navegador no abrió la página de acciones; no hay lectura oficial posterior [VERIFICAR a mano en congress.gov/bill/119th-congress/house-bill/3633/all-actions].",
+     "hecho": {
+      "fuente": "congress.gov (403 al intentar leer); CRS 15-sep-2026 vía repo",
+      "url": "https://www.congress.gov/bill/119th-congress/house-bill/3633/all-actions",
+      "nivel": "V",
+      "fecha": "2026-11-18"
      }
     }
    ],
@@ -2215,6 +2233,7 @@
  },
  "huecos": [
   "Las 10 últimas redes (BNB Chain, Avalanche, Polygon, Chainlink, Ondo, Algorand, XDC, Quant, IOTA, Plume) tienen un escenario más corto: sin apartados de recompensas ni de mensajería salvo donde hay hecho con fuente.",
-  "XRPL: no se encontró declaración explícita de que no hay recompensa de validadores; solo su ausencia en xrpl.org. La CFTC no nombra redes concretas en su programa piloto (solo BTC, ETH y USDC)."
+  "XRPL: no se encontró declaración explícita de que no hay recompensa de validadores; solo su ausencia en xrpl.org. La CFTC no nombra redes concretas en su programa piloto (solo BTC, ETH y USDC).",
+  "C331/C333 (18-nov): siguen sin lectura oficial el estado de CLARITY tras el 15-sep-2026 y una ruta real de pago con XRP/XLM como puente; Banco Mundial Remittance Prices, remesas de Somalia, aviso PBoC y capital nostro/vostro siguen en S/null."
  ]
 }

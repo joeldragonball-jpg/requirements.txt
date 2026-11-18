@@ -39,6 +39,34 @@ def nivel_regla(capas):
     return n, cuenta
 
 
+PAPEL = {  # C329 (18-nov): 5 niveles del papel del token, más finos que la necesidad
+    "obligatorio": "obligatorio en varias capas",
+    "una_capa": "necesario en una capa",
+    "opcional": "opcional",
+    "sustituible": "sustituible por stablecoin u otro activo",
+    "sin_papel": "sin papel confirmado",
+}
+# Parte del token inmovilizada (staking), solo con cifra ya anotada en cadenas.json con fuente y fecha. Lo demás: None.
+INMOVILIZADO = {
+    "ethereum": {"pct": 36.5, "n": "S", "d": "2026-11-15", "f": "validatorqueue.com; ultrasound.money (16-nov) coincide ≈36 %"},
+    "polygon": {"pct": 36.0, "n": "P", "d": "2026-11-16", "f": "staking.polygon.technology; cálculo propio orientativo con instantáneas de fuentes distintas"},
+}
+
+
+def papel(capas, cuenta, nec):
+    """sin_papel: 3+ capas sin dato · obligatorio: «sí» en 2+ capas incl. liquidación/emisión · una_capa: «sí» en 1 capa ·
+    opcional: «parcial» en 2+ capas · sustituible: solo comisiones mínimas o «no»."""
+    if nec == "sin_dato":
+        return "sin_papel"
+    if nec == "obligatorio":
+        return "obligatorio"
+    if cuenta["sí"] >= 1:
+        return "una_capa"
+    if nec == "parcial":
+        return "opcional"
+    return "sustituible"
+
+
 def consumo(t):
     if not t or t.get("fees_anual_pct_cap") is None:
         return "sin_dato"
@@ -76,7 +104,7 @@ def calcular():
         manual = (c.get("captura") or {}).get("nivel")
         cons = consumo(t)
         fin = nivel_final(n, cons)
-        res[c["id"]] = {"nivel": fin, "necesidad": n, "consumo": cons, "fees_pct": t and t.get("fees_anual_pct_cap"), "rotacion_pct": t and t.get("rotacion_pct"), "capas": cuenta, "peso": pw, "peso_pct": pct, "valor_tokenizado_musd": round(valor, 1) if valor else None,
+        res[c["id"]] = {"papel": papel(c.get("capas") or {}, cuenta, n), "inmovilizado": INMOVILIZADO.get(c["id"]), "nivel": fin, "necesidad": n, "consumo": cons, "fees_pct": t and t.get("fees_anual_pct_cap"), "rotacion_pct": t and t.get("rotacion_pct"), "capas": cuenta, "peso": pw, "peso_pct": pct, "valor_tokenizado_musd": round(valor, 1) if valor else None,
                         "discrepa": bool(manual and fin != manual), "atipico": bool(t and (t.get("fees_anual_pct_cap") or 0) > 20), "manual": manual}
     return cad, res
 
@@ -84,10 +112,10 @@ def calcular():
 def main():
     cad, res = calcular()
     tok = json.loads(RT.read_text(encoding="utf-8")) if RT.exists() else {"redes": {}}
-    print(f"{'red':10} {'nivel':8} {'manual':8} {'necesidad':12} {'consumo':8} {'fees%':>6} {'peso':8}  capas(si/parc/min/no/sd)")
+    print(f"{'red':10} {'nivel':8} {'manual':8} {'papel':12} {'necesidad':12} {'consumo':8} {'fees%':>6} {'peso':8}  capas(si/parc/min/no/sd)")
     for k, r in res.items():
         cu = r["capas"]
-        print(f"{k:10} {r['nivel']:8} {str(r['manual']):8} {r['necesidad']:12} {r['consumo']:8} {str(r['fees_pct']):>6} {r['peso']:8}  {cu['sí']}/{cu['parcial']}/{cu['mínimo']}/{cu['no']}/{cu['sin dato']}{'  <- discrepa' if r['discrepa'] else ''}")
+        print(f"{k:10} {r['nivel']:8} {str(r['manual']):8} {r['papel']:12} {r['necesidad']:12} {r['consumo']:8} {str(r['fees_pct']):>6} {r['peso']:8}  {cu['sí']}/{cu['parcial']}/{cu['mínimo']}/{cu['no']}/{cu['sin dato']}{'  <- discrepa' if r['discrepa'] else ''}")
     if "--escribir" in sys.argv:
         raw = RC.read_text(encoding="utf-8")
         nl = "\r\n" if "\r\n" in raw else "\n"
@@ -95,8 +123,8 @@ def main():
             r = res[c["id"]]
             t = (tok.get("redes") or {}).get(c["id"])
             c.setdefault("captura", {})["liquidez"] = ({k: t.get(k) for k in ("cap_musd", "vol24_musd", "rotacion_pct", "fees30_musd", "fees_anual_pct_cap", "dex30_musd", "circulante", "total", "d", "n")} if t else None)
-            c["captura"]["regla"] = {k: r[k] for k in ("nivel", "necesidad", "consumo", "fees_pct", "rotacion_pct", "peso", "peso_pct", "valor_tokenizado_musd", "discrepa", "atipico")}
-        s = json.dumps(cad, ensure_ascii=False, indent=1)
+            c["captura"]["regla"] = {k: r[k] for k in ("nivel", "papel", "inmovilizado", "necesidad", "consumo", "fees_pct", "rotacion_pct", "peso", "peso_pct", "valor_tokenizado_musd", "discrepa", "atipico")}
+        s = json.dumps(cad, ensure_ascii=False, indent=2)
         RC.write_text(s.replace("\n", nl) + (nl if raw.endswith("\n") else ""), encoding="utf-8", newline="")
         print("escrito en cadenas.json (captura.regla)")
 

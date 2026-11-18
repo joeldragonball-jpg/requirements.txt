@@ -1,0 +1,235 @@
+{
+ "id": "C118",
+ "titulo": "Fertilizantes (precio mundial) y agua (coste por CCAA)",
+ "leido": "2026-11-18",
+ "nivel": "P en las cifras del Banco Mundial y del INE; [VERIFICAR] en causas, amoníaco, AEAS y tarifas municipales",
+ "unidad": "Fertilizantes: USD por tonelada métrica, nominal. Agua: euros por m³ (suministro + saneamiento, coste unitario medio)",
+ "nota": "Hechos: precios del Pink Sheet (Banco Mundial, actualizado 3-nov-2026, último dato oct-2026) y coste unitario del agua INE (Estadística sobre Suministro y Saneamiento del Agua, serie DCEF, último año 2024; bienal). El coste unitario INE es un promedio de la CCAA (incluye saneamiento y varía con el mix de usos), NO la tarifa que paga un hogar concreto; las tarifas por municipio y los informes de AEAS no se han leído: [VERIFICAR]. La urea subió de 472 a 857 USD/t entre feb y abr-2026 y volvió a 420 en oct; el motivo no figura en la fuente: [VERIFICAR]. No es recomendación.",
+ "fuentes": [
+  "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx (hoja Monthly Prices, columnas DAP, Urea, Potassium chloride, Phosphate rock; leído 2026-11-18)",
+  "https://www.worldbank.org/en/research/commodity-markets",
+  "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/DCEF162 (y DCEF145-DCEF161; operación INE 285; leído 2026-11-18)"
+ ],
+ "bloques": {
+  "fertilizantes": [
+   {
+    "nombre": "Urea",
+    "ultimo_mes": "2026-10",
+    "valor_usd_t": 420.0,
+    "mes_previo_sep_2026": 407.5,
+    "var_mensual_pct": 3.1,
+    "hace_12_meses_oct_2025": 394.4,
+    "var_12m_pct": 6.5,
+    "maximo_2026_usd_t": 856.9,
+    "mes_maximo": "2026M04",
+    "nivel": "P"
+   },
+   {
+    "nombre": "DAP",
+    "ultimo_mes": "2026-10",
+    "valor_usd_t": 803.1,
+    "mes_previo_sep_2026": 800.6,
+    "var_mensual_pct": 0.3,
+    "hace_12_meses_oct_2025": 754.0,
+    "var_12m_pct": 6.5,
+    "maximo_2026_usd_t": 803.1,
+    "mes_maximo": "2026M10",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Cloruro de potasio (potasa)",
+    "ultimo_mes": "2026-10",
+    "valor_usd_t": 357.5,
+    "mes_previo_sep_2026": 367.5,
+    "var_mensual_pct": -2.7,
+    "hace_12_meses_oct_2025": 352.0,
+    "var_12m_pct": 1.6,
+    "maximo_2026_usd_t": 405.0,
+    "mes_maximo": "2026M05",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Roca fosfática",
+    "ultimo_mes": "2026-10",
+    "valor_usd_t": 170.0,
+    "mes_previo_sep_2026": 170.0,
+    "var_mensual_pct": 0.0,
+    "hace_12_meses_oct_2025": 152.5,
+    "var_12m_pct": 11.5,
+    "maximo_2026_usd_t": 170.0,
+    "mes_maximo": "2026-jul a oct",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Amoníaco",
+    "ultimo_mes": null,
+    "nivel": "VERIFICAR",
+    "nota": "El Pink Sheet mensual actual (actualizado 3-nov-2026) no incluye serie de amoníaco; no se extrae. [VERIFICAR] en otra fuente."
+   }
+  ],
+  "agua_por_ccaa": [
+   {
+    "zona": "Andalucía",
+    "2018": 1.83,
+    "2020": 1.85,
+    "2022": 1.92,
+    "2024": 1.86,
+    "var_2018_2024_pct": 1.6,
+    "nivel": "P"
+   },
+   {
+    "zona": "Aragón",
+    "2018": 1.53,
+    "2020": 1.61,
+    "2022": 1.84,
+    "2024": 1.69,
+    "var_2018_2024_pct": 10.5,
+    "nivel": "P"
+   },
+   {
+    "zona": "Asturias",
+    "2018": 1.4,
+    "2020": 1.38,
+    "2022": 1.43,
+    "2024": 1.27,
+    "var_2018_2024_pct": -9.3,
+    "nivel": "P"
+   },
+   {
+    "zona": "Illes Balears",
+    "2018": 2.54,
+    "2020": 2.52,
+    "2022": 2.52,
+    "2024": 2.8,
+    "var_2018_2024_pct": 10.2,
+    "nivel": "P"
+   },
+   {
+    "zona": "Canarias",
+    "2018": 2.1,
+    "2020": 2.2,
+    "2022": 2.32,
+    "2024": 2.27,
+    "var_2018_2024_pct": 8.1,
+    "nivel": "P"
+   },
+   {
+    "zona": "Cantabria",
+    "2018": 1.67,
+    "2020": 1.63,
+    "2022": 1.57,
+    "2024": 1.53,
+    "var_2018_2024_pct": -8.4,
+    "nivel": "P"
+   },
+   {
+    "zona": "Castilla y León",
+    "2018": 1.13,
+    "2020": 1.1,
+    "2022": 1.24,
+    "2024": 1.29,
+    "var_2018_2024_pct": 14.2,
+    "nivel": "P"
+   },
+   {
+    "zona": "Castilla-La Mancha",
+    "2018": 1.25,
+    "2020": 1.3,
+    "2022": 1.6,
+    "2024": 1.62,
+    "var_2018_2024_pct": 29.6,
+    "nivel": "P"
+   },
+   {
+    "zona": "Cataluña",
+    "2018": 2.67,
+    "2020": 2.66,
+    "2022": 2.98,
+    "2024": 2.72,
+    "var_2018_2024_pct": 1.9,
+    "nivel": "P"
+   },
+   {
+    "zona": "C. Valenciana",
+    "2018": 2.05,
+    "2020": 2.04,
+    "2022": 1.94,
+    "2024": 2.63,
+    "var_2018_2024_pct": 28.3,
+    "nivel": "P"
+   },
+   {
+    "zona": "Extremadura",
+    "2018": 1.47,
+    "2020": 1.54,
+    "2022": 1.52,
+    "2024": 1.71,
+    "var_2018_2024_pct": 16.3,
+    "nivel": "P"
+   },
+   {
+    "zona": "Galicia",
+    "2018": 1.28,
+    "2020": 1.24,
+    "2022": 1.96,
+    "2024": 1.29,
+    "var_2018_2024_pct": 0.8,
+    "nivel": "P"
+   },
+   {
+    "zona": "Madrid",
+    "2018": 1.93,
+    "2020": 1.92,
+    "2022": 1.8,
+    "2024": 1.74,
+    "var_2018_2024_pct": -9.8,
+    "nivel": "P"
+   },
+   {
+    "zona": "Murcia",
+    "2018": 2.57,
+    "2020": 2.51,
+    "2022": 2.43,
+    "2024": 2.6,
+    "var_2018_2024_pct": 1.2,
+    "nivel": "P"
+   },
+   {
+    "zona": "Navarra",
+    "2018": 1.43,
+    "2020": 1.32,
+    "2022": 1.63,
+    "2024": 1.56,
+    "var_2018_2024_pct": 9.1,
+    "nivel": "P"
+   },
+   {
+    "zona": "País Vasco",
+    "2018": 2.05,
+    "2020": 2.14,
+    "2022": 2.51,
+    "2024": 2.32,
+    "var_2018_2024_pct": 13.2,
+    "nivel": "P"
+   },
+   {
+    "zona": "La Rioja",
+    "2018": 1.01,
+    "2020": 1.17,
+    "2022": 1.46,
+    "2024": 1.26,
+    "var_2018_2024_pct": 24.8,
+    "nivel": "P"
+   },
+   {
+    "zona": "Total nacional",
+    "2018": 1.91,
+    "2020": 1.92,
+    "2022": 1.92,
+    "2024": 2.02,
+    "var_2018_2024_pct": 5.8,
+    "nivel": "P"
+   }
+  ]
+ }
+}

@@ -1,7 +1,7 @@
 {
  "id": "espana-vivienda",
  "titulo": "España: vivienda (precios, alquiler, hipotecas, esfuerzo) y deuda autonómica",
- "leido": "2026-11-17",
+ "leido": "2026-11-18",
  "nivel": "P",
  "unidad": "M€ = millones de euros; % = porcentaje; €/m² = euros por metro cuadrado. Cifras como número puro.",
  "nota": "Leído el 17-nov-2026: CSV oficial BdE be1309 (deuda PDE CCAA; miles de € convertidos a M€), API INE Tempus (IPV, IPVA tabla 59056, IRAV 72975, HPT 13896/24457, EH 76197, CRE 82284) y PDF del Informe Anual 2025 del BdE (cuadros 2.5 y 2.6). Lo no leído = null/[VERIFICAR]. Es información, no recomendación.",
@@ -258,7 +258,7 @@
     "nacional_pct": 3.5,
     "ultimo_ano_publicado": 2024,
     "nivel": "P",
-    "nota": "La tabla INE 59056 no trae 2025: IPVA 2025 no publicada en Tempus a 17-nov [VERIFICAR]."
+    "nota": "18-nov: confirmado de nuevo en INE Tempus tabla 59056: último año publicado 2024 (nacional índice 122,92; +3,5 %); no existe 2025 todavía. IPVA 2025 = null; publicación anual con retraso, fecha no anunciada [VERIFICAR]."
    }
   },
   "hipotecas": {
@@ -289,15 +289,14 @@
     "extranjeros": 27.9
    },
    "esfuerzo_medio_grandes_ciudades_pct": {
+    "madrid": 31.6,
+    "barcelona": 32.4,
+    "valencia": 30.2,
+    "sevilla": 31.3,
     "zaragoza": 24.1,
     "malaga": 34.5,
-    "otras_cuatro_sin_asignar": [
-     31.6,
-     32.4,
-     30.2,
-     31.3
-    ],
-    "nota": "La extracción del PDF desordena columnas: Zaragoza y Málaga seguras por coherencia con cuadro 2.6; Madrid, Barcelona, València y Sevilla [VERIFICAR]."
+    "nota": "18-nov: asignación leída del orden del flujo de texto del PDF (pág. 150, cuadro 2.5: Madrid, Barcelona, València, Sevilla, Zaragoza, Málaga → 31,6; 32,4; 30,2; 31,3; 24,1; 34,5), coherente con el texto del informe («superan el 30 % en cinco de las seis grandes ciudades»; solo Zaragoza queda debajo). Nivel P; porcentaje de renta neta media destinada al alquiler en 2024.",
+    "otras_cuatro_sin_asignar": null
    },
    "hogares_en_sobresfuerzo_mas_30pct_renta_neta_pct": {
     "total_no_propietarios": 32.5,
@@ -317,7 +316,7 @@
     "alemania": 13.2
    },
    "esfuerzo_por_ccaa": null,
-   "nota": "El Informe Anual 2025 no da esfuerzo por CCAA en el texto; está en un anejo interactivo no leído → null [VERIFICAR].",
+   "nota": "18-nov: el Informe Anual 2025 del BdE (PDF completo, 10,7 MB, pág. 135-152 y cuadros 2.5-2.6) NO publica esfuerzo de alquiler por CCAA; su «anejo interactivo» documenta precios reales de la vivienda (CCAA y provincias) y esfuerzo en áreas urbanas, y no es accesible por script → esfuerzo por CCAA = null [VERIFICAR]. Alternativa pública pendiente: Panel de Hogares/Observatorio de Vivienda del MIVAU.",
    "nivel": "P"
   }
  }

@@ -623,16 +623,23 @@ def control(p, datos):
 
     grupo("Metales", [futuro("GC=F", "Oro", "$ por onza troy"), futuro("SI=F", "Plata", "$ por onza troy"), futuro("HG=F", "Cobre", "$ por tonelada", LB_T, 0)])
 
-    filas = []   # C193: tres grupos (Divisas, Tipos oficiales, Bonos) en lugar de uno
+    # C181: divisas separadas por tipo (con los mismos datos del panel, sin fuentes nuevas)
     dv = p.get("divisas", {})
-    for x in dv.get("divisas", []):
-        filas.append(fila(f"1 € en {x['nombre'].lower()}", x["valor"], x["codigo"], x["fecha"], "P", "BCE (tipo de referencia)", x["url"], c=x.get("cambio_1d"), d=2 if x["valor"] > 10 else 4))
+    TIPO_DIV = (("USD", "Divisas · dólar"), ("GBP", "Divisas · euro y Europa fuera del euro"), ("CHF", "Divisas · refugio"), ("JPY", "Divisas · refugio"), ("CNY", "Divisas · emergentes"))
+    por_cod, f_dv = {x["codigo"]: x for x in dv.get("divisas", [])}, {}
+    for cod, g in TIPO_DIV:
+        x = por_cod.get(cod)
+        if x:
+            f_dv.setdefault(g, []).append(fila(f"1 € en {x['nombre'].lower()}", x["valor"], x["codigo"], x["fecha"], "P", "BCE (tipo de referencia)", x["url"], c=x.get("cambio_1d"), d=2 if x["valor"] > 10 else 4))
+    for x in dv.get("divisas", []):   # una moneda nueva del BCE no se pierde: va a «otras»
+        if x["codigo"] not in dict(TIPO_DIV):
+            f_dv.setdefault("Divisas · otras", []).append(fila(f"1 € en {x['nombre'].lower()}", x["valor"], x["codigo"], x["fecha"], "P", "BCE (tipo de referencia)", x["url"], c=x.get("cambio_1d"), d=2 if x["valor"] > 10 else 4))
     if not dv.get("divisas") and datos.get("eur"):
-        filas.append(fila("1 € en dólar estadounidense", datos["eur"]["tipo"], "USD", datos["eur"]["fecha"], "P", "BCE (tipo de referencia)", "https://data.ecb.europa.eu/data/datasets/EXR/EXR.D.USD.EUR.SP00.A", d=4))
+        f_dv.setdefault("Divisas · dólar", []).append(fila("1 € en dólar estadounidense", datos["eur"]["tipo"], "USD", datos["eur"]["fecha"], "P", "BCE (tipo de referencia)", "https://data.ecb.europa.eu/data/datasets/EXR/EXR.D.USD.EUR.SP00.A", d=4))
     if dv.get("dxy"):
         x = dv["dxy"]
-        filas.append(fila(x["nombre"], x["valor"], "índice frente a 6 monedas", x["fecha"], "S", *YH, c=x.get("cambio_1d")))
-    f_div, filas = filas, []
+        f_dv.setdefault("Divisas · dólar", []).append(fila(x["nombre"], x["valor"], "índice frente a 6 monedas", x["fecha"], "S", *YH, c=x.get("cambio_1d")))
+    filas = []
     tv = {t["jur"]: t for t in p.get("tipos_vivos", {}).get("paises", [])}
     tb = {t["id"]: t for t in p.get("tipos_bis", {}).get("paises", [])}
     for t, e in ((tv.get("eeuu"), "Tipo oficial · Reserva Federal"), (tv.get("ue"), "Tipo oficial · BCE (depósito)"), (tb.get("JP"), "Tipo oficial · Banco de Japón")):
@@ -652,7 +659,12 @@ def control(p, datos):
         filas.append(fila("Euríbor a 12 meses (media del mes)", eur12["valor"], "%", eur12["fecha"], "P", "BCE", "https://data.ecb.europa.eu/data/datasets/FM/FM.M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA",
                           d=3, pp=round(eur12["valor"] - eur12["anterior"], 3) if eur12.get("anterior") is not None else None, per="1 mes", fr="mensual",
                           x=[f"Hace 12 meses: {fm_es(eur12['hace_12m'], 3)} %"] if eur12.get("hace_12m") is not None else []))
-    grupo("Divisas", f_div, "Cuánto vale 1 euro en cada moneda (tipos de referencia del BCE). El índice del dólar (DXY) es de Yahoo [S].")
+    NOTAS_DIV = {"Divisas · dólar": "Cuánto vale 1 euro en dólares (BCE) y fortaleza del dólar frente a 6 monedas (DXY, Yahoo [S]). Si el euro baja frente al dólar, el DXY suele subir.",
+                 "Divisas · euro y Europa fuera del euro": "Libra esterlina: 1 € en libras (tipos de referencia del BCE).",
+                 "Divisas · refugio": "Franco suizo y yen: monedas que suelen buscarse en momentos de miedo. Más unidades por euro = moneda más débil.",
+                 "Divisas · emergentes": "Yuan chino: con la divisa gestionada por el banco central. Faltan otros emergentes en el panel del BCE (no se añaden fuentes)."}
+    for g in ("Divisas · dólar", "Divisas · euro y Europa fuera del euro", "Divisas · refugio", "Divisas · emergentes", "Divisas · otras"):
+        grupo(g, f_dv.get(g, []), NOTAS_DIV.get(g))
     grupo("Tipos oficiales", f_tipos, "Tipos de los bancos centrales: la variación va en puntos porcentuales, no en %. Solo cambian en las reuniones.")
     grupo("Bonos y euríbor", filas, "Rentabilidad del bono a 10 años y euríbor: la variación va en puntos porcentuales, no en %.")
     return {"generado": datos["generado"], "leido": p.get("leido"), "grupos": grupos}

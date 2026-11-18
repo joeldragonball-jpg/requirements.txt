@@ -957,6 +957,46 @@
           "fecha": "2026-10-31",
           "nivel": "P",
           "fuente": "iShares UK, ficha del fondo (pasado, no previsión)"
+        },
+        {
+          "dato": "iShares Core MSCI World: peso por países (EE. UU. / Japón / Reino Unido / Canadá / Suiza / Francia / Alemania / Australia / Países Bajos)",
+          "valor": "72 / 6 / 4 / 3 / 2 / 2 / 2 / 2 / 1",
+          "unidad": "% del valor de mercado (redondeado; gráfico: EE. UU. 72,1)",
+          "fecha": "2026-11-16",
+          "nivel": "P",
+          "fuente": "iShares UK, ficha del fondo IE00B4L5Y983, Exposure Breakdowns > Geography (emisor, parte interesada; leída en Chrome 18-nov-2026)"
+        },
+        {
+          "dato": "Vanguard FTSE All-World UCITS ETF (VWCE): peso por países (EE. UU. 62,83; Japón 5,94; Taiwán 3,31; Reino Unido 3,25; Canadá 3,09; China 2,27; Corea del Sur 2,25; Suiza 2,08; Francia 1,91; Alemania 1,83; Australia 1,61)",
+          "valor": "62,83 (EE. UU.)",
+          "unidad": "% de la cartera",
+          "fecha": "2026-10-31",
+          "nivel": "P",
+          "fuente": "Vanguard UK Professional, ficha del FTSE All-World UCITS ETF USD Acc (emisor, parte interesada; leída en Chrome 18-nov-2026)"
+        },
+        {
+          "dato": "VWCE: indicador de riesgo (escala 1-7 del KID/PRIIPs, tal como lo publica la ficha)",
+          "valor": "6",
+          "unidad": "de 7",
+          "fecha": "2026-11-18",
+          "nivel": "P",
+          "fuente": "Vanguard UK Professional, ficha del FTSE All-World UCITS ETF USD Acc (emisor, parte interesada; leída en Chrome 18-nov-2026); el PDF del KID no se leyó: costes de entrada/salida y periodo recomendado sin leer"
+        },
+        {
+          "dato": "VWCE: gastos corrientes (OCF/TER) en la ficha de Vanguard UK; patrimonio de la clase / total del fondo",
+          "valor": "0,14 % / 62.190 M USD y 88.840 M USD",
+          "unidad": "% / millones USD",
+          "fecha": "2026-11-18",
+          "nivel": "P",
+          "fuente": "Vanguard UK Professional, ficha del FTSE All-World UCITS ETF USD Acc (emisor, parte interesada; leída en Chrome 18-nov-2026)"
+        },
+        {
+          "dato": "VWCE: error de seguimiento anualizado (1, 3 y 5 años) / método",
+          "valor": "0,07 / 0,07 / 0,08; réplica física por muestreo",
+          "unidad": "%",
+          "fecha": "2026-10-31",
+          "nivel": "P",
+          "fuente": "Vanguard UK Professional, ficha del FTSE All-World UCITS ETF USD Acc (emisor, parte interesada; leída en Chrome 18-nov-2026)"
         }
       ],
       "alcista": [
@@ -980,7 +1020,8 @@
         "Peso de EE. UU. por país en MSCI World y FTSE All-World: el desglose por países es un gráfico que no se leyó [VERIFICAR].",
         "Calificación fiscal concreta de cada producto.",
         "KID de VWCE e IWDA (indicador de riesgo, costes de entrada/salida, periodo recomendado): son PDF y el lector de Chrome no los abre; no leídos. El 0,14 % de VWCE sigue siendo el del aviso de Vanguard NL.",
-        "El TER del iShares se lee ahora en su ficha (0,20 %, [P] emisor); tracking difference sin leer."
+        "El TER del iShares se lee ahora en su ficha (0,20 %, [P] emisor); tracking difference sin leer.",
+        "18-nov (C203): peso por países ya leído (MSCI World vía iShares: EE. UU. ~72 %; FTSE All-World vía Vanguard: 62,83 %). Siguen sin leer los KID en PDF (Chrome no los abre y descargar pide OK de Joel): indicador de riesgo de IWDA, costes de entrada/salida y periodo recomendado de ambos [VERIFICAR]."
       ],
       "especulacion": [
         "Rentabilidades futuras: [ESPECULACIÓN]; no se estiman."

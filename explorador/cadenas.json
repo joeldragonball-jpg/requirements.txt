@@ -727,6 +727,8 @@
         ],
         "regla": {
           "nivel": "baja",
+          "papel": "sustituible",
+          "inmovilizado": null,
           "necesidad": "sustituible",
           "consumo": "bajo",
           "fees_pct": 0.03,
@@ -1130,6 +1132,8 @@
         ],
         "regla": {
           "nivel": "baja",
+          "papel": "sustituible",
+          "inmovilizado": null,
           "necesidad": "sustituible",
           "consumo": "alto",
           "fees_pct": 1.78,
@@ -1571,6 +1575,8 @@
         ],
         "regla": {
           "nivel": "baja",
+          "papel": "opcional",
+          "inmovilizado": null,
           "necesidad": "parcial",
           "consumo": "bajo",
           "fees_pct": 0.06,
@@ -1941,6 +1947,13 @@
         ],
         "regla": {
           "nivel": "alta",
+          "papel": "obligatorio",
+          "inmovilizado": {
+            "pct": 36.5,
+            "n": "S",
+            "d": "2026-11-15",
+            "f": "validatorqueue.com; ultrasound.money (16-nov) coincide ≈36 %"
+          },
           "necesidad": "obligatorio",
           "consumo": "alto",
           "fees_pct": 2.19,
@@ -2467,6 +2480,8 @@
         ],
         "regla": {
           "nivel": "alta",
+          "papel": "obligatorio",
+          "inmovilizado": null,
           "necesidad": "obligatorio",
           "consumo": "alto",
           "fees_pct": 9.0,
@@ -2936,11 +2951,11 @@
           "u": "https://docs.bnbchain.org/bnb-smart-chain/cross-chain-bridge/"
         },
         "regulacion": {
-          "t": "Hay ETF spot de BNB en EE. UU.",
-          "f": "Dossier ETF",
-          "i": "informes/dossiers/2026-10-09-etfs-cripto.md",
-          "d": "2026-10-09",
-          "n": "S"
+          "t": "VanEck BNB ETF (VBNB), ETF en EE. UU. sobre BNB, inicio 7-may-2026; a 17-nov-2026: NAV 22,84 $, patrimonio neto 77,66 M$, -8,64 % desde el inicio, comisión 0,39 %, rentabilidad bruta por staking 0,65 % (no es rentabilidad para el inversor). La web dice que delega parte de los BNB en validadores de BNB Chain si el patrocinador lo considera viable sin riesgo legal o regulatorio indebido",
+          "f": "VanEck, página del fondo VBNB (emisor, parte interesada; leída en Chrome 18-nov-2026)",
+          "u": "https://www.vaneck.com/us/en/investments/bnb-etf-vbnb/overview/",
+          "d": "2026-11-17",
+          "n": "P"
         }
       },
       "capas": {
@@ -2988,6 +3003,8 @@
         ],
         "regla": {
           "nivel": "alta",
+          "papel": "obligatorio",
+          "inmovilizado": null,
           "necesidad": "obligatorio",
           "consumo": "medio",
           "fees_pct": 0.89,
@@ -3404,6 +3421,8 @@
         ],
         "regla": {
           "nivel": "media",
+          "papel": "opcional",
+          "inmovilizado": null,
           "necesidad": "parcial",
           "consumo": "alto",
           "fees_pct": 3.0,
@@ -3707,10 +3726,10 @@
           "n": "S"
         },
         "seguridad": {
-          "t": "Cadena de prueba de participación compatible con EVM (Heimdall y Bor): mínimo 10.000 POL por validador y hasta 105 validadores activos; finalidad determinista en 2-5 s por milestones. La doc no da el número real de validadores",
-          "f": "docs.polygon.technology, overview y finality (leídas por curl; parte interesada)",
-          "u": "https://docs.polygon.technology/pos/overview.md",
-          "d": "2026-11-14",
+          "t": "Cadena de prueba de participación compatible con EVM (Heimdall y Bor): mínimo 10.000 POL por validador y hasta 105 validadores activos (doc); finalidad determinista en 2-5 s por milestones (doc). API del panel oficial de staking, 18-nov-2026: 100 validadores en estado «active» (97 HEALTHY, 2 en periodo de gracia y 1 en aviso final) con ≈3.810,6 M POL en stake; los 5 mayores concentran ≈43,8 % y los 10 mayores ≈66,3 % (cálculo propio sobre esa lista)",
+          "f": "docs.polygon.technology (overview y finality) y staking-api.polygon.technology/api/v2/validators (API del panel oficial de staking; parte interesada, leída por curl)",
+          "u": "https://staking-api.polygon.technology/api/v2/validators?limit=200",
+          "d": "2026-11-18",
           "n": "P"
         },
         "activos": {
@@ -3810,6 +3829,13 @@
         ],
         "regla": {
           "nivel": "alta",
+          "papel": "obligatorio",
+          "inmovilizado": {
+            "pct": 36.0,
+            "n": "P",
+            "d": "2026-11-16",
+            "f": "staking.polygon.technology; cálculo propio orientativo con instantáneas de fuentes distintas"
+          },
           "necesidad": "obligatorio",
           "consumo": "alto",
           "fees_pct": 56.46,
@@ -3863,8 +3889,8 @@
       ],
       "sin_dato": [
         "Rentabilidad de staking en vivo (la doc solo da el calendario de emisión).",
-        "Número real de validadores activos (la doc fija un máximo de 105).",
-        "PIP-78 comprobado el 17-nov-2026 (repositorio oficial de PIPs, estado Final, 1-feb-2026): NO elimina la emisión; recorta un 6,5 % el CHECKPOINT_REWARD del StakeManager porque se emitía ~7 % más de lo previsto en PIP-26 (303.000 frente a 283.644 POL/día; objetivo del año 6: 103,53 M POL, 1 %). Propuestas posteriores (p. ej. PIP-93, consejo de seguridad): sin relación con la emisión, sin leer más."
+        "PIP-78 comprobado el 17-nov-2026 (repositorio oficial de PIPs, estado Final, 1-feb-2026): NO elimina la emisión; recorta un 6,5 % el CHECKPOINT_REWARD del StakeManager porque se emitía ~7 % más de lo previsto en PIP-26 (303.000 frente a 283.644 POL/día; objetivo del año 6: 103,53 M POL, 1 %). Propuestas posteriores (p. ej. PIP-93, consejo de seguridad): sin relación con la emisión, sin leer más.",
+        "Validadores activos (18-nov-2026): 100 según la API del panel oficial de staking; esa API no da la rentabilidad en vivo, que sigue sin dato."
       ],
       "tipos_activo": {
         "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
@@ -4156,7 +4182,7 @@
       "id": "canton",
       "nombre": "Canton Network",
       "token": "Canton Coin (CC)",
-      "tipo": "Red con privacidad y permisos sobre un sincronizador global",
+      "tipo": "Cadena pública (autodescripción) con privacidad por partes: sincronizador global, sin estado global único; participantes con identidad",
       "aporta": "Infraestructura post-negociación de Wall Street: DTCC en producción, repo tokenizado y JPMD; privacidad entre participantes.",
       "ficha": null,
       "busca": [
@@ -4251,7 +4277,7 @@
         },
         "seguridad": {
           "token": "parcial",
-          "ev": "Los Super Validators hacen stake de CC para gobernar; la red es permisionada."
+          "ev": "Los Super Validators hacen stake de CC para gobernar; operadores con identidad (la participación pública anónima no es el caso de uso)."
         },
         "mensajeria": {
           "token": "parcial",
@@ -4276,10 +4302,13 @@
         "supuestos": [
           "Que el tráfico institucional pase por el sincronizador global",
           "Veredicto C329: consumo sin dato verificable. El tráfico se compra quemando Canton Coin con tarifa fijada en USD (docs.canton.network) pero las cifras de quema de agregadores son dispares; el Scan oficial no se pudo leer el 16-nov-2026 (scan.sv-1.global.canton.network.digitalasset.com responde «RBAC: access denied» y la versión sync.global «403 Forbidden»: acceso restringido por IP) [VERIFICAR desde una IP autorizada].",
-          "Consumo (15-nov-2026): los docs oficiales confirman que el tráfico del sincronizador se paga quemando Canton Coin con precio en USD por MB (parámetro de gobernanza), pero no publican la quema total ni la emisión anual; remiten a AmuletRules y a las rondas OpenMiningRound vía Scan (no leído, acceso denegado). La página oficial de tarifas (docs.sync.global/deployment/traffic.html, 16-nov-2026, P) define extraTrafficPrice como dólares por MB cobrados en CC al tipo de cambio fijado por los Super Validators por voto de mediana y registrado en cada OpenMiningRound; no da la cifra actual. Terceros: ≈1,33 B CC quemados frente a ≈2,0 B emitidos en 90 días hasta ago-2026 (blog, S) y precio del MB de 17 a 60 $ según la fuente: se contradicen. Tasas en USD (no tokens): ≈193 M$ en T1-2026 (Messari) y >155 M$ en T3 (CertiK), S. [VERIFICAR] el precio actual del MB y la quema solo en Scan."
+          "Consumo (15-nov-2026): los docs oficiales confirman que el tráfico del sincronizador se paga quemando Canton Coin con precio en USD por MB (parámetro de gobernanza), pero no publican la quema total ni la emisión anual; remiten a AmuletRules y a las rondas OpenMiningRound vía Scan (no leído, acceso denegado). La página oficial de tarifas (docs.sync.global/deployment/traffic.html, 16-nov-2026, P) define extraTrafficPrice como dólares por MB cobrados en CC al tipo de cambio fijado por los Super Validators por voto de mediana y registrado en cada OpenMiningRound; no da la cifra actual. Terceros: ≈1,33 B CC quemados frente a ≈2,0 B emitidos en 90 días hasta ago-2026 (blog, S) y precio del MB de 17 a 60 $ según la fuente: se contradicen. Tasas en USD (no tokens): ≈193 M$ en T1-2026 (Messari) y >155 M$ en T3 (CertiK), S. [VERIFICAR] el precio actual del MB y la quema solo en Scan.",
+          "Consumo (18-nov-2026): se volvió a probar el Scan oficial en tres Super Validators (sync.global, digitalasset.com, cumberland.io) y las tres devuelven 403; DefiLlama no tiene ficha de Canton. Sin cifra con fuente."
         ],
         "regla": {
           "nivel": "incierta",
+          "papel": "opcional",
+          "inmovilizado": null,
           "necesidad": "parcial",
           "consumo": "sin_dato",
           "fees_pct": null,
@@ -4530,10 +4559,13 @@
           "Que se mantenga el pago en otros activos",
           "Alcance real del staking de LINK",
           "Veredicto C329: mantener «baja» con matiz «incierta»: la reserva de LINK crece (~6,05 M LINK, prensa sep-2026) pero no hay cifra de consumo en USD verificada; [VERIFICAR] en el panel oficial.",
-          "Consumo (15-nov-2026): la reserva de LINK acumula 6,68 M LINK (61,6 M$) y recibe entre 74.703 y 106.253 LINK por semana (media de las últimas 10, ≈90,5 mil; metrics.chain.link/reserve, P). Es entrada a una reserva, no quema, y la página no desglosa el origen («ingresos de varias fuentes on y offchain»). Anualizado ≈4,7 M LINK ≈43 M$ [ESPECULACIÓN] si el ritmo se mantiene (cálculo propio)."
+          "Consumo (15-nov-2026): la reserva de LINK acumula 6,68 M LINK (61,6 M$) y recibe entre 74.703 y 106.253 LINK por semana (media de las últimas 10, ≈90,5 mil; metrics.chain.link/reserve, P). Es entrada a una reserva, no quema, y la página no desglosa el origen («ingresos de varias fuentes on y offchain»). Anualizado ≈4,7 M LINK ≈43 M$ [ESPECULACIÓN] si el ritmo se mantiene (cálculo propio).",
+          "Consumo (18-nov-2026, S): DefiLlama atribuye a Chainlink 4,43 M$ de comisiones en 30 días y 62,09 M$ en 1 año (≈0,87 % de la capitalización de 7.095,7 M$ del 15-nov); es un agregador sin metodología publicada, mide pagos del protocolo en cualquier moneda y no prueba compra de LINK. No se cambia el campo «consumo» (sigue sin dato verificable en fuente primaria)."
         ],
         "regla": {
           "nivel": "incierta",
+          "papel": "opcional",
+          "inmovilizado": null,
           "necesidad": "parcial",
           "consumo": "sin_dato",
           "fees_pct": null,
@@ -4744,10 +4776,13 @@
         "mecanismo": "[RAZONADO] Los productos (OUSG, USDY) no requieren ONDO y la documentación leída no le da papel en la emisión.",
         "supuestos": [
           "Que ONDO siga siendo de gobernanza",
-          "Consumo: sin cifra. ONDO sigue siendo token de gobernanza y ecosistema; en jul-2026 Ondo presentó la «Ondo Network», que su CEO llama evolución de Ondo Chain y no correrá en paralelo (capa de ejecución fuera de cadena, liquidación en Ethereum; The Block y Cointelegraph, 27-28-jul-2026, S). Docs oficiales (docs.ondo.finance: índice llms.txt y lista de dominios oficiales, leídos el 16-nov-2026, P parte interesada): ninguna página describe Ondo Network ni Ondo Chain ni da al ONDO un papel de gas o de pago de comisiones, y la lista de dominios oficiales no incluye ningún dominio de red; Ondo Stocks figura en Ethereum, BNB Chain y Solana (con algunos tokens puenteables a HyperEVM y Robinhood Chain). Quién paga las comisiones de Ondo Network: sin fuente primaria [VERIFICAR]."
+          "Consumo: sin cifra. ONDO sigue siendo token de gobernanza y ecosistema; en jul-2026 Ondo presentó la «Ondo Network», que su CEO llama evolución de Ondo Chain y no correrá en paralelo (capa de ejecución fuera de cadena, liquidación en Ethereum; The Block y Cointelegraph, 27-28-jul-2026, S). Docs oficiales (docs.ondo.finance: índice llms.txt y lista de dominios oficiales, leídos el 16-nov-2026, P parte interesada): ninguna página describe Ondo Network ni Ondo Chain ni da al ONDO un papel de gas o de pago de comisiones, y la lista de dominios oficiales no incluye ningún dominio de red; Ondo Stocks figura en Ethereum, BNB Chain y Solana (con algunos tokens puenteables a HyperEVM y Robinhood Chain). Quién paga las comisiones de Ondo Network: sin fuente primaria [VERIFICAR].",
+          "Consumo (18-nov-2026, S): DefiLlama («Ondo Yield Assets») cuenta 7,95 M$ en 30 días, pero son rendimientos de USDY y OUSG pasados a los tenedores; su metodología dice que los ingresos son cero (USDY sin comisión, comisión de OUSG del 0,15 % exenta hasta 2027). No es consumo de ONDO: la demanda del token por uso sigue sin cifra."
         ],
         "regla": {
           "nivel": "baja",
+          "papel": "sustituible",
+          "inmovilizado": null,
           "necesidad": "sustituible",
           "consumo": "sin_dato",
           "fees_pct": null,
@@ -4975,6 +5010,8 @@
         ],
         "regla": {
           "nivel": "media",
+          "papel": "una_capa",
+          "inmovilizado": null,
           "necesidad": "parcial",
           "consumo": "medio",
           "fees_pct": 0.28,
@@ -5230,6 +5267,8 @@
         ],
         "regla": {
           "nivel": "incierta",
+          "papel": "sin_papel",
+          "inmovilizado": null,
           "necesidad": "sin_dato",
           "consumo": "medio",
           "fees_pct": 0.25,
@@ -5358,6 +5397,13 @@
           "d": "2026-11-16",
           "n": "P",
           "u": "https://quant.network/"
+        },
+        {
+          "t": "La página oficial de QuantNet (quant.network/quant-net/) se presenta como «ISO 20022 native» (lo cita como forma de evitar silos entre sistemas y libros mayores) y habla de DvP/PvP determinista «bajo supervisión regulatoria», con KYC/AML y reglas compartidas. Es autodescripción de producto: sin cliente, banco ni producción citados en la página. Matiza la entrada anterior: la ausencia de ISO 20022 era solo de las páginas de inicio y de clientes",
+          "f": "Quant Network, página QuantNet (leída por curl; parte interesada)",
+          "n": "P",
+          "d": "2026-11-18",
+          "u": "https://quant.network/quant-net/"
         }
       ],
       "matriz": {
@@ -5456,10 +5502,13 @@
         "supuestos": [
           "Modelo de licencias vigente",
           "Clientes bancarios en producción",
-          "Consumo: sin cifra. Suministro fijo de 14.612.493 QNT tras una única quema el 14-sep-2018; las licencias de Overledger pueden pagarse en QNT (o fiat) y la empresa las cobra como ingreso comercial, sin derecho de los poseedores a ingresos (ficha de Blockworks, S, divulgación del emisor). Sin quema recurrente conocida; docs de Quant no accesibles el 16-nov-2026 (docs.quant.network y docs.overledger.io no resuelven DNS, quant.network/docs devuelve 403); la portada de quant.network, leída ese día, habla de depósitos tokenizados y pagos sin mencionar QNT ni licencias [VERIFICAR]."
+          "Consumo: sin cifra. Suministro fijo de 14.612.493 QNT tras una única quema el 14-sep-2018; las licencias de Overledger pueden pagarse en QNT (o fiat) y la empresa las cobra como ingreso comercial, sin derecho de los poseedores a ingresos (ficha de Blockworks, S, divulgación del emisor). Sin quema recurrente conocida; docs de Quant no accesibles el 16-nov-2026 (docs.quant.network y docs.overledger.io no resuelven DNS, quant.network/docs devuelve 403); la portada de quant.network, leída ese día, habla de depósitos tokenizados y pagos sin mencionar QNT ni licencias [VERIFICAR].",
+          "Consumo (18-nov-2026): sin cifra; las páginas de quant.network no publican ingresos por licencias ni uso de QNT."
         ],
         "regla": {
           "nivel": "incierta",
+          "papel": "opcional",
+          "inmovilizado": null,
           "necesidad": "parcial",
           "consumo": "sin_dato",
           "fees_pct": null,
@@ -5518,7 +5567,8 @@
         "4.ª pasada (14-nov-2026): quant.network/overledger da «página no encontrada» también en Chrome; docs.quant.network y developer.quant.network no resuelven. Siguen sin documento primario.",
         "Liquidez (matriz, 15-nov-2026): sin dato. Quant no es una red con stablecoins ni activos propios que medir; la nota del Fusion Rollup (2-jun-2026) habla de «liquidez unificada» sin cifras, y RWA.xyz no tiene ficha de red para Quant.",
         "Modelo de licencias en QNT (licencias de Overledger cobradas en dinero fiduciario y convertidas en QNT bloqueado): solo fuentes secundarias (ByteTree, jun-2021); se retiró de la celda de interoperabilidad el 15-nov-2026 al no haber documento primario.",
-        "18-nov-2026: sin documento primario nuevo del modelo de licencias en QNT (búsqueda web no legible en Chrome); sigue como no verificado."
+        "18-nov-2026: sin documento primario nuevo del modelo de licencias en QNT (búsqueda web no legible en Chrome); sigue como no verificado.",
+        "18-nov-2026 (curl): quant.network/legal solo trae términos y marcas (sin licencia ni registro regulatorio); /overledger-platform y /quant-fusion no mencionan QNT ni modelo de licencias; docs.quant.network sigue sin resolver. Modelo de licencias en QNT: sin documento primario."
       ],
       "tipos_activo": {
         "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top visible (sin dato). [S]: tercero comercial sin auditoría.",
@@ -5681,6 +5731,8 @@
         ],
         "regla": {
           "nivel": "baja",
+          "papel": "una_capa",
+          "inmovilizado": null,
           "necesidad": "parcial",
           "consumo": "bajo",
           "fees_pct": 0.0,
@@ -5809,7 +5861,8 @@
       ],
       "sin_dato": [
         "Instituciones que la usen con fuente.",
-        "Integración con ISO 20022."
+        "Integración con ISO 20022.",
+        "18-nov-2026: docs.plume.org «Compliance at Plume» solo cubre OFAC/AML (Forta, Predicate, TRM, Chainalysis, Elliptic); no menciona agente de transferencia ante la SEC ni ERC-3643 ni ISO 20022. El blog de plume.org no se pudo leer en texto."
       ],
       "ficha": null,
       "busca": [
@@ -5825,11 +5878,11 @@
           "u": "https://app.rwa.xyz/networks/plume"
         },
         "seguridad": {
-          "t": "Blockchain pública compatible con EVM dedicada a activos reales; la página no describe el papel del token PLUME; PLUME sirve de gas, gobernanza y staking según la documentación",
-          "f": "docs.plume.org",
-          "d": "2026-11-14",
+          "t": "Blockchain pública compatible con EVM dedicada a activos reales; PLUME sirve de gas, gobernanza y staking según la documentación. Finalidad según su doc: «blanda» ≈250 ms (1 bloque, confirmación provisional que depende de la integridad y disponibilidad del secuenciador) y «dura» 64 bloques tras publicarse en Ethereum (≈30 min)",
+          "f": "docs.plume.org (inicio y «Finality», leídas por curl; parte interesada)",
+          "d": "2026-11-18",
           "n": "P",
-          "u": "https://docs.plume.org"
+          "u": "https://docs.plume.org/plume/developers/finality"
         },
         "activos": {
           "t": "USDY de Ondo figura entre los activos desplegados en Plume",
@@ -5883,6 +5936,8 @@
         ],
         "regla": {
           "nivel": "media",
+          "papel": "opcional",
+          "inmovilizado": null,
           "necesidad": "parcial",
           "consumo": "alto",
           "fees_pct": 5.28,

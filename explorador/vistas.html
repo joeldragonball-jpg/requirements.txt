@@ -431,6 +431,14 @@ i.ap-ce{width:24px;height:22px;cursor:default;flex:none}
 .ic-svg.has-sel .ic-n,.ic-svg.has-sel .ic-e{opacity:.35}.ic-svg.has-sel .ic-n.sel,.ic-svg.has-sel .ic-e.sel,.ic-svg.has-sel .ic-e.rel{opacity:1}.ic-n.sel rect{stroke:#fff;stroke-width:3.5}.ic-e.sel path:first-child{stroke-width:5}
 .ic-t{border-collapse:collapse;table-layout:fixed;width:100%;font-size:var(--fs-s)}.ic-t th,.ic-t td{border:1px solid var(--lin);padding:5px 6px;text-align:left;vertical-align:top;overflow-wrap:anywhere;font-size:var(--fs-xs)}.ic-t tr>:first-child{width:28%}.ic-t th{color:var(--tx)}
 .ic-s{color:#2fe08f;font-weight:700}.ic-nn{color:#ff6b6b;font-weight:700}.ic-p{color:#e8b64a}
+.foco-b{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}.foco-bt{min-height:40px;border:1px solid var(--lin);border-radius:8px;background:var(--bg);color:var(--tx);padding:6px 12px;font:inherit;cursor:pointer}.foco-bt.act{border-color:var(--ac);color:var(--ac);background:var(--bg)}
+.cal-f{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:6px 0 10px}.cal-f label{display:inline-flex;align-items:center;gap:6px;color:var(--tx2)}.cal-f select{min-height:40px}.cal-f .nota-v{flex-basis:100%}.cal-f .cad-bt{min-height:40px}
+#glos-b{position:fixed;right:14px;bottom:66px;z-index:21;min-height:44px;padding:0 14px;border-radius:22px;border:1px solid var(--lin);background:var(--panel);color:var(--tx);cursor:pointer;font:inherit}
+#glos-p{position:fixed;right:14px;bottom:118px;z-index:22;width:min(430px,calc(100vw - 28px));max-height:min(62vh,560px);display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--ac);border-radius:10px;padding:10px;box-shadow:0 8px 28px #000a}#glos-p[hidden]{display:none}
+.glos-h{display:flex;gap:6px}.glos-h input{flex:1;min-width:0;min-height:40px;background:var(--bg);color:var(--tx);border:1px solid var(--lin);border-radius:8px;padding:0 10px;font:inherit}.glos-h button{min-width:40px;min-height:40px;border:1px solid var(--lin);border-radius:8px;background:var(--bg);color:var(--tx);cursor:pointer}
+#glos-l{overflow:auto;margin-top:6px}.glos-t{padding:6px 0;border-top:1px solid var(--lin);font-size:var(--fs-s)}.glos-t b{color:var(--ac)}
+.gl-q{margin-left:6px;width:22px;height:22px;padding:0;border-radius:50%;border:1px solid var(--ac);background:transparent;color:var(--ac);font:700 13px/1 inherit;cursor:pointer;vertical-align:middle}.gl-q:hover,.gl-q:focus-visible{background:var(--ac);color:var(--bg)}
+@media(max-width:820px){.gl-q{width:28px;height:28px}}
 </style></head><body>
 <div class="barra">
 <span class="gb"><input id="gbus" type="search" placeholder="Buscar en todo o ir a una pestaña…" autocomplete="off" aria-label="Buscar en toda la Órbita"><div id="gres" hidden></div></span>
@@ -908,7 +916,7 @@ function nReservas(){
   return w}
 
 /* ---------- 1 · Resumen ---------- */
-function pResumen(){
+function pResumenCompleto(){
   const s=$('v-resumen');s.textContent='';
   const c1=el('div','caja');c1.append(el('h2',null,'Cifras clave'));
   const n0=v=>num(v,0),us=P&&P.bonos.paises.find(p=>p.id==='USA'),sc=P&&P.stablecoins,tic=P&&P.tic,oz=P&&P.ormuz;
@@ -1551,6 +1559,111 @@ function grafReac(filas,E,N,est){
   capa.addEventListener('mouseleave',()=>{tip.style.display='none';guia.setAttribute('visibility','hidden')});
   wrap.append(svg,tip);return wrap}
 
+/* ---------- C219 · modo foco, C220 · calendario con filtros y .ics, C221 · glosario flotante ---------- */
+const isoMas=n=>{const d=new Date(HOYS+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10)};
+let foco=false;try{foco=localStorage.getItem('orbita-foco')==='1'}catch(e){}
+function pResumen(){
+  const s=$('v-resumen');
+  if(!foco){pResumenCompleto();s.insertBefore(barraFoco(),s.firstChild);marcarGlosario();return}
+  s.textContent='';s.append(barraFoco(),focoPanel());marcarGlosario()}
+function barraFoco(){
+  const b=el('div','caja foco-b');const bt=el('button','foco-bt'+(foco?' act':''),foco?'Modo foco: activado (ver todo el Resumen)':'Activar modo foco: solo lo que cambió y lo que caduca');bt.type='button';bt.setAttribute('aria-pressed',foco?'true':'false');
+  bt.onclick=()=>{foco=!foco;try{localStorage.setItem('orbita-foco',foco?'1':'0')}catch(e){}pResumen()};
+  b.append(bt,el('span','nota-v',foco?' Se muestran solo cambios de los últimos 7 días y fechas o datos que caducan en 14 días.':' Reduce el Resumen a lo que cambió (7 días) y lo que caduca (14 días).'));return b}
+function focoPanel(){
+  const w=el('div'),d7=isoMas(-7),d14=isoMas(14);
+  const c1=el('div','caja');c1.append(el('h2',null,'Lo que cambió (últimos 7 días)'));
+  const mv=(D.movimientos||[]).filter(m=>m.fecha>=d7&&m.fecha<=HOYS).sort((a,b)=>a.fecha<b.fecha?1:-1);
+  c1.append(mv.length?tabla([{t:'Fecha',f:m=>m.fecha},{t:'Quién',f:m=>m.actor},{t:'Qué',f:m=>m.texto},{t:'Nivel',f:m=>nivelBadge(m.nivel)}],mv.slice(0,12)):el('p','nota-v','Ningún hecho registrado en 7 días (último: '+(((D.movimientos||[]).map(m=>m.fecha).filter(f=>f<=HOYS).sort().pop())||'—')+').'));
+  if(mv.length>12)c1.append(el('p','nota-v','Hay '+(mv.length-12)+' más en la Línea de tiempo.'));
+  const NV=D.novedades||[];if(NV.length){c1.append(el('h3',null,'Research nuevo ('+NV.length+')'));const u=el('ul');for(const n of NV.slice(0,6))u.append(el('li',null,n.fecha+' · '+(n.id?n.id+' · ':'')+n.titulo));c1.append(u)}
+  if(P){const m2=[];for(const x of ((P.indices||{}).indices||[]))m2.push({n:x.nombre,v:x.cambio_1d,f:x.fecha,u:'bolsa [S]'});
+    for(const x of ((P.materias||{}).materias||[]))m2.push({n:x.nombre,v:x.cambio_1d,f:x.fecha,u:'materia prima [S]'});
+    for(const x of ((P.mercado||{}).activos||[]))m2.push({n:x.nombre,v:x.cambio_24h,f:(P.mercado.leido||'').slice(0,10),u:'cripto, 24 h [S]'});
+    const gr=m2.filter(m=>m.v!=null&&Math.abs(m.v)>=2).sort((a,b)=>Math.abs(b.v)-Math.abs(a.v)).slice(0,6);
+    c1.append(el('h3',null,'Precios con variación de 2 % o más'));c1.append(gr.length?tabla([{t:'Activo',f:m=>m.n},{t:'Tipo',f:m=>m.u},{t:'Cambio',n:1,f:m=>cambio(m.v,'%',2)},{t:'Dato de',f:m=>m.f}],gr):el('p','nota-v','Ninguno hoy.'))}
+  const c2=el('div','caja');c2.append(el('h2',null,'Lo que caduca (próximos 14 días)'));
+  const ev=X?X.calendario.eventos.filter(e=>e.fin>=HOYS&&e.ini<=d14):[];
+  c2.append(el('h3',null,'Fechas del calendario ('+ev.length+')'));
+  c2.append(ev.length?tabla([{t:'Fecha',f:e=>e.ini===e.fin?e.ini:e.ini+' → '+e.fin},{t:'Qué',f:e=>(e.impacto==='alto'?'★ ':'')+e.titulo},{t:'Capa',f:e=>capaNom(e.capa)}],ev):el('p','nota-v','Ninguna fecha registrada en los próximos 14 días.'));
+  const e2=el('p','nota-v');const bt=el('button','cad-bt','Abrir el Calendario completo →');bt.type='button';bt.onclick=()=>saltar('calendario');e2.append(bt);c2.append(e2);
+  const fr=D.frescura&&D.frescura.items?D.frescura.items.filter(i=>i.semaforo==='rojo'||i.semaforo==='amarillo'):[];
+  const mas=[];for(const k of ['liquidez','indicadores']){const f=(D.manuales||{})[k];if(f&&semaforo(f,true).c!=='v')mas.push(k+' (comprobado '+f+')')}
+  const oz=P&&P.ormuz,avz=oz&&avisoViejo(oz.ultimo.fecha);if(avz)mas.push('Ormuz: dato del '+oz.ultimo.fecha+' ('+avz.replace('⚠ ','')+')');
+  c2.append(el('h3',null,'Datos que se quedan viejos'));
+  if(fr.length){const ro=fr.filter(i=>i.semaforo==='rojo').sort((a,b)=>b.dias-a.dias);c2.append(el('p','nota-v',ro.length+' ficheros en rojo y '+(fr.length-ro.length)+' en ámbar. Los más viejos:'));c2.append(tabla([{t:'Fichero',f:i=>i.archivo},{t:'Dato de',f:i=>i.fecha_dato||'—'},{t:'Días',n:1,f:i=>String(i.dias)}],ro.slice(0,8)))}
+  else c2.append(el('p','nota-v',mas.length?'Con aviso: '+mas.join(' · ')+'.':'Sin avisos de frescura en los datos cargados.'));
+  if(fr.length&&mas.length)c2.append(el('p','nota-v','Además: '+mas.join(' · ')+'.'));
+  w.append(c1,c2);return w}
+
+/* C220 · filtros del calendario */
+let calCapa='',calPais='',calCart=false;
+const CAL_PAISES=[['EE. UU.',/EE\. ?UU|Estados Unidos|\bFed\b|FOMC|\bBLS\b|\bSEC\b|CFTC|\bBEA\b|Tesoro de EE/],['Zona euro / UE',/\bBCE\b|\bUE\b|Eurostat|Eurozona|zona euro|MiCA|ESMA|euro digital|Eurogrupo|Comisión Europea/],['España',/Espa[ñn]a|CNMV|\bBOE\b|Banco de Espa|\bINE\b/],['Reino Unido',/Reino Unido|\bBoE\b|\bFCA\b|Bank of England/],['Japón',/Jap[oó]n|\bBoJ\b/],['China / Hong Kong',/China|\bPBoC\b|Hong Kong|\bHKMA\b/],['Singapur',/Singapur|\bMAS\b/],['Corea del Sur',/Corea/],['India',/\bIndia\b|\bRBI\b/],['Suiza',/Suiza|\bSNB\b/],['Internacional',/\bBIS\b|\bFMI\b|\bG20\b|GAFI|\bFATF\b|\bOPEP\b|IOSCO|\bFSB\b|Basilea|BRICS/]];
+const CAL_CART=/XRP|XLM|Ripple|Stellar|Bitcoin|\bBTC\b|cripto|ETF|stablecoin|tokeniz|CLARITY|GENIUS|\bSEC\b/i;
+const calPaises=e=>CAL_PAISES.filter(([n,r])=>r.test(e.titulo+' '+(e.detalle||'')+' '+(e.fuente||''))).map(x=>x[0]);
+const calFiltra=e=>e.fin>=HOYS&&(!calTema||e.tema===calTema)&&(!calCapa||e.capa===calCapa)&&(!calPais||calPaises(e).includes(calPais))&&(!calCart||CAL_CART.test(e.titulo+' '+(e.detalle||'')));
+function icsEscapa(t){return String(t||'').replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\r?\n/g,'\\n')}
+function icsPlegar(l){const te=new TextEncoder(),td=new TextDecoder();const b=te.encode(l);if(b.length<=75)return l;const o=[];let ini=0,lim=75;
+  while(ini<b.length){let fin=Math.min(ini+lim,b.length);while(fin<b.length&&(b[fin]&0xC0)===0x80)fin--;o.push((ini?' ':'')+td.decode(b.slice(ini,fin)));ini=fin;lim=74}return o.join('\r\n')}
+function icsFecha(iso,mas){const d=new Date(iso+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+(mas||0));return d.toISOString().slice(0,10).replace(/-/g,'')}
+function icsHash(t){let h=5381;for(let i=0;i<t.length;i++)h=((h<<5)+h+t.charCodeAt(i))>>>0;return h.toString(16)}
+function calIcs(evs){
+  const L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Orbita//Calendario//ES','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:Órbita · calendario'];
+  const sello=new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d+/,'');
+  for(const e of evs){const t=X.calendario.temas[e.tema]||{nombre:e.tema};
+    L.push('BEGIN:VEVENT','UID:'+icsHash(e.ini+'|'+e.titulo)+'@orbita','DTSTAMP:'+sello,'DTSTART;VALUE=DATE:'+icsFecha(e.ini),'DTEND;VALUE=DATE:'+icsFecha(e.fin,1),
+      'SUMMARY:'+icsEscapa((e.impacto==='alto'?'★ ':'')+e.titulo+(e.aprox?' (fecha aprox.)':'')),
+      'DESCRIPTION:'+icsEscapa([e.detalle,'Tema: '+t.nombre+' · Capa: '+capaNom(e.capa),e.fuente?'Fuente: '+e.fuente:'','Los anuncios no son hechos hasta que se confirmen.'].filter(Boolean).join('\n')),
+      'CATEGORIES:'+icsEscapa(t.nombre),'TRANSP:TRANSPARENT','END:VEVENT')}
+  L.push('END:VCALENDAR');return L.map(icsPlegar).join('\r\n')+'\r\n'}
+function calDescargar(evs){
+  const blob=new Blob([calIcs(evs)],{type:'text/calendar;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='orbita-calendario-'+HOYS+'.ics';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+function calControles(){
+  const w=el('div','cal-f');
+  const sel=(etq,val,ops,fn)=>{const l=el('label',null,etq+' ');const s=el('select');for(const [v,t] of ops){const o=el('option',null,t);o.value=v;s.append(o)}s.value=val;s.onchange=()=>fn(s.value);l.append(s);return l};
+  const usadas=new Set(X.calendario.eventos.map(e=>e.capa));
+  w.append(sel('Capa',calCapa,[['','Todas'],...D.capas.filter(c=>usadas.has(c.id)).map(c=>[c.id,c.nombre])],v=>{calCapa=v;pCalendario()}));
+  const ps=new Set();X.calendario.eventos.forEach(e=>calPaises(e).forEach(p=>ps.add(p)));
+  w.append(sel('País',calPais,[['','Todos'],...CAL_PAISES.map(p=>p[0]).filter(p=>ps.has(p)).map(p=>[p,p])],v=>{calPais=v;pCalendario()}));
+  const lc=el('label',null,''),ck=el('input');ck.type='checkbox';ck.checked=calCart;ck.onchange=()=>{calCart=ck.checked;pCalendario()};lc.append(ck,document.createTextNode(' Mi cartera (XRP, XLM, cripto, ETF)'));w.append(lc);
+  const q=el('button','cad-bt','Quitar filtros');q.type='button';q.onclick=()=>{calTema=calCapa=calPais='';calCart=false;pCalendario()};w.append(q);
+  const ex=el('button','cad-bt','Exportar .ics');ex.type='button';ex.title='Descarga las fechas visibles para tu calendario (Google, Apple, Outlook)';ex.onclick=()=>{const ev=X.calendario.eventos.filter(calFiltra);if(ev.length)calDescargar(ev)};w.append(ex);
+  w.append(el('div','nota-v','País inferido del texto del evento; «Mi cartera» busca XRP, XLM, Ripple, Stellar, bitcoin, cripto, ETF y stablecoins en título y detalle. El .ics lleva solo las fechas filtradas.'));return w}
+
+/* C221 · glosario flotante + «?» con la definición junto a cada cifra */
+const GLOS_BASE=[['VIX','Índice de volatilidad esperada del S&P 500 (opciones a 30 días). Sube cuando el mercado teme caídas; no predice nada por sí solo.'],['EFFR','Tipo efectivo de los fondos federales: el tipo al que los bancos de EE. UU. se prestan dinero a un día; lo guía la Fed.'],['Spread','Diferencia entre dos tipos o precios (por ejemplo, entre un bono y otro, o entre compra y venta).'],['RWA','Activos del mundo real tokenizados (bonos, fondos, inmuebles) emitidos como tokens en una cadena.'],['Capitalización','Precio por número de unidades en circulación; mide el tamaño, no el dinero que ha entrado.'],['Brent','Referencia de precio del petróleo del mar del Norte, usada en Europa.'],['TIC','Datos del Tesoro de EE. UU. sobre quién posee su deuda y cuánto (flujos de capital internacional).'],['13F','Declaración trimestral de gestoras de EE. UU. con sus posiciones; llega con unas seis semanas de retraso.'],['TVL','Valor total depositado en un protocolo DeFi; incluye el efecto del precio de los activos.'],['Stablecoin','Cripto que busca mantener un valor fijo (por ejemplo, 1 dólar), respaldada por reservas o algoritmos; el respaldo es lo que hay que comprobar.']];
+let _glos=null;
+function glosario(){if(_glos)return _glos;const m=new Map();
+  const add=(t,d)=>{if(!t||!d)return;const k=t.toLowerCase().replace(/\s*\(.*?\)\s*/g,' ').trim();if(!m.has(k))m.set(k,{t,d})};
+  for(const c of (D.capas||[]))for(const g of ((c.docs&&c.docs.glo)||[]))add(g.t,g.d);
+  for(const [t,d] of GLOS_BASE)add(t,d);
+  _glos=[...m.values()].filter(g=>{const c=g.t.match(/^([^,(]+),/);return !(c&&m.has(c[1].trim().toLowerCase()))}).map(g=>{const nombres=new Set([g.t.replace(/\s*\(.*?\)\s*/g,' ').trim()]);for(const a of g.t.matchAll(/\(([^)]{2,40})\)/g))for(const p of a[1].split(/[,;/]/)){const x=p.trim();if(/^[A-Z0-9][A-Za-z0-9 .\-]{1,18}$/.test(x))nombres.add(x)}
+    const rx=[...nombres].filter(n=>n.length>=3).map(n=>new RegExp('(?<![\\p{L}\\p{N}])'+n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?![\\p{L}\\p{N}])',/^[A-Z0-9 ]+$/.test(n)?'u':'iu'));return {...g,rx}}).sort((a,b)=>a.t.localeCompare(b.t,'es'));return _glos}
+function glosAbrir(q){const p=$('glos-p');p.hidden=false;$('glos-b').setAttribute('aria-expanded','true');const i=$('glos-q');i.value=q||'';glosPintar();if(!q)i.focus()}
+function glosPintar(){const q=$('glos-q').value.trim().toLowerCase(),L=$('glos-l');L.textContent='';
+  const g=glosario().filter(x=>!q||x.t.toLowerCase().includes(q)||x.d.toLowerCase().includes(q));
+  if(!g.length)L.append(el('p','nota-v','Ningún término coincide. Prueba con otra palabra.'));
+  for(const x of g){const d=el('div','glos-t');d.append(el('b',null,x.t),el('div',null,x.d));L.append(d)}
+  $('glos-n').textContent=g.length+' de '+glosario().length+' términos'}
+function glosInit(){
+  const b=el('button',null,'📖 Glosario');b.id='glos-b';b.type='button';b.setAttribute('aria-expanded','false');b.setAttribute('aria-controls','glos-p');b.title='Glosario: qué significa cada término (tecla G)';
+  const p=el('div');p.id='glos-p';p.hidden=true;p.setAttribute('role','dialog');p.setAttribute('aria-label','Glosario');
+  const h=el('div','glos-h');const q=el('input');q.id='glos-q';q.type='search';q.placeholder='Buscar un término…';q.setAttribute('aria-label','Buscar en el glosario');q.oninput=glosPintar;
+  const x=el('button',null,'✕');x.type='button';x.setAttribute('aria-label','Cerrar el glosario');x.onclick=()=>{p.hidden=true;b.setAttribute('aria-expanded','false')};h.append(q,x);
+  const n=el('div','nota-v');n.id='glos-n';const l=el('div');l.id='glos-l';p.append(h,n,l);
+  b.onclick=()=>{if(p.hidden)glosAbrir('');else x.onclick()};
+  document.body.append(b,p);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!p.hidden){x.onclick();b.focus()}else if((e.key==='g'||e.key==='G')&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!/^(INPUT|TEXTAREA|SELECT)$/.test((document.activeElement||{}).tagName||'')){e.preventDefault();b.onclick()}})}
+function marcarGlosario(){
+  const raiz=$('v-'+tab);if(!raiz||!D)return;const G=glosario();
+  for(const e of raiz.querySelectorAll('.cc-l,.cc-e,.cc-b>h3,th')){
+    if(e.querySelector('.gl-q'))continue;const t=(e.firstChild&&e.firstChild.nodeType===3?e.firstChild.textContent:e.textContent)||'';if(!t||t.length>90)continue;
+    const g=G.find(x=>x.rx.some(r=>r.test(t)));if(!g)continue;
+    const b=el('button','gl-q','?');b.type='button';b.title=g.t+': '+g.d;b.setAttribute('aria-label','¿Qué es '+g.t+'?');b.onclick=ev=>{ev.stopPropagation();glosAbrir(g.t.replace(/\s*\(.*?\)\s*/g,' ').trim())};e.append(b)}}
+{const _pc=pCalendario;pCalendario=function(){_pc();marcarGlosario()}}
+{const _pt=pintarTodo;pintarTodo=function(){_pt();marcarGlosario()}}
+glosInit();
+
 /* ---------- 4 · Calendario ---------- */
 let calTema='';
 function evCard(e){
@@ -1567,12 +1680,13 @@ function pCalendario(){
   const pl=el('div','pills');const todos=el('div','pill'+(calTema?'':' on'),'Todos los temas');todos.onclick=()=>{calTema='';pCalendario()};pl.append(todos);
   for(const k in X.calendario.temas){const t=X.calendario.temas[k];const p=el('div','pill'+(calTema===k?' on':''));const i=el('i');i.style.background=t.color;p.append(i,document.createTextNode(t.nombre));if(calTema===k)p.style.background=t.color+'33';p.onclick=()=>{calTema=k;pCalendario()};pl.append(p)}
   c.append(pl);
-  const ev=X.calendario.eventos.filter(e=>e.fin>=HOYS&&(!calTema||e.tema===calTema));
+  c.append(calControles());
+  const ev=X.calendario.eventos.filter(calFiltra);
   c.append(el('div','nota-v',ev.length+' fechas. Color = tema; ★ ALTO = impacto alto (borde grueso y brillo). Los anuncios no son hechos hasta que se confirmen.'));
   let mes='',gm=null;
   const top3=ev.filter(e=>e.impacto==='alto').slice(0,3);
   if(top3.length){c.append(el('h3',null,'Lo más próximo (impacto alto)'));const gt=el('div','mes');top3.forEach(e=>gt.append(evCard(e)));c.append(gt)}
-  if(!ev.length){const a=el('div','alt');a.append(el('h4',null,'Sin fechas para este tema; las próximas de cualquier tema'));a.append(tabla([{t:'Fecha',f:e=>e.ini},{t:'Qué',f:e=>e.titulo},{t:'Capa',f:e=>capaNom(e.capa)}],X.calendario.eventos.filter(e=>e.fin>=HOYS).slice(0,6)));c.append(a)}
+  if(!ev.length){const a=el('div','alt');a.append(el('h4',null,'Sin fechas con estos filtros; las próximas sin filtrar'));a.append(tabla([{t:'Fecha',f:e=>e.ini},{t:'Qué',f:e=>e.titulo},{t:'Capa',f:e=>capaNom(e.capa)}],X.calendario.eventos.filter(e=>e.fin>=HOYS).slice(0,6)));c.append(a)}
   for(const e of ev){if(top3.includes(e))continue;const m=e.ini.slice(0,7);if(m!==mes){mes=m;c.append(el('h3',null,m));gm=el('div','mes');c.append(gm)}
     gm.append(evCard(e))}
   s.append(c);
@@ -2092,7 +2206,7 @@ function pCadenas(){
     [['nP','verde = P: fuente primaria leída'],['nS','ámbar = S: fuente secundaria o agregador'],['nV','rojo = V: [VERIFICAR], sin contrastar'],['nd','gris discontinuo = sin dato'],['nP viej','borde discontinuo = fuente de más de 90 días (el color sigue siendo su nivel)']].forEach(([k,t])=>lg.append(el('span','cad-lgc '+k,t)));
     lg.append(el('br'),el('b',null,'Capas: ¿token? '));[['si','sí: el uso lo consume o lo exige'],['pa','parcial: a veces o con alternativa'],['mi','mínimo: solo comisiones pequeñas'],['no','no lo necesita'],['nd','sin dato']].forEach(([k,t])=>{const s=el('span','tk '+k,t);lg.append(s)});
     lg.append(el('br'),el('b',null,'Captura del token: '),el('span','cad-cap alta','alta (verde)'),el('span','cad-cap media','media (ámbar)'),el('span','cad-cap baja','baja (azul)'),el('span','cad-cap incierta','incierta (gris)'),document.createTextNode(' — las cuatro reglas están en el recuadro «Captura» de arriba. Verde y ámbar de la matriz miden la FUENTE; verde y ámbar de capas y captura miden el TOKEN: son escalas distintas.'));cm.append(lg)}
-  const fmM=v=>v==null?'sin dato':v>=1000?num(v/1000,1)+' mil M$':num(v,v<10?1:0)+' M$';const capTip=ca=>{const rg=ca.regla,lq=ca.liquidez;let s='Regla (C329): necesidad '+rg.necesidad.replace('_',' ')+' (por las 5 capas) y consumo '+rg.consumo.replace('_',' ')+(rg.fees_pct!=null?' (comisiones anuales ≈ '+num(rg.fees_pct,2)+' % de la capitalización)':' (sin dato de comisiones)')+'.';if(lq)s+=' Liquidez del token: capitalización '+fmM(lq.cap_musd)+', volumen 24 h '+fmM(lq.vol24_musd)+', rotación '+num(lq.rotacion_pct,1)+' % [S, '+lq.d+'].';if(rg.discrepa)s+=' Difiere del juicio manual anterior ('+ca.nivel+'): revisar.';if(rg.atipico)s+=' [VERIFICAR] dato de comisiones atípico (más del 20 % de la capitalización al año).';return s};
+  const PAPELT={obligatorio:'papel obligatorio en varias capas',una_capa:'necesario en una capa',opcional:'papel opcional',sustituible:'sustituible por stablecoin',sin_papel:'sin papel confirmado'};const fmM=v=>v==null?'sin dato':v>=1000?num(v/1000,1)+' mil M$':num(v,v<10?1:0)+' M$';const capTip=ca=>{const rg=ca.regla,lq=ca.liquidez;let s='Regla (C329): '+((rg.papel&&PAPELT[rg.papel])||rg.necesidad.replace('_',' '))+' (por las 5 capas) y consumo '+rg.consumo.replace('_',' ')+(rg.fees_pct!=null?' (comisiones anuales ≈ '+num(rg.fees_pct,2)+' % de la capitalización)':' (sin dato de comisiones)')+'.';if(lq)s+=' Liquidez del token: capitalización '+fmM(lq.cap_musd)+', volumen 24 h '+fmM(lq.vol24_musd)+', rotación '+num(lq.rotacion_pct,1)+' % [S, '+lq.d+'].';if(rg.discrepa)s+=' Difiere del juicio manual anterior ('+ca.nivel+'): revisar.';if(rg.atipico)s+=' [VERIFICAR] dato de comisiones atípico (más del 20 % de la capitalización al año).';return s};
   const REDES=L.filter(c=>!SERV.has(c.id)),SERVS=L.filter(c=>SERV.has(c.id));
   const abrirRed=c=>{cadSel=c.id;pCadenas();const f=$('cad-fichas');if(f)f.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})};
   // panel de una celda: texto completo, fuente, fecha, antigüedad (se usa en la tabla y en la lista de móvil)
@@ -2112,7 +2226,7 @@ function pCadenas(){
       td.onclick=()=>abrirCelda(td,c,k,v);td.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();abrirCelda(td,c,k,v)}};
       r.append(td)}
     const tc=el('td','cad-tk');CR.forEach(cp=>{const x=(c.capas||{})[cp.id]||{};const tk=x.token||'sin dato';const s=el('span','tk '+tkc(tk),cp.n.split(/[ ,]/)[0]+': '+tk);s.title=cp.n+': '+tk+(x.ev?' — '+x.ev:'');tc.append(s)});r.append(tc);
-    const ca=c.captura||{},rg=ca.regla,lq=ca.liquidez,nv=rg?rg.nivel:ca.nivel,td=el('td','cad-cap '+(nv||''));td.append(document.createTextNode(nv||'—'));if(rg){const sub=el('div','nota-v');sub.textContent=rg.necesidad.replace('_',' ')+' · consumo '+rg.consumo.replace('_',' ')+(rg.discrepa?' ≠':'');td.append(sub);td.title=capTip(ca)}r.append(td);return r};
+    const ca=c.captura||{},rg=ca.regla,lq=ca.liquidez,nv=rg?rg.nivel:ca.nivel,td=el('td','cad-cap '+(nv||''));td.append(document.createTextNode(nv||'—'));if(rg){const sub=el('div','nota-v');sub.textContent=((rg.papel&&PAPELT[rg.papel])||rg.necesidad.replace('_',' '))+' · consumo '+rg.consumo.replace('_',' ')+(rg.discrepa?' ≠':'');td.append(sub);td.title=capTip(ca)}r.append(td);return r};
   REDES.forEach(c=>t.append(fila(c)));
   if(SERVS.length){const sp=el('tr','cad-sep');const th=el('th');th.colSpan=CAPS.length+3;th.append(el('span','cad-sepl','Capas y servicios (no son cadenas): '+SERVS.map(tit).join(' · ')+'. Se comparan por capacidad, no como una red más.'));sp.append(th);t.append(sp);SERVS.forEach(c=>t.append(fila(c)))}
   const env=el('div','cad-env cad-nomov');env.append(t);cm.append(env,pan);
@@ -2204,7 +2318,7 @@ function pCadenas(){
     // Resumen
     PN.res.append(ocBloque(c));
     {const pc=el('p','nota-v');pc.append(el('b',null,'Captura de valor del token: '+(ca.nivel||'—')+'. '),document.createTextNode((ca.mecanismo||'')+((ca.supuestos||[]).length?' Supuestos: '+ca.supuestos.join('; ')+'.':'')));PN.res.append(pc)}
-    {const rg=ca.regla,lq=ca.liquidez;if(rg){const bx=el('div','cad-regla');bx.append(el('b',null,'Regla de captura (C329): '+rg.nivel+' · necesidad '+rg.necesidad.replace('_',' ')+' · consumo '+rg.consumo.replace('_',' ')));const ul2=el('ul','cad-lst');if(lq){ul2.append(el('li',null,'Liquidez del token: capitalización '+fmM(lq.cap_musd)+', volumen 24 h '+fmM(lq.vol24_musd)+', rotación '+num(lq.rotacion_pct,1)+' %'+(lq.total?', circulante '+num(lq.circulante/lq.total*100,0)+' % de la oferta total':'')+' [S: CoinGecko, '+lq.d+'].'));if(lq.fees30_musd!=null)ul2.append(el('li',null,'Comisiones pagadas por los usuarios: '+fmM(lq.fees30_musd)+' en 30 días (≈ '+num(lq.fees_anual_pct_cap,2)+' % de la capitalización al año) [S: DefiLlama]. Cuentan cualquier moneda: es un techo de la demanda del token.'));if(lq.dex30_musd!=null)ul2.append(el('li',null,'Intercambios descentralizados en la cadena: '+fmM(lq.dex30_musd)+' en 30 días [S: DefiLlama]. Mide dónde se mueve el mercado, no quién pone la liquidez (market makers: sin dato).'))}else ul2.append(el('li',null,'Sin dato de liquidez del token.'));if(rg.peso_pct!=null)ul2.append(el('li',null,'Peso: el valor tokenizado ('+fmM(rg.valor_tokenizado_musd)+', RWA.xyz [S]) equivale al '+num(rg.peso_pct,1)+' % de la capitalización del token. Ese valor no queda bloqueado en el token: es una escala, no demanda.'));if(rg.discrepa)ul2.append(el('li',null,'La regla difiere del juicio manual anterior ('+ca.nivel+'): hay que decidir cuál se sostiene con fuente.'));if(rg.atipico)ul2.append(el('li',null,'[VERIFICAR] La cifra de comisiones supera el 20 % de la capitalización al año: puede ser un dato mal medido.'));bx.append(ul2);PN.res.append(bx)}}
+    {const rg=ca.regla,lq=ca.liquidez;if(rg){const bx=el('div','cad-regla');bx.append(el('b',null,'Regla de captura (C329): '+rg.nivel+' · '+((rg.papel&&PAPELT[rg.papel])||rg.necesidad.replace('_',' '))+' · consumo '+rg.consumo.replace('_',' ')));const ul2=el('ul','cad-lst');if(lq){ul2.append(el('li',null,'Liquidez del token: capitalización '+fmM(lq.cap_musd)+', volumen 24 h '+fmM(lq.vol24_musd)+', rotación '+num(lq.rotacion_pct,1)+' %'+(lq.total?', circulante '+num(lq.circulante/lq.total*100,0)+' % de la oferta total':'')+' [S: CoinGecko, '+lq.d+'].'));if(lq.fees30_musd!=null)ul2.append(el('li',null,'Comisiones pagadas por los usuarios: '+fmM(lq.fees30_musd)+' en 30 días (≈ '+num(lq.fees_anual_pct_cap,2)+' % de la capitalización al año) [S: DefiLlama]. Cuentan cualquier moneda: es un techo de la demanda del token.'));if(lq.dex30_musd!=null)ul2.append(el('li',null,'Intercambios descentralizados en la cadena: '+fmM(lq.dex30_musd)+' en 30 días [S: DefiLlama]. Mide dónde se mueve el mercado, no quién pone la liquidez (market makers: sin dato).'))}else ul2.append(el('li',null,'Sin dato de liquidez del token.'));if(rg.inmovilizado)ul2.append(el('li',null,'Parte del token inmovilizada en staking: ≈ '+num(rg.inmovilizado.pct,1)+' % ['+rg.inmovilizado.n+', '+rg.inmovilizado.d+'; '+rg.inmovilizado.f+']. Inmovilizar token no es bueno ni malo por sí solo: reduce la oferta líquida pero no prueba demanda.'));if(rg.peso_pct!=null)ul2.append(el('li',null,'Peso: el valor tokenizado ('+fmM(rg.valor_tokenizado_musd)+', RWA.xyz [S]) equivale al '+num(rg.peso_pct,1)+' % de la capitalización del token. Ese valor no queda bloqueado en el token: es una escala, no demanda.'));if(rg.discrepa)ul2.append(el('li',null,'La regla difiere del juicio manual anterior ('+ca.nivel+'): hay que decidir cuál se sostiene con fuente.'));if(rg.atipico)ul2.append(el('li',null,'[VERIFICAR] La cifra de comisiones supera el 20 % de la capitalización al año: puede ser un dato mal medido.'));bx.append(ul2);PN.res.append(bx)}}
     PN.uso.append(usoSeg(c));PN.apo.append(apFicha(c));
     // Capas e ISO 20022
     {const g=el('div','cad-2c'),a=el('div'),b=el('div');a.append(el('h3',null,'Capas: quién la usa y si necesita el token'));

@@ -336,5 +336,83 @@
   "nivel": "S",
   "riesgo": "emisor, liquidez, acceso",
   "revisar": "2026-11-24"
+ },
+ {
+  "modalidad": "Staking como servicio (custodial)",
+  "activo": "PoS (genérico)",
+  "jurisdiccion": "UE",
+  "estado": "MiCA no prohíbe el staking; el staking como servicio requiere autorización CASP de custodia (art. 75). Staking por cuenta propia del CASP con activos de clientes no permitido (art. 70.1), ni con consentimiento; el cliente y el CASP pueden pactar el reparto si el beneficio no es solo del CASP; transparencia de costes",
+  "norma": "ESMA Q&A 2067 (resp. Comisión, 20-jun-2024) y Q&A 2607 (resp. 9-jul-2025)",
+  "fecha": "2025-07-09",
+  "fuente": "ESMA (texto leído por mí)",
+  "url": "https://www.esma.europa.eu/publications-data/questions-answers/2607",
+  "nivel": "P",
+  "riesgo": "custodia, conflicto de interés, reparto de beneficios",
+  "revisar": "2026-12-18"
+ },
+ {
+  "modalidad": "Staking como servicio",
+  "activo": "PoS (genérico)",
+  "jurisdiccion": "Hong Kong",
+  "estado": "SFC permite a plataformas VATP con licencia ofrecer staking previa aprobación escrita y condiciones de licencia; sin custodia de terceros; publicar tokens, comisiones, bloqueo y desbloqueo; riesgos: slashing, bloqueo, inactividad del validador e incertidumbre legal sobre el derecho del cliente",
+  "norma": "SFC circular 25EC22 (7-abr-2025)",
+  "fecha": "2025-04-07",
+  "fuente": "SFC (circular leída por mí)",
+  "url": "https://apps.sfc.hk/edistributionWeb/api/circular/list-content/circular/doc?lang=EN&refNo=25EC22",
+  "nivel": "P",
+  "riesgo": "slashing, bloqueo, naturaleza jurídica del derecho",
+  "revisar": "2026-12-18"
+ },
+ {
+  "modalidad": "Staking vía intermediarios",
+  "activo": "PoS (genérico)",
+  "jurisdiccion": "Hong Kong",
+  "estado": "Intermediarios con licencia pueden ofrecer staking solo mediante cuentas segregadas en una plataforma con licencia SFC o una entidad autorizada (HKMA)",
+  "norma": "SFC/HKMA circular suplementaria 25EC50 (30-sep-2025)",
+  "fecha": "2025-09-30",
+  "fuente": "SFC (circular leída por mí)",
+  "url": "https://apps.sfc.hk/edistributionWeb/api/circular/list-content/circular/doc?refNo=25EC50&lang=EN",
+  "nivel": "P",
+  "riesgo": "contraparte, segregación",
+  "revisar": "2026-12-18"
+ },
+ {
+  "modalidad": "Lending y staking minorista",
+  "activo": "Activos de pago digitales (DPT)",
+  "jurisdiccion": "Singapur",
+  "estado": "Los proveedores DPT no deben incitar a minoristas ni realizar operaciones que les permitan hipotecar, prestar o hacer staking de sus activos; a no minoristas, solo con aviso escrito de riesgos y reconocimiento; el cliente puede hacerlo por su cuenta fuera del proveedor (3.7.4: transferir a cuenta indicada por el cliente no cuenta)",
+  "norma": "MAS PS-G03, apartado 3.7 (rev. 19-sep-2024; en vigor 4-oct-2024)",
+  "fecha": "2024-09-19",
+  "fuente": "MAS (PDF leído por mí)",
+  "url": "https://www.mas.gov.sg/-/media/mas-media-library/regulation/guidelines/pso/ps-g03-guidelines-on-consumer-protection-measures-by-digital-payment-token-service-providers/guidelines-on-provision-of-consumer-protection-safeguards-by-digital-payment-token-service-providers.pdf",
+  "nivel": "P",
+  "riesgo": "prohibición minorista; posible revisión posterior no comprobada",
+  "revisar": "2026-12-18"
+ },
+ {
+  "modalidad": "Marketing de staking",
+  "activo": "PoS (genérico)",
+  "jurisdiccion": "Dubái (VARA)",
+  "estado": "Los VASP de gestión e inversión no pueden presentar su servicio como reparto de recompensas de staking salvo que los pagos provengan realmente de ellas (Parte II, G.1)",
+  "norma": "VARA, VA Management and Investment Services Rulebook, Parte II",
+  "fecha": "2026-11-18",
+  "fuente": "VARA (texto leído por mí, rulebooks.vara.ae/entiresection/322)",
+  "url": "https://rulebooks.vara.ae/entiresection/322",
+  "nivel": "P",
+  "riesgo": "publicidad engañosa de rendimiento",
+  "revisar": "2026-12-18"
+ },
+ {
+  "modalidad": "Staking desde custodia",
+  "activo": "PoS (genérico)",
+  "jurisdiccion": "Dubái (VARA)",
+  "estado": "Custodios con licencia pueden ofrecer staking con aprobación específica de VARA sin licencia separada de gestión e inversión (comunicado 24-ago-2023). Texto de la regla de custodia: no localizado en el volcado; sigue P*",
+  "norma": "VARA, noticia 24-ago-2023",
+  "fecha": "2023-08-24",
+  "fuente": "VARA (comunicado leído por mí)",
+  "url": "https://vara.ae/en/news/vara-releases-staking-from-custody-services-rules",
+  "nivel": "P (comunicado; regla P*)",
+  "riesgo": "custodia; texto de la regla [VERIFICAR]",
+  "revisar": "2026-12-18"
  }
 ]

@@ -625,6 +625,8 @@ try:
         _rg = (_c.get("captura") or {}).get("regla")
         if not _rg:
             aviso(f"cadena {_c['id']}", "falta captura.regla (ejecuta python scripts/calcular_captura.py --escribir)")
+        elif _rg.get("papel") != _res[_c["id"]]["papel"] or _rg.get("inmovilizado") != _res[_c["id"]]["inmovilizado"]:
+            aviso(f"cadena {_c['id']}", "captura.regla: papel o inmovilizado desactualizado (ejecuta python scripts/calcular_captura.py --escribir)")
         elif _rg.get("nivel") != _res[_c["id"]]["nivel"] or _rg.get("consumo") != _res[_c["id"]]["consumo"]:
             aviso(f"cadena {_c['id']}", f"captura.regla desactualizada: guardado {_rg.get('nivel')}/{_rg.get('consumo')}, calculado {_res[_c['id']]['nivel']}/{_res[_c['id']]['consumo']}")
 except (OSError, ValueError, KeyError, ImportError) as _e:

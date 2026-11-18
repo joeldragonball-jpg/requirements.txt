@@ -1,6 +1,6 @@
 {
-  "_actualizado": "2026-11-15",
-  "tarea": "C314",
+  "_actualizado": "2026-11-18",
+  "tarea": "C314+C322",
   "nivel_general": "P/S",
   "nota_nivel": "P = fuente primaria leída (BIS, DTCC, Circle, Chainlink, MAS, EUR-Lex/ESMA); S = secundaria (prensa especializada, agregadores, resultados de buscador sin abrir la página oficial); V = por verificar [VERIFICAR]. Neutral: no es recomendación de compra/venta ni ranking de redes.",
   "metodo": "Búsquedas web y lectura directa (15-nov-2026) de dtcc.com (28-oct-2026), bis.org (Agorá 27-may-2026; Informe Económico Anual 2023, cap. III), chain.link (revisión T2-2026), developers.circle.com (notas CCTP 2026). Se reutilizan, sin copiarlos enteros, hechos ya documentados en swift-liquidacion.json (C309), pruebas-bancos.json (C316), corredores-liquidez.json (C305/C315) y empresas-redes.json (C317). Sin IA en el cálculo; no se usó Chrome (ninguna fuente clave dio 403). Ampliación 15-nov-2026 (2.ª sesión): Swift releído en Chrome; Circle, Ripple, IOTA y xrpl.org leídos en Chrome; CCIP, LayerZero y Wormhole contrastados con sus API oficiales (JSON); notas de Quant 2.2.9, PDF de Agorá y docs de Ondo descargados y buscados por texto. Algunas búsquedas las hicieron subagentes y sus citas se cotejaron antes de volcar.",
@@ -108,7 +108,7 @@
     {
       "id": "canton",
       "nombre": "Canton Network (Digital Asset)",
-      "tipo": "red institucional de redes con privacidad por subtransacción",
+      "tipo": "cadena pública de capa 1 con privacidad por subtransacción (autodescripción) y arquitectura de red de validadores y sincronizadores",
       "estado": "producción",
       "que_es": "Red de aplicaciones Daml que se sincronizan mediante el Global Synchronizer, operado por Super Validators (más de 45 según prensa, entre ellos Visa desde mar-2026). Cada participante solo ve las partes de la transacción que le afectan.",
       "que_no_es": "No es una capa que lea o registre las transacciones de Ethereum, Solana u otras cadenas públicas. Tampoco es transparente para terceros: los Super Validators ordenan sin ver el contenido; la visibilidad de un supervisor depende de que se le dé un nodo o vista.",
@@ -140,6 +140,13 @@
           "fuente": "Flashbots Collective, «Deep Dive on Permissioned Blockchains - The Canton Network»",
           "url": "https://collective.flashbots.net/t/deep-dive-on-permissioned-blockchains-the-canton-network/5517",
           "nivel": "S"
+        },
+        {
+          "fecha": "2026-11-18",
+          "hecho": "La documentación oficial la define como «public layer 1 blockchain» con divulgación selectiva; el Global Synchronizer «no es una cadena separada», lo operan Super Validators y lo gobierna la Canton Foundation (Linux Foundation); cada validador guarda solo los datos de sus partes, hay sincronizadores dedicados opcionales, las partes tienen identidad y no es nativamente compatible con EVM.",
+          "fuente": "docs.canton.network (what-is-canton, architecture, global-synchronizer), leído 18-nov-2026 [parte interesada]",
+          "url": "https://docs.canton.network/overview/understand/what-is-canton",
+          "nivel": "P"
         }
       ],
       "cubre_partes": [
@@ -793,8 +800,9 @@
     "Partior (partior.com, portada y FAQ, 16-nov-2026, P parte interesada): se define como «red blockchain en vivo» y declara operar sobre un libro mayor global privado y con permisos (no una cadena pública); puede operar sin Swift y es compatible con ISO 20022; no nombra la tecnología subyacente ni declara conexión con Swift, Fnality, DTCC, CCIP ni cadenas públicas. Sus novedades de portada son una prueba de concepto de remesas en divisa con Suhyup Bank (la propia nota dice que no es un servicio de producción) y un memorando con National Bank of Bahrain para explorar liquidar dinares bahreiníes (solo exploratorio). Nexus (nexusglobalpayments.org, 16-nov-2026, P parte interesada): conecta sistemas de pago inmediato nacionales, no es una DLT; fundada en 2025 por los bancos centrales de India, Malasia, Filipinas, Singapur y Tailandia, con Indonesia como sexto miembro en 2026; operador técnico PayNet–NETS con AWS y Endava (comunicado del 9-feb-2026); la fecha de salida en vivo de 2027 no figura en las páginas leídas, solo en Business Wire (S). Ondo: docs.ondo.finance (índice y lista de dominios oficiales, 16-nov-2026) no contiene ninguna página sobre Ondo Network ni Ondo Chain; el paso de Ondo Chain a «Ondo Network» (jul-2026) sigue solo en prensa [VERIFICAR].",
     "Wormhole y CCTP (16-nov-2026): la página oficial de redes de Wormhole advierte que figurar en la documentación no implica que la cadena esté conectada y remite a paneles; el repositorio oficial reserva ID para Algorand (8), XRPL EVM (57), Stellar (61) y XRPL (66) y no incluye Hedera. La API de Wormholescan (explorador oficial, P) muestra operaciones recientes con origen en Algorand (la última el 15-nov-2026) y ninguna, ni como origen ni como destino, con Stellar, XRPL o XRPL EVM. Circle CCTP (developers.circle.com, tabla de dominios, P): lista Stellar (dominio 27), XDC (18), Plume (22), Polygon PoS (7) y Avalanche (1), entre otras; Algorand, Hedera y XRPL no figuran; BNB Smart Chain solo para USYC.",
     "Falta cotejar en navegador: LayerZero con Hedera (docs.hedera.com), CCIP con Stellar (intención sin fecha) y el anuncio original de DTCC con Chainlink.",
-    "Axelar (puente de XRP como gas en la sidechain XRPL EVM, Ripple 30-jun-2025) no tiene nodo en el mapa.",
-    "Auditoría Opus (15-nov-2026): 23 URL figuran con distinto nivel (P/S/V/R) según el archivo (p. ej. notas de la RBA y la MAS, blog de Hedera) y revisar_explorador.py no lo detecta; unificar y añadir esa comprobación."
+    "Auditoría Opus (15-nov-2026): 23 URL figuran con distinto nivel (P/S/V/R) según el archivo (p. ej. notas de la RBA y la MAS, blog de Hedera) y revisar_explorador.py no lo detecta; unificar y añadir esa comprobación.",
+    "C322 (18-nov-2026): Estado de Fnality en fnality.org (P parte interesada): libras esterlinas «live» y reguladas por el Banco de Inglaterra; euro «en curso» con contacto del BCE; licencia bancaria Connecticut Innovation Bank obtenida y diálogo con la Fed «progresando». Sigue sin figurar conexión con DTCC, Canton, Swift ni cadenas públicas (el enlace fnality→dtcc sigue siendo concepto de 2025).",
+    "C322: Siguen sin enlace primario XRPL nativo con CCIP, LayerZero, DTCC o Swift; Hedera con CCTP, Wormhole, DTCC o Swift; Partior, Agorá y Nexus (islas); la única vía de XRPL es la sidechain EVM (Axelar, Wormhole, IBC según docs.xrplevm.org). Swift.com devuelve 403 a curl (se mantiene lo leído antes en Chrome)."
   ],
   "lo_que_no_sabemos": [
     "Si DTCC, Swift o los bancos centrales de Agorá conectarán sus plataformas entre sí o a cadenas públicas con un protocolo común.",
@@ -806,7 +814,7 @@
     "CLARITY (H.R. 3633), fuente oficial leída en GovInfo (16-nov-2026, P): aprobada por la Cámara el 17-jul-2025 (versión engrossed) y recibida en el Senado y remitida a su Comisión de Banca, Vivienda y Asuntos Urbanos el 18-sep-2025. La última acción de 2026 no se pudo leer en fuente oficial: congress.gov devuelve bloqueo de Cloudflare, senate.gov «Unauthorized» y banking.senate.gov «Access Denied» (no se saltaron) [VERIFICAR a mano en congress.gov]. Prensa (S, The Defiant, American Banker, 15-sep-2026): el Senado rechazó el cierre de debate sobre la moción de proceder por 49-50 (necesitaba 60); es un voto procedimental, el proyecto sigue en el calendario del Senado (n.º 423) y no se encontró ninguna acción posterior hasta el 15-nov-2026. S. 3755 (Agricultura) reportada el 2-feb-2026 (GovInfo, calendario n.º 312). Que se retome antes de 2027 es opinión de prensa [ESPECULACIÓN]."
   ],
   "nodos_y_enlaces": {
-    "leyenda": "tipo de nodo: cadena_publica, red_institucional, plataforma_bc (banco central), protocolo_interop, infraestructura, estandar, supervisor. Nodos sin enlaces (agora, partior, fnality, nexus) = islas: no se encontró conexión anunciada con otras redes del mapa. Estado del enlace: produccion, piloto, anunciado, concepto. id_cadena enlaza con explorador/cadenas.json cuando existe.",
+    "leyenda": "tipo de nodo: cadena_publica, red_institucional, plataforma_bc (banco central), protocolo_interop, infraestructura, estandar, supervisor. Canton se clasifica desde 18-nov-2026 como cadena pública con matices (ver nota_tipo del nodo). Nodos sin enlaces (agora, partior, fnality, nexus) = islas: no se encontró conexión anunciada con otras redes del mapa. Estado del enlace: produccion, piloto, anunciado, concepto. id_cadena enlaza con explorador/cadenas.json cuando existe.",
     "nodos": [
       {
         "id": "ethereum",
@@ -846,8 +854,9 @@
       {
         "id": "canton",
         "etiqueta": "Canton Network",
-        "tipo": "red_institucional",
-        "id_cadena": "canton"
+        "tipo": "cadena_publica",
+        "id_cadena": "canton",
+        "nota_tipo": "Antes figuraba como «red institucional (permisionada)». La documentación oficial (docs.canton.network, 18-nov-2026, P parte interesada) la define como «public layer 1 blockchain» y la web canton.network como «public chain» con privacidad. Matiz independiente: no es una cadena con estado global único (cada validador guarda solo los datos de sus partes; los sincronizadores solo ordenan), no es compatible con EVM y las partes tienen identidad, así que no es una cadena pública abierta y anónima como Ethereum. «Red» describe bien su arquitectura de validadores y sincronizadores; «cadena pública» es su autodescripción. Ver informe C322."
       },
       {
         "id": "besu-dtcc",
@@ -1023,6 +1032,17 @@
         "id": "tempo",
         "etiqueta": "Tempo",
         "tipo": "cadena_publica"
+      },
+      {
+        "id": "xrpl-evm",
+        "etiqueta": "XRPL EVM (sidechain)",
+        "tipo": "cadena_publica",
+        "nota_tipo": "Cadena independiente compatible con EVM, basada en Cosmos SDK, con XRP como gas; no es el XRP Ledger nativo (docs.xrplevm.org, 18-nov-2026, P parte interesada)."
+      },
+      {
+        "id": "axelar",
+        "etiqueta": "Axelar (ITS / GMP)",
+        "tipo": "protocolo_interop"
       }
     ],
     "enlaces": [
@@ -1801,6 +1821,42 @@
         "fecha": "2026-11-15",
         "fuente": "https://algorand.co/interoperability-on-algorand-cross-chain-multichain-bridges",
         "nivel": "P"
+      },
+      {
+        "de": "axelar",
+        "a": "xrpl-evm",
+        "tipo": "puente: XRP nativo, USDC.xrpl, USDT, WETH, WBTC y DAI vía Axelar ITS",
+        "estado": "produccion",
+        "fecha": "2026-11-18",
+        "fuente": "https://docs.xrplevm.org/pages/bridge",
+        "nivel": "P"
+      },
+      {
+        "de": "axelar",
+        "a": "xrpl",
+        "tipo": "puente del XRP y del USDC emitido en XRPL hacia la sidechain EVM (no es XRPL nativo con otras cadenas)",
+        "estado": "produccion",
+        "fecha": "2026-11-18",
+        "fuente": "https://docs.xrplevm.org/pages/bridge",
+        "nivel": "P"
+      },
+      {
+        "de": "wormhole",
+        "a": "xrpl-evm",
+        "tipo": "mensajería y RLUSD vía Wormhole NTT (docs: «live»; Wormholescan sin operaciones el 16-nov-2026)",
+        "estado": "produccion",
+        "fecha": "2026-11-18",
+        "fuente": "https://docs.xrplevm.org/pages/bridge",
+        "nivel": "P"
+      },
+      {
+        "de": "ibc",
+        "a": "xrpl-evm",
+        "tipo": "capacidad IBC nativa por Cosmos SDK; no se verificó ningún canal operativo",
+        "estado": "concepto",
+        "fecha": "2026-11-18",
+        "fuente": "https://docs.xrplevm.org/pages/bridge",
+        "nivel": "P"
       }
     ]
   },
@@ -1814,7 +1870,13 @@
     "https://docs.chain.link/api/ccip/v1/chains?environment=mainnet",
     "https://metadata.layerzero-api.com/v1/metadata",
     "https://api.wormholescan.io/api/v1/governor/config",
-    "https://docs.ondo.finance/tools/ondo-bridge"
+    "https://docs.ondo.finance/tools/ondo-bridge",
+    "https://docs.xrplevm.org/pages/bridge",
+    "https://docs.canton.network/overview/understand/what-is-canton",
+    "https://docs.canton.network/overview/learn/architecture",
+    "https://docs.canton.network/overview/understand/global-synchronizer",
+    "https://www.canton.network/",
+    "https://www.fnality.org/"
   ],
-  "informe": "informes/research/2026-11-15-C314-interconexion.md"
+  "informe": "informes/research/2026-11-15-C314-interconexion.md; informes/research/2026-11-18-C322.md"
 }

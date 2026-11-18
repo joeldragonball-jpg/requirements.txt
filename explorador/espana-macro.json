@@ -574,10 +574,84 @@
    }
   ],
   "euribor_12m_diario": {
-   "valor": null,
+   "valor": 3.361,
    "unidad": "%",
-   "nivel": "VERIFICAR",
-   "nota": "Valor diario no leído (el CSV BE_19 es mensual; la fuente primaria es EMMI)."
+   "nivel": "S",
+   "periodo": "17-nov-2026",
+   "fuente": "https://www.euribor-rates.eu/en/current-euribor-rates/",
+   "nota": "Leído el 18-nov-2026 en euribor-rates.eu (reproduce los datos de EMMI, el administrador; el Banco de España solo publica la media mensual en BE_19). Serie diaria 11-17 nov: 11-nov 3,222; 12-nov 3,293; 13-nov 3,328; 16-nov 3,350; 17-nov 3,361. Media de octubre (BdE) 3,239 %. No contrastado con EMMI directamente: nivel S [VERIFICAR].",
+   "serie_diaria": [
+    {
+     "fecha": "2026-11-11",
+     "valor": 3.222
+    },
+    {
+     "fecha": "2026-11-12",
+     "valor": 3.293
+    },
+    {
+     "fecha": "2026-11-13",
+     "valor": 3.328
+    },
+    {
+     "fecha": "2026-11-16",
+     "valor": 3.35
+    },
+    {
+     "fecha": "2026-11-17",
+     "valor": 3.361
+    }
+   ],
+   "otros_plazos_17nov": [
+    {
+     "nombre": "Euríbor a 1 semana",
+     "valor": 2.416
+    },
+    {
+     "nombre": "Euríbor a 1 mes",
+     "valor": 2.483
+    },
+    {
+     "nombre": "Euríbor a 3 meses",
+     "valor": 2.784
+    },
+    {
+     "nombre": "Euríbor a 6 meses",
+     "valor": 3.007
+    }
+   ],
+   "nota_previa": "Antes null: «Valor diario no leído (el CSV BE_19 es mensual; la fuente primaria es EMMI)»."
+  },
+  "estr_diario": {
+   "nombre": "¤STR (tipo a un día del BCE), diario",
+   "valor": 2.441,
+   "unidad": "%",
+   "periodo": "17-nov-2026",
+   "nivel": "P",
+   "fuente": "https://data-api.ecb.europa.eu/service/data/EST/B.EU000A2X2A25.WT",
+   "nota": "API de datos del BCE, serie EST.B.EU000A2X2A25.WT, leída el 18-nov-2026. Media de octubre (BdE) 2,441 %.",
+   "serie_diaria": [
+    {
+     "fecha": "2026-11-11",
+     "valor": 2.439
+    },
+    {
+     "fecha": "2026-11-12",
+     "valor": 2.443
+    },
+    {
+     "fecha": "2026-11-13",
+     "valor": 2.437
+    },
+    {
+     "fecha": "2026-11-16",
+     "valor": 2.44
+    },
+    {
+     "fecha": "2026-11-17",
+     "valor": 2.441
+    }
+   ]
   }
  },
  "pib": {
@@ -625,6 +699,7 @@
   "Salario medio de la AEAT: sin leer (se añadió el de la EAES del INE).",
   "Subyacente a impuestos corrientes (nota INE 13-nov): no hallada en las tablas 76133-76135.",
   "14 pagas del SMI: cálculo propio (1.221 × 14 = 17.094 €); el BOE solo dice 1.221 €/mes y 17.094 €/año como mínimo anual.",
-  "Que scripts/indicadores.py lea estos bloques (patrón C201): no hecho."
+  "Que scripts/indicadores.py lea estos bloques (patrón C201): no hecho.",
+  "18-nov: Euríbor diario leído en euribor-rates.eu (nivel S); el BdE solo da media mensual. EMMI directo (emmi-benchmarks.eu) no consultado [VERIFICAR]. ¤STR diario ya en [P] (BCE)."
  ]
 }
