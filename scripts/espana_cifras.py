@@ -43,6 +43,22 @@ def _bloque(b, ctx=None):
     return _lista(b.get("valores"), c)
 
 
+def _tipos_diarios(t):
+    """Euríbor 12 m y ¤STR día a día (serie_diaria) y los otros plazos del Euríbor (media de octubre y 17-nov). Solo lee."""
+    filas = []
+    for k, tit in (("euribor_12m_diario", "Euríbor 12 meses (EMMI vía euribor-rates.eu)"), ("estr_diario", "¤STR (tipo a un día del BCE)")):
+        b = t.get(k) or {}
+        for x in b.get("serie_diaria") or []:
+            filas.append({"nombre": tit + " · " + str(x.get("fecha")), "valor": x.get("valor"), "unidad": b.get("unidad") or "%", "fecha": str(x.get("fecha")),
+                          "nivel": b.get("nivel") or "?", "fuente": b.get("fuente") or "", "nota": "Dato diario, no media mensual." + (" No contrastado con EMMI [VERIFICAR]." if k.startswith("euribor") else "")})
+    b = t.get("euribor_12m_diario") or {}
+    for x in b.get("otros_plazos_17nov") or []:
+        filas.append({"nombre": x.get("nombre"), "valor": x.get("valor"), "unidad": "%", "fecha": "2026-11-17", "nivel": b.get("nivel") or "?", "fuente": b.get("fuente") or "", "nota": "Dato del día (no media)."})
+    for x in t.get("euribor_otros_plazos_oct2026") or []:
+        filas.append(_fila(x))
+    return filas
+
+
 def _macro(d):
     g = []
     ipc = d.get("ipc", {})
@@ -62,6 +78,7 @@ def _macro(d):
     th = dict(t.get("tipo_medio_hipotecas") or {})
     th.setdefault("nombre", "Tipo medio de las hipotecas")
     g.append(("Tipos de interés", _lista([t.get("euribor_12m") or {}, th])))
+    g.append(("Euríbor y ¤STR: otros plazos y serie diaria", _tipos_diarios(t)))
     if d.get("pib"):
         g.append(("PIB (INE, contabilidad trimestral)", _bloque(d["pib"])))
     return g
@@ -151,6 +168,24 @@ def _pensiones(d):
     return g
 
 
+def _tramos_edad(d):
+    a = ((d.get("demografia") or {}).get("afiliados_por_tramos_edad")) or {}
+    if not a.get("valor"):
+        return None
+    ia = a.get("interanual") or {}
+    filas = [{"tramo": k, "valor": v, "anterior": ia.get(k), "var": (a.get("variacion_interanual_pct") or {}).get(k), "pct": (a.get("pct_del_total") or {}).get(k),
+              "pct_ant": (a.get("pct_del_total_2025-10") or {}).get(k)} for k, v in a["valor"].items()]
+    filas.append({"tramo": "Total", "valor": a.get("total"), "anterior": ia.get("total"), "var": (a.get("variacion_interanual_pct") or {}).get("total"), "pct": None, "pct_ant": None})
+    return {"filas": filas, "fecha": a.get("fecha"), "fecha_ant": ia.get("fecha"), "unidad": a.get("unidad"), "nivel": a.get("nivel") or "?", "fuente": a.get("fuente") or "", "nota": a.get("nota") or ""}
+
+
+def _envejecimiento(d):
+    e = ((d.get("demografia") or {}).get("envejecimiento_ccaa")) or {}
+    if not e.get("regiones"):
+        return None
+    return {"filas": e["regiones"], "periodo": e.get("periodo"), "unidad": e.get("unidad"), "nivel": e.get("nivel") or "?", "fuente": e.get("fuente") or "", "nota": e.get("nota") or ""}
+
+
 def _investigaciones(d):
     casos = []
     for c in d.get("casos", []):
@@ -181,5 +216,8 @@ def construir(carpeta):
             s["grupos"] = [{"grupo": t, "filas": f} for t, f in fns[k](d) if f]
             if k == "vivienda":
                 s["ccaa"] = _tabla_vivienda(d)
+            if k == "pensiones":
+                s["tramos"] = _tramos_edad(d)
+                s["envejecimiento"] = _envejecimiento(d)
         salida[k] = s
     return salida or None

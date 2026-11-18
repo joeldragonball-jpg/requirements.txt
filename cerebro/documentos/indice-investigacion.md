@@ -42,9 +42,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-14 · C285 - Liquidez automática (14-nov-2026) (`informes/research/2026-11-14-C285-liquidez.md`): Nuevo scripts/leer liquidez.py (sin IA, sin claves, timeouts de 30 s, 3 intentos, certificados verificados). Escribe en explorador/liquidez…
 
 ## Cripto y ETF
+- 2026-11-18 · Chrome 4 (18-nov-2026): HBAR ETF, Plume, Quant, XDC/IOTA, CLARITY (`informes/research/2026-11-18-chrome4.md`): HECHOS (P = fuente primaria leída en Chrome el 18 nov 2026)
 - 2026-11-18 · Chrome 2 (18-nov-2026): flujos ETF (C280), fichas MSCI/VWCE (C203), cadenas (C267) (`informes/research/2026-11-18-chrome2.md`): Todo leído en Chrome el 18 nov (miércoles). Hechos separados de opiniones; nada de esto es recomendación. Las webs de emisores son parte interesada.
 - 2026-11-17 · C332 · DEX nativos de XRPL y Stellar (cierre de pendientes, 17-nov-2026) (`informes/research/2026-11-17-C332-dex.md`): Añadido [P] : profundidad de un AMM por red (XRP/RLUSD ≈3,8 M$ de reservas; XLM/USDC ≈3,2 M$), comisiones (0,315 % votada vs. 0,30 % fija).
-- 2026-11-17 · C280 · ETF de XRP/XLM/BTC: 13F del 3T-2026 y flujos diarios (2026-11-17) (`informes/research/2026-11-17-C280-etf-flujos.md`): 13F del 3T (30 sep 2026), nivel S, parcial [VERIFICAR]: 190 gestores distintos declaran algún ETF de XRP (163 en el 2T; 47 nuevos, 20 que no aparecen…
 
 ## Regulación por país
 - 2026-11-18 · W03 · Hong Kong + India (rotación semana 2) · 2026-11-18 (`informes/research/2026-11-18-W03-hongkong-india.md`): Modelo Sonnet 5.5, sesión desatendida. Sin recomendaciones de compra o venta.
@@ -52,9 +52,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-14 · W03 Radar regulatorio: celdas sin dato (14-nov-2026) (`informes/research/2026-11-14-W03-radar-celdas.md`): Resultado: 0 celdas cerradas; las 10 siguen con etapa null. No se editó regulacion.json (sin fuente primaria leída no se rellena).
 
 ## Sesiones diarias (apertura y cierre)
+- 2026-11-18 · Informe de CIERRE — 2026-11-18 (mié) (`informes/2026-11-18-cierre.md`): Bloque que cubre: cierre de América (Wall Street, bono, cripto del día). Precios leídos a las 21:10 UTC con scripts/precios vivos.py r00 cierre [S,…
 - 2026-11-18 · Informe de APERTURA — 2026-11-18 (mié) (`informes/2026-11-18-apertura.md`): Bloque que cubre: tras el cierre de EE. UU. de la víspera, cierres de Asia y apertura de Europa/futuros. Precios leídos a las 07:07 UTC con…
 - 2026-11-18 · C69 + C229 + C233 · cierre de lo posible · 18-nov-2026 (`informes/research/2026-11-18-C69-C229-C233.md`): Se tocaron solo explorador/espana presupuesto.json , espana macro.json y espana energia.json (solo se añade; los campos que eran null y ahora tienen…
-- 2026-11-18 · C58 y C61: cierre de lo pendiente (18-nov-2026) (`informes/research/2026-11-18-C58-C61.md`): Editado solo explorador/paises.json (US, IN, RU) y explorador/estabilidad.json (3 notas). revisar explorador.py : 0 avisos. Sin commit ni push.
 
 ## Otros
 - 2026-11-18 · Órbita: C219, C220 y C221 (18-nov-2026) (`informes/research/2026-11-18-orbita-C219-C221.md`): Todo en explorador/vistas.html (la Órbita se regenera con scripts/construir orbita.py ). Sin dependencias nuevas, sin JSON de datos, sin IA.

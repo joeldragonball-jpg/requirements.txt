@@ -409,6 +409,45 @@ def datos_panel():
     return sal
 
 
+def claves_espana():
+    """Cifras clave de España (macro, pensiones, vivienda, energía): valor, unidad, periodo y nivel; sin notas para no pesar. Lo no leído (null) se omite."""
+    def leer(f):
+        try:
+            return cargar("explorador/" + f)
+        except Exception:
+            return {}
+    ma, pe, vi, en = leer("espana-macro.json"), leer("espana-pensiones.json"), leer("espana-vivienda.json"), leer("espana-energia.json")
+    sal = []
+    def add(n, v, u, a, niv):
+        if v is not None:
+            sal.append({"n": n, "v": v, "u": u, "a": a, "niv": niv})
+    def busca(lista, inicio):
+        return next((x for x in lista if x.get("nombre", "").startswith(inicio) and x.get("valor") is not None), None)
+    def x_(g, lista, inicio, nombre, per="periodo", pa="periodo"):
+        d = busca(lista or [], inicio)
+        if d:
+            add(nombre, d["valor"], d.get("unidad"), d.get(per) or pa, d.get("nivel") or g.get("nivel"))
+    try:
+        i = ma.get("ipc", {}); x_(i, i.get("general"), "IPC general, variación anual", "IPC general, variación anual")
+        e = ma.get("epa", {}); x_(e, e.get("nacional"), "Tasa de paro, total", "Tasa de paro (EPA)", pa=e.get("periodo"))
+        pb = ma.get("pib", {}); x_(pb, pb.get("valores"), "PIB, variación anual (corregido", "PIB, variación anual", pa=pb.get("periodo"))
+        eu = ma.get("tipos", {}).get("euribor_12m", {}); add("Euríbor a 12 meses (media)", eu.get("valor"), eu.get("unidad"), eu.get("periodo"), eu.get("nivel"))
+        sm = ma.get("salarios_smi", {}).get("smi", []); x_(ma, sm, "SMI 2026, por mes", "SMI mensual", per="x", pa="2026")
+        pn = pe.get("pensiones", {}).get("valores", []); x_(pe, pn, "Pensión media del sistema", "Pensión media")
+        sd = pe.get("saldo_ss", {}).get("valores", []); x_(pe, sd, "Saldo de la Seguridad Social", "Saldo de la Seguridad Social")
+        fr = pe.get("fondo_reserva", {}).get("valores", []); x_(pe, fr, "Fondo de Reserva de la Seguridad Social", "Fondo de Reserva")
+        b = vi.get("bloques", {}); ipv = b.get("precio_vivienda_ine_ipv", {})
+        add("Precio de la vivienda (IPV), variación anual", ipv.get("nacional_var_anual_pct"), "%", ipv.get("periodo"), ipv.get("nivel"))
+        ir = b.get("alquiler", {}).get("irav", {}); add("Alquiler (IRAV), variación anual", ir.get("oct_2026_pct"), "%", "oct-2026", ir.get("nivel"))
+        dc = b.get("deuda_ccaa", {}); add("Deuda de las CCAA", dc.get("total_meur"), "M€", dc.get("periodo"), "P")
+        for k, ini, nom in (("electricidad", "Precio mayorista (mercado diario OMIE), media de octubre", "Electricidad mayorista"), ("combustibles", "Gasolina 95 en España", "Gasolina 95"),
+                            ("embalses", "Reserva hídrica", "Reserva hídrica"), ("gas", "Reservas de gas", "Reservas de gas")):
+            x_(en, en.get(k), ini, nom, per="anio", pa=None)
+    except Exception:
+        pass
+    return sal
+
+
 def espana():
     """Tarjetas de España del móvil: ministerios, programas, beneficiarios y fiscal (explorador/espana*.json)."""
     try:
@@ -441,7 +480,7 @@ def espana():
             "prog": [{"g": x["grupo"], "n": x["nombre"], "i": x["inicial_2025"], "o": x["obligaciones_2025"], "nota": x.get("nota")} for x in b["programas"]],
             "pob": [dato(x) for x in m.get("poblacion_referencia", [])], "benef": [dato(x) for x in m.get("beneficiarios", [])],
             "req": [{"n": x["nombre"], "x": x["nota"]} for x in m.get("requisitos_acceso", [])], "vg": [dato(x) for x in m.get("violencia_genero", [])],
-            "fiscal": fiscal, "leido_eurostat": e.get("leido")}
+            "fiscal": fiscal, "leido_eurostat": e.get("leido"), "claves": claves_espana()}
 
 
 def regulacion():
