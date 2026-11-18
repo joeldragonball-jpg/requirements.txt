@@ -617,7 +617,7 @@ function marcarScroll(e){const t=e&&e.target&&e.target.nodeType===1?[e.target]:d
   t.forEach(x=>{if(!x.classList)return;const m=x.scrollWidth-x.clientWidth;x.classList.toggle('sc-d',m>4&&x.scrollLeft<m-4);x.classList.toggle('sc-i',m>4&&x.scrollLeft>4)})}
 document.addEventListener('scroll',marcarScroll,true);addEventListener('resize',()=>setTimeout(marcarScroll,50));
 function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles,activos:pActivos,cadenas:pCadenas})[tab]();if(['paneles','noticias','calendario','matriz','espana','paises'].includes(tab))anclas($('v-'+tab),tab);
-  if(tab==='espana')[...$('v-espana').querySelectorAll('details')].filter(d=>!d.parentElement.closest('details')).forEach(d=>{let cer={};try{cer=JSON.parse(localStorage.getItem('orbita-esp-cerrados')||'{}')}catch(e){}const k=((d.querySelector('summary')||{}).textContent||'').trim().slice(0,60);d.open=!cer[k];d.addEventListener('toggle',()=>{try{const c2=JSON.parse(localStorage.getItem('orbita-esp-cerrados')||'{}');if(d.open)delete c2[k];else c2[k]=1;localStorage.setItem('orbita-esp-cerrados',JSON.stringify(c2))}catch(e){}})});setTimeout(marcarScroll,60)}
+  if(tab==='espana')[...$('v-espana').querySelectorAll('details')].filter(d=>!d.parentElement.closest('details')).forEach(d=>{let cer={};try{cer=JSON.parse(localStorage.getItem('orbita-esp-cerrados')||'{}')}catch(e){}const k=((d.querySelector('summary')||{}).textContent||'').trim().slice(0,60);d.open=(d.dataset.cerr&&cer[k]===undefined)?false:!cer[k];d.addEventListener('toggle',()=>{try{const c2=JSON.parse(localStorage.getItem('orbita-esp-cerrados')||'{}');if(d.open){if(d.dataset.cerr)c2[k]=0;else delete c2[k]}else c2[k]=1;localStorage.setItem('orbita-esp-cerrados',JSON.stringify(c2))}catch(e){}})});setTimeout(marcarScroll,60)}
 
 /* ---------- bloques de datos reutilizables (Capas y Paneles) ---------- */
 const PL=['3M','6M','1A','2A','3A','5A','10A','15A','20A','30A'];
@@ -1827,7 +1827,7 @@ function pPaises(){
    const cols=Object.keys(GRUPOS_PA),ks=['ipc','paro','pib','deuda','deficit'];
    const tb=tabla([{t:'Indicador',f:k=>NOMI[k]||k},...cols.map(g=>({t:g,n:1,f:k=>{const vs=[];F.filter(GRUPOS_PA[g]).forEach(f=>{const x=((IN.find(i=>i.id===f.id)||{}).indicadores||{})[k];if(x&&x.valor!=null&&typeof x.valor==='number')vs.push(x.valor)});const m=md(vs);const c=el('span');c.append(el('b',null,m==null?'—':num(m,1)+' %'),el('div','nota-v',vs.length+' de '+F.filter(GRUPOS_PA[g]).length+' países'));return c}}))],ks);
    const env=el('div');env.style.overflowX='auto';env.append(tb);dt.append(env,el('p','nota-v','Mediana de los países de cada grupo que tienen dato: los periodos pueden diferir (el IPC de Venezuela es de 2016; Cuba casi no publica). Brasil cuenta en BRICS y en Latinoamérica. No es un ranking ni una recomendación; cifras de China, Rusia, Venezuela, Cuba, Irán y Etiopía con reservas [S].'));S0.appendChild(dt)}
-  s.appendChild(el('p','nota-v',(D.paises_fichas.nota||'')+' Sin puntuaciones propias ni ranking. Cada cifra: valor (arriba), año o mes (debajo) y «antes» con el dato anterior de la misma fuente. Verde = mejora, rojo = empeora, gris = sin juicio o sin cambio; sin color = no hay dato anterior. Pasa el ratón para ver fuente, nivel y definición.'));
+  s.appendChild(el('p','nota-v',String(D.paises_fichas.nota||'').replace(/\bnull\b/g,'vacío')+' Sin puntuaciones propias ni ranking. Cada cifra: valor (arriba), año o mes (debajo) y «antes» con el dato anterior de la misma fuente. Verde = mejora, rojo = empeora, gris = sin juicio o sin cambio; sin color = no hay dato anterior. Pasa el ratón para ver fuente, nivel y definición.'));
   const tabla0=()=>{const t=el('table','pega1');const h=el('tr','');h.appendChild(el('th','',''));lista.forEach(f=>h.appendChild(el('th','n',f.pais)));t.appendChild(h);return t};
   const env=(t)=>{const x=el('div','');x.style.overflowX='auto';x.appendChild(t);return x};
   const nom=(txt,sub)=>{const c=el('td','',txt);if(sub){const n=el('div','nota-v',sub);n.style.fontSize='max(13px,.8em)';c.appendChild(n)}return c};
@@ -2354,7 +2354,7 @@ const cxDet=(t,cont)=>{const d=el('details','mas');d.append(el('summary',null,t)
 function cxCorredores(){
   const J=D.corredores_liquidez;if(!J||!(J.corredores||[]).length)return null;
   const c=cxCaja('Corredores de pago y dependencia de moneda','cad-corredores');
-  c.append(el('p','nota-v',J.aviso||''),el('p','nota-v','Revisado: '+(J.revisado||'vacío')+' · caduca: '+(J.caduca||'vacío')+'. '+(J.metodo||'')));
+  c.append(el('p','nota-v',String(J.aviso||'').replace(/\bnull\b/g,'vacío')),el('p','nota-v','Revisado: '+(J.revisado||'vacío')+' · caduca: '+(J.caduca||'vacío')+'. '+String(J.metodo||'').replace(/\bnull\b/g,'vacío')));
   const f=el('div','cx-form');f.append(el('b',null,'Índice de concentración (HHI): '),document.createTextNode(J.indice_formula||''));c.append(f);
   c.append(el('p','nota-v','Lectura: 10.000 = una sola moneda; cuanto más bajo, más repartido. Un HHI alto describe cuántas monedas intervienen, no dice si es bueno o malo. Si falta la cuota por moneda, el índice queda «vacío» y no se estima.'));
   const filas=J.corredores;
@@ -2404,7 +2404,7 @@ function cxProfundidad(){
   const J=D.profundidad_multidivisa;if(!J)return null;
   const c=cxCaja('Profundidad y velocidad: XRPL y Stellar','cad-profundidad');
   const av=el('p','cx-aviso');av.append(el('b',null,'Instantánea, no tendencia. '),document.createTextNode((J.aviso||'').replace(/^INSTANTANEA, NO TENDENCIA:\s*/i,'')));c.append(av);
-  c.append(el('p','nota-v','Lectura: '+cxHora(J._actualizado)+' · nivel '+(J.nivel||'vacío')+'. '+(J.metodo||'')));
+  c.append(el('p','nota-v','Lectura: '+cxHora(J._actualizado)+' · nivel '+(J.nivel||'vacío')+'. '+String(J.metodo||'').replace(/\bnull\b/g,'vacío')));
   const filasD=o=>Object.entries(o||{}).map(([nom,b])=>({nom,b}));
   const colsLib=[
     {t:'Libro',f:r=>{const s=el('span'),b=r.b,ina=(b.spread_pct!=null&&b.spread_pct>3);s.append(el('b',null,r.nom+' '));if(ina)s.append(el('span','cx-ina','inactivo'));s.append(el('div','nota-v','Leído '+cxHora(b.leido_utc)+(b.ledger!=null?' · ledger '+b.ledger:'')+' '),cxNiv(b.nivel));return s}},
@@ -2757,7 +2757,7 @@ function icBloque(){
 function bPaisCorr(fp){
   const J=D.pais_corredores;if(!J||!(J.paises||[]).length)return null;
   const c=cxCaja('Estado por país: CBDC, stablecoins privadas, corredores de pago y redes con proyecto oficial','mx-pais-corr');
-  c.append(el('p','nota-v',(J.aviso||'')+' Revisado: '+(J.revisado||'vacío')+' · caduca: '+(J.caduca||'vacío')+'. '+(J.metodo||'')));
+  c.append(el('p','nota-v',String(J.aviso||'').replace(/\bnull\b/g,'vacío')+' Revisado: '+(J.revisado||'vacío')+' · caduca: '+(J.caduca||'vacío')+'. '+String(J.metodo||'').replace(/\bnull\b/g,'vacío')));
   const SC={limitadas:'limitadas',permitidas_reguladas:'permitidas y reguladas',permitidas_marco_aprobado_sin_vigor:'marco aprobado, sin vigor',en_tramite_o_consulta:'en trámite o consulta',vetadas:'vetadas',sin_marco:'sin marco'};
   const celda=(p,tema)=>p.jur&&R.celdas.find(x=>x.jur===p.jur&&x.tema===tema);
   const etapaCel=(blk,tema,p,etq)=>{if(!blk||blk.etapa==null)return cxVac();const w=el('div');const cl=celda(p,tema);const ch=el('span','chip');ch.style.borderLeft='4px solid '+COL[blk.etapa];ch.append(document.createTextNode('Etapa '+blk.etapa+(R.escala[blk.etapa]?' · '+R.escala[blk.etapa]:'')+(etq?' · '+etq:'')));w.append(ch);if(cl)w.append(cxNiv(cl.fuente));if(cl&&cl.revisado)w.append(el('span','nota-v',' revisado '+cl.revisado));if(blk.resumen)w.append(cxDet('Ver resumen',el('p','nota-v',blk.resumen)));return w};
@@ -3221,7 +3221,7 @@ function pEspana(){
     const fv=v=>v==null?'[VERIFICAR]':v.toLocaleString('es-ES',{maximumFractionDigits:2,useGrouping:'always'});
     const colsF=[{t:'Dato',f:r=>r.nombre},{t:'Valor',n:1,f:r=>fv(r.valor)},{t:'Unidad',f:r=>r.unidad},{t:'Fecha',f:r=>r.fecha},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Nota',f:r=>r.nota},{t:'Fuente',f:r=>/^https?:/.test(r.fuente||'')?lnk(r.fuente):(r.fuente||'—')}];
     const SEC=[['macro','mac'],['energia','ene'],['vivienda','viv'],['pensiones','pen'],['investigaciones','inv']];
-    const addT=(k,b)=>{add(b);b._t=k};
+    const addT=(k,b,cer)=>{add(b);b._t=k;if(cer){b.dataset.cerr='1';b.dataset.auto='1'}};
     const kf=(sec,re,et)=>{const s=CF[sec];if(!s||!s.grupos)return null;for(const g of s.grupos){const r=g.filas.find(x=>re.test(x.nombre)&&x.valor!=null);if(r)return[fv(r.valor)+(r.unidad?' '+r.unidad:''),(et||r.nombre)+' · '+r.fecha,null]}return null};
     for(const [sec,k] of SEC){
       const S=CF[sec];if(!S)continue;
@@ -3247,7 +3247,8 @@ function pEspana(){
           g.append(t)}
         w.append(g);addT(k,bloque('Investigaciones y fondos públicos ('+S.casos.length+' casos)',null,{nivel:S.nivel||'P',t:'Fuentes oficiales; prensa y opinión separadas · leído '+f10(S.leido)},w,true));
         continue}
-      for(const g of S.grupos)addT(k,bloque(g.grupo,null,{nivel:S.nivel,t:'Leído '+f10(S.leido)+' · cada fila lleva su fecha, nivel y fuente'},tabla(colsF,g.filas),g.filas.length<=8));
+      /* C127 · en Macro solo el primer grupo abierto (8 grupos abiertos pesaban ~3.400 px) */
+      S.grupos.forEach((g,gi)=>addT(k,bloque(g.grupo,null,{nivel:S.nivel,t:'Leído '+f10(S.leido)+' · cada fila lleva su fecha, nivel y fuente'},tabla(colsF,g.filas),g.filas.length<=8&&(sec!=='macro'||gi===0)),(sec==='macro'&&gi>0)?1:0));
       if(sec==='vivienda'&&(S.ccaa||[]).length){
         const cc=[{t:'Comunidad',f:r=>r.ccaa},{t:'Deuda jun-26 (M€)',n:1,f:r=>fv(r.deuda)},{t:'Deuda jun-25 (M€)',n:1,f:r=>fv(r.deuda_1a)},{t:'Var. anual (%)',n:1,f:r=>fv(r.var)},{t:'Deuda/PIB 2025 (%, cálculo propio)',n:1,f:r=>fv(r.pct_pib)},{t:'Vivienda 2T-26, var. anual (%)',n:1,f:r=>fv(r.ipv)},{t:'Alquiler 2024, var. (%)',n:1,f:r=>fv(r.ipva)}];
         addT(k,bloque('Comunidades: deuda y precio de la vivienda',null,{nivel:'P',t:'BdE be1309 (deuda PDE) e INE (IPV, IPVA) · deuda/PIB es aproximación propia; la ratio oficial del BdE puede diferir'},tabla(cc,S.ccaa),false))}

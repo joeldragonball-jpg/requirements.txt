@@ -1,6 +1,7 @@
 {
  "id": "espana-contratacion",
  "generado": "2026-11-10",
+ "ampliado": "2026-11-17",
  "mes": "202610",
  "fuente": {
   "nombre": "Plataforma de Contratación del Sector Público (Hacienda), datos abiertos",
@@ -19,6 +20,8 @@
    "n": 32962,
    "importe": 17636833848.14
   },
+  "nota_adjudicado": "Aviso 18-nov (auditoría): hay dos totales «adjudicado» distintos: 17.636.833.848,14 € (n=32.962) en adjudicaciones_con_importe, y 18.441.947.243,69 € al sumar los niveles o los procedimientos (los dos desgloses dan la misma suma). Diferencia: 805.113.395,55 € (4,6 %); son dos medidas con el mismo nombre y no se ha decidido cuál es la oficial [VERIFICAR]. La concentración top-10 (19,6 %) usa 17,64 mil M€ (3.451.740.697,75 / 17.636.833.848). En contratos menores pasa igual a escala pequeña (217.686.776,50 frente a 217.697.051,28 €).",
+  "nota_posible_tope": "Aviso 18-nov (auditoría): 40.000 expedientes únicos y 12.000 en «Otras entidades del sector público» son cifras redondas exactas (y por_estado suma exactamente 40.000): indicio de tope del extractor o del feed. No leer 40.000 como el total del mes [VERIFICAR contra el ZIP].",
   "expedientes_sin_resultado_en_feed": 16975,
   "expedientes_con_acuerdo_marco_multiple": 234,
   "nota_acuerdo_marco": "Si >=3 adjudicatarios de un expediente comparten importe idéntico (acuerdos marco), el importe se cuenta una sola vez en totales y por órgano, y no se suma a cada adjudicatario (es un techo común, no dinero repartido).",
@@ -1953,14 +1956,17 @@
   "n_anuladas": 15,
   "n_encargos": 3078,
   "importe_total": 5420635502.19,
+  "nota_duplicados": "Aviso 18-nov (auditoría): hay dos pares de entradas idénticas en importe y fecha (215.807.030,45 € el 5-jun-2026; 98.051.280 € el 29-dic-2025). Si fueran duplicados de publicación, el total bajaría 627.716.620 € (11,6 %) a 4.792.918.882 €; si son encargos distintos, el total no cambia. No decidido [VERIFICAR]; leer el total como rango de 4,79 a 5,42 mil M€.",
   "por_anio_adjudicacion": [
    {
     "anio": "0024",
+    "nota": "Año imposible: error de captura en la fuente PLACSP; probablemente 2024 [VERIFICAR]; no corregido.",
     "encargos": 1,
     "importe": 1694346.56
    },
    {
     "anio": "0026",
+    "nota": "Año imposible: error de captura en la fuente PLACSP; probablemente 2026 [VERIFICAR]; no corregido.",
     "encargos": 1,
     "importe": 502145.78
    },

@@ -10,6 +10,7 @@
  "como_leerlo": "«empleados» = efectivos a enero 2026 (funcionarios de carrera + laborales + otro personal, incluidos eventuales). En Defensa e Interior se suman las Fuerzas Armadas y los cuerpos policiales que paga el capítulo 1 de su sección. El boletín NO incluye personal judicial ni fiscal. «eventuales_personas» es el nº de personal eventual (art. 11); el boletín no da el nº de altos cargos.",
  "limites": "Plantilla ≠ ejecución presupuestaria: el capítulo 1 de 2025 se divide entre efectivos de enero 2026 (desfase de un año). Coste medio = cap. 1 (obligaciones 2025) / empleados; incluye cotizaciones sociales del empleador y altos cargos. Dos secciones marcadas no comparables. C245 (10-nov-2026): intento de completar 6 órganos constitucionales sin resultado oficial; siguen null. C245 (17-nov-2026): completados Cortes Generales (853 funcionarios+laborales, P) y puestos RPT del CGPJ (465, S); TC, Consejo de Estado, Tribunal de Cuentas y Casa Real siguen null.",
  "total_ministerios": 98224,
+ "total_ministerios_rotulo": "Aviso 18-nov (auditoría): 98.224 = suma de empleados_ministerio de las 26 secciones con dato; no incluye Fuerzas Armadas ni Policía/Guardia Civil. La suma de la clave empleados (con FFAA y cuerpos policiales) es 383.077. No mezclar los dos totales.",
  "secciones": [
   {
    "seccion": "DEUDA PÚBLICA",
@@ -364,6 +365,7 @@
   {
    "seccion": "CORTES GENERALES",
    "empleados": 853,
+   "nota_no_sumar": "Aviso 18-nov (auditoría): los 853 incluyen 260 funcionarios y 94 laborales del Senado (según la web del Congreso); la fila SENADO (568) usa otra definición. Sumar ambas filas cuenta el Senado dos veces: no sumarlas.",
    "nota": "C245 (17-nov-2026): leído en la web del Congreso («Composición numérica de Cuerpos…», actualizada 17-nov-2026, vista en Chrome) y en senado.es «Personal del Senado». 853 = 671 funcionarios + 182 laborales. 1.620 ≈ además adscritos (Congreso 243 + Senado 110) y eventuales (Congreso 310 + Senado 104), suma propia con cifras de Senado de su web (262/92) [S]. Discrepancia de 2 entre ambas webs en funcionarios (260 vs 262) y laborales (94 vs 92): [VERIFICAR]. Es plantilla efectiva, no coste. Las Cortes están disueltas desde el 6-oct-2026 (elecciones 29-nov): los eventuales cesan con su titular y la cifra puede cambiar.",
    "nivel": "P",
    "intento_C245": "dato leído 17-nov-2026",
@@ -393,6 +395,7 @@
   {
    "seccion": "SENADO (Cortes Generales)",
    "empleados": 568,
+   "nota_no_sumar": "Aviso 18-nov (auditoría): esta fila ya está contada en parte dentro de CORTES GENERALES (853); no sumar ambas. «262 funcionarios adscritos» de la nota mezcla funcionarios y adscritos [VERIFICAR].",
    "nota": "568 = suma propia de 4 categorías (262 funcionarios adscritos + 92 laborales + 110 adscritos del Gobierno + 104 eventuales); la web no da el total. Son personas, no puestos. [VERIFICAR] si los 110 adscritos cuentan como plantilla del Senado. El Congreso sigue sin dato.",
    "fecha": "actualizado 14-oct-2026, leído 11-nov-2026",
    "nivel": "P",
