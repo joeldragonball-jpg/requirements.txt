@@ -1342,14 +1342,14 @@
       "jur": "hk",
       "tema": "fiscal",
       "etapa": 4,
-      "estado": "No hay impuesto sobre plusvalías; la IRD (DIPN 39, rev. mar-2020) trata los cripto de pago como materias primas virtuales: la ganancia de inversión a largo plazo es de capital y no tributa, la actividad comercial sí (badges of trade). En trámite: proyecto CARF/CRS (gazetted 22-may-2026, CARF en vigor 1-ene-2027) y activos digitales como inversión elegible en regímenes de fondos y family offices.",
+      "estado": "No hay impuesto sobre plusvalías; la IRD (DIPN 39 rev. mar-2020, PDF leído en ird.gov.hk el 18-nov-2026 [P]: apdos. 42 y 46) trata los cripto de pago como materias primas virtuales: la ganancia de inversión a largo plazo es de capital y no tributa, la actividad comercial sí (badges of trade). En trámite: proyecto CARF/CRS (gazetted 22-may-2026, CARF en vigor 1-ene-2027) y activos digitales como inversión elegible en regímenes de fondos y family offices.",
       "fecha": "2026-06-03",
-      "fuente": "S",
+      "fuente": "P",
       "proxima": {
         "fecha": "2027-01-01",
         "que": "Entrada en vigor prevista del CARF (si se aprueba la ley)."
       },
-      "falta": "Leer DIPN 39 (PDF cifrado) y el texto del proyecto CARF en la IRD; confirmar aprobación de los dos proyectos.",
+      "falta": "Texto del proyecto CARF en la IRD y confirmar aprobación de los dos proyectos [VERIFICAR]; DIPN 39 ya leído [P].",
       "hitos": [
         {
           "fecha": "2026-05-22",
@@ -1366,12 +1366,13 @@
       ],
       "informes": [
         "R35",
-        "T09 (27-oct)"
+        "T09 (27-oct)",
+        "W03 (18-nov)"
       ],
-      "revisado": "2026-10-27",
+      "revisado": "2026-11-18",
       "pais_id": "HK",
-      "nivel": "S",
-      "revisar": true,
+      "nivel": "P",
+      "revisar": false,
       "caduca": "2027-01-25",
       "url": "https://www.ird.gov.hk/eng/pdf/dipn39.pdf"
     },
@@ -4490,7 +4491,7 @@
       "fuente": "VERIFICAR",
       "revisado": "2026-10-20",
       "proxima": null,
-      "falta": "Research específico sobre este tema y país. Reintento 17-nov-2026 (C275): cbi.ir carga, pero la página de normas de divisas (simplelist/3354) no menciona ETF ni cripto; seo.ir no consultado [VERIFICAR].",
+      "falta": "Research específico sobre este tema y país. Reintento 17-nov-2026 (C275): cbi.ir carga, pero la página de normas de divisas (simplelist/3354) no menciona ETF ni cripto; seo.ir no consultado [VERIFICAR]. 18-nov-2026: seo.ir no se probó en Chrome (sin texto útil sobre ETF cripto en las fuentes ya leídas) [VERIFICAR].",
       "hitos": [],
       "informes": [
         "Radar v5 research (21-oct)"
@@ -5589,7 +5590,7 @@
       "fecha": null,
       "fuente": "VERIFICAR",
       "proxima": null,
-      "falta": "Reintento 14-nov-2026: cnmv.es da 403 al lector automático. Criterio vigente de la CNMV sobre comercialización de ETP/ETN cripto a minoristas (régimen MiFID/PRIIPs) y lista de productos admitidos [VERIFICAR]. Reintento 15-nov-2026 con Chrome: cnmv.es?lang=es carga, pero la sección MiCA y el Boletín no muestran nada sobre ETP/ETN cripto minoristas; sin dato citable. Reintento 17-nov-2026 (C275): cnmv.es ya carga con curl y navegador (la home y la página MiCA, 200; rutas de listados cripto/IIC 403); la página MiCA de la CNMV trata proveedores (transición hasta 1-jul-2026) y no menciona ETF cripto; el registro de FIL no se pudo filtrar por cripto, así que la celda sigue sin fuente primaria [VERIFICAR].",
+      "falta": "Reintento 14-nov-2026: cnmv.es da 403 al lector automático. Criterio vigente de la CNMV sobre comercialización de ETP/ETN cripto a minoristas (régimen MiFID/PRIIPs) y lista de productos admitidos [VERIFICAR]. Reintento 15-nov-2026 con Chrome: cnmv.es?lang=es carga, pero la sección MiCA y el Boletín no muestran nada sobre ETP/ETN cripto minoristas; sin dato citable. Reintento 17-nov-2026 (C275): cnmv.es ya carga con curl y navegador (la home y la página MiCA, 200; rutas de listados cripto/IIC 403); la página MiCA de la CNMV trata proveedores (transición hasta 1-jul-2026) y no menciona ETF cripto; el registro de FIL no se pudo filtrar por cripto, así que la celda sigue sin fuente primaria [VERIFICAR]. Reintento 18-nov-2026 (Chrome): cnmv.es/portal/Consultas/MostrarListados?id=17 (FI no armonizados) carga, pero lista solo nombre, gestora y depositario, con paginación por postback sin filtro por cripto; el buscador y la ruta de IIC dan error. Sin fuente primaria sobre IIC/ETF con cripto [VERIFICAR].",
       "hitos": [],
       "informes": [
         "C232"
@@ -5754,5 +5755,5 @@
     "baja": "Baja tipos",
     "n/d": "Sin dirección conocida"
   },
-  "revisado": "2026-11-14"
+  "revisado": "2026-11-18"
 }
