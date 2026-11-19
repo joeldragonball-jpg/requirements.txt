@@ -27,7 +27,7 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-13 · C232 · Fiscalidad cripto y CASP: lo que ya está leído en la fuente (INFORMATIVO, no es asesoramiento fiscal) (`informes/research/2026-11-13-C232-fiscalidad-cripto-casp.md`): Lecturas del 12 nov 2026. [P] = fuente oficial leída entera o en el artículo citado; [S] = secundaria; [VERIFICAR] = sin leer. Datos volcados en…
 
 ## Energía y Ormuz
-- 2026-11-18 · W10 · Energía y geopolítica (miércoles 18-nov-2026) (`informes/research/2026-11-18-W10.md`): Futuros: Brent $93,14 y WTI $86,01 en el último cierre (17 nov); hoy 18 nov intradía $88,68 y $81,89 (−4,8 %), sin causa verificada [S/VERIFICAR].
+- 2026-11-18 · W10 · Energía y geopolítica (miércoles 18-nov-2026) (`informes/research/2026-11-18-W10-energia.md`): Futuros: Brent $93,14 y WTI $86,01 en el último cierre (17 nov); hoy 18 nov intradía $88,68 y $81,89 (−4,8 %), sin causa verificada [S/VERIFICAR].
 - 2026-11-17 · C233 — España: energía (17-nov-2026) (`informes/research/2026-11-17-C233-espana-energia.md`): Datos en explorador/espana energia.json (nivel P = fuente oficial leída). Sin recomendaciones.
 - 2026-11-14 · W10 · Energía y geopolítica (sábado 14-nov-2026) (`informes/research/2026-11-14-W10-energia.md`): Futuros: Brent $95,84 y WTI $88,56 el viernes 13 nov; −2,5 % en la semana, segunda caída semanal seguida [S].
 
@@ -42,9 +42,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-18 · C229 · 4.ª pasada · pack macro de España · 18-nov-2026 (`informes/research/2026-11-18-C229-cuarta.md`): Solo se editaron explorador/espana macro.json y explorador/espana manual.json (solo se añade). Lectura con curl y User Agent de navegador, sin IA. No…
 
 ## Cripto y ETF
+- 2026-11-18 · Despeja La X — «SOLANA A 1.100$ predice BITWISE» (V01 profundo) (`informes/videos/2026-11-18-despeja-la-x-solana-1100-bitwise-dtcc-escenarios.md`): El informe existe y las cuentas cuadran. Bitwise (16 nov, Kam Benbrik y Rafal Klich): 2031 con 1.100 $ (alcista), 385 $ (base), 80 $ (bajista) ;…
 - 2026-11-18 · Chrome 4 (18-nov-2026): HBAR ETF, Plume, Quant, XDC/IOTA, CLARITY (`informes/research/2026-11-18-chrome4.md`): HECHOS (P = fuente primaria leída en Chrome el 18 nov 2026)
 - 2026-11-18 · Chrome 2 (18-nov-2026): flujos ETF (C280), fichas MSCI/VWCE (C203), cadenas (C267) (`informes/research/2026-11-18-chrome2.md`): Todo leído en Chrome el 18 nov (miércoles). Hechos separados de opiniones; nada de esto es recomendación. Las webs de emisores son parte interesada.
-- 2026-11-18 · C268, pasada 18-nov-2026: custodia (Anchorage) (`informes/research/2026-11-18-C268.md`): Figuran: AVAX y Avalanche C Chain; POL y MATIC (ERC 20); PLUME; XDC.
 
 ## Regulación por país
 - 2026-11-18 · W03 · Hong Kong + India (rotación semana 2) · 2026-11-18 (`informes/research/2026-11-18-W03-hongkong-india.md`): Modelo Sonnet 5.5, sesión desatendida. Sin recomendaciones de compra o venta.
