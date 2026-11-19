@@ -292,7 +292,7 @@
    {
     "id": "corredores",
     "titulo": "Corredores de monedas poco líquidas (Kenia, Somalia, países pequeños)",
-    "aviso": "Kenia tiene ya una cifra oficial de entradas (Banco Central de Kenia, leída el 17-nov-2026); Somalia no: no se obtuvo cifra primaria de remesas. Los costes por corredor del Banco Mundial siguen sin leerse (403). No se inventan cifras por país.",
+    "aviso": "Kenia tiene ya una cifra oficial de entradas (Banco Central de Kenia, leída el 17-nov-2026); Somalia no: no se obtuvo cifra primaria de remesas. Los costes por corredor del Banco Mundial siguen sin leerse (403). No se inventan cifras por país. 18-nov (2.ª pasada): la API del Banco Mundial confirma Somalia = null en remesas personales (ver «corredores-peso-remesas»).",
     "pasos": [
      {
       "t": "Marco medible: los costes de remesas más altos están en África subsahariana (8,78 % al enviar 200 USD según el Banco Mundial 1T-2025, frente a 4,80 % en el sur de Asia); los bancos son el canal más caro (14,55 %). Cifras de resumen de buscador; la web del Banco Mundial bloqueó la lectura.",
@@ -847,6 +847,54 @@
      }
     ],
     "incertidumbre": "Las deducciones por red usan solo datos ya leídos en aporta-redes.json y ley-eeuu.json; ninguna fuente oficial analiza el encaje de cada red con cada ley. Pendiente [VERIFICAR]: texto de la norma de la SEC «Regulation Crypto Assets» (propuesta del 18-ago-2026 según prensa), normas finales de Tesoro, Fed y FDIC, y estado real de CLARITY tras el 17-sep-2026."
+   },
+   {
+    "id": "corredores-peso-remesas",
+    "titulo": "Peso de las remesas por país pequeño: dónde importaría un corredor barato (segunda pasada C333)",
+    "aviso": "Datos de la API del Banco Mundial (indicadores de balanza de pagos, actualización 11-nov-2026), leídos el 18-nov-2026. Miden volumen de remesas, no coste por corredor (la web Remittance Prices sigue dando 403). Sin dato = null; no se rellena Somalia con estimaciones.",
+    "pasos": [
+     {
+      "t": "Kenia: remesas personales recibidas de 5.113,7 M USD en 2025 (4.999,8 M en 2024; 2.838,2 M en 2019), el 3,76 % del PIB en 2025 (4,15 % en 2024). Coherente con la cifra mensual del Banco Central de Kenia ya citada (formales, distinto método).",
+      "hecho": {
+       "fuente": "Banco Mundial, API indicadores BX.TRF.PWKR.CD.DT y BX.TRF.PWKR.DT.GD.ZS, act. 11-nov-2026",
+       "url": "https://api.worldbank.org/v2/country/SOM;KEN;WLD/indicator/BX.TRF.PWKR.CD.DT?format=json&date=2019:2025",
+       "nivel": "P",
+       "fecha": "2026-11-18"
+      }
+     },
+     {
+      "t": "Somalia: el Banco Mundial no publica remesas personales recibidas ni su porcentaje del PIB en 2019-2025 (null en todos los años). El hueco es de estadística oficial, no de ausencia de flujos; no se estima aquí.",
+      "hecho": {
+       "fuente": "Banco Mundial, API (mismos indicadores), valores null",
+       "url": "https://api.worldbank.org/v2/country/SOM;KEN;WLD/indicator/BX.TRF.PWKR.CD.DT?format=json&date=2019:2025",
+       "nivel": "P",
+       "fecha": "2026-11-18"
+      }
+     },
+     {
+      "t": "Mundo: 925.553 M USD en 2025 (870.346 M en 2024; 640.889 M en 2019), +6,3 % en 2025. Con el mismo indicador, Kenia pesa ≈0,55 % del total mundial (cálculo del repo).",
+      "hecho": {
+       "fuente": "Banco Mundial, API indicador BX.TRF.PWKR.CD.DT",
+       "url": "https://api.worldbank.org/v2/country/SOM;KEN;WLD/indicator/BX.TRF.PWKR.CD.DT?format=json&date=2019:2025",
+       "nivel": "P",
+       "fecha": "2026-11-18"
+      }
+     },
+     {
+      "t": "Economías pequeñas con mayor peso: Tonga 39,3 % del PIB (2025), Nepal 32,3 %, Samoa 22,4 %; Haití 16,9 % en 2024 (2025 null). Kenia queda en 3,8 %. Para países con >20 % del PIB, un punto de coste de envío mueve más dinero relativo que en Kenia.",
+      "hecho": {
+       "fuente": "Banco Mundial, API indicador BX.TRF.PWKR.DT.GD.ZS",
+       "url": "https://api.worldbank.org/v2/country/KEN;SOM;TON;WSM;NPL;HTI/indicator/BX.TRF.PWKR.DT.GD.ZS?format=json&date=2024:2025",
+       "nivel": "P",
+       "fecha": "2026-11-18"
+      }
+     },
+     {
+      "t": "Lectura crítica: un corredor barato importa más donde la remesa pesa mucho en el PIB y la divisa local es poco líquida, pero eso no es donde hay más volumen en dólares. Que una ruta con activo puente o stablecoin sea técnicamente posible allí no implica liquidez local ni licencias; sin cifras por corredor no se puede afirmar ahorro.",
+      "esp": "Razón: el peso en PIB no dice qué canal usan las familias ni si existen anclas y libros de órdenes en la divisa local [ESPECULACIÓN]"
+     }
+    ],
+    "incertidumbre": "Son totales anuales por país receptor, sin desglose por origen ni canal; los datos de países de renta baja se revisan y pueden faltar."
    }
   ]
  },
@@ -2234,6 +2282,7 @@
  "huecos": [
   "Las 10 últimas redes (BNB Chain, Avalanche, Polygon, Chainlink, Ondo, Algorand, XDC, Quant, IOTA, Plume) tienen un escenario más corto: sin apartados de recompensas ni de mensajería salvo donde hay hecho con fuente.",
   "XRPL: no se encontró declaración explícita de que no hay recompensa de validadores; solo su ausencia en xrpl.org. La CFTC no nombra redes concretas en su programa piloto (solo BTC, ETH y USDC).",
-  "C331/C333 (18-nov): siguen sin lectura oficial el estado de CLARITY tras el 15-sep-2026 y una ruta real de pago con XRP/XLM como puente; Banco Mundial Remittance Prices, remesas de Somalia, aviso PBoC y capital nostro/vostro siguen en S/null."
+  "C331/C333 (18-nov): siguen sin lectura oficial el estado de CLARITY tras el 15-sep-2026 y una ruta real de pago con XRP/XLM como puente; Banco Mundial Remittance Prices, remesas de Somalia, aviso PBoC y capital nostro/vostro siguen en S/null.",
+  "C333 2.ª pasada (18-nov): Somalia sin remesas en estadística del Banco Mundial (null 2019-2025); siguen sin leer Remittance Prices (403), declaración BRICS, mínimos técnicos de Agorá/Nexus y cifra primaria de ODL."
  ]
 }

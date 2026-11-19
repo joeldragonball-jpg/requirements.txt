@@ -130,6 +130,24 @@
   "Leer notas de prensa originales de Micron (8-K), SK hynix, Samsung y TrendForce.",
   "Precio spot DRAM (DDR4/DDR5 por gigabit) fiable: requiere TrendForce/DRAMeXchange de pago (decisión de Joel).",
   "STEO de noviembre y datos EIA con clave API (guardada fuera del repo).",
-  "Proxy MU/SOXX/TSM/ASML llega por C113 (paneles.json › chips); aquí no se duplica."
- ]
+  "Proxy MU/SOXX/TSM/ASML llega por C113 (paneles.json › chips); aquí no se duplica.",
+  "Falta cablear chips-manual.json en la Órbita (panel Chips/centros de datos); no se ha ejecutado ningún construir_*.py.",
+  "Resolver discrepancia generación 2026 en el STEO de noviembre (≈4.390 vs 4.539) y buscar el consumo de centros de datos si EIA lo publica."
+ ],
+ "actualizacion_18nov": {
+  "nota": "Añadido en sesión C117 del 18-nov-2026. Solo se añade esta clave; lo anterior no se toca. Lectura de la página EIA vía lector automático (resume): nivel S.",
+  "eia_steo_noviembre": {
+   "dato": "STEO publicado el 10-nov-2026 (próximo: 8-dic-2026). La página resumida da generación eléctrica de EE. UU. de 4.425 (2025), 4.539 (2026 previsto) y 4.595 (2027 previsto) miles de millones de kWh; el texto de la misma página habla de ≈4.390 mil millones de kWh en 2026 (+2,7 %), en conflicto con la tabla. No habla de centros de datos; atribuye el aumento de generación a la demanda comercial e industrial.",
+   "unidad": "miles de millones de kWh (generación, no consumo)",
+   "fecha": "2026-11-10",
+   "url": "https://www.eia.gov/outlooks/steo/report/elec_coal_renew.php",
+   "nivel": "S",
+   "nota": "Generación ≠ consumo: no es comparable con las cifras de consumo de julio (4.195/4.269/4.399). Discrepancia texto/tabla sin resolver [VERIFICAR] abriendo la página en el navegador."
+  },
+  "micron_nota_oficial": {
+   "dato": null,
+   "nivel": "S",
+   "nota": "La sala de prensa de Micron (investors.micron.com/news-releases) devolvió 404; el comunicado oficial del 4T FY26 sigue sin leerse. Cifras de empresa siguen en nivel S [VERIFICAR]."
+  }
+ }
 }

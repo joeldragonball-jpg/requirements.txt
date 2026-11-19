@@ -329,6 +329,86 @@ def petroleo():
     return salida
 
 
+def _n(v, d=0):
+    """Número en formato español; lo no leído sale como «sin dato» (nunca «null»)."""
+    if v is None:
+        return "sin dato"
+    return f"{v:,.{d}f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+
+def tarjetas_extra():
+    """Tarjetas nuevas del móvil (18-nov, pasada 4): Cadenas, flujos de ETF, fertilizantes y agua, y España ampliada.
+    Cada fila es [nombre, valor con unidad, detalle]; la unidad y la escala van siempre en el texto."""
+    def leer(f):
+        try:
+            return cargar("explorador/" + f)
+        except Exception:
+            return {}
+    sal = {}
+    c = leer("cadenas.json")
+    if c.get("cadenas"):
+        rw = c.get("rwa", {})
+        sal["cad"] = {"leido": c.get("_actualizado"), "nivel": "P/S",
+                      "unidad": "RWA.xyz (S, 14-nov-2026): millones de dólares (M$), sin stablecoins en «distribuido»; holders = unidades (direcciones)",
+                      "cadenas": [[x["nombre"], x.get("token") or "", (x.get("tipo") or "")[:90]] for x in c["cadenas"]],
+                      "rwa": [[x["cadena"], f"{_n(x.get('dist'), 1)} M$ distribuidos", f"representados {_n(x.get('rep'), 1)} M$ · stablecoins {_n(x.get('stable'), 0)} M$ · {_n(x.get('holders'))} holders"] for x in rw.get("filas", [])],
+                      "tot": rw.get("totales"), "aviso": (c.get("aviso") or "")[:260]}
+    e = leer("etf-flujos.json")
+    if e.get("etfs"):
+        fil = []
+        for x in e["etfs"]:
+            h = [r for r in x.get("historial", []) if r.get("fecha")]
+            if not h:
+                continue
+            u = h[-1]
+            aum, fl = u.get("aum_usd"), u.get("flujo_usd")
+            fil.append([f"{x['ticker']} · {x.get('activo')}", ("AUM " + _n(aum / 1e6, 1) + " M$") if aum is not None else "AUM sin dato",
+                        f"{u['fecha']} · flujo del día " + (_n(fl / 1e6, 1) + " M$" if fl is not None else "[VERIFICAR] no calculable") + f" · {(x.get('emisor') or '')[:40]}"])
+        tr = e.get("trackers_contraste", {})
+        sal["etff"] = {"gen": e.get("generado"), "nivel": "P (emisor; parte interesada)", "unidad": "AUM y flujos en millones de dólares (M$); el JSON de origen guarda USD y miles de USD",
+                       "fil": fil, "farside": [[r["fecha"], _n(r["total"], 1) + " M$"] for r in tr.get("serie_btc", [])],
+                       "farside_n": f"{tr.get('nivel', '')} · leído {tr.get('leido', '')} · flujo neto diario de todos los ETF spot de BTC de EE. UU., en M$"}
+    f = leer("fertilizantes-agua.json")
+    if f.get("bloques"):
+        b = f["bloques"]
+        sg = lambda v: ("+" if (v or 0) > 0 else "") + _n(v, 1)
+        sal["fert"] = {"leido": f.get("leido"), "nivel": (f.get("nivel") or "")[:60], "unidad": f.get("unidad"),
+                       "fert": [[x["nombre"], _n(x.get("valor_usd_t"), 0) + " USD/t", f"{x.get('ultimo_mes')} · mes {sg(x.get('var_mensual_pct'))} % · 12 m {sg(x.get('var_12m_pct'))} % · máx. 2026 {_n(x.get('maximo_2026_usd_t'), 0)} USD/t"] for x in b.get("fertilizantes", [])],
+                       "agua": [[x["zona"], _n(x.get("2024"), 2) + " €/m³", f"2018 {_n(x.get('2018'), 2)} €/m³ · variación 2018-2024 {sg(x.get('var_2018_2024_pct'))} %"] for x in b.get("agua_por_ccaa", [])]}
+    ct, sb, vo, po = leer("espana-contratacion.json"), leer("espana-subvenciones.json"), leer("espana-votaciones.json"), leer("espana-politica.json")
+    esx = {}
+    if ct.get("licitaciones"):
+        li, me = ct["licitaciones"], ct.get("menores", {})
+        ad, madj = li.get("adjudicaciones_con_importe", {}), me.get("adjudicaciones_con_importe", {})
+        esx["contr"] = {"mes": ct.get("mes"), "nivel": "P", "unidad": "importes en euros sin IVA en origen; aquí en millones de euros (M€) o mil M€",
+                        "fil": [["Licitaciones adjudicadas (con importe)", _n((ad.get("importe") or 0) / 1e9, 1) + " mil M€", f"{_n(ad.get('n'))} adjudicaciones; hay dos totales «adjudicado» distintos, ver nota del JSON [VERIFICAR]"],
+                                ["Contratos menores", _n((madj.get("importe") or 0) / 1e6, 1) + " M€", f"{_n(madj.get('n'))} adjudicaciones"]] +
+                               [[x["procedimiento"], _n((x.get("adjudicado") or 0) / 1e9, 2) + " mil M€", f"{_n(x.get('n'))} expedientes ({_n(x.get('pct_expedientes'), 1)} %) · presupuesto {_n((x.get('presupuesto') or 0) / 1e9, 2)} mil M€"] for x in li.get("por_procedimiento", [])[:6]],
+                        "niv": [[x["nivel"].capitalize(), _n((x.get("adjudicado") or 0) / 1e6, 1) + " M€", f"{_n(x.get('n'))} contratos menores"] for x in me.get("por_nivel_administrativo", [])]}
+    if sb.get("totales"):
+        t = sb["totales"]
+        esx["subv"] = {"nivel": "P", "unidad": "euros en origen; aquí en millones de euros (M€) o mil M€. BDNS publica concesiones, no pagos",
+                       "fil": [["Concesiones en la ventana leída", _n((t.get("importe") or 0) / 1e9, 2) + " mil M€", f"{_n(t.get('concesiones'))} concesiones; ampliado {sb.get('ampliado')}"]] +
+                              [[x["nivel"].capitalize(), _n((x.get("importe") or 0) / 1e6, 0) + " M€", f"{_n(x.get('n'))} concesiones"] for x in sb.get("por_nivel", [])],
+                       "conc": (sb.get("concentracion") or {}).get("nota", "")}
+    if vo.get("totales"):
+        t, g26 = vo["totales"], vo.get("por_grupo_2026", {})
+        esx["votos"] = {"nivel": vo.get("nivel", "P"), "unidad": vo.get("unidad"), "ult": vo.get("ultimo_dia"),
+                        "fil": [["Votaciones del Pleno (XV legislatura)", _n(t.get("votaciones")) + " votaciones", f"{_n(t.get('dias'))} días de pleno · hasta {vo.get('ultimo_dia')}"],
+                                ["Resultado «más sí» / «más no»", f"{_n(t.get('mas_si'))} / {_n(t.get('mas_no'))}", f"empates {_n(t.get('empate'))} · ajustadas {_n(t.get('ajustadas'))}"]] +
+                               [[k, _n(v.get("si_pct"), 1) + " % sí", f"2026 · no {_n(v.get('no_pct'), 1)} % · abst. {_n(v.get('abstencion_pct'), 1)} % · {_n(v.get('votaciones'))} votaciones"] for k, v in list(g26.items())[:10]]}
+    if po.get("composicion"):
+        cm, ini = po["composicion"], po.get("iniciativas", {})
+        esx["pol"] = {"nivel": "P", "unidad": po.get("unidad"), "nota": (cm.get("nota") or "")[:300],
+                      "fil": [["Diputados activos en el fichero oficial", _n(cm.get("activos_total")), f"{cm.get('fecha_dato')} · bajas {_n(cm.get('bajas_total'))}; no es el reparto de escaños [VERIFICAR]"]] +
+                             [[k, _n(v), "diputados en el fichero"] for k, v in (cm.get("por_grupo") or {}).items()] +
+                             [["Proyectos de ley del Gobierno", _n((ini.get("proyectos_ley_gobierno") or {}).get("total")), "XV legislatura; la mayoría caducada por la disolución"],
+                              ["Declaraciones de intereses", _n((po.get("intereses") or {}).get("declaraciones")), f"{_n((po.get('intereses') or {}).get('diputados_con_registro'))} diputados con registro"]]}
+    if esx:
+        sal["esx"] = esx
+    return sal
+
+
 def datos_panel():
     """Pestaña Datos del móvil: deuda, calificaciones, reservas, stablecoins/RWA y tenedores de deuda de EE. UU. (compactado de explorador/)."""
     try:
@@ -406,6 +486,10 @@ def datos_panel():
     es = espana()
     if es:
         sal["espana"] = es
+    try:
+        sal.update(tarjetas_extra())
+    except Exception as ex:
+        print("AVISO tarjetas_extra:", type(ex).__name__, ex)
     return sal
 
 
@@ -448,6 +532,25 @@ def claves_espana():
     return sal
 
 
+def macro_espana():
+    """España: bloques nuevos de espana-macro.json (IPC subyacente y especiales, EPA por sector y temporalidad, afiliación, paro registrado SEPE) para el móvil.
+    Reutiliza scripts/espana_cifras.py (mismo aplanado que la Órbita). Cada fila: nombre, valor, unidad explícita, fecha, nivel, fuente y nota; sin valores vacíos."""
+    try:
+        import espana_cifras
+        m = (espana_cifras.construir(RAIZ / "explorador") or {}).get("macro") or {}
+    except Exception:
+        return None
+    claves = ("subyacente", "Ocupados por sector", "Temporalidad", "Afiliación", "Paro registrado")
+    grupos = []
+    for g in m.get("grupos", []):
+        if any(k in g["grupo"] for k in claves):
+            filas = [{"n": f["nombre"], "v": f["valor"], "u": f["unidad"], "a": f["fecha"], "niv": f["nivel"], "f": f["fuente"] if str(f["fuente"]).startswith("http") else "", "nota": f["nota"]}
+                     for f in g["filas"] if f.get("valor") is not None]
+            if filas:
+                grupos.append({"t": g["grupo"], "filas": filas})
+    return {"leido": m.get("leido"), "grupos": grupos} if grupos else None
+
+
 def espana():
     """Tarjetas de España del móvil: ministerios, programas, beneficiarios y fiscal (explorador/espana*.json)."""
     try:
@@ -480,7 +583,7 @@ def espana():
             "prog": [{"g": x["grupo"], "n": x["nombre"], "i": x["inicial_2025"], "o": x["obligaciones_2025"], "nota": x.get("nota")} for x in b["programas"]],
             "pob": [dato(x) for x in m.get("poblacion_referencia", [])], "benef": [dato(x) for x in m.get("beneficiarios", [])],
             "req": [{"n": x["nombre"], "x": x["nota"]} for x in m.get("requisitos_acceso", [])], "vg": [dato(x) for x in m.get("violencia_genero", [])],
-            "fiscal": fiscal, "leido_eurostat": e.get("leido"), "claves": claves_espana()}
+            "fiscal": fiscal, "leido_eurostat": e.get("leido"), "claves": claves_espana(), "macro": macro_espana()}
 
 
 def regulacion():

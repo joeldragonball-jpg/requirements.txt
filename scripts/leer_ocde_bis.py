@@ -158,7 +158,7 @@ def main(seco=False):
             a = (hist.get(i) or {}).get(mapa, {}).get("hasta")
             if n:
                 comp.append({"pais": i, "indicador": mapa, "antes_hasta": a, "ahora_hasta": n["fecha"], "mas_fresco": (a is None) or (n["fecha"] > (a + "-12" if len(a) == 4 else a))})
-    out = {"titulo": "OCDE y BIS por país (C282)", "generado": date.today().isoformat(),
+    out = {"titulo": "OCDE y BIS por país (C282)", "unidad": 'Cada indicador lleva su propia unidad en el campo «unidad»: CLI = índice (100 = tendencia); paro = % de la población activa; IPC = % interanual; tipo_oficial = % anual (fin de mes); brecha_credito = puntos de PIB; vivienda_real = índice (base según país). Escala 1 (sin multiplicador).', "generado": date.today().isoformat(),
            "nota": "Último dato publicado por SDMX de la OCDE y del BIS. Nivel P = leído en la fuente oficial. País sin serie = no la publica ese flujo.",
            "paises": {i: {"pais": paises[i], "indicadores": res[i]} for i in paises}, "comparacion_frescura": comp, "fallos": fallos}
     if not seco:

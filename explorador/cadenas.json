@@ -1554,7 +1554,7 @@
         "custodia": {
           "token": "sin dato",
           "quien": "Taurus (custodia y staking de HBAR para bancos, según prensa); BitGo (lista de protocolos)",
-          "ev": "Taurus dice integrar «el stack completo de Hedera» (custodia y staking de HBAR, emisión por HTS) para 40+ instituciones (5-ago-2026, FF News); no hay dato primario de que la custodia dependa de HBAR más allá de pagar comisiones. BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye Hedera.",
+          "ev": "Taurus dice integrar «el stack completo de Hedera» (custodia y staking de HBAR, emisión por HTS) para 40+ instituciones (5-ago-2026, FF News); no hay dato primario de que la custodia dependa de HBAR más allá de pagar comisiones. BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye Hedera. Anchorage Digital, lista de activos soportados (leída en Chrome 18-nov-2026): no aparece Hedera/HBAR (no figura no equivale a no soportar: el soporte varía por entidad).",
           "u": "https://ffnews.com/news/taurus-unlocks-full-hedera-stack-for-40-global-banks-to-scale-digital-asset-tokenization",
           "d": "2026-08-05",
           "n": "S"
@@ -2990,7 +2990,7 @@
         },
         "custodia": {
           "token": "sin dato",
-          "ev": "BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye BNB (nativo).",
+          "ev": "BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye BNB (nativo). Anchorage Digital, lista de activos soportados (leída en Chrome 18-nov-2026): solo aparece un activo con código BNB_BSC (un token en BNB Chain, sin confirmar que sea BNB nativo); sin dato de custodia de BNB nativo en Anchorage.",
           "quien": "BitGo (custodia soportada en su lista de protocolos)",
           "f": "BitGo Assets, Protocols (leída en el navegador; parte interesada)",
           "u": "https://assets.bitgo.com/protocols",
@@ -3406,8 +3406,8 @@
         },
         "custodia": {
           "token": "sin dato",
-          "ev": "BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye Avalanche (C-Chain y P-Chain).",
-          "quien": "BitGo (custodia soportada en su lista de protocolos)",
+          "ev": "BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye Avalanche (C-Chain y P-Chain). Anchorage Digital, lista de activos soportados (leída en Chrome 18-nov-2026; el soporte varía por entidad y servicio): incluye AVAX y Avalanche C-Chain.",
+          "quien": "BitGo (custodia soportada en su lista de protocolos); Anchorage (lista de activos)",
           "f": "BitGo Assets, Protocols (leída en el navegador; parte interesada)",
           "u": "https://assets.bitgo.com/protocols",
           "d": "2026-11-14",
@@ -3814,8 +3814,8 @@
         },
         "custodia": {
           "token": "sin dato",
-          "ev": "BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye Polygon (POL).",
-          "quien": "BitGo (custodia soportada en su lista de protocolos)",
+          "ev": "BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye Polygon (POL). Anchorage Digital, lista de activos soportados (leída en Chrome 18-nov-2026): incluye POL (Polygon Ecosystem Token) y MATIC (ERC-20).",
+          "quien": "BitGo (custodia soportada en su lista de protocolos); Anchorage (lista de activos)",
           "f": "BitGo Assets, Protocols (leída en el navegador; parte interesada)",
           "u": "https://assets.bitgo.com/protocols",
           "d": "2026-11-14",
@@ -5256,8 +5256,8 @@
         },
         "custodia": {
           "token": "sin dato",
-          "quien": "Utila (custodia MPC no custodial); xdc.org muestra logos de Fireblocks, Anchorage y Archax sin texto que lo explique; BitGo (lista de protocolos)",
-          "ev": "Nota de prensa de XDC del 27-may-2025: bancos e instituciones pueden custodiar activos XDC en Utila (monederos MPC, controles por roles, RPC EVM propio). No consta que el token XDC cumpla función en la custodia. BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye XDC.",
+          "quien": "Utila (custodia MPC no custodial); xdc.org muestra logos de Fireblocks, Anchorage y Archax sin texto que lo explique; BitGo (lista de protocolos); Anchorage (lista de activos)",
+          "ev": "Nota de prensa de XDC del 27-may-2025: bancos e instituciones pueden custodiar activos XDC en Utila (monederos MPC, controles por roles, RPC EVM propio). No consta que el token XDC cumpla función en la custodia. BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye XDC. Anchorage Digital, lista de activos soportados (leída en Chrome 18-nov-2026): incluye XDC; así se confirma el logo de Anchorage que mostraba xdc.org.",
           "u": "https://chainwire.org/2025/05/27/xdc-network-concludes-integration-with-utila-enabling-institutional-access-to-custody-assets/",
           "d": "2025-05-27",
           "n": "P"
@@ -5576,7 +5576,8 @@
         "Liquidez (matriz, 15-nov-2026): sin dato. Quant no es una red con stablecoins ni activos propios que medir; la nota del Fusion Rollup (2-jun-2026) habla de «liquidez unificada» sin cifras, y RWA.xyz no tiene ficha de red para Quant.",
         "Modelo de licencias en QNT (licencias de Overledger cobradas en dinero fiduciario y convertidas en QNT bloqueado): solo fuentes secundarias (ByteTree, jun-2021); se retiró de la celda de interoperabilidad el 15-nov-2026 al no haber documento primario.",
         "18-nov-2026: sin documento primario nuevo del modelo de licencias en QNT (búsqueda web no legible en Chrome); sigue como no verificado.",
-        "18-nov-2026 (curl): quant.network/legal solo trae términos y marcas (sin licencia ni registro regulatorio); /overledger-platform y /quant-fusion no mencionan QNT ni modelo de licencias; docs.quant.network sigue sin resolver. Modelo de licencias en QNT: sin documento primario."
+        "18-nov-2026 (curl): quant.network/legal solo trae términos y marcas (sin licencia ni registro regulatorio); /overledger-platform y /quant-fusion no mencionan QNT ni modelo de licencias; docs.quant.network sigue sin resolver. Modelo de licencias en QNT: sin documento primario.",
+        "18-nov-2026 (Chrome): quant.network/overledger-platform/ (2.874 caracteres de texto) no contiene las palabras QNT, licencia, precio ni comisión; en esta pasada no se pudo leer /quant-net/ (la pestaña de Chrome se perdió). Modelo de licencias de Overledger en QNT: sin documento primario [VERIFICAR]."
       ],
       "tipos_activo": {
         "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top visible (sin dato). [S]: tercero comercial sin auditoría.",
@@ -5642,7 +5643,7 @@
         "custodia": {
           "token": "sin dato",
           "quien": "El usuario con sus claves; custodios de terceros posibles; BitGo (lista de protocolos)",
-          "ev": "La doc dice que los usuarios mantienen sus claves y que servicios de custodia de terceros pueden gestionar activos por ellos; no nombra custodios institucionales. BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye IOTA.",
+          "ev": "La doc dice que los usuarios mantienen sus claves y que servicios de custodia de terceros pueden gestionar activos por ellos; no nombra custodios institucionales. BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye IOTA. Anchorage Digital, lista de activos soportados (leída en Chrome 18-nov-2026): no aparece IOTA.",
           "u": "https://docs.iota.org/llms-full-about.txt",
           "d": "2026-11-14",
           "n": "S"
@@ -5853,8 +5854,8 @@
         },
         "custodia": {
           "token": "sin dato",
-          "quien": "Safe (multifirma), Den (custodia onchain); en SkyLink Plume conserva custodia y cumplimiento del activo; BitGo (lista de protocolos)",
-          "ev": "La doc lista Safe y Den como opciones de custodia/multifirma; la nota de SkyLink dice que Plume retiene la custodia de los activos y el cumplimiento. BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye Plume (PLUME).",
+          "quien": "Safe (multifirma), Den (custodia onchain); en SkyLink Plume conserva custodia y cumplimiento del activo; BitGo (lista de protocolos); Anchorage (lista de activos)",
+          "ev": "La doc lista Safe y Den como opciones de custodia/multifirma; la nota de SkyLink dice que Plume retiene la custodia de los activos y el cumplimiento. BitGo, lista de protocolos (99, todos con custodia soportada; el soporte varía por entidad fiduciaria y servicio; leída 14-nov-2026): incluye Plume (PLUME). Anchorage Digital, lista de activos soportados (leída en Chrome 18-nov-2026): incluye PLUME.",
           "u": "https://docs.plume.org/plume/developers/tools-and-services/custodians-and-multisigs.md",
           "d": "2026-11-14",
           "n": "S"
@@ -5870,7 +5871,8 @@
       "sin_dato": [
         "Instituciones que la usen con fuente.",
         "Integración con ISO 20022.",
-        "18-nov-2026 (Chrome, EDGAR): Dinari, Inc/TA (CIK 0001915430) figura como agente de transferencia registrado ante la SEC (TA-1 del 5-abr-2022, efectivo el 5-may-2022; último TA-2 del 28-sep-2026) [P]; no hay ficha de Plume en EDGAR (búsqueda de empresa sin resultados) y no se leyó documento que vincule a Plume con Dinari ni con ERC-3643 (el cuerpo de las entradas del blog de plume.org no carga en Chrome) [VERIFICAR]. Además: 18-nov-2026: docs.plume.org «Compliance at Plume» solo cubre OFAC/AML (Forta, Predicate, TRM, Chainalysis, Elliptic); no menciona agente de transferencia ante la SEC ni ERC-3643 ni ISO 20022. El blog de plume.org no se pudo leer en texto."
+        "18-nov-2026 (Chrome, EDGAR): Dinari, Inc/TA (CIK 0001915430) figura como agente de transferencia registrado ante la SEC (TA-1 del 5-abr-2022, efectivo el 5-may-2022; último TA-2 del 28-sep-2026) [P]; no hay ficha de Plume en EDGAR (búsqueda de empresa sin resultados) y no se leyó documento que vincule a Plume con Dinari ni con ERC-3643 (el cuerpo de las entradas del blog de plume.org no carga en Chrome) [VERIFICAR]. Además: 18-nov-2026: docs.plume.org «Compliance at Plume» solo cubre OFAC/AML (Forta, Predicate, TRM, Chainalysis, Elliptic); no menciona agente de transferencia ante la SEC ni ERC-3643 ni ISO 20022. El blog de plume.org no se pudo leer en texto.",
+        "18-nov-2026 (Chrome, docs.plume.org/plume/tokens/plume-usdplume y /developers/gas-and-fees) [P, parte interesada]: PLUME = gas, gobernanza, staking e incentivos; suministro total 10.000 M, 20 % circulante en el TGE; reparto 59/21/20 %. El gas sigue el modelo de Arbitrum (tarifa base dinámica, sin propinas) y se paga en PLUME. Sin dato: tasa de staking, existencia de quema de comisiones, calendario de desbloqueos de inversores y equipo."
       ],
       "ficha": null,
       "busca": [
@@ -5937,7 +5939,7 @@
       },
       "captura": {
         "nivel": "incierta",
-        "mecanismo": "[RAZONADO] El papel de PLUME (gas o staking) no está confirmado en la documentación leída.",
+        "mecanismo": "[RAZONADO] La documentación oficial (docs.plume.org, 18-nov-2026) dice que PLUME se usa para gas, gobernanza y staking, con suministro total de 10.000 M y reparto 59 % comunidad/ecosistema/fundación, 21 % inversores iniciales y 20 % equipo [P, parte interesada; página «actualizada hace 1 año»]. Gas: la red cobra la tarifa base en PLUME (sin propinas) y no consta quema ni reparto de comisiones a quien tiene el token; el staking «da recompensas» sin cifra ni mecanismo en esa página. Queda «incierta» porque el papel está declarado pero no medido [VERIFICAR].",
         "supuestos": [
           "Modelo de comisiones de la red",
           "Veredicto C329: mantener «incierta»; el consumo «alto» (5,28 %) es probablemente un efecto de la capitalización pequeña (84 M$). [VERIFICAR] en docs.plume.org."

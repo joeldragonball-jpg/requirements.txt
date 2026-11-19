@@ -563,6 +563,10 @@ function cargar(){
   /* Texto visible neutro: los datos pueden traer el nombre del lector; se sustituye al leer (sin tocar la lógica ni los ficheros) */
   (function neutro(o){const f=t=>t.replace(/para Joel \(España\)/g,'para España').replace(/ de Joel/g,' de un comentario').replace(/ por Joel/g,' por el lector').replace(/Joel puede/g,'Se puede').replace(/Joel/g,'el lector');
     const w=x=>{if(Array.isArray(x)){for(let i=0;i<x.length;i++){const v=x[i];if(typeof v==='string'){if(v.indexOf('Joel')>=0)x[i]=f(v)}else if(v&&typeof v==='object')w(v)}}else if(x&&typeof x==='object'){for(const k in x){const v=x[k];if(typeof v==='string'){if(v.indexOf('Joel')>=0)x[k]=f(v)}else if(v&&typeof v==='object')w(v)}}};try{w(o)}catch(e){}})(G);
+  /* Texto visible sin jerga técnica: «null» y «ValueError: sin dato (NaN)» de las notas se muestran como «sin dato» (solo textos, no claves ni URLs) */
+  (function sinJerga(o){const f=t=>t.replace(/ValueError:?\s*sin dato\s*\(NaN\)/g,'sin dato').replace(/ValueError:?\s*/g,'').replace(/\bnull\b/g,'sin dato').replace(/\(NaN\)/g,'');
+    const bad=t=>t.length>4&&!/^https?:/.test(t)&&/null|ValueError|NaN/.test(t);
+    const w=x=>{if(Array.isArray(x)){for(let i=0;i<x.length;i++){const v=x[i];if(typeof v==='string'){if(bad(v))x[i]=f(v)}else if(v&&typeof v==='object')w(v)}}else if(x&&typeof x==='object'){for(const k in x){const v=x[k];if(typeof v==='string'){if(bad(v))x[k]=f(v)}else if(v&&typeof v==='object')w(v)}}};try{w(o)}catch(e){}})(G);
   D=G;R=G.radar;V=G.voces;P=G.paneles;CAL=G.calificaciones;FMI=G.deuda_fmi;VAL=G.valoracion;window.ENL=G.enlaces;BAN=G.bancos;RES=G.reservas;window.RWAM=G.rwa_cadena_manual;window.CBDCB=G.cbdc_blockchains;
   X=G.calendario?{calendario:G.calendario,docs:Object.fromEntries(G.capas.map(c=>[c.id,c.docs]))}:null;
   $('estado').textContent='Datos reales: radar '+R.revisado+' · Órbita '+(D.movimientos.map(m=>m.fecha).filter(f=>f<=HOYS).sort().pop()||D.version)+(P?' · paneles '+P.leido:'');
@@ -1296,6 +1300,30 @@ function nChips(){
   subt(w,'Cotizaciones del sector (Yahoo, nivel S).');
   w.append(tabla([{t:'Valor',f:r=>r.nombre+' ('+r.simbolo+')'},{t:'Último',n:1,f:r=>num(r.valor,2)},{t:'Fecha',f:r=>r.fecha},{t:'1 día',n:1,f:filaCamb},{t:'1 mes',n:1,f:r=>r.cambio_1m==null?'—':cambio(r.cambio_1m,'%',1)}],C.cotizaciones||[]));
   return w}
+/* C117 · Chips: memoria (DRAM/NAND), fabricantes y electricidad de centros de datos (explorador/chips-manual.json). Cada cifra con nivel, fecha y fuente; nivel S = resumen secundario, por comprobar */
+function nChipsManual(){
+  const M=D.chips_manual||{},w=el('div'),lk=(u,t)=>{if(!u)return el('span','',t||'sin enlace');const a=el('a',null,t||'fuente ↗');a.href=u;a.target='_blank';a.rel='noopener';return a};
+  const sd=v=>v==null||v===''||String(v).toLowerCase()==='null'?'sin dato':v;
+  const marca=x=>{const c=el('span');c.append(String(sd(x.dato||x.valor||'')));if(/\[VERIFICAR/.test([x.nota,x.dato,x.valor].join(' '))||sd(x.dato||x.valor||'')==='sin dato'){const b=el('span','chip','[VERIFICAR]');b.style.cssText='color:#e8b64a;border-color:#e8b64a;margin-left:6px';c.append(b)}return c};
+  w.append(el('p','nota-v','Última actualización '+f10((M.actualizacion_18nov||{}).eia_steo_noviembre?'2026-11-18':M.leido)+' (ficha base leída '+f10(M.leido)+'). '+(M.nota||'')+' Unidades: M$ = millones de dólares; «billones de wones» = 10^12 wones (1 billón = 1.000.000 de millones); TWh = teravatios hora (mil millones de kWh); «mil millones de kWh» = TWh.'));
+  const T=(tit,filas,cols)=>{if(!(filas||[]).length)return;w.append(el('h3',null,tit),scrollX(tabla(cols,filas)))};
+  const colN=[{t:'Fecha',f:r=>f10(r.fecha)},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Fuente',f:r=>lk(r.url,r.fuente||'fuente ↗')}];
+  T('Precios de memoria (contrato, por trimestre)',(M.precios_memoria||[]).slice(),[{t:'Concepto',f:r=>r.concepto},{t:'Valor (% sobre el trimestre anterior)',f:r=>marca({valor:r.valor,nota:r.nota})},...colN,{t:'Nota',f:r=>r.nota||''}]);
+  const A7=M.actualizacion_17nov||{},A8=M.actualizacion_18nov||{};
+  const rev=[['Revisión del precio DRAM 4T26',A7.revision_precios_4t26],['Micron: precios y oferta',A7.micron_precios_y_oferta],['Samsung: capacidad HBM',A7.samsung_hbm_capacidad]].filter(x=>x[1]).map(x=>({concepto:x[0],...x[1]}));
+  T('Revisiones del 17-nov',rev,[{t:'Concepto',f:r=>r.concepto},{t:'Dato',f:r=>marca(r)},{t:'Fecha',f:r=>f10(r.fecha)},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Fuente',f:r=>lk(r.url)},{t:'Nota',f:r=>r.nota||''}]);
+  T('Fabricantes (resultados trimestrales; M$ = millones de dólares)',M.empresas,[{t:'Empresa',f:r=>r.empresa},{t:'Dato',f:r=>marca(r)},...colN,{t:'Nota',f:r=>r.nota||''}]);
+  const cd=(M.centros_de_datos_electricidad||[]).slice(),e8=A8.eia_steo_noviembre,iea=A7.iea_base_2024;
+  if(iea)cd.push({concepto:'IEA «Energy and AI»: base 2024 y peso en el crecimiento',...iea});
+  if(e8)cd.push({concepto:'EIA STEO de noviembre: generación eléctrica de EE. UU. ('+(e8.unidad||'')+')',dato:e8.dato,fecha:e8.fecha,url:e8.url,nivel:e8.nivel,nota:e8.nota});
+  T('Electricidad y centros de datos',cd,[{t:'Concepto',f:r=>r.concepto},{t:'Dato',f:r=>marca(r)},{t:'Fecha',f:r=>f10(r.fecha)},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Fuente',f:r=>lk(r.url,r.fuente||'fuente ↗')},{t:'Nota',f:r=>r.nota||''}]);
+  if(A8.micron_nota_oficial)w.append(el('p','nota-v','Micron, comunicado oficial del 4T FY26: sin leer (la sala de prensa devolvió 404) [VERIFICAR]. '+(A8.micron_nota_oficial.nota||'')));
+  const C=M.ciclos||{};
+  if(C.caso_alcista||C.caso_bajista){w.append(el('h3',null,'Caso alcista y bajista'));const u=el('ul');if(C.caso_alcista)u.append(el('li',null,'Alcista: '+C.caso_alcista));if(C.caso_bajista)u.append(el('li',null,'Bajista: '+C.caso_bajista));if(C.etiqueta)u.append(el('li',null,C.etiqueta));w.append(u)}
+  /* pendientes: se quitan los resueltos (el cableado en la Órbita y lo que ya consta en las actualizaciones del 17/18-nov) */
+  const pend=(M.pendientes||[]).filter(x=>!/cablear chips-manual/i.test(x));
+  if(pend.length){w.append(el('h3',null,'Pendiente de leer'));const u=el('ul');for(const x of pend)u.append(el('li',null,x));w.append(u)}
+  return w}
 /* qué «datos al día» enseña cada grupo de la vista Capas: cada panel va una sola vez (antes se repetían tipos, stablecoins, EBA y materias primas en varias capas),
    ordenados por tipo de dato y, dentro de cada tabla, por país. «capa» = la capa original a la que pertenece, para el desglose. */
 function panelesGrupo(gid){
@@ -1328,6 +1356,7 @@ function panelesGrupo(gid){
     if(P.energia_precios)add('energia','Electricidad: precio diario en España (OMIE, PVPC) y tarifas por país (Eurostat)',nElectricidad,pie(P.energia_precios,'OMIE, REE y Eurostat'),true);
     if(P.alimentos)add('energia','Alimentos y agricultura: índice FAO, precios mensuales y futuros',nAlimentos,pie(P.alimentos,'FAO, FRED y Yahoo'),true);
     if(P.chips)add('energia','Chips y semiconductores: producción, precios y cotizaciones',nChips,pie(P.chips,'FRED y Yahoo'),true);
+    if(D.chips_manual)add('energia','Chips y centros de datos: memoria, fabricantes y electricidad (ficha manual)',nChipsManual,{nivel:D.chips_manual.nivel||'S',t:'TrendForce, Micron, SK hynix, Samsung, IEA y EIA (vía prensa) · leído '+f10(D.chips_manual.leido)},true);
     if((D.hitos_petroleo||{}).hitos)add('energia','Hitos del petróleo (Brent)',nPetroleoHitos,{nivel:'S',t:'explorador/hitos_petroleo.json'},false)}
   else if(gid==='railes'){
     if(P.mercado)add('puente','Precio de XRP y XLM (y BTC y ETH como referencia)',nMercado,pie(P.mercado,'CoinGecko'),true);
@@ -2053,7 +2082,12 @@ function pActivos(){
     dt.appendChild(el('p','nota-v',f.resumen||''));
     const tb=document.createElement('table');tb.className='tabla';tb.style.width='100%';
     const th=document.createElement('tr');['Dato','Valor','Unidad','Fecha','Nivel','Fuente'].forEach(x=>th.appendChild(el('th','',x)));tb.appendChild(th);
-    (f.hechos||[]).forEach(h=>{const tr=document.createElement('tr');tr.appendChild(el('td','',h.dato));tr.appendChild(el('td','',h.valor));tr.appendChild(el('td','',h.unidad||''));tr.appendChild(el('td','',h.fecha||''));const tn=document.createElement('td');tn.appendChild(nivelBadge(h.nivel));tr.appendChild(tn);tr.appendChild(el('td','',h.fuente||''));tb.appendChild(tr)});
+    const ayer=A.actualizado?new Date(Date.parse(A.actualizado)-864e5).toISOString().slice(0,10):'9999';
+    (f.hechos||[]).forEach(h=>{const tr=document.createElement('tr');
+      /* C203/C240: hechos nuevos (17-18 nov) marcados; [VERIFICAR] visible por fila; «null» = «sin dato»; escala explícita si el valor es un número sin unidad */
+      const sinD=h.valor==null||h.valor===''||String(h.valor).toLowerCase()==='null',txt=[h.dato,h.valor,h.fuente].join(' '),ver=/\[VERIFICAR/.test(txt)||sinD,nuevo=(h.fecha||'')>=ayer;
+      const tdD=el('td','',h.dato);if(nuevo)tdD.append(' ',el('span','chip','nuevo '+(h.fecha||'').slice(5)));if(ver){const vb=el('span','chip','[VERIFICAR]');vb.style.cssText='color:#e8b64a;border-color:#e8b64a;margin-left:4px';vb.title='Hay algo sin comprobar: lee la columna Fuente';tdD.append(' ',vb)}
+      tr.appendChild(tdD);tr.appendChild(el('td','',sinD?'sin dato':h.valor));tr.appendChild(el('td','',h.unidad||''));tr.appendChild(el('td','',h.fecha||''));const tn=document.createElement('td');tn.appendChild(nivelBadge(h.nivel));tr.appendChild(tn);tr.appendChild(el('td','',h.fuente||''));tb.appendChild(tr)});
     const env=el('div');env.style.overflowX='auto';env.appendChild(tb);dt.appendChild(env);
     [lista('Caso alcista',f.alcista,'var(--ok,#4caf7a)'),lista('Caso bajista',f.bajista,'var(--mal,#e0605a)'),lista('Sesgos de las fuentes',f.sesgos),lista('[VERIFICAR]',f.verificar),lista('[ESPECULACIÓN]',f.especulacion),lista('Fuentes',f.fuentes)].forEach(x=>{if(x)dt.appendChild(x)});
     S0.appendChild(dt)});
@@ -2131,7 +2165,34 @@ function nEtf(){
   const sin=(E.etfs||[]).filter(r=>r.flujo_usd==null&&r.flujo_motivo);
   if(sin.length)w.append(el('p','nota-v','Flujo vacío: '+sin.map(r=>r.ticker+' ('+r.flujo_motivo+')').join(' · ')+'.'));
   w.append(el('p','nota-v',(E.metodo||'')+' '+(E.nota_nivel||'')));
-  const bn=E.bloques_no_hechos||{};if(Object.keys(bn).length)w.append(el('p','nota-v','Pendiente: '+Object.entries(bn).map(([k,v])=>k+': '+v).join(' · ')));return w}
+  const bn=E.bloques_no_hechos||{};if(Object.keys(bn).length)w.append(el('p','nota-v','Pendiente: '+Object.entries(bn).map(([k,v])=>k+': '+v).join(' · ')));
+  w.append(...etf13f(E),...etfContraste(E));return w}
+/* 13F del 3T (EDGAR/13f.info), lecturas directas y trackers de contraste. Unidades unificadas: todo se muestra en millones de USD (M$);
+   13f.info trae «miles de USD» (valor_usd_miles / valor_declarado_usd_miles) y las lecturas de EDGAR traen USD (valor_usd): se convierten aquí y se declara en cada cabecera. */
+function etf13f(E){
+  const F=E['13f_3T'];if(!F)return[];const out=[],fo=Object.entries(F.fondos||{}).map(([k,v])=>({k,...v}));
+  const mk=x=>x==null?'sin dato':num(x/1000,1)+' M$';          // x en miles de USD
+  const mu=x=>x==null?'sin dato':num(x/1e6,1)+' M$';           // x en USD
+  const c=el('div');c.append(el('h3',null,'13F del '+vc(F.periodo)+': quién declara tener estos fondos (cifras en millones de USD, M$)'));
+  c.append(el('p','nota-v','Posiciones a '+vc(F.periodo)+' declaradas por gestoras en EE. UU.; leído '+f10(F.leido)+'. Nivel: '+(F.nivel||'')+' Completitud: '+(F.completitud||'')+' Unidad: valores en millones de USD (la fuente da miles de USD en 13f.info y USD en las lecturas de EDGAR; se convierten aquí). Un 13F no dice motivo ni fecha de compra.'));
+  const u=F.union_xrp;if(u)c.append(el('p','nota-v','Los 7 ETF de XRP juntos: '+u.declarantes_3T+' declarantes en el 3T frente a '+u.declarantes_2T+' en el 2T ('+u.nuevos_vs_2T+' nuevos, '+u.ya_no_aparecen_vs_2T+' que ya no aparecen). '+(u.nota||'')));
+  c.append(scrollX(tabla([{t:'Fondo',f:r=>r.k+' · '+r.nombre},{t:'Declarantes 3T',n:1,f:r=>nvc(r.declarantes,0)},{t:'Declarantes 2T',n:1,f:r=>nvc(r.declarantes_2T,0)},{t:'Valor declarado 3T (M$)',n:1,f:r=>r.valor_declarado_usd_miles==null?'sin dato':nvc(r.valor_declarado_usd_miles/1000,1)},{t:'Valor 2T (M$)',n:1,f:r=>r.valor_2T_usd_miles==null?'sin dato':nvc(r.valor_2T_usd_miles/1000,1)},{t:'Cambio',n:1,f:r=>(r.valor_declarado_usd_miles!=null&&r.valor_2T_usd_miles)?cambio((r.valor_declarado_usd_miles/r.valor_2T_usd_miles-1)*100,'%',0):'sin dato'},{t:'Acciones declaradas 3T',n:1,f:r=>nvc(r.acciones_declaradas,0)}],fo)));
+  const dt=el('details');dt.append(el('summary',null,'Mayores declarantes por fondo (top 10, M$)'));
+  fo.filter(r=>(r.top10||[]).length).forEach(r=>{dt.append(el('h3',null,r.k+' · '+r.nombre),scrollX(tabla([{t:'Declarante',f:x=>x.declarante},{t:'CIK',f:x=>x.cik},{t:'Valor (M$)',n:1,f:x=>nvc(x.valor_usd_miles/1000,1)},{t:'Acciones',n:1,f:x=>nvc(x.acciones,0)}],r.top10)))});c.append(dt);
+  const L=Object.entries(F.lecturas_edgar||{}).map(([cik,v])=>({cik,...v}));
+  if(L.length){const tk=[...new Set(L.flatMap(r=>Object.keys(r.posiciones||{})))];
+    c.append(el('h3',null,'Lecturas directas en EDGAR (nivel P): valor declarado por gestora y fondo (M$)'));
+    c.append(el('p','nota-v','Leído el 13F-HR de cada gestora en EDGAR (infotable XML). Unidad: millones de USD (EDGAR da USD). Contrasta con 13f.info: '+L.length+' gestoras leídas, no el total.'));
+    c.append(scrollX(tabla([{t:'Gestora',f:r=>r.nombre},{t:'Presentado',f:r=>vc(r.presentado)},...tk.map(t=>({t:t+' (M$)',n:1,f:r=>(r.posiciones||{})[t]?nvc(r.posiciones[t].valor_usd/1e6,1):'—'})),{t:'Fuente',f:r=>r.url?lkx(r.url,'EDGAR ↗'):'sin dato'}],L)))}
+  out.push(c);return out}
+function etfContraste(E){
+  const T=E.trackers_contraste;if(!T)return[];const c=el('div'),sb=T.serie_btc||[];
+  c.append(el('h3',null,'Contraste con un agregador: flujo neto diario de todos los ETF de BTC de EE. UU. (M$)'));
+  c.append(el('p','nota-v','Fuente: '+(T.fuente||'')+' · leído '+f10(T.leido)+' · nivel '+(T.nivel||'')+'. Unidad: millones de USD por día (negativo = salidas netas). Es contraste, no sustituye al cálculo con acciones × NAV del emisor.'));
+  if(sb.length)c.append(scrollX(tabla([{t:'Fecha',f:r=>vc(r.fecha)},{t:'Flujo neto total (M$)',n:1,f:r=>nvc(r.total,1)}],sb)));
+  const ib=T.ibit_fbtc_13nov;if(ib)c.append(el('p','nota-v','13-nov por fondo: IBIT '+nvc(ib.IBIT,1)+' M$ · FBTC '+nvc(ib.FBTC,1)+' M$. '+(ib.nota||'')));
+  if(T.xrp_xlm)c.append(el('p','nota-v','XRP y XLM: '+T.xrp_xlm));
+  return[c]}
 function nEnergiaEs(){
   const V=D.espana_energia,w=el('div'),pe=V.precios_electricidad||{},pv=(pe.serie||{}).PVPC||[],sp=(pe.serie||{})['Precio mercado spot']||[],dm=((V.demanda_electrica||{}).serie||[]).filter(x=>!x.parcial),gn=((V.generacion_electrica||{}).serie||[]).filter(x=>!x.parcial),ip=(V.ipv_precios_vivienda||{}).serie||[],al=(V.ipva_alquiler||{}).serie||[];
   const lp=pv[pv.length-1],ls=sp[sp.length-1],ld=dm[dm.length-1],lg=gn[gn.length-1],nac=ip.find(x=>x.territorio==='Nacional');
@@ -3299,7 +3360,7 @@ function pEspana(){
   if(M.comparativa_internacional){
     const C=M.comparativa_internacional,p1=v=>v==null?'—':fx(v,1),dl=(a,b)=>(a==null||b==null)?'—':cambio(b-a,'p.p.',1);
     add(bloque(C.titulo,C.lectura,{nivel:C.nivel,t:C.fecha_ue},conL(null,
-      tabla([{t:'País',f:r=>r.pais},{t:'Gasto 2025',n:1,f:r=>p1(r.gasto_2025)},{t:'Frente a 2019',n:1,f:r=>dl(r.gasto_2019,r.gasto_2025)},{t:'Ingresos 2025',n:1,f:r=>p1(r.ingresos_2025)},{t:'Frente a 2019',n:1,f:r=>dl(r.ingresos_2019,r.ingresos_2025)},{t:'Inversión 2025',n:1,f:r=>p1(r.inversion_2025)},{t:'Intereses 2025',n:1,f:r=>p1(r.intereses_2025)},{t:'Deuda 2025',n:1,f:r=>p1(r.deuda_2025)},{t:'Deuda 2019',n:1,f:r=>p1(r.deuda_2019)}],C.filas),
+      tabla([{t:'País',f:r=>r.pais},{t:'Gasto 2025 (% PIB)',n:1,f:r=>p1(r.gasto_2025)},{t:'Gasto frente a 2019 (p.p.)',n:1,f:r=>dl(r.gasto_2019,r.gasto_2025)},{t:'Ingresos 2025 (% PIB)',n:1,f:r=>p1(r.ingresos_2025)},{t:'Ingresos frente a 2019 (p.p.)',n:1,f:r=>dl(r.ingresos_2019,r.ingresos_2025)},{t:'Inversión 2025 (% PIB)',n:1,f:r=>p1(r.inversion_2025)},{t:'Intereses 2025 (% PIB)',n:1,f:r=>p1(r.intereses_2025)},{t:'Deuda 2025 (% PIB)',n:1,f:r=>p1(r.deuda_2025)},{t:'Deuda 2019 (% PIB)',n:1,f:r=>p1(r.deuda_2019)}],C.filas),
       el('h3',null,'EE. UU. (cifras de otra definición: no se suman a la tabla de arriba)'),dat(C.eeuu))));
   }
   if(M.recaudacion){
@@ -3348,11 +3409,13 @@ function pEspana(){
     const kf=(sec,re,et)=>{const s=CF[sec];if(!s||!s.grupos)return null;for(const g of s.grupos){const r=g.filas.find(x=>re.test(x.nombre)&&x.valor!=null);if(r)return[fv(r.valor)+(r.unidad?' '+r.unidad:''),(et||r.nombre)+' · '+r.fecha,null]}return null};
     for(const [sec,k] of SEC){
       const S=CF[sec];if(!S)continue;
-      const pend=(S.pendiente||[]).filter(x=>typeof x==='string');
+      /* «Pendiente de leer»: fuera lo ya resuelto (RESUELTO) y lo que una línea posterior del 18-nov supera; se cuenta cuántos se ocultan */
+      const pend0=(S.pendiente||[]).filter(x=>typeof x==='string'),sup=(i,x)=>/RESUELTO/i.test(x)||(/^Euríbor diario: sin leer/.test(x)&&pend0.slice(i+1).some(y=>/Euríbor diario leído/.test(y)))||(/^Salario medio de la AEAT: sin leer/.test(x)&&pend0.slice(i+1).some(y=>/^Salario medio AEAT/.test(y)));
+      const pend=pend0.filter((x,i)=>!sup(i,x)),ocu=pend0.length-pend.length;
       const intro=el('div');if(S.nota)intro.append(corto(S.nota,'nota-v',170));
       if(sec==='vivienda')intro.append(el('p','nota-v','Los precios de vivienda y alquiler mes a mes (INE) están en el bloque «Electricidad de España (REE) y precios de vivienda (INE)» de la pestaña Energía: aquí no se repiten.'));
       if(sec==='energia')intro.append(el('p','nota-v','Además de estas cifras sueltas, esta pestaña incluye el bloque de REE con la serie diaria (precio de la luz, demanda y generación) y la vivienda del INE.'));
-      if(pend.length){const dt=el('details','mas');dt.append(el('summary',null,'Pendiente de leer ('+pend.length+')'));const u=el('ul');for(const x of pend)u.append(el('li',null,x));dt.append(u);intro.append(dt)}
+      if(pend.length){const dt=el('details','mas');dt.append(el('summary',null,'Pendiente de leer ('+pend.length+')'));const u=el('ul');for(const x of pend)u.append(el('li',null,x));dt.append(u);if(ocu)dt.append(el('p','nota-v',ocu+' línea'+(ocu>1?'s':'')+' ya resuelta'+(ocu>1?'s':'')+' u obsoleta'+(ocu>1?'s':'')+' (por datos del 18-nov) no se muestra'+(ocu>1?'n':'')+'.'));intro.append(dt)}
       addT(k,bloque('Cómo leer esta pestaña y qué falta',null,{nivel:S.nivel,t:'Leído '+f10(S.leido)},intro,false));
       if(sec==='investigaciones'){
         const MES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'],fch=f=>{const m=/^(\d{4})-(\d\d)-(\d\d)$/.exec(f||'');return m?(+m[3])+' '+MES[+m[2]-1]+' '+m[1]:(f||'')};
@@ -3384,7 +3447,7 @@ function pEspana(){
       addT('pen',bloque('Envejecimiento por comunidad autónoma ('+E2.periodo+')',E2.nota,{nivel:E2.nivel,t:'INE, estadísticas de población (IDB, tablas 1452, 1453 y 1455) · índice = 65+ por cada 100 menores de 16; dependencias en % de la población de 16 a 64 · '+E2.periodo},
         tabla([{t:'Comunidad',f:r=>r.ccaa},{t:'Índice de envejecimiento (65+ por 100 menores de 16)',n:1,f:r=>fx(r.indice_envejecimiento,1)},{t:'Dependencia total (%)',n:1,f:r=>fx(r.dependencia_total_pct,1)+' %'},{t:'Dependencia de mayores (%)',n:1,f:r=>fx(r.dependencia_mayores_pct,1)+' %'}],E2.filas),false))}
     BL.forEach(b=>{const tt=(b.querySelector('summary')||{}).textContent||'';if(/^Electricidad de España \(REE\)/.test(tt))b._t='ene'});
-    for(const [k,sec,re,et] of [['mac','macro',/IPC general, variación anual/,'Inflación anual (IPC)'],['mac','macro',/^Tasa de paro/,'Paro (EPA)'],['mac','macro',/PIB, variación anual \(corregido/,'Crecimiento anual (PIB)'],['mac','macro',/Tasa de crecimiento interanual de afiliados/,'Afiliados, crecimiento anual'],
+    for(const [k,sec,re,et] of [['mac','macro',/IPC general, variación anual/,'Inflación anual (IPC)'],['mac','macro',/^Tasa de paro/,'Paro (EPA)'],['mac','macro',/PIB, variación anual \(corregido/,'Crecimiento anual (PIB)'],['mac','macro',/Tasa de crecimiento interanual de afiliados/,'Afiliados, crecimiento anual'],['mac','macro',/^IPC subyacente \(general/,'Inflación subyacente (anual)'],['mac','macro',/^Paro registrado \(fin de mes\)/,'Paro registrado (SEPE)'],['mac','macro',/^Afiliados extranjeros, media/,'Afiliados extranjeros'],
       ['ene','energia',/Precio mayorista/,'Luz mayorista (OMIE)'],['ene','energia',/Gasolina 95/,'Gasolina 95'],['ene','energia',/Dependencia energética/,'Dependencia energética'],['ene','energia',/Reserva hídrica/,'Embalses'],
       ['viv','vivienda',/Precio de la vivienda, variación anual/,'Precio de la vivienda (IPV)'],['viv','vivienda',/Precio escriturado/,'Precio escriturado'],['viv','vivienda',/Tipo de interés medio/,'Tipo hipotecario medio'],['viv','vivienda',/Deuda total de las CCAA/,'Deuda de las CCAA'],
       ['pen','pensiones',/Pensiones contributivas abonadas/,'Pensiones abonadas'],['pen','pensiones',/Fondo de Reserva de la Seguridad/,'Fondo de Reserva'],['pen','pensiones',/Saldo de la Seguridad Social/,'Saldo de la Seguridad Social'],['pen','pensiones',/Vejez \+ supervivencia/,'Gasto en vejez y viudedad']]){const q=kf(sec,re,et);if(q)RES[k].push(q)}

@@ -78,8 +78,18 @@ def main():
         fechas = ev or meta                       # primero la fecha del DATO; la de lectura solo si no hay otra
         f = max(fechas) if fechas else None
         dias = (HOY - f).days if f else None
+        origen = "dato" if ev else "lectura" if meta else "-"
+        lec = max(meta) if meta else None
+        # Periodo cerrado + lectura reciente: un dato anual (fin de año) o trimestral (fin de trimestre) NO envejece por el calendario
+        # mientras sea el último cierre publicable (anual: hasta 400 d; trimestral: hasta 130 d) y el archivo se haya leído hace <=30 d.
+        # Se juzga entonces por la fecha de lectura. Un dato fuera de esos plazos, o sin fecha de lectura, sigue en rojo.
+        if ev and f and lec and dias is not None and dias > 30 and (HOY - lec).days <= 30:
+            fin_anio = (f.month, f.day) == (12, 31) and dias <= 400
+            fin_trim = (f.month, f.day) in ((3, 31), (6, 30), (9, 30), (12, 31)) and dias <= 130
+            if fin_anio or fin_trim:
+                dias, origen = (HOY - lec).days, "periodo cerrado + lectura"
         fa = dt.date.fromtimestamp(p.stat().st_mtime)
-        filas.append((p.name, f, semaforo(dias), dias, "dato" if ev else "lectura" if meta else "-", fa, max(meta) if meta else None))
+        filas.append((p.name, f, semaforo(dias), dias, origen, fa, lec))
     return filas
 
 
@@ -93,7 +103,7 @@ def escribir_json(filas=None):
         else:
             items.append({"archivo": f[0], "fecha_dato": f[1].isoformat() if f[1] else None, "dias": f[3], "semaforo": f[2], "origen": f[4], "fecha_lectura": f[6].isoformat() if f[6] else None})
     cuenta = {k: sum(1 for i in items if i["semaforo"] == k) for k in ("verde", "amarillo", "rojo", "gris", "error")}
-    out = {"nivel": "P", "generado": HOY.isoformat(), "fuente": "scripts/frescura_explorador.py (fecha del DATO de cada explorador/*.json: periodo/fecha más reciente no futura; si no hay, la de lectura; sin IA)",
+    out = {"nivel": "P", "generado": HOY.isoformat(), "fuente": "scripts/frescura_explorador.py (fecha del DATO de cada explorador/*.json: periodo/fecha más reciente no futura; si no hay, la de lectura; un cierre anual/trimestral reciente se juzga por la lectura; sin IA)",
            "umbrales_dias": {"verde": 7, "amarillo": 30}, "resumen": cuenta, "items": items}
     (RAIZ / "explorador" / "frescura.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + chr(10), encoding="utf-8")
     return out

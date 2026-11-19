@@ -1208,5 +1208,11 @@
    },
    "_nota": "17-nov-2026, scripts/leer_etf_flujos.py --13f: suma de TODAS las filas infoTable por CUSIP. Goldman coincide con 13f.info; Susquehanna (XRP 1.291.386 en 3 filas; GXRP 206.374 en 2), Jane Street (XRP 785.672 en 4 filas) y Millennium difieren del top10 de 13f.info, que probablemente cuenta una sola fila: prevalece EDGAR [P]. 13F no son flujos ni explican motivo."
   }
+ },
+ "unidades": {
+  "valor_usd": "USD (dólares) en lecturas_edgar y valor_mercado_tenencia_usd",
+  "valor_usd_miles": "miles de USD en 13f_3T (valor_usd_miles, valor_declarado_usd_miles, valor_2T_usd_miles)",
+  "trackers_contraste": "millones de USD por día",
+  "vista": "la Órbita convierte todo a millones de USD (M$) y lo declara en cada tabla"
  }
 }

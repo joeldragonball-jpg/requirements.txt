@@ -2,6 +2,7 @@
 y el móvil: secciones con grupos de filas {nombre, valor, unidad, fecha, nivel, fuente, nota}. Solo lee; no escribe ningún JSON de datos.
 Uso: import espana_cifras; espana_cifras.construir(carpeta_explorador) -> dict (o None si falta todo)."""
 import json
+import re
 from pathlib import Path
 
 ARCHIVOS = {"macro": "espana-macro", "energia": "espana-energia", "vivienda": "espana-vivienda",
@@ -20,14 +21,14 @@ def _fila(n, ctx=None, nombre=None):
     nota = n.get("nota") or ""
     ant = n.get("anterior") or n.get("anterior_sep") or n.get("hace_un_anio")
     if isinstance(ant, dict):
-        ant = f"{ant.get('valor')} ({ant.get('periodo', '')})"
+        ant = f"{str(ant.get('valor')).replace('.', ',')}{' ' + n['unidad'] if n.get('unidad') in ('%', 'M€') else ''} ({ant.get('periodo', '')})" if ant.get("valor") is not None else None
     if ant is not None and not isinstance(ant, dict):
         nota = (nota + " " if nota else "") + f"Anterior: {ant}."
     if n.get("ue") is not None:
         nota = (nota + " " if nota else "") + f"UE-27: {n['ue']}."
     return {"nombre": nom, "valor": n.get("valor"), "unidad": n.get("unidad") or ctx.get("unidad") or "", "fecha": str(fecha),
             "nivel": n.get("nivel") or ctx.get("nivel") or "?", "fuente": fuente if (fuente and str(fuente).startswith("http")) else (fuente or ""),
-            "nota": nota.strip()}
+            "nota": re.sub(r"\bnull\b", "sin dato", nota.strip())}
 
 
 def _lista(items, ctx=None, titulo_ccaa=False):
@@ -59,17 +60,84 @@ def _tipos_diarios(t):
     return filas
 
 
+def _con_nota(filas, nota):
+    """Añade la nota general de un bloque a su primera fila (las filas no tienen nota de grupo)."""
+    if filas and nota:
+        filas[0]["nota"] = (filas[0]["nota"] + " " if filas[0]["nota"] else "") + str(nota)
+    return filas
+
+
+def _macro_nuevos(d):
+    """Bloques del 18-nov (4.ª pasada C229): IPC por grupos especiales, EPA por sexo/edad/sector, temporalidad calculada, afiliación y paro registrado.
+    Cada fila lleva unidad explícita (%, miles de personas, personas, M€), fecha, nivel y fuente. Lo no leído se omite o se marca [VERIFICAR] en la vista."""
+    g = []
+    ipc = d.get("ipc", {})
+    ge = ipc.get("grupos_especiales")
+    if ge:
+        ctx = {"periodo": ge.get("periodo"), "nivel": ge.get("nivel"), "url": "https://www.ine.es/jaxiT3/Tabla.htm?t=76130", "unidad": "%"}
+        filas = [_fila(x, ctx) for x in ge.get("valores", []) if isinstance(x, dict)]
+        for f in filas:
+            f["unidad"] = "% anual (sobre el mismo mes de 2025)" if f["unidad"] == "%" else f["unidad"]
+        g.append(("Inflación subyacente y grupos especiales (IPC, INE)", _con_nota(filas, ge.get("nota"))))
+    epa = d.get("epa", {})
+    sec = epa.get("sectores_ocupados_pct")
+    if sec:
+        ctx = {"periodo": sec.get("periodo"), "nivel": sec.get("nivel"), "url": "https://www.ine.es/jaxiT3/Tabla.htm?t=" + str(sec.get("tabla_ine", "65125")), "unidad": "% de los ocupados"}
+        filas = []
+        for x in sec.get("valores", []):
+            f = _fila({"nombre": "Ocupados en " + x["nombre"].lower() + " (peso sobre el total)", "valor": x.get("valor"), "unidad": "% de los ocupados",
+                       "serie_ine": x.get("serie_ine")}, ctx)
+            ant = [f"2T-2026: {str(x['anterior_2T']).replace('.', ',')} %" if x.get("anterior_2T") is not None else "",
+                   f"3T-2025: {str(x['hace_un_anio']).replace('.', ',')} %" if x.get("hace_un_anio") is not None else ""]
+            f["nota"] = "Anterior: " + "; ".join(a for a in ant if a) + "." if any(ant) else ""
+            filas.append(f)
+        g.append(("Ocupados por sector (EPA, INE)", filas))
+    tm = epa.get("temporalidad")
+    if tm:
+        ctx = {"periodo": tm.get("periodo"), "nivel": tm.get("nivel"), "url": "https://www.ine.es/jaxiT3/Tabla.htm?t=65200"}
+        at, tc = tm.get("asalariados_temporales") or {}, tm.get("tasa_temporalidad_calculada") or {}
+        filas = []
+        if at:
+            filas.append(_fila({"nombre": "Asalariados con contrato temporal", "valor": at.get("valor"), "unidad": "miles de personas", "serie_ine": at.get("serie_ine"),
+                                "nota": f"Anterior: 2T-2026 {str(at.get('anterior_2T')).replace('.', ',')}; 3T-2025 {str(at.get('hace_un_anio_3T2025')).replace('.', ',')} (miles de personas)."}, ctx))
+        if tc:
+            filas.append(_fila({"nombre": "Tasa de temporalidad (CÁLCULO PROPIO: temporales / asalariados)", "valor": tc.get("valor"), "unidad": "% de los asalariados", "nivel": "P",
+                                "fuente": "Cálculo propio sobre INE EPA422775 y EPA417633",
+                                "nota": f"Cálculo propio, no es la cifra oficial del INE [VERIFICAR]. Anterior: 2T-2026 {str(tc.get('anterior_2T')).replace('.', ',')} %; 3T-2025 {str(tc.get('hace_un_anio_3T2025')).replace('.', ',')} %. No comparable con la de afiliación (otra definición)."}, ctx))
+        g.append(("Temporalidad (EPA, INE; la tasa es cálculo propio)", filas))
+    pr = d.get("paro_registrado")
+    if pr:
+        ctx = {"periodo": pr.get("periodo"), "nivel": pr.get("nivel"), "fuente": pr.get("fuente")}
+        filas = _lista(pr.get("valores"), ctx)
+        for f in filas:
+            if "(septiembre" in f["nombre"]:
+                f["fecha"] = "sep-2026"
+        for k, v in (pr.get("sectores_variacion_mensual_personas") or {}).items():
+            filas.append({"nombre": "Paro registrado, variación en el mes · " + k, "valor": v, "unidad": "personas (variación mensual)", "fecha": str(pr.get("periodo")),
+                          "nivel": pr.get("nivel") or "?", "fuente": pr.get("fuente") or "", "nota": ""})
+        g.append(("Paro registrado (SEPE, octubre)", _con_nota(filas, pr.get("nota"))))
+    return g
+
+
 def _macro(d):
     g = []
     ipc = d.get("ipc", {})
     g.append(("Inflación (IPC)", _lista(ipc.get("general")) + _lista(ipc.get("impuestos_constantes"), {"periodo": ipc.get("periodo")})))
     g.append(("Inflación por grupos (IPC)", _lista(ipc.get("grupos"), {"periodo": ipc.get("periodo"), "nivel": ipc.get("nivel")})))
+    nuevos = _macro_nuevos(d)
+    g += nuevos[:1]
     epa = d.get("epa", {})
     g.append(("Paro y empleo (EPA)", _lista(epa.get("nacional"), {"periodo": epa.get("periodo")})))
     g.append(("Tasa de paro por comunidad (EPA)", _lista(epa.get("tasa_paro_por_ccaa"), {"periodo": epa.get("periodo"), "nivel": "P"})))
+    g += [x for x in nuevos[1:] if not x[0].startswith("Paro registrado")]
     af = d.get("afiliacion")
     if af:
-        g.append(("Afiliación a la Seguridad Social", _bloque(af)))
+        fa = _bloque(af, {"url": af.get("fuente")})
+        for f in fa:
+            if f["unidad"] == "ratio":
+                f["unidad"] = "afiliados por pensionista"
+        g.append(("Afiliación a la Seguridad Social (octubre)", _con_nota(fa, af.get("nota"))))
+    g += [x for x in nuevos if x[0].startswith("Paro registrado")]
     s = d.get("salarios_smi", {})
     sa = dict(s.get("salario_medio_aeat") or {})
     sa.setdefault("nombre", "Salario medio (AEAT) / mediano (EAES)")
@@ -208,7 +276,7 @@ def construir(carpeta):
         except Exception:
             continue
         s = {"titulo": d.get("titulo") or d.get("_nota", "")[:80], "leido": d.get("leido") or d.get("actualizado"), "nivel": d.get("nivel"),
-             "nota": d.get("nota") or d.get("_nota") or "", "pendiente": d.get("pendiente") or d.get("por_abrir") or []}
+             "nota": re.sub(r"\bnull\b", "sin dato", d.get("nota") or d.get("_nota") or ""), "pendiente": d.get("pendiente") or d.get("por_abrir") or []}
         if k == "investigaciones":
             s["casos"] = _investigaciones(d)
             s["remite_a"] = d.get("remite_a", [])

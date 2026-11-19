@@ -76,3 +76,84 @@
 | 70 | 2026-09 | Adrian Wall (Digital Sovereignty Alliance), vía Cointelegraph | Habrá otro intento con la Clarity en la sesión posterior a las elecciones, aunque es «improbable» que salga | 2027-01-03 | Nueva moción de cierre de debate en el Senado antes del 3-ene-2027 | Sin resolver [S] (13-nov: sin votación programada); grupo de presión del sector (sesgo) |
 | 71 | 2026-11-12 | Oriol Blanch (Bitvavo), en Despeja La X | Bitvavo integrará protocolos DeFi como Morpho/Aave para préstamo de BTC/XRP sin wallet propia | Sin fecha | Anuncio o producto en bitvavo.com | Sin resolver [D]; «lo estamos valorando»; sesgo comercial |
 | 72 | 2026-11-12 | Oriol Blanch (Bitvavo), en Despeja La X | La tokenización de fondos monetarios será el siguiente boom tras las stablecoins (3-5 % anual) | Sin fecha | Volumen de fondos tokenizados (rwa.xyz) | Sin resolver [ESPECULACIÓN]; sesgo comercial |
+
+## Criterios de medición (C108, 18-nov-2026)
+
+> Añadido sin tocar la tabla de arriba. Estados cerrados según `research/CRITERIOS-MEDICION.md` (abierta / acertó / falló / resuelta mal planteada / sin puntuar). «Lectura / base» indica si la fuente oficial se leyó el 18-nov o si es lo ya anotado en la tabla (con su fecha), sin releer. Un [S] no equivale a resuelta con fuente primaria. [ESPECULACIÓN] cuando es opinión.
+
+| # | Indicador | Fuente oficial | Umbral de acierto | Límite | Estado 18-nov | Lectura / base |
+|---|---|---|---|---|---|---|
+| 1 | CLARITY viva en lame-duck/2027 | congress.gov | Cierre de debate logrado o texto en agenda antes del 3-ene-2027 | 2026-12-31 (propuesto) | Abierta | Previo: «parece que falló», sin comprobar |
+| 2 | CLARITY firmada | congress.gov | Firmada antes de la fecha | 2026-12-31 | Abierta | Previo 13-nov [S] |
+| 3 | Idem, «depende de noviembre» | congress.gov | Aprobada y firmada | 2026-12-31 | Abierta | |
+| 4 | Normas finales SEC/CFTC antes que la ley | Federal Register | Normas finales publicadas antes que la ley | 2027-06-30 | Abierta | |
+| 5 | Norma de custodia SEC | Federal Register | Norma final en vigor | 2027-01-31 | Abierta | |
+| 6 | CLARITY firmada en 2026 (prob. ~15-23 %) | congress.gov | Se guarda resultado 0/1; no acierto/fallo (Brier solo con ≥20 de este tipo) | 2026-12-31 | Abierta (probabilidad) | |
+| 7 | CLARITY aprobada antes del 3-nov (~10 %) | congress.gov | No aprobada = resultado 0 | 2026-11-03 | Resuelta: acertó | Previo 4-nov [S] |
+| 8 | Cotización de XRPN y prima sobre caja | Nasdaq / 10-Q Evernorth | «Desplome total» sin cifra: fijar -80 % desde el cierre de debut (propuesto) | 2027-04-30 | Abierta [ESPECULACIÓN] | |
+| 9 | BatchV1_1 activada | ledger / xrpl.org | Activada en la ventana | 2026-11-30 | Resuelta mal planteada | Previo 9-oct |
+| 10 | Debut de XRPN el 12-oct | comunicado Evernorth / Nasdaq | Primera cotización el 12-oct | 2026-10-12 | Resuelta: acertó | Previo 28-oct |
+| 11 | Activos DTC en Stellar | dtcc.com / stellar.org | En producción | 2027-06-30 | Abierta | |
+| 12 | XRP por acción reportado | 10-Q/10-K Evernorth | Informe con XRP por acción | 2027-03-31 | Abierta | |
+| 13 | GXLM pasa a ETF en NYSE Arca | EDGAR CIK 1761325 | Cotiza en NYSE Arca | Sin fecha | Sin puntuar | |
+| 14 | Pontes 24/7 | web BCE (Pontes) | 24/7 operativo | 2028-12-31 | Abierta | |
+| 15 | Norma final OCC (GENIUS) | Federal Register | Publicada | 2026-11-30 | Resuelta: acertó | Previo 25-oct |
+| 16 | Stablecoin en euros de Qivalis | DNB / comunicado | Lanzada | 2026-12-31 | Abierta | |
+| 17 | Brent medio 4T-26 = 105 $ | EIA spot (RBRTE) | Media oct-dic frente a 105 $ (±5 % = acierta, propuesto) | 2026-12-31 | Abierta (trimestre en curso) | |
+| 18 | FOMC sube tipos antes de fin de año | federalreserve.gov | Subida del rango 3,75-4,00 % en oct o dic | 2026-12-09 | Abierta | **Leída 18-nov**: nota oficial del 28-oct (monetary20261028a): se mantiene 3,75-4,00 %, votación 10-2 (Cook y Hammack querían +0,25). Queda la reunión del 8-9-dic |
+| 19 | fixCleanup3_4_0 activada ~23-oct | ledger | Fecha de activación | 2026-11-30 | Resuelta mixta: falló la fecha, acertó la corrección | Previo 10-nov [S] |
+| 20 | Panel con 27/35 votos | ledger | Coincide con Majorities | 2026-10-23 | Contradicha por el ledger; sin puntuar a CoinDesk hasta saber qué panel [VERIFICAR] | |
+| 21 | Ripple sin salida a bolsa | EDGAR | Sin S-1 público | 2027-12-31 | Abierta | |
+| 22 | Aprobación final OCC a Ripple Trust | occ.gov | Aprobación final | 2027-06-30 | Abierta | |
+| 23 | Escrow del 1-nov y relock | ledger (cuentas del toml) | Nuevos escrows creados | 2026-11-30 | Abierta (relock sin confirmar) | Previo 10-nov [S] |
+| 24 | Ormuz reabierto | IMF PortWatch | Tránsitos diarios ≥ ~85 sostenidos | 2026-11-30 | Abierta | |
+| 25 | Sin ataque a Irán antes del 3-nov | comunicados Pentágono / AP | Ningún ataque | 2026-11-03 | Resuelta: falló (con matiz) | Previo 4-nov [S] |
+| 26 | Nueva campaña de bombardeos | comunicados Pentágono | Reanudación | 2026-12-31 | Abierta | |
+| 27 | Brent 87 $ 2T-27 y 74 $ 4T-27 | EIA STEO/spot | Media trimestral frente a la cifra | 2027-12-31 | Abierta | |
+| 28 | G7 libera 100 M de barriles | AIE | Volumen liberado ≥ 100 M | 2027-02-02 | Abierta | |
+| 29 | Sin moneda común BRICS | comunicados BRICS | Ningún comunicado la propone | 2026-12-31 | Abierta | |
+| 30 | Arancel del 10 % a BRICS | Federal Register / orden ejecutiva | Arancel formal | 2026-12-31 | Abierta | |
+| 31 | OPEP+ mantiene noviembre | opec.org | Cuotas sin cambio | 2026-11-01 | Resuelta: acertó | Previo 2-nov [P] |
+| 32 | Acuerdo político euro digital | Consejo UE | Acuerdo provisional en trílogo | 2026-12-31 | Abierta | |
+| 33 | Emisión euro digital 2029 | BCE / DOUE | Reglamento adoptado en 2026 y emisión | 2029-12-31 | Abierta | |
+| 34 | Piloto euro digital 2S-27 | BCE | Arranque del piloto | 2027-12-31 | Abierta | |
+| 35 | Blueprint Appia | BCE | Publicado | 2028-12-31 | Abierta | |
+| 36 | RLUSD autorizado en UE | ESMA/CSSF | Registro | 2027-06-30 | Abierta | |
+| 37 | Modelo 175 en enero-27 | BOE / sede AEAT | Orden publicada y modelo disponible | 2027-01-31 | Abierta | |
+| 38 | Ley DAC8 antes de 31-dic-25 | BOE | Publicada antes del límite | 2025-12-31 | Vencida, sin comprobar en BOE [VERIFICAR]; «parece que falló» no es estado | Previo 25-oct |
+| 39 | Control AEAT de cripto | Memoria AEAT | Actuaciones publicadas | 2026-12-31 | Abierta | |
+| 40 | Renta 2026 abre en abril, cierra 30-jun-27 | nota AEAT | Fechas coinciden | 2027-06-30 | Abierta [ESPECULACIÓN] | |
+| 41 | Reembolso Bitget completo | comunicados Bitget | Reembolso a todos | 2026-12-31 | Abierta | |
+| 42 | 6.º reparto FTX | agente FTX | Reparto realizado | 2027-01-31 | Abierta | |
+| 43 | Informe final MiCA | EUR-Lex / Comisión | Presentado | 2027-06-30 | Abierta | |
+| 44 | DTC tokeniza en octubre | dtcc.com | Anunciado en producción | 2026-10-31 | Resuelta: acertó | Previo 28-oct [P] |
+| 45 | Alpenglow en 3T-26 | RPC / Anza | Activo en mainnet | 2026-09-30 | Resuelta: falló | Previo 28-oct [S] |
+| 46 | Visa >20.000 M$ | resultados Visa | Cifra mayor | 2027-03-31 | Abierta | |
+| 47 | Mastercard 8 cadenas | Mastercard | Volumen por cadena | 2027-06-30 | Abierta | |
+| 48 | Pontes desde sept-26 | ecb.europa.eu | Lanzamiento | 2026-09-30 | Resuelta: acertó | Previo 28-oct [P] |
+| 49 | XRP a 10.000 $ | cotización | Cierre ≥ 10.000 $ | 2027-03-31 | Abierta [ESPECULACIÓN] | |
+| 50 | Soporte XRP 1,30 y Fed sube | gráfico, FOMC | Sin fecha | Sin fecha | Sin puntuar | Parte Fed: ver #18 |
+| 51 | Si Clarity pasa, XRP 7-10 $ | cotización, congress.gov | Condición no cumplida = sin puntuar | 2030-12-31 | Abierta [ESPECULACIÓN] | |
+| 52 | Euro digital listo en 1S-27 | web BCE | Emisión en 1S-27 | 2027-06-30 | Abierta (contradicha por [S] #33/#34; no puntúa sin BCE) | |
+| 53 | Pago transfronterizo en marcha | BIS/FSB, Sibos | Medible solo con definición previa | 2027-09-30 | Abierta, mal definida | |
+| 54 | Brent 90 $ en dic-26 | EIA spot | Cierre 31-dic frente a 90 $ (±5 %, propuesto) | 2026-12-31 | Abierta | |
+| 55 | 1-3 % de 16 billones en cadena | Swell 2027 | Cifra anunciada | 2027-12-31 | Sin puntuar (aspiración) | |
+| 56 | XRP «estándar de oro» | no medible | n/a | 2031-10-31 | Sin puntuar | |
+| 57 | Adopción minorista masiva | no medible | n/a | 2029-10-31 | Sin puntuar | |
+| 58 | Binance reanuda retiradas el 1-nov | binance.com | Retiradas activas el 1-nov | 2026-11-01 | Resuelta: acertó en parte | Previo 2-nov [S] |
+| 59 | BTC >250.000 $ | cotización | Cierre ≥ 250.000 $ | 2031-11-04 | Abierta [ESPECULACIÓN] | |
+| 60 | BoE sube 25 pb | Banco de Inglaterra IADB | Bank Rate 4,00 % el 5-nov | 2026-11-05 | Resuelta: acertó | Previo 7-nov [P] |
+| 61 | Código BoE para stablecoins | bankofengland.co.uk | Código final publicado | 2026-12-31 | Abierta | |
+| 62 | Republicanos pierden la Cámara | resultados oficiales | Demócratas ganan la Cámara | 2026-11-03 | Resuelta: acertó (Senado «tal vez» no puntúa) | Previo 10-nov [S] |
+| 63 | Primera calificación de Moody's | moodys.com | Calificación pública | Sin fecha | Sin puntuar | |
+| 64 | Niveles de XRP 1,33-1,38 / soportes | cierre diario | Sin fecha | Sin fecha | Sin puntuar | Previo 13-nov: 1,026 $ |
+| 65 | Clarity no enterrada | congress.gov | Moción o texto bipartidista | 2027-01-03 | Abierta [ESPECULACIÓN] | |
+| 66 | 4 empresas responden a Blumenthal | PSI / empresas | Entregan documentos | 2027-01-04 | Abierta | |
+| 67 | Eliminar el filibuster | senate.gov | Votación de cambio de reglas | Sin fecha | Sin puntuar | |
+| 68 | WLF y FFF entregan documentos | PSI | Respuesta pública | 2026-11-30 | Abierta | |
+| 69 | Ley republicana no avanza | congress.gov | Sin texto republicano aprobado | 2029-01-03 | Abierta (condicional) | |
+| 70 | Nuevo intento con Clarity | senate.gov | Nueva moción de cierre | 2027-01-03 | Abierta | |
+| 71 | Bitvavo integra DeFi | bitvavo.com | Producto anunciado | Sin fecha | Sin puntuar | |
+| 72 | Boom de fondos monetarios tokenizados | rwa.xyz | Sin umbral | Sin fecha | Sin puntuar [ESPECULACIÓN] | |
+
+Recuento (18-nov): 72 con criterio. 13 resueltas (7, 9, 10, 15, 19, 25, 31, 44, 45, 48, 58, 60, 62): 9 acertó o en parte, 2 falló (25, 45), 2 mal planteada o mixta (9, 19). 10 sin puntuar (13, 50, 55, 56, 57, 63, 64, 67, 71, 72). Leída hoy en fuente oficial: solo #18 (sigue abierta).

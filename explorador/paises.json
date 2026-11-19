@@ -1,6 +1,6 @@
 {
   "titulo": "Fichas políticas por país",
-  "informe": "informes/research/2026-10-30-C58-fichas-politicas.md | informes/research/2026-11-17-C58-politica.md | informes/research/2026-11-18-C58-C61.md",
+  "informe": "informes/research/2026-10-30-C58-fichas-politicas.md | informes/research/2026-11-17-C58-politica.md | informes/research/2026-11-18-C58-C61.md | informes/research/2026-11-18-C58-C61-tercera.md",
   "leido": "2026-11-18",
   "nota": "Describe, no juzga. Nivel P = fuente oficial leída; S = prensa o agregador; V = por verificar. Donde un campo es null o dice [VERIFICAR] no se pudo contrastar en esta sesión (varias webs oficiales dieron 403/reset o no renderizan). La lectura de cada país es [ESPECULACIÓN]. Las elecciones se enlazan por id con elecciones.json, sin duplicar. Los indicadores (C59) y la estabilidad (C61) se unen por el mismo id en la página única de C60.",
   "paises": [
@@ -308,7 +308,7 @@
       "oposicion": "Conservadores, Reform UK, Liberal Demócratas, SNP [S]",
       "proxima_eleccion": {
         "fecha": "2029-08-15",
-        "tipo": "Generales (límite legal)",
+        "tipo": "Generales (límite legal de 5 años desde la primera reunión del Parlamento; la Ley de 2022 derogó la de Parlamentos de Mandato Fijo [P: legislation.gov.uk/ukpga/2022/11/section/1, leído 18-nov-2026]; el 15-ago-2029 es cálculo previo, sin releer la fecha en gov.uk: [VERIFICAR]). El primer ministro puede adelantarlas",
         "elecciones_id": "GB"
       },
       "ultima_eleccion": {
@@ -560,16 +560,16 @@
       "pais": "El Salvador",
       "bloque": "Latinoamérica",
       "sistema": "República presidencialista",
-      "reparto_poder": "[VERIFICAR]",
+      "reparto_poder": "Presidencia y Asamblea Legislativa unicameral [P: asamblea.gob.sv, comisiones y decretos 18-nov-2026; la Asamblea actúa: decretos 698-709 emitidos entre 28-oct y 10-nov-2026]. Reparto por escaños y reforma constitucional: [VERIFICAR]",
       "jefe_estado": "Nayib Bukele",
       "jefe_gobierno": "El presidente es jefe de Estado y de Gobierno",
       "gobierno": "Gobierno de Nayib Bukele (Nuevas Ideas) [S]",
       "familia": "[VERIFICAR]",
-      "apoyo": "[VERIFICAR]",
+      "apoyo": "Registro electoral: 6.214.399 personas [P: tse.gob.sv, 18-nov-2026]. Composición de la Asamblea y apoyo al Gobierno: [VERIFICAR]",
       "oposicion": "[VERIFICAR]",
       "proxima_eleccion": {
         "fecha": null,
-        "tipo": "[VERIFICAR]",
+        "tipo": "Proceso de sufragio 2027 [P: tse.gob.sv, «Calendario electoral», leído 18-nov-2026]; la fecha exacta está en el PDF del calendario, sin leer: [VERIFICAR]",
         "elecciones_id": null
       },
       "ultima_eleccion": {
@@ -577,12 +577,12 @@
         "participacion": null,
         "resultado": null
       },
-      "temas_clave": "Bitcoin y FMI: el programa de 1.400 M USD (acuerdo de dic-2024) exigió quitar el curso legal al bitcoin; el FMI dijo en jul-2026 que el Gobierno no había comprado bitcoin desde dic-2024, aunque la Oficina del Bitcoin sigue anunciando compras; acuerdo preliminar de ~140 M USD anunciado el 4-sep-2026 [S, prensa y agregadores, fechas dudosas]. Bukele negó haber transferido reservas de bitcoin a un operador privado [S]. Elecciones, reforma constitucional y reparto de la Asamblea: [VERIFICAR] (sin dato). | Actualización C139 (10-nov-2026) [S, prensa; imf.org sin leer, VERIFICAR]: acuerdo técnico de las revisiones 2.ª y 3.ª del programa EFF el 3-sep-2026 y desembolso aprobado por el Directorio del FMI el 1-oct-2026 de unos 138-140 M USD; el FMI dice que desde la 1.ª revisión no se han usado fondos públicos para comprar BTC (la acumulación sería de donaciones privadas) y concedió una exención por incumplir un criterio de desempeño ligado a Bitcoin; la Oficina Nacional del Bitcoin dice haber «comprado» y su rastreador marca ~7.764 BTC: versiones contradictorias. Previsión del FMI de PIB real 2026: 4,5 % (vía prensa).",
+      "temas_clave": "HITOS DEL PROGRAMA DEL FMI [P: imf.org, comunicados leídos 18-nov-2026]: 18-dic-2024 acuerdo técnico (SLA) de un programa de 40 meses del Servicio Ampliado (EFF) por unos 1.400 M USD (SDR 1.033,9 M; 360 % de la cuota), con paquete de más de 3.500 M USD con otros organismos (PR 24/485). 26-feb-2025 el Directorio aprueba el programa; desembolso inmediato ~113 M USD (SDR 86,16 M) (PR 25/043). 27-jun-2025 1.ª revisión y Artículo IV 2025: ~118 M USD (SDR 86,16 M); desembolsado en total SDR 172,32 M (~231 M USD) (comunicado del 27-jun-2025). 22-dic-2025 declaración del personal: avanza la 2.ª revisión, negociación de la venta de Chivo (PR 25/440). 3-sep-2026 acuerdo técnico de las revisiones 2.ª y 3.ª combinadas, ~140 M USD (PR 26/285). 1-oct-2026 el Directorio completa las revisiones 2.ª y 3.ª; desembolso SDR 101,96 M (~138 M USD); se concedieron exenciones por criterios no cumplidos, incluido el de acumulación de bitcoin; las reformas de pensiones y función pública, aplazadas, se retoman (PR 26/316). Previsión del FMI: PIB real 2026 +4,5 %, inflación media 2026 2,7 %, deuda bruta 85,0 % del PIB en 2026 y 89,2 % en 2027 (tabla del PR 26/316). BITCOIN COMO MONEDA: 19-mar-2025 (Artículo IV 2023 publicado) el FMI pedía quitarle el curso legal (PR 25/069); según el FMI las reformas legales previas al programa hicieron voluntaria la aceptación de bitcoin por el sector privado y los impuestos solo se pagan en dólares (PR 25/043, feb-2025); el programa confina las compras y operaciones públicas con bitcoin. Chivo: la mayoría y el control operativo pasaron a un operador privado, con participación minoritaria y custodia de clientes aún en manos del Estado (PR 26/285). Acumulación de bitcoin desde la 1.ª revisión: el FMI recibió documentación de que son donaciones privadas y que no se usaron recursos públicos; no se prevé más acumulación que las donaciones documentadas (PR 26/285 y 26/316). Fecha de entrada en vigor de la Ley Bitcoin (2021) y fecha exacta del decreto de reforma de 2025: [VERIFICAR] (Diario Oficial / Asamblea sin leer). CONTRADICCIÓN ABIERTA: el rastreador de la Oficina Nacional del Bitcoin habla de compras (~7.764 BTC según prensa [S]); el FMI dice que desde la 1.ª revisión son donaciones: contrastar con el rastreador oficial [VERIFICAR]. | Notas previas (10-nov-2026, prensa [S]): Bitcoin y FMI: el programa de 1.400 M USD (acuerdo de dic-2024) exigió quitar el curso legal al bitcoin; el FMI dijo en jul-2026 que el Gobierno no había comprado bitcoin desde dic-2024, aunque la Oficina del Bitcoin sigue anunciando compras; acuerdo preliminar de ~140 M USD anunciado el 4-sep-2026 [S, prensa y agregadores, fechas dudosas]. Bukele negó haber transferido reservas de bitcoin a un operador privado [S]. Elecciones, reforma constitucional y reparto de la Asamblea: [VERIFICAR] (sin dato). | Actualización C139 (10-nov-2026) [S, prensa; imf.org sin leer, VERIFICAR]: acuerdo técnico de las revisiones 2.ª y 3.ª del programa EFF el 3-sep-2026 y desembolso aprobado por el Directorio del FMI el 1-oct-2026 de unos 138-140 M USD; el FMI dice que desde la 1.ª revisión no se han usado fondos públicos para comprar BTC (la acumulación sería de donaciones privadas) y concedió una exención por incumplir un criterio de desempeño ligado a Bitcoin; la Oficina Nacional del Bitcoin dice haber «comprado» y su rastreador marca ~7.764 BTC: versiones contradictorias. Previsión del FMI de PIB real 2026: 4,5 % (vía prensa).",
       "sistemas_publicos": null,
-      "lectura": "[ESPECULACIÓN] El FMI limita la política pública de bitcoin; las compras anunciadas y lo que dice el FMI no coinciden, así que hay que contrastar con su comunicado.",
-      "fuente": "Búsqueda de prensa (theblock.co, gazettengr.com, coinmarketcap.com/academy; resúmenes) | 8-nov-2026; comunicado del FMI sin leer",
-      "nivel": "S",
-      "fecha_dato": "2026-11-08"
+      "lectura": "[ESPECULACIÓN] El FMI condiciona el desembolso a reducir el papel del Estado en bitcoin; el comunicado oficial y la Oficina del Bitcoin dan versiones distintas de las compras: la cifra a seguir es la del FMI (donaciones documentadas) hasta que haya dato oficial salvadoreño. Sin juicio político.",
+      "fuente": "https://www.imf.org/en/news/articles/2026/10/01/pr26316-el-salvador-imf-concludes-2nd-and-3rd-reviews-under-the-eff | https://www.imf.org/en/news/articles/2026/09/03/pr26285-el-salvador-imf-reaches-sla-on-combined-2nd-and-3rd-rev-under-eff-arrangement | https://www.imf.org/en/news/articles/2025/06/27/imf-concludes-2025-article-iv-consultation-and-first-review-under-the-eff-for-el-salvador | https://www.imf.org/en/news/articles/2025/02/26/pr25043-el-salvador-imf-approves-new-40-month-us1-bn-eff-arr | https://www.imf.org/en/news/articles/2024/12/18/pr-24485-el-salvador-imf-reaches-staff-level-agreement-on-an-eff-arrangement | https://www.imf.org/en/news/articles/2025/03/19/pr25069-el-salvador-imf-executive-board-concludes-2023-article-iv-consultation-with-el-salvador | https://www.tse.gob.sv/ | https://www.asamblea.gob.sv/",
+      "nivel": "P (hitos del FMI); S (resto: gobierno, apoyo, Oficina del Bitcoin)",
+      "fecha_dato": "2026-11-18"
     },
     {
       "id": "AR",
@@ -598,7 +598,7 @@
       "oposicion": "Peronismo (Fuerza Patria) como principal bloque; Provincias Unidas y fuerzas provinciales [S]",
       "proxima_eleccion": {
         "fecha": null,
-        "tipo": "Presidenciales y legislativas parciales de 2027 [inferencia del ciclo de 4 años; fecha oficial: VERIFICAR]",
+        "tipo": "Presidenciales y legislativas de 2027: la Constitución (arts. 90, 91 y 95) fija mandato de 4 años y elección «dentro de los dos meses anteriores a la conclusión del mandato»; el mandato de Milei empezó el 10-dic-2023, luego la elección cae entre el 10-oct y el 10-dic-2027 [P: argentina.gob.ar/normativa, leído 18-nov-2026; inicio del mandato de mandatos.json]. Día exacto (Código Electoral/convocatoria): [VERIFICAR]",
         "elecciones_id": null
       },
       "ultima_eleccion": {
@@ -609,7 +609,7 @@
       "temas_clave": "Agenda de reformas con un Congreso más favorable al oficialismo desde dic-2025 [S]; novedades de 2026 (gabinete, reformas aprobadas, inflación): [VERIFICAR] sin dato leído. | Actualización C139 (10-nov-2026) [S, prensa que cita al INDEC: Chequeado 13-oct-2026]: inflación de septiembre 1,9 % mensual (agosto 1,7 %), 23,6 % acumulada en 2026 y 33,4 % interanual; el FMI (29-oct-2026) insiste en acumular reservas y se discute una exención por incumplir la meta de reservas netas [VERIFICAR].",
       "sistemas_publicos": null,
       "lectura": "[ESPECULACIÓN] El nuevo reparto da más margen al Ejecutivo para sacar reformas, pero sin mayoría propia depende de aliados provinciales.",
-      "fuente": "https://www.infobae.com/politica/2025/12/03/uno-por-uno-como-quedan-los-bloques-de-la-camara-de-diputados-y-cuantos-legisladores-tendran/ | https://chequeado.com/el-explicador/radiografia-del-nuevo-congreso-los-mas-jovenes-los-recien-llegados-y-la-nueva-composicion-de-la-camara-de-diputados/ | 8-nov-2026 (resúmenes de búsqueda, no leídos a fondo)",
+      "fuente": "https://www.infobae.com/politica/2025/12/03/uno-por-uno-como-quedan-los-bloques-de-la-camara-de-diputados-y-cuantos-legisladores-tendran/ | https://chequeado.com/el-explicador/radiografia-del-nuevo-congreso-los-mas-jovenes-los-recien-llegados-y-la-nueva-composicion-de-la-camara-de-diputados/ | 8-nov-2026 (resúmenes de búsqueda, no leídos a fondo) | https://www.argentina.gob.ar/normativa/nacional/ley-24430-804/texto (Constitución, leída 18-nov-2026 [P])",
       "nivel": "S",
       "fecha_dato": "2026-11-08"
     },
@@ -619,8 +619,8 @@
       "bloque": "Latinoamérica",
       "sistema": "República presidencialista",
       "reparto_poder": "La Sala Constitucional del TSJ ordenó a Delcy Rodríguez ejercer como presidenta encargada por 90 días en enero; prórroga y plazo actual: [VERIFICAR] [S]",
-      "jefe_estado": "Delcy Rodríguez (presidenta encargada), juramentada ante la Asamblea Nacional el 5-ene-2026 [S, Al Jazeera 5-ene-2026]",
-      "jefe_gobierno": "Delcy Rodríguez (presidenta encargada) [S]",
+      "jefe_estado": "Delcy Rodríguez, titulada «Presidenta» en la web oficial de la Presidencia (presidencia.gob.ve, titulares del 13 al 18-nov-2026) y «presidenta Delcy Rodríguez» en la Asamblea Nacional (asambleanacional.gob.ve, 18-nov-2026) [P: cargo vigente]. Si sigue siendo «encargada» o ya es titular, y el plazo de la Sala Constitucional: [VERIFICAR] (las webs leídas no usan «encargada»). Juramentada ante la Asamblea el 5-ene-2026 [S, Al Jazeera]",
+      "jefe_gobierno": "Delcy Rodríguez (la presidencia reúne jefatura de Estado y de Gobierno) [P: presidencia.gob.ve, 18-nov-2026]",
       "gobierno": "Gobierno chavista de Rodríguez tras la captura de Nicolás Maduro y Cilia Flores por fuerzas de EE. UU. el 3-ene-2026; ambos, procesados en Nueva York por narcotráfico, se declararon no culpables [S, Al Jazeera]. Rodríguez ha cumplido exigencias de EE. UU. (apertura petrolera, fin de envíos de crudo a Cuba, excarcelaciones: Foro Penal contó unas 302 al principio) y anunció una amnistía [S]",
       "familia": "Chavismo [S]",
       "apoyo": "Composición actual de la Asamblea Nacional: [VERIFICAR]. Washington condiciona su permanencia; algunos congresistas republicanos no la reconocen como legítima [S]",
@@ -635,12 +635,12 @@
         "participacion": null,
         "resultado": "Presidenciales de 2024 disputadas (Maduro proclamado); datos y reconocimiento: [VERIFICAR]"
       },
-      "temas_clave": "Transición sin calendario electoral; relación con EE. UU. y apertura del petróleo a empresas extranjeras [S]; litigio con Guyana (Rodríguez viajó a La Haya en mayo-2026) [S, Al Jazeera 9-may-2026]. La fuente más reciente sobre el estado actual es de finales de septiembre: [VERIFICAR] noviembre. | Actualización C139 (10-nov-2026) [S, Bloomberg Línea; cifras muy dispares, VERIFICAR]: restableció relaciones con el FMI en abril de 2026 tras siete años; estimación del FMI (act. oct-2026) de inflación media 2026 del 467,9 % y crecimiento del 5 %.",
+      "temas_clave": "Transición sin calendario electoral; relación con EE. UU. y apertura del petróleo a empresas extranjeras [S]; litigio con Guyana (Rodríguez viajó a La Haya en mayo-2026) [S, Al Jazeera 9-may-2026]. La fuente más reciente sobre el estado actual es de finales de septiembre: [VERIFICAR] noviembre. | Actualización C139 (10-nov-2026) [S, Bloomberg Línea; cifras muy dispares, VERIFICAR]: restableció relaciones con el FMI en abril de 2026 tras siete años; estimación del FMI (act. oct-2026) de inflación media 2026 del 467,9 % y crecimiento del 5 %. | 18-nov-2026 [P: presidencia.gob.ve]: la presidenta recibió en Miraflores al «Secretario de Guerra de EE. UU.» (titular de la web oficial); 13-16-nov gira por Türkiye, Qatar y Emiratos Árabes Unidos (mesa de negocios en Abu Dabi). Asamblea Nacional [P: asambleanacional.gob.ve, 16-18-nov-2026]: aprobó en primera discusión la Ley Especial de Endeudamiento Complementaria 2026 y autorizó la gira internacional de la presidenta; consultas sobre reformas de justicia penal y de la Ley contra el Odio. Cifras del endeudamiento: [VERIFICAR]",
       "sistemas_publicos": null,
       "lectura": "[ESPECULACIÓN] El poder real depende del respaldo de EE. UU. y del aparato chavista; la fecha de elecciones es la variable a seguir.",
-      "fuente": "https://www.aljazeera.com/news/2026/1/5/delcy-rodriguez-sworn-in-as-venezuelas-president-after-maduro-abduction | https://www.aljazeera.com/news/2026/5/9/venezuelas-delcy-rodriguez-heads-to-the-hague-for-land-dispute-case | https://www.elcomercio.com/actualidad/mundo/delcy-rodriguez-supera-100-dias-poder-sin-senales-transicion-venezuela/ | 8-nov-2026",
-      "nivel": "S",
-      "fecha_dato": "2026-11-08"
+      "fuente": "https://www.aljazeera.com/news/2026/1/5/delcy-rodriguez-sworn-in-as-venezuelas-president-after-maduro-abduction | https://www.aljazeera.com/news/2026/5/9/venezuelas-delcy-rodriguez-heads-to-the-hague-for-land-dispute-case | https://www.elcomercio.com/actualidad/mundo/delcy-rodriguez-supera-100-dias-poder-sin-senales-transicion-venezuela/ | 8-nov-2026 | https://presidencia.gob.ve/ | https://www.asambleanacional.gob.ve/",
+      "nivel": "P (cargo vigente y actividad institucional); S (resto)",
+      "fecha_dato": "2026-11-18"
     },
     {
       "id": "CU",
@@ -670,6 +670,64 @@
       "fuente": "Búsqueda de prensa (cubanet.org, lanacion.com.ar, eluniversal.com.co, diariolasamericas.com, prensa-latina.cu) | 8-nov-2026 (resúmenes)",
       "nivel": "S",
       "fecha_dato": "2026-11-08"
+    },
+    {
+      "id": "MX",
+      "pais": "México",
+      "bloque": "Latinoamérica",
+      "sistema": "República presidencialista federal; Congreso bicameral: Cámara de Diputados (500: 300 de mayoría relativa y 200 de representación proporcional [P: ine.mx]) y Senado [VERIFICAR: composición sin leer, senado.gob.mx dio 403 y no renderiza]",
+      "reparto_poder": "Presidencia y Congreso con elección separada; la Cámara de Diputados se renueva en las intermedias, la presidencia no [P parcial: ine.mx]. Detalle constitucional (facultades, Suprema Corte): [VERIFICAR]",
+      "jefe_estado": "Claudia Sheinbaum Pardo (presidenta) [P: gob.mx/presidencia, comunicados del 17-nov-2026 y cabecera «Presidenta de México», leído 18-nov-2026]",
+      "jefe_gobierno": "Claudia Sheinbaum Pardo (la presidencia reúne jefatura de Estado y de Gobierno) [P parcial: gob.mx/presidencia]; fecha de toma de posesión: [VERIFICAR]",
+      "gobierno": "Gobierno federal de Sheinbaum; partido o coalición de gobierno: [VERIFICAR] (gob.mx no lo indica en lo leído). La mayor bancada de la Cámara de Diputados es la de Morena (254 de 500) [P: sitl.diputados.gob.mx, 18-nov-2026]",
+      "familia": "[VERIFICAR] (Morena es la mayor bancada; la adscripción del Gobierno no figura en la fuente leída)",
+      "apoyo": "Cámara de Diputados, LXVI Legislatura, 500 escaños, listado por grupo parlamentario en sitl.diputados.gob.mx (leído 18-nov-2026) [P]: 254 + 69 + 62 + 49 + 36 + 29 + 1 sin grupo = 500. Por los nombres de los integrantes (la extracción de texto no rotula los grupos): Morena 254, PAN 69, PVEM 62, PT 49, PRI 36, MC 29 y 1 independiente/otro (Michoacán, distrito 9). La asignación de cada cifra a su partido es mía por los nombres [VERIFICAR contra la etiqueta de la web]. Morena sola queda en 254 de 500 (mayoría absoluta = 251). Senado: [VERIFICAR]",
+      "oposicion": "Por tamaño de bancada: PAN (69), PRI (36) y MC (29) [P: mismo listado; etiquetas inferidas]. Si PVEM y PT son socios o no del Gobierno: [VERIFICAR]",
+      "proxima_eleccion": {
+        "fecha": "2027-06-06",
+        "tipo": "Elecciones federales intermedias: 300 diputaciones de mayoría relativa y 200 de representación proporcional (Cámara de Diputados); concurrentes con elecciones locales en 32 entidades. Cómputos distritales 9-jun y plurinominal 13-jun-2027. Calendario «sujeto a cambio» según el INE [P: ine.mx, leído 18-nov-2026 en Chrome]",
+        "elecciones_id": "MX"
+      },
+      "ultima_eleccion": {
+        "fecha": null,
+        "participacion": null,
+        "resultado": "Elecciones generales de 2024: [VERIFICAR] (INE no leído para resultados; solo la composición actual de la Cámara)"
+      },
+      "temas_clave": "Calendario electoral: proceso federal 2026-2027 iniciado el 10-sep-2026 [P, ine.mx]. Regulación cripto básica [P: texto vigente de la Ley para Regular las Instituciones de Tecnología Financiera, diputados.gob.mx, última reforma DOF 14-11-2025]: art. 30 define «activo virtual» como representación de valor usada como medio de pago, excluye la moneda de curso legal y divisas; las instituciones de tecnología financiera solo pueden operar con los activos virtuales que determine el Banco de México y con su autorización previa; art. 31 exige que puedan entregar al cliente los activos o su valor en moneda nacional. Ley original publicada en el DOF el 9-mar-2018. Tratamiento fiscal, AML y reglas del Banco de México (circulares): [VERIFICAR]",
+      "sistemas_publicos": null,
+      "lectura": "[ESPECULACIÓN] Las intermedias de jun-2027 solo renuevan la Cámara baja; el peso de Morena en ella (254 de 500) es el dato a seguir, no una encuesta (sin dato leído). Sin juicio de valor.",
+      "fuente": "https://sitl.diputados.gob.mx/LXVI_leg/listado_diputados_gpnp.php?tipot=TOTAL | https://www.ine.mx/voto-y-elecciones/elecciones-2027/ | https://www.gob.mx/presidencia/es/archivo/prensa | https://www.diputados.gob.mx/LeyesBiblio/pdf/LRITF.pdf",
+      "nivel": "P (Cámara, presidenta, ley fintech); S/V el resto",
+      "fecha_dato": "2026-11-18"
+    },
+    {
+      "id": "CA",
+      "pais": "Canadá",
+      "bloque": "Norteamérica",
+      "sistema": "Monarquía constitucional parlamentaria federal; Parlamento con Cámara de los Comunes (343 circunscripciones [P: elections.ca]) y Senado [VERIFICAR: sin leer]. La gobernadora general disuelve el Parlamento y la Ley Electoral fija fecha de elección [P: laws-lois.justice.gc.ca y elections.ca]",
+      "reparto_poder": "El Parlamento hace las leyes y el Gobierno responde ante la Cámara de los Comunes; la gobernadora general disuelve el Parlamento por consejo del primer ministro [P parcial: elections.ca, «The Electoral Cycle»]. Reparto federal-provincial: [VERIFICAR]",
+      "jefe_estado": "Monarca representado por la gobernadora general [VERIFICAR: nombre y monarca sin leer en fuente oficial]",
+      "jefe_gobierno": "Mark Carney, primer ministro [P: pm.gc.ca/en/cabinet, leído 18-nov-2026; la página no da partido ni fecha]. Elegido diputado por Nepean en 2025 [P: elections.ca, resultados oficiales]",
+      "gobierno": "Gobierno del Partido Liberal de Canadá [P parcial: Carney figura como Nepean, Liberal, en elections.ca; pm.gc.ca no indica partido]",
+      "familia": "liberal (centro) [S: etiqueta mía]",
+      "apoyo": "Cámara de los Comunes a 18-nov-2026 [P: ourcommons.ca/members/en/party-standings, página sin fecha visible, leída 18-nov-2026]: Liberal 173, Conservador 137, Bloc Québécois 21, NDP 5, Verde 1, 6 vacantes (343). Resultado oficial de las urnas del 28-abr-2025 [P: elections.ca, Official Voting Results]: Liberal 169, Conservador 144, Bloc 22, NDP 7, Verde 1. El cambio (+4 liberales, -7 conservadores, -1 Bloc, -2 NDP y 6 vacantes) no está explicado en lo leído: [VERIFICAR] (cambios de grupo, dimisiones, elecciones parciales). Mayoría de la Cámara = 172 de 343: los liberales con 173 la superan, pero el estado de mayoría o minoría tras las vacantes: [VERIFICAR]",
+      "oposicion": "Partido Conservador (137 escaños, segunda fuerza), Bloc Québécois (21), NDP (5) y Verde (1) [P: ourcommons.ca]. Líder de la oposición: [VERIFICAR]",
+      "proxima_eleccion": {
+        "fecha": "2029-10-15",
+        "tipo": "Generales de fecha fija: tercer lunes de octubre del cuarto año civil tras la elección anterior [P: elections.ca, «The Electoral Cycle», leído 18-nov-2026; y art. 56.1 de la Ley Electoral]. La última fue el 28-abr-2025 [P: elections.ca], luego la regla da el 15-oct-2029 (cálculo mío con regla y fecha leídas; elections.ca no escribe la fecha). La ley no impide convocar antes y elections.ca avisa de que con un Gobierno en minoría puede convocarse en cualquier momento",
+        "elecciones_id": "CA"
+      },
+      "ultima_eleccion": {
+        "fecha": "2025-04-28",
+        "participacion": "69,0 % (19.811.520 papeletas de 28.731.275 electores inscritos) [P: elections.ca, tabla oficial 11]",
+        "resultado": "Escaños [P: elections.ca, tabla 7]: Liberal 169, Conservador 144, Bloc Québécois 22, NDP 7, Verde 1 (343). Voto válido [P: tabla 9]: Liberal 43,8 %, Conservador 41,3 %, Bloc 6,3 %, NDP 6,3 %, Verde 1,2 %, PPC 0,7 %"
+      },
+      "temas_clave": "Regulación cripto básica [P: FINTRAC, fintrac-canafe.canada.ca/msb-esm, leído 18-nov-2026]: quien cambia fondos por moneda virtual o al revés, transfiere o recibe moneda virtual por cuenta de clientes es un negocio de servicios monetarios (MSB), debe registrarse en FINTRAC antes de operar, tener programa de cumplimiento, verificar identidad, reportar operaciones sospechosas y grandes (recepciones de 10.000 CAD o más) y aplicar la «regla de viaje». Valores y plataformas: los reguladores provinciales (CSA) tienen su guía [securities-administrators.ca; reglas de registro por plataforma sin leer: VERIFICAR]. Stablecoins y ley federal específica: [VERIFICAR]",
+      "sistemas_publicos": null,
+      "lectura": "[ESPECULACIÓN] La fecha fija (15-oct-2029) es un tope: con la Cámara tan ajustada, una convocatoria anticipada es posible; no hay dato leído que la anuncie.",
+      "fuente": "https://www.ourcommons.ca/members/en/party-standings | https://www.elections.ca/res/rep/off/ovrGE45/62/table7E.html | https://www.elections.ca/content.aspx?section=ele&dir=cycle&document=index&lang=e | https://www.pm.gc.ca/en/cabinet | https://fintrac-canafe.canada.ca/msb-esm/msb-eng",
+      "nivel": "P (escaños, resultado, regla de fecha, FINTRAC); S/V el resto",
+      "fecha_dato": "2026-11-18"
     }
   ]
 }

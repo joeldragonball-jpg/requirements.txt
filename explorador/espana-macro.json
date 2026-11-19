@@ -1,7 +1,7 @@
 {
  "id": "espana-macro",
  "titulo": "España: pack macro (IPC, EPA, afiliación, salarios, SMI, PIB)",
- "leido": "2026-11-17",
+ "leido": "2026-11-18",
  "nivel": "P",
  "unidad": "Cada registro lleva su propia unidad: % = porcentaje, pp = puntos porcentuales, miles de personas, personas, € = euros. Cifras como número puro.",
  "nota": "Leído en la API oficial del INE (servicios.ine.es/wstempus, tablas y códigos de serie indicados), la nota de la Seguridad Social del 4-nov-2026 y el BOE-A-2026-3815. Lo que no se pudo leer en fuente oficial va como null y [VERIFICAR]. Es información, no recomendación.",
@@ -219,7 +219,162 @@
     "serie_ine": "IPC290802",
     "nivel": "P"
    }
-  ]
+  ],
+  "grupos_especiales": {
+   "periodo": "oct-2026",
+   "publicado": "2026-11-13",
+   "tabla_ine": "76130 (series IPC2925xx y IPC293490)",
+   "unidad": "% variación anual sobre el mismo mes del año anterior, NSA",
+   "nivel": "P",
+   "leido": "2026-11-18",
+   "valores": [
+    {
+     "nombre": "IPC subyacente (general sin alimentos no elaborados ni productos energéticos), variación anual",
+     "valor": 3.1,
+     "unidad": "%",
+     "periodo": "oct-2026",
+     "anterior": {
+      "periodo": "sep-2026",
+      "valor": 3.1
+     },
+     "serie_ine": "IPC292510",
+     "nivel": "P"
+    },
+    {
+     "nombre": "IPC subyacente a impuestos constantes, variación anual",
+     "valor": 3.1,
+     "unidad": "%",
+     "periodo": "oct-2026",
+     "anterior": {
+      "periodo": "sep-2026",
+      "valor": 3.1
+     },
+     "serie_ine": "IPC293490",
+     "nivel": "P"
+    },
+    {
+     "nombre": "Productos energéticos, variación anual",
+     "valor": 20.8,
+     "unidad": "%",
+     "periodo": "oct-2026",
+     "anterior": {
+      "periodo": "sep-2026",
+      "valor": 21.7
+     },
+     "serie_ine": "IPC292458",
+     "nivel": "P"
+    },
+    {
+     "nombre": "Carburantes y combustibles, variación anual",
+     "valor": 26.6,
+     "unidad": "%",
+     "periodo": "oct-2026",
+     "anterior": {
+      "periodo": "sep-2026",
+      "valor": 27.7
+     },
+     "serie_ine": "IPC292454",
+     "nivel": "P"
+    },
+    {
+     "nombre": "Alimentos sin elaboración, variación anual",
+     "valor": 5.5,
+     "unidad": "%",
+     "periodo": "oct-2026",
+     "anterior": {
+      "periodo": "sep-2026",
+      "valor": 5.8
+     },
+     "serie_ine": "IPC292442",
+     "nivel": "P"
+    },
+    {
+     "nombre": "Alimentos elaborados, variación anual",
+     "valor": 0.7,
+     "unidad": "%",
+     "periodo": "oct-2026",
+     "anterior": {
+      "periodo": "sep-2026",
+      "valor": 1.1
+     },
+     "serie_ine": "IPC292526",
+     "nivel": "P"
+    },
+    {
+     "nombre": "Servicios, variación anual",
+     "valor": 4.1,
+     "unidad": "%",
+     "periodo": "oct-2026",
+     "anterior": {
+      "periodo": "sep-2026",
+      "valor": 3.9
+     },
+     "serie_ine": "IPC292494",
+     "nivel": "P"
+    },
+    {
+     "nombre": "Bienes industriales, variación anual",
+     "valor": 7.9,
+     "unidad": "%",
+     "periodo": "oct-2026",
+     "anterior": {
+      "periodo": "sep-2026",
+      "valor": 8.2
+     },
+     "serie_ine": "IPC292446",
+     "nivel": "P"
+    },
+    {
+     "nombre": "Bienes industriales sin productos energéticos, variación anual",
+     "valor": 2.1,
+     "unidad": "%",
+     "periodo": "oct-2026",
+     "anterior": {
+      "periodo": "sep-2026",
+      "valor": 2.0
+     },
+     "serie_ine": "IPC292538",
+     "nivel": "P"
+    },
+    {
+     "nombre": "General sin productos energéticos, variación anual",
+     "valor": 3.3,
+     "unidad": "%",
+     "periodo": "oct-2026",
+     "anterior": {
+      "periodo": "sep-2026",
+      "valor": 3.3
+     },
+     "serie_ine": "IPC292506",
+     "nivel": "P"
+    },
+    {
+     "nombre": "Aceite de oliva, variación anual",
+     "valor": -1.6,
+     "unidad": "%",
+     "periodo": "oct-2026",
+     "anterior": {
+      "periodo": "sep-2026",
+      "valor": 2.6
+     },
+     "serie_ine": "IPC292562",
+     "nivel": "P"
+    },
+    {
+     "nombre": "Hoteles, variación anual",
+     "valor": 11.7,
+     "unidad": "%",
+     "periodo": "oct-2026",
+     "anterior": {
+      "periodo": "sep-2026",
+      "valor": 11.9
+     },
+     "serie_ine": "IPC292566",
+     "nivel": "P"
+    }
+   ],
+   "nota": "Leído en la API del INE el 18-nov-2026. Respuesta a la pendiente «subyacente»: la serie IPC292510 sí existe en la tabla 76130 (no en 76133-76135). Subyacente 3,1 % frente a general 4,9 %: la diferencia (1,8 pp) coincide con el peso de energía y carburantes (HECHO de las cifras; la atribución causal es [ESPECULACIÓN]). Aviso de nombres del INE: «Bienes industriales» (7,9 %) incluye energía; «sin productos energéticos» es 2,1 %."
+  }
  },
  "epa": {
   "periodo": "3T-2026",
@@ -277,6 +432,111 @@
      "valor": 2495.3
     },
     "serie_ine": "EPA387800",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Tasa de paro, hombres",
+    "valor": 9.2,
+    "unidad": "%",
+    "anterior": {
+     "periodo": "2T-2026",
+     "valor": 8.84
+    },
+    "hace_un_anio": {
+     "periodo": "3T-2025",
+     "valor": 8.97
+    },
+    "serie_ine": "EPA423488",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Tasa de paro, mujeres",
+    "valor": 11.28,
+    "unidad": "%",
+    "anterior": {
+     "periodo": "2T-2026",
+     "valor": 11.02
+    },
+    "hace_un_anio": {
+     "periodo": "3T-2025",
+     "valor": 12.11
+    },
+    "serie_ine": "EPA423501",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Tasa de paro, 25 a 54 años (ambos sexos)",
+    "valor": 8.91,
+    "unidad": "%",
+    "anterior": {
+     "periodo": "2T-2026",
+     "valor": 8.62
+    },
+    "hace_un_anio": {
+     "periodo": "3T-2025",
+     "valor": 9.04
+    },
+    "serie_ine": "EPA452438",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Tasa de paro, 55 y más años (ambos sexos)",
+    "valor": 9.34,
+    "unidad": "%",
+    "anterior": {
+     "periodo": "2T-2026",
+     "valor": 9.04
+    },
+    "hace_un_anio": {
+     "periodo": "3T-2025",
+     "valor": 9.56
+    },
+    "serie_ine": "EPA452439",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Tasa de paro, 16 a 19 años (ambos sexos)",
+    "valor": 34.71,
+    "unidad": "%",
+    "anterior": {
+     "periodo": "2T-2026",
+     "valor": 41.12
+    },
+    "hace_un_anio": {
+     "periodo": "3T-2025",
+     "valor": null
+    },
+    "serie_ine": "EPA423476",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Tasa de paro, 20 a 24 años (ambos sexos)",
+    "valor": 20.77,
+    "unidad": "%",
+    "anterior": {
+     "periodo": "2T-2026",
+     "valor": 19.88
+    },
+    "hace_un_anio": {
+     "periodo": "3T-2025",
+     "valor": null
+    },
+    "serie_ine": "EPA423477",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Asalariados",
+    "valor": 19675.4,
+    "unidad": "miles de personas",
+    "anterior": {
+     "periodo": "2T-2026",
+     "valor": 19585.4
+    },
+    "hace_un_anio": {
+     "periodo": "3T-2025",
+     "valor": 19107.8
+    },
+    "serie_ine": "EPA422775",
     "nivel": "P"
    }
   ],
@@ -396,7 +656,67 @@
     "serie_ine": "EPA452584"
    }
   ],
-  "nota": "Tasas de paro de ambos sexos, total de cada CCAA, 3T-2026. La EPA (encuesta a hogares, ocupados en miles) y la afiliación (registro administrativo) miden cosas distintas: no se restan entre sí."
+  "nota": "Tasas de paro de ambos sexos, total de cada CCAA, 3T-2026. La EPA (encuesta a hogares, ocupados en miles) y la afiliación (registro administrativo) miden cosas distintas: no se restan entre sí.",
+  "sectores_ocupados_pct": {
+   "periodo": "3T-2026",
+   "unidad": "% de los ocupados (distribución, ambos sexos)",
+   "tabla_ine": "65125",
+   "nivel": "P",
+   "leido": "2026-11-18",
+   "valores": [
+    {
+     "nombre": "Agricultura",
+     "valor": 3.2,
+     "anterior_2T": 3.5,
+     "hace_un_anio": 3.3,
+     "serie_ine": "EPA399193"
+    },
+    {
+     "nombre": "Industria",
+     "valor": 13.3,
+     "anterior_2T": 13.6,
+     "hace_un_anio": 13.7,
+     "serie_ine": "EPA399194"
+    },
+    {
+     "nombre": "Construcción",
+     "valor": 6.9,
+     "anterior_2T": 7.2,
+     "hace_un_anio": 7.0,
+     "serie_ine": "EPA399195"
+    },
+    {
+     "nombre": "Servicios",
+     "valor": 76.5,
+     "anterior_2T": 75.8,
+     "hace_un_anio": 76.0,
+     "serie_ine": "EPA399196"
+    }
+   ]
+  },
+  "temporalidad": {
+   "periodo": "3T-2026",
+   "nivel": "P",
+   "leido": "2026-11-18",
+   "tabla_ine": "65200 (temporales) y 65215 (asalariados)",
+   "unidad": "miles de personas y %",
+   "asalariados_temporales": {
+    "valor": 3024.1,
+    "unidad": "miles de personas",
+    "anterior_2T": 2956.1,
+    "hace_un_anio_3T2025": 2975.7,
+    "serie_ine": "EPA417633"
+   },
+   "tasa_temporalidad_calculada": {
+    "valor": 15.37,
+    "unidad": "%",
+    "anterior_2T": 15.09,
+    "hace_un_anio_3T2025": 15.57,
+    "nivel": "P, cálculo propio",
+    "nota": "Temporales / asalariados (EPA422775: 19.675,4; 19.585,4; 19.107,8 miles). La tasa de temporalidad que publica el INE directamente no se leyó [VERIFICAR]; no es comparable con la de afiliación (12,1 % en octubre: Seguridad Social, registro, otra definición)."
+   }
+  },
+  "nota_4a": "18-nov (4.ª pasada): añadidas tasas por sexo y edad, asalariados, sectores y temporalidad. Mismas tablas INE, 3T-2026 (publicado 27-oct-2026, NSA). hace_un_anio = None donde no se leyó el 3T-2025."
  },
  "afiliacion": {
   "periodo": "oct-2026",
@@ -426,6 +746,62 @@
     "valor": 22571105,
     "unidad": "personas",
     "nota": "+90.309 en el mes; 69 meses seguidos de aumentos (según la Seguridad Social)."
+   },
+   {
+    "nombre": "Afiliados extranjeros, media",
+    "valor": 3699878,
+    "unidad": "personas",
+    "nota": "16,4 % del total; +63.899 sobre septiembre y +598.378 sobre octubre-2025.",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Afiliados extranjeros en alta ligados a la regularización extraordinaria (fin de octubre)",
+    "valor": 490586,
+    "unidad": "personas",
+    "nota": "Dato de la propia nota oficial. 557.410 han estado al menos un día en alta desde abril. 75,2 % en Régimen General y 5,9 % en autónomos. Colombia 27,6 %, Venezuela 15,7 %.",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Afiliados al Régimen General, variación anual",
+    "valor": 3.8,
+    "unidad": "%",
+    "nota": "+704.996 personas interanual. Construcción +8,4 %, agricultura +6,8 %, hostelería +5,4 %, artísticas y deportivas +5,2 %.",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Autónomos (RETA), afiliados",
+    "valor": 3501598,
+    "unidad": "personas",
+    "nota": "+79.163 (+2,3 %) interanual; primera vez por encima de 3,5 millones en la serie.",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Afiliadas (mujeres)",
+    "valor": 10712135,
+    "unidad": "personas",
+    "nota": "47,4 % del total; +367.537 interanual (+3,6 %).",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Afiliados (hombres)",
+    "valor": 11912029,
+    "unidad": "personas",
+    "nota": "+417.036 interanual. Mujeres + hombres suman 22.624.164, uno menos que el total oficial (redondeo de la fuente).",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Peso de contratos temporales en la afiliación",
+    "valor": 12.1,
+    "unidad": "%",
+    "nota": "Menores de 30 años: 19,9 %. En octubre-2021: 28,3 % y 51,7 %.",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Afiliados por pensionista (relación cotizante/pensionista)",
+    "valor": 2.51,
+    "unidad": "ratio",
+    "nota": "Según la nota oficial, el máximo desde 2011.",
+    "nivel": "P"
    }
   ],
   "nota": "[VERIFICAR] La atribución de parte del salto a la regularización extraordinaria viene de analistas, no de esta nota oficial; no se repite aquí como hecho."
@@ -652,6 +1028,11 @@
      "valor": 2.441
     }
    ]
+  },
+  "euribor_emmi_directo": {
+   "valor": null,
+   "nivel": "VERIFICAR",
+   "nota": "18-nov-2026: la web de EMMI (administrador) solo ofrece datos con 24 h de retraso y previo registro de cuenta; no se creó ninguna. La serie diaria del BCE (FM D.U2...EURIBOR1YD_) no devolvió datos (404). Sigue valiendo euribor-rates.eu [S] y la media mensual del BdE [P]."
   }
  },
  "pib": {
@@ -697,9 +1078,78 @@
   "Balanza de pagos (Banco de España): sin leer.",
   "Euríbor diario: sin leer (mensual releído 17-nov en BdE).",
   "Salario medio de la AEAT: sin leer (se añadió el de la EAES del INE).",
-  "Subyacente a impuestos corrientes (nota INE 13-nov): no hallada en las tablas 76133-76135.",
   "14 pagas del SMI: cálculo propio (1.221 × 14 = 17.094 €); el BOE solo dice 1.221 €/mes y 17.094 €/año como mínimo anual.",
   "Que scripts/indicadores.py lea estos bloques (patrón C201): no hecho.",
-  "18-nov: Euríbor diario leído en euribor-rates.eu (nivel S); el BdE solo da media mensual. EMMI directo (emmi-benchmarks.eu) no consultado [VERIFICAR]. ¤STR diario ya en [P] (BCE)."
- ]
+  "18-nov: Euríbor diario leído en euribor-rates.eu (nivel S); el BdE solo da media mensual. EMMI directo (emmi-benchmarks.eu) no consultado [VERIFICAR]. ¤STR diario ya en [P] (BCE).",
+  "Subyacente: RESUELTO el 18-nov (IPC292510 = 3,1 % en tabla 76130, bloque ipc.grupos_especiales).",
+  "Salario medio AEAT y Euríbor EMMI directo: siguen sin leer (EMMI exige registro).",
+  "Próximas publicaciones: IPC adelantado de noviembre (fin de mes), afiliación y paro de noviembre (2-3 dic) [VERIFICAR calendario]."
+ ],
+ "paro_registrado": {
+  "periodo": "oct-2026",
+  "publicado": "2026-11-04",
+  "nivel": "P",
+  "leido": "2026-11-18",
+  "unidad": "cada registro lleva la suya",
+  "fuente": "https://www.sepe.es/noticia/SEPE/2026/Noviembre/paro-registrado-aumento-43128-personas-octubre-situa-2422633",
+  "valores": [
+   {
+    "nombre": "Paro registrado (fin de mes)",
+    "valor": 2422633,
+    "unidad": "personas",
+    "nota": "+43.128 sobre septiembre (+1,81 %); −21.133 (−0,86 %) interanual. Según el SEPE, la cifra más baja en un octubre desde 2007. Septiembre: 2.379.505.",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Paro registrado, mujeres",
+    "valor": 1451105,
+    "unidad": "personas",
+    "nota": "+22.700 en el mes (+1,59 %); −29.360 (−1,98 %) interanual.",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Paro registrado, hombres",
+    "valor": 971528,
+    "unidad": "personas",
+    "nota": "+20.428 en el mes (+2,15 %); +8.227 (+0,85 %) interanual.",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Paro registrado, menores de 25 años",
+    "valor": 204973,
+    "unidad": "personas",
+    "nota": "+15.832 en el mes (+8,37 %).",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Contratos registrados en octubre",
+    "valor": 1491069,
+    "unidad": "contratos",
+    "nota": "645.173 indefinidos (43,27 %).",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Beneficiarios de prestaciones (septiembre)",
+    "valor": 1763649,
+    "unidad": "personas",
+    "nota": "Cobertura 80,82 %. Inversión mensual media por beneficiario 1.233,9 €/mes (sin subsidio agrario de Andalucía y Extremadura); +13,6 € interanual.",
+    "nivel": "P"
+   },
+   {
+    "nombre": "Inversión total en prestaciones por desempleo (septiembre 2026)",
+    "valor": 2134.8,
+    "unidad": "M€",
+    "nota": "Cifra de la nota oficial del SEPE; rellena el hueco del gasto mensual.",
+    "nivel": "P"
+   }
+  ],
+  "sectores_variacion_mensual_personas": {
+   "Servicios": 26853,
+   "Industria": 1911,
+   "Agricultura": 1547,
+   "Construcción": 102,
+   "Sin empleo anterior": 12715
+  },
+  "nota": "Sube en las 17 CCAA (Cataluña +8.174, C. Valenciana +6.716, Castilla y León +4.404). Que el Ministerio de Trabajo relacione parte del aumento con la regularización extraordinaria viene de prensa; su nota no se leyó [VERIFICAR]. Paro registrado (oficinas SEPE) no es lo mismo que parados EPA (2.591,2 miles en 3T)."
+ }
 }

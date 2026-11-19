@@ -241,6 +241,22 @@
           "fecha": "2026-11-17",
           "nivel": "S",
           "fuente": "CoinGecko (API simple/price; agregador), lectura del 17-nov-2026"
+        },
+        {
+          "dato": "Mecanismo de consenso",
+          "valor": "XRP Ledger Consensus Protocol: sin prueba de trabajo",
+          "unidad": "",
+          "fecha": "2026-11-18",
+          "nivel": "P",
+          "fuente": "xrpl.org/docs/concepts/consensus-protocol (leído 18-nov-2026): el consenso sigue mientras falle menos del 20 % de los validadores de confianza; validar una transacción inválida exigiría la colusión de más del 80 %. Intervalo de cierre de ledger no indicado en esa página. Lector de páginas con resumen automático: cifra pendiente de cotejo visual [VERIFICAR]."
+        },
+        {
+          "dato": "Comisión de los ETF spot de XRP en EE. UU. (Canary XRPC, Bitwise, Grayscale GXRP, 21Shares, Franklin)",
+          "valor": "null",
+          "unidad": "",
+          "fecha": "2026-11-18",
+          "nivel": "P",
+          "fuente": "Intentado en las webs de Canary (error), Bitwise (404) y Grayscale (429): no leído. Pendiente en prospectos de EDGAR [VERIFICAR]"
         }
       ],
       "alcista": [
@@ -266,7 +282,8 @@
         "Cifra oficial de acciones y XRP en custodia de cada ETF (10-Q en EDGAR).",
         "Estado actual de XLS-66/XLS-65 en xrpl.org (la captura es del 16-sep-2026).",
         "Origen de la cifra de 2.178 M USD de R27: sin localizar.",
-        "13F del 3T-2026 (plazo 14-nov-2026)."
+        "13F del 3T-2026 (plazo 14-nov-2026).",
+        "Comisión y emisor de cada ETF spot de XRP: leer prospecto (424B) en EDGAR; las webs de emisores fallaron el 18-nov-2026."
       ],
       "especulacion": [
         "Cualquier previsión de precio o de flujos futuros de los ETF es [ESPECULACIÓN] y no se da aquí."
@@ -390,7 +407,7 @@
         {
           "dato": "Red Stellar: versión de protocolo en vigor",
           "valor": "29",
-          "unidad": "",
+          "unidad": "n.º de versión",
           "fecha": "2026-11-13",
           "nivel": "P",
           "fuente": "Horizon, ledger 65456342 (13-nov-2026): protocol_version 29, en vigor desde el 1-oct-2026. El voto del Protocolo 30 en la red principal está anunciado para el 23-nov-2026 (blog de la SDF, 20-oct-2026)."
@@ -410,6 +427,46 @@
           "fecha": "2026-11-17",
           "nivel": "S",
           "fuente": "CoinGecko (API simple/price; agregador), lectura del 17-nov-2026"
+        },
+        {
+          "dato": "Suministro total de XLM",
+          "valor": "50.001.786.839,91",
+          "unidad": "XLM",
+          "fecha": "2026-07-21",
+          "nivel": "P",
+          "fuente": "developers.stellar.org (docs, Lumens), leído 18-nov-2026: «Total Supply … 50,001,786,839.9124767» a 21-jul-2026. Lector de páginas con resumen automático: cifra pendiente de cotejo visual [VERIFICAR]."
+        },
+        {
+          "dato": "Suministro: origen e inflación",
+          "valor": "100.000 M XLM creados al lanzamiento; inflación de red terminada por voto de validadores el 28-oct-2019; 4-nov-2019: SDF envió 55.442.095.285,74 XLM a una dirección única, retirados del suministro",
+          "unidad": "",
+          "fecha": "2019-11-04",
+          "nivel": "P",
+          "fuente": "developers.stellar.org (docs, Lumens), leído 18-nov-2026. La página no fija un máximo explícito; nada se mina. Lector de páginas con resumen automático: cifra pendiente de cotejo visual [VERIFICAR]."
+        },
+        {
+          "dato": "Mecanismo de consenso",
+          "valor": "Stellar Consensus Protocol (acuerdo federado, sin minería ni bloqueo de tokens)",
+          "unidad": "",
+          "fecha": "2026-11-18",
+          "nivel": "S",
+          "fuente": "La página de docs leída no nombra el protocolo; el nombre SCP procede del informe C42 (11-nov-2026) [VERIFICAR en la documentación del protocolo]"
+        },
+        {
+          "dato": "Hitos regulatorios de XLM (SEC/EE. UU.)",
+          "valor": "null",
+          "unidad": "",
+          "fecha": "2026-11-18",
+          "nivel": "P",
+          "fuente": "No se ha leído ningún documento de la SEC específico de XLM; solo existe el fideicomiso de Grayscale (colocación privada). Estado en EDGAR [VERIFICAR]"
+        },
+        {
+          "dato": "ETF spot de XLM en EE. UU.: emisor y comisión",
+          "valor": "Ninguno confirmado; Grayscale Stellar Lumens Trust no es ETF",
+          "unidad": "",
+          "fecha": "2026-11-18",
+          "nivel": "S",
+          "fuente": "Informe T19 (23-oct-2026); comisión del trust: null [VERIFICAR en su 10-Q]"
         }
       ],
       "alcista": [
@@ -574,6 +631,54 @@
           "fecha": "2026-11-17",
           "nivel": "S",
           "fuente": "mempool.space, API difficulty-adjustment (estimación, no garantizada)"
+        },
+        {
+          "dato": "Suministro máximo",
+          "valor": "21.000.000",
+          "unidad": "BTC",
+          "fecha": "2026-11-18",
+          "nivel": "P",
+          "fuente": "bitcoin.org/en/faq, leído 18-nov-2026: «only 21 million bitcoins will ever be created»; el ritmo de emisión se reduce a la mitad automáticamente (el intervalo no consta en esa página). Lector de páginas con resumen automático: cifra pendiente de cotejo visual [VERIFICAR]."
+        },
+        {
+          "dato": "Mecanismo",
+          "valor": "Prueba de trabajo; dificultad ajustada para ≈ 1 bloque cada 10 minutos; los mineros cobran comisiones y bitcoins nuevos",
+          "unidad": "",
+          "fecha": "2026-11-18",
+          "nivel": "P",
+          "fuente": "bitcoin.org/en/faq, leído 18-nov-2026 Lector de páginas con resumen automático: cifra pendiente de cotejo visual [VERIFICAR]."
+        },
+        {
+          "dato": "Hito: la SEC aprueba la cotización de varios ETP de bitcoin al contado",
+          "valor": "10-ene-2024",
+          "unidad": "",
+          "fecha": "2024-01-10",
+          "nivel": "P",
+          "fuente": "SEC, declaración del presidente Gensler (sec.gov): aprobó la cotización y negociación, pero «no aprobó ni respaldó bitcoin» y pidió cautela sobre sus riesgos. Lector de páginas con resumen automático: cifra pendiente de cotejo visual [VERIFICAR]."
+        },
+        {
+          "dato": "Hito: estándares genéricos de cotización para fondos de materias primas/activos digitales",
+          "valor": "17-sep-2025",
+          "unidad": "",
+          "fecha": "2025-09-17",
+          "nivel": "P",
+          "fuente": "SEC, nota de prensa 2025-121 (sec.gov), leída 18-nov-2026: las bolsas pueden listar acciones de fideicomisos que cumplan criterios sin presentar una norma nueva por producto. Lector de páginas con resumen automático: cifra pendiente de cotejo visual [VERIFICAR]."
+        },
+        {
+          "dato": "ETF spot de BTC: iShares Bitcoin Trust (BlackRock, IBIT)",
+          "valor": "comisión 0,25 %",
+          "unidad": "",
+          "fecha": "2026-11-16",
+          "nivel": "P",
+          "fuente": "BlackRock iShares, ficha oficial (ya recogida arriba); resto de la lista de fondos spot en EE. UU.: null"
+        },
+        {
+          "dato": "ETF spot de BTC: Fidelity Wise Origin Bitcoin Fund (FBTC)",
+          "valor": "comisión 0,25 % (25 puntos básicos, desde el 1-ago-2024)",
+          "unidad": "",
+          "fecha": "2024-08-01",
+          "nivel": "P",
+          "fuente": "fidelity.com/etfs/fbtc, leído 18-nov-2026; activos netos no consta en la página [VERIFICAR] Lector de páginas con resumen automático: cifra pendiente de cotejo visual [VERIFICAR]."
         }
       ],
       "alcista": [
@@ -588,12 +693,14 @@
       ],
       "sesgos": [
         "Farside, SoSoValue y CoinGecko son agregadores [S]; los emisores de ETF publican cifras propias.",
-        "La serie de Yahoo arranca el 6-oct-2025 y su valor inicial no es necesariamente el máximo absoluto (el informe del 6-oct citaba 126.080 USD como máximo de oct-2025)."
+        "La serie de Yahoo arranca el 6-oct-2025 y su valor inicial no es necesariamente el máximo absoluto (el informe del 6-oct citaba 126.080 USD como máximo de oct-2025).",
+        "bitcoin.org es la web divulgativa del proyecto (no hay emisor central): describe el diseño, no valora riesgos; las cifras de ETF vienen de emisores, que promocionan su producto."
       ],
       "verificar": [
         "Máximo histórico exacto y fecha en una fuente primaria.",
         "Activos netos del conjunto de ETF de BTC en EE. UU. a 17-nov (solo se ha leído IBIT en la web del emisor).",
-        "Hash rate y dificultad: contrastar con una segunda fuente."
+        "Hash rate y dificultad: contrastar con una segunda fuente.",
+        "Lista completa de ETF spot de BTC con emisor y comisión (solo IBIT y FBTC leídos; GBTC, ARKB, BITB, etc. pendientes en sus webs/prospectos)."
       ],
       "especulacion": [
         "Ciclos, «halving» y previsiones de precio: [ESPECULACIÓN]; no se desarrollan aquí."
@@ -737,6 +844,54 @@
           "fecha": "2026-09-30",
           "nivel": "P",
           "fuente": "World Gold Council, Gold Demand Trends Q3 2026 (gold.org, publicado 3-nov-2026; leído en Chrome 18-nov)"
+        },
+        {
+          "dato": "Stock de oro sobre el suelo",
+          "valor": "≈ 224.200 (≈ 30,0 billones USD)",
+          "unidad": "toneladas",
+          "fecha": "2026-09-30",
+          "nivel": "P",
+          "fuente": "World Gold Council, gold.org/goldhub/data/how-much-gold (página del 3-nov-2026, leída 18-nov-2026): joyería ≈ 98.700 t (44 %), barras y monedas ≈ 48.100 t (21 %), bancos centrales ≈ 39.300 t (18 %), ETF ≈ 4.300 t (2 %), OTC ≈ 10.000 t (4 %), otros ≈ 23.800 t (11 %). Cifras redondeadas. Lector de páginas con resumen automático: cifra pendiente de cotejo visual [VERIFICAR]."
+        },
+        {
+          "dato": "Reservas bajo tierra",
+          "valor": "≈ 61.000 (recursos ≈ 114.400); el USGS estima las reservas en ≈ 66.000",
+          "unidad": "toneladas",
+          "fecha": "2026-09-30",
+          "nivel": "P",
+          "fuente": "World Gold Council, misma página; USGS citado por el WGC (no leído directamente). Lector de páginas con resumen automático: cifra pendiente de cotejo visual [VERIFICAR]."
+        },
+        {
+          "dato": "Mecanismo",
+          "valor": "Sin emisor ni protocolo: metal físico minado (producción de minas ≈ 1.071 t en el 3T-2026) más reciclaje; no genera rentas",
+          "unidad": "",
+          "fecha": "2026-09-30",
+          "nivel": "P",
+          "fuente": "World Gold Council, Gold Demand Trends Q3 2026 (ya recogido arriba)"
+        },
+        {
+          "dato": "Hitos regulatorios",
+          "valor": "null",
+          "unidad": "",
+          "fecha": "2026-11-18",
+          "nivel": "P",
+          "fuente": "El oro físico no tiene un regulador-hito comparable; los ETF cotizan como productos de materias primas. Sin documento leído [VERIFICAR]"
+        },
+        {
+          "dato": "SPDR Gold Shares (GLD): emisor y comisión",
+          "valor": "World Gold Trust Services (patrocinador); comisión 0,40 %",
+          "unidad": "",
+          "fecha": "2026-11-18",
+          "nivel": "P",
+          "fuente": "spdrgoldshares.com/usa/gld, leído 18-nov-2026: la web no indica si es bruta o neta; toneladas y activos aparecían como «AWAITING». Lector de páginas con resumen automático: cifra pendiente de cotejo visual [VERIFICAR]."
+        },
+        {
+          "dato": "iShares Gold Trust (IAU): comisión del patrocinador y activos netos",
+          "valor": "0,25 % / 55.667,9 millones USD (a 18-nov-2026)",
+          "unidad": "",
+          "fecha": "2026-11-18",
+          "nivel": "P",
+          "fuente": "ishares.com (ficha de IAU), leída 18-nov-2026. Lector de páginas con resumen automático: cifra pendiente de cotejo visual [VERIFICAR]."
         }
       ],
       "alcista": [
@@ -752,11 +907,13 @@
       "sesgos": [
         "Datos iniciales frente a revisados del WGC: usar el revisado.",
         "El futuro continuo de Yahoo cambia de contrato y el máximo difiere del de WGC (5.405 frente a 5.318).",
-        "Los vídeos y la prensa de «oro refugio» tienen sesgo de promoción de compra de oro."
+        "Los vídeos y la prensa de «oro refugio» tienen sesgo de promoción de compra de oro.",
+        "El WGC es la asociación de la industria del oro: sus informes tienden a presentar la demanda en positivo; contrastar con LBMA/bancos centrales."
       ],
       "verificar": [
         "Diferencia entre el máximo de futuros (5.318,4) y el máximo histórico del WGC (5.405) [VERIFICAR: definiciones distintas, futuro continuo frente a precio LBMA/spot].",
-        "El WGC atribuye la entrada en ETF a preocupaciones por sostenibilidad fiscal e inflación «entre otras cosas»: es su interpretación, no un dato [S/opinión]."
+        "El WGC atribuye la entrada en ETF a preocupaciones por sostenibilidad fiscal e inflación «entre otras cosas»: es su interpretación, no un dato [S/opinión].",
+        "Otros ETF de oro (p. ej. GLDM, SGOL, ETC europeos): emisor y comisión sin leer."
       ],
       "especulacion": [
         "Que las compras de bancos centrales sostengan el precio es [ESPECULACIÓN]."
@@ -905,7 +1062,7 @@
         {
           "dato": "MSCI World: número de valores",
           "valor": "1.248",
-          "unidad": "",
+          "unidad": "valores (n.º de empresas)",
           "fecha": "2026-10-30",
           "nivel": "P",
           "fuente": "MSCI, página del índice MSCI World (msci.com/indexes/index/990100; datos a 30-oct-2026; leída en Chrome 18-nov)"
@@ -997,6 +1154,94 @@
           "fecha": "2026-10-31",
           "nivel": "P",
           "fuente": "Vanguard UK Professional, ficha del FTSE All-World UCITS ETF USD Acc (emisor, parte interesada; leída en Chrome 18-nov-2026)"
+        },
+        {
+          "dato": "IWDA (iShares Core MSCI World UCITS ETF USD Acc), KIID: ISIN",
+          "valor": "IE00B4L5Y983",
+          "unidad": "",
+          "fecha": "2026-02-09",
+          "nivel": "P",
+          "fuente": "iShares UK, KIID del fondo IE00B4L5Y983 (PDF oficial en research/fuentes/kid/iwda-kid.pdf; emisor, parte interesada; descargado 18-nov-2026)"
+        },
+        {
+          "dato": "IWDA, KIID: gastos corrientes",
+          "valor": "0,20",
+          "unidad": "% anual",
+          "fecha": "2026-02-09",
+          "nivel": "P",
+          "fuente": "iShares UK, KIID del fondo IE00B4L5Y983 (PDF oficial en research/fuentes/kid/iwda-kid.pdf; emisor, parte interesada; descargado 18-nov-2026); excluye costes de transacción de cartera"
+        },
+        {
+          "dato": "IWDA, KIID: indicador de riesgo (escala 1-7 del KIID)",
+          "valor": "6",
+          "unidad": "categoría",
+          "fecha": "2026-02-09",
+          "nivel": "P",
+          "fuente": "iShares UK, KIID del fondo IE00B4L5Y983 (PDF oficial en research/fuentes/kid/iwda-kid.pdf; emisor, parte interesada; descargado 18-nov-2026); clasificación UCITS (KIID), no el SRI del KID PRIIPs"
+        },
+        {
+          "dato": "IWDA, KIID: periodo de mantenimiento",
+          "valor": "«medio a largo plazo» (sin cifra de años)",
+          "unidad": "",
+          "fecha": "2026-02-09",
+          "nivel": "P",
+          "fuente": "iShares UK, KIID del fondo IE00B4L5Y983 (PDF oficial en research/fuentes/kid/iwda-kid.pdf; emisor, parte interesada; descargado 18-nov-2026)"
+        },
+        {
+          "dato": "IWDA, KIID: rentabilidad del clase 2025 / 2024 / 2023 / 2022 (USD, tras gastos)",
+          "valor": "21,1 / 18,7 / 23,8 / -18,1",
+          "unidad": "% (USD)",
+          "fecha": "2025-12-31",
+          "nivel": "P",
+          "fuente": "iShares UK, KIID del fondo IE00B4L5Y983 (PDF oficial en research/fuentes/kid/iwda-kid.pdf; emisor, parte interesada; descargado 18-nov-2026)"
+        },
+        {
+          "dato": "IWDA, KID PRIIPs: escenarios de rentabilidad y periodo recomendado",
+          "valor": null,
+          "unidad": "",
+          "fecha": null,
+          "nivel": "VERIFICAR",
+          "fuente": "El PDF descargado es el KIID del Reino Unido; no incluye escenarios. El KID PRIIPs para España no se localizó en la web de iShares (la página ES redirige al directorio global) [VERIFICAR]"
+        },
+        {
+          "dato": "VWCE (Vanguard FTSE All-World UCITS ETF USD Acc), KIID: ISIN",
+          "valor": "IE00BK5BQT80",
+          "unidad": "",
+          "fecha": "2026-07-28",
+          "nivel": "P",
+          "fuente": "Vanguard, KIID del fondo IE00BK5BQT80 (PDF oficial en research/fuentes/kid/vwce-kiid.pdf; emisor, parte interesada; descargado 18-nov-2026)"
+        },
+        {
+          "dato": "VWCE, KIID: gastos corrientes",
+          "valor": "0,14",
+          "unidad": "% anual",
+          "fecha": "2026-07-28",
+          "nivel": "P",
+          "fuente": "Vanguard, KIID del fondo IE00BK5BQT80 (PDF oficial en research/fuentes/kid/vwce-kiid.pdf; emisor, parte interesada; descargado 18-nov-2026); ejercicio cerrado a dic-2025, rebaja vigente desde 28-jul-2026"
+        },
+        {
+          "dato": "VWCE, KIID: indicador de riesgo (escala 1-7 del KIID)",
+          "valor": "6",
+          "unidad": "categoría",
+          "fecha": "2026-07-28",
+          "nivel": "P",
+          "fuente": "Vanguard, KIID del fondo IE00BK5BQT80 (PDF oficial en research/fuentes/kid/vwce-kiid.pdf; emisor, parte interesada; descargado 18-nov-2026); clasificación UCITS (KIID), no el SRI del KID PRIIPs"
+        },
+        {
+          "dato": "VWCE, KIID: rentabilidad del clase 2025 / 2024 / 2023 / 2022 (USD, tras gastos)",
+          "valor": "22,6 / 17,2 / 22,0 / -18,1",
+          "unidad": "% (USD)",
+          "fecha": "2025-12-31",
+          "nivel": "P",
+          "fuente": "Vanguard, KIID del fondo IE00BK5BQT80 (PDF oficial en research/fuentes/kid/vwce-kiid.pdf; emisor, parte interesada; descargado 18-nov-2026); el orden de lectura de las columnas del PDF [VERIFICAR] frente a la ficha del emisor"
+        },
+        {
+          "dato": "VWCE, KIID: periodo de mantenimiento y escenarios",
+          "valor": null,
+          "unidad": "",
+          "fecha": null,
+          "nivel": "VERIFICAR",
+          "fuente": "El KIID no los trae; el KID PRIIPs no se obtuvo (fund-docs.vanguard.com devuelve 403 para la ruta KID probada) [VERIFICAR]"
         }
       ],
       "alcista": [

@@ -90,7 +90,7 @@ def main():
                     "GDELT está sesgado hacia medios en inglés (y traducción automática), por lo que infrarrepresenta prensa local; "
                     "un pico puede ser una noticia mediática y no una escalada. Consultas con palabras clave en inglés: país + (war OR conflict OR attack OR military OR sanctions); "
                     "'United States', 'China' o 'Russia' salen altos por aparecer como actores en muchas noticias. Interpretar solo el cambio 30d frente a 90d, no comparar niveles entre países.",
-           "acled": "falta: sin cuenta/clave de ACLED", "metodo": "ratio_30_90 = media de los 30 días naturales finales / media de la ventana (días con dato, ver dias y nota_media; <90 si GDELT devuelve menos) (>1 = más cobertura reciente)",
+           "unidad": 'media_30d, media_90d y valores de «picos»: % de los artículos monitorizados por GDELT que casan con la consulta (escala 1, sin multiplicador); ratio_30_90: cociente sin unidad (>1 = más cobertura reciente); dias: número de días', "acled": "falta: sin cuenta/clave de ACLED", "metodo": "ratio_30_90 = media de los 30 días naturales finales / media de la ventana (días con dato, ver dias y nota_media; <90 si GDELT devuelve menos) (>1 = más cobertura reciente)",
            **out, "fallos": fallos}
     SALIDA.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
     print("ok", len(out["paises"]), "países", len(out["temas"]), "temas", "fallos:", fallos)

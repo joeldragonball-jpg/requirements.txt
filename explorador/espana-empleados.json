@@ -2,13 +2,14 @@
  "titulo": "Empleados públicos por ministerio/sección (Registro Central de Personal)",
  "fecha_dato": "enero 2026 (revisión agosto 2026)",
  "nivel": "P",
+ "unidad": "empleados y sus desgloses = personas (efectivos a enero 2026), escala 1; cualquier importe de coste medio u obligaciones se da en euros (EUR) o M€ según indique su campo; null = sin dato leído [VERIFICAR]",
  "fuente": {
   "nombre": "Estadística del Personal al Servicio de las Administraciones Públicas (EPSAP), enero 2026 — tablas 1.1, 2.1 y 2.3",
   "url": "https://digital.gob.es/content/dam/portal-mtdfp/funcion-publica/rcp/boletin/2026_01/revision-agosto-2026/EPSAP_Enero_2026%20.pdf",
   "organismo": "Ministerio para la Transformación Digital y de la Función Pública / Registro Central de Personal"
  },
  "como_leerlo": "«empleados» = efectivos a enero 2026 (funcionarios de carrera + laborales + otro personal, incluidos eventuales). En Defensa e Interior se suman las Fuerzas Armadas y los cuerpos policiales que paga el capítulo 1 de su sección. El boletín NO incluye personal judicial ni fiscal. «eventuales_personas» es el nº de personal eventual (art. 11); el boletín no da el nº de altos cargos.",
- "limites": "Plantilla ≠ ejecución presupuestaria: el capítulo 1 de 2025 se divide entre efectivos de enero 2026 (desfase de un año). Coste medio = cap. 1 (obligaciones 2025) / empleados; incluye cotizaciones sociales del empleador y altos cargos. Dos secciones marcadas no comparables. C245 (10-nov-2026): intento de completar 6 órganos constitucionales sin resultado oficial; siguen null. C245 (17-nov-2026): completados Cortes Generales (853 funcionarios+laborales, P) y puestos RPT del CGPJ (465, S); TC, Consejo de Estado, Tribunal de Cuentas y Casa Real siguen null.",
+ "limites": "Plantilla ≠ ejecución presupuestaria: el capítulo 1 de 2025 se divide entre efectivos de enero 2026 (desfase de un año). Coste medio = cap. 1 (obligaciones 2025) / empleados; incluye cotizaciones sociales del empleador y altos cargos. Dos secciones marcadas no comparables. C245 (10-nov-2026): intento de completar 6 órganos constitucionales sin resultado oficial; siguen null. C245 (17-nov-2026): completados Cortes Generales (853 funcionarios+laborales, P) y puestos RPT del CGPJ (465, S); TC, Consejo de Estado, Tribunal de Cuentas y Casa Real siguen null. C245 (18-nov-2026): completado Tribunal Constitucional (221 personas a 31-dic-2024, P); Tribunal de Cuentas «más de 750» (cota textual, null numérico); Consejo de Estado (RPT oct-2026 localizadas, no legibles) y Casa Real (156 funcionarios solo Secretaría General) siguen sin total.",
  "total_ministerios": 98224,
  "total_ministerios_rotulo": "Aviso 18-nov (auditoría): 98.224 = suma de empleados_ministerio de las 26 secciones con dato; no incluye Fuerzas Armadas ni Policía/Guardia Civil. La suma de la clave empleados (con FFAA y cuerpos policiales) es 383.077. No mezclar los dos totales.",
  "secciones": [
@@ -411,8 +412,13 @@
    "seccion": "TRIBUNAL DE CUENTAS",
    "empleados": null,
    "nota": "C245 (10-nov-2026): sin dato. Solo hallados BOE de provisión de puestos y oferta de empleo 2025; ningún total de plantilla ni de efectivos en su portal. Se deja null [VERIFICAR]. Reintento 11-nov-2026: Memoria 2025 (25-mar-2026) leída entera: no publica nº de personal [P, ausencia de dato].",
-   "nivel": "S",
-   "intento_C245": "sin dato"
+   "nivel": "P",
+   "intento_C245": "sin dato",
+   "empleados_aprox_texto": "más de 750",
+   "fuente": "https://www.tcu.es/es/institucion/organizacion-y-gobernanza/personal-al-servicio-de-la-institucion/",
+   "fecha": "consulta 18-nov-2026 (sin fecha de dato en la página)",
+   "tipo": "personas (cifra redondeada, cota inferior): funcionarios de cuerpos propios y de otras administraciones, laborales y eventuales",
+   "nota_18nov": "C245 (18-nov-2026): la página oficial «Personal al servicio de la institución» dice «prestan servicio más de 750 personas entre funcionarios/as de los cuerpos propios y procedentes de otras administraciones públicas, personal laboral y personal eventual». Es una cota inferior sin fecha ni desglose, por eso 'empleados' sigue null (no se inventa un número exacto) [VERIFICAR con la RPT/Memoria]."
   },
   {
    "seccion": "CONSEJO GENERAL DEL PODER JUDICIAL",
@@ -427,24 +433,43 @@
   },
   {
    "seccion": "TRIBUNAL CONSTITUCIONAL",
-   "empleados": null,
-   "nota": "C245 (10-nov-2026): sin dato. Solo consta por ley el tope de 16 letrados de plantilla (no es el total de personal) y la plantilla se fija en la Ley de PGE. Memoria no localizada. Se deja null [VERIFICAR]. Reintento 17-nov-2026: la sección «Información institucional y organizativa» del portal de transparencia (act. 1-dic-2025) solo enlaza organización/composición/normativa; sin total de personal localizado. Memorias en /es/memorias no leídas [VERIFICAR].",
-   "nivel": "S",
-   "intento_C245": "sin dato"
+   "empleados": 221,
+   "nota": "C245 (18-nov-2026): leída la Memoria 2025 del TC (apartado «Personal al servicio del Tribunal Constitucional», tabla con efectivos a 31-dic-2024): 14+57+51+56+20+23 = 221 personas (112 hombres, 109 mujeres). Son efectivos, no puestos. El desfase (dato de dic-2024 en una memoria de 2025) es de la propia memoria [VERIFICAR si hay cifra a dic-2025].",
+   "nivel": "P",
+   "intento_C245": "dato leído 18-nov-2026",
+   "fecha": "efectivos a 31-dic-2024 (Memoria 2025, web actualizada 17-sep-2026; leída 18-nov-2026)",
+   "fuente": "https://www.tribunalconstitucional.es/es/memorias/Paginas/default.aspx",
+   "tipo": "personas (efectivos a 31-dic-2024), incluye altos cargos, letrados y eventuales",
+   "desglose": {
+    "altos_cargos": 14,
+    "letrados": 57,
+    "funcionarios_admin_justicia": 51,
+    "funcionarios_admin_civil": 56,
+    "laborales": 20,
+    "eventuales": 23,
+    "hombres": 112,
+    "mujeres": 109
+   }
   },
   {
    "seccion": "CONSEJO DE ESTADO",
    "empleados": null,
    "nota": "C245 (10-nov-2026): sin dato. El Reglamento Orgánico remite a plantillas orgánicas (puestos) sin total publicado localizado. Se deja null [VERIFICAR]. Reintento 17-nov-2026: consejo-estado.es devuelve desafío anti-bot (Cloudflare) también en Chrome; sin dato. Única cifra: 24 letrados en activo (memoria 2013, vía Público) [S][VERIFICAR].",
    "nivel": "S",
-   "intento_C245": "sin dato"
+   "intento_C245": "sin dato",
+   "fuente_rpt_funcionario": "https://www.consejo-estado.es/wp-content/uploads/2026/10/rpt-personal-funcionario-del-consejo-de-estado-octubre-2026.pdf",
+   "fuente_rpt_laboral": "https://www.consejo-estado.es/wp-content/uploads/2026/10/rpt-personal-laboral-del-consejo-de-estado-octubre-2026.pdf",
+   "nota_18nov": "C245 (18-nov-2026): en Chrome sí abre el portal de transparencia (act. oct-2026) y publica 2 RPT en PDF (funcionario y laboral, octubre 2026). Los PDF no se pudieron leer: el visor de Chrome no da texto y curl recibe 403. Siguen sin sumarse [VERIFICAR]; puestos ≠ personas. Empleados null."
   },
   {
    "seccion": "CASA DE SU MAJESTAD EL REY",
    "empleados": null,
    "nota": "C245 (10-nov-2026): sin dato. El informe de Intervención 2024 (casareal.es) detalla gasto de personal y categorías, pero no nº de empleados; la lista de eventuales solo salió por solicitudes de transparencia. Se deja null [VERIFICAR]. Dato parcial: Informe del Interventor 2024, capítulo 1 = 4.763.437 euros (crédito, no plantilla) [P].",
    "nivel": "S",
-   "intento_C245": "sin dato"
+   "intento_C245": "sin dato",
+   "puestos_secretaria_general": 156,
+   "fuente_organizacion": "https://www.casareal.es/ES/Transparencia/informacioninstitucional/Paginas/organizacion-y-presupuesto_organigrama-funciones.aspx",
+   "nota_18nov": "C245 (18-nov-2026): la página oficial de Organización de la Casa dice que la Secretaría General «tiene asignada una plantilla de 156 funcionarios», al margen de los del Servicio de Seguridad (Interior). Es solo una unidad (sin Jefatura, Cuarto Militar ni laborales/eventuales) y sin fecha: no es el total [P para el dato parcial, VERIFICAR]. Empleados null."
   },
   {
    "seccion": "FONDO DE CONTINGENCIA",
