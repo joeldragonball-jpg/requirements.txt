@@ -76,6 +76,16 @@
 | 70 | 2026-09 | Adrian Wall (Digital Sovereignty Alliance), vía Cointelegraph | Habrá otro intento con la Clarity en la sesión posterior a las elecciones, aunque es «improbable» que salga | 2027-01-03 | Nueva moción de cierre de debate en el Senado antes del 3-ene-2027 | Sin resolver [S] (13-nov: sin votación programada); grupo de presión del sector (sesgo) |
 | 71 | 2026-11-12 | Oriol Blanch (Bitvavo), en Despeja La X | Bitvavo integrará protocolos DeFi como Morpho/Aave para préstamo de BTC/XRP sin wallet propia | Sin fecha | Anuncio o producto en bitvavo.com | Sin resolver [D]; «lo estamos valorando»; sesgo comercial |
 | 72 | 2026-11-12 | Oriol Blanch (Bitvavo), en Despeja La X | La tokenización de fondos monetarios será el siguiente boom tras las stablecoins (3-5 % anual) | Sin fecha | Volumen de fondos tokenizados (rwa.xyz) | Sin resolver [ESPECULACIÓN]; sesgo comercial |
+| 73 | 2026-11-07 | Kevin O'Leary, vía Despeja La X (vídeo del 13-nov) | La Clarity se aprobará en 2027 por «necesidad económica» | 2027-12-31 | congress.gov: ley firmada | Sin resolver [ESPECULACIÓN]; inversor y promotor del sector |
+| 74 | 2026-11-16 | Bitwise (Kam Benbrik y Rafal Klich), vía Despeja La X | SOL en 2031: 1.100 $ (alcista), 385 $ (base) y 80 $ (bajista) | 2031-12-31 | Precio de cierre de SOL en CoinGecko/CME | Sin resolver [ESPECULACIÓN]; Bitwise emite ETF de Solana (parte interesada) |
+| 75 | 2026-11-12 | DTCC (nota de prensa), vía Despeja La X | Activos tokenizados de DTC disponibles en Solana en la segunda mitad de 2027 | 2027-12-31 | dtcc.com: ¿servicio anunciado en producción en Solana? | Abierta [P]; la nota original se leyó el 19-nov |
+| 76 | 2026-11-13 | Despeja La X (David Martínez), en vídeo | Si en dos semanas no hay pacto sobre la ética de Trump, los demócratas presentarán nuevos textos; si lo hay, Thune reabre la votación | 2026-11-27 | senate.gov: nueva moción de cierre o texto demócrata | Sin resolver [ESPECULACIÓN]; ninguna fuente muestra voto programado |
+| 77 | 2026-11-13 | Despeja La X (David Martínez), en vídeo | «Es muy posible que la Fed vaya a apretar» (subir tipos) | 2026-12-31 | federalreserve.gov: comunicado del FOMC de diciembre | Sin resolver [ESPECULACIÓN] |
+| 78 | 2026-11-13 | Despeja La X (cita a Kazuo Ueda, BoJ) | El Banco de Japón subirá tipos con riesgo de «carry trade inverso violento» | 2026-12-31 | boj.or.jp: decisión de la reunión de diciembre | Sin resolver; cita literal no localizada [VERIFICAR] |
+| 79 | 2026-11-13 | «Rudra Exchange», vía Despeja La X | XLM a 97 $ si el 3 % del volumen de DTCC se liquida en Stellar con XLM | Sin fecha | Precio de XLM y volumen real de DTCC en Stellar | Sin resolver [ESPECULACIÓN]; entidad y cálculo no localizados; implica 3-5 billones de $ de capitalización |
+| 80 | 2026-11-13 | Despeja La X (David Martínez), en vídeo | El 22-nov los exchanges rusos podrán listar cripto | 2026-11-22 | Banco de Rusia: comunicado oficial | Sin resolver [VERIFICAR]; ninguna fuente sitúa el hito en esa fecha |
+| 81 | 2026-11-13 | Despeja La X (David Martínez), en vídeo | La enmienda de lending del XRPL se votará y quedará lista antes de fin de año | 2026-12-31 | xrpl.org/known-amendments: LendingProtocol enabled=true | Sin resolver [P hasta 16-nov]: enabled=false (W06) |
+| 82 | 2026-11-17 | Despeja La X (David Martínez), en vídeo | Las instituciones siguen manteniendo o aumentando sus posiciones en ETF de XRP (no venden por pánico) | 2027-02-15 | EDGAR: 13F del 4T-2026 de Goldman, Jane Street, Millennium | Sin resolver [ESPECULACIÓN]; 13F del 3T no prueba reacción a la caída de noviembre |
 
 ## Criterios de medición (C108, 18-nov-2026)
 
@@ -155,5 +165,15 @@
 | 70 | Nuevo intento con Clarity | senate.gov | Nueva moción de cierre | 2027-01-03 | Abierta | |
 | 71 | Bitvavo integra DeFi | bitvavo.com | Producto anunciado | Sin fecha | Sin puntuar | |
 | 72 | Boom de fondos monetarios tokenizados | rwa.xyz | Sin umbral | Sin fecha | Sin puntuar [ESPECULACIÓN] | |
+| 73 | Clarity aprobada en 2027 | congress.gov | Ley firmada por el presidente | 2027-12-31 | Abierta | O'Leary [S] |
+| 74 | SOL en 2031 (Bitwise) | CoinGecko/CME | ≥ 1.100 $ acierto alcista; 385 $ ±20 % base; ≤ 80 $ bajista | 2031-12-31 | Abierta | The Block 16-nov [S]; PDF sin abrir |
+| 75 | DTCC en Solana | dtcc.com | Nota de «disponible» (producción) | 2027-12-31 | Abierta | Nota 12-nov leída [P] |
+| 76 | Clarity: nuevo voto o texto demócrata | senate.gov | Moción de cierre registrada o texto demócrata publicado | 2026-11-27 | Abierta | Sin voto programado (Decrypt) |
+| 77 | Fed sube tipos | federalreserve.gov | Subida del objetivo en el FOMC de dic-2026 | 2026-12-31 | Abierta | Sin dato leído hoy |
+| 78 | BoJ sube tipos | boj.or.jp | Subida en la reunión de dic-2026 | 2026-12-31 | Abierta | Cita de Ueda no localizada |
+| 79 | XLM a 97 $ | CoinGecko | ≥ 97 $ | Sin fecha | Sin puntuar [ESPECULACIÓN] | Sin fuente |
+| 80 | Rusia lista cripto el 22-nov | cbr.ru | Comunicado con fecha 22-nov | 2026-11-22 | Abierta | Hito sin cotejar |
+| 81 | XRPL lending activado | xrpl.org known-amendments | LendingProtocol enabled=true | 2026-12-31 | Abierta | W06 16-nov: enabled=false |
+| 82 | Instituciones no venden ETF de XRP | EDGAR 13F 4T | Goldman ≥ 100 M$ y sin salida de Jane Street/Millennium | 2027-02-15 | Abierta | 13F del 3T no mide la caída |
 
-Recuento (18-nov): 72 con criterio. 13 resueltas (7, 9, 10, 15, 19, 25, 31, 44, 45, 48, 58, 60, 62): 9 acertó o en parte, 2 falló (25, 45), 2 mal planteada o mixta (9, 19). 10 sin puntuar (13, 50, 55, 56, 57, 63, 64, 67, 71, 72). Leída hoy en fuente oficial: solo #18 (sigue abierta).
+Recuento (19-nov, V01 profundo: +10 filas, 73-82, todas abiertas o sin puntuar): 82 con criterio. Recuento previo (18-nov): 72 con criterio. 13 resueltas (7, 9, 10, 15, 19, 25, 31, 44, 45, 48, 58, 60, 62): 9 acertó o en parte, 2 falló (25, 45), 2 mal planteada o mixta (9, 19). 10 sin puntuar (13, 50, 55, 56, 57, 63, 64, 67, 71, 72). Leída hoy en fuente oficial: solo #18 (sigue abierta).

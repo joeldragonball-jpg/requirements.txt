@@ -190,3 +190,7 @@ actualizado: 2026-10-07
 - Decrypt, Cointelegraph y Crypto.news dan el plan demócrata como informe de fuentes de la industria (Terrett), sin texto de ley: nivel [S].
 - yt-dlp con el cliente «android» da subtítulos automáticos (es-orig) cuando el cliente web pide PO token.
 - API del Bundesbank (api.statistiken.bundesbank.de): pedir CSV con la cabecera Accept: text/csv; con ?format=csvdata devuelve 406. Curva Svensson de bonos federales [P], estimada, no un bono concreto (W02, 16-nov).
+- 2026-11-19 (V01 profundo): nota original de DTCC (12-nov) y nota del BIS (10-nov) leídas: son las fuentes que sostienen DTCC-Solana (2S-2027) y Shin en el CPMI; el resto de hechos de agenda salen de medios (The Block, Decrypt, Al Jazeera).
+- Bitwise es emisor de ETF de Solana y de XRP: sus escenarios son [ESPECULACIÓN] de parte interesada; abrir el PDF original antes de citar el 65 % (hoy solo por prensa).
+- Jupiter, Bullish y DTCC hablan con producto o servicio que vender; sus cifras (460.000/39.500/3.400 M$ de RWA.xyz y DefiLlama) se citan como [S] y se recomprueban cada mes.
+- Agregadores como 13f.info y AlphaMaven sirven para localizar el 13F; la cifra se confirma en EDGAR (Goldman ya cotejado, C280).

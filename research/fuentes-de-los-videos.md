@@ -105,3 +105,33 @@ Lectura del PDF del BIS cuando responda bis.org; verificar en TreasuryDirect las
 | Bitvavo, blog de custodia | https://bitvavo.com/en/blog/how-bitvavo-keeps-your-crypto-safe | «Mayoría» en frío; el 95 % es declaración oral | [S] |
 | xrpl.org, UNL / consenso | https://xrpl.org/docs/concepts/consensus-protocol/unl | XRPL sin recompensas por validar; no es PoA | [P] |
 | Al Jazeera, Binance reabre retiradas (1-nov) | https://www.aljazeera.com/news/2026/11/1/binance-restarts-withdrawals-after-6-3bn-heist | ~95 % cubierto | [S] |
+
+## Tanda V01 profundo (vídeos del 13, 17 y 18-nov-2026; leído el 19-nov-2026)
+| Fuente | Enlace | Para qué sirve (vídeo y afirmación) | Nivel |
+|---|---|---|---|
+| DTCC, nota de prensa 12-nov-2026 | https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana | V1 13:40 y V3 0:40: DTS lanzado el 28-oct; conexión con Solana en 2S-2027; citas de La Salla y Steele | [P] (leída íntegra la cabecera y citas) |
+| BIS, nota 10-nov-2026 | https://www.bis.org/media-releases/20261110-appointments-bis-global-payments-standard-setting-body-and-consultative-council-americas | V1 19:40: Shin presidente del CPMI desde el 1-nov (3 años); sucede a Panetta | [P] |
+| The Block, Bitwise y Solana a 2031 (16-nov) | https://www.theblock.co/news/markets/2026-11-16-bitwise-solana-price-prediction-1100-2031-441407 | V3: escenarios 1.100/385/80 $ en 2031 (403 al abrirla; leída por resumen de búsqueda) | [S] |
+| Bitwise, informe original (Benbrik y Klich) | (PDF no localizado; pedir al emisor) | V3: definición exacta del 65 % | [VERIFICAR] |
+| Decrypt, Jupiter «Tokenization is not the finish line» | https://decrypt.co/383333/tokenization-is-not-the-finish-line-jupiter-to-let-users-borrow-against-bullish-shares | V3 12:00-19:20: 460.000/39.500/3.400 M$ y mercado con Bullish | [S] |
+| Decrypt, Deutsche Bank cripto custodia (11-nov) | https://decrypt.co/383067/deutsche-bank-goes-live-with-crypto-custody-after-a-five-year-buildup | V1 8:20: custodia BTC/ETH/USDC/EURC para institucionales; MiCA el 12-oct | [S] |
+| The Block, NYSE y Avalanche (9-nov) | https://theblock.co/news/business/2026-11-09-nyse-settle-tokenized-stocks-avalanche-planned-24-7-market-436208 | V1 5:20: plataforma 24/7 planeada, 4T-2026, pendiente de aprobación | [S] |
+| Cointelegraph, Cipollone y euro digital (10-nov) | https://cointelegraph.com/news/ecb-warns-legislative-delays-digital-euro-launch | V1 5:40: 2029 si la ley se cierra en 2026; piloto 2S-2027 | [S] |
+| Al Jazeera, Lagarde se va el 7-feb-2027 (29-oct) | https://www.aljazeera.com/news/2026/10/29/european-central-bank-president-lagarde-to-step-down-early | V1 6:00 | [S] |
+| Al Jazeera, Thune reelegido (11-nov) | https://aljazeera.com/news/2026/11/11/thune-re-elected-as-senate-republican-leader-after-midterm-losses | V1 10:00 | [S] |
+| Decrypt, Clarity falla 49-50 (15-sep) | https://decrypt.co/378283/clarity-act-fails-senate-hurdle | V1 y V2: cierre de debate fallido | [S] |
+| Senado (Banking, minoría), Warren 14-sep | https://www.banking.senate.gov/newsroom/minority/ahead-of-senate-crypto-vote-warren-and-colleagues-seek-vote-on-senate-floor-to-stop-trumps-self-dealing-end-presidential-corruption-in-banking | V1 14:40: es *ranking member*, no presidenta | [P por título] |
+| Stocktwits, O'Leary sobre Clarity en 2027 | https://stocktwits.com/news-articles/markets/cryptocurrency/kevin-oleary-clarity-act-2027-passage/cNGVVkER9I0 | V1 17:00 | [S] |
+| Swift, «Raising the bar… Spain» (oct-2026) | https://www.swift.com/insights/news/raising-bar-cross-border-payments-spain | V1 3:00: Swift–Iberpay | [S] |
+| Pluang, Ripple borra post de Qivalis | https://pluang.com/en/news-feed/ripple-hapus-postingan-qivalis-setelah-kritikan | V1 1:00: único post borrado localizado (no es del BCE) | [S] |
+| Cointelegraph, Rusia registra plataformas cripto | https://cointelegraph.com/news/russia-first-crypto-platforms-register-new-law | V1 7:20: sin fecha 22-nov | [S] |
+| Morningstar/Dow Jones, Ueda (16-oct) | https://www.morningstar.com/news/dow-jones/202610163277/boj-must-ensure-underlying-inflation-doesnt-go-above-2-ueda-says | V1 9:00 | [S] |
+| Cooley, innovación exención SEC (22-sep) | https://www.cooley.com/news/insight/2026/2026-09-22-permission-to-innovate-sec-carves-out-path-for-on-chain-stock-trading | V1 12:40: exención del 17-sep | [S] |
+| CoinCodex, Stellar RWA 5,5 mil M$ | https://coincodex.com/article/95330/stellars-tokenized-asset-market-hits-55b-as-institutional-adoption-accelerates/ | V1 15:40: una sola fuente (Token Relations) | [S] |
+| Bitcoin.com, 7 bancos y ETF de XRP (13F 3T) | https://news.bitcoin.com/7-major-banks-reveal-xrp-etf-holdings-latest-sec-filings/ | V2 4:00-5:40: JPMorgan 8.996 $, Morgan Stanley 116.097 $, Rakuten 111.255 $ | [S] |
+| AlphaMaven, Rothschild Investment LLC | https://alpha-maven.com/story/crypto/rothschild-investment-reveals-xrp-etf-stake-tradingview | V1 20:20 y V2 5:00: 6.300 acc. = 104.769 $ | [S] |
+| C280 (repo), 13F del 3T | informes/research/2026-11-17-C280-etf-flujos.md | V2: Goldman ≈145 M$ coincide con su XML | [P] (XML de Goldman) |
+| R21 y R21b (repo), Goldman dic-2025 y mar-2026 | informes/research/2026-10-15-R21b-13f-segunda-pasada.md | V2 0:20-1:00: 152-154 M$ y XRPR | [P] |
+| Yellow, Deutsche Bank y Ripple | https://yellow.com/news/deutsche-bank-turns-to-ripple-infrastructure-as-swift-races-to-build-blockchain-ledger | V1 8:40 y 17:40: reporte de prensa, sin confirmación de DB ni Ripple | [S] |
+| Old Glory Bank (FAQ y prensa) | (búsqueda del 19-nov; sin URL primaria abierta) | V1 16:20: Ethereum, Polygon y PulseChain primero; XRP después, sin fecha | [S]/[VERIFICAR] |
+| YouTube: V1 xw8ZpJuF3ZE · V2 0wkHGOqiW04 · V3 BqK2yeGn_n8 | https://youtu.be/xw8ZpJuF3ZE · https://youtu.be/0wkHGOqiW04 · https://youtu.be/BqK2yeGn_n8 | Subtítulos automáticos es-orig leídos el 19-nov (transcripción en carpeta temporal, no se sube) | — |

@@ -169,3 +169,8 @@ actualizado: 2026-10-07
 - Cifras del propio canal que no cuadran entre sí (rebote «6,5 %» entre 1,2495 y 1,32 $ = +5,6 %) son señal de datos de memoria, no leídos.
 - Anuncios dentro del vídeo (Múltiplo: rentabilidades +25 %/+18 %) se mezclan con el análisis; separar y no tratarlos como dato de mercado.
 - «Colegas» o «fuentes» sin nombre que contrastan una noticia (5-nov) no cuentan como contraste: [VERIFICAR].
+- 2026-11-19 (V01 profundo, Despeja La X 13/17/18-nov): «Los Rothschild entran en XRP» era **Rothschild Investment LLC** (Chicago, 104.769 $), no la banca familiar; un nombre con prestigio sin importe es señal de titular sin dato: abrir el 13F y mirar acciones y dólares.
+- Un 13F es una foto del 30-sep: no prueba que alguien «compre la caída» de noviembre. Muchos aumentos son de creadores de mercado (Jane Street, Susquehanna, Citadel, Simplex, IMC).
+- Una cifra de tercero sin entidad localizable («Rudra Exchange», XLM 97 $ = 3-5 billones de capitalización) se contrasta con la capitalización implícita antes de repetirla.
+- Cargos mal puestos (Warren «presidenta» del Banking Committee siendo *ranking member*) y fechas cruzadas (Bitwise 2031 dicho como 2035; SOL dicho como XRP) indican datos de memoria.
+- Un enlace de referido pegado a un aviso de urgencia («Binance hasta el 29-nov, moveros») mezcla publicidad con alerta: buscar el aviso oficial.

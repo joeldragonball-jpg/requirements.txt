@@ -32,7 +32,7 @@ section.vista{display:none}section.vista.on{display:block}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,clamp(140px,14vw,190px)),1fr));gap:clamp(5px,.6vw,8px);margin:clamp(4px,.5vw,6px) 0}
 .kpi{background:var(--bg);border:1px solid var(--lin);border-radius:8px;padding:clamp(5px,.5vw,7px) clamp(7px,.8vw,10px)}
 .kpi b{display:block;font-size:clamp(18px,.9vw + 8px,24px)}.kpi span{font-size:var(--fs-xs);color:var(--tx2)}
-.cc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px;margin:6px 0}
+.cc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:6px 0}@media(max-width:1180px){.cc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.cc-grid{grid-template-columns:minmax(0,1fr)}}
 .cc-b{background:var(--bg);border:1px solid var(--lin);border-top:3px solid var(--ac);border-radius:10px;padding:10px 12px}
 .cc-grid>.cc-b:last-child:nth-child(4n+1){grid-column:1/-1}.cc-grid>.cc-b:last-child:nth-child(4n+1) .cc-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px 16px}
 @media(max-width:1100px){.cc-grid>.cc-b:last-child:nth-child(4n+1){grid-column:auto}.cc-grid>.cc-b:last-child:nth-child(2n+1){grid-column:1/-1}}

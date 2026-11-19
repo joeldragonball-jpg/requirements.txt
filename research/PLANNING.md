@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-19 08:10 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-19 09:31 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -132,17 +132,17 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09
 - [media] 2026-10-25 (25 d) · [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov)
 - [media] 2026-10-25 (25 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov
 - [media] 2026-10-25 (25 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
-- … y 35 más en el Seguimiento
+- … y 38 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
-- 🔴 Voces: Voces sin confirmar (30) → W06 · 17 llevan más de 14 días
+- 🔴 Voces: Voces sin confirmar (42) → W06 · 18 llevan más de 14 días
 - 🔴 Predicciones: Vencidas sin resultado (1) → W06 · #20
 - 🔴 Datos a mano: Liquidez de Japón y China (1) → W01 · CN (2026-09)
 - 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (33) → rutina de cada tema (ver explorador/frescura.json) · verdes 47, amarillos 20, rojos 6, grises 7. Rojos: bancos-eba, espana-contrataci
 - 🟡 Radar regulatorio: Celdas sin dato (8) → W03 · Más huecos: IR 2, AE 1, BRICS 1, ID 1, EG 1
 
 ## Bots con problema
-- Votos de noticias, Paneles de datos
+- Alertas de precio, Vigilancia on-chain, Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-10 · Inflación EE. UU. (IPC de octubre) (alto) → ◐ rutina ejecutada (W01 del 2026-11-16); dato sin marcar como leído
@@ -173,6 +173,8 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 
 ## Predicciones que vencen en 14 días
 - #20 · 2026-10-23 · ledger
+- #80 · 2026-11-22 · Despeja La X (David Martínez), en vídeo
+- #76 · 2026-11-27 · Despeja La X (David Martínez), en vídeo
 - #24 · 2026-11-30 · Abbas Araqchi (ministro de Exteriores de Irán), vía Catar, según prensa
 - #68 · 2026-11-30 · Richard Blumenthal (cartas del 5-nov), según Cointelegraph y Unchained
 - #24 · 2026-11-30 · IMF PortWatch

@@ -142,3 +142,7 @@ actualizado: 2026-10-07
 - Warren (CBS, 8-nov): corrupción e Irán; no habló de la Clarity ni del filibuster [P].
 - A vigilar: (1) texto de la ley demócrata o cierre de debate en el periodo de transición, antes del 3-ene-2027; (2) respuestas de Binance/Tether/WLFI y citaciones desde enero.
 - Fiscalidad España (vídeo 6-nov): sin efecto sobre XRP/XLM; solo contexto (721 con 50.000 €, recargo 15 %).
+- 2026-11-19 (V01 profundo): la nota oficial de DTCC (12-nov) no nombra XRP ni XRPL: redes Canton, Besu, Stellar (1S-2027), Solana (2S-2027) y Circle Arc (2027). Catalizador para XLM solo si el volumen real pasa por Stellar; para XRP, sin mención oficial.
+- Old Glory Bank: XRP es un añadido posterior sin fecha (primera fase Ethereum, Polygon y PulseChain); no es catalizador a corto plazo.
+- XRPL lending (LendingProtocol/SingleAssetVault): enabled=false el 16-nov; vigilar el 80 % durante dos semanas.
+- Fechas duras para vigilar: nuevo voto de cierre de la Clarity (antes del 3-ene-2027), 13F del 4T (≈15-feb-2027) y piloto del euro digital (2S-2027).
