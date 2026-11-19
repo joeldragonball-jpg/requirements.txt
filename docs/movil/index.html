@@ -589,8 +589,13 @@ function vDatos() {
       fil = L => (L || []).map(r => f3(r[0], r[1], r[2])).join(''), nota = t => t ? `<div class="aviso" style="margin:8px 0;color:var(--sub)">${esc(t)}</div>` : '', t2 = t => `<div class="meta2" style="margin:10px 0 4px">${esc(t)}:</div>`;
     if (X.cad) { const c = X.cad;
       out.push(tj('Cadenas: resumen', `${c.cadenas.length} redes y protocolos · RWA por cadena en M$ · leído ${esc(c.leido || '')}`, `${nota(c.unidad)}${t2('Activos reales tokenizados por cadena')}${fil(c.rwa)}${nota(c.tot)}${t2('Cadenas seguidas')}${fil(c.cadenas)}${nota(c.aviso)}`, 1)); }
+    if (X.cad2) { const c = X.cad2, ls = a => (a || []).length ? t2('Sin dato todavía') + (a || []).map(x => `<div class="meta2" style="margin:3px 0">· ${esc(x)}</div>`).join('') : '';
+      out.push(tj('Cadenas: DTCC por red', `hoja de ruta del servicio de tokenización · ${c.dtcc.length} filas · nivel en cada una`, `${nota(c.unidad)}${nota(c.dtcc_nota)}${fil(c.dtcc)}${ls(c.dtcc_sd)}`, 1));
+      out.push(tj('Cadenas: préstamos y bóvedas', 'XRPL (votos de validadores) frente a Stellar y Solana · TVL y prestado en M$', `${nota(c.unidad)}${nota(c.prest_nota)}${fil(c.prest)}${ls(c.prest_sd)}`, 1));
+      out.push(tj('Cadenas: representado o distribuido', 'brecha por red a 19-nov-2026 · RWA.xyz y DefiLlama [S] · M$', `${nota(c.unidad)}${nota(c.brecha_nota)}${(c.brecha_tot || []).map(t => nota(t)).join('')}${fil(c.brecha)}${ls(c.brecha_sd)}`, 1));
+      out.push(tj('Cadenas: qué vigilar', 'fechas y umbrales · son calendario, no previsiones', `${nota(c.vig_nota)}${fil(c.vig)}`, 1)); }
     if (X.etff) { const e = X.etff;
-      out.push(tj('ETF cripto: flujos y patrimonio', `XRP, XLM y BTC · AUM en M$ · generado ${esc(e.gen || '')}`, `${nota(e.unidad + '. Nivel ' + e.nivel + '. Flujo = variación de acciones × NAV entre dos lecturas; sin dos lecturas no se calcula.')}${fil(e.fil)}${e.farside.length ? t2('Flujo neto diario de ETF spot de BTC en EE. UU. (Farside)') + fil(e.farside) + nota(e.farside_n) : ''}`, 1)); }
+      out.push(tj('ETF cripto: flujos y patrimonio', `XRP, XLM, SOL y BTC · AUM, comisión y custodio · AUM en M$ · generado ${esc(e.gen || '')}`, `${nota(e.unidad + '. Nivel ' + e.nivel + '. Flujo = variación de acciones × NAV entre dos lecturas; sin dos lecturas no se calcula.')}${fil(e.fil)}${e.farside.length ? t2('Flujo neto diario de ETF spot de BTC en EE. UU. (Farside)') + fil(e.farside) + nota(e.farside_n) : ''}`, 1)); }
     if (X.fert) { const f = X.fert;
       out.push(tj('Fertilizantes y agua', `precio mundial en USD/t y coste del agua en €/m³ · leído ${esc(f.leido || '')}`, `${nota(f.unidad)}${t2('Fertilizantes (Banco Mundial)')}${fil(f.fert)}${t2('Coste unitario del agua por CCAA, 2024 (INE)')}${fil(f.agua)}`, 1)); }
     const x = X.esx || {};

@@ -86,6 +86,13 @@
 | 80 | 2026-11-13 | Despeja La X (David Martínez), en vídeo | El 22-nov los exchanges rusos podrán listar cripto | 2026-11-22 | Banco de Rusia: comunicado oficial | Sin resolver [VERIFICAR]; ninguna fuente sitúa el hito en esa fecha |
 | 81 | 2026-11-13 | Despeja La X (David Martínez), en vídeo | La enmienda de lending del XRPL se votará y quedará lista antes de fin de año | 2026-12-31 | xrpl.org/known-amendments: LendingProtocol enabled=true | Sin resolver [P hasta 16-nov]: enabled=false (W06) |
 | 82 | 2026-11-17 | Despeja La X (David Martínez), en vídeo | Las instituciones siguen manteniendo o aumentando sus posiciones en ETF de XRP (no venden por pánico) | 2027-02-15 | EDGAR: 13F del 4T-2026 de Goldman, Jane Street, Millennium | Sin resolver [ESPECULACIÓN]; 13F del 3T no prueba reacción a la caída de noviembre |
+| 83 | 2026-05-05 | Bullish (comunicado oficial) | La compra de Equiniti (4.200 M$) cerrará en enero de 2027 | 2027-01-31 | bullish.com o 8-K de la SEC: comunicado de cierre | Abierta [P]; leído el comunicado del 19-nov; plazo sujeto a autorizaciones; Bullish es parte interesada |
+| 84 | 2026-05-05 | Bullish (comunicado oficial) | Ingresos +6-8 % anual en 2027-2029, con +20 % anual en tokenización y blockchain | 2029-12-31 | 10-K de Bullish de 2027, 2028 y 2029 | Abierta [P]; proyección de la propia empresa (con aviso de incertidumbre) |
+| 85 | 2026-11-16 | Jupiter (Kash Dhanda) y Bullish (Thomas Cowan), por Decrypt y Crypto Briefing | Se abrirá un mercado de préstamos con permisos sobre acciones tokenizadas de Bullish (BLSH) | 2027-06-30 (límite propuesto) | Comunicado de apertura de Jupiter o Bullish con fecha | Abierta [S]; sin fecha ni jurisdicciones; el vídeo dijo «a principios de este año» (sin respaldo) |
+| 86 | 2026-11-16 | Jupiter (Kash Dhanda), por Crypto Briefing | Prueba de patrimonio, puntuación crediticia en cadena y datos en cero conocimiento estarán disponibles en el Global Passport | 2027-06-30 (límite propuesto) | Anuncio o documentación de Jupiter | Abierta [S]; el vídeo los dio por ya activos |
+| 87 | 2026-10-28 | DTCC (nota de lanzamiento) | Se añadirán redes adicionales al servicio de tokenización en 2027 (Solana ya anunciada para 2S-2027) | 2027-12-31 | dtcc.com: notas que nombren una red nueva | Abierta [P]; leída el 19-nov; la nota no nombra otras redes |
+| 88 | 2026-11-16 | Bitwise (Kam Benbrik y Rafal Klich), por The Block | El escenario alcista de SOL exige ~3.600 M de transacciones diarias en 2031 (~23× hoy) | 2031-12-31 | Transacciones diarias de Solana en un explorador (p. ej. Solscan) | Sin resolver [ESPECULACIÓN]; supuesto de un emisor de ETF de Solana |
+| 89 | 2026-11-16 | Scott Lucas (Barclays), por Decrypt | El valor inmediato de la tokenización está en mover colateral entre cuentas propias del banco; los servicios a clientes llegarán después | Sin fecha | Anuncio de Barclays de un servicio de colateral tokenizado a clientes | Sin puntuar [S]; sin umbral ni fecha |
 
 ## Criterios de medición (C108, 18-nov-2026)
 
@@ -175,5 +182,14 @@
 | 80 | Rusia lista cripto el 22-nov | cbr.ru | Comunicado con fecha 22-nov | 2026-11-22 | Abierta | Hito sin cotejar |
 | 81 | XRPL lending activado | xrpl.org known-amendments | LendingProtocol enabled=true | 2026-12-31 | Abierta | W06 16-nov: enabled=false |
 | 82 | Instituciones no venden ETF de XRP | EDGAR 13F 4T | Goldman ≥ 100 M$ y sin salida de Jane Street/Millennium | 2027-02-15 | Abierta | 13F del 3T no mide la caída |
+| 83 | Cierre de Equiniti por Bullish | bullish.com / SEC 8-K | Comunicado de cierre | 2027-01-31 | Abierta | Comunicado del 5-may leído el 19-nov |
+| 84 | Ingresos de Bullish +6-8 % anual (+20 % tokenización) | 10-K de Bullish | Crecimiento medio ≥ 6 % en 2027-2029 y ≥ 20 % en el segmento | 2029-12-31 | Abierta | Proyección de la empresa |
+| 85 | Préstamos sobre BLSH en Jupiter | Jupiter / Bullish | Mercado abierto a usuarios verificados | 2027-06-30 (propuesto) | Abierta | Sin fecha en las fuentes |
+| 86 | Prueba de patrimonio y puntuación crediticia | Jupiter | Funciones disponibles | 2027-06-30 (propuesto) | Abierta | Solo Crypto Briefing |
+| 87 | DTCC añade redes en 2027 | dtcc.com | Nota que nombre una red nueva | 2027-12-31 | Abierta | Nota del 28-oct leída el 19-nov |
+| 88 | Solana a ~3.600 M tx/día | Explorador de Solana | ≥ 3.600 M de transacciones diarias | 2031-12-31 | Abierta [ESPECULACIÓN] | Supuesto de Bitwise (The Block) |
+| 89 | Barclays: colateral propio primero, clientes después | Barclays | Servicio a clientes anunciado con fecha | Sin fecha | Sin puntuar | Solo Decrypt |
 
 Recuento (19-nov, V01 profundo: +10 filas, 73-82, todas abiertas o sin puntuar): 82 con criterio. Recuento previo (18-nov): 72 con criterio. 13 resueltas (7, 9, 10, 15, 19, 25, 31, 44, 45, 48, 58, 60, 62): 9 acertó o en parte, 2 falló (25, 45), 2 mal planteada o mixta (9, 19). 10 sin puntuar (13, 50, 55, 56, 57, 63, 64, 67, 71, 72). Leída hoy en fuente oficial: solo #18 (sigue abierta).
+
+Recuento (19-nov, C344: +7 filas, 83-89, todas abiertas o sin puntuar): 89 con criterio. Leídas hoy en fuente oficial: #83, #84 y #87 (comunicados de Bullish y DTCC); #85, #86, #88 y #89 solo por prensa [S].

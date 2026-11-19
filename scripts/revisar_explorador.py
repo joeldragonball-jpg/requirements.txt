@@ -448,6 +448,44 @@ if RUTA_CAD.exists():
             celda_cadena(f"relación {rid}", h, ("P", "S", "V", "R"))
             if any(x not in r.get("cadenas", []) for x in h.get("cadenas", [])):
                 aviso(f"relación {rid}", f"un hecho cita redes que no están en la relación: {h.get('cadenas')}")
+    # C339-C341 (19-nov): bloques dtcc_ruta, rendimiento_redes, brecha_rwa y vigilar; cada celda con fuente, fecha y nivel
+    _N4 = ("P", "S", "V", "R")
+    _dt = cad.get("dtcc_ruta") or {}
+    for i, x in enumerate(_dt.get("marco", [])):
+        celda_cadena(f"dtcc_ruta marco {i}", x, _N4)
+    for x in _dt.get("redes", []):
+        if x.get("id") not in ids_c:
+            aviso("dtcc_ruta", f"red que no existe en cadenas: {x.get('id')!r}")
+        if x.get("celda") is not None:
+            celda_cadena(f"dtcc_ruta {x.get('id')}", x["celda"], _N4)
+    for x in _dt.get("otras", []):
+        celda_cadena(f"dtcc_ruta {x.get('nombre')}", x.get("celda"), _N4)
+    _rr = cad.get("rendimiento_redes") or {}
+    celda_cadena("rendimiento_redes estado XRPL", (_rr.get("xrpl") or {}).get("estado"))
+    celda_cadena("rendimiento_redes votos XRPL", (_rr.get("xrpl") or {}).get("votos"))
+    for x in _rr.get("filas", []):
+        if x.get("id") not in ids_c:
+            aviso("rendimiento_redes", f"red que no existe en cadenas: {x.get('id')!r}")
+        celda_cadena(f"rendimiento_redes {x.get('protocolo')}", x.get("celda"))
+        for k in ("tvl", "prestado"):
+            if x.get(k) is not None and not isinstance(x[k], (int, float)):
+                aviso(f"rendimiento_redes {x.get('protocolo')}", f"«{k}» (M$) debe ser número o null")
+    _bq = cad.get("brecha_rwa") or {}
+    for k in ("totales", "jupiter", "brecha", "reclasificacion"):
+        celda_cadena(f"brecha_rwa {k}", _bq.get(k), _N4)
+    for x in _bq.get("trampas", []):
+        celda_cadena("brecha_rwa trampa", x, _N4)
+    for x in _bq.get("filas", []):
+        if x.get("id") not in ids_c:
+            aviso("brecha_rwa", f"red que no existe en cadenas: {x.get('id')!r}")
+        for k in ("dist", "rep", "pct", "tvl_cadena", "stable", "defi", "activos", "titulares"):
+            if x.get(k) is not None and not isinstance(x[k], (int, float)):
+                aviso(f"brecha_rwa {x.get('id')}", f"«{k}» debe ser número o null")
+        for k, v in (x.get("celdas") or {}).items():
+            if v is not None:
+                celda_cadena(f"brecha_rwa {x.get('id')}.{k}", v)
+    for x in (cad.get("vigilar") or {}).get("filas", []):
+        celda_cadena(f"vigilar {x.get('cuando')}", x.get("celda"), _N4)
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     import etiquetar_cadenas as _et
     _regs = _et.reglas(cad)

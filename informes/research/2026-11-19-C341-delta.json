@@ -1,0 +1,56 @@
+{
+ "_actualizado": "2026-11-19",
+ "tarea": "C341",
+ "aviso": "Delta para fusionar a mano en explorador/cadenas.json (no se ha editado ningun JSON existente). Celdas {t,f,u,d,n}; sin dato = null. n: S = agregador leido (RWA.xyz, DefiLlama), R = razonado. Importes en M$ (millones de dolares).",
+ "rwa_totales": {
+  "t": "RWA.xyz, Networks, 19-nov-2026: distribuido 41.840 M$, representado 430.960 M$ (suma 472.800 M$), stablecoins 275.800 M$, 40 redes. Frente al 14-nov: distribuido 39.680 a 41.840 M$ (+5,4 %), representado 421.850 a 430.960 M$ (+2,2 %)",
+  "f": "RWA.xyz, Networks (leida en Chrome)", "u": "https://app.rwa.xyz/networks", "d": "2026-11-19", "n": "S"
+ },
+ "jupiter_cotejo": {
+  "t": "COO de Jupiter (Decrypt, 16-nov): ~460.000 M$ rastreados por RWA.xyz, ~39.500 M$ en cadena y movibles fuera del emisor, 3.400 M$ en DeFi segun DefiLlama. RWA.xyz el 19-nov: 472.800 M$ en total (el 460.000 queda 2,8 % por debajo), 41.840 M$ distribuidos (el 39.500 coincide con el 14-nov: 39.680) y DefiLlama categoria RWA 3.034 M$ (190 protocolos). Orden de magnitud confirmado; la cifra de DeFi no se reproduce exacta (definicion de Jupiter no consta)",
+  "f": "Decrypt 16-nov-2026 (via WebFetch); RWA.xyz Networks; api.llama.fi/protocols (categoria RWA)", "u": "https://app.rwa.xyz/networks", "d": "2026-11-19", "n": "S"
+ },
+ "brecha": {
+  "t": "Distribuido/total = 8,9 % (41.840/472.800); DeFi(DefiLlama RWA)/distribuido = 7,3 % (3.034/41.840). Canton aporta 384.695 M$ representados = 89,3 % del representado mundial",
+  "f": "Calculo propio sobre RWA.xyz y DefiLlama", "u": "https://app.rwa.xyz/networks", "d": "2026-11-19", "n": "R"
+ },
+ "redes": {
+  "ethereum": {
+   "distribuido": {"t": "14.832,5 M$ distribuidos, 99,5 M$ representados (99,3 % distribuido); 3.374 activos; 295.119 titulares", "f": "RWA.xyz, Networks", "u": "https://app.rwa.xyz/networks", "d": "2026-11-19", "n": "S"},
+   "defi_rwa": {"t": "1.369,7 M$ en protocolos de categoria RWA; TVL total de la cadena 37.143 M$", "f": "DefiLlama api.llama.fi/protocols y /v2/chains", "u": "https://defillama.com/categories/RWA", "d": "2026-11-19", "n": "S"},
+   "stable": {"t": "Stablecoins 135.616 M$", "f": "RWA.xyz, Networks", "u": "https://app.rwa.xyz/networks", "d": "2026-11-19", "n": "S"}
+  },
+  "solana": {
+   "distribuido": {"t": "5.202,8 M$ distribuidos, 125,9 M$ representados (97,6 %); 3.591 activos; 1.059.173 titulares", "f": "RWA.xyz, Networks", "u": "https://app.rwa.xyz/networks", "d": "2026-11-19", "n": "S"},
+   "defi_rwa": {"t": "560,5 M$ en categoria RWA; TVL de la cadena 4.790 M$", "f": "DefiLlama", "u": "https://defillama.com/categories/RWA", "d": "2026-11-19", "n": "S"},
+   "stable": {"t": "Stablecoins 12.665 M$ (14-nov: 13.874 M$)", "f": "RWA.xyz, Networks", "u": "https://app.rwa.xyz/networks", "d": "2026-11-19", "n": "S"}
+  },
+  "stellar": {
+   "distribuido": {"t": "4.953,7 M$ distribuidos, 77,2 M$ representados (98,5 %); 84 activos; 26.230 titulares. 4.ª red por distribuido", "f": "RWA.xyz, Networks", "u": "https://app.rwa.xyz/networks", "d": "2026-11-19", "n": "S"},
+   "defi_rwa": {"t": "6,9 M$ en categoria RWA; TVL de la cadena 196,9 M$. DeFi/distribuido ≈ 0,1 %", "f": "DefiLlama", "u": "https://defillama.com/categories/RWA", "d": "2026-11-19", "n": "S"},
+   "stable": {"t": "Stablecoins 411,3 M$", "f": "RWA.xyz, Networks", "u": "https://app.rwa.xyz/networks", "d": "2026-11-19", "n": "S"}
+  },
+  "xrpl": {
+   "distribuido": {"t": "3.008,4 M$ distribuidos y 2.976,5 M$ representados (50,3 % distribuido); 456 activos; 2.949 titulares. Cambio frente al 14-nov (643 / 5.207 M$): reclasificacion en RWA.xyz, no flujo", "f": "RWA.xyz, Networks", "u": "https://app.rwa.xyz/networks", "d": "2026-11-19", "n": "S"},
+   "defi_rwa": {"t": "Ningun protocolo de categoria RWA con TVL en XRPL en DefiLlama; TVL de la cadena 31,3 M$", "f": "DefiLlama", "u": "https://defillama.com/categories/RWA", "d": "2026-11-19", "n": "S"},
+   "stable": {"t": "Stablecoins 759,7 M$", "f": "RWA.xyz, Networks", "u": "https://app.rwa.xyz/networks", "d": "2026-11-19", "n": "S"}
+  },
+  "avalanche": {
+   "distribuido": {"t": "1.374,9 M$ distribuidos, 11.403,5 M$ representados (10,8 % distribuido); 1.365 activos; 10.115 titulares", "f": "RWA.xyz, Networks", "u": "https://app.rwa.xyz/networks", "d": "2026-11-19", "n": "S"},
+   "defi_rwa": {"t": "10,4 M$ en categoria RWA; TVL de la cadena 544,2 M$", "f": "DefiLlama", "u": "https://defillama.com/categories/RWA", "d": "2026-11-19", "n": "S"},
+   "stable": {"t": "Stablecoins 698,4 M$", "f": "RWA.xyz, Networks", "u": "https://app.rwa.xyz/networks", "d": "2026-11-19", "n": "S"}
+  },
+  "canton": {
+   "distribuido": {"t": "0 distribuido y 384.695 M$ representados (2 activos; 89,3 % del representado mundial); sin titulares ni stablecoins en la tabla", "f": "RWA.xyz, Networks", "u": "https://app.rwa.xyz/networks", "d": "2026-11-19", "n": "S"},
+   "defi_rwa": {"t": "Sin protocolo de categoria RWA; TVL de la cadena 11,2 M$ (DefiLlama)", "f": "DefiLlama", "u": "https://defillama.com/categories/RWA", "d": "2026-11-19", "n": "S"},
+   "stable": null
+  }
+ },
+ "trampas": [
+  "RWA.xyz distribuido/representado se reclasifica: XRPL representado 5.207 M$ (14-nov) a 2.976 M$ (19-nov) y distribuido 643 a 3.008 M$; no es flujo.",
+  "La suma representado esta dominada por Canton (384.695 M$) y Provenance (26.887 M$): tokenizado no es negociable.",
+  "Las tablas por plataforma incluyen stablecoins; la tabla de redes las separa.",
+  "DefiLlama categoria RWA (190 protocolos) no cubre todo el tokenizado; no se sumaron las claves borrowed ni staking. Por eso 3.034 M$ no es 3.400 M$."
+ ],
+ "sin_dato": ["Definicion exacta y fecha del 3.400 M$ de Jupiter", "Desglose DeFi por red de RWA.xyz (login)", "Overview de RWA.xyz donde figura el 460.000 M$ (no leido)"]
+}

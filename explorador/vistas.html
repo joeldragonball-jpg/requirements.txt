@@ -2160,12 +2160,17 @@ function nGdelt(){
   w.append(el('h3',null,'Por país (ordenados por cambio reciente)'),scrollX(tabla([{t:'País',f:r=>r.pais},{t:'Media 30 d (%)',n:1,f:r=>nvc(r.media_30d,2)},{t:'Ratio 30/90',n:1,f:r=>cr(r)},{t:'Último pico',f:r=>vc(((r.picos||[])[0]||{}).fecha)}],Object.values(G.paises||{}).slice().sort((a,b)=>(b.ratio_30_90||0)-(a.ratio_30_90||0)))));
   w.append(el('p','nota-v',(G.aviso||'')+' ACLED: '+vc(G.acled)+'. Fuente: '+(G.fuente||'')));return w}
 function nEtf(){
-  const E=D.etf_flujos,w=el('div'),u=x=>{const h=(x.historial||[]);return h[h.length-1]};
-  w.append(scrollX(tabla([{t:'Fondo',f:r=>r.ticker+' · '+r.nombre+(r.ticker==='GXLM'?' (fideicomiso OTC, no ETF en bolsa)':'')},{t:'Activo',f:r=>r.activo},{t:'Emisor',f:r=>r.emisor},{t:'Dato de',f:r=>vc((u(r)||{}).fecha)},{t:'Acciones',n:1,f:r=>nvc((u(r)||{}).acciones,0)},{t:'NAV ($)',n:1,f:r=>nvc((u(r)||{}).nav,2)},{t:'Tenencia (monedas)',n:1,f:r=>nvc((u(r)||{}).tenencia_monedas,0)},{t:'AUM ($)',n:1,f:r=>nvc((u(r)||{}).aum_usd,0)},{t:'Flujo diario ($)',n:1,f:r=>r.flujo_usd==null?'vacío':nvc(r.flujo_usd,0)},{t:'Nivel',f:r=>nivelBadge(String(((u(r)||{}).nivel)||'V')[0])},{t:'Web del emisor',f:r=>r.web?lkx(r.web,'emisor ↗'):'vacío'}],E.etfs||[])));
+  const E=D.etf_flujos,w=el('div'),sd=t=>String(t==null?'':t).replace(/null/g,'sin dato'),u=x=>{const h=(x.historial||[]);return h[h.length-1]};
+  w.append(scrollX(tabla([{t:'Fondo',f:r=>r.ticker+' · '+r.nombre+(r.ticker==='GXLM'?' (fideicomiso OTC, no ETF en bolsa)':'')},{t:'Activo',f:r=>r.activo},{t:'Emisor',f:r=>r.emisor},{t:'Dato de',f:r=>vc((u(r)||{}).fecha)},{t:'Acciones',n:1,f:r=>nvc((u(r)||{}).acciones,0)},{t:'NAV ($)',n:1,f:r=>nvc((u(r)||{}).nav,2)},{t:'Tenencia (monedas)',n:1,f:r=>nvc((u(r)||{}).tenencia_monedas,0)},{t:'Activos netos (M$) y fecha',n:1,f:r=>{const q=u(r)||{};return q.aum_usd==null?'sin dato':nvc(q.aum_usd/1e6,1)+' M$ · '+vc(q.fecha)}},{t:'Comisión anual (%)',n:1,f:r=>r.comision_pct==null?'sin dato':nvc(r.comision_pct,2)+' %'},{t:'Custodio',f:r=>r.custodio||'sin dato'},{t:'Lanzamiento',f:r=>r.lanzamiento?vc(r.lanzamiento):'sin dato'},{t:'AUM ($)',n:1,f:r=>nvc((u(r)||{}).aum_usd,0)},{t:'Flujo diario ($)',n:1,f:r=>r.flujo_usd==null?'vacío':nvc(r.flujo_usd,0)},{t:'Nivel',f:r=>nivelBadge(String(((u(r)||{}).nivel)||'V')[0])},{t:'Web del emisor',f:r=>r.web?lkx(r.web,'emisor ↗'):'vacío'}],E.etfs||[])));
+  /* C343 (19-nov): resumen de los ETF de Solana (datos trimestrales del 10-Q de 30-sep, no flujos) y notas de comisión */
+  {const so=(E.etfs||[]).filter(r=>r.activo==='SOL'),pa=so.map(r=>({t:r.ticker,v:(u(r)||{}).aum_usd})).filter(x=>x.v!=null),tot=pa.reduce((a,x)=>a+x.v,0),mx=pa.slice().sort((a,b)=>b.v-a.v)[0];
+   if(so.length){const p=el('p','nota-v');p.append(nivelBadge('P'),document.createTextNode(' ETF de Solana ('+so.length+' fondos, '+pa.length+' con cifras): activos netos a 30-sep-2026 (10-Q del emisor, parte interesada, no auditado; dato trimestral, no es flujo): suma '+nvc(tot/1e6,0)+' M$ (cálculo propio, nivel RAZONADO)'+(mx?'; '+mx.t+' es '+nvc(mx.v/tot*100,0)+' % del total':'')+'. '+so.filter(r=>!(u(r)||{}).aum_usd).map(r=>r.ticker+': sin dato (archivo no leído) [VERIFICAR]').join(' · ')+'. Comisiones con renuncia temporal: no son el coste permanente (ver nota por fondo). Sin contraste Farside/SoSoValue.'));w.append(p)}
+   const cn=(E.etfs||[]).filter(r=>r.comision_nota);
+   if(cn.length){const d=el('details');d.append(el('summary',null,'Comisión, custodio y fuente por fondo ('+cn.length+')'));const ul=el('ul','cad-lst');cn.forEach(r=>{const li=el('li');li.append(el('b',null,r.ticker+': '),document.createTextNode(sd(r.comision_nota)+'. Custodio: '+(r.custodio||'sin dato')+'. '+(r.fecha_prospecto?'Documento del '+r.fecha_prospecto+' ':'')));if(r.fuente_prospecto)li.append(lkx(r.fuente_prospecto,'SEC ↗'));ul.append(li)});d.append(ul);w.append(d)}}
   const sin=(E.etfs||[]).filter(r=>r.flujo_usd==null&&r.flujo_motivo);
-  if(sin.length)w.append(el('p','nota-v','Flujo vacío: '+sin.map(r=>r.ticker+' ('+r.flujo_motivo+')').join(' · ')+'.'));
-  w.append(el('p','nota-v',(E.metodo||'')+' '+(E.nota_nivel||'')));
-  const bn=E.bloques_no_hechos||{};if(Object.keys(bn).length)w.append(el('p','nota-v','Pendiente: '+Object.entries(bn).map(([k,v])=>k+': '+v).join(' · ')));
+  if(sin.length)w.append(el('p','nota-v','Flujo vacío: '+sin.map(r=>r.ticker+' ('+sd(r.flujo_motivo)+')').join(' · ')+'.'));
+  w.append(el('p','nota-v',sd(E.metodo)+' '+sd(E.nota_nivel)));
+  const bn=E.bloques_no_hechos||{};if(Object.keys(bn).length)w.append(el('p','nota-v','Pendiente: '+Object.entries(bn).map(([k,v])=>k+': '+sd(v)).join(' · ')));
   w.append(...etf13f(E),...etfContraste(E));return w}
 /* 13F del 3T (EDGAR/13f.info), lecturas directas y trackers de contraste. Unidades unificadas: todo se muestra en millones de USD (M$);
    13f.info trae «miles de USD» (valor_usd_miles / valor_declarado_usd_miles) y las lecturas de EDGAR traen USD (valor_usd): se convierten aquí y se declara en cada cabecera. */
@@ -2250,7 +2255,7 @@ function pCadenas(){
   if(R0.stellar)br.append(el('p','nota-v',R0.stellar));
   const w=el('div','cad-env');w.append(tabla([{t:'Red',f:r=>{if(!/^(Canton|Avalanche)$/.test(r.cadena))return r.cadena;const s=el('span');s.append(document.createTextNode(r.cadena+' '),el('span','chip','distribuido ≠ representado'));s.title='«Representado» es lo registrado en la cadena pero no transferible ni liquidado en ella; no se suma ni se compara con el «distribuido» de otras redes.';return s}},{t:'Distribuido',n:1,f:r=>mm(r.dist)},{t:'Representado',n:1,f:r=>mm(r.rep)},{t:'Stablecoins',n:1,f:r=>mm(r.stable)}],(R0.filas||[]).slice().sort((a,b)=>(b.dist||0)-(a.dist||0))));br.append(w);
   br.append(el('p','nota-v','Distribuido ≠ representado: en Canton y Avalanche casi todo el valor figura como «representado» (registrado en la cadena, no transferible en ella); no equivale al «distribuido» de Ethereum o Stellar.'));
-  const dn=el('details','cad-mas');dn.dataset.auto='1';dn.append(el('summary',null,'Qué mide y de dónde sale'));const pn=el('p','nota-v',(R0.nota||'')+' '+(R0.totales||'')+' ');pn.append(nivelBadge(R0.n),document.createTextNode(' '+(R0.d||'')+' '));if(R0.u)pn.append(lk(R0.u,'abrir ↗'));dn.append(pn);br.append(dn);
+  const dn=el('details','cad-mas');dn.dataset.auto='1';dn.append(el('summary',null,'Qué mide y de dónde sale'));const pn=el('p','nota-v',(R0.nota||'')+' '+(R0.totales||'')+' ');pn.append(nivelBadge(R0.n),document.createTextNode(' '+(R0.d||'')+' '));if(R0.u)pn.append(lk(R0.u,'abrir ↗'));dn.append(pn);if(R0.reconciliacion_19nov)dn.append(hecho(R0.reconciliacion_19nov));br.append(dn);
   const bl=el('div','caja');bl.append(el('h3',null,'Cómo se lee'));
   const ul=el('ul','cad-lst');CR.forEach(x=>{const li=el('li');li.append(el('b',null,x.n+': '),document.createTextNode(x.que));ul.append(li)});bl.append(ul);
   const ley=el('p','nota-v');ley.append(document.createTextNode('¿Necesita el token? '));[['sí','el uso lo consume o lo exige'],['parcial','a veces o con alternativa'],['mínimo','solo comisiones pequeñas'],['no','no lo necesita'],['sin dato','sin evidencia']].forEach(([k,t])=>{const s=el('span','tk '+tkc(k),k);s.title=t;ley.append(s,document.createTextNode(t+' · '))});bl.append(ley);
@@ -2305,7 +2310,7 @@ function pCadenas(){
     const TIPOS=[['deuda','Deuda y letras'],['fondos','Fondos y estrategias'],['acciones','Acciones'],['materias','Materias primas'],['credito','Crédito privado'],['inmuebles','Inmuebles'],['otros','Otros']];
     const fm=v=>v<0.1?'<0,1 M$':v>=1000?num(v/1000,2).replace(/,00$/,'')+' mil M$':num(v,v<10?1:0)+' M$';
     const bx=el('div','caja');bx.append(el('h2',null,'¿Qué se tokeniza en cada red?'));
-    bx.append(el('p','nota-v','Valor tokenizado por tipo de activo (M$ = millones de dólares), sin stablecoins. Fuente: RWA.xyz [S], leída el 14-nov-2026. La barra es el peso del tipo dentro de la propia red. «sin dato» = no entra en las 10 mayores clases visibles; no significa cero. Debajo de la tabla van los emisores, el estándar de contrato y el plazo de liquidación (donde la fuente lo da; «sin dato» si no se leyó) y, para las redes sin cifra comparable, lo que sí consta en texto. Solo hechos: no hay «ganador». Pasa el ratón o toca una cifra para ver el tipo de activo y los productos principales; el detalle completo está más abajo, en desplegables cerrados.'));
+    bx.append(el('p','nota-v','Valor tokenizado por tipo de activo (M$ = millones de dólares), sin stablecoins. Fuente: RWA.xyz [S], leída el 14-nov-2026 (la tabla por red del 19-nov está en «Representado o distribuido», más abajo). La barra es el peso del tipo dentro de la propia red. «sin dato» = no entra en las 10 mayores clases visibles; no significa cero. Debajo de la tabla van los emisores, el estándar de contrato y el plazo de liquidación (donde la fuente lo da; «sin dato» si no se leyó) y, para las redes sin cifra comparable, lo que sí consta en texto. Solo hechos: no hay «ganador». Pasa el ratón o toca una cifra para ver el tipo de activo y los productos principales; el detalle completo está más abajo, en desplegables cerrados.'));
     const tipTk=(ev,c,k,x)=>{tipT=Date.now();const e=$('tip');e.textContent='';const nT=(TIPOS.find(t=>t[0]===k)||[k,k])[1];e.append(el('b',null,tit(c)+' · '+nT));
       const d1=el('div');d1.append(el('b',null,'Valor: '),document.createTextNode(fm(x.v)+' en '+x.k+' activos'));e.append(d1);
       const dt=(x.detalle||[]).slice(0,5);if(dt.length){e.append(el('div',null,'Mayores productos:'));dt.forEach(r=>e.append(el('div',null,'· '+(r.producto||'vacío')+(r.emisor?' ('+r.emisor+')':'')+(r.importe_musd!=null?' — '+fm(r.importe_musd):''))))}
@@ -2316,6 +2321,7 @@ function pCadenas(){
       TIPOS.forEach(([k])=>{const x=tp[k];const td=el('td','cad-c '+(x?'nS':'nd'));if(x){td.title=x.t+'\n— '+x.f+' · '+x.d+' ['+x.n+']';const b=el('div','cad-bar');b.style.width=Math.max(4,Math.round(x.v/tot*100))+'%';td.append(el('div','cad-v',fm(x.v)),b,el('div','cad-k',x.k+' act.'));td.style.cursor='pointer';td.onmousemove=ev=>tipTk(ev,c,k,x);td.onmouseleave=()=>$('tip').style.display='none';td.onclick=ev=>tipTk(ev,c,k,x)}else td.textContent='sin dato';r.append(td)});
       tb.append(r)});
     const ev=el('div','cad-env');ev.append(tb);bx.append(ev);
+    TA.forEach(c=>{const q=(c.tipos_activo||{}).reconciliacion_19nov;if(q){bx.append(el('h3',null,'Fecha de estos datos y reclasificación del XRPL (14 frente a 19-nov)'),hecho(q))}});
     // C311 · detalle por red y tipo (producto, emisor, subtipo, importe, nivel, fecha)
     const dh=el('div','cad-det');dh.append(el('h3',null,'Detalle por red y tipo: qué producto y quién lo emite'));
     dh.append(el('p','nota-v','Pulsa (o toca) una red y luego un tipo. Importes en M$ (millones de dólares). «Emisor» es la plataforma que da RWA.xyz [S] y no prueba custodia; lo único confirmado por el propio emisor es PAXG [P]. Son los mayores activos visibles, no el total. «R» = representado (registrado en la cadena, no transferible en ella); «D» = distribuido.'));
@@ -2358,6 +2364,38 @@ function pCadenas(){
       dt.append(dd);gr.append(dt)});
     cr.append(gr);cm.after(cr)}
   {const X=C.dex_nativos;if(X){const bx=el('div','caja');bx.id='cad-dex';bx.append(el('h2',null,'DEX dentro del protocolo: XRPL y Stellar'),el('p','nota-v',X.intro));const gr=el('div','cx-grid');X.tarjetas.forEach(t=>{const d=el('div','cx-card');d.append(el('h4',null,t.red+' · '+t.nombre),el('p','que',t.que));const u=el('ul','cad-lst');t.hechos.forEach(h=>{const li=el('li');li.append(document.createTextNode(h.t+' '),nivelBadge(h.n),document.createTextNode(' '+(h.f||'')+' · '+(h.d||'sin fecha')+' '));if(h.u)li.append(lk(h.u,'abrir ↗'));u.append(li)});d.append(u);if(t.falta)d.append(el('p','nota-v','Falta: '+t.falta));gr.append(d)});bx.append(gr);const esc=['ethereum','solana','bnb','polygon','avalanche','stellar','xrpl'].map(id=>{const q=L.find(z=>z.id===id),v=q&&q.captura&&q.captura.liquidez&&q.captura.liquidez.dex30_musd;return v==null?null:tit(q).replace(/ \(.*\)$/,'')+' '+fmM(v)}).filter(Boolean);if(esc.length)bx.append(el('p','nota-v','Escala (intercambios en la cadena en 30 días, DefiLlama [S]; mide dónde se mueve el mercado, no la calidad): '+esc.join(' · ')+'.'));bx.append(el('p','nota-v',X.contraste));S.append(bx)}}
+  // C339-C341 (19-nov): DTCC por red, préstamos y votos del XRPL, brecha representado/distribuido y qué vigilar
+  (function(){
+    const mm=v=>v==null?'sin dato':miles(num(v,1))+' M$';
+    const src=v=>{const d=el('div');if(!v){d.append(el('span','cx-vac','sin dato'));return d}d.append(badge(v.n),document.createTextNode(' '),fuente(v));return d};
+    const lista=(t,arr)=>{const dt=el('details','cad-mas');dt.dataset.auto='1';dt.append(el('summary',null,t+' ('+arr.length+')'));const u=el('ul','cad-lst');arr.forEach(x=>u.append(el('li',null,x)));dt.append(u);return dt};
+    const caja=(id,tit2,nota)=>{const b=el('div','caja');b.id=id;b.append(el('h2',null,tit2),el('p','nota-v',nota||''));return b};
+    const D1=C.dtcc_ruta;
+    if(D1){const b=caja('cad-dtcc','DTCC Tokenization Service: hoja de ruta por red',D1.nota);
+      b.append(scrollX(tabla([{t:'Red',f:r=>el('b',null,r.red)},{t:'Estado',f:r=>r.estado},{t:'Fecha',f:r=>r.fecha},{t:'Activos',f:r=>r.activos},{t:'Fuente, fecha y nivel',f:r=>src(r.celda)}],D1.redes)));
+      b.append(el('h3',null,'Fuera del explorador: no son cadenas de esta lista'));(D1.otras||[]).forEach(o=>{const d=el('div','cad-h');d.append(el('b',null,o.nombre+' · '+o.estado+' · '+o.fecha+': '));d.append(document.createTextNode(o.celda.t+' '),badge(o.celda.n),document.createTextNode(' '),fuente(o.celda));b.append(d)});
+      b.append(el('h3',null,'Marco: carta de la SEC, lanzamiento, hoja de ruta y XRPL'));(D1.marco||[]).forEach(x=>b.append(hecho(x)));
+      if((D1.sin_dato||[]).length)b.append(lista('Sin dato todavía',D1.sin_dato));S.append(b)}
+    const R1=C.rendimiento_redes;
+    if(R1){const b=caja('cad-prestamos','Préstamos y bóvedas: XRPL frente a Stellar y Solana',R1.nota);const xv=R1.xrpl||{};
+      b.append(kpis([[xv.vault.votos+' de '+xv.vault.total,'SingleAssetVault (XLS-65): votos de validadores; umbral '+xv.vault.umbral],[xv.lending.votos+' de '+xv.lending.total,'LendingProtocol (XLS-66): votos de validadores; umbral '+xv.lending.umbral],['sin activar','ambas, enabled=false en la red principal (19-nov-2026)']]));
+      b.append(scrollX(tabla([{t:'Red',f:r=>r.red},{t:'Protocolo',f:r=>r.protocolo},{t:'TVL (M$)',n:1,f:r=>mm(r.tvl)},{t:'Prestado (M$)',n:1,f:r=>mm(r.prestado)},{t:'Estado',f:r=>r.estado},{t:'Fuente, fecha y nivel',f:r=>src(r.celda)}],R1.filas)));
+      b.append(el('h3',null,'Votos de validadores del XRPL'),hecho(xv.votos));
+      if((R1.sin_dato||[]).length)b.append(lista('Sin dato todavía',R1.sin_dato));S.append(b)}
+    const B1=C.brecha_rwa;
+    if(B1){const b=caja('cad-brecha','Representado o distribuido: la brecha por red (RWA.xyz y DefiLlama, 19-nov-2026)',B1.nota);
+      b.append(hecho(B1.totales),hecho(B1.brecha));
+      const pc=v=>v==null?'sin dato':num(v,1)+' %';
+      b.append(scrollX(tabla([{t:'Red',f:r=>{if(!/^(canton|avalanche|xrpl)$/.test(r.id))return r.red;const s2=el('span');s2.append(document.createTextNode(r.red+' '),el('span','chip','representado domina'));return s2}},{t:'Distribuido (M$)',n:1,f:r=>mm(r.dist)},{t:'Representado (M$)',n:1,f:r=>mm(r.rep)},{t:'% distribuido',n:1,f:r=>pc(r.pct)},{t:'DeFi categoría RWA (M$)',n:1,f:r=>r.defi==null?'sin protocolo':mm(r.defi)},{t:'Stablecoins (M$)',n:1,f:r=>mm(r.stable)},{t:'TVL de la cadena (M$)',n:1,f:r=>mm(r.tvl_cadena)}],B1.filas)));
+      b.append(el('p','nota-v',B1.otras+' Distribuido, representado y stablecoins: RWA.xyz [S]; DeFi y TVL: DefiLlama [S]; fecha 19-nov-2026.'));
+      b.append(el('h3',null,'XRPL: cambio de clasificación, no flujo'),hecho(B1.reclasificacion));
+      b.append(el('h3',null,'Trampas de la métrica'));(B1.trampas||[]).forEach(x=>b.append(hecho(x)));
+      const dj=el('details','cad-mas');dj.dataset.auto='1';dj.append(el('summary',null,'Cotejo de la cifra del COO de Jupiter (Decrypt, 16-nov)'),hecho(B1.jupiter));b.append(dj);
+      if((B1.sin_dato||[]).length)b.append(lista('Sin dato todavía',B1.sin_dato));S.append(b)}
+    const V1=C.vigilar;
+    if(V1){const b=caja('cad-vigilar','Qué vigilar: fechas y umbrales',V1.nota);
+      b.append(scrollX(tabla([{t:'Cuándo',f:r=>r.cuando},{t:'Qué',f:r=>{const s2=el('span');s2.append(document.createTextNode(r.que));if(r.nota)s2.append(el('br'),el('i',null,r.nota));return s2}},{t:'Fuente, fecha y nivel',f:r=>src(r.celda)}],V1.filas)));S.append(b)}
+  })();
   cadExtras(S);
   // fichas: selector de red + una sola ficha dividida en pestañas (no una página interminable)
   const cf=el('div','caja');cf.id='cad-fichas';cf.append(el('h2',null,'Ficha por red: qué es, qué hace y qué se sabe de cada una'),el('p','nota-v','Elige una red y una pestaña: capas, ISO 20022, hechos, hitos, noticias y enlaces están separados para no tener que recorrer una página larguísima.'));

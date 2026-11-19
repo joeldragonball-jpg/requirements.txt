@@ -5839,6 +5839,347 @@
         "url": "https://youtu.be/0wkHGOqiW04",
         "min": "0:00"
       }
+    },
+    {
+      "id": "v212",
+      "tipo": "dato",
+      "quien": "Bitwise (emisor de ETF de Solana y de XRP)",
+      "cuando": "2026-11-16",
+      "texto": "Qué vende: ETF cripto (Bitwise Solana Staking ETF BSOL y Bitwise XRP ETF, ambos en su lista de productos). Su informe sobre Solana (16-nov, Kam Benbrik y Rafal Klich) da en la propia web el caso base de 385 $ en 2031 (+36 % anual compuesto); el 1.100 $ alcista y el 80 $ bajista aparecen en prensa, no en esa página. Conflicto: gana comisión sobre el patrimonio de los fondos, así que un informe favorable a Solana encaja con su negocio; la web no declara tenencias propias de SOL ni XRP.",
+      "nivel": "P",
+      "conf": "compatible",
+      "capas": [
+        "fondos",
+        "token"
+      ],
+      "redes": [
+        "Solana",
+        "XRPL"
+      ],
+      "tokens": [
+        "XRP"
+      ],
+      "usos": [],
+      "fuente": {
+        "n": "Bitwise, informe «Tokenization, 24/7 trading and the economics of Solana» (16-nov-2026, leído 19-nov)",
+        "url": "https://bitwiseinvestments.com/crypto-market-insights/tokenization-247-trading-and-the-economics-of-solana"
+      },
+      "nota": "[C344 19-nov] Hecho leído en primaria: autores, fecha, caso base 385 $ y lista de ETP. Bull 1.100 $ y bear 80 $, supuestos (65 % de cuota, 60x, 700 M SOL) y The Block como fuente: [S] hasta abrir el PDF. Comisiones: BSOL 0,20 % + 0,06 % de staking y XRP ETF 0,34 % según notas de Bitwise/prensa [VERIFICAR en el prospecto]. Sesgo: el titular del vídeo usa solo el escenario alcista. No es recomendación.",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-18",
+        "url": "https://youtu.be/BqK2yeGn_n8",
+        "min": "20:00"
+      }
+    },
+    {
+      "id": "v213",
+      "tipo": "declaracion",
+      "quien": "Scott Lucas (Barclays, jefe de activos digitales), en el Breakpoint de Londres",
+      "cuando": "2026-11-16",
+      "texto": "Dijo que el colateral está «relativamente inactivo» en los depositarios centrales, que el valor más inmediato de tokenizar está en mover colateral entre cuentas del propio banco (los servicios a clientes vendrían después) y que querría ver Solana adoptada por otros depositarios de Asia-Pacífico, Europa y EE. UU. Es el «director de Barclays» sin nombre de v189.",
+      "nivel": "D",
+      "conf": "compatible",
+      "capas": [
+        "custodia",
+        "token"
+      ],
+      "redes": [
+        "Solana"
+      ],
+      "tokens": [],
+      "usos": [
+        "colateral"
+      ],
+      "fuente": {
+        "n": "Decrypt, «DTCC, Barclays say tokenization's real prize is unlocking idle collateral» (16-nov, act. 18-nov-2026)",
+        "url": "https://decrypt.co/383316/dtcc-barclays-say-tokenizations-real-prize-is-unlocking-idle-collateral"
+      },
+      "nota": "[C344 19-nov] Barclays figura en la nota oficial de DTCC del 28-oct como uno de los 20 participantes que firmaron el acceso al servicio (dtcc.com, leído 19-nov) [P]. Incentivo: banco participante que ahorraría balance con colateral más eficiente; opinión de cliente, sin cifras. Intervención en vídeo no localizada: cita por prensa [S]. Barclays no aparece en la lista del grupo de trabajo de mayo.",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-18",
+        "url": "https://youtu.be/BqK2yeGn_n8",
+        "min": "3:00"
+      }
+    },
+    {
+      "id": "v214",
+      "tipo": "dato",
+      "quien": "DTCC (nota de lanzamiento del servicio de tokenización)",
+      "cuando": "2026-10-28",
+      "texto": "El servicio (DTS) se lanzó el 28-oct conectado a Canton y a la red privada Besu de DTCC; hay 20 participantes del DTC con acuerdos firmados (entre ellos Barclays y J.P. Morgan) y «redes adicionales en 2027» sin nombrarlas en esa nota. Alcance por carta de no acción de la SEC de dic-2025: Russell 1000, ETF de índices y bonos del Tesoro.",
+      "nivel": "P",
+      "conf": "confirmada",
+      "capas": [
+        "token",
+        "custodia"
+      ],
+      "redes": [
+        "Canton",
+        "Besu (DTCC)"
+      ],
+      "tokens": [],
+      "usos": [],
+      "fuente": {
+        "n": "DTCC, «DTCC Tokenization Service Goes Live» (28-oct-2026, leída 19-nov)",
+        "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live"
+      },
+      "nota": "[C344 19-nov] Incentivo: servicio nuevo de DTCC cuyo éxito depende de que los participantes lo usen; sus notas son comunicación corporativa. La nota del 12-nov (Solana) incluye cita de Nick Ducoff (Solana Foundation): coanuncio de las dos partes. No nombra Stellar, XRPL ni Bullish.",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-18",
+        "url": "https://youtu.be/BqK2yeGn_n8",
+        "min": "2:20"
+      }
+    },
+    {
+      "id": "v215",
+      "tipo": "dato",
+      "quien": "DTCC (grupo de trabajo de la industria, nota del 4-may)",
+      "cuando": "2026-05-04",
+      "texto": "La lista oficial de 50+ firmas convocadas incluye a Goldman Sachs, Citadel Securities, DRW, Virtu, BlackRock, JPMorgan, Nasdaq, NYSE, Circle, Ripple Prime y Franklin Templeton; no figuran Barclays, Jane Street ni Bullish. Plan: producción limitada en julio y lanzamiento en octubre de 2026.",
+      "nivel": "P",
+      "conf": "confirmada",
+      "capas": [
+        "token",
+        "custodia"
+      ],
+      "redes": [],
+      "tokens": [],
+      "usos": [],
+      "fuente": {
+        "n": "DTCC, nota de prensa del 4-may-2026 (leída 19-nov)",
+        "url": "https://www.dtcc.com/press-releases/2026/dtcc-advances-development-of-new-tokenization-service"
+      },
+      "nota": "[C344 19-nov] Hecho nuevo para el repo: Ripple Prime participa en el grupo de trabajo, pero la nota no dice que se liquide en XRPL ni que se use XRP (no menciona redes). Estar en el grupo no implica usar una red concreta. Jane Street, Bullish y Barclays no constan en esta lista concreta (puede haber otras vías de acceso).",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-13",
+        "url": "https://youtu.be/xw8ZpJuF3ZE",
+        "min": "13:40"
+      }
+    },
+    {
+      "id": "v216",
+      "tipo": "dato",
+      "quien": "Jupiter (Kash Dhanda, COO), productos anunciados en el Breakpoint",
+      "cuando": "2026-11-16",
+      "texto": "Qué vende: agregador/DeFi en Solana (enrutado de swaps, préstamos, vaults). Anunció Global Passport (identidad verificada; ya disponible), Liquidity Services (liquidez, capital inicial y creadores de mercado para emisores) y un mercado de préstamos con permisos sobre acciones emitidas por el propio emisor, empezando por BLSH de Bullish; sin fecha de apertura ni jurisdicciones. Su negocio crece si más activos tokenizados se usan en Solana.",
+      "nivel": "S",
+      "conf": "compatible",
+      "capas": [
+        "token",
+        "deuda"
+      ],
+      "redes": [
+        "Solana"
+      ],
+      "tokens": [],
+      "usos": [
+        "lending",
+        "préstamos"
+      ],
+      "fuente": {
+        "n": "Crypto Briefing y Decrypt (16-nov-2026); sin entrada primaria de Jupiter localizada",
+        "url": "https://cryptobriefing.com/jupiter-tokenized-services-identity-liquidity-credit/"
+      },
+      "nota": "[C344 19-nov] Discrepancia con el vídeo: Crypto Briefing dice que solo la identidad verificada está disponible y que prueba de patrimonio, puntuación crediticia y datos en cero conocimiento están «planificados»; el vídeo (16:00-17:30) los presentó como ya activos. Decrypt avisa de que Jupiter da el enrutado de swaps de su propia plataforma (conflicto de la fuente). Cifras de volumen (>500.000 M$) y 162 M$ de rendimiento: propias, sin auditar [S].",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-18",
+        "url": "https://youtu.be/BqK2yeGn_n8",
+        "min": "16:00"
+      }
+    },
+    {
+      "id": "v217",
+      "tipo": "dato",
+      "quien": "Bullish (comunicado de la compra de Equiniti)",
+      "cuando": "2026-05-05",
+      "texto": "Qué vende: bolsa cripto institucional, Bullish Europe (MiCA), CoinDesk (datos, índices y medio) e infraestructura de tokenización. Compra Equiniti (agente de transferencia) por 4.200 M$ (1.850 M$ de deuda asumida y ~2.350 M$ en acciones a 38,48 $); cierre previsto en enero de 2027 sujeto a autorizaciones; prevé crecimiento de ingresos de 6-8 % anual en 2027-2029, con un 20 % en tokenización.",
+      "nivel": "P",
+      "conf": "confirmada",
+      "capas": [
+        "token",
+        "custodia"
+      ],
+      "redes": [],
+      "tokens": [],
+      "usos": [],
+      "fuente": {
+        "n": "Bullish, comunicado «Bullish to acquire Equiniti from Siris» (5-may-2026, leído 19-nov)",
+        "url": "https://www.bullish.com/news-insights/bullish-to-acquire-equiniti-from-siris-in-4-2-billion-transaction-creating-the-global-transfer-agent-for-tokenized-securities"
+      },
+      "nota": "[C344 19-nov] Resuelve el «Chin» del vídeo: es Equiniti [P]. Incentivos: es una empresa cotizada (NYSE: BLSH) que presenta proyecciones (con aviso de incertidumbre) y su token en Jupiter amplía visibilidad; además es dueña de CoinDesk, una fuente que cubre su sector. Asesor financiero exclusivo de Bullish: Goldman Sachs (ver v218). El vídeo dice que el mercado de préstamos con BLSH abre «a principios de este año»: no hay fecha en ninguna fuente.",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-18",
+        "url": "https://youtu.be/BqK2yeGn_n8",
+        "min": "18:20"
+      }
+    },
+    {
+      "id": "v218",
+      "tipo": "dato",
+      "quien": "Goldman Sachs Group (13F-HR del 3T-2026 y relaciones declaradas)",
+      "cuando": "2026-09-30",
+      "texto": "Lectura propia del XML: cinco ETF de XRP suman ≈144,0 M$ (Franklin 47,8; Bitwise 38,4; Canary 33,3; Grayscale 14,5; 21Shares 10,1) y tres ETF de Solana ≈116,9 M$ (Bitwise Solana Staking 72,7; Grayscale 40,5; Franklin 3,6). Además, es asesor financiero exclusivo de Bullish en la compra de Equiniti y figura en el grupo de trabajo de DTCC.",
+      "nivel": "P",
+      "conf": "confirmada",
+      "capas": [
+        "fondos"
+      ],
+      "redes": [
+        "Solana",
+        "XRPL"
+      ],
+      "tokens": [
+        "XRP"
+      ],
+      "usos": [],
+      "fuente": {
+        "n": "EDGAR, 13F-HR de Goldman Sachs Group (acc. 0000886982-26-000647), Submit_this.xml, leído 19-nov",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000886982&type=13F-HR"
+      },
+      "nota": "[C344 19-nov] El 13F no distingue posición propia, de clientes o cobertura; el dato es a 30-sep, anterior a la caída de noviembre. Incentivos cruzados (no prueban nada por sí solos): banca de inversión de Bullish, miembro del grupo DTCC y tenedor de ETF de Bitwise. Completa v195 (que solo recogía XRP). Una sola presentación: no es tendencia.",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-17",
+        "url": "https://youtu.be/0wkHGOqiW04",
+        "min": "12:40"
+      }
+    },
+    {
+      "id": "v219",
+      "tipo": "dato",
+      "quien": "Jane Street Group (13F-HR del 2T y 3T-2026)",
+      "cuando": "2026-09-30",
+      "texto": "Lectura propia de los XML: en ETF de XRP (solo acciones, sin opciones) tenía ≈16,4 M$ a 30-jun y ≈20,3 M$ a 30-sep (Bitwise 12,2; Franklin 5,0; Canary 3,1); en ETF de Solana ≈31,3 M$ a 30-sep (Bitwise 16,4; Morgan Stanley 4,9; Canary Marinade 4,7; Grayscale 2,8; Fidelity 2,1; VanEck 0,2). Declara además opciones de compra y venta sobre varios de esos ETF, de valor nocional casi igual.",
+      "nivel": "P",
+      "conf": "compatible",
+      "capas": [
+        "fondos"
+      ],
+      "redes": [
+        "Solana",
+        "XRPL"
+      ],
+      "tokens": [
+        "XRP"
+      ],
+      "usos": [],
+      "fuente": {
+        "n": "EDGAR, 13F-HR de Jane Street Group (acc. 0001595888-26-000162 y 0001595888-26-000108), leídos 19-nov",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001595888&type=13F-HR"
+      },
+      "nota": "[C344 19-nov] Confirma la cifra del vídeo (16 → >20 M$). Incentivo: es creador de mercado y participante autorizado en ETF de bitcoin según prensa [S], donde ingresa por el diferencial y el arbitraje, no por apostar a la dirección; calls y puts casi iguales en importe (p. ej. Canary 3T: 13,0 y 12,7 M$) encajan con cobertura [RAZONADO, no probado]. El vídeo la llama «ligada a BlackRock»: no lo he podido contrastar. Un 13F no dice si es posición propia o de inventario.",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-17",
+        "url": "https://youtu.be/0wkHGOqiW04",
+        "min": "1:00"
+      }
+    },
+    {
+      "id": "v220",
+      "tipo": "tesis",
+      "quien": "Análisis C344 (cruce de incentivos de los actores citados)",
+      "cuando": "2026-11-19",
+      "texto": "Varios actores citados como fuentes independientes comparten intereses: Bitwise vende ETF de SOL y XRP y publica el escenario de SOL; Goldman tiene ETF de Bitwise, asesora a Bullish y está en el grupo de DTCC; Bullish y Jupiter lanzan juntos el préstamo con BLSH; Barclays y DTCC cuentan el valor del colateral en un acto organizado por Solana. Cada dato es cierto o no por separado; el conjunto no son confirmaciones independientes.",
+      "nivel": "R",
+      "conf": "sin_confirmar",
+      "capas": [
+        "token",
+        "fondos"
+      ],
+      "redes": [
+        "Solana"
+      ],
+      "tokens": [],
+      "usos": [],
+      "fuente": {
+        "n": "Cruce de v187, v188, v212-v219 (fuentes primarias leídas el 19-nov)",
+        "url": ""
+      },
+      "nota": "Contraargumento: que haya intereses no invalida los hechos (la nota de DTCC, el 13F y el comunicado de Bullish son documentos oficiales); solo obliga a no contarlos como pruebas distintas. Hecho, no recomendación.",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-18",
+        "url": "https://youtu.be/BqK2yeGn_n8",
+        "min": "0:00"
+      }
+    },
+    {
+      "id": "v221",
+      "tipo": "vigilar",
+      "quien": "Bullish (cierre de la compra de Equiniti)",
+      "cuando": "2027-01-31",
+      "texto": "Vigilar si la compra de Equiniti cierra en enero de 2027 como prevé Bullish y si el mercado de préstamos con BLSH en Jupiter recibe fecha y jurisdicciones.",
+      "nivel": "R",
+      "conf": "sin_confirmar",
+      "capas": [
+        "token"
+      ],
+      "redes": [
+        "Solana"
+      ],
+      "tokens": [],
+      "usos": [
+        "lending"
+      ],
+      "fuente": {
+        "n": "Bullish, comunicado del 5-may-2026; Decrypt y Crypto Briefing, 16-nov-2026",
+        "url": "https://www.bullish.com/news-insights/bullish-to-acquire-equiniti-from-siris-in-4-2-billion-transaction-creating-the-global-transfer-agent-for-tokenized-securities"
+      },
+      "nota": "[C344 19-nov] Hoy: cierre «previsto», sin autorizaciones publicadas; préstamo sin fecha.",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-18",
+        "url": "https://youtu.be/BqK2yeGn_n8",
+        "min": "18:20"
+      },
+      "vigilar": {
+        "confirma": "Comunicado de cierre de Bullish (o 8-K) y anuncio de apertura del mercado con fecha.",
+        "refuta": "Retraso, cambio de condiciones o cancelación; o préstamo sin fecha en 2027."
+      },
+      "revisar_en": "2027-01-31"
+    },
+    {
+      "id": "v222",
+      "tipo": "vigilar",
+      "quien": "13F del 4T-2026 de Goldman Sachs, Jane Street y otros (ETF de XRP y Solana)",
+      "cuando": "2027-02-15",
+      "texto": "Vigilar si Goldman mantiene ≈144 M$ en ETF de XRP y ≈117 M$ en los de Solana, y cómo cambia la cifra de Jane Street, tomando como base las lecturas del 19-nov.",
+      "nivel": "R",
+      "conf": "sin_confirmar",
+      "capas": [
+        "fondos"
+      ],
+      "redes": [
+        "Solana",
+        "XRPL"
+      ],
+      "tokens": [
+        "XRP"
+      ],
+      "usos": [],
+      "fuente": {
+        "n": "EDGAR 13F-HR, plazo ≈15-feb-2027 (cifras base: v218 y v219)",
+        "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000886982&type=13F-HR"
+      },
+      "nota": "[C344 19-nov] Un 13F es una foto a fin de trimestre: no dice flujos intermedios ni motivo.",
+      "video": {
+        "canal": "Despeja La X",
+        "fecha": "2026-11-17",
+        "url": "https://youtu.be/0wkHGOqiW04",
+        "min": "12:40"
+      },
+      "vigilar": {
+        "confirma": "Goldman ≥ 100 M$ en XRP ETF y sin recorte relevante de Jane Street.",
+        "refuta": "Recorte fuerte de Goldman o salida de Jane Street en el 4T."
+      },
+      "revisar_en": "2027-02-15"
     }
   ],
   "canales": [

@@ -1,0 +1,123 @@
+{
+ "_nota": "Delta C339 para integrar en explorador/cadenas.json (no editado aquí). Celdas {t,f,u,d,n}; null = sin dato. Sugerencia: añadir a cadenas[id].hitos/matriz.cumplimiento según corresponda; arc y besu no son cadenas del JSON (solo contexto).",
+ "_actualizado": "2026-11-19",
+ "marco": {
+  "carta_sec": {
+   "t": "Carta no-action de la SEC (División de Trading y Mercados) a DTC, 11-dic-2025: no recomendaría acciones de cumplimiento contra DTC (Reg SCI, 19(b)/19b-4, 17Ad-22(e) y 17Ad-25(i),(j)) por operar el DTCC Tokenization Services; valores elegibles: Russell 1000, bonos/letras/notas del Tesoro y ETF de índices principales (p. ej. S&P 500, Nasdaq-100); la carta se retira a los tres años del lanzamiento de la versión base; DTC no prescribe una cadena concreta pero evalúa fiabilidad, cumplimiento (tokens solo a carteras registradas y reversibles), observabilidad de todas las transferencias y gobernanza; admite cadenas públicas y privadas. La carta no nombra ninguna red (cero menciones de XRP, Ripple, Stellar ni Solana).",
+   "f": "SEC, carta no-action a DTC (PDF leído en texto completo con pdftotext)",
+   "u": "https://www.sec.gov/files/tm/no-action/dtc-nal-121125.pdf",
+   "d": "2025-12-11",
+   "n": "P"
+  },
+  "lanzamiento": {
+   "t": "DTCC Tokenization Service lanzado el 28-oct-2026: integrado con Canton Network y la red Besu privada de DTCC; «redes adicionales en 2027» sin nombrarlas; 20 participantes con acuerdo firmados; 30+ firmas en las operaciones limitadas previas. El comunicado no menciona XRPL, Stellar ni Arc (Solana solo como enlace lateral a otra nota).",
+   "f": "DTCC, comunicado «DTCC Tokenization Service Goes Live» (leído 19-nov; lector que resume, sin cita literal cotejada)",
+   "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+   "d": "2026-10-28",
+   "n": "P"
+  },
+  "hoja_ruta": {
+   "t": "Ficha «Scope at Launch and What's Next» de DTCC: en vivo Canton (estándar CIP-56) y Besu (ERC-20, privada); previstas en 2027 Stellar (SEP-41) y Arc de Circle (ERC-20), «más L1 y L2 según demanda de clientes y mercado»; 25 valores al lanzamiento (la página de producto dice 34: discrepancia; la ficha no lleva fecha); hoja de ruta «indicativa y sujeta a cambios». No cita XRPL, XRP ni Solana.",
+   "f": "DTCC, ficha At-a-Glance (PDF leído con pdftotext, sin fecha visible)",
+   "u": "https://communications.dtcc.com/rs/669-QIL-921/images/DTCC%20Tokenization%20Service%20At-a-Glance.pdf",
+   "d": null,
+   "n": "P"
+  },
+  "xrpl_consta": {
+   "t": "XRPL/XRP/Ripple NO figuran en ninguno de los 8 documentos oficiales leídos (carta SEC 11-dic-2025 y ficha At-a-Glance, con búsqueda de texto completo; notas DTCC 17-dic-2025, 4-may, 27-may, 15-jul, 28-oct y 12-nov-2026, vía lector que resume). Ausencia en estos documentos: no prueba que no vaya a haber conexión futura; DTC dice que evaluará más cadenas por demanda.",
+   "f": "Lectura propia de los documentos citados (los de nota de prensa vía lector que resume)",
+   "u": "https://communications.dtcc.com/rs/669-QIL-921/images/DTCC%20Tokenization%20Service%20At-a-Glance.pdf",
+   "d": "2026-11-19",
+   "n": "R"
+  }
+ },
+ "redes": {
+  "canton": [
+   {
+    "t": "En vivo en el DTCC Tokenization Service desde el 28-oct-2026 (estándar de token CIP-56); antes, 15-jul-2026, operaciones de producción con valores DTC tokenizados en Canton y Besu, y el 17-dic-2025 se anunció con Digital Asset la tokenización de una parte de los bonos del Tesoro custodiados en DTC en Canton (MVP en 1S-2026).",
+    "f": "DTCC, notas 28-oct-2026, 15-jul-2026 y 17-dic-2025; ficha At-a-Glance",
+    "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+    "d": "2026-10-28",
+    "n": "P"
+   }
+  ],
+  "solana": [
+   {
+    "t": "DTCC planea habilitar la tokenización de activos custodiados en DTC en Solana (L1); activos DTC tokenizados «esperados» en 2S-2027. Fecha prevista, no en vivo. La nota no cita la carta SEC ni lista de activos en el cuerpo; no cita XRPL ni Stellar. Fuente interesada: DTCC es parte.",
+    "f": "DTCC, nota «DTCC Tokenization Service to Connect with Solana» (lector que resume; citas cortas coinciden con el informe de vídeo del 18-nov)",
+    "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana",
+    "d": "2026-11-12",
+    "n": "P"
+   }
+  ],
+  "stellar": [
+   {
+    "t": "DTCC y la Stellar Development Foundation esperan activos tokenizados de DTC en Stellar en 1S-2027 (activos en evaluación: Russell 1000, ETF de índices principales y bonos/letras/notas del Tesoro; base: carta SEC dic-2025). La ficha At-a-Glance confirma Stellar en 2027 con estándar SEP-41. Fecha prevista, no en vivo.",
+    "f": "DTCC, nota 27-may-2026 (lector que resume) + ficha At-a-Glance (leída)",
+    "u": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy",
+    "d": "2026-05-27",
+    "n": "P"
+   }
+  ],
+  "xrpl": [
+   null
+  ],
+  "ethereum": [
+   null
+  ]
+ },
+ "otras_redes_dtcc": {
+  "besu": {
+   "t": "Red Besu (Linux Foundation Decentralized Trust) privada de DTCC, en vivo (ERC-20). No es una cadena del explorador.",
+   "f": "DTCC, ficha At-a-Glance y nota 15-jul-2026",
+   "u": "https://communications.dtcc.com/rs/669-QIL-921/images/DTCC%20Tokenization%20Service%20At-a-Glance.pdf",
+   "d": "2026-10-28",
+   "n": "P"
+  },
+  "arc": {
+   "t": "Arc (Circle): prevista en 2027 (ERC-20) según la ficha de DTCC; calendario por semestre no confirmado en fuente primaria (solo un anuncio de empleo lo da, no usado). No hay nota de DTCC dedicada a Arc encontrada [VERIFICAR].",
+   "f": "DTCC, ficha At-a-Glance",
+   "u": "https://communications.dtcc.com/rs/669-QIL-921/images/DTCC%20Tokenization%20Service%20At-a-Glance.pdf",
+   "d": null,
+   "n": "P"
+  }
+ },
+ "tabla_resumen": [
+  [
+   "Canton",
+   "en vivo 28-oct-2026",
+   "Russell 1000, ETF, Tesoro (alcance general del servicio)",
+   "P"
+  ],
+  [
+   "Besu (privada DTCC)",
+   "en vivo 28-oct-2026",
+   "idem",
+   "P"
+  ],
+  [
+   "Stellar",
+   "1S-2027 (prevista)",
+   "idem (en evaluación)",
+   "P"
+  ],
+  [
+   "Arc (Circle)",
+   "2027 (prevista)",
+   "idem",
+   "P"
+  ],
+  [
+   "Solana",
+   "2S-2027 (prevista)",
+   "«activos DTC elegibles»",
+   "P"
+  ],
+  [
+   "XRPL",
+   "no consta",
+   "—",
+   "R"
+  ]
+ ]
+}

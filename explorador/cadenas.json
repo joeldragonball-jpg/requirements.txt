@@ -1,6 +1,6 @@
 {
-  "_actualizado": "2026-11-18",
-  "version": "C264 · 2026-11-14",
+  "_actualizado": "2026-11-19",
+  "version": "C264 · 2026-11-14 · integración C339-C341 (19-nov)",
   "aviso": "Hechos públicos sobre cadenas de bloques y redes de interoperabilidad: qué hace cada una, quién la usa, en qué capa y si ese uso necesita el token nativo. Cada celda lleva fuente, fecha y nivel. «Captura de valor» es [RAZONADO] con sus supuestos, no una previsión. Informativo: no es recomendación de compra ni venta y no hay «ganador»: cada red aporta cosas distintas.",
   "leyenda": "P = fuente primaria leída (si habla de sí misma, «parte interesada») · S = secundaria o agregador leído · V = [VERIFICAR] no leído o sin enlace · R = [RAZONADO], deducción a partir de las fuentes citadas · vacío = sin dato, nunca relleno.",
   "capacidades": [
@@ -165,102 +165,126 @@
         "dist": 15153.5,
         "rep": 99.8,
         "stable": 135765.0,
-        "holders": 293208
+        "holders": 293208,
+        "fecha_dato": "2026-11-14"
       },
       {
         "cadena": "BNB Chain",
         "dist": 6266.3,
         "rep": 0,
         "stable": 12582.9,
-        "holders": 2167063
+        "holders": 2167063,
+        "fecha_dato": "2026-11-14"
       },
       {
         "cadena": "Solana",
         "dist": 5144.6,
         "rep": 125.9,
         "stable": 13874.2,
-        "holders": 1026459
+        "holders": 1026459,
+        "fecha_dato": "2026-11-14"
       },
       {
         "cadena": "Stellar",
         "dist": 4662.8,
         "rep": 77.4,
         "stable": 445.2,
-        "holders": 25757
+        "holders": 25757,
+        "fecha_dato": "2026-11-14"
       },
       {
         "cadena": "Avalanche",
         "dist": 1413.9,
         "rep": 11403.5,
         "stable": 717.1,
-        "holders": 10114
+        "holders": 10114,
+        "fecha_dato": "2026-11-14"
       },
       {
         "cadena": "Arbitrum",
         "dist": 1070.1,
         "rep": 0,
         "stable": 3887.2,
-        "holders": 13953
+        "holders": 13953,
+        "fecha_dato": "2026-11-14"
       },
       {
         "cadena": "Base",
         "dist": 731.6,
         "rep": 24.2,
         "stable": 4584.9,
-        "holders": 192076
+        "holders": 192076,
+        "fecha_dato": "2026-11-14"
       },
       {
         "cadena": "XRP Ledger",
         "dist": 642.8,
         "rep": 5207.0,
         "stable": 807.5,
-        "holders": 2948
+        "holders": 2948,
+        "fecha_dato": "2026-11-14",
+        "reclasificado_en": "2026-11-19",
+        "nota_fecha": "Datos del 14-nov-2026 con la clasificación anterior de RWA.xyz; el 19-nov RWA.xyz reclasificó el XRPL (ver brecha_rwa): distribuido 3.008,4 M$ y representado 2.976,5 M$."
       },
       {
         "cadena": "Polygon",
         "dist": 447.6,
         "rep": 713.0,
         "stable": 2771.3,
-        "holders": 22815
+        "holders": 22815,
+        "fecha_dato": "2026-11-14"
       },
       {
         "cadena": "Hedera",
         "dist": 88.3,
         "rep": 70.3,
         "stable": 22.4,
-        "holders": 347
+        "holders": 347,
+        "fecha_dato": "2026-11-14"
       },
       {
         "cadena": "Algorand",
         "dist": 39.4,
         "rep": 0,
         "stable": null,
-        "holders": null
+        "holders": null,
+        "fecha_dato": "2026-11-14"
       },
       {
         "cadena": "Provenance",
         "dist": 60.2,
         "rep": 26624.3,
         "stable": 433.8,
-        "holders": 210
+        "holders": 210,
+        "fecha_dato": "2026-11-14"
       },
       {
         "cadena": "Canton",
         "dist": 0,
         "rep": 374118.2,
         "stable": null,
-        "holders": null
+        "holders": null,
+        "fecha_dato": "2026-11-14"
       },
       {
         "cadena": "TRON",
         "dist": 0.03,
         "rep": 0,
         "stable": 91470.7,
-        "holders": 1
+        "holders": 1,
+        "fecha_dato": "2026-11-14"
       }
     ],
     "totales": "Total de RWA.xyz a 14-nov-2026: 39.680 M$ distribuidos y 421.850 M$ representados en 40 redes; stablecoins 277.520 M$.",
-    "stellar": "Comprobación (14-nov-2026): con la métrica «valor distribuido sin stablecoins» de RWA.xyz, Stellar es la 4.ª red (4.662,8 M$) tras Ethereum, BNB Chain y Solana; con «representado» (77 M$) queda muy lejos de Canton, Provenance, Avalanche o el XRPL. No es 2.ª ni 3.ª con ninguna de las dos métricas."
+    "stellar": "Comprobación (14-nov-2026): con la métrica «valor distribuido sin stablecoins» de RWA.xyz, Stellar es la 4.ª red (4.662,8 M$) tras Ethereum, BNB Chain y Solana; con «representado» (77 M$) queda muy lejos de Canton, Provenance, Avalanche o el XRPL. No es 2.ª ni 3.ª con ninguna de las dos métricas.",
+    "fecha_dato": "2026-11-14",
+    "reconciliacion_19nov": {
+      "t": "Reconciliación XRPL (14-nov frente a 19-nov): estos datos (RWA.xyz, 14-nov-2026) dan al XRPL 642,8 M$ distribuidos y 5.207,0 M$ representados. En la lectura del 19-nov (bloque brecha_rwa) RWA.xyz muestra 3.008,4 M$ distribuidos y 2.976,5 M$ representados. La diferencia es una reclasificación de RWA.xyz entre ambas fechas, no un flujo de dinero. Los valores de cada fecha se conservan tal como se leyeron; no se suman ni se promedian.",
+      "f": "Reconciliación propia entre este bloque (RWA.xyz, 14-nov) y brecha_rwa (RWA.xyz, 19-nov)",
+      "d": "2026-11-19",
+      "n": "R",
+      "i": "informes/research/2026-11-19-cadenas-integracion.md"
+    }
   },
   "regulacion": {
     "nota": "Madurez por jurisdicción (escala 0-5 del Radar regulatorio: 0 sin marco, 3 aprobada sin vigor, 4 en vigor, 5 en vigor con licencias). Aplica a actividades (stablecoins, tokenización, custodia, ETF), no a cadenas concretas.",
@@ -662,11 +686,11 @@
           "n": "P"
         },
         "rendimiento": {
-          "t": "LendingProtocol y SingleAssetVault siguen SIN activar en la red principal, aunque rippled 3.1.0 (28-ene-2026) ya los incluye; sin staking nativo",
-          "f": "Consulta «feature» al nodo público xrplcluster.com (leída hoy) y xrpl.org/blog",
-          "d": "2026-11-14",
-          "n": "P",
-          "u": "https://xrpl.org/blog"
+          "t": "LendingProtocol (XLS-66) y SingleAssetVault (XLS-65) siguen enabled=false en la red principal. Votos de validadores en el recuento publico: LendingProtocol 24 de 35 (umbral 28), SingleAssetVault 25 de 35 (umbral 28); existe ademas LendingProtocolV1_1 (24/28), tambien sin activar. Las dos especificaciones figuran como Draft (actualizadas 15-sep-2026). Sin staking nativo (sin cambio).",
+          "f": "Consulta feature al nodo publico xrplcluster.com (enabled=false); recuento de votos en api.xrpscan.com/api/v1/amendments (agregador de la propia API de enmiendas); xls.xrpl.org XLS-65 y XLS-66",
+          "u": "https://xrpl.org/resources/known-amendments",
+          "d": "2026-11-19",
+          "n": "P"
         },
         "interop": {
           "t": "XRPL EVM Sidechain en red principal con Axelar como primer puente de XRP (30-jun-2025). El puente nativo XChainBridge del XRPL sigue sin activar: en votación con 14,29 % de apoyo, según la tabla de enmiendas de xrpl.org (instantánea que la página fecha el 16-sep-2026)",
@@ -991,7 +1015,15 @@
             "d": "2026-11-15"
           }
         ],
-        "detalle_nota": "Detalle de los mayores activos por tipo y red (RWA.xyz, lista de activos filtrada por clase, leída en Chrome el 15-nov-2026) [S]: agregador no auditado. «Emisor» es la columna «Platform» de RWA.xyz (emisor o estructurador) y no confirma custodia. Solo PAXG está confirmado por el emisor [P]. Las filas «representado» están registradas pero no son transferibles en la cadena. Importes en M$ (millones de dólares), redondeados; son listas parciales (los mayores activos visibles) y no suman el total del tipo."
+        "detalle_nota": "Detalle de los mayores activos por tipo y red (RWA.xyz, lista de activos filtrada por clase, leída en Chrome el 15-nov-2026) [S]: agregador no auditado. «Emisor» es la columna «Platform» de RWA.xyz (emisor o estructurador) y no confirma custodia. Solo PAXG está confirmado por el emisor [P]. Las filas «representado» están registradas pero no son transferibles en la cadena. Importes en M$ (millones de dólares), redondeados; son listas parciales (los mayores activos visibles) y no suman el total del tipo.",
+        "fecha_dato": "2026-11-14",
+        "reconciliacion_19nov": {
+          "t": "Datos de tipos de activo del XRPL leídos el 14-nov-2026 (productos el 15-nov). El «modo» distribuido/representado de cada producto responde a la clasificación de RWA.xyz de esas fechas; el 19-nov RWA.xyz reclasificó el XRPL (representado 5.207,0 a 2.976,5 M$ y distribuido 642,8 a 3.008,4 M$ en las tablas por red, ver brecha_rwa). Los importes de esta tabla no se han releído ni modificado; el «modo» de cada producto puede haber cambiado [VERIFICAR].",
+          "f": "Reconciliación propia entre tipos_activo (14/15-nov) y brecha_rwa (19-nov)",
+          "d": "2026-11-19",
+          "n": "R",
+          "i": "informes/research/2026-11-19-cadenas-integracion.md"
+        }
       }
     },
     {
@@ -6312,5 +6344,570 @@
       }
     ],
     "contraste": "La diferencia clave: XRPL ofrece libro abierto, AMM y (según su documentación) mercados con acceso por credenciales; Stellar ofrece libro y AMM con comisión fija, y el control de acceso lo ejerce el emisor del activo (AUTH_REQUIRED, clawback), no un mercado con dominios. Ambos AMM medidos (XRP/RLUSD y XLM/USDC) rondan los 3-4 M$ de reservas. En las redes con contratos los intercambios están en contratos de terceros: en Solana, según Syndica, los AMM propietarios movieron el 71 % (feb-2026) y el 55 % (mar-2026) del volumen DEX [S, cifras de una parte interesada que difieren de otras fuentes: Blockworks da 62 % en el 1T-2026]; en Hedera, SaucerSwap ofrece AMM v1, liquidez concentrada v2 y libro v3 (docs propias). Que un mercado esté en el protocolo o en contratos no dice cuál tiene más profundidad."
+  },
+  "dtcc_ruta": {
+    "nota": "Hoja de ruta del DTCC Tokenization Service por red, leída el 19-nov-2026. DTCC es parte interesada: todas las fechas salen de DTCC y son «previstas» e indicativas, sujetas a cambios; Stellar y Solana no son confirmaciones independientes. Las notas de prensa se leyeron con un lector que resume: citas cortas sin cotejo literal [VERIFICAR] si se usan en un titular. Ausencia en un documento no prueba exclusión futura.",
+    "marco": [
+      {
+        "t": "Carta no-action de la SEC (División de Trading y Mercados) a DTC, 11-dic-2025: no recomendaría acciones de cumplimiento contra DTC (Reg SCI, 19(b)/19b-4, 17Ad-22(e) y 17Ad-25(i),(j)) por operar el DTCC Tokenization Services; valores elegibles: Russell 1000, bonos/letras/notas del Tesoro y ETF de índices principales (p. ej. S&P 500, Nasdaq-100); la carta se retira a los tres años del lanzamiento de la versión base; DTC no prescribe una cadena concreta pero evalúa fiabilidad, cumplimiento (tokens solo a carteras registradas y reversibles), observabilidad de todas las transferencias y gobernanza; admite cadenas públicas y privadas. La carta no nombra ninguna red (cero menciones de XRP, Ripple, Stellar ni Solana).",
+        "f": "SEC, carta no-action a DTC (PDF leído en texto completo con pdftotext)",
+        "u": "https://www.sec.gov/files/tm/no-action/dtc-nal-121125.pdf",
+        "d": "2025-12-11",
+        "n": "P"
+      },
+      {
+        "t": "DTCC Tokenization Service lanzado el 28-oct-2026: integrado con Canton Network y la red Besu privada de DTCC; «redes adicionales en 2027» sin nombrarlas; 20 participantes con acuerdo firmados; 30+ firmas en las operaciones limitadas previas. El comunicado no menciona XRPL, Stellar ni Arc (Solana solo como enlace lateral a otra nota).",
+        "f": "DTCC, comunicado «DTCC Tokenization Service Goes Live» (leído 19-nov; lector que resume, sin cita literal cotejada)",
+        "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+        "d": "2026-10-28",
+        "n": "P"
+      },
+      {
+        "t": "Ficha «Scope at Launch and What's Next» de DTCC: en vivo Canton (estándar CIP-56) y Besu (ERC-20, privada); previstas en 2027 Stellar (SEP-41) y Arc de Circle (ERC-20), «más L1 y L2 según demanda de clientes y mercado»; 25 valores al lanzamiento (la página de producto dice 34: discrepancia; la ficha no lleva fecha); hoja de ruta «indicativa y sujeta a cambios». No cita XRPL, XRP ni Solana.",
+        "f": "DTCC, ficha At-a-Glance (PDF leído con pdftotext, sin fecha visible)",
+        "u": "https://communications.dtcc.com/rs/669-QIL-921/images/DTCC%20Tokenization%20Service%20At-a-Glance.pdf",
+        "d": null,
+        "n": "P"
+      },
+      {
+        "t": "XRPL/XRP/Ripple NO figuran en ninguno de los 8 documentos oficiales leídos (carta SEC 11-dic-2025 y ficha At-a-Glance, con búsqueda de texto completo; notas DTCC 17-dic-2025, 4-may, 27-may, 15-jul, 28-oct y 12-nov-2026, vía lector que resume). Ausencia en estos documentos: no prueba que no vaya a haber conexión futura; DTC dice que evaluará más cadenas por demanda.",
+        "f": "Lectura propia de los documentos citados (los de nota de prensa vía lector que resume)",
+        "d": "2026-11-19",
+        "n": "R",
+        "i": "informes/research/2026-11-19-C339.md"
+      }
+    ],
+    "redes": [
+      {
+        "id": "canton",
+        "red": "Canton",
+        "estado": "En vivo",
+        "fecha": "28-oct-2026",
+        "activos": "Russell 1000, ETF de índices principales, Tesoro (alcance general del servicio)",
+        "celda": {
+          "t": "En vivo en el DTCC Tokenization Service desde el 28-oct-2026 (estándar de token CIP-56); antes, 15-jul-2026, operaciones de producción con valores DTC tokenizados en Canton y Besu, y el 17-dic-2025 se anunció con Digital Asset la tokenización de una parte de los bonos del Tesoro custodiados en DTC en Canton (MVP en 1S-2026).",
+          "f": "DTCC, notas 28-oct-2026, 15-jul-2026 y 17-dic-2025; ficha At-a-Glance",
+          "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+          "d": "2026-10-28",
+          "n": "P"
+        }
+      },
+      {
+        "id": "stellar",
+        "red": "Stellar",
+        "estado": "Prevista",
+        "fecha": "1S-2027 (primer semestre)",
+        "activos": "En evaluación: Russell 1000, ETF de índices principales, Tesoro",
+        "celda": {
+          "t": "DTCC y la Stellar Development Foundation esperan activos tokenizados de DTC en Stellar en 1S-2027 (activos en evaluación: Russell 1000, ETF de índices principales y bonos/letras/notas del Tesoro; base: carta SEC dic-2025). La ficha At-a-Glance confirma Stellar en 2027 con estándar SEP-41. Fecha prevista, no en vivo.",
+          "f": "DTCC, nota 27-may-2026 (lector que resume) + ficha At-a-Glance (leída)",
+          "u": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy",
+          "d": "2026-05-27",
+          "n": "P"
+        }
+      },
+      {
+        "id": "solana",
+        "red": "Solana",
+        "estado": "Prevista",
+        "fecha": "2S-2027 (segundo semestre)",
+        "activos": "«Activos custodiados en DTC elegibles»",
+        "celda": {
+          "t": "DTCC planea habilitar la tokenización de activos custodiados en DTC en Solana (L1); activos DTC tokenizados «esperados» en 2S-2027. Fecha prevista, no en vivo. La nota no cita la carta SEC ni lista de activos en el cuerpo; no cita XRPL ni Stellar. Fuente interesada: DTCC es parte.",
+          "f": "DTCC, nota «DTCC Tokenization Service to Connect with Solana» (lector que resume; citas cortas coinciden con el informe de vídeo del 18-nov)",
+          "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana",
+          "d": "2026-11-12",
+          "n": "P"
+        }
+      },
+      {
+        "id": "xrpl",
+        "red": "XRPL",
+        "estado": "No consta",
+        "fecha": "sin fecha",
+        "activos": "—",
+        "celda": {
+          "t": "XRPL/XRP/Ripple NO figuran en ninguno de los 8 documentos oficiales leídos (carta SEC 11-dic-2025 y ficha At-a-Glance, con búsqueda de texto completo; notas DTCC 17-dic-2025, 4-may, 27-may, 15-jul, 28-oct y 12-nov-2026, vía lector que resume). Ausencia en estos documentos: no prueba que no vaya a haber conexión futura; DTC dice que evaluará más cadenas por demanda.",
+          "f": "Lectura propia de los documentos citados (los de nota de prensa vía lector que resume)",
+          "d": "2026-11-19",
+          "n": "R",
+          "i": "informes/research/2026-11-19-C339.md"
+        }
+      },
+      {
+        "id": "ethereum",
+        "red": "Ethereum y L2",
+        "estado": "No consta",
+        "fecha": "sin fecha",
+        "activos": "—",
+        "celda": null
+      }
+    ],
+    "otras": [
+      {
+        "nombre": "Besu (privada de DTCC)",
+        "estado": "En vivo",
+        "fecha": "28-oct-2026",
+        "celda": {
+          "t": "Red Besu (Linux Foundation Decentralized Trust) privada de DTCC, en vivo (ERC-20). No es una cadena del explorador.",
+          "f": "DTCC, ficha At-a-Glance y nota 15-jul-2026",
+          "u": "https://communications.dtcc.com/rs/669-QIL-921/images/DTCC%20Tokenization%20Service%20At-a-Glance.pdf",
+          "d": "2026-10-28",
+          "n": "P"
+        }
+      },
+      {
+        "nombre": "Arc (Circle)",
+        "estado": "Prevista",
+        "fecha": "2027 (semestre no confirmado)",
+        "celda": {
+          "t": "Arc (Circle): prevista en 2027 (ERC-20) según la ficha de DTCC; calendario por semestre no confirmado en fuente primaria (solo un anuncio de empleo lo da, no usado). No hay nota de DTCC dedicada a Arc encontrada [VERIFICAR].",
+          "f": "DTCC, ficha At-a-Glance",
+          "u": "https://communications.dtcc.com/rs/669-QIL-921/images/DTCC%20Tokenization%20Service%20At-a-Glance.pdf",
+          "d": null,
+          "n": "P"
+        }
+      }
+    ],
+    "sin_dato": [
+      "Cifra de valores al lanzamiento: la ficha dice 25 y la página de producto 34 (la ficha no está fechada)",
+      "Semestre de Arc: sin fuente primaria",
+      "Volumen real de uso del servicio: no consta en las notas"
+    ]
+  },
+  "rendimiento_redes": {
+    "nota": "Préstamos y bóvedas: estado nativo en el XRPL frente a protocolos de préstamos en Stellar y Solana. TVL = valor bloqueado en el protocolo; «prestado» = importe prestado. Importes en M$ (millones de dólares). DefiLlama y xrpscan son agregadores [S]: el TVL fluctúa con precios y metodología y no se leyeron los contratos. No se ha verificado si hay préstamos en el XRPL por otras vías (sidechain EVM, etc.): sin dato.",
+    "xrpl": {
+      "estado": {
+        "t": "LendingProtocol (XLS-66) y SingleAssetVault (XLS-65) siguen enabled=false en la red principal. Votos de validadores en el recuento publico: LendingProtocol 24 de 35 (umbral 28), SingleAssetVault 25 de 35 (umbral 28); existe ademas LendingProtocolV1_1 (24/28), tambien sin activar. Las dos especificaciones figuran como Draft (actualizadas 15-sep-2026). Sin staking nativo (sin cambio).",
+        "f": "Consulta feature al nodo publico xrplcluster.com (enabled=false); recuento de votos en api.xrpscan.com/api/v1/amendments (agregador de la propia API de enmiendas); xls.xrpl.org XLS-65 y XLS-66",
+        "u": "https://xrpl.org/resources/known-amendments",
+        "d": "2026-11-19",
+        "n": "P"
+      },
+      "votos": {
+        "t": "Voto de validadores: SingleAssetVault 25/35 (umbral 28), LendingProtocol 24/35 (umbral 28); activar exige mantener mayoria superior al 80 % durante 2 semanas (xrpl.org). Aun no hay estado majority. Corrección: el canal de vídeo dio «22 de 29»; no coincide con ninguna fuente leída (24-25 de 35 a 19-nov). Los 35 son validadores que votan, no necesariamente toda la UNL [VERIFICAR].",
+        "f": "api.xrpscan.com/api/v1/amendments (majority=null en ambas)",
+        "u": "https://api.xrpscan.com/api/v1/amendments",
+        "d": "2026-11-19",
+        "n": "S"
+      },
+      "vault": {
+        "votos": 25,
+        "total": 35,
+        "umbral": 28
+      },
+      "lending": {
+        "votos": 24,
+        "total": 35,
+        "umbral": 28
+      }
+    },
+    "filas": [
+      {
+        "id": "xrpl",
+        "red": "XRPL",
+        "protocolo": "Nativo (XLS-65 bóveda y XLS-66 préstamos)",
+        "tvl": null,
+        "prestado": null,
+        "estado": "sin activar (enabled=false)",
+        "celda": {
+          "t": "LendingProtocol (XLS-66) y SingleAssetVault (XLS-65) siguen enabled=false en la red principal. Votos de validadores en el recuento publico: LendingProtocol 24 de 35 (umbral 28), SingleAssetVault 25 de 35 (umbral 28); existe ademas LendingProtocolV1_1 (24/28), tambien sin activar. Las dos especificaciones figuran como Draft (actualizadas 15-sep-2026). Sin staking nativo (sin cambio).",
+          "f": "Consulta feature al nodo publico xrplcluster.com (enabled=false); recuento de votos en api.xrpscan.com/api/v1/amendments (agregador de la propia API de enmiendas); xls.xrpl.org XLS-65 y XLS-66",
+          "u": "https://xrpl.org/resources/known-amendments",
+          "d": "2026-11-19",
+          "n": "P"
+        }
+      },
+      {
+        "id": "stellar",
+        "red": "Stellar",
+        "protocolo": "Blend",
+        "tvl": 104.4,
+        "prestado": 32.5,
+        "estado": "en uso",
+        "celda": {
+          "t": "Blend (protocolo de prestamos en Stellar): TVL 104,4 M USD y 32,5 M USD prestados segun DefiLlama.",
+          "f": "DefiLlama api.llama.fi/protocol/blend (agregador; cifra instantanea de la hora de consulta)",
+          "u": "https://defillama.com/protocol/blend",
+          "d": "2026-11-19",
+          "n": "S"
+        }
+      },
+      {
+        "id": "solana",
+        "red": "Solana",
+        "protocolo": "Kamino Lend",
+        "tvl": 1158,
+        "prestado": 782.9,
+        "estado": "en uso",
+        "celda": {
+          "t": "Prestamos en Solana: Kamino Lend TVL 1.158 M USD (782,9 M prestados); Jupiter Lend TVL 964,9 M USD (890,1 M prestados), segun DefiLlama.",
+          "f": "DefiLlama api.llama.fi/protocol/kamino-lend y jupiter-lend (agregador)",
+          "u": "https://defillama.com/protocol/kamino-lend",
+          "d": "2026-11-19",
+          "n": "S"
+        }
+      },
+      {
+        "id": "solana",
+        "red": "Solana",
+        "protocolo": "Jupiter Lend",
+        "tvl": 964.9,
+        "prestado": 890.1,
+        "estado": "en uso",
+        "celda": {
+          "t": "Prestamos en Solana: Kamino Lend TVL 1.158 M USD (782,9 M prestados); Jupiter Lend TVL 964,9 M USD (890,1 M prestados), segun DefiLlama.",
+          "f": "DefiLlama api.llama.fi/protocol/kamino-lend y jupiter-lend (agregador)",
+          "u": "https://defillama.com/protocol/kamino-lend",
+          "d": "2026-11-19",
+          "n": "S"
+        }
+      }
+    ],
+    "sin_dato": [
+      "Página de detalle de cada enmienda en xrpl.org (la lectura se cortó a 100.000 caracteres)",
+      "Lista de validadores y UNL para fijar el umbral exacto",
+      "Cifras de Blend: confirmado solo el slug «blend»"
+    ]
+  },
+  "brecha_rwa": {
+    "nota": "Activos tokenizados «representados» frente a «distribuidos» y su uso en DeFi, por red, a 19-nov-2026. Importes en M$ (millones de dólares). «Distribuido» = emitido y transferible en la cadena; «representado» = registrado en la cadena pero no transferible ni liquidado en ella. Fuentes: RWA.xyz (leída en Chrome) y DefiLlama, ambos terceros comerciales sin auditoría [S]. Sin stablecoins en distribuido/representado; las stablecoins van aparte.",
+    "totales": {
+      "t": "RWA.xyz, Networks, 19-nov-2026: distribuido 41.840 M$, representado 430.960 M$ (suma 472.800 M$), stablecoins 275.800 M$, 40 redes. Frente al 14-nov: distribuido 39.680 a 41.840 M$ (+5,4 %), representado 421.850 a 430.960 M$ (+2,2 %)",
+      "f": "RWA.xyz, Networks (leida en Chrome)",
+      "u": "https://app.rwa.xyz/networks",
+      "d": "2026-11-19",
+      "n": "S"
+    },
+    "jupiter": {
+      "t": "COO de Jupiter (Decrypt, 16-nov): ~460.000 M$ rastreados por RWA.xyz, ~39.500 M$ en cadena y movibles fuera del emisor, 3.400 M$ en DeFi segun DefiLlama. RWA.xyz el 19-nov: 472.800 M$ en total (el 460.000 queda 2,8 % por debajo), 41.840 M$ distribuidos (el 39.500 coincide con el 14-nov: 39.680) y DefiLlama categoria RWA 3.034 M$ (190 protocolos). Orden de magnitud confirmado; la cifra de DeFi no se reproduce exacta (definicion de Jupiter no consta)",
+      "f": "Decrypt 16-nov-2026 (via WebFetch); RWA.xyz Networks; api.llama.fi/protocols (categoria RWA)",
+      "u": "https://app.rwa.xyz/networks",
+      "d": "2026-11-19",
+      "n": "S"
+    },
+    "brecha": {
+      "t": "Distribuido/total = 8,9 % (41.840/472.800); DeFi(DefiLlama RWA)/distribuido = 7,3 % (3.034/41.840). Canton aporta 384.695 M$ representados = 89,3 % del representado mundial",
+      "f": "Calculo propio sobre RWA.xyz y DefiLlama",
+      "d": "2026-11-19",
+      "n": "R",
+      "i": "informes/research/2026-11-19-C341.md"
+    },
+    "filas": [
+      {
+        "id": "ethereum",
+        "red": "Ethereum y L2",
+        "dist": 14832.5,
+        "rep": 99.5,
+        "pct": 99.3,
+        "stable": 135616,
+        "defi": 1369.7,
+        "tvl_cadena": 37143,
+        "activos": 3374,
+        "titulares": 295119,
+        "celdas": {
+          "distribuido": {
+            "t": "14.832,5 M$ distribuidos, 99,5 M$ representados (99,3 % distribuido); 3.374 activos; 295.119 titulares",
+            "f": "RWA.xyz, Networks",
+            "u": "https://app.rwa.xyz/networks",
+            "d": "2026-11-19",
+            "n": "S"
+          },
+          "defi_rwa": {
+            "t": "1.369,7 M$ en protocolos de categoria RWA; TVL total de la cadena 37.143 M$",
+            "f": "DefiLlama api.llama.fi/protocols y /v2/chains",
+            "u": "https://defillama.com/categories/RWA",
+            "d": "2026-11-19",
+            "n": "S"
+          },
+          "stable": {
+            "t": "Stablecoins 135.616 M$",
+            "f": "RWA.xyz, Networks",
+            "u": "https://app.rwa.xyz/networks",
+            "d": "2026-11-19",
+            "n": "S"
+          }
+        },
+        "fecha_dato": "2026-11-19"
+      },
+      {
+        "id": "solana",
+        "red": "Solana",
+        "dist": 5202.8,
+        "rep": 125.9,
+        "pct": 97.6,
+        "stable": 12665,
+        "defi": 560.5,
+        "tvl_cadena": 4790,
+        "activos": 3591,
+        "titulares": 1059173,
+        "celdas": {
+          "distribuido": {
+            "t": "5.202,8 M$ distribuidos, 125,9 M$ representados (97,6 %); 3.591 activos; 1.059.173 titulares",
+            "f": "RWA.xyz, Networks",
+            "u": "https://app.rwa.xyz/networks",
+            "d": "2026-11-19",
+            "n": "S"
+          },
+          "defi_rwa": {
+            "t": "560,5 M$ en categoria RWA; TVL de la cadena 4.790 M$",
+            "f": "DefiLlama",
+            "u": "https://defillama.com/categories/RWA",
+            "d": "2026-11-19",
+            "n": "S"
+          },
+          "stable": {
+            "t": "Stablecoins 12.665 M$ (14-nov: 13.874 M$)",
+            "f": "RWA.xyz, Networks",
+            "u": "https://app.rwa.xyz/networks",
+            "d": "2026-11-19",
+            "n": "S"
+          }
+        },
+        "fecha_dato": "2026-11-19"
+      },
+      {
+        "id": "stellar",
+        "red": "Stellar",
+        "dist": 4953.7,
+        "rep": 77.2,
+        "pct": 98.5,
+        "stable": 411.3,
+        "defi": 6.9,
+        "tvl_cadena": 196.9,
+        "activos": 84,
+        "titulares": 26230,
+        "celdas": {
+          "distribuido": {
+            "t": "4.953,7 M$ distribuidos, 77,2 M$ representados (98,5 %); 84 activos; 26.230 titulares. 4.ª red por distribuido",
+            "f": "RWA.xyz, Networks",
+            "u": "https://app.rwa.xyz/networks",
+            "d": "2026-11-19",
+            "n": "S"
+          },
+          "defi_rwa": {
+            "t": "6,9 M$ en categoria RWA; TVL de la cadena 196,9 M$. DeFi/distribuido ≈ 0,1 %",
+            "f": "DefiLlama",
+            "u": "https://defillama.com/categories/RWA",
+            "d": "2026-11-19",
+            "n": "S"
+          },
+          "stable": {
+            "t": "Stablecoins 411,3 M$",
+            "f": "RWA.xyz, Networks",
+            "u": "https://app.rwa.xyz/networks",
+            "d": "2026-11-19",
+            "n": "S"
+          }
+        },
+        "fecha_dato": "2026-11-19"
+      },
+      {
+        "id": "xrpl",
+        "red": "XRPL",
+        "dist": 3008.4,
+        "rep": 2976.5,
+        "pct": 50.3,
+        "stable": 759.7,
+        "defi": null,
+        "tvl_cadena": 31.3,
+        "activos": 456,
+        "titulares": 2949,
+        "celdas": {
+          "distribuido": {
+            "t": "3.008,4 M$ distribuidos y 2.976,5 M$ representados (50,3 % distribuido); 456 activos; 2.949 titulares. Cambio frente al 14-nov (643 / 5.207 M$): reclasificacion en RWA.xyz, no flujo",
+            "f": "RWA.xyz, Networks",
+            "u": "https://app.rwa.xyz/networks",
+            "d": "2026-11-19",
+            "n": "S"
+          },
+          "defi_rwa": {
+            "t": "Ningun protocolo de categoria RWA con TVL en XRPL en DefiLlama; TVL de la cadena 31,3 M$",
+            "f": "DefiLlama",
+            "u": "https://defillama.com/categories/RWA",
+            "d": "2026-11-19",
+            "n": "S"
+          },
+          "stable": {
+            "t": "Stablecoins 759,7 M$",
+            "f": "RWA.xyz, Networks",
+            "u": "https://app.rwa.xyz/networks",
+            "d": "2026-11-19",
+            "n": "S"
+          }
+        },
+        "fecha_dato": "2026-11-19",
+        "reclasificado_desde_14nov": {
+          "dist_14nov": 642.8,
+          "rep_14nov": 5207.0,
+          "dist_19nov": 3008.4,
+          "rep_19nov": 2976.5,
+          "unidad": "M$",
+          "nota": "Reclasificación de RWA.xyz, no flujo; ver rwa (14-nov) y tipos_activo"
+        }
+      },
+      {
+        "id": "avalanche",
+        "red": "Avalanche",
+        "dist": 1374.9,
+        "rep": 11403.5,
+        "pct": 10.8,
+        "stable": 698.4,
+        "defi": 10.4,
+        "tvl_cadena": 544.2,
+        "activos": 1365,
+        "titulares": 10115,
+        "celdas": {
+          "distribuido": {
+            "t": "1.374,9 M$ distribuidos, 11.403,5 M$ representados (10,8 % distribuido); 1.365 activos; 10.115 titulares",
+            "f": "RWA.xyz, Networks",
+            "u": "https://app.rwa.xyz/networks",
+            "d": "2026-11-19",
+            "n": "S"
+          },
+          "defi_rwa": {
+            "t": "10,4 M$ en categoria RWA; TVL de la cadena 544,2 M$",
+            "f": "DefiLlama",
+            "u": "https://defillama.com/categories/RWA",
+            "d": "2026-11-19",
+            "n": "S"
+          },
+          "stable": {
+            "t": "Stablecoins 698,4 M$",
+            "f": "RWA.xyz, Networks",
+            "u": "https://app.rwa.xyz/networks",
+            "d": "2026-11-19",
+            "n": "S"
+          }
+        },
+        "fecha_dato": "2026-11-19"
+      },
+      {
+        "id": "canton",
+        "red": "Canton",
+        "dist": 0,
+        "rep": 384695.0,
+        "pct": 0,
+        "stable": null,
+        "defi": null,
+        "tvl_cadena": 11.2,
+        "activos": 2,
+        "titulares": null,
+        "celdas": {
+          "distribuido": {
+            "t": "0 distribuido y 384.695 M$ representados (2 activos; 89,3 % del representado mundial); sin titulares ni stablecoins en la tabla",
+            "f": "RWA.xyz, Networks",
+            "u": "https://app.rwa.xyz/networks",
+            "d": "2026-11-19",
+            "n": "S"
+          },
+          "defi_rwa": {
+            "t": "Sin protocolo de categoria RWA; TVL de la cadena 11,2 M$ (DefiLlama)",
+            "f": "DefiLlama",
+            "u": "https://defillama.com/categories/RWA",
+            "d": "2026-11-19",
+            "n": "S"
+          },
+          "stable": null
+        },
+        "fecha_dato": "2026-11-19"
+      }
+    ],
+    "reclasificacion": {
+      "t": "RWA.xyz reclasificó XRPL entre el 14 y el 19-nov-2026: representado 5.207 a 2.976 M$ y distribuido 643 a 3.008 M$. No es flujo de dinero sino un cambio de clasificación.",
+      "f": "RWA.xyz, Networks (14-nov y 19-nov)",
+      "u": "https://app.rwa.xyz/networks",
+      "d": "2026-11-19",
+      "n": "S"
+    },
+    "otras": "Fuera de la tabla: BNB Chain 6.187,4 M$ distribuidos (100 %); Provenance 26.887 M$ representados (0,2 % distribuido).",
+    "trampas": [
+      {
+        "t": "RWA.xyz distribuido/representado se reclasifica: XRPL representado 5.207 M$ (14-nov) a 2.976 M$ (19-nov) y distribuido 643 a 3.008 M$; no es flujo.",
+        "f": "RWA.xyz, Networks, y DefiLlama (api.llama.fi), lectura 19-nov-2026",
+        "u": "https://app.rwa.xyz/networks",
+        "d": "2026-11-19",
+        "n": "S"
+      },
+      {
+        "t": "La suma representado esta dominada por Canton (384.695 M$) y Provenance (26.887 M$): tokenizado no es negociable.",
+        "f": "RWA.xyz, Networks, y DefiLlama (api.llama.fi), lectura 19-nov-2026",
+        "u": "https://app.rwa.xyz/networks",
+        "d": "2026-11-19",
+        "n": "S"
+      },
+      {
+        "t": "Las tablas por plataforma incluyen stablecoins; la tabla de redes las separa.",
+        "f": "RWA.xyz, Networks, y DefiLlama (api.llama.fi), lectura 19-nov-2026",
+        "u": "https://app.rwa.xyz/networks",
+        "d": "2026-11-19",
+        "n": "S"
+      },
+      {
+        "t": "DefiLlama categoria RWA (190 protocolos) no cubre todo el tokenizado; no se sumaron las claves borrowed ni staking. Por eso 3.034 M$ no es 3.400 M$.",
+        "f": "RWA.xyz, Networks, y DefiLlama (api.llama.fi), lectura 19-nov-2026",
+        "u": "https://app.rwa.xyz/networks",
+        "d": "2026-11-19",
+        "n": "S"
+      }
+    ],
+    "sin_dato": [
+      "Definicion exacta y fecha del 3.400 M$ de Jupiter",
+      "Desglose DeFi por red de RWA.xyz (login)",
+      "Overview de RWA.xyz donde figura el 460.000 M$ (no leido)",
+      "Bitwise no consultado"
+    ],
+    "fecha_dato": "2026-11-19"
+  },
+  "vigilar": {
+    "nota": "Fechas y umbrales a seguir en esta pestaña. Son calendario, no previsiones: las fechas de DTCC son «previstas» (parte interesada) y la de XRPL no tiene fecha.",
+    "filas": [
+      {
+        "cuando": "Sin fecha",
+        "que": "XRPL: activación de LendingProtocol y SingleAssetVault. Hoy 24-25 de 35 votos con umbral 28; hace falta mayoría superior al 80 % mantenida 2 semanas y aún no hay estado «majority»",
+        "celda": {
+          "t": "Voto de validadores: SingleAssetVault 25/35 (umbral 28), LendingProtocol 24/35 (umbral 28); activar exige mantener mayoria superior al 80 % durante 2 semanas (xrpl.org). Aun no hay estado majority. Corrección: el canal de vídeo dio «22 de 29»; no coincide con ninguna fuente leída (24-25 de 35 a 19-nov). Los 35 son validadores que votan, no necesariamente toda la UNL [VERIFICAR].",
+          "f": "api.xrpscan.com/api/v1/amendments (majority=null en ambas)",
+          "u": "https://api.xrpscan.com/api/v1/amendments",
+          "d": "2026-11-19",
+          "n": "S"
+        }
+      },
+      {
+        "cuando": "1S-2027",
+        "que": "Stellar: activos tokenizados de DTC (prevista, SEP-41)",
+        "celda": {
+          "t": "DTCC y la Stellar Development Foundation esperan activos tokenizados de DTC en Stellar en 1S-2027 (activos en evaluación: Russell 1000, ETF de índices principales y bonos/letras/notas del Tesoro; base: carta SEC dic-2025). La ficha At-a-Glance confirma Stellar en 2027 con estándar SEP-41. Fecha prevista, no en vivo.",
+          "f": "DTCC, nota 27-may-2026 (lector que resume) + ficha At-a-Glance (leída)",
+          "u": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy",
+          "d": "2026-05-27",
+          "n": "P"
+        }
+      },
+      {
+        "cuando": "2S-2027",
+        "que": "Solana: activos tokenizados de DTC (prevista)",
+        "celda": {
+          "t": "DTCC planea habilitar la tokenización de activos custodiados en DTC en Solana (L1); activos DTC tokenizados «esperados» en 2S-2027. Fecha prevista, no en vivo. La nota no cita la carta SEC ni lista de activos en el cuerpo; no cita XRPL ni Stellar. Fuente interesada: DTCC es parte.",
+          "f": "DTCC, nota «DTCC Tokenization Service to Connect with Solana» (lector que resume; citas cortas coinciden con el informe de vídeo del 18-nov)",
+          "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana",
+          "d": "2026-11-12",
+          "n": "P"
+        }
+      },
+      {
+        "cuando": "≈15-feb-2027",
+        "que": "13F del 4T-2026: declaraciones de gestoras de EE. UU. con posiciones a 31-dic-2026 (fecha aproximada; el 15-feb-2027 es festivo federal en EE. UU., así que el plazo real puede correrse un día [VERIFICAR con la SEC])",
+        "celda": {
+          "t": "Fecha de los 13F del 4T citada como «≈15-feb-2027» en el documento interno de catalizadores; no cotejada con la SEC.",
+          "f": "cerebro/documentos/catalizadores-xrp-xlm.md",
+          "i": "cerebro/documentos/catalizadores-xrp-xlm.md",
+          "d": null,
+          "n": "V"
+        },
+        "nota": "El 15-feb-2027 es festivo federal en EE. UU. (Presidents' Day, tercer lunes de febrero [R]); el plazo real del 13F del 4T puede correrse y debe comprobarse con la SEC [VERIFICAR con la SEC]."
+      }
+    ]
   }
 }

@@ -353,6 +353,37 @@ def tarjetas_extra():
                       "cadenas": [[x["nombre"], x.get("token") or "", (x.get("tipo") or "")[:90]] for x in c["cadenas"]],
                       "rwa": [[x["cadena"], f"{_n(x.get('dist'), 1)} M$ distribuidos", f"representados {_n(x.get('rep'), 1)} M$ · stablecoins {_n(x.get('stable'), 0)} M$ · {_n(x.get('holders'))} holders"] for x in rw.get("filas", [])],
                       "tot": rw.get("totales"), "aviso": (c.get("aviso") or "")[:260]}
+    if c.get("dtcc_ruta") or c.get("brecha_rwa"):
+        # C339-C341 (19-nov): DTCC por red, préstamos, brecha representado/distribuido y qué vigilar. Importes en M$; sin dato = «sin dato».
+        sd = lambda t: ("sin dato" if t is None or str(t).lower() == "null" else str(t).replace("null", "sin dato"))
+        def src(v):
+            if not v:
+                return "sin fuente"
+            return f"nivel {v.get('n') or 'sin dato'} · {sd(v.get('f') or 'sin dato')[:90]} · {v.get('d') or 'sin fecha'}"
+        d1, r1, b1, v1 = c.get("dtcc_ruta") or {}, c.get("rendimiento_redes") or {}, c.get("brecha_rwa") or {}, c.get("vigilar") or {}
+        cad2 = {"unidad": "Importes en M$ (millones de dólares). Nivel: P fuente primaria, S agregador o prensa, R cálculo propio, V documento interno. sin dato = no consta.",
+                "dtcc_nota": sd(d1.get("nota") or ""),
+                "dtcc": [[x["red"], f"{x['estado']} · {x['fecha']}", f"{sd(x.get('activos'))} · {src(x.get('celda'))}"] for x in d1.get("redes", [])]
+                        + [[o["nombre"], f"{o['estado']} · {o['fecha']}", "No es cadena del explorador · " + src(o.get("celda"))] for o in d1.get("otras", [])],
+                "dtcc_sd": d1.get("sin_dato") or [],
+                "prest_nota": sd(r1.get("nota") or ""),
+                "prest": [],
+                "prest_sd": r1.get("sin_dato") or [],
+                "brecha_nota": sd(b1.get("nota") or ""),
+                "brecha_tot": [sd((b1.get("totales") or {}).get("t")), sd((b1.get("brecha") or {}).get("t")), sd((b1.get("reclasificacion") or {}).get("t"))],
+                "brecha": [[x["red"], f"{_n(x.get('dist'), 1)} M$ distribuidos",
+                            f"representados {_n(x.get('rep'), 1)} M$ · {_n(x.get('pct'), 1)} % distribuido · DeFi categoría RWA " + ("sin protocolo" if x.get("defi") is None else _n(x.get("defi"), 1) + " M$")
+                            + f" · stablecoins {_n(x.get('stable'), 0)} M$ · TVL de la cadena {_n(x.get('tvl_cadena'), 0)} M$ · nivel S · RWA.xyz y DefiLlama, {x.get('fecha_dato') or '19-nov-2026'}"] for x in b1.get("filas", [])],
+                "brecha_sd": b1.get("sin_dato") or [],
+                "vig_nota": sd(v1.get("nota") or ""),
+                "vig": [[x["cuando"], (x.get("que") or "")[:200], (x.get("nota") + " · " if x.get("nota") else "") + src(x.get("celda"))] for x in v1.get("filas", [])]}
+        xv = r1.get("xrpl") or {}
+        for k, nm in (("vault", "SingleAssetVault (XLS-65)"), ("lending", "LendingProtocol (XLS-66)")):
+            if xv.get(k):
+                cad2["prest"].append([f"XRPL · {nm}", f"{xv[k]['votos']} de {xv[k]['total']} votos (umbral {xv[k]['umbral']})", "sin activar en la red principal · " + src(xv.get("estado"))])
+        for x in r1.get("filas", []):
+            cad2["prest"].append([f"{x['red']} · {x['protocolo']}", f"TVL {_n(x.get('tvl'), 1)} M$", f"prestado {_n(x.get('prestado'), 1)} M$ · {x.get('estado') or 'sin dato'} · {src(x.get('celda'))}"])
+        sal["cad2"] = cad2
     e = leer("etf-flujos.json")
     if e.get("etfs"):
         fil = []
@@ -362,8 +393,14 @@ def tarjetas_extra():
                 continue
             u = h[-1]
             aum, fl = u.get("aum_usd"), u.get("flujo_usd")
+            cm = x.get("comision_pct")
             fil.append([f"{x['ticker']} · {x.get('activo')}", ("AUM " + _n(aum / 1e6, 1) + " M$") if aum is not None else "AUM sin dato",
-                        f"{u['fecha']} · flujo del día " + (_n(fl / 1e6, 1) + " M$" if fl is not None else "[VERIFICAR] no calculable") + f" · {(x.get('emisor') or '')[:40]}"])
+                        f"{u['fecha']} · flujo del día " + (_n(fl / 1e6, 1) + " M$" if fl is not None else "[VERIFICAR] no calculable") + f" · {(x.get('emisor') or '')[:40]}"
+                        + " · comisión " + (_n(cm, 2) + " % anual" if cm is not None else "sin dato") + " · custodio " + (x.get("custodio") or "sin dato")[:60]
+                        + (" · lanzamiento " + x["lanzamiento"] if x.get("lanzamiento") else "")])
+        for x in e["etfs"]:
+            if not [r for r in x.get("historial", []) if r.get("fecha")]:
+                fil.append([f"{x['ticker']} · {x.get('activo')}", "AUM sin dato", "[VERIFICAR] archivo del 10-Q no leído (404) · comisión y custodio sin dato"])
         tr = e.get("trackers_contraste", {})
         sal["etff"] = {"gen": e.get("generado"), "nivel": "P (emisor; parte interesada)", "unidad": "AUM y flujos en millones de dólares (M$); el JSON de origen guarda USD y miles de USD",
                        "fil": fil, "farside": [[r["fecha"], _n(r["total"], 1) + " M$"] for r in tr.get("serie_btc", [])],

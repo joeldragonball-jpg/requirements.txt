@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "actualizado": "2026-11-18",
+  "actualizado": "2026-11-19",
   "nota": "Información general sobre cinco activos; no es recomendación de compra ni venta. Cada dato lleva fecha y nivel (P = fuente primaria leída; S = agregador o prensa). Los precios son de agregadores (CoinGecko, Yahoo) del 9 o 10-nov-2026; los datos de ETF son de fechas anteriores. Sin predicciones: lo que sea opinión o previsión va como [ESPECULACIÓN] y lo no contrastado como [VERIFICAR].",
   "unidades": "Cada hecho lleva su unidad y fecha. Capitalización y AUM en millones de USD; precios en la moneda indicada.",
   "fichas": [
@@ -257,6 +257,38 @@
           "fecha": "2026-11-18",
           "nivel": "P",
           "fuente": "Intentado en las webs de Canary (error), Bitwise (404) y Grayscale (429): no leído. Pendiente en prospectos de EDGAR [VERIFICAR]"
+        },
+        {
+          "dato": "Comision anual de ETF spot de XRP (emisor = parte interesada)",
+          "valor": "Bitwise 0,34 %; 21Shares TOXR 0,30 %; Grayscale GXRP 0,35 %; Franklin XRPZ 0,19 %; Canary XRPC 0,50 %",
+          "unidad": "% anual",
+          "fecha": "2026-11-13",
+          "nivel": "P",
+          "fuente": "424B3 de Bitwise 28-sep-2026 y 10-Q 30-sep-2026 de TOXR, GXRP, XRPZ y XRPC (sec.gov); exenciones temporales de comision no leidas [VERIFICAR]"
+        },
+        {
+          "dato": "Custodio de las XRP de esos ETF",
+          "valor": "Coinbase Custody (Bitwise, GXRP, XRPZ); Coinbase y BitGo (XRPC); Coinbase, BitGo y Anchorage (TOXR)",
+          "unidad": "",
+          "fecha": "2026-11-13",
+          "nivel": "P",
+          "fuente": "mismos documentos SEC; Anchorage es custodio alternativo en GXRP"
+        },
+        {
+          "dato": "Activos netos a 30-sep-2026 (dato trimestral, no flujo)",
+          "valor": "TOXR 159,7; GXRP 97,4; XRPZ 439,6; XRPC 368,7",
+          "unidad": "millones USD",
+          "fecha": "2026-09-30",
+          "nivel": "P",
+          "fuente": "10-Q de cada fondo (sec.gov, no auditado); Bitwise XRP no leido (archivo 404) [VERIFICAR]"
+        },
+        {
+          "dato": "Lanzamiento/cotizacion",
+          "valor": "XRPC 13-nov-2025; XRPZ 24-nov-2025 (inicio de operaciones); GXRP 24-nov-2025 (uplisting y comision 0,35 %); TOXR 11-dic-2025",
+          "unidad": "",
+          "fecha": "2026-11-13",
+          "nivel": "P",
+          "fuente": "10-Q 30-sep-2026 de cada fondo (sec.gov)"
         }
       ],
       "alcista": [
@@ -467,6 +499,22 @@
           "fecha": "2026-11-18",
           "nivel": "S",
           "fuente": "Informe T19 (23-oct-2026); comisión del trust: null [VERIFICAR en su 10-Q]"
+        },
+        {
+          "dato": "GXLM (Grayscale Stellar Lumens Trust): activos netos, acciones y NAV",
+          "valor": "26,85 M$; 1.440.900 acciones; NAV 18,63; 118,5 M XLM",
+          "unidad": "millones USD",
+          "fecha": "2026-09-30",
+          "nivel": "P",
+          "fuente": "10-Q de Grayscale (sec.gov, cifras en miles de USD; no auditado). Cotiza en OTC, no es ETF en bolsa"
+        },
+        {
+          "dato": "Custodio de GXLM",
+          "valor": "Coinbase Custody Trust Company, LLC",
+          "unidad": "",
+          "fecha": "2026-09-30",
+          "nivel": "P",
+          "fuente": "mismo 10-Q; comision no localizada [VERIFICAR]"
         }
       ],
       "alcista": [

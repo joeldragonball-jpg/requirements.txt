@@ -1,0 +1,47 @@
+{
+  "tarea": "C340",
+  "fecha": "2026-11-19",
+  "aviso": "Delta propuesto, no aplicado a explorador/cadenas.json. Niveles: P primaria leida, S agregador, V verificar. Sin dato = null.",
+  "cadenas": {
+    "xrpl": {
+      "rendimiento": {
+        "t": "LendingProtocol (XLS-66) y SingleAssetVault (XLS-65) siguen enabled=false en la red principal. Votos de validadores en el recuento publico: LendingProtocol 24 de 35 (umbral 28), SingleAssetVault 25 de 35 (umbral 28); existe ademas LendingProtocolV1_1 (24/28), tambien sin activar. Las dos especificaciones figuran como Draft (actualizadas 15-sep-2026). Sin staking nativo (sin cambio).",
+        "f": "Consulta feature al nodo publico xrplcluster.com (enabled=false); recuento de votos en api.xrpscan.com/api/v1/amendments (agregador de la propia API de enmiendas); xls.xrpl.org XLS-65 y XLS-66",
+        "u": "https://xrpl.org/resources/known-amendments",
+        "d": "2026-11-19",
+        "n": "P"
+      },
+      "rendimiento_votos": {
+        "t": "Voto de validadores: SingleAssetVault 25/35 (umbral 28), LendingProtocol 24/35 (umbral 28); activar exige mantener mayoria superior al 80 % durante 2 semanas (xrpl.org). Aun no hay estado majority.",
+        "f": "api.xrpscan.com/api/v1/amendments (majority=null en ambas)",
+        "u": "https://api.xrpscan.com/api/v1/amendments",
+        "d": "2026-11-19",
+        "n": "S"
+      }
+    },
+    "stellar": {
+      "rendimiento": {
+        "t": "Blend (protocolo de prestamos en Stellar): TVL 104,4 M USD y 32,5 M USD prestados segun DefiLlama.",
+        "f": "DefiLlama api.llama.fi/protocol/blend (agregador; cifra instantanea de la hora de consulta)",
+        "u": "https://defillama.com/protocol/blend",
+        "d": "2026-11-19",
+        "n": "S"
+      }
+    },
+    "solana": {
+      "rendimiento": {
+        "t": "Prestamos en Solana: Kamino Lend TVL 1.158 M USD (782,9 M prestados); Jupiter Lend TVL 964,9 M USD (890,1 M prestados), segun DefiLlama.",
+        "f": "DefiLlama api.llama.fi/protocol/kamino-lend y jupiter-lend (agregador)",
+        "u": "https://defillama.com/protocol/kamino-lend",
+        "d": "2026-11-19",
+        "n": "S"
+      }
+    }
+  },
+  "hito_xrpl": {
+    "t": "Correccion de la voz de video: el estado a 19-nov es 24-25 de 35 validadores a favor, no 22 de 29; el umbral numerico actual es 28",
+    "f": "api.xrpscan.com + informe C340",
+    "d": "2026-11-19",
+    "n": "S"
+  }
+}

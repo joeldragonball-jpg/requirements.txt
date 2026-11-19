@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-17",
+ "generado": "2026-11-19",
  "metodo": "flujo diario = (acciones_t - acciones_t-1) x NAV_t; requiere >=2 instantáneas. Las webs de emisores solo muestran la última, así que el historial se acumula con scripts/leer_etf_flujos.py (una instantánea por día hábil). Al 15-nov (domingo) las webs repiten el ultimo dia habil (12/13-nov): 1 instantanea diaria por fondo, flujo diario = null. XRPZ, XRPC y GXLM solo tienen datos trimestrales/portada de la SEC (10-Q del 13-nov y 10-nov-2026).",
  "nota_nivel": "P = leido en la web del emisor o en EDGAR (10-Q; parte interesada, no auditado). Agregadores (Farside, SoSoValue) solo como contraste [S]; no consultados.",
  "etfs": [
@@ -46,7 +46,12 @@
     }
    ],
    "flujo_usd": 0,
-   "flujo_fecha": "2026-11-13"
+   "flujo_fecha": "2026-11-13",
+   "comision_pct": 0.34,
+   "comision_nota": "0,34 % anual sobre las XRP del fondo (comision unitaria); 424B3 del 28-sep-2026",
+   "custodio": "Coinbase Custody Trust Company, LLC",
+   "fuente_prospecto": "https://www.sec.gov/Archives/edgar/data/2039525/000121390026104143/ea0306697-424b3_bitwisexrp.htm",
+   "fecha_prospecto": "2026-09-28"
   },
   {
    "ticker": "TOXR",
@@ -55,6 +60,16 @@
    "emisor": "21Shares",
    "web": "https://www.21shares.com/en-us/products-us/toxr",
    "historial": [
+    {
+     "fecha": "2026-09-30",
+     "acciones": 11020000,
+     "nav": 14.49,
+     "tenencia_monedas": null,
+     "aum_usd": 159727044,
+     "fuente": "https://www.sec.gov/Archives/edgar/data/2028835/000121390026118028/ea0310084-10q_21shares.htm",
+     "nivel": "P (SEC, 10-Q trimestral no auditado; emisor = parte interesada)",
+     "nota": "10-Q 30-sep-2026: activos netos 159.727.044 USD; 11.020.000 acciones; NAV 14,49 (31-dic-2025: 13.890.000 acciones, NAV 17,83, 247,66 M USD). Dato trimestral, no es flujo diario"
+    },
     {
      "fecha": "2026-11-13",
      "acciones": 11000000,
@@ -90,7 +105,13 @@
     }
    ],
    "flujo_usd": 0,
-   "flujo_fecha": "2026-11-16"
+   "flujo_fecha": "2026-11-16",
+   "comision_pct": 0.3,
+   "comision_nota": "0,30 % del NAV; antes del 11-dic-2025 era 2,50 % (10-Q 30-sep-2026)",
+   "custodio": "Coinbase Custody, BitGo Bank & Trust y Anchorage Digital Bank (3 custodios)",
+   "lanzamiento": "2025-12-11",
+   "fuente_prospecto": "https://www.sec.gov/Archives/edgar/data/2028835/000121390026118028/ea0310084-10q_21shares.htm",
+   "fecha_prospecto": "2026-11-10"
   },
   {
    "ticker": "XRPZ",
@@ -111,7 +132,13 @@
     }
    ],
    "flujo_usd": null,
-   "flujo_motivo": "solo dato trimestral (30-sep): sin acciones diarias no hay flujo diario. Entre 31-mar y 30-sep las acciones pasaron de 14,70 M a 27,00 M (+12,30 M; variacion mezclada con precio, no es flujo diario). La web franklintempleton.com/xrpz sigue en 404 (15-nov)"
+   "flujo_motivo": "solo dato trimestral (30-sep): sin acciones diarias no hay flujo diario. Entre 31-mar y 30-sep las acciones pasaron de 14,70 M a 27,00 M (+12,30 M; variacion mezclada con precio, no es flujo diario). La web franklintempleton.com/xrpz sigue en 404 (15-nov)",
+   "comision_pct": 0.19,
+   "comision_nota": "0,19 % anual del NAV, devengo diario, pagadero trimestralmente en USD; 10-Q 30-sep-2026",
+   "custodio": "Coinbase Custody Trust Company, LLC (efectivo: BNY Mellon)",
+   "lanzamiento": "2025-11-24",
+   "fuente_prospecto": "https://www.sec.gov/Archives/edgar/data/2059438/000114036126043720/ef20083832_10q.htm",
+   "fecha_prospecto": "2026-11-13"
   },
   {
    "ticker": "XRPC",
@@ -141,7 +168,13 @@
     }
    ],
    "flujo_usd": null,
-   "flujo_motivo": "acciones 23,35 M (30-sep) -> 22,92 M (9-nov): -0,43 M acciones (-1,8 %), salida neta en acciones; sin NAV del 9-nov no se valora en USD [calculo propio]. canaryfunds.com sigue con ERR_SSL; datos por EDGAR"
+   "flujo_motivo": "acciones 23,35 M (30-sep) -> 22,92 M (9-nov): -0,43 M acciones (-1,8 %), salida neta en acciones; sin NAV del 9-nov no se valora en USD [calculo propio]. canaryfunds.com sigue con ERR_SSL; datos por EDGAR",
+   "comision_pct": 0.5,
+   "comision_nota": "0,50 % anual unificada sobre las XRP del fondo; 10-Q 30-sep-2026 (exenciones de comision no leidas) [VERIFICAR]",
+   "custodio": "Coinbase Custody Trust Company, LLC y BitGo Bank & Trust, N.A.",
+   "lanzamiento": "2025-11-13",
+   "fuente_prospecto": "https://www.sec.gov/Archives/edgar/data/2039505/000199937126025352/xrpc-10q_093026.htm",
+   "fecha_prospecto": "2026-11-13"
   },
   {
    "ticker": "GXLM",
@@ -163,7 +196,12 @@
    ],
    "flujo_usd": null,
    "flujo_motivo": "existe en EDGAR (CIK 1761325, ticker GXLM, OTC) con 10-Q del 10-nov-2026; solo dato trimestral (+51.700 acciones desde 31-dic-2025, ~+3,7 %). Sin dato diario no hay flujo. La web de ETF de Grayscale no lo lista porque no es ETF",
-   "tipo": "fideicomiso OTC (no ETF en bolsa)"
+   "tipo": "fideicomiso OTC (no ETF en bolsa)",
+   "comision_pct": null,
+   "comision_nota": "tasa no localizada en el 10-Q leido [VERIFICAR en S-1/prospecto]",
+   "custodio": "Coinbase Custody Trust Company, LLC",
+   "fuente_prospecto": "https://www.sec.gov/Archives/edgar/data/1761325/000176132526000010/gxlm-20260930.htm",
+   "fecha_prospecto": "2026-11-10"
   },
   {
    "ticker": "IBIT",
@@ -244,6 +282,16 @@
    "web": "https://etfs.grayscale.com/gxrp",
    "historial": [
     {
+     "fecha": "2026-09-30",
+     "acciones": 3380100,
+     "nav": 28.82,
+     "tenencia_monedas": null,
+     "aum_usd": 97417000,
+     "fuente": "https://www.sec.gov/Archives/edgar/data/2037427/000203742726000009/ck0002037427-20260930.htm",
+     "nivel": "P (SEC, 10-Q trimestral no auditado; emisor = parte interesada)",
+     "nota": "10-Q 30-sep-2026 (cifras originales en miles de USD): activos netos 97.417 miles USD = 97,4 M USD; 3.380.100 acciones; NAV de mercado principal 28,82 (31-dic-2025: 6.300.100 acciones, NAV 35,45, 223,4 M USD). Dato trimestral"
+    },
+    {
      "fecha": "2026-11-13",
      "acciones": 3000100.0,
      "nav": 19.78,
@@ -277,7 +325,214 @@
     }
    ],
    "flujo_usd": -5174484,
-   "flujo_fecha": "2026-11-16"
+   "flujo_fecha": "2026-11-16",
+   "comision_pct": 0.35,
+   "comision_nota": "0,35 % desde el 24-nov-2025 (antes 2,5 %); 10-Q 30-sep-2026",
+   "custodio": "Coinbase Custody Trust Company, LLC; Anchorage Digital Bank como custodio alternativo disponible",
+   "lanzamiento": "2025-11-24",
+   "fuente_prospecto": "https://www.sec.gov/Archives/edgar/data/2037427/000203742726000009/ck0002037427-20260930.htm",
+   "fecha_prospecto": "2026-11-05",
+   "nota_lanzamiento": "fideicomiso en operaciones desde 5-sep-2024; comision reducida y Uplisting Date el 24-nov-2025"
+  },
+  {
+   "ticker": "BSOL",
+   "nombre": "Bitwise Solana Staking ETF",
+   "activo": "SOL",
+   "emisor": "Bitwise Investment Advisers",
+   "web": "https://www.sec.gov/Archives/edgar/data/2045872/000119312626460042/bsol-20260930.htm",
+   "comision_pct": 0.2,
+   "comision_nota": "0,20 % anual sobre las SOL del fondo; el emisor renuncio a la comision en el primer 1.000 M USD de activos hasta el 27-ene-2026",
+   "custodio": "Coinbase Custody Trust Company, LLC",
+   "fuente_prospecto": "https://www.sec.gov/Archives/edgar/data/2045872/000119312626460042/bsol-20260930.htm",
+   "fecha_prospecto": "2026-11-13",
+   "historial": [
+    {
+     "fecha": "2026-09-30",
+     "acciones": 81520000,
+     "nav": 16.14,
+     "tenencia_monedas": null,
+     "aum_usd": 1315691000,
+     "fuente": "https://www.sec.gov/Archives/edgar/data/2045872/000119312626460042/bsol-20260930.htm",
+     "nivel": "P (SEC, 10-Q trimestral no auditado; emisor = parte interesada)",
+     "nota": "10-Q 30-sep-2026; operaciones desde 23-oct-2025; cotiza desde 28-oct-2025; 31-dic-2025: 39.180.000 acciones, 641,3 M USD. Dato trimestral, no es flujo diario"
+    }
+   ],
+   "flujo_usd": null,
+   "flujo_motivo": "solo dato trimestral (10-Q): sin acciones diarias de la web del emisor no hay flujo diario [VERIFICAR]; webs de emisores de SOL no leidas en esta pasada",
+   "lanzamiento": "2025-10-28"
+  },
+  {
+   "ticker": "GSOL",
+   "nombre": "Grayscale Solana Staking ETF",
+   "activo": "SOL",
+   "emisor": "Grayscale Investments",
+   "web": "https://www.sec.gov/Archives/edgar/data/1896677/000189667726000020/gsol-20260930.htm",
+   "comision_pct": 0.19,
+   "comision_nota": "0,19 % desde el 25-jun-2026 (antes 0,35 %; Enmienda n.o 3)",
+   "custodio": "Coinbase Custody Trust Company, LLC; Anchorage Digital Bank como alternativo",
+   "fuente_prospecto": "https://www.sec.gov/Archives/edgar/data/1896677/000189667726000020/gsol-20260930.htm",
+   "fecha_prospecto": "2026-11-10",
+   "historial": [
+    {
+     "fecha": "2026-09-30",
+     "acciones": 24014135,
+     "nav": 8.89,
+     "tenencia_monedas": null,
+     "aum_usd": 213466000,
+     "fuente": "https://www.sec.gov/Archives/edgar/data/1896677/000189667726000020/gsol-20260930.htm",
+     "nivel": "P (SEC, 10-Q trimestral no auditado; emisor = parte interesada)",
+     "nota": "10-Q 30-sep-2026; fideicomiso en operaciones desde 18-nov-2021; cotiza en NYSE Arca desde 29-oct-2025; 31-dic-2025: 17.634.135 acciones, 160,4 M USD. Dato trimestral, no es flujo diario"
+    }
+   ],
+   "flujo_usd": null,
+   "flujo_motivo": "solo dato trimestral (10-Q): sin acciones diarias de la web del emisor no hay flujo diario [VERIFICAR]; webs de emisores de SOL no leidas en esta pasada",
+   "lanzamiento": "2025-10-29"
+  },
+  {
+   "ticker": "FSOL",
+   "nombre": "Fidelity Solana Fund",
+   "activo": "SOL",
+   "emisor": "Fidelity",
+   "web": "https://www.sec.gov/Archives/edgar/data/2063380/000119312626460394/fsol-20260930.htm",
+   "comision_pct": 0.25,
+   "comision_nota": "0,25 % unificada sobre las SOL; renuncia total hasta el 18-may-2026, despues devenga",
+   "custodio": "BitGo Trust & Coinbase Custody Trust Company, LLC",
+   "fuente_prospecto": "https://www.sec.gov/Archives/edgar/data/2063380/000119312626460394/fsol-20260930.htm",
+   "fecha_prospecto": "2026-11-13",
+   "historial": [
+    {
+     "fecha": "2026-09-30",
+     "acciones": 17450000,
+     "nav": 13.98,
+     "tenencia_monedas": null,
+     "aum_usd": 243877000,
+     "fuente": "https://www.sec.gov/Archives/edgar/data/2063380/000119312626460394/fsol-20260930.htm",
+     "nivel": "P (SEC, 10-Q trimestral no auditado; emisor = parte interesada)",
+     "nota": "10-Q 30-sep-2026; cotiza desde 18-nov-2025; 31-dic-2025: 7.775.000 acciones, 113,9 M USD (original en miles). Dato trimestral, no es flujo diario"
+    }
+   ],
+   "flujo_usd": null,
+   "flujo_motivo": "solo dato trimestral (10-Q): sin acciones diarias de la web del emisor no hay flujo diario [VERIFICAR]; webs de emisores de SOL no leidas en esta pasada",
+   "lanzamiento": "2025-11-18"
+  },
+  {
+   "ticker": "TSOL",
+   "nombre": "21Shares Solana Staking ETF",
+   "activo": "SOL",
+   "emisor": "21Shares",
+   "web": "https://www.sec.gov/Archives/edgar/data/2028834/000121390026119826/ea0310787-10q_21shares.htm",
+   "comision_pct": 0.21,
+   "comision_nota": "0,21 % del NAV; renuncia total de un ano desde el 28-jul-2026",
+   "custodio": "Coinbase Custody, BitGo Bank & Trust y Anchorage Digital Bank",
+   "fuente_prospecto": "https://www.sec.gov/Archives/edgar/data/2028834/000121390026119826/ea0310787-10q_21shares.htm",
+   "fecha_prospecto": "2026-11-13",
+   "historial": [
+    {
+     "fecha": "2026-09-30",
+     "acciones": 860000,
+     "nav": 11.38,
+     "tenencia_monedas": null,
+     "aum_usd": 9786070,
+     "fuente": "https://www.sec.gov/Archives/edgar/data/2028834/000121390026119826/ea0310787-10q_21shares.htm",
+     "nivel": "P (SEC, 10-Q trimestral no auditado; emisor = parte interesada)",
+     "nota": "10-Q 30-sep-2026; cotiza desde 19-nov-2025; 31-dic-2025: 460.000 acciones, 5,74 M USD. Dato trimestral, no es flujo diario"
+    }
+   ],
+   "flujo_usd": null,
+   "flujo_motivo": "solo dato trimestral (10-Q): sin acciones diarias de la web del emisor no hay flujo diario [VERIFICAR]; webs de emisores de SOL no leidas en esta pasada",
+   "lanzamiento": "2025-11-19"
+  },
+  {
+   "ticker": "VSOL",
+   "nombre": "VanEck Solana ETF",
+   "activo": "SOL",
+   "emisor": "VanEck",
+   "web": "https://www.sec.gov/Archives/edgar/data/2028541/000093041326003325/c118070_10q-ixbrl.htm",
+   "comision_pct": 0.3,
+   "comision_nota": "0,30 % del patrimonio medio diario; renuncia en el primer 1.000 M USD hasta el 17-feb-2026",
+   "custodio": "Gemini Trust Company, LLC; Coinbase Custody como adicional",
+   "fuente_prospecto": "https://www.sec.gov/Archives/edgar/data/2028541/000093041326003325/c118070_10q-ixbrl.htm",
+   "fecha_prospecto": "2026-11-13",
+   "historial": [
+    {
+     "fecha": "2026-09-30",
+     "acciones": 1600000,
+     "nav": 15.98,
+     "tenencia_monedas": null,
+     "aum_usd": 25569509,
+     "fuente": "https://www.sec.gov/Archives/edgar/data/2028541/000093041326003325/c118070_10q-ixbrl.htm",
+     "nivel": "P (SEC, 10-Q trimestral no auditado; emisor = parte interesada)",
+     "nota": "10-Q 30-sep-2026; fecha de inicio de cotizacion no leida [VERIFICAR]; 31-dic-2025: 1.450.000 acciones, 23,5 M USD. Dato trimestral, no es flujo diario"
+    }
+   ],
+   "flujo_usd": null,
+   "flujo_motivo": "solo dato trimestral (10-Q): sin acciones diarias de la web del emisor no hay flujo diario [VERIFICAR]; webs de emisores de SOL no leidas en esta pasada"
+  },
+  {
+   "ticker": "SOLC",
+   "nombre": "Canary Marinade Solana ETF",
+   "activo": "SOL",
+   "emisor": "Canary Capital",
+   "web": "https://www.sec.gov/Archives/edgar/data/2041869/000199937126025342/solc-10q_093026.htm",
+   "comision_pct": 0.5,
+   "comision_nota": "0,50 % unificada sobre las SOL; renuncia total hasta el 30-jun-2026, devenga desde el 1-jul-2026",
+   "custodio": "BitGo Bank & Trust, N.A.",
+   "fuente_prospecto": "https://www.sec.gov/Archives/edgar/data/2041869/000199937126025342/solc-10q_093026.htm",
+   "fecha_prospecto": "2026-11-13",
+   "historial": [
+    {
+     "fecha": "2026-09-30",
+     "acciones": 170000,
+     "nav": 23.7,
+     "tenencia_monedas": null,
+     "aum_usd": 4028540,
+     "fuente": "https://www.sec.gov/Archives/edgar/data/2041869/000199937126025342/solc-10q_093026.htm",
+     "nivel": "P (SEC, 10-Q trimestral no auditado; emisor = parte interesada)",
+     "nota": "10-Q 30-sep-2026; inicio de cotizacion no leido [VERIFICAR]; 190.000 acciones en circulacion al 9-nov-2026 (portada del 10-Q). Dato trimestral, no es flujo diario"
+    }
+   ],
+   "flujo_usd": null,
+   "flujo_motivo": "solo dato trimestral (10-Q): sin acciones diarias de la web del emisor no hay flujo diario [VERIFICAR]; webs de emisores de SOL no leidas en esta pasada"
+  },
+  {
+   "ticker": "SOEZ",
+   "nombre": "Franklin Solana Trust",
+   "activo": "SOL",
+   "emisor": "Franklin Templeton",
+   "web": "https://www.sec.gov/Archives/edgar/data/2057388/000114036126043714/ef20080542_10q.htm",
+   "comision_pct": 0.19,
+   "comision_nota": "0,19 % anual del NAV, devengo diario",
+   "custodio": "Coinbase Custody Trust Company, LLC (efectivo: BNY Mellon)",
+   "fuente_prospecto": "https://www.sec.gov/Archives/edgar/data/2057388/000114036126043714/ef20080542_10q.htm",
+   "fecha_prospecto": "2026-11-13",
+   "historial": [
+    {
+     "fecha": "2026-09-30",
+     "acciones": 850000,
+     "nav": 20.5,
+     "tenencia_monedas": null,
+     "aum_usd": 17426823,
+     "fuente": "https://www.sec.gov/Archives/edgar/data/2057388/000114036126043714/ef20080542_10q.htm",
+     "nivel": "P (SEC, 10-Q trimestral no auditado; emisor = parte interesada)",
+     "nota": "10-Q 30-sep-2026; cotiza desde 3-dic-2025; ejercicio fiscal que termina el 31-mar: 31-mar-2026: 650.000 acciones, 9,37 M USD. Dato trimestral, no es flujo diario"
+    }
+   ],
+   "flujo_usd": null,
+   "flujo_motivo": "solo dato trimestral (10-Q): sin acciones diarias de la web del emisor no hay flujo diario [VERIFICAR]; webs de emisores de SOL no leidas en esta pasada",
+   "lanzamiento": "2025-12-03"
+  },
+  {
+   "ticker": "QSOL",
+   "nombre": "Invesco Galaxy Solana ETF",
+   "activo": "SOL",
+   "emisor": "Invesco / Galaxy",
+   "web": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002074409&type=10-Q",
+   "comision_pct": null,
+   "comision_nota": "no leido: el 10-Q (0001193125-26-450280) y el 424B3 del 12-nov devolvieron 404 desde sec.gov/Archives [VERIFICAR]",
+   "custodio": null,
+   "historial": [],
+   "flujo_usd": null,
+   "flujo_motivo": "sin cifras leidas; existe en EDGAR (CIK 2074409, 10-Q presentado el 6-nov-2026)"
   }
  ],
  "bloques_no_hechos": {
@@ -285,7 +540,8 @@
   "13f_3T": "HECHO el 17-nov (ver 13f_3T); completitud parcial; falta leer en EDGAR el XML de los demas declarantes grandes (solo Goldman contrastado).",
   "xrpz_xrpc": "sin web diaria legible (Franklin 404, Canary ERR_SSL): solo 10-Q; flujo diario = null [VERIFICAR]",
   "xlm": "no hay ETF spot de XLM cotizado en bolsa en EE. UU. con datos: solo el fideicomiso OTC GXLM (10-Q 30-sep); sin acciones diarias. 13F: 0 filas.",
-  "btc_17nov": "2.a instantanea de IBIT/FBTC/EZBC no leida el 17-nov: flujo diario BTC = null [VERIFICAR]"
+  "btc_17nov": "2.a instantanea de IBIT/FBTC/EZBC no leida el 17-nov: flujo diario BTC = null [VERIFICAR]",
+  "c343_19nov": "C343 (19-nov): comision, custodio y lanzamiento de 5 ETF de XRP, GXLM y 8 de SOL (7 con cifras 30-sep; QSOL sin leer). Falta: 10-Q 30-sep de Bitwise XRP (archivo 404), webs diarias de emisores de SOL, flujo diario SOL, comision de GXLM, contraste Farside/SoSoValue para SOL."
  },
  "trackers_contraste": {
   "nivel": "S (agregador; no auditado)",
@@ -319,7 +575,8 @@
    "FBTC": -41.9,
    "nota": "columnas del cuadro de Farside; contraste, no sustituye al cálculo con acciones x NAV del emisor"
   },
-  "xrp_xlm": "Farside no tiene página de XRP (404 el 16-nov); SoSoValue bloquea con verificación de bots (Cloudflare, no se salta): flujos diarios agregados de XRP [VERIFICAR]"
+  "xrp_xlm": "Farside no tiene página de XRP (404 el 16-nov); SoSoValue bloquea con verificación de bots (Cloudflare, no se salta): flujos diarios agregados de XRP [VERIFICAR]",
+  "c343_nota": "Sin consulta a Farside/SoSoValue para SOL en esta pasada [VERIFICAR]."
  },
  "13f_3T": {
   "periodo": "2026-09-30",
@@ -1213,6 +1470,7 @@
   "valor_usd": "USD (dólares) en lecturas_edgar y valor_mercado_tenencia_usd",
   "valor_usd_miles": "miles de USD en 13f_3T (valor_usd_miles, valor_declarado_usd_miles, valor_2T_usd_miles)",
   "trackers_contraste": "millones de USD por día",
-  "vista": "la Órbita convierte todo a millones de USD (M$) y lo declara en cada tabla"
+  "vista": "la Órbita convierte todo a millones de USD (M$) y lo declara en cada tabla",
+  "c343": "aum_usd en USD (no miles): en los 10-Q de BSOL, GSOL, FSOL y GXRP las cifras originales vienen en miles de USD y aqui estan convertidas a USD; la vista las pasa a M$"
  }
 }
