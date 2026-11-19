@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-19 12:33 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-19 13:11 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -115,29 +115,24 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 
 ## Auditorías abiertas
-- A1 (Media): Abierto: voces.json lo está editando otra sesión (W06); propuesta: v002→cumplido con la nota del 28-oct; v062→
-- A2 (Media): Abierto: propuesta, mostrar «P + novedades S» o añadir url a HK ETF
-- A3 (Media): Parcial: antes faltaban 23. Abierto: 9 celdas
-- A4 (Baja): Abierto
-- A5 (Media): Abierto: propuesta, 2-3 canales o analistas críticos o neutrales en el próximo lote de vídeos
-- A7 (Media): Abierto
-- A8 (Baja): Abierto solo v062
-- A9 (Baja): Cerrado (W07)
+- T4 (Baja): Omisiones de fuentes: BdE en Bonos, BoE en Deuda, cifras manuales en Liquidez e Indicadores
+- T7 (Baja): Hueco jun-2026 en la API del BCE, causa sin explicar [VERIFICAR]
+- T8 (Baja): «+3» de la Cámara se mide desde 2024 (215 D), no desde hoy [VERIFICAR]
 - Auditoría mensual W08: última semana del mes (miércoles)
 
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
 - ninguna anotada
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
+- [alta] 2026-11-17 (2 d) · Incidente con minas navales en el estrecho de Ormuz.
+- [alta] 2026-11-17 (2 d) · EE. UU. ataca la isla iraní de Qeshm, en el estrecho de Ormuz.
+- [alta] 2026-11-17 (2 d) · Musalem (Fed): hacen falta varias subidas de tipos antes de la primavera de 2027.
+- [alta] 2026-11-18 (1 d) · Incidente grave en el Estrecho de Ormuz: buque tanque en llamas.
+- [alta] 2026-11-18 (1 d) · Waller (Fed) no descarta «sorprender» con una subida de 0,5 puntos.
+- [alta] 2026-11-18 (1 d) · Las actas de la Fed: casi todos esperan más subidas de tipos.
+- [alta] 2026-11-18 (1 d) · Actas de la Fed: se necesitan tipos más altos en diciembre.
 - [media] 2026-10-25 (25 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
-- [media] 2026-10-25 (25 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
-- [media] 2026-10-25 (25 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
-- [media] 2026-10-25 (25 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
-- [media] 2026-10-25 (25 d) · [VERIFICAR] Consulta DGT V0648-24 leída en petete
-- [media] 2026-10-25 (25 d) · [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov)
-- [media] 2026-10-25 (25 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov
-- [media] 2026-10-25 (25 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
-- … y 42 más en el Seguimiento
+- … y 54 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Voces: Voces sin confirmar (43) → W06 · 16 llevan más de 14 días
