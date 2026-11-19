@@ -693,10 +693,10 @@
           "n": "P"
         },
         "interop": {
-          "t": "XRPL EVM Sidechain en red principal con Axelar como primer puente de XRP (30-jun-2025). El puente nativo XChainBridge del XRPL sigue sin activar: en votación con 14,29 % de apoyo, según la tabla de enmiendas de xrpl.org (instantánea que la página fecha el 16-sep-2026)",
-          "f": "Ripple Insights (parte interesada) y xrpl.org, «Known Amendments» (leída el 15-nov-2026)",
-          "u": "https://xrpl.org/resources/known-amendments",
-          "d": "2026-11-15",
+          "t": "XRPL EVM Sidechain en red principal con Axelar como primer puente de XRP (30-jun-2025). El puente nativo XChainBridge del XRPL sigue sin activar: en votación con 14,29 % de apoyo, según la tabla de enmiendas de xrpl.org (instantánea que la página fecha el 16-sep-2026). Ampliación del 19-nov-2026: La enmienda XChainBridge (puentes de libro a libro de XRPL) figura enabled=false en la API pública de rippled (método feature, s1.ripple.com, 19-nov-2026) y xrpl.org la muestra «Open for Voting» (14,29 %, lectura resumida). La única vía de puente documentada es la sidechain EVM",
+          "f": "Ripple Insights (parte interesada) y xrpl.org, «Known Amendments» (leída el 15-nov-2026); API pública rippled (s1.ripple.com), método feature, 19-nov-2026; xrpl.org, Cross-chain bridges",
+          "u": "https://xrpl.org/docs/concepts/xrpl-sidechains/cross-chain-bridges",
+          "d": "2026-11-19",
           "n": "P"
         },
         "regulacion": {
@@ -1489,7 +1489,14 @@
       ],
       "iso": [
         {
-          "t": "Piloto de CBDC mayorista australiana (Acacia) emitida en Hedera pública y privada",
+          "t": "Dos comunicados distintos del RBA: el del 10-jul-2025 (selección de participantes) dice que el CBDC mayorista piloto se emitiría en plataformas como Hedera, Redbelly, R3 Corda, Canvas Connect y otras compatibles con EVM; el de resultados (18-may-2026) no nombra plataformas. Qué casos usaron Hedera no consta en ninguno",
+          "f": "RBA, comunicado 2025-18 (10-jul-2025), leído en Chrome 19-nov-2026",
+          "u": "https://www.rba.gov.au/media-releases/2025/mr-25-18.html",
+          "d": "2026-11-19",
+          "n": "P"
+        },
+        {
+          "t": "Piloto de CBDC mayorista australiana (Acacia) emitida en Hedera pública y privada [VERIFICAR: el comunicado de resultados del RBA (18-may-2026) no nombra plataformas; la fuente primaria de plataformas es el comunicado del 10-jul-2025]",
           "f": "Comunicado 2026-13 del RBA y DFCRC (resumen de buscador; PDF no leído)",
           "u": "https://dfcrc.com.au/wp-content/uploads/2026/05/RBA-and-DFCRC-Release-Findings-From-Project-Acacia-_-Media-Releases-_-RBA.pdf",
           "d": "2026-05-18",
@@ -1564,7 +1571,7 @@
         "liquidacion": {
           "quien": "RBA/DFCRC (piloto, 4,4 M AUD en total entre todas las redes)",
           "token": "no",
-          "ev": "En Acacia lo liquidado fue CBDC mayorista en prueba; el comunicado del RBA (18-may-2026) no nombra plataformas: el vínculo con Hedera (HashSphere, red privada) viene de un caso de estudio del proveedor [S]. HBAR solo paga comisiones."
+          "ev": "En Acacia lo liquidado fue CBDC mayorista en prueba. El RBA nombró a Hedera entre las plataformas previstas (comunicado 2025-18, 10-jul-2025, P); el comunicado de resultados (18-may-2026) no nombra plataformas y no consta qué casos usaron Hedera [VERIFICAR]. HBAR solo paga comisiones."
         },
         "emision": {
           "quien": "Emisores de HTS (pocos: 88 M$ distribuidos)",
@@ -1700,7 +1707,8 @@
       "sin_dato": [
         "Integración real con Swift o ISO 20022.",
         "Número exacto de miembros del Consejo y fecha de nodos sin permisos.",
-        "18-nov-2026 (Chrome): hederacouncil.org carga, pero la lista de miembros es un carrusel que no da recuento; solo muestra a Apex Group como miembro desde el 11-nov-2026 [P, parte interesada]. Número de miembros sin cerrar."
+        "18-nov-2026 (Chrome): hederacouncil.org carga, pero la lista de miembros es un carrusel que no da recuento; solo muestra a Apex Group como miembro desde el 11-nov-2026 [P, parte interesada]. Número de miembros sin cerrar.",
+        "Qué casos de Project Acacia usaron Hedera (ni el comunicado de julio de 2025 ni el de resultados lo dicen)."
       ],
       "tipos_activo": {
         "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
@@ -2925,7 +2933,7 @@
       "id": "bnb",
       "nombre": "BNB Chain",
       "token": "BNB",
-      "tipo": "Pública; validadores limitados (sin cifra primaria)",
+      "tipo": "Pública; validadores limitados (45 activos: 21 «Cabinet» y 24 «Candidates», según la documentación oficial, 19-nov-2026)",
       "aporta": "Mucha liquidez minorista y la 2.ª red en RWA distribuidos, muy ligada a Binance.",
       "ficha": null,
       "busca": [
@@ -2949,10 +2957,10 @@
           "n": "S"
         },
         "seguridad": {
-          "t": "Proof-of-Staked-Authority (PoSA): elección diaria (tras las 00:00 UTC) de los 45 validadores activos con más BNB en stake; los 21 mayores son «Cabinets» y en cada época producen bloques 18 Cabinets y 3 «Candidates» (21 en total). Hay recompensas por votar la finalidad rápida (BEP-126) y penalización por votos maliciosos. La página no da tiempo de bloque ni de finalidad",
-          "f": "docs.bnbchain.org, «Validator overview» (BNB Chain, parte interesada; página fechada el 17-jul-2025, leída el 15-nov-2026)",
-          "u": "https://docs.bnbchain.org/bnb-smart-chain/validator/overview/",
-          "d": "2026-11-15",
+          "t": "Proof-of-Staked-Authority (PoSA): elección diaria (tras las 00:00 UTC) de los 45 validadores activos con más BNB en stake; los 21 mayores son «Cabinets» y en cada época producen bloques 18 Cabinets y 3 «Candidates» (21 en total). Hay recompensas por votar la finalidad rápida (BEP-126) y penalización por votos maliciosos. La página no da tiempo de bloque ni de finalidad. Ampliación del 19-nov-2026: Ampliación: la introducción oficial dice que el conjunto activo es de 45 validadores (21 «Cabinet» y 24 «Candidates»), con bloque cada 0,45 s y, con finalidad rápida (BEP-126), finalidad en dos bloques si votan 2/3 o más (≈1,125 s). Si los votos no bastan, vuelve a finalidad probabilística. Autodescripción del proyecto; la página no lleva fecha visible. Nota: la ficha actual dice que producen bloques 18 Cabinets y 3 Candidates por época (21 en total) mientras la introducción habla de 45 activos; ambas cifras proceden de docs.bnbchain.org y no se han reconciliado",
+          "f": "docs.bnbchain.org, «Validator overview» (BNB Chain, parte interesada; página fechada el 17-jul-2025, leída el 15-nov-2026); docs.bnbchain.org, «Introduction» de BNB Smart Chain (parte interesada; leída 19-nov-2026)",
+          "u": "https://docs.bnbchain.org/bnb-smart-chain/introduction/",
+          "d": "2026-11-19",
           "n": "P"
         },
         "activos": {
@@ -2970,17 +2978,17 @@
           "n": "P"
         },
         "pagos": {
-          "t": "BNB es el token nativo y se usa para pagar las comisiones de transacción; la guía leída no da una comisión típica",
-          "f": "Documentación de BNB Chain (leída; pie 12-jun-2026)",
+          "t": "Medición del 19-nov-2026: eth_gasPrice en el RPC público bsc-dataseed.bnbchain.org devuelve 50.000.000 wei (0,05 gwei); una transferencia simple de 21.000 gas costaría 0,00000105 BNB. Es una lectura puntual del precio sugerido por el nodo, no una media; la guía de documentación sigue sin dar comisión típica",
+          "f": "RPC público de BNB Chain (bsc-dataseed.bnbchain.org), consulta eth_gasPrice, 19-nov-2026; cálculo propio",
           "u": "https://docs.bnbchain.org/bnb-smart-chain/developers/quick-guide/",
-          "d": "2026-11-14",
+          "d": "2026-11-19",
           "n": "P"
         },
         "rendimiento": {
-          "t": "La recompensa de staking sale de las comisiones de las transacciones; la documentación no publica APR/APY",
-          "f": "Documentación de BNB Chain (leída; pie 2-jul-2024)",
-          "u": "https://docs.bnbchain.org/bnb-smart-chain/staking/overview/",
-          "d": "2026-11-14",
+          "t": "La documentación dice que BNB «no es un token inflacionario»: no hay recompensa por bloque, los validadores cobran las comisiones en BNB y parte de ellas premia los votos de finalidad; cada validador decide cuánto devuelve a quienes le delegan. Sigue sin cifra de APR/APY",
+          "f": "docs.bnbchain.org, «Introduction» (parte interesada; leída 19-nov-2026)",
+          "u": "https://docs.bnbchain.org/bnb-smart-chain/introduction/",
+          "d": "2026-11-19",
           "n": "P"
         },
         "interop": {
@@ -3099,7 +3107,8 @@
       "sin_dato": [
         "Qué activos componen los 6.266 M$.",
         "Integración institucional fuera de Binance.",
-        "Qué parte de los 1.531 M$ de iBENJI es colateral institucional fuera de bolsa (Franklin y Binance lo anunciaron en feb-2026 con custodia de Ceffu); RWA.xyz no lo desglosa."
+        "Qué parte de los 1.531 M$ de iBENJI es colateral institucional fuera de bolsa (Franklin y Binance lo anunciaron en feb-2026 con custodia de Ceffu); RWA.xyz no lo desglosa.",
+        "Reconciliar la ficha de validadores (18 Cabinets + 3 Candidates por época = 21) con los 45 activos de la introducción oficial; APR/APY de staking (la doc dice que BNB no es inflacionario)."
       ],
       "tipos_activo": {
         "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las 10 mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top 10 visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
@@ -3787,17 +3796,17 @@
           "n": "P"
         },
         "pagos": {
-          "t": "POL es el token de gas y de staking de Polygon PoS; coste medio por transacción «$0.002» según la propia documentación (autodeclarado)",
-          "f": "Documentación de Polygon (leída)",
+          "t": "POL es el token de gas y de staking de Polygon PoS; coste medio por transacción «$0.002» según la propia documentación (autodeclarado). Ampliación del 19-nov-2026: Medición del 19-nov-2026: eth_gasPrice en dos RPC públicos independientes (polygon-bor-rpc.publicnode.com y polygon.drpc.org) da ≈276 gwei; 21.000 gas ≈ 0,0058 POL (el baseFee del último bloque era ≈245 gwei). Lectura puntual, no media; no se convierte a dólares porque el precio de POL no es dato de esta ficha. Contrasta con el «$0.002» autodeclarado en la documentación (sin fecha de medición)",
+          "f": "Documentación de Polygon (leída); RPC públicos de terceros (publicnode.com, drpc.org), eth_gasPrice y eth_getBlockByNumber, 19-nov-2026; cálculo propio",
           "u": "https://docs.polygon.technology/pos/overview.md",
-          "d": "2026-11-14",
+          "d": "2026-11-19",
           "n": "P"
         },
         "rendimiento": {
-          "t": "La doc de recompensas asigna el 12 % de los 10.000 M de POL a recompensas de staking como bolsa fija repartida en 5 años (de ~313 M POL el 1.er año a ~149 M el 5.º, suma ≈ 1.200 M); da tasas esperadas según el % en staking (p. ej. 12 % el 2.º año con un 30 % en staking), no una rentabilidad en vivo. Otra página de la misma doc (POL, «Emission», leída 14-nov-2026) dice que la emisión es del 2 % anual desde jun-2025 (1 % a validadores y 1 % a tesorería tras PIP-26, con 1,5 % en el año 5). Conciliación (leída 15-nov-2026): el foro de gobernanza (PIP-26, 12-oct-2023) dice que se mantiene el calendario original de recompensas de MATIC hasta jun-2025 y después pasa al de Polygon 2.0; la bolsa del 12 % es ese calendario original y la emisión de POL del 2 % anual (1 % validadores, 1 % tesorería) rige desde jul-2025. Si una propuesta posterior la cambia (se citan PIP-78 y una propuesta de foro para eliminar la inflación del 2 %), su estado sigue [VERIFICAR]",
-          "f": "Documentación de Polygon (leída)",
+          "t": "Las dos cifras son cosas distintas y la propia documentación las presenta sin conciliarlas. (1) «12 %»: la página de recompensas dice que Polygon asigna el 12 % de los 10.000 M de POL a recompensas de staking como bolsa anual fija (≈313 M POL el año 1; 275,6 M el 2; 246,9 M el 3; 204,3 M el 4; 148,6 M el 5) y da tasas esperadas según el % en staking (12 % anual en el año 2 con el 30 % en staking). (2) «2 %»: la página de POL dice que la emisión anual efectiva es del 2 % (1 % tesorería y, tras PIP-26, 1 % a validadores desde después de jun-2025). Dato de emisión a validadores: PIP-78 (feb-2026) cita 303.000 POL/día ≈ 110,6 M POL/año (cálculo propio) frente a los 148,6 M del calendario del año 5. Sin rentabilidad en vivo: sigue sin dato",
+          "f": "docs.polygon.technology (pos/reference/rewards y pos/concepts/tokens/pol, leídas 19-nov-2026; parte interesada) y repositorio de PIPs (PIP-78, ya citado en la ficha)",
           "u": "https://docs.polygon.technology/pos/reference/rewards.md",
-          "d": "2026-11-15",
+          "d": "2026-11-19",
           "n": "P"
         },
         "interop": {
@@ -4222,7 +4231,7 @@
       "id": "canton",
       "nombre": "Canton Network",
       "token": "Canton Coin (CC)",
-      "tipo": "Cadena pública (autodescripción) con privacidad por partes: sincronizador global, sin estado global único; participantes con identidad",
+      "tipo": "Cadena pública de capa 1 con privacidad por subtransacción (autodescripción); arquitectura de validadores y sincronizadores, sin estado global único, no compatible con EVM y con participantes con identidad (no es una cadena abierta y anónima)",
       "aporta": "Infraestructura post-negociación de Wall Street: DTCC en producción, repo tokenizado y JPMD; privacidad entre participantes.",
       "ficha": null,
       "busca": [
@@ -5225,18 +5234,18 @@
           "u": "https://www.eznewswire.com/newsroom/xdc-ventures-acquires-contour-network-launches-stablecoin-lab-trade-finance"
         },
         "pagos": {
-          "t": "Gas de referencia 0,25 Gwei: transferencia simple de 21.000 gas = 0,00000525 XDC (unos 0,00004 US$ según la propia doc); transferencia de XRC20 unos 0,00012 US$. Cifras de la documentación del proyecto, no medidas",
-          "f": "docs.xdc.network, Gas & Fees (leída; parte interesada)",
-          "u": "https://docs.xdc.network/learn/gas-fees/",
-          "d": "2026-11-14",
+          "t": "Gas de referencia 0,25 Gwei: transferencia simple de 21.000 gas = 0,00000525 XDC (unos 0,00004 US$ según la propia doc); transferencia de XRC20 unos 0,00012 US$. Cifras de la documentación del proyecto, no medidas. Ampliación del 19-nov-2026: Medición del 19-nov-2026: eth_gasPrice en erpc.xinfin.network (13,09 gwei) y rpc.ankr.com/xdc (12,5 gwei); 21.000 gas ≈ 0,00026-0,00027 XDC, unas 50 veces el precio de referencia de 0,25 gwei de la doc (0,00000525 XDC). No se sabe si es el mínimo aceptado por la red o solo una sugerencia del nodo [VERIFICAR]",
+          "f": "docs.xdc.network, Gas & Fees (leída; parte interesada); RPC públicos (erpc.xinfin.network, rpc.ankr.com/xdc), eth_gasPrice, 19-nov-2026; docs.xdc.network, Gas & Fees; cálculo propio",
+          "u": "https://github.com/XinFinOrg/Docs/blob/main/docs/learn/gas-fees.md",
+          "d": "2026-11-19",
           "n": "P"
         },
         "rendimiento": {
-          "t": "Rewards de masternodes y de quienes delegan XDC en ellos, repartidos por épocas (documento marcado «WIP»); la tasa concreta no se ha extraído",
-          "f": "docs.xdc.network, mecanismo de recompensas (leído; parte interesada)",
-          "d": "2026-11-14",
-          "n": "P",
-          "u": "https://docs.xdc.network/xdcchain/rewards/"
+          "t": "El documento de recompensas (repositorio oficial XinFinOrg/Docs, último cambio 28-mar-2026) fija masternode 10 % anual (1.000.000 XDC por 10.000.000 XDC en stake) y nodo en espera 8 %, y la frase «the proposed system introduces» sugiere un sistema propuesto. En la misma página: época de 900 bloques (~30 min), 5.000 XDC por época (500 a la fundación, 4.500 a nodos) y ~41,67 XDC por masternode y época ≈ 2.000 XDC/día ≈ 730.000 XDC/año (≈7,3 %, cálculo propio), que no cuadra con el 10 %. Cifras de parte interesada, sin medir sobre cadena",
+          "f": "XinFinOrg/Docs en GitHub, docs/xdcchain/rewards.md (leído 19-nov-2026; parte interesada)",
+          "u": "https://github.com/XinFinOrg/Docs/blob/main/docs/xdcchain/rewards.md",
+          "d": "2026-11-19",
+          "n": "P"
         },
         "interop": {
           "t": "XDC Zero: marco de comunicación entre una subred XDC y la red principal (oráculo de cabeceras, relayer y endpoint). Mensajería de terceros en mainnet (leída 15-nov-2026): XDC figura en el directorio CCIP de Chainlink (2 carriles salientes, a Base y a Ethereum; 3 tokens: LINK, USDf y WBTC; comisión en LINK, WXDC o XDC) y en CCTP de Circle (dominio 18, Standard Transfer con forwarding y comisiones previas); la guía de XDC solo mencionaba CCTP en testnet",
@@ -5735,17 +5744,17 @@
           "u": "https://blog.iota.org/update-q2-2026/"
         },
         "pagos": {
-          "t": "IOTA es la unidad en la que se pagan las comisiones (gas) para ejecutar transacciones y guardar datos; el documento no da cifras de comisión",
-          "f": "docs.iota.org, token IOTA (leída; parte interesada)",
-          "d": "2026-11-14",
-          "n": "P",
-          "u": "https://docs.iota.org/about-iota/tokenomics/iota-token"
+          "t": "La documentación de IOTA dice que la comisión media es de unos 0,005 IOTA por transacción, que las comisiones se queman y que el almacenamiento exige un depósito reembolsable. Cifra de la propia documentación; no se midió sobre cadena",
+          "f": "docs.iota.org, About IOTA (llms-full-about.txt; parte interesada; leída 19-nov-2026)",
+          "u": "https://docs.iota.org/llms-full-about.txt#comisiones",
+          "d": "2026-11-19",
+          "n": "P"
         },
         "rendimiento": {
-          "t": "La web de la Fundación IOTA dice que el staking flexible asegura la red y da recompensas; sin cifra de rentabilidad en esa página",
-          "f": "IOTA Foundation (web leída)",
-          "u": "https://www.iota.org/",
-          "d": "2026-11-14",
+          "t": "La documentación dice que validadores y quienes delegan reciben IOTA recién emitido, unos 767.000 IOTA por época (época ≈ 24 h), con una inflación inicial de ≈6 % anual; las comisiones se queman, lo que compensa en parte. Sin APR concreto para quien hace staking (depende del stake total y de la comisión del validador)",
+          "f": "docs.iota.org, About IOTA (parte interesada; leída 19-nov-2026)",
+          "u": "https://docs.iota.org/llms-full-about.txt#emision",
+          "d": "2026-11-19",
           "n": "P"
         },
         "interop": {
@@ -6346,7 +6355,7 @@
     "contraste": "La diferencia clave: XRPL ofrece libro abierto, AMM y (según su documentación) mercados con acceso por credenciales; Stellar ofrece libro y AMM con comisión fija, y el control de acceso lo ejerce el emisor del activo (AUTH_REQUIRED, clawback), no un mercado con dominios. Ambos AMM medidos (XRP/RLUSD y XLM/USDC) rondan los 3-4 M$ de reservas. En las redes con contratos los intercambios están en contratos de terceros: en Solana, según Syndica, los AMM propietarios movieron el 71 % (feb-2026) y el 55 % (mar-2026) del volumen DEX [S, cifras de una parte interesada que difieren de otras fuentes: Blockworks da 62 % en el 1T-2026]; en Hedera, SaucerSwap ofrece AMM v1, liquidez concentrada v2 y libro v3 (docs propias). Que un mercado esté en el protocolo o en contratos no dice cuál tiene más profundidad."
   },
   "dtcc_ruta": {
-    "nota": "Hoja de ruta del DTCC Tokenization Service por red, leída el 19-nov-2026. DTCC es parte interesada: todas las fechas salen de DTCC y son «previstas» e indicativas, sujetas a cambios; Stellar y Solana no son confirmaciones independientes. Las notas de prensa se leyeron con un lector que resume: citas cortas sin cotejo literal [VERIFICAR] si se usan en un titular. Ausencia en un documento no prueba exclusión futura.",
+    "nota": "Hoja de ruta del DTCC Tokenization Service por red, leída el 19-nov-2026. DTCC es parte interesada: todas las fechas salen de DTCC y son «previstas» e indicativas, sujetas a cambios; Stellar y Solana no son confirmaciones independientes. Cotejo literal en Chrome el 19-nov-2026 (informes/research/2026-11-19-cotejo-chrome.md): notas de 27-may, 28-oct y 12-nov leídas del texto de la propia página de DTCC y ficha At-a-Glance leída entera (PDF). Ausencia en un documento no prueba exclusión futura.",
     "marco": [
       {
         "t": "Carta no-action de la SEC (División de Trading y Mercados) a DTC, 11-dic-2025: no recomendaría acciones de cumplimiento contra DTC (Reg SCI, 19(b)/19b-4, 17Ad-22(e) y 17Ad-25(i),(j)) por operar el DTCC Tokenization Services; valores elegibles: Russell 1000, bonos/letras/notas del Tesoro y ETF de índices principales (p. ej. S&P 500, Nasdaq-100); la carta se retira a los tres años del lanzamiento de la versión base; DTC no prescribe una cadena concreta pero evalúa fiabilidad, cumplimiento (tokens solo a carteras registradas y reversibles), observabilidad de todas las transferencias y gobernanza; admite cadenas públicas y privadas. La carta no nombra ninguna red (cero menciones de XRP, Ripple, Stellar ni Solana).",
@@ -6357,21 +6366,21 @@
       },
       {
         "t": "DTCC Tokenization Service lanzado el 28-oct-2026: integrado con Canton Network y la red Besu privada de DTCC; «redes adicionales en 2027» sin nombrarlas; 20 participantes con acuerdo firmados; 30+ firmas en las operaciones limitadas previas. El comunicado no menciona XRPL, Stellar ni Arc (Solana solo como enlace lateral a otra nota).",
-        "f": "DTCC, comunicado «DTCC Tokenization Service Goes Live» (leído 19-nov; lector que resume, sin cita literal cotejada)",
+        "f": "DTCC, comunicado «DTCC Tokenization Service Goes Live» (cotejado literal en Chrome 19-nov: «The service is currently integrated with the Canton Network and DTCC’s private Besu network, with additional blockchain networks to be added in 2027»; «To date, 20 DTC Participants (clients) have signed agreements»; sin mención de XRP, Ripple, Stellar ni Arc en el cuerpo)",
         "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
         "d": "2026-10-28",
         "n": "P"
       },
       {
-        "t": "Ficha «Scope at Launch and What's Next» de DTCC: en vivo Canton (estándar CIP-56) y Besu (ERC-20, privada); previstas en 2027 Stellar (SEP-41) y Arc de Circle (ERC-20), «más L1 y L2 según demanda de clientes y mercado»; 25 valores al lanzamiento (la página de producto dice 34: discrepancia; la ficha no lleva fecha); hoja de ruta «indicativa y sujeta a cambios». No cita XRPL, XRP ni Solana.",
-        "f": "DTCC, ficha At-a-Glance (PDF leído con pdftotext, sin fecha visible)",
+        "t": "Ficha «Scope at Launch and What's Next» de DTCC: en vivo Canton (estándar CIP-56) y Besu (ERC-20, privada); previstas en 2027 Stellar (SEP-41) y Arc de Circle (ERC-20), «más L1 y L2 según demanda de clientes y mercado»; 25 valores al lanzamiento («25 securities available to tokenize at launch»); la página de producto dice 34 («34 securities available to tokenize at launch», leída 19-nov): discrepancia vigente. Fecha de la ficha: sin fecha visible; metadatos del PDF creado 16-oct-2026 (anterior al lanzamiento), por lo que 34 podría ser una cifra posterior [R, no confirmado]. Hoja de ruta «indicativa y sujeta a cambios». No cita XRPL, XRP ni Solana.",
+        "f": "DTCC, ficha At-a-Glance (PDF leído entero 19-nov; fecha de creación en metadatos 16-oct-2026) y página de producto dtcc.com/products-and-services/digital-assets/tokenization",
         "u": "https://communications.dtcc.com/rs/669-QIL-921/images/DTCC%20Tokenization%20Service%20At-a-Glance.pdf",
-        "d": null,
+        "d": "2026-10-16",
         "n": "P"
       },
       {
-        "t": "XRPL/XRP/Ripple NO figuran en ninguno de los 8 documentos oficiales leídos (carta SEC 11-dic-2025 y ficha At-a-Glance, con búsqueda de texto completo; notas DTCC 17-dic-2025, 4-may, 27-may, 15-jul, 28-oct y 12-nov-2026, vía lector que resume). Ausencia en estos documentos: no prueba que no vaya a haber conexión futura; DTC dice que evaluará más cadenas por demanda.",
-        "f": "Lectura propia de los documentos citados (los de nota de prensa vía lector que resume)",
+        "t": "XRPL/XRP/Ripple NO figuran en ninguno de los 8 documentos oficiales leídos (carta SEC 11-dic-2025 y ficha At-a-Glance, con búsqueda de texto completo; notas DTCC 17-dic-2025, 4-may, 27-may, 15-jul, 28-oct y 12-nov-2026; las de 27-may, 28-oct y 12-nov releídas literalmente en Chrome el 19-nov sin ninguna mención; las otras tres, vía lector que resume). Ausencia en estos documentos: no prueba que no vaya a haber conexión futura; DTC dice que evaluará más cadenas por demanda.",
+        "f": "Lectura propia de los documentos citados (27-may, 28-oct y 12-nov cotejadas en Chrome; 17-dic, 4-may y 15-jul vía lector que resume)",
         "d": "2026-11-19",
         "n": "R",
         "i": "informes/research/2026-11-19-C339.md"
@@ -6400,7 +6409,7 @@
         "activos": "En evaluación: Russell 1000, ETF de índices principales, Tesoro",
         "celda": {
           "t": "DTCC y la Stellar Development Foundation esperan activos tokenizados de DTC en Stellar en 1S-2027 (activos en evaluación: Russell 1000, ETF de índices principales y bonos/letras/notas del Tesoro; base: carta SEC dic-2025). La ficha At-a-Glance confirma Stellar en 2027 con estándar SEP-41. Fecha prevista, no en vivo.",
-          "f": "DTCC, nota 27-may-2026 (lector que resume) + ficha At-a-Glance (leída)",
+          "f": "DTCC, nota 27-may-2026 (cotejado literal en Chrome 19-nov: «DTCC and SDF expect DTC-tokenized assets to be available on the Stellar network in the first half of 2027»; subtítulo «Firms anticipate DTC-tokenized assets available on the Stellar network during the 1H27») + ficha At-a-Glance (leída)",
           "u": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy",
           "d": "2026-05-27",
           "n": "P"
@@ -6414,7 +6423,7 @@
         "activos": "«Activos custodiados en DTC elegibles»",
         "celda": {
           "t": "DTCC planea habilitar la tokenización de activos custodiados en DTC en Solana (L1); activos DTC tokenizados «esperados» en 2S-2027. Fecha prevista, no en vivo. La nota no cita la carta SEC ni lista de activos en el cuerpo; no cita XRPL ni Stellar. Fuente interesada: DTCC es parte.",
-          "f": "DTCC, nota «DTCC Tokenization Service to Connect with Solana» (lector que resume; citas cortas coinciden con el informe de vídeo del 18-nov)",
+          "f": "DTCC, nota «DTCC Tokenization Service to Connect with Solana» (cotejado literal en Chrome 19-nov: «planned for the second half of 2027»; «eligible The Depository Trust Company (DTC)-custodied assets on Solana»; sin XRP, Ripple ni Stellar)",
           "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana",
           "d": "2026-11-12",
           "n": "P"
@@ -6427,8 +6436,8 @@
         "fecha": "sin fecha",
         "activos": "—",
         "celda": {
-          "t": "XRPL/XRP/Ripple NO figuran en ninguno de los 8 documentos oficiales leídos (carta SEC 11-dic-2025 y ficha At-a-Glance, con búsqueda de texto completo; notas DTCC 17-dic-2025, 4-may, 27-may, 15-jul, 28-oct y 12-nov-2026, vía lector que resume). Ausencia en estos documentos: no prueba que no vaya a haber conexión futura; DTC dice que evaluará más cadenas por demanda.",
-          "f": "Lectura propia de los documentos citados (los de nota de prensa vía lector que resume)",
+          "t": "XRPL/XRP/Ripple NO figuran en ninguno de los 8 documentos oficiales leídos (carta SEC 11-dic-2025 y ficha At-a-Glance, con búsqueda de texto completo; notas DTCC 17-dic-2025, 4-may, 27-may, 15-jul, 28-oct y 12-nov-2026; las de 27-may, 28-oct y 12-nov releídas literalmente en Chrome el 19-nov sin ninguna mención; las otras tres, vía lector que resume). Ausencia en estos documentos: no prueba que no vaya a haber conexión futura; DTC dice que evaluará más cadenas por demanda.",
+          "f": "Lectura propia de los documentos citados (27-may, 28-oct y 12-nov cotejadas en Chrome; 17-dic, 4-may y 15-jul vía lector que resume)",
           "d": "2026-11-19",
           "n": "R",
           "i": "informes/research/2026-11-19-C339.md"
@@ -6879,7 +6888,7 @@
         "que": "Stellar: activos tokenizados de DTC (prevista, SEP-41)",
         "celda": {
           "t": "DTCC y la Stellar Development Foundation esperan activos tokenizados de DTC en Stellar en 1S-2027 (activos en evaluación: Russell 1000, ETF de índices principales y bonos/letras/notas del Tesoro; base: carta SEC dic-2025). La ficha At-a-Glance confirma Stellar en 2027 con estándar SEP-41. Fecha prevista, no en vivo.",
-          "f": "DTCC, nota 27-may-2026 (lector que resume) + ficha At-a-Glance (leída)",
+          "f": "DTCC, nota 27-may-2026 (cotejado literal en Chrome 19-nov: «DTCC and SDF expect DTC-tokenized assets to be available on the Stellar network in the first half of 2027»; subtítulo «Firms anticipate DTC-tokenized assets available on the Stellar network during the 1H27») + ficha At-a-Glance (leída)",
           "u": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy",
           "d": "2026-05-27",
           "n": "P"
@@ -6890,7 +6899,7 @@
         "que": "Solana: activos tokenizados de DTC (prevista)",
         "celda": {
           "t": "DTCC planea habilitar la tokenización de activos custodiados en DTC en Solana (L1); activos DTC tokenizados «esperados» en 2S-2027. Fecha prevista, no en vivo. La nota no cita la carta SEC ni lista de activos en el cuerpo; no cita XRPL ni Stellar. Fuente interesada: DTCC es parte.",
-          "f": "DTCC, nota «DTCC Tokenization Service to Connect with Solana» (lector que resume; citas cortas coinciden con el informe de vídeo del 18-nov)",
+          "f": "DTCC, nota «DTCC Tokenization Service to Connect with Solana» (cotejado literal en Chrome 19-nov: «planned for the second half of 2027»; «eligible The Depository Trust Company (DTC)-custodied assets on Solana»; sin XRP, Ripple ni Stellar)",
           "u": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-to-connect-with-solana",
           "d": "2026-11-12",
           "n": "P"

@@ -1,5 +1,5 @@
 {
-  "_actualizado": "2026-11-18",
+  "_actualizado": "2026-11-19",
   "tarea": "C314+C322",
   "nivel_general": "P/S",
   "nota_nivel": "P = fuente primaria leída (BIS, DTCC, Circle, Chainlink, MAS, EUR-Lex/ESMA); S = secundaria (prensa especializada, agregadores, resultados de buscador sin abrir la página oficial); V = por verificar [VERIFICAR]. Neutral: no es recomendación de compra/venta ni ranking de redes.",
@@ -802,7 +802,8 @@
     "Falta cotejar en navegador: LayerZero con Hedera (docs.hedera.com), CCIP con Stellar (intención sin fecha) y el anuncio original de DTCC con Chainlink.",
     "Auditoría Opus (15-nov-2026): 23 URL figuran con distinto nivel (P/S/V/R) según el archivo (p. ej. notas de la RBA y la MAS, blog de Hedera) y revisar_explorador.py no lo detecta; unificar y añadir esa comprobación.",
     "C322 (18-nov-2026): Estado de Fnality en fnality.org (P parte interesada): libras esterlinas «live» y reguladas por el Banco de Inglaterra; euro «en curso» con contacto del BCE; licencia bancaria Connecticut Innovation Bank obtenida y diálogo con la Fed «progresando». Sigue sin figurar conexión con DTCC, Canton, Swift ni cadenas públicas (el enlace fnality→dtcc sigue siendo concepto de 2025).",
-    "C322: Siguen sin enlace primario XRPL nativo con CCIP, LayerZero, DTCC o Swift; Hedera con CCTP, Wormhole, DTCC o Swift; Partior, Agorá y Nexus (islas); la única vía de XRPL es la sidechain EVM (Axelar, Wormhole, IBC según docs.xrplevm.org). Swift.com devuelve 403 a curl (se mantiene lo leído antes en Chrome)."
+    "C322: Siguen sin enlace primario XRPL nativo con CCIP, LayerZero, DTCC o Swift; Hedera con CCTP, Wormhole, DTCC o Swift; Partior, Agorá y Nexus (islas); la única vía de XRPL es la sidechain EVM (Axelar, Wormhole, IBC según docs.xrplevm.org). Swift.com devuelve 403 a curl (se mantiene lo leído antes en Chrome).",
+    "C322 (19-nov): XRPL nativo sigue sin enlace con CCIP, LayerZero, DTCC o Swift; la enmienda XChainBridge no está habilitada en mainnet (rippled feature, 19-nov-2026), de modo que la única vía documentada es la sidechain EVM. Hedera: nuevo enlace con Project Acacia (RBA, 10-jul-2025, P); sigue sin fuente primaria de CCTP, Wormhole, DTCC o Swift (hederacouncil.org, leída en Chrome el 19-nov-2026, no cita DTCC ni Swift en la portada). El informe de resultados de Acacia (18-may-2026) no nombra plataformas [VERIFICAR qué casos usaron Hedera]."
   ],
   "lo_que_no_sabemos": [
     "Si DTCC, Swift o los bancos centrales de Agorá conectarán sus plataformas entre sí o a cadenas públicas con un protocolo común.",
@@ -814,7 +815,7 @@
     "CLARITY (H.R. 3633), fuente oficial leída en GovInfo (16-nov-2026, P): aprobada por la Cámara el 17-jul-2025 (versión engrossed) y recibida en el Senado y remitida a su Comisión de Banca, Vivienda y Asuntos Urbanos el 18-sep-2025. La última acción de 2026 no se pudo leer en fuente oficial: congress.gov devuelve bloqueo de Cloudflare, senate.gov «Unauthorized» y banking.senate.gov «Access Denied» (no se saltaron) [VERIFICAR a mano en congress.gov]. Prensa (S, The Defiant, American Banker, 15-sep-2026): el Senado rechazó el cierre de debate sobre la moción de proceder por 49-50 (necesitaba 60); es un voto procedimental, el proyecto sigue en el calendario del Senado (n.º 423) y no se encontró ninguna acción posterior hasta el 15-nov-2026. S. 3755 (Agricultura) reportada el 2-feb-2026 (GovInfo, calendario n.º 312). Que se retome antes de 2027 es opinión de prensa [ESPECULACIÓN]."
   ],
   "nodos_y_enlaces": {
-    "leyenda": "tipo de nodo: cadena_publica, red_institucional, plataforma_bc (banco central), protocolo_interop, infraestructura, estandar, supervisor. Canton se clasifica desde 18-nov-2026 como cadena pública con matices (ver nota_tipo del nodo). Nodos sin enlaces (agora, partior, fnality, nexus) = islas: no se encontró conexión anunciada con otras redes del mapa. Estado del enlace: produccion, piloto, anunciado, concepto. id_cadena enlaza con explorador/cadenas.json cuando existe.",
+    "leyenda": "tipo de nodo: cadena_publica, red_institucional, plataforma_bc (banco central), protocolo_interop, infraestructura, estandar, supervisor. Project Acacia (RBA) enlaza solo con Hedera (selección de plataformas, 10-jul-2025). Canton se clasifica desde 18-nov-2026 como cadena pública con matices (ver nota_tipo del nodo). Nodos sin enlaces (agora, partior, fnality, nexus) = islas: no se encontró conexión anunciada con otras redes del mapa. Estado del enlace: produccion, piloto, anunciado, concepto. id_cadena enlaza con explorador/cadenas.json cuando existe.",
     "nodos": [
       {
         "id": "ethereum",
@@ -1043,6 +1044,11 @@
         "id": "axelar",
         "etiqueta": "Axelar (ITS / GMP)",
         "tipo": "protocolo_interop"
+      },
+      {
+        "id": "acacia",
+        "etiqueta": "Project Acacia (RBA + DFCRC, Australia)",
+        "tipo": "plataforma_bc"
       }
     ],
     "enlaces": [
@@ -1834,7 +1840,7 @@
       {
         "de": "axelar",
         "a": "xrpl",
-        "tipo": "puente del XRP y del USDC emitido en XRPL hacia la sidechain EVM (no es XRPL nativo con otras cadenas)",
+        "tipo": "puente del XRP y del USDC emitido en XRPL hacia la sidechain EVM (no es XRPL nativo con otras cadenas); la enmienda XChainBridge (puentes nativos del libro XRPL) figura «enabled: false» en la API pública rippled (feature, s1.ripple.com, 19-nov-2026), por lo que no hay puentes nativos de libro a libro activos",
         "estado": "produccion",
         "fecha": "2026-11-18",
         "fuente": "https://docs.xrplevm.org/pages/bridge",
@@ -1857,6 +1863,15 @@
         "fecha": "2026-11-18",
         "fuente": "https://docs.xrplevm.org/pages/bridge",
         "nivel": "P"
+      },
+      {
+        "de": "acacia",
+        "a": "hedera",
+        "tipo": "selección de Hedera entre las plataformas (con Redbelly, R3 Corda, Canvas Connect y otras compatibles con EVM) donde se emitiría CBDC mayorista piloto; 19 casos con dinero y activos reales y 5 de prueba de concepto en total. El comunicado de resultados (18-may-2026) no nombra plataformas, así que no consta qué casos usaron Hedera",
+        "estado": "piloto",
+        "fecha": "2025-07-10",
+        "fuente": "https://www.rba.gov.au/media-releases/2025/mr-25-18.html",
+        "nivel": "P"
       }
     ]
   },
@@ -1876,7 +1891,8 @@
     "https://docs.canton.network/overview/learn/architecture",
     "https://docs.canton.network/overview/understand/global-synchronizer",
     "https://www.canton.network/",
-    "https://www.fnality.org/"
+    "https://www.fnality.org/",
+    "https://www.rba.gov.au/media-releases/2025/mr-25-18.html"
   ],
-  "informe": "informes/research/2026-11-15-C314-interconexion.md; informes/research/2026-11-18-C322.md"
+  "informe": "informes/research/2026-11-15-C314-interconexion.md; informes/research/2026-11-18-C322.md; informes/research/2026-11-19-C322-C267.md"
 }

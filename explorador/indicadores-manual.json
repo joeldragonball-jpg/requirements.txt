@@ -1,5 +1,5 @@
 {
-  "_actualizado": "2026-11-18",
+  "_actualizado": "2026-11-19",
   "_nota": "Datos sin API abierta: salario mínimo de las potencias. Nivel V = recordado, sin leer la norma oficial; [VERIFICAR] antes de citar. No se ordenan países.",
   "US": {
     "salario_minimo": {
@@ -505,6 +505,15 @@
       "nivel": "S",
       "definicion": "Tasa de desempleo abierto del BPS, agosto de 2026 (publicada el 5-nov); 7,38 millones de personas; el subempleo sube a 8,68 %. Vía prensa; comunicado oficial sin leer [VERIFICAR]. Leído el 14-nov-2026.",
       "periodicidad": "semestral"
+    },
+    "pib": {
+      "valor": 5.1,
+      "unidad": "% anual, previsión FMI WEO oct-2026 (2025)",
+      "fecha": "2025",
+      "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH",
+      "nivel": "S",
+      "definicion": "Contraste FMI DataMapper (leído el 19-nov-2026 vía WebFetch; 2025: 5,1; 2026 prev.: 5,1; 2024: 5,0; 2023: 5,0). Dato trimestral del BPS (3T-2026) NO leído: bps.go.id redirige a verificación anti-bots, no se eludió [VERIFICAR].",
+      "periodicidad": "anual"
     }
   },
   "EG": {
@@ -540,6 +549,15 @@
       "nivel": "P",
       "definicion": "Titular de la portada del Banco Central de Reserva (noticia del 30-sep-2026): «La economía salvadoreña creció 5.1% en el segundo trimestre de 2026». Leído en bcr.gob.sv con Chrome el 18-nov-2026. El texto de la noticia está tras un CAPTCHA («¿Qué código aparece en la imagen?»): no se completó. Por eso la base de comparación (interanual) no está leída [VERIFICAR]. Otro titular del 31-ago: IVAE +5,2 % en junio.",
       "periodicidad": "trimestral"
+    },
+    "paro": {
+      "valor": 3.3,
+      "unidad": "% población activa (modelo OIT, 2025)",
+      "fecha": "2025",
+      "fuente": "https://api.worldbank.org/v2/country/SLV/indicator/SL.UEM.TOTL.ZS",
+      "nivel": "S",
+      "definicion": "Estimación modelada OIT vía API del Banco Mundial, leída el 19-nov-2026 (3,303 % en 2025; 3,261 en 2024; 2,992 en 2023). NO es la tasa oficial de la EHPM/BCR-DIGESTYC (bcr.gob.sv tras CAPTCHA, no completado). Pobreza: Banco Mundial (línea nacional) sin dato 2024-2025 (null); 2023 27,2 %. [VERIFICAR] en fuente oficial.",
+      "periodicidad": "anual"
     }
   },
   "IR": {
@@ -564,6 +582,24 @@
       "nivel": "P",
       "definicion": "Centro Federal de Competitividad y Estadística (FCSC), noticia oficial del 9-oct-2026 leída en fcsc.gov.ae el 14-nov-2026 con Claude in Chrome: PIB real de 961,9 mil M AED a precios constantes en el primer semestre de 2026, +0,4 % interanual; PIB no petrolero +1,8 %. El FCSC publicó el 22-oct-2026 una revisión integral del PIB (con el FMI) que puede cambiar series [VERIFICAR] si se rebasa. Portada FCSC: inflación 2025 1,25 %, paro 2025 1,7 %, crecimiento real 2025 6,2 % (año completo, antes de la revisión). IPC mensual no localizado en la web: el visor UAE.Stat (.Stat Suite) no devolvió datos sin explorarlo a mano.",
       "periodicidad": "semestral"
+    },
+    "paro": {
+      "valor": 1.7,
+      "unidad": "% población activa (año 2025)",
+      "fecha": "2025",
+      "fuente": "https://fcsc.gov.ae/",
+      "nivel": "P",
+      "definicion": "Tasa de paro 2025 de la portada del FCSC (leída en Chrome el 19-nov-2026), anual; no hay dato mensual/trimestral localizado. Contraste: Banco Mundial (modelo OIT) 2,17 % en 2025, distinto metodológicamente.",
+      "periodicidad": "anual"
+    },
+    "ipc": {
+      "valor": 1.25,
+      "unidad": "% media anual 2025",
+      "fecha": "2025",
+      "fuente": "https://fcsc.gov.ae/",
+      "nivel": "P",
+      "definicion": "Inflación 2025 de la portada del FCSC (leída en Chrome el 19-nov-2026): 1,25 %, media anual, no interanual mensual. IPC mensual 2026 no localizado (UAE.Stat sin explorar). Banco Mundial 2025: 1,251 % (coincide); 2024: 1,663; 2023: 1,627.",
+      "periodicidad": "anual"
     }
   }
 }

@@ -2169,6 +2169,7 @@ function nEtf(){
    if(cn.length){const d=el('details');d.append(el('summary',null,'Comisión, custodio y fuente por fondo ('+cn.length+')'));const ul=el('ul','cad-lst');cn.forEach(r=>{const li=el('li');li.append(el('b',null,r.ticker+': '),document.createTextNode(sd(r.comision_nota)+'. Custodio: '+(r.custodio||'sin dato')+'. '+(r.fecha_prospecto?'Documento del '+r.fecha_prospecto+' ':'')));if(r.fuente_prospecto)li.append(lkx(r.fuente_prospecto,'SEC ↗'));ul.append(li)});d.append(ul);w.append(d)}}
   const sin=(E.etfs||[]).filter(r=>r.flujo_usd==null&&r.flujo_motivo);
   if(sin.length)w.append(el('p','nota-v','Flujo vacío: '+sin.map(r=>r.ticker+' ('+sd(r.flujo_motivo)+')').join(' · ')+'.'));
+  w.append(...etfNuevos(E,sd,u));
   w.append(el('p','nota-v',sd(E.metodo)+' '+sd(E.nota_nivel)));
   const bn=E.bloques_no_hechos||{};if(Object.keys(bn).length)w.append(el('p','nota-v','Pendiente: '+Object.entries(bn).map(([k,v])=>k+': '+sd(v)).join(' · ')));
   w.append(...etf13f(E),...etfContraste(E));return w}
@@ -2190,12 +2191,31 @@ function etf13f(E){
     c.append(el('p','nota-v','Leído el 13F-HR de cada gestora en EDGAR (infotable XML). Unidad: millones de USD (EDGAR da USD). Contrasta con 13f.info: '+L.length+' gestoras leídas, no el total.'));
     c.append(scrollX(tabla([{t:'Gestora',f:r=>r.nombre},{t:'Presentado',f:r=>vc(r.presentado)},...tk.map(t=>({t:t+' (M$)',n:1,f:r=>(r.posiciones||{})[t]?nvc(r.posiciones[t].valor_usd/1e6,1):'—'})),{t:'Fuente',f:r=>r.url?lkx(r.url,'EDGAR ↗'):'sin dato'}],L)))}
   out.push(c);return out}
+/* C343 segunda (19-nov): inicio de cotización, exención de comisión, instantáneas del 10-Q por XBRL y aviso de cobertura de flujos */
+function etfNuevos(E,sd,u){
+  const L=E.etfs||[],c=el('div'),con=L.filter(r=>r.flujo_usd!=null),f=r=>sd(r),tx=t=>/VERIFICAR/.test(String(t||''));
+  c.append(el('h3',null,'Inicio de cotización y exención de comisión'));
+  c.append(el('p','nota-v','Cobertura de flujos: el flujo diario solo existe en '+con.length+' de '+L.length+' fondos ('+con.map(r=>r.ticker+' '+nvc(r.flujo_usd/1e6,2)+' M$ el '+vc(r.flujo_fecha||(u(r)||{}).fecha)).join(' · ')+'): hacen falta dos lecturas del emisor con acciones y NAV. En el resto, una sola instantánea o dato trimestral del 10-Q: no se inventa flujo. Fuente: webs de los emisores y 10-Q de la SEC (partes interesadas; 10-Q no auditados).'));
+  const fl=L.filter(r=>r.inicio_cotizacion||r.exencion_vigente);
+  if(fl.length)c.append(scrollX(tabla([{t:'Fondo',f:r=>r.ticker+' · '+r.nombre},{t:'Inicio de cotización',f:r=>r.inicio_cotizacion?f(r.inicio_cotizacion):'sin dato'},{t:'Exención de comisión vigente (con fecha de fin si consta)',f:r=>r.exencion_vigente?f(r.exencion_vigente):'sin dato'},{t:'Comisión anual (%)',n:1,f:r=>r.comision_pct==null?'sin dato':nvc(r.comision_pct,2)+' %'},{t:'Aviso',f:r=>(tx(r.inicio_cotizacion)||tx(r.exencion_vigente))?'[VERIFICAR]':'—'}],fl)));
+  c.append(el('p','nota-v','Una exención es temporal: la comisión que cobrará el fondo al acabar es la de la columna «Comisión anual», no cero. GXLM cobra '+nvc((L.find(r=>r.ticker==='GXLM')||{}).comision_pct,2)+' % anual (10-Q de 30-sep, XBRL; fideicomiso OTC, no ETF).'));
+  const H=L.filter(r=>['XRP','QSOL'].includes(r.ticker)),rows=H.flatMap(r=>(r.historial||[]).slice().reverse().map(h=>({t:r.ticker,...h})));
+  if(rows.length){const d=el('details');d.append(el('summary',null,'Instantáneas de Bitwise XRP y QSOL: cifras del 10-Q (30-sep, XBRL) y de la web del emisor ('+rows.length+')'));
+    d.append(scrollX(tabla([{t:'Fondo',f:r=>r.t},{t:'Fecha',f:r=>vc(r.fecha)},{t:'Acciones',n:1,f:r=>nvc(r.acciones,0)},{t:'NAV ($)',n:1,f:r=>nvc(r.nav,2)},{t:'Activos netos (M$)',n:1,f:r=>r.aum_usd==null?'sin dato':nvc(r.aum_usd/1e6,2)},{t:'Origen y nivel',f:r=>f(r.nivel)}],rows)));
+    d.append(el('p','nota-v','El NAV del 30-sep es cálculo propio (activos netos entre acciones). Del 30-sep al 17/18-nov el activo cae en ambos fondos: es variación de precio y de acciones a la vez, no un flujo. Los .htm de los 10-Q de 2026 de estos dos fondos devuelven 404 en la SEC; las cifras salen del XBRL oficial.'));c.append(d)}
+  return[c]}
 function etfContraste(E){
-  const T=E.trackers_contraste;if(!T)return[];const c=el('div'),sb=T.serie_btc||[];
+  const T=E.trackers_contraste;if(!T)return[];const c=el('div'),sb=T.serie_btc||[];const sd=t=>String(t==null?'':t).replace(/null/g,'sin dato');
   c.append(el('h3',null,'Contraste con un agregador: flujo neto diario de todos los ETF de BTC de EE. UU. (M$)'));
   c.append(el('p','nota-v','Fuente: '+(T.fuente||'')+' · leído '+f10(T.leido)+' · nivel '+(T.nivel||'')+'. Unidad: millones de USD por día (negativo = salidas netas). Es contraste, no sustituye al cálculo con acciones × NAV del emisor.'));
   if(sb.length)c.append(scrollX(tabla([{t:'Fecha',f:r=>vc(r.fecha)},{t:'Flujo neto total (M$)',n:1,f:r=>nvc(r.total,1)}],sb)));
   const ib=T.ibit_fbtc_13nov;if(ib)c.append(el('p','nota-v','13-nov por fondo: IBIT '+nvc(ib.IBIT,1)+' M$ · FBTC '+nvc(ib.FBTC,1)+' M$. '+(ib.nota||'')));
+  const SF=T.solana_farside;
+  if(SF){const ss=SF.serie_total||[];
+    c.append(el('h3',null,'Contraste de Solana: flujo neto diario de los ETF de SOL de EE. UU. (Farside, M$)'));
+    const p=el('p','nota-v');p.append(nivelBadge('S'),document.createTextNode(' Suma de '+ss.length+' días hábiles ('+vc((ss[0]||{}).fecha)+' a '+vc((ss[ss.length-1]||{}).fecha)+'): '+nvc(SF.suma_10_dias_total,1)+' M$ (cálculo propio sobre la tabla; negativo = salidas netas). Farside no incluye QSOL ni SOLC, así que no es el total de los fondos de SOL. Leído '+f10(SF.leido)+' · '+(SF.nivel||'')+' · '));p.append(lkx(SF.fuente_url||String(SF.fuente||'').split(' ')[0],'Farside ↗'));c.append(p);
+    if(ss.length)c.append(scrollX(tabla([{t:'Fecha',f:r=>vc(r.fecha)},{t:'Total SOL (M$)',n:1,f:r=>nvc(r.total,1)},{t:'BSOL (M$)',n:1,f:r=>(SF.bsol||{})[r.fecha]==null?'sin dato':nvc(SF.bsol[r.fecha],1)},{t:'GSOL (M$)',n:1,f:r=>(SF.gsol||{})[r.fecha]==null?'sin dato':nvc(SF.gsol[r.fecha],1)}],ss)));
+    c.append(el('p','nota-v','Columnas de Farside: '+sd(SF.columnas)+'. BSOL y GSOL por fondo solo aparecen donde Farside los desglosa; «sin dato» no significa cero. '+sd(SF.contraste)+' '+sd(SF.xrp)));}
   if(T.xrp_xlm)c.append(el('p','nota-v','XRP y XLM: '+T.xrp_xlm));
   return[c]}
 function nEnergiaEs(){

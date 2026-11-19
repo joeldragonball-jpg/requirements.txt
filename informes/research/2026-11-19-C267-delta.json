@@ -1,0 +1,87 @@
+{
+  "_nota": "Delta para cadenas.json (C267, 19-nov-2026). NO aplicado: cadenas.json lo edita otro agente. Cada clave es una ruta; celdas {t,f,u,d,n}. Nivel P = fuente primaria leída (parte interesada si habla de sí misma). Las lecturas RPC son mediciones puntuales de nodos públicos, no series ni medias.",
+  "parches": {
+    "bnb.matriz.pagos": {
+      "t": "Medición del 19-nov-2026: eth_gasPrice en el RPC público bsc-dataseed.bnbchain.org devuelve 50.000.000 wei (0,05 gwei); una transferencia simple de 21.000 gas costaría 0,00000105 BNB. Es una lectura puntual del precio sugerido por el nodo, no una media; la guía de documentación sigue sin dar comisión típica",
+      "f": "RPC público de BNB Chain (bsc-dataseed.bnbchain.org), consulta eth_gasPrice, 19-nov-2026; cálculo propio",
+      "u": "https://docs.bnbchain.org/bnb-smart-chain/developers/quick-guide/",
+      "d": "2026-11-19",
+      "n": "P"
+    },
+    "bnb.matriz.seguridad (añadir al texto actual)": {
+      "t": "Ampliación: la introducción oficial dice que el conjunto activo es de 45 validadores (21 «Cabinet» y 24 «Candidates»), con bloque cada 0,45 s y, con finalidad rápida (BEP-126), finalidad en dos bloques si votan 2/3 o más (≈1,125 s). Si los votos no bastan, vuelve a finalidad probabilística. Autodescripción del proyecto; la página no lleva fecha visible. Nota: la ficha actual dice que producen bloques 18 Cabinets y 3 Candidates por época (21 en total) mientras la introducción habla de 45 activos; ambas cifras proceden de docs.bnbchain.org y no se han reconciliado",
+      "f": "docs.bnbchain.org, «Introduction» de BNB Smart Chain (parte interesada; leída 19-nov-2026)",
+      "u": "https://docs.bnbchain.org/bnb-smart-chain/introduction/",
+      "d": "2026-11-19",
+      "n": "P"
+    },
+    "bnb.matriz.rendimiento": {
+      "t": "La documentación dice que BNB «no es un token inflacionario»: no hay recompensa por bloque, los validadores cobran las comisiones en BNB y parte de ellas premia los votos de finalidad; cada validador decide cuánto devuelve a quienes le delegan. Sigue sin cifra de APR/APY",
+      "f": "docs.bnbchain.org, «Introduction» (parte interesada; leída 19-nov-2026)",
+      "u": "https://docs.bnbchain.org/bnb-smart-chain/introduction/",
+      "d": "2026-11-19",
+      "n": "P"
+    },
+    "polygon.matriz.pagos (añadir al texto actual)": {
+      "t": "Medición del 19-nov-2026: eth_gasPrice en dos RPC públicos independientes (polygon-bor-rpc.publicnode.com y polygon.drpc.org) da ≈276 gwei; 21.000 gas ≈ 0,0058 POL (el baseFee del último bloque era ≈245 gwei). Lectura puntual, no media; no se convierte a dólares porque el precio de POL no es dato de esta ficha. Contrasta con el «$0.002» autodeclarado en la documentación (sin fecha de medición)",
+      "f": "RPC públicos de terceros (publicnode.com, drpc.org), eth_gasPrice y eth_getBlockByNumber, 19-nov-2026; cálculo propio",
+      "u": "https://docs.polygon.technology/pos/overview.md",
+      "d": "2026-11-19",
+      "n": "P"
+    },
+    "polygon.matriz.rendimiento (resuelve el aviso POL 2 % vs 12 %)": {
+      "t": "Las dos cifras son cosas distintas y la propia documentación las presenta sin conciliarlas. (1) «12 %»: la página de recompensas dice que Polygon asigna el 12 % de los 10.000 M de POL a recompensas de staking como bolsa anual fija (≈313 M POL el año 1; 275,6 M el 2; 246,9 M el 3; 204,3 M el 4; 148,6 M el 5) y da tasas esperadas según el % en staking (12 % anual en el año 2 con el 30 % en staking). (2) «2 %»: la página de POL dice que la emisión anual efectiva es del 2 % (1 % tesorería y, tras PIP-26, 1 % a validadores desde después de jun-2025). Dato de emisión a validadores: PIP-78 (feb-2026) cita 303.000 POL/día ≈ 110,6 M POL/año (cálculo propio) frente a los 148,6 M del calendario del año 5. Sin rentabilidad en vivo: sigue sin dato",
+      "f": "docs.polygon.technology (pos/reference/rewards y pos/concepts/tokens/pol, leídas 19-nov-2026; parte interesada) y repositorio de PIPs (PIP-78, ya citado en la ficha)",
+      "u": "https://docs.polygon.technology/pos/reference/rewards.md",
+      "d": "2026-11-19",
+      "n": "P"
+    },
+    "xdc.matriz.pagos (añadir al texto actual)": {
+      "t": "Medición del 19-nov-2026: eth_gasPrice en erpc.xinfin.network (13,09 gwei) y rpc.ankr.com/xdc (12,5 gwei); 21.000 gas ≈ 0,00026-0,00027 XDC, unas 50 veces el precio de referencia de 0,25 gwei de la doc (0,00000525 XDC). No se sabe si es el mínimo aceptado por la red o solo una sugerencia del nodo [VERIFICAR]",
+      "f": "RPC públicos (erpc.xinfin.network, rpc.ankr.com/xdc), eth_gasPrice, 19-nov-2026; docs.xdc.network, Gas & Fees; cálculo propio",
+      "u": "https://github.com/XinFinOrg/Docs/blob/main/docs/learn/gas-fees.md",
+      "d": "2026-11-19",
+      "n": "P"
+    },
+    "xdc.matriz.rendimiento": {
+      "t": "El documento de recompensas (repositorio oficial XinFinOrg/Docs, último cambio 28-mar-2026) fija masternode 10 % anual (1.000.000 XDC por 10.000.000 XDC en stake) y nodo en espera 8 %, y la frase «the proposed system introduces» sugiere un sistema propuesto. En la misma página: época de 900 bloques (~30 min), 5.000 XDC por época (500 a la fundación, 4.500 a nodos) y ~41,67 XDC por masternode y época ≈ 2.000 XDC/día ≈ 730.000 XDC/año (≈7,3 %, cálculo propio), que no cuadra con el 10 %. Cifras de parte interesada, sin medir sobre cadena",
+      "f": "XinFinOrg/Docs en GitHub, docs/xdcchain/rewards.md (leído 19-nov-2026; parte interesada)",
+      "u": "https://github.com/XinFinOrg/Docs/blob/main/docs/xdcchain/rewards.md",
+      "d": "2026-11-19",
+      "n": "P"
+    },
+    "iota.matriz.pagos": {
+      "t": "La documentación de IOTA dice que la comisión media es de unos 0,005 IOTA por transacción, que las comisiones se queman y que el almacenamiento exige un depósito reembolsable. Cifra de la propia documentación; no se midió sobre cadena",
+      "f": "docs.iota.org, About IOTA (llms-full-about.txt; parte interesada; leída 19-nov-2026)",
+      "u": "https://docs.iota.org/llms-full-about.txt",
+      "d": "2026-11-19",
+      "n": "P"
+    },
+    "iota.matriz.rendimiento": {
+      "t": "La documentación dice que validadores y quienes delegan reciben IOTA recién emitido, unos 767.000 IOTA por época (época ≈ 24 h), con una inflación inicial de ≈6 % anual; las comisiones se queman, lo que compensa en parte. Sin APR concreto para quien hace staking (depende del stake total y de la comisión del validador)",
+      "f": "docs.iota.org, About IOTA (parte interesada; leída 19-nov-2026)",
+      "u": "https://docs.iota.org/llms-full-about.txt",
+      "d": "2026-11-19",
+      "n": "P"
+    },
+    "hedera.punto sobre Acacia (sustituye «no nombra plataformas» y la atribución solo por blog)": {
+      "t": "Dos comunicados distintos del RBA: el del 10-jul-2025 (selección de participantes) dice que el CBDC mayorista piloto se emitiría en plataformas como Hedera, Redbelly, R3 Corda, Canvas Connect y otras compatibles con EVM; el de resultados (18-may-2026) no nombra plataformas. Qué casos usaron Hedera no consta en ninguno",
+      "f": "RBA, comunicado 2025-18 (10-jul-2025), leído en Chrome 19-nov-2026",
+      "u": "https://www.rba.gov.au/media-releases/2025/mr-25-18.html",
+      "d": "2026-11-19",
+      "n": "P"
+    },
+    "xrpl.matriz.interop (añadir al texto actual)": {
+      "t": "La enmienda XChainBridge (puentes de libro a libro de XRPL) figura enabled=false en la API pública de rippled (método feature, s1.ripple.com, 19-nov-2026) y xrpl.org la muestra «Open for Voting» (14,29 %, lectura resumida). La única vía de puente documentada es la sidechain EVM",
+      "f": "API pública rippled (s1.ripple.com), método feature, 19-nov-2026; xrpl.org, Cross-chain bridges",
+      "u": "https://xrpl.org/docs/concepts/xrpl-sidechains/cross-chain-bridges",
+      "d": "2026-11-19",
+      "n": "P"
+    }
+  },
+  "sin_dato_pendientes": {
+    "quant": "Sin cambio: quant.network/overledger da 404 y /associations solo confirma INATBA, UK Finance y Engine; licencias de Overledger y liquidez siguen sin fuente primaria (docs.quant.network sin DNS el 16-nov-2026).",
+    "plume": "No tocado en esta pasada.",
+    "bnb": "Alinear el campo tipo («sin cifra primaria» de validadores): la introducción oficial ya da 45 activos."
+  }
+}

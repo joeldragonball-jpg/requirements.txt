@@ -252,11 +252,11 @@
         },
         {
           "dato": "Comisión de los ETF spot de XRP en EE. UU. (Canary XRPC, Bitwise, Grayscale GXRP, 21Shares, Franklin)",
-          "valor": "null",
+          "valor": "Leida el 19-nov-2026 en webs de emisores y EDGAR: ver el dato siguiente",
           "unidad": "",
-          "fecha": "2026-11-18",
+          "fecha": "2026-11-19",
           "nivel": "P",
-          "fuente": "Intentado en las webs de Canary (error), Bitwise (404) y Grayscale (429): no leído. Pendiente en prospectos de EDGAR [VERIFICAR]"
+          "fuente": "Superado: Bitwise, Grayscale y 21Shares leidos en Chrome el 19-nov; Canary sigue con ERR_SSL (comision por 10-Q/XBRL)"
         },
         {
           "dato": "Comision anual de ETF spot de XRP (emisor = parte interesada)",
@@ -264,7 +264,7 @@
           "unidad": "% anual",
           "fecha": "2026-11-13",
           "nivel": "P",
-          "fuente": "424B3 de Bitwise 28-sep-2026 y 10-Q 30-sep-2026 de TOXR, GXRP, XRPZ y XRPC (sec.gov); exenciones temporales de comision no leidas [VERIFICAR]"
+          "fuente": "424B3 de Bitwise 28-sep-2026 y 10-Q 30-sep-2026 de TOXR, GXRP, XRPZ y XRPC (sec.gov); exenciones: ver dato siguiente (19-nov-2026)"
         },
         {
           "dato": "Custodio de las XRP de esos ETF",
@@ -276,11 +276,11 @@
         },
         {
           "dato": "Activos netos a 30-sep-2026 (dato trimestral, no flujo)",
-          "valor": "TOXR 159,7; GXRP 97,4; XRPZ 439,6; XRPC 368,7",
+          "valor": "Bitwise 614,9; TOXR 159,7; GXRP 97,4; XRPZ 439,6; XRPC 368,7",
           "unidad": "millones USD",
           "fecha": "2026-09-30",
           "nivel": "P",
-          "fuente": "10-Q de cada fondo (sec.gov, no auditado); Bitwise XRP no leido (archivo 404) [VERIFICAR]"
+          "fuente": "10-Q de cada fondo (sec.gov, no auditado); Bitwise XRP por XBRL de data.sec.gov (614.850.000 USD, 36,99 M acciones), el .htm del 10-Q da 404"
         },
         {
           "dato": "Lanzamiento/cotizacion",
@@ -289,6 +289,30 @@
           "fecha": "2026-11-13",
           "nivel": "P",
           "fuente": "10-Q 30-sep-2026 de cada fondo (sec.gov)"
+        },
+        {
+          "dato": "Exenciones de comision vigentes en XRPC y XRPZ",
+          "valor": "XRPC: ninguna en el 2T ni en el 3T-2026 (0,50 % completo); XRPZ: sin exencion en el 3T-2026 (0,19 %) y con exencion en el 2T (0,08 M USD de comision renunciada)",
+          "unidad": "% anual",
+          "fecha": "2026-09-30",
+          "nivel": "P",
+          "fuente": "XRPC: 10-Q 30-jun-2026 (sec.gov, \"Sponsor fees waived\" = 0) y XBRL del 10-Q 30-sep (gasto tras exencion 370.225 USD = comision 3T). XRPZ: XBRL del 10-Q 30-sep (comision 3T 148.806 USD = gasto neto; 2T: 118.464 USD frente a 38.563 USD netos, exencion de 0,08 M USD). Emisor = parte interesada; texto de la exencion de XRPZ no legible (.htm 404) [VERIFICAR]"
+        },
+        {
+          "dato": "Bitwise XRP ETF: inicio de cotizacion, acciones y NAV",
+          "valor": "Inicio 19-nov-2025; 17-nov-2026: 36,44 M acciones, NAV 10,77 USD, activos 392,6 M USD (sin variacion de acciones vs 16-nov: flujo 0)",
+          "unidad": "M USD / USD por accion",
+          "fecha": "2026-11-17",
+          "nivel": "P",
+          "fuente": "bitwiseetfs.com/single-asset/xrp (leida en Chrome el 19-nov-2026; emisor = parte interesada)"
+        },
+        {
+          "dato": "Grayscale GXRP: flujo del 18-nov-2026",
+          "valor": "-1,12 M USD (60.000 acciones menos x NAV 18,70; 2.660.100 acciones, activos 49,8 M USD)",
+          "unidad": "M USD",
+          "fecha": "2026-11-18",
+          "nivel": "P",
+          "fuente": "etfs.grayscale.com/gxrp (Chrome, 19-nov-2026); flujo = calculo propio; sin contraste de agregador (Farside sin pagina de XRP, SoSoValue bloqueado) [VERIFICAR]"
         }
       ],
       "alcista": [
@@ -315,7 +339,7 @@
         "Estado actual de XLS-66/XLS-65 en xrpl.org (la captura es del 16-sep-2026).",
         "Origen de la cifra de 2.178 M USD de R27: sin localizar.",
         "13F del 3T-2026 (plazo 14-nov-2026).",
-        "Comisión y emisor de cada ETF spot de XRP: leer prospecto (424B) en EDGAR; las webs de emisores fallaron el 18-nov-2026."
+        "Contraste de flujos diarios de XRP en agregador: Farside sin pagina de XRP, SoSoValue bloqueado por Cloudflare; Canary XRPC y Franklin XRPZ sin web diaria legible."
       ],
       "especulacion": [
         "Cualquier previsión de precio o de flujos futuros de los ETF es [ESPECULACIÓN] y no se da aquí."
@@ -514,7 +538,15 @@
           "unidad": "",
           "fecha": "2026-09-30",
           "nivel": "P",
-          "fuente": "mismo 10-Q; comision no localizada [VERIFICAR]"
+          "fuente": "mismo 10-Q; comision 2,50 % anual (ver dato siguiente)"
+        },
+        {
+          "dato": "Comision de GXLM (Grayscale Stellar Lumens Trust)",
+          "valor": "2,50 % anual",
+          "unidad": "% anual",
+          "fecha": "2026-09-30",
+          "nivel": "P",
+          "fuente": "XBRL del 10-Q 30-sep-2026 (presentado el 10-nov-2026; razon de gasto 0,025 en el 3T y en 9 meses; comision de patrocinador 136.000 USD en el 3T y 396.000 USD en 9 meses). Emisor = parte interesada; vehiculo OTC, no ETF en bolsa"
         }
       ],
       "alcista": [
@@ -534,8 +566,7 @@
       ],
       "verificar": [
         "Existencia de un ETF de XLM en EE. UU. (revisar EDGAR).",
-        "Calendario DTCC-SDF en comunicado oficial.",
-        "Cifras actuales del trust de Grayscale (10-Q del 3T)."
+        "Calendario DTCC-SDF en comunicado oficial."
       ],
       "especulacion": [
         "Que la tokenización eleve la demanda de XLM es [ESPECULACIÓN]; no hay mecanismo medido."

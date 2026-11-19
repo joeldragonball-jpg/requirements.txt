@@ -397,12 +397,29 @@ def tarjetas_extra():
             fil.append([f"{x['ticker']} · {x.get('activo')}", ("AUM " + _n(aum / 1e6, 1) + " M$") if aum is not None else "AUM sin dato",
                         f"{u['fecha']} · flujo del día " + (_n(fl / 1e6, 1) + " M$" if fl is not None else "[VERIFICAR] no calculable") + f" · {(x.get('emisor') or '')[:40]}"
                         + " · comisión " + (_n(cm, 2) + " % anual" if cm is not None else "sin dato") + " · custodio " + (x.get("custodio") or "sin dato")[:60]
-                        + (" · lanzamiento " + x["lanzamiento"] if x.get("lanzamiento") else "")])
+                        + (" · lanzamiento " + x["lanzamiento"] if x.get("lanzamiento") else "")
+                        + (" · inicio " + str(x["inicio_cotizacion"])[:60].rstrip(" (:;,") + (" [VERIFICAR]" if "VERIFICAR" in str(x["inicio_cotizacion"]) else "") if x.get("inicio_cotizacion") else "")
+                        + (" · exención: " + str(x["exencion_vigente"])[:100].rstrip(" (:;,") + (" [VERIFICAR]" if "VERIFICAR" in str(x["exencion_vigente"]) else "") if x.get("exencion_vigente") else "")])
         for x in e["etfs"]:
             if not [r for r in x.get("historial", []) if r.get("fecha")]:
                 fil.append([f"{x['ticker']} · {x.get('activo')}", "AUM sin dato", "[VERIFICAR] archivo del 10-Q no leído (404) · comisión y custodio sin dato"])
         tr = e.get("trackers_contraste", {})
-        sal["etff"] = {"gen": e.get("generado"), "nivel": "P (emisor; parte interesada)", "unidad": "AUM y flujos en millones de dólares (M$); el JSON de origen guarda USD y miles de USD",
+        con = [x for x in e["etfs"] if x.get("flujo_usd") is not None]
+        cob = (f"Flujo diario solo en {len(con)} de {len(e['etfs'])} fondos (" + ", ".join(f"{x['ticker']} {_n(x['flujo_usd'] / 1e6, 2)} M$" for x in con)
+               + "); en el resto hay una sola lectura o dato trimestral del 10-Q: no se inventa flujo.")
+        ins = []
+        for x in e["etfs"]:
+            if x["ticker"] in ("XRP", "QSOL"):
+                for r in reversed([r for r in x.get("historial", []) if r.get("fecha")]):
+                    ins.append([f"{x['ticker']} · {r['fecha']}", (_n(r["aum_usd"] / 1e6, 2) + " M$") if r.get("aum_usd") is not None else "sin dato",
+                                f"NAV {_n(r.get('nav'), 2)} · acciones {_n(r.get('acciones'), 0)} · " + ("10-Q 30-sep por XBRL (SEC)" if "XBRL" in str(r.get("nivel")) else "web del emisor")])
+        sf = tr.get("solana_farside") or {}
+        sol = []
+        if sf:
+            sol = [[f"SOL total · {r['fecha']}", _n(r["total"], 1) + " M$", "Farside [S]"] for r in sf.get("serie_total", [])]
+            sol.insert(0, [f"Suma de {len(sf.get('serie_total', []))} días hábiles", _n(sf.get("suma_10_dias_total"), 1) + " M$", "cálculo propio sobre Farside [S]; no incluye QSOL ni SOLC"])
+        sal["etff"] = {"cob": cob, "ins": ins, "sol": sol, "sol_n": "Nivel S (agregador no auditado), leído " + str(sf.get("leido")) + ". XRP sin contraste: Farside sin página y SoSoValue bloqueado [VERIFICAR]. Una exención de comisión es temporal." if sf else "",
+                       "gen": e.get("generado"), "nivel": "P (emisor; parte interesada)", "unidad": "AUM y flujos en millones de dólares (M$); el JSON de origen guarda USD y miles de USD",
                        "fil": fil, "farside": [[r["fecha"], _n(r["total"], 1) + " M$"] for r in tr.get("serie_btc", [])],
                        "farside_n": f"{tr.get('nivel', '')} · leído {tr.get('leido', '')} · flujo neto diario de todos los ETF spot de BTC de EE. UU., en M$"}
     f = leer("fertilizantes-agua.json")
