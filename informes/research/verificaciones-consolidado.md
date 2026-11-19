@@ -114,3 +114,22 @@ Etiquetas: [P] primaria leída hoy · [S] prensa · [VERIFICAR]. Los puntos del 
 
 **Conteo W05H:** 7 puntos · 3 cerrados [P] (W05H-01, 02, 07) · 2 parciales [S] (03, 04) · 2 sin cerrar (05, 06). Acumulado ≈ 48 tratados desde el 27-oct.
 **Implicación:** no citar S&P Italia 13-nov ni DBRS España 30-oct como hechos; el del Tesoro de EE. UU. y la fecha de las letras de España ya se pueden dar como [P].
+
+## W05 · 18-nov-2026 (con C173/C176/C247)
+| ID | Afirmación | Origen | Resultado | Fuente y fecha |
+|---|---|---|---|---|
+| W05-18-01 | Brent 23-oct | C247 | **Corregido [P]**: spot EIA 128,30 $ (116,72 y 111,97 no son spot) | FRED/EIA, 18-nov |
+| W05-18-02 | Brent ~98 5-6 nov | C173 | **Confirmado [P]** spot 97,96 y 97,83 | FRED/EIA, 18-nov |
+| W05-18-05 | S&P -4,36 % el 5-nov | C176 | **Confirmado [P]**: -4,35 % (7.688,62 a 7.353,73) | FRED, 18-nov |
+| W05-18-06 | Nasdaq -5,5 %, DGT V0648-24, DAC8 BOE, OCC-Fed, Polymarket, Irán 5-12 | C173/176/247 | **Sin cerrar** (ver informe 2026-11-18-W05-C173.md) | [VERIFICAR] |
+
+## W05 · 19-nov-2026 (lote corto por API oficial)
+| ID | Afirmación | Origen | Resultado | Fuente y fecha |
+|---|---|---|---|---|
+| W05-19-01 | Tipos de la Fed: ¿hubo subida real? (apuntes dan 3,50-3,75 %) | cerebro/actualidad W41-W43 | **Confirmado [P]**: el límite superior pasó de 3,75 a 4,00 % el 17-sep-2026 (rango actual 3,75-4,00 %, sin cambios hasta el 18-nov) | FRED DFEDTARU/DFEDTARL, 19-nov |
+| W05-19-02 | Selic: SGS 432 (13,75 %) frente a prensa (14,25 %) | research/VALORACION-CAPAS-Y-CALENDARIO.md | **Cerrado [P]**: 13,75 % desde el 17-sep-2026; 14,25 % fue el nivel de 18-jun a 5-ago (la prensa estaba desfasada) | Banco Central do Brasil API SGS 432, 19-nov |
+| W05-19-03 | Treasury al 5,34 % «¿10 años?» (W43) | cerebro/actualidad W43 | **Sin relación con el 10 años [P]**: el 10 a 5,10 % el 17-nov; 5,34 % sería otro plazo o un dato de otra fecha [VERIFICAR] | FRED DGS10, 19-nov |
+| W05-19-04 | CLARITY cloture 49-50, sección 404, DAC8/BOE, Nasdaq -5,5 %, Ripple adquisiciones | pendientes | **Sin cerrar**: senate.gov/congress.gov con anti-bot, Chrome no conectado; no se salta el control [VERIFICAR] | 19-nov |
+
+**Conteo W05 19-nov:** 4 puntos · 2 cerrados [P] (01, 02) · 1 parcial (03) · 1 sin cerrar (04). Acumulado ≈ 52 tratados desde el 27-oct.
+**Implicación:** dar el rango de la Fed como 3,75-4,00 % (desde 17-sep) y la Selic como 13,75 %.
