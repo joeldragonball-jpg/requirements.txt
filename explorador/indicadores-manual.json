@@ -81,34 +81,34 @@
       "periodicidad": "anual"
     },
     "ipc": {
-      "valor": 3.5,
+      "valor": 3.6,
       "unidad": "% interanual",
-      "fecha": "2026-09",
+      "fecha": "2026-10",
       "fuente": "https://www.ons.gov.uk/economy/inflationandpriceindices",
       "nivel": "P",
-      "definicion": "IPC (CPI) del Reino Unido, serie D7G7 del ONS, septiembre de 2026: 3,5 % interanual (agosto 3,1 %; julio 2,9 %). Releído en ons.gov.uk el 14-nov-2026 (publicado el 21-oct-2026; próxima publicación 18-nov-2026). La cifra de 3,6 % de la OCDE en sep-2026 difiere 0,1 puntos de la del ONS: se toma la del ONS, fuente primaria.",
+      "definicion": "IPC (CPI) del Reino Unido, serie D7G7 del ONS, octubre de 2026: 3,6 % interanual (septiembre 3,5 %; agosto 3,1 %). Leído en la API de datos del ONS el 19-nov-2026 (publicado el 18-nov-2026; próxima publicación 16-dic-2026).",
       "periodicidad": "mensual",
-      "anterior": 3.1,
-      "anterior_fecha": "2026-08"
+      "anterior": 3.5,
+      "anterior_fecha": "2026-09"
     },
     "paro": {
-      "valor": 4.7,
+      "valor": 4.6,
       "unidad": "% población activa",
-      "fecha": "2026-07",
+      "fecha": "2026-09",
       "fuente": "https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/timeseries/mgsx/lms",
       "nivel": "P",
-      "definicion": "Tasa de paro del Reino Unido, mayores de 16, desestacionalizada (serie MGSX del ONS, API de datos del ONS leída el 16-nov-2026; publicación del 20-oct-2026): 4,7 % en el último periodo que devuelve la serie (etiqueta «2026 JUL»; abril, mayo y junio 4,9 %). Coincide con la cifra de la OCDE leída el 10-nov.",
+      "definicion": "Tasa de paro del Reino Unido, mayores de 16, desestacionalizada (serie MGSX del ONS, API de datos leída el 19-nov-2026; publicación del 17-nov-2026): 4,6 % en los tres meses móviles julio-septiembre de 2026 (trimestre 2026 Q3 = 4,6 %; Q2 4,9 %). La serie etiqueta ese periodo como «2026 AUG» (mes central). Próxima publicación 15-dic-2026.",
       "periodicidad": "mensual",
       "anterior": 4.9,
       "anterior_fecha": "2026-06"
     },
     "paro_juvenil": {
-      "valor": 15.6,
+      "valor": 15.1,
       "unidad": "% población activa 16-24 (desestacionalizada)",
-      "fecha": "2026-07",
+      "fecha": "2026-09",
       "fuente": "https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/timeseries/mgwy/lms",
       "nivel": "P",
-      "definicion": "Tasa de paro de 16 a 24 años del Reino Unido (serie MGWY del ONS, encuesta LFS, API de datos del ONS leída el 16-nov-2026; publicación del 20-oct-2026): 15,6 % en el último periodo de la serie (etiqueta «2026 JUL»); junio 16,4 %, mayo 16,2 %.",
+      "definicion": "Tasa de paro de 16 a 24 años del Reino Unido (serie MGWY del ONS, encuesta LFS, API leída el 19-nov-2026; publicación del 17-nov-2026): 15,1 % en julio-septiembre de 2026 (Q2 16,2 %). La serie etiqueta ese periodo como «2026 AUG» (mes central).",
       "periodicidad": "mensual",
       "anterior": 16.4,
       "anterior_fecha": "2026-06"
@@ -380,6 +380,76 @@
       "periodicidad": "mensual",
       "anterior": -1.5,
       "anterior_fecha": "2026-07"
+    },
+    "reservas": {
+      "valor": 49474,
+      "unidad": "millones de USD",
+      "fecha": "2026-11-16",
+      "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/1",
+      "nivel": "P",
+      "definicion": "Reservas internacionales del BCRA (API oficial, variable 1; dato provisional). 13-nov-2026: 49.600 (var. 74, sin asignaciones DEG). Referencias del mismo API: 41.095 (30-dic-2025), 40.643 (14-nov-2025), 20.920 (12-dic-2023). Son brutas, no netas: la meta de reservas NETAS del FMI [VERIFICAR] no sale en esta serie.",
+      "periodicidad": "diaria",
+      "anterior": 41095,
+      "anterior_fecha": "2025-12-30"
+    },
+    "tc_mayorista": {
+      "valor": 1558.2427,
+      "unidad": "pesos por USD (referencia mayorista)",
+      "fecha": "2026-11-18",
+      "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/5",
+      "nivel": "P",
+      "definicion": "Tipo de cambio mayorista de referencia del BCRA (var. 5). Minorista vendedor (var. 4): 1.582,68. Un año antes (18-nov-2025): 1.388. 11-dic-2023: 366; 13-dic-2023: 799,975.",
+      "periodicidad": "diaria",
+      "anterior": 1388,
+      "anterior_fecha": "2025-11-18"
+    },
+    "brecha_cambiaria": {
+      "valor": null,
+      "unidad": "% sobre tipo oficial",
+      "fecha": "2026-11",
+      "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/monetarias",
+      "nivel": "V",
+      "definicion": "Sin fuente oficial: el BCRA no publica el cambio paralelo. null [VERIFICAR]."
+    },
+    "badlar": {
+      "valor": 23.25,
+      "unidad": "% TNA, depósitos de bancos privados",
+      "fecha": "2026-11-17",
+      "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/7",
+      "nivel": "P",
+      "definicion": "BADLAR bancos privados (var. 7); TM20 23,44 %. Referencia 11-dic-2023: 129,875 %.",
+      "periodicidad": "diaria",
+      "anterior": 129.875,
+      "anterior_fecha": "2023-12-11"
+    },
+    "expectativa_ipc_12m": {
+      "valor": 21.8,
+      "unidad": "% mediana, próximos 12 meses",
+      "fecha": "2026-10",
+      "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/29",
+      "nivel": "P",
+      "definicion": "Mediana del Relevamiento de Expectativas de Mercado (REM) del BCRA para los próximos 12 meses (cierre de oct-2026). Son expectativas de analistas, no un dato.",
+      "periodicidad": "mensual"
+    },
+    "deuda_pib": {
+      "valor": 69.3,
+      "unidad": "% del PIB (deuda bruta AAPP, proyección)",
+      "fecha": "2026 (proyección)",
+      "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP/ARG",
+      "nivel": "P",
+      "definicion": "FMI WEO (DataMapper), leído 19-nov-2026. 2025: 80,1 %. Proyección.",
+      "anterior": 80.1,
+      "anterior_fecha": "2025"
+    },
+    "saldo_fiscal_pib": {
+      "valor": 0.4,
+      "unidad": "% del PIB (proyección)",
+      "fecha": "2026 (proyección)",
+      "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP/ARG",
+      "nivel": "P",
+      "definicion": "FMI WEO (DataMapper), 19-nov-2026. 2025: -0,2 %. Proyección.",
+      "anterior": -0.2,
+      "anterior_fecha": "2025"
     }
   },
   "BR": {
@@ -527,6 +597,17 @@
       "periodicidad": "mensual",
       "anterior": 13.9,
       "anterior_fecha": "2026-09"
+    },
+    "tipo_oficial": {
+      "valor": 20.0,
+      "unidad": "% anual (depósito a 1 día)",
+      "fecha": "2026-10-29",
+      "fuente": "https://www.cbe.org.eg/en/monetary-policy",
+      "nivel": "S",
+      "definicion": "Tipo de depósito a un día del Banco Central de Egipto tras la subida de 100 pb del 29-oct-2026 (prestamo a un día 21 %; operación principal y descuento 20,5 %), según prensa (Reuters vía agregadores, Daily News Egypt, Riotimes). No se pudo leer la nota oficial: la web del CBE devuelve 404/bloqueo (Chrome probado) [VERIFICAR] en cbe.org.eg.",
+      "periodicidad": "por reunión del Comité de Política Monetaria",
+      "anterior": 19.0,
+      "anterior_fecha": "2026-09"
     }
   },
   "SV": {
@@ -558,6 +639,36 @@
       "nivel": "S",
       "definicion": "Estimación modelada OIT vía API del Banco Mundial, leída el 19-nov-2026 (3,303 % en 2025; 3,261 en 2024; 2,992 en 2023). NO es la tasa oficial de la EHPM/BCR-DIGESTYC (bcr.gob.sv tras CAPTCHA, no completado). Pobreza: Banco Mundial (línea nacional) sin dato 2024-2025 (null); 2023 27,2 %. [VERIFICAR] en fuente oficial.",
       "periodicidad": "anual"
+    },
+    "deuda_pib": {
+      "valor": 85.0,
+      "unidad": "% del PIB (deuda bruta AAPP, proyección)",
+      "fecha": "2026 (proyección)",
+      "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP/SLV",
+      "nivel": "P",
+      "definicion": "FMI WEO (DataMapper), 19-nov-2026; coincide con el 85,0 % del PR 26/316 citado en paises.json. 2025: 87,6 %.",
+      "anterior": 87.6,
+      "anterior_fecha": "2025"
+    },
+    "saldo_fiscal_pib": {
+      "valor": -2.3,
+      "unidad": "% del PIB (proyección)",
+      "fecha": "2026 (proyección)",
+      "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP/SLV",
+      "nivel": "P",
+      "definicion": "FMI WEO (DataMapper), 19-nov-2026. 2025: -2,9 %. Proyección.",
+      "anterior": -2.9,
+      "anterior_fecha": "2025"
+    },
+    "pib_prevision_fmi": {
+      "valor": 4.5,
+      "unidad": "% crecimiento real (proyección)",
+      "fecha": "2026 (proyección)",
+      "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/SLV",
+      "nivel": "P",
+      "definicion": "FMI WEO (DataMapper), 19-nov-2026; 2025: 3,9 %; 2027: 4,0 %. Coincide con el 4,5 % del PR 26/316.",
+      "anterior": 3.9,
+      "anterior_fecha": "2025"
     }
   },
   "IR": {
@@ -600,6 +711,953 @@
       "nivel": "P",
       "definicion": "Inflación 2025 de la portada del FCSC (leída en Chrome el 19-nov-2026): 1,25 %, media anual, no interanual mensual. IPC mensual 2026 no localizado (UAE.Stat sin explorar). Banco Mundial 2025: 1,251 % (coincide); 2024: 1,663; 2023: 1,627.",
       "periodicidad": "anual"
+    }
+  },
+  "_bloques": {
+    "_nota": "Panel de bloques C138 (19-nov-2026). Describe, no ordena ni recomienda. Cada celda: valor, fecha, fuente y nivel (P = fuente oficial leída; S = discutida o secundaria; V = por verificar); null = sin dato. Las cifras de China y Rusia reproducen estadísticas nacionales discutidas [S]. Las proyecciones WEO son estimaciones del FMI, no datos observados. BRICS = miembros de plenos derechos listados en paises.json (CN, IN, RU, BR, ZA, EG, ID, IR, AE, ET); Arabia Saudí [VERIFICAR] no incluida. Faltan para Egipto, Indonesia, Irán, EAU y Etiopía deuda, saldo y paro (no leídos): null. Casos alcista/bajista: informe.",
+    "_actualizado": "2026-11-19",
+    "zona_euro": {
+      "nombre": "Zona euro (EA21, con Bulgaria desde 1-ene-2026)",
+      "indicadores": {
+        "ipc": {
+          "valor": 4.0,
+          "unidad": "% interanual (IPCA)",
+          "fecha": "2026-10",
+          "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_minr?coicop18=TOTAL&geo=EA21&unit=RCH_A",
+          "nivel": "P",
+          "definicion": "Leído por API/Chrome el 19-nov-2026. IPC armonizado, tasa anual. Zona euro (EA21) 4,0 %; sep 3,8 %; media móvil 12 meses 2,8 %; mensual 0,5 %. Actualizado por Eurostat el 18-nov-2026.",
+          "anterior": 3.8,
+          "anterior_fecha": "2026-09",
+          "periodicidad": "mensual"
+        },
+        "paro": {
+          "valor": 6.5,
+          "unidad": "% población activa, desest.",
+          "fecha": "2026-09",
+          "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_m?geo=EA21&s_adj=SA&age=TOTAL&unit=PC_ACT&sex=T",
+          "nivel": "P",
+          "definicion": "Leído por API/Chrome el 19-nov-2026. Tasa de paro de la zona euro (EA21), Eurostat, actualizado el 5-nov-2026; 6,5 % en jul, ago y sep.",
+          "periodicidad": "mensual"
+        },
+        "pib_interanual": {
+          "valor": 1.3,
+          "unidad": "% interanual, desest.",
+          "fecha": "2026-Q3",
+          "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/namq_10_gdp?geo=EA&s_adj=SCA&unit=CLV_PCH_SM&na_item=B1GQ",
+          "nivel": "P",
+          "definicion": "Leído por API/Chrome el 19-nov-2026. PIB real, 3.er trimestre 2026 frente al 3.er trimestre de 2025 (Eurostat, actualizado 17-nov-2026; estimación sujeta a revisión). Trimestral frente al anterior: +0,4 % (2.º trim. +0,6 %).",
+          "anterior": 1.2,
+          "anterior_fecha": "2026-Q2",
+          "periodicidad": "trimestral"
+        },
+        "deuda_pib": {
+          "valor": 87.3,
+          "unidad": "% del PIB (deuda bruta AAPP)",
+          "fecha": "2025",
+          "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_edpt1?geo=EA21&sector=S13&unit=PC_GDP&na_item=GD",
+          "nivel": "P",
+          "definicion": "Leído por API/Chrome el 19-nov-2026. Deuda de las administraciones públicas, zona euro EA21 (Eurostat, notificación de octubre de 2026, actualizado 21-oct-2026). 2024: 86,1 %.",
+          "anterior": 86.1,
+          "anterior_fecha": "2024",
+          "periodicidad": "anual"
+        },
+        "deficit_pib": {
+          "valor": -3.0,
+          "unidad": "% del PIB (capacidad/necesidad de financiación AAPP)",
+          "fecha": "2025",
+          "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_edpt1?geo=EA21&sector=S13&unit=PC_GDP&na_item=B9",
+          "nivel": "P",
+          "definicion": "Leído por API/Chrome el 19-nov-2026. Saldo de las administraciones públicas, EA21 (Eurostat, 21-oct-2026). 2024: -3,0 %.",
+          "anterior": -3.0,
+          "anterior_fecha": "2024",
+          "periodicidad": "anual"
+        },
+        "tipo_bce": {
+          "valor": 2.5,
+          "unidad": "% (facilidad de depósito)",
+          "fecha": "2026-09-16",
+          "fuente": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html",
+          "nivel": "P",
+          "definicion": "Leído por API/Chrome el 19-nov-2026. Tipo de la facilidad de depósito del BCE desde el 16-sep-2026 (2,25 % desde el 17-jun-2026; 2,00 % desde el 11-jun-2025). Refinanciación principal 2,65 %.",
+          "anterior": 2.25,
+          "anterior_fecha": "2026-06-17",
+          "periodicidad": "por reunión del Consejo"
+        }
+      }
+    },
+    "ue27": {
+      "nombre": "Unión Europea (UE-27)",
+      "indicadores": {
+        "ipc": {
+          "valor": 4.0,
+          "unidad": "% interanual (IPCA)",
+          "fecha": "2026-10",
+          "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_minr?coicop18=TOTAL&geo=EU27_2020&unit=RCH_A",
+          "nivel": "P",
+          "definicion": "Leído por API/Chrome el 19-nov-2026. IPC armonizado UE-27, tasa anual; sep 3,8 %; media móvil 12 meses 2,9 %.",
+          "anterior": 3.8,
+          "anterior_fecha": "2026-09",
+          "periodicidad": "mensual"
+        },
+        "paro": {
+          "valor": 6.2,
+          "unidad": "% población activa, desest.",
+          "fecha": "2026-09",
+          "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_m?geo=EU27_2020&s_adj=SA&age=TOTAL&unit=PC_ACT&sex=T",
+          "nivel": "P",
+          "definicion": "Leído por API/Chrome el 19-nov-2026. Paro UE-27 (Eurostat, 5-nov-2026); 6,2 % de jun a sep.",
+          "periodicidad": "mensual"
+        },
+        "pib_interanual": {
+          "valor": 1.5,
+          "unidad": "% interanual, desest.",
+          "fecha": "2026-Q3",
+          "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/namq_10_gdp?geo=EU27_2020&s_adj=SCA&unit=CLV_PCH_SM&na_item=B1GQ",
+          "nivel": "P",
+          "definicion": "Leído por API/Chrome el 19-nov-2026. PIB real UE-27, 3.er trim. 2026 (Eurostat, 17-nov-2026); trimestral +0,5 %.",
+          "anterior": 1.4,
+          "anterior_fecha": "2026-Q2",
+          "periodicidad": "trimestral"
+        },
+        "deuda_pib": {
+          "valor": 81.5,
+          "unidad": "% del PIB",
+          "fecha": "2025",
+          "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_edpt1?geo=EU27_2020&sector=S13&unit=PC_GDP&na_item=GD",
+          "nivel": "P",
+          "definicion": "Leído por API/Chrome el 19-nov-2026. Deuda AAPP UE-27 (Eurostat 21-oct-2026). 2024: 80,3 %.",
+          "anterior": 80.3,
+          "anterior_fecha": "2024",
+          "periodicidad": "anual"
+        },
+        "deficit_pib": {
+          "valor": -3.1,
+          "unidad": "% del PIB",
+          "fecha": "2025",
+          "fuente": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_edpt1?geo=EU27_2020&sector=S13&unit=PC_GDP&na_item=B9",
+          "nivel": "P",
+          "definicion": "Leído por API/Chrome el 19-nov-2026. Saldo AAPP UE-27 (Eurostat 21-oct-2026). 2024: -3,1 %.",
+          "anterior": -3.1,
+          "anterior_fecha": "2024",
+          "periodicidad": "anual"
+        }
+      }
+    },
+    "potencias_fmi": {
+      "US": {
+        "pib_real_crec": {
+          "valor": 2.3,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/USA",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 2.3.",
+          "anterior": 2.3,
+          "anterior_fecha": "2025"
+        },
+        "ipc_media": {
+          "valor": 3.6,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/USA",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 2.7.",
+          "anterior": 2.7,
+          "anterior_fecha": "2025"
+        },
+        "deuda_bruta_pib": {
+          "valor": 126.8,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP/USA",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 124.4.",
+          "anterior": 124.4,
+          "anterior_fecha": "2025"
+        },
+        "saldo_fiscal_pib": {
+          "valor": -8.5,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP/USA",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: -7.1.",
+          "anterior": -7.1,
+          "anterior_fecha": "2025"
+        },
+        "paro": {
+          "valor": 4.2,
+          "unidad": "% población activa",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/LUR/USA",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 4.3.",
+          "anterior": 4.3,
+          "anterior_fecha": "2025"
+        }
+      },
+      "CN": {
+        "pib_real_crec": {
+          "valor": 4.5,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/CHN",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 5.0. Estadística oficial china discutida [S].",
+          "anterior": 5.0,
+          "anterior_fecha": "2025"
+        },
+        "ipc_media": {
+          "valor": 1.0,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/CHN",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 0.0. Estadística oficial china discutida [S].",
+          "anterior": 0.0,
+          "anterior_fecha": "2025"
+        },
+        "deuda_bruta_pib": {
+          "valor": 104.4,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP/CHN",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 98.6. Estadística oficial china discutida [S].",
+          "anterior": 98.6,
+          "anterior_fecha": "2025"
+        },
+        "saldo_fiscal_pib": {
+          "valor": -8.0,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP/CHN",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: -7.9. Estadística oficial china discutida [S].",
+          "anterior": -7.9,
+          "anterior_fecha": "2025"
+        },
+        "paro": {
+          "valor": 5.1,
+          "unidad": "% población activa",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/LUR/CHN",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 5.1. Estadística oficial china discutida [S].",
+          "anterior": 5.1,
+          "anterior_fecha": "2025"
+        }
+      },
+      "JP": {
+        "pib_real_crec": {
+          "valor": 0.7,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/JPN",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 1.2.",
+          "anterior": 1.2,
+          "anterior_fecha": "2025"
+        },
+        "ipc_media": {
+          "valor": 2.0,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/JPN",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 3.2.",
+          "anterior": 3.2,
+          "anterior_fecha": "2025"
+        },
+        "deuda_bruta_pib": {
+          "valor": 199.4,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP/JPN",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 204.8.",
+          "anterior": 204.8,
+          "anterior_fecha": "2025"
+        },
+        "saldo_fiscal_pib": {
+          "valor": -1.4,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP/JPN",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: -0.7.",
+          "anterior": -0.7,
+          "anterior_fecha": "2025"
+        },
+        "paro": {
+          "valor": 2.5,
+          "unidad": "% población activa",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/LUR/JPN",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 2.5.",
+          "anterior": 2.5,
+          "anterior_fecha": "2025"
+        }
+      },
+      "IN": {
+        "pib_real_crec": {
+          "valor": 7.0,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/IND",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 7.8.",
+          "anterior": 7.8,
+          "anterior_fecha": "2025"
+        },
+        "ipc_media": {
+          "valor": 5.0,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/IND",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 2.0.",
+          "anterior": 2.0,
+          "anterior_fecha": "2025"
+        },
+        "deuda_bruta_pib": {
+          "valor": 83.1,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP/IND",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 84.3.",
+          "anterior": 84.3,
+          "anterior_fecha": "2025"
+        },
+        "saldo_fiscal_pib": {
+          "valor": -7.5,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP/IND",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: -7.4.",
+          "anterior": -7.4,
+          "anterior_fecha": "2025"
+        },
+        "paro": {
+          "valor": 5.0,
+          "unidad": "% población activa",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/LUR/IND",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 5.0.",
+          "anterior": 5.0,
+          "anterior_fecha": "2025"
+        }
+      },
+      "RU": {
+        "pib_real_crec": {
+          "valor": 0.9,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/RUS",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 1.0. Estadística oficial rusa discutida y con series restringidas [S].",
+          "anterior": 1.0,
+          "anterior_fecha": "2025"
+        },
+        "ipc_media": {
+          "valor": 6.1,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/RUS",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 8.7. Estadística oficial rusa discutida y con series restringidas [S].",
+          "anterior": 8.7,
+          "anterior_fecha": "2025"
+        },
+        "deuda_bruta_pib": {
+          "valor": 19.3,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP/RUS",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 16.6. Estadística oficial rusa discutida y con series restringidas [S].",
+          "anterior": 16.6,
+          "anterior_fecha": "2025"
+        },
+        "saldo_fiscal_pib": {
+          "valor": -3.2,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP/RUS",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: -3.9. Estadística oficial rusa discutida y con series restringidas [S].",
+          "anterior": -3.9,
+          "anterior_fecha": "2025"
+        },
+        "paro": {
+          "valor": 2.2,
+          "unidad": "% población activa",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/LUR/RUS",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 2.2. Estadística oficial rusa discutida y con series restringidas [S].",
+          "anterior": 2.2,
+          "anterior_fecha": "2025"
+        }
+      },
+      "GB": {
+        "pib_real_crec": {
+          "valor": 1.3,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/GBR",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 1.2.",
+          "anterior": 1.2,
+          "anterior_fecha": "2025"
+        },
+        "ipc_media": {
+          "valor": 3.3,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/GBR",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 3.4.",
+          "anterior": 3.4,
+          "anterior_fecha": "2025"
+        },
+        "deuda_bruta_pib": {
+          "valor": 102.0,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP/GBR",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 102.1.",
+          "anterior": 102.1,
+          "anterior_fecha": "2025"
+        },
+        "saldo_fiscal_pib": {
+          "valor": -3.8,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP/GBR",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: -5.3.",
+          "anterior": -5.3,
+          "anterior_fecha": "2025"
+        },
+        "paro": {
+          "valor": 5.3,
+          "unidad": "% población activa",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/LUR/GBR",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 4.9.",
+          "anterior": 4.9,
+          "anterior_fecha": "2025"
+        }
+      },
+      "DE": {
+        "pib_real_crec": {
+          "valor": 1.3,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/DEU",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 0.2.",
+          "anterior": 0.2,
+          "anterior_fecha": "2025"
+        },
+        "ipc_media": {
+          "valor": 2.7,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/DEU",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 2.3.",
+          "anterior": 2.3,
+          "anterior_fecha": "2025"
+        },
+        "deuda_bruta_pib": {
+          "valor": 64.6,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP/DEU",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 62.7.",
+          "anterior": 62.7,
+          "anterior_fecha": "2025"
+        },
+        "saldo_fiscal_pib": {
+          "valor": -4.3,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP/DEU",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: -2.9.",
+          "anterior": -2.9,
+          "anterior_fecha": "2025"
+        },
+        "paro": {
+          "valor": 4.0,
+          "unidad": "% población activa",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/LUR/DEU",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 3.8.",
+          "anterior": 3.8,
+          "anterior_fecha": "2025"
+        }
+      }
+    },
+    "brics_fmi": {
+      "CN": {
+        "pib_real_crec": {
+          "valor": 4.5,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/CHN",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 5.0. Estadística oficial china discutida [S].",
+          "anterior": 5.0,
+          "anterior_fecha": "2025"
+        },
+        "ipc_media": {
+          "valor": 1.0,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/CHN",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 0.0. Estadística oficial china discutida [S].",
+          "anterior": 0.0,
+          "anterior_fecha": "2025"
+        },
+        "deuda_bruta_pib": {
+          "valor": 104.4,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP/CHN",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 98.6. Estadística oficial china discutida [S].",
+          "anterior": 98.6,
+          "anterior_fecha": "2025"
+        },
+        "saldo_fiscal_pib": {
+          "valor": -8.0,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP/CHN",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: -7.9. Estadística oficial china discutida [S].",
+          "anterior": -7.9,
+          "anterior_fecha": "2025"
+        },
+        "paro": {
+          "valor": 5.1,
+          "unidad": "% población activa",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/LUR/CHN",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 5.1. Estadística oficial china discutida [S].",
+          "anterior": 5.1,
+          "anterior_fecha": "2025"
+        }
+      },
+      "IN": {
+        "pib_real_crec": {
+          "valor": 7.0,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/IND",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 7.8.",
+          "anterior": 7.8,
+          "anterior_fecha": "2025"
+        },
+        "ipc_media": {
+          "valor": 5.0,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/IND",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 2.0.",
+          "anterior": 2.0,
+          "anterior_fecha": "2025"
+        },
+        "deuda_bruta_pib": {
+          "valor": 83.1,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP/IND",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 84.3.",
+          "anterior": 84.3,
+          "anterior_fecha": "2025"
+        },
+        "saldo_fiscal_pib": {
+          "valor": -7.5,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP/IND",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: -7.4.",
+          "anterior": -7.4,
+          "anterior_fecha": "2025"
+        },
+        "paro": {
+          "valor": 5.0,
+          "unidad": "% población activa",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/LUR/IND",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 5.0.",
+          "anterior": 5.0,
+          "anterior_fecha": "2025"
+        }
+      },
+      "RU": {
+        "pib_real_crec": {
+          "valor": 0.9,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/RUS",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 1.0. Estadística oficial rusa discutida y con series restringidas [S].",
+          "anterior": 1.0,
+          "anterior_fecha": "2025"
+        },
+        "ipc_media": {
+          "valor": 6.1,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/RUS",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 8.7. Estadística oficial rusa discutida y con series restringidas [S].",
+          "anterior": 8.7,
+          "anterior_fecha": "2025"
+        },
+        "deuda_bruta_pib": {
+          "valor": 19.3,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP/RUS",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 16.6. Estadística oficial rusa discutida y con series restringidas [S].",
+          "anterior": 16.6,
+          "anterior_fecha": "2025"
+        },
+        "saldo_fiscal_pib": {
+          "valor": -3.2,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP/RUS",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: -3.9. Estadística oficial rusa discutida y con series restringidas [S].",
+          "anterior": -3.9,
+          "anterior_fecha": "2025"
+        },
+        "paro": {
+          "valor": 2.2,
+          "unidad": "% población activa",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/LUR/RUS",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 2.2. Estadística oficial rusa discutida y con series restringidas [S].",
+          "anterior": 2.2,
+          "anterior_fecha": "2025"
+        }
+      },
+      "BR": {
+        "pib_real_crec": {
+          "valor": 2.2,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/BRA",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 2.3.",
+          "anterior": 2.3,
+          "anterior_fecha": "2025"
+        },
+        "ipc_media": {
+          "valor": 4.4,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/BRA",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 5.0.",
+          "anterior": 5.0,
+          "anterior_fecha": "2025"
+        },
+        "deuda_bruta_pib": {
+          "valor": 97.0,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP/BRA",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 93.3.",
+          "anterior": 93.3,
+          "anterior_fecha": "2025"
+        },
+        "saldo_fiscal_pib": {
+          "valor": -8.1,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP/BRA",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: -7.4.",
+          "anterior": -7.4,
+          "anterior_fecha": "2025"
+        },
+        "paro": {
+          "valor": 6.2,
+          "unidad": "% población activa",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/LUR/BRA",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 6.0.",
+          "anterior": 6.0,
+          "anterior_fecha": "2025"
+        }
+      },
+      "ZA": {
+        "pib_real_crec": {
+          "valor": 1.0,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/ZAF",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 1.1.",
+          "anterior": 1.1,
+          "anterior_fecha": "2025"
+        },
+        "ipc_media": {
+          "valor": 4.4,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/ZAF",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 3.2.",
+          "anterior": 3.2,
+          "anterior_fecha": "2025"
+        },
+        "deuda_bruta_pib": {
+          "valor": 78.0,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP/ZAF",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 78.4.",
+          "anterior": 78.4,
+          "anterior_fecha": "2025"
+        },
+        "saldo_fiscal_pib": {
+          "valor": -4.4,
+          "unidad": "% del PIB",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/GGXCNL_NGDP/ZAF",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: -5.6.",
+          "anterior": -5.6,
+          "anterior_fecha": "2025"
+        },
+        "paro": {
+          "valor": 33.2,
+          "unidad": "% población activa",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/LUR/ZAF",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. 2025: 32.4.",
+          "anterior": 32.4,
+          "anterior_fecha": "2025"
+        }
+      },
+      "EG": {
+        "pib_real_crec": {
+          "valor": 5.1,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/EGY",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado.",
+          "anterior": null,
+          "anterior_fecha": null
+        },
+        "ipc_media": {
+          "valor": 13.3,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/EGY",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado.",
+          "anterior": null,
+          "anterior_fecha": null
+        },
+        "deuda_bruta_pib": null,
+        "saldo_fiscal_pib": null,
+        "paro": null
+      },
+      "ID": {
+        "pib_real_crec": {
+          "valor": 5.1,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/IDN",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado.",
+          "anterior": null,
+          "anterior_fecha": null
+        },
+        "ipc_media": {
+          "valor": 3.3,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/IDN",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado.",
+          "anterior": null,
+          "anterior_fecha": null
+        },
+        "deuda_bruta_pib": null,
+        "saldo_fiscal_pib": null,
+        "paro": null
+      },
+      "IR": {
+        "pib_real_crec": {
+          "valor": -7.6,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/IRN",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. Año de guerra/sanciones: proyección muy incierta [S].",
+          "anterior": null,
+          "anterior_fecha": null
+        },
+        "ipc_media": {
+          "valor": 78.6,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/IRN",
+          "nivel": "S",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado. Año de guerra/sanciones: proyección muy incierta [S].",
+          "anterior": null,
+          "anterior_fecha": null
+        },
+        "deuda_bruta_pib": null,
+        "saldo_fiscal_pib": null,
+        "paro": null
+      },
+      "AE": {
+        "pib_real_crec": {
+          "valor": -3.9,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/ARE",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado.",
+          "anterior": null,
+          "anterior_fecha": null
+        },
+        "ipc_media": {
+          "valor": 4.5,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/ARE",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado.",
+          "anterior": null,
+          "anterior_fecha": null
+        },
+        "deuda_bruta_pib": null,
+        "saldo_fiscal_pib": null,
+        "paro": null
+      },
+      "ET": {
+        "pib_real_crec": {
+          "valor": 9.2,
+          "unidad": "% crecimiento real",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH/ETH",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado.",
+          "anterior": null,
+          "anterior_fecha": null
+        },
+        "ipc_media": {
+          "valor": 11.7,
+          "unidad": "% inflación media anual",
+          "fecha": "2026 (proyección)",
+          "fuente": "https://www.imf.org/external/datamapper/api/v1/PCPIPCH/ETH",
+          "nivel": "P",
+          "definicion": "FMI, World Economic Outlook (API DataMapper), leído el 19-nov-2026; es PROYECCIÓN del FMI, no dato observado.",
+          "anterior": null,
+          "anterior_fecha": null
+        },
+        "deuda_bruta_pib": null,
+        "saldo_fiscal_pib": null,
+        "paro": null
+      }
+    },
+    "agregados_fmi": {
+      "_nota": "Agregados de grupo del FMI (WEO, DataMapper: EURO, EU, ADVEC, OEMDC, WEOWORLD), 2026 = PROYECCIÓN, nivel P, API leída 19-nov-2026. «Otras emergentes» (OEMDC) no es la lista BRICS. Edición exacta del WEO [VERIFICAR] en imf.org (Access Denied en Chrome).",
+      "zona_euro": {
+        "pib_real_crec_2026": 1.1,
+        "ipc_2026": 3.1,
+        "deuda_2026": 88.0,
+        "saldo_2026": -3.6,
+        "paro_2026": 6.3
+      },
+      "ue": {
+        "pib_real_crec_2026": 1.4,
+        "ipc_2026": 3.1,
+        "deuda_2026": 83.6,
+        "saldo_2026": -3.7
+      },
+      "economias_avanzadas": {
+        "pib_real_crec_2026": 2.1,
+        "ipc_2026": 3.1,
+        "deuda_2026": 107.8,
+        "saldo_2026": -5.2,
+        "paro_2026": 4.7
+      },
+      "otras_emergentes": {
+        "pib_real_crec_2026": 3.7,
+        "ipc_2026": 5.7,
+        "deuda_2026": 76.2,
+        "saldo_2026": -6.0
+      },
+      "mundo": {
+        "pib_real_crec_2026": 3.1,
+        "ipc_2026": 4.7,
+        "deuda_2026": 94.6,
+        "saldo_2026": -5.5
+      }
+    },
+    "monedas": {
+      "cofer_usd_pct": {
+        "valor": 56.7,
+        "unidad": "% de reservas oficiales asignadas",
+        "fecha": "2026-Q2",
+        "fuente": "https://data.imf.org/en/news/imf%20data%20brief%20september%2030",
+        "nivel": "P",
+        "definicion": "Cuota del dólar en las reservas (COFER, FMI, Data Brief 30-sep-2026; ya leído en el repo, explorador/reservas.json). Euro 20,60 %, yen 4,96 %. Trimestre anterior (USD): 57,18 %. El FMI indica que los tipos de cambio se movieron ±2 %.",
+        "anterior": 57.18,
+        "anterior_fecha": "2026-Q1"
+      },
+      "cofer_rmb_pct": {
+        "valor": 2.11,
+        "unidad": "% de reservas oficiales asignadas",
+        "fecha": "2026-Q2",
+        "fuente": "https://data.imf.org/en/news/imf%20data%20brief%20september%2030",
+        "nivel": "P",
+        "definicion": "Renminbi en COFER, 2.º trim. 2026 (mismo Data Brief)."
+      },
+      "swift_rmb_pct": {
+        "valor": 2.18,
+        "unidad": "% valor de pagos globales Swift",
+        "fecha": "2026-06",
+        "fuente": "https://tradetreasurypayments.com/articles/usd-dominates-the-global-currency-and-trade-finance-market-swifts-global-currency-tracker-june-2026",
+        "nivel": "S",
+        "definicion": "Cuota del RMB en pagos globales (Swift Global Currency Tracker, antes RMB Tracker) según prensa especializada; los PDF de swift.com no se pudieron leer ([VERIFICAR] en swift.com/products/global-currency-tracker). Mismo mes: USD 59,10 %, EUR 13,92 %."
+      }
     }
   }
 }

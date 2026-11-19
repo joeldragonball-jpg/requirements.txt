@@ -594,6 +594,10 @@ function vDatos() {
       out.push(tj('Cadenas: préstamos y bóvedas', 'XRPL (votos de validadores) frente a Stellar y Solana · TVL y prestado en M$', `${nota(c.unidad)}${nota(c.prest_nota)}${fil(c.prest)}${ls(c.prest_sd)}`, 1));
       out.push(tj('Cadenas: representado o distribuido', 'brecha por red a 19-nov-2026 · RWA.xyz y DefiLlama [S] · M$', `${nota(c.unidad)}${nota(c.brecha_nota)}${(c.brecha_tot || []).map(t => nota(t)).join('')}${fil(c.brecha)}${ls(c.brecha_sd)}`, 1));
       out.push(tj('Cadenas: qué vigilar', 'fechas y umbrales · son calendario, no previsiones', `${nota(c.vig_nota)}${fil(c.vig)}`, 1)); }
+    if (X.rend) { const c = X.rend;
+      out.push(tj('Rendimientos: staking, préstamos y AMM', `${c.fil.length} plataformas · datos puntuales con fecha, no rentabilidad futura · leído ${esc(c.leido || '')}`, `${nota(c.nota)}${fil(c.fil)}`, 1)); }
+    if (X.bloq) { const c = X.bloq;
+      out.push(tj('Países: zona euro, UE-27, potencias y BRICS', `indicadores por bloque, agregados del FMI y cuotas de moneda · leído ${esc(c.leido || '')}`, `${nota(c.nota)}${fil(c.fil)}`, 1)); }
     if (X.etff) { const e = X.etff;
       out.push(tj('ETF cripto: flujos y patrimonio', `XRP, XLM, SOL y BTC · AUM, comisión y custodio · AUM en M$ · generado ${esc(e.gen || '')}`, `${nota(e.unidad + '. Nivel ' + e.nivel + '. Flujo = variación de acciones × NAV entre dos lecturas; sin dos lecturas no se calcula.')}${nota(e.cob)}${fil(e.fil)}${(e.ins || []).length ? t2('Bitwise XRP y QSOL: 10-Q (30-sep) y web') + fil(e.ins) : ''}${(e.sol || []).length ? t2('Solana: flujo neto diario (Farside)') + fil(e.sol) + nota(e.sol_n) : ''}${e.farside.length ? t2('Flujo neto diario de ETF spot de BTC en EE. UU. (Farside)') + fil(e.farside) + nota(e.farside_n) : ''}`, 1)); }
     if (X.fert) { const f = X.fert;

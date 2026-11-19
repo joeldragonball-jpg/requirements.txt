@@ -531,7 +531,9 @@ for _n in ("cadenas-onchain", "mica-registro", "eeuu-fiscal", "ocde-bis", "etf-f
            # 17-nov: España macro, energía, vivienda, pensiones e investigaciones (pestañas nuevas de España)
            "espana-macro", "espana-energia", "espana-vivienda", "espana-pensiones", "espana-investigaciones",
            # 18-nov: fertilizantes (Banco Mundial) y agua por CCAA (INE) en España › Energía, agua y abonos
-           "fertilizantes-agua"):
+           "fertilizantes-agua",
+           # 19-nov: rendimientos (staking, lending, AMM) con celdas {t,f,u,d,n}
+           "rendimientos"):
     _ruta = RAIZ / "explorador" / f"{_n}.json"
     if not _ruta.is_file():
         aviso(f"{_n}.json", "no existe")
@@ -550,6 +552,20 @@ for _n in ("cadenas-onchain", "mica-registro", "eeuu-fiscal", "ocde-bis", "etf-f
         aviso(f"{_n}.json", "sin fuente (fuente, fuentes, metodo o url)")
     if _n != "pais-corredores" and not _hay_clave(_j, {"nivel", "nota_nivel"}):   # pais-corredores toma el nivel de la celda de la Matriz (regulacion.json)
         aviso(f"{_n}.json", "sin nivel de fuente (nivel o nota_nivel)")
+
+# 19-nov: cada fila de rendimientos.json lleva una celda {t,f,u,d,n} completa, modalidad, activo y riesgo; ids sin repetir
+try:
+    _rd = json.loads((RAIZ / 'explorador' / 'rendimientos.json').read_text(encoding='utf-8'))
+    _ids_r = [x.get('id') for x in _rd.get('filas', [])]
+    if len(_ids_r) != len(set(_ids_r)):
+        aviso('rendimientos.json', 'id repetido')
+    for _x in _rd.get('filas', []):
+        celda_cadena(f"rendimientos {_x.get('id')}", _x.get('celda'))
+        for _k in ('modalidad', 'activo', 'riesgo'):
+            if not str(_x.get(_k) or '').strip():
+                aviso(f"rendimientos {_x.get('id')}", f'falta «{_k}»')
+except (OSError, ValueError):
+    pass  # ya avisado arriba
 
 # C205: la tesis de Joel es privada. privado/ no puede estar en git ni su contenido en las páginas públicas (docs/)
 try:

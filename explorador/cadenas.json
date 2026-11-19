@@ -2985,9 +2985,9 @@
           "n": "P"
         },
         "rendimiento": {
-          "t": "La documentación dice que BNB «no es un token inflacionario»: no hay recompensa por bloque, los validadores cobran las comisiones en BNB y parte de ellas premia los votos de finalidad; cada validador decide cuánto devuelve a quienes le delegan. Sigue sin cifra de APR/APY",
-          "f": "docs.bnbchain.org, «Introduction» (parte interesada; leída 19-nov-2026)",
-          "u": "https://docs.bnbchain.org/bnb-smart-chain/introduction/",
+          "t": "Panel oficial de staking de BNB Chain (19-nov-2026): 24.111.253 BNB en stake, 45 validadores activos de 56 y «APY: hasta 1,12 %». Es un techo («up to»), no la media de quien delega; coherente con la documentación, que dice que BNB no es inflacionario y que los validadores reparten comisiones (parte premia los votos de finalidad); cada validador decide cuánto devuelve a quienes le delegan.",
+          "f": "bnbchain.org/en/bnb-staking (parte interesada; leída en Chrome 19-nov-2026) y docs.bnbchain.org «Introduction»",
+          "u": "https://www.bnbchain.org/en/bnb-staking",
           "d": "2026-11-19",
           "n": "P"
         },
@@ -3108,7 +3108,7 @@
         "Qué activos componen los 6.266 M$.",
         "Integración institucional fuera de Binance.",
         "Qué parte de los 1.531 M$ de iBENJI es colateral institucional fuera de bolsa (Franklin y Binance lo anunciaron en feb-2026 con custodia de Ceffu); RWA.xyz no lo desglosa.",
-        "Reconciliar la ficha de validadores (18 Cabinets + 3 Candidates por época = 21) con los 45 activos de la introducción oficial; APR/APY de staking (la doc dice que BNB no es inflacionario)."
+        "19-nov-2026 (C267): reconciliado el recuento de validadores: el panel oficial muestra 45 activos de 56 (coincide con la introducción); los 21 que producen bloques por época son los Cabinets y Candidates elegidos de esos 45. APY «hasta 1,12 %» es un techo, no una media medida; sin cifra de rentabilidad media de quien delega."
       ],
       "tipos_activo": {
         "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las 10 mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top 10 visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
@@ -3803,7 +3803,7 @@
           "n": "P"
         },
         "rendimiento": {
-          "t": "Las dos cifras son cosas distintas y la propia documentación las presenta sin conciliarlas. (1) «12 %»: la página de recompensas dice que Polygon asigna el 12 % de los 10.000 M de POL a recompensas de staking como bolsa anual fija (≈313 M POL el año 1; 275,6 M el 2; 246,9 M el 3; 204,3 M el 4; 148,6 M el 5) y da tasas esperadas según el % en staking (12 % anual en el año 2 con el 30 % en staking). (2) «2 %»: la página de POL dice que la emisión anual efectiva es del 2 % (1 % tesorería y, tras PIP-26, 1 % a validadores desde después de jun-2025). Dato de emisión a validadores: PIP-78 (feb-2026) cita 303.000 POL/día ≈ 110,6 M POL/año (cálculo propio) frente a los 148,6 M del calendario del año 5. Sin rentabilidad en vivo: sigue sin dato",
+          "t": "Las dos cifras son cosas distintas y la propia documentación las presenta sin conciliarlas. (1) «12 %»: la página de recompensas dice que Polygon asigna el 12 % de los 10.000 M de POL a recompensas de staking como bolsa anual fija (≈313 M POL el año 1; 275,6 M el 2; 246,9 M el 3; 204,3 M el 4; 148,6 M el 5) y da tasas esperadas según el % en staking (12 % anual en el año 2 con el 30 % en staking). (2) «2 %»: la página de POL dice que la emisión anual efectiva es del 2 % (1 % tesorería y, tras PIP-26, 1 % a validadores desde después de jun-2025). Dato de emisión a validadores: PIP-78 (feb-2026) cita 303.000 POL/día ≈ 110,6 M POL/año (cálculo propio) frente a los 148,6 M del calendario del año 5. Ampliación del 19-nov-2026 (cálculo propio, no cifra oficial): con la emisión a validadores de PIP-78 (283.644 POL/día ≈ 103,5 M POL/año) y ≈3.810,9 M POL en stake de los 100 validadores activos, la rentabilidad bruta implícita es ≈2,7 % anual antes de comisiones. Comisiones de los 100 validadores activos (API oficial de staking): mediana 4 %, máximo 100 %, media ponderada por stake ≈15,4 %. Sigue sin rentabilidad publicada en vivo por el panel",
           "f": "docs.polygon.technology (pos/reference/rewards y pos/concepts/tokens/pol, leídas 19-nov-2026; parte interesada) y repositorio de PIPs (PIP-78, ya citado en la ficha)",
           "u": "https://docs.polygon.technology/pos/reference/rewards.md",
           "d": "2026-11-19",
@@ -3939,7 +3939,8 @@
       "sin_dato": [
         "Rentabilidad de staking en vivo (la doc solo da el calendario de emisión).",
         "PIP-78 comprobado el 17-nov-2026 (repositorio oficial de PIPs, estado Final, 1-feb-2026): NO elimina la emisión; recorta un 6,5 % el CHECKPOINT_REWARD del StakeManager porque se emitía ~7 % más de lo previsto en PIP-26 (303.000 frente a 283.644 POL/día; objetivo del año 6: 103,53 M POL, 1 %). Propuestas posteriores (p. ej. PIP-93, consejo de seguridad): sin relación con la emisión, sin leer más.",
-        "Validadores activos (18-nov-2026): 100 según la API del panel oficial de staking; esa API no da la rentabilidad en vivo, que sigue sin dato."
+        "Validadores activos (18-nov-2026): 100 según la API del panel oficial de staking; esa API no da la rentabilidad en vivo, que sigue sin dato.",
+        "19-nov-2026 (C267): la API oficial de staking (staking-api.polygon.technology, /api/v2/validators) da comisión, stake y uptime por validador pero ningún campo de rentabilidad; la cifra de ≈2,7 % bruto es cálculo propio (emisión PIP-78 ÷ stake), no dato del proyecto."
       ],
       "tipos_activo": {
         "nota": "RWA.xyz, pestaña «Asset Classes» de la ficha de la red, leída en el navegador el 14-nov-2026. Es el listado de las mayores clases e INCLUYE stablecoins (que se excluyen aquí); una clase que no aparece no es cero, solo no entra en el top visible (sin dato). No distingue distribuido de representado en esta tabla. Las filas «Login to Unlock» (variación 30 días) no se leen. [S]: tercero comercial sin auditoría.",
@@ -6379,8 +6380,8 @@
         "n": "P"
       },
       {
-        "t": "XRPL/XRP/Ripple NO figuran en ninguno de los 8 documentos oficiales leídos (carta SEC 11-dic-2025 y ficha At-a-Glance, con búsqueda de texto completo; notas DTCC 17-dic-2025, 4-may, 27-may, 15-jul, 28-oct y 12-nov-2026; las de 27-may, 28-oct y 12-nov releídas literalmente en Chrome el 19-nov sin ninguna mención; las otras tres, vía lector que resume). Ausencia en estos documentos: no prueba que no vaya a haber conexión futura; DTC dice que evaluará más cadenas por demanda.",
-        "f": "Lectura propia de los documentos citados (27-may, 28-oct y 12-nov cotejadas en Chrome; 17-dic, 4-may y 15-jul vía lector que resume)",
+        "t": "XRPL/XRP/Ripple NO figuran en ninguno de los 8 documentos oficiales leídos (carta SEC 11-dic-2025 y ficha At-a-Glance, con búsqueda de texto completo; notas DTCC 17-dic-2025, 4-may, 27-may, 15-jul, 28-oct y 12-nov-2026; las de 27-may, 28-oct y 12-nov releídas literalmente en Chrome el 19-nov sin ninguna mención; las otras tres (17-dic, 4-may, 15-jul) también cotejadas literalmente en Chrome el 19-nov; «Ripple Prime» figura solo como miembro del grupo de trabajo del 4-may, sin conexión de cadena. 11-dic-2025 = carta de no-acción de la SEC; 17-dic-2025 = alianza con Digital Asset/Canton, no son lo mismo; el servicio DTS del 28-oct solo integra Canton y Besu, con más redes en 2027). Ausencia en estos documentos: no prueba que no vaya a haber conexión futura; DTC dice que evaluará más cadenas por demanda.",
+        "f": "Lectura propia de los documentos citados (27-may, 28-oct y 12-nov cotejadas en Chrome; las 6 notas DTCC cotejadas literalmente en Chrome el 19-nov)",
         "d": "2026-11-19",
         "n": "R",
         "i": "informes/research/2026-11-19-C339.md"
@@ -6436,8 +6437,8 @@
         "fecha": "sin fecha",
         "activos": "—",
         "celda": {
-          "t": "XRPL/XRP/Ripple NO figuran en ninguno de los 8 documentos oficiales leídos (carta SEC 11-dic-2025 y ficha At-a-Glance, con búsqueda de texto completo; notas DTCC 17-dic-2025, 4-may, 27-may, 15-jul, 28-oct y 12-nov-2026; las de 27-may, 28-oct y 12-nov releídas literalmente en Chrome el 19-nov sin ninguna mención; las otras tres, vía lector que resume). Ausencia en estos documentos: no prueba que no vaya a haber conexión futura; DTC dice que evaluará más cadenas por demanda.",
-          "f": "Lectura propia de los documentos citados (27-may, 28-oct y 12-nov cotejadas en Chrome; 17-dic, 4-may y 15-jul vía lector que resume)",
+          "t": "XRPL/XRP/Ripple NO figuran en ninguno de los 8 documentos oficiales leídos (carta SEC 11-dic-2025 y ficha At-a-Glance, con búsqueda de texto completo; notas DTCC 17-dic-2025, 4-may, 27-may, 15-jul, 28-oct y 12-nov-2026; las de 27-may, 28-oct y 12-nov releídas literalmente en Chrome el 19-nov sin ninguna mención; las otras tres (17-dic, 4-may, 15-jul) también cotejadas literalmente en Chrome el 19-nov; «Ripple Prime» figura solo como miembro del grupo de trabajo del 4-may, sin conexión de cadena. 11-dic-2025 = carta de no-acción de la SEC; 17-dic-2025 = alianza con Digital Asset/Canton, no son lo mismo; el servicio DTS del 28-oct solo integra Canton y Besu, con más redes en 2027). Ausencia en estos documentos: no prueba que no vaya a haber conexión futura; DTC dice que evaluará más cadenas por demanda.",
+          "f": "Lectura propia de los documentos citados (27-may, 28-oct y 12-nov cotejadas en Chrome; las 6 notas DTCC cotejadas literalmente en Chrome el 19-nov)",
           "d": "2026-11-19",
           "n": "R",
           "i": "informes/research/2026-11-19-C339.md"
@@ -6510,7 +6511,15 @@
         "votos": 24,
         "total": 35,
         "umbral": 28
-      }
+      },
+      "historia": {
+        "t": "Las enmiendas LendingProtocol y SingleAssetVault se introdujeron en rippled 3.1.0; LendingProtocolV1_1 en 3.4.0. Ninguna tiene estado «majority» (majority=null), así que no hay cuenta atrás de activación ni fecha: activar exige superar el umbral de 28 de 35 y mantenerlo dos semanas. La consulta «feature» a s1.ripple.com (19-nov-2026, 12:21 UTC, ledger validado 108.432.133) da LendingProtocol y SingleAssetVault enabled=false, supported=true, y LendingProtocolV1_1 enabled=false, supported=false (ese servidor no la soporta; xrpscan la marca supported=true). Con las enmiendas sin activar no puede haber préstamos ni bóvedas en la red principal, de modo que TVL y volumen no existen: sin dato, no cero medido. XLS-66 (Draft, actualizada 15-sep-2026) describe préstamos a plazo fijo, sin garantía, con fondos agrupados de una bóveda XLS-65, suscripción y evaluación de riesgo fuera de la cadena y capital de primera pérdida; excluye a propósito la liquidación automática de garantías.",
+        "f": "s1.ripple.com (método feature y server_info, 19-nov-2026); api.xrpscan.com/api/v1/amendments; xls.xrpl.org XLS-66 (leída)",
+        "u": "https://xls.xrpl.org/xls/XLS-0066-lending-protocol.html",
+        "d": "2026-11-19",
+        "n": "P"
+      },
+      "tvl_volumen": null
     },
     "filas": [
       {
@@ -6859,6 +6868,20 @@
         "u": "https://app.rwa.xyz/networks",
         "d": "2026-11-19",
         "n": "S"
+      },
+      {
+        "t": "Metodología oficial de RWA.xyz (docs.rwa.xyz, leída 19-nov-2026): «distribuido» = activo tokenizado que puede moverse a carteras fuera de la plataforma emisora y transferirse entre carteras, incluso con listas blancas; «representado» = no puede moverse ni transferirse (por diseño o por restricción regulatoria) y la cadena sirve solo de registro y conciliación para instituciones. La página dice que las categorías no son estáticas: un representado pasa a distribuido si se vuelve movible, y que las clasificaciones pueden cambiar con nueva información. Es la causa documentada de saltos como el del XRPL (14 a 19-nov), pero RWA.xyz no explica en esa página por qué reclasificó cada activo.",
+        "f": "docs.rwa.xyz/frameworks/tokenization-type",
+        "u": "https://docs.rwa.xyz/frameworks/tokenization-type.md",
+        "d": "2026-11-19",
+        "n": "P"
+      },
+      {
+        "t": "Cómo se mide el valor en RWA.xyz: para activos reales, supply puenteado (los tokens que cruzan de cadena se cuentan una vez) por NAV, con NAV comunicado por el emisor; para stablecoins, supply puenteado por precio de mercado. Las filas de distribuido y representado de la portada usan esa misma medida (bridged_token_value_dollar), y las stablecoins van aparte; los autores avisan de que las medidas se solapan y no deben sumarse. Los filtros de la portada son tipo de tokenización 3 = distribuido y 2 = representado. Sigue siendo un tercero comercial: el valor representado depende del NAV que informe el emisor.",
+        "f": "docs.rwa.xyz, Market cap and total value y Reproducing the Homepage",
+        "u": "https://docs.rwa.xyz/methodology/market-cap-and-total-value.md",
+        "d": "2026-11-19",
+        "n": "P"
       }
     ],
     "sin_dato": [

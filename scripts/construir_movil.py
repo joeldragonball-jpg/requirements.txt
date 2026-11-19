@@ -384,6 +384,36 @@ def tarjetas_extra():
         for x in r1.get("filas", []):
             cad2["prest"].append([f"{x['red']} · {x['protocolo']}", f"TVL {_n(x.get('tvl'), 1)} M$", f"prestado {_n(x.get('prestado'), 1)} M$ · {x.get('estado') or 'sin dato'} · {src(x.get('celda'))}"])
         sal["cad2"] = cad2
+    rd = leer("rendimientos.json")
+    if rd.get("filas"):
+        # 19-nov: rendimientos (staking, préstamos, AMM) por plataforma; la cifra es un dato puntual con fecha, no rentabilidad futura
+        sal["rend"] = {"leido": rd.get("_actualizado"), "nota": (rd.get("nota") or "")[:400],
+                       "fil": [[f"{x['activo']} · {x['modalidad']}", (x["celda"].get("t") or "sin dato")[:220],
+                                f"nivel {x['celda'].get('n') or 'sin dato'} · {(x['celda'].get('f') or 'sin fuente')[:80]} · {x['celda'].get('d') or 'sin fecha'} · riesgo: {(x.get('riesgo') or 'sin dato')[:160]}"]
+                               for x in rd["filas"] if x.get("celda")]}
+    bq = (leer("indicadores-manual.json") or {}).get("_bloques")
+    if bq:
+        # 19-nov: bloques de indicadores (zona euro, UE-27, potencias, BRICS, agregados FMI, cuotas de moneda); una fila por bloque, compacta
+        def _v(x):
+            return "—" if not x or x.get("valor") is None else _n(x["valor"], 2).rstrip("0").rstrip(",") + " %"
+        ks = (("pib_real_crec", "PIB"), ("ipc_media", "IPC"), ("deuda_bruta_pib", "deuda"), ("saldo_fiscal_pib", "saldo"), ("paro", "paro"))
+        fil = []
+        for blq in ("zona_euro", "ue27"):
+            ind = (bq.get(blq) or {}).get("indicadores") or {}
+            fil.append([(bq.get(blq) or {}).get("nombre", blq)[:60], " · ".join(f"{n} {_v(ind.get(k))}" for k, n in (("ipc", "IPC"), ("paro", "paro"), ("pib_interanual", "PIB"), ("deuda_pib", "deuda"), ("deficit_pib", "déficit"), ("tipo_bce", "BCE")) if ind.get(k)),
+                        "nivel P · Eurostat y BCE · " + str((ind.get("ipc") or {}).get("fecha") or "")])
+        for gr, tx in (("potencias_fmi", "Potencias"), ("brics_fmi", "BRICS")):
+            for i, d in (bq.get(gr) or {}).items():
+                fil.append([f"{tx}: {i} · FMI 2026 (proyección)", " · ".join(f"{n} {_v(d.get(k))}" for k, n in ks), "nivel P · FMI WEO (DataMapper) · 19-nov-2026"])
+        ag = bq.get("agregados_fmi") or {}
+        for i, d in ag.items():
+            if isinstance(d, dict):
+                fil.append([f"Agregado FMI: {i} · 2026 (proyección)", " · ".join(f"{n} {_n(v, 1)} %" for n, v in zip(("PIB", "IPC", "deuda", "saldo", "paro"), (d.get("pib_real_crec_2026"), d.get("ipc_2026"), d.get("deuda_2026"), d.get("saldo_2026"), d.get("paro_2026"))) if v is not None), "nivel P · FMI WEO · 19-nov-2026"])
+        for k, nm in (("cofer_usd_pct", "Dólar en reservas (COFER)"), ("cofer_rmb_pct", "Renminbi en reservas (COFER)"), ("swift_rmb_pct", "Renminbi en pagos Swift")):
+            x = (bq.get("monedas") or {}).get(k)
+            if x:
+                fil.append([nm, _v(x), f"nivel {x.get('nivel')} · {x.get('fecha')}"])
+        sal["bloq"] = {"leido": bq.get("_actualizado"), "nota": (bq.get("_nota") or "")[:300], "fil": fil}
     e = leer("etf-flujos.json")
     if e.get("etfs"):
         fil = []

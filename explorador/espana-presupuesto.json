@@ -14551,7 +14551,18 @@
    "SEPE 2024 mensual: solo en XLSX, necesita OK de descarga de Joel.",
    "COFOG 2025 de España: Eurostat aún no lo publica (comprobado 12-nov-2026)."
   ],
-  "cierre_18nov": "C69, 18-nov-2026: cerrados IPC por programa/centro (bloque deflactor_ipc_programas_centros, con su límite explícito) y SEPE 2024 mensual (bloque sepe_2024_mensual). Siguen abiertos: cambios de estructura de ministerios 2024→2025 [VERIFICAR], COFOG 2025 de España (Eurostat), número de personas por ministerio (arts. 10/11)."
+  "cierre_18nov": "C69, 18-nov-2026: cerrados IPC por programa/centro (bloque deflactor_ipc_programas_centros, con su límite explícito) y SEPE 2024 mensual (bloque sepe_2024_mensual). Siguen abiertos: cambios de estructura de ministerios 2024→2025 [VERIFICAR], COFOG 2025 de España (Eurostat), número de personas por ministerio (arts. 10/11).",
+  "estructura_ministerios_2024_2025": {
+   "leido": "2026-11-19",
+   "nivel": "P",
+   "unidad": "M€ · obligaciones reconocidas",
+   "fuente": "IGAE, MENSUAL 12-24 y 12-25 ya cargados en capitulos_por_ministerio (comparación propia de nombres de sección, programa y centro)",
+   "hecho": "Las 37 secciones presupuestarias son las mismas y con el mismo nombre en 2024 y 2025 (todas con total_2024), y la suma de secciones cuadra con el total del Estado (408.563,1 frente a 408.563,7 M€ en 2024; 423.336,3 frente a 423.336,4 en 2025; diferencias por redondeo). No aparece ninguna sección nueva ni desaparecida.",
+   "sin_comparar": "Solo quedan sin comparar 18 filas (programas o centros que existen en 2025 y no tienen homólogo con el mismo nombre en 2024): el programa «Contingencias asociadas a la Depresión Aislada Niveles Altos» (DANA) en 6 secciones (2025: 29,6 M€ en Sistemas de financiación; 451,2 en Transición Ecológica; 35,0 en Vivienda; 1.748,3 en Política Territorial; 39,9 en Juventud e Infancia; y 1.514,9 en Hacienda, donde sí tiene homólogo), el centro «Dirección General de Estrategias de Movilidad» (Transportes, 735,7 M€) y el «Comisionado de Salud Mental» (Sanidad, 60,9 M€), más filas «Otros».",
+   "lectura": "HECHO: los saltos grandes de sección (Hacienda 20.038,4 → 9.219,2 M€; Vivienda 1.367,3 → 4.781,0; Política Territorial 464,7 → 2.259,5; Otras relac. financ. 1.023,9 → 257,5) vienen de programas concretos de transferencias y préstamos (p. ej. Hacienda: «Coordinación y relaciones financieras con los entes territoriales» 13.010,2 → 4.259,9; Vivienda: línea de préstamos ICO 0 → 3.300,0; Política Territorial: 1.748,3 de la DANA), no de cambios de nombre de ministerio. Que no haya cambio de sección no excluye traspasos de competencias dentro de una misma sección [VERIFICAR con el real decreto de estructura de cada ministerio]. No se ha leído en el BOE ningún real decreto de reestructuración de 2024-2025.",
+   "nota_prorroga": "Los PGE de 2023 siguen prorrogados en ambos años (campo vigencia), por lo que el crédito inicial no cambia; las diferencias vienen de modificaciones de crédito y de la ejecución."
+  },
+  "cierre_19nov": "C69, 19-nov-2026: comprobado con los datos IGAE ya cargados que no hay secciones nuevas ni desaparecidas entre 2024 y 2025 (bloque estructura_ministerios_2024_2025). Abiertos: reales decretos de estructura (traspasos dentro de una sección) [VERIFICAR], COFOG 2025 de España (Eurostat), personas por ministerio."
  },
  "deflactor_ipc_programas_centros": {
   "titulo": "Variación real 2024→2025 por sección, política, programa y centro (deflactada con el IPC medio)",

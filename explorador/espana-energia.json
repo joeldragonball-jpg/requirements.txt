@@ -1,53 +1,71 @@
 {
  "titulo": "España: energía (precio eléctrico, combustibles, dependencia, mix, embalses)",
  "nivel": "P",
- "leido": "2026-11-17",
- "_nota": "C233. Nivel P = fuente oficial leída; S = prensa; VERIFICAR = sin cifra leída. Combustibles del Boletín Petrolero: € por litro = (€/1000 l)/1000, con impuestos. No sustituye a espana-energia-vivienda.json (REData diario). C233 (18-nov): MITECO embalses 10 y 17-nov, MIBGAS PVB, REData 1-16 nov y comprobación del Boletín Petrolero añadidos.",
+ "leido": "2026-11-19",
+ "_nota": "C233. Nivel P = fuente oficial leída; S = prensa; VERIFICAR = sin cifra leída. Combustibles del Boletín Petrolero: € por litro = (€/1000 l)/1000, con impuestos. No sustituye a espana-energia-vivienda.json (REData diario). C233 (18-nov): MITECO embalses 10 y 17-nov, MIBGAS PVB, REData 1-16 nov y comprobación del Boletín Petrolero añadidos. 19-nov: CORREGIDA la media OMIE (se usaba la columna de Portugal); añadidos PVPC, mix 1-18 nov, Boletín Petrolero del 16-nov (publicado 19-nov) y MIBGAS 18-nov. AGSI+ ahora exige clave de API: gas almacenado sin cambios (16-nov).",
  "electricidad": [
   {
    "nombre": "Precio mayorista (mercado diario OMIE), media de octubre",
-   "valor": 168.93,
+   "valor": 166.66,
    "unidad": "€/MWh",
    "anio": "oct-2026",
-   "fuente": "https://www.omie.es/es/file-download?parents%5B0%5D=marginalpdbc (ficheros marginalpdbc_AAAAMMDD)",
+   "fuente": "https://www.omie.es/es/file-download?parents%5B0%5D=marginalpdbc (ficheros marginalpdbc_AAAAMMDD; columna 6 = zona España)",
    "nivel": "P",
-   "nota": "Cálculo propio: media simple de las medias diarias de los ficheros oficiales de OMIE (precio marginal, zona España); no es la cifra mensual publicada por OMIE. Máx. diario 249,27 €/MWh; máx. de un periodo 359,07 €/MWh."
+   "nota": "Cálculo propio: media simple de las medias diarias (96 periodos de 15 min) de la columna ESPAÑA de los ficheros oficiales de OMIE; no es la cifra mensual publicada por OMIE. CORRECCIÓN 19-nov: las pasadas anteriores (168,93) usaban la columna de Portugal (equivale a PT 168,93). Máx. diario 244,69 €/MWh; mín. diario 76,28."
   },
   {
    "nombre": "Precio mayorista (mercado diario OMIE), media de octubre",
-   "valor": 76.02,
+   "valor": 75.33,
    "unidad": "€/MWh",
    "anio": "oct-2025",
-   "fuente": "https://www.omie.es/es/file-download?parents%5B0%5D=marginalpdbc (ficheros marginalpdbc_AAAAMMDD)",
+   "fuente": "https://www.omie.es/es/file-download?parents%5B0%5D=marginalpdbc (ficheros marginalpdbc_AAAAMMDD; columna 6 = zona España)",
    "nivel": "P",
-   "nota": "Cálculo propio: media simple de las medias diarias de los ficheros oficiales de OMIE (precio marginal, zona España); no es la cifra mensual publicada por OMIE. Octubre 2026 es ≈ 2,2 veces octubre 2025 (+122 %)."
+   "nota": "Cálculo propio: media simple de las medias diarias (96 periodos de 15 min) de la columna ESPAÑA de los ficheros oficiales de OMIE; no es la cifra mensual publicada por OMIE. CORRECCIÓN 19-nov (antes 76,02 = columna Portugal). Solo 30 de 31 ficheros leídos (uno no cargó): dato orientativo. Octubre 2026 ≈ 2,2 veces octubre 2025 (+121 %)."
   },
   {
    "nombre": "Precio mayorista (mercado diario OMIE), media de septiembre",
-   "valor": 143.9,
+   "valor": 143.25,
    "unidad": "€/MWh",
    "anio": "sep-2026",
-   "fuente": "https://www.omie.es/es/file-download?parents%5B0%5D=marginalpdbc (ficheros marginalpdbc_AAAAMMDD)",
+   "fuente": "https://www.omie.es/es/file-download?parents%5B0%5D=marginalpdbc (ficheros marginalpdbc_AAAAMMDD; columna 6 = zona España)",
    "nivel": "P",
-   "nota": "Cálculo propio: media simple de las medias diarias de los ficheros oficiales de OMIE (precio marginal, zona España); no es la cifra mensual publicada por OMIE. La prensa citaba 143,72 (diferencia de método)."
+   "nota": "Cálculo propio: media simple de las medias diarias (96 periodos de 15 min) de la columna ESPAÑA de los ficheros oficiales de OMIE; no es la cifra mensual publicada por OMIE. CORRECCIÓN 19-nov (antes 143,90 = Portugal). La prensa citaba 143,72 (diferencia de método)."
   },
   {
-   "nombre": "Precio mayorista (mercado diario OMIE), 1 a 16 de noviembre",
-   "valor": 186.08,
+   "nombre": "Precio mayorista (mercado diario OMIE), 1 a 18 de noviembre",
+   "valor": 170.22,
    "unidad": "€/MWh",
-   "anio": "1-16 nov-2026",
-   "fuente": "https://www.omie.es/es/file-download?parents%5B0%5D=marginalpdbc (ficheros marginalpdbc_AAAAMMDD)",
+   "anio": "1-18 nov-2026",
+   "fuente": "https://www.omie.es/es/file-download?parents%5B0%5D=marginalpdbc (ficheros marginalpdbc_AAAAMMDD; columna 6 = zona España)",
    "nivel": "P",
-   "nota": "Cálculo propio: media simple de las medias diarias de los ficheros oficiales de OMIE (precio marginal, zona España); no es la cifra mensual publicada por OMIE. Mes incompleto (16 días); máx. diario 257,55 €/MWh."
+   "nota": "Cálculo propio: media simple de las medias diarias (96 periodos de 15 min) de la columna ESPAÑA de los ficheros oficiales de OMIE; no es la cifra mensual publicada por OMIE. Mes incompleto (18 días); máx. diario 246,01 (4-nov), mín. diario 52,13 (18-nov). Cae de 246 €/MWh el 4-nov a 52 el 18-nov. El 19-nov (publicado el 18): 32,68. Sustituye a la cifra «1-16 nov = 186,08», que era la columna de Portugal (la de España da 184,21)."
   },
   {
-   "nombre": "Eólica, cuota de la generación nacional, 1 a 16 de noviembre (mix completo en la nota)",
-   "valor": 26.5,
+   "nombre": "PVPC (precio horario del mercado regulado, componente de energía), media de 1 a 18 de noviembre",
+   "valor": 208.98,
+   "unidad": "€/MWh",
+   "anio": "1-18 nov-2026",
+   "fuente": "https://apidatos.ree.es/es/datos/mercados/precios-mercados-tiempo-real",
+   "nivel": "P",
+   "nota": "REData «Precios mercado peninsular en tiempo real», serie PVPC, media de 432 valores horarios (últ. actualización 17-nov 20:46). Mín. horario −8,1; máx. 427,62 €/MWh. Octubre-2026: 199,21 €/MWh (745 valores horarios). Es el precio de la energía del PVPC, no la factura final ni el término de potencia. Cálculo propio; dato provisional."
+  },
+  {
+   "nombre": "PVPC (precio horario), media de octubre",
+   "valor": 199.21,
+   "unidad": "€/MWh",
+   "anio": "oct-2026",
+   "fuente": "https://apidatos.ree.es/es/datos/mercados/precios-mercados-tiempo-real",
+   "nivel": "P",
+   "nota": "Cálculo propio sobre 745 valores horarios de REData. Mercado spot de REData en octubre: 166,59 €/MWh (media horaria; coincide con OMIE 166,66 salvo método)."
+  },
+  {
+   "nombre": "Eólica, cuota de la generación nacional, 1 a 18 de noviembre (mix completo en la nota)",
+   "valor": 29.5,
    "unidad": "% de la generación nacional",
-   "anio": "1-16 nov-2026",
+   "anio": "1-18 nov-2026",
    "fuente": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion",
    "nivel": "P",
-   "nota": "Cálculo propio sumando los 16 días de REData (leído 18-nov-2026): total 11.985 GWh; eólica 26,5 % (3.172 GWh), ciclo combinado 21,4 % (2.570), nuclear 19,0 % (2.274), solar fotovoltaica 14,6 % (1.756), hidráulica 8,1 % (972). Dato provisional."
+   "nota": "Cálculo propio sumando 18 días de REData (leído 19-nov-2026): total 13.565 GWh; eólica 29,5 % (4.006 GWh), ciclo combinado 19,9 % (2.703), nuclear 18,9 % (2.565), solar fotovoltaica 13,8 % (1.873), hidráulica 7,9 % (1.073). Sustituye al cálculo de 16 días (eólica 26,5 %). Dato provisional."
   }
  ],
  "mix_generacion": [
@@ -100,66 +118,57 @@
  "combustibles": [
   {
    "nombre": "Gasolina 95 en España (con impuestos)",
-   "valor": 1.73,
+   "valor": 1.624,
    "unidad": "€/l",
-   "anio": "9-nov-2026",
-   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History)",
+   "anio": "16-nov-2026",
+   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx, hoja «Prices with taxes»)",
    "nivel": "P",
-   "nota": "Boletín Petrolero UE, hoja «Prices with taxes», semana del 9-nov-2026."
+   "nota": "Boletín Petrolero UE, publicado el 19-nov-2026. Baja ≈0,064 €/l frente a la semana del 9-nov (1,688 en el fichero actual). Variación interanual (17-nov-2025: 1,485) ≈ +9 %."
   },
   {
    "nombre": "Gasolina 95, media UE-27 (con impuestos)",
-   "valor": 1.877,
+   "valor": 1.829,
    "unidad": "€/l",
-   "anio": "9-nov-2026",
-   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History)",
+   "anio": "16-nov-2026",
+   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx, hoja «Prices with taxes»)",
    "nivel": "P",
-   "nota": "España queda ≈ 0,147 €/l por debajo. Francia 2,088; Alemania 2,067; Italia 1,995; Portugal 1,922."
+   "nota": "España ≈ 0,205 €/l por debajo. Francia 2,048; Alemania 2,030; Italia 1,970; Portugal 1,887. UE-27 17-nov-2025: 1,639."
   },
   {
    "nombre": "Gasóleo en España (con impuestos)",
-   "valor": 1.898,
+   "valor": 1.837,
    "unidad": "€/l",
-   "anio": "9-nov-2026",
-   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History)",
+   "anio": "16-nov-2026",
+   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx, hoja «Prices with taxes»)",
    "nivel": "P",
-   "nota": "Boletín Petrolero UE."
+   "nota": "Baja ≈0,042 €/l frente al 9-nov (1,879). Interanual (17-nov-2025: 1,443) ≈ +27 %."
   },
   {
    "nombre": "Gasóleo, media UE-27 (con impuestos)",
-   "valor": 2.097,
+   "valor": 2.05,
+   "unidad": "€/l",
+   "anio": "16-nov-2026",
+   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx, hoja «Prices with taxes»)",
+   "nivel": "P",
+   "nota": "España ≈ 0,213 €/l por debajo. Francia 2,123; Alemania 2,215; Italia 2,210; Portugal 2,078. UE-27 17-nov-2025: 1,587."
+  },
+  {
+   "nombre": "Gasolina 95 en España, semana del 9-nov (valor actual del histórico)",
+   "valor": 1.688,
    "unidad": "€/l",
    "anio": "9-nov-2026",
-   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History)",
+   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx, hoja «Prices with taxes»)",
    "nivel": "P",
-   "nota": "España queda ≈ 0,199 €/l por debajo. Francia 2,178; Alemania 2,253; Italia 2,218; Portugal 2,135."
+   "nota": "DISCREPANCIA: la pasada del 17/18-nov anotó 1,73 (UE 1,877; gasóleo 1,898 / UE 2,097). El histórico del 19-nov da 1,688 / UE 1,872 / gasóleo 1,879 / UE 2,094: revisión del Boletín o lectura anterior errónea [VERIFICAR]. Se usa el histórico actual."
   },
   {
    "nombre": "Gasolina 95 en España, un año antes",
-   "valor": 1.477,
+   "valor": 1.485,
    "unidad": "€/l",
-   "anio": "10-nov-2025",
-   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History)",
+   "anio": "17-nov-2025",
+   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History_maticni_4web.xlsx, hoja «Prices with taxes»)",
    "nivel": "P",
-   "nota": "Variación interanual ≈ +17 %. UE-27: 1,625 €/l."
-  },
-  {
-   "nombre": "Gasóleo en España, un año antes",
-   "valor": 1.425,
-   "unidad": "€/l",
-   "anio": "10-nov-2025",
-   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en (Weekly_Oil_Bulletin_Prices_History)",
-   "nivel": "P",
-   "nota": "Variación interanual ≈ +33 %. UE-27: 1,571 €/l. La rebaja temporal de 20 cént./l del impuesto (Selectra, nivel S) no se ha verificado en fuente oficial [VERIFICAR]."
-  },
-  {
-   "nombre": "Boletín Petrolero UE: comprobación de semana más reciente",
-   "valor": null,
-   "unidad": "€/l",
-   "anio": "semana del 16-nov-2026",
-   "fuente": "https://energy.ec.europa.eu/data-and-analysis/weekly-oil-bulletin_en",
-   "nivel": "VERIFICAR",
-   "nota": "18-nov-2026: la Comisión sigue mostrando como última publicación la del 12-nov (precios del 9-nov, ya cargados). La del 16-nov se espera en torno al 19-nov; sin cifra (null). Histórico de 4,5 MB leído en carpeta temporal y borrado."
+   "nota": "Semana equivalente; 10-nov-2025: 1,477. UE-27 1,639. Gasóleo ES 1,443; UE-27 1,587. La rebaja temporal de 20 cént./l del impuesto (Selectra, nivel S) sigue sin verificar en fuente oficial [VERIFICAR]."
   }
  ],
  "dependencia_energetica": [
@@ -249,13 +258,13 @@
    "nota": "No leído; sin cifra de memoria."
   },
   {
-   "nombre": "Precio MIBGAS PVB, producto Day Ahead (entrega 18-nov-2026)",
-   "valor": 83.96,
+   "nombre": "Precio MIBGAS PVB, producto Day Ahead (entrega 19-nov-2026)",
+   "valor": 79.65,
    "unidad": "€/MWh",
-   "anio": "17-nov-2026 (sesión)",
+   "anio": "18-nov-2026 (sesión)",
    "fuente": "https://www.mibgas.es/en",
    "nivel": "P",
-   "nota": "Último precio del producto diario del PVB (punto virtual de balance español) con entrega el siguiente día hábil, leído en la portada de MIBGAS el 18-nov-2026 (se actualiza a las 18:00). Cambio frente al precio anterior: 1,11 €/MWh (1,3 %), signo no legible en el texto de la página [VERIFICAR]. Month Ahead (diciembre) 83,68 €/MWh; Day Ahead del VTP portugués 83,68 €/MWh."
+   "nota": "MIBGAS portada, actualizada 18-nov-2026 23:08. LPI Day Ahead 79,65; API Day Ahead 81,60 €/MWh. Variación de 4,31 €/MWh (5,1 %), signo no legible; el precio anterior era 83,96 (≈ baja) [VERIFICAR]. Month Ahead (dic-2026) 79,89; balance de noviembre 79,70; Day Ahead PT 79,96 €/MWh. Q1-2027 78,60."
   },
   {
    "nombre": "Precio TTF (ICE Endex)",

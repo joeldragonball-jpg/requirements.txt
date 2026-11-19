@@ -2,7 +2,7 @@
   "titulo": "Fichas políticas por país",
   "informe": "informes/research/2026-10-30-C58-fichas-politicas.md | informes/research/2026-11-17-C58-politica.md | informes/research/2026-11-18-C58-C61.md | informes/research/2026-11-18-C58-C61-tercera.md",
   "leido": "2026-11-18",
-  "nota": "Describe, no juzga. Nivel P = fuente oficial leída; S = prensa o agregador; V = por verificar. Donde un campo es null o dice [VERIFICAR] no se pudo contrastar en esta sesión (varias webs oficiales dieron 403/reset o no renderizan). La lectura de cada país es [ESPECULACIÓN]. Las elecciones se enlazan por id con elecciones.json, sin duplicar. Los indicadores (C59) y la estabilidad (C61) se unen por el mismo id en la página única de C60.",
+  "nota": "Describe, no juzga. Nivel P = fuente oficial leída; S = prensa o agregador; V = por verificar. Donde un campo está vacío o dice [VERIFICAR] no se pudo contrastar en esta sesión (varias webs oficiales dieron 403/reset o no renderizan). La lectura de cada país es [ESPECULACIÓN]. Las elecciones se enlazan por id con elecciones.json, sin duplicar. Los indicadores (C59) y la estabilidad (C61) se unen por el mismo id en la página única de C60.",
   "paises": [
     {
       "id": "ES",
@@ -27,7 +27,7 @@
         "resultado": "PP primera fuerza sin mayoría; ningún bloque llega a 176 [S]"
       },
       "temas_clave": "Regulación cripto bajo MiCA y CNMV; deuda pública y presupuesto prorrogado; vivienda.",
-      "sistemas_publicos": "[VERIFICAR] pendiente de C61",
+      "sistemas_publicos": "Sanidad: gasto sanitario total 9,2 % del PIB (2024); público 6,8 % (2023); esperanza de vida 83,9 años (2024); mortalidad infantil 2,6 por 1.000 nacidos vivos (2024); 4,64 médicos y 2,83 camas por 1.000 hab. (2024) [P: OMS GHED / Banco Mundial WDI vía API, leído 19-nov-2026; medicos y camas con definiciones nacionales]. Hito sanidad (2026-10-28): Conflicto médico por el Estatuto Marco: 12 jornadas de huelga en el último año y huelga indefinida convocada desde el 28-oct-2026 por CESM, AMYTS, SMA, Metges de Catalunya y otros. Si se inició o se desconvocó: sin confirmar [S]. Educación: gasto público 4,1 % del PIB (2024); abandono escolar temprano 12,8 % (2025) [P: Banco Mundial/Eurostat/COFOG]. Pensiones: gasto público en vejez y otros 10,4 % del PIB (2024) [P: Eurostat COFOG 10.2]; edad de jubilación sin dato leído (null). Paro 10,4 % y juvenil 24,8 % (2025) [P: OIT modelado vía Banco Mundial]. Estabilidad social: índice de estabilidad política WGI 0,18 (2025, escala -2,5 a 2,5) [P: Banco Mundial]; huelgas y protestas grandes: sin fuente fiable leída (null).",
       "lectura": "Gobierno en funciones hasta las urnas del 29-nov; el CIS y otras encuestadoras discrepan en quién va por delante. Si cambia el gobierno, cambian prioridades fiscales y de vivienda, no el marco MiCA que es europeo. [ESPECULACIÓN]",
       "fuente": "https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-20742 | C58 2-nov-2026: Resúmenes de prensa del escrutinio de 2023; oficial: Junta Electoral Central / Congreso",
       "nivel": "S",
@@ -56,7 +56,7 @@
         "resultado": "Unión 28,5 %, AfD 20,8 %, SPD 16,4 %, Verdes 11,6 %, Linke 8,8 %; BSW 4,972 % sin escaños [P/S]"
       },
       "temas_clave": "Gasto en defensa y freno de deuda reformado; energía y competitividad industrial.",
-      "sistemas_publicos": "[VERIFICAR] pendiente de C61",
+      "sistemas_publicos": "Sanidad: gasto sanitario total 12,7 % del PIB (2025); público 9,3 % (2023); esperanza de vida 80,8 años (2024); mortalidad infantil 3,1 por 1.000 nacidos vivos (2024); 4,75 médicos y 7,59 camas por 1.000 hab. (2024) [P: OMS GHED / Banco Mundial WDI vía API, leído 19-nov-2026; medicos y camas con definiciones nacionales]. Hito sanidad (2026-07-10): Aprobada la ley de estabilización de la cotización del seguro público (GKV): ahorro de 18.800 M€ limitando subidas de pagos a clínicas, consultas y farma; la federación hospitalaria (DKG) avisa de insolvencias. Reforma hospitalaria en vigor desde mar-2026. Déficit del Fondo de Salud 2026 estimado en 57.000 M€ (Schätzerkreis). No se halló huelga relevante [S]. Educación: gasto público 4,5 % del PIB (2024); abandono escolar temprano 13,1 % (2025) [P: Banco Mundial/Eurostat/COFOG]. Pensiones: gasto público en vejez y otros 9,9 % del PIB (2024) [P: Eurostat COFOG 10.2]; edad de jubilación sin dato leído (null). Paro 3,7 % y juvenil 6,9 % (2025) [P: OIT modelado vía Banco Mundial]. Estabilidad social: índice de estabilidad política WGI 0,21 (2025, escala -2,5 a 2,5) [P: Banco Mundial]; huelgas y protestas grandes: sin fuente fiable leída (null).",
       "lectura": "Autonómicas de septiembre con AfD al alza (43,8 % en Sajonia-Anhalt, prensa) presionan a la coalición federal; una ruptura cambiaría el ritmo del gasto en defensa. [ESPECULACIÓN]",
       "fuente": "https://www.wunc.org/2026-09-06/germanys-far-right-achieves-an-electoral-breakthrough-in-key-state-election | C58 2-nov-2026: https://www.bundeswahlleiterin.de/info/presse/mitteilungen/bundestagswahl-2025/29_25_endgueltiges-ergebnis.html",
       "nivel": "S",
@@ -85,7 +85,7 @@
         "resultado": "Asamblea en tres bloques sin mayoría [S]"
       },
       "temas_clave": "Déficit (objetivo 5 % del PIB en 2026) y calificación; presupuesto aprobado con art. 49.3 el 2-feb-2026 [S].",
-      "sistemas_publicos": "[VERIFICAR] pendiente de C61",
+      "sistemas_publicos": "Sanidad: gasto sanitario total 11,5 % del PIB (2025); público 7,9 % (2024); esperanza de vida 83,0 años (2024); mortalidad infantil 3,4 por 1.000 nacidos vivos (2024); 3,94 médicos y 5,34 camas por 1.000 hab. (2024) [P: OMS GHED / Banco Mundial WDI vía API, leído 19-nov-2026; medicos y camas con definiciones nacionales]. Educación: gasto público 5,1 % del PIB (2024); abandono escolar temprano 7,2 % (2025) [P: Banco Mundial/Eurostat/COFOG]. Hito educación (2026-10-21): Presupuesto 2026: 4.000 puestos docentes suprimidos; huelga docente el 31-mar-2026 (ministerio ~10 %, sindicatos 10-30 % en primaria) y jornada pública el 29-sep-2026 (~40 % en primaria según Snuipp-FSU, cifra sindical). El PLF 2027 (21-oct-2026) añade 1.100 M€ a Educación (65.530 M€) [S]. Pensiones: gasto público en vejez y otros 13,4 % del PIB (2024) [P: Eurostat COFOG 10.2]; edad de jubilación sin dato leído (null). Paro 7,5 % y juvenil 18,9 % (2025) [P: OIT modelado vía Banco Mundial]. Estabilidad social: índice de estabilidad política WGI -0,09 (2025, escala -2,5 a 2,5) [P: Banco Mundial]; huelgas y protestas grandes: sin fuente fiable leída (null).",
       "lectura": "Tres bloques de tamaño parecido hacen frágil cada presupuesto; la presidencial de 2027 pesa en la prima de deuda frente al Bund. [ESPECULACIÓN]",
       "fuente": "https://www2.assemblee-nationale.fr/deputes/liste/groupe-politique",
       "nivel": "P",
@@ -114,7 +114,7 @@
         "resultado": "Centroderecha (FdI, Lega, FI, Noi Moderati) 43,8 % de los votos [S: Pagella Politica y Ministero dell'Interno, dato de las 23 h]"
       },
       "temas_clave": "Reforma electoral con prima de mayoría; deuda alta y diferencial BTP-Bund.",
-      "sistemas_publicos": "[VERIFICAR] pendiente de C61",
+      "sistemas_publicos": "Sanidad: gasto sanitario total 8,4 % del PIB (2025); público 6,1 % (2023); esperanza de vida 84,0 años (2024); mortalidad infantil 2,3 por 1.000 nacidos vivos (2024); 5,75 médicos y 3,12 camas por 1.000 hab. (2024) [P: OMS GHED / Banco Mundial WDI vía API, leído 19-nov-2026; medicos y camas con definiciones nacionales]. Educación: gasto público 4,0 % del PIB (2024); abandono escolar temprano 8,2 % (2025) [P: Banco Mundial/Eurostat/COFOG]. Hito educación (2026-11-05): FLC-CGIL convoca sit-in el 11-nov y huelga el 20-nov-2026 contra el recorte de 6.974 puestos docente/ATA desde 2027/28 (PLF 2027-29, 30-oct-2026). Antecedentes: huelgas generales del 28-nov-2025 (bases) y 12-dic-2025 (CGIL) contra los presupuestos 2026, con escuela y sanidad [S]. Pensiones: gasto público en vejez y otros 13,9 % del PIB (2024) [P: Eurostat COFOG 10.2]; edad de jubilación sin dato leído (null). Paro 6,4 % y juvenil 20,6 % (2025) [P: OIT modelado vía Banco Mundial]. Estabilidad social: índice de estabilidad política WGI 0,46 (2025, escala -2,5 a 2,5) [P: Banco Mundial]; huelgas y protestas grandes: sin fuente fiable leída (null).",
       "lectura": "Una de las legislaturas más largas de su historia; el reloj electoral de 2027 y la reforma electoral marcan la agenda. [ESPECULACIÓN]",
       "fuente": "https://www.wantedinrome.com/news/italy-meloni-government-fourth-longest-serving.html | C58 2-nov-2026: Pagella Politica; Eligendo del Ministerio del Interior",
       "nivel": "S",
@@ -143,7 +143,7 @@
         "resultado": "Resultado oficial del Kiesraad (7-nov-2025): D66 y PVV 26 escaños cada uno; NSC fuera [S: NL Times, RUG]"
       },
       "temas_clave": "Presupuesto y apoyos parlamentarios puntuales.",
-      "sistemas_publicos": "[VERIFICAR] pendiente de C61",
+      "sistemas_publicos": "Sanidad: gasto sanitario total 10,2 % del PIB (2025); público 6,7 % (2023); esperanza de vida 82,0 años (2024); mortalidad infantil 3,4 por 1.000 nacidos vivos (2024); 3,96 médicos y 2,21 camas por 1.000 hab. (2024) [P: OMS GHED / Banco Mundial WDI vía API, leído 19-nov-2026; medicos y camas con definiciones nacionales]. Educación: gasto público 5,1 % del PIB (2024); abandono escolar temprano 7,4 % (2025) [P: Banco Mundial/Eurostat/COFOG]. Pensiones: gasto público en vejez y otros 6,1 % del PIB (2024) [P: Eurostat COFOG 10.2]; edad de jubilación sin dato leído (null). Paro 3,9 % y juvenil 8,8 % (2025) [P: OIT modelado vía Banco Mundial]. Estabilidad social: índice de estabilidad política WGI 0,53 (2025, escala -2,5 a 2,5) [P: Banco Mundial]; huelgas y protestas grandes: sin fuente fiable leída (null).",
       "lectura": "Gobierno en minoría con expectativa de caída según una encuesta de agosto (78 %, prensa). [ESPECULACIÓN]",
       "fuente": "https://www.parlement.com/kabinet-jetten-2026-heden | C58 2-nov-2026: NL Times y RUG; oficial: Kiesraad (data.overheid.nl)",
       "nivel": "S",
@@ -172,7 +172,7 @@
         "resultado": "Segunda vuelta presidencial: Nawrocki 50,89 % (10.606.628 votos), Trzaskowski 49,11 % [S: citando PKW]; generales de 2023: participación 74,38 %"
       },
       "temas_clave": "Vetos presidenciales a leyes (préstamos de defensa de la UE, regulación cripto citada por prensa [S]).",
-      "sistemas_publicos": "[VERIFICAR] pendiente de C61",
+      "sistemas_publicos": "Sanidad: gasto sanitario total 8,1 % del PIB (2024); público 5,5 % (2023); esperanza de vida 78,4 años (2024); mortalidad infantil 3,6 por 1.000 nacidos vivos (2024); 3,86 médicos y 6,28 camas por 1.000 hab. (2024) [P: OMS GHED / Banco Mundial WDI vía API, leído 19-nov-2026; medicos y camas con definiciones nacionales]. Educación: gasto público 5,6 % del PIB (2024); abandono escolar temprano 4,0 % (2025) [P: Banco Mundial/Eurostat/COFOG]. Pensiones: gasto público en vejez y otros 10,8 % del PIB (2024) [P: Eurostat COFOG 10.2]; edad de jubilación sin dato leído (null). Paro 3,0 % y juvenil 10,7 % (2025) [P: OIT modelado vía Banco Mundial]. Estabilidad social: índice de estabilidad política WGI 0,69 (2025, escala -2,5 a 2,5) [P: Banco Mundial]; huelgas y protestas grandes: sin fuente fiable leída (null).",
       "lectura": "Cohabitación: presidente y gobierno de signo contrario; los vetos frenan leyes europeas. [ESPECULACIÓN]",
       "fuente": "https://notesfrompoland.com/2025/06/02/tusk-calls-confidence-vote-as-opposition-demand-technical-government-after-presidential-election/ | C58 2-nov-2026: tvn24 y Polskie Radio citando la PKW | C58 17-nov-2026: api.sejm.gov.pl (oficial, composición por clubes)",
       "nivel": "S",
@@ -201,7 +201,7 @@
         "resultado": "Mitad de mandato, recuento SIN certificar a 10-nov-2026 [S, AP vía NBC/Fox; Wikipedia]: demócratas ganan la Cámara (254-162 AP/Wikipedia, 259-176 NBC; [VERIFICAR] cifra final) y suben a 54 escaños en el Senado frente a 44 republicanos, con Alaska (Peltola D 48,2 % / Sullivan R 47,9 %, 74,1 % escrutado) y Mississippi (Colom D 49,1 % / Hyde-Smith R 48,8 %, 97,4 % escrutado) sin declarar. Trump cuestionó los resultados (prensa). | 18-nov-2026 [S]: Senado 54 D-44 R-2 I con Alaska y Mississippi ya declaradas para demócratas; Cámara 258 D-171 R con 6 sin declarar (Wikipedia/AP, 17-nov). Certificación estatal y composición oficial del 120.º Congreso aún no publicadas [VERIFICAR]."
       },
       "temas_clave": "CLARITY Act (cripto) en la sesión posterior a las elecciones; aranceles; deuda.",
-      "sistemas_publicos": "[VERIFICAR] pendiente de C61",
+      "sistemas_publicos": "Sanidad: gasto sanitario total 16,7 % del PIB (2023); público 9,0 % (2023); esperanza de vida 78,9 años (2024); mortalidad infantil 5,5 por 1.000 nacidos vivos (2024); 3,68 médicos y 2,68 camas por 1.000 hab. (2022) [P: OMS GHED / Banco Mundial WDI vía API, leído 19-nov-2026; medicos y camas con definiciones nacionales]. Hito sanidad (2025-07-18): Ley OBBBA (jul 2025): requisitos de elegibilidad y primer requisito laboral nacional en Medicaid; los defensores (AFSCME, parte interesada) estiman recortes de 665.000 M$ a 2034 (la cifra no se ha contrastado con la CBO) [S]. Educación: gasto público 5,4 % del PIB (2021) [P: Banco Mundial/Eurostat/COFOG]. Hito educación (2026-11-11): El Departamento de Educación tiene aproximadamente la mitad de su plantilla recortada (informe de prensa); no se halló huelga docente nacional en 2026 [S]. Pensiones: gasto y edad de jubilación: sin dato leído (null). Paro 4,2 % y juvenil 9,3 % (2025) [P: OIT modelado vía Banco Mundial]. Estabilidad social: índice de estabilidad política WGI -0,3 (2025, escala -2,5 a 2,5) [P: Banco Mundial]; huelgas y protestas grandes: sin fuente fiable leída (null).",
       "lectura": "Un Congreso dividido tras el 3-nov podría frenar leyes cripto y gasto. [ESPECULACIÓN]",
       "fuente": "https://www.cfr.org/articles/five-things-to-know-about-the-midterms | C58 2-nov-2026: Ballotpedia; oficial: clerk.house.gov y pressgallery.house.gov | C30 10-nov-2026: NBC, Fox, Wikipedia, Yahoo, Al Jazeera (prensa; recuento oficial sin leer) | C58 17-nov-2026: clerk.house.gov/xml/lists/MemberData.xml (publicado 3-nov-2026) sigue siendo el Congreso 119 saliente; certificación y composición del 120.º Congreso aún no publicadas: [VERIFICAR] | C58 18-nov-2026: clerk.house.gov MemberData.xml (publish-date 3-nov-2026) sigue siendo el Congreso 119, sin certificación; senate.gov da 403 a curl; cifras de Wikipedia (2026 US House/Senate elections, leída 18-nov-2026) [S]",
       "nivel": "S",
@@ -230,7 +230,7 @@
         "resultado": "No aplica"
       },
       "temas_clave": "15.º Plan Quinquenal 2026-2030 y el informe de trabajo del Gobierno aprobados por la APN el 12-mar-2026 en la clausura de la 4.ª sesión de la 14.ª APN (2.762 diputados); en la misma sesión se aprobaron el Código Ecológico y Ambiental, la Ley de Unidad y Progreso Étnico, la Ley de Planificación del Desarrollo Nacional y el presupuesto central de 2026 [P, gov.cn/Xinhua 12-mar-2026]. Li Qiang asistió a la clausura; su cargo de primer ministro: [S]. Objetivos del plan y regulación cripto restrictiva: [VERIFICAR con el texto oficial / PBoC].",
-      "sistemas_publicos": "[VERIFICAR] pendiente de C61",
+      "sistemas_publicos": "Sanidad: gasto sanitario total 5,9 % del PIB (2023); público 3,4 % (2023); esperanza de vida 78,0 años (2024); mortalidad infantil 4,1 por 1.000 nacidos vivos (2024); 3,11 médicos y 5,63 camas por 1.000 hab. (2022) [P: OMS GHED / Banco Mundial WDI vía API, leído 19-nov-2026; medicos y camas con definiciones nacionales]. Educación: gasto público 3,9 % del PIB (2023) [P: Banco Mundial/Eurostat/COFOG]. Pensiones: gasto y edad de jubilación: sin dato leído (null). Paro 4,6 % y juvenil 15,8 % (2025) [P: OIT modelado vía Banco Mundial]. Estabilidad social: índice de estabilidad política WGI 0,02 (2025, escala -2,5 a 2,5) [P: Banco Mundial]; huelgas y protestas grandes: sin fuente fiable leída (null).",
       "lectura": "El cambio de política llega por decisiones del Partido, no por elecciones; los plenos y planes quinquenales son la señal. [ESPECULACIÓN]",
       "fuente": "https://english.www.gov.cn/news/202603/12/content_WS69b277d2c6d00ca5f9a09d46.html (gov.cn, Xinhua, leída 8-nov-2026) | https://global.chinadaily.com.cn/a/202603/14/WS69b4a78ea310d6866eb3dc8c.html | previo: Brookings 4.º Pleno oct-2025",
       "nivel": "P",
@@ -259,7 +259,7 @@
         "resultado": "PLD con más de dos tercios; barre las circunscripciones uninominales en 31 de 47 prefecturas [S]"
       },
       "temas_clave": "Política fiscal y tipos del Banco de Japón.",
-      "sistemas_publicos": "[VERIFICAR] pendiente de C61",
+      "sistemas_publicos": "Sanidad: gasto sanitario total 10,7 % del PIB (2023); público 9,1 % (2023); esperanza de vida 84,0 años (2024); mortalidad infantil 1,8 por 1.000 nacidos vivos (2024); 2,65 médicos y 12,6 camas por 1.000 hab. (2022) [P: OMS GHED / Banco Mundial WDI vía API, leído 19-nov-2026; medicos y camas con definiciones nacionales]. Hito sanidad (2026-06-01): Revisión de tarifas médicas de +3,09 % de media en 2026-27 (+2,41 % en FY2026 según JILPT), en vigor desde jun-2026; hospitales generales con margen de −7,3 % (FY2024); petición de ~300.000 firmas contra más copago [S]. Educación: gasto público 3,3 % del PIB (2021) [P: Banco Mundial/Eurostat/COFOG]. Hito educación (2026-04-01): Matrícula de bachillerato gratuita desde abr-2026 (tope de 457.000 ¥ al año, sin límite de renta); críticos temen pérdida de alumnado en los institutos públicos [OPINIÓN] [S]. Pensiones: gasto y edad de jubilación: sin dato leído (null). Paro 2,5 % y juvenil 3,9 % (2025) [P: OIT modelado vía Banco Mundial]. Estabilidad social: índice de estabilidad política WGI 1,26 (2025, escala -2,5 a 2,5) [P: Banco Mundial]; huelgas y protestas grandes: sin fuente fiable leída (null).",
       "lectura": "Mayoría amplia en la Cámara Baja da estabilidad al gabinete a corto plazo. [ESPECULACIÓN]",
       "fuente": "https://japan.kantei.go.jp/105/meibo/daijin/index.html | C58 2-nov-2026: Jiji vía nippon.com y Hogan Lovells; oficial: Ministerio de Interior y Comunicaciones | C58 17-nov-2026: shugiin.go.jp (oficial, grupos a 28-sep-2026)",
       "nivel": "S",
@@ -288,7 +288,7 @@
         "resultado": "Tercer mandato de Modi, ya sin mayoría propia del BJP [S]"
       },
       "temas_clave": "Resultados de las autonómicas de 2026 (Tamil Nadu, Bengala Occidental, Kerala, Assam) [VERIFICAR]; regulación cripto.",
-      "sistemas_publicos": "[VERIFICAR] pendiente de C61",
+      "sistemas_publicos": "Sanidad: gasto sanitario total 3,3 % del PIB (2023); público 1,3 % (2023); esperanza de vida 72,2 años (2024); mortalidad infantil 23,3 por 1.000 nacidos vivos (2024); 0,72 médicos y 1,59 camas por 1.000 hab. (2020) [P: OMS GHED / Banco Mundial WDI vía API, leído 19-nov-2026; medicos y camas con definiciones nacionales]. Educación: gasto público 4,1 % del PIB (2022) [P: Banco Mundial/Eurostat/COFOG]. Pensiones: gasto y edad de jubilación: sin dato leído (null). Paro 4,2 % y juvenil 16,0 % (2025) [P: OIT modelado vía Banco Mundial]. Estabilidad social: índice de estabilidad política WGI -0,61 (2025, escala -2,5 a 2,5) [P: Banco Mundial]; huelgas y protestas grandes: sin fuente fiable leída (null).",
       "lectura": "Gobierno de coalición con aliados clave; las autonómicas miden el pulso del BJP. [ESPECULACIÓN]",
       "fuente": "https://www.deccanherald.com/india/tamil-nadu/bjp-announces-alliance-with-aiadmk-for-2026-tamil-nadu-assembly-elections-3489946 | C58 2-nov-2026: Prensa india citando la ECI; oficial: eci.gov.in | C58 18-nov-2026: https://sansad.in/api_ls/member?loksabha=18&locale=en (Lok Sabha, oficial; eci.gov.in da 406)",
       "nivel": "S",
@@ -317,7 +317,7 @@
         "resultado": "Victoria laborista [S]"
       },
       "temas_clave": "Política fiscal y gilts; regulación cripto (FCA).",
-      "sistemas_publicos": "[VERIFICAR] pendiente de C61",
+      "sistemas_publicos": "Sanidad: gasto sanitario total 11,1 % del PIB (2024); público 9,0 % (2023); esperanza de vida 81,4 años (2024); mortalidad infantil 4,1 por 1.000 nacidos vivos (2024); 3,3 médicos y 2,42 camas por 1.000 hab. (2023) [P: OMS GHED / Banco Mundial WDI vía API, leído 19-nov-2026; medicos y camas con definiciones nacionales]. Hito sanidad (2026-06-15): Médicos residentes de Inglaterra (BMA): huelga del 7 al 13 de abril de 2026 (6 días; coste para el NHS de hasta 300 M£ según directivos) y 4 días desde el 15-jun-2026 tras rechazar una oferta del 3,5 %; mandato de voto del 93,4 %. Después de junio: sin confirmar [S]. Educación: gasto público 5,9 % del PIB (2021) [P: Banco Mundial/Eurostat/COFOG]. Pensiones: gasto y edad de jubilación: sin dato leído (null). Paro 4,8 % y juvenil 14,7 % (2025) [P: OIT modelado vía Banco Mundial]. Estabilidad social: índice de estabilidad política WGI 0,29 (2025, escala -2,5 a 2,5) [P: Banco Mundial]; huelgas y protestas grandes: sin fuente fiable leída (null).",
       "lectura": "Cambio de primer ministro dentro del mismo partido sin elecciones: la política fiscal puede variar, la mayoría parlamentaria es la misma. [ESPECULACIÓN]",
       "fuente": "https://www.gov.uk/government/ministers/prime-minister | C58 2-nov-2026: commonslibrary.parliament.uk (pendiente)",
       "nivel": "VERIFICAR",
@@ -346,7 +346,7 @@
         "resultado": "Rusia Unida 349/450 [S] | 18-nov-2026 [P]: composición de la Duma según duma.gov.ru: Rusia Unida 350/450."
       },
       "temas_clave": "Sanciones, energía y guerra en Ucrania; Ucrania pidió no reconocer los resultados.",
-      "sistemas_publicos": "[VERIFICAR] pendiente de C61",
+      "sistemas_publicos": "Sanidad: gasto sanitario total 7,0 % del PIB (2023); público 4,9 % (2023); esperanza de vida 73,4 años (2024); mortalidad infantil 4,1 por 1.000 nacidos vivos (2024); 5,11 médicos y 6,81 camas por 1.000 hab. (2022) [P: OMS GHED / Banco Mundial WDI vía API, leído 19-nov-2026; medicos y camas con definiciones nacionales]. Educación: gasto público 4,2 % del PIB (2023) [P: Banco Mundial/Eurostat/COFOG]. Pensiones: gasto y edad de jubilación: sin dato leído (null). Paro 2,1 % y juvenil 7,6 % (2025) [P: OIT modelado vía Banco Mundial]. Estabilidad social: índice de estabilidad política WGI -0,94 (2025, escala -2,5 a 2,5) [P: Banco Mundial]; huelgas y protestas grandes: sin fuente fiable leída (null).",
       "lectura": "Describo el sistema sin atribuir competitividad electoral; las cifras vienen de la comisión electoral oficialista y de prensa. [VERIFICAR] [ESPECULACIÓN]",
       "fuente": "https://meduza.io/en/news/2026/09/25/united-russia-won-349-of-450-seats-in-russias-new-state-duma-parliament-will-include-46-war-participants | C58 18-nov-2026: http://duma.gov.ru/duma/factions/ (oficial; cikrf.ru no accesible)",
       "nivel": "P",
@@ -582,7 +582,16 @@
       "lectura": "[ESPECULACIÓN] El FMI condiciona el desembolso a reducir el papel del Estado en bitcoin; el comunicado oficial y la Oficina del Bitcoin dan versiones distintas de las compras: la cifra a seguir es la del FMI (donaciones documentadas) hasta que haya dato oficial salvadoreño. Sin juicio político.",
       "fuente": "https://www.imf.org/en/news/articles/2026/10/01/pr26316-el-salvador-imf-concludes-2nd-and-3rd-reviews-under-the-eff | https://www.imf.org/en/news/articles/2026/09/03/pr26285-el-salvador-imf-reaches-sla-on-combined-2nd-and-3rd-rev-under-eff-arrangement | https://www.imf.org/en/news/articles/2025/06/27/imf-concludes-2025-article-iv-consultation-and-first-review-under-the-eff-for-el-salvador | https://www.imf.org/en/news/articles/2025/02/26/pr25043-el-salvador-imf-approves-new-40-month-us1-bn-eff-arr | https://www.imf.org/en/news/articles/2024/12/18/pr-24485-el-salvador-imf-reaches-staff-level-agreement-on-an-eff-arrangement | https://www.imf.org/en/news/articles/2025/03/19/pr25069-el-salvador-imf-executive-board-concludes-2023-article-iv-consultation-with-el-salvador | https://www.tse.gob.sv/ | https://www.asamblea.gob.sv/",
       "nivel": "P (hitos del FMI); S (resto: gobierno, apoyo, Oficina del Bitcoin)",
-      "fecha_dato": "2026-11-18"
+      "fecha_dato": "2026-11-18",
+      "banco_central": {
+        "nombre": "Banco Central de Reserva de El Salvador (BCR)",
+        "mandato": null,
+        "mandato_nota": "Mandato y régimen monetario sin leer en fuente oficial [VERIFICAR]; bcr.gob.sv exige CAPTCHA en parte de sus páginas",
+        "datos_vivos": "IPC y PIB en indicadores-manual.json SV",
+        "nivel": "V",
+        "fuente": "https://www.bcr.gob.sv/",
+        "fecha_dato": "2026-11-19"
+      }
     },
     {
       "id": "AR",
@@ -611,7 +620,32 @@
       "lectura": "[ESPECULACIÓN] El nuevo reparto da más margen al Ejecutivo para sacar reformas, pero sin mayoría propia depende de aliados provinciales.",
       "fuente": "https://www.infobae.com/politica/2025/12/03/uno-por-uno-como-quedan-los-bloques-de-la-camara-de-diputados-y-cuantos-legisladores-tendran/ | https://chequeado.com/el-explicador/radiografia-del-nuevo-congreso-los-mas-jovenes-los-recien-llegados-y-la-nueva-composicion-de-la-camara-de-diputados/ | 8-nov-2026 (resúmenes de búsqueda, no leídos a fondo) | https://www.argentina.gob.ar/normativa/nacional/ley-24430-804/texto (Constitución, leída 18-nov-2026 [P])",
       "nivel": "S",
-      "fecha_dato": "2026-11-08"
+      "fecha_dato": "2026-11-08",
+      "banco_central": {
+        "nombre": "Banco Central de la República Argentina (BCRA)",
+        "mandato": null,
+        "mandato_nota": "Mandato de la Carta Orgánica sin leer en fuente oficial [VERIFICAR]",
+        "datos_vivos": "API estadísticas BCRA v4.0 (reservas, tipo de cambio, BADLAR, REM): ver indicadores-manual.json AR",
+        "nivel": "P",
+        "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/monetarias",
+        "fecha_dato": "2026-11-18"
+      },
+      "hitos_datos": [
+        {
+          "fecha": "2023-12-13",
+          "hito": "El tipo de cambio mayorista de referencia pasa de 366 (11-dic-2023) a 799,975 pesos por USD (13-dic-2023); BADLAR 129,9 % el 11-dic-2023",
+          "nivel": "P",
+          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/5",
+          "fecha_dato": "2026-11-19"
+        },
+        {
+          "fecha": "2026-11-16",
+          "hito": "Reservas internacionales brutas: 20.920 M USD (12-dic-2023), 41.095 (30-dic-2025), 49.474 (16-nov-2026)",
+          "nivel": "P",
+          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/1",
+          "fecha_dato": "2026-11-19"
+        }
+      ]
     },
     {
       "id": "VE",

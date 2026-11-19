@@ -1183,8 +1183,29 @@ function nComparar(){
       r.appendChild(c)}
     t.appendChild(r)}
   w.appendChild(t);
+  {const bl=nBloques();if(bl)w.appendChild(bl)}
   const b=el('button','chip','Ver la ficha completa de cada país (política, indicadores y estabilidad) →');b.style.cssText='cursor:pointer;margin-top:8px;padding:5px 12px';b.onclick=()=>ir('paises');w.appendChild(b);
   return w}
+/* 19-nov: bloques de indicadores-manual.json (_bloques): zona euro EA21, UE-27, potencias y BRICS (FMI), agregados FMI y cuotas de moneda; cuatro pestañas y una tabla corta cada una */
+function nBloques(){
+  const B=D.indicadores_bloques;if(!B)return null;
+  const F=(D.paises_fichas||{}).paises||[],nom=id=>(F.find(f=>f.id===id)||{}).pais||({ET:'Etiopía'}[id]||id);
+  const w=el('div','');w.style.marginTop='14px';
+  w.append(el('h3',null,'Bloques: zona euro, UE-27, potencias, BRICS y agregados del FMI'),el('p','nota-v',String(B._nota||'').slice(0,420)+(String(B._nota||'').length>420?'…':'')));
+  const cel=x=>{if(typeof x==='string')return el('td','',x);const c=el('td','n',x&&x.valor!=null?nfp(x.valor,x.unidad).replace(/ % .*$/,' %'):'—');if(x&&x.valor!=null)c.title=(x.fecha||'sin fecha')+' · '+fuentePa(x.fuente)+' · ['+x.nivel+'] · '+(x.definicion||'');return c};
+  const tb=(cab,filas)=>{const t=el('table','');const h=el('tr','');cab.forEach((c,i)=>h.append(el('th',i?'n':'',c)));t.append(h);filas.forEach(r=>{const tr=el('tr','');tr.append(el('td','',r[0]));r.slice(1).forEach(x=>tr.append(cel(x)));t.append(tr)});return scrollX(t)};
+  const K=[['pib_real_crec','PIB real'],['ipc_media','IPC medio'],['deuda_bruta_pib','Deuda/PIB'],['saldo_fiscal_pib','Saldo fiscal/PIB'],['paro','Paro']];
+  const pa=g=>tb(['País (FMI, 2026 = proyección)',...K.map(k=>k[1])],Object.keys(B[g]||{}).map(id=>[nom(id),...K.map(k=>B[g][id][k[0]])]));
+  const ZE=(B.zona_euro||{}).indicadores||{},UE=(B.ue27||{}).indicadores||{};
+  const eu=()=>tb(['Indicador (Eurostat, BCE)','Zona euro (EA21)','UE-27'],[['ipc','IPC (IPCA)'],['paro','Paro'],['pib_interanual','PIB interanual'],['deuda_pib','Deuda/PIB'],['deficit_pib','Déficit/PIB'],['tipo_bce','Tipo BCE (depósito)']].map(([k,n])=>[n,ZE[k]||null,UE[k]||null]));
+  const AG=B.agregados_fmi||{},ag=()=>{const KA=[['pib_real_crec_2026','PIB real'],['ipc_2026','IPC'],['deuda_2026','Deuda/PIB'],['saldo_2026','Saldo/PIB'],['paro_2026','Paro']];
+    return tb(['Grupo (FMI, proyección 2026)',...KA.map(k=>k[1])],[['zona_euro','Zona euro'],['ue','UE'],['economias_avanzadas','Economías avanzadas'],['otras_emergentes','Otras emergentes (no es BRICS)'],['mundo','Mundo']].filter(g=>AG[g[0]]).map(([g,n])=>[n,...KA.map(([k])=>AG[g][k]==null?null:{valor:AG[g][k],unidad:'%',fecha:'2026 (proyección)',fuente:'https://www.imf.org/',nivel:'P',definicion:'FMI WEO, DataMapper'})]))};
+  const MO=B.monedas||{},mo=()=>tb(['Cuota','Valor','Fecha'],[['cofer_usd_pct','Dólar en reservas (COFER)'],['cofer_rmb_pct','Renminbi en reservas (COFER)'],['swift_rmb_pct','Renminbi en pagos Swift']].filter(([k])=>MO[k]).map(([k,n])=>[n,MO[k],String(MO[k].fecha||'')]));
+  const T=[['Zona euro y UE-27',eu],['Potencias (FMI)',()=>pa('potencias_fmi')],['BRICS (FMI)',()=>pa('brics_fmi')],['Agregados FMI',ag],['Reservas y pagos',mo]];
+  const bar=el('div','cad-sel'),host=el('div');
+  const pinta=i=>{host.textContent='';host.append(T[i][1]());bar.querySelectorAll('button').forEach((x,j)=>x.classList.toggle('on',j===i))};
+  T.forEach(([n],i)=>{const bt=el('button','cad-bt',n);bt.type='button';bt.addEventListener('click',()=>pinta(i));bar.append(bt)});
+  w.append(bar,host);pinta(0);return w}
 function nElecciones(){
   const E=((D.elecciones||{}).paises||[]).slice().sort((a,b)=>(a.fecha||'9999').localeCompare(b.fecha||'9999')),hoy=new Date();
   return tabla([{t:'País',f:r=>r.pais},{t:'Fecha',f:r=>{const d=r.fecha&&/^\d{4}-\d{2}-\d{2}$/.test(r.fecha)?Math.round((new Date(r.fecha)-hoy)/864e5):null;return (r.fecha||'sin fecha fija')+(d==null?'':d>=0?' (en '+d+' d)':' (hace '+(-d)+' d)')}},{t:'Qué se vota',f:r=>r.tipo},{t:'Nivel',f:r=>nivelBadge(r.nivel)}],E)}
@@ -2414,7 +2435,16 @@ function pCadenas(){
       if((B1.sin_dato||[]).length)b.append(lista('Sin dato todavía',B1.sin_dato));S.append(b)}
     const V1=C.vigilar;
     if(V1){const b=caja('cad-vigilar','Qué vigilar: fechas y umbrales',V1.nota);
-      b.append(scrollX(tabla([{t:'Cuándo',f:r=>r.cuando},{t:'Qué',f:r=>{const s2=el('span');s2.append(document.createTextNode(r.que));if(r.nota)s2.append(el('br'),el('i',null,r.nota));return s2}},{t:'Fuente, fecha y nivel',f:r=>src(r.celda)}],V1.filas)));S.append(b)}
+      b.append(scrollX(tabla([{t:'Cuándo',f:r=>r.cuando},{t:'Qué',f:r=>{const s2=el('span');s2.append(document.createTextNode(r.que));if(r.nota)s2.append(el('br'),el('i',null,r.nota));return s2}},{t:'Fuente, fecha y nivel',f:r=>src(r.celda)}],V1.filas)));S.append(b)}
+    /* 19-nov: rendimientos (staking, préstamos y AMM por plataforma) de explorador/rendimientos.json; pestañas por modalidad en vez de una lista larga */
+    const RN=D.rendimientos;
+    if(RN&&(RN.filas||[]).length){const b=caja('cad-rendimientos','Rendimientos: staking, préstamos y AMM por plataforma',(RN.nota||'')+' '+(RN.nivel||''));
+      const gr=m=>/^Staking/.test(m)?'Staking':/^(Lending|Recompensa)/.test(m)?'Préstamo':/^AMM/.test(m)?'AMM':/^Colateral/.test(m)?'Colateral':'Fiscalidad';
+      const gs=['Todos',...['Staking','Préstamo','AMM','Colateral','Fiscalidad'].filter(g=>RN.filas.some(f=>gr(f.modalidad)===g))];
+      const bar=el('div','cad-sel'),host=el('div');
+      const pinta=g=>{host.textContent='';host.append(scrollX(tabla([{t:'Modalidad',f:r=>r.modalidad},{t:'Activo',f:r=>el('b',null,r.activo)},{t:'Cifra leída',f:r=>r.celda.t},{t:'Fuente, fecha y nivel',f:r=>src(r.celda)},{t:'Riesgo',f:r=>r.riesgo}],RN.filas.filter(f=>g==='Todos'||gr(f.modalidad)===g))));bar.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.g===g))};
+      gs.forEach(g=>{const bt=el('button','cad-bt',g+' ('+(g==='Todos'?RN.filas.length:RN.filas.filter(f=>gr(f.modalidad)===g).length)+')');bt.type='button';bt.dataset.g=g;bt.addEventListener('click',()=>pinta(g));bar.append(bt)});
+      b.append(bar,host);pinta('Todos');S.append(b)}
   })();
   cadExtras(S);
   // fichas: selector de red + una sola ficha dividida en pestañas (no una página interminable)

@@ -669,7 +669,14 @@
   "xlm": "no hay ETF spot de XLM cotizado en bolsa en EE. UU. con datos: solo el fideicomiso OTC GXLM (10-Q 30-sep); sin acciones diarias. 13F: 0 filas.",
   "btc_17nov": "2.a instantanea de IBIT/FBTC/EZBC no leida el 17-nov: flujo diario BTC = null [VERIFICAR]",
   "c343_19nov": "C343 (19-nov): comision, custodio y lanzamiento de 5 ETF de XRP, GXLM y 8 de SOL (7 con cifras 30-sep; QSOL sin leer). Falta: 10-Q 30-sep de Bitwise XRP (archivo 404), webs diarias de emisores de SOL, flujo diario SOL, comision de GXLM, contraste Farside/SoSoValue para SOL.",
-  "c343_segunda_19nov": "C343 segunda (19-nov): leidos 10-Q de Bitwise XRP y QSOL por XBRL (el .htm da 404 en todos los 2026 de esos CIK) y 424B3 de QSOL de dic-2025; webs de emisores leidas: Bitwise XRP y BSOL, GXRP, GSOL, TOXR, TSOL, VSOL, QSOL. No leidas: Canary XRPC/SOLC (ERR_SSL), Franklin XRPZ/SOEZ (sin pagina), Fidelity FSOL (inicio de sesion). Flujo diario valorado solo en XRP (0) y GXRP (-1,12 M$); resto, una sola instantanea"
+  "c343_segunda_19nov": "C343 segunda (19-nov): leidos 10-Q de Bitwise XRP y QSOL por XBRL (el .htm da 404 en todos los 2026 de esos CIK) y 424B3 de QSOL de dic-2025; webs de emisores leidas: Bitwise XRP y BSOL, GXRP, GSOL, TOXR, TSOL, VSOL, QSOL. No leidas: Canary XRPC/SOLC (ERR_SSL), Franklin XRPZ/SOEZ (sin pagina), Fidelity FSOL (inicio de sesion). Flujo diario valorado solo en XRP (0) y GXRP (-1,12 M$); resto, una sola instantanea",
+  "c280_19nov_tercera": {
+   "t": "C280/C343 (19-nov, 3.ª lectura): re-lectura en Chrome de Bitwise XRP, BSOL y GXRP: las webs siguen mostrando datos de 17-nov (NAV/acciones) y 18-nov (holdings, precio de mercado), ya registrados; sin instantánea nueva ni flujo nuevo. Persisten null: flujo diario de XRPZ, XRPC, XLM (no hay ETF spot de XLM en bolsa; GXLM es fideicomiso OTC), SOL salvo contraste Farside [S], FSOL (inicio de sesión), Canary (ERR_SSL), Franklin (sin página)",
+   "f": "https://www.bitwiseetfs.com/single-asset/xrp ; https://www.bitwiseetfs.com/single-asset/bsol ; https://etfs.grayscale.com/gxrp",
+   "u": "2026-11-19",
+   "d": "P (emisor, parte interesada; solo lectura)",
+   "n": "BSOL: comisión 0,20 %, custodio Coinbase Custody, administrador/custodio fiduciario BNY Mellon, 73.360.000 acc., AUM 741,53 M$ (17-nov); 10.170.384,30 SOL en fideicomiso (18-nov). Bitwise XRP: comisión 0,34 %, mismo custodio, 36.440.000 acc., AUM 392,63 M$, 406.770.577,61 XRP (18-nov)"
+  }
  },
  "trackers_contraste": {
   "nivel": "S (agregador; no auditado)",

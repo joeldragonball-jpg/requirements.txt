@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-19 10:45 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-19 12:33 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -137,17 +137,16 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - [media] 2026-10-25 (25 d) · [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov)
 - [media] 2026-10-25 (25 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov
 - [media] 2026-10-25 (25 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
-- … y 38 más en el Seguimiento
+- … y 42 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
-- 🔴 Voces: Voces sin confirmar (45) → W06 · 18 llevan más de 14 días
+- 🔴 Voces: Voces sin confirmar (43) → W06 · 16 llevan más de 14 días
 - 🔴 Predicciones: Vencidas sin resultado (1) → W06 · #20
-- 🔴 Datos a mano: Liquidez de Japón y China (1) → W01 · CN (2026-09)
-- 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (33) → rutina de cada tema (ver explorador/frescura.json) · verdes 47, amarillos 20, rojos 6, grises 7. Rojos: bancos-eba, espana-contrataci
+- 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (32) → rutina de cada tema (ver explorador/frescura.json) · verdes 49, amarillos 19, rojos 6, grises 7. Rojos: bancos-eba, espana-contrataci
 - 🟡 Radar regulatorio: Celdas sin dato (8) → W03 · Más huecos: IR 2, AE 1, BRICS 1, ID 1, EG 1
 
 ## Bots con problema
-- Paneles de datos
+- Despertador de la app, Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-10 · Inflación EE. UU. (IPC de octubre) (alto) → ◐ rutina ejecutada (W01 del 2026-11-16); dato sin marcar como leído
@@ -156,9 +155,9 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 2026-11-11 · OPEP: informe mensual del mercado petrolero (noviembre) (medio) → ✓ revisado (hecho)
 - 2026-11-13 · AIE: informe mensual del mercado petrolero (noviembre) (medio) → ✓ revisado (hecho)
 - 2026-11-13 · España: IPC definitivo de octubre (INE) (medio) → ✓ revisado (hecho)
-- 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → ⏳ SIN research: decidir (EV)
-- 2026-11-18 · Reino Unido: IPC de octubre (ONS) (medio) → ⏳ SIN research: decidir (EV)
-- 2026-11-18 · Zona euro: IPCA definitivo de octubre (Eurostat) (medio) → ⏳ SIN research: decidir (EV)
+- 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → ✓ revisado (hecho)
+- 2026-11-18 · Reino Unido: IPC de octubre (ONS) (medio) → ✓ revisado (hecho)
+- 2026-11-18 · Zona euro: IPCA definitivo de octubre (Eurostat) (medio) → ✓ revisado (hecho)
 «✓ cubierto» exige que el informe de la rutina tenga una línea `Eventos leídos: <fecha o título>`; sin ella solo consta que la rutina se ejecutó (C256).
 Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.
 

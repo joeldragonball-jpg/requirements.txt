@@ -9,7 +9,7 @@
   "organismo": "Ministerio para la Transformación Digital y de la Función Pública / Registro Central de Personal"
  },
  "como_leerlo": "«empleados» = efectivos a enero 2026 (funcionarios de carrera + laborales + otro personal, incluidos eventuales). En Defensa e Interior se suman las Fuerzas Armadas y los cuerpos policiales que paga el capítulo 1 de su sección. El boletín NO incluye personal judicial ni fiscal. «eventuales_personas» es el nº de personal eventual (art. 11); el boletín no da el nº de altos cargos.",
- "limites": "Plantilla ≠ ejecución presupuestaria: el capítulo 1 de 2025 se divide entre efectivos de enero 2026 (desfase de un año). Coste medio = cap. 1 (obligaciones 2025) / empleados; incluye cotizaciones sociales del empleador y altos cargos. Dos secciones marcadas no comparables. C245 (10-nov-2026): intento de completar 6 órganos constitucionales sin resultado oficial; siguen null. C245 (17-nov-2026): completados Cortes Generales (853 funcionarios+laborales, P) y puestos RPT del CGPJ (465, S); TC, Consejo de Estado, Tribunal de Cuentas y Casa Real siguen null. C245 (18-nov-2026): completado Tribunal Constitucional (221 personas a 31-dic-2024, P); Tribunal de Cuentas «más de 750» (cota textual, null numérico); Consejo de Estado (RPT oct-2026 localizadas, no legibles) y Casa Real (156 funcionarios solo Secretaría General) siguen sin total.",
+ "limites": "Plantilla ≠ ejecución presupuestaria: el capítulo 1 de 2025 se divide entre efectivos de enero 2026 (desfase de un año). Coste medio = cap. 1 (obligaciones 2025) / empleados; incluye cotizaciones sociales del empleador y altos cargos. Dos secciones marcadas no comparables. C245 (10-nov-2026): intento de completar 6 órganos constitucionales sin resultado oficial; siguen null. C245 (17-nov-2026): completados Cortes Generales (853 funcionarios+laborales, P) y puestos RPT del CGPJ (465, S); TC, Consejo de Estado, Tribunal de Cuentas y Casa Real siguen null. C245 (18-nov-2026): completado Tribunal Constitucional (221 personas a 31-dic-2024, P); Tribunal de Cuentas «más de 750» (cota textual, null numérico); Consejo de Estado (RPT oct-2026 localizadas, no legibles) y Casa Real (156 funcionarios solo Secretaría General) siguen sin total. C245 (19-nov-2026): Consejo de Estado RPT oct-2026 leída: 137 puestos dotados (122 funcionario + 15 laboral), 108 ocupados; Tribunal de Cuentas y Casa Real sin cambios.",
  "total_ministerios": 98224,
  "total_ministerios_rotulo": "Aviso 18-nov (auditoría): 98.224 = suma de empleados_ministerio de las 26 secciones con dato; no incluye Fuerzas Armadas ni Policía/Guardia Civil. La suma de la clave empleados (con FFAA y cuerpos policiales) es 383.077. No mezclar los dos totales.",
  "secciones": [
@@ -418,7 +418,8 @@
    "fuente": "https://www.tcu.es/es/institucion/organizacion-y-gobernanza/personal-al-servicio-de-la-institucion/",
    "fecha": "consulta 18-nov-2026 (sin fecha de dato en la página)",
    "tipo": "personas (cifra redondeada, cota inferior): funcionarios de cuerpos propios y de otras administraciones, laborales y eventuales",
-   "nota_18nov": "C245 (18-nov-2026): la página oficial «Personal al servicio de la institución» dice «prestan servicio más de 750 personas entre funcionarios/as de los cuerpos propios y procedentes de otras administraciones públicas, personal laboral y personal eventual». Es una cota inferior sin fecha ni desglose, por eso 'empleados' sigue null (no se inventa un número exacto) [VERIFICAR con la RPT/Memoria]."
+   "nota_18nov": "C245 (18-nov-2026): la página oficial «Personal al servicio de la institución» dice «prestan servicio más de 750 personas entre funcionarios/as de los cuerpos propios y procedentes de otras administraciones públicas, personal laboral y personal eventual». Es una cota inferior sin fecha ni desglose, por eso 'empleados' sigue null (no se inventa un número exacto) [VERIFICAR con la RPT/Memoria].",
+   "nota_19nov": "C245 (19-nov-2026): releída la página oficial de tcu.es; sigue diciendo solo «más de 750 personas», sin fecha ni RPT numérica. empleados null."
   },
   {
    "seccion": "CONSEJO GENERAL DEL PODER JUDICIAL",
@@ -455,11 +456,20 @@
    "seccion": "CONSEJO DE ESTADO",
    "empleados": null,
    "nota": "C245 (10-nov-2026): sin dato. El Reglamento Orgánico remite a plantillas orgánicas (puestos) sin total publicado localizado. Se deja null [VERIFICAR]. Reintento 17-nov-2026: consejo-estado.es devuelve desafío anti-bot (Cloudflare) también en Chrome; sin dato. Única cifra: 24 letrados en activo (memoria 2013, vía Público) [S][VERIFICAR].",
-   "nivel": "S",
+   "nivel": "P",
    "intento_C245": "sin dato",
    "fuente_rpt_funcionario": "https://www.consejo-estado.es/wp-content/uploads/2026/10/rpt-personal-funcionario-del-consejo-de-estado-octubre-2026.pdf",
    "fuente_rpt_laboral": "https://www.consejo-estado.es/wp-content/uploads/2026/10/rpt-personal-laboral-del-consejo-de-estado-octubre-2026.pdf",
-   "nota_18nov": "C245 (18-nov-2026): en Chrome sí abre el portal de transparencia (act. oct-2026) y publica 2 RPT en PDF (funcionario y laboral, octubre 2026). Los PDF no se pudieron leer: el visor de Chrome no da texto y curl recibe 403. Siguen sin sumarse [VERIFICAR]; puestos ≠ personas. Empleados null."
+   "nota_18nov": "C245 (18-nov-2026): en Chrome sí abre el portal de transparencia (act. oct-2026) y publica 2 RPT en PDF (funcionario y laboral, octubre 2026). Los PDF no se pudieron leer: el visor de Chrome no da texto y curl recibe 403. Siguen sin sumarse [VERIFICAR]; puestos ≠ personas. Empleados null.",
+   "puestos_rpt_funcionario_dotados": 122,
+   "puestos_rpt_funcionario_ocupados": 100,
+   "puestos_rpt_laboral_dotados": 15,
+   "puestos_rpt_laboral_cubiertos": 8,
+   "puestos_rpt_total_dotados": 137,
+   "puestos_rpt_total_ocupados": 108,
+   "fecha_rpt": "octubre 2026",
+   "nota_19nov": "C245 (19-nov-2026): leídos los 2 PDF oficiales de RPT (oct-2026) con fetch desde la página del Consejo en Chrome y extracción de texto del propio PDF. Funcionario: 82 filas, dotación 122, ocupadas 100 (suma automática de columnas; incluye Letrados y puestos de gabinete) [VERIFICAR contra el PDF]. Laboral: 11 filas, dotación 15, cubiertas 8 (comprobado a mano). Total 137 puestos dotados / 108 ocupados. Son PUESTOS de RPT, no personas: «ocupadas» ≈ efectivos pero no consta que cada una sea una persona distinta ni se incluyen eventuales fuera de RPT [VERIFICAR]. 'empleados' sigue null por prudencia.",
+   "tipo_puestos": "puestos de RPT (dotación) y puestos ocupados/cubiertas; no personas"
   },
   {
    "seccion": "CASA DE SU MAJESTAD EL REY",
