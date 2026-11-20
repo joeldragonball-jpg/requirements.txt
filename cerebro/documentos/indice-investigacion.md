@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-11-19
+actualizado: 2026-11-20
 ---
 # Índice de la investigación
 
@@ -12,14 +12,14 @@ Mapa de los informes más recientes por tema. Lo genera `scripts/indice_investig
 Por tema, los 3 informes más recientes (fecha · título · ruta · una frase de su resumen).
 
 ## Auditorías y verificaciones
-- 2026-11-18 · W05 + C173 · C176 · C247 — Verificación (18-nov-2026) (`informes/research/2026-11-18-W05-C173.md`): W05 18 01 Brent 23 oct: ¿116,72 (futuro) o 111,97? Resuelto : el spot Brent de la EIA (serie DCOILBRENTEU, republicada por FRED) fue 128,30 $ el 23…
-- 2026-11-18 · C108 - Criterios de medición de las predicciones (18-nov-2026) (`informes/research/2026-11-18-C108.md`): Añadida a informes/predicciones.md la sección «Criterios de medición (C108, 18 nov 2026)»: 72 filas con indicador, fuente oficial, umbral, fecha…
-- 2026-11-18 · Auditoría numérica de los JSON de España del 17-nov-2026 (solo lectura) (`informes/research/2026-11-18-auditoria-espana.md`): Ninguna cifra clave resultó errónea frente a la fuente oficial. Todas las que se contrastaron en vivo (ver sección «Contraste con fuente oficial»)…
+- 2026-11-19 · W05 lote 2 (19-nov-2026): fiscalidad, Swift/Chainlink y Ripple (`informes/research/2026-11-19-W05I.md`): Filas añadidas a informes/research/verificaciones consolidado.md (W05I 01 a W05I 07). No se editó ningún JSON compartido.
+- 2026-11-19 · Verificación 19-nov-2026: pendientes de C173, C176 y C254 (`informes/research/2026-11-19-C173-C176-C254-verificacion.md`): Método: Chrome (pestaña propia, cerrada), fuente primaria cuando se pudo; búsquedas de Google con la lista de resultados como [S]. Regla de umbrales…
+- 2026-11-19 · C107 · Qué NO construir: lo que ya dan gratis OpenBB, Koyfin, TradingView, Finviz y similares (19-nov-2026) (`informes/research/2026-11-19-C107-que-no-construir.md`): Alcance: comparar funciones y precios publicados por cada proveedor con lo que ya tiene el repo (mapa en graphify out/GRAPH REPORT.md , 15 nov, y la…
 
 ## Voces y predicciones
+- 2026-11-19 · W06 · Voces sin confirmar con más de 14 días (19-nov-2026) (`informes/research/2026-11-19-W06-voces.md`): Alcance: las 18 voces antiguas de explorador/voces.json (45 sin confirmar en total). Solo se tocaron campos de estado y notas; no se borró nada.
 - 2026-11-18 · C225 · Segunda pasada con fuentes oficiales (hechos del 10 al 18-nov-2026) (`informes/research/2026-11-18-C225-segunda.md`): Elaborado: 2026 11 18 · Informativo, sin recomendaciones de compra/venta. Complementa 2026 11 17 C225 noticias.md (no se toca).
 - 2026-11-16 · W06 · Voces y predicciones (16-nov-2026) (`informes/research/2026-11-16-W06-voces-predicciones.md`): 19 (fixCleanup3 4 0 del XRPL): confirmada la activación [P]. xrplcluster.com , método feature , 16 nov 23:43 UTC: enabled: true . Antes era [S]…
-- 2026-11-14 · Voces y Radar regulatorio: cierre de huecos (14-nov-2026) (`informes/research/2026-11-14-voces-radar-2.md`): Sin recomendaciones de compra ni venta. Fuentes leídas hoy; lo no leído queda [VERIFICAR].
 
 ## Fiscal
 - 2026-11-16 · C65 · España fiscal: cierre parcial (16-nov-2026) (`informes/research/2026-11-16-C65-espana-fiscal-cierre.md`): Cifras leídas en la fuente oficial el 16 nov 2026. Unidades: M€ = millones de euros.
@@ -27,9 +27,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-13 · C232 · Fiscalidad cripto y CASP: lo que ya está leído en la fuente (INFORMATIVO, no es asesoramiento fiscal) (`informes/research/2026-11-13-C232-fiscalidad-cripto-casp.md`): Lecturas del 12 nov 2026. [P] = fuente oficial leída entera o en el artículo citado; [S] = secundaria; [VERIFICAR] = sin leer. Datos volcados en…
 
 ## Energía y Ormuz
+- 2026-11-19 · C233 + C229 · España: energía y macro (19-nov-2026) (`informes/research/2026-11-19-C233-C229-espana-energia-macro.md`): Información, no recomendación. Archivo editado: explorador/espana energia.json (leido 2026 11 19). explorador/espana macro.json NO se tocó: no hay…
 - 2026-11-18 · W10 · Energía y geopolítica (miércoles 18-nov-2026) (`informes/research/2026-11-18-W10-energia.md`): Futuros: Brent $93,14 y WTI $86,01 en el último cierre (17 nov); hoy 18 nov intradía $88,68 y $81,89 (−4,8 %), sin causa verificada [S/VERIFICAR].
 - 2026-11-17 · C233 — España: energía (17-nov-2026) (`informes/research/2026-11-17-C233-espana-energia.md`): Datos en explorador/espana energia.json (nivel P = fuente oficial leída). Sin recomendaciones.
-- 2026-11-14 · W10 · Energía y geopolítica (sábado 14-nov-2026) (`informes/research/2026-11-14-W10-energia.md`): Futuros: Brent $95,84 y WTI $88,56 el viernes 13 nov; −2,5 % en la semana, segunda caída semanal seguida [S].
 
 ## Deuda y bonos
 - 2026-11-17 · W02 · Deuda, subastas y calificaciones (17-nov-2026) (`informes/research/2026-11-17-W02-deuda.md`): Tarea de la cola: D03 (OAT de Francia) , sin cambios: la AFT sigue tras Cloudflare y no se intentó saltar. Último dato: TEC 10 del 22 oct (5,13 %),…
@@ -37,9 +37,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-16 · W02 · Deuda, subastas y calificaciones (16-nov-2026) (`informes/research/2026-11-16-W02-deuda.md`): Cubre desde el informe del 10 nov. Tarea de la cola: D02 (Bund) , desbloqueada.
 
 ## Macro y tipos
+- 2026-11-19 · C268 · Tipos de activo por red: comprobación del 19-nov-2026 (`informes/research/2026-11-19-C268-tipos-activo.md`): Resultado: la tarea ya estaba implementada en sesiones anteriores (informes 2026 11 14 C268, 2026 11 15 C268 C271 y 2026 11 18 C268). En esta pasada…
 - 2026-11-18 · Macro de España en la Órbita y el móvil · 18-nov-2026 (`informes/research/2026-11-18-macro-espana-vistas.md`): Solo vistas y código; no se tocó ningún dato ( espana macro.json queda igual). Sin IA, sin API, sin privado/ , sin commit ni push. Sin…
 - 2026-11-18 · Cableado de chips, fichas por activo y Macro España · 18-nov-2026 (`informes/research/2026-11-18-cableado-chips-fichas.md`): Solo vistas y código; no se tocó ningún dato salvo 2 unidades vacías en fichas activos.json . Sin IA, sin API, sin privado/ , sin commit ni push. Sin…
-- 2026-11-18 · C229 · 4.ª pasada · pack macro de España · 18-nov-2026 (`informes/research/2026-11-18-C229-cuarta.md`): Solo se editaron explorador/espana macro.json y explorador/espana manual.json (solo se añade). Lectura con curl y User Agent de navegador, sin IA. No…
 
 ## Cripto y ETF
 - 2026-11-19 · Cableado ETF (19-nov-2026) (`informes/research/2026-11-19-cableado-etf.md`): Órbita (Paneles de datos Fondos cripto), nEtf y etfContraste en explorador/vistas.html
@@ -52,14 +52,14 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-14 · W03 Radar regulatorio: celdas sin dato (14-nov-2026) (`informes/research/2026-11-14-W03-radar-celdas.md`): Resultado: 0 celdas cerradas; las 10 siguen con etapa null. No se editó regulacion.json (sin fuente primaria leída no se rellena).
 
 ## Sesiones diarias (apertura y cierre)
+- 2026-11-20 · Informe de APERTURA — 2026-11-20 (vie) (`informes/2026-11-20-apertura.md`): Bloque que cubre: apertura de Europa y futuros de EE. UU. tras el cierre de América de la víspera. Precios leídos a las 07:10 UTC (08:10 Madrid) con…
+- 2026-11-19 · Informe de CIERRE — 2026-11-19 (jue) (`informes/2026-11-19-cierre.md`): Bloque que cubre: cierre de América (Wall Street, bono, cripto del día). Precios leídos a las 21:10 UTC (22:10 Madrid) con scripts/precios vivos.py…
 - 2026-11-19 · Informe de APERTURA — 2026-11-19 (jue) (`informes/2026-11-19-apertura.md`): Bloque que cubre: tras el cierre de EE. UU. de la víspera (18 nov), cierres de Asia y apertura de Europa/futuros. Precios leídos a las 07:07 UTC con…
-- 2026-11-19 · C342 · CLARITY Act: estado del segundo intento de cierre (19-nov-2026) (`informes/research/2026-11-19-C342.md`): Nivel: [P] = fuente primaria leída; [S] = secundaria; [VERIFICAR] = no contrastado. Sin recomendaciones.
-- 2026-11-18 · Informe de CIERRE — 2026-11-18 (mié) (`informes/2026-11-18-cierre.md`): Bloque que cubre: cierre de América (Wall Street, bono, cripto del día). Precios leídos a las 21:10 UTC con scripts/precios vivos.py r00 cierre [S,…
 
 ## Otros
 - 2026-11-19 · Integración C339-C341 en explorador/cadenas.json (19-nov-2026) (`informes/research/2026-11-19-cadenas-integracion.md`): Qué se añadió a cadenas.json (esquema de celdas {t,f,u,d,n})
+- 2026-11-19 · EV · Post-eventos del 16-18 nov 2026 (leído el 19-nov-2026) (`informes/research/2026-11-19-EV-post-eventos.md`): Sin recomendaciones. Hechos de fuente primaria [P] leídos hoy; lo demás, etiquetado. Cifras con símbolo delante.
 - 2026-11-19 · Cotejo en Chrome (19-nov-2026) (`informes/research/2026-11-19-cotejo-chrome.md`): DTCC (parte interesada: habla de sí misma)
-- 2026-11-19 · Cableado final (19-nov-2026) (`informes/research/2026-11-19-cableado-final.md`): Órbita, Paneles de datos Fondos cripto (ETF) : la tabla incluye ahora Activos netos en M$ con su fecha, Comisión anual (%), Custodio y Lanzamiento;…
 
 ## Fuentes y datos nuevos (sin fecha en el nombre)
 - A. Tipos de interés de los bancos centrales: fuentes y calendario de actualización (`research/fuentes-nuevas/A-tipos-bancos-centrales.md`): La tabla tipos vivos cubre 5 bancos con fuente primaria directa (Fed, BCE, BoE, BCB Brasil, Banco de Canadá) y tipos bis otros 10 vía BIS (RU, ZA,…
