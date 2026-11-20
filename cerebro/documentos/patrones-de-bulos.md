@@ -174,3 +174,4 @@ actualizado: 2026-10-07
 - Una cifra de tercero sin entidad localizable («Rudra Exchange», XLM 97 $ = 3-5 billones de capitalización) se contrasta con la capitalización implícita antes de repetirla.
 - Cargos mal puestos (Warren «presidenta» del Banking Committee siendo *ranking member*) y fechas cruzadas (Bitwise 2031 dicho como 2035; SOL dicho como XRP) indican datos de memoria.
 - Un enlace de referido pegado a un aviso de urgencia («Binance hasta el 29-nov, moveros») mezcla publicidad con alerta: buscar el aviso oficial.
+- «Ripple borra su post del BCE»: lo borrado vinculaba a Ripple con Qivalis (37 bancos), no con el BCE; un hecho real recontado con otro sujeto (W06, 20-nov).

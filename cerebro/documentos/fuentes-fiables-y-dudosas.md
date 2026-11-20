@@ -194,3 +194,4 @@ actualizado: 2026-10-07
 - Bitwise es emisor de ETF de Solana y de XRP: sus escenarios son [ESPECULACIÓN] de parte interesada; abrir el PDF original antes de citar el 65 % (hoy solo por prensa).
 - Jupiter, Bullish y DTCC hablan con producto o servicio que vender; sus cifras (460.000/39.500/3.400 M$ de RWA.xyz y DefiLlama) se citan como [S] y se recomprueban cada mes.
 - Agregadores como 13f.info y AlphaMaven sirven para localizar el 13F; la cifra se confirma en EDGAR (Goldman ya cotejado, C280).
+- BIS, FMI y S&P Global Ratings critican las stablecoins desde su propio rol (soberanía monetaria, calificación); útiles como contrapeso, pero se citan por prensa [S] hasta abrir bis.org, imf.org y spglobal.com (W06, 20-nov).

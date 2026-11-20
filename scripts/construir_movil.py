@@ -381,6 +381,8 @@ def tarjetas_extra():
         for k, nm in (("vault", "SingleAssetVault (XLS-65)"), ("lending", "LendingProtocol (XLS-66)")):
             if xv.get(k):
                 cad2["prest"].append([f"XRPL · {nm}", f"{xv[k]['votos']} de {xv[k]['total']} votos (umbral {xv[k]['umbral']})", "sin activar en la red principal · " + src(xv.get("estado"))])
+        if (xv.get("historia") or {}).get("t"):
+            cad2["prest"].append(["XRPL · por qué siguen sin activarse", sd(xv["historia"]["t"])[:420], src(xv["historia"])])
         for x in r1.get("filas", []):
             cad2["prest"].append([f"{x['red']} · {x['protocolo']}", f"TVL {_n(x.get('tvl'), 1)} M$", f"prestado {_n(x.get('prestado'), 1)} M$ · {x.get('estado') or 'sin dato'} · {src(x.get('celda'))}"])
         sal["cad2"] = cad2
@@ -456,8 +458,8 @@ def tarjetas_extra():
     if f.get("bloques"):
         b = f["bloques"]
         sg = lambda v: ("+" if (v or 0) > 0 else "") + _n(v, 1)
-        sal["fert"] = {"leido": f.get("leido"), "nivel": (f.get("nivel") or "")[:60], "unidad": f.get("unidad"),
-                       "fert": [[x["nombre"], _n(x.get("valor_usd_t"), 0) + " USD/t", f"{x.get('ultimo_mes')} · mes {sg(x.get('var_mensual_pct'))} % · 12 m {sg(x.get('var_12m_pct'))} % · máx. 2026 {_n(x.get('maximo_2026_usd_t'), 0)} USD/t"] for x in b.get("fertilizantes", [])],
+        sal["fert"] = {"leido": f.get("leido"), "nivel": (f.get("nivel") or "")[:140], "unidad": f.get("unidad"),
+                       "fert": [[x["nombre"], ("sin dato" if x.get("valor_usd_t") is None else _n(x.get("valor_usd_t"), 0) + " USD/t"), f"{x.get('ultimo_mes') or 'sin mes'} · mes " + ("sin dato" if x.get("var_mensual_pct") is None else sg(x.get("var_mensual_pct")) + " %") + " · 12 m " + ("sin dato" if x.get("var_12m_pct") is None else sg(x.get("var_12m_pct")) + " %") + " · máx. 2026 " + ("sin dato" if x.get("maximo_2026_usd_t") is None else _n(x.get("maximo_2026_usd_t"), 0) + " USD/t")] for x in b.get("fertilizantes", [])],
                        "agua": [[x["zona"], _n(x.get("2024"), 2) + " €/m³", f"2018 {_n(x.get('2018'), 2)} €/m³ · variación 2018-2024 {sg(x.get('var_2018_2024_pct'))} %"] for x in b.get("agua_por_ccaa", [])]}
     ct, sb, vo, po = leer("espana-contratacion.json"), leer("espana-subvenciones.json"), leer("espana-votaciones.json"), leer("espana-politica.json")
     esx = {}
@@ -710,9 +712,24 @@ def paises():
         e = est.get(i, {})
         dims = {d: [{"n": c["nombre"], "v": c["valor"], "u": c["unidad"], "a": c["anio"], "f": fuente(c.get("fuente")), "nv": c.get("nivel"), "nota": c.get("nota", ""), "ant": c.get("anterior"), "anf": c.get("anterior_anio")} for c in v.get("cifras", [])] for d, v in e.get("dimensiones", {}).items()}
         hitos = [h for v in e.get("dimensiones", {}).values() for h in v.get("hitos", [])]
-        salida.append({"id": i, "pais": f["pais"], "bloque": f["bloque"], "pol": {k: f.get(k) for k in ("sistema", "reparto_poder", "jefe_estado", "jefe_gobierno", "gobierno", "familia", "apoyo", "oposicion", "proxima_eleccion", "ultima_eleccion", "temas_clave", "sistemas_publicos", "lectura", "fuente", "nivel", "fecha_dato")},
+        bc = f.get("banco_central") or {}
+        banco = (f"{bc.get('nombre')} · " + (bc.get("mandato") or bc.get("mandato_nota") or "mandato sin dato") + f" · [{bc.get('nivel') or 'sin nivel'}] · {bc.get('fecha_dato') or 'sin fecha'}") if bc.get("nombre") else None
+        hd = [{"fecha": h.get("fecha"), "texto": h.get("hito"), "nivel": h.get("nivel")} for h in (f.get("hitos_datos") or [])]
+        salida.append({"id": i, "pais": f["pais"], "bloque": f["bloque"], "banco": banco, "hitos_datos": hd, "pol": {k: f.get(k) for k in ("sistema", "reparto_poder", "jefe_estado", "jefe_gobierno", "gobierno", "familia", "apoyo", "oposicion", "proxima_eleccion", "ultima_eleccion", "temas_clave", "sistemas_publicos", "lectura", "fuente", "nivel", "fecha_dato")},
                        "ind": {k: {"v": x.get("valor"), "u": x.get("unidad"), "f": x.get("fecha"), "nv": x.get("nivel"), "def": x.get("definicion"), "fu": fuente(x.get("fuente")), "per": x.get("periodicidad"), "ant": x.get("anterior"), "antf": x.get("anterior_fecha")} for k, x in ind.get(i, {}).items()},
                        "est": dims, "hitos": hitos, "lectura_est": e.get("lectura")})
+    def _san(v):
+        """Nunca «null»/«None» como texto en el móvil: se sustituye por «sin dato»."""
+        if isinstance(v, str):
+            v = re.sub(r"\(null\)", "(sin dato)", v)
+            v = re.sub(r"\bnull\b", "sin dato", v)
+            return re.sub(r"\bNone\b", "sin dato", v)
+        if isinstance(v, list):
+            return [_san(x) for x in v]
+        if isinstance(v, dict):
+            return {k: _san(x) for k, x in v.items()}
+        return v
+    salida = _san(salida)
     return {"nota": fich.get("nota"), "nota_est": cargar("explorador/estabilidad.json").get("nota"), "paises": salida,
             "informes": ["informes/research/2026-10-30-C58-fichas-politicas.md", "informes/research/2026-10-30-C59-indicadores.md", "informes/research/2026-10-30-C61-estabilidad.md"]}
 
