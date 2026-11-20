@@ -1,5 +1,5 @@
 {
-  "_actualizado": "2026-11-19",
+  "_actualizado": "2026-11-20",
   "_nota": "Datos sin API abierta: salario mínimo de las potencias. Nivel V = recordado, sin leer la norma oficial; [VERIFICAR] antes de citar. No se ordenan países.",
   "US": {
     "salario_minimo": {
@@ -22,7 +22,7 @@
     },
     "ipc": {
       "valor": 3.7,
-      "unidad": "% interanual",
+      "unidad": "% interanual (sin desestacionalizar)",
       "fecha": "2026-09",
       "fuente": "https://www.bls.gov/news.release/cpi.nr0.htm",
       "nivel": "P",
@@ -31,7 +31,7 @@
     },
     "paro": {
       "valor": 4.1,
-      "unidad": "% población activa",
+      "unidad": "% población activa (desestacionalizado)",
       "fecha": "2026-10",
       "fuente": "https://api.bls.gov/publicAPI/v1/timeseries/data/LNS14000000",
       "nivel": "P",
@@ -42,7 +42,7 @@
     },
     "pib": {
       "valor": 3.4,
-      "unidad": "% trimestral anualizado (volumen)",
+      "unidad": "% trimestral anualizado (volumen, desestacionalizado)",
       "fecha": "2026-Q3",
       "fuente": "https://bea.gov/news/2026/gdp-advance-estimate-3rd-quarter-2026",
       "nivel": "P",

@@ -1338,6 +1338,11 @@ function nChipsManual(){
   if(iea)cd.push({concepto:'IEA «Energy and AI»: base 2024 y peso en el crecimiento',...iea});
   if(e8)cd.push({concepto:'EIA STEO de noviembre: generación eléctrica de EE. UU. ('+(e8.unidad||'')+')',dato:e8.dato,fecha:e8.fecha,url:e8.url,nivel:e8.nivel,nota:e8.nota});
   T('Electricidad y centros de datos',cd,[{t:'Concepto',f:r=>r.concepto},{t:'Dato',f:r=>marca(r)},{t:'Fecha',f:r=>f10(r.fecha)},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Fuente',f:r=>lk(r.url,r.fuente||'fuente ↗')},{t:'Nota',f:r=>r.nota||''}]);
+  const A9=M.actualizacion_19nov;
+  if(A9){const q=[['Fuentes primarias intentadas',A9.fuentes_primarias_intentadas],['Precio spot de DRAM',A9.precio_spot_dram]].filter(x=>x[1]).map(x=>({concepto:x[0],...x[1]}));
+    if(A9.ciclo)q.push({concepto:'Ciclo de memoria '+(A9.ciclo.etiqueta||''),nivel:'S',nota:A9.ciclo.nota});
+    T('Qué se intentó el 19-nov (sin éxito en fuentes primarias)',q,[{t:'Concepto',f:r=>r.concepto},{t:'Dato',f:r=>marca({dato:r.dato,nota:r.nota})},{t:'Nivel',f:r=>nivelBadge(r.nivel)},{t:'Nota',f:r=>r.nota||''}]);
+    if(A9.informe)w.append(el('p','nota-v','Informe: '+A9.informe))}
   if(A8.micron_nota_oficial)w.append(el('p','nota-v','Micron, comunicado oficial del 4T FY26: sin leer (la sala de prensa devolvió 404) [VERIFICAR]. '+(A8.micron_nota_oficial.nota||'')));
   const C=M.ciclos||{};
   if(C.caso_alcista||C.caso_bajista){w.append(el('h3',null,'Caso alcista y bajista'));const u=el('ul');if(C.caso_alcista)u.append(el('li',null,'Alcista: '+C.caso_alcista));if(C.caso_bajista)u.append(el('li',null,'Bajista: '+C.caso_bajista));if(C.etiqueta)u.append(el('li',null,C.etiqueta));w.append(u)}
@@ -2023,7 +2028,7 @@ function pPaises(){
   s.appendChild(el('h3','','Ficha de cada país'));
   lista.forEach(f=>{const e=ES.find(x=>x.id===f.id)||{};const d=document.createElement('details');d.style.margin='8px 0';
     d.appendChild(el('summary','',f.pais+' · '+(f.jefe_gobierno||'')));
-    [['Sistema',f.sistema],['Reparto del poder',f.reparto_poder],['Jefe de Estado',f.jefe_estado],['Apoyo parlamentario',f.apoyo],['Oposición',f.oposicion],['Última elección',((f.ultima_eleccion||{}).fecha||'—')+' · '+((f.ultima_eleccion||{}).resultado||'')],['Temas clave',f.temas_clave],['Sistemas públicos',f.sistemas_publicos],['Lectura [OPINIÓN]',f.lectura],['Estabilidad [OPINIÓN]',e.lectura],['Fuente',(f.fuente||'')+' · ['+f.nivel+'] · '+f.fecha_dato]].forEach(([k,v])=>{if(v){const p=el('p','',k+': '+v);d.appendChild(p)}});
+    [['Sistema',f.sistema],['Reparto del poder',f.reparto_poder],['Jefe de Estado',f.jefe_estado],['Apoyo parlamentario',f.apoyo],['Oposición',f.oposicion],['Última elección',((f.ultima_eleccion||{}).fecha||'—')+' · '+((f.ultima_eleccion||{}).resultado||'')],['Temas clave',f.temas_clave],['Sistemas públicos',f.sistemas_publicos],['Banco central',f.banco_central&&f.banco_central.nombre?f.banco_central.nombre+' · '+(f.banco_central.mandato||f.banco_central.mandato_nota||'mandato sin dato')+' · ['+(f.banco_central.nivel||'sin nivel')+'] · '+(f.banco_central.fecha_dato||'sin fecha'):null],...(f.hitos_datos||[]).map(h=>['Hito de datos',h.fecha+' · '+h.hito+' ['+h.nivel+']']),['Lectura [OPINIÓN]',f.lectura],['Estabilidad [OPINIÓN]',e.lectura],['Fuente',(f.fuente||'')+' · ['+f.nivel+'] · '+f.fecha_dato]].forEach(([k,v])=>{if(v){const p=el('p','',k+': '+v);d.appendChild(p)}});
     s.appendChild(d)});
   /* vista de un solo país: 4 cifras grandes y el resto en lista; las tablas para comparar quedan plegadas debajo */
   if(!paisSel||!lista.some(f=>f.id===paisSel))paisSel=lista[0].id;
@@ -2192,7 +2197,7 @@ function nEtf(){
   if(sin.length)w.append(el('p','nota-v','Flujo vacío: '+sin.map(r=>r.ticker+' ('+sd(r.flujo_motivo)+')').join(' · ')+'.'));
   w.append(...etfNuevos(E,sd,u));
   w.append(el('p','nota-v',sd(E.metodo)+' '+sd(E.nota_nivel)));
-  const bn=E.bloques_no_hechos||{};if(Object.keys(bn).length)w.append(el('p','nota-v','Pendiente: '+Object.entries(bn).map(([k,v])=>k+': '+sd(v)).join(' · ')));
+  const bn=E.bloques_no_hechos||{};if(Object.keys(bn).length)w.append(el('p','nota-v','Pendiente: '+Object.entries(bn).map(([k,v])=>k.replace(/_/g,' ')+': '+sd(v&&typeof v==='object'?[v.t,v.n].filter(Boolean).join(' '):v)).join(' · ')));
   w.append(...etf13f(E),...etfContraste(E));return w}
 /* 13F del 3T (EDGAR/13f.info), lecturas directas y trackers de contraste. Unidades unificadas: todo se muestra en millones de USD (M$);
    13f.info trae «miles de USD» (valor_usd_miles / valor_declarado_usd_miles) y las lecturas de EDGAR traen USD (valor_usd): se convierten aquí y se declara en cada cabecera. */
@@ -2422,6 +2427,8 @@ function pCadenas(){
       b.append(kpis([[xv.vault.votos+' de '+xv.vault.total,'SingleAssetVault (XLS-65): votos de validadores; umbral '+xv.vault.umbral],[xv.lending.votos+' de '+xv.lending.total,'LendingProtocol (XLS-66): votos de validadores; umbral '+xv.lending.umbral],['sin activar','ambas, enabled=false en la red principal (19-nov-2026)']]));
       b.append(scrollX(tabla([{t:'Red',f:r=>r.red},{t:'Protocolo',f:r=>r.protocolo},{t:'TVL (M$)',n:1,f:r=>mm(r.tvl)},{t:'Prestado (M$)',n:1,f:r=>mm(r.prestado)},{t:'Estado',f:r=>r.estado},{t:'Fuente, fecha y nivel',f:r=>src(r.celda)}],R1.filas)));
       b.append(el('h3',null,'Votos de validadores del XRPL'),hecho(xv.votos));
+      if(xv.historia&&xv.historia.t)b.append(el('h3',null,'Por qué siguen sin activarse'),hecho(xv.historia));
+      if(xv.tvl_volumen&&xv.tvl_volumen.t)b.append(hecho(xv.tvl_volumen));
       if((R1.sin_dato||[]).length)b.append(lista('Sin dato todavía',R1.sin_dato));S.append(b)}
     const B1=C.brecha_rwa;
     if(B1){const b=caja('cad-brecha','Representado o distribuido: la brecha por red (RWA.xyz y DefiLlama, 19-nov-2026)',B1.nota);
@@ -2435,7 +2442,7 @@ function pCadenas(){
       if((B1.sin_dato||[]).length)b.append(lista('Sin dato todavía',B1.sin_dato));S.append(b)}
     const V1=C.vigilar;
     if(V1){const b=caja('cad-vigilar','Qué vigilar: fechas y umbrales',V1.nota);
-      b.append(scrollX(tabla([{t:'Cuándo',f:r=>r.cuando},{t:'Qué',f:r=>{const s2=el('span');s2.append(document.createTextNode(r.que));if(r.nota)s2.append(el('br'),el('i',null,r.nota));return s2}},{t:'Fuente, fecha y nivel',f:r=>src(r.celda)}],V1.filas)));S.append(b)}
+      b.append(scrollX(tabla([{t:'Cuándo',f:r=>r.cuando},{t:'Qué',f:r=>{const s2=el('span');s2.append(document.createTextNode(r.que));if(r.nota)s2.append(el('br'),el('i',null,r.nota));return s2}},{t:'Fuente, fecha y nivel',f:r=>src(r.celda)}],V1.filas)));S.append(b)}
     /* 19-nov: rendimientos (staking, préstamos y AMM por plataforma) de explorador/rendimientos.json; pestañas por modalidad en vez de una lista larga */
     const RN=D.rendimientos;
     if(RN&&(RN.filas||[]).length){const b=caja('cad-rendimientos','Rendimientos: staking, préstamos y AMM por plataforma',(RN.nota||'')+' '+(RN.nivel||''));
@@ -3214,6 +3221,17 @@ function pEspana(){
           return fl.concat([{_emp:{emp:emT||null,comp:true,coste:emKn?emKc/emKn*1000:null,nota:'Total: suma de empleados de las secciones con dato. Coste medio global solo con las secciones comparables (sin Presidencia/Justicia ni Inclusión). Fuente: EPSAP enero 2026.'},seccion:'TOTAL',altos_cargos:{obligaciones:sm(r=>r.altos_cargos.obligaciones)},eventuales:{obligaciones:sm(r=>r.eventuales.obligaciones)},capitulos:{'1':tp},pct_personal:tt?tp/tt*100:null}])})()),
         el('h3',null,'Número de cargos y retribuciones oficiales'),dat([CM.altos_cargos_numero,...CM.retribuciones])),false));
     }
+    const CMP=B.comparativa_2024_2025;
+    if(CMP&&(CMP.filas||[]).length){const dc=el('div'),pv=v=>v==null?'—':(v>0?'+':'')+fx(v,1)+' %',f2=v=>v==null?'—':fx(v,2);
+      dc.append(corto(CMP.metodo,'nota-v',220));
+      dc.append(el('h3',null,'Por ministerio u órgano (M€, obligaciones reconocidas)'),scrollX(tabla([{t:'Sección',f:r=>r.seccion},{t:'Art. 10 · 2024',n:1,f:r=>f2(r.art10_2024)},{t:'Art. 10 · 2025',n:1,f:r=>f2(r.art10_2025)},{t:'Var. %',n:1,f:r=>pv(r.art10_var_pct)},{t:'Art. 11 · 2024',n:1,f:r=>f2(r.art11_2024)},{t:'Art. 11 · 2025',n:1,f:r=>f2(r.art11_2025)},{t:'Var. %',n:1,f:r=>pv(r.art11_var_pct)}],CMP.filas)));
+      const ct=Object.entries(CMP.capitulos_totales||{}).map(([k,v])=>Object.assign({k},v));
+      if(ct.length)dc.append(el('h3',null,'Total del Estado por capítulo (M€)'),scrollX(tabla([{t:'Capítulo',f:r=>'Cap. '+r.k},{t:'2024',n:1,f:r=>n1(r['2024'])},{t:'2025',n:1,f:r=>n1(r['2025'])},{t:'Variación, M€',n:1,f:r=>n1(r.var_abs)},{t:'Var. %',n:1,f:r=>pv(r.var_pct)}],ct)));
+      if(CMP.nota_cortes_generales)dc.append(corto(CMP.nota_cortes_generales,'nota-v',260));
+      const EST=CMP.estructura_ministerios_2024_2025;if(EST&&EST.hecho)dc.append(el('p','nota-v','Estructura de secciones 2024-2025 ['+(EST.nivel||'P')+']: '+EST.hecho+(EST.sin_comparar?' '+EST.sin_comparar:'')));
+      if(CMP.cierre_19nov)dc.append(corto(CMP.cierre_19nov,'nota-v',260));
+      const LE=D.espana_empleados&&D.espana_empleados.limites;if(LE)dc.append(el('h3',null,'Límites de lectura de los empleados (RPT del Consejo de Estado: puestos, no personas)'),corto(LE,'nota-v',320));
+      add(bloque('Altos cargos y personal eventual: 2024 frente a 2025',CMP.titulo,{nivel:CMP.nivel||'P',t:'IGAE, MENSUAL 12-24 y 12-25 · M€ · leído '+CMP.leido},dc,false))}
     const PO=D.espana_politica;
     if(PO){
       /* C242: Congreso, iniciativas, votaciones e intereses; solo datos oficiales y neutrales, recuentos sin nombres */

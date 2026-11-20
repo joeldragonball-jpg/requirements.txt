@@ -1,7 +1,7 @@
 {
  "id": "espana-macro",
  "titulo": "España: pack macro (IPC, EPA, afiliación, salarios, SMI, PIB)",
- "leido": "2026-11-18",
+ "leido": "2026-11-20",
  "nivel": "P",
  "unidad": "Cada registro lleva su propia unidad: % = porcentaje, pp = puntos porcentuales, miles de personas, personas, € = euros. Cifras como número puro.",
  "nota": "Leído en la API oficial del INE (servicios.ine.es/wstempus, tablas y códigos de serie indicados), la nota de la Seguridad Social del 4-nov-2026 y el BOE-A-2026-3815. Lo que no se pudo leer en fuente oficial va como null y [VERIFICAR]. Es información, no recomendación.",
@@ -950,12 +950,12 @@
    }
   ],
   "euribor_12m_diario": {
-   "valor": 3.361,
+   "valor": 3.351,
    "unidad": "%",
    "nivel": "S",
-   "periodo": "17-nov-2026",
+   "periodo": "18-nov-2026",
    "fuente": "https://www.euribor-rates.eu/en/current-euribor-rates/",
-   "nota": "Leído el 18-nov-2026 en euribor-rates.eu (reproduce los datos de EMMI, el administrador; el Banco de España solo publica la media mensual en BE_19). Serie diaria 11-17 nov: 11-nov 3,222; 12-nov 3,293; 13-nov 3,328; 16-nov 3,350; 17-nov 3,361. Media de octubre (BdE) 3,239 %. No contrastado con EMMI directamente: nivel S [VERIFICAR].",
+   "nota": "Leído el 18-nov-2026 en euribor-rates.eu (reproduce los datos de EMMI, el administrador; el Banco de España solo publica la media mensual en BE_19). Serie diaria 11-17 nov: 11-nov 3,222; 12-nov 3,293; 13-nov 3,328; 16-nov 3,350; 17-nov 3,361. Media de octubre (BdE) 3,239 %. No contrastado con EMMI directamente: nivel S [VERIFICAR]. 20-nov: añadido el 18-nov (3,351 %); el 19-nov aún no figuraba en euribor-rates.eu.",
    "serie_diaria": [
     {
      "fecha": "2026-11-11",
@@ -976,6 +976,10 @@
     {
      "fecha": "2026-11-17",
      "valor": 3.361
+    },
+    {
+     "fecha": "2026-11-18",
+     "valor": 3.351
     }
    ],
    "otros_plazos_17nov": [
@@ -1002,10 +1006,10 @@
    "nombre": "¤STR (tipo a un día del BCE), diario",
    "valor": 2.441,
    "unidad": "%",
-   "periodo": "17-nov-2026",
+   "periodo": "19-nov-2026",
    "nivel": "P",
    "fuente": "https://data-api.ecb.europa.eu/service/data/EST/B.EU000A2X2A25.WT",
-   "nota": "API de datos del BCE, serie EST.B.EU000A2X2A25.WT, leída el 18-nov-2026. Media de octubre (BdE) 2,441 %.",
+   "nota": "API de datos del BCE, serie EST.B.EU000A2X2A25.WT, leída el 18-nov-2026. Media de octubre (BdE) 2,441 %. 20-nov: releída la API del BCE hasta el 19-nov.",
    "serie_diaria": [
     {
      "fecha": "2026-11-11",
@@ -1025,6 +1029,14 @@
     },
     {
      "fecha": "2026-11-17",
+     "valor": 2.441
+    },
+    {
+     "fecha": "2026-11-18",
+     "valor": 2.442
+    },
+    {
+     "fecha": "2026-11-19",
      "valor": 2.441
     }
    ]

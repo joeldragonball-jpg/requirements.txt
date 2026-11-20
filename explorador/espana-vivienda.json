@@ -1,7 +1,7 @@
 {
  "id": "espana-vivienda",
  "titulo": "España: vivienda (precios, alquiler, hipotecas, esfuerzo) y deuda autonómica",
- "leido": "2026-11-18",
+ "leido": "2026-11-20",
  "nivel": "P",
  "unidad": "M€ = millones de euros; % = porcentaje; €/m² = euros por metro cuadrado. Cifras como número puro.",
  "nota": "Leído el 17-nov-2026: CSV oficial BdE be1309 (deuda PDE CCAA; miles de € convertidos a M€), API INE Tempus (IPV, IPVA tabla 59056, IRAV 72975, HPT 13896/24457, EH 76197, CRE 82284) y PDF del Informe Anual 2025 del BdE (cuadros 2.5 y 2.6). Lo no leído = null/[VERIFICAR]. Es información, no recomendación.",
@@ -269,7 +269,19 @@
    "tipo_variable_viviendas_pct": 2.95,
    "fuente": "INE HPT tablas 13896 y 24457",
    "nivel": "P",
-   "nota": "El número es de total fincas (no solo viviendas)."
+   "nota": "El número es de total fincas (no solo viviendas). 20-nov: releído en la API: sigue siendo ago-2026 el último mes (sep-2026 aún no publicado).",
+   "viviendas_ago26": {
+    "numero": 33841,
+    "numero_ago25": 33065,
+    "var_anual_pct": 2.3,
+    "importe_total_meur": 6134.9,
+    "importe_ago25_meur": 5566.8,
+    "var_importe_pct": 10.2,
+    "series": "HPT34618 / HPT34565",
+    "nota": "Importe en miles de € en la API convertido a M€. Variaciones: cálculo propio."
+   },
+   "n_hipotecas_total_fincas_ago26_var_anual_pct": 0.5,
+   "proxima_publicacion": "INE HPT de septiembre: ~dic-2026 [VERIFICAR calendario]"
   },
   "ejecuciones_hipotecarias": {
    "anio": 2025,
@@ -318,6 +330,37 @@
    "esfuerzo_por_ccaa": null,
    "nota": "18-nov: el Informe Anual 2025 del BdE (PDF completo, 10,7 MB, pág. 135-152 y cuadros 2.5-2.6) NO publica esfuerzo de alquiler por CCAA; su «anejo interactivo» documenta precios reales de la vivienda (CCAA y provincias) y esfuerzo en áreas urbanas, y no es accesible por script → esfuerzo por CCAA = null [VERIFICAR]. Alternativa pública pendiente: Panel de Hogares/Observatorio de Vivienda del MIVAU.",
    "nivel": "P"
+  },
+  "compraventas_ine": {
+   "periodo": "sep-2026",
+   "publicado": "2026-11-17",
+   "fuente": "INE ETDP, tabla 6150 (API Tempus, series ETDP1826/1825/1824)",
+   "nivel": "P",
+   "compraventa_viviendas_total": {
+    "valor": 54548,
+    "unidad": "número de compraventas de viviendas",
+    "sep_2025": 63018,
+    "var_anual_pct": -13.4,
+    "anterior_ago_2026": 49319
+   },
+   "vivienda_nueva": {
+    "valor": 12145,
+    "unidad": "número",
+    "sep_2025": 13732,
+    "var_anual_pct": -11.6
+   },
+   "vivienda_segunda_mano": {
+    "valor": 42403,
+    "unidad": "número",
+    "sep_2025": 49286,
+    "var_anual_pct": -14.0
+   },
+   "total_transmisiones_viviendas": {
+    "valor": 86733,
+    "unidad": "número (compraventa, donación, herencia, etc.)",
+    "tabla": 6149
+   },
+   "nota": "Variaciones anuales: cálculo propio sobre las cifras de la API (ago-2026 está por debajo de sep-2026 por estacionalidad). Una caída de compraventas con IPV al +12 % es un dato mixto: no implica por sí sola cambio de tendencia de precios [ESPECULACIÓN]."
   }
  }
 }
