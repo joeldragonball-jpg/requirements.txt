@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-20 20:40 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-20 21:10 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -10,7 +10,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hechas en 7 días (8):** C205, C206, C262, C264, C265, C266, C258, C259
 
 ## Hoy (vie 2026-11-20): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 13 días
+- R00 apertura ✓ · cierre ✓ · racha 13 días
 - Fija de hoy (viernes: resumen semanal): **W09 Resumen semanal** (~1,5 %) · último 2026-11-20 · `research/prompts/W09-*.md`
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
@@ -129,21 +129,21 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - ninguna anotada
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
+- [alta] 2026-11-18 (2 d) · Incidente grave en el Estrecho de Ormuz: buque tanque en llamas.
+- [alta] 2026-11-18 (2 d) · Waller (Fed) no descarta «sorprender» con una subida de 0,5 puntos.
+- [alta] 2026-11-18 (2 d) · Las actas de la Fed: casi todos esperan más subidas de tipos.
+- [alta] 2026-11-18 (2 d) · Actas de la Fed: se necesitan tipos más altos en diciembre.
+- [alta] 2026-11-19 (1 d) · J.P. Morgan prevé subidas de la Fed en las próximas tres reuniones.
+- [alta] 2026-11-20 (0 d) · Irán prepara un convoy de petroleros en Kharg para desafiar el bloqueo de EE. UU.
 - [media] 2026-10-25 (26 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
 - [media] 2026-10-25 (26 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
-- [media] 2026-10-25 (26 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
-- [media] 2026-10-25 (26 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
-- [media] 2026-10-25 (26 d) · [VERIFICAR] Consulta DGT V0648-24 leída en petete
-- [media] 2026-10-25 (26 d) · [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov)
-- [media] 2026-10-25 (26 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov
-- [media] 2026-10-25 (26 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
-- … y 37 más en el Seguimiento
+- … y 55 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (24) → W03 · Se revisan con la rutina de países
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (1) → W03 · ZA/politica
 - 🔴 Voces: Voces sin confirmar (47) → W06 · 23 llevan más de 14 días
-- 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (37) → rutina de cada tema (ver explorador/frescura.json) · verdes 44, amarillos 23, rojos 6, grises 7. Rojos: bancos-eba, datos, espana-con
+- 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (36) → rutina de cada tema (ver explorador/frescura.json) · verdes 45, amarillos 23, rojos 6, grises 7. Rojos: bancos-eba, espana-contrataci
 - 🟡 Radar regulatorio: Celdas sin dato (8) → W03 · Más huecos: IR 2, AE 1, BRICS 1, ID 1, EG 1
 
 ## Bots con problema
