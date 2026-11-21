@@ -378,6 +378,13 @@ small.per{color:var(--tx2);font-size:var(--fs-xs);font-weight:400}
 .ap-tw{width:100%;max-width:100%;box-sizing:border-box}.ap-m tr.ap-sel>*{background:rgba(90,169,230,.25);border-top:2px solid var(--ac);border-bottom:2px solid var(--ac)}.ap-m tr.ap-sel .ap-capb{font-weight:700;color:#fff}.ap-m tr.ap-sel>:first-child{border-left:2px solid var(--ac)}.ap-m tr.ap-sel>:last-child{border-right:2px solid var(--ac)}
 td.cad-go{cursor:pointer}td.cad-go:hover,td.cad-go:focus-visible{outline:2px solid var(--ac);outline-offset:-2px}
 .cad-sel{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}.cad-sel .cad-bt{padding:7px 14px;min-height:38px}
+.chip.cad-ok{background:rgba(63,185,80,.18);color:var(--tx)}.chip.cad-ya{background:rgba(232,193,74,.25);color:var(--tx)}.chip.cad-no{background:rgba(248,81,73,.25);color:var(--tx);font-weight:700}
+.chip.sin-conc{background:rgba(232,193,74,.22);border:1px dashed #e8c14a;color:var(--tx);font-weight:700}
+.chip.est-confirmada_concreta{background:rgba(63,185,80,.18)}.chip.est-confirmada_sin_concretar{background:rgba(232,193,74,.22)}.chip.est-matizada{background:rgba(88,166,255,.2)}.chip.est-sin_confirmar{background:rgba(140,140,140,.25)}.chip.est-desmentida{background:rgba(248,81,73,.25)}
+.pist-g,.inst-g,.etf13-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:8px;align-items:start}
+.pist,.inst,.etf13{border:1px solid var(--lin);border-radius:8px;padding:6px 10px;background:var(--bg)}.pist>summary,.inst>summary,.etf13>summary{cursor:pointer;min-height:32px}.inst-i{border-top:1px solid var(--lin);padding:6px 0}.etf13{grid-column:1/-1}.etf13 table{font-size:var(--fs-xs)}
+.inst-q{width:100%;max-width:520px;min-height:40px;margin:6px 0;padding:4px 10px;font:inherit;background:var(--bg);color:var(--tx);border:1px solid var(--lin);border-radius:8px}
+
 .cad-fi{background:var(--bg);border:1px solid var(--lin);border-radius:10px;padding:10px 14px}.cad-fih{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}.cad-fih h3{margin:0}.cad-fih .cad-cap{border:1px solid var(--lin)}
 .cad-tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--lin);margin:10px 0 12px}.cad-tab{font:inherit;font-size:var(--fs-s);background:none;color:var(--tx2);border:1px solid transparent;border-bottom:0;border-radius:8px 8px 0 0;padding:8px 14px;min-height:40px;cursor:pointer}.cad-tab:hover{color:var(--tx)}.cad-tab.on{color:var(--tx);background:var(--panel);border-color:var(--lin);font-weight:700;box-shadow:inset 0 3px 0 var(--ac)}
 .cad-pn[hidden]{display:none}.cad-2c{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:14px;align-items:start}.cad-2c>div{min-width:0}.cad-2c h3{margin-top:0}.cad-hs{column-width:340px;column-gap:22px}
@@ -1399,6 +1406,7 @@ function panelesGrupo(gid){
   else if(gid==='tokens'){
     if(P.rwa)add('token','Activos reales tokenizados (RWA) en DeFi',nRwa,pie(P.rwa,'DefiLlama'),true);
     if(D.etf_flujos)add('fondos','Fondos cripto (ETF y fideicomisos): acciones, tenencia y flujos',nEtf,{nivel:'P',t:'Webs de los emisores · leído '+f10(D.etf_flujos.generado)},true);
+    if(D.etf_13f)add('fondos','Quién tiene los ETF (13F, 3T-2026)',nEtf13,{nivel:'S',t:'13f.info contrastado con 13F-HR de sec.gov · leído '+f10(D.etf_13f.leido)+' · foto a '+f10(D.etf_13f.periodo)},true);
     if(P.mercado)add('fondos','BTC, ETH, XRP y XLM',nMercado,pie(P.mercado,'CoinGecko'),true);
     if(P.indices)add('fondos','Bolsas',nIndices,pie(P.indices,'Yahoo Finance'),true);
     if(SEGDATOS().length)add('fondos','Seguimiento de ETF, acciones y cripto: precio, subidas y bajadas y rentabilidades',nSeguimiento,{nivel:'S',t:'Yahoo Finance · '+(P.vivo?'en vivo '+P.vivo.leido:'leído '+((P.watchlist||{}).leido||P.leido))},true)}
@@ -1695,7 +1703,7 @@ function calControles(){
   w.append(el('div','nota-v','País inferido del texto del evento; «Mi cartera» busca XRP, XLM, Ripple, Stellar, bitcoin, cripto, ETF y stablecoins en título y detalle. El .ics lleva solo las fechas filtradas.'));return w}
 
 /* C221 · glosario flotante + «?» con la definición junto a cada cifra */
-const GLOS_BASE=[['VIX','Índice de volatilidad esperada del S&P 500 (opciones a 30 días). Sube cuando el mercado teme caídas; no predice nada por sí solo.'],['EFFR','Tipo efectivo de los fondos federales: el tipo al que los bancos de EE. UU. se prestan dinero a un día; lo guía la Fed.'],['Spread','Diferencia entre dos tipos o precios (por ejemplo, entre un bono y otro, o entre compra y venta).'],['RWA','Activos del mundo real tokenizados (bonos, fondos, inmuebles) emitidos como tokens en una cadena.'],['Capitalización','Precio por número de unidades en circulación; mide el tamaño, no el dinero que ha entrado.'],['Brent','Referencia de precio del petróleo del mar del Norte, usada en Europa.'],['TIC','Datos del Tesoro de EE. UU. sobre quién posee su deuda y cuánto (flujos de capital internacional).'],['13F','Declaración trimestral de gestoras de EE. UU. con sus posiciones; llega con unas seis semanas de retraso.'],['TVL','Valor total depositado en un protocolo DeFi; incluye el efecto del precio de los activos.'],['Stablecoin','Cripto que busca mantener un valor fijo (por ejemplo, 1 dólar), respaldada por reservas o algoritmos; el respaldo es lo que hay que comprobar.']];
+const GLOS_BASE=[['VIX','Índice de volatilidad esperada del S&P 500 (opciones a 30 días). Sube cuando el mercado teme caídas; no predice nada por sí solo.'],['EFFR','Tipo efectivo de los fondos federales: el tipo al que los bancos de EE. UU. se prestan dinero a un día; lo guía la Fed.'],['Spread','Diferencia entre dos tipos o precios (por ejemplo, entre un bono y otro, o entre compra y venta).'],['RWA','Activos del mundo real tokenizados (bonos, fondos, inmuebles) emitidos como tokens en una cadena.'],['Capitalización','Precio por número de unidades en circulación; mide el tamaño, no el dinero que ha entrado.'],['Brent','Referencia de precio del petróleo del mar del Norte, usada en Europa.'],['TIC','Datos del Tesoro de EE. UU. sobre quién posee su deuda y cuánto (flujos de capital internacional).'],['13F','Declaración trimestral de gestoras de EE. UU. con sus posiciones; llega con unas seis semanas de retraso. Es una foto a fecha fija: no incluye posiciones cortas ni inversores fuera de EE. UU.'],['Tokenizado','Activo del mundo real (bono, fondo, deuda) emitido o registrado como token en una cadena. «Distribuido» = transferible en la cadena; «representado» = solo registrado, sin ser transferible ni liquidado en ella.'],['Sin concretar','La voz o la fuente no dice el token, la red o el producto concretos. No es un descuido: es lo que no consta en lo leído.'],['TVL','Valor total depositado en un protocolo DeFi; incluye el efecto del precio de los activos.'],['Stablecoin','Cripto que busca mantener un valor fijo (por ejemplo, 1 dólar), respaldada por reservas o algoritmos; el respaldo es lo que hay que comprobar.']];
 let _glos=null;
 function glosario(){if(_glos)return _glos;const m=new Map();
   const add=(t,d)=>{if(!t||!d)return;const k=t.toLowerCase().replace(/\s*\(.*?\)\s*/g,' ').trim();if(!m.has(k))m.set(k,{t,d})};
@@ -2194,6 +2202,31 @@ function nGdelt(){
   w.append(el('h3',null,'Por tema'),scrollX(tabla([{t:'Tema',f:r=>NT[r.k]||r.k},{t:'Media 30 d (%)',n:1,f:r=>nvc(r.media_30d,2)},{t:'Media 90 d (%)',n:1,f:r=>nvc(r.media_90d,2)},{t:'Ratio 30/90',n:1,f:r=>cr(r)},{t:'Picos',f:r=>(r.picos||[]).map(x=>x.fecha).join(', ')||'vacío'}],Object.entries(G.temas||{}).map(([k,v])=>({k,...v})))));
   w.append(el('h3',null,'Por país (ordenados por cambio reciente)'),scrollX(tabla([{t:'País',f:r=>r.pais},{t:'Media 30 d (%)',n:1,f:r=>nvc(r.media_30d,2)},{t:'Ratio 30/90',n:1,f:r=>cr(r)},{t:'Último pico',f:r=>vc(((r.picos||[])[0]||{}).fecha)}],Object.values(G.paises||{}).slice().sort((a,b)=>(b.ratio_30_90||0)-(a.ratio_30_90||0)))));
   w.append(el('p','nota-v',(G.aviso||'')+' ACLED: '+vc(G.acled)+'. Fuente: '+(G.fuente||'')));return w}
+/* 21-nov (C355): quién tiene los ETF cripto según el 13F del 3T-2026 (explorador/etf-13f.json); pestañas por activo y tabla corta por ETF */
+function nEtf13(){
+  const E=D.etf_13f,w=el('div');if(!E)return w;
+  const k=v=>v==null?'—':miles(num(v/1000,1))+' M$';
+  const ac=v=>v==null?'—':miles(num(v,0));
+  const pc=v=>v==null?'—':(v>0?'+':'')+num(v,1)+' %';
+  const adv=el('div','nota-v');adv.append(el('b',null,'Límites del 13F: '),document.createTextNode('foto a '+vc(E.periodo)+' (presentada hasta el 16-nov): no incluye posiciones cortas ni inversores fuera de EE. UU.; un asesor compra por sus clientes y un creador de mercado mantiene acciones por su función, así que no es convicción; el «tipo de entidad» es clasificación del analista, no viene del 13F. Leído '+vc(E.leido)+' · nivel '+(E.nivel_global||'S').split(' ')[0]+' · caduca '+vc(E.caduca)+' ('+(E.caduca_motivo||'')+')'));
+  w.append(adv);
+  const ul=el('ul','cad-lst');(E.advertencias||[]).forEach(x=>ul.append(el('li',null,x)));const dd=el('details','cad-mas');dd.dataset.auto='1';dd.append(el('summary',null,'Todas las advertencias ('+(E.advertencias||[]).length+')'),ul);w.append(dd);
+  const acts=[...new Set(E.etfs.map(x=>x.activo))],bar=el('div','cad-sel'),host=el('div');
+  const pinta=a=>{host.textContent='';const g=el('div','etf13-g');E.etfs.filter(x=>x.activo===a).forEach(x=>{
+    const d=el('details','etf13');d.open=E.etfs.filter(z=>z.activo===a).length<=3;
+    const sm=el('summary');sm.append(el('b',null,x.ticker),document.createTextNode(' · '+x.nombre+' · '+x.declarantes_3T+' declarantes (2T: '+x.declarantes_2T+') · '+k(x.valor_total_3T_miles_usd)+' (2T: '+k(x.valor_total_2T_miles_usd)+')'));d.append(sm);
+    const tp=x.tenedores_principales||[];
+    if(tp.length)d.append(scrollX(tabla([{t:'Tenedor',f:r=>r.tenedor+(r.nuevo_vs_2T?' (nuevo)':'')},{t:'Tipo (del analista)',f:r=>r.tipo},{t:'Valor 3T',n:1,f:r=>k(r.valor_miles_usd)},{t:'Acciones 3T',n:1,f:r=>ac(r.acciones_3T)},{t:'Acciones 2T',n:1,f:r=>ac(r.acciones_2T)},{t:'Var. acciones',n:1,f:r=>{const s2=el('span',r.var_acciones_pct>0?'sube':r.var_acciones_pct<0?'baja':'',pc(r.var_acciones_pct));return s2}}],tp)));
+    else d.append(el('p','nota-v','Sin tenedores principales detallados para este ETF.'));
+    if(x.nota)d.append(el('p','nota-v',x.nota));g.append(d)});host.append(g);bar.querySelectorAll('button').forEach(z=>z.classList.toggle('on',z.dataset.a===a))};
+  acts.forEach(a=>{const bt=el('button','cad-bt',a+' ('+E.etfs.filter(x=>x.activo===a).length+')');bt.type='button';bt.dataset.a=a;bt.addEventListener('click',()=>pinta(a));bar.append(bt)});
+  w.append(bar,host);pinta(acts[0]);
+  const so=E.fondos_soberanos_y_publicos||[];
+  if(so.length){w.append(el('h3',null,'Fondos soberanos y públicos ('+so.length+')'));
+    w.append(scrollX(tabla([{t:'Entidad',f:r=>r.entidad},{t:'Tipo y país',f:r=>r.tipo+' · '+r.pais},{t:'Presentado',f:r=>vc(r.presentado)},{t:'Posiciones cripto (3T)',f:r=>(r.cripto||[]).length?(r.cripto||[]).map(c=>c.etf+': '+ac(c.acciones_3T)+' acc. ('+(c.var_pct==null?'sin dato':pc(c.var_pct))+' vs 2T)').join(' · '):'ninguna'},{t:'Lectura',f:r=>r.lectura},{t:'Nivel',f:r=>nivelBadge(/^P/.test(r.nivel)?'P':'S')}],so)));
+    if(E.no_encontrados)w.append(el('p','nota-v','No encontrados: '+E.no_encontrados))}
+  w.append(el('p','nota-v','Fuente: 13f.info (agregador [S]) contrastado con 13F-HR en sec.gov [P] para los declarantes citados; valores en miles de dólares como el 13F. No es recomendación ni orden de operar.'));
+  return w}
 function nEtf(){
   const E=D.etf_flujos,w=el('div'),sd=t=>String(t==null?'':t).replace(/null/g,'sin dato'),u=x=>{const h=(x.historial||[]);return h[h.length-1]};
   w.append(scrollX(tabla([{t:'Fondo',f:r=>r.ticker+' · '+r.nombre+(r.ticker==='GXLM'?' (fideicomiso OTC, no ETF en bolsa)':'')},{t:'Activo',f:r=>r.activo},{t:'Emisor',f:r=>r.emisor},{t:'Dato de',f:r=>vc((u(r)||{}).fecha)},{t:'Acciones',n:1,f:r=>nvc((u(r)||{}).acciones,0)},{t:'NAV ($)',n:1,f:r=>nvc((u(r)||{}).nav,2)},{t:'Tenencia (monedas)',n:1,f:r=>nvc((u(r)||{}).tenencia_monedas,0)},{t:'Activos netos (M$) y fecha',n:1,f:r=>{const q=u(r)||{};return q.aum_usd==null?'sin dato':nvc(q.aum_usd/1e6,1)+' M$ · '+vc(q.fecha)}},{t:'Comisión anual (%)',n:1,f:r=>r.comision_pct==null?'sin dato':nvc(r.comision_pct,2)+' %'},{t:'Custodio',f:r=>r.custodio||'sin dato'},{t:'Lanzamiento',f:r=>r.lanzamiento?vc(r.lanzamiento):'sin dato'},{t:'AUM ($)',n:1,f:r=>nvc((u(r)||{}).aum_usd,0)},{t:'Flujo diario ($)',n:1,f:r=>r.flujo_usd==null?'vacío':nvc(r.flujo_usd,0)},{t:'Nivel',f:r=>nivelBadge(String(((u(r)||{}).nivel)||'V')[0])},{t:'Web del emisor',f:r=>r.web?lkx(r.web,'emisor ↗'):'vacío'}],E.etfs||[])));
@@ -2440,7 +2473,20 @@ function pCadenas(){
       if(xv.tvl_volumen&&xv.tvl_volumen.t)b.append(hecho(xv.tvl_volumen));
       if((R1.sin_dato||[]).length)b.append(lista('Sin dato todavía',R1.sin_dato));S.append(b)}
     const B1=C.brecha_rwa;
-    if(B1){const b=caja('cad-brecha','Representado o distribuido: la brecha por red (RWA.xyz y DefiLlama, 19-nov-2026)',B1.nota);
+    if(B1){const b=caja('cad-brecha','Representado o distribuido: la brecha por red (lectura del 21-nov y tabla del 19-nov; RWA.xyz y DefiLlama)',B1.nota);
+      const LA=B1.lectura_actual,TK=D.tokenizado;
+      if(LA){
+        const dias=f=>f?Math.round((new Date(f+'T00:00:00')-new Date(HOYS+'T00:00:00'))/864e5):null;
+        const cad=f=>{const n=dias(f);const s2=el('span','chip '+(n==null?'':n<0?'cad-no':n<=3?'cad-ya':'cad-ok'));s2.textContent=n==null?'sin caducidad':n<0?'caducada hace '+(-n)+' d':n===0?'caduca hoy':'caduca en '+n+' d';s2.title='Esta lectura caduca el '+(f||'—')+' (se renueva cada semana)';return s2};
+        b.append(el('h3',null,'Lectura actual: '+LA.leido+' (la cifra que manda; la del 19-nov queda más abajo como histórico)'),el('p','nota-v',String(LA.nota).replace('La tabla de arriba conserva','La tabla de más abajo conserva')));
+        const nm=id=>{const r=(B1.filas||[]).find(x=>x.id===id);return r?r.red:id};
+        const pc2=v=>v==null?'sin dato':(v>0?'+':'')+num(v,1)+' %';
+        b.append(hecho(LA.totales),scrollX(tabla([{t:'Red',f:r=>el('b',null,nm(r.id))},{t:'Distribuido (M$)',n:1,f:r=>mm(r.dist)},{t:'Hace 30 d (M$)',n:1,f:r=>mm(r.dist_hace_30d)},{t:'Cambio 30 d',n:1,f:r=>{const s2=el('span',r.cambio_30d_pct>0?'sube':r.cambio_30d_pct<0?'baja':'',pc2(r.cambio_30d_pct));if(r.id==='stellar')s2.style.fontWeight='700';return s2}},{t:'Representado (M$)',n:1,f:r=>mm(r.rep)},{t:'DeFi RWA (M$)',n:1,f:r=>mm(r.defi_rwa)},{t:'Leído',f:r=>vc(r.leido)},{t:'Vigencia',f:r=>cad(r.caduca)}],LA.filas)));
+        const tr=el('p','nota-v');tr.append(el('b',null,'Trampa: '),document.createTextNode('«representado» (registrado en la cadena, no transferible ni liquidado en ella) no es «distribuido» (emitido y transferible): no se suman. Canton y Avalanche concentran representado. RWA.xyz reclasifica entre lecturas (el XRPL entre el 14 y el 19-nov no fue un flujo de dinero) y es un tercero comercial sin auditoría [S]. Las tablas por plataforma incluyen stablecoins; las cifras por red no.'));b.append(tr);
+        if(TK){const tp=(TK.redes||[]).find(x=>x.id==='stellar');
+          if(tp&&tp.primaria){const q=tp.primaria;b.append(hecho({n:q.nivel,t:'Comprobación on-chain de BENJI (Franklin Templeton) en Stellar: '+miles(num(q.unidades_en_cadena,0))+' unidades autorizadas en '+miles(q.cuentas)+' cuentas (NAV ~1 $ por unidad [VERIFICAR]). '+(q.trampa||''),f:q.fuente,u:q.u,d:q.leido}))}}
+        b.append(el('h3',null,'Por qué cambió en 30 días (hechos y contexto, cada uno con su nivel)'));(LA.por_que||[]).forEach(x=>b.append(hecho(x)));
+        b.append(el('h3',null,'Tabla del 19-nov (histórico, por red)'))}
       b.append(hecho(B1.totales),hecho(B1.brecha));
       const pc=v=>v==null?'sin dato':num(v,1)+' %';
       b.append(scrollX(tabla([{t:'Red',f:r=>{if(!/^(canton|avalanche|xrpl)$/.test(r.id))return r.red;const s2=el('span');s2.append(document.createTextNode(r.red+' '),el('span','chip','representado domina'));return s2}},{t:'Distribuido (M$)',n:1,f:r=>mm(r.dist)},{t:'Representado (M$)',n:1,f:r=>mm(r.rep)},{t:'% distribuido',n:1,f:r=>pc(r.pct)},{t:'DeFi categoría RWA (M$)',n:1,f:r=>r.defi==null?'sin protocolo':mm(r.defi)},{t:'Stablecoins (M$)',n:1,f:r=>mm(r.stable)},{t:'TVL de la cadena (M$)',n:1,f:r=>mm(r.tvl_cadena)}],B1.filas)));
@@ -2461,8 +2507,54 @@ function pCadenas(){
       const pinta=g=>{host.textContent='';host.append(scrollX(tabla([{t:'Modalidad',f:r=>r.modalidad},{t:'Activo',f:r=>el('b',null,r.activo)},{t:'Cifra leída',f:r=>r.celda.t},{t:'Fuente, fecha y nivel',f:r=>src(r.celda)},{t:'Riesgo',f:r=>r.riesgo}],RN.filas.filter(f=>g==='Todos'||gr(f.modalidad)===g))));bar.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.g===g))};
       gs.forEach(g=>{const bt=el('button','cad-bt',g+' ('+(g==='Todos'?RN.filas.length:RN.filas.filter(f=>gr(f.modalidad)===g).length)+')');bt.type='button';bt.dataset.g=g;bt.addEventListener('click',()=>pinta(g));bar.append(bt)});
       b.append(bar,host);pinta('Todos');S.append(b)}
+    /* 21-nov: tokenizado (11 redes con lectura y caducidad), pistas de las voces, instituciones que tokenizan */
+    const TKZ=D.tokenizado;
+    if(TKZ&&(TKZ.redes||[]).length){const b=caja('cad-tokenizado','Valor tokenizado por red: lectura con fecha y caducidad (RWA.xyz y DefiLlama, '+TKZ._leido+')',TKZ.nota);
+      const n0=f=>Math.round((new Date(f+'T00:00:00')-new Date(HOYS+'T00:00:00'))/864e5);
+      const cad2=f=>{const n=n0(f);return el('span','chip '+(n<0?'cad-no':n<=3?'cad-ya':'cad-ok'),n<0?'caducada hace '+(-n)+' d':n===0?'caduca hoy':'caduca en '+n+' d')};
+      const TT=TKZ.totales_rwaxyz;
+      b.append(kpis([[miles(num(TT.distribuido_musd,0))+' M$','distribuido (30 d: '+num(TT.distribuido_cambio_30d_pct,1)+' %) · RWA.xyz '+TKZ._leido+' [S]'],[miles(num(TT.representado_musd,0))+' M$','representado (30 d: +'+num(TT.representado_cambio_30d_pct,1)+' %): no es distribuido'],[miles(num(TKZ.defillama_protocolos_rwa,0)),'protocolos RWA en DefiLlama (DeFi, no el total tokenizado)']]));
+      const pc3=v=>v==null?'sin dato':(v>0?'+':'')+num(v,1)+' %';
+      b.append(scrollX(tabla([{t:'Red',f:r=>el('b',null,r.red)},{t:'Distribuido (M$)',n:1,f:r=>miles(num(r.rwaxyz.distribuido_musd,1))},{t:'Cambio 30 d',n:1,f:r=>{const s2=el('span',r.rwaxyz.distribuido_cambio_30d_pct>0?'sube':r.rwaxyz.distribuido_cambio_30d_pct<0?'baja':'',pc3(r.rwaxyz.distribuido_cambio_30d_pct));if(r.id==='stellar')s2.style.fontWeight='700';return s2}},{t:'Representado (M$)',n:1,f:r=>miles(num(r.rwaxyz.representado_musd,1))},{t:'DeFi RWA (M$)',n:1,f:r=>r.defillama?miles(num(r.defillama.rwa_defi_musd,1)):'sin dato'},{t:'Leído',f:r=>vc(r.rwaxyz.leido)},{t:'Vigencia',f:r=>cad2(r.rwaxyz.caduca)},{t:'Nivel',f:r=>nivelBadge(r.rwaxyz.nivel)}],TKZ.redes)));
+      b.append(el('p','nota-v','Trampa de la métrica: «representado» ≠ «distribuido», y la cifra de DeFi (DefiLlama) mide solo el valor bloqueado en protocolos, no lo tokenizado (Stellar ~7 M$ en DeFi frente a ~4.900 M$ distribuidos no se contradicen). Nivel S: tercero comercial sin auditoría. Se renueva cada semana y caduca a los '+TKZ.caduca_dias+' días; si sale «caducada», no uses la cifra.'));
+      const st=TKZ.redes.find(x=>x.id==='stellar');if(st&&st.rwaxyz.distribuido_cambio_30d_pct!=null)b.append(el('p','nota-v','Stellar: '+pc3(st.rwaxyz.distribuido_cambio_30d_pct)+' en 30 días ('+miles(num(st.rwaxyz.distribuido_hace_30d_musd,1))+' a '+miles(num(st.rwaxyz.distribuido_musd,1))+' M$), sobre todo por Franklin Templeton BENJI (RWA.xyz, '+vc(st.rwaxyz.leido)+' [S]). Hecho leído; la causa de fondo no se interpreta aquí.'));
+      S.append(b)}
+    const PI=D.cadenas_pistas;
+    if(PI&&(PI.pistas||[]).length){const b=caja('cad-pistas','Lo que dicen las voces (pistas): NO son hechos',PI.aviso);
+      const est=PI.estados,sc=v=>(!v||/sin concretar/i.test(v));
+      const cnt=k=>PI.pistas.filter(x=>x.estado===k).length;
+      const ev={estado:'todos',red:'todas'},bar=el('div','cad-sel'),bar2=el('div','cad-sel'),host=el('div');
+      const redes=['todas',...new Set(PI.pistas.map(x=>x.red_o_ambito||'general'))];
+      const pinta=()=>{host.textContent='';const fl=PI.pistas.filter(x=>(ev.estado==='todos'||x.estado===ev.estado)&&(ev.red==='todas'||(x.red_o_ambito||'general')===ev.red));
+        host.append(el('p','nota-v',fl.length+' de '+PI.pistas.length+' pistas. Pulsa una fila para ver la nota y qué verificar.'));
+        const g=el('div','pist-g');fl.forEach(x=>{const d=el('details','pist cerrado-por-defecto pist-'+x.estado);const sm=el('summary');sm.append(el('span','chip est-'+x.estado,x.estado.replace(/_/g,' ')),document.createTextNode(' '),el('b',null,x.actor),document.createTextNode(' · '+(x.red_o_ambito||'general')+' · '),nivelBadge(x.nivel));
+          d.append(sm);d.append(el('p','que','Dijo: '+x.que_dijo));
+          const cz=el('p','nota-v');cz.append(el('b',null,'Concreta: '));[['token',x.concreta&&x.concreta.token],['red',x.concreta&&x.concreta.red],['producto',x.concreta&&x.concreta.producto]].forEach(([k,v],i)=>{if(i)cz.append(document.createTextNode(' · '));cz.append(document.createTextNode(k+': '));cz.append(sc(v)?el('span','chip sin-conc','sin concretar'):document.createTextNode(v))});d.append(cz);
+          d.append(el('p','nota-v',(x.nota||'')));if(x.verificar)d.append(el('p','nota-v','[VERIFICAR] '+(Array.isArray(x.verificar)?x.verificar.join(' · '):x.verificar)));
+          const f=el('p','nota-v');f.append(document.createTextNode('Fuente ('+vc(x.fecha)+'): '));if(x.fuente_url)f.append(lk(x.fuente_url,'abrir ↗'));else f.append(document.createTextNode('sin enlace'));d.append(f);g.append(d)});host.append(g);
+        bar.querySelectorAll('button').forEach(z=>z.classList.toggle('on',z.dataset.k===ev.estado));bar2.querySelectorAll('button').forEach(z=>z.classList.toggle('on',z.dataset.k===ev.red))};
+      ['todos',...Object.keys(est)].forEach(k=>{const bt=el('button','cad-bt',(k==='todos'?'Todos':k.replace(/_/g,' '))+' ('+(k==='todos'?PI.pistas.length:cnt(k))+')');bt.type='button';bt.dataset.k=k;if(est[k])bt.title=est[k];bt.addEventListener('click',()=>{ev.estado=k;pinta()});bar.append(bt)});
+      redes.forEach(k=>{const bt=el('button','cad-bt',k);bt.type='button';bt.dataset.k=k;bt.addEventListener('click',()=>{ev.red=k;pinta()});bar2.append(bt)});
+      b.append(el('p','nota-v','Estado: '+Object.entries(est).map(([k,v])=>k.replace(/_/g,' ')+' = '+v).join(' · ')+'. Nivel: '+Object.entries(PI.niveles).map(([k,v])=>k+' = '+v).join(' · ')+'.'),bar,bar2,host);pinta();S.append(b)}
+    const TI=D.tokenizacion_instituciones;
+    if(TI&&(TI.actores||[]).length){const b=caja('cad-instituciones','Instituciones financieras que tokenizan ('+TI.actores.length+' actores, '+TI.actores.reduce((a,x)=>a+x.iniciativas.length,0)+' iniciativas)',TI.aviso);
+      b.append(el('p','nota-v','Nivel: '+TI.leyenda_nivel));
+      const q=el('input','inst-q');q.type='search';q.placeholder='Buscar por actor o por red (JPMorgan, Ethereum, Canton…)';q.setAttribute('aria-label','Buscar institución o red');
+      const host=el('div','inst-g'),cn=el('p','nota-v');
+      const sc=v=>!v||/sin concretar/i.test(v);
+      const pinta=()=>{const t=nrm(q.value);host.textContent='';let n=0;
+        TI.actores.forEach(a=>{const its=a.iniciativas.filter(i=>!t||nrm(a.actor+' '+a.tipo).includes(t)||nrm(i.red_tecnologia+' '+i.que).includes(t));if(!its.length)return;n++;
+          const c=el('details','inst cerrado-por-defecto');c.open=!!t&&n<=3;const sm=el('summary');sm.append(el('b',null,a.actor),document.createTextNode(' · '+a.tipo+' · '+its.length+' iniciativa'+(its.length>1?'s':'')));c.append(sm);
+          its.forEach(i=>{const d=el('div','inst-i');const h=el('div');h.append(nivelBadge(/^P/.test(i.nivel)?'P':/^S/.test(i.nivel)?'S':'V'),document.createTextNode(' '+vc(i.fecha)+' · '));if(sc(i.red_tecnologia))h.append(el('span','chip sin-conc','red sin concretar'));else h.append(el('i',null,i.red_tecnologia));d.append(h);
+            d.append(el('p','que',i.que));const m=el('p','nota-v','Estado: '+(i.estado||'sin concretar')+' · Importe: '+(sc(i.importe)?'sin concretar':i.importe)+' · Nivel: '+i.nivel+(i.concreto_o_sin_concretar&&/sin concretar|no DLT|a verificar|terceros/.test(i.concreto_o_sin_concretar)?' · '+i.concreto_o_sin_concretar:'')+' · '+(i.fuente||'')+' ');if(i.url)m.append(lk(i.url,'abrir ↗'));d.append(m);c.append(d)});
+          if(a.nota)c.append(el('p','nota-v',a.nota));host.append(c)});
+        cn.textContent=n+' de '+TI.actores.length+' actores'+(t?' (filtro: «'+q.value+'»)':'')+'. No es recomendación ni orden de operar.'};
+      q.addEventListener('input',pinta);b.append(q,cn,host);
+      if((TI.sin_concretar_resumen||[]).length)b.append(lista('Lo que falta por concretar',TI.sin_concretar_resumen));
+      pinta();S.append(b)}
   })();
   cadExtras(S);
+
   // fichas: selector de red + una sola ficha dividida en pestañas (no una página interminable)
   const cf=el('div','caja');cf.id='cad-fichas';cf.append(el('h2',null,'Ficha por red: qué es, qué hace y qué se sabe de cada una'),el('p','nota-v','Elige una red y una pestaña: capas, ISO 20022, hechos, hitos, noticias y enlaces están separados para no tener que recorrer una página larguísima.'));
   const selB=el('div','cad-sel'),host=el('div');
@@ -3114,6 +3206,7 @@ function pPaneles(){
   if(D.ocde_bis)addA(bloque('OCDE y BIS por país: adelantado, paro, IPC, tipos, crédito y vivienda','Último dato publicado de cada país en las bases oficiales de la OCDE y del BIS. «vacío» = el país no tiene esa serie.',{nivel:'P',t:'OCDE (SDMX) y BIS · leído '+f10(D.ocde_bis.generado)},nOcde(),false));
   if(D.conflictos_gdelt)addA(bloque('Cobertura de conflictos en prensa (GDELT): qué temas y países suben o bajan','Mide cuánto aparece cada conflicto en la prensa mundial, no hechos ni gravedad. Útil solo para ver cambios de atención; contrastar con fuentes primarias.',{nivel:D.conflictos_gdelt.nivel||'S',t:'GDELT DOC 2.0 · leído '+f10(D.conflictos_gdelt.leido)},nGdelt(),false));
   if(D.etf_flujos)addA(bloque('Fondos cripto (ETF y fideicomisos): acciones, tenencia y flujos (webs de los emisores)','Datos que publica cada gestora. El flujo diario necesita dos días seguidos de lectura: mientras no los haya, sale «vacío».',{nivel:'P',t:'Webs de los emisores (parte interesada) · leído '+f10(D.etf_flujos.generado)},nEtf(),false));
+  if(D.etf_13f)addA(bloque('Quién tiene los ETF (13F, 3T-2026): tenedores, soberanos y límites del 13F','Foto a '+f10(D.etf_13f.periodo)+', no flujos: quién declaraba tener cada ETF cripto el 30-sep-2026 frente al 2T. No es recomendación.',{nivel:'S',t:'13f.info contrastado con 13F-HR de sec.gov · leído '+f10(D.etf_13f.leido)},nEtf13(),false));
   if(window.CBDCB)add(bloque('CBDC dentro de blockchains: qué existe y quién puede pagar o recibir','¿Se pueden pagar o recibir CBDC en blockchains? Respuesta corta y casos con tecnología, participantes y estado.',{nivel:'S',t:'Prensa y fuentes oficiales parciales · leído '+window.CBDCB.leido},nCbdc(),false));
   if(CAL)add(bloque('Calificaciones soberanas','Nota de solvencia que dan las agencias a cada país.',{nivel:'P',t:'Agencias y tesoros · leído '+CAL.leido},nCalif()));
   if(FMI)add(bloque('Deuda pública sobre el PIB (FMI)','Deuda total del gobierno como % del PIB; 2026 y años siguientes son previsiones.',{nivel:'P',t:FMI.edicion+' · leído '+FMI.leido},nFmi()));

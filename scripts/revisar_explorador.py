@@ -567,6 +567,104 @@ try:
 except (OSError, ValueError):
     pass  # ya avisado arriba
 
+# 21-nov: tokenizado, pistas de las voces, instituciones que tokenizan y ETF 13F (JSON válido, niveles, fechas, caducidad y estados)
+def _fecha_ok(v):
+    return isinstance(v, str) and bool(re.fullmatch(r"\d{4}-\d{2}-\d{2}", v))
+
+
+def _cargar21(nombre):
+    try:
+        j = json.loads((RAIZ / "explorador" / nombre).read_text(encoding="utf-8"), parse_constant=_rechaza)
+    except (ValueError, OSError) as e:
+        aviso(nombre, f"no existe o JSON no válido: {e}")
+        return None
+    return j if isinstance(j, dict) else None
+
+
+def _nivel_ok(n):
+    return bool(n) and bool(re.match(r"^(P|S|V|ESP|R)\b", str(n)))
+
+
+_tk = _cargar21("tokenizado.json")
+if _tk:
+    if not _fecha_ok(_tk.get("_leido")):
+        aviso("tokenizado.json", "sin _leido AAAA-MM-DD")
+    if len(_tk.get("redes") or []) < 1:
+        aviso("tokenizado.json", "sin redes")
+    for _r in _tk.get("redes") or []:
+        _w = f"tokenizado {_r.get('id')}"
+        for _blq in ("rwaxyz", "defillama"):
+            _b = _r.get(_blq)
+            if not isinstance(_b, dict):
+                aviso(_w, f"falta «{_blq}»")
+                continue
+            if not _nivel_ok(_b.get("nivel")):
+                aviso(_w, f"{_blq}: nivel no permitido ({_b.get('nivel')!r})")
+            if not _fecha_ok(_b.get("leido")) or not _fecha_ok(_b.get("caduca")):
+                aviso(_w, f"{_blq}: leido/caduca no son AAAA-MM-DD")
+            elif _b["caduca"] < _b["leido"]:
+                aviso(_w, f"{_blq}: caduca anterior a leido")
+            elif _b["caduca"] < date.today().isoformat():
+                aviso(_w, f"{_blq}: lectura caducada el {_b['caduca']} (relanzar scripts/leer_tokenizado.py)")
+            if not str(_b.get("trampa") or "").strip():
+                aviso(_w, f"{_blq}: falta la nota de «trampa»")
+_pi = _cargar21("cadenas-pistas.json")
+if _pi:
+    _est = set((_pi.get("estados") or {}).keys())
+    if _est != {"confirmada_concreta", "confirmada_sin_concretar", "matizada", "sin_confirmar", "desmentida"}:
+        aviso("cadenas-pistas.json", f"estados inesperados: {sorted(_est)}")
+    _idp = [x.get("id") for x in _pi.get("pistas", [])]
+    if len(_idp) != len(set(_idp)):
+        aviso("cadenas-pistas.json", "id repetido")
+    for _x in _pi.get("pistas", []):
+        _w = f"pista {_x.get('id')}"
+        if _x.get("estado") not in _est:
+            aviso(_w, f"estado no permitido ({_x.get('estado')!r})")
+        if _x.get("nivel") not in (_pi.get("niveles") or {}):
+            aviso(_w, f"nivel no permitido ({_x.get('nivel')!r})")
+        if not _fecha_ok(_x.get("fecha")):
+            aviso(_w, "fecha no AAAA-MM-DD")
+        _c = _x.get("concreta") or {}
+        if not all(str(_c.get(k) or "").strip() for k in ("token", "red", "producto")):
+            aviso(_w, "concreta{token,red,producto}: usar «sin concretar» si falta")
+_ti = _cargar21("tokenizacion-instituciones.json")
+if _ti:
+    if not _fecha_ok(_ti.get("_leido")):
+        aviso("tokenizacion-instituciones.json", "sin _leido AAAA-MM-DD")
+    _ida = [x.get("id") for x in _ti.get("actores", [])]
+    if len(_ida) != len(set(_ida)):
+        aviso("tokenizacion-instituciones.json", "id de actor repetido")
+    for _a in _ti.get("actores", []):
+        if not _a.get("iniciativas"):
+            aviso(f"institución {_a.get('id')}", "sin iniciativas")
+        for _i in _a.get("iniciativas", []):
+            _w = f"institución {_a.get('id')}"
+            if not _nivel_ok(_i.get("nivel")):
+                aviso(_w, f"nivel no permitido ({_i.get('nivel')!r})")
+            if not re.match(r"\d{4}(-\d{2}){0,2}|\[VERIFICAR|sin concretar", str(_i.get("fecha") or "")):   # admite «2026-03-17 (acuerdo)» y rangos: debe empezar por un año
+                aviso(_w, f"fecha no válida ({_i.get('fecha')!r})")
+            if not str(_i.get("que") or "").strip():
+                aviso(_w, "iniciativa sin «que»")
+            if _i.get("url") and not str(_i["url"]).startswith("https://"):
+                aviso(_w, "url no https")
+_ef = _cargar21("etf-13f.json")
+if _ef:
+    for _k in ("leido", "caduca", "periodo", "generado"):
+        if not _fecha_ok(_ef.get(_k)):
+            aviso("etf-13f.json", f"«{_k}» no es AAAA-MM-DD")
+    if _fecha_ok(_ef.get("caduca")) and _ef["caduca"] < date.today().isoformat():
+        aviso("etf-13f.json", f"foto caducada el {_ef['caduca']} (hay 13F nuevo)")
+    if not _ef.get("advertencias"):
+        aviso("etf-13f.json", "sin advertencias de límites del 13F")
+    if not _nivel_ok(_ef.get("nivel_global")):
+        aviso("etf-13f.json", "nivel_global no permitido")
+    for _e in _ef.get("etfs", []):
+        if not _e.get("ticker") or not isinstance(_e.get("valor_total_3T_miles_usd"), (int, float)):
+            aviso(f"etf-13f {_e.get('ticker')}", "falta ticker o valor_total_3T_miles_usd")
+        for _t in _e.get("tenedores_principales", []):
+            if not str(_t.get("tipo") or "").strip():
+                aviso(f"etf-13f {_e.get('ticker')}", f"tenedor sin tipo: {_t.get('tenedor')}")
+
 # C205: la tesis de Joel es privada. privado/ no puede estar en git ni su contenido en las páginas públicas (docs/)
 try:
     import subprocess
@@ -714,6 +812,21 @@ try:
             aviso("puente_neutral", f"paso {_i}: sin hecho con fuente ni razón [ESPECULACIÓN]")
 except (OSError, ValueError) as _e:
     aviso("puente_neutral", f"no se pudo validar ({type(_e).__name__})")
+
+# C355: las cifras de tokenizado por red caducan (campo «caduca»); avisa si una supera su fecha
+try:
+    _tk = RAIZ / "explorador" / "tokenizado.json"
+    if _tk.exists():
+        for _r in json.loads(_tk.read_text(encoding="utf-8")).get("redes", []):
+            for _b in ("rwaxyz", "defillama", "primaria"):
+                _x = _r.get(_b)
+                if _x and _x.get("caduca") and fecha_ok(_x["caduca"]) and date.fromisoformat(_x["caduca"]) < date.today():
+                    aviso(f"tokenizado {_r.get('id')}.{_b}", f"cifra caducada (leída {_x.get('leido')}, caducó {_x['caduca']}): ejecuta scripts/leer_tokenizado.py")
+    _la = (json.loads((RAIZ / "explorador" / "cadenas.json").read_text(encoding="utf-8")).get("brecha_rwa") or {}).get("lectura_actual") or {}
+    if _la.get("caduca") and fecha_ok(_la["caduca"]) and date.fromisoformat(_la["caduca"]) < date.today():
+        aviso("brecha_rwa lectura_actual", f"cifras caducadas ({_la['caduca']}): actualiza con scripts/leer_tokenizado.py")
+except (OSError, ValueError) as _e:
+    aviso("tokenizado", f"no se pudo validar ({type(_e).__name__})")
 
 print("\n".join(avisos) if avisos else "Sin avisos.")
 if _pend327:

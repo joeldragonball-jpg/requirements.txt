@@ -1,7 +1,7 @@
 {
  "id": "espana-macro",
  "titulo": "España: pack macro (IPC, EPA, afiliación, salarios, SMI, PIB)",
- "leido": "2026-11-20",
+ "leido": "2026-11-21",
  "nivel": "P",
  "unidad": "Cada registro lleva su propia unidad: % = porcentaje, pp = puntos porcentuales, miles de personas, personas, € = euros. Cifras como número puro.",
  "nota": "Leído en la API oficial del INE (servicios.ine.es/wstempus, tablas y códigos de serie indicados), la nota de la Seguridad Social del 4-nov-2026 y el BOE-A-2026-3815. Lo que no se pudo leer en fuente oficial va como null y [VERIFICAR]. Es información, no recomendación.",
@@ -905,10 +905,16 @@
    }
   },
   "tipo_medio_hipotecas": {
-   "valor": null,
+   "valor": 3.08,
    "unidad": "%",
-   "nivel": "VERIFICAR",
-   "nota": "Tipo medio de las nuevas hipotecas (BdE/INE) sin leer."
+   "nivel": "P",
+   "nota": "Tipo de interés medio al inicio de las hipotecas sobre viviendas (INE, estadística de hipotecas, ago-2026); jul-2026 3,01 %. Fijo 3,16 % (HPT64407), variable 2,95 % (HPT64406). Leído en la API del INE el 21-nov-2026; sep-2026 aún no publicado. Es el tipo de las hipotecas inscritas (INE), no el de nuevas operaciones del BdE.",
+   "periodo": "ago-2026",
+   "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/24457 (serie HPT64408)",
+   "anterior": {
+    "periodo": "jul-2026",
+    "valor": 3.01
+   }
   },
   "euribor_otros_plazos_oct2026": [
    {
@@ -1009,7 +1015,7 @@
    "periodo": "19-nov-2026",
    "nivel": "P",
    "fuente": "https://data-api.ecb.europa.eu/service/data/EST/B.EU000A2X2A25.WT",
-   "nota": "API de datos del BCE, serie EST.B.EU000A2X2A25.WT, leída el 18-nov-2026. Media de octubre (BdE) 2,441 %. 20-nov: releída la API del BCE hasta el 19-nov.",
+   "nota": "API de datos del BCE, serie EST.B.EU000A2X2A25.WT, leída el 18-nov-2026. Media de octubre (BdE) 2,441 %. 20-nov: releída la API del BCE hasta el 19-nov. 21-nov: releída la API del BCE (EST.B.EU000A2X2A25.WT): última observación 19-nov = 2,441 % (20-nov aún no publicado).",
    "serie_diaria": [
     {
      "fecha": "2026-11-11",

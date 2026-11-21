@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-21 17:38 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-21 18:07 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -6,9 +6,9 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hoy (máx. 3):** Gemini Energía y geopolítica
 **Periódicas (próxima):** W10 11-21 · W01 11-23 · W02 11-24 · W08 11-25 · W04 11-26 · W05 11-26 · W06 11-27 · W09 11-27 · W03 12-02 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
-**Parciales (46):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: 17-nov: 20 movimientos volcados a datos.json (305) · C42 falta: 18-nov 3.ª: ESMA, SFC y MAS leídos; VARA parcial.  · C58 falta: 18-nov: Rusia a P (Duma 450), India Lok Sabha 540/ · C59 falta: 17-nov: salario mínimo y fichas añadidos a indicad · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
+**Parciales (48):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: 17-nov: 20 movimientos volcados a datos.json (305) · C42 falta: 18-nov 3.ª: ESMA, SFC y MAS leídos; VARA parcial.  · C58 falta: 18-nov: Rusia a P (Duma 450), India Lok Sabha 540/ · C59 falta: 17-nov: salario mínimo y fichas añadidos a indicad · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
 **Vigiladas (11, sin cerrar; las revisa W05 o W08):** C230 (11-25) · C245 (11-25) · C267 (11-25) · C275 (11-25) · C331 (11-25) · C61 (11-25) · C261 (11-26) · C340 (11-26)
-**Hechas en 7 días (6):** C205, C206, C262, C264, C265, C266
+**Hechas en 7 días (8):** C355, C360, C205, C206, C262, C264, C265, C266
 
 ## Hoy (sáb 2026-11-21): solo lo casi obligatorio
 - R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 14 días
@@ -80,9 +80,8 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C339 ◐ en parte · Cadenas: hoja de ruta oficial de DTCC por red (Canton, Besu, Stellar, Solana, Ar · Sonnet M · ~~4 % · ``
 - C343 ◐ en parte · ETF spot de XRP, XLM y Solana: emisor, comisión, custodio y flujos diarios desde · Sonnet M · ~~4 % · ``
 - C354 ◐ en parte · Órbita · Tablet (Redmi Pad SE 11", uso en horizontal): arreglar la primera págin · Sonnet M · ~~3 % · ``
-- C355 · Cadenas · Tokenizado por red: sistema para mantener al día «cuánto está tokeniza · Sonnet M · ~~4 % · ``
-- C356 · Voces → Línea de tiempo y capas: al abrir una capa (p. ej. Regulación) la línea  · Sonnet L · ~~5 % · ``
-- C357 · Cadenas · Aprovechar las voces: llevar a cada red lo que dicen las voces aunque  · Sonnet M · ~~4 % · ``
+- C356 ◐ en parte · Voces → Línea de tiempo y capas: al abrir una capa (p. ej. Regulación) la línea  · Sonnet L · ~~5 % · ``
+- C357 ◐ en parte · Cadenas · Aprovechar las voces: llevar a cada red lo que dicen las voces aunque  · Sonnet M · ~~4 % · ``
 - C358 · Cadenas · Revisar si conviene dividir en más secciones (Joel la ve algo comprimi · Sonnet S · ~~1 % · ``
 - C359 · Centro · Limpieza: verificar las noticias pendientes de prioridad alta y de más  · Sonnet M · ~~3 % · ``
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
@@ -125,21 +124,21 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - ninguna anotada
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [alta] 2026-11-20 (1 d) · Irán prepara un convoy de petroleros en Kharg para desafiar el bloqueo de EE. UU.
-- [alta] 2026-11-20 (1 d) · El Nasdaq cae un 3 % y el Ibex firma su peor semana en ocho meses.
-- [alta] 2026-11-20 (1 d) · Bessent pide a la Fed una subida de tipos menor por el shock energético.
-- [alta] 2026-11-20 (1 d) · Bitcoin se hunde por debajo de 59.000 $.
 - [media] 2026-10-25 (27 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
 - [media] 2026-10-25 (27 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
 - [media] 2026-10-25 (27 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 - [media] 2026-10-25 (27 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
+- [media] 2026-10-25 (27 d) · [VERIFICAR] Consulta DGT V0648-24 leída en petete
+- [media] 2026-10-25 (27 d) · [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov)
+- [media] 2026-10-25 (27 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov
+- [media] 2026-10-25 (27 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
 - … y 54 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
-- 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (27) → W03 · Se revisan con la rutina de países
+- 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (24) → W03 · Se revisan con la rutina de países
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (2) → W03 · CN/politica; ZA/politica
 - 🔴 Voces: Voces sin confirmar (47) → W06 · 24 llevan más de 14 días
-- 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (39) → rutina de cada tema (ver explorador/frescura.json) · verdes 42, amarillos 25, rojos 7, grises 7. Rojos: bancos-eba, deuda-fmi, espana
+- 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (40) → rutina de cada tema (ver explorador/frescura.json) · verdes 45, amarillos 26, rojos 7, grises 7. Rojos: bancos-eba, deuda-fmi, espana
 - 🟡 Radar regulatorio: Celdas sin dato (8) → W03 · Más huecos: IR 2, AE 1, BRICS 1, ID 1, EG 1
 
 ## Bots con problema
@@ -151,7 +150,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 2026-11-13 · AIE: informe mensual del mercado petrolero (noviembre) (medio) → ✓ revisado (hecho)
 - 2026-11-13 · España: IPC definitivo de octubre (INE) (medio) → ✓ revisado (hecho)
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → ✓ revisado (hecho)
-- 2026-11-18 · APEC en Shenzhen: cumbre de líderes (medio) → ◐ rutina ejecutada (W03 del 2026-11-20); dato sin marcar como leído
+- 2026-11-18 · APEC en Shenzhen: cumbre de líderes (medio) → ✓ revisado (hecho)
 - 2026-11-18 · Reino Unido: IPC de octubre (ONS) (medio) → ✓ revisado (hecho)
 - 2026-11-18 · Zona euro: IPCA definitivo de octubre (Eurostat) (medio) → ✓ revisado (hecho)
 «✓ cubierto» exige que el informe de la rutina tenga una línea `Eventos leídos: <fecha o título>`; sin ella solo consta que la rutina se ejecutó (C256).
@@ -159,7 +158,10 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 
 ## Calendario: próximos 14 días de impacto y qué los cubre
 - 2026-11-23 · Stellar: voto de mainnet de Protocol 30 (Bell) (medio) → sin rutina: valorar research EV
+- 2026-11-23 · EE. UU.: subasta de notas del Tesoro a 2 años ($69 mil M) (medio) → cubre W02 (Deuda y subastas)
+- 2026-11-24 · EE. UU.: subasta de notas del Tesoro a 5 años ($70 mil M) (medio) → cubre W02 (Deuda y subastas)
 - 2026-11-25 · PCE de octubre y PIB de EE. UU. (2.ª estimación) (medio) → cubre W01 (Datos macro y tipos)
+- 2026-11-25 · EE. UU.: subasta de notas del Tesoro a 7 años ($44 mil M) (medio) → cubre W02 (Deuda y subastas)
 - 2026-11-26 · Corea: próxima reunión del Banco de Corea sobre el tipo base (medio) → cubre W01 (Tipos de interés)
 - 2026-11-27 · Francia: revisión programada de la calificación de S&P (hoy  (medio) → cubre W02 (Deuda y subastas)
 - 2026-11-27 · España: IPC adelantado de noviembre (INE) (medio) → cubre W01 (Datos macro y tipos)
@@ -167,9 +169,6 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 - 2026-11-29 · OPEP+: reunión mensual (fecha según prensa) (medio) → cubre W10 (Energía y geopolítica)
 - 2026-11-30 · EE. UU.: fin de comentarios a las propuestas de la Fed sobre (medio) → sin rutina: valorar research EV
 - 2026-12-01 · Zona euro: IPCA adelantado de noviembre (Eurostat) (medio) → cubre W01 (Datos macro y tipos)
-- 2026-12-01 · Estonia: cierre de los pasos fronterizos con Rusia (medio) → sin rutina: valorar research EV
-- 2026-12-02→12-04 · Reunión del RBI (India) (medio) → cubre W01 (Tipos de interés)
-- 2026-12-04 · Empleo EE. UU. (informe de noviembre) (alto) → cubre W01 (Datos macro y tipos)
 
 ## Predicciones que vencen en 14 días
 - #80 · 2026-11-22 · Despeja La X (David Martínez), en vídeo
@@ -179,9 +178,9 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 
 ## Próximas fechas clave
 - 2026-11-23 · Stellar: voto de mainnet de Protocol 30 (Bell)
+- 2026-11-23 · EE. UU.: subasta de notas del Tesoro a 2 años ($69 mil M)
+- 2026-11-24 · EE. UU.: subasta de notas del Tesoro a 5 años ($70 mil M)
 - 2026-11-25 · PCE de octubre y PIB de EE. UU. (2.ª estimación)
+- 2026-11-25 · EE. UU.: subasta de notas del Tesoro a 7 años ($44 mil M)
 - 2026-11-26 · Corea: próxima reunión del Banco de Corea sobre el tipo base (hoy 3,00 %)
 - 2026-11-27 · Francia: revisión programada de la calificación de S&P (hoy A+, estable)
-- 2026-11-27 · España: IPC adelantado de noviembre (INE)
-- 2026-11-29 · España: elecciones generales anticipadas
-- 2026-11-30 · EE. UU.: fin de comentarios a las propuestas de la Fed sobre stablecoins

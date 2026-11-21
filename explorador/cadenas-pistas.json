@@ -1,0 +1,560 @@
+{
+ "_actualizado": "2026-11-21",
+ "tarea": "C357",
+ "aviso": "Pistas de voces sobre actores, redes y productos que no concretan token, red o producto. NO son hechos: cada una lleva estado y nivel. «sin concretar» = la voz o la fuente no lo dice.",
+ "estados": {
+  "confirmada_concreta": "Fuente fiable con token, red y producto precisos",
+  "confirmada_sin_concretar": "Hay fuente de que ocurre, pero sin token, red o producto",
+  "matizada": "Parte cierta, parte distinta de lo dicho",
+  "sin_confirmar": "Sin fuente primaria localizada",
+  "desmentida": "Contradicha por fuentes"
+ },
+ "niveles": {
+  "P": "Primaria leída",
+  "S": "Prensa o agregador",
+  "V": "Solo en el vídeo",
+  "ESP": "Especulación"
+ },
+ "pistas": [
+  {
+   "id": "pista-db-ripple",
+   "actor": "Deutsche Bank",
+   "red_o_ambito": "xrpl",
+   "voz_id": "v193",
+   "que_dijo": "«Deutsche Bank seguirá usando tecnología de Ripple» (el canal añade que así se salta Swift).",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "sin concretar",
+    "producto": "sin concretar"
+   },
+   "estado": "sin_confirmar",
+   "nivel": "S",
+   "fuente_url": "https://yellow.com/news/deutsche-bank-turns-to-ripple-infrastructure-as-swift-races-to-build-blockchain-ledger",
+   "fecha": "2026-02-19",
+   "nota": "Origen: Der Aktionär (mediados de feb-2026) vía agregadores: integración de tecnología ligada a Ripple en pagos, FX y custodia. Ni Deutsche Bank ni Ripple han publicado comunicado (la nota de db.com del 16-sep no nombra proveedores). V01 la marcó confirmada sin concretar; en esta revisión solo hay prensa [S], sin primaria. No implica XRP: un banco puede usar software de Ripple sin el token. Incentivo de las fuentes: medios cripto/XRP.",
+   "verificar": "Comunicado de Deutsche Bank o Ripple; qué producto (Payments, Custody), qué red y si hay XRP."
+  },
+  {
+   "id": "pista-db-salta-swift",
+   "actor": "Deutsche Bank",
+   "red_o_ambito": "xrpl",
+   "voz_id": "v193",
+   "que_dijo": "Deutsche Bank se salta por completo Swift usando Ripple.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "sin concretar",
+    "producto": "sin concretar"
+   },
+   "estado": "matizada",
+   "nivel": "S",
+   "fuente_url": "https://www.swift.com/about-us/media-centre/press-releases/swift-add-blockchain-based-ledger-its-infrastructure-stack-groundbreaking-move-accelerate-and-scale-benefits-digital-finance-across-more-200-countries-and-territories-worldwide",
+   "fecha": "2025-09-29",
+   "nota": "Swift lista a Deutsche Bank entre los 30+ bancos del grupo de diseño de su libro mayor (nota localizada en buscador, no leída entera). Contradice «se salta Swift»: el banco participa en ambos mundos. Es una lectura del canal, sin cita del banco.",
+   "verificar": "Leer la lista de bancos en la nota de Swift; sin cita de Deutsche Bank sobre «saltarse» Swift."
+  },
+  {
+   "id": "pista-db-custodia",
+   "actor": "Deutsche Bank",
+   "red_o_ambito": null,
+   "voz_id": "v186",
+   "que_dijo": "Pone en marcha la custodia de bitcoin, ether y stablecoins para clientes institucionales europeos.",
+   "concreta": {
+    "token": "BTC, ETH, USDC, EURC (EURAU según prensa)",
+    "red": "sin concretar",
+    "producto": "Custodia de activos digitales (clientes de Corporate Bank e Investment Bank)"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "P",
+   "fuente_url": "https://www.db.com/news/detail/20260916-deutsche-bank-to-launch-digital-asset-custody-solution-for-institutional-and-corporate-clients",
+   "fecha": "2026-09-16",
+   "nota": "Leído en db.com: «go-live with first clients this year» sujeto al calendario regulatorio; usará «proveedores externos de tecnología e infraestructura» sin nombrarlos. Registro MiCA del 12-oct (Cointelegraph/crypto.news [S]). Decrypt (11-nov) dice «live»; la fecha de arranque no está confirmada en primaria. La nota no nombra cadena.",
+   "verificar": "Fecha real de go-live; proveedores (Taurus y Bitpanda según The Block [S]); en qué cadenas custodia."
+  },
+  {
+   "id": "pista-db-hedera",
+   "actor": "Deutsche Bank",
+   "red_o_ambito": "hedera",
+   "voz_id": null,
+   "que_dijo": "Deutsche Bank, cliente de Taurus, podría usar Hedera (staking y tokenización) tras la integración de Taurus.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "Hedera",
+    "producto": "HBAR staking y tokenización vía Taurus"
+   },
+   "estado": "sin_confirmar",
+   "nivel": "S",
+   "fuente_url": "https://ffnews.com/news/taurus-unlocks-full-hedera-stack-for-40-global-banks-to-scale-digital-asset-tokenization",
+   "fecha": "2026-08-05",
+   "nota": "Taurus dice que 40+ bancos usan su tecnología (entre ellos Deutsche Bank y State Street); ningún banco anuncia producto vivo en Hedera. La conexión DB-Hedera es inferencia de un medio secundario: pista a vigilar, no hecho.",
+   "verificar": "Comunicado de Deutsche Bank o Taurus con producto en Hedera."
+  },
+  {
+   "id": "pista-swift-ledger-17",
+   "actor": "Swift (17 bancos piloto)",
+   "red_o_ambito": null,
+   "voz_id": "v014",
+   "que_dijo": "Libro mayor de Swift «listo para uso inicial» con 17 bancos en pilotos de depósitos tokenizados 24/7.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "Sin confirmar en documentación de Swift: la prensa dice Linea (Consensys) o Besu",
+    "producto": "Depósitos tokenizados en el libro mayor de Swift"
+   },
+   "estado": "matizada",
+   "nivel": "S",
+   "fuente_url": "https://www.swift.com/news-events/press-releases/swifts-blockchain-ledger-ready-use-17-banks-set-pioneer-tokenised-cross-border-payments-trusted-global-infrastructure",
+   "fecha": "2026-07-09",
+   "nota": "Nota de Swift del 9-jul-2026 localizada (no leída entera). Las fuentes discrepan sobre la tecnología; Swift lo presenta como capa de orquestación y la liquidación final sigue en raíles existentes. Hecho: pilotos; opinión: que sustituya a nada.",
+   "verificar": "Leer la nota literal; stack tecnológico; lista completa de los 17 bancos."
+  },
+  {
+   "id": "pista-citi-swift",
+   "actor": "Citi",
+   "red_o_ambito": null,
+   "voz_id": "v014",
+   "que_dijo": "Citi procesó transacciones en vivo en el libro mayor de Swift con FAB y OCBC.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "sin concretar",
+    "producto": "Pagos en USD sobre el libro mayor de Swift (depósitos tokenizados según la nota, sin confirmar para estas operaciones)"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "P",
+   "fuente_url": "https://www.citigroup.com/global/news/press-release/2026/citi-services-pioneers-live-transactions-swift-ledger-fab-ocbc-redefine-always-on-global-payments",
+   "fecha": "2026-09-02",
+   "nota": "Leído en citigroup.com: primeras operaciones en vivo (FAB en Oriente Medio, OCBC en Sudeste Asiático); DBS y UOB «previstas». No nombra la cadena subyacente.",
+   "verificar": "Si fueron depósitos tokenizados; cadena subyacente."
+  },
+  {
+   "id": "pista-citi-token-services",
+   "actor": "Citi",
+   "red_o_ambito": null,
+   "voz_id": null,
+   "que_dijo": "Citi Token Services opera en 7 jurisdicciones sobre una cadena privada permisionada.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "Cadena privada permisionada (sin nombre)",
+    "producto": "Citi Token Services"
+   },
+   "estado": "confirmada_sin_concretar",
+   "nivel": "S",
+   "fuente_url": "https://www.citigroup.com/global/news/press-release/2026/citi-token-services-expands-global-footprint-japan-united-arab-emirates",
+   "fecha": "2026-09-28",
+   "nota": "Visto vía buscador, no leído entero. Sin red pública.",
+   "verificar": "Leer la nota; confirmar jurisdicciones."
+  },
+  {
+   "id": "pista-citi-solana",
+   "actor": "Citi",
+   "red_o_ambito": "solana",
+   "voz_id": null,
+   "que_dijo": "Citi habría hecho una prueba de concepto con PwC y Solana (letra de cambio tokenizada).",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "Solana",
+    "producto": "PoC interno de letra de cambio"
+   },
+   "estado": "sin_confirmar",
+   "nivel": "S",
+   "fuente_url": "https://finance.yahoo.com/markets/crypto/articles/beincrypto-100-institutional-awards-nomination-012931296.html",
+   "fecha": "2026-01-01",
+   "nota": "Una sola fuente secundaria (BeInCrypto/Yahoo); sin primaria de Citi. Fecha aproximada.",
+   "verificar": "Fuente de Citi o PwC."
+  },
+  {
+   "id": "pista-jpmd-canton",
+   "actor": "JPMorgan (Kinexys)",
+   "red_o_ambito": "canton",
+   "voz_id": "v041",
+   "que_dijo": "Emitirá JPM Coin (JPMD) de forma nativa en Canton, por fases en 2026.",
+   "concreta": {
+    "token": "JPMD",
+    "red": "Canton (y ya Base)",
+    "producto": "Depósito tokenizado JPM Coin"
+   },
+   "estado": "matizada",
+   "nivel": "S",
+   "fuente_url": "https://ffnews.com/news/digital-asset-and-kinexys-by-j-p-morgan-announce-intention-to-bring-usd-jpm-coin-jpmd-natively-to-the-canton-network",
+   "fecha": "2026-01-07",
+   "nota": "El titular recogido por FF News habla de «intención» de traer JPMD a Canton. Ninguna fuente localizada confirma emisión en vivo. En Base sí (nov-2025 [S]).",
+   "verificar": "Primera emisión o redención real en Canton; nota de Kinexys."
+  },
+  {
+   "id": "pista-jpm-dtcc-cme",
+   "actor": "J.P. Morgan (con DTCC)",
+   "red_o_ambito": "canton",
+   "voz_id": "v042",
+   "que_dijo": "Convirtió QQQ y SPY a forma tokenizada y depositó activos tokenizados como margen ante CME.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "Canton / Besu (DTCC)",
+    "producto": "Colateral tokenizado"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "P",
+   "fuente_url": "https://www.dtcc.com/digital-assets/tokenization/live-production-trades",
+   "fecha": "2026-07-15",
+   "nota": "Página de la jornada en dtcc.com (ya cotejada en el repo). No implica XRP ni XLM.",
+   "verificar": "Si se repite en producción tras el 28-oct."
+  },
+  {
+   "id": "pista-kinexys-8-divisas",
+   "actor": "JPMorgan (Kinexys)",
+   "red_o_ambito": null,
+   "voz_id": "v043",
+   "que_dijo": "Más de 4 billones $ procesados y depósitos en blockchain en 8 divisas.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "sin concretar",
+    "producto": "Blockchain Deposit Accounts / JPM Coin"
+   },
+   "estado": "confirmada_sin_concretar",
+   "nivel": "S",
+   "fuente_url": "https://cryptobriefing.com/jpmorgan-kinexys-blockchain-eight-currencies/",
+   "fecha": "2026-06-30",
+   "nota": "Medios coinciden; nota oficial no localizada. Es un acumulado desde el lanzamiento. Kinexys es plataforma propia: red pública no precisada.",
+   "verificar": "Nota oficial de JPMorgan."
+  },
+  {
+   "id": "pista-barclays-dtcc",
+   "actor": "Barclays",
+   "red_o_ambito": "solana",
+   "voz_id": "v213",
+   "que_dijo": "Valora el modelo multicadena de DTCC; querría ver Solana adoptada por otros depositarios; el primer valor está en mover colateral.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "Solana (deseo de un directivo, no plan de Barclays)",
+    "producto": "Colateral tokenizado intra-banco"
+   },
+   "estado": "confirmada_sin_concretar",
+   "nivel": "S",
+   "fuente_url": "https://decrypt.co/383316/dtcc-barclays-say-tokenizations-real-prize-is-unlocking-idle-collateral",
+   "fecha": "2026-11-16",
+   "nota": "Barclays figura entre los 20 participantes de DTC con acuerdo firmado (nota DTCC 28-oct, cotejada por el repo) [P]. Las frases sobre Solana son opinión citada por prensa [S], no compromiso.",
+   "verificar": "Cita original en el vídeo del Breakpoint de Londres."
+  },
+  {
+   "id": "pista-bofa-dtcc",
+   "actor": "Bank of America",
+   "red_o_ambito": "canton",
+   "voz_id": "v214",
+   "que_dijo": "Entre los participantes de DTC con acuerdo firmado para el servicio de tokenización.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "Canton y Besu (red del servicio, no elección de BofA)",
+    "producto": "Acceso al DTCC Tokenization Service"
+   },
+   "estado": "confirmada_sin_concretar",
+   "nivel": "P",
+   "fuente_url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+   "fecha": "2026-10-28",
+   "nota": "BofA figura entre los 20 firmantes (cotejado por el repo el 19-nov). Qué activos o cuándo opera: sin concretar. Aparte, prensa [S] habla de una red de depósitos tokenizados con Citi, Wells Fargo y JPMorgan vía The Clearing House para 1S-2027, sin primaria.",
+   "verificar": "Comunicado primario de la red de The Clearing House."
+  },
+  {
+   "id": "pista-dtcc-stellar-solana",
+   "actor": "DTCC",
+   "red_o_ambito": "stellar",
+   "voz_id": "v181",
+   "que_dijo": "Conectará su servicio a Stellar (1S-2027) y a Solana (2S-2027).",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "Stellar, Solana",
+    "producto": "DTCC Tokenization Service"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "P",
+   "fuente_url": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy",
+   "fecha": "2026-05-27",
+   "nota": "Notas del 27-may (Stellar) y 12-nov (Solana). No mencionan XLM ni SOL como medio de liquidación. Plan con fecha, no producción.",
+   "verificar": "Qué otras redes entran en 2027; XRPL no consta."
+  },
+  {
+   "id": "pista-dtcc-l1",
+   "actor": "DTCC (Frank La Salla)",
+   "red_o_ambito": null,
+   "voz_id": "v005",
+   "que_dijo": "Trabaja con «some very good L1s», sin nombrarlas.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "sin concretar",
+    "producto": "sin concretar"
+   },
+   "estado": "confirmada_sin_concretar",
+   "nivel": "S",
+   "fuente_url": "https://www.ledgerinsights.com/dtcc-explores-l1-blockchains-for-tokenization-has-scalability-concerns/",
+   "fecha": "2026-05-06",
+   "nota": "Declaración en Consensus (voz v005). Las redes oficiales hoy son Canton, Besu, y planes de Stellar y Solana. No usar para deducir XRPL.",
+   "verificar": "Lista oficial de redes en la hoja de ruta."
+  },
+  {
+   "id": "pista-ripple-prime-dtcc",
+   "actor": "Ripple Prime",
+   "red_o_ambito": "xrpl",
+   "voz_id": "v215",
+   "que_dijo": "Figura en el grupo de trabajo de DTCC (50+ firmas).",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "sin concretar",
+    "producto": "Participación en grupo de trabajo"
+   },
+   "estado": "confirmada_sin_concretar",
+   "nivel": "P",
+   "fuente_url": "https://www.dtcc.com/press-releases/2026/dtcc-advances-development-of-new-tokenization-service",
+   "fecha": "2026-05-04",
+   "nota": "La nota no menciona redes ni XRP; estar en el grupo no implica usar XRPL.",
+   "verificar": "Cualquier mención posterior de XRPL en DTCC."
+  },
+  {
+   "id": "pista-socgen-xrpl",
+   "actor": "Société Générale (SG-FORGE)",
+   "red_o_ambito": "xrpl",
+   "voz_id": null,
+   "que_dijo": "Despliega su stablecoin euro EURCV en el XRP Ledger con Ripple Custody.",
+   "concreta": {
+    "token": "EURCV",
+    "red": "XRPL (tras Ethereum y Solana)",
+    "producto": "Stablecoin euro MiCA"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "S",
+   "fuente_url": "https://ffnews.com/newsarticle/after-ethereum-and-solana-societe-generale-forge-announces-its-intention-to-deploy-its-eur-mica-compliant-stablecoin-on-the-xrp-ledger/",
+   "fecha": "2026-02-18",
+   "nota": "Intención anunciada el 14-nov-2024 (leído en FF News); salida en vivo el 18-feb-2026 según Cointelegraph y Finextra (buscador [S]). Ripple es proveedor de custodia (ex-Metaco). Hecho: emisión; no implica uso de XRP. Suministro ~66-78 M€ con cifras dispares.",
+   "verificar": "Nota oficial de SG-FORGE; suministro en cadena."
+  },
+  {
+   "id": "pista-mastercard-rlusd",
+   "actor": "Mastercard",
+   "red_o_ambito": "xrpl",
+   "voz_id": null,
+   "que_dijo": "Amplía su liquidación a stablecoins regulados (USDC, PYUSD, USDG, USDP, RLUSD, SoFiUSD) en varias cadenas incluida XRPL.",
+   "concreta": {
+    "token": "RLUSD y otros",
+    "red": "XRPL, Ethereum, Solana, Base, Canton, Polygon, Arbitrum, Tempo",
+    "producto": "Liquidación con stablecoin"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "S",
+   "fuente_url": "https://www.mastercard.com/us/en/news-and-trends/press/2026/june/mastercard-expands-settlement-capabilities-to-include-stablecoin.html",
+   "fecha": "2026-06-03",
+   "nota": "La web de Mastercard devolvió 403 al fetch; contenido por The Block y Cointelegraph (buscador [S]). Anunciar capacidad no es volumen. Piloto Ripple-Mastercard-WebBank-Gemini desde Swell 2025.",
+   "verificar": "Leer la nota en Chrome; volumen real en XRPL."
+  },
+  {
+   "id": "pista-visa-9-cadenas",
+   "actor": "Visa",
+   "red_o_ambito": "stellar",
+   "voz_id": null,
+   "que_dijo": "Liquidación con stablecoins en 9 cadenas: Avalanche, Ethereum, Solana, Stellar, Arc, Base, Canton, Polygon y Tempo; 7.000 M$ anualizados.",
+   "concreta": {
+    "token": "USDC",
+    "red": "sin concretar",
+    "producto": "Piloto de liquidación con stablecoins"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "P",
+   "fuente_url": "https://investor.visa.com/news/news-details/2026/Visa-Accelerates-Stablecoin-Momentum-Adding-Five-Blockchains-for-Settlement/default.aspx",
+   "fecha": "2026-04-29",
+   "nota": "Leído en investor.visa.com: ni XRPL ni Ripple aparecen; solo USDC como stablecoin. Piloto; cifra de la propia empresa.",
+   "verificar": "Volumen por cadena (no desglosado)."
+  },
+  {
+   "id": "pista-euroclear-clearstream",
+   "actor": "Euroclear / Clearstream / DTCC",
+   "red_o_ambito": null,
+   "voz_id": null,
+   "que_dijo": "Iniciativa de interoperabilidad de valores digitales entre Euroclear, Clearstream y DTCC.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "sin concretar",
+    "producto": "sin concretar"
+   },
+   "estado": "confirmada_sin_concretar",
+   "nivel": "S",
+   "fuente_url": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260323~a88f20c049.hu.html",
+   "fecha": "2026-03-23",
+   "nota": "Cipollone (BCE) la saluda en un discurso de mar-2026 (visto en buscador, no leído). Sin red ni producto; no se localizó nota propia de Euroclear.",
+   "verificar": "Nota de las tres entidades con red y calendario."
+  },
+  {
+   "id": "pista-pontes",
+   "actor": "BCE / Eurosistema",
+   "red_o_ambito": null,
+   "voz_id": "v027",
+   "que_dijo": "Pontes arranca el 21-sep-2026 para liquidar activos tokenizados en dinero de banco central.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "sin concretar",
+    "producto": "Pontes (puente entre plataformas DLT y TARGET)"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "S",
+   "fuente_url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260921~e754847a7b.pt.html",
+   "fecha": "2026-09-21",
+   "nota": "Nota del BCE localizada en buscador (no leída entera). Qué plataformas DLT se conectan al arranque: sin concretar.",
+   "verificar": "Leer la nota; plataformas conectadas."
+  },
+  {
+   "id": "pista-goldman-bny-mmf",
+   "actor": "Goldman Sachs y BNY",
+   "red_o_ambito": null,
+   "voz_id": null,
+   "que_dijo": "Fondos monetarios tokenizados: GS DAP registra los tokens y BNY mantiene los libros oficiales.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "GS DAP (cadena privada de Goldman)",
+    "producto": "Fondos monetarios tokenizados"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "S",
+   "fuente_url": "https://goldmansachs.com/pressroom/press-releases/2025/bny-goldman-sachs-launch-tokenized-money-market-funds-solution",
+   "fecha": "2025-07-23",
+   "nota": "Dato de 2025, visto vía resumen de buscador. Sin red pública.",
+   "verificar": "Estado actual y volúmenes."
+  },
+  {
+   "id": "pista-goldman-13f",
+   "actor": "Goldman Sachs",
+   "red_o_ambito": "xrpl",
+   "voz_id": "v218",
+   "que_dijo": "Declara ≈144 M$ en ETF de XRP y ≈117 M$ en ETF de Solana a 30-sep-2026.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "XRPL y Solana (exposición por ETF, no en cadena)",
+    "producto": "ETF spot"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "P",
+   "fuente_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000886982&type=13F-HR",
+   "fecha": "2026-09-30",
+   "nota": "Lectura propia del XML del 13F hecha en el repo. Tener ETF no es adopción de la red.",
+   "verificar": "Si se mantiene en el 13F del 4T-2026."
+  },
+  {
+   "id": "pista-franklin-dbs-ripple",
+   "actor": "Franklin Templeton, DBS y Ripple",
+   "red_o_ambito": "xrpl",
+   "voz_id": "v040",
+   "que_dijo": "Memorando para préstamos con un fondo tokenizado y RLUSD sobre XRPL.",
+   "concreta": {
+    "token": "RLUSD",
+    "red": "XRPL",
+    "producto": "Préstamos con colateral de fondo tokenizado (MoU)"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "S",
+   "fuente_url": "https://www.crowdfundinsider.com/2025/09/251630-ripple-dbs-franklin-templeton-to-enhance-lending-with-tokenized-funds-and-rlusd-stablecoin/",
+   "fecha": "2025-09-01",
+   "nota": "Es un MoU, no un pago transfronterizo ni un producto vivo.",
+   "verificar": "Producto en vivo."
+  },
+  {
+   "id": "pista-ripple-bce",
+   "actor": "Ripple (Qivalis / BCE)",
+   "red_o_ambito": "xrpl",
+   "voz_id": "v192",
+   "que_dijo": "Ripple publicó que trabaja con el BCE y lo borró.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "sin concretar",
+    "producto": "sin concretar"
+   },
+   "estado": "desmentida",
+   "nivel": "S",
+   "fuente_url": "https://pluang.com/en/news-feed/ripple-hapus-postingan-qivalis-setelah-kritikan",
+   "fecha": "2026-11-13",
+   "nota": "El post borrado era sobre el consorcio Qivalis (BBVA, DZ Bank), no sobre el BCE. Lo del BCE no se sostiene.",
+   "verificar": "Si Qivalis usa Ripple (eligió Fireblocks según prensa [S])."
+  },
+  {
+   "id": "pista-old-glory",
+   "actor": "Old Glory Bank",
+   "red_o_ambito": "xrpl",
+   "voz_id": "v191",
+   "que_dijo": "Usará XRP ya en la primera fase.",
+   "concreta": {
+    "token": "XRP (dicho) frente a ETH, Polygon, PulseChain (fuentes)",
+    "red": "Ethereum, Polygon, PulseChain; XRP posterior sin fecha",
+    "producto": "Banco con stablecoin"
+   },
+   "estado": "desmentida",
+   "nivel": "S",
+   "fuente_url": "https://youtu.be/xw8ZpJuF3ZE",
+   "fecha": "2026-11-13",
+   "nota": "Voz contradicha en el repo: XRP y Bitcoin entrarían después. Sin URL primaria abierta.",
+   "verificar": "FAQ oficial del banco."
+  },
+  {
+   "id": "pista-usbank-stellar",
+   "actor": "U.S. Bank",
+   "red_o_ambito": "stellar",
+   "voz_id": "v030",
+   "que_dijo": "Piloto de su stablecoin USBDC sobre Stellar.",
+   "concreta": {
+    "token": "USBDC",
+    "red": "Stellar",
+    "producto": "Stablecoin interno (piloto)"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "P",
+   "fuente_url": "https://www.usbank.com/about-us-bank/news-and-stories/article-library/us-bank-launches-usbdc-stablecoin",
+   "fecha": "2026-09-09",
+   "nota": "Interno, sin clientes ni importe publicados.",
+   "verificar": "Importe y clientes."
+  },
+  {
+   "id": "pista-moneygram-stellar",
+   "actor": "MoneyGram",
+   "red_o_ambito": "stellar",
+   "voz_id": "v031",
+   "que_dijo": "Lanzó MGUSD en Stellar y tarjeta Visa con USDC en Colombia.",
+   "concreta": {
+    "token": "MGUSD, USDC",
+    "red": "Stellar",
+    "producto": "Stablecoin y tarjeta"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "S",
+   "fuente_url": "https://theblock.co/news/business/2026-09-10-moneygram-card-stablecoin-visa-colombia-414137",
+   "fecha": "2026-09-10",
+   "nota": "Prensa; sin primaria leída.",
+   "verificar": "Comunicado de MoneyGram."
+  },
+  {
+   "id": "pista-bis-xrpl",
+   "actor": "BIS",
+   "red_o_ambito": "xrpl",
+   "voz_id": "v013",
+   "que_dijo": "Prueba de concepto de huellas estadísticas en el XRPL (DevNet).",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "XRPL DevNet",
+    "producto": "Ancla de datos SDMX"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "P",
+   "fuente_url": "https://www.bis.org/publications/working-paper-1374-verifiable-official-statistics-blockchain-based-approach",
+   "fecha": "2026-09-02",
+   "nota": "El BIS lo plantea agnóstico de cadena; red de pruebas con datos sintéticos y sin liquidez; no genera demanda de XRP.",
+   "verificar": "Piloto en red principal (no consta)."
+  },
+  {
+   "id": "pista-csdbr-btg",
+   "actor": "CSD BR, Ripple y BTG Pactual",
+   "red_o_ambito": "xrpl",
+   "voz_id": "v028",
+   "que_dijo": "Espejo en XRPL de participaciones de fondos de BTG Pactual, con KYC.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "XRPL",
+    "producto": "Espejo de fondos con permisos"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "P",
+   "fuente_url": "https://ripple.com/ripple-press/csdbr-and-ripple-use-the-xrpl-blockchain-to-expand-brazils-financial-market-infrastructure/",
+   "fecha": "2026-09-29",
+   "nota": "Nota de Ripple (parte interesada). El registro oficial sigue siendo CSD BR.",
+   "verificar": "Nota de CSD BR."
+  }
+ ]
+}

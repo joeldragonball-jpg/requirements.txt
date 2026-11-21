@@ -393,6 +393,43 @@ def tarjetas_extra():
                        "fil": [[f"{x['activo']} · {x['modalidad']}", (x["celda"].get("t") or "sin dato")[:220],
                                 f"nivel {x['celda'].get('n') or 'sin dato'} · {(x['celda'].get('f') or 'sin fuente')[:80]} · {x['celda'].get('d') or 'sin fecha'} · riesgo: {(x.get('riesgo') or 'sin dato')[:160]}"]
                                for x in rd["filas"] if x.get("celda")]}
+    # 21-nov: tokenizado con lectura y caducidad, pistas de las voces, instituciones que tokenizan y ETF según el 13F (tarjetas cortas)
+    tk = leer("tokenizado.json")
+    if tk.get("redes"):
+        tt = tk.get("totales_rwaxyz") or {}
+        def _pct(v):
+            return "sin dato" if v is None else ("+" if v > 0 else "") + _n(v, 1) + " %"
+        sal["tok"] = {"leido": tk.get("_leido"), "caduca_dias": tk.get("caduca_dias"), "nota": (tk.get("nota") or "")[:300],
+                      "tot": f"RWA.xyz {tk.get('_leido')} [S]: distribuido {_n(tt.get('distribuido_musd'), 0)} M$ ({_pct(tt.get('distribuido_cambio_30d_pct'))} en 30 d) · representado {_n(tt.get('representado_musd'), 0)} M$ ({_pct(tt.get('representado_cambio_30d_pct'))}): no es distribuido, no se suman",
+                      "fil": [[x["red"], f"{_n(x['rwaxyz'].get('distribuido_musd'), 1)} M$ · 30 d {_pct(x['rwaxyz'].get('distribuido_cambio_30d_pct'))}",
+                               f"representado {_n(x['rwaxyz'].get('representado_musd'), 1)} M$ · DeFi RWA {_n((x.get('defillama') or {}).get('rwa_defi_musd'), 1)} M$ · nivel {x['rwaxyz'].get('nivel')} · leído {x['rwaxyz'].get('leido')}"] for x in tk["redes"]],
+                      "caduca": {x["red"]: x["rwaxyz"].get("caduca") for x in tk["redes"]},
+                      "caduca_g": min((x["rwaxyz"]["caduca"] for x in tk["redes"] if x["rwaxyz"].get("caduca")), default=None),
+                      "trampa": "«Representado» no es «distribuido». La cifra de DeFi (DefiLlama) solo mide valor bloqueado en protocolos, no lo tokenizado. RWA.xyz es un tercero comercial sin auditoría [S]."}
+        st = next((x for x in tk["redes"] if x["id"] == "stellar"), None)
+        if st:
+            sal["tok"]["stellar"] = f"Stellar: {_pct(st['rwaxyz'].get('distribuido_cambio_30d_pct'))} en 30 días ({_n(st['rwaxyz'].get('distribuido_hace_30d_musd'), 1)} a {_n(st['rwaxyz'].get('distribuido_musd'), 1)} M$ distribuidos), sobre todo por Franklin Templeton BENJI · RWA.xyz, leído {st['rwaxyz'].get('leido')} [S]"
+    pi = leer("cadenas-pistas.json")
+    if pi.get("pistas"):
+        cnt = {}
+        for x in pi["pistas"]:
+            cnt[x["estado"]] = cnt.get(x["estado"], 0) + 1
+        sal["pistas"] = {"n": len(pi["pistas"]), "act": pi.get("_actualizado"), "aviso": (pi.get("aviso") or "")[:300], "estados": pi.get("estados") or {}, "cnt": cnt,
+                         "fil": [[f"{x['actor']} · {x.get('red_o_ambito') or 'general'}", (x.get("estado") or "").replace("_", " ") + " · nivel " + str(x.get("nivel")),
+                                  ("Concreta: " + " · ".join(f"{k} {((x.get('concreta') or {}).get(k) or 'sin concretar')}" for k in ("token", "red", "producto")))[:200]] for x in pi["pistas"] if x["estado"] in ("confirmada_sin_concretar", "desmentida", "sin_confirmar", "matizada")]}
+    ti = leer("tokenizacion-instituciones.json")
+    if ti.get("actores"):
+        sal["inst"] = {"n": len(ti["actores"]), "ni": sum(len(a["iniciativas"]) for a in ti["actores"]), "leido": ti.get("_leido"), "aviso": (ti.get("aviso") or "")[:260],
+                       "sc": ti.get("sin_concretar_resumen") or []}
+    ef = leer("etf-13f.json")
+    if ef.get("etfs"):
+        def _m(v):
+            return "sin dato" if v is None else _n(v / 1000, 1) + " M$"
+        ti3 = sorted(ef["etfs"], key=lambda z: -(z.get("valor_total_3T_miles_usd") or 0))[:3]
+        sal["f13"] = {"leido": ef.get("leido"), "periodo": ef.get("periodo"), "caduca": ef.get("caduca"), "adv": (ef.get("advertencias") or [])[:3],
+                      "fil": [[f"{z['ticker']} · {z['nombre']}", f"{_m(z.get('valor_total_3T_miles_usd'))} (2T {_m(z.get('valor_total_2T_miles_usd'))}) · {z.get('declarantes_3T')} declarantes",
+                               "Mayor tenedor: " + (f"{z['tenedores_principales'][0]['tenedor']} ({_m(z['tenedores_principales'][0]['valor_miles_usd'])}, tipo del analista: {z['tenedores_principales'][0]['tipo']})" if z.get("tenedores_principales") else "sin dato")] for z in ti3],
+                      "sob": [[x["entidad"], x["pais"] + " · " + x["tipo"], (x.get("lectura") or "")[:200]] for x in ef.get("fondos_soberanos_y_publicos", [])]}
     bq = (leer("indicadores-manual.json") or {}).get("_bloques")
     if bq:
         # 19-nov: bloques de indicadores (zona euro, UE-27, potencias, BRICS, agregados FMI, cuotas de moneda); una fila por bloque, compacta

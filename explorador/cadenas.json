@@ -6890,7 +6890,190 @@
       "Overview de RWA.xyz donde figura el 460.000 M$ (no leido)",
       "Bitwise no consultado"
     ],
-    "fecha_dato": "2026-11-19"
+    "fecha_dato": "2026-11-19",
+    "lectura_actual": {
+      "nota": "Lectura automática del 21-nov-2026 (scripts/leer_tokenizado.py, archivo explorador/tokenizado.json, se renueva cada semana y caduca a los 14 días). La tabla de arriba conserva la lectura del 19-nov; aquí van las cifras nuevas y el porqué de los cambios en 30 días. Importes en M$. RWA.xyz es un tercero comercial sin auditoría [S]; sus tablas por plataforma incluyen stablecoins, las cifras por red no.",
+      "leido": "2026-11-21",
+      "caduca": "2026-12-05",
+      "fuente_datos": "explorador/tokenizado.json",
+      "totales": {
+        "t": "RWA.xyz, Networks, 21-nov-2026: distribuido 40.931.2 M$ (-3.7 % en 30 d), representado 451.364.0 M$ (+22.3 %), stablecoins 273.234.8 M$, 40 redes. El conjunto baja en distribuido pero Stellar sube",
+        "f": "RWA.xyz, Networks (página pública, sin login)",
+        "u": "https://app.rwa.xyz/networks",
+        "d": "2026-11-21",
+        "n": "S"
+      },
+      "filas": [
+        {
+          "id": "ethereum",
+          "dist": 14303.5,
+          "rep": 64.2,
+          "dist_hace_30d": 16358.4,
+          "cambio_30d_pct": -12.6,
+          "defi_rwa": 1300.0,
+          "leido": "2026-11-21",
+          "caduca": "2026-12-05"
+        },
+        {
+          "id": "solana",
+          "dist": 5145.5,
+          "rep": 125.9,
+          "dist_hace_30d": 5325.1,
+          "cambio_30d_pct": -3.4,
+          "defi_rwa": 521.8,
+          "leido": "2026-11-21",
+          "caduca": "2026-12-05"
+        },
+        {
+          "id": "stellar",
+          "dist": 4866.5,
+          "rep": 77.1,
+          "dist_hace_30d": 3635.6,
+          "cambio_30d_pct": 33.9,
+          "defi_rwa": 6.9,
+          "leido": "2026-11-21",
+          "caduca": "2026-12-05"
+        },
+        {
+          "id": "xrpl",
+          "dist": 2999.8,
+          "rep": 2973.6,
+          "dist_hace_30d": 3006.7,
+          "cambio_30d_pct": -0.2,
+          "defi_rwa": 0.0,
+          "leido": "2026-11-21",
+          "caduca": "2026-12-05"
+        },
+        {
+          "id": "avalanche",
+          "dist": 1343.0,
+          "rep": 11403.5,
+          "dist_hace_30d": 1576.7,
+          "cambio_30d_pct": -14.8,
+          "defi_rwa": 5.2,
+          "leido": "2026-11-21",
+          "caduca": "2026-12-05"
+        },
+        {
+          "id": "polygon",
+          "dist": 436.9,
+          "rep": 660.5,
+          "dist_hace_30d": 506.1,
+          "cambio_30d_pct": -13.7,
+          "defi_rwa": 50.6,
+          "leido": "2026-11-21",
+          "caduca": "2026-12-05"
+        },
+        {
+          "id": "bnb",
+          "dist": 6066.8,
+          "rep": 0.0,
+          "dist_hace_30d": 6156.3,
+          "cambio_30d_pct": -1.5,
+          "defi_rwa": 0.0,
+          "leido": "2026-11-21",
+          "caduca": "2026-12-05"
+        },
+        {
+          "id": "hedera",
+          "dist": 84.5,
+          "rep": 69.7,
+          "dist_hace_30d": 94.6,
+          "cambio_30d_pct": -10.7,
+          "defi_rwa": 5.1,
+          "leido": "2026-11-21",
+          "caduca": "2026-12-05"
+        },
+        {
+          "id": "canton",
+          "dist": 0.0,
+          "rep": 405038.3,
+          "dist_hace_30d": null,
+          "cambio_30d_pct": null,
+          "defi_rwa": 0.0,
+          "leido": "2026-11-21",
+          "caduca": "2026-12-05"
+        },
+        {
+          "id": "plume",
+          "dist": 142.9,
+          "rep": 24.5,
+          "dist_hace_30d": 155.8,
+          "cambio_30d_pct": -8.3,
+          "defi_rwa": 1.0,
+          "leido": "2026-11-21",
+          "caduca": "2026-12-05"
+        },
+        {
+          "id": "algorand",
+          "dist": 26.6,
+          "rep": 0.0,
+          "dist_hace_30d": 48.2,
+          "cambio_30d_pct": -44.8,
+          "defi_rwa": 104.5,
+          "leido": "2026-11-21",
+          "caduca": "2026-12-05"
+        }
+      ],
+      "por_que": [
+        {
+          "t": "Stellar: 4.866,5 M$ distribuidos el 21-nov frente a 3.635,6 M$ hace 30 días (+33,9 %). Por plataforma (RWA.xyz): Franklin Templeton BENJI 513,1 a 1.392,6 M$ (+879,5), Spiko 1.931,3 a 2.197,6 (+266,3), State Street Investment Management 0 a 75,2 (nuevo). Por clase de activo: deuda del Tesoro de EE. UU. 1.121,7 a 2.087,1 M$. Ondo (539,4) y Realiz (500,0) casi no se mueven. HECHO leído en la página de la red; el campo «value_7d_ago» de RWA.xyz equivale a 30 días (el +33,9 % del agregado lo confirma)",
+          "f": "RWA.xyz, Networks/Stellar, lectura 21-nov-2026",
+          "u": "https://app.rwa.xyz/networks/stellar",
+          "d": "2026-11-21",
+          "n": "S"
+        },
+        {
+          "t": "Token Terminal vía Crypto Briefing (9-nov-2026): los fondos tokenizados de Franklin Templeton sumaron unos 532 M$ en 30 días (BENJI +525 M$); Stellar concentra el 40,8 % de lo tokenizado por Franklin y subió 685 M$; las otras redes de Franklin bajaron en conjunto unos 157,5 M$ (Ethereum -33,6; Polygon -32,3; Base y Avalanche -32,2 cada una; Arbitrum -27,2) y BNB Chain +4,5. Cifras de un tercero, leídas por un lector de páginas: contrastar con la fuente",
+          "f": "Crypto Briefing 9-nov-2026 (cita a Token Terminal)",
+          "u": "https://cryptobriefing.com/franklin-templeton-tokenized-funds-532-million/",
+          "d": "2026-11-09",
+          "n": "S"
+        },
+        {
+          "t": "Comprobación on-chain (Horizon, 21-nov-2026): el emisor de BENJI cuyo home_domain es franklintempleton.com tiene 1.303.199.282 unidades autorizadas en 1.402 cuentas. Con un valor liquidativo de ~1 $ por unidad [VERIFICAR] serían ~1.303 M$, un 6 % menos que los 1.392,6 M$ de RWA.xyz (puede incluir otras clases o el NAV). Hay decenas de activos «BENJI» falsos con otros emisores: solo vale el verificado",
+          "f": "Stellar Horizon, emisor con home_domain franklintempleton.com",
+          "u": "https://horizon.stellar.org/assets?asset_code=BENJI&asset_issuer=GBHNGLLIE3KWGKCHIKMHJ5HVZHYIK7WTBE4QF5PLAKL4CJGSEU7HZIW5",
+          "d": "2026-11-21",
+          "n": "P"
+        },
+        {
+          "t": "Contexto de Stellar [S, sin cotejar en la fuente oficial]: Allium (T3, a 30-sep) puso el mercado tokenizado de Stellar en 4.120 M$ (6,1 veces el año anterior) con Spiko 1.690 M$, Realiz 550, Tradable 548, Ondo 536 y Franklin 513; State Street lanzó el fondo SWEEP en Stellar el 29-sep con Galaxy; en agosto Franklin obtuvo una carta de no acción de la SEC para usar BENJI como efectivo o colateral en sus fondos. La fuente (CryptoDaily 13-nov) cita informes de la propia Stellar Development Foundation y su tono es promocional: [VERIFICAR] con los informes originales",
+          "f": "CryptoDaily 13-nov-2026 y resultados de búsqueda (Allium, SDF)",
+          "u": "https://cryptodaily.co.uk/2026/11/which-blockchain-are-institutions-actually-using-to-tokenize-assets-a-live-deployment-tracker",
+          "d": "2026-11-13",
+          "n": "S"
+        },
+        {
+          "t": "Qué NO se sabe: por qué BENJI pasó de 513 a 1.393 M$ en un mes (nuevos fondos de clientes, traslado desde otra cadena o una sola posición grande). Que otras redes de Franklin bajen 157 M$ no explica +880 M$. Cualquier causa concreta es [ESPECULACIÓN]; 1.402 cuentas en Horizon indican que no es un mercado de masas",
+          "f": "Análisis propio sobre RWA.xyz, Token Terminal y Horizon",
+          "d": "2026-11-21",
+          "n": "R",
+          "i": "informes/research/2026-11-21-C355-tokenizado.md"
+        },
+        {
+          "t": "Ethereum 14.303,5 M$ (-12,6 % en 30 d; deuda del Tesoro EE. UU. 5.257,5 a 4.284,1); BNB Chain 6.066,8 (-1,5 %; Franklin 1.532,0 casi plano, BlackRock 203,4 a 349,1); Solana 5.145,5 (-3,4 %; BlackRock 1.195,4 a 801,8, J. P. Morgan AM 450,1 a 738,6, State Street 266,3 a 433,7); Avalanche 1.343,0 (-14,8 %; Securitize 726,2 a 565,1); Polygon 436,9 (-13,7 %); Hedera 84,5 (-10,7 %; Archax 84,1 a 74,1); Plume 142,9 (-8,3 %). Todas son lecturas de RWA.xyz; las causas no figuran en la fuente",
+          "f": "RWA.xyz, Networks y páginas por red, lectura 21-nov-2026",
+          "u": "https://app.rwa.xyz/networks",
+          "d": "2026-11-21",
+          "n": "S"
+        },
+        {
+          "t": "XRPL: 2.999,8 M$ distribuidos y 2.973,6 representados, sin cambio en 30 días (-0,2 %). Casi todo es un emisor, Justoken (2.365,4 M$, clase «materias primas», plano); Franklin 194,6 y Ondo 185,9 también planos. La clasificación cambió el 19-nov, así que no se compara con el 14-nov. Qué respalda a Justoken es [VERIFICAR]",
+          "f": "RWA.xyz, Networks/XRP Ledger, lectura 21-nov-2026",
+          "u": "https://app.rwa.xyz/networks",
+          "d": "2026-11-21",
+          "n": "S"
+        },
+        {
+          "t": "Canton: 0 distribuido y 405.038,3 M$ representados (19-nov: 384.695 M$; +5,3 % en dos días). Es registro, no activos transferibles en cadena; no se compara con las demás redes y su origen (repo u otros) es [VERIFICAR]",
+          "f": "RWA.xyz, Networks, lectura 21-nov-2026",
+          "u": "https://app.rwa.xyz/networks",
+          "d": "2026-11-21",
+          "n": "S"
+        }
+      ]
+    }
   },
   "vigilar": {
     "nota": "Fechas y umbrales a seguir en esta pestaña. Son calendario, no previsiones: las fechas de DTCC son «previstas» (parte interesada) y la de XRPL no tiene fecha.",
