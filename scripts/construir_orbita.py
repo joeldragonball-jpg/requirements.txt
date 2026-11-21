@@ -46,6 +46,16 @@ def sincronizar_manuales():
 
 
 def main():
+    try:    # C366: añade el último punto de cada ETF a explorador/etf-historial.jsonl (sin IA, idempotente)
+        sys.path.insert(0, str(RAIZ / "scripts"))
+        import etf_historial
+        _argv = sys.argv; sys.argv = [_argv[0]]
+        try:
+            etf_historial.main()
+        finally:
+            sys.argv = _argv
+    except Exception as e:
+        print("aviso: etf_historial no se actualizó:", e)
     sincronizar_manuales()
     html = explorador._html(None, publico=True)
     if "privado" in html.lower() and "contraste-tesis" in html.lower():

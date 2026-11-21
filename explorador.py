@@ -318,6 +318,15 @@ def _html(conceptos, publico=False):
             datos[clave] = json.loads((CARPETA / f"{archivo}.json").read_text(encoding="utf-8"))
         except Exception:
             datos[clave] = None
+    try:                          # 21-nov C366: serie histórica de ETF (etf-historial.jsonl) en forma compacta: {ticker: [{f,a,n}]}, solo fecha, acciones y NAV
+        _h = {}
+        for _l in (CARPETA / "etf-historial.jsonl").read_text(encoding="utf-8").splitlines():
+            if _l.strip():
+                _r = json.loads(_l)
+                _h.setdefault(_r["ticker"], []).append({"f": _r["fecha"], "a": _r.get("acciones"), "n": _r.get("nav")})
+        datos["etf_historial"] = {k: sorted(v, key=lambda x: x["f"]) for k, v in _h.items()}
+    except Exception:
+        datos["etf_historial"] = None
     try:                          # 19-nov: bloques de indicadores-manual.json (zona euro, UE-27, potencias, BRICS, agregados FMI, monedas) para Países › Comparar países
         datos["indicadores_bloques"] = json.loads((CARPETA / "indicadores-manual.json").read_text(encoding="utf-8")).get("_bloques")
     except Exception:

@@ -2263,11 +2263,42 @@ function etfPrecioAcc(E){
   const mx=Math.max(10,...F.flatMap(f=>[Math.abs(f.dn||0),Math.abs(f.da||0)]));
   const bar=(v,col)=>{if(v==null)return document.createTextNode('sin dato');const s=el('span');const b=barra(Math.abs(v)/mx*120,col);s.append(b,document.createTextNode(' '+(v>0?'+':'')+num(v,1)+' %'));return s};
   w.append(scrollX(tabla([{t:'ETF',f:f=>f.t+' · '+f.nom},{t:'Precio (NAV) [P]',f:f=>f.dn==null?'sin dato':bar(f.dn,'var(--bad,#c0504d)')},{t:'Hasta',f:f=>f.fn||'—'},{t:'Participaciones [P]',f:f=>f.da==null?'sin dato':bar(f.da,'var(--ok,#4f9d69)')},{t:'Hasta ',f:f=>f.fa||'—'},{t:'De → a (millones)',n:1,f:f=>f.a1==null?'—':num(f.a0/1e6,2)+' → '+num(f.a1/1e6,2)}],F)));
+  {const g=etfSerieGraf(['XRP','TOXR','XRPZ','XRPC','GXRP']);if(g)w.append(g)}
   const nn=F.filter(f=>f.dn!=null),na=F.filter(f=>f.da!=null),sube=na.filter(f=>f.da>1).map(f=>f.t),baja=na.filter(f=>f.da<-1).map(f=>f.t);
   const hechos='HECHOS: el NAV (≈ precio de XRP) cae entre '+num(Math.min(...nn.map(f=>f.dn)),0)+' % y '+num(Math.max(...nn.map(f=>f.dn)),0)+' % según el fondo. Las participaciones (≈ creaciones menos rescates) suben en '+(sube.join(', ')||'ninguno')+' y bajan en '+(baja.join(', ')||'ninguno')+'; el resto queda en ±1 %.';
   w.append(el('p','nota-v',hechos));
-  w.append(el('p','nota-v','LECTURA [ESPECULACIÓN, razonada]: en este tramo no se ve una acumulación neta generalizada en acciones de ETF mientras cae el precio; sí hay más declarantes de 13F (p. ej. Bitwise XRP: 70 → 99 entre el 2T y el 3T), que mide cuántas instituciones lo declaran, no cuánto compran. Caso alcista: entradas puntuales (XRPZ) y gestoras que aguantan en la caída. Caso bajista: rescates netos en Grayscale (GXRP) y participaciones casi planas o a la baja en el resto, y un 13F es una foto trimestral con retraso, que puede reflejar cuentas de clientes, arbitraje o creaciones de market makers. Correlación no es causa. Solo 2 puntos por fondo (30-sep y noviembre): para una serie real hacen falta más lecturas. Emisor = parte interesada.'));
+  w.append(el('p','nota-v','LECTURA [ESPECULACIÓN, razonada]: en este tramo no se ve una acumulación neta generalizada en acciones de ETF mientras cae el precio; sí hay más declarantes de 13F (p. ej. Bitwise XRP: 70 → 99 entre el 2T y el 3T), que mide cuántas instituciones lo declaran, no cuánto compran. Caso alcista: entradas puntuales (XRPZ) y gestoras que aguantan en la caída. Caso bajista: rescates netos en Grayscale (GXRP) y participaciones casi planas o a la baja en el resto, y un 13F es una foto trimestral con retraso, que puede reflejar cuentas de clientes, arbitraje o creaciones de market makers. Correlación no es causa. Esta tabla compara solo dos puntos (30-sep y noviembre); la serie trimestral completa está en los gráficos de arriba. Emisor = parte interesada.'));
   return w}
+/* C366 (21-nov): gráfico SVG de NAV y participaciones indexados a 100 en el primer punto de cada fondo (serie de explorador/etf-historial.jsonl). Todo texto con textContent. */
+function etfSerieGraf(tks){
+  const H=D.etf_historial;if(!H)return null;
+  const NS='http://www.w3.org/2000/svg',sv=(t,at,tx)=>{const e=document.createElementNS(NS,t);for(const k in at)e.setAttribute(k,at[k]);if(tx!=null)e.textContent=tx;return e};
+  const C={n:'#f0b45a',a:'#5ec8ff',eje:'#8a93a8',gr:'#2a3350',tx:'#d6dbe8'};
+  const T=x=>Date.parse(x+'T00:00:00Z'),fd=x=>x.slice(8,10)+'-'+x.slice(5,7)+'-'+x.slice(2,4);
+  const caja=el('div','etf-ser');caja.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:10px 0';
+  let hay=0;
+  tks.forEach(tk=>{const P=(H[tk]||[]).filter(p=>p.f&&p.f>='2025-12-31');if(P.length<2)return;
+    const sr=k=>{const q=P.filter(p=>p[k]!=null&&p[k]>0);return q.length?q.map(p=>({f:p.f,v:p[k]/q[0][k]*100,r:p[k]})):[]};
+    const S={n:sr('n'),a:sr('a')};if(S.n.length<2&&S.a.length<2)return;hay++;
+    const W=360,Hh=250,L=40,R=10,Tp=22,B=62,xs=P.map(p=>T(p.f)),x0=Math.min(...xs),x1=Math.max(...xs);
+    const vs=[...S.n,...S.a].map(p=>p.v),lo=Math.min(100,...vs),hi=Math.max(100,...vs),pad=(hi-lo)*0.08||5,y0=lo-pad,y1=hi+pad;
+    const X=f=>L+(x1>x0?(T(f)-x0)/(x1-x0):0.5)*(W-L-R),Y=v=>Tp+(1-(v-y0)/(y1-y0))*(Hh-Tp-B);
+    const s=sv('svg',{viewBox:'0 0 '+W+' '+Hh,width:'100%',role:'img','aria-label':tk+': NAV y participaciones indexados a 100'});s.style.cssText='background:#0b1020;border-radius:8px;max-width:100%;height:auto';
+    s.append(sv('text',{x:L,y:14,fill:C.tx,'font-size':12,'font-weight':'bold'},tk));
+    const ticks=5;for(let i=0;i<=ticks;i++){const v=y0+(y1-y0)*i/ticks,y=Y(v);s.append(sv('line',{x1:L,x2:W-R,y1:y,y2:y,stroke:C.gr,'stroke-width':1}),sv('text',{x:L-4,y:y+3,fill:C.eje,'font-size':9,'text-anchor':'end'},String(Math.round(v))))}
+    s.append(sv('line',{x1:L,x2:W-R,y1:Y(100),y2:Y(100),stroke:C.eje,'stroke-width':1,'stroke-dasharray':'2 3'}));
+    let ux=-99;P.forEach(p=>{const x=X(p.f);s.append(sv('line',{x1:x,x2:x,y1:Tp,y2:Hh-B,stroke:C.gr,'stroke-width':0.5}));
+      if(x-ux<11)return;ux=x;const t=sv('text',{x:x,y:Hh-B+10,fill:C.eje,'font-size':9,'text-anchor':'end',transform:'rotate(-50 '+x+' '+(Hh-B+10)+')'},fd(p.f));s.append(t)});
+    [['n','NAV',C.n,'',0],['a','Participaciones',C.a,'5 3',1]].forEach(([k,nom,col,da,sq])=>{const q=S[k];if(!q.length)return;
+      if(q.length>1)s.append(sv('polyline',{points:q.map(p=>X(p.f).toFixed(1)+','+Y(p.v).toFixed(1)).join(' '),fill:'none',stroke:col,'stroke-width':2,'stroke-dasharray':da}));
+      q.forEach(p=>{const m=sq?sv('rect',{x:X(p.f)-3,y:Y(p.v)-3,width:6,height:6,fill:col}):sv('circle',{cx:X(p.f),cy:Y(p.v),r:3.2,fill:col});m.append(sv('title',{},tk+' '+nom+' '+p.f+': '+num(p.r,k==='n'?2:0)+' (índice '+num(p.v,1)+')'));s.append(m)})});
+    const lg=sv('g',{});lg.append(sv('line',{x1:W-190,x2:W-172,y1:14,y2:14,stroke:C.n,'stroke-width':2}),sv('text',{x:W-168,y:17,fill:C.tx,'font-size':10},'NAV'),sv('line',{x1:W-130,x2:W-112,y1:14,y2:14,stroke:C.a,'stroke-width':2,'stroke-dasharray':'5 3'}),sv('text',{x:W-108,y:17,fill:C.tx,'font-size':10},'Participaciones'));s.append(lg);
+    const fig=el('div');fig.append(s);caja.append(fig)});
+  if(!hay)return null;
+  const o=el('div');o.append(el('h3',null,'Serie por fondo: NAV y participaciones, índice 100 = primer punto de cada serie'),caja);
+  o.append(el('p','nota-v','HECHOS: cada punto es una cifra publicada (10-Q/10-K por XBRL de la SEC o web del emisor), indexada a 100 en el primer punto de ese fondo desde el 31-dic-2025 (el punto de siembra de XRPZ, 100.000 participaciones el 23-nov-2025, se omite porque distorsiona el índice); si hay fechas de noviembre muy juntas se muestra una sola etiqueta (cada punto lleva su fecha en el cursor); cada fondo tiene su propio origen de fechas. Los puntos son trimestrales entre el 31-dic-2025 y el 30-sep-2026, más lecturas sueltas de noviembre (no diarios): entre trimestres no hay datos. SEC XBRL puede traer reexpresiones [VERIFICAR]. Emisor = parte interesada.'));
+  o.append(el('p','nota-v','LECTURA [ESPECULACIÓN]: si la línea de participaciones sube mientras el NAV baja, es compatible con creaciones netas en la caída; si ambas bajan, con rescates; con tan pocos puntos no se puede distinguir de arbitraje o cuentas de market makers. Correlación no es causa.'));
+  return o}
 /* 13F del 3T (EDGAR/13f.info), lecturas directas y trackers de contraste. Unidades unificadas: todo se muestra en millones de USD (M$);
    13f.info trae «miles de USD» (valor_usd_miles / valor_declarado_usd_miles) y las lecturas de EDGAR traen USD (valor_usd): se convierten aquí y se declara en cada cabecera. */
 function etf13f(E){
