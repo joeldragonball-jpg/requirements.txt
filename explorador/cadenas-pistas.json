@@ -1,6 +1,6 @@
 {
  "_actualizado": "2026-11-21",
- "tarea": "C357",
+ "tarea": "C363b",
  "aviso": "Pistas de voces sobre actores, redes y productos que no concretan token, red o producto. NO son hechos: cada una lleva estado y nivel. «sin concretar» = la voz o la fuente no lo dice.",
  "estados": {
   "confirmada_concreta": "Fuente fiable con token, red y producto precisos",
@@ -737,6 +737,177 @@
    "comprobado": "Solo prensa (bitcoin.com); no se abrieron los XML 13F de esas firmas. En el repo sí consta la lectura propia del 13F de Goldman (pista aparte).",
    "nota": "Tener ETF no es adopción de la red XRPL. Importes pequeños en algunos casos (JPMorgan 539 acciones según la prensa). Medio cripto como fuente.",
    "verificar": "13F-HR de cada firma en EDGAR."
+  },
+  {
+   "id": "pista-dm-goldman-historial-13f",
+   "actor": "Goldman Sachs (Despeja La X, David Martínez)",
+   "red_o_ambito": "xrpl",
+   "voz_id": "v195",
+   "que_dijo": "«Goldman tenía más de 80 M$ en XRP en dic-2025, en marzo declaró cero y en junio otra vez más de 80 M$.»",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "sin concretar (exposición por ETF)",
+    "producto": "ETF spot de XRP"
+   },
+   "estado": "matizada",
+   "nivel": "P",
+   "fuente_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000519/",
+   "fecha": "2026-11-17",
+   "nota": "Voz: David Martínez, vídeo del 17-nov. Dic-2025 y 2T cuadran con «más de 80», pero la cifra real de dic fue casi el doble; marzo NO fue cero. Declara Goldman Sachs Group (CIK 886982); Goldman Sachs & Co. (CIK 769993) solo presenta 13F-NT. El 13F no da causa ni precio de entrada: la inferencia del canal («sabía que no habría ley») es [ESPECULACIÓN].",
+   "verificar": "13F-HR del 4T-2026 (≈15-feb-2027).",
+   "comprobado": "Leído hoy en EDGAR (Chrome, XML de cada 13F-HR): 31-dic-2025 153,8 M$ (7,06 M acc.); 31-mar-2026 1,21 M$ (110.000 acc. de REX-Osprey XRPR, no cero); 30-jun-2026 87,4 M$; 30-sep-2026 145,3 M$ (8,68 M acc., 6 ETF)."
+  },
+  {
+   "id": "pista-dm-goldman-3t-144m-xrpr",
+   "actor": "Goldman Sachs (Despeja La X, David Martínez)",
+   "red_o_ambito": "xrpl",
+   "voz_id": "v195",
+   "que_dijo": "«Goldman sube y ya tiene más de 144 M$ en ETF de XRP.»",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "sin concretar (exposición por ETF)",
+    "producto": "ETF spot de XRP (6 fondos)"
+   },
+   "estado": "confirmada_sin_concretar",
+   "nivel": "P",
+   "fuente_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000647/",
+   "fecha": "2026-09-30",
+   "nota": "Relectura primaria hoy, independiente de la lectura del repo (C280). Incluye 110.000 acciones de XRPR (1,34 M$), que Goldman nunca soltó. Tener ETF no es adopción de la red XRPL. Goldman es también asesor de Bullish y miembro de DTCC (incentivos cruzados, ver v220).",
+   "verificar": "Si se mantiene en el 13F del 4T-2026.",
+   "comprobado": "Leído hoy el XML del 13F-HR 0000886982-26-000647: Bitwise 38,38; Franklin 47,78; Canary 33,26; Grayscale 14,50; 21Shares 10,08; XRPR 1,34 = 145,34 M$. Coincide con «más de 144 M$»."
+  },
+  {
+   "id": "pista-dm-jane-street-20m",
+   "actor": "Jane Street (Despeja La X, David Martínez)",
+   "red_o_ambito": "xrpl",
+   "voz_id": "v219",
+   "que_dijo": "«Jane Street (ligada a BlackRock) tiene más de 20 M$ en ETF de XRP.»",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "sin concretar (exposición por ETF)",
+    "producto": "ETF spot de XRP (tenencia de creador de mercado)"
+   },
+   "estado": "confirmada_sin_concretar",
+   "nivel": "P",
+   "fuente_url": "https://www.sec.gov/Archives/edgar/data/1595888/000159588826000162/",
+   "fecha": "2026-09-30",
+   "nota": "La cifra es cierta, pero Jane Street es creador de mercado/participante autorizado: sostiene acciones de ETF por su función, no necesariamente por tesis. «Ligada a BlackRock» no se pudo contrastar y es vaga. Solo acciones (sin opciones).",
+   "verificar": "Si «ligada a BlackRock» tiene base documental; 13F del 4T-2026.",
+   "comprobado": "Leído hoy el XML del 13F-HR 0001595888-26-000162 (presentado 12-nov-2026): Bitwise 12,20 + Franklin 5,00 + Canary 3,13 + XRPR 0,53 = 20,86 M$ a 30-sep-2026."
+  },
+  {
+   "id": "pista-dm-jpm-abre-posicion",
+   "actor": "JPMorgan (Despeja La X, David Martínez)",
+   "red_o_ambito": "xrpl",
+   "voz_id": "v196",
+   "que_dijo": "«JP Morgan abre posición» en ETF de XRP.",
+   "concreta": {
+    "token": "XRP (vía ETF)",
+    "red": "sin concretar",
+    "producto": "ETF spot de XRP (Bitwise)"
+   },
+   "estado": "matizada",
+   "nivel": "P",
+   "fuente_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961726000404/",
+   "fecha": "2026-09-30",
+   "nota": "Existe, pero es insignificante: 539 acciones del Bitwise XRP ETF. Sobre si es «nueva» (la prensa dice que ya había posición en el 2T): no leído el 13F del 2T. Complementa pista-13f-jpm-ms-xrp-etf (sin_confirmar, solo prensa); aquí ya hay primaria del 3T.",
+   "verificar": "13F-HR de JPMorgan del 2T-2026 (0000019617-26-000325) para saber si era nueva.",
+   "comprobado": "Leído hoy el XML del 13F-HR 0000019617-26-000404 (12-nov-2026): Bitwise XRP ETF 8.996 $ y 539 acciones."
+  },
+  {
+   "id": "pista-dm-morgan-stanley-xrp-etf",
+   "actor": "Morgan Stanley (Despeja La X, David Martínez)",
+   "red_o_ambito": "xrpl",
+   "voz_id": "v196",
+   "que_dijo": "«Han entrado … Morgan Stanley» en los ETF de XRP.",
+   "concreta": {
+    "token": "XRP (vía ETF)",
+    "red": "sin concretar",
+    "producto": "ETF spot de XRP (Franklin, REX-Osprey, Bitwise)"
+   },
+   "estado": "matizada",
+   "nivel": "P",
+   "fuente_url": "https://www.sec.gov/Archives/edgar/data/895421/000089542126000309/",
+   "fecha": "2026-09-30",
+   "nota": "Existe, pero ≈116 mil $ entre tres ETF: tenencia mínima para un banco de ese tamaño. «Entrar» es lectura del canal; no se leyó el 2T. Un 13F no distingue cartera propia de clientes ni cobertura.",
+   "verificar": "13F-HR del 2T-2026 para saber si es nueva; 4T-2026.",
+   "comprobado": "Leído hoy el XML del 13F-HR 0000895421-26-000309 (13-nov-2026): Franklin 111.885 $ (6.915 acc.), XRPR 3.098 $ (255), Bitwise 1.114 $ (67) = 116.097 $."
+  },
+  {
+   "id": "pista-dm-fed-ultimo-apreton",
+   "actor": "Reserva Federal (Despeja La X, David Martínez)",
+   "red_o_ambito": "usa",
+   "voz_id": "v211",
+   "que_dijo": "Avisa de un posible «último apretón» de la Fed (vídeo del 13-nov).",
+   "concreta": {
+    "token": "no aplica",
+    "red": "no aplica",
+    "producto": "Tipos de interés oficiales"
+   },
+   "estado": "sin_confirmar",
+   "nivel": "ESP",
+   "fuente_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+   "fecha": "2026-11-13",
+   "nota": "Predicción del canal (el presentador declara haber recomprado su cartera). Lo comprobable: la Fed mantuvo los tipos el 28-oct tras subir en septiembre (v147). No hay hecho que confirme otro movimiento. Sesgo: tenedor de XRP, relato que absorbe datos contrarios (v211).",
+   "verificar": "Comunicado y proyecciones del FOMC de diciembre-2026 (federalreserve.gov).",
+   "comprobado": "Leída hoy la nota oficial del FOMC del 28-oct-2026: «maintain the target range for the federal funds rate at 3-3/4 to 4 percent». Contrasta solo el contexto, no la predicción."
+  },
+  {
+   "id": "pista-dm-clarity-vuelve-a-la-mesa",
+   "actor": "Congreso de EE. UU. / demócratas (Despeja La X, David Martínez)",
+   "red_o_ambito": "usa",
+   "voz_id": "v083",
+   "que_dijo": "La «ley propia» de los demócratas no entierra la Clarity: es postura negociadora y ambos bandos volverán a la mesa en el periodo de transición (conversaciones con colegas sin nombre).",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "sin concretar",
+    "producto": "Ley de estructura de mercado cripto (CLARITY, H.R. 3633)"
+   },
+   "estado": "sin_confirmar",
+   "nivel": "ESP",
+   "fuente_url": "https://www.congress.gov/bill/119th-congress/house-bill/3633",
+   "fecha": "2026-11-05",
+   "nota": "Predicción con fuente anónima. Contrapuntos documentados: Gallego (4-nov) dice que tras ganar las elecciones buscarán cambios mayores; McHenry y Witt ven posible una votación tras las midterms. Sin texto ni calendario demócrata.",
+   "verificar": "Votación en el Senado antes del 3-ene-2027 (fin del 119.º Congreso) en congress.gov.",
+   "comprobado": "No contrastable hoy: no hay acto legislativo que lo confirme ni lo desmienta; sigue abierta hasta el fin del Congreso."
+  },
+  {
+   "id": "pista-dm-china-no-compra-deuda",
+   "actor": "China (Despeja La X, David Martínez)",
+   "red_o_ambito": "china",
+   "voz_id": null,
+   "que_dijo": "China «ya no acude» a comprar deuda de EE. UU. (vídeo del 28-oct).",
+   "concreta": {
+    "token": "no aplica",
+    "red": "no aplica",
+    "producto": "Bonos del Tesoro de EE. UU."
+   },
+   "estado": "sin_confirmar",
+   "nivel": "V",
+   "fuente_url": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/mfh.txt",
+   "fecha": "2026-10-28",
+   "nota": "Contraste pendiente: el archivo de tenencias del Tesoro (TIC) abierto hoy en Chrome mostraba columnas de 2022-2023 (copia vieja o en caché), así que no sirve para 2026. «Dejar de comprar» (flujo) no es lo mismo que tenencia (stock): puede vender o dejar vencer.",
+   "verificar": "Serie mensual actual de tenencias de China, TIC (home.treasury.gov), y flujos netos.",
+   "comprobado": "No verificable hoy: la fuente primaria abierta estaba desactualizada. No se concluye nada."
+  },
+  {
+   "id": "pista-dm-brics-sistema-propio-mbridge",
+   "actor": "BRICS / China (Despeja La X, David Martínez)",
+   "red_o_ambito": "china",
+   "voz_id": null,
+   "que_dijo": "Los BRICS crearon «su propio sistema» de cambio de divisas (vídeo del 28-oct).",
+   "concreta": {
+    "token": "sin concretar (e-CNY, ~95 % del volumen según prensa)",
+    "red": "mBridge (cadena permisionada del consorcio)",
+    "producto": "Pagos mayoristas transfronterizos entre bancos centrales"
+   },
+   "estado": "matizada",
+   "nivel": "P",
+   "fuente_url": "https://www.bis.org/about/bisih/topics/cbdc/mcbdc_bridge.htm",
+   "fecha": "2026-10-28",
+   "nota": "mBridge existe y opera, pero no es un sistema «de los BRICS»: lo forman China, Hong Kong, Tailandia y Emiratos (Arabia Saudí dijo en sept-2026 que ya no participa) y el BIS lo traspasó a los socios en oct-2024. Las cifras de volumen (~55,5 mil M$) son de prensa [S], sin primaria.",
+   "verificar": "Informe del consorcio o del PBoC sobre volumen; ver informes/research/2026-10-15-R01P-brics-pagos-profundo.md.",
+   "comprobado": "Leída hoy la página del BIS: «handing the project over to the partners» (oct-2024). Lo de «BRICS» no se confirma."
   }
  ]
 }

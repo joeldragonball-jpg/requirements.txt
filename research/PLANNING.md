@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-21 21:16 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-21 21:25 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -85,6 +85,8 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
 - C363 ◐ en parte · Órbita · Ampliar Latinoamérica, EE. UU., China y potencias; más peso a las voces · Sonnet L · ~~6 % · ``
 - C364 ◐ en parte · Cadenas: hoja de ruta oficial de DTCC por red (Canton, Besu, Stellar, Solana, Ar · Sonnet M · ~~4 % · ``
+- C365 · Cadenas · Aplicar las correcciones restantes del cotejo C362b: Chainlink (77 red · Sonnet M · ~~3 % · ``
+- C366 · Cadenas · Enganchar etf_historial.py tras leer_etf_flujos en la rutina diaria, u · Sonnet M · ~~3 % · ``
 - C39 ◐ en parte · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
 - C42 ◐ en parte · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
 - C58 ◐ en parte · Centro · Fichas políticas de 12 países (UE: España, Alemania, Francia, Italia, P · Sonnet M · ~3 % · `research/prompts/C58-fichas-politicas-paises.md`
@@ -139,7 +141,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (2) → W03 · CN/politica; ZA/politica
 - 🔴 Voces: Voces sin confirmar (47) → W06 · 24 llevan más de 14 días
 - 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (35) → rutina de cada tema (ver explorador/frescura.json) · verdes 47, amarillos 27, rojos 8, grises 0. Rojos: bancos-eba, deuda-fmi, espana
-- 🟡 Radar regulatorio: Celdas sin dato (18) → W03 · Más huecos: SV 6, AR 4, IR 2, AE 1, BRICS 1
+- 🟡 Radar regulatorio: Celdas sin dato (14) → W03 · Más huecos: AR 3, SV 3, IR 2, AE 1, BRICS 1
 
 ## Bots con problema
 - ninguno
