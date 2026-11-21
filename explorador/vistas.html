@@ -36,6 +36,11 @@ section.vista{display:none}section.vista.on{display:block}
 .cc-b{background:var(--bg);border:1px solid var(--lin);border-top:3px solid var(--ac);border-radius:10px;padding:10px 12px}
 .cc-grid>.cc-b:last-child:nth-child(4n+1){grid-column:1/-1}.cc-grid>.cc-b:last-child:nth-child(4n+1) .cc-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px 16px}
 @media(max-width:1100px){.cc-grid>.cc-b:last-child:nth-child(4n+1){grid-column:auto}.cc-grid>.cc-b:last-child:nth-child(2n+1){grid-column:1/-1}}
+
+/* C354 · tablet (p. ej. Redmi Pad SE en horizontal): 3 columnas y tarjetas compactas para ver las 5 de un vistazo; el PC (>1180 px) y el móvil (<=620 px) no cambian */
+.cc-btn{display:none}
+@media(min-width:621px) and (max-width:1180px){.cc-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.cc-b{padding:8px 10px}.cc-grid>.cc-b:last-child:nth-child(n){grid-column:auto}.cc-grid>.cc-b:last-child:nth-child(3n+2){grid-column:span 2}.cc-b:not(.cc-abierto) .cc-x{display:none}.cc-btn{display:block;margin:4px 0 0;padding:6px 10px;min-height:36px;background:transparent;border:1px solid var(--lin);border-radius:8px;color:var(--tx2);font:inherit;font-size:.8rem;cursor:pointer}.cc-f{padding:3px 0;font-size:.8rem;gap:0 8px}.cc-b .cc-f .cc-l{flex:1 1 100%}.cc-b .cc-f .sube,.cc-b .cc-f .baja,.cc-b .cc-f .igual{flex:0 0 auto;margin-left:auto;text-align:right;font-size:.78rem}.cc-b h3{margin:0 0 4px}}
+#vp-med{margin:6px 0 0;font-size:.72rem;color:var(--tx2);text-align:center}
 .cc-b h3{margin:0 0 6px;font-size:max(13px,.82rem);letter-spacing:.06em;text-transform:uppercase;color:var(--tx2)}
 .cc-g{margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--lin)}.cc-e{font-size:.85rem;color:var(--tx2)}
 .cc-g b{display:block;font-size:clamp(26px,1.6vw + 12px,36px);line-height:1.15}.cc-g .sube,.cc-g .baja,.cc-g .igual{font-size:.85rem}.cc-g .badge,.cc-l .badge{margin-left:6px;vertical-align:middle}
@@ -466,6 +471,7 @@ i.ap-ce{width:24px;height:22px;cursor:default;flex:none}
 <section class="vista" id="v-cadenas"></section>
 </main>
 <div class="pie-leyenda" id="pie-comun"></div>
+<div id="vp-med"></div>
 <button id="subir" aria-label="Volver arriba" title="Volver arriba">↑</button>
 <div id="tip"></div>
 <script>
@@ -865,7 +871,8 @@ function lineaFallos(){
   if(otros)p.push(otros+' lectura(s) con otro fallo puntual (p. ej. la divisa de un índice), que se corrige en la siguiente actualización');
   return 'Fallos de la última lectura: '+p.join('; ')+'. Un hueco es «sin dato», no un cero.'}
 /* C162 · leyenda de niveles única, en un pie común de todo el tablero */
-function pieComun(){const e=$('pie-comun');if(!e)return;e.textContent='';
+function pieComun(){const vp=$('vp-med');if(vp){const f=()=>{vp.textContent='Pantalla: '+innerWidth+'×'+innerHeight+' px (ancho×alto de la página)'};f();addEventListener('resize',f)}
+  const e=$('pie-comun');if(!e)return;e.textContent='';
   e.append(el('b',null,'Niveles de certeza (para todo el tablero): '),document.createTextNode('P = fuente primaria leída · S = secundaria (prensa o agregador) · V = sin verificar [VERIFICAR] (ESP = [ESPECULACIÓN], opinión o previsión) · en Voces cada declaración tiene su propia leyenda de niveles. Semáforo de frescura de Paneles: verde ≤ 7 días · ámbar ≤ 14 · rojo > 14.'))}
 /* C164 · filtros de la barra: solo se ven en las pestañas donde actúan (P = país, T = tema, C = certeza, M = solo cambios/densidad de la matriz) */
 const FILTROS={resumen:'',capas:'PC',tiempo:'P',noticias:'P',matriz:'PTCM'};
@@ -939,7 +946,9 @@ function pResumenCompleto(){
   function cc(titulo,color,g,filas){
     const b=el('div','cc-b');b.style.borderTopColor=color;b.append(el('h3',null,titulo));
     if(g){const gd=el('div','cc-g');gd.title=g.tip||'';gd.append(el('div','cc-e',g.e));gd.append(el('b','cifra',miles(g.v)));if(g.p)gd.append(el('small','per','periodo: '+g.p));if(g.c)gd.append(g.c);if(g.n)gd.append(nivelBadge(g.n));b.append(gd)}
-    for(const f of filas){if(!f)continue;const r=el('div','cc-f');r.title=f.tip||'';const l=el('span','cc-l',f.e);if(f.n)l.append(' ',nivelBadge(f.n));if(f.p)l.append(el('small','per',' · '+f.p));r.append(l,el('b',null,miles(f.v)));if(f.c)r.append(f.c);b.append(r)}
+    for(const f of filas){if(!f)continue;const r=el('div','cc-f');r.title=f.tip||'';const l=el('span','cc-l',f.e);if(f.n)l.append(' ',nivelBadge(f.n));if(f.p)l.append(el('small','per',' · '+f.p));r.append(l,el('b',null,miles(f.v)));if(f.c)r.append(f.c);if(b.querySelectorAll('.cc-f').length>=3)r.classList.add('cc-x');b.append(r)}
+    /* C354 · en tablet solo se ven las 3 primeras filas; «ver más» despliega el resto (en PC se ven todas) */
+    const nx=b.querySelectorAll('.cc-x').length;if(nx){const bt=el('button','cc-btn','ver '+nx+' más ▾');bt.type='button';bt.onclick=()=>{const ab=b.classList.toggle('cc-abierto');bt.textContent=ab?'ver menos ▴':'ver '+nx+' más ▾'};b.append(bt)}
     return b}
   const av=oz&&avisoViejo(oz.ultimo.fecha);
   const gc=el('div','cc-grid');

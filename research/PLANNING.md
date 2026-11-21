@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-21 17:13 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-21 17:31 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -6,7 +6,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hoy (máx. 3):** Gemini Energía y geopolítica
 **Periódicas (próxima):** W10 11-21 · W01 11-23 · W02 11-24 · W08 11-25 · W04 11-26 · W05 11-26 · W06 11-27 · W09 11-27 · W03 12-02 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
-**Parciales (56):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: 17-nov: 20 movimientos volcados a datos.json (305) · C42 falta: 18-nov 3.ª: ESMA, SFC y MAS leídos; VARA parcial.  · C58 falta: 18-nov: Rusia a P (Duma 450), India Lok Sabha 540/ · C59 falta: 17-nov: salario mínimo y fichas añadidos a indicad · C61 falta: 18-nov: vivienda vacía CN/IN/RU en null (sin fuent · …
+**Parciales (57):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: 17-nov: 20 movimientos volcados a datos.json (305) · C42 falta: 18-nov 3.ª: ESMA, SFC y MAS leídos; VARA parcial.  · C58 falta: 18-nov: Rusia a P (Duma 450), India Lok Sabha 540/ · C59 falta: 17-nov: salario mínimo y fichas añadidos a indicad · C61 falta: 18-nov: vivienda vacía CN/IN/RU en null (sin fuent · …
 **Hechas en 7 días (6):** C205, C206, C262, C264, C265, C266
 
 ## Hoy (sáb 2026-11-21): solo lo casi obligatorio
@@ -87,6 +87,12 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C341 ◐ en parte · Cadenas: brecha entre activos tokenizados «representados» y «distribuidos» y su  · Sonnet M · ~~4 % · ``
 - C342 ◐ en parte · Regulación EE. UU.: segundo intento de cierre del CLARITY Act (calendario Senado · Sonnet M · ~~3 % · ``
 - C343 ◐ en parte · ETF spot de XRP, XLM y Solana: emisor, comisión, custodio y flujos diarios desde · Sonnet M · ~~4 % · ``
+- C354 ◐ en parte · Órbita · Tablet (Redmi Pad SE 11", uso en horizontal): arreglar la primera págin · Sonnet M · ~~3 % · ``
+- C355 · Cadenas · Tokenizado por red: sistema para mantener al día «cuánto está tokeniza · Sonnet M · ~~4 % · ``
+- C356 · Voces → Línea de tiempo y capas: al abrir una capa (p. ej. Regulación) la línea  · Sonnet L · ~~5 % · ``
+- C357 · Cadenas · Aprovechar las voces: llevar a cada red lo que dicen las voces aunque  · Sonnet M · ~~4 % · ``
+- C358 · Cadenas · Revisar si conviene dividir en más secciones (Joel la ve algo comprimi · Sonnet S · ~~1 % · ``
+- C359 · Centro · Limpieza: verificar las noticias pendientes de prioridad alta y de más  · Sonnet M · ~~3 % · ``
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
 - C39 ◐ en parte · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
 - C42 ◐ en parte · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
