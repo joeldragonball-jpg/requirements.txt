@@ -39,3 +39,5 @@ España queda por debajo de la media UE (≈ −0,147 y −0,199 €/l); Francia
 - Eurostat: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ind_id
 - REE REData: https://apidatos.ree.es/es/datos/generacion/estructura-generacion
 - MITECO: https://www.miteco.gob.es/es/prensa/ultimas-noticias/2026/octubre/la-reserva-hidrica-espanola-se-encuentra-al-56-8---de-su-capacid.html
+
+> **Corrección 19-nov-2026:** las cifras OMIE de este informe (168,93; 186,08; 143,9; 76,02 €/MWh) usaban la columna de Portugal. Cifras de España: octubre 2026 166,66 y octubre 2025 75,33 €/MWh (ver 2026-11-19-C233-C229-espana-energia-macro.md). La proporción (≈2,2 veces) no cambia.

@@ -190,12 +190,16 @@ def r00():
 def predicciones():
     abiertas, resueltas = [], []
     hoy = date.today()
+    vistos = set()
     for linea in leer(RAIZ / "informes" / "predicciones.md").splitlines():
+        if linea.startswith("## Criterios"):
+            break  # la tabla de criterios repite los números de la principal
         if not re.match(r"\|\s*\d+\s*\|", linea):
             continue
         c = [limpiar(x) for x in linea.strip().strip("|").split("|")]
-        if len(c) < 7:
+        if len(c) < 7 or c[0] in vistos:
             continue
+        vistos.add(c[0])
         limite = c[4] if re.match(r"\d{4}-\d{2}-\d{2}$", c[4]) else None
         res = c[6]
         item = {"n": c[0], "fecha": c[1][:10], "quien": c[2], "que": c[3][:160], "limite": limite, "como": c[5][:110], "resultado": res[:120],

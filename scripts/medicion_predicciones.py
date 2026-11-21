@@ -35,12 +35,18 @@ def fuente(quien):
 def main():
     hoy = date.today()
     filas = []
+    vistos = set()
     for linea in (RAIZ / "informes" / "predicciones.md").read_text(encoding="utf-8").splitlines():
+        if linea.startswith("## Criterios"):
+            break  # la tabla de criterios repite los números de la principal
         if not re.match(r"\|\s*\d+\s*\|", linea):
             continue
         c = [limpiar(x) for x in linea.strip().strip("|").split("|")]
         if len(c) < 7:
             continue
+        if int(c[0]) in vistos:
+            continue
+        vistos.add(int(c[0]))
         lim = c[4] if re.match(r"\d{4}-\d{2}-\d{2}$", c[4]) else None
         filas.append({"n": int(c[0]), "quien": fuente(c[2]), "limite": lim, "est": estado(c[6])})
     tot = Counter(f["est"] for f in filas)
