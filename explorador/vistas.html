@@ -734,12 +734,20 @@ function nRwa(){
   const r=P.rwa;const w=el('div');
   w.append(kpis([[usd(r.total),'Valor bloqueado en '+r.n+' protocolos RWA'],[usd(r.stellar),'De ellos, en Stellar'],[usd(r.xrpl),'De ellos, en el XRPL']]));
   w.append(tabla([{t:'Protocolo',f:x=>x.nombre},{t:'Valor bloqueado',n:1,f:x=>usd(x.usd)},{t:'Frente a hace 7 días',n:1,f:x=>cambio(x.cambio_7d,'%',2)},{t:'Cadenas',f:x=>(x.cadenas||[]).join(', ')}],(r.top||[]).slice(0,12)));
-  if(r.por_cadena){w.append(el('h3',null,'Por blockchain (DefiLlama [S], automático: las 10 mayores de '+r.por_cadena.n_cadenas+', más XRPL y Stellar)'));
-    w.append(tabla([{t:'#',n:1,f:c=>c.puesto},{t:'Cadena',f:c=>c.cadena},{t:'Valor bloqueado',n:1,f:c=>usd(c.usd)},{t:'% del total',n:1,f:c=>num(c.pct,1)+' %'},{t:'Protocolos',n:1,f:c=>c.n_protocolos}],r.por_cadena.top))}
-  if(window.RWAM){const m=window.RWAM;w.append(el('h3',null,'Valor tokenizado por cadena (RWA.xyz [S], manual, leído '+m.leido+')'));
-    {const dias=Math.floor((Date.now()-new Date(m.leido+'T00:00:00Z').getTime())/86400000);if(dias>=7)w.append(el('div','aviso-s','⚠ Dato manual leído hace '+dias+' días ('+m.leido+'): puede estar desfasado. Releer en RWA.xyz antes de fiarse de las cifras.'))}
-    w.append(tabla([{t:'Cadena',f:c=>c.cadena},{t:'Distribuido',n:1,f:c=>usd(c.distribuido)},{t:'Representado',n:1,f:c=>usd(c.representado)},{t:'Emisores con cifra',f:c=>c.emisores}],m.cadenas));
-    w.append(el('div','nota-v',m.nota+' '+m.pendiente))}
+  if(r.por_cadena||window.RWAM){
+    const m=window.RWAM,pc=r.por_cadena;
+    w.append(el('h3',null,'Valor tokenizado por cadena: dos fuentes, una tabla'));
+    if(m){const dias=Math.floor((Date.now()-new Date(m.leido+'T00:00:00Z').getTime())/86400000);if(dias>=7)w.append(el('div','aviso-s','⚠ RWA.xyz (manual) leído hace '+dias+' días ('+m.leido+'): puede estar desfasado. Releer antes de fiarse de esas dos columnas.'))}
+    const norm=n=>String(n).toLowerCase().replace('xrp ledger','xrpl');
+    const mm={};(m?m.cadenas:[]).forEach(c=>mm[norm(c.cadena)]=c);
+    const filas=(pc?pc.top:[]).map(c=>({cadena:c.cadena,ll:c.usd,pct:c.pct,np:c.n_protocolos,rw:mm[norm(c.cadena)]}));
+    (m?m.cadenas:[]).forEach(c=>{if(!filas.some(f=>norm(f.cadena)===norm(c.cadena)))filas.push({cadena:c.cadena,rw:c})});
+    const vv=(x,k)=>x&&x[k]!=null?usd(x[k]):'—';
+    w.append(tabla([{t:'Cadena',f:c=>c.cadena},
+      {t:'DefiLlama [S, auto]: valor bloqueado en DeFi',n:1,f:c=>c.ll!=null?usd(c.ll):'—'},{t:'% del total DeFi',n:1,f:c=>c.pct!=null?num(c.pct,1)+' %':'—'},
+      {t:'RWA.xyz [S, manual]: distribuido',n:1,f:c=>vv(c.rw,'distribuido')},{t:'RWA.xyz: representado',n:1,f:c=>vv(c.rw,'representado')}],filas));
+    w.append(el('div','nota-v','DefiLlama (automático'+(pc?', '+pc.n_cadenas+' cadenas; se muestran las 10 mayores más XRPL y Stellar':'')+') cuenta solo valor bloqueado en protocolos DeFi; RWA.xyz'+(m?' (leído '+m.leido+')':'')+' cuenta activos tokenizados emitidos («distribuido») o solo registrados («representado», no se suma). Por eso las cifras difieren mucho: no son comparables entre columnas. '+(m?m.nota+' '+m.pendiente:'')));
+    if(m){const det=el('details');det.append(el('summary',null,'Emisores por cadena (RWA.xyz, manual)'));const ul=el('ul');m.cadenas.forEach(c=>ul.append(el('li',null,c.cadena+': '+c.emisores)));det.append(ul);w.append(det)}}
   w.append(el('div','nota-v',r.nota));return w}
 function nMercado(){
   return kpis((P.mercado.activos||[]).map(a=>[ '$'+num(a.precio,a.precio<10?4:0),a.nombre+' ('+a.simbolo+') · capitalización '+usd(a.capitalizacion),cambio(a.cambio_24h,'% en 24 h',2)]))}
@@ -2137,7 +2145,7 @@ function pActivos(){
 }
 /* C264 · Cadenas: matriz capacidad × cadena con semáforo de evidencia, capas («¿necesita el token?») y enlaces a la Línea de tiempo y el Calendario
    (explorador/cadenas.json). Solo hechos públicos con fuente; la captura de valor es [RAZONADO] con supuestos; sin «ganador» */
-let cadSem=matchMedia('(pointer:coarse)').matches,cadSel='',cadTab='res';
+let cadSem=matchMedia('(pointer:coarse)').matches,cadSel='',cadTab='res',cadSub='res';
 const cadPart=t=>String(t||'').replace(/\b(Inter)(opera)(bilidad)\b/g,'$1­$2­$3').replace(/\b(tokeniza)(bles)\b/g,'$1­$2').replace(/\b(Cumpli)(miento)\b/g,'$1­$2').replace(/\b(institu)(cional)\b/g,'$1­$2').replace(/\b(Rendi)(mientos)\b/g,'$1­$2').replace(/\b(regula)(toria)\b/g,'$1­$2');   // C312: guiones blandos para que las cabeceras largas se partan sin recortarse   // en móvil y tablet arranca en semáforo; el botón pasa a texto
 /* ---------- C289 · datos de los lectores por script: cadenas-onchain, registro MiCA, EE. UU. fiscal, OCDE/BIS, ETF, España (energía y vivienda),
    calendario oficial, GDELT y liquidez de la Fed y del Eurosistema. Siempre fuente, fecha y nivel P/S/V; un dato null se muestra como «vacío». ---------- */
@@ -2240,7 +2248,26 @@ function nEtf(){
   w.append(...etfNuevos(E,sd,u));
   w.append(el('p','nota-v',sd(E.metodo)+' '+sd(E.nota_nivel)));
   const bn=E.bloques_no_hechos||{};if(Object.keys(bn).length)w.append(el('p','nota-v','Pendiente: '+Object.entries(bn).map(([k,v])=>k.replace(/_/g,' ')+': '+sd(v&&typeof v==='object'?[v.t,v.n].filter(Boolean).join(' '):v)).join(' · ')));
+  {const x=etfPrecioAcc(E);if(x)w.append(x)}
   w.append(...etf13f(E),...etfContraste(E));return w}
+/* C361 (21-nov): precio (NAV) frente a acciones en circulación de los ETF de XRP, del cierre del 30-sep al último dato leído. Hechos de las webs de emisores y 10-Q; la lectura es razonada. */
+function etfPrecioAcc(E){
+  const fila=r=>{const h=(r.historial||[]).filter(x=>x.fecha),a=h[0];if(!a)return null;
+    const ult=k=>{for(let i=h.length-1;i>0;i--)if(h[i][k]!=null)return h[i];return null};
+    const n=ult('nav'),c=ult('acciones');
+    const pc=(x,y)=>x==null||y==null||!x?null:(y-x)/x*100;
+    return {t:r.ticker,nom:r.nombre,dn:n&&a.nav?pc(a.nav,n.nav):null,fn:n?n.fecha:null,da:c&&a.acciones?pc(a.acciones,c.acciones):null,fa:c?c.fecha:null,a0:a.acciones,a1:c?c.acciones:null}};
+  const F=(E.etfs||[]).filter(r=>r.activo==='XRP').map(fila).filter(Boolean);
+  if(!F.length)return null;
+  const w=el('div','caja');w.append(el('h3',null,'XRP: precio frente a participaciones de cada ETF (30-sep-2026 → último dato leído)'));
+  const mx=Math.max(10,...F.flatMap(f=>[Math.abs(f.dn||0),Math.abs(f.da||0)]));
+  const bar=(v,col)=>{if(v==null)return document.createTextNode('sin dato');const s=el('span');const b=barra(Math.abs(v)/mx*120,col);s.append(b,document.createTextNode(' '+(v>0?'+':'')+num(v,1)+' %'));return s};
+  w.append(scrollX(tabla([{t:'ETF',f:f=>f.t+' · '+f.nom},{t:'Precio (NAV) [P]',f:f=>f.dn==null?'sin dato':bar(f.dn,'var(--bad,#c0504d)')},{t:'Hasta',f:f=>f.fn||'—'},{t:'Participaciones [P]',f:f=>f.da==null?'sin dato':bar(f.da,'var(--ok,#4f9d69)')},{t:'Hasta ',f:f=>f.fa||'—'},{t:'De → a (millones)',n:1,f:f=>f.a1==null?'—':num(f.a0/1e6,2)+' → '+num(f.a1/1e6,2)}],F)));
+  const nn=F.filter(f=>f.dn!=null),na=F.filter(f=>f.da!=null),sube=na.filter(f=>f.da>1).map(f=>f.t),baja=na.filter(f=>f.da<-1).map(f=>f.t);
+  const hechos='HECHOS: el NAV (≈ precio de XRP) cae entre '+num(Math.min(...nn.map(f=>f.dn)),0)+' % y '+num(Math.max(...nn.map(f=>f.dn)),0)+' % según el fondo. Las participaciones (≈ creaciones menos rescates) suben en '+(sube.join(', ')||'ninguno')+' y bajan en '+(baja.join(', ')||'ninguno')+'; el resto queda en ±1 %.';
+  w.append(el('p','nota-v',hechos));
+  w.append(el('p','nota-v','LECTURA [ESPECULACIÓN, razonada]: en este tramo no se ve una acumulación neta generalizada en acciones de ETF mientras cae el precio; sí hay más declarantes de 13F (p. ej. Bitwise XRP: 70 → 99 entre el 2T y el 3T), que mide cuántas instituciones lo declaran, no cuánto compran. Caso alcista: entradas puntuales (XRPZ) y gestoras que aguantan en la caída. Caso bajista: rescates netos en Grayscale (GXRP) y participaciones casi planas o a la baja en el resto, y un 13F es una foto trimestral con retraso, que puede reflejar cuentas de clientes, arbitraje o creaciones de market makers. Correlación no es causa. Solo 2 puntos por fondo (30-sep y noviembre): para una serie real hacen falta más lecturas. Emisor = parte interesada.'));
+  return w}
 /* 13F del 3T (EDGAR/13f.info), lecturas directas y trackers de contraste. Unidades unificadas: todo se muestra en millones de USD (M$);
    13f.info trae «miles de USD» (valor_usd_miles / valor_declarado_usd_miles) y las lecturas de EDGAR traen USD (valor_usd): se convierten aquí y se declara en cada cabecera. */
 function etf13f(E){
@@ -2307,7 +2334,7 @@ function calOficial(){   // calendarios oficiales de BLS, BEA, Eurostat, INE, Fe
   if(fa.length){const d2=el('details');d2.append(el('summary',null,'Contraste con nuestro calendario: '+fa.length+' fechas oficiales que no están en él ('+vc(cp.eventos_en_data_json)+' eventos propios, '+vc(cp.coinciden)+' coinciden)'),el('p','nota-v',cp.nota||''),scrollX(tabla([{t:'Tema',f:r=>r.tema},{t:'Fecha oficial',f:r=>r.fecha_oficial},{t:'Organismo',f:r=>r.organismo},{t:'Evento oficial',f:r=>r.evento_oficial}],fa)));c.append(d2)}
   return c}
 
-function pCadenas(){
+function pCadenas0(){
   const S=$('v-cadenas');S.textContent='';const C=D.cadenas;
   if(!C||!(C.cadenas||[]).length){S.append(el('p','nota-v','Sin datos de cadenas (explorador/cadenas.json).'));return}
   const CAPS=C.capacidades||[],CR=C.capas_red||[],L=C.cadenas;
@@ -2362,7 +2389,7 @@ function pCadenas(){
     lg.append(el('br'),el('b',null,'Captura del token: '),el('span','cad-cap alta','alta (verde)'),el('span','cad-cap media','media (ámbar)'),el('span','cad-cap baja','baja (azul)'),el('span','cad-cap incierta','incierta (gris)'),document.createTextNode(' — las cuatro reglas están en el recuadro «Captura» de arriba. Verde y ámbar de la matriz miden la FUENTE; verde y ámbar de capas y captura miden el TOKEN: son escalas distintas.'));cm.append(lg)}
   const PAPELT={obligatorio:'papel obligatorio en varias capas',una_capa:'necesario en una capa',opcional:'papel opcional',sustituible:'sustituible por stablecoin',sin_papel:'sin papel confirmado'};const fmM=v=>v==null?'sin dato':v>=1000?num(v/1000,1)+' mil M$':num(v,v<10?1:0)+' M$';const capTip=ca=>{const rg=ca.regla,lq=ca.liquidez;let s='Regla (C329): '+((rg.papel&&PAPELT[rg.papel])||rg.necesidad.replace('_',' '))+' (por las 5 capas) y consumo '+rg.consumo.replace('_',' ')+(rg.fees_pct!=null?' (comisiones anuales ≈ '+num(rg.fees_pct,2)+' % de la capitalización)':' (sin dato de comisiones)')+'.';if(lq)s+=' Liquidez del token: capitalización '+fmM(lq.cap_musd)+', volumen 24 h '+fmM(lq.vol24_musd)+', rotación '+num(lq.rotacion_pct,1)+' % [S, '+lq.d+'].';if(rg.discrepa)s+=' Difiere del juicio manual anterior ('+ca.nivel+'): revisar.';if(rg.atipico)s+=' [VERIFICAR] dato de comisiones atípico (más del 20 % de la capitalización al año).';return s};
   const REDES=L.filter(c=>!SERV.has(c.id)),SERVS=L.filter(c=>SERV.has(c.id));
-  const abrirRed=c=>{cadSel=c.id;pCadenas();const f=$('cad-fichas');if(f)f.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})};
+  const abrirRed=c=>{cadSel=c.id;cadSub='mat';pCadenas();const f=$('cad-fichas');if(f)f.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})};
   // panel de una celda: texto completo, fuente, fecha, antigüedad (se usa en la tabla y en la lista de móvil)
   const panelCelda=(c,k,v,cerrar)=>{const p=el('div','cad-pan-in');const h=el('div','cad-pan-h');h.append(el('b',null,tit(c)+' · '+k.n));const x=el('button','cad-bt','Cerrar');x.type='button';x.onclick=cerrar;h.append(x);p.append(h);
     if(k.que)p.append(el('p','nota-v',k.que));
@@ -2620,6 +2647,26 @@ const usNiv=n=>n?cxNiv(n):el('span','cx-vac','nivel vacío');
 const usFu=(t,u)=>{const s=el('span','cad-f');if(t)s.append(document.createTextNode(t+' '));if(u&&/^https?:\/\//.test(u))s.append(cxLk(u,'fuente ↗'));else if(u)s.append(document.createTextNode('('+u+')'));if(!t&&!u)s.append(cxVac());return s};
 const usSg=n=>n==null?cxVac():(n>0?'+':'')+num(n,1)+' %';
 const usSeg=s=>s==null?cxVac():(s>=120?num(s/60,1)+' min ('+num(s,0)+' s)':num(s,1)+' s');
+/* Subpestañas de Cadenas: reparte los bloques ya construidos por pCadenas0 en 7 grupos (solo vista; los datos no cambian) */
+const CAD_SUB=[['res','Resumen',['ap-cruzado','cad-vigilar']],['mat','Matriz y fichas',['cad-matriz','cad-fichas']],
+  ['tok','Tokenización',['cad-sec-3','cad-tokenizado','cad-brecha','cad-instituciones']],
+  ['pag','Pagos y rendimientos',['cad-dex','cad-prestamos','cad-rendimientos','cad-corredores','cad-profundidad','cad-swift']],
+  ['int','Interconexión',['cad-relaciones','cad-dtcc','cad-interconexion']],['esc','Escenarios',['cad-escenarios','cad-calculadora']],
+  ['voz','Voces y pistas',['cad-pistas']]];
+function pCadenas(){
+  pCadenas0();const S=$('v-cadenas');if(!S||!S.children.length||!$('cad-matriz'))return;
+  const kids=[...S.children],cab=kids.find(k=>k.classList.contains('caja')&&!k.id),top=S.querySelector(':scope > .cad-top');
+  const nav=S.querySelector(':scope > nav.idx');if(nav)nav.remove();
+  const sub={};CAD_SUB.forEach(([k,,ids])=>{const d=el('div','cad-sub');d.dataset.k=k;sub[k]=d;ids.forEach(i=>{const b=document.getElementById(i);if(b)d.append(b)})});
+  if(top)sub.res.prepend(top);
+  const sobra=[...S.children].filter(k=>k!==cab&&!k.classList.contains('cad-subbar'));
+  const bar=el('div','pills cad-subbar');bar.setAttribute('role','tablist');
+  const act=k=>{cadSub=k;CAD_SUB.forEach(([q])=>{sub[q].hidden=q!==k});bar.querySelectorAll('button').forEach(b=>{const on=b.dataset.k===k;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});window.dispatchEvent(new Event('resize'))};
+  CAD_SUB.forEach(([k,n,ids])=>{const c=ids.filter(i=>document.getElementById(i)).length;const b=el('button','cad-bt',n);b.type='button';b.dataset.k=k;b.setAttribute('role','tab');b.onclick=()=>act(k);bar.append(b)});
+  if(cab)cab.after(bar);else S.prepend(bar);
+  sobra.forEach(k=>{if(!k.contains(bar)&&k!==bar)sub.res.append(k)});
+  let ref=bar;CAD_SUB.forEach(([k])=>{ref.after(sub[k]);ref=sub[k]});
+  act(CAD_SUB.some(x=>x[0]===cadSub)?cadSub:'res')}
 function usCard(tit,niv,fecha,fuenteTxt,fuenteUrl,filas,avisos){
   const k=el('section','cad-usc');const h=el('h4');h.append(document.createTextNode(tit+' '),usNiv(niv));k.append(h);
   const m=el('div','cad-usm');m.append(el('b',null,'Fecha: '),document.createTextNode((fecha||'vacío')+' · '),el('b',null,'Fuente: '),usFu(fuenteTxt,fuenteUrl));k.append(m);

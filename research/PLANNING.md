@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-21 19:26 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-21 21:11 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -11,7 +11,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hechas en 7 días (8):** C355, C360, C205, C206, C262, C264, C265, C266
 
 ## Hoy (sáb 2026-11-21): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 14 días
+- R00 apertura ✓ · cierre ✓ · racha 14 días
 - Sin rutina fija hoy: elige por prioridad en las secciones de abajo.
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
@@ -82,9 +82,9 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - C354 ◐ en parte · Órbita · Tablet (Redmi Pad SE 11", uso en horizontal): arreglar la primera págin · Sonnet M · ~~3 % · ``
 - C356 ◐ en parte · Voces → Línea de tiempo y capas: al abrir una capa (p. ej. Regulación) la línea  · Sonnet L · ~~5 % · ``
 - C357 ◐ en parte · Cadenas · Aprovechar las voces: llevar a cada red lo que dicen las voces aunque  · Sonnet M · ~~4 % · ``
-- C358 · Cadenas · Revisar si conviene dividir en más secciones (Joel la ve algo comprimi · Sonnet S · ~~1 % · ``
 - C359 · Centro · Limpieza: verificar las noticias pendientes de prioridad alta y de más  · Sonnet M · ~~3 % · ``
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
+- C363 · Órbita · Ampliar Latinoamérica, EE. UU., China y potencias; más peso a las voces · Sonnet L · ~~6 % · ``
 - C39 ◐ en parte · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
 - C42 ◐ en parte · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
 - C58 ◐ en parte · Centro · Fichas políticas de 12 países (UE: España, Alemania, Francia, Italia, P · Sonnet M · ~3 % · `research/prompts/C58-fichas-politicas-paises.md`
@@ -142,7 +142,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 🟡 Radar regulatorio: Celdas sin dato (8) → W03 · Más huecos: IR 2, AE 1, BRICS 1, ID 1, EG 1
 
 ## Bots con problema
-- Votos de noticias
+- ninguno
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-11 · SEC: plazo sobre opciones de ETFs cripto (SR-ISE-2026-42) (medio) → ✓ revisado (hecho)
