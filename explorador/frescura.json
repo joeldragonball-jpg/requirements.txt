@@ -7,10 +7,10 @@
   "amarillo": 30
  },
  "resumen": {
-  "verde": 45,
-  "amarillo": 26,
-  "rojo": 7,
-  "gris": 7,
+  "verde": 47,
+  "amarillo": 27,
+  "rojo": 8,
+  "gris": 0,
   "error": 0
  },
  "items": [
@@ -28,7 +28,8 @@
    "dias": 509,
    "semaforo": "rojo",
    "origen": "dato",
-   "fecha_lectura": null
+   "fecha_lectura": null,
+   "periodico": "EBA: ejercicio de transparencia anual; comprobar si hay edición posterior a jun-2025"
   },
   {
    "archivo": "bonos-manual.json",
@@ -44,7 +45,7 @@
    "dias": 7,
    "semaforo": "verde",
    "origen": "dato",
-   "fecha_lectura": null
+   "fecha_lectura": "2026-11-15"
   },
   {
    "archivo": "cadenas-incidentes.json",
@@ -52,7 +53,7 @@
    "dias": 8,
    "semaforo": "amarillo",
    "origen": "dato",
-   "fecha_lectura": null
+   "fecha_lectura": "2026-11-15"
   },
   {
    "archivo": "cadenas-onchain.json",
@@ -80,11 +81,11 @@
   },
   {
    "archivo": "cadenas-validadores.json",
-   "fecha_dato": null,
-   "dias": null,
-   "semaforo": "gris",
-   "origen": "-",
-   "fecha_lectura": null
+   "fecha_dato": "2026-11-15",
+   "dias": 6,
+   "semaforo": "verde",
+   "origen": "lectura",
+   "fecha_lectura": "2026-11-15"
   },
   {
    "archivo": "cadenas.json",
@@ -119,14 +120,6 @@
    "fecha_lectura": "2026-10-29"
   },
   {
-   "archivo": "centro.json",
-   "fecha_dato": null,
-   "dias": null,
-   "semaforo": "gris",
-   "origen": "-",
-   "fecha_lectura": null
-  },
-  {
    "archivo": "chips-manual.json",
    "fecha_dato": "2026-11-10",
    "dias": 11,
@@ -156,7 +149,7 @@
    "dias": 6,
    "semaforo": "verde",
    "origen": "dato",
-   "fecha_lectura": null
+   "fecha_lectura": "2026-11-15"
   },
   {
    "archivo": "datos.json",
@@ -164,7 +157,7 @@
    "dias": 0,
    "semaforo": "verde",
    "origen": "dato",
-   "fecha_lectura": null
+   "fecha_lectura": "2026-11-21"
   },
   {
    "archivo": "deuda-fmi.json",
@@ -172,7 +165,8 @@
    "dias": 31,
    "semaforo": "rojo",
    "origen": "lectura",
-   "fecha_lectura": "2026-10-21"
+   "fecha_lectura": "2026-10-21",
+   "periodico": "FMI WEO: abril y octubre; comprobar la edición vigente"
   },
   {
    "archivo": "edgar.json",
@@ -207,14 +201,6 @@
    "fecha_lectura": "2026-11-15"
   },
   {
-   "archivo": "enlaces.json",
-   "fecha_dato": null,
-   "dias": null,
-   "semaforo": "gris",
-   "origen": "-",
-   "fecha_lectura": null
-  },
-  {
    "archivo": "escenarios-redes.json",
    "fecha_dato": "2026-11-18",
    "dias": 3,
@@ -228,14 +214,15 @@
    "dias": 169,
    "semaforo": "rojo",
    "origen": "dato",
-   "fecha_lectura": "2026-11-10"
+   "fecha_lectura": "2026-11-10",
+   "periodico": "PLACSP: trimestral o anual; comprobar si hay periodo nuevo"
   },
   {
    "archivo": "espana-empleados.json",
-   "fecha_dato": null,
-   "dias": null,
-   "semaforo": "gris",
-   "origen": "-",
+   "fecha_dato": "2026-01-31",
+   "dias": 294,
+   "semaforo": "rojo",
+   "origen": "dato",
    "fecha_lectura": null
   },
   {
@@ -440,11 +427,11 @@
   },
   {
    "archivo": "indicadores-historia-fmi.json",
-   "fecha_dato": null,
-   "dias": null,
-   "semaforo": "gris",
-   "origen": "-",
-   "fecha_lectura": null
+   "fecha_dato": "2026-11-05",
+   "dias": 16,
+   "semaforo": "amarillo",
+   "origen": "lectura",
+   "fecha_lectura": "2026-11-05"
   },
   {
    "archivo": "indicadores-historia-manual.json",
@@ -516,7 +503,7 @@
    "dias": 1,
    "semaforo": "verde",
    "origen": "dato",
-   "fecha_lectura": null
+   "fecha_lectura": "2026-11-21"
   },
   {
    "archivo": "ocde-bis.json",
@@ -528,11 +515,11 @@
   },
   {
    "archivo": "pais-corredores.json",
-   "fecha_dato": null,
-   "dias": null,
-   "semaforo": "gris",
-   "origen": "-",
-   "fecha_lectura": null
+   "fecha_dato": "2026-11-15",
+   "dias": 6,
+   "semaforo": "verde",
+   "origen": "lectura",
+   "fecha_lectura": "2026-11-15"
   },
   {
    "archivo": "paises.json",
@@ -583,14 +570,6 @@
    "fecha_lectura": "2026-11-15"
   },
   {
-   "archivo": "prueba-datos.json",
-   "fecha_dato": null,
-   "dias": null,
-   "semaforo": "gris",
-   "origen": "-",
-   "fecha_lectura": null
-  },
-  {
    "archivo": "pruebas-bancos.json",
    "fecha_dato": "2026-11-12",
    "dias": 9,
@@ -604,7 +583,7 @@
    "dias": 0,
    "semaforo": "verde",
    "origen": "dato",
-   "fecha_lectura": null
+   "fecha_lectura": "2026-11-21"
   },
   {
    "archivo": "rendimientos-defillama.json",
@@ -644,7 +623,8 @@
    "dias": 690,
    "semaforo": "rojo",
    "origen": "dato",
-   "fecha_lectura": "2026-11-18"
+   "fecha_lectura": "2026-11-18",
+   "periodico": "Eurostat: cierre anual; comprobar si hay edición nueva"
   },
   {
    "archivo": "swift-liquidacion.json",
@@ -668,7 +648,7 @@
    "dias": 24,
    "semaforo": "amarillo",
    "origen": "dato",
-   "fecha_lectura": null
+   "fecha_lectura": "2026-11-21"
   },
   {
    "archivo": "tokenizado.json",

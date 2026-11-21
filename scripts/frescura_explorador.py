@@ -6,7 +6,20 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
 # fecha de LECTURA/actualizacion del archivo (no prueba que el dato sea reciente)
-META = {"leido", "actualizado", "_actualizado", "as_of", "generado", "fecha_lectura", "updated", "ultima_actualizacion"}
+META = {"leido", "actualizado", "_actualizado", "as_of", "generado", "fecha_lectura", "updated", "ultima_actualizacion",
+        "generado_utc", "_leido", "revisado"}   # 21-nov (C362): claves de lectura que ya traían 3 archivos grises
+# No son datos sino índices, listas de enlaces o exportaciones de prueba: no se juzgan por frescura (C362, 21-nov)
+EXCLUIR = {"frescura.json", "centro.json", "enlaces.json", "prueba-datos.json"}
+# Cierres periódicos: un rojo puede significar «aún no hay edición nueva» y no un fallo de lectura. Se marca para que
+# W05/W08 comprueben en la fuente si ya salió la siguiente edición (no se da por buena sin mirar).
+PERIODICOS = {
+    "bancos-eba.json": "EBA: ejercicio de transparencia anual; comprobar si hay edición posterior a jun-2025",
+    "seguridad-eurostat.json": "Eurostat: cierre anual; comprobar si hay edición nueva",
+    "deuda-fmi.json": "FMI WEO: abril y octubre; comprobar la edición vigente",
+    "espana-contratacion.json": "PLACSP: trimestral o anual; comprobar si hay periodo nuevo",
+}
+MESES = {"enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio": 6, "julio": 7, "agosto": 8,
+         "septiembre": 9, "setiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12}
 # fecha/periodo del DATO: se usa la mas reciente no futura; si el archivo no trae ninguna, se cae a la de lectura
 DATO = {"fecha_dato", "fecha", "d", "date", "ultimo_periodo", "periodo", "hasta", "mes", "anio", "ultimo_dato", "dato_de"}
 EVENTO = DATO
@@ -20,6 +33,10 @@ def parsea(v):
         v = str(v)
     if not isinstance(v, str):
         return None
+    mm = re.match(r"^([a-záéíóú]+) (\d{4})", v.strip().lower())   # «enero 2026 (revisión agosto 2026)» -> fin de mes
+    if mm and mm.group(1) in MESES:
+        a, mes = int(mm.group(2)), MESES[mm.group(1)]
+        return dt.date(a + (mes == 12), mes % 12 + 1, 1) - dt.timedelta(days=1)
     m = re.match(r"^(\d{4})(?:-(\d{2})(?:-(\d{2}))?|-?[QqTt](\d))?$", v.strip()[:10]) or re.match(r"^(\d{4})-(\d{2})-(\d{2})", v.strip())
     if not m:
         return None
@@ -66,7 +83,7 @@ def semaforo(dias):
 def main():
     filas = []
     for p in sorted((RAIZ / "explorador").glob("*.json")):
-        if p.name == "frescura.json":   # es la salida de este script
+        if p.name in EXCLUIR:   # salida de este script, índices y pruebas
             continue
         acc = {"meta": [], "ev": []}
         try:
@@ -101,7 +118,8 @@ def escribir_json(filas=None):
         if len(f) < 6:
             items.append({"archivo": f[0], "fecha_dato": None, "dias": None, "semaforo": "error", "origen": None})
         else:
-            items.append({"archivo": f[0], "fecha_dato": f[1].isoformat() if f[1] else None, "dias": f[3], "semaforo": f[2], "origen": f[4], "fecha_lectura": f[6].isoformat() if f[6] else None})
+            items.append({"archivo": f[0], "fecha_dato": f[1].isoformat() if f[1] else None, "dias": f[3], "semaforo": f[2], "origen": f[4], "fecha_lectura": f[6].isoformat() if f[6] else None,
+                          **({"periodico": PERIODICOS[f[0]]} if f[0] in PERIODICOS and f[2] in ("rojo", "amarillo") else {})})
     cuenta = {k: sum(1 for i in items if i["semaforo"] == k) for k in ("verde", "amarillo", "rojo", "gris", "error")}
     out = {"nivel": "P", "generado": HOY.isoformat(), "fuente": "scripts/frescura_explorador.py (fecha del DATO de cada explorador/*.json: periodo/fecha más reciente no futura; si no hay, la de lectura; un cierre anual/trimestral reciente se juzga por la lectura; sin IA)",
            "umbrales_dias": {"verde": 7, "amarillo": 30}, "resumen": cuenta, "items": items}
@@ -152,7 +170,8 @@ if __name__ == "__main__":
     L += ["", "## Archivos rojos y grises: propuesta de sesión que los refresca", ""]
     for f in filas:
         if f[2] in ("rojo", "gris"):
-            L.append(f"- {f[0]} ({f[2]}{', '+str(f[3])+' d' if f[3] is not None else ''}): {propuesta(f[0])}")
+            L.append(f"- {f[0]} ({f[2]}{', '+str(f[3])+' d' if f[3] is not None else ''}): {propuesta(f[0])}"
+                     + (f" · PERIÓDICO: {PERIODICOS[f[0]]}" if f[0] in PERIODICOS else ""))
     L += ["", "Nota: un JSON «manual» o de referencia puede ser estable a propósito; el rojo indica revisar, no error. "
           "Los grises no traen fecha de dato: conviene añadir un campo `actualizado` (propuesta, no aplicada)."]
     out = RAIZ / "informes" / "research" / "2026-11-14-C287-frescura.md"

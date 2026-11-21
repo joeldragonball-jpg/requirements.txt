@@ -3176,7 +3176,7 @@ function bPaisCorr(fp){
   const J=D.pais_corredores;if(!J||!(J.paises||[]).length)return null;
   const c=cxCaja('Estado por país: CBDC, stablecoins privadas, corredores de pago y redes con proyecto oficial','mx-pais-corr');
   c.append(el('p','nota-v',String(J.aviso||'').replace(/\bnull\b/g,'vacío')+' Revisado: '+(J.revisado||'vacío')+' · caduca: '+(J.caduca||'vacío')+'. '+String(J.metodo||'').replace(/\bnull\b/g,'vacío')));
-  const SC={limitadas:'limitadas',permitidas_reguladas:'permitidas y reguladas',permitidas_marco_aprobado_sin_vigor:'marco aprobado, sin vigor',en_tramite_o_consulta:'en trámite o consulta',vetadas:'vetadas',sin_marco:'sin marco'};
+  const SC={limitadas:'limitadas',permitidas_reguladas:'permitidas y reguladas',permitidas_marco_aprobado_sin_vigor:'marco aprobado, sin vigor',en_tramite_o_consulta:'en trámite o consulta',vetadas:'vetadas',sin_marco:'sin marco',sin_dato:'sin dato leído'};
   const celda=(p,tema)=>p.jur&&R.celdas.find(x=>x.jur===p.jur&&x.tema===tema);
   const etapaCel=(blk,tema,p,etq)=>{if(!blk||blk.etapa==null)return cxVac();const w=el('div');const cl=celda(p,tema);const ch=el('span','chip');ch.style.borderLeft='4px solid '+COL[blk.etapa];ch.append(document.createTextNode('Etapa '+blk.etapa+(R.escala[blk.etapa]?' · '+R.escala[blk.etapa]:'')+(etq?' · '+etq:'')));w.append(ch);if(cl)w.append(cxNiv(cl.fuente));if(cl&&cl.revisado)w.append(el('span','nota-v',' revisado '+cl.revisado));if(blk.resumen)w.append(cxDet('Ver resumen',el('p','nota-v',blk.resumen)));return w};
   const filas=J.paises.filter(p=>!fp||p.jur===fp);

@@ -37,6 +37,8 @@ MAPA = {"FR": "EU"}  # Banco de Francia representa al Eurosistema
 def sc_estado(j, etapa):
     if j in SC_MANUAL:
         return SC_MANUAL[j]
+    if etapa is None:
+        return "sin_dato"   # C363: jurisdicción añadida sin lectura de este tema; no se da por «sin marco»
     if etapa >= 4:
         return "permitidas_reguladas"
     return "en_tramite_o_consulta" if etapa >= 1 else "sin_marco"
