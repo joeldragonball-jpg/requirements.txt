@@ -1,20 +1,20 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-20 21:35 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-21 02:46 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** Gemini Bulos y desmentidos de la semana
-**Periódicas (próxima):** W06 11-20 · W09 11-20 · W10 11-21 · W01 11-23 · W02 11-24 · W08 11-25 · W04 11-26 · W05 11-26 · W03 12-02 · W07 12-05
+**Hoy (máx. 3):** R00 Apertura del día · W10 Energía y geopolítica · Gemini Energía y geopolítica
+**Periódicas (próxima):** W10 11-21 · W01 11-23 · W02 11-24 · W08 11-25 · W04 11-26 · W05 11-26 · W06 11-27 · W09 11-27 · W03 12-02 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (56):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: 17-nov: 20 movimientos volcados a datos.json (305) · C42 falta: 18-nov 3.ª: ESMA, SFC y MAS leídos; VARA parcial.  · C58 falta: 18-nov: Rusia a P (Duma 450), India Lok Sabha 540/ · C59 falta: 17-nov: salario mínimo y fichas añadidos a indicad · C61 falta: 18-nov: vivienda vacía CN/IN/RU en null (sin fuent · …
-**Hechas en 7 días (8):** C205, C206, C262, C264, C265, C266, C258, C259
+**Hechas en 7 días (6):** C205, C206, C262, C264, C265, C266
 
-## Hoy (vie 2026-11-20): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ✓ · racha 13 días
-- Fija de hoy (viernes: resumen semanal): **W09 Resumen semanal** (~1,5 %) · último 2026-11-20 · `research/prompts/W09-*.md`
+## Hoy (sáb 2026-11-21): solo lo casi obligatorio
+- R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 13 días
+- Sin rutina fija hoy: elige por prioridad en las secciones de abajo.
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
-- Gemini del día: toca **Bulos y desmentidos de la semana** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
+- Gemini del día: toca **Energía y geopolítica** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
 - Norma: 1 consulta ligera al día (unas 15 fuentes), sin repetirla. Rutina G (C20): una rotación por día; si Gemini avisa de límite o llegas al 80 %, se para por hoy y se anota en «parada». La cuota se comparte con NotebookLM.
 - Aviso de límite (antes del 2026-10-27): Una consulta de ~47 fuentes lanzada 2-3 veces agotó el límite; la cuota ya estaba gastada en NotebookLM.
 - Aviso de límite (2026-10-27): Tras W03 Sudáfrica+Indonesia, Deep Research queda desactivado hasta las 04:00 (hora de Madrid) del 27-oct, con el uso general en ~4 %. Hizo 200+ búsquedas web aunque el prompt pedía máx. 15 fuentes: el tope del prompt no se respeta. Límite oficial de Deep Research sin confirmar; de momento, 1 Deep Research por ventana (reinicio 04:00).
@@ -124,29 +124,27 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - ninguna anotada
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [alta] 2026-11-18 (2 d) · Incidente grave en el Estrecho de Ormuz: buque tanque en llamas.
-- [alta] 2026-11-20 (0 d) · Irán prepara un convoy de petroleros en Kharg para desafiar el bloqueo de EE. UU.
-- [alta] 2026-11-20 (0 d) · El Nasdaq cae un 3 % y el Ibex firma su peor semana en ocho meses.
-- [alta] 2026-11-20 (0 d) · Bessent pide a la Fed una subida de tipos menor por el shock energético.
-- [alta] 2026-11-20 (0 d) · Bitcoin se hunde por debajo de 59.000 $.
-- [media] 2026-10-25 (26 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
-- [media] 2026-10-25 (26 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
-- [media] 2026-10-25 (26 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
-- … y 55 más en el Seguimiento
+- [alta] 2026-11-20 (1 d) · Irán prepara un convoy de petroleros en Kharg para desafiar el bloqueo de EE. UU.
+- [alta] 2026-11-20 (1 d) · El Nasdaq cae un 3 % y el Ibex firma su peor semana en ocho meses.
+- [alta] 2026-11-20 (1 d) · Bessent pide a la Fed una subida de tipos menor por el shock energético.
+- [alta] 2026-11-20 (1 d) · Bitcoin se hunde por debajo de 59.000 $.
+- [media] 2026-10-25 (27 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
+- [media] 2026-10-25 (27 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
+- [media] 2026-10-25 (27 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
+- [media] 2026-10-25 (27 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
+- … y 54 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
-- 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (24) → W03 · Se revisan con la rutina de países
-- 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (1) → W03 · ZA/politica
-- 🔴 Voces: Voces sin confirmar (47) → W06 · 23 llevan más de 14 días
-- 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (36) → rutina de cada tema (ver explorador/frescura.json) · verdes 45, amarillos 23, rojos 6, grises 7. Rojos: bancos-eba, espana-contrataci
+- 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (27) → W03 · Se revisan con la rutina de países
+- 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (2) → W03 · CN/politica; ZA/politica
+- 🔴 Voces: Voces sin confirmar (47) → W06 · 24 llevan más de 14 días
+- 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (39) → rutina de cada tema (ver explorador/frescura.json) · verdes 42, amarillos 25, rojos 7, grises 7. Rojos: bancos-eba, deuda-fmi, espana
 - 🟡 Radar regulatorio: Celdas sin dato (8) → W03 · Más huecos: IR 2, AE 1, BRICS 1, ID 1, EG 1
 
 ## Bots con problema
 - Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
-- 2026-11-10 · Inflación EE. UU. (IPC de octubre) (alto) → ◐ rutina ejecutada (W01 del 2026-11-16); dato sin marcar como leído
-- 2026-11-10 · EIA: perspectivas de energía a corto plazo (STEO) (medio) → ◐ rutina ejecutada (W10 del 2026-11-18); dato sin marcar como leído
 - 2026-11-11 · SEC: plazo sobre opciones de ETFs cripto (SR-ISE-2026-42) (medio) → ✓ revisado (hecho)
 - 2026-11-11 · OPEP: informe mensual del mercado petrolero (noviembre) (medio) → ✓ revisado (hecho)
 - 2026-11-13 · AIE: informe mensual del mercado petrolero (noviembre) (medio) → ✓ revisado (hecho)
