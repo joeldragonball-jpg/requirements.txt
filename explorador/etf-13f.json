@@ -3,7 +3,7 @@
  "leido": "2026-11-21",
  "caduca": "2027-02-17",
  "periodo": "2026-09-30",
- "nivel_global": "S (13f.info, agregador, valor y acciones por CUSIP 2T y 3T) contrastado con P: 13F-HR leídos en sec.gov (primary_doc.xml e infotable) de Goldman, Susquehanna, Jane Street, Marex, Schonfeld, IronBridge, Millennium, Intesa, Electric Capital, Weiss, Mubadala, ADIC y Harvard",
+ "nivel_global": "S (13f.info, agregador, valor y acciones por CUSIP 2T y 3T) contrastado con P: 13F-HR leídos en sec.gov (primary_doc.xml e infotable) de Goldman, Susquehanna, Jane Street, Marex, Schonfeld, IronBridge, Millennium, Intesa, Electric Capital, Weiss, Mubadala, ADIC y Harvard; segunda pasada 21-nov: P tambien en 13F-HR propios de Norges Bank, Temasek, State of Michigan Retirement System y Wisconsin SWIB (EDGAR, primary_doc.xml e infotable); ARKB, BITB, GBTC y BTC mini en 13f.info [S]",
  "caduca_motivo": "El 13F del 4T-2026 se presenta hasta ~16-feb-2027; esta foto es del 30-sep-2026.",
  "advertencias": [
   "13F = foto a 30-sep-2026, presentada con hasta 45 días de retraso (plazo 16-nov-2026): no muestra la reacción a la caída de octubre-noviembre ni el precio de entrada.",
@@ -1182,6 +1182,282 @@
     }
    ],
    "nota": ""
+  },
+  {
+   "ticker": "ARKB",
+   "nombre": "ARK 21Shares Bitcoin ETF",
+   "activo": "BTC",
+   "cusip": "040919102",
+   "declarantes_3T": 154,
+   "declarantes_2T": 125,
+   "valor_total_3T_miles_usd": 1150000,
+   "valor_total_2T_miles_usd": 608000,
+   "acciones_total_3T": 41400000,
+   "acciones_total_2T": 31200000,
+   "tenedores_principales": [
+    {
+     "tenedor": "Jane Street Group",
+     "tipo": "creador de mercado / trading",
+     "valor_miles_usd": 323673,
+     "acciones_3T": 11689194,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "Schonfeld Strategic Advisors",
+     "tipo": "hedge fund",
+     "valor_miles_usd": 242367,
+     "acciones_3T": 8752873,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "ARK Investment Management",
+     "tipo": "gestora del propio ETF (patrocinador)",
+     "valor_miles_usd": 135553,
+     "acciones_3T": 4895387,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "Galaxy Digital",
+     "tipo": "cripto / trading",
+     "valor_miles_usd": 105914,
+     "acciones_3T": 3825000,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "Intesa Sanpaolo",
+     "tipo": "banco",
+     "valor_miles_usd": 54937,
+     "acciones_3T": 1984024,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "Millennium Management",
+     "tipo": "hedge fund",
+     "valor_miles_usd": 40813,
+     "acciones_3T": 1473947,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    }
+   ],
+   "nota": "Totales redondeados por 13f.info (1,15 mil M$; 41,4 M acc.; 2T 608 M$, 31,2 M acc.). Acciones 2T por tenedor no leidas (null). Nivel [S] (13f.info). Michigan Retirement System (300.000 acc., 8,3 M$) leido en EDGAR [P]. ARK, gestor del fondo, figura como tenedor: no es conviccion de terceros."
+  },
+  {
+   "ticker": "BITB",
+   "nombre": "Bitwise Bitcoin ETF",
+   "activo": "BTC",
+   "cusip": "09174C104",
+   "declarantes_3T": 315,
+   "declarantes_2T": 277,
+   "valor_total_3T_miles_usd": 940000,
+   "valor_total_2T_miles_usd": 636000,
+   "acciones_total_3T": 20700000,
+   "acciones_total_2T": 19900000,
+   "tenedores_principales": [
+    {
+     "tenedor": "ParaFi Capital",
+     "tipo": "fondo cripto",
+     "valor_miles_usd": 77112,
+     "acciones_3T": 1700000,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "Wells Fargo",
+     "tipo": "banco (propia y clientes)",
+     "valor_miles_usd": 72646,
+     "acciones_3T": 1601555,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "IMC-Chicago",
+     "tipo": "creador de mercado / trading",
+     "valor_miles_usd": 52441,
+     "acciones_3T": 1156125,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "Schonfeld Strategic Advisors",
+     "tipo": "hedge fund",
+     "valor_miles_usd": 51918,
+     "acciones_3T": 1144587,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "PNC Financial Services",
+     "tipo": "banco",
+     "valor_miles_usd": 44311,
+     "acciones_3T": 976876,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "Beaird Harris Wealth Management",
+     "tipo": "asesor de patrimonio",
+     "valor_miles_usd": 43234,
+     "acciones_3T": 953138,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "Millennium Management",
+     "tipo": "hedge fund",
+     "valor_miles_usd": 28112,
+     "acciones_3T": 619768,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    }
+   ],
+   "nota": "Totales redondeados por 13f.info. Nivel [S]; acciones 2T por tenedor no leidas."
+  },
+  {
+   "ticker": "GBTC",
+   "nombre": "Grayscale Bitcoin Trust ETF",
+   "activo": "BTC",
+   "cusip": "389637109",
+   "declarantes_3T": 685,
+   "declarantes_2T": 613,
+   "valor_total_3T_miles_usd": 1340000,
+   "valor_total_2T_miles_usd": 1260000,
+   "acciones_total_3T": 20700000,
+   "acciones_total_2T": 27700000,
+   "tenedores_principales": [
+    {
+     "tenedor": "Horizon Kinetics Asset Management",
+     "tipo": "gestora",
+     "valor_miles_usd": 276022,
+     "acciones_3T": 4273456,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "Susquehanna International Group",
+     "tipo": "creador de mercado / trading",
+     "valor_miles_usd": 70604,
+     "acciones_3T": 1093117,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "LPL Financial",
+     "tipo": "asesor / broker de patrimonio",
+     "valor_miles_usd": 53231,
+     "acciones_3T": 824146,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "HighTower Advisors",
+     "tipo": "asesor de patrimonio",
+     "valor_miles_usd": 38150,
+     "acciones_3T": 590662,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "Mad River Investors",
+     "tipo": "gestor",
+     "valor_miles_usd": 22958,
+     "acciones_3T": 355444,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    }
+   ],
+   "nota": "Las acciones totales bajan de 27,7 M a 20,7 M mientras el valor sube (precio). Nivel [S]."
+  },
+  {
+   "ticker": "BTC",
+   "nombre": "Grayscale Bitcoin Mini Trust ETF",
+   "activo": "BTC",
+   "cusip": "389930207",
+   "declarantes_3T": 516,
+   "declarantes_2T": 473,
+   "valor_total_3T_miles_usd": 1880000,
+   "valor_total_2T_miles_usd": 910000,
+   "acciones_total_3T": 51000000,
+   "acciones_total_2T": 35500000,
+   "tenedores_principales": [
+    {
+     "tenedor": "Horizon Kinetics Asset Management",
+     "tipo": "gestora",
+     "valor_miles_usd": 718049,
+     "acciones_3T": 19433007,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "Bullish",
+     "tipo": "bolsa / cripto",
+     "valor_miles_usd": 167160,
+     "acciones_3T": 4523963,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "Wells Fargo",
+     "tipo": "banco (propia y clientes)",
+     "valor_miles_usd": 114079,
+     "acciones_3T": 3087403,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "Goldman Sachs Group",
+     "tipo": "banco de inversion (propia y clientes)",
+     "valor_miles_usd": 51120,
+     "acciones_3T": 1383498,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "Emory University",
+     "tipo": "universidad (dotacion)",
+     "valor_miles_usd": 50031,
+     "acciones_3T": 1354022,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    },
+    {
+     "tenedor": "Paragon Advisors",
+     "tipo": "asesor",
+     "valor_miles_usd": 47041,
+     "acciones_3T": 1273108,
+     "acciones_2T": null,
+     "var_acciones_pct": null,
+     "nuevo_vs_2T": null
+    }
+   ],
+   "nota": "13f.info lista varios CUSIP para este fondo; se uso 389930207 (SHS NEW). Nivel [S]. ETH mini no revisado (poca aportacion)."
   }
  ],
  "fondos_soberanos_y_publicos": [
@@ -1268,12 +1544,98 @@
    ],
    "lectura": "Solo IBIT (~3,6 % de su 13F), sin cambio. No es fondo soberano.",
    "nivel": "P"
+  },
+  {
+   "entidad": "State of Michigan Retirement System",
+   "tipo": "fondo de pensiones publico",
+   "pais": "EE. UU. (Michigan)",
+   "cik": "0000762152",
+   "accesion": "0000762152-26-000017",
+   "presentado": "2026-10-27",
+   "cartera_13f_usd": 22595236086,
+   "posiciones_13f": 966,
+   "cripto": [
+    {
+     "etf": "ARKB",
+     "acciones_3T": 300000,
+     "valor_usd": 8307000
+    },
+    {
+     "etf": "GBTC",
+     "acciones_3T": 37418,
+     "valor_usd": 2416829
+    },
+    {
+     "etf": "ETHE",
+     "acciones_3T": 460000,
+     "valor_usd": 9857800
+    }
+   ],
+   "lectura": "HECHO: tres ETF cripto con 20,6 M$ en total (~0,09 % de su cartera 13F); ninguno de XRP, SOL ni XLM. El apunte previo de ETHE se confirma en su propio 13F [P]; la variacion frente al 2T no se leyo en EDGAR (13f.info: 460.000 sin cambio, [S]).",
+   "nivel": "P (13F-HR leido en EDGAR, primary_doc.xml e infotable; filtrado por nombre del emisor)"
+  },
+  {
+   "entidad": "Temasek Holdings (Private) Ltd",
+   "tipo": "fondo soberano",
+   "pais": "Singapur",
+   "cik": "0001021944",
+   "accesion": "0001021944-26-000015",
+   "presentado": "2026-10-28",
+   "cartera_13f_usd": 36700848637,
+   "posiciones_13f": 190,
+   "cripto": [],
+   "lectura": "HECHO: sin ETF cripto en su 13F del 3T (busqueda por nombre del emisor: Bitcoin, Ether, XRP, Solana, Stellar, Crypto, Grayscale, Bitwise, Canary, 21Shares, ARK 21, Franklin, VanEck, Invesco Galaxy, WisdomTree). La unica coincidencia, VanEck ETF Trust (1,18 M acc., 103,7 M$), tiene el CUSIP de un ETF no cripto [VERIFICAR el CUSIP]. No equivale a ausencia fuera del 13F (no recoge no EE. UU. ni cortos).",
+   "nivel": "P (13F-HR leido en EDGAR; filtro por nombre, no por CUSIP)"
+  },
+  {
+   "entidad": "State of Wisconsin Investment Board (SWIB)",
+   "tipo": "fondo de pensiones publico",
+   "pais": "EE. UU. (Wisconsin)",
+   "cik": "0000854157",
+   "accesion": "0001062993-26-006051",
+   "presentado": "2026-11-16",
+   "cartera_13f_usd": 50412357587,
+   "posiciones_13f": 2658,
+   "cripto": [],
+   "lectura": "HECHO: sin ETF cripto spot en el 3T ni en el 2T (0001062993-26-004375). Solo una accion de mineria, Bit Digital (192.026 acc., 0,3 M$): no es un ETF.",
+   "nivel": "P (13F-HR leidos en EDGAR; filtro por nombre)"
+  },
+  {
+   "entidad": "Norges Bank (NBIM)",
+   "tipo": "fondo soberano",
+   "pais": "Noruega",
+   "cik": "0001374170",
+   "accesion": "0001374170-26-000090",
+   "presentado": "2026-11-13",
+   "cartera_13f_usd": 1011453007122,
+   "posiciones_13f": 1490,
+   "cripto": [],
+   "lectura": "HECHO: el 13F-HR del 3T-2026 declara 1.490 posiciones y 1,011 billones USD, pero su tabla de informacion trae una sola fila ficticia (emisor NA, valor 0): la lista real NO es publica todavia. El 13F-HR/A del 3T-2025 (0001374170-26-000088, presentado el 12-nov-2026) si trae 1.516 posiciones (870.105 M USD) y no contiene ETF cripto spot (filtro por nombre; solo empresas como Coinbase, Circle, Galaxy, Block). LECTURA [RAZONADO]: parece que Norges publica la lista real con un ano de retraso; no se puede decir si tiene IBIT/XRP/SOL a 30-sep-2026 [VERIFICAR el motivo: no leido].",
+   "nivel": "P (primary_doc.xml e infotable leidos en EDGAR); sin dato util del 3T-2026"
+  },
+  {
+   "entidad": "GIC Private Ltd",
+   "tipo": "fondo soberano",
+   "pais": "Singapur",
+   "cik": "0000936828",
+   "accesion": null,
+   "presentado": null,
+   "cartera_13f_usd": null,
+   "posiciones_13f": null,
+   "cripto": [],
+   "lectura": "No localizado: en EDGAR (CIK 936828) las 20 ultimas presentaciones son Schedule 13G/A y Form 4, sin 13F-HR. No hay base para decir que tenga o no ETF cripto [VERIFICAR si presenta 13F bajo otra entidad]. Busqueda por nombre Government of Singapore sin resultados.",
+   "nivel": "VERIFICAR (listado de presentaciones leido en EDGAR; sin infotable)"
   }
  ],
- "no_encontrados": "Revisados los CUSIP de XRP (7), SOL (5), BTC (IBIT, FBTC), ETH (ETHA, FETH, ETHE) en 13f.info: ningún fondo soberano ni público aparece en XRP o SOL. Mubadala y ADIC solo en IBIT. No aparecen Norges Bank, GIC, Temasek ni Wisconsin SWIB (solo se buscó por coincidencia de nombre en los CUSIP, no en sus 13F propios) [VERIFICAR]. Cobertura: no se revisaron otros ETF de BTC/ETH (ARKB, BITB, GBTC, BTC mini) ni ETH mini.",
+ "no_encontrados": "Segunda pasada 21-nov: leidos los 13F-HR propios de Michigan RS (ARKB, GBTC, ETHE), Temasek (ninguno), Wisconsin SWIB (ninguno), Norges Bank (3T-2026 sin tabla real; 3T-2025 sin ETF cripto); no localizado el 13F de GIC. Antes (13f.info): ningun fondo soberano ni publico en los ETF de XRP o SOL; Mubadala y ADIC solo IBIT. El filtro por nombre del emisor no equivale a ausencia; el 13F no recoge cortos, derivados fuera de tabla ni inversores no EE. UU. [VERIFICAR]. Cobertura: anadidos ARKB, BITB, GBTC y BTC mini; no revisado ETH mini ni otros fondos publicos de EE. UU.",
  "fuentes": [
   "https://13f.info/cusip/09174F107",
   "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001704268&type=13F-HR",
-  "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001814011&type=13F-HR"
+  "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001814011&type=13F-HR",
+  "https://13f.info/cusip/040919102",
+  "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000762152&type=13F-HR",
+  "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000854157&type=13F-HR",
+  "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001374170&type=13F-HR",
+  "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001021944&type=13F-HR"
  ]
 }

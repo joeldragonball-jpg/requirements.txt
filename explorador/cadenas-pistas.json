@@ -63,12 +63,13 @@
     "red": "sin concretar",
     "producto": "Custodia de activos digitales (clientes de Corporate Bank e Investment Bank)"
    },
-   "estado": "confirmada_concreta",
+   "estado": "confirmada_sin_concretar",
    "nivel": "P",
    "fuente_url": "https://www.db.com/news/detail/20260916-deutsche-bank-to-launch-digital-asset-custody-solution-for-institutional-and-corporate-clients",
    "fecha": "2026-09-16",
-   "nota": "Leído en db.com: «go-live with first clients this year» sujeto al calendario regulatorio; usará «proveedores externos de tecnología e infraestructura» sin nombrarlos. Registro MiCA del 12-oct (Cointelegraph/crypto.news [S]). Decrypt (11-nov) dice «live»; la fecha de arranque no está confirmada en primaria. La nota no nombra cadena.",
-   "verificar": "Fecha real de go-live; proveedores (Taurus y Bitpanda según The Block [S]); en qué cadenas custodia."
+   "nota": "Leído en db.com: «go-live with first clients this year» sujeto al calendario regulatorio; usará «proveedores externos de tecnología e infraestructura» sin nombrarlos. Registro MiCA del 12-oct (Cointelegraph/crypto.news [S]). Decrypt (11-nov) dice «live»; la fecha de arranque no está confirmada en primaria. La nota no nombra cadena. [C357b] Reclasificada: la red queda «sin concretar», por regla no puede ser confirmada_concreta.",
+   "verificar": "Fecha real de go-live; proveedores (Taurus y Bitpanda según The Block [S]); en qué cadenas custodia.",
+   "comprobado": "Nota de db.com leída: lanza custodia de activos digitales; no nombra cadena ni proveedor. Los tokens BTC/ETH/stablecoins los dan la nota y la prensa, no una lista cerrada."
   },
   {
    "id": "pista-db-hedera",
@@ -117,12 +118,13 @@
     "red": "sin concretar",
     "producto": "Pagos en USD sobre el libro mayor de Swift (depósitos tokenizados según la nota, sin confirmar para estas operaciones)"
    },
-   "estado": "confirmada_concreta",
+   "estado": "confirmada_sin_concretar",
    "nivel": "P",
    "fuente_url": "https://www.citigroup.com/global/news/press-release/2026/citi-services-pioneers-live-transactions-swift-ledger-fab-ocbc-redefine-always-on-global-payments",
    "fecha": "2026-09-02",
-   "nota": "Leído en citigroup.com: primeras operaciones en vivo (FAB en Oriente Medio, OCBC en Sudeste Asiático); DBS y UOB «previstas». No nombra la cadena subyacente.",
-   "verificar": "Si fueron depósitos tokenizados; cadena subyacente."
+   "nota": "Leído en citigroup.com: primeras operaciones en vivo (FAB en Oriente Medio, OCBC en Sudeste Asiático); DBS y UOB «previstas». No nombra la cadena subyacente. [C357b] Reclasificada: token y red «sin concretar».",
+   "verificar": "Si fueron depósitos tokenizados; cadena subyacente.",
+   "comprobado": "Nota de citigroup.com leída: operaciones en vivo con FAB y OCBC en el libro mayor de Swift. No nombra token (depósitos tokenizados sin confirmar para estas operaciones) ni cadena."
   },
   {
    "id": "pista-citi-token-services",
@@ -186,15 +188,16 @@
    "que_dijo": "Convirtió QQQ y SPY a forma tokenizada y depositó activos tokenizados como margen ante CME.",
    "concreta": {
     "token": "sin concretar",
-    "red": "Canton / Besu (DTCC)",
+    "red": "sin concretar (la página de DTCC no nombra red)",
     "producto": "Colateral tokenizado"
    },
-   "estado": "confirmada_concreta",
+   "estado": "confirmada_sin_concretar",
    "nivel": "P",
    "fuente_url": "https://www.dtcc.com/digital-assets/tokenization/live-production-trades",
    "fecha": "2026-07-15",
-   "nota": "Página de la jornada en dtcc.com (ya cotejada en el repo). No implica XRP ni XLM.",
-   "verificar": "Si se repite en producción tras el 28-oct."
+   "nota": "Página de la jornada en dtcc.com (ya cotejada en el repo). No implica XRP ni XLM. [C357b] Se retira «Canton / Besu» como dato de la página: la red es «sin concretar» en esta fuente.",
+   "verificar": "Si se repite en producción tras el 28-oct.",
+   "comprobado": "Página dtcc.com (15-jul) releída el 21-nov: JPMorgan tokeniza QQQ y deposita activos tokenizados como margen ante CME; ~40 firmas; NO nombra Canton, Besu ni ninguna red ni token. La etiqueta «Canton / Besu» anterior no salía de esa página."
   },
   {
    "id": "pista-kinexys-8-divisas",
@@ -261,12 +264,13 @@
     "red": "Stellar, Solana",
     "producto": "DTCC Tokenization Service"
    },
-   "estado": "confirmada_concreta",
+   "estado": "confirmada_sin_concretar",
    "nivel": "P",
    "fuente_url": "https://www.dtcc.com/press-releases/2026/tokenization-service-to-connect-with-stellar-public-blockchain-as-dtc-advances-multi-chain-strategy",
    "fecha": "2026-05-27",
-   "nota": "Notas del 27-may (Stellar) y 12-nov (Solana). No mencionan XLM ni SOL como medio de liquidación. Plan con fecha, no producción.",
-   "verificar": "Qué otras redes entran en 2027; XRPL no consta."
+   "nota": "Notas del 27-may (Stellar) y 12-nov (Solana). No mencionan XLM ni SOL como medio de liquidación. Plan con fecha, no producción. [C357b] Reclasificada por token «sin concretar».",
+   "verificar": "Qué otras redes entran en 2027; XRPL no consta.",
+   "comprobado": "Notas de DTCC (27-may Stellar, 12-nov Solana) leídas: conexión del servicio a esas redes; no mencionan XLM ni SOL como medio de liquidación; token «sin concretar». Plan con fecha, no producción."
   },
   {
    "id": "pista-dtcc-l1",
@@ -351,30 +355,32 @@
     "red": "sin concretar",
     "producto": "Piloto de liquidación con stablecoins"
    },
-   "estado": "confirmada_concreta",
+   "estado": "confirmada_sin_concretar",
    "nivel": "P",
    "fuente_url": "https://investor.visa.com/news/news-details/2026/Visa-Accelerates-Stablecoin-Momentum-Adding-Five-Blockchains-for-Settlement/default.aspx",
    "fecha": "2026-04-29",
-   "nota": "Leído en investor.visa.com: ni XRPL ni Ripple aparecen; solo USDC como stablecoin. Piloto; cifra de la propia empresa.",
-   "verificar": "Volumen por cadena (no desglosado)."
+   "nota": "Leído en investor.visa.com: ni XRPL ni Ripple aparecen; solo USDC como stablecoin. Piloto; cifra de la propia empresa. [C357b] Reclasificada: la red de cada flujo no se precisa.",
+   "verificar": "Volumen por cadena (no desglosado).",
+   "comprobado": "Nota de investor.visa.com leída: 9 cadenas, USDC. El reparto y el volumen por cadena no se publican; la red concreta de cada operación es «sin concretar»."
   },
   {
    "id": "pista-euroclear-clearstream",
    "actor": "Euroclear / Clearstream / DTCC",
    "red_o_ambito": null,
    "voz_id": null,
-   "que_dijo": "Iniciativa de interoperabilidad de valores digitales entre Euroclear, Clearstream y DTCC.",
+   "que_dijo": "Libro blanco conjunto de Euroclear, Clearstream y DTCC (con Boston Consulting Group) sobre interoperabilidad de valores digitales.",
    "concreta": {
     "token": "sin concretar",
     "red": "sin concretar",
     "producto": "sin concretar"
    },
    "estado": "confirmada_sin_concretar",
-   "nivel": "S",
-   "fuente_url": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260323~a88f20c049.hu.html",
-   "fecha": "2026-03-23",
-   "nota": "Cipollone (BCE) la saluda en un discurso de mar-2026 (visto en buscador, no leído). Sin red ni producto; no se localizó nota propia de Euroclear.",
-   "verificar": "Nota de las tres entidades con red y calendario."
+   "nivel": "P",
+   "fuente_url": "https://www.dtcc.com/press-releases/2026/mapping-the-course-to-interoperability",
+   "fecha": "2026-03-04",
+   "nota": "[C357b] Sustituye la fuente anterior (discurso de Cipollone, solo buscador). Hecho: publicación conjunta. Opinión de las entidades: la fragmentación es un riesgo. Parte interesada: los tres operadores defienden su papel. No equivale a que usen XRPL ni Stellar.",
+   "verificar": "Si Euroclear, Clearstream o DTCC publican pilotos concretos de interoperabilidad con red y calendario.",
+   "comprobado": "Leídas la nota de DTCC y la página de Euroclear (4-mar-2026): libro blanco «Building the Path Towards Digital Asset Securities Interoperability» con cinco fundamentos (activos y pasivos, reconocimiento de la propiedad, ciclo de vida y movimiento, libros mayores, cumplimiento legal). No nombra ninguna cadena, token ni producto; advierte de la fragmentación entre redes DLT; sin fechas ni compromisos. Es un marco, no un producto."
   },
   {
    "id": "pista-pontes",
@@ -387,12 +393,13 @@
     "red": "sin concretar",
     "producto": "Pontes (puente entre plataformas DLT y TARGET)"
    },
-   "estado": "confirmada_concreta",
+   "estado": "confirmada_sin_concretar",
    "nivel": "S",
    "fuente_url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260921~e754847a7b.pt.html",
    "fecha": "2026-09-21",
-   "nota": "Nota del BCE localizada en buscador (no leída entera). Qué plataformas DLT se conectan al arranque: sin concretar.",
-   "verificar": "Leer la nota; plataformas conectadas."
+   "nota": "Nota del BCE localizada en buscador (no leída entera). Qué plataformas DLT se conectan al arranque: sin concretar. [C357b] Reclasificada: token y red «sin concretar» y nivel S.",
+   "verificar": "Leer la nota; plataformas conectadas.",
+   "comprobado": "Nota del BCE solo vista en buscador [S]; no se leyó entera. Qué plataformas DLT y qué tokens: «sin concretar»."
   },
   {
    "id": "pista-goldman-bny-mmf",
@@ -405,12 +412,13 @@
     "red": "GS DAP (cadena privada de Goldman)",
     "producto": "Fondos monetarios tokenizados"
    },
-   "estado": "confirmada_concreta",
+   "estado": "confirmada_sin_concretar",
    "nivel": "S",
    "fuente_url": "https://goldmansachs.com/pressroom/press-releases/2025/bny-goldman-sachs-launch-tokenized-money-market-funds-solution",
    "fecha": "2025-07-23",
-   "nota": "Dato de 2025, visto vía resumen de buscador. Sin red pública.",
-   "verificar": "Estado actual y volúmenes."
+   "nota": "Dato de 2025, visto vía resumen de buscador. Sin red pública. [C357b] Reclasificada por token «sin concretar».",
+   "verificar": "Estado actual y volúmenes.",
+   "comprobado": "Resumen de buscador [S] de la nota de Goldman (jul-2025): fondos monetarios tokenizados sobre GS DAP; token «sin concretar»; dato de 2025 no releído."
   },
   {
    "id": "pista-goldman-13f",
@@ -423,12 +431,13 @@
     "red": "XRPL y Solana (exposición por ETF, no en cadena)",
     "producto": "ETF spot"
    },
-   "estado": "confirmada_concreta",
+   "estado": "confirmada_sin_concretar",
    "nivel": "P",
    "fuente_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000886982&type=13F-HR",
    "fecha": "2026-09-30",
-   "nota": "Lectura propia del XML del 13F hecha en el repo. Tener ETF no es adopción de la red.",
-   "verificar": "Si se mantiene en el 13F del 4T-2026."
+   "nota": "Lectura propia del XML del 13F hecha en el repo. Tener ETF no es adopción de la red. [C357b] Reclasificada por token «sin concretar».",
+   "verificar": "Si se mantiene en el 13F del 4T-2026.",
+   "comprobado": "13F-HR leído por script en el repo (v218): cinco ETF de XRP y tres de Solana; los tickers están en etf-13f.json; en esta pista el token queda «sin concretar» y es exposición por ETF, no uso de la red."
   },
   {
    "id": "pista-franklin-dbs-ripple",
@@ -531,12 +540,13 @@
     "red": "XRPL DevNet",
     "producto": "Ancla de datos SDMX"
    },
-   "estado": "confirmada_concreta",
+   "estado": "confirmada_sin_concretar",
    "nivel": "P",
    "fuente_url": "https://www.bis.org/publications/working-paper-1374-verifiable-official-statistics-blockchain-based-approach",
    "fecha": "2026-09-02",
-   "nota": "El BIS lo plantea agnóstico de cadena; red de pruebas con datos sintéticos y sin liquidez; no genera demanda de XRP.",
-   "verificar": "Piloto en red principal (no consta)."
+   "nota": "El BIS lo plantea agnóstico de cadena; red de pruebas con datos sintéticos y sin liquidez; no genera demanda de XRP. [C357b] Reclasificada por token «sin concretar».",
+   "verificar": "Piloto en red principal (no consta).",
+   "comprobado": "Documento de trabajo del BIS leído: prueba de concepto en XRPL DevNet con datos sintéticos; no concreta token (el BIS lo plantea agnóstico de cadena)."
   },
   {
    "id": "pista-csdbr-btg",
@@ -549,12 +559,184 @@
     "red": "XRPL",
     "producto": "Espejo de fondos con permisos"
    },
-   "estado": "confirmada_concreta",
+   "estado": "confirmada_sin_concretar",
    "nivel": "P",
    "fuente_url": "https://ripple.com/ripple-press/csdbr-and-ripple-use-the-xrpl-blockchain-to-expand-brazils-financial-market-infrastructure/",
    "fecha": "2026-09-29",
-   "nota": "Nota de Ripple (parte interesada). El registro oficial sigue siendo CSD BR.",
-   "verificar": "Nota de CSD BR."
+   "nota": "Nota de Ripple (parte interesada). El registro oficial sigue siendo CSD BR. [C357b] Reclasificada por token «sin concretar».",
+   "verificar": "Nota de CSD BR.",
+   "comprobado": "Nota de Ripple leída (parte interesada): espejo en XRPL de participaciones de fondos de BTG; token «sin concretar»; nota de CSD BR no localizada."
+  },
+  {
+   "id": "pista-euroclear-canton",
+   "actor": "Euroclear (y DTCC)",
+   "red_o_ambito": "canton",
+   "voz_id": null,
+   "que_dijo": "(Sin voz concreta; sale del cruce de actores.) Euroclear copreside la Canton Foundation con DTCC.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "Canton",
+    "producto": "Gobernanza (Canton Foundation); no es un producto"
+   },
+   "estado": "confirmada_sin_concretar",
+   "nivel": "P",
+   "fuente_url": "https://www.dtcc.com/press-releases/2025/dtcc-and-digital-asset-partner-to-tokenize-dtc-custodied-us-treasury-securities",
+   "fecha": "2025-12-17",
+   "comprobado": "Leída la nota de DTCC (17-dic-2025): DTCC toma un asiento de copresidencia en la Canton Foundation «con Euroclear». No hay nota propia de Euroclear localizada (euroclear.com dio 403 en una nota de Project Ensemble, no esencial). Que Euroclear tokeniza oro, eurobonos y gilts como colateral en Canton: solo página de Canton vista en buscador [S]; la URL dio 404 al leerla.",
+   "nota": "Copresidir una fundación es gobernanza, no producción ni token. Un perfil de baja autoridad dice que Euroclear no tenía producto en producción sobre Canton en abr-2026: [VERIFICAR].",
+   "verificar": "Nota de Euroclear en su sala de prensa (probar Chrome); producto vivo en Canton."
+  },
+  {
+   "id": "pista-dtcc-canton-treasuries",
+   "actor": "DTCC y Digital Asset (Canton)",
+   "red_o_ambito": "canton",
+   "voz_id": "v041",
+   "que_dijo": "La voz sitúa a DTCC y a bancos en Canton para colateral tokenizado.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "Canton",
+    "producto": "Bonos del Tesoro de EE. UU. custodiados en DTC, tokenizados (MVP en entorno de producción controlado, 1S-2026)"
+   },
+   "estado": "confirmada_sin_concretar",
+   "nivel": "P",
+   "fuente_url": "https://www.dtcc.com/press-releases/2025/dtcc-and-digital-asset-partner-to-tokenize-dtc-custodied-us-treasury-securities",
+   "fecha": "2025-12-17",
+   "comprobado": "Nota de DTCC leída: acuerdo con Digital Asset para tokenizar un subconjunto de bonos del Tesoro en la red Canton; «MVP» en 1S-2026; no nombra token. Hito de producción real (Digital Asset, >30 firmas): solo resumen de buscador [S], sin nota fechada de DTCC localizada; la página de DTCC del 15-jul no nombra Canton.",
+   "nota": "Digital Asset desarrolla Canton: parte interesada. No implica XRP ni XLM. Discrepancia de calendario entre medios (1S o 2S-2026): [VERIFICAR].",
+   "verificar": "Nota de DTCC con la fecha del paso a producción en Canton y token concreto."
+  },
+  {
+   "id": "pista-bitwise-solana-2031",
+   "actor": "Bitwise (informe sobre Solana)",
+   "red_o_ambito": "solana",
+   "voz_id": "v187",
+   "que_dijo": "Escenarios de SOL para 2031: 1.100 $ alcista, 385 $ base, 80 $ bajista.",
+   "concreta": {
+    "token": "SOL",
+    "red": "Solana",
+    "producto": "Informe de escenarios de precio (no es un producto)"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "ESP",
+   "fuente_url": "https://bitwiseinvestments.com/crypto-market-insights/tokenization-247-trading-and-the-economics-of-solana",
+   "fecha": "2026-11-16",
+   "comprobado": "Página de Bitwise leída el 21-nov: autores Kam Benbrik y Rafal Klich; caso base 385 $ en 2031 (+36 % anual compuesto). Los 1.100 $ y 80 $ y los supuestos no figuran en la página; v212 los leyó en el PDF y aquí no se releyó. Lo confirmado es que Bitwise los publica; el precio es [ESPECULACIÓN].",
+   "nota": "Bitwise emite ETF de Solana y XRP: conflicto de interés. Un escenario alcista no es previsión. Caso bajista del propio informe: 80 $.",
+   "verificar": "Releer el PDF para los escenarios extremos y supuestos."
+  },
+  {
+   "id": "pista-bitwise-cuota-solana",
+   "actor": "Bitwise (cuota de Solana en acciones tokenizadas)",
+   "red_o_ambito": "solana",
+   "voz_id": "v198",
+   "que_dijo": "13.400 M$ de 31.400 M$ negociados en acciones tokenizadas (42,7 %) fueron en Solana, ene-sep 2026.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "Solana",
+    "producto": "Acciones tokenizadas (volumen negociado)"
+   },
+   "estado": "matizada",
+   "nivel": "S",
+   "fuente_url": "https://www.theblock.co/news/markets/2026-11-16-bitwise-solana-price-prediction-1100-2031-441407",
+   "fecha": "2026-11-16",
+   "comprobado": "La página de Bitwise leída dice solo «más del 40 % de las acciones tokenizadas del mundo se negocian en Solana»; las cifras 13.400/31.400 M$ y 42,7 % no aparecen ahí (vienen de The Block, resumen). Cierto en orden de magnitud; la cifra exacta, sin comprobar.",
+   "nota": "Es cuota del volumen actual, no del reparto futuro. Cifra de un emisor de ETF de Solana. Token «sin concretar»: el volumen no mide demanda de SOL.",
+   "verificar": "PDF de Bitwise o RWA.xyz para el 42,7 %."
+  },
+  {
+   "id": "pista-jupiter-blsh",
+   "actor": "Jupiter (Kash Dhanda) y Bullish",
+   "red_o_ambito": "solana",
+   "voz_id": "v188",
+   "que_dijo": "La tokenización es la línea de salida; Jupiter dará préstamos contra acciones tokenizadas.",
+   "concreta": {
+    "token": "BLSH (acción de Bullish tokenizada por el emisor)",
+    "red": "Solana",
+    "producto": "Mercado de préstamos con permisos en Jupiter Lend"
+   },
+   "estado": "confirmada_concreta",
+   "nivel": "S",
+   "fuente_url": "https://decrypt.co/383333/tokenization-is-not-the-finish-line-jupiter-to-let-users-borrow-against-bullish-shares",
+   "fecha": "2026-11-16",
+   "comprobado": "Decrypt leída: anuncio en Breakpoint (Londres, 16-nov) de un mercado con permisos, liquidaciones en cadena y custodios cualificados; Global Passport con KYC ya activo; no estará en todas las jurisdicciones. Es un anuncio, sin fecha de lanzamiento. Fuente primaria de Jupiter no leída.",
+   "nota": "Jupiter vende liquidez y crédito sobre Solana y Bullish también tiene interés. Anunciar no es operar.",
+   "verificar": "Entrada del blog de Jupiter, fecha y jurisdicciones."
+  },
+  {
+   "id": "pista-jupiter-cifras-rwa",
+   "actor": "Jupiter (cifras de RWA.xyz y DefiLlama)",
+   "red_o_ambito": null,
+   "voz_id": "v197",
+   "que_dijo": "~460.000 M$ tokenizados, ~39.500 M$ visibles fuera del emisor, ~3.400 M$ en DeFi.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "sin concretar",
+    "producto": "Cifras de mercado agregadas"
+   },
+   "estado": "matizada",
+   "nivel": "S",
+   "fuente_url": "https://decrypt.co/383333/tokenization-is-not-the-finish-line-jupiter-to-let-users-borrow-against-bullish-shares",
+   "fecha": "2026-11-16",
+   "comprobado": "Decrypt confirma que Dhanda dio esas cifras y las atribuye a RWA.xyz (460.000 y 39.500 M$) y DefiLlama (3.400 M$). No se contrastaron con RWA.xyz ni DefiLlama; no es una cifra propia.",
+   "nota": "La clasificación de «visible fuera del emisor» es metodología de terceros. Hecho: lo dijo; el dato, sin verificar.",
+   "verificar": "RWA.xyz y DefiLlama en esa fecha."
+  },
+  {
+   "id": "pista-bullish-equiniti",
+   "actor": "Bullish (Goldman Sachs asesor)",
+   "red_o_ambito": null,
+   "voz_id": "v221",
+   "que_dijo": "Vigilar si la compra de Equiniti cierra en enero de 2027.",
+   "concreta": {
+    "token": "sin concretar",
+    "red": "sin concretar",
+    "producto": "Agente de transferencia para valores tokenizados (compra de Equiniti)"
+   },
+   "estado": "confirmada_sin_concretar",
+   "nivel": "P",
+   "fuente_url": "https://www.bullish.com/news-insights/bullish-to-acquire-equiniti-from-siris-in-4-2-billion-transaction-creating-the-global-transfer-agent-for-tokenized-securities",
+   "fecha": "2026-05-05",
+   "comprobado": "Nota de Bullish leída: 4.200 M$, acciones a 38,48 $, cierre previsto en enero de 2027 con aprobaciones; Goldman Sachs, asesor financiero exclusivo de Bullish. No nombra cadena concreta.",
+   "nota": "Parte interesada (la nota es de Bullish). Pendiente de cierre y aprobaciones.",
+   "verificar": "Cierre y aprobaciones regulatorias."
+  },
+  {
+   "id": "pista-jpm-colateral-btc-eth",
+   "actor": "JPMorgan",
+   "red_o_ambito": null,
+   "voz_id": "v064",
+   "que_dijo": "«JPMorgan ya está adoptando Bitcoin.»",
+   "concreta": {
+    "token": "BTC, ETH",
+    "red": "sin concretar",
+    "producto": "Préstamos con BTC y ETH como colateral (institucionales)"
+   },
+   "estado": "matizada",
+   "nivel": "S",
+   "fuente_url": "https://www.theblock.co/post/376038/jpmorgan-to-let-institutional-clients-pledge-btc-eth-loan-collateral",
+   "fecha": "2025-10-24",
+   "comprobado": "The Block leída: informa de un plan que cita a Bloomberg y fuentes anónimas (24-oct-2025), lanzamiento «a finales de año», custodio externo sin nombrar. The Block no lo confirmó. Es un plan reportado, no un hecho; no hay primaria de JPMorgan.",
+   "nota": "La voz dice «adoptando»; lo comprobado es intención reportada con fuentes anónimas y de hace un año.",
+   "verificar": "Comunicado de JPMorgan o confirmación posterior del lanzamiento."
+  },
+  {
+   "id": "pista-13f-jpm-ms-xrp-etf",
+   "actor": "JPMorgan, Morgan Stanley, Rakuten, Rothschild Investment LLC",
+   "red_o_ambito": "xrpl",
+   "voz_id": "v196",
+   "que_dijo": "Tienen posiciones en ETF de XRP (13F 3T-2026).",
+   "concreta": {
+    "token": "XRP (vía ETF)",
+    "red": "sin concretar",
+    "producto": "ETF spot de XRP (tenencia en acciones)"
+   },
+   "estado": "sin_confirmar",
+   "nivel": "S",
+   "fuente_url": "https://news.bitcoin.com/7-major-banks-reveal-xrp-etf-holdings-latest-sec-filings/",
+   "fecha": "2026-09-30",
+   "comprobado": "Solo prensa (bitcoin.com); no se abrieron los XML 13F de esas firmas. En el repo sí consta la lectura propia del 13F de Goldman (pista aparte).",
+   "nota": "Tener ETF no es adopción de la red XRPL. Importes pequeños en algunos casos (JPMorgan 539 acciones según la prensa). Medio cripto como fuente.",
+   "verificar": "13F-HR de cada firma en EDGAR."
   }
  ]
 }

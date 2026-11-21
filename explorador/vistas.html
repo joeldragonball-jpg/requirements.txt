@@ -1000,7 +1000,7 @@ function pResumenCompleto(){
     s.append(cm)}
   const g2=el('div','cols2');
   const c2=el('div','caja');c2.append(el('h2',null,'Últimos movimientos'));
-  const ult=D.movimientos.filter(paisOk).slice().sort((a,b)=>a.fecha<b.fecha?1:-1).slice(0,10);
+  const ult=D.movimientos.filter(m=>paisOk(m)&&m.fecha<=HOYS).slice().sort((a,b)=>a.fecha<b.fecha?1:-1).slice(0,10);
   c2.append(tabla([{t:'Fecha',f:m=>m.fecha},{t:'Capa',f:m=>capaNom(m.capa)},{t:'Actor',f:m=>m.actor},{t:'Hecho',f:m=>m.texto}],ult));
   const c3=el('div','caja');c3.append(el('h2',null,'Próximas fechas'));
   const ev=X?X.calendario.eventos.filter(e=>e.fin>=HOYS).slice(0,10):[];
