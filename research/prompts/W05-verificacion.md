@@ -20,3 +20,6 @@ Un titular con «supera», «cae por debajo de», «toca», «sube a» o «alcan
 3. Distingue instrumento: futuro (contrato y mes) frente a spot, Brent frente a WTI, rendimiento ^TNX frente a la curva oficial del Tesoro (cierre).
 4. «Desmentido» solo si ningún dato del día y de la hora, en ninguna serie razonable, respalda el titular. Si el intradía no se puede leer: «dudoso» + [VERIFICAR].
 
+
+## Tareas vigiladas (21-nov-2026, decisión de Joel)
+Al empezar, filtra en `research/tareas.csv` las filas con estado `vigilada` cuya fecha en `cuando` sea ≤ hoy y rutina W05 en `detalle` (citas, votaciones, respuestas, cifras [S] sin primaria). Para cada una: verificar, desmentir o dejarla vigilada con nueva fecha de revisión (+7 días). Solo se cierra si el hecho se resolvió o la fuente dejó de existir. Nunca se rellena con datos de menor nivel.

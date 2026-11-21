@@ -12,3 +12,6 @@ Plantilla: `research/plantillas/auditoria-coherencia.md`. Modelo recomendado: Op
 Haz: 1) cifras que se contradicen entre `explorador/*.json`, `eventos/calendario.toml`, informes y `cerebro/documentos/`; 2) niveles de evidencia inflados (P sin fuente primaria leída); 3) plazos prometidos por voces o informes sin evento en el calendario; 4) enlaces rotos y celdas del radar sin `url`; 5) huecos medidos (celdas sin dato, capas con pocas voces, temas T/D pendientes) y la diversidad de opiniones; 6) aplica solo las correcciones seguras añadiendo, y deja el resto como lista.
 Salida: `informes/research/AAAA-MM-DD-auditoria-coherencia-y-huecos.md` y el estado de cada hallazgo en `research/auditorias-estado.json` (lo lee el Seguimiento). Corre `python scripts/revisar_explorador.py`.
 ```
+
+## Tareas vigiladas (21-nov-2026, decisión de Joel)
+Al empezar, filtra en `research/tareas.csv` las filas `vigilada` con W08 en `detalle` y fecha `cuando` ≤ hoy (huecos de datos sin fuente oficial). Busca si ya existe una fuente primaria; si no, déjalas en blanco con la nueva fecha de revisión (+30 días). Nunca rellenar con nivel S.

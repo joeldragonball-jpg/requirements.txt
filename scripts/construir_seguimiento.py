@@ -631,6 +631,8 @@ def grupos(colas, h, rut, gem):
     cuentas = {"abiertas": len(abiertas), "sin_empezar": sum(1 for t in abiertas if t["estado"] == "pendiente"), "parciales": sum(1 for t in abiertas if t["estado"] == "parcial"),
                "bloqueadas": len(bloq), "listas": sum(len(v) for v in listas.values())}
     parc = [{"id": t["id"], "txt": corto(t["tema"], 80), "falta": corto(t.get("falta") or t.get("detalle"), 140)} for t in colas if t["estado"] == "parcial"]
+    vig = [{"id": t["id"], "txt": corto(t["tema"], 80), "proxima": t.get("cuando", ""), "motivo": corto(t.get("detalle") or t.get("falta"), 160)} for t in colas if t["estado"] == "vigilada"]
+    vig.sort(key=lambda x: (x["proxima"] or "9999", x["id"]))
     rec = []
     for t in colas:
         m = re.search(r"[Hh]echo? (\d{4}-\d{2}-\d{2})", t.get("detalle", "") or "")
@@ -658,7 +660,7 @@ def grupos(colas, h, rut, gem):
         for it_ in f_["items"]:
             k_ += 1
             it_["orden"] = k_
-    return {"hoy": hoy_l, "periodicas": per, "bloqueadas": bloq, "listas": listas, "cuentas": cuentas, "orden": orden, "parciales": parc, "hechas": rec}
+    return {"hoy": hoy_l, "periodicas": per, "bloqueadas": bloq, "listas": listas, "cuentas": cuentas, "orden": orden, "parciales": parc, "vigiladas": vig, "hechas": rec}
 
 
 def construir(bots_estado=False):
@@ -760,6 +762,7 @@ def planning_md(d):
               "**Periódicas (próxima):** " + " · ".join(f"{x['id']} {x['proxima'][5:] if x['proxima'] else '?'}{'⚠' if x['atrasada'] else ''}" for x in G["periodicas"]),
               f"**Bloqueadas ({len(G['bloqueadas'])}):** " + (" · ".join(f"{x['id']} ({x['motivo'][:50]})" for x in G["bloqueadas"][:6]) or "ninguna") + (" · …" if len(G["bloqueadas"]) > 6 else ""),
               f"**Parciales ({len(G['parciales'])}):** " + (" · ".join(f"{x['id']} falta: {x['falta'][:50]}" for x in G["parciales"][:6]) or "ninguna") + (" · …" if len(G["parciales"]) > 6 else ""),
+              f"**Vigiladas ({len(G.get('vigiladas', []))}, sin cerrar; las revisa W05 o W08):** " + (" · ".join(f"{x['id']} ({x['proxima'][5:] or '?'})" for x in G.get("vigiladas", [])[:8]) or "ninguna"),
               f"**Hechas en 7 días ({len(G['hechas'])}):** " + (", ".join(x["id"] for x in G["hechas"][:15]) or "ninguna"), ""]
     L += [f"## Hoy ({dias[hoy.weekday()]} {hoy.isoformat()}): solo lo casi obligatorio",
           f"- R00 apertura {'✓' if h['apertura'] else '⏳ pendiente'} · cierre {'✓' if h['cierre'] else '⏳ pendiente (desde las 22:00, cierre de EE. UU.)'} · racha {h['racha']} días"]

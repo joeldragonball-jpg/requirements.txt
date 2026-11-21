@@ -1,5 +1,5 @@
 """Seguimiento de tareas como CSV (research/tareas.csv): la misma tabla que se publica desde una Google Sheet.
-Estados fijos: pendiente, en curso, en parte, bloqueada, hecha. Solo datos PÚBLICOS (nada de privado/ ni de la tesis).
+Estados fijos: pendiente, en curso, en parte, bloqueada, vigilada, hecha. Solo datos PÚBLICOS (nada de privado/ ni de la tesis).
 
 Uso:
   python scripts/tareas_csv.py migrar      # UNA vez: vuelca COLA.md, COLA-TEMAS-GEMINI.md y COLA-DEUDA-BONOS.md a research/tareas.csv
@@ -16,7 +16,7 @@ RAIZ = Path(__file__).resolve().parent.parent
 CSV = RAIZ / "research" / "tareas.csv"
 URL = RAIZ / "research" / "tareas-url.txt"
 COLUMNAS = ["id", "origen", "tema", "estado", "tipo", "modelo", "tam", "est", "real", "prompt", "cuando", "falta", "bloqueo", "detalle"]
-ESTADOS = ("pendiente", "en curso", "en parte", "bloqueada", "hecha")
+ESTADOS = ("pendiente", "en curso", "en parte", "bloqueada", "vigilada", "hecha")  # «vigilada»: sin fuente o a la espera; la revisa una rutina periódica (fecha en «cuando»)
 # interno (construir_seguimiento) ↔ CSV: «recurrente» y «cubierta» se guardan como estado + tipo para no ampliar los estados fijos
 A_CSV = {"hecha": ("hecha", ""), "pendiente": ("pendiente", ""), "parcial": ("en parte", ""),
          "recurrente": ("en curso", "recurrente"), "cubierta": ("hecha", "cubierta"), "otro": ("pendiente", "otro")}
