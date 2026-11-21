@@ -1,15 +1,15 @@
 {
  "nivel": "P",
- "generado": "2026-11-20",
+ "generado": "2026-11-21",
  "fuente": "scripts/frescura_explorador.py (fecha del DATO de cada explorador/*.json: periodo/fecha más reciente no futura; si no hay, la de lectura; un cierre anual/trimestral reciente se juzga por la lectura; sin IA)",
  "umbrales_dias": {
   "verde": 7,
   "amarillo": 30
  },
  "resumen": {
-  "verde": 45,
-  "amarillo": 23,
-  "rojo": 6,
+  "verde": 42,
+  "amarillo": 25,
+  "rojo": 7,
   "gris": 7,
   "error": 0
  },
@@ -17,7 +17,7 @@
   {
    "archivo": "aporta-redes.json",
    "fecha_dato": "2026-11-15",
-   "dias": 5,
+   "dias": 6,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": "2026-11-15"
@@ -25,7 +25,7 @@
   {
    "archivo": "bancos-eba.json",
    "fecha_dato": "2025-06-30",
-   "dias": 508,
+   "dias": 509,
    "semaforo": "rojo",
    "origen": "dato",
    "fecha_lectura": null
@@ -33,7 +33,7 @@
   {
    "archivo": "bonos-manual.json",
    "fecha_dato": "2026-10-28",
-   "dias": 23,
+   "dias": 24,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-10-29"
@@ -41,7 +41,7 @@
   {
    "archivo": "cadenas-gobernanza.json",
    "fecha_dato": "2026-11-14",
-   "dias": 6,
+   "dias": 7,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": null
@@ -49,15 +49,15 @@
   {
    "archivo": "cadenas-incidentes.json",
    "fecha_dato": "2026-11-13",
-   "dias": 7,
-   "semaforo": "verde",
+   "dias": 8,
+   "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": null
   },
   {
    "archivo": "cadenas-onchain.json",
    "fecha_dato": "2026-11-15",
-   "dias": 5,
+   "dias": 6,
    "semaforo": "verde",
    "origen": "lectura",
    "fecha_lectura": "2026-11-15"
@@ -65,7 +65,7 @@
   {
    "archivo": "cadenas-token.json",
    "fecha_dato": "2026-11-15",
-   "dias": 5,
+   "dias": 6,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": "2026-11-15"
@@ -80,7 +80,7 @@
   },
   {
    "archivo": "cadenas.json",
-   "fecha_dato": "2026-11-20",
+   "fecha_dato": "2026-11-21",
    "dias": 0,
    "semaforo": "verde",
    "origen": "dato",
@@ -88,7 +88,7 @@
   },
   {
    "archivo": "calendario-oficial.json",
-   "fecha_dato": "2026-11-20",
+   "fecha_dato": "2026-11-21",
    "dias": 0,
    "semaforo": "verde",
    "origen": "dato",
@@ -97,7 +97,7 @@
   {
    "archivo": "calificaciones.json",
    "fecha_dato": "2026-10-22",
-   "dias": 29,
+   "dias": 30,
    "semaforo": "amarillo",
    "origen": "lectura",
    "fecha_lectura": "2026-10-22"
@@ -105,7 +105,7 @@
   {
    "archivo": "cbdc-blockchains.json",
    "fecha_dato": "2026-10-29",
-   "dias": 22,
+   "dias": 23,
    "semaforo": "amarillo",
    "origen": "lectura",
    "fecha_lectura": "2026-10-29"
@@ -121,7 +121,7 @@
   {
    "archivo": "chips-manual.json",
    "fecha_dato": "2026-11-10",
-   "dias": 10,
+   "dias": 11,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-11-10"
@@ -129,7 +129,7 @@
   {
    "archivo": "comparativa-liquidacion.json",
    "fecha_dato": "2026-11-15",
-   "dias": 5,
+   "dias": 6,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": "2026-11-15"
@@ -137,7 +137,7 @@
   {
    "archivo": "conflictos-gdelt.json",
    "fecha_dato": "2026-11-15",
-   "dias": 5,
+   "dias": 6,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": "2026-11-15"
@@ -145,14 +145,14 @@
   {
    "archivo": "corredores-liquidez.json",
    "fecha_dato": "2026-11-15",
-   "dias": 5,
+   "dias": 6,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": null
   },
   {
    "archivo": "datos.json",
-   "fecha_dato": "2026-11-20",
+   "fecha_dato": "2026-11-21",
    "dias": 0,
    "semaforo": "verde",
    "origen": "dato",
@@ -161,15 +161,15 @@
   {
    "archivo": "deuda-fmi.json",
    "fecha_dato": "2026-10-21",
-   "dias": 30,
-   "semaforo": "amarillo",
+   "dias": 31,
+   "semaforo": "rojo",
    "origen": "lectura",
    "fecha_lectura": "2026-10-21"
   },
   {
    "archivo": "edgar.json",
    "fecha_dato": "2026-11-08",
-   "dias": 12,
+   "dias": 13,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-11-08"
@@ -177,14 +177,14 @@
   {
    "archivo": "eeuu-fiscal.json",
    "fecha_dato": "2026-11-15",
-   "dias": 5,
+   "dias": 6,
    "semaforo": "verde",
    "origen": "lectura",
    "fecha_lectura": "2026-11-15"
   },
   {
    "archivo": "elecciones.json",
-   "fecha_dato": "2026-11-20",
+   "fecha_dato": "2026-11-21",
    "dias": 0,
    "semaforo": "verde",
    "origen": "dato",
@@ -193,7 +193,7 @@
   {
    "archivo": "empresas-redes.json",
    "fecha_dato": "2026-10-26",
-   "dias": 25,
+   "dias": 26,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-11-15"
@@ -209,7 +209,7 @@
   {
    "archivo": "escenarios-redes.json",
    "fecha_dato": "2026-11-18",
-   "dias": 2,
+   "dias": 3,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": "2026-11-19"
@@ -217,7 +217,7 @@
   {
    "archivo": "espana-contratacion.json",
    "fecha_dato": "2026-06-05",
-   "dias": 168,
+   "dias": 169,
    "semaforo": "rojo",
    "origen": "dato",
    "fecha_lectura": "2026-11-10"
@@ -233,14 +233,14 @@
   {
    "archivo": "espana-empresas.json",
    "fecha_dato": "2026-11-13",
-   "dias": 7,
-   "semaforo": "verde",
+   "dias": 8,
+   "semaforo": "amarillo",
    "origen": "lectura",
    "fecha_lectura": "2026-11-13"
   },
   {
    "archivo": "espana-energia-vivienda.json",
-   "fecha_dato": "2026-11-20",
+   "fecha_dato": "2026-11-21",
    "dias": 0,
    "semaforo": "verde",
    "origen": "dato",
@@ -249,7 +249,7 @@
   {
    "archivo": "espana-energia.json",
    "fecha_dato": "2025-12-31",
-   "dias": 1,
+   "dias": 2,
    "semaforo": "verde",
    "origen": "periodo cerrado + lectura",
    "fecha_lectura": "2026-11-19"
@@ -257,7 +257,7 @@
   {
    "archivo": "espana-investigaciones.json",
    "fecha_dato": "2026-11-12",
-   "dias": 8,
+   "dias": 9,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-11-18"
@@ -265,7 +265,7 @@
   {
    "archivo": "espana-judicial.json",
    "fecha_dato": "2026-11-12",
-   "dias": 8,
+   "dias": 9,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-11-13"
@@ -273,7 +273,7 @@
   {
    "archivo": "espana-leyes.json",
    "fecha_dato": "2026-11-19",
-   "dias": 1,
+   "dias": 2,
    "semaforo": "verde",
    "origen": "lectura",
    "fecha_lectura": "2026-11-19"
@@ -281,7 +281,7 @@
   {
    "archivo": "espana-macro.json",
    "fecha_dato": "2026-11-19",
-   "dias": 1,
+   "dias": 2,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": "2026-11-20"
@@ -289,7 +289,7 @@
   {
    "archivo": "espana-manual.json",
    "fecha_dato": "2025-12-31",
-   "dias": 324,
+   "dias": 325,
    "semaforo": "rojo",
    "origen": "dato",
    "fecha_lectura": null
@@ -297,7 +297,7 @@
   {
    "archivo": "espana-mortalidad.json",
    "fecha_dato": "2026-10-28",
-   "dias": 23,
+   "dias": 24,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-11-18"
@@ -305,7 +305,7 @@
   {
    "archivo": "espana-pagos.json",
    "fecha_dato": "2026-11-03",
-   "dias": 17,
+   "dias": 18,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-11-04"
@@ -313,7 +313,7 @@
   {
    "archivo": "espana-pensiones.json",
    "fecha_dato": "2026-10-31",
-   "dias": 20,
+   "dias": 21,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-11-18"
@@ -321,7 +321,7 @@
   {
    "archivo": "espana-politica.json",
    "fecha_dato": "2026-11-12",
-   "dias": 8,
+   "dias": 9,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-11-12"
@@ -329,7 +329,7 @@
   {
    "archivo": "espana-presupuesto.json",
    "fecha_dato": "2025-12-31",
-   "dias": 1,
+   "dias": 2,
    "semaforo": "verde",
    "origen": "periodo cerrado + lectura",
    "fecha_lectura": "2026-11-19"
@@ -337,7 +337,7 @@
   {
    "archivo": "espana-recaudacion.json",
    "fecha_dato": "2025-12-31",
-   "dias": 6,
+   "dias": 7,
    "semaforo": "verde",
    "origen": "periodo cerrado + lectura",
    "fecha_lectura": "2026-11-14"
@@ -345,7 +345,7 @@
   {
    "archivo": "espana-subvenciones.json",
    "fecha_dato": "2026-11-16",
-   "dias": 4,
+   "dias": 5,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": "2026-11-17"
@@ -353,7 +353,7 @@
   {
    "archivo": "espana-vivienda.json",
    "fecha_dato": "2025-12-31",
-   "dias": 0,
+   "dias": 1,
    "semaforo": "verde",
    "origen": "periodo cerrado + lectura",
    "fecha_lectura": "2026-11-20"
@@ -361,7 +361,7 @@
   {
    "archivo": "espana-votaciones.json",
    "fecha_dato": "2026-10-02",
-   "dias": 49,
+   "dias": 50,
    "semaforo": "rojo",
    "origen": "dato",
    "fecha_lectura": "2026-11-18"
@@ -369,7 +369,7 @@
   {
    "archivo": "espana.json",
    "fecha_dato": "2025-12-31",
-   "dias": 2,
+   "dias": 3,
    "semaforo": "verde",
    "origen": "periodo cerrado + lectura",
    "fecha_lectura": "2026-11-18"
@@ -377,7 +377,7 @@
   {
    "archivo": "estabilidad-manual.json",
    "fecha_dato": "2026-11-11",
-   "dias": 9,
+   "dias": 10,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": null
@@ -385,7 +385,7 @@
   {
    "archivo": "estabilidad.json",
    "fecha_dato": "2026-11-11",
-   "dias": 9,
+   "dias": 10,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-11-18"
@@ -393,7 +393,7 @@
   {
    "archivo": "etf-flujos.json",
    "fecha_dato": "2026-11-18",
-   "dias": 2,
+   "dias": 3,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": "2026-11-19"
@@ -401,7 +401,7 @@
   {
    "archivo": "fertilizantes-agua.json",
    "fecha_dato": "2026-11-18",
-   "dias": 2,
+   "dias": 3,
    "semaforo": "verde",
    "origen": "lectura",
    "fecha_lectura": "2026-11-18"
@@ -409,7 +409,7 @@
   {
    "archivo": "fichas-activos.json",
    "fecha_dato": "2026-11-19",
-   "dias": 1,
+   "dias": 2,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": "2026-11-19"
@@ -417,7 +417,7 @@
   {
    "archivo": "hitos_petroleo.json",
    "fecha_dato": "2026-11-06",
-   "dias": 14,
+   "dias": 15,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": null
@@ -433,22 +433,22 @@
   {
    "archivo": "indicadores-historia-manual.json",
    "fecha_dato": "2025-12-31",
-   "dias": 7,
-   "semaforo": "verde",
+   "dias": 8,
+   "semaforo": "amarillo",
    "origen": "periodo cerrado + lectura",
    "fecha_lectura": "2026-11-13"
   },
   {
    "archivo": "indicadores-historia.json",
    "fecha_dato": "2026-10-31",
-   "dias": 20,
+   "dias": 21,
    "semaforo": "amarillo",
    "origen": "dato",
-   "fecha_lectura": "2026-11-20"
+   "fecha_lectura": "2026-11-21"
   },
   {
    "archivo": "indicadores-manual.json",
-   "fecha_dato": "2026-11-20",
+   "fecha_dato": "2026-11-21",
    "dias": 0,
    "semaforo": "verde",
    "origen": "dato",
@@ -457,14 +457,14 @@
   {
    "archivo": "interconexion.json",
    "fecha_dato": "2026-11-18",
-   "dias": 2,
+   "dias": 3,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": "2026-11-19"
   },
   {
    "archivo": "ley-eeuu.json",
-   "fecha_dato": "2026-11-20",
+   "fecha_dato": "2026-11-21",
    "dias": 0,
    "semaforo": "verde",
    "origen": "dato",
@@ -473,7 +473,7 @@
   {
    "archivo": "liquidez-manual.json",
    "fecha_dato": "2026-11-11",
-   "dias": 9,
+   "dias": 10,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-11-16"
@@ -481,7 +481,7 @@
   {
    "archivo": "mandatos.json",
    "fecha_dato": "2026-07-20",
-   "dias": 123,
+   "dias": 124,
    "semaforo": "rojo",
    "origen": "dato",
    "fecha_lectura": "2026-11-18"
@@ -489,15 +489,15 @@
   {
    "archivo": "mica-registro.json",
    "fecha_dato": "2026-11-04",
-   "dias": 16,
+   "dias": 17,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-11-14"
   },
   {
    "archivo": "noticias-archivo.json",
-   "fecha_dato": "2026-11-18",
-   "dias": 2,
+   "fecha_dato": "2026-11-20",
+   "dias": 1,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": null
@@ -505,7 +505,7 @@
   {
    "archivo": "ocde-bis.json",
    "fecha_dato": "2026-10-31",
-   "dias": 20,
+   "dias": 21,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-11-15"
@@ -520,7 +520,7 @@
   },
   {
    "archivo": "paises.json",
-   "fecha_dato": "2026-11-20",
+   "fecha_dato": "2026-11-21",
    "dias": 0,
    "semaforo": "verde",
    "origen": "dato",
@@ -528,40 +528,40 @@
   },
   {
    "archivo": "paneles.json",
-   "fecha_dato": "2026-11-20",
+   "fecha_dato": "2026-11-21",
    "dias": 0,
    "semaforo": "verde",
    "origen": "dato",
-   "fecha_lectura": "2026-11-20"
+   "fecha_lectura": "2026-11-21"
   },
   {
    "archivo": "precios_historico.json",
-   "fecha_dato": "2026-11-20",
+   "fecha_dato": "2026-11-21",
    "dias": 0,
    "semaforo": "verde",
    "origen": "lectura",
-   "fecha_lectura": "2026-11-20"
+   "fecha_lectura": "2026-11-21"
   },
   {
    "archivo": "precios_r00.json",
-   "fecha_dato": "2026-11-20",
+   "fecha_dato": "2026-11-21",
    "dias": 0,
    "semaforo": "verde",
    "origen": "lectura",
-   "fecha_lectura": "2026-11-20"
+   "fecha_lectura": "2026-11-21"
   },
   {
    "archivo": "precios_vivos.json",
-   "fecha_dato": "2026-11-20",
+   "fecha_dato": "2026-11-21",
    "dias": 0,
    "semaforo": "verde",
    "origen": "dato",
-   "fecha_lectura": "2026-11-20"
+   "fecha_lectura": "2026-11-21"
   },
   {
    "archivo": "profundidad-multidivisa.json",
    "fecha_dato": "2026-11-15",
-   "dias": 5,
+   "dias": 6,
    "semaforo": "verde",
    "origen": "lectura",
    "fecha_lectura": "2026-11-15"
@@ -577,14 +577,14 @@
   {
    "archivo": "pruebas-bancos.json",
    "fecha_dato": "2026-11-12",
-   "dias": 8,
+   "dias": 9,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-11-15"
   },
   {
    "archivo": "regulacion.json",
-   "fecha_dato": "2026-11-20",
+   "fecha_dato": "2026-11-21",
    "dias": 0,
    "semaforo": "verde",
    "origen": "dato",
@@ -593,7 +593,7 @@
   {
    "archivo": "rendimientos-defillama.json",
    "fecha_dato": "2026-11-16",
-   "dias": 4,
+   "dias": 5,
    "semaforo": "verde",
    "origen": "lectura",
    "fecha_lectura": "2026-11-16"
@@ -601,7 +601,7 @@
   {
    "archivo": "rendimientos.json",
    "fecha_dato": "2026-11-19",
-   "dias": 1,
+   "dias": 2,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": "2026-11-19"
@@ -609,7 +609,7 @@
   {
    "archivo": "reservas.json",
    "fecha_dato": "2026-10-22",
-   "dias": 29,
+   "dias": 30,
    "semaforo": "amarillo",
    "origen": "lectura",
    "fecha_lectura": "2026-10-22"
@@ -617,7 +617,7 @@
   {
    "archivo": "rwa-por-cadena-manual.json",
    "fecha_dato": "2026-11-14",
-   "dias": 6,
+   "dias": 7,
    "semaforo": "verde",
    "origen": "lectura",
    "fecha_lectura": "2026-11-14"
@@ -625,7 +625,7 @@
   {
    "archivo": "seguridad-eurostat.json",
    "fecha_dato": "2024-12-31",
-   "dias": 689,
+   "dias": 690,
    "semaforo": "rojo",
    "origen": "dato",
    "fecha_lectura": "2026-11-18"
@@ -633,7 +633,7 @@
   {
    "archivo": "swift-liquidacion.json",
    "fecha_dato": "2026-10-22",
-   "dias": 29,
+   "dias": 30,
    "semaforo": "amarillo",
    "origen": "dato",
    "fecha_lectura": "2026-11-16"
@@ -641,23 +641,23 @@
   {
    "archivo": "tipos-manual.json",
    "fecha_dato": "2026-11-20",
-   "dias": 0,
+   "dias": 1,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": null
   },
   {
    "archivo": "valoracion.json",
-   "fecha_dato": "2026-11-20",
+   "fecha_dato": "2026-11-21",
    "dias": 0,
    "semaforo": "verde",
    "origen": "lectura",
-   "fecha_lectura": "2026-11-20"
+   "fecha_lectura": "2026-11-21"
   },
   {
    "archivo": "voces.json",
    "fecha_dato": "2026-11-18",
-   "dias": 2,
+   "dias": 3,
    "semaforo": "verde",
    "origen": "dato",
    "fecha_lectura": null
