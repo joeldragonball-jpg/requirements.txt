@@ -25,7 +25,7 @@ html,body{margin:0;overflow:hidden;background:transparent;color:var(--texto);fon
 const $ = id => document.getElementById(id);
 window.DATOS = JSON.parse($('datos').textContent);
 const pest = $('pest');
-const VISTAS = [['resumen', 'Resumen'], ['capas', 'Capas'], ['tiempo', 'Línea de tiempo'], ['calendario', 'Calendario'],
+const VISTAS = [['resumen', 'Resumen'], ['capas', 'Capas'], ['fondos', 'Fondos y bolsa'], ['tiempo', 'Línea de tiempo'], ['calendario', 'Calendario'],
   ['matriz', 'Matriz país × tema'], ['noticias', 'Noticias'], ['voces', 'Voces'], ['paises', 'Países'], ['espana', 'España'], ['paneles', 'Paneles de datos'], ['activos', 'Fichas por activo'], ['cadenas', 'Cadenas']];
 const MARCOS = {vistas: [$('vistasWrap'), $('vistasMarco'), 'vistasHtml']};
 let actual = 'resumen';

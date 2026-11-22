@@ -466,6 +466,7 @@ i.ap-ce{width:24px;height:22px;cursor:default;flex:none}
 <main>
 <section class="vista" id="v-resumen"></section>
 <section class="vista" id="v-capas"></section>
+<section class="vista" id="v-fondos"></section>
 <section class="vista" id="v-tiempo"></section>
 <section class="vista" id="v-calendario"></section>
 <section class="vista" id="v-matriz"></section>
@@ -493,7 +494,7 @@ const num=(x,d=1)=>x==null||isNaN(x)?'—':Number(x).toLocaleString('es-ES',{max
 const usd=x=>x==null?'—':'$'+(Math.abs(x)>=1e12?num(x/1e12,2)+' billones':Math.abs(x)>=1e9?num(x/1e9,1)+' mil M':Math.abs(x)>=1e6?num(x/1e6,0)+' M':num(x,0));
 /* C164 · separador de miles también en números de 4 cifras (es-ES no agrupa 1234) */
 const miles=t=>typeof t!=='string'?t:t.replace(/(?<![\d.,])\d{4,}(?=,\d|[^\d.,]|$)/g,m=>m.replace(/\B(?=(\d{3})+(?!\d))/g,'.'));
-const TABS=[['resumen','Resumen'],['capas','Capas'],['tiempo','Línea de tiempo'],['calendario','Calendario'],['matriz','Matriz país × tema'],['noticias','Noticias'],['voces','Voces'],['paises','Países'],['espana','España'],['paneles','Paneles de datos'],['activos','Fichas por activo'],['cadenas','Cadenas']];
+const TABS=[['resumen','Resumen'],['capas','Capas'],['fondos','Fondos y bolsa'],['tiempo','Línea de tiempo'],['calendario','Calendario'],['matriz','Matriz país × tema'],['noticias','Noticias'],['voces','Voces'],['paises','Países'],['espana','España'],['paneles','Paneles de datos'],['activos','Fichas por activo'],['cadenas','Cadenas']];
 let R,D,V,P,CAL,FMI,VAL,BAN,RES,X,modo='sem',selMov=null,selCapa=null,selCelda=null,tab='resumen',listo=false;
 
 /* ---------- utilidades de pintado ---------- */
@@ -641,7 +642,7 @@ function contar(sec){
 function marcarScroll(e){const t=e&&e.target&&e.target.nodeType===1?[e.target]:document.querySelectorAll('table:not(.mat),.mis .cols2>div,details.bl,.grp,.mcol>.grp');
   t.forEach(x=>{if(!x.classList)return;const m=x.scrollWidth-x.clientWidth;x.classList.toggle('sc-d',m>4&&x.scrollLeft<m-4);x.classList.toggle('sc-i',m>4&&x.scrollLeft>4)})}
 document.addEventListener('scroll',marcarScroll,true);addEventListener('resize',()=>setTimeout(marcarScroll,50));
-function pintarTodo(){({resumen:pResumen,capas:pCapas,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles,activos:pActivos,cadenas:pCadenas})[tab]();if(['paneles','noticias','calendario','matriz','espana','paises'].includes(tab))anclas($('v-'+tab),tab);
+function pintarTodo(){({resumen:pResumen,capas:pCapas,fondos:pFondos,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles,activos:pActivos,cadenas:pCadenas})[tab]();if(['paneles','noticias','calendario','matriz','espana','paises'].includes(tab))anclas($('v-'+tab),tab);
   if(tab==='espana')[...$('v-espana').querySelectorAll('details')].filter(d=>!d.parentElement.closest('details')).forEach(d=>{let cer={};try{cer=JSON.parse(localStorage.getItem('orbita-esp-cerrados')||'{}')}catch(e){}const k=((d.querySelector('summary')||{}).textContent||'').trim().slice(0,60);d.open=(d.dataset.cerr&&cer[k]===undefined)?false:!cer[k];d.addEventListener('toggle',()=>{try{const c2=JSON.parse(localStorage.getItem('orbita-esp-cerrados')||'{}');if(d.open){if(d.dataset.cerr)c2[k]=0;else delete c2[k]}else c2[k]=1;localStorage.setItem('orbita-esp-cerrados',JSON.stringify(c2))}catch(e){}})});setTimeout(marcarScroll,60)}
 
 /* ---------- bloques de datos reutilizables (Capas y Paneles) ---------- */
@@ -1062,7 +1063,8 @@ function pCapas(){
   const sub=selSub&&g.ids.includes(selSub)?selSub:'';
   const ids=sub?[sub]:g.ids,cs=g.capas.filter(c=>ids.includes(c.id)),varias=g.capas.length>1;
   const est=ESTS.filter(e=>e[0]!=='xrp'||g.xrp);
-  const pan=panelesGrupo(g.id).filter(p=>ids.includes(p.capa));
+  const aparte=g.id==='tokens'&&ids.includes('fondos');   /* 22-nov: los datos de ETF, 13F, bolsas y seguimiento viven en la pestaña «Fondos y bolsa» */
+  const pan=panelesGrupo(g.id).filter(p=>ids.includes(p.capa)&&!(aparte&&p.capa==='fondos'));
   const vs=D.movimientos.filter(m=>ids.includes(m.capa)&&paisOk(m)).sort((a,b)=>a.fecha<b.fecha?1:-1);
   const evs=X?X.calendario.eventos.filter(e=>ids.includes(e.capa)&&e.fin>=HOYS):[];
   const docs=[],glo=[],vistoD=new Set(),vistoG=new Set();
@@ -1117,7 +1119,8 @@ function pCapas(){
   else if(!pan.length)cDatos.append(el('p','nota-v',sub?'Esta parte no tiene paneles automáticos propios; los de la capa están en «Todas».':'Esta capa no tiene paneles automáticos; se basa en los hechos y documentos de abajo.'));
   else{const mz=masonry();cDatos.append(mz);
     for(const p of pan){const b=bloque(p.tit,null,p.pie,p.fn());if(p.ancho)b.classList.add('ancho');semBloque(b);mz.append(b)}}
-  if(pan.length||sub)s.append(cDatos);
+  if(aparte){const ap=el('p','nota-v','Los datos de ETF y fideicomisos, quién los tiene (13F), bolsas y tu seguimiento están ahora en su propia pestaña. Aquí quedan los hechos y documentos de la capa.');const bt=el('button','cad-bt','Abrir «Fondos y bolsa» →');bt.onclick=()=>saltar('fondos');bt.style.marginLeft='8px';ap.append(bt);cDatos.append(ap)}
+  if(pan.length||sub||aparte)s.append(cDatos);
 
   /* (c) hechos por estado */
   const colsH=[],sinH=[];
@@ -2120,6 +2123,39 @@ function pVoces(){
   c.append(ls);s.append(c);
 }
 
+/* ---------- 22-nov · Fondos y bolsa: pestaña propia con los datos de ETF, 13F, bolsas, cripto y seguimiento que antes estaban dentro de Capas › Tokenización y fondos ---------- */
+let fbSub='etf';
+function pFondos(){
+  const s=$('v-fondos');s.textContent='';
+  const cap=D.capas.find(c=>c.id==='fondos');
+  const paneles=(P?panelesGrupo('tokens'):[]).filter(p=>p.capa==='fondos');
+  const mapa=[['etf','Fondos cripto (ETF)',/^Fondos cripto/],['tenedores','Quién los tiene (13F)',/^Quién tiene/],['bolsas','Bolsas e índices',/^Bolsas/],['seg','Mi seguimiento',/^Seguimiento/],['cripto','BTC, ETH, XRP y XLM',/^BTC, ETH/]];
+  const sec=mapa.map(([id,nom,re])=>({id,nom,p:paneles.find(x=>re.test(x.tit))})).filter(x=>x.p);
+  const hechos=D.movimientos.filter(m=>m.capa==='fondos'&&paisOk(m)).sort((a,b)=>a.fecha<b.fecha?1:-1);
+  sec.push({id:'hechos',nom:'Hechos y novedades ('+hechos.length+')'});
+  if(!sec.some(x=>x.id===fbSub))fbSub=sec[0].id;
+  const cab=el('div','caja cab-capa');if(cap)cab.style.borderLeftColor=cap.color;
+  cab.append(el('h2',null,'Fondos y bolsa: ETF, fideicomisos, bolsas y seguimiento'));
+  cab.append(el('div','que','Los vehículos para invertir en cripto (ETF y fideicomisos: acciones, tenencia, flujos y quién los tiene), las bolsas del mundo y la cartera de seguimiento, juntos y a un clic. La tokenización (activos reales llevados a una cadena) sigue en Capas › Tokenización y fondos. Información de fuentes públicas; no es recomendación de compra ni de venta. [P] fuente primaria · [S] prensa o agregador; los emisores de los ETF son parte interesada.'));
+  const bs=el('div','pills');bs.style.margin='8px 0 0';
+  const b1=el('span','pill','Capa «Fondos, ETF y tesorerías» en Capas →');b1.onclick=()=>{selGrupo='tokens';selSub='fondos';saltar('capas')};bs.append(b1);
+  const b2=el('span','pill','Tokenización (RWA) →');b2.onclick=()=>{selGrupo='tokens';selSub='token';saltar('capas')};bs.append(b2);
+  cab.append(bs);s.append(cab);
+  const pills=el('div','pills');
+  for(const x of sec){const p=el('div','pill'+(x.id===fbSub?' on':''),x.nom);p.onclick=()=>{fbSub=x.id;pFondos();s.scrollIntoView({block:'start',behavior:RM?'auto':'smooth'})};pills.append(p)}
+  s.append(pills);
+  const cont=el('div','caja');
+  const act=sec.find(x=>x.id===fbSub);
+  if(act.p){const p=act.p;cont.append(el('h2',null,p.tit));cont.append(bloque(p.tit,null,p.pie,p.fn(),true));cont.querySelector('details > summary').style.display='none'}
+  else{
+    cont.append(el('h2',null,'Hechos y novedades de la capa «Fondos, ETF y tesorerías»'));
+    if(!hechos.length)cont.append(el('p','nota-v','Sin movimientos con el filtro de país actual.'));
+    else cont.append(scrollX(tabla([{t:'Fecha',f:r=>r.fecha},{t:'Quién',f:r=>r.actor},{t:'Qué',f:r=>r.texto},{t:'Estado',f:r=>{const e=D.estados[r.estado]||{};const c=el('span','chip',e.nombre||r.estado);if(e.color){c.style.borderColor=e.color;c.style.background=e.color+'2e'}return c}},{t:'Fuente',f:r=>r.fuente||'—'}],hechos)));
+    const cif=((cap&&cap.cifras)||[]).filter(x=>!/se actualiza solo/i.test(x.f||''));
+    if(cif.length){cont.append(el('h3',null,'Cifras del analista (no se actualizan solas)'));const u=el('ul');for(const x of cif){const li=el('li');li.append(el('b',null,x.v+' '),document.createTextNode(x.e+' '),el('span','nota-v','('+x.f+')'));u.append(li)}cont.append(u)}
+    const nv=V?V.voces.filter(v=>(v.capas||[]).includes('fondos')).length:0;
+    if(nv){const x=el('span','chip','🗣 '+nv+' voces sobre fondos y ETF');x.style.cursor='pointer';x.onclick=()=>{vCapa='fondos';ir('voces')};cont.append(x)}}
+  s.append(cont)}
 /* ---------- 8 · Paneles de datos ---------- */
 /* C203 · Fichas por activo: XRP, XLM, BTC, oro y ETF mundial (explorador/fichas-activos.json). Información general, sin recomendaciones */
 function pActivos(){
