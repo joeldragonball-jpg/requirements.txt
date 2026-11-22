@@ -1,5 +1,5 @@
 {
-  "_actualizado": "2026-11-19",
+  "_actualizado": "2026-11-22",
   "tarea": "C314+C322",
   "nivel_general": "P/S",
   "nota_nivel": "P = fuente primaria leída (BIS, DTCC, Circle, Chainlink, MAS, EUR-Lex/ESMA); S = secundaria (prensa especializada, agregadores, resultados de buscador sin abrir la página oficial); V = por verificar [VERIFICAR]. Neutral: no es recomendación de compra/venta ni ranking de redes.",
@@ -803,7 +803,8 @@
     "Auditoría Opus (15-nov-2026): 23 URL figuran con distinto nivel (P/S/V/R) según el archivo (p. ej. notas de la RBA y la MAS, blog de Hedera) y revisar_explorador.py no lo detecta; unificar y añadir esa comprobación.",
     "C322 (18-nov-2026): Estado de Fnality en fnality.org (P parte interesada): libras esterlinas «live» y reguladas por el Banco de Inglaterra; euro «en curso» con contacto del BCE; licencia bancaria Connecticut Innovation Bank obtenida y diálogo con la Fed «progresando». Sigue sin figurar conexión con DTCC, Canton, Swift ni cadenas públicas (el enlace fnality→dtcc sigue siendo concepto de 2025).",
     "C322: Siguen sin enlace primario XRPL nativo con CCIP, LayerZero, DTCC o Swift; Hedera con CCTP, Wormhole, DTCC o Swift; Partior, Agorá y Nexus (islas); la única vía de XRPL es la sidechain EVM (Axelar, Wormhole, IBC según docs.xrplevm.org). Swift.com devuelve 403 a curl (se mantiene lo leído antes en Chrome).",
-    "C322 (19-nov): XRPL nativo sigue sin enlace con CCIP, LayerZero, DTCC o Swift; la enmienda XChainBridge no está habilitada en mainnet (rippled feature, 19-nov-2026), de modo que la única vía documentada es la sidechain EVM. Hedera: nuevo enlace con Project Acacia (RBA, 10-jul-2025, P); sigue sin fuente primaria de CCTP, Wormhole, DTCC o Swift (hederacouncil.org, leída en Chrome el 19-nov-2026, no cita DTCC ni Swift en la portada). El informe de resultados de Acacia (18-may-2026) no nombra plataformas [VERIFICAR qué casos usaron Hedera]."
+    "C322 (19-nov): XRPL nativo sigue sin enlace con CCIP, LayerZero, DTCC o Swift; la enmienda XChainBridge no está habilitada en mainnet (rippled feature, 19-nov-2026), de modo que la única vía documentada es la sidechain EVM. Hedera: nuevo enlace con Project Acacia (RBA, 10-jul-2025, P); sigue sin fuente primaria de CCTP, Wormhole, DTCC o Swift (hederacouncil.org, leída en Chrome el 19-nov-2026, no cita DTCC ni Swift en la portada). El informe de resultados de Acacia (18-may-2026) no nombra plataformas [VERIFICAR qué casos usaron Hedera].",
+    "C322b (22-nov-2026): se recomprobó con fuentes oficiales que XRPL no figura en el directorio CCIP de Chainlink (API mainnet), ni en la página de dominios de CCTP de Circle ni en los metadatos de LayerZero; Hedera sí figura en CCIP y LayerZero (enlaces ya existentes) pero no en CCTP. No se halló comunicado oficial que una XRPL o Hedera con DTCC, Swift, Canton, Partior, Fnality, Agorá o Nexus (búsqueda en dtcc.com y Swift; ausencia no prueba que no exista). Dudoso hasta fuente: [VERIFICAR]."
   ],
   "lo_que_no_sabemos": [
     "Si DTCC, Swift o los bancos centrales de Agorá conectarán sus plataformas entre sí o a cadenas públicas con un protocolo común.",
@@ -872,7 +873,8 @@
       {
         "id": "swift-ledger",
         "etiqueta": "Libro compartido de Swift",
-        "tipo": "infraestructura"
+        "tipo": "infraestructura",
+        "nota_estado": "Swift, 10-jul-2026 (P, parte interesada): el libro está «listo para uso inicial»; 17 instituciones piloto preparan transacciones reales con depósitos tokenizados bancarios (orquestación de pagos 24/7; la liquidación final sigue en sistemas existentes). No se nombra ninguna cadena pública ni Chainlink en esa nota. Pasa de concepto a piloto en preparación."
       },
       {
         "id": "partior",
@@ -1214,7 +1216,8 @@
         "estado": "anunciado",
         "fecha": "2025-09-29",
         "fuente": "https://www.swift.com/insights/news/swift-add-blockchain-based-ledger",
-        "nivel": "P"
+        "nivel": "P",
+        "nota_c322b": "Actualización 22-nov-2026: ver nota_estado del nodo swift-ledger (https://www.swift.com/insights/news/collaborative-innovation-bringing-swifts-shared-blockchain-based-ledger-life)."
       },
       {
         "de": "esma",
@@ -1892,7 +1895,9 @@
     "https://docs.canton.network/overview/understand/global-synchronizer",
     "https://www.canton.network/",
     "https://www.fnality.org/",
-    "https://www.rba.gov.au/media-releases/2025/mr-25-18.html"
+    "https://www.rba.gov.au/media-releases/2025/mr-25-18.html",
+    "https://www.swift.com/insights/news/collaborative-innovation-bringing-swifts-shared-blockchain-based-ledger-life",
+    "https://www.sec.gov/files/tm/no-action/dtc-nal-121125.pdf"
   ],
   "informe": "informes/research/2026-11-15-C314-interconexion.md; informes/research/2026-11-18-C322.md; informes/research/2026-11-19-C322-C267.md"
 }

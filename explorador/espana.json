@@ -1,6 +1,6 @@
 {
  "titulo": "España: ingresos y gasto público",
- "leido": "2026-11-18",
+ "leido": "2026-11-22",
  "nota": "Eurostat (cuentas nacionales de las administraciones públicas, sector S13). «Real por habitante» = euros de 2025 (deflactor del PIB) por habitante. Último año disponible varía: ingresos y gasto total llegan a 2025, las funciones COFOG a un año menos. Solo cifras publicadas; las lecturas son [OPINIÓN].",
  "contexto": {
   "pib": {
@@ -1526,7 +1526,7 @@
  ],
  "manual": {
   "_unidades": "Cada registro lleva su propio campo «unidad» (p. ej. M€ = millones de euros; «mil M€» = miles de millones). Cifras en JSON como número puro, sin separadores; la pantalla las muestra con punto de miles y coma decimal (1.234,5 M€). C240.",
-  "_nota": "Datos de España sin API abierta, leídos el 30-oct-2026 (C65 y C66). Nivel P = fuente oficial leída; S = prensa o resumen de buscador; VERIFICAR = sin cifra leída. No escribir cifras de memoria.",
+  "_nota": "Datos de España sin API abierta, leídos el 30-oct-2026 (C65 y C66). Nivel P = fuente oficial leída; S = prensa o resumen de buscador; VERIFICAR = sin cifra leída. No escribir cifras de memoria. Revisión 22-nov-2026 (C229b): demografía 2025 definitiva (INE 18-nov), afiliados extranjeros e IMV de octubre (Inclusión 10 y 13-nov), compraventas sep-2026 (INE).",
   "recaudacion_aeat": [
    {
     "nombre": "Ingresos tributarios totales (Agencia Tributaria)",
@@ -1763,6 +1763,24 @@
     "fuente": "https://www.garrigues.com/es_ES/noticia/publica-salario-minimo-interprofesional-smi-espana-2026",
     "nivel": "S",
     "nota": "17.094 €/año (+3,1 %, +37 €/mes), RD 126/2026 del 18-feb, retroactivo al 1-ene. Con el IPC en el 4,9 % supone pérdida de poder adquisitivo en rentas mínimas (lectura propia). [VERIFICAR en BOE]."
+   },
+   {
+    "nombre": "Inversión total en prestaciones por desempleo, septiembre 2026",
+    "valor": 2134.8,
+    "unidad": "M€",
+    "anio": "sep-2026",
+    "fuente": "https://www.sepe.es/noticia/SEPE/2026/Noviembre/paro-registrado-aumento-43128-personas-octubre-situa-2422633",
+    "nivel": "P",
+    "nota": "Nota oficial del SEPE (4-nov-2026), leída el 18-nov. Media mensual por beneficiario 1.233,9 €/mes (sin subsidio agrario de Andalucía y Extremadura). Sustituye en la práctica la cifra de prensa de nov-2025 (S), que se conserva arriba."
+   },
+   {
+    "nombre": "Paro registrado, octubre 2026",
+    "valor": 2422633,
+    "unidad": "personas",
+    "anio": "oct-2026",
+    "fuente": "https://www.sepe.es/noticia/SEPE/2026/Noviembre/paro-registrado-aumento-43128-personas-octubre-situa-2422633",
+    "nivel": "P",
+    "nota": "+43.128 en el mes, −21.133 interanual (−0,86 %). Detalle en espana-macro.json, bloque paro_registrado."
    }
   ],
   "exterior": [
@@ -1917,13 +1935,13 @@
     "nota": "20,7 % de la población. Incluye 3.370.854 españoles nacidos fuera."
    },
    {
-    "nombre": "Afiliados extranjeros a la Seguridad Social",
-    "valor": 3038158,
+    "nombre": "Afiliados extranjeros a la Seguridad Social (afiliación media)",
+    "valor": 3699878,
     "unidad": "personas",
-    "anio": "ene-2026",
-    "fuente": "https://www.inclusion.gob.es/en/w/la-seguridad-social-comienza-2026-con-cerca-de-200.000-afiliados-extranjeros-mas-que-hace-un-ano",
+    "anio": "oct-2026",
+    "fuente": "https://www.inclusion.gob.es/es/w/la-seguridad-social-registra-cerca-de-3.700.000-afiliados-extranjeros-casi-600.000-mas-que-hace-un-ano",
     "nivel": "P",
-    "nota": "14,1 % de los cotizantes. En mayo de 2026: 3.359.548 ([S], Junta de Extremadura), con parte de la subida ligada a la regularización."
+    "nota": "Ministerio de Inclusión, nota del 13-nov-2026 (leída entera): 16,4 % de los cotizantes; +598.378 (+19,3 %) en un año y +63.899 sobre septiembre. 490.586 afiliados en alta ligados a la regularización extraordinaria a 30-oct. Marruecos 446.584, Colombia 399.294, Rumanía 339.925. Antes: 3.038.158 en ene-2026 (P) y 3.359.548 en may-2026 ([S])."
    },
    {
     "nombre": "Riesgo de pobreza de adultos con nacionalidad española",
@@ -1947,30 +1965,30 @@
   "beneficiarios": [
    {
     "nombre": "IMV: hogares",
-    "valor": 862859,
+    "valor": 911274,
     "unidad": "hogares",
-    "anio": "may-2026",
-    "fuente": "https://www.inclusion.gob.es/en/w/el-ingreso-minimo-vital-protege-a-mas-de-860.000-hogares-en-los-que-residen-mas-de-un-millon-de-ninos-ninas-y-adolescentes",
+    "anio": "oct-2026",
+    "fuente": "https://www.inclusion.gob.es/es/w/el-ingreso-minimo-vital-protege-en-octubre-a-cerca-de-2-8-millones-de-personas-que-viven-en-911.274-hogares",
     "nivel": "P",
-    "nota": "Junio: 860.458 ([S], nota de Moncloa vista en buscador)."
+    "nota": "Ministerio de Inclusión, nota del 10-nov-2026 (leída entera, estadística INSS de octubre). +138.002 prestaciones activas en un año (+17,9 %). Antes: 862.859 en may-2026."
    },
    {
     "nombre": "IMV: personas beneficiarias",
-    "valor": 2631545,
+    "valor": 2781679,
     "unidad": "personas",
-    "anio": "may-2026",
-    "fuente": "https://www.inclusion.gob.es/en/w/el-ingreso-minimo-vital-protege-a-mas-de-860.000-hogares-en-los-que-residen-mas-de-un-millon-de-ninos-ninas-y-adolescentes",
+    "anio": "oct-2026",
+    "fuente": "https://www.inclusion.gob.es/es/w/el-ingreso-minimo-vital-protege-en-octubre-a-cerca-de-2-8-millones-de-personas-que-viven-en-911.274-hogares",
     "nivel": "P",
-    "nota": "En 590.959 hogares hay menores; 144.540 hogares son monoparentales."
+    "nota": "Ministerio de Inclusión, nota del 10-nov-2026 (leída entera, estadística INSS de octubre). +418.125 beneficiarios en un año (+17,7 %); 1.120.877 menores (40,3 %). Antes: 2.631.545 en may-2026."
    },
    {
     "nombre": "IMV: cuantía media por hogar",
-    "valor": 538.7,
+    "valor": 524.6,
     "unidad": "€ al mes",
-    "anio": "may-2026",
-    "fuente": "https://www.inclusion.gob.es/documents/20121/0/20260508+NP+IMV+mayo.pdf/1401a0ee-6432-df57-9af8-d0e20947fc67?t=1780642280852",
+    "anio": "oct-2026",
+    "fuente": "https://www.inclusion.gob.es/es/w/el-ingreso-minimo-vital-protege-en-octubre-a-cerca-de-2-8-millones-de-personas-que-viven-en-911.274-hogares",
     "nivel": "P",
-    "nota": "Nómina del mes: 500,2 M€. Por comunidad y tipo de hogar: tabla del INSS (Andalucía 268.568 hogares)."
+    "nota": "Ministerio de Inclusión, nota del 10-nov-2026 (leída entera, estadística INSS de octubre). Nómina del mes: más de 748,2 M€. CAPI: 637.748 hogares, 124 € al mes por hogar de media. Antes: 538,7 € en may-2026."
    },
    {
     "nombre": "IMV: titulares extranjeros",
@@ -2270,12 +2288,12 @@
    },
    {
     "nombre": "Compraventas de vivienda (INE, ETDP)",
-    "valor": 49319,
+    "valor": 54548,
     "unidad": "n.º",
-    "periodo": "ago 2026",
+    "periodo": "sep 2026",
     "fuente": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/ETDP1826",
     "nivel": "P",
-    "nota": "ago-2025: 47.708 (+3,4 % interanual). Nuevas 10.521; segunda mano 38.798. Mensual, 2026: 49.319-61.417."
+    "nota": "sep-2025: 63.018 (−13,4 % interanual; la nota de prensa del INE de la ETDP de septiembre da −13,4 % en compraventas de viviendas inscritas). Leído de la serie ETDP1826 el 22-nov-2026. ago-2026: 49.319; mensual 2026: 49.319-61.417 hasta agosto."
    },
    {
     "nombre": "Hipotecas sobre viviendas: número (INE, HPT)",
@@ -2455,12 +2473,12 @@
    },
    {
     "nombre": "Afiliados extranjeros a la Seguridad Social",
-    "valor": 3635979,
+    "valor": 3699878,
     "unidad": "afiliados",
-    "anio": "sep-2026",
-    "fuente": "https://www.ondavasca.com/la-afiliacion-extranjera-bate-records-con-mas-de-36-millones-de-trabajadores/",
-    "nivel": "S",
-    "nota": "+17,7 % interanual; 421.306 son altas de regularizados. Cifra del Ministerio de Inclusión vía prensa [VERIFICAR en nota oficial]."
+    "anio": "oct-2026",
+    "fuente": "https://www.inclusion.gob.es/es/w/la-seguridad-social-registra-cerca-de-3.700.000-afiliados-extranjeros-casi-600.000-mas-que-hace-un-ano",
+    "nivel": "P",
+    "nota": "Afiliación media de octubre, dato oficial (nota Inclusión 13-nov-2026): +1,8 % sobre septiembre (3.635.979, antes [S] vía ondavasca.com)."
    },
    {
     "nombre": "Solicitudes de regularización extraordinaria (RD 316/2026)",
@@ -3222,7 +3240,7 @@
     "anio": "31-mar-2026",
     "fuente": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/130426-fondo-reserva-seguridad-social-abril.aspx",
     "nivel": "S",
-    "nota": "Máximo en diez años. Cierre de 2025: 14.100 M€ (El Independiente) frente a 14.283 M€ (Vozpópuli) [VERIFICAR serie oficial]. Equivale a cerca de 1 mes de nómina (cálculo propio con 14.539,9 M€)."
+    "nota": "Máximo en diez años. Cierre de 2025: 14.100 M€ (El Independiente) frente a 14.283 M€ (Vozpópuli) [VERIFICAR serie oficial]. Equivale a cerca de 1 mes de nómina (cálculo propio con 14.539,9 M€). 22-nov-2026: no se localizó en la web del Ministerio de Inclusión una nota posterior a la de 31-mar-2026 (el listado de noticias muestra solo afiliación, IMV y pensiones 2027) [VERIFICAR dato más reciente]; el valor sigue siendo el de marzo."
    },
    {
     "nombre": "Gasto en pensiones / PIB: proyección AIReF a 2050",
@@ -3245,13 +3263,13 @@
     "nota": "−0,8 %, dato definitivo INE (leído vía búsqueda). Madres de 40 años o más: 10,4 % en 2024 (7,2 % en 2014). [VERIFICAR] contra la nota original."
    },
    {
-    "nombre": "Nacimientos (provisional)",
-    "valor": 321164,
+    "nombre": "Nacimientos",
+    "valor": 321684,
     "unidad": "nacimientos",
     "anio": "2025",
-    "fuente": "https://www.ine.es/dyngs/Prensa/EDES_EMN2025.htm",
-    "nivel": "S",
-    "nota": "+1,0 %: primera subida tras una década de caídas. Provisional [VERIFICAR con definitivos]."
+    "fuente": "https://www.ine.es/dyngs/Prensa/MNP2025.htm",
+    "nivel": "P",
+    "nota": "INE, nota «Movimiento Natural de la Población / Indicadores Demográficos Básicos 2025» (18-nov-2026, leída entera): +1,2 % sobre 2024 (3.679 más), rompe la caída de los últimos años pero es un 23,5 % menos que en 2015. Madres de nacionalidad extranjera: 83.800 (26,1 %); nacidas en el extranjero: 110.572 (34,4 %). Madres de 40 años o más: 10,3 % (7,8 % en 2015). Sustituye al provisional de 321.164 (EDES, jun-2026)."
    },
    {
     "nombre": "Defunciones",
@@ -3260,16 +3278,16 @@
     "anio": "2024",
     "fuente": "https://www.ine.es/dyngs/Prensa/MNP2024.htm",
     "nivel": "S",
-    "nota": "En 2025, +2,5 % (provisional) [VERIFICAR]."
+    "nota": "2025: 444.945 (+2,0 %), dato definitivo INE (18-nov-2026), ver «Defunciones 2025»."
    },
    {
-    "nombre": "Defunciones (provisional)",
-    "valor": 446982,
+    "nombre": "Defunciones",
+    "valor": 444945,
     "unidad": "defunciones",
     "anio": "2025",
-    "fuente": "https://www.ine.es/dyngs/Prensa/EDES_EMN2025.htm",
-    "nivel": "S",
-    "nota": "+2,5 %. El saldo vegetativo es −122.167 (−125.818 en la tabla por CCAA, que usa el criterio de residencia). Provisional [VERIFICAR con definitivos]."
+    "fuente": "https://www.ine.es/dyngs/Prensa/MNP2025.htm",
+    "nivel": "P",
+    "nota": "INE (18-nov-2026): 8.827 más que en 2024 (+2,0 %). Sustituye al provisional de 446.982 (+2,5 %). Mortalidad infantil 2,6 por 1.000 nacidos vivos (cuatro décimas menos)."
    },
    {
     "nombre": "Población de 65 años o más",
@@ -3281,13 +3299,13 @@
     "nota": "Proyección INE: pico del 30,9 % en 2076. Dato leído vía búsqueda [VERIFICAR] contra la nota original."
    },
    {
-    "nombre": "Fecundidad",
-    "valor": 1.1,
+    "nombre": "Fecundidad (indicador coyuntural)",
+    "valor": 1.11,
     "unidad": "hijos por mujer",
-    "anio": "2024",
-    "fuente": "https://www.ine.es/dyngs/Prensa/PROP20262076.htm",
-    "nivel": "S",
-    "nota": "Supuesto INE de 1,16 en 2040. Dato de 2025 sin localizar [VERIFICAR]."
+    "anio": "2025",
+    "fuente": "https://www.ine.es/dyngs/Prensa/MNP2025.htm",
+    "nivel": "P",
+    "nota": "INE (18-nov-2026): 1,11 hijos por mujer en 2025 (1,10 en 2024); españolas 1,08 y extranjeras 1,26. Edad media a la maternidad 32,7 años. Supuesto de proyección INE de 1,16 en 2040 (nota PROP20262076, [S])."
    },
    {
     "nombre": "Saldo migratorio exterior",
@@ -3299,22 +3317,22 @@
     "nota": "El INE proyecta un saldo similar en 2026 y unos 240.000 en 2075. Dato de 2025 sin localizar [VERIFICAR]."
    },
    {
-    "nombre": "Saldo vegetativo (provisional)",
-    "valor": -122167,
+    "nombre": "Saldo vegetativo",
+    "valor": -121237,
     "unidad": "personas",
     "anio": "2025",
-    "fuente": "https://www.ine.es/dyngs/Prensa/EDES_EMN2025.htm",
-    "nivel": "S",
-    "nota": "Nacimientos menos defunciones, provisional. La población crece por inmigración, no por saldo natural."
+    "fuente": "https://www.ine.es/dyngs/Prensa/MNP2025.htm",
+    "nivel": "P",
+    "nota": "INE (18-nov-2026), población residente: −121.237 en 2025 frente a −116.056 en 2024; noveno año consecutivo en negativo. Sustituye al provisional de −122.167 (que usaba otro criterio). La población crece por inmigración, no por saldo natural."
    },
    {
     "nombre": "Esperanza de vida al nacer",
-    "valor": 84.01,
+    "valor": 84.05,
     "unidad": "años",
-    "anio": "2024",
-    "fuente": "https://www.ine.es/dyngs/Prensa/MNP2024.htm",
-    "nivel": "S",
-    "nota": "INE definitivo: 21,87 años a los 65; mortalidad infantil 3,04 ‰. El tema Estabilidad usa 83,9 años (otra fuente o definición) [VERIFICAR conciliación]."
+    "anio": "2025",
+    "fuente": "https://www.ine.es/dyngs/Prensa/MNP2025.htm",
+    "nivel": "P",
+    "nota": "INE (18-nov-2026): +0,04 años sobre 2024 (84,01). Hombres 81,47 y mujeres 86,53; a los 65 años, 19,88 años más (hombres) y 23,62 (mujeres). El tema Estabilidad usa 83,9 años (otra fuente o definición) [VERIFICAR conciliación]."
    },
    {
     "nombre": "Crecimiento de la población en un año",
@@ -3335,13 +3353,13 @@
     "nota": "Proyecciones 2026-2076 publicadas el 17-jun-2026; detalle sin leer. [ESPECULACIÓN]: depende de fecundidad y migración. [VERIFICAR] en INEbase."
    },
    {
-    "nombre": "Fecundidad (hijos por mujer) y saldo migratorio exterior de 2025",
+    "nombre": "Saldo migratorio exterior de 2025",
     "valor": null,
     "unidad": "",
     "anio": "2025",
     "fuente": "https://www.ine.es/dyngs/Prensa/EDES_EMN2025.htm",
     "nivel": "VERIFICAR",
-    "nota": "No hallados en la pasada C231; buscar en Indicadores Demográficos Básicos y en la Estadística de Migraciones."
+    "nota": "Fecundidad de 2025 ya leída (1,11, ver «Fecundidad»). El saldo migratorio exterior de 2025 no figura en la nota de movimiento natural: buscar en la Estadística de Migraciones del INE (no leída el 22-nov-2026) [VERIFICAR]."
    }
   ],
   "energia_espana": [
@@ -3547,7 +3565,9 @@
     "nivel": "P",
     "nota": "Art. 52 de la Ley del IRPF (redacción vigente desde el 1-ene-2023, releída el 13-nov-2026): el menor entre el 30 % de los rendimientos del trabajo y de actividades y 1.500 €. Se amplía en 8.500 € por contribuciones de la empresa (total 10.000 €) o en 4.250 € en planes sectoriales y de autónomos (total 5.750 €; sumas nuestras)."
    }
-  ]
+  ],
+  "ultimo_dato": "2026-10-31",
+  "leido": "2026-11-22"
  },
  "fallos": []
 }
