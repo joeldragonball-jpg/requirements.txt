@@ -323,7 +323,7 @@ def _html(conceptos, publico=False):
         for _l in (CARPETA / "etf-historial.jsonl").read_text(encoding="utf-8").splitlines():
             if _l.strip():
                 _r = json.loads(_l)
-                _h.setdefault(_r["ticker"], []).append({"f": _r["fecha"], "a": _r.get("acciones"), "n": _r.get("nav")})
+                _h.setdefault(_r["ticker"], []).append({"f": _r["fecha"], "a": _r.get("acciones"), "n": _r.get("nav"), "m": _r.get("tenencia_monedas"), "u": _r.get("aum_usd")})
         datos["etf_historial"] = {k: sorted(v, key=lambda x: x["f"]) for k, v in _h.items()}
     except Exception:
         datos["etf_historial"] = None
