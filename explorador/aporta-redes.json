@@ -4948,5 +4948,74 @@
   "Si los pilotos antiguos (Palau, Ucrania, Kazajistán, bancos centrales con Ripple) siguen activos.",
   "Clientes en producción de Quant y estado de Ondo Network.",
   "Celdas «sin dato» de la matriz: Solana, Hedera y otras pueden tener capacidades (p. ej. control del emisor por extensiones de token) que el repo aún no recoge con fuente."
+ ],
+ "aproximaciones_no_sabemos_nota": "[ESPECULACIÓN] Aproximaciones razonadas para no dejar vacío lo que no sabemos: no son datos ni confirmaciones; cada una dice su base, su confianza y qué la confirmaría.",
+ "aproximaciones_no_sabemos": [
+  {
+   "estimacion": "Aproximación: lo movido supera con mucho a lo emitido en las redes de stablecoins y pagos (Ethereum, Tron, Solana) y es muy inferior en las de activos tokenizados, donde bonos y fondos rotan poco. El pago real entre bancos sería una fracción pequeña del total.",
+   "base": "Base: lo emitido sí se mide (RWA.xyz, DefiLlama); lo movido por tipo de uso no. Razón: las stablecoins se usan sobre todo para operar y DeFi, y un fondo tokenizado se mantiene, no se mueve.",
+   "confianza": "baja",
+   "confirmaria": "Informes del BIS o de analíticas on-chain (Artemis, Allium) que separen pagos de trading; Visa Onchain Analytics."
+  },
+  {
+   "estimacion": "Aproximación: el ODL en XRP está acotado por arriba por todo Ripple Payments (más de 100.000 M$ acumulados según su web, 15-nov-2026). La cifra de prensa de ~15.000 M$ en 2024 es [VERIFICAR] y suma plataforma entera. Lo razonable es un orden de pocos miles de M$ al año y con parte migrando a RLUSD.",
+   "base": "Base: la cota superior es dato de Ripple; el reparto por activo no se publica. Razón: Ripple Payments ya liquida con RLUSD y fiat, así que ODL en XRP es un subconjunto.",
+   "confianza": "baja",
+   "confirmaria": "Desglose publicado por Ripple (informes trimestrales de mercado de XRP) o contraste con flujos on-chain de XRP en los corredores ODL."
+  },
+  {
+   "estimacion": "Aproximación: el uso de DTC en Canton es piloto y por tanto una fracción mínima de lo que mueve DTC al día. CCIP y CCTP sí son medibles: ambos publican transferencias por carril.",
+   "base": "Base: DTCC lo presenta como fase piloto (ver dtcc_ruta). Razón: un sistema de liquidación de bolsa no migra de golpe; CCTP (Circle) y CCIP (Chainlink) tienen paneles públicos.",
+   "confianza": "media",
+   "confirmaria": "Paneles públicos de CCIP (Chainlink) y CCTP (Circle) y comunicados de DTCC sobre volúmenes del piloto."
+  },
+  {
+   "estimacion": "Aproximación: por diseño, XRPL, Stellar y Hedera cierran en segundos y Solana en ~13 s hasta finalización; Ethereum tarda unos 13 min en finalidad económica. Eso es teoría de diseño, no medida.",
+   "base": "Base: documentación de cada red. Razón: son mecanismos de consenso distintos (consenso federado/aBFT frente a finalidad por épocas).",
+   "confianza": "media",
+   "confirmaria": "Medir tiempos reales con exploradores o RPC público; para Solana, un nodo propio que lea el estado «finalized»."
+  },
+  {
+   "estimacion": "Aproximación: la actividad de usuarios de Ethereum está sobre todo en capas 2, así que la comparación de capa 1 la infravalora. El valor tokenizado de RWA, en cambio, parece concentrarse en la capa 1 [VERIFICAR].",
+   "base": "Base: este panel mide solo capa 1. Razón: las comisiones bajas atraen el uso cotidiano a L2, pero los emisores institucionales eligen la capa más conservadora.",
+   "confianza": "baja",
+   "confirmaria": "L2BEAT (actividad y valor asegurado por L2) y RWA.xyz filtrando por red L2."
+  },
+  {
+   "estimacion": "Aproximación: si el agente de transferencia registrado existe, aparecerá en sec.gov como formulario TA-1. Hasta leerlo, tratarlo como anuncio de la empresa, no como hecho.",
+   "base": "Base: el servidor de sec.gov no respondió el 15-nov-2026. Razón: un registro oficial deja huella pública con fecha.",
+   "confianza": "media",
+   "confirmaria": "Buscar el TA-1 en EDGAR desde Chrome (ver research/ACCESOS-CHROME.md)."
+  },
+  {
+   "estimacion": "Aproximación: ambas activaciones llegan normalmente semanas después de anunciar la testnet; sin fecha oficial no se puede afirmar un día.",
+   "base": "Base: patrón de versiones anteriores de cada red. Razón: las redes publican la activación en sus repositorios y foros de gobierno.",
+   "confianza": "baja",
+   "confirmaria": "Repositorios de GitHub de Algorand y Avalanche (releases y notas) y sus foros de gobierno."
+  },
+  {
+   "estimacion": "Aproximación: Hedera tiene un tope de 39 miembros en el Consejo y BNB Chain un conjunto activo de 21 validadores [VERIFICAR]; Polygon y Algorand tienen conjuntos mayores pero con peso concentrado en pocos. Son topes de diseño, no el número real.",
+   "base": "Base: reglas de gobierno publicadas por cada red. Razón: el diseño fija el máximo; el real se lee en el explorador.",
+   "confianza": "media",
+   "confirmaria": "Página del Consejo de Hedera, BscScan (validadores), explorador de validadores de Polygon y de Algorand."
+  },
+  {
+   "estimacion": "Aproximación: los pilotos de 2021-2023 sin noticias recientes probablemente están inactivos o absorbidos por otros proyectos. Ausencia de noticias no equivale a cierre.",
+   "base": "Base: no hay comunicados posteriores en las fuentes leídas. Razón: un piloto activo suele generar comunicados de renovación o ampliación.",
+   "confianza": "baja",
+   "confirmaria": "Comunicados de los bancos centrales implicados y las páginas de Ripple sobre CBDC."
+  },
+  {
+   "estimacion": "Aproximación: los clientes de Quant en producción suelen conocerse por el propio cliente (banco o infraestructura), no por Quant, por los acuerdos de confidencialidad habituales. Ondo Network debe tratarse como «anunciado» hasta ver red principal con fecha.",
+   "base": "Base: ausencia de documento primario con clientes nombrados. Razón: la banca rara vez permite publicar quién usa su proveedor.",
+   "confianza": "baja",
+   "confirmaria": "Comunicados de los bancos citados, docs de Ondo Chain y su explorador."
+  },
+  {
+   "estimacion": "Aproximación: es probable que Solana (extensiones de Token-2022) y Hedera (claves KYC, de congelación y de borrado en HTS) tengan control del emisor, así que muchas celdas «sin dato» serían SÍ o PARCIAL. Falta leerlo con fuente.",
+   "base": "Base: ambas redes documentan esas funciones en su documentación técnica. Razón: son plataformas que ya sirven a emisores regulados.",
+   "confianza": "alta",
+   "confirmaria": "docs de Solana (Token Extensions) y de Hedera (Token Service) para rellenar la matriz con fuente."
+  }
  ]
 }
