@@ -327,6 +327,18 @@ def _html(conceptos, publico=False):
         datos["etf_historial"] = {k: sorted(v, key=lambda x: x["f"]) for k, v in _h.items()}
     except Exception:
         datos["etf_historial"] = None
+    try:                          # 22-nov C375: flujo neto diario de los ETF de XRP (explorador/etf-flujos-diarios.csv, SoSoValue, nivel S)
+        _meta, _filas = {}, []
+        for _l in (CARPETA / "etf-flujos-diarios.csv").read_text(encoding="utf-8").splitlines():
+            if _l.startswith("#"):
+                _k, _, _v = _l[1:].partition("=")
+                _meta[_k] = _v
+            elif _l.strip():
+                _f, _fl, _ac = _l.split(",")
+                _filas.append([_f, float(_fl), float(_ac)])
+        datos["etf_flujos_diarios"] = {"fuente": _meta.get("fuente"), "nivel": _meta.get("nivel"), "leido": _meta.get("leido"), "filas": _filas}
+    except Exception:
+        datos["etf_flujos_diarios"] = None
     try:                          # 19-nov: bloques de indicadores-manual.json (zona euro, UE-27, potencias, BRICS, agregados FMI, monedas) para Países › Comparar países
         datos["indicadores_bloques"] = json.loads((CARPETA / "indicadores-manual.json").read_text(encoding="utf-8")).get("_bloques")
     except Exception:
