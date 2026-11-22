@@ -1,0 +1,341 @@
+{
+ "_actualizado": "2026-11-22",
+ "nivel": "S",
+ "aviso": "Fichas de quienes declaran ETF de XRP en el 13F. Sirven para entender QUÉ tipo de entidad es cada una y por qué puede tener ETF de XRP; no dicen qué hará después ni son recomendación. Los datos de posiciones salen de etf-13f.json y etf-flujos.json (13F-HR en EDGAR [P] y 13f.info [S]); los hechos de cada ficha llevan su fuente, fecha y nivel. «Qué hace» es descripción general, sin fuente abierta propia en esta sesión: se marca [VERIFICAR] cuando es dato concreto.",
+ "tipos": {
+  "creador de mercado / trading": "Firma que cotiza precios de compra y venta de ETF para que siempre haya liquidez. Si además es participante autorizado (AP), crea y rescata acciones del ETF con el emisor. Sus acciones suelen ser inventario o cobertura de otras operaciones, no una apuesta por XRP: un aumento de su posición no es «compra institucional» en sentido estricto.",
+  "hedge fund": "Gestora que invierte el dinero de sus fondos con libertad de estrategia. Puede tener el ETF como parte de un arbitraje (largo en un sitio y corto en otro) que el 13F no enseña, porque no recoge posiciones cortas.",
+  "banco de inversión (propia y clientes)": "Su 13F suma posiciones propias, de clientes y de coberturas de productos que vende; no se sabe qué parte es propia. Aun así es de los que más movimiento enseña porque presenta una cifra consolidada de todo el grupo.",
+  "banco": "Banco comercial o de inversión. Puede declarar posiciones de su cartera propia (como el caso de Intesa) o de productos de clientes.",
+  "asesor de patrimonio (RIA)": "Asesor registrado que compra por cuenta de sus clientes. Suelen ser importes pequeños y reflejan una decisión de cartera del cliente, no de la firma.",
+  "gestora": "Sociedad que gestiona fondos de terceros; puede ser el propio emisor de ETF de otros activos.",
+  "fondo soberano": "Fondo de inversión de un Estado. Sus posiciones cripto, cuando las hay, se ven en el 13F si compran valores cotizados en EE. UU."
+ },
+ "glosario": {
+  "13F": "Informe trimestral que las gestoras con más de 100 millones de dólares en valores de EE. UU. presentan a la SEC. Es una foto a fin de trimestre, llega hasta 45 días tarde, no recoge posiciones cortas ni inversores fuera de EE. UU.",
+  "CIK": "Central Index Key: el número de identificación que la SEC asigna a cada persona o empresa que le presenta documentos. Sirve para localizar sus 13F en EDGAR (sec.gov); no es un código del fondo ni un dato de inversión.",
+  "AP (participante autorizado)": "Entidad que puede crear y rescatar acciones de un ETF cambiándolas por el activo (aquí, XRP) o por efectivo. Mantiene el precio del ETF cerca del valor de lo que guarda.",
+  "CUSIP": "Código de 9 caracteres que identifica cada valor cotizado en EE. UU.; el 13F lo usa para decir qué ETF tiene cada gestora.",
+  "NAV": "Valor liquidativo: lo que vale cada acción del ETF según los activos que guarda menos gastos."
+ },
+ "gestoras": [
+  {
+   "id": "goldman",
+   "nombre": "Goldman Sachs Group",
+   "alias": [
+    "goldman sachs"
+   ],
+   "tipo": "banco de inversión (propia y clientes)",
+   "que_hace": "Banco de inversión de EE. UU. (Nueva York): asesoría, mercados, gestión de patrimonio y, también, actividad con criptoactivos y ETF.",
+   "papel_etf": "Es el mayor declarante de ETF de XRP del 3T-2026 con diferencia. Al presentar un 13F consolidado, no se puede separar lo propio de lo de clientes y coberturas [RAZONADO].",
+   "hechos": [
+    {
+     "d": "2025-12-31",
+     "t": "≈154 M$ en ETF de XRP (Bitwise, Franklin, Grayscale y 21Shares): mayor tenedor conocido de ese momento.",
+     "f": "https://www.theblock.co/news/markets/2026-03-10-goldman-sachs-top-xrp-etf-holder-wave-super-fans-analysts-393044",
+     "n": "S"
+    },
+    {
+     "d": "2026-03-31",
+     "t": "La prensa dice que en el 1T-2026 salió de sus ETF de XRP y Solana y mantuvo bitcoin (≈690 M$ en IBIT). Contradice el 13F del 2T (volvió a tener acciones de Bitwise XRP): no contrastado en EDGAR.",
+     "f": "https://www.tradingview.com/news/cointelegraph:10d0b0cdc094b:0-goldman-sachs-exits-xrp-solana-etf-exposure-in-q1-2026/",
+     "n": "S [VERIFICAR]"
+    },
+    {
+     "d": "2026-09-30",
+     "t": "≈145 M$ en 6 ETF de XRP (Bitwise 38,4; Franklin 47,8; Canary 33,3; Grayscale 14,5; 21Shares 10,1; REX-Osprey 1,3), leído en el 13F-HR de EDGAR; coherente con los «más de 144 M$» del vídeo del 17-nov.",
+     "f": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000886982&type=13F-HR",
+     "n": "P"
+    },
+    {
+     "d": "2026-11-19",
+     "t": "Está en el grupo de DTCC y asesora a Bullish: parte de lo que Goldman «cuenta» sobre tokenización lo vende ella misma (cruce de incentivos del análisis C344).",
+     "f": null,
+     "n": "S"
+    }
+   ],
+   "cautelas": [
+    "Que Goldman figure en un ETF no significa que apueste por XRP: puede ser cobertura de un producto a clientes.",
+    "Las salidas y entradas entre trimestres no se ven en el 13F; solo la foto a fin de trimestre."
+   ],
+   "cik": "0000886982"
+  },
+  {
+   "id": "jane",
+   "nombre": "Jane Street Group",
+   "alias": [
+    "jane street"
+   ],
+   "tipo": "creador de mercado / trading",
+   "que_hace": "Firma de trading cuantitativo y creador de mercado con sede en Nueva York. Opera ETF, acciones, bonos y derivados.",
+   "papel_etf": "Es participante autorizado de muchos ETF: fue nombrada por los 11 aspirantes a ETF de bitcoin al contado a fines de 2023. Por eso sus acciones fluctúan con su actividad de creación y cobertura [RAZONADO]. Además declara opciones sobre varios de estos ETF, de valor casi igual a las acciones.",
+   "hechos": [
+    {
+     "d": "2023-12-01",
+     "t": "Nombrada como participante autorizado por los 11 aspirantes a ETF de bitcoin al contado (Blockworks, dic-2023).",
+     "f": "https://blockworks.co/news/jane-street-ap-bitcoin-etf",
+     "n": "S"
+    },
+    {
+     "d": "2026-09-30",
+     "t": "ETF de XRP: ≈16,4 M$ a 30-jun y ≈20,3 M$ a 30-sep (solo acciones, sin opciones); acciones de Bitwise XRP −39 % frente al 2T. Lectura propia del XML del 13F-HR.",
+     "f": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001595888&type=13F-HR",
+     "n": "P"
+    },
+    {
+     "d": "2026-05-04",
+     "t": "No figura en la lista oficial de las 50+ firmas convocadas a una reunión sobre tokenización (sí Goldman, Citadel Securities, DRW, Virtu y otras).",
+     "f": null,
+     "n": "S"
+    }
+   ],
+   "cautelas": [
+    "Su posición en acciones más sus opciones no permite saber si está largo o cubierto.",
+    "No es una apuesta por XRP: es una firma que gana por el diferencial y la liquidez."
+   ],
+   "cik": "0001595888"
+  },
+  {
+   "id": "sig",
+   "nombre": "Susquehanna International Group",
+   "alias": [
+    "susquehanna"
+   ],
+   "tipo": "creador de mercado / trading",
+   "que_hace": "Firma de trading y creador de mercado, muy activa en opciones y ETF, con sede en Pensilvania (EE. UU.) [VERIFICAR sede].",
+   "papel_etf": "Como otros creadores de mercado, mantiene acciones de ETF por su función. Su aumento fuerte en Bitwise XRP (de unas 53.000 a unas 879.000 acciones entre 2T y 3T, +1.555 %) encaja con más actividad de creación [RAZONADO], no con una tesis sobre XRP.",
+   "hechos": [
+    {
+     "d": "2026-09-30",
+     "t": "≈32,1 M$ en 5 ETF de XRP (Bitwise, Franklin, Canary, Grayscale, 21Shares), segundo declarante tras Goldman. Contrastado con el 13F-HR en EDGAR.",
+     "f": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001446194&type=13F-HR",
+     "n": "P"
+    }
+   ],
+   "cautelas": [
+    "No hay fuente abierta de su rol exacto como AP de los ETF de XRP: no se afirma."
+   ],
+   "cik": "0001446194"
+  },
+  {
+   "id": "intesa",
+   "nombre": "Intesa Sanpaolo",
+   "alias": [
+    "intesa"
+   ],
+   "tipo": "banco",
+   "que_hace": "El mayor banco de Italia. Es de los pocos bancos europeos que declara ETF cripto de EE. UU. con importes relevantes.",
+   "papel_etf": "Según la prensa, describe estas posiciones como de negociación propia [S]. Es el único gran banco europeo entre los mayores declarantes de XRP.",
+   "hechos": [
+    {
+     "d": "2026-03-31",
+     "t": "En el 1T-2026 sus ETF cripto pasan de ≈100 a ≈235 M$, con entrada por primera vez en ETF de XRP y ether (Cointelegraph).",
+     "f": "https://cointelegraph.com/news/italys-largest-bank-more-than-doubles-crypto-holdings-to-235m-in-q1-report",
+     "n": "S"
+    },
+    {
+     "d": "2026-09-30",
+     "t": "≈27,2 M$ en XRP: mantiene 712.319 acciones del Grayscale XRP Trust y suma 402.750 de Bitwise XRP; total de ETF cripto ≈108,6 M$ (de ≈90,8 en junio); recorta bitcoin y ether y amplía Solana, XRP e Hyperliquid.",
+     "f": "https://crypto.news/intesa-sanpaolo-raises-xrp-and-solana-etf-holdings-cuts-bitcoin-and-ethereum/",
+     "n": "S"
+    }
+   ],
+   "cautelas": [
+    "Cifras de prensa; el repo las contrasta con 13f.info (27,2 M$ en XRP coincide).",
+    "Un banco con cartera propia puede estar haciendo trading, no inversión a largo plazo."
+   ],
+   "cik": "0001374384"
+  },
+  {
+   "id": "millennium",
+   "nombre": "Millennium Management",
+   "alias": [
+    "millennium"
+   ],
+   "tipo": "hedge fund",
+   "que_hace": "Gestora multiestrategia (hedge fund) con sede en Nueva York: reparte el capital entre muchos equipos de trading independientes.",
+   "papel_etf": "Aparece entre los mayores declarantes de ETF de XRP del 3T (≈23 M$ en 4 fondos). En un fondo multiestrategia, una posición así puede ser parte de un arbitraje o una cobertura, no una convicción [RAZONADO].",
+   "hechos": [
+    {
+     "d": "2024-02-14",
+     "t": "Reveló casi 2.000 M$ en ETF de bitcoin al contado (IBIT, ARK 21Shares, Bitwise, Grayscale), el mayor tenedor entre los fondos de cobertura en aquel momento (The Block).",
+     "f": "https://www.theblock.co/amp/post/294760/millennium-management-holds-2-billion-in-spot-bitcoin-etf-shares",
+     "n": "S"
+    },
+    {
+     "d": "2026-03-31",
+     "t": "Recorta IBIT un 43,8 % hasta 19,3 M acciones (≈741 M$) en el 13F del 1T-2026 (Fintel); no aparecen ETF de XRP en esas fuentes.",
+     "f": "https://fintel.io/so/cl/ibitcl/millennium-management-llc",
+     "n": "S"
+    },
+    {
+     "d": "2026-09-30",
+     "t": "≈23,1 M$ en ETF de XRP (Bitwise, Franklin, Canary, Grayscale), según 13f.info.",
+     "f": "https://13f.info/cusip/09174F107",
+     "n": "S"
+    }
+   ],
+   "cautelas": [
+    "Entró y salió de ETF de bitcoin con rapidez en otros trimestres: un trimestre no es una tendencia."
+   ],
+   "cik": "0001273087"
+  },
+  {
+   "id": "marex",
+   "nombre": "Marex Group",
+   "alias": [
+    "marex"
+   ],
+   "tipo": "creador de mercado / trading",
+   "que_hace": "Bróker e intermediario de mercados con sede en Londres, cotizado en Nasdaq; ofrece liquidez a clientes de materias primas, divisas y valores.",
+   "papel_etf": "Aparece como creador de mercado en Bitwise XRP y Canary XRP. En el 1T-2026 la prensa lo puso como tercer mayor tenedor de ETF de XRP (≈9,4 M$) [S]; en el 3T sube a ≈14,7 M$.",
+   "hechos": [
+    {
+     "d": "2026-03-31",
+     "t": "≈9,4 M$ en XRP: 356.865 acciones de Canary XRP (≈5,1 M$) y ≈286.021 de Bitwise XRP (≈4,3 M$).",
+     "f": "https://coingape.com/breaking-marex-group-becomes-3rd-largest-xrp-etf-holder-expands-strategy-mstr-stake/",
+     "n": "S"
+    },
+    {
+     "d": "2026-09-30",
+     "t": "≈14,7 M$ en XRP (Bitwise 10,7 M$ y Canary), con +71,6 % de acciones en Bitwise frente al 2T.",
+     "f": "https://13f.info/cusip/09174F107",
+     "n": "S"
+    }
+   ],
+   "cautelas": [],
+   "cik": "0001997464"
+  },
+  {
+   "id": "schonfeld",
+   "nombre": "Schonfeld Strategic Advisors",
+   "alias": [
+    "schonfeld"
+   ],
+   "tipo": "hedge fund",
+   "que_hace": "Gestora multiestrategia de Nueva York.",
+   "papel_etf": "Solo declara Bitwise XRP (600.000 acciones, ≈10,0 M$). Una cifra redonda de acciones puede indicar un tamaño fijado de antemano, aunque eso es [ESPECULACIÓN].",
+   "hechos": [
+    {
+     "d": "2026-09-30",
+     "t": "600.000 acciones de Bitwise XRP (≈10,0 M$); leído el 13F-HR en EDGAR.",
+     "f": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001665241&type=13F-HR",
+     "n": "P"
+    }
+   ],
+   "cautelas": [
+    "No se han encontrado informaciones de prensa sobre esta posición."
+   ],
+   "cik": "0001665241"
+  },
+  {
+   "id": "ironbridge",
+   "nombre": "IronBridge Private Wealth",
+   "alias": [
+    "ironbridge"
+   ],
+   "tipo": "asesor de patrimonio (RIA)",
+   "que_hace": "Asesor de patrimonio registrado (RIA) según la clasificación del analista; no hay más información abierta recogida en esta sesión [VERIFICAR].",
+   "papel_etf": "Declara ≈14,2 M$ repartidos entre Bitwise XRP y Volatility Shares XRPI. Compra por cuenta de sus clientes, así que refleja decisiones de cartera de ellos.",
+   "hechos": [
+    {
+     "d": "2026-09-30",
+     "t": "Declarante de Bitwise XRP y XRPI; leído el 13F-HR en EDGAR.",
+     "f": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001850996&type=13F-HR",
+     "n": "P"
+    }
+   ],
+   "cautelas": [],
+   "cik": "0001850996"
+  },
+  {
+   "id": "citadel",
+   "nombre": "Citadel Advisors",
+   "alias": [
+    "citadel advisors"
+   ],
+   "tipo": "hedge fund",
+   "que_hace": "Gestora de fondos de cobertura fundada por Ken Griffin. No es lo mismo que Citadel Securities, que es la firma de creación de mercado.",
+   "papel_etf": "Declara ≈3,2 M$ en XRPI y XRPR (los ETF de Volatility Shares y REX-Osprey). Importes pequeños frente a su cartera total.",
+   "hechos": [
+    {
+     "d": "2026-09-30",
+     "t": "XRPI y XRPR (≈3,2 M$).",
+     "f": "https://13f.info/cusip/09174F107",
+     "n": "S"
+    },
+    {
+     "d": "2026-05-04",
+     "t": "Citadel Securities (otra entidad) figura en la lista de firmas convocadas a una reunión sobre tokenización.",
+     "f": null,
+     "n": "S"
+    }
+   ],
+   "cautelas": [
+    "No confundir Citadel Advisors (fondo) con Citadel Securities (creador de mercado): son entidades distintas."
+   ],
+   "cik": "0001423053"
+  },
+  {
+   "id": "virtu",
+   "nombre": "Virtu Financial",
+   "alias": [
+    "virtu"
+   ],
+   "tipo": "creador de mercado / trading",
+   "que_hace": "Creador de mercado electrónico y empresa de trading de EE. UU.",
+   "papel_etf": "Fue nombrada participante autorizado por BlackRock para su ETF de bitcoin (Blockworks, 2023) [S]. En XRP declara ≈3,0 M$ en Canary XRP.",
+   "hechos": [
+    {
+     "d": "2023-12-01",
+     "t": "Virtu Americas, entre los participantes autorizados nombrados por BlackRock para su ETF de bitcoin.",
+     "f": "https://blockworks.co/news/jane-street-ap-bitcoin-etf",
+     "n": "S"
+    }
+   ],
+   "cautelas": [],
+   "cik": null
+  },
+  {
+   "id": "flow",
+   "nombre": "Flow Traders U.S.",
+   "alias": [
+    "flow traders"
+   ],
+   "tipo": "creador de mercado / trading",
+   "que_hace": "Brazo estadounidense de Flow Traders, creador de mercado con origen en Ámsterdam especializado en ETF.",
+   "papel_etf": "Declara ≈2,7 M$ repartidos en 4 ETF de XRP; patrón típico de creador de mercado (posición pequeña y repartida).",
+   "hechos": [
+    {
+     "d": "2026-09-30",
+     "t": "Posición en Canary XRP, Grayscale XRP, 21Shares XRP y XRPI.",
+     "f": "https://13f.info/cusip/09174F107",
+     "n": "S"
+    }
+   ],
+   "cautelas": [],
+   "cik": "0001466697"
+  },
+  {
+   "id": "ubs",
+   "nombre": "UBS Group",
+   "alias": [
+    "ubs group",
+    "ubs ag"
+   ],
+   "tipo": "banco",
+   "que_hace": "Banco suizo con gestión de patrimonio y banca de inversión.",
+   "papel_etf": "Declara ≈1,6 M$ en XRPI: un importe pequeño; no dice nada por sí solo sobre la estrategia del banco.",
+   "hechos": [
+    {
+     "d": "2026-09-30",
+     "t": "Posición en XRPI (≈1,6 M$).",
+     "f": "https://13f.info/cusip/09174F107",
+     "n": "S"
+    }
+   ],
+   "cautelas": [],
+   "cik": "0001610520"
+  }
+ ]
+}

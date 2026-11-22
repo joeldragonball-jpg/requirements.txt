@@ -2296,6 +2296,60 @@ function nGdelt(){
   w.append(el('h3',null,'Por país (ordenados por cambio reciente)'),scrollX(tabla([{t:'País',f:r=>r.pais},{t:'Media 30 d (%)',n:1,f:r=>nvc(r.media_30d,2)},{t:'Ratio 30/90',n:1,f:r=>cr(r)},{t:'Último pico',f:r=>vc(((r.picos||[])[0]||{}).fecha)}],Object.values(G.paises||{}).slice().sort((a,b)=>(b.ratio_30_90||0)-(a.ratio_30_90||0)))));
   w.append(el('p','nota-v',(G.aviso||'')+' ACLED: '+vc(G.acled)+'. Fuente: '+(G.fuente||'')));return w}
 /* 21-nov (C355): quién tiene los ETF cripto según el 13F del 3T-2026 (explorador/etf-13f.json); pestañas por activo y tabla corta por ETF */
+/* 22-nov C374 · gestoras clicables (ficha), totales de los ETF de XRP y glosario del 13F. Todo texto con textContent. */
+function gestoraDe(n){const G=D.gestoras_13f;if(!G)return null;const s=String(n||'').toLowerCase();return (G.gestoras||[]).find(g=>(g.alias||[]).some(a=>s.includes(a)))||null}
+function gestoraPosiciones(g){const E=D.etf_13f,out=[];if(!E)return out;
+  E.etfs.filter(x=>x.activo==='XRP').forEach(x=>{const t=(x.tenedores_principales||[]).find(r=>(g.alias||[]).some(a=>String(r.tenedor).toLowerCase().includes(a)));if(t)out.push({fondo:x.ticker+' · '+x.nombre,v3:t.valor_miles_usd,a3:t.acciones_3T,a2:t.acciones_2T,v:t.var_acciones_pct,nuevo:t.nuevo_vs_2T})});
+  return out}
+function gestoraAbrir(g){
+  let dl=document.getElementById('gestora-dlg');
+  if(!dl){dl=document.createElement('dialog');dl.id='gestora-dlg';dl.style.cssText='max-width:min(680px,94vw);width:94vw;background:#10172b;color:#d6dbe8;border:1px solid #2a3350;border-radius:10px;padding:16px;max-height:86vh;overflow:auto';document.body.append(dl);dl.addEventListener('click',e=>{if(e.target===dl)dl.close()})}
+  dl.textContent='';const G=D.gestoras_13f||{};
+  const top=el('div');top.style.cssText='display:flex;justify-content:space-between;gap:10px;align-items:flex-start';
+  const h=el('h3',null,g.nombre);h.style.margin='0';const cb=el('button',null,'Cerrar ✕');cb.type='button';cb.addEventListener('click',()=>dl.close());top.append(h,cb);dl.append(top);
+  const tp=el('p','nota-v');tp.append(el('b',null,'Tipo: '),document.createTextNode(g.tipo+(g.cik?' · CIK '+g.cik:'')));dl.append(tp);
+  if((G.tipos||{})[g.tipo])dl.append(el('p','nota-v',G.tipos[g.tipo]));
+  dl.append(el('h4',null,'Qué hace'),el('p',null,g.que_hace));
+  dl.append(el('h4',null,'Qué papel puede tener en los ETF de XRP'),el('p',null,g.papel_etf));
+  const ps=gestoraPosiciones(g);
+  if(ps.length){dl.append(el('h4',null,'Lo que declara en ETF de XRP a '+vc((D.etf_13f||{}).periodo)+' (tabla de tenedores principales)'));
+    dl.append(scrollX(tabla([{t:'Fondo',f:r=>r.fondo+(r.nuevo?' (nuevo)':'')},{t:'Valor (M$)',n:1,f:r=>r.v3==null?'—':num(r.v3/1000,1)},{t:'Acciones 3T',n:1,f:r=>r.a3==null?'—':miles(num(r.a3,0))},{t:'Acciones 2T',n:1,f:r=>r.a2==null?'—':miles(num(r.a2,0))},{t:'Var. acciones',n:1,f:r=>r.v==null?'—':(r.v>0?'+':'')+num(r.v,1)+' %'}],ps)));
+    const tot=ps.reduce((s,r)=>s+(r.v3||0),0);dl.append(el('p','nota-v','Suma de los fondos listados: '+num(tot/1000,1)+' M$. Solo cuenta los fondos en que figura entre los principales tenedores.'))}
+  if((g.hechos||[]).length){dl.append(el('h4',null,'Historial y hechos'));const ul=el('ul','cad-lst');
+    g.hechos.forEach(x=>{const li=el('li');li.append(el('b',null,vc(x.d)+' · '),document.createTextNode(x.t+' '),nivelBadge(/^P/.test(x.n)?'P':'S'));if(/VERIFICAR/.test(x.n))li.append(document.createTextNode(' [VERIFICAR]'));if(x.f){li.append(document.createTextNode(' '),lkx(x.f,'fuente ↗'))}ul.append(li)});dl.append(ul)}
+  if((g.cautelas||[]).length){dl.append(el('h4',null,'Cautelas'));const ul=el('ul','cad-lst');g.cautelas.forEach(x=>ul.append(el('li',null,x)));dl.append(ul)}
+  if(g.cik){const p=el('p','nota-v');p.append(document.createTextNode('13F-HR de esta gestora en EDGAR: '),lkx('https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK='+g.cik+'&type=13F-HR','sec.gov ↗'));dl.append(p)}
+  dl.append(el('p','nota-v',G.aviso||''));
+  dl.showModal()}
+function gestoraLink(n){const g=gestoraDe(n);if(!g)return document.createTextNode(String(n==null?'':n));
+  const b=el('button',null,n);b.type='button';b.title='Ver ficha: qué es, qué hace y su historial';b.style.cssText='background:none;border:0;border-bottom:1px dotted currentColor;color:#8fd0ff;cursor:pointer;font:inherit;padding:0;text-align:left';b.addEventListener('click',()=>gestoraAbrir(g));return b}
+/* Totales de los 7 ETF de XRP juntos + glosario (TOXR, CIK, 13F) */
+function xrpTotales(E){
+  const w=el('div'),X=E.etfs.filter(x=>x.activo==='XRP'),FL=(D.etf_flujos||{}).etfs||[];
+  if(!X.length)return w;
+  const em=t=>{const r=FL.find(z=>z.ticker===t);return r?r.emisor:(((X.find(z=>z.ticker===t)||{}).nombre||'—').replace(/ XRP.*$/i,'')+' (dato del 13F)')},cm=t=>{const r=FL.find(z=>z.ticker===t);return r&&r.comision_pct!=null?num(+r.comision_pct,2)+' %':'—'};
+  const s=(a,k)=>a.reduce((n,x)=>n+(x[k]||0),0);
+  const t3=s(X,'valor_total_3T_miles_usd'),t2=s(X,'valor_total_2T_miles_usd');
+  w.append(el('h3',null,'XRP: todos los ETF juntos (exposición total declarada en el 13F)'));
+  w.append(kpis([[num(t3/1000,0)+' M$','Valor declarado a '+vc(E.periodo)+' en los '+X.length+' ETF de XRP'],[num(t2/1000,0)+' M$','El trimestre anterior (2T)',cambio((t3/t2-1)*100,'%',0)]]));
+  const filas=X.map(x=>({tk:x.ticker,nom:x.nombre,em:em(x.ticker),cm:cm(x.ticker),d3:x.declarantes_3T,d2:x.declarantes_2T,v3:x.valor_total_3T_miles_usd,v2:x.valor_total_2T_miles_usd}));
+  filas.push({tk:'TOTAL',nom:'Los '+X.length+' fondos de XRP',em:'',cm:'',d3:s(X,'declarantes_3T'),d2:s(X,'declarantes_2T'),v3:t3,v2:t2,tot:1});
+  w.append(scrollX(tabla([{t:'Fondo',f:r=>{const b=el(r.tot?'b':'span',null,r.tk+' · '+r.nom);return b}},{t:'Emisor',f:r=>r.em},{t:'Comisión',f:r=>r.cm},{t:'Declarantes 2T',n:1,f:r=>nvc(r.d2,0)},{t:'Declarantes 3T',n:1,f:r=>nvc(r.d3,0)},{t:'Valor 2T (M$)',n:1,f:r=>nvc(r.v2/1000,1)},{t:'Valor 3T (M$)',n:1,f:r=>nvc(r.v3/1000,1)},{t:'Cambio',n:1,f:r=>cambio((r.v3/r.v2-1)*100,'%',0)}],filas)));
+  w.append(el('p','nota-v','El «total» de declarantes suma los de cada fondo: una misma gestora que tiene varios fondos se cuenta varias veces. El valor sí es la suma real de los valores declarados. El cambio de valor mezcla compras nuevas con variación de precio de XRP entre las dos fechas de corte, así que no es «dinero nuevo» por sí solo.'));
+  /* tenedores agregados en los 7 fondos */
+  const M={};X.forEach(x=>(x.tenedores_principales||[]).forEach(r=>{const g=gestoraDe(r.tenedor),k=g?g.nombre:r.tenedor;const o=M[k]||(M[k]={n:k,tipo:r.tipo,v:0,f:[],sin:!g,a:r.tenedor});o.v+=r.valor_miles_usd||0;o.f.push(x.ticker)}));
+  const L=Object.values(M).sort((a,b)=>b.v-a.v).slice(0,14);
+  w.append(el('h3',null,'Mayores tenedores sumando todos los ETF de XRP'));
+  w.append(scrollX(tabla([{t:'Tenedor (clic = ficha)',f:r=>gestoraLink(r.a)},{t:'Tipo (del analista)',f:r=>r.tipo},{t:'Fondos',f:r=>r.f.join(', ')},{t:'Total XRP (M$)',n:1,f:r=>nvc(r.v/1000,1)},{t:'% del total declarado',n:1,f:r=>num(r.v/t3*100,1)+' %'}],L)));
+  w.append(el('p','nota-v','Suma de los tenedores principales que lista cada fondo (no todos los declarantes): pueden faltar posiciones pequeñas. Con solo dos trimestres cargados (2T y 3T-2026) la evolución se ve en la tabla de arriba; los 13F del 4T-2025 y 1T-2026 no están volcados todavía [VERIFICAR] (los fondos empezaron a cotizar desde nov-2025).'));
+  /* glosario */
+  const G=D.gestoras_13f||{},gl=G.glosario||{},d=el('details','cad-mas');d.dataset.auto='1';d.append(el('summary',null,'Qué es TOXR, qué es el CIK y cómo leer el 13F'));
+  const ul=el('ul','cad-lst');
+  const toxr=X.find(x=>x.ticker==='TOXR');
+  ul.append(el('li',null,'TOXR: es el ticker del 21Shares XRP ETF (emisor 21Shares, comisión '+cm('TOXR')+'), uno de los siete ETF de XRP. No es una moneda ni una empresa: es el código con el que cotiza el fondo'+(toxr?'. A '+vc(E.periodo)+' declaraba '+num(toxr.valor_total_3T_miles_usd/1000,1)+' M$ entre '+toxr.declarantes_3T+' gestoras.':'.')));
+  Object.entries(gl).forEach(([k,v])=>ul.append(el('li',null,k+': '+v)));
+  d.append(ul);w.append(d);
+  return w}
 function nEtf13(){
   const E=D.etf_13f,w=el('div');if(!E)return w;
   const k=v=>v==null?'—':miles(num(v/1000,1))+' M$';
@@ -2304,12 +2358,13 @@ function nEtf13(){
   const adv=el('div','nota-v');adv.append(el('b',null,'Límites del 13F: '),document.createTextNode('foto a '+vc(E.periodo)+' (presentada hasta el 16-nov): no incluye posiciones cortas ni inversores fuera de EE. UU.; un asesor compra por sus clientes y un creador de mercado mantiene acciones por su función, así que no es convicción; el «tipo de entidad» es clasificación del analista, no viene del 13F. Leído '+vc(E.leido)+' · nivel '+(E.nivel_global||'S').split(' ')[0]+' · caduca '+vc(E.caduca)+' ('+(E.caduca_motivo||'')+')'));
   w.append(adv);
   const ul=el('ul','cad-lst');(E.advertencias||[]).forEach(x=>ul.append(el('li',null,x)));const dd=el('details','cad-mas');dd.dataset.auto='1';dd.append(el('summary',null,'Todas las advertencias ('+(E.advertencias||[]).length+')'),ul);w.append(dd);
+  w.append(xrpTotales(E));
   const acts=[...new Set(E.etfs.map(x=>x.activo))],bar=el('div','cad-sel'),host=el('div');
   const pinta=a=>{host.textContent='';const g=el('div','etf13-g');E.etfs.filter(x=>x.activo===a).forEach(x=>{
     const d=el('details','etf13');d.open=E.etfs.filter(z=>z.activo===a).length<=3;
     const sm=el('summary');sm.append(el('b',null,x.ticker),document.createTextNode(' · '+x.nombre+' · '+x.declarantes_3T+' declarantes (2T: '+x.declarantes_2T+') · '+k(x.valor_total_3T_miles_usd)+' (2T: '+k(x.valor_total_2T_miles_usd)+')'));d.append(sm);
     const tp=x.tenedores_principales||[];
-    if(tp.length)d.append(scrollX(tabla([{t:'Tenedor',f:r=>r.tenedor+(r.nuevo_vs_2T?' (nuevo)':'')},{t:'Tipo (del analista)',f:r=>r.tipo},{t:'Valor 3T',n:1,f:r=>k(r.valor_miles_usd)},{t:'Acciones 3T',n:1,f:r=>ac(r.acciones_3T)},{t:'Acciones 2T',n:1,f:r=>ac(r.acciones_2T)},{t:'Var. acciones',n:1,f:r=>{const s2=el('span',r.var_acciones_pct>0?'sube':r.var_acciones_pct<0?'baja':'',pc(r.var_acciones_pct));return s2}}],tp)));
+    if(tp.length)d.append(scrollX(tabla([{t:'Tenedor (clic = ficha)',f:r=>{const s=el('span');s.append(gestoraLink(r.tenedor),document.createTextNode(r.nuevo_vs_2T?' (nuevo)':''));return s}},{t:'Tipo (del analista)',f:r=>r.tipo},{t:'Valor 3T',n:1,f:r=>k(r.valor_miles_usd)},{t:'Acciones 3T',n:1,f:r=>ac(r.acciones_3T)},{t:'Acciones 2T',n:1,f:r=>ac(r.acciones_2T)},{t:'Var. acciones',n:1,f:r=>{const s2=el('span',r.var_acciones_pct>0?'sube':r.var_acciones_pct<0?'baja':'',pc(r.var_acciones_pct));return s2}}],tp)));
     else d.append(el('p','nota-v','Sin tenedores principales detallados para este ETF.'));
     if(x.nota)d.append(el('p','nota-v',x.nota));g.append(d)});host.append(g);bar.querySelectorAll('button').forEach(z=>z.classList.toggle('on',z.dataset.a===a))};
   acts.forEach(a=>{const bt=el('button','cad-bt',a+' ('+E.etfs.filter(x=>x.activo===a).length+')');bt.type='button';bt.dataset.a=a;bt.addEventListener('click',()=>pinta(a));bar.append(bt)});
@@ -2357,48 +2412,63 @@ function etfPrecioAcc(E){
   return w}
 /* 22-nov · XRP: precio diario frente a las monedas que hay en los ETF de XRP (estimación propia = acciones × NAV ÷ precio de XRP de ese día, suma de los 5 fondos con serie).
    Cada punto azul es una cifra publicada (10-Q/web del emisor); entre puntos se mantiene el último valor conocido de cada fondo. Todo texto con textContent. */
+/* 22-nov (v2) · XRP: precio diario frente a las monedas de los ETF de XRP, áreas apiladas por fondo.
+   Estimación propia = acciones × NAV ÷ precio de XRP de ese día. Entre cifras publicadas se INTERPOLA en línea recta (no se mantiene escalón); los puntos con borde son cifras publicadas.
+   Pasado el último dato de cada fondo se mantiene plano y se dibuja más claro. Todo texto con textContent. */
 function etfPrecioMonedas(){
   const H=D.etf_historial,PS=D.precios_historico&&D.precios_historico.series&&D.precios_historico.series['XRP-USD'];
   if(!H||!PS||!(PS.datos||[]).length)return null;
   const TK=['XRP','TOXR','XRPZ','XRPC','GXRP'],DESDE='2025-12-31';
+  const COL={XRP:'#4aa3ff',XRPZ:'#7a6cff',XRPC:'#2fcf85',GXRP:'#e0a43a',TOXR:'#d06ad0'};
   const px=PS.datos.filter(p=>p[0]>=DESDE&&p[1]>0);if(px.length<10)return null;
   const priceAt=f=>{let v=null;for(const p of px){if(p[0]<=f)v=p[1];else break}return v};
   const pts={};
   for(const tk of TK){const q=(H[tk]||[]).filter(p=>p.f>=DESDE&&p.a>0&&p.n>0).map(p=>{const pr=priceAt(p.f);return pr?{f:p.f,m:p.a*p.n/pr/1e6}:null}).filter(Boolean);if(q.length)pts[tk]=q}
-  const tks=Object.keys(pts);if(tks.length<3)return null;
-  const ini=tks.map(t=>pts[t][0].f).sort().pop();                    // primer día en que ya hay dato de todos los fondos
-  const fechas=[...new Set(tks.flatMap(t=>pts[t].map(p=>p.f)))].filter(f=>f>=ini).sort();
-  if(fechas.length<2)return null;
-  const tot=f=>{let s=0;for(const t of tks){let v=null;for(const p of pts[t]){if(p.f<=f)v=p.m;else break}if(v==null)return null;s+=v}return s};
-  const S=fechas.map(f=>({f,v:tot(f)})).filter(p=>p.v!=null);
-  const NS='http://www.w3.org/2000/svg',sv=(t,at,tx)=>{const e=document.createElementNS(NS,t);for(const k in at)e.setAttribute(k,at[k]);if(tx!=null)e.textContent=tx;return e};
-  const C={p:'#f0b45a',m:'#5ec8ff',eje:'#8a93a8',gr:'#2a3350',tx:'#d6dbe8'};
+  const tks=TK.filter(t=>pts[t]);if(tks.length<3)return null;
   const T=x=>Date.parse(x+'T00:00:00Z'),fd=x=>x.slice(8,10)+'-'+x.slice(5,7)+'-'+x.slice(2,4);
-  const x0=T(ini),x1=Math.max(T(px[px.length-1][0]),T(S[S.length-1].f));
-  const pp=px.filter(p=>p[0]>=ini);
-  const W=760,Hh=330,L=52,R=56,Tp=38,B=44;
-  const pl=Math.min(...pp.map(p=>p[1])),ph=Math.max(...pp.map(p=>p[1])),ppad=(ph-pl)*0.08;
-  const ml=Math.min(...S.map(p=>p.v)),mh=Math.max(...S.map(p=>p.v)),mpad=Math.max((mh-ml)*0.35,mh*0.04);
-  const Yp=v=>Tp+(1-(v-(pl-ppad))/((ph+ppad)-(pl-ppad)))*(Hh-Tp-B),Ym=v=>Tp+(1-(v-(ml-mpad))/((mh+mpad)-(ml-mpad)))*(Hh-Tp-B);
+  const ini=tks.map(t=>pts[t][0].f).sort().pop();
+  const dias=px.map(p=>p[0]).filter(f=>f>=ini);if(dias.length<2)return null;
+  const interp=(t,f)=>{const q=pts[t],x=T(f);if(x<=T(q[0].f))return q[0].m;const z=q[q.length-1];if(x>=T(z.f))return z.m;for(let i=1;i<q.length;i++){if(x<=T(q[i].f)){const a=q[i-1],b=q[i],r=(x-T(a.f))/(T(b.f)-T(a.f));return a.m+(b.m-a.m)*r}}return z.m};
+  const serie=dias.map(f=>{const v={};let s=0;tks.forEach(t=>{v[t]=interp(t,f);s+=v[t]});return{f,v,s}});
+  const ultimo=t=>pts[t][pts[t].length-1].f;
+  const NS='http://www.w3.org/2000/svg',sv=(t,at,tx)=>{const e=document.createElementNS(NS,t);for(const k in at)e.setAttribute(k,at[k]);if(tx!=null)e.textContent=tx;return e};
+  const C={p:'#f0b45a',eje:'#8a93a8',gr:'#2a3350',tx:'#d6dbe8'};
+  const x0=T(dias[0]),x1=T(dias[dias.length-1]);
+  const W=760,Hh=360,L=52,R=56,Tp=34,B=44;
+  const pl=Math.min(...serie.map(p=>priceAt(p.f))),ph=Math.max(...serie.map(p=>priceAt(p.f))),ppad=(ph-pl)*0.08;
+  const mh=Math.max(...serie.map(p=>p.s))*1.08;
+  const Yp=v=>Tp+(1-(v-(pl-ppad))/((ph+ppad)-(pl-ppad)))*(Hh-Tp-B),Ym=v=>Tp+(1-v/mh)*(Hh-Tp-B);
   const X=f=>L+(x1>x0?(T(f)-x0)/(x1-x0):0.5)*(W-L-R);
-  const s=sv('svg',{viewBox:'0 0 '+W+' '+Hh,width:'100%',role:'img','aria-label':'Precio de XRP frente a monedas estimadas en los ETF de XRP'});s.style.cssText='background:#0b1020;border-radius:8px;max-width:100%;height:auto';
+  const s=sv('svg',{viewBox:'0 0 '+W+' '+Hh,width:'100%',role:'img','aria-label':'Precio de XRP frente a las monedas estimadas en los ETF de XRP, por fondo'});s.style.cssText='background:#0b1020;border-radius:8px;max-width:100%;height:auto';
+  s.append(sv('text',{x:L,y:16,fill:C.tx,'font-size':13,'font-weight':'bold'},'XRP: precio y monedas en los ETF de XRP, por fondo'));
   for(let i=0;i<=5;i++){const v=(pl-ppad)+((ph+ppad)-(pl-ppad))*i/5,y=Yp(v);s.append(sv('line',{x1:L,x2:W-R,y1:y,y2:y,stroke:C.gr,'stroke-width':1}),sv('text',{x:L-5,y:y+3,fill:C.p,'font-size':10,'text-anchor':'end'},'$'+num(v,2)));
-    const vm=(ml-mpad)+((mh+mpad)-(ml-mpad))*i/5;s.append(sv('text',{x:W-R+5,y:y+3,fill:C.m,'font-size':10},num(vm,0)))}
-  s.append(sv('text',{x:L-5,y:Tp-8,fill:C.p,'font-size':10,'text-anchor':'end'},'Precio XRP'),sv('text',{x:W-R+5,y:Tp-8,fill:C.m,'font-size':10},'M monedas'));
+    s.append(sv('text',{x:W-R+5,y:Ym(mh*i/5)+3,fill:'#5ec8ff','font-size':10},num(mh*i/5,0)))}
+  s.append(sv('text',{x:L-5,y:Tp-8,fill:C.p,'font-size':10,'text-anchor':'end'},'Precio XRP'),sv('text',{x:W-R+5,y:Tp-8,fill:'#5ec8ff','font-size':10},'M monedas'));
   const mes=[];{let d=new Date(x0);d=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth()+1,1));while(d.getTime()<=x1){mes.push(d.toISOString().slice(0,10));d=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth()+1,1))}}
   mes.forEach(f=>{const x=X(f);s.append(sv('line',{x1:x,x2:x,y1:Tp,y2:Hh-B,stroke:C.gr,'stroke-width':0.5}),sv('text',{x:x,y:Hh-B+14,fill:C.eje,'font-size':9,'text-anchor':'middle'},f.slice(5,7)+'/'+f.slice(2,4)))});
-  [['2026-06-30','13F 2T'],['2026-09-30','13F 3T']].forEach(([f,t])=>{if(T(f)>=x0&&T(f)<=x1){const x=X(f);s.append(sv('line',{x1:x,x2:x,y1:Tp,y2:Hh-B,stroke:C.eje,'stroke-width':1,'stroke-dasharray':'3 3'}),sv('text',{x:x+3,y:Tp+10,fill:C.eje,'font-size':9},t))}});
-  s.append(sv('polyline',{points:pp.map(p=>X(p[0]).toFixed(1)+','+Yp(p[1]).toFixed(1)).join(' '),fill:'none',stroke:C.p,'stroke-width':2}));
-  let d='';S.forEach((p,i)=>{const x=X(p.f).toFixed(1),y=Ym(p.v).toFixed(1);d+=(i?'L'+x+','+(Ym(S[i-1].v)).toFixed(1)+' L':'M')+x+','+y+' '});
-  const last=S[S.length-1],xe=X(px[px.length-1][0]);if(xe>X(last.f))d+='L'+xe.toFixed(1)+','+Ym(last.v).toFixed(1);
-  s.append(sv('path',{d:d,fill:'none',stroke:C.m,'stroke-width':2,'stroke-dasharray':'5 3'}));
-  S.forEach(p=>{const m=sv('rect',{x:X(p.f)-3.5,y:Ym(p.v)-3.5,width:7,height:7,fill:C.m});m.append(sv('title',{},p.f+': ≈ '+num(p.v,0)+' M de monedas en los ETF (estimación)'));s.append(m)});
-  const lg=sv('g',{});lg.append(sv('line',{x1:L,x2:L+20,y1:12,y2:12,stroke:C.p,'stroke-width':2}),sv('text',{x:L+24,y:16,fill:C.tx,'font-size':10},'Precio de XRP (diario)'),sv('line',{x1:L+170,x2:L+190,y1:12,y2:12,stroke:C.m,'stroke-width':2,'stroke-dasharray':'5 3'}),sv('text',{x:L+194,y:16,fill:C.tx,'font-size':10},'Monedas en ETF (estimación; cuadrado = cifra publicada)'));s.append(lg);
+  /* áreas apiladas: de abajo arriba en el orden de tks */
+  let base=serie.map(()=>0);
+  tks.forEach(t=>{const top=serie.map((p,i)=>base[i]+p.v[t]);
+    let d='M'+X(serie[0].f).toFixed(1)+','+Ym(base[0]).toFixed(1);serie.forEach((p,i)=>{d+=' L'+X(p.f).toFixed(1)+','+Ym(top[i]).toFixed(1)});
+    for(let i=serie.length-1;i>=0;i--)d+=' L'+X(serie[i].f).toFixed(1)+','+Ym(base[i]).toFixed(1);
+    s.append(sv('path',{d:d+' Z',fill:COL[t],'fill-opacity':0.55,stroke:COL[t],'stroke-width':0.8}));base=top});
+  /* zona sin dato nuevo (tras la última cifra de todos los fondos) más tenue */
+  const fin=tks.map(ultimo).sort().pop(),mx=tks.map(ultimo).sort()[0];
+  if(T(mx)<x1){const xa=X(mx);s.append(sv('rect',{x:xa,y:Tp,width:W-R-xa,height:Hh-Tp-B,fill:'#0b1020','fill-opacity':0.35}),sv('text',{x:W-R-4,y:Tp+12,fill:C.eje,'font-size':9,'text-anchor':'end'},'sin cifra nueva de algún fondo: se mantiene plano'))}
+  [['2026-06-30','13F 2T'],['2026-09-30','13F 3T']].forEach(([f,t])=>{if(T(f)>=x0&&T(f)<=x1){const x=X(f);s.append(sv('line',{x1:x,x2:x,y1:Tp,y2:Hh-B,stroke:C.eje,'stroke-width':1,'stroke-dasharray':'3 3'}),sv('text',{x:x+3,y:Hh-B-4,fill:C.eje,'font-size':9},t))}});
+  /* precio */
+  s.append(sv('polyline',{points:serie.map(p=>X(p.f).toFixed(1)+','+Yp(priceAt(p.f)).toFixed(1)).join(' '),fill:'none',stroke:C.p,'stroke-width':2.2}));
+  /* cifras publicadas: punto sobre el total apilado en esa fecha */
+  tks.forEach((t,ti)=>pts[t].forEach(p=>{const i=serie.findIndex(z=>z.f===p.f);if(i<0)return;let y=0;for(let j=0;j<=ti;j++)y+=serie[i].v[tks[j]];
+    const c=sv('circle',{cx:X(p.f),cy:Ym(y),r:3.2,fill:'#0b1020',stroke:COL[t],'stroke-width':1.6});c.append(sv('title',{},t+' · '+p.f+': ≈ '+num(p.m,0)+' M de monedas (cifra publicada)'));s.append(c)}));
+  const lg=sv('g',{});let lx=L;
+  tks.forEach(t=>{lg.append(sv('rect',{x:lx,y:22,width:9,height:9,fill:COL[t],'fill-opacity':0.7}),sv('text',{x:lx+12,y:30,fill:C.tx,'font-size':10},t));lx+=52});
+  lg.append(sv('line',{x1:lx+4,x2:lx+22,y1:26,y2:26,stroke:C.p,'stroke-width':2.2}),sv('text',{x:lx+26,y:30,fill:C.tx,'font-size':10},'Precio XRP'),sv('circle',{cx:lx+100,cy:26,r:3.2,fill:'#0b1020',stroke:C.tx,'stroke-width':1.5}),sv('text',{x:lx+107,y:30,fill:C.tx,'font-size':10},'cifra publicada'));s.append(lg);
   const o=el('div');o.append(el('h3',null,'Precio de XRP frente a las monedas que acumulan los ETF de XRP'));o.append(s);
-  const a=S[0],z=S[S.length-1],pa=priceAt(a.f),pz=px[px.length-1][1],dm=(z.v/a.v-1)*100,dp=(pz/pa-1)*100;
-  o.append(el('p','nota-v','HECHOS: del '+fd(a.f)+' al '+fd(z.f)+' el precio de XRP pasa de $'+num(pa,2)+' a $'+num(pz,2)+' ('+(dp>0?'+':'')+num(dp,0)+' %), y las monedas estimadas en los '+tks.length+' fondos ('+tks.join(', ')+') pasan de ≈ '+num(a.v,0)+' a ≈ '+num(z.v,0)+' millones ('+(dm>0?'+':'')+num(dm,0)+' %). Cada cuadrado es una cifra publicada (10-Q por XBRL de la SEC o web del emisor; el emisor es parte interesada); entre cuadrados se mantiene el último dato de cada fondo. Precio: Yahoo Finance (nivel S).'));
-  o.append(el('p','nota-v','CÓMO SE CALCULA: monedas ≈ acciones × NAV ÷ precio de XRP ese día, sumado por fondo (estimación propia, no un dato publicado; el NAV incluye comisiones y el desfase de hora con el precio añade error). Solo entran los fondos con serie publicada; faltan XRPI, XRPR y otros, y no hay cifras diarias de todos los fondos.'));
-  o.append(el('p','nota-v','LECTURA [ESPECULACIÓN, razonada]: si la línea azul sube o se mantiene mientras la naranja cae, es compatible con creaciones netas en la caída; no distingue entre inversores finales y creadores de mercado, y no incluye las ventas posteriores al último punto de cada fondo. Un gráfico propio no sustituye a los flujos diarios oficiales.'));
+  const a=serie[0],z=serie[serie.length-1],pa=priceAt(a.f),pz=px[px.length-1][1],dm=(z.s/a.s-1)*100,dp=(pz/pa-1)*100;
+  o.append(el('p','nota-v','HECHOS: del '+fd(a.f)+' al '+fd(z.f)+' el precio de XRP pasa de $'+num(pa,2)+' a $'+num(pz,2)+' ('+(dp>0?'+':'')+num(dp,0)+' %), y las monedas estimadas en los '+tks.length+' fondos ('+tks.join(', ')+') pasan de ≈ '+num(a.s,0)+' a ≈ '+num(z.s,0)+' millones ('+(dm>0?'+':'')+num(dm,0)+' %). Cada círculo es una cifra publicada (10-Q por XBRL de la SEC o web del emisor; el emisor es parte interesada). Precio: Yahoo Finance (nivel S).'));
+  o.append(el('p','nota-v','CÓMO SE LEE: la altura de cada color es la parte de ese fondo; el techo del apilado es el total. Entre dos cifras publicadas la línea se INTERPOLA en recta: no es el movimiento real día a día (no hay serie diaria gratuita de todos los fondos), solo une dos puntos conocidos. Así no aparecen escalones que no existieron. Monedas ≈ acciones × NAV ÷ precio de XRP ese día (estimación propia; el NAV incluye comisiones y el desfase horario añade error). Faltan XRPI, XRPR y otros fondos sin serie.'));
+  o.append(el('p','nota-v','LECTURA [ESPECULACIÓN, razonada]: si el apilado sube o se mantiene mientras el precio cae, es compatible con creaciones netas en la caída; no distingue entre inversores finales y creadores de mercado. Un gráfico propio no sustituye a los flujos diarios oficiales.'));
   return o}
 /* C366 (21-nov): gráfico SVG de NAV y participaciones indexados a 100 en el primer punto de cada fondo (serie de explorador/etf-historial.jsonl). Todo texto con textContent. */
 function etfSerieGraf(tks){
@@ -2441,12 +2511,18 @@ function etf13f(E){
   const u=F.union_xrp;if(u)c.append(el('p','nota-v','Los 7 ETF de XRP juntos: '+u.declarantes_3T+' declarantes en el 3T frente a '+u.declarantes_2T+' en el 2T ('+u.nuevos_vs_2T+' nuevos, '+u.ya_no_aparecen_vs_2T+' que ya no aparecen). '+(u.nota||'')));
   c.append(scrollX(tabla([{t:'Fondo',f:r=>r.k+' · '+r.nombre},{t:'Declarantes 3T',n:1,f:r=>nvc(r.declarantes,0)},{t:'Declarantes 2T',n:1,f:r=>nvc(r.declarantes_2T,0)},{t:'Valor declarado 3T (M$)',n:1,f:r=>r.valor_declarado_usd_miles==null?'sin dato':nvc(r.valor_declarado_usd_miles/1000,1)},{t:'Valor 2T (M$)',n:1,f:r=>r.valor_2T_usd_miles==null?'sin dato':nvc(r.valor_2T_usd_miles/1000,1)},{t:'Cambio',n:1,f:r=>(r.valor_declarado_usd_miles!=null&&r.valor_2T_usd_miles)?cambio((r.valor_declarado_usd_miles/r.valor_2T_usd_miles-1)*100,'%',0):'sin dato'},{t:'Acciones declaradas 3T',n:1,f:r=>nvc(r.acciones_declaradas,0)}],fo)));
   const dt=el('details');dt.append(el('summary',null,'Mayores declarantes por fondo (top 10, M$)'));
-  fo.filter(r=>(r.top10||[]).length).forEach(r=>{dt.append(el('h3',null,r.k+' · '+r.nombre),scrollX(tabla([{t:'Declarante',f:x=>x.declarante},{t:'CIK',f:x=>x.cik},{t:'Valor (M$)',n:1,f:x=>nvc(x.valor_usd_miles/1000,1)},{t:'Acciones',n:1,f:x=>nvc(x.acciones,0)}],r.top10)))});c.append(dt);
+  fo.filter(r=>(r.top10||[]).length).forEach(r=>{dt.append(el('h3',null,r.k+' · '+r.nombre),scrollX(tabla([{t:'Declarante (clic = ficha)',f:x=>gestoraLink(x.declarante)},{t:'CIK',f:x=>x.cik},{t:'Valor (M$)',n:1,f:x=>nvc(x.valor_usd_miles/1000,1)},{t:'Acciones',n:1,f:x=>nvc(x.acciones,0)}],r.top10)))});c.append(dt);
   const L=Object.entries(F.lecturas_edgar||{}).map(([cik,v])=>({cik,...v}));
   if(L.length){const tk=[...new Set(L.flatMap(r=>Object.keys(r.posiciones||{})))];
     c.append(el('h3',null,'Lecturas directas en EDGAR (nivel P): valor declarado por gestora y fondo (M$)'));
     c.append(el('p','nota-v','Leído el 13F-HR de cada gestora en EDGAR (infotable XML). Unidad: millones de USD (EDGAR da USD). Contrasta con 13f.info: '+L.length+' gestoras leídas, no el total.'));
-    c.append(scrollX(tabla([{t:'Gestora',f:r=>r.nombre},{t:'Presentado',f:r=>vc(r.presentado)},...tk.map(t=>({t:t+' (M$)',n:1,f:r=>(r.posiciones||{})[t]?nvc(r.posiciones[t].valor_usd/1e6,1):'—'})),{t:'Fuente',f:r=>r.url?lkx(r.url,'EDGAR ↗'):'sin dato'}],L)))}
+    const XT=['XRP','XRPZ','XRPC','GXRP','TOXR','XRPI','XRPR'],tx=r=>XT.reduce((n,t)=>n+(((r.posiciones||{})[t]||{}).valor_usd||0),0);
+    const tkx=tk.filter(t=>XT.includes(t)),tko=tk.filter(t=>!XT.includes(t));
+    const LL=[...L].sort((a,b)=>tx(b)-tx(a));
+    const sum=t=>LL.reduce((n,r)=>n+(((r.posiciones||{})[t]||{}).valor_usd||0),0);
+    LL.push({nombre:'TOTAL de estas '+L.length+' gestoras',tot:1,posiciones:Object.fromEntries(tk.map(t=>[t,{valor_usd:sum(t)}]))});
+    c.append(scrollX(tabla([{t:'Gestora (clic = ficha)',f:r=>r.tot?el('b',null,r.nombre):gestoraLink(r.nombre)},{t:'Presentado',f:r=>r.tot?'':vc(r.presentado)},{t:'TOTAL ETF de XRP (M$)',n:1,f:r=>{const b=el(r.tot?'b':'span',null,nvc(tx(r)/1e6,1));return b}},...tkx.map(t=>({t:t+' (M$)',n:1,f:r=>(r.posiciones||{})[t]?nvc(r.posiciones[t].valor_usd/1e6,1):'—'})),...tko.map(t=>({t:t+' (otro ETF, M$)',n:1,f:r=>(r.posiciones||{})[t]?nvc(r.posiciones[t].valor_usd/1e6,1):'—'})),{t:'Fuente',f:r=>r.url?lkx(r.url,'EDGAR ↗'):''}],LL)));
+    c.append(el('p','nota-v','«TOTAL ETF de XRP» suma los 7 fondos de XRP (XRP, XRPZ, XRPC, GXRP, TOXR, XRPI, XRPR) de cada gestora; las columnas de otros ETF (por ejemplo bitcoin) no entran en ese total. Solo acciones, sin opciones ni posiciones cortas. La última fila suma únicamente estas '+L.length+' gestoras, no todo el mercado.'))}
   out.push(c);return out}
 /* C343 segunda (19-nov): inicio de cotización, exención de comisión, instantáneas del 10-Q por XBRL y aviso de cobertura de flujos */
 function etfNuevos(E,sd,u){
