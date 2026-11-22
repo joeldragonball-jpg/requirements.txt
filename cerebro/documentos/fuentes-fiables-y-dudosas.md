@@ -195,3 +195,4 @@ actualizado: 2026-10-07
 - Jupiter, Bullish y DTCC hablan con producto o servicio que vender; sus cifras (460.000/39.500/3.400 M$ de RWA.xyz y DefiLlama) se citan como [S] y se recomprueban cada mes.
 - Agregadores como 13f.info y AlphaMaven sirven para localizar el 13F; la cifra se confirma en EDGAR (Goldman ya cotejado, C280).
 - BIS, FMI y S&P Global Ratings critican las stablecoins desde su propio rol (soberanía monetaria, calificación); útiles como contrapeso, pero se citan por prensa [S] hasta abrir bis.org, imf.org y spglobal.com (W06, 20-nov).
+- Larry Fink/BlackRock: dice lo que su negocio necesita (financia centros de datos y vende fondos); cifras de Aligned (40.000 M$) cuadran con prensa, la de 12.500 M$ no se localizó; citarlo como declaración [S], no como dato (V01, 22-nov).

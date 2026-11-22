@@ -175,3 +175,4 @@ actualizado: 2026-10-07
 - Cargos mal puestos (Warren «presidenta» del Banking Committee siendo *ranking member*) y fechas cruzadas (Bitwise 2031 dicho como 2035; SOL dicho como XRP) indican datos de memoria.
 - Un enlace de referido pegado a un aviso de urgencia («Binance hasta el 29-nov, moveros») mezcla publicidad con alerta: buscar el aviso oficial.
 - «Ripple borra su post del BCE»: lo borrado vinculaba a Ripple con Qivalis (37 bancos), no con el BCE; un hecho real recontado con otro sujeto (W06, 20-nov).
+- «La banca privada sueca recomienda esto» (Despeja La X, 20-nov): autoridad ajena sin nombrar banco, asesora ni fondos; la cartera es de renta variable sin cripto y el vídeo salta a los ETF de XRP/XLM; noticias de oct-2025 y oct-2026 presentadas como actuales (V01, 22-nov).

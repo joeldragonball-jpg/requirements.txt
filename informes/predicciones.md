@@ -189,6 +189,8 @@
 | 87 | DTCC añade redes en 2027 | dtcc.com | Nota que nombre una red nueva | 2027-12-31 | Abierta | Nota del 28-oct leída el 19-nov |
 | 88 | Solana a ~3.600 M tx/día | Explorador de Solana | ≥ 3.600 M de transacciones diarias | 2031-12-31 | Abierta [ESPECULACIÓN] | Supuesto de Bitwise (The Block) |
 | 89 | Barclays: colateral propio primero, clientes después | Barclays | Servicio a clientes anunciado con fecha | Sin fecha | Sin puntuar | Solo Decrypt |
+| 90 | 2026-11-20 | Banca privada sueca (no identificada), según Despeja La X | Cartera 80/20 de renta variable sobre 150.000 $ a 10 años: medio ≈ +170.000 $, bajo ≈ +34.000 $, alto ≈ 525.000 $ de valor final | 2036-11-20 | Valor de la cartera frente a esos tres escenarios (y fondos nombrados) | Abierta [ESPECULACIÓN] · Solo el vídeo; banco y fondos sin identificar |
+| 91 | 2026-10-14 | Larry Fink (BlackRock), vía CNBC y Despeja La X | Una moratoria en centros de datos llevaría a EE. UU. a una recesión | Sin fecha | Que se aplique una moratoria federal o estatal amplia y el PIB de EE. UU. caiga dos trimestres | Sin puntuar [ESPECULACIÓN] · Condicional; parte interesada |
 
 Recuento (19-nov, V01 profundo: +10 filas, 73-82, todas abiertas o sin puntuar): 82 con criterio. Recuento previo (18-nov): 72 con criterio. 13 resueltas (7, 9, 10, 15, 19, 25, 31, 44, 45, 48, 58, 60, 62): 9 acertó o en parte, 2 falló (25, 45), 2 mal planteada o mixta (9, 19). 10 sin puntuar (13, 50, 55, 56, 57, 63, 64, 67, 71, 72). Leída hoy en fuente oficial: solo #18 (sigue abierta).
 
