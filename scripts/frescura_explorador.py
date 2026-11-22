@@ -33,6 +33,15 @@ def parsea(v):
         v = str(v)
     if not isinstance(v, str):
         return None
+    s = v.strip().lower()
+    mq = re.match(r"^(?:([1-4])\s*[tq]|[tq]\s*([1-4]))\s*(?:de\s+)?(\d{4})\b", s)   # «2T 2026», «T2 2026», «3Q 2026»
+    if mq:
+        return parsea(f"{mq.group(3)}-Q{mq.group(1) or mq.group(2)}")
+    ma = re.match(r"^([a-záéíóú]{3,10})\.?[\s-]+(?:de\s+)?(\d{4})\b", s)   # «oct-2026», «oct 2026», «octubre de 2026»
+    if ma:
+        for nombre, n in MESES.items():
+            if nombre == ma.group(1) or (len(ma.group(1)) == 3 and nombre.startswith(ma.group(1))):
+                return parsea(f"{ma.group(2)}-{n:02d}")
     mm = re.match(r"^([a-záéíóú]+) (\d{4})", v.strip().lower())   # «enero 2026 (revisión agosto 2026)» -> fin de mes
     if mm and mm.group(1) in MESES:
         a, mes = int(mm.group(2)), MESES[mm.group(1)]
