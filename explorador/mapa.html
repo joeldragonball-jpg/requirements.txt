@@ -5,7 +5,8 @@
 *{box-sizing:border-box;scrollbar-width:thin;scrollbar-color:rgba(226,232,240,.22) transparent}
 *::-webkit-scrollbar{width:3px;height:3px}*::-webkit-scrollbar-track{background:transparent}*::-webkit-scrollbar-thumb{background:rgba(226,232,240,.22);border-radius:2px}*::-webkit-scrollbar-thumb:hover{background:rgba(241,213,138,.7)}
 html,body{margin:0;overflow:hidden;background:transparent;color:var(--texto);font:clamp(12.5px,.8vw + 8px,14px)/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-#pest{display:flex;flex-wrap:wrap;gap:4px;padding:4px 8px 0}
+#pest{display:flex;flex-wrap:nowrap;gap:4px;padding:4px 8px 0;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scroll-behavior:smooth}
+#pest button{flex:0 0 auto;white-space:nowrap}
 #pest button{font:inherit;font-size:clamp(11.5px,.5vw + 8px,13px);color:var(--suave);background:rgba(15,23,42,.8);border:1px solid var(--linea);border-bottom:none;border-radius:8px 8px 0 0;padding:clamp(4px,.5vw,6px) clamp(8px,1vw,13px);cursor:pointer;transition:.15s}
 #pest button:hover{color:#fff;border-color:var(--oro)}
 #pest button.on{background:var(--oro);color:#1a1405;font-weight:600;border-color:var(--oro)}
@@ -44,6 +45,7 @@ function tamano(){
 function irVista(id){
   actual = id;
   pest.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v === id));
+  try { const on = pest.querySelector('button.on'); if (on) on.scrollIntoView({inline: 'nearest', block: 'nearest'}); } catch (e) {}
   const clave = 'vistas';
   for (const k in MARCOS) MARCOS[k][0].hidden = k !== clave;
   tamano();
