@@ -2123,14 +2123,62 @@ function pVoces(){
   c.append(ls);s.append(c);
 }
 
+/* 22-nov · Bolsas: índices con rentabilidades (explorador/bolsas.json, scripts/leer_bolsas.py), OPV y altas del S&P 500 */
+function nBolsas(){
+  const B=D.bolsas,w=el('div'),I=B.indices||[];
+  const val=I.filter(x=>x.c1d!=null&&x.grupo!=='Riesgo');
+  const sube=val.filter(x=>x.c1d>0).length,baja=val.filter(x=>x.c1d<0).length,ord=[...val].sort((a,b)=>b.c1d-a.c1d),mej=ord[0],peo=ord[ord.length-1];
+  const ytd=val.filter(x=>x.ytd!=null),pos=ytd.filter(x=>x.ytd>0).length;
+  const vix=I.find(x=>/^VIX/.test(x.nombre));
+  w.append(kpis([[sube+' ▲ / '+baja+' ▼','Índices que suben y bajan en su último cierre ('+val.length+')'],mej?[mej.nombre,'Mejor del día',cambio(mej.c1d,'%',2)]:null,peo?[peo.nombre,'Peor del día',cambio(peo.c1d,'%',2)]:null,ytd.length?[pos+' de '+ytd.length,'Índices en positivo en el año']:null,vix?[num(vix.valor,1),'VIX (volatilidad esperada del S&P 500)',cambio(vix.c1d,'%',1)]:null].filter(Boolean)));
+  w.append(el('p','nota-v','Cada fila es el último cierre disponible de ese índice (las fechas pueden diferir por husos horarios y festivos). Rentabilidades en moneda local y sin dividendos. «Rango 52 s.» = dónde está el precio entre el mínimo (0) y el máximo (100) de los últimos 12 meses; «Desde el máximo» = caída desde ese máximo.'));
+  const grupos=[...new Set(I.map(x=>x.grupo))];
+  for(const g of grupos){
+    const filas=I.filter(x=>x.grupo===g);
+    w.append(el('h3',null,g));
+    w.append(scrollX(tabla([
+      {t:'Índice',f:r=>{const s=el('span','seg-v');s.append(el('b',null,r.nombre),el('small',null,r.simbolo+' · '+r.moneda));return s}},
+      {t:'Valor',n:1,f:r=>num(r.valor,r.valor<100?2:0)},{t:'Cierre',f:r=>r.fecha||'—'},
+      {t:'1 día',n:1,f:r=>calor(r.c1d,5,2)},{t:'1 semana',n:1,f:r=>calor(r.c1s,10,2)},{t:'1 mes',n:1,f:r=>calor(r.c1m,15,1)},{t:'3 meses',n:1,f:r=>calor(r.c3m,25,1)},{t:'En el año',n:1,f:r=>calor(r.ytd,40,1)},{t:'12 meses',n:1,f:r=>calor(r.c1a,50,1)},
+      {t:'Rango 52 s.',f:r=>{if(r.pos52==null)return '—';const s=el('span');s.append(barra(r.pos52,r.pos52<25?'var(--bad,#c0504d)':r.pos52>75?'var(--ok,#4f9d69)':'#8a97ab'),document.createTextNode(' '+r.pos52));s.title='Mínimo '+num(r.min52,2)+' · máximo '+num(r.max52,2);return s}},
+      {t:'Desde el máximo',n:1,f:r=>r.desde_max==null?'—':cambio(r.desde_max,'%',1)},
+      {t:'Últimos ~60 cierres',f:r=>r.serie?spark(r.serie,110,24,r.serie[r.serie.length-1]>=r.serie[0]?'#2fcf85':'#e0605a'):'—'}],filas)))}
+  for(const n of (B.notas||[]))w.append(el('p','nota-v',n));
+  if((B.fallos||[]).length)w.append(el('p','nota-v','Fallos de lectura: '+B.fallos.join('; ')));
+  return w}
+function nOpv(){
+  const B=D.bolsas,O=B.ipos||{},w=el('div');
+  const rec=O.recientes||[],con=rec.filter(x=>x.retorno_pct!=null);
+  const mej=[...con].sort((a,b)=>b.retorno_pct-a.retorno_pct)[0],peo=[...con].sort((a,b)=>a.retorno_pct-b.retorno_pct)[0],ar=con.filter(x=>x.retorno_pct>0).length;
+  w.append(kpis([[rec.length+'','OPV recientes en la lista'],con.length?[ar+' de '+con.length,'Por encima de su precio de salida']:null,mej?[mej.ticker,'Mejor desde su salida',cambio(mej.retorno_pct,'%',1)]:null,peo?[peo.ticker,'Peor desde su salida',cambio(peo.retorno_pct,'%',1)]:null].filter(Boolean)));
+  w.append(el('h3',null,'Recién salidas a bolsa (precio de colocación → precio actual)'));
+  w.append(scrollX(tabla([{t:'Empresa',f:r=>{const s=el('span','seg-v');s.append(el('b',null,r.ticker),el('small',null,r.empresa));return s}},{t:'Fecha de la OPV',f:r=>r.fecha},{t:'Tamaño (M$)',n:1,f:r=>r.tamano_musd==null?'—':miles(num(r.tamano_musd,0))},{t:'Precio actual ($)',n:1,f:r=>r.precio==null?'—':num(r.precio,2)},{t:'Desde la salida',n:1,f:r=>calor(r.retorno_pct,60,1)}],rec)));
+  const pro=O.proximas||[];
+  w.append(el('h3',null,'Próximas (fecha prevista no incluida: la fuente la reserva a suscriptores)'));
+  if(!pro.length)w.append(el('p','nota-v','Sin salidas próximas en la lista de esta semana.'));
+  else w.append(scrollX(tabla([{t:'Empresa',f:r=>{const s=el('span','seg-v');s.append(el('b',null,r.ticker),el('small',null,r.empresa));return s}},{t:'Rango de precio',f:r=>r.rango||'—'},{t:'Importe (M$)',n:1,f:r=>r.importe_musd==null?'—':num(r.importe_musd,0)},{t:'Colocador',f:r=>r.colocador||'—'}],pro)));
+  w.append(el('p','nota-v','«M$» = millones de dólares. Es una lista de colocaciones en EE. UU.; una OPV con éxito el primer día no predice su evolución posterior. Informativo, no es recomendación. Pendiente: OPV de Europa y Asia (Euronext, Londres, Hong Kong) y bolsas españolas.'));
+  return w}
+function nAltas(){
+  const B=D.bolsas,w=el('div'),A=B.sp500_altas||[];
+  w.append(el('p','nota-v','Altas recientes en el S&P 500 según la «fecha de alta» de la lista pública de componentes (Wikipedia, nivel S). La fuente abierta no recoge de forma fiable quién ha salido ni los cambios del MSCI o del Nasdaq-100: queda pendiente [VERIFICAR] con el comunicado de S&P Dow Jones Indices.'));
+  w.append(scrollX(tabla([{t:'Empresa',f:r=>{const s=el('span','seg-v');s.append(el('b',null,r.ticker),el('small',null,r.empresa));return s}},{t:'Fecha de alta',f:r=>r.fecha_alta}],A)));
+  return w}
 /* ---------- 22-nov · Fondos y bolsa: pestaña propia con los datos de ETF, 13F, bolsas, cripto y seguimiento que antes estaban dentro de Capas › Tokenización y fondos ---------- */
 let fbSub='etf';
 function pFondos(){
   const s=$('v-fondos');s.textContent='';
   const cap=D.capas.find(c=>c.id==='fondos');
   const paneles=(P?panelesGrupo('tokens'):[]).filter(p=>p.capa==='fondos');
-  const mapa=[['etf','Fondos cripto (ETF)',/^Fondos cripto/],['tenedores','Quién los tiene (13F)',/^Quién tiene/],['bolsas','Bolsas e índices',/^Bolsas/],['seg','Mi seguimiento',/^Seguimiento/],['cripto','BTC, ETH, XRP y XLM',/^BTC, ETH/]];
-  const sec=mapa.map(([id,nom,re])=>({id,nom,p:paneles.find(x=>re.test(x.tit))})).filter(x=>x.p);
+  const B=D.bolsas;
+  const pb=B?{nivel:'S',t:'Yahoo Finance, Renaissance Capital y Wikipedia · leído '+(B.leido||'')}:null;
+  const sec=[];
+  const pn=(id,nom,re)=>{const p=paneles.find(x=>re.test(x.tit));if(p)sec.push({id,nom,p})};
+  pn('etf','Fondos cripto (ETF)',/^Fondos cripto/);pn('tenedores','Quién los tiene (13F)',/^Quién tiene/);
+  if(B&&(B.indices||[]).length)sec.push({id:'indices',nom:'Índices y rentabilidades',fn:nBolsas,pie:pb,tit:'Índices del mundo: rentabilidad a 1 día, 1 semana, 1 mes, 3 meses, en el año y a 12 meses'});
+  if(B&&B.ipos&&(B.ipos.recientes||[]).length)sec.push({id:'opv',nom:'Salidas a bolsa (OPV)',fn:nOpv,pie:pb,tit:'Salidas a bolsa: las más recientes y las próximas'});
+  if(B&&(B.sp500_altas||[]).length)sec.push({id:'altas',nom:'Entradas en el S&P 500',fn:nAltas,pie:pb,tit:'Empresas que han entrado en el S&P 500 en los últimos meses'});
+  pn('seg','Mi seguimiento',/^Seguimiento/);
   const hechos=D.movimientos.filter(m=>m.capa==='fondos'&&paisOk(m)).sort((a,b)=>a.fecha<b.fecha?1:-1);
   sec.push({id:'hechos',nom:'Hechos y novedades ('+hechos.length+')'});
   if(!sec.some(x=>x.id===fbSub))fbSub=sec[0].id;
@@ -2147,6 +2195,7 @@ function pFondos(){
   const cont=el('div','caja');
   const act=sec.find(x=>x.id===fbSub);
   if(act.p){const p=act.p;cont.append(el('h2',null,p.tit));cont.append(bloque(p.tit,null,p.pie,p.fn(),true));cont.querySelector('details > summary').style.display='none'}
+  else if(act.fn){cont.append(el('h2',null,act.tit));cont.append(act.fn());if(act.pie){const q=el('div','nota-v');q.append(nivelBadge(act.pie.nivel),document.createTextNode(' '+act.pie.t));cont.append(q)}}
   else{
     cont.append(el('h2',null,'Hechos y novedades de la capa «Fondos, ETF y tesorerías»'));
     if(!hechos.length)cont.append(el('p','nota-v','Sin movimientos con el filtro de país actual.'));
