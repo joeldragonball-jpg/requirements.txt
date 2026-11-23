@@ -53,8 +53,8 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 
 ## Sesiones diarias (apertura y cierre)
 - 2026-11-23 · Revisión semanal del cerebro · 23/11/2026 (`informes/2026-11-23-revision.md`): Informe automático. No modifica nada del cerebro : tú decides qué corregir. Cada hallazgo lleva citas literales comprobadas contra los archivos.
+- 2026-11-23 · Informe de CIERRE — 2026-11-23 (lun) (`informes/2026-11-23-cierre.md`): Bloque: cierre de América (Wall Street, Tesoro, cripto del día). Precios leídos a las 21:09 UTC con scripts/precios vivos.py r00 cierre [S,…
 - 2026-11-23 · Informe de APERTURA — 2026-11-23 (lun) (`informes/2026-11-23-apertura.md`): Bloque: lunes; precios leídos a las 07:07 UTC con scripts/precios vivos.py r00 apertura [S, Yahoo/CoinGecko]. Rutina desatendida, versión corta. Sin…
-- 2026-11-22 · Informe de CIERRE — 2026-11-22 (dom) (`informes/2026-11-22-cierre.md`): Bloque: domingo; Wall Street, Tesoro y materias primas cerrados (sin sesión); solo cripto 24/7. Precios leídos a las 21:11 UTC con scripts/precios…
 
 ## Otros
 - 2026-11-22 · C363d — El Salvador y Argentina: celdas de regulación (22-nov-2026) (`informes/research/2026-11-22-C363d-sv-ar.md`): Sin API de Anthropic, sin commit. Solo se editaron celdas sv y ar de explorador/regulacion.json .
