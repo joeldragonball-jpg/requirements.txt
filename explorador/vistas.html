@@ -2605,19 +2605,24 @@ function etf13f(E){
   {const gr=el('div');gr.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(440px,32%)),1fr));gap:8px 16px;align-items:start';
    fo.filter(r=>(r.top10||[]).length).forEach(r=>{const cj=el('div');cj.style.minWidth='0';const t3=el('h3',null,r.k+' · '+r.nombre);t3.style.margin='6px 0 2px';cj.append(t3,(tabla([{t:'Declarante (clic = ficha)',f:x=>gestoraLink(x.declarante)},{t:'CIK',f:x=>x.cik},{t:'Valor (M$)',n:1,f:x=>nvc(x.valor_usd_miles/1000,1)},{t:'Acciones',n:1,f:x=>nvc(x.acciones,0)}],r.top10)));gr.append(cj)});
    dt.append(gr)}c.append(dt);
-  const L=Object.entries(F.lecturas_edgar||{}).map(([cik,v])=>({cik,...v}));
+  const L=Object.entries(F.lecturas_edgar||{}).map(([cik,v])=>({cik,...v})).filter(r=>r.nombre&&r.posiciones);
   if(L.length){const tk=[...new Set(L.flatMap(r=>Object.keys(r.posiciones||{})))];
     c.append(el('h3',null,'Lecturas directas en EDGAR (nivel P): valor declarado por gestora y fondo (M$)'));
-    c.append(el('p','nota-v','Leído el 13F-HR de cada gestora en EDGAR (infotable XML). Unidad: millones de USD (EDGAR da USD). Contrasta con 13f.info: '+L.length+' gestoras leídas, no el total.'));
+    c.append(el('p','nota-v','Leído el 13F-HR de cada gestora en EDGAR (infotable XML). Unidad: millones de USD (EDGAR da USD). Contrasta con 13f.info: '+L.length+' gestoras leídas, no el total. «XRP del 2T a precio 3T» = las acciones que tenía a 30-jun (13F del 2T, leído también en EDGAR) valoradas al precio de 30-sep; así «Cambio 2T→3T» muestra si compró (verde ▲) o vendió (rojo ▼) sin mezclar la subida o bajada del precio.'));
     const XT=['XRP','XRPZ','XRPC','GXRP','TOXR','XRPI','XRPR'],tx=r=>XT.reduce((n,t)=>n+(((r.posiciones||{})[t]||{}).valor_usd||0),0);
     const tkx=tk.filter(t=>XT.includes(t)),tko=tk.filter(t=>!XT.includes(t));
     const LL=[...L].sort((a,b)=>tx(b)-tx(a));
     const sum=t=>LL.reduce((n,r)=>n+(((r.posiciones||{})[t]||{}).valor_usd||0),0);
     LL.push({nombre:'TOTAL de estas '+L.length+' gestoras',tot:1,posiciones:Object.fromEntries(tk.map(t=>[t,{valor_usd:sum(t)}]))});
+    /* 2T (30-jun) leído también en EDGAR: acciones del 2T valoradas al precio del 3T, para medir compra/venta sin efecto precio */
+    const E2=((D.etf_13f_2t_edgar||{}).gestoras)||{},pr3=t=>{const f=(F.fondos||{})[t];return f&&f.acciones_declaradas?f.valor_declarado_usd_miles*1000/f.acciones_declaradas:null};
+    const x2=r=>{const g=E2[r.cik];if(!g||!g.posiciones)return null;let n=0;XT.forEach(t=>{const p=g.posiciones[t];if(p&&pr3(t))n+=p.acciones*pr3(t)});return n};
+    const cx=r=>{if(r.tot){let a=0,b=0,ok=0;LL.forEach(z=>{if(z.tot)return;const v=x2(z);if(v!=null){a+=tx(z);b+=v;ok++}});return ok?cambio((a/b-1)*100,'%',0):'—'}const v=x2(r);if(v==null)return '—';if(v===0)return 'nuevo';return cambio((tx(r)/v-1)*100,'%',0)};
+    const c2=r=>{if(r.tot){let b=0;LL.forEach(z=>{if(!z.tot){const v=x2(z);if(v!=null)b+=v}});return el('b',null,nvc(b/1e6,1)+' M$')}const v=x2(r);return v==null?'—':nvc(v/1e6,1)+' M$'};
     const fm=t=>r=>(r.posiciones||{})[t]?nvc(r.posiciones[t].valor_usd/1e6,1):'—';
     const rep=(ts)=>r=>{const o=ts.filter(t=>(r.posiciones||{})[t]&&r.posiciones[t].valor_usd).map(t=>t+' '+nvc(r.posiciones[t].valor_usd/1e6,1)+' M$');return o.length?o.join(' · '):'—'};
-    if(window.innerWidth<1300)c.append(t13(tabla([{t:'Gestora (clic = ficha)',f:r=>r.tot?el('b',null,r.nombre):gestoraLink(r.nombre)},{t:'TOTAL XRP (M$)',n:1,f:r=>el(r.tot?'b':'span',null,nvc(tx(r)/1e6,1))},{t:'Reparto por fondo de XRP',f:rep(tkx)},{t:'Otros ETF',f:rep(tko)},{t:'Fuente',f:r=>r.url?lkx(r.url,'EDGAR ↗'):''}],LL)));
-    else c.append(scrollX(tabla([{t:'Gestora (clic = ficha)',f:r=>r.tot?el('b',null,r.nombre):gestoraLink(r.nombre)},{t:'Presentado',f:r=>r.tot?'':vc(r.presentado)},{t:'TOTAL ETF de XRP (M$)',n:1,f:r=>{const b=el(r.tot?'b':'span',null,nvc(tx(r)/1e6,1));return b}},...tkx.map(t=>({t:t+' (M$)',n:1,f:fm(t)})),...tko.map(t=>({t:t+' (otro ETF, M$)',n:1,f:fm(t)})),{t:'Fuente',f:r=>r.url?lkx(r.url,'EDGAR ↗'):''}],LL)));
+    if(window.innerWidth<1300)c.append(t13(tabla([{t:'Gestora (clic = ficha)',f:r=>r.tot?el('b',null,r.nombre):gestoraLink(r.nombre)},{t:'TOTAL XRP (M$)',n:1,f:r=>el(r.tot?'b':'span',null,nvc(tx(r)/1e6,1))},{t:'XRP del 2T a precio 3T (M$)',n:1,f:c2},{t:'Cambio 2T→3T',n:1,f:cx},{t:'Reparto por fondo de XRP',f:rep(tkx)},{t:'Otros ETF',f:rep(tko)},{t:'Fuente',f:r=>r.url?lkx(r.url,'EDGAR ↗'):''}],LL)));
+    else c.append(scrollX(tabla([{t:'Gestora (clic = ficha)',f:r=>r.tot?el('b',null,r.nombre):gestoraLink(r.nombre)},{t:'Presentado',f:r=>r.tot?'':vc(r.presentado)},{t:'TOTAL ETF de XRP (M$)',n:1,f:r=>{const b=el(r.tot?'b':'span',null,nvc(tx(r)/1e6,1));return b}},{t:'XRP del 2T a precio 3T (M$)',n:1,f:c2},{t:'Cambio 2T→3T',n:1,f:cx},...tkx.map(t=>({t:t+' (M$)',n:1,f:fm(t)})),...tko.map(t=>({t:t+' (otro ETF, M$)',n:1,f:fm(t)})),{t:'Fuente',f:r=>r.url?lkx(r.url,'EDGAR ↗'):''}],LL)));
     c.append(el('p','nota-v','«TOTAL ETF de XRP» suma los 7 fondos de XRP (XRP, XRPZ, XRPC, GXRP, TOXR, XRPI, XRPR) de cada gestora; las columnas de otros ETF (por ejemplo bitcoin) no entran en ese total. Solo acciones, sin opciones ni posiciones cortas. La última fila suma únicamente estas '+L.length+' gestoras, no todo el mercado.'))}
   out.push(c);return out}
 /* C343 segunda (19-nov): inicio de cotización, exención de comisión, instantáneas del 10-Q por XBRL y aviso de cobertura de flujos */
