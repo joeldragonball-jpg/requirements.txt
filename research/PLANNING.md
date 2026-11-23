@@ -1,18 +1,18 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-22 22:10 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-23 07:06 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** Gemini Noticias XRP / XLM de las últimas 24 h
+**Hoy (máx. 3):** R00 Apertura del día · W01 Tipos de interés · Gemini Noticias XRP / XLM de las últimas 24 h
 **Periódicas (próxima):** W01 11-23 · W02 11-24 · W08 11-25 · W04 11-26 · W05 11-26 · W06 11-27 · W09 11-27 · W10 11-28 · W03 12-02 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (49):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: 17-nov: 20 movimientos volcados a datos.json (305) · C42 falta: 18-nov 3.ª: ESMA, SFC y MAS leídos; VARA parcial.  · C58 falta: 18-nov: Rusia a P (Duma 450), India Lok Sabha 540/ · C59 falta: 17-nov: salario mínimo y fichas añadidos a indicad · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
 **Vigiladas (11, sin cerrar; las revisa W05 o W08):** C230 (11-25) · C245 (11-25) · C267 (11-25) · C275 (11-25) · C331 (11-25) · C61 (11-25) · C261 (11-26) · C340 (11-26)
 **Hechas en 7 días (2):** C355, C360
 
-## Hoy (dom 2026-11-22): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ✓ · racha 15 días
-- Sin rutina fija hoy: elige por prioridad en las secciones de abajo.
+## Hoy (lun 2026-11-23): solo lo casi obligatorio
+- R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 15 días
+- Fija de hoy (lunes: semana de bancos centrales): **W01 Tipos de interés** (~2 %) · último 2026-11-16 · `research/prompts/W01-*.md`
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
 - Gemini del día: toca **Noticias XRP / XLM de las últimas 24 h** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
@@ -22,7 +22,14 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 - Aviso de límite (2026-10-31): Joel propone probar 2 Deep Research al dia (lleva ~7 % semanal con Pro alto). Se prueba unos dias; si Gemini avisa de limite, vuelta a 1. Anotar en sesiones cada lanzamiento y si hubo aviso.
 
 ## Rutinas W: lo que falta este periodo (sin día fijo; se hacen cuando haya hueco, de más atrasada a menos)
-Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
+- W01 · Tipos de interés · ~2 % · cada lunes · último 2026-11-16 · `research/prompts/W01-*.md`
+- W02 · Deuda y subastas · ~2 % · cada martes · último 2026-11-17 · `research/prompts/W02-*.md`
+- W05 · Verificación por lotes · ~3 % · cada jueves · último 2026-11-18 · `research/prompts/W05-*.md`
+- W03 · Países (huecos del radar) · ~4 % · cada miércoles · último 2026-11-20 · `research/prompts/W03-*.md`
+- W06 · Voces y predicciones · ~3 % · cada viernes · último 2026-11-20 · `research/prompts/W06-*.md`
+- W09 · Resumen semanal · ~1,5 % · cada viernes · último 2026-11-20 · `research/prompts/W09-*.md`
+- W10 · Energía y geopolítica · ~2 % · fin de semana · último 2026-11-21 · `research/prompts/W10-*.md`
+Hechas en este periodo: W04, W07, W08
 
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**
@@ -110,39 +117,35 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 
 ## Auditorías abiertas
-- A1 (Media): Abierto: voces.json lo está editando otra sesión (W06); propuesta: v002→cumplido con la nota del 28-oct; v062→
-- A2 (Media): Abierto: propuesta, mostrar «P + novedades S» o añadir url a HK ETF
-- A3 (Media): Parcial: antes faltaban 23. Abierto: 9 celdas
-- A4 (Baja): Abierto
-- A5 (Media): Abierto: propuesta, 2-3 canales o analistas críticos o neutrales en el próximo lote de vídeos
-- A7 (Media): Abierto
-- A8 (Baja): Abierto solo v062
-- A9 (Baja): Cerrado (W07)
+- T4 (Baja): Omisiones de fuentes: BdE en Bonos, BoE en Deuda, cifras manuales en Liquidez e Indicadores
+- T7 (Baja): Hueco jun-2026 en la API del BCE, causa sin explicar [VERIFICAR]
+- T8 (Baja): «+3» de la Cámara se mide desde 2024 (215 D), no desde hoy [VERIFICAR]
 - Auditoría mensual W08: última semana del mes (miércoles)
 
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
 - ninguna anotada
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [media] 2026-10-25 (28 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
-- [media] 2026-10-25 (28 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
-- [media] 2026-10-25 (28 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
-- [media] 2026-10-25 (28 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
-- [media] 2026-10-25 (28 d) · [VERIFICAR] Consulta DGT V0648-24 leída en petete
-- [media] 2026-10-25 (28 d) · [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov)
-- [media] 2026-10-25 (28 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov
-- [media] 2026-10-25 (28 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
-- … y 54 más en el Seguimiento
+- [alta] 2026-11-20 (3 d) · Nuevo paquete de sanciones de la UE contra Rusia: bancos, cripto y flota fantasma.
+- [alta] 2026-11-21 (2 d) · Dos petroleros impactados por proyectiles sin identificar en el Estrecho de Ormuz.
+- [alta] 2026-11-21 (2 d) · Cae el crudo que pasa por Ormuz mientras aumentan los ataques iraníes.
+- [alta] 2026-11-21 (2 d) · Bruselas da dos meses a España para aplicar DAC8 y abre expediente por MiCA.
+- [alta] 2026-11-22 (1 d) · Los ataques iraníes en Ormuz alcanzan su nivel más alto desde que empezó el conflicto.
+- [media] 2026-10-25 (29 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
+- [media] 2026-10-25 (29 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
+- [media] 2026-10-25 (29 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
+- … y 63 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (24) → W03 · Se revisan con la rutina de países
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (1) → W03 · ZA/politica
 - 🔴 Voces: Voces sin confirmar (55) → W06 · 27 llevan más de 14 días
-- 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (40) → rutina de cada tema (ver explorador/frescura.json) · verdes 44, amarillos 30, rojos 10, grises 0. Rojos: bancos-eba, calificaciones, 
+- 🔴 Predicciones: Vencidas sin resultado (1) → W06 · #80
+- 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (50) → rutina de cada tema (ver explorador/frescura.json) · verdes 34, amarillos 40, rojos 10, grises 0. Rojos: bancos-eba, calificaciones, 
 - 🟡 Radar regulatorio: Celdas sin dato (12) → W03 · Más huecos: IR 2, AR 2, SV 2, AE 1, BRICS 1
 
 ## Bots con problema
-- ninguno
+- Noticias con IA, Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-13 · AIE: informe mensual del mercado petrolero (noviembre) (medio) → ✓ revisado (hecho)
