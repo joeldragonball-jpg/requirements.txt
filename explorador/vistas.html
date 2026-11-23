@@ -521,12 +521,12 @@ function tabla(cols,filas){
   const t=el('table');const h=el('tr');const ancha=cols.length>6;
   const tips=ancha?cols.filter(c=>c.t==='Nota'):[],vis=cols.filter(c=>!tips.includes(c));
   /* 22-nov: la unidad va en CADA celda (145,3 M$), no solo en la cabecera: si el título trae «(M$)», se quita de él y se añade a cada número */
-  const UM=/\s*\((?:[^()]*, )?M\$\)/,um=new Set(vis.filter(c=>UM.test(String(c.t))));
+  const UM=/\s*\((?:[^()]*, )?(M\$|M€|M XRP)\)/,um=new Map(vis.map(c=>[c,UM.exec(String(c.t))]).filter(x=>x[1]).map(x=>[x[0],x[1][1]]));
   for(const c of vis)h.append(el('th',c.n?'n':'',um.has(c)?String(c.t).replace(UM,''):c.t));t.append(h);
   if(tips.length)h.firstChild.title='Las filas con ⓘ tienen una nota: pasa el ratón por encima';
   for(const f of filas){const r=el('tr');
     for(const c of vis){const td=el('td',c.n?'n':'');const v=c.f?c.f(f):f[c.k];
-      if(v instanceof Node){td.append(v);if(um.has(c)&&/^[-+]?[\d.,]+$/.test(v.textContent.trim()))v.append(document.createTextNode(' M$'))}else{let tx=v==null?'—':String(v);if(um.has(c)&&/^[-+]?[\d.,]+$/.test(tx.trim()))tx+=' M$';
+      if(v instanceof Node){td.append(v);if(um.has(c)&&/^[-+]?[\d.,]+$/.test(v.textContent.trim()))v.append(document.createTextNode(' '+um.get(c)))}else{let tx=v==null?'—':String(v);if(um.has(c)&&/^[-+]?[\d.,]+$/.test(tx.trim()))tx+=' '+um.get(c);
         if(ancha&&tx.length>120){td.textContent=tx.slice(0,tx.lastIndexOf(' ',100)>60?tx.lastIndexOf(' ',100):100)+'…';td.title=tx;td.classList.add('recorta')}else td.textContent=tx}
       r.append(td)}
     if(tips.length){const nt=tips.map(c=>{const v=c.f?c.f(f):f[c.k];return v instanceof Node?v.textContent:v}).filter(x=>x&&String(x).trim()).join(' · ');
