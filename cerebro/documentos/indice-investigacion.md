@@ -1,7 +1,7 @@
 ---
 tema: Índice de la investigación (autogenerado)
 etiquetas: [indice, informes, research]
-actualizado: 2026-11-22
+actualizado: 2026-11-23
 ---
 # Índice de la investigación
 
@@ -37,9 +37,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-16 · W02 · Deuda, subastas y calificaciones (16-nov-2026) (`informes/research/2026-11-16-W02-deuda.md`): Cubre desde el informe del 10 nov. Tarea de la cola: D02 (Bund) , desbloqueada.
 
 ## Macro y tipos
+- 2026-11-23 · W01 · Tipos de interés — lunes 2026-11-23 (`informes/research/2026-11-23-W01-tipos.md`): Rutina desatendida, sesión corta. Fuentes: panel tipos vivos (leído solo, 23 nov 07:01 UTC [P]) y prensa/búsqueda [S]. Los sitios oficiales…
 - 2026-11-20 · C229-C230 · España vivienda, deuda autonómica y pack macro (20-nov-2026) (`informes/research/2026-11-20-C229-C230-espana-vivienda-macro.md`): Los dos JSON ya estaban leídos el 18 nov. Hoy solo se añade lo publicado después y se confirma lo demás.
 - 2026-11-19 · C268 · Tipos de activo por red: comprobación del 19-nov-2026 (`informes/research/2026-11-19-C268-tipos-activo.md`): Resultado: la tarea ya estaba implementada en sesiones anteriores (informes 2026 11 14 C268, 2026 11 15 C268 C271 y 2026 11 18 C268). En esta pasada…
-- 2026-11-18 · Macro de España en la Órbita y el móvil · 18-nov-2026 (`informes/research/2026-11-18-macro-espana-vistas.md`): Solo vistas y código; no se tocó ningún dato ( espana macro.json queda igual). Sin IA, sin API, sin privado/ , sin commit ni push. Sin…
 
 ## Cripto y ETF
 - 2026-11-21 · C366 (21-nov-2026): gráfico de serie de ETF de XRP en la Órbita (`informes/research/2026-11-21-C366-grafico-etf.md`): explorador.py : incrusta explorador/etf historial.jsonl como D.etf historial = {ticker: [{f, a, n}]} (solo fecha, acciones y NAV, ordenado por fecha;…
@@ -52,9 +52,9 @@ Por tema, los 3 informes más recientes (fecha · título · ruta · una frase d
 - 2026-11-21 · Regulación cripto y tokenización: pasada de verificación (21-nov-2026) (`informes/research/2026-11-21-regulacion-tokenizacion-deep.md`): Alcance real: pasada corta (no el barrido completo de 25 jurisdicciones y actores). Se releyeron en fuente oficial los puntos de EE. UU., Hong Kong y…
 
 ## Sesiones diarias (apertura y cierre)
+- 2026-11-23 · Revisión semanal del cerebro · 23/11/2026 (`informes/2026-11-23-revision.md`): Informe automático. No modifica nada del cerebro : tú decides qué corregir. Cada hallazgo lleva citas literales comprobadas contra los archivos.
+- 2026-11-23 · Informe de APERTURA — 2026-11-23 (lun) (`informes/2026-11-23-apertura.md`): Bloque: lunes; precios leídos a las 07:07 UTC con scripts/precios vivos.py r00 apertura [S, Yahoo/CoinGecko]. Rutina desatendida, versión corta. Sin…
 - 2026-11-22 · Informe de CIERRE — 2026-11-22 (dom) (`informes/2026-11-22-cierre.md`): Bloque: domingo; Wall Street, Tesoro y materias primas cerrados (sin sesión); solo cripto 24/7. Precios leídos a las 21:11 UTC con scripts/precios…
-- 2026-11-22 · Informe de APERTURA — 2026-11-22 (dom) (`informes/2026-11-22-apertura.md`): Bloque: domingo; Asia, Europa y Wall Street cerrados (sin sesión). Solo cripto 24/7. Precios leídos a las 07:09 UTC con scripts/precios vivos.py r00…
-- 2026-11-21 · Informe de CIERRE — 2026-11-21 (sáb) (`informes/2026-11-21-cierre.md`): Bloque: sábado, Wall Street, Tesoro y materias primas cerrados; solo cripto 24/7. Precios leídos a las 21:10 UTC con scripts/precios vivos.py r00…
 
 ## Otros
 - 2026-11-22 · C363d — El Salvador y Argentina: celdas de regulación (22-nov-2026) (`informes/research/2026-11-22-C363d-sv-ar.md`): Sin API de Anthropic, sin commit. Solo se editaron celdas sv y ar de explorador/regulacion.json .
