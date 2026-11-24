@@ -1,0 +1,200 @@
+{
+  "version": 1,
+  "aviso": "Cumbres y reuniones de líderes con impacto en mercado: qué se firmó (texto literal oficial), qué se dijo (declaraciones con fecha y fuente), qué NO hay, y cómo reaccionaron los precios. Una declaración es un hecho comprobable (alguien dijo algo); no prueba que sea cierto ni que se vaya a cumplir. Informativo: no es recomendación de compra ni de venta.",
+  "niveles": {
+    "P": ["Texto oficial", "#3fb68b", "Documento publicado por los firmantes o su agencia oficial (aquí: Xinhua; el Kremlin también lo difundió). Es primaria, pero la agencia es de un firmante: contrastar con medios independientes."],
+    "D": ["Declaración localizada", "#5aa9e6", "Persona identificable, con fecha y medio donde se recoge. Es un hecho que lo dijo; no que sea cierto."],
+    "S": ["Solo en medios", "#d4a84b", "Lo cuentan medios; sin documento primario."],
+    "R": ["Razonado", "#2ec4b6", "Mecanismo explicado con su contraargumento; no es un dato."],
+    "E": ["Especulación", "#e06c6c", "Predicción u opinión sin forma de comprobarla salvo el paso del tiempo."]
+  },
+  "cumbres": [
+    {
+      "id": "shenzhen-2026-11-19",
+      "titulo": "Cumbre EE. UU. – China – Rusia en Shenzhen («Declaración hacia la paz»)",
+      "fecha": "2026-11-19",
+      "lugar": "Kylin Villa, Shenzhen (China), al margen de la cumbre APEC (18-19 nov)",
+      "participantes": ["Xi Jinping (anfitrión, presidió)", "Donald Trump", "Vladimir Putin"],
+      "formato": "Primera reunión conjunta de los tres líderes. Antes hubo bilaterales Trump–Xi y Trump–Putin. La sesión trilateral duró algo más de una hora (EFE/Euronews: 1 h 20 min) y Trump salió después hacia el aeropuerto.",
+      "titular": "Hubo texto firmado de cuatro puntos, pero SIN acuerdo sobre Ucrania ni sobre Irán: la declaración no los nombra.",
+      "firmado": [
+        {
+          "n": 1,
+          "tema": "Reforma de la ONU",
+          "texto": "Como miembros permanentes del Consejo de Seguridad, se comprometen a reformar la ONU para que responda mejor a los desafíos globales y a su misión de paz y seguridad.",
+          "concreto": "No dice qué se reforma, ni plazo, ni si tocará el veto.",
+          "mercado": "Sin efecto directo medible. Lectura [RAZONADA]: los tres tienen veto; «reformar» sin detalle favorece el statu quo."
+        },
+        {
+          "n": 2,
+          "tema": "Petróleo y energía",
+          "texto": "Los tres países «planean» aumentar la producción y el suministro de productos petrolíferos refinados en beneficio de todas las naciones y reafirman la importancia de flujos energéticos estables.",
+          "concreto": "No dice cuánto, quién ni cuándo, y no menciona el estrecho de Ormuz. Es una intención («plan»), no una cuota.",
+          "mercado": "Es el punto con más relación con precios: si se materializara, presión a la baja sobre refinados y crudo. Hoy no hay cifra que lo respalde."
+        },
+        {
+          "n": 3,
+          "tema": "Corte Penal Internacional (CPI) e inmunidades",
+          "texto": "Reconocen que el principio de consentimiento del Estado y el respeto a las inmunidades de los funcionarios estatales son de suma importancia, y coinciden en que la CPI y otros órganos similares no deben abusar de su jurisdicción.",
+          "concreto": "Es una postura política común. No anula ninguna orden de arresto (la de Putin es de marzo de 2023) ni cambia las obligaciones de los Estados que sí son miembros de la CPI. EE. UU., Rusia y China no son miembros.",
+          "mercado": "Efecto indirecto: legitimación diplomática de Putin y debilitamiento del marco de justicia internacional; puede afectar sanciones y relaciones con Europa [RAZONADO]."
+        },
+        {
+          "n": 4,
+          "tema": "Riesgo nuclear",
+          "texto": "Reafirman que una guerra nuclear no puede ganarse y nunca debe librarse, y que mantendrán un diálogo para reducir riesgos nucleares y prevenir la proliferación.",
+          "concreto": "«Diálogo»: sin calendario, sin recortes de arsenales y sin tratado nuevo.",
+          "mercado": "Reduce algo la cola de riesgo en el discurso, sin cambio verificable en arsenales."
+        }
+      ],
+      "no_hay": [
+        "Ninguna mención a Ucrania, Irán, Corea del Norte ni al estrecho de Ormuz en el texto.",
+        "Ningún alto el fuego, calendario, cuota de producción ni mecanismo de verificación.",
+        "Ningún recorte de arsenales ni tratado nuevo; solo un diálogo.",
+        "No consta rueda de prensa conjunta: Putin habló antes que los otros dos ante medios rusos."
+      ],
+      "declaraciones": [
+        {
+          "quien": "Donald Trump (apertura trilateral)",
+          "cuando": "2026-11-19",
+          "texto": "Dijo que están «haciendo historia» y que los tres países, con los mayores arsenales, están en posición única de hablar de armas nucleares y de combatir la proliferación en otros países.",
+          "tema": "nuclear",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Euronews y Al Jazeera, 19-nov-2026",
+          "url": "https://www.aljazeera.com/news/2026/11/19/groundbreaking-trump-xi-putin-summit-five-key-takeaways"
+        },
+        {
+          "quien": "Donald Trump (bilateral con Xi)",
+          "cuando": "2026-11-19",
+          "texto": "Dijo que EE. UU. y China quieren ayudar a terminar la guerra entre Rusia y Ucrania.",
+          "tema": "ucrania",
+          "nivel": "D",
+          "conf": "sin_confirmar",
+          "fuente": "Euronews, 19-nov-2026. No hay compromiso chino escrito.",
+          "url": "https://www.euronews.com/2026/11/19/us-and-china-want-to-help-end-ukraine-war-trump-says-ahead-of-trilateral-with-russia"
+        },
+        {
+          "quien": "Donald Trump (sobre Xi, Irán y Ormuz)",
+          "cuando": "2026-11-19",
+          "texto": "Afirmó que Xi coincide en que Ormuz debe seguir abierto y en que Irán no puede tener arma nuclear. Solo consta su versión: no está en la declaración conjunta. [VERIFICAR con la versión china.]",
+          "tema": "iran",
+          "nivel": "D",
+          "conf": "sin_confirmar",
+          "fuente": "Al Jazeera, 19-nov-2026",
+          "url": "https://www.aljazeera.com/news/2026/11/19/groundbreaking-trump-xi-putin-summit-five-key-takeaways"
+        },
+        {
+          "quien": "Xi Jinping (antes de la sesión)",
+          "cuando": "2026-11-19",
+          "texto": "Dijo que las armas nucleares deberían prohibirse y destruirse por completo y que una guerra nuclear no puede ganarse. Pidió abandonar la «mentalidad de Guerra Fría» y no buscar el desacoplamiento económico.",
+          "tema": "nuclear",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Xinhua vía Euronews/Al Jazeera, 19-nov-2026",
+          "url": "https://www.euronews.com/2026/11/19/us-and-china-want-to-help-end-ukraine-war-trump-says-ahead-of-trilateral-with-russia"
+        },
+        {
+          "quien": "Vladimir Putin (tras la reunión)",
+          "cuando": "2026-11-19",
+          "texto": "Calificó la discusión de franca y útil; dijo que Kiev y Europa aún no están listas para los compromisos necesarios para acabar la guerra, y que con Trump tiene cierta cercanía en valores «civilizatorios».",
+          "tema": "ucrania",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Euronews, 19-nov-2026",
+          "url": "https://www.euronews.com/2026/11/19/us-and-china-want-to-help-end-ukraine-war-trump-says-ahead-of-trilateral-with-russia"
+        },
+        {
+          "quien": "Dmitri Peskov (portavoz del Kremlin)",
+          "cuando": "2026-11-19",
+          "texto": "Dijo que Ucrania no fue «el tema central» de la trilateral, aunque sí lo fue en el bilateral Putin–Trump.",
+          "tema": "ucrania",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Euronews y Al Jazeera, 19-nov-2026",
+          "url": "https://www.aljazeera.com/news/2026/11/19/groundbreaking-trump-xi-putin-summit-five-key-takeaways"
+        },
+        {
+          "quien": "Jean-Noël Barrot (ministro de Exteriores de Francia)",
+          "cuando": "2026-11-19",
+          "texto": "Dijo que los tres líderes discrepan en todo y por eso no pueden acordar nada, y recordó que las tres grandes potencias son EE. UU., China y la UE, no Rusia.",
+          "tema": "europa",
+          "nivel": "D",
+          "conf": "sin_confirmar",
+          "fuente": "RTL vía Euronews, 19-nov-2026. Es opinión de una parte interesada.",
+          "url": "https://www.euronews.com/2026/11/19/us-and-china-want-to-help-end-ukraine-war-trump-says-ahead-of-trilateral-with-russia"
+        }
+      ],
+      "hipotesis": [
+        {
+          "afirmacion": "Trump terminó (o va a terminar) la guerra de Ucrania para que después le «devuelvan» algo: acabar con la guerra de Irán.",
+          "estado": "No respaldada por los hechos",
+          "porque": "No se firmó ningún acuerdo sobre Ucrania ni sobre Irán, y el texto no los menciona. Lo único cercano a un intercambio es lo que Trump dice que Xi aceptó sobre Ormuz e Irán, que no está en el documento. Un trueque entre ambos frentes es una lectura posible, pero hoy es [ESPECULACIÓN] sin prueba: habría que ver movimientos reales (cese de ataques, reapertura de Ormuz, sanciones).",
+          "nivel": "E"
+        },
+        {
+          "afirmacion": "Putin salió beneficiado porque la «Corte Internacional» dice que se ha pasado.",
+          "estado": "Parte cierta, parte matizada",
+          "porque": "Cierto: el punto 3 pide que la CPI no abuse de su jurisdicción y respeta las inmunidades de funcionarios; Putin tiene orden de arresto de la CPI desde marzo de 2023. Matiz: no es la Corte quien dice nada; son los tres gobiernos (ninguno es miembro de la CPI) quienes la critican. No cambia la orden ni las obligaciones de sus Estados miembros. Beneficio real [RAZONADO]: foto de igual a igual y legitimación; Al Jazeera añade que Trump ya invitó a Putin al G20 de Miami (EE. UU. no es parte de la CPI y no está obligado a detenerlo).",
+          "nivel": "R"
+        },
+        {
+          "afirmacion": "La cumbre «mueve el mercado global».",
+          "estado": "No demostrado",
+          "porque": "Entre el 17 y el 23-nov los precios cayeron casi en bloque (ver tabla de reacción), pero hubo más cosas esos días y una cumbre sin cifras ni calendario no explica por sí sola un movimiento. Correlación no es causalidad [VERIFICAR con cobertura de mercados de esos días].",
+          "nivel": "R"
+        }
+      ],
+      "lecturas": {
+        "alcista": "Diálogo nuclear y compromiso de estabilizar flujos energéticos reducen el riesgo de cola; que Xi, Putin y Trump hablen a la vez baja la probabilidad de escalada entre grandes potencias; más oferta de refinados (si ocurre) presiona la inflación a la baja y favorece activos de riesgo.",
+        "bajista": "No hay nada verificable sobre las dos guerras que más pesan en el mercado de energía; los puntos son intenciones sin cifras; el formato «G3» alimenta temor a un reparto de esferas de influencia por encima de Kiev y Europa; debilita el marco de la CPI; el mercado puede haber descontado ya la foto y quedar sin catalizador."
+      },
+      "sesgos": [
+        "El texto lo difunde Xinhua (agencia estatal china); el Kremlin también lo publicó; al cierre de las primeras crónicas no constaba publicación oficial de EE. UU. [VERIFICAR en whitehouse.gov].",
+        "Titulares como «cuatro acuerdos» (El Tribuno) suenan a más de lo que hay: son cuatro puntos de intención, no cuatro acuerdos con obligaciones.",
+        "Putin y el Kremlin presentan la reunión como éxito de legitimación; Trump, como «hacer historia»; la oposición europea la presenta como foto vacía. Cada parte cuenta lo suyo."
+      ],
+      "pendientes": [
+        "Texto en whitehouse.gov y kremlin.ru (comprobar que es idéntico al de Xinhua).",
+        "Qué se habló en los bilaterales Trump–Putin y Trump–Xi: solo hay versiones de prensa y de cada gobierno.",
+        "Fecha exacta del G20 de Miami (Al Jazeera dice «el mes que viene») y si Putin asiste.",
+        "Fecha y formato del diálogo nuclear prometido.",
+        "Si se concreta algún aumento de producción de refinados (cifras, países, plazos) y si cambia el precio del crudo."
+      ],
+      "mercado": {
+        "desde": "2026-11-17",
+        "dia": "2026-11-19",
+        "nota": "Antes de la cumbre (17-nov), día de la cumbre (19-nov) y último dato disponible. Precios de cierre diarios de precios_historico.json (nivel S, agregador). No prueba causa: hubo otras noticias esos días.",
+        "series": [
+          ["BZ=F", "Petróleo Brent ($)"],
+          ["CL=F", "Petróleo WTI ($)"],
+          ["^GSPC", "S&P 500"],
+          ["^VIX", "VIX (volatilidad)"],
+          ["^TNX", "Bono EE. UU. 10 años (%)"],
+          ["GC=F", "Oro ($)"],
+          ["DX-Y.NYB", "Dólar (índice DXY)"],
+          ["BTC-USD", "Bitcoin ($)"],
+          ["XRP-USD", "XRP ($)"],
+          ["XLM-USD", "XLM ($)"]
+        ]
+      },
+      "contexto": [
+        "Guerra de EE. UU. contra Irán desde febrero de 2026 con cierre del estrecho de Ormuz por Teherán (Al Jazeera, 19-nov-2026), y ataques ucranianos a infraestructuras energéticas rusas: la energía es el hilo común.",
+        "El mismo día los países europeos de la «Coalición de voluntarios» se reunieron en Berlín (Al Jazeera): Europa quedó fuera de la mesa.",
+        "Antecedente: la reunión Trump–Putin en Alaska (2025) no logró un acuerdo para aliviar la guerra de Ucrania (Euronews)."
+      ],
+      "fuentes": [
+        {"nombre": "Texto completo de la declaración (Xinhua vía People's Daily)", "nivel": "P", "url": "https://en.people.cn/n3/2026/1119/c90000-20521189.html", "nota": "Leído íntegro el 24-nov-2026."},
+        {"nombre": "Al Jazeera: cinco claves de la cumbre", "nivel": "S", "url": "https://www.aljazeera.com/news/2026/11/19/groundbreaking-trump-xi-putin-summit-five-key-takeaways", "nota": "Leído el 24-nov-2026."},
+        {"nombre": "Euronews: «peace declaration» sin mención a Ucrania ni Irán", "nivel": "S", "url": "https://www.euronews.com/2026/11/19/us-and-china-want-to-help-end-ukraine-war-trump-says-ahead-of-trilateral-with-russia", "nota": "Leído el 24-nov-2026."},
+        {"nombre": "El Tribuno: «los cuatro acuerdos»", "nivel": "S", "url": "https://www.eltribuno.com/internacionales/2026-11-19-22-24-0-trump-xi-jinping-y-putin-se-reunieron-en-una-cumbre-historica-los-cuatro-acuerdos-las-tensiones-y-que-paso-con-ucrania-e-iran", "nota": "Resume el texto; el titular exagera «acuerdos»."},
+        {"nombre": "SCMP: la declaración sugiere más foto que acuerdo", "nivel": "S", "url": "https://www.scmp.com/news/china/diplomacy/article/3375130/xi-trump-and-putin-peace-declaration-suggests-summit-more-photo-op", "nota": "Solo vista en buscador; sin leer."}
+      ]
+    }
+  ],
+  "proximas": [
+    {"fecha": "2026-12", "que": "G20 en Miami (EE. UU.), con Xi casi seguro e invitación de Trump a Putin", "estado": "[VERIFICAR] fecha exacta y asistencia", "fuente": "Al Jazeera, 19-nov-2026"},
+    {"fecha": "sin fecha", "que": "Diálogo trilateral sobre riesgo nuclear prometido en el punto 4", "estado": "Sin calendario", "fuente": "Declaración de Shenzhen"}
+  ],
+  "como_se_usa": "Para cada reunión con impacto en mercado se añade una entrada en «cumbres»: (1) texto oficial si existe, (2) declaraciones con fecha y medio, (3) lo que NO hay, (4) hipótesis de Joel contrastadas, (5) caso alcista y bajista, (6) reacción de precios. El estado de cada dato sigue la escala P/D/S/R/E."
+}

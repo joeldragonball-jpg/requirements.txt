@@ -285,6 +285,10 @@ def _html(conceptos, publico=False):
         datos["paneles"] = json.loads((CARPETA / "paneles.json").read_text(encoding="utf-8"))
     except Exception:
         datos["paneles"] = None
+    try:                              # 24-nov: cumbres y declaraciones de líderes con impacto en mercado
+        datos["cumbres"] = json.loads((CARPETA / "cumbres.json").read_text(encoding="utf-8"))
+    except Exception:
+        datos["cumbres"] = None
     try:                              # voces: declaraciones de personas e instituciones (informes de vídeos y research)
         datos["voces"] = json.loads((CARPETA / "voces.json").read_text(encoding="utf-8"))
     except Exception:

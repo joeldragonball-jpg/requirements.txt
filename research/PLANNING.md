@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-24 11:29 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-24 11:35 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -91,6 +91,7 @@ Hechas en este periodo: W01, W02, W04, W07, W08
 - C363 ◐ en parte · Órbita · Ampliar Latinoamérica, EE. UU., China y potencias; más peso a las voces · Sonnet L · ~~6 % · ``
 - C364 ◐ en parte · Cadenas: hoja de ruta oficial de DTCC por red (Canton, Besu, Stellar, Solana, Ar · Sonnet M · ~~4 % · ``
 - C380 · Auditoría 24-nov: unificar las dos fuentes 13F (xrpTotales vs etf13f) y marcar d · Sonnet S · ~~3 % · ``
+- C382 · Cumbres: verificar texto en whitehouse.gov y kremlin.ru, contenido de los bilate · Sonnet S · ~~3 % · ``
 - C39 ◐ en parte · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
 - C42 ◐ en parte · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
 - C58 ◐ en parte · Centro · Fichas políticas de 12 países (UE: España, Alemania, Francia, Italia, P · Sonnet M · ~3 % · `research/prompts/C58-fichas-politicas-paises.md`
@@ -144,7 +145,7 @@ Hechas en este periodo: W01, W02, W04, W07, W08
 - 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (26) → W03 · Se revisan con la rutina de países
 - 🔴 Voces: Voces sin confirmar (55) → W06 · 27 llevan más de 14 días
 - 🔴 Predicciones: Vencidas sin resultado (1) → W06 · #80
-- 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (53) → rutina de cada tema (ver explorador/frescura.json) · verdes 32, amarillos 42, rojos 11, grises 0. Rojos: bancos-eba, calificaciones, 
+- 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (53) → rutina de cada tema (ver explorador/frescura.json) · verdes 33, amarillos 42, rojos 11, grises 0. Rojos: bancos-eba, calificaciones, 
 - 🟡 Radar regulatorio: Celdas sin dato (12) → W03 · Más huecos: IR 2, AR 2, SV 2, AE 1, BRICS 1
 
 ## Bots con problema

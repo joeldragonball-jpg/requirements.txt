@@ -475,6 +475,7 @@ i.ap-ce{width:24px;height:22px;cursor:default;flex:none}
 <section class="vista" id="v-matriz"></section>
 <section class="vista" id="v-noticias"></section>
 <section class="vista" id="v-voces"></section>
+<section class="vista" id="v-cumbres"></section>
 <section class="vista" id="v-paises"></section>
 <section class="vista" id="v-espana"></section>
 <section class="vista" id="v-paneles"></section>
@@ -497,8 +498,8 @@ const num=(x,d=1)=>x==null||isNaN(x)?'—':Number(x).toLocaleString('es-ES',{max
 const usd=x=>x==null?'—':'$'+(Math.abs(x)>=1e12?num(x/1e12,2)+' billones':Math.abs(x)>=1e9?num(x/1e9,1)+' mil M':Math.abs(x)>=1e6?num(x/1e6,0)+' M':num(x,0));
 /* C164 · separador de miles también en números de 4 cifras (es-ES no agrupa 1234) */
 const miles=t=>typeof t!=='string'?t:t.replace(/(?<![\d.,])\d{4,}(?=,\d|[^\d.,]|$)/g,m=>m.replace(/\B(?=(\d{3})+(?!\d))/g,'.'));
-const TABS=[['resumen','Resumen'],['capas','Capas'],['fondos','Fondos y bolsa'],['tiempo','Línea de tiempo'],['calendario','Calendario'],['matriz','Matriz país × tema'],['noticias','Noticias'],['voces','Voces'],['paises','Países'],['espana','España'],['paneles','Paneles de datos'],['activos','Fichas por activo'],['cadenas','Cadenas']];
-let R,D,V,P,CAL,FMI,VAL,BAN,RES,X,modo='sem',selMov=null,selCapa=null,selCelda=null,tab='resumen',listo=false;
+const TABS=[['resumen','Resumen'],['capas','Capas'],['fondos','Fondos y bolsa'],['tiempo','Línea de tiempo'],['calendario','Calendario'],['matriz','Matriz país × tema'],['noticias','Noticias'],['voces','Voces'],['cumbres','Cumbres'],['paises','Países'],['espana','España'],['paneles','Paneles de datos'],['activos','Fichas por activo'],['cadenas','Cadenas']];
+let R,D,V,CUM,P,CAL,FMI,VAL,BAN,RES,X,modo='sem',selMov=null,selCapa=null,selCelda=null,tab='resumen',listo=false;
 
 /* ---------- utilidades de pintado ---------- */
 /* subida en verde y bajada en rojo, siempre y con flecha (también bonos, tipos, TIC, stablecoins, índices y ETF); un cambio cero queda gris */
@@ -586,7 +587,7 @@ function cargar(){
   (function sinJerga(o){const f=t=>t.replace(/ValueError:?\s*sin dato\s*\(NaN\)/g,'sin dato').replace(/ValueError:?\s*/g,'').replace(/\bnull\b/g,'sin dato').replace(/\(NaN\)/g,'');
     const bad=t=>t.length>4&&!/^https?:/.test(t)&&/null|ValueError|NaN/.test(t);
     const w=x=>{if(Array.isArray(x)){for(let i=0;i<x.length;i++){const v=x[i];if(typeof v==='string'){if(bad(v))x[i]=f(v)}else if(v&&typeof v==='object')w(v)}}else if(x&&typeof x==='object'){for(const k in x){const v=x[k];if(typeof v==='string'){if(bad(v))x[k]=f(v)}else if(v&&typeof v==='object')w(v)}}};try{w(o)}catch(e){}})(G);
-  D=G;R=G.radar;V=G.voces;P=G.paneles;CAL=G.calificaciones;FMI=G.deuda_fmi;VAL=G.valoracion;window.ENL=G.enlaces;BAN=G.bancos;RES=G.reservas;window.RWAM=G.rwa_cadena_manual;window.CBDCB=G.cbdc_blockchains;
+  D=G;R=G.radar;V=G.voces;CUM=G.cumbres;P=G.paneles;CAL=G.calificaciones;FMI=G.deuda_fmi;VAL=G.valoracion;window.ENL=G.enlaces;BAN=G.bancos;RES=G.reservas;window.RWAM=G.rwa_cadena_manual;window.CBDCB=G.cbdc_blockchains;
   X=G.calendario?{calendario:G.calendario,docs:Object.fromEntries(G.capas.map(c=>[c.id,c.docs]))}:null;
   $('estado').textContent='Datos reales: radar '+R.revisado+' · Órbita '+(D.movimientos.map(m=>m.fecha).filter(f=>f<=HOYS).sort().pop()||D.version)+(P?' · paneles '+P.leido:'');
   for(const j of R.jurisdicciones){const o=el('option',null,j.nombre);o.value=j.id;$('fpais').append(o)}
@@ -647,7 +648,7 @@ function contar(sec){
 function marcarScroll(e){const t=e&&e.target&&e.target.nodeType===1?[e.target]:document.querySelectorAll('table:not(.mat),.mis .cols2>div,details.bl,.grp,.mcol>.grp');
   t.forEach(x=>{if(!x.classList)return;const m=x.scrollWidth-x.clientWidth;x.classList.toggle('sc-d',m>4&&x.scrollLeft<m-4);x.classList.toggle('sc-i',m>4&&x.scrollLeft>4)})}
 document.addEventListener('scroll',marcarScroll,true);addEventListener('resize',()=>setTimeout(marcarScroll,50));
-function pintarTodo(){({resumen:pResumen,capas:pCapas,fondos:pFondos,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,paises:pPaises,espana:pEspana,paneles:pPaneles,activos:pActivos,cadenas:pCadenas})[tab]();if(['paneles','noticias','calendario','matriz','espana','paises'].includes(tab))anclas($('v-'+tab),tab);
+function pintarTodo(){({resumen:pResumen,capas:pCapas,fondos:pFondos,tiempo:pTiempo,calendario:pCalendario,matriz:pMatriz,noticias:pNoticias,voces:pVoces,cumbres:pCumbres,paises:pPaises,espana:pEspana,paneles:pPaneles,activos:pActivos,cadenas:pCadenas})[tab]();if(['paneles','noticias','calendario','matriz','espana','paises'].includes(tab))anclas($('v-'+tab),tab);
   if(tab==='espana')[...$('v-espana').querySelectorAll('details')].filter(d=>!d.parentElement.closest('details')).forEach(d=>{let cer={};try{cer=JSON.parse(localStorage.getItem('orbita-esp-cerrados')||'{}')}catch(e){}const k=((d.querySelector('summary')||{}).textContent||'').trim().slice(0,60);d.open=(d.dataset.cerr&&cer[k]===undefined)?false:!cer[k];d.addEventListener('toggle',()=>{try{const c2=JSON.parse(localStorage.getItem('orbita-esp-cerrados')||'{}');if(d.open){if(d.dataset.cerr)c2[k]=0;else delete c2[k]}else c2[k]=1;localStorage.setItem('orbita-esp-cerrados',JSON.stringify(c2))}catch(e){}})});setTimeout(marcarScroll,60)}
 
 /* ---------- bloques de datos reutilizables (Capas y Paneles) ---------- */
@@ -2086,6 +2087,41 @@ function pPaises(){
   const cmp=document.createElement('details');cmp.style.marginTop='14px';cmp.appendChild(el('summary','','Comparar todos los países (tablas completas)'));cmp.appendChild(s);
   S0.append(chs,caja,cmp);
 }
+/* 24-nov · Cumbres: reuniones de líderes con impacto en mercado (explorador/cumbres.json). Todo texto con textContent. */
+function pCumbres(){
+  const s=$('v-cumbres');s.textContent='';
+  if(!CUM||!(CUM.cumbres||[]).length){s.textContent='No se pudo leer cumbres.json';return}
+  const nv=n=>{const x=CUM.niveles[n]||[n,'#888',''];const b=el('span','badge',x[0]);b.style.color=x[1];b.style.borderColor=x[1];b.style.background=x[1]+'24';b.title=x[2];return b};
+  const cf={confirmada:['Confirmada','#3fb68b'],sin_confirmar:['Sin confirmar','#d4a84b'],contradicha:['Contradicha','#e06c6c']};
+  const lk=(t,u)=>{const a=el('a',null,t);a.href=u;a.target='_blank';a.rel='noopener noreferrer';return a};
+  const lista=(tit,arr)=>{const d=el('div','alt');d.append(el('h4',null,tit));const u=el('ul');arr.forEach(t=>u.append(el('li',null,t)));d.append(u);return d};
+  const c=el('div','caja');c.append(el('h2',null,'Cumbres y declaraciones con impacto en mercado'),el('p','nota-v',CUM.aviso));
+  const sel=el('div','cad-sel');let cur=CUM.cumbres[0].id;const host=el('div');
+  function pinta(){host.textContent='';const k=CUM.cumbres.find(x=>x.id===cur);
+    host.append(el('h3',null,k.titulo),el('p','nota-v',k.fecha+' · '+k.lugar+' · '+k.participantes.join(', ')));
+    const ti=el('div','alt');ti.append(el('h4',null,'En una línea'),el('p',null,k.titular),el('p','nota-v',k.formato));host.append(ti);
+    host.append(el('h3',null,'Lo firmado (texto oficial, 4 puntos) y cuánto concreta'));
+    host.append(scrollX(tabla([{t:'Punto',f:r=>r.n+'. '+r.tema},{t:'Qué dice el texto',f:r=>r.texto},{t:'Qué concreta (y qué no)',f:r=>r.concreto},{t:'Relación con mercado',f:r=>r.mercado}],k.firmado)));
+    host.append(lista('Lo que NO hay en el documento',k.no_hay));
+    host.append(el('h3',null,'Declaraciones (quién dijo qué, cuándo y dónde se recoge)'));
+    for(const d of k.declaraciones){const it=el('div','item');const hd=el('div');hd.append(nv(d.nivel));const c2=cf[d.conf]||cf.sin_confirmar;const b2=el('span','badge',c2[0]);b2.style.color=c2[1];b2.style.borderColor=c2[1];b2.style.background=c2[1]+'24';hd.append(b2,el('b',null,' '+d.quien+' · '+d.cuando+' · '+d.tema));it.append(hd,el('div',null,d.texto));const m=el('small');m.append(document.createTextNode('Fuente: '+d.fuente+' · '),lk('abrir',d.url));it.append(m);host.append(it)}
+    host.append(el('h3',null,'Tus hipótesis frente a los hechos'));
+    for(const q of k.hipotesis){const it=el('div','item');const hd=el('div');hd.append(nv(q.nivel),el('b',null,' '+q.estado));it.append(hd,el('div',null,'«'+q.afirmacion+'»'),el('div','nota-v',q.porque));host.append(it)}
+    host.append(el('h3',null,'Caso alcista y caso bajista (mercado)'));
+    const a1=el('div','alt');a1.append(el('h4',null,'Alcista [RAZONADO]'),el('p',null,k.lecturas.alcista));const a2=el('div','alt');a2.append(el('h4',null,'Bajista [RAZONADO]'),el('p',null,k.lecturas.bajista));host.append(a1,a2);
+    const PH=D.precios_historico&&D.precios_historico.series;
+    if(PH){const m=k.mercado;const filas=[];
+      for(const [cl,nm] of m.series){const S=PH[cl];if(!S||!S.datos)continue;const ds=S.datos.filter(p=>p[1]>0).sort((x,y)=>x[0]<y[0]?-1:1);const at=f=>{let v=null;for(const p of ds){if(p[0]<=f)v=p[1];else break}return v};
+        const a=at(m.desde),b=at(m.dia),z=ds[ds.length-1];if(a&&b&&z)filas.push({nm,a,b,z:z[1],fz:z[0]})}
+      if(filas.length){const fz=filas[0].fz;host.append(el('h3',null,'Cómo se movieron los precios: antes, día de la cumbre y último dato'),el('p','nota-v',m.nota));
+        host.append(scrollX(tabla([{t:'Activo',f:r=>r.nm},{t:'17-nov',n:1,f:r=>num(r.a,r.a<200?2:0)},{t:'19-nov',n:1,f:r=>num(r.b,r.b<200?2:0)},{t:'Último ('+fz.slice(8,10)+'-'+fz.slice(5,7)+')',n:1,f:r=>num(r.z,r.z<200?2:0)},{t:'Cambio 17-nov → último',n:1,f:r=>cambio((r.z/r.a-1)*100,'%',1)}],filas)))}}
+    host.append(lista('Sesgos de las fuentes',k.sesgos),lista('Contexto',k.contexto),lista('Pendiente de verificar [VERIFICAR]',k.pendientes));
+    host.append(el('h3',null,'Fuentes'),scrollX(tabla([{t:'Nivel',f:r=>CUM.niveles[r.nivel]?CUM.niveles[r.nivel][0]:r.nivel},{t:'Fuente',f:r=>r.nombre},{t:'Nota',f:r=>r.nota},{t:'Enlace',f:r=>{const sp=el('span');sp.append(lk('abrir',r.url));return sp}}],k.fuentes)))}
+  CUM.cumbres.forEach(k=>{const b=el('button',null,k.fecha+' · '+k.titulo.split(' (')[0]);b.type='button';if(k.id===cur)b.classList.add('on');b.addEventListener('click',()=>{cur=k.id;[...sel.children].forEach(x=>x.classList.toggle('on',x===b));pinta()});sel.append(b)});
+  c.append(sel,host);
+  if((CUM.proximas||[]).length){c.append(el('h3',null,'Próximas citas a vigilar'),scrollX(tabla([{t:'Fecha',f:r=>r.fecha},{t:'Qué',f:r=>r.que},{t:'Estado',f:r=>r.estado},{t:'Fuente',f:r=>r.fuente}],CUM.proximas)))}
+  c.append(el('p','nota-v',CUM.como_se_usa));
+  s.append(c);pinta()}
 function pVoces(){
   const s=$('v-voces');s.textContent='';
   if(!V){s.textContent='No se pudo leer voces.json';return}
