@@ -2,19 +2,1106 @@
   "version": 1,
   "aviso": "Cumbres y reuniones de líderes con impacto en mercado: qué se firmó (texto literal oficial), qué se dijo (declaraciones con fecha y fuente), qué NO hay, y cómo reaccionaron los precios. Una declaración es un hecho comprobable (alguien dijo algo); no prueba que sea cierto ni que se vaya a cumplir. Informativo: no es recomendación de compra ni de venta.",
   "niveles": {
-    "P": ["Texto oficial", "#3fb68b", "Documento publicado por los firmantes o su agencia oficial (aquí: Xinhua; el Kremlin también lo difundió). Es primaria, pero la agencia es de un firmante: contrastar con medios independientes."],
-    "D": ["Declaración localizada", "#5aa9e6", "Persona identificable, con fecha y medio donde se recoge. Es un hecho que lo dijo; no que sea cierto."],
-    "S": ["Solo en medios", "#d4a84b", "Lo cuentan medios; sin documento primario."],
-    "R": ["Razonado", "#2ec4b6", "Mecanismo explicado con su contraargumento; no es un dato."],
-    "E": ["Especulación", "#e06c6c", "Predicción u opinión sin forma de comprobarla salvo el paso del tiempo."]
+    "P": [
+      "Texto oficial",
+      "#3fb68b",
+      "Documento publicado por los firmantes o su agencia oficial (aquí: Xinhua; el Kremlin también lo difundió). Es primaria, pero la agencia es de un firmante: contrastar con medios independientes."
+    ],
+    "D": [
+      "Declaración localizada",
+      "#5aa9e6",
+      "Persona identificable, con fecha y medio donde se recoge. Es un hecho que lo dijo; no que sea cierto."
+    ],
+    "S": [
+      "Solo en medios",
+      "#d4a84b",
+      "Lo cuentan medios; sin documento primario."
+    ],
+    "R": [
+      "Razonado",
+      "#2ec4b6",
+      "Mecanismo explicado con su contraargumento; no es un dato."
+    ],
+    "E": [
+      "Especulación",
+      "#e06c6c",
+      "Predicción u opinión sin forma de comprobarla salvo el paso del tiempo."
+    ]
   },
   "cumbres": [
+    {
+      "id": "espana-elecciones-2026-11-29",
+      "tipo": "elecciones",
+      "titulo": "España: elecciones generales anticipadas del 29-nov-2026 y expediente de Bruselas por DAC8/MiCA",
+      "fecha": "2026-11-29",
+      "lugar": "España (52 circunscripciones; 350 diputados)",
+      "participantes": [
+        "Pedro Sánchez (PSOE)",
+        "Alberto Núñez Feijóo (PP)",
+        "Santiago Abascal (Vox)",
+        "Frente Amplio (Sumar y aliados)"
+      ],
+      "formato": "Convocatoria por Real Decreto 806/2026 (5-oct, BOE 6-oct). Campaña 13-27 nov, un solo cara a cara Sánchez-Feijóo (19-nov). Cortes constituyentes el 23-dic-2026.",
+      "titular": "Fecha confirmada en el BOE. Encuestas divididas: el CIS da ventaja de unos 10 puntos al PSOE y todas las privadas dan más de 176 escaños a PP+Vox. Bruselas: DAC8 en dictamen motivado (2 meses), MiCA solo en carta de emplazamiento.",
+      "firmado": [],
+      "bilaterales": [],
+      "no_hay": [
+        "Ningún programa trae una medida específica sobre el IRPF de criptoactivos; solo el Frente Amplio nombra las cripto (como recurso propio de la UE).",
+        "Ninguna encuesta posterior al debate del 19-nov: la veda legal empezó el 23-nov.",
+        "No localicé nota del Banco de España ni de Funcas sobre el impacto de las elecciones.",
+        "No hay respuesta pública de España a Bruselas sobre DAC8/MiCA.",
+        "Las fichas técnicas (muestra y campo) de las encuestas privadas no constan en las fuentes leídas."
+      ],
+      "declaraciones": [
+        {
+          "quien": "Pedro Sánchez (anuncio de elecciones)",
+          "cuando": "2026-10-05",
+          "texto": "Dijo que necesita una mayoría parlamentaria más amplia para aprobar las reformas pendientes, tras el rechazo en el Congreso de dos decretos de vivienda (PP, Junts y Vox votaron en contra).",
+          "tema": "convocatoria",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "elDiario.es, 5-oct-2026; el BOE no explica el motivo político",
+          "url": "https://www.eldiario.es/politica/sanchez-convoca-elecciones-anticipadas-29-noviembre_1_13555649.html"
+        },
+        {
+          "quien": "Pedro Sánchez (cara a cara)",
+          "cuando": "2026-11-19",
+          "texto": "Reconoció que las medidas de vivienda han sido insuficientes y pidió disculpas; propuso gravar a fondos de inversión y viviendas vacías y defendió su decreto de alquiler.",
+          "tema": "vivienda",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Actualidad Rioja Baja, 19-nov-2026 (crónica; sin transcripción)",
+          "url": "https://actualidadriojabaja.com/sanchez-y-feijoo-discrepan-sobre-vivienda-impuestos-y-corrupcion-en-el-debate-del-29n/"
+        },
+        {
+          "quien": "Pedro Sánchez (cara a cara)",
+          "cuando": "2026-11-19",
+          "texto": "Propuso a Feijóo una reforma constitucional para que las pensiones se revaloricen con el IPC; defendió la subida del salario mínimo y se apoyó en las previsiones de la Comisión Europea y el empleo.",
+          "tema": "pensiones",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Actualidad Rioja Baja, 19-nov-2026",
+          "url": "https://actualidadriojabaja.com/sanchez-y-feijoo-discrepan-sobre-vivienda-impuestos-y-corrupcion-en-el-debate-del-29n/"
+        },
+        {
+          "quien": "Alberto Núñez Feijóo (cara a cara)",
+          "cuando": "2026-11-19",
+          "texto": "Prometió un millón de viviendas y una nueva ley del suelo; afirmó que unas 400.000 viviendas han salido del mercado del alquiler (cifra suya, sin contrastar).",
+          "tema": "vivienda",
+          "nivel": "D",
+          "conf": "sin_confirmar",
+          "fuente": "Actualidad Rioja Baja e Infobae, 19-nov-2026",
+          "url": "https://actualidadriojabaja.com/sanchez-y-feijoo-discrepan-sobre-vivienda-impuestos-y-corrupcion-en-el-debate-del-29n/"
+        },
+        {
+          "quien": "Alberto Núñez Feijóo (cara a cara)",
+          "cuando": "2026-11-19",
+          "texto": "Pidió bajar impuestos, con atención a los autónomos, acusó al Gobierno de recaudar y endeudarse, reprochó que la legislatura termine sin Presupuestos y mostró desconfianza hacia el pacto de pensiones.",
+          "tema": "impuestos",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Actualidad Rioja Baja, 19-nov-2026",
+          "url": "https://actualidadriojabaja.com/sanchez-y-feijoo-discrepan-sobre-vivienda-impuestos-y-corrupcion-en-el-debate-del-29n/"
+        },
+        {
+          "quien": "PSOE (programa)",
+          "cuando": "2026-11-17",
+          "texto": "Mantiene los tramos del ahorro del 19 % y 21 % y sube hasta un máximo del 35 % para rentas del capital de más de 300.000 euros (compromiso 130); no menciona las criptomonedas.",
+          "tema": "impuestos",
+          "nivel": "S",
+          "conf": "sin_confirmar",
+          "fuente": "Criptoinforme, 17-nov-2026, citando el programa (pág. 49); no leído el programa original",
+          "url": "https://criptoinforme.com/legal/elecciones-29n-impuestos-criptomonedas-programas/"
+        },
+        {
+          "quien": "PP (programa)",
+          "cuando": "2026-11-17",
+          "texto": "Promete que Hacienda no penalizará ninguna forma de ahorro y trato equivalente entre ellas (medida 184); sin mención de criptomonedas ni tipos concretos.",
+          "tema": "cripto-fiscalidad",
+          "nivel": "S",
+          "conf": "sin_confirmar",
+          "fuente": "Criptoinforme, 17-nov-2026; programa original no leído",
+          "url": "https://criptoinforme.com/legal/elecciones-29n-impuestos-criptomonedas-programas/"
+        },
+        {
+          "quien": "Frente Amplio (programa)",
+          "cuando": "2026-11-17",
+          "texto": "Propone subir los tipos marginales hasta el 52 % desde 300.000 euros y menciona las criptomonedas (pág. 162) solo como posible recurso propio del presupuesto de la UE.",
+          "tema": "cripto-fiscalidad",
+          "nivel": "S",
+          "conf": "sin_confirmar",
+          "fuente": "Criptoinforme, 17-nov-2026; programa original no leído",
+          "url": "https://criptoinforme.com/legal/elecciones-29n-impuestos-criptomonedas-programas/"
+        },
+        {
+          "quien": "PP y Vox (programas)",
+          "cuando": "2026-11-23",
+          "texto": "PP: IRPF más bajo para rentas medias y bajas, IVA del 4 % en primera vivienda para menores de 40 y un millón de viviendas. Vox: bajar IRPF, IVA y sociedades e IVA del 0 % en primera vivienda nueva.",
+          "tema": "vivienda",
+          "nivel": "S",
+          "conf": "sin_confirmar",
+          "fuente": "Electomanía, comparativa de programas 29N (fecha de publicación no consta); [VERIFICAR] en los programas",
+          "url": "https://electomania.es/programas-electorales-29n-comparativa/"
+        },
+        {
+          "quien": "Comisión Europea (paquete de infracciones)",
+          "cuando": "2026-11-19",
+          "texto": "Envía dictamen motivado a España (INFR(2026)0060) por no transponer del todo DAC8; dos meses para responder, tras lo cual puede acudir al TJUE pidiendo sanciones.",
+          "tema": "dac8",
+          "nivel": "P",
+          "conf": "confirmada",
+          "fuente": "Comisión Europea, nota de prensa inf_26_2269, 19-nov-2026",
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/inf_26_2269"
+        },
+        {
+          "quien": "Comisión Europea (paquete de infracciones)",
+          "cuando": "2026-11-19",
+          "texto": "Abre procedimiento con carta de emplazamiento a España (INFR(2026)2153) por no transponer del todo la enmienda de MiCA a la CRD y no notificar medidas de varios artículos de MiCA; dos meses para responder.",
+          "tema": "mica",
+          "nivel": "P",
+          "conf": "confirmada",
+          "fuente": "Comisión Europea, nota de prensa inf_26_2269, 19-nov-2026",
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/inf_26_2269"
+        }
+      ],
+      "hipotesis": [
+        {
+          "afirmacion": "La convocatoria por sí sola no hará subir de forma severa la prima de riesgo; el riesgo está en un bloqueo parlamentario prolongado.",
+          "estado": "Razonada, no demostrada",
+          "porque": "Es la lectura base de un analista (Investing.com, 5-oct) y la prima estaba en ~59 pb el 23-nov. Depende del resultado del 29-nov. [ESPECULACIÓN] sobre el desenlace.",
+          "nivel": "R"
+        },
+        {
+          "afirmacion": "El Ibex suele caer el primer día hábil tras unas generales (10 de 11 desde 1993).",
+          "estado": "Estadística histórica, no predicción",
+          "porque": "Dato de Merca2 sobre series de BME; muestra de 11 casos, con otros factores en juego cada vez.",
+          "nivel": "S"
+        },
+        {
+          "afirmacion": "Si España no responde, la Comisión llevará DAC8 al TJUE con sanciones.",
+          "estado": "Posible, no anunciado",
+          "porque": "La Comisión dice 'puede decidir' si no hay respuesta; la ley decaída y la formación de Gobierno hacen difícil cumplir el plazo (~19-ene-2027). [ESPECULACIÓN]",
+          "nivel": "E"
+        }
+      ],
+      "lecturas": {
+        "alcista": "Prima de riesgo baja (~59 pb el 23-nov frente a Francia en 120-150 pb), Ibex +137 % con dividendos en la legislatura (XTB), previsiones de la Comisión favorables que cita el Gobierno, y unas privadas que apuntan a una mayoría clara (PP+Vox por encima de 176), lo que reduciría el riesgo de bloqueo. Para DAC8, un Gobierno nuevo con mayoría podría presentar la ley pronto y cerrar el expediente.",
+        "bajista": "El Ibex viene de su peor semana desde marzo (-5,7 %) y de caer en 10 de 11 elecciones; el CIS y las privadas divergen mucho, lo que deja un resultado incierto y pactos posibles difíciles; no hay Presupuestos; la ley de DAC8 decayó con la disolución y el plazo de Bruselas cae en plena formación de Gobierno, con riesgo de que el caso llegue al TJUE con sanciones; además hay un segundo expediente por MiCA."
+      },
+      "sesgos": [
+        "Encuestas de medios con línea editorial (La Razón, El Mundo, El País/SER, La Vanguardia): pueden reflejar la línea del medio; casi ninguna fuente leída da muestra y campo.",
+        "El CIS es un organismo del Gobierno; su estimación difiere de todas las privadas y un cálculo alternativo (Ateneo del Dato) da empate técnico.",
+        "El titular 'La bolsa se dispara con Sánchez' (Infobae/XTB) elige julio de 2023 como punto de partida y el propio texto admite que no se atribuye solo al Gobierno; XTB es un bróker.",
+        "OKDiario y Spain Report valoran el debate desde posiciones críticas con Sánchez; no hay encuesta posdebate.",
+        "Medios cripto (criptoinforme, otros) presentaron MiCA como dictamen motivado; la Comisión dice carta de emplazamiento.",
+        "Los comparadores de programas (Electomanía y otros) discrepan sobre qué programas están publicados."
+      ],
+      "contexto": [
+        "23-jul-2023: elecciones generales de la legislatura que ahora se disuelve (BOE, RD 806/2026).",
+        "jun-2025: el Gobierno envía a las Cortes el proyecto de ley que transpone DAC8 (121/000060); oct-2025, el Congreso rechaza la enmienda de totalidad de Vox (el PP se abstiene).",
+        "ene-2026: la Comisión envía cartas de emplazamiento por DAC8 a 12 Estados, entre ellos España (Comisión, 19-nov-2026).",
+        "10-mar-2026: Hacienda/AEAT somete a audiencia un proyecto de orden sobre obligaciones de información de criptoactivos (S, FinReg360 [VERIFICAR]).",
+        "5-oct-2026: Sánchez anuncia elecciones tras el rechazo de dos decretos de vivienda; 6-oct: BOE publica el RD 806/2026.",
+        "13-nov-2026: empieza la campaña; 12-nov, macroencuesta del CIS (PSOE 33,3 %, PP 25,5 %).",
+        "19-nov-2026: cara a cara Sánchez-Feijóo y paquete de infracciones de la Comisión (DAC8 dictamen motivado, MiCA carta de emplazamiento).",
+        "20-nov-2026: la semana deja al Ibex con la peor caída desde marzo (-5,7 %, Merca2).",
+        "23-nov-2026: último día legal de encuestas; Ibex +1,63 % a 19.181 puntos; bono a 10 años 3,864 %.",
+        "29-nov-2026: elecciones. 23-dic-2026: constitución de las Cortes. ~19-ene-2027: vence el plazo de dos meses de Bruselas."
+      ],
+      "pendientes": [
+        "Muestra, campo y margen de error de las encuestas privadas (40dB, Ipsos, Sigma Dos, NC Report, Sondaxe, Gesop, Sociométrica).",
+        "Cifras del cálculo alternativo del Ateneo del Dato sobre el CIS.",
+        "Leer los programas originales de PP, PSOE, Vox y Frente Amplio sobre cripto (la fuente es un único artículo de Criptoinforme).",
+        "Confirmar en el BOCG que el proyecto 121/000060 (DAC8) decayó; hoy solo lo dice Criptoinforme citando a Civio.",
+        "Estado de la orden ministerial de DAC8 (audiencia 10-mar-2026) y del real decreto (borrador de jul-2025): ¿hay norma aprobada?",
+        "Cierre oficial de prima de riesgo y bono (Tesoro/Banco de España): las cifras vienen de medios.",
+        "Nota de Scope y otras agencias sobre las elecciones: solo citada por OKDiario.",
+        "Resultado del 29-nov, reacción de mercado del 30-nov y calendario de investidura.",
+        "Respuesta de España a Bruselas antes de ~19-ene-2027 y si pasa a TJUE."
+      ],
+      "mercado": {
+        "desde": "2026-11-09",
+        "dia": "2026-11-23",
+        "nota": "Cierre del 23-nov (Europa Press/Bolsamanía vía Economía Responsable, S): Ibex 35 19.181,10 (+1,63 %), bono español a 10 años 3,864 %, prima de riesgo ~59 pb, euro/dólar 1,0894. El Ibex venía de caer un 5,7 % en la semana (Merca2). El lunes 23 se movió todo el mercado global (S&P 500 +4,73 %): no prueba causa electoral. El Ibex y la prima no están en precios_historico.json; las series muestran referencias globales.",
+        "series": [
+          [
+            "^GSPC",
+            "S&P 500"
+          ],
+          [
+            "DX-Y.NYB",
+            "Dólar (índice DXY)"
+          ],
+          [
+            "BTC-USD",
+            "Bitcoin ($)"
+          ],
+          [
+            "XRP-USD",
+            "XRP ($)"
+          ]
+        ]
+      },
+      "fuentes": [
+        {
+          "nombre": "BOE: Real Decreto 806/2026 de disolución y convocatoria",
+          "nivel": "P",
+          "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-20742",
+          "nota": "Leído el 24-nov-2026."
+        },
+        {
+          "nombre": "Comisión Europea: November infringements package (19-nov-2026)",
+          "nivel": "P",
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/inf_26_2269",
+          "nota": "Leído en el navegador; confirma DAC8 y MiCA."
+        },
+        {
+          "nombre": "elDiario.es: último CIS antes de las elecciones (23-nov)",
+          "nivel": "S",
+          "url": "https://www.eldiario.es/politica/ultimo-cis-elecciones-da-psoe-ventaja-diez-puntos-pp-vox-no-suma-mayoria-absoluta_1_13685466.html",
+          "nota": "Muestra 8.034, campo 10-17 nov; leído."
+        },
+        {
+          "nombre": "elDiario.es: Sánchez convoca elecciones (5-oct)",
+          "nivel": "S",
+          "url": "https://www.eldiario.es/politica/sanchez-convoca-elecciones-anticipadas-29-noviembre_1_13555649.html",
+          "nota": "Motivo declarado del adelanto."
+        },
+        {
+          "nombre": "Que.es: encuestas 29N, resumen (24-nov)",
+          "nivel": "S",
+          "url": "https://www.que.es/2026/11/24/encuestas-29n-feijoo-mayoria-pp-vox/",
+          "nota": "Agrega 40dB, Ipsos, Sigma Dos, Gesop, Sociométrica, Sondaxe; sin fichas técnicas."
+        },
+        {
+          "nombre": "Electomanía: comparativa de programas 29N",
+          "nivel": "S",
+          "url": "https://electomania.es/programas-electorales-29n-comparativa/",
+          "nota": "Leído parcialmente (se truncó)."
+        },
+        {
+          "nombre": "Criptoinforme: cripto en los programas (17-nov)",
+          "nivel": "S",
+          "url": "https://criptoinforme.com/legal/elecciones-29n-impuestos-criptomonedas-programas/",
+          "nota": "Única fuente de la ausencia de medidas cripto; leído."
+        },
+        {
+          "nombre": "Criptoinforme: ley DAC8 decae con las elecciones",
+          "nivel": "S",
+          "url": "https://criptoinforme.com/legal/ley-dac8-embargo-criptomonedas-decae-elecciones-espana/",
+          "nota": "Única fuente del decaimiento (cita a Civio)."
+        },
+        {
+          "nombre": "Actualidad Rioja Baja: debate Sánchez-Feijóo (19-nov)",
+          "nivel": "S",
+          "url": "https://actualidadriojabaja.com/sanchez-y-feijoo-discrepan-sobre-vivienda-impuestos-y-corrupcion-en-el-debate-del-29n/",
+          "nota": "Crónica; sin transcripción."
+        },
+        {
+          "nombre": "Economía Responsable: mercados del 23-nov-2026",
+          "nivel": "S",
+          "url": "https://www.economiaresponsablefinanzas.com/inversiones/mercados/mercados-hoy-23-noviembre-2026/",
+          "nota": "Cierres con datos de Europa Press y Bolsamanía; contrastar con Tesoro/BdE."
+        },
+        {
+          "nombre": "Merca2: el Ibex cae en 10 de 11 citas electorales (21-nov)",
+          "nivel": "S",
+          "url": "https://www.merca2.es/2026/11/21/ibex-35-caida-citas-electorales-2513727/",
+          "nota": "Dato histórico sobre series de BME."
+        },
+        {
+          "nombre": "Investing.com: impacto económico de las elecciones (5-oct)",
+          "nivel": "S",
+          "url": "https://es.investing.com/analysis/impacto-economico-de-las-elecciones-generales-anticipadas-en-espana-29-n-200484922",
+          "nota": "Tres escenarios; análisis de un autor."
+        },
+        {
+          "nombre": "Infobae/XTB: el Ibex en la legislatura (19-nov)",
+          "nivel": "S",
+          "url": "https://www.infobae.com/espana/2026/11/20/la-bolsa-se-dispara-con-pedro-sanchez-el-ibex-35-sube-un-137-en-esta-legislatura-y-supera-a-los-principales-indices-mundiales/",
+          "nota": "Fuente: bróker; titular simplifica."
+        }
+      ]
+    },
+    {
+      "id": "iran-ormuz-2026-11-24",
+      "tipo": "conflicto",
+      "titulo": "Guerra de EE. UU. contra Irán y estrecho de Ormuz: declaraciones y negociaciones (corte 24-nov-2026)",
+      "fecha": "2026-11-24",
+      "lugar": "Golfo Pérsico, estrecho de Ormuz y golfo de Omán; mediación en Doha (Catar) e Islamabad (Pakistán)",
+      "participantes": [
+        "EE. UU. (Trump, Rubio, Hegseth, Bessent)",
+        "Irán (Mojtaba Jamenei, Araqchi, Baghaei, Ghalibaf, Rezaei, mando del CGRI)",
+        "Mediadores: Catar y Pakistán",
+        "Golfo (Bahréin, Kuwait, EAU, Arabia Saudí)",
+        "China y Rusia (sin posición pública nueva localizada)"
+      ],
+      "formato": "No es una cumbre: seguimiento de un conflicto abierto. Guerra desde el 28-feb-2026; alto el fuego y memorándum de Islamabad (jun) rotos desde julio; bloqueo naval de EE. UU. a los puertos iraníes; negociación indirecta vía Catar y Pakistán, que Teherán niega en público.",
+      "titular": "Los ataques en Ormuz son muy altos, pero «el más alto desde que empezó» queda MATIZADO: octubre fue peor en conteo mensual (UKMTO) y noviembre es el segundo. Sin negociación efectiva: Irán exige 7 condiciones y Trump da por nulo el memorándum de Islamabad.",
+      "firmado": [
+        {
+          "n": 1,
+          "tema": "Memorándum de Islamabad (17-jun-2026): fin de la guerra y levantamiento del doble bloqueo",
+          "texto": "Según Wikipedia (nivel S, terciaria [VERIFICAR] con fuente primaria), EE. UU. e Irán firmaron el 17 de junio un memorándum para terminar la guerra y levantar el doble bloqueo; el alto el fuego se reanudó el 28-jun.",
+          "concreto": "Hoy está roto: Trump lo calificó de pérdida de tiempo y lo declaró nulo (22-nov, Euronews); Irán exige que se cumplan los compromisos que dice que EE. UU. aceptó en él.",
+          "mercado": "Sin vigencia práctica; no hay mecanismo de reapertura de Ormuz."
+        },
+        {
+          "n": 2,
+          "tema": "Alto el fuego del 8 y 21-abr-2026",
+          "texto": "Alto el fuego de dos semanas el 8-abr y alto el fuego indefinido anunciado por EE. UU. el 21-abr (Wikipedia, S [VERIFICAR]); colapsó el 8-jul tras ataques iraníes a buques comerciales.",
+          "concreto": "No hay alto el fuego formal vigente; hay bloqueo naval y ataques mutuos de baja-media intensidad.",
+          "mercado": "Referencia histórica: los alivios de abril y junio no estabilizaron el tránsito."
+        }
+      ],
+      "bilaterales": [],
+      "no_hay": [
+        "No hay negociación directa confirmada: Rezaei (11-nov) y Ghalibaf (24-nov) dicen que no negociarán hasta cumplir las 7 condiciones (Al Jazeera, Gulf News).",
+        "No hay lista oficial completa de las 7 condiciones; solo 5 reportadas (bloqueo, sanciones, fondos congelados, fin de hostilidades en todos los frentes, declarar el fin de la guerra).",
+        "El texto de Shenzhen (19-nov) no menciona Irán ni Ormuz; la afirmación de Trump de que Xi aceptó Ormuz abierto sigue sin confirmación china.",
+        "No hay comunicado de CENTCOM de noviembre que respalde el «control total» de Ormuz que dice Trump (houseofsaud, nivel S bajo [VERIFICAR])."
+      ],
+      "declaraciones": [
+        {
+          "quien": "Donald Trump (Truth Social)",
+          "cuando": "2026-11-22",
+          "texto": "Dijo que Irán lanzó en la última semana más drones y misiles que en más de un año, que todos fueron interceptados y que no causaron daños; lo vinculó a las elecciones del 3-nov.",
+          "tema": "ataques",
+          "nivel": "D",
+          "conf": "sin_confirmar",
+          "fuente": "CBS News (directo), 24-nov-2026. Autodeclaración de una parte.",
+          "url": "https://www.cbsnews.com/live-updates/iran-war-us-trump-blockade-strait-of-hormuz-ship-attacks/"
+        },
+        {
+          "quien": "Donald Trump",
+          "cuando": "2026-11-22",
+          "texto": "Advirtió de que los barcos iraníes que intenten romper el bloqueo irán «al fondo del mar»; calificó el memorándum de Islamabad de pérdida de tiempo, lo dio por nulo y tachó de tontería las negociaciones.",
+          "tema": "bloqueo",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Euronews, 23-nov-2026",
+          "url": "https://www.euronews.com/2026/11/23/iran-vows-every-means-to-counter-us-blockade-of-hormuz-after-trump-threat"
+        },
+        {
+          "quien": "Esmaeil Baghaei (portavoz Exteriores de Irán)",
+          "cuando": "2026-11-23",
+          "texto": "Calificó el bloqueo naval de violación de la Carta de la ONU y acto de agresión militar; dijo que Irán usará todos los medios, citando el artículo 51 (legítima defensa).",
+          "tema": "bloqueo",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Euronews y CBS News, 23-nov-2026",
+          "url": "https://www.euronews.com/2026/11/23/iran-vows-every-means-to-counter-us-blockade-of-hormuz-after-trump-threat"
+        },
+        {
+          "quien": "Abbas Araqchi (ministro de Exteriores de Irán)",
+          "cuando": "2026-11-23",
+          "texto": "Dijo que Ormuz podría reabrirse en dos horas si la otra parte cumple sus compromisos; Baghaei matizó después que era para mostrar disposición, no para minimizar la complejidad.",
+          "tema": "ormuz",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Euronews, 23-nov-2026 (el 11-nov había hablado de «dos días»)",
+          "url": "https://www.euronews.com/2026/11/23/iran-vows-every-means-to-counter-us-blockade-of-hormuz-after-trump-threat"
+        },
+        {
+          "quien": "Mohammad Bagher Ghalibaf (presidente del Parlamento y negociador jefe)",
+          "cuando": "2026-11-24",
+          "texto": "Reiteró que Irán no negociará con Washington hasta cumplir las siete condiciones y que una acción hostil de EE. UU. podría ampliar el conflicto; llamó desesperación a las amenazas.",
+          "tema": "negociacion",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Gulf News (vía Fars, agencia afín al CGRI), 24-nov-2026",
+          "url": "https://gulfnews.com/world/mena/middle-east-conflict-us-investigates-iran-over-cyberattacks-on-50-ships-as-fresh-sanctions-target-irans-shadow-banking-network-1.500758688"
+        },
+        {
+          "quien": "CGRI (Guardia Revolucionaria de Irán)",
+          "cuando": "2026-11-23",
+          "texto": "Afirmó que tres petroleros chocaron con minas navales en Ormuz bajo cobertura y escolta aérea de EE. UU., y avisó de que esa protección no sustituye acatar las instrucciones del CGRI; Irán solo aprueba un carril norte.",
+          "tema": "ataques",
+          "nivel": "D",
+          "conf": "sin_confirmar",
+          "fuente": "CNBC, 24-nov-2026. Atribución de las minas solo de fuente iraní; sin confirmación independiente.",
+          "url": "https://www.cnbc.com/2026/11/24/iran-trump-hormuz-crude-.html"
+        },
+        {
+          "quien": "Scott Bessent (Secretario del Tesoro de EE. UU.)",
+          "cuando": "2026-11-23",
+          "texto": "Dijo que la economía iraní está «hundida» y su banca en la sombra es su último salvavidas; el Tesoro amplió sanciones a más de dos docenas de casas de cambio y testaferros; proyectó una contracción del 25 % para marzo de 2027.",
+          "tema": "sanciones",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "CNBC, 24-nov-2026; Al Jazeera, 22-nov-2026 (proyección del 25 %). La cifra es una proyección [ESPECULACIÓN].",
+          "url": "https://www.cnbc.com/2026/11/24/iran-trump-hormuz-crude-.html"
+        },
+        {
+          "quien": "Marco Rubio (Secretario de Estado de EE. UU.)",
+          "cuando": "2026-11-23",
+          "texto": "Se reunió en Washington con el primer ministro y el ministro de Exteriores de Catar, que presionan para reactivar las conversaciones EE. UU.–Irán. Lectura del contenido de la reunión: no localizada.",
+          "tema": "mediacion",
+          "nivel": "S",
+          "conf": "sin_confirmar",
+          "fuente": "Gulf News, 24-nov-2026 [VERIFICAR con Departamento de Estado]",
+          "url": "https://gulfnews.com/world/mena/middle-east-conflict-us-investigates-iran-over-cyberattacks-on-50-ships-as-fresh-sanctions-target-irans-shadow-banking-network-1.500758688"
+        },
+        {
+          "quien": "Marco Rubio",
+          "cuando": "2026-11-08",
+          "texto": "Dijo en Florida, antes de ir al G7 en París, que no hay avance cercano y calificó de escandalosas algunas exigencias iraníes; admitió que EE. UU. prefiere la diplomacia aunque no siempre sea posible. Añadió que la campaña económica es tan dura que no hacen falta grandes operaciones de combate.",
+          "tema": "negociacion",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "CNBC, 9-nov-2026 y Al Jazeera, 11-nov-2026",
+          "url": "https://www.cnbc.com/2026/11/09/us-iran-war-trump-hormuz.html"
+        },
+        {
+          "quien": "Donald Trump (entrevista CNN)",
+          "cuando": "2026-11-08",
+          "texto": "Dijo que nuevos ataques serían «muy poco probables» si avanzan las negociaciones, y las vinculó al programa nuclear y a reabrir Ormuz. El 20-nov afirmó que EE. UU. sacó petróleo récord del estrecho (sin respaldo de CENTCOM localizado).",
+          "tema": "negociacion",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "CNBC, 9-nov-2026; la frase del 20-nov: houseofsaud (nivel S bajo) [VERIFICAR]",
+          "url": "https://www.cnbc.com/2026/11/09/us-iran-war-trump-hormuz.html"
+        },
+        {
+          "quien": "Mohsen Rezaei (jefe de seguridad iraní, según Al Jazeera)",
+          "cuando": "2026-11-11",
+          "texto": "Dijo a Al Mayadeen que la negociación o reunión en Catar es falsa, que Washington la promueve para aliviar la presión económica y bajar el crudo, y que Ormuz sigue cerrado hasta cumplir las siete condiciones.",
+          "tema": "negociacion",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Al Jazeera, 11-nov-2026. Fuente iraní oficial-afín.",
+          "url": "https://www.aljazeera.com/news/2026/11/11/iran-denies-talks-with-us-says-hormuz-will-stay-shut-until-demands-are-met"
+        },
+        {
+          "quien": "Donald Trump (cumbre de Shenzhen)",
+          "cuando": "2026-11-19",
+          "texto": "Dijo que Xi acordó que Ormuz debe seguir abierto y que Irán no puede tener arma nuclear. Xi y Putin no lo abordaron en público; la declaración no cita Irán.",
+          "tema": "china",
+          "nivel": "D",
+          "conf": "sin_confirmar",
+          "fuente": "Al Jazeera, 19-nov-2026. En mayo de 2026 (Pekín) el comunicado de la Casa Blanca ya recogía algo similar y China lo matizó; no hay lectura china de noviembre localizada.",
+          "url": "https://www.aljazeera.com/news/2026/11/19/groundbreaking-trump-xi-putin-summit-five-key-takeaways"
+        },
+        {
+          "quien": "Mojtaba Jamenei (Líder Supremo de Irán)",
+          "cuando": "2026-10-31",
+          "texto": "Advirtió a EE. UU. e Israel contra reanudar la guerra: Irán respondería sin límite geográfico.",
+          "tema": "amenaza",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "CBS News (directo), 1-nov-2026 (fuera de las últimas 4 semanas por poco, útil de contexto)",
+          "url": "https://www.cbsnews.com/live-updates/iran-war-us-trump-diplomacy-threat-resume-attacks/"
+        },
+        {
+          "quien": "Masoud Pezeshkian (presidente de Irán) y Kazem Gharibabadi (viceministro de Exteriores)",
+          "cuando": "2026-11-22",
+          "texto": "Pezeshkian habló de una «guerra económica silenciosa»; Gharibabadi calificó el bloqueo económico de acto de guerra.",
+          "tema": "bloqueo",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Al Jazeera, 22-nov-2026",
+          "url": "https://www.aljazeera.com/news/2026/11/22/whats-behind-irans-escalation-of-attacks-in-the-gulf"
+        },
+        {
+          "quien": "Pete Hegseth, China (Exteriores) y Rusia",
+          "cuando": "2026-11-24",
+          "texto": "No he localizado declaraciones nuevas y citables de Hegseth, del Ministerio de Exteriores chino, de Putin ni de los gobiernos del Golfo sobre Ormuz en las últimas 4 semanas, salvo la confirmación de Bahréin del incendio en Sitra tras un ataque iraní (Al Jazeera, 22-nov).",
+          "tema": "vacio",
+          "nivel": "S",
+          "conf": "sin_confirmar",
+          "fuente": "Búsquedas del 24-nov-2026 [VERIFICAR en CENTCOM, Mº Exteriores chino y Kremlin]",
+          "url": "https://www.aljazeera.com/news/2026/11/22/whats-behind-irans-escalation-of-attacks-in-the-gulf"
+        }
+      ],
+      "hipotesis": [
+        {
+          "afirmacion": "El recrudecimiento iraní en Ormuz responde al bloqueo naval de EE. UU. (presión para forzar una salida negociada).",
+          "estado": "Razonada, no demostrada",
+          "porque": "Teherán lo plantea así (Baghaei, 23-nov) y analistas citados por Al Jazeera (Khouri, Parsi) coinciden en que busca repartir el coste por el Golfo. Pero la explicación llega de la parte implicada y de analistas, no de un documento. [ESPECULACIÓN] sobre intención.",
+          "nivel": "R"
+        },
+        {
+          "afirmacion": "Las minas son responsables de los daños a petroleros (versión iraní) y no ataques directos.",
+          "estado": "Sin confirmar",
+          "porque": "Solo las fuentes iraníes atribuyen las explosiones a minas y a rutas «no autorizadas»; el Ejército y el CGRI dieron recuentos distintos (tres y dos buques) el mismo día (Gulf News). UKMTO confirma incidentes, no causa.",
+          "nivel": "E"
+        },
+        {
+          "afirmacion": "Un trueque en Shenzhen: Xi presiona a Irán a cambio de algo en comercio.",
+          "estado": "No respaldada por los hechos",
+          "porque": "Ni el texto firmado ni lecturas chinas lo recogen; solo hay la declaración de Trump. [ESPECULACIÓN].",
+          "nivel": "E"
+        }
+      ],
+      "lecturas": {
+        "alcista": "El mercado ya descuenta oferta: la AIE (13-nov) prevé superávit de ~1,7 mb/d en el 4T-2026 y ~3,8 mb/d en 2027, Brent bajó de ~118 $ (30-oct) a ~89 $ (24-nov) pese a las minas; hay tres portaaviones en la zona, Catar mediando y Araqchi dice que Ormuz abriría en horas si EE. UU. cumple; las sanciones presionan a Teherán y la parte iraní ofrece un camino a la desescalada.",
+        "bajista": "No hay negociación efectiva (7 condiciones, memorándum declarado nulo), los ataques en octubre y noviembre son los mayores del conflicto, el tránsito sigue a cerca de la mitad del previo, parte del superávit de la AIE es petróleo flotante y las existencias en tierra siguen bajas; un incidente con un portaaviones o un convoy iraní para romper el bloqueo puede disparar el crudo (Eurasia Group ve rango 80-100 $); además, ciberataques a ~50 buques (WSJ) y seguros del Golfo en 3,5-7,5 % del valor del casco."
+      },
+      "sesgos": [
+        "Casi todo lo que sale de Irán llega por agencias del CGRI o afines (Fars, Tasnim, IRNA, Al Mayadeen): propaganda y disuasión; cifras de buques y minas no verificadas por terceros.",
+        "Trump y la Casa Blanca hacen declaraciones de éxito («control total», «petróleo récord», todo interceptado) que CENTCOM no ha confirmado; hay interés electoral y político (elecciones del 3-nov perdidas en el Congreso).",
+        "UKMTO solo cuenta incidentes confirmados por fuente primaria; muchos buques no informan o apagan el AIS: los conteos infravaloran (JPost).",
+        "El titular «el nivel más alto» depende de la medida (mensual, semanal, tipo de ataque); CNN lo respalda con datos marítimos, pero los propios números de octubre son mayores.",
+        "Medios agregadores y blogs de mercado (financefeeds, houseofsaud, discoveryalert, Wikipedia) son nivel S bajo: los datos de precios y flujos varían entre ellos."
+      ],
+      "contexto": [
+        "Febrero de 2026: negociación nuclear EE. UU.–Irán con el mayor despliegue estadounidense en la región desde 2003 (Wikipedia, S [VERIFICAR]).",
+        "27-feb-2026: Trump autoriza la «Operación Epic Fury»; 28-feb: comienzan ataques de EE. UU. e Israel en Irán y muere el Líder Supremo Ali Jamenei (Wikipedia, S; Al Jazeera 19-nov confirma el ataque de febrero y el cierre de Ormuz).",
+        "Principios de marzo de 2026: Irán bloquea el tránsito por Ormuz (Wikipedia, S). Antes de la guerra pasaban unos 135 buques al día (UKMTO vía Al Jazeera, 22-nov).",
+        "8-abr-2026: alto el fuego de dos semanas; 12-13 abr: fracasan las conversaciones de Islamabad (Pakistán anfitrión); mediados-fines de abril: bloqueo naval de EE. UU. a Irán; 21-abr: alto el fuego indefinido (Wikipedia, S [VERIFICAR]).",
+        "14-15 may-2026: cumbre Trump–Xi en Pekín; según la Casa Blanca, Xi se opuso a militarizar Ormuz y a cobrar peaje (Time, US News, mayo de 2026).",
+        "17-jun-2026: memorándum de Islamabad para terminar la guerra y levantar el doble bloqueo; 28-jun reanudan el alto el fuego; 8-jul: colapsa tras ataques iraníes a buques comerciales (Wikipedia, S).",
+        "Agosto de 2026: nueva ronda de sanciones de EE. UU. («Operación Economic Outcast») (Al Jazeera, 22-nov).",
+        "Octubre de 2026: récord de ataques a buques (más de 30 según UKMTO, 37 según firmas de seguimiento citadas por Al Jazeera); Brent liquida en torno a 117,6 $ el 30-oct (fuente secundaria [VERIFICAR]); mediadores de Catar y Pakistán se reúnen en Doha con delegación iraní (31-oct, CBS).",
+        "3-nov-2026: elecciones legislativas en EE. UU.; los demócratas ganan ambas cámaras (CBS).",
+        "9-nov-2026: Trump recibe al primer ministro de Catar en la Casa Blanca; Rubio habla desde París de diplomacia; 11-nov: Irán niega que haya conversaciones (Al Jazeera).",
+        "13-nov-2026: informe de la AIE prevé el primer superávit de oferta desde que empezó la guerra (secundarias).",
+        "19-nov-2026: cumbre Trump–Xi–Putin en Shenzhen sin mención a Irán en el texto.",
+        "21-24 nov-2026: tres petroleros afectados el 21-nov, tres chocan con minas según Irán el 23-nov y dos el 24-nov; EE. UU. añade un tercer portaaviones (USS Theodore Roosevelt) y amplía sanciones; Trump anuncia el 22-nov que el memorándum es nulo; Catar y Rubio se reúnen el 23-nov."
+      ],
+      "pendientes": [
+        "Verificar con UKMTO / JMIC (primaria) los conteos semanales y mensuales de ataques: ¿es la última semana la más alta, o solo el mes de octubre? El texto de CNN no pude leerlo (HTTP 451); me baso en JPost y Al Jazeera.",
+        "Cifras de la AIE (OMR del 13-nov): leerlas en iea.org; solo las tengo por medios secundarios (superávit 4T ~1,7 mb/d; 2027 ~3,8 mb/d; exportaciones del Golfo 18,4 mb/d en octubre, 26 % bajo prepandemia).",
+        "Flujos por Ormuz: Kpler vía Reuters ~9,5 mb/d (10 días hasta el 19-nov) frente a 12,2 mb/d en octubre; otra fuente cita 8,3 frente a 17,1: discrepancia sin resolver.",
+        "Lista oficial de las 7 condiciones iraníes y contenido del memorándum de Islamabad: no publicados íntegros.",
+        "Resultado de la reunión Rubio–Catar del 23-nov (Departamento de Estado) y si hay nueva ronda indirecta.",
+        "Cronología de febrero-julio proviene de Wikipedia (S): contrastar con Reuters/AP o fuentes oficiales antes de citarla como hecho.",
+        "Reunión OPEP+ del 29-nov-2026 (marco de cuotas de 2027): comprobar resultado.",
+        "Posición de China, Rusia y gobiernos del Golfo sobre el recrudecimiento: sin declaraciones localizadas en 4 semanas.",
+        "Comunicados de CENTCOM sobre escoltas, drones derribados (20.º MQ-1 según el CGRI) y la afirmación de Trump de «control total»."
+      ],
+      "mercado": {
+        "desde": "2026-11-09",
+        "dia": "2026-11-23",
+        "nota": "Referencias de precio: Brent ~97,6 $ y WTI ~90,5 $ el 9-nov (CNBC); Brent ~89,2 $ y WTI ~80,1 $ el 24-nov (CNBC); máximo de octubre cercano a 105 $ WTI. Precios de cierre diarios de precios_historico.json (nivel S, agregador). No prueba causa: coinciden el superávit AIE, la recuperación de exportaciones rusas y el reinicio de Libia.",
+        "series": [
+          [
+            "BZ=F",
+            "Petróleo Brent ($)"
+          ],
+          [
+            "CL=F",
+            "Petróleo WTI ($)"
+          ],
+          [
+            "^GSPC",
+            "S&P 500"
+          ],
+          [
+            "^VIX",
+            "VIX (volatilidad)"
+          ],
+          [
+            "^TNX",
+            "Bono EE. UU. 10 años (%)"
+          ],
+          [
+            "GC=F",
+            "Oro ($)"
+          ],
+          [
+            "DX-Y.NYB",
+            "Dólar (índice DXY)"
+          ]
+        ]
+      },
+      "fuentes": [
+        {
+          "nombre": "CNN: ataques en Ormuz al nivel más alto del conflicto (titular)",
+          "nivel": "S",
+          "url": "https://www.cnn.com/2026/11/22/middleeast/hormuz-attacks-highest-levels-iran-war-intl",
+          "nota": "No leída íntegra (HTTP 451); solo titular por búsqueda."
+        },
+        {
+          "nombre": "Jerusalem Post: UKMTO >30 en octubre, ≥22 en noviembre",
+          "nivel": "S",
+          "url": "https://www.jpost.com/middle-east/iran-news/article-915773",
+          "nota": "Leído el 24-nov-2026; avisa de que UKMTO subestima."
+        },
+        {
+          "nombre": "Al Jazeera: qué hay detrás de la escalada (22-nov)",
+          "nivel": "S",
+          "url": "https://www.aljazeera.com/news/2026/11/22/whats-behind-irans-escalation-of-attacks-in-the-gulf",
+          "nota": "Leído el 24-nov-2026; ~25 petroleros en 7 días, 263 buques 12-18 nov, seguros 3,5-7,5 %."
+        },
+        {
+          "nombre": "CNBC: tres petroleros y minas, sanciones del Tesoro, precios (24-nov)",
+          "nivel": "S",
+          "url": "https://www.cnbc.com/2026/11/24/iran-trump-hormuz-crude-.html",
+          "nota": "Leído el 24-nov-2026."
+        },
+        {
+          "nombre": "Euronews: Irán promete todos los medios contra el bloqueo (23-nov)",
+          "nivel": "S",
+          "url": "https://www.euronews.com/2026/11/23/iran-vows-every-means-to-counter-us-blockade-of-hormuz-after-trump-threat",
+          "nota": "Leído el 24-nov-2026."
+        },
+        {
+          "nombre": "CBS News: directo (ataques, Trump en Truth Social)",
+          "nivel": "S",
+          "url": "https://www.cbsnews.com/live-updates/iran-war-us-trump-blockade-strait-of-hormuz-ship-attacks/",
+          "nota": "Leído el 24-nov-2026."
+        },
+        {
+          "nombre": "CBS News: directo (declaraciones 30-oct a 1-nov, mediación Catar y Pakistán)",
+          "nivel": "S",
+          "url": "https://www.cbsnews.com/live-updates/iran-war-us-trump-diplomacy-threat-resume-attacks/",
+          "nota": "Leído el 24-nov-2026."
+        },
+        {
+          "nombre": "Al Jazeera: Irán niega conversaciones (11-nov)",
+          "nivel": "S",
+          "url": "https://www.aljazeera.com/news/2026/11/11/iran-denies-talks-with-us-says-hormuz-will-stay-shut-until-demands-are-met",
+          "nota": "Leído el 24-nov-2026."
+        },
+        {
+          "nombre": "CNBC: Rubio y Trump (9-nov)",
+          "nivel": "S",
+          "url": "https://www.cnbc.com/2026/11/09/us-iran-war-trump-hormuz.html",
+          "nota": "Leído el 24-nov-2026."
+        },
+        {
+          "nombre": "Gulf News: siete condiciones, Ghalibaf, Catar–Rubio",
+          "nivel": "S",
+          "url": "https://gulfnews.com/world/mena/middle-east-conflict-us-investigates-iran-over-cyberattacks-on-50-ships-as-fresh-sanctions-target-irans-shadow-banking-network-1.500758688",
+          "nota": "Leído el 24-nov-2026; cita agencia afín al CGRI."
+        },
+        {
+          "nombre": "Al Jazeera: cumbre de Shenzhen (19-nov)",
+          "nivel": "S",
+          "url": "https://www.aljazeera.com/news/2026/11/19/groundbreaking-trump-xi-putin-summit-five-key-takeaways",
+          "nota": "Leído el 24-nov-2026."
+        },
+        {
+          "nombre": "Wikipedia: 2026 Iran war (cronología)",
+          "nivel": "S",
+          "url": "https://en.wikipedia.org/wiki/2026_Iran_war",
+          "nota": "Terciaria; leídas ~100.000 caracteres de 291.000. Contrastar fechas."
+        },
+        {
+          "nombre": "OPEP: comunicado del 1-nov-2026 (cuotas de diciembre; reunión 29-nov)",
+          "nivel": "P",
+          "url": "https://www.opec.org/pr-detail/2033620-1-november-2026.html",
+          "nota": "Solo vista en resultados de búsqueda, no leída."
+        },
+        {
+          "nombre": "AIE: informe mensual de petróleo (13-nov), por cobertura secundaria",
+          "nivel": "S",
+          "url": "https://www.instituteforenergyresearch.org/fossil-fuels/gas-and-oil/iea-now-projects-an-oil-surplus/",
+          "nota": "No leída; buscar la fuente en iea.org."
+        }
+      ]
+    },
+    {
+      "id": "ucrania-2026-11-24",
+      "tipo": "conflicto",
+      "titulo": "Guerra de Ucrania: negociaciones y sanciones tras Shenzhen (24-nov-2026)",
+      "fecha": "2026-11-24",
+      "lugar": "Shenzhen (19-nov), Berlín (19-nov), Bruselas/Estrasburgo (23-nov)",
+      "participantes": [
+        "Trump, Xi y Putin (Shenzhen, 19-nov)",
+        "Merz, Macron, Burnham (Reino Unido) y Zelenski, con más de 40 socios y los enviados de EE. UU. Witkoff y Kushner (Berlín, 19-nov)",
+        "Comisión Europea (von der Leyen), presenta el paquete 22 el 23-nov"
+      ],
+      "formato": "Informe de seguimiento de un conflicto: estado de las negociaciones, declaraciones con fecha, y el paquete 22 de sanciones de la UE (propuesto, no adoptado). No es una cumbre única.",
+      "titular": "No hay paz ni alto el fuego: Rusia dice haber aceptado compromisos y culpa a Kiev y Europa; Europa pide tregua energética de invierno y la Comisión propone el paquete 22 (propuesto el 23-nov, sin adoptar). El «paquete del 20-nov» del seguimiento no existe con esa fecha: el 21 se adoptó el 23-jul y el 22 se propuso el 23-nov.",
+      "firmado": [],
+      "bilaterales": [],
+      "no_hay": [
+        "Ningún alto el fuego ni calendario de negociación; Peskov dijo (23-nov, según prensa) que la fecha de conversaciones no está fijada [VERIFICAR texto TASS].",
+        "El paquete 22 NO está adoptado: requiere unanimidad de los 27 y no consta fecha de votación.",
+        "Ninguna fuente leída menciona stablecoins ni rublo digital en el paquete 22; solo cripto en general y un bloqueo a plataformas de Kirguistán (mlq.ai, secundaria).",
+        "Los activos rusos congelados (~210.000 M€) siguen inmovilizados, sin decisión de confiscarlos (embajadora de la UE, 18-nov).",
+        "La declaración de Shenzhen no menciona Ucrania (cumbres.json, entrada shenzhen-2026-11-19)."
+      ],
+      "declaraciones": [
+        {
+          "quien": "Vladimir Putin (rueda de prensa tras Shenzhen)",
+          "cuando": "2026-11-19",
+          "texto": "Dijo que Rusia aceptó los compromisos que EE. UU. propuso antes de Anchorage y que Kiev y las capitales europeas no; descartó cualquier tropa extranjera en Ucrania; acusó a la dirigencia ucraniana de alargar la guerra para conservar financiación y evitar elecciones; dijo haber invitado a los europeos a exponer sus posiciones por vías diplomáticas.",
+          "tema": "ucrania",
+          "nivel": "D",
+          "conf": "sin_confirmar",
+          "fuente": "Protothema (leída) y kurs.com.ua (sin poder abrir). Parte interesada: Putin no detalló los compromisos. Ucrania y Europa lo niegan.",
+          "url": "https://en.protothema.gr/?p=940503"
+        },
+        {
+          "quien": "Vladimir Putin (misma rueda de prensa)",
+          "cuando": "2026-11-19",
+          "texto": "Según Kyiv Independent, dijo que por el ataque ucraniano al puente de Crimea el Kremlin ya no quiere discutir ni una tregua de infraestructuras energéticas ni una del mar Negro; vinculó las «zonas de seguridad» fronterizas a ese ataque y prometió reparar el puente.",
+          "tema": "ucrania",
+          "nivel": "D",
+          "conf": "sin_confirmar",
+          "fuente": "Kyiv Independent (leída, 19-nov-2026); Protothema confirma lo del puente pero no la tregua energética. Medio ucraniano: parte interesada.",
+          "url": "https://kyivindependent.com/coalition-of-the-willing-calls-on-russia-to-accept-winter-energy-truce/"
+        },
+        {
+          "quien": "Yuri Ushakov (asesor del Kremlin)",
+          "cuando": "2026-11-19",
+          "texto": "Dijo que la guerra de Ucrania dominó el bilateral Trump–Putin; sin resultado anunciado.",
+          "tema": "ucrania",
+          "nivel": "D",
+          "conf": "sin_confirmar",
+          "fuente": "Reuters vía U.S. News, 19-nov-2026 (visto en cumbres.json; no he podido releer la página: timeout). Sin versión de la Casa Blanca.",
+          "url": "https://www.usnews.com/news/world/articles/2026-11-19/ukraine-was-main-topic-at-trump-putin-meeting-kremlin-says"
+        },
+        {
+          "quien": "Volodímir Zelenski",
+          "cuando": "2026-11-21",
+          "texto": "Calificó la cumbre de Shenzhen de muy poco exitosa para Putin, que según él quería un reparto de esferas tipo Yalta; dijo que no sabe qué se habló en el bilateral EE. UU.–Rusia y que Ucrania no se discutió; señaló una descarga nocturna de 111 misiles como reacción rusa; llamó a Putin terrorista y asesino.",
+          "tema": "ucrania",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Interfax-Ucrania (leída; agencia ucraniana) y Jerusalem Post (leída), 21-nov-2026. La cifra de 111 misiles solo aparece en Interfax (sin contrastar).",
+          "url": "https://en.interfax.com.ua/news/general/1240291.html"
+        },
+        {
+          "quien": "Volodímir Zelenski (Berlín)",
+          "cuando": "2026-11-19",
+          "texto": "Según prensa, se retiró del escenario cuando le preguntaron por el saludo de Trump a Putin («mi amigo»). Dijo que sus prioridades son defensa aérea, energía y apoyo financiero.",
+          "tema": "ucrania",
+          "nivel": "S",
+          "conf": "sin_confirmar",
+          "fuente": "ANI/Tribune (ANI dio 403, solo resumen de búsqueda) y RTÉ para las prioridades (leída). Fecha del gesto: 19 o 20-nov según medios [VERIFICAR].",
+          "url": "https://www.rte.ie/news/world/2026/1119/1599769-coalition-of-willing-berlin-meeting/"
+        },
+        {
+          "quien": "Coalición de voluntarios: Merz, Macron, Burnham y Zelenski (declaración conjunta)",
+          "cuando": "2026-11-19",
+          "texto": "Pidieron a Rusia una tregua energética todo el invierno y una del mar Negro para exportar alimentos; garantías de seguridad jurídicamente vinculantes y defensivas, con una Fuerza Multinacional liderada por Europa; más presión sobre petróleo, gas y flota fantasma y cripto; mantener inmovilizados los activos rusos hasta que cese la guerra y compense; apoyo de 90.000 M€ del préstamo de la UE.",
+          "tema": "ucrania",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Ukrinform (leída, 20-nov) y Kyiv Independent (leída, 19-nov): coinciden. Texto íntegro oficial sin leer (ostro.info lo cita). Parte interesada: los firmantes.",
+          "url": "https://www.ukrinform.net/rubric-polytics/4186635-coalition-of-the-willing-leaders-urge-russia-to-agree-to-winter-energy-truce.html"
+        },
+        {
+          "quien": "Emmanuel Macron (Berlín)",
+          "cuando": "2026-11-19",
+          "texto": "Dijo que hay que reabrir la cuestión de la adhesión de Ucrania a la OTAN y pidió más defensa aérea.",
+          "tema": "ucrania",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "RTÉ, 19-nov-2026 (leída). Sin segunda fuente.",
+          "url": "https://www.rte.ie/news/world/2026/1119/1599769-coalition-of-willing-berlin-meeting/"
+        },
+        {
+          "quien": "Andy Burnham (primer ministro del Reino Unido, cofirmante)",
+          "cuando": "2026-11-19",
+          "texto": "Prometió apoyo a Ucrania mientras haga falta y que no vacilarán. Nota: Starmer no aparece en las fuentes leídas; sí Burnham (RTÉ, Kyiv Independent).",
+          "tema": "ucrania",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "RTÉ, 19-nov-2026 (leída).",
+          "url": "https://www.rte.ie/news/world/2026/1119/1599769-coalition-of-willing-berlin-meeting/"
+        },
+        {
+          "quien": "Jared Kushner (enviado de EE. UU.)",
+          "cuando": "2026-11-19",
+          "texto": "Dijo que se ha avanzado en cómo serían las garantías de seguridad y un plan de prosperidad posguerra, y que Trump aceptaría una garantía tipo artículo 5 solo si sirve a intereses de EE. UU.; según otra fuente, dijo que Rusia está dispuesta a considerar un concepto basado en un mecanismo tipo artículo 5. Zelenski dijo no estar seguro de que EE. UU. y Ucrania entiendan lo mismo.",
+          "tema": "ucrania",
+          "nivel": "D",
+          "conf": "sin_confirmar",
+          "fuente": "RTÉ (leída) y resumen de búsqueda de Kyiv Post/DW (no leído). La parte rusa no ha confirmado «considerar» el concepto.",
+          "url": "https://www.rte.ie/news/world/2026/1119/1599769-coalition-of-willing-berlin-meeting/"
+        },
+        {
+          "quien": "Donald Trump (rueda de prensa en la Casa Blanca)",
+          "cuando": "2026-11-20",
+          "texto": "Según resúmenes de prensa, dijo que Putin quiere acabar la guerra por vía diplomática y culpó del bloqueo al «odio tremendo» entre Putin y Zelenski; evitó decir si se reunirá con Zelenski. Según FT (vía JPost), quiere cerrar un acuerdo antes de enero; y según Bloomberg (resumen), dijo a los europeos que Putin está «cansado».",
+          "tema": "ucrania",
+          "nivel": "S",
+          "conf": "sin_confirmar",
+          "fuente": "NPR y CNN no se pudieron leer (timeout/451); solo resúmenes de búsqueda y JPost (leído, cita al FT con fuente anónima ucraniana). [VERIFICAR] con transcripción.",
+          "url": "https://www.npr.org/2026/11/20/nx-s1-6047594/trump-asia-trip-xi-putin-press-conference"
+        },
+        {
+          "quien": "Dmitri Peskov (portavoz del Kremlin)",
+          "cuando": "2026-11-23",
+          "texto": "Según prensa, dijo que Rusia mantendrá ataques a gran escala contra lo que llama infraestructura militar ucraniana, y que Moscú quiere iniciar contactos con representantes europeos; la Comisión respondió que no están listos para consultas en Moscú y prefieren un formato multilateral. El 13-nov había dicho que Europa debe mostrar «voluntad de contribuir» antes de sentarse.",
+          "tema": "ucrania",
+          "nivel": "S",
+          "conf": "sin_confirmar",
+          "fuente": "New Voice of Ukraine (403) y RT (medio estatal ruso) vía resumen; Moscow Times 13-nov. [VERIFICAR] en TASS/Kremlin (conexión rechazada).",
+          "url": "https://www.themoscowtimes.com/2026/11/13/russia-says-europeans-can-join-ukraine-peace-talks-if-they-show-readiness-to-contribute-a94236"
+        },
+        {
+          "quien": "Serguéi Lavrov (ministro de Exteriores de Rusia)",
+          "cuando": "2026-11-17",
+          "texto": "Según TASS (resumen de búsqueda): habrá más conversaciones trilaterales Rusia–EE. UU.–Ucrania; Europa tendrá que ser incluida en la seguridad europea; el 10-nov dijo que Rusia no aceptará un alto el fuego inmediato.",
+          "tema": "ucrania",
+          "nivel": "S",
+          "conf": "sin_confirmar",
+          "fuente": "TASS (agencia estatal rusa), no se pudo leer. No he encontrado declaración de Lavrov posterior a Shenzhen. [VERIFICAR]",
+          "url": "https://tass.com/politics/2219769"
+        },
+        {
+          "quien": "Ursula von der Leyen (Comisión Europea)",
+          "cuando": "2026-11-23",
+          "texto": "Presentó el paquete 22 y dijo que seguirán proponiendo sanciones hasta que Rusia muestre voluntad real de paz duradera; antes (16-oct) dijo que no se levantará ninguna sanción mientras no pare la guerra.",
+          "tema": "sanciones",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "euperspectives.eu (leída) para el 23-nov y United24 (leída) para el 16-oct. No he podido leer la nota oficial de la Comisión.",
+          "url": "https://euperspectives.eu/2026/11/russia-eu-22nd-sanctions-package-ukraine-war-peace/"
+        },
+        {
+          "quien": "Katarína Mathernová (embajadora de la UE en Ucrania)",
+          "cuando": "2026-11-18",
+          "texto": "Dijo que confiscar los activos rusos «no va a pasar a corto plazo» y que no se discuten ahora por ser controvertido y por la negociación del presupuesto 2028-2034.",
+          "tema": "activos congelados",
+          "nivel": "D",
+          "conf": "confirmada",
+          "fuente": "Euromaidan Press, 21-nov-2026 (leída; medio ucraniano).",
+          "url": "https://euromaidanpress.com/2026/11/21/eu-ambassador-says-russias-frozen-assets-will-stay-off-the-table-while-the-bloc-negotiates-its-next-long-term-budget/"
+        },
+        {
+          "quien": "Xi Jinping / Ministerio de Exteriores chino",
+          "cuando": "2026-11-18",
+          "texto": "China se presenta como ni creadora ni parte de la crisis, pide diálogo y respeto a soberanía y seguridad de todas las partes, sin presionar públicamente a Putin; se opone a sanciones unilaterales contra Rusia.",
+          "tema": "china",
+          "nivel": "S",
+          "conf": "confirmada",
+          "fuente": "EUobserver, 18-nov-2026 (leída, análisis). No hay comunicado chino sobre Ucrania tras Shenzhen que haya localizado.",
+          "url": "https://euobserver.com/249769/xi-keen-to-look-neutral-on-ukraine-at-shenzhen-summit-as-china-risks-spoling-eu-relations-by-helping-putin-to-wage-war/"
+        },
+        {
+          "quien": "Marco Rubio (secretario de Estado)",
+          "cuando": "2026-11-24",
+          "texto": "No he localizado ninguna declaración de Rubio sobre Ucrania entre el 19 y el 24-nov. Línea histórica (2025): amenazar con sanciones puede hacer que Rusia deje de hablar.",
+          "tema": "ucrania",
+          "nivel": "S",
+          "conf": "sin_confirmar",
+          "fuente": "Búsqueda sin resultados de noviembre-2026; el dato de 2025 es de resumen de búsqueda. [VERIFICAR]",
+          "url": "https://kyivindependent.com/sanctions-would-end-us-russia-talks-rubio-says/"
+        }
+      ],
+      "hipotesis": [
+        {
+          "afirmacion": "Trump quiere cerrar un acuerdo antes de que los demócratas controlen el Congreso en enero.",
+          "estado": "Sin confirmar",
+          "porque": "Procede del Financial Times citado por JPost, con un funcionario ucraniano anónimo; los demócratas ganaron ambas cámaras el 3-nov (cumbres.json). Un motivo político plausible, no un dato. [ESPECULACIÓN]",
+          "nivel": "E"
+        },
+        {
+          "afirmacion": "Putin busca ganar tiempo mientras habla de paz.",
+          "estado": "Razonada, no demostrada",
+          "porque": "Lo apoyan análisis de CNN (13-nov) y evaluaciones de inteligencia occidental citadas por Boston Globe (18-nov), y los ataques masivos tras Shenzhen; pero Moscú sostiene que acepta compromisos y que otros los rechazan. Ambos relatos vienen de partes interesadas.",
+          "nivel": "R"
+        },
+        {
+          "afirmacion": "El golpe ucraniano al puente de Crimea (16-18 nov) endurece la posición rusa.",
+          "estado": "Parcialmente respaldada",
+          "porque": "Putin lo vinculó a las zonas de seguridad y, según Kyiv Independent, a rechazar treguas; es su versión. Peskov dijo el 23-nov que seguirán los ataques. Falta confirmar con texto oficial.",
+          "nivel": "R"
+        }
+      ],
+      "lecturas": {
+        "alcista": "Hay contactos activos (Witkoff y Kushner en Moscú y Berlín, Abu Dhabi trilateral, canal de Lavrov), Trump dice que Putin quiere acabar por la vía diplomática, Europa ya tiene equipo negociador (E5 más instituciones, Dublín 13-nov), Kushner habla de un mecanismo tipo artículo 5, y Rusia no ha cerrado la puerta a hablar con europeos. Una tregua energética de invierno o un acuerdo de garantías bajaría el riesgo para gas y trigo. Europa ha asegurado 90.000 M€ (2026-27) y propone 45.000 M€ más para 2027.",
+        "bajista": "La declaración de Shenzhen ignora Ucrania, Putin rechaza tropas extranjeras y, según Kyiv Independent, treguas energética y del mar Negro; Rusia sigue con ataques masivos (111 misiles el 20-21 nov según Kiev); Kiev y Europa piden alto el fuego primero y Moscú lo rechaza (Lavrov, 10-nov). El paquete 22 necesita unanimidad y hay fatiga y bloqueos tradicionales (Hungría, Eslovaquia, Grecia, Chipre y Malta en seguros y naviería, según eualive.net). La financiación de 2027 deja un hueco (~70.000 M€ de necesidad; 4.000 M€ de pledges no UE frente a 19.000 en 2026) y los activos rusos siguen sin usarse. Gas en el UE con almacenamiento en mínimos (≈71 % a mediados de nov.) y Ormuz condicionando el precio."
+      },
+      "sesgos": [
+        "Kremlin, TASS, RT y Putin: parte interesada; presentan que Rusia acepta compromisos y que Kiev y Europa los rechazan, sin detallar los compromisos. Dicen lo que conviene a su relato.",
+        "Zelenski, Interfax-Ucrania, Kyiv Independent, Ukrinform, Euromaidan Press, United24, NV: parte interesada ucraniana; cifras de ataques sin verificar por terceros.",
+        "Kallas, Comisión y Coalición: declaran para presionar y mostrar unidad; un paquete propuesto no es un paquete adoptado.",
+        "Trump y la Casa Blanca: declaraciones de optimismo sin texto ni plazos; interés político (elecciones, Congreso en enero).",
+        "Reuters, AP y Euronews: medios independientes, pero muchas notas citan a una sola parte; no tengo el texto original de la mayoría.",
+        "Agregadores y webs de nivel bajo (mlq.ai, kurs.com.ua, protothema, WSWS, PCN, politsturm, Daily Beast): útiles para pistas, no como prueba. WSWS y PCN son abiertamente ideológicos.",
+        "Los resúmenes de mi buscador pueden confundir fechas: detecté que el titular del seguimiento («paquete del 20-nov») no coincide con lo que dicen las fuentes."
+      ],
+      "contexto": [
+        "Agosto de 2025: cumbre Trump–Putin en Alaska (Anchorage), sin acuerdo (cumbres.json).",
+        "Octubre de 2025: EE. UU. sanciona a Rosneft y Lukoil (Treasury, resumen de Kyiv Post y Yahoo).",
+        "Diciembre de 2025: la UE inmoviliza indefinidamente los activos rusos (~210.000 M€); el préstamo de reparaciones fracasa por Bélgica/Euroclear; se opta por deuda conjunta (Euromaidan Press, NPR dic-2025).",
+        "9-oct-2026: Trump anuncia un acuerdo con Putin para liberar diésel ruso; 11-oct: anuncia un «alto el fuego energético» que Rusia no respeta (Al Jazeera, 12-oct).",
+        "16-oct-2026: von der Leyen dice que no se levantará ninguna sanción hasta que pare la guerra y que prepara el paquete 22 (United24).",
+        "23-jul-2026: la UE adopta el paquete 21 (48 personas y 170 entidades, 41 buques más, 94 bancos con inmovilización, herramienta de veto a plataformas cripto de terceros países, tope del precio del petróleo congelado hasta jul-2027) (Comisión Europea, finance.ec.europa.eu).",
+        "11-nov-2026: acaban las conversaciones de Abu Dhabi con intercambio de prisioneros (Admirals Markets, resumen de búsqueda [VERIFICAR]).",
+        "13-nov-2026: la UE acuerda en Dublín el formato de equipo negociador europeo; Peskov dice que Europa debe mostrar voluntad de contribuir (RTÉ, Moscow Times).",
+        "16 a 18-nov-2026: ataques ucranianos al puente de Crimea (cortan tramo de carretera y ferrocarril); Rusia responde con misiles sobre ciudades (TWZ, Al Jazeera, NPR). El 18-nov la Comisión propone un préstamo de 45.000 M€ para 2027 (RTÉ, Euromaidan Press).",
+        "19-nov-2026: cumbre Trump–Xi–Putin en Shenzhen (declaración sin Ucrania); en Berlín, reunión de la Coalición de voluntarios con declaración conjunta de Merz, Macron, Burnham y Zelenski.",
+        "20-nov-2026: Rusia lanza un ataque masivo nocturno; Trump da rueda de prensa en la Casa Blanca (CNN, NPR).",
+        "21-nov-2026: Zelenski dice que Shenzhen fue un fracaso para Putin (Interfax-Ucrania, JPost).",
+        "23-nov-2026: la Comisión presenta el paquete 22 (Estrasburgo); Peskov dice que Moscú quiere contactar con europeos y mantendrá los ataques (RT, NV).",
+        "26-27-nov-2026: Consejo Europeo (según Euromaidan Press; otra fuente dice 17-18 dic [VERIFICAR])."
+      ],
+      "pendientes": [
+        "Leer el texto oficial del paquete 22 (Comisión/Consejo): número de bancos, si habla de SWIFT o de «mensajería financiera», y si incluye stablecoins o rublo digital. Hoy solo hay prensa; contradicción de fecha frente al titular del seguimiento (20-nov).",
+        "Confirmar si el Consejo de la UE ha fijado fecha de votación y qué países bloquean (Hungría, Eslovaquia, Bulgaria, Grecia, Chipre, Malta, según eualive.net, sin detalle de este paquete).",
+        "Leer el texto íntegro de la declaración de la Coalición (Bundesregierung/Elíseo) y la lista oficial de asistentes (37, 40 o 44 delegaciones según fuente).",
+        "Transcripción de la rueda de prensa de Putin (kremlin.ru) para comprobar las frases sobre compromisos, tropas, treguas y elecciones.",
+        "Transcripción de la rueda de prensa de Trump del 20-nov (Casa Blanca) y cualquier declaración de Rubio.",
+        "Si Putin rechazó realmente la tregua energética o es una atribución de Kyiv Independent.",
+        "Confirmar la cifra de 111 misiles (fuerza aérea ucraniana).",
+        "Datos de mercado que no encontré: euro/dólar tras Shenzhen, cesta de defensa europea (STOXX), trigo en París (Euronext) y cierre del TTF el 20-24 nov. Mirar en la fuente (ICE, Euronext, ECB).",
+        "Estado de las licencias OFAC de Lukoil/Rosneft y posible acuerdo de venta de activos de Lukoil (resumen NYT, sin fecha).",
+        "Posición oficial de China sobre las sanciones de la UE a entidades chinas del paquete 21 (14 entidades) y del 22.",
+        "Fecha y asistencia: G20 en Miami (14-15 dic) y reunión sobre flota fantasma en París en diciembre."
+      ],
+      "mercado": {
+        "desde": "2026-11-16",
+        "dia": "2026-11-24",
+        "nota": "Cifras con fuente: TTF front-month ≈ 86 €/MWh el 17-nov (OilPrice, leída), máximo de 4 años por encima de 100 € a finales de octubre; otro agregador pone 80,7 €/MWh el 19-nov (sin leer): fuentes discrepan. Almacenamiento UE ≈ 71 % a mediados de nov., el menor para la fecha desde 2011 (Foreign Affairs Forum, análisis). Trigo CBOT dic: 5,70 $/bu el 18-nov, -4,24 % ese día (resumen de búsqueda); sube el 17-nov por el puente. Brent ≈ 89 $ el 24-nov (CNBC citado en cumbres.json) frente a ≈ 103 $ el 12-oct (Al Jazeera). Defensa europea: no hay dato posterior a Shenzhen; Rheinmetall -16,1 % el 5-nov por rebajar previsiones, no por la paz (Admirals, sin leer). Euro: sin dato. Activos rusos inmovilizados ≈ 210.000 M€ (Euromaidan Press). Las series de abajo son de precios_historico.json (nivel S, agregador): el gas es NG=F (EE. UU., no el TTF) y el dólar DXY es un sustituto del euro. No prueban causa: Ormuz, clima y oferta de crudo pesan más que Ucrania.",
+        "series": [
+          [
+            "BZ=F",
+            "Petróleo Brent ($)"
+          ],
+          [
+            "NG=F",
+            "Gas natural EE. UU. ($)"
+          ],
+          [
+            "GC=F",
+            "Oro ($)"
+          ],
+          [
+            "DX-Y.NYB",
+            "Dólar (índice DXY)"
+          ],
+          [
+            "^GSPC",
+            "S&P 500"
+          ],
+          [
+            "^TNX",
+            "Bono EE. UU. 10 años (%)"
+          ]
+        ]
+      },
+      "fuentes": [
+        {
+          "nombre": "Comisión Europea: paquete 21 adoptado (23-jul-2026)",
+          "nivel": "P",
+          "url": "https://finance.ec.europa.eu/news/eu-adopts-21st-package-sanctions-against-russia-2026-07-23_en",
+          "nota": "Leída el 24-nov. Fuente primaria del paquete 21."
+        },
+        {
+          "nombre": "euperspectives.eu: paquete 22 (bancos, naves, deporte)",
+          "nivel": "S",
+          "url": "https://euperspectives.eu/2026/11/russia-eu-22nd-sanctions-package-ukraine-war-peace/",
+          "nota": "Leída el 24-nov. No menciona stablecoins."
+        },
+        {
+          "nombre": "Xinhua: Comisión propone el paquete 22",
+          "nivel": "S",
+          "url": "https://english.news.cn/20261124/a4b534f2abde429ab230b5f86d805e3c/c.html",
+          "nota": "Leída. Agencia estatal china: parte interesada."
+        },
+        {
+          "nombre": "mlq.ai: paquete 22, Kirguistán, cripto",
+          "nivel": "S",
+          "url": "https://mlq.ai/news/eu-commission-proposes-a-22nd-russia-sanctions-package-with-sports-bans-a-kyrgyzstan-crypto-block-and-an-energy-services-ban/",
+          "nota": "Leída; agregador de nivel bajo."
+        },
+        {
+          "nombre": "eualive.net: ¿límites de la máquina de sanciones?",
+          "nivel": "S",
+          "url": "https://eualive.net/22nd-package-against-russia-is-europes-sanctions-machine-reaching-its-limits/",
+          "nota": "Leída; análisis, no cita fuentes oficiales."
+        },
+        {
+          "nombre": "RTÉ: Berlín, Coalición de voluntarios",
+          "nivel": "S",
+          "url": "https://www.rte.ie/news/world/2026/1119/1599769-coalition-of-willing-berlin-meeting/",
+          "nota": "Leída el 24-nov."
+        },
+        {
+          "nombre": "Kyiv Independent: Coalición pide tregua energética",
+          "nivel": "S",
+          "url": "https://kyivindependent.com/coalition-of-the-willing-calls-on-russia-to-accept-winter-energy-truce/",
+          "nota": "Leída; medio ucraniano."
+        },
+        {
+          "nombre": "Ukrinform: declaración conjunta de Berlín",
+          "nivel": "S",
+          "url": "https://www.ukrinform.net/rubric-polytics/4186635-coalition-of-the-willing-leaders-urge-russia-to-agree-to-winter-energy-truce.html",
+          "nota": "Leída; agencia estatal ucraniana."
+        },
+        {
+          "nombre": "Protothema: rueda de prensa de Putin tras Shenzhen",
+          "nivel": "S",
+          "url": "https://en.protothema.gr/?p=940503",
+          "nota": "Leída; nivel bajo, no es transcripción."
+        },
+        {
+          "nombre": "Interfax-Ucrania: Zelenski, 21-nov",
+          "nivel": "S",
+          "url": "https://en.interfax.com.ua/news/general/1240291.html",
+          "nota": "Leída."
+        },
+        {
+          "nombre": "Jerusalem Post: Zelenski y Trump (FT)",
+          "nivel": "S",
+          "url": "https://jpost.com/international/article-915639",
+          "nota": "Leída; cita al FT, fuente anónima."
+        },
+        {
+          "nombre": "Time: Shenzhen, historia sin sustancia",
+          "nivel": "S",
+          "url": "https://time.com/article/2026/11/19/xi-trump-putin-summit-history-optics-substance/",
+          "nota": "Leída."
+        },
+        {
+          "nombre": "EUobserver: China neutral en Ucrania",
+          "nivel": "S",
+          "url": "https://euobserver.com/249769/xi-keen-to-look-neutral-on-ukraine-at-shenzhen-summit-as-china-risks-spoling-eu-relations-by-helping-putin-to-wage-war/",
+          "nota": "Leída."
+        },
+        {
+          "nombre": "Al Jazeera: Trump y el petróleo ruso (12-oct)",
+          "nivel": "S",
+          "url": "https://www.aljazeera.com/news/2026/10/12/energy-ceasefire-whats-behind-trumps-love-hate-ties-to-russian-oil",
+          "nota": "Leída."
+        },
+        {
+          "nombre": "OilPrice: TTF a 86 € (17-nov)",
+          "nivel": "S",
+          "url": "https://oilprice.com/Latest-Energy-News/World-News/TTF-Gas-Bounces-Back-to-86-Euros-as-Hormuz-Risks-Resurface.html",
+          "nota": "Leída."
+        },
+        {
+          "nombre": "Euromaidan Press: activos rusos y préstamo de 45.000 M€",
+          "nivel": "S",
+          "url": "https://euromaidanpress.com/2026/11/21/eu-ambassador-says-russias-frozen-assets-will-stay-off-the-table-while-the-bloc-negotiates-its-next-long-term-budget/",
+          "nota": "Leída; medio ucraniano."
+        },
+        {
+          "nombre": "Foreign Affairs Forum: Europa en la mesa, hueco de 70.000 M€",
+          "nivel": "S",
+          "url": "https://www.faf.ae/home/2026/11/19/europe-at-the-table-ukraine-talks-a-70bn-funding-gap-and-a-gas-winter-test-the-union",
+          "nota": "Leída; análisis con datos de segunda mano."
+        },
+        {
+          "nombre": "Moscow Times: Peskov y la participación europea (13-nov)",
+          "nivel": "S",
+          "url": "https://www.themoscowtimes.com/2026/11/13/russia-says-europeans-can-join-ukraine-peace-talks-if-they-show-readiness-to-contribute-a94236",
+          "nota": "Solo resumen de búsqueda."
+        },
+        {
+          "nombre": "U.S. News/Reuters: Ucrania, tema principal Trump–Putin",
+          "nivel": "S",
+          "url": "https://www.usnews.com/news/world/articles/2026-11-19/ukraine-was-main-topic-at-trump-putin-meeting-kremlin-says",
+          "nota": "Timeout al releer; contenido tomado de cumbres.json."
+        },
+        {
+          "nombre": "NPR: Trump tras el viaje (20-nov)",
+          "nivel": "S",
+          "url": "https://www.npr.org/2026/11/20/nx-s1-6047594/trump-asia-trip-xi-putin-press-conference",
+          "nota": "No leída (timeout); solo resumen de búsqueda."
+        }
+      ]
+    },
     {
       "id": "shenzhen-2026-11-19",
       "titulo": "Cumbre EE. UU. – China – Rusia en Shenzhen («Declaración hacia la paz»)",
       "fecha": "2026-11-19",
       "lugar": "Kylin Villa, Shenzhen (China), al margen de la cumbre APEC (18-19 nov)",
-      "participantes": ["Xi Jinping (anfitrión, presidió)", "Donald Trump", "Vladimir Putin"],
+      "participantes": [
+        "Xi Jinping (anfitrión, presidió)",
+        "Donald Trump",
+        "Vladimir Putin"
+      ],
       "formato": "Primera reunión conjunta de los tres líderes. Antes hubo bilaterales Trump–Xi y Trump–Putin. La sesión trilateral duró algo más de una hora (EFE/Euronews: 1 h 20 min) y Trump salió después hacia el aeropuerto.",
       "titular": "Hubo texto firmado de cuatro puntos, pero SIN acuerdo sobre Ucrania ni sobre Irán: la declaración no los nombra.",
       "firmado": [
@@ -186,16 +1273,46 @@
         "dia": "2026-11-19",
         "nota": "Antes de la cumbre (17-nov), día de la cumbre (19-nov) y último dato disponible. Precios de cierre diarios de precios_historico.json (nivel S, agregador). No prueba causa: hubo otras noticias esos días.",
         "series": [
-          ["BZ=F", "Petróleo Brent ($)"],
-          ["CL=F", "Petróleo WTI ($)"],
-          ["^GSPC", "S&P 500"],
-          ["^VIX", "VIX (volatilidad)"],
-          ["^TNX", "Bono EE. UU. 10 años (%)"],
-          ["GC=F", "Oro ($)"],
-          ["DX-Y.NYB", "Dólar (índice DXY)"],
-          ["BTC-USD", "Bitcoin ($)"],
-          ["XRP-USD", "XRP ($)"],
-          ["XLM-USD", "XLM ($)"]
+          [
+            "BZ=F",
+            "Petróleo Brent ($)"
+          ],
+          [
+            "CL=F",
+            "Petróleo WTI ($)"
+          ],
+          [
+            "^GSPC",
+            "S&P 500"
+          ],
+          [
+            "^VIX",
+            "VIX (volatilidad)"
+          ],
+          [
+            "^TNX",
+            "Bono EE. UU. 10 años (%)"
+          ],
+          [
+            "GC=F",
+            "Oro ($)"
+          ],
+          [
+            "DX-Y.NYB",
+            "Dólar (índice DXY)"
+          ],
+          [
+            "BTC-USD",
+            "Bitcoin ($)"
+          ],
+          [
+            "XRP-USD",
+            "XRP ($)"
+          ],
+          [
+            "XLM-USD",
+            "XLM ($)"
+          ]
         ]
       },
       "contexto": [
@@ -204,20 +1321,70 @@
         "Antecedente: la reunión Trump–Putin en Alaska (2025) no logró un acuerdo para aliviar la guerra de Ucrania (Euronews)."
       ],
       "fuentes": [
-        {"nombre": "Texto completo de la declaración (Xinhua vía People's Daily)", "nivel": "P", "url": "https://en.people.cn/n3/2026/1119/c90000-20521189.html", "nota": "Leído íntegro el 24-nov-2026."},
-        {"nombre": "Al Jazeera: cinco claves de la cumbre", "nivel": "S", "url": "https://www.aljazeera.com/news/2026/11/19/groundbreaking-trump-xi-putin-summit-five-key-takeaways", "nota": "Leído el 24-nov-2026."},
-        {"nombre": "Euronews: «peace declaration» sin mención a Ucrania ni Irán", "nivel": "S", "url": "https://www.euronews.com/2026/11/19/us-and-china-want-to-help-end-ukraine-war-trump-says-ahead-of-trilateral-with-russia", "nota": "Leído el 24-nov-2026."},
-        {"nombre": "El Tribuno: «los cuatro acuerdos»", "nivel": "S", "url": "https://www.eltribuno.com/internacionales/2026-11-19-22-24-0-trump-xi-jinping-y-putin-se-reunieron-en-una-cumbre-historica-los-cuatro-acuerdos-las-tensiones-y-que-paso-con-ucrania-e-iran", "nota": "Resume el texto; el titular exagera «acuerdos»."},
-        {"nombre": "Reuters vía U.S. News: Ucrania dominó el Trump–Putin (Ushakov)", "nivel": "S", "url": "https://www.usnews.com/news/world/articles/2026-11-19/ukraine-was-main-topic-at-trump-putin-meeting-kremlin-says", "nota": "Leído el 24-nov-2026."},
-        {"nombre": "China Briefing: APEC Shenzhen y Trump–Xi para empresas", "nivel": "S", "url": "https://www.china-briefing.com/news/apec-2026-in-shenzhen-what-the-leaders-meeting-and-trump-xi-talks-mean-for-business/", "nota": "Leído el 24-nov-2026. Consultora; sin lectura oficial de la Casa Blanca."},
-        {"nombre": "SCMP: la declaración sugiere más foto que acuerdo", "nivel": "S", "url": "https://www.scmp.com/news/china/diplomacy/article/3375130/xi-trump-and-putin-peace-declaration-suggests-summit-more-photo-op", "nota": "Solo vista en buscador; sin leer."}
+        {
+          "nombre": "Texto completo de la declaración (Xinhua vía People's Daily)",
+          "nivel": "P",
+          "url": "https://en.people.cn/n3/2026/1119/c90000-20521189.html",
+          "nota": "Leído íntegro el 24-nov-2026."
+        },
+        {
+          "nombre": "Al Jazeera: cinco claves de la cumbre",
+          "nivel": "S",
+          "url": "https://www.aljazeera.com/news/2026/11/19/groundbreaking-trump-xi-putin-summit-five-key-takeaways",
+          "nota": "Leído el 24-nov-2026."
+        },
+        {
+          "nombre": "Euronews: «peace declaration» sin mención a Ucrania ni Irán",
+          "nivel": "S",
+          "url": "https://www.euronews.com/2026/11/19/us-and-china-want-to-help-end-ukraine-war-trump-says-ahead-of-trilateral-with-russia",
+          "nota": "Leído el 24-nov-2026."
+        },
+        {
+          "nombre": "El Tribuno: «los cuatro acuerdos»",
+          "nivel": "S",
+          "url": "https://www.eltribuno.com/internacionales/2026-11-19-22-24-0-trump-xi-jinping-y-putin-se-reunieron-en-una-cumbre-historica-los-cuatro-acuerdos-las-tensiones-y-que-paso-con-ucrania-e-iran",
+          "nota": "Resume el texto; el titular exagera «acuerdos»."
+        },
+        {
+          "nombre": "Reuters vía U.S. News: Ucrania dominó el Trump–Putin (Ushakov)",
+          "nivel": "S",
+          "url": "https://www.usnews.com/news/world/articles/2026-11-19/ukraine-was-main-topic-at-trump-putin-meeting-kremlin-says",
+          "nota": "Leído el 24-nov-2026."
+        },
+        {
+          "nombre": "China Briefing: APEC Shenzhen y Trump–Xi para empresas",
+          "nivel": "S",
+          "url": "https://www.china-briefing.com/news/apec-2026-in-shenzhen-what-the-leaders-meeting-and-trump-xi-talks-mean-for-business/",
+          "nota": "Leído el 24-nov-2026. Consultora; sin lectura oficial de la Casa Blanca."
+        },
+        {
+          "nombre": "SCMP: la declaración sugiere más foto que acuerdo",
+          "nivel": "S",
+          "url": "https://www.scmp.com/news/china/diplomacy/article/3375130/xi-trump-and-putin-peace-declaration-suggests-summit-more-photo-op",
+          "nota": "Solo vista en buscador; sin leer."
+        }
       ]
     }
   ],
   "proximas": [
-    {"fecha": "2026-12-14", "que": "G20 en Trump National Doral (Miami), 14-15 dic; Xi casi seguro; Putin invitado (sería su primer G20 presencial desde Osaka 2019 si va)", "estado": "Fechas según prensa (Al Jazeera, Arab News, IBTimes); asistencia de Putin sin confirmar [VERIFICAR]", "fuente": "Al Jazeera 23/24-sep-2026 y 19-nov-2026"},
-    {"fecha": "2027-01-10", "que": "Vence la tregua comercial EE. UU.–China: ¿se prorroga?", "estado": "Según China Briefing; sin anuncio de prórroga", "fuente": "China Briefing, 20-nov-2026"},
-    {"fecha": "sin fecha", "que": "Diálogo trilateral sobre riesgo nuclear prometido en el punto 4", "estado": "Sin calendario", "fuente": "Declaración de Shenzhen"}
+    {
+      "fecha": "2026-12-14",
+      "que": "G20 en Trump National Doral (Miami), 14-15 dic; Xi casi seguro; Putin invitado (sería su primer G20 presencial desde Osaka 2019 si va)",
+      "estado": "Fechas según prensa (Al Jazeera, Arab News, IBTimes); asistencia de Putin sin confirmar [VERIFICAR]",
+      "fuente": "Al Jazeera 23/24-sep-2026 y 19-nov-2026"
+    },
+    {
+      "fecha": "2027-01-10",
+      "que": "Vence la tregua comercial EE. UU.–China: ¿se prorroga?",
+      "estado": "Según China Briefing; sin anuncio de prórroga",
+      "fuente": "China Briefing, 20-nov-2026"
+    },
+    {
+      "fecha": "sin fecha",
+      "que": "Diálogo trilateral sobre riesgo nuclear prometido en el punto 4",
+      "estado": "Sin calendario",
+      "fuente": "Declaración de Shenzhen"
+    }
   ],
   "como_se_usa": "Para cada reunión con impacto en mercado se añade una entrada en «cumbres»: (1) texto oficial si existe, (2) declaraciones con fecha y medio, (3) lo que NO hay, (4) hipótesis de Joel contrastadas, (5) caso alcista y bajista, (6) reacción de precios. El estado de cada dato sigue la escala P/D/S/R/E."
 }

@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-24 12:08 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-24 12:18 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -92,6 +92,7 @@ Hechas en este periodo: W01, W02, W04, W07, W08
 - C364 ◐ en parte · Cadenas: hoja de ruta oficial de DTCC por red (Canton, Besu, Stellar, Solana, Ar · Sonnet M · ~~4 % · ``
 - C380 ◐ en parte · Auditoría 24-nov: unificar las dos fuentes 13F (xrpTotales vs etf13f) y marcar d · Sonnet S · ~~3 % · ``
 - C382 ◐ en parte · Cumbres: verificar texto en whitehouse.gov y kremlin.ru, contenido de los bilate · Sonnet S · ~~3 % · ``
+- C384 · Cumbres: leer texto del paquete 22 en la Comisión/Consejo (stablecoins y rublo d · Sonnet S · ~~3 % · ``
 - C39 ◐ en parte · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
 - C42 ◐ en parte · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
 - C58 ◐ en parte · Centro · Fichas políticas de 12 países (UE: España, Alemania, Francia, Italia, P · Sonnet M · ~3 % · `research/prompts/C58-fichas-politicas-paises.md`
@@ -131,15 +132,15 @@ Hechas en este periodo: W01, W02, W04, W07, W08
 - ninguna anotada
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [alta] 2026-11-20 (4 d) · Nuevo paquete de sanciones de la UE contra Rusia: bancos, cripto y flota fantasma.
-- [alta] 2026-11-21 (3 d) · Bruselas da dos meses a España para aplicar DAC8 y abre expediente por MiCA.
-- [alta] 2026-11-22 (2 d) · Los ataques iraníes en Ormuz alcanzan su nivel más alto desde que empezó el conflicto.
 - [media] 2026-10-25 (30 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
 - [media] 2026-10-25 (30 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
 - [media] 2026-10-25 (30 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 - [media] 2026-10-25 (30 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
 - [media] 2026-10-25 (30 d) · [VERIFICAR] Consulta DGT V0648-24 leída en petete
-- … y 61 más en el Seguimiento
+- [media] 2026-10-25 (30 d) · [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov)
+- [media] 2026-10-25 (30 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov
+- [media] 2026-10-25 (30 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
+- … y 59 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (26) → W03 · Se revisan con la rutina de países
