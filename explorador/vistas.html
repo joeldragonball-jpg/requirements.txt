@@ -2103,6 +2103,7 @@ function pCumbres(){
     host.append(el('h3',null,'Lo firmado (texto oficial, 4 puntos) y cuánto concreta'));
     host.append(scrollX(tabla([{t:'Punto',f:r=>r.n+'. '+r.tema},{t:'Qué dice el texto',f:r=>r.texto},{t:'Qué concreta (y qué no)',f:r=>r.concreto},{t:'Relación con mercado',f:r=>r.mercado}],k.firmado)));
     host.append(lista('Lo que NO hay en el documento',k.no_hay));
+    if((k.bilaterales||[]).length){host.append(el('h3',null,'Las reuniones bilaterales de ese día'));for(const b of k.bilaterales){const it=el('div','item');const hd=el('div');hd.append(nv(b.nivel),el('b',null,' '+b.reunion+' · '+b.duracion));const m=el('small');m.append(document.createTextNode('Fuente: '+b.fuente+' · '),lk('abrir',b.url));it.append(hd,el('div',null,b.que_se_dijo),el('div','nota-v',b.que_no),m);host.append(it)}}
     host.append(el('h3',null,'Declaraciones (quién dijo qué, cuándo y dónde se recoge)'));
     for(const d of k.declaraciones){const it=el('div','item');const hd=el('div');hd.append(nv(d.nivel));const c2=cf[d.conf]||cf.sin_confirmar;const b2=el('span','badge',c2[0]);b2.style.color=c2[1];b2.style.borderColor=c2[1];b2.style.background=c2[1]+'24';hd.append(b2,el('b',null,' '+d.quien+' · '+d.cuando+' · '+d.tema));it.append(hd,el('div',null,d.texto));const m=el('small');m.append(document.createTextNode('Fuente: '+d.fuente+' · '),lk('abrir',d.url));it.append(m);host.append(it)}
     host.append(el('h3',null,'Tus hipótesis frente a los hechos'));
