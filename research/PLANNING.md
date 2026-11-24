@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-24 12:04 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-24 12:08 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -6,7 +6,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hoy (máx. 3):** Gemini Macro y tipos
 **Periódicas (próxima):** W02 11-24 · W08 11-25 · W04 11-26 · W05 11-26 · W06 11-27 · W09 11-27 · W10 11-28 · W01 11-30 · W03 12-02 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
-**Parciales (50):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: 17-nov: 20 movimientos volcados a datos.json (305) · C42 falta: 18-nov 3.ª: ESMA, SFC y MAS leídos; VARA parcial.  · C58 falta: 18-nov: Rusia a P (Duma 450), India Lok Sabha 540/ · C59 falta: 17-nov: salario mínimo y fichas añadidos a indicad · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
+**Parciales (51):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: 17-nov: 20 movimientos volcados a datos.json (305) · C42 falta: 18-nov 3.ª: ESMA, SFC y MAS leídos; VARA parcial.  · C58 falta: 18-nov: Rusia a P (Duma 450), India Lok Sabha 540/ · C59 falta: 17-nov: salario mínimo y fichas añadidos a indicad · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
 **Vigiladas (11, sin cerrar; las revisa W05 o W08):** C230 (11-25) · C245 (11-25) · C267 (11-25) · C275 (11-25) · C331 (11-25) · C61 (11-25) · C261 (11-26) · C340 (11-26)
 **Hechas en 7 días (2):** C355, C360
 
@@ -90,7 +90,7 @@ Hechas en este periodo: W01, W02, W04, W07, W08
 - C36 · Centro · Rutina de noticias manuales (Claude y Gemini) · Sonnet M · ~3 % · `research/prompts/C36-rutina-noticias-manual.md`
 - C363 ◐ en parte · Órbita · Ampliar Latinoamérica, EE. UU., China y potencias; más peso a las voces · Sonnet L · ~~6 % · ``
 - C364 ◐ en parte · Cadenas: hoja de ruta oficial de DTCC por red (Canton, Besu, Stellar, Solana, Ar · Sonnet M · ~~4 % · ``
-- C380 · Auditoría 24-nov: unificar las dos fuentes 13F (xrpTotales vs etf13f) y marcar d · Sonnet S · ~~3 % · ``
+- C380 ◐ en parte · Auditoría 24-nov: unificar las dos fuentes 13F (xrpTotales vs etf13f) y marcar d · Sonnet S · ~~3 % · ``
 - C382 ◐ en parte · Cumbres: verificar texto en whitehouse.gov y kremlin.ru, contenido de los bilate · Sonnet S · ~~3 % · ``
 - C39 ◐ en parte · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
 - C42 ◐ en parte · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
