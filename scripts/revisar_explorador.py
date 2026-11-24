@@ -249,7 +249,7 @@ if RUTA_VOC.exists():
     for v in vz["voces"]:
         if v.get("tipo", "declaracion") != "declaracion":
             continue  # tesis, datos y vigilar de un mismo vídeo comparten quien y fecha a propósito
-        clave = (v["quien"].split(" (")[0], v["cuando"], tuple(sorted(v.get("capas", []))))
+        clave = (v["quien"], v["cuando"], tuple(sorted(v.get("capas", []))))
         por_texto.setdefault(clave, []).append(v["id"])
     for clave, lst in por_texto.items():
         if len(lst) > 1:
