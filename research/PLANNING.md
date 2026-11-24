@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-24 13:05 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-24 21:10 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -11,7 +11,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hechas en 7 días (2):** C355, C360
 
 ## Hoy (mar 2026-11-24): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 17 días
+- R00 apertura ✓ · cierre ✓ · racha 17 días
 - Sin rutina fija hoy: elige por prioridad en las secciones de abajo.
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
@@ -115,9 +115,14 @@ Hechas en este periodo: W01, W02, W04, W05, W06, W07, W08, W10
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 
 ## Auditorías abiertas
-- T4 (Baja): Omisiones de fuentes: BdE en Bonos, BoE en Deuda, cifras manuales en Liquidez e Indicadores
-- T7 (Baja): Hueco jun-2026 en la API del BCE, causa sin explicar [VERIFICAR]
-- T8 (Baja): «+3» de la Cámara se mide desde 2024 (215 D), no desde hoy [VERIFICAR]
+- A1 (Media): Abierto: voces.json lo está editando otra sesión (W06); propuesta: v002→cumplido con la nota del 28-oct; v062→
+- A2 (Media): Abierto: propuesta, mostrar «P + novedades S» o añadir url a HK ETF
+- A3 (Media): Parcial: antes faltaban 23. Abierto: 9 celdas
+- A4 (Baja): Abierto
+- A5 (Media): Abierto: propuesta, 2-3 canales o analistas críticos o neutrales en el próximo lote de vídeos
+- A7 (Media): Abierto
+- A8 (Baja): Abierto solo v062
+- A9 (Baja): Cerrado (W07)
 - Auditoría mensual W08: última semana del mes (miércoles)
 
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
@@ -142,7 +147,7 @@ Hechas en este periodo: W01, W02, W04, W05, W06, W07, W08, W10
 - 🟡 Radar regulatorio: Celdas sin dato (12) → W03 · Más huecos: IR 2, AR 2, SV 2, AE 1, BRICS 1
 
 ## Bots con problema
-- Noticias con IA, Votos de noticias, Paneles de datos
+- Noticias con IA
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → ✓ revisado (hecho)
