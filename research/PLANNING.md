@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-25 08:08 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-25 11:24 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -6,7 +6,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hoy (máx. 3):** Gemini Cripto y regulación
 **Periódicas (próxima):** W08 11-25 · W04 11-26 · W05 11-26 · W06 11-27 · W09 11-27 · W10 11-28 · W01 11-30 · W02 12-01 · W03 12-02 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
-**Parciales (51):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: 17-nov: 20 movimientos volcados a datos.json (305) · C42 falta: 18-nov 3.ª: ESMA, SFC y MAS leídos; VARA parcial.  · C58 falta: 18-nov: Rusia a P (Duma 450), India Lok Sabha 540/ · C59 falta: 17-nov: salario mínimo y fichas añadidos a indicad · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
+**Parciales (55):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: 17-nov: 20 movimientos volcados a datos.json (305) · C42 falta: 18-nov 3.ª: ESMA, SFC y MAS leídos; VARA parcial.  · C58 falta: 18-nov: Rusia a P (Duma 450), India Lok Sabha 540/ · C59 falta: 17-nov: salario mínimo y fichas añadidos a indicad · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
 **Vigiladas (11, sin cerrar; las revisa W05 o W08):** C261 (11-26) · C340 (11-26) · C341 (11-26) · C342 (11-26) · C68B (11-26) · C230 (12-25) · C245 (12-25) · C267 (12-25)
 **Hechas en 7 días (2):** C355, C360
 
@@ -22,9 +22,8 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 - Aviso de límite (2026-10-31): Joel propone probar 2 Deep Research al dia (lleva ~7 % semanal con Pro alto). Se prueba unos dias; si Gemini avisa de limite, vuelta a 1. Anotar en sesiones cada lanzamiento y si hubo aviso.
 
 ## Rutinas W: lo que falta este periodo (sin día fijo; se hacen cuando haya hueco, de más atrasada a menos)
-- W03 · Países (huecos del radar) · ~4 % · cada miércoles · último 2026-11-20 · `research/prompts/W03-*.md`
 - W09 · Resumen semanal · ~1,5 % · cada viernes · último 2026-11-20 · `research/prompts/W09-*.md`
-Hechas en este periodo: W01, W02, W04, W05, W06, W07, W08, W10
+Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**
@@ -90,7 +89,11 @@ Hechas en este periodo: W01, W02, W04, W05, W06, W07, W08, W10
 - C380 ◐ en parte · Auditoría 24-nov: unificar las dos fuentes 13F (xrpTotales vs etf13f) y marcar d · Sonnet S · ~~3 % · ``
 - C382 ◐ en parte · Cumbres: verificar texto en whitehouse.gov y kremlin.ru, contenido de los bilate · Sonnet S · ~~3 % · ``
 - C384 · Cumbres: leer texto del paquete 22 en la Comisión/Consejo (stablecoins y rublo d · Sonnet S · ~~3 % · ``
+- C389 ◐ en parte · C384 pendientes de Cumbres: paquete 22 UE confirmado por prensa (texto oficial n · Sonnet S · ~~3 % · `Rutina`
 - C39 ◐ en parte · Centro · Volcar al panel lo ya investigado sin movimiento (países T07-T16 y W03E · Sonnet S · ~2 % · `research/prompts/C39-volcado-orbita.md`
+- C390 ◐ en parte · W03 países: Brasil (DeCripto, Drex) y Corea del Sur en regulacion.json; Etiopía  · Sonnet S · ~~3 % · `Rutina`
+- C391 ◐ en parte · W04 ETF: Bitwise XRP a 23/24-nov, rescate de ~5 M$ derivado; 13F y XRPN pendient · Sonnet S · ~~3 % · `Rutina`
+- C392 ◐ en parte · W01 tipos: Indonesia BI-Rate a [P]; PCE y PIB 3T de hoy sin incorporar; Corea 26 · Sonnet S · ~~3 % · `Rutina`
 - C42 ◐ en parte · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
 - C58 ◐ en parte · Centro · Fichas políticas de 12 países (UE: España, Alemania, Francia, Italia, P · Sonnet M · ~3 % · `research/prompts/C58-fichas-politicas-paises.md`
 - C59 ◐ en parte · Centro · Indicadores económicos por país (IPC, paro total y juvenil, PIB, deuda, · Sonnet M · ~3 % · `research/prompts/C59-indicadores-sociales-economicos.md`
@@ -133,25 +136,25 @@ Hechas en este periodo: W01, W02, W04, W05, W06, W07, W08, W10
 - [media] 2026-10-25 (31 d) · [VERIFICAR] Consulta DGT V0648-24 leída en petete
 - [media] 2026-10-25 (31 d) · [VERIFICAR] Cloture CLARITY 49-50 en fuente oficial (senate.gov)
 - [media] 2026-10-25 (31 d) · [VERIFICAR] Texto literal de la **sección 404** de CLARITY en congress.gov
-- … y 60 más en el Seguimiento
+- … y 66 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
-- 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (34) → W03 · Se revisan con la rutina de países
+- 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (30) → W03 · Se revisan con la rutina de países
 - 🔴 Voces: Voces sin confirmar (57) → W06 · 28 llevan más de 14 días
 - 🔴 Predicciones: Vencidas sin resultado (1) → W06 · #80
 - 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (54) → rutina de cada tema (ver explorador/frescura.json) · verdes 32, amarillos 43, rojos 11, grises 0. Rojos: bancos-eba, calificaciones, 
 - 🟡 Radar regulatorio: Celdas sin dato (12) → W03 · Más huecos: IR 2, AR 2, SV 2, AE 1, BRICS 1
 
 ## Bots con problema
-- Noticias con IA, Votos de noticias
+- Noticias con IA
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → ✓ revisado (hecho)
 - 2026-11-18 · APEC en Shenzhen: cumbre de líderes (medio) → ✓ revisado (hecho)
 - 2026-11-18 · Reino Unido: IPC de octubre (ONS) (medio) → ✓ revisado (hecho)
 - 2026-11-18 · Zona euro: IPCA definitivo de octubre (Eurostat) (medio) → ✓ revisado (hecho)
-- 2026-11-23 · EE. UU.: subasta de notas del Tesoro a 2 años ($69 mil M) (medio) → ◐ rutina ejecutada (W02 del 2026-11-24); dato sin marcar como leído
-- 2026-11-24 · EE. UU.: subasta de notas del Tesoro a 5 años ($70 mil M) (medio) → ◐ rutina ejecutada (W02 del 2026-11-24); dato sin marcar como leído
+- 2026-11-23 · EE. UU.: subasta de notas del Tesoro a 2 años ($69 mil M) (medio) → ◐ rutina ejecutada (W02 del 2026-11-25); dato sin marcar como leído
+- 2026-11-24 · EE. UU.: subasta de notas del Tesoro a 5 años ($70 mil M) (medio) → ◐ rutina ejecutada (W02 del 2026-11-25); dato sin marcar como leído
 «✓ cubierto» exige que el informe de la rutina tenga una línea `Eventos leídos: <fecha o título>`; sin ella solo consta que la rutina se ejecutó (C256).
 Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.
 

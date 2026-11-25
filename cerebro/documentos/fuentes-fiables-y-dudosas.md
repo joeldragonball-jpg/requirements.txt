@@ -196,3 +196,7 @@ actualizado: 2026-10-07
 - Agregadores como 13f.info y AlphaMaven sirven para localizar el 13F; la cifra se confirma en EDGAR (Goldman ya cotejado, C280).
 - BIS, FMI y S&P Global Ratings critican las stablecoins desde su propio rol (soberanía monetaria, calificación); útiles como contrapeso, pero se citan por prensa [S] hasta abrir bis.org, imf.org y spglobal.com (W06, 20-nov).
 - Larry Fink/BlackRock: dice lo que su negocio necesita (financia centros de datos y vende fondos); cifras de Aligned (40.000 M$) cuadran con prensa, la de 12.500 M$ no se localizó; citarlo como declaración [S], no como dato (V01, 22-nov).
+- API del FMI (`api.imf.org`): `lastNObservations=1` devuelve el último año PROYECTADO (2031); pedir el año concreto o se cita una previsión como dato (W07, 25-nov).
+- Serie SGS 432 del Banco Central de Brasil (SELIC): incluye días futuros con el valor arrastrado; filtrar por fecha ≤ hoy (W07, 25-nov).
+- Un 403 a script no es un enlace roto: de 398 enlaces, 72 dan 403 (SEC, The Block, RBA, BLS, IEA, FMI web…) y solo 3 son 404 reales (W07, 25-nov).
+- Si una fuente primaria da 403 por script (SEC web/atom, FMI DataMapper), se cita como [S] hasta abrirla en navegador; no se salta el anti-bots.

@@ -1,4 +1,4 @@
-# Mapa de fuentes (actualizado 7-nov-2026, W07)
+# Mapa de fuentes (actualizado 25-nov-2026, W07)
 
 Estado: ✅ se lee con curl/urllib · 🌐 solo navegador integrado · ⛔ 403 anti-bots (no se salta; fuente secundaria [S]) · ❌ enlace roto.
 Probado el 2-nov (208 URLs de voces, regulación y calendario, 12 en paralelo, sin saltar anti-bots): 161 OK, 3 EUR-Lex con 202, 34 con 403, 3 con 429 (límite de ritmo), 1 con 505, 1 sin respuesta, 1 roto (arreglado). Las URL de YouTube no se probaron. Antes (25-oct): 96 URLs, 74 OK.
@@ -40,5 +40,13 @@ Reprobado el 7-nov (W07, 231 URLs de voces, regulación y calendario, 8 en paral
 | Horizon de Stellar (`horizon.stellar.org/assets?asset_code=USDC&asset_issuer=…`) | USDC y EURC emitidos en Stellar [P] | JSON; 12-nov: USDC 344,0 M | ✅ |
 | `stablecoins.llama.fi/stablecoincharts/<cadena>` (DefiLlama) | Serie histórica de stablecoins por cadena [S] | JSON; sirve para comprobar una cifra antigua antes de compararla | ✅ |
 | `eia.gov/outlooks/steo/` | STEO vigente [P] | HTML legible con script; solo guarda la edición actual (archivar el texto el día que sale) | ✅ |
+| `data.snb.ch/api/cube/snboffzisa/data/csv/en` (SNB) | Tipo del Banco Nacional Suizo [P] | CSV con `;`, publicado el 23-nov | ✅ (no usado) |
+| `api.nbp.pl`, `api.riksbank.se/swea/v1/Observations/...` | Cambios de Polonia; tipo de Suecia (1,75 % el 25-nov) [P] | JSON | ✅ |
+| `api.bcb.gov.br/dados/serie/bcdata.sgs.432/dados?formato=json&dataInicial=…` | SELIC meta (13,75 % el 25-nov) | JSON; devuelve días futuros con el valor arrastrado: filtrar por fecha ≤ hoy | ✅ (con cautela) |
+| `api.imf.org/external/sdmx/2.1/data/WEO/<ISO3>.<indicador>.A` | Previsiones del FMI [P] | XML SDMX; pedir el año concreto (con `lastNObservations=1` el último es 2031) | ✅ |
+| `sec.gov/cgi-bin/browse-edgar?...output=atom`, `efts.sec.gov` | Atom de 8-K y búsqueda de texto | 403 a script el 25-nov; usar `data.sec.gov/submissions` | ⛔ |
+| `eservices.mas.gov.sg` | MAS (Singapur) | 404 (ruta antigua) y 401 (`apimg-gw`) el 25-nov | ❌ |
+
+Reprobado el 25-nov (W07, 398 URLs con `scripts/comprobar_enlaces.py`): 305 OK, 72 con 403 (nuevos: iea.org, imf.org web, JSE), 4 con 429, 3 con 404 (thestar.com.my, aljazeera.com, argentina.gob.ar texto ordenado CNV: por comprobar en Chrome), 2 con 500, 1 con 406, 11 sin respuesta. FMI DataMapper da 403 a script (usar `api.imf.org`); FRED y Bundesbank sin respuesta hoy (reintentar).
 
 Regla: nunca saltar anti-bots; si no hay API ni navegador, la cifra queda [VERIFICAR].

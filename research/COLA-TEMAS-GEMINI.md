@@ -19,6 +19,7 @@ Fuente de la lista: documento «01 Prompt maestro» de la carpeta de Drive «Gem
 | T09, T10, T13, T14 | Hong Kong, India, Emiratos y China | Hechos el 27-oct (`informes/research/2026-10-27-T09-hong-kong.md`, `…T10-india.md`, `…T13-emiratos.md`, `…T14-china.md`); contrastados el RBI (5,50 %) y la HKMA (4,25 %); celdas nuevas casi todas [S] |
 | T15 | BRICS sin cubrir | **Hecho 27-oct** (informes/research/2026-10-27-T15-brics.md): Etiopía, mBridge y BRICS Pay; quedan [VERIFICAR] el aviso etíope de jul-2026, el texto del FT y las celdas ETF/custodia/tokenización/fiscal de los cinco países |
 | T16 | Organismos internacionales | **Hecho 27-oct** (informes/research/2026-10-27-T16-organismos.md): BIS, FSB, FMI y GAFI leídos [P]; quedan [VERIFICAR] los dos documentos del FMI de oct-2026 (imf.org bloquea), el informe del GAFI de stablecoins (mar-2026) y el G20 Implementation Monitoring Review 2026 |
+| W03 25-nov | Corea y Brasil (huecos ETF/fiscal/CBDC) | Pasada corta 25-nov (`informes/research/2026-11-25-W03-paises.md`): Brasil fiscal mejorado (IN RFB 2.291 y MP 1.303 «vigência encerrada» [P]); Corea y Drex sin avance (lector no carga law.go.kr ni bcb.gov.br) [VERIFICAR con Chrome] |
 | T25 | Tema libre | **Pendiente**; ver el orden de abajo |
 
 ## Orden propuesto (por caducidad y valor)
