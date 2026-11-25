@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-25 13:10 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-25 21:21 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -11,7 +11,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hechas en 7 días (2):** C355, C360
 
 ## Hoy (mié 2026-11-25): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 18 días
+- R00 apertura ✓ · cierre ✓ · racha 18 días
 - Fija de hoy (último miércoles del mes: auditoría mensual): **W08 Auditoría mensual** (~4 %) · último 2026-11-25 · `research/prompts/W08-*.md`
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
@@ -153,7 +153,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - 🟡 Radar regulatorio: Celdas sin dato (12) → W03 · Más huecos: IR 2, AR 2, SV 2, AE 1, BRICS 1
 
 ## Bots con problema
-- Noticias con IA, Despertador de la app, Paneles de datos
+- Noticias con IA
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → ✓ revisado (hecho)
