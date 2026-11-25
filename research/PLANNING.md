@@ -135,15 +135,15 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - ninguna anotada
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
+- [media] 2025-06-17 (526 d) · 130 compromisos
+- [media] 2025-06-22 (521 d) · 2,1 %
 - [media] 2025-08-15 (467 d) · La cumbre de Alaska duró cerca de tres horas
 - [media] 2025-08-22 (460 d) · Reacción de mercado el 22-ago-2025
 - [media] 2025-10-30 (391 d) · China se comprometió a comprar 25 millones de toneladas de soja al año
 - [media] 2025-11-22 (368 d) · Contenido de deuda, minerales y clima del texto
+- [media] 2025-11-22 (368 d) · hoja de ruta de combustibles fósiles
 - [media] 2026-01-20 (309 d) · Discurso de Carney sobre la «ruptura» del orden mundial
-- [media] 2026-05-14 (195 d) · EE. UU. autorizo ventas de Nvidia H200 a empresas chinas durante la visita
-- [media] 2026-05-16 (193 d) · China y EE. UU. acordaron recortar aranceles a escalas equivalentes
-- [media] 2026-10-16 (40 d) · Hungría con Magyar bloquea clusters de Ucrania y apoya prorrogar sanciones
-- … y 85 más en el Seguimiento
+- … y 88 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (30) → W03 · Se revisan con la rutina de países
