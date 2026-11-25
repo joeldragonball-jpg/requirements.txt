@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-25 11:38 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-25 11:43 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -134,13 +134,13 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
 - [media] 2025-08-15 (467 d) · La cumbre de Alaska duró cerca de tres horas
 - [media] 2025-10-30 (391 d) · China se comprometió a comprar 25 millones de toneladas de soja al año
+- [media] 2026-10-16 (40 d) · Hungría con Magyar bloquea clusters de Ucrania y apoya prorrogar sanciones
 - [media] 2026-10-25 (31 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
 - [media] 2026-10-25 (31 d) · BOE DAC8 y modelos 172/175/721, relectura 24-nov
 - [media] 2026-10-25 (31 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
 - [media] 2026-10-25 (31 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
 - [media] 2026-10-25 (31 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
-- [media] 2026-10-25 (31 d) · [VERIFICAR] Consulta DGT V0648-24 leída en petete
-- … y 74 más en el Seguimiento
+- … y 79 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (30) → W03 · Se revisan con la rutina de países
