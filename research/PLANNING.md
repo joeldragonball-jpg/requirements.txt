@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-25 12:07 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-25 12:13 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -136,18 +136,18 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
 - [media] 2025-08-15 (467 d) · La cumbre de Alaska duró cerca de tres horas
+- [media] 2025-08-22 (460 d) · Reacción de mercado el 22-ago-2025
 - [media] 2025-10-30 (391 d) · China se comprometió a comprar 25 millones de toneladas de soja al año
+- [media] 2025-11-22 (368 d) · Contenido de deuda, minerales y clima del texto
+- [media] 2026-01-20 (309 d) · Discurso de Carney sobre la «ruptura» del orden mundial
 - [media] 2026-05-14 (195 d) · EE. UU. autorizo ventas de Nvidia H200 a empresas chinas durante la visita
 - [media] 2026-05-16 (193 d) · China y EE. UU. acordaron recortar aranceles a escalas equivalentes
 - [media] 2026-10-16 (40 d) · Hungría con Magyar bloquea clusters de Ucrania y apoya prorrogar sanciones
-- [media] 2026-10-25 (31 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
-- [media] 2026-10-25 (31 d) · BOE DAC8 y modelos 172/175/721, relectura 24-nov
-- [media] 2026-10-25 (31 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
-- … y 82 más en el Seguimiento
+- … y 85 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (30) → W03 · Se revisan con la rutina de países
-- 🔴 Voces: Voces sin confirmar (55) → W06 · 26 llevan más de 14 días
+- 🔴 Voces: Voces sin confirmar (57) → W06 · 27 llevan más de 14 días
 - 🔴 Predicciones: Vencidas sin resultado (1) → W06 · #80
 - 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (54) → rutina de cada tema (ver explorador/frescura.json) · verdes 33, amarillos 43, rojos 11, grises 0. Rojos: bancos-eba, calificaciones, 
 - 🟡 Radar regulatorio: Celdas sin dato (12) → W03 · Más huecos: IR 2, AR 2, SV 2, AE 1, BRICS 1
