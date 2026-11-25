@@ -587,7 +587,7 @@ function cargar(){
   (function sinJerga(o){const f=t=>t.replace(/ValueError:?\s*sin dato\s*\(NaN\)/g,'sin dato').replace(/ValueError:?\s*/g,'').replace(/\bnull\b/g,'sin dato').replace(/\(NaN\)/g,'');
     const bad=t=>t.length>4&&!/^https?:/.test(t)&&/null|ValueError|NaN/.test(t);
     const w=x=>{if(Array.isArray(x)){for(let i=0;i<x.length;i++){const v=x[i];if(typeof v==='string'){if(bad(v))x[i]=f(v)}else if(v&&typeof v==='object')w(v)}}else if(x&&typeof x==='object'){for(const k in x){const v=x[k];if(typeof v==='string'){if(bad(v))x[k]=f(v)}else if(v&&typeof v==='object')w(v)}}};try{w(o)}catch(e){}})(G);
-  D=G;R=G.radar;V=G.voces;CUM=G.cumbres;P=G.paneles;CAL=G.calificaciones;FMI=G.deuda_fmi;VAL=G.valoracion;window.ENL=G.enlaces;BAN=G.bancos;RES=G.reservas;window.RWAM=G.rwa_cadena_manual;window.CBDCB=G.cbdc_blockchains;
+  D=G;window.ORM=G.ormuz;R=G.radar;V=G.voces;CUM=G.cumbres;P=G.paneles;CAL=G.calificaciones;FMI=G.deuda_fmi;VAL=G.valoracion;window.ENL=G.enlaces;BAN=G.bancos;RES=G.reservas;window.RWAM=G.rwa_cadena_manual;window.CBDCB=G.cbdc_blockchains;
   X=G.calendario?{calendario:G.calendario,docs:Object.fromEntries(G.capas.map(c=>[c.id,c.docs]))}:null;
   $('estado').textContent='Datos reales: radar '+R.revisado+' · Órbita '+(D.movimientos.map(m=>m.fecha).filter(f=>f<=HOYS).sort().pop()||D.version)+(P?' · paneles '+P.leido:'');
   for(const j of R.jurisdicciones){const o=el('option',null,j.nombre);o.value=j.id;$('fpais').append(o)}
@@ -2117,6 +2117,16 @@ function pCumbres(){
       if(!filas.length&&m.nota)host.append(el('h3',null,'Cómo se movieron los precios'),el('p','nota-v',m.nota));
       if(filas.length){const fz=filas[0].fz;const fd=f=>f.slice(8,10)+'-'+f.slice(5,7);host.append(el('h3',null,'Cómo se movieron los precios: antes, día de la cumbre y último dato'),el('p','nota-v',m.nota));
         host.append(scrollX(tabla([{t:'Activo',f:r=>r.nm},{t:fd(m.desde),n:1,f:r=>num(r.a,r.a<200?2:0)},{t:fd(m.dia),n:1,f:r=>num(r.b,r.b<200?2:0)},{t:'Último ('+fz.slice(8,10)+'-'+fz.slice(5,7)+')',n:1,f:r=>num(r.z,r.z<200?2:0)},{t:'Cambio '+fd(m.desde)+' → último',n:1,f:r=>r.y?cambio((r.z-r.a)*100,'puntos básicos',0):cambio((r.z/r.a-1)*100,'%',1)}],filas)))}}
+    if(k.osint==='ormuz'){const O=window.ORM,sr=O&&O.serie;host.append(el('h3',null,'Tráfico en Ormuz (IMF PortWatch)'));
+      if(!sr||sr.length<14)host.append(el('p','nota-v','No se pudo leer ormuz-portwatch.json (python scripts/leer_portwatch.py).'));
+      else{const med=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;const ult=sr[sr.length-1],u7=sr.slice(-7);
+        const ref=sr.filter(r=>r.fecha>='2026-01-01'&&r.fecha<='2026-02-28');const m7=med(u7.map(r=>r.total)),mr=med(ref.map(r=>r.total));
+        const p7=med(u7.map(r=>r.petroleros)),pr=med(ref.map(r=>r.petroleros));
+        host.append(kpis([[num(ult.total,0)+' buques/día','Último día ('+ult.fecha+'): '+num(ult.petroleros,0)+' petroleros'],[m7==null?'s/d':num(m7,1)+' buques/día','Media de 7 días (hasta '+ult.fecha+'); petroleros '+(p7==null?'s/d':num(p7,1))+'/día'],[mr==null?'s/d':num(mr,1)+' buques/día','Media ene-feb 2026 ('+ref.length+' días); petroleros '+(pr==null?'s/d':num(pr,1))+'/día'],mr?['',"Media 7 días frente a ene-feb",cambio((m7/mr-1)*100,'%',0)]:null]));
+        const sem={};for(const r of sr){const d=new Date(r.fecha+'T00:00:00Z');const dow=(d.getUTCDay()+6)%7;d.setUTCDate(d.getUTCDate()-dow);const kk=d.toISOString().slice(0,10);(sem[kk]=sem[kk]||[]).push(r)}
+        const filas=Object.keys(sem).sort().slice(-12).map(kk=>{const a=sem[kk];return{kk,n:a.length,t:med(a.map(r=>r.total)),p:med(a.map(r=>r.petroleros))}});
+        host.append(scrollX(tabla([{t:'Semana desde (lunes)',f:r=>r.kk},{t:'Días con dato',n:1,f:r=>String(r.n)},{t:'Buques/día (media)',n:1,f:r=>num(r.t,1)},{t:'Petroleros/día (media)',n:1,f:r=>num(r.p,1)},{t:'Frente a ene-feb 2026',n:1,f:r=>mr?cambio((r.t/mr-1)*100,'%',0):'s/d'}],filas)));
+        host.append(el('p','nota-v',O.aviso+' Fuente '+O.nivel+': '+O.fuente+'. Leído '+O.leido+'.'))}}
     host.append(lista('Sesgos de las fuentes',k.sesgos),lista('Contexto',k.contexto),lista('Pendiente de verificar [VERIFICAR]',k.pendientes));
     if((k.fuentes||[]).length)host.append(el('h3',null,'Fuentes'),scrollX(tabla([{t:'Nivel',f:r=>CUM.niveles[r.nivel]?CUM.niveles[r.nivel][0]:r.nivel},{t:'Fuente',f:r=>r.nombre},{t:'Nota',f:r=>r.nota},{t:'Enlace',f:r=>{const sp=el('span');sp.append(lk('abrir',r.url));return sp}}],k.fuentes)))}
   CUM.cumbres.forEach(k=>{const b=el('button',null,k.fecha+' · '+k.titulo.split(' (')[0]);b.type='button';if(k.id===cur)b.classList.add('on');b.addEventListener('click',()=>{cur=k.id;[...sel.children].forEach(x=>x.classList.toggle('on',x===b));pinta()});sel.append(b)});

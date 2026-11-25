@@ -289,6 +289,10 @@ def _html(conceptos, publico=False):
         datos["cumbres"] = json.loads((CARPETA / "cumbres.json").read_text(encoding="utf-8"))
     except Exception:
         datos["cumbres"] = None
+    try:                              # 25-nov: tráfico diario en Ormuz (scripts/leer_portwatch.py, IMF PortWatch)
+        datos["ormuz"] = json.loads((CARPETA / "ormuz-portwatch.json").read_text(encoding="utf-8"))
+    except Exception:
+        datos["ormuz"] = None
     try:                              # voces: declaraciones de personas e instituciones (informes de vídeos y research)
         datos["voces"] = json.loads((CARPETA / "voces.json").read_text(encoding="utf-8"))
     except Exception:
