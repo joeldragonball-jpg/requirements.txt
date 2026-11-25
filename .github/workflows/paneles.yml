@@ -82,6 +82,22 @@ jobs:
         continue-on-error: true
         run: python scripts/leer_portwatch.py
 
+      # 25-nov: lectores que ya existían pero no corrían solos (auditoría de automatizaciones). Sin IA ni claves; cada uno con tope
+      # de tiempo y continue-on-error: si una fuente falla, conserva el archivo anterior y el resto del trabajo sigue.
+      - name: Leer rendimientos DeFi, incidentes, on-chain y validadores
+        continue-on-error: true
+        timeout-minutes: 8
+        run: |
+          python scripts/leer_rendimientos.py || true
+          python scripts/leer_incidentes.py || true
+          python scripts/leer_onchain.py || true
+          python scripts/leer_validadores.py || true
+
+      - name: Leer OCDE y BIS (indicadores de países)
+        continue-on-error: true
+        timeout-minutes: 6
+        run: python scripts/leer_ocde_bis.py
+
       - name: Construir los datos de la versión móvil
         id: movil
         continue-on-error: true
@@ -115,7 +131,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add explorador/tokenizado.json explorador/indicadores-manual.json explorador/tipos-manual.json explorador/paneles.json explorador/indicadores-historia.json explorador/precios_historico.json explorador/valoracion.json explorador/bolsas.json explorador/ormuz-portwatch.json explorador/datos.json explorador/noticias-archivo.json docs/movil/data.json docs/movil/seguimiento.json docs/orbita/index.html research/PLANNING.md
+          git add explorador/tokenizado.json explorador/indicadores-manual.json explorador/tipos-manual.json explorador/paneles.json explorador/indicadores-historia.json explorador/precios_historico.json explorador/valoracion.json explorador/bolsas.json explorador/ormuz-portwatch.json explorador/rendimientos-defillama.json explorador/cadenas-incidentes.json explorador/cadenas-onchain.json explorador/cadenas-validadores.json explorador/cadenas-validadores-historial.jsonl explorador/ocde-bis.json explorador/datos.json explorador/noticias-archivo.json docs/movil/data.json docs/movil/seguimiento.json docs/orbita/index.html research/PLANNING.md
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -m "Paneles de datos: actualización automática (sin IA)"
           git checkout -- .   # descarta restos generados que no se guardan (evita «unstaged changes» al hacer pull --rebase)
