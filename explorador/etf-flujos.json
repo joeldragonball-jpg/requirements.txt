@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-19",
+ "generado": "2026-11-25",
  "metodo": "flujo diario = (acciones_t - acciones_t-1) x NAV_t; requiere >=2 instantáneas. Las webs de emisores solo muestran la última, así que el historial se acumula con scripts/leer_etf_flujos.py (una instantánea por día hábil). Al 15-nov (domingo) las webs repiten el ultimo dia habil (12/13-nov): 1 instantanea diaria por fondo, flujo diario = null. XRPZ, XRPC y GXLM solo tienen datos trimestrales/portada de la SEC (10-Q del 13-nov y 10-nov-2026).",
  "nota_nivel": "P = leido en la web del emisor o en EDGAR (10-Q; parte interesada, no auditado). Agregadores (Farside, SoSoValue) solo como contraste [S]; no consultados.",
  "etfs": [
@@ -89,10 +89,23 @@
      "nivel": "P (emisor, parte interesada; lectura via WebFetch, resumen automatico: contrastar en Chrome) [VERIFICAR]",
      "nota": "25-nov: web a 23-nov: 35.940.000 acciones, NAV 10,49, AUM 376,84 M; holdings 24-nov: 401.190.506,82 XRP (368,28 M USD). Variacion de acciones vs 19-nov = -500.000 (rescate confirmado, antes solo inferido) x NAV 10,49 = flujo -5,25 M USD (calculo propio; incluye 20/21/23-nov agregados)",
      "flujo_usd": -5245000
+    },
+    {
+     "fecha": "2026-11-24",
+     "acciones": 35940000.0,
+     "nav": 10.24,
+     "aum_usd": 368170000.0,
+     "tenencia_monedas": 401190506.82,
+     "valor_mercado_tenencia_usd": 368276837.64,
+     "xrp_por_accion": 11.1628,
+     "fuente": "https://www.bitwiseetfs.com/single-asset/xrp",
+     "nivel": "P (emisor, parte interesada)",
+     "nota": "25-nov, Chrome: Product Details y Holdings con fecha 24-nov: 35.940.000 acciones, NAV 10,24, AUM 368,17 M, 401.190.506,82 XRP (11,1628 XRP/accion). Acciones iguales al 23-nov (lectura previa por WebFetch, ahora coherente con Chrome): flujo 24-nov = 0. Volumen 1.499.680 acciones",
+     "flujo_usd": 0
     }
    ],
    "flujo_usd": 0,
-   "flujo_fecha": "2026-11-17",
+   "flujo_fecha": "2026-11-24",
    "comision_pct": 0.34,
    "comision_nota": "0,34 % anual sobre las XRP del fondo (comision unitaria); 424B3 del 28-sep-2026",
    "custodio": "Coinbase Custody Trust Company, LLC",
@@ -167,6 +180,18 @@
      "fuente": "https://www.21shares.com/en-us/products-us/toxr",
      "nivel": "P (emisor, parte interesada)",
      "nota": "21-nov, Chrome: valor a 20-nov NAV 8,67 y AUM 95.325.354,05 (el bloque de estadisticas muestra NAV 9,37 con fecha 19-nov); sin acciones en la web: derivadas AUM/NAV = 10994851 (calculo propio, ~10,99 M, igual que el 18-nov). Flujo no calculable de forma directa; la derivada no cambia (<0,1 %)"
+    },
+    {
+     "fecha": "2026-11-23",
+     "acciones": 11000000,
+     "nav": 9.15,
+     "aum_usd": 100614759.92,
+     "tenencia_monedas": 107073960.56,
+     "fuente": "https://www.21shares.com/en-us/products-us/toxr",
+     "nivel": "P (emisor, parte interesada)",
+     "nota": "25-nov, Chrome: 'As of Nov 23, 2026': securities outstanding 11.000.000, NAV por unidad 9,15, net assets 100.614.759,92 USD, 107.073.960,56 XRP (9,7316 XRP/unidad), comision 0,30 %, custodios Anchorage, BitGo y Coinbase Custody International. Acciones de la web (antes derivadas ~10,99 M el 20-nov): flujo diario no calculable (20-nov derivado)",
+     "flujo_usd": null,
+     "flujo_motivo": "instantanea previa del 20-nov derivada (no leida del emisor)"
     }
    ],
    "flujo_usd": null,
@@ -421,6 +446,19 @@
      "nivel": "P (emisor, parte interesada)",
      "nota": "21-nov, Chrome: As of 11/20/2026: 2.660.100 acciones, NAV 17,16 (GAAP 17,16), AUM no GAAP 45.637.279 USD (GAAP 45.634.294), 51.476.924,6622 XRP (19,35149982 XRP/accion), precio de mercado 17,13 (-8 % en el dia), descuento -0,17 %, volumen 82.724 acciones. Flujo 20-nov vs 18-nov = 0 (acciones sin variacion; el 19-nov no se leyo)",
      "flujo_usd": 0
+    },
+    {
+     "fecha": "2026-11-25",
+     "acciones": 2660100,
+     "nav": 18.21,
+     "aum_usd": 48441685.0,
+     "tenencia_monedas": 51474456.63,
+     "fuente": "https://etfs.grayscale.com/gxrp",
+     "nivel": "P (emisor, parte interesada)",
+     "nota": "25-nov, Chrome: pagina con 'As of 11/25/2026' (precio, volumen): 2.660.100 acciones, NAV 18,21 (GAAP 18,21), AUM no GAAP 48.441.685 USD (GAAP 48.452.906), 19,35057202 XRP/accion (tenencia = acciones x ese ratio, calculo propio), precio de mercado 18,22, prima 0,05 %, volumen 37.313. La fecha exacta de NAV/acciones no se muestra por separado [VERIFICAR: puede ser 24-nov]. Acciones sin cambio frente al 20-nov: variacion acumulada = 0; flujo diario no valorado (no consecutivas)",
+     "flujo_usd": null,
+     "flujo_motivo": "instantanea previa del 20-nov: no consecutiva (variacion de acciones 0)",
+     "variacion_acumulada_usd": 0
     }
    ],
    "flujo_usd": -1122000.0,
@@ -477,6 +515,20 @@
      "flujo_usd": 0,
      "tenencia_monedas_20nov": 10105097.92,
      "valor_tenencia_20nov_usd": 685403528.83
+    },
+    {
+     "fecha": "2026-11-24",
+     "acciones": 72860000,
+     "nav": 9.58,
+     "aum_usd": 697830000.0,
+     "tenencia_monedas": 10109494.94,
+     "valor_mercado_tenencia_usd": 697950432.27,
+     "fuente": "https://www.bitwiseetfs.com/single-asset/bsol",
+     "nivel": "P (emisor, parte interesada)",
+     "nota": "25-nov, Chrome: Product Details y Holdings a 24-nov: 72.860.000 acciones, NAV 9,58, AUM 697,83 M, 10.109.494,94 SOL (0,1388 SOL/accion). Frente al 19-nov (73.360.000): -500.000 acciones x NAV 9,58 = -4,79 M USD ACUMULADOS en 3 dias habiles (20, 21-nov y 23/24-nov); no es flujo diario, flujo_usd = null",
+     "flujo_usd": null,
+     "flujo_motivo": "instantanea previa del 19-nov: no consecutiva; variacion acumulada -4.790.000 USD en la nota",
+     "variacion_acumulada_usd": -4790000
     }
    ],
    "flujo_usd": null,
@@ -527,6 +579,19 @@
      "nivel": "P (emisor, parte interesada)",
      "nota": "21-nov, Chrome: As of 11/20/2026: 17.844.135 acciones, NAV 5,10, AUM no GAAP 91.038.710 USD (GAAP 91.025.201), 1.350.923,1341 SOL (0,07570684 SOL/accion). Flujo 20-nov vs 18-nov (2 dias) = (17.844.135 - 18.044.135) x 5,10 = -1.020.000 USD = -1,02 M$ (calculo propio)",
      "flujo_usd": -1020000.0
+    },
+    {
+     "fecha": "2026-11-25",
+     "acciones": 17494135,
+     "nav": 5.34,
+     "aum_usd": 93467984.0,
+     "tenencia_monedas": 1325410.9491,
+     "fuente": "https://etfs.grayscale.com/gsol",
+     "nivel": "P (emisor, parte interesada)",
+     "nota": "25-nov, Chrome: 'As of 11/25/2026' en cabecera: 17.494.135 acciones, NAV 5,34 (GAAP 5,34), AUM no GAAP 93.467.984 USD (GAAP 93.494.493), 0,07576316 SOL/accion (tenencia calculo propio), comision 0,19 %, rendimiento bruto de staking 5,14 %, 100 % en staking. Fecha exacta de acciones/NAV [VERIFICAR: puede ser 24-nov]. Frente al 20-nov (17.844.135): -350.000 acciones x NAV 5,34 = -1,87 M USD ACUMULADOS en 3 dias habiles; no es flujo diario",
+     "flujo_usd": null,
+     "flujo_motivo": "instantanea previa del 20-nov: no consecutiva; variacion acumulada en la nota",
+     "variacion_acumulada_usd": -1869000
     }
    ],
    "flujo_usd": null,
@@ -600,6 +665,17 @@
      "nivel": "P (emisor, parte interesada)",
      "nota": "21-nov, Chrome: valor a 20-nov: Securities outstanding 510.000 (la web vuelve a mostrarlas), NAV 6,64, AUM 3.385.203,98. Las acciones derivadas del 18-nov eran 0,51 M: sin variacion. Flujo 20-nov vs 18-nov = 0 (estimado con derivadas, VERIFICAR)",
      "flujo_usd": 0
+    },
+    {
+     "fecha": "2026-11-23",
+     "acciones": 510000,
+     "nav": 7.13,
+     "aum_usd": 3637623.72,
+     "tenencia_monedas": 49893.03,
+     "fuente": "https://www.21shares.com/en-us/products-us/tsol",
+     "nivel": "P (emisor, parte interesada)",
+     "nota": "25-nov, Chrome: 'As of Nov 23, 2026': 510.000 acciones, NAV 7,13, net assets 3.637.623,72 USD, 49.893,03 SOL (0,0978 SOL/accion), 99,86 % en staking, volumen 71.373. Viernes 20-nov (510.000, leidas en la web) -> lunes 23-nov (510.000): flujo = 0",
+     "flujo_usd": 0
     }
    ],
    "flujo_usd": null,
@@ -647,6 +723,17 @@
      "fuente": "https://www.vaneck.com/us/en/investments/solana-etf-vsol/",
      "nivel": "P (emisor, parte interesada)",
      "nota": "21-nov, Chrome: NAV 8,84 y activos netos totales 14,37 M$ a 20-nov (web VanEck); acciones derivadas = 1625566 (calculo propio, redondeo de 14,37 M) frente a 1,625 M el 18-nov: sin variacion apreciable. Flujo no calculable"
+    },
+    {
+     "fecha": "2026-11-24",
+     "acciones": null,
+     "nav": 9.0,
+     "aum_usd": 12830000.0,
+     "fuente": "https://www.vaneck.com/us/en/investments/solana-etf-vsol/",
+     "nivel": "P (emisor, parte interesada)",
+     "nota": "25-nov, Chrome: NAV 9,00 y activos netos totales 12,83 M USD a 24-nov; sin acciones en la web (derivadas 12,83 M/9,00 = 1,43 M, calculo propio, redondeo). Comision 0,30 %, rendimiento bruto de staking 4,69 %. Flujo no calculable",
+     "flujo_usd": null,
+     "flujo_motivo": "la web no publica acciones"
     }
    ],
    "flujo_usd": null,
@@ -749,6 +836,18 @@
      "fuente": "https://www.invesco.com/us/en/financial-products/etfs/invesco-galaxy-solana-etf.html",
      "nivel": "P (emisor, parte interesada)",
      "nota": "21-nov, Chrome: web Invesco: valor de mercado 2,88 M$ a 20-nov y 46.743,25 SOL en total (acciones y NAV no leidos en esta pasada); frente a 3,41 M$ el 18-nov. Flujo no calculable"
+    },
+    {
+     "fecha": "2026-11-24",
+     "acciones": 425000,
+     "nav": 6.96,
+     "aum_usd": 2960000.0,
+     "fuente": "https://www.invesco.com/us/en/financial-products/etfs/invesco-galaxy-solana-etf.html",
+     "nivel": "P (emisor, parte interesada)",
+     "nota": "25-nov, Chrome: valor de mercado 2,96 M USD (as of 24-nov); acciones en circulacion 425K (redondeado, fecha no mostrada) y NAV al cierre 6,96. Frente al 18-nov (465.000): -40.000 acciones x 6,96 = -0,28 M USD acumulados (aprox., redondeo de 425K): no es flujo diario",
+     "flujo_usd": null,
+     "flujo_motivo": "acciones redondeadas y previa no consecutiva",
+     "variacion_acumulada_usd": -278400
     }
    ],
    "flujo_usd": null,
@@ -757,6 +856,35 @@
    "fecha_prospecto": "2025-12-09",
    "inicio_cotizacion": "2025-12-15 (web Invesco, Fund inception; Cboe BZX)",
    "lanzamiento": "2025-12-15"
+  },
+  {
+   "ticker": "XRPR",
+   "nombre": "REX-Osprey XRP ETF",
+   "activo": "XRP",
+   "emisor": "REX-Osprey (REX Shares / Osprey Funds)",
+   "web": "https://www.rexshares.com/xrpr/",
+   "comision_pct": 0.75,
+   "comision_nota": "Total Expense Ratio 0,75 % (web del emisor, 25-nov-2026). Estructura distinta (invierte directa o a traves de una filial; politica del 80 %): no es un fideicomiso spot puro como los demas",
+   "custodio": null,
+   "lanzamiento": "2025-09-18 (web del emisor, Fund Inception; Cboe BZX)",
+   "fuente_prospecto": "https://www.rexshares.com/xrpr/ (enlace Prospectus en la web; no leido)",
+   "fecha_prospecto": null,
+   "historial": [
+    {
+     "fecha": "2026-11-24",
+     "acciones": 3975000,
+     "nav": 7.5,
+     "aum_usd": 29772750.0,
+     "tenencia_monedas": null,
+     "fuente": "https://www.rexshares.com/xrpr/",
+     "nivel": "P (emisor, parte interesada)",
+     "nota": "25-nov, Chrome: 'As of 11/24/2026': NAV 7,50, precio de cierre 7,49, 3.975.000 acciones, activos del fondo 29.772.750 USD, 4 posiciones (tenencia en XRP no publicada en la pagina). Primera instantanea: flujo = null",
+     "flujo_usd": null,
+     "flujo_motivo": "una sola instantanea"
+    }
+   ],
+   "flujo_usd": null,
+   "flujo_motivo": "una sola instantanea"
   }
  ],
  "bloques_no_hechos": {
@@ -1779,5 +1907,14 @@
   "contraste_agregadores": "NO HECHO: Farside (farside.co.uk/xrp) devuelve 404 en esa ruta; SoSoValue muestra la verificacion anti-bot de Cloudflare (no sorteada). Sin contraste [S] de flujos diarios de XRP y SOL; solo el flujo calculado con acciones del propio emisor (P, parte interesada).",
   "lectura": "[RAZONADO] En el emisor: GSOL pierde 0,2 M acciones (-1,02 M$) en 2 dias, y las tenencias de Bitwise XRP (-1,4 % de XRP) y BSOL (-0,6 % de SOL) bajan el 20-nov, lo que sugiere rescates netos ese dia; el resto, sin cambios. Flujos pequenos frente a la caida de precio (GXRP NAV -7,8 % el 20-nov). No es dato de demanda institucional: son ETF pequenos y con movimientos de creadores de mercado [ESPECULACION: causa].",
   "no_leidos": "XRPZ (Franklin), XRPC (Canary), FSOL (Fidelity), SOLC, SOEZ: sin web diaria legible (ver bloques_no_hechos)."
+ },
+ "tercera_pasada_25nov": {
+  "leido": "2026-11-25",
+  "caduca": "2026-12-02",
+  "alcance": "Chrome en webs de emisores: Bitwise (XRP, BSOL), Grayscale (GXRP, GSOL), 21shares (TOXR, TSOL), VanEck (VSOL), Invesco (QSOL), REX-Osprey (XRPR, nuevo). Datos a 23/24-nov (25-nov en Grayscale).",
+  "flujos": "Solo XRP (0, 24 vs 23-nov) y TSOL (0, 23 vs 20-nov, consecutivos) tienen flujo diario con dos lecturas del emisor. BSOL (-4,79 M$), GSOL (-1,87 M$) y QSOL (-0,28 M$) tienen variacion de acciones x NAV ACUMULADA entre lecturas no consecutivas (campo variacion_acumulada_usd), no flujo diario. GXRP 0 acumulado.",
+  "no_leidos": "Canary XRPC/SOLC: canaryfunds.com devuelve ERR_SSL_PROTOCOL_ERROR; Franklin XRPZ/SOEZ: no aparecen en el listado de 81 ETF de franklintempleton.com (25-nov); Fidelity FSOL: sin web publica diaria leida; WisdomTree: sin ETF spot de XRP/XLM/SOL localizado en esta pasada; XLM: sin ETF spot cotizado, solo GXLM OTC (10-Q).",
+  "contraste_agregadores": "NO HECHO en esta pasada (Farside/SoSoValue no consultados); sin contraste [S].",
+  "sesgo": "Todas las cifras vienen del propio emisor (parte interesada, no auditadas); las fechas de NAV y acciones no siempre coinciden en la misma pagina."
  }
 }
