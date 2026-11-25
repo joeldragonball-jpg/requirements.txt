@@ -50,3 +50,7 @@ Reprobado el 7-nov (W07, 231 URLs de voces, regulación y calendario, 8 en paral
 Reprobado el 25-nov (W07, 398 URLs con `scripts/comprobar_enlaces.py`): 305 OK, 72 con 403 (nuevos: iea.org, imf.org web, JSE), 4 con 429, 3 con 404 (thestar.com.my, aljazeera.com, argentina.gob.ar texto ordenado CNV: por comprobar en Chrome), 2 con 500, 1 con 406, 11 sin respuesta. FMI DataMapper da 403 a script (usar `api.imf.org`); FRED y Bundesbank sin respuesta hoy (reintentar).
 
 Regla: nunca saltar anti-bots; si no hay API ni navegador, la cifra queda [VERIFICAR].
+
+Arsenal OSINT (tráfico marítimo, frente de Ucrania, vuelos, satélite, sanciones, on-chain, energía, bulos): ver `research/OSINT-ARSENAL.md` (25-nov).
+Lectura por script confirmada el 25-nov: IMF PortWatch (API ArcGIS), DeepState (`/api/history/last`), OpenSky, OFAC SDN; ISW, XRPSCAN y EUvsDisinfo dan 403.
+Regla: OSINT = pista, no prueba; contrastar con ≥2 fuentes independientes y marcar [S].

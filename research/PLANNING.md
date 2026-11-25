@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-25 11:43 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-25 11:51 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -6,7 +6,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hoy (máx. 3):** Gemini Cripto y regulación
 **Periódicas (próxima):** W08 11-25 · W04 11-26 · W05 11-26 · W06 11-27 · W09 11-27 · W10 11-28 · W01 11-30 · W02 12-01 · W03 12-02 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
-**Parciales (59):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: 17-nov: 20 movimientos volcados a datos.json (305) · C42 falta: 18-nov 3.ª: ESMA, SFC y MAS leídos; VARA parcial.  · C58 falta: 18-nov: Rusia a P (Duma 450), India Lok Sabha 540/ · C59 falta: 17-nov: salario mínimo y fichas añadidos a indicad · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
+**Parciales (62):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: 17-nov: 20 movimientos volcados a datos.json (305) · C42 falta: 18-nov 3.ª: ESMA, SFC y MAS leídos; VARA parcial.  · C58 falta: 18-nov: Rusia a P (Duma 450), India Lok Sabha 540/ · C59 falta: 17-nov: salario mínimo y fichas añadidos a indicad · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
 **Vigiladas (11, sin cerrar; las revisa W05 o W08):** C261 (11-26) · C340 (11-26) · C341 (11-26) · C342 (11-26) · C68B (11-26) · C230 (12-25) · C245 (12-25) · C267 (12-25)
 **Hechas en 7 días (2):** C355, C360
 
@@ -98,6 +98,9 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - C398 ◐ en parte · C382 resto: lectura china Xi–Trump leída (cita Taiwán verificada en navegador);  · Sonnet S · ~~3 % · `Rutina`
 - C402 ◐ en parte · EDGAR con Chrome: 13F-HR de Goldman, Susquehanna y Schonfeld presentados el 16-n · Sonnet S · ~~3 % · `Lectura con Chrome`
 - C403 ◐ en parte · Chrome: statement_26_2563 (paquete 22) leída entera; Kremlin y AIE sin leer (err · Sonnet S · ~~3 % · `Lectura con Chrome`
+- C407 ◐ en parte · W03b Etiopía y Egipto con Chrome: 11 celdas de regulacion.json; evidencia negati · Sonnet S · ~~3 % · `Cumbres y OSINT`
+- C408 ◐ en parte · Cumbres histórica: visita de Trump a Pekín (14-15 may 2026); hoja de la Casa Bla · Sonnet S · ~~3 % · `Cumbres y OSINT`
+- C409 ◐ en parte · Cumbres previa FOMC 9-dic: tipo 3,75-4,00 %, voto 10-2, FedWatch sin leer; presi · Sonnet S · ~~3 % · `Cumbres y OSINT`
 - C42 ◐ en parte · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
 - C58 ◐ en parte · Centro · Fichas políticas de 12 países (UE: España, Alemania, Francia, Italia, P · Sonnet M · ~3 % · `research/prompts/C58-fichas-politicas-paises.md`
 - C59 ◐ en parte · Centro · Indicadores económicos por país (IPC, paro total y juvenil, PIB, deuda, · Sonnet M · ~3 % · `research/prompts/C59-indicadores-sociales-economicos.md`
@@ -134,13 +137,13 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
 - [media] 2025-08-15 (467 d) · La cumbre de Alaska duró cerca de tres horas
 - [media] 2025-10-30 (391 d) · China se comprometió a comprar 25 millones de toneladas de soja al año
+- [media] 2026-05-14 (195 d) · EE. UU. autorizo ventas de Nvidia H200 a empresas chinas durante la visita
+- [media] 2026-05-16 (193 d) · China y EE. UU. acordaron recortar aranceles a escalas equivalentes
 - [media] 2026-10-16 (40 d) · Hungría con Magyar bloquea clusters de Ucrania y apoya prorrogar sanciones
 - [media] 2026-10-25 (31 d) · Texto definitivo de los modelos 172/175/721 y de DAC8 en el BOE
 - [media] 2026-10-25 (31 d) · BOE DAC8 y modelos 172/175/721, relectura 24-nov
 - [media] 2026-10-25 (31 d) · [VERIFICAR] Precio y cierre de cada adquisición de Ripple sin precio publicado (Standard Custody, Palisade, So
-- [media] 2026-10-25 (31 d) · [VERIFICAR] Integración de Chainlink CCIP en producción en SWIFT.
-- [media] 2026-10-25 (31 d) · [VERIFICAR] Vigencia 2026 de la escala del ahorro (art. 66 LIRPF)
-- … y 79 más en el Seguimiento
+- … y 82 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (30) → W03 · Se revisan con la rutina de países
