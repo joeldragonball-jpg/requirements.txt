@@ -1,18 +1,18 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-25 07:05 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-25 08:08 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** R00 Apertura del día · W08 Auditoría mensual · Gemini Cripto y regulación
+**Hoy (máx. 3):** Gemini Cripto y regulación
 **Periódicas (próxima):** W08 11-25 · W04 11-26 · W05 11-26 · W06 11-27 · W09 11-27 · W10 11-28 · W01 11-30 · W02 12-01 · W03 12-02 · W07 12-05
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (51):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: 17-nov: 20 movimientos volcados a datos.json (305) · C42 falta: 18-nov 3.ª: ESMA, SFC y MAS leídos; VARA parcial.  · C58 falta: 18-nov: Rusia a P (Duma 450), India Lok Sabha 540/ · C59 falta: 17-nov: salario mínimo y fichas añadidos a indicad · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
-**Vigiladas (11, sin cerrar; las revisa W05 o W08):** C230 (11-25) · C245 (11-25) · C267 (11-25) · C275 (11-25) · C331 (11-25) · C61 (11-25) · C261 (11-26) · C340 (11-26)
+**Vigiladas (11, sin cerrar; las revisa W05 o W08):** C261 (11-26) · C340 (11-26) · C341 (11-26) · C342 (11-26) · C68B (11-26) · C230 (12-25) · C245 (12-25) · C267 (12-25)
 **Hechas en 7 días (2):** C355, C360
 
 ## Hoy (mié 2026-11-25): solo lo casi obligatorio
-- R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 17 días
-- Fija de hoy (último miércoles del mes: auditoría mensual): **W08 Auditoría mensual** (~4 %) · último 2026-11-02 · `research/prompts/W08-*.md`
+- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 18 días
+- Fija de hoy (último miércoles del mes: auditoría mensual): **W08 Auditoría mensual** (~4 %) · último 2026-11-25 · `research/prompts/W08-*.md`
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
 - Gemini del día: toca **Cripto y regulación** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
@@ -115,9 +115,10 @@ Hechas en este periodo: W01, W02, W04, W05, W06, W07, W08, W10
 - R39 · Auditoría final corta (18-19 oct): solo lo escrito después de R31/R38 
 
 ## Auditorías abiertas
-- T4 (Baja): Omisiones de fuentes: BdE en Bonos, BoE en Deuda, cifras manuales en Liquidez e Indicadores
-- T7 (Baja): Hueco jun-2026 en la API del BCE, causa sin explicar [VERIFICAR]
-- T8 (Baja): «+3» de la Cámara se mide desde 2024 (215 D), no desde hoy [VERIFICAR]
+- B1 (Media): Buscar la URL vigente (InfoLEG / CNV); si no se lee, bajar a [VERIFICAR]. No se ha tocado: ambos archivos los 
+- B2 (Media): Leer el PDF en el navegador, fijar moneda y fecha, y añadir url; si no cuadra, bajar a S. [VERIFICAR]
+- B3 (Baja): Decidir si se añade campo estado; hoy lo cubre informes/predicciones.md.
+- B4 (Baja): Mantener [VERIFICAR] o vaciar la celda.
 - Auditoría mensual W08: última semana del mes (miércoles)
 
 ## Verificaciones abiertas ([VERIFICAR]; las cierra W05 o W08)
@@ -142,7 +143,7 @@ Hechas en este periodo: W01, W02, W04, W05, W06, W07, W08, W10
 - 🟡 Radar regulatorio: Celdas sin dato (12) → W03 · Más huecos: IR 2, AR 2, SV 2, AE 1, BRICS 1
 
 ## Bots con problema
-- Noticias con IA, Paneles de datos
+- Noticias con IA, Votos de noticias
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → ✓ revisado (hecho)
