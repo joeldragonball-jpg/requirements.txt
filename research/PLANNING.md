@@ -1,21 +1,21 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-25 22:22 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-26 03:47 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** Gemini Cripto y regulación
-**Periódicas (próxima):** W08 11-25 · W04 11-26 · W05 11-26 · W06 11-27 · W09 11-27 · W10 11-28 · W01 11-30 · W02 12-01 · W03 12-02 · W07 12-05
+**Hoy (máx. 3):** R00 Apertura del día · W05 Verificación por lotes · W04 ETF y flujos
+**Periódicas (próxima):** W04 11-26 · W05 11-26 · W06 11-27 · W09 11-27 · W10 11-28 · W01 11-30 · W02 12-01 · W03 12-02 · W07 12-05 · W08 12-23
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (62):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: 17-nov: 20 movimientos volcados a datos.json (305) · C42 falta: 18-nov 3.ª: ESMA, SFC y MAS leídos; VARA parcial.  · C58 falta: 18-nov: Rusia a P (Duma 450), India Lok Sabha 540/ · C59 falta: 17-nov: salario mínimo y fichas añadidos a indicad · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
 **Vigiladas (11, sin cerrar; las revisa W05 o W08):** C261 (11-26) · C340 (11-26) · C341 (11-26) · C342 (11-26) · C68B (11-26) · C230 (12-25) · C245 (12-25) · C267 (12-25)
 **Hechas en 7 días (2):** C355, C360
 
-## Hoy (mié 2026-11-25): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ✓ · racha 18 días
-- Fija de hoy (último miércoles del mes: auditoría mensual): **W08 Auditoría mensual** (~4 %) · último 2026-11-25 · `research/prompts/W08-*.md`
+## Hoy (jue 2026-11-26): solo lo casi obligatorio
+- R00 apertura ⏳ pendiente · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 18 días
+- Sin rutina fija hoy: elige por prioridad en las secciones de abajo.
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
-- Gemini del día: toca **Cripto y regulación** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
+- Gemini del día: toca **ETF y flujos** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
 - Norma: 1 consulta ligera al día (unas 15 fuentes), sin repetirla. Rutina G (C20): una rotación por día; si Gemini avisa de límite o llegas al 80 %, se para por hoy y se anota en «parada». La cuota se comparte con NotebookLM.
 - Aviso de límite (antes del 2026-10-27): Una consulta de ~47 fuentes lanzada 2-3 veces agotó el límite; la cuota ya estaba gastada en NotebookLM.
 - Aviso de límite (2026-10-27): Tras W03 Sudáfrica+Indonesia, Deep Research queda desactivado hasta las 04:00 (hora de Madrid) del 27-oct, con el uso general en ~4 %. Hizo 200+ búsquedas web aunque el prompt pedía máx. 15 fuentes: el tope del prompt no se respeta. Límite oficial de Deep Research sin confirmar; de momento, 1 Deep Research por ventana (reinicio 04:00).
@@ -135,25 +135,25 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - ninguna anotada
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
-- [media] 2025-06-17 (526 d) · 130 compromisos
-- [media] 2025-06-22 (521 d) · 2,1 %
-- [media] 2025-08-15 (467 d) · La cumbre de Alaska duró cerca de tres horas
-- [media] 2025-08-22 (460 d) · Reacción de mercado el 22-ago-2025
-- [media] 2025-10-30 (391 d) · China se comprometió a comprar 25 millones de toneladas de soja al año
-- [media] 2025-11-22 (368 d) · Contenido de deuda, minerales y clima del texto
-- [media] 2025-11-22 (368 d) · hoja de ruta de combustibles fósiles
-- [media] 2026-01-20 (309 d) · Discurso de Carney sobre la «ruptura» del orden mundial
-- … y 88 más en el Seguimiento
+- [media] 2025-06-17 (527 d) · 130 compromisos
+- [media] 2025-06-22 (522 d) · 2,1 %
+- [media] 2025-08-15 (468 d) · La cumbre de Alaska duró cerca de tres horas
+- [media] 2025-08-22 (461 d) · Reacción de mercado el 22-ago-2025
+- [media] 2025-10-30 (392 d) · China se comprometió a comprar 25 millones de toneladas de soja al año
+- [media] 2025-11-22 (369 d) · Contenido de deuda, minerales y clima del texto
+- [media] 2025-11-22 (369 d) · hoja de ruta de combustibles fósiles
+- [media] 2026-01-20 (310 d) · Discurso de Carney sobre la «ruptura» del orden mundial
+- … y 87 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (30) → W03 · Se revisan con la rutina de países
 - 🔴 Voces: Voces sin confirmar (57) → W06 · 27 llevan más de 14 días
 - 🔴 Predicciones: Vencidas sin resultado (1) → W06 · #80
-- 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (47) → rutina de cada tema (ver explorador/frescura.json) · verdes 40, amarillos 39, rojos 8, grises 0. Rojos: bancos-eba, espana-empleados,
+- 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (50) → rutina de cada tema (ver explorador/frescura.json) · verdes 37, amarillos 41, rojos 9, grises 0. Rojos: bancos-eba, empresas-redes, e
 - 🟡 Radar regulatorio: Celdas sin dato (12) → W03 · Más huecos: IR 2, AR 2, SV 2, AE 1, BRICS 1
 
 ## Bots con problema
-- Noticias con IA
+- Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → ✓ revisado (hecho)
@@ -162,12 +162,12 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - 2026-11-18 · Zona euro: IPCA definitivo de octubre (Eurostat) (medio) → ✓ revisado (hecho)
 - 2026-11-23 · EE. UU.: subasta de notas del Tesoro a 2 años ($69 mil M) (medio) → ◐ rutina ejecutada (W02 del 2026-11-25); dato sin marcar como leído
 - 2026-11-24 · EE. UU.: subasta de notas del Tesoro a 5 años ($70 mil M) (medio) → ◐ rutina ejecutada (W02 del 2026-11-25); dato sin marcar como leído
+- 2026-11-25 · PCE de octubre y PIB de EE. UU. (2.ª estimación) (medio) → ◐ rutina ejecutada (W01 del 2026-11-25); dato sin marcar como leído
+- 2026-11-25 · EE. UU.: subasta de notas del Tesoro a 7 años ($44 mil M) (medio) → ◐ rutina ejecutada (W02 del 2026-11-25); dato sin marcar como leído
 «✓ cubierto» exige que el informe de la rutina tenga una línea `Eventos leídos: <fecha o título>`; sin ella solo consta que la rutina se ejecutó (C256).
 Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/prompts/EV-post-evento.md`. Descartar o marcar hecho: `eventos/revisados.json`.
 
 ## Calendario: próximos 14 días de impacto y qué los cubre
-- 2026-11-25 · PCE de octubre y PIB de EE. UU. (2.ª estimación) (medio) → cubre W01 (Datos macro y tipos)
-- 2026-11-25 · EE. UU.: subasta de notas del Tesoro a 7 años ($44 mil M) (medio) → cubre W02 (Deuda y subastas)
 - 2026-11-26 · Corea: próxima reunión del Banco de Corea sobre el tipo base (medio) → cubre W01 (Tipos de interés)
 - 2026-11-27 · Francia: revisión programada de la calificación de S&P (hoy  (medio) → cubre W02 (Deuda y subastas)
 - 2026-11-27 · España: IPC adelantado de noviembre (INE) (medio) → cubre W01 (Datos macro y tipos)
@@ -178,6 +178,8 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 - 2026-12-01 · Estonia: cierre de los pasos fronterizos con Rusia (medio) → sin rutina: valorar research EV
 - 2026-12-01 · Abu Dabi: audiencia sobre si 18 empresas deben mantener cong (medio) → sin rutina: valorar research EV
 - 2026-12-02→12-04 · Reunión del RBI (India) (medio) → cubre W01 (Tipos de interés)
+- 2026-12-04 · Empleo EE. UU. (informe de noviembre) (alto) → cubre W01 (Datos macro y tipos)
+- 2026-12-05 · CFTC: vence (≈) el plazo de 30 días para retirar restriccion (medio) → sin rutina: valorar research EV
 
 ## Predicciones que vencen en 14 días
 - #80 · 2026-11-22 · Despeja La X (David Martínez), en vídeo
@@ -187,10 +189,10 @@ Para los «SIN research»: pide `/research EV <fecha> <título>`; usa `research/
 - #18 · 2026-12-09 · Minutas del FOMC (16-sep), federalreserve.gov
 
 ## Próximas fechas clave
-- 2026-11-25 · PCE de octubre y PIB de EE. UU. (2.ª estimación)
-- 2026-11-25 · EE. UU.: subasta de notas del Tesoro a 7 años ($44 mil M)
 - 2026-11-26 · Corea: próxima reunión del Banco de Corea sobre el tipo base (hoy 3,00 %)
 - 2026-11-27 · Francia: revisión programada de la calificación de S&P (hoy A+, estable)
 - 2026-11-27 · España: IPC adelantado de noviembre (INE)
 - 2026-11-29 · España: elecciones generales anticipadas
 - 2026-11-30 · EE. UU.: fin de comentarios a las propuestas de la Fed sobre stablecoins
+- 2026-12-01 · Zona euro: IPCA adelantado de noviembre (Eurostat)
+- 2026-12-01 · Estonia: cierre de los pasos fronterizos con Rusia
