@@ -1,5 +1,5 @@
 {
-  "generado_utc": "2026-11-26 07:06 UTC",
+  "generado_utc": "2026-11-26 12:02 UTC",
   "metodo": "Consultas directas a nodos/APIs públicos sin clave; reintentos x3. Nivel P = nodo directo de la red; S = tercero.",
   "avisos": [
     "Cifras de decentralización por identidad de nodo, no por operador real: un operador puede controlar varios [VERIFICAR].",
@@ -15,7 +15,7 @@
       "secuencia_lista": 86,
       "caduca": 878060532,
       "nota": "Lista publicada por Ripple (parte interesada): es la UNL por defecto, no toda la red.",
-      "leido_utc": "2026-11-26 07:06 UTC"
+      "leido_utc": "2026-11-26 12:02 UTC"
     },
     {
       "red": "Hedera",
@@ -24,7 +24,7 @@
       "nodos": 31,
       "nakamoto_1_3": 10,
       "nota": "Consejo de gobierno de nodos; el número es de nodos del libro de direcciones.",
-      "leido_utc": "2026-11-26 07:06 UTC"
+      "leido_utc": "2026-11-26 12:02 UTC"
     },
     {
       "red": "Solana",
@@ -35,26 +35,26 @@
       "stake_total_sol": 423541858,
       "nakamoto_1_3": 18,
       "nota": "Coeficiente = nº mínimo de validadores que acumulan más de 1/3 del stake (por identidad de voto, no por operador).",
-      "leido_utc": "2026-11-26 07:06 UTC"
+      "leido_utc": "2026-11-26 12:02 UTC"
     },
     {
       "red": "Avalanche",
       "nivel": "P",
       "fuente": "API pública api.avax.network (P-Chain)",
-      "validadores": 624,
+      "validadores": 626,
       "nakamoto_1_3": 25,
       "nota": "Validadores de la red primaria; pesos = campo weight de la API [VERIFICAR si incluye delegaciones].",
-      "leido_utc": "2026-11-26 07:06 UTC"
+      "leido_utc": "2026-11-26 12:02 UTC"
     },
     {
       "red": "IOTA",
       "nivel": "P",
       "fuente": "RPC público api.mainnet.iota.cafe",
       "validadores_activos": 60,
-      "epoca": "569",
+      "epoca": "570",
       "nakamoto_1_3": 7,
       "nota": "Poder de voto por validador del estado del sistema.",
-      "leido_utc": "2026-11-26 07:06 UTC"
+      "leido_utc": "2026-11-26 12:02 UTC"
     },
     {
       "red": "XDC",
@@ -64,16 +64,16 @@
       "standbynodes": 268,
       "penalizados": 4,
       "nota": "Masternodes de la época actual (consenso XDPoS).",
-      "leido_utc": "2026-11-26 07:06 UTC"
+      "leido_utc": "2026-11-26 12:02 UTC"
     },
     {
       "red": "Algorand",
       "nivel": "S",
       "fuente": "nodo de tercero (Nodely/Algonode)",
-      "ultima_ronda": 67312991,
+      "ultima_ronda": 67319399,
       "validadores": null,
       "nota": "No hay API pública simple del nº de proponentes; solo se confirma que la red avanza. [VERIFICAR] recuento de cuentas con voto.",
-      "leido_utc": "2026-11-26 07:06 UTC"
+      "leido_utc": "2026-11-26 12:02 UTC"
     }
   ]
 }

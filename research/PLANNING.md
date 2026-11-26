@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-26 11:43 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-26 12:05 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -136,15 +136,15 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - ninguna anotada
 
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
+- [alta] 2026-11-25 (1 d) · El indicador de inflación favorito de la Fed se acelera al 3,8 % en octubre.
+- [alta] 2026-11-26 (0 d) · EE. UU. propone nuevos aranceles contra 15 socios, incluidos China y la UE.
 - [media] 2025-06-17 (527 d) · 130 compromisos
 - [media] 2025-06-22 (522 d) · 2,1 %
 - [media] 2025-08-15 (468 d) · La cumbre de Alaska duró cerca de tres horas
 - [media] 2025-08-22 (461 d) · Reacción de mercado el 22-ago-2025
 - [media] 2025-10-30 (392 d) · China se comprometió a comprar 25 millones de toneladas de soja al año
 - [media] 2025-11-22 (369 d) · Contenido de deuda, minerales y clima del texto
-- [media] 2025-11-22 (369 d) · hoja de ruta de combustibles fósiles
-- [media] 2026-01-20 (310 d) · Discurso de Carney sobre la «ruptura» del orden mundial
-- … y 103 más en el Seguimiento
+- … y 107 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (30) → W03 · Se revisan con la rutina de países
@@ -154,7 +154,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - 🟡 Radar regulatorio: Celdas sin dato (12) → W03 · Más huecos: IR 2, AR 2, SV 2, AE 1, BRICS 1
 
 ## Bots con problema
-- ninguno
+- Paneles de datos
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → ✓ revisado (hecho)

@@ -16,7 +16,8 @@
     "fecha_hace_4_sem": "2026-10-20",
     "interanual": 1.7,
     "fuente": "Banco de Japón: Money Stock (PDF ms2610, promedio mensual de saldos, preliminar), Monetary Base (PDF base2610) y Cuentas del BoJ cada diez días (HTML, miles de yenes convertidos); pdftotext",
-    "nivel": "P"
+    "nivel": "P",
+    "conservado_sin_actualizar": true
   },
   "cn": {
     "serie": "China: M2 (oferta monetaria amplia) al cierre del periodo",
@@ -56,5 +57,7 @@
     "fuente": "BCE Data Portal, ILM/W.U2.C.T000000.Z5.Z01 (millones de euros, convertidos)",
     "nivel": "P"
   },
-  "fallos": []
+  "fallos": [
+    "jp: FileNotFoundError: [Errno 2] No such file or directory: 'pdftotext'"
+  ]
 }
