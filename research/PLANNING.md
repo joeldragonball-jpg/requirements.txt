@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-26 10:37 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-26 11:43 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -148,13 +148,13 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (30) → W03 · Se revisan con la rutina de países
-- 🔴 Voces: Voces sin confirmar (57) → W06 · 27 llevan más de 14 días
+- 🔴 Voces: Voces sin confirmar (55) → W06 · 26 llevan más de 14 días
 - 🔴 Predicciones: Vencidas sin resultado (1) → W06 · #80
 - 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (44) → rutina de cada tema (ver explorador/frescura.json) · verdes 43, amarillos 35, rojos 9, grises 0. Rojos: bancos-eba, empresas-redes, e
 - 🟡 Radar regulatorio: Celdas sin dato (12) → W03 · Más huecos: IR 2, AR 2, SV 2, AE 1, BRICS 1
 
 ## Bots con problema
-- Noticias con IA, Votos de noticias
+- ninguno
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → ✓ revisado (hecho)
