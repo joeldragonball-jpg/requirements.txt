@@ -1,14 +1,14 @@
 {
- "_actualizado": "2026-11-15T12:11:25Z",
+ "_actualizado": "2026-11-26T10:30:58Z",
  "nivel": "P",
  "aviso": "Medidas puntuales de nodos públicos (una instantánea, no un promedio histórico): la comisión y el TPS varían con la carga. No es recomendación.",
  "precios_usd": {
-  "xrp": 0.964646403,
-  "xlm": 0.139334482,
-  "eth": 1825.4116531,
-  "sol": 72.389660861,
-  "hbar": 0.05897726765,
-  "algo": 0.07985
+  "xrp": 0.9515,
+  "xlm": 0.12793667250000001,
+  "eth": 1700.5590192500001,
+  "sol": 70.91946225000001,
+  "hbar": 0.05375,
+  "algo": 0.08009937313750001
  },
  "precios_fuente": "coins.llama.fi (DefiLlama, precio de referencia en el momento de la medida)",
  "redes": {
@@ -17,16 +17,16 @@
    "tiempo_bloque_mediano_s": 1,
    "muestra_bloques": 20,
    "ventana_s": 71,
-   "tps_medio": 35.7,
+   "tps_medio": 14.92,
    "finalidad_medida_s": 3.737,
    "finalidad_nota": "un ledger validado es final (consenso sin bifurcaciones); el tiempo medido es el intervalo de cierre",
    "comision_nativa": "0.00001000 XRP (10 gotas: comisión de ledger abierto, igual a la base; la «mediana» de la cola, 5000 gotas, es solo el nivel por defecto con congestión)",
-   "comision_mediana_cola_usd": 0.00482323,
-   "comision_minima_usd": 9.65e-06,
-   "comision_usd": 9.65e-06,
-   "ledger": 108345413,
+   "comision_mediana_cola_usd": 0.0047575,
+   "comision_minima_usd": 9.52e-06,
+   "comision_usd": 9.52e-06,
+   "ledger": 108581929,
    "fuente": "s1.ripple.com:51234 (rippled; métodos ledger y fee)",
-   "medido_utc": "2026-11-15T12:11:25Z",
+   "medido_utc": "2026-11-26T10:30:58Z",
    "nombre": "XRPL"
   },
   "stellar": {
@@ -34,14 +34,14 @@
    "tiempo_bloque_mediano_s": 5.0,
    "muestra_bloques": 20,
    "ventana_s": 95.0,
-   "tps_medio": 107.16,
+   "tps_medio": 50.47,
    "finalidad_medida_s": 5.0,
    "finalidad_nota": "un ledger cerrado por el protocolo de consenso federado (SCP) es final; el tiempo medido es el intervalo de cierre",
    "comision_nativa": "0.0000100 XLM (mediana cobrada, 100 stroops)",
-   "comision_usd": 1.39e-06,
-   "ledger": 65491731,
+   "comision_usd": 1.28e-06,
+   "ledger": 65680602,
    "fuente": "horizon.stellar.org (ledgers y fee_stats)",
-   "medido_utc": "2026-11-15T12:11:25Z",
+   "medido_utc": "2026-11-26T10:30:58Z",
    "nombre": "Stellar"
   },
   "ethereum": {
@@ -49,70 +49,70 @@
    "tiempo_bloque_mediano_s": 12,
    "muestra_bloques": 20,
    "ventana_s": 228,
-   "tps_medio": 21.08,
-   "finalidad_medida_s": 1056,
-   "finalidad_nota": "retraso medido entre el último bloque y el bloque «finalized» (Casper FFG); el bloque «safe» va 672 s detrás",
-   "bloques_hasta_finalizado": 88,
-   "comision_nativa": "0.00000599 ETH (transferencia simple de 21000 gas; base 0.205 gwei + propina mediana 0.081 gwei)",
-   "comision_usd": 0.010939,
-   "ledger": 26420321,
+   "tps_medio": 24.63,
+   "finalidad_medida_s": 792,
+   "finalidad_nota": "retraso medido entre el último bloque y el bloque «finalized» (Casper FFG); el bloque «safe» va 408 s detrás",
+   "bloques_hasta_finalizado": 66,
+   "comision_nativa": "0.00000117 ETH (transferencia simple de 21000 gas; base 0.052 gwei + propina mediana 0.004 gwei)",
+   "comision_usd": 0.001995,
+   "ledger": 26498789,
    "fuente": "ethereum-rpc.publicnode.com (eth_getBlockByNumber latest/safe/finalized, eth_feeHistory)",
-   "medido_utc": "2026-11-15T12:11:25Z",
+   "medido_utc": "2026-11-26T10:30:58Z",
    "nombre": "Ethereum"
   },
   "solana": {
    "tiempo_bloque_medio_s": 0.215,
    "tiempo_bloque_mediano_s": null,
-   "muestra_bloques": 8361,
+   "muestra_bloques": 8383,
    "ventana_s": 1800,
-   "tps_medio": 1225.3,
-   "tps_sin_votos": 1225.3,
+   "tps_medio": 1182.8,
+   "tps_sin_votos": 1182.8,
    "tps_nota": "numTransactions del nodo público; en Solana las transacciones de voto de los validadores suelen contarse aparte o dentro: si tps_sin_votos coincide con tps_medio, no se puede separar con esta fuente [VERIFICAR]",
    "finalidad_medida_s": null,
-   "finalidad_nota": "no medible con el RPC público (getSlot confirmed/finalized difiere en 1 slots, no es un retraso de finalidad real); la ficha de Solana indica slot de 200 ms tras Alpenglow (21-oct-2026) [VERIFICAR finalidad]",
+   "finalidad_nota": "no medible con el RPC público (getSlot confirmed/finalized difiere en 9 slots, no es un retraso de finalidad real); la ficha de Solana indica slot de 200 ms tras Alpenglow (21-oct-2026) [VERIFICAR finalidad]",
    "comision_nativa": "5000 lamports (base 5000 por firma + prioridad mediana 0 µlamports/CU × ~450 CU)",
-   "comision_usd": 0.00036195,
-   "ledger": 469724894,
+   "comision_usd": 0.0003546,
+   "ledger": 474115616,
    "fuente": "api.mainnet-beta.solana.com (getRecentPerformanceSamples, getSlot, getRecentPrioritizationFees)",
-   "medido_utc": "2026-11-15T12:11:25Z",
+   "medido_utc": "2026-11-26T10:30:58Z",
    "nombre": "Solana"
   },
   "hedera": {
-   "tiempo_bloque_medio_s": 2.169,
-   "tiempo_bloque_mediano_s": 2.115427017211914,
+   "tiempo_bloque_medio_s": 2.304,
+   "tiempo_bloque_mediano_s": 2.2640366554260254,
    "muestra_bloques": 20,
-   "ventana_s": 41.2,
-   "tps_medio": 3.59,
-   "finalidad_medida_s": 2.169,
+   "ventana_s": 43.8,
+   "tps_medio": 3.72,
+   "finalidad_medida_s": 2.304,
    "finalidad_nota": "el mirror node publica registros por intervalos de pocos segundos; la finalidad aBFT es del orden de segundos según la documentación [VERIFICAR medida directa]",
    "comision_nativa": "tarifa documentada en USD (transferencia cripto ≈ 0,0001 USD) [VERIFICAR, no medida]",
    "comision_usd": 0.0001,
    "comision_es_medida": false,
-   "ledger": 102364730,
+   "ledger": 102798068,
    "fuente": "mainnet-public.mirrornode.hedera.com (blocks); tarifa: documentación de Hedera",
-   "medido_utc": "2026-11-15T12:11:25Z",
+   "medido_utc": "2026-11-26T10:30:58Z",
    "nombre": "Hedera"
   },
   "algorand": {
-   "tiempo_bloque_medio_s": 2.737,
+   "tiempo_bloque_medio_s": 2.789,
    "tiempo_bloque_mediano_s": 3,
    "muestra_bloques": 20,
-   "ventana_s": 52,
-   "tps_medio": 10.04,
-   "finalidad_medida_s": 2.737,
+   "ventana_s": 53,
+   "tps_medio": 11.38,
+   "finalidad_medida_s": 2.789,
    "finalidad_nota": "un bloque certificado es final (sin bifurcaciones); el tiempo medido es el intervalo entre bloques",
    "comision_nativa": "0.001000 ALGO (tarifa mínima, 1000 microALGO)",
-   "comision_usd": 7.985e-05,
-   "ledger": 66977942,
+   "comision_usd": 8.01e-05,
+   "ledger": 67317445,
    "fuente": "mainnet-api.algonode.cloud (nodo público; status, blocks, transactions/params)",
-   "medido_utc": "2026-11-15T12:11:25Z",
+   "medido_utc": "2026-11-26T10:30:58Z",
    "nombre": "Algorand"
   }
  },
  "activos_liquidacion": {
   "xrpl": {
-   "stablecoins_usd_defillama": 839299610.2102151,
-   "fecha_dato": "2026-11-15T12:07Z",
+   "stablecoins_usd_defillama": 824010205.6144286,
+   "fecha_dato": "2026-11-26T07:06Z",
    "stablecoins_top": [
     {
      "simbolo": "RLUSD",
@@ -154,8 +154,8 @@
    "n_stablecoins": 8
   },
   "stellar": {
-   "stablecoins_usd_defillama": 397557607.4683487,
-   "fecha_dato": "2026-11-15T12:07Z",
+   "stablecoins_usd_defillama": 421777408.03906274,
+   "fecha_dato": "2026-11-26T07:06Z",
    "stablecoins_top": [
     {
      "simbolo": "USDC",
@@ -197,12 +197,12 @@
    "n_stablecoins": 16
   },
   "hedera": {
-   "stablecoins_usd_defillama": 25573708.482574277,
-   "fecha_dato": "2026-11-15T12:07Z"
+   "stablecoins_usd_defillama": 26897617.613971103,
+   "fecha_dato": "2026-11-26T07:06Z"
   },
   "ethereum": {
-   "stablecoins_usd_defillama": 131391606801.933,
-   "fecha_dato": "2026-11-15T12:07Z",
+   "stablecoins_usd_defillama": 127634074486.32712,
+   "fecha_dato": "2026-11-26T07:06Z",
    "stablecoins_top": [
     {
      "simbolo": "USDT",
@@ -244,8 +244,8 @@
    "n_stablecoins": 230
   },
   "solana": {
-   "stablecoins_usd_defillama": 13912847795.077347,
-   "fecha_dato": "2026-11-15T12:07Z",
+   "stablecoins_usd_defillama": 12917777769.015766,
+   "fecha_dato": "2026-11-26T07:06Z",
    "stablecoins_top": [
     {
      "simbolo": "USDC",
@@ -287,48 +287,48 @@
    "n_stablecoins": 78
   },
   "bnb": {
-   "stablecoins_usd_defillama": 12463512318.120384,
-   "fecha_dato": "2026-11-15T12:07Z"
+   "stablecoins_usd_defillama": 13189398304.023214,
+   "fecha_dato": "2026-11-26T07:06Z"
   },
   "avalanche": {
-   "stablecoins_usd_defillama": 772843194.6768179,
-   "fecha_dato": "2026-11-15T12:07Z"
+   "stablecoins_usd_defillama": 801498500.8946894,
+   "fecha_dato": "2026-11-26T07:06Z"
   },
   "polygon": {
-   "stablecoins_usd_defillama": 2797966557.8854737,
-   "fecha_dato": "2026-11-15T12:07Z"
+   "stablecoins_usd_defillama": 2952254150.76722,
+   "fecha_dato": "2026-11-26T07:06Z"
   },
   "canton": {
    "stablecoins_usd_defillama": null,
-   "fecha_dato": "2026-11-15T12:07Z"
+   "fecha_dato": "2026-11-26T07:06Z"
   },
   "chainlink": {
    "stablecoins_usd_defillama": null,
-   "fecha_dato": "2026-11-15T12:07Z"
+   "fecha_dato": "2026-11-26T07:06Z"
   },
   "ondo": {
    "stablecoins_usd_defillama": null,
-   "fecha_dato": "2026-11-15T12:07Z"
+   "fecha_dato": "2026-11-26T07:06Z"
   },
   "algorand": {
-   "stablecoins_usd_defillama": 120746531.31821774,
-   "fecha_dato": "2026-11-15T12:07Z"
+   "stablecoins_usd_defillama": 134946204.654345,
+   "fecha_dato": "2026-11-26T07:06Z"
   },
   "xdc": {
-   "stablecoins_usd_defillama": 103205319.4930197,
-   "fecha_dato": "2026-11-15T12:07Z"
+   "stablecoins_usd_defillama": 108079470.97997561,
+   "fecha_dato": "2026-11-26T07:06Z"
   },
   "quant": {
    "stablecoins_usd_defillama": null,
-   "fecha_dato": "2026-11-15T12:07Z"
+   "fecha_dato": "2026-11-26T07:06Z"
   },
   "iota": {
-   "stablecoins_usd_defillama": 421888.015616626,
-   "fecha_dato": "2026-11-15T12:07Z"
+   "stablecoins_usd_defillama": 409456.0169346694,
+   "fecha_dato": "2026-11-26T07:06Z"
   },
   "plume": {
-   "stablecoins_usd_defillama": 10844342.103459606,
-   "fecha_dato": "2026-11-15T12:07Z"
+   "stablecoins_usd_defillama": 11875896.330382006,
+   "fecha_dato": "2026-11-26T07:06Z"
   },
   "_fecha_profundidad": "2026-11-15T10:37Z"
  },

@@ -98,6 +98,30 @@ jobs:
         timeout-minutes: 6
         run: python scripts/leer_liquidez.py
 
+      # 26-nov: más lectores oficiales que existían sin automatizar (calendario oficial, Congreso, Eurostat, ESMA, gobernanza de cadenas,
+      # liquidez de tokens, energía/vivienda y mortalidad de España). Probados uno a uno en local (2-48 s); sin IA ni claves.
+      - name: Leer calendario oficial, Congreso, Eurostat, ESMA, gobernanza, tokens, energía y mortalidad
+        continue-on-error: true
+        timeout-minutes: 10
+        run: |
+          python scripts/leer_calendario_oficial.py || true
+          python scripts/leer_votaciones_congreso.py || true
+          python scripts/leer_congreso.py || true
+          python scripts/leer_seguridad_eurostat.py || true
+          python scripts/leer_esma_mica.py || true
+          python scripts/leer_gobernanza.py || true
+          python scripts/leer_liquidez_tokens.py || true
+          python scripts/leer_espana_energia.py || true
+          python scripts/leer_mortalidad_ine.py || true
+
+      - name: Leer comparativa de liquidación, profundidad de mercado y pagos públicos de España
+        continue-on-error: true
+        timeout-minutes: 10
+        run: |
+          python scripts/leer_comparativa.py || true
+          python scripts/leer_profundidad.py || true
+          python scripts/leer_pagos_espana.py || true
+
       - name: Leer OCDE y BIS (indicadores de países)
         continue-on-error: true
         timeout-minutes: 6
@@ -136,7 +160,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add explorador/tokenizado.json explorador/indicadores-manual.json explorador/tipos-manual.json explorador/paneles.json explorador/indicadores-historia.json explorador/precios_historico.json explorador/valoracion.json explorador/bolsas.json explorador/ormuz-portwatch.json explorador/rendimientos-defillama.json explorador/cadenas-incidentes.json explorador/cadenas-onchain.json explorador/cadenas-validadores.json explorador/cadenas-validadores-historial.jsonl explorador/ocde-bis.json explorador/liquidez-manual.json explorador/datos.json explorador/noticias-archivo.json docs/movil/data.json docs/movil/seguimiento.json docs/orbita/index.html research/PLANNING.md
+          git add explorador/tokenizado.json explorador/indicadores-manual.json explorador/tipos-manual.json explorador/paneles.json explorador/indicadores-historia.json explorador/precios_historico.json explorador/valoracion.json explorador/bolsas.json explorador/ormuz-portwatch.json explorador/rendimientos-defillama.json explorador/cadenas-incidentes.json explorador/cadenas-onchain.json explorador/cadenas-validadores.json explorador/cadenas-validadores-historial.jsonl explorador/ocde-bis.json explorador/liquidez-manual.json explorador/calendario-oficial.json explorador/espana-votaciones.json explorador/espana-politica.json explorador/seguridad-eurostat.json explorador/mica-registro.json explorador/cadenas-gobernanza.json explorador/cadenas-token.json explorador/espana-energia-vivienda.json explorador/espana-mortalidad.json explorador/comparativa-liquidacion.json explorador/profundidad-multidivisa.json explorador/profundidad-historial.jsonl explorador/espana-pagos.json explorador/datos.json explorador/noticias-archivo.json docs/movil/data.json docs/movil/seguimiento.json docs/orbita/index.html research/PLANNING.md
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -m "Paneles de datos: actualización automática (sin IA)"
           git checkout -- .   # descarta restos generados que no se guardan (evita «unstaged changes» al hacer pull --rebase)

@@ -1,5 +1,5 @@
 {
-  "generado_utc": "2026-11-15 12:09 UTC",
+  "generado_utc": "2026-11-26 10:29 UTC",
   "metodo": "Enmiendas: POST JSON-RPC «feature» a un nodo público (P). Releases: releases.atom de GitHub (S), sin API REST; se separan etiquetas no oficiales por patrón (custom, rc, beta, alpha, nightly...). Reintentos x3.",
   "avisos": [
     "Un feed de releases dice qué publica el equipo, no cuántos validadores han actualizado.",
@@ -222,12 +222,18 @@
         {
           "repo": "prysmaticlabs/prysm",
           "ultima_oficial": {
-            "version": "v7.3.1",
-            "etiqueta": "v7.3.1",
-            "fecha": "2026-10-22",
-            "enlace": "https://github.com/OffchainLabs/prysm/releases/tag/v7.3.1"
+            "version": "v7.3.2",
+            "etiqueta": "v7.3.2",
+            "fecha": "2026-11-18",
+            "enlace": "https://github.com/OffchainLabs/prysm/releases/tag/v7.3.2"
           },
           "oficiales_recientes": [
+            {
+              "version": "v7.3.2",
+              "etiqueta": "v7.3.2",
+              "fecha": "2026-11-18",
+              "enlace": "https://github.com/OffchainLabs/prysm/releases/tag/v7.3.2"
+            },
             {
               "version": "v7.3.1",
               "etiqueta": "v7.3.1",
@@ -251,12 +257,6 @@
               "etiqueta": "v7.2.0",
               "fecha": "2026-09-28",
               "enlace": "https://github.com/OffchainLabs/prysm/releases/tag/v7.2.0"
-            },
-            {
-              "version": "v7.1.8",
-              "etiqueta": "v7.1.8",
-              "fecha": "2026-07-29",
-              "enlace": "https://github.com/OffchainLabs/prysm/releases/tag/v7.1.8"
             }
           ],
           "preliminares_no_contados": [
@@ -298,11 +298,11 @@
             }
           ],
           "preliminares_no_contados": [
+            "v4.5.0-rc.0",
+            "v5.0.0-alpha.1",
             "v4.5.0-beta.0",
             "v4.5.0-alpha.4",
-            "v4.5.0-alpha.3",
-            "v4.4.0-rc.1",
-            "v4.4.0-rc.0"
+            "v4.5.0-alpha.3"
           ]
         }
       ]
@@ -312,45 +312,49 @@
         {
           "repo": "hashgraph/hedera-services",
           "ultima_oficial": {
-            "version": "build-00427",
-            "etiqueta": "build-00427",
-            "fecha": "2026-11-14",
-            "enlace": "https://github.com/hiero-ledger/hiero-consensus-node/releases/tag/build-00427"
+            "version": "build-00434",
+            "etiqueta": "build-00434",
+            "fecha": "2026-11-26",
+            "enlace": "https://github.com/hiero-ledger/hiero-consensus-node/releases/tag/build-00434"
           },
           "oficiales_recientes": [
             {
-              "version": "build-00427",
-              "etiqueta": "build-00427",
-              "fecha": "2026-11-14",
-              "enlace": "https://github.com/hiero-ledger/hiero-consensus-node/releases/tag/build-00427"
+              "version": "build-00434",
+              "etiqueta": "build-00434",
+              "fecha": "2026-11-26",
+              "enlace": "https://github.com/hiero-ledger/hiero-consensus-node/releases/tag/build-00434"
             },
             {
-              "version": "sdpt-pass-00426",
-              "etiqueta": "sdpt-pass-00426",
-              "fecha": "2026-11-13",
-              "enlace": "https://github.com/hiero-ledger/hiero-consensus-node/releases/tag/sdpt-pass-00426"
+              "version": "sdpt-pass-00433",
+              "etiqueta": "sdpt-pass-00433",
+              "fecha": "2026-11-25",
+              "enlace": "https://github.com/hiero-ledger/hiero-consensus-node/releases/tag/sdpt-pass-00433"
             },
             {
-              "version": "sdpt-pass-00424",
-              "etiqueta": "sdpt-pass-00424",
-              "fecha": "2026-11-13",
-              "enlace": "https://github.com/hiero-ledger/hiero-consensus-node/releases/tag/sdpt-pass-00424"
+              "version": "build-00433",
+              "etiqueta": "build-00433",
+              "fecha": "2026-11-25",
+              "enlace": "https://github.com/hiero-ledger/hiero-consensus-node/releases/tag/build-00433"
             },
             {
-              "version": "sdlt-pass-00426",
-              "etiqueta": "sdlt-pass-00426",
-              "fecha": "2026-11-13",
-              "enlace": "https://github.com/hiero-ledger/hiero-consensus-node/releases/tag/sdlt-pass-00426"
+              "version": "v0.79.4",
+              "etiqueta": "v0.79.4",
+              "fecha": "2026-11-24",
+              "enlace": "https://github.com/hiero-ledger/hiero-consensus-node/releases/tag/v0.79.4"
             },
             {
-              "version": "build-00426",
-              "etiqueta": "build-00426",
-              "fecha": "2026-11-13",
-              "enlace": "https://github.com/hiero-ledger/hiero-consensus-node/releases/tag/build-00426"
+              "version": "v0.79.3",
+              "etiqueta": "v0.79.3",
+              "fecha": "2026-11-24",
+              "enlace": "https://github.com/hiero-ledger/hiero-consensus-node/releases/tag/v0.79.3"
             }
           ],
           "preliminares_no_contados": [
-            "xts-candidate"
+            "xts-candidate",
+            "v0.81.0-alpha.1",
+            "v0.80.0-alpha.7",
+            "v0.79.4-rc.1",
+            "v0.79.3-rc.1"
           ]
         }
       ]
@@ -360,12 +364,30 @@
         {
           "repo": "ava-labs/avalanchego",
           "ultima_oficial": {
-            "version": "v1.15.3 - API Cleanup",
-            "etiqueta": "v1.15.3",
-            "fecha": "2026-11-05",
-            "enlace": "https://github.com/ava-labs/avalanchego/releases/tag/v1.15.3"
+            "version": "graft/subnet-evm/v1.15.3",
+            "etiqueta": "graft%2Fsubnet-evm%2Fv1.15.3",
+            "fecha": "2026-11-16",
+            "enlace": "https://github.com/ava-labs/avalanchego/releases/tag/graft%2Fsubnet-evm%2Fv1.15.3"
           },
           "oficiales_recientes": [
+            {
+              "version": "graft/subnet-evm/v1.15.3",
+              "etiqueta": "graft%2Fsubnet-evm%2Fv1.15.3",
+              "fecha": "2026-11-16",
+              "enlace": "https://github.com/ava-labs/avalanchego/releases/tag/graft%2Fsubnet-evm%2Fv1.15.3"
+            },
+            {
+              "version": "graft/evm/v1.15.3",
+              "etiqueta": "graft%2Fevm%2Fv1.15.3",
+              "fecha": "2026-11-16",
+              "enlace": "https://github.com/ava-labs/avalanchego/releases/tag/graft%2Fevm%2Fv1.15.3"
+            },
+            {
+              "version": "graft/coreth/v1.15.3",
+              "etiqueta": "graft%2Fcoreth%2Fv1.15.3",
+              "fecha": "2026-11-16",
+              "enlace": "https://github.com/ava-labs/avalanchego/releases/tag/graft%2Fcoreth%2Fv1.15.3"
+            },
             {
               "version": "v1.15.3 - API Cleanup",
               "etiqueta": "v1.15.3",
@@ -377,32 +399,13 @@
               "etiqueta": "v1.15.2",
               "fecha": "2026-10-22",
               "enlace": "https://github.com/ava-labs/avalanchego/releases/tag/v1.15.2"
-            },
-            {
-              "version": "graft/subnet-evm/v1.15.2",
-              "etiqueta": "graft%2Fsubnet-evm%2Fv1.15.2",
-              "fecha": "2026-10-22",
-              "enlace": "https://github.com/ava-labs/avalanchego/releases/tag/graft%2Fsubnet-evm%2Fv1.15.2"
-            },
-            {
-              "version": "graft/evm/v1.15.2",
-              "etiqueta": "graft%2Fevm%2Fv1.15.2",
-              "fecha": "2026-10-22",
-              "enlace": "https://github.com/ava-labs/avalanchego/releases/tag/graft%2Fevm%2Fv1.15.2"
-            },
-            {
-              "version": "graft/coreth/v1.15.2",
-              "etiqueta": "graft%2Fcoreth%2Fv1.15.2",
-              "fecha": "2026-10-22",
-              "enlace": "https://github.com/ava-labs/avalanchego/releases/tag/graft%2Fcoreth%2Fv1.15.2"
             }
           ],
           "preliminares_no_contados": [
             "v1.15.3-rc.2",
             "v1.15.3-rc.0",
             "v1.15.2-rc.1",
-            "graft%2Fsubnet-evm%2Fv1.15.2-rc.1",
-            "graft%2Fevm%2Fv1.15.2-rc.1"
+            "graft%2Fsubnet-evm%2Fv1.15.2-rc.1"
           ]
         }
       ]
@@ -412,12 +415,18 @@
         {
           "repo": "algorand/go-algorand",
           "ultima_oficial": {
-            "version": "Algorand 5.0.5",
-            "etiqueta": "v5.0.5-stable",
-            "fecha": "2026-10-28",
-            "enlace": "https://github.com/algorand/go-algorand/releases/tag/v5.0.5-stable"
+            "version": "Algorand 5.1.1",
+            "etiqueta": "v5.1.1-stable",
+            "fecha": "2026-11-19",
+            "enlace": "https://github.com/algorand/go-algorand/releases/tag/v5.1.1-stable"
           },
           "oficiales_recientes": [
+            {
+              "version": "Algorand 5.1.1",
+              "etiqueta": "v5.1.1-stable",
+              "fecha": "2026-11-19",
+              "enlace": "https://github.com/algorand/go-algorand/releases/tag/v5.1.1-stable"
+            },
             {
               "version": "Algorand 5.0.5",
               "etiqueta": "v5.0.5-stable",
@@ -444,11 +453,11 @@
             }
           ],
           "preliminares_no_contados": [
+            "v5.1.1-beta",
             "v5.1.0-beta",
             "v5.0.5-beta",
             "v5.0.4-beta",
-            "v5.0.3-beta",
-            "v5.0.2-beta"
+            "v5.0.3-beta"
           ]
         }
       ]
@@ -458,12 +467,18 @@
         {
           "repo": "iotaledger/iota",
           "ultima_oficial": {
-            "version": "[Mainnet] v1.35.2",
-            "etiqueta": "v1.35.2",
-            "fecha": "2026-11-04",
-            "enlace": "https://github.com/iotaledger/iota/releases/tag/v1.35.2"
+            "version": "[Mainnet] v1.36.2",
+            "etiqueta": "v1.36.2",
+            "fecha": "2026-11-18",
+            "enlace": "https://github.com/iotaledger/iota/releases/tag/v1.36.2"
           },
           "oficiales_recientes": [
+            {
+              "version": "[Mainnet] v1.36.2",
+              "etiqueta": "v1.36.2",
+              "fecha": "2026-11-18",
+              "enlace": "https://github.com/iotaledger/iota/releases/tag/v1.36.2"
+            },
             {
               "version": "[Mainnet] v1.35.2",
               "etiqueta": "v1.35.2",
@@ -478,11 +493,11 @@
             }
           ],
           "preliminares_no_contados": [
+            "v1.37.0-rc",
+            "v1.37.0-alpha",
             "v1.36.1-rc",
             "v1.36.0-alpha",
-            "v1.35.1-rc",
-            "v1.35.1-beta",
-            "v1.35.0-alpha"
+            "v1.35.1-rc"
           ]
         }
       ]
@@ -520,12 +535,18 @@
         {
           "repo": "bnb-chain/bsc",
           "ultima_oficial": {
-            "version": "v1.8.2",
-            "etiqueta": "v1.8.2",
-            "fecha": "2026-11-03",
-            "enlace": "https://github.com/bnb-chain/bsc/releases/tag/v1.8.2"
+            "version": "v1.8.2-td-enhancement",
+            "etiqueta": "tmp-master-4bd1c730-20261117",
+            "fecha": "2026-11-25",
+            "enlace": "https://github.com/bnb-chain/bsc/releases/tag/tmp-master-4bd1c730-20261117"
           },
           "oficiales_recientes": [
+            {
+              "version": "v1.8.2-td-enhancement",
+              "etiqueta": "tmp-master-4bd1c730-20261117",
+              "fecha": "2026-11-25",
+              "enlace": "https://github.com/bnb-chain/bsc/releases/tag/tmp-master-4bd1c730-20261117"
+            },
             {
               "version": "v1.8.2",
               "etiqueta": "v1.8.2",
@@ -549,15 +570,11 @@
               "etiqueta": "v1.7.7",
               "fecha": "2026-08-11",
               "enlace": "https://github.com/bnb-chain/bsc/releases/tag/v1.7.7"
-            },
-            {
-              "version": "v1.7.6",
-              "etiqueta": "v1.7.6",
-              "fecha": "2026-07-09",
-              "enlace": "https://github.com/bnb-chain/bsc/releases/tag/v1.7.6"
             }
           ],
           "preliminares_no_contados": [
+            "pre-test-release-work-2",
+            "pre-test-release-work",
             "v1.8.0-alpha"
           ]
         }
@@ -568,12 +585,18 @@
         {
           "repo": "0xPolygon/bor",
           "ultima_oficial": {
-            "version": "v2.11.1",
-            "etiqueta": "v2.11.1",
-            "fecha": "2026-11-13",
-            "enlace": "https://github.com/0xPolygon/bor/releases/tag/v2.11.1"
+            "version": "v2.11.2",
+            "etiqueta": "v2.11.2",
+            "fecha": "2026-11-19",
+            "enlace": "https://github.com/0xPolygon/bor/releases/tag/v2.11.2"
           },
           "oficiales_recientes": [
+            {
+              "version": "v2.11.2",
+              "etiqueta": "v2.11.2",
+              "fecha": "2026-11-19",
+              "enlace": "https://github.com/0xPolygon/bor/releases/tag/v2.11.2"
+            },
             {
               "version": "v2.11.1",
               "etiqueta": "v2.11.1",
@@ -597,19 +620,14 @@
               "etiqueta": "v2.10.2",
               "fecha": "2026-09-30",
               "enlace": "https://github.com/0xPolygon/bor/releases/tag/v2.10.2"
-            },
-            {
-              "version": "v2.10.1-hotfix2",
-              "etiqueta": "v2.10.1-hotfix2",
-              "fecha": "2026-09-23",
-              "enlace": "https://github.com/0xPolygon/bor/releases/tag/v2.10.1-hotfix2"
             }
           ],
           "preliminares_no_contados": [
-            "v2.10.2-beta5",
-            "v2.10.2-beta4",
-            "v2.10.2-beta3",
-            "v2.10.2-beta2"
+            "v2.12.0-beta",
+            "v2.11.2-beta3",
+            "v2.11.2-beta2",
+            "v2.11.2-beta",
+            "v2.10.2-beta5"
           ]
         }
       ]
