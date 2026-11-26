@@ -837,7 +837,31 @@ def equilibrar(elegidas):
     return primeras + sobrantes
 
 
+PALABRAS_RESPALDO = ("xrp", "ripple", "stellar", "xlm", "sec ", "cftc", "fed ", "bce", "ecb", "ormuz", "hormuz", "irán", "iran",
+                     "ucrania", "ukraine", "petróleo", "oil", "bitcoin", "etf", "stablecoin", "brics", "arancel", "tariff",
+                     "clarity", "bis ", "oro ", "gold", "opep", "opec", "otan", "nato", "bruselas", "banco de españa")
+
+
+def respaldo_sin_ia(candidatas, cupo):
+    """26-nov: si la API de Anthropic rechaza la petición por el límite de gasto, el bot no se queda mudo: envía, SIN IA y a coste 0,
+    los titulares que más palabras clave de sus intereses contienen, marcados como «sin análisis»."""
+    def puntos(c):
+        t = (c["titulo_original"] + " " + (c.get("descripcion") or "")).lower()
+        return sum(1 for p in PALABRAS_RESPALDO if p in t)
+    ordenadas = sorted(candidatas, key=puntos, reverse=True)
+    return [{**c, "tema": "Sin clasificar", "puntuacion": CONFIG.get("nota_minima", 6), "titulo": c["titulo_original"],
+             "resumen": limpiar(c.get("descripcion") or "", 260), "por_que": "", "actualiza_apuntes": "", "sin_ia": True}
+            for c in ordenadas if puntos(c) > 0][:cupo]
+
+
 def enviar_noticia(n):
+    if n.get("sin_ia"):
+        texto = (f"📰 <b>{html.escape(n['titulo'])}</b>\n\n" + (f"{html.escape(n['resumen'])}\n\n" if n["resumen"] else "")
+                 + f"🔗 <a href=\"{html.escape(n['url'], quote=True)}\">{html.escape(n['fuente'])}</a>\n\n"
+                 "<i>⚠️ Sin análisis: el límite de gasto de la API de IA está agotado; titular tal cual de la fuente.</i>")
+        res = telegram("sendMessage", chat_id=TG_CHAT, text=texto, parse_mode="HTML",
+                       disable_web_page_preview=True, reply_markup=botones(n["id"]))
+        return (res.get("result") or {}).get("message_id")
     cabecera = ""
     if n.get("origen") == "manual":
         tipo = "research manual de evento" if n.get("nivel") == "evento" else "research manual ligero"
@@ -1126,7 +1150,14 @@ def main():
         embudo["triaje"] += len(candidatas)
         enviadas = 0
         if candidatas and cupo > 0:
-            for n in equilibrar(seleccionar(db, candidatas, maximo=cupo * 2)):
+            try:
+                elegidas = seleccionar(db, candidatas, maximo=cupo * 2)
+            except Exception as e:
+                if "usage limit" not in str(e).lower():
+                    raise
+                print(f"Límite de gasto de la API alcanzado ({str(e)[:120]}); se envían titulares sin IA.")
+                elegidas = respaldo_sin_ia(candidatas, cupo)
+            for n in equilibrar(elegidas):
                 if enviadas >= cupo or n["puntuacion"] < CONFIG.get("nota_minima", 6):
                     continue
                 if es_repeticion(n["titulo"], db) or en_enfriamiento(n, db):
