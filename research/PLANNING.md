@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-26 08:10 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-26 10:17 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -102,6 +102,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - C408 ◐ en parte · Cumbres histórica: visita de Trump a Pekín (14-15 may 2026); hoja de la Casa Bla · Sonnet S · ~~3 % · `Cumbres y OSINT`
 - C409 ◐ en parte · Cumbres previa FOMC 9-dic: tipo 3,75-4,00 %, voto 10-2, FedWatch sin leer; presi · Sonnet S · ~~3 % · `Cumbres y OSINT`
 - C42 ◐ en parte · Centro · Rendimientos y colateral: staking, lending CeFi/DeFi, AMM XRPL/Stellar, · Sonnet M · ~3 % · `research/prompts/C42-rendimientos-colateral.md`
+- C431 · Al empezar cada sesión autónoma: mirar «proximas» de cumbres.json con fecha ya p · Sonnet M · ~~3 % · `Cumbres y OSINT`
 - C58 ◐ en parte · Centro · Fichas políticas de 12 países (UE: España, Alemania, Francia, Italia, P · Sonnet M · ~3 % · `research/prompts/C58-fichas-politicas-paises.md`
 - C59 ◐ en parte · Centro · Indicadores económicos por país (IPC, paro total y juvenil, PIB, deuda, · Sonnet M · ~3 % · `research/prompts/C59-indicadores-sociales-economicos.md`
 - C68 ◐ en parte · Centro · España · Sueldos de cada cargo político (presidente, ministros, secreta · Sonnet L · ~~6 % · `research/prompts/C68-sueldos-por-persona-politicos.md`
@@ -143,7 +144,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - [media] 2025-11-22 (369 d) · Contenido de deuda, minerales y clima del texto
 - [media] 2025-11-22 (369 d) · hoja de ruta de combustibles fósiles
 - [media] 2026-01-20 (310 d) · Discurso de Carney sobre la «ruptura» del orden mundial
-- … y 87 más en el Seguimiento
+- … y 93 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (30) → W03 · Se revisan con la rutina de países
@@ -153,7 +154,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 - 🟡 Radar regulatorio: Celdas sin dato (12) → W03 · Más huecos: IR 2, AR 2, SV 2, AE 1, BRICS 1
 
 ## Bots con problema
-- Noticias con IA
+- Noticias con IA, Votos de noticias
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-16 · Plazo del 13F del 3T (quién tiene ETF de XRP/XLM) (medio) → ✓ revisado (hecho)
