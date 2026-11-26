@@ -93,6 +93,11 @@ jobs:
           python scripts/leer_onchain.py || true
           python scripts/leer_validadores.py || true
 
+      - name: Leer liquidez global (Fed, BCE, BoJ, PBoC)
+        continue-on-error: true
+        timeout-minutes: 6
+        run: python scripts/leer_liquidez.py
+
       - name: Leer OCDE y BIS (indicadores de países)
         continue-on-error: true
         timeout-minutes: 6
@@ -131,7 +136,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add explorador/tokenizado.json explorador/indicadores-manual.json explorador/tipos-manual.json explorador/paneles.json explorador/indicadores-historia.json explorador/precios_historico.json explorador/valoracion.json explorador/bolsas.json explorador/ormuz-portwatch.json explorador/rendimientos-defillama.json explorador/cadenas-incidentes.json explorador/cadenas-onchain.json explorador/cadenas-validadores.json explorador/cadenas-validadores-historial.jsonl explorador/ocde-bis.json explorador/datos.json explorador/noticias-archivo.json docs/movil/data.json docs/movil/seguimiento.json docs/orbita/index.html research/PLANNING.md
+          git add explorador/tokenizado.json explorador/indicadores-manual.json explorador/tipos-manual.json explorador/paneles.json explorador/indicadores-historia.json explorador/precios_historico.json explorador/valoracion.json explorador/bolsas.json explorador/ormuz-portwatch.json explorador/rendimientos-defillama.json explorador/cadenas-incidentes.json explorador/cadenas-onchain.json explorador/cadenas-validadores.json explorador/cadenas-validadores-historial.jsonl explorador/ocde-bis.json explorador/liquidez-manual.json explorador/datos.json explorador/noticias-archivo.json docs/movil/data.json docs/movil/seguimiento.json docs/orbita/index.html research/PLANNING.md
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -m "Paneles de datos: actualización automática (sin IA)"
           git checkout -- .   # descarta restos generados que no se guardan (evita «unstaged changes» al hacer pull --rebase)
