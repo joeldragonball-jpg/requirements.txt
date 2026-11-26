@@ -146,3 +146,13 @@ Etiquetas: [P] primaria leída hoy · [S] prensa · [VERIFICAR]. Los puntos del 
 | W05I-07 | Ripple–Solvexia: precio y cierre | C09 | **Parcial [S]**: GTreasury (filial de Ripple) anuncia la compra el 6-ene-2026; términos no publicados; ninguna página primaria leída en ripple.com | treasury.ripple.com y prensa (resultados de búsqueda), 19-nov |
 
 **Conteo W05 19-nov lote 2:** 7 puntos · 2 cerrados [P] (01, 04 como corrección) · 3 parciales (03 corregido, 05, 06; 07 parcial [S]) · 1 sin verificar (02). Acumulado ≈ 59 tratados desde el 27-oct.
+
+## W05 · 26-nov-2026 (lote corto: BOE, Fed, CLARITY, vigiladas)
+| ID | Afirmación | Origen | Resultado | Fuente y fecha |
+|---|---|---|---|---|
+| W05J-01 | Modelos 172/175/721 y DAC8: texto definitivo en el BOE | W05I-02 | **Sigue sin verificar**: sumarios del BOE del 20 al 26-nov (sin edición el 22) sin títulos con DAC8, modelos 172/175/721, criptoactivos ni monedas virtuales (búsqueda por texto en el JSON) | BOE API sumario 20261120-20261126, 26-nov |
+| W05J-02 | Fed: límite superior 4,00 % | W05-19-01 | **Confirmado [P]**: DFEDTARU = 4,00 % hasta el 25-nov | FRED, 26-nov |
+| W05J-03 | CLARITY: segundo intento de cierre (C342) | C342 | **Sin cerrar**: solo consta la votación del 15-sep (49-50 según la mayoría de las fuentes; 2 medios dicen 50-49) [S]; no hay votación nueva en noviembre; congress.gov/senate.gov sin leer (anti-bot, Chrome no usado). Vigilada +7 días | búsqueda web, 26-nov [S] |
+| W05J-04 | Préstamos XRPL (C340), Jupiter (C341), sueldos C68B, alertas C261 | tareas.csv | **Sin novedad verificable hoy**; siguen vigiladas, revisión +7 días (3-dic) | — |
+
+**Conteo W05 26-nov:** 4 puntos · 1 cerrado [P] (02) · 3 sin cerrar. Acumulado ≈ 63 tratados desde el 27-oct.
