@@ -6496,19 +6496,19 @@
         "n": "P"
       },
       "votos": {
-        "t": "Voto de validadores: SingleAssetVault 25/35 (umbral 28), LendingProtocol 24/35 (umbral 28); activar exige mantener mayoria superior al 80 % durante 2 semanas (xrpl.org). Aun no hay estado majority. Corrección: el canal de vídeo dio «22 de 29»; no coincide con ninguna fuente leída (24-25 de 35 a 19-nov). Los 35 son validadores que votan, no necesariamente toda la UNL [VERIFICAR].",
-        "f": "api.xrpscan.com/api/v1/amendments (majority=null en ambas)",
-        "u": "https://api.xrpscan.com/api/v1/amendments",
-        "d": "2026-11-19",
-        "n": "S"
+        "t": "Leído por mí el 26-nov-2026 en livenet.xrpl.org/amendments: SingleAssetVault (XLS-65) 29 votos de 35 (82,86 %, umbral 28) y ya en fase de mayoría, con fecha estimada de activación el 9-dic-2026 (2 semanas de mayoría; formato dd/mm de la propia página). LendingProtocol (XLS-66) y LendingProtocolV1_1: 28 de 35 (80,00 %), aún en «Voting», sin mayoría ni fecha. Si se mantiene, Vault sería la primera de las dos en activarse; Lending depende de un voto más [ESPECULACIÓN]. Los votos cambian a diario; los 35 son validadores que votan [VERIFICAR el 9-dic].",
+        "f": "livenet.xrpl.org/amendments (explorador oficial de la red)",
+        "u": "https://livenet.xrpl.org/amendments",
+        "d": "2026-11-26",
+        "n": "P"
       },
       "vault": {
-        "votos": 25,
+        "votos": 29,
         "total": 35,
         "umbral": 28
       },
       "lending": {
-        "votos": 24,
+        "votos": 28,
         "total": 35,
         "umbral": 28
       },
@@ -7079,14 +7079,14 @@
     "nota": "Fechas y umbrales a seguir en esta pestaña. Son calendario, no previsiones: las fechas de DTCC son «previstas» (parte interesada) y la de XRPL no tiene fecha.",
     "filas": [
       {
-        "cuando": "Sin fecha",
-        "que": "XRPL: activación de LendingProtocol y SingleAssetVault. Hoy 24-25 de 35 votos con umbral 28; hace falta mayoría superior al 80 % mantenida 2 semanas y aún no hay estado «majority»",
+        "cuando": "9-dic-2026 (est.)",
+        "que": "XRPL: SingleAssetVault ya con mayoría (29/35) y activación estimada el 9-dic; LendingProtocol y V1_1 en 28/35, aún sin mayoría",
         "celda": {
-          "t": "Voto de validadores: SingleAssetVault 25/35 (umbral 28), LendingProtocol 24/35 (umbral 28); activar exige mantener mayoria superior al 80 % durante 2 semanas (xrpl.org). Aun no hay estado majority. Corrección: el canal de vídeo dio «22 de 29»; no coincide con ninguna fuente leída (24-25 de 35 a 19-nov). Los 35 son validadores que votan, no necesariamente toda la UNL [VERIFICAR].",
-          "f": "api.xrpscan.com/api/v1/amendments (majority=null en ambas)",
-          "u": "https://api.xrpscan.com/api/v1/amendments",
-          "d": "2026-11-19",
-          "n": "S"
+          "t": "Leído por mí el 26-nov-2026 en livenet.xrpl.org/amendments: SingleAssetVault (XLS-65) 29 votos de 35 (82,86 %, umbral 28) y ya en fase de mayoría, con fecha estimada de activación el 9-dic-2026 (2 semanas de mayoría; formato dd/mm de la propia página). LendingProtocol (XLS-66) y LendingProtocolV1_1: 28 de 35 (80,00 %), aún en «Voting», sin mayoría ni fecha. Si se mantiene, Vault sería la primera de las dos en activarse; Lending depende de un voto más [ESPECULACIÓN]. Los votos cambian a diario; los 35 son validadores que votan [VERIFICAR el 9-dic].",
+          "f": "livenet.xrpl.org/amendments (explorador oficial de la red)",
+          "u": "https://livenet.xrpl.org/amendments",
+          "d": "2026-11-26",
+          "n": "P"
         }
       },
       {
