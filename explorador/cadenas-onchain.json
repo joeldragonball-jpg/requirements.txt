@@ -1,5 +1,5 @@
 {
- "_actualizado": "2026-11-26T03:47Z",
+ "_actualizado": "2026-11-26T07:06Z",
  "nivel": "S",
  "aviso": "TVL y stablecoins vienen de DefiLlama, un agregador (nivel S): cambia de metodologia, TVL no es uso real y Ethereum no incluye sus L2. Las metricas nativas de XRPL y Stellar vienen de nodos publicos. Fees y volumen DEX (fees/dex_volumen): USD, 24 h y 30 dias moviles, DefiLlama overview (nivel S); fees = comisiones pagadas por usuarios, no ingresos del protocolo. stablecoins_emisores_top5: USD, DefiLlama /stablecoins por chainCirculating. null = no leido o no aplica (Chainlink, Ondo y Quant no son cadenas).",
  "fuentes": [
@@ -16,17 +16,17 @@
  "redes": {
   "xrpl": {
    "nombre_defillama": "XRPL",
-   "tvl_usd": 30604666.533211954,
-   "stablecoins_usd": 824031741.1882645,
+   "tvl_usd": 30669312.330832504,
+   "stablecoins_usd": 824010205.6144286,
    "nativo": {
-    "ledger": 108575721,
+    "ledger": 108578775,
     "comision_base_xrp": 1e-05,
     "reserva_base_xrp": 1.0,
     "reserva_incr_xrp": 0.2,
-    "hora_servidor": "2026-Nov-26 03:47:11.951628 UTC",
+    "hora_servidor": "2026-Nov-26 07:05:58.370772 UTC",
     "fuente": "s1.ripple.com (rippled/Clio publico)",
-    "tx_en_ultimo_ledger": 119,
-    "cierre_ledger": "2026-Nov-26 03:47:10.000000000 UTC"
+    "tx_en_ultimo_ledger": 56,
+    "cierre_ledger": "2026-Nov-26 07:05:52.000000000 UTC"
    },
    "fees": {
     "usd_24h": 28898.809999999998,
@@ -44,7 +44,7 @@
     {
      "emisor": "Ripple USD",
      "simbolo": "RLUSD",
-     "usd": 746798488
+     "usd": 746776818
     },
     {
      "emisor": "Valtorum USD",
@@ -54,23 +54,23 @@
     {
      "emisor": "USD Coin",
      "simbolo": "USDC",
-     "usd": 4462254
+     "usd": 4462388
     }
    ],
    "aviso_rwa": "DefiLlama: stablecoins 824 M USD (leido 2026-11-26). RWA.xyz: RWA distribuidos 643 M USD (leido 2026-11-14). Son magnitudes distintas (stablecoins vs. activos reales tokenizados) y de agregadores distintos (nivel S): no comparar ni sumar."
   },
   "stellar": {
    "nombre_defillama": "Stellar",
-   "tvl_usd": 187723564.32741198,
-   "stablecoins_usd": 421764998.9414679,
+   "tvl_usd": 187174067.44756895,
+   "stablecoins_usd": 421777408.03906274,
    "nativo": {
-    "ledger": 65675753,
-    "cierre_ledger": "2026-11-26T03:47:10Z",
-    "tx_correctas_ultimo_ledger": 144,
-    "operaciones_ultimo_ledger": 249,
+    "ledger": 65678138,
+    "cierre_ledger": "2026-11-26T07:05:55Z",
+    "tx_correctas_ultimo_ledger": 186,
+    "operaciones_ultimo_ledger": 364,
     "uso_capacidad_ledger": "0.56",
     "comision_stroops_mediana": "100",
-    "comision_stroops_p95": "7449",
+    "comision_stroops_p95": "7541",
     "fuente": "horizon.stellar.org"
    },
    "fees": {
@@ -89,7 +89,7 @@
     {
      "emisor": "USD Coin",
      "simbolo": "USDC",
-     "usd": 351255601
+     "usd": 351268251
     },
     {
      "emisor": "MoneyGram USD",
@@ -99,12 +99,12 @@
     {
      "emisor": "YLDS",
      "simbolo": "YLDS",
-     "usd": 25295588
+     "usd": 25296819
     },
     {
      "emisor": "PayPal USD",
      "simbolo": "PYUSD",
-     "usd": 17910586
+     "usd": 17909158
     },
     {
      "emisor": "Valtorum USD",
@@ -116,8 +116,8 @@
   },
   "hedera": {
    "nombre_defillama": "Hedera",
-   "tvl_usd": 19782257.104914743,
-   "stablecoins_usd": 26896803.117828682,
+   "tvl_usd": 20009668.18647697,
+   "stablecoins_usd": 26897617.613971103,
    "nativo": null,
    "fees": {
     "usd_24h": 3423.8799999999997,
@@ -135,30 +135,30 @@
     {
      "emisor": "USD Coin",
      "simbolo": "USDC",
-     "usd": 26769781
+     "usd": 26770588
     },
     {
      "emisor": "Tether",
      "simbolo": "USDT",
-     "usd": 127022
+     "usd": 127030
     }
    ],
    "aviso_rwa": null
   },
   "ethereum": {
    "nombre_defillama": "Ethereum",
-   "tvl_usd": 36692555174.52114,
-   "stablecoins_usd": 127677946686.74628,
+   "tvl_usd": 36654696667.09152,
+   "stablecoins_usd": 127634074486.32712,
    "nativo": null,
    "fees": {
-    "usd_24h": 9328963.719999997,
-    "usd_30d": 377780248.7999984,
+    "usd_24h": 9318206.589999998,
+    "usd_30d": 377769592.1199984,
     "cambio_30d_pct": 14.37,
     "nombre_usado": "Ethereum"
    },
    "dex_volumen": {
-    "usd_24h": 1394922687.95,
-    "usd_30d": 58218178380.19997,
+    "usd_24h": 1394923112.95,
+    "usd_30d": 58218179086.19997,
     "cambio_30d_pct": 68.34,
     "nombre_usado": "Ethereum"
    },
@@ -166,35 +166,35 @@
     {
      "emisor": "Tether",
      "simbolo": "USDT",
-     "usd": 65401475241
+     "usd": 65397755190
     },
     {
      "emisor": "USD Coin",
      "simbolo": "USDC",
-     "usd": 41541933046
+     "usd": 41503853557
     },
     {
      "emisor": "Dai",
      "simbolo": "DAI",
-     "usd": 4001485966
+     "usd": 4000315383
     },
     {
      "emisor": "Ethena USDe",
      "simbolo": "USDe",
-     "usd": 3273767631
+     "usd": 3274542903
     },
     {
      "emisor": "Sky Dollar",
      "simbolo": "USDS",
-     "usd": 3075754103
+     "usd": 3077870274
     }
    ],
-   "aviso_rwa": "DefiLlama: stablecoins 127,678 M USD (leido 2026-11-26). RWA.xyz: RWA distribuidos 15,154 M USD (leido 2026-11-14). Son magnitudes distintas (stablecoins vs. activos reales tokenizados) y de agregadores distintos (nivel S): no comparar ni sumar."
+   "aviso_rwa": "DefiLlama: stablecoins 127,634 M USD (leido 2026-11-26). RWA.xyz: RWA distribuidos 15,154 M USD (leido 2026-11-14). Son magnitudes distintas (stablecoins vs. activos reales tokenizados) y de agregadores distintos (nivel S): no comparar ni sumar."
   },
   "solana": {
    "nombre_defillama": "Solana",
-   "tvl_usd": 4609870724.148501,
-   "stablecoins_usd": 12896364897.168192,
+   "tvl_usd": 4614552793.155877,
+   "stablecoins_usd": 12917777769.015766,
    "nativo": null,
    "fees": {
     "usd_24h": 7487778.539999999,
@@ -212,39 +212,39 @@
     {
      "emisor": "USD Coin",
      "simbolo": "USDC",
-     "usd": 6968388545
+     "usd": 7003266914
     },
     {
      "emisor": "Tether",
      "simbolo": "USDT",
-     "usd": 1892269286
+     "usd": 1892382975
     },
     {
      "emisor": "USDGO",
      "simbolo": "USDGO",
-     "usd": 922949570
+     "usd": 922923152
     },
     {
      "emisor": "World Liberty Financial USD",
      "simbolo": "USD1",
-     "usd": 868163186
+     "usd": 868120589
     },
     {
      "emisor": "PayPal USD",
      "simbolo": "PYUSD",
-     "usd": 741134643
+     "usd": 731465866
     }
    ],
-   "aviso_rwa": "DefiLlama: stablecoins 12,896 M USD (leido 2026-11-26). RWA.xyz: RWA distribuidos 5,145 M USD (leido 2026-11-14). Son magnitudes distintas (stablecoins vs. activos reales tokenizados) y de agregadores distintos (nivel S): no comparar ni sumar."
+   "aviso_rwa": "DefiLlama: stablecoins 12,918 M USD (leido 2026-11-26). RWA.xyz: RWA distribuidos 5,145 M USD (leido 2026-11-14). Son magnitudes distintas (stablecoins vs. activos reales tokenizados) y de agregadores distintos (nivel S): no comparar ni sumar."
   },
   "bnb": {
    "nombre_defillama": "BSC",
-   "tvl_usd": 4320221077.515947,
-   "stablecoins_usd": 13190384864.22977,
+   "tvl_usd": 4319350545.342225,
+   "stablecoins_usd": 13189398304.023214,
    "nativo": null,
    "fees": {
-    "usd_24h": 1465395.7199999995,
-    "usd_30d": 52245442,
+    "usd_24h": 1463466.7199999995,
+    "usd_30d": 52243513,
     "cambio_30d_pct": -33.61,
     "nombre_usado": "BSC"
    },
@@ -258,22 +258,22 @@
     {
      "emisor": "Tether",
      "simbolo": "USDT",
-     "usd": 9172310907
+     "usd": 9172861989
     },
     {
      "emisor": "USD Coin",
      "simbolo": "USDC",
-     "usd": 1488853431
+     "usd": 1488898306
     },
     {
      "emisor": "World Liberty Financial USD",
      "simbolo": "USD1",
-     "usd": 1096831264
+     "usd": 1096777446
     },
     {
      "emisor": "United Stables",
      "simbolo": "U",
-     "usd": 998414777
+     "usd": 998634635
     },
     {
      "emisor": "USDX Money USDX",
@@ -285,13 +285,13 @@
   },
   "avalanche": {
    "nombre_defillama": "Avalanche",
-   "tvl_usd": 434247224.3662467,
-   "stablecoins_usd": 800808998.0990815,
+   "tvl_usd": 435144400.8450364,
+   "stablecoins_usd": 801498500.8946894,
    "nativo": null,
    "fees": {
-    "usd_24h": 250875.71000000005,
-    "usd_30d": 7919181.539999998,
-    "cambio_30d_pct": -15.49,
+    "usd_24h": 247929.70000000004,
+    "usd_30d": 7916235.529999998,
+    "cambio_30d_pct": -15.52,
     "nombre_usado": "Avalanche"
    },
    "dex_volumen": {
@@ -304,22 +304,22 @@
     {
      "emisor": "Tether",
      "simbolo": "USDT",
-     "usd": 325593522
+     "usd": 325613085
     },
     {
      "emisor": "USD Coin",
      "simbolo": "USDC",
-     "usd": 241044213
+     "usd": 241954402
     },
     {
      "emisor": "Ethena USDe",
      "simbolo": "USDe",
-     "usd": 123138452
+     "usd": 122906346
     },
     {
      "emisor": "Avant USD",
      "simbolo": "avUSD",
-     "usd": 88217167
+     "usd": 88132750
     },
     {
      "emisor": "USP Stablecoin",
@@ -331,18 +331,18 @@
   },
   "polygon": {
    "nombre_defillama": "Polygon",
-   "tvl_usd": 608210550.4260474,
-   "stablecoins_usd": 2957109034.3255243,
+   "tvl_usd": 595565328.3094028,
+   "stablecoins_usd": 2952254150.76722,
    "nativo": null,
    "fees": {
-    "usd_24h": 1163360.3000000007,
-    "usd_30d": 39549253.010000095,
-    "cambio_30d_pct": 3.41,
+    "usd_24h": 1158229.3000000007,
+    "usd_30d": 39544122.010000095,
+    "cambio_30d_pct": 3.4,
     "nombre_usado": "Polygon"
    },
    "dex_volumen": {
-    "usd_24h": 207166727.92,
-    "usd_30d": 5191581599.820005,
+    "usd_24h": 207228941.92,
+    "usd_30d": 5191643915.820005,
     "cambio_30d_pct": -9.67,
     "nombre_usado": "Polygon"
    },
@@ -350,34 +350,34 @@
     {
      "emisor": "USD Coin",
      "simbolo": "USDC",
-     "usd": 1622855971
+     "usd": 1618463145
     },
     {
      "emisor": "Tether",
      "simbolo": "USDT",
-     "usd": 857582743
+     "usd": 857902277
     },
     {
      "emisor": "Polymarket USD",
      "simbolo": "pUSD",
-     "usd": 461186983
+     "usd": 472713891
     },
     {
      "emisor": "Dai",
      "simbolo": "DAI",
-     "usd": 432518530
+     "usd": 432614566
     },
     {
      "emisor": "Real USD",
      "simbolo": "USDR",
-     "usd": 17823382
+     "usd": 17816277
     }
    ],
    "aviso_rwa": null
   },
   "canton": {
    "nombre_defillama": "Canton",
-   "tvl_usd": 11228640.307994435,
+   "tvl_usd": 11229563.78836716,
    "stablecoins_usd": null,
    "nativo": null,
    "fees": {
@@ -417,8 +417,8 @@
   },
   "algorand": {
    "nombre_defillama": "Algorand",
-   "tvl_usd": 24681321.700622622,
-   "stablecoins_usd": 134941068.20169073,
+   "tvl_usd": 25056446.775707,
+   "stablecoins_usd": 134946204.654345,
    "nativo": null,
    "fees": {
     "usd_24h": 4452.12,
@@ -436,17 +436,17 @@
     {
      "emisor": "USD Coin",
      "simbolo": "USDC",
-     "usd": 133941130
+     "usd": 133945167
     },
     {
      "emisor": "Tether",
      "simbolo": "USDT",
-     "usd": 840214
+     "usd": 840265
     },
     {
      "emisor": "STBL",
      "simbolo": "STBL",
-     "usd": 148087
+     "usd": 149136
     },
     {
      "emisor": "Whale Asset Dollar",
@@ -463,8 +463,8 @@
   },
   "xdc": {
    "nombre_defillama": "XDC",
-   "tvl_usd": 1764083.5296862905,
-   "stablecoins_usd": 108081621.63070217,
+   "tvl_usd": 1758437.9417828282,
+   "stablecoins_usd": 108079470.97997561,
    "nativo": null,
    "fees": {
     "usd_24h": 2246.8900000000003,
@@ -482,22 +482,22 @@
     {
      "emisor": "USD Coin",
      "simbolo": "USDC",
-     "usd": 57752399
+     "usd": 57754140
     },
     {
      "emisor": "Falcon USD",
      "simbolo": "USDf",
-     "usd": 49773524
+     "usd": 49777967
     },
     {
      "emisor": "Fathom Dollar",
      "simbolo": "FXD",
-     "usd": 515960
+     "usd": 507623
     },
     {
      "emisor": "Tether",
      "simbolo": "USDT",
-     "usd": 39739
+     "usd": 39741
     }
    ],
    "aviso_rwa": null
@@ -514,8 +514,8 @@
   },
   "iota": {
    "nombre_defillama": "IOTA",
-   "tvl_usd": 540115.2312966085,
-   "stablecoins_usd": 409433.997588493,
+   "tvl_usd": 537832.5339204246,
+   "stablecoins_usd": 409456.0169346694,
    "nativo": null,
    "fees": {
     "usd_24h": 1.17,
@@ -533,20 +533,20 @@
     {
      "emisor": "Tether",
      "simbolo": "USDT",
-     "usd": 323266
+     "usd": 323285
     },
     {
      "emisor": "USD Coin",
      "simbolo": "USDC",
-     "usd": 86168
+     "usd": 86171
     }
    ],
    "aviso_rwa": null
   },
   "plume": {
    "nombre_defillama": "Plume Mainnet",
-   "tvl_usd": 971631.1612487347,
-   "stablecoins_usd": 11875614.98733195,
+   "tvl_usd": 970235.5065817034,
+   "stablecoins_usd": 11875896.330382006,
    "nativo": null,
    "fees": {
     "usd_24h": 9182.92,
@@ -564,17 +564,17 @@
     {
      "emisor": "USD Coin",
      "simbolo": "USDC",
-     "usd": 11798011
+     "usd": 11798290
     },
     {
      "emisor": "Plume USD",
      "simbolo": "pUSD",
-     "usd": 1275515
+     "usd": 1257830
     },
     {
      "emisor": "Dinari USD+",
      "simbolo": "USD+",
-     "usd": 70293
+     "usd": 70296
     },
     {
      "emisor": "Tether",
