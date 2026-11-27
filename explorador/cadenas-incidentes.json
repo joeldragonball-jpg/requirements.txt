@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-11-27 13:10 UTC",
+  "generado_utc": "2026-11-27 21:36 UTC",
   "nivel": "S",
   "ventana": "2025-11-27 a 2026-11-27",
   "fuente": "https://api.llama.fi/hacks",
-  "total_incidentes_en_fuente": 1378,
+  "total_incidentes_en_fuente": 1380,
   "incidentes_sin_red_mapeada": 149,
   "metodo": "Descarga única del listado de DefiLlama, filtro por fecha (365 días), agrupación por red con diccionario de alias y separación por bridgeHack (puentes) y por targetType=CEX (robos a exchanges centralizados, categoría aparte «cex»: no cuentan como incidente de red ni de protocolo).",
   "avisos": [
@@ -245,10 +245,18 @@
         ]
       },
       "puentes": {
-        "n": 26,
-        "importe_usd": 347642262.378132,
-        "ultimo": "2026-11-21",
+        "n": 27,
+        "importe_usd": 347702562.378132,
+        "ultimo": "2026-11-27",
         "casos": [
+          {
+            "fecha": "2026-11-27",
+            "nombre": "Atoshi Bridge",
+            "importe_usd": 60300,
+            "tecnica": "Deployer Key Compromised",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
           {
             "fecha": "2026-11-21",
             "nombre": "Chainflip AMM",
@@ -328,16 +336,6 @@
             "tecnica": "Private Key Compromised",
             "recuperado_usd": null,
             "otras_redes": []
-          },
-          {
-            "fecha": "2026-09-10",
-            "nombre": "Symbiosis",
-            "importe_usd": 336000,
-            "tecnica": "Unbacked Cross-Chain Mint",
-            "recuperado_usd": null,
-            "otras_redes": [
-              "bnb"
-            ]
           }
         ]
       },
@@ -570,10 +568,18 @@
     },
     "bnb": {
       "base": {
-        "n": 62,
-        "importe_usd": 92875901.24,
-        "ultimo": "2026-11-24",
+        "n": 63,
+        "importe_usd": 92932701.24,
+        "ultimo": "2026-11-26",
         "casos": [
+          {
+            "fecha": "2026-11-26",
+            "nombre": "SVT",
+            "importe_usd": 56800,
+            "tecnica": "Swap Logic Flaw",
+            "recuperado_usd": null,
+            "otras_redes": []
+          },
           {
             "fecha": "2026-11-24",
             "nombre": "Biswap V3",
@@ -664,22 +670,6 @@
               "Base",
               "Robinhood Chain",
               "ethereum"
-            ]
-          },
-          {
-            "fecha": "2026-10-13",
-            "nombre": "Gamdom",
-            "importe_usd": 4208000,
-            "tecnica": "Key Leaked via Infrastructure",
-            "recuperado_usd": null,
-            "otras_redes": [
-              "Arbitrum",
-              "Optimism",
-              "TRON",
-              "Bitcoin",
-              "ethereum",
-              "polygon",
-              "solana"
             ]
           }
         ]
