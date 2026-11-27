@@ -1,9 +1,9 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-27 07:10 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-27 08:16 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
 ## Vista en 5 grupos (C131)
-**Hoy (máx. 3):** W06 Voces y predicciones · W09 Resumen semanal · Gemini Bulos y desmentidos de la semana
+**Hoy (máx. 3):** W06 Voces y predicciones · Gemini Bulos y desmentidos de la semana
 **Periódicas (próxima):** W06 11-27 · W09 11-27 · W10 11-28 · W01 11-30 · W02 12-01 · W03 12-02 · W05 12-03 · W07 12-05 · W04 12-10 · W08 12-23
 **Bloqueadas (6):** C79 (4-nov: AEAT OK. IGAE BOE y MENSUAL 12-24 OK con Ch) · C80B (Chrome no conectado; senate.gov y congress.gov blo) · C137 (Chrome para leer fechas oficiales) · C139 (Decidir con Joel si se añaden como países nuevos a) · C140 (Chrome conectado) · C235 (Joel pasa podcasts, canales y personas que sigue)
 **Parciales (62):** C30 falta: Leer en ine.mx, eci.gov.in, CNE y gov.uk; confirma · C39 falta: 17-nov: 20 movimientos volcados a datos.json (305) · C42 falta: 18-nov 3.ª: ESMA, SFC y MAS leídos; VARA parcial.  · C58 falta: 18-nov: Rusia a P (Duma 450), India Lok Sabha 540/ · C59 falta: 17-nov: salario mínimo y fichas añadidos a indicad · C68 falta: Resolver por qué el Portal paga a SE/Subsecretario · …
@@ -12,7 +12,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 
 ## Hoy (vie 2026-11-27): solo lo casi obligatorio
 - R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 20 días
-- Fija de hoy (viernes: resumen semanal): **W09 Resumen semanal** (~1,5 %) · último 2026-11-20 · `research/prompts/W09-*.md`
+- Fija de hoy (viernes: resumen semanal): **W09 Resumen semanal** (~1,5 %) · último 2026-11-27 · `research/prompts/W09-*.md`
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
 - Gemini del día: toca **Bulos y desmentidos de la semana** · prompt `research/gemini/NOTICIAS-DIA.md` · ⏳ pendiente
@@ -22,8 +22,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 - Aviso de límite (2026-10-31): Joel propone probar 2 Deep Research al dia (lleva ~7 % semanal con Pro alto). Se prueba unos dias; si Gemini avisa de limite, vuelta a 1. Anotar en sesiones cada lanzamiento y si hubo aviso.
 
 ## Rutinas W: lo que falta este periodo (sin día fijo; se hacen cuando haya hueco, de más atrasada a menos)
-- W09 · Resumen semanal · ~1,5 % · cada viernes · último 2026-11-20 · `research/prompts/W09-*.md`
-Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
+Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 
 ## Research nuevo pendiente (por sección)
 **Centro y revisión del cerebro (C)**
@@ -150,13 +149,13 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (53) → W03 · Se revisan con la rutina de países
 - 🔴 Radar regulatorio: Fechas previstas ya pasadas sin actualizar (1) → W03 · KR/politica
-- 🔴 Voces: Voces sin confirmar (55) → W06 · 31 llevan más de 14 días
 - 🔴 Predicciones: Vencidas sin resultado (1) → W06 · #80
 - 🔴 Explorador: JSON con dato viejo o sin fecha (más de 7 días) (47) → rutina de cada tema (ver explorador/frescura.json) · verdes 40, amarillos 38, rojos 9, grises 0. Rojos: bancos-eba, empresas-redes, e
 - 🟡 Radar regulatorio: Celdas sin dato (12) → W03 · Más huecos: IR 2, AR 2, SV 2, AE 1, BRICS 1
+- 🟡 Voces: No se pudo leer (ValueError) (0) → W06
 
 ## Bots con problema
-- Paneles de datos
+- ninguno
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-18 · APEC en Shenzhen: cumbre de líderes (medio) → ✓ revisado (hecho)
