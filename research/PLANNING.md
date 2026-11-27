@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-27 13:14 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-27 21:11 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -11,7 +11,7 @@ Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el 
 **Hechas en 7 días (2):** C355, C360
 
 ## Hoy (vie 2026-11-27): solo lo casi obligatorio
-- R00 apertura ✓ · cierre ⏳ pendiente (desde las 22:00, cierre de EE. UU.) · racha 20 días
+- R00 apertura ✓ · cierre ✓ · racha 20 días
 - Fija de hoy (viernes: resumen semanal): **W09 Resumen semanal** (~1,5 %) · último 2026-11-27 · `research/prompts/W09-*.md`
 
 ## 🟣 Gemini del día (gratis, 1 consulta ligera de ~15 fuentes; Claude da el prompt, tú lo pegas en Gemini)
@@ -155,7 +155,7 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W09, W10
 - 🟡 Voces: No se pudo leer (ValueError) (0) → W06
 
 ## Bots con problema
-- Despertador de la app, Paneles de datos
+- Votos de noticias
 
 ## Calendario: ya pasaron (10 días) y qué falta decidir
 - 2026-11-18 · APEC en Shenzhen: cumbre de líderes (medio) → ✓ revisado (hecho)
