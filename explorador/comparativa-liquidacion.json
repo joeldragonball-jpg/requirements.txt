@@ -1,32 +1,32 @@
 {
- "_actualizado": "2026-11-27T03:50:41Z",
+ "_actualizado": "2026-11-27T07:07:56Z",
  "nivel": "P",
  "aviso": "Medidas puntuales de nodos públicos (una instantánea, no un promedio histórico): la comisión y el TPS varían con la carga. No es recomendación.",
  "precios_usd": {
-  "xrp": 0.96046,
-  "xlm": 0.1283335925,
-  "eth": 1726.6810486,
-  "sol": 72.72,
-  "hbar": 0.054719046949999996,
-  "algo": 0.08185193090000001
+  "xrp": 0.9731503175,
+  "xlm": 0.129775,
+  "eth": 1732.1875928499999,
+  "sol": 72.93883960000001,
+  "hbar": 0.055656,
+  "algo": 0.082286874615
  },
  "precios_fuente": "coins.llama.fi (DefiLlama, precio de referencia en el momento de la medida)",
  "redes": {
   "xrpl": {
-   "tiempo_bloque_medio_s": 4.105,
+   "tiempo_bloque_medio_s": 3.737,
    "tiempo_bloque_mediano_s": 1,
    "muestra_bloques": 20,
-   "ventana_s": 78,
-   "tps_medio": 18.71,
-   "finalidad_medida_s": 4.105,
+   "ventana_s": 71,
+   "tps_medio": 16.04,
+   "finalidad_medida_s": 3.737,
    "finalidad_nota": "un ledger validado es final (consenso sin bifurcaciones); el tiempo medido es el intervalo de cierre",
    "comision_nativa": "0.00001000 XRP (10 gotas: comisión de ledger abierto, igual a la base; la «mediana» de la cola, 5000 gotas, es solo el nivel por defecto con congestión)",
-   "comision_mediana_cola_usd": 0.0048023,
-   "comision_minima_usd": 9.6e-06,
-   "comision_usd": 9.6e-06,
-   "ledger": 108597825,
+   "comision_mediana_cola_usd": 0.00486575,
+   "comision_minima_usd": 9.73e-06,
+   "comision_usd": 9.73e-06,
+   "ledger": 108600861,
    "fuente": "s1.ripple.com:51234 (rippled; métodos ledger y fee)",
-   "medido_utc": "2026-11-27T03:50:41Z",
+   "medido_utc": "2026-11-27T07:07:56Z",
    "nombre": "XRPL"
   },
   "stellar": {
@@ -34,14 +34,14 @@
    "tiempo_bloque_mediano_s": 5.0,
    "muestra_bloques": 20,
    "ventana_s": 95.0,
-   "tps_medio": 49.41,
+   "tps_medio": 69.67,
    "finalidad_medida_s": 5.0,
    "finalidad_nota": "un ledger cerrado por el protocolo de consenso federado (SCP) es final; el tiempo medido es el intervalo de cierre",
    "comision_nativa": "0.0000100 XLM (mediana cobrada, 100 stroops)",
-   "comision_usd": 1.28e-06,
-   "ledger": 65693074,
+   "comision_usd": 1.3e-06,
+   "ledger": 65695441,
    "fuente": "horizon.stellar.org (ledgers y fee_stats)",
-   "medido_utc": "2026-11-27T03:50:41Z",
+   "medido_utc": "2026-11-27T07:07:56Z",
    "nombre": "Stellar"
   },
   "ethereum": {
@@ -49,48 +49,48 @@
    "tiempo_bloque_mediano_s": 12,
    "muestra_bloques": 20,
    "ventana_s": 228,
-   "tps_medio": 24.26,
-   "finalidad_medida_s": 948,
-   "finalidad_nota": "retraso medido entre el último bloque y el bloque «finalized» (Casper FFG); el bloque «safe» va 564 s detrás",
-   "bloques_hasta_finalizado": 79,
-   "comision_nativa": "0.00000106 ETH (transferencia simple de 21000 gas; base 0.044 gwei + propina mediana 0.007 gwei)",
-   "comision_usd": 0.001826,
-   "ledger": 26503966,
+   "tps_medio": 19.82,
+   "finalidad_medida_s": 888,
+   "finalidad_nota": "retraso medido entre el último bloque y el bloque «finalized» (Casper FFG); el bloque «safe» va 504 s detrás",
+   "bloques_hasta_finalizado": 74,
+   "comision_nativa": "0.00000508 ETH (transferencia simple de 21000 gas; base 0.229 gwei + propina mediana 0.012 gwei)",
+   "comision_usd": 0.008791,
+   "ledger": 26504949,
    "fuente": "ethereum-rpc.publicnode.com (eth_getBlockByNumber latest/safe/finalized, eth_feeHistory)",
-   "medido_utc": "2026-11-27T03:50:41Z",
+   "medido_utc": "2026-11-27T07:07:56Z",
    "nombre": "Ethereum"
   },
   "solana": {
-   "tiempo_bloque_medio_s": 0.213,
+   "tiempo_bloque_medio_s": 0.215,
    "tiempo_bloque_mediano_s": null,
-   "muestra_bloques": 8432,
+   "muestra_bloques": 8379,
    "ventana_s": 1800,
-   "tps_medio": 1595.9,
-   "tps_sin_votos": 1595.9,
+   "tps_medio": 1192.1,
+   "tps_sin_votos": 1192.1,
    "tps_nota": "numTransactions del nodo público; en Solana las transacciones de voto de los validadores suelen contarse aparte o dentro: si tps_sin_votos coincide con tps_medio, no se puede separar con esta fuente [VERIFICAR]",
    "finalidad_medida_s": null,
-   "finalidad_nota": "no medible con el RPC público (getSlot confirmed/finalized difiere en 1 slots, no es un retraso de finalidad real); la ficha de Solana indica slot de 200 ms tras Alpenglow (21-oct-2026) [VERIFICAR finalidad]",
+   "finalidad_nota": "no medible con el RPC público (getSlot confirmed/finalized difiere en 0 slots, no es un retraso de finalidad real); la ficha de Solana indica slot de 200 ms tras Alpenglow (21-oct-2026) [VERIFICAR finalidad]",
    "comision_nativa": "5000 lamports (base 5000 por firma + prioridad mediana 0 µlamports/CU × ~450 CU)",
-   "comision_usd": 0.0003636,
-   "ledger": 474405712,
+   "comision_usd": 0.00036469,
+   "ledger": 474460731,
    "fuente": "api.mainnet-beta.solana.com (getRecentPerformanceSamples, getSlot, getRecentPrioritizationFees)",
-   "medido_utc": "2026-11-27T03:50:41Z",
+   "medido_utc": "2026-11-27T07:07:56Z",
    "nombre": "Solana"
   },
   "hedera": {
-   "tiempo_bloque_medio_s": 2.211,
-   "tiempo_bloque_mediano_s": 2.128227949142456,
+   "tiempo_bloque_medio_s": 2.152,
+   "tiempo_bloque_mediano_s": 2.0722298622131348,
    "muestra_bloques": 20,
-   "ventana_s": 42.0,
+   "ventana_s": 40.9,
    "tps_medio": 4.62,
-   "finalidad_medida_s": 2.211,
+   "finalidad_medida_s": 2.152,
    "finalidad_nota": "el mirror node publica registros por intervalos de pocos segundos; la finalidad aBFT es del orden de segundos según la documentación [VERIFICAR medida directa]",
    "comision_nativa": "tarifa documentada en USD (transferencia cripto ≈ 0,0001 USD) [VERIFICAR, no medida]",
    "comision_usd": 0.0001,
    "comision_es_medida": false,
-   "ledger": 102826456,
+   "ledger": 102831836,
    "fuente": "mainnet-public.mirrornode.hedera.com (blocks); tarifa: documentación de Hedera",
-   "medido_utc": "2026-11-27T03:50:41Z",
+   "medido_utc": "2026-11-27T07:07:56Z",
    "nombre": "Hedera"
   },
   "algorand": {
@@ -98,25 +98,25 @@
    "tiempo_bloque_mediano_s": 3,
    "muestra_bloques": 20,
    "ventana_s": 53,
-   "tps_medio": 9.42,
+   "tps_medio": 14.75,
    "finalidad_medida_s": 2.789,
    "finalidad_nota": "un bloque certificado es final (sin bifurcaciones); el tiempo medido es el intervalo entre bloques",
    "comision_nativa": "0.001000 ALGO (tarifa mínima, 1000 microALGO)",
-   "comision_usd": 8.185e-05,
-   "ledger": 67339998,
+   "comision_usd": 8.229e-05,
+   "ledger": 67344281,
    "fuente": "mainnet-api.algonode.cloud (nodo público; status, blocks, transactions/params)",
-   "medido_utc": "2026-11-27T03:50:41Z",
+   "medido_utc": "2026-11-27T07:07:56Z",
    "nombre": "Algorand"
   }
  },
  "activos_liquidacion": {
   "xrpl": {
-   "stablecoins_usd_defillama": 825408357.5080762,
-   "fecha_dato": "2026-11-27T03:49Z",
+   "stablecoins_usd_defillama": 815430290.5003141,
+   "fecha_dato": "2026-11-27T07:06Z",
    "stablecoins_top": [
     {
      "simbolo": "RLUSD",
-     "emitido": 748148839,
+     "emitido": 748175058,
      "unidad": "USD",
      "mecanismo": "fiat-backed"
     },
@@ -128,25 +128,25 @@
     },
     {
      "simbolo": "EURCV",
-     "emitido": 10962156,
+     "emitido": 10972225,
      "unidad": "EUR",
      "mecanismo": "fiat-backed"
     },
     {
      "simbolo": "USDC",
-     "emitido": 4462165,
+     "emitido": 4462299,
      "unidad": "USD",
      "mecanismo": "fiat-backed"
     },
     {
      "simbolo": "EUROP",
-     "emitido": 398469,
+     "emitido": 398626,
      "unidad": "EUR",
      "mecanismo": "fiat-backed"
     },
     {
      "simbolo": "AUDD",
-     "emitido": 207317,
+     "emitido": 208475,
      "unidad": "AUD",
      "mecanismo": "fiat-backed"
     }
@@ -154,12 +154,12 @@
    "n_stablecoins": 8
   },
   "stellar": {
-   "stablecoins_usd_defillama": 403680513.9025583,
-   "fecha_dato": "2026-11-27T03:49Z",
+   "stablecoins_usd_defillama": 403684708.2833923,
+   "fecha_dato": "2026-11-27T07:06Z",
    "stablecoins_top": [
     {
      "simbolo": "USDC",
-     "emitido": 332834585,
+     "emitido": 333171505,
      "unidad": "USD",
      "mecanismo": "fiat-backed"
     },
@@ -171,25 +171,25 @@
     },
     {
      "simbolo": "YLDS",
-     "emitido": 25295881,
+     "emitido": 25297804,
      "unidad": "USD",
      "mecanismo": "fiat-backed"
     },
     {
      "simbolo": "PYUSD",
-     "emitido": 17902167,
+     "emitido": 17908163,
      "unidad": "USD",
      "mecanismo": "fiat-backed"
     },
     {
      "simbolo": "EURCV",
-     "emitido": 16476778,
+     "emitido": 16491913,
      "unidad": "EUR",
      "mecanismo": "fiat-backed"
     },
     {
      "simbolo": "EURC",
-     "emitido": 4678501,
+     "emitido": 4681562,
      "unidad": "EUR",
      "mecanismo": "fiat-backed"
     }
@@ -197,46 +197,46 @@
    "n_stablecoins": 17
   },
   "hedera": {
-   "stablecoins_usd_defillama": 26899092.167835,
-   "fecha_dato": "2026-11-27T03:49Z"
+   "stablecoins_usd_defillama": 26426099.417094853,
+   "fecha_dato": "2026-11-27T07:06Z"
   },
   "ethereum": {
-   "stablecoins_usd_defillama": 128308796217.94946,
-   "fecha_dato": "2026-11-27T03:49Z",
+   "stablecoins_usd_defillama": 128209847721.40921,
+   "fecha_dato": "2026-11-27T07:06Z",
    "stablecoins_top": [
     {
      "simbolo": "USDT",
-     "emitido": 65389382732,
+     "emitido": 65398080308,
      "unidad": "USD",
      "mecanismo": "fiat-backed"
     },
     {
      "simbolo": "USDC",
-     "emitido": 42151330425,
+     "emitido": 42153815227,
      "unidad": "USD",
      "mecanismo": "fiat-backed"
     },
     {
      "simbolo": "DAI",
-     "emitido": 4002420183,
+     "emitido": 3999056842,
      "unidad": "USD",
      "mecanismo": "crypto-backed"
     },
     {
      "simbolo": "USDe",
-     "emitido": 3269408930,
+     "emitido": 3280279042,
      "unidad": "USD",
      "mecanismo": "crypto-backed"
     },
     {
      "simbolo": "USDS",
-     "emitido": 3077714890,
+     "emitido": 3082179966,
      "unidad": "USD",
      "mecanismo": "crypto-backed"
     },
     {
      "simbolo": "RLUSD",
-     "emitido": 2035765102,
+     "emitido": 2035836445,
      "unidad": "USD",
      "mecanismo": "fiat-backed"
     }
@@ -244,42 +244,42 @@
    "n_stablecoins": 235
   },
   "solana": {
-   "stablecoins_usd_defillama": 12340878954.272598,
-   "fecha_dato": "2026-11-27T03:49Z",
+   "stablecoins_usd_defillama": 12371178114.832785,
+   "fecha_dato": "2026-11-27T07:06Z",
    "stablecoins_top": [
     {
      "simbolo": "USDC",
-     "emitido": 6438288861,
+     "emitido": 6431410017,
      "unidad": "USD",
      "mecanismo": "fiat-backed"
     },
     {
      "simbolo": "USDT",
-     "emitido": 1892420876,
+     "emitido": 1892496670,
      "unidad": "USD",
      "mecanismo": "fiat-backed"
     },
     {
      "simbolo": "USDGO",
-     "emitido": 923052420,
+     "emitido": 923047193,
      "unidad": "USD",
      "mecanismo": "fiat-backed"
     },
     {
      "simbolo": "USD1",
-     "emitido": 869802331,
+     "emitido": 869832812,
      "unidad": "USD",
      "mecanismo": "fiat-backed"
     },
     {
      "simbolo": "PYUSD",
-     "emitido": 735136882,
+     "emitido": 735383072,
      "unidad": "USD",
      "mecanismo": "fiat-backed"
     },
     {
      "simbolo": "USDG",
-     "emitido": 374976563,
+     "emitido": 374920819,
      "unidad": "USD",
      "mecanismo": "fiat-backed"
     }
@@ -287,50 +287,50 @@
    "n_stablecoins": 80
   },
   "bnb": {
-   "stablecoins_usd_defillama": 13192477391.329372,
-   "fecha_dato": "2026-11-27T03:49Z"
+   "stablecoins_usd_defillama": 13190619156.591267,
+   "fecha_dato": "2026-11-27T07:06Z"
   },
   "avalanche": {
-   "stablecoins_usd_defillama": 799339069.1388348,
-   "fecha_dato": "2026-11-27T03:49Z"
+   "stablecoins_usd_defillama": 796573402.2985555,
+   "fecha_dato": "2026-11-27T07:06Z"
   },
   "polygon": {
-   "stablecoins_usd_defillama": 2924882652.9488616,
-   "fecha_dato": "2026-11-27T03:49Z"
+   "stablecoins_usd_defillama": 2926868506.128602,
+   "fecha_dato": "2026-11-27T07:06Z"
   },
   "canton": {
    "stablecoins_usd_defillama": null,
-   "fecha_dato": "2026-11-27T03:49Z"
+   "fecha_dato": "2026-11-27T07:06Z"
   },
   "chainlink": {
    "stablecoins_usd_defillama": null,
-   "fecha_dato": "2026-11-27T03:49Z"
+   "fecha_dato": "2026-11-27T07:06Z"
   },
   "ondo": {
    "stablecoins_usd_defillama": null,
-   "fecha_dato": "2026-11-27T03:49Z"
+   "fecha_dato": "2026-11-27T07:06Z"
   },
   "algorand": {
-   "stablecoins_usd_defillama": 134944344.49583554,
-   "fecha_dato": "2026-11-27T03:49Z"
+   "stablecoins_usd_defillama": 135175967.2854219,
+   "fecha_dato": "2026-11-27T07:06Z"
   },
   "xdc": {
-   "stablecoins_usd_defillama": 108095060.87518919,
-   "fecha_dato": "2026-11-27T03:49Z"
+   "stablecoins_usd_defillama": 107547549.60294959,
+   "fecha_dato": "2026-11-27T07:06Z"
   },
   "quant": {
    "stablecoins_usd_defillama": null,
-   "fecha_dato": "2026-11-27T03:49Z"
+   "fecha_dato": "2026-11-27T07:06Z"
   },
   "iota": {
-   "stablecoins_usd_defillama": 382182.6873561379,
-   "fecha_dato": "2026-11-27T03:49Z"
+   "stablecoins_usd_defillama": 382123.9439286576,
+   "fecha_dato": "2026-11-27T07:06Z"
   },
   "plume": {
-   "stablecoins_usd_defillama": 10999315.717747087,
-   "fecha_dato": "2026-11-27T03:49Z"
+   "stablecoins_usd_defillama": 10206966.11949408,
+   "fecha_dato": "2026-11-27T07:06Z"
   },
-  "_fecha_profundidad": "2026-11-26T21:38Z"
+  "_fecha_profundidad": "2026-11-27T03:51Z"
  },
  "fallos": [],
  "liquidacion_t0_vs_tn": {

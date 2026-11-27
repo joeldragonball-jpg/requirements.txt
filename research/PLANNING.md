@@ -1,4 +1,4 @@
-# PLANNING (autogenerado, no editar a mano) · 2026-11-27 03:52 UTC
+# PLANNING (autogenerado, no editar a mano) · 2026-11-27 07:10 UTC
 
 Lo regenera `python scripts/construir_seguimiento.py` (el mismo que alimenta el Seguimiento del móvil y del PC), así que **Seguimiento y planning no pueden diverger**. `/research` sin argumento lee SOLO este archivo; con un ID, lee la fila de `research/COLA.md` y el prompt indicado aquí. Cuota: se mide con get_usage, no está aquí.
 
@@ -139,13 +139,13 @@ Hechas en este periodo: W01, W02, W03, W04, W05, W06, W07, W08, W10
 ## Verificaciones pendientes con antigüedad (noticias de prensa sin contrastar y [VERIFICAR]; se anotan en eventos/verificados.json)
 - [alta] 2026-11-25 (2 d) · El indicador de inflación favorito de la Fed se acelera al 3,8 % en octubre.
 - [alta] 2026-11-26 (1 d) · EE. UU. propone nuevos aranceles contra 15 socios, incluidos China y la UE.
+- [alta] 2026-11-26 (1 d) · España aprueba una norma que permitiría congelar cuentas cripto sin orden judicial.
 - [media] 2025-06-17 (528 d) · 130 compromisos
 - [media] 2025-06-22 (523 d) · 2,1 %
 - [media] 2025-08-15 (469 d) · La cumbre de Alaska duró cerca de tres horas
 - [media] 2025-08-22 (462 d) · Reacción de mercado el 22-ago-2025
 - [media] 2025-10-30 (393 d) · China se comprometió a comprar 25 millones de toneladas de soja al año
-- [media] 2025-11-22 (370 d) · Contenido de deuda, minerales y clima del texto
-- … y 113 más en el Seguimiento
+- … y 115 más en el Seguimiento
 
 ## Qué se está quedando viejo (frescura)
 - 🔴 Radar regulatorio: Celdas sin revisar en más de 30 días (53) → W03 · Se revisan con la rutina de países
