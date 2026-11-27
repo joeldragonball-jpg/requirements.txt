@@ -1,35 +1,35 @@
 {
- "_actualizado": "2026-11-26T21:38Z",
+ "_actualizado": "2026-11-27T03:51Z",
  "nivel": "P (libros y nodos directos) con partes S (agregadores)",
  "aviso": "INSTANTANEA, NO TENDENCIA: la profundidad cambia cada segundo y un libro delgado no implica nada por si solo. Solo CLOB (sin AMM/pools). Pares sin ofertas o con emisor no valido quedan fuera y figuran en 'fallos'. Sin recomendaciones.",
  "metodo": "XRPL: book_offers a nodos publicos (s1.ripple.com, xrplcluster). Stellar: Horizon /order_book. Profundidad = valor en la divisa de cotizacion de las ofertas dentro de ±1 % y ±2 % del precio medio ((mejor compra + mejor venta)/2). Velocidad: muestreo de ledgers. Stablecoins: DefiLlama. Historico diario resumido en explorador/profundidad-historial.jsonl.",
  "fallos": [],
  "xrpl_dex": {
   "XRP/RLUSD": {
-   "mejor_compra": 0.9532109921986267,
-   "mejor_venta": 0.9538575757575758,
-   "precio_medio": 0.9535342839781012,
-   "spread_pct": 0.0678,
+   "mejor_compra": 0.9598784210526317,
+   "mejor_venta": 0.9607084739359666,
+   "precio_medio": 0.9602934474942991,
+   "spread_pct": 0.0864,
    "cruzado": false,
    "ofertas_compra": 100,
    "ofertas_venta": 100,
-   "profundidad_1pct_compra": 76270.55,
-   "profundidad_1pct_venta": 78737.55,
-   "profundidad_2pct_compra": 76270.55,
-   "profundidad_2pct_venta": 78737.55,
+   "profundidad_1pct_compra": 87063.68,
+   "profundidad_1pct_venta": 72803.87,
+   "profundidad_2pct_compra": 87063.68,
+   "profundidad_2pct_venta": 72803.87,
    "unidad_profundidad": "USD por XRP (valor en USD)",
    "lectura": "libro con ofertas cerca del precio medio",
    "aviso_cobertura": "solo libro de ordenes (CLOB); excluye AMM/pools. Se leen hasta 200-300 ofertas por lado: si la ventana ±2 % las agota, la cifra es un minimo",
    "emisor": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
-   "ledger": 108592136,
+   "ledger": 108597828,
    "fuente": "https://s1.ripple.com:51234",
    "nivel": "P",
    "metodo": "book_offers (hasta 300 ofertas por lado, saldo financiado); profundidad = suma(precio x cantidad XRP) en USD dentro de ±1 % y ±2 % del precio medio",
-   "leido_utc": "2026-11-26T21:37Z"
+   "leido_utc": "2026-11-27T03:50Z"
   },
   "XRP/USD (Bitstamp)": {
    "mejor_compra": 0.9514332780719986,
-   "mejor_venta": 1.0499895,
+   "mejor_venta": 1.0499895000000001,
    "precio_medio": 1.0007113890359993,
    "spread_pct": 9.8486,
    "cruzado": false,
@@ -43,41 +43,41 @@
    "lectura": "spread >3 %: libro inactivo, ofertas lejos del precio de mercado; la profundidad ±1 %/±2 % sale ~0 porque el precio medio cae en un hueco",
    "aviso_cobertura": "solo libro de ordenes (CLOB); excluye AMM/pools. Se leen hasta 200-300 ofertas por lado: si la ventana ±2 % las agota, la cifra es un minimo",
    "emisor": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-   "ledger": 108592136,
+   "ledger": 108597828,
    "fuente": "https://s1.ripple.com:51234",
    "nivel": "P",
    "metodo": "book_offers (hasta 300 ofertas por lado, saldo financiado); profundidad = suma(precio x cantidad XRP) en USD dentro de ±1 % y ±2 % del precio medio",
-   "leido_utc": "2026-11-26T21:37Z"
+   "leido_utc": "2026-11-27T03:50Z"
   },
   "XRP/USD (GateHub)": {
-   "mejor_compra": 1.0174069753056973,
-   "mejor_venta": 1.024155068721951,
-   "precio_medio": 1.020781022013824,
-   "spread_pct": 0.6611,
+   "mejor_compra": 1.0038122447404894,
+   "mejor_venta": 1.06,
+   "precio_medio": 1.0319061223702448,
+   "spread_pct": 5.445,
    "cruzado": false,
    "ofertas_compra": 59,
-   "ofertas_venta": 82,
-   "profundidad_1pct_compra": 4.45,
-   "profundidad_1pct_venta": 1.92,
-   "profundidad_2pct_compra": 17.03,
-   "profundidad_2pct_venta": 1.92,
+   "ofertas_venta": 81,
+   "profundidad_1pct_compra": 0,
+   "profundidad_1pct_venta": 0,
+   "profundidad_2pct_compra": 0,
+   "profundidad_2pct_venta": 0,
    "unidad_profundidad": "USD por XRP (valor en USD)",
-   "lectura": "libro con ofertas cerca del precio medio",
+   "lectura": "spread >3 %: libro inactivo, ofertas lejos del precio de mercado; la profundidad ±1 %/±2 % sale ~0 porque el precio medio cae en un hueco",
    "aviso_cobertura": "solo libro de ordenes (CLOB); excluye AMM/pools. Se leen hasta 200-300 ofertas por lado: si la ventana ±2 % las agota, la cifra es un minimo",
    "emisor": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
-   "ledger": 108592136,
+   "ledger": 108597828,
    "fuente": "https://s1.ripple.com:51234",
    "nivel": "P",
    "metodo": "book_offers (hasta 300 ofertas por lado, saldo financiado); profundidad = suma(precio x cantidad XRP) en USD dentro de ±1 % y ±2 % del precio medio",
-   "leido_utc": "2026-11-26T21:37Z"
+   "leido_utc": "2026-11-27T03:50Z"
   },
   "XRP/EUR (GateHub)": {
-   "mejor_compra": 0.8632760678174135,
-   "mejor_venta": 0.9085654855762018,
-   "precio_medio": 0.8859207766968076,
-   "spread_pct": 5.1121,
+   "mejor_compra": 0.870522386143795,
+   "mejor_venta": 0.9861562938977567,
+   "precio_medio": 0.9283393400207758,
+   "spread_pct": 12.456,
    "cruzado": false,
-   "ofertas_compra": 39,
+   "ofertas_compra": 38,
    "ofertas_venta": 95,
    "profundidad_1pct_compra": 0,
    "profundidad_1pct_venta": 0,
@@ -87,39 +87,39 @@
    "lectura": "spread >3 %: libro inactivo, ofertas lejos del precio de mercado; la profundidad ±1 %/±2 % sale ~0 porque el precio medio cae en un hueco",
    "aviso_cobertura": "solo libro de ordenes (CLOB); excluye AMM/pools. Se leen hasta 200-300 ofertas por lado: si la ventana ±2 % las agota, la cifra es un minimo",
    "emisor": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
-   "ledger": 108592136,
+   "ledger": 108597828,
    "fuente": "https://s1.ripple.com:51234",
    "nivel": "P",
    "metodo": "book_offers (hasta 300 ofertas por lado, saldo financiado); profundidad = suma(precio x cantidad XRP) en EUR dentro de ±1 % y ±2 % del precio medio",
-   "leido_utc": "2026-11-26T21:37Z"
+   "leido_utc": "2026-11-27T03:50Z"
   },
   "XRP/USDC (Circle)": {
-   "mejor_compra": 0.9533,
-   "mejor_venta": 0.9547094736842106,
-   "precio_medio": 0.9540047368421053,
-   "spread_pct": 0.1477,
+   "mejor_compra": 0.9600254761904761,
+   "mejor_venta": 0.962,
+   "precio_medio": 0.961012738095238,
+   "spread_pct": 0.2055,
    "cruzado": false,
-   "ofertas_compra": 94,
+   "ofertas_compra": 92,
    "ofertas_venta": 90,
-   "profundidad_1pct_compra": 42337.37,
-   "profundidad_1pct_venta": 52815.04,
-   "profundidad_2pct_compra": 42388.5,
-   "profundidad_2pct_venta": 52815.04,
+   "profundidad_1pct_compra": 42502.8,
+   "profundidad_1pct_venta": 52510.25,
+   "profundidad_2pct_compra": 42521.9,
+   "profundidad_2pct_venta": 52511.22,
    "unidad_profundidad": "USD por XRP (valor en USD)",
    "lectura": "libro con ofertas cerca del precio medio",
    "aviso_cobertura": "solo libro de ordenes (CLOB); excluye AMM/pools. Se leen hasta 200-300 ofertas por lado: si la ventana ±2 % las agota, la cifra es un minimo",
    "emisor": "rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE",
-   "ledger": 108592136,
+   "ledger": 108597829,
    "fuente": "https://s1.ripple.com:51234",
    "nivel": "P",
    "metodo": "book_offers (hasta 300 ofertas por lado, saldo financiado); profundidad = suma(precio x cantidad XRP) en USD dentro de ±1 % y ±2 % del precio medio",
-   "leido_utc": "2026-11-26T21:37Z"
+   "leido_utc": "2026-11-27T03:50Z"
   },
   "XRP/EUROP (Schuman)": {
-   "mejor_compra": 0.7902299999870929,
+   "mejor_compra": 0.796540000005268,
    "mejor_venta": 1.4413478,
-   "precio_medio": 1.1157888999935464,
-   "spread_pct": 58.3549,
+   "precio_medio": 1.118943900002634,
+   "spread_pct": 57.6265,
    "cruzado": false,
    "ofertas_compra": 3,
    "ofertas_venta": 51,
@@ -131,11 +131,11 @@
    "lectura": "spread >3 %: libro inactivo, ofertas lejos del precio de mercado; la profundidad ±1 %/±2 % sale ~0 porque el precio medio cae en un hueco",
    "aviso_cobertura": "solo libro de ordenes (CLOB); excluye AMM/pools. Se leen hasta 200-300 ofertas por lado: si la ventana ±2 % las agota, la cifra es un minimo",
    "emisor": "rMkEuRii9w9uBMQDnWV5AA43gvYZR9JxVK",
-   "ledger": 108592136,
+   "ledger": 108597829,
    "fuente": "https://s1.ripple.com:51234",
    "nivel": "P",
    "metodo": "book_offers (hasta 300 ofertas por lado, saldo financiado); profundidad = suma(precio x cantidad XRP) en EUR dentro de ±1 % y ±2 % del precio medio",
-   "leido_utc": "2026-11-26T21:37Z"
+   "leido_utc": "2026-11-27T03:50Z"
   },
   "XRP/SOLO": {
    "mejor_compra": 90.37055704206603,
@@ -143,7 +143,7 @@
    "precio_medio": 119.667626204632,
    "spread_pct": 48.9641,
    "cruzado": false,
-   "ofertas_compra": 70,
+   "ofertas_compra": 71,
    "ofertas_venta": 80,
    "profundidad_1pct_compra": 0,
    "profundidad_1pct_venta": 0,
@@ -153,16 +153,16 @@
    "lectura": "spread >3 %: libro inactivo, ofertas lejos del precio de mercado; la profundidad ±1 %/±2 % sale ~0 porque el precio medio cae en un hueco",
    "aviso_cobertura": "solo libro de ordenes (CLOB); excluye AMM/pools. Se leen hasta 200-300 ofertas por lado: si la ventana ±2 % las agota, la cifra es un minimo",
    "emisor": "rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz",
-   "ledger": 108592136,
+   "ledger": 108597829,
    "fuente": "https://s1.ripple.com:51234",
    "nivel": "P",
    "metodo": "book_offers (hasta 300 ofertas por lado, saldo financiado); profundidad = suma(precio x cantidad XRP) en SOLO dentro de ±1 % y ±2 % del precio medio",
-   "leido_utc": "2026-11-26T21:37Z"
+   "leido_utc": "2026-11-27T03:50Z"
   },
   "XRP/BTC (Bitstamp)": {
    "mejor_compra": 1.5284930687144706e-05,
-   "mejor_venta": 1.6157537566608565e-05,
-   "precio_medio": 1.5721234126876636e-05,
+   "mejor_venta": 1.6157537566608562e-05,
+   "precio_medio": 1.5721234126876632e-05,
    "spread_pct": 5.5505,
    "cruzado": false,
    "ofertas_compra": 61,
@@ -175,25 +175,25 @@
    "lectura": "spread >3 %: libro inactivo, ofertas lejos del precio de mercado; la profundidad ±1 %/±2 % sale ~0 porque el precio medio cae en un hueco",
    "aviso_cobertura": "solo libro de ordenes (CLOB); excluye AMM/pools. Se leen hasta 200-300 ofertas por lado: si la ventana ±2 % las agota, la cifra es un minimo",
    "emisor": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-   "ledger": 108592137,
+   "ledger": 108597829,
    "fuente": "https://s1.ripple.com:51234",
    "nivel": "P",
    "metodo": "book_offers (hasta 300 ofertas por lado, saldo financiado); profundidad = suma(precio x cantidad XRP) en BTC dentro de ±1 % y ±2 % del precio medio",
-   "leido_utc": "2026-11-26T21:37Z"
+   "leido_utc": "2026-11-27T03:50Z"
   }
  },
  "xrpl_velocidad_reposo": {
-  "leido_utc": "2026-11-26T21:37Z",
+  "leido_utc": "2026-11-27T03:50Z",
   "pagos_por_dia_estimados": {
-   "valor": 419931,
-   "tx_totales_por_dia_estimadas": 3971349,
-   "pagos_en_xrp_nativo_por_dia": 277954,
+   "valor": 460795,
+   "tx_totales_por_dia_estimadas": 2480277,
+   "pagos_en_xrp_nativo_por_dia": 284491,
    "ledgers_muestreados": 11,
-   "ledgers_por_dia": 21996,
+   "ledgers_por_dia": 22038,
    "nivel": "P",
    "fuente": "https://s1.ripple.com:51234",
    "metodo": "extrapolacion: se cuentan Payment con tesSUCCESS en 11 ledgers separados 2000 (~2 h) en las ultimas ~24 h y se multiplica por ledgers/dia. Muestra pequena: orden de magnitud, no cifra exacta; incluye bots, spam y pagos de IOU",
-   "leido_utc": "2026-11-26T21:38Z"
+   "leido_utc": "2026-11-27T03:51Z"
   },
   "saldo_en_escrow": {
    "xrp": 35244679171,
@@ -201,7 +201,7 @@
    "nivel": "S",
    "fuente": "api.xrpscan.com/api/v1/balances (cuentas mas grandes) y total_coins del nodo",
    "metodo": "suma del campo escrow de las cuentas listadas; el escrow no es 'saldo inactivo' en sentido estricto: es XRP bloqueado por calendario (principalmente Ripple)",
-   "leido_utc": "2026-11-26T21:38Z"
+   "leido_utc": "2026-11-27T03:51Z"
   },
   "pct_supply_inactivo_mas_1_ano": {
    "valor": null,
@@ -210,63 +210,63 @@
  },
  "stellar_dex": {
   "XLM/USDC": {
-   "mejor_compra": 0.1278451,
-   "mejor_venta": 0.128002,
-   "precio_medio": 0.12792355,
-   "spread_pct": 0.1227,
+   "mejor_compra": 0.128134,
+   "mejor_venta": 0.1283283,
+   "precio_medio": 0.12823115000000002,
+   "spread_pct": 0.1515,
    "cruzado": false,
    "ofertas_compra": 200,
    "ofertas_venta": 200,
-   "profundidad_1pct_compra": 5455.57,
-   "profundidad_1pct_venta": 119812.56,
-   "profundidad_2pct_compra": 5806.96,
-   "profundidad_2pct_venta": 121266.42,
+   "profundidad_1pct_compra": 4117.83,
+   "profundidad_1pct_venta": 131112.72,
+   "profundidad_2pct_compra": 4230.58,
+   "profundidad_2pct_venta": 133511.73,
    "unidad_profundidad": "USDC por XLM (valor en USDC)",
    "lectura": "libro con ofertas cerca del precio medio",
    "aviso_cobertura": "solo libro de ordenes (CLOB); excluye AMM/pools. Se leen hasta 200-300 ofertas por lado: si la ventana ±2 % las agota, la cifra es un minimo",
    "fuente": "https://horizon.stellar.org",
    "nivel": "P",
-   "leido_utc": "2026-11-26T21:38Z",
+   "leido_utc": "2026-11-27T03:51Z",
    "metodo": "Horizon /order_book (200 ofertas por lado); profundidad = suma(precio x cantidad base) en USDC dentro de ±1 % y ±2 % del precio medio"
   },
   "XLM/EURC": {
-   "mejor_compra": 0.1171519,
-   "mejor_venta": 0.1177413,
-   "precio_medio": 0.1174466,
-   "spread_pct": 0.5018,
+   "mejor_compra": 0.1180482,
+   "mejor_venta": 0.1186423,
+   "precio_medio": 0.11834525000000001,
+   "spread_pct": 0.502,
    "cruzado": false,
-   "ofertas_compra": 45,
+   "ofertas_compra": 44,
    "ofertas_venta": 130,
-   "profundidad_1pct_compra": 1377.89,
-   "profundidad_1pct_venta": 10736.53,
-   "profundidad_2pct_compra": 1377.89,
-   "profundidad_2pct_venta": 10820.74,
+   "profundidad_1pct_compra": 145.61,
+   "profundidad_1pct_venta": 11365.37,
+   "profundidad_2pct_compra": 1388.21,
+   "profundidad_2pct_venta": 11365.37,
    "unidad_profundidad": "EURC por XLM (valor en EURC)",
    "lectura": "libro con ofertas cerca del precio medio",
    "aviso_cobertura": "solo libro de ordenes (CLOB); excluye AMM/pools. Se leen hasta 200-300 ofertas por lado: si la ventana ±2 % las agota, la cifra es un minimo",
    "fuente": "https://horizon.stellar.org",
    "nivel": "P",
-   "leido_utc": "2026-11-26T21:38Z",
+   "leido_utc": "2026-11-27T03:51Z",
    "metodo": "Horizon /order_book (200 ofertas por lado); profundidad = suma(precio x cantidad base) en EURC dentro de ±1 % y ±2 % del precio medio"
   },
   "USDC/EURC": {
-   "mejor_compra": 0.9199312,
-   "mejor_venta": 0.92178,
-   "precio_medio": 0.9208556,
-   "spread_pct": 0.2008,
+   "mejor_compra": 0.9177012,
+   "mejor_venta": 0.9189991,
+   "precio_medio": 0.91835015,
+   "spread_pct": 0.1413,
    "cruzado": false,
-   "ofertas_compra": 137,
-   "ofertas_venta": 67,
-   "profundidad_1pct_compra": 186130.18,
-   "profundidad_1pct_venta": 159096.03,
-   "profundidad_2pct_compra": 186318.65,
-   "profundidad_2pct_venta": 159494.61,
+   "ofertas_compra": 125,
+   "ofertas_venta": 64,
+   "profundidad_1pct_compra": 182104.7,
+   "profundidad_1pct_venta": 151114.9,
+   "profundidad_2pct_compra": 182257.95,
+   "profundidad_2pct_venta": 159873.52,
    "unidad_profundidad": "EURC por USDC (valor en EURC)",
    "lectura": "libro con ofertas cerca del precio medio",
    "aviso_cobertura": "solo libro de ordenes (CLOB); excluye AMM/pools. Se leen hasta 200-300 ofertas por lado: si la ventana ±2 % las agota, la cifra es un minimo",
    "fuente": "https://horizon.stellar.org",
    "nivel": "P",
-   "leido_utc": "2026-11-26T21:38Z",
+   "leido_utc": "2026-11-27T03:51Z",
    "metodo": "Horizon /order_book (200 ofertas por lado); profundidad = suma(precio x cantidad base) en EURC dentro de ±1 % y ±2 % del precio medio"
   }
  },
@@ -276,7 +276,7 @@
     "top": [
      {
       "simbolo": "RLUSD",
-      "emitido": 748148839,
+      "emitido": 748175058,
       "unidad": "USD",
       "mecanismo": "fiat-backed"
      },
@@ -288,25 +288,25 @@
      },
      {
       "simbolo": "EURCV",
-      "emitido": 10962156,
+      "emitido": 10972225,
       "unidad": "EUR",
       "mecanismo": "fiat-backed"
      },
      {
       "simbolo": "USDC",
-      "emitido": 4462165,
+      "emitido": 4462299,
       "unidad": "USD",
       "mecanismo": "fiat-backed"
      },
      {
       "simbolo": "EUROP",
-      "emitido": 398469,
+      "emitido": 398626,
       "unidad": "EUR",
       "mecanismo": "fiat-backed"
      },
      {
       "simbolo": "AUDD",
-      "emitido": 207317,
+      "emitido": 208475,
       "unidad": "AUD",
       "mecanismo": "fiat-backed"
      }
@@ -318,7 +318,7 @@
     "top": [
      {
       "simbolo": "USDC",
-      "emitido": 332834585,
+      "emitido": 333171505,
       "unidad": "USD",
       "mecanismo": "fiat-backed"
      },
@@ -330,25 +330,25 @@
      },
      {
       "simbolo": "YLDS",
-      "emitido": 25295881,
+      "emitido": 25297804,
       "unidad": "USD",
       "mecanismo": "fiat-backed"
      },
      {
       "simbolo": "PYUSD",
-      "emitido": 17902167,
+      "emitido": 17908163,
       "unidad": "USD",
       "mecanismo": "fiat-backed"
      },
      {
       "simbolo": "EURCV",
-      "emitido": 16476778,
+      "emitido": 16491913,
       "unidad": "EUR",
       "mecanismo": "fiat-backed"
      },
      {
       "simbolo": "EURC",
-      "emitido": 4678501,
+      "emitido": 4681562,
       "unidad": "EUR",
       "mecanismo": "fiat-backed"
      }
@@ -360,37 +360,37 @@
     "top": [
      {
       "simbolo": "USDC",
-      "emitido": 6438288861,
+      "emitido": 6431410017,
       "unidad": "USD",
       "mecanismo": "fiat-backed"
      },
      {
       "simbolo": "USDT",
-      "emitido": 1892420876,
+      "emitido": 1892496670,
       "unidad": "USD",
       "mecanismo": "fiat-backed"
      },
      {
       "simbolo": "USDGO",
-      "emitido": 923052420,
+      "emitido": 923047193,
       "unidad": "USD",
       "mecanismo": "fiat-backed"
      },
      {
       "simbolo": "USD1",
-      "emitido": 869802331,
+      "emitido": 869832812,
       "unidad": "USD",
       "mecanismo": "fiat-backed"
      },
      {
       "simbolo": "PYUSD",
-      "emitido": 735136882,
+      "emitido": 735383072,
       "unidad": "USD",
       "mecanismo": "fiat-backed"
      },
      {
       "simbolo": "USDG",
-      "emitido": 374976563,
+      "emitido": 374920819,
       "unidad": "USD",
       "mecanismo": "fiat-backed"
      }
@@ -402,37 +402,37 @@
     "top": [
      {
       "simbolo": "USDT",
-      "emitido": 65389382732,
+      "emitido": 65398080308,
       "unidad": "USD",
       "mecanismo": "fiat-backed"
      },
      {
       "simbolo": "USDC",
-      "emitido": 42151330425,
+      "emitido": 42153815227,
       "unidad": "USD",
       "mecanismo": "fiat-backed"
      },
      {
       "simbolo": "DAI",
-      "emitido": 4002420183,
+      "emitido": 3999056842,
       "unidad": "USD",
       "mecanismo": "crypto-backed"
      },
      {
       "simbolo": "USDe",
-      "emitido": 3269408930,
+      "emitido": 3280279042,
       "unidad": "USD",
       "mecanismo": "crypto-backed"
      },
      {
       "simbolo": "USDS",
-      "emitido": 3077714890,
+      "emitido": 3082179966,
       "unidad": "USD",
       "mecanismo": "crypto-backed"
      },
      {
       "simbolo": "RLUSD",
-      "emitido": 2035765102,
+      "emitido": 2035836445,
       "unidad": "USD",
       "mecanismo": "fiat-backed"
      }
@@ -444,6 +444,6 @@
   "nivel": "S",
   "fuente": "https://stablecoins.llama.fi/stablecoins (DefiLlama, agregador)",
   "metodo": "campo chainCirculating.current por red, top 6 por importe. Profundidad de mercado en Solana y Ethereum no leida: exige APIs de DEX/pools concretas (no hay una sola API publica sin clave comparable al libro del XRPL o de Stellar)",
-  "leido_utc": "2026-11-26T21:38Z"
+  "leido_utc": "2026-11-27T03:51Z"
  }
 }

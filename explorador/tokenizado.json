@@ -1,27 +1,27 @@
 {
- "_leido": "2026-11-26",
+ "_leido": "2026-11-27",
  "version": 1,
  "caduca_dias": 14,
  "nota": "Valor tokenizado por red (M$ = millones de dolares), con fecha de lectura (`leido`) y `caduca`. RWA.xyz es tercero comercial sin auditoria [S]. No sumar «distribuido» con «representado». Lo regenera scripts/leer_tokenizado.py (paneles.yml, semanal).",
  "fuentes": {
   "rwaxyz": {
    "estado": "ok",
-   "leido": "2026-11-26"
+   "leido": "2026-11-27"
   },
   "defillama": {
    "estado": "ok",
-   "leido": "2026-11-26"
+   "leido": "2026-11-27"
   },
   "horizon_benji": {
    "estado": "ok",
-   "leido": "2026-11-26"
+   "leido": "2026-11-27"
   }
  },
  "totales_rwaxyz": {
   "distribuido_musd": 41291.0,
-  "distribuido_cambio_30d_pct": -3.6,
+  "distribuido_cambio_30d_pct": -4.1,
   "representado_musd": 451765.7,
-  "representado_cambio_30d_pct": 21.2,
+  "representado_cambio_30d_pct": 22.5,
   "stablecoins_musd": 273091.9,
   "redes": 40
  },
@@ -32,60 +32,60 @@
    "red": "Ethereum",
    "rwaxyz": {
     "distribuido_musd": 14130.2,
-    "distribuido_hace_30d_musd": 16319.1,
+    "distribuido_hace_30d_musd": 15943.1,
     "representado_musd": 72.0,
     "activos_distribuidos": 3200,
     "pagina": "https://app.rwa.xyz/networks/ethereum",
-    "distribuido_cambio_30d_pct": -13.4,
+    "distribuido_cambio_30d_pct": -11.4,
     "titulares": 298251,
     "activos_rwa": 3378,
     "top_plataformas": [
      {
       "nombre": "Tether Holdings",
       "musd": 71061.5,
-      "hace_30d_musd": 77738.2
+      "hace_30d_musd": 77197.0
      },
      {
       "nombre": "Circle",
       "musd": 42395.3,
-      "hace_30d_musd": 45038.1
+      "hace_30d_musd": 45093.2
      },
      {
       "nombre": "Ethena",
       "musd": 5279.3,
-      "hace_30d_musd": 4901.7
+      "hace_30d_musd": 4897.4
      },
      {
       "nombre": "MakerDAO",
       "musd": 3913.0,
-      "hace_30d_musd": 4069.2
+      "hace_30d_musd": 4098.8
      },
      {
       "nombre": "Paxos",
       "musd": 3358.1,
-      "hace_30d_musd": 4236.4
+      "hace_30d_musd": 4229.4
      },
      {
       "nombre": "Sky",
       "musd": 3127.8,
-      "hace_30d_musd": 6656.1
+      "hace_30d_musd": 6603.0
      }
     ],
     "top_gestoras": [
      {
       "nombre": "Tether",
       "musd": 2674.6,
-      "hace_30d_musd": 2952.1
+      "hace_30d_musd": 2946.9
      },
      {
       "nombre": "Paxos",
       "musd": 1570.0,
-      "hace_30d_musd": 1786.3
+      "hace_30d_musd": 1783.2
      },
      {
       "nombre": "BlackRock",
       "musd": 688.5,
-      "hace_30d_musd": 742.2
+      "hace_30d_musd": 739.9
      },
      {
       "nombre": "WisdomTree Digital Management",
@@ -95,44 +95,44 @@
      {
       "nombre": "China Asset Management",
       "musd": 649.5,
-      "hace_30d_musd": 700.5
+      "hace_30d_musd": 700.3
      },
      {
       "nombre": "Maple Protocol Pool Operations",
       "musd": 621.7,
-      "hace_30d_musd": 967.1
+      "hace_30d_musd": 959.3
      }
     ],
     "clases_activo": [
      {
       "nombre": "Stablecoins",
       "musd": 132649.0,
-      "hace_30d_musd": 146055.6
+      "hace_30d_musd": 145565.6
      },
      {
       "nombre": "Commodities",
       "musd": 4467.0,
-      "hace_30d_musd": 4960.1
+      "hace_30d_musd": 4951.3
      },
      {
       "nombre": "US Treasury Debt",
       "musd": 4244.7,
-      "hace_30d_musd": 5149.6
+      "hace_30d_musd": 4793.9
      },
      {
       "nombre": "Active Strategies",
       "musd": 1671.4,
-      "hace_30d_musd": 1821.8
+      "hace_30d_musd": 1823.2
      },
      {
       "nombre": "Asset-Backed Credit",
       "musd": 1336.4,
-      "hace_30d_musd": 1882.7
+      "hace_30d_musd": 1870.5
      },
      {
       "nombre": "Stocks",
       "musd": 713.7,
-      "hace_30d_musd": 780.4
+      "hace_30d_musd": 782.1
      },
      {
       "nombre": "Diversified Credit",
@@ -142,28 +142,28 @@
      {
       "nombre": "Specialty Finance",
       "musd": 491.9,
-      "hace_30d_musd": 524.3
+      "hace_30d_musd": 527.5
      }
     ],
     "unidad": "M$",
     "fuente": "RWA.xyz, Networks (pagina publica, sin login)",
     "u": "https://app.rwa.xyz/networks",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "«Distribuido» = emitido y transferible en la red; «representado» = solo registrado en ella (no transferible ni liquidado). RWA.xyz reclasifica entre lecturas (XRPL 14-nov a 19-nov: no fue flujo de dinero). Es un tercero comercial sin auditoria. Las tablas por plataforma/gestora de cada red INCLUYEN stablecoins (Circle, Tether, Paxos...); las cifras de red las excluyen. El campo «value_7d_ago» de la pagina coincide con el valor de hace 30 dias (comprobado con el cambio a 30 d de Stellar), no de 7."
    },
    "defillama": {
-    "rwa_defi_musd": 1333.3,
+    "rwa_defi_musd": 1323.4,
     "protocolos": 46,
     "top": [
      {
       "nombre": "Re",
-      "musd": 438.8
+      "musd": 438.7
      },
      {
       "nombre": "Ethena USDtb",
-      "musd": 321.6
+      "musd": 321.5
      },
      {
       "nombre": "Theo Network thUSD",
@@ -174,8 +174,8 @@
     "fuente": "DefiLlama api.llama.fi/protocols, categoria RWA",
     "u": "https://defillama.com/categories/RWA",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "Solo el valor bloqueado en protocolos DeFi de categoria RWA de DefiLlama; no incluye BENJI, Ondo, Spiko ni la mayor parte de lo tokenizado. Stellar ~7 M$ frente a ~4.900 M$ distribuidos en RWA.xyz no es contradiccion: miden cosas distintas."
    }
   },
@@ -184,38 +184,38 @@
    "red": "Solana",
    "rwaxyz": {
     "distribuido_musd": 5113.3,
-    "distribuido_hace_30d_musd": 5347.4,
+    "distribuido_hace_30d_musd": 5645.1,
     "representado_musd": 125.9,
     "activos_distribuidos": 2172,
     "pagina": "https://app.rwa.xyz/networks/solana",
-    "distribuido_cambio_30d_pct": -4.4,
+    "distribuido_cambio_30d_pct": -9.4,
     "titulares": 1088620,
     "activos_rwa": 3596,
     "top_plataformas": [
      {
       "nombre": "Circle",
       "musd": 7327.9,
-      "hace_30d_musd": 6687.7
+      "hace_30d_musd": 6777.0
      },
      {
       "nombre": "Tether Holdings",
       "musd": 1894.1,
-      "hace_30d_musd": 2814.1
+      "hace_30d_musd": 2634.1
      },
      {
       "nombre": "BitGo",
       "musd": 1149.2,
-      "hace_30d_musd": 1637.1
+      "hace_30d_musd": 1635.4
      },
      {
       "nombre": "Paxos",
       "musd": 1130.8,
-      "hace_30d_musd": 1309.6
+      "hace_30d_musd": 1339.4
      },
      {
       "nombre": "Anchorage Digital Bank",
       "musd": 974.3,
-      "hace_30d_musd": 1351.8
+      "hace_30d_musd": 1358.6
      },
      {
       "nombre": "Ctrl Alt",
@@ -227,27 +227,27 @@
      {
       "nombre": "BlackRock",
       "musd": 800.1,
-      "hace_30d_musd": 1199.2
+      "hace_30d_musd": 1202.1
      },
      {
       "nombre": "J.P. Morgan Asset Management",
       "musd": 678.0,
-      "hace_30d_musd": 450.7
+      "hace_30d_musd": 736.3
      },
      {
       "nombre": "State Street Investment Management",
       "musd": 436.6,
-      "hace_30d_musd": 266.4
+      "hace_30d_musd": 266.9
      },
      {
       "nombre": "Huma",
       "musd": 389.1,
-      "hace_30d_musd": 399.8
+      "hace_30d_musd": 400.2
      },
      {
       "nombre": "OnRe",
       "musd": 290.0,
-      "hace_30d_musd": 301.3
+      "hace_30d_musd": 305.7
      },
      {
       "nombre": "Insight Investments",
@@ -259,12 +259,12 @@
      {
       "nombre": "Stablecoins",
       "musd": 13303.0,
-      "hace_30d_musd": 14650.3
+      "hace_30d_musd": 14592.8
      },
      {
       "nombre": "US Treasury Debt",
       "musd": 1875.0,
-      "hace_30d_musd": 2046.1
+      "hace_30d_musd": 2334.6
      },
      {
       "nombre": "Private Equity",
@@ -274,22 +274,22 @@
      {
       "nombre": "Asset-Backed Credit",
       "musd": 757.2,
-      "hace_30d_musd": 765.3
+      "hace_30d_musd": 762.1
      },
      {
       "nombre": "Stocks",
       "musd": 584.7,
-      "hace_30d_musd": 632.8
+      "hace_30d_musd": 639.1
      },
      {
       "nombre": "Specialty Finance",
       "musd": 335.9,
-      "hace_30d_musd": 347.2
+      "hace_30d_musd": 351.5
      },
      {
       "nombre": "Corporate Credit",
       "musd": 283.2,
-      "hace_30d_musd": 271.9
+      "hace_30d_musd": 273.5
      },
      {
       "nombre": "Commodities",
@@ -301,17 +301,17 @@
     "fuente": "RWA.xyz, Networks (pagina publica, sin login)",
     "u": "https://app.rwa.xyz/networks",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "«Distribuido» = emitido y transferible en la red; «representado» = solo registrado en ella (no transferible ni liquidado). RWA.xyz reclasifica entre lecturas (XRPL 14-nov a 19-nov: no fue flujo de dinero). Es un tercero comercial sin auditoria. Las tablas por plataforma/gestora de cada red INCLUYEN stablecoins (Circle, Tether, Paxos...); las cifras de red las excluyen. El campo «value_7d_ago» de la pagina coincide con el valor de hace 30 dias (comprobado con el cambio a 30 d de Stellar), no de 7."
    },
    "defillama": {
-    "rwa_defi_musd": 541.8,
+    "rwa_defi_musd": 541.9,
     "protocolos": 11,
     "top": [
      {
       "nombre": "OnRe",
-      "musd": 290.0
+      "musd": 290.1
      },
      {
       "nombre": "Huma",
@@ -326,8 +326,8 @@
     "fuente": "DefiLlama api.llama.fi/protocols, categoria RWA",
     "u": "https://defillama.com/categories/RWA",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "Solo el valor bloqueado en protocolos DeFi de categoria RWA de DefiLlama; no incluye BENJI, Ondo, Spiko ni la mayor parte de lo tokenizado. Stellar ~7 M$ frente a ~4.900 M$ distribuidos en RWA.xyz no es contradiccion: miden cosas distintas."
    }
   },
@@ -336,23 +336,23 @@
    "red": "Stellar",
    "rwaxyz": {
     "distribuido_musd": 4939.2,
-    "distribuido_hace_30d_musd": 3761.3,
+    "distribuido_hace_30d_musd": 3777.8,
     "representado_musd": 77.3,
     "activos_distribuidos": 61,
     "pagina": "https://app.rwa.xyz/networks/stellar",
-    "distribuido_cambio_30d_pct": 31.3,
+    "distribuido_cambio_30d_pct": 30.7,
     "titulares": 27355,
     "activos_rwa": 84,
     "top_plataformas": [
      {
       "nombre": "Spiko",
       "musd": 2246.2,
-      "hace_30d_musd": 1962.2
+      "hace_30d_musd": 1978.9
      },
      {
       "nombre": "Franklin Templeton Benji Investments",
       "musd": 1414.1,
-      "hace_30d_musd": 529.3
+      "hace_30d_musd": 529.1
      },
      {
       "nombre": "Ondo",
@@ -367,7 +367,7 @@
      {
       "nombre": "Circle",
       "musd": 339.6,
-      "hace_30d_musd": 353.7
+      "hace_30d_musd": 347.2
      },
      {
       "nombre": "Galaxy Digital",
@@ -379,17 +379,17 @@
      {
       "nombre": "Amundi",
       "musd": 1967.6,
-      "hace_30d_musd": 1654.7
+      "hace_30d_musd": 1671.5
      },
      {
       "nombre": "Franklin Templeton",
       "musd": 1414.1,
-      "hace_30d_musd": 529.3
+      "hace_30d_musd": 529.1
      },
      {
       "nombre": "Twenty First Capital",
       "musd": 278.6,
-      "hace_30d_musd": 307.5
+      "hace_30d_musd": 307.3
      },
      {
       "nombre": "State Street Investment Management",
@@ -411,12 +411,12 @@
      {
       "nombre": "US Treasury Debt",
       "musd": 2106.6,
-      "hace_30d_musd": 1217.3
+      "hace_30d_musd": 1218.0
      },
      {
       "nombre": "Active Strategies",
       "musd": 1973.3,
-      "hace_30d_musd": 1660.2
+      "hace_30d_musd": 1677.9
      },
      {
       "nombre": "Corporate Credit",
@@ -426,12 +426,12 @@
      {
       "nombre": "Stablecoins",
       "musd": 403.1,
-      "hace_30d_musd": 421.7
+      "hace_30d_musd": 415.4
      },
      {
       "nombre": "non-US Government Debt",
       "musd": 239.6,
-      "hace_30d_musd": 269.4
+      "hace_30d_musd": 267.5
      },
      {
       "nombre": "Asset-Backed Credit",
@@ -453,8 +453,8 @@
     "fuente": "RWA.xyz, Networks (pagina publica, sin login)",
     "u": "https://app.rwa.xyz/networks",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "«Distribuido» = emitido y transferible en la red; «representado» = solo registrado en ella (no transferible ni liquidado). RWA.xyz reclasifica entre lecturas (XRPL 14-nov a 19-nov: no fue flujo de dinero). Es un tercero comercial sin auditoria. Las tablas por plataforma/gestora de cada red INCLUYEN stablecoins (Circle, Tether, Paxos...); las cifras de red las excluyen. El campo «value_7d_ago» de la pagina coincide con el valor de hace 30 dias (comprobado con el cambio a 30 d de Stellar), no de 7."
    },
    "defillama": {
@@ -478,21 +478,21 @@
     "fuente": "DefiLlama api.llama.fi/protocols, categoria RWA",
     "u": "https://defillama.com/categories/RWA",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "Solo el valor bloqueado en protocolos DeFi de categoria RWA de DefiLlama; no incluye BENJI, Ondo, Spiko ni la mayor parte de lo tokenizado. Stellar ~7 M$ frente a ~4.900 M$ distribuidos en RWA.xyz no es contradiccion: miden cosas distintas."
    },
    "primaria": {
     "activo": "BENJI (Franklin Templeton)",
-    "unidades_en_cadena": 1325063732.1,
+    "unidades_en_cadena": 1325203536.8,
     "cuentas": 1406,
     "unidad": "unidades de BENJI (NAV ~1 $ por unidad [VERIFICAR])",
     "emisor": "GBHNGLLIE3KWGKCHIKMHJ5HVZHYIK7WTBE4QF5PLAKL4CJGSEU7HZIW5",
     "fuente": "Horizon horizon.stellar.org, emisor con home_domain franklintempleton.com",
     "u": "https://horizon.stellar.org/assets?asset_code=BENJI&asset_issuer=GBHNGLLIE3KWGKCHIKMHJ5HVZHYIK7WTBE4QF5PLAKL4CJGSEU7HZIW5",
     "nivel": "P",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "Hay decenas de activos «BENJI» falsos con otros emisores en Horizon; solo vale el emisor verificado."
    }
   },
@@ -517,7 +517,7 @@
      {
       "nombre": "Ripple",
       "musd": 748.5,
-      "hace_30d_musd": 1001.9
+      "hace_30d_musd": 977.6
      },
      {
       "nombre": "Franklin Templeton Benji Investments",
@@ -527,7 +527,7 @@
      {
       "nombre": "Ondo",
       "musd": 186.0,
-      "hace_30d_musd": 185.4
+      "hace_30d_musd": 185.5
      },
      {
       "nombre": "VERT Capital",
@@ -549,7 +549,7 @@
      {
       "nombre": "Ondo",
       "musd": 186.0,
-      "hace_30d_musd": 185.4
+      "hace_30d_musd": 185.5
      },
      {
       "nombre": "VERT Capital",
@@ -581,12 +581,12 @@
      {
       "nombre": "Stablecoins",
       "musd": 798.2,
-      "hace_30d_musd": 1052.1
+      "hace_30d_musd": 1028.3
      },
      {
       "nombre": "US Treasury Debt",
       "musd": 432.4,
-      "hace_30d_musd": 440.4
+      "hace_30d_musd": 440.5
      },
      {
       "nombre": "Corporate Credit",
@@ -618,8 +618,8 @@
     "fuente": "RWA.xyz, Networks (pagina publica, sin login)",
     "u": "https://app.rwa.xyz/networks",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "«Distribuido» = emitido y transferible en la red; «representado» = solo registrado en ella (no transferible ni liquidado). RWA.xyz reclasifica entre lecturas (XRPL 14-nov a 19-nov: no fue flujo de dinero). Es un tercero comercial sin auditoria. Las tablas por plataforma/gestora de cada red INCLUYEN stablecoins (Circle, Tether, Paxos...); las cifras de red las excluyen. El campo «value_7d_ago» de la pagina coincide con el valor de hace 30 dias (comprobado con el cambio a 30 d de Stellar), no de 7."
    },
    "defillama": {
@@ -630,8 +630,8 @@
     "fuente": "DefiLlama api.llama.fi/protocols, categoria RWA",
     "u": "https://defillama.com/categories/RWA",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "Solo el valor bloqueado en protocolos DeFi de categoria RWA de DefiLlama; no incluye BENJI, Ondo, Spiko ni la mayor parte de lo tokenizado. Stellar ~7 M$ frente a ~4.900 M$ distribuidos en RWA.xyz no es contradiccion: miden cosas distintas."
    }
   },
@@ -640,18 +640,18 @@
    "red": "Avalanche",
    "rwaxyz": {
     "distribuido_musd": 1326.4,
-    "distribuido_hace_30d_musd": 1570.0,
+    "distribuido_hace_30d_musd": 1571.9,
     "representado_musd": 11403.5,
     "activos_distribuidos": 863,
     "pagina": "https://app.rwa.xyz/networks/avalanche",
-    "distribuido_cambio_30d_pct": -15.5,
+    "distribuido_cambio_30d_pct": -15.6,
     "titulares": 10106,
     "activos_rwa": 1367,
     "top_plataformas": [
      {
       "nombre": "Securitize",
       "musd": 555.6,
-      "hace_30d_musd": 731.3
+      "hace_30d_musd": 735.8
      },
      {
       "nombre": "Bridgetower",
@@ -671,12 +671,12 @@
      {
       "nombre": "Circle",
       "musd": 212.4,
-      "hace_30d_musd": 373.4
+      "hace_30d_musd": 359.0
      },
      {
       "nombre": "LayerZero Avalanche Bridge",
       "musd": 135.7,
-      "hace_30d_musd": 24.2
+      "hace_30d_musd": 26.1
      }
     ],
     "top_gestoras": [
@@ -698,7 +698,7 @@
      {
       "nombre": "Five Sigma",
       "musd": 126.2,
-      "hace_30d_musd": 154.0
+      "hace_30d_musd": 153.9
      },
      {
       "nombre": "Galaxy Digital Capital Management",
@@ -715,17 +715,17 @@
      {
       "nombre": "Stablecoins",
       "musd": 755.1,
-      "hace_30d_musd": 870.1
+      "hace_30d_musd": 857.6
      },
      {
       "nombre": "US Treasury Debt",
       "musd": 372.6,
-      "hace_30d_musd": 532.4
+      "hace_30d_musd": 533.5
      },
      {
       "nombre": "Specialty Finance",
       "musd": 345.5,
-      "hace_30d_musd": 363.5
+      "hace_30d_musd": 361.1
      },
      {
       "nombre": "Corporate Credit",
@@ -735,17 +735,17 @@
      {
       "nombre": "Stocks",
       "musd": 179.3,
-      "hace_30d_musd": 212.5
+      "hace_30d_musd": 216.9
      },
      {
       "nombre": "Active Strategies",
       "musd": 85.7,
-      "hace_30d_musd": 103.9
+      "hace_30d_musd": 104.0
      },
      {
       "nombre": "Diversified Credit",
       "musd": 39.4,
-      "hace_30d_musd": 51.1
+      "hace_30d_musd": 49.9
      },
      {
       "nombre": "Asset-Backed Credit",
@@ -757,8 +757,8 @@
     "fuente": "RWA.xyz, Networks (pagina publica, sin login)",
     "u": "https://app.rwa.xyz/networks",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "«Distribuido» = emitido y transferible en la red; «representado» = solo registrado en ella (no transferible ni liquidado). RWA.xyz reclasifica entre lecturas (XRPL 14-nov a 19-nov: no fue flujo de dinero). Es un tercero comercial sin auditoria. Las tablas por plataforma/gestora de cada red INCLUYEN stablecoins (Circle, Tether, Paxos...); las cifras de red las excluyen. El campo «value_7d_ago» de la pagina coincide con el valor de hace 30 dias (comprobado con el cambio a 30 d de Stellar), no de 7."
    },
    "defillama": {
@@ -782,8 +782,8 @@
     "fuente": "DefiLlama api.llama.fi/protocols, categoria RWA",
     "u": "https://defillama.com/categories/RWA",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "Solo el valor bloqueado en protocolos DeFi de categoria RWA de DefiLlama; no incluye BENJI, Ondo, Spiko ni la mayor parte de lo tokenizado. Stellar ~7 M$ frente a ~4.900 M$ distribuidos en RWA.xyz no es contradiccion: miden cosas distintas."
    }
   },
@@ -792,38 +792,38 @@
    "red": "Polygon",
    "rwaxyz": {
     "distribuido_musd": 434.9,
-    "distribuido_hace_30d_musd": 490.2,
+    "distribuido_hace_30d_musd": 492.3,
     "representado_musd": 662.4,
     "activos_distribuidos": 164,
     "pagina": "https://app.rwa.xyz/networks/polygon",
-    "distribuido_cambio_30d_pct": -11.3,
+    "distribuido_cambio_30d_pct": -11.7,
     "titulares": 22751,
     "activos_rwa": 410,
     "top_plataformas": [
      {
       "nombre": "Polygon Bridge",
       "musd": 1464.2,
-      "hace_30d_musd": 1481.0
+      "hace_30d_musd": 1496.3
      },
      {
       "nombre": "USDT0",
       "musd": 857.4,
-      "hace_30d_musd": 727.4
+      "hace_30d_musd": 724.7
      },
      {
       "nombre": "Circle",
       "musd": 600.3,
-      "hace_30d_musd": 639.2
+      "hace_30d_musd": 633.6
      },
      {
       "nombre": "Spiko",
       "musd": 153.3,
-      "hace_30d_musd": 159.3
+      "hace_30d_musd": 161.1
      },
      {
       "nombre": "Cashlink",
       "musd": 113.6,
-      "hace_30d_musd": 115.3
+      "hace_30d_musd": 115.6
      },
      {
       "nombre": "Reental",
@@ -835,12 +835,12 @@
      {
       "nombre": "Amundi",
       "musd": 91.8,
-      "hace_30d_musd": 92.1
+      "hace_30d_musd": 93.6
      },
      {
       "nombre": "Twenty First Capital",
       "musd": 61.5,
-      "hace_30d_musd": 67.3
+      "hace_30d_musd": 67.6
      },
      {
       "nombre": "Reental America",
@@ -867,17 +867,17 @@
      {
       "nombre": "Stablecoins",
       "musd": 2949.4,
-      "hace_30d_musd": 2875.4
+      "hace_30d_musd": 2882.3
      },
      {
       "nombre": "non-US Government Debt",
       "musd": 155.2,
-      "hace_30d_musd": 162.0
+      "hace_30d_musd": 162.4
      },
      {
       "nombre": "Active Strategies",
       "musd": 94.0,
-      "hace_30d_musd": 94.8
+      "hace_30d_musd": 96.4
      },
      {
       "nombre": "Real Estate",
@@ -909,8 +909,8 @@
     "fuente": "RWA.xyz, Networks (pagina publica, sin login)",
     "u": "https://app.rwa.xyz/networks",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "«Distribuido» = emitido y transferible en la red; «representado» = solo registrado en ella (no transferible ni liquidado). RWA.xyz reclasifica entre lecturas (XRPL 14-nov a 19-nov: no fue flujo de dinero). Es un tercero comercial sin auditoria. Las tablas por plataforma/gestora de cada red INCLUYEN stablecoins (Circle, Tether, Paxos...); las cifras de red las excluyen. El campo «value_7d_ago» de la pagina coincide con el valor de hace 30 dias (comprobado con el cambio a 30 d de Stellar), no de 7."
    },
    "defillama": {
@@ -934,8 +934,8 @@
     "fuente": "DefiLlama api.llama.fi/protocols, categoria RWA",
     "u": "https://defillama.com/categories/RWA",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "Solo el valor bloqueado en protocolos DeFi de categoria RWA de DefiLlama; no incluye BENJI, Ondo, Spiko ni la mayor parte de lo tokenizado. Stellar ~7 M$ frente a ~4.900 M$ distribuidos en RWA.xyz no es contradiccion: miden cosas distintas."
    }
   },
@@ -944,11 +944,11 @@
    "red": "BNB Chain",
    "rwaxyz": {
     "distribuido_musd": 6257.8,
-    "distribuido_hace_30d_musd": 6338.4,
+    "distribuido_hace_30d_musd": 6335.9,
     "representado_musd": 0.0,
     "activos_distribuidos": 3083,
     "pagina": "https://app.rwa.xyz/networks/bnb-chain",
-    "distribuido_cambio_30d_pct": -1.3,
+    "distribuido_cambio_30d_pct": -1.2,
     "titulares": 2263394,
     "activos_rwa": 3083,
     "top_plataformas": [
@@ -960,76 +960,76 @@
      {
       "nombre": "Circle",
       "musd": 2082.9,
-      "hace_30d_musd": 2334.6
+      "hace_30d_musd": 2334.8
      },
      {
       "nombre": "Franklin Templeton Benji Investments",
       "musd": 1532.8,
-      "hace_30d_musd": 1528.7
+      "hace_30d_musd": 1528.8
      },
      {
       "nombre": "bStocks",
       "musd": 1315.3,
-      "hace_30d_musd": 1402.0
+      "hace_30d_musd": 1395.9
      },
      {
       "nombre": "BitGo",
       "musd": 1097.0,
-      "hace_30d_musd": 1174.5
+      "hace_30d_musd": 1172.0
      },
      {
       "nombre": "Ondo",
       "musd": 607.9,
-      "hace_30d_musd": 456.2
+      "hace_30d_musd": 454.2
      }
     ],
     "top_gestoras": [
      {
       "nombre": "Circle",
       "musd": 2082.9,
-      "hace_30d_musd": 2334.6
+      "hace_30d_musd": 2334.8
      },
      {
       "nombre": "Franklin Templeton",
       "musd": 1532.8,
-      "hace_30d_musd": 1528.7
+      "hace_30d_musd": 1528.8
      },
      {
       "nombre": "BlackRock",
       "musd": 350.7,
-      "hace_30d_musd": 213.6
+      "hace_30d_musd": 216.0
      },
      {
       "nombre": "BNY Mellon Investment Management Singapore",
       "musd": 253.8,
-      "hace_30d_musd": 253.0
+      "hace_30d_musd": 253.1
      },
      {
       "nombre": "Direxion",
       "musd": 139.7,
-      "hace_30d_musd": 124.9
+      "hace_30d_musd": 78.0
      },
      {
       "nombre": "Invesco",
       "musd": 104.4,
-      "hace_30d_musd": 107.4
+      "hace_30d_musd": 108.7
      }
     ],
     "clases_activo": [
      {
       "nombre": "Stablecoins",
       "musd": 12386.6,
-      "hace_30d_musd": 12654.9
+      "hace_30d_musd": 12646.9
      },
      {
       "nombre": "US Treasury Debt",
       "musd": 4452.3,
-      "hace_30d_musd": 4416.5
+      "hace_30d_musd": 4416.9
      },
      {
       "nombre": "Stocks",
       "musd": 1582.0,
-      "hace_30d_musd": 1697.9
+      "hace_30d_musd": 1694.5
      },
      {
       "nombre": "Private Equity",
@@ -1039,12 +1039,12 @@
      {
       "nombre": "Commodities",
       "musd": 78.1,
-      "hace_30d_musd": 84.3
+      "hace_30d_musd": 84.2
      },
      {
       "nombre": "Asset-Backed Credit",
       "musd": 22.7,
-      "hace_30d_musd": 30.9
+      "hace_30d_musd": 31.1
      },
      {
       "nombre": "Corporate Credit",
@@ -1054,15 +1054,15 @@
      {
       "nombre": "Cryptocurrencies",
       "musd": 6.1,
-      "hace_30d_musd": 3.1
+      "hace_30d_musd": 3.5
      }
     ],
     "unidad": "M$",
     "fuente": "RWA.xyz, Networks (pagina publica, sin login)",
     "u": "https://app.rwa.xyz/networks",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "«Distribuido» = emitido y transferible en la red; «representado» = solo registrado en ella (no transferible ni liquidado). RWA.xyz reclasifica entre lecturas (XRPL 14-nov a 19-nov: no fue flujo de dinero). Es un tercero comercial sin auditoria. Las tablas por plataforma/gestora de cada red INCLUYEN stablecoins (Circle, Tether, Paxos...); las cifras de red las excluyen. El campo «value_7d_ago» de la pagina coincide con el valor de hace 30 dias (comprobado con el cambio a 30 d de Stellar), no de 7."
    },
    "defillama": {
@@ -1073,8 +1073,8 @@
     "fuente": "DefiLlama api.llama.fi/protocols, categoria RWA",
     "u": "https://defillama.com/categories/RWA",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "Solo el valor bloqueado en protocolos DeFi de categoria RWA de DefiLlama; no incluye BENJI, Ondo, Spiko ni la mayor parte de lo tokenizado. Stellar ~7 M$ frente a ~4.900 M$ distribuidos en RWA.xyz no es contradiccion: miden cosas distintas."
    }
   },
@@ -1094,7 +1094,7 @@
      {
       "nombre": "Archax",
       "musd": 73.9,
-      "hace_30d_musd": 82.6
+      "hace_30d_musd": 82.5
      },
      {
       "nombre": "Circle",
@@ -1131,7 +1131,7 @@
      {
       "nombre": "Canary Capital",
       "musd": 15.5,
-      "hace_30d_musd": 22.8
+      "hace_30d_musd": 22.7
      },
      {
       "nombre": "Fidelity International",
@@ -1168,7 +1168,7 @@
      {
       "nombre": "Cryptocurrencies",
       "musd": 15.5,
-      "hace_30d_musd": 22.8
+      "hace_30d_musd": 22.7
      },
      {
       "nombre": "Active Strategies",
@@ -1195,8 +1195,8 @@
     "fuente": "RWA.xyz, Networks (pagina publica, sin login)",
     "u": "https://app.rwa.xyz/networks",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "«Distribuido» = emitido y transferible en la red; «representado» = solo registrado en ella (no transferible ni liquidado). RWA.xyz reclasifica entre lecturas (XRPL 14-nov a 19-nov: no fue flujo de dinero). Es un tercero comercial sin auditoria. Las tablas por plataforma/gestora de cada red INCLUYEN stablecoins (Circle, Tether, Paxos...); las cifras de red las excluyen. El campo «value_7d_ago» de la pagina coincide con el valor de hace 30 dias (comprobado con el cambio a 30 d de Stellar), no de 7."
    },
    "defillama": {
@@ -1220,8 +1220,8 @@
     "fuente": "DefiLlama api.llama.fi/protocols, categoria RWA",
     "u": "https://defillama.com/categories/RWA",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "Solo el valor bloqueado en protocolos DeFi de categoria RWA de DefiLlama; no incluye BENJI, Ondo, Spiko ni la mayor parte de lo tokenizado. Stellar ~7 M$ frente a ~4.900 M$ distribuidos en RWA.xyz no es contradiccion: miden cosas distintas."
    }
   },
@@ -1243,8 +1243,8 @@
     "fuente": "RWA.xyz, Networks (pagina publica, sin login)",
     "u": "https://app.rwa.xyz/networks",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "«Distribuido» = emitido y transferible en la red; «representado» = solo registrado en ella (no transferible ni liquidado). RWA.xyz reclasifica entre lecturas (XRPL 14-nov a 19-nov: no fue flujo de dinero). Es un tercero comercial sin auditoria. Las tablas por plataforma/gestora de cada red INCLUYEN stablecoins (Circle, Tether, Paxos...); las cifras de red las excluyen. El campo «value_7d_ago» de la pagina coincide con el valor de hace 30 dias (comprobado con el cambio a 30 d de Stellar), no de 7."
    },
    "defillama": {
@@ -1255,8 +1255,8 @@
     "fuente": "DefiLlama api.llama.fi/protocols, categoria RWA",
     "u": "https://defillama.com/categories/RWA",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "Solo el valor bloqueado en protocolos DeFi de categoria RWA de DefiLlama; no incluye BENJI, Ondo, Spiko ni la mayor parte de lo tokenizado. Stellar ~7 M$ frente a ~4.900 M$ distribuidos en RWA.xyz no es contradiccion: miden cosas distintas."
    }
   },
@@ -1265,18 +1265,18 @@
    "red": "Plume",
    "rwaxyz": {
     "distribuido_musd": 140.2,
-    "distribuido_hace_30d_musd": 155.1,
+    "distribuido_hace_30d_musd": 157.4,
     "representado_musd": 24.9,
     "activos_distribuidos": 817,
     "pagina": "https://app.rwa.xyz/networks/plume",
-    "distribuido_cambio_30d_pct": -9.6,
+    "distribuido_cambio_30d_pct": -10.9,
     "titulares": 256699,
     "activos_rwa": 987,
     "top_plataformas": [
      {
       "nombre": "Enzyme Onyx",
       "musd": 51.1,
-      "hace_30d_musd": 54.6
+      "hace_30d_musd": 54.9
      },
      {
       "nombre": "OpenTrade (Perimeter Protocol)",
@@ -1291,7 +1291,7 @@
      {
       "nombre": "Plume Vaults",
       "musd": 20.2,
-      "hace_30d_musd": 26.1
+      "hace_30d_musd": 28.1
      },
      {
       "nombre": "Centrifuge",
@@ -1301,14 +1301,14 @@
      {
       "nombre": "Circle",
       "musd": 11.1,
-      "hace_30d_musd": 4.0
+      "hace_30d_musd": 4.2
      }
     ],
     "top_gestoras": [
      {
       "nombre": "Opal Capital",
       "musd": 51.1,
-      "hace_30d_musd": 54.6
+      "hace_30d_musd": 54.9
      },
      {
       "nombre": "Five Sigma",
@@ -1323,7 +1323,7 @@
      {
       "nombre": "Apollo Global Management",
       "musd": 15.3,
-      "hace_30d_musd": 20.6
+      "hace_30d_musd": 20.7
      },
      {
       "nombre": "Invesco",
@@ -1340,7 +1340,7 @@
      {
       "nombre": "Asset-Backed Credit",
       "musd": 72.6,
-      "hace_30d_musd": 81.5
+      "hace_30d_musd": 83.8
      },
      {
       "nombre": "Corporate Credit",
@@ -1360,7 +1360,7 @@
      {
       "nombre": "Stablecoins",
       "musd": 13.2,
-      "hace_30d_musd": 6.3
+      "hace_30d_musd": 6.6
      },
      {
       "nombre": "US Treasury Debt",
@@ -1382,8 +1382,8 @@
     "fuente": "RWA.xyz, Networks (pagina publica, sin login)",
     "u": "https://app.rwa.xyz/networks",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "«Distribuido» = emitido y transferible en la red; «representado» = solo registrado en ella (no transferible ni liquidado). RWA.xyz reclasifica entre lecturas (XRPL 14-nov a 19-nov: no fue flujo de dinero). Es un tercero comercial sin auditoria. Las tablas por plataforma/gestora de cada red INCLUYEN stablecoins (Circle, Tether, Paxos...); las cifras de red las excluyen. El campo «value_7d_ago» de la pagina coincide con el valor de hace 30 dias (comprobado con el cambio a 30 d de Stellar), no de 7."
    },
    "defillama": {
@@ -1407,8 +1407,8 @@
     "fuente": "DefiLlama api.llama.fi/protocols, categoria RWA",
     "u": "https://defillama.com/categories/RWA",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "Solo el valor bloqueado en protocolos DeFi de categoria RWA de DefiLlama; no incluye BENJI, Ondo, Spiko ni la mayor parte de lo tokenizado. Stellar ~7 M$ frente a ~4.900 M$ distribuidos en RWA.xyz no es contradiccion: miden cosas distintas."
    }
   },
@@ -1417,18 +1417,18 @@
    "red": "Algorand",
    "rwaxyz": {
     "distribuido_musd": 31.8,
-    "distribuido_hace_30d_musd": 50.5,
+    "distribuido_hace_30d_musd": 52.3,
     "representado_musd": 0.0,
     "activos_distribuidos": 1,
     "pagina": "https://app.rwa.xyz/networks/algorand",
-    "distribuido_cambio_30d_pct": -37.0,
+    "distribuido_cambio_30d_pct": -39.2,
     "titulares": 0,
     "activos_rwa": 1,
     "top_plataformas": [
      {
       "nombre": "Securitize",
       "musd": 31.8,
-      "hace_30d_musd": 50.5
+      "hace_30d_musd": 52.3
      }
     ],
     "top_gestoras": [],
@@ -1436,19 +1436,19 @@
      {
       "nombre": "Stocks",
       "musd": 31.8,
-      "hace_30d_musd": 50.5
+      "hace_30d_musd": 52.3
      }
     ],
     "unidad": "M$",
     "fuente": "RWA.xyz, Networks (pagina publica, sin login)",
     "u": "https://app.rwa.xyz/networks",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "«Distribuido» = emitido y transferible en la red; «representado» = solo registrado en ella (no transferible ni liquidado). RWA.xyz reclasifica entre lecturas (XRPL 14-nov a 19-nov: no fue flujo de dinero). Es un tercero comercial sin auditoria. Las tablas por plataforma/gestora de cada red INCLUYEN stablecoins (Circle, Tether, Paxos...); las cifras de red las excluyen. El campo «value_7d_ago» de la pagina coincide con el valor de hace 30 dias (comprobado con el cambio a 30 d de Stellar), no de 7."
    },
    "defillama": {
-    "rwa_defi_musd": 104.9,
+    "rwa_defi_musd": 105.0,
     "protocolos": 3,
     "top": [
      {
@@ -1457,7 +1457,7 @@
      },
      {
       "nombre": "Meld Gold",
-      "musd": 3.4
+      "musd": 3.5
      },
      {
       "nombre": "ASA.Gold",
@@ -1468,8 +1468,8 @@
     "fuente": "DefiLlama api.llama.fi/protocols, categoria RWA",
     "u": "https://defillama.com/categories/RWA",
     "nivel": "S",
-    "leido": "2026-11-26",
-    "caduca": "2026-12-10",
+    "leido": "2026-11-27",
+    "caduca": "2026-12-11",
     "trampa": "Solo el valor bloqueado en protocolos DeFi de categoria RWA de DefiLlama; no incluye BENJI, Ondo, Spiko ni la mayor parte de lo tokenizado. Stellar ~7 M$ frente a ~4.900 M$ distribuidos en RWA.xyz no es contradiccion: miden cosas distintas."
    }
   }
